@@ -5,7 +5,7 @@
 
 /datum/shuttle/ferry/supply
 	iselevator = 1
-	var/away_location = 1	//the location to hide at while pretending to be in-transit
+	var/away_location = 1 //the location to hide at while pretending to be in-transit
 	var/late_chance = 0
 	var/max_late_time = 300
 	var/railing_id = "supply_elevator_railing"
@@ -47,7 +47,7 @@
 		NE.pixel_y = -128
 		NE.vis_contents += elevator_animation
 
-/datum/shuttle/ferry/supply/short_jump(var/area/origin,var/area/destination)
+/datum/shuttle/ferry/supply/short_jump(area/origin, area/destination)
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -65,7 +65,7 @@
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
-			return	//someone cancelled the launch
+			return //someone cancelled the launch
 
 		if (at_station())
 			raise_railings()
@@ -76,7 +76,7 @@
 				playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/buzz-two.ogg', 50, 0)
 				lower_railings()
 				return
-		else	//at centcom
+		else //at centcom
 			supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
@@ -96,13 +96,26 @@
 			SE.forceMove(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 			NW.forceMove(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 			NE.forceMove(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+			SW.icon_state = "supply_elevator_lowering"
+			SE.icon_state = "supply_elevator_lowering"
+			NW.icon_state = "supply_elevator_lowering"
+			NE.icon_state = "supply_elevator_lowering"
 			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
 			start_gears(SOUTH)
-			sleep(91)
+			sleep(21)
+			SW.icon_state = "supply_elevator_lowered"
+			SE.icon_state = "supply_elevator_lowered"
+			NW.icon_state = "supply_elevator_lowered"
+			NE.icon_state = "supply_elevator_lowered"
+			sleep(70)
 		else
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_raising.ogg', 50, 0)
 			start_gears(NORTH)
 			sleep(70)
+			SW.icon_state = "supply_elevator_raising"
+			SE.icon_state = "supply_elevator_raising"
+			NW.icon_state = "supply_elevator_raising"
+			NE.icon_state = "supply_elevator_raising"
 			animate(elevator_animation, pixel_x = 0, pixel_y = 0, time = 2 SECONDS)
 			sleep(2 SECONDS)
 			SW.moveToNullspace()
@@ -115,7 +128,7 @@
 		stop_gears()
 		elevator_animation.vis_contents.Cut()
 
-		if (!at_station())	//at centcom
+		if (!at_station()) //at centcom
 			handle_sell()
 		else
 			lower_railings()
@@ -129,7 +142,7 @@
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
-		return 0	//if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
+		return 0 //if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
 	return supply_controller.forbidden_atoms_check(get_location_area())
 
@@ -155,11 +168,11 @@
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 	if(effective)
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
-/datum/shuttle/ferry/supply/proc/start_gears(var/direction = 1)
+/datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
 	for(var/obj/structure/machinery/gear/M in machines)
 		if(M.id == gear_id)
 			spawn()

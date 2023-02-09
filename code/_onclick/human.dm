@@ -11,7 +11,7 @@
 #define HANDLE_CLICK_HANDLED 1
 
 
-/mob/living/carbon/human/click(var/atom/A, var/list/mods)
+/mob/living/carbon/human/click(atom/A, list/mods)
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
@@ -34,7 +34,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A) //chewing your handcuffs
+/mob/living/carbon/human/RestrainedClickOn(atom/A) //chewing your handcuffs
 	if (A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
@@ -62,7 +62,7 @@
 
 	last_chew = world.time
 
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity, click_parameters)
+/mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
 	if(lying) //No attacks while laying down
 		return 0
@@ -92,6 +92,36 @@
 	if(user != src)
 		return . = ..()
 
+	if(isxeno(dropping))
+		var/mob/living/carbon/xenomorph/xeno = dropping
+		if(xeno.back)
+			var/obj/item/back_item = xeno.back
+			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
+				var/mob/living/carbon/carbon_user = user
+				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+					user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
+					return
+			if(user.get_active_hand())
+				to_chat(user, SPAN_WARNING("You can't unstrap \the [back_item] from [xeno] with your hands full."))
+				return
+			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"), \
+			SPAN_NOTICE("You start unstrapping \the [back_item] from [xeno]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+				to_chat(user, SPAN_WARNING("You were interrupted!"))
+				return
+
+			if(user.get_active_hand())
+				return
+			if(!user.Adjacent(xeno))
+				return
+			xeno.drop_inv_item_on_ground(back_item)
+			if(!back_item || QDELETED(back_item)) //Might be self-deleted?
+				return
+			user.put_in_active_hand(back_item)
+			return
+
 	if(pulling != dropping || grab_level != GRAB_AGGRESSIVE || !ishuman(dropping) || !(a_intent & INTENT_GRAB))
 		return . = ..()
 
@@ -100,7 +130,7 @@
 	var/signal_flags = SEND_SIGNAL(user, COMSIG_HUMAN_CARRY, carrydata)
 	carry_delay = carrydata["carry_delay"]
 
-	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_SKILLED) && !(signal_flags & COMPONENT_CARRY_ALLOW))
+	if(!skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_TRAINED) && !(signal_flags & COMPONENT_CARRY_ALLOW)) // Checking if they have fireman carry as a skill.
 		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
 		return . = ..()
 
@@ -109,7 +139,7 @@
 	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),\
 	SPAN_WARNING("You start loading [target] onto your back."))
 
-	if(!do_after(src, carry_delay * get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if(!do_after(src, carry_delay * get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
 	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),\

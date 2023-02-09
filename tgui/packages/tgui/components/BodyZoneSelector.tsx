@@ -14,10 +14,7 @@ export enum BodyZone {
   Groin = 'groin',
 }
 
-const bodyZonePixelToZone: (x: number, y: number) => BodyZone | null = (
-  x,
-  y
-) => {
+const bodyZonePixelToZone = (x: number, y: number): BodyZone | null => {
   // TypeScript translation of /atom/movable/screen/zone_sel/proc/get_zone_at
   if (y < 1) {
     return null;

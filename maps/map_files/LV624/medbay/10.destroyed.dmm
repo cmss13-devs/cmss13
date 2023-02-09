@@ -20,7 +20,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bk" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -62,7 +62,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "ih" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -134,6 +134,10 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lazarus Landing";
+	phone_id = "Medbay"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -562,7 +566,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "RO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -614,7 +618,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "UH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},

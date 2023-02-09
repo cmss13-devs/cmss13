@@ -175,7 +175,7 @@
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
 				return
-			var/new_name = params["name"]	// reject_bad_name() can be added here
+			var/new_name = params["name"] // reject_bad_name() can be added here
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -413,7 +413,7 @@
 	else
 		..()
 
-/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/bullet_act()
@@ -424,24 +424,24 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
-		if(operable())	// Powered. Console can response.
+		if(operable()) // Powered. Console can response.
 			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
 			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
-		authenticated = FALSE	// No card - no access
+		authenticated = FALSE // No card - no access
 		user_id_card = null
 
 	else if(target_id_card)
 		target_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
-		if(operable())	// Powered. Make comp proceed ejection
+		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
@@ -453,7 +453,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/card/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(inoperable())
@@ -490,7 +490,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -619,24 +619,24 @@
 				if(!operable())
 					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
 					return
-				var/isXenos = isXeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+				var/isxenos = isxeno(G.grabbed_thing)
+				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
-				if(!isXenos)
+				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
 		..()
 
 
-/obj/structure/machinery/computer/squad_changer/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/squad_changer/bullet_act()
 	return 0
 
-/obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(user)
@@ -648,25 +648,26 @@
 	if(allowed(user))
 		tgui_interact(user)
 	else
-		var/isXenos = isXeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+		var/isxenos = isxeno(user)
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
-		if(!isXenos)
+		if(!isxenos)
 			person_to_modify = user
 
 /// How often the sensor data is updated
-#define SENSORS_UPDATE_PERIOD	10 SECONDS //How often the sensor data updates.
+#define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
-#define UNKNOWN_JOB_ID			998
+#define UNKNOWN_JOB_ID 998
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
+	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
@@ -737,7 +738,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/jobs
 	var/faction = FACTION_MARINE
 
-/datum/crewmonitor/New(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/New(set_faction = FACTION_MARINE)
 	..()
 	faction = set_faction
 	setup_for_faction(faction)
@@ -762,7 +763,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	// Update active users UI
 	for(var/H in ui_sources)
 		var/datum/tgui/ui = SStgui.try_update_ui(H, src)
-		if(!ui)	// What are you doing in list?
+		if(!ui) // What are you doing in list?
 			ui_sources -= H
 
 /datum/crewmonitor/ui_close(mob/M)
@@ -784,7 +785,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/results = list()
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		// Predators
-		if(isYautja(H))
+		if(isyautja(H))
 			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform
@@ -862,13 +863,13 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				if(entry["name"] == params["name"])
 					H = locate(entry["ref"])
 					break
-			if(!H)	// Sanity check
+			if(!H) // Sanity check
 				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
 			else
 				// We do not care is there camera or no - we just know his location
 				AI.ai_actual_track(H)
 
-/datum/crewmonitor/proc/setup_for_faction(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
 		if(FACTION_MARINE)
 			jobs = list(
@@ -882,13 +883,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_SYNTH = 10,
 				JOB_PILOT = 11,
 				JOB_DROPSHIP_CREW_CHIEF = 12,
-				JOB_CREWMAN = 13,
 				JOB_INTEL = 14,
 				// 20-29: Security
 				JOB_CHIEF_POLICE = 20,
 				JOB_WARDEN = 21,
 				JOB_POLICE = 22,
-				JOB_POLICE_CADET = 23,
 				// 30-39: MedSci
 				JOB_CMO = 30,
 				JOB_RESEARCHER = 31,
@@ -943,9 +942,9 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 200-229: Centcom
 				JOB_COLONEL = 200,
 				JOB_GENERAL = 200,
-				JOB_MARSOC_CMD = 210,
-				JOB_MARSOC_SL = 210,
-				JOB_MARSOC = 211,
+				JOB_MARINE_RAIDER_CMD = 210,
+				JOB_MARINE_RAIDER_SL = 210,
+				JOB_MARINE_RAIDER = 211,
 				JOB_PMC_LEADER = 220,
 				JOB_PMC_ELITE = 221,
 				JOB_PMC_GUNNER = 222,

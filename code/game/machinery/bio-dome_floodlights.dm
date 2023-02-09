@@ -3,11 +3,11 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
@@ -78,15 +78,15 @@
 	name = "Biodome Floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	var/power_tick = 800 // power each floodlight takes up per process
-	use_power = 0 //It's the switch that uses the actual power, not the lights
+	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/hydro_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 
@@ -141,7 +141,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))

@@ -5,10 +5,10 @@ var/bomb_set = FALSE
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuke"
-	density = 1
+	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	anchored = 0
+	anchored = FALSE
 	var/timing = FALSE
 	var/deployable = FALSE
 	var/explosion_time = null
@@ -18,10 +18,19 @@ var/bomb_set = FALSE
 	var/end_round = TRUE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
 	pixel_x = -16
-	use_power = 0
+	use_power = USE_POWER_NONE
 	req_access = list()
 	flags_atom = FPRINT
 	var/command_lockout = FALSE //If set to TRUE, only command staff would be able to disable the nuke
+
+/obj/structure/machinery/nuclearbomb/Initialize(mapload, ...)
+	. = ..()
+
+	update_minimap_icon()
+
+/obj/structure/machinery/nuclearbomb/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "nuke[timing ? "_on" : "_off"]", 'icons/ui_icons/map_blips_large.dmi')
 
 /obj/structure/machinery/nuclearbomb/update_icon()
 	overlays.Cut()
@@ -69,8 +78,8 @@ var/bomb_set = FALSE
 	else
 		stop_processing()
 
-/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
-	INVOKE_ASYNC(src, /atom.proc/attack_hand, M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
@@ -86,15 +95,15 @@ var/bomb_set = FALSE
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isRemoteControlling(user))
 		return
 
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
 	if(deployable)
-		if(!ishuman(user) && !isXenoQueen(user))
+		if(!ishuman(user) && !isqueen(user))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
-		if(isXenoQueen(user))
+		if(isqueen(user))
 			if(timing && bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -268,6 +277,14 @@ var/bomb_set = FALSE
 	update_icon()
 	add_fingerprint(usr)
 
+/obj/structure/machinery/nuclearbomb/start_processing()
+	. = ..()
+	update_minimap_icon()
+
+/obj/structure/machinery/nuclearbomb/stop_processing()
+	. = ..()
+	update_minimap_icon()
+
 /obj/structure/machinery/nuclearbomb/verb/make_deployable()
 	set category = "Object"
 	set name = "Make Deployable"
@@ -299,18 +316,18 @@ var/bomb_set = FALSE
 	update_icon()
 
 //unified all announcements to one proc
-/obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
-	if(timer_warning)	//we check for timer warnings first
+/obj/structure/machinery/nuclearbomb/proc/announce_to_players(timer_warning)
+	if(timer_warning) //we check for timer warnings first
 		//humans part
 		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 		var/list/humans_USCM = list()
 		for(var/mob/M in humans_other)
 			var/mob/living/carbon/human/H = M
-			if(istype(H))							//if it's unconsious human or yautja, we remove them
-				if(H.stat != CONSCIOUS || isYautja(H))
+			if(istype(H)) //if it's unconsious human or yautja, we remove them
+				if(H.stat != CONSCIOUS || isyautja(H))
 					humans_other.Remove(M)
 					continue
-			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
 				humans_USCM += M
 				humans_other -= M
 		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
@@ -339,11 +356,11 @@ var/bomb_set = FALSE
 	var/list/humans_USCM = list()
 	for(var/mob/M in humans_other)
 		var/mob/living/carbon/human/H = M
-		if(istype(H))							//if it's unconsious human or yautja, we remove them
-			if(H.stat != CONSCIOUS || isYautja(H))
+		if(istype(H)) //if it's unconsious human or yautja, we remove them
+			if(H.stat != CONSCIOUS || isyautja(H))
 				humans_other.Remove(M)
 				continue
-		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
 			humans_USCM += M
 			humans_other -= M
 	var/datum/hive_status/hive
@@ -400,4 +417,5 @@ var/bomb_set = FALSE
 		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
-	..()
+	SSminimaps.remove_marker(src)
+	return ..()

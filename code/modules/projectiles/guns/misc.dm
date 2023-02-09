@@ -72,10 +72,14 @@
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
-	attachable_allowed = list(/obj/item/attachable/m60barrel,
-							/obj/item/attachable/bipod/m60)
-	starting_attachment_types = list(/obj/item/attachable/m60barrel,
-									/obj/item/attachable/bipod/m60)
+	attachable_allowed = list(
+		/obj/item/attachable/m60barrel,
+		/obj/item/attachable/bipod/m60,
+	)
+	starting_attachment_types = list(
+		/obj/item/attachable/m60barrel,
+		/obj/item/attachable/bipod/m60,
+	)
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
@@ -106,8 +110,8 @@
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "null"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()
 		create_reagents(15)

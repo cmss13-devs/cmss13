@@ -1,4 +1,4 @@
-/proc/spawn_reagent(var/target, var/volume)
+/proc/spawn_reagent(target, volume)
 	message_staff("[usr] spawned in a container of [target] with a volume of [volume]u")
 
 	if(volume > 300)
@@ -33,7 +33,7 @@
 	return
 
 
-/datum/admins/proc/topic_chems(var/href)
+/datum/admins/proc/topic_chems(href)
 	switch(href)
 		if("view_reagent")
 			var/response = alert(usr,"Enter ID or select ID from list?",null, "Enter ID","Select from list")
@@ -155,7 +155,7 @@
 					else
 						break
 			//See what we want to do last
-			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") == "No")
+			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") != "Yes")
 				return
 			var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
 			if(volume <= 0)

@@ -1,4 +1,4 @@
-/client/proc/cmd_admin_select_mob_rank(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+/client/proc/cmd_admin_select_mob_rank(mob/living/carbon/human/H in GLOB.human_mob_list)
 	set category = null
 	set name = "Select Rank"
 	if(!istype(H))
@@ -40,23 +40,6 @@
 	else
 		switch(newrank)
 			if("Weyland-Yutani")
-				var/code = "WY-"
-
-				var/divisions = get_named_wy_ranks("division_code")
-				var/div = tgui_input_list(usr, "Select the Division at which they belong to.", "Division", divisions)
-
-				if(!div)
-					return
-				code += divisions[div]
-
-				var/ranks = get_named_wy_ranks("job_code")
-				var/rank = tgui_input_list(usr, "Select the Rank at which they are at.", "Rank", ranks)
-
-				if(!rank)
-					return
-				code += ranks[rank]
-
-				H.apply_wy_rank_code(code)
 
 				H.faction = FACTION_WY
 				H.faction_group = FACTION_LIST_WY
@@ -115,13 +98,13 @@
 				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
-/client/proc/cmd_admin_dress(var/mob/M)
+/client/proc/cmd_admin_dress(mob/M)
 	set category = null
 	set name = "Select Equipment"
 
 	cmd_admin_dress_human(M)
 
-/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
+/client/proc/cmd_admin_dress_human(mob/living/carbon/human/M in GLOB.human_mob_list, datum/equipment_preset/dresscode, no_logs = 0, count_participant = FALSE)
 	if (!no_logs)
 		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_name_presets_list)
 
@@ -159,7 +142,7 @@
 	if (isnull(dresscode))
 		return
 
-	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") == "No") return
+	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") != "Yes") return
 
 	for(var/mob/living/carbon/human/M in GLOB.human_mob_list)
 		src.cmd_admin_dress_human(M, dresscode, 1)
@@ -168,7 +151,7 @@
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client, var/show_job_gear = TRUE)
+/proc/arm_equipment(mob/living/carbon/human/M, dresscode, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(ispath(dresscode))
 		if(!GLOB.gear_path_presets_list)
 			CRASH("arm_equipment !gear_path_presets_list")

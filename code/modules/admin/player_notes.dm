@@ -1,4 +1,4 @@
-/proc/notes_add(var/key, var/note, var/mob/usr)
+/proc/notes_add(key, note, mob/usr)
 	if (!key || !note)
 		return
 
@@ -53,7 +53,7 @@
 	qdel(note_list)
 
 
-/proc/notes_del(var/key, var/index)
+/proc/notes_del(key, index)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
@@ -67,8 +67,8 @@
 
 	qdel(info)
 
-/proc/player_notes_show_irc(var/key as text)
-	var/dat = "          Info on [key]%0D%0A"
+/proc/player_notes_show_irc(key as text)
+	var/dat = "   Info on [key]%0D%0A"
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos

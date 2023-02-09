@@ -19,8 +19,8 @@ log transactions
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
-	anchored = 1
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/datum/money_account/authenticated_account
 	var/number_incorrect_tries = 0
@@ -101,12 +101,12 @@ log transactions
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
 		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(drop_money), atm_turf), 30, TIMER_UNIQUE)
 
 	else
 		..()
 
-/obj/structure/machinery/atm/proc/drop_money(var/turf)
+/obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)
 		new /obj/item/spacecash/c100(turf)
 
@@ -205,7 +205,7 @@ log transactions
 	else
 		close_browser(user,"atm")
 
-/obj/structure/machinery/atm/Topic(var/href, var/href_list)
+/obj/structure/machinery/atm/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -314,7 +314,7 @@ log transactions
 						//remove the money
 						authenticated_account.money -= amount
 
-						//	spawn_money(amount,src.loc)
+						// spawn_money(amount,src.loc)
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
@@ -481,7 +481,7 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")
@@ -494,7 +494,7 @@ log transactions
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
-/obj/structure/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/spawn_ewallet(sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(E)

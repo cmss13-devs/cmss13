@@ -40,6 +40,8 @@
 /datum/keybinding/living/toggle_surgery
 	name = "toggle_surgery"
 	full_name = "Toggle Surgery Mode"
+	hotkey_keys = list()
+	classic_keys = list()
 	description = "Ready yourself to perform surgery, or not. Also activates or disables Help Intent Safety, if you didn't have that set originally."
 	keybind_signal = COMSIG_KB_SURGERY_INTENT_DOWN
 
@@ -51,3 +53,19 @@
 	if(surgery_action)
 		surgery_action.action_activate()
 		return TRUE
+
+/datum/keybinding/living/mov_intent
+	hotkey_keys = list("/")
+	classic_keys = list()
+	name = "mov_intent"
+	full_name = "Move Intent"
+	description = "Toggles your current move intent."
+	keybind_signal = COMSIG_KB_MOB_MOVINTENT_DOWN
+
+/datum/keybinding/living/mov_intent/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/M = user.mob
+	M.toggle_mov_intent()
+	return TRUE

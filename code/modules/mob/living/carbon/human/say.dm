@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/parse_say_modes(var/message)
+/mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
 		.["message_and_language"] = copytext(message, 2)
@@ -29,7 +29,7 @@
 			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
 		return
 
-	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
+	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
 		var/channel_prefix = copytext(message, 1, 3)
 		if(channel_prefix in department_radio_keys)
 			.["message_and_language"] = copytext(message, 3)
@@ -40,7 +40,7 @@
 	.["modes"] += MESSAGE_MODE_LOCAL
 	return
 
-/mob/living/carbon/human/proc/parse_say(var/message)
+/mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
 	.["modes"] = ml_and_modes["modes"]
@@ -53,7 +53,7 @@
 	else
 		.["message"] = message_and_language
 
-/mob/living/carbon/human/say(var/message)
+/mob/living/carbon/human/say(message)
 
 	var/verb = "says"
 	var/alt_name = ""
@@ -75,7 +75,8 @@
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
+			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -132,10 +133,10 @@
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
 			if(MESSAGE_MODE_LOCAL)
-			if("whisper")
+			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return
-			if("intercom")
+			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
 				for(var/obj/item/device/radio/intercom/I in view(1))
 					used_radios += I
@@ -160,22 +161,22 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"))
-			if(isHumanSynthStrict(src))
+					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
 
-		INVOKE_ASYNC(src, /mob/living/carbon/human.proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)
 
-/mob/living/carbon/human/proc/forcesay(var/forcesay_type = SUDDEN)
+/mob/living/carbon/human/proc/forcesay(forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)
 		return
 
@@ -199,7 +200,7 @@
 	say(say_text)
 	winset(client, "input", "text=[null]")
 
-/mob/living/carbon/human/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other, datum/language/speaking = null)
 
 	if(species.can_understand(other))
 		return 1
@@ -213,16 +214,16 @@
 
 	//This is already covered by mob/say_understands()
 	//if (istype(other, /mob/living/simple_animal))
-	//	if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
-	//		return 1
-	//	return 0
+	// if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
+	// return 1
+	// return 0
 
 	return ..()
 
 /mob/living/carbon/human/GetVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)
+/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
 	if(new_voice)
 		special_voice = new_voice
 	return
@@ -236,15 +237,15 @@
 
 
 /*
-   ***Deprecated***
-   let this be handled at the hear_say or hear_radio proc
-   This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
-   robot_talk() proc.
-   There is no language handling build into it however there is at the /mob level so we accept the call
-   for it but just ignore it.
+***Deprecated***
+let this be handled at the hear_say or hear_radio proc
+This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
+robot_talk() proc.
+There is no language handling build into it however there is at the /mob level so we accept the call
+for it but just ignore it.
 */
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
@@ -258,7 +259,7 @@
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(var/message)
+/mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
 	var/verb = "says"
 	var/handled = 0
@@ -304,8 +305,10 @@
 
 	return returns
 
-/mob/living/carbon/human/binarycheck()
+/mob/living/carbon/human/hear_apollo()
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
-	if (dongle && dongle.translate_binary)
+	if (dongle && dongle.translate_apollo)
+		return TRUE
+	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE

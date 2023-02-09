@@ -20,10 +20,10 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr
-	if(!active && isYautja(user) && (icon_state == initial(icon_state)))
+	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
@@ -32,7 +32,7 @@
 	if(L)
 		throw_atom(L.loc, 4, SPEED_FAST, usr)
 	throw_atom(usr, 12, SPEED_SLOW, usr)
-	addtimer(CALLBACK(src, .proc/clear_boomerang), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
@@ -46,7 +46,7 @@
 			var/mob/living/L = A
 			if(L.faction == user.faction)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -55,7 +55,7 @@
 				break
 	return T
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(dist = 3)
 	var/list/L = hearers(src, dist)
 	return L
 
@@ -65,7 +65,7 @@
 	if(active)
 		return
 
-	if(!isYautja(user))
+	if(!isyautja(user))
 		if(prob(75))
 			to_chat(user, SPAN_WARNING("You fiddle with the disc, but nothing happens. Try again maybe?"))
 			return
@@ -102,7 +102,7 @@
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
+	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
@@ -127,7 +127,7 @@
 	maxHealth = 60
 	health = 60
 	attack_same = 0
-	density = 0
+	density = FALSE
 	mob_size = MOB_SIZE_SMALL
 
 	harm_intent_damage = 10
@@ -157,13 +157,13 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	..()
-/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(check_drift = 0)
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
-/mob/living/simple_animal/hostile/smartdisc/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/item/projectile/Proj)
 	if(prob(60 - Proj.damage))
 		return 0
 
@@ -180,7 +180,7 @@
 	spawn(1)
 		if(src) qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
+/mob/living/simple_animal/hostile/smartdisc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	visible_message("\The [src] explodes!")
 	..(cause, icon_gib,1)
 	spawn(1)
@@ -201,7 +201,7 @@
 				continue
 			else if(L in friends)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -212,7 +212,7 @@
 					break
 	return T
 
-/mob/living/simple_animal/hostile/smartdisc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/smartdisc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 
@@ -239,7 +239,7 @@
 	for(var/mob/living/carbon/C in range(6))
 		if(C.target_locked)
 			var/image/I = C.target_locked
-			if(I.icon_state == "locked-y" && !isYautja(C) && C.stat != DEAD)
+			if(I.icon_state == "locked-y" && !isyautja(C) && C.stat != DEAD)
 				stance = HOSTILE_STANCE_ATTACK
 				target_mob = C
 				break
@@ -263,7 +263,7 @@
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
 		return 0
-	if(get_dist(src, target_mob) <= 1)	//Attacking
+	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
 		return 1
 
@@ -274,7 +274,7 @@
 		var/mob/living/L = target_mob
 		L.attack_animal(src)
 		if(prob(5))
-			L.KnockDown(3)
+			L.apply_effect(3, WEAKEN)
 			L.visible_message(SPAN_DANGER("\The [src] viciously slashes at \the [L]!"))
 			log_attack("[key_name(L)] was knocked down by [src]")
 		log_attack("[key_name(L)] was attacked by [src]")

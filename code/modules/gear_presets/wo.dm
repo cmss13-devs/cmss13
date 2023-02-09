@@ -17,10 +17,12 @@
 
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
-	paygrade = "MO4"
-	role_comm_title = "CO"
+	paygrade = "MO2"
+	role_comm_title = "CDR"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
+
+	minimap_icon = "co"
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -96,10 +98,12 @@
 
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
-	paygrade = "MO3"
-	role_comm_title = "XO"
+	paygrade = "MO1"
+	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "xo"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
@@ -143,6 +147,8 @@
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "cmp"
+
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/H)
 
 	//uniform
@@ -158,7 +164,7 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)
@@ -178,6 +184,8 @@
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "so"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -219,6 +227,8 @@
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
 
+	minimap_icon = "spec"
+
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -256,6 +266,8 @@
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
 
+	minimap_icon = "mp"
+
 /datum/equipment_preset/wo/hg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -284,9 +296,11 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_WO_PILOT
 	rank = JOB_WO_PILOT
-	paygrade = "ME2"
+	paygrade = "ME3"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
+
+	minimap_icon = "vc"
 
 /datum/equipment_preset/wo/mortar_crew/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -317,10 +331,12 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
 	assignment = JOB_WO_CHIEF_REQUISITION
 	rank = JOB_WO_CHIEF_REQUISITION
-	paygrade = "MO2"
+	paygrade = "ME8"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "ro"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -382,6 +398,8 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "cmo"
+
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -423,6 +441,8 @@
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
+	minimap_icon = "doctor"
+
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -460,6 +480,8 @@
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
+
+	minimap_icon = "researcher"
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -499,6 +521,8 @@
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "ce"
+
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -531,6 +555,8 @@
 	skills = /datum/skills/OT
 	idtype = /obj/item/card/id
 
+	minimap_icon = "mt"
+
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -561,10 +587,13 @@
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
-	paygrade = "WY-XB-X"
+	paygrade = "WYC2"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
+
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
@@ -713,7 +742,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
 

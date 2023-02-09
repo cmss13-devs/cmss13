@@ -99,6 +99,8 @@
 	gun_type = /obj/item/weapon/gun/smartgun
 
 /obj/item/ammo_magazine/smartgun/dirty
+	name = "irradiated smartgun drum"
+	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
@@ -129,7 +131,7 @@
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
-	..()
+	. = ..()
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
 		if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

@@ -5,8 +5,8 @@
 	icon_state = "construct_0_0"
 	required_skill = SKILL_ENGINEER_ENGI
 	required_dismantle_skill = 5
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 

@@ -7,7 +7,7 @@
 	var/obj/item/locked = null
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
-						 //Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
+						//Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
 /obj/structure/machinery/computer/teleporter/Initialize()
 	. = ..()
@@ -59,7 +59,7 @@
 			if(C.data == "Clown Land")
 				//whoops
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), 2)
+					O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), SHOW_MESSAGE_AUDIBLE)
 
 				for(var/obj/structure/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
@@ -68,7 +68,7 @@
 				//
 			else
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_NOTICE("Locked In"), 2)
+					O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
 				src.locked = L
 				one_time_use = 1
 
@@ -112,8 +112,8 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T)	continue
-			if(is_admin_level(T.z))	continue
+			if(T) continue
+			if(is_admin_level(T.z)) continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -129,7 +129,7 @@
 
 	src.locked = L[desc]
 	for(var/mob/O in hearers(src, null))
-		O.show_message(SPAN_NOTICE("Locked In"), 2)
+		O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	return
 
@@ -146,18 +146,18 @@
 	return
 
 /proc/find_loc(obj/R as obj)
-	if (!R)	return null
+	if (!R) return null
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area))	return null
+		if(!T || istype(T, /area)) return null
 	return T
 
 /obj/structure/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/lockeddown = 0
 
 
@@ -167,7 +167,7 @@
 	icon_state = "tele0"
 	dir = EAST
 	var/accurate = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/computer/teleporter/com
@@ -189,7 +189,7 @@
 		return
 	if (!com.locked)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_DANGER("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
+			O.show_message(SPAN_DANGER("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."), SHOW_MESSAGE_AUDIBLE)
 		return
 	if (istype(M, /atom/movable))
 		if(prob(5) && !accurate) //oh dear a problem, put em in deep space
@@ -205,9 +205,9 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(5 MINUTES) accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
-			B.show_message(SPAN_NOTICE("Test fire completed."))
+			B.show_message(SPAN_NOTICE("Test fire completed."), SHOW_MESSAGE_AUDIBLE)
 	return
 /*
 /proc/do_teleport(atom/movable/M as mob|obj, atom/destination, precision)
@@ -303,7 +303,7 @@
 	dir = EAST
 	var/active = 0
 	var/engaged = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/teleport/hub/com
@@ -313,7 +313,7 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/attackby(obj/item/W)
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()
@@ -333,7 +333,7 @@
 		com.icon_state = "tele1"
 		use_power(5000)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter engaged!"), 2)
+			O.show_message(SPAN_NOTICE("Teleporter engaged!"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	src.engaged = 1
 	return
@@ -346,7 +346,7 @@
 		com.icon_state = "tele0"
 		com.accurate = 0
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), 2)
+			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	src.engaged = 0
 	return
@@ -362,7 +362,7 @@
 	if (com && !active)
 		active = 1
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Test firing!"), 2)
+			O.show_message(SPAN_NOTICE("Test firing!"), SHOW_MESSAGE_AUDIBLE)
 		com.teleport()
 		use_power(5000)
 
@@ -388,8 +388,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)
@@ -401,4 +401,4 @@
 	return
 
 /atom/proc/laserhit(L as obj)
-	return 1
+	return TRUE

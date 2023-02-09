@@ -3,15 +3,20 @@
 	customizable = TRUE
 	allowed_sensors = list() //We only need a detonator
 
+/obj/item/explosive/warhead/Initialize(mapload, ...)
+	. = ..()
+	pixel_y = rand(-6, 6)
+	pixel_x = rand(-7, 7)
+
 /obj/item/explosive/warhead/rocket
 	name = "84mm rocket warhead"
 	desc = "A custom warhead meant for 84mm rocket shells."
 	icon_state = "warhead_rocket"
 	max_container_volume = 180
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list(	"max_ex_power" = 300,	"base_ex_falloff" = 120,"max_ex_shards" = 64,
-							"max_fire_rad" = 7,		"max_fire_int" = 30,	"max_fire_dur" = 36,
-							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
+	reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 120,"max_ex_shards" = 64,
+							"max_fire_rad" = 7, "max_fire_int" = 30, "max_fire_dur" = 36,
+							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE
 
@@ -21,9 +26,9 @@
 	icon_state = "warhead_mortar"
 	max_container_volume = 240
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list(	"max_ex_power" = 360,	"base_ex_falloff" = 90,	"max_ex_shards" = 128,
-							"max_fire_rad" = 8,		"max_fire_int" = 40,	"max_fire_dur" = 48,
-							"min_fire_rad" = 3,		"min_fire_int" = 5,		"min_fire_dur" = 5
+	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 90, "max_ex_shards" = 128,
+							"max_fire_rad" = 8, "max_fire_int" = 40, "max_fire_dur" = 48,
+							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE
 	var/has_camera = FALSE

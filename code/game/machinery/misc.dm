@@ -6,10 +6,10 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 
-/obj/structure/machinery/biogenerator/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/biogenerator/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -21,10 +21,10 @@
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 
-	idle_power_usage	= 20
-	active_power_usage	= 50
+	idle_power_usage = 20
+	active_power_usage = 50
 
-/obj/structure/machinery/computer3/New(var/L, var/built = 0)
+/obj/structure/machinery/computer3/New(L, built = 0)
 	..()
 	spawn(2)
 		power_change()
@@ -32,7 +32,7 @@
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/computer3/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer3/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -43,20 +43,20 @@
 /obj/structure/machinery/computer3/powermonitor
 	icon_state = "frame-eng"
 /obj/structure/machinery/computer3/server
-	name			= "server"
-	icon			= 'icons/obj/structures/machinery/computer3.dmi'
-	icon_state		= "serverframe"
+	name = "server"
+	icon = 'icons/obj/structures/machinery/computer3.dmi'
+	icon_state = "serverframe"
 
 /obj/structure/machinery/computer3/server/rack
 	name = "server rack"
 	icon_state = "rackframe"
 
-	update_icon()
-		//overlays.Cut()
-		return
+/obj/structure/machinery/computer3/server/rack/update_icon()
+	//overlays.Cut()
+	return
 
-	attack_hand() // Racks have no screen, only AI can use them
-		return
+/obj/structure/machinery/computer3/server/rack/attack_hand() // Racks have no screen, only AI can use them
+	return
 
 
 /obj/structure/machinery/lapvend
@@ -68,7 +68,7 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/machinery/lapvend/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/lapvend/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -80,7 +80,7 @@
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_port"
 
-/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -92,11 +92,11 @@
 	desc = "Nothing is being built."
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
 
-/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM

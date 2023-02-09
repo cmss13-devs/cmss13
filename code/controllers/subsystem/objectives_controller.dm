@@ -42,6 +42,9 @@ SUBSYSTEM_DEF(objectives)
 	statistics["miscellaneous_total_instances"] = 0
 	statistics["miscellaneous_total_points_earned"] = 0
 
+	statistics["survivors_rescued"] = 0
+	statistics["survivors_rescued_total_points_earned"] = 0
+
 	statistics["corpses_recovered"] = 0
 	statistics["corpses_total_points_earned"] = 0
 
@@ -49,9 +52,11 @@ SUBSYSTEM_DEF(objectives)
 	comms = new
 	corpsewar = new
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
-	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, .proc/on_marine_landing)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(pre_round_start))
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))
+	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, PROC_REF(on_marine_landing))
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/objectives/fire(resumed = FALSE)
 	if(!resumed)
@@ -191,7 +196,7 @@ SUBSYSTEM_DEF(objectives)
 
 // Populate the map with objective items.
 
-/datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
+/datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(dest, obj/item/it)
 	var/picked_location
 	switch(dest)
 		if("close")
@@ -352,18 +357,18 @@ SUBSYSTEM_DEF(objectives)
 			link_objectives(req, objective)
 
 // For linking 2 objectives together in the objective tree
-/datum/controller/subsystem/objectives/proc/link_objectives(var/datum/cm_objective/required_objective, var/datum/cm_objective/enabled_objective)
+/datum/controller/subsystem/objectives/proc/link_objectives(datum/cm_objective/required_objective, datum/cm_objective/enabled_objective)
 	LAZYADD(enabled_objective.required_objectives, required_objective)
 	LAZYADD(required_objective.enables_objectives, enabled_objective)
 
-/datum/controller/subsystem/objectives/proc/add_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/add_objective(datum/cm_objective/O)
 	LAZYADD(objectives, O)
 
-/datum/controller/subsystem/objectives/proc/remove_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/remove_objective(datum/cm_objective/O)
 	LAZYREMOVE(objectives, O)
 
-/datum/controller/subsystem/objectives/proc/start_processing_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/start_processing_objective(datum/cm_objective/O)
 	processing_objectives += O
 
-/datum/controller/subsystem/objectives/proc/stop_processing_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/stop_processing_objective(datum/cm_objective/O)
 	processing_objectives -= O

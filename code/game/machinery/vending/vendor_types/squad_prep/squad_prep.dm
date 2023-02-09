@@ -7,8 +7,12 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
 	hackable = TRUE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -53,7 +57,7 @@
 	name = "\improper ColMarTech Automated Training Weapons Rack"
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons and non-lethal ammunition."
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -81,8 +85,8 @@
 		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
 
 		list("UTILITIES", -1, null, null),
-		list("M07 Training Grenade", round(scale * 15), /obj/item/explosive/grenade/HE/training, VENDOR_ITEM_REGULAR),
-		list("M15 Rubber Pellet Grenade", round(scale * 10), /obj/item/explosive/grenade/HE/m15/rubber, VENDOR_ITEM_REGULAR),
+		list("M07 Training Grenade", round(scale * 15), /obj/item/explosive/grenade/high_explosive/training, VENDOR_ITEM_REGULAR),
+		list("M15 Rubber Pellet Grenade", round(scale * 10), /obj/item/explosive/grenade/high_explosive/m15/rubber, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)
@@ -199,13 +203,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	name = "\improper ColMarTech Automated Marine Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Marine Rifleman standard-issue equipment."
 	icon_state = "mar_rack"
-	use_points = TRUE
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 
 	vendor_role = list(JOB_SQUAD_MARINE)
 
-/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_marine
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
@@ -238,7 +241,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list()
 	hackable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM & STORAGE", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -268,7 +274,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null, null),
@@ -287,7 +293,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/alpha/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/alpha/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -313,7 +319,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),
@@ -325,7 +331,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_BRAVO, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -351,7 +357,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),
@@ -363,7 +369,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_CHARLIE, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -389,7 +395,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),
@@ -401,7 +407,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_DELTA, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -428,7 +434,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("MASKS", -1, null, null, null),

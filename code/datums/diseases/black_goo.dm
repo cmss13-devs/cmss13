@@ -99,7 +99,7 @@
 	set waitfor = 0
 	zombie_transforming = TRUE
 	human.vomit_on_floor()
-	human.AdjustStunned(5)
+	human.adjust_effect(5, STUN)
 	sleep(20)
 	human.make_jittery(500)
 	sleep(30)
@@ -117,6 +117,7 @@
 
 
 /obj/item/weapon/zombie_claws
+	gender = PLURAL
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
@@ -135,7 +136,7 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(isHumanStrict(target))
+	if(ishuman_strict(target))
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
@@ -146,10 +147,10 @@
 				target.AddDisease(new /datum/disease/black_goo)
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-	if(isSynth(target))
-		target.Slow(2)
+	if(issynth(target))
+		target.apply_effect(2, SLOW)
 	else
-		target.Superslow(2) // Make them slower
+		target.apply_effect(2, SUPERSLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)
@@ -225,6 +226,7 @@
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
+	gender = PLURAL
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL

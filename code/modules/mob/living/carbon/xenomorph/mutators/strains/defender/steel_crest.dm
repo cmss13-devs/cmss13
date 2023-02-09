@@ -10,20 +10,21 @@
 	behavior_delegate_type = /datum/behavior_delegate/defender_steel_crest
 	keystone = TRUE
 
-/datum/xeno_mutator/steel_crest/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/steel_crest/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
-	D.mutation_type = DEFENDER_STEELCREST
-	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
-	D.steelcrest = TRUE
-	if(D.fortify)
-		D.ability_speed_modifier += 2.5
-	mutator_update_actions(D)
-	MS.recalculate_actions(description, flavor_description)
-	D.recalculate_stats()
+	var/mob/living/carbon/xenomorph/defender/defender = mutator_set.xeno
+	defender.mutation_type = DEFENDER_STEELCREST
+	defender.mutation_icon_state = DEFENDER_STEELCREST
+	defender.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+	defender.steelcrest = TRUE
+	if(defender.fortify)
+		defender.ability_speed_modifier += 2.5
+	mutator_update_actions(defender)
+	mutator_set.recalculate_actions(description, flavor_description)
+	defender.recalculate_stats()
 
 /datum/behavior_delegate/defender_steel_crest
 	name = "Steel Crest Defender Behavior Delegate"
@@ -33,8 +34,8 @@
 		return
 
 	if(bound_xeno.fortify)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Fortify"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Steelcrest Defender Fortify"
 		return TRUE
 	if(bound_xeno.crest_defense)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Crest"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Steelcrest Defender Crest"
 		return TRUE

@@ -1,6 +1,6 @@
 //Procedures in this file: brain damage surgery.
 //////////////////////////////////////////////////////////////////
-//						BRAIN DAMAGE FIXING						//
+// BRAIN DAMAGE FIXING //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/brain_repair
@@ -14,7 +14,7 @@
 	var/dmg_min = 0
 	var/dmg_max = BONECHIPS_MAX_DAMAGE
 
-/datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
 	if(!B || B.damage <= dmg_min || B.robotic == ORGAN_ROBOT)
 		return FALSE
@@ -27,7 +27,7 @@
 	dmg_max = FALSE
 	steps = list(
 		/datum/surgery_step/treat_hematoma,
-		/datum/surgery_step/remove_bone_chips
+		/datum/surgery_step/remove_bone_chips,
 	)
 
 //------------------------------------

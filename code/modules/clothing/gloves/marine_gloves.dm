@@ -10,8 +10,8 @@
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -80,8 +80,8 @@
 /obj/item/clothing/gloves/marine/M3G
 	name = "\improper M3-G4 Grenadier gloves"
 	desc = "A pair of plated, but nimble, gloves."
-	icon_state = "black"
-	item_state = "bgloves"
+	icon_state = "grenadier"
+	item_state = "grenadier"
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -90,6 +90,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	unacidable = TRUE
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran
 	name = "armored gloves"
@@ -111,13 +112,13 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 
-/obj/item/clothing/gloves/marine/veteran/PMC
+/obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
 	icon_state = "pmc"
 	item_state = "pmc"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
-/obj/item/clothing/gloves/marine/veteran/PMC/commando
+/obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper M5X gauntlets"
 	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor"
 	icon_state = "gauntlets"
@@ -135,8 +136,9 @@
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
-	icon_state = "latex"
-	item_state = "lgloves"
+	icon_state = "white"
+	item_state = "white"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/souto
 	name = "\improper Souto Man gloves"

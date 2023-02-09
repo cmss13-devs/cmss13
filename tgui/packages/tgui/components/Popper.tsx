@@ -24,6 +24,7 @@ export class Popper extends Component<PopperProps> {
     const { additionalStyles, options } = this.props;
 
     this.renderedContent = document.createElement('div');
+
     if (additionalStyles) {
       for (const [attribute, value] of Object.entries(additionalStyles)) {
         this.renderedContent.style[attribute] = value;
@@ -61,7 +62,9 @@ export class Popper extends Component<PopperProps> {
 
   componentWillUnmount() {
     this.popperInstance?.destroy();
-    render(null, this.renderedContent, () => this.renderedContent.remove());
+    render(null, this.renderedContent, () => {
+      this.renderedContent.remove();
+    });
   }
 
   renderPopperContent(callback: () => void) {

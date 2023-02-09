@@ -5,7 +5,7 @@
 	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
@@ -16,29 +16,30 @@
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
 
-/datum/xeno_mutator/praetorian_warden/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/praetorian_warden/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 
 	// Make a 'halftank'
-	P.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	praetorian.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
+	praetorian.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 
-	mutator_update_actions(P)
-	MS.recalculate_actions(description, flavor_description)
+	mutator_update_actions(praetorian)
+	mutator_set.recalculate_actions(description, flavor_description)
 
-	P.recalculate_everything()
+	praetorian.recalculate_everything()
 
-	apply_behavior_holder(P)
-	P.mutation_type = PRAETORIAN_WARDEN
+	apply_behavior_holder(praetorian)
+	praetorian.mutation_icon_state = PRAETORIAN_WARDEN
+	praetorian.mutation_type = PRAETORIAN_WARDEN
 
 /datum/behavior_delegate/praetorian_warden
 	name = "Praetorian Warden Behavior Delegate"
@@ -58,11 +59,11 @@
 /datum/behavior_delegate/praetorian_warden/on_life()
 	internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
-	var/mob/living/carbon/Xenomorph/Praetorian/X = bound_xeno
-	var/image/holder = X.hud_list[PLASMA_HUD]
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = bound_xeno
+	var/image/holder = praetorian.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
-	if(X.stat == DEAD)
+	if(praetorian.stat == DEAD)
 		return
 
 	var/percentage_energy = round((internal_hitpoints / internal_hitpoints_max) * 100, 10)
@@ -70,8 +71,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
 /datum/behavior_delegate/praetorian_warden/handle_death(mob/M)
-	var/mob/living/carbon/Xenomorph/Praetorian/X = M
-	var/image/holder = X.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()
@@ -79,8 +79,8 @@
 
 	add_internal_hitpoints(internal_hitpoints_per_attack)
 
-/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(var/atom/A)
-	if(ismob(A))
+/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(atom/target_atom)
+	if(ismob(target_atom))
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)

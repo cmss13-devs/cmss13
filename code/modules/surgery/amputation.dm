@@ -1,6 +1,6 @@
 //Procedures in this file: Amputations, preparing stumps for prosthetics, including stumps of robotic limbs.
 //////////////////////////////////////////////////////////////////
-//						LIMB SURGERY							//
+// LIMB SURGERY //
 //////////////////////////////////////////////////////////////////
 
 //Sever a limb cleanly.
@@ -15,7 +15,7 @@
 		/datum/surgery_step/abort_amputation,
 		/datum/surgery_step/saw_off_limb,
 		/datum/surgery_step/carve_amputation,
-		/datum/surgery_step/close_amputation
+		/datum/surgery_step/close_amputation,
 	)
 
 //Mend the stump left by a traumatic amputation. Can be performed by medics/nurses. Torn-off limbs should bleed heavily.
@@ -28,11 +28,11 @@
 	steps = list(
 		/datum/surgery_step/carve_amputation,
 		/datum/surgery_step/close_ruptured_veins,
-		/datum/surgery_step/close_amputation
+		/datum/surgery_step/close_amputation,
 	)
 	requires_bodypart = FALSE
 
-/datum/surgery/amputate/repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/amputate/repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return !(L.status & LIMB_AMPUTATED)
 
 //Mend the stump left by a traumatic amputation of a prosthetic. Needs a doctor, prosthetics are hard.
@@ -41,7 +41,7 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/sever_prosthetic_clamps,
-		/datum/surgery_step/remove_old_prosthetic
+		/datum/surgery_step/remove_old_prosthetic,
 	)
 	requires_bodypart_type = LIMB_ROBOT
 	pain_reduction_required = NONE
@@ -92,7 +92,7 @@
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 
-datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
 
 /datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

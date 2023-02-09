@@ -11,6 +11,8 @@
 
 	ambience = 'sound/ambience/strata/strata_snow.ogg'
 
+	fire_smothering_strength = 3
+
 /datum/weather_event/snowstorm
 	name = "Snowstorm"
 	display_name = "Snowstorm"
@@ -23,6 +25,8 @@
 
 	ambience = 'sound/ambience/strata/strata_snowstorm.ogg'
 
+	fire_smothering_strength = 4
+
 /datum/weather_event/blizzard
 	name = "Blizzard"
 	display_name = "Blizzard"
@@ -34,3 +38,5 @@
 	damage_per_tick = 0.25
 
 	ambience = 'sound/ambience/strata/strata_blizzard.ogg'
+
+	fire_smothering_strength = 6

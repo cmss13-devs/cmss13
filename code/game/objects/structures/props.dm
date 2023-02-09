@@ -5,12 +5,12 @@
 	icon_state = "comm_tower_destroyed"
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	layer = ABOVE_FLY_LAYER
 	bound_height = 96
 
 /obj/structure/prop/dam
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/dam/drill
 	name = "mining drill"
@@ -18,6 +18,31 @@
 	icon = 'icons/obj/structures/props/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
+	var/on = FALSE//if this is set to on by default, the drill will start on, doi
+
+/obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(isxeno(user))
+		return
+	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+		on = !on
+		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
+
+		update()
+
+/obj/structure/prop/dam/drill/proc/update()
+	icon_state = "thumper[on ? "-on" : ""]"
+	if(on)
+		SetLuminosity(3)
+		playsound(src, 'sound/machines/turbine_on.ogg')
+	else
+		SetLuminosity(0)
+		playsound(src, 'sound/machines/turbine_off.ogg')
+	return
+
+/obj/structure/prop/dam/drill/Initialize()
+	. = ..()
+	update()
 
 /obj/structure/prop/dam/truck
 	name = "truck"
@@ -75,7 +100,7 @@
 	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
 	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
-	density = 0
+	density = FALSE
 	pixel_x = -16
 	layer = MOB_LAYER+0.5
 	var/lit = 0
@@ -415,7 +440,7 @@
 	desc = "A rack full of hard drives, micro-computers, and ethernet cables."
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "rackframe"
-	density = 1
+	density = TRUE
 	health = 150
 
 /obj/structure/prop/server_equipment/broken
@@ -439,7 +464,7 @@
 	name = "laptop"
 	desc = "Laptops, porta-comps, and reel-back computers, all of these and more available at your local Wey-Mart electronics section!"
 	icon_state = "laptop_off"
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/server_equipment/laptop/closed
 	icon_state = "laptop_closed"
@@ -448,17 +473,6 @@
 	icon_state = "laptop_on"
 	desc = "The screen is stuck on some sort of boot-loop in terrible garish green. All the text is in Rusoek, a creole language spawned out of the borders of UA and UPP space from some Korean settlements."
 
-//Here because man there is no general item props file
-
-/obj/item/prop/laz_top
-	name = "lazertop"
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	icon_state = "laptop-gun"
-	item_state = ""
-	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
-	w_class = SIZE_SMALL
-	garbage = TRUE
-
 //biomass turbine
 
 /obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
@@ -466,7 +480,7 @@
 	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
 	icon_state = "biomass_turbine"
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
-	density = 1
+	density = TRUE
 	breakable = FALSE
 	indestructible = TRUE
 	unslashable = TRUE
@@ -477,7 +491,7 @@
 
 /obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
 		on = !on
@@ -503,7 +517,7 @@
 	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
 	icon_state = "support_struts_r"
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
-	density = 0
+	density = FALSE
 	breakable = FALSE
 	indestructible = TRUE
 	unslashable = TRUE
@@ -539,7 +553,7 @@
 	desc = "A Seegson brand point of sales system that accepts credit chits... and cash assuming it is operated. Rumor has it these use the same logic board as Seegson Working Joes. You are becoming financially unstable."
 	icon = 'icons/obj/structures/props/cash_register.dmi'
 	icon_state = "cash_register"
-	density = 1
+	density = TRUE
 	health = 50
 
 /obj/structure/prop/cash_register/open
@@ -562,7 +576,7 @@
 	desc = "Like rebar, but in space."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
-	density = 1 //impassable by default
+	density = TRUE //impassable by default
 
 /obj/structure/prop/resin_prop
 	name = "resin coated object"
@@ -583,8 +597,17 @@
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
 
+/obj/structure/prop/invuln/static_corpse
+
+/obj/structure/prop/invuln/static_corpse/afric_zimmer
+	name = "Maj. Afric Zimmerman"
+	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
+	icon = 'icons/obj/structures/props/64x64.dmi'
+	icon_state = "afric_zimmerman"
+	density = FALSE
+
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
-	density = 0
+	density = FALSE
 	name = "non-functional hatch"
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
@@ -592,10 +615,10 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
 
-/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+/obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
 
-/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove() //moves content but leaves the turf behind (for cool space turf)
 	. = ..()
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
@@ -666,7 +689,7 @@
 
 /obj/structure/prop/ice_colony/dense
 	health = 75
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/ice_colony/dense/ice_tray
 	name = "ice slab tray"
@@ -689,7 +712,7 @@
 	desc = "The planter box is empty."
 
 /obj/structure/prop/ice_colony/flamingo
-	density = 0
+	density = FALSE
 	name = "lawn flamingo"
 	desc = "For ornamenting your suburban lawn... or your ice colony."
 	icon_state = "flamingo"
@@ -715,7 +738,7 @@
 
 /obj/structure/prop/holidays
 	projectile_coverage = 0
-	density = 0
+	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
 	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
@@ -738,6 +761,36 @@
 	name = "M1 pattern festive needle torus"
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
+/obj/structure/prop/vehicles
+	name = "van"
+	desc = "An old van, seems to be broken down."
+	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon_state = "van"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/crawler
+	name = "colony crawler"
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	icon_state = "crawler"
+	density = TRUE
+
+//overhead prop sets
+
+/obj/structure/prop/invuln/overhead
+	layer = ABOVE_FLY_LAYER
+	icon = 'icons/obj/structures/props/overhead_ducting.dmi'
+	icon_state = "flammable_pipe_1"
+
+/obj/structure/prop/invuln/overhead/flammable_pipe
+	name = "dense fuel line"
+	desc = "Likely to be incredibly flammable."
+	density = TRUE
+
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly
+	density = FALSE
 
 
 /obj/structure/prop/static_tank
@@ -745,7 +798,7 @@
 	desc = "Warning, contents under pressure!"
 	icon = 'icons/obj/structures/props/generic_props.dmi'
 	icon_state = "tank"
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/static_tank/fuel
 	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
@@ -759,7 +812,7 @@
 
 /obj/structure/prop/invuln
 	layer = ABOVE_MOB_LAYER
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "ice_tray"
 
@@ -767,7 +820,7 @@
 	name = "support lattice"
 	icon_state = "support_lattice"
 	desc = "The middle of a large set of steel support girders."
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/invuln/minecart_tracks
 	name = "rails"
@@ -783,7 +836,7 @@
 	desc = "This (usually) stops minecarts and other rail vehicles at the end of a line of track."
 
 /obj/structure/prop/invuln/dense
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/invuln/dense/catwalk_support
 	name = "support lattice"
@@ -800,14 +853,14 @@
 	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
 	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
 	icon_state = "fab"
-	density = 1
+	density = TRUE
 	layer = 3
 	bound_width = 32
 	bound_height = 32
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/invuln/ice_prefab/roof_greeble
 	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
@@ -818,7 +871,7 @@
 
 
 /obj/structure/prop/invuln/ice_prefab/standalone
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
@@ -828,7 +881,7 @@
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons
 	layer = ABOVE_MOB_LAYER
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"
@@ -839,14 +892,45 @@
 	health = 30
 	var/inscription
 	var/obj/item/helmet
+	///This is for cross dogtags.
+	var/tagged = FALSE
+	///This is for cross engraving/writing.
+	var/engraved = FALSE
+	var/dogtag_name
+	var/dogtag_blood
+	var/dogtag_assign
 
 /obj/structure/prop/wooden_cross/Destroy()
 	if(helmet)
 		helmet.forceMove(loc)
 		helmet = null
+	if(tagged)
+		var/obj/item/dogtag/new_info_tag = new(loc)
+		new_info_tag.fallen_names = list(dogtag_name)
+		new_info_tag.fallen_assgns = list(dogtag_assign)
+		new_info_tag.fallen_blood_types = list(dogtag_blood)
+		fallen_list_cross -= dogtag_name
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/dogtag))
+		var/obj/item/dogtag/dog = W
+		if(!tagged)
+			tagged = TRUE
+			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
+			dogtag_name = popleft(dog.fallen_names)
+			dogtag_assign = popleft(dog.fallen_assgns)
+			dogtag_blood = popleft(dog.fallen_blood_types)
+			fallen_list_cross += dogtag_name
+			update_icon()
+			if(!length(dog.fallen_names))
+				qdel(dog)
+			else
+				return
+		else
+			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			balloon_alert(user, "already a tag here!")
+
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)
 			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
@@ -868,7 +952,7 @@
 			update_health(W.force)
 		return
 
-	if(W.sharp || W.edge || istype(W, /obj/item/tool/pen) || istype(W, /obj/item/tool/hand_labeler))
+	if(W.sharp || W.edge || HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/tool/hand_labeler))
 		var/action_msg
 		var/time_multiplier
 		if(W.sharp || W.edge)
@@ -893,10 +977,12 @@
 				inscription += "\n[message]"
 			else
 				inscription = message
+				engraved = TRUE
 
 /obj/structure/prop/wooden_cross/get_examine_text(mob/user)
 	. = ..()
-	. += "There's something carved into it. It reads: \"[inscription]\""
+	. += (tagged ? "There's a dog tag draped around the cross. The dog tag reads, \"[dogtag_name] - [dogtag_assign] - [dogtag_blood]\"." : "There's no dog tag draped around the cross.")
+	. += (engraved ? "There's something carved into it. It reads: \"[inscription]\"" : "There's nothing carved into it.")
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)
@@ -906,7 +992,7 @@
 		helmet = null
 		overlays.Cut()
 
-/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
@@ -917,3 +1003,7 @@
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/wooden_cross/update_icon()
+	if(tagged)
+		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")

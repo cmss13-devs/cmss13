@@ -7,7 +7,7 @@
 	density = FALSE
 	anchored = FALSE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/obj/item/reagent_container/beaker = null
@@ -34,7 +34,7 @@
 	return
 
 
-/obj/structure/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/juicer/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 	if (istype(O,/obj/item/reagent_container/glass) || \
@@ -130,12 +130,12 @@
 	beaker = null
 	update_icon()
 
-/obj/structure/machinery/juicer/proc/get_juice_id(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_id(obj/item/reagent_container/food/snacks/grown/O)
 	for (var/i in allowed_items)
 		if (istype(O, i))
 			return allowed_items[i]
 
-/obj/structure/machinery/juicer/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
 	if (!istype(O))
 		return 5
 	else if (O.potency == -1)

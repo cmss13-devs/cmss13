@@ -22,7 +22,7 @@
 /obj/item/reagent_container/food/snacks/grown/Initialize()
 	. = ..()
 	GLOB.grown_snacks_list += src
-	addtimer(CALLBACK(src, .proc/update_from_seed), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_from_seed)), 1)
 
 /obj/item/reagent_container/food/snacks/grown/Destroy()
 	GLOB.grown_snacks_list -= src
@@ -31,9 +31,11 @@
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
 		var/datum/seed/S = seed_types[plantname]
-		if(!S || !S.chems)
+		if(!S)
 			return
-
+		name = S.seed_name //Copies the name from the seed, important for renamed plants
+		if(!S.chems)
+			return
 		potency = S.potency
 
 		for(var/rid in S.chems)
@@ -71,6 +73,7 @@
 	potency = 30
 	filling_color = "#CC6464"
 	plantname = "poppies"
+	black_market_value = 25
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
@@ -234,7 +237,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/deathberries
 	name = "bunch of death-berries"
-	desc = "Taste so good, you could die!"
+	desc = "Taste so good, you will die!"
 	icon_state = "deathberrypile"
 	gender = PLURAL
 	potency = 50
@@ -290,6 +293,7 @@
 	potency = 15
 	filling_color = "#F5CB42"
 	plantname = "goldapple"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/grown/watermelon
 	name = "watermelon"
@@ -548,6 +552,7 @@
 	filling_color = "#DAFF91"
 	potency = 30
 	plantname = "glowshroom"
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user)
 	..()
@@ -609,8 +614,8 @@
 		if(T in orange(M,inner_teleport_radius)) continue
 		if(istype(T,/turf/open/space)) continue
 		if(T.density) continue
-		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)	continue
-		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)	continue
+		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
+		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
 	if(!turfs.len)
 		var/list/turfs_to_pick_from = list()

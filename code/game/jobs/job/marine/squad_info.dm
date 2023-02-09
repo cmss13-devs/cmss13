@@ -1,28 +1,109 @@
-/datum/squad/proc/ui_interact(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
+/datum/squad/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SquadInfo", "Squad Info")
+		ui.open()
 
-	if(!squad_info_data.len)					//initial first update of data
+/datum/squad/ui_state(mob/user)
+	. = ..()
+	return GLOB.not_incapacitated_state
+
+/datum/squad/ui_data(mob/user)
+	if(!squad_info_data.len) //initial first update of data
 		update_all_squad_info()
-	if(squad_info_data["total_mar"] != count)	//updates for new marines
+	if(squad_info_data["total_mar"] != count) //updates for new marines
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
-		update_squad_ui()
+	var/list/data = squad_info_data.Copy()
+	data["squad"] = name
+	data["squad_color"] = squad_colors[color]
+	data["is_lead"] = get_leadership(user)
+	data["objective"] = list(
+		"primary" = primary_objective,
+		"secondary" = secondary_objective,
+	)
+	return data
 
-	var/list/ui_data = squad_info_data.Copy()
-	// This needs to be passed since we're not handling the full UI interaction on the mob itself
-	var/userref = "\ref[user]"
+/datum/squad/proc/get_leadership(mob/user)
+	var/mob/living/carbon/human/H = user
+	if (squad_leader && H.name == squad_leader.name)
+		return "sl"
+	else
+		for(var/fireteam in fireteams)
+			var/mob/living/carbon/human/ftl = fireteam_leaders[fireteam]
+			if (ftl && ftl.name == H.name)
+				return fireteam
+	return FALSE
 
-	ui_data["userref"] = userref
+/datum/squad/proc/get_marine_from_name(name)
+	for(var/mob/living/carbon/human/marine in marines_list)
+		if(marine.name == name)
+			return marine
+	return null
 
-	var/datum/nanoui/ui = nanomanager.try_update_ui(user, user, "squad_info_ui", null, ui_data)
-	if(isnull(ui))
-		ui = new(user, user, "squad_info_ui", "squad_info.tmpl", "[name] Squad Info", 460, 400)
-		ui.set_initial_data(ui_data)
-		ui.open()
+/datum/squad/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/ranks))
 
-		squad_info_uis += user
+/datum/squad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/islead = get_leadership(usr)
+
+	switch (action)
+		if ("assign_ft")
+			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				return
+
+			assign_fireteam(target_team, target, TRUE)
+			update_all_squad_info()
+			return
+
+		if ("unassign_ft")
+			var/target_marine = params["target_marine"]
+
+			if (islead != "sl")
+				return
+
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				return
+			unassign_fireteam(target, TRUE)
+			update_all_squad_info()
+			return
+
+		if ("demote_ftl")
+			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
+			unassign_ft_leader(target_team, FALSE, TRUE)
+			update_all_squad_info()
+			return
+
+		if ("promote_ftl")
+			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				return
+			assign_ft_leader(target_team, target, TRUE)
+			update_all_squad_info()
+			return
 
 //used once on first opening
 /datum/squad/proc/update_all_squad_info()
@@ -37,18 +118,6 @@
 		i++
 	squad_info_data["mar_free"] = list()
 	update_free_mar()
-
-/datum/squad/proc/update_squad_ui()		//proc that handles opened UIs updates
-	for(var/mob/living/carbon/human/H in squad_info_uis)
-		var/rmv_user = TRUE
-		for(var/datum/nanoui/ui in H.open_uis)
-			if(ui.ui_key == "squad_info_ui")
-				rmv_user = FALSE
-				var/list/ui_data = squad_info_data.Copy()
-				ui_data["userref"] = "\ref[H]"
-				ui = nanomanager.try_update_ui(H, H, "squad_info_ui", null, ui_data)
-		if(rmv_user)
-			squad_info_uis -= H
 
 //SL update. Should always be paired up with FT or free marines update
 /datum/squad/proc/update_squad_leader()
@@ -183,6 +252,8 @@
 						rank = "SL"
 					else
 						rank = ""
+				if(H.rank_fallback)
+					rank = H.rank_fallback
 				mar[H.real_name] += list("rank" = rank)
 			else
 				mar[H.real_name] += list("paygrade" = "N/A")

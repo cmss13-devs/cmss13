@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR
 
-/obj/item/falcon_drone/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_he = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/falcon_drone/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_he = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
 		if(WEAR_L_EAR)
 			return "on [t_his] shoulder"
@@ -54,11 +54,11 @@
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
-	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, .proc/handle_bracer_drop)
+	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-/mob/hologram/falcon/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/hologram/falcon/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if(PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_MOB_IS|PASS_BUILDING

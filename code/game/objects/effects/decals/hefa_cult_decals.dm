@@ -2,7 +2,7 @@
 	icon = 'icons/effects/hefa_cult/32_wall.dmi'
 	layer = TURF_LAYER
 
-//////////////////IM STUFF/////////////////
+// IM STUFF
 
 /obj/effect/decal/hefa_cult_decals/d32
 	icon_state = "1"

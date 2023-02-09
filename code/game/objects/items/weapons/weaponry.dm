@@ -145,7 +145,7 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 
-/obj/item/weapon/melee/wirerod/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/weapon/melee/wirerod/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/shard))
 		var/obj/item/weapon/melee/twohanded/spear/S = new /obj/item/weapon/melee/twohanded/spear
@@ -236,8 +236,8 @@
 		M.animation_attack_on(user)
 		M.flick_attack_overlay(user, "punch")
 		spawn(5)
-			user.Stun((kill_delay-5)/15)
-			M.Stun((kill_delay-5)/15)
+			user.apply_effect((kill_delay-5)/15, STUN)
+			M.apply_effect((kill_delay-5)/15, STUN)
 
 	else //No katana
 
@@ -257,7 +257,7 @@
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
 
-		M.Stun(kill_delay/15)
+		M.apply_effect(kill_delay/15, STUN)
 
 
 	for (var/mob/O in hearers(world_view_size, M))

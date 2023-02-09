@@ -26,9 +26,9 @@
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_CREWMAN) marine_rk = "tc"
-			if(JOB_MARSOC) marine_rk = "soc"
-			if(JOB_MARSOC_SL) marine_rk = "soctl"
-			if(JOB_MARSOC_CMD) marine_rk = "soccmd"
+			if(JOB_MARINE_RAIDER) marine_rk = "soc"
+			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
+			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
 		if(squad.squad_leader == H)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"
@@ -85,30 +85,11 @@
 				marine_rk = "po"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
-			if(JOB_CREWMAN)
-				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
-				marine_rk = "pvo"
-			if(JOB_PROVOST_TML)
-				marine_rk = "pvtml"
-			if(JOB_PROVOST_INSPECTOR)
-				marine_rk = "pvi"
-				border_rk = "command"
-			if(JOB_PROVOST_ADVISOR)
-				marine_rk = "pva"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
-				marine_rk = "pvm"
-				border_rk = "command"
-			if(JOB_TIS_IO,JOB_TIS_SA)
-				marine_rk = "tissa"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_POLICE_CADET)
-				marine_rk = "mpcadet"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"
@@ -136,6 +117,55 @@
 				marine_rk = "nurse"
 			if(JOB_SEA)
 				marine_rk = "sea"
+				border_rk = "command"
+			if(JOB_SYNTH)
+				marine_rk = "syn"
+			if(JOB_MESS_SERGEANT)
+				marine_rk = "messtech"
+			if(JOB_PROVOST_ENFORCER)
+				marine_rk = "pve"
+			if(JOB_PROVOST_TML)
+				marine_rk = "pvtml"
+			if(JOB_PROVOST_INSPECTOR)
+				marine_rk = "pvi"
+				border_rk = "command"
+			if(JOB_PROVOST_ADVISOR)
+				marine_rk = "pva"
+				border_rk = "command"
+			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+				marine_rk = "pvm"
+				border_rk = "command"
+			if(JOB_TIS_IO)
+				marine_rk = "tisio"
+			if(JOB_TIS_SA)
+				marine_rk = "tissa"
+			if(JOB_RIOT)
+				marine_rk = "rmp"
+			if(JOB_RIOT_CHIEF)
+				marine_rk = "crmp"
+			if(JOB_WO_CO)
+				marine_rk = "wo_co"
+			if(JOB_WO_XO)
+				marine_rk = "wo_xo"
+			if(JOB_WO_CHIEF_POLICE)
+				marine_rk = "hgsl"
+			if(JOB_WO_SO)
+				marine_rk = "vhg"
+			if(JOB_WO_CREWMAN)
+				marine_rk = "hgspec"
+			if(JOB_WO_POLICE)
+				marine_rk = "hg"
+			if(JOB_WO_CMO)
+				marine_rk = "wo_cmo"
+			if(JOB_WO_DOCTOR)
+				marine_rk = "wo_doctor"
+			if(JOB_WO_RESEARCHER)
+				marine_rk = "wo_chemist"
+			if(JOB_WO_CHIEF_REQUISITION)
+				marine_rk = "wo_ro"
+			if(JOB_WO_PILOT)
+				marine_rk = "wo_mcrew"
+
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"

@@ -1,0 +1,371 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4"
+	},
+/area/shuttle/ert)
+"c" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/ert)
+"e" = (
+/obj/docking_port/mobile/emergency_response/ert3,
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"g" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5"
+	},
+/area/shuttle/ert)
+"h" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/ert_spawns/distress_upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"i" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/ert)
+"j" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine"
+	},
+/area/shuttle/ert)
+"k" = (
+/turf/open/shuttle/dropship{
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/ert)
+"l" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"m" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp23"
+	},
+/area/shuttle/ert)
+"n" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/regular,
+/obj/effect/landmark/ert_spawns/distress_upp/item,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"p" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_rightengine"
+	},
+/area/shuttle/ert)
+"q" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp22"
+	},
+/area/shuttle/ert)
+"r" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"s" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6";
+	tag = "icon-rasputin6"
+	},
+/area/shuttle/ert)
+"u" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp8"
+	},
+/area/shuttle/ert)
+"v" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp21"
+	},
+/area/shuttle/ert)
+"w" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp2"
+	},
+/area/shuttle/ert)
+"x" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp3"
+	},
+/area/shuttle/ert)
+"y" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp9"
+	},
+/area/shuttle/ert)
+"z" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20"
+	},
+/area/shuttle/ert)
+"A" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp1"
+	},
+/area/shuttle/ert)
+"B" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/ert_spawns/distress_upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"C" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/ert_spawns/distress_upp/item,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"E" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25"
+	},
+/area/shuttle/ert)
+"F" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"G" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
+	},
+/area/shuttle/ert)
+"I" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27"
+	},
+/area/shuttle/ert)
+"J" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/effect/landmark/ert_spawns/distress_upp/item,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"K" = (
+/turf/template_noop,
+/area/template_noop)
+"N" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/ert)
+"O" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
+	},
+/area/shuttle/ert)
+"P" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"Q" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16"
+	},
+/area/shuttle/ert)
+"R" = (
+/obj/effect/landmark/ert_spawns/distress_upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
+	},
+/area/shuttle/ert)
+"S" = (
+/obj/structure/bed/chair/dropship/passenger,
+/obj/effect/landmark/ert_spawns/distress_upp,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"T" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"V" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0
+	},
+/area/shuttle/ert)
+"X" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/ert,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"Y" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+"Z" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/ert_spawns/distress_upp/item,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/ert)
+
+(1,1,1) = {"
+K
+z
+a
+G
+Q
+a
+a
+G
+a
+j
+P
+l
+e
+"}
+(2,1,1) = {"
+K
+v
+C
+T
+B
+B
+B
+T
+Z
+u
+a
+a
+A
+"}
+(3,1,1) = {"
+z
+q
+s
+R
+R
+R
+R
+R
+i
+T
+T
+T
+Y
+"}
+(4,1,1) = {"
+I
+X
+k
+S
+S
+S
+S
+S
+k
+O
+O
+O
+w
+"}
+(5,1,1) = {"
+E
+m
+c
+R
+R
+R
+R
+R
+N
+T
+T
+T
+Y
+"}
+(6,1,1) = {"
+K
+v
+J
+T
+h
+h
+h
+T
+n
+y
+g
+g
+x
+"}
+(7,1,1) = {"
+K
+E
+g
+G
+g
+g
+g
+G
+g
+p
+r
+V
+F
+"}

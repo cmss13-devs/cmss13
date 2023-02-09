@@ -7,40 +7,36 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
-	var/is_synth = FALSE
 	var/intro_text
 	var/story_text
 
-/datum/job/civilian/survivor/set_spawn_positions(var/count)
+/datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/M)
 	return
 
-/datum/job/civilian/survivor/spawn_in_player(var/mob/new_player/NP)
+/datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
 	var/list/potential_spawners = list()
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
-		if(spawner.check_can_spawn(H, is_synth))
-			potential_spawners += spawner
+	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(spawner.check_can_spawn(H))
+					potential_spawners += spawner
+			if(length(potential_spawners))
+				break
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 
-	var/has_equipment = FALSE
-	if(is_synth && picked_spawner.synth_equipment)
-		arm_equipment(H, picked_spawner.synth_equipment, FALSE, TRUE)
-		has_equipment = TRUE
-	else if(!is_synth && picked_spawner.equipment)
-		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
-		has_equipment = TRUE
-	if(!has_equipment)
-		survivor_old_equipment(H)
+	handle_equip_gear(H, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
-		for(var/i in 0 to picked_spawner.roundstart_damage_times)
+		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
+			for(var/i in 0 to picked_spawner.roundstart_damage_times)
 			H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
 	H.name = H.get_visible_name()
@@ -50,8 +46,9 @@
 
 	if(picked_spawner.story_text)
 		story_text = picked_spawner.story_text
+	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
-/datum/job/civilian/survivor/generate_entry_message(var/mob/living/carbon/human/H)
+/datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/H)
 	if(intro_text)
 		for(var/line in intro_text)
 			to_chat(H, line)
@@ -67,7 +64,7 @@
 	else
 		tell_survivor_story(H)
 
-/datum/job/civilian/survivor/proc/tell_survivor_story(var/mob/living/carbon/human/H)
+/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
 	var/list/survivor_story = list(
 								"You watched as a larva burst from the chest of your friend, {name}. You tried to capture the alien thing, but it escaped through the ventilation.",
 								"{name} was attacked by a facehugging alien, which impregnated them with an alien lifeform. {name}'s chest exploded in gore as some creature escaped.",
@@ -105,9 +102,18 @@
 
 	return TRUE
 
-/datum/job/civilian/survivor/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
-	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
-	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
+/datum/job/civilian/survivor/proc/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.equipment)
+		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
+	else
+		var/list/survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+
+AddTimelock(/datum/job/civilian/survivor, list(
+	JOB_SQUAD_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
+	JOB_MEDIC_ROLES = 5 HOURS
+))
 
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
@@ -117,18 +123,36 @@
 	total_positions = 1
 	spawn_positions = 1
 
-/datum/job/civilian/survivor/synth/set_spawn_positions(var/count)
+/datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return spawn_positions
 
-/datum/job/civilian/survivor/synth/survivor_old_equipment(var/mob/living/carbon/human/H)
-	var/list/survivor_types = list(
-		/datum/equipment_preset/synth/survivor,
-	)
+/datum/job/civilian/survivor/synth/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.synth_equipment)
+		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE)
+	else
+		var/list/synth_survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
 
-	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
+/datum/job/civilian/survivor/commanding_officer
+	title = JOB_CO_SURVIVOR
+	selection_class = "job_co"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
+	flags_whitelist = WHITELIST_COMMANDER
+	total_positions = 0
+	spawn_positions = 0
 
-AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_ENGINEER_ROLES = 5 HOURS,
-	JOB_MEDIC_ROLES = 5 HOURS
-))
+/datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	if(CO_survivor_types.len)
+		total_positions = 1
+		spawn_positions = 1
+	return spawn_positions
+
+/datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.CO_equipment)
+		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
+		return
+	else
+		var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
+		return

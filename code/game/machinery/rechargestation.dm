@@ -2,22 +2,22 @@
 	name = "robot recharge station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
+	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null
-	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
-	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
-	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
-	var/charging_cap_passive = 2500			// Passive Cap - Recharging internal capacitor when no cyborg is inside
-	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
+	var/max_internal_charge = 15000 // Two charged borgs in a row with default cell
+	var/current_internal_charge = 15000 // Starts charged, to prevent power surges on round start
+	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
+	var/charging_cap_passive = 2500 // Passive Cap - Recharging internal capacitor when no cyborg is inside
+	var/icon_update_tick = 0 // Used to update icon only once every 10 ticks
 	can_buckle = TRUE
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()
-	build_icon()
 	update_icon()
 	flags_atom |= USES_HEARING
 
@@ -27,12 +27,17 @@
 		go_out()
 	return ..()
 
-/obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/recharge_station/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/recharge_station/process()
+	if(max_internal_charge < current_internal_charge)
+		current_internal_charge = max_internal_charge// Safety check if varedit adminbus or something screws up
+	if(current_internal_charge < 0)
+		current_internal_charge = 0// Safety check if varedit adminbus or something screws up
+
 	if(stat & (BROKEN))
 		return
 
@@ -40,35 +45,32 @@
 		if(occupant)
 			to_chat(occupant, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
 			go_out()
-		return
 
 	var/chargemode = 0
 	if(src.occupant)
 		process_occupant()
 		chargemode = 1
-	// Power Stuff
+	else if (current_internal_charge < max_internal_charge)
+		chargemode = 1
 
+	// Power Stuff
 	if(stat & NOPOWER)
 		current_internal_charge = max(0, (current_internal_charge - (50 * CELLRATE))) // Internal Circuitry, 50W load. No power - Runs from internal cell
 		return // No external power = No charging
 
-
-
-	if(max_internal_charge < current_internal_charge)
-		current_internal_charge = max_internal_charge// Safety check if varedit adminbus or something screws up
 	// Calculating amount of power to draw
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
-	charge_diff = charge_diff / CELLRATE 							// Deconvert from Charge to Joules
-	if(chargemode)													// Decide if use passive or active power
-		charge_diff = between(0, charge_diff, charging_cap_active)	// Trim the values to limits
-	else															// We should have load for this tick in Watts
+	charge_diff = charge_diff / CELLRATE // Deconvert from Charge to Joules
+	if(chargemode) // Decide if use passive or active power
+		charge_diff = between(0, charge_diff, charging_cap_active) // Trim the values to limits
+	else // We should have load for this tick in Watts
 		charge_diff = between(0, charge_diff, charging_cap_passive)
 
 	charge_diff += 50 // 50W for circuitry
 
 	if(idle_power_usage != charge_diff) // Force update, but only when our power usage changed this tick.
 		idle_power_usage = charge_diff
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 
 	current_internal_charge = min((current_internal_charge + ((charge_diff - 50) * CELLRATE)), max_internal_charge)
 
@@ -78,8 +80,15 @@
 	else
 		icon_update_tick++
 
+	//only stop processing the recharge station once it's fully recharged and there is nobody inside
+	if(current_internal_charge == max_internal_charge && !occupant)
+		stop_processing()
+
 	return 1
 
+/obj/structure/machinery/recharge_station/stop_processing()
+	update_icon()
+	..()
 
 /obj/structure/machinery/recharge_station/allow_drop()
 	return 0
@@ -108,6 +117,13 @@
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()
+	if(!inoperable())
+		if(src.occupant)
+			icon_state = "borgcharger1"
+		else
+			icon_state = "borgcharger0"
+	else
+		icon_state = "borgcharger0"
 	overlays.Cut()
 	switch(round(chargepercentage()))
 		if(1 to 20)
@@ -123,16 +139,6 @@
 		if(99 to 110)
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
-/obj/structure/machinery/recharge_station/proc/build_icon()
-	if(!inoperable())
-		if(src.occupant)
-			icon_state = "borgcharger1"
-		else
-			icon_state = "borgcharger0"
-	else
-		icon_state = "borgcharger0"
-	update_icon()
-
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
 		var/doing_stuff = FALSE
@@ -143,19 +149,19 @@
 			if(!R.cell)
 				return
 			if(!R.cell.fully_charged())
-				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) 	// 500 charge / tick is about 2% every 3 seconds
-				diff = min(diff, current_internal_charge) 				// No over-discharging
+				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
+				diff = min(diff, current_internal_charge) // No over-discharging
 				R.cell.give(diff)
-				current_internal_charge -= diff
+				current_internal_charge = max(current_internal_charge - diff, 0)
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
 			else
-				update_use_power(1)
-		if (isrobot(occupant) || isSynth(occupant))
+				update_use_power(USE_POWER_IDLE)
+		if (isrobot(occupant) || issynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
-				current_internal_charge -= 500
+				current_internal_charge = max(current_internal_charge - 500, 0)
 				to_chat(occupant, "Repairing...")
 				doing_stuff = TRUE
 				occupant.pain.recalculate_pain()
@@ -173,17 +179,15 @@
 	if(!( src.occupant ))
 		return
 	//for(var/obj/O in src)
-	//	O.forceMove(src.loc)
+	// O.forceMove(src.loc)
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
 	src.occupant = null
-	stop_processing()
-	build_icon()
-	update_use_power(1)
+	update_icon()
+	update_use_power(USE_POWER_IDLE)
 	return
-
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"
@@ -199,8 +203,8 @@
 /obj/structure/machinery/recharge_station/do_buckle(mob/target, mob/user)
 	return move_mob_inside(target)
 
-/obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
-	if (!isrobot(M) && !isSynth(M))
+/obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
+	if (!isrobot(M) && !issynth(M))
 		return FALSE
 	if (occupant)
 		return FALSE
@@ -216,8 +220,8 @@
 	src.occupant = M
 	start_processing()
 	src.add_fingerprint(usr)
-	build_icon()
-	update_use_power(1)
+	update_icon()
+	update_use_power(USE_POWER_IDLE)
 	return TRUE
 
 /obj/structure/machinery/recharge_station/verb/move_inside()
@@ -228,7 +232,7 @@
 	if (usr.stat == 2)
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
-	if (!isrobot(usr) && !isSynth(usr))
+	if (!isrobot(usr) && !issynth(usr))
 		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
 		return
 	if (src.occupant)
@@ -243,13 +247,13 @@
 	move_mob_inside(usr)
 	return
 
-/obj/structure/machinery/recharge_station/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
-		if(!isSynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
+		if(!issynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
 			return
 
 		if(occupant)

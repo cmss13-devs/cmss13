@@ -7,7 +7,7 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	w_class = SIZE_SMALL
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
@@ -22,7 +22,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	siemens_coefficient = 0.9
 	vision_impair = VISION_IMPAIR_NONE
-	var/gas_filter_strength = 1			//For gas mask filters
+	var/gas_filter_strength = 1 //For gas mask filters
 	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 /obj/item/clothing/mask/gas/kutjevo
@@ -31,7 +31,7 @@
 	icon_state = "kutjevo_respirator"
 	item_state = "kutjevo_respirator"
 
-/obj/item/clothing/mask/gas/PMC
+/obj/item/clothing/mask/gas/pmc
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter."
 	item_state = "helmet"
@@ -50,16 +50,16 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 	flags_equip_slot = SLOT_FACE
 
-/obj/item/clothing/mask/gas/PMC/marsoc
-	name = "\improper MARSOC armored balaclava"
+/obj/item/clothing/mask/gas/pmc/marsoc
+	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
 	icon_state = "balaclava"
 
-/obj/item/clothing/mask/gas/PMC/upp
+/obj/item/clothing/mask/gas/pmc/upp
 	name = "\improper UPP armored commando balaclava"
 	icon_state = "upp_mask"
 
-/obj/item/clothing/mask/gas/PMC/leader
+/obj/item/clothing/mask/gas/pmc/leader
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_mask"
@@ -120,6 +120,7 @@
 	icon_state = "clown"
 	item_state = "clown_hat"
 	vision_impair = VISION_IMPAIR_NONE
+	black_market_value = 25
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
@@ -148,5 +149,5 @@
 	icon_state = "souto_man"
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
-//	flags_item = NODROP|DELONDROP
+// flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ

@@ -5,8 +5,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	desc = "The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats with rockets strapped onto them."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64
@@ -38,7 +38,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE)
 
-/obj/structure/machinery/computer/aa_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_ALL

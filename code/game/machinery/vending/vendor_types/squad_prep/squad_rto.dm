@@ -61,13 +61,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 	desc = "An automated gear rack for RTOs."
 	icon_state = "intel_gear"
 	show_points = TRUE
-	use_points = TRUE
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-/obj/structure/machinery/cm_vending/gear/rto/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_rto
+/obj/structure/machinery/cm_vending/gear/rto/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_rto
 
 //------------CLOTHING VENDOR---------------
 
@@ -130,7 +128,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/alpha
@@ -169,20 +167,20 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
-/obj/effect/essentials_set/rto/m4a3c
+/obj/effect/essentials_set/rto/mod
 	spawned_gear_list = list(
-		/obj/item/weapon/gun/pistol/m4a3/custom,
+		/obj/item/weapon/gun/pistol/mod88,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
-		/obj/item/ammo_magazine/pistol/hp,
-		/obj/item/ammo_magazine/pistol/hp,
-		/obj/item/ammo_magazine/pistol/ap,
-		/obj/item/ammo_magazine/pistol/ap,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/utilities

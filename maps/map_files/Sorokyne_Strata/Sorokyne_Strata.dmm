@@ -39,16 +39,14 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "aak" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "aal" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aam" = (
@@ -118,7 +116,7 @@
 "aax" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aay" = (
@@ -310,10 +308,8 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "abd" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/paths/cabin_area/central)
@@ -437,7 +433,7 @@
 /area/strata/ag/exterior)
 "abB" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -509,7 +505,6 @@
 /obj/structure/closet/wardrobe/grey,
 /obj/effect/landmark/wo_supplies/storage/mines,
 /obj/effect/landmark/wo_supplies/storage/mines,
-/obj/item/storage/pill_bottle/ultrazine/skillless,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	dir = 10;
@@ -913,9 +908,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "acI" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -1022,7 +1015,7 @@
 "acW" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "acX" = (
@@ -1101,10 +1094,8 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adi" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -1369,7 +1360,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adU" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -1487,9 +1478,8 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aej" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -1570,7 +1560,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "aev" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aex" = (
@@ -1788,9 +1778,7 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/exterior)
 "afg" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -2392,9 +2380,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -2789,9 +2775,8 @@
 	},
 /area/strata/ag/interior/dorms/flight_control)
 "ahQ" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -3021,9 +3006,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -3133,9 +3117,8 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "aiN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -3241,9 +3224,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "ajg" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -3256,9 +3237,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "aji" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -3338,11 +3317,9 @@
 	},
 /area/strata/ag/interior/dorms/canteen)
 "ajs" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -3888,10 +3865,8 @@
 /area/strata/ag/interior/nearlz1)
 "akW" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -4037,10 +4012,8 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "alp" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Chunkeez Diner door";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -4478,7 +4451,7 @@
 /obj/structure/bedsheetbin,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -4662,7 +4635,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "anr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -4676,9 +4649,8 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "ans" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -4751,10 +4723,9 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "anB" = (
-/obj/structure/closet/secure_closet/security,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -4830,7 +4801,7 @@
 /area/strata/ag/interior/restricted/devroom)
 "anO" = (
 /obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -4843,7 +4814,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anS" = (
@@ -5033,9 +5004,8 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "aoE" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -5260,10 +5230,8 @@
 "app" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -5489,9 +5457,8 @@
 	},
 /area/strata/ag/interior/dorms)
 "apX" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -5596,9 +5563,8 @@
 	},
 /area/strata/ag/interior/dorms/maintenance)
 "aqj" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/research_decks/security)
@@ -5616,9 +5582,8 @@
 /area/strata/ag/interior/research_decks/security)
 "aqn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -5658,9 +5623,8 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "aqt" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -5707,6 +5671,7 @@
 /area/strata/ag/interior/dorms/maintenance)
 "aqB" = (
 /obj/item/storage/box/nade_box/tear_gas,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -5877,7 +5842,6 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "arb" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -6096,9 +6060,8 @@
 /area/strata/ag/interior/outpost/security)
 "arH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -6280,9 +6243,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -6496,7 +6457,7 @@
 "asM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -6666,9 +6627,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ath" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -6713,9 +6672,8 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "atn" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -7140,9 +7098,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "auF" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -7414,9 +7370,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms)
 "avv" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -7470,11 +7424,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms)
 "avD" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -7630,7 +7582,6 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "avY" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -7764,10 +7715,8 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "awo" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -7929,11 +7878,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -8146,10 +8093,8 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "axt" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -8157,11 +8102,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "axu" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
-/area/strata/ag/interior/outpost/security)
+/area/strata/ag/interior/research_decks/security)
 "axv" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/outpost/gen/bball)
@@ -8277,7 +8222,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
@@ -8398,8 +8343,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ayf" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -8638,9 +8582,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "ayS" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -8649,10 +8591,9 @@
 /area/strata/ag/interior/outpost/engi)
 "ayW" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 2;
 	name = "Security Barracks";
-	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
@@ -8675,6 +8616,7 @@
 /area/strata/ag/interior/outpost/security)
 "aza" = (
 /obj/item/poster,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -9062,7 +9004,7 @@
 	tag = "icon-xgib4"
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/stack/rods,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -9391,11 +9333,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/holosign/surgery,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -9791,10 +9731,8 @@
 /area/strata/ag/interior/dorms)
 "aCE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -9882,9 +9820,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "aCU" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -10107,7 +10043,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aDI" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -10250,10 +10186,8 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "aEc" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -10367,7 +10301,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aEq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/largecrate/random,
@@ -10389,7 +10323,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -10412,7 +10346,7 @@
 "aEu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/floor/strata{
@@ -10917,9 +10851,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -11051,10 +10983,8 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aGm" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -11062,10 +10992,8 @@
 /area/strata/ag/interior/outpost/engi)
 "aGn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -11337,10 +11265,8 @@
 	},
 /area/strata/ag/interior/dorms)
 "aHa" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -11430,9 +11356,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -11447,10 +11371,8 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "aHo" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -11594,9 +11516,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aHO" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -11631,9 +11551,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aHV" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -11974,7 +11892,7 @@
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
@@ -12018,11 +11936,9 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -12064,9 +11980,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aJG" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -12074,9 +11988,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aJH" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -12551,7 +12463,6 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aLc" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -12955,10 +12866,8 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aMs" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -13474,9 +13383,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -14004,10 +13912,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/paths/adminext)
 "aPu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -14030,7 +13936,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "aPz" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
 	req_access = null;
 	req_one_access = null
@@ -14257,10 +14163,8 @@
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -14470,9 +14374,8 @@
 /area/strata/ag/interior/dorms/south)
 "aQG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -14683,9 +14586,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aRr" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -14803,11 +14704,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -14848,11 +14747,9 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outpost/gen/foyer)
 "aRX" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -14959,7 +14856,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aSn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/item/reagent_container/spray/cleaner,
@@ -15128,11 +15025,9 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/nearlz1)
 "aSQ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -15339,9 +15234,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -15686,16 +15579,14 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "aUS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)
 "aUT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -16269,7 +16160,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/interior/plastic,
@@ -16403,7 +16294,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
@@ -16413,9 +16304,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aXs" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -16857,7 +16746,7 @@
 "aZm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -16962,7 +16851,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZz" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZA" = (
@@ -16987,9 +16876,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "aZD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -17201,10 +17089,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -17648,7 +17535,7 @@
 /obj/structure/closet/wardrobe/pjs,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata,
@@ -17963,11 +17850,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "bda" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18136,7 +18021,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bdE" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bdG" = (
@@ -18214,7 +18099,6 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdU" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/book/manual/security_space_law,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -18341,11 +18225,9 @@
 /area/strata/ag/exterior/marsh)
 "beq" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18360,7 +18242,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "bes" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/bar)
 "bev" = (
@@ -18750,11 +18632,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bfM" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18797,11 +18677,9 @@
 /area/strata/ag/interior/outpost/admin)
 "bfU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -19204,11 +19082,9 @@
 	},
 /area/strata/ag/interior/nearlz1)
 "bhq" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -19272,10 +19148,8 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/administration)
 "bhy" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -19650,8 +19524,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/admin)
-"biM" = (
-)
 "biN" = (
 /obj/structure/platform/strata,
 /obj/structure/platform/strata{
@@ -19686,9 +19558,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -19721,9 +19591,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -19855,10 +19723,9 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "bjp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -20258,8 +20125,6 @@
 /area/strata/ag/exterior)
 "bkV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -20589,9 +20454,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "bmf" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -20599,10 +20462,8 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "bml" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -20616,10 +20477,8 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/shed_five_caves)
 "bmo" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -21314,7 +21173,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "boO" = (
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
@@ -21720,7 +21579,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -22080,9 +21939,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/southresearch)
 "brD" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -22242,10 +22099,8 @@
 /area/strata/ag/exterior/paths/southresearch)
 "bso" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -22282,9 +22137,7 @@
 /area/strata/ag/interior/tcomms)
 "bst" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/machinery/door/airlock/almayer/medical{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -22309,17 +22162,15 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -22331,10 +22182,8 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsA" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -22342,10 +22191,8 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsB" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -22466,11 +22313,6 @@
 "bsT" = (
 /obj/structure/platform/strata{
 	dir = 8
-	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_x = -29;
-	start_charge = 0
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
@@ -22776,7 +22618,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/crash)
 "buc" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -23050,10 +22892,8 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "buZ" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -23623,7 +23463,7 @@
 "bxn" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/kitchenspike,
 /turf/open/floor/strata{
@@ -24084,10 +23924,8 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/interior)
 "bzk" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -24160,9 +23998,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -24180,7 +24016,7 @@
 "bzx" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -24323,8 +24159,7 @@
 	},
 /area/strata/ag/interior/administration)
 "bAF" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -24593,12 +24428,10 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bCv" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
 	id_tag = "bunker_or1";
 	name = "\improper Operating Room 1";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -24772,7 +24605,7 @@
 "bDv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -24932,7 +24765,7 @@
 /area/strata/ag/interior/disposals)
 "bEY" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -25009,12 +24842,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/canteen)
-"bFA" = (
-/obj/structure/closet/secure_closet/security,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ag/interior/administration)
 "bFB" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/structure/machinery/alarm{
@@ -25413,10 +25240,8 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "bIr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -26001,7 +25826,7 @@
 "bNm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -26173,9 +25998,8 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bOV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -26460,9 +26284,8 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "bRU" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -26791,10 +26614,8 @@
 	},
 /area/strata/ag/interior/dorms)
 "bUO" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -26805,7 +26626,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -26899,9 +26720,8 @@
 	},
 /area/strata/ag/interior/outpost/security)
 "bVr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -26992,10 +26812,9 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "bWd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -27118,9 +26937,8 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "bXa" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -27267,9 +27085,8 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "bYk" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -27371,9 +27188,8 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "bYV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
@@ -27506,9 +27322,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 8;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -27695,9 +27510,8 @@
 /area/strata/ag/interior/landingzone_checkpoint)
 "cbR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -27814,9 +27628,7 @@
 /area/strata/ag/exterior/paths/adminext)
 "cct" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -28082,10 +27894,8 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "ceg" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -28208,12 +28018,10 @@
 "ceY" = (
 /obj/structure/machinery/holosign/surgery,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
 	id_tag = "bunker_or1";
 	name = "\improper Operating Room 1";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -28544,10 +28352,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "chi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
@@ -28576,9 +28383,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "cht" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -28910,10 +28715,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -29072,9 +28875,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -29217,7 +29018,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cls" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
 	},
@@ -29538,11 +29339,9 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/dorms/south)
 "cnC" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -29580,7 +29379,7 @@
 /obj/item/tool/wrench,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -29638,7 +29437,7 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -29794,7 +29593,6 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "cpi" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light/small{
@@ -29935,9 +29733,8 @@
 	},
 /area/strata/ag/exterior/north_lz_caves)
 "crp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -30564,10 +30361,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "cwd" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -30681,9 +30476,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "cyi" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -30696,11 +30489,9 @@
 /area/strata/ag/interior/dorms/flight_control)
 "cyH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
 	name = "Medical Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -30905,9 +30696,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "cRB" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -31742,7 +31531,7 @@
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -32076,7 +31865,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "eRJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -32270,7 +32059,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "flK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/med)
 "fno" = (
@@ -33426,10 +33215,10 @@
 "haU" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
-	pixel_x = 28;
+	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer1,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -33524,7 +33313,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hjC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkn" = (
@@ -33813,9 +33602,7 @@
 /turf/open/gm/river,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "hOw" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -34049,7 +33836,7 @@
 "ioz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -34219,8 +34006,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "ixS" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -34409,10 +34195,8 @@
 /area/strata/ag/exterior/research_decks)
 "iOi" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -34674,7 +34458,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -34846,7 +34630,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "jzD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -35021,7 +34805,6 @@
 "jPc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -35141,7 +34924,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "kaw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaP" = (
@@ -35183,7 +34966,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
@@ -35421,10 +35204,8 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "kyT" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
@@ -36010,7 +35791,7 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -36168,9 +35949,9 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lNr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -36208,8 +35989,8 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lPk" = (
-/obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -36384,7 +36165,6 @@
 	},
 /area/strata/ag/interior/tcomms)
 "mdK" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -36536,9 +36316,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -36609,9 +36387,8 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "mqQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -36667,7 +36444,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "msG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
 "msP" = (
@@ -37006,7 +36783,7 @@
 "mWM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/medium,
@@ -37481,9 +37258,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -37538,9 +37313,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "odr" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -38254,10 +38027,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -38478,11 +38250,9 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "pEF" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -38550,10 +38320,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "pJu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -38714,10 +38483,8 @@
 /area/strata/ag/exterior/marsh/water)
 "pWP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -38823,9 +38590,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
 "qfM" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -38838,9 +38603,8 @@
 /area/strata/ag/exterior/paths/southresearch)
 "qgc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -39495,10 +39259,9 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
 "riS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -39525,7 +39288,6 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
 /obj/item/clothing/glasses/thermal/syndi,
-/obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;
@@ -39569,11 +39331,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "rpA" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
 	name = "Medical Airlock";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -39861,7 +39621,7 @@
 "rSE" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -39990,7 +39750,7 @@
 	icon_state = "xgib6";
 	tag = "icon-xgib6"
 	},
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/strata{
 	dir = 10;
@@ -40024,9 +39784,8 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "skl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -40507,7 +40266,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "tdB" = (
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6";
@@ -41124,7 +40883,7 @@
 "tZF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41308,9 +41067,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "unE" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41658,7 +41415,7 @@
 "uTv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41837,10 +41594,8 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "vjc" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -42332,7 +42087,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "vPY" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "vQo" = (
@@ -42355,7 +42110,7 @@
 "vTN" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -42405,10 +42160,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "wbK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Airlock";
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42527,10 +42281,9 @@
 /area/strata/ag/exterior/marsh/center)
 "wpb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
 	name = "Medical Airlock";
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -42598,10 +42351,9 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "wto" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 2;
 	name = "Security Barracks";
-	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
@@ -42980,7 +42732,6 @@
 "xlQ" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -43344,9 +43095,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	req_access = null;
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -43487,10 +43236,8 @@
 /area/strata/ag/exterior/landingzone_2)
 "xTh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -43868,8 +43615,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (2,1,1) = {"
 aaa
@@ -44063,8 +43810,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (3,1,1) = {"
 aaa
@@ -44258,8 +44005,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (4,1,1) = {"
 aaa
@@ -44453,8 +44200,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (5,1,1) = {"
 aaa
@@ -44648,8 +44395,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (6,1,1) = {"
 aaa
@@ -44843,8 +44590,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (7,1,1) = {"
 aaa
@@ -45038,8 +44785,8 @@ eOI
 eOI
 eOI
 eOI
-biM
-biM
+eOI
+eOI
 "}
 (8,1,1) = {"
 aaa
@@ -45233,8 +44980,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (9,1,1) = {"
 aaa
@@ -45428,8 +45175,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (10,1,1) = {"
 aaa
@@ -45623,8 +45370,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (11,1,1) = {"
 aaa
@@ -45818,8 +45565,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (12,1,1) = {"
 aaa
@@ -46013,8 +45760,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (13,1,1) = {"
 aaa
@@ -46208,8 +45955,8 @@ wdN
 wdN
 wdN
 wdN
-biM
-biM
+wdN
+wdN
 "}
 (14,1,1) = {"
 aaa
@@ -46403,8 +46150,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (15,1,1) = {"
 aaa
@@ -46598,8 +46345,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (16,1,1) = {"
 aaa
@@ -46793,8 +46540,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (17,1,1) = {"
 aaa
@@ -46988,8 +46735,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (18,1,1) = {"
 aaa
@@ -47183,8 +46930,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (19,1,1) = {"
 aaa
@@ -47293,7 +47040,7 @@ aVq
 aVq
 bgS
 bgS
-haU
+bgS
 bgS
 bgS
 bhO
@@ -47378,8 +47125,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (20,1,1) = {"
 aaa
@@ -47683,7 +47430,7 @@ aVq
 aVq
 bgS
 bgS
-xzR
+haU
 xzR
 bgS
 bhN
@@ -47768,8 +47515,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (22,1,1) = {"
 aaa
@@ -47963,8 +47710,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (23,1,1) = {"
 aaa
@@ -48158,8 +47905,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (24,1,1) = {"
 aaa
@@ -48353,8 +48100,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (25,1,1) = {"
 aaa
@@ -48548,8 +48295,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (26,1,1) = {"
 aaa
@@ -48743,8 +48490,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (27,1,1) = {"
 aaa
@@ -48938,8 +48685,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (28,1,1) = {"
 aaa
@@ -49133,8 +48880,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (29,1,1) = {"
 aaa
@@ -49328,8 +49075,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (30,1,1) = {"
 aaa
@@ -49523,8 +49270,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (31,1,1) = {"
 aaa
@@ -49718,8 +49465,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (32,1,1) = {"
 aaa
@@ -49913,8 +49660,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (33,1,1) = {"
 aaa
@@ -50108,8 +49855,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (34,1,1) = {"
 aaa
@@ -50303,8 +50050,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (35,1,1) = {"
 aaa
@@ -50498,8 +50245,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (36,1,1) = {"
 aaa
@@ -50693,8 +50440,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (37,1,1) = {"
 aaa
@@ -50888,8 +50635,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (38,1,1) = {"
 aaa
@@ -51083,8 +50830,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (39,1,1) = {"
 aaa
@@ -51278,8 +51025,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (40,1,1) = {"
 aaa
@@ -51473,8 +51220,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (41,1,1) = {"
 aaa
@@ -51668,8 +51415,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (42,1,1) = {"
 aaa
@@ -51863,8 +51610,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (43,1,1) = {"
 aaa
@@ -52058,8 +51805,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (44,1,1) = {"
 aaa
@@ -52253,8 +52000,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (45,1,1) = {"
 aaa
@@ -52448,8 +52195,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (46,1,1) = {"
 aaa
@@ -52643,8 +52390,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (47,1,1) = {"
 aaa
@@ -52838,8 +52585,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (48,1,1) = {"
 aaa
@@ -53033,8 +52780,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (49,1,1) = {"
 aaa
@@ -53228,8 +52975,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (50,1,1) = {"
 aaa
@@ -53423,8 +53170,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (51,1,1) = {"
 aaa
@@ -53618,8 +53365,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (52,1,1) = {"
 aaa
@@ -53813,8 +53560,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (53,1,1) = {"
 aaa
@@ -54008,8 +53755,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (54,1,1) = {"
 aaa
@@ -54203,8 +53950,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (55,1,1) = {"
 aaa
@@ -54398,8 +54145,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (56,1,1) = {"
 aaa
@@ -54593,8 +54340,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (57,1,1) = {"
 aaa
@@ -54686,7 +54433,7 @@ bkt
 cfR
 ctz
 ctS
-bFA
+oUS
 cfR
 bav
 aZP
@@ -54788,8 +54535,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (58,1,1) = {"
 aaa
@@ -54983,8 +54730,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (59,1,1) = {"
 aaa
@@ -55178,8 +54925,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (60,1,1) = {"
 aaa
@@ -55373,8 +55120,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (61,1,1) = {"
 aaa
@@ -55568,8 +55315,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (62,1,1) = {"
 aaa
@@ -55763,8 +55510,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (63,1,1) = {"
 aaa
@@ -55958,8 +55705,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (64,1,1) = {"
 aaa
@@ -56153,8 +55900,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (65,1,1) = {"
 aaa
@@ -56348,8 +56095,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (66,1,1) = {"
 aaa
@@ -56543,8 +56290,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (67,1,1) = {"
 aaa
@@ -56738,8 +56485,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (68,1,1) = {"
 aaa
@@ -56933,8 +56680,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (69,1,1) = {"
 aaa
@@ -57128,8 +56875,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (70,1,1) = {"
 aaa
@@ -57323,8 +57070,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (71,1,1) = {"
 aaa
@@ -57518,8 +57265,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (72,1,1) = {"
 aaa
@@ -57713,8 +57460,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (73,1,1) = {"
 aaa
@@ -57908,8 +57655,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (74,1,1) = {"
 aaa
@@ -58103,8 +57850,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (75,1,1) = {"
 aaa
@@ -58298,8 +58045,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (76,1,1) = {"
 aaa
@@ -58493,8 +58240,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (77,1,1) = {"
 aaa
@@ -58688,8 +58435,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (78,1,1) = {"
 aaa
@@ -58883,8 +58630,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (79,1,1) = {"
 aaa
@@ -59078,8 +58825,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (80,1,1) = {"
 aaa
@@ -59273,8 +59020,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (81,1,1) = {"
 aaa
@@ -59468,8 +59215,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (82,1,1) = {"
 aaa
@@ -59663,8 +59410,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (83,1,1) = {"
 aaa
@@ -59858,8 +59605,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (84,1,1) = {"
 aaa
@@ -60053,8 +59800,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (85,1,1) = {"
 aaa
@@ -60248,8 +59995,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (86,1,1) = {"
 aaa
@@ -60443,8 +60190,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (87,1,1) = {"
 aaa
@@ -60638,8 +60385,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (88,1,1) = {"
 aaa
@@ -60833,8 +60580,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (89,1,1) = {"
 aaa
@@ -61028,8 +60775,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (90,1,1) = {"
 aaa
@@ -61223,8 +60970,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (91,1,1) = {"
 aaa
@@ -61418,8 +61165,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (92,1,1) = {"
 aaa
@@ -61613,8 +61360,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (93,1,1) = {"
 aaa
@@ -61808,8 +61555,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (94,1,1) = {"
 aaa
@@ -62003,8 +61750,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (95,1,1) = {"
 aaa
@@ -62198,8 +61945,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (96,1,1) = {"
 aaa
@@ -62393,8 +62140,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (97,1,1) = {"
 aab
@@ -62588,8 +62335,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (98,1,1) = {"
 aab
@@ -62783,8 +62530,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (99,1,1) = {"
 aab
@@ -62978,8 +62725,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (100,1,1) = {"
 aab
@@ -63173,8 +62920,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (101,1,1) = {"
 aab
@@ -63368,8 +63115,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (102,1,1) = {"
 aab
@@ -63563,8 +63310,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (103,1,1) = {"
 aab
@@ -63675,7 +63422,7 @@ iPd
 lzT
 aqn
 vvR
-ant
+axu
 ybN
 bkU
 aGP
@@ -63758,8 +63505,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (104,1,1) = {"
 aab
@@ -63953,8 +63700,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (105,1,1) = {"
 aab
@@ -64148,8 +63895,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (106,1,1) = {"
 aab
@@ -64343,8 +64090,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (107,1,1) = {"
 aab
@@ -64538,8 +64285,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (108,1,1) = {"
 aab
@@ -64733,8 +64480,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (109,1,1) = {"
 aab
@@ -64928,8 +64675,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (110,1,1) = {"
 aab
@@ -65123,8 +64870,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (111,1,1) = {"
 aab
@@ -65318,8 +65065,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (112,1,1) = {"
 aab
@@ -65513,8 +65260,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (113,1,1) = {"
 aab
@@ -65708,8 +65455,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (114,1,1) = {"
 aab
@@ -65903,8 +65650,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (115,1,1) = {"
 aab
@@ -66098,8 +65845,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (116,1,1) = {"
 aab
@@ -66293,8 +66040,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (117,1,1) = {"
 aab
@@ -66488,8 +66235,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (118,1,1) = {"
 aab
@@ -66683,8 +66430,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (119,1,1) = {"
 aab
@@ -66878,8 +66625,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (120,1,1) = {"
 aab
@@ -67073,8 +66820,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (121,1,1) = {"
 aab
@@ -67268,8 +67015,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (122,1,1) = {"
 aab
@@ -67463,8 +67210,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (123,1,1) = {"
 aab
@@ -67658,8 +67405,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (124,1,1) = {"
 aab
@@ -67853,8 +67600,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (125,1,1) = {"
 aab
@@ -68048,8 +67795,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (126,1,1) = {"
 aab
@@ -68243,8 +67990,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (127,1,1) = {"
 aab
@@ -68305,7 +68052,7 @@ bXv
 gAm
 auH
 ijo
-axu
+cdZ
 cdZ
 aAz
 ccn
@@ -68438,8 +68185,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (128,1,1) = {"
 aab
@@ -68633,8 +68380,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (129,1,1) = {"
 aab
@@ -68828,8 +68575,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (130,1,1) = {"
 aab
@@ -69023,8 +68770,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (131,1,1) = {"
 aab
@@ -69218,8 +68965,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (132,1,1) = {"
 aab
@@ -69413,8 +69160,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (133,1,1) = {"
 aab
@@ -69608,8 +69355,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (134,1,1) = {"
 aab
@@ -69803,8 +69550,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (135,1,1) = {"
 aab
@@ -69998,8 +69745,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (136,1,1) = {"
 aab
@@ -70193,8 +69940,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (137,1,1) = {"
 aab
@@ -70388,8 +70135,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (138,1,1) = {"
 aab
@@ -70583,8 +70330,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (139,1,1) = {"
 aab
@@ -70778,8 +70525,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (140,1,1) = {"
 aab
@@ -70973,8 +70720,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (141,1,1) = {"
 aab
@@ -71168,8 +70915,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (142,1,1) = {"
 aab
@@ -71363,8 +71110,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (143,1,1) = {"
 aab
@@ -71558,8 +71305,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (144,1,1) = {"
 aab
@@ -71753,8 +71500,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (145,1,1) = {"
 aab
@@ -71947,9 +71694,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (146,1,1) = {"
 aab
@@ -72142,9 +71889,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (147,1,1) = {"
 aab
@@ -72337,9 +72084,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (148,1,1) = {"
 aab
@@ -72532,9 +72279,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (149,1,1) = {"
 aab
@@ -72727,9 +72474,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (150,1,1) = {"
 aab
@@ -72922,9 +72669,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (151,1,1) = {"
 aab
@@ -73117,9 +72864,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (152,1,1) = {"
 aab
@@ -73312,9 +73059,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (153,1,1) = {"
 aab
@@ -73507,9 +73254,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (154,1,1) = {"
 aab
@@ -73702,9 +73449,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (155,1,1) = {"
 aab
@@ -73897,9 +73644,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (156,1,1) = {"
 aab
@@ -74092,9 +73839,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (157,1,1) = {"
 aab
@@ -74287,9 +74034,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (158,1,1) = {"
 aab
@@ -74482,9 +74229,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (159,1,1) = {"
 aab
@@ -74677,9 +74424,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (160,1,1) = {"
 aab
@@ -74872,9 +74619,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (161,1,1) = {"
 aab
@@ -75067,9 +74814,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (162,1,1) = {"
 aab
@@ -75262,9 +75009,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (163,1,1) = {"
 aab
@@ -75457,9 +75204,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (164,1,1) = {"
 aab
@@ -75652,9 +75399,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (165,1,1) = {"
 aab
@@ -75847,9 +75594,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (166,1,1) = {"
 aab
@@ -76042,9 +75789,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (167,1,1) = {"
 aab
@@ -76237,9 +75984,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (168,1,1) = {"
 aab
@@ -76432,9 +76179,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (169,1,1) = {"
 aab
@@ -76627,9 +76374,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (170,1,1) = {"
 aab
@@ -76822,9 +76569,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (171,1,1) = {"
 aab
@@ -77017,9 +76764,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (172,1,1) = {"
 aab
@@ -77212,9 +76959,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (173,1,1) = {"
 aab
@@ -77407,9 +77154,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (174,1,1) = {"
 aab
@@ -77602,9 +77349,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (175,1,1) = {"
 aab
@@ -77797,9 +77544,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (176,1,1) = {"
 aab
@@ -77992,9 +77739,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (177,1,1) = {"
 aab
@@ -78187,9 +77934,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (178,1,1) = {"
 aab
@@ -78382,9 +78129,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (179,1,1) = {"
 aab
@@ -78577,9 +78324,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (180,1,1) = {"
 aab
@@ -78772,9 +78519,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (181,1,1) = {"
 aab
@@ -78967,9 +78714,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (182,1,1) = {"
 aab
@@ -79162,9 +78909,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (183,1,1) = {"
 aab
@@ -79357,9 +79104,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (184,1,1) = {"
 aab
@@ -79552,9 +79299,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (185,1,1) = {"
 aab
@@ -79747,9 +79494,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (186,1,1) = {"
 aab
@@ -79942,9 +79689,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (187,1,1) = {"
 aab
@@ -80137,9 +79884,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (188,1,1) = {"
 aab
@@ -80332,9 +80079,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (189,1,1) = {"
 aab
@@ -80527,9 +80274,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (190,1,1) = {"
 aab
@@ -80722,9 +80469,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (191,1,1) = {"
 aab
@@ -80917,9 +80664,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (192,1,1) = {"
 aab
@@ -81112,9 +80859,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (193,1,1) = {"
 aab
@@ -81307,9 +81054,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (194,1,1) = {"
 aab
@@ -81502,9 +81249,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (195,1,1) = {"
 aab
@@ -81697,9 +81444,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (196,1,1) = {"
 aab
@@ -81892,9 +81639,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (197,1,1) = {"
 aab
@@ -82087,9 +81834,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (198,1,1) = {"
 aab
@@ -82282,9 +82029,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (199,1,1) = {"
 aab
@@ -82477,9 +82224,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (200,1,1) = {"
 aab
@@ -82672,9 +82419,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (201,1,1) = {"
 aab
@@ -82867,9 +82614,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (202,1,1) = {"
 aab
@@ -83062,9 +82809,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (203,1,1) = {"
 aab
@@ -83257,9 +83004,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (204,1,1) = {"
 aab
@@ -83452,9 +83199,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (205,1,1) = {"
 aab
@@ -83647,9 +83394,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (206,1,1) = {"
 aab
@@ -83842,9 +83589,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (207,1,1) = {"
 aab
@@ -84037,9 +83784,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (208,1,1) = {"
 aab
@@ -84232,9 +83979,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (209,1,1) = {"
 aab
@@ -84427,9 +84174,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (210,1,1) = {"
 aab
@@ -84622,9 +84369,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (211,1,1) = {"
 aab
@@ -84817,9 +84564,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (212,1,1) = {"
 aab
@@ -85012,9 +84759,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (213,1,1) = {"
 aab
@@ -85207,9 +84954,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (214,1,1) = {"
 aab
@@ -85402,9 +85149,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (215,1,1) = {"
 aab
@@ -85597,9 +85344,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (216,1,1) = {"
 aab
@@ -85792,9 +85539,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (217,1,1) = {"
 aab
@@ -85987,9 +85734,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (218,1,1) = {"
 aab
@@ -86182,9 +85929,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (219,1,1) = {"
 aab
@@ -86377,9 +86124,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (220,1,1) = {"
 aab
@@ -86572,9 +86319,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (221,1,1) = {"
 aab
@@ -86767,9 +86514,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (222,1,1) = {"
 aab
@@ -86962,9 +86709,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (223,1,1) = {"
 aab
@@ -87157,9 +86904,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (224,1,1) = {"
 aab
@@ -87352,9 +87099,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (225,1,1) = {"
 aab
@@ -87547,9 +87294,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (226,1,1) = {"
 aab
@@ -87742,9 +87489,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (227,1,1) = {"
 aab
@@ -87937,9 +87684,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (228,1,1) = {"
 aab
@@ -88132,9 +87879,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (229,1,1) = {"
 aab
@@ -88327,9 +88074,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (230,1,1) = {"
 aab
@@ -88522,9 +88269,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (231,1,1) = {"
 aab
@@ -88717,9 +88464,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (232,1,1) = {"
 aab
@@ -88912,9 +88659,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (233,1,1) = {"
 aab
@@ -89107,9 +88854,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (234,1,1) = {"
 aab
@@ -89302,9 +89049,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (235,1,1) = {"
 aab
@@ -89497,9 +89244,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (236,1,1) = {"
 aab
@@ -89692,9 +89439,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (237,1,1) = {"
 aab
@@ -89887,9 +89634,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (238,1,1) = {"
 aab
@@ -90082,9 +89829,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (239,1,1) = {"
 aab
@@ -90277,9 +90024,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (240,1,1) = {"
 aab
@@ -90472,9 +90219,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (241,1,1) = {"
 aab
@@ -90667,9 +90414,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (242,1,1) = {"
 aab
@@ -90862,9 +90609,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (243,1,1) = {"
 aab
@@ -91057,9 +90804,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (244,1,1) = {"
 aab
@@ -91252,9 +90999,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (245,1,1) = {"
 aab
@@ -91447,9 +91194,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (246,1,1) = {"
 aab
@@ -91642,9 +91389,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (247,1,1) = {"
 aab
@@ -91837,9 +91584,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (248,1,1) = {"
 aab
@@ -92032,9 +91779,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (249,1,1) = {"
 aab
@@ -92227,9 +91974,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (250,1,1) = {"
 aab
@@ -92422,9 +92169,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (251,1,1) = {"
 aab
@@ -92617,9 +92364,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (252,1,1) = {"
 aab
@@ -92812,9 +92559,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (253,1,1) = {"
 aab
@@ -93007,9 +92754,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (254,1,1) = {"
 aab
@@ -93202,9 +92949,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (255,1,1) = {"
 aab
@@ -93397,9 +93144,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (256,1,1) = {"
 aab
@@ -93593,6 +93340,6 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}

@@ -3,7 +3,7 @@
 /datum/preferences/var/list/traits
 /// State var for preferences to track trait points
 /// Change this value to set the amount of trait points you start with
-/datum/preferences/var/trait_points = 1
+/datum/preferences/var/trait_points = 2
 /// State var to check if traits have been read in to modify
 /// trait points
 /datum/preferences/var/read_traits = FALSE
@@ -42,6 +42,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 	var/datum/character_trait_group/trait_group = /datum/character_trait_group
 	/// The point cost for the preferences menu
 	var/cost = 0
+	/// Refreshes the character creation menu when picked
+	var/refresh_choices = FALSE
+	var/refresh_mannequin = FALSE
 
 /datum/character_trait/New()
 	trait_group = GLOB.character_trait_groups[trait_group]
@@ -89,7 +92,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 	LAZYREMOVE(target.traits, type)
 
 /// Put the actual changes made to the human mob in this proc
-/datum/character_trait/proc/apply_trait(mob/living/carbon/human/target)
+/datum/character_trait/proc/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	SHOULD_CALL_PARENT(TRUE)
 
 	LAZYADD(target.traits, src)

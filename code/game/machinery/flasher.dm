@@ -11,25 +11,25 @@
 	var/last_flash = 0 //Don't want it getting spammed like regular flashes
 	var/strength = 10 //How knocked down targets are when flashed.
 	var/base_state = "mflash"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
 	strength = 8
-	anchored = 0
+	anchored = FALSE
 	base_state = "pflash"
-	density = 1
+	density = TRUE
 
 /obj/structure/machinery/flasher/power_change()
 	..()
 	if ( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
-//		src.sd_SetLuminosity(2)
+// src.sd_SetLuminosity(2)
 	else
 		icon_state = "[base_state]1-p"
-//		src.sd_SetLuminosity(0)
+// src.sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
@@ -69,16 +69,16 @@
 			if(H.get_eye_protection() > 0)
 				continue
 
-		if (istype(O, /mob/living/carbon/Xenomorph))//So aliens don't get flashed (they have no external eyes)/N
+		if (istype(O, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.KnockDown(strength)
+		O.apply_effect(strength, WEAKEN)
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 			if (E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
 				H.flash_eyes()
-				E.damage += rand(1, 5)
+				E.take_damage(rand(1, 5))
 		else
 			O.flash_eyes()
 
@@ -105,11 +105,11 @@
 		src.anchored = !src.anchored
 
 		if (!src.anchored)
-			user.show_message(text(SPAN_DANGER("[src] can now be moved.")))
+			user.show_message(text(SPAN_DANGER("[src] can now be moved.")), SHOW_MESSAGE_VISIBLE)
 			src.overlays.Cut()
 
 		else if (src.anchored)
-			user.show_message(text(SPAN_DANGER("[src] is now secured.")))
+			user.show_message(text(SPAN_DANGER("[src] is now secured.")), SHOW_MESSAGE_VISIBLE)
 			src.overlays += "[base_state]-s"
 
 /obj/structure/machinery/flasher_button/attack_remote(mob/user as mob)
@@ -136,7 +136,7 @@
 
 	for(var/obj/structure/machinery/flasher/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/flasher.proc/flash)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 
 	sleep(50)
 

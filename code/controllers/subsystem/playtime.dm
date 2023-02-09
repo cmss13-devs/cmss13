@@ -19,18 +19,31 @@ SUBSYSTEM_DEF(playtime)
 		var/mob/M = C.mob
 		var/datum/entity/player/P = C.player_data
 
-		if(!M || !M.job || M.stat == DEAD || M.statistic_exempt || !P || !P.playtime_loaded)
+		var/effective_job
+
+		// skip if player invalid
+		if(!M || !P || !P.playtime_loaded)
+			effective_job = null
+		// assign as observer if ghost or dead
+		else if(isobserver(M) || ((M.stat == DEAD) && isliving(M)))
+			effective_job = JOB_OBSERVER
+		// assign the mob job if it's applicable
+		else if(M.job && M.stat != DEAD && !M.statistic_exempt)
+			effective_job = M.job
+		// else, invalid job or statistic exempt
+
+		if(!effective_job)
 			if(MC_TICK_CHECK)
 				return
 			continue
 
-		var/datum/entity/player_time/PTime = LAZYACCESS(P.playtimes, M.job)
+		var/datum/entity/player_time/PTime = LAZYACCESS(P.playtimes, effective_job)
 
 		if(!PTime)
 			PTime = DB_ENTITY(/datum/entity/player_time)
 			PTime.player_id = P.id
-			PTime.role_id = M.job
-			LAZYSET(P.playtimes, M.job, PTime)
+			PTime.role_id = effective_job
+			LAZYSET(P.playtimes, effective_job, PTime)
 
 		PTime.total_minutes++
 		PTime.save()

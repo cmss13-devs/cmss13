@@ -1,22 +1,22 @@
 
-#define QUEEN_DEATH_COUNTDOWN 			 10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
+#define QUEEN_DEATH_COUNTDOWN  10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
 
-#define MODE_INFESTATION_X_MAJOR		"Xenomorph Major Victory"
-#define MODE_INFESTATION_M_MAJOR		"Marine Major Victory"
-#define MODE_INFESTATION_X_MINOR		"Xenomorph Minor Victory"
-#define MODE_INFESTATION_M_MINOR		"Marine Minor Victory"
-#define MODE_INFESTATION_DRAW_DEATH		"DRAW: Mutual Annihilation"
+#define MODE_INFESTATION_X_MAJOR "Xenomorph Major Victory"
+#define MODE_INFESTATION_M_MAJOR "Marine Major Victory"
+#define MODE_INFESTATION_X_MINOR "Xenomorph Minor Victory"
+#define MODE_INFESTATION_M_MINOR "Marine Minor Victory"
+#define MODE_INFESTATION_DRAW_DEATH "DRAW: Mutual Annihilation"
 
-#define MODE_INFECTION_ZOMBIE_WIN		"Major Zombie Victory"
+#define MODE_INFECTION_ZOMBIE_WIN "Major Zombie Victory"
 
-#define MODE_BATTLEFIELD_W_MAJOR		"Wey-Yu PMC Major Success"
-#define MODE_BATTLEFIELD_M_MAJOR		"Marine Major Success"
-#define MODE_BATTLEFIELD_W_MINOR		"Wey-Yu PMC Minor Success"
-#define MODE_BATTLEFIELD_M_MINOR		"Marine Minor Success"
+#define MODE_BATTLEFIELD_W_MAJOR "Wey-Yu PMC Major Success"
+#define MODE_BATTLEFIELD_M_MAJOR "Marine Major Success"
+#define MODE_BATTLEFIELD_W_MINOR "Wey-Yu PMC Minor Success"
+#define MODE_BATTLEFIELD_M_MINOR "Marine Minor Success"
 #define MODE_BATTLEFIELD_DRAW_STALEMATE "DRAW: Stalemate"
-#define MODE_BATTLEFIELD_DRAW_DEATH		"DRAW: My Friends Are Dead"
+#define MODE_BATTLEFIELD_DRAW_DEATH "DRAW: My Friends Are Dead"
 
-#define MODE_GENERIC_DRAW_NUKE			"DRAW: Nuclear Explosion"
+#define MODE_GENERIC_DRAW_NUKE "DRAW: Nuclear Explosion"
 
 /*
 Like with cm_initialize.dm, these procs exist to quickly populate classic CM game modes.
@@ -39,6 +39,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
+	fallen_list += fallen_list_cross
 	if(fallen_list.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
@@ -67,7 +68,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			M = X.current
 			if(!M || !M.loc)
 				M = X.original
-			if(M && M.loc && isXenoQueen(M) && M.stat != DEAD) // Dead queens handled separately
+			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
 				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
@@ -103,12 +104,19 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
-/datum/game_mode/proc/declare_random_fact()
+/datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	var/fact_type = pick(subtypesof(/datum/random_fact))
-	var/datum/random_fact/fact = new fact_type()
-	fact.announce()
+	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
+	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
+	var/list/fact_types = subtypesof(/datum/random_fact)
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
+		fact_human.announce()
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
+		fact_xeno.announce()
+	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\
 
@@ -118,7 +126,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 //Spawns a larva in an appropriate location
 /datum/game_mode/proc/spawn_latejoin_larva()
-	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(get_turf(pick(GLOB.xeno_spawns)))
+	var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(get_turf(pick(GLOB.xeno_spawns)))
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
@@ -136,7 +144,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
-/datum/game_mode/proc/open_podlocks(var/podlock_id)
+/datum/game_mode/proc/open_podlocks(podlock_id)
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
@@ -150,7 +158,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(var/obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
 	if(active_lz)
 		return
 	active_lz = console
@@ -160,11 +168,11 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	marine_announcement(input, name)
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
-/datum/game_mode/proc/announce_bioscans(var/delta = 2)
-	var/numHostsPlanet	= 0
-	var/numHostsShip	= 0
-	var/numXenosPlanet	= 0
-	var/numXenosShip	= 0
+/datum/game_mode/proc/announce_bioscans(delta = 2)
+	var/numHostsPlanet = 0
+	var/numHostsShip = 0
+	var/numXenosPlanet = 0
+	var/numXenosShip = 0
 	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one
@@ -210,7 +218,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		if(H.mob_flags & NOBIOSCAN)
 			continue
 		var/atom/where = H
-		if(isSpeciesHuman(H))
+		if(isspecieshuman(H))
 			if (where.z == 0 && H.loc)
 				where = H.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
@@ -247,7 +255,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
 		for(var/mob/M in GLOB.player_list)
 			//Announce the numbers to Yautja, they have good scanners
-			if (isYautja(M))
+			if (isyautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
 				to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
 
@@ -310,14 +318,14 @@ Only checks living mobs with a client attached.
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			if(ishuman(M) && !isYautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
+			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
 				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
 				var/area/A = get_area(M)
-				if(isXeno(M))
-					var/mob/living/carbon/Xenomorph/xeno = M
+				if(isxeno(M))
+					var/mob/living/carbon/xenomorph/xeno = M
 					if(!xeno.counts_for_roundend)
 						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]

@@ -65,6 +65,8 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
+	minimap_icon = "private"
+
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -98,6 +100,8 @@
 	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
+
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/sg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -155,6 +159,8 @@
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
+	minimap_icon = "vc"
+
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -182,7 +188,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
@@ -215,6 +221,8 @@
 	skills = /datum/skills/intel
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
+
+	minimap_icon = "io"
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -269,6 +277,8 @@
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
+	minimap_icon = "spec"
+
 /datum/equipment_preset/uscm/spec/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -300,8 +310,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/specialist(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
@@ -322,6 +332,8 @@
 	paygrade = "ME3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
+
+	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -353,6 +365,8 @@
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
+	minimap_icon = "rto"
+
 /datum/equipment_preset/uscm/rto/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -380,6 +394,8 @@
 	paygrade = "ME3"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
+
+	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
@@ -412,6 +428,8 @@
 	minimum_age = 27
 	skills = /datum/skills/SL
 
+	minimap_icon = "leader"
+
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -441,6 +459,8 @@
 	paygrade = "ME2"
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
+
+	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -486,6 +506,8 @@
 	minimum_age = 27
 	skills = /datum/skills/SL
 
+	minimap_icon = "leader"
+
 /datum/equipment_preset/uscm/leader_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
@@ -520,6 +542,8 @@
 	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
+
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/smartgunner_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
@@ -556,6 +580,8 @@
 	paygrade = "ME3"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
+
+	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
@@ -600,6 +626,8 @@
 	paygrade = "ME3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
+
+	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -650,6 +678,8 @@
 	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
+
+	minimap_icon = "spec"
 
 /datum/equipment_preset/uscm/specialist_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -716,6 +746,8 @@
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
+	minimap_icon = "rto"
+
 /datum/equipment_preset/uscm/rto_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	var/obj/item/clothing/under/marine/rto/U = new(H)
@@ -738,18 +770,20 @@
 	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
-//############ MARSOC #############
+//############ Marine Raiders #############
 //Operator
 /datum/equipment_preset/uscm/marsoc
-	name = "MARSOC Operator"
+	name = "Marine Raider"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "MARSOC Operator"
-	rank = JOB_MARSOC
+	assignment = "Marine Raider"
+	rank = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
-	auto_squad_name = SQUAD_MARSOC
+	auto_squad_name = SQUAD_SOF
 	paygrade = "ME6"
+
+	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
@@ -758,19 +792,19 @@
 /datum/equipment_preset/uscm/marsoc/load_gear(mob/living/carbon/human/H)
 	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/super, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marsoc, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/marsoc, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/marsoc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/marsoc, WEAR_IN_HELMET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_HELMET)
 	//uniform
@@ -781,10 +815,10 @@
 	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/marsoc/armor = new()
+	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd/heap, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
@@ -801,11 +835,11 @@
 			return "ME7"
 	return paygrade
 
-//Codenamed Operator
+//Covert Raiders
 /datum/equipment_preset/uscm/marsoc/covert
-	name = "MARSOC Operator (Covert)"
+	name = "Marine Raiders (Covert)"
 	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
 	H.age = rand(20,30)
@@ -814,12 +848,14 @@
 
 //Team Leader
 /datum/equipment_preset/uscm/marsoc/sl
-	name = "MARSOC Team Leader"
-	assignment = JOB_MARSOC_SL
-	rank = JOB_MARSOC_SL
+	name = "Marine Raider Team Leader"
+	assignment = JOB_MARINE_RAIDER_SL
+	rank = JOB_MARINE_RAIDER_SL
 	role_comm_title = "TL."
 	paygrade = "MO1"
 	skills = /datum/skills/commando/deathsquad/leader
+
+	minimap_icon = "leader"
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -829,9 +865,9 @@
 
 //Codenamed Team Leader
 /datum/equipment_preset/uscm/marsoc/sl/covert
-	name = "MARSOC Team Leader (Covert)"
+	name = "Marine Raider Team Leader (Covert)"
 	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
 	H.age = rand(20,30)
@@ -839,9 +875,9 @@
 	return "O"
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
-	name = "MARSOC Officer"
-	assignment = JOB_MARSOC_CMD
-	rank = JOB_MARSOC_CMD
+	name = "Marine Raider Officer"
+	assignment = JOB_MARINE_RAIDER_CMD
+	rank = JOB_MARINE_RAIDER_CMD
 	role_comm_title = "CMD."
 	paygrade = "MO3"
 	skills = /datum/skills/commando/deathsquad/officer

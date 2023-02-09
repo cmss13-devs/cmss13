@@ -11,11 +11,11 @@
 	var/dirty = 0 // Does it need cleaning?
 	var/gibtime = 40 // Time from starting until meat appears
 	var/mob/living/occupant // Mob who has been put inside
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 500
 
-/obj/structure/machinery/gibber/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/gibber/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -39,7 +39,7 @@
 			log_misc("a [src] didn't find an input plate.")
 			return
 
-/obj/structure/machinery/gibber/autogibber/Collided(var/atom/A)
+/obj/structure/machinery/gibber/autogibber/Collided(atom/A)
 	if(!input_plate) return
 
 	if(ismob(A))
@@ -99,7 +99,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 	var/mob/living/M = G.grabbed_thing
-	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/Xenomorph))
+	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
@@ -154,8 +154,8 @@
 	var/totalslabs = 2
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
-	if(istype(occupant, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = occupant
+	if(istype(occupant, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
 		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
@@ -188,7 +188,7 @@
 
 	QDEL_NULL(occupant)
 
-	addtimer(CALLBACK(src, .proc/create_gibs, totalslabs, allmeat), gibtime)
+	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)

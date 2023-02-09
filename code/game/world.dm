@@ -10,22 +10,28 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	turf = /turf/open/space/basic
 	area = /area/space
 	view = "15x15"
-	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
+	cache_lifespan = 0 //stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
 
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		call(debug_server, "auxtools_init")()
+		LIBCALL(debug_server, "auxtools_init")()
 		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
+
+#ifdef BYOND_TRACY
+	#warn BYOND_TRACY is enabled
+	prof_init()
+#endif
 
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/year_string = time2text(world.realtime, "YYYY")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+	tgui_diary = file("data/logs/[date_string]_tgui.log")
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
@@ -45,10 +51,15 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
+	#ifdef UNIT_TESTS
+	GLOB.test_log = "data/logs/tests.log"
+	#endif
+
 	load_admins()
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()
+	load_tm_message()
 	load_mode()
 	loadShuttleInfoDatums()
 	populate_gear_list()
@@ -57,10 +68,13 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
+	#ifdef UNIT_TESTS
+	running_tests = TRUE
+	#endif
 	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
 	sleep_offline = (!running_tests && !testing_locally)
 
@@ -68,44 +82,33 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
-	if(!EvacuationAuthority)		EvacuationAuthority = new
+	if(!EvacuationAuthority) EvacuationAuthority = new
+
+	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
+
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
+
 	update_status()
 
 	//Scramble the coords obsfucator
 	obfs_x = rand(-500, 500) //A number between -100 and 100
 	obfs_y = rand(-500, 500) //A number between -100 and 100
 
-	spawn(3000)		//so we aren't adding to the round-start lag
+	spawn(3000) //so we aren't adding to the round-start lag
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
-
-	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
-	if(running_tests)
-		test_executor.host_tests()
 
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
 		master_mode = "extended"
-
-		// If a test environment was specified, initialize it
-		if(fexists("test_environment.txt"))
-			var/test_environment = file2text("test_environment.txt")
-
-			var/env_type = null
-			for(var/type in subtypesof(/datum/test_environment))
-				if("[type]" == test_environment)
-					env_type = type
-					break
-
-			if(env_type)
-				var/datum/test_environment/env = new env_type()
-				env.initialize()
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
@@ -151,7 +154,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		for(var/client/C in GLOB.clients)
 			if(C.admin_holder)
 				if(C.admin_holder.fakekey)
-					continue	//so stealthmins aren't revealed by the hub
+					continue //so stealthmins aren't revealed by the hub
 				admins++
 			s["player[n]"] = C.key
 			n++
@@ -193,7 +196,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
 		return dat
 
-/world/Reboot(var/reason)
+/world/Reboot(reason)
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -202,8 +205,13 @@ var/world_topic_spam_protect_time = world.timeofday
 			continue
 		var/client/C = thing
 		C?.tgui_panel?.send_roundrestart()
-		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
+
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 	if(TgsAvailable())
 		send_tgs_restart()
@@ -240,13 +248,18 @@ var/world_topic_spam_protect_time = world.timeofday
 			master_mode = Lines[1]
 			log_misc("Saved mode is '[master_mode]'")
 
-/world/proc/save_mode(var/the_mode)
+/world/proc/save_mode(the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
 
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
+
+/world/proc/load_tm_message()
+	var/datum/getrev/revdata = GLOB.revdata
+	if(revdata.testmerge.len)
+		current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
@@ -269,16 +282,16 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 // /hook/startup/proc/connectDB()
-// 	if(!setup_database_connection())
-// 		world.log << "Your server failed to establish a connection with the feedback database."
-// 	else
-// 		world.log << "Feedback database connection established."
-// 	return 1
+// if(!setup_database_connection())
+// world.log << "Your server failed to establish a connection with the feedback database."
+// else
+// world.log << "Feedback database connection established."
+// return 1
 
 var/datum/BSQL_Connection/connection
-proc/setup_database_connection()
+/proc/setup_database_connection()
 
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF) //If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
 
@@ -291,7 +304,7 @@ proc/setup_database_connection()
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
-/proc/give_image_to_client(var/obj/O, icon_text)
+/proc/give_image_to_client(obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)
@@ -323,3 +336,53 @@ proc/setup_database_connection()
 /world/proc/incrementMaxZ()
 	maxz++
 	//SSmobs.MaxZChanged()
+
+/** For initializing and starting byond-tracy when BYOND_TRACY is defined
+ * byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
+*/
+/world/proc/prof_init()
+	var/lib
+
+	switch(world.system_type)
+		if(MS_WINDOWS)
+			lib = "prof.dll"
+		if(UNIX)
+			lib = "libprof.so"
+		else
+			CRASH("unsupported platform")
+
+	var/init = LIBCALL(lib, "init")()
+	if("0" != init)
+		CRASH("[lib] init error: [init]")
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.request_start()
+	CONFIG_SET(number/round_end_countdown, 0)
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests))
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
+
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "data/logs/ci/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down

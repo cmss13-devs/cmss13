@@ -19,12 +19,12 @@
 	response_help  = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm   = "stamps on the"
-	density = 0
+	density = FALSE
 	var/body_color //brown, gray and white, leave blank for random
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require atleast 16kPA oxygen
-	minbodytemp = 223		//Below -50 Degrees Celcius
-	maxbodytemp = 323	//Above 50 Degrees Celcius
+	minbodytemp = 223 //Below -50 Degrees Celcius
+	maxbodytemp = 323 //Above 50 Degrees Celcius
 	universal_speak = 0
 	universal_understand = 1
 	holder_type = /obj/item/holder/mouse
@@ -36,19 +36,19 @@
 			M << 'sound/effects/mousesqueek.ogg'
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		icon_state = "mouse_[body_color]_sleep"
 		wander = 0
 		speak_chance = 0
 		//snuffles
 	else if(stat == UNCONSCIOUS)
 		if(ckey || prob(1))
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "mouse_[body_color]"
 			wander = 1
 			canmove = 1
 		else if(prob(5))
-			INVOKE_ASYNC(src, .proc/emote, "snuffles")
+			INVOKE_ASYNC(src, PROC_REF(emote), "snuffles")
 
 /mob/living/simple_animal/mouse/New()
 	..()
@@ -67,28 +67,28 @@
 	if(!desc)
 		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_animal/mouse/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/mouse/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = ABOVE_LYING_MOB_LAYER
 	if(client)
 		client.time_died_as_mouse = world.time
 
-/mob/living/simple_animal/mouse/start_pulling(var/atom/movable/AM)//Prevents mouse from pulling things
+/mob/living/simple_animal/mouse/start_pulling(atom/movable/AM)//Prevents mouse from pulling things
 	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
 	return
 
 /mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
 	if( ishuman(AM) )
 		if(!ckey && stat == UNCONSCIOUS)
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "mouse_[body_color]"
 			wander = 1
 		else if(!stat && prob(5))
@@ -115,7 +115,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_animal/mouse/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()
@@ -128,14 +128,17 @@
 	body_color = "white"
 	icon_state = "mouse_white"
 	desc = "It's a small laboratory mouse."
+	holder_type = /obj/item/holder/mouse/white
 
 /mob/living/simple_animal/mouse/gray
 	body_color = "gray"
 	icon_state = "mouse_gray"
+	holder_type = /obj/item/holder/mouse/gray
 
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
+	holder_type = /obj/item/holder/mouse/brown
 
 /mob/living/simple_animal/mouse/white/Doc
 	name = "Doc"
@@ -144,7 +147,7 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stamps on"
-	holder_type = /obj/item/holder/mouse/Doc
+	holder_type = /obj/item/holder/mouse/white/Doc
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
@@ -153,3 +156,4 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
+	holder_type = /obj/item/holder/mouse/brown/Tom

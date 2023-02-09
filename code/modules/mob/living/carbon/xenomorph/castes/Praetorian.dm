@@ -28,7 +28,9 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
-/mob/living/carbon/Xenomorph/Praetorian
+	minimap_icon = "praetorian"
+
+/mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
 	desc = "A huge, looming beast of an alien."
@@ -54,16 +56,12 @@
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 	)
 
+	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
 	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
-
-/mob/living/carbon/Xenomorph/Praetorian/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_praetorian))
-	. = ..()
-
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
-	 ///reward for hitting shots instead of spamming acid ball
+	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)

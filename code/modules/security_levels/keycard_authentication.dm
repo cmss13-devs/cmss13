@@ -16,8 +16,8 @@
 	var/channel = "almayer" // Which channel are we on? Needs to be set for these to properly work.
 	//1 = select event
 	//2 = authenticate
-	anchored = 1.0
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
@@ -111,7 +111,7 @@
 	for(var/obj/structure/machinery/keycard_auth/KA in machines)
 		if(KA == src || KA.channel != channel) continue
 		KA.reset()
-		INVOKE_ASYNC(KA, /obj/structure/machinery/keycard_auth.proc/receive_request, src)
+		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
 
 	sleep(confirm_delay)
 	if(confirmed)
@@ -121,7 +121,7 @@
 		message_staff("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/structure/machinery/keycard_auth/proc/receive_request(var/obj/structure/machinery/keycard_auth/source)
+/obj/structure/machinery/keycard_auth/proc/receive_request(obj/structure/machinery/keycard_auth/source)
 	if(inoperable())
 		return
 	event_source = source
@@ -213,7 +213,7 @@ var/global/maint_all_access = 1
 		if(KA == src || KA.channel != channel)
 			continue
 		KA.reset()
-		INVOKE_ASYNC(KA, .proc/receive_request, src)
+		INVOKE_ASYNC(KA, PROC_REF(receive_request), src)
 
 	sleep(confirm_delay)
 	if(confirmed)
@@ -247,11 +247,11 @@ var/global/maint_all_access = 1
 		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	return
 
-/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(var/timeleft = 0)
+/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)
 	if(!timeleft)
 		for(var/obj/structure/machinery/door/poddoor/M in machines)
 			if(M.id == podlock_id && M.density)
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		return
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -273,12 +273,12 @@ var/global/maint_all_access = 1
 	var/title = announce_title
 	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
 	for(var/mob/M in GLOB.player_list)
-		if(isXeno(M))
+		if(isxeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
 	var/new_timeleft = timeleft - next_interval
-	addtimer(CALLBACK(src, /obj/structure/machinery/keycard_auth/lockdown.proc/timed_countdown, new_timeleft), next_interval)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth/lockdown, timed_countdown), new_timeleft), next_interval)
 
 /obj/structure/machinery/keycard_auth/lockdown/trigger_event()
 	set waitfor = 0

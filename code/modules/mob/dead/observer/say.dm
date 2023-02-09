@@ -1,10 +1,8 @@
-/mob/dead/observer/say(var/message)
+/mob/dead/observer/say(message)
 	message = strip_html(message)
 
 	if (!message)
 		return
-
-	log_say("Ghost/[src.key] : [message]")
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
@@ -19,7 +17,7 @@
 
 
 
-/mob/dead/observer/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/dead/observer/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	if(!client)
 		return
 
@@ -50,7 +48,7 @@
 	if(speaker_name != speaker.real_name && speaker.real_name)
 		speaker_name = "[speaker.real_name] ([speaker_name])"
 	track = "(<a href='byond://?src=\ref[src];track=\ref[speaker]'>F</a>) "
-	if(istype(speaker, /mob/living/carbon/Xenomorph/Queen))
+	if(istype(speaker, /mob/living/carbon/xenomorph/queen))
 		var/mob/hologram/queen/queen_eye = speaker?.client?.eye
 		if(istype(queen_eye))
 			track += "(<a href='byond://?src=\ref[src];track=\ref[queen_eye]'>E</a>) "
@@ -61,30 +59,3 @@
 	if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 		var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 		playsound_client(client, speech_sound, source, sound_vol)
-
-
-
-
-
-
-
-/mob/dead/observer/emote(var/act, var/type, var/message)
-	message = strip_html(message)
-
-	if(!message)
-		return
-
-	if(act != "me")
-		return
-
-	log_emote("Ghost/[src.key] : [message]")
-
-	if(src.client)
-		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, SPAN_DANGER("You cannot emote in deadchat (muted)."))
-			return
-
-		if(src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
-			return
-
-	. = src.emote_dead(message)

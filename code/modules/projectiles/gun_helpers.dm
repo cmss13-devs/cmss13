@@ -9,23 +9,24 @@ ERROR CODE I2: null ammo while load_into_chamber() <------------- Somehow the am
 ERROR CODE R1: negative current_rounds on examine. <------------ Applies to ammunition only. Ammunition should never have negative rounds after spawn.
 
 DEFINES in setup.dm, referenced here.
-#define GUN_CAN_POINTBLANK		1
-#define GUN_TRIGGER_SAFETY		2
-#define GUN_UNUSUAL_DESIGN		4
-#define GUN_SILENCED			8
-#define GUN_AUTOMATIC			16
-#define GUN_INTERNAL_MAG		32
-#define GUN_AUTO_EJECTOR		64
-#define GUN_AMMO_COUNTER		128
-#define GUN_BURST_ON			256
-#define GUN_BURST_FIRING		512
-#define GUN_FLASHLIGHT_ON		1024
-#define GUN_WY_RESTRICTED		2048
-#define GUN_SPECIALIST			4096
+#define GUN_CAN_POINTBLANK 1
+#define GUN_TRIGGER_SAFETY 2
+#define GUN_UNUSUAL_DESIGN 4
+#define GUN_SILENCED 8
+#define GUN_AUTOMATIC 16
+#define GUN_INTERNAL_MAG 32
+#define GUN_AUTO_EJECTOR 64
+#define GUN_AMMO_COUNTER 128
+#define GUN_BURST_ON 256
+#define GUN_BURST_FIRING 512
+#define GUN_FLASHLIGHT_ON 1024
+#define GUN_WY_RESTRICTED 2048
+#define GUN_SPECIALIST 4096
 
 	NOTES
 
-	if(burst_toggled && burst_firing) return
+	if(burst_toggled && burst_firing)
+		return
 	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	That should be on for most procs that deal with the gun doing some action. We do not want
 	the gun to suddenly begin to fire when you're doing something else to it that could mess it up.
@@ -102,21 +103,24 @@ DEFINES in setup.dm, referenced here.
 */
 
 //----------------------------------------------------------
-			//							  \\
+			//   \\
 			// EQUIPMENT AND INTERACTION  \\
-			//							  \\
-			//						   	  \\
+			//   \\
+			//   \\
 //----------------------------------------------------------
 
-/obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
+/obj/item/weapon/gun/clicked(mob/user, list/mods)
 	if (mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_gun_safety()
-		return 1
+		return TRUE
 	return (..())
 
 /obj/item/weapon/gun/mob_can_equip(mob/user)
 	//Cannot equip wielded items or items burst firing.
-	if(flags_gun_features & GUN_BURST_FIRING) return 0
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return 0
 	unwield(user)
 	return ..()
 
@@ -164,11 +168,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
 	for (var/slot in attachments)
-		var/obj/item/attachable/A = attachments[slot]
-		if (!A || !A.light_mod)
+		var/obj/item/attachable/attachment = attachments[slot]
+		if (!attachment || !attachment.light_mod)
 			continue
 		bearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(A.light_mod)
+		SetLuminosity(attachment.light_mod)
 		return TRUE
 	return FALSE
 
@@ -177,10 +181,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if (flags_gun_features & GUN_FLASHLIGHT_ON)
 		for (var/slot in attachments)
-			var/obj/item/attachable/A = attachments[slot]
-			if (!A || !A.light_mod)
+			var/obj/item/attachable/attachment = attachments[slot]
+			if (!attachment || !attachment.light_mod)
 				continue
-			user.SetLuminosity(A.light_mod, FALSE, src)
+			user.SetLuminosity(attachment.light_mod, FALSE, src)
 			SetLuminosity(0)
 			break
 
@@ -206,20 +210,25 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,
 			) return TRUE
+
+		for(var/faction in user.faction_group)
+			if(faction in FACTION_LIST_WY)
+				return TRUE
+
 		if(user.faction in FACTION_LIST_WY)
 			return TRUE
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
-/obj/item/weapon/gun/proc/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_J_STORE)
-		var/obj/item/I = user.wear_suit
-		if(!istype(I, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/suit = user.wear_suit
+		if(!istype(suit, /obj/item/clothing/suit/storage/marine))
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
 	if (!loc || !user)
 		return FALSE
 	if (!isturf(loc))
@@ -243,12 +252,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_NOTICE(message))
 	return TRUE
 
-/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
 		return
 	if (!retrieval_check(user, retrieval_slot))
 		return
-	addtimer(CALLBACK(src, .proc/retrieve_to_slot, user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -271,9 +280,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if (!ishuman(user))
 		return
 
-	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(sling_return), user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/sling_return(mob/living/carbon/human/user)
 	if (!loc || !user)
 		return
 	if (!isturf(loc))
@@ -284,11 +293,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 //Clicking stuff onto the gun.
 //Attachables & Reloading
-/obj/item/weapon/gun/attackby(obj/item/I, mob/user)
+/obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(istype(I, /obj/item/prop/helmetgarb/gunoil))
+	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
@@ -297,31 +306,32 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return
 
 
-	if(istype(I,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,I)
+	if(istype(attack_item,/obj/item/attachable))
+		if(check_inactive_hand(user)) attach_to_gun(user,attack_item)
 
 	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
 		if(check_inactive_hand(user))
-			if(istype(I,/obj/item/ammo_magazine))
-				var/obj/item/ammo_magazine/MG = I
-				if(istype(src, MG.gun_type))
+			if(istype(attack_item,/obj/item/ammo_magazine))
+				var/obj/item/ammo_magazine/attachment_magazine = attack_item
+				if(istype(src, attachment_magazine.gun_type))
 					to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 					playsound(user, active_attachable.activation_sound, 15, 1)
 					active_attachable.activate_attachment(src, null, TRUE)
-					reload(user,MG)
+					reload(user,attachment_magazine)
 					return
-			active_attachable.reload_attachment(I, user)
+			active_attachable.reload_attachment(attack_item, user)
 
-	else if(istype(I,/obj/item/ammo_magazine))
-		if(check_inactive_hand(user)) reload(user,I)
+	else if(istype(attack_item,/obj/item/ammo_magazine))
+		if(check_inactive_hand(user)) reload(user,attack_item)
 
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)
 	if(istype(dropping, /obj/item/ammo_magazine))
-		if(!user.Adjacent(dropping)) return
-		var/obj/item/ammo_magazine/AM = dropping
+		if(!user.Adjacent(dropping))
+			return
+		var/obj/item/ammo_magazine/magazine = dropping
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return
 		if(src != user.r_hand && src != user.l_hand)
@@ -334,32 +344,32 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		if(istype(src, AM.gun_type) || (AM.type in src.accepted_ammo))
+		if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
 			if(current_mag)
 				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
-			var/old_mag_loc = AM.loc
+			var/old_mag_loc = magazine.loc
 			var/tac_reload_time = 15
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && AM.loc == old_mag_loc && !current_mag)
-				if(isstorage(AM.loc))
-					var/obj/item/storage/S = AM.loc
-					S.remove_from_storage(AM)
-				reload(user, AM)
+			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
+				if(isstorage(magazine.loc))
+					var/obj/item/storage/master_storage = magazine.loc
+					master_storage.remove_from_storage(magazine)
+				reload(user, magazine)
 	else
 		..()
 
 
 
 //----------------------------------------------------------
-				//						 \\
+				//  \\
 				// GENERIC HELPER PROCS  \\
-				//						 \\
-				//						 \\
+				//  \\
+				//  \\
 //----------------------------------------------------------
 
-/obj/item/weapon/proc/unique_action(mob/M) //moved this up a path to make macroing for other weapons easier -spookydonut
+/obj/item/weapon/proc/unique_action(mob/user) //moved this up a path to make macroing for other weapons easier -spookydonut
 	return
 
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
@@ -379,12 +389,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return
 	return 1
 
-/obj/item/weapon/gun/proc/has_attachment(A)
-	if(!A)
+/obj/item/weapon/gun/proc/has_attachment(attachment)
+	if(!attachment)
 		return FALSE
 	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(R && istype(R, A))
+		var/obj/item/attachable/attached_attachment = attachments[slot]
+		if(attached_attachment && istype(attached_attachment, attachment))
 			return TRUE
 	return FALSE
 
@@ -394,24 +404,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
 	if(attachments[attachment.slot])
-		var/obj/item/attachable/R = attachments[attachment.slot]
-		if(R && !(R.flags_attach_features & ATTACH_REMOVABLE))
+		var/obj/item/attachable/attached_attachment = attachments[attachment.slot]
+		if(attached_attachment && !(attached_attachment.flags_attach_features & ATTACH_REMOVABLE))
 			to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
 			return 0
 	//to prevent headaches with lighting stuff
 	if(attachment.light_mod)
 		for(var/slot in attachments)
-			var/obj/item/attachable/R = attachments[slot]
-			if(!R)
+			var/obj/item/attachable/attached_attachment = attachments[slot]
+			if(!attached_attachment)
 				continue
-			if(R.light_mod)
+			if(attached_attachment.light_mod)
 				to_chat(user, SPAN_WARNING("You already have a light source attachment on [src]."))
 				return 0
 	return 1
 
 /obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(!can_attach_to_gun(user, attachment))
-		return
+		return FALSE
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
@@ -423,51 +433,55 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			attachment.Attach(src)
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
+			return TRUE
+
+/obj/item/weapon/gun/proc/on_detach(obj/item/attachable/attachment)
+	return
 
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
 	//overlays.Cut()
 	if(attachable_offset) //Even if the attachment doesn't exist, we're going to try and remove it.
 		for(var/slot in attachments)
-			var/obj/item/attachable/R = attachments[slot]
-			if(!R) continue
-			update_overlays(R, R.slot)
+			var/obj/item/attachable/attached_attachment = attachments[slot]
+			if(!attached_attachment) continue
+			update_overlays(attached_attachment, attached_attachment.slot)
 
 /obj/item/weapon/gun/proc/update_attachable(attachable) //Updates individually.
 	if(attachable_offset && attachments[attachable])
 		update_overlays(attachments[attachable], attachable)
 
-/obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/A, slot)
-	var/image/I = attachable_overlays[slot]
-	overlays -= I
+/obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/attachment, slot)
+	var/image/gun_image = attachable_overlays[slot]
+	overlays -= gun_image
 	attachable_overlays[slot] = null
-	if(A && !A.hidden) //Only updates if the attachment exists for that slot.
-		var/item_icon = A.icon_state
-		if(A.attach_icon)
-			item_icon = A.attach_icon
-		I = image(A.icon,src, item_icon)
-		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x + x_offset_by_attachment_type(A.type)
-		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y + y_offset_by_attachment_type(A.type)
-		attachable_overlays[slot] = I
-		overlays += I
+	if(attachment && !attachment.hidden) //Only updates if the attachment exists for that slot.
+		var/item_icon = attachment.icon_state
+		if(attachment.attach_icon)
+			item_icon = attachment.attach_icon
+		gun_image = image(attachment.icon,src, item_icon)
+		gun_image.pixel_x = attachable_offset["[slot]_x"] - attachment.pixel_shift_x + x_offset_by_attachment_type(attachment.type)
+		gun_image.pixel_y = attachable_offset["[slot]_y"] - attachment.pixel_shift_y + y_offset_by_attachment_type(attachment.type)
+		attachable_overlays[slot] = gun_image
+		overlays += gun_image
 	else attachable_overlays[slot] = null
 
-/obj/item/weapon/gun/proc/x_offset_by_attachment_type(var/attachment_type)
+/obj/item/weapon/gun/proc/x_offset_by_attachment_type(attachment_type)
 	return 0
 
-/obj/item/weapon/gun/proc/y_offset_by_attachment_type(var/attachment_type)
+/obj/item/weapon/gun/proc/y_offset_by_attachment_type(attachment_type)
 	return 0
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
-	var/image/I = attachable_overlays["mag"]
-	if(istype(I))
-		overlays -= I
+	var/image/gun_image = attachable_overlays["mag"]
+	if(istype(gun_image))
+		overlays -= gun_image
 		attachable_overlays["mag"] = null
 	if(current_mag && current_mag.bonus_overlay)
-		I = image(current_mag.icon,src,current_mag.bonus_overlay)
-		I.pixel_x += bonus_overlay_x
-		I.pixel_y += bonus_overlay_y
-		attachable_overlays["mag"] = I
-		overlays += I
+		gun_image = image(current_mag.icon,src,current_mag.bonus_overlay)
+		gun_image.pixel_x += bonus_overlay_x
+		gun_image.pixel_y += bonus_overlay_y
+		attachable_overlays["mag"] = gun_image
+		overlays += gun_image
 	else
 		attachable_overlays["mag"] = null
 	return
@@ -475,9 +489,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
 	overlays -= attachable_overlays["special"]
 	attachable_overlays["special"] = null
-	var/image/I = image(icon,src,new_icon_state)
-	attachable_overlays["special"] = I
-	overlays += I
+	var/image/gun_image = image(icon,src,new_icon_state)
+	attachable_overlays["special"] = gun_image
+	overlays += gun_image
 
 /obj/item/weapon/gun/proc/update_force_list()
 	switch(force)
@@ -486,36 +500,39 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
-	var/obj/item/weapon/gun/G = user.get_held_item()
+	var/obj/item/weapon/gun/held_item = user.get_held_item()
 
-	if(!istype(G) && !restrictive)
-		G = user.get_inactive_hand()
-	if(!istype(G) && G != null)
-		G = user.get_active_hand()
-	if(!istype(G) && restrictive)
-		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
+	if(!istype(held_item)) // if active hand is not a gun
+		if(restrictive) // if restrictive we return right here
+			to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
+			return
+		else // else check inactive hand
+			held_item = user.get_inactive_hand()
+			if(!istype(held_item)) // if inactive hand is ALSO not a gun we return
+				to_chat(user, SPAN_WARNING("You need a gun in one of your hands to do that!"))
+				return
+
+	if(held_item?.flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(G?.flags_gun_features & GUN_BURST_FIRING)
-		return
-
-	return G
+	return held_item
 
 //----------------------------------------------------------
-					//				   \\
+					//    \\
 					// GUN VERBS PROCS \\
-					//				   \\
-					//				   \\
+					//    \\
+					//    \\
 //----------------------------------------------------------
 
 
 
-/mob/living/carbon/human/proc/can_unholster_from_storage_slot(var/obj/item/storage/slot)
+/mob/living/carbon/human/proc/can_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot))
 		return FALSE
 	if(slot == shoes)//Snowflakey check for shoes and uniform
@@ -544,32 +561,32 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return FALSE
 
 //For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb(var/unholster_number_offset = 1 as num)
+/mob/living/silicon/robot/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
-	set hidden = 1
+	set hidden = TRUE
 	uneq_active()
 
-/mob/living/carbon/human/verb/holster_verb(var/unholster_number_offset = 1 as num)
+/mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
-	set hidden = 1
+	set hidden = TRUE
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
-	var/obj/item/W = get_active_hand()
-	if(W)
+	var/obj/item/active_hand = get_active_hand()
+	if(active_hand)
 		if(w_uniform)
-			for(var/obj/A in w_uniform.accessories)
-				var/obj/item/storage/internal/accessory/holster/H = A
-				if(istype(H) && !H.current_gun && H.can_be_inserted(W))
-					H._item_insertion(W, src)
+			for(var/obj/accessory in w_uniform.accessories)
+				var/obj/item/storage/internal/accessory/holster/holster = accessory
+				if(istype(holster) && !holster.current_gun && holster.can_be_inserted(active_hand))
+					holster._item_insertion(active_hand, src)
 					return
 
-				var/obj/item/clothing/accessory/storage/holster/HS = A
-				if(istype(HS))
-					var/obj/item/storage/internal/accessory/holster/S = HS.hold
-					if(S.can_be_inserted(W, TRUE))
-						S.handle_item_insertion(W, user = src)
+				var/obj/item/clothing/accessory/storage/holster/holster_ammo = accessory
+				if(istype(holster_ammo))
+					var/obj/item/storage/internal/accessory/holster/storage = holster_ammo.hold
+					if(storage.can_be_inserted(active_hand, TRUE))
+						storage.handle_item_insertion(active_hand, user = src)
 						return
 
 		quick_equip()
@@ -599,12 +616,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Remove all attachables from a weapon."
 	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE) // don't see why it should be restrictive
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE) // don't see why it should be restrictive
 
-	if(!G)
+	if(!active_firearm)
 		return
 
-	src = G
+	src = active_firearm
 
 	if(usr.action_busy)
 		return
@@ -616,62 +633,53 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/list/choices = list()
 	var/list/choice_to_attachment = list()
 	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(R && (R.flags_attach_features & ATTACH_REMOVABLE))
-			var/capitalized_name = capitalize_first_letters(R.name)
-			choices[capitalized_name] = image(icon = R.icon, icon_state = R.icon_state)
-			choice_to_attachment[capitalized_name] = R
+		var/obj/item/attachable/attached_attachment = attachments[slot]
+		if(attached_attachment && (attached_attachment.flags_attach_features & ATTACH_REMOVABLE))
+			var/capitalized_name = capitalize_first_letters(attached_attachment.name)
+			choices[capitalized_name] = image(icon = attached_attachment.icon, icon_state = attached_attachment.icon_state)
+			choice_to_attachment[capitalized_name] = attached_attachment
 
 	if(!length(choices))
 		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
 		return
 
-	var/obj/item/attachable/A
+	var/obj/item/attachable/attachment
 	if(length(choices) == 1)
-		A = choice_to_attachment[choices[1]]
+		attachment = choice_to_attachment[choices[1]]
 	else
 		var/use_radials = usr.client.prefs?.no_radials_preference ? FALSE : TRUE
 		var/choice = use_radials ? show_radial_menu(usr, usr, choices, require_near = TRUE) : tgui_input_list(usr, "Which attachment to remove?", "Remove Attachment", choices)
-		A = choice_to_attachment[choice]
+		attachment = choice_to_attachment[choice]
 
-	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
+	if(!attachment || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(attachment == attachments[attachment.slot])) || !(attachment.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
-	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [A] from [src]."),
-	SPAN_NOTICE("You begin stripping [A] from [src]."), null, 4)
+	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [attachment] from [src]."),
+	SPAN_NOTICE("You begin stripping [attachment] from [src]."), null, 4)
 
 	if(!do_after(usr, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
-	if(!(A == attachments[A.slot]))
+	if(!(attachment == attachments[attachment.slot]))
 		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+	if(!(attachment.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
 	if(zoom)
 		return
 
-	usr.visible_message(SPAN_NOTICE("[usr] strips [A] from [src]."),
-	SPAN_NOTICE("You strip [A] from [src]."), null, 4)
-	A.Detach(src)
+	usr.visible_message(SPAN_NOTICE("[usr] strips [attachment] from [src]."),
+	SPAN_NOTICE("You strip [attachment] from [src]."), null, 4)
+	attachment.Detach(usr, src)
 
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
-/obj/item/weapon/gun/verb/toggle_burst()
-	set category = "Weapons"
-	set name = "Toggle Burst Fire Mode"
-	set desc = "Toggle on or off your weapon burst mode, if it has one. Greatly reduces accuracy."
-	set src = usr.contents
-
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-	if(!G) return
-	src = G
-
+/obj/item/weapon/gun/proc/toggle_burst(mob/user)
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
 	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
-		to_chat(usr, SPAN_WARNING("This weapon does not have a burst fire mode!"))
+		to_chat(user, SPAN_WARNING("This weapon does not have a burst fire mode!"))
 		return
 
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
@@ -683,22 +691,22 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_BURST_ON
 			return
 
-		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
+		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
 		return
 
 	if(flags_gun_features & GUN_FULL_AUTO_ONLY)
 		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
 			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
 			flags_gun_features |= GUN_FULL_AUTO_ON
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 			return
 
-		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
+		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
 		return
 
-	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
 		if((flags_gun_features & GUN_BURST_ON) || (burst_amount < 2 && !(flags_gun_features & GUN_FULL_AUTO_ON)))
@@ -706,28 +714,41 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
 			// Register the full auto click listeners
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 
-			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to full auto mode."))
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to full auto mode."))
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
+			REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 			full_auto_stop() // If the LMBUP hasn't been called for any reason.
-			UnregisterSignal(usr.client, list(
+			UnregisterSignal(user.client, list(
 				COMSIG_CLIENT_LMB_DOWN,
 				COMSIG_CLIENT_LMB_UP,
 				COMSIG_CLIENT_LMB_DRAG,
 			))
 
-			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to single fire mode."))
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to single fire mode."))
 			return
 
 
 	flags_gun_features ^= GUN_BURST_ON
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
+/obj/item/weapon/gun/verb/use_toggle_burst()
+	set category = "Weapons"
+	set name = "Toggle Burst Fire Mode"
+	set desc = "Toggle on or off your weapon burst mode, if it has one. Greatly reduces accuracy."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
+	if(!active_firearm)
+		return
+	src = active_firearm
+
+	toggle_burst(usr)
 
 /obj/item/weapon/gun/verb/empty_mag()
 	set category = "Weapons"
@@ -736,17 +757,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set src = usr.contents
 
 	var/mob/user = usr
-	var/obj/item/weapon/gun/G = get_active_firearm(user)
-	if(!G)
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(user)
+	if(!active_firearm)
 		return
-	src = G
-	if(G.active_attachable)
+	src = active_firearm
+	if(active_firearm.active_attachable)
 		// unload the attachment
 		var/drop_to_ground = TRUE
 		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND))
 			drop_to_ground = FALSE
 			unwield(user)
-		if(G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground))
+		if(active_firearm.active_attachable.unload_attachment(usr, FALSE, drop_to_ground))
 			return
 
 	//unloading a regular gun
@@ -754,7 +775,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND))
 		drop_to_ground = FALSE
 		unwield(user)
-		if(!(G.flags_gun_features & GUN_INTERNAL_MAG))
+		if(!(active_firearm.flags_gun_features & GUN_INTERNAL_MAG))
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
@@ -765,12 +786,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use anything unique your firearm is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active attachment, this will activate on the attachment instead."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-	if(!G) return
-	if(G.active_attachable)
-		src = G.active_attachable
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
+	if(!active_firearm)
+		return
+	if(active_firearm.active_attachable)
+		src = active_firearm.active_attachable
 	else
-		src = G
+		src = active_firearm
 
 	unique_action(usr)
 
@@ -781,12 +803,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Toggle the safety of the held gun."
 	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr,FALSE) // safeties shouldn't be restrictive
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr,FALSE) // safeties shouldn't be restrictive
 
-	if(!G)
+	if(!active_firearm)
 		return
 
-	src = G
+	src = active_firearm
 
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
@@ -802,7 +824,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	gun_safety_message(usr)
 
 
-/obj/item/weapon/gun/proc/gun_safety_message(var/mob/user)
+/obj/item/weapon/gun/proc/gun_safety_message(mob/user)
 	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
 	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 
@@ -812,30 +834,31 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Activates one of the attached attachments on the gun."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE)
-	if(!G) return
-	src = G
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE)
+	if(!active_firearm)
+		return
+	src = active_firearm
 
-	var/obj/item/attachable/A
+	var/obj/item/attachable/chosen_attachment
 
 	var/usable_attachments[] = list() //Basic list of attachments to compare later.
 	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(R && (R.flags_attach_features & ATTACH_ACTIVATION) )
-			usable_attachments += R
+		var/obj/item/attachable/attachment = attachments[slot]
+		if(attachment && (attachment.flags_attach_features & ATTACH_ACTIVATION) )
+			usable_attachments += attachment
 
 	if(!usable_attachments.len) //No usable attachments.
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable attachments!"))
 		return
 
 	if(usable_attachments.len == 1) //Activates the only attachment if there is only one.
-		A = usable_attachments[1]
+		chosen_attachment = usable_attachments[1]
 	else
-		A = tgui_input_list(usr, "Which attachment to activate?", "Activate attachment", usable_attachments)
-		if(!A || A.loc != src)
+		chosen_attachment = tgui_input_list(usr, "Which attachment to activate?", "Activate attachment", usable_attachments)
+		if(!chosen_attachment || chosen_attachment.loc != src)
 			return
-	if(A)
-		A.activate_attachment(src, usr)
+	if(chosen_attachment)
+		chosen_attachment.activate_attachment(src, usr)
 
 /obj/item/weapon/gun/verb/activate_rail_attachment_verb()
 	set category = "Weapons"
@@ -843,26 +866,28 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the attachment that is mounted on your rail."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE)
-	if(!G) return
-	src = G
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE)
+	if(!active_firearm)
+		return
+	src = active_firearm
 
-	var/obj/item/attachable/A = attachments["rail"]
-	if(A)
-		A.activate_attachment(src, usr)
+	var/obj/item/attachable/attachment = attachments["rail"]
+	if(attachment)
+		attachment.activate_attachment(src, usr)
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable rail attachments!"))
 		return
 
 /obj/item/weapon/gun/verb/toggle_auto_eject_verb()
 	set category = "Weapons"
-	set	name = "Toggle Auto Eject"
+	set name = "Toggle Auto Eject"
 	set desc = "Enable/Disable the gun's magazine ejection system"
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-	if(!G) return
-	src = G
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
+	if(!active_firearm)
+		return
+	src = active_firearm
 
 	if(src.flags_gun_features & GUN_ANTIQUE || src.flags_gun_features & GUN_INTERNAL_MAG  || src.flags_gun_features & GUN_UNUSUAL_DESIGN)
 		to_chat(usr, SPAN_WARNING("[src] has no auto ejection system!"))
@@ -878,13 +903,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the attachment that is mounted on your underbarrel."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr,FALSE)
-	if(!G) return
-	src = G
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr,FALSE)
+	if(!active_firearm)
+		return
+	src = active_firearm
 
-	var/obj/item/attachable/A = attachments["under"]
-	if(A)
-		A.activate_attachment(src, usr)
+	var/obj/item/attachable/attachment = attachments["under"]
+	if(attachment)
+		attachment.activate_attachment(src, usr)
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable underbarrel attachments!"))
 		return
@@ -895,13 +921,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	set desc = "Use the stock attachment that is mounted on your gun."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr, FALSE) // incase someone
-	if(!G) return
-	src = G
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE) // incase someone
+	if(!active_firearm)
+		return
+	src = active_firearm
 
-	var/obj/item/attachable/A = attachments["stock"]
-	if(A)
-		A.activate_attachment(src, usr)
+	var/obj/item/attachable/attachment = attachments["stock"]
+	if(attachment)
+		attachment.activate_attachment(src, usr)
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable stock attachments!"))
 		return

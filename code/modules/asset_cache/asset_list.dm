@@ -11,6 +11,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset
 	var/_abstract = /datum/asset
+	var/cached_serialized_url_mappings
+	var/cached_serialized_url_mappings_transport_type
 
 /datum/asset/New()
 	GLOB.asset_datums[type] = src
@@ -25,6 +27,13 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/proc/send(client)
 	return
 
+/// Returns a cached tgui message of URL mappings
+/datum/asset/proc/get_serialized_url_mappings()
+	if (isnull(cached_serialized_url_mappings) || cached_serialized_url_mappings_transport_type != SSassets.transport.type)
+		cached_serialized_url_mappings = TGUI_CREATE_MESSAGE("asset/mappings", get_url_mappings())
+		cached_serialized_url_mappings_transport_type = SSassets.transport.type
+
+	return cached_serialized_url_mappings
 
 /// If you don't need anything complicated.
 /datum/asset/simple
@@ -92,7 +101,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/spritesheet
 	_abstract = /datum/asset/spritesheet
 	var/name
-	var/list/sizes = list()    // "32x32" -> list(10, icon/normal, icon/stripped)
+	var/list/sizes = list() // "32x32" -> list(10, icon/normal, icon/stripped)
 	var/list/sprites = list()  // "foo_bar" -> list("32x32", 5)
 
 /datum/asset/spritesheet/register()
@@ -281,7 +290,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	if (legacy)
 		assets |= parents
 	var/list/hashlist = list()
-	var/list/sorted_assets = sortList(assets)
+	var/list/sorted_assets = sort_list(assets)
 
 	for (var/asset_name in sorted_assets)
 		var/datum/asset_cache_item/ACI = new(asset_name, sorted_assets[asset_name])

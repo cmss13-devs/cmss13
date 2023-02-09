@@ -8,8 +8,8 @@
 	desc = "A little floor repairing robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	health = 25
 	maxhealth = 25
 	//weight = 1.0E7
@@ -74,7 +74,7 @@
 	return
 
 
-/obj/structure/machinery/bot/floorbot/attackby(var/obj/item/W , mob/user as mob)
+/obj/structure/machinery/bot/floorbot/attackby(obj/item/W , mob/user as mob)
 	if(istype(W, /obj/item/stack/tile/plasteel))
 		var/obj/item/stack/tile/plasteel/T = W
 		if(src.amount >= 50)
@@ -165,7 +165,7 @@
 		if(targetdirection != null)
 			/*
 			for (var/turf/open/space/D in view(7,src))
-				if(!(D in floorbottargets) && D != src.oldtarget)			// Added for bridging mode -- TLE
+				if(!(D in floorbottargets) && D != src.oldtarget) // Added for bridging mode -- TLE
 					if(get_dir(src, D) == targetdirection)
 						src.oldtarget = D
 						src.target = D
@@ -230,7 +230,7 @@
 	src.oldloc = src.loc
 
 
-/obj/structure/machinery/bot/floorbot/proc/repair(var/turf/target)
+/obj/structure/machinery/bot/floorbot/proc/repair(turf/target)
 	if(istype(target, /turf/open/space/))
 		if(target.loc.name == "Space")
 			return
@@ -238,7 +238,7 @@
 		return
 	if(src.amount <= 0)
 		return
-	src.anchored = 1
+	src.anchored = TRUE
 	src.icon_state = "floorbot-c"
 	if(istype(target, /turf/open/space/))
 		visible_message(SPAN_DANGER("[src] begins to repair the hole"))
@@ -249,7 +249,7 @@
 			src.repairing = 0
 			src.amount--
 			src.updateicon()
-			src.anchored = 0
+			src.anchored = FALSE
 			src.target = null
 	else
 		visible_message(SPAN_DANGER("[src] begins to improve the floor."))
@@ -259,10 +259,10 @@
 			src.repairing = 0
 			src.amount--
 			src.updateicon()
-			src.anchored = 0
+			src.anchored = FALSE
 			src.target = null
 
-/obj/structure/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)
+/obj/structure/machinery/bot/floorbot/proc/eattile(obj/item/stack/tile/plasteel/T)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		return
 	visible_message(SPAN_DANGER("[src] begins to collect tiles."))
@@ -283,7 +283,7 @@
 		src.target = null
 		src.repairing = 0
 
-/obj/structure/machinery/bot/floorbot/proc/maketile(var/obj/item/stack/sheet/metal/M)
+/obj/structure/machinery/bot/floorbot/proc/maketile(obj/item/stack/sheet/metal/M)
 	if(!istype(M, /obj/item/stack/sheet/metal))
 		return
 	if(M.get_amount() > 1)
@@ -338,7 +338,7 @@
 	return
 
 
-/obj/item/storage/toolbox/mechanical/attackby(var/obj/item/stack/tile/plasteel/T, mob/user as mob)
+/obj/item/storage/toolbox/mechanical/attackby(obj/item/stack/tile/plasteel/T, mob/user as mob)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		..()
 		return

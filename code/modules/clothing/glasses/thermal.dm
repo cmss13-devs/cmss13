@@ -3,6 +3,7 @@
 
 /obj/item/clothing/glasses/thermal
 	name = "Optical Thermal Scanner"
+	gender = NEUTER
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
 	item_state = "glasses"
@@ -22,8 +23,8 @@
 			var/mob/living/carbon/human/M = src.loc
 			to_chat(M, SPAN_WARNING("The Optical Thermal Scanner overloads and blinds you!"))
 			if(M.glasses == src)
-				M.eye_blind = 3
-				M.eye_blurry = 5
+				M.SetEyeBlind(3)
+				M.EyeBlur(5)
 				if(!(M.disabilities & NEARSIGHTED))
 					M.disabilities |= NEARSIGHTED
 					spawn(100)
@@ -31,7 +32,7 @@
 	..()
 
 
-/obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
+/obj/item/clothing/glasses/thermal/syndi //These are now a traitor item, concealed as mesons. -Pete
 	name = "Optical Meson Scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
@@ -40,6 +41,7 @@
 
 /obj/item/clothing/glasses/thermal/syndi/bug_b_gone
 	name = "Bug-B Gone Thermal Goggles"
+	gender = PLURAL
 	desc = "For all your bug hunting needs!"
 	icon_state = "rwelding-g"
 	deactive_state = "rwelding-gup"
@@ -62,6 +64,7 @@
 
 /obj/item/clothing/glasses/thermal/jensen
 	name = "Optical Thermal Implants"
+	gender = PLURAL
 	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"

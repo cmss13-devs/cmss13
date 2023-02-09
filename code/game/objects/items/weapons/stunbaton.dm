@@ -13,28 +13,28 @@
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
-	var/status = 0		//whether the thing is on or not
+	var/status = 0 //whether the thing is on or not
 	var/obj/item/cell/bcell = null
-	var/hitcost = 1000	//oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
+	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
 /obj/item/weapon/melee/baton/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide.</span>")
 	return (FIRELOSS)
 
-/obj/item/weapon/melee/baton/New()
-	..()
+/obj/item/weapon/melee/baton/Initialize(mapload, ...)
+	. = ..()
 	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
 	update_icon()
-	return
 
-/obj/item/weapon/melee/baton/loaded/New() //this one starts with a cell pre-installed.
-	..()
-	bcell = new/obj/item/cell/high(src)
-	update_icon()
-	return
+/obj/item/weapon/melee/baton/Destroy()
+	QDEL_NULL(bcell)
+	return ..()
 
-/obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
+// legacy type, remove when able
+/obj/item/weapon/melee/baton/loaded
+
+/obj/item/weapon/melee/baton/proc/deductcharge(chrgdeductamt)
 	if(bcell)
 		if(bcell.use(chrgdeductamt))
 			return TRUE
@@ -103,7 +103,7 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(bcell)
-			bcell.updateicon()
+			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
 			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
@@ -146,8 +146,8 @@
 
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
-		if (!..())	//item/attack() does it's own messaging and logs
-			return FALSE	// item/attack() will return TRUE if they hit, 0 if they missed.
+		if (!..()) //item/attack() does it's own messaging and logs
+			return FALSE // item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
 			return TRUE
@@ -177,7 +177,7 @@
 
 	//stun effects
 
-	if(!isYautja(L) && !isXeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
+	if(!isyautja(L) && !isxeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
 		L.emote("pain")
 		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
 
@@ -198,7 +198,7 @@
 
 /obj/item/weapon/melee/baton/emp_act(severity)
 	if(bcell)
-		bcell.emp_act(severity)	//let's not duplicate code everywhere if we don't have to please.
+		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
 	..()
 
 //secborg stun baton module

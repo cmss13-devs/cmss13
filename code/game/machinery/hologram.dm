@@ -1,8 +1,8 @@
 /* Holograms!
  * Contains:
- *		Hologram
- *		Holopad
- *		Other stuff
+ * Hologram
+ * Holopad
+ * Other stuff
  */
 
 
@@ -12,11 +12,11 @@
  */
 
 /obj/structure/machinery/hologram
-	anchored = 1
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
-	var/obj/effect/overlay/hologram//The projection itself. If there is one, the instrument is on, off otherwise.
+	var/obj/effect/overlay/hologram //The projection itself. If there is one, the instrument is on, off otherwise.
 
 /obj/structure/machinery/hologram/ex_act(severity)
 	switch(severity)
@@ -80,7 +80,7 @@ var/const/HOLOPAD_MODE = 0
 	. = ..()
 	flags_atom |= USES_HEARING
 
-/obj/structure/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
+/obj/structure/machinery/hologram/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return
 	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")
@@ -89,7 +89,7 @@ var/const/HOLOPAD_MODE = 0
 			to_chat(user, SPAN_NOTICE("You request an AI's presence."))
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in GLOB.alive_mob_list)
-				if(!AI.client)	continue
+				if(!AI.client) continue
 				to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
 		else
 			to_chat(user, SPAN_NOTICE("A request for AI presence was already sent recently."))
@@ -128,35 +128,35 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		var/name_used = M.GetVoice()
 		//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
 		var/rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span></i>"
-		master.show_message(rendered, 2)
+		master.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
 	hologram = new(T)//Spawn a blank effect at the location.
 	hologram.icon = A.holo_icon
-	hologram.mouse_opacity = 0//So you can't click on it.
+	hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
-	hologram.anchored = 1//So space wind cannot drag it.
+	hologram.anchored = TRUE//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	hologram.SetLuminosity(2)	//hologram lighting
-	SetLuminosity(2)			//pad lighting
+	hologram.SetLuminosity(2) //hologram lighting
+	SetLuminosity(2) //pad lighting
 	icon_state = "holopad1"
 	A.holo = src
 	master = A//AI is the master.
-	use_power = 2//Active power usage.
+	use_power = USE_POWER_ACTIVE//Active power usage.
 	return 1
 
 /obj/structure/machinery/hologram/holopad/clear_holo()
-//	hologram.SetLuminosity(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
+// hologram.SetLuminosity(0)//Clear lighting. //handled by the lighting controller when its ower is deleted
 	if(hologram)
 		qdel(hologram)//Get rid of hologram.
 		hologram = null
 	if(master.holo == src)
 		master.holo = null
 	master = null//Null the master, since no-one is using it now.
-	SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+	SetLuminosity(0) //pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"
-	use_power = 1//Passive power usage.
+	use_power = USE_POWER_IDLE//Passive power usage.
 	return 1
 
 /obj/structure/machinery/hologram/holopad/process()

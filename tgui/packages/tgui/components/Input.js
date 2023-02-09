@@ -4,10 +4,10 @@
  * @license MIT
  */
 
+import { KEY_ENTER, KEY_ESCAPE } from 'common/keycodes';
 import { classes } from 'common/react';
 import { Component, createRef } from 'inferno';
 import { Box } from './Box';
-import { KEY_ESCAPE, KEY_ENTER } from 'common/keycodes';
 
 // prettier-ignore
 export const toInputValue = value => (

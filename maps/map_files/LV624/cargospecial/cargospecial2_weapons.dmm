@@ -2,7 +2,7 @@
 "a" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/weapon/gun/shotgun/pump{
 	pixel_y = 9
 	},

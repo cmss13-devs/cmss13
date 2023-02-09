@@ -18,7 +18,7 @@
 	var/desiredstate = 0 // Zero is closed, 1 is open.
 	var/specialfunctions = 1
 	/*
-	Bitflag, 	1= open
+	Bitflag, 1= open
 				2= idscan,
 				4= bolts
 				8= shock
@@ -29,12 +29,12 @@
 	var/exposedwires = 0
 	var/wires = 3
 	/*
-	Bitflag,	1=checkID
+	Bitflag, 1=checkID
 				2=Network Access
 	*/
 
-	anchored = 1.0
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -52,7 +52,7 @@
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/door_control/proc/handle_dropship(var/ship_id)
+/obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/shuttle_tag
 	switch(ship_id)
 		if("sh_dropship1")
@@ -109,9 +109,9 @@
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
 					D.remoteDisabledIdScanner = 1
@@ -143,9 +143,9 @@
 					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 			else
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
@@ -156,11 +156,11 @@
 
 /obj/structure/machinery/door_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
-	if(istype(user,/mob/living/carbon/Xenomorph))
+	if(istype(user,/mob/living/carbon/xenomorph))
 		return
 	use_button(user)
 
-/obj/structure/machinery/door_control/proc/use_button(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/proc/use_button(mob/living/user, force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -173,6 +173,7 @@
 	use_power(5)
 	icon_state = initial(icon_state) + "1"
 	add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You press \the [name] button."))
 
 	switch(normaldoorcontrol)
 		if(CONTROL_NORMAL_DOORS)
@@ -216,7 +217,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	sleep(20)
 
@@ -228,7 +229,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	icon_state = "launcherbtt"
 	active = 0
@@ -240,10 +241,10 @@
 	name = "railing controls"
 	desc = "Allows for raising and lowering the guard rails on the vehicle ASRS elevator when it's raised."
 	id = "vehicle_elevator_railing_aux"
-
+	gender = PLURAL
 	var/busy = FALSE
 
-/obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/railings/use_button(mob/living/user, force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -295,3 +296,29 @@
 
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"
+
+/obj/structure/machinery/door_control/airlock
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "elevator_screen"
+
+/obj/structure/machinery/door_control/airlock/use_button(mob/living/user, force = FALSE)
+	if(inoperable())
+		to_chat(user, SPAN_WARNING("\The [src] doesn't seem to be working."))
+		return
+
+	use_power(5)
+	add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You press \the [name] button."))
+
+	switch(normaldoorcontrol)
+		if(CONTROL_NORMAL_DOORS)
+			handle_door()
+		if(CONTROL_POD_DOORS)
+			handle_pod()
+		if(CONTROL_DROPSHIP)
+			handle_dropship(id)
+
+	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/power_change()
+	return

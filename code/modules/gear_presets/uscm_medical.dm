@@ -10,13 +10,16 @@
 		ACCESS_MARINE_COMMANDER,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_CHEMISTRY,
-		ACCESS_MARINE_MORGUE
+		ACCESS_MARINE_MORGUE,
 	)
 	assignment = JOB_CMO
 	rank = JOB_CMO
 	paygrade = "MO2"
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
+
+	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
 	utility_hat = list(/obj/item/clothing/head/cmo)
@@ -72,6 +75,8 @@
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
+	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_DOCTOR)
+
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)
 	utility_gloves = list(/obj/item/clothing/gloves/latex)
@@ -125,6 +130,8 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
+	minimap_icon = list("medic")
+
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)
 	utility_gloves = list(/obj/item/clothing/gloves/latex)
@@ -164,6 +171,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/orange(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BELT)
 
+/datum/equipment_preset/uscm_ship/uscm_medical/nurse/load_rank(mob/living/carbon/human/H)
+	if(H.client)
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+			return "ME3"
+	return paygrade
+
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	name = "USCM Researcher"
@@ -175,6 +188,8 @@
 	paygrade = "MO1"
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
+
+	minimap_icon = "researcher"
 
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)

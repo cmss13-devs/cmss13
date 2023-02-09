@@ -5,9 +5,9 @@
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "box_0"
 	var/base_state = "box"
-	density = 0
-	anchored = 1
-	use_power = 0
+	density = FALSE
+	anchored = TRUE
+	use_power = USE_POWER_NONE
 	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
 	var/list/components = null
@@ -39,8 +39,8 @@
 	desc = initial(desc) + SPAN_WARNING(requirements_left)
 
 /obj/structure/machinery/constructable_frame/update_icon()
-    ..()
-    icon_state = "[base_state]_[state]"
+	..()
+	icon_state = "[base_state]_[state]"
 
 /obj/structure/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)
@@ -64,7 +64,7 @@
 						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
-						anchored = 1
+						anchored = TRUE
 						update_desc()
 			else if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
@@ -99,7 +99,7 @@
 					to_chat(user, requirements_left)
 					update_desc()
 
-			else if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			else if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return

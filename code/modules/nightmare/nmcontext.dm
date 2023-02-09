@@ -1,92 +1,57 @@
-/// Nightmare setup global state
+/// Context within which we resolve nightmare actions
 /datum/nmcontext
-	/// Setup name
-	var/name = "default nmcontext"
-	/// Scenario values
-	var/list/scenario
-	/// Hash of config nodes by type
-	var/list/steps = list()
-	/// Global task controller
-	var/datum/nmtask/sync/maintask
-	/// Map loading controller
-	var/datum/nmtask/sync/mapinit/mapcontroller
-	/// TRUE once finished running the tasks
-	var/done = FALSE
-	/// Time of start of setup
-	var/start_time
+	/// User-friendly name
+	var/name = "context"
+	/// Storage of scenario values in the context as KV
+	var/list/scenario = list()
+	/// Config values used internally relevant to context
+	var/list/config = list()
+	/// Scheduler task type
+	var/scheduler_type = /datum/nmtask/scheduler
+	/// Holder for tasks to execute in the context
+	VAR_PRIVATE/datum/nmtask/scheduler/scheduler
+	/// Runtime debug list of resolved nodes in the context
+	var/list/datum/nmnode/trace = list()
 
-/datum/nmcontext/Destroy(force)
+/datum/nmcontext/Destroy()
+	QDEL_NULL(scheduler)
 	scenario = null
-	QDEL_NULL(maintask)
-	QDEL_NULL(mapcontroller)
-	QDEL_LIST_ASSOC_VAL(steps)
 	return ..()
 
-/// Loads nightmare config from a map config
-/datum/nmcontext/proc/init_config(map_type = GROUND_MAP)
-	SHOULD_NOT_SLEEP(TRUE)
-	var/datum/map_config/MC = SSmapping.configs[map_type]
-	var/list/allconfigs = MC?.nightmare
-	if(!length(allconfigs))
-		return FALSE
-	for(var/name in allconfigs)
-		var/datum/nmreader/reader = GLOB.nmreaders[name]
-		var/datum/nmnode/tree = reader?.load_file(allconfigs[name])
-		if(!tree)
-			CRASH("NIGHTMARE: Failed to load step: [name] -> [allconfigs[name]]")
-		steps[name] = tree
-		. = TRUE
+/datum/nmcontext/New(name)
+	. = ..()
+	if(name)
+		src.name = name
+	scheduler = new scheduler_type
 
-/// Initializes pre-generated scenario
-/datum/nmcontext/proc/init_scenario()
-	SHOULD_NOT_SLEEP(TRUE)
-	if(!length(steps)) return FALSE
-	scenario = list()
-	var/datum/nmnode/storyboard = steps["scenario"]
-	steps.Remove("scenario")
-	if(!storyboard)
-		log_debug("NIGHTMARE: Warning: running without a scenario config")
-	else storyboard?.resolve(src)
-	return scenario
+/// Get a value from the scenario, or a global value
+/datum/nmcontext/proc/get_scenario_value(pname)
+	var/datum/nmcontext/scope = src
+	var/modifier = copytext(pname, 1, 2)
+	if(modifier == "$")
+		pname = copytext(pname, 2)
+		scope = SSnightmare.contexts[NIGHTMARE_CTX_GLOBAL]
+	return scope.scenario[pname]
 
-/// Wrapper to request to execute the whole scenario
-/datum/nmcontext/proc/start_setup()
-	set waitfor = FALSE
-	. = FALSE
-	if(start_time || done) return
-	start_time = REALTIMEOFDAY
-	if(resolve_scenario())
-		. = TRUE
-		sleep(world.tick_lag) // Force detach from running subsystem so MC doesn't murder it
-		run_steps()
+/// Set a value in the scenario. This should only be used by manual user intervention, such as admins tweaking scenario!!
+/datum/nmcontext/proc/set_scenario_value(pname, value)
+	scenario[pname] = value
 
-/// Resolves result of the main steps for execution
-/datum/nmcontext/proc/resolve_scenario()
-	SHOULD_NOT_SLEEP(TRUE)
-	mapcontroller  = new
-	maintask = new
-	maintask.register_task(mapcontroller)
-	for(var/name in steps)
-		var/datum/nmnode/tree = steps[name]
-		tree?.resolve(src)
-		. = TRUE
+/// Resolve a config file path using context configuration
+/datum/nmcontext/proc/get_file_path(relative_path, file_type = "config")
+	if(config["prefix_[file_type]"])
+		relative_path = "[config["prefix_[file_type]"]]/[relative_path]"
+	if(fexists(relative_path))
+		return relative_path
+	CRASH("Nightmare context '[name]' failed to find file in scope '[file_type]': [relative_path]")
 
-/// Run scenario steps synchronously - sleeps
-/datum/nmcontext/proc/run_steps()
-	PROTECTED_PROC(TRUE)
-	// set waitfor = TRUE
-	. = NM_TASK_ERROR
-	var/retval
-	while(!done)
-		if(TICK_CHECK_HIGH_PRIORITY)
-			stoplag()
-		retval = maintask.invoke() // Synchronous only
-		if(retval != NM_TASK_PAUSE)
-			break
-	done = TRUE
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NIGHTMARE_SETUP_DONE, src, retval) // To be replaced later for multiple contexts
-	if(retval == NM_TASK_OK)
-		log_debug("NMCTX [name]: Setup finished in [(REALTIMEOFDAY - start_time)/10] seconds")
-	else
-		log_debug("NMCTX [name]: Execution error!")
-	return retval
+/datum/nmcontext/proc/add_task(task)
+	scheduler.add_task(task)
+
+/datum/nmcontext/proc/run_tasks()
+	. = scheduler.invoke_sync()
+
+/// Context belonging to a map scope (ground map, ship map, etc)
+/datum/nmcontext/map
+	// TODO: Factor in map traits to provide info about the map
+	scheduler_type = /datum/nmtask/scheduler/mapload

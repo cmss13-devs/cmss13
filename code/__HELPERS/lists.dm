@@ -2,8 +2,8 @@
 /*
  * Holds procs to help with list operations
  * Contains groups:
- *			Misc
- *			Sorting
+ * Misc
+ * Sorting
  */
 
 /*
@@ -11,7 +11,7 @@
  */
 
 //Returns a list in plain english as a string
-/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+/proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"
@@ -32,7 +32,7 @@
 		return "[output][and_text][input[index]]"
 
 //Returns list element or null. Should prevent "index out of bounds" error.
-proc/listgetindex(var/list/list,index)
+/proc/listgetindex(list/list,index)
 	if(istype(list) && list.len)
 		if(isnum(index))
 			if(InRange(index,1,list.len))
@@ -42,14 +42,14 @@ proc/listgetindex(var/list/list,index)
 	return
 
 //Checks for specific types in a list
-/proc/is_type_in_list(var/atom/A, var/list/L)
+/proc/is_type_in_list(atom/A, list/L)
 	for(var/type in L)
 		if(istype(A, type))
 			return 1
 	return 0
 
 //Removes any null entries from the list
-proc/listclearnulls(list/list)
+/proc/listclearnulls(list/list)
 	if(istype(list))
 		while(null in list)
 			list -= null
@@ -60,7 +60,7 @@ proc/listclearnulls(list/list)
  * If skiprep = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
  */
-/proc/difflist(var/list/first, var/list/second, var/skiprep=0)
+/proc/difflist(list/first, list/second, skiprep=0)
 	if(!islist(first) || !islist(second))
 		return
 	var/list/result = new
@@ -77,7 +77,7 @@ proc/listclearnulls(list/list)
  * If skipref = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
  */
-/proc/uniquemergelist(var/list/first, var/list/second, var/skiprep=0)
+/proc/uniquemergelist(list/first, list/second, skiprep=0)
 	if(!islist(first) || !islist(second))
 		return
 	var/list/result = new
@@ -109,7 +109,7 @@ proc/listclearnulls(list/list)
 	if(L.len)
 		var/picked = rand(1,L.len)
 		. = L[picked]
-		L.Cut(picked,picked+1)			//Cut is far more efficient that Remove()
+		L.Cut(picked,picked+1) //Cut is far more efficient that Remove()
 
 //Returns the top(last) element from the list and removes it from the list (typical stack function)
 /proc/pop(list/L)
@@ -157,12 +157,12 @@ proc/listclearnulls(list/list)
 		var/i
 		while(L_o.len)
 			i = pick(L_o)
-			if(!ref) 	L_n += i
-			else		L_n[i] = L_o[i]
+			if(!ref) L_n += i
+			else L_n[i] = L_o[i]
 			L_o -= i
 
 //Return a list with no duplicate entries
-/proc/uniquelist(var/list/L)
+/proc/uniquelist(list/L)
 	var/list/K = list()
 	for(var/item in L)
 		if(!(item in K))
@@ -170,14 +170,14 @@ proc/listclearnulls(list/list)
 	return K
 
 //Mergesort: divides up the list into halves to begin the sort
-/proc/sortKey(var/list/client/L, var/order = 1)
+/proc/sortKey(list/client/L, order = 1)
 	if(isnull(L) || L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1
 	return mergeKey(sortKey(L.Copy(0,middle)), sortKey(L.Copy(middle)), order)
 
 //Mergsort: does the actual sorting and returns the results back to sortAtom
-/proc/mergeKey(var/list/client/L, var/list/client/R, var/order = 1)
+/proc/mergeKey(list/client/L, list/client/R, order = 1)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -194,7 +194,7 @@ proc/listclearnulls(list/list)
 	return (result + R.Copy(Ri, 0))
 
 // Quicksort implementation
-/proc/sortAtom(var/list/atom/L, var/order = 1)
+/proc/sortAtom(list/atom/L, order = 1)
 	if(isnull(L) || L.len < 2)
 		return L
 	var/startIndex = 1
@@ -238,7 +238,7 @@ proc/listclearnulls(list/list)
 
 
 //Mergesort: Specifically for record datums in a list.
-/proc/sortRecord(var/list/datum/data/record/L, var/field = "name", var/order = 1)
+/proc/sortRecord(list/datum/data/record/L, field = "name", order = 1)
 	if(isnull(L))
 		return list()
 	if(L.len < 2)
@@ -247,7 +247,7 @@ proc/listclearnulls(list/list)
 	return mergeRecordLists(sortRecord(L.Copy(0, middle), field, order), sortRecord(L.Copy(middle), field, order), field, order)
 
 //Mergsort: does the actual sorting and returns the results back to sortRecord
-/proc/mergeRecordLists(var/list/datum/data/record/L, var/list/datum/data/record/R, var/field = "name", var/order = 1)
+/proc/mergeRecordLists(list/datum/data/record/L, list/datum/data/record/R, field = "name", order = 1)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -280,7 +280,8 @@ proc/listclearnulls(list/list)
 	return res
 
 //Mergesort: any value in a list
-/proc/sortList(var/list/L)
+// /!\ doesnt seem to work for assoc lists. use sort_list instead
+/proc/sortList(list/L)
 	RETURN_TYPE(/list)
 	if(!istype(L))
 		return
@@ -290,13 +291,13 @@ proc/listclearnulls(list/list)
 	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
 
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(var/list/L)
+/proc/sortNames(list/L)
 	var/list/Q = new()
 	for(var/atom/x in L)
 		Q[x.name] = x
 	return sortList(Q)
 
-/proc/mergeLists(var/list/L, var/list/R)
+/proc/mergeLists(list/L, list/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -310,15 +311,23 @@ proc/listclearnulls(list/list)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
+/// Sums values in two associative lists, from mergee into result, in place
+/proc/mergeListsSum(list/result, list/mergee)
+	for(var/key as anything in mergee)
+		if(result[key] == null)
+			result[key] = 0
+		result[key] += mergee[key]
+	return result
+
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
-/proc/sortByKey(var/list/L, var/key)
+/proc/sortByKey(list/L, key)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1
 	return mergeKeyedLists(sortByKey(L.Copy(0, middle), key), sortByKey(L.Copy(middle), key), key)
 
-/proc/mergeKeyedLists(var/list/L, var/list/R, var/key)
+/proc/mergeKeyedLists(list/L, list/R, key)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -337,13 +346,13 @@ proc/listclearnulls(list/list)
 
 
 //Mergesort: any value in a list, preserves key=value structure
-/proc/sortAssoc(var/list/L)
+/proc/sortAssoc(list/L)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1 // Copy is first,second-1
 	return mergeAssoc(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle))) //second parameter null = to end of list
 
-/proc/mergeAssoc(var/list/L, var/list/R)
+/proc/mergeAssoc(list/L, list/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -358,13 +367,13 @@ proc/listclearnulls(list/list)
 	return (result + R.Copy(Ri, 0))
 
 // Same as sortAssoc but rather than creating a whole new list keeps the original list ref and just returns that list modified
-/proc/sortAssocKeepList(var/list/L)
+/proc/sortAssocKeepList(list/L)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1 // Copy is first,second-1
 	return mergeAssocKeepList(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle)), L) //second parameter null = to end of list
 
-/proc/mergeAssocKeepList(var/list/L, var/list/R, var/list/original)
+/proc/mergeAssocKeepList(list/L, list/R, list/original)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -399,7 +408,7 @@ proc/listclearnulls(list/list)
 
 	return r
 
-/proc/count_by_type(var/list/L, type)
+/proc/count_by_type(list/L, type)
 	var/i = 0
 	for(var/T in L)
 		if(istype(T, type))
@@ -413,10 +422,10 @@ proc/listclearnulls(list/list)
 //fromIndex and toIndex must be in the range [1,L.len+1]
 //This will preserve associations ~Carnie
 /proc/moveElement(list/L, fromIndex, toIndex)
-	if(fromIndex == toIndex || fromIndex+1 == toIndex)	//no need to move
+	if(fromIndex == toIndex || fromIndex+1 == toIndex) //no need to move
 		return
 	if(fromIndex > toIndex)
-		++fromIndex	//since a null will be inserted before fromIndex, the index needs to be nudged right by one
+		++fromIndex //since a null will be inserted before fromIndex, the index needs to be nudged right by one
 
 	L.Insert(toIndex, null)
 	L.Swap(fromIndex, toIndex)
@@ -427,10 +436,10 @@ proc/listclearnulls(list/list)
 //This will preserve associations ~Carnie
 /proc/moveRange(list/L, fromIndex, toIndex, len=1)
 	var/distance = abs(toIndex - fromIndex)
-	if(len >= distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going. The result being, our range we are moving is shifted left or right by dist elements
+	if(len >= distance) //there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going. The result being, our range we are moving is shifted left or right by dist elements
 		if(fromIndex <= toIndex)
-			return	//no need to move
-		fromIndex += len	//we want to shift left instead of right
+			return //no need to move
+		fromIndex += len //we want to shift left instead of right
 
 		for(var/i=0, i<distance, ++i)
 			L.Insert(fromIndex, null)
@@ -450,7 +459,7 @@ proc/listclearnulls(list/list)
 //Note: if the two ranges overlap, only the destination order will be preserved fully, since some elements will be within both ranges ~Carnie
 /proc/swapRange(list/L, fromIndex, toIndex, len=1)
 	var/distance = abs(toIndex - fromIndex)
-	if(len > distance)	//there is an overlap, therefore swapping each element will require more swaps than inserting new elements
+	if(len > distance) //there is an overlap, therefore swapping each element will require more swaps than inserting new elements
 		if(fromIndex < toIndex)
 			toIndex += len
 		else
@@ -493,6 +502,22 @@ proc/listclearnulls(list/list)
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+///replaces reverseList ~Carnie
+/proc/reverse_range(list/inserted_list, start = 1, end = 0)
+	if(inserted_list.len)
+		start = start % inserted_list.len
+		end = end % (inserted_list.len + 1)
+		if(start <= 0)
+			start += inserted_list.len
+		if(end <= 0)
+			end += inserted_list.len + 1
+
+		--end
+		while(start < end)
+			inserted_list.Swap(start++, end--)
+
+	return inserted_list
 
 //Copies a list, and all lists inside it recusively
 //Does not copy any other reference type
@@ -549,7 +574,7 @@ proc/listclearnulls(list/list)
 	return found
 
 // Mergesorts a list, using the sort callback to determine ordering
-/proc/custom_mergesort(var/list/L, var/datum/callback/sort)
+/proc/custom_mergesort(list/L, datum/callback/sort)
 	if(!L)
 		return L
 

@@ -4,7 +4,7 @@
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
-	density = 1
+	density = TRUE
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
 	health = 600
@@ -25,7 +25,7 @@
 		/obj/structure/girder,
 		/obj/structure/window_frame)
 
-/obj/structure/window_frame/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window_frame/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
@@ -62,13 +62,13 @@
 	relativewall()
 
 /obj/structure/window_frame/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	for(var/obj/effect/alien/weeds/weedwall/frame/WF in loc)
 		qdel(WF)
 	. = ..()
 
-/obj/structure/window_frame/ex_act(var/power)
+/obj/structure/window_frame/ex_act(power)
 	switch(power)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -103,16 +103,15 @@
 		if(buildstacktype)
 			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
+			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				new buildstacktype(loc, buildstackamount)
-				to_chat(user, SPAN_NOTICE(" You deconstruct [src]."))
+				to_chat(user, SPAN_NOTICE("You deconstruct [src]."))
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_W_FRAME, src)
-				qdel(src)
+				deconstruct()
 
 	else if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		if(isliving(G.grabbed_thing))
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)
@@ -126,7 +125,7 @@
 					var/oldloc = loc
 					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
-					M.KnockDown(2)
+					M.apply_effect(2, WEAKEN)
 					user.visible_message(SPAN_WARNING("[user] pulls [M] onto [src]."),
 					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)
@@ -135,7 +134,7 @@
 	else
 		. = ..()
 
-/obj/structure/window_frame/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
 	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -154,16 +153,17 @@
 	take_damage(P.damage)
 	return TRUE
 
-/obj/structure/window_frame/proc/take_damage(var/damage)
+/obj/structure/window_frame/proc/take_damage(damage)
 	health = max(0, (health - damage))
 	health = min(health, max_health)
 
 	if(health <= 0)
-		destroy()
+		deconstruct()
 
-/obj/structure/window_frame/destroy()
-	new buildstacktype(loc, buildstackamount)
-	qdel(src)
+/obj/structure/window_frame/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new buildstacktype(loc, buildstackamount)
+	return ..()
 
 /obj/structure/window_frame/almayer
 	icon_state = "alm_window0_frame"

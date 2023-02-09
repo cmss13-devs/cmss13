@@ -14,14 +14,12 @@
 	speed = XENO_SPEED_TIER_5
 
 	caste_desc = "Ptui!"
-	spit_types = list(/datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
-	behavior_delegate_type = /datum/behavior_delegate/spitter_base
-
-	spit_delay = 40
+	spit_delay = 2.5 SECONDS
 
 	tackle_min = 2
 	tackle_max = 6
@@ -29,7 +27,9 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-/mob/living/carbon/Xenomorph/Spitter
+	minimap_icon = "spitter"
+
+/mob/living/carbon/xenomorph/spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
@@ -44,52 +44,16 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/tail_stab/spitter,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/xeno_spit,
-		/datum/action/xeno_action/onclick/spitter_frenzy,
+		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SPITTER_NORMAL
 
+	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
-
-/mob/living/carbon/Xenomorph/Spitter/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_spitter))
-	. = ..()
-
-/datum/behavior_delegate/spitter_base
-	name = "Base Spitter Behavior Delegate"
-
-	// list of atoms that we cannot apply a DoT effect to
-	var/list/dot_cooldown_atoms = list()
-	var/dot_cooldown_duration = 120 // every 12 seconds
-
-/datum/behavior_delegate/spitter_base/ranged_attack_additional_effects_target(atom/A)
-	if (ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if (H.stat == DEAD)
-			return
-
-	for (var/atom/dotA in dot_cooldown_atoms)
-		if (dotA == A)
-			return
-
-	dot_cooldown_atoms += A
-	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
-
-	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
-
-	if (ismob(A))
-		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)
-		if (istype(SFA) && !SFA.action_cooldown_check())
-			SFA.end_cooldown()
-
-/datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
-	if (A != null && !QDELETED(src))
-		dot_cooldown_atoms -= A
-		if (istype(bound_xeno))
-			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))

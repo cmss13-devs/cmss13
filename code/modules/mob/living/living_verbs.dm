@@ -17,8 +17,8 @@
 
 	//Getting out of someone's inventory.
 	if(istype(loc, /obj/item/holder))
-		var/obj/item/holder/H = loc		//Get our item holder.
-		var/mob/M = H.loc           	//Get our mob holder (if any).
+		var/obj/item/holder/H = loc //Get our item holder.
+		var/mob/M = H.loc //Get our mob holder (if any).
 
 		if(istype(M))
 			M.drop_inv_item_on_ground(H)
@@ -64,14 +64,14 @@
 		BB.eject()
 
 	//getting out of bodyscanner
-	if(loc && (istype(loc, /obj/structure/machinery/bodyscanner)))
-		var/obj/structure/machinery/bodyscanner/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/bodyscanner)))
+		var/obj/structure/machinery/medical_pod/bodyscanner/BB = loc
 		BB.go_out() //This doesn't need flashiness as you can just WASD to walk out anyways
 
 	//getting out of autodoc, resist does the emergency eject
 	//regular ejection is done with verbs and doesnt work for half the time
-	if(loc && (istype(loc, /obj/structure/machinery/autodoc)))
-		var/obj/structure/machinery/autodoc/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/autodoc)))
+		var/obj/structure/machinery/medical_pod/autodoc/BB = loc
 		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
 			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
 			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
@@ -87,8 +87,8 @@
 		BB.move_eject() //Ejection process listed under the machine, no need to list again
 
 	//getting out of sleeper
-	if(loc && (istype(loc, /obj/structure/machinery/sleeper)))
-		var/obj/structure/machinery/sleeper/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/sleeper)))
+		var/obj/structure/machinery/medical_pod/sleeper/BB = loc
 		BB.go_out() //This doesn't need flashiness as the verb is instant as well
 
 	//Breaking out of a locker?
@@ -110,7 +110,7 @@
 		last_special = world.time + 100
 		to_chat(src, SPAN_DANGER("You lean on the back of \the [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
 		for(var/mob/O in viewers(loc))
-			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
 
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
@@ -138,7 +138,7 @@
 			SC.update_icon()
 			to_chat(src, SPAN_DANGER("You successfully break out!"))
 			for(var/mob/O in viewers(loc))
-				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [SC]!</B>"), 1)
+				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [SC]!</B>"), SHOW_MESSAGE_VISIBLE)
 			if(istype(SC.loc, /obj/structure/bigDelivery)) //Do this to prevent contents from being opened into nullspace (read: bluespace)
 				var/obj/structure/bigDelivery/BD = SC.loc
 				BD.attack_hand(src)
@@ -149,8 +149,8 @@
 			C.update_icon()
 			to_chat(src, SPAN_DANGER("You successfully break out!"))
 			for(var/mob/O in viewers(loc))
-				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [C]!</B>"), 1)
-			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect.. read the comment above
+				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [C]!</B>"), SHOW_MESSAGE_VISIBLE)
+			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect... read the comment above
 				var/obj/structure/bigDelivery/BD = C.loc
 				BD.attack_hand(src)
 			C.open()

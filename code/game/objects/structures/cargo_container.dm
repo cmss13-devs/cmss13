@@ -5,10 +5,10 @@
 	icon_state = "blue"
 	bound_width = 32
 	bound_height = 64
-	density = 1
+	density = TRUE
 	health = 200
-	opacity = 1
-	anchored = 1
+	opacity = TRUE
+	anchored = TRUE
 
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
 
@@ -20,13 +20,13 @@
 		if(H.species.can_shred(H))
 
 			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."), \
-					 SPAN_WARNING("You beat against [src] to no effect"), \
-					 "You hear twisting metal.")
+					SPAN_WARNING("You beat against [src] to no effect"), \
+					"You hear twisting metal.")
 
 	if(!damage_dealt)
 		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."), \
-						 SPAN_WARNING("[user] beats against the [src]."), \
-						 "You hear twisting metal.")
+					SPAN_WARNING("[user] beats against the [src]."), \
+					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal
 	name = "Cargo Container"
@@ -35,9 +35,9 @@
 	icon_state = "blue"
 	bound_width = 64
 	bound_height = 32
-	density = 1
+	density = TRUE
 	health = 200
-	opacity = 1
+	opacity = TRUE
 
 
 

@@ -12,14 +12,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/shuttle_optimized = 0 //Have the shuttle's flight subroutines been generated ?
 	var/onboard = 0 //Wether or not the computer is on the physical ship. A bit hacky but that'll do.
 	var/shuttle_type = 0
-	var/skip_time_lock = 0	// Allows admins to var edit the time lock away.
+	var/skip_time_lock = 0 // Allows admins to var edit the time lock away.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
 	var/can_abort_flyby = TRUE
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
 
-	 ///Has it been admin-disabled?
+	///Has it been admin-disabled?
 	var/disabled = FALSE
 
 	var/datum/shuttle/ferry/shuttle_datum
@@ -42,11 +42,25 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	return shuttle
 
+/obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
+/obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/xeno_user = M
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
-	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+
+	if(!allowed(user) || ismaintdrone(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
@@ -62,7 +76,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		log_debug("Shuttle control computer failed to find shuttle with tag '[shuttle_tag]'!")
 		return
 
-	if(!isXeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
+	if(!isxeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
@@ -104,7 +118,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 	ui_interact(user)
 
-/obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = get_shuttle()
 	if (!istype(shuttle))
@@ -221,14 +235,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			else
 				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
 			return
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.queen_locked && !isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
 			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
-		if(SSticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
+		if(SSticker.mode.active_lz != src && !onboard && isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
@@ -242,8 +256,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			var/mob/M = usr
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
-				var/mob/living/carbon/Xenomorph/Queen/Q = M
+			if(isqueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+				var/mob/living/carbon/xenomorph/queen/Q = M
 
 				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
 				var/count = Q.count_hivemember_same_area()
@@ -258,8 +272,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(crash_target == "Cancel")
 					return
 
-				var/i = alert("Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", "Yes", "No")
-				if(i == "No")
+				var/i = tgui_alert(Q, "Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
+				if(i != "Yes")
 					return
 
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
@@ -298,7 +312,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
 					if(Q.hive)
-						addtimer(CALLBACK(Q.hive, /datum/hive_status.proc/abandon_on_hijack), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
+						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
@@ -306,16 +320,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					if(almayer_orbital_cannon)
 						almayer_orbital_cannon.is_disabled = TRUE
-						addtimer(CALLBACK(almayer_orbital_cannon, /obj/structure/orbital_cannon.proc/enable), 10 MINUTES, TIMER_UNIQUE)
+						addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 
 					if(almayer_aa_cannon)
 						almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
-						update_use_power(4080)
+						use_power(4080)
 					shuttle.launch(src)
 
-			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
+			else if(!onboard && isqueen(M) && shuttle.location == 1 && !shuttle.iselevator)
 				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
@@ -468,7 +482,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			to_chat(usr, SPAN_WARNING("The console flashes a warning about the rear door not being present."))
 
 	if(href_list["cancel_flyby"])
-		if(isXeno(usr))
+		if(isxeno(usr))
 			to_chat(usr, SPAN_WARNING("You have no idea how to use this button!"))
 			return
 		if(!allowed(usr))
@@ -496,12 +510,13 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	ui_interact(usr)
 
 
-/obj/structure/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/computer/shuttle_control/bullet_act(obj/item/projectile/Proj)
 	visible_message("[Proj] ricochets off [src]!")
 	return 0
 
 /obj/structure/machinery/computer/shuttle_control/ex_act(severity)
-	if(unacidable) return //unacidable shuttle consoles are also immune to explosions.
+	if(unacidable)
+		return //unacidable shuttle consoles are also immune to explosions.
 	..()
 
 
@@ -568,7 +583,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony/proc/animate_on()
@@ -602,7 +617,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/trijent/proc/animate_on()

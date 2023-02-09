@@ -6,22 +6,22 @@
 
 /datum/language
 	var/name = "an unknown language" // Fluff name of language if any.
-	var/desc = "A language."         // Short description for 'Check Languages'.
-	var/speech_verb = "says"         // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"            // Used when sentence ends in a ?
-	var/exclaim_verb = "exclaims"    // Used when sentence ends in a !
-	var/signlang_verb = list()       // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"         	 // CSS style to use for strings in this language.
-	var/key = "x"                    // Character used to speak in language eg. :o for Unathi.
-	var/flags = 0                    // Various language flags.
-	var/native                       // If set, non-native speakers will have trouble speaking.
+	var/desc = "A language."  // Short description for 'Check Languages'.
+	var/speech_verb = "says"  // 'says', 'hisses', 'farts'.
+	var/ask_verb = "asks" // Used when sentence ends in a ?
+	var/exclaim_verb = "exclaims" // Used when sentence ends in a !
+	var/signlang_verb = list()    // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
+	var/colour = "body"  // CSS style to use for strings in this language.
+	var/key = "x" // Character used to speak in language eg. :o for Unathi.
+	var/flags = 0 // Various language flags.
+	var/native    // If set, non-native speakers will have trouble speaking.
 
-	var/list/syllables                // Used when scrambling text for a non-speaker.
-	var/sentence_chance = 5      // Likelihood of making a new sentence after each syllable.
-	var/space_chance = 55        // Likelihood of getting a space in the random scramble string
+	var/list/syllables // Used when scrambling text for a non-speaker.
+	var/sentence_chance = 5   // Likelihood of making a new sentence after each syllable.
+	var/space_chance = 55 // Likelihood of getting a space in the random scramble string
 	var/list/scramble_cache = list()
 
-/datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/proc/broadcast(mob/living/speaker, message, speaker_mask)
 
 	log_say("[key_name(speaker)] : ([name]) [message]")
 
@@ -39,10 +39,10 @@
 			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[colour]'>[message]</span><span class='message'>\"</span></span></span></i>"
 			to_chat(player, "[msg]")
 
-/datum/language/proc/check_special_condition(var/mob/other)
+/datum/language/proc/check_special_condition(mob/other)
 	return 1
 
-/datum/language/proc/get_spoken_verb(var/msg_end)
+/datum/language/proc/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return exclaim_verb

@@ -2,28 +2,13 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC.OOC"
 
-	if(usr.talked == 2)
-		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
-		return
-	if((usr.talked == 1) && (usr.chatWarn >= 5))
-		usr.talked = 2
-		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
-		if(usr.chatWarn > 10)
-			message_staff("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
-		addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM, TIMER_UNIQUE)
-		return
-	else if(usr.talked == 1)
-		to_chat(usr, SPAN_NOTICE("You just said something, take a breath."))
-		usr.chatWarn++
-		return
-
-	if(!mob)	return
+	if(!mob) return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
 
 	msg = trim(strip_html(msg))
-	if(!msg)	return
+	if(!msg) return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
@@ -45,6 +30,9 @@
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			message_staff("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
+
+	if(!attempt_talking(msg))
+		return
 
 	log_ooc("[mob.name]/[key] : [msg]")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
@@ -81,10 +69,6 @@
 				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
 					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
 			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
-
-	usr.talked = 1
-	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
-
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."
@@ -97,29 +81,13 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC.OOC"
 
-	if(usr.talked == 2)
-		to_chat(usr, SPAN_DANGER("Your spam has been consumed for its nutritional value."))
-		return
-	if((usr.talked == 1) && (usr.chatWarn >= 5))
-		usr.talked = 2
-		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
-		if(usr.chatWarn >10)
-			message_staff("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
-		addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM, TIMER_UNIQUE)
-		return
-	else if(usr.talked == 1)
-		to_chat(usr, SPAN_NOTICE("You just said something, take a breath."))
-		usr.chatWarn++
-		return
-
-
-	if(!mob)	return
+	if(!mob) return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
 	msg = trim(strip_html(msg))
-	if(!msg)	return
+	if(!msg) return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
 		to_chat(src, SPAN_DANGER("You have LOOC muted."))
@@ -129,8 +97,8 @@
 		if(!looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
-		if(!dlooc_allowed && (mob.stat == DEAD || isobserver(mob)))
-			to_chat(usr, SPAN_DANGER("LOOC for dead mobs has been turned off."))
+		if(!dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
+			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted)."))
@@ -141,6 +109,9 @@
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			message_staff("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
 			return
+
+	if(!attempt_talking(msg))
+		return
 
 	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
@@ -165,8 +136,8 @@
 		if(C.prefs.toggles_chat & CHAT_LOOC)
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
-	if(mob.looc_overhead)
-		var/transmit_language = isXeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
+	if(mob.looc_overhead || ooc_allowed)
+		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
 		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
 
 	// Now handle admins
@@ -183,8 +154,6 @@
 			if (C.mob in heard)
 				prefix = "LOOC"
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
-	usr.talked = 1
-	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
 
 /client/verb/round_info()
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

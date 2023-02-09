@@ -26,7 +26,7 @@
 
 	for(var/obj/structure/machinery/door/D in A)
 		if(!D.density)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	if(use_umbilical && location == 0)
 		var/umbili_id
@@ -37,7 +37,7 @@
 		else return
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(!PD.density && PD.id == umbili_id)
-				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(PD, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 	if(use_small_docks && location == 0)
 		var/smalldock_id
 		if(istype(area_station, /area/shuttle/distress/arrive_n_engi))
@@ -47,7 +47,7 @@
 		else return
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(!PD.density && PD.id == smalldock_id)
-				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(PD, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 
 
@@ -57,11 +57,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in A)
 		if(D.density)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	for(var/obj/structure/machinery/door/airlock/D in A)
 		if(D.density)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 
 	if(use_umbilical && location == 0) //arrival at almayer
@@ -74,7 +74,7 @@
 		//open the almayer's north of south umbilical shutters and the shuttle's north or south shutters
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(PD.density && PD.id == umbili_id)
-				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(PD, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	if(use_small_docks && location == 0) //arrival at almayer
 		var/smalldock_id
@@ -85,12 +85,12 @@
 		else return
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(PD.density && PD.id == smalldock_id)
-				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(PD, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	else
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in A)
 			if(P.density)
-				INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 		var/shutter_id
 		if(istype(area_station, /area/shuttle/distress/arrive_2))
@@ -102,7 +102,7 @@
 		if(shutter_id)
 			for(var/obj/structure/machinery/door/poddoor/shutters/T in machines)
 				if(T.density && shutter_id == T.id)
-					INVOKE_ASYNC(T, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(T, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 
 
@@ -112,7 +112,7 @@
 	unacidable = TRUE
 	density = TRUE
 
-/obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))

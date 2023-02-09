@@ -3,14 +3,16 @@
  * also scraps of paper
  */
 
+#define MAX_FIELDS 51
+
 /obj/item/paper
 	name = "paper"
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	pickupsound = 'sound/handling/paper_pickup.ogg'
-	dropsound = 'sound/handling/paper_drop.ogg'
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
@@ -18,12 +20,12 @@
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
+	var/info //What's actually written on the paper.
+	var/info_links //A different version of the paper which includes html links at fields and EOF
+	var/stamps //The (text for the) stamps on the paper.
+	var/fields //Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
@@ -64,9 +66,7 @@
 	icon_state = "paper"
 
 /obj/item/paper/get_examine_text(mob/user)
-//	..()	//We don't want them to see the dumb "this is a paper" thing every time.
-// I didn't like the idea that people can read tiny pieces of paper from across the room.
-// Now you need to be next to the paper in order to read it.
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
@@ -75,7 +75,7 @@
 		else
 			read_paper(user)
 	else
-		return list(SPAN_NOTICE("It is too far away."))
+		. += SPAN_NOTICE("It is too far away.")
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
@@ -98,9 +98,9 @@
 
 /obj/item/paper/attack_self(mob/living/user)
 	..()
-	examine(user)
+	read_paper(user)
 
-/obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)
@@ -129,19 +129,19 @@
 				H.update_body()
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
-				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
 					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/paper/get_vv_options()
+/obj/item/paper/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
-/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -185,7 +185,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, 15), i++)
+	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
 		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
@@ -199,7 +199,7 @@
 	update_icon()
 
 
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/tool/pen/P, mob/user as mob, var/iscrayon = 0)
+/obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -258,7 +258,7 @@
 
 		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
+// t = replacetext(t, "#", "") // Junk converted to nothing!
 
 //Count the fields
 	var/laststart = 1
@@ -267,7 +267,8 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 20)
+		fields = min(fields+1, MAX_FIELDS)
+		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 	return t
 
 
@@ -334,7 +335,7 @@
 
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
-		if(!istype(i, /obj/item/tool/pen))
+		if(!HAS_TRAIT(i, TRAIT_TOOL_PEN))
 			if(!istype(i, /obj/item/toy/crayon))
 				return
 			iscrayon = 1
@@ -356,7 +357,7 @@
 		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 		update_icon()
-
+		playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
@@ -384,8 +385,8 @@
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
 
-	else if(istype(P, /obj/item/tool/pen) || istype(P, /obj/item/toy/crayon))
-		if(istype(P, /obj/item/tool/pen))
+	else if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
+		if(HAS_TRAIT(P, TRAIT_TOOL_PEN))
 			var/obj/item/tool/pen/p = P
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
@@ -492,7 +493,7 @@
 /obj/item/paper/flag
 	icon_state = "flag_neutral"
 	item_state = "paper"
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/item/paper/jobs
 	name = "Job Information"
@@ -501,7 +502,7 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	var/photo_id = 0.0
+	var/photo_id = 0
 	item_state = "paper"
 
 /obj/item/paper/sop
@@ -542,7 +543,7 @@
 
 /obj/item/paper/lv_624/cheese
 	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
@@ -631,7 +632,7 @@
 			if(note_type == "test")
 				random_chem = pick(chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+				random_chem = pick( prob(55);pick(chemical_gen_classes_list["T2"]),
 									prob(30);pick(chemical_gen_classes_list["T3"]),
 									prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)
@@ -642,6 +643,7 @@
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
+			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
@@ -657,6 +659,7 @@
 			if(full_report)
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
@@ -672,12 +675,14 @@
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
+			icon_state = "paper_wy_grant"
 			name = "Research Grant"
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
@@ -752,7 +757,7 @@
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/research_report/proc/generate(var/datum/reagent/S, var/info_only = FALSE)
+/obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
@@ -764,25 +769,30 @@
 			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
+			icon_state = "paper_wy_full_report"
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
+			icon_state = "paper_wy_partial_report"
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
+		icon_state = "paper_wy_partial_report"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
+		icon_state = "paper_wy_full_report"
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id] && !info_only)
+		icon_state = "paper_wy_synthesis"
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
@@ -793,7 +803,7 @@
 				info += "<BR>Reaction would require the following catalysts:<BR>\n"
 				for(var/I in C.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						completed = FALSE
 					else
@@ -837,7 +847,7 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
+/obj/item/paper/fingerprint/Initialize(mapload, list/prints)
 	. = ..()
 	var/template = {"\[center\]\[logo\]\[/center\]"}
 
@@ -855,3 +865,4 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+#undef MAX_FIELDS

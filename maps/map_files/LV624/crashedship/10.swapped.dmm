@@ -48,7 +48,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "iF" = (
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "iK" = (
@@ -234,7 +234,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "Jl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -287,7 +287,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "Ue" = (
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/foamed_metal,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
@@ -314,7 +314,7 @@
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "WE" = (
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
 /obj/item/stack/cable_coil/random,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)

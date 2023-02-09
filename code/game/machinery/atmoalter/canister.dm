@@ -2,14 +2,14 @@
 	name = "canister"
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
-	density = 1
-	health = 100.0
+	density = TRUE
+	health = 100
 	flags_atom = FPRINT|CONDUCT
 
 
 	var/canister_color = "yellow"
 	var/can_label = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 
 /obj/structure/machinery/portable_atmospherics/canister/sleeping_agent
 	name = "Canister: \[N2O\]"
@@ -82,21 +82,21 @@ update_flag
 	return
 
 
-/obj/structure/machinery/portable_atmospherics/canister/update_health(var/damage = 0)
+/obj/structure/machinery/portable_atmospherics/canister/update_health(damage = 0)
 	..()
 	if (health <= 20)
 		destroyed = 1
 		playsound(src.loc, 'sound/effects/spray.ogg', 25, 1, 5)
-		density = 0
+		density = FALSE
 		update_icon()
 
-/obj/structure/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/canister/bullet_act(obj/item/projectile/Proj)
 	if(Proj.ammo.damage)
 		update_health(round(Proj.ammo.damage / 2))
 	..()
 	return 1
 
-/obj/structure/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attackby(obj/item/W as obj, mob/user as mob)
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
 		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
 		update_health(W.force)
@@ -105,10 +105,10 @@ update_flag
 
 	nanomanager.update_uis(src) // Update all NanoUIs attached to src
 
-/obj/structure/machinery/portable_atmospherics/canister/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attack_hand(mob/user as mob)
 	return src.ui_interact(user)
 
 /obj/structure/machinery/portable_atmospherics/canister/phoron/New()

@@ -4,14 +4,15 @@
 	icon = 'icons/obj/items/organs.dmi'
 	icon_state = "appendix"
 
-	health = 100                              // Process() ticks before death.
+	health = 100   // Process() ticks before death.
 
-	var/fresh = 3                             // Squirts of blood left in it.
-	var/dead_icon                             // Icon used when the organ dies.
-	var/robotic                               // Is the limb prosthetic?
-	var/organ_tag                             // What slot does it go in?
-	var/organ_type = /datum/internal_organ    // Used to spawn the relevant organ data when produced via a machine or spawn().
-	var/datum/internal_organ/organ_data       // Stores info when removed.
+	var/fresh = 3  // Squirts of blood left in it.
+	var/dead_icon  // Icon used when the organ dies.
+	var/robotic    // Is the limb prosthetic?
+	var/organ_tag  // What slot does it go in?
+	var/organ_type = /datum/internal_organ // Used to spawn the relevant organ data when produced via a machine or spawn().
+	var/datum/internal_organ/organ_data    // Stores info when removed.
+	black_market_value = 25
 
 /obj/item/organ/attack_self(mob/user)
 	..()
@@ -75,6 +76,7 @@
 	fresh = 6 // Juicy.
 	dead_icon = "heart-off"
 	organ_type = /datum/internal_organ/heart
+	black_market_value = 35
 
 /obj/item/organ/lungs
 	name = "lungs"
@@ -89,6 +91,7 @@
 	gender = PLURAL
 	organ_tag = "kidneys"
 	organ_type = /datum/internal_organ/kidneys
+	black_market_value = 35
 
 /obj/item/organ/eyes
 	name = "eyeballs"
@@ -110,31 +113,35 @@
 	icon_state = "heart-prosthetic"
 	robotic = ORGAN_ROBOT
 	organ_type = /datum/internal_organ/heart/prosthetic
+	black_market_value = 0
 
 /obj/item/organ/lungs/prosthetic
 	robotic = ORGAN_ROBOT
 	name = "gas exchange system"
 	icon_state = "lungs-prosthetic"
 	organ_type = /datum/internal_organ/lungs/prosthetic
+	black_market_value = 0
 
 /obj/item/organ/kidneys/prosthetic
 	robotic = ORGAN_ROBOT
 	name = "prosthetic kidneys"
 	icon_state = "kidneys-prosthetic"
 	organ_type = /datum/internal_organ/kidneys/prosthetic
-
+	black_market_value = 0
 
 /obj/item/organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT
 	name = "visual prosthesis"
 	icon_state = "eyes-prosthetic"
 	organ_type = /datum/internal_organ/eyes/prosthetic
+	black_market_value = 0
 
 /obj/item/organ/liver/prosthetic
 	robotic = ORGAN_ROBOT
 	name = "toxin filter"
 	icon_state = "liver-prosthetic"
 	organ_type = /datum/internal_organ/liver/prosthetic
+	black_market_value = 0
 
 /obj/item/organ/brain/prosthetic
 	robotic = ORGAN_ROBOT
@@ -143,7 +150,7 @@
 	organ_type = /datum/internal_organ/brain/prosthetic
 
 
-/obj/item/organ/proc/removed(var/mob/living/target, var/mob/living/user, var/cause = "organ harvesting")
+/obj/item/organ/proc/removed(mob/living/target, mob/living/user, cause = "organ harvesting")
 
 	if(!target || !user)
 		return
@@ -154,7 +161,7 @@
 		msg_admin_attack("[user.name] ([user.ckey]) removed a vital organ ([src]) from [target.name] ([target.ckey]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		target.death(cause)
 
-/obj/item/organ/eyes/removed(var/mob/living/target,var/mob/living/user)
+/obj/item/organ/eyes/removed(mob/living/target, mob/living/user)
 
 	if(!eye_colour)
 		eye_colour = list(0,0,0)
@@ -174,10 +181,10 @@
 		H.b_eyes = 0
 		H.update_body()
 
-/obj/item/organ/proc/replaced(var/mob/living/target)
+/obj/item/organ/proc/replaced(mob/living/target)
 	return
 
-/obj/item/organ/eyes/replaced(var/mob/living/target)
+/obj/item/organ/eyes/replaced(mob/living/target)
 
 	// Apply our eye colour to the target.
 	var/mob/living/carbon/human/H = target

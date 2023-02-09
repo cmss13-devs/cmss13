@@ -3,7 +3,7 @@
 	desc = "An adapter for regular, supply and scrubbers pipes"
 	icon_state = "map_universal"
 
-/obj/structure/pipes/standard/simple/visible/universal/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/simple/visible/universal/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 	alpha = 255
@@ -20,7 +20,7 @@
 	desc = "An adapter for regular, supply and scrubbers pipes"
 	icon_state = "map_universal"
 
-/obj/structure/pipes/standard/simple/hidden/universal/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/simple/hidden/universal/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 	alpha = 255
@@ -32,13 +32,13 @@
 	universal_underlays(dir)
 	universal_underlays(turn(dir, -180))
 
-/obj/structure/pipes/proc/universal_underlays(var/direction)
+/obj/structure/pipes/proc/universal_underlays(direction)
 	var/turf/T = loc
 	add_underlay_adapter(T, direction)
 	add_underlay_adapter(T, direction)
 	add_underlay_adapter(T, direction)
 
-/obj/structure/pipes/proc/add_underlay_adapter(var/turf/T, var/direction) //modified from add_underlay, does not make exposed underlays
+/obj/structure/pipes/proc/add_underlay_adapter(turf/T, direction) //modified from add_underlay, does not make exposed underlays
 	if(T.intact_tile && level == 1)
 		underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(src), "down")
 	else
@@ -57,7 +57,7 @@
 /obj/structure/pipes/standard/cap/create_valid_directions()
 	valid_directions = list(dir)
 
-/obj/structure/pipes/standard/cap/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/cap/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -115,7 +115,7 @@
 	desc = "A large vessel containing pressurized gas."
 	dir = SOUTH
 	valid_directions = list(SOUTH)
-	density = 1
+	density = TRUE
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

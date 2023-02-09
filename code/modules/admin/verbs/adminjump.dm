@@ -4,7 +4,7 @@
 /mob/dead/observer/on_mob_jump()
 	following = null
 
-/client/proc/jump_to_area(var/area/A in return_sorted_areas())
+/client/proc/jump_to_area(area/A in return_sorted_areas())
 	set name = "Jump to Area"
 	set category = null
 
@@ -23,7 +23,7 @@
 
 	message_staff(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
 
-/client/proc/jump_to_turf(var/turf/T in turfs)
+/client/proc/jump_to_turf(turf/T in turfs)
 	set name = "Jump to Turf"
 	set category = null
 
@@ -43,7 +43,7 @@
 	src.mob.forceMove(T)
 	return
 
-/client/proc/jump_to_object(var/obj/O in GLOB.object_list)
+/client/proc/jump_to_object(obj/O as obj in world)
 	set name = "Jump to Object"
 	set category = null
 
@@ -65,7 +65,7 @@
 		A.forceMove(object_location)
 		message_staff(WRAP_STAFF_LOG(usr, "jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z])."), O.x, O.y, O.z)
 
-/client/proc/jumptomob(var/mob/M in GLOB.mob_list)
+/client/proc/jumptomob(mob/M in GLOB.mob_list)
 	set name = "Jump to Mob"
 	set category = null
 
@@ -160,11 +160,11 @@
 	mob.forceMove(M.loc)
 	message_staff("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 
-/client/proc/Getmob(var/mob/M)
+/client/proc/Getmob(mob/M)
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
 	set category = null
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -197,10 +197,10 @@
 	M.forceMove(get_turf(usr))
 	message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
-/client/proc/sendmob(var/mob/M in sortmobs())
+/client/proc/sendmob(mob/M in sortmobs())
 	set category = "Admin"
 	set name = "Send Mob"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")

@@ -3,17 +3,18 @@
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
 	health = 50
+	minimap_color = MINIMAP_FENCE
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 
-/obj/structure/fence/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
@@ -33,7 +34,7 @@
 	if(make_hit_sound)
 		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 
-/obj/structure/fence/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/fence/bullet_act(obj/item/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -49,10 +50,8 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			health -= severity/2
 			healthcheck(0, 1)
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			qdel(src)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src) //Nope
+		if(EXPLOSION_THRESHOLD_LOW to INFINITY)
+			deconstruct(TRUE)
 
 /obj/structure/fence/hitby(atom/movable/AM)
 	..()
@@ -106,7 +105,7 @@
 				R.use(amount_needed)
 				health = health_max
 				cut = 0
-				density = 1
+				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
@@ -121,11 +120,10 @@
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			new /obj/item/stack/rods(loc, 10)
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
 			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
-			qdel(src)
+			deconstruct()
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
@@ -145,12 +143,12 @@
 				if(GRAB_AGGRESSIVE)
 					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
 					if(prob(50))
-						M.KnockDown(1)
+						M.apply_effect(1, WEAKEN)
 					M.apply_damage(10)
 					health -= 25
 				if(GRAB_CHOKE)
 					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
-					M.KnockDown(5)
+					M.apply_effect(5, WEAKEN)
 					M.apply_damage(20)
 					health -= 50
 
@@ -178,10 +176,15 @@
 		healthcheck(1, 1, user, W)
 		..()
 
+/obj/structure/fence/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/rods(loc, 10)
+	return ..()
+
 /obj/structure/fence/proc/cut_grille()
 	health = 0
 	cut = 1
-	density = 0
+	density = FALSE
 	update_icon() //Make it appear cut through!
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
@@ -194,7 +197,7 @@
 	update_nearby_icons()
 
 /obj/structure/fence/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	. = ..()
 

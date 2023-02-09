@@ -15,7 +15,7 @@
 
 	..()
 
-	blinded = null
+	blinded = FALSE
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.
 
 	//Apparently, the person who wrote this code designed it so that
@@ -34,7 +34,7 @@
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
-			if(life_tick % 3 == 0 || failed_last_breath) //First, resolve location and get a breath
+			if(life_tick % 3 == 0) //First, resolve location and get a breath
 				breathe() //Only try to take a breath every 3 ticks, unless suffocating
 
 			//Chemicals in the body
@@ -63,8 +63,9 @@
 		else //Dead
 			if(!undefibbable)
 				handle_necro_chemicals_in_body(delta_time) //Specifically for chemicals that still work while dead.
-				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > revive_grace_period) && !isSynth(src))	//We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
+				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > revive_grace_period) && !issynth(src)) //We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
 					undefibbable = TRUE
+					SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 					med_hud_set_status()
 
 	else if(stat != DEAD)

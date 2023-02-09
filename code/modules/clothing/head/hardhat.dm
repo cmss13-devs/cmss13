@@ -28,8 +28,8 @@
 	icon_state = "hardhat[on]_[hardhat_color]"
 	item_state = "hardhat[on]_[hardhat_color]"
 
-	if(on)	user.SetLuminosity(brightness_on, FALSE, src)
-	else	user.SetLuminosity(0, FALSE, src)
+	if(on) user.SetLuminosity(brightness_on, FALSE, src)
+	else user.SetLuminosity(0, FALSE, src)
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -72,15 +72,15 @@
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ|COVERMOUTH|ALLOWINTERNALS|COVEREYES|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
 	flags_heat_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	max_heat_protection_temperature = FIRE_HELMET_max_heat_protection_temperature
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
 	hardhat_color = "white"
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_heat_protection = BODY_FLAG_HEAD
-	max_heat_protection_temperature = FIRE_HELMET_max_heat_protection_temperature
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
 
 /obj/item/clothing/head/hardhat/dblue
 	icon_state = "hardhat0_dblue"

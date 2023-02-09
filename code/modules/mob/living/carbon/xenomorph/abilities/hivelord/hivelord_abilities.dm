@@ -4,7 +4,7 @@
 	transfer_delay = 5
 	max_range = 7
 
-/datum/action/xeno_action/onclick/toggle_speed
+/datum/action/xeno_action/active_toggle/toggle_speed
 	name = "Resin Walker (50)"
 	action_icon_state = "toggle_speed"
 	plasma_cost = 50
@@ -12,13 +12,23 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-/datum/action/xeno_action/onclick/toggle_speed/can_use_action()
-	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled && (xeno.weedwalking_activated || xeno.plasma_stored >= plasma_cost))
+	action_start_message = "You become one with the resin. You feel the urge to run!"
+	action_end_message = "You feel less in tune with the resin."
+	plasma_use_per_tick = 30
+
+/datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
-/datum/action/xeno_action/onclick/toggle_speed/give_to(mob/living/living_mob)
+/datum/action/xeno_action/active_toggle/toggle_speed/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
-	if(xeno.weedwalking_activated)
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
+	var/datum/behavior_delegate/hivelord_base/hivelord_delegate = xeno.behavior_delegate
+
+	if(!istype(hivelord_delegate))
+		return
+
+	if(hivelord_delegate.resin_walker == TRUE)
 		button.icon_state = "template_active"
+		action_active = TRUE

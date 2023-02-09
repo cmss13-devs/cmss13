@@ -49,7 +49,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
-	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROT
 
 	allowed = list(
 		/obj/item/weapon/gun/,
@@ -65,7 +65,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/device/motiondetector,
-		/obj/item/device/walkman
+		/obj/item/device/walkman,
 	)
 
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -326,25 +326,25 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
-	verb/toggle()
-		set name = "Toggle Coat Buttons"
-		set category = "Object"
-		set src in usr
+/obj/item/clothing/suit/storage/internalaffairs/verb/toggle()
+	set name = "Toggle Coat Buttons"
+	set category = "Object"
+	set src in usr
 
-		if(!usr.canmove || usr.stat || usr.is_mob_restrained())
-			return 0
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+		return 0
 
-		switch(icon_state)
-			if("ia_jacket_open")
-				src.icon_state = "ia_jacket"
-				to_chat(usr, "You button up the jacket.")
-			if("ia_jacket")
-				src.icon_state = "ia_jacket_open"
-				to_chat(usr, "You unbutton the jacket.")
-			else
-				to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are.")
-				return
-		update_clothing_icon()	//so our overlays update
+	switch(icon_state)
+		if("ia_jacket_open")
+			src.icon_state = "ia_jacket"
+			to_chat(usr, "You button up the jacket.")
+		if("ia_jacket")
+			src.icon_state = "ia_jacket_open"
+			to_chat(usr, "You unbutton the jacket.")
+		else
+			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are.")
+			return
+	update_clothing_icon() //so our overlays update
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
@@ -429,6 +429,7 @@
 //Suspenders
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"
+	gender = PLURAL
 	desc = "They suspend pants."
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "suspenders"

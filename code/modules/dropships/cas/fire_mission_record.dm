@@ -1,8 +1,4 @@
-/**
- * A CAS Fire Mission Record is FM firing configuration
- * It defines more precisely the firing pattern of a given weapon alongside FM steps
- * The offsets are transverse from the traveling FM direction
- */
+/// Defines firing patterns in Fire Missions, transverse to its firing direction
 /datum/cas_fire_mission_record
 	/// Weapon relevant to this fire mission record
 	var/obj/structure/dropship_equipment/weapon/weapon

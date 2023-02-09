@@ -21,7 +21,7 @@
 	var/addiction_multiplier = 1
 	var/chemical_id
 
-/datum/disease/addiction/New(var/chem_id, var/potency = 1)
+/datum/disease/addiction/New(chem_id, potency = 1)
 	addiction_multiplier = potency
 	chemical_id = chem_id
 	..(TRUE)
@@ -121,7 +121,7 @@
 				var/affected_organ = pick("heart","lungs","liver","kidneys")
 				var/mob/living/carbon/human/H = affected_mob
 				var/datum/internal_organ/I =  H.internal_organs_by_name[affected_organ]
-				I.damage += 5
+				I.take_damage(5)
 
 	if(prob(2))
 		affected_mob.emote(pick("twitch","blink_r","shiver"))

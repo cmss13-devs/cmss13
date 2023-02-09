@@ -1,0 +1,83 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$small-text: 2vw;
+$large-text: 3vw;
+
+.ResearchTerminal {
+  .compound_label {
+    margin-left: 12px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    display: inline-block;
+    line-height: $large-text;
+    display: flex;
+  }
+
+  span {
+    font-size: $small-text;
+  }
+
+  .compound_actions {
+    margin-bottom: 4px;
+    margin-top: 3px;
+  }
+
+  .TabWrapper {
+    margin-left: -4px;
+    margin-right: -5px;
+  }
+
+  .TabbedContent {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-top: 2vw;
+  }
+
+  .Section {
+    background-color: transparent;
+    box-sizing: content-box;
+
+    .Section__title {
+      margin-bottom: 1vw;
+      font-size: $large-text;
+    }
+
+    .Section__titleText {
+      font-weight: bold;
+      font-size: $large-text;
+    }
+  }
+
+  .purchase-flex {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 1vw;
+  }
+
+  .Button {
+    font-size: $small-text;
+  }
+
+  .Tab__text {
+    font-size: $large-text;
+  }
+
+  .Tab__left {
+    font-size: $large-text;
+  }
+
+  .HiddenButton {
+    visibility: hidden;
+  }
+
+  .Confirm-Dialogue {
+    margin-left: 3px;
+    font-size: $large-text;
+  }
+
+  .table_header {
+    font-size: $large-text;
+  }
+}

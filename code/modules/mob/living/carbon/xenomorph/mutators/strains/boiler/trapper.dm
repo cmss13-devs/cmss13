@@ -16,32 +16,32 @@
 		/datum/action/xeno_action/activable/boiler_trap,
 		/datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
-		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+		/datum/action/xeno_action/onclick/toggle_long_range/trapper,
 	)
 	keystone = TRUE
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_trapper
 
-/datum/xeno_mutator/trapper/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/trapper/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if(. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
-	if(B.is_zoomed)
-		B.zoom_out()
+	var/mob/living/carbon/xenomorph/boiler/boiler = mutator_set.xeno
+	if(boiler.is_zoomed)
+		boiler.zoom_out()
 
-	B.viewsize = TRAPPER_VIEWRANGE
-	B.mutation_type = BOILER_TRAPPER
-	B.plasma_types -= PLASMA_NEUROTOXIN
+	boiler.viewsize = TRAPPER_VIEWRANGE
+	boiler.mutation_type = BOILER_TRAPPER
+	boiler.plasma_types -= PLASMA_NEUROTOXIN
 
-	B.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	B.recalculate_everything()
+	boiler.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	boiler.recalculate_everything()
 
-	apply_behavior_holder(B)
+	apply_behavior_holder(boiler)
 
-	mutator_update_actions(B)
-	MS.recalculate_actions(description, flavor_description)
+	mutator_update_actions(boiler)
+	mutator_set.recalculate_actions(description, flavor_description)
 
 
 /datum/behavior_delegate/boiler_trapper
@@ -63,31 +63,31 @@
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isXeno(bound_xeno))
-			var/mob/living/carbon/Xenomorph/X = bound_xeno
-			X.speed_modifier -= temp_movespeed_amount
-			X.recalculate_speed()
-			addtimer(CALLBACK(src, .proc/remove_speed_buff), temp_movespeed_duration)
+		if (isxeno(bound_xeno))
+			var/mob/living/carbon/xenomorph/xeno = bound_xeno
+			xeno.speed_modifier -= temp_movespeed_amount
+			xeno.recalculate_speed()
+			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), temp_movespeed_duration)
 
-/datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+/datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/target_atom)
+	if (!ishuman(target_atom))
 		return
 	if (!istype(bound_xeno))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/human/target_human = target_atom
 	var/datum/effects/boiler_trap/found = null
-	for (var/datum/effects/boiler_trap/F in H.effects_list)
-		if (F.cause_data?.resolve_mob() == bound_xeno)
-			found = F
+	for (var/datum/effects/boiler_trap/trap in target_human.effects_list)
+		if (trap.cause_data?.resolve_mob() == bound_xeno)
+			found = trap
 			break
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
 	if (found)
-		H.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
+		target_human.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
-		H.AdjustSlowed(2)
+		target_human.adjust_effect(2, SLOW)
 		trap_ability.empowering_charge_counter++
 
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
@@ -107,8 +107,8 @@
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isXeno(bound_xeno))
-		var/mob/living/carbon/Xenomorph/X = bound_xeno
-		X.speed_modifier += temp_movespeed_amount
-		X.recalculate_speed()
+	if (isxeno(bound_xeno))
+		var/mob/living/carbon/xenomorph/xeno = bound_xeno
+		xeno.speed_modifier += temp_movespeed_amount
+		xeno.recalculate_speed()
 		temp_movespeed_messaged = FALSE

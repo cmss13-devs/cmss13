@@ -19,18 +19,18 @@
 /obj/item/device/camera/siliconcam/drone_camera //currently doesn't offer the verbs, thus cannot be used
 	name = "Drone photo camera"
 
-/obj/item/device/camera/siliconcam/proc/injectaialbum(var/datum/picture/P, var/sufix = "") //stores image information to a list similar to that of the datacore
+/obj/item/device/camera/siliconcam/proc/injectaialbum(datum/picture/P, sufix = "") //stores image information to a list similar to that of the datacore
 	photos_taken++
 	P.fields["name"] = "Image [photos_taken][sufix]"
 	aipictures += P
 
-/obj/item/device/camera/siliconcam/proc/injectmasteralbum(var/datum/picture/P) //stores image information to a list similar to that of the datacore
+/obj/item/device/camera/siliconcam/proc/injectmasteralbum(datum/picture/P) //stores image information to a list similar to that of the datacore
 	var/mob/living/silicon/robot/C = src.loc
 	if(C.connected_ai)
 		var/mob/A = P.fields["author"]
 		C.connected_ai.aiCamera.injectaialbum(P, " (taken by [A.name])")
 		to_chat(C.connected_ai, "<span class='unconscious'>Image recorded and saved by [name]</span>")
-		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>")	//feedback to the Cyborg player that the picture was taken
+		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>") //feedback to the Cyborg player that the picture was taken
 	else
 		injectaialbum(P)
 		to_chat(usr, "<span class='unconscious'>Image recorded</span>")
@@ -63,7 +63,7 @@
 	P.show(usr)
 	to_chat(usr, P.desc)
 
-	// TG uses a special garbage collector.. qdel(P)
+	// TG uses a special garbage collector... qdel(P)
 	qdel(P) //so 10 thousand pictures items are not left in memory should an AI take them and then view them all.
 
 /obj/item/device/camera/siliconcam/proc/deletepicture()
@@ -150,7 +150,7 @@
 
 	deletepicture()
 
-obj/item/device/camera/siliconcam/proc/getsource()
+/obj/item/device/camera/siliconcam/proc/getsource()
 	if(ismob(src.loc))
 		var/mob/M = src.loc
 		if(isRemoteControlling(M))

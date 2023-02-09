@@ -2,9 +2,9 @@
 	icon = 'icons/obj/structures/machinery/scoreboard.dmi'
 	icon_state = "scoreboard"
 	name = "basketball scoreboard"
-	anchored = 1
-	density = 0
-	use_power = 1
+	anchored = TRUE
+	density = FALSE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/id = ""
 
@@ -28,7 +28,7 @@
 	score_state = "s[scoreright%10]d"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 
-/obj/structure/machinery/scoreboard/proc/score(var/side, var/points=2)
+/obj/structure/machinery/scoreboard/proc/score(side, points=2)
 	switch(side)
 		if("left")
 			scoreleft += points
@@ -52,8 +52,8 @@
 	icon_state = "launcherbtt"
 	var/id = null
 	var/active = 0
-	anchored = 1.0
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 

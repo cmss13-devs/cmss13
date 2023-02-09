@@ -1,8 +1,8 @@
 /// Handles setting lastKnownIP and computer_id for use by the ban systems
 /mob/proc/update_Login_details()
 	if(client)
-		lastKnownIP	= client.address
-		computer_id	= client.computer_id
+		lastKnownIP = client.address
+		computer_id = client.computer_id
 
 /mob/Login()
 	if(!client)
@@ -19,7 +19,7 @@
 	update_Login_details()
 
 	client.images = null
-	client.screen = null				//remove hud items just in case
+	client.screen = null //remove hud items just in case
 	if(!hud_used)
 		create_hud()
 	if(hud_used)
@@ -45,8 +45,8 @@
 
 	if(isnewplayer(src))
 		check_event_info()
-	else if(isXeno(src))
-		var/mob/living/carbon/Xenomorph/X = src
+	else if(isxeno(src))
+		var/mob/living/carbon/xenomorph/X = src
 		check_event_info(X.hive.name)
 	else if(!isobserver(src) && faction)
 		check_event_info(faction)
@@ -56,7 +56,7 @@
 			var/datum/callback/CB = foo
 			CB.Invoke()
 
-	client.init_statbrowser()
+	client.init_verbs()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGIN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)

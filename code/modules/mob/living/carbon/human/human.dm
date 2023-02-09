@@ -11,7 +11,8 @@
 			set_species()
 
 	create_reagents(1000)
-	change_real_name(src, "unknown")
+	if(!real_name || !name)
+		change_real_name(src, "unknown")
 
 	. = ..()
 
@@ -20,7 +21,7 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-/mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_HUMAN
@@ -51,28 +52,37 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	if(internal_organs_by_name)
-		for(var/name in internal_organs_by_name)
-			var/datum/internal_organ/I = internal_organs_by_name[name]
-			if(I)
-				I.owner = null
-			internal_organs_by_name[name] = null
-		internal_organs_by_name = null
-
-	if(limbs)
-		for(var/obj/limb/L in limbs)
-			L.owner = null
-			qdel(L)
-		limbs = null
-
-	assigned_equipment_preset = null
-
 	remove_from_all_mob_huds()
+	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
+	QDEL_NULL_LIST(embedded_items)
+	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
+	QDEL_NULL_LIST(limbs)
+	remove_from_all_mob_huds()
+
 	. = ..()
+
+	overlays_standing = null
+	selected_ability = null
+	assigned_squad = null
+
+	//Equipment slots
+	wear_suit = null
+	w_uniform = null
+	shoes = null
+	belt = null
+	gloves = null
+	glasses = null
+	head = null
+	wear_l_ear = null
+	wear_r_ear = null
+	wear_id = null
+	r_store = null
+	l_store = null
+	s_store = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -87,6 +97,9 @@
 
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
+
+	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode))
+		. += "Operation Name: [round_statistics.round_name]"
 
 	if(assigned_squad)
 		if(assigned_squad.overwatch_officer)
@@ -106,21 +119,21 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
 
-/mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-	if(severity >= 30)
-		flash_eyes()
+
 
 	var/b_loss = 0
 	var/f_loss = 0
 
 	var/damage = severity
+	var/bomb_armor = getarmor(null, ARMOR_BOMB)
 
-	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
+	damage = armor_damage_reduction(GLOB.marine_explosive, damage, bomb_armor)
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
@@ -128,29 +141,36 @@
 		var/oldloc = loc
 		gib(last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
-		sleep(1)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
-	var/knockdown_value = min( round( severity*0.1  ,1) ,10)
-	if(knockdown_value > 0)
-		var/obj/item/Item1 = get_active_hand()
-		var/obj/item/Item2 = get_inactive_hand()
-		KnockDown(knockdown_value)
-		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		KnockOut( knockout_value )
-		Daze( knockout_value*2 )
-		explosion_throw(severity, direction)
+	/// Reduces effects by armor value.
+	var/bomb_armor_mult = ((CLOTHING_ARMOR_HARDCORE - bomb_armor) * 0.01)
 
-		if(Item1 && isturf(Item1.loc))
-			Item1.explosion_throw(severity, direction)
-		if(Item2 && isturf(Item2.loc))
-			Item2.explosion_throw(severity, direction)
+	if(severity >= 30)
+		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
+
+	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+	var/knockdown_value = severity * 0.1
+	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+	var/obj/item/item1 = get_active_hand()
+	var/obj/item/item2 = get_inactive_hand()
+	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	var/knockout_value = damage * 0.1
+	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor) * 2, DAZE)
+	explosion_throw(severity, direction)
+
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, direction)
 
 	if(damage >= 0)
 		b_loss += damage * 0.5
@@ -210,7 +230,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -283,7 +303,7 @@
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(var/atom/movable/AM)
+/mob/living/carbon/human/Crossed(atom/movable/AM)
 	if(istype(AM, /obj/structure/machinery/bot/mulebot))
 		var/obj/structure/machinery/bot/mulebot/MB = AM
 		MB.RunOver(src)
@@ -295,7 +315,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.assignment
@@ -307,7 +327,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.registered_name
@@ -317,25 +337,19 @@
 
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
-/mob/living/carbon/human/proc/get_paygrade(size = 1)
-	if(!species)
+/mob/living/carbon/human/get_paygrade(size = 1)
+	var/obj/item/card/id/id = wear_id
+	if(!species || !istype(id))
 		return ""
-
-	switch(species.name)
-		if("Human","Human Hero")
-			var/obj/item/card/id/id = wear_id
-			if(istype(id))
-				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
+	return species.handle_paygrades(id.paygrade, size, gender)
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
-	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
+	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) ) //Wearing a mask which hides our face, use id-name if possible
 		return get_id_name("Unknown")
 	if(head && (head.flags_inv_hide & HIDEFACE) )
-		return get_id_name("Unknown")		//Likewise for hats
+		return get_id_name("Unknown") //Likewise for hats
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
 	if(id_name && (id_name != face_name))
@@ -345,13 +359,13 @@
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/limb/head/head = get_limb("head")
-	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name)	//disfigured. use id-name if possible
+	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name) //disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
@@ -366,8 +380,8 @@
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-	if(status_flags & GODMODE)	return FALSE	//godmode
+/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
+	if(status_flags & GODMODE) return FALSE //godmode
 
 	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -599,7 +613,7 @@
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 								read = 1
@@ -725,7 +739,7 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["b_type"]]")
 									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
 									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
 									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
@@ -886,23 +900,24 @@
 /mob/living/carbon/human/get_eye_protection()
 	var/number = 0
 
-	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
+	if(species && !species.has_organ["eyes"])
+		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
-		return 2
+		return EYE_PROTECTION_WELDING
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)
 		if(I.cut_away)
-			return 2
+			return EYE_PROTECTION_WELDING
 		if(I.robotic == ORGAN_ROBOT)
-			return 2
+			return EYE_PROTECTION_WELDING
 	else
-		return 2
+		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
 		var/obj/item/clothing/C = head
 		number += C.eye_protection
-	if(istype(wear_mask))
+	if(istype(wear_mask, /obj/item/clothing))
 		number += wear_mask.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
@@ -910,7 +925,7 @@
 	return number
 
 
-/mob/living/carbon/human/abiotic(var/full_body = 0)
+/mob/living/carbon/human/abiotic(full_body = 0)
 	if(full_body && ((l_hand && !( l_hand.flags_item & ITEM_ABSTRACT)) || (r_hand && !( r_hand.flags_item & ITEM_ABSTRACT)) || (back || wear_mask || head || shoes || w_uniform || wear_suit || glasses || wear_l_ear || wear_r_ear || gloves)))
 		return TRUE
 
@@ -935,11 +950,11 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "You feel like you are about to throw up!"), 15 SECONDS)
-		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	Stun(5)
+	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
@@ -993,7 +1008,7 @@
 	//Remove any larva.
 	var/obj/item/alien_embryo/A = locate() in src
 	if(A)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in src //if the larva was fully grown, ready to burst.
 		if(L)
 			qdel(L)
 		qdel(A)
@@ -1013,7 +1028,7 @@
 		L.damage = L.min_bruised_damage
 
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(class = 0)
 	var/list/visible_objects = list()
 	for(var/obj/item/W in embedded_items)
 		if(!istype(W, /obj/item/shard/shrapnel))
@@ -1040,7 +1055,7 @@
 				continue
 			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
-		if(prob(30))	// Spam chat less
+		if(prob(30)) // Spam chat less
 			to_chat(src, SPAN_HIGHDANGER("Your movement jostles [W] in your [organ.display_name] painfully."))
 
 /mob/living/carbon/human/verb/check_status()
@@ -1054,7 +1069,7 @@
 	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return
 
 	if(self)
-		var/list/L = get_broken_limbs()	- list("chest","head","groin")
+		var/list/L = get_broken_limbs() - list("chest","head","groin")
 		if(L.len > 0)
 			msg += "Your [english_list(L)] [L.len > 1 ? "are" : "is"] broken\n"
 	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
@@ -1091,18 +1106,32 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/verb/view_objective_memory()
-    set name = "View objectives"
-    set category = "IC"
+	set name = "View objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
-        return
+	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+		return
 
-    mind.view_objective_memories(src)
+	mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/view_research_objective_memory()
+	set name = "View research objectives"
+	set category = "IC"
+
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
+
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+		return
+
+	mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
@@ -1123,7 +1152,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1145,10 +1174,15 @@
 	if(oldspecies)
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
+		if(oldspecies.weed_slowdown_mult != 1)
+			UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
+
+	if(species.weed_slowdown_mult != 1)
+		RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
@@ -1172,11 +1206,11 @@
 	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
-	INVOKE_ASYNC(src, .proc/regenerate_icons)
-	INVOKE_ASYNC(src, .proc/restore_blood)
-	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
+	INVOKE_ASYNC(src, PROC_REF(regenerate_icons))
+	INVOKE_ASYNC(src, PROC_REF(restore_blood))
+	INVOKE_ASYNC(src, PROC_REF(update_body), 1, 0)
 	if(!(species.flags & HAS_UNDERWEAR))
-		INVOKE_ASYNC(src, .proc/remove_underwear)
+		INVOKE_ASYNC(src, PROC_REF(remove_underwear))
 
 	default_lighting_alpha = species.default_lighting_alpha
 	update_sight()
@@ -1186,6 +1220,9 @@
 	else
 		return FALSE
 
+/mob/living/carbon/human/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= species.weed_slowdown_mult
 
 /mob/living/carbon/human/print_flavor_text()
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
@@ -1245,7 +1282,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
+/mob/living/carbon/human/proc/locate_squad_leader(tracker_setting = TRACKER_SL)
 	if(!hud_used)
 		return
 
@@ -1380,35 +1417,6 @@
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
 
-/mob/living/carbon/human/verb/checkSkills()
-	set name = "Check Skills"
-	set category = "IC"
-	set src = usr
-
-	var/dat
-	if(!usr || !usr.skills)
-		dat += "NULL<br/>"
-	else
-		dat += "CQC: [usr.skills.get_skill_level(SKILL_CQC)]<br/>"
-		dat += "Melee: [usr.skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
-		dat += "Firearms: [usr.skills.get_skill_level(SKILL_FIREARMS)]<br/>"
-		dat += "Specialist Weapons: [usr.skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
-		dat += "Endurance: [usr.skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
-		dat += "Engineer: [usr.skills.get_skill_level(SKILL_ENGINEER)]<br/>"
-		dat += "Construction: [usr.skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
-		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
-		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
-		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
-		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
-		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
-		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
-		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
-		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
-		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"
-		dat += "Domestics: [usr.skills.get_skill_level(SKILL_DOMESTIC)]<br/>"
-
-	show_browser(src, dat, "Skills", "checkskills")
-
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"
 	set category = "Object"
@@ -1517,6 +1525,9 @@
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)
 
+/mob/living/carbon/human/synthetic/infiltrator/Initialize(mapload)
+	. = ..(mapload, SYNTH_INFILTRATOR)
+
 /mob/living/carbon/human/synthetic/first/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_ONE)
 
@@ -1525,15 +1536,15 @@
 
 
 /mob/living/carbon/human/resist_fire()
-	if(isYautja(src))
+	if(isyautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(1, TRUE) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(4, TRUE)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1549,22 +1560,26 @@
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
-	if(isYautja(src))
-		KnockDown(1, TRUE)
+	if(isyautja(src))
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
-			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
+			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
-		KnockDown(1.5, TRUE)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
-			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
-	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
-			SPAN_NOTICE("You get rid of the acid."), null, 5)
-	extinguish_acid()
+	if( extinguish_acid() )
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
+	else
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
+
 	return
 
 /mob/living/carbon/human/resist_restraints()
@@ -1605,14 +1620,14 @@
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
 		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
@@ -1631,20 +1646,66 @@
 
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
-		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
+		for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
+			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 
-/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority)
+/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
 
-/mob/living/carbon/human/get_vv_options()
+/mob/living/carbon/human/verb/pose()
+	set name = "Set Pose"
+	set desc = "Sets a description which will be shown when someone examines you."
+	set category = "IC"
+
+	pose =  strip_html(input(usr, "This is [src]. \He is...", "Pose", null)  as text)
+
+/mob/living/carbon/human/verb/set_flavor()
+	set name = "Set Flavour Text"
+	set desc = "Sets an extended description of your character's features."
+	set category = "IC"
+
+	var/HTML = "<body>"
+	HTML += "<tt>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
+	HTML += TextPreview(flavor_texts["general"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=head'>Head:</a> "
+	HTML += TextPreview(flavor_texts["head"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=face'>Face:</a> "
+	HTML += TextPreview(flavor_texts["face"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=eyes'>Eyes:</a> "
+	HTML += TextPreview(flavor_texts["eyes"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=torso'>Body:</a> "
+	HTML += TextPreview(flavor_texts["torso"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=arms'>Arms:</a> "
+	HTML += TextPreview(flavor_texts["arms"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=hands'>Hands:</a> "
+	HTML += TextPreview(flavor_texts["hands"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=legs'>Legs:</a> "
+	HTML += TextPreview(flavor_texts["legs"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
+	HTML += TextPreview(flavor_texts["feet"])
+	HTML += "<br>"
+	HTML += "<hr />"
+	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML += "<tt>"
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
 	. = ..()
-	. += "<option value>-----HUMAN-----</option>"
-	. += "<option value='?_src_=vars;edit_skill=\ref[src]'>Edit Skills</option>"
-	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
-	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"

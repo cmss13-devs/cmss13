@@ -22,11 +22,11 @@
 	possible_transfer_amounts = null
 	w_class = SIZE_TINY
 	volume = 60
-	reagent_desc_override = TRUE		//it has a special examining mechanic
-	var/identificable = TRUE			//can medically trained people tell what's in it?
-	var/pill_desc = "An unknown pill."	// The real description of the pill, shown when examined by a medically trained person
-	var/pill_icon_class = "random"		// Pills with the same icon class share icons
-	var/list/pill_initial_reagents		// Default reagents if any
+	reagent_desc_override = TRUE //it has a special examining mechanic
+	var/identificable = TRUE //can medically trained people tell what's in it?
+	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
+	var/pill_icon_class = "random" // Pills with the same icon class share icons
+	var/list/pill_initial_reagents // Default reagents if any
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -48,7 +48,7 @@
 			. += pill_info
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!identificable)
 		return
@@ -139,7 +139,7 @@
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), 1)
+			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
 
 		QDEL_IN(src, 5)
 
@@ -181,9 +181,9 @@
 	pill_icon_class = "kelo"
 
 /obj/item/reagent_container/pill/oxycodone
-    pill_desc = "A Oxycodone pill. A powerful painkiller."
-    pill_initial_reagents = list("oxycodone" = 15)
-    pill_icon_class = "oxy"
+	pill_desc = "A Oxycodone pill. A powerful painkiller."
+	pill_initial_reagents = list("oxycodone" = 15)
+	pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."
@@ -223,6 +223,12 @@
 /obj/item/reagent_container/pill/happy
 	pill_desc = "A Happy Pill! Happy happy joy joy!"
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
+	pill_icon_class = "drug"
+
+/obj/item/reagent_container/pill/zombie_powder
+	desc = "A strange pill that smells like death itself."
+	pill_desc = "A strange pill that smells like death itself."
+	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
 	pill_icon_class = "drug"
 
 /obj/item/reagent_container/pill/russianRed

@@ -50,10 +50,10 @@
 	open_sound = 'sound/effects/vegetation_walk_1.ogg'
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 	item_path = /obj/item/bodybag/tarp
-	anchored = 0
-	var/uncloak_time = 3	//in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
-	var/cloak_time = 15		//ditto for cloaking
-	var/closed_alpha = 60	//how much ALPHA the tarp has once it's fully cloaked.
+	anchored = FALSE
+	var/uncloak_time = 3 //in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
+	var/cloak_time = 15 //ditto for cloaking
+	var/closed_alpha = 60 //how much ALPHA the tarp has once it's fully cloaked.
 	var/can_store_dead = FALSE
 	var/is_animating = FALSE
 	var/first_open = TRUE
@@ -76,7 +76,7 @@
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 
 	item_path = /obj/item/bodybag/tarp/reactive
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/closet/bodybag/tarp/reactive/scout
 	name = "\improper V3 reactive thermal tarp (folded)"
@@ -97,7 +97,7 @@
 		return
 	. = ..()
 
-/obj/structure/closet/bodybag/tarp/store_mobs(var/stored_units)//same as stasis bag proc
+/obj/structure/closet/bodybag/tarp/store_mobs(stored_units)//same as stasis bag proc
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)
@@ -149,15 +149,15 @@
 	desc = "Insert this into a specialist vendor in order to access a single highly dangerous weapon."
 	icon_state = "coin_adamantine"
 
-	attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
-		return
+/obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
+	return
 
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
-	anchored = 1
-	opacity = 1
-	density = 1
+	anchored = TRUE
+	opacity = TRUE
+	density = TRUE
 	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc"
 
@@ -274,6 +274,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Sugar Cookies"
 	desc = "The USCM M25 Sugar Cookies Meal was designed to give marines a feeling of Christmas joy. But to the bemusement of superior officers, the costs-savings measure of simply fabricating protein bars in the shape of cookies with chocolate substitute chips and the replacement of the expected milk with artificially colored water did not go over well with most marines."
 	icon_state = "mreCookies"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1/Initialize()
 	. = ..()
@@ -285,6 +286,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Gingerbread Cookies"
 	desc = "The USCM M25 Gingerbread Cookies Meal was designed to give marines convenient and cheap access to gingerbread cookies as a replacement for annual gingerbread making classes due to rising expenses and comically low success rates for the Basic Holidays Festivities Course. However, due to cost saving measures, these cookies seldom inspire happiness, nor holiday spirit."
 	icon_state = "mreGingerbread"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas2/Initialize()
 	. = ..()
@@ -296,6 +298,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Fruitcake"
 	desc = "The USCM M25 Fruitcake Meal was the third meal designed by an officers' committee as part of the M25 Project; this shows through the terrible hardness and tartness of the bread and raisined fruits. It can be logically deduced that the people who vended this option are worse than the Grinch and the Miser combined, along with the people who designed and prepared this fruitcake."
 	icon_state = "mreFruitcake"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas3/Initialize()
 	. = ..()

@@ -1,9 +1,9 @@
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
 
-#define DEPARTMENT_WY		"Weyland-Yutani"
-#define DEPARTMENT_HC		"USCM High Command"
-#define DEPARTMENT_PROVOST	"USCM Provost Office"
+#define DEPARTMENT_WY "Weyland-Yutani"
+#define DEPARTMENT_HC "USCM High Command"
+#define DEPARTMENT_PROVOST "USCM Provost Office"
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -12,7 +12,7 @@ var/list/alldepartments = list()
 	icon_state = "fax"
 	anchored = TRUE
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
@@ -38,21 +38,13 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 	allfaxes += src
-
-	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		alldepartments += department
-	if(!(DEPARTMENT_WY in alldepartments))
-		alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in alldepartments))
-		alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in alldepartments))
-		alldepartments += DEPARTMENT_PROVOST
+	update_departments()
 
 /obj/structure/machinery/faxmachine/Destroy()
 	allfaxes -= src
 	. = ..()
 
-/obj/structure/machinery/faxmachine/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -95,7 +87,7 @@ var/list/alldepartments = list()
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
@@ -109,6 +101,15 @@ var/list/alldepartments = list()
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
+/obj/structure/machinery/faxmachine/proc/update_departments()
+	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
+		alldepartments += department
+	if(!(DEPARTMENT_WY in alldepartments))
+		alldepartments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in alldepartments))
+		alldepartments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in alldepartments))
+		alldepartments += DEPARTMENT_PROVOST
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -232,13 +233,13 @@ var/list/alldepartments = list()
 
 	add_fingerprint(usr)
 
-/obj/structure/machinery/faxmachine/get_vv_options()
+/obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 
-/proc/highcom_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/highcom_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 
@@ -255,7 +256,7 @@ var/list/alldepartments = list()
 	GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
-/proc/provost_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/provost_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 
@@ -273,7 +274,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 
-/proc/company_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/company_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
@@ -287,7 +288,7 @@ var/list/alldepartments = list()
 	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
-/proc/announce_fax(var/msg_admin, var/msg_ghost)
+/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
@@ -308,12 +309,12 @@ var/list/alldepartments = list()
 			to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 
-/proc/general_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/general_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
-/proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/target_department, var/network, var/obj/structure/machinery/faxmachine/origin)
+/proc/SendFax(sent, sentname, mob/Sender, target_department, network, obj/structure/machinery/faxmachine/origin)
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if(F != origin && F.department == target_department)
 			if(! (F.inoperable() ) )

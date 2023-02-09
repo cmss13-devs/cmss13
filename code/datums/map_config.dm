@@ -16,8 +16,6 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
-	/// Hash of nightmare parser types to config file paths
-	var/list/nightmare
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -34,15 +32,13 @@
 
 	var/weather_holder
 
-	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/chef,
-		/datum/equipment_preset/survivor/chaplain,
-		/datum/equipment_preset/survivor/miner,
-		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
-	)
+	var/list/survivor_types
+	var/list/survivor_types_by_variant
+
+	var/list/synth_survivor_types
+	var/list/synth_survivor_types_by_variant
+
+	var/list/CO_survivor_types
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -61,6 +57,32 @@
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
 	var/vote_cycle = 1
+
+	var/nightmare_path
+
+/datum/map_config/New()
+	survivor_types = list(
+		/datum/equipment_preset/survivor/scientist,
+		/datum/equipment_preset/survivor/doctor,
+		/datum/equipment_preset/survivor/chef,
+		/datum/equipment_preset/survivor/chaplain,
+		/datum/equipment_preset/survivor/miner,
+		/datum/equipment_preset/survivor/colonial_marshal,
+		/datum/equipment_preset/survivor/engineer,
+	)
+
+	synth_survivor_types = list(
+		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/engineer_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
+		/datum/equipment_preset/synth/survivor/janitor_synth,
+		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/bartender_synth,
+		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/radiation_synth,
+	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -165,6 +187,54 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
+	survivor_types_by_variant = list()
+	for(var/surv_type in survivor_types)
+		var/datum/equipment_preset/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		survivor_types_by_variant[survivor_variant] += surv_type
+
+	if(islist(json["synth_survivor_types"]))
+		synth_survivor_types = json["synth_survivor_types"]
+	else if ("synth_survivor_types" in json)
+		log_world("map_config synth_survivor_types is not a list!")
+		return
+
+	var/list/pathed_synth_survivor_types = list()
+	for(var/synth_surv_type in synth_survivor_types)
+		var/synth_survivor_typepath = synth_surv_type
+		if(!ispath(synth_survivor_typepath))
+			synth_survivor_typepath = text2path(synth_surv_type)
+			if(!ispath(synth_survivor_typepath))
+				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
+				continue
+		pathed_synth_survivor_types += synth_survivor_typepath
+	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	synth_survivor_types_by_variant = list()
+	for(var/surv_type in synth_survivor_types)
+		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		synth_survivor_types_by_variant[survivor_variant] += surv_type
+
+	if(islist(json["CO_survivor_types"]))
+		CO_survivor_types = json["CO_survivor_types"]
+	else if ("CO_survivor_types" in json)
+		log_world("map_config CO_survivor_types is not a list!")
+		return
+
+	var/list/pathed_CO_survivor_types = list()
+	for(var/CO_surv_type in CO_survivor_types)
+		var/CO_survivor_typepath = CO_surv_type
+		if(!ispath(CO_survivor_typepath))
+			CO_survivor_typepath = text2path(CO_surv_type)
+			if(!ispath(CO_survivor_typepath))
+				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
+				continue
+		pathed_CO_survivor_types += CO_survivor_typepath
+	CO_survivor_types = pathed_CO_survivor_types.Copy()
+
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
@@ -237,7 +307,7 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
-		
+
 	if(json["vote_cycle"])
 		vote_cycle = json["vote_cycle"]
 
@@ -256,11 +326,8 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
-	if(json["nightmare"])
-		if(!islist(json["nightmare"]))
-			log_world("map_config nightmare is not a list!")
-			return
-		nightmare = json["nightmare"]
+	if(json["nightmare_path"])
+		nightmare_path = json["nightmare_path"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]

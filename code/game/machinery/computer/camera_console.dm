@@ -21,6 +21,7 @@
 	var/list/range_turfs = list()
 
 	var/colony_camera_mapload = TRUE
+	var/admin_console = FALSE
 
 /obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
@@ -34,6 +35,7 @@
 
 	// Initialize map objects
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
@@ -47,11 +49,11 @@
 	qdel(cam_background)
 	return ..()
 
-/obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/security/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)
-	if(is_admin_level(z))
+	if(!admin_console && is_admin_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())
@@ -81,7 +83,7 @@
 			concurrent_users += user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
-			use_power(active_power_usage)
+			update_use_power(USE_POWER_ACTIVE)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_background)
@@ -207,12 +209,14 @@
 		current = null
 		last_camera_turf = null
 		range_turfs = list()
-		use_power(0)
+		if(use_power)
+			update_use_power(USE_POWER_IDLE)
 		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
 /obj/structure/machinery/computer/security/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
+	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 
@@ -237,7 +241,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 
 /obj/structure/machinery/computer/security/telescreen/update_icon()
@@ -296,7 +300,7 @@
 
 
 /obj/structure/machinery/computer/security/almayer
-	density = 0
+	density = FALSE
 	icon_state = "security_cam"
 	network = list(CAMERA_NET_ALMAYER)
 
@@ -330,11 +334,12 @@
 /obj/structure/machinery/computer/security/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
-	use_power = 0
+	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	active_power_usage = 0
+	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
 	colony_camera_mapload = FALSE
@@ -345,7 +350,7 @@
 /obj/structure/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null

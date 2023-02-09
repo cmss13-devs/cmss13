@@ -24,7 +24,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "e" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
@@ -121,11 +121,11 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "y" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/grenade/HE/stick,
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick,
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = 6
 	},
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = -6
 	},
 /turf/open/floor{
@@ -164,8 +164,8 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -244,7 +244,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "T" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Armory Vault";

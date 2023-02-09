@@ -6,9 +6,9 @@
 	var/frequency
 	var/shockedby = list()
 	var/datum/radio_frequency/radio_connection
-	var/cur_command = null	//the command the door is currently attempting to complete
+	var/cur_command = null //the command the door is currently attempting to complete
 
-/obj/structure/machinery/door/airlock/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/airlock/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
@@ -36,7 +36,7 @@
 
 	cur_command = signal.data["command"]
 	start_processing()
-	INVOKE_ASYNC(src, .proc/execute_current_command)
+	INVOKE_ASYNC(src, PROC_REF(execute_current_command))
 
 /obj/structure/machinery/door/airlock/proc/execute_current_command()
 	if(operating)
@@ -54,7 +54,7 @@
 		//Nothing to do, stop processing!
 		stop_processing()
 
-/obj/structure/machinery/door/airlock/proc/do_command(var/command)
+/obj/structure/machinery/door/airlock/proc/do_command(command)
 	switch(command)
 		if("open")
 			open()
@@ -85,7 +85,7 @@
 
 	send_status()
 
-/obj/structure/machinery/door/airlock/proc/command_completed(var/command)
+/obj/structure/machinery/door/airlock/proc/command_completed(command)
 	switch(command)
 		if("open")
 			return (!density)
@@ -105,9 +105,9 @@
 		if("secure_close")
 			return (locked && density)
 
-	return 1	//Unknown command. Just assume it's completed.
+	return 1 //Unknown command. Just assume it's completed.
 
-/obj/structure/machinery/door/airlock/proc/send_status(var/bumped = 0)
+/obj/structure/machinery/door/airlock/proc/send_status(bumped = 0)
 	if(radio_connection)
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal
@@ -153,7 +153,7 @@
 	icon_state = "airlock_sensor_off"
 	name = "airlock sensor"
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = POWER_CHANNEL_ENVIRON
 
 	var/id_tag
@@ -227,7 +227,7 @@
 	icon_state = "access_button_standby"
 	name = "access button"
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = POWER_CHANNEL_ENVIRON
 
 	var/master_tag

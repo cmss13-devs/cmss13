@@ -912,7 +912,7 @@
 		if(damage_result <= 3)
 			damage_result = 0
 			bullet_ping(P)
-			visible_message("<span class='avoidharm'>[src]'s armor deflects [P]!</span>")
+			visible_message(SPAN_AVOIDHARM("[src]'s armor deflects [P]!"))
 			if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).

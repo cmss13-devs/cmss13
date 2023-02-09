@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - refactor: "refactored /gib so it cannot be written in a bugcausing way"
-  - bugfix: "fixed 2 runtimes"

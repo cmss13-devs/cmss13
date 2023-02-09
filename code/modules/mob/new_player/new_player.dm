@@ -114,7 +114,7 @@
 
 		if("observe")
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-				to_chat(src, "<span class='warning'>The game is still setting up, please try again later.</span>")
+				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)

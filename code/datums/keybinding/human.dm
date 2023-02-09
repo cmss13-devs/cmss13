@@ -181,7 +181,7 @@
 	full_name = "Show Held Item"
 	keybind_signal = COMSIG_KB_HUMAN_SHOW_HELD_ITEM
 
-/datum/keybinding/human/pick_up/down(client/user)
+/datum/keybinding/human/show_held_item/down(client/user)
 	. = ..()
 	if(.)
 		return

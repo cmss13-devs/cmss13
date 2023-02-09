@@ -57,7 +57,7 @@
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR>Either dropship can be used to go to either LZ. Announce which dropship will be available for transport and which LZ to use.<BR>"
+		dat += "<BR><A href='?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
@@ -247,13 +247,14 @@
 		if("selectlz")
 			if(SSticker.mode.active_lz)
 				return
-			var/lz_choices = list()
-			for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-				if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
-					lz_choices += console
-			var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
-			if(new_lz)
-				SSticker.mode.select_lz(new_lz)
+			var/lz_choices = list("lz1", "lz2")
+			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+			if(!new_lz)
+				return
+			if(new_lz == "lz1")
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			else
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 
 		if("pick_squad")
 			var/list/squad_list = list()

@@ -30,7 +30,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
-	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
 

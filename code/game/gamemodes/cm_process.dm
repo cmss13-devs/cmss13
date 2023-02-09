@@ -158,7 +158,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
 	if(active_lz)
 		return
 	active_lz = console

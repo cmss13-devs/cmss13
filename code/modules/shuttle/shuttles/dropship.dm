@@ -115,10 +115,11 @@
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
-	var/x0 = coords[1] - 5
-	var/y0 = coords[2] - 5
-	var/x1 = coords[3] + 5
-	var/y1 = coords[4] + 5
+	var/scan_range = 5
+	var/x0 = coords[1] - scan_range
+	var/y0 = coords[2] - scan_range
+	var/x1 = coords[3] + scan_range
+	var/y1 = coords[4] + scan_range
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)

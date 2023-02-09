@@ -343,5 +343,7 @@
 
 /datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return
 
 	user.show_speech_bubble("scream")

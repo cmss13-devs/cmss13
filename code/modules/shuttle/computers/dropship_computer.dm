@@ -141,6 +141,10 @@
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 
+	if(!SSobj.first_drop_complete)
+		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
+		return
+
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)

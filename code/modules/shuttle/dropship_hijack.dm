@@ -89,7 +89,8 @@
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)
 		return FALSE
-	SSshuttle.moveShuttle(shuttle.id, crash_site.id, DROPSHIP_CRASH_TRANSIT_DURATION)
+	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION
+	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
 	if(round_statistics)
 		round_statistics.track_hijack()
 	return TRUE

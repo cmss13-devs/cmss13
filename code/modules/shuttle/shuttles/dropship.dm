@@ -96,10 +96,9 @@
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
 			dropzone.turn_on_landing_lights()
 			playsound(dropzone.return_center_turf(), landing_sound, 60, 0)
-	if(!is_hijacked)
-		return
 
-	hijack.check()
+	hijack?.check()
+
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
 	width = 11

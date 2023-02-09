@@ -68,3 +68,83 @@
   stanalbatross:
   - bugfix: fixed a potential runtime in clothing.dm and added a better debug message
       for it.
+2023-02-05:
+  BeagleGaming1:
+  - bugfix: Changed layer of LV-624's tree so you can see the medical hud if marines
+      are hidden (dead) behind it
+  KiVts:
+  - bugfix: fixed bugs related to dropship matrices
+  harryob:
+  - refactor: the tacmap is now better, everywhere it appears, for the queen and cic
+  - ui: the orbit menu now has icons (from the minimap)
+  - rscadd: ghosts now get a minimap
+  - bugfix: extended now actually works, and doesn't spawn in inhuman abombinations
+2023-02-06:
+  BeagleGaming1:
+  - bugfix: Crew Monitoring computers can now be deconstructed the same way as any
+      computer
+  - bugfix: The ASRS can no longer steal your groin.
+  Morrow:
+  - balance: Removes ultrazine spawns on maps.
+  - balance: Removes ultrazine and antag stims as explicit random loot items.
+  NewyearnewmeUwu:
+  - rscdel: Removed skull balaclavas and skull facepaint from the loadout options
+  - maptweak: adds a single skull facepaint and balaclava, each hidden in their own
+      locations on the Almayer.
+  Zonespace27:
+  - admin: Attack logs are no longer displayed to chat by default
+  harryob:
+  - refactor: refactor's admin VV
+  - admin: can now edit lists with any reliability, can now edit bitfields without
+      maths
+  - ui: added the particle editor and colour matrix editor (from tiviplus and Y0SH1M4S73R
+      respectively) for admins via VV
+  - qol: you can now keybind every emote
+  - refactor: emotes are now datums
+  realforest2001:
+  - server: TGUI logs are now in a unique file to reduce clutter.
+  - server: Temporarily increases maximum bantime due to system issues.
+2023-02-07:
+  Morrow:
+  - balance: Removes slight randomness in armor and critical armor pierce chance
+  NewyearnewmeUwu:
+  - spellcheck: you will no longer be struck by Tail Sweep's Tail Sweep.
+  Zonespace27:
+  - admin: You no longer need to stay adminned to get newbie popups as SEA
+  stanalbatross:
+  - bugfix: fixed being able to use the pickup keybind while incapacitated
+2023-02-08:
+  Zonespace27:
+  - bugfix: Fixed uniforms causing excessive server lag
+  stanalbatross:
+  - rscdel: removed the MP timelock requirement from XO, CE, and RO
+  - rscdel: removed the RTO timelock requirement from SL, instead you now need 10
+      hours of squad roles
+  - bugfix: fixed some small or uncommon runtimes
+2023-02-09:
+  CapCamIII:
+  - rscadd: PMCs are now able to use antag vendors.
+  - balance: Multiple loadout and skill changes to PMCs and Whiteout
+  - balance: Buffs whiteout flame damage to blue flame damage.
+  - bugfix: PMC Investigator Lead now appropriately spawns with a medical pouch in
+      their pocket, instead of nothing.
+  - bugfix: Maximum skill preset now appropriately also has BE and intel skill, at
+      maximum of course.
+  - bugfix: PMC Smartgunner now appropriately a VP78 to go along with their VP78 magazines
+  - bugfix: Whiteout now appropriately have night vision.
+  - bugfix: M41A/2 now appropriately comes equipped with a collapsible stock.
+  - spellcheck: PMC smartgun drum now has a seperate description and name from base
+      SG to match its different appearance.
+  harryob:
+  - bugfix: you can now unbind special keybinds, and your keybind preferences won't
+      be forgotten
+  - admin: msay now appears within tgui-say
+  stanalbatross:
+  - refactor: refactored /gib so it cannot be written in a bugcausing way
+  - bugfix: fixed 2 runtimes
+  theflyingflail:
+  - bugfix: 'fixed skylight nightmare insert survivor spawner
+
+      :cl:
+
+      <!-- Both :cl:''s are required for the changelog to work! -->'

@@ -34,6 +34,8 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
+	minimap_icon = "burrower"
+
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER

@@ -877,7 +877,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "Fu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage"
@@ -1045,7 +1045,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/kitchen)
 "NT" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office"
 	},
@@ -1066,7 +1066,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "ON" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Nexus Dome Canteen"
 	},
 /turf/open/floor{

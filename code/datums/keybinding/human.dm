@@ -192,7 +192,6 @@
 		shown_item.showoff(human_user)
 	return TRUE
 
-
 #undef QUICK_EQUIP_PRIMARY
 #undef QUICK_EQUIP_SECONDARY
 #undef QUICK_EQUIP_TERTIARY

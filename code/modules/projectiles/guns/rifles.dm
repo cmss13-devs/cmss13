@@ -276,8 +276,8 @@
 //M40-SD AKA SOF RIFLE FROM HELL (It's actually an M41A, don't tell!)
 
 /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
-	name = "\improper M40-SD pulse rifle"
-	desc = "One of the experimental predecessors to the M41A line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
+	name = "\improper XM40 pulse rifle"
+	desc = "One of the experimental predecessors to the M41 line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
 	icon_state = "m40sd"
 	item_state = "m40sd"
 	reload_sound = 'sound/weapons/handling/m40sd_reload.ogg'
@@ -403,8 +403,8 @@
 //Special gun for the CO to replace the smartgun
 
 /obj/item/weapon/gun/rifle/m46c
-	name = "\improper M46C pulse rifle"
-	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	name = "\improper XM46E3 pulse rifle"
+	desc = "A prototype XM46E3, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
 	icon_state = "m46c"
 	item_state = "m46c"
 	fire_sound = "gun_pulse"

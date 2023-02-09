@@ -328,7 +328,7 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/sniper/XM42B
-	name = "\improper XM42B experimental anti-materiel rifle"
+	name = "\improper XM43E1 experimental anti-materiel rifle"
 	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
 	icon_state = "xm42b"
 	item_state = "xm42b"
@@ -394,7 +394,7 @@
 */
 
 /obj/item/weapon/gun/rifle/sniper/elite
-	name = "\improper M42C anti-tank sniper rifle"
+	name = "\improper MK43 anti-tank sniper rifle"
 	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE

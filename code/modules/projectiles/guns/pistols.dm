@@ -129,11 +129,10 @@
 
 
 /obj/item/weapon/gun/pistol/m1911/socom
-	name = "\improper SOCOM M1911 service pistol"
-	desc = "A timeless classic since the first World War. Chambered in .45 ACP. This one has a darkened grip and appears especially well-kept. "
+	name = "\improper M48A4 service pistol"
+	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is often used as a sidearm by non-governmental bodies due to its reliability. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP."
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
-	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
@@ -146,6 +145,8 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/pistol/m1911/socom/equipped
+	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -380,8 +381,8 @@
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/m43pistol
-	name = "M43 Hummingbird Pistol"
-	desc = "The M43 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
+	name = "D18 Hummingbird Pistol"
+	desc = "The D18 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
 	icon_state = "m43"
 	item_state = "m43"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED

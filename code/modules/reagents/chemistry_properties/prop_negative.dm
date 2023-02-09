@@ -473,6 +473,28 @@
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
 
+/datum/chem_property/negative/narcoleptic
+	name = PROPERTY_NARCOLEPTIC
+	code = "NCL"
+	description = "Metabolizes slowly while resting, and even slower if sleeping. Often seen on chemicals with a high metabolization rate."
+	rarity = PROPERTY_TYPE_METABOLITE
+	value = -1
+
+/datum/chem_property/negative/narcoleptic/process(mob/living/chem_holder, potency = 1, delta_time)
+	var/rest_multiplier = 1
+	if(chem_holder.resting == TRUE || chem_holder.is_mob_incapacitated(TRUE))
+		rest_multiplier = 0.66
+	if(chem_holder.stat == UNCONSCIOUS)
+		rest_multiplier = 0.33
+	// Higher levels make it even slower.
+	rest_multiplier /= level
+	holder.custom_metabolism = holder.custom_metabolism * (rest_multiplier)
+	return // not harmful (check parent)
+
+/datum/chem_property/negative/narcoleptic/reset_reagent()
+	holder.custom_metabolism = initial(holder.custom_metabolism)
+	..()
+
 //PROPERTY_DISABLED (in generation)
 /datum/chem_property/negative/hemositic
 	name = PROPERTY_HEMOSITIC

@@ -40,5 +40,5 @@
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 
-/mob/living/carbon/proc/get_sharp_obj_blocker(var/obj/limb/limb)
+/mob/living/carbon/proc/get_sharp_obj_blocker(obj/limb/limb)
 	return null

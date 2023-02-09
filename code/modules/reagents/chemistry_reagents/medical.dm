@@ -237,14 +237,14 @@
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
+	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. This reagent metabolizes slowly when resting and even slower if sleeping, but has a rapid metabolization otherwise. Overdosing on peridaxon will cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#C845DC"
-	overdose = LOWM_REAGENTS_OVERDOSE
-	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_ORGANSTABILIZE = 4)
+	properties = list(PROPERTY_ORGANSTABILIZE = 4, PROPERTY_NARCOLEPTIC = 1)
 
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"

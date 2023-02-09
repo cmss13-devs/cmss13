@@ -76,7 +76,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				protection += C.get_armor(type)
 	return protection
 
-/mob/living/carbon/human/get_sharp_obj_blocker(var/obj/limb/limb)
+/mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/obj/item/gear in protective_gear)
 		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))

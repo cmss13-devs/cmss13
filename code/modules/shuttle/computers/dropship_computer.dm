@@ -296,14 +296,14 @@
 
 	switch(action)
 		if("move")
+			if(shuttle.mode != SHUTTLE_IDLE)
+				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+				return TRUE
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 				is_optimised = TRUE
 			update_equipment(is_optimised)
-			if(shuttle.mode != SHUTTLE_IDLE)
-				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
-				return TRUE
 			if(is_set_flyby)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				shuttle.send_for_flyby()

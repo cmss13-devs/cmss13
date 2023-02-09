@@ -220,7 +220,7 @@
 
 // Resource Towers
 
-/datum/game_mode/colonialmarines/ds_first_drop(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 
 ///////////////////////////

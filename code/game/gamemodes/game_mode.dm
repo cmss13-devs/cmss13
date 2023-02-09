@@ -78,11 +78,11 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
-/datum/game_mode/proc/ds_first_drop(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/mobile/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return

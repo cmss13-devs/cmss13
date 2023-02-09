@@ -141,7 +141,7 @@
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 
-	if(!SSobj.first_drop_complete)
+	if(!SSobjectives.first_drop_complete)
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 

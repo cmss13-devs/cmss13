@@ -27,8 +27,8 @@
 		/mob/living/simple_animal/parrot,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/lizard,
-		/mob/living/carbon/xenomorph/facehugger,
-		/mob/living/carbon/xenomorph/larva,
+		/mob/living/carbon/Xenomorph/Facehugger,
+		/mob/living/carbon/Xenomorph/Larva,
 	)
 	/// The cat will 'play' with dead hunted targets near it until this counter reaches a certain value.
 	var/play_counter = 0
@@ -64,9 +64,10 @@
 		if(!stat && !resting && !buckled)
 			for(var/mob/prey in view(1,src))
 				if(is_type_in_list(prey, hunting_targets) && play_counter < 5)
-					prey.splat(src)
+					var/mob/living/livingprey = prey
+					livingprey.splat(src)
 					play_counter++
-					visible_message(pick("[src] bites [prey]!","[src] toys with [prey].","[src] chomps on [prey]!"))
+					visible_message(pick("[src] bites [livingprey]!","[src] toys with [livingprey].","[src] chomps on [livingprey]!"))
 					movement_target = null
 					stop_automated_movement = 0
 					break

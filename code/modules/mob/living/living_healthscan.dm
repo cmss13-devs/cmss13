@@ -556,7 +556,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 			var/org_bleed = ""
 			if(bleeding_check)
-				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
+				org_bleed = SPAN_SCANNERB("(Bleeding)")
 
 			var/org_advice = ""
 			if(do_checks && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

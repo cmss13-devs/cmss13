@@ -102,3 +102,5 @@
 	var/bubble_icon_x_offset = 0
 	var/bubble_icon_y_offset = 0
 
+	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
+	var/dead_black_market_value = 0

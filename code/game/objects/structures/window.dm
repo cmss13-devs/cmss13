@@ -19,6 +19,8 @@
 	var/not_deconstructable = 0
 	var/legacy_full = FALSE //for old fulltile windows
 
+	minimap_color = MINIMAP_FENCE
+
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
 	. = ..()

@@ -8,6 +8,7 @@
 	force = 0
 	throwforce = 0
 	w_class = SIZE_TINY
+	black_market_value = 10
 	var/string_attached
 	var/sides = 2
 
@@ -19,35 +20,43 @@
 /obj/item/coin/gold
 	name = "gold coin"
 	icon_state = "coin_gold"
+	black_market_value = 30
 
 /obj/item/coin/silver
 	name = "silver coin"
 	icon_state = "coin_silver"
+	black_market_value = 25
 
 /obj/item/coin/diamond
 	name = "diamond coin"
 	icon_state = "coin_diamond"
+	black_market_value = 35
 
 /obj/item/coin/iron
 	name = "iron coin"
 	icon_state = "coin_iron"
+	black_market_value = 15
 
 /obj/item/coin/phoron
 	name = "solid phoron coin"
 	icon_state = "coin_phoron"
+	black_market_value = 35
 
 /obj/item/coin/uranium
 	name = "uranium coin"
 	icon_state = "coin_uranium"
+	black_market_value = 35
 
 /obj/item/coin/platinum
 	name = "platinum coin"
 	icon_state = "coin_adamantine"
+	black_market_value = 35
 
 /obj/item/coin/marine/synth
 	name = "synthetic experimental tool redemption token"
 	desc = "Insert this into a synthetic experimental tools vendor in order to access a variety of experimental support tools."
 	icon_state = "coin_adamantine"
+	black_market_value = 0
 
 /obj/item/coin/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/cable_coil))

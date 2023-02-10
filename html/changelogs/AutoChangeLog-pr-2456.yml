@@ -1,4 +1,0 @@
-author: "LynxSolstice, Geeves"
-delete-after: True
-changes:
-  - balance: "interaction circles that appear of above your head while cloaked are now harder to see (does not include circles above interacted with objects (ie. nests, C4s, breaching charges, xenos eating people, whatever predators have). That is to say, interaction circles inherit the alpha of cloaked users."

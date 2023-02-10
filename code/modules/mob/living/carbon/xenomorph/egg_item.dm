@@ -9,6 +9,7 @@
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
+	black_market_value = 35
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 

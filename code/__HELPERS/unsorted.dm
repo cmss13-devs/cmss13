@@ -1054,22 +1054,15 @@ var/global/image/action_purple_power_up
 		target_is_mob = TRUE
 
 	var/image/busy_icon
-	var/has_busy_icon = FALSE
 	if(show_busy_icon)
 		busy_icon = get_busy_icon(show_busy_icon)
 		if(busy_icon)
-			busy_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			busy_icon.alpha = 255
-			if(busy_user.alpha == 255)
-				busy_user.overlays += busy_icon
-				has_busy_icon = TRUE
+			busy_user.overlays += busy_icon
 
 	var/image/target_icon
 	if(show_target_icon) //putting a busy overlay on top of the target
 		target_icon = get_busy_icon(show_target_icon)
 		if(target_icon)
-			target_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			target_icon.alpha = 255
 			target.overlays += target_icon
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
@@ -1110,14 +1103,6 @@ var/global/image/action_purple_power_up
 		time_remaining -= delayfraction
 		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
 			. = FALSE
-		if(show_busy_icon)
-			if(has_busy_icon && user.alpha < 255)
-				busy_user.overlays += busy_icon
-				busy_icon.alpha = user.alpha
-				has_busy_icon = TRUE
-			else if(!has_busy_icon && user.alpha == 255)
-				busy_user.overlays += busy_icon
-				has_busy_icon = TRUE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
 			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)
@@ -1652,24 +1637,6 @@ var/list/WALLITEMS = list(
 			turfs += T
 	if(turfs.len)
 		return pick(turfs)
-
-/proc/input_marked_datum(list/marked_datums)
-	if(!marked_datums.len)
-		return null
-
-	var/list/options = list()
-	for(var/datum/D in marked_datums)
-		options += "Marked datum ([D] - \ref[D])"
-	var/choice = tgui_input_list(usr, "Select marked datum", "Marked datums", options)
-
-	if(!choice)
-		return null
-
-	for(var/datum/D in marked_datums)
-		if(findtext(choice, "\ref[D]"))
-			return D
-
-	return null
 
 // Returns true if arming a given explosive might be considered grief
 // Explosives are considered "griefy" if they are primed when all the following are true:

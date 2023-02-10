@@ -148,3 +148,13 @@
       :cl:
 
       <!-- Both :cl:''s are required for the changelog to work! -->'
+2023-02-10:
+  NewyearnewmeUwu:
+  - refactor: refactored mobs.dm, mob_defines
+  - code_imp: changed up the IO phone code
+  harryob:
+  - bugfix: removed unnecessary debug from runtime logs
+  insertnamehere123:
+  - spellcheck: grund is now ground
+  stanalbatross:
+  - code_imp: removed some <span>s and replaced w/ macros

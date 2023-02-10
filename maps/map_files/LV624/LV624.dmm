@@ -4890,7 +4890,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "awG" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/researcher,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -44818,6 +44818,8 @@ awG
 awG
 awG
 atX
+aCI
+byY
 atX
 atX
 atX

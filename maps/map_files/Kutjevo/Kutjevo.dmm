@@ -2477,6 +2477,10 @@
 /obj/structure/platform/kutjevo/rock,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"dnp" = (
+/obj/effect/landmark/survivor_spawner/doctor,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "dnF" = (
 /obj/item/tool/pickaxe,
 /turf/open/auto_turf/sand/layer0,
@@ -10614,6 +10618,10 @@
 "opQ" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
+"opW" = (
+/obj/effect/landmark/survivor_spawner/researcher,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "oqd" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/colors,
@@ -34811,8 +34819,8 @@ jhS
 jhS
 wff
 niP
-wff
-wff
+snr
+snr
 jhS
 jhS
 jhS
@@ -35813,8 +35821,8 @@ ePV
 iCl
 wff
 nnf
-wff
-wff
+wIG
+snr
 rUm
 lLC
 tFh

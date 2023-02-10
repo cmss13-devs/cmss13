@@ -2124,13 +2124,16 @@ Defined in conflicts.dm of the #defines folder.
 
 		new/obj/flamer_fire(T, create_cause_data(initial(name), user), R)
 
-/obj/item/attachable/attached_gun/flamer/integrated
-	name = "integrated flamethrower"
+/obj/item/attachable/attached_gun/flamer/advanced
+	name = "advanced mini flamethrower"
 	current_rounds = 50
 	max_rounds = 50
 	max_range = 6
 	burn_level = BURN_LEVEL_TIER_5
 	burn_duration = BURN_TIME_TIER_2
+
+/obj/item/attachable/attached_gun/flamer/advanced/integrated
+	name = "integrated flamethrower"
 
 /obj/item/attachable/attached_gun/shotgun //basically, a masterkey
 	name = "\improper U7 underbarrel shotgun"

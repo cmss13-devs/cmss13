@@ -1,4 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - admin: "Attack logs are no longer displayed to chat by default"

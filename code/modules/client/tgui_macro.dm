@@ -110,6 +110,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 						kbinds -= key
 
 			prefs.save_preferences()
+			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 		if("clear_all_keybinds")
 			var/choice = tgui_alert(owner, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))

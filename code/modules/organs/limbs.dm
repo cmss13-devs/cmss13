@@ -36,7 +36,6 @@
 	// Internal organs of this body part
 	var/list/datum/internal_organ/internal_organs
 
-	var/damage_msg = "<span class='danger'>You feel an intense pain</span>"
 	var/broken_description
 
 	//Surgical vars

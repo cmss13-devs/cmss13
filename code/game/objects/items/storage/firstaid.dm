@@ -150,6 +150,30 @@
 /obj/item/storage/firstaid/adv/empty/fill_preset_inventory()
 	return
 
+
+
+/obj/item/storage/firstaid/synth
+	name = "synthetic repair kit"
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.'"
+	icon_state = "bezerk"
+	item_state = "firstaid-advanced"
+	cant_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+	)
+
+/obj/item/storage/firstaid/synth/fill_preset_inventory()
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/tool/weldingtool/largetank(src)
+
+/obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
 	desc = "Contains treatment for radiation exposure"
@@ -285,7 +309,7 @@
 		overlays += "pills_closed"
 
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[maptext_label]</span>"
+		maptext = SPAN_LANGCHAT("[maptext_label]")
 	else
 		maptext = ""
 

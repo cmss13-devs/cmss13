@@ -17,8 +17,10 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
+	/// The target src is moving towards during its hunt.
 	var/mob/living/movement_target
-	var/list/hunting_targets = list(
+	/// The mobs that src will track to hunt and kill.
+	var/static/list/hunting_targets = list(
 		/mob/living/simple_animal/mouse,
 		/mob/living/simple_animal/alien_slug,
 		/mob/living/simple_animal/bat,
@@ -26,8 +28,9 @@
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/lizard,
 		/mob/living/carbon/xenomorph/facehugger,
-		/mob/living/carbon/xenomorph/larva
+		/mob/living/carbon/xenomorph/larva,
 	)
+	/// The cat will 'play' with dead hunted targets near it until this counter reaches a certain value.
 	var/play_counter = 0
 	min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223 //Below -50 Degrees Celcius
@@ -44,6 +47,10 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
+/mob/living/simple_animal/cat/Destroy()
+	QDEL_NULL(movement_target)
+	. = ..()
+
 /mob/living/simple_animal/cat/Life(delta_time)
 	//MICE!
 	if(stat == DEAD)
@@ -55,7 +62,7 @@
 				playsound(loc, "cat_meow", 15, 1, 4)
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
-			for(var/mob/living/prey in view(1,src))
+			for(var/mob/prey in view(1,src))
 				if(is_type_in_list(prey, hunting_targets) && play_counter < 5)
 					prey.splat(src)
 					play_counter++
@@ -66,7 +73,7 @@
 
 	..()
 
-	for(var/mob/living/snack in oview(src, 3))
+	for(var/mob/snack in oview(src, 3))
 		if(is_type_in_list(snack, hunting_targets) && prob(15) && snack.stat != DEAD)
 			visible_message(pick("[src] hisses at [snack]!", "[src] mrowls fiercely!", "[src] eyes [snack] hungrily."))
 		break

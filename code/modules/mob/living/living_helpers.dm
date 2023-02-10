@@ -18,5 +18,8 @@
 /mob/living/proc/check_fire_intensity_resistance()
 	return 0
 
+/**
+ * 'Splats' src, killing them. Mouses override this proc with their own unique splat.
+ */
 /mob/living/proc/splat(mob/killer)
 	death(create_cause_data("splatting", killer), FALSE, "splatting")

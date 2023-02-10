@@ -1,0 +1,13 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - balance: "Updates and buffs the following weapons: Basira-Armstrong Rifle, Model 12 Bolt-Action Rifle, M37-17 pump shotgun, Dragunov sniper rifle"
+  - imageadd: "The Basira rifle has been reflavored as the removed 'ceremonial' ABR-40, now a hunting-civilian version of the L42. It effectively has the same stats as the L42, just don't take the stock off!"
+  - rscadd: "Its magazines can only fit 12 bullets, but they still have the classic L42 kick to them. The magazines are completely compatible between both military and civilian gun types.\nadd:: Additionally, there are now holo-targeting magazines available for the ABR-40, for hunting target capture purposes."
+  - rscadd: "The Contractor ERT has a chance to spawn with a tacticool ABR-40 loadout, with three spare holotarget magazines on their webbing."
+  - balance: "Like the bolt-action rifle's sprite implies, this is now the new Basira-Armstrong rifle."
+  - rscadd: "Its stats have recieved an overhaul and it can now hold its own against a Xenomorph (or marine if you're CLF)"
+  - rscadd: "Additionally, its bullets will push back (not stun) targets within three meters, to increase viability for colony usage."
+  - balance: "Did you know that the 10% damage mod the M37-17 pump shotgun was supposed to have didn't work? Now it does! And it deals 15% more damage to make up for it."
+  - rscdel: "However, it can now be melted down."
+  - balance: "The dragunov has been revamped into a DMR, needing no skill to fire, dealing good damage, and having the same push-back feature the bolt-action now has."

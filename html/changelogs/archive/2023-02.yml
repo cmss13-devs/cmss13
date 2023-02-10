@@ -104,3 +104,57 @@
   realforest2001:
   - server: TGUI logs are now in a unique file to reduce clutter.
   - server: Temporarily increases maximum bantime due to system issues.
+2023-02-07:
+  Morrow:
+  - balance: Removes slight randomness in armor and critical armor pierce chance
+  NewyearnewmeUwu:
+  - spellcheck: you will no longer be struck by Tail Sweep's Tail Sweep.
+  Zonespace27:
+  - admin: You no longer need to stay adminned to get newbie popups as SEA
+  stanalbatross:
+  - bugfix: fixed being able to use the pickup keybind while incapacitated
+2023-02-08:
+  Zonespace27:
+  - bugfix: Fixed uniforms causing excessive server lag
+  stanalbatross:
+  - rscdel: removed the MP timelock requirement from XO, CE, and RO
+  - rscdel: removed the RTO timelock requirement from SL, instead you now need 10
+      hours of squad roles
+  - bugfix: fixed some small or uncommon runtimes
+2023-02-09:
+  CapCamIII:
+  - rscadd: PMCs are now able to use antag vendors.
+  - balance: Multiple loadout and skill changes to PMCs and Whiteout
+  - balance: Buffs whiteout flame damage to blue flame damage.
+  - bugfix: PMC Investigator Lead now appropriately spawns with a medical pouch in
+      their pocket, instead of nothing.
+  - bugfix: Maximum skill preset now appropriately also has BE and intel skill, at
+      maximum of course.
+  - bugfix: PMC Smartgunner now appropriately a VP78 to go along with their VP78 magazines
+  - bugfix: Whiteout now appropriately have night vision.
+  - bugfix: M41A/2 now appropriately comes equipped with a collapsible stock.
+  - spellcheck: PMC smartgun drum now has a seperate description and name from base
+      SG to match its different appearance.
+  harryob:
+  - bugfix: you can now unbind special keybinds, and your keybind preferences won't
+      be forgotten
+  - admin: msay now appears within tgui-say
+  stanalbatross:
+  - refactor: refactored /gib so it cannot be written in a bugcausing way
+  - bugfix: fixed 2 runtimes
+  theflyingflail:
+  - bugfix: 'fixed skylight nightmare insert survivor spawner
+
+      :cl:
+
+      <!-- Both :cl:''s are required for the changelog to work! -->'
+2023-02-10:
+  NewyearnewmeUwu:
+  - refactor: refactored mobs.dm, mob_defines
+  - code_imp: changed up the IO phone code
+  harryob:
+  - bugfix: removed unnecessary debug from runtime logs
+  insertnamehere123:
+  - spellcheck: grund is now ground
+  stanalbatross:
+  - code_imp: removed some <span>s and replaced w/ macros

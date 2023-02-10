@@ -58,7 +58,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/dest_started_at = 0
 
 	var/flags_scuttle = NO_FLAGS
-
+/* SD isn't in the game so commented out to stop debug logs
 /datum/authority/branch/evacuation/New()
 	..()
 	dest_master = locate()
@@ -75,7 +75,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		return FALSE
 	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
 	dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
-
+*/
 /datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self-destruct happens.
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
 		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))

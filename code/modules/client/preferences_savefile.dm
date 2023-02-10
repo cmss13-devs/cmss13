@@ -174,7 +174,6 @@
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 	S["key_bindings"] >> key_bindings
-	check_keybindings()
 
 	S["preferred_survivor_variant"]	>> preferred_survivor_variant
 
@@ -189,6 +188,8 @@
 	S["no_radials_preference"] >> no_radials_preference
 	S["no_radial_labels_preference"] >> no_radial_labels_preference
 	S["hotkeys"] >> hotkeys
+
+	S["autofit_viewport"] >> auto_fit_viewport
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -219,6 +220,7 @@
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
+	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -353,6 +355,8 @@
 	S["show_permission_errors"] << show_permission_errors
 	S["key_bindings"] << key_bindings
 	S["hotkeys"] << hotkeys
+
+	S["autofit_viewport"] << auto_fit_viewport
 
 	S["hear_vox"] << hear_vox
 
@@ -588,45 +592,6 @@
 	S["exploit_record"] << exploit_record
 
 	return 1
-
-/datum/preferences/proc/check_keybindings()
-	if(!owner)
-		return
-	var/list/user_binds = list()
-	for (var/key in key_bindings)
-		for(var/kb_name in key_bindings[key])
-			user_binds[kb_name] += list(key)
-	var/list/notadded = list()
-	for (var/name in GLOB.keybindings_by_name)
-		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
-		if(length(user_binds[kb.name]))
-			continue // key is unbound and or bound to something
-		var/addedbind = FALSE
-		if(hotkeys)
-			for(var/hotkeytobind in kb.hotkey_keys)
-				if(!length(key_bindings[hotkeytobind]) || hotkeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
-					LAZYADD(key_bindings[hotkeytobind], kb.name)
-					addedbind = TRUE
-		else
-			for(var/classickeytobind in kb.classic_keys)
-				if(!length(key_bindings[classickeytobind]) || classickeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
-					LAZYADD(key_bindings[classickeytobind], kb.name)
-					addedbind = TRUE
-		if(!addedbind)
-			notadded += kb
-	save_preferences() //Save the players pref so that new keys that were set to Unbound as default are permanently stored
-	if(length(notadded))
-		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
-
-/datum/preferences/proc/announce_conflict(list/notadded)
-	to_chat(owner, "<span class='warningplain'><b><u>Keybinding Conflict</u></b></span>\n\
-					<span class='warningplain'><b>There are new <a href='?_src_=prefs;preference=tab;tab=3'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</b></span>")
-	for(var/item in notadded)
-		var/datum/keybinding/conflicted = item
-		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
-		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
-		save_preferences()
-
 
 
 #undef SAVEFILE_VERSION_MAX

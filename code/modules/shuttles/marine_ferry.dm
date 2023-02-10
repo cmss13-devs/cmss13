@@ -47,7 +47,7 @@
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not launch the dropship due to blockage in the rear door.</span>"
+	var/fail_flavortext = "Could not launch the dropship due to blockage in the rear door."
 
 	// The ship section of the almayer that the dropship is aiming to crash into. Random if null
 	var/crash_target_section = null
@@ -87,7 +87,7 @@
 /datum/shuttle/ferry/marine/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
 
 /datum/shuttle/ferry/marine/proc/load_datums()
@@ -758,7 +758,7 @@
 /datum/shuttle/ferry/elevator
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not move the elevator due to blockage in the main door.</span>"
+	var/fail_flavortext = "Could not move the elevator due to blockage in the main door."
 
 /datum/shuttle/ferry/elevator/New()
 	..()
@@ -796,5 +796,5 @@
 /datum/shuttle/ferry/elevator/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat

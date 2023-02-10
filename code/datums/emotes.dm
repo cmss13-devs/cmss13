@@ -118,29 +118,28 @@
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
 		user.audible_message(formatted_message)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.visible_message(formatted_message, blind_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>")
+		user.visible_message(formatted_message, blind_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"))
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))
 				to_chat(viewer, msg)
 
-	if(emote_type & EMOTE_VISIBLE)
-		var/list/viewers = get_mobs_in_view(7, user)
-		for(var/mob/current_mob in viewers)
-			if(current_mob.client?.prefs.toggles_langchat)
+	if(intentional)
+		if(emote_type & EMOTE_VISIBLE)
+			var/list/viewers = get_mobs_in_view(7, user)
+			for(var/mob/current_mob in viewers)
 				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 					viewers -= current_mob
-		run_langchat(user, viewers)
-	else if(emote_type & EMOTE_AUDIBLE)
-		var/list/heard = get_mobs_in_view(7, user)
-		for(var/mob/current_mob in heard)
-			if(current_mob.ear_deaf)
-				heard -= current_mob
-				continue
-			if(current_mob.client?.prefs.toggles_langchat)
+			run_langchat(user, viewers)
+		else if(emote_type & EMOTE_AUDIBLE)
+			var/list/heard = get_mobs_in_view(7, user)
+			for(var/mob/current_mob in heard)
+				if(current_mob.ear_deaf)
+					heard -= current_mob
+					continue
 				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 					heard -= current_mob
-		run_langchat(user, heard)
+			run_langchat(user, heard)
 
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
@@ -304,7 +303,9 @@
 
 	log_emote(text)
 
-	var/ghost_text = "<b>[src]</b> [text]"
+	var/paygrade = get_paygrade()
+
+	var/rendered_text = "<b>[paygrade][src]</b> [text]"
 
 	var/origin_turf = get_turf(src)
 	if(client)
@@ -312,6 +313,11 @@
 			if(!ghost.client || isnewplayer(ghost))
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(origin_turf, null)))
-				ghost.show_message(ghost_text)
+				to_chat(ghost, rendered_text)
 
-	show_message(text)
+	visible_message(rendered_text)
+	var/list/viewers = get_mobs_in_view(7, src)
+	for(var/mob/current_mob in viewers)
+		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+			viewers -= current_mob
+	langchat_speech(text, viewers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))

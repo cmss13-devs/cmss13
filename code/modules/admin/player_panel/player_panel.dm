@@ -565,6 +565,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 
 	.["is_human"] = ishuman(targetMob)
 	.["is_xeno"] = isxeno(targetMob)
+	.["is_manager"] = check_rights(R_PERMISSIONS, FALSE)
 
 	.["glob_status_flags"] = GLOB.pp_status_flags
 	.["glob_limbs"] = GLOB.pp_limbs

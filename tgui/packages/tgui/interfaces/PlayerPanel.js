@@ -1,16 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Input,
-  Button,
-  Stack,
-  Section,
-  Tabs,
-  Box,
-  Dropdown,
-  Slider,
-  Tooltip,
-} from '../components';
+import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -19,6 +9,15 @@ const PAGES = [
     component: () => GeneralActions,
     color: 'green',
     icon: 'tools',
+  },
+  {
+    title: 'Management',
+    component: () => ManagementActions,
+    color: 'purple',
+    icon: 'ban',
+    canAccess: (data) => {
+      return !!data.is_manager;
+    },
   },
   {
     title: 'Punish',
@@ -426,26 +425,27 @@ const PunishmentActions = (props, context) => {
       </Section>
 
       <Section level={2} title="Human Name">
-        <Stack
-          align="right"
-          grow={1}
-        >
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="clipboard-list"
             color="average"
             content="Human name reset"
-            disabled={!hasPermission(data, "reset_human_name")}
-            onClick={() => act("reset_human_name")}
+            disabled={!hasPermission(data, 'reset_human_name')}
+            onClick={() => act('reset_human_name')}
           />
           <Button
             width="100%"
             height="100%"
             icon="clipboard-list"
             color="bad"
-            content={!data?.client_name_banned_status ? ("Human name ban") : ("Human name unban")}
-            disabled={!hasPermission(data, "ban_human_name")}
-            onClick={() => act("ban_human_name")}
+            content={
+              !data?.client_name_banned_status
+                ? 'Human name ban'
+                : 'Human name unban'
+            }
+            disabled={!hasPermission(data, 'ban_human_name')}
+            onClick={() => act('ban_human_name')}
           />
         </Stack>
       </Section>
@@ -852,12 +852,12 @@ const PhysicalActions = (props, context) => {
               onClick={() => act('set_squad')}
             />
             <Button.Confirm
-                content="Set Faction"
-                icon="clipboard-list"
-                width="100%"
-                height="100%"
-                disabled={!hasPermission(data, 'set_faction')}
-                onClick={() => act('set_faction')}
+              content="Set Faction"
+              icon="clipboard-list"
+              width="100%"
+              height="100%"
+              disabled={!hasPermission(data, 'set_faction')}
+              onClick={() => act('set_faction')}
             />
           </Stack>
         )}
@@ -894,6 +894,65 @@ const PhysicalActions = (props, context) => {
             content="Strip Equipment"
             onClick={() => act('strip_equipment')}
             color="red"
+          />
+        </Stack>
+      </Section>
+    </Section>
+  );
+};
+const ManagementActions = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { glob_mute_bits, client_muted } = data;
+  return (
+    <Section fill>
+      <Section level={2} title="Banishment">
+        <Stack align="right" grow={1}>
+          <Button.Confirm
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Nameless Ban"
+            disabled={!hasPermission(data, 'mob_ban')}
+            onClick={() => act('mob_ban')}
+          />
+          <Button.Confirm
+            width="100%"
+            icon="ban"
+            color="red"
+            content="Permanent Ban"
+            disabled={!hasPermission(data, 'mob_eorg_ban')}
+            onClick={() => act('mob_eorg_ban')}
+          />
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="ban"
+            color="purple"
+            content="Shadowban"
+            disabled={!hasPermission(data, 'mob_jobban')}
+            onClick={() => act('mob_jobban')}
+          />
+          <Button.Confirm
+            width="100%"
+            height="100%"
+            icon="ban"
+            color="purple"
+            content="Ban Staff"
+            disabled={!hasPermission(data, 'mob_jobban')}
+            onClick={() => act('mob_jobban')}
+          />
+        </Stack>
+      </Section>
+
+      <Section level={2} title="Record-keeping">
+        <Stack align="right" grow={1}>
+          <Button
+            width="100%"
+            icon="clipboard-list"
+            color="average"
+            content="Check Notes"
+            disabled={!hasPermission(data, 'show_notes')}
+            onClick={() => act('show_notes')}
           />
         </Stack>
       </Section>

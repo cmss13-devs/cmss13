@@ -1,0 +1,4 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - refactor: "refactored mobs.dm, mob_defines"

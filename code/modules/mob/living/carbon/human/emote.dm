@@ -335,3 +335,15 @@
 			return get_sfx("male_warcry")
 		else
 			return get_sfx("female_warcry")
+
+/datum/emote/living/carbon/human/whimper
+	key = "whimper"
+	key_third_person = "whimpers"
+	message = "whimpers."
+
+/datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+
+	user.show_speech_bubble("scream")

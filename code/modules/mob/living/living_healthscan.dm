@@ -60,12 +60,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
+/**
+ * Returns TRUE if the target is either dead or appears to be dead.
+ */
 /datum/health_scan/proc/get_death_value(mob/target_mob)
 	if(target_mob.stat == DEAD || target_mob.status_flags & FAKEDEATH)
 		return TRUE
-	else
-		return FALSE
-
+	return FALSE
+/**
+ * Returns the oxygen value, unless they have FAKEDEATH - in which case it will instead make up a number to return.
+ */
 /datum/health_scan/proc/get_oxy_value(mob/target_mob)
 	if(!(target_mob.status_flags & FAKEDEATH))
 		return target_mob.getOxyLoss()

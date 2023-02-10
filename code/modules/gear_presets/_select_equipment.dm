@@ -847,7 +847,7 @@ var/list/rebel_rifles = list(
 	switch(random_weapon)
 		if(0)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/boltaction(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/hunting(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/boltaction(H), WEAR_WAIST)
 		if(1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/uzi(H), WEAR_WAIST)

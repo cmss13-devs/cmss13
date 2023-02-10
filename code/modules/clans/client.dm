@@ -3,12 +3,13 @@
 
 /client/load_player_data_info(datum/entity/player/player)
 	set waitfor = FALSE
+
 	. = ..()
-	if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR) || CLIENT_HAS_RIGHTS(src, R_DEBUG))
+	if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR))
 		clan_info = GET_CLAN_PLAYER(player.id)
 		clan_info.sync()
 
-		if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER || CLIENT_HAS_RIGHTS(src, R_DEBUG))
+		if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER)
 			clan_info.clan_rank = clan_ranks_ordered[CLAN_RANK_ADMIN]
 			clan_info.permissions |= CLAN_PERMISSION_ALL
 		else

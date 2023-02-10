@@ -528,7 +528,6 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "Op" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;

@@ -1320,7 +1320,6 @@
 /area/kutjevo/interior/colony_S_East)
 "bPf" = (
 /obj/structure/platform_decoration/kutjevo,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "bPV" = (
@@ -7164,8 +7163,8 @@
 /area/kutjevo/interior/power/comms)
 "jGX" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/kutjevo/colors,
-/area/kutjevo/interior/complex/botany)
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "jIt" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -7799,7 +7798,6 @@
 /area/kutjevo/interior/colony_north)
 "kDl" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/machinery/computer/security/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
@@ -8277,9 +8275,6 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
-"lly" = (
-/turf/open/floor/kutjevo/colors/orange,
-/area/kutjevo/interior/foremans_office)
 "lmK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/blocker/invisible_wall,
@@ -8786,7 +8781,6 @@
 	},
 /area/kutjevo/interior/oob)
 "lYW" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med)
 "lZz" = (
@@ -10881,7 +10875,6 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "oMw" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "oMS" = (
@@ -11744,7 +11737,6 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "pOI" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "pPn" = (
@@ -12870,7 +12862,6 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "rxr" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "rxX" = (
@@ -13112,8 +13103,9 @@
 	},
 /area/kutjevo/interior/complex/med/operating)
 "rQY" = (
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/power_pt2_electric_boogaloo)
+/obj/effect/landmark/survivor_spawner,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "rRl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -13486,9 +13478,6 @@
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/auto_doc)
-"snr" = (
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med)
 "snP" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_x = 5;
@@ -14625,7 +14614,6 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/bed/chair{
 	dir = 8;
 	tag = "icon-chair (WEST)"
@@ -16829,10 +16817,6 @@
 /obj/item/trash/barcardine,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
-"wIG" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
 "wJZ" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
@@ -26724,7 +26708,7 @@ hQj
 hQj
 xgV
 pnM
-wIG
+hQj
 hQj
 ips
 pyp
@@ -33647,7 +33631,7 @@ imG
 ghk
 sVy
 oVX
-snr
+pOI
 jzl
 dxF
 fpO
@@ -33814,7 +33798,7 @@ tnM
 oVX
 cDf
 oVX
-snr
+pOI
 jzl
 jzl
 esO
@@ -33984,7 +33968,7 @@ oVX
 buG
 xZd
 dQL
-snr
+pOI
 uIg
 pzH
 dwx
@@ -34153,8 +34137,8 @@ jzi
 oVX
 oVX
 uIg
-snr
-snr
+pOI
+pOI
 uIg
 fpO
 fpO
@@ -34487,8 +34471,8 @@ oVX
 oVX
 oVX
 uIg
-snr
-snr
+pOI
+pOI
 uIg
 nnf
 fpO
@@ -34645,13 +34629,13 @@ gwY
 bRJ
 oVX
 lcs
-snr
-snr
+pOI
+pOI
 lxd
-snr
+pOI
 oVX
 oVX
-snr
+pOI
 lxd
 uIg
 pzH
@@ -34982,7 +34966,7 @@ ujk
 rxX
 xoq
 cXP
-snr
+pOI
 oVX
 oVX
 cfa
@@ -34992,10 +34976,10 @@ wWy
 wWy
 wWy
 ifW
-wff
-wff
-wff
-wff
+jGX
+jGX
+jGX
+jGX
 ifW
 wWy
 wWy
@@ -35149,7 +35133,7 @@ pbY
 kBb
 uTj
 abS
-snr
+pOI
 oVX
 oVX
 cfa
@@ -35159,10 +35143,10 @@ wWy
 hdF
 wWy
 ifW
-nnf
-wff
-wff
-wff
+rQY
+jGX
+jGX
+jGX
 ifW
 wWy
 wWy
@@ -35316,7 +35300,7 @@ pbY
 cZt
 cDf
 dvL
-snr
+pOI
 oVX
 oVX
 cfa
@@ -35326,10 +35310,10 @@ wWy
 wWy
 wWy
 ifW
-nnf
-wff
-wff
-wff
+rQY
+jGX
+jGX
+jGX
 ifW
 wWy
 wWy
@@ -35483,7 +35467,7 @@ xFl
 jwx
 kvu
 gMw
-snr
+pOI
 oVX
 oVX
 ewF
@@ -35493,10 +35477,10 @@ wWy
 wWy
 wWy
 ifW
-nnf
-nnf
-nnf
-wff
+rQY
+rQY
+rQY
+jGX
 ifW
 wWy
 wWy
@@ -35660,10 +35644,10 @@ kVJ
 jhS
 jhS
 jhS
-wff
-nnf
-wff
-wff
+jGX
+rQY
+jGX
+jGX
 jhS
 jhS
 jhS
@@ -35817,10 +35801,10 @@ pSU
 kkB
 siR
 nAO
-snr
+pOI
 oVX
 oVX
-snr
+pOI
 xqM
 ePV
 pzH
@@ -35990,8 +35974,8 @@ oVX
 oVX
 oVX
 ePV
-snr
-snr
+pOI
+pOI
 ePV
 fpO
 nnf
@@ -36313,7 +36297,7 @@ yjI
 oNV
 yjI
 pSU
-snr
+pOI
 pSU
 jnx
 ttq
@@ -36324,8 +36308,8 @@ oVX
 oVX
 oVX
 ePV
-snr
-snr
+pOI
+pOI
 ePV
 wff
 wff
@@ -36482,14 +36466,14 @@ dLY
 pSU
 azo
 pSU
-snr
-snr
+pOI
+pOI
 ldU
 vnO
 aEU
-snr
+pOI
 oVX
-snr
+pOI
 ePV
 pzH
 pzH
@@ -36654,9 +36638,9 @@ lBP
 jzl
 lBP
 jzl
-snr
+pOI
 oVX
-snr
+pOI
 jzl
 lcs
 lcs
@@ -36821,9 +36805,9 @@ ann
 uqv
 jzQ
 vFg
-snr
+pOI
 cey
-snr
+pOI
 jzl
 nRk
 tMH
@@ -36990,7 +36974,7 @@ gLg
 jzl
 qXd
 oVX
-snr
+pOI
 lcE
 lYW
 smQ
@@ -37003,7 +36987,7 @@ fpO
 lHs
 tIy
 nLC
-jGX
+cAt
 mjv
 igE
 nhT
@@ -37155,7 +37139,7 @@ gsq
 vgw
 cOx
 vFg
-snr
+pOI
 oVX
 iZu
 jzl
@@ -37322,9 +37306,9 @@ wyy
 mHJ
 xXa
 jzl
-snr
+pOI
 oVX
-snr
+pOI
 lcs
 orY
 kRM
@@ -37489,9 +37473,9 @@ oVX
 oVX
 oVX
 wPu
-snr
+pOI
 oVX
-snr
+pOI
 lcs
 orY
 kRM
@@ -37656,9 +37640,9 @@ mHJ
 mHJ
 mzS
 jzl
-snr
-snr
-snr
+pOI
+pOI
+pOI
 lcs
 orY
 kRM
@@ -38011,13 +37995,13 @@ nlc
 tWv
 nlc
 sPV
-rQY
-rQY
-rQY
-rQY
-rQY
-rQY
-rQY
+rxr
+rxr
+rxr
+rxr
+rxr
+rxr
+rxr
 epR
 kHm
 plQ
@@ -38178,13 +38162,13 @@ xRh
 xRh
 xRh
 eVv
-rQY
+rxr
 pxb
 ndF
 ppB
 ndF
 aor
-rQY
+rxr
 tFe
 oQc
 wtH
@@ -38345,7 +38329,7 @@ dip
 dip
 qvq
 sPV
-rQY
+rxr
 rkO
 xRh
 frx
@@ -38512,14 +38496,14 @@ phv
 stt
 stt
 eOc
-rQY
+rxr
 epR
 mcv
 tWv
 mcv
 sPV
-rQY
-rQY
+rxr
+rxr
 gQF
 dip
 wtH
@@ -38676,17 +38660,17 @@ xWK
 xWK
 feO
 mDL
-rQY
-rQY
-rQY
-rQY
+rxr
+rxr
+rxr
+rxr
 epR
 mcv
 tWv
 mcv
 sPV
-rQY
-rQY
+rxr
+rxr
 xyw
 dip
 wCU
@@ -38843,10 +38827,10 @@ bKH
 bKH
 feO
 jPZ
-rQY
-rQY
-rQY
-rQY
+rxr
+rxr
+rxr
+rxr
 tFe
 xRh
 xRh
@@ -39013,13 +38997,13 @@ bpT
 ppB
 ppB
 aor
-rQY
+rxr
 qJx
 nni
 hIp
 nni
 eOc
-rQY
+rxr
 tFe
 oQc
 hMu
@@ -39180,13 +39164,13 @@ dip
 dip
 dnR
 sPV
-rQY
-rQY
-rQY
-rQY
-rQY
-rQY
-rQY
+rxr
+rxr
+rxr
+rxr
+rxr
+rxr
+rxr
 epR
 kHm
 cFJ
@@ -40984,7 +40968,7 @@ iVD
 kID
 lIM
 wDT
-lly
+oMw
 agG
 spV
 ylf

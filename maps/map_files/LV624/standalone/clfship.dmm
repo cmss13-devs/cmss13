@@ -173,6 +173,7 @@
 	network_receive = "CLF";
 	networks_transmit = list("CLF")
 	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "bluecorner";
@@ -180,10 +181,11 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
-/obj/item/stool,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor{
-	icon_state = "platingdmg1"
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/lv624/lazarus/crashed_ship)
 "gg" = (
@@ -469,11 +471,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
-"ln" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/wood,
-/area/lv624/lazarus/crashed_ship)
 "lr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -557,7 +554,10 @@
 /area/lv624/lazarus/crashed_ship)
 "ok" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/plating,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner"
+	},
 /area/lv624/lazarus/crashed_ship)
 "ou" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -877,7 +877,11 @@
 /area/lv624/lazarus/crashed_ship)
 "xo" = (
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/lv624/lazarus/crashed_ship)
 "xs" = (
 /obj/effect/landmark/corpsespawner/wysec,
@@ -1213,6 +1217,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "bluecorner";
@@ -1401,7 +1406,6 @@
 /area/lv624/lazarus/crashed_ship)
 "JC" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "JG" = (
@@ -1513,6 +1517,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "bluecorner";
@@ -1992,7 +1997,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Wa" = (
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/almayer{
 	icon_state = "green";
 	tag = "icon-green"
@@ -2516,7 +2520,7 @@ Ab
 Ns
 Px
 Cq
-Ac
+lr
 lr
 Xq
 JO
@@ -2651,7 +2655,7 @@ UV
 Ro
 Sy
 Cs
-ok
+dN
 dN
 Bc
 Dp
@@ -2662,7 +2666,7 @@ Qd
 DZ
 Gm
 gF
-Ac
+lr
 Qc
 Xq
 XG
@@ -2844,7 +2848,7 @@ Qf
 mS
 LG
 bc
-xo
+RS
 lr
 lr
 KK
@@ -2943,9 +2947,9 @@ Qd
 Qd
 DZ
 Em
-lr
-bL
-QQ
+Ac
+PY
+xo
 Xq
 Wt
 SW
@@ -2976,23 +2980,23 @@ Ab
 Ab
 nt
 GT
-fX
+ft
 dN
 Qf
 lU
 mS
 mS
-xo
+RS
 Xq
 tB
 DS
 jH
 uX
 Xq
-xI
+fX
 yX
 NI
-jr
+ok
 vO
 dN
 oI
@@ -3031,7 +3035,7 @@ mS
 Qf
 wx
 LG
-ln
+tB
 Bg
 GO
 uX
@@ -3039,7 +3043,7 @@ Xq
 Mz
 ag
 gD
-QQ
+xo
 Xq
 XM
 dN
@@ -3086,7 +3090,7 @@ Xq
 fA
 OL
 fe
-jr
+ok
 Xq
 Yh
 TA
@@ -3130,10 +3134,10 @@ lr
 lr
 lr
 xF
-lr
-lr
+Ac
+Ac
 PY
-QQ
+xo
 VB
 Qf
 lC
@@ -3183,7 +3187,7 @@ xI
 jr
 zb
 dN
-ok
+dN
 Pu
 qU
 Bc
@@ -3314,7 +3318,7 @@ dN
 wG
 DZ
 PA
-xo
+RS
 bF
 lr
 lr

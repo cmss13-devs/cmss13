@@ -922,12 +922,6 @@
 	tag = "icon-darkyellowcorners2 (NORTH)"
 	},
 /area/ice_colony/surface/engineering/electric)
-"adg" = (
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
-	},
-/area/ice_colony/surface/engineering/electric)
 "adh" = (
 /turf/open/floor{
 	dir = 4;
@@ -963,7 +957,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 0;
-	name = "Colony Requesitions Storage Pod";
+	name = "Colony Requesitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -1052,7 +1046,6 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "adx" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -1518,7 +1511,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -1827,7 +1819,7 @@
 /area/ice_colony/surface/engineering)
 "afp" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Engineering Generator Room";
+	name = "\improper Colony Engineering Generator Room"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -1934,7 +1926,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering Tool Storage";
+	name = "\improper Colony Engineering Tool Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -2078,7 +2070,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Engineering Material Storage";
+	name = "\improper Colony Engineering Material Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -2810,7 +2802,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Engineering Locker Room";
+	name = "\improper Colony Engineering Locker Room"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3224,13 +3216,6 @@
 	tag = "icon-darkyellow2 (EAST)"
 	},
 /area/ice_colony/surface/substation/smes)
-"aiI" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
-	},
-/area/ice_colony/surface/substation/smes)
 "aiJ" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/snow/layer2,
@@ -3304,7 +3289,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering";
+	name = "\improper Colony Engineering"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3323,7 +3308,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering Backup Power Storage";
+	name = "\improper Colony Engineering Backup Power Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3419,7 +3404,7 @@
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajl" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Hydroponics North Wing Dome";
+	name = "\improper Hydroponics North Wing Dome"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -3610,7 +3595,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Power Substation SMES";
+	name = "\improper Colony Power Substation SMES"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -4245,7 +4230,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Power Substation";
+	name = "\improper Colony Power Substation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -4456,7 +4441,6 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -4568,7 +4552,6 @@
 /turf/open/ice,
 /area/ice_colony/surface/mining)
 "ame" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreen2";
@@ -5005,7 +4988,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Technical Storage";
-	req_access_txt = "100";
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -5270,7 +5253,7 @@
 /area/ice_colony/surface/dorms/restroom_w)
 "anQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Toilet Unit";
+	name = "\improper Toilet Unit"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -5326,20 +5309,7 @@
 /area/ice_colony/surface/dorms/restroom_e)
 "anY" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Toilet Unit";
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
-	},
-/area/ice_colony/surface/dorms/restroom_e)
-"anZ" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	name = "\improper Toilet Unit"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -5382,7 +5352,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Power Substation";
+	name = "\improper Colony Power Substation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -5594,7 +5564,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Mining Station";
+	name = "\improper Colony Mining Station"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
@@ -5683,7 +5653,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Aurora Medical Clinic Recovery Room";
+	name = "\improper Aurora Medical Clinic Recovery Room"
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -5710,7 +5680,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Aurora Medical Clinic Scanning Unit";
+	name = "\improper Aurora Medical Clinic Scanning Unit"
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -6167,7 +6137,6 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -6215,7 +6184,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Aurora Medical Clinic Storage";
+	name = "\improper Aurora Medical Clinic Storage"
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -6294,7 +6263,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Dormitories Men's Restroom";
+	name = "\improper Dormitories Men's Restroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6335,7 +6304,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Dormitories Women's Restroom";
+	name = "\improper Dormitories Women's Restroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6836,7 +6805,7 @@
 "arF" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitory Unit";
+	name = "\improper Colony Dormitory Unit"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -6865,7 +6834,7 @@
 "arK" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitory Custodial Closet";
+	name = "\improper Colony Dormitory Custodial Closet"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
@@ -6937,7 +6906,6 @@
 "arW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -7069,7 +7037,7 @@
 "asl" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Aurora Medical Clinic Storage";
+	name = "\improper Aurora Medical Clinic Storage"
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -8085,7 +8053,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitory Unit";
+	name = "\improper Colony Dormitory Unit"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -8446,7 +8414,7 @@
 "avB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Hydroponics Zoo Dome";
+	name = "\improper Hydroponics Zoo Dome"
 	},
 /turf/open/floor{
 	icon_state = "darkgreen2";
@@ -8493,7 +8461,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Hydroponics Dome";
+	name = "\improper Hydroponics Dome"
 	},
 /turf/open/floor{
 	icon_state = "darkgreen2";
@@ -8606,7 +8574,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Hydroponics Dome";
+	name = "\improper Hydroponics Dome"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -8631,7 +8599,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -8701,7 +8669,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -8975,10 +8943,6 @@
 /obj/structure/ice/thin/end,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
-"awN" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
-/area/ice_colony/surface/dorms)
 "awO" = (
 /obj/structure/ice/thin/end{
 	dir = 4;
@@ -9546,7 +9510,7 @@
 "ayq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Hydroponics Dome South Wing";
+	name = "\improper Hydroponics Dome South Wing"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -9747,7 +9711,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Disposals";
+	name = "\improper Colony Disposals"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -9964,13 +9928,6 @@
 "azt" = (
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
-"azu" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
-	},
-/area/ice_colony/surface/disposals)
 "azv" = (
 /turf/open/floor{
 	dir = 4;
@@ -9988,7 +9945,7 @@
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Colony Dormitories Lavatory";
+	name = "\improper Colony Dormitories Lavatory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -10005,7 +9962,7 @@
 "azB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Colony Dormitories Canteen";
+	name = "\improper Colony Dormitories Canteen"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -10081,7 +10038,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -10346,7 +10303,7 @@
 /area/ice_colony/surface/disposals)
 "aAr" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Hydroponics South Wing Dome";
+	name = "\improper Hydroponics South Wing Dome"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -10653,7 +10610,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Administration";
+	name = "\improper Colony Administration"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11050,12 +11007,6 @@
 	tag = "icon-darkblue2"
 	},
 /area/ice_colony/surface/command/control/office)
-"aCa" = (
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
-	},
-/area/ice_colony/surface/command/control/office)
 "aCb" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -11088,7 +11039,6 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aCd" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -11132,7 +11082,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aCj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Colony Security Checkpoint";
+	name = "\improper Colony Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -11612,7 +11562,7 @@
 "aDq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Garage";
+	name = "\improper Colony Garage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11947,7 +11897,7 @@
 	tag = "icon-pipe-s (WEST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Colony Garage";
+	name = "Colony Garage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12059,7 +12009,7 @@
 	name = "\improper Colony Administration Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Offices";
+	name = "\improper Colony Offices"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12378,7 +12328,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Garage Repair Station";
+	name = "\improper Colony Garage Repair Station"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12481,7 +12431,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Hydroponics South Wing Technical Storage";
+	name = "\improper Hydroponics South Wing Technical Storage"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12732,7 +12682,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Colony Control Center";
+	name = "\improper Colony Control Center"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12800,7 +12750,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	name = "Colony Garage";
+	name = "Colony Garage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12821,7 +12771,7 @@
 "aGb" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	name = "Colony Garage";
+	name = "Colony Garage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -13088,7 +13038,7 @@
 	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Crisis Room";
+	name = "\improper Colony Crisis Room"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -13129,7 +13079,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Administration Office";
+	name = "\improper Colony Administration Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
@@ -13141,7 +13091,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Administration Office";
+	name = "\improper Colony Administration Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
@@ -13336,7 +13286,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "st_17";
 	locked = 0;
-	name = "Power Storage Unit";
+	name = "Power Storage Unit"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -13354,15 +13304,13 @@
 "aHE" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/wood,
-/area/ice_colony/surface/command/crisis)
-"aHF" = (
-/obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHG" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHH" = (
@@ -13370,6 +13318,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHI" = (
@@ -13437,6 +13386,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHV" = (
@@ -13476,6 +13426,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIb" = (
@@ -13562,6 +13513,7 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIr" = (
@@ -13679,12 +13631,14 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIL" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIM" = (
@@ -13692,6 +13646,7 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIN" = (
@@ -13798,7 +13753,7 @@
 	dir = 2;
 	id = "st_18";
 	locked = 0;
-	name = "Disposals Storage Unit";
+	name = "Disposals Storage Unit"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -14125,7 +14080,7 @@
 	tag = "icon-xtracks"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Anti-Freeze Bar";
+	name = "\improper Anti-Freeze Bar"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -14336,7 +14291,7 @@
 /area/ice_colony/surface/hangar/checkpoint)
 "aLo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Colony Security Checkpoint";
+	name = "\improper Colony Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -14510,7 +14465,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Anti-Freeze Canteen";
+	name = "\improper Anti-Freeze Canteen"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
@@ -15188,7 +15143,7 @@
 	dir = 2;
 	id = "st_19";
 	locked = 0;
-	name = "Research Storage Unit";
+	name = "Research Storage Unit"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -15249,7 +15204,7 @@
 "aOh" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Security Checkpoint";
+	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -15300,7 +15255,7 @@
 "aOp" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Omicron Custodial Storage";
+	name = "\improper Omicron Custodial Storage"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
@@ -16144,7 +16099,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "research_entrance";
 	locked = 0;
-	name = "Omicron Research Dome";
+	name = "Omicron Research Dome"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -16161,7 +16116,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Anti-Freeze Canteen Freezer";
+	name = "\improper Anti-Freeze Canteen Freezer"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -16176,7 +16131,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Anti-Freeze Bar Freezer";
+	name = "\improper Anti-Freeze Bar Freezer"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -16278,7 +16233,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Aerodrome Hangar Alpha";
+	name = "\improper Aerodrome Hangar Alpha"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -16656,7 +16611,6 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/shuttle{
 	icon_state = "floor6";
 	tag = "icon-floor6"
@@ -16895,13 +16849,6 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aSb" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
-	},
-/area/ice_colony/surface/bar/bar)
-"aSc" = (
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -17645,7 +17592,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Omicron Temporary Sample Storage";
+	name = "\improper Omicron Temporary Sample Storage"
 	},
 /turf/open/floor{
 	dir = 4;
@@ -17956,7 +17903,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Aerodrome Hangar Beta";
+	name = "\improper Aerodrome Hangar Beta"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -18063,7 +18010,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Omicron Technical Storage";
+	name = "\improper Omicron Technical Storage"
 	},
 /turf/open/floor{
 	icon_state = "darkyellow2";
@@ -18469,9 +18416,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
-"aVV" = (
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/exterior/surface/container_yard)
 "aVW" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor,
@@ -18703,7 +18647,6 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWv" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -18969,7 +18912,6 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXg" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXh" = (
@@ -19237,7 +19179,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "aXR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Aerodrome Hangar";
+	name = "\improper Aerodrome Hangar"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -20254,9 +20196,6 @@
 	tag = "icon-warnplate (WEST)"
 	},
 /area/ice_colony/exterior/surface/landing_pad)
-"baY" = (
-/turf/open/floor/plating,
-/area/shuttle/drop1/ice_colony)
 "baZ" = (
 /obj/structure/ice/thin/corner{
 	dir = 8;
@@ -20377,7 +20316,7 @@
 "bbw" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Storeroom";
+	name = "\improper Colony Storeroom"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -20564,7 +20503,7 @@
 /area/ice_colony/surface/excavation)
 "bcj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Colony Xenoarcheology Outpost";
+	name = "\improper Colony Xenoarcheology Outpost"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -20703,11 +20642,10 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcL" = (
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
-	},
-/area/ice_colony/surface/excavation)
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/ice_colony/surface/command/crisis)
 "bcM" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
@@ -21432,7 +21370,6 @@
 	},
 /area/ice_colony/surface/excavation)
 "beK" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -21854,7 +21791,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Requesitions Freezer";
+	name = "\improper Underground Requesitions Freezer"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -21911,13 +21848,6 @@
 	tag = "icon-T_Junction (EAST)"
 	},
 /turf/open/ice,
-/area/ice_colony/exterior/surface/valley/south/excavation)
-"bgc" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/icefloor{
-	icon_state = "rockvault";
-	tag = "icon-bcircuit"
-	},
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "bge" = (
 /obj/structure/bigDelivery,
@@ -21994,7 +21924,7 @@
 "bgt" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition)
@@ -22151,7 +22081,7 @@
 "bgR" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	locked = 0;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -22302,7 +22232,7 @@
 "bhk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
@@ -22328,7 +22258,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Requesitions Office";
+	name = "\improper Underground Requesitions Office"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22566,7 +22496,7 @@
 "big" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	name = "Underground Hangar Power Substation";
+	name = "Underground Hangar Power Substation"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
@@ -22673,7 +22603,7 @@
 "biC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Bay";
+	name = "\improper Underground Requesitions Bay"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22967,7 +22897,7 @@
 /area/ice_colony/underground/requesition/lobby)
 "bjx" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/lobby)
@@ -22976,7 +22906,7 @@
 	dir = 1;
 	locked = 0;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -23237,7 +23167,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bkn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Lobby";
+	name = "\improper Underground Requesitions Lobby"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -23250,7 +23180,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bkp" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -23347,7 +23277,7 @@
 "bkD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/chapel)
@@ -23357,7 +23287,7 @@
 "bkF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/morgue)
@@ -23383,7 +23313,7 @@
 "bkK" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/sec_storage)
@@ -23567,7 +23497,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -23935,7 +23865,7 @@
 "bmr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Chapel";
+	name = "\improper Underground Chapel"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -24238,7 +24168,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Underground Morgue";
+	name = "Underground Morgue"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24297,7 +24227,7 @@
 "bnA" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -24686,7 +24616,7 @@
 /area/ice_colony/underground/engineering/locker)
 "bow" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Underground Engineering Locker Room";
+	name = "\improper Underground Engineering Locker Room"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24730,7 +24660,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	name = "Underground Morgue";
+	name = "Underground Morgue"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24760,7 +24690,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Library";
+	name = "\improper Underground Library"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -24772,7 +24702,7 @@
 "boK" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -24784,7 +24714,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Underground Engineering Locker Room";
+	name = "\improper Underground Engineering Locker Room"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25126,7 +25056,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Main Hallway";
+	name = "\improper Underground Main Hallway"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25165,7 +25095,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Power Substation";
+	name = "\improper Underground Power Substation"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -25204,7 +25134,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Power Substation";
+	name = "\improper Underground Power Substation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25649,7 +25579,7 @@
 /area/ice_colony/underground/crew/bball)
 "brm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Sports Center";
+	name = "\improper Underground Sports Center"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25667,7 +25597,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering)
@@ -25706,7 +25636,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering)
@@ -25865,7 +25795,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -25902,7 +25832,7 @@
 "brP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26379,7 +26309,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
+	name = "\improper Underground Medical Laboratory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26481,7 +26411,7 @@
 /area/ice_colony/underground/maintenance/central)
 "btn" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26630,7 +26560,7 @@
 	dir = 2;
 	id = "engine_electrical_maintenance";
 	locked = 0;
-	name = "Underground Power Substation";
+	name = "Underground Power Substation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26640,7 +26570,7 @@
 "btC" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
+	name = "\improper Underground Medical Laboratory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -27002,7 +26932,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Underground Medical Laboratory Treatment";
+	name = "\improper Underground Medical Laboratory Treatment"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -27096,7 +27026,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/or)
@@ -27199,7 +27129,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Underground Sports Center";
+	name = "\improper Underground Sports Center"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -27566,7 +27496,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	name = "Underground Medical Laboratory Operating Theatre";
+	name = "Underground Medical Laboratory Operating Theatre"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -27726,7 +27656,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Underground Medical Laboratory Lobby";
+	name = "\improper Underground Medical Laboratory Lobby"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -27920,14 +27850,14 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/treatment)
 "bwU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central/construction)
@@ -27975,7 +27905,7 @@
 	dir = 2;
 	id = "engine_electrical_maintenance";
 	locked = 0;
-	name = "Underground Power Substation";
+	name = "Underground Power Substation"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
@@ -28136,7 +28066,7 @@
 "bxx" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/bball)
@@ -28208,7 +28138,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
+	name = "\improper Underground Medical Laboratory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -28523,7 +28453,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Medical Laboratory Storage";
+	name = "\improper Underground Medical Laboratory Storage"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -28730,7 +28660,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/center)
@@ -28967,7 +28897,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -29124,7 +29054,7 @@
 "bAp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Staff Canteen";
+	name = "\improper Underground Staff Canteen"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29216,7 +29146,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/storage)
@@ -29280,7 +29210,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/canteen)
@@ -29419,7 +29349,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/research)
@@ -29433,7 +29363,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/research/storage)
@@ -29828,7 +29758,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
@@ -29852,7 +29782,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29950,7 +29880,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Detective's Office";
+	name = "\improper Underground Security Detective's Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
@@ -29958,7 +29888,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Marshal's Office";
+	name = "\improper Underground Security Marshal's Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
@@ -30188,7 +30118,7 @@
 /area/ice_colony/underground/crew/canteen)
 "bDm" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security";
+	name = "\improper Underground Security"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -30357,7 +30287,7 @@
 "bDI" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Underground Command Center";
+	name = "\improper Underground Command Center"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30506,7 +30436,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/hallway)
@@ -30612,7 +30542,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Theta-V Research Laboratory Storage";
+	name = "\improper Theta-V Research Laboratory Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30736,7 +30666,7 @@
 "bEG" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/pv1)
@@ -30746,7 +30676,7 @@
 "bEI" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/pv2)
@@ -30791,7 +30721,7 @@
 	tag = "icon-pipe-s (WEST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security";
+	name = "\improper Underground Security"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -30898,7 +30828,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Theta-V Research Laboratory Sample Isolation";
+	name = "\improper Theta-V Research Laboratory Sample Isolation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31436,7 +31366,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	locked = 0;
-	name = "Underground Secure Technical Storage";
+	name = "Underground Secure Technical Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31449,7 +31379,7 @@
 "bGC" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31463,7 +31393,7 @@
 "bGE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Administration";
+	name = "\improper Colony Administration"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31931,7 +31861,7 @@
 /area/ice_colony/underground/security/interrogation)
 "bHP" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Underground Security Evidence Storage";
+	name = "\improper Underground Security Evidence Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31967,7 +31897,7 @@
 /area/ice_colony/underground/security/interrogation)
 "bHT" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security Interrogation";
+	name = "\improper Underground Security Interrogation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -32137,7 +32067,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Underground Administration Office";
+	name = "\improper Underground Administration Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
@@ -32146,7 +32076,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Underground Administration Office";
+	name = "\improper Underground Administration Office"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
@@ -32264,7 +32194,7 @@
 /area/ice_colony/underground/storage)
 "bIL" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/storage)
@@ -32430,7 +32360,7 @@
 /area/ice_colony/underground/security/interrogation)
 "bJe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -32472,7 +32402,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Theta-V Research Laboratory";
+	name = "\improper Theta-V Research Laboratory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -32762,7 +32692,7 @@
 "bJO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Theta-V Research Laboratory";
+	name = "\improper Theta-V Research Laboratory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -32884,7 +32814,7 @@
 "bKf" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Colony Offices";
+	name = "\improper Colony Offices"
 	},
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -33190,7 +33120,7 @@
 "bKO" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Underground Technical Storage";
+	name = "\improper Underground Technical Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33206,7 +33136,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Underground Technical Storage";
+	name = "\improper Underground Technical Storage"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33217,7 +33147,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Administration";
+	name = "\improper Colony Administration"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33228,7 +33158,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Men's Barracks";
+	name = "\improper Underground Men's Barracks"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
@@ -33236,7 +33166,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Women's Barracks";
+	name = "\improper Underground Women's Barracks"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -33245,7 +33175,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -33803,7 +33733,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	name = "\improper Underground Security Interrogation Observation";
+	name = "\improper Underground Security Interrogation Observation"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33815,7 +33745,7 @@
 /area/ice_colony/underground/security)
 "bMt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -33836,7 +33766,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Lobby";
+	name = "\improper Underground Security Lobby"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33847,7 +33777,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security)
@@ -33862,7 +33792,7 @@
 "bMy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Main Hallway";
+	name = "\improper Underground Main Hallway"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -34197,7 +34127,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Underground Disposals";
+	name = "\improper Underground Disposals"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -34212,7 +34142,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Lavatory";
+	name = "\improper Underground Lavatory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -34223,7 +34153,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -34282,7 +34212,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/backroom)
@@ -34298,7 +34228,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Underground Security Custodial Closet";
+	name = "\improper Underground Security Custodial Closet"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -34783,7 +34713,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Armory";
+	name = "\improper Underground Security Armory"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -34795,7 +34725,7 @@
 /area/ice_colony/underground/security/brig)
 "bOY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Security Brig";
+	name = "\improper Underground Security Brig"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -35256,7 +35186,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Underground Security Showers";
+	name = "\improper Underground Security Showers"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -35650,7 +35580,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/leisure)
@@ -35726,14 +35656,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bRr" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/lavatory)
@@ -35753,7 +35683,7 @@
 "bRv" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception)
@@ -35761,7 +35691,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -36383,7 +36313,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -36475,7 +36405,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Reception Archives";
+	name = "\improper Underground Reception Archives"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
@@ -36496,7 +36426,7 @@
 /area/ice_colony/underground/hallway/south_east)
 "bTd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Main Hallway";
+	name = "\improper Underground Main Hallway"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -36657,7 +36587,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Reception";
+	name = "\improper Underground Reception"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
@@ -36818,7 +36748,7 @@
 "bUd" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Toilet Unit";
+	name = "\improper Toilet Unit"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -36918,7 +36848,7 @@
 /area/ice_colony/underground/reception/toilet_men)
 "bUq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Visitor Entrance";
+	name = "\improper Underground Visitor Entrance"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -36939,7 +36869,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Men's Restroom";
+	name = "\improper Underground Men's Restroom"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -36995,7 +36925,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/toilet_men)
@@ -37290,7 +37220,7 @@
 /area/ice_colony/underground/reception/checkpoint_south)
 "bVr" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -37312,7 +37242,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Women's Restroom";
+	name = "\improper Underground Women's Restroom"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -37349,7 +37279,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/toilet_women)
@@ -37463,7 +37393,7 @@
 "bVM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Toilet Unit";
+	name = "\improper Toilet Unit"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -37577,7 +37507,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/east)
@@ -38698,7 +38628,7 @@
 /area/ice_colony/surface/hangar/beta)
 "neZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -38896,7 +38826,7 @@
 /area/ice_colony/exterior/underground/caves/open)
 "tFy" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -38916,7 +38846,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "umI" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -67122,10 +67052,10 @@ ayQ
 ayQ
 bci
 bcG
-bcL
+beK
 bdZ
-bcL
-bcL
+beK
+beK
 bfv
 bci
 aaC
@@ -67336,9 +67266,9 @@ apZ
 aAx
 aBc
 aBw
-aCa
+aCd
 aCy
-aCa
+aCd
 aDz
 aEi
 aEI
@@ -67407,7 +67337,7 @@ bcH
 bdm
 bea
 beK
-bcL
+beK
 bfw
 bci
 aaC
@@ -67686,10 +67616,10 @@ ayQ
 ayC
 bci
 bcI
-bcL
+beK
 beb
-bcL
-bcL
+beK
+beK
 bfx
 bci
 aaC
@@ -67903,7 +67833,7 @@ aBw
 aCc
 aCA
 aDa
-aCa
+aCd
 aEk
 aEJ
 aEJ
@@ -67968,10 +67898,10 @@ ayQ
 ayQ
 bci
 bcJ
-bcL
+beK
 beb
-bcL
-bcL
+beK
+beK
 bfy
 bci
 aaC
@@ -68182,10 +68112,10 @@ aqS
 aAx
 aBc
 aBx
-aCa
+aCd
 aCB
-aCa
-aCa
+aCd
+aCd
 aEl
 aEJ
 aEJ
@@ -68193,7 +68123,7 @@ aFN
 aGk
 aGL
 aHh
-aHF
+bcL
 aHW
 aIs
 aIK
@@ -68465,8 +68395,8 @@ tue
 aBc
 aBw
 aCd
-aCa
-aCa
+aCd
+aCd
 aDz
 aEh
 aEI
@@ -68475,7 +68405,7 @@ aFN
 aEJ
 aGN
 aHh
-aHF
+bcL
 aHX
 aIt
 aIL
@@ -69028,10 +68958,10 @@ aqS
 aAx
 aBc
 aBx
-aCa
+aCd
 aCy
-aCa
-aCa
+aCd
+aCd
 aEk
 aEJ
 aEJ
@@ -69096,10 +69026,10 @@ ayQ
 ayQ
 bci
 bcJ
-bcL
+beK
 beb
-bcL
-bcL
+beK
+beK
 bfy
 bci
 aaC
@@ -69313,7 +69243,7 @@ aBw
 aCb
 aCD
 aUk
-aCa
+aCd
 aEl
 aEJ
 aEJ
@@ -69321,7 +69251,7 @@ aFN
 aGn
 aGP
 aHl
-aHF
+bcL
 aHZ
 boc
 aIK
@@ -69377,11 +69307,11 @@ ayQ
 ayQ
 ayQ
 bcj
-bcL
-bcL
+beK
+beK
 bef
-bcL
-bcL
+beK
+beK
 bfy
 bci
 aaC
@@ -69662,8 +69592,8 @@ bck
 bck
 bck
 beg
-bcL
-bcL
+beK
+beK
 bfA
 bci
 aaC
@@ -69874,9 +69804,9 @@ aAC
 aAx
 aBc
 aBw
-aCa
+aCd
 aCB
-aCa
+aCd
 aDC
 aEn
 aEL
@@ -69942,10 +69872,10 @@ ayQ
 ayQ
 bci
 bcM
-bcL
+beK
 beh
-bcL
-bcL
+beK
+beK
 bfB
 bci
 aaC
@@ -70224,10 +70154,10 @@ ayl
 ayQ
 bci
 bcN
-bcL
+beK
 beh
-bcL
-bcL
+beK
+beK
 bfC
 bci
 aaC
@@ -70506,10 +70436,10 @@ ayC
 ayC
 bci
 bcO
-bcL
+beK
 beh
-bcL
-bcL
+beK
+beK
 bfD
 bci
 aaC
@@ -70788,10 +70718,10 @@ ayl
 ayC
 bci
 bcN
-bcL
+beK
 bei
-bcL
-bcL
+beK
+beK
 bfE
 bci
 aaC
@@ -71070,10 +71000,10 @@ ayl
 ayl
 bci
 bcN
-bcL
+beK
 beh
-bcL
-bcL
+beK
+beK
 bfF
 bci
 aaC
@@ -71352,10 +71282,10 @@ ayC
 ayl
 bci
 bcP
-bcL
+beK
 beh
-bcL
-bcL
+beK
+beK
 bfB
 bci
 aaC
@@ -72118,7 +72048,7 @@ avm
 avW
 arE
 arS
-awN
+arQ
 ast
 axn
 axS
@@ -72198,10 +72128,10 @@ ayl
 ayl
 bci
 bcS
-bcL
+beK
 bel
 beQ
-bcL
+beK
 bfI
 bci
 aaC
@@ -72480,10 +72410,10 @@ lJQ
 ayl
 bci
 bcT
-bcL
+beK
 bel
 beQ
-bcL
+beK
 bfJ
 bci
 aaC
@@ -72762,10 +72692,10 @@ ayl
 lJQ
 bci
 bcU
-bcL
+beK
 bel
 beQ
-bcL
+beK
 bfK
 bci
 aaC
@@ -72941,11 +72871,11 @@ alQ
 alo
 amI
 alo
-anZ
+aqg
 alo
-anZ
+aqg
 alo
-anZ
+aqg
 alo
 aqg
 alo
@@ -73019,14 +72949,14 @@ axs
 aui
 aVw
 aVU
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aVU
 aZy
 lXk
@@ -73300,16 +73230,16 @@ aui
 axs
 aui
 aVw
-aVV
+aXg
 aWB
 aXc
 aXH
-aVV
-aVV
+aXg
+aXg
 aVW
 aVW
-aVV
-aVV
+aXg
+aXg
 aZy
 aui
 lXk
@@ -73326,10 +73256,10 @@ aar
 lJQ
 bci
 bcV
-bcL
+beK
 ben
 beQ
-bcL
+beK
 bfM
 bci
 aaC
@@ -73582,16 +73512,16 @@ aui
 axs
 aui
 aVw
-aVV
+aXg
 aWC
 aXd
 aXI
-aVV
-aVV
+aXg
+aXg
 aWB
 aWE
-aVV
-aVV
+aXg
+aXg
 aZy
 lXk
 aui
@@ -73857,23 +73787,23 @@ aPx
 aKy
 aRs
 aSa
-aSc
+aSb
 aRs
 aKy
 aui
 axs
 aui
 aVw
-aVV
+aXg
 aWD
 aXe
 aXJ
 aVW
-aVV
+aXg
 aWC
 aWF
-aVV
-aVV
+aXg
+aXg
 aZy
 lXk
 aui
@@ -74139,7 +74069,7 @@ aPy
 aKy
 aRs
 aSb
-aSc
+aSb
 aRs
 aKy
 aui
@@ -74147,15 +74077,15 @@ axs
 aui
 aVw
 aVW
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
 aWD
 aWG
-aVV
-aVV
+aXg
+aXg
 aZy
 aui
 aui
@@ -74420,23 +74350,23 @@ aMa
 aPz
 aKy
 aRt
-aSc
-aSc
-aSc
+aSb
+aSb
+aSb
 aKy
 aui
 axs
 aui
 aVw
-aVV
+aXg
 aWE
 aXf
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aZs
 aZy
 aui
@@ -74704,22 +74634,22 @@ aQu
 aRu
 aRu
 aSR
-aSc
+aSb
 aKy
 aui
 axs
 aui
 aVw
-aVV
+aXg
 aWF
 aXg
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aZy
 aui
 aui
@@ -74992,16 +74922,16 @@ aui
 axs
 aui
 aVw
-aVV
+aXg
 aWG
 aXc
 aVW
 aVW
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
 aXc
-aVV
+aXg
 aZy
 aui
 aui
@@ -75274,16 +75204,16 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
+aXg
+aXg
 aXd
 aVW
 aVW
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
 aXd
-aVV
+aXg
 aZy
 aui
 aui
@@ -75556,14 +75486,14 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
+aXg
+aXg
 aXe
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
 aXe
 aWB
 aZy
@@ -75838,15 +75768,15 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
 aYx
-aVV
+aXg
 aVW
-aVV
+aXg
 aWC
 aZy
 aui
@@ -76120,15 +76050,15 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
 aYx
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
 aWD
 aZy
 aui
@@ -76402,16 +76332,16 @@ aui
 axs
 aui
 aVw
-aVV
+aXg
 aWH
 aXh
 aXK
-aVV
+aXg
 aYx
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
 aZy
 aui
 att
@@ -76684,15 +76614,15 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
 aYx
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
 aZt
 aZy
 aui
@@ -76967,15 +76897,15 @@ axs
 aui
 aVw
 aVW
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
 aYy
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
 aZy
 atV
 att
@@ -77249,15 +77179,15 @@ axs
 aui
 aVw
 aVW
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aZy
 aui
 att
@@ -77530,16 +77460,16 @@ aui
 axs
 aui
 aVw
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aZy
 atV
 att
@@ -77813,14 +77743,14 @@ axs
 aui
 aVw
 aVU
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
-aVV
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
+aXg
 aVU
 aZy
 att
@@ -83068,7 +82998,7 @@ abR
 abR
 acB
 acK
-adg
+adx
 adu
 age
 aed
@@ -83350,7 +83280,7 @@ abR
 abR
 acB
 acL
-adg
+adx
 adu
 adQ
 aee
@@ -83632,7 +83562,7 @@ abR
 abR
 acz
 acM
-adg
+adx
 adv
 adR
 aef
@@ -83914,8 +83844,8 @@ abR
 abR
 acB
 acN
-adg
-adg
+adx
+adx
 adQ
 aee
 aeu
@@ -84196,7 +84126,7 @@ aaD
 abR
 acB
 adP
-adg
+adx
 adx
 adQ
 aeg
@@ -84479,7 +84409,7 @@ abR
 acB
 acP
 adh
-adg
+adx
 adS
 aeg
 aev
@@ -87431,7 +87361,7 @@ azz
 azz
 bbL
 abc
-bgc
+bcZ
 bcZ
 bcZ
 bcZ
@@ -91259,7 +91189,7 @@ abn
 agN
 ahy
 ahY
-aiI
+ahY
 ajc
 ajE
 akd
@@ -93341,7 +93271,7 @@ aWq
 aWq
 aWp
 aWQ
-baY
+aWq
 bbl
 aUP
 aUP
@@ -95247,7 +95177,7 @@ axg
 axy
 ayn
 ayU
-azu
+azs
 azJ
 aAq
 awP

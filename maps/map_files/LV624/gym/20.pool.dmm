@@ -331,7 +331,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "Ou" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "Pw" = (

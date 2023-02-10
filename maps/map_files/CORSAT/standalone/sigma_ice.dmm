@@ -2632,7 +2632,6 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Sy" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -2975,7 +2974,6 @@
 	},
 /area/corsat/sigma/airlock/control)
 "YC" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "YF" = (

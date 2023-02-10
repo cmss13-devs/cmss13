@@ -97,3 +97,34 @@
 /obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader
 	spawn_priority = SPAWN_PRIORITY_HIGH
+
+//Generic Priority Spawners For Survivors//
+
+/obj/effect/landmark/survivor_spawner/doctor
+	var/survivor_variant = MEDICAL_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/researcher
+	var/survivor_variant = SCIENTIST_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/civilian
+	var/survivor_variant = CIVILIAN_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/corp
+	var/survivor_variant = CORPORATE_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/engineer
+	var/survivor_variant = ENGINEERING_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/any_colonist
+	var/survivor_variant = SURVIVOR_VARIANT_LIST
+	spawn_priority = SPAWN_PRIORITY_VERY_LOW
+
+/obj/effect/landmark/survivor_spawner/security
+	var/survivor_variant = SECURITY_SURVIVOR
+	spawn_priority = SPAWN_PRIORITY_LOW
+

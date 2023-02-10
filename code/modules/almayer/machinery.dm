@@ -262,6 +262,43 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp1"
 
+/obj/structure/prop/almayer/computers/sensor_computer1/attack_hand(mob/user)
+	. = ..()
+
+	if(user.is_mob_incapacitated())
+		return
+
+	tgui_interact(user)
+
+/obj/structure/prop/almayer/computers/sensor_computer1/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HumanEventsComputer")
+		ui.open()
+
+/obj/structure/prop/almayer/computers/sensor_computer1/ui_data(mob/user)
+	var/data = list()
+
+	data["traits"] = list()
+	for(var/datum/round_trait/trait as anything in SSround.round_traits)
+		if(!trait.show_in_human_report || !trait.human_report_message)
+			continue
+
+		var/trait_info = list()
+		trait_info["name"] = trait.name
+		trait_info["report"] = trait.human_report_message
+		data["traits"] += list(trait_info)
+
+	return data
+
+/obj/structure/prop/almayer/computers/sensor_computer1/ui_static_data(mob/user)
+	var/data = list()
+
+	data["shipmap_name"] = SSmapping.get_main_ship_name()
+	data["groundmap_name"] = SSmapping.configs[GROUND_MAP].map_name
+
+	return data
+
 /obj/structure/prop/almayer/computers/sensor_computer2
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."

@@ -31,7 +31,8 @@
 
 /datum/round_trait/New()
 	. = ..()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/on_round_start))
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(on_round_start)))
+	setup_report_messages()
 	if(trait_processes)
 		START_PROCESSING(SSround, src)
 	if(trait_to_give)
@@ -48,6 +49,10 @@
 ///type of info the human report has on this trait, if any.
 /datum/round_trait/proc/get_report()
 	return "[name] - [human_report_message]"
+
+/// prepares the relevant report messages, stub
+/datum/round_trait/proc/setup_report_messages()
+	return
 
 /// Will attempt to revert the round trait, used by admins.
 /datum/round_trait/proc/revert()

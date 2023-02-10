@@ -544,3 +544,4 @@ var/global/list/uniform_categories = list(
 #define PHONE_RTO "RTO"
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
+#define PHONE_IO "IO"

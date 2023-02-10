@@ -7,7 +7,7 @@
 
 
 /// meant for use with qdelling/newing things to transfer labels between them
-/atom/proc/transfer_label_component(var/atom/target)
+/atom/proc/transfer_label_component(atom/target)
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
 	if(src_label_component)
 		var/target_label_text = src_label_component.label_name
@@ -20,7 +20,8 @@
 	item_state = "flight"
 	var/label = null
 	var/labels_left = 50
-	var/mode = 0 //off or on.
+	/// off or on.
+	var/mode = 0
 	var/label_sound = 'sound/items/component_pickup.ogg'
 	var/remove_label_sound = 'sound/items/paper_ripped.ogg'
 
@@ -104,7 +105,7 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(var/atom/A, var/mob/user)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
 	if(label)
 		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."), \
@@ -159,7 +160,8 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	var/pen_colour = "black" //what colour the ink is!
+	/// what colour the ink is!
+	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -298,8 +300,8 @@
 
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
-	create_reagents(30) //Used to be 300
-	reagents.add_reagent("chloralhydrate", 22) //Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	create_reagents(30)
+	reagents.add_reagent("chloralhydrate", 22)
 
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
@@ -307,7 +309,7 @@
 		return
 	..()
 	if(reagents.total_volume)
-		if(M.reagents) reagents.trans_to(M, 50) //used to be 150
+		if(M.reagents) reagents.trans_to(M, 50)
 	return
 
 

@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, "<span class='danger'>[msg]</span>")
+			to_chat(src, SPAN_DANGER("[msg]"))
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
 	// Tgui Topic middleware
@@ -108,9 +108,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(href_list["reload_statbrowser"])
 		stat_panel.reinitialize()
 
+	// TGUIless adminhelp
+	if(href_list["tguiless_adminhelp"])
+		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
+		return
+
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 
@@ -231,7 +236,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return ..() //redirect to hsrc.Topic()
 
-/client/proc/handle_spam_prevention(var/message, var/mute_type)
+/client/proc/handle_spam_prevention(message, mute_type)
 	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
@@ -301,6 +306,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
 			admin.associate(src)
+			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -382,8 +388,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	CEI.show_player_event_info(src)
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
-		if(isXeno(mob))
-			var/mob/living/carbon/Xenomorph/X = mob
+		if(isxeno(mob))
+			var/mob/living/carbon/xenomorph/X = mob
 			if(X.hive && GLOB.custom_event_info_list[X.hive])
 				CEI = GLOB.custom_event_info_list[X.hive]
 				CEI.show_player_event_info(src)
@@ -434,7 +440,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
+		Destroy()
+	return ..()
+
+/client/Destroy()
 	QDEL_NULL(soundOutput)
+	QDEL_NULL(obj_window)
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
@@ -451,12 +464,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CLIENT_IS_STAFF(src))
 		message_staff("Admin logout: [key_name(src)]")
 
-	. = ..()
-
-/client/Destroy()
-	QDEL_NULL(obj_window)
-	. = ..()
-
+	..()
 	return QDEL_HINT_HARDDEL_NOW
 
 
@@ -503,7 +511,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
-/proc/setup_player_entity(var/ckey)
+/proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
 	if(player_entities["[ckey]"])
@@ -522,7 +530,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_staff("STATISTICS: Statistics saving complete.")
 
-/client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+/client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
 		return
 	talked = 0
@@ -536,7 +544,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
-/client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
+/client/proc/runtime_macro_insert(macro_button, parent, command)
 	if (!macro_button || !parent || !command)
 		return
 
@@ -550,7 +558,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
 
-/client/proc/runtime_macro_remove(var/macro_button, var/parent)
+/client/proc/runtime_macro_remove(macro_button, parent)
 	if (!macro_button || !parent)
 		return
 
@@ -562,7 +570,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(var/key as text|null)
+/client/verb/read_key_down(key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -571,7 +579,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(var/key as text|null)
+/client/verb/read_key_up(key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -684,6 +692,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+				if(MOD_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MOD))
+						if(prefs.tgui_say)
+							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=msay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+				if(ADMIN_CHANNEL)
+					if(admin_holder?.check_for_rights(R_ADMIN))
+						if(prefs.tgui_say)
+							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+				if(MENTOR_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MENTOR))
+						if(prefs.tgui_say)
+							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
@@ -708,7 +743,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)
 
-/client/proc/check_timelock(var/list/roles, var/hours)
+/client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
 	if(!GLOB.timelocks[timelock_name])
 		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)
@@ -727,3 +762,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(admin_holder)
 		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
 		admin_holder.filteriffic.tgui_interact(mob)
+
+///opens the particle editor UI for the in_atom object for this client
+/client/proc/open_particle_editor(atom/movable/in_atom)
+	if(admin_holder)
+		admin_holder.particle_test = new /datum/particle_editor(in_atom)
+		admin_holder.particle_test.tgui_interact(mob)

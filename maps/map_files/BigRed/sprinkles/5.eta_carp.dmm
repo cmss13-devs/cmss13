@@ -96,9 +96,8 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "q" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass{
+/obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Eta Lab Cell";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark";

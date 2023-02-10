@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/mob/living/target_mob
 	var/detail_level = DETAIL_LEVEL_FULL
 
-/datum/health_scan/New(var/mob/target)
+/datum/health_scan/New(mob/target)
 	. = ..()
 	target_mob = target
 
@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return ..()
 
 /// This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.
-/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui = null)
+/datum/health_scan/proc/look_at(mob/user, detail = DETAIL_LEVEL_FULL, bypass_checks = FALSE, ignore_delay = TRUE, alien = FALSE, datum/tgui/ui = null)
 	if(!bypass_checks)
 		if(HAS_TRAIT(target_mob, TRAIT_FOREIGN_BIO) && !alien)
 			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(target_mob))
 				return
-		if(!istype(target_mob, /mob/living/carbon) || isXeno(target_mob))
+		if(!istype(target_mob, /mob/living/carbon) || isxeno(target_mob))
 			to_chat(user, SPAN_WARNING("The scanner can't make sense of this creature."))
 			return
 
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
-/datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
+/datum/health_scan/ui_data(mob/user, data_detail_level = null)
 	var/list/data = list(
 		"patient" = target_mob.name,
 		"dead" = target_mob.stat == DEAD,
@@ -116,9 +116,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(human_target_mob.is_dead())
 			if(!human_target_mob.is_revivable())
 				permadead = TRUE
-			else if(!human_target_mob.check_tod() && !isSynth(human_target_mob))
+			else if(!human_target_mob.check_tod() && !issynth(human_target_mob))
 				permadead = TRUE
-			if(isSynth(target_mob))
+			if(issynth(target_mob))
 				permadead = FALSE
 
 		data["permadead"] = permadead
@@ -287,13 +287,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 							"icon" = "band-aid",
 							"colour" = "orange" //BRI'ISH????
 							))
-					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !isSynth(human_target_mob))
+					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !issynth(human_target_mob))
 						advice += list(list(
 							"advice" = "Administer a single dose of epinephrine.",
 							"icon" = "syringe",
 							"colour" = "olive"
 							))
-			if(!isSynth(human_target_mob))
+			if(!issynth(human_target_mob))
 				if(human_target_mob.blood_volume <= 500 && !chemicals_lists["nutriment"])
 					advice += list(list(
 						"advice" = "Administer food or recommend that the patient eat.",
@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return data
 
 /// legacy proc for to_chat messages on health analysers
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/show_limb_damage = TRUE, var/show_browser = TRUE, var/alien = FALSE, var/do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
+/mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
 			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
@@ -459,7 +459,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 				return
-		if(isXeno(src))
+		if(isxeno(src))
 			to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
 			return
 		// Doesn't work on non-humans
@@ -535,7 +535,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 			var/org_bleed = ""
 			if(bleeding_check)
-				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
+				org_bleed = SPAN_SCANNERB("(Bleeding)")
 
 			var/org_advice = ""
 			if(do_checks && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

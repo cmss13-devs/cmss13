@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixed deploying a M2C backwards to jump through dense objects"

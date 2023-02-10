@@ -15,7 +15,7 @@ GLOBAL_REAL_VAR(early_init_runtimes_count)
 GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
-/world/Error(var/exception/E)
+/world/Error(exception/E)
 	GLOB.total_runtimes++
 
 	..()

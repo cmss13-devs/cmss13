@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
-/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_spec
 
 
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 
-/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_specialist
 
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha
@@ -152,22 +152,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/hedp_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
 	)
 
 /obj/effect/essentials_set/hefa_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
 	)
 
 /obj/effect/essentials_set/hidp_6_pack
@@ -192,12 +192,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/agmf_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
 	)
 
 /obj/effect/essentials_set/agmi_6_pack

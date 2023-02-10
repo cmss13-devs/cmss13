@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 	req_access = list(ACCESS_MARINE_BRIG)
 	vendor_role = list(JOB_POLICE)
 
-/obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_military_police
 
 //------------ Warden CLOTHING VENDOR---------------
@@ -91,5 +91,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 	req_access = list(ACCESS_MARINE_BRIG)
 	vendor_role = list(JOB_WARDEN)
 
-/obj/structure/machinery/cm_vending/clothing/military_police_warden/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/military_police_warden/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_military_police_warden

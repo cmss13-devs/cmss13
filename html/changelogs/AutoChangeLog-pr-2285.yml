@@ -1,6 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Ghillie helmet is no longer exempt from having cosmetic accessories."
-  - bugfix: "Sniper rifle's \"toggle laser\" action is no longer bound to the same key as \"aimed shot\" action."
-  - qol: "Sniper rifle's laser can now be toggled by pressing the \"toggle burst\" button."

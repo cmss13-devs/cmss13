@@ -19,7 +19,7 @@
 	if (stat & NOPOWER)
 		return 1
 
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+	if((!allowed(user) || ismaintdrone(user)) && !isxeno(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
@@ -27,7 +27,7 @@
 
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 
-	if(!isXeno(user) && (onboard || is_ground_level(z)))
+	if(!isxeno(user) && (onboard || is_ground_level(z)))
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
@@ -60,7 +60,7 @@
 	ui_interact(user)
 
 // Duplicated and much-stripped down topic/UI code for the monorail control consoles.
-/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
@@ -141,7 +141,7 @@
 		if(shuttle.recharging) //Prevent the shuttle from moving again until it finishes recharging. This could be made to look better by using the shuttle computer's visual UI.
 			to_chat(usr, SPAN_WARNING("The monorail is loading and unloading. Please hold."))
 
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.queen_locked && !isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The monorail isn't responding to prompts, it looks like remote control was disabled."))
 			return
 
@@ -157,13 +157,15 @@
 				return
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
-				var/i = alert("Confirm hijack and launch?", "WARNING", "Yes", "No")
+			if(isqueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
+				var/i = tgui_alert(usr, "Confirm hijack and launch?", "WARNING", list("Yes", "No"))
+				if(i != "Yes")
+					return
 
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
 					return
 
-				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z) && i == "Yes")
+				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z))
 
 					var/datum/shuttle/ferry/marine/shuttle1 = shuttle
 					shuttle1.transit_gun_mission = 0
@@ -171,13 +173,13 @@
 					//round_statistics.count_hijack_mobs_for_statistics()
 					marine_announcement("Unauthorized monorail departure detected", "CORSAT Monorail Authority Alert", 'sound/misc/notice2.ogg')
 					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
+					var/mob/living/carbon/xenomorph/queen/Q = usr // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal crawler to depart! Rejoice!"), 3 ,Q.hivenumber)
 
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					shuttle1.launch(src)
 
-				else if(i == "No")
+				else if(i != "Yes")
 					return
 				else
 					shuttle.launch(src)

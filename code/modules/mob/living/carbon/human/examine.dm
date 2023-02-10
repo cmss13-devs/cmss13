@@ -5,7 +5,7 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
-	if(isXeno(user))
+	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
 		if(icon)
@@ -26,7 +26,7 @@
 		if(stat == DEAD)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
 		else if(stat || !client)
-			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
+			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
 		msg += "</span>"
 		return list(msg)
 
@@ -205,13 +205,13 @@
 		spawn(15)
 			if(user && src && distance <= 1 && user.stat != 1)
 				if(pulse == PULSE_NONE)
-					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]...</span>")
+					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else
-					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
+					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n</span>"
+			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
 
@@ -492,7 +492,7 @@
 	. += msg
 
 
-	if(isYautja(user))
+	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
@@ -515,7 +515,7 @@
 /proc/hasHUD(mob/M, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if (isSynth(H))
+		if (issynth(H))
 			return 1
 		switch(hudtype)
 			if("security")

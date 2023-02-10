@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - admin: "mods can now access the view combat logs button"

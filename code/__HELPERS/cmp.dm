@@ -54,3 +54,6 @@ var/cmp_field = "name"
 		. = B.qdels - A.qdels
 
 var/atom/cmp_dist_origin=null
+
+/proc/cmp_typepaths_asc(A, B)
+	return sorttext("[B]","[A]")

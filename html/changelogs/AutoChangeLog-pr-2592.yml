@@ -1,0 +1,5 @@
+author: "Molto"
+delete-after: True
+changes:
+  - bugfix: "fixed the spearhead honk icon"
+  - imageadd: "added the spearhead flipped icon"

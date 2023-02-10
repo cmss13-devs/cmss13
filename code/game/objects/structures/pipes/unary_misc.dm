@@ -17,7 +17,7 @@
 	else
 		icon_state = "freezer_0"
 
-/obj/structure/pipes/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/pipes/unary/freezer/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -51,7 +51,7 @@
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/heater/create_valid_directions()
@@ -65,7 +65,7 @@
 		icon_state = "heater_0"
 
 //dismantling code. copied from autolathe
-/obj/structure/pipes/unary/heater/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/pipes/unary/heater/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -100,7 +100,7 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/unary/outlet_injector/hide(var/invis)
+/obj/structure/pipes/unary/outlet_injector/hide(invis)
 	update_underlays()
 
 

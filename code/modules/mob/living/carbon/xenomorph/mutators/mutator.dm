@@ -80,7 +80,7 @@
 // Sets up actions for when a mutator is taken
 // Must be called at the end of any mutator that changes available actions
 // (read: Strains) apply_mutator proc for the mutator to work correctly.
-/datum/xeno_mutator/proc/mutator_update_actions(mob/living/carbon/Xenomorph/X)
+/datum/xeno_mutator/proc/mutator_update_actions(mob/living/carbon/xenomorph/X)
 	if(mutator_actions_to_remove)
 		for(var/action_path in mutator_actions_to_remove)
 			remove_action(X, action_path)
@@ -89,7 +89,7 @@
 			give_action(X, action_path)
 
 // Substitutes the existing behavior delegate for the strain-defined one.
-/datum/xeno_mutator/proc/apply_behavior_holder(mob/living/carbon/Xenomorph/X)
+/datum/xeno_mutator/proc/apply_behavior_holder(mob/living/carbon/xenomorph/X)
 	if (!istype(X))
 		log_debug("Null mob handed to apply_behavior_holder. Tell the devs.")
 		log_admin("Null mob handed to apply_behavior_holder. Tell the devs.")

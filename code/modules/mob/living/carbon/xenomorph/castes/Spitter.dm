@@ -27,7 +27,9 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-/mob/living/carbon/Xenomorph/Spitter
+	minimap_icon = "spitter"
+
+/mob/living/carbon/xenomorph/spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
@@ -49,7 +51,7 @@
 		/datum/action/xeno_action/activable/spray_acid/spitter,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SPITTER_NORMAL
 

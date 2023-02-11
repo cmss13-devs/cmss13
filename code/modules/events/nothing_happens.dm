@@ -1,6 +1,5 @@
 
 // Due to our blatant lack of events, there is no real better solution that isn't worse shitcode.
-// Lower this value by like, 10 or maybe your new event's value when a new event is added.
 
 /datum/round_event_control/nothing_happens
 	name = "Nothing Happens!"
@@ -10,3 +9,11 @@
 	min_players = 1
 	max_occurrences = INFINITE_EVENT_OCURRENCES
 	alert_observers = FALSE
+
+/datum/round_event_control/nothing_happens/New()
+	. = ..()
+	for(var/datum/round_event_control/possible_event in subtypesof(/datum/round_event_control))
+		if(possible_event.type == src.type)
+			break
+		src.weight -= possible_event.weight
+		// The value of this event is lowered by every other existing event in the game. Remove when we have enough!

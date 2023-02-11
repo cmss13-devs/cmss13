@@ -635,6 +635,9 @@
 		"powered" = TRUE,
 	)
 
+/obj/structure/machinery/vending/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/vending/ui_static_data(mob/user)
 	var/list/data = list()
 	data["product_records"] = list()

@@ -32204,7 +32204,7 @@
 	},
 /area/fiorina/station/lowsec)
 "tnr" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/engineer,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"

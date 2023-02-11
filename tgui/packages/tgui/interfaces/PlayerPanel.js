@@ -912,16 +912,16 @@ const ManagementActions = (props, context) => {
             icon="gavel"
             color="red"
             content="Nameless Ban"
-            disabled={!hasPermission(data, 'mob_ban')}
-            onClick={() => act('mob_ban')}
+            disabled={!hasPermission(data, 'nameless_ban')}
+            onClick={() => act('nameless_ban')}
           />
           <Button.Confirm
             width="100%"
             icon="ban"
             color="red"
             content="Permanent Ban"
-            disabled={!hasPermission(data, 'mob_eorg_ban')}
-            onClick={() => act('mob_eorg_ban')}
+            disabled={!hasPermission(data, 'perma_ban')}
+            onClick={() => act('perma_ban')}
           />
           <Button.Confirm
             width="100%"

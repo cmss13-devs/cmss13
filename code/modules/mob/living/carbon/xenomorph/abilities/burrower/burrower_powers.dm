@@ -100,7 +100,6 @@
 		to_chat(src, SPAN_XENOWARNING("The bird's metal is too tough for you to burrow into."))
 		return
 
-
 	if(!target)
 		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return

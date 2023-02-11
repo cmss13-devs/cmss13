@@ -1,3 +1,5 @@
+
+
 ///***MINES***///
 //Mines have an invisible "tripwire" atom that explodes when crossed
 //Stepping directly on the mine will also blow it up
@@ -21,13 +23,26 @@
 							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
+	var/shrapnel_count = 12
+	var/explosive_power = 60
 	use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
-
+	var/direct_trip_only = FALSE
+	var/needs_digging = FALSE
 	var/map_deployed = FALSE
+	var/buried = FALSE
+	var/arming_time = FALSE
+	var/heavy_trigger = FALSE
+
+/obj/item/explosive/mine/examine(mob/user)
+	..()
+	if(buried)
+		to_chat(user, SPAN_NOTICE("\nThis mine is armed."))
+	if(heavy_trigger)
+		to_chat(user, SPAN_NOTICE("\n It has a heavy trigger."))
 
 /obj/item/explosive/mine/Initialize()
 	. = ..()
@@ -63,7 +78,9 @@
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(!..())
 		return
-
+	if(needs_digging && user.loc && (user.loc.density)) //  || is_mainship_level(user.z)
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		return
 	if(check_for_obstacles(user))
 		return
 
@@ -72,6 +89,7 @@
 
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
+	playsound(loc, 'sound/machines/click.ogg', 25, 1)
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
 			SPAN_NOTICE("You stop deploying \the [src]."))
@@ -82,28 +100,45 @@
 
 	if(check_for_obstacles(user))
 		return
-
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 		SPAN_NOTICE("You finish deploying [src]."))
-
+	if(needs_digging)
+		playsound(loc, 'sound/weapons/flipblade.ogg', 25, 1)
+		user.visible_message(SPAN_NOTICE("[user] pulls the pin on \the [src]."), \
+			SPAN_NOTICE("You pull the activation pin and prepare it to be buried."))
+		user.drop_inv_item_on_ground(src)
+		anchored = TRUE
+		return
 	deploy_mine(user)
 
 /obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
-
 	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
-	if(user)
+	if(user && !buried)
 		user.drop_inv_item_on_ground(src)
-	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
+		setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
-	update_icon()
+	if(buried)
+		update_icon()
 
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
+	if(needs_digging && istype(W, /obj/item/tool/shovel) && !active && anchored)
+		user.visible_message(SPAN_NOTICE("[user] starts burying \the [src]."), \
+			SPAN_NOTICE("You start burying \the [src]."))
+		playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
+		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_BUILD))
+			user.visible_message(SPAN_WARNING("[user] stops burying \the [src]."), \
+			SPAN_WARNING("You stop burying [src]."))
+
+		user.visible_message(SPAN_NOTICE("[user] finished burying \the [src]."), \
+		SPAN_NOTICE("You finish burying \the [src]."))
+		buried = TRUE
+		addtimer(CALLBACK(src, .proc/deploy_mine, user), arming_time)
 	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
@@ -168,6 +203,9 @@
 
 
 /obj/item/explosive/mine/proc/set_tripwire()
+	if(direct_trip_only)
+		active = TRUE
+		return
 	if(!active && !tripwire)
 		var/tripwire_loc = get_turf(get_step(loc, dir))
 		tripwire = new(tripwire_loc)
@@ -180,6 +218,11 @@
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
+		if(heavy_trigger && buried)
+			L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
+			SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
+			SPAN_DANGER("You hear a click."))
+			playsound(loc, 'sound/weapons/flipblade.ogg', 35, 1)
 		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
 			return
 		else
@@ -198,6 +241,17 @@
 		return
 	if(L.get_target_lock(iff_signal) || isrobot(L))
 		return
+	if(heavy_trigger)
+		if(isXeno(L))
+			var/mob/living/carbon/Xenomorph/X = L
+			if(X.tier < 2)
+				return
+		if(prob(75) && ishuman(L))
+			var/mob/living/carbon/human/H = L
+			if(!H.wear_suit)
+				return
+			if(H.wear_suit.slowdown < SLOWDOWN_ARMOR_MEDIUM) // "Nice hustle, 'tons-a-fun'! Next time, eat a salad!"
+				return
 	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
@@ -215,6 +269,8 @@
 	if(!customizable)
 		create_shrapnel(loc, 12, dir, angle, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
+		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
+		cell_explosion(loc, explosive_power, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else
 		. = ..()
@@ -292,6 +348,114 @@
 /obj/item/explosive/mine/active/no_iff
 	iff_signal = null
 
+
+/obj/item/explosive/mine/bury
+	direct_trip_only = TRUE
+	needs_digging = TRUE
+	map_deployed = FALSE
+	buried = FALSE
+	arming_time = 3 SECONDS
+	use_dir = FALSE
+	unacidable = TRUE
+	var/datum/effect_system/spark_spread/sparks = new
+
+/obj/item/explosive/mine/bury/examine(mob/user)
+	. = ..()
+	if(!buried)
+		to_chat(user, SPAN_NOTICE("\n Deployment is easy, simply pull the pin to activate it and dig it in with your standard issue e-tool."))
+	else
+		to_chat(user, SPAN_NOTICE("\n This unit is armed and ready"))
+
+/obj/item/explosive/mine/bury/Initialize(mapload, ...)
+	. = ..()
+	sparks.set_up(5, 0, src)
+	sparks.attach(src)
+
+/obj/item/explosive/mine/bury/antitank
+	name = "\improper M19 Anti-Tank Mine"
+	desc = "This is an older anti tank mine still in service due to the currently-used M307 EMP anti tank mines being too overkill for the minimally armored vehicles commonly used by CLF. Featuring a 250 pound minimum detonation threshold, it can be employed against all but the lightest of vehicles. Despite being outdated, it can still pack a punch against APCs and lighter vehicles, while its plastic construction prevents detection by simple methods."
+	icon_state = "antitank_mine"
+	w_class = SIZE_LARGE
+	layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
+	explosive_power = 150
+	heavy_trigger = TRUE
+
+/obj/item/explosive/mine/bury/antitank/prime()
+	set waitfor = 0
+	create_shrapnel(loc, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
+	sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
+	cell_explosion(loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data)
+	for(var/mob/living/carbon/M in oview(1, src))
+		M.AdjustStunned(4)
+		M.KnockDown(4)
+		to_chat(M, SPAN_HIGHDANGER("Molten copper rips through your lower body!"))
+		//M.apply_damage(50,BURN)
+		if(ishuman(M))
+			sparks.start()
+			var/mob/living/carbon/human/H = M
+			var/obj/limb/L = H.get_limb("l_leg")
+			var/obj/limb/R = H.get_limb("r_leg")
+			R.droplimb()
+			L.droplimb()
+			playsound(M.loc, "bone_break", 45, TRUE)
+			playsound(M.loc, "bone_break", 45, TRUE)
+	for(var/mob/living/carbon/M in view())
+		if(M && M.client)
+			shake_camera(M, 10, 1)
+	qdel(src)
+	if(!QDELETED(src))
+		disarm()
+
+
+/obj/item/explosive/mine/bury/cluster
+	name = "\improper M307 \"Platoon Wiper\" Cluster Mine"
+	desc = "A rather cumbersome, but extremely deadly anti-personal mine. Upon triggering, it launches up to 6 mini grenades up in the air, which spread around before obliterating the area. It's large area of effect has been known to wipe out entire squads of enemy combatants, making it a weapon that is truly feared. Due to high demand, numbers of these are limited, especially for low priority units on the rim."
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "antitank_mine"
+	w_class = SIZE_LARGE
+	var/list/nade_amount[8]
+
+/obj/item/explosive/mine/bury/cluster/prime()  // dynamically balancing system
+	var/list/dirlist[]
+	if(nade_amount.len <= 4)
+		dirlist = cardinal
+	else
+		dirlist = alldirs		// note that alldirs has cardinals first, then diagonials
+	sparks.start()
+	for(var/i=1, i < nade_amount.len, ++i)
+		nade_amount[i] = new /obj/item/explosive/grenade/HE/micro/cluster(src.loc)
+		var/throw_dir = get_ranged_target_turf(nade_amount[i],dirlist[i],2) // diff dir every time
+		step(nade_amount[i], throw_dir,5)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion),loc, explosive_power, 25, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, dir, cause_data), 1 SECOND)
+	qdel(src)
+	if(!QDELETED(src))
+		disarm()
+
+/obj/item/explosive/grenade/HE/micro
+	name = "\improper M43 HEDP grenade"
+	desc = "An almost cute, if not deadly half-sized version of the M40 HEDP grenade meant to be used in close quarters enviorments and in cluster mutions. Despite only being designated for these purposes, they still show up at the frontline every now and then due to being mistaken with it's bigger brother, the M40."
+	icon_state = "grenade_micro"
+	item_state = "grenade_micro"
+	det_time = 3 SECONDS
+	throw_range = 10
+	explosion_power = 60
+
+/obj/item/explosive/grenade/HE/micro/cluster
+	name = "\improper M43 cluster munition"
+	desc = "Aww what cute lil grenad- Oh shit it's angry!"
+	det_time = 1 SECONDS
+	shrapnel_count = 3
+
+/obj/item/explosive/grenade/HE/micro/cluster/New()
+	..()
+	if(!cause_data)
+		cause_data = create_cause_data("M43 Cluster Munition") // cause data bitching runtime moment
+	//scatter in all directions
+	if(pick(50))
+		var/temploc = get_turf(src)
+		SSmove_manager.move_away(src,temploc,rand(1,2))
+	det_time += rand(1,5) // minor time variation
+	activate()
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"

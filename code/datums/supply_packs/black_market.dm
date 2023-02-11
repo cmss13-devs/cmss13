@@ -1197,7 +1197,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 		if(71 to 75)
 			// backpacks
 			for(var/i in 1 to rand(3, 6))
-				var/pack_type = pick(subtypesof(/obj/item/stack/sheet))
+				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
 				var/obj/item/storage/backpack/pack = new pack_type(loc)
 				if(pack.max_storage_space > 15)
 					pack.max_storage_space = 15

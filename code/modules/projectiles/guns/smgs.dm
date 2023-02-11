@@ -11,11 +11,12 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
@@ -43,25 +44,26 @@
 	flags_equip_slot = SLOT_BACK
 	current_mag = /obj/item/ammo_magazine/smg/m39
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/stock/smg,
-						/obj/item/attachable/stock/smg/collapsible,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/stock/smg/collapsible/brace)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/stock/smg,
+		/obj/item/attachable/stock/smg/collapsible,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/stock/smg/collapsible/brace,
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
@@ -97,18 +99,27 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
+	starting_attachment_types = list(/obj/item/attachable/stock/smg)
 
 	random_spawn_chance = 100
 	random_spawn_rail = list(
-							/obj/item/attachable/reddot,
-							/obj/item/attachable/reflex,
-							/obj/item/attachable/flashlight,
-							/obj/item/attachable/flashlight/grip,
-							/obj/item/attachable/magnetic_harness,
-							)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/grip,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
+
+
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
@@ -120,8 +131,10 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
-/obj/item/weapon/gun/smg/m39/elite/whiteout//for the whiteout HEAP mag, nothing else
+/obj/item/weapon/gun/smg/m39/elite/whiteout//attachies + heap mag for whiteout.
+	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
@@ -135,27 +148,23 @@
 	fire_sound = 'sound/weapons/smg_light.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/mp5
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/burstfire_assembly
-						//Stock
-						)
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly
+		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
@@ -189,27 +198,23 @@
 	fire_sound = 'sound/weapons/smg_light.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/mp27
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/burstfire_assembly,
-						//Stock
-						)
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
+		)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	aim_slowdown = SLOWDOWN_ADS_NONE
@@ -339,21 +344,17 @@
 	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY commented out until better fullauto code
 
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly,
-						//Stock
-						)
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/burstfire_assembly,
+		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
 
@@ -375,6 +376,8 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/smg/mac15/extended
+	current_mag = /obj/item/ammo_magazine/smg/mac15/extended
 
 //-------------------------------------------------------
 // DAS REAL UZI
@@ -392,21 +395,17 @@
 	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY commented out until better fullauto code
 
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly,
-						//Stock
-						)
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/burstfire_assembly,
+		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	var/jammed = FALSE
@@ -480,19 +479,19 @@
 	current_mag = /obj/item/ammo_magazine/smg/fp9000
 
 	attachable_allowed = list(
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						)
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+	)
 	random_spawn_chance = 65
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/lasersight,
+	)
 	random_spawn_muzzle = list(
-							/obj/item/attachable/compensator,
-							/obj/item/attachable/extended_barrel
-								)
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
@@ -528,14 +527,14 @@
 	item_state = "fp9000_pmc"
 	random_spawn_chance = 100
 	random_spawn_rail = list(
-							/obj/item/attachable/reddot,
-							/obj/item/attachable/reflex,
-							/obj/item/attachable/flashlight,
-							/obj/item/attachable/magnetic_harness,
-							)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/lasersight,
+	)
 
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()

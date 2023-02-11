@@ -19,7 +19,7 @@
 	var/mob/living/silicon/robot = null//Appears unused.
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 
-/obj/item/device/mmi/attackby(var/obj/item/O, var/mob/user)
+/obj/item/device/mmi/attackby(obj/item/O, mob/user)
 	if(istype(O,/obj/item/organ/brain) && !brainmob) //Time to stick a brain in it --NEO
 
 		var/obj/item/organ/brain/B = O
@@ -37,7 +37,7 @@
 		O:brainmob = null
 		brainmob.forceMove(src)
 		brainmob.container = src
-		brainmob.stat = 0
+		brainmob.set_stat(CONSCIOUS)
 		GLOB.dead_mob_list -= brainmob//Update dem lists
 		GLOB.alive_mob_list += brainmob
 
@@ -82,7 +82,7 @@
 		icon_state = "mmi_empty"
 		name = "Man-Machine Interface"
 
-/obj/item/device/mmi/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
+/obj/item/device/mmi/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
 	brainmob = new(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name

@@ -22,14 +22,14 @@
 	qdel(src)
 
 //---------------------FIRE HANDLING PROCS
-/obj/item/ammo_box/flamer_fire_act(var/severity, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)
 		return
 	burning = TRUE
 
 	SetLuminosity(3)
 	apply_fire_overlay()
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
 
 /obj/item/ammo_box/proc/get_severity()
 	return
@@ -43,7 +43,7 @@
 /obj/item/ammo_box/proc/handle_side_effects()
 	return
 
-/obj/item/ammo_box/proc/explode(var/severity, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/proc/explode(severity, datum/cause_data/flame_cause_data)
 	if(severity > 0)
 		explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
 	//just in case
@@ -141,7 +141,7 @@
 				return
 	unfold_box(user.loc)
 
-/obj/item/ammo_box/magazine/proc/deploy_ammo_box(var/mob/living/user, var/turf/T)
+/obj/item/ammo_box/magazine/proc/deploy_ammo_box(mob/living/user, turf/T)
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
@@ -182,7 +182,7 @@
 
 //---------------------FIRE HANDLING PROCS
 
-/obj/item/ammo_box/magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/magazine/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(burning)
 		return
 	burning = TRUE
@@ -202,7 +202,7 @@
 		severity = round(severity / 150)
 	return severity
 
-/obj/item/ammo_box/magazine/process_burning(var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/magazine/process_burning(datum/cause_data/flame_cause_data)
 	var/obj/structure/magazine_box/host_box
 	if(istype(loc, /obj/structure/magazine_box))
 		host_box = loc
@@ -214,10 +214,10 @@
 			return
 	handle_side_effects(host_box)
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (host_box ? host_box : src)), 5 SECONDS)
 	return
 
-/obj/item/ammo_box/magazine/handle_side_effects(var/obj/structure/magazine_box/host_box, var/will_explode = FALSE)
+/obj/item/ammo_box/magazine/handle_side_effects(obj/structure/magazine_box/host_box, will_explode = FALSE)
 	var/shown_message = "\The [src] catches on fire!"
 	if(will_explode)
 		shown_message = "\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"
@@ -231,7 +231,7 @@
 		SetLuminosity(3)
 		visible_message(SPAN_WARNING(shown_message))
 
-/obj/item/ammo_box/magazine/apply_fire_overlay(var/will_explode = FALSE)
+/obj/item/ammo_box/magazine/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/offset_y = 0
 	if(limit_per_tile == 1) //snowflake nailgun ammo box again
@@ -382,7 +382,7 @@
 
 //---------------------FIRE HANDLING PROCS
 
-/obj/item/ammo_box/rounds/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/rounds/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(burning)
 		return
 	burning = TRUE
@@ -392,7 +392,7 @@
 /obj/item/ammo_box/rounds/get_severity()
 	return round(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
 
-/obj/item/ammo_box/rounds/process_burning(var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_box/rounds/process_burning(datum/cause_data/flame_cause_data)
 	if(can_explode)
 		var/severity = get_severity()
 		if(severity > 0)
@@ -400,9 +400,9 @@
 			addtimer(CALLBACK(src, PROC_REF(explode), severity, flame_cause_data), max(5 - severity, 2)) //the more ammo inside, the faster and harder it cooks off
 			return
 	handle_side_effects()
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5 SECONDS)
 
-/obj/item/ammo_box/rounds/handle_side_effects(var/will_explode = FALSE)
+/obj/item/ammo_box/rounds/handle_side_effects(will_explode = FALSE)
 	if(will_explode)
 		visible_message(SPAN_WARNING("\The [src] catches on fire and ammunition starts cooking off! It's gonna blow!"))
 	else
@@ -411,7 +411,7 @@
 	apply_fire_overlay(will_explode)
 	SetLuminosity(3)
 
-/obj/item/ammo_box/rounds/apply_fire_overlay(var/will_explode = FALSE)
+/obj/item/ammo_box/rounds/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = pixel_x, pixel_y = pixel_y)
 	overlays.Add(fire_overlay)

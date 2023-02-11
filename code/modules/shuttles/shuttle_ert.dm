@@ -112,7 +112,7 @@
 	unacidable = TRUE
 	density = TRUE
 
-/obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))

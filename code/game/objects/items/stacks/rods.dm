@@ -5,8 +5,8 @@
 	icon_state = "rods"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_MEDIUM
-	force = 9.0
-	throwforce = 15.0
+	force = 9
+	throwforce = 15
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 1875)
@@ -55,8 +55,8 @@ GLOBAL_LIST_INIT(rod_recipes, list (
 	icon_state = "rods_plasteel"
 	flags_atom = FPRINT
 	w_class = SIZE_MEDIUM
-	force = 9.0
-	throwforce = 15.0
+	force = 9
+	throwforce = 15
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("plasteel" = 3750)

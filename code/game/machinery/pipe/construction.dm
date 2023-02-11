@@ -58,7 +58,7 @@ Buildable meters
 	w_class = SIZE_MEDIUM
 	level = 2
 
-/obj/item/pipe/Initialize(mapload, var/pipe_type as num, var/dir as num, var/obj/structure/pipes/make_from = null)
+/obj/item/pipe/Initialize(mapload, pipe_type as num, dir as num, obj/structure/pipes/make_from = null)
 	. = ..()
 	if(pipe_type == null)
 		pipe_type = 0
@@ -641,7 +641,7 @@ Buildable meters
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_LARGE
 
-/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))

@@ -1778,7 +1778,7 @@
 /area/varadero/exterior/lz1_near)
 "bxc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/attachable/bayonet/co2{
+/obj/item/attachable/bayonet/c02{
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/powercell,

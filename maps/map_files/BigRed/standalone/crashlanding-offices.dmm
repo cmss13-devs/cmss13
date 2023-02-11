@@ -382,15 +382,6 @@
 	icon_state = "wy16"
 	},
 /area/bigredv2/outside/office_complex)
-"bk" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/bigredv2/outside/office_complex)
 "bl" = (
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin6";
@@ -419,6 +410,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -798,6 +790,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1177,6 +1170,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1314,6 +1308,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1489,6 +1484,7 @@
 	dir = 8
 	},
 /obj/item/device/radio/headset/distress/pmc/hvh,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1510,6 +1506,7 @@
 	dir = 4
 	},
 /obj/item/clothing/gloves/marine/veteran/pmc,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1520,6 +1517,7 @@
 	dir = 4
 	},
 /obj/item/clothing/under/marine/veteran/pmc,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1641,6 +1639,7 @@
 	dir = 8
 	},
 /obj/item/limb/hand/l_hand,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1671,6 +1670,7 @@
 	dir = 4
 	},
 /obj/item/device/radio/headset/distress/pmc/hvh,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1708,6 +1708,7 @@
 	dir = 8
 	},
 /obj/item/clothing/gloves/marine/veteran/pmc,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -2006,16 +2007,16 @@ ao
 ao
 by
 aN
-bk
+yS
 AB
-bk
+yS
 aV
 bv
 dN
 dP
 aV
-bk
-bk
+yS
+yS
 od
 cE
 cM
@@ -2046,8 +2047,8 @@ Bu
 dF
 oF
 cu
-bk
-bk
+yS
+yS
 cE
 dm
 ds
@@ -2088,15 +2089,15 @@ aO
 aV
 aV
 Vg
-bk
+yS
 Lk
 yS
-bk
+yS
 cu
-bk
-bk
-bk
-bk
+yS
+yS
+yS
+yS
 dH
 bv
 bv
@@ -2170,13 +2171,13 @@ bv
 dL
 bm
 od
-bk
-bk
+yS
+yS
 cu
-bk
-bk
-bk
-bk
+yS
+yS
+yS
+yS
 oF
 cv
 dz

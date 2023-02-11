@@ -396,7 +396,7 @@ var/global/list/gear_datums = list()
 
 /datum/gear/m8_cartridge_bayonet
 	display_name = "M8 Cartridge Bayonet"
-	path = /obj/item/storage/box/c02_knife
+	path = /obj/item/storage/box/co2_knife
 	slot = WEAR_IN_BACK
 	cost = 4
 

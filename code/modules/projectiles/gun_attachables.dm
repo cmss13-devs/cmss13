@@ -337,22 +337,22 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
-/obj/item/attachable/bayonet/c02
+/obj/item/attachable/bayonet/co2
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
-	icon_state = "c02_knife"
-	attach_icon = "c02_bayonet_a"
+	icon_state = "co2_knife"
+	attach_icon = "co2_bayonet_a"
 	var/filled = FALSE
 
-/obj/item/attachable/bayonet/c02/update_icon()
-	icon_state = "c02_knife[filled ? "-f" : ""]"
-	attach_icon = "c02_bayonet[filled ? "-f" : ""]_a"
+/obj/item/attachable/bayonet/co2/update_icon()
+	icon_state = "co2_knife[filled ? "-f" : ""]"
+	attach_icon = "co2_bayonet[filled ? "-f" : ""]_a"
 
-/obj/item/attachable/bayonet/c02/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/c02_cartridge))
+/obj/item/attachable/bayonet/co2/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
-			user.visible_message(SPAN_NOTICE("[user] slots a C02 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh C02 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
+			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
 			playsound(src, 'sound/machines/click.ogg')
 			qdel(W)
 			update_icon()
@@ -365,9 +365,9 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	..()
 
-/obj/item/c02_cartridge //where tf else am I gonna put this?
-	name = "C02 cartridge"
-	desc = "A cartridge of compressed C02 for the M8 cartridge bayonet. Do not consume or puncture."
+/obj/item/co2_cartridge //where tf else am I gonna put this?
+	name = "CO2 cartridge"
+	desc = "A cartridge of compressed CO2 for the M8 cartridge bayonet. Do not consume or puncture."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "co2_cartridge"
 	item_state = ""

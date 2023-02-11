@@ -21,7 +21,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,

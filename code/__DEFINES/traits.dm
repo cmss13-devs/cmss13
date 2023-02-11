@@ -143,6 +143,8 @@
 #define TRAIT_CRAWLER "t_crawler"
 /// If the mob is hidden from examination
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
+/// Replace s with th in talking
+#define TRAIT_LISPING "t_lisping"
 /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
@@ -235,6 +237,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_EAR_PROTECTION" = TRAIT_EAR_PROTECTION,
 		"TRAIT_SANTA" = TRAIT_SANTA,
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
+		"TRAIT_LISPING" = TRAIT_LISPING,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

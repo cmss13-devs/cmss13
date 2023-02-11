@@ -229,7 +229,7 @@
 	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
 		QDEL_NULL(floodlight.fswitch)
 	QDEL_NULL_LIST(floodlist)
-	..()
+	return ..()
 
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()

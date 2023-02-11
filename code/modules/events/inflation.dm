@@ -4,9 +4,9 @@
 	weight = 10 // probably could use some defines in the future - EVENT_UNLIKELY, EVENT_COMMON, etc.
 	earliest_start = 5 MINUTES
 	min_players = 1
-	max_occurrences = 3 // any more and it'd get tiresome
+	max_occurrences = 1 // we can increase the number once there's more random events around - 3 is a good number
 	alert_observers = FALSE
-	gamemode_blacklist = list("Whiskey Outpost", "Hive Wars")
+	gamemode_blacklist = list(GAMEMODE_WHISKEY_OUTPOST, GAMEMODE_HIVE_WARS)
 
 /datum/round_event/economy_inflation
 	announce_when = 1
@@ -32,7 +32,7 @@
 	/* You may be thinking 'Why the fuck would W-Y directly send a broadcast to a in-operation vessel and reveal their location to any hostiles nearby?'
 	The answer is they don't, it's a signal sent across entire sectors for every UA-affiliated vessel and colony to take note of when it passes by.
 	Colony vendors aren't updated because the colony's network has collapsed. */
-	shipwide_ai_announcement("An encrypted broadband signal from Weyland-Yutani has been recieved notifying us of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested us to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.")
+	shipwide_ai_announcement("An encrypted broadband signal from Weyland-Yutani has been recieved notifying the sector of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested UA vessels to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.")
 
 /datum/round_event/economy_inflation/start()
 	for(var/obj/structure/machinery/vending/vending_machine as anything in GLOB.total_vending_machines)
@@ -60,7 +60,7 @@
 		"CLF bombing of vital industrial colonies",
 		"a tense stand-off on several mining stations with UPP insurgents",
 		"a publicized Xenomorph infestation",
-		"a succession of hostile takeovers by the Company",
+		"a succession of hostile takeovers by major corporate entities",
 		"widespread corporate bankruptcy",
 		"pirate takeover of an essential cargo fleet",
 		"a large sector of colonized space going dark for unknown reasons", //XX-121,
@@ -69,7 +69,6 @@
 		"several mining colonies defecting to the UPP",
 		"a critical USCM defeat by CLF insurgents in the Tychon's Rift sector",
 		"newly imposed sanctions as a result of corporate investigations",
-		"*garbled static*",
 		"flaring tensions with Arcturus",
 		"a Sol-wide solar flare technological blackout",
 		"\[REDACTED\]",

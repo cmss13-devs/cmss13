@@ -1,5 +1,7 @@
 #define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
 
+#define INFINITE_EVENT_OCURRENCES -1
+
 ///this datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
 	///The human-readable name of the event
@@ -37,7 +39,7 @@
 
 /// Checks if the event can be spawned. Used by event controller. Admin-created events override this.
 /datum/round_event_control/proc/can_spawn_event(players_amt, gamemode)
-	if(occurrences >= max_occurrences)
+	if(occurrences >= max_occurrences && max_occurrences != INFINITE_EVENT_OCURRENCES)
 		return FALSE
 	if(earliest_start >= world.time-SSticker.round_start_time)
 		return FALSE
@@ -221,10 +223,11 @@ Runs the event
 /datum/round_event/proc/kill()
 	SSevents.running -= src
 
-
 //Sets up the event then adds the event to the the list of running events
 /datum/round_event/New(my_processing = TRUE)
 	setup()
 	processing = my_processing
 	SSevents.running += src
 	return ..()
+
+#undef RANDOM_EVENT_ADMIN_INTERVENTION_TIME

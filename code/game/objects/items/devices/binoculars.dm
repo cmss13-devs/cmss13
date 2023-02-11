@@ -42,6 +42,7 @@
 /obj/item/device/binoculars/civ
 	desc = "A pair of binoculars."
 	icon_state = "binoculars_civ"
+	uses_camo = FALSE
 
 //RANGEFINDER with ability to acquire coordinates
 /obj/item/device/binoculars/range

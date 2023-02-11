@@ -29,6 +29,7 @@
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
+	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 	mutator_update_actions(drone)
 	apply_behavior_holder(drone)
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
@@ -37,7 +38,6 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			break // Don't need to keep looking
 	mutator_set.recalculate_actions(description, flavor_description)
-	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"

@@ -7,15 +7,15 @@
 	if(used_burrow || tunnel || is_ventcrawling || action_busy)
 		return
 
-	var/turf/T = get_turf(src)
-	if(!T)
+	var/turf/target = get_turf(src)
+	if(!target)
 		return
 
-	if(istype(T, /turf/open/floor/almayer/research/containment) || istype(T, /turf/closed/wall/almayer/research/containment))
+	if(istype(target, /turf/open/floor/almayer/research/containment) || istype(target, /turf/closed/wall/almayer/research/containment))
 		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 
-	if(istype(T, /turf/open/shuttle/dropship))
+	if(istype(target, /turf/open/shuttle/dropship))
 		to_chat(src, SPAN_XENOWARNING("The bird's metal is too tough for you to burrow into."))
 		return
 
@@ -70,8 +70,8 @@
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE
-	for(var/mob/living/carbon/human/H in loc)
-		H.apply_effect(2, WEAKEN)
+	for(var/mob/living/carbon/human/human_target in loc)
+		human_target.apply_effect(2, WEAKEN)
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
@@ -79,12 +79,12 @@
 /mob/living/carbon/xenomorph/proc/do_burrow_cooldown()
 	used_burrow = FALSE
 	to_chat(src, SPAN_NOTICE("You can now surface."))
-	for(var/X in actions)
-		var/datum/action/act = X
+	for(var/buttons in actions)
+		var/datum/action/act = buttons
 		act.update_button_icon()
 
 
-/mob/living/carbon/xenomorph/proc/tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/tunnel(turf/target)
 	if(!check_state())
 		return
 
@@ -96,15 +96,20 @@
 		to_chat(src, SPAN_NOTICE("You must wait some time to do this."))
 		return
 
-	if(!T)
+	if(istype(target, /turf/open/shuttle/dropship))
+		to_chat(src, SPAN_XENOWARNING("The bird's metal is too tough for you to burrow into."))
+		return
+
+
+	if(!target)
 		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return
 
-	if(T.density)
+	if(target.density)
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return
 
-	if(istype(T, /turf/open/space))
+	if(istype(target, /turf/open/space))
 		to_chat(src, SPAN_XENOWARNING("You make tunnels, not wormholes!"))
 		return
 
@@ -112,12 +117,12 @@
 		to_chat(src, SPAN_XENOWARNING("You make tunnels, not wormholes!"))
 		return
 
-	var/area/A = get_area(T)
-	if(A.flags_area & AREA_NOTUNNEL)
+	var/area/area_target = get_area(target)
+	if(area_target.flags_area & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
-	for(var/obj/O in T.contents)
+	for(var/obj/O in target.contents)
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				continue
@@ -131,26 +136,26 @@
 		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
-	if(!T || T.density)
+	if(!target || target.density)
 		to_chat(src, SPAN_NOTICE("You cannot tunnel to there!"))
 	tunnel = TRUE
 	to_chat(src, SPAN_NOTICE("You start tunneling!"))
-	tunnel_timer = (get_dist(src, T)*10) + world.time
-	process_tunnel(T)
+	tunnel_timer = (get_dist(src, target)*10) + world.time
+	process_tunnel(target)
 
 
-/mob/living/carbon/xenomorph/proc/process_tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/process_tunnel(turf/target)
 	if(world.time > tunnel_timer)
 		tunnel = FALSE
-		do_tunnel(T)
-	if(tunnel && T)
-		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
+		do_tunnel(target)
+	if(tunnel && target)
+		addtimer(CALLBACK(src, PROC_REF(process_tunnel), target), 1 SECONDS)
 
-/mob/living/carbon/xenomorph/proc/do_tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/do_tunnel(turf/target)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = FALSE
 	unfreeze()
-	forceMove(T)
+	forceMove(target)
 	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	burrow_off()
 
@@ -161,20 +166,20 @@
 		var/datum/action/act = X
 		act.update_button_icon()
 
-/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/T in oview(1))
+/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/target in oview(1))
 	set name = "Rename Tunnel"
 	set desc = "Rename the tunnel."
 	set category = null
 
-	if(!istype(T))
+	if(!istype(target))
 		return
 
 	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
 	if(new_name)
-		new_name = "[new_name] ([get_area_name(T)])"
-		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
-		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
-		T.tunnel_desc = "[new_name]"
+		new_name = "[new_name] ([get_area_name(target)])"
+		log_admin("[key_name(src)] has renamed the tunnel \"[target.tunnel_desc]\" as \"[new_name]\".")
+		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[target.tunnel_desc]\" as \"[new_name]\".")
+		target.tunnel_desc = "[new_name]"
 	return
 
 /datum/action/xeno_action/onclick/tremor/action_cooldown_check()

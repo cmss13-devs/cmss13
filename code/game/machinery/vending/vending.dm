@@ -1,8 +1,6 @@
 #define CAT_HIDDEN list("name" = "Contraband", "icon" = "user-secret")
 #define CAT_COIN list("name" = "Premium", "icon" = "coins")
 
-
-
 #define VENDING_WIRE_EXTEND 1
 #define VENDING_WIRE_IDSCAN 2
 #define VENDING_WIRE_SHOCK 3

@@ -616,10 +616,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bH" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";

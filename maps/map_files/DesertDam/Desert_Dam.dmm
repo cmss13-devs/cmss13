@@ -57,24 +57,15 @@
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aai" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "aaj" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "aak" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "aal" = (
@@ -27081,28 +27072,19 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bCH" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bCI" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bCJ" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -29160,30 +29142,21 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bJb" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bJc" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bJd" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -39174,10 +39147,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "coa" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -39339,10 +39309,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "coC" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "coE" = (
@@ -39473,10 +39440,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "coW" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "coX" = (
@@ -39484,10 +39448,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "coY" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "coZ" = (
@@ -45243,10 +45204,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cFR" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrowncorners2"
@@ -46469,10 +46427,7 @@
 	},
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJq" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJr" = (
@@ -46513,10 +46468,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "cJw" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJx" = (
@@ -46645,10 +46597,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cJO" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJP" = (
@@ -46708,10 +46657,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJZ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cKa" = (

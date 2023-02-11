@@ -6558,10 +6558,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/chinook/shuttle/unpowered)
 "uS" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -6951,10 +6948,7 @@
 	},
 /area/adminlevel/chinook/medical)
 "vZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -9356,10 +9350,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "FB" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -10429,10 +10420,7 @@
 	},
 /area/adminlevel/chinook)
 "Jl" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -11556,10 +11544,8 @@
 	},
 /area/adminlevel/chinook/engineering)
 "Np" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	indestructible = 1;
-	tag = "icon-green 2,0"
+/obj/structure/cargo_container/arious/right{
+	indestructible = 1
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -13417,10 +13403,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "TA" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";

@@ -1,9 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "ab" = (
@@ -170,10 +167,7 @@
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "ay" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "aA" = (
@@ -313,10 +307,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "aZ" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -511,10 +502,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "bK" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "bL" = (
@@ -7391,10 +7379,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "xG" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "xH" = (
@@ -8632,10 +8617,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "BM" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -9206,10 +9188,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
 "DK" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "DL" = (
@@ -10168,10 +10147,7 @@
 	},
 /area/whiskey_outpost/outside/north/northeast)
 "GU" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "GV" = (
@@ -10181,10 +10157,7 @@
 	},
 /area/whiskey_outpost/outside/lane/one_north)
 "GW" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "GX" = (
@@ -10209,10 +10182,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Hc" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "Hf" = (
@@ -10556,10 +10526,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "Im" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "In" = (
@@ -10605,10 +10572,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "Iu" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "Iv" = (
@@ -10756,24 +10720,15 @@
 	},
 /area/whiskey_outpost/outside/lane/two_south)
 "IW" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "IY" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "IZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "Jb" = (
@@ -11973,10 +11928,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "Od" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "Oe" = (
@@ -12612,10 +12564,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "QH" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "QJ" = (
@@ -12822,10 +12771,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "RD" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
 "RG" = (

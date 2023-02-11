@@ -574,10 +574,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "aqI" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -1479,10 +1476,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_street)
 "aTP" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "aTR" = (
@@ -1957,12 +1951,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2/ceiling)
 "bgV" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0";
-	unacidable = 0
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -2264,10 +2253,7 @@
 	},
 /area/lv522/outdoors/colony_streets/south_east_street)
 "brk" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bsx" = (
@@ -5783,10 +5769,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "dco" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "dcy" = (
@@ -5798,10 +5781,7 @@
 	},
 /area/lv522/atmos/east_reactor/west)
 "dcB" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -6698,10 +6678,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/t_comm)
 "dwP" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	layer = 3.1;
-	tag = "icon-red 1,0"
+/obj/structure/cargo_container/grant/rightmid{
+	layer = 3.1
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -7477,10 +7455,7 @@
 	},
 /area/shuttle/drop2/lv522)
 "dOK" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -7577,12 +7552,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "dQs" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0";
-	unacidable = 0
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1)
 "dQv" = (
@@ -8531,10 +8501,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "emt" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -8772,10 +8739,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "erS" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -9105,10 +9069,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "ezH" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -9392,10 +9353,7 @@
 	},
 /area/lv522/oob)
 "eGs" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -10088,10 +10046,8 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "eXe" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	layer = 3.1;
-	tag = "icon-red 2,0"
+/obj/structure/cargo_container/grant/right{
+	layer = 3.1
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/north_command_centre)
@@ -11344,10 +11300,7 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "fAG" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -11643,10 +11596,7 @@
 	},
 /area/lv522/atmos/west_reactor)
 "fGN" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -13453,10 +13403,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "gBi" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "gBv" = (
@@ -13845,12 +13792,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bar)
 "gLa" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0";
-	unacidable = 0
-	},
+/obj/structure/cargo_container/wy/left,
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "white_trim"
 	},
@@ -14165,10 +14107,7 @@
 	},
 /area/lv522/landing_zone_2)
 "gRs" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "gRw" = (
@@ -21117,10 +21056,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "jGh" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "jGj" = (
@@ -21332,12 +21268,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "jLk" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0";
-	unacidable = 0
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -21754,10 +21685,7 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -22037,10 +21965,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -25103,10 +25028,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "lbX" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -25722,10 +25644,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "lpt" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -28668,10 +28587,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -29595,10 +29511,8 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	layer = 3.3;
-	tag = "icon-blue 0,0"
+/obj/structure/cargo_container/watatsumi/leftmid{
+	layer = 3.3
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -30874,10 +30788,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "nBP" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "nBY" = (
@@ -31238,10 +31149,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
 "nKm" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "nKo" = (
@@ -31650,10 +31558,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "nQM" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -32922,10 +32827,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "onE" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -32946,10 +32848,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "ood" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -33168,10 +33067,7 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 4
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "smokestack"
 	},
@@ -33552,10 +33448,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "oAu" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "oAJ" = (
@@ -38422,10 +38315,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "qvK" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -39396,10 +39286,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "qNI" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -39631,10 +39518,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/garage)
 "qQh" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -40384,11 +40268,8 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "rbR" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	layer = 3.3;
-	tag = "icon-WY 0,0"
+/obj/structure/cargo_container/wy/left{
+	layer = 3.3
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -41468,10 +41349,7 @@
 /turf/open/floor/wood/ship,
 /area/lv522/indoors/a_block/fitness/glass)
 "rwB" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "rwC" = (
@@ -43447,11 +43325,7 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	layer = 3.3;
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "slK" = (
@@ -46380,10 +46254,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "twT" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "twY" = (
@@ -47269,10 +47140,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "tOV" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -48109,10 +47977,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "ufA" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "ufF" = (
@@ -50351,10 +50216,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "uYq" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -51117,11 +50979,7 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	layer = 3.3;
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "vmT" = (
@@ -51623,10 +51481,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "vxg" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vxv" = (
@@ -51770,10 +51625,8 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	layer = 3.3;
-	tag = "icon-blue 0,0"
+/obj/structure/cargo_container/watatsumi/leftmid{
+	layer = 3.3
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -53844,12 +53697,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/fitness)
 "wms" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0";
-	unacidable = 0
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "wmI" = (
@@ -54193,10 +54041,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "wtT" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -55999,17 +55844,11 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "xfe" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xfr" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xfu" = (
@@ -56356,10 +56195,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "xly" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "xlI" = (
@@ -56812,10 +56648,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "xva" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -56883,10 +56716,7 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "xwO" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xwZ" = (
@@ -56950,10 +56780,7 @@
 	pixel_x = 1;
 	tag = "icon-E-corner"
 	},
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -56966,10 +56793,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "xxV" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
 	},

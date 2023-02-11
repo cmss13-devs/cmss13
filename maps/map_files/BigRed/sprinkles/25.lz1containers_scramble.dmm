@@ -173,24 +173,15 @@
 	},
 /area/bigredv2/outside/space_port)
 "aA" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aB" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aC" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aD" = (
@@ -337,30 +328,21 @@
 	},
 /area/bigredv2/outside/space_port)
 "aW" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
 	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "aX" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating{
 	dir = 2;
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "aY" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating{
 	dir = 2;
 	icon_state = "warnplate"
@@ -391,45 +373,27 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bi" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bj" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bk" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bl" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bm" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bn" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 

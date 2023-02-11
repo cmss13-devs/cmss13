@@ -1036,10 +1036,7 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aey" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1133,24 +1130,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aeX" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeY" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afb" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afd" = (
@@ -1161,10 +1149,7 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aff" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afg" = (
@@ -1376,24 +1361,15 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aga" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agb" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agc" = (
@@ -4298,10 +4274,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "auI" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},

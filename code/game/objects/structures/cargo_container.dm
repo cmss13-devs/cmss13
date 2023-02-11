@@ -10,6 +10,85 @@
 	opacity = TRUE
 	anchored = TRUE
 
+/obj/structure/cargo_container/watatsumi
+	name = "Watatsumi Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products."
+
+/obj/structure/cargo_container/watatsumi/left
+	icon_state = "watatsumi_l"
+
+/obj/structure/cargo_container/watatsumi/leftmid
+	icon_state = "watatsumi_lm"
+
+/obj/structure/cargo_container/watatsumi/mid
+	icon_state = "watatsumi_m"
+
+/obj/structure/cargo_container/watatsumi/rightmid
+	icon_state = "watatsumi_rm"
+
+/obj/structure/cargo_container/watatsumi/right
+	icon_state = "watatsumi_r"
+
+/obj/structure/cargo_container/grant
+	name = "Grant Corporation Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from The Grant Corporation, a medical and biotech company."
+
+/obj/structure/cargo_container/grant/left
+	icon_state = "grant_l"
+
+/obj/structure/cargo_container/grant/leftmid
+	icon_state = "grant_lm"
+
+/obj/structure/cargo_container/grant/rightmid
+	icon_state = "grant_rm"
+
+/obj/structure/cargo_container/grant/right
+	icon_state = "grant_r"
+
+/obj/structure/cargo_container/arious
+	name = "Arious Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from Arious, a computer and motion tracker manufacturer."
+
+/obj/structure/cargo_container/arious/left
+	icon_state = "arious_l"
+
+/obj/structure/cargo_container/arious/leftmid
+	icon_state = "arious_lm"
+
+/obj/structure/cargo_container/arious/mid
+	icon_state = "arious_m"
+
+/obj/structure/cargo_container/arious/rightmid
+	icon_state = "arious_rm"
+
+/obj/structure/cargo_container/arious/right
+	icon_state = "arious_r"
+
+/obj/structure/cargo_container/wy
+	name = "Weyland-Yutani Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from Weyland-Yutani, you have probably heard of them before."
+
+/obj/structure/cargo_container/wy/left
+	icon_state = "wy_l"
+
+/obj/structure/cargo_container/wy/mid
+	icon_state = "wy_m"
+
+/obj/structure/cargo_container/wy/right
+	icon_state = "wy_r"
+
+/obj/structure/cargo_container/
+
+/obj/structure/cargo_container/
+
+/obj/structure/cargo_container/
+
+/obj/structure/cargo_container/
+
+/obj/structure/cargo_container/
+
+/obj/structure/cargo_container/
+
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
 
 	playsound(loc, 'sound/effects/clang.ogg', 25, 1)

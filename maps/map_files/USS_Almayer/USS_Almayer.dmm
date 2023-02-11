@@ -19226,10 +19226,7 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bjR" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bjS" = (
@@ -20625,10 +20622,7 @@
 	},
 /area/almayer/engineering/engine_core)
 "boV" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /obj/structure/prop/almayer/minigun_crate{
 	pixel_x = 1;
 	pixel_y = 39
@@ -26426,20 +26420,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bKt" = (
-/obj/structure/cargo_container{
-	icon_state = "green_l";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/left,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
 "bKu" = (
-/obj/structure/cargo_container{
-	icon_state = "arious_m";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/mid,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bKz" = (
@@ -30182,10 +30170,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/upper_engineering)
 "bYq" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

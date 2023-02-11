@@ -13390,10 +13390,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/botany)
 "hWX" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/leftmid{
 	health = 5000;
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -13600,10 +13598,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "iio" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/right{
 	health = 5000;
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer1,
@@ -17861,10 +17857,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "mEw" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "mEG" = (

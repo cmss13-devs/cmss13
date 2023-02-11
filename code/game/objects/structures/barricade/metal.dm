@@ -258,7 +258,7 @@
 	update_icon()
 	. = ..()
 
-/obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/metal/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

@@ -3,7 +3,7 @@
 #define MINIMUM_TEMP 170
 
 /obj/effect/blocker/sorokyne_cold_water
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = 1
@@ -42,11 +42,11 @@
 /obj/effect/blocker/sorokyne_cold_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	var/dam_amount = COLD_WATER_DAMAGE
-	if(isSynth(M) || isYautja(M))
+	if(issynth(M) || isyautja(M))
 		dam_amount -= 0.5
 	if(M.lying)
 		M.apply_damage(5*dam_amount,BURN)
@@ -61,8 +61,8 @@
 			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
 		else
 			M.bodytemperature = MINIMUM_TEMP
-		if(!isSynth(M))
-			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone.."))
+		if(!issynth(M))
+			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone..."))
 
 #undef COLD_WATER_DAMAGE
 #undef COLD_WATER_TEMP_EFFECT

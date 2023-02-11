@@ -50,7 +50,7 @@
 /obj/item/weapon/melee/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
 	if(!istype(target) || !on)
 		return ..()
-	if(user.a_intent == INTENT_HARM || isSpeciesYautja(target) || user == target)
+	if(user.a_intent == INTENT_HARM || isspeciesyautja(target) || user == target)
 		return ..()
 	else
 		stun(target, user)

@@ -16,7 +16,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
@@ -43,17 +43,17 @@
 		list("M79 Grenade Launcher", round(scale * 3), /obj/item/storage/box/guncase/m79, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
-		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, VENDOR_ITEM_REGULAR),
+		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/high_explosive/m15, VENDOR_ITEM_REGULAR),
 		list("M20 Claymore Anti-Personnel Mine", round(scale * 4), /obj/item/explosive/mine, VENDOR_ITEM_REGULAR),
-		list("M40 HEDP Grenade", round(scale * 25), /obj/item/explosive/grenade/HE, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade", round(scale * 25), /obj/item/explosive/grenade/high_explosive, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary, VENDOR_ITEM_REGULAR),
 		list("M40 HPDP White Phosphorus Smoke Grenade", round(scale * 4), /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Frag Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/HE/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Frag Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Icendiary Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Smoke Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Star Shell", round(scale * 2), /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Star Shell", round(scale * 2), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", round(scale * 8), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", round(scale * 3), /obj/item/explosive/grenade/metal_foam, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosives", round(scale * 3), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
@@ -133,7 +133,7 @@
 		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
-		list("Powerloader Certification", round(scale * 0.1), /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("Powerloader Certification", round(scale * 0.1) + 1, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
 		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
@@ -174,7 +174,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
@@ -195,7 +195,8 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		/turf/closed/wall/almayer)
+		/turf/closed/wall/almayer,
+	)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
@@ -211,7 +212,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(scale)
 	listed_products = list(
 		list("WEBBINGS", -1, null, null),
 		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest/brown_vest, VENDOR_ITEM_REGULAR),
@@ -280,7 +281,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
 		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
@@ -381,7 +382,7 @@
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(scale)
 	listed_products = list(
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
@@ -406,15 +407,15 @@
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 		list("HIRR Baton Slugs", round(scale * 6), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-S Star Shell", round(scale * 2), /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Star Shell", round(scale * 2), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		)
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
@@ -445,7 +446,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
 		list("Barrel Charger", round(scale * 2.5), /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
@@ -488,7 +489,7 @@
 		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 
-/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
@@ -509,7 +510,8 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		/turf/closed/wall/almayer)
+		/turf/closed/wall/almayer,
+	)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
@@ -524,7 +526,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
 		list("Barrel Charger", round(scale * 0.9), /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
@@ -615,7 +617,7 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/vend_fail()

@@ -336,14 +336,13 @@
 					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+					/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 					/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
-
 
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"

@@ -591,9 +591,9 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 	output += "Area Status: "
 	if(alarm_area.atmosalm)
-		output += "<span class='dl1'>Atmos alert in area</span>"
+		output += SPAN_DL1("Atmos alert in area")
 	else if (alarm_area.flags_alarm_state & ALARM_WARNING_FIRE)
-		output += "<span class='dl1'>Fire alarm in area</span>"
+		output += SPAN_DL1("Fire alarm in area")
 	else
 		output += "No alerts"
 

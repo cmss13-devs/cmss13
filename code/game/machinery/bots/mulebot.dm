@@ -89,6 +89,13 @@
 		suffix = "#[count]"
 	name = "Mulebot ([suffix])"
 
+/obj/structure/machinery/bot/mulebot/Destroy()
+	QDEL_NULL(load)
+	QDEL_NULL(target)
+	QDEL_NULL(cell)
+	SSradio.remove_object(src, control_freq)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 // set up the wire colours in random order
 // and the random wire display order

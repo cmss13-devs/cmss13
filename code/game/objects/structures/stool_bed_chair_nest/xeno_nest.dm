@@ -60,6 +60,8 @@
 			user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
 				return
+			if(!buckled_mob)
+				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
@@ -71,6 +73,8 @@
 		if(is_sharp(W))
 			user.visible_message(SPAN_NOTICE("\The [user] starts cutting through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start cutting through the resin binding \the [buckled_mob] in place..."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				return
+			if(!buckled_mob)
 				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)

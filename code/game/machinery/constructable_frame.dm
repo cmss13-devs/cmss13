@@ -21,6 +21,10 @@
 	. = ..()
 	update_desc()
 
+/obj/structure/machinery/constructable_frame/Destroy()
+	QDEL_NULL(circuit)
+	..()
+
 /obj/structure/machinery/constructable_frame/proc/update_desc()
 	if(state == CONSTRUCTION_STATE_BEGIN)
 		requirements_left = " Requires 5 lengths of cable."

@@ -25,16 +25,16 @@
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
-		visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: Authority confirmation card is missing!\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
 	if(check_access(id_card))
 		authenticated = TRUE
-		visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
 		update_static_data(user)
 		return TRUE
 
-	visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
+	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
 
 /obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
@@ -72,7 +72,7 @@
 					user_id_card.forceMove(loc)
 				user_id_card = null
 		if("PRG_logout")
-			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 			authenticated = FALSE
 			if(ishuman(user))
 				user_id_card.forceMove(user.loc)
@@ -149,7 +149,7 @@
 				else
 					target_id_card.forceMove(loc)
 					target_id_card = null
-				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
@@ -157,7 +157,7 @@
 					if(user.drop_held_item())
 						I.forceMove(src)
 						target_id_card = I
-						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 						update_static_data(user)
 						origin_assignment = target_id_card.assignment
 						origin_name = target_id_card.registered_name
@@ -200,7 +200,7 @@
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
 
 					if(!job)
-						visible_message("<span class='bold'>[src]</span> states, \"DATA ERROR: Can not find next entry in database: [target]\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
 				target_id_card.access -= get_all_centcom_access() + get_all_accesses()
@@ -398,7 +398,7 @@
 					O.forceMove(src)
 					target_id_card = O
 					update_static_data(user)
-					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 		else
@@ -407,7 +407,7 @@
 					O.forceMove(src)
 					target_id_card = O
 					update_static_data(user)
-					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
@@ -431,7 +431,7 @@
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
 		if(operable()) // Powered. Console can response.
-			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
 			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
 		authenticated = FALSE // No card - no access
@@ -444,7 +444,7 @@
 		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
-			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
 			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
 		target_id_card = null
@@ -532,7 +532,7 @@
 				else
 					ID_to_modify.forceMove(loc)
 					ID_to_modify = null
-				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: ID modification protocol disabled.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: ID modification protocol disabled.\"")
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
@@ -540,7 +540,7 @@
 					if(user.drop_held_item())
 						I.forceMove(src)
 						ID_to_modify = I
-						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 						return TRUE
 		if("PRG_squad")
 			if(
@@ -553,21 +553,21 @@
 				if(!selected)
 					return
 				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
-					visible_message("<span class='bold'>[src]</span> states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
 					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
-					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
 				else
-					visible_message("<span class='bold'>[src]</span> states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
 			else if(!istype(ID_to_modify))
 				to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
 			else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
-				visible_message("<span class='bold'>[src]</span> states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
 			else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
-				visible_message("<span class='bold'>[src]</span> states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
 			else
-				visible_message("<span class='bold'>[src]</span> states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
 			return TRUE
 
 /obj/structure/machinery/computer/squad_changer/ui_data(mob/user)
@@ -610,7 +610,7 @@
 				H.drop_held_item()
 				idcard.forceMove(src)
 				ID_to_modify = idcard
-				visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
 		else if(istype(O, /obj/item/grab))
@@ -621,7 +621,7 @@
 					return
 				var/isxenos = isxeno(G.grabbed_thing)
 				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
 				if(!isxenos)
@@ -650,7 +650,7 @@
 	else
 		var/isxenos = isxeno(user)
 		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
 		if(!isxenos)

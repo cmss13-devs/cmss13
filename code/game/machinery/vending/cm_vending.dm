@@ -530,6 +530,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
+			return TRUE
 	add_fingerprint(user)
 
 /obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)

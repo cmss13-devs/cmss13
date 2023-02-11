@@ -217,7 +217,7 @@
 	black_market_value = dead_black_market_value
 
 
-/mob/living/simple_animal/gib(cause = "gibbing")
+/mob/living/simple_animal/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	SSmob.living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)

@@ -1,3 +1,4 @@
+#define CAT_NORMAL list("name" = "", "icon" = "")
 #define CAT_HIDDEN list("name" = "Contraband", "icon" = "user-secret")
 #define CAT_COIN list("name" = "Premium", "icon" = "coins")
 

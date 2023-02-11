@@ -369,6 +369,7 @@
 			coin_records += R
 		else
 			product_records += R
+			R.category = CAT_NORMAL
 
 		if(delay_product_spawn)
 			sleep(5) //sleep(1) did not seem to cut it, so here we are.

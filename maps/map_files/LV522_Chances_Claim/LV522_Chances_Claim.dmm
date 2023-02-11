@@ -2315,7 +2315,7 @@
 "bvK" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Chunk 'N Dump";
+	name = "\improper Chunk 'N Dump"
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -7733,7 +7733,7 @@
 /area/lv522/oob)
 "dUq" = (
 /obj/structure/surface/table/almayer,
-/obj/item/c02_cartridge{
+/obj/item/co2_cartridge{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -9652,7 +9652,7 @@
 /area/lv522/atmos/east_reactor)
 "eLZ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Cargo Bay Quartermaster";
+	name = "\improper Cargo Bay Quartermaster"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13270,7 +13270,7 @@
 "gwR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	locked = 0;
-	name = "\improper Marshal Office Holding Cell";
+	name = "\improper Marshal Office Holding Cell"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13550,7 +13550,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
 	locked = 0;
-	name = "\improper Marshall Head Office";
+	name = "\improper Marshall Head Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -36641,7 +36641,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	locked = 0;
-	name = "Medical Airlock";
+	name = "Medical Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -36709,7 +36709,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	locked = 0;
-	name = "Medical Airlock";
+	name = "Medical Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -58467,7 +58467,7 @@
 "yat" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	locked = 0;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshall Office Armory"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

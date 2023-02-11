@@ -13,7 +13,7 @@
 /datum/decorator/weapon_map_decorator/get_decor_types()
 	return typesof(/obj/item/weapon/gun) - /obj/item/weapon/gun
 
-/datum/decorator/weapon_map_decorator/decorate(var/obj/item/weapon/gun/gun)
+/datum/decorator/weapon_map_decorator/decorate(obj/item/weapon/gun/gun)
 	if(!istype(gun))
 		return
 	if(!gun.map_specific_decoration)

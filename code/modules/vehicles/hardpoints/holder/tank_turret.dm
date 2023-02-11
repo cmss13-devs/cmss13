@@ -71,7 +71,7 @@
 
 	..()
 
-/obj/item/hardpoint/holder/tank_turret/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
+/obj/item/hardpoint/holder/tank_turret/get_icon_image(x_offset, y_offset, new_dir)
 	var/icon_state_suffix = "0"
 	if(health <= 0)
 		icon_state_suffix = "1"
@@ -86,10 +86,10 @@
 	return I
 
 // no picking this big beast up
-/obj/item/hardpoint/holder/tank_turret/attack_hand(var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/attack_hand(mob/user)
 	return
 
-/obj/item/hardpoint/holder/tank_turret/attackby(var/obj/item/I, var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
@@ -126,7 +126,7 @@
 	return data
 
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
-/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(mob/user)
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("\The [src]'s stabilization systems are busted!"))
 		return
@@ -134,7 +134,7 @@
 	gyro = !gyro
 	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
 
-/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(var/mob/user, var/deg)
+/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(mob/user, deg)
 	// no rotating a broken turret
 	if(health <= 0)
 		return
@@ -152,7 +152,7 @@
 
 	rotate(deg, TRUE)
 
-/obj/item/hardpoint/holder/tank_turret/rotate(var/deg, var/override_gyro = FALSE)
+/obj/item/hardpoint/holder/tank_turret/rotate(deg, override_gyro = FALSE)
 	if(gyro && !override_gyro)
 		return
 
@@ -182,7 +182,7 @@
 					user.client.pixel_x = -1 * AM.view_tile_offset * 32
 					user.client.pixel_y = 0
 
-/obj/item/hardpoint/holder/tank_turret/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/holder/tank_turret/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -216,7 +216,7 @@
 
 	to_chat(user, SPAN_WARNING("Smoke Screen uses left: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds / 2 : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds / 2 : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
-/obj/item/hardpoint/holder/tank_turret/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/holder/tank_turret/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)

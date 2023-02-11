@@ -288,7 +288,7 @@
  */
 
 // responder is the guy responding to the thread, i.e. the mentor triggering the autoresponse
-/datum/mentorhelp/proc/autoresponse(var/client/responder)
+/datum/mentorhelp/proc/autoresponse(client/responder)
 	if(!check_author())
 		return
 

@@ -4889,13 +4889,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
-"awG" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurplecorner"
-	},
-/area/lv624/lazarus/fitness)
 "awH" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -5099,7 +5092,6 @@
 	},
 /area/lv624/lazarus/fitness)
 "axv" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warnwhite"
@@ -13434,11 +13426,8 @@
 /area/lv624/ground/river/central_river)
 "byY" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/lv624/lazarus/fitness)
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_nexus_road)
 "bzD" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/fancy/crayons{
@@ -43919,8 +43908,8 @@ pjY
 aJr
 aJr
 pIy
-mKf
-mKf
+byY
+byY
 oLk
 iXG
 iXG
@@ -44147,8 +44136,8 @@ aJr
 qDQ
 aOW
 pIy
-mKf
-mKf
+byY
+byY
 iCN
 uxh
 uEb
@@ -44375,8 +44364,8 @@ aJr
 aJr
 aJr
 pIy
-mKf
-mKf
+byY
+byY
 iCN
 uEb
 pXI
@@ -44586,8 +44575,8 @@ ayL
 atX
 atX
 atX
-awG
-awG
+atX
+atX
 axv
 ayx
 ayx
@@ -44603,8 +44592,8 @@ hEu
 hEu
 hEu
 pSt
-mKf
-mKf
+byY
+byY
 iCN
 dJG
 mfu
@@ -44814,9 +44803,9 @@ auD
 atX
 atX
 atX
-awG
-awG
-awG
+atX
+atX
+atX
 atX
 atX
 atX
@@ -44831,8 +44820,8 @@ mKf
 mKf
 qAP
 mKf
-mKf
-mKf
+byY
+byY
 iCN
 qdQ
 hSn
@@ -45042,9 +45031,9 @@ auF
 auF
 avv
 auF
-byY
-awG
-awG
+auF
+atX
+atX
 atX
 atX
 atX
@@ -45059,8 +45048,8 @@ mKf
 mKf
 mKf
 mKf
-mKf
-mKf
+byY
+byY
 nJF
 hEu
 hEu
@@ -45270,9 +45259,9 @@ auF
 auE
 auE
 auE
-byY
-awG
-awG
+auF
+atX
+atX
 atX
 ayy
 atX
@@ -45498,9 +45487,9 @@ auF
 auE
 avw
 auE
-byY
-awG
-awG
+auF
+atX
+atX
 atX
 atX
 atX
@@ -45726,11 +45715,11 @@ auG
 auZ
 auE
 auE
-byY
-awG
-awG
+auF
 atX
-avM
+atX
+atX
+atX
 atX
 azn
 atw
@@ -45954,9 +45943,9 @@ auF
 auF
 auF
 auF
-byY
-awG
-awG
+auF
+atX
+atX
 atX
 atX
 atX

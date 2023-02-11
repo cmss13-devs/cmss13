@@ -536,6 +536,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
+	survivor_variant = CIVILIAN_SURVIVOR
+
 	..()
 
 // ----- Chef Survivor
@@ -546,6 +548,8 @@
 	skills = /datum/skills/civilian/survivor/chef
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
@@ -571,6 +575,8 @@
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_MEDBAY,
 	)
+
+	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
@@ -602,6 +608,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/bible/booze(H.back), WEAR_IN_BACK)
 
 	..()
+
+	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/chaplain/trijent
 	name = "Survivor - Trijent Chaplain"
@@ -808,6 +816,8 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/pickaxe(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H.back), WEAR_IN_BACK)
 
+	survivor_variant = CIVILIAN_SURVIVOR
+
 	..()
 
 // --- Salesman Survivor
@@ -819,6 +829,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
@@ -1064,6 +1076,10 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 
+	survivor_variant = CORPORATE_SURVIVOR
+
+
+
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1198,6 +1214,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
+	survivor_variant = SECURITY_SURVIVOR
+
 /datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
@@ -1211,6 +1229,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/pmc/freelancer/load_gear(mob/living/carbon/human/H)
 
@@ -1233,6 +1253,8 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF) //they were not a part of the colony and as such do not have survivor or marine IFF
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/H)
 

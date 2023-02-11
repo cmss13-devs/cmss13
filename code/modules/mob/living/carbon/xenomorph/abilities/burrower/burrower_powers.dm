@@ -15,6 +15,10 @@
 		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 
+	if(istype(T, /turf/open/shuttle/dropship))
+		to_chat(src, SPAN_XENOWARNING("The bird's metal is too tough for you to burrow into."))
+		return
+
 	if(clone) //Prevents burrowing on stairs
 		to_chat(src, SPAN_XENOWARNING("You can't burrow here!"))
 		return

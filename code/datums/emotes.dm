@@ -101,6 +101,7 @@
 		playsound(user, tmp_sound, volume, vary)
 		if(HAS_TRAIT(user, TRAIT_EMOTE_CD_EXEMPT))
 			TIMER_COOLDOWN_END(user, COOLDOWN_MOB_AUDIO)
+
 	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
 
 	if(!msg)

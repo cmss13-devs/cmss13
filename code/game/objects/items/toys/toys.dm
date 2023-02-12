@@ -509,7 +509,8 @@
 							/obj/item/toy/prize/odysseus = 1,
 							/obj/item/toy/prize/phazon = 1,
 							/obj/item/clothing/shoes/slippers = 1,
-							/obj/item/clothing/shoes/slippers_worn = 1
+							/obj/item/clothing/shoes/slippers_worn = 1,
+							/obj/item/clothing/head/collectable/tophat/super = 1,
 							)
 
 /obj/item/toy/festivizer

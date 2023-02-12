@@ -1,5 +1,4 @@
-
-/datum/action/xeno_action/activable/pounce/predalien/pre_pounce_effects(atom/A)
+/datum/action/xeno_action/activable/pounce/predalien/pre_pounce_effects()
 	playsound(owner, 'sound/voice/predalien_pounce.ogg', 75, 0, status = 0)
 
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)

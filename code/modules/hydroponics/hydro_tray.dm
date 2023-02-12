@@ -741,7 +741,7 @@
 	draw_warnings = 0
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(obj/item/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/tool/shovel))
+	if(HAS_TRAIT(O,  TRAIT_TOOL_SHOVEL))
 		to_chat(user, "You clear up [src]!")
 		qdel(src)
 	else if(istype(O,/obj/item/tool/shovel) || istype(O,/obj/item/tank))

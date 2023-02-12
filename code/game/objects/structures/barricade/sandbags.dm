@@ -66,7 +66,7 @@
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
-	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
+	if(HAS_TRAIT(W,  TRAIT_TOOL_SHOVEL) && user.a_intent != INTENT_HARM)
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \

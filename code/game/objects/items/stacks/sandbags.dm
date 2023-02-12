@@ -16,7 +16,7 @@
 	stack_id = "empty sandbags"
 
 /obj/item/stack/sandbags_empty/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/tool/shovel))
+	if (HAS_TRAIT(W,  TRAIT_TOOL_SHOVEL))
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
 			ET.dirt_amt--

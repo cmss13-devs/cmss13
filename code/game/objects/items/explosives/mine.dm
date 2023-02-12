@@ -147,7 +147,7 @@
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/thing, mob/user)
-	if(needs_digging && istype(thing, /obj/item/tool/shovel) && !active && anchored)
+	if(needs_digging && HAS_TRAIT(thing,  TRAIT_TOOL_SHOVEL) && !active && anchored)
 		user.visible_message(SPAN_NOTICE("[user] starts burying \the [src]."), \
 			SPAN_NOTICE("You start burying \the [src]."))
 		playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)

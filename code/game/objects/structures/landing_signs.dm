@@ -3,8 +3,9 @@
 	desc = "Woah nelly, report this on GITLAB and ping a Spriter."
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "laz_sign"
+	layer = ABOVE_MOB_LAYER
 	bound_width = 64
-	bound_height = 64
+	bound_height = 32
 	density = TRUE
 
 /obj/structure/lz_sign/lazarus_sign

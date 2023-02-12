@@ -3150,6 +3150,7 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/water_cooler{
+	density = FALSE;
 	pixel_x = 8;
 	pixel_y = 24
 	},

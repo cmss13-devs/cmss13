@@ -250,7 +250,7 @@
 "eY" = (
 /obj/structure/showcase{
 	color = "#FFE55C";
-	desc = "This statue seems taller and somehow mightier than the others.. it makes you want to steer away from it.";
+	desc = "This statue seems taller and somehow mightier than the others... it makes you want to steer away from it.";
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "massive statue"
@@ -354,7 +354,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
 /turf/open/gm/grass,

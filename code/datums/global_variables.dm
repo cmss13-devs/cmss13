@@ -200,7 +200,7 @@
 
 		modify_global_variables(href_list["varnamechange"], FALSE)
 
-/client/proc/modify_global_variables(var/param_var_name = null, var/autodetect_class = 0)
+/client/proc/modify_global_variables(param_var_name = null, autodetect_class = 0)
 	if(!check_rights(R_VAREDIT))
 		return
 
@@ -348,7 +348,7 @@
 		var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
 		if(LAZYLEN(stored_matrices))
 			possible_classes += "matrix"
-		if(admin_holder && admin_holder.marked_datums.len)
+		if(admin_holder && admin_holder.marked_datum)
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
@@ -421,7 +421,7 @@
 			return
 
 		if("marked datum")
-			var/datum/D = input_marked_datum(admin_holder.marked_datums)
+			var/datum/D = admin_holder.marked_datum
 			global.vars[variable] = D
 
 	world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => [html_encode("[global.vars[variable]]")]"

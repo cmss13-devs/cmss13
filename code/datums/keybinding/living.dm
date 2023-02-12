@@ -40,6 +40,8 @@
 /datum/keybinding/living/toggle_surgery
 	name = "toggle_surgery"
 	full_name = "Toggle Surgery Mode"
+	hotkey_keys = list()
+	classic_keys = list()
 	description = "Ready yourself to perform surgery, or not. Also activates or disables Help Intent Safety, if you didn't have that set originally."
 	keybind_signal = COMSIG_KB_SURGERY_INTENT_DOWN
 

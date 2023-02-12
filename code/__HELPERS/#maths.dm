@@ -73,7 +73,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 
 // Rotates a point around the given axis by a given amount of degrees
 // You may want to round the result of this, it's very susceptible to floating point errors
-/proc/RotateAroundAxis(var/point, var/axis, var/degrees)
+/proc/RotateAroundAxis(point, axis, degrees)
 	// Find the coordinates of the point relative to the axis.
 	// That way we can work from the origin, which is much easier
 
@@ -95,7 +95,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	return rotated_point
 
 // Round up
-/proc/n_ceil(var/num)
+/proc/n_ceil(num)
 	if(isnum(num))
 		return round(num)+1
 

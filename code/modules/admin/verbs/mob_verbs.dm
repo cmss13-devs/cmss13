@@ -3,7 +3,7 @@
 #define NARRATION_METHOD_DIRECT "Direct"
 
 // Converted this into a proc. Verb will be separate
-/client/proc/change_ckey(mob/M in GLOB.mob_list, var/a_ckey = null)
+/client/proc/change_ckey(mob/M in GLOB.mob_list, a_ckey = null)
 	var/new_ckey = a_ckey
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
@@ -34,7 +34,7 @@
 		return
 	change_ckey(O)
 
-/client/proc/cmd_admin_ghostchange(var/mob/living/M, var/mob/dead/observer/O)
+/client/proc/cmd_admin_ghostchange(mob/living/M, mob/dead/observer/O)
 	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
@@ -130,7 +130,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")
+	var/list/subtle_message_options = list("Voice in head", "QM Psychic Whisper", "Weyland-Yutani", "USCM High Command", "Faction-specific")
 
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 
@@ -148,6 +148,12 @@
 	switch(message_option)
 		if("Voice in head")
 			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+
+		if("QM Psychic Whisper")
+			if(isxeno(M))
+				to_chat(M, SPAN_XENONOTICE("You hear the voice of the Queen Mother... [msg]"))
+			else
+				to_chat(M, SPAN_XENONOTICE("You hear a strange, distant, alien voice in your head... [msg]"))
 		else
 			var/mob/living/carbon/human/H = M
 
@@ -164,7 +170,7 @@
 	message_staff(message, M.x, M.y, M.z)
 	admin_ticket_log(M, message)
 
-/client/proc/cmd_admin_alert_message(var/mob/M)
+/client/proc/cmd_admin_alert_message(mob/M)
 	set name = "Alert Message"
 	set category = "Admin.Game"
 
@@ -197,7 +203,7 @@
 		else
 			return
 
-/client/proc/cmd_admin_object_narrate(var/obj/selected)
+/client/proc/cmd_admin_object_narrate(obj/selected)
 	set name = "Object Narrate"
 	set category = null
 
@@ -228,7 +234,7 @@
 	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
 	message_staff("[key_name(src)] sent an Object Narrate with message [message].")
 
-/client/proc/cmd_admin_direct_narrate(var/mob/M)
+/client/proc/cmd_admin_direct_narrate(mob/M)
 	set name = "Narrate"
 	set category = null
 
@@ -324,7 +330,7 @@
 
 	message_staff("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/H)
+/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H)
 	set name = "Change Hivenumber"
 	set category = null
 
@@ -342,8 +348,8 @@
 		to_chat(usr, "This mob no longer exists")
 		return
 
-	if(isXeno(H))
-		var/mob/living/carbon/Xenomorph/X = H
+	if(isxeno(H))
+		var/mob/living/carbon/xenomorph/X = H
 		X.set_hive_and_update(hives[newhive])
 	else
 		var/was_leader = FALSE
@@ -364,7 +370,7 @@
 	message_staff("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
-/client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
+/client/proc/cmd_admin_change_their_name(mob/living/carbon/X)
 	set name = "Change Name"
 	set category = null
 
@@ -388,7 +394,7 @@
 
 	message_staff("[key_name(src)] changed name of [old_name] to [newname].")
 
-/datum/admins/proc/togglesleep(var/mob/living/M as mob in GLOB.mob_list)
+/datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 

@@ -17,7 +17,7 @@
 	glass = 1
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
-/obj/structure/machinery/door/airlock/multi_tile/glass
+/obj/structure/machinery/door/airlock/multi_tile/glass/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
@@ -47,7 +47,7 @@
 	opacity = FALSE
 	glass = 1
 
-/obj/structure/machinery/door/airlock/multi_tile/medical
+/obj/structure/machinery/door/airlock/multi_tile/medical/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
 
@@ -472,10 +472,6 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor
-	req_access = null
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
-
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname
 	autoname = TRUE
 
@@ -487,10 +483,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass
-	req_access = null
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname
 	autoname = TRUE

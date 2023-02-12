@@ -6202,9 +6202,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "aSa" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -6239,9 +6238,8 @@
 /turf/closed/wall/shiva/prefabricated/white,
 /area/shiva/exterior/cp_lz2)
 "aSz" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -8059,9 +8057,8 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "bUe" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -8134,9 +8131,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "bXo" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -10148,9 +10144,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "esf" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -14605,9 +14600,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "jis" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
@@ -14654,9 +14648,8 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "jlQ" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -15275,9 +15268,8 @@
 	},
 /area/shiva/interior/lz2_habs)
 "kap" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -21753,9 +21745,8 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "qLA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
-	name = "\improper Null Hatch REPLACE ME";
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)

@@ -10,13 +10,6 @@
 	opacity = TRUE
 	anchored = TRUE
 
-/obj/structure/cargo_container/Initialize()
-	. = ..()
-	///death to multitiles
-	if(icon_state == "gorg 0,0" || icon_state == "gorg 2,0")
-		layer = ABOVE_MOB_LAYER
-		bound_height = 32
-
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
 
 	playsound(loc, 'sound/effects/clang.ogg', 25, 1)

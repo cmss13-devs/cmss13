@@ -96,10 +96,10 @@
 	else if(tmp_sound && should_play_sound(user, intentional))
 		if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
 			return
-	if(!(HAS_TRAIT(user, TRAIT_EMOTE_CD_EXEMPT)))
-		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-		TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
-	playsound(user, tmp_sound, volume, vary)
+		if(!(HAS_TRAIT(user, TRAIT_EMOTE_CD_EXEMPT)))
+			TIMER_COOLDOWN_START(user, type, audio_cooldown)
+			TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
+		playsound(user, tmp_sound, volume, vary)
 
 	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
 

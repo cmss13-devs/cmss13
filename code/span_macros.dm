@@ -79,6 +79,18 @@
 
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
 
+#define SPAN_ROSE(X) "<span class='rose'>[X]</span>"
+#define SPAN_LANGCHAT(X) "<span class='langchat'>[X]</span>"
+#define SPAN_MODERATE(X) "<span class='moderate'>[X]</span>"
+#define SPAN_DISARM(X) "<span class='disarm'>[X]</span>"
+#define SPAN_DL1(X) "<span class='dl1'>[X]</span>"
+#define SPAN_NEWSCASTER(X) "<span class='newscaster'>[X]</span>"
+#define SPAN_ROUND_HEADER(X) "<span class='round header'>[X]</span>"
+#define SPAN_EMOTE(X) "<span class='emote'>[X]</span>"
+#define SPAN_UNCONSCIOUS(X) "<span class='unconscious'>[X]</span>"
+#define SPAN_SUICIDE(X) "<span class='suicide'>[X]</span>"
+#define SPAN_SCANNERB(X) "<span class='scannerb'>[X]</span>"
+
 // Colours
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
 #define SPAN_GREEN(X) "<span class='green'>[X]</span>"

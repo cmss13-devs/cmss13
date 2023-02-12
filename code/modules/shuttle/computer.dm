@@ -51,14 +51,14 @@
 	if(.)
 		return
 
-	if(!isXenoQueen(usr) && !allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+	if(!isqueen(usr) && !allowed(usr))
+		to_chat(usr, SPAN_DANGER("Access denied."))
 		return TRUE
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 // if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// to_chat(usr, SPAN_WARNING("The engines are still refueling."))
 // return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
@@ -71,14 +71,14 @@
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(DOCKING_SUCCESS)
 				if(previous_status != SHUTTLE_IDLE)
-					visible_message("<span class='notice'>Destination updated, recalculating route.</span>")
+					visible_message(SPAN_NOTICE("Destination updated, recalculating route."))
 				else
-					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
+					visible_message(SPAN_NOTICE("Shuttle departing. Please stand away from the doors."))
 			if(DOCKING_NULL_SOURCE)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				return TRUE
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, SPAN_NOTICE("Unable to comply."))
 				return TRUE
 
 /obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
@@ -292,7 +292,7 @@
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
-/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)
 		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)

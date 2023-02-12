@@ -9,18 +9,22 @@ export type OrbitData = {
   ert_members: Observable[];
   synthetics: Observable[];
   predators: Observable[];
+  animals: Observable[];
   dead: Observable[];
   ghosts: Observable[];
   misc: Observable[];
   npcs: Observable[];
   vehicles: Observable[];
   escaped: Observable[];
+  icons?: string[];
 };
 
 export type Observable = {
   caste?: string;
   health?: number;
+  icon?: string;
   job?: string;
+  background_color?: string;
   full_name: string;
   nickname?: string;
   orbiters?: number;

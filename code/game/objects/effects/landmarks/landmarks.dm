@@ -2,7 +2,7 @@
 	name = "landmark"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
@@ -431,7 +431,7 @@
 	GLOB.zombie_landmarks -= src
 	return ..()
 
-/obj/effect/landmark/zombie/proc/spawn_zombie(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/spawn_zombie(mob/dead/observer/observer)
 	if(!infinite_spawns)
 		spawns_left--
 	if(spawns_left <= 0)
@@ -441,7 +441,7 @@
 	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
-/obj/effect/landmark/zombie/proc/handle_zombie_spawn(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
 	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
 	if(!zombie.hud_used)
 		zombie.create_hud()

@@ -253,13 +253,13 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "X" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_y = -5;
 	pixel_x = -6
 	},
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_y = -5;
 	pixel_x = 2
 	},

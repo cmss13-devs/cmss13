@@ -1,4 +1,4 @@
-/proc/get_frequency_name(var/display_freq)
+/proc/get_frequency_name(display_freq)
 	var/freq_text
 
 	// the name of the channel

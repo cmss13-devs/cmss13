@@ -3,6 +3,7 @@
 
 /obj/item/weapon/gun/pistol
 	icon_state = "" //should return the honk-error sprite if there's no assigned icon.
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	reload_sound = 'sound/weapons/flipblade.ogg'
 	cocked_sound = 'sound/weapons/gun_pistol_cocked.ogg'
 
@@ -48,6 +49,7 @@
 /obj/item/weapon/gun/pistol/m4a3
 	name = "\improper M4A3 service pistol"//1911
 	desc = "An M4A3 Service Pistol, once the standard issue sidearm of the Colonial Marines but has recently been replaced with the 88 Mod 4 combat pistol. Fires 9mm pistol rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
@@ -107,6 +109,7 @@
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
 	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4a345"
 	item_state = "m4a3"
 
@@ -153,6 +156,7 @@
 /obj/item/weapon/gun/pistol/b92fs
 	name = "\improper Beretta 92FS pistol"
 	desc = "A popular police firearm in the 20th century, often employed by hardboiled cops while confronting terrorists. A classic of its time, chambered in 9mm."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "b92fs"
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
@@ -188,6 +192,7 @@
 /obj/item/weapon/gun/pistol/heavy
 	name = "vintage Desert Eagle"
 	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. This one is engraved, 'Peace through superior firepower.'"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "deagle"
 	item_state = "deagle"
 	fire_sound = 'sound/weapons/gun_DE50.ogg'
@@ -227,6 +232,7 @@
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished vintage Desert Eagle"
 	desc = "The handcannon that needs no introduction, the .50-caliber Desert Eagle is expensive, unwieldy, and extremely heavy for a pistol. However, it makes up for it with its powerful shots capable of stopping a bear dead in its tracks. Iconic, glamorous, and above all, extremely deadly."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
 	base_gun_icon = "c_deagle"
@@ -258,6 +264,7 @@
 /obj/item/weapon/gun/pistol/c99
 	name = "\improper Korovin PK-9 pistol"
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "pk9"
 	item_state = "pk9"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
@@ -318,6 +325,7 @@
 /obj/item/weapon/gun/pistol/kt42
 	name = "\improper KT-42 automag"
 	desc = "The KT-42 Automag is an archaic but reliable design, going back many decades. There have been many versions and variations, but the 42 is by far the most common. You can't go wrong with this handcannon."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "kt42"
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
@@ -342,6 +350,7 @@
 /obj/item/weapon/gun/pistol/holdout
 	name = "holdout pistol"
 	desc = "A tiny pistol meant for hiding in hard-to-reach areas. Best not ask where it came from."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "holdout"
 	item_state = "holdout"
 
@@ -382,6 +391,7 @@
 /obj/item/weapon/gun/pistol/m43pistol
 	name = "M43 Hummingbird Pistol"
 	desc = "The M43 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m43"
 	item_state = "m43"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
@@ -416,6 +426,7 @@
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
 	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "highpower"
 	item_state = "highpower"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
@@ -509,6 +520,7 @@
 /obj/item/weapon/gun/pistol/mod88
 	name = "\improper 88 Mod 4 combat pistol"
 	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "88m4"
 	item_state = "88m4"
 	fire_sound = "88m4"
@@ -566,6 +578,7 @@
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
 	desc = "A massive, formidable automatic handgun chambered in 9mm squash-head rounds. Commonly seen in the hands of wealthy Weyland-Yutani members."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"
 
@@ -622,6 +635,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/auto9
 	name = "\improper Auto-9 pistol"
 	desc = "An advanced, select-fire machine pistol capable of three-round burst. Last seen cleaning up the mean streets of Detroit."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "auto9"
 	item_state = "auto9"
 
@@ -651,6 +665,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/chimp
 	name = "\improper CHIMP70 pistol"
 	desc = "A powerful sidearm issued mainly to highly trained elite assassin necro-cyber-agents."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "c70"
 	item_state = "c70"
 
@@ -679,6 +694,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
 	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "smartpistol"
 	item_state = "smartpistol"
 	force = 8
@@ -716,6 +732,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/skorpion
 	name = "\improper CZ-81 machine pistol"
 	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20-round magazine."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "skorpion"
 	item_state = "skorpion"
 

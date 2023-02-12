@@ -28,7 +28,7 @@
 	return handen.Find(I)
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_l_hand(var/obj/item/W)
+/mob/proc/put_in_l_hand(obj/item/W)
 	if(lying)
 		return FALSE
 	if(!istype(W))
@@ -47,7 +47,7 @@
 	return FALSE
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
-/mob/proc/put_in_r_hand(var/obj/item/W)
+/mob/proc/put_in_r_hand(obj/item/W)
 	if(lying)
 		return FALSE
 	if(!istype(W))
@@ -66,19 +66,19 @@
 	return FALSE
 
 //Puts the item into our active hand if possible. returns 1 on success.
-/mob/proc/put_in_active_hand(var/obj/item/W)
+/mob/proc/put_in_active_hand(obj/item/W)
 	if(hand) return put_in_l_hand(W)
 	else return put_in_r_hand(W)
 
 //Puts the item into our inactive hand if possible. returns 1 on success.
-/mob/proc/put_in_inactive_hand(var/obj/item/W)
+/mob/proc/put_in_inactive_hand(obj/item/W)
 	if(hand) return put_in_r_hand(W)
 	else return put_in_l_hand(W)
 
 //Puts the item into our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
-/mob/proc/put_in_hands(var/obj/item/W, drop_on_fail = TRUE)
+/mob/proc/put_in_hands(obj/item/W, drop_on_fail = TRUE)
 	if(!W)
 		return FALSE
 	if(put_in_active_hand(W))
@@ -93,7 +93,7 @@
 		return FALSE
 
 //Puts the item into our back if possible. Returns 1 on success.
-/mob/proc/put_in_back(var/obj/item/item)
+/mob/proc/put_in_back(obj/item/item)
 	if(!item)
 		return FALSE
 	if(!istype(item))
@@ -130,7 +130,7 @@
 	return FALSE
 
 //Drops the item in our active hand. If passed with an item, it will check each hand for the item and drop the right one.
-/mob/proc/drop_held_item(var/obj/item/I)
+/mob/proc/drop_held_item(obj/item/I)
 	if(I)
 		if(I == r_hand)
 			return drop_r_hand()
@@ -162,6 +162,9 @@
 	if(!user_turf)
 		return
 
+	if(is_mob_incapacitated())
+		return
+
 	if(pickup_recent_item_on_turf(user_turf))
 		return
 
@@ -173,6 +176,9 @@
 /mob/living/carbon/human/proc/pickup_recent_item_on_turf(turf/check_turf)
 	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
+		if(!previously_held_object)
+			remembered_dropped_objects -= weak_ref
+			break
 		if(previously_held_object.in_contents_of(check_turf))
 			put_in_hands(previously_held_object, drop_on_fail = FALSE)
 			return TRUE

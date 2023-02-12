@@ -19,7 +19,7 @@
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return . = ..()
 
-	if(!isHumanStrict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
+	if(!ishuman_strict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
 		return . = ..()
 
 	if(M.stat != CONSCIOUS)
@@ -45,7 +45,7 @@
 
 	uses--
 
-/obj/item/weapon/melee/chloroform/proc/grab_stun(var/mob/living/M, var/mob/living/user)
+/obj/item/weapon/melee/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
 	M.anchored = TRUE
 	M.frozen = TRUE
 	M.density = FALSE
@@ -76,7 +76,7 @@
 
 	animate(M, pixel_x = target_x, pixel_y = target_y, time = 0.2 SECONDS, easing = QUAD_EASING)
 
-/obj/item/weapon/melee/chloroform/proc/remove_stun(var/mob/living/M)
+/obj/item/weapon/melee/chloroform/proc/remove_stun(mob/living/M)
 	animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 	M.anchored = FALSE
 	M.density = TRUE

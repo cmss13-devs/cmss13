@@ -1,6 +1,6 @@
 #define DELETE_TIME 1800
 
-/mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
+/mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
 	if(!.)
@@ -27,8 +27,8 @@
 		update_icons()
 
 	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/XQ = src
+		if(isqueen(src))
+			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
 				XQ.overwatch(XQ.observed_xeno, TRUE)
@@ -43,7 +43,7 @@
 					larva_spawn = get_turf(GLOB.hive_datum[hivenumber].spawn_pool)
 					if(players_with_xeno_pref && players_with_xeno_pref.len)
 						var/mob/xeno_candidate = pick(players_with_xeno_pref)
-						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
+						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
 						new_xeno.set_hive_and_update(hivenumber)
 
 						new_xeno.generate_name()
@@ -61,7 +61,7 @@
 				hive.slashing_allowed = XENO_SLASH_ALLOWED
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
-				for(var/mob/living/carbon/Xenomorph/Queen/Q in GLOB.living_xeno_list)
+				for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break
@@ -84,6 +84,7 @@
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
+	SSminimaps.remove_marker(src)
 
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
@@ -105,7 +106,7 @@
 			if((last_ares_callout + 2 MINUTES) > world.time)
 				return
 			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-				var/mob/living/carbon/Xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
+				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
 				last_ares_callout = world.time
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
@@ -121,7 +122,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
-/mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")
+/mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.
@@ -131,7 +132,7 @@
 
 	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if(XENO_CASTE_BOILER)
-			var/mob/living/carbon/Xenomorph/Boiler/B = src
+			var/mob/living/carbon/xenomorph/boiler/B = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			B.smoke.set_up(2, 0, get_turf(src))
 			B.smoke.start()
@@ -147,7 +148,7 @@
 
 	..(cause)
 
-/mob/living/carbon/Xenomorph/gib_animation()
+/mob/living/carbon/xenomorph/gib_animation()
 	var/to_flick = "gibbed-a"
 	var/icon_path
 	if(mob_size >= MOB_SIZE_BIG)
@@ -161,12 +162,12 @@
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 
-/mob/living/carbon/Xenomorph/spawn_gibs()
+/mob/living/carbon/xenomorph/spawn_gibs()
 	xgibs(get_turf(src))
 
-/mob/living/carbon/Xenomorph/dust_animation()
+/mob/living/carbon/xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
 
-/mob/living/carbon/Xenomorph/revive()
+/mob/living/carbon/xenomorph/revive()
 	SEND_SIGNAL(src, COMSIG_XENO_REVIVED)
 	..()

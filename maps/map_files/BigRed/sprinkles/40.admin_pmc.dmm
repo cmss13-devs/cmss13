@@ -382,7 +382,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -458,9 +458,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Office";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -500,9 +499,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Meeting Room";
-	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
@@ -574,7 +572,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/rubber;
 	name = "battered M41A pulse rifle MK2";
 	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
 	},
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";

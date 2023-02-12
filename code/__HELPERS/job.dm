@@ -47,7 +47,7 @@
 		if(I.rank in centcom) return "Centcom"
 	return "Unknown" //Return unknown if none of the above apply
 
-/proc/get_actual_job_name(var/mob/M)
+/proc/get_actual_job_name(mob/M)
 	if(!M)
 		return null
 
@@ -62,7 +62,6 @@
 			JOB_INTEL,
 			JOB_PILOT,
 			JOB_DROPSHIP_CREW_CHIEF,
-			JOB_CREWMAN,
 			JOB_CORPORATE_LIAISON,
 			JOB_CHIEF_ENGINEER,
 			JOB_ORDNANCE_TECH,

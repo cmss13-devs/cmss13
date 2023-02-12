@@ -27,13 +27,13 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xeno_resting/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.resting)
 		button.icon_state = "template_active"
 
@@ -47,7 +47,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
@@ -91,7 +91,7 @@
 	if(!.)
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X)
 		return X.selected_resin
 	else
@@ -115,7 +115,7 @@
 	xeno_cooldown = 10 SECONDS
 	var/max_markers = 3
 
-/datum/action/xeno_action/activable/info_marker/update_button_icon(var/datum/xeno_mark_define/x)
+/datum/action/xeno_action/activable/info_marker/update_button_icon(datum/xeno_mark_define/x)
 	. = ..()
 	if(!x)
 		return
@@ -176,7 +176,7 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/emit_pheromones/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated() && (!X.current_aura || X.plasma_stored >= plasma_cost))
 		return TRUE
 
@@ -223,9 +223,9 @@
 	. = ..()
 	initialize_pounce_pass_flags()
 	pounce_callbacks = list()
-	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper)
-	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper)
-	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper)
+	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper)
+	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper)
+	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper)
 
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_OVER_THROW_MOB
@@ -250,7 +250,7 @@
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.frozen = FALSE
 	X.update_canmove()
 	deltimer(freeze_timer_id)
@@ -262,7 +262,7 @@
 	return
 
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
-/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
+/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(interrupted)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
@@ -279,18 +279,18 @@
 	var/movement_buffer = 0
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will also handle icon_state
 		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
@@ -306,7 +306,7 @@
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)
@@ -354,7 +354,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.xeno_transfer_plasma(A, plasma_transfer_amount, transfer_delay, max_range)
 	..()
 
@@ -366,13 +366,13 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
 		button.icon_state = "template_active"
 

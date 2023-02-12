@@ -87,12 +87,12 @@
 	..()
 
 	if(!battery)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already.. what a piece of junk. You realize the battery cover is open."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already... what a piece of junk. You realize the battery cover is open."))
 		playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 		return
 
 	if(!battery.use(PDT_BATTERY_SCREEN_DRAW))
-		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already.. what a piece of junk."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already... what a piece of junk."))
 		playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 		return
 	update_icon()
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/accessory/pdt_bracelet/get_examine_text(mob/user)
 	. = ..()
-	if(!isXeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && copied_serial_number)
+	if(!isxeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && copied_serial_number)
 		. += SPAN_INFO("The serial number is [copied_serial_number].")
 
 /obj/item/clothing/accessory/pdt_bracelet/Initialize()

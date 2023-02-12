@@ -3,7 +3,7 @@
 	playsound(owner, 'sound/voice/predalien_pounce.ogg', 75, 0, status = 0)
 
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -24,12 +24,12 @@
 			human.disable_special_items()
 
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
-			if(isYautja(human) && YG)
+			if(isyautja(human) && YG)
 				if(YG.cloaked)
 					YG.decloak(human)
 
 				YG.cloak_timer = xeno_cooldown * 0.1
-		else if(isXeno(carbon) && xeno.can_not_harm(carbon))
+		else if(isxeno(carbon) && xeno.can_not_harm(carbon))
 			var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
 			if(!istype(behavior))
 				continue
@@ -46,7 +46,7 @@
 	return
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -88,7 +88,7 @@
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))
@@ -101,7 +101,7 @@
 	return
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -109,7 +109,7 @@
 	if (!xeno.check_state())
 		return
 
-	if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+	if (!isxeno_human(target) || xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -140,7 +140,7 @@
 	apply_cooldown()
 
 	xeno.frozen = 1
-	xeno.anchored = 1
+	xeno.anchored = TRUE
 	xeno.update_canmove()
 
 	if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -157,7 +157,7 @@
 	playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 
 	xeno.frozen = 0
-	xeno.anchored = 0
+	xeno.anchored = FALSE
 	xeno.update_canmove()
 
 	unroot_human(carbon)

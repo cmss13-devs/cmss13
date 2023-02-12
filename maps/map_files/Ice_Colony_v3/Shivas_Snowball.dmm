@@ -10424,9 +10424,6 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	name = "\improper Colony Power Substation";
-	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "eKp" = (

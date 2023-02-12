@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "renamed buttons for secures storage to Secure Inner Doors and Secure Outer Doors to make it more clear of what they do."
+  - maptweak: "fix a floating apc in armory on standard map"

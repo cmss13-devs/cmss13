@@ -63,14 +63,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	..()
 	dest_master = locate()
 	if(!dest_master)
-		//log_debug("ERROR CODE SD1: could not find master self-destruct console")
-		//to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
+		log_debug("ERROR CODE SD1: could not find master self-destruct console")
+		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
 		return FALSE
 	dest_rods = new
 	for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 	if(!dest_rods.len)
-		//log_debug("ERROR CODE SD2: could not find any self-destruct rods")
-		//to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
+		log_debug("ERROR CODE SD2: could not find any self-destruct rods")
+		to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
 		QDEL_NULL(dest_master)
 		return FALSE
 	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len

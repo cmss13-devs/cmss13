@@ -13,10 +13,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player_stat)
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"stat_id" = DB_FIELDTYPE_STRING_LARGE,
 		"stat_number" = DB_FIELDTYPE_BIGINT,
-		"stat_category" = DB_FIELDTYPE_STRING_LARGE
+		"stat_category" = DB_FIELDTYPE_STRING_LARGE,
 	)
 
-/datum/entity_meta/player_stat/on_insert(var/datum/entity/player_stat/stat)
+/datum/entity_meta/player_stat/on_insert(datum/entity/player_stat/stat)
 	stat.stat_number = 0
 
 /datum/entity_link/player_to_stat

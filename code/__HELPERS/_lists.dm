@@ -116,3 +116,37 @@
 			return item
 
 	return null
+
+/**
+ * Removes any null entries from the list
+ * Returns TRUE if the list had nulls, FALSE otherwise
+**/
+/proc/list_clear_nulls(list/list_to_clear)
+	var/start_len = list_to_clear.len
+	var/list/new_list = new(start_len)
+	list_to_clear -= new_list
+	return list_to_clear.len < start_len
+
+///Return a list with no duplicate entries
+/proc/unique_list(list/inserted_list)
+	. = list()
+	for(var/i in inserted_list)
+		. |= i
+
+///same as unique_list, but returns nothing and acts on list in place (also handles associated values properly)
+/proc/unique_list_in_place(list/inserted_list)
+	var/temp = inserted_list.Copy()
+	inserted_list.len = 0
+	for(var/key in temp)
+		if (isnum(key))
+			inserted_list |= key
+		else
+			inserted_list[key] = temp[key]
+
+///same as shuffle, but returns nothing and acts on list in place
+/proc/shuffle_inplace(list/inserted_list)
+	if(!inserted_list)
+		return
+
+	for(var/i in 1 to inserted_list.len - 1)
+		inserted_list.Swap(i, rand(i, inserted_list.len))

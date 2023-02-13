@@ -34,6 +34,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/togglelooc, /*toggles ooc on/off for everyone*/
@@ -120,6 +121,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/force_event,
+	/client/proc/toggle_events,
 	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
@@ -360,7 +363,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator) return
-	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
+	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -415,7 +418,7 @@ var/list/roundstart_mod_verbs = list(
 	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"

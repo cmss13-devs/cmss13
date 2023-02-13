@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/charge_spit/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if (!action_cooldown_check())
 		return
@@ -35,7 +35,7 @@
 
 /datum/action/xeno_action/onclick/charge_spit/proc/disable_spatter()
 	SIGNAL_HANDLER
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 	if(zenomorf.ammo == GLOB.ammo_list[/datum/ammo/xeno/acid/spatter])
 		to_chat(zenomorf, SPAN_XENOWARNING("Your acid glands empty out and return back to normal. You will once more fire long-ranged weak spits."))
 		zenomorf.balloon_alert(zenomorf, "your spits are back to normal", text_color = "#93ec78")
@@ -43,7 +43,7 @@
 	UnregisterSignal(zenomorf, COMSIG_XENO_POST_SPIT)
 
 /datum/action/xeno_action/onclick/charge_spit/proc/remove_effects()
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if (!istype(zenomorf))
 		return

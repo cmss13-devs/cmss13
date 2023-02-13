@@ -110,7 +110,7 @@
 	radio_connection.post_signal(src, signal)
 	return
 
-/obj/item/device/assembly/signaller/pulse(var/radio = 0)
+/obj/item/device/assembly/signaller/pulse(radio = 0)
 	if(istype(src.loc, /obj/structure/machinery/door/airlock) && src.airlock_wire && src.wires)
 		var/obj/structure/machinery/door/airlock/A = src.loc
 		A.pulse(src.airlock_wire)

@@ -1,7 +1,7 @@
 // Spray shrapnel every hit
 /datum/xeno_shield/hedgehog_shield
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/short_range
-	var/mob/living/carbon/Xenomorph/owner = null
+	var/mob/living/carbon/xenomorph/owner = null
 	var/shrapnel_amount = 6
 	var/last_proc_time
 

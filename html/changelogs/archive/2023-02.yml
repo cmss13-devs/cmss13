@@ -206,3 +206,17 @@
   - bugfix: Fixed an issue in which sometimes qdeleted reagents still procced on life.
   - bugfix: Fixed examining things changing your direction if you're incapacitated.
   - bugfix: Added FAKEDEATH to the mob_incapacitated() check.
+2023-02-13:
+  Huffie56:
+  - maptweak: renamed buttons for secures storage to Secure Inner Doors and Secure
+      Outer Doors to make it more clear of what they do.
+  - maptweak: fix a floating apc in armory on standard map
+  NewyearnewmeUwu:
+  - maptweak: changes the default ss13 airlock in big red tcomms to a cm airlock
+  - bugfix: removed the funny misplaced door on shivas
+  - spellcheck: RO sign now says aCO instead of aXO
+  carlarctg:
+  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  realforest2001:
+  - bugfix: Fixes unnamed doors on colonies.
+  - bugfix: 'Fixes duplicate definitions from #2164'

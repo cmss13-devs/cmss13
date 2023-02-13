@@ -7,12 +7,13 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morgue1"
 	dir = EAST
-	density = 1
+	density = TRUE
 	var/obj/structure/morgue_tray/connected = null
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
+	var/exit_stun = 2
+	anchored = TRUE
 	throwpass = 1
 
 /obj/structure/morgue/Initialize()
@@ -111,9 +112,15 @@
 		. = ..()
 
 /obj/structure/morgue/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
+	if(user.is_mob_incapacitated())
 		return
-	toggle_morgue(user)
+	if(exit_stun)
+		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
+		user.update_canmove() //Force the delay to go in action immediately
+		if(!user.lying)
+			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		toggle_morgue(user)
 
 
 /*
@@ -126,10 +133,10 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
-	density = 1
+	density = TRUE
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 	var/bloody = FALSE
 
@@ -176,7 +183,7 @@
 
 /obj/structure/morgue/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon_state = "crema1"
 	dir = SOUTH
 	tray_path = /obj/structure/morgue_tray/crematorium

@@ -1,8 +1,8 @@
 /obj/structure/machinery/sentry_holder
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	unacidable = 1
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sentry_system_installed"
@@ -25,6 +25,10 @@
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
+
+/obj/structure/machinery/sentry_holder/Destroy()
+	QDEL_NULL(deployed_turret)
+	. = ..()
 
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
 	. = ..()

@@ -19,7 +19,7 @@
 	center_of_mass = "x=15;y=15"
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_container/food/snacks/proc/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	if(!usr) return
 
@@ -63,7 +63,7 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
-		if(isSynth(C))
+		if(issynth(C))
 			fullness = 200 //Synths never get full
 
 		if(fullness > 540)
@@ -136,7 +136,7 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
-/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(name_prefix)
 	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
@@ -210,7 +210,7 @@
 	qdel(src)
 	return
 
-/obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
+/obj/item/reagent_container/food/snacks/attack_animal(mob/M)
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
@@ -345,7 +345,7 @@
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
-	desc = "COOKIE!!!"
+	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
 	filling_color = "#DBC94F"
 
@@ -542,6 +542,12 @@
 /obj/item/reagent_container/food/snacks/egg/yellow
 	icon_state = "egg-yellow"
 	egg_color = "yellow"
+
+/obj/item/reagent_container/food/snacks/egg/random/Initialize()
+	. = ..()
+	var/newegg = pick(subtypesof(/obj/item/reagent_container/food/snacks/egg))
+	new newegg(loc)
+	qdel(src)
 
 /obj/item/reagent_container/food/snacks/friedegg
 	name = "Fried egg"
@@ -749,7 +755,7 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "burger"
+	name = "bob burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
 
@@ -797,7 +803,7 @@
 
 /obj/item/reagent_container/food/snacks/tofuburger
 	name = "Tofu Burger"
-	desc = "What.. is that meat?"
+	desc = "What... is that meat?"
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 
@@ -893,7 +899,7 @@
 
 /obj/item/reagent_container/food/snacks/muffin
 	name = "Muffin"
-	desc = "A delicious and spongy little cake"
+	desc = "A little muffin. Spongy, moist, and delicious."
 	icon_state = "muffin"
 	filling_color = "#E0CF9B"
 
@@ -1124,7 +1130,7 @@
 
 /obj/item/reagent_container/food/snacks/popcorn
 	name = "Popcorn"
-	desc = "Now let's find some cinema."
+	desc = "Buttery movie theater-style popcorn. Now to find a movie to watch while eating it."
 	icon_state = "popcorn"
 	trash = /obj/item/trash/popcorn
 	var/unpopped = 0
@@ -1275,8 +1281,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatsteak
-	name = "Meat steak"
-	desc = "A piece of hot spicy meat."
+	name = "steak"
+	desc = "A fine cut of grilled meat, spiced with salt and pepper. Where the meat came from is, well, probably best left unanswered."
 	icon_state = "meatstake"
 	trash = /obj/item/trash/plate
 	filling_color = "#7A3D11"
@@ -1505,6 +1511,7 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
+	black_market_value = 25
 	var/monkey_type = /mob/living/carbon/human/monkey
 
 /obj/item/reagent_container/food/snacks/monkeycube/Initialize()
@@ -1528,7 +1535,7 @@
 		to_chat(user, "You unwrap the cube.")
 		package = 0
 
-/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
 	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
 
 	if (istype(M, /mob/living/carbon/human))
@@ -2262,6 +2269,7 @@
 	icon_state = "cheesecake"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
 	filling_color = "#FAF7AF"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesecake/Initialize()
 	. = ..()
@@ -2276,6 +2284,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#FAF7AF"
 	bitesize = 2
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/sliceable/plaincake
 	name = "Vanilla Cake"
@@ -2390,6 +2399,7 @@
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	filling_color = "#FFF700"
+	black_market_value = 25 //mendoza likes cheese.
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/Initialize()
 	. = ..()
@@ -2402,6 +2412,7 @@
 	icon_state = "cheesewedge"
 	filling_color = "#FFF700"
 	bitesize = 2
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature
 	name = "immature cheese wheel"
@@ -3224,6 +3235,7 @@
 /obj/item/reagent_container/food/snacks/wrapped
 	package = 1
 	bitesize = 3
+	black_market_value = 5
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
@@ -3262,6 +3274,23 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 7)
 	reagents.add_reagent("coco", 10)
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk
+	name = "HUNK crate"
+	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
+	icon_state = "hunk"
+	w_class = SIZE_MEDIUM
+	hitsound = "swing_hit"
+	force = 35 //ILLEGAL LIMIT OF CHOCOLATE
+	throwforce = 50
+	bitesize = 20
+	wrapper = /obj/item/trash/chunk/hunk
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("iron", 30)
+	reagents.add_reagent("coco", 5)
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine
 	name = "Barcardine Bars"

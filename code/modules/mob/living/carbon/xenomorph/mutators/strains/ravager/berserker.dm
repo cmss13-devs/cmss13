@@ -13,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
-		/datum/action/xeno_action/activable/eviscerate
+		/datum/action/xeno_action/activable/eviscerate,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
@@ -23,7 +23,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
 	ravager.mutation_type = RAVAGER_BERSERKER
 	ravager.plasma_max = 0
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
@@ -141,13 +141,13 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return original_damage
 
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
 		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.apply_effect(get_xeno_stun_duration(A, 6), SUPERSLOW)
+		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
 	return original_damage

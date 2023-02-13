@@ -5,10 +5,10 @@
 /obj/effect/particle_effect
 	name = "effect"
 	icon = 'icons/effects/effects.dmi'
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE // So effect are not targeted by alien acid.
 
-/obj/effect/particle_effect/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_MOB_THRU
@@ -19,7 +19,7 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "3"
 	var/life = 0.5 SECONDS
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/particle_effect/fire/New()
 	if(!istype(loc, /turf))
@@ -54,10 +54,10 @@
 	name = "water"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
-	var/life = 15.0
-	mouse_opacity = 0
+	var/life = 15
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/particle_effect/water/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/water/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB_THRU|PASS_UNDER

@@ -27,7 +27,7 @@
 	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP allies."))
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
 
-/datum/emergency_call/upp_commando/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/upp_commando/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -49,5 +49,5 @@
 		arm_equipment(H, /datum/equipment_preset/upp/commando, TRUE, TRUE)
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 

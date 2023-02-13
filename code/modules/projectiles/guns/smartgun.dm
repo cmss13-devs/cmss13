@@ -20,13 +20,13 @@
 	var/powerpack = null
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
-						/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-						/datum/action/item_action/smartgun/toggle_ammo_type,
-						/datum/action/item_action/smartgun/toggle_auto_fire,
-						/datum/action/item_action/smartgun/toggle_lethal_mode,
-						/datum/action/item_action/smartgun/toggle_motion_detector,
-						/datum/action/item_action/smartgun/toggle_recoil_compensation
-						)
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
@@ -48,8 +48,9 @@
 	indestructible = 1
 
 	attachable_allowed = list(
-						/obj/item/attachable/smartbarrel,
-						/obj/item/attachable/flashlight)
+		/obj/item/attachable/smartbarrel,
+		/obj/item/attachable/flashlight,
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -104,7 +105,7 @@
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
-		if(!ishuman(user))
+		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
@@ -303,7 +304,7 @@
 	return TRUE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(!powerpack)
 		link_powerpack(usr)
@@ -358,7 +359,7 @@
 				..()
 
 
-/obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
+/obj/item/weapon/gun/smartgun/proc/link_powerpack(mob/user)
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			powerpack = user.back
@@ -426,7 +427,7 @@
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
 
-/obj/item/weapon/gun/smartgun/proc/auto_prefire(var/warned) //To allow the autofire delay to properly check targets after waiting.
+/obj/item/weapon/gun/smartgun/proc/auto_prefire(warned) //To allow the autofire delay to properly check targets after waiting.
 	if(ishuman(loc) && (flags_item & WIELDED))
 		var/human_user = loc
 		target = get_target(human_user)
@@ -437,7 +438,7 @@
 		TAF.update_icon()
 		auto_fire()
 
-/obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
+/obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user)
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
 	var/list/turf/path = list()
@@ -504,7 +505,7 @@
 	else if(unconscious_targets.len)
 		. = pick(unconscious_targets)
 
-/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user, var/warned)
+/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
 	set waitfor = 0
 
 
@@ -619,7 +620,7 @@
 	..()
 
 
-/obj/item/weapon/gun/smartgun/co/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/smartgun/co/I)
+/obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 

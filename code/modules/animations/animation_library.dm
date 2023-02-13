@@ -7,7 +7,7 @@ functions so that other people won't have to wonder what it actually does.
 /*
 This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
-4 ticks * 5 = 2.0 seconds. Doesn't loop on default, and spins right.
+4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
@@ -132,8 +132,8 @@ Can look good elsewhere as well.*/
 //Regular fadeout disappear, for most objects.
 /proc/animation_destruction_fade(atom/A, speed = 12)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0 //We don't want them to click this while the animation is still playing.
-	A.density = 0 //So it doesn't block anything.
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT //We don't want them to click this while the animation is still playing.
+	A.density = FALSE //So it doesn't block anything.
 	var/i = 1 + (0.1 * rand(1,5))
 	animate(A, transform = matrix() * i, color = "#808080", time = speed, easing = SINE_EASING)
 	animate(alpha = 0, time = speed)
@@ -142,8 +142,8 @@ Can look good elsewhere as well.*/
 //Fadeout when something gets hit. Not completely done yet, as offset doesn't want to cooperate.
 /proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, transform = matrix() * 1.2,  alpha = 100, pixel_x = x_o + pick(x_n,-x_n), pixel_y = y_o + pick(y_n,-y_n), time = speed, easing = QUAD_EASING|EASE_IN)
@@ -154,8 +154,8 @@ Can look good elsewhere as well.*/
 //Work in progress animation. Needs byond 511 parallel animation to look nice.
 /proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, pixel_x = x_o+rand(-x_n, x_n), pixel_y = y_o+rand(-y_n, y_n), time = speed, easing = ELASTIC_EASING|EASE_IN)
@@ -173,7 +173,7 @@ Can look good elsewhere as well.*/
 
 
 
-/mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
+/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
@@ -237,7 +237,7 @@ Can look good elsewhere as well.*/
 /atom/proc/animation_cancel()
 	animate(src)
 
-/atom/proc/sway_jitter(var/times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
+/atom/proc/sway_jitter(times = 3, steps = 3, strength = 3, sway = 5)
 	var/sway_dir = 1 //left to right
 	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
 	for(var/i in 1 to steps)

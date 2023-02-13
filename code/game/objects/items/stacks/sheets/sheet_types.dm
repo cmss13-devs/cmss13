@@ -63,7 +63,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	icon_state = "sheet-metal"
 	item_state = "sheet-metal"
 	matter = list("metal" = 3750)
-	throwforce = 14.0
+	throwforce = 14
 	flags_atom = FPRINT|CONDUCT
 	amount_sprites = TRUE
 	sheettype = "metal"
@@ -109,13 +109,13 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
 	matter = list("metal" = 3750)
-	throwforce = 15.0
+	throwforce = 15
 	flags_atom = FPRINT|CONDUCT
 	amount_sprites = TRUE
 	sheettype = "plasteel"
 	stack_id = "plasteel"
 
-/obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/plasteel/New(loc, amount=null)
 	recipes = plasteel_recipes
 	return ..()
 
@@ -178,7 +178,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 
-/obj/item/stack/sheet/wood/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/wood/New(loc, amount=null)
 	recipes = wood_recipes
 	return ..()
 
@@ -271,6 +271,8 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		null, \
 		new/datum/stack_recipe("empty box of MREs", /obj/item/ammo_box/magazine/misc/mre/empty), \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
+		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
+		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
 		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
@@ -293,7 +295,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	sheettype = "cardboard"
 	stack_id = "cardboard"
 
-/obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/cardboard/New(loc, amount=null)
 	recipes = cardboard_recipes
 	return ..()
 
@@ -319,6 +321,7 @@ var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"
+	black_market_value = 10
 
 /*
  * Copper
@@ -333,4 +336,5 @@ var/global/list/datum/stack_recipe/copper_recipes = list ( \
 	singular_name = "copper sheet"
 	icon_state = "sheet-copper"
 	sheettype = "copper"
+	black_market_value = 10
 

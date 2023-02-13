@@ -8,7 +8,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	// So you can't hide it under corpses
 	layer = ABOVE_MOB_LAYER
 	flags_atom = RELAY_CLICK
@@ -45,7 +45,7 @@
 	QDEL_NULL(internal_camera)
 	return ..()
 
-/obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/mortar/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -56,8 +56,8 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M))
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M))
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
@@ -86,7 +86,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/mortar/attack_hand(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -303,7 +303,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
-/obj/structure/mortar/proc/handle_shell(var/turf/target, var/obj/item/mortar_shell/shell)
+/obj/structure/mortar/proc/handle_shell(turf/target, obj/item/mortar_shell/shell)
 	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
 		firing = FALSE
 		return

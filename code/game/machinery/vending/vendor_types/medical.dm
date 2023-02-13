@@ -108,7 +108,7 @@
 				return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/sorted/medical/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
 			if(!allowed(user))
@@ -188,7 +188,7 @@
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
-/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
 		list("Advanced Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
@@ -255,10 +255,10 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
-		)
+	)
 	stack_refill = null
 
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
 	listed_products = list(
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bicaridine Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
@@ -306,10 +306,10 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
 		list("First-Aid Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
@@ -356,7 +356,7 @@
 	chem_refill = null
 	stack_refill = null
 
-/obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
@@ -394,12 +394,12 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
-		/obj/item/stack/medical/ointment
+		/obj/item/stack/medical/ointment,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
@@ -407,11 +407,11 @@
 
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment
+		/obj/item/stack/medical/ointment,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -437,7 +437,7 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 	unacidable = TRUE
@@ -445,7 +445,7 @@
 	wrenchable = FALSE
 	hackable = FALSE
 
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto

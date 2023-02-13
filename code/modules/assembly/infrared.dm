@@ -60,11 +60,11 @@
 	if((!(first) && (secured && (istype(loc, /turf) || (holder && istype(holder.loc, /turf))))))
 		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam((holder ? holder.loc : loc) )
 		I.master = src
-		I.density = 1
+		I.density = TRUE
 		I.setDir(dir)
 		step(I, I.dir)
 		if(I)
-			I.density = 0
+			I.density = FALSE
 			first = I
 			I.vis_spread(visible)
 			spawn(0)
@@ -180,9 +180,9 @@
 	var/obj/effect/beam/i_beam/next = null
 	var/obj/item/device/assembly/infra/master = null
 	var/limit = null
-	var/visible = 0.0
+	var/visible = 0
 	var/left = null
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = NOINTERACT
 
 /obj/effect/beam/i_beam/proc/hit()
@@ -222,13 +222,13 @@
 
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
-	I.density = 1
+	I.density = TRUE
 	I.setDir(dir)
 	step(I, I.dir)
 
 	if(I)
 		if(!(next))
-			I.density = 0
+			I.density = FALSE
 			I.vis_spread(visible)
 			next = I
 			spawn(0)

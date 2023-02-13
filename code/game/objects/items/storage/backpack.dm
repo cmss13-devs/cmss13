@@ -38,11 +38,11 @@
 		return ..()
 	if(!xeno_types || !(target_mob.type in xeno_types))
 		return ..()
-	if(!isXeno(target_mob))
+	if(!isxeno(target_mob))
 		return ..()
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
-	var/mob/living/carbon/Xenomorph/xeno = target_mob
+	var/mob/living/carbon/xenomorph/xeno = target_mob
 	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
@@ -88,7 +88,7 @@
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
@@ -144,7 +144,7 @@
 	..()
 
 //Returns true if the user's id matches the lock's
-/obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
@@ -227,11 +227,41 @@
 	storage_slots = 30
 	max_w_class = SIZE_MASSIVE
 	worn_accessible = TRUE
+	actions_types = list(/datum/action/item_action/specialist/santabag)
 
 /obj/item/storage/backpack/santabag/Initialize()
 	. = ..()
-	for(var/total_storage_slots in 1 to storage_slots)
+	refill_santa_bag()
+
+/obj/item/storage/backpack/santabag/proc/refill_santa_bag(mob/living/user)
+	var/current_items = length(contents)
+	var/total_to_refill = storage_slots - current_items
+	for(var/total_storage_slots in 1 to total_to_refill)
 		new /obj/item/m_gift(src)
+	if(!user)
+		return
+	playsound(user, 'sound/items/jingle_long.wav', 25, TRUE)
+	to_chat(user, SPAN_GREEN("You use the magic of Christmas to refill your gift bag!"))
+
+/obj/item/storage/backpack/santabag/item_action_slot_check(mob/user, slot)
+	if(HAS_TRAIT(user, TRAIT_SANTA)) //Only the Santa himself knows how to use this bag properly.
+		return TRUE
+
+/datum/action/item_action/specialist/santabag/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Refill Gift Bag"
+	action_icon_state = holder?.icon_state
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image(holder?.icon_state, button, action_icon_state)
+
+/datum/action/item_action/specialist/santabag/can_use_action()
+	return TRUE
+
+/datum/action/item_action/specialist/santabag/action_activate()
+	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
+	santa_bag.refill_santa_bag(owner)
+	update_button_icon()
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -242,6 +272,7 @@
 	name = "Giggles von Honkerton"
 	desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank god you're in the Marines now."
 	icon_state = "clownpack"
+	black_market_value = 25
 
 //==========================//COLONY/CIVILIAN PACKS\\================================\\
 
@@ -366,7 +397,7 @@
 	item_state = "marinepack"
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
@@ -374,7 +405,7 @@
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
 	xeno_icon_state = "medicpack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"
@@ -382,7 +413,7 @@
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/satchel/intel
 	name = "\improper USCM lightweight expedition pack"
@@ -432,9 +463,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
+	var/phone_category = PHONE_RTO
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
 
-/datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/rto_pack/use_phone/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Use Phone"
 	button.name = name
@@ -457,8 +491,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	internal_transmitter = new(src)
 	internal_transmitter.relay_obj = src
-	internal_transmitter.phone_category = "RTO"
+	internal_transmitter.phone_category = phone_category
 	internal_transmitter.enabled = FALSE
+	internal_transmitter.network_receive = network_receive
+	internal_transmitter.networks_transmit = networks_transmit
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
@@ -534,22 +570,26 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
+/obj/item/storage/backpack/marine/satchel/rto/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+
 /obj/item/storage/backpack/marine/satchel/rto/small
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
 
 	uniform_restricted = null
+	phone_category = PHONE_MARINE
 
-/obj/item/storage/backpack/marine/satchel/rto/small/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "Marine"
+
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+	phone_category = PHONE_UPP_SOLDIER
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
-
-/obj/item/storage/backpack/marine/satchel/rto/io/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "IO"
+	phone_category = PHONE_IO
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
@@ -618,7 +658,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/backpack/general_belt/dropped(mob/user)
@@ -640,7 +680,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
-	if(ishuman(user) && !isSynth(user))
+	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()
@@ -705,7 +745,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	sparks.start()
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE, var/forced)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
 	if(!istype(H))
 		return FALSE
 
@@ -742,7 +782,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	return COMPONENT_GRENADE_PRIME_CANCEL
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage)
 		return
 	H.allow_gun_usage = TRUE
@@ -750,7 +790,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /datum/action/item_action/specialist/toggle_cloak
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/toggle_cloak/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_cloak/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Cloak"
 	button.name = name
@@ -930,7 +970,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
-		/obj/item/weapon
+		/obj/item/weapon,
 	)
 
 /obj/item/storage/backpack/ivan/Initialize()

@@ -3,8 +3,8 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "glassbox1"
 	desc = "A display case for prized possessions. It taunts you to kick it."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1
@@ -30,7 +30,7 @@
 		occupied = 0
 	return ..()
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	src.healthcheck()
@@ -39,7 +39,7 @@
 /obj/structure/displaycase/proc/healthcheck()
 	if (src.health <= 0)
 		if (!( src.destroyed ))
-			src.density = 0
+			src.density = FALSE
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
 			playsound(src, "windowshatter", 25, 1)

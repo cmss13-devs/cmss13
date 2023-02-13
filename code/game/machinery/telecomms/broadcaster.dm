@@ -12,8 +12,8 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
 	machinetype = 5
@@ -79,11 +79,11 @@
 
 */
 
-/proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
-						var/vmask, var/vmessage, var/obj/item/device/radio/radio,
-						var/message, var/name, var/job, var/realname, var/vname,
-						var/data, var/compression, var/list/level, var/freq, var/verbage = "says",
-						var/datum/language/speaking = null, var/volume = RADIO_VOLUME_QUIET)
+/proc/Broadcast_Message(datum/radio_frequency/connection, mob/M,
+						vmask, vmessage, obj/item/device/radio/radio,
+						message, name, job, realname, vname,
+						data, compression, list/level, freq, verbage = "says",
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq

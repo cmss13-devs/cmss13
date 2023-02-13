@@ -3,8 +3,8 @@
 	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
@@ -18,6 +18,8 @@
 	var/not_damageable = 0
 	var/not_deconstructable = 0
 	var/legacy_full = FALSE //for old fulltile windows
+
+	minimap_color = MINIMAP_FENCE
 
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
@@ -35,19 +37,23 @@
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()
-	density = 0
+	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
 	. = ..()
 
-/obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_icon()
+
+/obj/structure/window/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
-	anchored = 0
+	anchored = FALSE
 
 	if(start_dir)
 		setDir(start_dir)
@@ -111,7 +117,7 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(obj/item/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -170,7 +176,7 @@
 	if(!not_damageable) //Impossible to destroy
 		health = max(0, health - tforce)
 		if(health <= 7 && !reinf && !static_frame)
-			anchored = 0
+			anchored = FALSE
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
 	healthcheck(user = AM.launch_metadata.thrower)
@@ -215,7 +221,7 @@
 
 /obj/structure/window/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
@@ -282,7 +288,7 @@
 		if(!not_damageable) //Impossible to destroy
 			health -= W.force
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
-				anchored = 0
+				anchored = FALSE
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)
@@ -419,7 +425,7 @@
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	basestate = "twindow"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
@@ -497,7 +503,7 @@
 		qdel(WW)
 	. = ..()
 
-/obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window/framed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -602,7 +608,7 @@
 /obj/structure/window/framed/colony/reinforced/tinted
 	name =  "tinted reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
@@ -768,7 +774,7 @@
 
 /obj/structure/window/framed/solaris/reinforced/tinted
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
-	opacity = 1
+	opacity = TRUE
 
 //GREYBOX DEV WINDOWS
 
@@ -828,7 +834,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 	else
@@ -912,7 +918,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 

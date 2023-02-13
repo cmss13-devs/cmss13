@@ -1,5 +1,5 @@
 /mob
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
@@ -65,14 +65,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0.0
-	var/stunned = 0.0
-	var/frozen = 0.0
-	var/knocked_down = 0.0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/frozen = 0
+	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0.0
-	var/slowed = 0.0 // X_SLOW_AMOUNT
-	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
@@ -125,6 +125,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
 	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
@@ -133,7 +134,7 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	var/charges = 0.0
+	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
 	var/overeatduration = 0 // How long this guy is overeating //Carbon
@@ -234,6 +235,9 @@
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
+
 	var/datum/focus
 
 	///the current turf being examined in the stat panel
@@ -249,3 +253,185 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	/// Used for tracking last uses of emotes for cooldown purposes
+	var/list/emotes_used
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE
+
+/mob/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
+	VV_DROPDOWN_OPTION("", "-----MOB-----")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
+	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Give Build Mode")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
+	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop All")
+	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_VERB, "Add Verb")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_VERB, "Remove Verb")
+	VV_DROPDOWN_OPTION(VV_HK_SELECT_EQUIPMENT, "Select Equipment")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_SKILL, "Edit Skills")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_LANGUAGE, "Add Language")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LANGUAGE, "Remove Language")
+	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
+
+/mob/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += "<font size='1'><br><a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
+
+/mob/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_SETMATRIX])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
+			return
+
+		if(!LAZYLEN(usr.client.stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
+			return
+
+		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		base_transform = MX
+		transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			enable_pixel_scaling()
+
+	if(href_list[VV_HK_GIVE_DISEASE])
+		if(!check_rights(R_ADMIN))
+			return
+
+		usr.client.give_disease(src)
+
+	if(href_list[VV_HK_BUILDMODE])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
+			to_chat(usr, "This can only be used on people with +MOD permissions")
+			return
+
+		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")
+		message_staff("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(src)]")
+
+		togglebuildmode(src)
+
+	if(href_list[VV_HK_GIB])
+		if(!check_rights(R_MOD))
+			return
+
+		usr.client.cmd_admin_gib(src)
+
+	if(href_list[VV_HK_DROP_ALL])
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
+
+		if(usr.client)
+			usr.client.cmd_admin_drop_everything(src)
+
+	if(href_list[VV_HK_DIRECT_CONTROL])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(usr.client)
+			usr.client.cmd_assume_direct_control(src)
+
+	if(href_list[VV_HK_ADD_VERB])
+		if(!check_rights(R_DEBUG))
+			return
+
+		var/list/possibleverbs = list()
+		possibleverbs += "Cancel" // One for the top...
+		possibleverbs += typesof(/mob/proc,/mob/verb,/mob/living/proc,/mob/living/verb)
+		switch(type)
+			if(/mob/living/carbon/human)
+				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
+			if(/mob/living/silicon/robot)
+				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
+			if(/mob/living/silicon/ai)
+				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
+		possibleverbs -= verbs
+		possibleverbs += "Cancel" // ...And one for the bottom
+
+		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
+		if(!verb || verb == "Cancel")
+			return
+		else
+			add_verb(src, verb)
+
+	if(href_list[VV_HK_SELECT_EQUIPMENT])
+		if(!check_rights(R_SPAWN))
+			return
+
+		usr.client.cmd_admin_dress(src)
+
+	if(href_list[VV_HK_ADD_LANGUAGE])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
+
+		if(!new_language)
+			return
+
+		if(add_language(new_language))
+			to_chat(usr, "Added [new_language] to [src].")
+		else
+			to_chat(usr, "Mob already knows that language.")
+
+	if(href_list[VV_HK_REMOVE_LANGUAGE])
+		if(!check_rights(R_SPAWN))
+			return
+
+		if(!languages.len)
+			to_chat(usr, "This mob knows no languages.")
+			return
+
+		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", languages)
+
+		if(!rem_language)
+			return
+
+		if(remove_language(rem_language.name))
+			to_chat(usr, "Removed [rem_language] from [src].")
+		else
+			to_chat(usr, "Mob doesn't know that language.")
+
+	if(href_list[VV_HK_REMOVE_VERB])
+		if(!check_rights(R_DEBUG))
+			return
+
+		var/verb = tgui_input_list(usr, "Please choose a verb to remove.","Verbs", verbs)
+
+		if(!verb)
+			return
+		else
+			remove_verb(src, verb)
+
+	if(href_list[VV_HK_REGEN_ICONS])
+		if(!check_rights(R_MOD))
+			return
+
+		src.regenerate_icons()
+

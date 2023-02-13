@@ -1,33 +1,33 @@
 //Xenomorph Hud Test APOPHIS 22MAY2015
-#define isXeno(A) (istype(A, /mob/living/carbon/Xenomorph))
+#define isxeno(A) (istype(A, /mob/living/carbon/xenomorph))
 
-#define isXenoOrHuman(A) (isXeno(A) || ishuman(A))
+#define isxeno_human(A) (isxeno(A) || ishuman(A))
 //ask walter if i should turn into castechecks
-#define isXenoBoiler(A) (istype(A, /mob/living/carbon/Xenomorph/Boiler))
-#define isXenoCarrier(A) (istype(A, /mob/living/carbon/Xenomorph/Carrier))
-#define isXenoCrusher(A) (istype(A, /mob/living/carbon/Xenomorph/Crusher))
-#define isXenoDrone(A) (istype(A, /mob/living/carbon/Xenomorph/Drone))
-#define isXenoHivelord(A) (istype(A, /mob/living/carbon/Xenomorph/Hivelord))
-#define isXenoLurker(A) (istype(A, /mob/living/carbon/Xenomorph/Lurker))
-#define isXenoDefender(A) (istype(A, /mob/living/carbon/Xenomorph/Defender))
-#define isXenoPredalien(A) (istype(A, /mob/living/carbon/Xenomorph/Predalien))
-#define isXenoLarva(A) (istype(A, /mob/living/carbon/Xenomorph/Larva))
-#define isXenoLarvaStrict(A) (isXenoLarva(A) && !istype(A, /mob/living/carbon/Xenomorph/Larva/predalien))
-#define isXenoFacehugger(A) (istype(A, /mob/living/carbon/Xenomorph/Facehugger))
-#define isXenoPraetorian(A) (istype(A, /mob/living/carbon/Xenomorph/Praetorian))
-#define isXenoQueen(A) (istype(A, /mob/living/carbon/Xenomorph/Queen))
-#define isXenoQueenLeadingHive(A) (isXenoQueen(A) && A?:hive?:living_xeno_queen == A)
-#define isXenoRavager(A) (istype(A, /mob/living/carbon/Xenomorph/Ravager))
-#define isXenoRunner(A) (istype(A, /mob/living/carbon/Xenomorph/Runner))
-#define isXenoSentinel(A) (istype(A, /mob/living/carbon/Xenomorph/Sentinel))
-#define isXenoSpitter(A) (istype(A, /mob/living/carbon/Xenomorph/Spitter))
-#define isXenoWarrior(A) (istype(A, /mob/living/carbon/Xenomorph/Warrior))
-#define isXenoBurrower(A) (istype(A, /mob/living/carbon/Xenomorph/Burrower))
+#define isboiler(A) (istype(A, /mob/living/carbon/xenomorph/boiler))
+#define iscarrier(A) (istype(A, /mob/living/carbon/xenomorph/carrier))
+#define iscrusher(A) (istype(A, /mob/living/carbon/xenomorph/crusher))
+#define isdrone(A) (istype(A, /mob/living/carbon/xenomorph/drone))
+#define ishivelord(A) (istype(A, /mob/living/carbon/xenomorph/hivelord))
+#define islurker(A) (istype(A, /mob/living/carbon/xenomorph/lurker))
+#define isdefender(A) (istype(A, /mob/living/carbon/xenomorph/defender))
+#define ispredalien(A) (istype(A, /mob/living/carbon/xenomorph/predalien))
+#define islarva(A) (istype(A, /mob/living/carbon/xenomorph/larva))
+#define ispredalienlarva(A) (istype(A, /mob/living/carbon/xenomorph/larva/predalien))
+#define isfacehugger(A) (istype(A, /mob/living/carbon/xenomorph/facehugger))
+#define ispraetorian(A) (istype(A, /mob/living/carbon/xenomorph/praetorian))
+#define isqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
+#define isravager(A) (istype(A, /mob/living/carbon/xenomorph/ravager))
+#define isrunner(A) (istype(A, /mob/living/carbon/xenomorph/runner))
+#define issentinel(A) (istype(A, /mob/living/carbon/xenomorph/sentinel))
+#define isspitter(A) (istype(A, /mob/living/carbon/xenomorph/spitter))
+#define iswarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
+#define isburrower(A) (istype(A, /mob/living/carbon/xenomorph/burrower))
 
-#define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
+#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
 
-/mob/living/carbon/Xenomorph/proc/can_not_harm(var/mob/living/carbon/C)
-	if(!istype(C))
+/// Returns true/false based on if the xenomorph can harm the passed carbon mob.
+/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
+	if(!istype(attempt_harm_mob))
 		return FALSE
 
 	if(!hive)
@@ -36,21 +36,26 @@
 	if(!hive)
 		return FALSE
 
-	return hive.is_ally(C)
+	return hive.is_ally(attempt_harm_mob)
 
 // need this to set the data for walls/eggs/huggers when they are initialized
-/proc/set_hive_data(var/atom/A, hivenumber)
+/proc/set_hive_data(atom/focused_atom, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if (hive.color)
-		A.color = hive.color
-	A.name = "[lowertext(hive.prefix)][A.name]"
+		focused_atom.color = hive.color
+	focused_atom.name = "[lowertext(hive.prefix)][focused_atom.name]"
 
-/proc/get_xeno_stun_duration(var/mob/A, duration)
-	if(isCarbonSizeXeno(A))
+/proc/get_xeno_stun_duration(mob/stun_mob, duration)
+	if(iscarbonsizexeno(stun_mob))
 		return duration * XVX_STUN_LENGTHMULT
 	return duration
 
-/proc/get_xeno_damage_slash(var/mob/A, damage)
-	if(isCarbonSizeXeno(A))
+/proc/get_xeno_damage_slash(mob/slash_mob, damage)
+	if(iscarbonsizexeno(slash_mob))
 		return damage * XVX_SLASH_DAMAGEMULT
+	return damage
+
+/proc/get_xeno_damage_acid(mob/target_mob, damage)
+	if(isxeno(target_mob))
+		return damage * XVX_ACID_DAMAGEMULT
 	return damage

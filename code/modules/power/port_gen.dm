@@ -7,8 +7,8 @@
 	desc = "A portable generator used for emergency backup power."
 	icon = 'generator.dmi'
 	icon_state = "off"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	directwired = 0
 	var/t_status = 0
 	var/t_per = 5000
@@ -46,8 +46,8 @@ display round(lastgen) and phorontank amount
 	desc = "A portable generator for emergency backup power."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 // directwired = 0
 	use_power = USE_POWER_NONE
 	unslashable = FALSE
@@ -207,7 +207,7 @@ display round(lastgen) and phorontank amount
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
 	explosion(src.loc, 2, 5, 2, -1)
 
-/obj/structure/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
@@ -328,7 +328,7 @@ display round(lastgen) and phorontank amount
 			close_browser(usr, "port_gen")
 			usr.unset_interaction()
 
-/obj/structure/machinery/power/port_gen/pacman/inoperable(var/additional_flags)
+/obj/structure/machinery/power/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power
 
 /obj/structure/machinery/power/port_gen/pacman/super

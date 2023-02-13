@@ -26,6 +26,7 @@
 
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
+	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
 	tgui_open_uis = null
@@ -79,7 +80,13 @@
 
 	mob_panel = new(src)
 
-/mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/proc/create_language_menu()
+	QDEL_NULL(mob_language_menu)
+
+	mob_language_menu = new(src)
+
+
+/mob/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_OTHER
@@ -318,7 +325,7 @@
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
-/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
 	if(!istype(W)) return 0
 
 	for(var/slot in slot_equipment_priority)
@@ -561,7 +568,7 @@ currently only humans get dizzy
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
-/mob/proc/make_dizzy(var/amount)
+/mob/proc/make_dizzy(amount)
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
@@ -593,14 +600,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // jitteriness - copy+paste of dizziness
 
-/mob/proc/make_jittery(var/amount)
+/mob/proc/make_jittery(amount)
 	return
 
 /mob/proc/remove_jittery()
 	jitteriness = 0
 	return
 
-/mob/living/carbon/human/make_jittery(var/amount)
+/mob/living/carbon/human/make_jittery(amount)
 	if(stat == DEAD) return //dead humans can't jitter
 	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
@@ -630,7 +637,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 //handles up-down floaty effect in space
-/mob/proc/make_floating(var/n)
+/mob/proc/make_floating(n)
 
 	floatiness = n
 
@@ -718,7 +725,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir, var/specific_dir)
+/mob/proc/face_dir(ndir, specific_dir)
 	if(!canface()) return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
@@ -734,14 +741,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return TRUE
 
-/mob/proc/set_face_dir(var/newdir)
+/mob/proc/set_face_dir(newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
-		facedir(newdir)
+		face_dir(newdir)
 		return
 
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if (facedir(newdir))
+	else if (face_dir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -772,7 +779,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
@@ -898,13 +905,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
 	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
@@ -933,7 +940,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
 /mob/on_stored_atom_del(atom/movable/AM)
@@ -1042,32 +1049,18 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/get_role_name()
 	return
 
-/mob/get_vv_options()
-	. = ..()
-	. += "<option value>-----MOB-----</option>"
-	. += "<option value='?_src_=vars;mob_player_panel=\ref[src]'>Show player panel</option>"
-	. += "<option value='?_src_=vars;give_disease=\ref[src]'>Give TG-style Disease</option>"
-	. += "<option value='?_src_=vars;godmode=\ref[src]'>Toggle Godmode</option>"
-	. += "<option value='?_src_=vars;build_mode=\ref[src]'>Toggle Build Mode</option>"
-
-	. += "<option value='?_src_=vars;direct_control=\ref[src]'>Assume Direct Control</option>"
-	. += "<option value='?_src_=vars;drop_everything=\ref[src]'>Drop Everything</option>"
-
-	. += "<option value='?_src_=vars;regenerateicons=\ref[src]'>Regenerate Icons</option>"
-	. += "<option value='?_src_=vars;addlanguage=\ref[src]'>Add Language</option>"
-	. += "<option value='?_src_=vars;remlanguage=\ref[src]'>Remove Language</option>"
-	. += "<option value='?_src_=vars;addorgan=\ref[src]'>Add Organ</option>"
-	. += "<option value='?_src_=vars;remorgan=\ref[src]'>Remove Organ</option>"
-	. += "<option value='?_src_=vars;addlimb=\ref[src]'>Add Limb</option>"
-	. += "<option value='?_src_=vars;amplimb=\ref[src]'>Amputate Limb</option>"
-	. += "<option value='?_src_=vars;remlimb=\ref[src]'>Remove Limb</option>"
-
-	. += "<option value='?_src_=vars;fix_nano=\ref[src]'>Fix NanoUI</option>"
-
-	. += "<option value='?_src_=vars;addverb=\ref[src]'>Add Verb</option>"
-	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
-
-	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+/mob/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, stat))
+			if((var_value < CONSCIOUS) || (var_value > DEAD))
+				return FALSE
+			if((stat == DEAD) && ((var_value == CONSCIOUS) || (var_value == UNCONSCIOUS)))
+				GLOB.dead_mob_list -= src
+				GLOB.alive_mob_list += src
+			if(((stat == CONSCIOUS) || (stat == UNCONSCIOUS)) && (var_value == DEAD))
+				GLOB.alive_mob_list -= src
+				GLOB.dead_mob_list += src
+	return ..()
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -1109,3 +1102,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 			client.eye = loc
 
 	return TRUE
+
+/mob/proc/set_stat(new_stat)
+	if(new_stat == stat)
+		return
+	. = stat //old stat
+	stat = new_stat

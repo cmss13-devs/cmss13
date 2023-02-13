@@ -4,7 +4,7 @@
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor"
-	id = 1.0
+	id = 1
 	dir = NORTH
 	unslashable = TRUE
 	health = 0
@@ -43,15 +43,15 @@
 			icon_state = initial(icon_state) + "0"
 			SetOpacity(0)
 			sleep(15)
-			density = 0
+			density = FALSE
 			operating = 0
 
-/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/xenomorph/X)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 
@@ -83,7 +83,7 @@
 	SetOpacity(0)
 	sleep(10)
 	layer = PODDOOR_OPEN_LAYER
-	density = 0
+	density = FALSE
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -100,7 +100,7 @@
 	layer = PODDOOR_CLOSED_LAYER
 	flick(initial(icon_state) + "c1", src)
 	icon_state = initial(icon_state) + "1"
-	density = 1
+	density = TRUE
 	SetOpacity(initial(opacity))
 
 	sleep(10)
@@ -130,9 +130,9 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/open_fully()
-	density = 0
-	f1.density = 0
-	f2.density = 0
+	density = FALSE
+	f1.density = FALSE
+	f2.density = FALSE
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -140,8 +140,8 @@
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
-	f3.density = 0
-	f4.density = 0
+	f3.density = FALSE
+	f4.density = FALSE
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/close()
@@ -157,13 +157,13 @@
 	flick("pdoorc1", src)
 	icon_state = "pdoor1"
 
-	density = 1
-	f1.density = 1
-	f2.density = 1
+	density = TRUE
+	f1.density = TRUE
+	f2.density = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/start_closing()
-	f3.density = 1
-	f4.density = 1
+	f3.density = TRUE
+	f4.density = TRUE
 	..()
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/close_fully()
@@ -277,7 +277,8 @@
 	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE

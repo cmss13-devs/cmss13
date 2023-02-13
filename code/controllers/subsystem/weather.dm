@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(weather)
 	else
 		curr_master_turf_overlay.icon_state = ""
 
-/datum/controller/subsystem/weather/proc/force_weather_holder(var/weather_holder)
+/datum/controller/subsystem/weather/proc/force_weather_holder(weather_holder)
 	if(weather_holder)
 		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
 		if(ispath(weather_holder))
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(weather)
 	name = "weather vfx holder"
 	icon = 'icons/effects/weather.dmi'
 	invisibility = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WEATHER_LAYER
 
 /obj/effect/weather_vfx_holder/rain

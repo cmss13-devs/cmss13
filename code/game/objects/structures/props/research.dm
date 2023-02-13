@@ -1,8 +1,8 @@
 /obj/structure/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/structures/machinery/research.dmi'
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	var/list/parts_to_build
 
@@ -173,8 +173,8 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
@@ -184,8 +184,8 @@
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100

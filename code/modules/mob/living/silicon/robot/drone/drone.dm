@@ -10,7 +10,7 @@
 	gender = NEUTER
 	braintype = "Robot"
 	lawupdate = 0
-	density = 1
+	density = TRUE
 	req_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_RESEARCH)
 	integrated_light_power = 2
 	local_transmit = 1
@@ -37,7 +37,6 @@
 
 
 	add_verb(src, /mob/living/proc/hide)
-	add_language(LANGUAGE_DRONE, 1)
 
 	if(camera && ("Robots" in camera.network))
 		camera.network.Add("Engineering")
@@ -78,7 +77,7 @@
 	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weyland-Yutani Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
 	update_icons()
 
-/mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/silicon/robot/drone/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
@@ -127,7 +126,7 @@
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = health
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = health - (getBruteLoss() + getFireLoss())
 	return
@@ -145,7 +144,7 @@
 	..()
 
 //DRONE MOVEMENT.
-/mob/living/silicon/robot/drone/Process_Spaceslipping(var/prob_slip)
+/mob/living/silicon/robot/drone/Process_Spaceslipping(prob_slip)
 	//TODO: Consider making a magboot item for drones to equip. ~Z
 	return 0
 
@@ -162,7 +161,7 @@
 		if(jobban_isbanned(O, "Cyborg"))
 			continue
 
-/mob/living/silicon/robot/drone/proc/question(var/client/C)
+/mob/living/silicon/robot/drone/proc/question(client/C)
 	spawn(0)
 		if(!C || jobban_isbanned(C,"Cyborg")) return
 		var/response = alert(C, "Someone is attempting to reboot a maintenance drone. Would you like to play as one?", "Maintenance drone reboot", "Yes", "No", "Never for this round.")
@@ -171,7 +170,7 @@
 		else if(response == "Yes")
 			transfer_personality(C)
 
-/mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
+/mob/living/silicon/robot/drone/proc/transfer_personality(client/player)
 
 	if(!player) return
 	player.change_view(world_view_size)

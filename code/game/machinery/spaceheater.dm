@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "sheater0"
 	anchored = FALSE
-	density = 0
+	density = FALSE
 	var/obj/item/cell/cell
 	var/on = 0
 	var/open = 0
@@ -18,6 +18,11 @@
 	cell = new (src)
 	cell.charge += 500
 	update_icon()
+
+/obj/structure/machinery/space_heater/Destroy()
+	QDEL_NULL(cell)
+	. = ..()
+
 
 /obj/structure/machinery/space_heater/update_icon()
 	overlays.Cut()

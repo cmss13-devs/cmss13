@@ -1,8 +1,8 @@
 /obj/structure/sign
 	icon = 'icons/obj/structures/props/decals.dmi'
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
@@ -113,9 +113,9 @@
 	name = "sign"
 	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 
 /obj/structure/sign/safety/airlock
 	name = "airlock semiotic"
@@ -568,7 +568,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Captain may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 
 /obj/structure/sign/prop1

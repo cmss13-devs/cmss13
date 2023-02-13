@@ -7,8 +7,8 @@
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	matter = list("metal" = 1850)
 	level = 2
 	var/ptype = 0
@@ -92,7 +92,7 @@
 
 	// hide called by levelupdate if turf intact status changes
 	// change visibility status and force update of icon
-/obj/structure/disposalconstruct/hide(var/intact)
+/obj/structure/disposalconstruct/hide(intact)
 	invisibility = (intact && level==1) ? 101: 0 // hide if floor is intact
 	update()
 
@@ -174,7 +174,7 @@
 // wrench: (un)anchor
 // weldingtool: convert to real pipe
 
-/obj/structure/disposalconstruct/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalconstruct/attackby(obj/item/I, mob/user)
 	var/nicetype = "pipe"
 	var/ispipe = 0 // Indicates if we should change the level of this pipe
 	src.add_fingerprint(user)
@@ -207,12 +207,12 @@
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(anchored)
-			anchored = 0
+			anchored = FALSE
 			if(ispipe)
 				level = 2
-				density = 0
+				density = FALSE
 			else
-				density = 1
+				density = TRUE
 			to_chat(user, "You detach the [nicetype] from the underfloor.")
 		else
 			if(ptype>=6 && ptype <= 8) // Disposal or outlet
@@ -233,12 +233,12 @@
 						to_chat(user, "There is already a [nicetype] at that location.")
 						return
 
-			anchored = 1
+			anchored = TRUE
 			if(ispipe)
 				level = 1 // We don't want disposal bins to disappear under the floors
-				density = 0
+				density = FALSE
 			else
-				density = 1 // We don't want disposal bins or outlets to go density 0
+				density = TRUE // We don't want disposal bins or outlets to go density 0
 			to_chat(user, "You attach the [nicetype] to the underfloor.")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		update()

@@ -11,7 +11,8 @@
 			set_species()
 
 	create_reagents(1000)
-	change_real_name(src, "unknown")
+	if(!real_name || !name)
+		change_real_name(src, "unknown")
 
 	. = ..()
 
@@ -20,7 +21,7 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-/mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_HUMAN
@@ -51,7 +52,6 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -121,7 +121,7 @@
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
-/mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -303,7 +303,7 @@
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(var/atom/movable/AM)
+/mob/living/carbon/human/Crossed(atom/movable/AM)
 	if(istype(AM, /obj/structure/machinery/bot/mulebot))
 		var/obj/structure/machinery/bot/mulebot/MB = AM
 		MB.RunOver(src)
@@ -315,7 +315,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.assignment
@@ -327,7 +327,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.registered_name
@@ -337,7 +337,7 @@
 
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
-/mob/living/carbon/human/proc/get_paygrade(size = 1)
+/mob/living/carbon/human/get_paygrade(size = 1)
 	var/obj/item/card/id/id = wear_id
 	if(!species || !istype(id))
 		return ""
@@ -365,7 +365,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
@@ -380,7 +380,7 @@
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) return FALSE //godmode
 
 	if(!def_zone)
@@ -900,23 +900,24 @@
 /mob/living/carbon/human/get_eye_protection()
 	var/number = 0
 
-	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
+	if(species && !species.has_organ["eyes"])
+		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
-		return 2
+		return EYE_PROTECTION_WELDING
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)
 		if(I.cut_away)
-			return 2
+			return EYE_PROTECTION_WELDING
 		if(I.robotic == ORGAN_ROBOT)
-			return 2
+			return EYE_PROTECTION_WELDING
 	else
-		return 2
+		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
 		var/obj/item/clothing/C = head
 		number += C.eye_protection
-	if(istype(wear_mask))
+	if(istype(wear_mask, /obj/item/clothing))
 		number += wear_mask.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
@@ -924,7 +925,7 @@
 	return number
 
 
-/mob/living/carbon/human/abiotic(var/full_body = 0)
+/mob/living/carbon/human/abiotic(full_body = 0)
 	if(full_body && ((l_hand && !( l_hand.flags_item & ITEM_ABSTRACT)) || (r_hand && !( r_hand.flags_item & ITEM_ABSTRACT)) || (back || wear_mask || head || shoes || w_uniform || wear_suit || glasses || wear_l_ear || wear_r_ear || gloves)))
 		return TRUE
 
@@ -949,7 +950,7 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
@@ -1007,7 +1008,7 @@
 	//Remove any larva.
 	var/obj/item/alien_embryo/A = locate() in src
 	if(A)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in src //if the larva was fully grown, ready to burst.
 		if(L)
 			qdel(L)
 		qdel(A)
@@ -1027,7 +1028,7 @@
 		L.damage = L.min_bruised_damage
 
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(class = 0)
 	var/list/visible_objects = list()
 	for(var/obj/item/W in embedded_items)
 		if(!istype(W, /obj/item/shard/shrapnel))
@@ -1151,7 +1152,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1174,19 +1175,19 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 		if(oldspecies.weed_slowdown_mult != 1)
-			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
+			UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
+		RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)
-		//Apply colour.
+		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))
@@ -1281,7 +1282,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
+/mob/living/carbon/human/proc/locate_squad_leader(tracker_setting = TRACKER_SL)
 	if(!hud_used)
 		return
 
@@ -1416,35 +1417,6 @@
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
 
-/mob/living/carbon/human/verb/checkSkills()
-	set name = "Check Skills"
-	set category = "IC"
-	set src = usr
-
-	var/dat
-	if(!usr || !usr.skills)
-		dat += "NULL<br/>"
-	else
-		dat += "CQC: [usr.skills.get_skill_level(SKILL_CQC)]<br/>"
-		dat += "Melee: [usr.skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
-		dat += "Firearms: [usr.skills.get_skill_level(SKILL_FIREARMS)]<br/>"
-		dat += "Specialist Weapons: [usr.skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
-		dat += "Endurance: [usr.skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
-		dat += "Engineer: [usr.skills.get_skill_level(SKILL_ENGINEER)]<br/>"
-		dat += "Construction: [usr.skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
-		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
-		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
-		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
-		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
-		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
-		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
-		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
-		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
-		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"
-		dat += "Domestics: [usr.skills.get_skill_level(SKILL_DOMESTIC)]<br/>"
-
-	show_browser(src, dat, "Skills", "checkskills")
-
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"
 	set category = "Object"
@@ -1564,7 +1536,7 @@
 
 
 /mob/living/carbon/human/resist_fire()
-	if(isYautja(src))
+	if(isyautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
@@ -1588,7 +1560,7 @@
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
-	if(isYautja(src))
+	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
@@ -1679,15 +1651,61 @@
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 
-/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority)
+/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
 
-/mob/living/carbon/human/get_vv_options()
+/mob/living/carbon/human/verb/pose()
+	set name = "Set Pose"
+	set desc = "Sets a description which will be shown when someone examines you."
+	set category = "IC"
+
+	pose =  strip_html(input(usr, "This is [src]. \He is...", "Pose", null)  as text)
+
+/mob/living/carbon/human/verb/set_flavor()
+	set name = "Set Flavour Text"
+	set desc = "Sets an extended description of your character's features."
+	set category = "IC"
+
+	var/HTML = "<body>"
+	HTML += "<tt>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
+	HTML += TextPreview(flavor_texts["general"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=head'>Head:</a> "
+	HTML += TextPreview(flavor_texts["head"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=face'>Face:</a> "
+	HTML += TextPreview(flavor_texts["face"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=eyes'>Eyes:</a> "
+	HTML += TextPreview(flavor_texts["eyes"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=torso'>Body:</a> "
+	HTML += TextPreview(flavor_texts["torso"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=arms'>Arms:</a> "
+	HTML += TextPreview(flavor_texts["arms"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=hands'>Hands:</a> "
+	HTML += TextPreview(flavor_texts["hands"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=legs'>Legs:</a> "
+	HTML += TextPreview(flavor_texts["legs"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
+	HTML += TextPreview(flavor_texts["feet"])
+	HTML += "<br>"
+	HTML += "<hr />"
+	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML += "<tt>"
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
 	. = ..()
-	. += "<option value>-----HUMAN-----</option>"
-	. += "<option value='?_src_=vars;edit_skill=\ref[src]'>Edit Skills</option>"
-	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
-	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"

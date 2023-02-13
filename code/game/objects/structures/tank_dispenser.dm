@@ -3,8 +3,8 @@
 	desc = "A simple yet bulky storage device for gas tanks. Has room for up to ten oxygen tanks, and ten phoron tanks."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "dispenser"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/oxygentanks = 10
 	var/phorontanks = 10
 	var/list/oxytanks = list() //sorry for the similar var names
@@ -78,10 +78,10 @@
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(anchored)
 			to_chat(user, SPAN_NOTICE("You lean down and unwrench [src]."))
-			anchored = 0
+			anchored = FALSE
 		else
 			to_chat(user, SPAN_NOTICE("You wrench [src] into place."))
-			anchored = 1
+			anchored = TRUE
 		return
 */
 /obj/structure/dispenser/Topic(href, href_list)

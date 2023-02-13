@@ -2,7 +2,7 @@
 /obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipment and weapons installed on the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
 	var/faction = FACTION_MARINE
@@ -40,9 +40,9 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/frame/matrix))
-		var/obj/item/frame/matrix/MATRIX = W
+/obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
+	if(istype(W, /obj/item/frame/matrix_frame))
+		var/obj/item/frame/matrix_frame/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
@@ -54,7 +54,7 @@
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
-/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(FM))
@@ -576,20 +576,25 @@
 		if(!selected_cas_signal)
 			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
 			return
-
-		selected_cas_signal.linked_cam.view_directly(usr)
+		if(selected_cas_signal && selected_cas_signal.linked_cam)
+			selected_cas_signal.linked_cam.view_directly(usr)
+		else
+			to_chat(usr, SPAN_WARNING("Error!"))
+			return
 		give_action(usr, /datum/action/human_action/cancel_view)
 		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from_view))
 		RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(remove_from_view))
 		firemission_envelope.apply_upgrade(usr)
-		to_chat(usr, "You peek through the guidance camera.")
+		to_chat(usr, SPAN_NOTICE("You peek through the guidance camera."))
 
 	ui_interact(usr)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view()
-	UnregisterSignal(usr, COMSIG_MOB_RESET_VIEW)
-	selected_cas_signal.linked_cam.remove_from_view(usr)
-	firemission_envelope.remove_upgrades(usr)
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(user, COMSIG_MOB_RESISTED)
+	if(selected_cas_signal && selected_cas_signal.linked_cam)
+		selected_cas_signal.linked_cam.remove_from_view(user)
+	firemission_envelope.remove_upgrades(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0

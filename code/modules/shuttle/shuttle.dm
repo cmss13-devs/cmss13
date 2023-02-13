@@ -279,6 +279,10 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
+/// Called when a new shuttle arrives
+/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	return
+
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	return
@@ -974,12 +978,12 @@
 
 /obj/docking_port/mobile/proc/can_move_topic(mob/user)
 	if(mode == SHUTTLE_RECHARGING)
-		to_chat(user, "<span class='warning'>The engines are not ready to use yet!</span>")
+		to_chat(user, SPAN_WARNING("The engines are not ready to use yet!"))
 		return FALSE
 	if(launch_status == ENDGAME_LAUNCHED)
-		to_chat(user, "<span class='warning'>You've already escaped. Never going back to that place again!</span>")
+		to_chat(user, SPAN_WARNING("You've already escaped. Never going back to that place again!"))
 		return FALSE
 	if(mode != SHUTTLE_IDLE)
-		to_chat(user, "<span class='warning'>Shuttle already in transit.</span>")
+		to_chat(user, SPAN_WARNING("Shuttle already in transit."))
 		return FALSE
 	return TRUE

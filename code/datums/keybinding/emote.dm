@@ -6,14 +6,16 @@
 
 /datum/keybinding/emote/proc/link_to_emote(datum/emote/faketype)
 	hotkey_keys = list()
-	classic_keys = list("F4")
+	classic_keys = list()
+
 	emote_key = initial(faketype.key)
 	name = initial(faketype.key)
 	full_name = capitalize(initial(faketype.key))
 	description = "Do the emote '*[emote_key]'"
+	category = initial(faketype.keybind_category)
 
 /datum/keybinding/emote/down(client/user)
 	. = ..()
 	if(.)
 		return
-	return user.mob.emote(emote_key, intentional=TRUE)
+	return user.mob.emote(emote_key, intentional = TRUE)

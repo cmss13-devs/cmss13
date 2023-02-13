@@ -14,8 +14,8 @@
 	desc = "A large cabinet with drawers."
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "filingcabinet"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	wrenchable = TRUE
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
 

@@ -1739,7 +1739,7 @@
 /area/varadero/interior/oob)
 "bvS" = (
 /obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -4275,7 +4275,7 @@
 /area/varadero/interior/administration)
 "dKm" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -4850,9 +4850,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "epm" = (
-/obj/item/weapon/gun/energy/rxfm5_eva{
-	icon_state = "rxfm5_eva_stripped"
-	},
+/obj/item/weapon/gun/energy/rxfm5_eva,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "epr" = (
@@ -10518,9 +10516,7 @@
 	pixel_x = -14;
 	pixel_y = 2
 	},
-/obj/item/weapon/gun/energy/rxfm5_eva{
-	icon_state = "rxfm5_eva_stripped"
-	},
+/obj/item/weapon/gun/energy/rxfm5_eva,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -15208,6 +15204,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"mYR" = (
+/obj/item/facepaint/sunscreen_stick,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz1_near)
 "mYW" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -17403,6 +17405,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/security)
 "oRj" = (
+/obj/item/facepaint/sunscreen_stick,
 /turf/open/gm/dirt{
 	icon_state = "desert0"
 	},
@@ -41672,7 +41675,7 @@ ijy
 ijy
 xBb
 gnC
-asx
+mYR
 asx
 saj
 ijy

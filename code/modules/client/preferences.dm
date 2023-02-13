@@ -5,7 +5,7 @@
 #define MENU_YAUTJA "yautja"
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
-#define MENU_ERT "ert"
+#define MENU_SPECIAL "special"
 
 var/list/preferences_datums = list()
 
@@ -35,6 +35,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
 	var/savefile_version = 0
 
+	var/tgui_say = TRUE
+	var/tgui_say_light_mode = FALSE
+
 	//non-preference stuff
 	var/warns = 0
 	var/muted = 0
@@ -49,6 +52,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/ooccolor
 	var/be_special = 0 // Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
+	var/auto_fit_viewport = FALSE
 	var/UI_style = "midnight"
 	var/toggles_admin = TOGGLES_ADMIN_DEFAULT
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
@@ -97,6 +101,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
 	var/sea_path = "Command"
+
+	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -237,7 +243,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	real_name = random_name(gender)
 	gear = list()
 
-/datum/preferences/proc/client_reconnected(var/client/C)
+/datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
 
@@ -293,7 +299,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
-	dat += "<a[current_menu == MENU_ERT ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_ERT]\"><b>ERT</b></a>"
+	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a>"
 	dat += "</center>"
 
 	dat += "<hr>"
@@ -527,6 +533,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+			dat += "<br><b>Say Input Style:</b> <a href='?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
+			dat += "<b>Say Input Color:</b> <a href='?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
 			dat += "<h2><b><u>UI Customization:</u></b></h2>"
 			dat += "<b>Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
@@ -556,6 +564,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -597,7 +606,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
-		if(MENU_ERT) //wart
+		if(MENU_SPECIAL) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
 			dat += "<b>Spawn as Leader:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_LEADER]'><b>[toggles_ert & PLAY_LEADER ? "Yes" : "No"]</b></a><br>"
@@ -608,6 +617,11 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Preferred Survivor Variant:</b> <a href='?_src_=prefs;preference=preferred_survivor_variant;task=input'><b>[preferred_survivor_variant]</b></a>"
 			dat += "</div>"
 
 	dat += "</div></body>"
@@ -791,7 +805,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/datum/job/J = RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
 
-/datum/preferences/proc/get_job_priority(var/J)
+/datum/preferences/proc/get_job_priority(J)
 	if(!J)
 		return FALSE
 
@@ -800,7 +814,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	return job_preference_list[J]
 
-/datum/preferences/proc/SetJobDepartment(var/datum/job/J, var/priority)
+/datum/preferences/proc/SetJobDepartment(datum/job/J, priority)
 	if(!J || priority < 0 || priority > 4)
 		return FALSE
 
@@ -1324,7 +1338,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("hair")
 					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
+						var/new_hair = input(user, "Choose your character's hair color:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
@@ -1348,7 +1362,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("grad")
 					if(species == "Human")
-						var/new_hair_grad = input(user, "Choose your character's hair gradient colour:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
+						var/new_hair_grad = input(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
 						if(new_hair_grad)
 							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
 							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
@@ -1382,7 +1396,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						body_type = new_body_type
 
 				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
+					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
 					if(new_facial)
 						r_facial = hex2num(copytext(new_facial, 2, 4))
 						g_facial = hex2num(copytext(new_facial, 4, 6))
@@ -1429,7 +1443,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
+					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1437,7 +1451,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
+					var/new_ooccolor = input(user, "Choose your OOC color:", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
@@ -1544,6 +1558,12 @@ var/const/MAX_SAVE_SLOTS = 10
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
 					religion = choice
+
+				if("preferred_survivor_variant")
+					var/new_preferred_survivor_variant = tgui_input_list(user, "Choose your preferred survivor variant:", "Preferred Survivor Variant", SURVIVOR_VARIANT_LIST)
+					if(!new_preferred_survivor_variant)
+						return
+					preferred_survivor_variant = new_preferred_survivor_variant
 		else
 			switch(href_list["preference"])
 				if("publicity")
@@ -1590,7 +1610,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("hide_statusbar")
 					hide_statusbar = !hide_statusbar
 					if(hide_statusbar)
-						winset(owner, "atom_name", "text=\"\"")
+						winset(owner, "mapwindow.status_bar", "text=\"\"")
+						winset(owner, "mapwindow.status_bar", "is-visible=false")
+					else
+						winset(owner, "mapwindow.status_bar", "is-visible=true")
+
 
 				if("no_radials_preference")
 					no_radials_preference = !no_radials_preference
@@ -1679,6 +1703,37 @@ var/const/MAX_SAVE_SLOTS = 10
 					if (!plane_master)
 						return
 					plane_master.backdrop(user?.client.mob)
+
+				if("auto_fit_viewport")
+					auto_fit_viewport = !auto_fit_viewport
+					if(auto_fit_viewport && owner)
+						owner.fit_viewport()
+
+				if("inputstyle")
+					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+					if(!result)
+						return
+					if(result == "Legacy")
+						tgui_say = FALSE
+						to_chat(user, SPAN_NOTICE("You're now using the old interface."))
+					else
+						tgui_say = TRUE
+						to_chat(user, SPAN_NOTICE("You're now using the new interface."))
+					user?.client.update_special_keybinds()
+					save_preferences()
+
+				if("inputcolor")
+					var/result = tgui_alert(user, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+					if(!result)
+						return
+					if(result == "Lightmode")
+						tgui_say_light_mode = TRUE
+						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
+					else
+						tgui_say_light_mode = FALSE
+						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
+					user?.client.tgui_say?.load()
+					save_preferences()
 
 				if("save")
 					if(save_cooldown > world.time)
@@ -2080,4 +2135,4 @@ var/const/MAX_SAVE_SLOTS = 10
 #undef MENU_YAUTJA
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
-#undef MENU_ERT
+#undef MENU_SPECIAL

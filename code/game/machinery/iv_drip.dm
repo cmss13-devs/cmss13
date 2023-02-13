@@ -1,8 +1,8 @@
 /obj/structure/machinery/iv_drip
 	name = "\improper IV drip"
 	icon = 'icons/obj/structures/machinery/iv_drip.dmi'
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	drag_delay = 1
 
 	var/mob/living/carbon/human/attached = null

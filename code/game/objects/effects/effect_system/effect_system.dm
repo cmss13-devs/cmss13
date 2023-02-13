@@ -46,7 +46,7 @@ steam.start() -- spawns the effect
 	name = "steam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
-	density = 0
+	density = FALSE
 
 /datum/effect_system/steam_spread
 
@@ -85,9 +85,9 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/sparks
 	name = "sparks"
 	icon_state = "sparks"
-	var/amount = 6.0
-	anchored = 1.0
-	mouse_opacity = 0
+	var/amount = 6
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/particle_effect/sparks/New()
 	..()
@@ -147,7 +147,7 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/ion_trails
 	name = "ion trails"
 	icon_state = "ion_trails"
-	anchored = 1.0
+	anchored = TRUE
 
 /datum/effect_system/ion_trail_follow
 	var/turf/oldposition

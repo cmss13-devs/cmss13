@@ -2,7 +2,7 @@
 ////////// BASE RAV POWERS
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
@@ -26,7 +26,7 @@
 	else
 		actual_empower(xeno)
 
-/datum/action/xeno_action/onclick/empower/proc/actual_empower(var/mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/onclick/empower/proc/actual_empower(mob/living/carbon/xenomorph/xeno)
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
@@ -62,7 +62,7 @@
 	if(empower_targets >= behavior.super_empower_threshold) //you go in deep you reap the rewards
 		super_empower(xeno, empower_targets, behavior)
 
-/datum/action/xeno_action/onclick/empower/proc/super_empower(var/mob/living/carbon/Xenomorph/xeno, var/empower_targets, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno, empower_targets, datum/behavior_delegate/ravager_base/behavior)
 	xeno.visible_message(SPAN_DANGER("[xeno] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
 	xeno.emote("roar")
 
@@ -76,7 +76,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 3.5 SECONDS)
 
-/datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
 	xeno.remove_filter("empower_rage")
 	var/color = "#FF0000"
@@ -86,14 +86,14 @@
 
 	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
-/datum/action/xeno_action/onclick/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0
 
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Your glow fades away, the power leaving your body!"))
 	xeno.remove_filter("empower_rage")
 
 /datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!activated_once)
 		return
@@ -105,7 +105,7 @@
 	if(!activated_once)
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	actual_empower(xeno)
 
 /datum/action/xeno_action/onclick/empower/action_cooldown_check()
@@ -120,7 +120,7 @@
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/L)
 
 	var/mob/living/carbon/human/H = L
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X.mutation_type != RAVAGER_NORMAL)
 		return
 	var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
@@ -142,29 +142,29 @@
 
 	H.throw_atom(T, BD.fling_distance, SPEED_VERY_FAST, X, TRUE)
 
-/datum/action/xeno_action/activable/scissor_cut/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/ravager_user = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!ravager_user.check_state())
 		return
 
 	// Determine whether or not we should daze here
 	var/should_sslow = FALSE
-	if(X.mutation_type != RAVAGER_NORMAL)
+	if(ravager_user.mutation_type != RAVAGER_NORMAL)
 		return
-	var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
-	if(BD.empower_targets >= BD.super_empower_threshold)
+	var/datum/behavior_delegate/ravager_base/ravager_delegate = ravager_user.behavior_delegate
+	if(ravager_delegate.empower_targets >= ravager_delegate.super_empower_threshold)
 		should_sslow = TRUE
 
 	// Get line of turfs
 	var/list/turf/target_turfs = list()
 
-	var/facing = Get_Compass_Dir(X, A)
-	var/turf/T = X.loc
-	var/turf/temp = X.loc
+	var/facing = Get_Compass_Dir(ravager_user, target_atom)
+	var/turf/T = ravager_user.loc
+	var/turf/temp = ravager_user.loc
 	var/list/telegraph_atom_list = list()
 
 	for (var/x in 0 to 3)
@@ -179,13 +179,13 @@
 			break
 
 		var/blocked = FALSE
-		for(var/obj/structure/S in temp)
-			if(istype(S, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = S
+		for(var/obj/structure/structure_blocker in temp)
+			if(istype(structure_blocker, /obj/structure/window/framed))
+				var/obj/structure/window/framed/W = structure_blocker
 				if(!W.unslashable)
 					W.deconstruct(disassembled = FALSE)
 
-			if(S.opacity)
+			if(structure_blocker.opacity)
 				blocked = TRUE
 				break
 		if(blocked)
@@ -197,25 +197,27 @@
 
 	// Extract our 'optimal' turf, if it exists
 	if (target_turfs.len >= 2)
-		X.animation_attack_on(target_turfs[target_turfs.len], 15)
+		ravager_user.animation_attack_on(target_turfs[target_turfs.len], 15)
 
-	X.emote("roar")
-	X.visible_message(SPAN_XENODANGER("[X] sweeps its claws through the area in front of it!"), SPAN_XENODANGER("You sweep your claws through the area in front of you!"))
+	// Hmm today I will kill a marine while looking away from them
+	ravager_user.face_atom(target_atom)
+	ravager_user.emote("roar")
+	ravager_user.visible_message(SPAN_XENODANGER("[ravager_user] sweeps its claws through the area in front of it!"), SPAN_XENODANGER("You sweep your claws through the area in front of you!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/turf/target_turf in target_turfs)
-		for (var/mob/living/carbon/C in target_turf)
-			if (C.stat == DEAD)
+		for (var/mob/living/carbon/carbon_target in target_turf)
+			if (carbon_target.stat == DEAD)
 				continue
 
-			if(X.can_not_harm(C))
+			if(ravager_user.can_not_harm(carbon_target))
 				continue
-			X.flick_attack_overlay(C, "slash")
-			C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
-			playsound(get_turf(C), "alien_claw_flesh", 30, TRUE)
+			ravager_user.flick_attack_overlay(carbon_target, "slash")
+			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
 			if(should_sslow)
-				new /datum/effects/xeno_slow/superslow/(C, X, ttl = superslow_duration)
+				new /datum/effects/xeno_slow/superslow/(carbon_target, ravager_user, ttl = superslow_duration)
 
 	apply_cooldown()
 	..()
@@ -226,7 +228,7 @@
 ///////////// BERSERKER POWERS
 
 /datum/action/xeno_action/onclick/apprehend/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -258,14 +260,14 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (istype(X))
 		X.speed_modifier += speed_buff
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your speed wane!"))
 
 /datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 	var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
@@ -279,7 +281,7 @@
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
@@ -287,7 +289,7 @@
 	if (!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if (!isxeno_human(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -327,9 +329,8 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
-	X.gain_health(heal_amount)
-
-
+	if(!X.on_fire)
+		X.gain_health(heal_amount)
 
 	// Fling
 	var/facing = get_dir(X, H)
@@ -353,7 +354,7 @@
 	return
 
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check() || xeno.action_busy)
 		return
@@ -386,7 +387,7 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
 
 	xeno.frozen = 1
-	xeno.anchored = 1
+	xeno.anchored = TRUE
 	xeno.update_canmove()
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -394,7 +395,7 @@
 		xeno.spin_circle()
 
 		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isXenoOrHuman(human) || xeno.can_not_harm(human))
+			if(!isxeno_human(human) || xeno.can_not_harm(human))
 				continue
 
 			if (human.stat == DEAD)
@@ -427,10 +428,11 @@
 		valid_count++
 
 	// This is the heal
-	xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+	if(!xeno.on_fire)
+		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	xeno.frozen = 0
-	xeno.anchored = 0
+	xeno.anchored = FALSE
 	xeno.update_canmove()
 
 	..()
@@ -440,7 +442,7 @@
 ////////// HEDGEHOG POWERS
 
 /datum/action/xeno_action/onclick/spike_shield/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -477,7 +479,7 @@
 	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
 		return FALSE
 	else if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/Xenomorph/xeno = owner
+		var/mob/living/carbon/xenomorph/xeno = owner
 		if (xeno.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 			return behavior.check_shards(shard_cost)
@@ -485,7 +487,7 @@
 	return FALSE
 
 /datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!shield_active)
 		return
@@ -504,7 +506,7 @@
 	return
 
 /datum/action/xeno_action/activable/rav_spikes/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
@@ -539,7 +541,7 @@
 	if(!owner)
 		return FALSE
 	if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/Xenomorph/X = owner
+		var/mob/living/carbon/xenomorph/X = owner
 		if(!istype(X))
 			return FALSE
 		if (X.mutation_type == RAVAGER_HEDGEHOG)
@@ -551,7 +553,7 @@
 		return FALSE
 
 /datum/action/xeno_action/onclick/spike_shed/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
@@ -578,7 +580,7 @@
 
 /datum/action/xeno_action/onclick/spike_shed/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/Xenomorph/xeno = owner
+		var/mob/living/carbon/xenomorph/xeno = owner
 		if (xeno.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 			return behavior.check_shards(shard_cost)

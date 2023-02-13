@@ -209,7 +209,7 @@
 	speech_verb = "sings"
 	ask_verb = "sings"
 	exclaim_verb = "sings"
-	colour = "alien"
+	color = "alien"
 	key = "0"
 	flags = RESTRICTED|HIVEMIND
 
@@ -243,6 +243,6 @@
 				speaker_mask = speaker.name
 			if(death)
 				var/area/A = get_area(speaker)
-				to_chat(player, "<span class='[colour]'>[message_start] has [SPAN_BOLD("perished")][A? " at [sanitize_area(A.name)]":""]!</i></span>")
+				to_chat(player, "<span class='[color]'>[message_start] has [SPAN_BOLD("perished")][A? " at [sanitize_area(A.name)]":""]!</i></span>")
 			else
-				to_chat(player, "<span class='[colour]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start] [message_body]</span>")
+				to_chat(player, "<span class='[color]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start] [message_body]</span>")

@@ -32,7 +32,7 @@
 		return FALSE
 	return B.host.say_understands(other, speaking)
 
-/mob/living/captive_brain/emote(act, m_type = 1, message = null, force)
+/mob/living/captive_brain/emote(act, m_type = 1, message = null, intentional = FALSE, force_silence = FALSE)
 	return
 
 /mob/living/captive_brain/resist()

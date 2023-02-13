@@ -364,6 +364,9 @@ Parameters are passed from New.
 		if(layer_override < TURF_LAYER)
 			T.plane = FLOOR_PLANE
 
+		//I HATE CATWALKS I HATE CATWALKS I HATE CATWALKS
+		T.appearance_flags = KEEP_TOGETHER
+
 	clones_t.Add(src)
 	src.clone = T
 

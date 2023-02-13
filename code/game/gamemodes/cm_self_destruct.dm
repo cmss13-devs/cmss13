@@ -100,10 +100,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if(is_mainship_level(SD.z))
 				SD.set_picture("evac")
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
-			P.toggle_ready()
+			if(shuttle_controller)
+				P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
+				P.toggle_ready()
 		activate_lifeboats()
 		process_evacuation()
+		unlock_evac_shutters()
 		return TRUE
 
 /datum/authority/branch/evacuation/proc/cancel_evacuation() //Cancels the evac procedure. Useful if admins do not want the marines leaving.
@@ -185,6 +187,11 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.send_to_infinite_transit()
+
+/datum/authority/branch/evacuation/proc/unlock_evac_shutters()
+	for(var/obj/structure/machinery/door/poddoor/shutters/almayer/EvacShutter in machines)
+		if(findtext(EvacShutter.id, "EVACUATION"))
+			EvacShutter.open()
 
 //=========================================================================================
 //=========================================================================================

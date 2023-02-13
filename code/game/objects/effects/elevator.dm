@@ -29,6 +29,8 @@
 	icon_state = "enter_darkness"
 	plane = FLOOR_PLANE
 	layer = UNDER_TURF_LAYER -0.01
+	appearance_flags = TILE_BOUND
+
 
 /obj/effect/elevator/supply/multi/Initialize(mapload, ...)
 	. = ..()

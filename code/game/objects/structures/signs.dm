@@ -93,6 +93,9 @@
 	icon_state = "deck1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/structure/sign/deck_number/create_clone_movable(shift_x, shift_y, layer_override)
+	return //NO CLONES OF THESE REEEEEE
+
 //============//
 //  Banners  //
 //==========//

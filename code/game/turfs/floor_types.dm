@@ -269,7 +269,7 @@
 	var/is_bottom_of_shaft = FALSE
 
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
-	if(AM == src || istype(AM, /obj/docking_port/stationary/vehicle_elevator) || istype(AM, /obj/structure) ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
+	if(AM == src || istype(AM, /obj/docking_port/stationary/vehicle_elevator) || istype(AM, /obj/structure) ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone) || istype(AM, /obj/effect/elevator/animation_overlay))
 		return
 	. = ..()
 
@@ -277,6 +277,7 @@
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
 		//also that the fake zlevels of the shipmap are 101 tiles apart
+		message_admins("[AM] ---> [AM.type]")
 		var/turf/fallonto_turf = get_turf(src)
 		var/area/my_area = get_area(fallonto_turf)
 		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))

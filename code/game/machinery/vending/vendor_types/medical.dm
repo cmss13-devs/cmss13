@@ -4,7 +4,7 @@
 	name = "medical supplies link port"
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
-	icon_state = "medlink"
+	icon_state = "medlink_unclamped"
 	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE
@@ -14,6 +14,33 @@
 
 /obj/structure/medical_supply_link/ex_act(severity, direction)
 	return FALSE
+
+/obj/structure/medical_supply_link/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(clamp))
+	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(unclamp))
+	update_icon()
+
+/obj/structure/medical_supply_link/deconstruct(disassembled)
+	UnregisterSignal(src, COMSIG_STRUCTURE_WRENCHED)
+	UnregisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED)
+	return ..()
+
+/obj/structure/medical_supply_link/proc/clamp()
+	flick("medlink_clamping", src)
+	sleep(2.6 SECONDS)
+	update_icon()
+
+/obj/structure/medical_supply_link/proc/unclamp()
+	flick("medlink_unclamping", src)
+	sleep(2.6 SECONDS)
+	update_icon()
+
+/obj/structure/medical_supply_link/update_icon()
+	if(locate(/obj/structure/machinery/cm_vending/sorted/medical)) in src.loc
+		icon_state = "medlink_clamped"
+	else
+		icon_state = "medlink_unclamped"
 
 //------------SORTED MEDICAL VENDORS---------------
 

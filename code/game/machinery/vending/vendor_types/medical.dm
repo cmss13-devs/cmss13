@@ -17,8 +17,8 @@
 
 /obj/structure/medical_supply_link/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(clamp))
-	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(unclamp))
+	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
+	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
 	update_icon()
 
 /obj/structure/medical_supply_link/deconstruct(disassembled)
@@ -26,12 +26,12 @@
 	UnregisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED)
 	return ..()
 
-/obj/structure/medical_supply_link/proc/clamp()
+/obj/structure/medical_supply_link/proc/do_clamp_animation()
 	flick("medlink_clamping", src)
 	sleep(2.6 SECONDS)
 	update_icon()
 
-/obj/structure/medical_supply_link/proc/unclamp()
+/obj/structure/medical_supply_link/proc/do_unclamp_animation()
 	flick("medlink_unclamping", src)
 	sleep(2.6 SECONDS)
 	update_icon()

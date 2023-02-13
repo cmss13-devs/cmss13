@@ -2744,16 +2744,17 @@
 /datum/ammo/xeno/acid/marking/on_hit_mob(mob/Target, obj/item/projectile/P)
 	. = ..()
 	Target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
-	for(var/mob/living/carbon/Xenomorph/X in range(5, Target))
+	for(var/mob/living/carbon/xenomorph/X in range(5, Target))
 
 		var/overshield_amount = 100
 		var/shield_duration = 30 SECONDS
 		var/shield_decay = 10
+		var/hivenumber = XENO_HIVE_NORMAL
 
 		if (!istype(X) || !X.check_state())
 			break
 
-		if(X.stat == DEAD)
+		if (X.hivenumber != hivenumber || X.stat == DEAD)
 			continue
 
 		to_chat(X, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits the target!"))

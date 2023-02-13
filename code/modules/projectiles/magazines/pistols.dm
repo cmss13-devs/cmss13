@@ -6,6 +6,7 @@
 	name = "\improper M4A3 magazine (9mm)"
 	desc = "A pistol magazine."
 	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m4a3"
 	max_rounds = 9
 	w_class = SIZE_SMALL
@@ -151,6 +152,7 @@
 
 	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
@@ -183,6 +185,7 @@
 	name = "\improper PK-9 magazine (.380)"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = ".380"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "pk-9"
 	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/pistol/c99
@@ -199,6 +202,7 @@
 	name = "\improper KT-42 magazine (.44)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".44"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "kt42"
 	max_rounds = 16
 	gun_type = /obj/item/weapon/gun/pistol/kt42
@@ -211,7 +215,8 @@
 	desc = "A surprisingly small magazine, holding .22 bullets. No Kolibri, but it's getting there."
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".22"
-	icon_state = "m4a3" //PLACEHOLDER
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "holdout"
 	max_rounds = 5
 	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/holdout
@@ -223,7 +228,8 @@
 	desc = "A small M43 magazine storing 7 9mm bullets. How is it even this small?"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9mm"
-	icon_state = "m4a3"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon_state = "m4a3" // placeholder
 	max_rounds = 7
 	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/m43pistol
@@ -238,6 +244,7 @@
 	name = "\improper MK-45 Automagnum magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/highpower
 	caliber = ".45"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "highpower"
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower
@@ -257,6 +264,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper Auto-9 magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "88m4" //PLACEHOLDER
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/pistol/auto9
@@ -269,6 +277,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper CHIMP70 magazine (.70M)"
 	default_ammo = /datum/ammo/bullet/pistol/mankey
 	caliber = ".70M"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	icon_state = "c70" //PLACEHOLDER
 
 	matter = list("metal" = 3000)
@@ -282,6 +291,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper SU-6 Smartpistol magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/smart
 	caliber = ".45"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "smartpistol"
 	max_rounds = 15
 	gun_type = /obj/item/weapon/gun/pistol/smart
@@ -293,6 +303,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper CZ-81 20-round magazine (.32ACP)"
 	desc = "A .32ACP caliber magazine for the CZ-81."
 	caliber = ".32ACP"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20

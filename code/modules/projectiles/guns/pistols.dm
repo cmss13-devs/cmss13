@@ -264,7 +264,7 @@
 /obj/item/weapon/gun/pistol/c99
 	name = "\improper Korovin PK-9 pistol"
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "pk9"
 	item_state = "pk9"
 	inherent_traits = list(TRAIT_GUN_SILENCED)

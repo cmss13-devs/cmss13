@@ -1,0 +1,4 @@
+author: "BKryth"
+delete-after: True
+changes:
+  - refactor: "moved the code for sentry laptop's table placement to a parent object so it can be used by other objects."

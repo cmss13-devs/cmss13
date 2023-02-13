@@ -2745,10 +2745,6 @@
 	. = ..()
 	Target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
 	for(var/mob/living/carbon/xenomorph/X in range(5, Target))
-
-		var/overshield_amount = 100
-		var/shield_duration = 30 SECONDS
-		var/shield_decay = 10
 		var/hivenumber = XENO_HIVE_NORMAL
 
 		if (!istype(X) || !X.check_state())
@@ -2758,7 +2754,7 @@
 			continue
 
 		to_chat(X, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits the target!"))
-		X.add_xeno_shield(overshield_amount*1, XENO_SHIELD_SOURCE_MARKER, duration = shield_duration, decay_amount_per_second = shield_decay)
+		X.gain_health(30)
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"

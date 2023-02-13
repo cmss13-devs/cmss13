@@ -38930,12 +38930,6 @@
 	icon_state = "greencorner"
 	},
 /area/desert_dam/building/substation/west)
-"cnl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Telecommunications";
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/substation/west)
 "cnp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -63966,6 +63960,14 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"fFw" = (
+/obj/structure/prop/dam/boulder/boulder2{
+	desc = "A large rock. It looks very hard to get around."
+	},
+/turf/open/desert/rock/deep{
+	icon_state = "rock3"
+	},
+/area/desert_dam/interior/caves/temple)
 "fHg" = (
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
@@ -64463,12 +64465,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
-"hdF" = (
-/obj/structure/prop/dam/large_boulder/boulder2,
-/turf/open/desert/rock/deep{
-	icon_state = "rock3"
-	},
-/area/desert_dam/interior/caves/temple)
 "het" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
@@ -73414,14 +73410,14 @@ cgm
 cgm
 cgm
 cgm
-cnl
+cpS
 cgm
 cmm
 cmm
 cmm
 cmm
 cgm
-cnl
+cpS
 cgm
 cgm
 cgm
@@ -124803,7 +124799,7 @@ dTs
 aBL
 aBL
 ayH
-hdF
+ayH
 qJU
 aAv
 aCk
@@ -125037,7 +125033,7 @@ aBL
 axw
 xmH
 ayH
-ayH
+fFw
 dTs
 dTs
 aBE
@@ -125508,8 +125504,8 @@ mHf
 dTs
 dTs
 rvd
+ayH
 trZ
-dTs
 dTs
 dTs
 dTs
@@ -125742,8 +125738,8 @@ aBS
 aCk
 aBS
 ayH
+ayH
 aBL
-dTs
 dTs
 dTs
 aBL
@@ -125975,9 +125971,9 @@ ayH
 aBV
 aBU
 aCk
+ayH
 nFh
 aBL
-dTs
 dTs
 dTs
 aBL
@@ -126209,8 +126205,8 @@ dTs
 aBL
 aBL
 aCk
+aCk
 aBL
-dTs
 dTs
 dTs
 dTs

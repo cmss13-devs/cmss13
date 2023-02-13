@@ -21,7 +21,7 @@
 	if(. == FALSE)
 		return
 
-	var/mob/living/carbon/Xenomorph/Spitter/MarkerStrain = Marker.xeno
+	var/mob/living/carbon/xenomorph/spitter/MarkerStrain = Marker.xeno
 	MarkerStrain.mutation_type = SPITTER_MARKER
 	MarkerStrain.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/marking]
 	MarkerStrain.viewsize = 16

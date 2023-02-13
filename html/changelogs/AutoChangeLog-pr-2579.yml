@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes unnamed doors on colonies."
+  - bugfix: "Fixes duplicate definitions from #2164"

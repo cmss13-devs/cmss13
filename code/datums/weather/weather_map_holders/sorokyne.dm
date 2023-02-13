@@ -9,10 +9,10 @@
 	potential_weather_events = list(
 		/datum/weather_event/snow,
 		/datum/weather_event/snowstorm,
-		/datum/weather_event/blizzard
+		/datum/weather_event/blizzard,
 	)
 
-/datum/weather_ss_map_holder/sorokyne/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/sorokyne/should_affect_area(area/A)
 	return (A.temperature <= SOROKYNE_TEMPERATURE)
 
 /datum/weather_ss_map_holder/sorokyne/should_start_event()

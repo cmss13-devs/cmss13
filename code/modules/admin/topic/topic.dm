@@ -204,31 +204,31 @@
 		var/mob/transformed
 		var/hivenumber = XENO_HIVE_NORMAL
 
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/X = M
 			hivenumber = X.hivenumber
 
 		switch(href_list["simplemake"])
 			if("observer") transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
 
-			if("larva") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Larva , null, null, delmob )
-			if("facehugger") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Facehugger , null, null, delmob )
-			if("defender") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Defender, null, null, delmob )
-			if("warrior") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Warrior, null, null, delmob )
-			if("runner") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Runner , null, null, delmob )
-			if("drone") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Drone , null, null, delmob )
-			if("sentinel") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Sentinel , null, null, delmob )
-			if("lurker") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Lurker , null, null, delmob )
-			if("carrier") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Carrier , null, null, delmob )
-			if("hivelord") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Hivelord , null, null, delmob )
-			if("praetorian") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Praetorian , null, null, delmob )
-			if("ravager") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager , null, null, delmob )
-			if("spitter") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Spitter , null, null, delmob )
-			if("boiler") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Boiler , null, null, delmob )
-			if("burrower") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
-			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Crusher , null, null, delmob )
-			if("queen") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
-			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
+			if("larva") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/larva , null, null, delmob )
+			if("facehugger") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/facehugger , null, null, delmob )
+			if("defender") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
+			if("warrior") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
+			if("runner") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
+			if("drone") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/drone , null, null, delmob )
+			if("sentinel") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/sentinel , null, null, delmob )
+			if("lurker") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/lurker , null, null, delmob )
+			if("carrier") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/carrier , null, null, delmob )
+			if("hivelord") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/hivelord , null, null, delmob )
+			if("praetorian") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/praetorian , null, null, delmob )
+			if("ravager") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/ravager , null, null, delmob )
+			if("spitter") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/spitter , null, null, delmob )
+			if("boiler") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/boiler , null, null, delmob )
+			if("burrower") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/burrower , null, null, delmob )
+			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
+			if("queen") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
+			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
 
 			if("human") transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey") transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
@@ -245,8 +245,8 @@
 			if("parrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
 			if("polyparrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
 
-		if(isXeno(transformed) && hivenumber)
-			var/mob/living/carbon/Xenomorph/X = transformed
+		if(isxeno(transformed) && hivenumber)
+			var/mob/living/carbon/xenomorph/X = transformed
 			X.set_hive_and_update(hivenumber)
 
 	/////////////////////////////////////new ban stuff
@@ -316,7 +316,7 @@
 		var/mins = 0
 		if(minutes > CMinutes)
 			mins = minutes - CMinutes
-		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
+		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 		if(!mins) return
 		mins = min(525599,mins)
 		minutes = CMinutes + mins
@@ -536,7 +536,7 @@
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 		var/mob_key = M.ckey
-		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
+		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
 		if(!mins)
 			return
 		if(mins >= 525600) mins = 525599
@@ -577,8 +577,8 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
 			return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoresetname"])
-		if(!isXeno(X))
+		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
+		if(!isxeno(X))
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
@@ -605,7 +605,7 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
 			return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenobanname"])
+		var/mob/living/carbon/xenomorph/X = locate(href_list["xenobanname"])
 		var/mob/M = locate(href_list["xenobanname"])
 
 		if(ismob(M) && X.client && X.client.xeno_name_ban)
@@ -622,7 +622,7 @@
 			return
 
 
-		if(!isXeno(X))
+		if(!isxeno(X))
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
@@ -857,7 +857,7 @@
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech) return
-		M.custom_emote(1, speech, TRUE)
+		M.manual_emote(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
 
@@ -1558,11 +1558,11 @@
 				where = "onfloor"
 
 		if (where == "inmarked" )
-			if (!marked_datums.len)
+			if (!marked_datum)
 				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
-				var/datum/D = input_marked_datum(marked_datums)
+				var/datum/D = marked_datum
 				if(!D)
 					return
 
@@ -1579,7 +1579,7 @@
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
 			if ("inmarked")
-				var/datum/D = input_marked_datum(marked_datums)
+				var/datum/D = marked_datum
 				if(!D)
 					to_chat(usr, "Invalid marked datum. Abandoning.")
 					return
@@ -1765,6 +1765,35 @@
 		destroy_cancel = 1
 		return
 
+	if(href_list["tag_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_tag = locate(href_list["tag_datum"])
+		if(!datum_to_tag)
+			return
+		return add_tagged_datum(datum_to_tag)
+
+	if(href_list["del_tag"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_remove = locate(href_list["del_tag"])
+		if(!datum_to_remove)
+			return
+		return remove_tagged_datum(datum_to_remove)
+
+	if(href_list["show_tags"])
+		if(!check_rights(R_ADMIN))
+			return
+		return display_tags()
+
+	if(href_list["mark_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_mark = locate(href_list["mark_datum"])
+		if(!datum_to_mark)
+			return
+		return usr.client?.mark_datum(datum_to_mark)
+
 	if(href_list["force_event"])
 		if(!check_rights(R_EVENT))
 			return
@@ -1801,7 +1830,7 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_staff("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/generate_job_ban_list(var/mob/M, var/datum/entity/player/P, var/list/roles, var/department, var/color = "ccccff")
+/datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""
@@ -1827,7 +1856,7 @@
 	dat += "</tr></table>"
 	return dat
 
-/datum/admins/proc/get_job_titles_from_list(var/list/roles)
+/datum/admins/proc/get_job_titles_from_list(list/roles)
 	var/list/temp = list()
 	for(var/jobPos in roles)
 		if(!jobPos)

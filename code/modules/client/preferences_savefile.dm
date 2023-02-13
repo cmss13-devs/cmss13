@@ -507,6 +507,8 @@
 	gear = sanitize_list(gear)
 
 	traits = sanitize_list(traits)
+	read_traits = FALSE
+	trait_points = initial(trait_points)
 
 	//if(!skin_style) skin_style = "Default"
 

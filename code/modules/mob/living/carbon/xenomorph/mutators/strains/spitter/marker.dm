@@ -10,7 +10,7 @@
 		/datum/action/xeno_action/activable/spray_acid/spitter,
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/onclick/toggle_long_range/marker
+		/datum/action/xeno_action/onclick/toggle_long_range/marker,
 	)
 	keystone = TRUE
 

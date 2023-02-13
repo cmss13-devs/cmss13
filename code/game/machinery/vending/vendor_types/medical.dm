@@ -37,7 +37,7 @@
 	update_icon()
 
 /obj/structure/medical_supply_link/update_icon()
-	if(locate(/obj/structure/machinery/cm_vending/sorted/medical)) in src.loc
+	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in src.loc)
 		icon_state = "medlink_clamped"
 	else
 		icon_state = "medlink_unclamped"

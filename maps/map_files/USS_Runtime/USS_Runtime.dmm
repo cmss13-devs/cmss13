@@ -43,10 +43,6 @@
 	icon_state = "plating"
 	},
 /area/event)
-"m" = (
-/obj/effect/landmark/ammo_box_spawner,
-/turf/closed/wall/r_wall/bunker,
-/area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
 /turf/open/floor/almayer{
@@ -95,10 +91,6 @@
 	icon_state = "plating"
 	},
 /area/event)
-"y" = (
-/obj/effect/landmark/ammo_spawner,
-/turf/closed/wall/r_wall/bunker,
-/area/event)
 "z" = (
 /obj/effect/landmark/start/pilot,
 /turf/open/floor/almayer{
@@ -135,12 +127,6 @@
 	icon_state = "plating"
 	},
 /area/event)
-"H" = (
-/obj/structure/machinery/cm_vending/clothing/super_snowflake,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
 "I" = (
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/almayer{
@@ -158,10 +144,6 @@
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event)
-"M" = (
-/obj/effect/landmark/gun_spawner,
-/turf/closed/wall/r_wall/bunker,
 /area/event)
 "N" = (
 /obj/effect/landmark/start/nurse,
@@ -207,14 +189,14 @@
 /area/event)
 
 (1,1,1) = {"
-M
 a
 a
 a
-y
 a
 a
-m
+a
+a
+a
 a
 a
 a
@@ -392,14 +374,14 @@ b
 b
 b
 b
-H
-H
-H
-H
-H
-H
-H
-H
+b
+b
+b
+b
+b
+b
+b
+b
 b
 b
 a

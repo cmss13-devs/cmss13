@@ -197,6 +197,11 @@
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
+//-- structure traits --
+// TABLE TRAITS
+/// If the table is being flipped, prevent any changes that will mess with adjacency handling
+#define TRAIT_TABLE_FLIPPING "t_table_flipping"
+
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_YAUTJA_TECH,
@@ -263,6 +268,9 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
 	),
+	/obj/structure/surface/table = list(
+		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,
+	)
 ))
 
 /// value -> trait name, generated on use from trait_by_type global
@@ -304,6 +312,9 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+//-- structure traits --
+///Status trait coming from being flipped or unflipped.
+#define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"

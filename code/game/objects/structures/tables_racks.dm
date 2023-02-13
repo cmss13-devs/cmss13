@@ -69,7 +69,7 @@
 	if(!location) location = src //location arg is used to correctly update neighbour tables when deleting a table.
 	for(var/direction in CARDINAL_ALL_DIRS)
 		var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, get_step(location,direction))
-		if(T)
+		if(T && !HAS_TRAIT(T, TRAIT_TABLE_FLIPPING))
 			T.update_icon()
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
@@ -404,10 +404,12 @@
 
 /obj/structure/surface/table/proc/flip(direction)
 	if(world.time < flip_cooldown)
-		return 0
+		return FALSE
 
 	if(!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90)))
-		return 0
+		return FALSE
+
+	ADD_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
 
 	verbs -= /obj/structure/surface/table/verb/do_flip
 	verbs += /obj/structure/surface/table/proc/do_put
@@ -435,9 +437,12 @@
 	update_icon()
 	update_adjacent()
 
-	return 1
+	REMOVE_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
+
+	return TRUE
 
 /obj/structure/surface/table/proc/unflip()
+	ADD_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
 	verbs -= /obj/structure/surface/table/proc/do_put
 	verbs += /obj/structure/surface/table/verb/do_flip
 
@@ -456,7 +461,9 @@
 	update_icon()
 	update_adjacent()
 
-	return 1
+	REMOVE_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
+
+	return TRUE
 
 /*
  * Wooden tables

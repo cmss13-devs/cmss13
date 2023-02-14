@@ -129,7 +129,7 @@ var/list/department_radio_keys = list(
 
 
 		for(var/obj/O as anything in GLOB.special_hearing_objects)
-			if(isInSight(O, T))
+			if(O && isInSight(O, T) || O && O in hearturfs)
 				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

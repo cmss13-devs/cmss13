@@ -947,6 +947,14 @@
 		/obj/item/attachable/attached_gun/grenade/m203,
 	)
 
+/obj/item/weapon/gun/rifle/m16/grenadier/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/grenade/m203/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
 /obj/item/weapon/gun/rifle/m16/xm177
 	name = "\improper XM177E2 carbine"
 	desc = "An old design, essentially a shortened M16A1 with a collapsable stock and M16A2 style foregrip. It is chambered in 5.56x45mm."
@@ -1073,7 +1081,7 @@
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 
-/obj/item/weapon/gun/rifle/m17/xm177/dutch
+/obj/item/weapon/gun/rifle/m16/xm177/dutch
 	name = "\improper Dutch's XM177E2 Carbine"
 	desc = "DESC"
 	desc_lore = "LORE DESC FROM ABOVE XM177"

@@ -1403,8 +1403,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/xm177
 	name = "\improper collapsible M16 stock"
 	desc = "Very illegal in the state of California."
-	icon_state = "m16_stock"
-	attach_icon = "m16_stock_a"
+	icon_state = "m16_stock" //cant be taken off so this doesn't matter.
+	attach_icon = "m16_folding_a"
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
 	collapsible = TRUE
@@ -1412,6 +1412,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
 
 /obj/item/attachable/stock/m16/xm177/New()
 	..()
@@ -1431,10 +1432,10 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
 		recoil_mod = -RECOIL_AMOUNT_TIER_5
 		scatter_mod = -SCATTER_AMOUNT_TIER_9
-		aim_speed_mod = CONFIG_GET(number/slowdown_fast)
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		icon_state = "m41_folding_on"
-		attach_icon = "m41_folding_a_on"
+		icon_state = "m16_stock"
+		attach_icon = "m16_folding_a_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST
 
 	else
@@ -1447,8 +1448,8 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 3
-		icon_state = "m41_folding"
-		attach_icon = "m41_folding_a"
+		icon_state = "m16_stock"
+		attach_icon = "m16_folding_a"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 /obj/item/attachable/stock/ar10
@@ -2049,11 +2050,11 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 10
 	attachment_firing_delay = 30
 
-/obj/item/attachable/attached_gun/grenade/m203
+/obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
 	name = "\improper M203 Grenade Launcher"
 	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade."
 	icon_state = "grenade"
-	attach_icon = "grenade_a"
+	attach_icon = "grenade-m203_a"
 	current_rounds = 0
 	max_rounds = 1
 	max_range = 14

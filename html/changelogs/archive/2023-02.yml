@@ -220,3 +220,10 @@
   realforest2001:
   - bugfix: Fixes unnamed doors on colonies.
   - bugfix: 'Fixes duplicate definitions from #2164'
+2023-02-14:
+  BKryth:
+  - refactor: moved the code for sentry laptop's table placement to a parent object
+      so it can be used by other objects.
+  stanalbatross:
+  - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
+      spiders from the black market

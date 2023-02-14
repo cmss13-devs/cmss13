@@ -16,7 +16,7 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
 		var/turf/T = get_turf(src)
 		var/cutlet_amt = roll(1,4)
-		for(var/i = 0, i < cutlet_amt, i++)
+		for(var/i in 1 to cutlet_amt)
 			new cutlet_type(T)
 		to_chat(user, "You slice up the meat.")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)

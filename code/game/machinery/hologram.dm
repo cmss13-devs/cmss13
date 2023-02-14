@@ -82,6 +82,7 @@ var/const/HOLOPAD_MODE = 0
 
 /obj/structure/machinery/hologram/holopad/Destroy()
 	QDEL_NULL(master)
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	. = ..()
 
 /obj/structure/machinery/hologram/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.

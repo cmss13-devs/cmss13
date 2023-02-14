@@ -40,6 +40,7 @@
 
 /obj/structure/vehicle_locker/Destroy()
 	LAZYREMOVE(GLOB.hearing_objects, src)
+	..()
 
 /obj/structure/vehicle_locker/verb/empty_storage()
 	set name = "Empty"

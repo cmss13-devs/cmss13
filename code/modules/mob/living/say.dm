@@ -124,12 +124,12 @@ var/list/department_radio_keys = list(
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		for(var/obj/O as anything in GLOB.hearing_objects)
-			if(O && O in hearturfs) //It's possible that it could be deleted in the meantime.
+			if(O && (O in hearturfs)) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
 
 
 		for(var/obj/O as anything in GLOB.special_hearing_objects)
-			if(O && isInSight(O, T) || O && O in hearturfs)
+			if(O && isInSight(O, T) || (O && (O in hearturfs)))
 				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

@@ -13,7 +13,7 @@
 	//speech_span = SPAN_TAPE_RECORDER
 	drop_sound = 'sound/handling/taperecorder_drop.ogg'
 	pickup_sound = 'sound/handling/taperecorder_pickup.ogg'
-	flags_atom = FPRINT|CONDUCT|USES_HEARING
+	flags_atom = FPRINT|CONDUCT
 
 	var/recording = FALSE
 	var/playing = FALSE
@@ -39,6 +39,7 @@
 	update_icon()
 
 /obj/item/device/taperecorder/Destroy()
+	LAZYREMOVE(GLOB.special_hearing_objects, src)
 	QDEL_NULL(soundloop)
 	QDEL_NULL(mytape)
 	return ..()
@@ -188,6 +189,7 @@
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 
 	if(mytape.used_capacity < mytape.max_capacity)
+		LAZYADD(GLOB.special_hearing_objects, src)
 		recording = TRUE
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Recording started."))
 		update_sound()
@@ -227,6 +229,7 @@
 	time_warned = FALSE
 	update_icon()
 	update_sound()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"

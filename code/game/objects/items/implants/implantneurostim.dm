@@ -19,7 +19,7 @@
 
 /obj/item/implant/neurostim/Initialize()
 	. = ..()
-	flags_atom |= USES_HEARING
+	LAZYADD(GLOB.hearing_objects, src)
 
 /obj/item/implant/neurostim/hear_talk(mob/M as mob, msg)
 	hear(msg)
@@ -119,6 +119,7 @@
 
 
 /obj/item/implant/neurostim/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 

@@ -22,7 +22,6 @@
 
 /obj/item/device/assembly_holder/Initialize()
 	. = ..()
-	flags_atom |= USES_HEARING
 
 /obj/item/device/assembly_holder/proc/attach_special(obj/O, mob/user)
 	return

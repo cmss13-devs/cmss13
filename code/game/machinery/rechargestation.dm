@@ -19,9 +19,9 @@
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
-	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/recharge_station/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	if(occupant)
 		to_chat(occupant, SPAN_NOTICE(" <B>Critical failure of [name]. Unit ejected.</B>"))
 		go_out()
@@ -87,6 +87,7 @@
 	return 1
 
 /obj/structure/machinery/recharge_station/stop_processing()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	update_icon()
 	..()
 
@@ -212,6 +213,7 @@
 		var/mob/living/silicon/robot/R = M
 		if(QDELETED(R.cell))
 			return FALSE
+	LAZYADD(GLOB.hearing_objects, src)
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE

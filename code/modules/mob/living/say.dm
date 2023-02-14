@@ -97,7 +97,7 @@ var/list/department_radio_keys = list(
 				return 1
 
 		var/list/listening = list()
-		var/list/listening_obj = list()
+		var/list/hearturfs = list()
 
 		if(HAS_TRAIT(src, TRAIT_LISPING))
 			var/old_message = message
@@ -106,28 +106,10 @@ var/list/department_radio_keys = list(
 				verb = "lisps"
 
 		if(T)
-			var/list/hearturfs = list()
 
-			for(var/I in hear(message_range, T))
-				if(istype(I, /mob/))
-					var/mob/M = I
-					listening += M
-					hearturfs += M.locs[1]
-					for(var/obj/O in M.contents)
-						if(O.flags_atom & USES_HEARING)
-							listening_obj |= O
-				else if(istype(I, /obj/))
-					var/obj/O = I
-					hearturfs += O.locs[1]
-					if(O.flags_atom & USES_HEARING)
-						listening_obj |= O
-
-			for(var/mob/M as anything in GLOB.player_list)
-				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
-					listening |= M
-					continue
-				if(M.loc && (M.locs[1] in hearturfs))
-					listening |= M
+			for(var/mob/M in hearers(message_range, T))
+				listening += M
+				hearturfs += M.locs[1]
 
 		var/speech_bubble_test = say_test(message)
 		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
@@ -141,10 +123,14 @@ var/list/department_radio_keys = list(
 
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-		for(var/obj/O as anything in listening_obj)
-			if(O) //It's possible that it could be deleted in the meantime.
+		for(var/obj/O as anything in GLOB.hearing_objects)
+			if(O && O in hearturfs) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
 
+
+		for(var/obj/O as anything in GLOB.special_hearing_objects)
+			if(isInSight(O, T))
+				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)
 	//Rather see stuff twice then not at all.

@@ -17,11 +17,16 @@
 /obj/structure/machinery/medical_pod/bodyscanner/Initialize()
 	. = ..()
 	connect_body_scanconsole()
-	flags_atom |= USES_HEARING
+	
 
 /obj/structure/machinery/medical_pod/bodyscanner/go_in(mob/M, mob/putter)
 	. = ..()
+	LAZYADD(GLOB.hearing_objects, src)
 	playsound(src, 'sound/machines/scanning_pod1.ogg')
+
+/obj/structure/machinery/medical_pod/bodyscanner/go_out()
+	. = ..()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 
 /obj/structure/machinery/medical_pod/bodyscanner/proc/connect_body_scanconsole()
 	if(connected)
@@ -36,6 +41,8 @@
 /obj/structure/machinery/medical_pod/bodyscanner/Destroy()
 	if(occupant)
 		go_out()
+	else
+		LAZYREMOVE(GLOB.hearing_objects, src)
 	if(connected)
 		connected.connected = null
 		QDEL_NULL(connected)

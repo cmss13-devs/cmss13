@@ -375,10 +375,6 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(LAZYISIN(S.hearing_items, src))
-		LAZYREMOVE(S.hearing_items, src)
-		if(!LAZYLEN(S.hearing_items))
-			S.flags_atom &= ~USES_HEARING
 	var/atom/location = S.get_loc_turf()
 	do_drop_animation(location)
 
@@ -386,9 +382,6 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
-	if(src.flags_atom & USES_HEARING)
-		LAZYADD(S.hearing_items, src)
-		S.flags_atom |= USES_HEARING
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)

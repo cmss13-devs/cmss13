@@ -41,6 +41,7 @@
 	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/radio/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	if(radio_connection)
 		radio_connection.remove_listener(src)
 		radio_connection = null
@@ -75,7 +76,7 @@
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
 
-	flags_atom |= USES_HEARING
+	LAZYADD(GLOB.special_hearing_objects, src)
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)

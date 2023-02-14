@@ -36,7 +36,10 @@
 									/obj/item/ammo_magazine/hardpoint,
 									/obj/item/tool/weldpack
 									)
-	flags_atom |= USES_HEARING
+	LAZYADD(GLOB.hearing_objects, src)
+
+/obj/structure/vehicle_locker/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 
 /obj/structure/vehicle_locker/verb/empty_storage()
 	set name = "Empty"

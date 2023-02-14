@@ -17,7 +17,6 @@
 /obj/structure/machinery/sleep_console/Initialize()
 	. = ..()
 	connect_sleeper()
-	flags_atom |= USES_HEARING
 
 /obj/structure/machinery/sleep_console/proc/connect_sleeper()
 	if(connected)
@@ -31,6 +30,7 @@
 
 
 /obj/structure/machinery/sleep_console/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()
@@ -260,6 +260,7 @@
 
 /obj/structure/machinery/medical_pod/sleeper/go_in(mob/M)
 	. = ..()
+	LAZYADD(GLOB.hearing_objects, src)
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, connected)
 
@@ -271,7 +272,7 @@
 		toggle_filter()
 	STOP_PROCESSING(SSobj, src)
 	STOP_PROCESSING(SSobj, connected)
-
+	LAZYREMOVE(GLOB.hearing_objects, src)
 
 
 /obj/structure/machinery/medical_pod/sleeper/proc/connect_sleeper_console()

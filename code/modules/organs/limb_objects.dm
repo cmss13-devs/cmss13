@@ -211,7 +211,11 @@
 
 /obj/item/limb/head/synth/Initialize()
 	. = ..()
-	flags_atom |= USES_HEARING
+	LAZYADD(GLOB.special_hearing_objects, src)
+
+/obj/item/limb/head/synth/Destroy()
+	LAZYREMOVE(GLOB.special_hearing_objects, src)
+	..()
 
 //as ugly and painful as it is to write, the synth can still be revived, and mind needs to be updated if ghosted
 /obj/item/limb/head/synth/transfer_identity(mob/living/carbon/human/H)

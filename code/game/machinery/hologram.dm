@@ -78,7 +78,7 @@ var/const/HOLOPAD_MODE = 0
 
 /obj/structure/machinery/hologram/holopad/Initialize()
 	. = ..()
-	flags_atom |= USES_HEARING
+	LAZYADD(GLOB.hearing_objects, src)
 
 /obj/structure/machinery/hologram/holopad/Destroy()
 	QDEL_NULL(master)

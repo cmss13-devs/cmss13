@@ -36,9 +36,9 @@
 				continue
 			I.forceMove(src)
 	GLOB.closet_list += src
-	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	dump_contents()
 	GLOB.closet_list -= src
 	return ..()
@@ -95,7 +95,7 @@
 		return 0
 
 	dump_contents()
-
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
@@ -115,6 +115,10 @@
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
 		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
+
+	for (var/mob/M in src.loc)
+		LAZYADD(GLOB.hearing_objects, src)
+		break
 
 	opened = 0
 	update_icon()

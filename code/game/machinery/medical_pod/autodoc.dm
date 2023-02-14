@@ -39,13 +39,13 @@
 /obj/structure/machinery/medical_pod/autodoc/Initialize()
 	. = ..()
 	connect_autodoc_console()
-	flags_atom |= USES_HEARING
 
 // --- MEDICAL POD PROC OVERRIDES --- \\
 
 /obj/structure/machinery/medical_pod/autodoc/go_in(mob/M)
 	. = ..()
 	start_processing()
+	LAZYADD(GLOB.hearing_objects, src)
 	if(connected)
 		connected.start_processing()
 
@@ -53,6 +53,7 @@
 	. = ..()
 	surgery_todo_list = list()
 	stop_processing()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	if(connected)
 		connected.stop_processing()
 		connected.process() // one last update
@@ -86,6 +87,7 @@
 		connected.connected = src
 
 /obj/structure/machinery/medical_pod/autodoc/Destroy()
+	LAZYREMOVE(GLOB.hearing_objects, src)
 	if(occupant)
 		occupant.forceMove(loc)
 		occupant = null

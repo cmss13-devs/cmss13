@@ -924,6 +924,57 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/rifle/m16/grenadier
+	name = "\improper M16 grenadier rifle"
+	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time; introduce your little friend."
+	icon_state = "m16g"
+	item_state = "m16"
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
+
+/obj/item/weapon/gun/rifle/m16/xm177
+	name = "\improper XM177E2 carbine"
+	desc = "An old design, essentially a shortened M16A1 with a collapsable stock and M16A2 style foregrip. It is chambered in 5.56x45mm."
+	desc_lore = "placeholder for really autistic and in-depth history of the XM177 because this is my favorite gun of all time"
+	icon_state = "xm177"
+	item_state = "m16"
+
+/obj/item/weapon/gun/rifle/m16/xm177/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m16/xm177/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/m16/xm177/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_SMG
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
 //-------------------------------------------------------
 //AR10 rifle
 //basically an early M16
@@ -1004,40 +1055,43 @@
 //DUTCH'S GEAR
 
 /obj/item/weapon/gun/rifle/m16/dutch
-	name = "\improper Dutch's M16A2"
+	name = "\improper Dutch's M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
-	icon_state = "m16"
-	item_state = "m16"
-	fire_sound = 'sound/weapons/gun_m16.ogg'
-	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
-	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/grip,
-		/obj/item/attachable/gyro,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/bipod,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
-		/obj/item/attachable/burstfire_assembly,
-		/obj/item/attachable/attached_gun/grenade,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
-		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/shotgun,
-	)
-
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 /obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+/obj/item/weapon/gun/rifle/m16/grenadier/dutch
+	name = "\improper Dutch's Grenadier M16A1"
+	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm. This one has an irremovable M203 grenade launched attached, holds one 40mm shell at a time."
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+
+/obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+/obj/item/weapon/gun/rifle/m17/xm177/dutch
+	name = "\improper Dutch's XM177E2 Carbine"
+	desc = "DESC"
+	desc_lore = "LORE DESC FROM ABOVE XM177"
+	icon_state = "xm177"
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+
+/obj/item/weapon/gun/rifle/m16/xm177/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_SMG
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 //-------------------------------------------------------

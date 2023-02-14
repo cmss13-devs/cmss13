@@ -1400,6 +1400,57 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/New()//no stats, its cosmetic
 	..()
 
+/obj/item/attachable/stock/m16/xm177
+	name = "\improper collapsible M16 stock"
+	desc = "Very illegal in the state of California."
+	icon_state = "m16_stock"
+	attach_icon = "m16_stock_a"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_ACTIVATION
+
+/obj/item/attachable/stock/m16/xm177/New()
+	..()
+
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/m16/xm177/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		aim_speed_mod = CONFIG_GET(number/slowdown_fast)
+		hud_offset_mod = 5
+		icon_state = "m41_folding_on"
+		attach_icon = "m41_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "m41_folding"
+		attach_icon = "m41_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
 /obj/item/attachable/stock/ar10
 	name = "\improper AR10 wooden stock"
 	desc = "The spring's in here, don't take it off!"
@@ -1997,6 +2048,16 @@ Defined in conflicts.dm of the #defines folder.
 	max_rounds = 5
 	max_range = 10
 	attachment_firing_delay = 30
+
+/obj/item/attachable/attached_gun/grenade/m203
+	name = "\improper M203 Grenade Launcher"
+	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade."
+	icon_state = "grenade"
+	attach_icon = "grenade_a"
+	current_rounds = 0
+	max_rounds = 1
+	max_range = 14
+	attachment_firing_delay = 5 //one shot, so if you can reload fast you can shoot fast
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

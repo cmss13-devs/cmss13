@@ -3144,7 +3144,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/water_cooler{
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
 	pixel_x = 8;
 	pixel_y = 24
 	},

@@ -1358,7 +1358,6 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	starting_attachment_types = list(/obj/item/attachable/m4ra_barrel)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()

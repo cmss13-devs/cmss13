@@ -34424,7 +34424,7 @@
 	},
 /area/bigredv2/caves/mining)
 "lvh" = (
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
 	dir = 8;

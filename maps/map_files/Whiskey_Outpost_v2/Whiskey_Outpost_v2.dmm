@@ -7347,8 +7347,8 @@
 /area/whiskey_outpost/outside/south/very_far)
 "xB" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/l42a,
-/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/m4ra,
+/obj/item/ammo_box/magazine/m4ra,
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";

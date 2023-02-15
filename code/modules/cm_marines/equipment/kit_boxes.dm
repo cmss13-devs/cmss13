@@ -89,7 +89,7 @@
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/weapon/gun/rifle/m4ra/custom(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -349,16 +349,16 @@
 
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper L42A Sniper Kit"
+	name = "\improper M4RA Sniper Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
-	new /obj/item/weapon/gun/rifle/l42a(src)
+	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/attachable/scope(src)
 	new /obj/item/attachable/suppressor(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
 
 /obj/item/storage/box/kit/heavy_support

@@ -148,7 +148,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 
 /obj/item/ammo_magazine/rifle/m4ra/heap
-	name = "\improper M4RA HEAP (10x24mm)"
+	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
 	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
 	icon_state = "m4ra_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
@@ -301,7 +301,7 @@
 	bonus_overlay = "type71_heap"
 
 //-------------------------------------------------------
-//USCM L42A Battle Rifle
+//L42A Battle Rifle
 
 /obj/item/ammo_magazine/rifle/l42a
 	name = "\improper L42A magazine (10x24mm)"

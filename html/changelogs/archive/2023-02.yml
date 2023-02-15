@@ -227,3 +227,9 @@
   stanalbatross:
   - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
       spiders from the black market
+2023-02-15:
+  Mister-moon1:
+  - qol: Yautja and WJs can now emote without a cooldown being initiated
+  NewyearnewmeUwu:
+  - code_imp: gibbing another human takes an unmodifiable 30 seconds
+  - admin: admins are alerted when a human tries to gib another human

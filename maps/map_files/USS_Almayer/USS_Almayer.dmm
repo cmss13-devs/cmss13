@@ -39556,11 +39556,6 @@
 	dir = 1;
 	tag = "icon-intact-supply (NORTH)"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig";
-	req_one_access_txt = "1;3";
-	req_access = null
-	},
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
 	tag = "icon-silvercorner"
@@ -82259,18 +82254,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"wAo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig";
-	req_one_access_txt = "1;3";
-	req_access = null
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver";
-	tag = "icon-silver (WEST)"
-	},
-/area/almayer/command/cichallway)
 "wAR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -104541,7 +104524,7 @@ qnh
 ewS
 oBA
 aom
-wAo
+aom
 aVb
 aom
 bzR

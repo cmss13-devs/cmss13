@@ -6,7 +6,7 @@
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	unacidable = TRUE
 
 	var/datum/squad/current_squad = null

@@ -152,9 +152,9 @@
 
 		//Human-like, sorta, heard by those who understand humans.
 		var/rendered_a = "<span class='game say'><span class='name'>[name]</span> [verb], <span class='message'>\"[message]\"</span></span>"
-
 		//Speach distorted, heard by those who do not understand AIs.
 		var/message_stars = stars(message)
+
 		var/rendered_b = "<span class='game say'><span class='name'>[voice_name]</span> [verb], <span class='message'>\"[message_stars]\"</span></span>"
 
 		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> [verb], <span class='message'>[message]</span></span></i>")//The AI can "hear" its own message.

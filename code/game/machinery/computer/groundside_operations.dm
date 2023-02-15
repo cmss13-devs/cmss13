@@ -2,7 +2,7 @@
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 

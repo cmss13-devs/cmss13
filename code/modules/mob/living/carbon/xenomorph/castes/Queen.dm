@@ -98,7 +98,7 @@
 	), PROC_REF(stop_watching))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
-	// Default colour
+	// Default color
 	if(Q.hive.color)
 		color = Q.hive.color
 

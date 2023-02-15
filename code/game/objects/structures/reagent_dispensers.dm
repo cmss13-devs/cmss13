@@ -444,6 +444,9 @@
 	anchored = TRUE
 	chemical = "water"
 
+/obj/structure/reagent_dispensers/water_cooler/walk_past
+	density = FALSE
+
 /obj/structure/reagent_dispensers/water_cooler/stacks
 	icon_state = "water_cooler_2"
 

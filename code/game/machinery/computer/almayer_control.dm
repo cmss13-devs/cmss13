@@ -17,7 +17,7 @@
 	name = "almayer control console"
 	desc = "This is used for controlling ship and its related functions."
 	icon_state = "comm_alt"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 

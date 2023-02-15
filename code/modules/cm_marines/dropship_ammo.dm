@@ -402,7 +402,7 @@
 	icon_state = "minirocket_inc"
 	point_cost = 100
 	fire_mission_delay = 3
-	var/chemical = ASSEMBLY_EMPTY
+	var/chemical = null
 	var/state = ASSEMBLY_EMPTY
 
 
@@ -436,14 +436,17 @@
 		if(ASSEMBLY_EMPTY)
 			. += "\nThe recepticle slot is empty"
 
+/obj/structure/ship_ammo/minirocket/smoke/Destroy()
+	chemical = null
+
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
-	if(chemical != ASSEMBLY_EMPTY)
+	if(chemical != null)
 		var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
 		smoke.set_up(chemical,8,0,impact, null)
 		smoke.start()
 		if(!ammo_count && loc)
 			qdel(src)
-	else if (chemical == ASSEMBLY_EMPTY)
+	else if (chemical == null)
 		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
 		S.set_up(1,0,impact,null)
 		S.start()

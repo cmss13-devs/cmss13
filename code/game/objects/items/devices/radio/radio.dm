@@ -41,7 +41,7 @@
 	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/radio/Destroy()
-	LAZYREMOVE(GLOB.hearing_objects, src)
+	LAZYREMOVE(GLOB.special_hearing_objects, src)
 	if(radio_connection)
 		radio_connection.remove_listener(src)
 		radio_connection = null
@@ -76,7 +76,7 @@
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
 
-	LAZYADD(GLOB.special_hearing_objects, src)
+	
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)
@@ -149,6 +149,10 @@
 			. = TRUE
 		if("broadcast")
 			broadcasting = !broadcasting
+			if(broadcasting)
+				LAZYADD(GLOB.special_hearing_objects, src)
+			else
+				LAZYREMOVE(GLOB.special_hearing_objects, src)
 			. = TRUE
 		if("channel")
 			var/channel = params["channel"]

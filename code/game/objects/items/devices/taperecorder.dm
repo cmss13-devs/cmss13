@@ -229,7 +229,7 @@
 	time_warned = FALSE
 	update_icon()
 	update_sound()
-	LAZYREMOVE(GLOB.hearing_objects, src)
+	LAZYREMOVE(GLOB.special_hearing_objects, src)
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"

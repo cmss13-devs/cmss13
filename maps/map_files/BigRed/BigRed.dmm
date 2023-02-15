@@ -9734,10 +9734,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "azo" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "azp" = (
@@ -10115,10 +10112,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/storage)
 "aAq" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
@@ -10390,10 +10384,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aAZ" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aBa" = (
@@ -35744,10 +35735,7 @@
 	},
 /area/bigredv2/caves_east)
 "ohY" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "oip" = (
@@ -36922,10 +36910,7 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "qmm" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "qmG" = (
@@ -37218,10 +37203,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "qSj" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "qTu" = (

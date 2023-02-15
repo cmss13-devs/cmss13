@@ -361,20 +361,14 @@
 	},
 /area/bigredv2/outside/cargo)
 "bf" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/cargo)
 "bg" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -563,10 +557,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -577,10 +568,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -591,10 +579,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -604,10 +589,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"

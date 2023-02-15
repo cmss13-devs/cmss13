@@ -39485,10 +39485,7 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "ejk" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -50834,10 +50831,7 @@
 	},
 /area/corsat/sigma/dorms)
 "mwa" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -51751,10 +51745,7 @@
 	},
 /area/corsat/gamma/residential/laundry)
 "nen" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -53668,10 +53659,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "oAa" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -54934,10 +54922,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "pAo" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -61133,10 +61118,7 @@
 	},
 /area/corsat/sigma/hangar/office)
 "tXq" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -61562,10 +61544,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "uqb" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -65085,10 +65064,7 @@
 	},
 /area/corsat/omega/control)
 "wSz" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},

@@ -22985,17 +22985,11 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bvu" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bvv" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bvw" = (
@@ -23003,10 +22997,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "bvx" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/ferret/right,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)

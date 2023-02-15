@@ -176,10 +176,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aaF" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -189,10 +186,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "aaH" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -4052,10 +4046,7 @@
 	id = "hangar_dam_2";
 	name = "\improper Hangar Shutters"
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -4192,10 +4183,7 @@
 	id = "hangar_dam_2";
 	name = "\improper Hangar Shutters"
 	},
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -13404,24 +13392,15 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "aMo" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/left/alt,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMp" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,1";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/mid/alt,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMq" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,2";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/right/alt,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMr" = (
@@ -14470,19 +14449,13 @@
 	},
 /area/shuttle/tri_trans2/alpha)
 "aPq" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/left/alt,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "aPr" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,1";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/mid/alt,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -14506,19 +14479,13 @@
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_east)
 "aPw" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,2";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/right/alt,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "aPx" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -14720,10 +14687,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aPZ" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -14902,10 +14866,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aQv" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -15902,10 +15863,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/purification)
 "aTq" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aTr" = (
@@ -21571,10 +21529,7 @@
 	},
 /area/desert_dam/building/security/observation)
 "ble" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 1,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blf" = (
@@ -21619,10 +21574,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/lobby)
 "bln" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/mid,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "blp" = (
@@ -22078,10 +22030,7 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bmz" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 3,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/right,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmA" = (
@@ -22091,10 +22040,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmB" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "bmC" = (
@@ -22280,20 +22226,14 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bng" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bnh" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	tag = "icon-W"
@@ -25419,10 +25359,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bxc" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrowncorners3";
@@ -25430,10 +25367,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bxd" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -26151,20 +26085,14 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bzv" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bzw" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -27118,30 +27046,21 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "bCP" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-HD_blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bCQ" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-HD_blue 0,1"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bCR" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-HD_blue 0,2"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -27523,20 +27442,14 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "bEd" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bEe" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -40025,10 +39938,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cqQ" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/left/alt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cqS" = (
@@ -41687,10 +41597,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cvS" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,1";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/mid/alt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cvT" = (
@@ -41770,10 +41677,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cwj" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,2";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/right/alt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cwk" = (
@@ -45775,20 +45679,14 @@
 	},
 /area/desert_dam/building/security/armory)
 "cHs" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 1,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/left,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe"
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "cHt" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/mid,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe"
@@ -45974,10 +45872,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHT" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 3,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/right,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe"
@@ -46620,10 +46515,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
 "cJS" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 1,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJT" = (
@@ -46635,17 +46527,11 @@
 	},
 /area/desert_dam/exterior/valley/valley_hydro)
 "cJU" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/mid,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJV" = (
-/obj/structure/cargo_container{
-	icon_state = "HD 3,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/hd/right,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cJW" = (
@@ -46686,17 +46572,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cKe" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/left/alt,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cKf" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,1";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/mid/alt,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cKg" = (
@@ -46712,10 +46592,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "cKh" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_green 0,2";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/trijent/right/alt,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate";

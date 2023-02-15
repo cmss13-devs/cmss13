@@ -18855,20 +18855,16 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bhT" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_m";
+/obj/structure/cargo_container/lockmart/mid{
 	layer = 3.1;
-	pixel_y = 5;
-	tag = "icon-blue 1,0"
+	pixel_y = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bhU" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_r";
+/obj/structure/cargo_container/lockmart/right{
 	layer = 3.1;
-	pixel_y = 5;
-	tag = "icon-blue 2,0"
+	pixel_y = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -25824,11 +25820,9 @@
 	},
 /area/almayer/shipboard/navigation)
 "bIo" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_l";
+/obj/structure/cargo_container/lockmart/left{
 	layer = 3.1;
-	pixel_y = 5;
-	tag = "icon-blue 0,0"
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

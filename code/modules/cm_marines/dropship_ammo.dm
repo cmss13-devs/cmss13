@@ -400,7 +400,7 @@
 	name = "Smoke mini rocket stack"
 	desc = "A pack of laser guided Smoke mini rockets. To deploy smoke harmlessly, The rocket explodes in mid air seconds before the impact, specially formed charges leads sharpnel upwards away from the target. The smoke contents can be adjusted by research department. Ask them to learn more."
 	icon_state = "minirocket_inc"
-	point_cost = 150
+	point_cost = 100
 	fire_mission_delay = 3
 	var/chemical = null
 	var/state = ASSEMBLY_EMPTY

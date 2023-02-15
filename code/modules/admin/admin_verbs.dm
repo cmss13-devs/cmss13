@@ -363,7 +363,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator) return
-	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
+	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()

@@ -1187,7 +1187,7 @@
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)
-		//Apply colour.
+		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))

@@ -507,8 +507,9 @@
 	gear = sanitize_list(gear)
 
 	traits = sanitize_list(traits)
-
-	//if(!skin_style) skin_style = "Default"
+	read_traits = FALSE
+	trait_points = initial(trait_points)
+	close_browser(owner, "character_traits")
 
 	if(!origin) origin = ORIGIN_USCM
 	if(!faction)  faction =  "None"

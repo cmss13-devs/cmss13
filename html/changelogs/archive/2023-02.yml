@@ -196,3 +196,40 @@
   - admin: mods can now access the view combat logs button
   - ui: changes the main interface a bit
   - bugfix: vendors are a little more responsive now
+2023-02-12:
+  BeagleGaming1:
+  - admin: Added a Queen Mother Subtle Message
+  carlarctg:
+  - code_imp: Cleans up some machinery harddels
+  - bugfix: Fixes Zombie Powder bugging the fuck out by slapping a ton of FAKEDEATH
+      checks everywhere. It now properly shows the holder as dead on HUDs and scans.
+  - bugfix: Fixed an issue in which sometimes qdeleted reagents still procced on life.
+  - bugfix: Fixed examining things changing your direction if you're incapacitated.
+  - bugfix: Added FAKEDEATH to the mob_incapacitated() check.
+2023-02-13:
+  Huffie56:
+  - maptweak: renamed buttons for secures storage to Secure Inner Doors and Secure
+      Outer Doors to make it more clear of what they do.
+  - maptweak: fix a floating apc in armory on standard map
+  NewyearnewmeUwu:
+  - maptweak: changes the default ss13 airlock in big red tcomms to a cm airlock
+  - bugfix: removed the funny misplaced door on shivas
+  - spellcheck: RO sign now says aCO instead of aXO
+  carlarctg:
+  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  realforest2001:
+  - bugfix: Fixes unnamed doors on colonies.
+  - bugfix: 'Fixes duplicate definitions from #2164'
+2023-02-14:
+  BKryth:
+  - refactor: moved the code for sentry laptop's table placement to a parent object
+      so it can be used by other objects.
+  stanalbatross:
+  - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
+      spiders from the black market
+2023-02-15:
+  Mister-moon1:
+  - qol: Yautja and WJs can now emote without a cooldown being initiated
+  NewyearnewmeUwu:
+  - code_imp: gibbing another human takes an unmodifiable 30 seconds
+  - admin: admins are alerted when a human tries to gib another human

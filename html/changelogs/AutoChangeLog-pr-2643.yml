@@ -1,0 +1,5 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - rscadd: "Added several new fortunes to fortune cookies."
+  - code_imp: "Alphabetized the fortunes.txt file for fortune cookie blurbs."

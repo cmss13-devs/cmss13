@@ -32,7 +32,7 @@
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
-		if(ACCESS_MARINE_BRIDGE in ID.access)
+		if(ACCESS_MARINE_COMMAND in ID.access)
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)

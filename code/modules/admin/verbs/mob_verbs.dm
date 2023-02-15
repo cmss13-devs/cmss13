@@ -130,7 +130,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")
+	var/list/subtle_message_options = list("Voice in head", "QM Psychic Whisper", "Weyland-Yutani", "USCM High Command", "Faction-specific")
 
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 
@@ -148,6 +148,12 @@
 	switch(message_option)
 		if("Voice in head")
 			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+
+		if("QM Psychic Whisper")
+			if(isxeno(M))
+				to_chat(M, SPAN_XENONOTICE("You hear the voice of the Queen Mother... [msg]"))
+			else
+				to_chat(M, SPAN_XENONOTICE("You hear a strange, distant, alien voice in your head... [msg]"))
 		else
 			var/mob/living/carbon/human/H = M
 

@@ -129,7 +129,6 @@ var/list/department_radio_keys = list(
 
 
 		for(var/obj/O as anything in GLOB.special_hearing_objects)
-			log_world(O.name)
 			if(!O)
 				LAZYREMOVE(GLOB.special_hearing_objects, O)
 				continue

@@ -50,15 +50,19 @@ type StockItem = {
   colorable: boolean;
 };
 
+const getInventory = (context) => {
+  const { data } = useBackend<VendingData>(context);
+  const { product_records = [], coin_records = [], hidden_records = [] } = data;
+
+  if (data.extended_inventory) {
+    return [...product_records, ...coin_records, ...hidden_records];
+  }
+
+  return [...product_records, ...coin_records];
+};
+
 export const Vending = (props, context) => {
   const { data } = useBackend<VendingData>(context);
-
-  const {
-    product_records = [],
-    coin_records = [],
-    hidden_records = [],
-    stock,
-  } = data;
 
   const [selectedCategory, setSelectedCategory] = useLocalState<string>(
     context,
@@ -66,15 +70,7 @@ export const Vending = (props, context) => {
     Object.keys(data.categories)[0]
   );
 
-  let inventory: ProductRecord[];
-  inventory = [...product_records, ...coin_records];
-  if (data.extended_inventory) {
-    inventory = [...inventory, ...hidden_records];
-  }
-
-  inventory = inventory
-    // Just in case we still have undefined values in the list
-    .filter((item) => !!item);
+  const inventory = getInventory(context);
 
   const filteredCategories = Object.fromEntries(
     Object.entries(data.categories).filter(([categoryName]) => {
@@ -90,16 +86,13 @@ export const Vending = (props, context) => {
 
   return (
     <Window width={450} height={600}>
-      <Window.Content>
+      <Window.Content className={'vending-goods'}>
         <Stack fill vertical>
           <Stack.Item>
             <UserDetails />
           </Stack.Item>
           <Stack.Item grow>
-            <ProductDisplay
-              inventory={inventory}
-              selectedCategory={selectedCategory}
-            />
+            <ProductDisplay selectedCategory={selectedCategory} />
           </Stack.Item>
 
           {Object.keys(filteredCategories).length > 1 && (
@@ -129,38 +122,38 @@ export const UserDetails = (props, context) => {
     return (
       <NoticeBox>No ID detected! Contact your nearest supervisor.</NoticeBox>
     );
-  } else {
-    return (
-      <Section>
-        <Stack>
-          <Stack.Item>
-            <Icon name="id-card" size={3} mr={1} />
-          </Stack.Item>
-          <Stack.Item>
-            <LabeledList>
-              <LabeledList.Item label="User">{user.name}</LabeledList.Item>
-              <LabeledList.Item label="Occupation">
-                {user.job || 'Unemployed'}
-              </LabeledList.Item>
-            </LabeledList>
-          </Stack.Item>
-        </Stack>
-      </Section>
-    );
   }
+  return (
+    <Section>
+      <Stack>
+        <Stack.Item>
+          <Icon name="id-card" size={3} mr={1} />
+        </Stack.Item>
+        <Stack.Item>
+          <LabeledList>
+            <LabeledList.Item label="User">{user.name}</LabeledList.Item>
+            <LabeledList.Item label="Occupation">
+              {user.job || 'Unemployed'}
+            </LabeledList.Item>
+          </LabeledList>
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
 };
 
 /** Displays  products in a section, with user balance at top */
 const ProductDisplay = (
   props: {
     selectedCategory: string | null;
-    inventory: ProductRecord[];
   },
   context
 ) => {
   const { data } = useBackend<VendingData>(context);
-  const { inventory, selectedCategory } = props;
+  const { selectedCategory } = props;
   const { stock, user } = data;
+
+  const inventory = getInventory(context);
 
   return (
     <Section
@@ -236,11 +229,7 @@ const ProductImage = (props) => {
 
   return (
     <span
-      className={classes(['goods-vending32x32', product.path])}
-      style={{
-        'vertical-align': 'middle',
-        'horizontal-align': 'middle',
-      }}
+      className={classes(['goods-vending32x32', product.path, 'product-image'])}
     />
   );
 };

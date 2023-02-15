@@ -56,6 +56,36 @@
 	else
 		icon_state = "kit_case_e"
 
+/obj/item/storage/box/m56_dirty_system
+	name = "\improper M56D 'Dirty' smartgun system case"
+	desc = "A large case containing an M56D 'Dirty' Smartgun, M56D PMC combat harness and helmet, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "kit_case"
+	w_class = SIZE_HUGE
+	storage_slots = 6
+	slowdown = 1
+	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
+	foldable = null
+
+/obj/item/storage/box/m56_dirty_system/Initialize()
+	. = ..()
+	new /obj/item/clothing/glasses/night/m56_goggles(src)
+	new /obj/item/weapon/gun/smartgun/dirty(src)
+	new /obj/item/smartgun_powerpack/pmc(src)
+	new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc(src)
+	new /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner(src)
+	new /obj/item/storage/belt/gun/smartgunner/pmc/full(src)
+	update_icon()
+
+/obj/item/storage/box/m56_dirty_system/update_icon()
+	if(overlays.len)
+		overlays.Cut()
+	if(contents.len)
+		icon_state = "kit_case"
+		overlays += image(icon, "smartgun")
+	else
+		icon_state = "kit_case_e"
+
 /obj/item/smartgun_powerpack
 	name = "\improper M56 powerpack"
 	desc = "A heavy reinforced backpack with support equipment and power cells for the M56 Smartgun System."
@@ -116,6 +146,13 @@
 		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
 		return FALSE
 	return FALSE
+
+/obj/item/smartgun_powerpack/pmc
+	icon_state = "powerpack"
+
+/obj/item/smartgun_powerpack/pmc/Initialize(mapload, ...)
+	. = ..()
+	pcell = new /obj/item/cell/hyper(src)
 
 /obj/item/smartgun_powerpack/snow
 	icon_state = "powerpack"

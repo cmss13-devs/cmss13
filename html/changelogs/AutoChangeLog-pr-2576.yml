@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "you can now unbind special keybinds, and your keybind preferences won't be forgotten"

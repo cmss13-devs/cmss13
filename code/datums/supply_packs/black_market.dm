@@ -260,14 +260,14 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/hunting
-	name = "Basira-Armstrong hunting rifle crate (x5 magazines included)"
+	name = "Basira-Armstrong bolt-action hunting rifle crate (x5 magazines included)"
 	contains = list(
-		/obj/item/weapon/gun/rifle/hunting,
-		/obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/boltaction,
+		/obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/ammo_magazine/rifle/boltaction,
 	)
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market

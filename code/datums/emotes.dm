@@ -118,7 +118,7 @@
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
 		user.audible_message(formatted_message)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.visible_message(formatted_message, blind_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>")
+		user.visible_message(formatted_message, blind_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"))
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))

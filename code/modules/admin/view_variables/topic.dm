@@ -97,7 +97,7 @@
 			admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
 			vv_update_display(L, Text, "[newamt]")
 
-	else if(href_list["view_combat_logs"])
+	if(href_list["view_combat_logs"])
 		if(!check_rights(R_MOD))
 			return
 

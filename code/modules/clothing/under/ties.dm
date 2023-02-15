@@ -579,6 +579,9 @@
 	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
 
+/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
 	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."

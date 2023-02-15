@@ -402,7 +402,7 @@
 	icon_state = "minirocket_inc"
 	point_cost = 150
 	fire_mission_delay = 3
-	var/chemical
+	var/chemical = null
 	var/state = ASSEMBLY_EMPTY
 
 
@@ -430,11 +430,19 @@
 
 
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
-	var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
-	smoke.set_up(chemical,8,0,impact, null)
-	smoke.start()
-	if(!ammo_count && loc)
-		qdel(src)
+	if(chemical != null)
+		var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
+		smoke.set_up(chemical,8,0,impact, null)
+		smoke.start()
+		if(!ammo_count && loc)
+			qdel(src)
+	else if (chemical == null)
+		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
+		S.set_up(1,0,impact,null)
+		S.start()
+		if(!ammo_count && loc)
+			qdel(src)
+
 /obj/structure/ship_ammo/sentry
 	name = "multi-purpose area denial sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion."

@@ -1,16 +1,16 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Button, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 interface EventComputerData {
-  shipmap_name: String;
-  groundmap_name: String;
+  shipmap_name: string;
+  groundmap_name: string;
   traits: TraitItem[];
 }
 
 interface TraitItem {
-  name: String;
-  report: String;
+  name: string;
+  report: string;
 }
 
 export const HumanEventsComputer = (props, context) => {
@@ -18,11 +18,11 @@ export const HumanEventsComputer = (props, context) => {
   return (
     <Window theme="crtgreen" width={790} height={440}>
       <Window.Content>
-        <Stack vertical>
+        <Stack vertical fill>
           <Stack.Item>
             <ShipInfo />
           </Stack.Item>
-          <Stack.Item>
+          <Stack.Item height="100%">
             <Notifications />
           </Stack.Item>
         </Stack>
@@ -36,13 +36,29 @@ const ShipInfo = (props, context) => {
   const { shipmap_name, groundmap_name } = data;
   return (
     <Section title="Information">
-      <Stack>
+      <Stack justify={'space-between'}>
         <Stack.Item>
-          <p>Ship: {shipmap_name}</p>
-          <p>Orbiting:{groundmap_name}</p>
+          <Stack>
+            <Stack.Item>
+              <b>Ship:</b> {shipmap_name}
+            </Stack.Item>
+            <Stack.Item>
+              <b>Orbiting:</b> {groundmap_name}
+            </Stack.Item>
+            <Stack.Item>
+              <b>Time:</b> 12:07
+            </Stack.Item>
+          </Stack>
         </Stack.Item>
         <Stack.Item>
-          <p>Time: 12:07</p>
+          <Stack>
+            <Stack.Item>
+              <b>User:</b> Daniel Jimenez
+            </Stack.Item>
+            <Stack.Item>
+              <b>Assignment:</b> Executive Officer
+            </Stack.Item>
+          </Stack>
         </Stack.Item>
       </Stack>
     </Section>
@@ -53,19 +69,34 @@ const Notifications = (props, context) => {
   const { data } = useBackend<EventComputerData>(context);
   const traits = Array.from(data.traits);
 
+  const [currentNotification, setNotification] = useLocalState(
+    context,
+    'notificationText',
+    ''
+  );
+
   return (
     <Stack fill>
-      <Stack.Item width="30%">
-        <Section scrollable title="Inbox">
-          {traits.map((val, index) => (
-            <Button key={index} fluid>
+      <Stack.Item width="30%" height="100%">
+        <Section scrollable title="Inbox" fill>
+          {traits.map((val) => (
+            <Button
+              key={val.name}
+              selected={val.name === currentNotification}
+              onClick={setNotification(val.name)}
+              fluid>
               {val.name}
             </Button>
           ))}
         </Section>
       </Stack.Item>
-      <Stack.Item width="70%">
-        <Section title="Message">woooh woaah!!</Section>
+      <Stack.Item width="70%" height="100%" fill>
+        <Section title="Message" fill>
+          {
+            traits.find((element) => element.name === currentNotification)
+              ?.report
+          }
+        </Section>
       </Stack.Item>
     </Stack>
   );

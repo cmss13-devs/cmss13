@@ -294,6 +294,9 @@
 				pod.go_in_cryopod(human, TRUE)
 				break
 
+		if(HAS_TRAIT(SSround, TRAIT_STATION_CRYOSLEEP_SICKNESS))
+			human.vomit_on_floor()
+
 		human.sec_hud_set_ID()
 		human.hud_set_squad()
 

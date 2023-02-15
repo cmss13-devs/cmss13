@@ -195,6 +195,11 @@
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
+// Round Traits
+
+#define TRAIT_STATION_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
+
+
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_YAUTJA_TECH,

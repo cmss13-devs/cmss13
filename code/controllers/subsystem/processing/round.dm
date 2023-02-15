@@ -55,13 +55,21 @@ PROCESSING_SUBSYSTEM_DEF(round)
 			continue //Dont add abstract ones to it
 		selectable_traits_by_types[initial(trait_typepath.trait_type)][trait_typepath] = initial(trait_typepath.weight)
 
-	var/positive_trait_count = pick(20;0, 5;1, 1;2)
-	var/neutral_trait_count = pick(10;0, 10;1, 3;2)
-	var/negative_trait_count = pick(20;0, 5;1, 1;2)
+	var/human_positive_trait_count = pick(20;0, 5;1, 1;2)
+	var/human_negative_trait_count = pick(20;0, 5;1, 1;2)
 
-	pick_traits(ROUND_TRAIT_POSITIVE, positive_trait_count)
+	var/xeno_positive_trait_count = pick(20;0, 5;1, 1;2)
+	var/xeno_negative_trait_count = pick(20;0, 5;1, 1;2)
+
+	var/neutral_trait_count = pick(10;0, 10;1, 3;2)
+
+	pick_traits(ROUND_TRAIT_HUMAN_POSITIVE, human_positive_trait_count)
+	pick_traits(ROUND_TRAIT_HUMAN_NEGATIVE, human_negative_trait_count)
+
+	pick_traits(ROUND_TRAIT_XENO_POSITIVE, xeno_positive_trait_count)
+	pick_traits(ROUND_TRAIT_XENO_NEGATIVE, xeno_negative_trait_count)
+
 	pick_traits(ROUND_TRAIT_NEUTRAL, neutral_trait_count)
-	pick_traits(ROUND_TRAIT_NEGATIVE, negative_trait_count)
 
 ///Picks traits of a specific category (e.g. bad or good) and a specified amount, then initializes them, adds them to the list of traits,
 ///then removes them from possible traits as to not roll twice.

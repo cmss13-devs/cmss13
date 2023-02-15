@@ -396,6 +396,45 @@
 	spawn(5)
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
 
+/obj/structure/ship_ammo/minirocket/smoke
+	name = "Smoke mini rocket stack"
+	desc = "A pack of laser guided Smoke mini rockets. To deploy smoke harmlessly, The rocket explodes in mid air seconds before the impact, specially formed charges leads sharpnel upwards away from the target. The smoke contents can be adjusted by research department. Ask them to learn more."
+	icon_state = "minirocket_inc"
+	point_cost = 150
+	fire_mission_delay = 3
+	var/chemical
+	var/state = ASSEMBLY_EMPTY
+
+
+/obj/structure/ship_ammo/minirocket/smoke/attackby(obj/item/W, mob/user)
+	switch(state)
+		if(ASSEMBLY_EMPTY)
+			if(istype(W, /obj/item/reagent_container/glass/beaker/large) && W.reagents.total_volume == 120)
+				user.drop_held_item(W)
+				W.forceMove(src)
+				chemical = W.reagents
+				to_chat(user, SPAN_NOTICE("You insert the beaker into chemical recepticle"))
+				state = ASSEMBLY_LOCKED
+				desc = initial(desc) + "\nThere is a chemical in the recepticle."
+			else if (istype(W, /obj/item/reagent_container/glass/beaker) && W.reagents.total_volume < 120)
+				to_chat(user, SPAN_WARNING("The beaker is not full, dilute it in water or other reagents."))
+				return
+			else
+				. = ..()
+		if(ASSEMBLY_LOCKED)
+			if (istype(W, /obj/item/reagent_container/glass/beaker))
+				to_chat(user, SPAN_WARNING("There is already a beaker!."))
+				return
+			else
+				. = ..()
+
+
+/obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
+	var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
+	smoke.set_up(chemical,8,0,impact, null)
+	smoke.start()
+	if(!ammo_count && loc)
+		qdel(src)
 /obj/structure/ship_ammo/sentry
 	name = "multi-purpose area denial sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion."

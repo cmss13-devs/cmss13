@@ -887,11 +887,15 @@
 	name = "pipe water"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "water"
-	desc = "The Almayer has sprung a leak!"
+	desc = ""
 	density = FALSE
 
-/obj/structure/prop/invuln/leaky_pipe/colony
-	desc = "The colony's sprung a leak!"
+/obj/structure/prop/invuln/leaky_pipe/Initialize(mapload)
+	. = ..()
+	if(is_mainship_level(src.z))
+		desc += "The Almayer has sprung a leak!"
+	else
+		desc += "The colony has sprung a leak!"
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

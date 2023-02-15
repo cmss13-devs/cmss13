@@ -4,7 +4,7 @@
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"
 	icon_state = "medlaptop"
-	req_one_access = list(ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
 	var/obj/item/card/id/scan = null
 	var/authenticated = null

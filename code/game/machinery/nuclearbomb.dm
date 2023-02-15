@@ -244,12 +244,12 @@ var/bomb_set = FALSE
 					acc += H.wear_id.GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
-				if(!(ACCESS_MARINE_BRIDGE in acc))
+				if(!(ACCESS_MARINE_COMMAND in acc))
 					to_chat(usr, SPAN_DANGER("Access denied!"))
 					return
 
 				command_lockout = TRUE
-				req_one_access = list(ACCESS_MARINE_BRIDGE)
+				req_one_access = list(ACCESS_MARINE_COMMAND)
 				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
 			. = TRUE
 

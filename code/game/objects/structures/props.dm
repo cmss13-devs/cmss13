@@ -893,7 +893,7 @@
 /obj/structure/prop/invuln/leaky_pipe/Initialize(mapload)
 	. = ..()
 	if(is_mainship_level(z))
-		desc += "The [MAIN_SHIP_NAME] has sprung a leak!"
+		desc += "The [copytext(MAIN_SHIP_NAME, 5)] has sprung a leak!"
 	else
 		desc += "The colony has sprung a leak!"
 

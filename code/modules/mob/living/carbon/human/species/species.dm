@@ -124,6 +124,7 @@
 	return
 
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
+	set waitfor = FALSE
 	return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.

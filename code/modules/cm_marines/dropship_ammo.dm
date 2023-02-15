@@ -402,7 +402,7 @@
 	icon_state = "minirocket_inc"
 	point_cost = 100
 	fire_mission_delay = 3
-	var/chemical = null
+	var/chemical = ASSEMBLY_EMPTY
 	var/state = ASSEMBLY_EMPTY
 
 
@@ -415,7 +415,6 @@
 				chemical = W.reagents
 				to_chat(user, SPAN_NOTICE("You insert the beaker into chemical recepticle"))
 				state = ASSEMBLY_LOCKED
-				desc = initial(desc) + "\nThere is a chemical in the recepticle."
 			else if (istype(W, /obj/item/reagent_container/glass/beaker) && W.reagents.total_volume < 120)
 				to_chat(user, SPAN_WARNING("The beaker is not full, dilute it in water or other reagents."))
 				return
@@ -429,14 +428,22 @@
 				. = ..()
 
 
+/obj/structure/ship_ammo/minirocket/smoke/get_examine_text(mob/user)
+	. = ..()
+	switch(state)
+		if(ASSEMBLY_LOCKED)
+			. += "\nThere is a chemical in the recepticle."
+		if(ASSEMBLY_EMPTY)
+			. += "\nThe recepticle slot is empty"
+
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
-	if(chemical != null)
+	if(chemical != ASSEMBLY_EMPTY)
 		var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
 		smoke.set_up(chemical,8,0,impact, null)
 		smoke.start()
 		if(!ammo_count && loc)
 			qdel(src)
-	else if (chemical == null)
+	else if (chemical == ASSEMBLY_EMPTY)
 		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
 		S.set_up(1,0,impact,null)
 		S.start()

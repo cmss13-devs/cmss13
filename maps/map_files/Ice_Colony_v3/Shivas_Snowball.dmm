@@ -10280,12 +10280,6 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
-"eIW" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/medseceng)
 "eKp" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 8;
@@ -52850,7 +52844,7 @@ acT
 ajO
 ajO
 acT
-eIW
+agA
 akS
 aoK
 aoK

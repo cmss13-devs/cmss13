@@ -1394,7 +1394,7 @@
 /area/bigredv2/outside/telecomm)
 "aec" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Telecommunications";
+	name = "\improper Telecommunications"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29941,8 +29941,7 @@
 /obj/item/clothing/head/collectable/tophat/super,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull (NORTHEAST)"
+	icon_state = "whitebluefull"
 	},
 /area/bigredv2/outside/general_store)
 "hPS" = (

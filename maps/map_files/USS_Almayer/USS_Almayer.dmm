@@ -70639,7 +70639,7 @@
 /obj/item/device/camera,
 /obj/item/device/camera_film,
 /turf/open/floor/almayer{
-	icon_state = "plate";
+	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
 "veI" = (

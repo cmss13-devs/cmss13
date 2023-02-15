@@ -107,7 +107,7 @@ var/list/department_radio_keys = list(
 
 		if(T)
 
-			for(var/mob/M in hearers(message_range, T))
+			for(var/mob/M as anything in hearers(message_range, T))
 				listening += M
 				hearturfs += M.locs[1]
 

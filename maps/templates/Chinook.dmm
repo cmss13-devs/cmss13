@@ -9583,10 +9583,7 @@
 	},
 /area/adminlevel/chinook)
 "Gu" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -12582,10 +12579,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "QB" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";

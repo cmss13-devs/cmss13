@@ -54961,10 +54961,7 @@
 	},
 /area/corsat/gamma/airlock/south/id)
 "pBJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -66041,10 +66038,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "xIJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},

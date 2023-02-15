@@ -812,10 +812,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "aAN" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
 	unacidable = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -3384,10 +3382,7 @@
 	},
 /area/lv522/atmos/east_reactor/north)
 "bYx" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -19270,11 +19265,8 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "iZS" = (
-/obj/structure/cargo_container{
-	health = 200;
-	icon_state = "WY 1,0";
+/obj/structure/cargo_container/wy/mid{
 	layer = 3.3;
-	tag = "icon-WY 1,0";
 	unacidable = 0
 	},
 /turf/open/asphalt/cement{
@@ -22027,10 +22019,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "kdm" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kdo" = (
@@ -26340,10 +26329,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "lIM" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/asphalt/cement{
 	icon_state = "cement15"
 	},
@@ -33068,10 +33054,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "oyY" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -36568,10 +36551,8 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "pRg" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
 	unacidable = 0
 	},
 /turf/open/floor/prison{
@@ -38346,10 +38327,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "qBD" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -53336,17 +53314,11 @@
 	},
 /area/lv522/indoors/lone_buildings/engineering)
 "wnl" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "wnu" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "wny" = (
@@ -54262,10 +54234,8 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "wEo" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
 	unacidable = 0
 	},
 /turf/open/floor/prison{
@@ -56444,10 +56414,8 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "xzp" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
 	unacidable = 0
 	},
 /obj/effect/decal/cleanable/dirt,

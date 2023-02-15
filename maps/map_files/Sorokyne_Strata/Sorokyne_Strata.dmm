@@ -23756,17 +23756,11 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byo" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byp" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byr" = (
@@ -34323,10 +34317,8 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "jaZ" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -35689,10 +35681,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/tcomms)
 "lrO" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "lsz" = (
@@ -37157,10 +37146,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/center)
 "nSQ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "nST" = (
@@ -37959,10 +37945,8 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "pqE" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/right{
 	health = 5000;
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,

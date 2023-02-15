@@ -1324,6 +1324,67 @@
 	burst_delay = FIRE_DELAY_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
 
+	//-------------------------------------------------------
+
+//M4RA Battle Rifle, standard USCM DMR
+
+/obj/item/weapon/gun/rifle/m4ra
+	name = "\improper M4RA battle rifle"
+	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
+	icon_state = "m4ra"
+	item_state = "m4ra"
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/flashlight/grip,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	starting_attachment_types = list(/obj/item/attachable/m4ra_barrel)
+	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 15, "stock_x" = 22, "stock_y" = 10)
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = 0
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/m4ra_barrel/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/m4ra/training
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
+
 //-------------------------------------------------------
 
 //L42A Battle Rifle

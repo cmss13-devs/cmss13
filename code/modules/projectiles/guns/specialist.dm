@@ -516,38 +516,62 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
 
-//M4RA marksman rifle
+//M4RA custom marksman rifle
 
-/obj/item/weapon/gun/rifle/m4ra
-	name = "\improper M4RA battle rifle"
-	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Only fielded in small numbers, and sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nIt is equipped with rail scope and takes 10x24mm A19 high velocity magazines."
-	icon_state = "m41b"
-	item_state = "m4ra" //PLACEHOLDER
+/obj/item/weapon/gun/rifle/m4ra/custom
+	name = "\improper M4RA custom battle rifle"
+	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nThis is a custom modification of the M4RA, allowing over-pressured High-Velocity rounds to be used safely. Takes both standard and HV M4RA magazines."
+	icon_state = "m4ra_custom"
+	item_state = "m4ra_custom"
 	unacidable = TRUE
 	indestructible = 1
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/m4ra,
+		/obj/item/ammo_magazine/rifle/m4ra/ap,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber,
+		/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+		/obj/item/ammo_magazine/rifle/m4ra/heap,
+		/obj/item/ammo_magazine/rifle/m4ra/penetrating,
+		/obj/item/ammo_magazine/rifle/m4ra/custom,
+		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
+
+	)
 
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/m4ra
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
 	force = 16
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/grip,
-		/obj/item/attachable/bipod,
-		/obj/item/attachable/compensator,
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/attached_gun/shotgun,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/flashlight/grip,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
-
+	map_specific_decoration = TRUE
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
+
+/obj/item/weapon/gun/rifle/m4ra/custom/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/m4ra_barrel/custom/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
 
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
@@ -555,14 +579,15 @@
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	fire_delay = FIRE_DELAY_TIER_8
 	burst_amount = BURST_AMOUNT_TIER_2
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
 
 /obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
 	. = ..()

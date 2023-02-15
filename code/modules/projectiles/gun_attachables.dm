@@ -1511,6 +1511,30 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 16
 	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
 
+/obj/item/attachable/m4ra_barrel
+	name = "M4RA barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "m4ra_barrel"
+	attach_icon = "m4ra_barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+
+/obj/item/attachable/m4ra_barrel/New()
+	..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/m4ra_barrel/custom
+	name = "custom m4ra barrel"
+	icon_state = "m4ra_custom_barrel"
+	attach_icon = "m4ra_custom_barrel"
+
+/obj/item/attachable/m4ra_barrel/custom/New()
+	..()
+	select_gamemode_skin(type)
+
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
 	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"

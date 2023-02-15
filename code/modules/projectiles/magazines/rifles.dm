@@ -123,6 +123,48 @@
 	icon_state = "m41a_mk1_cluster"
 	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
 
+//-------------------------------------------------------
+//M4RA, l42 reskin, same stats as before but different, lore friendly, shell.
+
+/obj/item/ammo_magazine/rifle/m4ra
+	name = "\improper M4RA magazine (10x24mm)"
+	desc = "A magazine of standard 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 25
+	gun_type = /obj/item/weapon/gun/rifle/m4ra
+
+/obj/item/ammo_magazine/rifle/m4ra/ap
+	name = "\improper M4RA armor-piercing magazine (10x24mm)"
+	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 25
+
+/obj/item/ammo_magazine/rifle/m4ra/rubber
+	name = "M4RA rubber magazine (10x24mm)"
+	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_piercing"
+	default_ammo = /datum/ammo/bullet/rifle/rubber
+
+/obj/item/ammo_magazine/rifle/m4ra/heap
+	name = "\improper M4RA HEAP (10x24mm)"
+	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
+/obj/item/ammo_magazine/rifle/m4ra/penetrating
+	name = "\improper M4RA wall-piercing magazine (10x24mm)"
+	desc = "A magazine of wall-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_heap"
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
+
+/obj/item/ammo_magazine/rifle/m4ra/incendiary
+	name = "\improper M4RA incendiary magazine (10x24mm)"
+	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_incendiary"
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+
 
 //-------------------------------------------------------
 //M40-SD AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)

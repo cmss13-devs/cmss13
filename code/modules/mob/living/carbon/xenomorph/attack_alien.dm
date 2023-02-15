@@ -156,9 +156,18 @@
 			//nice messages so people know that armor works
 			if(f_damage <= 0.34*damage)
 				to_chat(src, SPAN_WARNING("Your armor absorbs the blow!"))
+				if(prob(33))
+					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] tears off pieces off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
+					var/datum/effect_system/spark_spread/armor_shards/effect = new /datum/effect_system/spark_spread/armor_shards
+					effect.set_up(rand(3, 4), 4, src)
+					effect.start()
 			else if(f_damage <= 0.67*damage)
 				to_chat(src, SPAN_WARNING("Your armor softens the blow!"))
-
+				if(prob(15))
+					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] swipes bits off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
+					var/datum/effect_system/spark_spread/armor_shards/effect = new /datum/effect_system/spark_spread/armor_shards
+					effect.set_up(rand(1, 2), 2, src)
+					effect.start()
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
 				playsound(loc, "acid_strike", 25, 1)

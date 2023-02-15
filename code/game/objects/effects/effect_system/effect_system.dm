@@ -13,11 +13,11 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/atom/holder
 	var/setup = 0
 
-/datum/effect_system/proc/set_up(n = 3, c = 0, turf/loca)
-	if(n > 10)
-		n = 10
-	number = n
-	cardinals = c
+/datum/effect_system/proc/set_up(amount = 3, args_cardinals = 0, turf/loca)
+	if(amount > 10)
+		amount = 10
+	number = amount
+	cardinals = args_cardinals
 	location = loca
 	setup = 1
 
@@ -50,11 +50,11 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/steam_spread
 
-/datum/effect_system/steam_spread/set_up(n = 3, c = 0, turf/loc)
-	if(n > 10)
-		n = 10
-	number = n
-	cardinals = c
+/datum/effect_system/steam_spread/set_up(amount = 3, args_cardinals = 0, turf/loc)
+	if(amount > 10)
+		amount = 10
+	number = amount
+	cardinals = args_cardinals
 	location = loc
 
 /datum/effect_system/steam_spread/start()
@@ -85,28 +85,36 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/sparks
 	name = "sparks"
 	icon_state = "sparks"
-	var/amount = 6
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/amount = 6
+	var/sound_to_play = "sparks"
 
 /obj/effect/particle_effect/sparks/New()
 	..()
-	playsound(src.loc, "sparks", 25, 1)
+	if(sound_to_play)
+		playsound(src.loc, sound_to_play, 25, 1)
 // var/turf/T = src.loc
 // if (istype(T, /turf))
 // T.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 
+/obj/effect/particle_effect/sparks/armor_shards
+	name = "armor shards"
+	icon_state = "white_sparks"
+	sound_to_play = null
+	amount = 4
 
 /datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
+	var/obj/effect/particle_effect/sparks/sparks_type = /obj/effect/particle_effect/sparks
 
-/datum/effect_system/spark_spread/set_up(n = 3, c = 0, loca)
-	if(n > 10)
-		n = 10
-	number = n
-	cardinals = c
+/datum/effect_system/spark_spread/set_up(amount = 3, args_cardinals = 0, loca)
+	if(amount > 10)
+		amount = 10
+	number = amount
+	cardinals = args_cardinals
 	if(istype(loca, /turf/))
 		location = loca
 	else
@@ -120,7 +128,7 @@ steam.start() -- spawns the effect
 		spawn(0)
 			if(holder)
 				src.location = get_turf(holder)
-			var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(src.location)
+			var/obj/effect/particle_effect/sparks/sparks = new sparks_type(src.location)
 			src.total_sparks++
 			var/direction
 			if(src.cardinals)
@@ -135,7 +143,8 @@ steam.start() -- spawns the effect
 					qdel(sparks)
 				total_sparks--
 
-
+/datum/effect_system/spark_spread/armor_shards
+	sparks_type = /obj/effect/particle_effect/sparks/armor_shards
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)

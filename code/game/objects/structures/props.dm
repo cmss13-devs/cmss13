@@ -883,6 +883,16 @@
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
 
+/obj/structure/prop/invuln/leaky_pipe
+	name = "pipe water"
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "water"
+	desc = "The Almayer has sprung a leak!"
+	density = FALSE
+
+/obj/structure/prop/invuln/leaky_pipe/colony
+	desc = "The colony's sprung a leak!"
+
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"
 	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"

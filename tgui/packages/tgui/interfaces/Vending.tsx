@@ -253,15 +253,8 @@ const ProductStock = (props) => {
 /** The main button to purchase an item. */
 const ProductButton = (props, context) => {
   const { act, data } = useBackend<VendingData>(context);
-  const { access } = data;
-  const { disabled, free, product, redPrice } = props;
-  const customPrice = access ? 'FREE' : '$' + product.price;
-  let standardPrice = product.price ? '$' + product.price : 'FREE';
-  if (free) {
-    standardPrice = 'FREE';
-  } else if (product.category === 'Premium') {
-    standardPrice = 'COIN';
-  }
+  const { disabled, product } = props;
+  const price = product.price ? '$' + product.price : 'FREE';
   return (
     <Button
       fluid
@@ -271,7 +264,7 @@ const ProductButton = (props, context) => {
           'ref': product.ref,
         })
       }>
-      {standardPrice}
+      {product.category === 'Premium' ? 'COIN' : price}
     </Button>
   );
 };

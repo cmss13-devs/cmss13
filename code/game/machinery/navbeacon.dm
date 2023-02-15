@@ -29,6 +29,12 @@
 
 	SSradio.add_object(src, freq, RADIO_NAVBEACONS)
 
+/obj/structure/machinery/navbeacon/Destroy()
+	QDEL_NULL_LIST(codes)
+	SSradio.remove_object(src, freq)
+	. = ..()
+
+
 /obj/structure/machinery/navbeacon/proc/set_codes()
 	// set the transponder codes assoc list from codes_txt
 	if(!codes_txt)

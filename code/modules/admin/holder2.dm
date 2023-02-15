@@ -48,6 +48,8 @@ GLOBAL_PROTECT(href_token)
 		owner.admin_holder = src
 		owner.add_admin_verbs()
 		owner.add_admin_whitelists()
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
 			if(!world.GetConfig("admin", C.ckey))
@@ -58,6 +60,8 @@ GLOBAL_PROTECT(href_token)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
 		owner.admin_holder = null
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		owner = null
 
 /*
@@ -139,6 +143,17 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(rights_required && !(rights_required & rights))
 		return FALSE
 	return TRUE
+
+/// gets the role dependant data for tgui-say
+/datum/admins/proc/get_tgui_say_roles()
+	var/roles = list()
+	if(check_for_rights(R_ADMIN))
+		roles += "Admin"
+	if(check_for_rights(R_MOD))
+		roles += "Mod"
+	if(check_for_rights(R_MENTOR))
+		roles += "Mentor"
+	return roles
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

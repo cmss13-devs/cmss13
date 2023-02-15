@@ -12638,7 +12638,7 @@
 	name = "secure evidence locker";
 	req_access_txt = "3"
 	},
-/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},

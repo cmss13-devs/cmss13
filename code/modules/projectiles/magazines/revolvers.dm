@@ -182,6 +182,9 @@
 /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 
+/obj/item/ammo_magazine/internal/revolver/mateba/ap
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
+
 /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
 

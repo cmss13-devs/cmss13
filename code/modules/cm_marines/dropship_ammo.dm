@@ -438,6 +438,7 @@
 
 /obj/structure/ship_ammo/minirocket/smoke/Destroy()
 	chemical = null
+	return ..()
 
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
 	if(chemical != null)

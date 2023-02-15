@@ -16,7 +16,7 @@
 
 /datum/xeno_mutator/charger
 	name = "STRAIN: Crusher - Charger"
-	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from autospitters, your ability to sense frenzy pheromone, and your ability to lock your direction, you gain a considerable amount of health, some speed, and your charge can now be manually-controlled and is now momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. In return, you gain an ability to tumble to avoid enemies and an ability to forcefully move enemies via ramming."
+	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from autospitters, your influence under frenzy pheromones, and your ability to lock your direction, you gain a considerable amount of health, some speed, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. In return, you gain an ability to tumble to avoid enemies and an ability to forcefully move enemies via ramming."
 	flavor_description = "We're just getting started. Nothing stops this train. Nothing."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

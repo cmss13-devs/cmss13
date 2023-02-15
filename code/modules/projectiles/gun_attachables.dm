@@ -33,7 +33,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_atom =  FPRINT|CONDUCT
 	matter = list("metal" = 2000)
 	w_class = SIZE_SMALL
-	force = 1.0
+	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
 
 	/*
@@ -925,7 +925,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/variable_zoom/slavic
 	icon_state = "slavicscope"
 	attach_icon = "slavicscope"
-	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
+	desc = "Oppa! Why did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 /obj/item/attachable/scope/variable_zoom/eva
 	name = "RXF-M5 EVA telescopic variable scope"
@@ -979,11 +979,11 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8
 	delay_scoped_nerf = FIRE_DELAY_TIER_8
 
-/obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
+/obj/item/attachable/scope/mini/hunting
 	name = "2x hunting mini-scope"
 	icon_state = "huntingscope"
 	attach_icon = "huntingscope"
-	desc = "While the Basira-Armstrong rifle is compatible with most telescopic devices, its accompanying scope is usable only with the Basira-Armstrong. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "This civilian-grade scope is a common sight on hunting rifles due to its cheap price and great optics. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
 /obj/item/attachable/scope/mini/nsg23
 	name = "W-Y S4 2x advanced telescopic mini-scope"
@@ -1108,7 +1108,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
-	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
+	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -1471,6 +1471,25 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/stock/carbine/wood
+	name = "\improper ABR-40 \"wooden\" stock"
+	desc = "The default \"wooden\" stock for the ABR-40 hunting rifle, the civilian version of the military L42A battle rifle. Theoretically compatible with an L42. Wait, did you just take the stock out of a weapon with no grip...? Great job, genius."
+	icon_state = "abr40stock"
+	attach_icon = "abr40stock_a"
+	melee_mod = 6
+	wield_delay_mod = WIELD_DELAY_FAST
+
+/obj/item/attachable/stock/carbine/wood/Initialize() // The gun is meant to be effectively unusable without the attachment.
+	..()
+	accuracy_mod = (HIT_ACCURACY_MULT_TIER_6) + HIT_ACCURACY_MULT_TIER_10
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = (-SCATTER_AMOUNT_TIER_8) - SCATTER_AMOUNT_TIER_5
+
+/obj/item/attachable/stock/carbine/wood/tactical
+	name = "\improper ABR-40 tactical stock"
+	desc = "An ABR-40 stock with a sleek paintjob. Wait, did you just take the stock out of a weapon with no grip...? Great job, genius."
+	icon_state = "abr40stock_tac"
+	attach_icon = "abr40stock_tac_a"
 
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"
@@ -2124,13 +2143,16 @@ Defined in conflicts.dm of the #defines folder.
 
 		new/obj/flamer_fire(T, create_cause_data(initial(name), user), R)
 
-/obj/item/attachable/attached_gun/flamer/integrated
-	name = "integrated flamethrower"
+/obj/item/attachable/attached_gun/flamer/advanced
+	name = "advanced mini flamethrower"
 	current_rounds = 50
 	max_rounds = 50
 	max_range = 6
 	burn_level = BURN_LEVEL_TIER_5
 	burn_duration = BURN_TIME_TIER_2
+
+/obj/item/attachable/attached_gun/flamer/advanced/integrated
+	name = "integrated flamethrower"
 
 /obj/item/attachable/attached_gun/shotgun //basically, a masterkey
 	name = "\improper U7 underbarrel shotgun"
@@ -2555,7 +2577,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/eva_doodad
 	name = "RXF-M5 EVA beam projector"
-	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said.."
+	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said."
 	icon_state = "rxfm5_eva_doodad"
 	attach_icon = "rxfm5_eva_doodad_a"
 	slot = "under"

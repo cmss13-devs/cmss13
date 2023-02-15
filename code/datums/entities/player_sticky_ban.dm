@@ -14,15 +14,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player_sticky_ban)
 /datum/entity_meta/player_sticky_ban
 	entity_type = /datum/entity/player_sticky_ban
 	table_name = "player_sticky_bans"
-	field_types = list("player_id"=DB_FIELDTYPE_BIGINT,
-			"admin_id"=DB_FIELDTYPE_BIGINT,
-			"reason"=DB_FIELDTYPE_STRING_MAX,
-			"date"=DB_FIELDTYPE_STRING_LARGE,
-			"address"=DB_FIELDTYPE_STRING_LARGE,
-			"ckey" = DB_FIELDTYPE_STRING_LARGE,
-			"computer_id"=DB_FIELDTYPE_STRING_LARGE,
-			"linked_stickyban"=DB_FIELDTYPE_BIGINT
-		)
+	field_types = list(
+		"player_id"=DB_FIELDTYPE_BIGINT,
+		"admin_id"=DB_FIELDTYPE_BIGINT,
+		"reason"=DB_FIELDTYPE_STRING_MAX,
+		"date"=DB_FIELDTYPE_STRING_LARGE,
+		"address"=DB_FIELDTYPE_STRING_LARGE,
+		"ckey" = DB_FIELDTYPE_STRING_LARGE,
+		"computer_id"=DB_FIELDTYPE_STRING_LARGE,
+		"linked_stickyban"=DB_FIELDTYPE_BIGINT,
+	)
 
 
 /datum/entity_link/linked_sticky_bans

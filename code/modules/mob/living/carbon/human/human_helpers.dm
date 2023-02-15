@@ -309,7 +309,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -455,3 +455,12 @@
 
 /mob/living/carbon/human/get_orbit_size()
 	return langchat_height
+
+/mob/living/carbon/human/proc/update_minimap_icon()
+	var/obj/item/device/radio/headset/headset
+	if(istype(wear_l_ear, /obj/item/device/radio/headset))
+		headset = wear_l_ear
+	else if(istype(wear_r_ear, /obj/item/device/radio/headset))
+		headset = wear_r_ear
+	if(headset)
+		headset.update_minimap_icon()

@@ -84,7 +84,7 @@
 			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
 		else
 			if(stage < 5)
-				counter += 1.0 * hive.larva_gestation_multiplier
+				counter += 1 * hive.larva_gestation_multiplier
 
 		if(stage < 5 && counter >= 120)
 			counter = 0

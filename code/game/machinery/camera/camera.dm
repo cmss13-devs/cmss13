@@ -11,7 +11,7 @@
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
 	var/c_tag_order = 999
-	var/status = 1.0
+	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
 	var/invuln = null
@@ -317,6 +317,7 @@
 /obj/structure/machinery/camera/cas/Destroy()
 	for(var/mob/M as anything in viewing_users)
 		M.reset_view()
+	QDEL_NULL(viewing_users)
 	return ..()
 
 /obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)

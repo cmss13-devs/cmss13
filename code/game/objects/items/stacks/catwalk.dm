@@ -5,8 +5,8 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "catwalk_tile"
 	w_class = SIZE_MEDIUM
-	force = 6.0
-	throwforce = 8.0
+	force = 6
+	throwforce = 8
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	flags_atom = FPRINT|CONDUCT

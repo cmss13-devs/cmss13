@@ -27,6 +27,8 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
+	minimap_icon = "spitter"
+
 /mob/living/carbon/xenomorph/spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER

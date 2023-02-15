@@ -22,6 +22,10 @@
 	var/list/faction_group
 	var/origin_override
 
+	var/minimap_icon = "private"
+	var/minimap_background = MINIMAP_ICON_BACKGROUND_USCM
+	var/always_minimap_visible = TRUE
+
 	//Uniform data
 	var/utility_under = null
 	var/utility_over = null
@@ -45,6 +49,7 @@
 	var/dress_extra = null
 
 	var/list/uniform_sets = null
+
 
 
 /datum/equipment_preset/New()
@@ -252,6 +257,32 @@
 		var/datum/character_trait/CT = GLOB.character_traits[trait]
 		CT.apply_trait(H, src)
 
+/datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
+	if(user.assigned_squad)
+		background.color = user.assigned_squad.minimap_color
+	else if(minimap_background)
+		background.color = minimap_background
+	else
+		background.color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
+	if(islist(minimap_icon))
+		for(var/icons in minimap_icon)
+			var/iconstate = icons ? icons : "unknown"
+			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+			icon.appearance_flags = RESET_COLOR
+
+			if(minimap_icon[icons])
+				icon.color = minimap_icon[icons]
+			background.overlays += icon
+	else
+		var/iconstate = minimap_icon ? minimap_icon : "unknown"
+		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+		icon.appearance_flags = RESET_COLOR
+		background.overlays += icon
+
+	return background
+
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -352,10 +383,10 @@
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -462,8 +493,8 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 	/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 	/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 	)
 
 /datum/equipment_preset/proc/spawn_rebel_smg(atom/M, ammo_amount = 12)
@@ -805,8 +836,8 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
 		if(10)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/hunting(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/l42a/abr40(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/abr40(H), WEAR_WAIST)
 		if(11)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(H), WEAR_WAIST)

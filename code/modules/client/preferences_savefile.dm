@@ -190,6 +190,7 @@
 	S["hotkeys"] >> hotkeys
 
 	S["custom_cursors"] >> custom_cursors
+	S["autofit_viewport"] >> auto_fit_viewport
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -220,6 +221,7 @@
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
+	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -355,6 +357,8 @@
 	S["show_permission_errors"] << show_permission_errors
 	S["key_bindings"] << key_bindings
 	S["hotkeys"] << hotkeys
+
+	S["autofit_viewport"] << auto_fit_viewport
 
 	S["hear_vox"] << hear_vox
 

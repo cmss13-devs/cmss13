@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, "<span class='danger'>[msg]</span>")
+			to_chat(src, SPAN_DANGER("[msg]"))
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
 			return
 
 	// Tgui Topic middleware
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 
@@ -440,7 +440,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
+		Destroy()
+	return ..()
+
+/client/Destroy()
 	QDEL_NULL(soundOutput)
+	QDEL_NULL(obj_window)
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
@@ -457,12 +464,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CLIENT_IS_STAFF(src))
 		message_staff("Admin logout: [key_name(src)]")
 
-	. = ..()
-
-/client/Destroy()
-	QDEL_NULL(obj_window)
-	. = ..()
-
+	..()
 	return QDEL_HINT_HARDDEL_NOW
 
 
@@ -690,6 +692,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+				if(MOD_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MOD))
+						if(prefs.tgui_say)
+							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=msay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+				if(ADMIN_CHANNEL)
+					if(admin_holder?.check_for_rights(R_ADMIN))
+						if(prefs.tgui_say)
+							var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[asay]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+				if(MENTOR_CHANNEL)
+					if(admin_holder?.check_for_rights(R_MENTOR))
+						if(prefs.tgui_say)
+							var/mentor = tgui_say_create_open_command(MENTOR_CHANNEL)
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[mentor]")
+						else
+							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
@@ -733,3 +762,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(admin_holder)
 		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
 		admin_holder.filteriffic.tgui_interact(mob)
+
+///opens the particle editor UI for the in_atom object for this client
+/client/proc/open_particle_editor(atom/movable/in_atom)
+	if(admin_holder)
+		admin_holder.particle_test = new /datum/particle_editor(in_atom)
+		admin_holder.particle_test.tgui_interact(mob)

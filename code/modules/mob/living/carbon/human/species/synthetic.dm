@@ -44,7 +44,7 @@
 	acid_blood_dodge_chance = 35
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/synthetic/proc/toggle_HUD
+		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
@@ -90,7 +90,7 @@
 	stun_reduction = 3.5
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/colonial/colonial_gen_two
@@ -111,7 +111,7 @@
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
 
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
@@ -133,8 +133,8 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 
-	knock_down_reduction = 5.0
-	stun_reduction = 5.0
+	knock_down_reduction = 5
+	stun_reduction = 5
 
 	inherent_verbs = null
 

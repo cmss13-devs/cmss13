@@ -417,9 +417,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 /// what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
-#define SPACE_HELMET_MIN_COLD_PROT 2.0
+#define SPACE_HELMET_MIN_COLD_PROT 2
 /// what min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.
-#define SPACE_SUIT_MIN_COLD_PROT 2.0
+#define SPACE_SUIT_MIN_COLD_PROT 2
 /// These need better heat protect, but not as good heat protect as firesuits.
 #define SPACE_SUIT_MAX_HEAT_PROT 5000
 /// what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
@@ -544,3 +544,4 @@ var/global/list/uniform_categories = list(
 #define PHONE_RTO "RTO"
 #define PHONE_MARINE "Marine"
 #define PHONE_UPP_SOLDIER "Soldier"
+#define PHONE_IO "IO"

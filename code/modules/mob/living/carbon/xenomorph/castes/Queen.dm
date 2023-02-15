@@ -45,6 +45,8 @@
 
 	minimum_xeno_playtime = 9 HOURS
 
+	minimap_icon = "xenoqueen"
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -96,7 +98,7 @@
 	), PROC_REF(stop_watching))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
-	// Default colour
+	// Default color
 	if(Q.hive.color)
 		color = Q.hive.color
 
@@ -225,7 +227,6 @@
 
 	return COMPONENT_OVERRIDE_VIEW
 
-
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
@@ -259,7 +260,7 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
-	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
@@ -912,7 +913,7 @@
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
 
-/mob/living/carbon/xenomorph/queen/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 
 /datum/behavior_delegate/queen

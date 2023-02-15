@@ -48,3 +48,16 @@
 #define VENDOR_ITEM_RECOMMENDED 3
 
 #define CL_BRIEFCASE_TIME_LOCK 20 MINUTES
+
+#define VEND_TO_HAND (1<<0)
+#define VEND_UNIFORM_RANKS (1<<1)
+#define VEND_UNIFORM_AUTOEQUIP (1<<2)
+#define VEND_LIMITED_INVENTORY (1<<3)
+#define VEND_CLUTTER_PROTECTION (1<<4)
+#define VEND_CATEGORY_CHECK (1<<5)
+#define VEND_INSTANCED_CATEGORY (1<<6)
+#define VEND_FACTION_THEMES (1<<7)
+#define VEND_USE_VENDOR_FLAGS (1<<8)
+//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+//Only relevant in big vendors, like Requisitions or Squad Prep
+#define VEND_LOAD_AMMO_BOXES (1<<9)

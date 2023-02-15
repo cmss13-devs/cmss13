@@ -189,7 +189,7 @@
 
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
+	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT

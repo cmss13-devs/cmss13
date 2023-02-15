@@ -180,6 +180,7 @@
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
+	black_market_value = 25
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0
@@ -442,6 +443,9 @@
 	possible_transfer_amounts = null
 	anchored = TRUE
 	chemical = "water"
+
+/obj/structure/reagent_dispensers/water_cooler/walk_past
+	density = FALSE
 
 /obj/structure/reagent_dispensers/water_cooler/stacks
 	icon_state = "water_cooler_2"

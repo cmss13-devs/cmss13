@@ -339,9 +339,8 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "avP" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -367,9 +366,8 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
 "awu" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -561,7 +559,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/operating)
 "aIy" = (
-/obj/structure/largecrate/merc/ammo,
+/obj/structure/largecrate/black_market/confiscated_equipment,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
 "aIF" = (
@@ -675,8 +673,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/Northwest_Colony)
 "aUZ" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -2002,8 +1999,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/power)
 "cKM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -2615,8 +2611,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med)
 "dvT" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null;
 	welded = 1
@@ -3149,7 +3144,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/water_cooler{
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
 	pixel_x = 8;
 	pixel_y = 24
 	},
@@ -3454,8 +3449,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/power/comms)
 "esO" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -3636,7 +3630,7 @@
 /area/kutjevo/interior/complex/med/auto_doc)
 "eBD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
@@ -4871,9 +4865,8 @@
 	},
 /area/kutjevo/exterior/scrubland)
 "gof" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -5252,8 +5245,7 @@
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/operating)
 "gOK" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -6112,9 +6104,8 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
 "iea" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -6449,8 +6440,7 @@
 	},
 /area/kutjevo/interior/construction)
 "iJj" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -6801,9 +6791,8 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "jjM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -7128,8 +7117,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "jCN" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -7324,8 +7312,7 @@
 /turf/open/gm/grass/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "jVi" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -7890,9 +7877,8 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
 	},
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -8179,9 +8165,8 @@
 	},
 /area/kutjevo/exterior/runoff_bridge)
 "lcE" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -8559,8 +8544,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "lIz" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -8981,9 +8965,8 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "mjv" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -9051,9 +9034,8 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/power/comms)
 "moM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -9508,9 +9490,8 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/lz_river)
 "mRp" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -9701,8 +9682,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "nhg" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -10416,9 +10396,8 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "oal" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -12484,8 +12463,7 @@
 	},
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "qVb" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -12658,9 +12636,8 @@
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/oob/dev_room)
 "riD" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -13533,9 +13510,8 @@
 	},
 /area/kutjevo/interior/power)
 "spV" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -16056,8 +16032,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
 "vFL" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -16906,9 +16881,8 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "wPu" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -17139,8 +17113,7 @@
 	},
 /area/kutjevo/exterior/lz_river)
 "xjN" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -17620,7 +17593,7 @@
 "xXR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
 	dir = 1;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)

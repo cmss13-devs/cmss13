@@ -38,10 +38,17 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/commando, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/EX, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/EX, WEAR_IN_BACK)
+
+
 	//face
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/m42c, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
@@ -82,18 +89,16 @@
 /datum/equipment_preset/pmc/w_y_whiteout/medic/load_gear(mob/living/carbon/human/H)
 	// back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/commando, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil/white, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil/white, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/medhud, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
@@ -132,9 +137,9 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/terminator/load_gear(mob/living/carbon/human/H)
 	// back
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/snow, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/pmc, WEAR_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles/whiteout, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
@@ -153,7 +158,7 @@
 		H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty/elite, WEAR_J_STORE)
 	//waist
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/whiteout/full, WEAR_WAIST)
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/commando, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/knife, WEAR_FEET)
@@ -177,9 +182,13 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/synth, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/m42c, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head

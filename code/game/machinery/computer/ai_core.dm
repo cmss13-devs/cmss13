@@ -78,7 +78,7 @@
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 				return
 		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				if (brain)
 					to_chat(user, "Get that brain out of there first")
 				else

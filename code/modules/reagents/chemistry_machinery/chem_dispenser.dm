@@ -204,8 +204,30 @@
 	accept_glass = 1
 	wrenchable = TRUE
 	network = "Misc"
-	dispensable_reagents = list("water","ice","coffee","cream","tea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice",
-	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
+	dispensable_reagents = list(
+		"water",
+		"ice",
+		"coffee",
+		"cream",
+		"tea",
+		"cola",
+		"spacemountainwind",
+		"dr_gibb",
+		"space_up",
+		"tonic",
+		"sodawater",
+		"lemon_lime",
+		"sugar",
+		"orangejuice",
+		"limejuice",
+		"watermelonjuice",
+		"tomatojuice",
+		"carrotjuice",
+		"berryjuice",
+		"grapejuice",
+		"lemonjuice",
+		"banana",
+	)
 	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)

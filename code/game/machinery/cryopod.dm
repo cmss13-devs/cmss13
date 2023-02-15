@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/cryofeed
 
 	name = "hypersleep chamber feed"
-	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.."
+	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = TRUE
@@ -184,6 +184,11 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	announce = new /obj/item/device/radio/intercom(src)
 	flags_atom |= USES_HEARING
 
+/obj/structure/machinery/cryopod/Destroy()
+	QDEL_NULL(occupant)
+	QDEL_NULL(announce)
+	. = ..()
+
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
@@ -212,6 +217,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/list/items = contents.Copy()
 	items -= occupant //Don't delete the occupant
 	items -= announce //or the autosay radio.
+
+	SSminimaps.remove_marker(src)
 
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))

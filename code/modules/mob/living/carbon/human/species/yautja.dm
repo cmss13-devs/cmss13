@@ -12,8 +12,9 @@
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
 		TRAIT_FOREIGN_BIO,
-		TRAIT_DEXTROUS
-		)
+		TRAIT_DEXTROUS,
+		TRAIT_EMOTE_CD_EXEMPT,
+	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
@@ -47,8 +48,8 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
-		/mob/living/carbon/human/proc/mark_panel
-		)
+		/mob/living/carbon/human/proc/mark_panel,
+	)
 
 	knock_down_reduction = 4
 	stun_reduction = 4

@@ -486,7 +486,7 @@
 	else if(icon_state == "cassette_flip") //so flipping doesn't overwrite an unexpected icon_state (e.g. an admin's)
 		icon_state = initial_icon_state
 
-//Random colour tapes
+//Random color tapes
 /obj/item/tape/random
 	icon_state = "random_tape"
 

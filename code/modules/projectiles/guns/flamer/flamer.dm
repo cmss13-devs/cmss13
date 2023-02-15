@@ -233,10 +233,20 @@
 
 /obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
 	name = "\improper M240A3 incinerator unit"
-	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
+	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with EX-type fuel."
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+	)
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro, /obj/item/attachable/magnetic_harness)
 	flags_equip_slot = SLOT_BACK | SLOT_WAIST
+	auto_retrieval_slot = WEAR_WAIST
 	current_mag = /obj/item/ammo_magazine/flamer_tank/EX
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/flamer/deathsquad/nolock
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
@@ -251,7 +261,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/attached_gun/extinguisher
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY

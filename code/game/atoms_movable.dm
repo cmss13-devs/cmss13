@@ -16,6 +16,9 @@
 
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
 
+	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
+	var/black_market_value = 0
+
 	var/datum/component/orbiter/orbiting
 
 //===========================================================================
@@ -57,10 +60,19 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/atom/movable/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
 
+/atom/movable/vv_do_topic(list/href_list)
+	. = ..()
 
+	if(!.)
+		return
 
-
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
 
 //when a mob interact with something that gives them a special view,
 //check_eye() is called to verify that they're still eligible.
@@ -103,7 +115,7 @@
 
 
 // Spin for a set amount of time at a set speed using directional states
-/atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin(duration, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (turn_delay < 1)
@@ -122,7 +134,7 @@
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
-/atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin_circle(num_circles = 1, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (num_circles < 1 || turn_delay < 1)

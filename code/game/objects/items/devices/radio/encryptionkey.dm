@@ -203,22 +203,22 @@
 	channels = list(RADIO_CHANNEL_WY = TRUE)
 	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 
-/obj/item/device/encryptionkey/PMC
+/obj/item/device/encryptionkey/pmc
 	name = "\improper Weyland-Yutani PMC Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE)
 
-/obj/item/device/encryptionkey/PMC/engi
+/obj/item/device/encryptionkey/pmc/engi
 	name = "\improper WY PMC Engineering Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE)
 
-/obj/item/device/encryptionkey/PMC/medic
+/obj/item/device/encryptionkey/pmc/medic
 	name = "\improper WY PMC Medical Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list(RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
 
-/obj/item/device/encryptionkey/PMC/command
+/obj/item/device/encryptionkey/pmc/command
 	name = "\improper WY PMC Command Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list(RADIO_CHANNEL_PMC_CMD = TRUE, RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)

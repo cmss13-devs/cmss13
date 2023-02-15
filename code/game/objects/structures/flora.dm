@@ -95,28 +95,21 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	unacidable = TRUE
 
 /obj/structure/flora/tree/jungle
+	name = "huge tree"
 	icon = 'icons/obj/structures/props/ground_map64.dmi'
 	desc = "What an enormous tree!"
 	density = FALSE
+	layer = ABOVE_XENO_LAYER
 
+// LV-624's Yggdrasil Tree
 /obj/structure/flora/tree/jungle/bigtreeTR
-	name = "huge tree"
 	icon_state = "bigtreeTR"
 
 /obj/structure/flora/tree/jungle/bigtreeTL
-	name = "huge tree"
 	icon_state = "bigtreeTL"
 
 /obj/structure/flora/tree/jungle/bigtreeBOT
-	name = "huge tree"
 	icon_state = "bigtreeBOT"
-
-/obj/structure/flora/tree/jungle/grasscarpet
-	name = "thick grass"
-	desc = "A thick mat of dense grass."
-	icon_state = "grasscarpet"
-	layer = BELOW_MOB_LAYER
-	density = FALSE
 
 //grass
 /obj/structure/flora/grass
@@ -204,7 +197,7 @@ ICE GRASS
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
 	qdel(src)
 
-/obj/structure/flora/ex_act(var/power)
+/obj/structure/flora/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -403,6 +396,9 @@ ICE GRASS
 	icon_tag = "pottedplant"
 	variations = "30"
 
+/obj/structure/flora/pottedplant/random/unanchored
+	anchored = FALSE
+
 /*
 
 	JUNGLE FOLIAGE
@@ -553,7 +549,7 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck(src)
 

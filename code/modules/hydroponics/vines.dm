@@ -31,7 +31,7 @@
 		master.growth_queue -= src
 	. = ..()
 
-/obj/effect/plantsegment/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/plantsegment/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
@@ -296,7 +296,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/plant_controller/proc/spawn_piece(var/turf/location)
+/obj/effect/plant_controller/proc/spawn_piece(turf/location)
 	var/obj/effect/plantsegment/SV = new(location)
 	SV.limited_growth = src.limited_growth
 	growth_queue += SV

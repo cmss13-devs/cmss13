@@ -63,7 +63,7 @@
 	max_w_class = SIZE_HUGE
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,
-		/obj/item/weapon/gun/shotgun/combat
+		/obj/item/weapon/gun/shotgun/combat,
 	)
 	has_gamemode_skin = TRUE
 
@@ -124,8 +124,8 @@
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15,
-		/obj/item/weapon/gun/pistol/skorpion
-		)
+		/obj/item/weapon/gun/pistol/skorpion,
+	)
 	///Guns have a hud offset that throws the vis_contents alignment off.
 	var/gun_offset = 0
 	///Whether the gun had pixel scaling set before being holstered.
@@ -245,7 +245,7 @@
 	..()
 	do_toggle_fuel(user)
 
-/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(var/mob/user)
+/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(mob/user)
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
@@ -286,7 +286,7 @@
 	do_toggle_fuel(usr)
 
 
-/obj/item/storage/large_holster/fuelpack/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large/))
 		switch_fuel(A, user)
 		return
@@ -302,7 +302,7 @@
 
 	. = ..()
 
-/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(var/obj/item/ammo_magazine/flamer_tank/large/new_fuel, var/mob/user)
+/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(obj/item/ammo_magazine/flamer_tank/large/new_fuel, mob/user)
 	// Switch out the currently stored fuel and drop it
 	if(istype(new_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
 		fuelX.forceMove(get_turf(user))
@@ -338,7 +338,7 @@
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/toggle_fuel/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_fuel/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Fuel Type"
 	button.name = name

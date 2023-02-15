@@ -19,6 +19,13 @@
 		F.fswitch = src
 	start_processing()
 
+/obj/structure/machinery/hydro_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
+		QDEL_NULL(floodlight.fswitch)
+	QDEL_NULL_LIST(floodlist)
+	return ..()
+
+
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
 	for(var/obj/structure/machinery/hydro_floodlight/H in floodlist)
@@ -91,6 +98,8 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
+	fswitch.floodlist -= src
+	QDEL_NULL(fswitch)
 	SetLuminosity(0)
 	return ..()
 
@@ -141,7 +150,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))

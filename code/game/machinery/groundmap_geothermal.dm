@@ -133,7 +133,7 @@
 	start_processing()
 	return 1
 
-/obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/geothermal/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -224,6 +224,13 @@
 		floodlist += F
 		F.fswitch = src
 	start_processing()
+
+/obj/structure/machinery/colony_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+		QDEL_NULL(floodlight.fswitch)
+	QDEL_NULL_LIST(floodlist)
+	return ..()
+
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)

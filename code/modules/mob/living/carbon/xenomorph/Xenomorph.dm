@@ -50,6 +50,8 @@
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
 	icon_size = 48
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 50
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -96,7 +98,6 @@
 	var/counts_for_slots = TRUE
 	var/counts_for_roundend = TRUE
 	var/refunds_larva_if_banished = TRUE
-	var/shaman_interactive = TRUE // whether shaman abilities affect this xeno
 	var/can_hivemind_speak = TRUE
 
 	// Tackles
@@ -126,7 +127,7 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
-	var/pull_multiplier = 1.0
+	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
@@ -142,7 +143,7 @@
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated
-	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+	var/ability_speed_modifier = 0 //Things that add on top of our base speed, based on what powers we are using
 
 	// Progression-related
 	var/age_prefix = ""
@@ -407,7 +408,7 @@
 
 	generate_name()
 
-	if(isXenoQueen(src))
+	if(isqueen(src))
 		SStracking.set_leader("hive_[hivenumber]", src)
 	SStracking.start_tracking("hive_[hivenumber]", src)
 
@@ -420,6 +421,9 @@
 	add_inherent_verbs()
 	add_abilities()
 	recalculate_actions()
+
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -495,14 +499,18 @@
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
-/mob/living/carbon/xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/xenomorph/queen/queen)
+/mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
-
-/mob/living/carbon/xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_XENO
@@ -561,7 +569,7 @@
 
 	handle_name(in_hive)
 
-/mob/living/carbon/xenomorph/proc/handle_name(var/datum/hive_status/in_hive)
+/mob/living/carbon/xenomorph/proc/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -585,7 +593,7 @@
 	// Since we updated our name we should update the info in the UI
 	in_hive.hive_ui.update_xeno_info()
 
-/mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(var/client/xeno_client)
+/mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(client/xeno_client)
 	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref
 	switch(vision_level)
 		if(XENO_VISION_LEVEL_NO_NVG)
@@ -599,7 +607,7 @@
 		var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 		screenobj.update_icon(src)
 
-/mob/living/carbon/xenomorph/proc/set_lighting_alpha(var/level)
+/mob/living/carbon/xenomorph/proc/set_lighting_alpha(level)
 	switch(level)
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
@@ -625,7 +633,7 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
 		return list(desc)
 
-	if(isXeno(user) && caste && caste.caste_desc)
+	if(isxeno(user) && caste && caste.caste_desc)
 		. += caste.caste_desc
 
 	if(l_hand)
@@ -652,12 +660,12 @@
 			if(1 to 24)
 				. += "It is heavily injured and limping badly."
 
-	if(isXeno(user))
+	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
 			. += "It has specialized into a [mutation_type]."
 
@@ -734,7 +742,7 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(isSynth(L) && L.health < 0) // no pulling critted or dead synths
+	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
 		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
@@ -797,11 +805,11 @@
 /mob/living/carbon/xenomorph/get_pull_miltiplier()
 	return pull_multiplier
 
-/mob/living/carbon/xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
+/mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
 	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
@@ -923,12 +931,12 @@
 	recalculate_acid()
 	recalculate_weeds()
 	pull_multiplier = mutators.pull_multiplier
-	if(isXenoRunner(src))
+	if(isrunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
 		if(is_zoomed)
 			zoom_out()
-	if(isXenoCarrier(src))
+	if(iscarrier(src))
 		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
@@ -1046,7 +1054,7 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
-/mob/living/carbon/xenomorph/proc/set_resin_build_order(var/list/build_order)
+/mob/living/carbon/xenomorph/proc/set_resin_build_order(list/build_order)
 	resin_build_order = build_order
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
@@ -1064,5 +1072,5 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/handle_blood_splatter(var/splatter_dir, duration)
+/mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)

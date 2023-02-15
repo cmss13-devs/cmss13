@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(landmark_init)
 	// List of turfs to consider as candidates
 	var/list/turfs
 
-/datum/item_pool_holder/New(var/pool_name)
+/datum/item_pool_holder/New(pool_name)
 	src.pool_name = pool_name
 	turfs = list()
 

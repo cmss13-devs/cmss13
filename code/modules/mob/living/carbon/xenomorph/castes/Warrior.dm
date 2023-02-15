@@ -27,6 +27,8 @@
 
 	heal_resting = 1.4
 
+	minimap_icon = "warrior"
+
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
@@ -38,7 +40,7 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 2
-	pull_speed = 2.0 // about what it was before, slightly faster
+	pull_speed = 2 // about what it was before, slightly faster
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -83,7 +85,7 @@
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(isXeno(L))
+		if(isxeno(L))
 			var/mob/living/carbon/xenomorph/X = L
 			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 				return .
@@ -97,7 +99,7 @@
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
-/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(var/world_time)
+/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
 /mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)

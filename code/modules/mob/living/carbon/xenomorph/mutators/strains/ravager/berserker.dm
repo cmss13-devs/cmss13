@@ -13,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
-		/datum/action/xeno_action/activable/eviscerate
+		/datum/action/xeno_action/activable/eviscerate,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
@@ -141,7 +141,7 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return original_damage
 
 	if (next_slash_buffed)

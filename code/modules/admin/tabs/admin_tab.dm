@@ -142,7 +142,7 @@
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text)
+/datum/admins/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 	if (!istype(src,/datum/admins))
@@ -237,7 +237,7 @@
 		color = "headminsay"
 
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
+		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</a>): <span class='message'>[msg]</span></span>"
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
@@ -466,7 +466,7 @@
 		return
 
 	for(var/mob/living/carbon/human/M in view())
-		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
 		if(M.stat != DEAD)
@@ -596,7 +596,7 @@
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
 	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
 
-/proc/set_lz_resin_allowed(var/allowed = TRUE)
+/proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
 		for(var/area/A in all_areas)
 			A.is_resin_allowed = TRUE

@@ -15,7 +15,7 @@
 	interior = new(src)
 	interior.create_interior("fancylocker")
 
-/obj/structure/closet/fancy/store_mobs(var/stored_units)
+/obj/structure/closet/fancy/store_mobs(stored_units)
 	for(var/mob/M in loc)
 		var/succ = interior.enter(M, "default")
 		if(!succ)

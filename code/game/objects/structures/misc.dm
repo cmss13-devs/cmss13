@@ -7,12 +7,12 @@
 	anchored = TRUE
 	health = 250
 
-/obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
-/obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
+/obj/structure/showcase/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -168,7 +168,7 @@
 	density = TRUE
 	anchored = FALSE
 
-/obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/ore_box/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM

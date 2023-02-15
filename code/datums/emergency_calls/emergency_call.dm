@@ -79,7 +79,7 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE, var/info = "")
+/datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "")
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			var/datum/emergency_call/em_call = new E.type()
@@ -105,7 +105,7 @@
 	random_call.activate()
 	return
 
-/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+/datum/emergency_call/proc/check_timelock(client/C, list/roles, hours)
 	if(C?.check_timelock(roles, hours))
 		return TRUE
 	return FALSE
@@ -174,7 +174,7 @@
 	else
 		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, var/turf/override_spawn_loc)
+/datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -259,7 +259,7 @@
 
 		candidates = list()
 
-/datum/emergency_call/proc/add_candidate(var/mob/M)
+/datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
 		return FALSE //Not connected or already there or something went wrong.
 	if(M.mind)
@@ -279,7 +279,7 @@
 		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
 	return landmark ? get_turf(landmark) : null
 
-/datum/emergency_call/proc/create_member(datum/mind/M, var/turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
+/datum/emergency_call/proc/create_member(datum/mind/M, turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
 	return
 
 //Spawn various items around the shuttle area thing.

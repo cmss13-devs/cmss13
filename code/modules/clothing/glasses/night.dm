@@ -107,7 +107,7 @@
 	disable_far_sight()
 	return ..()
 
-/obj/item/clothing/glasses/night/m56_goggles/proc/link_powerpack(var/mob/user)
+/obj/item/clothing/glasses/night/m56_goggles/proc/link_powerpack(mob/user)
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			powerpack = user.back
@@ -132,7 +132,7 @@
 	disable_far_sight(user)
 	return ..()
 
-/obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, var/set_to_state = TRUE)
+/obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, set_to_state = TRUE)
 	if(set_to_state)
 		if(user.glasses != src)
 			to_chat(user, SPAN_WARNING("You can't activate far sight without wearing \the [src]!"))
@@ -201,6 +201,11 @@
 	else
 		button.icon_state = "template"
 
+/obj/item/clothing/glasses/night/m56_goggles/whiteout
+	name = "\improper M56T head mounted sight"
+	desc = "A headset and goggles system for the M56T 'Terminator' Smartgun. Has a low-light vision processor as well as a system allowing detection of thermal signatures though solid surfaces."
+	vision_flags = SEE_TURFS|SEE_MOBS
+
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
 	gender = NEUTER
@@ -244,7 +249,7 @@
 
 /obj/item/clothing/glasses/night/experimental_mesons/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
-		if(!isSynth(user))
+		if(!issynth(user))
 			to_chat(user, "The experimental meson goggles start probing at your eyes, searching for an attachment point, and you immediately take them off.")
 			return FALSE
 	return ..()

@@ -12,6 +12,7 @@
 	attack_verb = list("bashed", "whacked", "educated")
 	pickup_sound = "sound/handling/book_pickup.ogg"
 	drop_sound = "sound/handling/book_pickup.ogg"
+	black_market_value = 15 //mendoza likes to read
 	/// Actual page content
 	var/dat
 	/// Game time in 1/10th seconds
@@ -27,7 +28,7 @@
 	/// What's in the book?
 	var/obj/item/store
 
-/obj/item/book/attack_self(var/mob/user as mob)
+/obj/item/book/attack_self(mob/user as mob)
 	..()
 	if(carved)
 		if(store)

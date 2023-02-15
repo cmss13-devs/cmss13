@@ -11,37 +11,7 @@
 		return 1
 	return
 
-/mob/living/carbon/verb/warcry_macro()
-	set name = "warcry"
-	set hidden = TRUE
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a warcry associated with it!"))
-
-/mob/living/carbon/human/warcry_macro()
-	emote("warcry", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/xenomorph/warcry_macro()
-	emote("roar", player_caused = TRUE)
-
-/mob/living/carbon/verb/medic_macro()
-	set name = "medic"
-	set hidden = TRUE
-
-	to_chat(usr, SPAN_WARNING("Your species doesn't have a help cry associated with it!"))
-
-/mob/living/carbon/human/medic_macro()
-	emote("medic", player_caused = TRUE)
-
-/mob/living/carbon/human/yautja/medic_macro()
-	emote("click", player_caused = TRUE)
-
-/mob/living/carbon/xenomorph/medic_macro()
-	emote("needhelp", player_caused = TRUE)
-
-/mob/living/carbon/check_view_change(var/new_size, var/atom/source)
+/mob/living/carbon/check_view_change(new_size, atom/source)
 	LAZYREMOVE(view_change_sources, source)
 	var/highest_view = 0
 	for(var/view_source as anything in view_change_sources)
@@ -54,10 +24,9 @@
 		new_size = highest_view
 	return new_size
 
-/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/xenomorph/queen/queen, var/list/mobs_in_view)
+/mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
-	scream_stun_timeout = 20 SECONDS
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))

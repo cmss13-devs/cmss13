@@ -47,7 +47,7 @@
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not launch the dropship due to blockage in the rear door.</span>"
+	var/fail_flavortext = "Could not launch the dropship due to blockage in the rear door."
 
 	// The ship section of the almayer that the dropship is aiming to crash into. Random if null
 	var/crash_target_section = null
@@ -87,7 +87,7 @@
 /datum/shuttle/ferry/marine/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
 
 /datum/shuttle/ferry/marine/proc/load_datums()
@@ -97,7 +97,7 @@
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
 
-/datum/shuttle/ferry/marine/proc/launch_crash(var/user)
+/datum/shuttle/ferry/marine/proc/launch_crash(user)
 	if(!can_launch()) return //There's another computer trying to launch something
 
 	in_use = user
@@ -648,7 +648,7 @@
 
 	location = !location
 
-/datum/shuttle/ferry/marine/close_doors(var/list/turf/L)
+/datum/shuttle/ferry/marine/close_doors(list/turf/L)
 	for(var/turf/T in L) // For every turf
 		for(var/obj/structure/machinery/door/D in T) // For every relevant door there
 			if(!D.density && istype(D, /obj/structure/machinery/door/poddoor/shutters/transit))
@@ -658,7 +658,7 @@
 			else if(istype(D, /obj/structure/machinery/door/airlock/dropship_hatch) || istype(D, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
 				INVOKE_ASYNC(src, PROC_REF(force_close_launch), D) // The whole shabang
 
-/datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
+/datum/shuttle/ferry/marine/force_close_launch(obj/structure/machinery/door/AL)
 	if(!iselevator)
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 			if(isliving(M))
@@ -670,7 +670,7 @@
 						break
 	return ..() // Sleeps
 
-/datum/shuttle/ferry/marine/open_doors(var/list/L)
+/datum/shuttle/ferry/marine/open_doors(list/L)
 	var/i //iterator
 	var/turf/T
 
@@ -702,7 +702,7 @@
 
 
 
-/datum/shuttle/ferry/marine/proc/open_doors_crashed(var/list/L)
+/datum/shuttle/ferry/marine/proc/open_doors_crashed(list/L)
 
 	var/i //iterator
 	var/turf/T
@@ -736,7 +736,7 @@
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 			qdel(D)
 
-/datum/shuttle/ferry/marine/proc/shake_cameras(var/list/L)
+/datum/shuttle/ferry/marine/proc/shake_cameras(list/L)
 
 	var/i //iterator
 	var/j
@@ -758,7 +758,7 @@
 /datum/shuttle/ferry/elevator
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not move the elevator due to blockage in the main door.</span>"
+	var/fail_flavortext = "Could not move the elevator due to blockage in the main door."
 
 /datum/shuttle/ferry/elevator/New()
 	..()
@@ -796,5 +796,5 @@
 /datum/shuttle/ferry/elevator/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat

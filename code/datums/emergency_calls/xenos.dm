@@ -9,7 +9,7 @@
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal.. oh god, they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
 	objectives = "For the Empress!"
 
 
@@ -18,7 +18,7 @@
 	if(istype(drop_spawn))
 		new /obj/effect/alien/weeds/node(drop_spawn) //drop some weeds for xeno plasma regen.
 
-/datum/emergency_call/xenos/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/xenos/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

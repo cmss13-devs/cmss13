@@ -36,6 +36,8 @@
 	hugger_delay = 20
 	egg_cooldown = 250
 
+	minimap_icon = "carrier"
+
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER
@@ -70,7 +72,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
@@ -126,7 +128,7 @@
 	. = ..()
 	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
-/mob/living/carbon/xenomorph/carrier/death(var/cause, var/gibbed)
+/mob/living/carbon/xenomorph/carrier/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75
@@ -314,7 +316,7 @@
 	join_as_facehugger_from_this(user)
 
 /mob/living/carbon/xenomorph/carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
-	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
+	if(!huggers_max) //Eggsac doesn't have huggers, do nothing!
 		return
 	if(stat == DEAD)
 		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))

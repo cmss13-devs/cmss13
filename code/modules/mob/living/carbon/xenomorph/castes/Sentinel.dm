@@ -25,6 +25,7 @@
 	tacklestrength_max = 4
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
+	minimap_icon = "sentinel"
 
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
@@ -66,7 +67,7 @@
 	if (!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(carbon_target))
+	if (!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))

@@ -413,7 +413,7 @@
 
 	message_staff("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 
-/datum/action/xeno_action/onclick/banish/proc/remove_banish(var/datum/hive_status/hive, var/name)
+/datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
 
 
@@ -574,7 +574,7 @@
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
 
-/datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(var/turf/T)
+/datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
 /datum/action/xeno_action/activable/place_queen_beacon/use_ability(atom/A)
@@ -708,7 +708,4 @@
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
 
-	var/icon/O = overlay_tacmap(TACMAP_XENO, TACMAP_BASE_OPEN, hivenumber)
-	if(O)
-		src << browse_rsc(O, "marine_minimap.png")
-		show_browser(src, "<img src=marine_minimap.png>", "Xeno Tacmap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+	hive.tacmap.tgui_interact(src)

@@ -40,7 +40,7 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
+/obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/frame/matrix_frame))
 		var/obj/item/frame/matrix_frame/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)
@@ -54,7 +54,7 @@
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
-/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(FM))
@@ -589,11 +589,12 @@
 
 	ui_interact(usr)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view()
-	UnregisterSignal(usr, COMSIG_MOB_RESET_VIEW)
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(user, COMSIG_MOB_RESISTED)
 	if(selected_cas_signal && selected_cas_signal.linked_cam)
-		selected_cas_signal.linked_cam.remove_from_view(usr)
-	firemission_envelope.remove_upgrades(usr)
+		selected_cas_signal.linked_cam.remove_from_view(user)
+	firemission_envelope.remove_upgrades(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0

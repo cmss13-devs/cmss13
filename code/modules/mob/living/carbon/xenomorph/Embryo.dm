@@ -84,7 +84,7 @@
 			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
 		else
 			if(stage < 5)
-				counter += 1.0 * hive.larva_gestation_multiplier
+				counter += 1 * hive.larva_gestation_multiplier
 
 		if(stage < 5 && counter >= 120)
 			counter = 0
@@ -143,7 +143,7 @@
 
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
-	if((!isYautja(affected_mob) || (isYautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
+	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
 		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
 		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
@@ -160,7 +160,7 @@
 	// Spawn the larva
 	var/mob/living/carbon/xenomorph/larva/new_xeno
 
-	if(isYautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
+	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
 	else
@@ -227,7 +227,7 @@
 		victim.update_burst()
 		return
 
-	if(isYautja(victim))
+	if(isyautja(victim))
 		victim.emote("roar")
 	else
 		victim.emote("scream")
@@ -288,7 +288,7 @@
 		victim.update_burst()
 
 // Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(var/obj/structure/S)
+/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/S)
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/AM in get_turf(S))
 		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))

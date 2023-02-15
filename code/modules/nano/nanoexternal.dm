@@ -7,7 +7,7 @@
 *
 * @return nothing
 */
-/client/verb/nanoclose(var/uiref as text)
+/client/verb/nanoclose(uiref as text)
 	set hidden = TRUE // hide this verb from the user's panel
 	set name = "nanoclose"
 
@@ -37,7 +37,7 @@
 *
 * @return nothing
 */
-/atom/movable/proc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/atom/movable/proc/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	return
 
 // Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob

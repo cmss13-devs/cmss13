@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
@@ -79,7 +79,7 @@
 
 	add_internal_hitpoints(internal_hitpoints_per_attack)
 
-/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(var/atom/target_atom)
+/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(atom/target_atom)
 	if(ismob(target_atom))
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 

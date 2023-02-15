@@ -7,9 +7,9 @@
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 
@@ -28,11 +28,11 @@
 
 	zoom(user, 11, 12)
 
-/obj/item/device/binoculars/on_set_interaction(var/mob/user)
+/obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 
 
-/obj/item/device/binoculars/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 
 /obj/item/device/binoculars/civ
@@ -79,7 +79,7 @@
 	rangefinder_popup = !rangefinder_popup
 	to_chat(usr, "The rangefinder [rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
 
-/obj/item/device/binoculars/range/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/range/on_unset_interaction(mob/user)
 	..()
 	if(user && coord && !zoom)
 		QDEL_NULL(coord)
@@ -92,7 +92,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
+/obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/A, list/mods)
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
@@ -246,7 +246,7 @@
 	update_icon()
 	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
-/obj/item/device/binoculars/range/designator/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/range/designator/on_unset_interaction(mob/user)
 	..()
 
 	if(user && (laser || coord) && !zoom)
@@ -364,7 +364,7 @@
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 	var/minimum_laze_distance = 2
 
-/datum/action/item_action/specialist/spotter_target/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Spot Target"
 	button.name = name
@@ -458,7 +458,7 @@
 	qdel(laser_beam)
 	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 
-/datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/target, var/cover_lose_focus)
+/datum/action/item_action/specialist/spotter_target/proc/check_can_use(mob/target, cover_lose_focus)
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
 
@@ -484,9 +484,9 @@
 
 	//laser_con is to add you to the list of laser users.
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 	var/atom/target = null // required for lazing at things.
@@ -552,7 +552,7 @@
 			return
 	return
 
-/obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
+/obj/item/device/binoculars/designator/proc/lasering(mob/living/carbon/human/user, atom/A, params)
 	if(istype(A,/atom/movable/screen))
 		return FALSE
 	if(user.stat)

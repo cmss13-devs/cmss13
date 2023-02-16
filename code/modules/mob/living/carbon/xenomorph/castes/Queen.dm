@@ -583,7 +583,7 @@
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
-	log_and_message_staff("[key_name_admin(src)] has created a Word of the Queen report:")
+	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
 	return TRUE
 

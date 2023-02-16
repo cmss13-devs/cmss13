@@ -478,7 +478,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
 	J.current_positions--
-	message_staff("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
+	message_admins("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
 	return 1
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)

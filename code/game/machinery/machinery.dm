@@ -123,7 +123,7 @@ Class Procs:
 
 		needs_power = !needs_power
 		power_change()
-		message_staff("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
+		message_admins("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
 
 
 /obj/structure/machinery/Initialize(mapload, ...)

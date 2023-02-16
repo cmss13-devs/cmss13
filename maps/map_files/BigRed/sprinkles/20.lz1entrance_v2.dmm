@@ -395,7 +395,7 @@
 /area/bigredv2/outside/space_port)
 "aZ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor{

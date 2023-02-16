@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - code_imp: "repathed camera consoles to make more sense"
+  - bugfix: "fixed a minor bug with cameras"

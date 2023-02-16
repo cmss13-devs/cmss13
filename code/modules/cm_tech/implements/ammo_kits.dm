@@ -122,7 +122,6 @@
 	. = ..()
 	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/cluster
 	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/cluster
-	.[/obj/item/ammo_magazine/rifle/m4ra] = /obj/item/ammo_magazine/rifle/m4ra/cluster
 	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/cluster
 	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/cluster
 	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/cluster
@@ -139,7 +138,6 @@
 	. = ..()
 	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/toxin
 	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/toxin
-	.[/obj/item/ammo_magazine/rifle/m4ra] = /obj/item/ammo_magazine/rifle/m4ra/toxin
 	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/toxin
 	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/toxin
 	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/toxin

@@ -552,6 +552,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/bipod,
+		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
@@ -575,9 +576,9 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
 
-/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m4ra/custom/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
 	burst_amount = BURST_AMOUNT_TIER_2
@@ -585,7 +586,7 @@
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
 

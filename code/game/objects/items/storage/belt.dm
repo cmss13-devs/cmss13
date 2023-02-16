@@ -61,7 +61,7 @@
 
 /obj/item/storage/belt/utility
 	name = "\improper M276 pattern toolbelt rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "The M276 is the standard load-bearing equipment of USCM support staff. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools."
 	icon_state = "utilitybelt"
 	item_state = "utility"
 	can_hold = list(
@@ -1548,8 +1548,8 @@
 
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm and additional magazines. This version is commonly used by engineers conducting repairs within combat zones."
-	storage_slots = 10
+	desc = "The M276 pattern combat toolbelt rig is an alternative load-bearing equipment of the USCM for engineers conducting repairs within combat zones. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm and magazine."
+	storage_slots = 9
 	icon_state = "combatutility"
 	item_state= "combatutility"
 	can_hold = list(
@@ -1586,7 +1586,6 @@
 
 /obj/item/storage/belt/gun/utility/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)

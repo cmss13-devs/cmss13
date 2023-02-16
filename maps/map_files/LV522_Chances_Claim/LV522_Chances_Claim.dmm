@@ -39936,16 +39936,16 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUf" = (
-/obj/item/ammo_magazine/rifle/m4ra/ap{
-	current_rounds = 25
-	},
-/obj/item/ammo_magazine/rifle/m4ra/ap{
-	current_rounds = 25
-	},
-/obj/item/ammo_magazine/rifle/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/ext{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
 /obj/structure/closet/crate/ammo,

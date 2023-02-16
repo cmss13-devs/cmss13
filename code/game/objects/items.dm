@@ -289,8 +289,6 @@ cases. Override_icon_state should be a list.*/
 	if(loc == user)
 		if(!user.drop_inv_item_on_ground(src))
 			return
-	else
-		user.next_move = max(user.next_move+2,world.time + 2)
 	if(!QDELETED(src)) //item may have been qdel'd by the drop above.
 		add_fingerprint(user)
 		if(!user.put_in_active_hand(src))

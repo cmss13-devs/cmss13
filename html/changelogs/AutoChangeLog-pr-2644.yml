@@ -1,4 +1,0 @@
-author: "TheDonkified"
-delete-after: True
-changes:
-  - bugfix: "Loading a new character slot will properly update your character trait points. You can now modify multiple human characters' character traits without having to reload."

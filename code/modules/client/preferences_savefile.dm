@@ -88,6 +88,17 @@
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
+/*
+/proc/sanitize_keybindings(value)
+	var/list/base_bindings = sanitize_islist(value, list())
+	if(!base_bindings)
+		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
+	for(var/keybind_name in base_bindings)
+		if (!(keybind_name in GLOB.keybindings_by_name))
+			base_bindings -= keybind_name
+	return base_bindings
+*/
+
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, null)
 	if(!base_bindings)
@@ -97,6 +108,7 @@
 		if(!length(base_bindings[key]))
 			base_bindings -= key
 	return base_bindings
+
 
 /datum/preferences/proc/load_preferences()
 	if(!path) return 0
@@ -174,6 +186,7 @@
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 	S["key_bindings"] >> key_bindings
+	check_keybindings()
 
 	S["preferred_survivor_variant"]	>> preferred_survivor_variant
 
@@ -594,6 +607,42 @@
 
 	return 1
 
+/// checks through keybindings for outdated unbound keys and updates them
+/datum/preferences/proc/check_keybindings()
+	if(!owner)
+		return
+	var/list/user_binds = list()
+	for (var/key in key_bindings)
+		for(var/kb_name in key_bindings[key])
+			user_binds[kb_name] += list(key)
+	var/list/notadded = list()
+	for (var/name in GLOB.keybindings_by_name)
+		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
+		if(length(user_binds[kb.name]))
+			continue // key is unbound and or bound to something
+		var/addedbind = FALSE
+		if(hotkeys)
+			for(var/hotkeytobind in kb.hotkey_keys)
+				if(!length(key_bindings[hotkeytobind]))
+					LAZYADD(key_bindings[hotkeytobind], kb.name)
+					addedbind = TRUE
+		else
+			for(var/classickeytobind in kb.classic_keys)
+				if(!length(key_bindings[classickeytobind]))
+					LAZYADD(key_bindings[classickeytobind], kb.name)
+					addedbind = TRUE
+		if(!addedbind)
+			notadded += kb
+	if(length(notadded))
+		addtimer(CALLBACK(src, .proc/announce_conflict, notadded), 5 SECONDS)
+
+/datum/preferences/proc/announce_conflict(list/notadded)
+	to_chat(owner, "<span class='alertwarning'><u>Keybinding Conflict</u></span>\n\
+					<span class='alertwarning'>There are new <a href='?_src_=prefs;preference=tab;tab=3'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</span>")
+	for(var/item in notadded)
+		var/datum/keybinding/conflicted = item
+		to_chat(owner, "<span class='danger'>[conflicted.category]: [conflicted.full_name] needs updating</span>")
+		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

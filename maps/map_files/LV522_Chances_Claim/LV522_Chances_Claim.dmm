@@ -589,17 +589,10 @@
 	},
 /area/lv522/atmos/east_reactor)
 "arh" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -12;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -12
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -647,29 +640,15 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "asI" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -12;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -12
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 16;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
@@ -926,17 +905,10 @@
 	},
 /area/lv522/oob)
 "aEF" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -2967,12 +2939,7 @@
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -4;
 	pixel_y = 1
 	},
@@ -4717,12 +4684,7 @@
 	pixel_x = 11;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -6153,17 +6115,10 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "djL" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -8113,17 +8068,10 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "eeb" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating,
@@ -11004,13 +10952,7 @@
 /area/lv522/indoors/c_block/cargo)
 "fuc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	dir = 8;
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -31
 	},
 /turf/open/floor/prison,
@@ -12582,17 +12524,10 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "geT" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform,
@@ -13779,17 +13714,10 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/spaceport)
 "gJr" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -14695,29 +14623,15 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "haF" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating,
@@ -18686,17 +18600,10 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stair_cut,
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -20769,12 +20676,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -21101,17 +21003,10 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "jGe" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -22391,18 +22286,10 @@
 	dir = 1
 	},
 /obj/structure/platform,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -23042,17 +22929,9 @@
 /area/lv522/indoors/a_block/admin)
 "kpm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -20;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -20
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23230,17 +23109,9 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "ksv" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -20;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -20
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23950,24 +23821,12 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "kFd" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17;
 	pixel_y = -2
 	},
@@ -27245,17 +27104,10 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -28790,17 +28642,10 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "mJs" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating,
@@ -30093,12 +29938,7 @@
 	pixel_x = 11;
 	pixel_y = 16
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = -6
 	},
@@ -30573,17 +30413,9 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "ntq" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -20;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 24;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -20
 	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/atmos/east_reactor/south)
@@ -30954,25 +30786,11 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure{
-	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -8;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -8
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 17
 	},
 /turf/open/gm/river,
@@ -31483,18 +31301,10 @@
 	},
 /area/lv522/indoors/a_block/security)
 "nOg" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31525,31 +31335,14 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "nOS" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 9;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
-/obj/structure{
-	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 16;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31809,27 +31602,13 @@
 	},
 /area/lv522/atmos/filt)
 "nUF" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -32527,12 +32306,7 @@
 "ogA" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 28
 	},
 /turf/open/floor/prison,
@@ -33637,17 +33411,10 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "oCW" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/platform{
 	dir = 8
@@ -36460,17 +36227,10 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "pHi" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/platform_decoration{
 	dir = 8
@@ -36658,17 +36418,10 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "pMc" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/platform_decoration{
 	dir = 4
@@ -37396,16 +37149,9 @@
 	},
 /area/lv522/oob)
 "pYO" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -38959,18 +38705,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure{
-	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -8;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -8
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -39573,29 +39310,15 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -42575,12 +42298,7 @@
 	pixel_x = 6;
 	pixel_y = 19
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -45596,17 +45314,9 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "thU" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -20;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -20
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/east_reactor/south)
@@ -45651,12 +45361,7 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 11
 	},
 /turf/open/gm/river,
@@ -45783,17 +45488,10 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tlB" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/platform,
 /obj/structure/platform{
@@ -48217,31 +47915,15 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "uhx" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = 16;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 16
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -8;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -49105,29 +48787,15 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -50149,17 +49817,10 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "uTY" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -50434,18 +50095,10 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
 "vbm" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -52456,29 +52109,15 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "vNW" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -6
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 11;
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -56929,17 +56568,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
 "xxz" = (
-/obj/structure{
-	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 6;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -57133,31 +56764,14 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "xBL" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -10;
 	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -10
 	},
-/obj/structure{
-	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	name = "overhead pipe";
-	pixel_x = -8;
+/obj/structure/prop/invuln/pipe_section{
 	pixel_y = 15;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)

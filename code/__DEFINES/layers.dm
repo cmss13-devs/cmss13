@@ -121,6 +121,8 @@
 #define FACEHUGGER_LAYER 4.13
 /// For WEATHER
 #define WEATHER_LAYER 4.14
+/// Used for overhead pipes.
+#define OVERHEAD_PIPE_LAYER 4.5
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
 #define INTERIOR_DOOR_LAYER 5.21
 

@@ -883,6 +883,48 @@
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
 
+/// USE THIS INSTEAD OF THE OBJ/STRUCTURE SHIT. PLEASE USE THIS. I DO NOT WANT TO HAVE TO CLEAN UP ALMOST 200 OF THESE FUCKING THINGS AGAIN. MAPPERS!!!!!!! RAGGHHH!!!
+/obj/structure/prop/invuln/pipe_section
+	name = "pipe section"
+	icon = 'icons/obj/pipes/pipes.dmi'
+	icon_state = "intact-scrubbers"
+	desc = ""
+	density = FALSE
+	layer = OVERHEAD_PIPE_LAYER
+	projectile_coverage = 0
+	///Most of these are west-east facing anyways, it saves a lot of lines of code to default them to dir 2.
+	dir = 2
+
+/obj/structure/prop/invuln/pipe_section/Initialize(mapload)
+	. = ..()
+	desc += "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]."
+
+/obj/structure/prop/invuln/pipe_section/broken
+	name = "broken pipe section"
+	icon_state = "exposed01-scrubbers"
+	desc = ""
+	///Used for alternate styles of pipe. The default- exposed01 -faces north, while the alt. version faces south.
+	var/style = FALSE
+
+/obj/structure/prop/invuln/pipe_section/broken/Initialize(mapload)
+	. = ..()
+	if(style)
+		icon_state = "exposed10-scrubbers"
+	desc += "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]. That doesn't look right.."
+
+/obj/structure/prop/invuln/pipe_water
+	name = "pipe water"
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "water"
+	desc = ""
+	density = FALSE
+	///Above mobs, below pipes.
+	layer = WEATHER_LAYER
+
+/obj/structure/prop/invuln/pipe_water/Initialize(mapload)
+	. = ..()
+	desc += "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
+
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"
 	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"

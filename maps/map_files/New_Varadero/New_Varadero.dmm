@@ -1229,17 +1229,10 @@
 	},
 /area/varadero/interior/maintenance/research)
 "bak" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -14;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -14
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -2058,16 +2051,9 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "bIQ" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -2486,6 +2472,23 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/security)
+"ccM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_y = 13;
+	pixel_x = -18
+	},
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_y = 13;
+	pixel_x = 12
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "snow_mat"
+	},
+/area/varadero/interior/maintenance)
 "ccU" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -5092,17 +5095,10 @@
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
 "ezc" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -14;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -14
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -7196,29 +7192,15 @@
 /area/varadero/interior/comms2)
 "gja" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -16
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 12
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -8580,28 +8562,14 @@
 	},
 /area/varadero/interior/maintenance/north)
 "hyN" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -12
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -8828,29 +8796,15 @@
 /area/varadero/interior/mess)
 "hLF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 12
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -18
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -11871,17 +11825,10 @@
 /area/varadero/interior_protected/vessel)
 "kjJ" = (
 /obj/structure/machinery/light/small,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -14;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -14
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -12524,28 +12471,14 @@
 	},
 /area/varadero/interior/maintenance)
 "kIV" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -12
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -13691,17 +13624,10 @@
 	},
 /area/varadero/interior/hall_N)
 "lOc" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -14;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -14
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -14398,28 +14324,9 @@
 /area/varadero/interior/hall_N)
 "moH" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -16301,29 +16208,15 @@
 /area/varadero/interior/oob)
 "nVk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 12
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -18
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -16754,28 +16647,14 @@
 /area/varadero/exterior/lz1_near)
 "ooe" = (
 /obj/structure/surface/rack,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 12
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -17637,16 +17516,9 @@
 	},
 /area/varadero/interior/hall_N)
 "oZA" = (
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -21340,29 +21212,15 @@
 "rZA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden,
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = 12
 	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
 	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_x = -18
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -44491,7 +44349,7 @@ lDh
 dkV
 sff
 sff
-hLF
+ccM
 nVk
 rZA
 hLF

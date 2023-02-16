@@ -89,7 +89,7 @@
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/weapon/gun/rifle/m4ra/custom(src)
+	new /obj/item/weapon/gun/rifle/m4ra_custom(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -349,7 +349,7 @@
 
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper M4RA Sniper Kit"
+	name = "\improper M4RA Marksman Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()

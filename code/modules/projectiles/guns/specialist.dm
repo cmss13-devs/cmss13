@@ -518,9 +518,9 @@
 
 //M4RA custom marksman rifle
 
-/obj/item/weapon/gun/rifle/m4ra/custom
+/obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nThis is a custom modification of the M4RA, allowing over-pressured High-Velocity rounds to be used safely. Takes both standard and HV M4RA magazines."
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
 	unacidable = TRUE
@@ -568,18 +568,18 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
-/obj/item/weapon/gun/rifle/m4ra/custom/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/m4ra_barrel/custom/S = new(src)
+	var/obj/item/attachable/m4ra_barrel_custom/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
 
 
-/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
 
-/obj/item/weapon/gun/rifle/m4ra/custom/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
 	burst_amount = BURST_AMOUNT_TIER_2
@@ -591,7 +591,7 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
 
-/obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
+/obj/item/weapon/gun/rifle/m4ra_custom/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)

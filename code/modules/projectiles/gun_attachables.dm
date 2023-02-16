@@ -1526,12 +1526,18 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 
-/obj/item/attachable/m4ra_barrel/custom
+/obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
 	icon_state = "m4ra_custom_barrel"
 	attach_icon = "m4ra_custom_barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
 
-/obj/item/attachable/m4ra_barrel/custom/New()
+/obj/item/attachable/m4ra_barrel_custom/New()
 	..()
 	select_gamemode_skin(type)
 

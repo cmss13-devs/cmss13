@@ -66,7 +66,7 @@
 	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra/custom
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
@@ -74,7 +74,7 @@
 	icon_state = "a19_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra/custom
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 high velocity impact magazine (10x24mm)"
@@ -82,7 +82,7 @@
 	icon_state = "a19_impact"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra/custom
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 
 
 

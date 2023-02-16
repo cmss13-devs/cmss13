@@ -145,6 +145,7 @@
 	name = "\improper M4RA extended magazine (10x24mm)"
 	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle. Holds an additional 10 rounds, up to 35."
 	icon_state = "m4ra_extended"
+	bonus_overlay = "m4ra_ex"
 	max_rounds = 35
 
 /obj/item/ammo_magazine/rifle/m4ra/rubber

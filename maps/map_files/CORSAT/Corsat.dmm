@@ -4619,7 +4619,7 @@
 /area/corsat/sigma/dorms)
 "anc" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("sigma")
 	},
@@ -7869,7 +7869,7 @@
 /area/corsat/gamma/freezer)
 "awV" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -8236,7 +8236,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "axM" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -8301,7 +8301,7 @@
 /area/corsat/gamma/rnr/bar)
 "axW" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -8517,7 +8517,7 @@
 /area/corsat/sigma/hangar/id)
 "ayy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("sigma")
 	},
@@ -8655,7 +8655,7 @@
 /area/corsat/sigma/hangar/id)
 "ayL" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -8899,7 +8899,7 @@
 /area/corsat/omega/security)
 "azp" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -9484,7 +9484,7 @@
 "aAN" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -10531,7 +10531,7 @@
 /area/corsat/theta/airlock/east)
 "aDx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("theta")
 	},
@@ -12709,7 +12709,7 @@
 /area/corsat/sigma/airlock/control)
 "aIN" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -13596,7 +13596,7 @@
 /area/corsat/gamma/airlock/control)
 "aLp" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -13773,7 +13773,7 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aLS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -14305,7 +14305,7 @@
 	},
 /area/corsat/theta/airlock/east/id)
 "aNk" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega");
 	pixel_y = 22
 	},
@@ -15243,7 +15243,7 @@
 /area/corsat/theta/biodome)
 "aPK" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -16991,7 +16991,7 @@
 "aUg" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -18235,7 +18235,7 @@
 /area/corsat/sigma/dorms)
 "aXm" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -19535,7 +19535,7 @@
 /area/corsat/omega/hangar/security)
 "bam" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -19701,7 +19701,7 @@
 /area/corsat/omega/hangar/security)
 "baE" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -19843,7 +19843,7 @@
 /turf/open/floor/plating,
 /area/corsat/omega/airlocknorth)
 "baX" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("omega")
 	},
@@ -25721,7 +25721,7 @@
 /area/corsat/omega/security)
 "bsl" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -25825,7 +25825,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "bsD" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /obj/structure/surface/table/reinforced,
@@ -26656,7 +26656,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("gamma")
 	},
@@ -29882,7 +29882,7 @@
 /area/corsat/gamma/airlock/control)
 "bDU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -29893,7 +29893,7 @@
 /area/corsat/sigma/checkpoint)
 "bDX" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -29961,7 +29961,7 @@
 /area/corsat/omega/control)
 "bEk" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -30032,7 +30032,7 @@
 /area/corsat/omega/hangar/security)
 "bEr" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -30366,7 +30366,7 @@
 /area/corsat/gamma/security)
 "bFy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -30482,7 +30482,7 @@
 	dir = 8;
 	health = 250
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("gamma")
 	},
@@ -30818,7 +30818,7 @@
 /area/corsat/gamma/hangar/office)
 "bGO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("gamma")
 	},
@@ -31061,7 +31061,7 @@
 /area/corsat/sigma/hangar/arrivals)
 "bIU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -31185,7 +31185,7 @@
 /area/corsat/gamma/hangar/cargo)
 "bJA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -31306,7 +31306,7 @@
 /area/corsat/gamma/airlock/control)
 "bJP" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("sigma")
 	},
@@ -31317,7 +31317,7 @@
 /area/corsat/sigma/airlock/control)
 "bJQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("theta")
 	},
@@ -31828,7 +31828,7 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bLh" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -35165,7 +35165,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta")
 	},
 /obj/structure/surface/table/almayer,
@@ -35686,7 +35686,7 @@
 /area/corsat/sigma/airlock/control)
 "bXx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -36345,7 +36345,7 @@
 /area/corsat/sigma/dorms)
 "bZy" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -39209,7 +39209,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "dZe" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -42874,7 +42874,7 @@
 /area/corsat/gamma/medbay/morgue)
 "gGQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("omega")
 	},
@@ -44855,7 +44855,7 @@
 /area/corsat/gamma/biodome/toxins)
 "hSQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -45458,7 +45458,7 @@
 /area/corsat/sigma/southeast/generator)
 "iqE" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -51939,7 +51939,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "nlU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("gamma")
 	},
@@ -52948,7 +52948,7 @@
 /area/corsat/sigma/hangar/security)
 "nUg" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("sigma")
 	},
@@ -54117,7 +54117,7 @@
 /area/corsat/sigma/southeast/dataoffice)
 "oOL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -58163,7 +58163,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "rSG" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma");
 	pixel_y = 22
 	},
@@ -59327,7 +59327,7 @@
 /area/corsat/gamma/residential/west)
 "sIm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta")
 	},
 /turf/open/floor/corsat{
@@ -60829,7 +60829,7 @@
 /area/corsat/theta/biodome)
 "tNJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -60964,7 +60964,7 @@
 /area/corsat/gamma/residential)
 "tSu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -61557,7 +61557,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "upe" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma");
 	pixel_y = 22
 	},
@@ -62186,7 +62186,7 @@
 /area/corsat/theta/airlock/west)
 "uMq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -66709,7 +66709,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "ygF" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta");
 	pixel_y = 22
 	},

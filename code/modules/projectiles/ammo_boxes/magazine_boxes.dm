@@ -125,9 +125,9 @@
 
 /obj/item/ammo_box/magazine/m4ra
 	name = "\improper magazine box (M4RA x 16)"
-	icon_state = "base_l42"
+	icon_state = "base_m4ra"
 	flags_equip_slot = SLOT_BACK
-	overlay_gun_type = "_l42"
+	overlay_gun_type = "_m4ra"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra
 
@@ -141,6 +141,15 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/ap
 
 /obj/item/ammo_box/magazine/m4ra/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m4ra/ext
+	name = "\improper magazine box (Ext M4RA x 16)"
+	overlay_ammo_type = "_ext"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/ext
+
+/obj/item/ammo_box/magazine/m4ra/ext/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/incen

@@ -1527,7 +1527,7 @@ Defined in conflicts.dm of the #defines folder.
 	select_gamemode_skin(type)
 
 /obj/item/attachable/m4ra_barrel/custom
-	name = "custom m4ra barrel"
+	name = "custom M4RA barrel"
 	icon_state = "m4ra_custom_barrel"
 	attach_icon = "m4ra_custom_barrel"
 

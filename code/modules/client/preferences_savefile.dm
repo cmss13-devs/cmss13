@@ -88,7 +88,6 @@
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
-/*
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
 	if(!base_bindings)
@@ -97,18 +96,6 @@
 		if (!(keybind_name in GLOB.keybindings_by_name))
 			base_bindings -= keybind_name
 	return base_bindings
-*/
-
-/proc/sanitize_keybindings(value)
-	var/list/base_bindings = sanitize_islist(value, null)
-	if(!base_bindings)
-		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
-	for(var/key in base_bindings)
-		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
-		if(!length(base_bindings[key]))
-			base_bindings -= key
-	return base_bindings
-
 
 /datum/preferences/proc/load_preferences()
 	if(!path) return 0

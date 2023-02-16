@@ -206,3 +206,71 @@
   - bugfix: Fixed an issue in which sometimes qdeleted reagents still procced on life.
   - bugfix: Fixed examining things changing your direction if you're incapacitated.
   - bugfix: Added FAKEDEATH to the mob_incapacitated() check.
+2023-02-13:
+  Huffie56:
+  - maptweak: renamed buttons for secures storage to Secure Inner Doors and Secure
+      Outer Doors to make it more clear of what they do.
+  - maptweak: fix a floating apc in armory on standard map
+  NewyearnewmeUwu:
+  - maptweak: changes the default ss13 airlock in big red tcomms to a cm airlock
+  - bugfix: removed the funny misplaced door on shivas
+  - spellcheck: RO sign now says aCO instead of aXO
+  carlarctg:
+  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  realforest2001:
+  - bugfix: Fixes unnamed doors on colonies.
+  - bugfix: 'Fixes duplicate definitions from #2164'
+2023-02-14:
+  BKryth:
+  - refactor: moved the code for sentry laptop's table placement to a parent object
+      so it can be used by other objects.
+  stanalbatross:
+  - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
+      spiders from the black market
+2023-02-15:
+  Mister-moon1:
+  - qol: Yautja and WJs can now emote without a cooldown being initiated
+  NewyearnewmeUwu:
+  - code_imp: gibbing another human takes an unmodifiable 30 seconds
+  - admin: admins are alerted when a human tries to gib another human
+2023-02-16:
+  BeagleGaming1:
+  - bugfix: Restricts deconstructing racks / tables to all intents but help, allowing
+      you to place wrenches on tables and racks
+  Molto:
+  - bugfix: fixed steak sometimes not giving cutlet
+  NewyearnewmeUwu:
+  - maptweak: you can now walk below the water cooler in kutjevo medical
+  TheDonkified:
+  - bugfix: Loading a new character slot will properly update your character trait
+      points. You can now modify multiple human characters' character traits without
+      having to reload.
+  carlarctg:
+  - imageadd: Adds 64x64 'super top hat' as a toy item. Adds it to toy lists and to
+      the toy store in Big Red.
+  nauticall:
+  - rscadd: Added several new fortunes to fortune cookies.
+  - code_imp: Alphabetized the fortunes.txt file for fortune cookie blurbs.
+  realforest2001:
+  - rscadd: 'Updates Almayer ID Codes:'
+  - rscadd: Rebrands "Logistics" to "Database" as its primary function is to update
+      other IDs/Squad stuff. Removed Database from roles that ought not have it.
+  - rscadd: CMO has been given Database access.
+  - rscadd: Rebrands "Bridge" as "Command" as it was used for all command areas anyway.
+      Most doors that used Logistics, other than squad ones, now use Command.
+  - rscadd: Senior Command given access to Brig, however only to the office portion,
+      not holding cells.
+  - rscadd: Armory access code has been put to use again.
+  - rscadd: Maintenance Access no longer allows you to walk into rooms you don't have
+      access to.
+  - rscadd: Moved MP Armory button to the door it opens rather than CMPs office.
+  - rscadd: Commanding Officer's Office has had a remote door control button placed
+      on the desk, to let people in and out.
+  - spellcheck: Renamed ACCESS_MARINE_WO to ACCESS_MARINE_CMP as it is long outdated.
+  - rscadd: Engineering Storage can no longer be hacked.
+  - rscdel: Removed Brig access from Staff Officer and Intel Officer, along with two
+      admin dress clothes presets.
+  - bugfix: Riot Control lockers open on code blue, the correct level for their use.
+  - bugfix: Fixes two random brig doors in the middle of CIC hallway
+  stanalbatross:
+  - bugfix: fixed the healthscanner not showing the colour of chems and advice

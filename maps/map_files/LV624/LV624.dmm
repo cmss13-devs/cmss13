@@ -2287,7 +2287,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
-	name = "Outer Blast Door";
+	name = "Secure Outer Doors";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -9927,6 +9927,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
 /obj/structure/machinery/power/apc{
+	dir = 8;
 	name = "Secure Vault APC";
 	pixel_x = -28;
 	start_charge = 0
@@ -9943,7 +9944,7 @@
 /obj/item/clothing/suit/armor/vest/security,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = 25;
 	pixel_y = 5
 	},
@@ -12013,16 +12014,16 @@
 /area/lv624/lazarus/secure_storage)
 "aWb" = (
 /obj/structure/machinery/door_control{
-	id = "secure_outer_blast";
-	name = "Outer Blast Door";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = 25;
 	pixel_y = 5
+	},
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -12032,7 +12033,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
-	name = "Outer Blast Door";
+	name = "Secure Outer Doors";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -20065,7 +20066,7 @@
 /obj/item/storage/firstaid/adv/empty,
 /obj/structure/machinery/door_control{
 	id = "secure_outer_blast";
-	name = "Outer Blast Door";
+	name = "Secure Outer Doors";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -22970,7 +22971,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = -25;
 	pixel_y = 5
 	},

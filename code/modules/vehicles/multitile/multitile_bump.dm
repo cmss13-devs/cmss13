@@ -156,7 +156,7 @@
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE
@@ -415,7 +415,7 @@
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE

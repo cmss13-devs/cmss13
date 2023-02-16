@@ -291,7 +291,7 @@
 	if(!customizable)
 		create_shrapnel(loc, 12, dir, angle, , cause_data)
 		//so that shrapnel has time to hit mobs before they are knocked over by the explosion
-		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(cell_explosion), loc, explosive_power, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data), 0.3 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(cell_explosion), loc, explosive_power, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data), 0.3 SECONDS, numticks = 3)
 		qdel(src)
 	else
 		. = ..()

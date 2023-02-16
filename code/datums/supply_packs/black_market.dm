@@ -739,6 +739,12 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	dollar_cost = 50
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
+	name = "surplus magazine box (Ext M4RA x 12)"
+	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
+	dollar_cost = 45
+	containertype = /obj/structure/largecrate/black_market
+
 /* - Misc. USCM weaponry - */
 
 /datum/supply_packs/contraband/surplus/mk45_automag

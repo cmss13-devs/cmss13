@@ -78,6 +78,39 @@
 	containername = "\improper M41A extended magazines crate"
 	group = "Ammo"
 
+//------------------------For M4RA----------------
+
+/datum/supply_packs/ammo_dmr_mag_box
+	name = "Magazine box (M4RA, 16x regular mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m4ra,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M4RA magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_dmr_mag_box_ap
+	name = "Magazine box (M4RA, 16x AP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m4ra/ap,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M4RA AP magazines crate"
+	group = "Ammo"
+
+/* //commented out because l42 exts were already inaccessable
+/datum/supply_packs/ammo_mag_box_ext
+	name = "Magazine box (M4RA, 12x extended mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/ext,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M41A extended magazines crate"
+	group = "Ammo"
+*/
 //------------------------For M39----------------
 
 /datum/supply_packs/ammo_smg_mag_box

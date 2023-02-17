@@ -163,6 +163,8 @@
 #define TRAIT_SANTA "t_santa"
 /// If the mob is wearing bimex glasses. Used for badass laser deflection flavor text.
 #define TRAIT_BIMEX "t_bimex"
+///Stops emote cooldown
+#define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -235,6 +237,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_EAR_PROTECTION" = TRAIT_EAR_PROTECTION,
 		"TRAIT_SANTA" = TRAIT_SANTA,
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
+		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

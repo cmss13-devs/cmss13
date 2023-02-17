@@ -1605,7 +1605,7 @@
 /area/desert_dam/landing/console)
 "aeX" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
 	},
@@ -4792,7 +4792,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "anU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
 	},
@@ -5691,7 +5691,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "aqx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
 	},
@@ -6574,7 +6574,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
 	},
@@ -6606,7 +6606,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "asO" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -7578,7 +7578,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "avo" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
 	},
@@ -16659,7 +16659,7 @@
 /area/desert_dam/building/water_treatment_two/hallway)
 "aVV" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -17894,7 +17894,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aZJ" = (
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -18854,7 +18854,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -19670,7 +19670,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bff" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
@@ -20349,7 +20349,7 @@
 /area/desert_dam/building/water_treatment_two/control_room)
 "bhs" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -21680,7 +21680,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "blB" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
@@ -30206,7 +30206,7 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bMy" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -31071,7 +31071,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bPC" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
 	},
@@ -48728,7 +48728,7 @@
 	},
 /area/desert_dam/building/bar/bar_restroom)
 "cQO" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
@@ -49124,7 +49124,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSe" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
@@ -54558,7 +54558,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "duY" = (
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
@@ -58199,7 +58199,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dNi" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
@@ -61293,7 +61293,7 @@
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWz" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},

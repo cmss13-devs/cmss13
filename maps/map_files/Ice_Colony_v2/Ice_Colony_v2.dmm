@@ -10790,7 +10790,7 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aBz" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";
@@ -11232,7 +11232,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -14112,7 +14112,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/south)
 "aKK" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";
@@ -26110,7 +26110,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bsA" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 9;
@@ -29293,7 +29293,7 @@
 /area/ice_colony/underground/security/detective)
 "bAU" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bAV" = (
@@ -29458,7 +29458,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -31726,7 +31726,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bHt" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";
@@ -32922,7 +32922,7 @@
 	},
 /area/ice_colony/underground/security/backroom)
 "bKv" = (
-/obj/structure/machinery/computer/security/telescreen{
+/obj/structure/machinery/computer/cameras/telescreen{
 	name = "Interrogation Telescreen";
 	network = list("interrogation");
 	pixel_y = 32
@@ -34497,7 +34497,7 @@
 	},
 /area/ice_colony/underground/security)
 "bOv" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
@@ -34507,7 +34507,7 @@
 	},
 /area/ice_colony/underground/security)
 "bOw" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
 	tag = "icon-twindow (WEST)"
@@ -37184,7 +37184,7 @@
 	},
 /area/ice_colony/underground/reception/toilet_women)
 "bVn" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";

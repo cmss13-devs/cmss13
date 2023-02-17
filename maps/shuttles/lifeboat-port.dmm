@@ -429,7 +429,7 @@
 /area/shuttle/lifeboat)
 "Uf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,

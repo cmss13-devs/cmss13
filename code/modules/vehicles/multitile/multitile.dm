@@ -122,7 +122,7 @@
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		// You can't hide from the MPs
 		ACCESS_MARINE_BRIG,
 	)

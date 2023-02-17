@@ -493,12 +493,12 @@
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 400
-	var/obj/structure/machinery/computer/security/dropship/linked_cam_console
+	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
 		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/security/dropship/D in range(5, loc))
+			for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
 				linked_cam_console = D
 				break
 		icon_state = "[initial(icon_state)]_installed"

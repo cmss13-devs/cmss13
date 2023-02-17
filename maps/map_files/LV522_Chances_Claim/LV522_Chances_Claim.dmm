@@ -1323,7 +1323,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -2627,7 +2627,7 @@
 	icon_state = "NW-out";
 	tag = "icon-NW-out"
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = null;
 	pixel_x = -16
@@ -5167,7 +5167,7 @@
 	desc = "You think you can make out the iconography of a Xenomorph.";
 	icon_state = "3"
 	},
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 29
 	},
 /obj/item/prop{
@@ -6216,7 +6216,7 @@
 /area/lv522/atmos/east_reactor)
 "dkJ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	dir = 8;
 	layer = 3;
 	pixel_x = 5;
@@ -7167,7 +7167,7 @@
 /area/lv522/indoors/c_block/garage)
 "dIG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 4;
 	layer = 3.2;
@@ -13567,7 +13567,7 @@
 /area/lv522/outdoors/p_w_rockies)
 "gEQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	dir = 1;
 	pixel_x = -10;
 	pixel_y = 6
@@ -18165,7 +18165,7 @@
 /area/lv522/indoors/lone_buildings/engineering)
 "ivN" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	pixel_y = 8
 	},
 /turf/open/floor/prison{
@@ -20564,7 +20564,7 @@
 /area/lv522/indoors/a_block/security)
 "jvk" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 8;
 	layer = 3.2;
@@ -20864,7 +20864,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/cargo_intake)
 "jCb" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = null;
 	pixel_y = 21
 	},
@@ -23805,7 +23805,7 @@
 /area/lv522/atmos/cargo_intake)
 "kCN" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	pixel_y = 16
 	},
 /obj/item/trash/plate,
@@ -29208,7 +29208,7 @@
 /area/lv522/indoors/a_block/security)
 "mQm" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -29623,7 +29623,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mZK" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	pixel_x = 16;
 	pixel_y = 7
 	},
@@ -36505,7 +36505,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "pIO" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = null;
 	pixel_y = 21
 	},
@@ -36886,7 +36886,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "pPC" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	layer = 3.2;
 	name = "Television set";
@@ -43793,7 +43793,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "suV" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 1;
 	name = "Television set";
@@ -50397,7 +50397,7 @@
 "val" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	dir = 1;
 	pixel_y = 3
 	},
@@ -50607,7 +50607,7 @@
 /area/lv522/indoors/c_block/casino)
 "vdP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -56694,7 +56694,7 @@
 /area/lv522/indoors/lone_buildings/spaceport)
 "xsE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 4;
 	layer = 3.2;

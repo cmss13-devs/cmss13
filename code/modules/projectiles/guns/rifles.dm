@@ -1376,10 +1376,10 @@
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/m4ra_barrel/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/m4ra_barrel/INTEGRATED = new(src)
+	INTEGRATED.flags_attach_features &= ~ATTACH_REMOVABLE
+	INTEGRATED.Attach(src)
+	update_attachable(INTEGRATED.slot)
 
 /obj/item/weapon/gun/rifle/m4ra/training
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber

@@ -274,3 +274,25 @@
   - bugfix: Fixes two random brig doors in the middle of CIC hallway
   stanalbatross:
   - bugfix: fixed the healthscanner not showing the colour of chems and advice
+2023-02-17:
+  BeagleGaming1:
+  - bugfix: Makes CHUNK boxes not lethal
+  NewyearnewmeUwu:
+  - rscadd: IOs can now get a service jacket from their vendor.
+  - rscdel: IOs no longer spawn with the tanker jacket.
+  Silencer_pl:
+  - imageadd: Older, more anatomically correct and less cartoony cat sprites have
+      been readded. Jones is a calico again!
+  - rscdel: Cats can no longer be gibbed in ATMs.
+  harryob:
+  - admin: staff log -> admin log
+  - qol: you can now keybind showing held item
+  - bugfix: prevents silly bubbles appearing after death or unconsciousness
+  realforest2001:
+  - bugfix: Fixes compilation
+  stanalbatross:
+  - code_imp: repathed camera consoles to make more sense
+  - bugfix: fixed a minor bug with cameras
+  - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
+  - bugfix: fixed a few instances of surv presets having satchels that overrode each
+      other

@@ -7580,7 +7580,7 @@
 /area/almayer/command/telecomms)
 "auj" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer,
+/obj/structure/machinery/computer/cameras/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -10644,7 +10644,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/toughened,
-/obj/structure/machinery/computer/security/almayer_network/vehicle{
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 4;
 	layer = 2.99;
 	pixel_y = 4
@@ -11192,7 +11192,7 @@
 /area/almayer/living/grunt_rnr)
 "aDX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/containment{
+/obj/structure/machinery/computer/cameras/containment{
 	dir = 4
 	},
 /obj/structure/sign/safety/terminal{
@@ -11256,7 +11256,7 @@
 	dir = 4;
 	pixel_y = 17
 	},
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4
 	},
 /obj/structure/machinery/computer/card{
@@ -11807,7 +11807,7 @@
 	name = "General Listening Channel";
 	pixel_y = -28
 	},
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = -17
@@ -13356,7 +13356,7 @@
 	range = 20;
 	req_one_access_txt = "19;14"
 	},
-/obj/structure/machinery/computer/security/containment{
+/obj/structure/machinery/computer/cameras/containment{
 	dir = 4;
 	layer = 2.981;
 	pixel_y = 16
@@ -17773,7 +17773,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bdQ" = (
-/obj/structure/machinery/computer/security/dropship/two,
+/obj/structure/machinery/computer/cameras/dropship/two,
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -17852,7 +17852,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bec" = (
-/obj/structure/machinery/computer/security/dropship/one,
+/obj/structure/machinery/computer/cameras/dropship/one,
 /obj/structure/prop/ice_colony/hula_girl{
 	pixel_x = -10;
 	pixel_y = 16
@@ -19523,7 +19523,7 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "bkT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/containment{
+/obj/structure/machinery/computer/cameras/containment{
 	dir = 4;
 	layer = 2.99;
 	pixel_y = 16
@@ -21098,7 +21098,7 @@
 /area/almayer/living/offices)
 "brf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network/vehicle{
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -24043,7 +24043,7 @@
 /area/shuttle/drop1/sulaco)
 "bBY" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -25817,7 +25817,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "bIn" = (
-/obj/structure/machinery/computer/security/almayer_network,
+/obj/structure/machinery/computer/cameras/almayer_network,
 /obj/structure/surface/table/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -27268,7 +27268,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "bNt" = (
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 1
 	},
 /obj/structure/surface/table/almayer,
@@ -37144,7 +37144,7 @@
 /area/almayer/living/cryo_cells)
 "dvF" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/ot{
+/obj/structure/machinery/computer/cameras/wooden_tv/ot{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer,
@@ -43674,7 +43674,7 @@
 	dir = 4;
 	pixel_y = -12
 	},
-/obj/structure/machinery/computer/security/hangar{
+/obj/structure/machinery/computer/cameras/hangar{
 	dir = 4;
 	pixel_y = 12
 	},
@@ -45140,7 +45140,7 @@
 /area/almayer/living/grunt_rnr)
 "gKF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network/vehicle{
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -45402,7 +45402,7 @@
 /area/almayer/hallways/hangar)
 "gSi" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network,
+/obj/structure/machinery/computer/cameras/almayer_network,
 /obj/item/storage/box/tapes{
 	pixel_x = -16
 	},
@@ -48488,7 +48488,7 @@
 /area/almayer/hull/upper_hull/u_m_s)
 "ikM" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network,
+/obj/structure/machinery/computer/cameras/almayer_network,
 /obj/structure/machinery/computer/secure_data{
 	pixel_x = 17
 	},
@@ -50366,7 +50366,7 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "jaP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 1
 	},
 /obj/structure/machinery/light{
@@ -57153,7 +57153,7 @@
 	pixel_x = -6;
 	pixel_y = 28
 	},
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
 	pixel_x = -17
 	},
@@ -60459,7 +60459,7 @@
 /area/almayer/shipboard/brig/main_office)
 "ntq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 8
 	},
 /obj/structure/machinery/light{
@@ -63697,7 +63697,7 @@
 	},
 /area/almayer/living/tankerbunks)
 "oMs" = (
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 1
 	},
 /obj/structure/surface/table/almayer,
@@ -66607,7 +66607,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "qck" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv/almayer{
+/obj/structure/machinery/computer/cameras/wooden_tv/almayer{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -67560,7 +67560,7 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "qyz" = (
-/obj/structure/machinery/computer/security/containment/hidden{
+/obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
 	pixel_x = -17
 	},
@@ -69672,7 +69672,7 @@
 /area/almayer/living/pilotbunks)
 "ruc" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer,
+/obj/structure/machinery/computer/cameras/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
@@ -71586,7 +71586,7 @@
 	dir = 8;
 	pixel_y = 12
 	},
-/obj/structure/machinery/computer/security/hangar{
+/obj/structure/machinery/computer/cameras/hangar{
 	dir = 8;
 	pixel_y = -12
 	},
@@ -72163,7 +72163,7 @@
 	pixel_x = -12;
 	pixel_y = 28
 	},
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
 	pixel_x = -17
 	},
@@ -72592,7 +72592,7 @@
 	pixel_y = -28
 	},
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = -17
@@ -75011,7 +75011,7 @@
 /area/almayer/hallways/port_hallway)
 "tHc" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -3;
@@ -76654,7 +76654,7 @@
 /area/almayer/command/cichallway)
 "ush" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 8
 	},
 /obj/structure/machinery/light{
@@ -80141,7 +80141,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "vJo" = (
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 1
 	},
 /obj/structure/surface/table/almayer,
@@ -82881,7 +82881,7 @@
 /area/almayer/squads/charlie)
 "wPF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network/vehicle{
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -84078,7 +84078,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "xmv" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -85391,7 +85391,7 @@
 	},
 /area/almayer/command/cic)
 "xML" = (
-/obj/structure/machinery/computer/security/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/prop{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -86385,7 +86385,7 @@
 /area/almayer/living/grunt_rnr)
 "yge" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4
 	},
 /turf/open/floor/almayer{

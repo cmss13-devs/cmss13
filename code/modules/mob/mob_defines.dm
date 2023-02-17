@@ -333,7 +333,7 @@
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")
-		message_staff("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(src)]")
+		message_admins("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(src)]")
 
 		togglebuildmode(src)
 

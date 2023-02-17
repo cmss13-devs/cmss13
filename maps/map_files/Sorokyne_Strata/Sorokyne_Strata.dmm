@@ -381,7 +381,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abt" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -1038,7 +1038,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ada" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -1066,7 +1066,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ade" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -1461,7 +1461,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "aeh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/machinery/light/small{
@@ -2899,7 +2899,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ail" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -3146,7 +3146,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "aiU" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -3173,7 +3173,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aiY" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -4934,7 +4934,7 @@
 /area/strata/ag/interior/research_decks/security)
 "aou" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/strata{
@@ -5449,7 +5449,7 @@
 /area/strata/ag/interior/dorms)
 "apW" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -6381,7 +6381,7 @@
 /area/strata/ag/interior/outpost/security)
 "asA" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6837,7 +6837,7 @@
 /area/strata/ag/interior/outpost/security)
 "atO" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/strata,
@@ -7764,7 +7764,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aww" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/strata{
@@ -7812,7 +7812,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "awD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -9558,7 +9558,7 @@
 /area/strata/ag/interior/outpost/security)
 "aCc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -9590,7 +9590,7 @@
 /area/strata/ag/interior/outpost/security)
 "aCg" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/strata{
@@ -17725,7 +17725,7 @@
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/adminext)
 "bcF" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -20950,7 +20950,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/interior/plastic,
@@ -25126,7 +25126,7 @@
 /area/strata/ag/interior/outpost/admin)
 "bHH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -25515,7 +25515,7 @@
 /area/strata/ag/interior/outpost/gen/bball)
 "bKC" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
@@ -26698,7 +26698,7 @@
 /area/strata/ag/exterior/research_decks)
 "bVf" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -27854,7 +27854,7 @@
 "cdX" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced/tinted,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -28399,7 +28399,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "chx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/strata{
@@ -29534,7 +29534,7 @@
 /area/strata/ag/interior/dorms/flight_control)
 "coV" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -31026,7 +31026,7 @@
 /area/strata/ag/exterior/marsh/water)
 "dvR" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -34282,7 +34282,7 @@
 /area/strata/ag/interior/outpost/admin)
 "iVZ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/strata{
@@ -34873,7 +34873,7 @@
 /area/strata/ag/interior/tcomms)
 "jWi" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname{
@@ -34994,7 +34994,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "kes" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -36632,7 +36632,7 @@
 /area/strata/ag/exterior/marsh/crash)
 "mLe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{

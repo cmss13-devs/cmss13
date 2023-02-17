@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "The predator Falcon drone now has a sprite for observers, rather than being a random white queen eye"

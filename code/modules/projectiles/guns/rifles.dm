@@ -1333,7 +1333,7 @@
 	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
 	icon_state = "m4ra"
 	item_state = "m4ra"
-	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,

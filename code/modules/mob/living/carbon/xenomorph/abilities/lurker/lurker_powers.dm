@@ -326,6 +326,8 @@
 	if(!xeno.Adjacent(target_carbon))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return
+	if (!action_cooldown_check())
+		return
 
 	if(xeno.action_busy)
 		return
@@ -351,5 +353,6 @@
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
+	apply_cooldown()
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
 	return TRUE

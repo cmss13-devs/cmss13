@@ -116,4 +116,4 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 0 SECONDS
+	xeno_cooldown = 5 SECONDS

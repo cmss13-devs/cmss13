@@ -187,7 +187,7 @@
 	if(.)
 		return
 
-	var/obj/structure/bed/chair/chair = locate(/obj/structure/bed/chair) in range(1, src)
+	var/obj/structure/bed/chair/chair = locate(/obj/structure/bed/chair) in range(1, user)
 	if(chair)
 		chair.human_rotate()
 	return TRUE

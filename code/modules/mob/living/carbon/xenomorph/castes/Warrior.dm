@@ -27,7 +27,7 @@
 
 	heal_resting = 1.4
 
-	minimum_evolve_time = 8 MINUTES
+	minimum_evolve_time = 9 MINUTES
 
 	minimap_icon = "warrior"
 

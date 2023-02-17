@@ -225,7 +225,7 @@
 	pixel_x = -21;
 	pixel_y = -9
 	},
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_x = -5;
 	pixel_y = -13
 	},
@@ -16010,7 +16010,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hAX" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -42279,7 +42279,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "rMd" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	current_mag = null;
 	pixel_x = 6;
 	pixel_y = 6
@@ -52400,7 +52400,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "vMu" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "vMJ" = (
@@ -54411,7 +54411,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "wyn" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -57129,7 +57129,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/executive)
 "xBs" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "xBL" = (
@@ -58757,7 +58757,7 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "yfX" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_y = -8
 	},
 /obj/item/prop{

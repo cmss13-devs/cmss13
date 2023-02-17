@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed being able to use the pickup keybind while incapacitated"

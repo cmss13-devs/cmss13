@@ -317,6 +317,7 @@
 /obj/structure/machinery/camera/cas/Destroy()
 	for(var/mob/M as anything in viewing_users)
 		M.reset_view()
+	QDEL_NULL(viewing_users)
 	return ..()
 
 /obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)

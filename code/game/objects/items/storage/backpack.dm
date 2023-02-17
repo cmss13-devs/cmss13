@@ -589,10 +589,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
-
-/obj/item/storage/backpack/marine/satchel/rto/io/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "IO"
+	phone_category = PHONE_IO
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
@@ -943,6 +940,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A small, lightweight pack for expeditions and short-range operations."
 	icon_state = "ERT_satchel"
 	worn_accessible = TRUE
+
+/obj/item/storage/backpack/lightpack/five_slot
+	max_storage_space = 15
 
 /obj/item/storage/backpack/marine/engineerpack/ert
 	name = "\improper lightweight technician welderpack"

@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - rscdel: "got rid of storage powergame, laser guns, pred healing equipment, and spiders from the black market"

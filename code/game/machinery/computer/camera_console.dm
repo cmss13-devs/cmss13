@@ -45,8 +45,14 @@
 	cam_background.del_on_map_removal = FALSE
 
 /obj/structure/machinery/computer/security/Destroy()
+	QDEL_NULL(current)
+	QDEL_NULL(last_camera_turf)
+	QDEL_NULL_LIST(concurrent_users)
+	QDEL_NULL(cam_screen)
 	qdel(cam_screen)
+	QDEL_NULL(cam_background)
 	qdel(cam_background)
+	QDEL_NULL_LIST(range_turfs) // SHEESH
 	return ..()
 
 /obj/structure/machinery/computer/security/attack_remote(mob/user as mob)

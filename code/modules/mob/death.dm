@@ -1,10 +1,10 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
-/mob/proc/gib(cause = "gibbing")
+/mob/proc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	gibbing = TRUE
-	death(istype(cause, /datum/cause_data) ? cause : create_cause_data(cause), TRUE)
+	death(cause, TRUE)
 	gib_animation()
-	if (!SSticker?.mode?.hardcore)
+	if(!SSticker?.mode?.hardcore)
 		spawn_gibs()
 
 	// You're not coming back from being gibbed. Stop tracking here

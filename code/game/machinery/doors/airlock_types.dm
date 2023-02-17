@@ -401,11 +401,14 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MAINT)
 
+/obj/structure/machinery/door/airlock/almayer/maint/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/maint/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/machinery/door/airlock/almayer/maint/autoname
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname
 	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced

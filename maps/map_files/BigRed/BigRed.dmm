@@ -1572,7 +1572,9 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aec" = (
-/obj/structure/machinery/door/airlock/maintenance,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Telecommunications";
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -12244,9 +12246,10 @@
 	},
 /area/bigredv2/outside/medical)
 "aFK" = (
-/obj/structure/machinery/door/airlock/glass_medical{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
+	dir = 1;
 	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor{
@@ -39907,7 +39910,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "vzL" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";

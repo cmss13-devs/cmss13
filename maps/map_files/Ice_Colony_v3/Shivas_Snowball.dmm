@@ -1258,7 +1258,7 @@
 /area/shiva/interior/colony/research_hab)
 "aeX" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "afb" = (
@@ -3274,13 +3274,13 @@
 /area/shiva/interior/colony/medseceng)
 "apY" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/shiva{
 	dir = 1
@@ -4076,7 +4076,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "axq" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_x = -5;
 	pixel_y = -9
 	},
@@ -6201,7 +6201,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "aSa" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -6209,12 +6209,12 @@
 /area/shiva/interior/colony/medseceng)
 "aSc" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/storage/belt/marine,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -6238,7 +6238,7 @@
 /turf/closed/wall/shiva/prefabricated/white,
 /area/shiva/exterior/cp_lz2)
 "aSz" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -7836,7 +7836,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "bHN" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_x = -7;
 	pixel_y = -8
 	},
@@ -8058,7 +8058,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "bUe" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -8133,9 +8133,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "bXo" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -9812,12 +9811,12 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/item/weapon/gun/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/storage/belt/marine,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -10141,9 +10140,8 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "esf" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -10521,7 +10519,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -11369,7 +11367,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "fOE" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -13084,7 +13082,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "hHk" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
 	pixel_y = 25
@@ -14586,7 +14584,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "jis" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -14635,7 +14633,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
 "jlQ" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -15157,11 +15155,11 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/lz2_fortress)
 "jSb" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_x = 12;
 	pixel_y = 6
 	},
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_x = 5;
 	pixel_y = -7
 	},
@@ -15250,7 +15248,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "kap" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -17354,7 +17352,7 @@
 /area/shiva/interior/colony/medseceng)
 "maA" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "maW" = (
@@ -20728,7 +20726,7 @@
 /area/shiva/interior/warehouse)
 "pKm" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/fortbiceps)
 "pKF" = (
@@ -21721,7 +21719,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "qLA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8;
 	name = "\improper Null Hatch REPLACE ME"
 	},
@@ -22689,7 +22687,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "rSL" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_x = -6
 	},
 /turf/open/floor/shiva{
@@ -24911,7 +24909,7 @@
 	},
 /area/shiva/interior/bar)
 "ueX" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/fortbiceps)
 "ufb" = (
@@ -25446,7 +25444,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "uFA" = (
-/obj/item/weapon/gun/boltaction/colony{
+/obj/item/weapon/gun/boltaction{
 	pixel_x = -6
 	},
 /turf/open/floor/shiva{
@@ -25734,7 +25732,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "uRn" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -26803,7 +26801,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "wck" = (
-/obj/item/ammo_magazine/rifle/boltaction/colony,
+/obj/item/ammo_magazine/rifle/boltaction,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -26895,7 +26893,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "whI" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "whS" = (

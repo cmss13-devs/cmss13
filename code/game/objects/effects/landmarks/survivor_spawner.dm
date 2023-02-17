@@ -36,6 +36,8 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 3
 
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/clf/synth

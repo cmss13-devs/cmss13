@@ -201,6 +201,11 @@
 	else
 		button.icon_state = "template"
 
+/obj/item/clothing/glasses/night/m56_goggles/whiteout
+	name = "\improper M56T head mounted sight"
+	desc = "A headset and goggles system for the M56T 'Terminator' Smartgun. Has a low-light vision processor as well as a system allowing detection of thermal signatures though solid surfaces."
+	vision_flags = SEE_TURFS|SEE_MOBS
+
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
 	gender = NEUTER

@@ -717,7 +717,6 @@
 	if(attached_to && loc.z != attached_to.z)
 		zlevel_transfer = TRUE
 		zlevel_transfer_timer = addtimer(CALLBACK(src, PROC_REF(try_doing_tether)), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
-		//RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, .proc/transmitter_move_handler)
 		return TRUE
 	return FALSE
 

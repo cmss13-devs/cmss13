@@ -1,16 +1,3 @@
-#define VEND_TO_HAND (1<<0)
-#define VEND_UNIFORM_RANKS (1<<1)
-#define VEND_UNIFORM_AUTOEQUIP (1<<2)
-#define VEND_LIMITED_INVENTORY (1<<3)
-#define VEND_CLUTTER_PROTECTION (1<<4)
-#define VEND_CATEGORY_CHECK (1<<5)
-#define VEND_INSTANCED_CATEGORY (1<<6)
-#define VEND_FACTION_THEMES (1<<7)
-#define VEND_USE_VENDOR_FLAGS (1<<8)
-//Whether or not to load ammo boxes depending on ammo loaded into the vendor
-//Only relevant in big vendors, like Requisitions or Squad Prep
-#define VEND_LOAD_AMMO_BOXES (1<<9)
-
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 
@@ -543,6 +530,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
+			return TRUE
 	add_fingerprint(user)
 
 /obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)

@@ -32,7 +32,7 @@
 	/// If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/fixed = FALSE
 
-	var/obj/structure/machinery/computer/security/mortar/internal_camera
+	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
 /obj/structure/mortar/Initialize()
 	. = ..()

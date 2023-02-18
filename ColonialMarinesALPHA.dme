@@ -417,6 +417,7 @@
 #include "code\datums\elements\mouth_drop_item.dm"
 #include "code\datums\elements\poor_eyesight_correction.dm"
 #include "code\datums\elements\suturing.dm"
+#include "code\datums\elements\xeno_pounce_unhide.dm"
 #include "code\datums\elements\yautja_tracked_item.dm"
 #include "code\datums\elements\bullet_trait\damage_boost.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"

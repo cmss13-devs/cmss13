@@ -369,6 +369,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
 		button.icon_state = "template_active"
+	living_mob.AddElement(/datum/element/xeno_pounce_unhide)
 
 /datum/action/xeno_action/onclick/place_trap
 	name = "Place resin hole (200)"

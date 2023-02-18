@@ -252,7 +252,8 @@
 	icon = friend_image
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/mob/ghost = ..()
-	ghost.mind.original = aghosted_original_mob
+	if(ghost.mind)
+		ghost.mind.original = aghosted_original_mob
 	return ghost
 
 /datum/action/innate/imaginary_join

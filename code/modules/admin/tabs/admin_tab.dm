@@ -603,7 +603,12 @@
 				return
 			befriended_mob = selected_client.mob
 		if("Mob")
-			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", GLOB.living_mob_list)
+			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
+			for(var/mob/checking_mob as anything in cliented_mobs)
+				if(checking_mob.client)
+					continue
+				cliented_mobs -= checking_mob
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
 			if(!selected_mob)
 				return
 			befriended_mob = selected_mob

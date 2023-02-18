@@ -13,7 +13,7 @@
 	name = "cyborg gloves"
 	icon_state = "black"
 	item_state = "r_hands"
-	siemens_coefficient = 1.0
+	siemens_coefficient = 1
 
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."

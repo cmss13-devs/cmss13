@@ -10,7 +10,7 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
+		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/H)

@@ -9,11 +9,11 @@
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	circuit = /obj/item/circuitboard/computer/robotics
 
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
 	var/timeleft = 60
-	var/stop = 0.0
+	var/stop = 0
 	var/screen = 0 // 0 - Main Menu, 1 - Cyborg Status, 2 - Kill 'em All! -- In text
 
 
@@ -113,7 +113,7 @@
 			if (istype(I))
 				if(src.check_access(I))
 					if (!status)
-						message_staff("[key_name_admin(usr)] has initiated the global cyborg killswitch!")
+						message_admins("[key_name_admin(usr)] has initiated the global cyborg killswitch!")
 						log_game(SPAN_NOTICE("[key_name(usr)] has initiated the global cyborg killswitch!"))
 						src.status = 1
 						src.start_sequence()
@@ -153,7 +153,7 @@
 					var/choice = tgui_input_list(usr, "Are you certain you wish to detonate [R.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
-							message_staff("[key_name_admin(usr)] detonated [R.name]!")
+							message_admins("[key_name_admin(usr)] detonated [R.name]!")
 							log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
 							R.self_destruct()
 			else
@@ -166,7 +166,7 @@
 					var/choice = tgui_input_list(usr, "Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
-							message_staff("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
+							message_admins("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
 							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
 							R.canmove = !R.canmove
 							if (R.lockcharge)

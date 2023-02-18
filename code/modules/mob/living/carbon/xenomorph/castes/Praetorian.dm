@@ -28,6 +28,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
+	minimap_icon = "praetorian"
+
 /mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN

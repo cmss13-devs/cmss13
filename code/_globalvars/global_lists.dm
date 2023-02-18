@@ -25,6 +25,22 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
@@ -220,8 +236,16 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 #undef HALF_EDGE_RIGHT
 #undef HALF_EDGE_LEFT
 
+GLOBAL_LIST_INIT(color_vars, list("color"))
+
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
+
+GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))
+
+GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
+
+GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = paramslist_cache[params_data]
@@ -441,3 +465,25 @@ var/global/list/available_specialist_kit_boxes = list(
 			"Scout" = 2,
 			"Demo" = 2,
 			)
+
+/proc/init_global_referenced_datums()
+	init_keybindings()
+	generate_keybind_ui_data()
+
+/proc/init_emote_list()
+	. = list()
+	for(var/path in subtypesof(/datum/emote))
+		var/datum/emote/E = new path()
+		if(E.key)
+			if(!.[E.key])
+				.[E.key] = list(E)
+			else
+				.[E.key] += E
+		else if(E.message) //Assuming all non-base emotes have this
+			stack_trace("Keyless emote: [E.type]")
+
+		if(E.key_third_person) //This one is optional
+			if(!.[E.key_third_person])
+				.[E.key_third_person] = list(E)
+			else
+				.[E.key_third_person] |= E

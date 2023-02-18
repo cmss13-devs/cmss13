@@ -82,6 +82,7 @@
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
+	SSminimaps.remove_marker(src)
 
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
@@ -119,7 +120,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
-/mob/living/carbon/xenomorph/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.

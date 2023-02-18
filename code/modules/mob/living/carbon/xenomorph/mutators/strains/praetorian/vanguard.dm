@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/pierce,
 		/datum/action/xeno_action/activable/pounce/prae_dash,
 		/datum/action/xeno_action/activable/cleave,
-		/datum/action/xeno_action/onclick/toggle_cleave
+		/datum/action/xeno_action/onclick/toggle_cleave,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 	keystone = TRUE

@@ -11,29 +11,29 @@
 	build_path = M.type
 
 //TODO: Move these into computer/camera.dm
-/obj/item/circuitboard/computer/security
-	name = "Circuit board (Security Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security
+/obj/item/circuitboard/computer/cameras
+	name = "Circuit board (security camera monitor)"
+	build_path = /obj/structure/machinery/computer/cameras
 	var/network = list(CAMERA_NET_MILITARY)
 	req_access = list(ACCESS_MARINE_BRIG)
 	var/locked = 1
 
-/obj/item/circuitboard/computer/security/construct(obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/construct(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		C.network = network
 
-/obj/item/circuitboard/computer/security/disassemble(obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/cameras/disassemble(obj/structure/machinery/computer/cameras/C)
 	if (..(C))
 		network = C.network
 
-/obj/item/circuitboard/computer/security/engineering
+/obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/engineering
+	build_path = /obj/structure/machinery/computer/cameras/engineering
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	req_access = list()
-/obj/item/circuitboard/computer/security/mining
+/obj/item/circuitboard/computer/cameras/mining
 	name = "Circuit board (Mining Camera Monitor)"
-	build_path = /obj/structure/machinery/computer/security/mining
+	build_path = /obj/structure/machinery/computer/cameras/mining
 	network = list("MINE")
 	req_access = list()
 
@@ -162,11 +162,28 @@
 
 /obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
-		SC.can_order_contraband = contraband_enabled
+		SC.toggle_contraband(contraband_enabled)
 
 /obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
-		contraband_enabled = SC.can_order_contraband
+		SC.toggle_contraband(contraband_enabled)
+
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
+	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
+		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
+				return
+			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
+			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!contraband_enabled)
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
+					contraband_enabled = TRUE
+				else
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now."))
+					contraband_enabled = FALSE
+	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
@@ -214,30 +231,7 @@
 	build_path = /obj/structure/machinery/computer/research/main_terminal
 
 
-
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
-	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
-		var/catastasis = src.contraband_enabled
-		var/opposite_catastasis
-		if(catastasis)
-			opposite_catastasis = "STANDARD"
-			catastasis = "BROAD"
-		else
-			opposite_catastasis = "BROAD"
-			catastasis = "STANDARD"
-
-		switch( alert("Current receiver spectrum is set to: [catastasis]","Multitool-Circuitboard interface","Switch to [opposite_catastasis]","Cancel") )
-		//switch( alert("Current receiver spectrum is set to: " {(src.contraband_enabled) ? ("BROAD") : ("STANDARD")} , "Multitool-Circuitboard interface" , "Switch to " {(src.contraband_enabled) ? ("STANDARD") : ("BROAD")}, "Cancel") )
-			if("Switch to STANDARD","Switch to BROAD")
-				src.contraband_enabled = !src.contraband_enabled
-
-			if("Cancel")
-				return
-			else
-				to_chat(user, "DERP! BUG! Report this (And what you were doing to cause it) to Agouri")
-	return
-
-/obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/circuitboard/computer/cameras/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/id))
 		if(check_access(I))
 			locked = !locked

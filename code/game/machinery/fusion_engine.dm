@@ -23,7 +23,7 @@
 	var/cur_tick = 0 //Tick updater
 
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
-	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
+	var/fuel_rate = 0 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 	power_machine = TRUE
 
 /obj/structure/machinery/power/fusion_engine/Initialize(mapload, ...)
@@ -32,6 +32,11 @@
 	update_icon()
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 	start_processing()
+
+/obj/structure/machinery/power/fusion_engine/Destroy()
+	QDEL_NULL(fusion_cell)
+	. = ..()
+
 
 /obj/structure/machinery/power/fusion_engine/power_change()
 	return
@@ -324,8 +329,8 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "cell-full"
 	desc = "A rechargeable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
-	var/fuel_amount = 100.0
-	var/max_fuel_amount = 100.0
+	var/fuel_amount = 100
+	var/max_fuel_amount = 100
 
 /obj/item/fuelCell/update_icon()
 	switch(get_fuel_percent())

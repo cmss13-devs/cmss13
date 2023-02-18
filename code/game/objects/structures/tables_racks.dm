@@ -260,6 +260,11 @@
 
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
 	if(!W) return
+
+	if (W.has_special_table_placement)
+		W.set_to_table(src)
+		return
+
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
 		if(isxeno(user)) return
 		var/obj/item/grab/G = W
@@ -282,7 +287,7 @@
 				SPAN_DANGER("You throw [M] on [src]."))
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -303,11 +308,6 @@
 			deconstruct()
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
-		return
-
-	if (istype(W, /obj/item/device/sentry_computer))
-		var/obj/item/device/sentry_computer/computer = W
-		computer.setup(src)
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))
@@ -541,7 +541,7 @@
 			return
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		if(status == 2)
 			return
 	..()
@@ -558,7 +558,8 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		/turf/closed/wall)
+		/turf/closed/wall,
+	)
 
 /obj/structure/surface/table/reinforced/almayer_blend/north
 	icon_state = "reqNtable"
@@ -635,7 +636,7 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return

@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 	name = "ColMarTech Intelligence Officer Gear Rack"
 	desc = "An automated gear rack for IOs."
 	icon_state = "intel_gear"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	vendor_role = list(JOB_INTEL)
 
 /obj/structure/machinery/cm_vending/gear/intelligence_officer/get_listed_products(mob/user)
@@ -51,10 +51,13 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/rto/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine/insulated, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+
+		list("ARMOR (CHOOSE 1)", 0, null, null, null),
+		list("XM4 Pattern Intel Armor", 0, /obj/item/clothing/suit/storage/marine/rto/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Expedition Pack", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
@@ -108,7 +111,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 /obj/structure/machinery/cm_vending/clothing/intelligence_officer
 	name = "ColMarTech Intelligence Officer Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of IO standard-issue equipment."
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	vendor_role = list(JOB_INTEL)
 
 /obj/structure/machinery/cm_vending/clothing/intelligence_officer/get_listed_products(mob/user)
@@ -120,7 +123,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	name = "\improper ColMarTech Intelligence Officer Weapons Rack"
 	desc = "An automated weapon rack hooked up to a small storage of standard-issue weapons. Can be accessed only by the Intelligence Officers."
 	icon_state = "guns"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	vendor_role = list(JOB_INTEL)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
@@ -173,5 +176,5 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		/obj/item/tool/crowbar,
 		/obj/item/stack/fulton,
 		/obj/item/device/motiondetector/intel,
-		/obj/item/device/binoculars
+		/obj/item/device/binoculars,
 	)

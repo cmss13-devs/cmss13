@@ -6,8 +6,8 @@
 	name = "proxy bucket"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "bucket_proxy"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
@@ -42,8 +42,8 @@
 	name = "tiles and toolbox"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
@@ -77,8 +77,8 @@
 	name = "tiles, toolbox and sensor arrangement"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles_sensor"
-	force = 3.0
-	throwforce = 10.0
+	force = 3
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM

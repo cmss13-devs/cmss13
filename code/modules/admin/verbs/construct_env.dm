@@ -92,7 +92,7 @@
 	if(show_z == 0)
 		show_z = (world.maxz + 1)
 
-	message_staff("[key_name_admin(usr)] is constructing an environment using a DMM file ([input]).", x, y, show_z)
+	message_admins("[key_name_admin(usr)] is constructing an environment using a DMM file ([input]).", x, y, show_z)
 
 	try
 		var/datum/map_load_metadata/M = maploader.load_map(input, x, y, z, TRUE, FALSE, FALSE, TRUE)
@@ -102,7 +102,7 @@
 			O.update_icon()
 			O.set_pixel_location()
 
-		message_staff("[key_name_admin(usr)] has finished constructing an environment using a DMM file ([input]).", x, y, show_z)
+		message_admins("[key_name_admin(usr)] has finished constructing an environment using a DMM file ([input]).", x, y, show_z)
 	catch (var/ex)
 		to_chat(src, SPAN_NOTICE("Encountered an error whilst constructing the map! [ex]"))
-		message_staff("[key_name_admin(usr)] failed to construct the DMM file.")
+		message_admins("[key_name_admin(usr)] failed to construct the DMM file.")

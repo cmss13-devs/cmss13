@@ -296,3 +296,7 @@
   - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
   - bugfix: fixed a few instances of surv presets having satchels that overrode each
       other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye

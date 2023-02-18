@@ -6,8 +6,6 @@
 	rechargeTime = SHUTTLE_RECHARGE
 	ignitionTime = DROPSHIP_WARMUP_TIME
 	prearrivalTime = DROPSHIP_WARMUP_TIME
-
-	var/list/hatches = list()
 	var/datum/door_controller/aggregate/door_control
 
 	// Door control has been overridden
@@ -42,7 +40,7 @@
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
 	var/obj/docking_port/stationary/dockedAt = get_docked()
-	SSshuttle.moveShuttle(src.id, dockedAt.id, callTime)
+	SSshuttle.moveShuttle(src.id, dockedAt.id, TRUE)
 
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
@@ -148,8 +146,7 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 		dropship.in_flyby = FALSE
 		dropship.control_doors("unlock", "all", force=FALSE)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
-		console.update_equipment()
+		dropship.getControlConsole().update_equipment()
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
 	if(xeno_announce)
@@ -200,6 +197,16 @@
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
 	arriving_shuttle.mode = SHUTTLE_CRASHED
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+		if(affected_mob.z != z)
+			continue
+		if(affected_mob.buckled)
+			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			// shake_camera(affected_mob, 3, 1)
+		else
+			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			// shake_camera(affected_mob, 10, 1)
+			affected_mob.apply_effect(3, WEAKEN)
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

@@ -475,3 +475,9 @@ SUBSYSTEM_DEF(ticker)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
+
+
+/datum/controller/subsystem/ticker/proc/hijack_ocurred()
+	if(mode)
+		mode.is_in_endgame = TRUE
+		mode.force_end_at = (world.time + 25 MINUTES)

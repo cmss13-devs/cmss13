@@ -60,7 +60,7 @@
 	if (occupant_count > 3)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
 		sleep(31)
-		var/turf/sploded = locate(src.x + 1, src.y + 2, src.z)
+		var/turf/sploded = return_center_turf()
 		cell_explosion(sploded, 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("escape pod malfunction")) //Clears out walls
 		sleep(25)
 		mode = SHUTTLE_CRASHED

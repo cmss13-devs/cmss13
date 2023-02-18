@@ -9,7 +9,8 @@
 /datum/dropship_hijack/almayer/proc/crash_landing()
 	//break APCs
 	for(var/obj/structure/machinery/power/apc/A in machines)
-		if(A.z != crash_site.z) continue
+		if(A.z != crash_site.z)
+			continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
 			A.set_broken()
@@ -17,12 +18,13 @@
 	var/centre_x = crash_site.x + (crash_site.width / 2)
 	//determine outside of ship location
 	var/y_travel = 1
-	if(crash_site.y < ALMAYER_DECK_BOUNDARY)
-		y_travel = -1
 	var/obj/outer_target = new()
 	outer_target.x = centre_x
-	outer_target.y = ALMAYER_DECK_BOUNDARY + y_travel
+	outer_target.y = ALMAYER_DECK_BOUNDARY
 	outer_target.z = crash_site.z
+	if(crash_site.y < ALMAYER_DECK_BOUNDARY)
+		outer_target.y = 1
+
 	// find the outer point of the ship, the first turf that is not space
 	while(outer_target.y > 1 && istype(get_turf(outer_target), /turf/open/space))
 		outer_target.y += y_travel
@@ -31,19 +33,18 @@
 	while(outer_target.y < crash_site.y)
 		outer_target.y += (y_travel * 5)
 		var/turf/sploded = locate(outer_target.x + rand(-3, 3), outer_target.y, crash_site.z)
+		if(!sploded)
+			continue
 
-		cell_explosion(sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
-
-		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), create_cause_data("dropship crash"), 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
-		sleep(3)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), create_cause_data("dropship crash"), 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
 
 	qdel(outer_target)
 	// landing site explosion code
 	var/explonum = rand(10,15)
-	for(var/j=0; j<explonum; j++)
+	for(var/j = 0; j < explonum; j++)
 		var/turf/sploded = locate(crash_site.x + rand(-5, 15), crash_site.y + rand(-5, 25), crash_site.z)
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
-		sleep(3)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
@@ -67,24 +68,9 @@
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
-		sleep(1)
+		sleep(10)
 
-	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
-		if(affected_mob.z != crash_site.z)
-			continue
-		if(affected_mob.buckled)
-			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
-			// shake_camera(affected_mob, 3, 1)
-		else
-			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
-			// shake_camera(affected_mob, 10, 1)
-			affected_mob.apply_effect(3, WEAKEN)
-
-	// TODO this should be handled elsewhere
-	// sleep(100)
-	if(SSticker.mode)
-		SSticker.mode.is_in_endgame = TRUE
-		SSticker.mode.force_end_at = (world.time + 25 MINUTES)
+	SSticker.hijack_ocurred()
 
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)
@@ -98,19 +84,15 @@
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
 	var/area/target_area = get_crashsite_area(ship_section)
 	// spawn crash location
-	var/list/turfs = list()
-	for(var/turf/T in get_area_turfs(target_area))
-		turfs += T
-
-	if(!turfs || !turfs.len)
-		to_chat(src, "<span style='color: red;'>No area available.</span>")
+	var/turf/target = pick(get_area_turfs(target_area))
+	if(!target)
+		to_chat(src, SPAN_WARNING("No area available"))
 		return
-	var/turf/target = pick(turfs)
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
 	crash_site = target_site
-	crash_site.x = target.x
-	crash_site.y = target.y
+	crash_site.x = target.x - 5
+	crash_site.y = target.y - 11
 	crash_site.z = target.z
 
 	target_site.name = "[shuttle] crash site"
@@ -136,10 +118,7 @@
 		var/new_target_zone = pick(remaining_crash_sites)
 		var/area/target_area = get_crashsite_area(new_target_zone)
 		// spawn crash location
-		var/list/turfs = list()
-		for(var/turf/T in get_area_turfs(target_area))
-			turfs += T
-		var/turf/target = pick(turfs)
+		var/turf/target = pick(get_area_turfs(target_area))
 		crash_site.Move(target)
 		marine_announcement("A hostile aircraft on course for the [target_zone] has been successfully deterred.", "IX-50 MGAD System")
 		target_zone = new_target_zone
@@ -164,6 +143,8 @@
 
 	if(final_announcement)
 		return
+
+	shuttle.crashing = TRUE
 
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 

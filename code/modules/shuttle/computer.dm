@@ -155,8 +155,7 @@
 			locked_count++
 	.["locked_down"] = door_count == locked_count
 
-	if(ert.destination)
-		.["target_destination"] = ert.destination.name
+	.["target_destination"] = ert.destination?.name
 
 	.["destinations"] = list()
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)

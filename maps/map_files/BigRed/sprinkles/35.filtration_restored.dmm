@@ -698,10 +698,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -715,20 +712,14 @@
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Yg" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"

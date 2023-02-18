@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/staff_officer
 	name = "staff officer's locker"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	icon_state = "secure_locked_staff"
 	icon_closed = "secure_unlocked_staff"
 	icon_locked = "secure_locked_staff"
@@ -365,7 +365,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
 	density = FALSE
 	store_mobs = FALSE
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	icon_state = "secure_locked_cmdcabinet"
 	icon_closed = "secure_unlocked_cmdcabinet"
 	icon_locked = "secure_locked_cmdcabinet"

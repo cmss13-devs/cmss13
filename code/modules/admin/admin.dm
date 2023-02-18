@@ -1,15 +1,8 @@
 ////////////////////////////////
-/proc/message_admins(msg) // +ADMIN and above
-	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_admin(msg)
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
-			to_chat(C, msg)
-
-/proc/message_staff(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
+/proc/message_admins(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
-	msg = "<span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
+	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
 		msg += " (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
@@ -39,11 +32,13 @@
 
 /proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
-	for(var/client/C in GLOB.admins)
-		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
-			to_chat(C, msg)
-			if(C.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
-				sound_to(C, 'sound/effects/mhelp.ogg')
+	for(var/mob/possible_sea as anything in GLOB.player_list)
+		if(!isSEA(possible_sea))
+			continue
+
+		to_chat(possible_sea, msg)
+		if(possible_sea?.client.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
+			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
 /proc/msg_admin_ff(text, alive = TRUE)
@@ -170,7 +165,7 @@
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_staff("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
+	message_admins("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
 	world.update_status()
 
 
@@ -247,3 +242,47 @@
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
 			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
+
+/// Allow admin to add or remove traits of datum
+/datum/admins/proc/modify_traits(datum/D)
+	if(!D)
+		return
+
+	var/add_or_remove = input("Remove/Add?", "Trait Remove/Add") as null|anything in list("Add","Remove")
+	if(!add_or_remove)
+		return
+	var/list/available_traits = list()
+
+	switch(add_or_remove)
+		if("Add")
+			for(var/key in GLOB.traits_by_type)
+				if(istype(D,key))
+					available_traits += GLOB.traits_by_type[key]
+		if("Remove")
+			if(!GLOB.trait_name_map)
+				GLOB.trait_name_map = generate_trait_name_map()
+			for(var/trait in D.status_traits)
+				var/name = GLOB.trait_name_map[trait] || trait
+				available_traits[name] = trait
+
+	var/chosen_trait = input("Select trait to modify", "Trait") as null|anything in sort_list(available_traits)
+	if(!chosen_trait)
+		return
+	chosen_trait = available_traits[chosen_trait]
+
+	var/source = "adminabuse"
+	switch(add_or_remove)
+		if("Add") //Not doing source choosing here intentionally to make this bit faster to use, you can always vv it.
+			ADD_TRAIT(D,chosen_trait,source)
+		if("Remove")
+			var/specific = input("All or specific source ?", "Trait Remove/Add") as null|anything in list("All","Specific")
+			if(!specific)
+				return
+			switch(specific)
+				if("All")
+					source = null
+				if("Specific")
+					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D.status_traits[chosen_trait])
+					if(!source)
+						return
+			REMOVE_TRAIT(D,chosen_trait,source)

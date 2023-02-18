@@ -285,7 +285,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/prop/almayer/particle_cannon
+/obj/structure/prop/almayer/particle_cannon/corsat
 	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
 	desc = ""
 

@@ -35,7 +35,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/roar
-	mob_type_blacklist_typecache = list()
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/facehugger)
 
 	key = "roar"
 	message = "roars!"

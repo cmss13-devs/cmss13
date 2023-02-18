@@ -133,7 +133,7 @@
 
 	em_call.activate(announce = FALSE)
 
-	message_staff("A new Cortical Borer has spawned at [get_area(loc)]")
+	message_admins("A new Cortical Borer has spawned at [get_area(loc)]")
 
 /mob/living/simple_animal/borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0)
 	..(newloc)

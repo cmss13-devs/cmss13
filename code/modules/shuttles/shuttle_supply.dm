@@ -23,7 +23,8 @@
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return GLOB.supply_elevator_turfs[1]
+	if(length(GLOB.supply_elevator_turfs))
+		return GLOB.supply_elevator_turfs[1]
 
 /datum/shuttle/ferry/supply/New()
 	..()

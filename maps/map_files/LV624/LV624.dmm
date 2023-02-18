@@ -4758,8 +4758,7 @@
 "aws" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;
@@ -4897,8 +4896,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;

@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aaj" = (
-/obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer{
-	icon_state = "delta"
-	},
-/area/westerneye/hallways/midship_aft_hallway)
 "aao" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/kitchen/knife,
@@ -6017,11 +6011,11 @@
 	pixel_x = 1;
 	icon_state = "deck2"
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
+/turf/open/floor/almayer,
 /area/westerneye/hull/mid_hull)
 "bQv" = (
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
@@ -6035,7 +6029,8 @@
 "bQy" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
-	name = "\improper Docking Coordination"
+	name = "\improper Docking Coordination";
+	req_one_access_txt = "19;22"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -9201,6 +9196,13 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/westerneye/medical/aft_medical_lobby)
+"cPc" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer{
+	icon_state = "snowflake_charlie_arrow";
+	tag = "null"
+	},
+/area/westerneye/hallways/midship_aft_hallway)
 "cPm" = (
 /obj/structure/closet/radiation,
 /obj/structure/machinery/light/small{
@@ -19721,11 +19723,11 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/bedsheet/red{
-	layer = 3.2
+/obj/item/bedsheet/yellow{
+	pixel_y = 13
 	},
-/obj/item/bedsheet/medical{
-	pixel_y = 12
+/obj/item/bedsheet/yellow{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -19820,11 +19822,11 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/bedsheet/yellow{
-	layer = 3.2
-	},
 /obj/item/bedsheet/red{
 	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -21986,7 +21988,8 @@
 "grt" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
-	name = "\improper Docking Coordination"
+	name = "\improper Docking Coordination";
+	req_one_access_txt = "19;22"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -29763,6 +29766,12 @@
 	tag = "icon-sterile"
 	},
 /area/westerneye/engineering/lower_engineering)
+"iBv" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer{
+	icon_state = "delta"
+	},
+/area/westerneye/hallways/midship_aft_hallway)
 "iBx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -30009,11 +30018,11 @@
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "bluecorner";
-	tag = "icon-bluecorner (EAST)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
+/turf/open/floor/almayer,
 /area/westerneye/hull/mid_hull)
 "iGd" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -32073,7 +32082,12 @@
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
-/turf/open/floor/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1;
+	tag = "icon-W"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/westerneye/hull/mid_hull)
 "jkn" = (
 /obj/structure/sign/safety/maint{
@@ -38580,11 +38594,11 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/bedsheet/red{
-	layer = 3.2
-	},
-/obj/item/bedsheet/red{
+/obj/item/bedsheet/yellow{
 	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -38987,6 +39001,18 @@
 /obj/structure/machinery/cm_vending/gear/smartgun,
 /turf/open/floor/almayer,
 /area/westerneye/squads/charlie)
+"lks" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E"
+	},
+/turf/open/floor/almayer,
+/area/westerneye/hull/mid_hull)
 "lkU" = (
 /turf/closed/wall/almayer,
 /area/westerneye/hull/starboard_warehouse_mini)
@@ -40082,11 +40108,11 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/bedsheet/red{
-	layer = 3.2
-	},
-/obj/item/bedsheet/red{
+/obj/item/bedsheet/yellow{
 	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -40207,11 +40233,11 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/bedsheet/yellow{
-	layer = 3.2
-	},
-/obj/item/bedsheet/yellow{
+/obj/item/bedsheet/red{
 	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -40799,6 +40825,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/computer/cameras/containment{
+	pixel_x = 15
 	},
 /turf/open/floor/wood/ship,
 /area/westerneye/medical/medical_science)
@@ -41832,11 +41861,12 @@
 	},
 /area/westerneye/command/cic)
 "lZI" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Command Ladder"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 8;
+	name = "\improper Ladder"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -52054,6 +52084,14 @@
 	},
 /turf/open/floor/almayer,
 /area/westerneye/living/guestdorms)
+"oZk" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Docking Coordination"
+	},
+/turf/open/floor/plating,
+/area/westerneye/hallways/lowerdeck_port_hallway)
 "oZl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -52743,7 +52781,7 @@
 /obj/item/bedsheet/yellow{
 	layer = 3.2
 	},
-/obj/item/bedsheet/red{
+/obj/item/bedsheet/yellow{
 	pixel_y = 13
 	},
 /turf/open/floor/almayer{
@@ -52860,6 +52898,36 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/westerneye/hull/lower_hull/l_f_s)
+"pjR" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "pjZ" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
@@ -61345,6 +61413,10 @@
 	icon_state = "E";
 	tag = "icon-E-corner"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
 /turf/open/floor/almayer,
 /area/westerneye/hull/mid_hull)
 "rLW" = (
@@ -62532,13 +62604,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/westerneye/hallways/lowerdeck_port_hallway)
-"sdu" = (
-/obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer{
-	icon_state = "snowflake_charlie_arrow";
-	tag = "null"
-	},
-/area/westerneye/hallways/midship_aft_hallway)
 "sdy" = (
 /obj/structure/machinery/door/poddoor/railing{
 	id = "vehicle_elevator_railing_aux"
@@ -65258,6 +65323,39 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/westerneye/shipboard/brig/chief_mp_office)
+"sPI" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -17
+	},
+/obj/item/bedsheet/red{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "sPO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/landinglight/escape_pods/delayone{
@@ -65344,11 +65442,16 @@
 	height = 1;
 	id = "med1"
 	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E"
+	},
+/turf/open/floor/almayer,
 /area/westerneye/hull/mid_hull)
 "sRD" = (
 /obj/effect/decal/warning_stripes{
@@ -67288,8 +67391,8 @@
 "tvc" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "blue";
-	tag = "icon-blue (EAST)"
+	icon_state = "silver";
+	tag = "icon-green (EAST)"
 	},
 /area/westerneye/hallways/hangar)
 "tvf" = (
@@ -78983,6 +79086,36 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/westerneye/engineering/engineering_workshop/hangar)
+"wQh" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "wQj" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -82685,13 +82818,13 @@
 	},
 /area/westerneye/hull/mid_hull)
 "xOD" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	dir = 2;
-	name = "\improper Command Ladder"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Ladder"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -96796,7 +96929,7 @@ iTl
 hAs
 qMS
 lZz
-sVL
+oZk
 mnD
 mnD
 mnD
@@ -109423,7 +109556,7 @@ qCc
 rhs
 lAZ
 rbU
-frq
+sPI
 hBQ
 ixG
 vyx
@@ -109625,7 +109758,7 @@ bgZ
 nRh
 fJi
 vEb
-hkx
+pjR
 hBQ
 kHG
 vyx
@@ -110029,7 +110162,7 @@ ekE
 xIb
 dqI
 eox
-lzS
+uOV
 hBQ
 ojJ
 vyx
@@ -110215,7 +110348,7 @@ hJp
 xIb
 fIg
 hJp
-uOV
+wQh
 sSy
 cPX
 tif
@@ -115776,7 +115909,7 @@ ins
 rsp
 iEB
 sRf
-mlM
+lks
 gRZ
 gMJ
 eJF
@@ -119333,7 +119466,7 @@ gzf
 ixG
 xNE
 wKb
-sdu
+cPc
 ayA
 ayA
 ayA
@@ -119737,7 +119870,7 @@ gzf
 ixG
 xNE
 tfa
-aaj
+iBv
 ayA
 ayA
 ayA

@@ -35553,8 +35553,7 @@
 /area/prison/cellblock/mediumsec/north)
 "car" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
-	name = "emergency lockdown";
+	name = "emergency lockdown"
 	use_power = 0
 	},
 /turf/open/floor/prison{
@@ -44582,7 +44581,6 @@
 /area/prison/cellblock/mediumsec/east)
 "hdc" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "emergency lockdown";
 	use_power = 0
 	},
@@ -48346,7 +48344,6 @@
 /area/prison/canteen)
 "teg" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "emergency lockdown";
 	use_power = 0
 	},
@@ -49151,7 +49148,6 @@
 /area/prison/residential/central)
 "vDC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "emergency lockdown";
 	use_power = 0
 	},

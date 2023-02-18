@@ -989,7 +989,6 @@
 /area/ice_colony/surface/requesitions)
 "adD" = (
 /obj/structure/machinery/door_control{
-	id = "";
 	name = "Storage Unit Control";
 	pixel_x = 24
 	},
@@ -1000,7 +999,6 @@
 	icon_state = "switch-off"
 	},
 /obj/structure/machinery/door_control{
-	id = "";
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
@@ -1043,7 +1041,6 @@
 	icon_state = "switch-off"
 	},
 /obj/structure/machinery/door_control{
-	id = "";
 	name = "Storage Unit Control";
 	pixel_x = 24
 	},
@@ -1054,7 +1051,6 @@
 /area/ice_colony/surface/requesitions)
 "adK" = (
 /obj/structure/machinery/door_control{
-	id = "";
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
@@ -1541,7 +1537,6 @@
 /area/ice_colony/surface/requesitions)
 "afb" = (
 /obj/structure/machinery/door_control{
-	id = "";
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
@@ -10956,7 +10951,6 @@
 "aEj" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,
@@ -11162,7 +11156,6 @@
 /obj/item/shard,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,
@@ -11891,7 +11884,6 @@
 /area/ice_colony/surface/command/crisis)
 "aGN" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
@@ -11906,7 +11898,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/wood,
@@ -11914,7 +11905,6 @@
 "aGP" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,

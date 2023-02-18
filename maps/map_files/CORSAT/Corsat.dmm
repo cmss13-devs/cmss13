@@ -13200,10 +13200,7 @@
 	},
 /area/corsat/theta/biodome/hydroeast)
 "aKV" = (
-/obj/structure/prop/almayer/particle_cannon{
-	desc = "";
-	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
-	},
+/obj/structure/prop/almayer/particle_cannon/corsat,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},

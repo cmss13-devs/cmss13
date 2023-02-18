@@ -634,7 +634,7 @@
 /area/bigredv2/caves/mining)
 "XE" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/plating{

@@ -61,6 +61,8 @@
 
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 
+#define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
+
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
 #define COMSIG_KB_HUMAN_WEAPON_BURSTFIRE "keybinding_human_weapon_burstfire"

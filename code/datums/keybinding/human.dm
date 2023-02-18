@@ -186,10 +186,27 @@
 	. = ..()
 	if(.)
 		return
-
+    
 	var/obj/structure/bed/chair/chair = locate(/obj/structure/bed/chair) in range(1, user)
 	if(chair)
 		chair.human_rotate()
+
+/datum/keybinding/human/show_held_item
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "show_held_item"
+	full_name = "Show Held Item"
+	keybind_signal = COMSIG_KB_HUMAN_SHOW_HELD_ITEM
+
+/datum/keybinding/human/show_held_item/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/shown_item = human_user.get_active_hand()
+	if(shown_item && !(shown_item.flags_item & ITEM_ABSTRACT))
+		shown_item.showoff(human_user)
 	return TRUE
 
 #undef QUICK_EQUIP_PRIMARY

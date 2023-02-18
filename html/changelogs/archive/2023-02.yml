@@ -233,3 +233,70 @@
   NewyearnewmeUwu:
   - code_imp: gibbing another human takes an unmodifiable 30 seconds
   - admin: admins are alerted when a human tries to gib another human
+2023-02-16:
+  BeagleGaming1:
+  - bugfix: Restricts deconstructing racks / tables to all intents but help, allowing
+      you to place wrenches on tables and racks
+  Molto:
+  - bugfix: fixed steak sometimes not giving cutlet
+  NewyearnewmeUwu:
+  - maptweak: you can now walk below the water cooler in kutjevo medical
+  TheDonkified:
+  - bugfix: Loading a new character slot will properly update your character trait
+      points. You can now modify multiple human characters' character traits without
+      having to reload.
+  carlarctg:
+  - imageadd: Adds 64x64 'super top hat' as a toy item. Adds it to toy lists and to
+      the toy store in Big Red.
+  nauticall:
+  - rscadd: Added several new fortunes to fortune cookies.
+  - code_imp: Alphabetized the fortunes.txt file for fortune cookie blurbs.
+  realforest2001:
+  - rscadd: 'Updates Almayer ID Codes:'
+  - rscadd: Rebrands "Logistics" to "Database" as its primary function is to update
+      other IDs/Squad stuff. Removed Database from roles that ought not have it.
+  - rscadd: CMO has been given Database access.
+  - rscadd: Rebrands "Bridge" as "Command" as it was used for all command areas anyway.
+      Most doors that used Logistics, other than squad ones, now use Command.
+  - rscadd: Senior Command given access to Brig, however only to the office portion,
+      not holding cells.
+  - rscadd: Armory access code has been put to use again.
+  - rscadd: Maintenance Access no longer allows you to walk into rooms you don't have
+      access to.
+  - rscadd: Moved MP Armory button to the door it opens rather than CMPs office.
+  - rscadd: Commanding Officer's Office has had a remote door control button placed
+      on the desk, to let people in and out.
+  - spellcheck: Renamed ACCESS_MARINE_WO to ACCESS_MARINE_CMP as it is long outdated.
+  - rscadd: Engineering Storage can no longer be hacked.
+  - rscdel: Removed Brig access from Staff Officer and Intel Officer, along with two
+      admin dress clothes presets.
+  - bugfix: Riot Control lockers open on code blue, the correct level for their use.
+  - bugfix: Fixes two random brig doors in the middle of CIC hallway
+  stanalbatross:
+  - bugfix: fixed the healthscanner not showing the colour of chems and advice
+2023-02-17:
+  BeagleGaming1:
+  - bugfix: Makes CHUNK boxes not lethal
+  NewyearnewmeUwu:
+  - rscadd: IOs can now get a service jacket from their vendor.
+  - rscdel: IOs no longer spawn with the tanker jacket.
+  Silencer_pl:
+  - imageadd: Older, more anatomically correct and less cartoony cat sprites have
+      been readded. Jones is a calico again!
+  - rscdel: Cats can no longer be gibbed in ATMs.
+  harryob:
+  - admin: staff log -> admin log
+  - qol: you can now keybind showing held item
+  - bugfix: prevents silly bubbles appearing after death or unconsciousness
+  realforest2001:
+  - bugfix: Fixes compilation
+  stanalbatross:
+  - code_imp: repathed camera consoles to make more sense
+  - bugfix: fixed a minor bug with cameras
+  - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
+  - bugfix: fixed a few instances of surv presets having satchels that overrode each
+      other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye

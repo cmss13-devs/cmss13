@@ -65,7 +65,7 @@
 		message_prompt += "\n\n**This ticket is already being responded to by: [english_list(AH.opening_responders)]**"
 
 	if(AH)
-		message_staff("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")
+		message_admins("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")
 		if(length(AH.ticket_interactions) == 1) // add the admin who is currently responding to the list of people responding
 			LAZYADD(AH.opening_responders, src)
 
@@ -74,7 +74,7 @@
 	if(AH)
 		LAZYREMOVE(AH.opening_responders, src)
 		if (!msg)
-			message_staff("[key_name_admin(src)] has cancelled their reply to [key_name_admin(C, 0, 0)]'s admin help.")
+			message_admins("[key_name_admin(src)] has cancelled their reply to [key_name_admin(C, 0, 0)]'s admin help.")
 			return
 
 	if(!C) //We lost the client during input, disconnected or relogged.
@@ -269,7 +269,7 @@
 
 	window_flash(recipient)
 	log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
-	//we don't use message_staff here because the sender/receiver might get it too
+	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/X in GLOB.admins)
 		if(!CLIENT_IS_STAFF(X))
 			continue

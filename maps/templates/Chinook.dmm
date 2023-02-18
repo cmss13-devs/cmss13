@@ -4275,7 +4275,7 @@
 /area/adminlevel/chinook/event)
 "oO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -10744,7 +10744,7 @@
 /area/adminlevel/chinook/medical)
 "NW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4;
 	network = list("almayer","vehicle")
 	},

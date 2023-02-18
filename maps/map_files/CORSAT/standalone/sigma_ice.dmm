@@ -2413,7 +2413,7 @@
 /area/corsat/sigma/airlock/control)
 "Rq" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("sigma")
 	},
@@ -2866,7 +2866,7 @@
 /area/corsat/sigma/biodome/ice)
 "YR" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},

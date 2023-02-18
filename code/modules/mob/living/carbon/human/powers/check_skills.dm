@@ -64,7 +64,7 @@
 
 				var/skillname = params["skill"]
 				set_skill(skillname, newlevel)
-				message_staff("[key_name_admin(usr)] has edited [owner]'s [skillname] skill from [oldlevel] to level [newlevel].")
+				message_admins("[key_name_admin(usr)] has edited [owner]'s [skillname] skill from [oldlevel] to level [newlevel].")
 				. = TRUE
 
 		if("refresh")

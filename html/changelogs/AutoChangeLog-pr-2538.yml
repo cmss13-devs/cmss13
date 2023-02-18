@@ -1,4 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - bugfix: "Restricts deconstructing racks / tables to all intents but help, allowing you to place wrenches on tables and racks"

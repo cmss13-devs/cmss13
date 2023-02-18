@@ -2371,7 +2371,7 @@
 /area/shiva/interior/colony/medseceng)
 "akS" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 1;
 	pixel_y = 5
 	},
@@ -4492,7 +4492,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "azZ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -5439,7 +5439,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "aKQ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -7467,7 +7467,7 @@
 	},
 /area/shiva/interior/bar)
 "btQ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor/shiva{
 	dir = 9;
@@ -13845,7 +13845,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "iCJ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	pixel_y = 6
 	},
@@ -14222,7 +14222,7 @@
 /area/shiva/interior/colony/research_hab)
 "iXx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -15908,7 +15908,7 @@
 /area/shiva/exterior/junkyard)
 "kMJ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	pixel_y = 6
 	},
 /turf/open/floor/shiva{
@@ -16555,7 +16555,7 @@
 	},
 /area/shiva/interior/colony/central)
 "lvW" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
@@ -17059,7 +17059,7 @@
 /area/shiva/interior/colony/medseceng)
 "lXy" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	pixel_y = 6
 	},
 /turf/open/floor/shiva{
@@ -19283,7 +19283,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "otA" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 7
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -20447,7 +20447,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "pId" = (
-/obj/structure/machinery/computer/security/telescreen{
+/obj/structure/machinery/computer/cameras/telescreen{
 	name = "Interrogation Telescreen";
 	network = list("interrogation");
 	pixel_y = 32
@@ -20893,7 +20893,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "qfe" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -21829,7 +21829,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -22344,7 +22344,7 @@
 /area/shiva/exterior/lz1_valley)
 "rLD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/shiva{
@@ -22698,7 +22698,7 @@
 /area/shiva/interior/oob)
 "sfM" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	pixel_y = 6
 	},
@@ -26138,7 +26138,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "vBl" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -26974,7 +26974,7 @@
 	},
 /area/shiva/interior/colony/central)
 "wHr" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{

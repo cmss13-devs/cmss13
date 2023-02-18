@@ -1037,7 +1037,7 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "tP" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	name = "Television set";
 	network = null;

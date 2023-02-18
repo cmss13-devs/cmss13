@@ -542,7 +542,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bA" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "bcircuit"

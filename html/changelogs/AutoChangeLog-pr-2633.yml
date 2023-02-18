@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - imageadd: "Adds 64x64 'super top hat' as a toy item. Adds it to toy lists and to the toy store in Big Red."

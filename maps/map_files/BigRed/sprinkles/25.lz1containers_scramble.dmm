@@ -236,7 +236,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aK" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2"

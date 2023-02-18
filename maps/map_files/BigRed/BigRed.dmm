@@ -563,7 +563,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abH" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /obj/structure/surface/table,
@@ -1522,7 +1522,7 @@
 /area/bigredv2/outside/marshal_office)
 "aes" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -3173,7 +3173,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aiZ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "bcircuit"
@@ -14299,7 +14299,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aNB" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
@@ -17528,7 +17528,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aVX" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
@@ -19391,7 +19391,7 @@
 /area/bigredv2/outside/admin_building)
 "bbZ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -20293,7 +20293,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beW" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beX" = (
@@ -25336,7 +25336,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzI" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
@@ -25381,7 +25381,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzN" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -25517,7 +25517,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bAi" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -26110,7 +26110,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCc" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkredcorners2"

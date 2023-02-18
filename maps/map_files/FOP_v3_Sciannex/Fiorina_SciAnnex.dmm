@@ -815,7 +815,7 @@
 /area/fiorina/station/lowsec)
 "awx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "awF" = (
@@ -1829,7 +1829,7 @@
 	pixel_y = 19
 	},
 /obj/item/stack/sheet/wood,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "Somehow, it still functions.";
 	layer = 3.1;
 	name = "discarded camera console";
@@ -2339,7 +2339,7 @@
 /area/fiorina/tumor/servers)
 "bmX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -4287,7 +4287,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -5057,7 +5057,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "ddO" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -9212,7 +9212,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -9821,7 +9821,7 @@
 /area/fiorina/station/civres_blue)
 "gbP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp{
@@ -11383,7 +11383,7 @@
 /area/fiorina/station/medbay)
 "gZE" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -11465,7 +11465,7 @@
 /area/fiorina/station/park)
 "hbq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -11587,7 +11587,7 @@
 /area/fiorina/station/flight_deck)
 "hgp" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -13883,7 +13883,7 @@
 /area/fiorina/tumor/civres)
 "iHJ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -16093,7 +16093,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
 "jXB" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -16637,7 +16637,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "kmN" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("PRISON")
 	},
@@ -18894,7 +18894,7 @@
 /area/fiorina/station/power_ring)
 "lEz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -19621,7 +19621,7 @@
 /area/fiorina/station/power_ring)
 "mei" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -21536,7 +21536,7 @@
 /area/fiorina/tumor/servers)
 "njK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -22626,7 +22626,7 @@
 /area/fiorina/station/civres_blue)
 "nWK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/machinery/light/double/blue{
@@ -27573,7 +27573,7 @@
 /area/fiorina/station/power_ring)
 "rbD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -30925,7 +30925,7 @@
 	pixel_y = 21
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -31345,7 +31345,7 @@
 /area/fiorina/station/telecomm/lz2_north)
 "tBD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -31606,7 +31606,7 @@
 	},
 /area/fiorina/station/security)
 "tJR" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 7
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -35892,7 +35892,7 @@
 /area/fiorina/station/civres_blue)
 "wwr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -35934,7 +35934,7 @@
 	},
 /area/fiorina/station/botany)
 "wxX" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("PRISON")
 	},
@@ -35949,7 +35949,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "wyl" = (
@@ -38405,7 +38405,7 @@
 /area/fiorina/station/chapel)
 "xZD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	pixel_x = -1;
 	pixel_y = 3

@@ -20,6 +20,7 @@
 	cell = new /obj/item/cell(src)
 
 /obj/structure/machinery/floodlight/Destroy()
+	QDEL_NULL(cell)
 	SetLuminosity(0)
 	return ..()
 

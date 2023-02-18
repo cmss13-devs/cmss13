@@ -1,0 +1,6 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Adds a new (and currently the only) random event, 'Economy Inflation'. The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated colonies and vessels that requests a specific kind of vendors stationed on them have their prices increased, due to some randomly-selected incident backstory. There will be a random delay before the change comes into effect, so make sure you buy all you need beforehand! The announcement will only be visible shipside to avoid communications clutter."
+  - code_imp: "Added 'product type' variable to non-CM vendors, such as food, beverages, souto, recreation, used for the above."
+  - code_imp: "Added a global list for non-CM vending machines."

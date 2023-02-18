@@ -125,17 +125,15 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Atmospherics Condenser Storage";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aB" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -147,10 +145,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aD" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -336,18 +333,16 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -378,9 +373,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "br" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Filtration Facility";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -704,10 +698,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -721,20 +712,14 @@
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Yg" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"

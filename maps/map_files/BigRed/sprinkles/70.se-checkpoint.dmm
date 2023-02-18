@@ -19,11 +19,10 @@
 	},
 /area/bigred/ground/security)
 "bp" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Checkpoint Office";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -65,10 +64,9 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "hz" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Checkpoint Office";
-	req_access = null
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -197,10 +195,9 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "ve" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Checkpoint Office";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -469,7 +466,7 @@
 /area/bigred/ground/security)
 "YZ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 8
 	},
 /turf/open/floor/greengrid,

@@ -327,6 +327,9 @@
 	if(!has_hud)
 		return
 
+	if(!wearer)
+		return
+
 	SSminimaps.remove_marker(wearer)
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return

@@ -309,9 +309,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "aif" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -845,7 +844,7 @@
 /area/fiorina/station/lowsec)
 "awx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "awF" = (
@@ -916,9 +915,8 @@
 	},
 /area/fiorina/station/medbay)
 "ayX" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -1529,9 +1527,8 @@
 	},
 /area/fiorina/station/power_ring)
 "aMM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -1700,10 +1697,7 @@
 	},
 /area/fiorina/station/research_cells)
 "aRk" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/power_ring)
 "aRt" = (
@@ -1898,7 +1892,7 @@
 	pixel_y = 19
 	},
 /obj/item/stack/sheet/wood,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "Somehow, it still functions.";
 	layer = 3.1;
 	name = "discarded camera console";
@@ -2436,7 +2430,7 @@
 /area/fiorina/tumor/servers)
 "bmX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -2633,13 +2627,11 @@
 	},
 /area/fiorina/station/park)
 "btB" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/right{
 	density = 0;
 	desc = "A huge industrial shipping container. You could slip just behind it.";
 	health = 5000;
-	icon_state = "red 2,0";
 	layer = 4;
-	tag = "icon-red 2,0";
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -4482,7 +4474,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -4548,8 +4540,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "cDl" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -4689,8 +4680,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "cHD" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -5282,7 +5272,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "ddO" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -5984,8 +5974,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/fiberbush)
 "dwT" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -9615,7 +9604,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -10256,7 +10245,7 @@
 /area/fiorina/station/civres_blue)
 "gbP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp{
@@ -10350,9 +10339,8 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "gfh" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -11881,7 +11869,7 @@
 /area/fiorina/station/medbay)
 "gZE" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -11964,7 +11952,7 @@
 /area/fiorina/station/park)
 "hbq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -12088,7 +12076,7 @@
 /area/fiorina/station/flight_deck)
 "hgp" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -13404,9 +13392,8 @@
 	},
 /area/fiorina/station/security)
 "hVG" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -14489,7 +14476,7 @@
 /area/fiorina/tumor/civres)
 "iHJ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -15045,10 +15032,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "jae" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15397,8 +15381,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "jjs" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -15942,9 +15925,8 @@
 	},
 /area/fiorina/station/medbay)
 "jwc" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -16797,7 +16779,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
 "jXB" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -17380,7 +17362,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "kmN" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("PRISON")
 	},
@@ -19730,7 +19712,7 @@
 /area/fiorina/station/power_ring)
 "lEz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -20381,12 +20363,9 @@
 	},
 /area/fiorina/station/medbay)
 "mbp" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	locked = 1;
-	name = "\improper Null Hatch REPLACE ME";
-	req_access = null;
-	req_one_access = null
+	locked = 0;
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
@@ -20498,7 +20477,7 @@
 /area/fiorina/station/power_ring)
 "mei" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -20658,9 +20637,8 @@
 /turf/open/space,
 /area/fiorina/oob)
 "mhM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -22511,7 +22489,7 @@
 /area/fiorina/tumor/servers)
 "njK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -23643,7 +23621,7 @@
 /area/fiorina/station/civres_blue)
 "nWK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/machinery/light/double/blue{
@@ -24187,10 +24165,8 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. This one is in space.";
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
+/obj/structure/cargo_container/grant/left{
+	desc = "A huge industrial shipping container. This one is in space."
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -25770,8 +25746,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "ppI" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -28795,7 +28770,7 @@
 /area/fiorina/station/power_ring)
 "rbD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -30161,9 +30136,8 @@
 	},
 /area/fiorina/station/research_cells)
 "rSr" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -31155,9 +31129,8 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "sBA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -31220,9 +31193,8 @@
 	},
 /area/fiorina/station/power_ring)
 "sDL" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -32308,7 +32280,7 @@
 	pixel_y = 21
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -32316,8 +32288,7 @@
 	},
 /area/fiorina/station/security)
 "tpa" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -32751,7 +32722,7 @@
 /area/fiorina/station/telecomm/lz2_north)
 "tBD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -33024,7 +32995,7 @@
 	},
 /area/fiorina/station/security)
 "tJR" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 7
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -36278,9 +36249,8 @@
 	},
 /area/fiorina/station/civres_blue)
 "vFs" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -37499,7 +37469,7 @@
 /area/fiorina/station/civres_blue)
 "wwr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -37543,7 +37513,7 @@
 	},
 /area/fiorina/station/botany)
 "wxX" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("PRISON")
 	},
@@ -37558,7 +37528,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "wyl" = (
@@ -38037,8 +38007,7 @@
 	},
 /area/fiorina/tumor/servers)
 "wMi" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -38252,9 +38221,8 @@
 	},
 /area/fiorina/station/power_ring)
 "wRP" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
 	},
@@ -38700,8 +38668,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/security)
 "xja" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
-	name = "\improper Null Hatch REPLACE ME";
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	req_access = null;
 	req_one_access = null
 	},
@@ -38819,10 +38786,8 @@
 	},
 /area/fiorina/lz/near_lzI)
 "xmX" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/right{
 	health = 5000;
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0";
 	unacidable = 1
 	},
 /turf/open/floor/prison,
@@ -39343,10 +39308,8 @@
 	},
 /area/fiorina/station/botany)
 "xAl" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. You're not sure how it got here.";
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
+/obj/structure/cargo_container/grant/right{
+	desc = "A huge industrial shipping container. You're not sure how it got here."
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -40145,7 +40108,7 @@
 /area/fiorina/station/chapel)
 "xZD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	pixel_x = -1;
 	pixel_y = 3

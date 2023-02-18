@@ -699,6 +699,26 @@ world
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
 
+///Checks if the given iconstate exists in the given file, caching the result. Setting scream to TRUE will print a stack trace ONCE.
+/proc/icon_exists(file, state, scream)
+	var/static/list/screams = list()
+	var/static/list/icon_states_cache = list()
+	if(isnull(file) || isnull(state))
+		return FALSE //This is common enough that it shouldn't panic, imo.
+
+	if(isnull(icon_states_cache[file]))
+		icon_states_cache[file] = list()
+		for(var/istate in icon_states(file))
+			icon_states_cache[file][istate] = TRUE
+
+	if(isnull(icon_states_cache[file][state]))
+		if(isnull(screams[file]) && scream)
+			screams[file] = TRUE
+			stack_trace("State [state] in file [file] does not exist.")
+		return FALSE
+	else
+		return TRUE
+
 /proc/BlendRGB(rgb1, rgb2, amount)
 	var/list/RGB1 = ReadRGB(rgb1)
 	var/list/RGB2 = ReadRGB(rgb2)

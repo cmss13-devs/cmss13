@@ -172,7 +172,6 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light_bulb/bulb
 
-
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"
@@ -232,9 +231,7 @@
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 10
-				if(SOUTH)
-					pixel_y = -10
+					pixel_y = 20
 				if(EAST)
 					pixel_x = 10
 				if(WEST)
@@ -728,6 +725,7 @@
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 
 //Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/machinery/landinglight/ex_act(severity)
@@ -788,3 +786,38 @@
 /obj/structure/machinery/landinglight/ds2/spoke/turn_on()
 	icon_state = initial(icon_state) + "1"
 	SetLuminosity(3)
+
+/obj/structure/machinery/landinglight/escape_pods
+	id = "EVACUATION"
+	mouse_opacity = 0
+
+/obj/structure/machinery/landinglight/escape_pods/alt
+	icon_state = "landingstripe_alt"
+
+/obj/structure/machinery/landinglight/escape_pods/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "0"
+
+/obj/structure/machinery/landinglight/escape_pods/delayone/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "1"
+
+/obj/structure/machinery/landinglight/escape_pods/delaytwo/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "2"
+
+/obj/structure/machinery/landinglight/escape_pods/delaythree/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "3"
+
+/obj/structure/machinery/landinglight/escape_pods/alt/delayone/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "1"
+
+/obj/structure/machinery/landinglight/escape_pods/alt/delaytwo/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "2"
+
+/obj/structure/machinery/landinglight/escape_pods/alt/delaythree/turn_on()
+	SetLuminosity(2)
+	icon_state = initial(icon_state) + "3"

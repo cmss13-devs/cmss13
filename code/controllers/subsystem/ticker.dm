@@ -159,6 +159,16 @@ SUBSYSTEM_DEF(ticker)
 		/datum/controller/subsystem/vote/proc/initiate_vote,
 		"groundmap",
 		"SERVER",
+		CALLBACK(src, PROC_REF(handle_shipmap_reboot)),
+		TRUE
+	), 3 SECONDS)
+
+/datum/controller/subsystem/ticker/proc/handle_shipmap_reboot()
+	addtimer(CALLBACK(
+		SSvote,
+		/datum/controller/subsystem/vote/proc/initiate_vote,
+		"shipmap",
+		"SERVER",
 		CALLBACK(src, PROC_REF(Reboot)),
 		TRUE
 	), 3 SECONDS)

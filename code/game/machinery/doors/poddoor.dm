@@ -309,3 +309,6 @@
 	density = TRUE
 	opacity = TRUE
 	vehicle_resistant = TRUE
+
+/obj/structure/machinery/door/poddoor/almayer/open/evac
+	name = "Evacuation Pod Space Lock"

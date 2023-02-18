@@ -158,6 +158,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
+	/datum/admins/proc/vote_ship_map,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,

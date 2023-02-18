@@ -350,6 +350,8 @@
 	icon_state = "dropship1"
 	density = FALSE
 	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = FALSE
 
 
 /obj/structure/prop/almayer/cannon_cables

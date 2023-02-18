@@ -280,7 +280,7 @@
 		message_admins("[AM] ---> [AM.type]")
 		var/turf/fallonto_turf = get_turf(src)
 		var/area/my_area = get_area(fallonto_turf)
-		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
+		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi) && my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
 			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
 			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT)
 				for(var/turf/T in m_shuttle.get_location_area())

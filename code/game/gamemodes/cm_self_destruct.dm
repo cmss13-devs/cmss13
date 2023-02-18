@@ -192,6 +192,9 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	for(var/obj/structure/machinery/door/poddoor/shutters/almayer/EvacShutter in machines)
 		if(findtext(EvacShutter.id, "EVACUATION"))
 			EvacShutter.open()
+	for(var/obj/structure/machinery/landinglight/EvacLights in machines)
+		if(EvacLights.id == "EVACUATION")
+			EvacLights.turn_on()
 
 //=========================================================================================
 //=========================================================================================

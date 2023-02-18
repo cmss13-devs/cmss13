@@ -4,6 +4,13 @@
 	gulp_size = 10
 	icon = 'icons/obj/items/drinkcans.dmi'
 
+/obj/item/reagent_container/food/drinks/cans/Initialize()
+	. = ..()
+
+	if(crushed) //for my mapper friens
+		reagents.clear_reagents()
+		crush_can(null, TRUE)
+
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 
@@ -115,41 +122,41 @@
 
 	return ..()
 
-/obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user)
-	if(!ishuman(user))
-		return
-
-	var/mob/living/carbon/human/H = user
-	var/message
-	var/obj/limb/L
-	L = H.get_limb(H.zone_selected)
-
-	if(src == H.get_inactive_hand())
-		message = "between [user.gender == MALE ? "his" : "her"] hands"
-		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
+/obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user, override_for_map_var_edits)
+	if(!override_for_map_var_edits) //dont pass overide as an argument ever, its explicitly for map var edits
+		if(!ishuman(user))
 			return
-	else
-		switch(user.zone_selected)
-			if("head")
-				if(!L)
-					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
-					return
-				message = "against [user.gender == MALE ? "his" : "her"] head!"
-				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
-				H.UpdateDamageIcon()
-			if("l_foot" , "r_foot")
-				if(!L)
-					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
-					return
-				message = "under [user.gender == MALE ? "his" : "her"] foot!"
 
+		var/mob/living/carbon/human/H = user
+		var/message
+		var/obj/limb/L
+		L = H.get_limb(H.zone_selected)
+
+		if(src == H.get_inactive_hand())
+			message = "between [user.gender == MALE ? "his" : "her"] hands"
+			to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
+				return
+		else
+			switch(user.zone_selected)
+				if("head")
+					if(!L)
+						to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
+						return
+					message = "against [user.gender == MALE ? "his" : "her"] head!"
+					L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
+					H.UpdateDamageIcon()
+				if("l_foot" , "r_foot")
+					if(!L)
+						to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
+						return
+					message = "under [user.gender == MALE ? "his" : "her"] foot!"
+		user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	crushed = TRUE
 	flags_atom &= ~OPENCONTAINER
 	desc += "\nIts been crushed! A badass must have been through here..."
 	icon_state = "[icon_state]_crushed"
-	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
-	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
+	playsound(src.loc,"sound/items/can_crush.ogg", 15, 1)
 
 //SODA
 

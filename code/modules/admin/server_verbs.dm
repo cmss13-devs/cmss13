@@ -90,3 +90,14 @@
 
 	log_admin("[key_name(usr)] changed the ship map to [VM.map_name].")
 	message_admins("[key_name_admin(usr)] changed the ship map to [VM.map_name].")
+
+/datum/admins/proc/vote_ship_map()
+	set category = "Server"
+	set name = "M: Start Ship Map Vote"
+
+	if(!check_rights(R_SERVER))
+		return
+
+	SSvote.initiate_vote("shipmap", usr.ckey)
+	log_admin("[key_name(usr)] started a shipmap vote.")
+	message_admins("[key_name_admin(usr)] started a shipmap vote.")

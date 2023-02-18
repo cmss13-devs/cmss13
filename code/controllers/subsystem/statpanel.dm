@@ -27,6 +27,7 @@ SUBSYSTEM_DEF(statpanels)
 		if(SSmapping.next_map_configs)
 			cached = SSmapping.next_map_configs[GROUND_MAP]
 		global_data = list(
+			"Ship: [SSmapping.configs?[SHIP_MAP]?.map_name || "Loading..."]",
 			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
 // "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today

@@ -382,15 +382,6 @@
 	icon_state = "wy16"
 	},
 /area/bigredv2/outside/office_complex)
-"bk" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/bigredv2/outside/office_complex)
 "bl" = (
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin6";
@@ -1484,11 +1475,31 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/office_complex)
+"fv" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
 "fG" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
 /obj/item/device/radio/headset/distress/pmc/hvh,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"id" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1604,7 +1615,6 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -2006,16 +2016,16 @@ ao
 ao
 by
 aN
-bk
+id
 AB
-bk
+yS
 aV
 bv
 dN
 dP
 aV
-bk
-bk
+id
+yS
 od
 cE
 cM
@@ -2046,8 +2056,8 @@ Bu
 dF
 oF
 cu
-bk
-bk
+id
+yS
 cE
 dm
 ds
@@ -2062,14 +2072,14 @@ aU
 bv
 bm
 dA
-bp
+fv
 bp
 bp
 bp
 bp
 Qc
 bp
-bp
+fv
 dG
 si
 GG
@@ -2088,15 +2098,15 @@ aO
 aV
 aV
 Vg
-bk
-Lk
 yS
-bk
+Lk
+id
+yS
 cu
-bk
-bk
-bk
-bk
+yS
+yS
+yS
+yS
 dH
 bv
 bv
@@ -2170,13 +2180,13 @@ bv
 dL
 bm
 od
-bk
-bk
+yS
+yS
 cu
-bk
-bk
-bk
-bk
+id
+yS
+yS
+yS
 oF
 cv
 dz
@@ -2208,7 +2218,7 @@ bc
 cx
 dA
 fG
-bp
+fv
 bp
 cF
 do
@@ -2222,7 +2232,7 @@ dX
 dX
 dY
 aN
-bp
+fv
 rK
 bp
 aV
@@ -2230,7 +2240,7 @@ dM
 bv
 bv
 aV
-bp
+fv
 dA
 Ra
 cF

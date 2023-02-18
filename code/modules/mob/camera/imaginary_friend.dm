@@ -241,7 +241,7 @@
 /// logs the imaginary friend's removal, ghosts them and cleans up the friend
 /mob/camera/imaginary_friend/proc/deactivate()
 	log_admin("[key_name(src)] stopped being imaginary friend of [key_name(owner)].")
-	message_staff("[key_name_admin(src)] stopped being imaginary friend of [key_name_admin(owner)].")
+	message_admins("[key_name_admin(src)] stopped being imaginary friend of [key_name_admin(owner)].")
 	ghostize(TRUE, TRUE)
 	qdel(src)
 

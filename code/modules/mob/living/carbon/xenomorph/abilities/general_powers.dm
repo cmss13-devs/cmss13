@@ -391,6 +391,7 @@
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		SEND_SIGNAL(src, COMSIG_XENO_POUNCE_HIDE)
 		X.layer = MOB_LAYER
+		X.update_wounds()
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 	if(isravager(X))
 		X.emote("roar")

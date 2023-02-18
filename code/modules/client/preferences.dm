@@ -225,7 +225,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/unlock_content = 0
 
 	var/current_menu = MENU_MARINE
-
+	
+	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
 /datum/preferences/New(client/C)

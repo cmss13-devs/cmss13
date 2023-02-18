@@ -602,7 +602,8 @@
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
+/obj/item/weapon/gun/revolver/mateba/pmc
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Mateba autorevolver custom"

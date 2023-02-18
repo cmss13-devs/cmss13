@@ -4645,7 +4645,7 @@
 /area/adminlevel/chinook/event)
 "oO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -6558,10 +6558,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/chinook/shuttle/unpowered)
 "uS" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -6951,10 +6948,7 @@
 	},
 /area/adminlevel/chinook/medical)
 "vZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -9356,10 +9350,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "FB" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -9592,10 +9583,7 @@
 	},
 /area/adminlevel/chinook)
 "Gu" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -10429,10 +10417,7 @@
 	},
 /area/adminlevel/chinook)
 "Jl" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -11556,10 +11541,8 @@
 	},
 /area/adminlevel/chinook/engineering)
 "Np" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	indestructible = 1;
-	tag = "icon-green 2,0"
+/obj/structure/cargo_container/arious/right{
+	indestructible = 1
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -11754,7 +11737,7 @@
 /area/adminlevel/chinook/event)
 "NW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4;
 	network = list("almayer","vehicle")
 	},
@@ -12596,10 +12579,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "QB" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -13417,10 +13397,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "TA" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -13856,7 +13833,7 @@
 	name = "secure evidence locker";
 	req_access_txt = "3"
 	},
-/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

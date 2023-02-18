@@ -98,7 +98,7 @@
 	), PROC_REF(stop_watching))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
-	// Default colour
+	// Default color
 	if(Q.hive.color)
 		color = Q.hive.color
 
@@ -226,7 +226,6 @@
 			M.client.eye = src
 
 	return COMPONENT_OVERRIDE_VIEW
-
 
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
@@ -584,7 +583,7 @@
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
-	log_and_message_staff("[key_name_admin(src)] has created a Word of the Queen report:")
+	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
 	return TRUE
 
@@ -914,7 +913,7 @@
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
 
-/mob/living/carbon/xenomorph/queen/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 
 /datum/behavior_delegate/queen

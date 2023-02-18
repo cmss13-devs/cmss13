@@ -374,6 +374,20 @@
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 
+/obj/item/storage/box/zipcuffs/small
+	name = "small box of zip cuffs"
+	desc = "A small box full of zip cuffs."
+	w_class = SIZE_MEDIUM
+
+/obj/item/storage/box/zipcuffs/fill_preset_inventory()
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"
 	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"

@@ -5987,8 +5987,8 @@
 /obj/item/bedsheet/brown,
 /obj/structure/bed,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
 	},
 /area/almayer/living/numbertwobunks)
 "aqn" = (
@@ -8735,7 +8735,7 @@
 	req_access = list(3)
 	},
 /obj/structure/machinery/door_control{
-	id = "BacksideShutters";
+	id = "FrontsideShutters";
 	name = "MP Lockdown - Front halls Entrances Shutters";
 	pixel_y = -21;
 	pixel_x = -5;
@@ -8759,6 +8759,12 @@
 	name = "MP Lockdown - Back halls Entrances Shutters";
 	pixel_y = -29;
 	pixel_x = -5;
+	req_access = list(3)
+	},
+/obj/structure/machinery/door_control{
+	id = "SideSideShutters";
+	name = "MP Lockdown - Side Entrances Shutters";
+	pixel_y = -36;
 	req_access = list(3)
 	},
 /turf/open/floor/almayer{
@@ -11629,10 +11635,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
-	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -12064,10 +12067,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
+/turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)
 "aGW" = (
 /turf/open/floor/almayer{
@@ -40937,6 +40937,12 @@
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "SideSideShutters";
+	name = "\improper MP Lockdown Shutter";
+	layer = 3.5;
+	closed_layer = 3.5
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -56096,6 +56102,12 @@
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "SideSideShutters";
+	name = "\improper MP Lockdown Shutter";
+	layer = 3.5;
+	closed_layer = 3.5
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -76255,13 +76267,13 @@
 /area/almayer/lifeboat_pumps/south1)
 "tYV" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Officer's Deployment Armory";
+	name = "\improper Staff Officer's Armory";
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "bot_armory";
-	name = "\improper Officer's Deployment Armory Shutters"
+	name = "\improper Staff Officer's Armory Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -78185,6 +78197,13 @@
 	tag = "icon-emerald"
 	},
 /area/almayer/living/port_emb)
+"uMx" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/numbertwobunks)
 "uMS" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -78538,6 +78557,12 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
 	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "SideSideShutters";
+	name = "\improper MP Lockdown Shutter";
+	layer = 3.5;
+	closed_layer = 3.5
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -81970,6 +81995,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/port_point_defense)
+"wjR" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
+/area/almayer/living/bridgebunks)
 "wka" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha{
@@ -107471,7 +107507,7 @@ aGr
 mKq
 sxD
 tJi
-ivf
+wjR
 gUL
 mKq
 lGu
@@ -110301,7 +110337,7 @@ awF
 aFg
 aGV
 rvA
-rvA
+uMx
 awF
 cbm
 aUw
@@ -112928,9 +112964,9 @@ bbL
 kij
 bbL
 bbL
-bbL
+abg
 yfv
-bYe
+bbL
 aWl
 bbL
 bbL

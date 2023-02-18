@@ -35553,7 +35553,7 @@
 /area/prison/cellblock/mediumsec/north)
 "car" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "emergency lockdown"
+	name = "emergency lockdown";
 	use_power = 0
 	},
 /turf/open/floor/prison{

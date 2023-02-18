@@ -584,7 +584,7 @@
 		var/T_fake_zlevel = T_area.fake_zlevel
 		choices["Deck [T_fake_zlevel]"] = image(icon = icon, icon_state = "ec_button_[T_fake_zlevel]")
 
-	addtimer(CALLBACK(src, .proc/elevator_check), 10 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(elevator_check)), 10 SECONDS, TIMER_UNIQUE)
 
 /obj/item/elevator_contoller/proc/elevator_check()
 	my_elevator = supply_controller.shuttle

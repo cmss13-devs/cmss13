@@ -167,7 +167,7 @@
 		WEAR_BODY = /obj/item/clothing/under/rank/medical,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/roller/surgical,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/blue,
 		WEAR_IN_JACKET = /obj/item/device/healthanalyzer,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,

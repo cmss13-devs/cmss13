@@ -53,7 +53,7 @@
 			vv_update_display(A, "dir", dir2text(A.dir))
 
 		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-			if(!check_rights(NONE))
+			if(!check_rights(R_EVENT))
 				return
 
 			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list

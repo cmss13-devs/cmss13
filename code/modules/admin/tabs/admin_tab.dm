@@ -577,6 +577,55 @@
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
 
+/datum/admins/proc/imaginary_friend()
+	set category = "OOC.Mentor"
+	set name = "Imaginary Friend"
+
+	var/mob/user = usr
+
+	if(!check_rights(R_MOD|R_MENTOR))
+		return
+
+	if(istype(user, /mob/camera/imaginary_friend))
+		var/mob/camera/imaginary_friend/friend = user
+		friend.deactivate()
+		return
+
+	if(!isobserver(user))
+		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		return
+
+	var/mob/living/befriended_mob
+	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
+		if("Key")
+			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			if(!selected_client)
+				return
+			befriended_mob = selected_client.mob
+		if("Mob")
+			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
+			for(var/mob/checking_mob as anything in cliented_mobs)
+				if(checking_mob.client)
+					continue
+				cliented_mobs -= checking_mob
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			if(!selected_mob)
+				return
+			befriended_mob = selected_mob
+
+	if(!isobserver(user))
+		return
+
+	if(!istype(befriended_mob))
+		return
+
+	var/mob/camera/imaginary_friend/friend = new(get_turf(befriended_mob), befriended_mob)
+	friend.aghosted_original_mob = user.mind?.original
+	user.mind.transfer_to(friend)
+
+	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
+	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
+
 /client/proc/in_view_panel()
 	set name = "In View Panel"
 	set category = "Admin.InView"

@@ -27,7 +27,8 @@
 /area/template_noop)
 "e" = (
 /turf/open/floor/prison{
-	icon_state = "floor_plate"
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
 	},
 /area/template_noop)
 "f" = (

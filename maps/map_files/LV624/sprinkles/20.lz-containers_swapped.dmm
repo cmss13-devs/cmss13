@@ -8,7 +8,8 @@
 "c" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "loadingarea"
+	icon_state = "loadingarea";
+	tag = "loading"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "d" = (
@@ -22,7 +23,8 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "loadingarea"
+	icon_state = "loadingarea";
+	tag = "loading"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "j" = (
@@ -46,7 +48,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "loadingarea"
+	icon_state = "loadingarea";
+	tag = "loading"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "m" = (

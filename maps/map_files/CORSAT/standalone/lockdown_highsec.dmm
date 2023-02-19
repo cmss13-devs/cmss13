@@ -195,6 +195,7 @@
 /area/corsat/omega/checkpoint)
 "B" = (
 /obj/structure/bed/chair/comfy/black{
+	tag = "icon-comfychair (NORTH)";
 	icon_state = "comfychair";
 	dir = 1
 	},

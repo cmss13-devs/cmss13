@@ -21,7 +21,8 @@
 /area/shiva/interior/colony/research_hab)
 "e" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -30,7 +31,8 @@
 /area/shiva/interior/colony/research_hab)
 "f" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
+	icon_state = "W";
+	tag = "icon-W"
 	},
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -61,7 +63,8 @@
 /area/shiva/interior/colony/research_hab)
 "l" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -73,7 +76,8 @@
 /area/shiva/interior/colony/research_hab)
 "t" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
+	icon_state = "W";
+	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -94,7 +98,8 @@
 /area/shiva/interior/colony/research_hab)
 "z" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N"
+	icon_state = "N";
+	tag = "icon-N"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -103,7 +108,8 @@
 /area/shiva/interior/colony/research_hab)
 "B" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
+	icon_state = "W";
+	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -112,7 +118,8 @@
 /area/shiva/interior/colony/research_hab)
 "E" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	tag = "icon-W"
 	},
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -141,7 +148,8 @@
 /area/shiva/interior/colony/research_hab)
 "Q" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -161,7 +169,8 @@
 /area/shiva/interior/colony/research_hab)
 "U" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N"
+	icon_state = "N";
+	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva{
@@ -171,7 +180,8 @@
 /area/shiva/interior/colony/research_hab)
 "W" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
 	},
 /turf/open/floor/shiva{
 	dir = 8;

@@ -7,7 +7,8 @@
 	name = "Storage Chamber"
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "af" = (
@@ -15,14 +16,16 @@
 	layer = 2.69
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "ah" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "ai" = (
@@ -176,7 +179,8 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -609,7 +613,8 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/structure/machinery/light/small{
 	dir = 4;
-	icon_state = "bulb1"
+	icon_state = "bulb1";
+	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -678,7 +683,8 @@
 /obj/structure/xenoautopsy/tank,
 /obj/structure/machinery/light/small{
 	dir = 4;
-	icon_state = "bulb1"
+	icon_state = "bulb1";
+	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -781,7 +787,8 @@
 "cu" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4;
-	icon_state = "wooden_chair_wings"
+	icon_state = "wooden_chair_wings";
+	tag = "icon-wooden_chair_wings (EAST)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -798,7 +805,8 @@
 "cw" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8;
-	icon_state = "wooden_chair_wings"
+	icon_state = "wooden_chair_wings";
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -819,7 +827,8 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 8;
 	icon_state = "left";
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (WEST)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -847,7 +856,8 @@
 "cA" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1;
-	icon_state = "wooden_chair_wings"
+	icon_state = "wooden_chair_wings";
+	tag = "icon-wooden_chair_wings (NORTH)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -864,7 +874,8 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -880,7 +891,8 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1216,7 +1228,8 @@
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1292,27 +1305,32 @@
 "hd" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater"
+	icon_state = "heater";
+	tag = "icon-heater (NORTH)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 1;
-	icon_state = "bulb1"
+	icon_state = "bulb1";
+	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "hW" = (
 /obj/structure/ore_box,
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "hX" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "ji" = (
@@ -1372,10 +1390,12 @@
 "ET" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1;
-	icon_state = "term"
+	icon_state = "term";
+	tag = "icon-term (NORTH)"
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "HY" = (
@@ -1386,7 +1406,8 @@
 	name = "plasma power generator"
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "Jy" = (
@@ -1418,7 +1439,8 @@
 "VC" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion"
+	icon_state = "propulsion";
+	tag = "icon-propulsion (NORTH)"
 	},
 /turf/open/space,
 /area/space)
@@ -1430,7 +1452,8 @@
 /area/space)
 "Zr" = (
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 "Zv" = (
@@ -1452,10 +1475,12 @@
 "ZU" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater"
+	icon_state = "heater";
+	tag = "icon-heater (NORTH)"
 	},
 /turf/open/floor{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/yautja)
 

@@ -71,7 +71,8 @@
 "s" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/small{
-	dir = 4
+	dir = 4;
+	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -116,7 +117,8 @@
 	pixel_y = 8
 	},
 /obj/structure/machinery/light/small{
-	dir = 8
+	dir = 8;
+	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -199,7 +201,8 @@
 /area/shiva/interior/lz2_habs)
 "P" = (
 /obj/structure/bed/chair{
-	dir = 1
+	dir = 1;
+	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 1

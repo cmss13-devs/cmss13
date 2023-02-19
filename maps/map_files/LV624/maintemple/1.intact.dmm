@@ -56,7 +56,8 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1532,7 +1533,8 @@
 /area/lv624/ground/caves/sand_temple)
 "MB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1701,7 +1703,8 @@
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8
+	dir = 8;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1813,7 +1816,8 @@
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1843,6 +1847,12 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
+"Xb" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082"
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Xg" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -1863,7 +1873,8 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
@@ -2697,7 +2708,7 @@ mv
 mv
 kO
 PA
-UP
+Xb
 mv
 mv
 mv
@@ -2781,7 +2792,7 @@ mv
 mv
 kO
 PA
-UP
+Xb
 mv
 mv
 mv

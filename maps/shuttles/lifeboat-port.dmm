@@ -240,7 +240,8 @@
 	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
 	},
 /area/shuttle/lifeboat)
 "CI" = (
@@ -301,7 +302,8 @@
 /area/shuttle/lifeboat)
 "Jg" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-floor8"
 	},
 /area/shuttle/lifeboat)
 "Jw" = (
@@ -326,12 +328,14 @@
 	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
 	},
 /area/shuttle/lifeboat)
 "Nm" = (
 /turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
 	},
 /area/shuttle/lifeboat)
 "Ob" = (

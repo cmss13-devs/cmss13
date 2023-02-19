@@ -203,7 +203,8 @@
 /area/yautja)
 "as" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 6
+	dir = 6;
+	tag = "icon-intact (SOUTHEAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -362,7 +363,8 @@
 /area/yautja)
 "aI" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1
+	dir = 1;
+	tag = "icon-heater (NORTH)"
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced,
@@ -377,7 +379,8 @@
 /area/yautja)
 "aK" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1
+	dir = 1;
+	tag = "icon-heater (NORTH)"
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced,
@@ -392,7 +395,8 @@
 /area/yautja)
 "aL" = (
 /obj/structure/machinery/power/terminal{
-	dir = 1
+	dir = 1;
+	tag = "icon-term (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -793,7 +797,8 @@
 /area/yautja)
 "bS" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 9
+	dir = 9;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -989,7 +994,8 @@
 /area/yautja)
 "cq" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1002,6 +1008,12 @@
 	},
 /obj/structure/machinery/chem_dispenser/soda,
 /turf/open/shuttle/predship,
+/area/yautja)
+"cs" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "ct" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
@@ -1992,7 +2004,8 @@
 /area/yautja)
 "nW" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 6
+	dir = 6;
+	tag = "icon-intact (SOUTHEAST)"
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -2236,7 +2249,8 @@
 /area/yautja)
 "vO" = (
 /obj/structure/machinery/shower{
-	dir = 4
+	dir = 4;
+	tag = "icon-shower (EAST)"
 	},
 /obj/structure/machinery/door/window/tinted,
 /obj/structure/window/reinforced/tinted,
@@ -2898,7 +2912,8 @@
 /area/yautja)
 "OZ" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -6315,7 +6330,7 @@ bL
 cP
 bL
 bj
-bL
+cs
 cP
 bL
 bj

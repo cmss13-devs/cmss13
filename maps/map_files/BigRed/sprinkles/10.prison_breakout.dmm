@@ -2,18 +2,21 @@
 "aa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ab" = (
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ac" = (
 /obj/structure/surface/table,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ad" = (
@@ -22,7 +25,8 @@
 	},
 /obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ae" = (
@@ -31,14 +35,16 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "af" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ag" = (
@@ -47,7 +53,8 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitegreen"
+	icon_state = "whitegreen";
+	tag = "icon-whitegreen (EAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "ah" = (
@@ -63,14 +70,16 @@
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "al" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitegreen"
+	icon_state = "whitegreen";
+	tag = "icon-whitegreen (EAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "am" = (
@@ -78,7 +87,8 @@
 	pixel_y = 32
 	},
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "an" = (
@@ -88,25 +98,29 @@
 	},
 /obj/item/tool/soap/deluxe,
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "ao" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ap" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "aq" = (
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "ar" = (
@@ -114,17 +128,19 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "as" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Marshal Office Prison"
+	name = "\improper Marshal Office Prison";
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitegreenfull"
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "at" = (
@@ -134,11 +150,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Marshal Office Prison"
+	name = "\improper Marshal Office Prison";
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitegreenfull"
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "av" = (
@@ -147,13 +164,15 @@
 	name = "\improper Marshal Office Prison Toilet"
 	},
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "aw" = (
 /obj/structure/bed,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ax" = (
@@ -162,7 +181,8 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "ay" = (
@@ -170,14 +190,16 @@
 	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "az" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor{
-	icon_state = "white"
+	icon_state = "white";
+	tag = "icon-white"
 	},
 /area/bigredv2/outside/marshal_office)
 "aA" = (
@@ -186,7 +208,8 @@
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
 /area/bigredv2/outside/marshal_office)
 "aB" = (
@@ -199,7 +222,8 @@
 "aC" = (
 /obj/structure/closet/l3closet/security,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -239,7 +263,8 @@
 "aH" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
@@ -252,11 +277,12 @@
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 0;
-	name = "\improper Marshal Office Prison"
+	name = "\improper Marshal Office Prison";
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitegreenfull"
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "aJ" = (
@@ -265,11 +291,12 @@
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 0;
-	name = "\improper Marshal Office Prison"
+	name = "\improper Marshal Office Prison";
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitegreenfull"
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "aK" = (
@@ -277,11 +304,12 @@
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
-	name = "\improper Marshal Office Prison"
+	name = "\improper Marshal Office Prison";
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whitegreenfull"
+	icon_state = "whitegreenfull";
+	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
 /area/bigredv2/outside/marshal_office)
 "aL" = (
@@ -470,7 +498,7 @@
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
-	name = "\improper Marshal Office Armory"
+	name = "\improper Marshal Office Armory";
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -538,14 +566,16 @@
 /area/bigredv2/outside/marshal_office)
 "by" = (
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bA" = (
 /obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bB" = (
@@ -553,13 +583,15 @@
 /obj/item/ore/diamond,
 /obj/item/ore/uranium,
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bD" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "bE" = (
@@ -582,7 +614,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6"
+	icon_state = "gib6";
+	tag = "icon-gib6"
 	},
 /obj/item/ammo_casing/shell,
 /turf/open/floor{
@@ -616,21 +649,24 @@
 	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bN" = (
 /obj/structure/surface/table,
 /obj/item/device/radio,
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bO" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "bP" = (
@@ -694,7 +730,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	icon_state = "door_locked";
 	locked = 0;
-	name = "\improper Marshal Office Armory"
+	name = "\improper Marshal Office Armory";
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -704,7 +740,8 @@
 /obj/structure/surface/table,
 /obj/item/ore/uranium,
 /turf/open/floor{
-	icon_state = "bcircuit"
+	icon_state = "bcircuit";
+	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshal_office)
 "bY" = (
@@ -712,27 +749,31 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "bZ" = (
 /obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "ca" = (
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "cb" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshal Office Interrogation"
+	name = "\improper Marshal Office Interrogation";
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "cc" = (
@@ -781,7 +822,8 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "ck" = (
@@ -789,7 +831,8 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "darkish"
+	icon_state = "darkish";
+	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/marshal_office)
 "cl" = (
@@ -836,7 +879,7 @@
 "cq" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Marshal Office Evidence Room"
+	name = "\improper Marshal Office Evidence Room";
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -981,7 +1024,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6"
+	icon_state = "gib6";
+	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	icon_state = "redcorner"
@@ -1014,7 +1058,8 @@
 "cS" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
-	pixel_y = -30
+	pixel_y = -30;
+	tag = "icon-alarm0 (NORTH)"
 	},
 /turf/open/floor{
 	icon_state = "redcorner"
@@ -1033,7 +1078,7 @@
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
-	name = "\improper Marshal Office Holding Cell"
+	name = "\improper Marshal Office Holding Cell";
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1044,7 +1089,7 @@
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 0;
-	name = "\improper Marshal Office Holding Cell"
+	name = "\improper Marshal Office Holding Cell";
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1053,7 +1098,7 @@
 "cW" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Marshal Office Checkpoint"
+	name = "\improper Marshal Office Checkpoint";
 	},
 /turf/open/floor{
 	dir = 9;

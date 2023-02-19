@@ -25,7 +25,8 @@
 /area/shuttle/vehicle_elevator)
 "e" = (
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/shuttle/vehicle_elevator)
 "f" = (

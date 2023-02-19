@@ -57,7 +57,8 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTHEAST)"
 	},
 /area/lv624/lazarus/main_hall)
 "ai" = (
@@ -902,7 +903,8 @@
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -1020,7 +1022,8 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Mf" = (
@@ -1034,7 +1037,8 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue"
+	icon_state = "whiteblue";
+	tag = "icon-whitehall (WEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Nk" = (

@@ -82,7 +82,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aaq" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 8
+	dir = 8;
+	tag = ""
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -133,7 +134,8 @@
 /area/corsat/gamma/sigmaremote)
 "aay" = (
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/gamma/sigmaremote)
 "aaz" = (
@@ -196,26 +198,34 @@
 	},
 /area/corsat/gamma/hangar/office)
 "aaI" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/ds1/delayone{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaK" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "aaL" = (
 /turf/open/floor/almayer{
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "aaM" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight/ds1{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -240,14 +250,18 @@
 	},
 /area/shuttle/drop1/ice_colony)
 "aaQ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
 	},
 /area/corsat/gamma/hangar)
 "aaR" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight/ds1{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aaS" = (
@@ -266,7 +280,9 @@
 	},
 /area/shuttle/drop1/ice_colony)
 "aaV" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -286,7 +302,9 @@
 /turf/open/floor/plating/icefloor,
 /area/shuttle/drop1/ice_colony)
 "aaY" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -294,7 +312,8 @@
 /area/corsat/gamma/hangar)
 "aaZ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -310,13 +329,15 @@
 /area/corsat/gamma/residential/east)
 "abc" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "abd" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -332,7 +353,8 @@
 /area/corsat/gamma/hangar/office)
 "abh" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -341,7 +363,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "abj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -349,7 +372,8 @@
 /area/corsat/gamma/hangar)
 "abk" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -357,7 +381,8 @@
 /area/corsat/gamma/hangar)
 "abl" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -366,7 +391,8 @@
 /area/corsat/gamma/hangar)
 "abm" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -411,7 +437,8 @@
 /area/corsat/gamma/sigmaremote/teleporter)
 "abr" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -420,13 +447,15 @@
 /area/corsat/gamma/residential/east)
 "abt" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "abu" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -449,7 +478,8 @@
 /area/corsat/omega/control)
 "aby" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -457,7 +487,8 @@
 /area/corsat/gamma/hangar)
 "abz" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -468,7 +499,8 @@
 /area/corsat/gamma/hangar/security)
 "abB" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -477,7 +509,8 @@
 /area/corsat/gamma/hangar)
 "abC" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -489,7 +522,8 @@
 /area/corsat/gamma/residential/east)
 "abE" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -507,7 +541,8 @@
 /area/corsat/gamma/residential/researcher)
 "abI" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -598,7 +633,8 @@
 /area/shuttle/drop1/ice_colony)
 "abX" = (
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/shuttle/drop1/ice_colony)
 "abY" = (
@@ -609,18 +645,22 @@
 /area/shuttle/drop1/ice_colony)
 "abZ" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/corsat/gamma/hangar)
 "aca" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/corsat/gamma/hangar)
 "acc" = (
@@ -640,7 +680,8 @@
 /area/corsat/gamma/foyer)
 "ace" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -649,7 +690,8 @@
 /area/corsat/gamma/hangar)
 "acf" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -675,7 +717,8 @@
 "aci" = (
 /obj/structure/machinery/door/window/southleft{
 	dir = 8;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (WEST)"
 	},
 /obj/structure/machinery/shower{
 	dir = 1
@@ -719,7 +762,8 @@
 	},
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -728,19 +772,22 @@
 /area/corsat/gamma/residential/researcher)
 "acn" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aco" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "acp" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -749,7 +796,8 @@
 /area/corsat/gamma/hangar)
 "acq" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -758,13 +806,15 @@
 /area/corsat/gamma/hangar)
 "acr" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "acs" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -773,7 +823,8 @@
 /area/corsat/gamma/hangar)
 "act" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -836,7 +887,8 @@
 "acB" = (
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /obj/structure/machinery/shower{
 	dir = 1
@@ -916,7 +968,8 @@
 /area/corsat/gamma/residential/east)
 "acP" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -968,7 +1021,8 @@
 "acW" = (
 /obj/structure/machinery/door/window/southleft{
 	dir = 1;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (NORTH)"
 	},
 /obj/structure/machinery/shower{
 	dir = 1
@@ -1186,7 +1240,8 @@
 /area/corsat/gamma/hangar/checkpoint)
 "adB" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1207,7 +1262,8 @@
 /area/corsat/gamma/residential/east)
 "adE" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
@@ -1233,7 +1289,8 @@
 /area/corsat/gamma/residential/west)
 "adK" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -1259,7 +1316,8 @@
 /area/corsat/sigma/cafe)
 "adO" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1281,7 +1339,8 @@
 /area/corsat/gamma/residential/lounge)
 "adR" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -1364,7 +1423,8 @@
 /area/corsat/gamma/residential/east)
 "aef" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -1372,7 +1432,8 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aei" = (
@@ -1412,14 +1473,16 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aeq" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aer" = (
@@ -1470,7 +1533,8 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aez" = (
@@ -1578,7 +1642,8 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "aeQ" = (
@@ -1704,19 +1769,26 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "afk" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afl" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/ds2/delayone{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afm" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight/ds2{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -1737,14 +1809,18 @@
 	},
 /area/shuttle/drop2/ice_colony)
 "afp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
 	},
 /area/corsat/sigma/hangar)
 "afq" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight/ds2{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afr" = (
@@ -1753,18 +1829,23 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "afs" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
 	},
 /area/corsat/sigma/hangar)
 "aft" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	tag = "icon-landingstripe"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -1781,7 +1862,8 @@
 /area/corsat/gamma/sigmaremote/teleporter)
 "afv" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
@@ -1791,7 +1873,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "afy" = (
@@ -1816,25 +1899,29 @@
 /area/corsat/gamma/residential/lounge)
 "afB" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afC" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afD" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afE" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -1842,7 +1929,8 @@
 /area/corsat/sigma/hangar)
 "afF" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -1850,7 +1938,8 @@
 /area/corsat/sigma/hangar)
 "afG" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -1859,7 +1948,8 @@
 /area/corsat/sigma/hangar)
 "afH" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -1886,13 +1976,15 @@
 /area/corsat/sigma/hangar/office)
 "afL" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afM" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
@@ -1912,7 +2004,8 @@
 /area/shuttle/drop2/ice_colony)
 "afP" = (
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/shuttle/drop2/ice_colony)
 "afQ" = (
@@ -1928,13 +2021,15 @@
 /area/corsat/gamma/airlock/north)
 "afS" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afT" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
@@ -1949,7 +2044,8 @@
 /area/corsat/gamma/sigmaremote/teleporter)
 "afV" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -1957,7 +2053,8 @@
 /area/corsat/sigma/hangar)
 "afW" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -1965,7 +2062,8 @@
 /area/corsat/sigma/hangar)
 "afX" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -1974,7 +2072,8 @@
 /area/corsat/sigma/hangar)
 "afY" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -2238,7 +2337,7 @@
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "Airlock Control"
+	name = "Airlock Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -2471,7 +2570,8 @@
 /area/corsat/sigma/hangar/checkpoint)
 "ahp" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8
+	dir = 8;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -2745,7 +2845,8 @@
 /area/prison/hangar_storage/research/shuttle)
 "aib" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aic" = (
@@ -2782,13 +2883,15 @@
 "aig" = (
 /obj/structure/machinery/computer3,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aih" = (
 /obj/structure/machinery/light,
 /obj/structure/bed/chair/wood/normal{
-	dir = 8
+	dir = 8;
+	tag = ""
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -2799,12 +2902,14 @@
 /area/prison/hangar_storage/research/shuttle)
 "aij" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aik" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
+	icon_state = "rasputin7";
+	tag = "icon-rasputin7"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "ail" = (
@@ -2816,12 +2921,14 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "ain" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
+	icon_state = "rasputin6";
+	tag = "icon-rasputin6"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aio" = (
@@ -2839,7 +2946,8 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiq" = (
@@ -2885,7 +2993,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiv" = (
@@ -2900,7 +3009,8 @@
 /area/prison/hangar_storage/research/shuttle)
 "aix" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
+	icon_state = "rasputin8";
+	tag = "icon-rasputin7"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiy" = (
@@ -2946,7 +3056,8 @@
 /area/prison/hangar_storage/research/shuttle)
 "aiF" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aiG" = (
@@ -3030,7 +3141,8 @@
 "aiS" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aiT" = (
@@ -3041,6 +3153,16 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
+"aiV" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1;
+	tag = "icon-officechair_dark (NORTH)"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/corsat/gamma/residential/researcher)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -3111,18 +3233,22 @@
 /area/corsat/gamma/cargo)
 "ajh" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/corsat/sigma/hangar)
 "aji" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
+	icon_state = "warnplate";
+	tag = "icon-warnplate"
 	},
 /area/corsat/sigma/hangar)
 "ajj" = (
@@ -3274,7 +3400,8 @@
 /area/corsat/sigma/hangar/checkpoint)
 "ajJ" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -3283,7 +3410,8 @@
 /area/corsat/sigma/hangar)
 "ajK" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -3367,19 +3495,22 @@
 /area/corsat/gamma/sigmaremote)
 "ajT" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "ajU" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "ajV" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -3422,7 +3553,8 @@
 /area/corsat/sigma/south/complex/teleporter)
 "akb" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -3431,7 +3563,8 @@
 /area/corsat/sigma/hangar)
 "akc" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
@@ -3496,7 +3629,8 @@
 /area/corsat/sigma/dorms)
 "akm" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -3602,6 +3736,13 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/sigmaremote)
+"akF" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1;
+	tag = "icon-wooden_chair (NORTH)"
+	},
+/turf/open/floor/wood,
+/area/corsat/gamma/residential/east)
 "akG" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -3955,7 +4096,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -3981,7 +4123,8 @@
 	layer = 2.7
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -4036,7 +4179,8 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "alU" = (
@@ -4237,7 +4381,8 @@
 /area/corsat/sigma/dorms)
 "amu" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 8
+	dir = 8;
+	tag = ""
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -4272,7 +4417,8 @@
 /area/corsat/sigma/dorms)
 "amB" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -4288,7 +4434,8 @@
 /area/corsat/sigma/dorms)
 "amE" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -4304,7 +4451,8 @@
 /area/corsat/sigma/dorms)
 "amH" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -4391,7 +4539,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	layer = 3
@@ -4422,7 +4571,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	layer = 3
@@ -4514,7 +4664,8 @@
 /area/corsat/sigma/dorms)
 "ani" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -4523,7 +4674,8 @@
 /area/corsat/sigma/hangar)
 "anj" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 1
+	dir = 1;
+	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -4899,7 +5051,8 @@
 /obj/structure/shuttle/diagonal{
 	dir = 9;
 	icon_state = "wall";
-	layer = 3
+	layer = 3;
+	tag = "icon-wall (NORTHWEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/monorail/railcart)
@@ -4964,7 +5117,8 @@
 "aoy" = (
 /obj/structure/machinery/door/window/southleft{
 	dir = 8;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (WEST)"
 	},
 /obj/structure/machinery/shower{
 	dir = 1
@@ -5373,7 +5527,8 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "apI" = (
@@ -5384,7 +5539,8 @@
 /area/corsat/sigma/north)
 "apK" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -5492,7 +5648,8 @@
 /area/corsat/gamma/engineering/core)
 "aqb" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 4
+	dir = 4;
+	tag = "icon-officechair_dark (EAST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
@@ -5632,7 +5789,8 @@
 /area/corsat/gamma/engineering/lobby)
 "aqB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -5658,7 +5816,8 @@
 "aqE" = (
 /obj/structure/machinery/meter,
 /obj/structure/pipes/standard/simple/visible{
-	dir = 6
+	dir = 6;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -5763,7 +5922,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/generator)
 "aqW" = (
@@ -5808,7 +5968,8 @@
 "ard" = (
 /obj/structure/showcase{
 	icon_state = "broadcast receiver";
-	name = "Subspace Receiver"
+	name = "Subspace Receiver";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -5817,10 +5978,12 @@
 "are" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "arf" = (
@@ -5856,11 +6019,13 @@
 "ark" = (
 /obj/structure/showcase{
 	icon_state = "comm_server";
-	name = "Communications Server"
+	name = "Communications Server";
+	tag = "icon-broadcaster_send"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "arl" = (
@@ -5924,7 +6089,8 @@
 /area/corsat/emergency_access)
 "aru" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/platform{
 	dir = 4;
@@ -6321,7 +6487,8 @@
 /area/corsat/gamma/hangar/cargo)
 "asQ" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
@@ -6414,7 +6581,8 @@
 "ath" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "ati" = (
@@ -6423,7 +6591,8 @@
 "atj" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "atk" = (
@@ -6454,6 +6623,12 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/sigma/southeast/dataoffice)
+"atq" = (
+/turf/open/floor/almayer{
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
+	},
+/area/corsat/sigma/southeast/telecomm)
 "atr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -6499,7 +6674,8 @@
 "aty" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "atz" = (
@@ -6712,7 +6888,8 @@
 /area/corsat/sigma/airlock/south)
 "aul" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -6824,11 +7001,13 @@
 /area/corsat/sigma/southeast/datalab)
 "auA" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "auB" = (
@@ -7042,6 +7221,15 @@
 "avj" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/hangar/checkpoint)
+"avk" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/hallwaysouth)
 "avl" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -7102,7 +7290,8 @@
 /area/corsat/sigma/airlock/east)
 "avu" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -7145,7 +7334,8 @@
 "avz" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "avA" = (
@@ -7443,7 +7633,8 @@
 /obj/structure/shuttle/diagonal{
 	dir = 5;
 	icon_state = "wall";
-	layer = 3
+	layer = 3;
+	tag = "icon-wall (NORTHEAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/monorail/railcart)
@@ -8656,7 +8847,8 @@
 /area/corsat/sigma/airlock/east)
 "azi" = (
 /obj/structure/pipes/binary/pump/on{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -8783,7 +8975,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "azz" = (
@@ -9242,7 +9435,8 @@
 "aAG" = (
 /obj/effect/decal/mecha_wreckage/hoverpod,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aAH" = (
@@ -9454,17 +9648,20 @@
 /area/corsat/omega/cargo)
 "aBj" = (
 /turf/open/floor/almayer/research/containment/corner_var1{
-	icon_state = "containment_corner_variant_2"
+	icon_state = "containment_corner_variant_2";
+	tag = "icon-containment_corner_variant_2"
 	},
 /area/corsat/inaccessible)
 "aBk" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/inaccessible)
 "aBl" = (
 /turf/open/floor/almayer/research/containment/corner_var1{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/corsat/inaccessible)
 "aBm" = (
@@ -9476,22 +9673,26 @@
 /area/corsat/gamma/biodome/toxins)
 "aBn" = (
 /turf/open/floor/almayer/research/containment/entrance{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_entrance (WEST)"
 	},
 /area/corsat/inaccessible)
 "aBo" = (
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/inaccessible)
 "aBq" = (
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner (EAST)"
 	},
 /area/corsat/inaccessible)
 "aBr" = (
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_corner (NORTH)"
 	},
 /area/corsat/inaccessible)
 "aBs" = (
@@ -9851,7 +10052,8 @@
 "aCq" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -9977,7 +10179,8 @@
 "aCH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "aCI" = (
@@ -10092,7 +10295,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "aCU" = (
@@ -10100,7 +10304,8 @@
 	dir = 9
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "aCV" = (
@@ -10375,7 +10580,8 @@
 "aDC" = (
 /obj/structure/showcase{
 	icon_state = "broadcast receiver";
-	name = "Subspace Receiver"
+	name = "Subspace Receiver";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -10559,7 +10765,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "aDX" = (
@@ -10859,7 +11066,8 @@
 	dir = 10
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "aER" = (
@@ -10986,7 +11194,8 @@
 /area/corsat/gamma/residential/researcher)
 "aFj" = (
 /obj/structure/toilet{
-	dir = 8
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -11022,7 +11231,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -11411,7 +11621,8 @@
 /area/corsat/gamma/residential/researcher)
 "aGk" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -11588,7 +11799,8 @@
 /area/corsat/theta/airlock/east)
 "aGI" = (
 /obj/structure/toilet{
-	dir = 1
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -12276,7 +12488,8 @@
 "aId" = (
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "aIe" = (
@@ -12569,7 +12782,8 @@
 /area/corsat/gamma/security/cells)
 "aIW" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -12682,26 +12896,30 @@
 "aJn" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "aJo" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJp" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJq" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJr" = (
@@ -12712,7 +12930,8 @@
 /area/corsat/gamma/biodome/toxins)
 "aJs" = (
 /obj/structure/toilet{
-	dir = 1
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -12737,13 +12956,15 @@
 "aJw" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome)
 "aJx" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "aJy" = (
@@ -12775,14 +12996,16 @@
 "aJB" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJD" = (
@@ -12791,7 +13014,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aJE" = (
@@ -12819,13 +13043,15 @@
 /area/corsat/sigma/airlock/control)
 "aJI" = (
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome)
 "aJJ" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome)
 "aJK" = (
@@ -12836,7 +13062,7 @@
 "aJL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Sigma Dome Control"
+	name = "Sigma Dome Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13200,7 +13426,10 @@
 	},
 /area/corsat/theta/biodome/hydroeast)
 "aKV" = (
-/obj/structure/prop/almayer/particle_cannon/corsat,
+/obj/structure/prop/almayer/particle_cannon{
+	desc = "";
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -13293,7 +13522,7 @@
 "aLf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Hangar Office"
+	name = "Hangar Office";
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14016,7 +14245,7 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Administration Office"
+	name = "Administration Office";
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -14393,7 +14622,8 @@
 /area/corsat/gamma/hangar/checkpoint)
 "aOe" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/corsat/gamma/hangar/monorail/railcart)
 "aOf" = (
@@ -14681,7 +14911,8 @@
 "aOS" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /obj/structure/platform{
 	density = 0;
@@ -14779,7 +15010,8 @@
 "aPf" = (
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome)
 "aPg" = (
@@ -14819,7 +15051,8 @@
 "aPl" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "aPm" = (
@@ -14860,7 +15093,8 @@
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "aPr" = (
@@ -15020,7 +15254,8 @@
 "aPL" = (
 /obj/structure/shuttle/diagonal{
 	dir = 5;
-	layer = 3
+	layer = 3;
+	tag = "icon-wall (SOUTHEAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/monorail/railcart)
@@ -15206,7 +15441,8 @@
 /area/corsat/omega/hangar/office)
 "aQn" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
+	icon_state = "rasputin4";
+	tag = "icon-rasputin7"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aQo" = (
@@ -15271,7 +15507,8 @@
 "aQx" = (
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "aQy" = (
@@ -15279,7 +15516,8 @@
 	id = "hole4"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "aQz" = (
@@ -15463,7 +15701,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aRa" = (
@@ -15505,7 +15744,8 @@
 /area/corsat/gamma/rnr/library)
 "aRf" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -15518,7 +15758,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aRh" = (
@@ -15543,7 +15784,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aRk" = (
@@ -15613,7 +15855,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aRt" = (
@@ -15707,7 +15950,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "aRG" = (
@@ -15802,7 +16046,8 @@
 /area/corsat/gamma/residential/lounge)
 "aRT" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -15945,7 +16190,8 @@
 /area/corsat/gamma/biodome/complex)
 "aSl" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -15962,7 +16208,8 @@
 /area/corsat/gamma/medbay/lobby)
 "aSo" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -16222,7 +16469,8 @@
 "aSV" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "waste_corsat_out"
+	id_tag = "waste_corsat_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -16415,7 +16663,8 @@
 "aTv" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "mixed_corsat_out"
+	id_tag = "mixed_corsat_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -16474,7 +16723,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aTD" = (
@@ -16519,14 +16769,16 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aTK" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aTL" = (
@@ -16538,7 +16790,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aTN" = (
@@ -16634,7 +16887,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "aTV" = (
@@ -16673,7 +16927,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -16903,7 +17158,8 @@
 /area/corsat/sigma/dorms)
 "aUE" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -16939,7 +17195,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aUL" = (
@@ -16963,7 +17220,8 @@
 "aUN" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "nit_corsat_out"
+	id_tag = "nit_corsat_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -17024,7 +17282,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aUV" = (
@@ -17076,7 +17335,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVa" = (
@@ -17118,7 +17378,8 @@
 /area/corsat/sigma/dorms)
 "aVf" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -17159,7 +17420,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVm" = (
@@ -17170,7 +17432,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVn" = (
@@ -17178,14 +17441,16 @@
 /obj/item/tool/stamp/rd,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "aVo" = (
 /obj/structure/shuttle/diagonal{
 	dir = 6;
 	icon_state = "wall";
-	layer = 3
+	layer = 3;
+	tag = "icon-wall (SOUTHEAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/monorail/railcart)
@@ -17210,7 +17475,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVs" = (
@@ -17227,7 +17493,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVu" = (
@@ -17253,7 +17520,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVx" = (
@@ -17274,7 +17542,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVz" = (
@@ -17285,7 +17554,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVA" = (
@@ -17297,7 +17567,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVB" = (
@@ -17319,7 +17590,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVD" = (
@@ -17376,7 +17648,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVK" = (
@@ -17436,7 +17709,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVU" = (
@@ -17476,7 +17750,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aVY" = (
@@ -17708,7 +17983,8 @@
 	start_charge = 0
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "aWD" = (
@@ -17764,7 +18040,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aWN" = (
@@ -17772,7 +18049,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aWO" = (
@@ -17824,7 +18102,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "aWW" = (
@@ -17866,7 +18145,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "aXc" = (
@@ -17917,7 +18197,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -17980,7 +18261,8 @@
 /area/corsat/sigma/southeast/telecomm)
 "aXp" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -17989,7 +18271,8 @@
 "aXq" = (
 /obj/structure/showcase{
 	icon_state = "relay";
-	name = "Telecommunication Relay"
+	name = "Telecommunication Relay";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -18234,7 +18517,8 @@
 	dir = 4
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "aXX" = (
@@ -18364,7 +18648,8 @@
 /area/corsat/sigma/lavatory)
 "aYk" = (
 /obj/structure/toilet{
-	dir = 8
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -18440,7 +18725,8 @@
 /area/corsat/sigma/south)
 "aYv" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -18495,7 +18781,8 @@
 "aYD" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYE" = (
@@ -18510,7 +18797,8 @@
 "aYF" = (
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYG" = (
@@ -18544,7 +18832,8 @@
 "aYJ" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYK" = (
@@ -18587,7 +18876,8 @@
 "aYP" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYQ" = (
@@ -18618,7 +18908,8 @@
 "aYV" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYW" = (
@@ -18782,7 +19073,8 @@
 "aZp" = (
 /obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aZq" = (
@@ -18804,7 +19096,8 @@
 "aZs" = (
 /obj/structure/cargo_container/watatsumi/right,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aZt" = (
@@ -18883,7 +19176,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aZB" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
@@ -19021,7 +19315,8 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/entrance{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_entrance (WEST)"
 	},
 /area/corsat/inaccessible)
 "aZR" = (
@@ -19029,7 +19324,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/inaccessible)
 "aZS" = (
@@ -19211,7 +19507,8 @@
 /area/corsat/gamma/residential/west)
 "bal" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -19240,7 +19537,7 @@
 "bao" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Omega Dome Control"
+	name = "Omega Dome Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19340,7 +19637,7 @@
 "bay" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Omega Dome Control"
+	name = "Omega Dome Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19397,7 +19694,8 @@
 /area/corsat/omega/checkpoint)
 "baF" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -19633,7 +19931,7 @@
 /area/corsat/sigma/airlock/control)
 "bbh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Theta Dome Control"
+	name = "Theta Dome Control";
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -20019,7 +20317,8 @@
 /area/corsat/gamma/biodome/toxins)
 "bbZ" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/sink{
 	pixel_y = 25
@@ -20279,7 +20578,7 @@
 "bcA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Gamma Dome Control"
+	name = "Gamma Dome Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20480,115 +20779,136 @@
 "bdc" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdd" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_19"
+	icon_state = "mars_cave_19";
+	tag = "icon-mars_cave_19"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bde" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_13"
+	icon_state = "mars_dirt_13";
+	tag = "icon-mars_dirt_13"
 	},
 /area/corsat/sigma/biodome)
 "bdf" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_10"
+	icon_state = "mars_dirt_10";
+	tag = "icon-mars_dirt_10"
 	},
 /area/corsat/sigma/biodome)
 "bdg" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdh" = (
 /obj/structure/target/syndicate,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdi" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdj" = (
 /obj/structure/target,
 /obj/item/clothing/suit/storage/militia,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdk" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_20"
+	icon_state = "mars_cave_20";
+	tag = "icon-mars_cave_20"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdl" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_16"
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdm" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdn" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_14"
+	icon_state = "mars_dirt_14";
+	tag = "icon-mars_dirt_14"
 	},
 /area/corsat/sigma/biodome)
 "bdo" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_11"
+	icon_state = "mars_dirt_11";
+	tag = "icon-mars_dirt_11"
 	},
 /area/corsat/sigma/biodome)
 "bdp" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdq" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_12"
+	icon_state = "mars_dirt_12";
+	tag = "icon-mars_dirt_12"
 	},
 /area/corsat/sigma/biodome)
 "bdr" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bds" = (
 /obj/structure/target,
 /obj/item/clothing/suit/storage/militia,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdt" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_13"
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdu" = (
 /obj/structure/target/syndicate,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_16"
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdv" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_22"
+	icon_state = "mars_cave_22";
+	tag = "icon-mars_cave_22"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdw" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bdx" = (
@@ -20618,7 +20938,8 @@
 /area/corsat/theta/biodome)
 "bdC" = (
 /turf/open/gm/coast{
-	dir = 6
+	dir = 6;
+	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/corsat/theta/biodome)
 "bdD" = (
@@ -20638,6 +20959,12 @@
 "bdG" = (
 /turf/open/gm/coast{
 	dir = 8
+	},
+/area/corsat/theta/biodome)
+"bdH" = (
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
 	},
 /area/corsat/theta/biodome)
 "bdI" = (
@@ -20671,7 +20998,8 @@
 /area/corsat/theta/biodome)
 "bdN" = (
 /turf/open/gm/coast{
-	dir = 5
+	dir = 5;
+	tag = "icon-beach (NORTHEAST)"
 	},
 /area/corsat/theta/biodome)
 "bdO" = (
@@ -20769,7 +21097,8 @@
 /area/corsat/theta/biodome)
 "bef" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_4"
+	icon_state = "mars_cave_4";
+	tag = "icon-mars_cave_4"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beg" = (
@@ -20832,7 +21161,8 @@
 /area/corsat/theta/biodome)
 "beq" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ber" = (
@@ -20861,7 +21191,8 @@
 "beu" = (
 /obj/structure/target/syndicate,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bev" = (
@@ -20946,22 +21277,26 @@
 /area/corsat/theta/biodome)
 "beK" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beL" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_8"
+	icon_state = "mars_cave_8";
+	tag = "icon-mars_cave_8"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beM" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_23"
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beN" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7"
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beO" = (
@@ -20970,7 +21305,8 @@
 "beP" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
@@ -21002,17 +21338,20 @@
 /obj/structure/target,
 /obj/item/clothing/suit/storage/militia,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_13"
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beV" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_9"
+	icon_state = "mars_cave_9";
+	tag = "icon-mars_cave_9"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beW" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "beX" = (
@@ -21033,7 +21372,8 @@
 /area/corsat/gamma/biodome)
 "bfb" = (
 /turf/closed/ice/end{
-	dir = 8
+	dir = 8;
+	tag = "icon-End (WEST)"
 	},
 /area/corsat/gamma/biodome)
 "bfc" = (
@@ -21042,21 +21382,24 @@
 "bfd" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 8;
-	icon_state = "single_ends"
+	icon_state = "single_ends";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfe" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 4;
-	icon_state = "single_ends"
+	icon_state = "single_ends";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bff" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 9;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (NORTHWEST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
@@ -21067,236 +21410,279 @@
 "bfh" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 10;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHWEST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfi" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 5;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (NORTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfj" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "single_ends"
+	icon_state = "single_ends";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfk" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "single_ends"
+	icon_state = "single_ends";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bfl" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	icon_state = "north_wall"
+	icon_state = "north_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfm" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "south_wall"
+	icon_state = "south_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfn" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	icon_state = "single"
+	icon_state = "single";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bfo" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 1
+	dir = 1;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfp" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfq" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 4
+	dir = 4;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfr" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "east_wall"
+	icon_state = "east_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfs" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 8
+	dir = 8;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bft" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 6
+	dir = 6;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfu" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "single"
+	icon_state = "single";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfv" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	icon_state = "west_wall"
+	icon_state = "west_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfw" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bfx" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	icon_state = "east_wall"
+	icon_state = "east_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfy" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "south_wall"
+	icon_state = "south_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfz" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 8
+	dir = 8;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfA" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 4
+	dir = 4;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
-/obj/structure/ice/ice_rock/cornerOverlay,
+/obj/structure/ice/ice_rock/cornerOverlay{
+	tag = "icon-full_corners (SOUTHEAST)"
+	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfB" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfC" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 8;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfD" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 10;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfE" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 4;
-	icon_state = "single_tshape"
+	icon_state = "single_tshape";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfF" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 6;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfG" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 9;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfH" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 4
+	dir = 4;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 8
+	dir = 8;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfI" = (
-/obj/structure/ice/ice_rock/cornerOverlay,
+/obj/structure/ice/ice_rock/cornerOverlay{
+	tag = "icon-full_corners (SOUTHEAST)"
+	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfJ" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 8
+	dir = 8;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 4
+	dir = 4;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfK" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "west_wall"
+	icon_state = "west_wall";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfL" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 5;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfM" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 1
+	dir = 1;
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfN" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "full_corners"
+	icon_state = "full_corners";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
-/obj/structure/ice/ice_rock/cornerOverlay,
+/obj/structure/ice/ice_rock/cornerOverlay{
+	tag = "icon-full_corners (SOUTHEAST)"
+	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
 "bfO" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_14"
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bfP" = (
@@ -21312,12 +21698,14 @@
 /area/corsat/gamma/biodome)
 "bfR" = (
 /turf/closed/ice/end{
-	dir = 4
+	dir = 4;
+	tag = "icon-End (EAST)"
 	},
 /area/corsat/gamma/biodome)
 "bfS" = (
 /turf/closed/ice/end{
-	dir = 1
+	dir = 1;
+	tag = "icon-End (NORTH)"
 	},
 /area/corsat/gamma/biodome)
 "bfT" = (
@@ -21325,12 +21713,14 @@
 /area/corsat/gamma/biodome)
 "bfU" = (
 /turf/closed/ice/corner{
-	dir = 1
+	dir = 1;
+	tag = "icon-Corner (NORTH)"
 	},
 /area/corsat/gamma/biodome)
 "bfV" = (
 /turf/closed/ice/straight{
-	dir = 4
+	dir = 4;
+	tag = "icon-Straight (EAST)"
 	},
 /area/corsat/gamma/biodome)
 "bfW" = (
@@ -21338,17 +21728,20 @@
 /area/corsat/gamma/biodome)
 "bfX" = (
 /turf/closed/ice/corner{
-	dir = 4
+	dir = 4;
+	tag = "icon-Corner (EAST)"
 	},
 /area/corsat/gamma/biodome)
 "bfY" = (
 /turf/closed/ice/corner{
-	dir = 8
+	dir = 8;
+	tag = "icon-Corner (WEST)"
 	},
 /area/corsat/gamma/biodome)
 "bfZ" = (
 /obj/structure/ice/thin/end{
-	dir = 1
+	dir = 1;
+	tag = "icon-End (NORTH)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
@@ -21358,13 +21751,15 @@
 /area/corsat/gamma/biodome)
 "bgb" = (
 /obj/structure/ice/thin/corner{
-	dir = 1
+	dir = 1;
+	tag = "icon-Corner (NORTH)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bgc" = (
 /obj/structure/ice/thin/end{
-	dir = 4
+	dir = 4;
+	tag = "icon-End (EAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
@@ -21378,32 +21773,37 @@
 /area/corsat/gamma/biodome)
 "bgf" = (
 /obj/structure/ice/thin/end{
-	dir = 8
+	dir = 8;
+	tag = "icon-End (WEST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bgg" = (
 /obj/structure/ice/thin/straight{
-	dir = 4
+	dir = 4;
+	tag = "icon-Straight (EAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bgh" = (
 /obj/structure/ice/thin/corner{
-	dir = 4
+	dir = 4;
+	tag = "icon-Corner (EAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bgi" = (
 /obj/structure/ice/thin/corner{
-	dir = 8
+	dir = 8;
+	tag = "icon-Corner (WEST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "bgj" = (
 /turf/open/floor{
 	dir = 9;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgk" = (
@@ -21412,36 +21812,42 @@
 "bgl" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgm" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgn" = (
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "bgo" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgp" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgq" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgr" = (
@@ -21449,7 +21855,8 @@
 /area/corsat/sigma/biodome/gunrange)
 "bgs" = (
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgt" = (
@@ -21460,12 +21867,14 @@
 /area/corsat/gamma/cargo)
 "bgu" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_3"
+	icon_state = "mars_dirt_3";
+	tag = "icon-mars_dirt_3"
 	},
 /area/corsat/sigma/biodome)
 "bgv" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_9"
+	icon_state = "mars_dirt_9";
+	tag = "icon-mars_dirt_9"
 	},
 /area/corsat/sigma/biodome)
 "bgw" = (
@@ -21491,7 +21900,8 @@
 /obj/item/explosive/grenade/high_explosive,
 /obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgz" = (
@@ -21503,7 +21913,8 @@
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bgB" = (
@@ -21512,19 +21923,22 @@
 "bgC" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgD" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgE" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgF" = (
@@ -21534,102 +21948,122 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgG" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_19"
+	icon_state = "mars_cave_19";
+	tag = "icon-mars_cave_19"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgH" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgI" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgJ" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_20"
+	icon_state = "mars_cave_20";
+	tag = "icon-mars_cave_20"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgK" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_16"
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgL" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgM" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgN" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_13"
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgO" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_22"
+	icon_state = "mars_cave_22";
+	tag = "icon-mars_cave_22"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgP" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgQ" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_4"
+	icon_state = "mars_cave_4";
+	tag = "icon-mars_cave_4"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgR" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgS" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_23"
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgT" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_8"
+	icon_state = "mars_cave_8";
+	tag = "icon-mars_cave_8"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgU" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7"
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgV" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_8"
+	icon_state = "mars_dirt_8";
+	tag = "icon-mars_dirt_8"
 	},
 /area/corsat/sigma/biodome)
 "bgW" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_9"
+	icon_state = "mars_cave_9";
+	tag = "icon-mars_cave_9"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgX" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgY" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_14"
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bgZ" = (
@@ -21639,29 +22073,34 @@
 /obj/structure/fence,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bhb" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bhc" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "bhd" = (
 /obj/structure/largecrate/supply/ammo/m39/half,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bhe" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
 	},
 /area/corsat/sigma/biodome)
 "bhf" = (
@@ -21674,7 +22113,8 @@
 	},
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bhg" = (
@@ -21683,7 +22123,8 @@
 "bhh" = (
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3"
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bhi" = (
@@ -21705,7 +22146,8 @@
 	},
 /obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bhk" = (
@@ -21721,7 +22163,8 @@
 "bhm" = (
 /obj/structure/largecrate/supply/ammo/pistol/half,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bhn" = (
@@ -21731,42 +22174,50 @@
 /area/corsat/sigma/biodome)
 "bho" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_23"
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
 	},
 /area/corsat/sigma/biodome)
 "bhp" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_22"
+	icon_state = "mars_cave_22";
+	tag = "icon-mars_cave_22"
 	},
 /area/corsat/sigma/biodome)
 "bhq" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome)
 "bhr" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome)
 "bhs" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome)
 "bht" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome)
 "bhu" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_13"
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/corsat/sigma/biodome)
 "bhv" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_9"
+	icon_state = "mars_cave_9";
+	tag = "icon-mars_cave_9"
 	},
 /area/corsat/sigma/biodome)
 "bhw" = (
@@ -21774,12 +22225,14 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_14"
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
 	},
 /area/corsat/sigma/biodome)
 "bhx" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 4
+	dir = 4;
+	tag = "icon-wooden_chair_wings (EAST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/bar)
@@ -21963,7 +22416,8 @@
 	name = "Firing Lane"
 	},
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bhX" = (
@@ -22074,7 +22528,8 @@
 /area/corsat/gamma/engineering/atmos)
 "bil" = (
 /obj/structure/pipes/binary/pump/high_power/on{
-	dir = 8
+	dir = 8;
+	tag = "icon-map_on (WEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -22131,7 +22586,8 @@
 "bis" = (
 /obj/structure/powerloader_wreckage,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "biu" = (
@@ -22193,13 +22649,15 @@
 "biB" = (
 /obj/structure/largecrate/supply/ammo/m41a/half,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "biC" = (
 /obj/structure/pipes/trinary/mixer{
 	dir = 4;
-	name = "Gas mixer N2/O2"
+	name = "Gas mixer N2/O2";
+	tag = "icon-map (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -22319,13 +22777,15 @@
 "biT" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "biU" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7"
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "biV" = (
@@ -22381,16 +22841,19 @@
 "bja" = (
 /obj/structure/machinery/message_server,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "bjb" = (
 /obj/structure/showcase{
 	icon_state = "hub";
-	name = "Telecommunication Hub"
+	name = "Telecommunication Hub";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "bjc" = (
@@ -22509,7 +22972,8 @@
 "bjr" = (
 /obj/item/broken_device,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bjs" = (
@@ -22528,7 +22992,8 @@
 "bju" = (
 /obj/item/cell/crap,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bjv" = (
@@ -22621,7 +23086,8 @@
 /area/corsat/gamma/administration)
 "bjD" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 8
+	dir = 8;
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/bar)
@@ -22677,7 +23143,8 @@
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bjN" = (
@@ -22685,7 +23152,8 @@
 /obj/item/explosive/grenade/smokebomb,
 /obj/item/explosive/grenade/smokebomb,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bjO" = (
@@ -22699,7 +23167,8 @@
 /obj/item/weapon/gun/pistol/m4a3,
 /obj/item/weapon/gun/pistol/m4a3,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bjP" = (
@@ -22712,7 +23181,8 @@
 	},
 /obj/item/weapon/gun/smg/mp5,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bjQ" = (
@@ -22917,7 +23387,7 @@
 /area/corsat/gamma/hangar/monorail/control)
 "bku" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Hangar Office"
+	name = "Hangar Office";
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -22925,7 +23395,7 @@
 /area/corsat/gamma/hangar/office)
 "bkv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Flight Control"
+	name = "Flight Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -23205,7 +23675,8 @@
 	name = "target crate"
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "blg" = (
@@ -23213,14 +23684,16 @@
 /obj/item/explosive/grenade/flashbang,
 /obj/item/explosive/grenade/flashbang,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "blh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "blj" = (
@@ -23663,7 +24136,7 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bmH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "Flight Control"
+	name = "Flight Control";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23682,7 +24155,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "bmJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "Hangar Office"
+	name = "Hangar Office";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24044,7 +24517,8 @@
 	pixel_x = 32
 	},
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome)
 "bnY" = (
@@ -24081,19 +24555,22 @@
 "boh" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boi" = (
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boj" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bon" = (
@@ -24109,7 +24586,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome)
 "bop" = (
@@ -24341,7 +24819,8 @@
 /area/corsat/gamma/rnr/arcade)
 "bpb" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -24516,7 +24995,8 @@
 "bpH" = (
 /obj/structure/machinery/meter,
 /obj/structure/pipes/standard/simple/visible{
-	dir = 9
+	dir = 9;
+	tag = "icon-intact (NORTHWEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -24624,7 +25104,8 @@
 /area/corsat/gamma/medbay)
 "bqb" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 9
+	dir = 9;
+	tag = "icon-intact (NORTHWEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -24668,7 +25149,8 @@
 "bqi" = (
 /obj/item/cell/super/empty,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bqj" = (
@@ -24703,7 +25185,8 @@
 "bqo" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "oxy_corsat_out"
+	id_tag = "oxy_corsat_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -24717,7 +25200,8 @@
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bqr" = (
@@ -24809,7 +25293,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "bqG" = (
 /obj/structure/pipes/binary/pump/on{
-	dir = 1
+	dir = 1;
+	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -25035,7 +25520,8 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/omega/offices)
 "brD" = (
@@ -25058,7 +25544,8 @@
 /area/corsat/omega/offices)
 "brF" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	layer = 3
@@ -25282,7 +25769,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -25903,7 +26391,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "bun" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 4
+	dir = 4;
+	tag = "icon-wooden_chair_wings (EAST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -25914,7 +26403,8 @@
 /area/corsat/sigma/cafe)
 "bup" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 8
+	dir = 8;
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -25932,7 +26422,8 @@
 /area/corsat/sigma/cafe)
 "bus" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 1
+	dir = 1;
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -25941,7 +26432,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/wood/wings{
-	dir = 1
+	dir = 1;
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -26286,7 +26778,8 @@
 	icon_state = "box_1"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_17"
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bvt" = (
@@ -26358,7 +26851,8 @@
 	icon_state = "box_1"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bvJ" = (
@@ -28096,7 +28590,8 @@
 /area/corsat/gamma/medbay/lobby)
 "bAp" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/bed/chair/wheelchair,
 /turf/open/floor/corsat{
@@ -28278,7 +28773,7 @@
 "bAI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
-	pixel_x = 30
+	pixel_x = 30;
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -28341,7 +28836,8 @@
 /area/corsat/gamma/medbay)
 "bAT" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -28774,7 +29270,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -28792,7 +29289,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -29236,7 +29734,8 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/comfy/black{
-	dir = 8
+	dir = 8;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -29315,13 +29814,15 @@
 "bDM" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
-	id_tag = "mix_sigma_out"
+	id_tag = "mix_sigma_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bDN" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 5
+	dir = 5;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /obj/structure/machinery/meter,
 /turf/open/floor/corsat{
@@ -29452,7 +29953,8 @@
 /area/corsat/gamma/medbay/chemistry)
 "bEm" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -29604,7 +30106,8 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bEM" = (
@@ -29627,13 +30130,15 @@
 "bEO" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bES" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bET" = (
@@ -29671,7 +30176,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bEX" = (
@@ -29681,7 +30187,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bFc" = (
@@ -29691,7 +30198,8 @@
 "bFf" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/omega/offices)
 "bFg" = (
@@ -29728,7 +30236,8 @@
 "bFm" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-carpet7-3 (WEST)"
 	},
 /area/corsat/omega/offices)
 "bFn" = (
@@ -29736,7 +30245,8 @@
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "bFo" = (
@@ -30298,7 +30808,8 @@
 /area/corsat/sigma/south/robotics)
 "bGQ" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "darkgreencorner"
@@ -30324,7 +30835,8 @@
 /area/corsat/gamma/foyer)
 "bGW" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 5
+	dir = 5;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -30340,22 +30852,26 @@
 /area/corsat/gamma/canteen)
 "bHa" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bHb" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "bHc" = (
@@ -30384,7 +30900,8 @@
 /area/corsat/gamma/residential/west)
 "bHf" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -30392,7 +30909,8 @@
 /area/corsat/gamma/foyer)
 "bHg" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -30403,7 +30921,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -30415,7 +30934,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -30446,10 +30966,12 @@
 /area/corsat/omega/maint)
 "bHz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	tag = "icon-bus"
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "bHA" = (
@@ -30591,7 +31113,8 @@
 "bJm" = (
 /obj/structure/powerloader_wreckage,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_22"
+	icon_state = "mars_cave_22";
+	tag = "icon-mars_cave_22"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "bJq" = (
@@ -31099,7 +31622,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -31120,7 +31644,8 @@
 /area/corsat/sigma/dorms)
 "bKG" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -31250,7 +31775,8 @@
 /area/corsat/gamma/hangar/monorail/control)
 "bLc" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -31285,7 +31811,8 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bLi" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -32732,7 +33259,8 @@
 /area/corsat/sigma/cargo)
 "bPy" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -33108,7 +33636,8 @@
 /area/corsat/sigma/southeast/datamaint)
 "bQx" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 9
+	dir = 9;
+	tag = "icon-intact (NORTHWEST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -33129,7 +33658,8 @@
 "bQB" = (
 /obj/structure/machinery/meter,
 /obj/structure/pipes/standard/simple/visible{
-	dir = 10
+	dir = 10;
+	tag = "icon-intact (NORTHWEST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -33145,7 +33675,8 @@
 /area/corsat/sigma/southeast/datamaint)
 "bQE" = (
 /obj/structure/pipes/binary/pump/on{
-	dir = 1
+	dir = 1;
+	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -33844,7 +34375,8 @@
 /obj/item/weapon/gun/revolver/m44,
 /obj/item/weapon/gun/revolver/m44,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bTr" = (
@@ -33857,7 +34389,8 @@
 	},
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bTs" = (
@@ -33872,14 +34405,16 @@
 	name = "target crate"
 	},
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bTt" = (
 /obj/structure/closet/bombcloset,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTu" = (
@@ -33900,7 +34435,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTw" = (
@@ -33911,7 +34447,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTx" = (
@@ -33947,7 +34484,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTA" = (
@@ -33961,7 +34499,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTB" = (
@@ -33975,7 +34514,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTC" = (
@@ -34088,10 +34628,12 @@
 /area/corsat/sigma/south/complex)
 "bUg" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
-	icon_state = "containment_corner_variant_2"
+	icon_state = "containment_corner_variant_2";
+	tag = "icon-containment_corner_variant_2"
 	},
 /area/corsat/sigma/south/complex)
 "bUh" = (
@@ -34109,7 +34651,8 @@
 "bUi" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "bUl" = (
@@ -34210,7 +34753,8 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty/phoron,
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
-	id_tag = "mix_sigma_out"
+	id_tag = "mix_sigma_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -34311,7 +34855,8 @@
 /area/corsat/theta/airlock/control)
 "bUV" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 6
+	dir = 6;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /obj/structure/machinery/meter,
 /turf/open/floor/corsat{
@@ -34344,7 +34889,8 @@
 /area/corsat/theta/airlock/control)
 "bVb" = (
 /obj/structure/pipes/binary/pump/on{
-	dir = 8
+	dir = 8;
+	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -34379,7 +34925,8 @@
 /area/corsat/gamma/airlock/control)
 "bVm" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -34460,7 +35007,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bVE" = (
@@ -34802,7 +35350,8 @@
 /area/corsat/sigma/airlock/control)
 "bWC" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -34821,7 +35370,8 @@
 /area/corsat/sigma/airlock/control)
 "bWE" = (
 /obj/structure/pipes/binary/pump/high_power/on{
-	dir = 8
+	dir = 8;
+	tag = "icon-map_on (WEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -34889,7 +35439,8 @@
 /area/corsat/sigma/airlock/control)
 "bWN" = (
 /obj/structure/pipes/trinary/mixer{
-	dir = 4
+	dir = 4;
+	tag = "icon-map (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -35324,7 +35875,8 @@
 /area/corsat/gamma/airlock/control)
 "bYq" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -35378,13 +35930,15 @@
 "bYw" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "mix_gamma_out"
+	id_tag = "mix_gamma_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYx" = (
 /obj/structure/pipes/binary/pump/high_power/on{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_on (WEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -35402,7 +35956,8 @@
 /area/corsat/gamma/airlock/control)
 "bYz" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "yellow"
@@ -35487,7 +36042,8 @@
 /area/corsat/gamma/airlock/control)
 "bYK" = (
 /obj/structure/pipes/binary/pump/on{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "yellowcorner"
@@ -35495,7 +36051,8 @@
 /area/corsat/gamma/airlock/control)
 "bYL" = (
 /obj/structure/pipes/standard/simple/visible{
-	dir = 10
+	dir = 10;
+	tag = "icon-intact (NORTHWEST)"
 	},
 /obj/structure/machinery/meter,
 /turf/open/floor/corsat{
@@ -35544,14 +36101,16 @@
 "bYS" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "car_theta_out"
+	id_tag = "car_theta_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYT" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 1;
-	id_tag = "mix_theta_out"
+	id_tag = "mix_theta_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -35739,7 +36298,8 @@
 /area/corsat/sigma/dorms)
 "bZu" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -35748,7 +36308,8 @@
 /area/corsat/sigma/dorms)
 "bZv" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -35974,7 +36535,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "caA" = (
@@ -36127,7 +36689,8 @@
 /area/corsat/omega/control)
 "cbo" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -36136,7 +36699,8 @@
 /area/corsat/gamma/medbay)
 "cbS" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -36318,12 +36882,14 @@
 /area/corsat/omega/checkpoint)
 "ciW" = (
 /obj/structure/machinery/shower{
-	dir = 4
+	dir = 4;
+	tag = "icon-shower (EAST)"
 	},
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/door/window/southleft{
 	dir = 4;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (WEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -36495,7 +37061,8 @@
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "cqv" = (
@@ -36508,7 +37075,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "cqT" = (
@@ -36648,7 +37216,8 @@
 /area/corsat/gamma/residential/showers)
 "cvr" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -36665,7 +37234,8 @@
 "cvW" = (
 /obj/structure/machinery/door/window/westleft,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "cwp" = (
@@ -36730,7 +37300,8 @@
 /area/corsat/sigma/southeast/datalab)
 "cyX" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "greenwhite"
@@ -36810,7 +37381,8 @@
 "cEQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_14"
+	icon_state = "mars_dirt_14";
+	tag = "icon-mars_dirt_14"
 	},
 /area/corsat/sigma/biodome)
 "cFe" = (
@@ -36889,7 +37461,8 @@
 /area/corsat/sigma/southeast/datalab)
 "cKa" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -36900,7 +37473,8 @@
 /area/corsat/gamma/residential)
 "cKi" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -36909,7 +37483,8 @@
 /area/corsat/gamma/rnr/bar)
 "cKv" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -37070,7 +37645,8 @@
 "cSi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_9"
+	icon_state = "mars_dirt_9";
+	tag = "icon-mars_dirt_9"
 	},
 /area/corsat/sigma/biodome)
 "cSI" = (
@@ -37442,7 +38018,8 @@
 /obj/structure/closet/crate/science,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "dhG" = (
@@ -37470,7 +38047,8 @@
 "diw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_9"
+	icon_state = "mars_cave_9";
+	tag = "icon-mars_cave_9"
 	},
 /area/corsat/sigma/biodome)
 "diD" = (
@@ -37712,7 +38290,8 @@
 /area/corsat/sigma/south/security)
 "dsF" = (
 /obj/structure/toilet{
-	dir = 1
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -37885,7 +38464,8 @@
 	name = "\improper coolant feed"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "dwS" = (
@@ -38024,7 +38604,8 @@
 "dBy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_13"
+	icon_state = "mars_dirt_13";
+	tag = "icon-mars_dirt_13"
 	},
 /area/corsat/sigma/biodome)
 "dBW" = (
@@ -38105,7 +38686,8 @@
 /area/corsat/gamma/hallwaysouth)
 "dFL" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/theta/biodome/complex)
@@ -38152,7 +38734,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "dIo" = (
@@ -38173,7 +38756,8 @@
 /obj/item/ashtray/bronze,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "dJV" = (
@@ -38246,7 +38830,8 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "dNb" = (
@@ -38327,7 +38912,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "dPH" = (
@@ -38517,7 +39103,8 @@
 "dXp" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "dXq" = (
@@ -38539,14 +39126,16 @@
 	dir = 1
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "dXW" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "dYh" = (
@@ -38554,7 +39143,8 @@
 /obj/item/phone,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "dYk" = (
@@ -38788,10 +39378,12 @@
 /area/corsat/omega/offices)
 "egZ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N"
+	icon_state = "N";
+	tag = "icon-N"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/sigma/south/complex)
 "ehg" = (
@@ -38818,7 +39410,8 @@
 	dir = 9
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "ehN" = (
@@ -38918,7 +39511,8 @@
 /obj/item/explosive/grenade/high_explosive/frag,
 /obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ekd" = (
@@ -39018,7 +39612,8 @@
 "enU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "eon" = (
@@ -39244,7 +39839,8 @@
 	dir = 4
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_12"
+	icon_state = "mars_dirt_12";
+	tag = "icon-mars_dirt_12"
 	},
 /area/corsat/sigma/biodome)
 "euc" = (
@@ -39268,7 +39864,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome)
 "evq" = (
@@ -39310,10 +39907,12 @@
 /area/corsat/sigma/checkpoint)
 "ewT" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "ewW" = (
@@ -39331,7 +39930,8 @@
 "exf" = (
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "exz" = (
@@ -39472,7 +40072,8 @@
 /area/corsat/sigma/airlock/south/id)
 "eDK" = (
 /obj/structure/morgue{
-	dir = 8
+	dir = 8;
+	tag = "icon-morgue1 (WEST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -39587,12 +40188,14 @@
 /area/corsat/gamma/biodome/toxins)
 "eKL" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/administration)
 "eKV" = (
@@ -39645,7 +40248,8 @@
 "eMI" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat,
 /area/corsat/gamma/sigmaremote)
@@ -39665,10 +40269,12 @@
 /area/corsat/gamma/sigmaremote)
 "eNn" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
 	},
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_corner (NORTH)"
 	},
 /area/corsat/sigma/south/complex)
 "eNI" = (
@@ -39699,7 +40305,8 @@
 /area/corsat/sigma/hangar/security)
 "eOS" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -39845,7 +40452,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "eUK" = (
@@ -39999,7 +40607,8 @@
 /area/corsat/gamma/biodome/complex)
 "faF" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -40017,7 +40626,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "fbs" = (
@@ -40067,7 +40677,8 @@
 /area/corsat/gamma/cargo)
 "fey" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -40158,10 +40769,12 @@
 /area/corsat/sigma/south)
 "fgs" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	tag = "icon-E"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/sigma/south/complex)
 "fgu" = (
@@ -40207,7 +40820,8 @@
 /obj/item/folder/black_random,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "fid" = (
@@ -40475,7 +41089,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome)
 "fsd" = (
@@ -40502,7 +41117,8 @@
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "fsu" = (
@@ -40653,7 +41269,8 @@
 "fyO" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "fzd" = (
@@ -40811,7 +41428,8 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "fGM" = (
@@ -41373,7 +41991,8 @@
 "gdD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome)
 "gdM" = (
@@ -41547,7 +42166,8 @@
 "gjb" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "gjh" = (
@@ -41575,7 +42195,8 @@
 /area/prison/hangar_storage/research/shuttle)
 "gjw" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -42129,7 +42750,8 @@
 /area/corsat/sigma/dorms)
 "gBx" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -42234,7 +42856,8 @@
 "gGR" = (
 /obj/structure/surface/rack,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "gGT" = (
@@ -42243,7 +42866,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "gGZ" = (
@@ -42442,7 +43066,8 @@
 /area/corsat/omega/hangar)
 "gPk" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -42519,7 +43144,8 @@
 "gRg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "gRm" = (
@@ -42566,7 +43192,8 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "gSu" = (
@@ -42593,7 +43220,8 @@
 	name = "\improper Cable connector"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "gTe" = (
@@ -42698,7 +43326,8 @@
 "gWU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome)
 "gXp" = (
@@ -42891,13 +43520,15 @@
 "hbX" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
 	},
 /area/corsat/omega/offices)
 "hcg" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "hcH" = (
@@ -42955,7 +43586,8 @@
 	dir = 8
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "heo" = (
@@ -43018,10 +43650,12 @@
 /area/corsat/theta/airlock/west)
 "hho" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
+	icon_state = "S";
+	tag = "icon-S"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/gamma/sigmaremote)
 "hhA" = (
@@ -43048,7 +43682,8 @@
 /area/corsat/sigma/north)
 "hiw" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/wood,
 /area/corsat/theta/biodome/complex)
@@ -43105,7 +43740,8 @@
 "hlf" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/almayer{
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "hls" = (
@@ -43392,7 +44028,8 @@
 /area/corsat/gamma/medbay/morgue)
 "huQ" = (
 /obj/structure/bed/chair/wood/wings{
-	dir = 8
+	dir = 8;
+	tag = "icon-wooden_chair_wings (WEST)"
 	},
 /obj/structure/machinery/camera/autoname{
 	dir = 8;
@@ -43563,7 +44200,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	layer = 3
@@ -43638,7 +44276,8 @@
 /area/corsat/sigma/south/robotics)
 "hBM" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -43674,7 +44313,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "hCY" = (
@@ -43842,7 +44482,8 @@
 "hHA" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/inaccessible)
 "hHL" = (
@@ -43851,7 +44492,8 @@
 	name = "corrupted alien embryo"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/inaccessible)
 "hHM" = (
@@ -43977,7 +44619,8 @@
 /area/corsat/sigma/south/offices)
 "hMx" = (
 /obj/structure/toilet{
-	dir = 1
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -44461,7 +45104,8 @@
 /area/corsat/gamma/kitchen)
 "iem" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8
+	dir = 8;
+	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
@@ -44542,7 +45186,8 @@
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "ihN" = (
@@ -44656,7 +45301,8 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "ilr" = (
@@ -44732,7 +45378,8 @@
 	dir = 6
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_3"
+	icon_state = "mars_dirt_3";
+	tag = "icon-mars_dirt_3"
 	},
 /area/corsat/sigma/biodome)
 "inZ" = (
@@ -44751,7 +45398,8 @@
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
 "ipE" = (
@@ -45285,7 +45933,8 @@
 /area/corsat/sigma/hangar/checkpoint)
 "iKn" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -45306,7 +45955,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "iLw" = (
@@ -45358,7 +46008,8 @@
 "iNZ" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
 	},
 /area/corsat/omega/offices)
 "iOe" = (
@@ -45536,7 +46187,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "iWo" = (
@@ -45804,7 +46456,8 @@
 	dir = 5
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "jhN" = (
@@ -45821,7 +46474,8 @@
 "jhR" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "jja" = (
@@ -45834,7 +46488,8 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "jjz" = (
@@ -45911,10 +46566,12 @@
 /area/corsat/gamma/foyer)
 "jmQ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner (EAST)"
 	},
 /area/corsat/sigma/south/complex)
 "jmU" = (
@@ -46116,7 +46773,8 @@
 "jwv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_11"
+	icon_state = "mars_dirt_11";
+	tag = "icon-mars_dirt_11"
 	},
 /area/corsat/sigma/biodome)
 "jwx" = (
@@ -46167,7 +46825,8 @@
 /obj/structure/surface/rack,
 /obj/item/device/binoculars,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "jyK" = (
@@ -46264,7 +46923,8 @@
 "jBx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_12"
+	icon_state = "mars_dirt_12";
+	tag = "icon-mars_dirt_12"
 	},
 /area/corsat/sigma/biodome)
 "jBC" = (
@@ -46273,7 +46933,8 @@
 /area/corsat/theta/biodome/complex)
 "jCO" = (
 /obj/structure/bed/chair/wood/normal{
-	dir = 1
+	dir = 1;
+	tag = ""
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -46342,7 +47003,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -46388,7 +47050,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "jHF" = (
@@ -46420,7 +47083,8 @@
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating{
 	dir = 8;
-	icon_state = "platingdmg3"
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "jJp" = (
@@ -46516,7 +47180,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "jOh" = (
@@ -46524,7 +47189,8 @@
 /area/corsat/sigma/airlock/south)
 "jOn" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -46536,7 +47202,8 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -46630,7 +47297,8 @@
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "jUx" = (
@@ -46665,7 +47333,8 @@
 	dir = 1
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "jWw" = (
@@ -46679,7 +47348,8 @@
 /area/corsat/gamma/biodome/toxins)
 "jWy" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -46727,7 +47397,8 @@
 /area/corsat/gamma/sigmaremote)
 "jYs" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -46895,7 +47566,8 @@
 /area/corsat/theta/biodome)
 "kfc" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -47064,7 +47736,8 @@
 /area/corsat/theta/biodome/complex)
 "kmj" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -47083,7 +47756,8 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "kmV" = (
@@ -47166,7 +47840,8 @@
 	dir = 4
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_8"
+	icon_state = "mars_dirt_8";
+	tag = "icon-mars_dirt_8"
 	},
 /area/corsat/sigma/biodome)
 "kpD" = (
@@ -47238,7 +47913,8 @@
 	dir = 1
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "krK" = (
@@ -47334,7 +48010,8 @@
 	},
 /obj/structure/bed/nest,
 /turf/open/floor/almayer/research/containment/entrance{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_entrance (WEST)"
 	},
 /area/corsat/inaccessible)
 "kvm" = (
@@ -47472,13 +48149,15 @@
 	dir = 9
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome)
 "kCk" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome)
 "kCm" = (
@@ -47529,6 +48208,15 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/southeast/generator)
+"kEC" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1;
+	tag = "icon-officechair_white (NORTH)"
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/corsat/gamma/residential/west)
 "kEJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -47545,10 +48233,12 @@
 /area/corsat/sigma/dorms)
 "kFq" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	tag = "icon-E"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "kFE" = (
@@ -47571,7 +48261,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -47645,7 +48336,8 @@
 /area/corsat/gamma/biodome)
 "kJa" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 4
+	dir = 4;
+	tag = "icon-officechair_dark (EAST)"
 	},
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -47741,7 +48433,8 @@
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_12"
+	icon_state = "mars_cave_12";
+	tag = "icon-mars_cave_12"
 	},
 /area/corsat/sigma/biodome)
 "kOc" = (
@@ -47859,7 +48552,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "kRa" = (
@@ -47898,10 +48592,12 @@
 /area/corsat/gamma/medbay)
 "kSt" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -47928,7 +48624,8 @@
 /area/corsat/gamma/biodome/toxins)
 "kSG" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -48019,7 +48716,8 @@
 /area/corsat/omega/complex)
 "kWe" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -48230,7 +48928,8 @@
 "leS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "leW" = (
@@ -48265,7 +48964,8 @@
 	health = 80
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "lgt" = (
@@ -48385,7 +49085,8 @@
 /area/corsat/gamma/biodome/toxins)
 "lkk" = (
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/datalab)
 "lkm" = (
@@ -48469,7 +49170,8 @@
 "lmV" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "lnc" = (
@@ -48522,7 +49224,8 @@
 /area/corsat/gamma/airlock/south/id)
 "lop" = (
 /obj/structure/bed/chair{
-	dir = 4
+	dir = 4;
+	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -48646,7 +49349,7 @@
 "lug" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
-	name = "Administration Office"
+	name = "Administration Office";
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -48710,7 +49413,8 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "lwu" = (
@@ -48729,7 +49433,8 @@
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "lxi" = (
@@ -48740,7 +49445,8 @@
 /area/corsat/gamma/airlock/control)
 "lxj" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -49289,7 +49995,8 @@
 /area/corsat/sigma/dorms)
 "lQu" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
@@ -49328,7 +50035,8 @@
 /area/corsat/gamma/residential/researcher)
 "lRY" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "purplewhitecorner"
@@ -49349,10 +50057,12 @@
 /area/corsat/gamma/biodome/virology)
 "lTA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "lTC" = (
@@ -49487,7 +50197,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "lXV" = (
@@ -49558,7 +50269,8 @@
 /area/corsat/sigma/south/complex)
 "lYX" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	icon_state = "single"
+	icon_state = "single";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
@@ -49845,7 +50557,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "mjc" = (
@@ -50039,7 +50752,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "msm" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin12"
+	icon_state = "rasputin12";
+	tag = "icon-rasputin5"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "msp" = (
@@ -50206,10 +50920,12 @@
 /area/corsat/gamma/airlock/south)
 "mzn" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/corsat/sigma/south/complex)
 "mAc" = (
@@ -50372,7 +51088,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "Interrogation"
+	name = "Interrogation";
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -50497,7 +51213,8 @@
 	dir = 4
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_11"
+	icon_state = "mars_dirt_11";
+	tag = "icon-mars_dirt_11"
 	},
 /area/corsat/sigma/biodome)
 "mJm" = (
@@ -50512,7 +51229,8 @@
 /area/corsat/theta/biodome/complex)
 "mJq" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -50529,7 +51247,8 @@
 /area/corsat/gamma/engineering)
 "mJC" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "gamma"
@@ -50648,7 +51367,8 @@
 /area/corsat/omega/checkpoint)
 "mQu" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -50746,7 +51466,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "mSR" = (
@@ -50854,7 +51575,8 @@
 	},
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "mWj" = (
@@ -51007,7 +51729,8 @@
 	dir = 6
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "ndF" = (
@@ -51062,7 +51785,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "nhG" = (
@@ -51075,7 +51799,8 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "niv" = (
@@ -51261,7 +51986,8 @@
 	pixel_x = -15
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "noY" = (
@@ -51302,7 +52028,8 @@
 /area/corsat/omega/hangar)
 "npI" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "purple"
@@ -51370,7 +52097,8 @@
 	dir = 4
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_9"
+	icon_state = "mars_dirt_9";
+	tag = "icon-mars_dirt_9"
 	},
 /area/corsat/sigma/biodome)
 "nrT" = (
@@ -51402,12 +52130,14 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-carpet13-5 (WEST)"
 	},
 /area/corsat/omega/offices)
 "ntg" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "ntn" = (
@@ -51653,7 +52383,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "nBa" = (
@@ -51712,7 +52443,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome)
 "nCh" = (
@@ -51786,7 +52518,8 @@
 "nFy" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome)
 "nGq" = (
@@ -51829,7 +52562,8 @@
 /area/corsat/gamma/biodome)
 "nHS" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -51908,13 +52642,15 @@
 "nJR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_10"
+	icon_state = "mars_dirt_10";
+	tag = "icon-mars_dirt_10"
 	},
 /area/corsat/sigma/biodome)
 "nKt" = (
 /obj/structure/pipes/unary/freezer,
 /turf/open/shuttle/escapepod{
-	icon_state = "floor0"
+	icon_state = "floor0";
+	tag = "icon-floor0"
 	},
 /area/corsat/theta/biodome/complex)
 "nKH" = (
@@ -52039,7 +52775,8 @@
 /area/corsat/sigma/southeast/dataoffice)
 "nQB" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -52048,7 +52785,8 @@
 /area/corsat/sigma/dorms)
 "nQZ" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -52497,7 +53235,8 @@
 "oiE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "oiI" = (
@@ -52562,7 +53301,8 @@
 "olB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -52610,7 +53350,8 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "omL" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -52653,7 +53394,8 @@
 	name = "computer"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12"
+	icon_state = "floor12";
+	tag = "icon-floor12"
 	},
 /area/corsat/theta/biodome/complex)
 "opi" = (
@@ -52800,7 +53542,8 @@
 /area/corsat/theta/airlock/control)
 "ovc" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -52836,7 +53579,8 @@
 "owP" = (
 /obj/structure/bed/nest,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
 	},
 /area/corsat/sigma/biodome)
 "oxk" = (
@@ -52844,7 +53588,8 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "oxr" = (
@@ -52935,12 +53680,14 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "oBX" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -53021,7 +53768,8 @@
 /area/corsat/gamma/sigmaremote)
 "oFe" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -53135,7 +53883,8 @@
 "oJT" = (
 /obj/item/stack/sheet/metal,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "oJV" = (
@@ -53187,7 +53936,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "oLe" = (
@@ -53205,7 +53955,8 @@
 /area/corsat/inaccessible)
 "oLA" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "white"
@@ -53272,7 +54023,8 @@
 "oNU" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "oOg" = (
@@ -53333,7 +54085,8 @@
 /area/corsat/sigma/hangar/security)
 "oPa" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -53595,7 +54348,8 @@
 /area/corsat/omega/offices)
 "oZH" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1
+	dir = 1;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -53759,7 +54513,8 @@
 /area/corsat/gamma/residential/west)
 "pgC" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -54088,7 +54843,8 @@
 "pwp" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1;
-	icon_state = "single_ends"
+	icon_state = "single_ends";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/closed/ice_rock/corners,
 /area/corsat/gamma/biodome)
@@ -54128,7 +54884,8 @@
 /area/corsat/gamma/foyer)
 "pxH" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/platform{
 	dir = 8;
@@ -54286,7 +55043,8 @@
 /obj/item/paper,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "pEQ" = (
@@ -54311,7 +55069,8 @@
 /area/corsat/omega/hangar)
 "pFX" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/corsat{
@@ -54365,7 +55124,8 @@
 "pJP" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -54525,7 +55285,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/corsat/sigma/biodome)
 "pRX" = (
@@ -54634,7 +55395,8 @@
 "pVo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_8"
+	icon_state = "mars_dirt_8";
+	tag = "icon-mars_dirt_8"
 	},
 /area/corsat/sigma/biodome)
 "pVr" = (
@@ -54793,7 +55555,8 @@
 /area/corsat/gamma/residential/showers)
 "qac" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "white"
@@ -54828,7 +55591,8 @@
 /area/corsat/gamma/hallwaysouth)
 "qaG" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -54851,10 +55615,12 @@
 /area/corsat/gamma/medbay/surgery)
 "qaY" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N"
+	icon_state = "N";
+	tag = "icon-N"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/gamma/sigmaremote)
 "qba" = (
@@ -55026,7 +55792,8 @@
 	dir = 6
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "qgF" = (
@@ -55043,7 +55810,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "qhl" = (
@@ -55092,10 +55860,12 @@
 /area/corsat/sigma/hangar/arrivals)
 "qjG" = (
 /obj/structure/bed/chair/dropship/pilot{
-	dir = 1
+	dir = 1;
+	tag = "icon-pilot_chair (NORTH)"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "qjL" = (
@@ -55344,7 +56114,8 @@
 "qsT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_18"
+	icon_state = "mars_cave_18";
+	tag = "icon-mars_cave_18"
 	},
 /area/corsat/sigma/biodome)
 "qsW" = (
@@ -55377,7 +56148,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_11"
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
 	},
 /area/corsat/sigma/biodome)
 "qtI" = (
@@ -55413,7 +56185,8 @@
 /area/corsat/gamma/canteen)
 "qvz" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin13"
+	icon_state = "rasputin13";
+	tag = "icon-rasputin5"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "qvB" = (
@@ -55814,7 +56587,8 @@
 /area/corsat/omega/hangar/security)
 "qJO" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
-	dir = 4
+	dir = 4;
+	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "yellow"
@@ -55954,7 +56728,8 @@
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "qQe" = (
@@ -56094,7 +56869,8 @@
 	dir = 1
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "qVe" = (
@@ -56145,7 +56921,8 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome)
 "qWf" = (
@@ -56234,7 +57011,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-carpet14-10 (WEST)"
 	},
 /area/corsat/gamma/biodome/complex)
 "rbC" = (
@@ -56354,7 +57132,8 @@
 "rgc" = (
 /obj/structure/bed/nest,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "rgm" = (
@@ -56379,7 +57158,8 @@
 /area/corsat/sigma/south/complex)
 "rhv" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/corsat{
@@ -56442,12 +57222,14 @@
 /area/corsat/gamma/hangar)
 "rlh" = (
 /obj/structure/machinery/shower{
-	dir = 4
+	dir = 4;
+	tag = "icon-shower (EAST)"
 	},
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/door/window/southleft{
 	dir = 4;
-	layer = 2.8
+	layer = 2.8;
+	tag = "icon-left (WEST)"
 	},
 /obj/item/tool/soap,
 /turf/open/floor/corsat{
@@ -56570,7 +57352,8 @@
 "rpr" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "rpB" = (
@@ -56612,7 +57395,8 @@
 	name = "computer"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor2"
+	icon_state = "floor2";
+	tag = "icon-floor2"
 	},
 /area/corsat/theta/biodome/complex)
 "rrv" = (
@@ -56720,10 +57504,12 @@
 /area/corsat/theta/airlock/west)
 "rvp" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
 	},
 /turf/open/floor/almayer/research/containment/corner_var1{
-	icon_state = "containment_corner_variant_2"
+	icon_state = "containment_corner_variant_2";
+	tag = "icon-containment_corner_variant_2"
 	},
 /area/corsat/gamma/sigmaremote)
 "rvC" = (
@@ -57001,7 +57787,8 @@
 "rFJ" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
 	},
 /area/corsat/omega/offices)
 "rFS" = (
@@ -57020,7 +57807,8 @@
 	name = "coolant feed"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "rGc" = (
@@ -57128,7 +57916,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "rLw" = (
@@ -57249,7 +58038,8 @@
 "rQh" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_23"
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "rQD" = (
@@ -57520,7 +58310,8 @@
 	dir = 1
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "rYj" = (
@@ -57578,7 +58369,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "rZU" = (
@@ -57823,10 +58615,12 @@
 /area/corsat/gamma/biodome/complex)
 "sip" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
+	icon_state = "S";
+	tag = "icon-S"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
 	},
 /area/corsat/sigma/south/complex)
 "siu" = (
@@ -57887,7 +58681,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "sjR" = (
@@ -57951,7 +58746,8 @@
 /area/corsat/gamma/sigmaremote)
 "slL" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -58034,7 +58830,8 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "soi" = (
@@ -58057,7 +58854,8 @@
 /obj/item/explosive/grenade/high_explosive/training,
 /obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
-	icon_state = "asteroidplating"
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "spD" = (
@@ -58192,7 +58990,8 @@
 "svH" = (
 /obj/structure/pipes/unary/freezer,
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor4";
+	tag = "icon-floor4"
 	},
 /area/corsat/theta/biodome/complex)
 "svU" = (
@@ -58242,7 +59041,7 @@
 "sxB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
-	pixel_y = 30
+	pixel_y = 30;
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -58276,7 +59075,8 @@
 /obj/structure/prop/dam/crane/cargo,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "syk" = (
@@ -58315,7 +59115,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/corsat/gamma/hangar/monorail/railcart)
 "sBV" = (
@@ -58377,10 +59178,12 @@
 /area/corsat/gamma/residential)
 "sEb" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
 	},
 /turf/open/floor/almayer/research/containment/corner{
-	dir = 1
+	dir = 1;
+	tag = "icon-containment_corner (NORTH)"
 	},
 /area/corsat/gamma/sigmaremote)
 "sEc" = (
@@ -58448,7 +59251,8 @@
 /area/corsat/gamma/administration)
 "sHB" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -58521,7 +59325,8 @@
 /area/corsat/gamma/airlock/south/id)
 "sIV" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -58581,7 +59386,8 @@
 /area/corsat/theta/airlock/control)
 "sLw" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "gamma"
@@ -58597,7 +59403,8 @@
 	dir = 1
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "sMO" = (
@@ -58877,10 +59684,12 @@
 /area/corsat/omega/cargo)
 "sVA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
+	icon_state = "W";
+	tag = "icon-W"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "sVO" = (
@@ -58975,7 +59784,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "tae" = (
@@ -59053,7 +59863,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "tbY" = (
@@ -59573,7 +60384,8 @@
 /area/corsat/sigma/southeast/datalab)
 "txB" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4
+	dir = 4;
+	tag = ""
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -59912,7 +60724,8 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
 	},
 /area/corsat/sigma/southeast/telecomm)
 "tLz" = (
@@ -59956,7 +60769,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "tNp" = (
@@ -60012,7 +60826,8 @@
 /obj/structure/largecrate/goat,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "plating"
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "tOT" = (
@@ -60325,7 +61140,8 @@
 /area/corsat/gamma/administration)
 "tYX" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin10"
+	icon_state = "rasputin10";
+	tag = "icon-rasputin5"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "tZp" = (
@@ -60380,12 +61196,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "ubv" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -60403,7 +61221,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "ucj" = (
@@ -60528,7 +61347,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-carpet15-15 (WEST)"
 	},
 /area/corsat/omega/offices)
 "uiW" = (
@@ -60565,7 +61385,8 @@
 "ukf" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/corner_var1{
-	dir = 4
+	dir = 4;
+	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/corsat/inaccessible)
 "ukz" = (
@@ -60585,7 +61406,8 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome)
 "ulb" = (
@@ -60741,7 +61563,8 @@
 "urN" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 4;
-	id_tag = "oxy_corsat_out"
+	id_tag = "oxy_corsat_out";
+	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -60836,7 +61659,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "uuQ" = (
@@ -60895,7 +61719,8 @@
 "uwC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_15"
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome)
 "uwP" = (
@@ -61074,7 +61899,8 @@
 /area/corsat/omega/maint)
 "uEC" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
@@ -61159,7 +61985,8 @@
 /area/corsat/omega/hallways)
 "uHh" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "purplecorner"
@@ -61195,7 +62022,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -61203,7 +62031,8 @@
 /area/corsat/gamma/hallwaysouth)
 "uIZ" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor1";
+	tag = "icon-floor1"
 	},
 /area/corsat/theta/biodome/complex)
 "uJq" = (
@@ -61344,7 +62173,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "uOz" = (
@@ -61367,7 +62197,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "uPR" = (
@@ -61505,7 +62336,8 @@
 /area/corsat/gamma/cargo)
 "uSz" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -61654,7 +62486,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "uYe" = (
@@ -61804,7 +62637,8 @@
 	dir = 9
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "vda" = (
@@ -61937,7 +62771,8 @@
 "vic" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -61946,7 +62781,8 @@
 "vii" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-carpet11-12 (WEST)"
 	},
 /area/corsat/omega/offices)
 "vim" = (
@@ -62108,7 +62944,8 @@
 /area/corsat/gamma/biodome/complex)
 "vnH" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -62274,7 +63111,8 @@
 /area/corsat/gamma/administration)
 "vwu" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/corsat{
@@ -62298,7 +63136,8 @@
 /area/corsat/gamma/residential/east)
 "vxk" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -62310,7 +63149,8 @@
 	dir = 1
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor5";
+	tag = "icon-floor5"
 	},
 /area/corsat/theta/biodome/complex)
 "vyk" = (
@@ -62340,7 +63180,8 @@
 /area/corsat/theta/airlock/control)
 "vyR" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -62441,7 +63282,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome)
 "vCo" = (
@@ -62472,7 +63314,8 @@
 	},
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome)
 "vDg" = (
@@ -62874,7 +63717,8 @@
 	dir = 10
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "vTr" = (
@@ -62946,7 +63790,8 @@
 /area/corsat/gamma/airlock/north)
 "vVJ" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4
+	dir = 4;
+	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -62992,7 +63837,8 @@
 /area/corsat/theta/biodome)
 "vYt" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -63049,7 +63895,8 @@
 /area/corsat/theta/biodome)
 "wbK" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -63077,7 +63924,8 @@
 	dir = 4
 	},
 /turf/open/mars{
-	icon_state = "mars_dirt_3"
+	icon_state = "mars_dirt_3";
+	tag = "icon-mars_dirt_3"
 	},
 /area/corsat/sigma/biodome)
 "wda" = (
@@ -63106,10 +63954,12 @@
 /area/corsat/omega/hangar/security)
 "wet" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W"
+	icon_state = "W";
+	tag = "icon-W"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
-	dir = 8
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
 /area/corsat/sigma/south/complex)
 "wfn" = (
@@ -63202,7 +64052,8 @@
 "wjb" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/corsat/gamma/hangar/monorail/railcart)
 "wji" = (
@@ -63279,7 +64130,8 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "plating_striped"
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (EAST)"
 	},
 /area/corsat/gamma/sigmaremote)
 "wlj" = (
@@ -63361,7 +64213,8 @@
 "wnB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
-	name = "Processor Unit"
+	name = "Processor Unit";
+	tag = "icon-broadcaster_send"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -63472,7 +64325,8 @@
 /obj/structure/surface/rack,
 /obj/item/restraints,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/prison/hangar_storage/research/shuttle)
 "wrC" = (
@@ -63585,7 +64439,8 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "wvG" = (
@@ -63747,7 +64602,8 @@
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome)
 "wBJ" = (
@@ -63760,7 +64616,8 @@
 /area/corsat/gamma/foyer)
 "wBK" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -63841,7 +64698,8 @@
 "wFO" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 5;
-	icon_state = "single_part"
+	icon_state = "single_part";
+	tag = "icon-full_corners (SOUTHEAST)"
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
@@ -63943,7 +64801,8 @@
 	dir = 8
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "wIy" = (
@@ -64507,7 +65366,8 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/barricade/handrail{
 	layer = 3
@@ -64782,7 +65642,8 @@
 /area/corsat/omega/complex)
 "xqz" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -65355,7 +66216,8 @@
 /area/corsat/theta/airlock/west/id)
 "xPw" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -65436,7 +66298,8 @@
 	dir = 4
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
 /area/corsat/sigma/biodome)
 "xSj" = (
@@ -65523,7 +66386,8 @@
 "xWE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
-	icon_state = "mars_dirt_3"
+	icon_state = "mars_dirt_3";
+	tag = "icon-mars_dirt_3"
 	},
 /area/corsat/sigma/biodome)
 "xWH" = (
@@ -65793,7 +66657,8 @@
 /area/corsat/gamma/administration)
 "ygN" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -69633,7 +70498,7 @@ abP
 jOE
 abP
 aFv
-fqp
+aiV
 uEC
 abP
 aFI
@@ -72580,7 +73445,7 @@ aZt
 pEj
 bab
 kbm
-ahd
+kEC
 adJ
 kSG
 aem
@@ -79388,7 +80253,7 @@ abv
 abs
 abD
 ale
-abr
+akF
 abs
 abD
 abv
@@ -89841,7 +90706,7 @@ bdD
 bdD
 bdD
 bdD
-bdO
+bdH
 bdI
 rpZ
 aKp
@@ -90330,7 +91195,7 @@ bdD
 bdD
 bdD
 bdD
-bdO
+bdH
 bdI
 aKi
 pXx
@@ -90574,7 +91439,7 @@ bdD
 bdD
 bdD
 nbT
-bdO
+bdH
 bdI
 aKi
 idU
@@ -90817,7 +91682,7 @@ bdU
 bdA
 bdD
 bdD
-bdO
+bdH
 bdG
 bdI
 aKi
@@ -93241,7 +94106,7 @@ aqH
 eaL
 aqI
 aqI
-snA
+avk
 vnH
 anw
 ylo
@@ -123659,7 +124524,7 @@ atl
 aqV
 atl
 aWC
-aXy
+atq
 aCT
 bja
 ato
@@ -123898,9 +124763,9 @@ aCz
 aCz
 ato
 aXo
-aXy
+atq
 apH
-aXy
+atq
 aEQ
 aCH
 tLr
@@ -124143,14 +125008,14 @@ ask
 ask
 ato
 cMw
-aXy
-aXy
-aXy
-aXy
-aXy
+atq
+atq
+atq
+atq
+atq
 oxk
-aXy
-aXy
+atq
+atq
 bHz
 ato
 ylo
@@ -124390,11 +125255,11 @@ ato
 ato
 aXq
 aXp
-aXy
+atq
 bjb
-aXy
+atq
 are
-aXy
+atq
 bjb
 ato
 ato

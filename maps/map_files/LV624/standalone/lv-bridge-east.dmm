@@ -82,7 +82,8 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 6;
-	icon_state = "beach"
+	icon_state = "beach";
+	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/lv624/ground/river/central_river)
 "as" = (
@@ -146,7 +147,8 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast{
 	dir = 9;
-	icon_state = "beach"
+	icon_state = "beach";
+	tag = "icon-beach (NORTHWEST)"
 	},
 /area/lv624/ground/river/central_river)
 "aH" = (

@@ -21383,8 +21383,7 @@
 	pixel_x = -32
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-NW-in"
+	icon_state = "S-corner"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -35394,8 +35393,7 @@
 /area/bigredv2/caves/mining)
 "sXQ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-NW-in"
+	icon_state = "S-corner"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -37879,8 +37877,7 @@
 /area/bigredv2/caves/mining)
 "xRm" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-in";
-	tag = "icon-NW-in"
+	icon_state = "NW-in"
 	},
 /turf/open/floor{
 	icon_state = "dark"

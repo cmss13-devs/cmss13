@@ -1696,10 +1696,7 @@
 	},
 /area/fiorina/station/research_cells)
 "aRk" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/power_ring)
 "aRt" = (
@@ -2629,13 +2626,11 @@
 	},
 /area/fiorina/station/park)
 "btB" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/right{
 	density = 0;
 	desc = "A huge industrial shipping container. You could slip just behind it.";
 	health = 5000;
-	icon_state = "red 2,0";
 	layer = 4;
-	tag = "icon-red 2,0";
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -15033,10 +15028,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "jae" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -24168,10 +24160,8 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. This one is in space.";
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
+/obj/structure/cargo_container/grant/left{
+	desc = "A huge industrial shipping container. This one is in space."
 	},
 /turf/open/space,
 /area/fiorina/oob)
@@ -38781,10 +38771,8 @@
 	},
 /area/fiorina/lz/near_lzI)
 "xmX" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/right{
 	health = 5000;
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0";
 	unacidable = 1
 	},
 /turf/open/floor/prison,
@@ -39304,10 +39292,8 @@
 	},
 /area/fiorina/station/botany)
 "xAl" = (
-/obj/structure/cargo_container{
-	desc = "A huge industrial shipping container. You're not sure how it got here.";
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
+/obj/structure/cargo_container/grant/right{
+	desc = "A huge industrial shipping container. You're not sure how it got here."
 	},
 /turf/open/space,
 /area/fiorina/oob)

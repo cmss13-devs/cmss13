@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "fixed runtimes when accessing gun stat interfaces"

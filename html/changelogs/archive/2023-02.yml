@@ -296,3 +296,26 @@
   - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
   - bugfix: fixed a few instances of surv presets having satchels that overrode each
       other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye
+2023-02-19:
+  BeagleGaming1:
+  - bugfix: Gives Cargo Containers subtypes
+  - maptweak: The small containers are now properly only 1 tile high
+  Morrow:
+  - balance: Gives Researchers Intel 1
+  NewyearnewmeUwu:
+  - maptweak: opened up 2 spots in Trijent's sand temple area
+  carlarctg:
+  - rscadd: Adds a new (and currently the only) random event, 'Economy Inflation'.
+      The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated
+      colonies and vessels that requests a specific kind of vendors stationed on them
+      have their prices increased, due to some randomly-selected incident backstory.
+      There will be a random delay before the change comes into effect, so make sure
+      you buy all you need beforehand! The announcement will only be visible shipside
+      to avoid communications clutter.
+  - code_imp: Added 'product type' variable to non-CM vendors, such as food, beverages,
+      souto, recreation, used for the above.
+  - code_imp: Added a global list for non-CM vending machines.

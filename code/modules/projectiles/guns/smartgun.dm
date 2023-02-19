@@ -22,8 +22,6 @@
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
-		/datum/action/item_action/smartgun/toggle_auto_fire,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
@@ -33,7 +31,6 @@
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
-	var/auto_fire = 0
 	var/motion_detector = 0
 	var/drain = 11
 	var/range = 7
@@ -88,11 +85,6 @@
 		recoil = RECOIL_AMOUNT_TIER_3
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-/obj/item/weapon/gun/smartgun/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
-	))
 
 /obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
 	. = ..()
@@ -181,28 +173,6 @@
 	else
 		button.icon_state = "template"
 
-/datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle Auto Fire"
-	action_icon_state = "autofire"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_auto_fire/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_auto_fire(usr)
-
-/datum/action/item_action/smartgun/toggle_auto_fire/proc/update_icon()
-	if(!holder_item)
-		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.auto_fire)
-		button.icon_state = "template_on"
-	else
-		button.icon_state = "template"
-
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Accuracy Improvement"
@@ -236,25 +206,6 @@
 		button.icon_state = "template_on"
 	else
 		button.icon_state = "template"
-
-/datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle IFF"
-	action_icon_state = "iff_toggle_on"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_lethal_mode/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_lethal_mode(usr)
-	if(G.iff_enabled)
-		action_icon_state = "iff_toggle_on"
-	else
-		action_icon_state = "iff_toggle_off"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_ammo_type/New(Target, obj/item/holder)
 	. = ..()
@@ -389,32 +340,9 @@
 		drain -= 50
 	recalculate_attachment_bonuses()
 
-/obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
-	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield \the [src] to enable autofire.")
-		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s auto fire mode.")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	auto_fire = !auto_fire
-	var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-	TAF.update_icon()
-	auto_fire()
-
-/obj/item/weapon/gun/smartgun/proc/auto_fire()
-	if(auto_fire)
-		drain += 150
-		if(!motion_detector)
-			START_PROCESSING(SSobj, src)
-	if(!auto_fire)
-		drain -= 150
-		if(!motion_detector)
-			STOP_PROCESSING(SSobj, src)
-
 /obj/item/weapon/gun/smartgun/process()
-	if(!auto_fire && !motion_detector)
+	if(!motion_detector)
 		STOP_PROCESSING(SSobj, src)
-	if(auto_fire)
-		auto_prefire()
 	if(motion_detector)
 		recycletime--
 		if(!recycletime)
@@ -426,17 +354,6 @@
 			return
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
-
-/obj/item/weapon/gun/smartgun/proc/auto_prefire(warned) //To allow the autofire delay to properly check targets after waiting.
-	if(ishuman(loc) && (flags_item & WIELDED))
-		var/human_user = loc
-		target = get_target(human_user)
-		process_shot(human_user, warned)
-	else
-		auto_fire = FALSE
-		var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-		TAF.update_icon()
-		auto_fire()
 
 /obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user)
 	var/list/conscious_targets = list()
@@ -505,26 +422,6 @@
 	else if(unconscious_targets.len)
 		. = pick(unconscious_targets)
 
-/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
-	set waitfor = 0
-
-
-	if(!target)
-		return //Acquire our victim.
-
-	if(!ammo)
-		return
-
-	if(target && (world.time-last_fired >= 3)) //Practical firerate is limited mainly by process delay; this is just to make sure it doesn't fire too soon after a manual shot or slip a shot into an ongoing burst.
-		if(world.time-last_fired >= 300 && !warned) //if we haven't fired for a while, beep first
-			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-			addtimer(CALLBACK(src, /obj/item/weapon/gun/smartgun/proc/auto_prefire, TRUE), 3)
-			return
-
-		Fire(target,user)
-
-	target = null
-
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -536,12 +433,10 @@
 /obj/item/weapon/gun/smartgun/proc/motion_detector()
 	if(motion_detector)
 		drain += 15
-		if(!auto_fire)
-			START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSobj, src)
 	if(!motion_detector)
 		drain -= 15
-		if(!auto_fire)
-			STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co

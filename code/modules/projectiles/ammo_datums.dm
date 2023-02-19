@@ -1839,7 +1839,7 @@
 
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
-	damage = 30
+	damage = 50
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -1848,7 +1848,7 @@
 
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
-	damage = 20
+	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
 
@@ -1859,7 +1859,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 32
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 40
+	damage = 60
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
@@ -1867,7 +1867,7 @@
 
 	accurate_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 30
+	damage = 45
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 

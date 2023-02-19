@@ -2392,7 +2392,7 @@
 /area/shiva/interior/colony/medseceng)
 "akS" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 1;
 	pixel_y = 5
 	},
@@ -4567,7 +4567,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "azZ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -5284,15 +5284,10 @@
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/aerodrome)
 "aHr" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
-/obj/structure/cargo_container/horizontal{
+/obj/structure/cargo_container/horizontal/blue/middle,
+/obj/structure/cargo_container/horizontal/blue/top{
 	density = 0;
-	icon_state = "0,2";
-	pixel_y = 12;
-	tag = "icon-0,2"
+	pixel_y = 12
 	},
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -3;
@@ -5521,7 +5516,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/lz1_valley)
 "aKQ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -7579,7 +7574,7 @@
 	},
 /area/shiva/interior/bar)
 "btQ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor/shiva{
 	dir = 9;
@@ -9513,10 +9508,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "dCo" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -12661,10 +12653,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "hmX" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -3;
 	pixel_y = 2
@@ -13286,10 +13275,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/caves/telecomm/lz2_south)
 "hSm" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "hSW" = (
@@ -13391,10 +13377,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/botany)
 "hWX" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/leftmid{
 	health = 5000;
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -13601,10 +13585,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "iio" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/right{
 	health = 5000;
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer1,
@@ -14005,10 +13987,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "iAG" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "iCr" = (
@@ -14041,7 +14020,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "iCJ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	pixel_y = 6
 	},
@@ -14420,7 +14399,7 @@
 /area/shiva/interior/colony/research_hab)
 "iXx" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -14977,10 +14956,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "jGW" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /obj/structure/largecrate/random/mini/small_case/b{
 	pixel_x = 3;
 	pixel_y = 9
@@ -15100,10 +15076,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "jOX" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "jPj" = (
@@ -15428,10 +15401,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "kee" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "keI" = (
@@ -16120,7 +16090,7 @@
 /area/shiva/exterior/junkyard)
 "kMJ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	pixel_y = 6
 	},
 /turf/open/floor/shiva{
@@ -16639,10 +16609,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "lok" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "lop" = (
@@ -16689,17 +16656,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "lpK" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "lpR" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "lpX" = (
@@ -16773,7 +16734,7 @@
 	},
 /area/shiva/interior/colony/central)
 "lvW" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
@@ -17281,7 +17242,7 @@
 /area/shiva/interior/colony/medseceng)
 "lXy" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	pixel_y = 6
 	},
 /turf/open/floor/shiva{
@@ -17859,17 +17820,11 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "mEw" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "mEG" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "mEJ" = (
@@ -17895,10 +17850,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "mFo" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "mFD" = (
@@ -19522,7 +19474,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "otA" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 7
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -20697,7 +20649,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "pId" = (
-/obj/structure/machinery/computer/security/telescreen{
+/obj/structure/machinery/computer/cameras/telescreen{
 	name = "Interrogation Telescreen";
 	network = list("interrogation");
 	pixel_y = 32
@@ -21145,7 +21097,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "qfe" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -22082,7 +22034,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -22602,7 +22554,7 @@
 /area/shiva/exterior/lz1_valley)
 "rLD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/shiva{
@@ -22959,7 +22911,7 @@
 /area/shiva/interior/oob)
 "sfM" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	pixel_y = 6
 	},
@@ -26430,7 +26382,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "vBl" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -27268,7 +27220,7 @@
 	},
 /area/shiva/interior/colony/central)
 "wHr" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{

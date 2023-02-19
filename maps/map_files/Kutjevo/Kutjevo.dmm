@@ -3295,7 +3295,7 @@
 /area/kutjevo/interior/complex/med/operating)
 "ekw" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = null
 	},
@@ -4378,7 +4378,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "fEu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/kutjevo/tan/alt_edge{
 	dir = 1
 	},
@@ -5491,7 +5491,7 @@
 /area/kutjevo/interior/complex/med/triage)
 "hhu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/alt_inner_edge{
@@ -7754,7 +7754,7 @@
 /area/kutjevo/interior/complex/botany)
 "kAf" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = null
 	},
@@ -7799,7 +7799,7 @@
 "kDl" = (
 /obj/structure/bed/chair/office/light,
 /obj/effect/landmark/survivor_spawner,
-/obj/structure/machinery/computer/security/telescreen/entertainment{
+/obj/structure/machinery/computer/cameras/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
 	},
@@ -9013,7 +9013,7 @@
 /area/kutjevo/exterior/scrubland)
 "mkU" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /turf/open/floor/kutjevo/colors/orange/edge{
@@ -9410,7 +9410,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/auto_doc)
 "mJq" = (
-/obj/structure/machinery/computer/security/telescreen/entertainment{
+/obj/structure/machinery/computer/cameras/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
 	},
@@ -10801,7 +10801,7 @@
 /area/kutjevo/interior/complex/botany/east)
 "oFX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/kutjevo/colors/orange/edge{
 	dir = 1
 	},
@@ -12974,10 +12974,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/lz_dunes)
 "rHE" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
 "rHL" = (
@@ -13830,7 +13827,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	indestructible = 1
 	},
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	indestructible = 1;
 	pixel_y = 7
 	},
@@ -14812,7 +14809,7 @@
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "ugQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = null
 	},
@@ -15598,7 +15595,7 @@
 	},
 /area/kutjevo/interior/power)
 "vcs" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
@@ -16235,10 +16232,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "vSE" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
 "vSH" = (
@@ -16759,7 +16753,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "wDT" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -16975,7 +16969,7 @@
 	dir = 4;
 	pixel_y = 7
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	pixel_y = -7
 	},

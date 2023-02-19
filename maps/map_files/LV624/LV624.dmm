@@ -1036,10 +1036,7 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aey" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1049,30 +1046,21 @@
 /turf/open/gm/river,
 /area/lv624/ground/caves/west_caves)
 "aeA" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/lv624/ground/barrens/containers)
 "aeC" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/lv624/ground/barrens/containers)
 "aeD" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1083,10 +1071,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "aeF" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeH" = (
@@ -1094,10 +1079,7 @@
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeL" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeN" = (
@@ -1133,24 +1115,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aeX" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeY" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afb" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afd" = (
@@ -1161,24 +1134,15 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aff" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afg" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afh" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afi" = (
@@ -1204,21 +1168,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "afl" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afn" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afo" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afq" = (
@@ -1376,24 +1334,15 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aga" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agb" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agc" = (
@@ -1470,10 +1419,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agr" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "ags" = (
@@ -1512,10 +1458,7 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "agz" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "agA" = (
@@ -1558,10 +1501,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agL" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "agQ" = (
@@ -4298,28 +4238,19 @@
 	},
 /area/lv624/lazarus/fitness)
 "auI" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "auJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "auK" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -4387,25 +4318,19 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "ava" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_l"
-	},
+/obj/structure/cargo_container/seegson/left,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "avb" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_m"
-	},
+/obj/structure/cargo_container/seegson/mid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "avc" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_r"
-	},
+/obj/structure/cargo_container/seegson/right,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -16245,9 +16170,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "hJa" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_l"
-	},
+/obj/structure/cargo_container/lockmart/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "hJd" = (
@@ -16941,9 +16864,7 @@
 	},
 /area/lv624/ground/river/east_river)
 "jvl" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_m"
-	},
+/obj/structure/cargo_container/lockmart/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "jwW" = (
@@ -17449,9 +17370,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "kzE" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_r"
-	},
+/obj/structure/cargo_container/lockmart/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "kAg" = (

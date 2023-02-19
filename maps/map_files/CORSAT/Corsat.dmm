@@ -4615,7 +4615,7 @@
 /area/corsat/sigma/dorms)
 "anc" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("sigma")
 	},
@@ -7865,7 +7865,7 @@
 /area/corsat/gamma/freezer)
 "awV" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -8232,7 +8232,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "axM" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -8297,7 +8297,7 @@
 /area/corsat/gamma/rnr/bar)
 "axW" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -8513,7 +8513,7 @@
 /area/corsat/sigma/hangar/id)
 "ayy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("sigma")
 	},
@@ -8651,7 +8651,7 @@
 /area/corsat/sigma/hangar/id)
 "ayL" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -8895,7 +8895,7 @@
 /area/corsat/omega/security)
 "azp" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -9480,7 +9480,7 @@
 "aAN" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -10527,7 +10527,7 @@
 /area/corsat/theta/airlock/east)
 "aDx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("theta")
 	},
@@ -12705,7 +12705,7 @@
 /area/corsat/sigma/airlock/control)
 "aIN" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -13592,7 +13592,7 @@
 /area/corsat/gamma/airlock/control)
 "aLp" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -13769,7 +13769,7 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aLS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -14301,7 +14301,7 @@
 	},
 /area/corsat/theta/airlock/east/id)
 "aNk" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega");
 	pixel_y = 22
 	},
@@ -15239,7 +15239,7 @@
 /area/corsat/theta/biodome)
 "aPK" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -16987,7 +16987,7 @@
 "aUg" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("gamma")
 	},
@@ -18231,7 +18231,7 @@
 /area/corsat/sigma/dorms)
 "aXm" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -18775,10 +18775,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "aYD" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18829,10 +18826,7 @@
 	},
 /area/corsat/omega/hangar)
 "aYJ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18876,10 +18870,7 @@
 	},
 /area/corsat/omega/offices)
 "aYP" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18911,10 +18902,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "aYV" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -19079,10 +19067,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "aZp" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -19105,10 +19090,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "aZs" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -19531,7 +19513,7 @@
 /area/corsat/omega/hangar/security)
 "bam" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -19697,7 +19679,7 @@
 /area/corsat/omega/hangar/security)
 "baE" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -19839,7 +19821,7 @@
 /turf/open/floor/plating,
 /area/corsat/omega/airlocknorth)
 "baX" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("omega")
 	},
@@ -24567,30 +24549,21 @@
 	},
 /area/corsat/sigma/cargo)
 "boh" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boi" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boj" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -25717,7 +25690,7 @@
 /area/corsat/omega/security)
 "bsl" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -25821,7 +25794,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "bsD" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /obj/structure/surface/table/reinforced,
@@ -26652,7 +26625,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("gamma")
 	},
@@ -29883,7 +29856,7 @@
 /area/corsat/gamma/airlock/control)
 "bDU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -29894,7 +29867,7 @@
 /area/corsat/sigma/checkpoint)
 "bDX" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -29962,7 +29935,7 @@
 /area/corsat/omega/control)
 "bEk" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -30033,7 +30006,7 @@
 /area/corsat/omega/hangar/security)
 "bEr" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("omega")
 	},
 /turf/open/floor/corsat{
@@ -30367,7 +30340,7 @@
 /area/corsat/gamma/security)
 "bFy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -30483,7 +30456,7 @@
 	dir = 8;
 	health = 250
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("gamma")
 	},
@@ -30819,7 +30792,7 @@
 /area/corsat/gamma/hangar/office)
 "bGO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("gamma")
 	},
@@ -31062,7 +31035,7 @@
 /area/corsat/sigma/hangar/arrivals)
 "bIU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -31186,7 +31159,7 @@
 /area/corsat/gamma/hangar/cargo)
 "bJA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -31307,7 +31280,7 @@
 /area/corsat/gamma/airlock/control)
 "bJP" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("sigma")
 	},
@@ -31318,7 +31291,7 @@
 /area/corsat/sigma/airlock/control)
 "bJQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("theta")
 	},
@@ -31829,7 +31802,7 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bLh" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -35166,7 +35139,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta")
 	},
 /obj/structure/surface/table/almayer,
@@ -35687,7 +35660,7 @@
 /area/corsat/sigma/airlock/control)
 "bXx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -36346,7 +36319,7 @@
 /area/corsat/sigma/dorms)
 "bZy" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -39210,7 +39183,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "dZe" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -39513,10 +39486,7 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "ejk" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -42880,7 +42850,7 @@
 /area/corsat/gamma/medbay/morgue)
 "gGQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1;
 	network = list("omega")
 	},
@@ -44318,10 +44288,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "hCm" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -44861,7 +44828,7 @@
 /area/corsat/gamma/biodome/toxins)
 "hSQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -45464,7 +45431,7 @@
 /area/corsat/sigma/southeast/generator)
 "iqE" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma")
 	},
 /turf/open/floor/corsat{
@@ -50870,10 +50837,7 @@
 	},
 /area/corsat/sigma/dorms)
 "mwa" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -51787,10 +51751,7 @@
 	},
 /area/corsat/gamma/residential/laundry)
 "nen" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -51945,7 +51906,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "nlU" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("gamma")
 	},
@@ -52954,7 +52915,7 @@
 /area/corsat/sigma/hangar/security)
 "nUg" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("sigma")
 	},
@@ -53698,10 +53659,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "oAa" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -54117,7 +54075,7 @@
 /area/corsat/sigma/southeast/dataoffice)
 "oOL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma")
 	},
 /turf/open/floor/corsat{
@@ -54964,10 +54922,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "pAo" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -55006,10 +54961,7 @@
 	},
 /area/corsat/gamma/airlock/south/id)
 "pBJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -58157,7 +58109,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "rSG" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("gamma");
 	pixel_y = 22
 	},
@@ -59321,7 +59273,7 @@
 /area/corsat/gamma/residential/west)
 "sIm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta")
 	},
 /turf/open/floor/corsat{
@@ -60817,7 +60769,7 @@
 /area/corsat/theta/biodome)
 "tNJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	network = list("omega")
 	},
@@ -60952,7 +60904,7 @@
 /area/corsat/gamma/residential)
 "tSu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("sigma")
 	},
@@ -61151,10 +61103,7 @@
 	},
 /area/corsat/sigma/hangar/office)
 "tXq" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -61545,7 +61494,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "upe" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("sigma");
 	pixel_y = 22
 	},
@@ -61580,10 +61529,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "uqb" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -62174,7 +62120,7 @@
 /area/corsat/theta/airlock/west)
 "uMq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4;
 	network = list("omega")
 	},
@@ -65103,10 +65049,7 @@
 	},
 /area/corsat/omega/control)
 "wSz" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -66083,10 +66026,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "xIJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -66697,7 +66637,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "ygF" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("theta");
 	pixel_y = 22
 	},

@@ -6837,7 +6837,7 @@
 	},
 /area/prison/security/checkpoint/maxsec_highsec)
 "aqO" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -10682,7 +10682,7 @@
 	},
 /area/prison/medbay/foyer)
 "aAX" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -11824,7 +11824,7 @@
 	},
 /area/prison/security/checkpoint/maxsec)
 "aEh" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -13902,7 +13902,7 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "aJG" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -14906,7 +14906,7 @@
 	},
 /area/prison/command/secretary_office)
 "aMM" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/woodentable/fancy,
@@ -16066,7 +16066,7 @@
 /turf/open/floor/carpet,
 /area/prison/command/office)
 "aPZ" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/woodentable/fancy,
@@ -19547,7 +19547,7 @@
 /area/prison/residential/central)
 "aZG" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -20215,7 +20215,7 @@
 	},
 /area/prison/security/monitoring/highsec)
 "bbu" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -22058,7 +22058,7 @@
 	},
 /area/prison/hanger/main)
 "bgl" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -22544,7 +22544,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bhx" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -24586,7 +24586,7 @@
 /area/prison/security/monitoring/highsec)
 "bne" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -27322,7 +27322,7 @@
 /area/prison/visitation)
 "buD" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -28987,7 +28987,7 @@
 	},
 /area/prison/security/checkpoint/hangar)
 "bzQ" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -30170,7 +30170,7 @@
 	},
 /area/prison/security/checkpoint/highsec/s)
 "bDl" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -31776,7 +31776,7 @@
 	},
 /area/prison/security/monitoring/lowsec/sw)
 "bHC" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/effect/decal/cleanable/blood/gibs,
@@ -33195,7 +33195,7 @@
 /area/prison/security)
 "bLA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -33859,7 +33859,7 @@
 	},
 /area/prison/security/checkpoint/medsec)
 "bNz" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -36264,7 +36264,7 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "bUM" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -37327,7 +37327,7 @@
 	},
 /area/prison/security)
 "bXE" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/woodentable,
@@ -41562,7 +41562,7 @@
 /area/prison/security/checkpoint/highsec_medsec)
 "ckC" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/machinery/power/apc{
@@ -41622,7 +41622,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "ckK" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -46021,7 +46021,7 @@
 	},
 /area/prison/security/monitoring/medsec/south)
 "cyV" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -48814,7 +48814,7 @@
 /area/prison/maintenance/residential/access/south)
 "jFs" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -49476,7 +49476,7 @@
 	},
 /area/prison/research/secret)
 "lGA" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -51362,7 +51362,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "rqF" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced,
@@ -52649,7 +52649,7 @@
 /area/prison/hallway/central/east)
 "vpt" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{

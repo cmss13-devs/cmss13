@@ -466,7 +466,7 @@
 /area/bigred/ground/security)
 "YZ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 8
 	},
 /turf/open/floor/greengrid,

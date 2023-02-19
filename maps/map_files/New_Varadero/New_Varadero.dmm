@@ -349,7 +349,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/chapel)
 "apI" = (
-/obj/structure/machinery/computer/security/telescreen{
+/obj/structure/machinery/computer/cameras/telescreen{
 	name = "Interrogation Telescreen";
 	network = list("interrogation");
 	pixel_y = 32
@@ -801,7 +801,7 @@
 /area/varadero/interior/security)
 "aHs" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 4;
 	name = "Television set";
@@ -7504,7 +7504,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "gvF" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	dir = 6;
@@ -8357,7 +8357,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "hoG" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
@@ -12740,7 +12740,7 @@
 	},
 /area/varadero/interior/maintenance/security)
 "kTD" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	pixel_y = 6
 	},
 /obj/structure/surface/table,
@@ -14141,7 +14141,7 @@
 /area/varadero/interior/administration)
 "mey" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
 	dir = 1;
 	name = "Television set";
@@ -17101,7 +17101,7 @@
 	},
 /area/varadero/interior/security)
 "oCN" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
@@ -25467,7 +25467,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "vAR" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	dir = 8;
@@ -25710,7 +25710,7 @@
 /area/varadero/interior/bunks)
 "vNG" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/computer/security/telescreen/entertainment{
+/obj/structure/machinery/computer/cameras/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
 	},
@@ -26106,7 +26106,7 @@
 	},
 /area/varadero/interior/chapel)
 "wdb" = (
-/obj/structure/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 4;
 	pixel_x = -8;
 	pixel_y = 10
@@ -26492,7 +26492,7 @@
 /area/varadero/interior/comms1)
 "wqK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 8;
 	pixel_y = 6
 	},

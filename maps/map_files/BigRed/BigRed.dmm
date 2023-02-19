@@ -243,24 +243,15 @@
 	},
 /area/bigredv2/outside/space_port)
 "aaH" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaI" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaJ" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaK" = (
@@ -480,24 +471,15 @@
 	},
 /area/bigredv2/outside/space_port)
 "abk" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abl" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abm" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abn" = (
@@ -558,24 +540,15 @@
 	},
 /area/bigredv2/outside/space_port)
 "abu" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abv" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abw" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abx" = (
@@ -658,7 +631,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abH" = (
-/obj/structure/machinery/computer/security{
+/obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /obj/structure/surface/table,
@@ -835,28 +808,19 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ace" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "acf" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
 "acg" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -1710,7 +1674,7 @@
 /area/bigredv2/outside/marshal_office)
 "aes" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -3481,7 +3445,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aiZ" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "bcircuit";
@@ -9768,10 +9732,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "azo" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "azp" = (
@@ -10149,10 +10110,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/storage)
 "aAq" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
@@ -10424,10 +10382,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aAZ" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aBa" = (
@@ -15538,7 +15493,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aNB" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
@@ -19052,7 +19007,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aVX" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
@@ -21041,7 +20996,7 @@
 /area/bigredv2/outside/admin_building)
 "bbZ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/security/wooden_tv,
+/obj/structure/machinery/computer/cameras/wooden_tv,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -21985,7 +21940,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beW" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beX" = (
@@ -27345,7 +27300,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzI" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
@@ -27392,7 +27347,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzN" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellow2";
@@ -27545,7 +27500,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bAi" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -28207,7 +28162,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCc" = (
-/obj/structure/machinery/computer/security,
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkredcorners2";
@@ -35786,10 +35741,7 @@
 	},
 /area/bigredv2/caves_east)
 "ohY" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "oip" = (
@@ -36964,10 +36916,7 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "qmm" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "qmG" = (
@@ -37260,10 +37209,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "qSj" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "qTu" = (

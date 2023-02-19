@@ -1983,10 +1983,6 @@
 	},
 /area/bigredv2/outside/space_port)
 "afN" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -21382,9 +21378,6 @@
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S-corner"
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -35391,14 +35384,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"sXQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S-corner"
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/telecomm/security)
 "sYL" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8"
@@ -37875,14 +37860,6 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
-"xRm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-in"
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/telecomm/security)
 "xSa" = (
 /obj/structure/prop/dam/crane,
 /turf/open/mars_cave{
@@ -54486,7 +54463,7 @@ aZq
 rpc
 akg
 akN
-sXQ
+afN
 ame
 ahj
 anx
@@ -54703,7 +54680,7 @@ aZq
 rpc
 rpc
 akN
-sXQ
+afN
 amg
 ahj
 aer
@@ -54920,7 +54897,7 @@ aZP
 bhM
 bhM
 akO
-sXQ
+afN
 amg
 aic
 acp
@@ -55137,7 +55114,7 @@ afN
 afN
 afN
 afN
-xRm
+afN
 amg
 aic
 aer

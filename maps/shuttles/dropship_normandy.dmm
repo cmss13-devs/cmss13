@@ -10,8 +10,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "aH" = (
-/obj/structure/machinery/computer/security/dropship/two,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/cameras/dropship/two,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

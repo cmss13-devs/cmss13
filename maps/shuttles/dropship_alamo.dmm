@@ -674,12 +674,12 @@
 	},
 /area/shuttle/drop1/sulaco)
 "UG" = (
-/obj/structure/machinery/computer/security/dropship/one,
 /obj/structure/prop/ice_colony/hula_girl{
 	pixel_x = -10;
 	pixel_y = 16
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/cameras/dropship/one,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

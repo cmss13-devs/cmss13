@@ -18779,10 +18779,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "aYD" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18833,10 +18830,7 @@
 	},
 /area/corsat/omega/hangar)
 "aYJ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18880,10 +18874,7 @@
 	},
 /area/corsat/omega/offices)
 "aYP" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -18915,10 +18906,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "aYV" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -19083,10 +19071,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "aZp" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -19109,10 +19094,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "aZs" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -24571,30 +24553,21 @@
 	},
 /area/corsat/sigma/cargo)
 "boh" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boi" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "boj" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -39512,10 +39485,7 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "ejk" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -44312,10 +44282,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "hCm" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -50864,10 +50831,7 @@
 	},
 /area/corsat/sigma/dorms)
 "mwa" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/left/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -51781,10 +51745,7 @@
 	},
 /area/corsat/gamma/residential/laundry)
 "nen" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -53698,10 +53659,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "oAa" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -54964,10 +54922,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "pAo" = (
-/obj/structure/cargo_container{
-	icon_state = "HD_blue 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/hd/right/alt,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -55006,10 +54961,7 @@
 	},
 /area/corsat/gamma/airlock/south/id)
 "pBJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -61163,10 +61115,7 @@
 	},
 /area/corsat/sigma/hangar/office)
 "tXq" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,0";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/left,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -61592,10 +61541,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "uqb" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,2";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/right,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -65115,10 +65061,7 @@
 	},
 /area/corsat/omega/control)
 "wSz" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,1";
-	tag = "icon-blue 0,0"
-	},
+/obj/structure/cargo_container/trijent/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -66095,10 +66038,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "xIJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},

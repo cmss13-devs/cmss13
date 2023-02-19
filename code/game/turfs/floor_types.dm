@@ -542,6 +542,9 @@
 			FF.update_icon() // So siding get updated properly
 	return ..()
 
+/turf/open/floor/carpet/edge
+	icon_state = "carpetside"
+
 // Start Prison tiles
 
 /turf/open/floor/prison

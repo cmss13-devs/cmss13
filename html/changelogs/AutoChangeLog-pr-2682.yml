@@ -1,0 +1,4 @@
+author: "Totalepicness"
+delete-after: True
+changes:
+  - balance: "Fixes base crusher having half it's intended cooldown for the shield ability"

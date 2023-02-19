@@ -104,7 +104,7 @@
 				is_locked = FALSE
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	var/list/door_turfs = get_turf(air)
+	var/list/door_turfs = list(get_turf(air))
 	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
 		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
 		door_turfs = multi_door.get_filler_turfs()

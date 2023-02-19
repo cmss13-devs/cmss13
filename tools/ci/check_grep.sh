@@ -53,6 +53,13 @@ if grep -El '^\".+\" = \(.+\)' $map_files;	then
 	st=1
 fi;
 
+part "iconstate tags"
+if grep -P '^\ttag = \"icon' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: tag vars from icon state generation detected in maps, please remove them.${NC}"
+	st=1
+fi;
+
 section "whitespace issues"
 
 part "space indentation"

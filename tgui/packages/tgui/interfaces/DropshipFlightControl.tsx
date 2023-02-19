@@ -15,6 +15,7 @@ interface DropshipNavigationProps extends NavigationProps {
   flight_configuration: 'flyby' | 'ferry';
   can_fly_by?: 0 | 1;
   can_set_automated?: 0 | 1;
+  primary_lz?: string;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -99,7 +100,7 @@ const DropshipDoorControl = (_, context) => {
 };
 
 export const DropshipDestinationSelection = (_, context) => {
-  const { data, act } = useBackend<NavigationProps>(context);
+  const { data, act } = useBackend<DropshipNavigationProps>(context);
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
     'target_site',
@@ -133,6 +134,8 @@ export const DropshipDestinationSelection = (_, context) => {
                 <Flex.Item grow={1}>
                   <Button
                     disabled={x.available === 0}
+                    icon={x.id === data.primary_lz ? 'home' : undefined}
+                    iconPosition="right"
                     onClick={() => {
                       setSiteSelection(x.id);
                       act('button-push');

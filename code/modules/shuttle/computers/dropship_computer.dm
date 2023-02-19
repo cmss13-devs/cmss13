@@ -107,6 +107,14 @@
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
+	if(dropship_control_lost)
+		var/remaining_time = timeleft(door_control_cooldown) / 10
+		var/units = "seconds"
+		if(remaining_time > 60)
+			remaining_time = remaining_time / 60
+			units = "minutes"
+		to_chat(user, SPAN_WARNING("The shuttle is not responding, try again in [remaining_time] [units]."))
+		return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
@@ -128,6 +136,13 @@
 	. = ..(user)
 	if(.)
 		return TRUE
+
+	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
+		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
+			return
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	// if the dropship has crashed don't allow more interactions
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
@@ -151,7 +166,10 @@
 	if(linked_lz)
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
-			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
+			var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
+			if(result != DOCKING_SUCCESS)
+				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
+				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
 			xeno_announcement(SPAN_XENOANNOUNCE("Your Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
@@ -189,7 +207,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
-		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN)
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
 		announce_dchat("[xeno] has locked \the [dropship]", src)
 
 		if(!GLOB.resin_lz_allowed)
@@ -264,6 +282,7 @@
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
 	.["can_set_automated"] = is_remote
+	.["primary_lz"] = SSticker.mode.active_lz?.linked_lz
 	if(shuttle.destination)
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
 	.["destinations"] = list()

@@ -9196,13 +9196,6 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/westerneye/medical/aft_medical_lobby)
-"cPc" = (
-/obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer{
-	icon_state = "snowflake_charlie_arrow";
-	tag = "null"
-	},
-/area/westerneye/hallways/midship_aft_hallway)
 "cPm" = (
 /obj/structure/closet/radiation,
 /obj/structure/machinery/light/small{
@@ -9634,6 +9627,18 @@
 	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/westerneye/medical/containment)
+"cWV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E"
+	},
+/turf/open/floor/almayer,
+/area/westerneye/hull/mid_hull)
 "cWW" = (
 /obj/structure/machinery/status_display{
 	pixel_x = 32
@@ -23093,6 +23098,36 @@
 	icon_state = "alpha"
 	},
 /area/westerneye/hallways/midship_aft_hallway)
+"gHO" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/yellow{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "gHV" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/command/capt,
@@ -29766,12 +29801,6 @@
 	tag = "icon-sterile"
 	},
 /area/westerneye/engineering/lower_engineering)
-"iBv" = (
-/obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/almayer{
-	icon_state = "delta"
-	},
-/area/westerneye/hallways/midship_aft_hallway)
 "iBx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -30387,6 +30416,14 @@
 	},
 /turf/open/floor/almayer,
 /area/westerneye/living/briefing)
+"iKD" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Docking Coordination"
+	},
+/turf/open/floor/plating,
+/area/westerneye/hallways/lowerdeck_port_hallway)
 "iKY" = (
 /turf/closed/wall/almayer/reinforced,
 /area/westerneye/hallways/mission_planner)
@@ -35881,6 +35918,39 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/westerneye/living/cryo_cells)
+"koo" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -17
+	},
+/obj/item/bedsheet/red{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "kop" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -36996,8 +37066,7 @@
 "kGy" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer{
-	icon_state = "bravo";
-	dir = 8
+	icon_state = "delta"
 	},
 /area/westerneye/hallways/midship_aft_hallway)
 "kGB" = (
@@ -39001,18 +39070,6 @@
 /obj/structure/machinery/cm_vending/gear/smartgun,
 /turf/open/floor/almayer,
 /area/westerneye/squads/charlie)
-"lks" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1;
-	tag = "icon-E"
-	},
-/turf/open/floor/almayer,
-/area/westerneye/hull/mid_hull)
 "lkU" = (
 /turf/closed/wall/almayer,
 /area/westerneye/hull/starboard_warehouse_mini)
@@ -48512,19 +48569,16 @@
 /turf/open/floor/almayer,
 /area/westerneye/shipboard/sea_office)
 "nXn" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Cryo Lockdown Shutters";
-	name = "\improper Cryo Lockdown Shutter"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
 	tag = "icon-door_open"
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Cryodorms";
-	dir = 2;
-	req_one_access = null;
-	req_one_access_txt = s
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Cryo Lockdown Shutters";
+	name = "\improper Cryo Lockdown Shutter"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -51276,6 +51330,13 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/westerneye/living/basketball)
+"oNo" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer{
+	icon_state = "snowflake_charlie_arrow";
+	tag = "null"
+	},
+/area/westerneye/hallways/midship_aft_hallway)
 "oNC" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_one_access_txt = "7;23;27"
@@ -52084,14 +52145,6 @@
 	},
 /turf/open/floor/almayer,
 /area/westerneye/living/guestdorms)
-"oZk" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 2;
-	name = "\improper Docking Coordination"
-	},
-/turf/open/floor/plating,
-/area/westerneye/hallways/lowerdeck_port_hallway)
 "oZl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -52898,36 +52951,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/westerneye/hull/lower_hull/l_f_s)
-"pjR" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/bedsheet/red{
-	pixel_y = 13
-	},
-/obj/item/bedsheet/red{
-	layer = 3.2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/westerneye/living/starboard_emb)
 "pjZ" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
@@ -59313,6 +59336,13 @@
 	tag = "icon-sterile"
 	},
 /area/westerneye/hull/upper_hull/u_m_s)
+"reR" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer{
+	icon_state = "bravo";
+	dir = 8
+	},
+/area/westerneye/hallways/midship_aft_hallway)
 "reV" = (
 /obj/structure/machinery/power/monitor{
 	name = "Core Power Monitoring"
@@ -65323,39 +65353,6 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/westerneye/shipboard/brig/chief_mp_office)
-"sPI" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/sign/safety/bathunisex{
-	pixel_x = -17
-	},
-/obj/item/bedsheet/red{
-	pixel_y = 13
-	},
-/obj/item/bedsheet/red{
-	layer = 3.2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/westerneye/living/starboard_emb)
 "sPO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/landinglight/escape_pods/delayone{
@@ -67521,6 +67518,36 @@
 	tag = "icon-redcorner (WEST)"
 	},
 /area/westerneye/shipboard/brig/execution)
+"twl" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/red{
+	layer = 3.2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/westerneye/living/starboard_emb)
 "two" = (
 /obj/structure/machinery/meter,
 /obj/structure/pipes/standard/simple/visible{
@@ -79086,36 +79113,6 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/westerneye/engineering/engineering_workshop/hangar)
-"wQh" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/item/bedsheet/yellow{
-	pixel_y = 13
-	},
-/obj/item/bedsheet/yellow{
-	layer = 3.2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/westerneye/living/starboard_emb)
 "wQj" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -96929,7 +96926,7 @@ iTl
 hAs
 qMS
 lZz
-oZk
+iKD
 mnD
 mnD
 mnD
@@ -109366,7 +109363,7 @@ gzf
 ixG
 xNE
 wKb
-kGy
+reR
 ayA
 ayA
 ayA
@@ -109556,7 +109553,7 @@ qCc
 rhs
 lAZ
 rbU
-sPI
+koo
 hBQ
 ixG
 vyx
@@ -109758,7 +109755,7 @@ bgZ
 nRh
 fJi
 vEb
-pjR
+twl
 hBQ
 kHG
 vyx
@@ -110348,7 +110345,7 @@ hJp
 xIb
 fIg
 hJp
-wQh
+gHO
 sSy
 cPX
 tif
@@ -115909,7 +115906,7 @@ ins
 rsp
 iEB
 sRf
-lks
+cWV
 gRZ
 gMJ
 eJF
@@ -119466,7 +119463,7 @@ gzf
 ixG
 xNE
 wKb
-cPc
+oNo
 ayA
 ayA
 ayA
@@ -119870,7 +119867,7 @@ gzf
 ixG
 xNE
 tfa
-iBv
+kGy
 ayA
 ayA
 ayA

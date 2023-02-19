@@ -137,18 +137,18 @@
 	if(.)
 		return TRUE
 
+	// if the dropship has crashed don't allow more interactions
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(shuttle.mode == SHUTTLE_CRASHED)
+		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
+		return
+
 	if(dropship_control_lost && skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 		to_chat(user, SPAN_NOTICE("You start to remove the Queens override."))
 		if(!do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_WARNING("You fail to remove the Queens override"))
 			return
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
-
-	// if the dropship has crashed don't allow more interactions
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(shuttle.mode == SHUTTLE_CRASHED)
-		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
-		return
 
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)

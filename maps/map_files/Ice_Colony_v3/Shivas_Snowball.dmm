@@ -5204,12 +5204,9 @@
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/aerodrome)
 "aHr" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1"
-	},
-/obj/structure/cargo_container/horizontal{
+/obj/structure/cargo_container/horizontal/blue/middle,
+/obj/structure/cargo_container/horizontal/blue/top{
 	density = 0;
-	icon_state = "0,2";
 	pixel_y = 12
 	},
 /obj/structure/largecrate/random/mini/ammo{
@@ -9376,9 +9373,7 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "dCo" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -12481,9 +12476,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "hmX" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -3;
 	pixel_y = 2
@@ -13099,9 +13092,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/caves/telecomm/lz2_south)
 "hSm" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "hSW" = (
@@ -13203,9 +13194,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/botany)
 "hWX" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/leftmid{
 	health = 5000;
-	icon_state = "green 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -13411,9 +13401,8 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "iio" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/right{
 	health = 5000;
-	icon_state = "green 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer1,
@@ -13810,9 +13799,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "iAG" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "iCr" = (
@@ -14774,9 +14761,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "jGW" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /obj/structure/largecrate/random/mini/small_case/b{
 	pixel_x = 3;
 	pixel_y = 9
@@ -14895,9 +14880,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "jOX" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "jPj" = (
@@ -15219,9 +15202,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "kee" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "keI" = (
@@ -16425,9 +16406,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "lok" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "lop" = (
@@ -16473,15 +16452,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "lpK" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "lpR" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "lpX" = (
@@ -17636,15 +17611,11 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "mEw" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "mEG" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "mEJ" = (
@@ -17670,9 +17641,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "mFo" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "mFD" = (

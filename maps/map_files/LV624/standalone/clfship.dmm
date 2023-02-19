@@ -999,9 +999,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "AP" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1048,9 +1046,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "BY" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -1292,9 +1288,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Hg" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

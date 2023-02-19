@@ -16839,16 +16839,14 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bhT" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_m";
+/obj/structure/cargo_container/lockmart/mid{
 	layer = 3.1;
 	pixel_y = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bhU" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_r";
+/obj/structure/cargo_container/lockmart/right{
 	layer = 3.1;
 	pixel_y = 5
 	},
@@ -17174,9 +17172,7 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bjR" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bjS" = (
@@ -18422,9 +18418,7 @@
 	},
 /area/almayer/engineering/engine_core)
 "boV" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /obj/structure/prop/almayer/minigun_crate{
 	pixel_x = 1;
 	pixel_y = 39
@@ -21009,15 +21003,11 @@
 /area/almayer/hallways/vehiclehangar)
 "bAh" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bAi" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bAk" = (
@@ -23024,8 +23014,7 @@
 	},
 /area/almayer/shipboard/navigation)
 "bIo" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_l";
+/obj/structure/cargo_container/lockmart/left{
 	layer = 3.1;
 	pixel_y = 5
 	},
@@ -23564,17 +23553,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bKt" = (
-/obj/structure/cargo_container{
-	icon_state = "green_l"
-	},
+/obj/structure/cargo_container/arious/left,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
 "bKu" = (
-/obj/structure/cargo_container{
-	icon_state = "arious_m"
-	},
+/obj/structure/cargo_container/arious/mid,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bKz" = (
@@ -26887,9 +26872,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/upper_engineering)
 "bYq" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -76082,9 +76065,7 @@
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
 "xxI" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /obj/structure/sign/poster{
 	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE.";
 	icon_state = "poster11";

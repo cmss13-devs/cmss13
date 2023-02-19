@@ -16929,45 +16929,31 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "aWB" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWC" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWD" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWE" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWF" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWG" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWH" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aWI" = (
@@ -17118,21 +17104,15 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aXc" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXd" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXe" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXf" = (
@@ -17144,9 +17124,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXh" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXi" = (
@@ -17283,27 +17261,19 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aXH" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXI" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXJ" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXK" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXL" = (

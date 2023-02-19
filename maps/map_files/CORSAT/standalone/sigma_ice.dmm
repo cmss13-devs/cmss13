@@ -9,9 +9,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/gunrange)
 "aB" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "aI" = (
@@ -166,9 +164,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/corsat/sigma/biodome/scrapyard)
 "cH" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "cI" = (
@@ -437,9 +433,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/ice)
 "hZ" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "ih" = (
@@ -1103,9 +1097,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "xk" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 1,0"
-	},
+/obj/structure/cargo_container/watatsumi/rightmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "xp" = (
@@ -1291,9 +1283,7 @@
 /turf/template_noop,
 /area/template_noop)
 "yY" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 2,0"
-	},
+/obj/structure/cargo_container/watatsumi/right,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "zf" = (
@@ -1732,9 +1722,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "FC" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "FI" = (
@@ -2355,9 +2343,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "QD" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "QN" = (
@@ -2481,9 +2467,7 @@
 	},
 /area/corsat/sigma/biodome/ice)
 "Sh" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "Sl" = (
@@ -2899,9 +2883,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
 "Zm" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0"
-	},
+/obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "Zr" = (

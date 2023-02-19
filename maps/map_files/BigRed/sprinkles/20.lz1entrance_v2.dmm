@@ -545,27 +545,21 @@
 	},
 /area/bigredv2/outside/nw)
 "bH" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/nw)
 "bI" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/nw)
 "bJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -607,17 +601,13 @@
 	},
 /area/bigredv2/outside/nw)
 "bP" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0"
-	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
 "bQ" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0"
-	},
+/obj/structure/cargo_container/kelland/right,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},

@@ -22373,21 +22373,15 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "but" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/marsh/center)
 "buu" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "buv" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "buw" = (
@@ -22658,15 +22652,11 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bvu" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh)
 "bvv" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
 "bvw" = (
@@ -22674,9 +22664,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "bvx" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh)
@@ -23427,21 +23415,15 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/restricted)
 "byn" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byo" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byp" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/nearlz2)
 "byr" = (
@@ -24314,17 +24296,15 @@
 	},
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "bDO" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/left{
 	health = 5000;
-	icon_state = "red 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bDP" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/rightmid{
 	health = 5000;
-	icon_state = "red 1,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -24333,9 +24313,8 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ag/exterior/paths/north_outpost)
 "bDS" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/grant/right{
 	health = 5000;
-	icon_state = "red 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -30108,9 +30087,8 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "cCE" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/left{
 	health = 5000;
-	icon_state = "WY 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -30444,9 +30422,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "djr" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "djR" = (
@@ -30754,9 +30730,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "dMw" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "dNq" = (
@@ -30957,9 +30931,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "egV" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/right{
 	health = 5000;
-	icon_state = "green 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -33877,9 +33850,8 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "jaZ" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/mid{
 	health = 5000;
-	icon_state = "WY 1,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -35223,9 +35195,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/tcomms)
 "lrO" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "lsz" = (
@@ -36580,9 +36550,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "nGi" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "nGm" = (
@@ -36663,9 +36631,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "nRN" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/rightmid{
 	health = 5000;
-	icon_state = "green 1,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -36677,9 +36644,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh/center)
 "nSQ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "nST" = (
@@ -37465,9 +37430,8 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "pqE" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/wy/right{
 	health = 5000;
-	icon_state = "WY 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -39280,9 +39244,8 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "soi" = (
-/obj/structure/cargo_container{
+/obj/structure/cargo_container/arious/leftmid{
 	health = 5000;
-	icon_state = "green 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -40683,9 +40646,7 @@
 	},
 /area/strata/ag/exterior/research_decks)
 "uCc" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
 "uCI" = (
@@ -42387,9 +42348,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "xFl" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "xFC" = (

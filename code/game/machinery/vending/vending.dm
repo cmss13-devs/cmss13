@@ -18,6 +18,8 @@
 	var/display_color = "white"
 	var/category
 
+GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending)
+
 /obj/structure/machinery/vending
 	name = "Vendomat"
 	desc = "A generic vending machine."
@@ -53,6 +55,10 @@
 	var/product_slogans = ""
 	/// string of small ad messages in the vending screen - random chance
 	var/product_ads = ""
+
+	/// Used to increase prices of a specific type of vendor.
+	var/product_type = VENDOR_PRODUCT_TYPE_UNDEF
+
 	var/list/product_records = list()
 	var/list/hidden_records = list()
 	var/list/coin_records = list()
@@ -95,6 +101,7 @@
 
 /obj/structure/machinery/vending/Initialize(mapload, ...)
 	. = ..()
+	LAZYADD(GLOB.total_vending_machines, src)
 	src.slogan_list = splittext(src.product_slogans, ";")
 
 	// So not all machines speak at the exact same time.
@@ -108,6 +115,10 @@
 	src.build_inventory(premium, 0, 1)
 	power_change()
 	start_processing()
+
+/obj/structure/machinery/vending/Destroy()
+	LAZYREMOVE(GLOB.total_vending_machines, src)
+	return ..()
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()

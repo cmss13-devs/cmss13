@@ -351,7 +351,7 @@ var/list/ob_type_fuel_requirements
 
 	var/cancellation_token = rand(0,32000)
 	orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
 	for(var/mob/M in range(30, target))

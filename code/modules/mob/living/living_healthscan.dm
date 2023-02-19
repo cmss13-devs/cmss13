@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			"amount" = round(reagent.volume, 0.1),
 			"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
 			"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
-			"colour" = reagent.color
+			"color" = reagent.color
 		)
 	data["has_chemicals"] = length(target_mob.reagents.reagent_list)
 	data["chemicals_lists"] = chemicals_lists
@@ -278,58 +278,58 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				advice += list(list(
 					"advice" = "Use a blowtorch or nanopaste to repair the damaged areas.",
 					"icon" = "tools",
-					"colour" = "red" //BRI'ISH????
+					"color" = "red" //BRI'ISH????
 					))
 			if(human_target_mob.getFireLoss(robotic_only = TRUE) > 20)
 				advice += list(list(
 					"advice" = "Use a cable coil or nanopaste to repair the burned areas.",
 					"icon" = "plug",
-					"colour" = "orange"
+					"color" = "orange"
 					))
 			if(unknown_implants)
 				advice += list(list(
 					"advice" = "Recommend that the patient does not move - embedded objects.",
 					"icon" = "window-close",
-					"colour" = "red"
+					"color" = "red"
 					))
 			if(human_target_mob.stat == DEAD)
 				if((human_target_mob.health + 20) > HEALTH_THRESHOLD_DEAD)
 					advice += list(list(
 						"advice" = "Apply shock via defibrillator!",
 						"icon" = "bolt",
-						"colour" = "yellow"
+						"color" = "yellow"
 						))
 				else
 					if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30)
 						advice += list(list(
 							"advice" = "Use trauma kits or surgical line to repair the lacerated areas.",
 							"icon" = "band-aid",
-							"colour" = "green" //BRI'ISH????
+							"color" = "green" //BRI'ISH????
 							))
 					if(human_target_mob.getFireLoss(organic_only = TRUE) > 30)
 						advice += list(list(
 							"advice" = "Use burn kits or synth-graft to repair the burned areas.",
 							"icon" = "band-aid",
-							"colour" = "orange" //BRI'ISH????
+							"color" = "orange" //BRI'ISH????
 							))
 					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !issynth(human_target_mob))
 						advice += list(list(
 							"advice" = "Administer a single dose of epinephrine.",
 							"icon" = "syringe",
-							"colour" = "olive"
+							"color" = "olive"
 							))
 			if(!issynth(human_target_mob))
 				if(human_target_mob.blood_volume <= 500 && !chemicals_lists["nutriment"])
 					advice += list(list(
 						"advice" = "Administer food or recommend that the patient eat.",
 						"icon" = "pizza-slice",
-						"colour" = "white"
+						"color" = "white"
 						))
 				if(internal_bleeding)
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of quickclot.",
 						"icon" = "syringe",
-						"colour" = "red"
+						"color" = "red"
 						))
 					if(chemicals_lists["quickclot"])
 						if(chemicals_lists["quickclot"]["amount"] < 5)
@@ -340,7 +340,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of dylovene.",
 						"icon" = "syringe",
-						"colour" = "green"
+						"color" = "green"
 						))
 					if(chemicals_lists["anti_toxin"])
 						if(chemicals_lists["anti_toxin"]["amount"] < 5)
@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of peridaxon.",
 						"icon" = "syringe",
-						"colour" = "grey"
+						"color" = "grey"
 						))
 					if(chemicals_lists["peridaxon"])
 						if(chemicals_lists["peridaxon"]["amount"] < 5)
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of dexalin.",
 						"icon" = "syringe",
-						"colour" = "blue"
+						"color" = "blue"
 						))
 					if(chemicals_lists["dexalin"])
 						if(chemicals_lists["dexalin"]["amount"] < 3)
@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of kelotane.",
 						"icon" = "syringe",
-						"colour" = "yellow"
+						"color" = "yellow"
 						))
 					if(chemicals_lists["kelotane"])
 						if(chemicals_lists["kelotane"]["amount"] < 3)
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of bicaridine.",
 						"icon" = "syringe",
-						"colour" = "red"
+						"color" = "red"
 						))
 					if(chemicals_lists["bicaridine"])
 						if(chemicals_lists["bicaridine"]["amount"] < 3)
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of inaprovaline.",
 						"icon" = "syringe",
-						"colour" = "purple"
+						"color" = "purple"
 						))
 					if(chemicals_lists["inaprovaline"])
 						if(chemicals_lists["inaprovaline"]["amount"] < 5)
@@ -411,7 +411,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of tramadol.",
 						"icon" = "syringe",
-						"colour" = "white"
+						"color" = "white"
 						))
 					if(chemicals_lists["tramadol"])
 						if(chemicals_lists["tramadol"]["amount"] < 3)
@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					advice += list(list(
 						"advice" = "Do NOT administer tramadol.",
 						"icon" = "window-close",
-						"colour" = "red"
+						"color" = "red"
 						))
 		if(advice.len)
 			data["advice"] = advice

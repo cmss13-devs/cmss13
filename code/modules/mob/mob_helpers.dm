@@ -1,6 +1,3 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
-
 /mob/proc/can_use_hands()
 	return
 
@@ -294,7 +291,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()))
+	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -506,4 +503,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return mobs_in_range
 
 /mob/proc/alter_ghost(mob/dead/observer/ghost)
+	return
+
+/mob/proc/get_paygrade()
 	return

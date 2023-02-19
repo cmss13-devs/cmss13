@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - qol: "you can now keybind showing held item"

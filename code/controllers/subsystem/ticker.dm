@@ -445,7 +445,7 @@ SUBSYSTEM_DEF(ticker)
 		CRASH("send_tip_of_the_round() failed somewhere")
 
 	if(message)
-		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(message)]</span>")
+		to_chat(world, SPAN_PURPLE("<b>Tip of the round: </b>[html_encode(message)]"))
 		return TRUE
 	else
 		return FALSE

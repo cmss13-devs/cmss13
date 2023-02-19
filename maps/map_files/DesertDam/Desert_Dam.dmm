@@ -1099,7 +1099,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adv" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Bar Backroom"
 	},
@@ -5047,7 +5047,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aoH" = (
-/obj/structure/machinery/door/airlock/almayer/engineering,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -5144,7 +5144,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aoU" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security"
 	},
 /turf/open/floor/prison{
@@ -5263,7 +5263,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "apo" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Armoury"
 	},
 /turf/open/floor/prison{
@@ -5823,7 +5823,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aqP" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Office"
 	},
 /turf/open/floor/prison{
@@ -5860,7 +5860,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aqU" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security Armoury"
 	},
@@ -6257,7 +6257,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security"
 	},
 /turf/open/floor/prison{
@@ -6421,7 +6421,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aso" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Research Substation"
 	},
@@ -6474,7 +6474,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/east_caves)
 "asv" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security Checkpoint"
 	},
@@ -6550,7 +6550,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "asG" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
 	},
 /turf/open/floor{
@@ -6924,7 +6924,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "atE" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security"
 	},
@@ -6936,7 +6936,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "atF" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security"
 	},
@@ -7329,7 +7329,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "auI" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -8199,7 +8199,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awY" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor/prison{
@@ -8440,7 +8440,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "axI" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -8685,7 +8685,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayA" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass{
+/obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 2;
 	name = "\improper Research Office"
 	},
@@ -8930,7 +8930,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "azj" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass{
+/obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Research Director Office"
 	},
 /obj/structure/disposalpipe/segment{
@@ -9608,7 +9608,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aBp" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1
 	},
 /turf/open/floor/plating{
@@ -10544,7 +10544,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Bar Backroom"
 	},
 /turf/open/floor/interior/wood,
@@ -15209,7 +15209,7 @@
 	},
 /area/shuttle/tri_trans2/alpha)
 "aRp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -15659,7 +15659,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "aSC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 1
 	},
 /turf/open/floor{
@@ -17143,10 +17143,9 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aXt" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -17218,10 +17217,9 @@
 "aXI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -18207,7 +18205,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "baA" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Checkpoint"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18477,7 +18475,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bbl" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Archives"
 	},
@@ -18488,7 +18486,7 @@
 	},
 /area/desert_dam/building/administration/archives)
 "bbm" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Archives"
 	},
@@ -18919,7 +18917,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "bcJ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Holding"
 	},
@@ -22429,7 +22427,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bnD" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security Office Space"
 	},
@@ -22660,7 +22658,7 @@
 	},
 /area/desert_dam/building/security/staffroom)
 "bos" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Checkpoint"
 	},
@@ -22690,7 +22688,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bov" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Detectives Office"
 	},
@@ -22787,7 +22785,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "boH" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
 	},
 /turf/open/floor{
@@ -22829,7 +22827,7 @@
 	},
 /area/desert_dam/exterior/valley/north_valley_dam)
 "boN" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Marshals Office"
 	},
@@ -24063,7 +24061,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bsA" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Secure Tech Storage"
 	},
@@ -24424,7 +24422,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "btS" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Engine Room"
 	},
@@ -25220,9 +25218,8 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bwr" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper SMES";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25350,7 +25347,7 @@
 	},
 /area/desert_dam/building/security/evidence)
 "bwQ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Evidence"
 	},
 /turf/open/floor/prison,
@@ -26050,7 +26047,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Holding"
 	},
 /turf/open/floor/prison,
@@ -26269,10 +26266,9 @@
 "bzJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Overseer's Office";
-	req_access = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -28330,7 +28326,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bGj" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Atmospheric Storage"
 	},
 /turf/open/floor/prison{
@@ -28397,7 +28393,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "bGy" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Marshal Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -28477,7 +28473,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bGK" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Observation"
 	},
@@ -28615,7 +28611,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bHe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -28640,7 +28636,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bHh" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
@@ -29139,7 +29135,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bIY" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
 	},
 /turf/open/floor{
@@ -29471,7 +29467,7 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bKe" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Evidence"
 	},
@@ -29709,7 +29705,7 @@
 	},
 /area/desert_dam/building/security/warden)
 "bKP" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Visitation"
 	},
@@ -30575,7 +30571,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/armory)
 "bNx" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Armoury"
 	},
@@ -31042,7 +31038,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bPh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -31178,7 +31174,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "bPH" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Visitation"
 	},
 /turf/open/floor/prison,
@@ -31222,7 +31218,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bPM" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -32325,7 +32321,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bSW" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Engineering Office"
 	},
@@ -32482,7 +32478,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bTr" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 1"
 	},
 /turf/open/floor{
@@ -32894,7 +32890,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "bUQ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -32931,7 +32927,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bUW" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 1"
 	},
 /turf/open/floor/prison,
@@ -33372,7 +33368,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "bWf" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Warden"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -33792,7 +33788,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXw" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Armoury"
 	},
 /turf/open/floor/prison,
@@ -34844,7 +34840,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "cam" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 2"
 	},
 /turf/open/floor{
@@ -35017,7 +35013,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
 "caQ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 2"
 	},
 /turf/open/floor/prison,
@@ -35058,13 +35054,13 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "caX" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "caY" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Solitary"
 	},
@@ -36267,7 +36263,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Isolation"
 	},
 /turf/open/floor/prison,
@@ -37663,7 +37659,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/west_wing_hallway)
 "cjt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical"
 	},
 /turf/open/floor/prison{
@@ -37764,7 +37760,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "cjI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
 /turf/open/floor/prison,
 /area/desert_dam/building/substation/west)
 "cjK" = (
@@ -38022,7 +38018,7 @@
 	},
 /area/desert_dam/building/substation/west)
 "ckw" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 3"
 	},
 /turf/open/floor{
@@ -38368,9 +38364,8 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/filtration_a)
 "clq" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Lab Maintenance";
-	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -38399,7 +38394,7 @@
 	},
 /area/desert_dam/building/substation/west)
 "clz" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cell 3"
 	},
 /turf/open/floor/prison,
@@ -38440,7 +38435,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "clG" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Medical Office"
 	},
 /turf/open/floor/prison{
@@ -38482,7 +38477,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "clL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Chemistry"
 	},
@@ -38930,9 +38925,8 @@
 	},
 /area/desert_dam/building/substation/west)
 "cnl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Telecommunications";
-	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/substation/west)
@@ -39214,10 +39208,9 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "cof" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Lab Maintenance";
-	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -39765,7 +39758,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cpS" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Telecommunications"
 	},
 /turf/open/floor/prison,
@@ -40034,10 +40027,9 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cqH" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Flight Control";
-	req_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -40200,7 +40192,7 @@
 	},
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "cro" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Security Checkpoint"
 	},
@@ -40312,7 +40304,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "crL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -40481,7 +40473,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Isolation"
 	},
 /turf/open/floor/prison,
@@ -40728,7 +40720,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "csW" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Execution"
 	},
 /turf/open/floor/prison,
@@ -41016,7 +41008,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "ctT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Lobby"
 	},
@@ -41049,7 +41041,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/surgury_observation)
 "ctZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison{
@@ -41070,7 +41062,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cuc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical Hallway"
 	},
 /turf/open/floor/prison{
@@ -41767,7 +41759,7 @@
 	},
 /area/desert_dam/building/medical/surgury_observation)
 "cvZ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison{
@@ -42113,7 +42105,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper CMO's Officer"
 	},
 /turf/open/floor/prison{
@@ -42412,7 +42404,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cxR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
 /turf/open/floor/prison{
 	icon_state = "greencorner"
 	},
@@ -42844,7 +42836,7 @@
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river/riverside_central_south)
 "czk" = (
-/obj/structure/machinery/door/airlock/almayer/engineering,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -43922,7 +43914,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/emergency_room)
 "cCk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Emergency Room"
 	},
 /turf/open/floor/prison{
@@ -44361,7 +44353,7 @@
 /area/desert_dam/building/medical/surgery_room_one)
 "cDt" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Operating Theatre 1"
 	},
@@ -44377,7 +44369,7 @@
 /area/desert_dam/building/medical/surgery_room_two)
 "cDv" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Operating Theatre 2"
 	},
@@ -44392,7 +44384,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/office1)
 "cDz" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Examination Room"
 	},
@@ -44407,7 +44399,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/office2)
 "cDB" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Examination Room"
 	},
@@ -45074,7 +45066,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cFw" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper CE Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -45294,7 +45286,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cFZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -45681,7 +45673,7 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cGW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Emergency Room"
 	},
@@ -45716,7 +45708,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cHb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Surgery"
 	},
@@ -45971,9 +45963,8 @@
 "cHM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
@@ -45985,7 +45976,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
 "cHP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -46000,7 +45991,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cHR" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Patient Room 1"
 	},
@@ -46011,7 +46002,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHS" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Patient Room 2"
 	},
@@ -46032,7 +46023,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "cHU" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Patient Room 3"
 	},
@@ -46236,7 +46227,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cIF" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Office"
 	},
@@ -48485,10 +48476,9 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_isolation)
 "cPN" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass{
+/obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
 	name = "\improper Virology Lab Cell";
-	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -48496,9 +48486,8 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cPO" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
@@ -49168,7 +49157,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cRS" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor/prison,
@@ -51662,7 +51651,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "dcs" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -51843,7 +51832,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddn" = (
@@ -52100,9 +52089,8 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "ded" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
@@ -52629,7 +52617,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfG" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -55388,7 +55376,7 @@
 	},
 /area/desert_dam/exterior/river_mouth/southern)
 "dzs" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dzt" = (
@@ -56886,9 +56874,8 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_south)
 "dHh" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Lab Maintenance";
-	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
@@ -58885,7 +58872,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "dPe" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
@@ -59158,7 +59145,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dQa" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Lobby"
 	},
@@ -59483,7 +59470,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "dQL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Lobby"
 	},
@@ -59533,7 +59520,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "dQR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Emergency Room"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -59909,7 +59896,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Surgery"
 	},
@@ -60258,7 +60245,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dSO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Containment Pen"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -60294,7 +60281,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dSW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Containment Pen"
 	},
@@ -60376,7 +60363,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dTg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -60392,7 +60379,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dTi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -62591,7 +62578,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ebU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -64338,7 +64325,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "gLb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -64979,7 +64966,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "iNg" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Garage Breakroom"
 	},
@@ -65407,7 +65394,7 @@
 	},
 /area/desert_dam/interior/caves/temple)
 "kAV" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
@@ -69395,7 +69382,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "xYc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "vault"

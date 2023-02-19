@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(mapping)
 			var/old_config = configs[i]
 			configs[i] = global.config.defaultmaps[i]
 			if(!configs || configs[i].defaulted)
-				to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting.</span>")
+				to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting."))
 				configs[i] = old_config
 
 	loadWorld()

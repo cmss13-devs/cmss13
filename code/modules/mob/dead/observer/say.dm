@@ -30,7 +30,7 @@
 	var/comm_paygrade = ""
 
 	if(language)
-		style = language.colour
+		style = language.color
 
 	var/speaker_name = speaker.name
 	if(istype(speaker, /mob/living/carbon/human))
@@ -59,30 +59,3 @@
 	if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 		var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 		playsound_client(client, speech_sound, source, sound_vol)
-
-
-
-
-
-
-
-/mob/dead/observer/emote(act, type, message)
-	message = strip_html(message)
-
-	if(!message)
-		return
-
-	if(act != "me")
-		return
-
-	log_emote("Ghost/[src.key] : [message]")
-
-	if(src.client)
-		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, SPAN_DANGER("You cannot emote in deadchat (muted)."))
-			return
-
-		if(src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
-			return
-
-	. = src.emote_dead(message)

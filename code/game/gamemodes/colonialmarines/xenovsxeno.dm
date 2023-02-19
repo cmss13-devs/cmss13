@@ -130,7 +130,7 @@
 		var/mob/living/carbon/human/original = ghost_mind.current
 
 		original.first_xeno = TRUE
-		original.stat = 1
+		original.set_stat(UNCONSCIOUS)
 		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE

@@ -60,10 +60,19 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/atom/movable/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
 
+/atom/movable/vv_do_topic(list/href_list)
+	. = ..()
 
+	if(!.)
+		return
 
-
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
 
 //when a mob interact with something that gives them a special view,
 //check_eye() is called to verify that they're still eligible.

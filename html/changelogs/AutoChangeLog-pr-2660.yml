@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscadd: "IOs can now get a service jacket from their vendor."
+  - rscdel: "IOs no longer spawn with the tanker jacket."

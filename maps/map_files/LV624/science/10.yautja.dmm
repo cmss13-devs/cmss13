@@ -20,7 +20,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -155,7 +155,7 @@
 	},
 /area/lv624/lazarus/research)
 "ay" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -220,7 +220,7 @@
 	},
 /area/lv624/lazarus/research)
 "aG" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -231,7 +231,7 @@
 	},
 /area/lv624/lazarus/research)
 "aH" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -306,7 +306,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -323,7 +323,7 @@
 	},
 /area/lv624/lazarus/research)
 "aP" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -552,7 +552,7 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = -25;
 	pixel_y = 5
 	},

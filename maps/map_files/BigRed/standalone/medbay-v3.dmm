@@ -17,9 +17,8 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical Clinic";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";
@@ -447,10 +446,9 @@
 /area/bigredv2/outside/medical)
 "bo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Clinic";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -675,9 +673,8 @@
 	},
 /area/bigredv2/outside/medical)
 "bS" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Medical Clinic Scanner Room";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -737,10 +734,9 @@
 /area/bigredv2/outside/medical)
 "cc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Clinic CMO's Office";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1608,9 +1604,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Medical Clinic Storage";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1636,9 +1631,8 @@
 	},
 /area/bigredv2/outside/medical)
 "en" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Medical Clinic Storage";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1920,9 +1914,8 @@
 /area/bigredv2/outside/medical)
 "eV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical Clinic";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -1966,9 +1959,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Medical Clinic Operating Theatre";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "damaged2";

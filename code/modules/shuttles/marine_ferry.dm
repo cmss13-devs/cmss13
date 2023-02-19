@@ -30,7 +30,7 @@
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not launch the dropship due to blockage in the rear door.</span>"
+	var/fail_flavortext = "Could not launch the dropship due to blockage in the rear door."
 
 	// The ship section of the almayer that the dropship is aiming to crash into. Random if null
 	var/crash_target_section = null
@@ -70,12 +70,12 @@
 /datum/shuttle/ferry/marine/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
 
 /datum/shuttle/ferry/marine/proc/load_datums()
 	if(!(info_tag in s_info))
-		message_staff(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
 
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
@@ -180,7 +180,7 @@
 		T_trg = pick(locs_land)
 		trg_rot = locs_land[T_trg]
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
 
 	//Switch the landmarks, to swap docking and landing locs, so we can move back and forth.
 	if(!transit_gun_mission) //gun mission makes you land back where you started. no need to swap dock and land turfs.
@@ -362,11 +362,11 @@
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
-			else message_staff("no crash turf found in Almayer Hangar, contact coders.")
+			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
 	shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -568,7 +568,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
 		return FALSE
 
 	locs_dock -= T_src
@@ -712,7 +712,7 @@
 /datum/shuttle/ferry/elevator
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
-	var/fail_flavortext = "<span class='warning'>Could not move the elevator due to blockage in the main door.</span>"
+	var/fail_flavortext = "Could not move the elevator due to blockage in the main door."
 
 /datum/shuttle/ferry/elevator/New()
 	..()
@@ -750,5 +750,5 @@
 /datum/shuttle/ferry/elevator/announce_preflight_failure()
 	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
-		control.visible_message(fail_flavortext)
+		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat

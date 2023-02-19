@@ -275,7 +275,7 @@
 //-------------------------------------------------------
 //M40-SD AKA SOF RIFLE FROM HELL (It's actually an M41A, don't tell!)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+/obj/item/weapon/gun/rifle/m41a/elite/xm40
 	name = "\improper XM40 pulse rifle"
 	desc = "One of the experimental predecessors to the M41 line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
 	icon_state = "m40sd"
@@ -285,7 +285,7 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-	current_mag = /obj/item/ammo_magazine/rifle/m40_sd/heap
+	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
@@ -298,11 +298,11 @@
 		/obj/item/ammo_magazine/rifle/explosive,
 		/obj/item/ammo_magazine/rifle/le,
 		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/m40_sd,
-		/obj/item/ammo_magazine/rifle/m40_sd/heap,
+		/obj/item/ammo_magazine/rifle/xm40,
+		/obj/item/ammo_magazine/rifle/xm40/heap,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor/m40_integral,//no rail attachies
+		/obj/item/attachable/suppressor/xm40_integral,//no rail attachies
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
@@ -320,9 +320,9 @@
 
 	random_spawn_chance = 0
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/suppressor/m40_integral/S = new(src)
+	var/obj/item/attachable/suppressor/xm40_integral/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.hidden = FALSE
 	S.Attach(src)
@@ -334,10 +334,10 @@
 	H.Attach(src)
 	update_attachable(H.slot)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_3

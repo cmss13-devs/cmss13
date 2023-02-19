@@ -269,12 +269,12 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 	damage_falloff_mod = 0.4
 
-/obj/item/attachable/suppressor/m40_integral
-	name = "\improper M40SD integral suppressor"
+/obj/item/attachable/suppressor/xm40_integral
+	name = "\improper XM40 integral suppressor"
 	icon_state = "m40sd_suppressor"
 	attach_icon = "m40sd_suppressor_a"
 
-/obj/item/attachable/suppressor/m40_integral/New()
+/obj/item/attachable/suppressor/xm40_integral/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_1

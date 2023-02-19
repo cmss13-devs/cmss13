@@ -211,6 +211,9 @@
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)
 					continue //Lets try this again
+				if(!M.ghost_mob.client)
+					candidates -= M
+					continue
 				if(M.current && M.current.stat != DEAD)
 					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
 					if(!candidates.len)

@@ -1,5 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - bugfix: "Gives Cargo Containers subtypes"
-  - maptweak: "The small containers are now properly only 1 tile high"

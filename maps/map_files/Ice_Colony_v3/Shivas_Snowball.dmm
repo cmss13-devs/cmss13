@@ -949,7 +949,7 @@
 "adI" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Omicron Custodial Storage";
+	name = "\improper Omicron Custodial Storage"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
@@ -1258,7 +1258,7 @@
 "aeU" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Omicron Technical Storage";
+	name = "\improper Omicron Technical Storage"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
@@ -1274,7 +1274,7 @@
 "afc" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	name = "\improper Underground Security Showers";
+	name = "\improper Underground Security Showers"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -1695,7 +1695,7 @@
 /area/shiva/interior/colony/medseceng)
 "aht" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -2137,7 +2137,7 @@
 /area/shiva/interior/colony/central)
 "ajw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	name = "\improper Colony Power Substation";
+	name = "\improper Colony Power Substation"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -2537,7 +2537,7 @@
 /area/shiva/interior/warehouse)
 "alQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
-	name = "\improper Underground Medical Laboratory Treatment";
+	name = "\improper Underground Medical Laboratory Treatment"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -2956,7 +2956,7 @@
 "anZ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Armory";
+	name = "\improper Underground Security Armory"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -2966,7 +2966,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
-	name = "Underground Medical Laboratory Operating Theatre";
+	name = "Underground Medical Laboratory Operating Theatre"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -3164,14 +3164,14 @@
 "api" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Detective's Office";
+	name = "\improper Underground Security Detective's Office"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "apj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Marshal's Office";
+	name = "\improper Underground Security Marshal's Office"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
@@ -3435,7 +3435,7 @@
 /area/shiva/interior/colony/central)
 "arA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security";
+	name = "\improper Underground Security"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -4014,7 +4014,7 @@
 /area/shiva/interior/colony/central)
 "awq" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Disposals";
+	name = "\improper Colony Disposals"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -4786,7 +4786,7 @@
 "aCt" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Garage Repair Station";
+	name = "\improper Colony Garage Repair Station"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
@@ -4994,7 +4994,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "st_17";
 	locked = 0;
-	name = "Power Storage Unit";
+	name = "Power Storage Unit"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/no2)
@@ -5078,7 +5078,7 @@
 	dir = 2;
 	id = "st_18";
 	locked = 0;
-	name = "Disposals Storage Unit";
+	name = "Disposals Storage Unit"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts)
@@ -5259,7 +5259,7 @@
 "aGC" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Command Center";
+	name = "\improper Command Center"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -5502,7 +5502,7 @@
 /area/shiva/interior/bar)
 "aKL" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Colony Security Checkpoint";
+	name = "\improper Colony Security Checkpoint"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
@@ -6198,7 +6198,7 @@
 /area/shiva/interior/colony/central)
 "aSa" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -6234,7 +6234,7 @@
 /area/shiva/exterior/cp_lz2)
 "aSz" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -7766,7 +7766,7 @@
 "bFC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering Tool Storage";
+	name = "\improper Colony Engineering Tool Storage"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -7911,7 +7911,7 @@
 /area/shiva/interior/aerodrome)
 "bLf" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -8017,7 +8017,7 @@
 /area/shiva/interior/caves/s_lz2)
 "bRD" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
-	name = "\improper Hydroponics South Wing Dome";
+	name = "\improper Hydroponics South Wing Dome"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -8053,7 +8053,7 @@
 /area/shiva/interior/colony/n_admin)
 "bUe" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
+	dir = 1
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -9930,7 +9930,7 @@
 /area/shiva/exterior/junkyard)
 "egf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
-	name = "\improper Underground Sports Center";
+	name = "\improper Underground Sports Center"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -10847,7 +10847,7 @@
 "fkb" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering";
+	name = "\improper Colony Engineering"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -12077,7 +12077,7 @@
 "gFe" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Underground Administration Office";
+	name = "\improper Underground Administration Office"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
@@ -12319,7 +12319,7 @@
 "gQR" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
-	name = "\improper Underground Reception";
+	name = "\improper Underground Reception"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -12474,7 +12474,7 @@
 "gZG" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
-	name = "\improper Hydroponics South Wing Dome";
+	name = "\improper Hydroponics South Wing Dome"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -12845,7 +12845,7 @@
 /area/shiva/interior/colony/medseceng)
 "hwJ" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Underground Morgue";
+	name = "Underground Morgue"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -12860,7 +12860,7 @@
 "hxk" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -13431,7 +13431,7 @@
 "hZS" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Underground Command Center";
+	name = "\improper Underground Command Center"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -13612,7 +13612,7 @@
 "ijP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering Electric Storage";
+	name = "\improper Colony Engineering Electric Storage"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -13859,7 +13859,7 @@
 "ivr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Underground Chapel";
+	name = "\improper Underground Chapel"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -14136,7 +14136,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitory Unit";
+	name = "\improper Colony Dormitory Unit"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
@@ -14577,7 +14577,7 @@
 /area/shiva/interior/bar)
 "jis" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
@@ -14586,7 +14586,7 @@
 /area/shiva/interior/colony/central)
 "jjm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Colony Administration";
+	name = "\improper Colony Administration"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -14625,7 +14625,7 @@
 /area/shiva/interior/bar)
 "jlQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -15122,7 +15122,7 @@
 "jQy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
-	name = "\improper Aurora Medical Clinic";
+	name = "\improper Aurora Medical Clinic"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -15239,7 +15239,7 @@
 /area/shiva/interior/lz2_habs)
 "kap" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -15536,7 +15536,7 @@
 /area/shiva/interior/caves/right_spiders)
 "knC" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Aurora Medical Clinic Treatment";
+	name = "\improper Aurora Medical Clinic Treatment"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -17329,7 +17329,7 @@
 "mah" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Power Substation SMES";
+	name = "\improper Colony Power Substation SMES"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -18015,7 +18015,7 @@
 "mMg" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	name = "\improper Underground Security Interrogation Observation";
+	name = "\improper Underground Security Interrogation Observation"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -18847,7 +18847,7 @@
 "nKc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
-	name = "\improper Aurora Medical Clinic Storage";
+	name = "\improper Aurora Medical Clinic Storage"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -19435,7 +19435,7 @@
 "ord" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	name = "Underground Morgue";
+	name = "Underground Morgue"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -19587,7 +19587,7 @@
 "oAo" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Administration Office";
+	name = "\improper Colony Administration Office"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
@@ -21355,7 +21355,7 @@
 "qpu" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Dorms Security Checkpoint";
+	name = "\improper Dorms Security Checkpoint"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/n_admin)
@@ -21695,7 +21695,7 @@
 /area/shiva/interior/caves/cp_camp)
 "qLA" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
@@ -22612,7 +22612,7 @@
 /area/shiva/exterior/lz2_fortress)
 "rOG" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
-	name = "\improper Aurora Medical Clinic Scanning Unit";
+	name = "\improper Aurora Medical Clinic Scanning Unit"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -24288,7 +24288,7 @@
 "tFk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Colony Dormitory Unit";
+	name = "\improper Colony Dormitory Unit"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/botany)
@@ -24552,7 +24552,7 @@
 "tQG" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Storeroom";
+	name = "\improper Colony Storeroom"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24760,7 +24760,7 @@
 "tYT" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	desc = "Huh, it doesn't seem to go anywhere.";
-	name = "Architectural oversight";
+	name = "Architectural oversight"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -25640,7 +25640,7 @@
 /area/shiva/interior/aerodrome)
 "uNe" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Colony Engineering Locker Room";
+	name = "\improper Colony Engineering Locker Room"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -25848,7 +25848,7 @@
 /area/shiva/interior/colony/botany)
 "uYg" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security Checkpoint";
+	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -25869,7 +25869,7 @@
 /area/shiva/interior/telecomm/lz1_biceps)
 "uYR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Underground Security";
+	name = "\improper Underground Security"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -26054,7 +26054,7 @@
 "vhH" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Colony Engineering";
+	name = "\improper Colony Engineering"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -26720,7 +26720,7 @@
 "vWt" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Underground Maintenance";
+	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -26818,7 +26818,7 @@
 /area/shiva/interior/colony/medseceng)
 "wfL" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Underground Security Evidence Storage";
+	name = "\improper Underground Security Evidence Storage"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -26989,7 +26989,7 @@
 /area/shiva/interior/colony/botany)
 "wpG" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Colony Security Checkpoint";
+	name = "\improper Colony Security Checkpoint"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -28163,7 +28163,7 @@
 /area/shiva/interior/lz2_habs)
 "xQQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
-	name = "\improper Colony Dormitories";
+	name = "\improper Colony Dormitories"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -28344,7 +28344,7 @@
 /area/shiva/interior/colony/medseceng)
 "yez" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Underground Security Showers";
+	name = "\improper Underground Security Showers"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,

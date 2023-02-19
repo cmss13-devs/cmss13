@@ -17100,7 +17100,7 @@
 "aXt" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Administration Office";
+	name = "\improper Colony Administration Office"
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -17174,7 +17174,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Administration Office";
+	name = "\improper Colony Administration Office"
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -25156,7 +25156,7 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "bwr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper SMES";
+	name = "\improper SMES"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26193,7 +26193,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Colony Overseer's Office";
+	name = "\improper Colony Overseer's Office"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -38257,7 +38257,7 @@
 /area/desert_dam/exterior/river/filtration_a)
 "clq" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Lab Maintenance";
+	name = "\improper Lab Maintenance"
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -39087,7 +39087,7 @@
 "cof" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Lab Maintenance";
+	name = "\improper Lab Maintenance"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -39897,7 +39897,7 @@
 "cqH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Flight Control";
+	name = "\improper Flight Control"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -45811,7 +45811,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
@@ -48292,7 +48292,7 @@
 "cPN" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
-	name = "\improper Virology Lab Cell";
+	name = "\improper Virology Lab Cell"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -48301,7 +48301,7 @@
 /area/desert_dam/building/medical/virology_isolation)
 "cPO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
@@ -51904,7 +51904,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "ded" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
@@ -56686,7 +56686,7 @@
 /area/desert_dam/exterior/river/riverside_south)
 "dHh" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Lab Maintenance";
+	name = "\improper Lab Maintenance"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)

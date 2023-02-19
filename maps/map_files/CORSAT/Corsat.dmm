@@ -2338,7 +2338,7 @@
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "Airlock Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -13032,7 +13032,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Sigma Dome Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13396,10 +13396,7 @@
 	},
 /area/corsat/theta/biodome/hydroeast)
 "aKV" = (
-/obj/structure/prop/almayer/particle_cannon{
-	desc = "";
-	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
-	},
+/obj/structure/prop/almayer/particle_cannon/corsat,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -13493,7 +13490,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Hangar Office";
-	
+
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14217,7 +14214,7 @@
 "aNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration Office";
-	
+
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -19510,7 +19507,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Omega Dome Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19611,7 +19608,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Omega Dome Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19906,7 +19903,7 @@
 "bbh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Theta Dome Control";
-	
+
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -20554,7 +20551,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Gamma Dome Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23358,7 +23355,7 @@
 "bku" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Hangar Office";
-	
+
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -23367,7 +23364,7 @@
 "bkv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Flight Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -24109,7 +24106,7 @@
 "bmH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "Flight Control";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24129,7 +24126,7 @@
 "bmJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "Hangar Office";
-	
+
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28748,7 +28745,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
-	
+
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -49335,7 +49332,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
 	name = "Administration Office";
-	
+
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -51075,7 +51072,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "Interrogation";
-	
+
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -59045,7 +59042,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
-	
+
 	},
 /turf/open/floor/corsat{
 	dir = 1;

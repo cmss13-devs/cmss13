@@ -222,3 +222,6 @@
 	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
 	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
 	forceMove(current_structure.loc)
+
+/mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
+	playsound(loc, "alien_roar_larva", 15)

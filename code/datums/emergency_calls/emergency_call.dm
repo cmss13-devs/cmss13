@@ -211,7 +211,7 @@
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)
 					continue //Lets try this again
-				if(!M.ghost_mob.client)
+				if(!GLOB.directory[M.ckey])
 					candidates -= M
 					continue
 				if(M.current && M.current.stat != DEAD)

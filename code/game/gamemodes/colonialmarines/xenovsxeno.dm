@@ -1,8 +1,8 @@
 #define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_queen)
 
 /datum/game_mode/xenovs
-	name = GAMEMODE_HIVE_WARS
-	config_tag = GAMEMODE_HIVE_WARS
+	name = "Hive Wars"
+	config_tag = "Hive Wars"
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player

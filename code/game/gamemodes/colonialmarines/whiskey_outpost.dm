@@ -2,13 +2,13 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || master_mode == GAMEMODE_WHISKEY_OUTPOST)
+	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
 		return 1
 	return 0
 
 /datum/game_mode/whiskey_outpost
-	name = GAMEMODE_WHISKEY_OUTPOST
-	config_tag = GAMEMODE_WHISKEY_OUTPOST
+	name = "Whiskey Outpost"
+	config_tag = "Whiskey Outpost"
 	required_players = 0
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN

@@ -438,7 +438,7 @@
 "abr" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1;
-	tag = ""
+	tag = "icon-wooden_chair (NORTH)"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -2338,6 +2338,7 @@
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "Airlock Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -3153,16 +3154,6 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
-"aiV" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1;
-	tag = "icon-officechair_dark (NORTH)"
-	},
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/researcher)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -3736,13 +3727,6 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/sigmaremote)
-"akF" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 1;
-	tag = "icon-wooden_chair (NORTH)"
-	},
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/east)
 "akG" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -6623,12 +6607,6 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/sigma/southeast/dataoffice)
-"atq" = (
-/turf/open/floor/almayer{
-	icon_state = "tcomms";
-	tag = "icon-emeraldfull"
-	},
-/area/corsat/sigma/southeast/telecomm)
 "atr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -7221,15 +7199,6 @@
 "avj" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/hangar/checkpoint)
-"avk" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/corsat/gamma/hallwaysouth)
 "avl" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -13063,6 +13032,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Sigma Dome Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13523,6 +13493,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Hangar Office";
+	
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14246,6 +14217,7 @@
 "aNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration Office";
+	
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -19538,6 +19510,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Omega Dome Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19638,6 +19611,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Omega Dome Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19932,6 +19906,7 @@
 "bbh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Theta Dome Control";
+	
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -20579,6 +20554,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Gamma Dome Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20959,12 +20935,6 @@
 "bdG" = (
 /turf/open/gm/coast{
 	dir = 8
-	},
-/area/corsat/theta/biodome)
-"bdH" = (
-/turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
 	},
 /area/corsat/theta/biodome)
 "bdI" = (
@@ -23388,6 +23358,7 @@
 "bku" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Hangar Office";
+	
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -23396,6 +23367,7 @@
 "bkv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Flight Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -24137,6 +24109,7 @@
 "bmH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "Flight Control";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24156,6 +24129,7 @@
 "bmJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "Hangar Office";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28774,6 +28748,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
+	
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -40927,6 +40902,15 @@
 	icon_state = "squareswood"
 	},
 /area/corsat/gamma/rnr/arcade)
+"flY" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1;
+	tag = "icon-officechair_white (NORTH)"
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/corsat/gamma/residential/west)
 "fmd" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Engineering";
@@ -46183,6 +46167,16 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/residential)
+"iVr" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1;
+	tag = "icon-officechair_dark (NORTH)"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/corsat/gamma/residential/researcher)
 "iVA" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
@@ -48208,15 +48202,6 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/southeast/generator)
-"kEC" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1;
-	tag = "icon-officechair_white (NORTH)"
-	},
-/turf/open/floor/corsat{
-	icon_state = "whitetan"
-	},
-/area/corsat/gamma/residential/west)
 "kEJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -49350,6 +49335,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
 	name = "Administration Office";
+	
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -51089,6 +51075,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "Interrogation";
+	
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -55977,6 +55964,15 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
+"qlU" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/hallwaysouth)
 "qmD" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat{
@@ -56925,6 +56921,13 @@
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome)
+"qWb" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1;
+	tag = ""
+	},
+/turf/open/floor/wood,
+/area/corsat/gamma/residential/east)
 "qWf" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -59042,6 +59045,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
+	
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -59969,6 +59973,12 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/theta/biodome/complex)
+"tfS" = (
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
+	},
+/area/corsat/theta/biodome)
 "tfY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -64338,6 +64348,12 @@
 	dir = 1
 	},
 /area/corsat/theta/biodome)
+"wrL" = (
+/turf/open/floor/almayer{
+	icon_state = "tcomms";
+	tag = "icon-emeraldfull"
+	},
+/area/corsat/sigma/southeast/telecomm)
 "wrR" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/corsat{
@@ -70498,7 +70514,7 @@ abP
 jOE
 abP
 aFv
-aiV
+iVr
 uEC
 abP
 aFI
@@ -73445,7 +73461,7 @@ aZt
 pEj
 bab
 kbm
-kEC
+flY
 adJ
 kSG
 aem
@@ -77802,7 +77818,7 @@ ylo
 ylo
 aal
 aaB
-abr
+qWb
 ong
 ach
 abD
@@ -78047,7 +78063,7 @@ ylo
 ylo
 aal
 aba
-abr
+qWb
 uPy
 abb
 abD
@@ -79758,7 +79774,7 @@ ylo
 ylo
 aal
 aao
-abr
+qWb
 mfN
 adR
 abD
@@ -80253,7 +80269,7 @@ abv
 abs
 abD
 ale
-akF
+abr
 abs
 abD
 abv
@@ -81228,7 +81244,7 @@ ylo
 ylo
 aal
 aaB
-abr
+qWb
 ong
 ach
 abD
@@ -81473,7 +81489,7 @@ ylo
 ylo
 aal
 aba
-abr
+qWb
 mfN
 abb
 abD
@@ -90706,7 +90722,7 @@ bdD
 bdD
 bdD
 bdD
-bdH
+tfS
 bdI
 rpZ
 aKp
@@ -91195,7 +91211,7 @@ bdD
 bdD
 bdD
 bdD
-bdH
+tfS
 bdI
 aKi
 pXx
@@ -91439,7 +91455,7 @@ bdD
 bdD
 bdD
 nbT
-bdH
+tfS
 bdI
 aKi
 idU
@@ -91682,7 +91698,7 @@ bdU
 bdA
 bdD
 bdD
-bdH
+tfS
 bdG
 bdI
 aKi
@@ -94106,7 +94122,7 @@ aqH
 eaL
 aqI
 aqI
-avk
+qlU
 vnH
 anw
 ylo
@@ -124524,7 +124540,7 @@ atl
 aqV
 atl
 aWC
-atq
+wrL
 aCT
 bja
 ato
@@ -124763,9 +124779,9 @@ aCz
 aCz
 ato
 aXo
-atq
+wrL
 apH
-atq
+wrL
 aEQ
 aCH
 tLr
@@ -125008,14 +125024,14 @@ ask
 ask
 ato
 cMw
-atq
-atq
-atq
-atq
-atq
+wrL
+wrL
+wrL
+wrL
+wrL
 oxk
-atq
-atq
+wrL
+wrL
 bHz
 ato
 ylo
@@ -125255,11 +125271,11 @@ ato
 ato
 aXq
 aXp
-atq
+wrL
 bjb
-atq
+wrL
 are
-atq
+wrL
 bjb
 ato
 ato

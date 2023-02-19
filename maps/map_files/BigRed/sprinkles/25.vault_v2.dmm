@@ -149,6 +149,7 @@
 	icon_state = "door_locked";
 	locked = 0;
 	name = "\improper Emergency Vault";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)

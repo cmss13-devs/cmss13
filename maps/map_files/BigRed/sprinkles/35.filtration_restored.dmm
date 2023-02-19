@@ -127,6 +127,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Atmospherics Condenser Storage";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -134,6 +135,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -148,6 +150,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -313,13 +316,6 @@
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"bi" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
 "bj" = (
 /obj/structure/surface/rack,
 /obj/item/tank/air,
@@ -336,6 +332,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Filtration Facility";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -343,6 +340,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Filtration Facility";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -375,6 +373,7 @@
 "br" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Filtration Facility";
+	
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -628,6 +627,13 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"lO" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "nk" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris,
@@ -844,7 +850,7 @@ aa
 aa
 aa
 aa
-bi
+lO
 bq
 az
 az
@@ -979,7 +985,7 @@ az
 ac
 bk
 aa
-bi
+lO
 TX
 az
 az
@@ -1165,7 +1171,7 @@ bK
 bK
 bK
 aY
-bi
+lO
 bj
 bj
 az
@@ -1273,7 +1279,7 @@ aJ
 aG
 bK
 aY
-bi
+lO
 ka
 bn
 az

@@ -352,6 +352,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	name = "\improper Virology Lab Decontamination";
+	
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";

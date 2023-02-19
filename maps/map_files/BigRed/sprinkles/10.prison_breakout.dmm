@@ -136,6 +136,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Office Prison";
+	
 	},
 /turf/open/floor{
 	dir = 5;
@@ -151,6 +152,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Office Prison";
+	
 	},
 /turf/open/floor{
 	dir = 5;
@@ -278,6 +280,7 @@
 	icon_state = "door_locked";
 	locked = 0;
 	name = "\improper Marshal Office Prison";
+	
 	},
 /turf/open/floor{
 	dir = 5;
@@ -292,6 +295,7 @@
 	icon_state = "door_locked";
 	locked = 0;
 	name = "\improper Marshal Office Prison";
+	
 	},
 /turf/open/floor{
 	dir = 5;
@@ -305,6 +309,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshal Office Prison";
+	
 	},
 /turf/open/floor{
 	dir = 5;
@@ -499,6 +504,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshal Office Armory";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -731,6 +737,7 @@
 	icon_state = "door_locked";
 	locked = 0;
 	name = "\improper Marshal Office Armory";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -770,6 +777,7 @@
 "cb" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Marshal Office Interrogation";
+	
 	},
 /turf/open/floor{
 	icon_state = "darkish";
@@ -880,6 +888,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Office Evidence Room";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1079,6 +1088,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshal Office Holding Cell";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1090,6 +1100,7 @@
 	icon_state = "door_locked";
 	locked = 0;
 	name = "\improper Marshal Office Holding Cell";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1099,6 +1110,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Marshal Office Checkpoint";
+	
 	},
 /turf/open/floor{
 	dir = 9;

@@ -194,6 +194,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engineering Workshop";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -217,6 +218,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Engine Reactor Control";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -433,6 +435,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
 	name = "\improper Engine Reactor";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -462,6 +465,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -480,6 +484,7 @@
 "cv" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control";
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)

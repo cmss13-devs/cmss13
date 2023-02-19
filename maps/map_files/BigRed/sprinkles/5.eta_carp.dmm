@@ -98,6 +98,7 @@
 "q" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Eta Lab Cell";
+	
 	},
 /turf/open/floor{
 	icon_state = "dark";

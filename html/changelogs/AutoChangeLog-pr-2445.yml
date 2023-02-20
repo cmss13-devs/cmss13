@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Increased amount of prey cats can leap upon, including larva and facehuggers."

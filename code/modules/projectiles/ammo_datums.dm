@@ -113,11 +113,14 @@
 
 	shake_camera(living_mob, 3, 4)
 	knockback_effects(living_mob, fired_projectile)
-	slam_back(living_mob, fired_projectile)
 
 /datum/ammo/proc/slam_back(mob/living/living_mob, obj/item/projectile/fired_projectile)
 	//Either knockback or slam them into an obstacle.
 	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
+
+	if(living_mob.mob_size >= MOB_SIZE_BIG)
+		return //Big xenos are not affected.
+
 	if(!direction) //Same tile.
 		return
 	if(!step(living_mob, direction))
@@ -1203,6 +1206,7 @@
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M, P, 6)
+	slam_back(M, P)
 
 /datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))

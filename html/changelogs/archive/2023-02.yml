@@ -319,3 +319,21 @@
   - code_imp: Added 'product type' variable to non-CM vendors, such as food, beverages,
       souto, recreation, used for the above.
   - code_imp: Added a global list for non-CM vending machines.
+2023-02-20:
+  Totalepicness:
+  - balance: Fixes base crusher having half it's intended cooldown for the shield
+      ability
+  carlarctg:
+  - rscadd: Added a lisping character trait, makes you thound thupid. All roles above
+      Staff Sergeant are unable to lisp, and neither is any kind of Synthetic. Predators
+      can lisp if they really want to, not really recommended. Pretty sure most active
+      predators would kill you for that, but the option's there.
+  harryob:
+  - rscadd: mentors can now appear as an imaginary SEA to newer players in need of
+      a hand
+  - bugfix: removed some errors from the options and messages menu
+  - bugfix: fixed runtimes when accessing gun stat interfaces
+  - bugfix: restored the previous functionality of larva/facehuggers having little
+      rees
+  stanalbatross:
+  - qol: added a keybind for rotate-chair

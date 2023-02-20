@@ -50,7 +50,7 @@
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/cat/Destroy()
-	QDEL_NULL(movement_target)
+	movement_target = null
 	. = ..()
 
 /mob/living/simple_animal/cat/Life(delta_time)

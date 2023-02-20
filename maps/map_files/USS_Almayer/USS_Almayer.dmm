@@ -3465,8 +3465,6 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/hallways/aft_hallway)
-"alt" = (
-)
 "alu" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/megaphone,
@@ -92127,10 +92125,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
 aaa
-alt
 "}
 (87,1,1) = {"
 aaa
@@ -92533,10 +92531,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
 aaa
-alt
 "}
 (89,1,1) = {"
 aaa
@@ -93751,10 +93749,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
-aaa
-alt
+bdH
 "}
 (95,1,1) = {"
 aaa
@@ -93954,10 +93952,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
 aaa
-alt
 "}
 (96,1,1) = {"
 aaa
@@ -96593,10 +96591,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
 aab
 aaa
 aaa
-alt
 "}
 (109,1,1) = {"
 aaa

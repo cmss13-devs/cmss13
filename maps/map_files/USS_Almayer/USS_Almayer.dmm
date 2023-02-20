@@ -48381,7 +48381,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "kPo" = (

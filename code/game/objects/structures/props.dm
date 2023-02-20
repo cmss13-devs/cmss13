@@ -897,20 +897,20 @@
 
 /obj/structure/prop/invuln/pipe_section/Initialize(mapload)
 	. = ..()
-	desc += "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]."
+	desc = "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]."
 
 /obj/structure/prop/invuln/pipe_section/broken
 	name = "broken pipe section"
 	icon_state = "exposed01-scrubbers"
 	desc = ""
-	///Used for alternate styles of pipe. The default- exposed01 -faces north, while the alt. version faces south.
+	///Used for alternate styles of pipe. The default- exposed01 -faces north, while the alt. version faces south. They're both the same size so just eyeball it, mappers.
 	var/style = FALSE
 
 /obj/structure/prop/invuln/pipe_section/broken/Initialize(mapload)
 	. = ..()
 	if(style)
 		icon_state = "exposed10-scrubbers"
-	desc += "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]. That doesn't look right.."
+	desc = "A section of pipe, carrying water (and less pleasant liquids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]. That doesn't look right.."
 
 /obj/structure/prop/invuln/pipe_water
 	name = "pipe water"
@@ -923,7 +923,7 @@
 
 /obj/structure/prop/invuln/pipe_water/Initialize(mapload)
 	. = ..()
-	desc += "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
+	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

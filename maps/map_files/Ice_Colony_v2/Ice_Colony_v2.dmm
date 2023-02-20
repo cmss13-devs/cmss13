@@ -18158,12 +18158,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
-"baL" = (
-/turf/open/floor/plating/icefloor{
-	dir = 1;
-	icon_state = "warnplate"
-	},
-/area/shuttle/drop2/ice_colony)
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
@@ -18346,18 +18340,6 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/exterior/surface/landing_pad)
-"bbC" = (
-/turf/open/floor/plating/icefloor{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/shuttle/drop2/ice_colony)
-"bbD" = (
-/turf/open/floor/plating/icefloor{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/shuttle/drop2/ice_colony)
 "bbE" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/tcomms)
@@ -20040,15 +20022,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bhr" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
-	},
-/turf/open/floor/plating/icefloor{
-	dir = 10;
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bhs" = (
 /obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/floor/plating/icefloor{

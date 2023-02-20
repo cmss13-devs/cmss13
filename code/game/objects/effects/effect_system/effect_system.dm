@@ -102,12 +102,16 @@ steam.start() -- spawns the effect
 
 /obj/effect/particle_effect/sparks/armor_shards
 	name = "armor shards"
-	icon_state = "white_sparks"
+	icon_state = "armor_shards"
 	sound_to_play = null
 	amount = 4
 
 /datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
+	//Amount of sleep ticks before the sparks start moving around.
+	var/spark_sleep_delay = 5
+	// How long sparks stay on the ground after creation.
+	var/spark_duration = 2 SECONDS
 	var/obj/effect/particle_effect/sparks/sparks_type = /obj/effect/particle_effect/sparks
 
 /datum/effect_system/spark_spread/set_up(amount = 3, args_cardinals = 0, loca)
@@ -136,15 +140,17 @@ steam.start() -- spawns the effect
 			else
 				direction = pick(alldirs)
 			for(i=0, i<pick(1,2,3), i++)
-				sleep(5)
+				sleep(spark_sleep_delay)
 				step(sparks,direction)
-			spawn(20)
+			spawn(spark_duration)
 				if(sparks)
 					qdel(sparks)
 				total_sparks--
 
 /datum/effect_system/spark_spread/armor_shards
 	sparks_type = /obj/effect/particle_effect/sparks/armor_shards
+	spark_sleep_delay = 3
+	spark_duration = 1 SECONDS
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)

@@ -95,20 +95,12 @@
 		overlays.Cut()
 	if(!icon_state_deployed) // The lid is on the sprite already.
 		overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
-		var/atom/weh = new /obj/item/prop(src)
-		weh.overlays += image(icon, icon_state = "[icon_state]_lid")
 	if(overlay_gun_type)
 		overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
-		var/atom/weh = new /obj/item/prop(src)
-		weh.overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]")
 	if(overlay_ammo_type)
 		overlays += image(text_markings_icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
-		var/atom/weh = new /obj/item/prop(src)
-		weh.overlays += image(text_markings_icon, icon_state = "base_type[overlay_ammo_type]")
 	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank" && (!icon_state_deployed) )
 		overlays += image(text_markings_icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
-		var/atom/weh = new /obj/item/prop(src)
-		weh.overlays += image(text_markings_icon, icon_state = "lid_type[overlay_ammo_type]")
 
 //---------------------INTERACTION PROCS
 

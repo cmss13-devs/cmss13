@@ -3,61 +3,61 @@
 /obj/docking_port/mobile/escape_shuttle/w,
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall9";
-	tag = "icon-wall9"
+	
 	},
 /area/shuttle/escape_pod)
 "b" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall8";
-	tag = "icon-wall8"
+	
 	},
 /area/shuttle/escape_pod)
 "e" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall6";
-	tag = "icon-wall6"
+	
 	},
 /area/shuttle/escape_pod)
 "j" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall7";
-	tag = "icon-wall7"
+	
 	},
 /area/shuttle/escape_pod)
 "o" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall3";
-	tag = "icon-wall3"
+	
 	},
 /area/shuttle/escape_pod)
 "p" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall2";
-	tag = "icon-wall2"
+	
 	},
 /area/shuttle/escape_pod)
 "B" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10";
-	tag = "icon-wall10"
+	
 	},
 /area/shuttle/escape_pod)
 "F" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall1";
-	tag = "icon-wall1"
+	
 	},
 /area/shuttle/escape_pod)
 "G" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall4";
-	tag = "icon-wall4"
+	
 	},
 /area/shuttle/escape_pod)
 "H" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor5";
-	tag = "icon-floor5"
+	
 	},
 /area/shuttle/escape_pod)
 "I" = (
@@ -74,7 +74,7 @@
 "P" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall13";
-	tag = "icon-wall13"
+	
 	},
 /area/shuttle/escape_pod)
 "S" = (
@@ -83,7 +83,7 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	
 	},
 /area/shuttle/escape_pod)
 "V" = (
@@ -92,13 +92,13 @@
 	},
 /turf/open/shuttle/escapepod{
 	icon_state = "floor4";
-	tag = "icon-floor4"
+	
 	},
 /area/shuttle/escape_pod)
 "W" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor12";
-	tag = "icon-floor12"
+	
 	},
 /area/shuttle/escape_pod)
 

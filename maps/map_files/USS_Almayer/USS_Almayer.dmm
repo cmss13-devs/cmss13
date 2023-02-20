@@ -41394,12 +41394,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"iGN" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "iGQ" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
@@ -92096,6 +92090,7 @@ baI
 baI
 baI
 baI
+baI
 bGF
 bHB
 aYt
@@ -92109,7 +92104,6 @@ hTu
 mzo
 bRF
 vRz
-aaa
 aaa
 aaa
 aaa
@@ -92502,6 +92496,7 @@ baI
 baI
 baI
 baI
+baI
 bGH
 bHB
 btO
@@ -92515,7 +92510,6 @@ kCT
 mzo
 dQH
 vRz
-aaa
 aaa
 aaa
 aaa
@@ -93720,6 +93714,7 @@ baI
 baI
 baI
 baI
+baI
 bGF
 bHB
 iAw
@@ -93733,10 +93728,9 @@ hTu
 mzo
 vot
 vRz
-vRz
+aKQ
 aag
 ajZ
-aaa
 aaa
 aaa
 aaa
@@ -93923,6 +93917,7 @@ baI
 baI
 baI
 baI
+baI
 bGG
 bHB
 btO
@@ -93936,10 +93931,9 @@ kCT
 mzo
 gJd
 mjR
-vRz
+aKQ
 aag
 ajZ
-aaa
 aaa
 aaa
 aaa
@@ -96562,10 +96556,10 @@ baI
 baI
 baI
 baI
+baI
 bGM
 bHB
-iGN
-bcm
+aYt
 bcm
 wXT
 cdA

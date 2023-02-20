@@ -2,13 +2,13 @@
 "a" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall1";
-	tag = "icon-wall1"
+	
 	},
 /area/shuttle/escape_pod)
 "f" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor12";
-	tag = "icon-floor12"
+	
 	},
 /area/shuttle/escape_pod)
 "g" = (
@@ -18,55 +18,55 @@
 "n" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall2";
-	tag = "icon-wall2"
+	
 	},
 /area/shuttle/escape_pod)
 "v" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall15";
-	tag = "icon-wall15"
+	
 	},
 /area/shuttle/escape_pod)
 "w" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall3";
-	tag = "icon-wall3"
+	
 	},
 /area/shuttle/escape_pod)
 "y" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall6";
-	tag = "icon-wall6"
+	
 	},
 /area/shuttle/escape_pod)
 "D" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10";
-	tag = "icon-wall10"
+	
 	},
 /area/shuttle/escape_pod)
 "J" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall14";
-	tag = "icon-wall14"
+	
 	},
 /area/shuttle/escape_pod)
 "K" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall4";
-	tag = "icon-wall4"
+	
 	},
 /area/shuttle/escape_pod)
 "P" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor11";
-	tag = "icon-floor11"
+	
 	},
 /area/shuttle/escape_pod)
 "Q" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall13";
-	tag = "icon-wall13"
+	
 	},
 /area/shuttle/escape_pod)
 "R" = (
@@ -75,7 +75,7 @@
 	},
 /turf/open/shuttle/escapepod{
 	icon_state = "floor2";
-	tag = "icon-floor2"
+	
 	},
 /area/shuttle/escape_pod)
 "T" = (
@@ -85,14 +85,14 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	
 	},
 /area/shuttle/escape_pod)
 "U" = (
 /obj/docking_port/mobile/escape_shuttle/s,
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall9";
-	tag = "icon-wall9"
+	
 	},
 /area/shuttle/escape_pod)
 "V" = (

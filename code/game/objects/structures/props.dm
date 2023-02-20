@@ -635,16 +635,70 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "brazier"
 	density = TRUE
+	health = 150
+	luminosity = 6
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
-	SetLuminosity(6)
+	if(luminosity)
+		SetLuminosity(luminosity)
+
+/obj/structure/prop/brazier/frame
+	name = "empty brazier"
+	desc = "An empty brazier."
+	icon_state = "brazier_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame/attackby(obj/item/W, mob/user)
+	if(!istype(W, /obj/item/stack/sheet/wood))
+		return ..()
+	var/obj/item/stack/wooden_boards = W
+	if(wooden_boards.amount < 5)
+		to_chat(user, SPAN_WARNING("Not enough wood!"))
+		return
+	wooden_boards.use(10)
+	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
+	new /obj/structure/prop/brazier/frame_woodened(src)
+	qdel(src)
+
+/obj/structure/prop/brazier/frame_woodened
+	name = "empty full brazier"
+	desc = "An empty brazier. Yet it's also full. What???"
+	icon_state = "brazier_frame_filled"
+	luminosity = 0
+
+/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/W, mob/user)
+	if(!W.heat_source)
+		return ..()
+	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [W]."))
+	new /obj/structure/prop/brazier(src)
+	qdel(src)
 
 /obj/structure/prop/brazier/torch
 	name = "torch"
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
+	luminosity = 5
+
+/obj/structure/prop/brazier/torch/frame
+	name = "unlit torch"
+	desc = "It's a torch, but it's not lit."
+	icon_state = "torch_frame"
+	luminosity = 0
+
+/obj/structure/prop/brazier/torch/frame/attackby(obj/item/W, mob/user)
+	if(!W.heat_source)
+		return ..()
+	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [W]."))
+	new /obj/structure/prop/brazier/torch(src)
+	qdel(src)
+
+/obj/item/prop/torch_frame
+	name = "unlit torch"
+	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+	icon_state = "torch_frame"
+	luminosity = 0
 
 //ICE COLONY PROPS
 //Thematically look to Blackmesa's Xen levels. Generic science-y props n' stuff.

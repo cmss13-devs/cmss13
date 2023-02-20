@@ -62,4 +62,5 @@ map new_varadero
 endmap
 
 map whiskey_outpost_v2
+	minplayers 130
 endmap

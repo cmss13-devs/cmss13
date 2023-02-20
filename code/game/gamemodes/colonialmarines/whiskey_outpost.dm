@@ -76,7 +76,7 @@
 	hardcore = TRUE
 
 	votable = TRUE
-	vote_cycle = 25 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 45 // Every 45 rounds
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 

@@ -1231,8 +1231,8 @@
 "bak" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -5097,8 +5097,8 @@
 "ezc" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -7194,13 +7194,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -16
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -8568,8 +8568,8 @@
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -12
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -8798,13 +8798,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -18
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -11827,8 +11827,8 @@
 /obj/structure/machinery/light/small,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -12473,8 +12473,8 @@
 "kIV" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -12
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
@@ -13626,8 +13626,8 @@
 "lOc" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -14
+	pixel_x = -14;
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -14326,6 +14326,11 @@
 /obj/structure/largecrate/random/case/double,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_x = 12;
 	pixel_y = 13
 	},
 /turf/open/gm/dirt,
@@ -16210,13 +16215,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -18
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -16653,8 +16658,8 @@
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -21214,13 +21219,13 @@
 /obj/structure/barricade/wooden,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 13;
-	pixel_x = -18
+	pixel_x = -16;
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"

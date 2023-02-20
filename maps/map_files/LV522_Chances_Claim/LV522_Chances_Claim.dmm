@@ -591,8 +591,8 @@
 "arh" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 6;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = 6
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -642,13 +642,13 @@
 "asI" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 6;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = 6;
-	pixel_x = 16
+	pixel_x = 16;
+	pixel_y = 6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
@@ -906,9 +906,9 @@
 /area/lv522/oob)
 "aEF" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -6116,9 +6116,9 @@
 /area/lv522/indoors/a_block/admin)
 "djL" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -8069,9 +8069,9 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "eeb" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating,
@@ -12525,9 +12525,9 @@
 /area/lv522/indoors/b_block/bar)
 "geT" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform,
@@ -13715,9 +13715,9 @@
 /area/lv522/indoors/lone_buildings/spaceport)
 "gJr" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -14624,14 +14624,14 @@
 /area/lv522/indoors/a_block/dorms)
 "haF" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = 6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating,
@@ -18601,9 +18601,9 @@
 	},
 /obj/structure/platform/stair_cut,
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -21004,9 +21004,9 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "jGe" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -22288,8 +22288,9 @@
 /obj/structure/platform,
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = -6;
-	pixel_x = -10
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = -6
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -22930,8 +22931,9 @@
 "kpm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	pixel_x = -20
+	name = "overhead pipe";
+	pixel_x = -20;
+	pixel_y = 13
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23110,8 +23112,9 @@
 /area/lv522/atmos/north_command_centre)
 "ksv" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	pixel_x = -20
+	name = "overhead pipe";
+	pixel_x = -20;
+	pixel_y = 13
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23822,9 +23825,9 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "kFd" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17;
@@ -27105,9 +27108,9 @@
 	dir = 8
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -28643,9 +28646,9 @@
 /area/lv522/indoors/a_block/admin)
 "mJs" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating,
@@ -30414,8 +30417,9 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "ntq" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 24;
-	pixel_x = -20
+	name = "overhead pipe";
+	pixel_x = -20;
+	pixel_y = 24
 	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/atmos/east_reactor/south)
@@ -30787,8 +30791,10 @@
 	dir = 8
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = -6;
-	pixel_x = -8
+	dir = 1;
+	name = "overhead pipe";
+	pixel_x = -8;
+	pixel_y = -6
 	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_y = 17
@@ -31303,8 +31309,9 @@
 "nOg" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = -6;
-	pixel_x = -10
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31337,12 +31344,15 @@
 "nOS" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 9;
-	pixel_y = -6;
-	pixel_x = -10
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = -6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 16;
-	pixel_x = -10
+	dir = 1;
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31603,12 +31613,12 @@
 /area/lv522/atmos/filt)
 "nUF" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = -6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -33412,9 +33422,9 @@
 /area/lv522/indoors/a_block/medical)
 "oCW" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/platform{
 	dir = 8
@@ -36228,9 +36238,9 @@
 /area/lv522/indoors/a_block/admin)
 "pHi" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/platform_decoration{
 	dir = 8
@@ -36419,9 +36429,9 @@
 /area/lv522/indoors/a_block/security)
 "pMc" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/platform_decoration{
 	dir = 4
@@ -37150,8 +37160,8 @@
 /area/lv522/oob)
 "pYO" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -38706,8 +38716,10 @@
 	dir = 8
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = -6;
-	pixel_x = -8
+	dir = 1;
+	name = "overhead pipe";
+	pixel_x = -8;
+	pixel_y = -6
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -39311,14 +39323,14 @@
 	icon_state = "platform_stair_alt"
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = 6
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -45315,8 +45327,9 @@
 /area/lv522/outdoors/colony_streets/central_streets)
 "thU" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	pixel_x = -20
+	name = "overhead pipe";
+	pixel_x = -20;
+	pixel_y = 13
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/east_reactor/south)
@@ -45489,9 +45502,9 @@
 /area/lv522/indoors/a_block/fitness)
 "tlB" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/platform,
 /obj/structure/platform{
@@ -47917,13 +47930,15 @@
 "uhx" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = -6;
-	pixel_x = 16
+	name = "overhead pipe";
+	pixel_x = 16;
+	pixel_y = -6
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 6;
-	pixel_y = -6;
-	pixel_x = -8
+	name = "overhead pipe";
+	pixel_x = -8;
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -48788,14 +48803,14 @@
 	icon_state = "platform_stair_alt"
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = 6
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -49818,9 +49833,9 @@
 /area/lv522/indoors/a_block/dorms)
 "uTY" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -50097,8 +50112,9 @@
 "vbm" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 6;
-	pixel_y = -6;
-	pixel_x = -10
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -52110,14 +52126,14 @@
 /area/lv522/indoors/a_block/kitchen)
 "vNW" = (
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = -6
+	dir = 8;
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	dir = 4;
-	pixel_y = 6;
-	pixel_x = 6
+	dir = 8;
+	pixel_x = 11;
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -56569,8 +56585,9 @@
 /area/lv522/indoors/a_block/hallway)
 "xxz" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 6;
-	pixel_x = 6
+	dir = 6;
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -56766,12 +56783,15 @@
 "xBL" = (
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
-	pixel_y = -6;
-	pixel_x = -10
+	name = "overhead pipe";
+	pixel_x = -10;
+	pixel_y = -6
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 15;
-	pixel_x = -8
+	dir = 1;
+	name = "overhead pipe";
+	pixel_x = -8;
+	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)

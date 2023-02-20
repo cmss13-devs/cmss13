@@ -1,0 +1,1 @@
+/obj/structure{icon_state = "intact-scrubbers"} : /obj/structure/prop/invuln/pipe_section{@OLD;health=@SKIP;layer=@SKIP;icon=@SKIP;icon_state=@SKIP;indestructible=@SKIP;projectile_coverage=@SKIP;unacidable=@SKIP} 

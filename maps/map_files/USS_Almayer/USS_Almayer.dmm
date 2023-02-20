@@ -2760,16 +2760,20 @@
 /area/almayer/hallways/aft_hallway)
 "aip" = (
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -16;
 	pixel_y = 13
 	},
@@ -8861,9 +8865,9 @@
 /area/almayer/command/cic)
 "aAe" = (
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -9146,13 +9150,13 @@
 /area/almayer/command/telecomms)
 "aBa" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
+	dir = 4;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -9210,13 +9214,17 @@
 /area/almayer/command/telecomms)
 "aBg" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
+	dir = 4;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32
@@ -27546,9 +27554,9 @@
 	dir = 8
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -32002,10 +32010,12 @@
 	dir = 4
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /turf/open/floor/almayer{
@@ -33156,15 +33166,15 @@
 "dCh" = (
 /obj/structure/prop/invuln/pipe_water{
 	},
-/obj/structure/prop/invuln/pipe_section/broken{
-	dir = 8;
-	pixel_y = 13;
-	pixel_x = -12
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_x = -12;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
 	dir = 4;
-	pixel_x = 18
+	pixel_x = -12;
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35718,8 +35728,7 @@
 	pixel_y = -15
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_x = 12;
-	pixel_y = -5
+	pixel_x = 12
 	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17
@@ -35999,9 +36008,9 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "ePs" = (
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -39375,13 +39384,16 @@
 "gvC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
 	pixel_y = 13
 	},
@@ -40515,22 +40527,22 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "gYS" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 8
+	dir = 4;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
+	dir = 4;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -16;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = -17
@@ -42424,6 +42436,7 @@
 /area/almayer/living/grunt_rnr)
 "hTk" = (
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -16;
 	pixel_y = 13
 	},
@@ -46342,25 +46355,7 @@
 /area/almayer/medical/upper_medical)
 "jPf" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
-	},
-/obj/structure/prop/invuln/pipe_section{
-	pixel_x = 12;
-	pixel_y = 13;
-	dir = 4
-	},
-/obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
-	},
-/obj/structure/prop/invuln/pipe_section{
-	pixel_x = -16;
-	pixel_y = 13;
-	dir = 4
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = -17
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -47317,11 +47312,11 @@
 /area/almayer/engineering/upper_engineering)
 "kpX" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_x = 12;
-	pixel_y = 12
+	pixel_x = 12
 	},
 /obj/structure/prop/invuln/pipe_section{
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -59060,9 +59055,11 @@
 /area/almayer/squads/alpha)
 "pXn" = (
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -12;
 	pixel_y = 13
 	},
@@ -60374,8 +60371,8 @@
 "qFQ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 8
+	dir = 4;
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -66981,14 +66978,14 @@
 "tIU" = (
 /obj/structure/platform,
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -70431,13 +70428,18 @@
 /area/almayer/medical/medical_science)
 "vkD" = (
 /obj/structure/prop/invuln/pipe_section{
-	pixel_y = 13;
-	dir = 4
+	dir = 4;
+	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
+	pixel_x = -16;
+	pixel_y = 13
+	},
+/obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
@@ -70546,12 +70548,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"vnW" = (
-/obj/structure/prop/invuln/pipe_section{
-	pixel_x = 12
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s)
 "voi" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -70576,9 +70572,9 @@
 "voA" = (
 /obj/structure/platform_decoration,
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
-	pixel_y = 13;
-	dir = 4
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -74647,14 +74643,13 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
+/obj/structure/prop/invuln/pipe_section{
+	pixel_x = 12
+	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/invuln/pipe_section{
 	pixel_x = 12;
 	pixel_y = 12
-	},
-/obj/structure/prop/invuln/pipe_section/broken{
-	style = 1;
-	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -75963,13 +75958,16 @@
 "xKW" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = -14;
 	pixel_y = 13
 	},
 /obj/structure/prop/invuln/pipe_section{
+	dir = 4;
 	pixel_x = 12;
 	pixel_y = 13
 	},

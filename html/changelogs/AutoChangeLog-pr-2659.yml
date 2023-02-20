@@ -1,0 +1,4 @@
+author: "TheDonkified"
+delete-after: True
+changes:
+  - bugfix: "Table flipping and unflipping is now more descriptive and less buggy. You can no longer flip table that you are on top of."

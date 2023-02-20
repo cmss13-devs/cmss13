@@ -23,7 +23,7 @@ Otherwise there is a 50% chance it will fail horribly and spectacularly
 
 
 
-/proc/get_shuttle_turfs(var/turf/ref, var/shuttle) :
+/proc/get_shuttle_turfs(turf/ref, shuttle) :
 --------------------------------
 ref: the reference turf, gotten from its respective landmark
 shuttle: The name of the shuttle in question. Synonymous with the name of the ref landmark.
@@ -36,7 +36,7 @@ See the documentation of /datum/shuttle_area_info for more.
 
 
 
-/proc/rotate_shuttle_turfs(var/list/L, var/deg = 0)
+/proc/rotate_shuttle_turfs(list/L, deg = 0)
 --------------------------------
 L: The shuttle turfs to rotate. MUST be coord datums indexed by turf, a la get_shuttle_turfs()
 deg: In degrees, how much to rotate the shuttle (clockwise).
@@ -51,7 +51,7 @@ e.g. Something up to the right relative to its landmark will end up down to the 
 ONLY called when moving to either the trg landmark or a crs landmark
 
 
-/proc/move_shuttle_to(var/turf/trg, var/turftoleave = null, var/list/source, var/iselevator = 0, datum/shuttle/ferry/marine/shuttle)
+/proc/move_shuttle_to(turf/trg, turftoleave = null, list/source, iselevator = 0, datum/shuttle/ferry/marine/shuttle)
 --------------------------------
 trg: The target reference turf, see var/turf/ref from the previous proc
 turftoleave: Allows leaving other turfs behind as needed. Note: must be a path
@@ -481,7 +481,7 @@ qdel(src)
 #undef GROUND_LINK_LOCATIONS
 
 
-/proc/get_landing_lights(var/turf/ref)
+/proc/get_landing_lights(turf/ref)
 
 	var/list/lights = list()
 
@@ -496,7 +496,7 @@ qdel(src)
 
 	return lights
 
-/proc/get_shuttle_turfs(var/turf/ref, var/list/L)
+/proc/get_shuttle_turfs(turf/ref, list/L)
 
 	var/list/source = list()
 
@@ -511,7 +511,7 @@ qdel(src)
 
 	return source
 
-/proc/rotate_shuttle_turfs(var/list/L, var/deg = 0)
+/proc/rotate_shuttle_turfs(list/L, deg = 0)
 
 	if((deg % 90) != 0) return //Not a right or straight angle, don't do anything
 	if(!istype(L) || !L.len) return null

@@ -1,6 +1,6 @@
 import { Component } from 'inferno';
-import { useBackend } from '../backend';
-import { Button, Flex, Section, Box } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Button, Flex, Section, Box, Input, Dropdown } from '../components';
 import { Window } from '../layouts';
 import { globalEvents } from '../events.js';
 
@@ -14,8 +14,20 @@ export const KeyBinds = (props, context) => {
   const { act, data } = useBackend(context);
   const { glob_keybinds } = data;
 
+  const [selectedTab, setSelectedTab] = useLocalState(
+    context,
+    'progress',
+    'COMMUNICATION'
+  );
+
+  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+
+  const filteredKeybinds = glob_keybinds[selectedTab].filter((val) =>
+    val.full_name.toLowerCase().match(searchTerm)
+  );
+
   return (
-    <Window width={400} height={400} resizable>
+    <Window width={400} height={500} resizable>
       <Window.Content scrollable>
         <Flex direction="column">
           <Flex.Item>
@@ -35,31 +47,58 @@ export const KeyBinds = (props, context) => {
                     </Flex.Item>
                   </Flex>
                 </Flex.Item>
+                <Flex.Item>
+                  <Box height="5px" />
+                  <KeybindsDropdown />
+                </Flex.Item>
+                <Flex.Item>
+                  <Box height="5px" />
+                  <Input
+                    value={searchTerm}
+                    onInput={(_, value) => setSearchTerm(value)}
+                    placeholder="Search..."
+                    fluid
+                  />
+                </Flex.Item>
               </Flex>
             </Section>
           </Flex.Item>
-          {Object.keys(glob_keybinds).map((category) => (
-            <Flex.Item key={category}>
-              <Section title={category}>
-                <Flex direction="column">
-                  {glob_keybinds[category].map((keybind) => (
-                    <Flex.Item key={keybind}>
-                      <KeybindElement keybind={keybind} />
-                      <Box
-                        backgroundColor="rgba(40, 40, 40, 255)"
-                        width="100%"
-                        height="2px"
-                        mt="2px"
-                      />
-                    </Flex.Item>
-                  ))}
-                </Flex>
-              </Section>
-            </Flex.Item>
-          ))}
+          <Flex direction="column">
+            {filteredKeybinds.map((keybind) => (
+              <Flex.Item key={keybind.full_name}>
+                <KeybindElement keybind={keybind} />
+                <Box
+                  backgroundColor="rgba(40, 40, 40, 255)"
+                  width="100%"
+                  height="2px"
+                  mt="2px"
+                />
+              </Flex.Item>
+            ))}
+          </Flex>
         </Flex>
       </Window.Content>
     </Window>
+  );
+};
+
+const KeybindsDropdown = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { glob_keybinds } = data;
+  const [selectedTab, setSelectedTab] = useLocalState(
+    context,
+    'progress',
+    'COMMUNICATION'
+  );
+  const DropdownOptions = Object.keys(glob_keybinds);
+
+  return (
+    <Dropdown
+      width="360px"
+      selected={selectedTab}
+      options={DropdownOptions}
+      onSelected={(value) => setSelectedTab(value)}
+    />
   );
 };
 
@@ -223,8 +262,8 @@ export class ButtonKeybind extends Component {
         content={
           focused
             ? Object.keys(keysDown)
-                .filter((isTrue) => keysDown[isTrue])
-                .join('+') || content
+              .filter((isTrue) => keysDown[isTrue])
+              .join('+') || content
             : content
         }
         selected={focused}

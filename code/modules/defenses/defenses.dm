@@ -120,7 +120,7 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_staff("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
+			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 
@@ -158,12 +158,12 @@
 	if(owner_mob && owner_mob != src)
 		owner_mob.track_shot(initial(name))
 
-/obj/structure/machinery/defenses/proc/friendly_faction(var/factions)
+/obj/structure/machinery/defenses/proc/friendly_faction(factions)
 	if(factions in faction_group)
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/defenses/attackby(obj/item/O as obj, mob/user as mob)
 	if(QDELETED(O))
 		return
 
@@ -337,11 +337,11 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/attack_hand(var/mob/user)
+/obj/structure/machinery/defenses/attack_hand(mob/user)
 	if(!attack_hand_checks(user))
 		return
 
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
 
@@ -374,17 +374,17 @@
 		power_off()
 
 
-/obj/structure/machinery/defenses/proc/attack_hand_checks(var/mob/user)
+/obj/structure/machinery/defenses/proc/attack_hand_checks(mob/user)
 	return TRUE
 
-/obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_on_action(mob/user)
 	return
 
-/obj/structure/machinery/defenses/proc/power_off_action(var/mob/user)
+/obj/structure/machinery/defenses/proc/power_off_action(mob/user)
 	return
 
 // DAMAGE HANDLING
-/obj/structure/machinery/defenses/update_health(var/damage = 0) //Negative damage restores health.
+/obj/structure/machinery/defenses/update_health(damage = 0) //Negative damage restores health.
 	health -= damage
 
 	if(health > health_max)
@@ -416,13 +416,13 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-/obj/structure/machinery/defenses/proc/damaged_action(var/damage)
+/obj/structure/machinery/defenses/proc/damaged_action(damage)
 	if(health < health_max * 0.15)
 		visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED
 		turned_on = FALSE
 
-/obj/structure/machinery/defenses/emp_act(var/severity)
+/obj/structure/machinery/defenses/emp_act(severity)
 	if(turned_on)
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
@@ -435,12 +435,12 @@
 		update_health(25)
 	return
 
-/obj/structure/machinery/defenses/ex_act(var/severity)
+/obj/structure/machinery/defenses/ex_act(severity)
 	if(health <= 0)
 		return
 	update_health(severity)
 
-/obj/structure/machinery/defenses/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/defenses/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

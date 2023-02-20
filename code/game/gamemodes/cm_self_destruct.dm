@@ -90,7 +90,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //=========================================================================================
 
 
-/datum/authority/branch/evacuation/proc/initiate_evacuation(var/force=0) //Begins the evacuation procedure.
+/datum/authority/branch/evacuation/proc/initiate_evacuation(force=0) //Begins the evacuation procedure.
 	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
@@ -193,7 +193,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //=========================================================================================
 //=========================================================================================
 
-/datum/authority/branch/evacuation/proc/enable_self_destruct(var/force=0)
+/datum/authority/branch/evacuation/proc/enable_self_destruct(force=0)
 	if(force || (dest_status == NUKE_EXPLOSION_INACTIVE && !(flags_scuttle & FLAGS_SELF_DESTRUCT_DENY)))
 		dest_status = NUKE_EXPLOSION_ACTIVE
 		dest_master.lock_or_unlock()
@@ -369,7 +369,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/console
 	name = "self-destruct control panel"
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_CE, ACCESS_MARINE_CMO, ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_COMMANDER)
+	req_one_access = list(ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()

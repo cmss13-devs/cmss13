@@ -34,6 +34,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/togglelooc, /*toggles ooc on/off for everyone*/
@@ -62,7 +63,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/clear_mutineers,
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
-	/datum/admins/proc/alertall
+	/datum/admins/proc/alertall,
+	/datum/admins/proc/imaginary_friend,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -120,6 +122,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/force_event,
+	/client/proc/toggle_events,
 	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
@@ -293,6 +297,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
+		add_verb(src, /datum/admins/proc/imaginary_friend)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -360,7 +365,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator) return
-	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
+	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -387,18 +392,18 @@ var/list/roundstart_mod_verbs = list(
 	if(++P.warning_count >= MAX_WARNS) //uh ohhhh...you'reee iiiiin trouuuubble O:)
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(P.owning_client)
-			message_staff("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
 			to_chat_forced(P.owning_client, "<font color='red'><BIG><B>You have been autobanned due to a warning by [key_name_admin(P.owning_client)].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 		else
-			message_staff("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
 
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
 			to_chat(P.owning_client, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
-			message_staff("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
 		else
-			message_staff("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
 
 /client/proc/give_disease(mob/T as mob in GLOB.mob_list) // -- Giacom
 	set category = "Admin.Fun"
@@ -412,10 +417,10 @@ var/list/roundstart_mod_verbs = list(
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
-	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
+	message_admins("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"
@@ -548,7 +553,7 @@ var/list/roundstart_mod_verbs = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	message_staff("[key_name(usr)] announced a random fact.")
+	message_admins("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_fun_facts()
 
 

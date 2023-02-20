@@ -41,6 +41,9 @@ block( \
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 
+#define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost Gamemode"
+#define GAMEMODE_HIVE_WARS "Hive Wars"
+
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
 /// Time before the round starts.
@@ -150,7 +153,7 @@ block( \
 
 //=================================================
 
-#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
+#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
 
 #define TOGGLES_GHOST_DEFAULT (GHOST_HEALTH_SCAN)
 
@@ -213,6 +216,7 @@ block( \
 #define SEC_LEVEL_DELTA 3
 
 //Alarm levels.
+// flags_alarm_state
 #define ALARM_WARNING_FIRE (1<<0)
 #define ALARM_WARNING_ATMOS (1<<1)
 #define ALARM_WARNING_EVAC (1<<2)
@@ -497,7 +501,7 @@ block( \
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0
@@ -526,6 +530,7 @@ block( \
 
 // Performance toggle flags
 /// Set conservative MC timings on game start
+// perf_flags
 #define PERF_TOGGLE_LAZYSS (1<<0)
 /// Disable bloody footprints
 #define PERF_TOGGLE_NOBLOODPRINTS (1<<1)

@@ -26,9 +26,11 @@
 	sight = SEE_MOBS
 	see_in_dark = 8
 	see_invisible = 15
+	black_market_value = 50
+	dead_black_market_value = 0
 	var/miaow_counter = 0
 
-/mob/living/simple_animal/cat/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/cat/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
@@ -99,7 +101,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/cat/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_animal/cat/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()
@@ -111,7 +113,15 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
-	holder_type = /obj/item/holder/blackcat
+	holder_type = /obj/item/holder/cat/blackcat/Runtime
+
+/mob/living/simple_animal/cat/blackcat
+	name = "black cat"
+	desc = "It's a cat, now in black!"
+	icon_state = "cat"
+	icon_living = "cat"
+	icon_dead = "cat_dead"
+	holder_type = /obj/item/holder/cat/blackcat
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
@@ -122,7 +132,7 @@
 	icon_dead = "cat2_dead"
 	health = 50
 	maxHealth = 50
-	holder_type = /obj/item/holder/Jones
+	holder_type = /obj/item/holder/cat/Jones
 
 /mob/living/simple_animal/cat/kitten
 	name = "kitten"
@@ -130,5 +140,5 @@
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
-	holder_type = /obj/item/holder/kitten
+	holder_type = /obj/item/holder/cat/kitten
 	gender = NEUTER

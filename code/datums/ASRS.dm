@@ -122,3 +122,13 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/flashlights/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/batteries/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT

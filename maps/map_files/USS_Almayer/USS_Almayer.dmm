@@ -24740,7 +24740,7 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
+	
 	},
 /area/almayer/engineering/lower_engineering)
 "bYK" = (
@@ -25317,7 +25317,7 @@
 "cbo" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	
 	},
 /area/almayer/evacuation/pod4)
 "cbr" = (
@@ -74047,7 +74047,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
+	
 	},
 /area/almayer/squads/req)
 "xWp" = (

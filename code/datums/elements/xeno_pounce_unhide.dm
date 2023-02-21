@@ -5,11 +5,11 @@
 	. = ..()
 	if(!isxeno(target))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMSIG_XENO_POUNCE_HIDE, PROC_REF(pounce_toggle))
+	RegisterSignal(target, COMSIG_XENO_POUNCE_UNHIDE, PROC_REF(pounce_toggle))
 
 /datum/element/xeno_pounce_unhide/Detach(datum/source, force)
 	UnregisterSignal(source, list(
-		COMSIG_XENO_POUNCE_HIDE
+		COMSIG_XENO_POUNCE_UNHIDE
 	))
 	return ..()
 

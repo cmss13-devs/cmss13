@@ -398,7 +398,7 @@
 
 /obj/structure/ship_ammo/minirocket/smoke
 	name = "smoke mini rocket stack"
-	desc = "A pack of laser guided Smoke mini rockets. To deploy smoke harmlessly, The rocket explodes in mid air seconds before the impact, specially formed charges leads sharpnel upwards away from the target. The smoke contents can be adjusted by research department. Ask them to learn more."
+	desc = "A pack of laser guided Smoke mini rockets. To deploy smoke harmlessly, the rocket explodes in mid-air seconds before impact, specially formed charges lead sharapnel upwards away from the target. The smoke contents can be adjusted by research department. Ask them to learn more."
 	icon_state = "minirocket_smk"
 	point_cost = 100 ///price in the fabricator
 	fire_mission_delay = 3
@@ -416,7 +416,7 @@
 				user.drop_held_item(attackitem)
 				attackitem.forceMove(src)
 				chemical = attackitem.reagents
-				to_chat(user, SPAN_NOTICE("You insert the beaker into chemical recepticle"))
+				to_chat(user, SPAN_NOTICE("You insert the beaker into chemical receptacle."))
 				state = ASSEMBLY_LOCKED
 			else if (istype(attackitem, /obj/item/reagent_container/glass/beaker) && attackitem.reagents.total_volume != attackitem.reagents.maximum_volume)
 				to_chat(user, SPAN_WARNING("The beaker is not full, dilute it in water or other reagents."))

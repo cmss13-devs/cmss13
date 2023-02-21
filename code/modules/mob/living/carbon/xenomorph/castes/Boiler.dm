@@ -77,7 +77,7 @@
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
 	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid]
-	spit_types = list(/datum/ammo/xeno/boiler_gas/acid,/datum/ammo/xeno/boiler_gas)
+	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
 
 	update_icon_source()
 

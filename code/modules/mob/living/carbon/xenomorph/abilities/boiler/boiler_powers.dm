@@ -162,7 +162,6 @@
 		XenoAction.apply_cooldown_override(cooldown_duration)
 
 	apply_cooldown()
-	..()
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()

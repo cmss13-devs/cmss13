@@ -2840,7 +2840,7 @@
 		neuro_effect = new /datum/effects/neurotoxin(moob)
 	neuro_effect.duration += 5
 	moob.apply_effect(3, DAZE)
-	to_chat(moob,SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
 	drop_nade(get_turf(proj), proj,TRUE)
 
 /datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/item/projectile/proj)

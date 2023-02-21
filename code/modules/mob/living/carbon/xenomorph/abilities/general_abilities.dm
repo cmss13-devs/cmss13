@@ -271,10 +271,10 @@
 	var/delay = 20
 	var/handles_movement = TRUE
 
-	// how much you can move before zoom breaks
+	/// how much you can move before zoom breaks
 	var/movement_buffer = 0
 
-	// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
+	/// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
 	var/movement_slowdown = 0
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
@@ -410,7 +410,7 @@
 	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
 
-	// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
+	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE

@@ -283,7 +283,7 @@
 	for(var/obj/structure/barricade/B in T)
 		B.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(75)) // anti sound spam
-			playsound(src,pick("acid_sizzle","acid_hit"),25)
+			playsound(src, pick("acid_sizzle", "acid_hit"), 25)
 
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(15, "acid")
@@ -369,7 +369,7 @@
 	moob.eye_blurry = max(moob.eye_blurry, effect_amt)
 	moob.apply_effect(max(moob.eye_blurry, effect_amt), EYE_BLUR)
 	moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
-// new shit
+	// reworked code below
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 		if(!neuro_effect)

@@ -397,35 +397,37 @@
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
 
 /obj/structure/ship_ammo/minirocket/smoke
-	name = "Smoke mini rocket stack"
+	name = "smoke mini rocket stack"
 	desc = "A pack of laser guided Smoke mini rockets. To deploy smoke harmlessly, The rocket explodes in mid air seconds before the impact, specially formed charges leads sharpnel upwards away from the target. The smoke contents can be adjusted by research department. Ask them to learn more."
 	icon_state = "minirocket_smk"
-	point_cost = 100
+	point_cost = 100 ///price in the fabricator
 	fire_mission_delay = 3
-	var/chemical = null
-	var/state = ASSEMBLY_EMPTY
+	var/chemical = null ///chemical(s) in the chemical minirocket
+	var/state = ASSEMBLY_EMPTY /// current assembly state of the chemsmoke minircoket
 
+/obj/structure/ship_ammo/minirocket/smoke/Destroy()
+	chemical = null
+	return ..()
 
-/obj/structure/ship_ammo/minirocket/smoke/attackby(obj/item/W, mob/user)
+/obj/structure/ship_ammo/minirocket/smoke/attackby(obj/item/attackitem, mob/user)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
-			if(istype(W, /obj/item/reagent_container/glass/beaker/large) && W.reagents.total_volume == 120)
-				user.drop_held_item(W)
-				W.forceMove(src)
-				chemical = W.reagents
+			if(istype(attackitem, /obj/item/reagent_container/glass/beaker) &&  attackitem.reagents.total_volume != attackitem.reagents.maximum_volume)
+				user.drop_held_item(attackitem)
+				attackitem.forceMove(src)
+				chemical = attackitem.reagents
 				to_chat(user, SPAN_NOTICE("You insert the beaker into chemical recepticle"))
 				state = ASSEMBLY_LOCKED
-			else if (istype(W, /obj/item/reagent_container/glass/beaker) && W.reagents.total_volume < 120)
+			else if (istype(attackitem, /obj/item/reagent_container/glass/beaker) && attackitem.reagents.total_volume != attackitem.reagents.maximum_volume)
 				to_chat(user, SPAN_WARNING("The beaker is not full, dilute it in water or other reagents."))
 				return
 			else
-				. = ..()
+				return ..()
 		if(ASSEMBLY_LOCKED)
-			if (istype(W, /obj/item/reagent_container/glass/beaker))
+			if (istype(attackitem, /obj/item/reagent_container/glass/beaker))
 				to_chat(user, SPAN_WARNING("There is already a beaker!."))
 				return
-			else
-				. = ..()
+			return ..()
 
 
 /obj/structure/ship_ammo/minirocket/smoke/get_examine_text(mob/user)
@@ -436,21 +438,17 @@
 		if(ASSEMBLY_EMPTY)
 			. += "\nThe recepticle slot is empty"
 
-/obj/structure/ship_ammo/minirocket/smoke/Destroy()
-	chemical = null
-	return ..()
-
 /obj/structure/ship_ammo/minirocket/smoke/detonate_on(turf/impact)
-	if(chemical != null)
-		var/datum/effect_system/smoke_spread/chem/smoke = new/datum/effect_system/smoke_spread/chem()
+	if(!isnull(chemical))
+		var/datum/effect_system/smoke_spread/chem/smoke = new
 		smoke.set_up(chemical,8,0,impact, null)
 		smoke.start()
 		if(!ammo_count && loc)
 			qdel(src)
-	else if (chemical == null)
-		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-		S.set_up(1,0,impact,null)
-		S.start()
+	else
+		var/datum/effect_system/smoke_spread/smoke = new
+		smoke.set_up(1,0,impact,null)
+		smoke.start()
 		if(!ammo_count && loc)
 			qdel(src)
 

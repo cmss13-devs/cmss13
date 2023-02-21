@@ -33196,6 +33196,7 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/indoors/c_block/cargo)
+<<<<<<< HEAD
 "oFW" = (
 /obj/structure/fence{
 	layer = 2.9
@@ -33215,6 +33216,8 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
+=======
+>>>>>>> 848dbd8296 (chhh)
 "oGl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -62561,7 +62564,7 @@ nHX
 rvI
 clY
 clY
-oFW
+lAf
 mZs
 mOO
 iuv
@@ -62788,7 +62791,7 @@ nHX
 rvI
 clY
 clY
-oFW
+lAf
 slD
 xPx
 kCF
@@ -63015,7 +63018,7 @@ nHX
 rvI
 clY
 clY
-oFW
+lAf
 vmQ
 swt
 dpk
@@ -63242,7 +63245,7 @@ kSS
 gGP
 clY
 clY
-oFW
+lAf
 vzy
 hwF
 ePp

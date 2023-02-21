@@ -210,10 +210,6 @@ export const TouchdownCooldown = (_, context) => {
   );
 };
 
-const AutomatedControl = (props, context) => {
-  return <Section>f</Section>;
-};
-
 const RenderScreen = (props, context) => {
   const { data } = useBackend<DropshipNavigationProps>(context);
   return (
@@ -222,7 +218,6 @@ const RenderScreen = (props, context) => {
         (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
           <FlybyControl />
         )}
-      {data.can_set_automated === 1 && <AutomatedControl />}
       {data.shuttle_mode === 'idle' &&
         data.flight_configuration !== 'flyby' && (
           <DropshipDestinationSelection />

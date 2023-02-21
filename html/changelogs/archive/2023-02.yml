@@ -337,3 +337,18 @@
       rees
   stanalbatross:
   - qol: added a keybind for rotate-chair
+2023-02-21:
+  Puckaboo2:
+  - bugfix: Gardener Drone will now have her 5% healing buff on weeds properly applied.
+  - code_imp: Any xenomorph strain description that previously did not completely
+      disclose any abilities or attributes that will be removed or changed upon mutating
+      will now disclose them, often within the first sentence.
+  - rscadd: Every xenomorph strain now has flavor text, personalized as a message
+      from the Queen, herself.
+  Segrain:
+  - bugfix: WO works once again.
+  TheDonkified:
+  - bugfix: Table flipping and unflipping is now more descriptive and less buggy.
+      You can no longer flip table that you are on top of.
+  carlarctg:
+  - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.

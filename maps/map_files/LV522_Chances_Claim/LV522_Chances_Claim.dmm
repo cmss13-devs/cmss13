@@ -5370,7 +5370,7 @@
 	dir = 4
 	},
 /turf/open/asphalt/cement{
-	icon_state = "cement14"
+	icon_state = "cement3"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "cWT" = (
@@ -13762,9 +13762,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "gIg" = (
 /mob/living/simple_animal/mouse,
@@ -19560,7 +19558,9 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/turf/open/auto_turf/shale/layer0,
+/turf/open/asphalt/cement{
+	icon_state = "cement3"
+	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "iYm" = (
 /obj/structure/barricade/deployable,
@@ -34619,10 +34619,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
-"oTA" = (
-/obj/structure/platform_decoration,
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "oTD" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -44859,7 +44855,9 @@
 /area/lv522/indoors/c_block/cargo)
 "sKa" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/asphalt/cement{
+	icon_state = "cement1"
+	},
 /area/lv522/outdoors/colony_streets/north_street)
 "sKi" = (
 /turf/closed/shuttle/dropship2/tornado{
@@ -52730,9 +52728,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
+/turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "vGk" = (
 /obj/structure/machinery/power/port_gen/pacman,
@@ -55777,7 +55773,9 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/turf/open/auto_turf/shale/layer0,
+/turf/open/asphalt/cement{
+	icon_state = "cement1"
+	},
 /area/lv522/outdoors/colony_streets/north_street)
 "wNp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -58667,9 +58665,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
+/turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xWc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -58778,7 +58774,9 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/auto_turf/shale/layer0,
+/turf/open/asphalt/cement{
+	icon_state = "cement1"
+	},
 /area/lv522/outdoors/colony_streets/north_street)
 "xXR" = (
 /obj/structure/machinery/colony_floodlight{
@@ -69853,10 +69851,10 @@ ydA
 njd
 cWS
 iYf
-hJZ
-hJZ
-hJZ
-oTA
+ydA
+ydA
+ydA
+njd
 xWb
 nLm
 weR
@@ -71442,8 +71440,8 @@ nVh
 xtb
 vGb
 wNo
-ugV
-ugV
+hhD
+hhD
 sKa
 xXQ
 gIc
@@ -81965,9 +81963,9 @@ piY
 piY
 aDh
 jmG
-xAR
-nax
-mnb
+tOo
+yhR
+tOo
 wIr
 wIr
 qsL
@@ -83554,9 +83552,9 @@ ydy
 ydy
 mUo
 jmG
-hMz
-uwT
-bqE
+xzK
+xxq
+xzK
 wIr
 wIr
 xJK

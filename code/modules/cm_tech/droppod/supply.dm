@@ -7,6 +7,8 @@
 /obj/structure/droppod/supply/open()
 	. = ..()
 	for(var/atom/movable/content as anything in contents)
+		if(istype(content, /obj/structure/closet/crate))
+			content.anchored = FALSE
 		content.forceMove(loc)
 	qdel(src)
 

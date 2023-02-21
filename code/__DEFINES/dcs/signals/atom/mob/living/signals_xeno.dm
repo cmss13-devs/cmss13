@@ -64,4 +64,4 @@
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
 
 ///Used to toggle the hide button's icon for mobs that can pounce.
-#define COMSIG_XENO_POUNCE_HIDE "xeno_pounce_unhide"
+#define COMSIG_XENO_POUNCE_UNHIDE "xeno_pounce_unhide"

@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - refactor: "Refactored binocular overlays and camos into being variable-dependent."

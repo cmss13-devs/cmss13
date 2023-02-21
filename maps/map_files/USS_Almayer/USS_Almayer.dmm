@@ -18094,7 +18094,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -52769,6 +52769,7 @@
 	pixel_y = 25;
 	pixel_x = 8
 	},
+/obj/item/toy/plushie_cade,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

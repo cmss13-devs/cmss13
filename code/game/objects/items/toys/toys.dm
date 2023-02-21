@@ -467,12 +467,30 @@
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
+		playsound(user, "plush", 25, TRUE)
 
 /obj/item/toy/farwadoll/pred
 	name = "strange plush doll"
 	desc = "A plush doll depicting some sort of tall humanoid biped..?"
 	w_class = SIZE_TINY
 	icon_state = "predplush"
+
+/obj/item/toy/plushie_cade
+	name = "plushie barricade"
+	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	icon_state = "plushie_cade"
+	item_state = "plushie_cade"
+	w_class = SIZE_SMALL
+	var/last_hug_time
+
+/obj/item/toy/plushie_cade/attack_self(mob/user)
+	..()
+
+	if(world.time > last_hug_time)
+		user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]. You feel safe."))
+		last_hug_time = world.time + 2.5 SECONDS //2.5 second cooldown
+		playsound(user, "plush", 25, TRUE)
+
 
 /obj/item/computer3_part
 	name = "computer part"

@@ -8627,12 +8627,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
-"esc" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/central_streets)
 "esj" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison{
@@ -65566,15 +65560,15 @@ rwE
 rwE
 rXb
 rXb
-esc
-rXb
-rXb
-rXb
-oaj
-mse
-mse
-mse
-mse
+pnE
+vXc
+vXc
+vXc
+dbc
+max
+max
+max
+max
 max
 ofi
 ofi

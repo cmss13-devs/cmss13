@@ -246,7 +246,7 @@
 		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
 			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
+		var/area/area_shuttle = supply_controller.shuttle?.area_offsite
 		if(!area_shuttle)
 			return
 		var/list/turflist = list()
@@ -267,9 +267,17 @@
 
 /turf/open/floor/almayer/empty/multi_elevator
 	var/is_bottom_of_shaft = FALSE
+	var/list/disallowed_atoms = list(/obj/docking_port/stationary/vehicle_elevator,
+									/obj/structure,
+									/obj/effect/projector,
+									/obj/effect/landmark/multi_fakezlevel_supply_elevator,
+									/obj/effect/step_trigger/clone_cleaner,
+									/obj/effect/elevator/supply/multi,
+									/atom/movable/clone,
+									/obj/effect/elevator/animation_overlay)
 
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
-	if(AM == src || istype(AM, /obj/docking_port/stationary/vehicle_elevator) || istype(AM, /obj/structure) ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone) || istype(AM, /obj/effect/elevator/animation_overlay))
+	if(is_type_in_list(AM, disallowed_atoms))
 		return
 	. = ..()
 
@@ -277,7 +285,6 @@
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
 		//also that the fake zlevels of the shipmap are 101 tiles apart
-		message_admins("[AM] ---> [AM.type]")
 		var/turf/fallonto_turf = get_turf(src)
 		var/area/my_area = get_area(fallonto_turf)
 		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi) && my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
@@ -289,9 +296,9 @@
 					AM.layer = UNDER_TURF_LAYER
 					break
 			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				for(var/i=0; i<101; i++)
+				for(var/i in 0 to 100)
 					fallonto_turf = get_step(fallonto_turf, WEST)
-			var/obj/effect/elevator/animation_overlay/falling_animation = new/obj/effect/elevator/animation_overlay()
+			var/obj/effect/elevator/animation_overlay/falling_animation = new()
 			vis_contents += falling_animation
 			falling_animation.vis_contents += AM
 			AM.plane = FLOOR_PLANE
@@ -312,10 +319,8 @@
 			var/mob/living/carbon/human/human_who_fell = AM
 			human_who_fell.take_overall_damage(rand(40, 60), 0, FALSE, FALSE, "Blunt Trauma")
 			human_who_fell.KnockDown(5)
-			for(var/i in human_who_fell.limbs)
-				if(istype(i, /obj/limb/leg/l_leg/) || istype(i, /obj/limb/leg/r_leg))
-					var/obj/limb/leg/human_who_fells_leg = i
-					human_who_fells_leg.take_damage_bone_break(35)
+			for(var/obj/limb/leg/fallen_leg in human_who_fell.limbs)
+				fallen_leg.take_damage_bone_break(35)
 			to_chat(human_who_fell, SPAN_WARNING("You fall into empty space!"))
 
 		if(ismob(AM))

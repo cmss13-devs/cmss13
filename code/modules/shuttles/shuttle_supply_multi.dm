@@ -1,3 +1,9 @@
+#define MOVEMENT_DIRECTION_UPWARDS 1
+#define MOVEMENT_DIRECTION_DOWNWARDS 0
+
+#define ELEVATOR_MOVE_AWAY_FROM_ORIGIN_STAGE 1
+#define ELEVATOR_MOVE_TOWARDS_DESTINATION_STAGE 0
+
 /obj/effect/landmark/multi_fakezlevel_supply_elevator
 	var/fake_zlevel
 	var/is_primary_fake_zlevel = FALSE
@@ -22,19 +28,22 @@
 /datum/shuttle/ferry/supply/multi
 	iselevator = 1
 	var/list/obj/effect/elevator/supply/multi/elevator_effects = list()
-	var/list/shaft_projectors = list() //contains lists which each contain groups of projectors near each stop of the elevator
+	/// contains lists which each contain groups of projectors near each stop of the elevator
+	var/list/shaft_projectors = list()
 	var/fake_zlevel = 0
 	var/target_zlevel = 1
 	var/obj/structure/elevator_control_mount/in_elevator_controller
 	replacement_turf_type = /turf/open/floor/almayer/empty/multi_elevator
 	var/list/transit_location_walls = list()
-	var/area/shaft_transit_area  //purposefully defined this as something other than transit_area to not trigger shuttle code
+	/// purposefully defined this as something other than transit_area to not trigger shuttle code
+	var/area/shaft_transit_area
 	var/list/obj/effect/elevator/animation_overlay/elevator_animationz = list()
-	var/list/railingz = list() //z for coolness
+	/// z for coolness
+	var/list/railingz = list()
 	warmup_time = 5 SECONDS
 
 /datum/shuttle/ferry/supply/multi/New()
-	for(var/i = 1; i <= length(GLOB.supply_elevator_turfs); i++)
+	for(var/i in 1 to length(GLOB.supply_elevator_turfs))
 		elevator_animationz += list(list())
 	for(var/turf/T in GLOB.supply_elevator_turfs)
 		var/area/T_area = get_area(T)
@@ -49,7 +58,7 @@
 	for(var/turf/T in GLOB.supply_elevator_turfs)
 		var/area/T_area = get_area(T)
 		if(length(railingz) < length(GLOB.supply_elevator_turfs))
-			for(var/i=1;i < length(GLOB.supply_elevator_turfs); i++)
+			for(var/i in 1 to length(GLOB.supply_elevator_turfs))
 				railingz += list(list())
 		for(var/obj/structure/machinery/door/poddoor/railing/R in range(5, T))
 			railingz[T_area.fake_zlevel] |= R
@@ -57,7 +66,7 @@
 	for(var/obj/effect/projector/P in projectors)
 		for(var/turf/T in GLOB.supply_elevator_turfs)
 			var/area/area_of_T = get_area(T)
-			for(var/i = 0; i < area_of_T.fake_zlevel; i++)
+			for(var/i in 0 to area_of_T.fake_zlevel)
 				if(length(shaft_projectors) < area_of_T.fake_zlevel)
 					shaft_projectors += list(list())
 				else
@@ -77,7 +86,7 @@
 						shaft_projectors[area_of_T.fake_zlevel] |= P
 
 	if(supply_controller)
-		for(var/i=1; i <= length(GLOB.supply_elevator_turfs);i++)
+		for(var/i in 1 to length(GLOB.supply_elevator_turfs))
 			var/turf/T = GLOB.supply_elevator_turfs[i]
 			var/area/T_area = get_area(T)
 			var/Ts_fake_zlevel = T_area.fake_zlevel
@@ -128,20 +137,19 @@
 		return shaft_transit_area
 
 /datum/shuttle/ferry/supply/multi/proc/get_movement_direction()
-	//0 means DOWN; 1 means UP
 	if(moving_status == SHUTTLE_IDLE)
 		return null
 
 	if(!target_zlevel)
-		return 0
+		return MOVEMENT_DIRECTION_DOWNWARDS
 
 	else if(!fake_zlevel)
-		return 1
+		return MOVEMENT_DIRECTION_UPWARDS
 
 	else if(target_zlevel < fake_zlevel)
-		return 1
+		return MOVEMENT_DIRECTION_UPWARDS
 	else
-		return 0
+		return MOVEMENT_DIRECTION_DOWNWARDS
 
 /datum/shuttle/ferry/supply/multi/at_station()
 	return fake_zlevel
@@ -150,7 +158,7 @@
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
-	if(isnull(location) || target_zlevel == fake_zlevel)
+	if(target_zlevel == fake_zlevel)
 		return
 
 	recharging = 1
@@ -214,26 +222,34 @@
 	spawn(2 SECONDS) //animations need to catch up
 		lower_railingz(target_zlevel)
 		update_controller()
-		location = !fake_zlevel
 		stop_gears()
 		var/at_station_result = at_station()
 		if (!at_station_result)	//at centcom
 			handle_sell()
-		spawn(0)
-			recharging = 0
+		recharging = 0
 
 /datum/shuttle/ferry/supply/multi/proc/raise_railingz(deck)
 	if(!deck)
 		return
 
-	var/effective = 0
+	var/effective = FALSE
+
 	for(var/obj/structure/machinery/door/poddoor/railing/M in railingz[deck])
 		if(!M.density)
-			effective = 1
-			spawn()
-				M.close()
+			effective = TRUE
 
-	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/elevator_3wide/D in range(GLOB.supply_elevator_turfs[deck], 4))
+			M.close()
+
+	for(var/obj/structure/machinery/door/airlock/D in range(GLOB.supply_elevator_turfs[deck], 3))
+		for(var/turf/T in D.locs)
+			for(var/mob/moving_mob in T.contents) // Bump all mobs outta the way for outside airlocks of shuttles
+				if(isliving(moving_mob))
+					to_chat(moving_mob, SPAN_HIGHDANGER("You get thrown back as the elevator doors slam shut!"))
+					moving_mob.apply_effect(4, WEAKEN)
+					for(var/turf/TT in orange(1, moving_mob)) // Forcemove to a non shuttle turf
+						if(!TT.density && !istype(TT, /turf/open/floor/almayer/empty) && !(TT in D.locs) && get_area(TT) != get_location_area())
+							moving_mob.forceMove(TT)
+							break
 		D.close()
 		D.locked = TRUE
 		D.update_icon()
@@ -245,10 +261,11 @@
 	if(!deck)
 		return
 
-	var/effective = 0
+	var/effective = FALSE
+
 	for(var/obj/structure/machinery/door/poddoor/railing/M in railingz[deck])
 		if(M.density)
-			effective = 1
+			effective = TRUE
 			INVOKE_ASYNC(M,  TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/elevator_3wide/D in range(GLOB.supply_elevator_turfs[deck], 4))
@@ -280,10 +297,8 @@
 
 	moving_status = SHUTTLE_INTRANSIT
 
-	location = 0
-
 	// alot of checks here, ALL WORTH IT TRUST ME
-	// they excessive logic is to find zlevels between the origin and the destination
+	// the excessive logic is to find zlevels between the origin and the destination
 	// and play animations of the elevator there
 
 	if(!target_zlevel || !fake_zlevel)
@@ -322,8 +337,7 @@
 			else
 				animate(elevator_animationz[Ts_fake_zlevel], pixel_y = 180, time = 2 SECONDS)
 
-			spawn(4 SECONDS)
-				elevator_animationz[Ts_fake_zlevel].vis_contents.Cut()
+			addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), Ts_fake_zlevel), 4 SECONDS, TIMER_UNIQUE)
 
 	if(movement_direction)
 		move_elevator_up_from(origin, destination)
@@ -337,7 +351,6 @@
 	else
 		moving_status = SHUTTLE_IDLE
 		move_elevator_down_towards(origin, destination)
-
 
 ///MOVE JANKS vvvvvvvvvvv
 
@@ -354,8 +367,7 @@
 		//elevator_animationz[fake_zlevel].color = "#000000"
 		playsound(GLOB.supply_elevator_turfs[fake_zlevel], 'sound/machines/asrs_lowering.ogg', 50, 0)
 		animate(elevator_animationz[fake_zlevel], pixel_y = animation_offset, color = "#577eaa", time = animation_timing)
-		spawn(animation_timing)
-			elevator_animationz[fake_zlevel].vis_contents.Cut()
+		addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), fake_zlevel), animation_timing, TIMER_UNIQUE)
 
 /datum/shuttle/ferry/supply/multi/proc/move_elevator_up_from(origin, destination)
 	move(origin, destination)
@@ -365,8 +377,7 @@
 		elevator_animationz[fake_zlevel].alpha = 255
 		playsound(GLOB.supply_elevator_turfs[fake_zlevel], 'sound/machines/asrs_raising.ogg', 50, 0)
 		animate(elevator_animationz[fake_zlevel], pixel_y = 96, alpha = 0, time = 2 SECONDS)
-		spawn(2 SECONDS)
-			elevator_animationz[fake_zlevel].vis_contents.Cut()
+		addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), fake_zlevel), 2 SECONDS, TIMER_UNIQUE)
 		if(target_zlevel == fake_zlevel - 1) //then we need to play unique animation of elevator crawling up @ the target_zlevel
 			elevator_animationz[target_zlevel].pixel_y = -128
 			elevator_animationz[target_zlevel].color = "#577eaa"
@@ -380,11 +391,7 @@
 		elevator_animationz[target_zlevel].alpha = 0
 		animate(elevator_animationz[target_zlevel], pixel_y = 0,  alpha = 255, time = 2 SECONDS)
 
-	spawn(2 SECONDS)
-		move(origin, destination)
-		if(target_zlevel)
-			elevator_animationz[target_zlevel].vis_contents.Cut()
-
+	addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), target_zlevel,  list(origin, destination)), 2 SECONDS, TIMER_UNIQUE)
 	playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
 	start_gears(SOUTH)
 
@@ -396,17 +403,20 @@
 		elevator_animationz[target_zlevel].color = "#577eaa"
 		animate(elevator_animationz[target_zlevel], pixel_y = 0, color = "#ffffff", time = 2 SECONDS)
 
-	spawn(2 SECONDS)
-		move(origin, destination)
-		elevator_animationz[target_zlevel].vis_contents.Cut()
-
+	addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), target_zlevel, list(origin, destination)), 2 SECONDS, TIMER_UNIQUE)
 	start_gears(NORTH)
+
+/datum/shuttle/ferry/supply/multi/proc/premove_shenanigans(key_into_elevator_animationz, list/trigger_move)
+	if(key_into_elevator_animationz <= length(elevator_animationz))
+		elevator_animationz[key_into_elevator_animationz].vis_contents.Cut()
+	if(length(trigger_move) == 2)
+		move(trigger_move[1], trigger_move[2])
 
 // ============== BIG HONCHO MOVE PROC VVVVVVV ============ turf changes happen here!
 
 /datum/shuttle/ferry/supply/multi/move(area/origin, area/destination)
-	update_shaft_projectors(1, destination)
-	update_shaft_effects(1, destination)
+	update_shaft_projectors(destination == shaft_transit_area ? ELEVATOR_MOVE_AWAY_FROM_ORIGIN_STAGE : ELEVATOR_MOVE_TOWARDS_DESTINATION_STAGE, TRUE)
+	update_shaft_effects(ELEVATOR_MOVE_AWAY_FROM_ORIGIN_STAGE, destination)
 
 	for(var/turf/closed/wall/supply_shaft/SS in transit_location_walls)
 		SS.set_movement_dir(get_movement_direction())
@@ -418,8 +428,8 @@
 
 	..()
 
-	update_shaft_effects(2, destination)
-	update_shaft_projectors(2, destination)
+	update_shaft_effects(ELEVATOR_MOVE_TOWARDS_DESTINATION_STAGE, destination)
+	update_shaft_projectors(destination == shaft_transit_area ? ELEVATOR_MOVE_AWAY_FROM_ORIGIN_STAGE : ELEVATOR_MOVE_TOWARDS_DESTINATION_STAGE, FALSE)
 
 	if(destination != shaft_transit_area)
 		for(var/turf/T in destination)
@@ -443,7 +453,7 @@
 
 /datum/shuttle/ferry/supply/multi/proc/update_shaft_effects(mode, destination)
 	switch(mode)
-		if(1)
+		if(ELEVATOR_MOVE_AWAY_FROM_ORIGIN_STAGE)
 			if(destination != shaft_transit_area)
 				if(target_zlevel)
 					elevator_effects["[target_zlevel]SW"].moveToNullspace()
@@ -455,7 +465,8 @@
 				elevator_effects["[fake_zlevel]SE"].moveToNullspace()
 				elevator_effects["[fake_zlevel]NW"].moveToNullspace()
 				elevator_effects["[fake_zlevel]NE"].moveToNullspace()
-		if(2)
+
+		if(ELEVATOR_MOVE_TOWARDS_DESTINATION_STAGE)
 			if(destination != shaft_transit_area)
 				if(target_zlevel)
 					var/turf/turf_arrived_at = GLOB.supply_elevator_turfs[target_zlevel]
@@ -470,41 +481,20 @@
 				elevator_effects["[fake_zlevel]NW"].forceMove(locate(departing_from_turf.x-2, departing_from_turf.y+2, departing_from_turf.z))
 				elevator_effects["[fake_zlevel]NE"].forceMove(locate(departing_from_turf.x+2, departing_from_turf.y+2, departing_from_turf.z))
 
-/datum/shuttle/ferry/supply/multi/proc/update_shaft_projectors(mode, destination)
+/datum/shuttle/ferry/supply/multi/proc/update_shaft_projectors(mode, stage)
 	//this assumes the projectors are from lower zlevels [FROM INSIDE A SHAFT]
-	//and that lower zlevels are ordered from 1 up moving downwards
+	//and that lower zlevels are ordered from 1 up, moving downwards from the topdeck(1)
 	//all logic handled by /datum/controller/subsystem/fz_transitions/fire()
-	switch(mode)
-		if(1)
-			//remove everything in appropriate zones
-			if(destination != shaft_transit_area)
-				if(target_zlevel && target_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-					for(var/obj/effect/projector/P in shaft_projectors[target_zlevel + 1])
-						P.update_state(TRUE)
-
-					for(var/obj/effect/projector/P in shaft_projectors[target_zlevel])
-						P.update_state(TRUE)
-
-			if(fake_zlevel && fake_zlevel != target_zlevel + 1)
-				for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel])
-					P.update_state(TRUE)
-		if(2)
-			//put everything back that we should
-			if(destination != shaft_transit_area)
-				if(target_zlevel)
-					for(var/obj/effect/projector/P in shaft_projectors[target_zlevel])
-						P.update_state(FALSE)
-
-			if(fake_zlevel && fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel + 1])
-					P.update_state(FALSE)
-
-				if(fake_zlevel != target_zlevel + 1)
-					for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel])
-						P.update_state(FALSE)
+	if(mode ? fake_zlevel : target_zlevel && mode ? fake_zlevel : target_zlevel <= length(shaft_projectors))
+		for(var/obj/effect/projector/P in shaft_projectors[mode ? fake_zlevel : target_zlevel])
+			P.update_state(stage)
+		if((mode ? fake_zlevel : target_zlevel) + 1 <= length(shaft_projectors))
+			if(stage != mode)
+				for(var/obj/effect/projector/P in shaft_projectors[(mode ? fake_zlevel : target_zlevel) + 1])
+					P.update_state(stage)
 
 /datum/shuttle/ferry/supply/multi/forbidden_atoms_check()
-	if(target_zlevel != 0 || target_zlevel != null)
+	if(target_zlevel)
 		return FALSE
 	else
 		return ..()
@@ -535,24 +525,20 @@
 			//in_elevator_controller.attached_to.choices[fake_zlevel].underlays += icon('icons/obj/items/misc.dmi', "ec_button_current")
 
 /datum/shuttle/ferry/supply/multi/proc/choices_to_number(choice)
-	//ha ha snowflake code here made to only handle 3 decks *dabs*
-	switch(choice)
-		if("ASRS")
-			return 0
-		if("Deck 1")
-			return 1
-		if("Deck 2")
-			return 2
-		if("Deck 3")
-			return 3
-		if(0)
+	if(isnum(choice))
+		if(choice <= 0)
 			return "ASRS"
-		if(1)
-			return "Deck 1"
-		if(2)
-			return "Deck 2"
-		if(3)
-			return "Deck 3"
+		else
+			return "Deck [choice]"
+	else if(istext(choice))
+		if(findtext(choice, "ASRS"))
+			return 0
+		else
+			var/list/parsedText = splittext(choice, " ")
+			if(length(parsedText) == 2 && parsedText[1] == "Deck")
+				return text2num(parsedText[2])
+	else
+		return null
 
 /obj/item/elevator_contoller
 	name = "Freight Elevator Controller"

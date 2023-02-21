@@ -227,16 +227,16 @@
 	//Translate clone position by projection factor
 	//This is done first to reduce movement latency
 
-	clone.anchored 		= anchored //Some of these may be suitable for Init
-	clone.appearance 	= appearance
-	clone.dir 			= dir
-	clone.flags_atom 	= flags_atom
-	clone.density 		= density
-	clone.level 		= level
-	clone.name 			= name
-	clone.pixel_x 		= pixel_x
-	clone.pixel_y 		= pixel_y
-	clone.transform 	= transform
+	clone.anchored		= anchored //Some of these may be suitable for Init
+	clone.appearance	= appearance
+	clone.dir			= dir
+	clone.flags_atom	= flags_atom
+	clone.density		= density
+	clone.level			= level
+	clone.name			= name
+	clone.pixel_x		= pixel_x
+	clone.pixel_y		= pixel_y
+	clone.transform		= transform
 	clone.invisibility 	= invisibility
 	////////////////////
 

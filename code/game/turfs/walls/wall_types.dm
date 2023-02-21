@@ -76,7 +76,7 @@
 
 	var/list/turf_neighbors = list(get_step(src, NORTH).density, get_step(src, SOUTH).density, get_step(src, EAST).density, get_step(src, WEST).density)
 	var/number_of_neighbors
-	for(var/i=1,i<=length(turf_neighbors),i++)
+	for(var/i in 1 to length(turf_neighbors))
 		if(turf_neighbors[i] == TRUE)
 			number_of_neighbors++
 	if(number_of_neighbors < 3)

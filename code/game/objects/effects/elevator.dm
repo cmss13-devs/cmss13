@@ -20,7 +20,6 @@
 	return
 
 /obj/effect/elevator/animation_overlay
-	//blend_mode = BLEND_INSET_OVERLAY
 	appearance_flags = KEEP_TOGETHER
 	plane = FLOOR_PLANE
 	layer = UNDER_TURF_LAYER

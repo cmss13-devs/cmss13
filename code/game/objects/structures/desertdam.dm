@@ -20,7 +20,9 @@
 	name = "road"
 	icon_state = "road_edge_decal1"
 	layer = TURF_LAYER
+	mouse_opacity = FALSE
 /obj/structure/desertdam/decals/road_stop
 	name = "road"
 	icon_state = "stop_decal1"
 	layer = TURF_LAYER
+	mouse_opacity = FALSE

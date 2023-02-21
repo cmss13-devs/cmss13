@@ -121,8 +121,12 @@
 /area/westerneye/engineering/upper_engineering/notunnel
 	flags_area = AREA_NOTUNNEL
 
-/area/westerneye/engineering/dorms
-	name = "\improper Engineering Dorms"
+/area/westerneye/engineering/dorms_port
+	name = "\improper Port Engineering Dorms"
+	fake_zlevel = 2
+
+/area/westerneye/engineering/dorms_starboard
+	name = "\improper Starboard Engineering Dorms"
 	fake_zlevel = 2
 
 /area/westerneye/engineering/ce_room
@@ -302,6 +306,9 @@
 	soundscape_playlist = SCAPE_PL_HANGAR
 	soundscape_interval = 35
 
+/area/westerneye/living/ReqNMessDorms
+	name = "\improper Requisitions & Mess Dorms"
+	fake_zlevel = 2
 
 /area/westerneye/living/guestdorms
 	name = "\improper Guest Dormitories"
@@ -511,15 +518,25 @@
 	icon_state = "briefing"
 	fake_zlevel = 1
 
-/area/westerneye/living/port_emb
-	name = "\improper Extended Mission Bunks"
-	icon_state = "portemb"
-	fake_zlevel = 2 // lowerdeck
+/area/westerneye/living/alpha_bunks
+	name = "\improper Extended Mission Alpha Bunks"
+	icon_state = "alpha"
+	fake_zlevel = 2 // middeck
 
-/area/westerneye/living/starboard_emb
-	name = "\improper Extended Mission Bunks"
-	icon_state = "starboardemb"
-	fake_zlevel = 2 // lowerdeck
+/area/westerneye/living/bravo_bunks
+	name = "\improper Extended Mission Bravo Bunks"
+	icon_state = "bravo"
+	fake_zlevel = 2 // middeck
+
+/area/westerneye/living/charlie_bunks
+	name = "\improper Extended Mission Charlie Bunks"
+	icon_state = "charlie"
+	fake_zlevel = 2 // middeck
+
+/area/westerneye/living/delta_bunks
+	name = "\improper Extended Mission Delta Bunks"
+	icon_state = "delta"
+	fake_zlevel = 2 // middeck
 
 /area/westerneye/living/port_garden
 	name = "\improper Garden"

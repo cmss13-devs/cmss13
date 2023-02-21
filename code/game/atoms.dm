@@ -351,7 +351,8 @@ Parameters are passed from New.
 
 /atom/proc/create_clone(shift_x, shift_y, layer_override) //NOTE: Use only for turfs, otherwise use create_clone_movable
 	if(!isturf(src))
-		to_chat(world, "<span class='notice'>["WARNING: /atom/proc/create_clone() was called for a non turf!"]</span>"); log_world("WARNING: /atom/proc/create_clone() was called for a non turf!")
+		to_chat(world, "<span class='notice'>["WARNING: /atom/proc/create_clone() was called for a non turf!"]</span>")
+		log_world("WARNING: /atom/proc/create_clone() was called for a non turf!")
 		return
 	//var/turf/source_turf = src
 	var/turf/T = null

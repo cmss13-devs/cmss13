@@ -29,11 +29,6 @@
 	// linked lz id (lz1, lz2 or null)
 	var/linked_lz
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "shuttle"
-	is_remote = TRUE
-
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
@@ -125,6 +120,7 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_static_data(mob/user)
 	. = ..(user)
+	compatible_landing_zones = get_landing_zones()
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	// we convert the time to seconds for rendering to ui
 	.["max_flight_duration"] = shuttle.callTime / 10
@@ -402,4 +398,9 @@
 	icon_state = "shuttle"
 	linked_lz = DROPSHIP_LZ2
 	shuttleId = DROPSHIP_NORMANDY
+	is_remote = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
 	is_remote = TRUE

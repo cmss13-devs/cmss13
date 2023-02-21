@@ -63,5 +63,5 @@
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
 
-///Used to toggle the hide button's icon for mobs that can pounce.area
+///Used to toggle the hide button's icon for mobs that can pounce.
 #define COMSIG_XENO_POUNCE_HIDE "xeno_pounce_unhide"

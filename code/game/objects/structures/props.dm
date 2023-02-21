@@ -663,7 +663,7 @@
 
 /obj/structure/prop/brazier/frame_woodened
 	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What???"
+	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
 	luminosity = 0
 
@@ -683,7 +683,7 @@
 
 /obj/structure/prop/brazier/torch/frame
 	name = "unlit torch"
-	desc = "It's a torch, but it's not lit."
+	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
 	icon_state = "torch_frame"
 	luminosity = 0
 

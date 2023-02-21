@@ -384,7 +384,7 @@
 		return
 
 	if(istype(W, /obj/item/prop/torch_frame))
-		to_chat(user, SPAN_NOTICE("You place the torch down on the wall. Use something hot to ignite it, like a welding tool."))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
 		new /obj/structure/prop/brazier/torch/frame(src)
 		qdel(W)
 

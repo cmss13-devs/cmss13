@@ -28,14 +28,14 @@
 	QDEL_NULL(node)
 	return ..()
 
-/obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+/obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/xenomorph/M)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
 
-/obj/effect/alien/resin/special/cluster/proc/do_repair(mob/living/carbon/Xenomorph/xeno)
+/obj/effect/alien/resin/special/cluster/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)

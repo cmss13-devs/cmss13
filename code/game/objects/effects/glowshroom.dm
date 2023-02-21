@@ -2,7 +2,7 @@
 
 /obj/effect/glowshroom
 	name = "glowshroom"
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
 	icon = 'icons/obj/items/lighting.dmi'

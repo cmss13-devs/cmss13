@@ -22,6 +22,8 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
+	minimap_icon = "co"
+
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
@@ -101,6 +103,8 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "xo"
+
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/wo/xo/New()
@@ -135,13 +139,15 @@
 	name = "WO Honor Guard Squad Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_CMP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_CHIEF_POLICE
 	rank = JOB_WO_CHIEF_POLICE
 	paygrade = "ME5"
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "cmp"
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/H)
 
@@ -158,7 +164,7 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)
@@ -171,13 +177,15 @@
 	name = "WO Veteran Honor Guard" //SO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE)
 	assignment = JOB_WO_SO
 	rank = JOB_WO_SO
 	paygrade = "ME4"
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "so"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -211,13 +219,15 @@
 	name = "WO Honor Guard Specialist" //Tank crew
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE)
 	assignment = JOB_WO_CREWMAN
 	rank = JOB_WO_CREWMAN
 	paygrade = "ME3"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
+
+	minimap_icon = "spec"
 
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -249,12 +259,14 @@
 	name = "WO Honor Guard" //MP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_POLICE
 	rank = JOB_WO_POLICE
 	paygrade = "ME2"
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
+
+	minimap_icon = "mp"
 
 /datum/equipment_preset/wo/hg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -281,12 +293,14 @@
 	name = "WO Mortar Crew" //PO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
 	assignment = JOB_WO_PILOT
 	rank = JOB_WO_PILOT
 	paygrade = "ME3"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
+
+	minimap_icon = "vc"
 
 /datum/equipment_preset/wo/mortar_crew/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -314,13 +328,15 @@
 	name = "WO Quartermaster"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
+	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_COMMAND)
 	assignment = JOB_WO_CHIEF_REQUISITION
 	rank = JOB_WO_CHIEF_REQUISITION
 	paygrade = "ME8"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "ro"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -374,13 +390,15 @@
 	name = "WO Head Surgeon" //CMO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_COMMAND, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_CMO
 	rank = JOB_WO_CMO
 	paygrade = "CCMO"
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "cmo"
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -423,6 +441,8 @@
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
+	minimap_icon = "doctor"
+
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -461,6 +481,8 @@
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
 
+	minimap_icon = "researcher"
+
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -491,13 +513,15 @@
 	name = "WO Bunker Crew Master" //CE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_DATABASE)
 	assignment = JOB_WO_CHIEF_ENGINEER
 	rank = JOB_WO_CHIEF_ENGINEER
 	paygrade = "ME5"
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "ce"
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -523,13 +547,15 @@
 	name = "WO Bunker Crew" //OT
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_WO_ORDNANCE_TECH
 	rank = JOB_WO_ORDNANCE_TECH
 	paygrade = "ME4"
 	role_comm_title = "BC"
 	skills = /datum/skills/OT
 	idtype = /obj/item/card/id
+
+	minimap_icon = "mt"
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -556,15 +582,18 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(
-		ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP,
+		ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
-	paygrade = "WY-XB-X"
+	paygrade = "WYC2"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
+
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

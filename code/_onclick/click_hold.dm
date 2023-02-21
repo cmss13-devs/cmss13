@@ -15,7 +15,7 @@
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
 
-/client/MouseDown(var/atom/A, var/turf/T, var/skin_ctl, var/params)
+/client/MouseDown(atom/A, turf/T, skin_ctl, params)
 	ignore_next_click = FALSE
 	if(!A)
 		return
@@ -44,7 +44,7 @@
 
 		//Some combat intent click-drags shouldn't be overridden.
 		var/mob/target_mob = A
-		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(isCarbonSizeXeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
+		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
 			return
 
 		if(!isturf(T)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
@@ -52,7 +52,7 @@
 
 		Click(A, T, skin_ctl, params)
 
-/client/MouseUp(var/atom/A, var/turf/T, var/skin_ctl, var/params)
+/client/MouseUp(atom/A, turf/T, skin_ctl, params)
 	if(!A)
 		return
 
@@ -66,7 +66,7 @@
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, A, params)
 
-/client/MouseDrag(var/atom/src_obj, var/atom/over_obj, var/turf/src_loc, var/turf/over_loc, var/src_ctl, var/over_ctl, var/params)
+/client/MouseDrag(atom/src_obj, atom/over_obj, turf/src_loc, turf/over_loc, src_ctl, over_ctl, params)
 	if(!over_obj)
 		return
 

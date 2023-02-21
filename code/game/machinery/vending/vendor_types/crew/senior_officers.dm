@@ -1,7 +1,7 @@
 /obj/structure/machinery/cm_vending/clothing/senior_officer
 	name = "\improper ColMarTech Senior Officer Equipment Rack"
 	desc = "An automated equipment vendor for Senior Officers."
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	vendor_role = list(JOB_CHIEF_POLICE,JOB_CMO,JOB_XO,JOB_CHIEF_ENGINEER,JOB_CHIEF_REQUISITION)
 
 /obj/structure/machinery/cm_vending/clothing/senior_officer/get_listed_products(mob/user)

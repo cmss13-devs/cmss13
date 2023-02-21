@@ -16,12 +16,15 @@ export type OrbitData = {
   npcs: Observable[];
   vehicles: Observable[];
   escaped: Observable[];
+  icons?: string[];
 };
 
 export type Observable = {
   caste?: string;
   health?: number;
+  icon?: string;
   job?: string;
+  background_color?: string;
   full_name: string;
   nickname?: string;
   orbiters?: number;

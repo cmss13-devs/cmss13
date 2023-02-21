@@ -2,7 +2,7 @@
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -223,7 +223,7 @@
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
 			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
-			message_staff("[key_name(usr)] has made a command announcement.")
+			message_admins("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
@@ -286,7 +286,7 @@
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
 			echo_squad.engage_squad(TRUE)
-			message_staff("[key_name(usr)] activated Echo Squad for '[reason]'.")
+			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")
 			attack_hand(usr)

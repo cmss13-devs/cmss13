@@ -21,6 +21,7 @@
 		src.base_state = src.icon_state
 
 /obj/structure/machinery/door/window/Destroy()
+	QDEL_NULL(electronics)
 	density = FALSE
 	playsound(src, "windowshatter", 50, 1)
 	. = ..()

@@ -1,15 +1,8 @@
 ////////////////////////////////
-/proc/message_admins(msg) // +ADMIN and above
-	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_admin(msg)
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
-			to_chat(C, msg)
-
-/proc/message_staff(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
+/proc/message_admins(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
-	msg = "<span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
+	msg = "<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
 		msg += " (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span>"
@@ -39,11 +32,13 @@
 
 /proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
-	for(var/client/C in GLOB.admins)
-		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
-			to_chat(C, msg)
-			if(C.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
-				sound_to(C, 'sound/effects/mhelp.ogg')
+	for(var/mob/possible_sea as anything in GLOB.player_list)
+		if(!isSEA(possible_sea))
+			continue
+
+		to_chat(possible_sea, msg)
+		if(possible_sea?.client.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
+			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
 /proc/msg_admin_ff(text, alive = TRUE)
@@ -170,7 +165,7 @@
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_staff("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
+	message_admins("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
 	world.update_status()
 
 

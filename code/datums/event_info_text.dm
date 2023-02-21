@@ -53,7 +53,7 @@
 					show_player_event_info(M)
 				return
 
-	message_staff("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")
+	message_admins("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")
 	return
 
 /mob/proc/check_event_info(category = "Global")

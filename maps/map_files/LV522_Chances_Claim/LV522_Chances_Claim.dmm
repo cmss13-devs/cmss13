@@ -27201,6 +27201,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
+"mib" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1;
+	tag = "icon-NE-out"
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "mil" = (
 /obj/structure/platform{
 	dir = 1
@@ -31742,6 +31751,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
+"oaX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out"
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "obb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
@@ -41890,6 +41907,15 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/indoors/b_block/bar)
+"rSH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "rSM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -44382,6 +44408,14 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/hallway)
+"sVQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "sWr" = (
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
@@ -44416,6 +44450,13 @@
 	dir = 1;
 	icon_state = "blue"
 	},
+/area/lv522/indoors/a_block/admin)
+"sXc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
+	},
+/turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "sXm" = (
 /obj/structure/surface/table/almayer,
@@ -55744,6 +55785,11 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	pixel_y = 6
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	tag = "icon-N"
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "xuB" = (
@@ -56441,6 +56487,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1;
+	tag = "icon-NW-out"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "xJX" = (
@@ -56968,6 +57019,11 @@
 	},
 /obj/item/trash/wy_chips_pepper,
 /obj/item/tool/pen/blue/clicky,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	tag = "icon-N"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "xSQ" = (
@@ -88529,9 +88585,9 @@ fRk
 peS
 wDh
 mhT
-sWr
-wGY
-sWr
+oaX
+rSH
+mib
 krK
 muV
 xtk
@@ -89218,8 +89274,8 @@ hDZ
 vav
 hKJ
 gaw
-sWr
-wGY
+sXc
+sVQ
 xJL
 olI
 muV

@@ -16,6 +16,6 @@
 /datum/element/xeno_pounce_unhide/proc/pounce_toggle(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
 	for(var/datum/action/a in xeno.actions)
-		if a.name == "Hide"
+		if (a.name == "Hide")
 			a.update_button_icon(xeno)
 

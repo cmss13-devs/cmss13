@@ -112,7 +112,6 @@
 /area/lv522/indoors/lone_buildings/chunk)
 "adI" = (
 /obj/structure/ladder{
-	height = 1;
 	icon_state = "ladder10";
 	id = "hatch"
 	},
@@ -8520,12 +8519,23 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "emH" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
+/obj/structure/fence{
+	layer = 2.8
 	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/indoors/a_block/bridges/dorms_fitness)
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	tag = "icon-N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/outdoors/colony_streets/north_west_street)
 "emW" = (
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
@@ -8781,8 +8791,6 @@
 /area/lv522/atmos/north_command_centre)
 "esF" = (
 /obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -8868,6 +8876,7 @@
 "evu" = (
 /obj/structure{
 	icon_state = "hatchclosed";
+	layer = 2.9;
 	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
@@ -8892,6 +8901,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/barricade/handrail,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "evv" = (
@@ -13187,6 +13197,7 @@
 "gul" = (
 /obj/structure{
 	icon_state = "hatchclosed";
+	layer = 2.9;
 	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
@@ -13409,7 +13420,9 @@
 	},
 /area/lv522/indoors/a_block/medical/glass)
 "gzT" = (
-/obj/structure/cargo_container/kelland/right,
+/obj/structure/cargo_container/kelland/right{
+	layer = 2.9
+	},
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
@@ -18683,6 +18696,7 @@
 "iGD" = (
 /obj/structure{
 	icon_state = "hatchclosed";
+	layer = 2.9;
 	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
@@ -18705,6 +18719,10 @@
 	tag = "icon-W"
 	},
 /obj/structure/machinery/light/small,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 9
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "iGF" = (
@@ -22134,6 +22152,7 @@
 "jYp" = (
 /obj/structure{
 	icon_state = "hatchclosed";
+	layer = 2.9;
 	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
@@ -26728,7 +26747,9 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 8
 	},
-/obj/structure/cargo_container/kelland/left,
+/obj/structure/cargo_container/kelland/left{
+	layer = 2.9
+	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lJl" = (
@@ -28896,7 +28917,9 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "mJF" = (
-/obj/structure/cargo_container/kelland/left,
+/obj/structure/cargo_container/kelland/left{
+	layer = 2.9
+	},
 /obj/structure/platform,
 /turf/open/floor/prison{
 	dir = 1;
@@ -31300,8 +31323,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/light/double,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -34566,6 +34587,7 @@
 "oTl" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -36031,6 +36053,7 @@
 /obj/item/stack/sheet/metal/large_stack,
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -37944,11 +37967,6 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "qgr" = (
-/obj/structure{
-	icon_state = "hatchclosed";
-	name = "\improper Maintenance Hatch";
-	pixel_y = 6
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -37968,6 +37986,11 @@
 	tag = "icon-W"
 	},
 /obj/structure/machinery/light/small,
+/obj/structure/ladder{
+	height = 1;
+	icon_state = "ladder10";
+	id = "hatch"
+	},
 /turf/open/floor/plating,
 /area/lv522/oob)
 "qgx" = (
@@ -42739,7 +42762,9 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
 	},
-/obj/structure/cargo_container/kelland/right,
+/obj/structure/cargo_container/kelland/right{
+	layer = 2.9
+	},
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "windsock";
 	pixel_x = 6;
@@ -46784,11 +46809,11 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "tvO" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
-/turf/open/floor/prison,
-/area/lv522/indoors/c_block/mining)
+/obj/structure/cargo_container/kelland/left{
+	layer = 2.9
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "tvP" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -52987,7 +53012,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/casino)
 "vJO" = (
-/obj/structure/cargo_container/kelland/right,
+/obj/structure/cargo_container/kelland/right{
+	layer = 2.9
+	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "vJT" = (
@@ -53414,6 +53441,7 @@
 /area/lv522/indoors/a_block/dorms)
 "vRQ" = (
 /obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -53472,6 +53500,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure{
 	icon_state = "hatchclosed";
+	layer = 2.9;
 	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
@@ -54455,6 +54484,11 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
+"wjZ" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/plating,
+/area/lv522/landing_zone_1/tunnel)
 "wke" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -55496,7 +55530,9 @@
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "white_trim"
 	},
-/obj/structure/cargo_container/kelland/left,
+/obj/structure/cargo_container/kelland/left{
+	layer = 2.9
+	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "wEQ" = (
@@ -63786,7 +63822,7 @@ lze
 tPr
 ldM
 clY
-lAf
+emH
 lIR
 dTJ
 dTJ
@@ -64013,7 +64049,7 @@ nHX
 rvI
 clY
 sjY
-lAf
+emH
 rOi
 swt
 rdM
@@ -67287,7 +67323,7 @@ cpy
 cpy
 cpy
 eYM
-ikb
+wjZ
 wfP
 jJF
 jJF
@@ -70131,7 +70167,7 @@ xtb
 nTv
 kMi
 iiE
-emH
+iiE
 iiE
 oYa
 nTv
@@ -82275,7 +82311,7 @@ vpe
 vpe
 eso
 eso
-tvO
+lzB
 xqV
 jas
 rej
@@ -96960,7 +96996,7 @@ rnB
 tTD
 tTD
 tTD
-oXZ
+tvO
 ylr
 kEo
 cUG

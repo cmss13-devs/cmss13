@@ -1073,14 +1073,10 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/weapon,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_y = -6
-	},
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "aIp" = (
@@ -7941,6 +7937,15 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "ebM" = (
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -9885,6 +9890,15 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -11643,6 +11657,15 @@
 	unslashable = 1
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15377,6 +15400,15 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15564,6 +15596,15 @@
 /area/lv522/indoors/a_block/kitchen)
 "htL" = (
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -15796,6 +15837,24 @@
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/n_rockies)
+"hzM" = (
+/obj/structure/fence{
+	layer = 2.9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	tag = "icon-N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "hzO" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/spray/cleaner{
@@ -20112,6 +20171,15 @@
 /area/lv522/oob)
 "jmW" = (
 /obj/item/prop/colony/used_flare,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -25776,8 +25844,21 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "lvN" = (
-/turf/closed/wall/strata_outpost,
-/area/lv522/landing_zone_1)
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/outdoors/nw_rockies)
 "lvX" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -30548,6 +30629,21 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor/south)
+"nyi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "nyJ" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -33417,6 +33513,21 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/dorms)
+"oDY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "oDZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -37428,6 +37539,21 @@
 	icon_state = "plate"
 	},
 /area/lv522/indoors/c_block/mining)
+"qeu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	tag = "icon-N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "qeJ" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -37749,6 +37875,22 @@
 	tag = "icon-darkyellowfull2 (EAST)"
 	},
 /area/lv522/indoors/lone_buildings/engineering)
+"qmD" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "qmM" = (
 /turf/closed/shuttle/dropship2/tornado/typhoon{
 	icon_state = "72"
@@ -48103,6 +48245,22 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"ugu" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	tag = "icon-E-corner"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/atmos/cargo_intake)
 "ugG" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -59867,10 +60025,10 @@ cpy
 cpy
 cpy
 cpy
-vtc
-vtc
-vtc
-vtc
+lvN
+lvN
+lvN
+lvN
 cpy
 cpy
 cpy
@@ -65091,13 +65249,13 @@ uWO
 bdX
 bIJ
 bIJ
-nZF
-nZF
-nZF
+qmD
+qmD
+nyi
 htL
-nZF
-nZF
-nZF
+nyi
+qmD
+qmD
 uWO
 uWO
 uWO
@@ -65543,7 +65701,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 fXS
 fXS
@@ -65770,7 +65928,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 enS
 fXS
 dmG
@@ -65997,7 +66155,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 cyl
 doj
@@ -66224,7 +66382,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 cFv
 fsQ
@@ -66451,7 +66609,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+qeu
 eaE
 cYF
 gge
@@ -66678,7 +66836,7 @@ mWc
 uWO
 oTX
 bdX
-nZF
+qeu
 eaE
 fXS
 doF
@@ -66905,7 +67063,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+qeu
 eaE
 fXS
 doF
@@ -67027,7 +67185,7 @@ ymc
 xXO
 ymc
 tFx
-lvN
+tFx
 rnT
 pxb
 pxb
@@ -67132,7 +67290,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 enS
 fXS
 dqr
@@ -67359,7 +67517,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 cZM
 dBC
@@ -67586,7 +67744,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+qeu
 eaE
 fXS
 eaE
@@ -67813,7 +67971,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 liD
 eaE
@@ -68040,7 +68198,7 @@ mWc
 oTX
 uWO
 bdX
-nZF
+hzM
 eaE
 fXS
 eaE
@@ -68267,7 +68425,7 @@ mWc
 uWO
 uWO
 bdX
-nZF
+hzM
 eaE
 fXS
 gSw
@@ -70540,16 +70698,16 @@ yim
 bIJ
 bIJ
 yim
-nZF
+oDY
 ebM
 eUf
 fLz
-nZF
+oDY
 hoN
-nZF
+oDY
 jmW
-htL
-nZF
+ugu
+oDY
 yim
 bIJ
 bIJ

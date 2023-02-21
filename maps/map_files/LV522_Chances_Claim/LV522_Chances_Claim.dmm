@@ -37387,6 +37387,10 @@
 /obj/item/clothing/head/headset{
 	pixel_x = 4
 	},
+/obj/item/storage/backpack/marine/satchel/rto/small{
+	pixel_x = 7;
+	pixel_y = 19
+	},
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -37480,10 +37484,6 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "qpg" = (
-/obj/item/storage/backpack/marine/satchel/rto/small{
-	pixel_x = -4;
-	pixel_y = 16
-	},
 /turf/open/shuttle/dropship{
 	icon_state = "floor8"
 	},
@@ -43145,7 +43145,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wrench,
 /obj/structure/machinery/door_control/brbutton/alt{
-	id = "West_Lock";
+	id = "LV522CIC_1";
 	name = "remote door-control";
 	pixel_y = 10
 	},
@@ -50634,15 +50634,6 @@
 	},
 /area/lv522/indoors/a_block/corpo)
 "vpU" = (
-/obj/effect/decal{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	luminosity = 0;
-	name = "fire";
-	pixel_x = -7;
-	pixel_y = 24
-	},
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "70"
 	},

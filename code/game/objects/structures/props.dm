@@ -649,14 +649,14 @@
 	icon_state = "brazier_frame"
 	luminosity = 0
 
-/obj/structure/prop/brazier/frame/attackby(obj/item/W, mob/user)
-	if(!istype(W, /obj/item/stack/sheet/wood))
+/obj/structure/prop/brazier/frame/attackby(obj/item/hit_item, mob/user)
+	if(!istype(hit_item, /obj/item/stack/sheet/wood))
 		return ..()
-	var/obj/item/stack/wooden_boards = W
+	var/obj/item/stack/wooden_boards = hit_item
 	if(wooden_boards.amount < 5)
 		to_chat(user, SPAN_WARNING("Not enough wood!"))
 		return
-	wooden_boards.use(10)
+	wooden_boards.use(5)
 	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
 	new /obj/structure/prop/brazier/frame_woodened(src)
 	qdel(src)
@@ -667,10 +667,10 @@
 	icon_state = "brazier_frame_filled"
 	luminosity = 0
 
-/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/W, mob/user)
-	if(!W.heat_source)
+/obj/structure/prop/brazier/frame_woodened/attackby(obj/item/hit_item, mob/user)
+	if(!hit_item.heat_source)
 		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [W]."))
+	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [hit_item]."))
 	new /obj/structure/prop/brazier(src)
 	qdel(src)
 
@@ -687,10 +687,10 @@
 	icon_state = "torch_frame"
 	luminosity = 0
 
-/obj/structure/prop/brazier/torch/frame/attackby(obj/item/W, mob/user)
-	if(!W.heat_source)
+/obj/structure/prop/brazier/torch/frame/attackby(obj/item/hit_item, mob/user)
+	if(!hit_item.heat_source)
 		return ..()
-	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [W]."))
+	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [hit_item]."))
 	new /obj/structure/prop/brazier/torch(src)
 	qdel(src)
 

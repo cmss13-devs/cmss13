@@ -1,6 +1,6 @@
 /datum/xeno_mutator/resinwhisperer
 	name = "STRAIN: Hivelord - Resin Whisperer"
-	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures to a distance of twelve paces!"
+	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions to a distance of twelve paces!"
 	flavor_description = "Let the resin guide you. It whispers, so listen closely."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

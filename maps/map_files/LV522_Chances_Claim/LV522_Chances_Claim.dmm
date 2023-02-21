@@ -4,6 +4,7 @@
 	dir = 1;
 	network = list("interrogation")
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -150,6 +151,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -2763,6 +2767,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -3034,6 +3041,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -3064,6 +3074,9 @@
 "bSs" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -4881,6 +4894,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken5"
 	},
@@ -6542,6 +6558,9 @@
 "dtE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -7510,6 +7529,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -8008,6 +8030,9 @@
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -8042,6 +8067,18 @@
 	unacidable = 1
 	},
 /obj/vehicle/train/cargo/engine,
+/obj/structure{
+	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
+	pixel_x = 16;
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "eeG" = (
@@ -8399,6 +8436,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -8473,6 +8513,7 @@
 	dir = 1;
 	network = list("interrogation")
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -10122,6 +10163,12 @@
 /obj/structure/platform{
 	dir = 8
 	},
+/obj/structure/transmitter/colony_net{
+	phone_category = "LV522 Chances Claim";
+	phone_color = "red";
+	phone_id = "LZ1 Service Tunnel";
+	pixel_y = 24
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "eZY" = (
@@ -11424,6 +11471,19 @@
 	},
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
+"fDF" = (
+/obj/structure/surface/rack,
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	pixel_x = 5;
+	registered_name = "John Forklift"
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "greenfull"
+	},
+/area/lv522/landing_zone_1/ceiling)
 "fDH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -11711,6 +11771,10 @@
 /area/lv522/atmos/east_reactor)
 "fLM" = (
 /obj/structure/surface/table/almayer,
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = 8;
+	pixel_y = 12
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "fLP" = (
@@ -12215,6 +12279,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -13294,6 +13361,9 @@
 "gyb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "gyn" = (
@@ -14873,6 +14943,9 @@
 "heO" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -16882,15 +16955,17 @@
 "hUM" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/head/hardhat/orange{
-	pixel_x = 8;
-	pixel_y = 12
-	},
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -6;
 	pixel_y = 8
 	},
 /obj/item/trash/plate,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "LZ1_Pressuredoor";
+	name = "remote door-control";
+	pixel_x = 7;
+	pixel_y = 7
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "hUY" = (
@@ -17692,6 +17767,9 @@
 "imA" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -18125,6 +18203,9 @@
 /area/lv522/indoors/a_block/admin)
 "ivb" = (
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "ivj" = (
@@ -21556,6 +21637,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -21738,6 +21822,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -22652,6 +22739,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -23052,6 +23142,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -24990,6 +25083,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -25166,6 +25262,9 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -27553,6 +27652,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -27820,6 +27922,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -27903,6 +28008,9 @@
 "mmw" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
@@ -28218,11 +28326,14 @@
 /area/lv522/indoors/a_block/dorms)
 "muO" = (
 /obj/structure/surface/table/almayer,
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	pixel_x = 5;
-	registered_name = "John Forklift"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/transmitter/colony_net{
+	dir = 1;
+	phone_category = "LV522 Chances Claim";
+	phone_color = "red";
+	phone_id = "LZ1 Checkpoint";
+	pixel_x = 4;
+	pixel_y = -5
 	},
 /obj/item/tool/stamp/denied{
 	pixel_x = -11;
@@ -28232,7 +28343,6 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_1/ceiling)
 "muP" = (
@@ -29353,6 +29463,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "mUh" = (
@@ -29369,6 +29482,7 @@
 	dir = 1;
 	network = list("interrogation")
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"
@@ -30066,6 +30180,7 @@
 	dir = 1;
 	network = list("interrogation")
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -30442,6 +30557,9 @@
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "nqy" = (
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -30456,6 +30574,9 @@
 "nqN" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -30477,6 +30598,9 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -30594,6 +30718,9 @@
 "ntS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -31190,6 +31317,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -31207,6 +31337,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -31395,6 +31526,9 @@
 /area/lv522/indoors/c_block/cargo)
 "nNH" = (
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -31676,6 +31810,9 @@
 "nSq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "nSA" = (
@@ -32229,6 +32366,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -32313,6 +32451,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -32352,6 +32493,9 @@
 	},
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -32504,6 +32648,9 @@
 	},
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
@@ -32799,6 +32946,9 @@
 /obj/structure/surface/rack,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
@@ -33419,6 +33569,9 @@
 /area/lv522/indoors/a_block/hallway)
 "oyC" = (
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"
@@ -33559,6 +33712,9 @@
 "oBw" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/largecrate,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "oBx" = (
@@ -33894,6 +34050,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "oJp" = (
@@ -34228,6 +34387,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -34607,7 +34769,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	id = "LZ1_Lockdown_Lo";
+	id = "LZ1_Pressuredoor";
 	name = "High Pressure Door";
 	unacidable = 1
 	},
@@ -34949,6 +35111,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -35044,6 +35207,7 @@
 	dir = 1;
 	network = list("interrogation")
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -35851,6 +36015,9 @@
 /area/lv522/landing_zone_1)
 "pwg" = (
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkpurple2";
@@ -37345,6 +37512,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -37546,6 +37716,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -37866,6 +38039,9 @@
 "qiC" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
@@ -38328,6 +38504,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -38423,6 +38602,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	tag = "icon-darkpurple2"
@@ -38509,6 +38689,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
@@ -39871,6 +40054,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -40173,6 +40359,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "qVU" = (
@@ -40358,6 +40547,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "qZT" = (
@@ -40484,6 +40674,9 @@
 /obj/item/clothing/mask/gas,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -40896,6 +41089,9 @@
 	pixel_y = 7
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -41020,6 +41216,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -41060,6 +41259,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "blue"
 	},
@@ -41610,6 +41810,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/wood/ship,
 /area/lv522/indoors/a_block/fitness/glass)
 "rwR" = (
@@ -42310,6 +42511,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -42440,6 +42644,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
 	},
@@ -43120,6 +43325,9 @@
 "sbx" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -44816,6 +45024,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -44953,6 +45162,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
@@ -45161,6 +45373,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"
@@ -45987,6 +46200,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -46591,6 +46807,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -47759,6 +47978,9 @@
 "tUe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -48263,6 +48485,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -48573,6 +48798,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -49182,6 +49410,9 @@
 /obj/structure/platform,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -49816,6 +50047,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -49839,6 +50073,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -50377,6 +50612,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -51283,6 +51521,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -52080,6 +52321,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -52199,6 +52443,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -52271,6 +52518,9 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -52655,6 +52905,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -52937,32 +53190,17 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "vNW" = (
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
 	},
-/obj/structure{
-	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 11;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "LZ1_Lockdown_Lo";
+	name = "Emergency Lockdown"
 	},
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1/tunnel)
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/landing_zone_1/ceiling)
 "vNY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -53541,6 +53779,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -54052,6 +54293,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -54466,6 +54710,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -54846,6 +55093,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -55546,6 +55796,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -55753,9 +56006,6 @@
 /turf/open/floor/wood/ship,
 /area/lv522/indoors/a_block/fitness/glass)
 "wSr" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	dir = 4;
@@ -56091,6 +56341,9 @@
 "wZI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -56731,6 +56984,9 @@
 "xlN" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "xlQ" = (
@@ -57710,6 +57966,9 @@
 "xHr" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
 "xIr" = (
@@ -57951,6 +58210,9 @@
 /obj/structure/machinery/conveyor,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
@@ -58346,6 +58608,9 @@
 "xTj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -68153,7 +68418,7 @@ vVi
 nEq
 ggS
 rSh
-vuu
+vNW
 pYj
 wfP
 wfP
@@ -68819,7 +69084,7 @@ jbI
 veQ
 qLu
 aFf
-ggS
+fDF
 tKS
 mvP
 yhU
@@ -70434,7 +70699,7 @@ cpy
 cpy
 cpy
 bPJ
-vNW
+bPJ
 wfP
 wfP
 wfP
@@ -71348,7 +71613,7 @@ bPJ
 wfP
 wfP
 wfP
-eYM
+bPJ
 bPJ
 cpy
 bMX
@@ -71802,7 +72067,7 @@ bPJ
 bPJ
 wfP
 wfP
-eYM
+bPJ
 bPJ
 cpy
 bMX
@@ -73391,7 +73656,7 @@ pNa
 awm
 wfP
 wfP
-eYM
+bPJ
 bPJ
 cpy
 bMX
@@ -73845,7 +74110,7 @@ bPJ
 bPJ
 fCb
 jJF
-eYM
+bPJ
 bPJ
 cpy
 bMX

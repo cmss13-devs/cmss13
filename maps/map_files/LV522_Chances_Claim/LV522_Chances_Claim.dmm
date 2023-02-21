@@ -2020,7 +2020,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "bjF" = (
@@ -19374,7 +19374,7 @@
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "iUT" = (
@@ -22132,7 +22132,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "jXc" = (
@@ -36315,7 +36315,7 @@
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "pCb" = (
@@ -40025,7 +40025,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "qRB" = (
@@ -43464,7 +43464,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "seJ" = (
@@ -48965,7 +48965,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "ulZ" = (
@@ -50140,7 +50140,7 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "uJY" = (

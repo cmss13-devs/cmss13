@@ -632,6 +632,8 @@
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/camera/imaginary_friend/friend in sortmob)
+		moblist += friend
 	return moblist
 
 /proc/sortxenos()
@@ -1477,14 +1479,14 @@ var/list/WALLITEMS = list(
 	/obj/structure/machinery/firealarm,
 	/obj/structure/noticeboard,
 	/obj/structure/machinery/door_control,
-	/obj/structure/machinery/computer/security/telescreen,
+	/obj/structure/machinery/computer/cameras/telescreen,
 	/obj/item/storage/secure/safe,
 	/obj/structure/machinery/brig_cell,
 	/obj/structure/machinery/flasher,
 	/obj/structure/machinery/keycard_auth,
 	/obj/structure/mirror,
 	/obj/structure/closet/fireaxecabinet,
-	/obj/structure/machinery/computer/security/telescreen/entertainment,
+	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)

@@ -208,16 +208,19 @@
 		handle_rotation()
 		return
 	else
-		if(istype(usr, /mob/living/simple_animal/mouse))
+		if(!ishuman(usr))
 			return
-		if(!usr || !isturf(usr.loc))
-			return
-		if(usr.stat || usr.is_mob_restrained())
-			return
-
-		setDir(turn(src.dir, 90))
-		handle_rotation()
+		human_rotate()
 		return
+
+/obj/structure/bed/chair/proc/human_rotate()
+	if(!usr || !isturf(usr.loc))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+	setDir(turn(src.dir, 90))
+	handle_rotation()
+	return
 
 //Chair types
 /obj/structure/bed/chair/wood

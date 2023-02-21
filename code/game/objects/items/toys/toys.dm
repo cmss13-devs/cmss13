@@ -131,7 +131,7 @@
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
 	black_market_value = 5
-	var/colour = "#FF0000" //RGB
+	var/crayon_color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
@@ -509,7 +509,8 @@
 							/obj/item/toy/prize/odysseus = 1,
 							/obj/item/toy/prize/phazon = 1,
 							/obj/item/clothing/shoes/slippers = 1,
-							/obj/item/clothing/shoes/slippers_worn = 1
+							/obj/item/clothing/shoes/slippers_worn = 1,
+							/obj/item/clothing/head/collectable/tophat/super = 1,
 							)
 
 /obj/item/toy/festivizer

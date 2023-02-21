@@ -196,3 +196,159 @@
   - admin: mods can now access the view combat logs button
   - ui: changes the main interface a bit
   - bugfix: vendors are a little more responsive now
+2023-02-12:
+  BeagleGaming1:
+  - admin: Added a Queen Mother Subtle Message
+  carlarctg:
+  - code_imp: Cleans up some machinery harddels
+  - bugfix: Fixes Zombie Powder bugging the fuck out by slapping a ton of FAKEDEATH
+      checks everywhere. It now properly shows the holder as dead on HUDs and scans.
+  - bugfix: Fixed an issue in which sometimes qdeleted reagents still procced on life.
+  - bugfix: Fixed examining things changing your direction if you're incapacitated.
+  - bugfix: Added FAKEDEATH to the mob_incapacitated() check.
+2023-02-13:
+  Huffie56:
+  - maptweak: renamed buttons for secures storage to Secure Inner Doors and Secure
+      Outer Doors to make it more clear of what they do.
+  - maptweak: fix a floating apc in armory on standard map
+  NewyearnewmeUwu:
+  - maptweak: changes the default ss13 airlock in big red tcomms to a cm airlock
+  - bugfix: removed the funny misplaced door on shivas
+  - spellcheck: RO sign now says aCO instead of aXO
+  carlarctg:
+  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  realforest2001:
+  - bugfix: Fixes unnamed doors on colonies.
+  - bugfix: 'Fixes duplicate definitions from #2164'
+2023-02-14:
+  BKryth:
+  - refactor: moved the code for sentry laptop's table placement to a parent object
+      so it can be used by other objects.
+  stanalbatross:
+  - rscdel: got rid of storage powergame, laser guns, pred healing equipment, and
+      spiders from the black market
+2023-02-15:
+  Mister-moon1:
+  - qol: Yautja and WJs can now emote without a cooldown being initiated
+  NewyearnewmeUwu:
+  - code_imp: gibbing another human takes an unmodifiable 30 seconds
+  - admin: admins are alerted when a human tries to gib another human
+2023-02-16:
+  BeagleGaming1:
+  - bugfix: Restricts deconstructing racks / tables to all intents but help, allowing
+      you to place wrenches on tables and racks
+  Molto:
+  - bugfix: fixed steak sometimes not giving cutlet
+  NewyearnewmeUwu:
+  - maptweak: you can now walk below the water cooler in kutjevo medical
+  TheDonkified:
+  - bugfix: Loading a new character slot will properly update your character trait
+      points. You can now modify multiple human characters' character traits without
+      having to reload.
+  carlarctg:
+  - imageadd: Adds 64x64 'super top hat' as a toy item. Adds it to toy lists and to
+      the toy store in Big Red.
+  nauticall:
+  - rscadd: Added several new fortunes to fortune cookies.
+  - code_imp: Alphabetized the fortunes.txt file for fortune cookie blurbs.
+  realforest2001:
+  - rscadd: 'Updates Almayer ID Codes:'
+  - rscadd: Rebrands "Logistics" to "Database" as its primary function is to update
+      other IDs/Squad stuff. Removed Database from roles that ought not have it.
+  - rscadd: CMO has been given Database access.
+  - rscadd: Rebrands "Bridge" as "Command" as it was used for all command areas anyway.
+      Most doors that used Logistics, other than squad ones, now use Command.
+  - rscadd: Senior Command given access to Brig, however only to the office portion,
+      not holding cells.
+  - rscadd: Armory access code has been put to use again.
+  - rscadd: Maintenance Access no longer allows you to walk into rooms you don't have
+      access to.
+  - rscadd: Moved MP Armory button to the door it opens rather than CMPs office.
+  - rscadd: Commanding Officer's Office has had a remote door control button placed
+      on the desk, to let people in and out.
+  - spellcheck: Renamed ACCESS_MARINE_WO to ACCESS_MARINE_CMP as it is long outdated.
+  - rscadd: Engineering Storage can no longer be hacked.
+  - rscdel: Removed Brig access from Staff Officer and Intel Officer, along with two
+      admin dress clothes presets.
+  - bugfix: Riot Control lockers open on code blue, the correct level for their use.
+  - bugfix: Fixes two random brig doors in the middle of CIC hallway
+  stanalbatross:
+  - bugfix: fixed the healthscanner not showing the colour of chems and advice
+2023-02-17:
+  BeagleGaming1:
+  - bugfix: Makes CHUNK boxes not lethal
+  NewyearnewmeUwu:
+  - rscadd: IOs can now get a service jacket from their vendor.
+  - rscdel: IOs no longer spawn with the tanker jacket.
+  Silencer_pl:
+  - imageadd: Older, more anatomically correct and less cartoony cat sprites have
+      been readded. Jones is a calico again!
+  - rscdel: Cats can no longer be gibbed in ATMs.
+  harryob:
+  - admin: staff log -> admin log
+  - qol: you can now keybind showing held item
+  - bugfix: prevents silly bubbles appearing after death or unconsciousness
+  realforest2001:
+  - bugfix: Fixes compilation
+  stanalbatross:
+  - code_imp: repathed camera consoles to make more sense
+  - bugfix: fixed a minor bug with cameras
+  - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
+  - bugfix: fixed a few instances of surv presets having satchels that overrode each
+      other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye
+2023-02-19:
+  BeagleGaming1:
+  - bugfix: Gives Cargo Containers subtypes
+  - maptweak: The small containers are now properly only 1 tile high
+  Morrow:
+  - balance: Gives Researchers Intel 1
+  NewyearnewmeUwu:
+  - maptweak: opened up 2 spots in Trijent's sand temple area
+  carlarctg:
+  - rscadd: Adds a new (and currently the only) random event, 'Economy Inflation'.
+      The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated
+      colonies and vessels that requests a specific kind of vendors stationed on them
+      have their prices increased, due to some randomly-selected incident backstory.
+      There will be a random delay before the change comes into effect, so make sure
+      you buy all you need beforehand! The announcement will only be visible shipside
+      to avoid communications clutter.
+  - code_imp: Added 'product type' variable to non-CM vendors, such as food, beverages,
+      souto, recreation, used for the above.
+  - code_imp: Added a global list for non-CM vending machines.
+2023-02-20:
+  Totalepicness:
+  - balance: Fixes base crusher having half it's intended cooldown for the shield
+      ability
+  carlarctg:
+  - rscadd: Added a lisping character trait, makes you thound thupid. All roles above
+      Staff Sergeant are unable to lisp, and neither is any kind of Synthetic. Predators
+      can lisp if they really want to, not really recommended. Pretty sure most active
+      predators would kill you for that, but the option's there.
+  harryob:
+  - rscadd: mentors can now appear as an imaginary SEA to newer players in need of
+      a hand
+  - bugfix: removed some errors from the options and messages menu
+  - bugfix: fixed runtimes when accessing gun stat interfaces
+  - bugfix: restored the previous functionality of larva/facehuggers having little
+      rees
+  stanalbatross:
+  - qol: added a keybind for rotate-chair
+2023-02-21:
+  Puckaboo2:
+  - bugfix: Gardener Drone will now have her 5% healing buff on weeds properly applied.
+  - code_imp: Any xenomorph strain description that previously did not completely
+      disclose any abilities or attributes that will be removed or changed upon mutating
+      will now disclose them, often within the first sentence.
+  - rscadd: Every xenomorph strain now has flavor text, personalized as a message
+      from the Queen, herself.
+  Segrain:
+  - bugfix: WO works once again.
+  TheDonkified:
+  - bugfix: Table flipping and unflipping is now more descriptive and less buggy.
+      You can no longer flip table that you are on top of.
+  carlarctg:
+  - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.

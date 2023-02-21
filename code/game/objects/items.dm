@@ -147,6 +147,11 @@
 	var/inhand_x_dimension = 32
 	var/inhand_y_dimension = 32
 
+	/// checks if the item is set up in the table or not
+	var/table_setup = FALSE
+	/// checks if the item will be specially placed on the table
+	var/has_special_table_placement = FALSE
+
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)
@@ -987,6 +992,35 @@ cases. Override_icon_state should be a list.*/
 	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 3)
 	// This is instant on byond's end, but to our clients this looks like a quick drop
 	animate(src, alpha = old_alpha, pixel_x = old_x, pixel_y = old_y, transform = old_transform, time = 3, easing = CUBIC_EASING)
+
+
+/**
+ * Set the item up on a table.
+ * @param target: table which is being used to host the item.
+ */
+/obj/item/proc/set_to_table(obj/structure/surface/target)
+	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		table_setup = TRUE
+		usr.drop_inv_item_to_loc(src, target.loc)
+	else
+		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+
+/**
+ * Called to reset the state of the item to not be settled on the table.
+ */
+/obj/item/proc/teardown()
+	table_setup = FALSE
+
+/**
+ * Grab item when its placed on table
+ */
+/obj/item/MouseDrop(over_object)
+	if(!has_special_table_placement)
+		return ..()
+
+	if(over_object == usr && Adjacent(usr) && has_special_table_placement)
+		teardown()
+		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
 	var/image/attack_image

@@ -24,7 +24,7 @@
 	name = LANGUAGE_JAPANESE
 	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
 	speech_verb = "vocalizes"
-	colour = "japanese"
+	color = "japanese"
 	key = "2"
 
 
@@ -34,14 +34,14 @@
 	speech_verb = "shuo"
 	ask_verb = "wen"
 	exclaim_verb = "han"
-	colour = "chinese"
+	color = "chinese"
 	key = "8"
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
 	desc = "An East Slavic language from Earth. The dominant tongue of the UPP and frequently used by Slavic minorities in the United Americas."
 	speech_verb = "enunciates"
-	colour = "soghun"
+	color = "soghun"
 	key = "3"
 
 	syllables = list("al", "an", "bi", "vye", "vo", "go", "dye", "yel", "en", "yer", "yet", "ka", "ko", "la", "ly", "lo", "l", "na", "nye", "ny", "no", "ov", "ol", "on", "or", "slog", "ot", "po", "pr", "ra", "rye", "ro", "st", "ta", "tye", "to", "t", "at", "bil", "vyer", "yego", "yeny", "yenn", "yest", "kak", "ln", "ova", "ogo", "oro", "ost", "oto", "pry", "pro", "sta", "stv", "tor", "chto", "eto", "rus", "nar", "arya", "mol")
@@ -52,7 +52,7 @@
 	speech_verb = "proclaims"
 	ask_verb = "inquires"
 	exclaim_verb = "bellows"
-	colour = "german"
+	color = "german"
 	key = "4"
 
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
@@ -63,7 +63,7 @@
 	speech_verb = "dice"
 	ask_verb = "cuestiona"
 	exclaim_verb = "grita"
-	colour = "spanish"
+	color = "spanish"
 	key = "5"
 
 	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas", "no", "gui", "es", "mal")
@@ -74,7 +74,7 @@
 	speech_verb = "discreetly communicates"
 	ask_verb = "interrogates"
 	exclaim_verb = "orders"
-	colour = "commando"
+	color = "commando"
 	key = "l"
 
 	syllables = list("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "?", "@", "#" ,"*")
@@ -87,7 +87,7 @@
 	speech_verb = "rumbles"
 	ask_verb = "rumbles"
 	exclaim_verb = "roars"
-	colour = "tajaran"
+	color = "tajaran"
 	key = "s"
 	flags = WHITELISTED
 
@@ -100,7 +100,7 @@
 	speech_verb = "growls"
 	ask_verb = "grumbles"
 	exclaim_verb = "snarls"
-	colour = "monkey"
+	color = "monkey"
 	key = "h"
 
 /datum/language/hellhound/scramble(input)
@@ -112,12 +112,12 @@
 	speech_verb = "chimpers"
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"
-	colour = "monkey"
+	color = "monkey"
 	key = "9"
 
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
-	colour = "xenotalk"
+	color = "xenotalk"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"
 	ask_verb = "hisses"
@@ -131,7 +131,7 @@
 	speech_verb = "hiveminds"
 	ask_verb = "hiveminds"
 	exclaim_verb = "hiveminds"
-	colour = "xeno"
+	color = "xeno"
 	key = "q"
 	flags = RESTRICTED|HIVEMIND
 
@@ -148,7 +148,7 @@
 /datum/language/apollo
 	name = LANGUAGE_APOLLO
 	desc = "The Apollo Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
-	colour = "skrell"
+	color = "skrell"
 	speech_verb = "states"
 	ask_verb = "queries"
 	exclaim_verb = "declares"
@@ -168,7 +168,7 @@
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+			dead.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 
 	for (var/mob/living/listener in GLOB.alive_mob_list)
 
@@ -177,7 +177,7 @@
 		else if(isAI(listener))
 			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[listener];track2=\ref[listener];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 
-		listener.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+		listener.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 
 	var/list/listening = hearers(1, src)
 	listening -= src
@@ -199,6 +199,6 @@
 	speech_verb = "resonates"
 	ask_verb = "resonates"
 	exclaim_verb = "resonates"
-	colour = "tajaran"
+	color = "tajaran"
 	key = "7"
 	flags = RESTRICTED|HIVEMIND

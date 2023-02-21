@@ -4,7 +4,7 @@
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"
 	icon_state = "medlaptop"
-	req_one_access = list(ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -288,7 +288,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
 							if ((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
-							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
+							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("id")
 						if (istype(active1, /datum/data/record))

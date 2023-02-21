@@ -192,12 +192,12 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 			. = TRUE
@@ -244,12 +244,12 @@ var/bomb_set = FALSE
 					acc += H.wear_id.GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
-				if(!(ACCESS_MARINE_BRIDGE in acc))
+				if(!(ACCESS_MARINE_COMMAND in acc))
 					to_chat(usr, SPAN_DANGER("Access denied!"))
 					return
 
 				command_lockout = TRUE
-				req_one_access = list(ACCESS_MARINE_BRIDGE)
+				req_one_access = list(ACCESS_MARINE_COMMAND)
 				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
 			. = TRUE
 
@@ -414,7 +414,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Destroy()
 	if(timing != -1)
-		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		message_admins("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	SSminimaps.remove_marker(src)

@@ -68,7 +68,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 50
-	xeno_cooldown = 12 SECONDS
+	xeno_cooldown = 26 SECONDS
 	var/shield_amount = 200
 
 /datum/action/xeno_action/activable/fling/charger

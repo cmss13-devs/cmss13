@@ -12,7 +12,7 @@
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/card
 	var/obj/item/card/id/user_id_card
 	var/obj/item/card/id/target_id_card
@@ -170,7 +170,7 @@
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
 			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
-			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
+			message_admins("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
 			return TRUE
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
@@ -207,7 +207,7 @@
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
-			message_staff("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
+			message_admins("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
 			if(!authenticated)
@@ -480,7 +480,7 @@
 	name = "Squad Distribution Computer"
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
 	var/faction = FACTION_MARINE

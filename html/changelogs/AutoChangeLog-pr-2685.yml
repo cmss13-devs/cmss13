@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - admin: "admins can now harm mobs by specific damage types in vv again"

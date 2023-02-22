@@ -384,7 +384,7 @@ var/datum/controller/supply/supply_controller = new()
 	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
 	var/mendoza_status = TRUE
 
-	//Animal event
+	/// Whether we should handle the animal event or not on next sale tick.
 	var/handle_animal_event = FALSE
 
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
@@ -1238,23 +1238,14 @@ var/datum/controller/supply/supply_controller = new()
 	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
-
-/datum/controller/supply/proc/init_animal_event()
-	to_chat(world,"init")
-	handle_animal_event = TRUE
-
 /datum/controller/supply/proc/handle_animal_event()
 	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
 	var/other_animals = list(/mob/living/simple_animal/bat,/mob/living/simple_animal/mouse)
-	var/choice = pick(monkey_mobs,other_animals, "special")
 	var/mob/living/animal = pick(choice)
-	to_chat(world,"run spawn")
 	if(choice == "special")
-		to_chat(world,"spec spawntick")
 		animal = pick(/mob/living/simple_animal/cat,/mob/living/simple_animal/corgi)
 	else
 		for(var/i=0,i < rand(1,2),i++)
-			to_chat(world,"spawntick")
 			var/list/turf/open/clear_turfs = list()
 			var/area/area_shuttle = shuttle?.get_location_area()
 			if(!area_shuttle)

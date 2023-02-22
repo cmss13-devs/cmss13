@@ -15,15 +15,11 @@
 
 /datum/round_event/asrs_animal/setup()
 	. = ..()
-	var/msg
-	msg = "An ASRS animal event has been triggered!"
+	var/msg = "An ASRS animal event has been triggered!"
 	log_admin(msg)
 	message_admins(msg)
-	supply_controller.init_animal_event()
-	to_chat(world,"ebent start")
+	supply_controller.handle_animal_event = TRUE
 
 /datum/round_event/asrs_animal/announce()
-	var/input
-	input = "Unidentified lifesigns detected inside Automated Supply Retrieval System."
-	ai_announcement(input)
+	ai_announcement("Unidentified lifesigns detected inside Automated Supply Retrieval System.")
 

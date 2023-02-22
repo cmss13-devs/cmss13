@@ -11,7 +11,7 @@
 	var/ask_verb = "asks" // Used when sentence ends in a ?
 	var/exclaim_verb = "exclaims" // Used when sentence ends in a !
 	var/signlang_verb = list()    // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"  // CSS style to use for strings in this language.
+	var/color = "body"  // CSS style to use for strings in this language.
 	var/key = "x" // Character used to speak in language eg. :o for Unathi.
 	var/flags = 0 // Various language flags.
 	var/native    // If set, non-native speakers will have trouble speaking.
@@ -36,7 +36,7 @@
 
 		if(understood)
 			if(!speaker_mask) speaker_mask = speaker.name
-			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[colour]'>[message]</span><span class='message'>\"</span></span></span></i>"
+			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[color]'>[message]</span><span class='message'>\"</span></span></span></i>"
 			to_chat(player, "[msg]")
 
 /datum/language/proc/check_special_condition(mob/other)

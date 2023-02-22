@@ -163,7 +163,7 @@
 	classic_keys = list()
 	name = "pick_up"
 	full_name = "Pick Up Dropped Items"
-	keybind_signal = COMSIG_KG_HUMAN_PICK_UP
+	keybind_signal = COMSIG_KB_HUMAN_PICK_UP
 
 /datum/keybinding/human/pick_up/down(client/user)
 	. = ..()
@@ -172,6 +172,41 @@
 
 	var/mob/living/carbon/human/human_user = user.mob
 	human_user.pickup_recent()
+	return TRUE
+
+/datum/keybinding/human/rotate_chair
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "rotate_chair"
+	full_name = "Rotate Chair"
+	description = "Rotate a nearby chair"
+	keybind_signal = COMSIG_KB_HUMAN_ROTATE_CHAIR
+
+/datum/keybinding/human/rotate_chair/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/obj/structure/bed/chair/chair = locate(/obj/structure/bed/chair) in range(1, user)
+	if(chair)
+		chair.human_rotate()
+
+/datum/keybinding/human/show_held_item
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "show_held_item"
+	full_name = "Show Held Item"
+	keybind_signal = COMSIG_KB_HUMAN_SHOW_HELD_ITEM
+
+/datum/keybinding/human/show_held_item/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/shown_item = human_user.get_active_hand()
+	if(shown_item && !(shown_item.flags_item & ITEM_ABSTRACT))
+		shown_item.showoff(human_user)
 	return TRUE
 
 #undef QUICK_EQUIP_PRIMARY

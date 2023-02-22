@@ -4,9 +4,9 @@
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
-#define BORGMESON 1
-#define BORGTHERM 2
-#define BORGXRAY  4
+#define BORGMESON (1<<0)
+#define BORGTHERM (1<<1)
+#define BORGXRAY  (1<<2)
 
 #define OVEREAT_TIME 200
 
@@ -45,12 +45,12 @@
 //=================================================
 
 //disabilities
-#define NEARSIGHTED 1
-#define EPILEPSY 2
-#define COUGHING 4
-#define TOURETTES 8
-#define NERVOUS 16
-#define OPIATE_RECEPTOR_DEFICIENCY 32
+#define NEARSIGHTED (1<<0)
+#define EPILEPSY (1<<1)
+#define COUGHING (1<<2)
+#define TOURETTES (1<<3)
+#define NERVOUS (1<<4)
+#define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
 //=================================================
 
 //sdisabilities
@@ -93,10 +93,10 @@
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
-#define BRUTELOSS 1
-#define FIRELOSS 2
-#define TOXLOSS 4
-#define OXYLOSS 8
+#define BRUTELOSS (1<<0)
+#define FIRELOSS (1<<1)
+#define TOXLOSS (1<<2)
+#define OXYLOSS (1<<3)
 //=================================================
 
 //Bitflags defining which status effects could be or are inflicted on a mob
@@ -187,11 +187,11 @@
 //=================================================
 
 //Language flags.
-#define WHITELISTED 1 // Language is available if the speaker is whitelisted.
-#define RESTRICTED 2 // Language can only be accquired by spawning or an admin.
-#define NONVERBAL 4 // Language has a significant non-verbal component. Speech is garbled without line-of-sight
-#define SIGNLANG 8 // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
-#define HIVEMIND 16  // Broadcast to all mobs with this language.
+#define WHITELISTED (1<<0) // Language is available if the speaker is whitelisted.
+#define RESTRICTED (1<<1) // Language can only be accquired by spawning or an admin.
+#define NONVERBAL (1<<2) // Language has a significant non-verbal component. Speech is garbled without line-of-sight
+#define SIGNLANG (1<<3) // Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
+#define HIVEMIND (1<<4)  // Broadcast to all mobs with this language.
 //=================================================
 
 //Species flags.

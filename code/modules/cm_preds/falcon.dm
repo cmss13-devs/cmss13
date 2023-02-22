@@ -89,9 +89,11 @@
 			if(!linked_mob.equip_to_slot_if_possible(parent_drone, WEAR_R_EAR, TRUE, FALSE, TRUE, TRUE, FALSE))
 				linked_mob.put_in_hands(parent_drone)
 		parent_drone = null
+	if(owned_bracers)
+		UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)
+		owned_bracers = null
+
 	remove_from_all_mob_huds()
-	UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)
-	owned_bracers = null
 
 	return ..()
 

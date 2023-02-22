@@ -111,6 +111,9 @@
 /obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
 	. = ..()
 
+	if(!owner)
+		return INITIALIZE_HINT_QDEL
+
 	self_icon = image(icon, src, icon_state = icon_state)
 	LAZYINITLIST(clients)
 
@@ -280,6 +283,9 @@
 	effect_duration = 12
 
 /obj/effect/overlay/temp/dust_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon

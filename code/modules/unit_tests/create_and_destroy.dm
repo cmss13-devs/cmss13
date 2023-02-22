@@ -19,6 +19,9 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	//Our system doesn't support it without warning spam from unregister calls on things that never registered
 	ignore += typesof(/obj/docking_port)
 	ignore += typesof(/obj/item/storage/internal)
+	// fuck vehicles
+	ignore += typesof(/obj/vehicle)
+	ignore += typesof(/obj/effect/vehicle_spawner)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

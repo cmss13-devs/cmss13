@@ -78,8 +78,8 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()

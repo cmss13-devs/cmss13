@@ -125,8 +125,10 @@
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
+	air.operating = 0
 	air.unlock(TRUE)
-	air.close(TRUE)
+	while(!air.density)
+		air.close(TRUE)
 	air.lock(TRUE)
 	air.safe = 1
 

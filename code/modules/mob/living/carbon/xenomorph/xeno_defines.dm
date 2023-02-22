@@ -59,7 +59,7 @@
 	///"Evolving" removed for the time being
 	var/aura_allowed = list("frenzy", "warding", "recovery")
 
-	 ///Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
+	///Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
 	var/adjust_size_x = 1
 	var/adjust_size_y = 1
 
@@ -105,7 +105,7 @@
 	var/burrow_cooldown = 5 SECONDS
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 10 SECONDS
-	 ///Big strong ability, big cooldown.
+	///Big strong ability, big cooldown.
 	var/tremor_cooldown = 30 SECONDS
 	///whether the xeno heals even outside weeds.
 	var/innate_healing = FALSE

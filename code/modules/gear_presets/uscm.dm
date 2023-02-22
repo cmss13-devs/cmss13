@@ -205,8 +205,7 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ALPHA,
@@ -232,7 +231,6 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies

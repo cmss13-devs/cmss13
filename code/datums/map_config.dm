@@ -371,7 +371,7 @@
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)
 	if(CONFIG_GET(flag/ephemeral_map_mode))
-		message_staff("NOTICE: Running in ephemeral mode - map change request ignored")
+		message_admins("NOTICE: Running in ephemeral mode - map change request ignored")
 		return TRUE
 	if(maptype == GROUND_MAP)
 		return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")

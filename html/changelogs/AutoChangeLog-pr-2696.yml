@@ -1,0 +1,5 @@
+author: "Joe lampost"
+delete-after: True
+changes:
+  - rscadd: "Added one emote and changed another emote\nadd:Predators can now self destruct bracers worn by humans"
+  - bugfix: "fixed the loudroar emote"

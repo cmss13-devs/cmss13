@@ -108,9 +108,9 @@ steam.start() -- spawns the effect
 
 /datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
-	//Amount of sleep ticks before the sparks start moving around.
+	/// Amount of sleep ticks before the sparks start moving around.
 	var/spark_sleep_delay = 5
-	// How long sparks stay on the ground after creation.
+	/// How long sparks stay on the ground after creation.
 	var/spark_duration = 2 SECONDS
 	var/obj/effect/particle_effect/sparks/sparks_type = /obj/effect/particle_effect/sparks
 

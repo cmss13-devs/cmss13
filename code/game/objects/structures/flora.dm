@@ -54,7 +54,6 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 		user.animation_attack_on(src)
 		to_chat(user, SPAN_WARNING("You cut [cut_hits > 0 ? "some of" : "all of"] \the [src] away with \the [W]."))
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
-		user.next_move += W.attack_speed
 		if(cut_hits <= 0)
 			qdel(src)
 	else

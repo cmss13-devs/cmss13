@@ -362,7 +362,7 @@
 
 
 	user.animation_attack_on(src)
-	user.next_move += W.attack_speed
+	user.next_move += W.attack_speed // does not have an after_attack_by, so doesnt double dip
 
 	take_damage(damage)
 	return TRUE //don't call afterattack

@@ -87,7 +87,6 @@
 	health = max(0, health - W.force)
 	playsound(loc, "alien_resin_break", 25)
 	user.animation_attack_on(src)
-	user.next_move += W.attack_speed
 	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"), \
 	SPAN_WARNING("You hit \the [src] with \the [W]!"))
 	healthcheck()

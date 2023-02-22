@@ -222,7 +222,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2
 	name = "\improper USCM Prepared Meal (pork)"
-	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some water mashed potatoes fill this tray."
+	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some watery mashed potatoes fill this tray."
 	icon_state = "MREb"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2/Initialize()

@@ -70,6 +70,8 @@
 					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
+		else if(ispredalien(src))
+			playsound(loc,'sound/voice/predalien_death.ogg', 25, TRUE)
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
@@ -82,6 +84,7 @@
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
+	SSminimaps.remove_marker(src)
 
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
@@ -119,7 +122,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
-/mob/living/carbon/xenomorph/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.

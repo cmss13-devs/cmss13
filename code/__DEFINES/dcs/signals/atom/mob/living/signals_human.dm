@@ -49,3 +49,6 @@
 
 //from /mob/living/carbon/human/equip_to_slot()
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
+
+//from /mob/living/carbon/human/Life()
+#define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"

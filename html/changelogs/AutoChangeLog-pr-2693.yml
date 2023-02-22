@@ -1,0 +1,5 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Braziers and torches can now be crafted with runed sandstone sheets by Yautja. Braziers need to be filled with wood and then lit. Torches just need to be lit."
+  - rscadd: "Plasma casters and pistols are now heat sources so they can ignite braziers and torches."

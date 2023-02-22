@@ -138,85 +138,37 @@
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
 	desc = "A table that displays a map of the current target location"
-	unacidable = TRUE
-	density = TRUE
-	anchored = TRUE
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 20
-	var/list/current_viewers = list()
-
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
-
-	var/map_type = TACMAP_DEFAULT
-	var/map_base_type = TACMAP_BASE_OCCLUDED
-	var/map_additional_parameter = null
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
+	density = TRUE
+	idle_power_usage = 2
+	///flags that we want to be shown when you interact with this table
+	var/datum/tacmap/map
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-	SSmapview.map_machines += src
+	map = new(src, minimap_type)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
-	for(var/mob/living/L in current_viewers)
-		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-		close_browser(L,"marineminimap")
-		current_viewers -= L
-		continue
-	SSmapview.map_machines -= src
+	QDEL_NULL(map)
 	return ..()
 
-/obj/structure/machinery/prop/almayer/CICmap/examine(mob/living/user)
-	if(ishuman(user) && get_dist(src,user) < 3 && powered())
-		if(user in current_viewers)
-			to_chat(user, SPAN_NOTICE("You stop looking at the map."))
-			close_browser(user, "marineminimap")
-			current_viewers -= user
-			return
-		current_viewers += user
-		to_chat(user, SPAN_NOTICE("You start looking at the map."))
-		var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
-		user << browse_rsc(O, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-		return
-	..()
-
-/obj/structure/machinery/prop/almayer/CICmap/proc/update_mapview()
-	var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
-	for(var/mob/living/L in current_viewers)
-		if(!powered() || get_dist(src,L) > 2)
-			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-			close_browser(L, "marineminimap")
-			current_viewers -= L
-			continue
-
-		L << browse_rsc(O, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
-
-/obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
+/obj/structure/machinery/prop/almayer/CICmap/attack_hand(mob/user)
 	. = ..()
-	if(.)
-		return
-	if(href_list["close"] && usr)
-		to_chat(usr, SPAN_NOTICE("You stop looking at the map."))
-		close_browser(usr, "marineminimap")
-		current_viewers -= usr
+
+	map.tgui_interact(user)
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_CLF
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	map_type = TACMAP_FACTION
-	map_base_type = TACMAP_BASE_OPEN
-	map_additional_parameter = FACTION_PMC
-
+	minimap_type = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 
@@ -332,6 +284,10 @@
 	icon_state = "1"
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/prop/almayer/particle_cannon/corsat
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
+	desc = ""
 
 /obj/structure/prop/almayer/name_stencil
 	name = "USS Almayer"

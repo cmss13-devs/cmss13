@@ -86,7 +86,7 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 		return
 
-	message_staff("[user.ckey] has reset [X.ckey] xeno name")
+	message_admins("[user.ckey] has reset [X.ckey] xeno name")
 
 	to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [user.ckey]."))
 
@@ -118,7 +118,7 @@
 		targetClient.prefs.xeno_name_ban = FALSE
 
 		targetClient.prefs.save_preferences()
-		message_staff("[user.ckey] has unbanned [target.ckey] from using xeno names")
+		message_admins("[user.ckey] has unbanned [target.ckey] from using xeno names")
 
 		notes_add(target.ckey, "Xeno Name Unbanned by [user.ckey]", user.mob)
 		to_chat(target, SPAN_DANGER("Warning: You can use xeno names again."))
@@ -135,7 +135,7 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target.name] not found."))
 		return
 
-	message_staff("[user.ckey] has banned [target.ckey] from using xeno names")
+	message_admins("[user.ckey] has banned [target.ckey] from using xeno names")
 
 	notes_add(target.ckey, "Xeno Name Banned by [user.ckey]|Reason: Xeno name was [target.name]", user.mob)
 
@@ -216,7 +216,7 @@
 	target_mob.client.prefs.real_name = new_name
 	target_mob.client.prefs.save_character()
 
-	message_staff("[user.ckey] has reset [target_mob.ckey]'s name.")
+	message_admins("[user.ckey] has reset [target_mob.ckey]'s name.")
 
 	to_chat(target_mob, FONT_SIZE_HUGE(SPAN_ADMINHELP("Warning: Your name has been reset by [user.ckey].")))
 
@@ -247,7 +247,7 @@
 		target_client.prefs.human_name_ban = FALSE
 
 		target_client.prefs.save_preferences()
-		message_staff("[user.ckey] has unbanned [target.ckey] from using human names.")
+		message_admins("[user.ckey] has unbanned [target.ckey] from using human names.")
 
 		notes_add(target.ckey, "Human Name Unbanned by [user.ckey]", user.mob)
 
@@ -262,7 +262,7 @@
 		to_chat(user, SPAN_NOTICE("Target is lacking either client or ckey. Aborting."))
 		return
 
-	message_staff("[user.ckey] has banned [target.ckey] from using human names.")
+	message_admins("[user.ckey] has banned [target.ckey] from using human names.")
 
 	notes_add(target.ckey, "Human Name Banned by [user.ckey]", user.mob)
 

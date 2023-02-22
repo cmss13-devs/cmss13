@@ -301,7 +301,7 @@
 					X.use_plasma(plasma_cost)
 					to_chat(target, "[queen_order]")
 					log_admin("[queen_order]")
-					message_staff("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
+					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))

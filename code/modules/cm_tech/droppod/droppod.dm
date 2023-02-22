@@ -156,7 +156,7 @@
 /obj/structure/droppod/proc/post_land()
 	density = TRUE
 	for(var/mob/mob in loc)
-		mob.gib(create_cause_data(initial(name)))
+		mob.gib(create_cause_data("gibbing", initial(name)))
 
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)

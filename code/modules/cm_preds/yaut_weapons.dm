@@ -820,6 +820,8 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR
 
+	heat_source = 1500 // Plasma Pistols fire burning hot bounbs of plasma. Makes sense they're hot
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -917,6 +919,8 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 	indestructible = TRUE
+
+	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.

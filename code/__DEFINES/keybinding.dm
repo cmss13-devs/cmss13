@@ -57,7 +57,11 @@
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
 
-#define COMSIG_KG_HUMAN_PICK_UP "keybinding_human_pick_up"
+#define COMSIG_KB_HUMAN_PICK_UP "keybinding_human_pick_up"
+
+#define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
+
+#define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"
@@ -177,3 +181,33 @@
 //misc yautja
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
+
+#define CATEGORY_CLIENT "CLIENT"
+#define CATEGORY_EMOTE "EMOTE"
+#define CATEGORY_ADMIN "ADMIN"
+#define CATEGORY_XENO "XENO"
+#define CATEGORY_CARBON "CARBON"
+#define CATEGORY_HUMAN "HUMAN"
+#define CATEGORY_HUMAN_COMBAT "HUMAN COMBAT"
+#define CATEGORY_ROBOT "ROBOT"
+#define CATEGORY_YAUTJA "YAUTJA"
+#define CATEGORY_MISC "MISC"
+#define CATEGORY_MOVEMENT "MOVEMENT"
+#define CATEGORY_COMMUNICATION "COMMUNICATION"
+
+#define CATEGORY_XENO_EMOTE "XENO EMOTE"
+#define CATEGORY_HUMAN_EMOTE "HUMAN EMOTE"
+#define CATEGORY_YAUTJA_EMOTE "YAUTJA EMOTE"
+#define CATEGORY_SYNTH_EMOTE "SYNTH EMOTE"
+
+
+#define WEIGHT_HIGHEST 0
+#define WEIGHT_ADMIN 10
+#define WEIGHT_CLIENT 20
+#define WEIGHT_ROBOT 30
+#define WEIGHT_XENO 30
+#define WEIGHT_MOB 40
+#define WEIGHT_LIVING 50
+#define WEIGHT_DEAD 60
+#define WEIGHT_EMOTE 70
+#define WEIGHT_LOWEST 999

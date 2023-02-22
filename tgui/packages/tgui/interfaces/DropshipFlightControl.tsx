@@ -1,11 +1,17 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Box, Button, Flex, Icon, ProgressBar, Section, Stack } from '../components';
-import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge } from './NavigationShuttle';
+import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge, DockingPort } from './NavigationShuttle';
 
 interface DoorStatus {
   id: string;
   value: 0 | 1;
+}
+
+interface AutomatedControl {
+  is_automated: 0 | 1;
+  hangar_lz: null | string;
+  ground_lz: null | string;
 }
 
 interface DropshipNavigationProps extends NavigationProps {
@@ -16,6 +22,7 @@ interface DropshipNavigationProps extends NavigationProps {
   can_fly_by?: 0 | 1;
   can_set_automated?: 0 | 1;
   primary_lz?: string;
+  automated_control: AutomatedControl;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -116,38 +123,61 @@ export const DropshipDestinationSelection = (_, context) => {
         </>
       }>
       <Stack vertical className="DestinationSelector">
-        {data.destinations
-          .filter((x) => x.available === 1)
-          .map((x) => (
-            <Stack.Item key={x.id}>
-              <Flex align="center">
-                {siteselection === x.id && (
-                  <>
-                    <Flex.Item>
-                      <Icon name="play" />
-                    </Flex.Item>
-                    <Flex.Item>
-                      <Box width={1} />
-                    </Flex.Item>
-                  </>
-                )}
-                <Flex.Item grow={1}>
-                  <Button
-                    disabled={x.available === 0}
-                    icon={x.id === data.primary_lz ? 'home' : undefined}
-                    iconPosition="right"
-                    onClick={() => {
-                      setSiteSelection(x.id);
-                      act('button-push');
-                    }}>
-                    {x.name}
-                  </Button>
-                </Flex.Item>
-              </Flex>
-            </Stack.Item>
-          ))}
+        <DestinationSelector
+          options={data.destinations}
+          selected={siteselection}
+          onClick={(value) => {
+            setSiteSelection(value);
+            act('button-push');
+          }}
+        />
       </Stack>
     </Section>
+  );
+};
+
+interface DestinationProps {
+  options: DockingPort[];
+  onClick: (value: string) => void;
+  selected?: string;
+  applyFilter?: boolean;
+  availableOnly?: boolean;
+}
+
+const DestinationSelector = (props: DestinationProps, context) => {
+  const { data } = useBackend<DropshipNavigationProps>(context);
+  return (
+    <>
+      {props.options
+        .filter((x) => (props.applyFilter === false ? true : x.available === 1))
+        .map((x) => (
+          <Stack.Item key={x.id}>
+            <Flex align="center">
+              {props.selected === x.id && (
+                <>
+                  <Flex.Item>
+                    <Icon name="play" />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Box width={1} />
+                  </Flex.Item>
+                </>
+              )}
+              <Flex.Item grow={1}>
+                <Button
+                  disabled={
+                    props.availableOnly === false ? false : x.available === 0
+                  }
+                  icon={x.id === data.primary_lz ? 'home' : undefined}
+                  iconPosition="right"
+                  onClick={() => props.onClick(x.id)}>
+                  {x.name}
+                </Button>
+              </Flex.Item>
+            </Flex>
+          </Stack.Item>
+        ))}
+    </>
   );
 };
 
@@ -210,10 +240,76 @@ export const TouchdownCooldown = (_, context) => {
   );
 };
 
+const AutopilotConfig = (props, context) => {
+  const { data, act } = useBackend<DropshipNavigationProps>(context);
+  const [automatedHangar, setAutomatedHangar] = useSharedState<
+    string | undefined
+  >(context, 'autopilot_hangar', undefined);
+  const [automatedLZ, setAutomatedLZ] = useSharedState<string | undefined>(
+    context,
+    'autopilot_groundside',
+    undefined
+  );
+  return (
+    <Section
+      title="Autopilot Control"
+      buttons={
+        <>
+          {data.automated_control.is_automated === 0 && (
+            <Button
+              onClick={() =>
+                act('set-automate', {
+                  hangar_id: automatedHangar,
+                  ground_id: automatedLZ,
+                  delay: 30,
+                })
+              }>
+              Enable
+            </Button>
+          )}
+          {data.automated_control.is_automated === 1 && (
+            <Button onClick={() => act('disable-automate')}>Disable</Button>
+          )}
+        </>
+      }>
+      <DestinationSelector
+        options={data.destinations.filter((x) =>
+          data.automated_control.is_automated
+            ? x.id === data.automated_control.hangar_lz
+            : true
+        )}
+        selected={automatedHangar}
+        applyFilter={false}
+        availableOnly={false}
+        onClick={(value) => {
+          setAutomatedHangar(value);
+          act('button-push');
+        }}
+      />
+      <hr />
+      <DestinationSelector
+        options={data.destinations.filter((x) =>
+          data.automated_control.is_automated
+            ? x.id === data.automated_control.ground_lz
+            : true
+        )}
+        selected={automatedLZ}
+        applyFilter={false}
+        availableOnly={false}
+        onClick={(value) => {
+          setAutomatedLZ(value);
+          act('button-push');
+        }}
+      />
+    </Section>
+  );
+};
+
 const RenderScreen = (props, context) => {
   const { data } = useBackend<DropshipNavigationProps>(context);
   return (
     <>
+      {data.can_set_automated === 1 && <AutopilotConfig />}
       {data.can_fly_by === 1 &&
         (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
           <FlybyControl />

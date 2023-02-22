@@ -279,6 +279,11 @@
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
 	.["can_set_automated"] = is_remote
+	.["automated_control"] = list(
+		"is_automated" = shuttle.automated_hangar_id != null || shuttle.automated_lz_id != null,
+		"hangar_lz" = shuttle.automated_hangar_id,
+		"ground_lz" = shuttle.automated_lz_id
+	)
 	.["primary_lz"] = SSticker.mode.active_lz?.linked_lz
 	if(shuttle.destination)
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
@@ -374,6 +379,20 @@
 			is_set_flyby = TRUE
 			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into flyby")
 		if("set-automate")
+			var/almayer_lz = params["hangar_id"]
+			var/ground_lz = params["ground_id"]
+			var/delay = Clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+
+			// TODO verify
+			if(almayer_lz == ground_lz)
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return
+
+			shuttle.automated_hangar_id = almayer_lz
+			shuttle.automated_lz_id = ground_lz
+			shuttle.automated_delay = delay
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+
 			return
 			/* TODO
 				if(!dropship.automated_launch) //If we're toggling it on...
@@ -382,6 +401,13 @@
 					dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 					dropship.set_automated_launch(!dropship.automated_launch)
 			*/
+		if("disable-automate")
+			shuttle.automated_hangar_id = null
+			shuttle.automated_lz_id = null
+			shuttle.automated_delay = null
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			return
+
 		if("cancel-flyby")
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)

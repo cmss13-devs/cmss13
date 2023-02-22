@@ -35,7 +35,7 @@
 		icon_state = initial(icon_state)
 		item_state = initial(item_state)
 
-/obj/item/clothing/head/hardhat/proc/update_brightness(mob/user = null)
+/obj/item/clothing/head/hardhat/proc/update_brightness(mob/user)
 	if(on)
 		update_icon()
 		if(loc && loc == user)

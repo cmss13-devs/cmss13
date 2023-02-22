@@ -19,8 +19,10 @@
 	siemens_coefficient = 0.9
 	flags_inventory = BLOCKSHARPOBJ
 
-	var/can_be_broken = TRUE // Can it be be broken by xenomorphs?
-	var/breaking_sound = 'sound/handling/click_2.ogg' // The sound it makes when broken by a xenomorph.
+	/// Can it be be broken by xenomorphs?
+	var/can_be_broken = TRUE
+	/// The sound it makes when broken by a xenomorph.
+	var/breaking_sound = 'sound/handling/click_2.ogg'
 
 /obj/item/clothing/head/hardhat/Initialize()
 	. = ..()

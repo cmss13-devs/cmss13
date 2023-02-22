@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/minimaps/proc/handle_new_z(dcs, /datum/space_level/z_level)
+/datum/controller/subsystem/minimaps/proc/handle_new_z(dcs, datum/space_level/z_level)
 	SIGNAL_HANDLER
 
 	if(minimaps_by_z["[z_level.z_value]"])

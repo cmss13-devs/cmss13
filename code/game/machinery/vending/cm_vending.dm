@@ -933,6 +933,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //same thing, but spawns only 1 item from the list
 /obj/effect/essentials_set/random/New(loc)
+	if(!spawned_gear_list)
+		return
+
 	var/typepath = pick(spawned_gear_list)
 	if(ispath(typepath, /obj/item/weapon/gun))
 		new typepath(loc, TRUE)

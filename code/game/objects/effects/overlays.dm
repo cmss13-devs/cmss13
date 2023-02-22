@@ -59,6 +59,10 @@
 
 /obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
+
+	if(!M)
+		return INITIALIZE_HINT_QDEL
+
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
 
@@ -243,6 +247,9 @@
 	effect_duration = 14
 
 /obj/effect/overlay/temp/gib_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon

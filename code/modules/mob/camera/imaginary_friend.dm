@@ -99,7 +99,9 @@
 
 
 /mob/camera/imaginary_friend/Destroy()
-	owner.client?.images.Remove(friend_image)
+	if(owner)
+		owner.client?.images.Remove(friend_image)
+
 	client?.images.Remove(friend_image)
 
 	owner = null

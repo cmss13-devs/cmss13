@@ -4,8 +4,9 @@
 	icon_state = "hardhat0_yellow"
 	item_state = "hardhat0_yellow"
 	var/brightness_on = 4 //luminosity when on
-	var/on = 0
+	var/on = FALSE
 	var/hardhat_color = "yellow" //Determines used sprites: hardhat[on]_[hardhat_color]
+	var/toggleable = TRUE
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -18,26 +19,76 @@
 	siemens_coefficient = 0.9
 	flags_inventory = BLOCKSHARPOBJ
 
+	var/can_be_broken = TRUE // Can it be be broken by xenomorphs?
+	var/breaking_sound = 'sound/handling/click_2.ogg' // The sound it makes when broken by a xenomorph.
+
+/obj/item/clothing/head/hardhat/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/clothing/head/hardhat/update_icon()
+	. = ..()
+	if(on)
+		icon_state = "hardhat[on]_[hardhat_color]"
+		item_state = "hardhat[on]_[hardhat_color]"
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+
+/obj/item/clothing/head/hardhat/proc/update_brightness(mob/user = null)
+	if(on)
+		update_icon()
+		if(loc && loc == user)
+			user.SetLuminosity(brightness_on, FALSE, src)
+		else if(isturf(loc))
+			SetLuminosity(brightness_on)
+	else
+		icon_state = initial(icon_state)
+		if(loc && loc == user)
+			user.SetLuminosity(0, FALSE, src)
+		else if(isturf(loc))
+			SetLuminosity(0)
+
 /obj/item/clothing/head/hardhat/attack_self(mob/user)
 	..()
 
+	if(!toggleable)
+		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
+		return FALSE
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
-		return
-	on = !on
-	icon_state = "hardhat[on]_[hardhat_color]"
-	item_state = "hardhat[on]_[hardhat_color]"
+		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalies.
+		return FALSE
 
-	if(on) user.SetLuminosity(brightness_on, FALSE, src)
-	else user.SetLuminosity(0, FALSE, src)
+	on = !on
+	update_brightness(user)
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
 
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_head()
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	return TRUE
+
+/obj/item/clothing/head/hardhat/proc/turn_off_light(mob/bearer)
+	if(on)
+		on = 0
+		update_brightness(bearer)
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
+		return 1
+	return 0
+
+/obj/item/clothing/head/hardhat/attack_alien(mob/living/carbon/xenomorph/M)
+	. = ..()
+
+	if(on && can_be_broken)
+		if(breaking_sound)
+			playsound(src.loc, breaking_sound, 25, 1)
+		on = FALSE
+		update_brightness()
 
 /obj/item/clothing/head/hardhat/pickup(mob/user)
 	if(on)

@@ -4397,7 +4397,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "cHL" = (
@@ -10957,7 +10957,7 @@
 /obj/effect/decal/cleanable/blood{
 	desc = "Watch your step.";
 	icon_state = "gib6";
-	tag = "icon-gib6"
+	tag = null
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -15111,7 +15111,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/admin)
 "htu" = (
@@ -25691,7 +25691,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/admin)
 "lKH" = (
@@ -28572,7 +28572,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/admin)
 "nbn" = (
@@ -32431,7 +32431,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/kitchen/damage)
 "oGp" = (
@@ -38686,7 +38686,7 @@
 	dir = 4;
 	id = "lvbasketball";
 	side = "left";
-	tag = "icon-hoop (NORTH)"
+	tag = null
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -38772,7 +38772,7 @@
 	dir = 8;
 	id = "lvbasketball";
 	side = "right";
-	tag = "icon-hoop (NORTH)"
+	tag = null
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -51832,7 +51832,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/kitchen/damage)
 "wkO" = (
@@ -56495,7 +56495,7 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
+	tag = null
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "yke" = (

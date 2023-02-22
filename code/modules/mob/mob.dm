@@ -498,6 +498,20 @@
 
 	return do_pull(AM, lunge, no_msg)
 
+/mob/living/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += {"
+		<br><font size='1'>
+			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+		</font>
+	"}
+
+
 /mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
 	if(pulling)
 		stop_pulling()

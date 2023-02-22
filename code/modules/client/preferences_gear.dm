@@ -400,9 +400,9 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
-/datum/gear/m43pistol
-	display_name = "M43 Holdout Pistol"
-	path = /obj/item/storage/box/m43
+/datum/gear/clfpistol
+	display_name = "D18 Holdout Pistol"
+	path = /obj/item/storage/box/clf
 	slot = WEAR_IN_BACK
 	cost = 4
 

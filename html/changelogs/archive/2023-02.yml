@@ -352,3 +352,16 @@
       You can no longer flip table that you are on top of.
   carlarctg:
   - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.
+2023-02-22:
+  carlarctg:
+  - soundadd: Added two unused sounds, one roar, one death noise, for the future.
+  - soundadd: Added predalien growl to Devastate, predalien pounce noise to Pounce,
+      and gave predalien its unique death noise.
+  - soundadd: Added a predator facehugged noise.
+  - soundadd: Added medium-strength footsteps to Predalien.
+  - code_imp: Added a pre_pounce_effects() proc.
+  - refactor: Refactored binocular overlays and camos into being variable-dependent.
+  harryob:
+  - admin: admins can now harm mobs by specific damage types in vv again
+  insertnamehere123:
+  - spellcheck: Changed a noun (Water) to an adjective (Watery)

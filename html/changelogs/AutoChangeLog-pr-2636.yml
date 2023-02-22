@@ -1,8 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - soundadd: "Added two unused sounds, one roar, one death noise, for the future."
-  - soundadd: "Added predalien growl to Devastate, predalien pounce noise to Pounce, and gave predalien its unique death noise."
-  - soundadd: "Added a predator facehugged noise."
-  - soundadd: "Added medium-strength footsteps to Predalien."
-  - code_imp: "Added a pre_pounce_effects() proc."

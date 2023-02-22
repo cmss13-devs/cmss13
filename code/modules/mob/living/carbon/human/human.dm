@@ -58,8 +58,6 @@
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
-	species = null
-
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
@@ -85,6 +83,9 @@
 	r_store = null
 	l_store = null
 	s_store = null
+
+	species = null
+
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

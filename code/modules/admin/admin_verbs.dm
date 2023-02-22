@@ -63,7 +63,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/clear_mutineers,
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
-	/datum/admins/proc/alertall
+	/datum/admins/proc/alertall,
+	/datum/admins/proc/imaginary_friend,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -296,6 +297,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
+		add_verb(src, /datum/admins/proc/imaginary_friend)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))

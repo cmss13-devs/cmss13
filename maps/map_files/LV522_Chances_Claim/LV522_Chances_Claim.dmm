@@ -18996,7 +18996,7 @@
 "jbO" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 6;
-	tag = "icon-intact (NORTHEAST)"
+	tag = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan3"
@@ -36753,7 +36753,7 @@
 "qsd" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 10;
-	tag = "icon-intact (NORTHWEST)"
+	tag = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{

@@ -73,7 +73,7 @@
 
 /obj/item/clothing/head/hardhat/proc/turn_off_light(mob/bearer)
 	if(on)
-		on = 0
+		on = TRUE
 		update_brightness(bearer)
 		for(var/X in actions)
 			var/datum/action/A = X

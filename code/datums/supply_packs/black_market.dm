@@ -985,9 +985,9 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/m43_holdout
-	name = "M43 Holdout Pistol"
-	contains = list(/obj/item/storage/box/m43)
+/datum/supply_packs/contraband/deep_storage/clf_holdout
+	name = "D18 Holdout Pistol"
+	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 

@@ -61,12 +61,7 @@
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e9c
-	rank_short = "ME9C"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/marine/e10c
-	rank_short = "ME10C"
-	icon_state = "ranks_snco"
+	rank_short = "ME9S"
 	icon_state = "ranks_snco"
 
 //OFFICERS

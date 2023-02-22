@@ -226,7 +226,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
-	. = ..(mapload, M)
+	. = ..()
+
+	if(!M)
+		return
 
 	if(allow_turf_entry(src, loc) & COMPONENT_TURF_DENY_MOVEMENT)
 		loc = GLOB.railgun_eye_location.get_turf_from_coord()

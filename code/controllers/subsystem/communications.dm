@@ -387,7 +387,8 @@ SUBSYSTEM_DEF(radio)
 	if (!filter)
 		filter = RADIO_DEFAULT
 	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")
-	if(!devices[filter])
+
+	if(!length(devices))
 		return
 
 	var/list/obj/devices_line = devices[filter]

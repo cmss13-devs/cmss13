@@ -278,18 +278,19 @@
 /obj/effect/alien/resin/marker/Destroy()
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
 
-	builder_hive.resin_marks -= src
+	if(builder_hive)
+		builder_hive.resin_marks -= src
 
-	for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
-		XX.built_structures -= src
-		if(!XX.client)
-			continue
-		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
-		XX.hive.mark_ui.update_all_data()
+		for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
+			XX.built_structures -= src
+			if(!XX.client)
+				continue
+			XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
+			XX.hive.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
-		X.stop_tracking_resin_mark(TRUE)
-	. = ..()
+		for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
+			X.stop_tracking_resin_mark(TRUE)
+	return ..()
 
 /obj/effect/alien/resin/marker/proc/check_for_weeds()
 	var/turf/T = get_turf(src)

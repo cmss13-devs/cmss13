@@ -77,6 +77,9 @@
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
+	if(!hud_list)
+		return
+
 	var/image/holder = hud_list[HUNTER_HUD]
 	holder?.icon_state = "falcon_drone_active"
 

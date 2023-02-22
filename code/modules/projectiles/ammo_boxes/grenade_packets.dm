@@ -15,6 +15,10 @@
 
 /obj/item/storage/box/packet/Initialize()
 	. = ..()
+
+	if(!content_type)
+		return INITIALIZE_HINT_QDEL
+
 	update_icon()
 
 /obj/item/storage/box/packet/fill_preset_inventory()

@@ -685,10 +685,13 @@
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
 		var/mob/living/carbon/human/victim = G.grabbed_thing
-		if(isyautja(victim) && victim.stat == DEAD)
+		if(victim.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
+			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
+			if(isspeciesyautja(victim))
+				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
-				if(forced || alert("Are you sure you want to send this [victim.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(M)
 						var/turf/T = get_turf(M)

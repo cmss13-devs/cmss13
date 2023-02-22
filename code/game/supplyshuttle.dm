@@ -1245,7 +1245,7 @@ var/datum/controller/supply/supply_controller = new()
 	if(choice == "special")
 		animal = pick(/mob/living/simple_animal/cat,/mob/living/simple_animal/corgi)
 	else
-		for(var/i=0,i < rand(1,2),i++)
+		for(var/i in rand(1,2))
 			var/list/turf/open/clear_turfs = list()
 			var/area/area_shuttle = shuttle?.get_location_area()
 			if(!area_shuttle)

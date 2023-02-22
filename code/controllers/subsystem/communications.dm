@@ -343,6 +343,10 @@ SUBSYSTEM_DEF(radio)
 	var/frequency as num
 	var/list/list/obj/devices = list()
 
+/datum/radio_frequency/Destroy(force, ...)
+	devices = null
+	return ..()
+
 /datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, filter = null as text|null, range = null as num|null)
 	var/turf/start_point
 	if(range)

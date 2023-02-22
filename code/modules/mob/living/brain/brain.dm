@@ -11,7 +11,7 @@
 
 /mob/living/brain/Initialize()
 	create_reagents(1000)
-	..()
+	. = ..()
 
 /mob/living/brain/Destroy()
 	if(key) //If there is a mob connected to this thing. Have to check key twice to avoid false death reporting.

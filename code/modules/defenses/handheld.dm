@@ -31,7 +31,6 @@
 	return ..()
 
 /obj/item/defenses/handheld/proc/connect()
-	sleep(0.5 SECONDS)
 	if(dropped && !TR)
 		TR = new defense_type
 		if(!TR.HD)

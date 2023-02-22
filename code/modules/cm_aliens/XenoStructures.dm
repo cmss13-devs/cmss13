@@ -150,7 +150,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
-	..()
+	. = ..()
 	if (hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)

@@ -114,5 +114,5 @@
 	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()
-		create_reagents(15)
-		..()
+	create_reagents(15)
+	. = ..()

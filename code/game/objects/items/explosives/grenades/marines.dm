@@ -326,6 +326,10 @@
 	smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)
 
+/obj/item/explosive/grenade/smokebomb/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
@@ -344,16 +348,20 @@
 	harmful = TRUE
 	var/smoke_radius = 3
 
+/obj/item/explosive/grenade/phosphorus/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/phosphorus/weak
 	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus
 	smoke.attach(src)
 
 /obj/item/explosive/grenade/phosphorus/weak/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke.attach(src)
 

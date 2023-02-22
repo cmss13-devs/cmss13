@@ -364,6 +364,10 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....    15 16
 	shuttle_landmarks += src
 	..()
 
+/obj/effect/landmark/shuttle_loc/Destroy()
+	shuttle_landmarks -= src
+	return ..()
+
 /obj/effect/landmark/shuttle_loc/proc/initialize_marker()
 	return
 

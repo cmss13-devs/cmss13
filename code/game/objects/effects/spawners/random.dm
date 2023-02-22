@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)

@@ -98,8 +98,9 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
-	fswitch.floodlist -= src
-	QDEL_NULL(fswitch)
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	SetLuminosity(0)
 	return ..()
 

@@ -39,6 +39,9 @@
 /mob/camera/imaginary_friend/Initialize(mapload, mob/owner)
 	. = ..()
 
+	if(!owner)
+		return INITIALIZE_HINT_QDEL
+
 	src.owner = owner
 	owner.play_screen_text("An imaginary friend has appeared to help you! <br> The imaginary friend is an out of character aid for mentors to assist you. If someone asks you about it in character you can explain it as remembering something from the past, etc, but you are not insane.")
 

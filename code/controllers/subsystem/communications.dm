@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(radio)
 	if(frequency)
 		frequency.remove_listener(device)
 
-		if(frequency.devices.len == 0)
+		if(length(frequency.devices))
 			qdel(frequency)
 			frequencies -= f_text
 
@@ -387,6 +387,9 @@ SUBSYSTEM_DEF(radio)
 	if (!filter)
 		filter = RADIO_DEFAULT
 	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")
+	if(!devices[filter])
+		return
+
 	var/list/obj/devices_line = devices[filter]
 	if (!devices_line)
 		devices_line = new

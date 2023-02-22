@@ -110,6 +110,9 @@
 		/obj/item/tool/extinguisher,
 	)
 
+/obj/item/storage/pouch/general/large/m39ap
+	storage_slots = 1
+
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)

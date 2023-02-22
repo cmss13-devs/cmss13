@@ -64,6 +64,12 @@
 	. = ..()
 	update_icon()
 
+/obj/item/weapon/gun/smartgun/Destroy()
+	ammo_primary = null
+	ammo_secondary = null
+	QDEL_NULL(MD)
+	. = ..()
+
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 

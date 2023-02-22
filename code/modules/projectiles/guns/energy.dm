@@ -33,6 +33,12 @@
 	update_icon()
 	max_shots = round((cell.maxcharge / charge_cost), 1)
 
+/obj/item/weapon/gun/energy/Destroy()
+	QDEL_NULL(cell)
+	. = ..()
+
+
+
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
 

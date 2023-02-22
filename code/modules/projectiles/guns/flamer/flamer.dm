@@ -556,6 +556,9 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
+	to_call = null
+	tied_reagent = null
+	tied_reagents = null
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(var/datum/pass_flags_container/PF)

@@ -198,7 +198,8 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
-	for(var/obj/structure/dropship_equipment/eq as anything in equipments)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = departing_shuttle
+	for(var/obj/structure/dropship_equipment/eq as anything in shuttle.equipments)
 		eq.on_launch()
 
 /obj/docking_port/stationary/marine_dropship/lz1

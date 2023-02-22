@@ -40,7 +40,7 @@
 /obj/item/clothing/head/hardhat/proc/update_brightness(mob/user)
 	if(on)
 		update_icon()
-		if(loc && loc == user)
+		if(loc == user)
 			user.SetLuminosity(brightness_on, FALSE, src)
 		else if(isturf(loc))
 			SetLuminosity(brightness_on)

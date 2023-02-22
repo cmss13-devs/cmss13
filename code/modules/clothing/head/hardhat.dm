@@ -63,9 +63,8 @@
 
 	on = !on
 	update_brightness(user)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+	for(var/datum/action/current_action as anything in actions)
+		current_action.update_button_icon()
 
 	if(ismob(loc))
 		var/mob/M = loc

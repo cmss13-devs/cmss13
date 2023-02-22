@@ -46,7 +46,7 @@
 			SetLuminosity(brightness_on)
 	else
 		icon_state = initial(icon_state)
-		if(loc && loc == user)
+		if(loc == user)
 			user.SetLuminosity(0, FALSE, src)
 		else if(isturf(loc))
 			SetLuminosity(0)

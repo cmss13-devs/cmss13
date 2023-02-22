@@ -387,12 +387,17 @@
 			if(almayer_lz == ground_lz)
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				return
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = shuttle.getControlConsole()
+			if(root_console.dropship_control_lost)
+				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return
 
 			shuttle.automated_hangar_id = almayer_lz
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-
+			message_admins("[key_name_admin(usr)] has set auto pilot on '[shuttle.name]'")
 			return
 			/* TODO
 				if(!dropship.automated_launch) //If we're toggling it on...
@@ -406,6 +411,7 @@
 			shuttle.automated_lz_id = null
 			shuttle.automated_delay = null
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			message_admins("[key_name_admin(usr)] has removed auto pilot on '[shuttle.name]'")
 			return
 
 		if("cancel-flyby")

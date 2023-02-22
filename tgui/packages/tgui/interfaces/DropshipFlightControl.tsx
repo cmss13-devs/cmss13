@@ -272,35 +272,41 @@ const AutopilotConfig = (props, context) => {
           )}
         </>
       }>
-      <DestinationSelector
-        options={data.destinations.filter((x) =>
-          data.automated_control.is_automated
-            ? x.id === data.automated_control.hangar_lz
-            : true
-        )}
-        selected={automatedHangar}
-        applyFilter={false}
-        availableOnly={false}
-        onClick={(value) => {
-          setAutomatedHangar(value);
-          act('button-push');
-        }}
-      />
-      <hr />
-      <DestinationSelector
-        options={data.destinations.filter((x) =>
-          data.automated_control.is_automated
-            ? x.id === data.automated_control.ground_lz
-            : true
-        )}
-        selected={automatedLZ}
-        applyFilter={false}
-        availableOnly={false}
-        onClick={(value) => {
-          setAutomatedLZ(value);
-          act('button-push');
-        }}
-      />
+      <Stack vertical className="DestinationSelector">
+        <Stack.Item>From</Stack.Item>
+        <DestinationSelector
+          options={data.destinations.filter((x) =>
+            data.automated_control.is_automated
+              ? x.id === data.automated_control.hangar_lz
+              : true
+          )}
+          selected={automatedHangar}
+          applyFilter={false}
+          availableOnly={false}
+          onClick={(value) => {
+            setAutomatedHangar(value);
+            act('button-push');
+          }}
+        />
+        <Stack.Item>
+          <hr />
+        </Stack.Item>
+        <Stack.Item>To</Stack.Item>
+        <DestinationSelector
+          options={data.destinations.filter((x) =>
+            data.automated_control.is_automated
+              ? x.id === data.automated_control.ground_lz
+              : true
+          )}
+          selected={automatedLZ}
+          applyFilter={false}
+          availableOnly={false}
+          onClick={(value) => {
+            setAutomatedLZ(value);
+            act('button-push');
+          }}
+        />
+      </Stack>
     </Section>
   );
 };

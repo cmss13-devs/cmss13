@@ -106,6 +106,13 @@
 	hijack?.check()
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
+	if(root_console.dropship_control_lost)
+		automated_hangar_id = null
+		automated_lz_id = null
+		automated_delay = null
+		return
+
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
 		ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
@@ -113,6 +120,9 @@
 /obj/docking_port/mobile/marine_dropship/proc/automated_fly()
 	automated_timer = null
 	if(!automated_hangar_id || !automated_lz_id || !automated_delay)
+		return
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
+	if(root_console.dropship_control_lost)
 		return
 	if(mode != SHUTTLE_IDLE)
 		return

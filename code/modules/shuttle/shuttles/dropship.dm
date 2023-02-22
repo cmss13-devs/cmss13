@@ -198,6 +198,8 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
+	for(var/obj/structure/dropship_equipment/eq as anything in equipments)
+		eq.on_launch()
 
 /obj/docking_port/stationary/marine_dropship/lz1
 	name = "LZ1 Landing Zone"

@@ -393,7 +393,7 @@
 		X.layer = MOB_LAYER
 		X.update_wounds()
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
-		X.balloon_alert("not hiding")
+		X.balloon_alert(X, "no longer hiding")
 	if(isravager(X))
 		X.emote("roar")
 

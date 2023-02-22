@@ -2008,12 +2008,12 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/indoors/c_block/mining)
 "bmg" = (
@@ -7183,7 +7183,7 @@
 "dQh" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata{
@@ -7431,12 +7431,12 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/indoors/c_block/mining)
 "dWT" = (
@@ -8088,7 +8088,7 @@
 "ekO" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
-	tag = "icon-wooden_chair (WEST)"
+	tag = null
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
@@ -9752,7 +9752,7 @@
 "eZM" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -16268,12 +16268,12 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/command_centre)
 "hTg" = (
@@ -16323,7 +16323,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hTW" = (
@@ -16387,7 +16387,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hUZ" = (
@@ -16413,7 +16413,7 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hVu" = (
@@ -16561,7 +16561,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hYf" = (
@@ -16577,7 +16577,7 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hYn" = (
@@ -16633,7 +16633,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hZK" = (
@@ -16645,13 +16645,13 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "hZL" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17028,7 +17028,7 @@
 "ijJ" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	tag = null
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata{
@@ -18689,7 +18689,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/indoors/a_block/admin)
 "iVU" = (
@@ -19878,7 +19878,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/indoors/a_block/admin)
 "jur" = (
@@ -20404,7 +20404,7 @@
 "jFu" = (
 /obj/structure/morgue{
 	dir = 8;
-	tag = "icon-morgue1 (WEST)"
+	tag = null
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -23988,12 +23988,12 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor/south)
 "kXc" = (
@@ -31183,7 +31183,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
 	pixel_x = -9;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
@@ -35095,7 +35095,7 @@
 	},
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1;
-	tag = "icon-pilot_chair (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -36267,7 +36267,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
 	pixel_x = -8;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
@@ -37215,7 +37215,7 @@
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 3;
-	tag = "icon-rwindow (NORTH)"
+	tag = null
 	},
 /turf/open/floor/wood/ship,
 /area/lv522/indoors/a_block/fitness/glass)
@@ -41660,7 +41660,7 @@
 	},
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1;
-	tag = "icon-pilot_chair (NORTH)"
+	tag = null
 	},
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -42258,7 +42258,7 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	tag = null
 	},
 /area/lv522/atmos/east_reactor)
 "sBt" = (
@@ -44921,7 +44921,7 @@
 /obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	tag = null
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -48366,7 +48366,7 @@
 "uUk" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -51380,7 +51380,7 @@
 "wcq" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	tag = null
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -51390,7 +51390,7 @@
 "wcO" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	tag = null
 	},
 /obj/structure/bed/chair{
 	dir = 1
@@ -51754,7 +51754,7 @@
 "wjf" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
-	tag = "icon-wooden_chair (WEST)"
+	tag = null
 	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/casino)
@@ -52253,7 +52253,7 @@
 "wuX" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
-	tag = "icon-wooden_chair (EAST)"
+	tag = null
 	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/casino)
@@ -54324,7 +54324,7 @@
 /obj/item/storage/toolbox/electrical,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	tag = null
 	},
 /turf/open/floor/strata{
 	dir = 4;

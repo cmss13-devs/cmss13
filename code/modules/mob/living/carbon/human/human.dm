@@ -58,6 +58,8 @@
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
+	species = null
+
 	QDEL_NULL_LIST(embedded_items)
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)

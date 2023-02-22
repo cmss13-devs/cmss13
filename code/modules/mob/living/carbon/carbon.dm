@@ -16,7 +16,7 @@
 
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
-	QDEL_NULL(view_change_sources)
+	view_change_sources = null
 	. = ..()
 
 	QDEL_NULL_LIST(internal_organs)

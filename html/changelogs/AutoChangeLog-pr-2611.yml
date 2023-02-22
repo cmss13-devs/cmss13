@@ -1,0 +1,5 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - spellcheck: "Changes the following weapon names. XM42B to XM43E1, M1911 SOCOM > M48A4, M43 Hummingbird > D18 Hummingbird, M40-SD > XM40, Mk210 > XM38"
+  - spellcheck: "B8 smartscope now doesn't say it fits on the M46C."

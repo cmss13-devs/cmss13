@@ -240,8 +240,9 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	M.update_sight()
 
 /mob/hologram/railgun/Destroy()
-	UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
-	linked_mob.update_sight()
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_HUMAN_UPDATE_SIGHT)
+		linked_mob.update_sight()
 
 	return ..()
 

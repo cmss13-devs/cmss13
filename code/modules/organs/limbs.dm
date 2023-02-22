@@ -86,7 +86,8 @@
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
 	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
-	forceMove(mob_owner)
+	if(owner)
+		forceMove(owner)
 
 
 

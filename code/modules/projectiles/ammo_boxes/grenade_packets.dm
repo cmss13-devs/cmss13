@@ -14,10 +14,10 @@
 		icon_state = initial(icon_state) + "_e"
 
 /obj/item/storage/box/packet/Initialize()
-	. = ..()
-
 	if(!content_type)
 		return INITIALIZE_HINT_QDEL
+
+	. = ..()
 
 	update_icon()
 

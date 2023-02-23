@@ -34,6 +34,8 @@
 	. = ..()
 	if(!.)
 		return FALSE
+	if(affected_mob.stat)
+		return
 	var/mob/living/carbon/affected_mob = affected_atom
 // General effects
 	affected_mob.apply_stamina_damage(stam_dam)
@@ -91,8 +93,9 @@
 		affected_mob.apply_internal_damage(10,"liver")
 		affected_mob.apply_damage(150,OXY)
 	// Applying additonal effects and messages
-
-	if(prob(stumble_prob) && affected_mob.stat && stumble && affected_mob.is_mob_incapacitated())
+	if(prob(stumble_prob) && stumble)
+		if(affected_mob.is_mob_incapacitated())
+			return
 		affected_mob.visible_message(SPAN_DANGER("[affected_mob] misteps in their confusion!")
 						,SPAN_HIGHDANGER("You stumble!"))
 		step(affected_mob, pick(CARDINAL_ALL_DIRS))

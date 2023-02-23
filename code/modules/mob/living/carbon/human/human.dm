@@ -52,6 +52,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
+	SSround_recording.recorder.stop_tracking(src)
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -65,6 +66,7 @@
 
 	. = ..()
 
+	focus = null
 	overlays_standing = null
 	selected_ability = null
 	assigned_squad = null

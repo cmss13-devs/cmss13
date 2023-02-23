@@ -12,3 +12,7 @@
 #endif
 
 //#define UNIT_TESTS //If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
+
+// #define TESTING
+// #define REFERENCE_TRACKING
+// #define GC_FAILURE_HARD_LOOKUP

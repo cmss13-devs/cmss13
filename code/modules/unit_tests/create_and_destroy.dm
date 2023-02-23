@@ -23,6 +23,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	ignore += typesof(/obj/vehicle)
 	ignore += typesof(/obj/effect/vehicle_spawner)
 	ignore += typesof(/obj/structure/closet/fancy)
+	ignore += typesof(/obj/effect/landmark/interior)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

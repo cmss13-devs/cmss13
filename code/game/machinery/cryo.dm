@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	var/temperature = 0
@@ -165,7 +165,7 @@
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
 	else if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
@@ -186,7 +186,7 @@
 		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
 		occupant.recalculate_move_delay = TRUE
-		occupant.stat = 1
+		occupant.set_stat(UNCONSCIOUS)
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
 			occupant.apply_effect(10, PARALYZE)
@@ -251,7 +251,7 @@
 	if(inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if(!istype(M) || isXeno(M))
+	if(!istype(M) || isxeno(M))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if(occupant)

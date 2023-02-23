@@ -121,7 +121,7 @@
 					break
 			if(!valid_recipe)
 				log_admin("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
-				message_staff("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
+				message_admins("[key_name(usr)] attempted to print an invalid recipe on \the [src].")
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
 			stored_metal -= recipe_datum.metal
@@ -144,7 +144,7 @@
 			return TRUE
 
 
-/obj/structure/machinery/bioprinter/proc/print_limb(var/limb_path)
+/obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
 		return
 	new limb_path(get_turf(src))

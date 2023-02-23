@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_events(var/href)
+/datum/admins/proc/topic_events(href)
 	switch(href)
 		if("securitylevel")
 			owner.change_security_level()
@@ -36,57 +36,62 @@
 				communications_blackout(0)
 			else
 				communications_blackout(1)
-			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
+			message_admins("[key_name_admin(usr)] triggered a communications blackout.")
+		if("destructible_terrain")
+			if(tgui_alert(usr, "Are you sure you want to toggle all ground-level terrain destructible?", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+				return
+			toggle_destructible_terrain()
+			message_admins("[key_name_admin(usr)] toggled destructible terrain.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] broke all lights")
+			message_admins("[key_name_admin(usr)] broke all lights")
 			lightsout(0,0)
 		if("whiteout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
 			for(var/obj/structure/machinery/light/L in machines)
 				L.fix()
-			message_staff("[key_name_admin(usr)] fixed all lights")
+			message_admins("[key_name_admin(usr)] fixed all lights")
 		if("power")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] powered all SMESs and APCs")
+			message_admins("[key_name_admin(usr)] powered all SMESs and APCs")
 			power_restore()
 		if("unpower")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] unpowered all SMESs and APCs")
+			message_admins("[key_name_admin(usr)] unpowered all SMESs and APCs")
 			power_failure()
 		if("quickpower")
 			if(alert(usr, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] powered all SMESs")
+			message_admins("[key_name_admin(usr)] powered all SMESs")
 			power_restore_quick()
 		if("powereverything")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] powered all SMESs and APCs everywhere")
+			message_admins("[key_name_admin(usr)] powered all SMESs and APCs everywhere")
 			power_restore_everything()
 		if("powershipreactors")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
-			message_staff("[key_name_admin(usr)] powered all ship reactors")
+			message_admins("[key_name_admin(usr)] powered all ship reactors")
 			power_restore_ship_reactors()
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
 			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [chemical_data.clearance_level]", clearance_levels)
 			if(!level)
 				return
-			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")
+			message_admins("[key_name_admin(usr)] changed research clearance level to [level].")
 			chemical_data.clearance_level = level
 		if("give_research_credits")
 			var/amount = tgui_input_real_number(usr, "How many credits to add?")
 			if(amount != 0) //can add negative numbers too!
-				message_staff("[key_name_admin(usr)] added [amount] research credits.")
+				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)
 
-/datum/admins/proc/create_humans_list(var/href_list)
+/datum/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning humans")
 		return
@@ -154,9 +159,9 @@
 
 			em_call.activate(announce = FALSE)
 
-		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
+		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
-/datum/admins/proc/create_xenos_list(var/href_list)
+/datum/admins/proc/create_xenos_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning xenos")
 		return
@@ -208,7 +213,7 @@
 		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
 
 		var/list/xenos = list()
-		var/mob/living/carbon/Xenomorph/X
+		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
 			var/turf/to_spawn_at = pick(turfs)
 			X = new caste_type(to_spawn_at, null, xeno_hive)
@@ -231,5 +236,5 @@
 
 			em_call.activate(announce = FALSE)
 
-		message_staff("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")
+		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")
 

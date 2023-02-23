@@ -653,7 +653,7 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && iscarbon(target) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isxeno(target))
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
 				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a glass of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)

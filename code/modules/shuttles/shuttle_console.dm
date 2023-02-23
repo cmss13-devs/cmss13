@@ -43,15 +43,15 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	return shuttle
 
 /obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/xeno_user = user
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno_user = user
 		if(xeno_user.caste?.is_intelligent)
 			return TRUE // Allow access by Queen and Predalien
 	return ..()
 
 /obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/xeno_user = M
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/xeno_user = M
 		if(xeno_user.caste?.is_intelligent)
 			return TRUE // Allow access by Queen and Predalien
 	return ..()
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		log_debug("Shuttle control computer failed to find shuttle with tag '[shuttle_tag]'!")
 		return
 
-	if(!isXeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
+	if(!isxeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 	ui_interact(user)
 
-/obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = get_shuttle()
 	if (!istype(shuttle))
@@ -235,14 +235,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			else
 				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
 			return
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.queen_locked && !isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
 			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
-		if(SSticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
+		if(SSticker.mode.active_lz != src && !onboard && isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
@@ -256,8 +256,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			var/mob/M = usr
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
-				var/mob/living/carbon/Xenomorph/Queen/Q = M
+			if(isqueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+				var/mob/living/carbon/xenomorph/queen/Q = M
 
 				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
 				var/count = Q.count_hivemember_same_area()
@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 						use_power(4080)
 					shuttle.launch(src)
 
-			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
+			else if(!onboard && isqueen(M) && shuttle.location == 1 && !shuttle.iselevator)
 				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
@@ -482,7 +482,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			to_chat(usr, SPAN_WARNING("The console flashes a warning about the rear door not being present."))
 
 	if(href_list["cancel_flyby"])
-		if(isXeno(usr))
+		if(isxeno(usr))
 			to_chat(usr, SPAN_WARNING("You have no idea how to use this button!"))
 			return
 		if(!allowed(usr))
@@ -510,7 +510,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	ui_interact(usr)
 
 
-/obj/structure/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/computer/shuttle_control/bullet_act(obj/item/projectile/Proj)
 	visible_message("[Proj] ricochets off [src]!")
 	return 0
 

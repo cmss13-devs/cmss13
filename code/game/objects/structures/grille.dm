@@ -4,14 +4,14 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "grille"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER
 	health = 10
 	var/destroyed = 0
 
-/obj/structure/grille/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/grille/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
@@ -87,7 +87,7 @@
 	healthcheck()
 
 
-/obj/structure/grille/attack_animal(var/mob/living/simple_animal/M as mob)
+/obj/structure/grille/attack_animal(mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0) return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
@@ -106,7 +106,7 @@
 
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(obj/item/projectile/Proj)
 
 	//Tasers and the like should not damage grilles.
 	if(Proj.ammo.damage_type == HALLOSS)

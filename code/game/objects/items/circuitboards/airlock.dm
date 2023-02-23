@@ -94,7 +94,7 @@
 	attack_self(usr)
 
 
-/obj/item/circuitboard/airlock/proc/toggle_access(var/acc)
+/obj/item/circuitboard/airlock/proc/toggle_access(acc)
 	if (acc == "all")
 		conf_access = null
 	else

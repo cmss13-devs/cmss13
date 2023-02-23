@@ -28,7 +28,7 @@
 	inv_overlay = null
 	. = ..()
 
-/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
 	return TRUE
 
 //when user attached an accessory to S
@@ -140,7 +140,7 @@
 	if(.)
 		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
 	SIGNAL_HANDLER
 	if(user.real_name != recipient_name)
 		C.remove_accessory(user, src)
@@ -388,7 +388,7 @@
 	QDEL_NULL(hold)
 	return ..()
 
-/obj/item/clothing/accessory/storage/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/accessory/storage/clicked(mob/user, list/mods)
 	if(mods["alt"] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		return
 	. = ..()
@@ -412,7 +412,7 @@
 	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/storage/hear_talk(mob/M, var/msg)
+/obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
 	hold.hear_talk(M, msg)
 	..()
 
@@ -528,7 +528,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/nanopaste
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
@@ -578,6 +578,9 @@
 	name = "blue surgical webbing vest"
 	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
@@ -746,7 +749,7 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null

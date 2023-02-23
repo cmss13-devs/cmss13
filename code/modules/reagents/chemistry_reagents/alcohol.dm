@@ -21,9 +21,12 @@
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
-	var/boozepwr = 5 //higher numbers mean the booze will have an effect faster.
-	var/booze_data = 0 //If it's a normal drink, let them drink a bit before they start feeling it.
-	var/slur_start = 250 //This is when the properties are gonna hit. Drink in moderation.
+	///higher numbers mean the booze will have an effect faster.
+	var/boozepwr = 5
+	///If it's a normal drink, let them drink a bit before they start feeling it.
+	var/accumulated_alcohol = 0
+	///This is when the properties are gonna hit. Drink in moderation.
+	var/effect_start = 250
 
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
@@ -33,9 +36,9 @@
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
-	booze_data += boozepwr
+	accumulated_alcohol += boozepwr
 
-	if(booze_data >= slur_start)
+	if(accumulated_alcohol >= effect_start)
 		. = ..()
 
 /datum/reagent/ethanol/reaction_obj(obj/O, volume)
@@ -237,8 +240,8 @@
 
 /datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
 	M.druggy = max(M.druggy, 50)
-	booze_data++
-	switch(booze_data)
+	accumulated_alcohol++
+	switch(accumulated_alcohol)
 		if(1 to 25)
 			if(!M.stuttering) M.stuttering = 1
 			M.make_dizzy(1)
@@ -801,12 +804,12 @@
 	. = ..()
 	if(!.)
 		return
-	booze_data++
+	accumulated_alcohol++
 	M.dizziness +=10
-	if(booze_data >= 55 && booze_data <115)
+	if(accumulated_alcohol >= 55 && accumulated_alcohol <115)
 		if(!M.stuttering) M.stuttering = 1
 		M.stuttering += 10
-	else if(booze_data >= 115 && prob(33))
+	else if(accumulated_alcohol >= 115 && prob(33))
 		M.confused = max(M.confused+15,15)
 
 /datum/reagent/ethanol/mojito

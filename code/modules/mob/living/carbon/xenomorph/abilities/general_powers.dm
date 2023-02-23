@@ -425,6 +425,8 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
 
+	pre_pounce_effects()
+
 	X.pounce_distance = get_dist(X, A)
 
 	var/datum/launch_metadata/LM = new()

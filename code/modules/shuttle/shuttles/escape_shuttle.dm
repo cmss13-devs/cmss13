@@ -53,7 +53,7 @@
 	var/occupant_count = 0
 	var/list/cryos = list()
 	for(var/area/interior_area in shuttle_areas)
-		for(var/mob/occupant in interior_area)
+		for(var/mob/living/occupant in interior_area)
 			occupant_count++
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryos += list(cryotube)

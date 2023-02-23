@@ -135,15 +135,37 @@
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-	M.confused = min(M.confused + 0.5 * potency * delta_time, 5 * potency)
 	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 5 * potency)
+	M.dizziness += min(M.dizziness + 0.1 * potency * delta_time, 5 * potency)
+	if(prob(50 * delta_time) || potency >= 5)
+		M.confused = min(M.confused + 0.5 * potency * delta_time, 5 * potency)
+		M.slurring += min(M.slurring + 0.25 * potency * delta_time, 5 * potency)
 
 /datum/chem_property/neutral/alcoholic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.confused += min(M.confused + potency * delta_time, 10 * potency)
-	M.drowsyness += min(M.drowsyness + potency * delta_time, 10 * potency)
+	if(prob(2 * delta_time))
+		M.sleeping = min(M.sleeping + 0.5 * potency * delta_time, 7.5 * potency)
+	M.drowsyness = min(M.drowsyness + 1 * potency * delta_time, 7.5 * potency)
+	M.dizziness += min(M.dizziness + 0.25 * potency * delta_time, 7.5 * potency)
+	if(prob(75 * delta_time) || potency >= 5)
+		M.confused = min(M.confused + 1 * potency * delta_time, 7.5 * potency)
+		M.slurring += min(M.slurring + 0.5 * potency * delta_time, 7.5 * potency)
 	M.apply_damage(0.25 * potency * delta_time, TOX)
-
+	M.apply_damage(0.5 * potency * delta_time, OXY)
+	if(prob(2.5 * potency * delta_time) && ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.vomit()
 /datum/chem_property/neutral/alcoholic/process_critical(mob/living/M, potency = 1, delta_time)
+	if(prob(5 * potency * delta_time))
+		M.sleeping = min(M.sleeping + 0.5 * potency * delta_time, 10 * potency)
+	M.confused = min(M.confused + 2 * potency * delta_time, 10 * potency)
+	M.drowsyness = min(M.drowsyness + 2 * potency * delta_time, 10 * potency)
+	M.dizziness += min(M.dizziness + 0.5 * potency * delta_time, 10 * potency)
+	M.slurring += min(M.slurring + 1 * potency * delta_time, 10 * potency)
+	M.apply_damage(0.5 * potency * delta_time, TOX)
+	M.apply_damage(1 * potency * delta_time, OXY)
+	if(prob(5 * potency * delta_time) && ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.vomit()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]

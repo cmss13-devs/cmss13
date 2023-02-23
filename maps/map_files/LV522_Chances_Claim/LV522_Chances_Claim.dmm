@@ -453,11 +453,12 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "anH" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/largecrate/random,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = null
 	},
-/area/lv522/atmos/east_reactor)
+/area/lv522/outdoors/colony_streets/north_west_street)
 "anM" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
@@ -5576,11 +5577,13 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "daG" = (
-/obj/item/clothing/under/marine/officer/bridge,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/largecrate/random,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked";
+	tag = null
 	},
-/area/lv522/oob)
+/area/lv522/outdoors/colony_streets/north_west_street)
 "daL" = (
 /obj/item/clothing/under/marine/reconnaissance,
 /turf/open/floor/corsat{
@@ -5673,7 +5676,6 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "dci" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -6131,11 +6133,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "dkB" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat{
-	icon_state = "browncorner"
-	},
-/area/lv522/atmos/east_reactor)
+/obj/structure/largecrate/random,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "dkC" = (
 /obj/structure/cryofeed/right,
 /turf/open/floor/bluegrid,
@@ -6186,18 +6186,16 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "dlI" = (
-/obj/item/clothing/suit/storage/marine/MP/SO{
-	pixel_x = 6;
-	pixel_y = -4
+/obj/structure/machinery/door_control/brbutton{
+	id = "Marked_2";
+	pixel_y = 26
 	},
-/obj/item/clothing/head/helmet/marine/MP/SO{
-	pixel_x = -9;
-	pixel_y = 5
+/obj/structure/largecrate/random,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = null
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/oob)
+/area/lv522/outdoors/colony_streets/north_west_street)
 "dlM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1
@@ -7333,7 +7331,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "dLZ" = (
-/obj/item/weapon/gun/shotgun/combat,
+/obj/item/storage/box/guncase/m3717,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
 "dMb" = (
@@ -7380,17 +7378,22 @@
 	},
 /area/lv522/indoors/a_block/executive)
 "dMy" = (
-/obj/item/clothing/suit/armor/vest/pilot,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = null
 	},
-/area/lv522/oob)
+/area/lv522/outdoors/colony_streets/north_west_street)
 "dMN" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	desc = "You think you can make out the iconography of a Xenomorph.";
 	icon_state = "4"
 	},
-/obj/item/clothing/under/marine/officer/pilot,
+/obj/item/clothing/under/marine/officer/pilot/flight,
+/obj/item/clothing/suit/storage/jacket/marine/pilot{
+	layer = 3.1;
+	pixel_y = 2
+	},
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -7865,9 +7868,9 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dYA" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor)
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "dYK" = (
 /obj/structure/barricade/deployable{
 	dir = 1
@@ -8046,10 +8049,10 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "ebP" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "2"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "brown"
@@ -8216,6 +8219,7 @@
 /obj/effect/decal/hefa_cult_decals/d32{
 	desc = "You think you can make out the iconography of a Xenomorph."
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -8470,6 +8474,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "ekK" = (
+/obj/item/clothing/under/marine/reconnaissance,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "brown"
@@ -8676,6 +8681,13 @@
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "Marked_3";
+	indestructible = 1;
+	layer = 3.3;
+	name = "\improper Secure Blast Door";
+	unacidable = 1
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -8872,10 +8884,6 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door_control/brbutton/alt{
-	id = "Marked_2";
-	name = "remote door-control"
-	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "Secure_Master_Armoury_2";
 	name = "remote door-control"
@@ -10894,7 +10902,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "fpS" = (
-/obj/item/prop/helmetgarb/helmet_nvg,
+/obj/item/prop/helmetgarb/helmet_nvg/marsoc,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -13697,6 +13705,11 @@
 /area/lv522/indoors/a_block/dorms)
 "gDL" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "Marked_3";
+	name = "remote door-control";
+	pixel_y = 3
+	},
 /obj/item/prop/colony/game,
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/garage)
@@ -14167,13 +14180,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
-"gNG" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/atmos/command_centre)
 "gNJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14693,6 +14699,11 @@
 /area/lv522/indoors/a_block/admin)
 "gYs" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "Marked_1";
+	name = "remote door-control";
+	pixel_y = 3
+	},
 /obj/item/paper/janitor,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -17040,11 +17051,6 @@
 /area/lv522/atmos/command_centre)
 "hTg" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control/brbutton/alt{
-	id = "Marked_1";
-	name = "remote door-control";
-	pixel_y = 3
-	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -25418,6 +25424,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "ldC" = (
@@ -26454,12 +26461,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
-"lBJ" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/atmos/east_reactor/south)
 "lCh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -26514,7 +26515,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -27387,13 +27387,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/atmos/east_reactor)
-"lXN" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "brown"
-	},
-/area/lv522/atmos/east_reactor/south)
 "lXQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -28052,14 +28045,6 @@
 	icon_state = "squares"
 	},
 /area/lv522/atmos/cargo_intake)
-"mms" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/burst,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/atmos/east_reactor/south)
 "mmv" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28309,14 +28294,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
-"mrP" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/prison{
-	icon_state = "darkbrownfull2";
-	tag = null
-	},
-/area/lv522/indoors/c_block/cargo)
 "msb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -29035,13 +29012,6 @@
 	icon_state = "8,0"
 	},
 /area/lv522/oob)
-"mLL" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/atmos/east_reactor/south)
 "mLO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -63146,10 +63116,10 @@ sRA
 ien
 ien
 jTJ
-sON
+anH
 ien
-sON
-sON
+dlI
+dMy
 ien
 sON
 jrQ
@@ -63373,10 +63343,10 @@ gQN
 ien
 sON
 ezH
-xRE
-eiZ
-eiZ
-eiZ
+daG
+dkB
+dkB
+dYA
 lCQ
 kOV
 lze
@@ -75785,7 +75755,7 @@ otQ
 otQ
 xho
 tiQ
-gNG
+hTg
 uFG
 qPq
 hxV
@@ -76239,7 +76209,7 @@ otQ
 dtr
 xho
 tiQ
-gNG
+hTg
 uFG
 hjB
 hBB
@@ -77828,7 +77798,7 @@ saC
 saC
 saC
 tiQ
-gNG
+hTg
 gYT
 xdF
 hCv
@@ -78055,7 +78025,7 @@ saC
 saC
 saC
 tiQ
-gNG
+hTg
 uFG
 qTH
 hye
@@ -81707,7 +81677,7 @@ saC
 saC
 lwm
 vIS
-lXN
+pfj
 jjV
 yaj
 saC
@@ -81818,7 +81788,7 @@ xMl
 wly
 srm
 jmG
-mrP
+kkP
 wly
 rfK
 jmG
@@ -82386,7 +82356,7 @@ pEm
 yiu
 yiu
 yiu
-lBJ
+yiu
 yiu
 saC
 saC
@@ -82619,7 +82589,7 @@ saC
 saC
 saC
 jjV
-mLL
+qJE
 tiQ
 tiQ
 tiQ
@@ -82843,7 +82813,7 @@ xwZ
 yiu
 saC
 saC
-mms
+mxp
 jef
 pfj
 qJE
@@ -84396,7 +84366,7 @@ iZI
 iZI
 iZI
 dDS
-dYA
+iZI
 iZI
 iZI
 jcl
@@ -84617,7 +84587,7 @@ cpy
 tiQ
 jcl
 jcl
-dYA
+iZI
 iZI
 bIQ
 cce
@@ -85521,7 +85491,7 @@ bMX
 cpy
 tiQ
 tiQ
-anH
+jcl
 iZI
 iZI
 iZI
@@ -87801,7 +87771,7 @@ tra
 cHL
 tra
 cVm
-dkB
+fMT
 tra
 dRD
 ebr
@@ -90521,7 +90491,7 @@ saC
 saC
 saC
 jcl
-anH
+jcl
 jcl
 iZI
 dDS
@@ -94610,8 +94580,8 @@ saC
 tiQ
 ewe
 cPO
-daG
-dlI
+bkQ
+bkQ
 dLq
 dTW
 ebP
@@ -95520,7 +95490,7 @@ cJh
 cRG
 dbX
 dnB
-dMy
+bkQ
 dUD
 efR
 tiQ

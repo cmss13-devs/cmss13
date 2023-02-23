@@ -86,7 +86,7 @@
 	// spawn crash location
 	var/turf/target = pick(get_area_turfs(target_area))
 	if(!target)
-		to_chat(src, SPAN_WARNING("No area available"))
+		to_chat(usr, SPAN_WARNING("No area available"))
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()

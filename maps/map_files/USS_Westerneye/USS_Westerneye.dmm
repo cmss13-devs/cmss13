@@ -20555,9 +20555,6 @@
 	pixel_y = 30
 	},
 /obj/structure/largecrate/black_market/clf_supplies,
-/obj/item/weapon/gun/pistol/m43pistol{
-	pixel_y = 8
-	},
 /obj/structure/machinery/vending/sovietsoda,
 /turf/open/floor/plating,
 /area/space)
@@ -59156,7 +59153,6 @@
 /area/westerneye/living/grunt_rnr)
 "qnO" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/m43,
 /obj/item/weapon/melee/baton/cattleprod,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -70818,7 +70814,6 @@
 /area/westerneye/hallways/lowerdeck_port_hallway)
 "txu" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/m43,
 /obj/item/device/flashlight/lamp/green{
 	pixel_x = 7;
 	pixel_y = 9

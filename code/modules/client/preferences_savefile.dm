@@ -629,7 +629,6 @@
 	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
 	for(var/datum/keybinding/conflicted as anything in notadded)
 		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
-		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)
@@ -637,6 +636,8 @@
 		else
 			for(var/entry in conflicted.classic_keys)
 				key_bindings[entry] -= conflicted.name
+
+		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

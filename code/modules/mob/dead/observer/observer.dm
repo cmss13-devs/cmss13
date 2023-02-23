@@ -107,8 +107,6 @@
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
-	if(name == "Unknown")
-		name = body.real_name
 	change_real_name(src, name)
 
 	minimap = new

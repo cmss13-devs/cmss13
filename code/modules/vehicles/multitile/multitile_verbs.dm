@@ -159,7 +159,7 @@
 		))
 
 	data["resistance_data"] = resist_data_list
-	data["integrity"] = round(100.0 * health / initial(health))
+	data["integrity"] = round(100 * health / initial(health))
 	data["door_locked"] = door_locked
 	data["total_passenger_slots"] = interior.passengers_slots
 	data["total_taken_slots"] = interior.passengers_taken_slots
@@ -304,7 +304,7 @@
 	V.name = initial(V.name) + " \"[V.nickname]\""
 	to_chat(user, SPAN_NOTICE("You've added \"[V.nickname]\" nickname to your vehicle."))
 
-	message_staff(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
+	message_admins(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
 
 	V.initialize_cameras(TRUE)
 

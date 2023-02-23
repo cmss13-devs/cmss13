@@ -1,7 +1,7 @@
 /datum/xeno_mutator/acider
 	name = "STRAIN: Runner - Acider"
-	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. Your slashes apply acid to living lifeforms that slowly burns them, and you gain powerful acid to melt items and defenses. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around you."
-	flavor_description = "Burn their walls, maim their face!"
+	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a Praetorian that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	flavor_description = "Burn their walls, maim their faces! Your life, for The Hive!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RUNNER)
@@ -14,7 +14,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/acider_acid,
-		/datum/action/xeno_action/activable/acider_for_the_hive
+		/datum/action/xeno_action/activable/acider_for_the_hive,
 	)
 
 /datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
@@ -22,7 +22,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Runner/runner = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/runner/runner = mutator_set.xeno
 	runner.mutation_icon_state = RUNNER_ACIDER
 	runner.mutation_type = RUNNER_ACIDER
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
@@ -77,7 +77,7 @@
 	for(var/datum/effects/acid/AA in target_mob.effects_list)
 		qdel(AA)
 		break
-	if(isXenoOrHuman(target_mob))
+	if(isxeno_human(target_mob))
 		if(target_mob.lying)
 			modify_acid(acid_slash_regen_lying)
 		else
@@ -132,7 +132,7 @@
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y
 	for(var/mob/living/target_living in view(bound_xeno, burn_range))
-		if (!isXenoOrHuman(target_living) || bound_xeno.can_not_harm(target_living))
+		if (!isxeno_human(target_living) || bound_xeno.can_not_harm(target_living))
 			continue
 		var/dist = 0
 		// such cheap, much fast
@@ -143,7 +143,7 @@
 		else
 			dist = (0.427*dx) + (0.934*dy)
 		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
-		if(isXeno(target_living))
+		if(isxeno(target_living))
 			damage *= XVX_ACID_DAMAGEMULT
 
 		target_living.apply_damage(damage, BURN)
@@ -152,7 +152,7 @@
 		addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
-/mob/living/carbon/Xenomorph/Runner/ventcrawl_carry()
+/mob/living/carbon/xenomorph/runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
 	if(istype(behavior_delegates) && behavior_delegates.caboom_trigger)
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))

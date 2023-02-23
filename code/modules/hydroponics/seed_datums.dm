@@ -114,10 +114,10 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	var/product_colour   // Colour to apply to product base (if a vine).
 	var/packet_icon = "seed" // Icon to use for physical seed packet item.
 	var/biolum   // Plant is bioluminescent.
-	var/biolum_colour    // The colour of the plant's radiance.
+	var/biolum_colour    // The color of the plant's radiance.
 	var/flowers  // Plant has a flower overlay.
 	var/flower_icon = "vine_fruit"  // Which overlay to use.
-	var/flower_colour    // Which colour to use.
+	var/flower_colour    // Which color to use.
 
 //Creates a random seed. MAKE SURE THE LINE HAS DIVERGED BEFORE THIS IS CALLED.
 /datum/seed/proc/randomize()
@@ -315,7 +315,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
-/datum/seed/proc/mutate(var/degree,var/turf/source_turf)
+/datum/seed/proc/mutate(degree, turf/source_turf)
 
 	if(!degree || immutable > 0) return
 
@@ -365,7 +365,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] begins to glow!"))
 						if(prob(degree*2))
 							biolum_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes colour</font>!"))
+							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow dims..."))
 			if(11) //Flowers?
@@ -375,7 +375,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] sprouts a bevy of flowers!"))
 						if(prob(degree*2))
 							flower_colour = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes colour</font>!"))
+						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes color</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
 			else //New chems! (20% chance)
@@ -391,7 +391,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return
 
 //Mutates a specific trait/set of traits.
-/datum/seed/proc/apply_gene(var/datum/plantgene/gene)
+/datum/seed/proc/apply_gene(datum/plantgene/gene)
 
 	if(!gene || !gene.values || immutable > 0) return
 
@@ -495,7 +495,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 			flower_colour = gene.values[7]
 
 //Returns a list of the desired trait values.
-/datum/seed/proc/get_gene(var/genetype)
+/datum/seed/proc/get_gene(genetype)
 
 	if(!genetype) return 0
 
@@ -565,7 +565,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return (P ? P : 0)
 
 //Place the plant products at the feet of the user.
-/datum/seed/proc/harvest(var/mob/user,var/yield_mod,var/harvest_sample)
+/datum/seed/proc/harvest(mob/user, yield_mod, harvest_sample)
 
 	if(!user)
 		return
@@ -626,7 +626,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 // When the seed in this machine mutates/is modified, the tray seed value
 // is set to a new datum copied from the original. This datum won't actually
 // be put into the global datum list until the product is harvested, though.
-/datum/seed/proc/diverge(var/modified)
+/datum/seed/proc/diverge(modified)
 
 	if(immutable > 0) return
 

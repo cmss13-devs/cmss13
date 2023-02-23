@@ -100,7 +100,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/grown
+		/obj/item/grown,
 	)
 
 
@@ -205,7 +205,7 @@
 
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/storage/bag/sheetsnatcher/empty(var/mob/user)
+/obj/item/storage/bag/sheetsnatcher/empty(mob/user)
 	var/location = get_turf(src)
 	for(var/obj/item/stack/sheet/S in contents)
 		while(S.amount)

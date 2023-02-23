@@ -1,8 +1,8 @@
 
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
-	description = "You trade your ability to bombard for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
-	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
+	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain talls within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to talls and barricades and reduce the cooldown of your trap deployment for every tall hit. Finally, hit talls with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
+	flavor_description = "Hsss, I love the smell of burnin' tallhost flesh in the mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/boiler_trap,
 		/datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
-		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+		/datum/action/xeno_action/onclick/toggle_long_range/trapper,
 	)
 	keystone = TRUE
 
@@ -27,7 +27,7 @@
 	if(. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Boiler/boiler = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/boiler/boiler = mutator_set.xeno
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
@@ -63,8 +63,8 @@
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isXeno(bound_xeno))
-			var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+		if (isxeno(bound_xeno))
+			var/mob/living/carbon/xenomorph/xeno = bound_xeno
 			xeno.speed_modifier -= temp_movespeed_amount
 			xeno.recalculate_speed()
 			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), temp_movespeed_duration)
@@ -107,8 +107,8 @@
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isXeno(bound_xeno))
-		var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+	if (isxeno(bound_xeno))
+		var/mob/living/carbon/xenomorph/xeno = bound_xeno
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()
 		temp_movespeed_messaged = FALSE

@@ -16,7 +16,7 @@
 
 	var/datum/hive_status/assoc_hive = null
 
-/datum/hive_status_ui/New(var/datum/hive_status/hive)
+/datum/hive_status_ui/New(datum/hive_status/hive)
 	assoc_hive = hive
 	update_all_data()
 	START_PROCESSING(SShive_status, src)
@@ -62,7 +62,7 @@
 
 // Mildly related to the above, but only for when xenos are removed from the hive
 // If a xeno dies, we don't have to regenerate all xeno info and sort it again, just remove them from the data list
-/datum/hive_status_ui/proc/xeno_removed(var/mob/living/carbon/Xenomorph/X)
+/datum/hive_status_ui/proc/xeno_removed(mob/living/carbon/xenomorph/X)
 	if(!xeno_keys)
 		return
 
@@ -137,7 +137,7 @@
 	.["pooled_larva"] = pooled_larva
 	.["evilution_level"] = evilution_level
 
-	var/mob/living/carbon/Xenomorph/Queen/Q = user
+	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
 
 /datum/hive_status_ui/ui_static_data(mob/user)
@@ -146,7 +146,7 @@
 	.["hive_color"] = assoc_hive.ui_color
 	.["hive_name"] = assoc_hive.name
 
-/datum/hive_status_ui/proc/open_hive_status(var/mob/user)
+/datum/hive_status_ui/proc/open_hive_status(mob/user)
 	if(!user)
 		return
 
@@ -173,8 +173,8 @@
 
 	switch(action)
 		if("give_plasma")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return
@@ -186,8 +186,8 @@
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return
@@ -199,8 +199,8 @@
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")
-			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
-			var/mob/living/carbon/Xenomorph/xenoSrc = ui.user
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
 
 			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || is_admin_level(xenoTarget.z))
 				return

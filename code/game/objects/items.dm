@@ -307,6 +307,10 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(!.)
+		return
+
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -411,8 +415,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/equipped(mob/user, slot, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if(SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot) & COMPONENT_CANCEL_EQUIP)
-		return
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -462,6 +465,9 @@ cases. Override_icon_state should be a list.*/
 	if(!slot)
 		return FALSE
 	if(!M)
+		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTEMPTING_EQUIP, M) & COMPONENT_CANCEL_EQUIP)
 		return FALSE
 
 	if(ishuman(M))

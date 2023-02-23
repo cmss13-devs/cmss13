@@ -1,4 +1,6 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
+#define COOLDOWN_IDLOCK_TEXTALERT "mob_idlock_textalert"
+
 
 //// COOLDOWN SYSTEMS
 /*

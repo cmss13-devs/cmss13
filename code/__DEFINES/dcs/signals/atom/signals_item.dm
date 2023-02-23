@@ -10,8 +10,6 @@
 #define COMSIG_ITEM_DROPPED "item_drop"
 /// From base of /obj/item/proc/equipped(): (mob/user, slot)
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
-///Return this in response if you don't want items equipped
-	#define COMPONENT_CANCEL_EQUIP (1<<0)
 /// From base of /obj/item/proc/unequipped(): (mob/user, slot)
 #define COMSIG_ITEM_UNEQUIPPED "item_unequipped"
 ///from /obj/item/proc/unwield
@@ -23,3 +21,8 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+/// from /obj/item/proc/mob_can_equip
+#define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
+///Return this in response if you don't want items equipped
+	#define COMPONENT_CANCEL_EQUIP (1<<0)

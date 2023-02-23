@@ -1,5 +1,14 @@
 /obj/effect/landmark/interior
 	name = "interior marker"
+	var/datum/interior/parent
+
+/obj/effect/landmark/interior/Initialize(mapload, ...)
+	. = ..()
+	parent = GLOB.interior_manager.get_interior_by_coords(x, y)
+
+/obj/effect/landmark/interior/Destroy()
+	parent.interior_data.atoms_to_initialise -= src
+	return ..()
 
 /obj/effect/landmark/interior/proc/on_load(datum/interior/I)
 	return

@@ -136,18 +136,18 @@
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
 
-	mob.dizziness += min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
 	if(prob(50 * delta_time) || potency >= 5)
 		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
-		mob.slurring += min(mob.slurring + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
 /datum/chem_property/neutral/alcoholic/process_overdose(mob/living/mob, potency = 1, delta_time)
 	mob.apply_damage(POTENCY_MULTIPLIER_VLOW * potency * delta_time, TOX)
 	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
 
-	mob.dizziness += min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 
 	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
@@ -159,16 +159,16 @@
 
 	if(prob(75 * delta_time) || potency >= 5)
 		mob.confused = min(mob.confused + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
-		mob.slurring += min(mob.slurring + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+		mob.slurring = min(mob.slurring + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 
 /datum/chem_property/neutral/alcoholic/process_critical(mob/living/mob, potency = 1, delta_time)
 	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, TOX)
 	mob.apply_damage(potency * delta_time, OXY)
 
 	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
-	mob.dizziness += min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
-	mob.slurring += min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
 		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)

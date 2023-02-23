@@ -102,8 +102,10 @@
 	if(!own_orbit_size)
 		own_orbit_size = 32
 
-	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin)) //Safety in case we cannot find the body's position
-	forceMove(spawn_turf)
+	if(!isturf(spawn_turf))
+		spawn_turf = get_turf(SAFEPICK(GLOB.latejoin)) //Safety in case we cannot find the body's position
+	if(spawn_turf)
+		forceMove(spawn_turf)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))

@@ -598,6 +598,10 @@
 	icon_state = "briefing"
 	fake_zlevel = 2 // lowerdeck
 
+/area/westerneye/living/shipstore
+	name = "\improper Ship Store"
+	fake_zlevel = 2
+
 /area/westerneye/living/offices/flight
 	name = "\improper Flight Office"
 

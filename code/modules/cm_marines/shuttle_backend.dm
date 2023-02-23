@@ -430,21 +430,38 @@ qdel(src)
 
 	// Sort the crash location into the ship section it belongs to
 	var/ship_section = ""
-	// determine upper/lower deck first
-	if(y > ALMAYER_DECK_BOUNDARY)
-		ship_section = UPPER_DECK
-	else if(y < ALMAYER_DECK_BOUNDARY)
-		ship_section = LOWER_DECK
 
-	ship_section += " "
+	switch(SSmapping.configs[SHIP_MAP].map_name)
+		if("USS Almayer")
+			if(y > ALMAYER_DECK_BOUNDARY)
+				ship_section = UPPER_DECK
+			else if(y < ALMAYER_DECK_BOUNDARY)
+				ship_section = LOWER_DECK
 
-	// then fore/mid/aftship
-	if (x <= ALMAYER_FORE_BOUNDARY)
-		ship_section += FORESHIP
-	else if(x >= ALMAYER_AFT_BOUNDARY)
-		ship_section += AFTSHIP
-	else
-		ship_section += MIDSHIP
+			ship_section += " "
+
+			// then fore/mid/aftship
+			if (x <= ALMAYER_FORE_BOUNDARY)
+				ship_section += FORESHIP
+			else if(x >= ALMAYER_AFT_BOUNDARY)
+				ship_section += AFTSHIP
+			else
+				ship_section += MIDSHIP
+
+		if("USS Western Eye")
+			if(x <= WESTERNEYE_MID_DECK_BOUNDRY)
+				ship_section = LOWER_DECK
+			else if(x >= WESTERNEYE_UPPER_DECK_BOUNDRY)
+				ship_section = UPPER_DECK
+			else
+				ship_section = MID_DECK
+
+			ship_section += " "
+
+			if(y < WESTERNEYE_AFT_BOUNDRY)
+				ship_section += FORESHIP
+			else
+				ship_section += AFTSHIP
 
 	if(isnull(shuttle_controller.locs_crash[ship_section]))
 		shuttle_controller.locs_crash[ship_section] = list()

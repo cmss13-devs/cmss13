@@ -389,7 +389,12 @@
 
 	var/target_section = crash_target_section
 	if(isnull(target_section))
-		var/list/potential_crash_sections = almayer_ship_sections.Copy()
+		var/list/potential_crash_sections
+		switch(SSmapping.configs[SHIP_MAP].map_name)
+			if("USS Almayer")
+				potential_crash_sections = almayer_ship_sections.Copy()
+			if("USS Western Eye")
+				potential_crash_sections = westerneye_ship_sections.Copy()
 		potential_crash_sections -= almayer_aa_cannon.protecting_section
 		target_section = pick(potential_crash_sections)
 

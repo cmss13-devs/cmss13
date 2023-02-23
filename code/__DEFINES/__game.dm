@@ -480,6 +480,7 @@ block( \
 // Ship section bounds
 
 #define UPPER_DECK "Upper deck"
+#define MID_DECK "Mid deck"
 #define LOWER_DECK "Lower deck"
 #define FORESHIP "Foreship"
 #define MIDSHIP "Midship"
@@ -500,6 +501,11 @@ block( \
 // I.e. the foreship is x = 0 to and including ALMAYER_FORE_BOUNDARY
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
+
+#define WESTERNEYE_UPPER_DECK_BOUNDRY 200
+#define WESTERNEYE_MID_DECK_BOUNDRY 100
+
+#define WESTERNEYE_AFT_BOUNDRY 101
 
 /proc/get_accurate_dist(turf/A, turf/B)
 	var/dist

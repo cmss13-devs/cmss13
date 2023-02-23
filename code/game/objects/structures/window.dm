@@ -434,6 +434,13 @@
 	basestate = "fwindow"
 	health = 30
 
+/obj/structure/window/reinforced/tinted/frosted/update_icon(loc, direction)
+	..()
+
+	switch(dir)
+		if(SOUTH)
+			layer = FLY_LAYER
+
 /obj/structure/window/reinforced/ultra
 	name = "ultra-reinforced window"
 	desc = "An ultra-reinforced window designed to keep the briefing podium a secure area."

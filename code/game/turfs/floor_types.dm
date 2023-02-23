@@ -296,37 +296,62 @@
 					AM.layer = UNDER_TURF_LAYER
 					break
 			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				for(var/i in 0 to 100)
+				for(var/i in 1 to m_shuttle.offset_distance)
 					fallonto_turf = get_step(fallonto_turf, WEST)
-			var/obj/effect/elevator/animation_overlay/falling_animation = new()
-			vis_contents += falling_animation
-			falling_animation.vis_contents += AM
-			AM.plane = FLOOR_PLANE
-			AM.layer = UNDER_TURF_LAYER
-			animate(falling_animation, pixel_y = -160, alpha = 120, time = 0.5 SECONDS)
-			spawn(1 SECONDS)
-				vis_contents -= falling_animation
-				qdel(falling_animation)
-				if(m_shuttle.moving_status != SHUTTLE_INTRANSIT)
-					AM.plane = initial(AM.plane)
-					AM.layer = initial(AM.layer)
+
+			if(ishuman(AM))
+				var/mob/living/carbon/human/human_who_fell = AM
+				human_who_fell.KnockDown(7) //tripping and falling
+
 			AM.forceMove(fallonto_turf)
+
+			var/obj/effect/elevator/animation_overlay/fallen_animation = new()
+			fallonto_turf.vis_contents += fallen_animation
+			fallen_animation.appearance = AM.appearance
+			fallen_animation.alpha = 0
+			fallen_animation.pixel_y = 196
+			animate(fallen_animation, pixel_y = 0, alpha = 256, time = 0.5 SECONDS)
+
+			var/obj/effect/elevator/animation_overlay/falling_animation = new()
+			falling_animation.appearance = AM.appearance
+			falling_animation.plane = FLOOR_PLANE
+			fallen_animation.layer = UNDER_TURF_LAYER
+			contents += falling_animation
+			animate(falling_animation, pixel_y = -160, alpha = 120, time = 0.5 SECONDS)
+
+			var/alpha_cache = AM.alpha
+			AM.alpha = 0
+
+			spawn(0.5 SECONDS)
+				AM.alpha = alpha_cache
+				fallonto_turf.vis_contents -= fallen_animation
+				contents -= falling_animation
+				qdel(falling_animation)
+				qdel(fallen_animation)
+				if(istype(get_area(src), /area/supply/station))
+					if(m_shuttle.moving_status != SHUTTLE_INTRANSIT)
+						AM.plane = initial(AM.plane)
+						AM.layer = initial(AM.layer)
+					else
+						AM.plane = FLOOR_PLANE
+						AM.layer = UNDER_TURF_LAYER
+
+
 
 		else
 			..(AM)
 
 		if(ishuman(AM))
 			var/mob/living/carbon/human/human_who_fell = AM
-			human_who_fell.take_overall_damage(rand(40, 60), 0, FALSE, FALSE, "Blunt Trauma")
-			human_who_fell.KnockDown(5)
+			human_who_fell.take_overall_damage(rand(30, 60), 0, FALSE, FALSE, "Blunt Trauma")
 			for(var/obj/limb/leg/fallen_leg in human_who_fell.limbs)
-				fallen_leg.take_damage_bone_break(35)
+				fallen_leg.take_damage(brute=rand(rand(5,15),30), sharp=TRUE, used_weapon="Blunt Trauma")
 			to_chat(human_who_fell, SPAN_WARNING("You fall into empty space!"))
 
 		if(ismob(AM))
-			playsound(get_turf(AM), 'sound/effects/body_fall.ogg', 50, 1)
+			playsound(AM.loc, 'sound/effects/body_fall.ogg', 50, 1)
 		else
-			playsound(get_turf(AM), 'sound/effects/shaft_fall.ogg',50, 1)
+			playsound(AM.loc, 'sound/effects/shaft_fall.ogg', 50, 1)
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)

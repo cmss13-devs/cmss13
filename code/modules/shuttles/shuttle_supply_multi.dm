@@ -41,6 +41,8 @@
 	/// z for coolness
 	var/list/railingz = list()
 	warmup_time = 5 SECONDS
+	/// used when making things fall down shafts etc
+	var/offset_distance
 
 /datum/shuttle/ferry/supply/multi/New()
 	for(var/i in 1 to length(GLOB.supply_elevator_turfs))
@@ -113,6 +115,20 @@
 		for(var/i in all_directions)
 			if(istype(get_step(T, i), /turf/closed/wall/supply_shaft))
 				transit_location_walls |= get_step(T, i)
+
+	for(var/turf/T in GLOB.supply_elevator_turfs)
+		var/turf/starting_turf = T
+		/// we're gonna assume the fake_zlevels are e/w of eachother & aligned
+		while(!offset_distance)
+			T = get_step(T, EAST)
+			if(!T)
+				break
+			for(var/turf/XX in GLOB.supply_elevator_turfs)
+				if(XX == T)
+					offset_distance = T.x - starting_turf.x
+					break
+		if(offset_distance)
+			break
 
 /datum/shuttle/ferry/supply/multi/add_structures()  //places the shuttle controller on the lift
 	for(var/turf/T in area_offsite)
@@ -219,14 +235,15 @@
 
 	move_elevator_to_destination(shaft_transit_area, destination)
 
-	spawn(2 SECONDS) //animations need to catch up
-		lower_railingz(target_zlevel)
-		update_controller()
-		stop_gears()
-		var/at_station_result = at_station()
-		if (!at_station_result)	//at centcom
-			handle_sell()
-		recharging = 0
+	addtimer(CALLBACK(src, PROC_REF(finish_jump)), 2 SECONDS, TIMER_UNIQUE)
+
+/datum/shuttle/ferry/supply/multi/proc/finish_jump()
+	lower_railingz(target_zlevel)
+	update_controller()
+	stop_gears()
+	if (!at_station())	//at centcom
+		handle_sell()
+	recharging = 0
 
 /datum/shuttle/ferry/supply/multi/proc/raise_railingz(deck)
 	if(!deck)
@@ -407,7 +424,7 @@
 	start_gears(NORTH)
 
 /datum/shuttle/ferry/supply/multi/proc/premove_shenanigans(key_into_elevator_animationz, list/trigger_move)
-	if(key_into_elevator_animationz <= length(elevator_animationz))
+	if(key_into_elevator_animationz && key_into_elevator_animationz <= length(elevator_animationz))
 		elevator_animationz[key_into_elevator_animationz].vis_contents.Cut()
 	if(length(trigger_move) == 2)
 		move(trigger_move[1], trigger_move[2])
@@ -485,12 +502,13 @@
 	//this assumes the projectors are from lower zlevels [FROM INSIDE A SHAFT]
 	//and that lower zlevels are ordered from 1 up, moving downwards from the topdeck(1)
 	//all logic handled by /datum/controller/subsystem/fz_transitions/fire()
-	if(mode ? fake_zlevel : target_zlevel && mode ? fake_zlevel : target_zlevel <= length(shaft_projectors))
-		for(var/obj/effect/projector/P in shaft_projectors[mode ? fake_zlevel : target_zlevel])
+	var/zlevel_key = mode ? fake_zlevel : target_zlevel
+	if(zlevel_key && zlevel_key <= length(shaft_projectors))
+		for(var/obj/effect/projector/P in shaft_projectors[zlevel_key])
 			P.update_state(stage)
-		if((mode ? fake_zlevel : target_zlevel) + 1 <= length(shaft_projectors))
+		if((zlevel_key) + 1 <= length(shaft_projectors))
 			if(stage != mode)
-				for(var/obj/effect/projector/P in shaft_projectors[(mode ? fake_zlevel : target_zlevel) + 1])
+				for(var/obj/effect/projector/P in shaft_projectors[(zlevel_key) + 1])
 					P.update_state(stage)
 
 /datum/shuttle/ferry/supply/multi/forbidden_atoms_check()

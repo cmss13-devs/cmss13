@@ -209,3 +209,11 @@ var/list/almayer_ship_sections = list(
 	(LOWER_DECK + " " + AFTSHIP)
 	*/
 )
+
+var/list/westerneye_ship_sections = list(
+	"Upper deck Foreship",
+	"Upper deck Aftship",
+	"Mid deck Foreship",
+	"Mid deck Aftship",
+	"Lower deck Foreship",
+	"Lower deck Aftship")

@@ -67,6 +67,3 @@
 
 	registered_gid = null
 	registered_name = null
-
-
-

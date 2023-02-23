@@ -1238,8 +1238,7 @@
 /area/space)
 "vI" = (
 /turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
+	icon_state = "test_floor5"
 	},
 /area/supply/dock)
 "vN" = (

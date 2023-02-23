@@ -584,6 +584,26 @@
 	color = "green"
 	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
 
+/obj/item/paper/westerneye/hangar_note
+	name = "Note"
+	info = "<p>Stored all the chairs in the port evac-hall atrium in the hangar, having em all strewn about the hangar made quite the hazard. Doesn't anyone bother picking up after briefings?</p><br><br>&nbsp;&nbsp;<small>-Hamford Smith (Maintenance Technician)</small>"
+
+/obj/item/paper/westerneye/store_open
+	name = "Store Notice"
+	info = "The ship store is now restocked! Stop on by and get some treats!"
+
+/obj/item/paper/westerneye/mice_cheese
+	info = "<p>These damned rats!<br><br>They've been getting everywhere, especially into the squad bunks (Maybe if anyone ever cleaned them this wouldn't be a problem)<br><br>I set up a bait room here in Lower Engineering, with any luck we'll curb this problem once and for all. <br><br>Hoping for a plethora of mouse corpses next time I wake up from cryo.</p>"
+
+/obj/item/paper/westerneye/medical_dorms_lament
+	info ="<p>I did not sign up to see the things I've seen. I got my medical degree thinking I'd help people. But some of the wounds these marines are coming back from deployment with are beyond horrific. I don't know if I can stand by and watch another man screaming feebly about his missing hands and not being able to do anything about it. I need to get away from these combat missions, or else I am afraid something in me will break.</p>"
+
+/obj/item/paper/westerneye/maintenance1
+	info = "<p>-Jimmy wouldn't have wanted it.<br><br><br><br>-THEY WON'T FIND ME<br>-I stole some grub from the warehouse, these goons don't know a thing!<br><br><br>-They're all automotons! Slaves to the code! CONTEXT CONTEXT<br><br><br>I am free!</p>"
+
+/obj/item/paper/westerneye/maintenance2
+	info = "<p>This terminal darkness clouds my soul, the worlds I've seen...<br>We're adrift in the will of the company, I miss home.</p>"
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"

@@ -6,7 +6,7 @@
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	unacidable = TRUE
 
 	var/datum/squad/current_squad = null
@@ -852,7 +852,7 @@
 
 	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
 	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
-	message_staff(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+	message_admins(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 
 	busy = FALSE

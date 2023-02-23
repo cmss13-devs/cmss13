@@ -28,7 +28,7 @@
 	if(speaking)
 		message = copytext(message,3)
 	else
-		speaking = src.get_default_language()
+		speaking = get_default_language()
 
 	whisper_say(message, speaking, alt_name)
 

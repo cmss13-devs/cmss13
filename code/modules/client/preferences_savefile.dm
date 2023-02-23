@@ -92,9 +92,10 @@
 	var/list/base_bindings = sanitize_islist(value, list())
 	if(!base_bindings)
 		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
-	for(var/keybind_name in base_bindings)
-		if (!(keybind_name in GLOB.keybindings_by_name))
-			base_bindings -= keybind_name
+	for(var/key in base_bindings)
+		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
+		if(!length(base_bindings[key]))
+			base_bindings -= key
 	return base_bindings
 
 /datum/preferences/proc/load_preferences()
@@ -610,16 +611,14 @@
 		var/addedbind = FALSE
 		if(hotkeys)
 			for(var/hotkeytobind in kb.hotkey_keys)
-				if(LAZYLEN(key_bindings[hotkeytobind]))
-					continue
-				LAZYADD(key_bindings[hotkeytobind], kb.name)
-				addedbind = TRUE
+				if(!length(key_bindings[hotkeytobind]))
+					LAZYADD(key_bindings[hotkeytobind], kb.name)
+					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
-				if(LAZYLEN(key_bindings[classickeytobind]))
-					continue
-				LAZYADD(key_bindings[classickeytobind], kb.name)
-				addedbind = TRUE
+				if(!length(key_bindings[classickeytobind]))
+					LAZYADD(key_bindings[classickeytobind], kb.name)
+					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
 	if(length(notadded))
@@ -631,6 +630,13 @@
 	for(var/datum/keybinding/conflicted as anything in notadded)
 		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+		if(hotkeys)
+			for(var/entry in conflicted.hotkey_keys)
+				key_bindings[entry] -= conflicted.name
+		else
+			for(var/entry in conflicted.classic_keys)
+				key_bindings[entry] -= conflicted.name
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

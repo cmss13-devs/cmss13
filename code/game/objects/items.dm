@@ -170,6 +170,9 @@
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
 
+	if(flags_item & MOB_LOCK_ON_EQUIP)
+		AddComponent(/datum/component/id_lock)
+
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
@@ -408,9 +411,8 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/equipped(mob/user, slot, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
-	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
-		locked_to_mob = user
+	if(SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot) & COMPONENT_CANCEL_EQUIP)
+		return
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -461,15 +463,6 @@ cases. Override_icon_state should be a list.*/
 		return FALSE
 	if(!M)
 		return FALSE
-
-	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
-			locked_to_mob = null
-
-		if(locked_to_mob != M)
-			if(!disable_warning)
-				to_chat(M, SPAN_WARNING("This item has been ID-locked to [locked_to_mob]."))
-			return FALSE
 
 	if(ishuman(M))
 		//START HUMAN

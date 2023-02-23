@@ -10,6 +10,8 @@
 #define COMSIG_ITEM_DROPPED "item_drop"
 /// From base of /obj/item/proc/equipped(): (mob/user, slot)
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
+///Return this in response if you don't want items equipped
+	#define COMPONENT_CANCEL_EQUIP (1<<0)
 /// From base of /obj/item/proc/unequipped(): (mob/user, slot)
 #define COMSIG_ITEM_UNEQUIPPED "item_unequipped"
 ///from /obj/item/proc/unwield

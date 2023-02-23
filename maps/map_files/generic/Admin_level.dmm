@@ -169,6 +169,12 @@
 "cb" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod14)
+"cc" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 8
+	},
+/area/centcom/control)
 "ch" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod3)
@@ -277,10 +283,8 @@
 	},
 /area/centcom/living)
 "dw" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor5"
-	},
-/area/supply/dock)
+/turf/open/space/basic,
+/area/supply/transit)
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
@@ -741,6 +745,18 @@
 "hp" = (
 /turf/closed/wall/indestructible,
 /area/start)
+"hz" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 3;
+	dir = 8
+	},
+/area/centcom/control)
+"hG" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 4;
+	dir = 1
+	},
+/area/centcom/control)
 "hH" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -751,6 +767,11 @@
 /obj/docking_port/stationary/emergency_response/idle_port1,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
+"hX" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 3
+	},
+/area/centcom/control)
 "hZ" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/r_wall/unmeltable,
@@ -779,10 +800,22 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
+"jj" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 1
+	},
+/area/centcom/control)
 "kn" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
+"kq" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 4;
+	dir = 8
+	},
+/area/centcom/control)
 "ks" = (
 /obj/docking_port/stationary/emergency_response/idle_port2,
 /turf/open/floor/plating,
@@ -790,6 +823,23 @@
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
+"kU" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1
+	},
+/area/centcom/control)
+"lt" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 2;
+	dir = 1
+	},
+/area/centcom/control)
+"mG" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 2;
+	dir = 8
+	},
+/area/centcom/control)
 "mX" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat1";
@@ -1032,6 +1082,12 @@
 	icon_state = "dark_sterile"
 	},
 /area/adminlevel/ert_station)
+"tp" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 1;
+	dir = 1
+	},
+/area/centcom/control)
 "tx" = (
 /obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
@@ -1180,6 +1236,12 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew15,
 /area/space)
+"vI" = (
+/turf/open/floor/almayer{
+	icon_state = "test_floor5";
+	tag = "icon-test_floor5"
+	},
+/area/supply/dock)
 "vN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -1271,6 +1333,11 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew11,
 /area/space)
+"xK" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 1
+	},
+/area/centcom/control)
 "xO" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -1287,6 +1354,9 @@
 "xX" = (
 /turf/open/space/transit/east/shuttlespace_ew12,
 /area/space)
+"yb" = (
+/turf/closed/wall/supply_shaft,
+/area/centcom/control)
 "yk" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/processor{
@@ -1369,6 +1439,12 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"zK" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 3;
+	dir = 4
+	},
+/area/centcom/control)
 "zO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -1380,6 +1456,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/ert_station)
+"Ao" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 4;
+	dir = 4
+	},
+/area/centcom/control)
 "AH" = (
 /turf/open/space/transit/east/shuttlespace_ew1,
 /area/space)
@@ -1400,6 +1482,12 @@
 "AS" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome2)
+"Bf" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 1;
+	dir = 4
+	},
+/area/centcom/control)
 "Bw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1439,6 +1527,12 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"Cb" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 1;
+	dir = 8
+	},
+/area/centcom/control)
 "Cc" = (
 /obj/effect/landmark/sim_camera,
 /turf/open/floor/engine{
@@ -1648,6 +1742,11 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"Ga" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8
+	},
+/area/centcom/control)
 "Ge" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1839,6 +1938,11 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station)
+"IQ" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 4
+	},
+/area/centcom/control)
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/simulation)
@@ -1863,6 +1967,11 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/ert_station)
+"JF" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner"
+	},
+/area/centcom/control)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -2025,6 +2134,12 @@
 /obj/structure/sign/safety,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"Mw" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 4
+	},
+/area/centcom/control)
 "MB" = (
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
@@ -2162,6 +2277,12 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station)
+"PA" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 3;
+	dir = 1
+	},
+/area/centcom/control)
 "PE" = (
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
@@ -2518,6 +2639,11 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"Vt" = (
+/turf/closed/wall/supply_shaft{
+	dir = 4
+	},
+/area/centcom/control)
 "Vu" = (
 /obj/structure/machinery/shower,
 /obj/item/tool/soap/syndie,
@@ -2536,6 +2662,11 @@
 	icon_state = "plating"
 	},
 /area/tdome/tdomeobserve)
+"VF" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 2
+	},
+/area/centcom/control)
 "VI" = (
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
@@ -2622,6 +2753,12 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"XN" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 2;
+	dir = 4
+	},
+/area/centcom/control)
 "XR" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -11785,14 +11922,14 @@ as
 as
 aa
 aC
-aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 fn
 fn
@@ -11938,13 +12075,13 @@ as
 aa
 aC
 aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 fz
@@ -12090,13 +12227,13 @@ as
 aa
 aC
 aa
-fn
-ej
-dw
-ej
-dw
-ej
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 fA
@@ -12242,13 +12379,13 @@ as
 aa
 aC
 aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 fB
@@ -12394,13 +12531,13 @@ as
 aa
 aC
 aa
-fn
-ej
-dw
-ej
-dw
-ej
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 fC
@@ -12546,13 +12683,13 @@ as
 aa
 aC
 aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 fR
@@ -12698,13 +12835,13 @@ as
 aa
 aC
 aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 fn
 WH
@@ -12856,7 +12993,7 @@ aa
 aa
 aa
 aa
-aa
+aC
 aa
 fn
 fR
@@ -13002,13 +13139,13 @@ as
 aa
 aC
 aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
+as
+as
+aC
 aa
 ds
 ds
@@ -13154,13 +13291,13 @@ as
 aa
 aC
 aa
-fn
 as
 as
 as
 as
 as
-fn
+as
+aC
 aa
 aa
 aa
@@ -13306,14 +13443,14 @@ as
 aa
 aC
 aa
-fn
 as
 as
 as
 as
 as
-fn
-aa
+as
+aC
+aC
 aC
 aC
 aC
@@ -13458,17 +13595,17 @@ as
 aa
 aC
 aa
-fn
 as
 as
-ae
 as
 as
-fn
-aa
-aC
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13607,24 +13744,24 @@ as
 as
 as
 as
-aa
 aC
-aa
-fn
-as
-as
-as
-as
-as
-fn
-aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 ql
 ne
 ne
@@ -13759,20 +13896,20 @@ as
 as
 as
 as
-aa
 aC
+as
 aa
-fn
 as
 as
 as
 as
 as
-fn
-aa
-aC
-aa
-aa
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13911,9 +14048,8 @@ as
 as
 as
 as
-aa
 aC
-aa
+as
 fn
 fn
 fn
@@ -13921,13 +14057,14 @@ fn
 fn
 fn
 fn
-aa
-aC
-aa
-aa
-aa
-aa
-aa
+as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 aa
 GD
 ii
@@ -14063,23 +14200,23 @@ as
 as
 as
 as
-aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aC
-aa
-aa
-aa
-aa
-aa
+as
+fn
+ej
+ej
+ej
+ej
+ej
+fn
+as
+fn
+as
+as
+as
+as
+as
+fn
 aa
 xJ
 Db
@@ -14216,23 +14353,23 @@ as
 as
 as
 aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-TT
+as
+fn
+ej
+vI
+ej
+vI
+ej
+fn
+as
+fn
+as
+as
+as
+as
+as
+fn
+as
 Gm
 xX
 xX
@@ -14368,22 +14505,22 @@ aa
 aa
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+fn
+ej
+ej
+ej
+ej
+ej
+fn
+as
+fn
+as
+as
+ae
+as
+as
+fn
 as
 uJ
 Ji
@@ -14519,22 +14656,22 @@ as
 as
 as
 as
-TT
+aC
 as
 fn
-fn
-fn
-fn
-fn
-fn
+ej
+vI
+ej
+vI
+ej
 fn
 as
 fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
+as
 fn
 as
 UW
@@ -14671,22 +14808,22 @@ as
 as
 as
 as
-TT
+aC
 as
 fn
-gu
-gu
-gu
-gu
-gu
+ej
+ej
+ej
+ej
+ej
 fn
 as
 fn
-ja
-ja
-ja
-ja
-ja
+as
+as
+as
+as
+as
 fn
 as
 vH
@@ -14823,22 +14960,22 @@ as
 as
 as
 as
-TT
+aC
 as
 fn
-gu
-gu
-gu
-gu
-gu
+fn
+fn
+fn
+fn
+fn
 fn
 as
 fn
-ja
-ja
-ja
-ja
-ja
+fn
+fn
+fn
+fn
+fn
 fn
 as
 oQ
@@ -14975,23 +15112,23 @@ as
 as
 as
 as
-TT
+aC
 as
-fn
-gu
-gu
-gu
-gu
-gu
-fn
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 TH
 GM
@@ -15127,22 +15264,22 @@ as
 as
 as
 as
-TT
+aC
+as
+JF
+Ao
+zK
+XN
+Bf
+Vt
+Mw
 as
 fn
-gu
-gu
-gu
-gu
-gu
 fn
-as
 fn
-ja
-ja
-ja
-ja
-ja
+fn
+fn
+fn
 fn
 as
 xw
@@ -15279,22 +15416,22 @@ as
 as
 as
 as
-TT
+aC
+as
+yb
+dw
+dw
+dw
+dw
+dw
+hG
 as
 fn
-gu
-gu
-gu
-gu
-gu
-fn
 as
-fn
-ja
-ja
-ja
-ja
-ja
+as
+as
+as
+as
 fn
 as
 cU
@@ -15431,22 +15568,22 @@ as
 as
 as
 as
-TT
+aC
+as
+xK
+dw
+dw
+dw
+dw
+dw
+PA
 as
 fn
-fn
-fn
-fn
-fn
-fn
-fn
 as
-fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
 fn
 as
 sy
@@ -15583,23 +15720,23 @@ as
 as
 as
 as
-TT
+aC
+as
+VF
+dw
+dw
+dw
+dw
+dw
+lt
+as
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
 as
 VQ
 TS
@@ -15735,24 +15872,24 @@ as
 as
 as
 as
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
+aC
+as
+hX
+dw
+dw
+dw
+dw
+dw
+tp
+as
+fn
+as
+as
+as
+as
+as
+fn
+as
 dR
 cJ
 cJ
@@ -15887,23 +16024,23 @@ as
 as
 as
 as
+aC
+as
+IQ
+dw
+dw
+dw
+dw
+dw
+kU
+as
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
 as
 ql
 ne
@@ -16039,23 +16176,23 @@ as
 as
 as
 as
+aC
 as
+cc
+Ga
+Cb
+mG
+hz
+kq
+jj
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
 Ef
 GE
@@ -16191,7 +16328,7 @@ as
 as
 as
 as
-as
+aC
 as
 as
 as
@@ -16343,24 +16480,24 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+TT
 xJ
 Db
 Db
@@ -16495,23 +16632,23 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 as
 Gm
 xX
@@ -16647,23 +16784,23 @@ as
 as
 as
 as
+TT
 as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
 uJ
 Ji
@@ -16799,23 +16936,23 @@ as
 as
 as
 as
+TT
 as
+fn
+gu
+gu
+gu
+gu
+gu
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+ja
+ja
+ja
+ja
+ja
+fn
 as
 UW
 Gw
@@ -16951,23 +17088,23 @@ as
 as
 as
 as
+TT
 as
+fn
+gu
+gu
+gu
+gu
+gu
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+ja
+ja
+ja
+ja
+ja
+fn
 as
 vH
 PK
@@ -17103,23 +17240,23 @@ as
 as
 as
 as
+TT
 as
+fn
+gu
+gu
+gu
+gu
+gu
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+ja
+ja
+ja
+ja
+ja
+fn
 as
 oQ
 AH
@@ -17255,23 +17392,23 @@ as
 as
 as
 as
+TT
 as
+fn
+gu
+gu
+gu
+gu
+gu
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+ja
+ja
+ja
+ja
+ja
+fn
 as
 TH
 GM
@@ -17407,23 +17544,23 @@ as
 as
 as
 as
+TT
 as
+fn
+gu
+gu
+gu
+gu
+gu
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+ja
+ja
+ja
+ja
+ja
+fn
 as
 xw
 FI
@@ -17559,23 +17696,23 @@ as
 as
 as
 as
+TT
 as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
 cU
 nB
@@ -17711,7 +17848,7 @@ as
 as
 as
 as
-as
+TT
 as
 as
 as
@@ -17863,24 +18000,24 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
 ok
 VQ
 VQ

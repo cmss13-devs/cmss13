@@ -35164,12 +35164,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
-"erv" = (
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 1
-	},
-/area/almayer/medical/containment/cell/cl)
 "erx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -47149,13 +47143,9 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "ken" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/hallways/aft_hallway)
+/turf/closed/wall/almayer/research/containment/wall/east,
+/area/almayer/medical/containment/cell/cl)
 "kep" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer,
@@ -109200,7 +109190,7 @@ hPe
 sdu
 btC
 vLj
-ken
+ahM
 kSJ
 avj
 cGr
@@ -110025,7 +110015,7 @@ rne
 bYj
 xne
 rfb
-erv
+bHk
 vZw
 bHk
 cHu
@@ -110431,7 +110421,7 @@ bvc
 djL
 awE
 qWR
-wJH
+ken
 wJH
 wJH
 sNR

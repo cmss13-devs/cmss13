@@ -30,8 +30,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aak" = (
 /turf/open/gm/coast{
-	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
+	dir = 6
 	},
 /area/lv624/ground/caves/north_central_caves)
 "aam" = (
@@ -61,8 +60,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aat" = (
 /turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
+	dir = 9
 	},
 /area/lv624/ground/caves/north_central_caves)
 "aau" = (
@@ -103,8 +101,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aaB" = (
 /turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+	dir = 5
 	},
 /area/lv624/ground/caves/north_central_caves)
 "aaC" = (
@@ -1036,10 +1033,7 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aey" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1049,30 +1043,21 @@
 /turf/open/gm/river,
 /area/lv624/ground/caves/west_caves)
 "aeA" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/lv624/ground/barrens/containers)
 "aeC" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
 	},
 /area/lv624/ground/barrens/containers)
 "aeD" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -1083,10 +1068,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "aeF" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeH" = (
@@ -1094,10 +1076,7 @@
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeL" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeN" = (
@@ -1133,24 +1112,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aeX" = (
-/obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
-	},
+/obj/structure/cargo_container/grant/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeY" = (
-/obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afb" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
+/obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afd" = (
@@ -1161,24 +1131,15 @@
 	},
 /area/lv624/ground/barrens/containers)
 "aff" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afg" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afh" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afi" = (
@@ -1204,21 +1165,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "afl" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afn" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afo" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afq" = (
@@ -1376,24 +1331,15 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afZ" = (
-/obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
-	},
+/obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aga" = (
-/obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
-	},
+/obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agb" = (
-/obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
-	},
+/obj/structure/cargo_container/arious/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "agc" = (
@@ -1470,10 +1416,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agr" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "ags" = (
@@ -1512,10 +1455,7 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "agz" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "agA" = (
@@ -1558,10 +1498,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agL" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "agQ" = (
@@ -1956,8 +1893,7 @@
 "aiK" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
-	icon_state = "platebot";
-	tag = "icon-platebot"
+	icon_state = "platebot"
 	},
 /area/lv624/ground/barrens/east_barrens)
 "aiL" = (
@@ -2249,8 +2185,7 @@
 /area/lv624/ground/river/central_river)
 "aka" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	dir = 4
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
@@ -2356,8 +2291,7 @@
 /area/lv624/ground/river/east_river)
 "akv" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 8;
-	tag = "icon-pipe-t (WEST)"
+	dir = 8
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
@@ -2475,8 +2409,7 @@
 /area/lv624/ground/river/central_river)
 "akV" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 8;
-	tag = "icon-pipe-t (WEST)"
+	dir = 8
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
@@ -2506,8 +2439,7 @@
 /area/lv624/ground/river/east_river)
 "alb" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	dir = 4
 	},
 /turf/open/gm/coast{
 	dir = 1
@@ -2525,8 +2457,7 @@
 "ald" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
-	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	icon_state = "pipe-c"
 	},
 /obj/structure/grille,
 /turf/open/floor/plating{
@@ -2563,8 +2494,7 @@
 "alp" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
-	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
+	dir = 6
 	},
 /area/lv624/ground/river/central_river)
 "als" = (
@@ -2643,8 +2573,7 @@
 /area/lv624/ground/river/east_river)
 "alN" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	dir = 4
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
@@ -2675,8 +2604,7 @@
 "alS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
-	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
+	icon_state = "pipe-c"
 	},
 /obj/structure/grille,
 /turf/open/floor/plating{
@@ -2694,8 +2622,7 @@
 /area/lv624/ground/river/central_river)
 "alU" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 8;
-	tag = "icon-pipe-t (WEST)"
+	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
@@ -2984,8 +2911,7 @@
 "aoa" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aob" = (
@@ -2994,8 +2920,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aol" = (
@@ -3020,8 +2945,7 @@
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aos" = (
@@ -3038,21 +2962,18 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aou" = (
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "aov" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aow" = (
@@ -3061,8 +2982,7 @@
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aox" = (
@@ -3074,8 +2994,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aoz" = (
@@ -3132,16 +3051,14 @@
 "aoK" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aoL" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aoO" = (
@@ -3173,8 +3090,7 @@
 "aoU" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "aoX" = (
@@ -3228,8 +3144,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "apx" = (
@@ -3241,16 +3156,14 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "apA" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "apC" = (
@@ -3259,8 +3172,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "apH" = (
@@ -3422,8 +3334,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aqR" = (
@@ -3463,16 +3374,14 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "arg" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "ari" = (
@@ -4126,8 +4035,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aul" = (
@@ -4284,28 +4192,19 @@
 	},
 /area/lv624/lazarus/fitness)
 "auI" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "auJ" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "auK" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -4373,25 +4272,19 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "ava" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_l"
-	},
+/obj/structure/cargo_container/seegson/left,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "avb" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_m"
-	},
+/obj/structure/cargo_container/seegson/mid,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "avc" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_r"
-	},
+/obj/structure/cargo_container/seegson/right,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -4797,7 +4690,6 @@
 "aws" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/colony{
@@ -4929,7 +4821,6 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	id = "";
 	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/colony{
@@ -5900,8 +5791,7 @@
 /area/lv624/ground/caves/sand_temple)
 "azZ" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -6079,8 +5969,7 @@
 /area/lv624/lazarus/quartstorage)
 "aAJ" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -6558,8 +6447,7 @@
 /area/lv624/lazarus/sleep_female)
 "aCh" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -7003,27 +6891,19 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDI" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDK" = (
-/obj/structure/machinery/landinglight/ds1{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds1,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDL" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds1/delaythree,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDM" = (
@@ -7038,8 +6918,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aDO" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -7132,15 +7011,13 @@
 /area/lv624/lazarus/quartstorage)
 "aEj" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aEl" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7176,8 +7053,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aEw" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -7654,15 +7530,13 @@
 /area/lv624/lazarus/quartstorage)
 "aFK" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aFM" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7761,15 +7635,13 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aGe" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGf" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7879,8 +7751,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aGB" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7890,8 +7761,7 @@
 /area/shuttle/drop1/LV624)
 "aGE" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -7979,8 +7849,7 @@
 /area/lv624/lazarus/main_hall)
 "aGX" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -8029,8 +7898,7 @@
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "aHf" = (
@@ -8059,8 +7927,7 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "aHj" = (
@@ -8135,8 +8002,7 @@
 /obj/item/tool/crowbar/red,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "warningcorner";
-	tag = "icon-warningcorner (WEST)"
+	icon_state = "warningcorner"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aHu" = (
@@ -8392,8 +8258,7 @@
 "aIw" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "loadingarea";
-	tag = "loading"
+	icon_state = "loadingarea"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aIy" = (
@@ -8571,8 +8436,7 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "loadingarea";
-	tag = "loading"
+	icon_state = "loadingarea"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aJr" = (
@@ -8780,16 +8644,14 @@
 "aJT" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJU" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -9292,8 +9154,7 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "aMf" = (
@@ -9319,8 +9180,7 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/main_hall)
 "aMj" = (
@@ -9570,8 +9430,7 @@
 "aNp" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 4;
-	tag = "icon-landingstripe (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -10633,8 +10492,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aRu" = (
 /obj/structure/machinery/landinglight/ds2{
-	dir = 8;
-	tag = "icon-landingstripe (WEST)"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -10815,29 +10673,25 @@
 /area/lv624/lazarus/canteen)
 "aRZ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSa" = (
 /obj/structure/machinery/landinglight/ds1{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSb" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSc" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -11168,9 +11022,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aTt" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds2/delaytwo,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTu" = (
@@ -11182,9 +11034,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aTv" = (
-/obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
-	},
+/obj/structure/machinery/landinglight/ds2,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTw" = (
@@ -11286,8 +11136,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
-	icon_state = "platebot";
-	tag = "icon-platebot"
+	icon_state = "platebot"
 	},
 /area/lv624/lazarus/engineering)
 "aTR" = (
@@ -11296,8 +11145,7 @@
 	},
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor{
-	icon_state = "platebot";
-	tag = "icon-platebot"
+	icon_state = "platebot"
 	},
 /area/lv624/lazarus/engineering)
 "aTS" = (
@@ -13061,8 +12909,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "aZT" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -13186,8 +13033,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "beB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
@@ -13513,8 +13359,7 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "bHs" = (
@@ -13740,13 +13585,11 @@
 	dir = 8
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "cfY" = (
@@ -13816,8 +13659,7 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "cng" = (
@@ -13942,8 +13784,7 @@
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "cCe" = (
@@ -14010,8 +13851,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "cLw" = (
 /turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+	dir = 5
 	},
 /area/lv624/ground/river/central_river)
 "cLD" = (
@@ -14122,8 +13962,7 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/pie,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "cZs" = (
@@ -14295,8 +14134,7 @@
 "dvX" = (
 /obj/structure/bookcase/manuals/medical,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 6;
@@ -14398,8 +14236,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "dFk" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/sandstone/runed,
@@ -14435,8 +14272,7 @@
 "dId" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "dIO" = (
@@ -14463,8 +14299,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "dLn" = (
@@ -14593,8 +14428,7 @@
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "dZY" = (
@@ -14730,8 +14564,7 @@
 "eoM" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "epG" = (
@@ -14745,8 +14578,7 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "eqs" = (
@@ -14761,8 +14593,7 @@
 "eqP" = (
 /obj/structure/machinery/bioprinter,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "erx" = (
@@ -14928,8 +14759,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "eHq" = (
@@ -15203,8 +15033,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "fsa" = (
@@ -15224,8 +15053,7 @@
 	},
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "fur" = (
@@ -15290,8 +15118,7 @@
 "fAz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "fAD" = (
@@ -15825,8 +15652,7 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "gTv" = (
@@ -15935,8 +15761,7 @@
 "hdh" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "hdA" = (
@@ -16165,9 +15990,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "hJa" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_l"
-	},
+/obj/structure/cargo_container/lockmart/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "hJd" = (
@@ -16276,8 +16099,7 @@
 "hSa" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "warningcorner";
-	tag = "icon-warningcorner (WEST)"
+	icon_state = "warningcorner"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "hSn" = (
@@ -16524,8 +16346,7 @@
 /area/lv624/ground/caves/east_caves)
 "iyF" = (
 /turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
+	dir = 9
 	},
 /area/lv624/ground/river/central_river)
 "izh" = (
@@ -16576,8 +16397,7 @@
 "iBD" = (
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "iCN" = (
@@ -16682,8 +16502,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "iRb" = (
@@ -16724,8 +16543,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iXc" = (
 /turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+	dir = 5
 	},
 /area/lv624/ground/barrens/east_barrens)
 "iXj" = (
@@ -16843,8 +16661,7 @@
 	},
 /obj/item/tool/pen/clicky,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "jrC" = (
@@ -16870,9 +16687,7 @@
 	},
 /area/lv624/ground/river/east_river)
 "jvl" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_m"
-	},
+/obj/structure/cargo_container/lockmart/mid,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "jwW" = (
@@ -17038,8 +16853,7 @@
 	layer = 2.9
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /obj/structure/machinery/power/geothermal{
 	fail_rate = 5
@@ -17380,9 +17194,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "kzE" = (
-/obj/structure/cargo_container{
-	icon_state = "lockmart_r"
-	},
+/obj/structure/cargo_container/lockmart/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "kAg" = (
@@ -17545,16 +17357,14 @@
 /area/lv624/lazarus/corporate_dome)
 "kWJ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4;
-	tag = "icon-landingstripe (WEST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "kWX" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "kYg" = (
@@ -17903,8 +17713,7 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "lPJ" = (
@@ -17941,8 +17750,7 @@
 /obj/item/clothing/shoes/dress,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "lTZ" = (
@@ -18082,8 +17890,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "mjY" = (
@@ -18134,8 +17941,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "mnQ" = (
 /turf/open/gm/coast{
-	dir = 5;
-	tag = "icon-beach (NORTHEAST)"
+	dir = 5
 	},
 /area/lv624/ground/barrens/west_barrens)
 "moM" = (
@@ -18157,8 +17963,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "mqw" = (
@@ -18173,8 +17978,7 @@
 /area/lv624/ground/river/east_river)
 "mrQ" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -18191,8 +17995,7 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "mun" = (
@@ -18232,8 +18035,7 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "mxd" = (
@@ -18257,8 +18059,7 @@
 "mBL" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "mBN" = (
@@ -18274,8 +18075,7 @@
 	},
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "mCo" = (
@@ -18443,8 +18243,7 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "mVz" = (
@@ -18565,8 +18364,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nnL" = (
 /turf/open/gm/coast{
-	dir = 9;
-	tag = "icon-beach (NORTHWEST)"
+	dir = 9
 	},
 /area/lv624/ground/barrens/east_barrens)
 "npf" = (
@@ -18597,8 +18395,7 @@
 "nrb" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "nrm" = (
@@ -18812,8 +18609,7 @@
 "nHP" = (
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "nHY" = (
@@ -18833,8 +18629,7 @@
 	},
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "nIA" = (
@@ -19057,8 +18852,7 @@
 "nYZ" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
 "nZz" = (
@@ -19384,8 +19178,7 @@
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "oLk" = (
@@ -19484,8 +19277,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "oTt" = (
@@ -19654,16 +19446,14 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "pgD" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "phU" = (
@@ -19893,8 +19683,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "pIy" = (
@@ -19968,8 +19757,7 @@
 /obj/item/storage/firstaid/toxin,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "pPd" = (
@@ -20356,15 +20144,13 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "qJq" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "qJx" = (
@@ -20380,8 +20166,7 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor{
 	dir = 9;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "qLc" = (
@@ -20399,8 +20184,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "qNQ" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4;
-	tag = "icon-landingstripe (WEST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -20493,8 +20277,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "rba" = (
@@ -20525,13 +20308,11 @@
 	},
 /obj/item/storage/toolbox/electrical,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "rdZ" = (
@@ -20654,8 +20435,7 @@
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -21101,13 +20881,11 @@
 "sBg" = (
 /obj/structure/machinery/vending/cigarette,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "sBC" = (
@@ -21188,8 +20966,7 @@
 "sIi" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "sIr" = (
@@ -21217,8 +20994,7 @@
 /area/lv624/ground/caves/central_caves)
 "sLX" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -21721,8 +21497,7 @@
 /obj/structure/bed/chair/office/light,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "tLU" = (
@@ -22102,8 +21877,7 @@
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
+	icon_state = "whitebluecorner"
 	},
 /area/lv624/lazarus/corporate_dome)
 "uHI" = (
@@ -22120,8 +21894,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "uKT" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
@@ -22205,8 +21978,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder/black_random,
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "uUl" = (
@@ -22454,8 +22226,7 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "vxa" = (
@@ -22593,8 +22364,7 @@
 "vOD" = (
 /turf/open/floor{
 	dir = 9;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/tcommdome/south)
 "vOF" = (
@@ -22632,8 +22402,7 @@
 "vVf" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "vVD" = (
@@ -22732,8 +22501,7 @@
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "whv" = (
@@ -22980,12 +22748,10 @@
 /area/lv624/lazarus/corporate_dome)
 "wLe" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+	icon_state = "pottedplant_10"
 	},
 /turf/open/floor{
-	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
+	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "wLz" = (
@@ -23015,12 +22781,10 @@
 	},
 /obj/structure/showcase,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "wPN" = (
@@ -23151,13 +22915,11 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 5;
-	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "wWS" = (
@@ -23170,8 +22932,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/tcommdome/south)
 "wXp" = (
@@ -23233,16 +22994,14 @@
 /area/lv624/ground/jungle/north_jungle)
 "xeq" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
 "xeT" = (

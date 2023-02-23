@@ -62,7 +62,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 	equipment = /datum/equipment_preset/survivor/wy/manager

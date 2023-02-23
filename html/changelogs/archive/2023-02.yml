@@ -296,3 +296,99 @@
   - rscdel: survivors and corpses can no longer spawn with 7-slot combat packs
   - bugfix: fixed a few instances of surv presets having satchels that overrode each
       other
+2023-02-18:
+  realforest2001:
+  - bugfix: The predator Falcon drone now has a sprite for observers, rather than
+      being a random white queen eye
+2023-02-19:
+  BeagleGaming1:
+  - bugfix: Gives Cargo Containers subtypes
+  - maptweak: The small containers are now properly only 1 tile high
+  Morrow:
+  - balance: Gives Researchers Intel 1
+  NewyearnewmeUwu:
+  - maptweak: opened up 2 spots in Trijent's sand temple area
+  carlarctg:
+  - rscadd: Adds a new (and currently the only) random event, 'Economy Inflation'.
+      The USS Almayer recieves a broad-band signal sent to all nearby UA-affiliated
+      colonies and vessels that requests a specific kind of vendors stationed on them
+      have their prices increased, due to some randomly-selected incident backstory.
+      There will be a random delay before the change comes into effect, so make sure
+      you buy all you need beforehand! The announcement will only be visible shipside
+      to avoid communications clutter.
+  - code_imp: Added 'product type' variable to non-CM vendors, such as food, beverages,
+      souto, recreation, used for the above.
+  - code_imp: Added a global list for non-CM vending machines.
+2023-02-20:
+  Totalepicness:
+  - balance: Fixes base crusher having half it's intended cooldown for the shield
+      ability
+  carlarctg:
+  - rscadd: Added a lisping character trait, makes you thound thupid. All roles above
+      Staff Sergeant are unable to lisp, and neither is any kind of Synthetic. Predators
+      can lisp if they really want to, not really recommended. Pretty sure most active
+      predators would kill you for that, but the option's there.
+  harryob:
+  - rscadd: mentors can now appear as an imaginary SEA to newer players in need of
+      a hand
+  - bugfix: removed some errors from the options and messages menu
+  - bugfix: fixed runtimes when accessing gun stat interfaces
+  - bugfix: restored the previous functionality of larva/facehuggers having little
+      rees
+  stanalbatross:
+  - qol: added a keybind for rotate-chair
+2023-02-21:
+  Puckaboo2:
+  - bugfix: Gardener Drone will now have her 5% healing buff on weeds properly applied.
+  - code_imp: Any xenomorph strain description that previously did not completely
+      disclose any abilities or attributes that will be removed or changed upon mutating
+      will now disclose them, often within the first sentence.
+  - rscadd: Every xenomorph strain now has flavor text, personalized as a message
+      from the Queen, herself.
+  Segrain:
+  - bugfix: WO works once again.
+  TheDonkified:
+  - bugfix: Table flipping and unflipping is now more descriptive and less buggy.
+      You can no longer flip table that you are on top of.
+  carlarctg:
+  - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.
+2023-02-22:
+  carlarctg:
+  - soundadd: Added two unused sounds, one roar, one death noise, for the future.
+  - soundadd: Added predalien growl to Devastate, predalien pounce noise to Pounce,
+      and gave predalien its unique death noise.
+  - soundadd: Added a predator facehugged noise.
+  - soundadd: Added medium-strength footsteps to Predalien.
+  - code_imp: Added a pre_pounce_effects() proc.
+  - refactor: Refactored binocular overlays and camos into being variable-dependent.
+  harryob:
+  - admin: admins can now harm mobs by specific damage types in vv again
+  insertnamehere123:
+  - spellcheck: Changed a noun (Water) to an adjective (Watery)
+2023-02-23:
+  CapCamIII:
+  - spellcheck: Changes the following weapon names. XM42B to XM43E1, M1911 SOCOM >
+      M48A4, M43 Hummingbird > D18 Hummingbird, M40-SD > XM40, Mk210 > XM38
+  - spellcheck: B8 smartscope now doesn't say it fits on the M46C.
+  Joe lampost:
+  - rscadd: 'Added one emote and changed another emote
+
+      add:Predators can now self destruct bracers worn by humans'
+  - bugfix: fixed the loudroar emote
+  NewyearnewmeUwu:
+  - bugfix: crates are now always unanchored when they land
+  Puckaboo2:
+  - bugfix: Mentioned how Charger's stomp changes in the strain description and how
+      Hedgehog has immunity to small explosions.
+  - spellcheck: Fixed some grammar and spelling errors in the strain descriptions.
+  Tropical_Flak:
+  - imageadd: Changed the Seegson cargo container to be yellow instead of green.
+  carlarctg:
+  - rscadd: Braziers and torches can now be crafted with runed sandstone sheets by
+      Yautja. Braziers need to be filled with wood and then lit. Torches just need
+      to be lit.
+  - rscadd: Plasma casters and pistols are now heat sources so they can ignite braziers
+      and torches.
+  realforest2001:
+  - bugfix: Provost Enforcers and Team Leaders can now USE the beanbags they spawn
+      with.

@@ -2741,20 +2741,21 @@
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS
 	max_range = 32
 
-/datum/ammo/xeno/acid/marking/on_hit_mob(mob/Target, obj/item/projectile/P)
+/datum/ammo/xeno/acid/marking/on_hit_mob(mob/target, obj/item/projectile/impacting_projectile)
 	. = ..()
-	Target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
-	for(var/mob/living/carbon/xenomorph/X in range(5, Target))
+	target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
+	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL
 
-		if (!istype(X) || !X.check_state())
+		if (!boosting_xeno.check_state())
 			break
 
-		if (X.hivenumber != hivenumber || X.stat == DEAD)
+		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
 			continue
 
-		to_chat(X, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits the target!"))
-		X.gain_health(30)
+		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits [target]!"))
+		boosting_xeno.gain_health(30)
+		target.balloon_alert(boosting_xeno, "gain energy!")
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"

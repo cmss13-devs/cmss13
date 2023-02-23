@@ -32,11 +32,11 @@
 	return ..()
 /datum/effects/neurotoxin/process_mob() //yandere dev coding style
 	. = ..()
+	var/mob/living/carbon/affected_mob = affected_atom
 	if(!.)
 		return FALSE
 	if(affected_mob.stat)
 		return
-	var/mob/living/carbon/affected_mob = affected_atom
 // General effects
 	affected_mob.apply_stamina_damage(stam_dam)
 	affected_mob.make_dizzy(10)

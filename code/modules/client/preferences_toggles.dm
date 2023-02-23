@@ -61,7 +61,7 @@
 		if(src.mob.client.midi_silenced) return
 		if(midi_playing)
 			total_silenced++
-			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
+			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
 			src.mob.client.midi_silenced = 1
 			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0
@@ -480,6 +480,17 @@
 		prefs.tgui_say_light_mode = FALSE
 		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
 	tgui_say?.load()
+	prefs.save_preferences()
+
+/client/verb/toggle_auto_viewport_fit()
+	set name = "Toggle Auto Viewport Fit"
+	set category = "Preferences.UI"
+
+	prefs.auto_fit_viewport = !prefs.auto_fit_viewport
+	if(prefs.auto_fit_viewport)
+		to_chat(src, SPAN_NOTICE("Now auto fitting viewport."))
+	else
+		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

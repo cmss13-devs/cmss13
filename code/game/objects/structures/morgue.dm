@@ -12,6 +12,7 @@
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
+	var/exit_stun = 2
 	anchored = TRUE
 	throwpass = 1
 
@@ -111,9 +112,15 @@
 		. = ..()
 
 /obj/structure/morgue/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
+	if(user.is_mob_incapacitated())
 		return
-	toggle_morgue(user)
+	if(exit_stun)
+		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
+		user.update_canmove() //Force the delay to go in action immediately
+		if(!user.lying)
+			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		toggle_morgue(user)
 
 
 /*

@@ -21,6 +21,11 @@
 	if(!castepick) //Changed my mind
 		return
 
+	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
+	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([round((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		return
+
 	if(!evolve_checks())
 		return
 
@@ -104,6 +109,9 @@
 			return
 	else if(!can_evolve(castepick, potential_queens))
 		return
+
+	// subtract the threshold, keep the stored amount
+	evolution_stored -= evolution_threshold
 
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)

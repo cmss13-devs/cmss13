@@ -125,21 +125,21 @@
 
 
 //-------------------------------------------------------
-//M40-SD AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
-/obj/item/ammo_magazine/rifle/m40_sd
-	name = "\improper M40-SD magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+//XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
+/obj/item/ammo_magazine/rifle/xm40
+	name = "\improper xm40 magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the xm40 pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
-/obj/item/ammo_magazine/rifle/m40_sd/heap
-	name = "\improper M40-SD HEAP magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+/obj/item/ammo_magazine/rifle/xm40/heap
+	name = "\improper XM40 HEAP magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the XM40 pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd_heap"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
 //-------------------------------------------------------
@@ -266,6 +266,7 @@
 	desc = "A 10mm battle rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1"
+	bonus_overlay = "l42_mag_overlay"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42a
@@ -317,6 +318,7 @@
 	desc = "A 10mm battle rifle extended magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_extended"
+	bonus_overlay = "l42_ex_overlay"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 35
 	gun_type = /obj/item/weapon/gun/rifle/l42a
@@ -331,6 +333,21 @@
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
+
+/obj/item/ammo_magazine/rifle/l42a/abr40
+	name = "\improper ABR-40 magazine (10x24mm)"
+	desc = "An ABR-40 magazine loaded with full metal jacket ammunition, for use at the firing range or while hunting. Theoretically cross-compatible with an L42A battle rifle."
+	icon_state = "abr40"
+	bonus_overlay = "abr40_mag_overlay"
+	max_rounds = 12
+	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/l42a/abr40/holo_target
+	name = "\improper ABR-40 holotargeting magazine (10x24mm)"
+	desc = "An ABR-40 magazine loaded with holo-targeting ammunition, primarily utilized to highlight hunting targets for easier target capture. Theoretically cross-compatible with an L42A battle rifle."
+	icon_state = "abr40_holo"
+	default_ammo = /datum/ammo/bullet/rifle/holo_target/hunting
+	max_rounds = 12
 
 //-------------------------------------------------------
 // NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
@@ -367,34 +384,14 @@
 	item_state = "nsg23_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
-//-------------------------------------------------------
-//Basira-Armstrong rifle
-
-/obj/item/ammo_magazine/rifle/hunting
-	name = "\improper Basira-Armstrong magazine (6.5mm)"
-	desc = "A magazine for the Basira-Armstrong rifle. Compliant with the 10-cartridge limit on civilian semi-automatic rifles."
-	caliber = "6.5mm"
-	icon_state = "hunting"
-	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 10
-	gun_type = /obj/item/weapon/gun/rifle/hunting
-	w_class = SIZE_SMALL
-
 //--------------------------------------------------------
 //Bolt action rifle ammo
 /obj/item/ammo_magazine/rifle/boltaction
-	name = "\improper Bolt Action magazine (7.62mm)"
-	desc = "Bolt action magazine, simple really."
-	caliber = "7.62mm"
+	name = "\improper Basira-Armstrong magazine (6.5mm)"
+	desc = "A magazine for the Basira-Armstrong hunting rifle. Compliant with the 15-cartridge limit on civilian hunting rifles."
+	caliber = "6.5mm"
 	icon_state = "hunting"
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
-
-/obj/item/ammo_magazine/rifle/boltaction/colony
-	name = "\improper Model 12 Bolt Action magazine (8mm W-Y)"
-	desc = "A magazine for the Model 12 Bolt Action Rifle, holds ten rounds."
-	caliber = "8mm W-Y"
-	gun_type = /obj/item/weapon/gun/boltaction/colony
-	w_class = SIZE_MEDIUM

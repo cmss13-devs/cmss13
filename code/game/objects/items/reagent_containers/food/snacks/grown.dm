@@ -396,7 +396,7 @@
 /obj/item/reagent_container/food/snacks/grown/tomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	qdel(src)
 	return
 
@@ -430,7 +430,7 @@
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/splatter(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -448,7 +448,7 @@
 /obj/item/reagent_container/food/snacks/grown/bluetomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -607,7 +607,7 @@
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	if(inner_teleport_radius < 1) //Wasn't potent enough, it just splats.
 		new/obj/effect/decal/cleanable/blood/oil(src.loc)
-		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 		qdel(src)
 		return
 	for(var/turf/T in orange(M,outer_teleport_radius))
@@ -644,6 +644,6 @@
 				s.set_up(3, 1, A)
 				s.start()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),"<span class='moderate'>You hear a splat and a crackle.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),SPAN_MODERATE("You hear a splat and a crackle."))
 	qdel(src)
 	return

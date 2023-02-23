@@ -23,7 +23,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	ignore += typesof(/obj/vehicle)
 	ignore += typesof(/obj/effect/vehicle_spawner)
 	ignore += typesof(/obj/structure/closet/fancy)
-	ignore += typesof(/obj/effect/landmark/interior)
+	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
+	ignore += subtypesof(/atom/movable/screen/escape_menu)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

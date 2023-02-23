@@ -50,22 +50,6 @@
 	user.togglebuildmodeself()
 	return TRUE
 
-/datum/keybinding/admin/dasdlkasdaksda
-	hotkey_keys = list("T")
-	classic_keys = list("Unbound")
-	name = "forsure"
-	full_name = "yep"
-	description = "maybe"
-	keybind_signal = "poggers"
-
-/datum/keybinding/admin/dasdlasdasdafasdasdasdadasdasdad
-	hotkey_keys = list("T")
-	classic_keys = list("Unbound")
-	name = "forssadasdaure"
-	full_name = "yeasdp"
-	description = "maasdasdybe"
-	keybind_signal = "pogwasdasdagers"
-
 /datum/keybinding/admin/stealthmode
 	hotkey_keys = list("F8")
 	classic_keys = list("F8")

@@ -13,7 +13,7 @@
 	var/is_weapon = FALSE //whether the equipment is a weapon usable for dropship bombardment.
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
 	var/is_interactable = FALSE //whether they get a button when shown on the shuttle console's equipment list.
-	var/datum/shuttle/ferry/marine/linked_shuttle
+	var/obj/docking_port/mobile/marine_dropship/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
@@ -176,7 +176,7 @@
 			to_chat(user, SPAN_WARNING("[src] is busy."))
 			return //prevents spamming deployment/undeployment
 		if(deployed_turret.loc == src) //not deployed
-			if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
+			if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 				to_chat(user, SPAN_WARNING("[src] can't deploy mid-flight."))
 			else
 				to_chat(user, SPAN_NOTICE("You deploy [src]."))
@@ -295,7 +295,7 @@
 				to_chat(user, SPAN_WARNING("[src] is not ready."))
 				return //prevents spamming deployment/undeployment
 			if(deployed_mg.loc == src) //not deployed
-				if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
+				if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 					to_chat(user, SPAN_WARNING("[src] can't be deployed mid-flight."))
 				else
 					to_chat(user, SPAN_NOTICE("You pull out [deployed_mg]."))
@@ -493,12 +493,12 @@
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 400
-	var/obj/structure/machinery/computer/security/dropship/linked_cam_console
+	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
 		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/security/dropship/D in range(5, loc))
+			for(var/obj/structure/machinery/computer/cameras/dropship/D in range(5, loc))
 				linked_cam_console = D
 				break
 		icon_state = "[initial(icon_state)]_installed"
@@ -795,7 +795,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -868,7 +868,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -919,7 +919,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -962,7 +962,7 @@
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
 
-	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	else if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
 		fail = TRUE
 
 	if(fail)
@@ -1019,7 +1019,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -1065,7 +1065,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -1098,7 +1098,7 @@
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
 
-	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	else if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
 		fail = TRUE
 
 	if(fail)
@@ -1213,11 +1213,11 @@
 	qdel(warning_zone)
 
 /obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
 		return FALSE
 
-	if(!linked_shuttle.transit_gun_mission)
+	if(!linked_shuttle.in_flyby)
 		to_chat(user, SPAN_WARNING("\The [src] requires a flyby flight to be used."))
 		return FALSE
 

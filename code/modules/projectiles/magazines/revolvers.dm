@@ -7,6 +7,7 @@
 	default_ammo = /datum/ammo/bullet/revolver
 	flags_equip_slot = NO_FLAGS
 	caliber = ".44"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
 	w_class = SIZE_SMALL
@@ -49,6 +50,7 @@
 /obj/item/ammo_magazine/revolver/pkd
 	name = "\improper Plfager Katsuma stripper clip (.44)"
 	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "pkd_44"
 	caliber = ".44 sabot"
 
@@ -56,6 +58,7 @@
 	name = "\improper N-Y speed loader (7.62x38mmR)"
 	default_ammo = /datum/ammo/bullet/revolver/nagant
 	caliber = "7.62x38mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ny762"
 	gun_type = /obj/item/weapon/gun/revolver/nagant
 
@@ -69,6 +72,7 @@
 	name = "\improper S&W speed loader (.38)"
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".38"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
@@ -78,6 +82,7 @@
 	desc = "This speedloader was created for the Colonial Marshals' most commonly issued sidearm, loaded with hollowpoint rounds either for colonies with wildlife problems or orbital stations, which favor the lesser penetration over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
 	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
@@ -121,6 +126,7 @@
 	desc = ".455 Webley, the last decent pistol calibre. Loaded with Mk III dum-dum bullets, because Marines are not human and the Hague Conventions do not apply to them."
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	caliber = ".455"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "mateba"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley

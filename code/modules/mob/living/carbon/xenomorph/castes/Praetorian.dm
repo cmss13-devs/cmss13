@@ -28,6 +28,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
+	minimum_evolve_time = 15 MINUTES
+
 	minimap_icon = "praetorian"
 
 /mob/living/carbon/xenomorph/praetorian

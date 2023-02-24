@@ -552,7 +552,7 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = -25;
 	pixel_y = 5
 	},

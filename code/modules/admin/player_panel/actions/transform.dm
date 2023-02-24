@@ -190,5 +190,5 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	QDEL_IN(target, 0.3 SECONDS)
 	addtimer(CALLBACK(M.mob_panel, TYPE_PROC_REF(/datum, tgui_interact), user.mob), 1 SECONDS)
 
-	message_staff("[key_name_admin(user)] has transformed [key_name_admin(target)] into mob type [type]")
+	message_admins("[key_name_admin(user)] has transformed [key_name_admin(target)] into mob type [type]")
 	return TRUE

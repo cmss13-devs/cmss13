@@ -64,25 +64,27 @@
 	desc = "It's a small maintenance robot."
 	icon_state = "drone"
 
-/obj/item/holder/Runtime
-	name = "Runtime"
-	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
-	icon_state = "cat"
-
 /obj/item/holder/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	icon_state = "cat2"
 
-/obj/item/holder/blackcat
+/obj/item/holder/cat/kitten
+	name = "kitten"
+	desc = "D'aaawwww"
+
+/obj/item/holder/cat/Jones
+	name = "\improper Jones"
+	desc = "A tough, old stray whose origin no one seems to know."
+
+/obj/item/holder/cat/blackcat
 	name = "black cat"
 	desc = "It's a cat, now in black!"
 	icon_state = "cat"
 
-/obj/item/holder/Jones
-	name = "Jones"
-	desc = "A tough, old stray whose origin no one seems to know."
-	icon_state = "cat2"
+/obj/item/holder/cat/blackcat/Runtime
+	name = "\improper Runtime"
+	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 
 /obj/item/holder/kitten
 	name = "kitten"

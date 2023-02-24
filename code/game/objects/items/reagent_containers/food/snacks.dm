@@ -3286,7 +3286,7 @@
 	bitesize = 20
 	wrapper = /obj/item/trash/chunk/hunk
 
-/obj/item/reagent_container/food/snacks/wrapped/chunk/Initialize()
+/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk/Initialize()
 	. = ..()
 	reagents.add_reagent("nutriment", 5)
 	reagents.add_reagent("iron", 30)

@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - code_imp: "Any xenomorph strain description that previously did not completely disclose any abilities or attributes that will be removed or changed upon mutating will now disclose them, often within the first sentence."
+  - rscadd: "Every xenomorph strain now has flavor text, personalized as a message from the Queen, herself."

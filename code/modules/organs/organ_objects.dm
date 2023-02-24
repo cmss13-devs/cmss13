@@ -166,7 +166,7 @@
 	if(!eye_colour)
 		eye_colour = list(0,0,0)
 
-	..() //Make sure target is set so we can steal their eye colour for later.
+	..() //Make sure target is set so we can steal their eye color for later.
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
 		eye_colour = list(
@@ -186,7 +186,7 @@
 
 /obj/item/organ/eyes/replaced(mob/living/target)
 
-	// Apply our eye colour to the target.
+	// Apply our eye color to the target.
 	var/mob/living/carbon/human/H = target
 	if(istype(H) && eye_colour)
 		H.r_eyes = eye_colour[1]

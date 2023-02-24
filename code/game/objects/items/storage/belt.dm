@@ -1548,15 +1548,13 @@
 
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
-	desc = "The M276 pattern combat toolbelt rig is an alternative load-bearing equipment of the USCM for engineers conducting repairs within combat zones. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm and magazine."
-	storage_slots = 9
+	desc = "The M276 pattern combat toolbelt rig is an alternative load-bearing equipment of the USCM for engineers conducting repairs within combat zones. It consists of a modular belt with various clips and pouches for tools along with a holster for a sidearm. Due to the bulk of the sidearm, it is unable to hold as many tools as its standard counterpart."
+	storage_slots = 6
 	icon_state = "combatutility"
 	item_state= "combatutility"
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/pistol,
 		/obj/item/weapon/gun/flare,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
@@ -1586,13 +1584,10 @@
 
 /obj/item/storage/belt/gun/utility/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
-	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)
-	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
 	new /obj/item/device/multitool(src)
 
 ////////////OTHER BELTS//////////////

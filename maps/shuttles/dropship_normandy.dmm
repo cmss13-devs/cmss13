@@ -407,6 +407,17 @@
 	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
+"Gy" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "GE" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "67"
@@ -857,11 +868,11 @@ Bs
 Bb
 Iv
 rc
-PJ
+Gy
 do
-PJ
+Gy
 do
-PJ
+Gy
 do
 PJ
 Rr

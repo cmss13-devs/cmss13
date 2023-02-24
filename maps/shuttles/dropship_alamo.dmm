@@ -317,6 +317,17 @@
 	icon_state = "9"
 	},
 /area/shuttle/drop1/sulaco)
+"yW" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "zw" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "71"
@@ -824,11 +835,11 @@ BB
 BB
 OK
 OU
-il
+TK
 wr
-il
+TK
 wr
-il
+yW
 wr
 il
 mb

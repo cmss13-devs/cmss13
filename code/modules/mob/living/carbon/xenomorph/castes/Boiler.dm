@@ -28,6 +28,8 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
+	minimum_evolve_time = 15 MINUTES
+
 	minimap_icon = "boiler"
 
 /mob/living/carbon/xenomorph/boiler

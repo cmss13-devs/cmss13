@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "All ability icons that either did not have borders, had misshapen borders, had incorrect colors in portions of their borders, or  did not align properly in the ability icon template now have a proper border surrounding their icons and have been moved to their proper position."

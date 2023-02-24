@@ -68,11 +68,11 @@
 	. = ..()
 	qdel(door_control)
 
-/obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force)
+/obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	// its been locked down by the queen
 	if(door_override)
 		return
-	door_control.control_doors(action, direction, force)
+	door_control.control_doors(action, direction, force, asynchronous)
 
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)

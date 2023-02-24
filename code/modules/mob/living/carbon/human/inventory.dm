@@ -1,6 +1,6 @@
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -543,3 +543,9 @@
 	if(M)
 		if(interactee == M && Adjacent(M))
 			M.show_inv(src)
+
+/mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
+	remember_dropped_object(I)
+	return ..()
+
+

@@ -9,7 +9,7 @@
 
 
 /datum/fluff_email/almayer/iwantout
-	title = "RE: I want out.."
+	title = "RE: I want out."
 	entry_text = {"<html>
 					Okay, yep, I know what you're saying. Stilettos aren't safe, you want out of my sharp stick business,
 					and sooner or later we're going to get hung upside down from our ankles by the MPs, stuffed in a freezer
@@ -39,7 +39,7 @@
 
 
 /datum/fluff_email/almayer/thermalcloak
-	title = "M68 Thermal Cloak.."
+	title = "M68 Thermal Cloak."
 	entry_text = {"<html>
 					Are you sure these things are safe, man? I just tried one on during a training exercise back at Bernice 378, took a wrong turn,
 					and wound up on an outdoor firing range being used by another Battalion (5th "Hammerheads" I think?). Now typically, somebody would have spotted me,

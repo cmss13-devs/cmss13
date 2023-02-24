@@ -48,3 +48,26 @@
 #define VENDOR_ITEM_RECOMMENDED 3
 
 #define CL_BRIEFCASE_TIME_LOCK 20 MINUTES
+
+#define VENDOR_PRODUCT_TYPE_UNDEF "Undefined" // Try not to use this if the vendor is priced.
+#define VENDOR_PRODUCT_TYPE_FOOD "Food"
+#define VENDOR_PRODUCT_TYPE_BEVERAGES "Beverage"
+//#define VENDOR_PRODUCT_TYPE_ALCOHOL "Alcohol" No alcohol vendors on the Almayer anyways.
+#define VENDOR_PRODUCT_TYPE_SOUTO "Souto"
+#define VENDOR_PRODUCT_TYPE_NICOTINE "Nicotine"
+#define VENDOR_PRODUCT_TYPE_RECREATIONAL "Recreational"
+
+#define ALL_VENDOR_PRODUCT_TYPES list(VENDOR_PRODUCT_TYPE_FOOD, VENDOR_PRODUCT_TYPE_BEVERAGES, VENDOR_PRODUCT_TYPE_SOUTO, VENDOR_PRODUCT_TYPE_NICOTINE, VENDOR_PRODUCT_TYPE_RECREATIONAL)
+
+#define VEND_TO_HAND (1<<0)
+#define VEND_UNIFORM_RANKS (1<<1)
+#define VEND_UNIFORM_AUTOEQUIP (1<<2)
+#define VEND_LIMITED_INVENTORY (1<<3)
+#define VEND_CLUTTER_PROTECTION (1<<4)
+#define VEND_CATEGORY_CHECK (1<<5)
+#define VEND_INSTANCED_CATEGORY (1<<6)
+#define VEND_FACTION_THEMES (1<<7)
+#define VEND_USE_VENDOR_FLAGS (1<<8)
+//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+//Only relevant in big vendors, like Requisitions or Squad Prep
+#define VEND_LOAD_AMMO_BOXES (1<<9)

@@ -41,7 +41,7 @@
 		return
 
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
-	message_staff("Successfully loaded template as new Z-Level by ckey: [logckey], template name: [template.name]", center_x, center_y, loaded.z_value)
+	message_admins("Successfully loaded template as new Z-Level by ckey: [logckey], template name: [template.name]", center_x, center_y, loaded.z_value)
 	if(isobserver(C?.mob))
 		var/turf/T = locate(center_x, center_y, loaded.z_value)
 		if(T) // ???? surely that'd never happen

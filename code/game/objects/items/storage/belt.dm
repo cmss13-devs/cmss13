@@ -79,12 +79,12 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/cell,
-		/obj/item/device/lightreplacer
+		/obj/item/device/lightreplacer,
 
 	)
 	bypass_w_limit = list(
-	/obj/item/tool/shovel/etool,
-	/obj/item/device/lightreplacer
+		/obj/item/tool/shovel/etool,
+		/obj/item/device/lightreplacer,
 	)
 
 
@@ -143,7 +143,7 @@
 		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/roller,
 		/obj/item/tool/surgery/synthgraft,
-		/obj/item/reagent_container/glass/minitank
+		/obj/item/reagent_container/glass/minitank,
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -201,7 +201,7 @@
 		/obj/item/stack/medical,
 		/obj/item/device/defibrillator/compact,
 		/obj/item/device/reagent_scanner,
-		/obj/item/device/analyzer/plant_analyzer
+		/obj/item/device/analyzer/plant_analyzer,
 	)
 	has_gamemode_skin = TRUE
 
@@ -304,7 +304,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/radio/headset,
 		/obj/item/weapon,
-		/obj/item/device/clue_scanner
+		/obj/item/device/clue_scanner,
 	)
 
 
@@ -371,11 +371,11 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/explosive/grenade,
 		/obj/item/explosive/mine,
-		/obj/item/reagent_container/food/snacks
+		/obj/item/reagent_container/food/snacks,
 	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg
+		/obj/item/ammo_magazine/smg,
 	)
 	has_gamemode_skin = TRUE
 
@@ -436,9 +436,9 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5 (src)
 
-/obj/item/storage/belt/marine/hunting/fill_preset_inventory() // Hunting Rifle
+/obj/item/storage/belt/marine/abr40/fill_preset_inventory() // Hunting Rifle
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/hunting(src)
+		new /obj/item/ammo_magazine/rifle/l42a/abr40(src)
 
 /obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
 	for(var/i = 1 to storage_slots)
@@ -456,7 +456,7 @@
 	icon_state = "sgbelt_ammo"
 	storage_slots = 6
 	bypass_w_limit = list(
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
@@ -471,7 +471,7 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/explosive/grenade,
 		/obj/item/explosive/mine,
-		/obj/item/reagent_container/food/snacks
+		/obj/item/reagent_container/food/snacks,
 	)
 
 /obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
@@ -534,7 +534,7 @@
 		/obj/item/explosive/mine,
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/tool/wirecutters,
-		/obj/item/ammo_magazine/m56d
+		/obj/item/ammo_magazine/m56d,
 	)
 	has_gamemode_skin = FALSE
 
@@ -687,7 +687,7 @@
 	max_storage_space = 48
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
 	flap = FALSE
@@ -734,11 +734,11 @@
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
@@ -759,18 +759,18 @@
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 
 
@@ -807,7 +807,7 @@
 	var/base_icon
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/ammo_magazine/pistol
+		/obj/item/ammo_magazine/pistol,
 	)
 
 /obj/item/storage/belt/gun/post_skin_selection()
@@ -974,11 +974,11 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart
+		/obj/item/ammo_magazine/pistol/smart,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1021,7 +1021,7 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
 /obj/item/storage/belt/gun/m4a3/m1911/socom/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/equipped())
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
@@ -1078,7 +1078,7 @@
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = TRUE
 	holster_slots = list(
@@ -1108,7 +1108,7 @@
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = FALSE
 	holster_slots = list(
@@ -1138,8 +1138,8 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/handful,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine/revolver
-		)
+		/obj/item/ammo_magazine/revolver,
+	)
 	flap = FALSE
 	holster_slots = list(
 		"1" = list(
@@ -1181,7 +1181,7 @@
 	storage_slots = 1
 	max_storage_space = 1
 	can_hold = list(
-		/obj/item/weapon/gun/revolver
+		/obj/item/weapon/gun/revolver,
 	)
 
 /obj/item/storage/belt/gun/mateba
@@ -1194,7 +1194,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
 		/obj/item/ammo_magazine/revolver/mateba/highimpact,
-		/obj/item/ammo_magazine/revolver/mateba
+		/obj/item/ammo_magazine/revolver/mateba,
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1303,7 +1303,7 @@
 		/obj/item/ammo_magazine/pistol/c99/tranq,
 		/obj/item/weapon/gun/revolver/nagant,
 		/obj/item/ammo_magazine/revolver/upp,
-		/obj/item/ammo_magazine/revolver/upp/shrapnel
+		/obj/item/ammo_magazine/revolver/upp/shrapnel,
 	)
 	holster_slots = list("1" = list("icon_x" = -1))
 
@@ -1339,7 +1339,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine
+		/obj/item/ammo_magazine,
 	)
 
 /obj/item/storage/belt/gun/type47/ivan/Initialize()
@@ -1373,7 +1373,7 @@
 			"icon_y" = -2))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart
+		/obj/item/ammo_magazine/pistol/smart,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1395,7 +1395,7 @@
 	item_state = "s_marinebelt"
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
-		/obj/item/device/flashlight/flare
+		/obj/item/device/flashlight/flare,
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1425,7 +1425,7 @@
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = FALSE
 	holster_slots = list(
@@ -1453,7 +1453,7 @@
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1465,6 +1465,29 @@
 
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
+	can_hold = list(
+		/obj/item/device/flashlight/flare,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/smartgun,
+	)
+	has_gamemode_skin = TRUE
+
+/obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/belt/gun/smartgunner/whiteout
+	name = "\improper M802 pattern 'Terminator' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
@@ -1475,13 +1498,13 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+/obj/item/storage/belt/gun/smartgunner/whiteout/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/pmc())
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
@@ -1498,7 +1521,7 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1518,7 +1541,7 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/weapon/gun/flare,
-		/obj/item/mortar_shell
+		/obj/item/mortar_shell,
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)
 	has_gamemode_skin = TRUE
@@ -1547,7 +1570,7 @@
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher
+		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 	)
 
 /obj/item/storage/belt/souto

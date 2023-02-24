@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Reinforced resin secretions now have separate ability icons from their normal counterparts."
+  - bugfix: "Resin secretion ability icons without borders now fit snugly inside their templates."

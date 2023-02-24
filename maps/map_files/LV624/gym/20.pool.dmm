@@ -27,7 +27,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "gL" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100";

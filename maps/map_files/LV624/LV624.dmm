@@ -16565,10 +16565,6 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
-"hYS" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/barrens/east_barrens)
 "hXt" = (
 /obj/structure/transmitter/colony_net{
 	pixel_y = 32;
@@ -16577,6 +16573,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"hYS" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/east_barrens)
 "hZg" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -21500,11 +21500,6 @@
 /obj/structure/flora/jungle/thickbush/jungle_plant,
 /turf/open/gm/grass/weedable,
 /area/lv624/ground/barrens/central_barrens)
-"rWt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/grass/weedable,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "rVH" = (
 /obj/structure/transmitter/colony_net{
 	pixel_y = 24;
@@ -21517,6 +21512,11 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
+"rWt" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "rWW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,

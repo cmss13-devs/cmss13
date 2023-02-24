@@ -6,6 +6,7 @@
 	name = "rotating ammo drum (7.62x51mm)"
 	desc = "A huge ammo drum for a huge gun."
 	caliber = "7.62x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "painless" //PLACEHOLDER
 
 	matter = list("metal" = 10000)
@@ -21,6 +22,7 @@
 	name = "M60 ammo box (7.62x51mm)"
 	desc = "A blast from the past chambered in 7.62X51mm NATO."
 	caliber = "7.62x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "m60" //PLACEHOLDER
 
 	matter = list("metal" = 10000)

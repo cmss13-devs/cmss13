@@ -380,6 +380,87 @@
 			return
 	..()
 
+#define CLUB_MODE_BLUNT 0
+#define CLUB_MODE_SHARP 1
+
+/obj/item/weapon/melee/yautja/club
+	name = "war club"
+	desc = "A large, bulky club that seems to have crusted, chunky bits on its ends. There's some strange markings and mechanical bits on it. Activate on hand to change modes."
+	icon_state = "war_club_blunt"
+	item_state = "war_club_blunt"
+
+	force = MELEE_FORCE_TIER_6
+	attack_speed = 1.3 SECONDS
+
+	/// Controls what mode it's currently set to.
+	var/current_mode = CLUB_MODE_BLUNT
+
+	/// Variables for when it's set to 'sharp' mode.
+	var/force_sharp = MELEE_FORCE_TIER_6
+	var/attack_speed_sharp = 0.75 SECONDS
+	var/icon_state_sharp = "war_club_sharp"
+	var/item_state_sharp = "war_club_sharp"
+	var/hitsound_sharp = 'sound/weapons/wristblades_hit.ogg'
+	var/attack_verb_sharp = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+	/// Variables for when it's set to 'blunt' mode. Set to this by default.
+	var/force_blunt = MELEE_FORCE_TIER_5 // Worse stats, but in exchange the club dazes on hit.
+	var/attack_speed_blunt = 1.3 SECONDS
+	var/icon_state_blunt = "war_club_blunt"
+	var/item_state_blunt = "war_club_blunt"
+	var/hitsound_blunt = 'sound/weapons/synthpunch1.ogg'
+	var/attack_verb_blunt = list("thrashed", "smashed", "pulverized", "clubbed", "slammed", "pummeled", "clobbered", "bludgeoned", "slugged")
+
+	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_WAIST
+	throwforce = MELEE_FORCE_TIER_5
+	sharp = FALSE
+	edge = TRUE
+	embeddable = FALSE
+	w_class = SIZE_LARGE
+	hitsound = 'sound/weapons/synthpunch1.ogg'
+	attack_verb = list("thrashed", "smashed", "pulverized", "clubbed", "slammed", "pummeled", "clobbered", "bludgeoned", "slugged")
+	unacidable = TRUE
+
+/obj/item/weapon/melee/yautja/club/attack_self(mob/user)
+	if(!do_after(user, 0.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		return ..()
+
+	if(current_mode == CLUB_MODE_SHARP)
+		user.visible_message(SPAN_DANGER("[user] presses a button on [src], and it retracts its blade!"), SPAN_NOTICE("You press a button on [src] and retract its blade mechanism. It will now be a slow, lumbering monster that dazes on hit."))
+		balloon_alert(user, "blunt")
+		icon_state =  icon_state_blunt
+		item_state = item_state_blunt
+		force = force_blunt
+		attack_speed = attack_speed_blunt
+		hitsound = hitsound_blunt
+		attack_verb = attack_verb_blunt
+		playsound(user,'sound/weapons/wristblades_off.ogg', 15, 1)
+		sharp = FALSE
+		current_mode = CLUB_MODE_BLUNT
+	else
+		user.visible_message(SPAN_DANGER("[user] presses a button on [src], and it extends a blade from the hilt!"), SPAN_NOTICE("You press a button on [src] and extend its blade mechanism. It will now be a quick. nimble skirmisher."))
+		balloon_alert(user, "sharp")
+		icon_state =  icon_state_sharp
+		item_state = item_state_sharp
+		force = force_sharp
+		attack_speed = attack_speed_sharp
+		hitsound = hitsound_sharp
+		attack_verb = attack_verb_sharp
+		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
+		sharp = IS_SHARP_ITEM_BIG
+		current_mode = CLUB_MODE_SHARP
+
+/obj/item/weapon/melee/yautja/club/attack(mob/living/M, mob/living/user)
+	. = ..()
+	if(current_mode == CLUB_MODE_BLUNT)
+		M.apply_effect(1, DAZE)
+		M.visible_message(SPAN_DANGER("[M] is staggered by [src]'s heavy impact!"), SPAN_HIGHDANGER("CLANG!!!!"))
+
+#undef CLUB_MODE_BLUNT
+#undef CLUB_MODE_SHARP
+
 /obj/item/weapon/melee/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."

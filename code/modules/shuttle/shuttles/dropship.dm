@@ -79,7 +79,7 @@
 
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
-	control_doors("force-lock-launch", "all", force=TRUE, use_async = FALSE)
+	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"

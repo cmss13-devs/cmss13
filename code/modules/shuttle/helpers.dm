@@ -34,12 +34,12 @@
 		WARNING("Direction [direction] does not exist.")
 	return FALSE
 
-/datum/door_controller/aggregate/proc/control_doors(action, direction, force)
+/datum/door_controller/aggregate/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	if(direction == "all")
 		if(allow_multicast)
 			for(var/door_group in door_controllers)
 				var/datum/door_controller/single/controller = door_controllers[door_group]
-				controller.control_doors(action, force)
+				controller.control_doors(action, force, asynchronous)
 			return
 		else
 			WARNING("Aggregate door controller does not support multicast.")
@@ -75,7 +75,7 @@
 	. = ..()
 	doors = null
 
-/datum/door_controller/single/proc/control_doors(action, force = FALSE, use_async = TRUE)
+/datum/door_controller/single/proc/control_doors(action, force = FALSE, asynchronous = TRUE)
 	for(var/D in doors)
 		var/obj/structure/machinery/door/door = D
 		var/is_external = door.borders_space()
@@ -97,7 +97,7 @@
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
 				is_locked = FALSE
 			if("force-lock-launch")
-				if(use_async)
+				if(asynchronous)
 					INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 				else
 					lockdown_door_launch(door)

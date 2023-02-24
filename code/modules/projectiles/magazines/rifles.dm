@@ -8,6 +8,7 @@
 	name = "\improper M41A magazine (10x24mm)"
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m41a"
 	item_state = "generic_mag"
 	w_class = SIZE_MEDIUM
@@ -198,6 +199,7 @@
 	name = "\improper MAR magazine (7.62x39mm)"
 	desc = "A 7.62x39mm magazine for the MAR series of firearms."
 	caliber = "7.62x39mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "mar40"
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
@@ -226,6 +228,7 @@
 	name = "\improper M16 magazine (5.56x45mm)"
 	desc = "A 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "m16"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -249,6 +252,7 @@
 	name = "\improper AR10 magazine (7.62x51mm)"
 	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
 	caliber = "7.62x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "ar10"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -288,6 +292,7 @@
 	name = "\improper Type 71 magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "type_71"
 	default_ammo = /datum/ammo/bullet/rifle/type71
 	max_rounds = 60
@@ -386,6 +391,7 @@
 /obj/item/ammo_magazine/rifle/l42a/abr40
 	name = "\improper ABR-40 magazine (10x24mm)"
 	desc = "An ABR-40 magazine loaded with full metal jacket ammunition, for use at the firing range or while hunting. Theoretically cross-compatible with an L42A battle rifle."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
 	max_rounds = 12
@@ -405,6 +411,7 @@
 	name = "\improper NSG 23 magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine."
 	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/wy.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
 	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
@@ -439,6 +446,7 @@
 	name = "\improper Basira-Armstrong magazine (6.5mm)"
 	desc = "A magazine for the Basira-Armstrong hunting rifle. Compliant with the 15-cartridge limit on civilian hunting rifles."
 	caliber = "6.5mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "hunting"
 	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10

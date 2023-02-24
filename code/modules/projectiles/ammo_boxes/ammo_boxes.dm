@@ -2,7 +2,7 @@
 
 /obj/item/ammo_box
 	name = "\improper generic ammo box"
-	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE
@@ -10,6 +10,11 @@
 	var/burning = FALSE
 	var/limit_per_tile = 1 //how many you can deploy per tile
 	layer = LOWER_ITEM_LAYER //to not hide other items
+
+	var/text_markings_icon = 'icons/obj/items/weapons/guns/ammo_boxes/text.dmi'
+	var/handfuls_icon = 'icons/obj/items/weapons/guns/ammo_boxes/handfuls.dmi'
+	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
+	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
 
 //---------------------GENERAL PROCS
 
@@ -52,7 +57,7 @@
 	return
 
 /obj/item/ammo_box/magazine
-	name = "\improper magazine box (M41A x 10)"
+	name = "magazine box (M41A x 10)"
 	icon_state = "base_m41" //base color of box
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
@@ -88,13 +93,14 @@
 /obj/item/ammo_box/magazine/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	if(!icon_state_deployed) // The lid is on the sprite already.
+		overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
 	if(overlay_gun_type)
-		overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding text
+		overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 	if(overlay_ammo_type)
-		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
-	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
-		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
+		overlays += image(text_markings_icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
+	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank" && (!icon_state_deployed) )
+		overlays += image(text_markings_icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
 
 //---------------------INTERACTION PROCS
 
@@ -236,7 +242,7 @@
 	var/offset_y = 0
 	if(limit_per_tile == 1) //snowflake nailgun ammo box again
 		offset_y += -2
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
+	var/image/fire_overlay = image(flames_icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
 	overlays.Add(fire_overlay)
 
 //-----------------------------------------------------------------------------------
@@ -271,16 +277,16 @@
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
 
 	if(bullet_amount == max_bullet_amount)
-		overlays += image(icon, icon_state = "rounds[overlay_content]")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]")
 	else if(bullet_amount > (max_bullet_amount/2))
-		overlays += image(icon, icon_state = "rounds[overlay_content]_3")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_3")
 	else if(bullet_amount > (max_bullet_amount/4))
-		overlays += image(icon, icon_state = "rounds[overlay_content]_2")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_2")
 	else if(bullet_amount > 0)
-		overlays += image(icon, icon_state = "rounds[overlay_content]_1")
+		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]_1")
 
 //---------------------INTERACTION PROCS
 

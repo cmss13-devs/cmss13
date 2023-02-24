@@ -42,11 +42,16 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
-	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
-		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
-			evolve_message()
+			if(!got_evolution_message)
+				evolve_message()
+				got_evolution_message = TRUE
+			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+				evolution_stored += progress_amount
+		else
+			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it

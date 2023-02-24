@@ -365,3 +365,39 @@
   - admin: admins can now harm mobs by specific damage types in vv again
   insertnamehere123:
   - spellcheck: Changed a noun (Water) to an adjective (Watery)
+2023-02-23:
+  CapCamIII:
+  - spellcheck: Changes the following weapon names. XM42B to XM43E1, M1911 SOCOM >
+      M48A4, M43 Hummingbird > D18 Hummingbird, M40-SD > XM40, Mk210 > XM38
+  - spellcheck: B8 smartscope now doesn't say it fits on the M46C.
+  Joe lampost:
+  - rscadd: 'Added one emote and changed another emote
+
+      add:Predators can now self destruct bracers worn by humans'
+  - bugfix: fixed the loudroar emote
+  NewyearnewmeUwu:
+  - bugfix: crates are now always unanchored when they land
+  Puckaboo2:
+  - bugfix: Mentioned how Charger's stomp changes in the strain description and how
+      Hedgehog has immunity to small explosions.
+  - spellcheck: Fixed some grammar and spelling errors in the strain descriptions.
+  Tropical_Flak:
+  - imageadd: Changed the Seegson cargo container to be yellow instead of green.
+  carlarctg:
+  - rscadd: Braziers and torches can now be crafted with runed sandstone sheets by
+      Yautja. Braziers need to be filled with wood and then lit. Torches just need
+      to be lit.
+  - rscadd: Plasma casters and pistols are now heat sources so they can ignite braziers
+      and torches.
+  realforest2001:
+  - bugfix: Provost Enforcers and Team Leaders can now USE the beanbags they spawn
+      with.
+2023-02-24:
+  Puckaboo2:
+  - bugfix: Added the missing icon states of several uniforms which had the ability
+      to roll sleeves up.
+  harryob:
+  - ui: adds an escape menu, with some (not many) buttons on it
+  - qol: prevented new keybinds binding over existing ones
+  - bugfix: prevented ert spawns causing unknown demons if you disconnect after becoming
+      a candidate

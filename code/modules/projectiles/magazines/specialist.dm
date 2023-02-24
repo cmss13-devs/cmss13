@@ -6,6 +6,7 @@
 	name = "\improper M42A marksman magazine (10x28mm Caseless)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will deal significant damage."
 	caliber = "10x28mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m42c" //PLACEHOLDER
 	w_class = SIZE_MEDIUM
 	max_rounds = 15
@@ -51,6 +52,7 @@
 	name = "\improper SVD magazine (7.62x54mmR)"
 	desc = "A large caliber magazine for the SVD designated marksman rifle."
 	caliber = "7.62x54mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "svd"
 	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10
@@ -92,8 +94,9 @@
 /obj/item/ammo_magazine/smartgun
 	name = "smartgun drum"
 	caliber = "10x28mm"
-	max_rounds = 500 //Should be 500 in total.
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m56_drum"
+	max_rounds = 500 //Should be 500 in total.
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun
@@ -120,6 +123,7 @@
 	name = "\improper 84mm high explosive rocket"
 	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "rocket"
 
 	reload_delay = 60
@@ -300,6 +304,7 @@
 	name = "\improper 84mm thermobaric rocket array"
 	desc = "A thermobaric rocket tube for an M57-A4 quad launcher with 4 warheads."
 	caliber = "rocket array"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	icon_state = "quad_rocket"
 
 	max_rounds = 4

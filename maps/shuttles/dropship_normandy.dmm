@@ -41,7 +41,7 @@
 "do" = (
 /obj/effect/attach_point/crew_weapon/dropship2,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "es" = (
@@ -857,11 +857,11 @@ Bs
 Bb
 Iv
 rc
-vd
+PJ
 do
-vd
+PJ
 do
-vd
+PJ
 do
 PJ
 Rr

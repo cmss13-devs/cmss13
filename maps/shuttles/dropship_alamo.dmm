@@ -273,7 +273,7 @@
 "wr" = (
 /obj/effect/attach_point/crew_weapon/dropship1,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "ws" = (
@@ -824,11 +824,11 @@ BB
 BB
 OK
 OU
-Zo
+il
 wr
-Zo
+il
 wr
-Zo
+il
 wr
 il
 mb

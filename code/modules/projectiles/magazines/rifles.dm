@@ -126,21 +126,21 @@
 
 
 //-------------------------------------------------------
-//M40-SD AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
-/obj/item/ammo_magazine/rifle/m40_sd
-	name = "\improper M40-SD magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+//XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
+/obj/item/ammo_magazine/rifle/xm40
+	name = "\improper xm40 magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the xm40 pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
-/obj/item/ammo_magazine/rifle/m40_sd/heap
-	name = "\improper M40-SD HEAP magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+/obj/item/ammo_magazine/rifle/xm40/heap
+	name = "\improper XM40 HEAP magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the XM40 pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd_heap"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
 //-------------------------------------------------------

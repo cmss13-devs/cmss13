@@ -223,16 +223,16 @@
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
-/obj/item/ammo_magazine/pistol/m43pistol
-	name = "M43 magazine (9mm)"
-	desc = "A small M43 magazine storing 7 9mm bullets. How is it even this small?"
+/obj/item/ammo_magazine/pistol/clfpistol
+	name = "D18 magazine (9mm)"
+	desc = "A small D18 magazine storing 7 9mm bullets. How is it even this small?"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m4a3" // placeholder
 	max_rounds = 7
 	w_class = SIZE_TINY
-	gun_type = /obj/item/weapon/gun/pistol/m43pistol
+	gun_type = /obj/item/weapon/gun/pistol/clfpistol
 
 
 //-------------------------------------------------------

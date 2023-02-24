@@ -30,7 +30,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
-	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
 
@@ -78,11 +78,11 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
-/datum/game_mode/proc/ds_first_drop(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/mobile/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return

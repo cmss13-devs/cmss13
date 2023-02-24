@@ -270,12 +270,12 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 	damage_falloff_mod = 0.4
 
-/obj/item/attachable/suppressor/m40_integral
-	name = "\improper M40SD integral suppressor"
+/obj/item/attachable/suppressor/xm40_integral
+	name = "\improper XM40 integral suppressor"
 	icon_state = "m40sd_suppressor"
 	attach_icon = "m40sd_suppressor_a"
 
-/obj/item/attachable/suppressor/m40_integral/New()
+/obj/item/attachable/suppressor/xm40_integral/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
@@ -1027,7 +1027,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle and M44 Combat Revolver."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7

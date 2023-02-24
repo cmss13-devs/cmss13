@@ -106,6 +106,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			for(var/key in keys)
 				if(kbinds[key])
 					kbinds[key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[key]))
 						kbinds -= key
 

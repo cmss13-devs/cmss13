@@ -829,7 +829,7 @@
 	return
 
 /obj/structure/machinery/door/airlock/dropship_hatch/unlock()
-	if(is_loworbit_level(z)) // in flight
+	if(is_reserved_level(z)) // in flight
 		return
 	..()
 

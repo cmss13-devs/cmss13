@@ -85,7 +85,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_repair_multitile,
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/check_round_statistics,
-	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel

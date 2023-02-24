@@ -75,7 +75,7 @@
 	. = ..()
 	doors = null
 
-/datum/door_controller/single/proc/control_doors(action, force = FALSE)
+/datum/door_controller/single/proc/control_doors(action, force = FALSE, use_async = TRUE)
 	for(var/D in doors)
 		var/obj/structure/machinery/door/door = D
 		var/is_external = door.borders_space()
@@ -97,7 +97,10 @@
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
 				is_locked = FALSE
 			if("force-lock-launch")
-				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
+				if(use_async)
+					INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
+				else
+					lockdown_door_launch(door)
 				is_locked = TRUE
 			if("force-unlock")
 				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)

@@ -392,3 +392,12 @@
   realforest2001:
   - bugfix: Provost Enforcers and Team Leaders can now USE the beanbags they spawn
       with.
+2023-02-24:
+  Puckaboo2:
+  - bugfix: Added the missing icon states of several uniforms which had the ability
+      to roll sleeves up.
+  harryob:
+  - ui: adds an escape menu, with some (not many) buttons on it
+  - qol: prevented new keybinds binding over existing ones
+  - bugfix: prevented ert spawns causing unknown demons if you disconnect after becoming
+      a candidate

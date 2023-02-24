@@ -28,7 +28,7 @@ var/global/datum/authority/branch/role/RoleAuthority
 var/global/players_preassigned = 0
 
 
-/proc/guest_jobbans(var/job)
+/proc/guest_jobbans(job)
 	return (job in ROLES_COMMAND)
 
 /datum/authority/branch/role
@@ -171,7 +171,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
  */
 
 
-/datum/authority/branch/role/proc/setup_candidates_and_roles(var/list/overwritten_roles_for_mode)
+/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode)
 	//===============================================================\\
 	//PART I: Get roles relevant to the mode
 
@@ -302,7 +302,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.
 */
-/datum/authority/branch/role/proc/assign_roles(var/list/roles_for_mode, var/list/unassigned_players, count = FALSE)
+/datum/authority/branch/role/proc/assign_roles(list/roles_for_mode, list/unassigned_players, count = FALSE)
 	var/list/roles_left = list()
 	var/assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
@@ -322,7 +322,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return assigned
 	return roles_left
 
-/datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
+/datum/authority/branch/role/proc/assign_initial_roles(priority, list/roles_to_iterate, list/unassigned_players, count = TRUE)
 	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
 		return
@@ -361,7 +361,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * people late joining. This weight also controls the size of local wildlife population,
 * survivors and the number of roundstart Squad Rifleman slots.
 */
-/datum/authority/branch/role/proc/calculate_role_weight(var/datum/job/J)
+/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
 	if(ROLES_MARINES.Find(J.title))
 		return 1
 	if(ROLES_XENO.Find(J.title))
@@ -421,7 +421,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		J.current_positions--
 		return 1
 
-/datum/authority/branch/role/proc/free_role_admin(var/datum/job/J, var/latejoin = 1, var/user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
+/datum/authority/branch/role/proc/free_role_admin(datum/job/J, latejoin = 1, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
 	if(!istype(J) || J.total_positions == -1)
 		return
 	if(J.current_positions < 1) //this should be filtered earlier, but we still check just in case
@@ -478,7 +478,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
 	J.current_positions--
-	message_staff("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
+	message_admins("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
 	return 1
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
@@ -622,7 +622,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	return lowest //Return whichever squad won the competition.
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H, var/skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/H, skip_limit = FALSE)
 	if(!H)
 		return
 
@@ -745,53 +745,53 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up
 
-/datum/authority/branch/role/proc/get_caste_by_text(var/name)
-	var/mob/living/carbon/Xenomorph/M
+/datum/authority/branch/role/proc/get_caste_by_text(name)
+	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva
+			M = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva/predalien
+			M = /mob/living/carbon/xenomorph/larva/predalien
 		if(XENO_CASTE_FACEHUGGER)
-			M = /mob/living/carbon/Xenomorph/Facehugger
+			M = /mob/living/carbon/xenomorph/facehugger
 		if(XENO_CASTE_RUNNER)
-			M = /mob/living/carbon/Xenomorph/Runner
+			M = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)
-			M = /mob/living/carbon/Xenomorph/Drone
+			M = /mob/living/carbon/xenomorph/drone
 		if(XENO_CASTE_CARRIER)
-			M = /mob/living/carbon/Xenomorph/Carrier
+			M = /mob/living/carbon/xenomorph/carrier
 		if(XENO_CASTE_HIVELORD)
-			M = /mob/living/carbon/Xenomorph/Hivelord
+			M = /mob/living/carbon/xenomorph/hivelord
 		if(XENO_CASTE_BURROWER)
-			M = /mob/living/carbon/Xenomorph/Burrower
+			M = /mob/living/carbon/xenomorph/burrower
 		if(XENO_CASTE_PRAETORIAN)
-			M = /mob/living/carbon/Xenomorph/Praetorian
+			M = /mob/living/carbon/xenomorph/praetorian
 		if(XENO_CASTE_RAVAGER)
-			M = /mob/living/carbon/Xenomorph/Ravager
+			M = /mob/living/carbon/xenomorph/ravager
 		if(XENO_CASTE_SENTINEL)
-			M = /mob/living/carbon/Xenomorph/Sentinel
+			M = /mob/living/carbon/xenomorph/sentinel
 		if(XENO_CASTE_SPITTER)
-			M = /mob/living/carbon/Xenomorph/Spitter
+			M = /mob/living/carbon/xenomorph/spitter
 		if(XENO_CASTE_LURKER)
-			M = /mob/living/carbon/Xenomorph/Lurker
+			M = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
-			M = /mob/living/carbon/Xenomorph/Warrior
+			M = /mob/living/carbon/xenomorph/warrior
 		if(XENO_CASTE_DEFENDER)
-			M = /mob/living/carbon/Xenomorph/Defender
+			M = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_QUEEN)
-			M = /mob/living/carbon/Xenomorph/Queen
+			M = /mob/living/carbon/xenomorph/queen
 		if(XENO_CASTE_CRUSHER)
-			M = /mob/living/carbon/Xenomorph/Crusher
+			M = /mob/living/carbon/xenomorph/crusher
 		if(XENO_CASTE_BOILER)
-			M = /mob/living/carbon/Xenomorph/Boiler
+			M = /mob/living/carbon/xenomorph/boiler
 		if(XENO_CASTE_PREDALIEN)
-			M = /mob/living/carbon/Xenomorph/Predalien
+			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
-			M = /mob/living/carbon/Xenomorph/Hellhound
+			M = /mob/living/carbon/xenomorph/hellhound
 	return M
 
 
-/proc/get_desired_status(var/desired_status, var/status_limit)
+/proc/get_desired_status(desired_status, status_limit)
 	var/found_desired = FALSE
 	var/found_limit = FALSE
 
@@ -810,7 +810,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	return desired_status
 
-/proc/transfer_marine_to_squad(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad, var/datum/squad/old_squad, var/obj/item/card/id/ID)
+/proc/transfer_marine_to_squad(mob/living/carbon/human/transfer_marine, datum/squad/new_squad, datum/squad/old_squad, obj/item/card/id/ID)
 	if(old_squad)
 		if(transfer_marine.assigned_fireteam)
 			if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
@@ -831,7 +831,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		transfer_marine.hud_set_squad()
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
-/datum/authority/branch/role/proc/check_squad_capacity(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad)
+/datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)
 	switch(transfer_marine.job)
 		if(JOB_SQUAD_LEADER)
 			if(new_squad.num_leaders >= new_squad.max_leaders)

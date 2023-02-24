@@ -33,7 +33,7 @@
 	var/total_points = 0 // How many points we have earned total.
 	var/total_points_last_sitrep = 0 // The total points we had at the last announcement. Used to calculate how many points were earned since then.
 	var/points = INITIAL_STARTING_POINTS // Current points.
-	var/points_mult = 1.0 // Factor we earn points by. Increases based on current unlocked tech tier.
+	var/points_mult = 1 // Factor we earn points by. Increases based on current unlocked tech tier.
 
 	// UI Variables
 	var/ui_theme
@@ -101,31 +101,31 @@
 	if(has_access(user, TREE_ACCESS_VIEW))
 		. = max(., UI_UPDATE)
 
-/datum/techtree/proc/set_points(var/number)
+/datum/techtree/proc/set_points(number)
 	points = max(number, 0)
 
-/datum/techtree/proc/add_points(var/number)
+/datum/techtree/proc/add_points(number)
 	set_points(points + (number * points_mult))
 	total_points += number * points_mult
 
-/datum/techtree/proc/spend_points(var/number)
+/datum/techtree/proc/spend_points(number)
 	set_points(points - number)
 
-/datum/techtree/proc/can_use_points(var/number)
+/datum/techtree/proc/can_use_points(number)
 	if(number <= points)
 		return TRUE
 	return FALSE
 
-/datum/techtree/proc/check_and_use_points(var/number)
+/datum/techtree/proc/check_and_use_points(number)
 	if(!can_use_points(number))
 		return FALSE
 	spend_points(number)
 	return TRUE
 
-/datum/techtree/proc/has_access(var/mob/M, var/access_required)
+/datum/techtree/proc/has_access(mob/M, access_required)
 	return FALSE
 
-/datum/techtree/proc/purchase_node(var/mob/M, var/datum/tech/T)
+/datum/techtree/proc/purchase_node(mob/M, datum/tech/T)
 	if(!M || M.stat == DEAD)
 		return
 
@@ -138,7 +138,7 @@
 
 	unlock_node(T, M)
 
-/datum/techtree/proc/unlock_node(var/datum/tech/T, mob/M)
+/datum/techtree/proc/unlock_node(datum/tech/T, mob/M)
 	if((T.type in unlocked_techs[T.tier.type]) || !(T.type in all_techs[T.tier.type]))
 		return
 
@@ -148,7 +148,7 @@
 	unlocked_techs[T.tier.type] += list(T.type = T)
 	cached_unlocked_techs[T.type] = T
 
-/datum/techtree/proc/enter_mob(var/mob/M, var/force)
+/datum/techtree/proc/enter_mob(mob/M, force)
 	if(!M.mind || M.stat == DEAD)
 		return FALSE
 
@@ -163,23 +163,23 @@
 	return TRUE
 
 /// `tech`: a typepath to a tech
-/datum/techtree/proc/get_unlocked_node(var/tech)
+/datum/techtree/proc/get_unlocked_node(tech)
 	return cached_unlocked_techs[tech]
 
 /// `tech`: a typepath to a tech
-/datum/techtree/proc/get_node(var/tech)
+/datum/techtree/proc/get_node(tech)
 	return techs_by_type[tech]
 
-/datum/techtree/proc/on_node_gained(var/obj/structure/resource_node/RN)
+/datum/techtree/proc/on_node_gained(obj/structure/resource_node/RN)
 	return
 
-/datum/techtree/proc/on_node_lost(var/obj/structure/resource_node/RN)
+/datum/techtree/proc/on_node_lost(obj/structure/resource_node/RN)
 	return
 
-/datum/techtree/proc/on_process(var/obj/structure/resource_node/RN, delta_time)
+/datum/techtree/proc/on_process(obj/structure/resource_node/RN, delta_time)
 	return
 
-/datum/techtree/proc/can_attack(var/mob/living/carbon/H)
+/datum/techtree/proc/can_attack(mob/living/carbon/H)
 	return TRUE
 
 /// Triggered just after a tier change

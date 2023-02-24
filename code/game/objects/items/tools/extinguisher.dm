@@ -15,12 +15,12 @@
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 10.0
+	force = 10
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	var/max_water = 50
-	var/last_use = 1.0
+	var/last_use = 1
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 	var/power = BASE_EXTINGUISHER_PWR
@@ -46,7 +46,7 @@
 	name = "fire extinguisher"
 	desc = "A heavy-duty fire extinguisher designed for extreme fires."
 	w_class = SIZE_MEDIUM
-	force = 3.0
+	force = 3
 	max_water = 500
 	power = PYRO_EXTINGUISHER_PWR
 
@@ -164,7 +164,7 @@
 		step(user, user.inertia_dir)
 	return
 
-/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target, var/mob/user)
+/obj/item/tool/extinguisher/proc/release_liquid(turf/target, mob/user)
 	var/turf/T = get_turf(user)
 	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
 	W.create_reagents(5)

@@ -25,7 +25,7 @@ Bonus
 	level = 4
 
 
-/datum/symptom/confusion/Activate(var/datum/disease/advance/A)
+/datum/symptom/confusion/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/carbon/M = A.affected_mob

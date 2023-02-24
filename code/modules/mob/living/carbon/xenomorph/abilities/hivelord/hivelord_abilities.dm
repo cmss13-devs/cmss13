@@ -17,13 +17,13 @@
 	plasma_use_per_tick = 30
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
-	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_speed/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
 	var/datum/behavior_delegate/hivelord_base/hivelord_delegate = xeno.behavior_delegate
 
 	if(!istype(hivelord_delegate))

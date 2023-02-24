@@ -16,6 +16,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
+	minimum_evolve_time = 15 MINUTES
+
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25
@@ -24,7 +26,9 @@
 	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
-/mob/living/carbon/Xenomorph/Crusher
+	minimap_icon = "crusher"
+
+/mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
@@ -65,7 +69,7 @@
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
 // Refactored to handle all of crusher's interactions with object during charge.
-/mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
+/mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
 	if(!target)
 		return FALSE
 
@@ -211,7 +215,7 @@
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return
 
 	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
@@ -224,7 +228,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(!isXenoOrHuman(H) || bound_xeno.can_not_harm(H))
+		if(!isxeno_human(H) || bound_xeno.can_not_harm(H))
 			continue
 
 		cdr_amount += 5
@@ -241,7 +245,7 @@
 			if(HAS_TRAIT(H, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 				H.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
 				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(H)] while they were infected and nested</B></font>")
-				message_staff("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+				message_admins("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 			else //Host might be rogue, needs further investigation
 				H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
 				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")

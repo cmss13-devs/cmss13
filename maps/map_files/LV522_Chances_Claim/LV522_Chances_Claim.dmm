@@ -1934,11 +1934,11 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bhy" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Southwest Landing Zone"
 	},
 /turf/open/floor/plating,
-/area/lv522/landing_zone_2)
+/area/shuttle/drop1/lv522)
 "bhD" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -7465,8 +7465,9 @@
 	layer = 3.1;
 	name = "Remote Console Pod"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	layer = 3.1;
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+	density = 1;
+	layer = 3.5;
 	pixel_y = -9
 	},
 /turf/open/floor/prison{
@@ -10392,6 +10393,12 @@
 /obj/item/trash/plate,
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
+"fdt" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Southeast Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "fdE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -38013,9 +38020,10 @@
 	layer = 3.1;
 	name = "Remote Console Pod"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	layer = 3.2;
-	pixel_y = -6
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	density = 1;
+	layer = 3.5;
+	pixel_y = -9
 	},
 /turf/open/floor/prison,
 /area/shuttle/drop1/lv522)
@@ -51758,11 +51766,14 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "vqG" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "1"
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "Southeast Landing Zone"
 	},
-/turf/open/floor/plating,
-/area/lv522/landing_zone_1)
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = null
+	},
+/area/lv522/landing_zone_2)
 "vqH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -62078,7 +62089,7 @@ sYH
 sYH
 nFj
 pRg
-vqG
+nFj
 vER
 uZc
 wdY
@@ -62305,7 +62316,7 @@ sYH
 sYH
 nFj
 nFj
-sYH
+bhy
 vTO
 ryU
 wes
@@ -93410,7 +93421,7 @@ jMy
 qGI
 wDa
 wDa
-rqn
+vqG
 wDa
 vbF
 kBj
@@ -94328,7 +94339,7 @@ aIp
 aIp
 xYA
 aiP
-bhy
+xYA
 jYr
 gRp
 aVa
@@ -94555,7 +94566,7 @@ aIp
 aIp
 xYA
 xYA
-aIp
+fdt
 kcR
 hIf
 cDi

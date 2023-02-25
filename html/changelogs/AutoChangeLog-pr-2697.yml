@@ -1,0 +1,6 @@
+author: "Carlarc, Nauticall"
+delete-after: True
+changes:
+  - soundadd: "Added squeak plush noises used both on the new plush and on the farwa dolls."
+  - imageadd: "Added a new plushie, hidden somewhere."
+  - code_imp: "Added a helpful inhands template to the files."

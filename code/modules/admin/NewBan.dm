@@ -248,3 +248,40 @@ var/savefile/Banlist
 	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
 		return
 	P.add_timed_ban(reason, mins)
+
+
+
+/client/proc/cmd_do_management_ban(mob/M, nameless = TRUE, anti_staff = FALSE)
+	if(!check_rights(R_PERMISSIONS))
+		to_chat(src, SPAN_BOLDWARNING("Warning: You do not have access to this command."))
+		return
+	if(IsAdminAdvancedProcCall())
+		to_chat(src, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
+		message_admins("[key_name(src)] has attempted to execute a restricted proc.")
+		return
+
+	if(!ismob(M))
+		to_chat(src, SPAN_BOLDWARNING("Warning: Mob not found."))
+		return
+
+	if(!anti_staff)
+		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+			to_chat(src, SPAN_BOLDWARNING("Warning: This command cannot execute on staff."))
+			return
+
+	if(!M.ckey)
+		to_chat(usr, SPAN_BOLDWARNING("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+		return
+	var/mob_key = M.ckey
+	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month \n 262800 = 6 Months \n Max = 1 Year","Ban time", 1440, 525599, 1)
+	if(!mins)
+		return
+	if(mins >= 525600) mins = 525599
+	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
+	if(!reason)
+		return
+	var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
+	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+		return
+	///Below proc needs replacing for nameless to function
+	P.add_timed_ban(reason, mins)

@@ -929,8 +929,8 @@ const ManagementActions = (props, context) => {
             icon="ban"
             color="purple"
             content="Shadowban"
-            disabled={!hasPermission(data, 'mob_jobban')}
-            onClick={() => act('mob_jobban')}
+            disabled={!hasPermission(data, 'shadow_ban')}
+            onClick={() => act('shadow_ban')}
           />
           <Button.Confirm
             width="100%"
@@ -938,8 +938,8 @@ const ManagementActions = (props, context) => {
             icon="ban"
             color="purple"
             content="Ban Staff"
-            disabled={!hasPermission(data, 'mob_jobban')}
-            onClick={() => act('mob_jobban')}
+            disabled={!hasPermission(data, 'ban_staff')}
+            onClick={() => act('ban_staff')}
           />
         </Stack>
       </Section>

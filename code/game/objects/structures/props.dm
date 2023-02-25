@@ -658,7 +658,7 @@
 		return
 	wooden_boards.use(5)
 	user.visible_message(SPAN_NOTICE("[user] fills the brazier with wood."))
-	new /obj/structure/prop/brazier/frame_woodened(src)
+	new /obj/structure/prop/brazier/frame_woodened(loc)
 	qdel(src)
 
 /obj/structure/prop/brazier/frame_woodened
@@ -671,7 +671,7 @@
 	if(!hit_item.heat_source)
 		return ..()
 	user.visible_message(SPAN_NOTICE("[user] ignites the brazier with [hit_item]."))
-	new /obj/structure/prop/brazier(src)
+	new /obj/structure/prop/brazier(loc)
 	qdel(src)
 
 /obj/structure/prop/brazier/torch
@@ -691,7 +691,7 @@
 	if(!hit_item.heat_source)
 		return ..()
 	user.visible_message(SPAN_NOTICE("[user] ignites the torch with [hit_item]."))
-	new /obj/structure/prop/brazier/torch(src)
+	new /obj/structure/prop/brazier/torch(loc)
 	qdel(src)
 
 /obj/item/prop/torch_frame

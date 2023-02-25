@@ -1,0 +1,4 @@
+author: "LynxSolstice"
+delete-after: True
+changes:
+  - maptweak: "Makes LV624 more jungle-y and less desert-like. North of the river changed to reflect this. All grass turfs (turf/open/gm/grass) replaced with their weedable variant (turf/open/gm/grass/weedable)"

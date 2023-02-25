@@ -555,20 +555,21 @@
 
 	content += "<table>"
 
-	if(isspeciesyautja(host))
-		for(var/datum in subtypesof(/datum/borer_chem/yautja))
-			var/datum/borer_chem/C = datum
-			var/chem = initial(C.chem_id)
-			var/datum/reagent/R = chemical_reagents_list[chem]
-			if(R)
-				content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
-	else
-		for(var/datum in subtypesof(/datum/borer_chem/human))
-			var/datum/borer_chem/C = datum
-			var/chem = initial(C.chem_id)
-			var/datum/reagent/R = chemical_reagents_list[chem]
-			if(R)
-				content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+	if(ishuman(host))
+		if(isspeciesyautja(host))
+			for(var/datum in subtypesof(/datum/borer_chem/yautja))
+				var/datum/borer_chem/C = datum
+				var/chem = initial(C.chem_id)
+				var/datum/reagent/R = chemical_reagents_list[chem]
+				if(R)
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+		else
+			for(var/datum in subtypesof(/datum/borer_chem/human))
+				var/datum/borer_chem/C = datum
+				var/chem = initial(C.chem_id)
+				var/datum/reagent/R = chemical_reagents_list[chem]
+				if(R)
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
 
 	content += "</table>"
 

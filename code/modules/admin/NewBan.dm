@@ -226,6 +226,10 @@ var/savefile/Banlist
 		RemoveBan(A)
 
 /client/proc/cmd_admin_do_ban(mob/M)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_admin_do_ban")
+		return
+
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return
@@ -252,12 +256,11 @@ var/savefile/Banlist
 
 
 /client/proc/cmd_do_management_ban(mob/M, nameless = TRUE, anti_staff = FALSE)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("cmd_do_management_ban")
+		return
 	if(!check_rights(R_PERMISSIONS))
 		to_chat(src, SPAN_BOLDWARNING("Warning: You do not have access to this command."))
-		return
-	if(IsAdminAdvancedProcCall())
-		to_chat(src, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
-		message_admins("[key_name(src)] has attempted to execute a restricted proc.")
 		return
 
 	if(!ismob(M))

@@ -224,6 +224,10 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 /proc/IsAdminAdvancedProcCall()
 	return (GLOB.AdminProcCaller && GLOB.AdminProcCaller == usr?.client?.ckey) || (GLOB.AdminProcCallHandler && usr == GLOB.AdminProcCallHandler)
 
+/proc/alert_proccall(procname = "Unknown")
+	to_chat(usr, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
+	message_admins("[key_name(usr)] has attempted to execute a restricted proc. ([procname])")
+
 /client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf)
 	set category = "Debug"
 	set name = "Datum ProcCall"

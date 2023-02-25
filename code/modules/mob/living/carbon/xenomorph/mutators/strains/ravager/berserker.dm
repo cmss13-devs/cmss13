@@ -64,7 +64,7 @@
 
 	// State
 	var/next_slash_buffed = FALSE
-	var/slash_slow_duration = 2	//~3.5 seconds
+	var/slash_slow_duration = 2	//measured in server ticks
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()

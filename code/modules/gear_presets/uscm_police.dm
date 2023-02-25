@@ -11,9 +11,9 @@
 
 	access = list(
 		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_MARINE_MORGUE,
@@ -73,13 +73,12 @@
 
 	access = list(
 		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_WO,
+		ACCESS_MARINE_ARMORY,
 		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_COMMANDER,
 		ACCESS_MARINE_MORGUE,
 		ACCESS_MARINE_ALPHA,
 		ACCESS_MARINE_BRAVO,
@@ -132,13 +131,14 @@
 
 	access = list(
 		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_WO,
+		ACCESS_MARINE_CMP,
+		ACCESS_MARINE_ARMORY,
 		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_COMMANDER,
+		ACCESS_MARINE_SENIOR,
 		ACCESS_MARINE_MORGUE,
 		ACCESS_MARINE_ALPHA,
 		ACCESS_MARINE_BRAVO,
@@ -227,8 +227,8 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/beanbag/riot(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/beanbag/riot(H), WEAR_R_STORE)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else

@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	target = get_turf(target)
 	launch(target)
 
-	message_staff("[key_name_admin(C)] launched a droppod", target.x, target.y, target.z)
+	message_admins("[key_name_admin(C)] launched a droppod", target.x, target.y, target.z)
 	return COMPONENT_INTERRUPT_CLICK
 
 /datum/admin_podlauncher/proc/mouse_launch(client/C)
@@ -324,7 +324,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 				old_location = M.loc
 			var/turf/target_turf = pick(get_area_turfs(bay))
 			M.forceMove(target_turf)
-			message_staff("[key_name_admin(usr)] jumped to [bay].")
+			message_admins("[key_name_admin(usr)] jumped to [bay].")
 			. = TRUE
 		if("goto_dropoff")
 			var/mob/M = holder.mob //We teleport whatever mob the client is attached to at the point of clicking
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			if (current_location != dropoff_turf)
 				old_location = current_location
 			M.forceMove(dropoff_turf) //Perform the actual teleport
-			message_staff("[key_name(usr)] jumped to [get_area(dropoff_turf)]")
+			message_admins("[key_name(usr)] jumped to [get_area(dropoff_turf)]")
 			. = TRUE
 		if("goto_prev_turf")
 			var/mob/M = holder.mob

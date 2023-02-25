@@ -77,6 +77,7 @@
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	heat_source = 3800
+	flags_item = IGNITING_ITEM
 
 /obj/item/tool/pickaxe/diamond
 	name = "diamond pickaxe"

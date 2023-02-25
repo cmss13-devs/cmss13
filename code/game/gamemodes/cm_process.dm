@@ -158,7 +158,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
 	if(active_lz)
 		return
 	active_lz = console
@@ -204,7 +204,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		var/atom/where = M
 		if (where.z == 0 && M.loc)
 			where = M.loc
-		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
+		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
 			numXenosPlanet++
 			xenosPlanetLocations+=where
 		else if(is_mainship_level(where.z))
@@ -221,7 +221,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		if(isspecieshuman(H))
 			if (where.z == 0 && H.loc)
 				where = H.loc
-			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
+			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
 				numHostsPlanet++
 				hostsPlanetLocations += where
 			else if(is_mainship_level(where.z))
@@ -231,7 +231,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
-		message_staff("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
+		message_admins("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 
 	//Pick one random location to disclose
 	var/RandomHostsPlanetLocation = ""
@@ -304,7 +304,7 @@ Can't be in a locker, in space, in the thunderdome, or distress.
 Only checks living mobs with a client attached.
 */
 
-/datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_xenos = 0
 	for(var/i in GLOB.living_xeno_list)
 		var/mob/M = i
@@ -312,7 +312,7 @@ Only checks living mobs with a client attached.
 			num_xenos++
 	return num_xenos
 
-/datum/game_mode/proc/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/proc/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_humans = 0
 	var/num_xenos = 0
 
@@ -341,7 +341,7 @@ Only checks living mobs with a client attached.
 
 	return list(num_humans,num_xenos)
 
-/datum/game_mode/proc/count_marines_and_pmcs(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/proc/count_marines_and_pmcs(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_marines = 0
 	var/num_pmcs = 0
 
@@ -355,7 +355,7 @@ Only checks living mobs with a client attached.
 
 	return list(num_marines,num_pmcs)
 
-/datum/game_mode/proc/count_marines(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/proc/count_marines(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_marines = 0
 
 	for(var/i in GLOB.alive_human_list)

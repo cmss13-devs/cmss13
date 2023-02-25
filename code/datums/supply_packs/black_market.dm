@@ -84,7 +84,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
 			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
-			new /obj/item/storage/backpack/lightpack(src)
+			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(2) //dutch's
 			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
 			new /obj/item/clothing/under/marine/veteran/dutch(src)
@@ -98,19 +98,19 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/suit/storage/militia(src)
 			new /obj/item/clothing/head/militia(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/storage/backpack/lightpack(src)
+			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //upp
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
 			new /obj/item/clothing/shoes/marine/upp(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/storage/backpack/lightpack(src)
+			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(6) //freelancer
 			new /obj/item/clothing/under/marine/veteran/freelancer(src)
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/storage/backpack/lightpack(src)
+			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(7) //VAIPO
 			new /obj/item/clothing/glasses/sunglasses/big(src)
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
@@ -243,7 +243,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/ar10,
 		/obj/item/ammo_magazine/rifle/ar10,
 	)
-	dollar_cost = 30
+	dollar_cost = 40 // rarer
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar30
@@ -497,15 +497,6 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/rxf_m5
-	name = "RXF-M5 EVA laser pistol (recharger included)"
-	contains = list(
-		/obj/item/weapon/gun/energy/rxfm5_eva,
-		/obj/structure/machinery/recharger/unanchored,
-	)
-	dollar_cost = 30
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/r4t
 	name = "R4T hunting rifle case (x3 ammo boxes included)"
 	contains = list(
@@ -569,8 +560,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	name = "confiscated medicinal supplies crate"
 	randomised_num_contained = 5
 	contains = list(
-		/obj/item/stack/medical/advanced/bruise_pack/predator,
-		/obj/item/stack/medical/advanced/ointment/predator,
 		/obj/item/storage/pill_bottle/happy,
 		/obj/item/storage/pill_bottle/mystery,
 		/obj/item/storage/pill_bottle/russianRed/skillless,
@@ -996,9 +985,9 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/m43_holdout
-	name = "M43 Holdout Pistol"
-	contains = list(/obj/item/storage/box/m43)
+/datum/supply_packs/contraband/deep_storage/clf_holdout
+	name = "D18 Holdout Pistol"
+	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1109,8 +1098,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/pistol/skorpion(loc)
 			new /obj/item/ammo_magazine/pistol/skorpion(loc)
 			new /obj/item/ammo_magazine/pistol/skorpion(loc)
-			// EVA
-			new /obj/item/weapon/gun/energy/rxfm5_eva(loc)
 			// Somehow they found a Webley.
 			new /obj/item/weapon/gun/revolver/m44/custom/webley(loc)
 			new /obj/item/ammo_magazine/revolver/webley(loc)
@@ -1136,8 +1123,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/clothing/shoes/yautja_flavor(loc)
 			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
-			new /obj/item/stack/medical/advanced/bruise_pack/predator(loc)
-			new /obj/item/stack/medical/advanced/ointment/predator(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
 		if(26 to 30)
 			// Dutch gear.
@@ -1162,7 +1147,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/explosive/grenade/phosphorus/clf,
 				/obj/item/explosive/grenade/smokebomb,
 				/obj/item/explosive/grenade/smokebomb/airburst,
-				/obj/item/explosive/grenade/flashbang/noskill,
 				/obj/item/explosive/grenade/custom/antiweed
 			)
 			for(var/i in 1 to 4)
@@ -1190,7 +1174,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_belt(loc)
 			loot_message = SPAN_NOTICE("It's a spare set of CLF equipment. You probably shouldn't wear this...")
 		// That was the good 50%. Now it's time for the bad.
-		if(51 to 55)
+		if(51 to 60)
 		// Random junk
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
@@ -1198,24 +1182,26 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
-		if(56 to 60)
-		// Egg cluster, oh no!
-			new /obj/effect/spider/eggcluster(loc)
-			loot_message = SPAN_WARNING("What the hell is this?")
-		if(61 to 65)
-		// Actual spider!!
-			new /mob/living/simple_animal/hostile/giant_spider(loc)
-			loot_message = SPAN_DANGER("It's a giant spider!!")
-		if(66 to 70)
-		// Actual dead spider!!
-			var/mob/living/spider = new /mob/living/simple_animal/hostile/giant_spider(loc)
-			spider.death()
-			loot_message = SPAN_DANGER("It's a giant spider!! Oh, looks like the crate had no air holes.")
+		if(61 to 70)
+			new /obj/effect/spawner/random/bomb_supply(loc)
+			new /obj/effect/spawner/random/bomb_supply(loc)
+			new /obj/effect/spawner/random/toolbox(loc)
+			new /obj/effect/spawner/random/tool(loc)
+			new /obj/effect/spawner/random/tool(loc)
+			new /obj/effect/spawner/random/attachment(loc)
+			if(prob(33))
+				new /obj/effect/spawner/random/supply_kit(loc)
+			else
+				new /obj/effect/spawner/random/attachment(loc)
+			loot_message = SPAN_NOTICE("Just some old equipment and parts.")
 		if(71 to 75)
-		// Many small spiders. Yes, there's a 20% chance of something spider-related coming out of this box.
-			for(var/i in 1 to 10)
-				new /obj/effect/spider/spiderling(loc)
-			loot_message = SPAN_DANGER("SPIDERS!! AAAAAAAH!!")
+			// backpacks
+			for(var/i in 1 to rand(3, 6))
+				var/pack_type = pick(subtypesof(/obj/item/storage/backpack))
+				var/obj/item/storage/backpack/pack = new pack_type(loc)
+				if(pack.max_storage_space > 15)
+					pack.max_storage_space = 15
+			loot_message = SPAN_NOTICE("Some backpacks. They all look empty though...")
 		if(76 to 80)
 		// CLF corpse!! Why is this here? Don't ask.
 			var/mob/living/carbon/human/corpse = new (loc)

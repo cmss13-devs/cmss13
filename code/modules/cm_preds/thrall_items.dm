@@ -39,7 +39,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/weapon/gun/pistol/holdout,
-		/obj/item/weapon/gun/pistol/m43pistol,
+		/obj/item/weapon/gun/pistol/clfpistol,
 	)
 
 /obj/item/clothing/shoes/yautja/thrall/New(mapload, greaves_number = 1, armor_material = pick("cloth", "bare"))

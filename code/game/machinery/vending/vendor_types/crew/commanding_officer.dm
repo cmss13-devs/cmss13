@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 /obj/structure/machinery/cm_vending/gear/commanding_officer
 	name = "\improper ColMarTech Commanding Officer Weapon Rack"
 	desc = "An automated weapons rack for the Commanding Officer. It features a robust selection of weaponry meant only for the USCM's top officers."
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	vendor_role = list(JOB_CO, JOB_WO_CO)
 	icon_state = "guns"
 	use_snowflake_points = TRUE
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 /obj/structure/machinery/cm_vending/clothing/commanding_officer
 	name = "\improper ColMarTech Commanding Officer Equipment Rack"
 	desc = "An automated equipment vendor for the Commanding Officer. Contains a prime selection of equipment for only the USCM's top officers."
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	vendor_role = list(JOB_CO, JOB_WO_CO)
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)

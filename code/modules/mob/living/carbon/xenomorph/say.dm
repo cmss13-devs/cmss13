@@ -57,6 +57,12 @@
 					forced = 1
 					break
 
+	if(!(speaking.flags & HIVEMIND) && HAS_TRAIT(src, TRAIT_LISPING)) // Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
+
 	if(copytext(message,1,2) == ";")
 		message = trim(copytext(message,2))
 	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")

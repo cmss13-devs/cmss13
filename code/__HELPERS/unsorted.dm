@@ -632,6 +632,8 @@
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/camera/imaginary_friend/friend in sortmob)
+		moblist += friend
 	return moblist
 
 /proc/sortxenos()
@@ -1477,14 +1479,14 @@ var/list/WALLITEMS = list(
 	/obj/structure/machinery/firealarm,
 	/obj/structure/noticeboard,
 	/obj/structure/machinery/door_control,
-	/obj/structure/machinery/computer/security/telescreen,
+	/obj/structure/machinery/computer/cameras/telescreen,
 	/obj/item/storage/secure/safe,
 	/obj/structure/machinery/brig_cell,
 	/obj/structure/machinery/flasher,
 	/obj/structure/machinery/keycard_auth,
 	/obj/structure/mirror,
 	/obj/structure/closet/fireaxecabinet,
-	/obj/structure/machinery/computer/security/telescreen/entertainment,
+	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
@@ -1649,7 +1651,7 @@ var/list/WALLITEMS = list(
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE

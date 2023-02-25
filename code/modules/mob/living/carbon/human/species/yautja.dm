@@ -13,6 +13,7 @@
 		TRAIT_SUPER_STRONG,
 		TRAIT_FOREIGN_BIO,
 		TRAIT_DEXTROUS,
+		TRAIT_EMOTE_CD_EXEMPT,
 	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong

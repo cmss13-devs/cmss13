@@ -38,6 +38,7 @@
 /obj/item/weapon/gun/rifle/m41a
 	name = "\improper M41A pulse rifle MK2"
 	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m41a"
 	item_state = "m41a"
 	fire_sound = "gun_pulse"
@@ -111,6 +112,7 @@
 /obj/item/weapon/gun/rifle/nsg23
 	name = "\improper NSG 23 assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/wy.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
 	fire_sound = "gun_nsg23"
@@ -274,9 +276,9 @@
 //-------------------------------------------------------
 //M40-SD AKA SOF RIFLE FROM HELL (It's actually an M41A, don't tell!)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd
-	name = "\improper M40-SD pulse rifle"
-	desc = "One of the experimental predecessors to the M41A line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
+/obj/item/weapon/gun/rifle/m41a/elite/xm40
+	name = "\improper XM40 pulse rifle"
+	desc = "One of the experimental predecessors to the M41 line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
 	icon_state = "m40sd"
 	item_state = "m40sd"
 	reload_sound = 'sound/weapons/handling/m40sd_reload.ogg'
@@ -284,7 +286,7 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-	current_mag = /obj/item/ammo_magazine/rifle/m40_sd/heap
+	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
@@ -297,11 +299,11 @@
 		/obj/item/ammo_magazine/rifle/explosive,
 		/obj/item/ammo_magazine/rifle/le,
 		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/m40_sd,
-		/obj/item/ammo_magazine/rifle/m40_sd/heap,
+		/obj/item/ammo_magazine/rifle/xm40,
+		/obj/item/ammo_magazine/rifle/xm40/heap,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor/m40_integral,//no rail attachies
+		/obj/item/attachable/suppressor/xm40_integral,//no rail attachies
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
@@ -319,9 +321,9 @@
 
 	random_spawn_chance = 0
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/suppressor/m40_integral/S = new(src)
+	var/obj/item/attachable/suppressor/xm40_integral/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.hidden = FALSE
 	S.Attach(src)
@@ -333,10 +335,10 @@
 	H.Attach(src)
 	update_attachable(H.slot)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
-/obj/item/weapon/gun/rifle/m41a/elite/m40_sd/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_3
@@ -353,6 +355,7 @@
 /obj/item/weapon/gun/rifle/m41aMK1
 	name = "\improper M41A pulse rifle"
 	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. Uses 10x24mm caseless ammunition."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m41amk1" //Placeholder.
 	item_state = "m41amk1" //Placeholder.
 	fire_sound = "gun_pulse"
@@ -404,6 +407,7 @@
 /obj/item/weapon/gun/rifle/m46c
 	name = "\improper M46C pulse rifle"
 	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m46c"
 	item_state = "m46c"
 	fire_sound = "gun_pulse"
@@ -643,6 +647,7 @@
 /obj/item/weapon/gun/rifle/mar40
 	name = "\improper MAR-40 battle rifle"
 	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or CLF."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "mar40"
 	item_state = "mar40"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
@@ -843,6 +848,7 @@
 /obj/item/weapon/gun/rifle/m16
 	name = "\improper M16 rifle"
 	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m16"
 	item_state = "m16"
 
@@ -991,6 +997,7 @@
 	name = "\improper AR10 rifle"
 	desc = "An earlier version of the more widespread M16 rifle. Considered to be the father of the 20th century rifle. How one of these ended up here is a mystery of its own. It is chambered in 7.62x51mm."
 	desc_lore = "The AR10 was initially manufactured by the Armalite corporation (bought by Weyland-Yutani in 2002) in the 1950s. It was the first production rifle to incorporate many new and innovative features, such as a gas operated bolt and carrier system. Only 10,000 were ever produced, and the only national entities to use them were Portugal and Sudan. Since the end of the 20th century, these rifles - alongside the far more common M16 and AR15 - have floated around the less civillised areas of space, littering jungles and colony floors with their uncommon cased ammunition - a rarity since the introduction of pulse munitions. This rifle has the word \"Salazar\" engraved on its side."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "ar10"
 	item_state = "ar10"
 	fire_sound = 'sound/weapons/gun_ar10.ogg'
@@ -1108,6 +1115,7 @@
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
 	desc = "A large squad support weapon capable of laying down sustained suppressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 
@@ -1165,6 +1173,7 @@
 /obj/item/weapon/gun/rifle/type71
 	name = "\improper Type 71 pulse rifle"
 	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "type71"
 	item_state = "type71"
 
@@ -1393,6 +1402,7 @@
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
 	desc = "A L42A battle rifle. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy and superior stopping power compared to other pulse rifles. Chambered in 10x24mm caseless."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
@@ -1452,6 +1462,7 @@
 	name = "\improper ABR-40 hunting rifle"
 	desc = "The civilian version of the L42A battle rifle that is often wuielded by Marines. Almost identical and even cross-compatible with L42 magazines, just don't take the stock off.."
 	desc_lore = "The ABR-40 was created after the striking popularity of the L42 battle rifle as a hunting rifle for civilians. Sporting faux wooden furniture and a legally-mandated 12 round magazine, it's still highly accurate and deadly, a favored pick of experienced hunters and retired Marines. However, it's very limited in attachment selection, only being able to fit rail attachments, and the differences in design from the L42 force an awkward pose when attempting to hold it one-handed. Removing the stock is not recommended."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "abr40"
 	item_state = "abr40"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/abr40

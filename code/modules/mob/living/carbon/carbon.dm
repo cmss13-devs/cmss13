@@ -15,7 +15,7 @@
 		remove_all_indicators()
 
 /mob/living/carbon/Destroy()
-	stomach_contents?.Cut()
+	haul_contents?.Cut()
 
 	. = ..()
 
@@ -38,13 +38,13 @@
 
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE)) return
-	if(user in src.stomach_contents)
+	if(user in src.haul_contents)
 		if(user.client)
 			user.client.next_movement = world.time + 20
 		if(prob(30))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
+					M.show_message(SPAN_DANGER("You hear something struggling against [src]'s grip..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
 			var/d = rand(round(I.force / 4), I.force)
@@ -60,12 +60,12 @@
 				src.take_limb_damage(d)
 			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
+					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s carapace with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
 			user.track_hit(initial(I.name))
-			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
+			playsound(user.loc, 'sound/weapons/slash.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				last_damage_data = create_cause_data("chestbursting", user)
+				last_damage_data = create_cause_data("scuffling", user)
 				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
 		var/mob/living/carbon/xenomorph/larva/L = user
@@ -97,12 +97,12 @@
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
-	for(var/atom/movable/A in stomach_contents)
-		stomach_contents.Remove(A)
+	for(var/atom/movable/A in haul_contents)
+		haul_contents.Remove(A)
 		A.forceMove(get_turf(loc))
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
-			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
+			visible_message(SPAN_DANGER("[A] resists out of [src]'s grip!"))
 
 	for(var/atom/movable/A in contents_recursive())
 		if(isobj(A))
@@ -466,10 +466,10 @@
 
 /mob/living/carbon/on_stored_atom_del(atom/movable/AM)
 	..()
-	if(stomach_contents.len && ismob(AM))
-		for(var/X in stomach_contents)
+	if(haul_contents.len && ismob(AM))
+		for(var/X in haul_contents)
 			if(AM == X)
-				stomach_contents -= AM
+				haul_contents -= AM
 				break
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)

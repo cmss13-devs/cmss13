@@ -123,8 +123,8 @@
 		to_chat(X, SPAN_WARNING("You cannot regurgitate here."))
 		return
 
-	if(X.stomach_contents.len)
-		for(var/mob/living/M in X.stomach_contents)
+	if(X.haul_contents.len)
+		for(var/mob/living/M in X.haul_contents)
 			// Also has good reason to be a proc on all Xenos
 			X.regurgitate(M, TRUE)
 

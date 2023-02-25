@@ -367,9 +367,9 @@
 
 //Bleuugh
 /mob/living/carbon/xenomorph/proc/empty_gut()
-	if(stomach_contents.len)
-		for(var/atom/movable/S in stomach_contents)
-			stomach_contents.Remove(S)
+	if(haul_contents.len)
+		for(var/atom/movable/S in haul_contents)
+			haul_contents.Remove(S)
 			S.acid_damage = 0 //Reset the acid damage
 			S.forceMove(get_true_turf(src))
 
@@ -389,20 +389,20 @@
 	update_sight()
 
 /mob/living/carbon/xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
-	if(stomach_contents.len)
+	if(haul_contents.len)
 		if(victim)
-			stomach_contents.Remove(victim)
+			haul_contents.Remove(victim)
 			victim.acid_damage = 0
 			victim.forceMove(get_true_turf(loc))
 
-			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
-			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
-			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
+			visible_message(SPAN_XENOWARNING("[src] drops what they were holding onto the ground!"), \
+			SPAN_XENOWARNING("You release your haul!"), null, 5)
+			playsound(get_true_location(loc), get_sfx("clothingrustle"), 50, 1)
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)
 	else
-		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
+		to_chat(src, SPAN_WARNING("There's nothing in your grasp."))
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
 	var/has_obstacle

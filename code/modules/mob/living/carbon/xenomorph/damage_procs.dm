@@ -42,8 +42,8 @@
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
-	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
-		for(var/mob/M in stomach_contents)
+	if(severity > EXPLOSION_THRESHOLD_LOW && haul_contents.len)
+		for(var/mob/M in haul_contents)
 			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
 	var/b_loss = 0

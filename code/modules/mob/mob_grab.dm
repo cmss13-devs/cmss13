@@ -100,7 +100,7 @@
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))
-			to_chat(X, SPAN_WARNING("That wouldn't taste very good."))
+			to_chat(X, SPAN_WARNING("That wouldn't serve a purpose."))
 			return 0
 		if(pulled.buckled)
 			to_chat(X, SPAN_WARNING("[pulled] is buckled to something."))
@@ -108,42 +108,42 @@
 		if(pulled.stat == DEAD && !pulled.chestburst)
 			to_chat(X, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
-		if(X.stomach_contents.len) //Only one thing in the stomach at a time, please
-			to_chat(X, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
+		if(X.haul_contents.len) //Only one thing transported at a time, please
+			to_chat(X, SPAN_WARNING("You are already carrying something, there's no way that will work."))
 			return 0
-			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
-			if(pulled.client) //The client is still inside the body
+			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
+			if(pulled.client) //The client is still transported
 			else // The client is observing
 				for(var/mob/dead/observer/G in player_list)
 					if(ckey(G.mind.original.ckey) == pulled.ckey)
-						to_chat(src, "You start to devour [pulled] but realize \he is already dead.")
+						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
 			to_chat(X, SPAN_WARNING("You are already busy with something."))
 			return
-		X.visible_message(SPAN_DANGER("[X] starts to devour [pulled]!"), \
-		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
+		X.visible_message(SPAN_DANGER("[X] starts to haul [pulled]!"), \
+		SPAN_DANGER("You start to haul [pulled]!"), null, 5)
 		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isxeno(pulled.loc) && !X.stomach_contents.len)
-				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
+			if(isxeno(pulled.loc) && !X.haul_contents.len)
+				to_chat(X, SPAN_WARNING("Someone already hauled \the [pulled]."))
 				return 0
-			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
+			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.haul_contents.len) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, X) & COMPONENT_CANCEL_DEVOUR)
 					return FALSE
 
-				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
-					SPAN_WARNING("You devour [pulled]!"), null, 5)
+				X.visible_message(SPAN_WARNING("[X] hauls [pulled]!"), \
+					SPAN_WARNING("You haul [pulled]!"), null, 5)
 
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
-				//They will be recovered when regurgitating, since this also calls forceMove
+				//They will be recovered when dropping, since this also calls forceMove
 				pulled.moveToNullspace()
 
 				//Then, we place the mob where it ought to be
-				X.stomach_contents.Add(pulled)
+				X.haul_contents.Add(pulled)
 				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
 				return TRUE
-		if(!(pulled in X.stomach_contents))
-			to_chat(X, SPAN_WARNING("You stop devouring \the [pulled]. \He probably tasted gross anyways."))
+		if(!(pulled in X.haul_contents))
+			to_chat(X, SPAN_WARNING("You stop hauling \the [pulled]. \He probably served no purpose anyways."))
 		return 0

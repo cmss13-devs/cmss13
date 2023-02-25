@@ -2,10 +2,10 @@
 	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
-	if(stomach_contents.len)
-		for(var/mob/living/carbon/human/H in stomach_contents)
+	if(haul_contents.len)
+		for(var/mob/living/carbon/human/H in haul_contents)
 			if(!isspeciesmonkey(H))
-				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
+				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [H]!"))
 				return FALSE
 	return TRUE
 

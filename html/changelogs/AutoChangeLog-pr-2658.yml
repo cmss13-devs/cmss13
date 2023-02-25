@@ -1,0 +1,5 @@
+author: "Sulaboy"
+delete-after: True
+changes:
+  - rscadd: "Added item M276 pattern combat toolbelt rig as a point buy item (15 points) to combat engineer vendor."
+  - imageadd: "Sprites for M276 pattern combat toolbelt rig"

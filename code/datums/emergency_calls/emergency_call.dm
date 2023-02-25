@@ -240,7 +240,7 @@
 		var/datum/shuttle/ferry/shuttle = shuttle_controller?.shuttles[shuttle_id]
 		if(!istype(shuttle))
 			if(shuttle_id) //Cryo distress doesn't have a shuttle
-				message_admins("Warning: Distress shuttle not found.")
+				message_admins("Warning: Distress shuttle ([shuttle_id]) not found.")
 		spawn_items()
 
 		if(shuttle && auto_shuttle_launch)

@@ -33165,6 +33165,7 @@
 /area/almayer/shipboard/brig/cells)
 "dCh" = (
 /obj/structure/prop/invuln/pipe_water{
+	
 	},
 /obj/structure/prop/invuln/pipe_section{
 	dir = 4;
@@ -48376,6 +48377,7 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
+	
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "kPo" = (
@@ -70549,15 +70551,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
 "vnW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/pipe_section{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)

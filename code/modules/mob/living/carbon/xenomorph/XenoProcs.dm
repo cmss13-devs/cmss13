@@ -388,15 +388,15 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
 
-/mob/living/carbon/xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
+/mob/living/carbon/xenomorph/proc/release_haul(mob/living/victim, stuns = FALSE)
 	if(haul_contents.len)
 		if(victim)
 			haul_contents.Remove(victim)
 			victim.acid_damage = 0
 			victim.forceMove(get_true_turf(loc))
 
-			visible_message(SPAN_XENOWARNING("[src] drops what they were holding onto the ground!"), \
-			SPAN_XENOWARNING("You release your haul!"), null, 5)
+			visible_message(SPAN_XENOWARNING("[src] lets go of what they were holding onto the ground!"), \
+			SPAN_XENOWARNING("You release your grasp!"), null, 5)
 			playsound(get_true_location(loc), get_sfx("clothingrustle"), 50, 1)
 
 			if (stuns)

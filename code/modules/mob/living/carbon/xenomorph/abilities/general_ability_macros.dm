@@ -30,11 +30,11 @@
 	var/action_name = "Toggle Spit Type"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_regurgitate()
+/datum/action/xeno_action/verb/verb_release_haul()
 	set category = "Alien"
-	set name = "Regurgitate"
+	set name = "Release Haul"
 	set hidden = TRUE
-	var/action_name = "Regurgitate"
+	var/action_name = "Release Haul"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_choose_resin_structure()

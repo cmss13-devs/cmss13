@@ -216,7 +216,7 @@
 					playsound(loc, 'sound/handling/armorequip_2.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
-					regurgitate(H)
+					release_haul(H)
 
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)

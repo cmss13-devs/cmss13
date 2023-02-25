@@ -122,7 +122,7 @@
 			to_chat(X, SPAN_WARNING("You are already busy with something."))
 			return
 		X.visible_message(SPAN_DANGER("[X] starts to haul [pulled]!"), \
-		SPAN_DANGER("You start to haul [pulled]!"), null, 5)
+		SPAN_DANGER("You secure your grasp on [pulled], allowing you to move freely!"), null, 5)
 		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(isxeno(pulled.loc) && !X.haul_contents.len)
 				to_chat(X, SPAN_WARNING("Someone already hauled \the [pulled]."))

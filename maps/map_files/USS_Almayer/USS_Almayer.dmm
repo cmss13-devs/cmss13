@@ -44509,6 +44509,7 @@
 	pixel_y = 25;
 	pixel_x = 8
 	},
+/obj/item/toy/plushie_cade,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

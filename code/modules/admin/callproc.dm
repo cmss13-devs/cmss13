@@ -72,6 +72,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
  */
 /proc/HandleUserlessProcCall(user, datum/target, procname, list/arguments)
 	if(IsAdminAdvancedProcCall())
+		alert_proccall("HandleUserlessProcCall")
 		return
 	var/mob/proccall_handler/handler = GLOB.AdminProcCallHandler
 	handler.add_caller(user)
@@ -90,6 +91,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
  */
 /proc/HandleUserlessSDQL(user, query_text)
 	if(IsAdminAdvancedProcCall())
+		alert_proccall("HandleUserlessSDQL")
 		return
 
 	var/mob/proccall_handler/handler = GLOB.AdminProcCallHandler

@@ -23,6 +23,7 @@
 
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
+		alert_proccall("configuration admin_reload")
 		return
 	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	message_admins("[key_name_admin(usr)] has forcefully reloaded the configuration from disk.")
@@ -32,6 +33,7 @@
 
 /datum/controller/configuration/proc/Load(_directory)
 	if(IsAdminAdvancedProcCall()) //If admin proccall is detected down the line it will horribly break everything.
+		alert_proccall("configuration Load")
 		return
 	if(_directory)
 		directory = _directory
@@ -115,6 +117,7 @@
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())
+		alert_proccall("configuration full_wipe")
 		return
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
@@ -161,6 +164,7 @@
 
 /datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
 	if(IsAdminAdvancedProcCall())
+		alert_proccall("configuration LoadEntries")
 		return
 
 	var/filename_to_test = world.system_type == MS_WINDOWS ? lowertext(filename) : filename

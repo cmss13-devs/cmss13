@@ -3,11 +3,18 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Box, Input, Dropdown } from '../components';
 import { Window } from '../layouts';
 import { globalEvents } from '../events.js';
+import { createLogger } from '../logging';
 
 const KEY_MODS = {
   'SHIFT': true,
   'ALT': true,
   'CONTROL': true,
+};
+
+const getAllKeybinds = (glob_keybinds) => {
+  const all_keybinds = new Array();
+  Object.keys(glob_keybinds).map((x) => all_keybinds.push(...glob_keybinds[x]));
+  return all_keybinds;
 };
 
 export const KeyBinds = (props, context) => {
@@ -22,7 +29,15 @@ export const KeyBinds = (props, context) => {
 
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
 
-  const filteredKeybinds = glob_keybinds[selectedTab].filter((val) =>
+  const keybinds_to_use = searchTerm.length
+    ? getAllKeybinds(glob_keybinds)
+    : glob_keybinds[selectedTab];
+
+  const logger = createLogger('waa');
+
+  logger.warn(keybinds_to_use);
+
+  const filteredKeybinds = keybinds_to_use.filter((val) =>
     val.full_name.toLowerCase().match(searchTerm)
   );
 
@@ -31,26 +46,19 @@ export const KeyBinds = (props, context) => {
       <Window.Content scrollable>
         <Flex direction="column">
           <Flex.Item>
-            <Section title="Settings">
+            <Section
+              title="Settings"
+              buttons={
+                <Flex.Item>
+                  <Button
+                    color="red"
+                    icon="undo"
+                    onClick={() => act('clear_all_keybinds')}>
+                    Reset to Default
+                  </Button>
+                </Flex.Item>
+              }>
               <Flex direction="column">
-                <Flex.Item>
-                  <Flex>
-                    <Flex.Item grow={1}>
-                      <Box color="label">Reset to default:</Box>
-                    </Flex.Item>
-                    <Flex.Item>
-                      <Button
-                        color="red"
-                        icon="undo"
-                        onClick={() => act('clear_all_keybinds')}
-                      />
-                    </Flex.Item>
-                  </Flex>
-                </Flex.Item>
-                <Flex.Item>
-                  <Box height="5px" />
-                  <KeybindsDropdown />
-                </Flex.Item>
                 <Flex.Item>
                   <Box height="5px" />
                   <Input
@@ -59,6 +67,10 @@ export const KeyBinds = (props, context) => {
                     placeholder="Search..."
                     fluid
                   />
+                </Flex.Item>
+                <Flex.Item>
+                  <Box height="5px" />
+                  <KeybindsDropdown />
                 </Flex.Item>
               </Flex>
             </Section>
@@ -208,6 +220,7 @@ export class ButtonKeybind extends Component {
 
     onFinish(listOfKeys);
     document.activeElement.blur();
+    clearInterval(this.timer);
   }
 
   handleKeyPress(e) {
@@ -215,12 +228,10 @@ export class ButtonKeybind extends Component {
 
     e.preventDefault();
 
-    if (e.key === 'Esc') {
-      this.doFinish();
-      return;
-    }
-
     let pressedKey = e.key.toUpperCase();
+
+    this.finishTimerStart(200);
+
     // Prevents repeating
     if (keysDown[pressedKey] && e.type === 'keydown') {
       return;
@@ -236,11 +247,17 @@ export class ButtonKeybind extends Component {
     });
   }
 
+  finishTimerStart(time) {
+    clearInterval(this.timer);
+    this.timer = setInterval(() => this.doFinish(), time);
+  }
+
   doFocus() {
     this.setState({
       focused: true,
       keysDown: {},
     });
+    this.finishTimerStart(2000);
     globalEvents.on('keydown', this.preventPassthrough);
   }
 
@@ -267,6 +284,7 @@ export class ButtonKeybind extends Component {
             : content
         }
         selected={focused}
+        inline
         onClick={(e) => {
           if (focused && Object.keys(keysDown).length) {
             this.doFinish();
@@ -276,7 +294,6 @@ export class ButtonKeybind extends Component {
         onFocus={() => this.doFocus()}
         onBlur={() => this.doBlur()}
         onKeyDown={(e) => this.handleKeyPress(e)}
-        onKeyUp={(e) => this.handleKeyPress(e)}
       />
     );
   }

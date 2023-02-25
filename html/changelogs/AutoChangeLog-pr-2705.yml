@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixed building braziers not building braziers."
-  - bugfix: "Plasma pistols (and cutters) can be placed in storage again."
-  - code_imp: "Added a new flag, IGNITING_ITEM, that lets 'heat source' items fit inside storage."

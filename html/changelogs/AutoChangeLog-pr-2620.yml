@@ -1,6 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Removed a beige pixel in the slashing animation."
-  - bugfix: "Headbite's animation is now anatomically accurate."
-  - imageadd: "Added 3 different bite animations: one for humans, one for carnivorous mammals, and one for vampiric creatures."

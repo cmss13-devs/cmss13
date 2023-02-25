@@ -185,6 +185,11 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!is_ground_level(z))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		return
+
 	if(xeno.hive_pos != XENO_QUEEN)
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
@@ -230,8 +235,6 @@
 
 	// select crash location
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	if(dropship.is_hijacked)
-		return
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
 	if(!result)
 		return

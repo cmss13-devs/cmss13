@@ -2095,7 +2095,6 @@
 #include "code\modules\shuttle\shuttles\dropship.dm"
 #include "code\modules\shuttle\shuttles\ert.dm"
 #include "code\modules\shuttle\shuttles\escape_shuttle.dm"
-#include "code\modules\shuttles\escape_pods.dm"
 #include "code\modules\shuttles\marine_ferry.dm"
 #include "code\modules\shuttles\monorail_console.dm"
 #include "code\modules\shuttles\shuttle.dm"

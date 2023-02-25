@@ -2074,13 +2074,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
 	name = "\improper M203 Grenade Launcher"
-	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade."
-	icon_state = "grenade"
+	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade, does not have modern IFF systems, it won't pass through your friends."
+	icon_state = "grenade-m203"
 	attach_icon = "grenade-m203_a"
 	current_rounds = 0
 	max_rounds = 1
 	max_range = 14
 	attachment_firing_delay = 5 //one shot, so if you can reload fast you can shoot fast
+
+/obj/item/attachable/attached_gun/grenade/m203/Initialize()
+	. = ..()
+	grenade_pass_flags = NO_FLAGS
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

@@ -932,7 +932,7 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"
-	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time; introduce your little friend."
+	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	icon_state = "m16g"
 	item_state = "m16"
 	fire_sound = 'sound/weapons/gun_m16.ogg'
@@ -956,27 +956,66 @@
 /obj/item/weapon/gun/rifle/m16/grenadier/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/attached_gun/grenade/m203/S = new(src)
-	S.hidden = FALSE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.hidden = FALSE
 	S.Attach(src)
 	update_attachable(S.slot)
 
-/obj/item/weapon/gun/rifle/m16/xm177
+//-------------------------------------------------------
+//XM177 carbine
+//awesome vietnam era special forces carbine version of the M16, also known as the Colt Commando, predecessor to M4 series of carbines
+
+/obj/item/weapon/gun/rifle/xm177
 	name = "\improper XM177E2 carbine"
 	desc = "An old design, essentially a shortened M16A1 with a collapsable stock and M16A2 style foregrip. It is chambered in 5.56x45mm."
 	desc_lore = "placeholder for really autistic and in-depth history of the XM177 because this is my favorite gun of all time"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "xm177"
 	item_state = "m16"
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 
-/obj/item/weapon/gun/rifle/m16/xm177/handle_starting_attachment()
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16/xm177,
+	)
+
+	accepted_ammo = list(
+	 /obj/item/ammo_magazine/rifle/m16,
+	 /obj/item/ammo_magazine/rifle/m16/ap,
+	)
+
+/obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
+
+/obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/stock/m16/xm177/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/stock/m16/xm177/INTEGRATED = new(src)
+	INTEGRATED.hidden = FALSE
+	INTEGRATED.flags_attach_features &= ~ATTACH_REMOVABLE
+	INTEGRATED.Attach(src)
+	update_attachable(INTEGRATED.slot)
 
-/obj/item/weapon/gun/rifle/m16/xm177/set_gun_config_values()
+/obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
 	burst_amount = BURST_AMOUNT_TIER_3
@@ -1081,21 +1120,21 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch
 	name = "\improper Dutch's Grenadier M16A1"
-	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm. This one has an irremovable M203 grenade launched attached, holds one 40mm shell at a time."
+	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 
-/obj/item/weapon/gun/rifle/m16/xm177/dutch
+/obj/item/weapon/gun/rifle/xm177/dutch
 	name = "\improper Dutch's XM177E2 Carbine"
 	desc = "DESC"
 	desc_lore = "LORE DESC FROM ABOVE XM177"
 	icon_state = "xm177"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 
-/obj/item/weapon/gun/rifle/m16/xm177/set_gun_config_values()
+/obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
 	burst_amount = BURST_AMOUNT_TIER_3

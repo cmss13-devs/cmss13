@@ -712,7 +712,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	var/spit_location
+	var/spit_location = atom
 	if(!Xeno.check_state())
 		return
 

@@ -83,7 +83,7 @@
 						livingprey.splat(src)
 					else
 						livingprey.attack_animal(src)
-						livingprey.apply_damage(20,BRUTE)
+						livingprey.apply_damage(25,BRUTE)
 						livingprey.apply_effect(1,SLOW)
 						livingprey.KnockDown(1,1)
 					playsound(src.loc, "alien_claw_flesh", 25, 1)

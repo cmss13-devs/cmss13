@@ -30,7 +30,7 @@
 		qdel(src)
 
 /datum/component/bad_leg/Destroy(force, silent)
-	bound_action = QDEL_NULL
+	QDEL_NULL(bound_action)
 	parent_human = null
 	affected_limb = null
 	. = ..()

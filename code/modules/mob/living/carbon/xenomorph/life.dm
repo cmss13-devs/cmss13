@@ -222,6 +222,13 @@
 					to_chat(usr, SPAN_WARNING("[current_haul] do not require your attention anymore."))
 					release_haul(human)
 
+			//This looks unused but keeping it here for the sake of it
+			current_haul.acid_damage++
+			if(current_haul.acid_damage > 300)
+				to_chat(src, SPAN_XENODANGER("\The [current_haul] is rendered useless as you crush it."))
+				haul_contents.Remove(current_haul)
+				qdel(current_haul)
+
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)
 		return TRUE

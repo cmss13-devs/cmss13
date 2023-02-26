@@ -439,3 +439,15 @@
   - maptweak: all maps now use tgshuttles for landing zones
   - maptweak: all escape pods now tgshuttles
   - admin: moved admin shuttle to shuttle manipulator
+2023-02-26:
+  BeagleGaming1:
+  - bugfix: Fixes a log_debug error
+  Carlarc, Nauticall:
+  - soundadd: Added squeak plush noises used both on the new plush and on the farwa
+      dolls.
+  - imageadd: Added a new plushie, hidden somewhere.
+  - code_imp: Added a helpful inhands template to the files.
+  Sulaboy:
+  - rscadd: Added item M276 pattern combat toolbelt rig as a point buy item (15 points)
+      to combat engineer vendor.
+  - imageadd: Sprites for M276 pattern combat toolbelt rig

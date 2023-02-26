@@ -77,7 +77,7 @@ export const KeyBinds = (props, context) => {
             </Section>
           </Flex.Item>
           <Flex direction="column">
-            {selectedTab === 'ALL'
+            {selectedTab === 'ALL' && !searchTerm.length
               ? Object.keys(glob_keybinds).map((category) => (
                 <Flex.Item key={category}>
                   <Section title={category}>
@@ -124,6 +124,8 @@ const KeybindsDropdown = (props, context) => {
     'ALL'
   );
 
+  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+
   const dropdownOptions = ['ALL', ...Object.keys(glob_keybinds)];
 
   return (
@@ -131,6 +133,7 @@ const KeybindsDropdown = (props, context) => {
       width="360px"
       selected={selectedTab}
       options={dropdownOptions}
+      disabled={searchTerm.length}
       onSelected={(value) => setSelectedTab(value)}
     />
   );

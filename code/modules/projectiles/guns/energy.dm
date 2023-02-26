@@ -37,8 +37,6 @@
 	QDEL_NULL(cell)
 	. = ..()
 
-
-
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
 

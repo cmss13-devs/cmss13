@@ -509,7 +509,7 @@
 		icon_state = "[icon_full]"
 	return
 
-/obj/structure/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
+/obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return ..()
 
@@ -837,7 +837,6 @@
 	var/mob/living/carbon/user = usr
 	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
 
 	var/user_turf = get_turf(user)
 

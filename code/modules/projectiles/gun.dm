@@ -1706,9 +1706,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	if(isCarbonSizeXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		I.pixel_x = X.xeno_inhand_item_offset //To center it on the xeno sprite without being thrown off by rotation.
+	if(iscarbonsizexeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		I.pixel_x = xeno.xeno_inhand_item_offset //To center it on the xeno sprite without being thrown off by rotation.
 	rotate.Translate(0, 5) //Y offset to push the flash overlay outwards.
 	rotate.Turn(angle)
 	I.transform = rotate

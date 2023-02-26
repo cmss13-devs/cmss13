@@ -973,7 +973,7 @@
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		return
 
-	if(isxeno(P.firer) && ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
+	if(isxeno(P.firer) && ammo_flags & (AMMO_ACIDIC|AMMO_XENO)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
 		if(isxeno(P.firer))
 			var/mob/living/carbon/xenomorph/X = P.firer
 			if(X.can_not_harm(src))

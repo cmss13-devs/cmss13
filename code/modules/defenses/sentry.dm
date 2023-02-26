@@ -337,7 +337,6 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
-	var/offset = 13
 
 	var/image/flash = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.

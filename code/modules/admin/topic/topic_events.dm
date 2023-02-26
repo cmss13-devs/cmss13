@@ -138,15 +138,15 @@
 				return
 
 			if(grant == "Grant")
-				message_staff("[usr] granted 2nd Amendment rights to [length(handled_xenos) > 1 ? "[length(handled_xenos)] xenos" : "[length(handled_xenos) == 1 ? "[handled_xenos[1]]" : "no xenos"]"]\
+				message_admins("[usr] granted 2nd Amendment rights to [length(handled_xenos) > 1 ? "[length(handled_xenos)] xenos" : "[length(handled_xenos) == 1 ? "[handled_xenos[1]]" : "no xenos"]"]\
 					[length(permit_hives) > 1 ? " in all hives, and to any new xenos. Quite possibly we will all regret this." : "[length(permit_hives) == 1 ? " in [permit_hives[1]], and to any new xenos in that hive." : "."]"]")
 			else
-				message_staff("[usr] revoked 2nd Amendment rights from [length(handled_xenos) > 1 ? "[length(handled_xenos)] xenos" : "[length(handled_xenos) == 1 ? "[handled_xenos[1]]" : "no xenos"]"]\
+				message_admins("[usr] revoked 2nd Amendment rights from [length(handled_xenos) > 1 ? "[length(handled_xenos)] xenos" : "[length(handled_xenos) == 1 ? "[handled_xenos[1]]" : "no xenos"]"]\
 					[length(permit_hives) > 1 ? " in all hives, and from any new xenos." : "[length(permit_hives) == 1 ? " in [permit_hives[1]], and from any new xenos in that hive." : "."]"]")
 
 
 
-/datum/admins/proc/create_humans_list(var/href_list)
+/datum/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning humans")
 		return

@@ -225,7 +225,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/unlock_content = 0
 
 	var/current_menu = MENU_MARINE
-	
+
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
@@ -1740,17 +1740,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					save_preferences()
 
 				if("customcursors")
-					var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
-					if(!result)
-						return
-					if(result == "Yes")
-						custom_cursors = TRUE
-						to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
-					else
-						custom_cursors = FALSE
-						to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
-					save_preferences()
-
+					owner?.do_toggle_custom_cursors(owner?.mob)
 
 				if("save")
 					if(save_cooldown > world.time)

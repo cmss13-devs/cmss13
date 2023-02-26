@@ -487,7 +487,10 @@
 	set category = "Preferences.UI"
 	set desc = "Toggle Custom Cursors"
 
-	var/result = tgui_alert(src, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	do_toggle_custom_cursors()
+
+/client/proc/do_toggle_custom_cursors(mob/user)
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
 	if(!result)
 		return
 	if(result == "Yes")

@@ -75,12 +75,19 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
 	dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
 
-/datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self-destruct happens.
-	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
-		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))
-	else
-		if(SSticker.mode && SSticker.mode.is_in_endgame)
-			. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))
+/**
+ * This proc returns the ship's z level list (or whatever specified),
+ * when an evac/self-destruct happens.
+ */
+/datum/authority/branch/evacuation/proc/get_affected_zlevels()
+	//Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
+	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE)
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		return
+
+	if(SSticker.mode && SSticker.mode.is_in_endgame)
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))
+		return
 
 //=========================================================================================
 //=========================================================================================
@@ -95,14 +102,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_INITIATING
 		ai_announcement("Attention. Emergency. All personnel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
 		xeno_message_all("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
-		var/datum/shuttle/ferry/marine/evacuation_pod/P
+
 		for(var/obj/structure/machinery/status_display/SD in machines)
 			if(is_mainship_level(SD.z))
 				SD.set_picture("evac")
-		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			if(shuttle_controller)
-				P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
-				P.toggle_ready()
+		for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+			shuttle.prepare_evac()
 		activate_lifeboats()
 		process_evacuation()
 		unlock_evac_shutters()
@@ -114,14 +119,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_STANDING_BY
 		deactivate_lifeboats()
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
-		var/datum/shuttle/ferry/marine/evacuation_pod/P
+
 		if(get_security_level() == "red")
 			for(var/obj/structure/machinery/status_display/SD in machines)
 				if(is_mainship_level(SD.z))
 					SD.set_picture("redalert")
-		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
-			P.toggle_ready()
+
+		for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+			shuttle.cancel_evac()
 		return TRUE
 
 /datum/authority/branch/evacuation/proc/begin_launch() //Launches the pods.
@@ -130,19 +135,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
 			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
-			var/datum/shuttle/ferry/marine/evacuation_pod/P
-			var/L[] = new
-			var/i
-			for(i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER) L += i
-			while(L.len)
-				i = pick(L)
-				P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
-				P.prepare_for_launch() //May or may not launch, will do everything on its own.
-				L -= i
-				sleep(50) //Sleeps 5 seconds each launch.
+
+			for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+				shuttle.evac_launch()
+				sleep(50)
+
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
 			var/lifesigns = 0
-			lifesigns += P.passengers
+			// lifesigns += P.passengers
 			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_PORT)
 			lifeboat1.check_for_survivors()
 			lifesigns += lifeboat1.survivors

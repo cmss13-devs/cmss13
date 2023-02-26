@@ -249,7 +249,7 @@
 		T.SetOpacity(opacity)
 		multi_filler += list(T)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/proc/get_filler_turfs()
+/obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()
 	. = list()
 	for(var/i = 1, i < width, i++)
 		if(dir in list(NORTH, SOUTH))
@@ -284,7 +284,7 @@
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
-	if(is_loworbit_level(z))
+	if(is_reserved_level(z))
 		return // in orbit
 	..()
 

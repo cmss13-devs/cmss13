@@ -1,5 +1,5 @@
 /obj/effect/attach_point/weapon/dropship1
-	ship_tag = DROPSHIP_TAG_TEMPLATE1
+	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/weapon/dropship1/left_wing
 	name = "port wing weapon attach point"
@@ -40,7 +40,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship2
-	ship_tag = DROPSHIP_TAG_TEMPLATE2
+	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/weapon/dropship2/left_wing
 	name = "port wing weapon attach point"
@@ -85,10 +85,10 @@
 	base_category = DROPSHIP_CREW_WEAPON
 
 /obj/effect/attach_point/crew_weapon/dropship1
-	ship_tag = DROPSHIP_TAG_TEMPLATE1
+	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/crew_weapon/dropship2
-	ship_tag = DROPSHIP_TAG_TEMPLATE2
+	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"
@@ -96,10 +96,10 @@
 	icon_state = "equip_base_front"
 
 /obj/effect/attach_point/electronics/dropship1
-	ship_tag = DROPSHIP_TAG_TEMPLATE1
+	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/electronics/dropship2
-	ship_tag = DROPSHIP_TAG_TEMPLATE2
+	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
@@ -108,16 +108,16 @@
 	base_category = DROPSHIP_FUEL_EQP
 
 /obj/effect/attach_point/fuel/dropship1
-	ship_tag = DROPSHIP_TAG_TEMPLATE1
+	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/fuel/dropship2
-	ship_tag = DROPSHIP_TAG_TEMPLATE2
+	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/computer
 	base_category = DROPSHIP_COMPUTER
 
 /obj/effect/attach_point/computer/dropship1
-	ship_tag = DROPSHIP_TAG_TEMPLATE1
+	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/computer/dropship2
-	ship_tag = DROPSHIP_TAG_TEMPLATE2
+	ship_tag = DROPSHIP_NORMANDY

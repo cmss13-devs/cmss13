@@ -121,6 +121,6 @@ require only minor tweaks.
 
 //turf-only flags
 #define NOJAUNT_1 (1<<0)
-#define UNUSED_RESERVATION_TURF_1 (1<<1)
+#define UNUSED_RESERVATION_TURF (1<<1)
 /// If a turf can be made dirty at roundstart. This is also used in areas.
 #define CAN_BE_DIRTY_1 (1<<2)

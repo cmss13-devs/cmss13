@@ -175,8 +175,8 @@
 	return TRUE
 
 /datum/keybinding/human/rotate_chair
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "rotate_chair"
 	full_name = "Rotate Chair"
 	description = "Rotate a nearby chair"
@@ -192,8 +192,8 @@
 		chair.human_rotate()
 
 /datum/keybinding/human/show_held_item
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "show_held_item"
 	full_name = "Show Held Item"
 	keybind_signal = COMSIG_KB_HUMAN_SHOW_HELD_ITEM

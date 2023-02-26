@@ -5,6 +5,7 @@
 /obj/item/weapon/gun/boltaction
 	name = "\improper Basira-Armstrong bolt-action hunting rifle"
 	desc = "Named after its eccentric designers, the Basira-Armstrong is a cheap but reliable civilian bolt-action rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
 	fire_sound = 'sound/weapons/gun_boltaction.ogg'
 	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'

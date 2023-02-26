@@ -194,7 +194,7 @@ RCD
 /obj/item/ammo_rcd
 	name = "compressed matter cartridge"
 	desc = "Highly compressed matter for the RCD."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
 	icon_state = "rcd"
 	item_state = "rcdammo"
 	opacity = FALSE

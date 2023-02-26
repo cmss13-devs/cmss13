@@ -294,8 +294,8 @@
 				pod.go_in_cryopod(human, TRUE)
 				break
 
-		if(HAS_TRAIT(SSround, TRAIT_STATION_CRYOSLEEP_SICKNESS))
-			human.vomit_on_floor()
+		if(HAS_TRAIT(SSround, TRAIT_ROUND_CRYOSLEEP_SICKNESS))
+			addtimer(human, CALLBACK(TYPE_PROC_REF(/mob/living/carbon/human, vomit_on_floor)), range(1-5) SECONDS)
 
 		human.sec_hud_set_ID()
 		human.hud_set_squad()

@@ -15,5 +15,5 @@
 	weight = 5
 	show_in_human_report = TRUE
 	human_report_message = "A.R.E.S. was flagging up some errors for a minor subsystem in the cryogenics pods. Should all be fine."
-	trait_to_give = TRAIT_STATION_CRYOSLEEP_SICKNESS
+	trait_to_give = TRAIT_ROUND_CRYOSLEEP_SICKNESS
 	force = TRUE

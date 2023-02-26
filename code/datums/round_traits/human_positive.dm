@@ -10,12 +10,10 @@
 	. = ..()
 
 	var/who = pick("The Requistions Officer", "The Commanding Officer", "The Executive Officer", "A Rifleman")
-	var/what = pick("made a deal", "had a negotation", "made a trade", "had an exchange", "had an interesting conversation")
+	var/what = pick("made a deal", "had a negotation while", "made a trade", "had an exchange", "had an interesting conversation")
 	var/where = pick("on a recent stop to a leisure planet", "on shore leave at a station", "on a back water colony")
 	human_report_message = "[who] [what] [where] and managed to secure some additional funding for the operation. Unfortunately, the upfront funding results in less resources available over time."
 
 /datum/round_trait/book_balancing/on_round_start()
 	supply_controller.points += 800
 	supply_controller.points_per_process = 0.6
-
-/datum/round_trait/

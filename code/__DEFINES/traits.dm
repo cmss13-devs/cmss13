@@ -201,7 +201,7 @@
 
 // Round Traits
 
-#define TRAIT_STATION_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
+#define TRAIT_ROUND_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
 
 //-- structure traits --
 // TABLE TRAITS

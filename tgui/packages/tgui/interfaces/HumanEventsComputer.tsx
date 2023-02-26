@@ -72,7 +72,7 @@ const Notifications = (props, context) => {
   const [currentNotification, setNotification] = useLocalState(
     context,
     'notificationText',
-    ''
+    traits[0] ? traits[0]?.name : ''
   );
 
   return (
@@ -83,7 +83,9 @@ const Notifications = (props, context) => {
             <Button
               key={val.name}
               selected={val.name === currentNotification}
-              onClick={setNotification(val.name)}
+              onClick={() => {
+                setNotification(val.name);
+              }}
               fluid>
               {val.name}
             </Button>

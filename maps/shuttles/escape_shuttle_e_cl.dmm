@@ -2,32 +2,27 @@
 "a" = (
 /obj/docking_port/mobile/escape_shuttle/cl,
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall9";
-	
+	icon_state = "wall9"
 	},
 /area/shuttle/escape_pod)
 "b" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1";
-	
+	icon_state = "floor1"
 	},
 /area/shuttle/escape_pod)
 "c" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall11";
-	
+	icon_state = "wall11"
 	},
 /area/shuttle/escape_pod)
 "g" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall3";
-	
+	icon_state = "wall3"
 	},
 /area/shuttle/escape_pod)
 "h" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall13";
-	
+	icon_state = "wall13"
 	},
 /area/shuttle/escape_pod)
 "i" = (
@@ -39,8 +34,7 @@
 /area/shuttle/escape_pod)
 "s" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall2";
-	
+	icon_state = "wall2"
 	},
 /area/shuttle/escape_pod)
 "u" = (
@@ -52,8 +46,7 @@
 	pixel_y = 30
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor0";
-	
+	icon_state = "floor0"
 	},
 /area/shuttle/escape_pod)
 "y" = (
@@ -61,50 +54,42 @@
 	name = "\improper Evacuation Airlock CL-1"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	
+	icon_state = "test_floor4"
 	},
 /area/shuttle/escape_pod)
 "E" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall7";
-	
+	icon_state = "wall7"
 	},
 /area/shuttle/escape_pod)
 "I" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall6";
-	
+	icon_state = "wall6"
 	},
 /area/shuttle/escape_pod)
 "K" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor10";
-	
+	icon_state = "floor10"
 	},
 /area/shuttle/escape_pod)
 "O" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall4";
-	
+	icon_state = "wall4"
 	},
 /area/shuttle/escape_pod)
 "Q" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall1";
-	
+	icon_state = "wall1"
 	},
 /area/shuttle/escape_pod)
 "S" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall12";
-	
+	icon_state = "wall12"
 	},
 /area/shuttle/escape_pod)
 "X" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall10";
-	
+	icon_state = "wall10"
 	},
 /area/shuttle/escape_pod)
 

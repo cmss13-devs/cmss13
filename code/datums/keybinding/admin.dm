@@ -7,7 +7,7 @@
 
 /datum/keybinding/admin/admin_ghost
 	hotkey_keys = list("F5")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "admin_ghost"
 	full_name = "Aghost"
 	description = "Go ghost"
@@ -34,10 +34,10 @@
 		return
 	user.admin_holder.player_panel_new()
 	return TRUE
-
+/*
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -49,7 +49,7 @@
 		return
 	user.togglebuildmodeself()
 	return TRUE
-
+*/ /*
 /datum/keybinding/admin/stealthmode
 	hotkey_keys = list("F8")
 	classic_keys = list("F8")
@@ -64,10 +64,10 @@
 		return
 	user.invismin()
 	return TRUE
-
+*/
 /datum/keybinding/admin/deadsay
 	hotkey_keys = list("F10")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "dsay"
 	full_name = "deadsay"
 	description = "Allows you to send a message to dead chat"
@@ -81,8 +81,8 @@
 	return TRUE
 
 /datum/keybinding/admin/deadmin
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "deadmin"
 	full_name = "Deadmin"
 	description = "Shed your admin powers"
@@ -96,8 +96,8 @@
 	return TRUE
 
 /datum/keybinding/admin/readmin
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "readmin"
 	full_name = "Readmin"
 	description = "Regain your admin powers"

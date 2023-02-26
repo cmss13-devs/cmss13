@@ -39,6 +39,7 @@
 /obj/item/weapon/gun/smg/m39
 	name = "\improper M39 submachinegun"
 	desc = "The Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m39"
 	item_state = "m39"
 	flags_equip_slot = SLOT_BACK
@@ -142,6 +143,7 @@
 /obj/item/weapon/gun/smg/mp5
 	name = "\improper MP5 submachinegun"
 	desc = "A German design, this was one of the most widely used submachine guns in the world. It's still possible to find this firearm in the hands of collectors or gun fanatics."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "mp5"
 	item_state = "mp5"
 
@@ -193,6 +195,7 @@
 /obj/item/weapon/gun/smg/mp27
 	name = "\improper MP27 submachinegun"
 	desc = "An archaic design going back almost a century, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms. An extremely ergonomic and lightweight design allows easy mass production and surpisingly good handling, but the cheap materials used hurt the weapon's scatter noticeably."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "mp7"
 	item_state = "mp7"
 	fire_sound = 'sound/weapons/smg_light.ogg'
@@ -244,6 +247,7 @@
 /obj/item/weapon/gun/smg/ppsh
 	name = "\improper PPSh-17b submachinegun"
 	desc = "An unauthorized copy of a replica of a prototype submachinegun developed in a third world shit hole somewhere."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "ppsh17b"
 	item_state = "ppsh17b"
 
@@ -336,6 +340,7 @@
 /obj/item/weapon/gun/smg/mac15
 	name = "\improper MAC-15 submachinegun"
 	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age." //Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide.
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "mac15"
 	item_state = "mac15"
 
@@ -387,6 +392,7 @@
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
 	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "uzi"
 	item_state = "uzi"
 	flags_equip_slot = SLOT_WAIST
@@ -472,6 +478,7 @@
 /obj/item/weapon/gun/smg/fp9000
 	name = "\improper FN FP9000 Submachinegun"
 	desc = "An old design, but one that's stood the test of time. A leaked and unencrypted 3D-printing pattern alongside an extremely robust and reasonably cheap to manufacture frame have ensured this weapon be a mainstay of rim colonies and private security firms for over a century."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "fp9000"
 	item_state = "fp9000"
 
@@ -547,6 +554,7 @@
 /obj/item/weapon/gun/smg/nailgun
 	name = "nailgun"
 	desc = "A carpentry tool, used to drive nails into tough surfaces. Of course, if there isn't anything there, that's just a very sharp nail launching at high velocity..."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "nailgun"
 	item_state = "nailgun"
 	current_mag = /obj/item/ammo_magazine/smg/nailgun

@@ -43,3 +43,6 @@ var/global/list/markup_tags = list("/" = list("<i>", "</i>"),
 	return 1
 
 GLOBAL_DATUM_INIT(is_color, /regex, regex("^#\[0-9a-fA-F]{6}$"))
+
+#define REGEX_FLAG_GLOBAL "g"
+#define REGEX_FLAG_INSENSITIVE "i"

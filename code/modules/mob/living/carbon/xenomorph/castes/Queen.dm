@@ -44,6 +44,7 @@
 	tacklestrength_max = 6
 
 	minimum_xeno_playtime = 9 HOURS
+	minimum_evolve_time = 0
 
 	minimap_icon = "xenoqueen"
 

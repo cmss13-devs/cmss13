@@ -37,6 +37,26 @@
 	if(SSticker.mode.check_xeno_late_join(owner))
 		SSticker.mode.attempt_to_join_as_xeno(owner)
 
+/datum/action/join_ert
+	name = "Join ERT"
+	action_icon_state = "join_ert"
+	listen_signal = COMSIG_KB_OBSERVER_JOIN_ERT
+
+/datum/action/join_ert/New(Target, override_icon_state)
+	. = ..()
+	RegisterSignal(Target, COMSIG_ERT_SETUP, PROC_REF(cleanup))
+
+/datum/action/join_ert/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/datum/action/join_ert/action_activate()
+	if(!owner.client)
+		return
+
+	var/mob/dead/observer/activator = owner
+	activator.do_join_response_team()
+
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER
 	weight = WEIGHT_DEAD
@@ -50,3 +70,10 @@
 	name = "join_as_xeno"
 	full_name = "Join as Xeno"
 	keybind_signal = COMSIG_KB_OBSERVER_JOIN_XENO
+
+/datum/keybinding/observer/join_ert
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "join_ert"
+	full_name = "Join ERT"
+	keybind_signal = COMSIG_KB_OBSERVER_JOIN_ERT

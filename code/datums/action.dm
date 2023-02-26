@@ -21,7 +21,7 @@
 /datum/action/New(Target, override_icon_state)
 	target = Target
 	button = new
-	if(target)
+	if(target && isatom(target))
 		var/image/IMG = image(target.icon, button, target.icon_state)
 		IMG.pixel_x = 0
 		IMG.pixel_y = 0

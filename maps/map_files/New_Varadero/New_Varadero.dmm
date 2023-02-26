@@ -96,12 +96,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -1202,17 +1198,10 @@
 	},
 /area/varadero/interior/maintenance/research)
 "bak" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -2011,16 +2000,9 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "bIQ" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -4602,12 +4584,8 @@
 /area/varadero/interior/technical_storage)
 "edp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -5006,17 +4984,10 @@
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
 "ezc" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -6441,21 +6412,13 @@
 	},
 /area/varadero/interior/maintenance/north)
 "fJb" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -6776,12 +6739,8 @@
 	dir = 1
 	},
 /obj/structure/platform/kutjevo/rock,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 2;
-	name = "structural lattice";
 	pixel_y = -3
 	},
 /turf/open/gm/river,
@@ -7087,29 +7046,15 @@
 /area/varadero/interior/comms2)
 "gja" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -8462,28 +8407,14 @@
 	},
 /area/varadero/interior/maintenance/north)
 "hyN" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -8671,12 +8602,8 @@
 "hJQ" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/fork,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -8708,29 +8635,15 @@
 /area/varadero/interior/mess)
 "hLF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -9096,12 +9009,7 @@
 	},
 /area/varadero/interior/hall_N)
 "ibo" = (
-/obj/structure{
-	desc = "You can't see anything behind the screen, it looks half human and half machine.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "arcadeb";
-	name = "Spirit Phone, The Game, The Movie: II"
-	},
+/obj/structure/prop/broken_arcade,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -9798,21 +9706,13 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 6
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -10144,12 +10044,8 @@
 	},
 /area/varadero/interior/security)
 "iNE" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -10988,12 +10884,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -11698,17 +11590,10 @@
 /area/varadero/interior_protected/vessel)
 "kjJ" = (
 /obj/structure/machinery/light/small,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -11765,21 +11650,13 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -12050,21 +11927,13 @@
 	},
 /area/varadero/interior/hall_SE)
 "kyx" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -12346,28 +12215,14 @@
 	},
 /area/varadero/interior/maintenance)
 "kIV" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -13262,12 +13117,8 @@
 "lEc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -13502,17 +13353,10 @@
 	},
 /area/varadero/interior/hall_N)
 "lOc" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -14200,28 +14044,14 @@
 /area/varadero/interior/hall_N)
 "moH" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -15212,12 +15042,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -15615,12 +15441,8 @@
 "nBD" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -16077,29 +15899,15 @@
 /area/varadero/interior/oob)
 "nVk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -16523,28 +16331,14 @@
 /area/varadero/exterior/lz1_near)
 "ooe" = (
 /obj/structure/surface/rack,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -16832,12 +16626,8 @@
 /obj/structure/bed/chair{
 	icon_state = "chair_alt"
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -17347,12 +17137,8 @@
 /area/varadero/interior_protected/caves/digsite)
 "oXE" = (
 /obj/structure/surface/table,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -17396,16 +17182,9 @@
 	},
 /area/varadero/interior/hall_N)
 "oZA" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -17600,21 +17379,13 @@
 /turf/open/gm/grass/weedable,
 /area/varadero/interior_protected/caves/central)
 "pie" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
@@ -18245,12 +18016,8 @@
 	},
 /area/varadero/interior/electrical)
 "pJA" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -18596,21 +18363,13 @@
 /area/varadero/interior/bunks)
 "pYV" = (
 /obj/structure/pipes/vents/pump,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -18811,21 +18570,13 @@
 	},
 /area/varadero/interior/laundry)
 "qlj" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -19229,12 +18980,8 @@
 	},
 /area/varadero/interior/oob)
 "qDh" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -19620,12 +19367,8 @@
 	},
 /area/varadero/interior/maintenance)
 "qQN" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -20335,12 +20078,8 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -20425,12 +20164,8 @@
 	},
 /area/varadero/interior/medical)
 "rwV" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -21057,29 +20792,15 @@
 "rZA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/shiva{
 	icon_state = "snow_mat"
@@ -23057,12 +22778,8 @@
 /area/varadero/interior/medical)
 "tRu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -23738,12 +23455,8 @@
 "uvG" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/knife,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -24356,21 +24069,13 @@
 	},
 /area/varadero/interior/medical)
 "uVo" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -24993,21 +24698,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -26591,12 +26288,8 @@
 /area/varadero/interior/electrical)
 "wOQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice8";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},
@@ -27451,21 +27144,13 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "xCq" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice4";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/lattice{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 24
 	},

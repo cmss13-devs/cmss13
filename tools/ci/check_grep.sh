@@ -109,6 +109,13 @@ if grep -P '\W\/turf\s*[,\){]' $map_files; then
 	st=1
 fi;
 
+part "/obj/structure misuse"
+if grep -P '^\/obj\/structure\{$' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: individually defined /obj/structure objects detected in map files, please replace them with pre-defined objects.${NC}"
+	st=1
+fi;
+
 section "whitespace issues"
 
 part "space indentation"

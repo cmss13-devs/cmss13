@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - qol: "prevented new keybinds binding over existing ones"

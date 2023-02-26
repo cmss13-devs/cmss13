@@ -34,6 +34,8 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
+	minimum_evolve_time = 7 MINUTES
+
 	minimap_icon = "burrower"
 
 /mob/living/carbon/xenomorph/burrower

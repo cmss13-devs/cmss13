@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "prevented ert spawns causing unknown demons if you disconnect after becoming a candidate"

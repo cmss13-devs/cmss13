@@ -7,6 +7,7 @@
 	preferred_direction = SOUTH
 	callTime = DROPSHIP_TRANSIT_DURATION
 	rechargeTime = SHUTTLE_RECHARGE
+	ignition_sound = 'sound/effects/escape_pod_warmup.ogg'
 
 	var/datum/door_controller/single/door_handler = new()
 	var/launched = FALSE
@@ -73,6 +74,10 @@
 	on_ignition()
 	setTimer(ignitionTime)
 	launched = TRUE
+
+/obj/docking_port/mobile/escape_shuttle/enterTransit()
+	. = ..()
+	playsound(src,'sound/effects/escape_pod_launch.ogg', 50, 1)
 
 /obj/docking_port/mobile/escape_shuttle/e
 	id = ESCAPE_SHUTTLE_EAST

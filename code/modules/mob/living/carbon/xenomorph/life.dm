@@ -207,7 +207,7 @@
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/handle_hauled_contents()
-	//Deal with dissolving/damaging stuff in stomach.
+	//Deals with the stuff you are hauling
 	if(haul_contents.len)
 		for(var/atom/movable/current_haul in haul_contents)
 			if(ishuman_strict(current_haul))

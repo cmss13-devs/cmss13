@@ -18,7 +18,7 @@
 
 /datum/xeno_mutator/marker/apply_mutator(datum/mutator_set/individual_mutators/marker)
 	. = ..()
-	if(. == FALSE)
+	if(!.)
 		return
 
 	var/mob/living/carbon/xenomorph/spitter/marker_strain = marker.xeno

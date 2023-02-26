@@ -3,9 +3,9 @@
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
 	if(haul_contents.len)
-		for(var/mob/living/carbon/human/H in haul_contents)
-			if(!isspeciesmonkey(H))
-				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [H]!"))
+		for(var/mob/living/carbon/human/human in haul_contents)
+			if(!isspeciesmonkey(human))
+				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [human]!"))
 				return FALSE
 	return TRUE
 

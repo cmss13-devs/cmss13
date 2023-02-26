@@ -60,8 +60,8 @@
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
 		if (isxeno(user))
-			var/mob/living/carbon/xenomorph/X = user
-			X.pull_power(grabbed_thing)
+			var/mob/living/carbon/xenomorph/xeno = user
+			xeno.pull_power(grabbed_thing)
 		return
 
 
@@ -95,21 +95,21 @@
 	if(M == grabbed_thing)
 		attack_self(user)
 	else if(M == user && user.pulling && isxeno(user))
-		var/mob/living/carbon/xenomorph/X = user
-		var/mob/living/carbon/pulled = X.pulling
+		var/mob/living/carbon/xenomorph/xeno = user
+		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))
-			to_chat(X, SPAN_WARNING("That wouldn't serve a purpose."))
+			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
 			return 0
 		if(pulled.buckled)
-			to_chat(X, SPAN_WARNING("[pulled] is buckled to something."))
+			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
 			return 0
 		if(pulled.stat == DEAD && !pulled.chestburst)
-			to_chat(X, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
+			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
-		if(X.haul_contents.len) //Only one thing transported at a time, please
-			to_chat(X, SPAN_WARNING("You are already carrying something, there's no way that will work."))
+		if(xeno.haul_contents.len) //Only one thing transported at a time, please
+			to_chat(xeno, SPAN_WARNING("You are already carrying something, there's no way that will work."))
 			return 0
 			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still transported
@@ -119,19 +119,19 @@
 						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			to_chat(X, SPAN_WARNING("You are already busy with something."))
+			to_chat(xeno, SPAN_WARNING("You are already busy with something."))
 			return
-		X.visible_message(SPAN_DANGER("[X] starts to haul [pulled]!"), \
+		xeno.visible_message(SPAN_DANGER("[xeno] starts to haul [pulled]!"), \
 		SPAN_DANGER("You start securing your grasp on [pulled], allowing you soon to move freely!"), null, 5)
-		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isxeno(pulled.loc) && !X.haul_contents.len)
-				to_chat(X, SPAN_WARNING("Someone already hauled \the [pulled]."))
+		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if(isxeno(pulled.loc) && !xeno.haul_contents.len)
+				to_chat(xeno, SPAN_WARNING("Someone already hauled \the [pulled]."))
 				return 0
-			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.haul_contents.len) //make sure you've still got them in your claws, and alive
-				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, X) & COMPONENT_CANCEL_HAUL)
+			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.haul_contents.len) //make sure you've still got them in your claws, and alive
+				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE
 
-				X.visible_message(SPAN_WARNING("[X] hauls [pulled]!"), \
+				xeno.visible_message(SPAN_WARNING("[xeno] hauls [pulled]!"), \
 					SPAN_WARNING("You secure your grip, successfully hauling [pulled]!"), null, 5)
 
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
@@ -140,10 +140,10 @@
 				pulled.moveToNullspace()
 
 				//Then, we place the mob where it ought to be
-				X.haul_contents.Add(pulled)
-				X.haul_timer = world.time + 500 + rand(0,200) // 50-70 seconds
-				pulled.forceMove(X)
+				xeno.haul_contents.Add(pulled)
+				xeno.haul_timer = world.time + 500 + rand(0,200) // 50-70 seconds
+				pulled.forceMove(xeno)
 				return TRUE
-		if(!(pulled in X.haul_contents))
-			to_chat(X, SPAN_WARNING("You stop hauling \the [pulled]. \He probably served no purpose anyways."))
+		if(!(pulled in xeno.haul_contents))
+			to_chat(xeno, SPAN_WARNING("You stop hauling \the [pulled]. \He probably served no purpose anyways."))
 		return 0

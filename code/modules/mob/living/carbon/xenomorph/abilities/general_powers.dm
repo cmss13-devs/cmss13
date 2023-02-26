@@ -115,18 +115,18 @@
 
 
 /datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("You cannot release whatever you are hauling here."))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_WARNING("You cannot release whatever you are hauling here."))
 		return
 
-	if(X.haul_contents.len)
-		for(var/mob/living/M in X.haul_contents)
+	if(xeno.haul_contents.len)
+		for(var/mob/living/current_haul in xeno.haul_contents)
 			// Also has good reason to be a proc on all Xenos
-			X.release_haul(M, TRUE)
+			xeno.release_haul(current_haul, TRUE)
 
 	..()
 	return

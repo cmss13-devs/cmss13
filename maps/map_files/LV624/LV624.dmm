@@ -14559,13 +14559,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"elA" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv624/ground/barrens/central_barrens)
 "eny" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/jungle/clear,
@@ -17819,6 +17812,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/south_east_jungle)
+"loI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor,
+/area/lv624/ground/barrens/east_barrens)
 "lpV" = (
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -22302,12 +22299,6 @@
 	},
 /turf/open/jungle/clear,
 /area/lv624/ground/jungle/south_central_jungle)
-"tXj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
-/area/lv624/ground/barrens/west_barrens)
 "tXO" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -23502,12 +23493,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/north_jungle)
-"wze" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
-/area/lv624/ground/barrens/central_barrens)
 "wzG" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
@@ -40232,7 +40217,7 @@ uCM
 ios
 poL
 lzE
-lzE
+jTP
 lzE
 rba
 anf
@@ -40459,7 +40444,7 @@ mnQ
 iXz
 xwr
 uCM
-tXj
+ios
 ios
 ios
 eTH
@@ -46149,7 +46134,7 @@ mSo
 mSo
 mSo
 mSo
-mSo
+npv
 mSo
 mSo
 mSo
@@ -46377,7 +46362,7 @@ mSo
 cMP
 jaa
 jaa
-elA
+sLF
 mSo
 cOb
 awb
@@ -47060,7 +47045,7 @@ mSo
 mSo
 exQ
 wVk
-wVk
+csM
 wvP
 wVk
 wVk
@@ -47515,7 +47500,7 @@ exQ
 wVk
 wVk
 wVk
-csM
+wVk
 tzo
 kHB
 kHB
@@ -47968,7 +47953,7 @@ qjf
 qjf
 aex
 dml
-wze
+kZn
 nas
 eiz
 muz
@@ -48424,7 +48409,7 @@ qjf
 qjf
 aex
 qjf
-tgs
+qdZ
 tgs
 iuR
 xVb
@@ -49567,7 +49552,7 @@ qjf
 qjf
 qjf
 iuR
-tMB
+lQC
 lQC
 fpn
 uSy
@@ -50022,7 +50007,7 @@ hJa
 qjf
 afZ
 qjf
-pim
+loI
 qbl
 nas
 eiz
@@ -50030,7 +50015,7 @@ lQC
 lQC
 lQC
 lQC
-tMB
+lQC
 lQC
 qIw
 lQC
@@ -50486,7 +50471,7 @@ qdZ
 tgs
 tgs
 smQ
-tgs
+qdZ
 tgs
 iXj
 aiw

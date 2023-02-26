@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "Marine Raiders spawn not starving again."

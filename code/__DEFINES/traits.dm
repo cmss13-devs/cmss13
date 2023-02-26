@@ -143,6 +143,8 @@
 #define TRAIT_CRAWLER "t_crawler"
 /// If the mob is hidden from examination
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
+/// Replace s with th in talking
+#define TRAIT_LISPING "t_lisping"
 /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
@@ -163,6 +165,8 @@
 #define TRAIT_SANTA "t_santa"
 /// If the mob is wearing bimex glasses. Used for badass laser deflection flavor text.
 #define TRAIT_BIMEX "t_bimex"
+///Stops emote cooldown
+#define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -199,6 +203,10 @@
 
 #define TRAIT_STATION_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
 
+//-- structure traits --
+// TABLE TRAITS
+/// If the table is being flipped, prevent any changes that will mess with adjacency handling
+#define TRAIT_TABLE_FLIPPING "t_table_flipping"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -214,6 +222,75 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER
 ))
+
+/*
+	FUN ZONE OF ADMIN LISTINGS
+	Try to keep this in sync with __DEFINES/traits.dm
+	quirks have it's own panel so we don't need them here.
+*/
+GLOBAL_LIST_INIT(traits_by_type, list(
+	/mob = list(
+		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
+		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
+		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
+		"TRAIT_INTENT_EYES" = TRAIT_INTENT_EYES,
+		"TRAIT_INFILTRATOR_SYNTH" = TRAIT_INFILTRATOR_SYNTH,
+		"TRAIT_NESTED" = TRAIT_NESTED,
+		"TRAIT_CRAWLER" = TRAIT_CRAWLER,
+		"TRAIT_SIMPLE_DESC" = TRAIT_SIMPLE_DESC,
+		"TRAIT_TWOBORE_TRAINING" = TRAIT_TWOBORE_TRAINING,
+		"TRAIT_NEARSIGHTED_EQUIPMENT" = TRAIT_NEARSIGHTED_EQUIPMENT,
+		"TRAIT_DEXTROUS" = TRAIT_DEXTROUS,
+		"TRAIT_CHARGING" = TRAIT_CHARGING,
+		"TRAIT_LEADERSHIP" = TRAIT_LEADERSHIP,
+		"TRAIT_REAGENT_SCANNER" = TRAIT_REAGENT_SCANNER,
+		"TRAIT_SPOTTER_LAZED" = TRAIT_SPOTTER_LAZED,
+		"TRAIT_EAR_PROTECTION" = TRAIT_EAR_PROTECTION,
+		"TRAIT_SANTA" = TRAIT_SANTA,
+		"TRAIT_BIMEX" = TRAIT_BIMEX,
+		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
+		"TRAIT_LISPING" = TRAIT_LISPING,
+	),
+	/mob/living/carbon/xenomorph = list(
+		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
+		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
+	),
+	/datum/hive_status = list(
+		"TRAIT_XENONID" = TRAIT_XENONID,
+		"TRAIT_NO_HIVE_DELAY" = TRAIT_NO_HIVE_DELAY,
+		"TRAIT_NO_COLOR" = TRAIT_NO_COLOR,
+	),
+	/obj/item = list(
+		"TRAIT_TOOL_SCREWDRIVER" = TRAIT_TOOL_SCREWDRIVER,
+		"TRAIT_TOOL_CROWBAR" = TRAIT_TOOL_CROWBAR,
+		"TRAIT_TOOL_WIRECUTTERS" = TRAIT_TOOL_WIRECUTTERS,
+		"TRAIT_TOOL_WRENCH" = TRAIT_TOOL_WRENCH,
+		"TRAIT_TOOL_MULTITOOL" = TRAIT_TOOL_MULTITOOL,
+		"TRAIT_TOOL_BLOWTORCH" = TRAIT_TOOL_BLOWTORCH,
+		"TRAIT_TOOL_SIMPLE_BLOWTORCH" = TRAIT_TOOL_SIMPLE_BLOWTORCH,
+		"TRAIT_TOOL_PEN" = TRAIT_TOOL_PEN,
+		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
+		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
+	),
+	/obj/item/weapon/gun = list(
+		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
+	),
+	/obj/structure/surface/table = list(
+		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,
+	)
+))
+
+/// value -> trait name, generated on use from trait_by_type global
+GLOBAL_LIST(trait_name_map)
+
+/proc/generate_trait_name_map()
+	. = list()
+	for(var/key in GLOB.traits_by_type)
+		for(var/tname in GLOB.traits_by_type[key])
+			var/val = GLOB.traits_by_type[key][tname]
+			.[val] = tname
+
+
 
 //trait SOURCES
 /// Example trait source
@@ -244,6 +321,9 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 /// status trait given by a round trait
 #define TRAIT_SOURCE_ROUND "t_s_round_trait"
+//-- structure traits --
+///Status trait coming from being flipped or unflipped.
+#define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"

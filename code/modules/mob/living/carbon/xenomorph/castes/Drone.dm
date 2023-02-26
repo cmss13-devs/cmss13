@@ -31,6 +31,10 @@
 
 	aura_strength = 2
 
+	minimum_evolve_time = 1 MINUTES
+
+	minimap_icon = "drone"
+
 /datum/caste_datum/drone/New()
 	. = ..()
 

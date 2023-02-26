@@ -322,8 +322,8 @@
 		return
 	if(stat || !target)
 		return
-	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
-		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
+	if(!istype(loc, /turf)) // In some mob/object (i.e. hauled or tank)
+		to_chat(src, SPAN_WARNING("You cannot throw anything while restrained by \the [loc.name]."))
 		return
 	if(target.type == /atom/movable/screen)
 		return

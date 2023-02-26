@@ -305,7 +305,7 @@
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
-	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", list ("L: Discord", "L: Xeno Quickstart Guide", "L: Marine Quickstart Guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "L: Leaving the server", "M: Macros", "C: Changelog", "H: Clear Cache", "O: Combat Click-Drag Override"))
+	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", list ("L: Discord", "L: Xeno Quickstart Guide", "L: Marine Quickstart Guide", "L: Current Map", "A: No plasma regen", "A: Hauling as Xeno", "T: Tunnel", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "L: Leaving the server", "M: Macros", "C: Changelog", "H: Clear Cache", "O: Combat Click-Drag Override"))
 	if(!choice)
 		return
 
@@ -337,7 +337,7 @@
 			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[URL_WIKI_LANDING]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
 		if("A: No plasma regen")
 			msg += "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
-		if("A: Devour as Xeno")
+		if("A: Hauling as Xeno")
 			msg += "Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin hauling. The host can resists out of your grasp, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically dropped. To release your target voluntary, click 'release' on the HUD to throw them back up."
 		if("T: Tunnel")
 			msg += "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."

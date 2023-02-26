@@ -274,7 +274,7 @@
 	var/ripping_limb = FALSE
 	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
-	var/devour_timer = 0 // The world.time at which we will release our currently-held victim
+	var/haul_timer = 0 // The world.time at which we will release our currently-held victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
 	var/can_stack_builds = FALSE
 	var/list/resin_build_order
@@ -472,7 +472,7 @@
 		for(var/obj/item/W in oldXeno.contents) //Drop stuff
 			oldXeno.drop_inv_item_on_ground(W)
 
-		oldXeno.empty_gut()
+		oldXeno.empty_haul()
 
 		if(IS_XENO_LEADER(oldXeno))
 			hive.replace_hive_leader(oldXeno, src)

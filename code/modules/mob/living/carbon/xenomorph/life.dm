@@ -21,7 +21,7 @@
 		handle_xeno_fire()
 		handle_pheromones()
 		handle_regular_status_updates()
-		handle_stomach_contents()
+		handle_hauled_contents()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_canmove()
 		update_icons()
@@ -206,17 +206,21 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/handle_stomach_contents()
+/mob/living/carbon/xenomorph/proc/handle_hauled_contents()
 	//Deal with dissolving/damaging stuff in stomach.
 	if(haul_contents.len)
-		for(var/atom/movable/M in haul_contents)
-			if(ishuman_strict(M))
-				if(world.time == (devour_timer - 30))
-					to_chat(usr, SPAN_WARNING("You are starting to lose your grasp on [M]..."))
+		for(var/atom/movable/current_haul in haul_contents)
+			if(ishuman_strict(current_haul))
+				if(world.time == (haul_timer - 30))
+					to_chat(usr, SPAN_WARNING("You are starting to lose your grasp on [current_haul]..."))
 					playsound(loc, 'sound/handling/armorequip_2.ogg', 50, 1)
-				var/mob/living/carbon/human/H = M
-				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
-					release_haul(H)
+				var/mob/living/carbon/human/human = current_haul
+				if(world.time > haul_timer)
+					to_chat(usr, SPAN_WARNING("[current_haul] resists out of your grip!"))
+					release_haul(human)
+				if(human.stat == DEAD && !human.chestburst)
+					to_chat(usr, SPAN_WARNING("[current_haul] do not require your attention anymore."))
+					release_haul(human)
 
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)

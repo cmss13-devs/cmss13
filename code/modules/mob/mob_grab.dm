@@ -122,17 +122,17 @@
 			to_chat(X, SPAN_WARNING("You are already busy with something."))
 			return
 		X.visible_message(SPAN_DANGER("[X] starts to haul [pulled]!"), \
-		SPAN_DANGER("You secure your grasp on [pulled], allowing you to move freely!"), null, 5)
+		SPAN_DANGER("You start securing your grasp on [pulled], allowing you soon to move freely!"), null, 5)
 		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(isxeno(pulled.loc) && !X.haul_contents.len)
 				to_chat(X, SPAN_WARNING("Someone already hauled \the [pulled]."))
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.haul_contents.len) //make sure you've still got them in your claws, and alive
-				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, X) & COMPONENT_CANCEL_DEVOUR)
+				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, X) & COMPONENT_CANCEL_HAUL)
 					return FALSE
 
 				X.visible_message(SPAN_WARNING("[X] hauls [pulled]!"), \
-					SPAN_WARNING("You haul [pulled]!"), null, 5)
+					SPAN_WARNING("You secure your grip, successfully hauling [pulled]!"), null, 5)
 
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
@@ -141,7 +141,7 @@
 
 				//Then, we place the mob where it ought to be
 				X.haul_contents.Add(pulled)
-				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
+				X.haul_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
 				return TRUE
 		if(!(pulled in X.haul_contents))

@@ -365,8 +365,8 @@
 /mob/living/carbon/xenomorph/proc/pounced_turf_wrapper(turf/T)
 	pounced_turf(T)
 
-//Bleuugh
-/mob/living/carbon/xenomorph/proc/empty_gut()
+
+/mob/living/carbon/xenomorph/proc/empty_haul()
 	if(haul_contents.len)
 		for(var/atom/movable/S in haul_contents)
 			haul_contents.Remove(S)
@@ -396,7 +396,7 @@
 			victim.forceMove(get_true_turf(loc))
 
 			visible_message(SPAN_XENOWARNING("[src] lets go of what they were holding onto the ground!"), \
-			SPAN_XENOWARNING("You release your grasp!"), null, 5)
+			SPAN_XENOWARNING("You release the victim of your grasp!"), null, 5)
 			playsound(get_true_location(loc), get_sfx("clothingrustle"), 50, 1)
 
 			if (stuns)

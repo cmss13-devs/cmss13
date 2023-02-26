@@ -202,6 +202,8 @@
 				S = pick('sound/effects/zippo_close.ogg')
 			if("bonk") //somewhat quiet, increase volume
 				S = pick('sound/machines/bonk.ogg')
+			if("cane_step")
+				S = pick('sound/items/cane_step_1.ogg', 'sound/items/cane_step_2.ogg', 'sound/items/cane_step_3.ogg', 'sound/items/cane_step_4.ogg', 'sound/items/cane_step_5.ogg', )
 			if("match")
 				S = pick('sound/effects/match.ogg')
 			if("punch")

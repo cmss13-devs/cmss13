@@ -502,6 +502,8 @@
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
+	if(flags_gun_features & GUN_NO_DESCRIPTION)
+		return .
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"

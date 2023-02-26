@@ -76,6 +76,8 @@
 #define GUN_SUPPORT_PLATFORM (1<<19)
 #define GUN_BURST_ONLY (1<<20)
 #define GUN_FULL_AUTO_ONLY (1<<21)
+/// No gun description, only base desc
+#define GUN_NO_DESCRIPTION (1<<22)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

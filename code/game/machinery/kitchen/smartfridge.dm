@@ -480,7 +480,7 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
-	req_one_access = list(ACCESS_MARINE_CMO, 33)
+	req_one_access = list(ACCESS_MARINE_CMO)
 
 /obj/structure/machinery/smartfridge/secure/medbay/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))

@@ -277,7 +277,7 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 
-					message_staff("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 					explode()
 			else if( prob( min(60, switchcount*switchcount*0.01) ) )
@@ -351,7 +351,7 @@
 
 					if(on && rigged)
 
-						message_staff("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+						message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 						explode()
 			else

@@ -63,7 +63,7 @@
 
 
 /obj/effect/landmark/wo_supplies/guns
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 
 /obj/effect/landmark/wo_supplies/guns/common
 	amount = list(5,10)
@@ -185,7 +185,7 @@
 
 
 /obj/effect/landmark/wo_supplies/ammo
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack

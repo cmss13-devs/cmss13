@@ -2,6 +2,7 @@
     "map_name": "Shivas Snowball",
     "map_path": "map_files/Ice_Colony_v3",
     "map_file": "Shivas_Snowball.dmm",
+    "webmap_url": "Shivas",
     "environment_traits": {
         "COLD": true
     },

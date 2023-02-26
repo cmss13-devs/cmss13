@@ -38,12 +38,12 @@
 
 /datum/component/bad_leg/RegisterWithParent()
 	..()
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/stumble)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(stumble))
 	give_action(parent_human, /datum/action/human_action/rest_legs, null, null, src)
 
 /datum/component/bad_leg/UnregisterFromParent()
 	..()
-	UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/stumble)
+	UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(stumble))
 	bound_action?.unique_remove_action(parent_human, /datum/action/human_action/rest_legs, src)
 
 
@@ -79,10 +79,10 @@
 			parent_human.Shake(pixelshiftx = 15, pixelshifty = 0, duration = stun_time)
 			parent_human.Stun(stun_time * 0.1) //already are seconds in Stun()
 			parent_human.apply_effect(stun_time, STUN)
-			addtimer(CALLBACK(src, .proc/rest_legs_pain, parent_human, FALSE), stun_time)
+			addtimer(CALLBACK(src, PROC_REF(rest_legs_pain), parent_human, FALSE), stun_time)
 			return
 
-	INVOKE_ASYNC(src, .proc/rest_legs, parent_human, FALSE)
+	INVOKE_ASYNC(src, PROC_REF(rest_legs), parent_human, FALSE)
 
 /datum/component/bad_leg/proc/rest_legs_pain(mob/living/parent_human, action = FALSE)
 	to_chat(parent_human, SPAN_NOTICE("You can move again, but you should probably rest for a bit."))

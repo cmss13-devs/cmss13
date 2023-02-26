@@ -352,3 +352,102 @@
       You can no longer flip table that you are on top of.
   carlarctg:
   - rscadd: Increased amount of prey cats can leap upon, including larva and facehuggers.
+2023-02-22:
+  carlarctg:
+  - soundadd: Added two unused sounds, one roar, one death noise, for the future.
+  - soundadd: Added predalien growl to Devastate, predalien pounce noise to Pounce,
+      and gave predalien its unique death noise.
+  - soundadd: Added a predator facehugged noise.
+  - soundadd: Added medium-strength footsteps to Predalien.
+  - code_imp: Added a pre_pounce_effects() proc.
+  - refactor: Refactored binocular overlays and camos into being variable-dependent.
+  harryob:
+  - admin: admins can now harm mobs by specific damage types in vv again
+  insertnamehere123:
+  - spellcheck: Changed a noun (Water) to an adjective (Watery)
+2023-02-23:
+  CapCamIII:
+  - spellcheck: Changes the following weapon names. XM42B to XM43E1, M1911 SOCOM >
+      M48A4, M43 Hummingbird > D18 Hummingbird, M40-SD > XM40, Mk210 > XM38
+  - spellcheck: B8 smartscope now doesn't say it fits on the M46C.
+  Joe lampost:
+  - rscadd: 'Added one emote and changed another emote
+
+      add:Predators can now self destruct bracers worn by humans'
+  - bugfix: fixed the loudroar emote
+  NewyearnewmeUwu:
+  - bugfix: crates are now always unanchored when they land
+  Puckaboo2:
+  - bugfix: Mentioned how Charger's stomp changes in the strain description and how
+      Hedgehog has immunity to small explosions.
+  - spellcheck: Fixed some grammar and spelling errors in the strain descriptions.
+  Tropical_Flak:
+  - imageadd: Changed the Seegson cargo container to be yellow instead of green.
+  carlarctg:
+  - rscadd: Braziers and torches can now be crafted with runed sandstone sheets by
+      Yautja. Braziers need to be filled with wood and then lit. Torches just need
+      to be lit.
+  - rscadd: Plasma casters and pistols are now heat sources so they can ignite braziers
+      and torches.
+  realforest2001:
+  - bugfix: Provost Enforcers and Team Leaders can now USE the beanbags they spawn
+      with.
+2023-02-24:
+  Puckaboo2:
+  - bugfix: Added the missing icon states of several uniforms which had the ability
+      to roll sleeves up.
+  harryob:
+  - ui: adds an escape menu, with some (not many) buttons on it
+  - qol: prevented new keybinds binding over existing ones
+  - bugfix: prevented ert spawns causing unknown demons if you disconnect after becoming
+      a candidate
+2023-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added the ability for xenomorphs to turn off hardhats on the ground.
+  - bugfix: Hardhat headlamps no longer stay on when their wearer dies.
+  - code_imp: Changed hardhat code to be in line with flashlight code.
+  LynxSolstice:
+  - maptweak: Makes LV624 more jungle-y and less desert-like. North of the river changed
+      to reflect this. All grass turfs (turf/open/gm/grass) replaced with their weedable
+      variant (turf/open/gm/grass/weedable)
+  Puckaboo2:
+  - bugfix: Reinforced resin secretions now have separate ability icons from their
+      normal counterparts.
+  - bugfix: Resin secretion ability icons without borders now fit snugly inside their
+      templates.
+  - bugfix: All ability icons that either did not have borders, had misshapen borders,
+      had incorrect colors in portions of their borders, or  did not align properly
+      in the ability icon template now have a proper border surrounding their icons
+      and have been moved to their proper position.
+  - bugfix: Removed a beige pixel in the slashing animation.
+  - bugfix: Headbite's animation is now anatomically accurate.
+  - imageadd: 'Added 3 different bite animations: one for humans, one for carnivorous
+      mammals, and one for vampiric creatures.'
+  - bugfix: Humans will now cover their noses when they wear surgical masks.
+  carlarctg:
+  - bugfix: Fixed building braziers not building braziers.
+  - bugfix: Plasma pistols (and cutters) can be placed in storage again.
+  - code_imp: Added a new flag, IGNITING_ITEM, that lets 'heat source' items fit inside
+      storage.
+  - refactor: Refactors gun, attachment, ammo, and ammo box icons to be held in separate
+      folders per faction.
+  mullenpaul:
+  - refactor: alamo and normandy now using tgshuttles
+  - refactor: escape pods now using tgshuttles
+  - refactor: when a pilot flies the dropship optimisation will automatically apply
+  - refactor: temporarily forced autopilot delay to 30s
+  - maptweak: all maps now use tgshuttles for landing zones
+  - maptweak: all escape pods now tgshuttles
+  - admin: moved admin shuttle to shuttle manipulator
+2023-02-26:
+  BeagleGaming1:
+  - bugfix: Fixes a log_debug error
+  Carlarc, Nauticall:
+  - soundadd: Added squeak plush noises used both on the new plush and on the farwa
+      dolls.
+  - imageadd: Added a new plushie, hidden somewhere.
+  - code_imp: Added a helpful inhands template to the files.
+  Sulaboy:
+  - rscadd: Added item M276 pattern combat toolbelt rig as a point buy item (15 points)
+      to combat engineer vendor.
+  - imageadd: Sprites for M276 pattern combat toolbelt rig

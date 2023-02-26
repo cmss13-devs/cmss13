@@ -6,7 +6,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine
 	name = "generic ammo"
 	desc = "A box of ammo."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = null
 	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on

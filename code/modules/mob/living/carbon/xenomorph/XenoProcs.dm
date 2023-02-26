@@ -395,7 +395,7 @@
 			victim.acid_damage = 0
 			victim.forceMove(get_true_turf(loc))
 
-			visible_message(SPAN_XENOWARNING("[src] toss what they were holding onto the ground!"), \
+			visible_message(SPAN_XENOWARNING("[src] tosses what they were holding onto the ground!"), \
 			SPAN_XENOWARNING("You release the victim of your grasp!"), null, 5)
 			playsound(get_true_location(loc), get_sfx("clothingrustle"), 50, 1)
 

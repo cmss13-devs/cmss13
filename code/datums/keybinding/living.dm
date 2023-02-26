@@ -71,8 +71,8 @@
 	return TRUE
 
 /datum/keybinding/living/cancel_camera_view
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "cancel_camera_view"
 	full_name = "Cancel Camera View"
 	description = "Reset your view to your mob"

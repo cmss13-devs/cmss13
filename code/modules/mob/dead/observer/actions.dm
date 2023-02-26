@@ -45,8 +45,8 @@
 	return isobserver(user?.mob)
 
 /datum/keybinding/observer/join_as_xeno
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "join_as_xeno"
 	full_name = "Join as Xeno"
 	keybind_signal = COMSIG_KB_OBSERVER_JOIN_XENO

@@ -179,8 +179,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/hive_status
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "hive_status"
 	full_name = "View Hive Status"
 	keybind_signal = COMSIG_KB_XENO_HIVE_STATUS
@@ -206,15 +206,15 @@
 	current_xeno.hive.hive_ui.open_hive_status(current_xeno)
 
 /datum/keybinding/xenomorph/hide
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "hide"
 	full_name = "Hide"
 	keybind_signal = COMSIG_KB_XENO_HIDE
 
 /datum/keybinding/xenomorph/evolve
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "evolve"
 	full_name = "Evolve"
 	keybind_signal = COMSIG_KB_XENO_EVOLVE

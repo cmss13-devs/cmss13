@@ -405,8 +405,8 @@ var/list/global/item_storage_box_cache = list()
 		if(L.mode)
 			return 0
 
-	if(W.heat_source && !isigniter(W))
-		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
+	if(W.heat_source && !(flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
 	if(!can_hold_type(W.type))

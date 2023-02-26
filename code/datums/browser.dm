@@ -332,9 +332,7 @@
 		opentime = 0
 		return
 	if (href_list["button"])
-		var/button = text2num(href_list["button"])
-		if (button <= 3 && button >= 1)
-			selectedbutton = button
+		selectedbutton = href_list["button"]
 	for (var/item in href_list)
 		switch(item)
 			if ("close", "button", "src")
@@ -371,7 +369,7 @@
 			pickerlist += list(list("checked" = 0, "value" = GLOB.bitfields[bitfield][i], "name" = i, "allowed_edit" = can_edit))
 	var/list/result = presentpicker(User, "", title, Button1="Save", Button2 = "Cancel", Timeout=FALSE, values = pickerlist, width = nwidth, height = nheight, slidecolor = nslidecolor)
 	if (islist(result))
-		if (result["button"] == 2) // If the user pressed the cancel button
+		if (result["button"] == "Cancel") // If the user pressed the cancel button
 			return
 		. = 0
 		for (var/flag in result["values"])

@@ -77,7 +77,7 @@
 		icon_state = "Normal [caste_name] Running"
 	update_wounds()
 
-/mob/living/simple_animal/hostile/alien/evaluate_target(var/mob/living/carbon/target)
+/mob/living/simple_animal/hostile/alien/evaluate_target(mob/living/carbon/target)
 	. = ..()
 	if(!. || !hivenumber)
 		return

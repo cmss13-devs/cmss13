@@ -173,10 +173,7 @@
 				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
-			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
-				if(is_ground_level(default_console.z) && !default_console.onboard)
-					select_lz(default_console)
-					break
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
@@ -223,7 +220,7 @@
 
 // Resource Towers
 
-/datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 
 ///////////////////////////
@@ -254,7 +251,7 @@
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(var/hivenumber)
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
 	set waitfor = 0
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths++

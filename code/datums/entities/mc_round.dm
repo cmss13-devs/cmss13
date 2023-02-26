@@ -5,5 +5,5 @@
 	entity_type = /datum/entity/mc_round
 	table_name = "mc_round"
 	field_types = list(
-			"map_name"=DB_FIELDTYPE_STRING_LARGE
-		)
+		"map_name"=DB_FIELDTYPE_STRING_LARGE,
+	)

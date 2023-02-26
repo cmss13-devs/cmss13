@@ -28,7 +28,7 @@
 	var/buckling_sound = 'sound/effects/buckle.ogg'
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -45,7 +45,7 @@
 		unbuckle()
 	. = ..()
 
-/obj/structure/bed/ex_act(var/power)
+/obj/structure/bed/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -384,3 +384,10 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
+
+//bedroll
+/obj/structure/bed/bedroll
+	name = "bedroll"
+	desc = "bedroll"
+	icon_state = "bedroll_o"
+	icon = 'icons/monkey_icos.dmi'

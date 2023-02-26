@@ -58,7 +58,7 @@
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
 
-/obj/item/storage/clicked(var/mob/user, var/list/mods)
+/obj/item/storage/clicked(mob/user, list/mods)
 	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
@@ -71,7 +71,7 @@
 
 	return ..()
 
-/obj/item/storage/proc/handle_mmb_open(var/mob/user)
+/obj/item/storage/proc/handle_mmb_open(mob/user)
 	open(user)
 
 /obj/item/storage/proc/return_inv()
@@ -168,7 +168,7 @@
 	update_icon()
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
-/obj/item/storage/proc/slot_orient_objs(var/rows, var/cols, var/list/obj/item/display_contents)
+/obj/item/storage/proc/slot_orient_objs(rows, cols, list/obj/item/display_contents)
 	var/cx = 4
 	var/cy = 2+rows
 	boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"
@@ -213,7 +213,7 @@ var/list/global/item_storage_box_cache = list()
 	end = new()
 	end.icon_state = "stored_end"
 
-/obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
+/obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
@@ -277,7 +277,7 @@ var/list/global/item_storage_box_cache = list()
 	src.closer.screen_loc = "4:[storage_width+19],2:16"
 	return
 
-/atom/movable/screen/storage/clicked(var/mob/user, var/list/mods) //Much of this is replicated do_click behaviour.
+/atom/movable/screen/storage/clicked(mob/user, list/mods) //Much of this is replicated do_click behaviour.
 	if(user.is_mob_incapacitated() || !isturf(user.loc))
 		return TRUE
 
@@ -405,8 +405,8 @@ var/list/global/item_storage_box_cache = list()
 		if(L.mode)
 			return 0
 
-	if(W.heat_source && !isigniter(W))
-		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
+	if(W.heat_source && !(flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
 	if(!can_hold_type(W.type))
@@ -525,7 +525,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 /obj/item/storage/equipped(mob/user, slot, silent)
 	if ((storage_flags & STORAGE_ALLOW_EMPTY))
-		if(!isXeno(user))
+		if(!isxeno(user))
 			verbs |= /obj/item/storage/verb/empty_verb
 			verbs |= /obj/item/storage/verb/toggle_click_empty
 		else
@@ -592,7 +592,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	var/mob/living/carbon/human/H = usr
 	empty(H, get_turf(H))
 
-/obj/item/storage/proc/empty(var/mob/user, var/turf/T)
+/obj/item/storage/proc/empty(mob/user, turf/T)
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src) || user.is_mob_incapacitated())
 		return
 
@@ -628,7 +628,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	var/mob/user_mob = usr
 	shake(user_mob, get_turf(user_mob))
 
-/obj/item/storage/proc/shake(var/mob/user, var/turf/tile)
+/obj/item/storage/proc/shake(mob/user, turf/tile)
 	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
 		return
 
@@ -645,7 +645,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		playsound(loc, use_sound, 25, TRUE, 3)
 
 	if(!length(contents))
-		if(prob(25) && isXeno(user))
+		if(prob(25) && isxeno(user))
 			user.drop_inv_item_to_loc(src, tile)
 			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
 				SPAN_NOTICE("You shake \the [src] off."))
@@ -674,7 +674,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
-/obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
+/obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
 		return
 
@@ -840,7 +840,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(isturf(target) && get_dist(src, target) <= 1 && storage_flags & STORAGE_CLICK_EMPTY)
 		empty(user, target)
 
-/obj/item/storage/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
+/obj/item/storage/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	// Whatever is stored in /storage/ substypes should ALWAYS be an item
 	for (var/obj/item/I as anything in hearing_items)
 		I.hear_talk(M, msg, verb, speaking, italics)

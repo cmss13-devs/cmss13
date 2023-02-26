@@ -2,6 +2,7 @@
     "map_name": "New Varadero",
     "map_path": "map_files/New_Varadero",
     "map_file": "New_Varadero.dmm",
+    "webmap_url": "NewVaradero",
 
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",

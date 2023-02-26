@@ -415,7 +415,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
 							if (!t1 || active1 != a1)
 								return
-							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
+							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("sex")
 						if (istype(active1, /datum/data/record))
@@ -510,10 +510,10 @@ What a mess.*/
 
 	return dat
 
-/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(mob/user)
 	return user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!ishighersilicon(user)))
 
-/obj/structure/machinery/computer/secure_data/proc/get_photo(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_hand()
 		return photo.img

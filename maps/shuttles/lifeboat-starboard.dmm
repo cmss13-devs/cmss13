@@ -298,7 +298,7 @@
 /area/shuttle/lifeboat)
 "Lk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer/vehicle{
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
@@ -417,8 +417,7 @@
 /area/shuttle/lifeboat)
 "VZ" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8";
-	tag = "icon-floor8"
+	icon_state = "floor8"
 	},
 /area/shuttle/lifeboat)
 "Xj" = (

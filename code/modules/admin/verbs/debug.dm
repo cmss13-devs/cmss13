@@ -18,7 +18,7 @@
 	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Robot"
 
@@ -33,7 +33,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"
 
@@ -53,7 +53,7 @@
 	spawn(10)
 		M.Animalize()
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Alien"
 
@@ -65,7 +65,7 @@
 		spawn(10)
 			M:Alienize()
 
-		message_staff("[key_name_admin(usr)] made [key_name(M)] into an alien.")
+		message_admins("[key_name_admin(usr)] made [key_name(M)] into an alien.")
 	else
 		alert("Invalid mob")
 
@@ -88,9 +88,9 @@
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_staff("[key_name(src)] enabled checking for round-end.")
+		message_admins("[key_name(src)] enabled checking for round-end.")
 	else
-		message_staff("[key_name(src)] disabled checking for round-end.")
+		message_admins("[key_name(src)] disabled checking for round-end.")
 
 
 
@@ -100,7 +100,7 @@
 	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
+	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
 	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
@@ -122,7 +122,7 @@
 							else
 								qdel(O)
 							del_amt++
-					message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
+					message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 
@@ -131,10 +131,10 @@
 	set name = "Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	makepowernets()
-	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
+	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Grant Full Access"
 
@@ -163,9 +163,9 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
+	message_admins("[key_name_admin(usr)] has granted [M.key] full access.")
 
-/client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Give Null Skills"
 
@@ -180,7 +180,7 @@
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
+	message_admins("[key_name_admin(usr)] has given [M.key] null skills.")
 
 /client/proc/admin_create_account(mob/target in GLOB.mob_list)
 	set category = null
@@ -229,7 +229,7 @@
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"
 	set category = null
@@ -254,7 +254,7 @@
 
 	usr.mind.transfer_to(M, TRUE)
 
-	message_staff("[key_name_admin(usr)] assumed direct control of [M].")
+	message_admins("[key_name_admin(usr)] assumed direct control of [M].")
 
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"

@@ -986,6 +986,16 @@
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off-0"
 
+/obj/structure/prop/invuln/pipe_water
+	name = "pipe water"
+	desc = ""
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "water"
+	density = 0
+
+/obj/structure/prop/invuln/pipe_water/Initialize(mapload)
+	. = ..()
+	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

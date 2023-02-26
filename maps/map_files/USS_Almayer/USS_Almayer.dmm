@@ -30464,13 +30464,7 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "dCh" = (
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water"
-	},
+/obj/structure/prop/invuln/pipe_water,
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
 	pixel_x = -12;
@@ -32992,12 +32986,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17
 	},
 /turf/open/floor/plating/plating_catwalk,

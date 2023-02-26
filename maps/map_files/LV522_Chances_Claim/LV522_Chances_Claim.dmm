@@ -2854,12 +2854,7 @@
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -4;
 	pixel_y = 1
 	},
@@ -4534,12 +4529,7 @@
 	pixel_x = 11;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -10938,13 +10928,8 @@
 /area/lv522/indoors/c_block/cargo)
 "fuc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
+/obj/structure/prop/invuln/pipe_water{
 	dir = 8;
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
 	pixel_x = -31
 	},
 /turf/open/floor/prison,
@@ -20969,12 +20954,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -23948,12 +23928,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17;
 	pixel_y = -2
 	},
@@ -30014,12 +29989,7 @@
 	pixel_x = 11;
 	pixel_y = 16
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = -6
 	},
@@ -30897,12 +30867,7 @@
 	pixel_x = -8;
 	pixel_y = -6
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 17
 	},
 /turf/open/gm/river,
@@ -32390,12 +32355,7 @@
 "ogA" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 28
 	},
 /turf/open/floor/prison,
@@ -42212,12 +42172,7 @@
 	pixel_x = 6;
 	pixel_y = 19
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -45457,12 +45412,7 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 11
 	},
 /turf/open/gm/river,

@@ -8,7 +8,6 @@ var/global/dmm_suite/preloader/_preloader = new
 
 /datum/map_load_metadata
 	var/bounds
-	var/list/atoms_to_initialise
 
 /dmm_suite
 		// /"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}/g
@@ -187,7 +186,6 @@ var/global/dmm_suite/preloader/_preloader = new
 						T.ChangeTurf(world.turf, list(world.turf))
 		var/datum/map_load_metadata/M = new
 		M.bounds = bounds
-		M.atoms_to_initialise = atoms_to_initialise
 		return M
 
 /*

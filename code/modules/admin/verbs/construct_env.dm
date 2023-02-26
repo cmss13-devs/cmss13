@@ -98,10 +98,6 @@
 		var/datum/map_load_metadata/M = maploader.load_map(input, x, y, z, TRUE, FALSE, FALSE, TRUE)
 		to_chat(src, SPAN_NOTICE("Map has been fully constructed!"))
 
-		for(var/obj/O in M.atoms_to_initialise)
-			O.update_icon()
-			O.set_pixel_location()
-
 		message_admins("[key_name_admin(usr)] has finished constructing an environment using a DMM file ([input]).", x, y, show_z)
 	catch (var/ex)
 		to_chat(src, SPAN_NOTICE("Encountered an error whilst constructing the map! [ex]"))

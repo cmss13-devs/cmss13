@@ -712,7 +712,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	var/spit_location = atom
+	var/spit_target = aim_turf ? get_turf(atom) : atom
 	if(!Xeno.check_state())
 		return
 
@@ -727,9 +727,6 @@
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
 		return
-
-	if(aim_turf)
-		spit_location = get_turf(atom)
 
 	var/turf/current_turf = get_turf(Xeno)
 
@@ -767,7 +764,7 @@
 	Proj.generate_bullet(Xeno.ammo)
 	Proj.permutated += Xeno
 	Proj.def_zone = Xeno.get_limbzone_target()
-	Proj.fire_at(spit_location, Xeno, Xeno, Xeno.ammo.max_range, Xeno.ammo.shell_speed)
+	Proj.fire_at(spit_target, Xeno, Xeno, Xeno.ammo.max_range, Xeno.ammo.shell_speed)
 	spitting = FALSE
 
 	SEND_SIGNAL(Xeno, COMSIG_XENO_POST_SPIT)

@@ -80,6 +80,8 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// The item goes on top of tables, instead of into them with the overlay system
 #define NOTABLEMERGE (1<<13)
+/// Has heat source but isn't 'on fire' and thus can be stored
+#define IGNITING_ITEM (1<<14)
 
 //==========================================================================================
 

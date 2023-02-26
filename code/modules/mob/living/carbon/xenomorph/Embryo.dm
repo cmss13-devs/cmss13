@@ -141,53 +141,54 @@
 	if(!affected_mob || is_admin_level(affected_mob.z))
 		return
 
-	var/mob/picked
-	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
-	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
-		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
-			picked = affected_mob
-		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
-			picked = affected_mob.mind.ghost_mob
-
-
-	if(!picked)
-		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
-
-		if(candidates && candidates.len)
-			picked = pick(candidates)
-
-	// Spawn the larva
-	var/mob/living/carbon/xenomorph/larva/new_xeno
-
-	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
-		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
-	else
-		new_xeno = new(affected_mob)
-
-
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive)
-		hive.add_xeno(new_xeno)
+	// Spawn two larva
+	for(var/i in 1 to 2)
+		var/mob/picked
+		// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
+		if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
+			if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
+				picked = affected_mob
+			else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
+				picked = affected_mob.mind.ghost_mob
 
-	new_xeno.update_icons()
 
-	new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!
+		if(!picked)
+			// Get a candidate from observers
+			var/list/candidates = get_alien_candidates()
 
-	// If we have a candidate, transfer it over
-	if(picked)
-		new_xeno.key = picked.key
+			if(candidates && candidates.len)
+				picked = pick(candidates)
 
-		if(new_xeno.client)
-			new_xeno.client.change_view(world_view_size)
+		// Spawn the larva
+		var/mob/living/carbon/xenomorph/larva/new_xeno
 
-		SSround_recording.recorder.track_player(new_xeno)
+		if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
+			new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+		else
+			new_xeno = new(affected_mob)
 
-		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		if(hive)
+			hive.add_xeno(new_xeno)
+
+		new_xeno.update_icons()
+
+		new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!
+
+		// If we have a candidate, transfer it over
+		if(picked)
+			new_xeno.key = picked.key
+
+			if(new_xeno.client)
+				new_xeno.client.change_view(world_view_size)
+
+			SSround_recording.recorder.track_player(new_xeno)
+
+			to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
+			to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+			to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+			playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	stage = 6
 
@@ -254,12 +255,12 @@
 			round_statistics.total_larva_burst++
 		burstcount++
 
-		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+		if(!L.ckey && L.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
-			hive.hive_ui.update_pooled_larva()
+			hive.hive_ui.update_burrowed_larva()
 			qdel(L)
 
 		if(!victim.first_xeno)

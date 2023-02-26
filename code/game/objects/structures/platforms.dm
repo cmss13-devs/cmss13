@@ -211,3 +211,9 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed
 	name = "sandstone temple platform corner"
 	color = "#b29082"
+
+/obj/structure/platform/shipmap
+	icon_state = "shipmap"
+
+/obj/structure/platform_decoration/shipmap
+	icon_state = "shipmap_deco"

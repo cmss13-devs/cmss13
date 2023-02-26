@@ -41,7 +41,7 @@
 	if(..() || !allowed(user) || inoperable())
 		return
 
-	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
+	if(!istype(loc.loc, /area/almayer/command/cic) && !istype(loc.loc, /area/westerneye/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
 		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
 		return FALSE
 

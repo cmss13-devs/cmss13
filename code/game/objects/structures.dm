@@ -14,6 +14,7 @@
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
+	appearance_flags = TILE_BOUND
 
 /obj/structure/Initialize()
 	. = ..()

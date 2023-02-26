@@ -181,30 +181,38 @@
 
 	var/layer_override = FALSE
 
+	var/interactable = TRUE
+
 //REDIRECT TO MASTER//
 /atom/movable/clone/attack_remote(mob/user)
-	return src.mstr.attack_remote(user)
+	if(interactable)
+		return src.mstr.attack_remote(user)
 
 /atom/movable/clone/attack_hand(mob/user)
-	return src.mstr.attack_hand(user)
+	if(interactable)
+		return src.mstr.attack_hand(user)
 
 /atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
-	return src.mstr.attack_alien(M, dam_bonus)
+	if(interactable)
+		return src.mstr.attack_alien(M, dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)
-	return src.mstr.attack_animal(M)
+	if(interactable)
+		return src.mstr.attack_animal(M)
 
 /atom/movable/clone/attackby(obj/item/I, mob/living/user)
-	return src.mstr.attackby(I, user)
+	if(interactable)
+		return src.mstr.attackby(I, user)
 
 /atom/movable/clone/get_examine_text(mob/user)
 	return src.mstr.get_examine_text(user)
 
 /atom/movable/clone/bullet_act(obj/item/projectile/P)
-	return src.mstr.bullet_act(P)
+	if(interactable)
+		return src.mstr.bullet_act(P)
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(shift_x, shift_y, layer_override)
+/atom/movable/proc/create_clone_movable(shift_x, shift_y, layer_override, interactable)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
 	C.density = FALSE
 	C.proj_x = shift_x
@@ -215,6 +223,9 @@
 	if(layer_override < TURF_LAYER)
 		//C.vis_flags |= VIS_UNDERLAY
 		C.plane = FLOOR_PLANE
+	if(!interactable)
+		C.interactable = FALSE
+		C.mouse_opacity = FALSE
 	clones.Add(C)
 	C.mstr = src //Link clone and master
 	src.clone = C
@@ -254,6 +265,9 @@
 		if(clone.layer_override < TURF_LAYER)
 			clone.plane = FLOOR_PLANE
 			clone.opacity = FALSE
+
+	if(!clone.interactable)
+		clone.mouse_opacity = FALSE
 
 /atom/movable/proc/destroy_clone_movable()
 	clones.Remove(src.clone)

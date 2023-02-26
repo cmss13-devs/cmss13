@@ -15,7 +15,12 @@
 
 /obj/structure/machinery/computer/research/Initialize()
 	. = ..()
-	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
+	/// check for photocopiers and link to them
+	var/list/contents_of_surroundings = list()
+	for(var/direction in CARDINAL_ALL_DIRS)
+		contents_of_surroundings |= get_step(src, direction).contents
+
+	photocopier = locate(/obj/structure/machinery/photocopier) in contents_of_surroundings
 
 /obj/structure/machinery/computer/research/Destroy()
 	QDEL_NULL(photocopier)

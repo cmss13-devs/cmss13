@@ -384,15 +384,40 @@
 	icon_state = "starboard"
 	fake_zlevel = 2 // middeck
 
+/area/westerneye/hallways/lowerdeck_aft_hallway
+	name = "\improper Lowerdeck Starboard Hallway"
+	icon_state = "starboard"
+	fake_zlevel = 3 // lowerdeck
+
 /area/westerneye/hallways/lowerdeck_starboard_hallway
 	name = "\improper Lowerdeck Starboard Hallway"
 	icon_state = "starboard"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 3 // lowerdeck
 
 /area/westerneye/hallways/lowerdeck_port_hallway
 	name = "\improper Lowerdeck Port Hallway"
 	icon_state = "port"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 3 // lowerdeck
+
+/area/westerneye/hallways/lowerdeck_fore_starboard_hallway
+	name = "\improper Lowerdeck Starboard Hallway"
+	icon_state = "starboard"
+	fake_zlevel = 3 // lowerdeck
+
+/area/westerneye/hallways/lowerdeck_fore_port_hallway
+	name = "\improper Lowerdeck Port Hallway"
+	icon_state = "port"
+	fake_zlevel = 3 // lowerdeck
+
+/area/westerneye/hallways/starboard_escape_hallway
+	name = "\improper Lower Starboard Escape Pods"
+	icon_state = "starboard"
+	fake_zlevel = 3
+
+/area/westerneye/hallways/port_escape_hallway
+	name = "\improper Lower Port Escape Pods"
+	icon_state = "port"
+	fake_zlevel = 3
 
 /area/westerneye/hallways/starboard_escape_hallway
 	name = "\improper Starboard Escape Pods"

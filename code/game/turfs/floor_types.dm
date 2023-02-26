@@ -266,7 +266,8 @@
 			qdel(C)
 
 /turf/open/floor/almayer/empty/multi_elevator
-	var/is_bottom_of_shaft = FALSE
+	var/vector_x
+	var/vector_y
 	var/list/disallowed_atoms = list(/obj/docking_port/stationary/vehicle_elevator,
 									/obj/structure,
 									/obj/effect/projector,
@@ -289,15 +290,17 @@
 		var/area/my_area = get_area(fallonto_turf)
 		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi) && my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
 			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
-			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT)
+			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT && istype(my_area, /area/supply/station))
 				for(var/turf/T in m_shuttle.get_location_area())
 					fallonto_turf = T
 					AM.plane = FLOOR_PLANE
 					AM.layer = UNDER_TURF_LAYER
 					break
 			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				for(var/i in 1 to m_shuttle.offset_distance)
-					fallonto_turf = get_step(fallonto_turf, WEST)
+				var/debug1 = x + (vector_x ? vector_x :  -m_shuttle.offset_distance)
+				var/debug2 = y + vector_y
+				var/debug3 = z
+				fallonto_turf = locate(x + (vector_x ? vector_x :  -m_shuttle.offset_distance), y + vector_y, z)
 
 			if(ishuman(AM))
 				var/mob/living/carbon/human/human_who_fell = AM
@@ -305,22 +308,23 @@
 
 			AM.forceMove(fallonto_turf)
 
-			var/obj/effect/elevator/animation_overlay/fallen_animation = new()
+			var/obj/effect/falling_animation/fallen_animation = new()
 			fallonto_turf.vis_contents += fallen_animation
 			fallen_animation.appearance = AM.appearance
+			fallen_animation.layer = FLY_LAYER
 			fallen_animation.alpha = 0
 			fallen_animation.pixel_y = 196
 			animate(fallen_animation, pixel_y = 0, alpha = 256, time = 0.5 SECONDS)
 
-			var/obj/effect/elevator/animation_overlay/falling_animation = new()
+			var/obj/effect/falling_animation/falling_animation = new()
 			falling_animation.appearance = AM.appearance
 			falling_animation.plane = FLOOR_PLANE
-			fallen_animation.layer = UNDER_TURF_LAYER
+			falling_animation.layer = UNDER_TURF_LAYER - 0.01
 			contents += falling_animation
 			animate(falling_animation, pixel_y = -160, alpha = 120, time = 0.5 SECONDS)
 
 			var/alpha_cache = AM.alpha
-			AM.alpha = 0
+			AM.alpha = 0 //hide the thing thats falling while the animation plays
 
 			spawn(0.5 SECONDS)
 				AM.alpha = alpha_cache
@@ -328,16 +332,18 @@
 				contents -= falling_animation
 				qdel(falling_animation)
 				qdel(fallen_animation)
-				if(istype(get_area(src), /area/supply/station))
+				if(istype(my_area, /area/supply/station))
 					if(m_shuttle.moving_status != SHUTTLE_INTRANSIT)
 						AM.plane = initial(AM.plane)
 						AM.layer = initial(AM.layer)
 					else
 						AM.plane = FLOOR_PLANE
 						AM.layer = UNDER_TURF_LAYER
-
-
-
+				for(var/mob/living/carbon/human/ML in fallonto_turf.contents)
+					ML.KnockDown(2)
+					for(var/obj/limb/head/ouchy_on_mah_head in ML.limbs)
+						ouchy_on_mah_head.take_damage(brute=rand(5, 10))
+						break
 		else
 			..(AM)
 
@@ -355,6 +361,11 @@
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)
+
+/obj/effect/falling_animation
+	mouse_opacity = FALSE
+	layer = UNDER_TURF_LAYER - 0.1
+	plane = FLOOR_PLANE
 
 //Others
 /turf/open/floor/almayer/uscm

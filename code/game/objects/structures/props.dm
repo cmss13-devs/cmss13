@@ -845,7 +845,37 @@
 
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly
 	density = FALSE
+	var/obj/effect/flammable_pipe_shadow/my_shadow
 
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly/Initialize()
+	. = ..()
+	my_shadow = new(loc)
+	for(var/obj/structure/surface/table/table_underneath in loc.contents)
+		my_shadow.pixel_y = 8
+		my_shadow.layer = table_underneath.layer + 0.1
+		my_shadow.plane = table_underneath.plane
+		break
+
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly/end
+	icon_state = "flammable_pipe_4"
+	pixel_y = 16
+
+
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly/end/Initialize()
+	. = ..()
+
+	switch(dir)
+		if(1,2,4,8)
+			underlays += image(icon, "flammable_pipe_end", pixel_x = -12, dir = 1)
+		if(5,10,9,6)
+			underlays += image(icon, "flammable_pipe_end", pixel_x = 12, dir = 5)
+
+/obj/effect/flammable_pipe_shadow
+	icon = 'icons/obj/structures/props/overhead_ducting.dmi'
+	icon_state = "shadow"
+	mouse_opacity = FALSE
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/prop/static_tank
 	name = "liquid tank"

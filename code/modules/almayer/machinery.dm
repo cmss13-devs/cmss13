@@ -344,11 +344,50 @@
 	return
 
 
+/obj/structure/prop/westerneye
+	name = "GENERIC USS WESTERN EYE PROP"
+	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
+	anchored = TRUE
+	mouse_opacity = FALSE
+	indestructible = TRUE
 
+/obj/structure/prop/westerneye/hangar_overlook
+	plane = FLOOR_PLANE
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "CIC_overlook_1"
+	layer = 1.989
+	pixel_y = -128
 
+/obj/structure/prop/westerneye/hangar_overlook/Initialize()
+	. = ..()
 
+	appearance_flags &= ~TILE_BOUND
 
+/obj/structure/prop/westerneye/hangar_overlook/two
+	icon_state = "CIC_overlook_2"
 
+/obj/structure/prop/westerneye/hangar_overlook/three
+	icon_state = "CIC_overlook_3"
+	pixel_x = -32
+
+/obj/structure/prop/westerneye/hangar_overlook/four
+	icon_state = "CIC_overlook_4"
+	pixel_x = -32
+
+/obj/structure/prop/westerneye/hangar_overlook/five
+	icon_state = "CIC_overlook_5"
+
+/obj/structure/prop/westerneye/trash_chute
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "trash_chute"
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
+
+/obj/structure/prop/westerneye/trash_chute/Initialize()
+	. = ..()
+	underlays += image(icon, "[icon_state]_underlay", layer = 1.5)
+	for(var/i in 1 to 4)
+		underlays += image(icon, "obsfucator3000", layer = UNDER_TURF_LAYER, pixel_y = (-32 * i))
 
 //------- Cryobag Recycler -------//
 // Wanted to put this in, but since we still have extra time until tomorrow and this is really simple thing. It just recycles opened cryobags to make it nice-r for medics.

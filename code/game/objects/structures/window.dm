@@ -24,6 +24,9 @@
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
 	. = ..()
+
+	appearance_flags &= ~TILE_BOUND
+
 	update_icon()
 
 	if(shardtype)

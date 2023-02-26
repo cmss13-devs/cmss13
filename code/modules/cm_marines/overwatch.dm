@@ -533,7 +533,7 @@
 			switch(z_hidden)
 				if(HIDE_NONE)
 					z_hidden = HIDE_ALMAYER
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the [MAIN_SHIP_NAME] are now hidden.")]")
 				if(HIDE_ALMAYER)
 					z_hidden = HIDE_GROUND
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")

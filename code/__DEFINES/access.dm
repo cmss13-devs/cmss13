@@ -37,6 +37,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_KITCHEN    30
 #define ACCESS_MARINE_CAPTAIN 31
 #define ACCESS_MARINE_RTO_PREP 32
+#define ACCESS_MARINE_IO 33
 
 #define ACCESS_MARINE_MAINT 34
 #define ACCESS_MARINE_OT 35

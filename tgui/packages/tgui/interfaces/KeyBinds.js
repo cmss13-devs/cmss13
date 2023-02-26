@@ -24,14 +24,15 @@ export const KeyBinds = (props, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(
     context,
     'progress',
-    'COMMUNICATION'
+    'ALL'
   );
 
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
 
-  const keybinds_to_use = searchTerm.length
-    ? getAllKeybinds(glob_keybinds)
-    : glob_keybinds[selectedTab];
+  const keybinds_to_use =
+    searchTerm.length || selectedTab === 'ALL'
+      ? getAllKeybinds(glob_keybinds)
+      : glob_keybinds[selectedTab];
 
   const logger = createLogger('waa');
 
@@ -76,17 +77,37 @@ export const KeyBinds = (props, context) => {
             </Section>
           </Flex.Item>
           <Flex direction="column">
-            {filteredKeybinds.map((keybind) => (
-              <Flex.Item key={keybind.full_name}>
-                <KeybindElement keybind={keybind} />
-                <Box
-                  backgroundColor="rgba(40, 40, 40, 255)"
-                  width="100%"
-                  height="2px"
-                  mt="2px"
-                />
-              </Flex.Item>
-            ))}
+            {selectedTab === 'ALL'
+              ? Object.keys(glob_keybinds).map((category) => (
+                <Flex.Item key={category}>
+                  <Section title={category}>
+                    <Flex direction="column">
+                      {glob_keybinds[category].map((keybind) => (
+                        <Flex.Item key={keybind}>
+                          <KeybindElement keybind={keybind} />
+                          <Box
+                            backgroundColor="rgba(40, 40, 40, 255)"
+                            width="100%"
+                            height="2px"
+                            mt="2px"
+                          />
+                        </Flex.Item>
+                      ))}
+                    </Flex>
+                  </Section>
+                </Flex.Item>
+              ))
+              : filteredKeybinds.map((keybind) => (
+                <Flex.Item key={keybind.full_name}>
+                  <KeybindElement keybind={keybind} />
+                  <Box
+                    backgroundColor="rgba(40, 40, 40, 255)"
+                    width="100%"
+                    height="2px"
+                    mt="2px"
+                  />
+                </Flex.Item>
+              ))}
           </Flex>
         </Flex>
       </Window.Content>
@@ -100,15 +121,16 @@ const KeybindsDropdown = (props, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(
     context,
     'progress',
-    'COMMUNICATION'
+    'ALL'
   );
-  const DropdownOptions = Object.keys(glob_keybinds);
+
+  const dropdownOptions = ['ALL', ...Object.keys(glob_keybinds)];
 
   return (
     <Dropdown
       width="360px"
       selected={selectedTab}
-      options={DropdownOptions}
+      options={dropdownOptions}
       onSelected={(value) => setSelectedTab(value)}
     />
   );

@@ -44,43 +44,44 @@
 	else
 		worn_state = icon_state
 
-	var/rollable_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
-	var/cuttable_state = "[worn_state]_df[contained_sprite ? "_un" : ""]"
-	var/removable_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
 	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
-	var/list/check_icon_states = icon_states(check_icon)
 
-	//autodetect rollability
-	if(rollable_state in check_icon_states)
+	//autodetect rollability, cuttability, and removability.
+	if(icon_exists(check_icon, "[worn_state]_d[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_SLEEVE_ROLLABLE
+
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having rollable sleeves but could not detect a rolled icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having rollable sleeves but could not detect a rolled icon state.")
 
-	if(cuttable_state in check_icon_states)
+
+	if(icon_exists(check_icon, "[worn_state]_df[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_SLEEVE_CUTTABLE
+
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUTTABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
 
-	if(removable_state in check_icon_states)
+
+	if(icon_exists(check_icon, "[worn_state]_dj[contained_sprite ? "_un" : ""]"))
 		flags_jumpsuit |= UNIFORM_JACKET_REMOVABLE
+
 	else if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having a removable jacket but could not detect a shirtless icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having a removable jacket but could not detect a shirtless icon state.")
 
 	//autodetect preset states are valid
 	if((flags_jumpsuit & UNIFORM_SLEEVE_ROLLED) && !(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLED
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having rolled sleeves but could not detect a rolled icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having rolled sleeves but could not detect a rolled icon state.")
 
 	if((flags_jumpsuit & UNIFORM_SLEEVE_CUT) && !(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUT
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cut sleeves but could not detect a cut icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having cut sleeves but could not detect a cut icon state.")
 
 	if((flags_jumpsuit & UNIFORM_JACKET_REMOVED) && !(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE))
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVED
-		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having a removed jacket but could not detect a shirtless icon state.")
+		log_debug("CLOTHING: Jumpsuit of name: \"[name]\" and type: \"[type]\" was flagged as having a removed jacket but could not detect a shirtless icon state.")
 
 	update_clothing_icon()
 
@@ -165,16 +166,16 @@
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), 1)
+					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_BINARY)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", 1)
+					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_DAMAGE)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", 1)
+					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_LOCATION)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to maximum.", 1)
+					V.show_message("[user] sets [src.loc]'s sensors to maximum.", SHOW_MESSAGE_VISIBLE)
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -182,7 +183,7 @@
 	set src in usr
 	set_sensors(usr)
 
-/obj/item/clothing/under/proc/roll_suit_sleeves(var/show_message = TRUE, mob/user)
+/obj/item/clothing/under/proc/roll_suit_sleeves(show_message = TRUE, mob/user)
 	update_rollsuit_status()
 	if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE)
 		flags_jumpsuit ^= UNIFORM_SLEEVE_ROLLED
@@ -198,7 +199,7 @@
 	else if(show_message)
 		to_chat(user, SPAN_WARNING("You cannot roll your sleeves!"))
 
-/obj/item/clothing/under/proc/roll_suit_jacket(var/show_message = TRUE, mob/user)
+/obj/item/clothing/under/proc/roll_suit_jacket(show_message = TRUE, mob/user)
 	update_removejacket_status()
 	if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit ^= UNIFORM_JACKET_REMOVED
@@ -218,7 +219,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have a removable jacket!"))
 
 
-/obj/item/clothing/under/proc/cut_suit_jacket(var/show_message = TRUE, mob/user, var/obj/item/item_using)
+/obj/item/clothing/under/proc/cut_suit_jacket(show_message = TRUE, mob/user, obj/item/item_using)
 	if(!(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE))
 		if(show_message)
 			to_chat(user, SPAN_NOTICE("You can't cut up [src]."))

@@ -5,10 +5,10 @@
 	desc = "An interior wall."
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "van_right_1"
-	density = 1
-	opacity = 0
-	anchored = 1
-	mouse_opacity = 0
+	density = TRUE
+	opacity = FALSE
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WINDOW_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE

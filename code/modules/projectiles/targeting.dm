@@ -20,8 +20,8 @@
 	if(lock_time > world.time - 2) return
 	.
 	if(ismob(A) && isliving(A) && !(A in target))
-		Aim(A) 	//Clicked a mob, aim at them
-	else  		//Didn't click someone, check if there is anyone along that guntrace
+		Aim(A) //Clicked a mob, aim at them
+	else //Didn't click someone, check if there is anyone along that guntrace
 		var/mob/living/M = GunTrace(user.x,user.y,A.x,A.y,user.z,user)  //Find dat mob.
 		if(M && isliving(M) && (M in view(user)) && !(M in target))
 			Aim(M) //Aha!  Aim at them!
@@ -30,7 +30,7 @@
 	user.setDir(get_cardinal_dir(src, A))
 
 //Aiming at the target mob.
-/obj/item/weapon/gun/proc/Aim(var/mob/living/M)
+/obj/item/weapon/gun/proc/Aim(mob/living/M)
 	if(!target || !(M in target))
 		lock_time = world.time
 		if(target && !automatic) //If they're targeting someone and they have a non automatic weapon.
@@ -44,7 +44,7 @@
 		M.Targeted(src)
 
 //HE MOVED, SHOOT HIM!
-/obj/item/weapon/gun/proc/TargetActed(var/mob/living/T)
+/obj/item/weapon/gun/proc/TargetActed(mob/living/T)
 	var/mob/living/M = loc
 	if(M == T) return
 	if(!istype(M)) return
@@ -61,7 +61,8 @@
 
 //Yay, math!
 
-#define SIGN(X) ((X<0)?-1:1)
+/// Gets the sign of x, returns -1 if negative, 0 if 0, 1 if positive
+#define SIGN(x) ( ((x) > 0) - ((x) < 0) )
 
 /proc/GunTrace(X1,Y1,X2,Y2,Z=1,exc_obj,PX1=16,PY1=16,PX2=16,PY2=16)
 	//bluh << "Tracin' [X1],[Y1] to [X2],[Y2] on floor [Z]."
@@ -113,7 +114,7 @@
 	gun_mode = 0
 
 
-/mob/living/proc/Targeted(var/obj/item/weapon/gun/I) //Self explanitory.
+/mob/living/proc/Targeted(obj/item/weapon/gun/I) //Self explanitory.
 	if(!I.target)
 		I.target = list(src)
 	else if(I.automatic && I.target.len < 5) //Automatic weapon, they can hold down a room.
@@ -179,7 +180,7 @@
 				I.last_moved_mob = src
 			sleep(1)
 
-/mob/living/proc/NotTargeted(var/obj/item/weapon/gun/I)
+/mob/living/proc/NotTargeted(obj/item/weapon/gun/I)
 	if( !(I.flags_gun_features & GUN_SILENCED) )
 		for(var/mob/living/M in viewers(src))
 			M << 'sound/weapons/TargetOff.ogg'

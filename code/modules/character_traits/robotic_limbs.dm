@@ -1,5 +1,5 @@
 /datum/character_trait_group/robo_limb
-	trait_group_name = "Robotic Limb (Commissioned Officers)"
+	trait_group_name = "Robotic Limb"
 	mutually_exclusive = TRUE
 	base_type = /datum/character_trait_group/robo_limb
 
@@ -9,6 +9,7 @@
 	var/additional_description = "Only usable by 2ndLts and up."
 	applyable = FALSE
 	trait_group = /datum/character_trait_group/robo_limb
+	cost = 1
 	var/minimum_ranking = 12 // MO1, so SO and up
 
 /datum/character_trait/robo_limb/New()

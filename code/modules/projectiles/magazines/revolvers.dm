@@ -7,6 +7,7 @@
 	default_ammo = /datum/ammo/bullet/revolver
 	flags_equip_slot = NO_FLAGS
 	caliber = ".44"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
 	w_class = SIZE_SMALL
@@ -49,6 +50,7 @@
 /obj/item/ammo_magazine/revolver/pkd
 	name = "\improper Plfager Katsuma stripper clip (.44)"
 	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "pkd_44"
 	caliber = ".44 sabot"
 
@@ -56,6 +58,7 @@
 	name = "\improper N-Y speed loader (7.62x38mmR)"
 	default_ammo = /datum/ammo/bullet/revolver/nagant
 	caliber = "7.62x38mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ny762"
 	gun_type = /obj/item/weapon/gun/revolver/nagant
 
@@ -66,21 +69,29 @@
 	icon_state = "ny762_shrapnel"
 
 /obj/item/ammo_magazine/revolver/small
-	name = "\improper S&W speed loader (.357)"
+	name = "\improper S&W speed loader (.38)"
 	default_ammo = /datum/ammo/bullet/revolver/small
-	caliber = ".357"
-	icon_state = "sw357"
+	caliber = ".38"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
 
-
 /obj/item/ammo_magazine/revolver/cmb
-	name = "\improper Spearhead speed loader (.357)"
-	default_ammo = /datum/ammo/bullet/revolver/small
+	name = "\improper Spearhead hollowpoint speed loader (.357)"
+	desc = "This speedloader was created for the Colonial Marshals' most commonly issued sidearm, loaded with hollowpoint rounds either for colonies with wildlife problems or orbital stations, which favor the lesser penetration over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
+	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
-	icon_state = "spearhead"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
+
+/obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
+	name = "\improper Spearhead speed loader (.357)"
+	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
+	default_ammo = /datum/ammo/bullet/revolver/small
+	icon_state = "cmb"
 
 /obj/item/ammo_magazine/revolver/mateba
 	name = "\improper Mateba speed loader (.454)"
@@ -93,9 +104,15 @@
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact
 	name = "\improper High Impact Mateba speed loader (.454)"
-	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't fire this at anyone you want to stay alive."
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't point at anything you don't want to destroy."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 	icon_state = "matebaE"
+
+/obj/item/ammo_magazine/revolver/mateba/highimpact/ap
+	name = "\improper High Impact Armor-Piercing Mateba speed loader (.454)"
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This armor-piercing variant is optimized against armored targets at the cost of lower overall damage. Don't point at anything you don't want to destroy."
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
+	icon_state = "matebaAP"
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"
@@ -109,6 +126,7 @@
 	desc = ".455 Webley, the last decent pistol calibre. Loaded with Mk III dum-dum bullets, because Marines are not human and the Hague Conventions do not apply to them."
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	caliber = ".455"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "mateba"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
@@ -156,7 +174,7 @@
 
 /obj/item/ammo_magazine/internal/revolver/small
 	default_ammo = /datum/ammo/bullet/revolver/small
-	caliber = ".357"
+	caliber = ".38"
 	gun_type = /obj/item/weapon/gun/revolver/small
 
 //-------------------------------------------------------
@@ -170,6 +188,9 @@
 /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 
+/obj/item/ammo_magazine/internal/revolver/mateba/ap
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
+
 /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
 
@@ -178,6 +199,11 @@
 
 /obj/item/ammo_magazine/internal/revolver/cmb
 	default_ammo = /datum/ammo/bullet/revolver/small
+	caliber = ".357"
+	gun_type = /obj/item/weapon/gun/revolver/cmb
+
+/obj/item/ammo_magazine/internal/revolver/cmb/hollowpoint
+	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 

@@ -90,7 +90,7 @@
 	L.handle_add_action(src)
 	owner = L
 
-/mob/proc/handle_add_action(var/datum/action/action)
+/mob/proc/handle_add_action(datum/action/action)
 	LAZYADD(actions, action)
 	if(client)
 		client.screen += action.button
@@ -109,13 +109,13 @@
 	L.handle_remove_action(src)
 	owner = null
 
-/mob/proc/handle_remove_action(var/datum/action/action)
+/mob/proc/handle_remove_action(datum/action/action)
 	actions?.Remove(action)
 	if(client)
 		client.screen -= action.button
 	update_action_buttons()
 
-/mob/living/carbon/human/handle_remove_action(var/datum/action/action)
+/mob/living/carbon/human/handle_remove_action(datum/action/action)
 	if(selected_ability == action)
 		action.action_activate()
 	return ..()
@@ -151,7 +151,7 @@
 
 /datum/action/item_action
 	name = "Use item"
-	var/obj/item/holder_item	//the item that has this action in its list of actions. Is not necessarily the target
+	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
 								//e.g. gun attachment action: target = attachment, holder = gun.
 	unique = FALSE
 

@@ -33,19 +33,19 @@
 	//changed minigun mechanic so instead of having lowered cooldown with each shot it now has increased burst size.
 	//While it's still spammy, user doesn't have to click as fast as possible anymore and has margin of 2 seconds before minigun will start slowing down
 
-	var/chained_shots = 1		//how many quick succession shots we've fired, 1 by default
-	var/last_shot_time = 0		//when was last shot fired, after 3 seconds we stop barrel
-	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4)	//how many shots per click we do
+	var/chained_shots = 1 //how many quick succession shots we've fired, 1 by default
+	var/last_shot_time = 0 //when was last shot fired, after 3 seconds we stop barrel
+	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4) //how many shots per click we do
 
 
-/obj/item/hardpoint/primary/minigun/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/primary/minigun/fire(mob/user, atom/A)
 
 	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
 	//check how much time since last shot. 2 seconds are grace period before minigun starts to lose rotation momentum
 	var/t = world.time - last_shot_time - 2 SECONDS
 	t = round(t / 10)
 	if(t > 0)
-		chained_shots = max(chained_shots - t * 3, 1)	//we lose 3 chained_shots per second
+		chained_shots = max(chained_shots - t * 3, 1) //we lose 3 chained_shots per second
 	else
 		if(chained_shots < 11)
 			chained_shots++
@@ -57,7 +57,7 @@
 	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
 
 	//how many rounds we will shoot in this burst
-	if(chained_shots > LAZYLEN(chain_bursts))	//5 shots at maximum rotation
+	if(chained_shots > LAZYLEN(chain_bursts)) //5 shots at maximum rotation
 		t = 5
 	else
 		t = LAZYACCESS(chain_bursts, chained_shots)

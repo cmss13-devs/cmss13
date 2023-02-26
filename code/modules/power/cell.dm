@@ -3,33 +3,28 @@
 // fits in APC to provide backup power
 
 /obj/item/cell
-	name = "power cell"
+	name = "\improper power cell"
 	desc = "A rechargeable electrochemical power cell."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	item_state = "cell"
 
-	force = 5.0
-	throwforce = 5.0
+	force = 5
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	var/charge = 0	// note %age conveted to actual charge in New
+	var/charge = 1000 // note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/Initialize()
 	. = ..()
-
-	charge = maxcharge
-	updateicon()
+	update_icon()
 
 /obj/item/cell/update_icon()
 	..()
-	updateicon()
-
-/obj/item/cell/proc/updateicon()
 	overlays.Cut()
 
 	if(charge < 0.01)
@@ -39,23 +34,23 @@
 	else
 		overlays += image('icons/obj/structures/machinery/power.dmi', "cell-o1")
 
-/obj/item/cell/proc/percent()		// return % charge of cell
+/obj/item/cell/proc/percent() // return % charge of cell
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
 	return (charge == maxcharge)
 
 // use power from a cell
-/obj/item/cell/proc/use(var/amount)
-	if(charge < amount)	return 0
+/obj/item/cell/proc/use(amount)
+	if(charge < amount) return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
-/obj/item/cell/proc/give(var/amount)
-	if(maxcharge < amount)	return 0
+/obj/item/cell/proc/give(amount)
+	if(maxcharge < amount) return 0
 	var/amount_used = min(maxcharge-charge,amount)
-	if(crit_fail)	return 0
+	if(crit_fail) return 0
 	if(!prob(reliability))
 		minor_fault++
 		if(prob(minor_fault))
@@ -118,76 +113,78 @@
 	name = "\improper W-Y rechargeable mini-battery"
 	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independent colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
 	icon_state = "mini-cell"
-
+	w_class = SIZE_TINY
+	charge = 500
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/crap/empty/Initialize()
-	. = ..()
+/obj/item/cell/crap/empty
 	charge = 0
 
 /obj/item/cell/secborg
-	name = "security borg rechargeable D battery"
+	name = "\improper security borg rechargeable D battery"
 
-	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
+	maxcharge = 600 //600 max charge / 100 charge per shot = six shots
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/secborg/empty/Initialize()
-	. = ..()
+/obj/item/cell/secborg/empty
 	charge = 0
 
 /obj/item/cell/apc
-	name = "heavy-duty power cell"
+	name = "\improper heavy-duty power cell"
 
+	charge = 5000
 	maxcharge = 5000
 	matter = list("metal" = 700, "glass" = 50)
 
-/obj/item/cell/apc/full
-	charge = 5000
+/obj/item/cell/apc/empty
+	charge = 0
 
 /obj/item/cell/high
-	name = "high-capacity power cell"
+	name = "\improper high-capacity power cell"
 
 	icon_state = "hcell"
+	charge = 10000
 	maxcharge = 10000
 	matter = list("metal" = 700, "glass" = 60)
 
-/obj/item/cell/high/empty/Initialize()
-	. = ..()
+/obj/item/cell/high/empty
 	charge = 0
 
 /obj/item/cell/super
-	name = "super-capacity power cell"
+	name = "\improper super-capacity power cell"
 
 	icon_state = "scell"
+	charge = 20000
 	maxcharge = 20000
 	matter = list("metal" = 700, "glass" = 70)
 
-/obj/item/cell/super/empty/Initialize()
-	. = ..()
+/obj/item/cell/super/empty
 	charge = 0
 
 /obj/item/cell/hyper
-	name = "hyper-capacity power cell"
+	name = "\improper hyper-capacity power cell"
 
 	icon_state = "hpcell"
+	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
 
-/obj/item/cell/hyper/empty/Initialize()
-	. = ..()
+/obj/item/cell/hyper/empty
 	charge = 0
 
 /obj/item/cell/infinite
-	name = "infinite-capacity power cell!"
+	name = "\improper infinite-capacity power cell!"
 	icon_state = "icell"
+	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
-	use()
-		return 1
+
+/obj/item/cell/infinite/use()
+	return 1
 
 /obj/item/cell/potato
-	name = "potato battery"
+	name = "\improper potato battery"
 	desc = "A rechargeable starch-based power cell."
 
 	icon = 'icons/obj/structures/machinery/power.dmi' //'icons/obj/items/harvest.dmi'

@@ -3,9 +3,9 @@
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing0"
 	climbable = TRUE
-	use_power = 0
+	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
-	opacity = 0
+	opacity = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -29,7 +29,7 @@
 	else
 		icon_state = "railing0"
 
-/obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = (PASS_OVER^PASS_OVER_FIRE)|PASS_CRUSHER_CHARGE
@@ -45,7 +45,7 @@
 
 	sleep(12)
 
-	density = 0
+	density = FALSE
 	if(operating == 1) //emag again
 		operating = 0
 	return 1
@@ -53,7 +53,7 @@
 /obj/structure/machinery/door/poddoor/railing/close()
 	if (operating)
 		return 0
-	density = 1
+	density = TRUE
 	operating = 1
 	layer = closed_layer
 	flick("railingc1", src)

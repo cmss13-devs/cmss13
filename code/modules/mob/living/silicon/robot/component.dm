@@ -112,8 +112,8 @@
 /datum/robot_component/radio
 	name = "radio"
 	external_type = /obj/item/robot_parts/robot_component/radio
-	idle_usage = 15		//it's not actually possible to tell when we receive a message over our radio, so just use 10W every tick for passive listening
-	active_usage = 75	//transmit power
+	idle_usage = 15 //it's not actually possible to tell when we receive a message over our radio, so just use 10W every tick for passive listening
+	active_usage = 75 //transmit power
 	max_damage = 40
 
 
@@ -196,7 +196,7 @@
 	return C && C.installed == 1 && C.toggled && C.is_powered()
 
 // Returns component by it's string name
-/mob/living/silicon/robot/proc/get_component(var/component_name)
+/mob/living/silicon/robot/proc/get_component(component_name)
 	var/datum/robot_component/C = components[component_name]
 	return C
 

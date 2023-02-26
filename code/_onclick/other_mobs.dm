@@ -3,7 +3,7 @@
 	Carbon
 */
 
-/mob/living/carbon/click(var/atom/A, var/list/mods)
+/mob/living/carbon/click(atom/A, list/mods)
 	if (mods["shift"] && mods["middle"])
 		point_to(A)
 		return TRUE
@@ -22,7 +22,7 @@
 /*
 	Animals & All Unspecified
 */
-/mob/living/UnarmedAttack(var/atom/A)
+/mob/living/UnarmedAttack(atom/A)
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user as mob)

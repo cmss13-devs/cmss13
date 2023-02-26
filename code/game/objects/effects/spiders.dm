@@ -3,8 +3,8 @@
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	health = 15
 
 //similar to weeds, but only barfed out by nurses manually
@@ -20,13 +20,13 @@
 			deconstruct(FALSE)
 	return
 
-/obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/spider/attackby(obj/item/W, mob/user)
 	if(W.attack_verb.len)
 		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
 
-	var/damage = W.force / 4.0
+	var/damage = W.force / 4
 
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
@@ -38,7 +38,7 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/spider/bullet_act(obj/item/projectile/Proj)
 	..()
 	health -= Proj.ammo.damage
 	healthcheck()
@@ -55,9 +55,10 @@
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
-	New()
-		if(prob(50))
-			icon_state = "stickyweb2"
+
+/obj/effect/spider/stickyweb/New()
+	if(prob(50))
+		icon_state = "stickyweb2"
 
 /obj/effect/spider/stickyweb/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /mob/living/simple_animal/hostile/giant_spider))
@@ -98,7 +99,7 @@
 	name = "spiderling"
 	desc = "It never stays still for long."
 	icon_state = "spiderling"
-	anchored = 0
+	anchored = FALSE
 	layer = BELOW_TABLE_LAYER
 	health = 3
 	var/amount_grown = -1
@@ -115,10 +116,10 @@
 		amount_grown = 1
 
 /obj/effect/spider/spiderling/nogrow/Initialize(mapload, ...)
-    . = ..()
-    pixel_x = rand(6,-6)
-    pixel_y = rand(6,-6)
-    START_PROCESSING(SSobj, src)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -187,6 +188,7 @@
 
 /obj/effect/decal/cleanable/spiderling_remains
 	name = "spiderling remains"
+	gender = PLURAL
 	desc = "Green squishy mess."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenshatter"
@@ -197,8 +199,8 @@
 	icon_state = "cocoon1"
 	health = 60
 
-	New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/decal/cleanable/spiderling_remains/New()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	visible_message(SPAN_DANGER("[src] splits open."))

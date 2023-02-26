@@ -102,7 +102,7 @@
 	O.gender = gender
 	O.invisibility = 0
 
-	if(mind)		//TODO
+	if(mind) //TODO
 		mind.transfer_to(O)
 		if(O.job == "Cyborg")
 			O.mind.original = O
@@ -124,7 +124,7 @@
 	return O
 
 //human -> alien
-/mob/living/carbon/human/proc/Alienize(var/list/types)
+/mob/living/carbon/human/proc/Alienize(list/types)
 	if (monkeyizing)
 		return
 	for(var/obj/item/W in src)
@@ -137,46 +137,46 @@
 	for(var/t in limbs)
 		qdel(t)
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!types)
-		new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
+		new_xeno = new /mob/living/carbon/xenomorph/larva(loc)
 	else
 		var/type = pick(types)
 		switch(type)
 			if(XENO_CASTE_RUNNER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Runner(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/runner(loc)
 			if(XENO_CASTE_DRONE)
-				new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/drone(loc)
 			if(XENO_CASTE_SENTINEL)
-				new_xeno = new /mob/living/carbon/Xenomorph/Sentinel(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/sentinel(loc)
 			if(XENO_CASTE_DEFENDER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Defender(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/defender(loc)
 			if(XENO_CASTE_LURKER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Lurker(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/lurker(loc)
 			if(XENO_CASTE_WARRIOR)
-				new_xeno = new /mob/living/carbon/Xenomorph/Warrior(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/warrior(loc)
 			if(XENO_CASTE_BURROWER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Burrower(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/burrower(loc)
 			if(XENO_CASTE_CARRIER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Carrier(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/carrier(loc)
 			if(XENO_CASTE_SPITTER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Spitter(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/spitter(loc)
 			if(XENO_CASTE_HIVELORD)
-				new_xeno = new /mob/living/carbon/Xenomorph/Hivelord(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/hivelord(loc)
 			if(XENO_CASTE_RAVAGER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Ravager(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/ravager(loc)
 			if(XENO_CASTE_BOILER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Boiler(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/boiler(loc)
 			if(XENO_CASTE_CRUSHER)
-				new_xeno = new /mob/living/carbon/Xenomorph/Crusher(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/crusher(loc)
 			if(XENO_CASTE_PRAETORIAN)
-				new_xeno = new /mob/living/carbon/Xenomorph/Praetorian(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/praetorian(loc)
 			if(XENO_CASTE_QUEEN)
-				new_xeno = new /mob/living/carbon/Xenomorph/Queen(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/queen(loc)
 			if(XENO_CASTE_HELLHOUND)
-				new_xeno = new /mob/living/carbon/Xenomorph/Hellhound(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/hellhound(loc)
 			else
-				new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/drone(loc)
 
 	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
@@ -196,7 +196,7 @@
 	canmove = 0
 	icon = null
 	invisibility = 101
-	for(var/t in limbs)	//this really should not be necessary
+	for(var/t in limbs) //this really should not be necessary
 		qdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
@@ -265,11 +265,11 @@
  * This proc is here to force coders to manually place their mob in this list, hopefully tested.
  * This also gives a place to explain -why- players shouldnt be turn into certain mobs and hopefully someone can fix them.
  */
-/mob/proc/safe_animal(var/MP)
+/mob/proc/safe_animal(MP)
 
 //Bad mobs! - Remember to add a comment explaining what's wrong with the mob
 	if(!MP)
-		return 0	//Sanity, this should never happen.
+		return 0 //Sanity, this should never happen.
 
 //Good mobs!
 	if(ispath(MP, /mob/living/simple_animal/cat))

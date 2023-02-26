@@ -28,7 +28,7 @@
 		"8" = list(-3, 18)
 	)
 
-/obj/item/hardpoint/secondary/small_flamer/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/small_flamer/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
@@ -41,8 +41,8 @@
 		if(T == loc)
 			prev_T = T
 			continue
-		if(!ammo.current_rounds) 	break
-		if(distance >= max_range) 	break
+		if(!ammo.current_rounds) break
+		if(distance >= max_range) break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
 		ammo.current_rounds--

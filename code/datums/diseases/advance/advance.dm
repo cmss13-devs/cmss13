@@ -12,7 +12,7 @@
 var/list/archive_diseases = list()
 
 // The order goes from easy to cure to hard to cure.
-var/list/advance_cures = 	list(
+var/list/advance_cures = list(
 									"nutriment", "sugar", "orangejuice",
 									"spaceacillin", "kelotane", "ethanol",
 									"leporazine", "lipozine",
@@ -93,7 +93,7 @@ var/list/advance_cures = 	list(
 		CRASH("We do not have any symptoms during stage_act()!")
 
 // Compares type then ID.
-/datum/disease/advance/IsSame(var/datum/disease/advance/D)
+/datum/disease/advance/IsSame(datum/disease/advance/D)
 
 	if(!(istype(D, /datum/disease/advance)))
 		return 0
@@ -103,17 +103,17 @@ var/list/advance_cures = 	list(
 	return 1
 
 // To add special resistances.
-/datum/disease/advance/cure(var/resistance=1)
+/datum/disease/advance/cure(resistance=1)
 	if(affected_mob)
 		var/id = "[GetDiseaseID()]"
 		if(resistance && !affected_mob.resistances[id])
 			affected_mob.resistances[id] = id
 		remove_virus()
-	qdel(src)	//delete the datum to stop it processing
+	qdel(src) //delete the datum to stop it processing
 	return
 
 // Returns the advance disease with a different reference memory.
-/datum/disease/advance/Copy(var/process = 0)
+/datum/disease/advance/Copy(process = 0)
 	return new /datum/disease/advance(process, src, 1)
 
 /*
@@ -123,20 +123,20 @@ var/list/advance_cures = 	list(
  */
 
 // Mix the symptoms of two diseases (the src and the argument)
-/datum/disease/advance/proc/Mix(var/datum/disease/advance/D)
+/datum/disease/advance/proc/Mix(datum/disease/advance/D)
 	if(!(src.IsSame(D)))
 		var/list/possible_symptoms = shuffle(D.symptoms)
 		for(var/datum/symptom/S in possible_symptoms)
 			AddSymptom(new S.type)
 
-/datum/disease/advance/proc/HasSymptom(var/datum/symptom/S)
+/datum/disease/advance/proc/HasSymptom(datum/symptom/S)
 	for(var/datum/symptom/symp in symptoms)
 		if(symp.id == S.id)
 			return 1
 	return 0
 
 // Will generate new unique symptoms, use this if there are none. Returns a list of symptoms that were generated.
-/datum/disease/advance/proc/GenerateSymptoms(var/type_level_limit = RANDOM_STARTING_LEVEL, var/amount_get = 0)
+/datum/disease/advance/proc/GenerateSymptoms(type_level_limit = RANDOM_STARTING_LEVEL, amount_get = 0)
 
 	var/list/generated = list() // Symptoms we generated.
 
@@ -166,7 +166,7 @@ var/list/advance_cures = 	list(
 
 	return generated
 
-/datum/disease/advance/proc/Refresh(var/new_name = 0)
+/datum/disease/advance/proc/Refresh(new_name = 0)
 	var/list/properties = GenerateProperties()
 	AssignProperties(properties)
 
@@ -198,7 +198,7 @@ var/list/advance_cures = 	list(
 	return properties
 
 // Assign the properties that are in the list.
-/datum/disease/advance/proc/AssignProperties(var/list/properties = list())
+/datum/disease/advance/proc/AssignProperties(list/properties = list())
 
 	if(properties && properties.len)
 
@@ -215,7 +215,7 @@ var/list/advance_cures = 	list(
 
 
 // Assign the spread type and give it the correct description.
-/datum/disease/advance/proc/SetSpread(var/spread_id)
+/datum/disease/advance/proc/SetSpread(spread_id)
 	switch(spread_id)
 
 		if(NON_CONTAGIOUS)
@@ -231,7 +231,7 @@ var/list/advance_cures = 	list(
 
 	spread_type = spread_id
 
-/datum/disease/advance/proc/SetSeverity(var/level_sev)
+/datum/disease/advance/proc/SetSeverity(level_sev)
 
 	switch(level_sev)
 
@@ -252,7 +252,7 @@ var/list/advance_cures = 	list(
 
 
 // Will generate a random cure, the less resistance the symptoms have, the harder the cure.
-/datum/disease/advance/proc/GenerateCure(var/list/properties = list())
+/datum/disease/advance/proc/GenerateCure(list/properties = list())
 	if(properties && properties.len)
 		var/res = Clamp(properties["resistance"] - (symptoms.len / 2), 1, advance_cures.len)
 		cure_id = advance_cures[res]
@@ -265,7 +265,7 @@ var/list/advance_cures = 	list(
 	return
 
 // Randomly generate a symptom, has a chance to lose or gain a symptom.
-/datum/disease/advance/proc/Evolve(var/level = 2)
+/datum/disease/advance/proc/Evolve(level = 2)
 	var/s = SAFEPICK(GenerateSymptoms(level, 1))
 	if(s)
 		AddSymptom(s)
@@ -282,7 +282,7 @@ var/list/advance_cures = 	list(
 	return
 
 // Name the disease.
-/datum/disease/advance/proc/AssignName(var/name = "Unknown")
+/datum/disease/advance/proc/AssignName(name = "Unknown")
 	src.name = name
 	return
 
@@ -300,7 +300,7 @@ var/list/advance_cures = 	list(
 
 // Add a symptom, if it is over the limit (with a small chance to be able to go over)
 // we take a random symptom away and add the new one.
-/datum/disease/advance/proc/AddSymptom(var/datum/symptom/S)
+/datum/disease/advance/proc/AddSymptom(datum/symptom/S)
 
 	if(HasSymptom(S))
 		return
@@ -313,7 +313,7 @@ var/list/advance_cures = 	list(
 	return
 
 // Simply removes the symptom.
-/datum/disease/advance/proc/RemoveSymptom(var/datum/symptom/S)
+/datum/disease/advance/proc/RemoveSymptom(datum/symptom/S)
 	symptoms -= S
 	return
 
@@ -324,7 +324,7 @@ var/list/advance_cures = 	list(
 */
 
 // Mix a list of advance diseases and return the mixed result.
-/proc/Advance_Mix(var/list/D_list)
+/proc/Advance_Mix(list/D_list)
 
 	var/list/diseases = list()
 
@@ -348,12 +348,12 @@ var/list/advance_cures = 	list(
 		var/datum/disease/advance/D2 = pick(diseases)
 		D2.Mix(D1)
 
-	 // Should be only 1 entry left, but if not let's only return a single entry
+	// Should be only 1 entry left, but if not let's only return a single entry
 	var/datum/disease/advance/to_return = pick(diseases)
 	to_return.Refresh(1)
 	return to_return
 
-/proc/SetViruses(var/datum/reagent/R, var/list/data)
+/proc/SetViruses(datum/reagent/R, list/data)
 	if(data)
 		var/list/preserve = list()
 		if(istype(data) && data["viruses"])
@@ -365,7 +365,7 @@ var/list/advance_cures = 	list(
 		if(preserve.len)
 			R.data_properties["viruses"] = preserve
 
-/proc/AdminCreateVirus(var/mob/user)
+/proc/AdminCreateVirus(mob/user)
 	var/i = 5
 
 	var/datum/disease/advance/D = new(0, null)
@@ -404,7 +404,7 @@ var/list/advance_cures = 	list(
 		var/list/name_symptoms = list()
 		for(var/datum/symptom/S in D.symptoms)
 			name_symptoms += S.name
-		message_staff("[key_name_admin(user)] has triggered a custom virus outbreak of [D.name]! It has these symptoms: [english_list(name_symptoms)]")
+		message_admins("[key_name_admin(user)] has triggered a custom virus outbreak of [D.name]! It has these symptoms: [english_list(name_symptoms)]")
 
 /*
 /mob/verb/test()

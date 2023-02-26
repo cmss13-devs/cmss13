@@ -151,8 +151,8 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
- //-----------------SPEC KIT BOX------------------
- //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
+//-----------------SPEC KIT BOX------------------
+//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
 /obj/item/spec_kit
 	name = "specialist kit"
@@ -165,7 +165,7 @@
 /obj/item/spec_kit/asrs
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/get_examine_text(var/mob/user)
+/obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
 	if(!ishuman(user) && !isobserver(user))
 		return
@@ -181,7 +181,7 @@
 		allowed_roles = SPAN_HELPFUL("anyone")
 	. += SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet.")
 
-/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
@@ -195,7 +195,7 @@
 		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
 	return
 
-/obj/item/spec_kit/proc/can_use(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/proc/can_use(mob/living/carbon/human/user)
 	if(!length(allowed_roles_list))
 		return TRUE
 
@@ -521,3 +521,11 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/engineering_supply_kit
+	name = "\improper Engineering Supply Kit"
+
+/obj/item/storage/box/kit/engineering_supply_kit/fill_preset_inventory()
+	new /obj/item/storage/pouch/construction/low_grade_full(src)
+	new /obj/item/storage/pouch/electronics/full(src)
+	new /obj/item/clothing/glasses/welding(src)

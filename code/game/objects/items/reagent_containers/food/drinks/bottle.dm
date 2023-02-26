@@ -11,6 +11,7 @@
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	///This excludes all the juices and dairy in cartons that are also defined in this file.
 	var/isGlass = TRUE
+	black_market_value = 25
 
 /obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
 	. = ..()
@@ -60,21 +61,21 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && iscarbon(target) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isxeno(target))
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
-				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), SHOW_MESSAGE_VISIBLE)
 		if(drowsy_threshold > 0)
 			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 	else //Regular attack text
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
-				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), SHOW_MESSAGE_VISIBLE)
 
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a bottle!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a bottle by [user.name] ([user.ckey])</font>")
@@ -82,7 +83,7 @@
 
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), SHOW_MESSAGE_VISIBLE)
 		reagents.reaction(target, TOUCH)
 
 	smash(target, user)
@@ -164,6 +165,7 @@
 	name = "\improper Red Star Vodka promotional bottle"
 	desc = "A promotional chess themed bottle of Red Star Vodka."
 	icon_state = "chess"
+	black_market_value = 15
 
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn
 	name = "\improper Black Pawn bottle"
@@ -212,6 +214,13 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen
 	name = "\improper White Queen bottle"
 	icon_state = "w_queen"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/random/Initialize()
+	. = ..()
+	var/newbottle = pick(subtypesof(/obj/item/reagent_container/food/drinks/bottle/vodka/chess))
+	new newbottle(loc)
+	qdel(src)
+
 
 /obj/item/reagent_container/food/drinks/bottle/tequila
 	name = "\improper Caccavo Guaranteed Quality tequila"

@@ -1,8 +1,8 @@
 
 #define COLOR_BONUS_DAMAGE "#c3ce2f"
- /// Max alpha for the filter outline.
+/// Max alpha for the filter outline.
 #define BONUS_DAMAGE_MAX_ALPHA 200
- /// Loss of stack every second once it's been more than 5 seconds since last_stack.
+/// Loss of stack every second once it's been more than 5 seconds since last_stack.
 #define BONUS_DAMAGE_STACK_LOSS_PER_SECOND 5
 
 
@@ -16,14 +16,14 @@
 	/// Last world.time that the afflicted was hit by a holo-targeting round.
 	var/last_stack
 
-/datum/component/bonus_damage_stack/Initialize(var/bonus_damage_stacks, var/time)
+/datum/component/bonus_damage_stack/Initialize(bonus_damage_stacks, time)
 	. = ..()
 	src.bonus_damage_stacks = bonus_damage_stacks
 	if(!time)
 		time = world.time
 	src.last_stack = time
 
-/datum/component/bonus_damage_stack/InheritComponent(datum/component/bonus_damage_stack/BDS, i_am_original, var/bonus_damage_stacks, var/time)
+/datum/component/bonus_damage_stack/InheritComponent(datum/component/bonus_damage_stack/BDS, i_am_original, bonus_damage_stacks, time)
 	. = ..()
 	if(!BDS)
 		src.bonus_damage_stacks += bonus_damage_stacks
@@ -51,8 +51,8 @@
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
-	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, .proc/get_bonus_damage)
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
+	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, PROC_REF(get_bonus_damage))
 
 /datum/component/bonus_damage_stack/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
@@ -63,11 +63,11 @@
 	var/atom/A = parent
 	A.remove_filter("bonus_damage_stacks")
 
-/datum/component/bonus_damage_stack/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/bonus_damage_stack/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Bonus Damage Taken: [bonus_damage_stacks * 0.1]%"
 
-/datum/component/bonus_damage_stack/proc/get_bonus_damage(mob/M, var/list/damage_data) // 10% damage bonus at most
+/datum/component/bonus_damage_stack/proc/get_bonus_damage(mob/M, list/damage_data) // 10% damage bonus at most
 	SIGNAL_HANDLER
 	damage_data["bonus_damage"] = damage_data["damage"] * (min(bonus_damage_stacks, bonus_damage_cap) / 1000)
 

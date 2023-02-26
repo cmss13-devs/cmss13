@@ -16,7 +16,7 @@
 		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_ship/commander/council/plus
 	)
 
-/datum/job/command/commander/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/command/commander/get_whitelist_status(list/roles_whitelist, client/player)
 	. = ..()
 	if(!.)
 		return
@@ -29,15 +29,15 @@
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(src, .proc/do_announce_entry_message, H), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_announce_entry_message), H), 1.5 SECONDS)
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
 	GLOB.marine_leaders[JOB_CO] = M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/cleanup_leader_candidate)
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/commander/proc/cleanup_leader_candidate(var/mob/M)
+/datum/job/command/commander/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_CO
 

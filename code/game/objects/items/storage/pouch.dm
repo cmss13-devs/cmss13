@@ -42,7 +42,7 @@
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
 	if(slot == WEAR_L_STORE || slot == WEAR_R_STORE)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/pouch/dropped(mob/user)
@@ -56,7 +56,7 @@
 	icon_state = "small_drop"
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	max_w_class = SIZE_MEDIUM
-	cant_hold = list(	//Prevent inventory bloat
+	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible
 	)
@@ -102,13 +102,13 @@
 	icon_state = "fueltank_pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/tool/extinguisher
-					)
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/tool/extinguisher,
+	)
 	bypass_w_limit = list(
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/tool/extinguisher
-					)
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/tool/extinguisher,
+	)
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -119,7 +119,7 @@
 	desc = "Knife to meet you!"
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
 	icon_state = "bayonet"
@@ -166,7 +166,7 @@
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/device/radio,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -190,7 +190,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/stack/sheet/metal,
 		/obj/item/device/radio,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
@@ -212,7 +212,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 /obj/item/storage/pouch/firstaid/full
@@ -247,7 +247,7 @@
 		/obj/item/storage/pill_bottle/packet/tricordrazine,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency
+		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
@@ -327,11 +327,11 @@
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
-					/obj/item/weapon/gun/revolver,
-					/obj/item/weapon/gun/pistol,
-					/obj/item/device/binoculars,
-					/obj/item/device/cotablet
-					)
+		/obj/item/weapon/gun/revolver,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/device/binoculars,
+		/obj/item/device/cotablet,
+	)
 
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet
@@ -414,7 +414,7 @@
 	storage_slots = 3
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg/m39
+		/obj/item/ammo_magazine/smg/m39,
 	)
 	can_hold = list(
 		/obj/item/ammo_magazine/rifle,
@@ -422,7 +422,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
-		/obj/item/ammo_magazine/handful
+		/obj/item/ammo_magazine/handful,
 	)
 
 /obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
@@ -468,6 +468,10 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
+/obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/pouch/magazine/shotgun/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
@@ -481,7 +485,7 @@
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/revolver/mateba(src)
+		new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -511,6 +515,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
 
+/obj/item/storage/pouch/magazine/large/nsg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23/heap(src)
+
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
@@ -539,6 +547,14 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
 
+/obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/heap(src)
+
+/obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/m39/heap(src)
+
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
 	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
@@ -547,7 +563,7 @@
 	storage_slots = 5
 	bypass_w_limit = list()
 	can_hold = list(
-		/obj/item/ammo_magazine/handful
+		/obj/item/ammo_magazine/handful,
 	)
 	flap = FALSE
 
@@ -576,7 +592,11 @@
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
-/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+/obj/item/storage/pouch/shotgun/large/beanbag/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
+
+/obj/item/storage/pouch/shotgun/large/beanbag/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 
@@ -598,7 +618,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/explosive/grenade,
-		/obj/item/storage/box/explosive_mines
+		/obj/item/storage/box/explosive_mines,
 	)
 
 /obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
@@ -610,11 +630,11 @@
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE(src)
+		new /obj/item/explosive/grenade/high_explosive(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE/upp(src)
+		new /obj/item/explosive/grenade/high_explosive/upp(src)
 
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -643,7 +663,7 @@
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/syringe_case,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
 	)
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
@@ -670,7 +690,7 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
 	)
 
 /obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()
@@ -706,6 +726,10 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/pouch/medical/socmed/dutch/unmarked
+	name = "tactical medical pouch"
+	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
@@ -757,7 +781,7 @@
 	storage_slots = 2
 	can_hold = list(
 		/obj/item/reagent_container/glass/beaker,
-		/obj/item/reagent_container/glass/bottle
+		/obj/item/reagent_container/glass/bottle,
 	)
 
 /obj/item/storage/pouch/chem/fill_preset_inventory()
@@ -799,7 +823,7 @@
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
 
-/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+/obj/item/storage/pouch/medkit/handle_mmb_open(mob/user)
 	var/obj/item/storage/firstaid/FA = locate() in contents
 	if(FA)
 		FA.open(user)
@@ -822,44 +846,58 @@
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
-	matter = list("plastic" = 3000)
+	matter = list("plastic" = 2000, "glass" = 2000)
+	flags_item = NOBLUDGEON
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
 	inner = new /obj/item/reagent_container/glass/pressurized_canister()
+	//Only add an autoinjector if the canister is empty
+	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
+	if(contents.len == 0)
+		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
+	inner.reagents.add_reagent(ragent, inner.volume)
+	if(contents.len > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
+		A.reagents.add_reagent(ragent, A.volume)
+		A.update_uses_left()
+		A.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("bicaridine", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
-	update_icon()
+	fill_with("bicaridine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("kelotane", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
-	update_icon()
+	fill_with("kelotane")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/(src)
 	. = ..()
-	inner.reagents.add_reagent("oxycodone", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
-	update_icon()
+	fill_with("oxycodone")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	if(contents.len > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("tricordrazine", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
-	update_icon()
+	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
@@ -875,20 +913,22 @@
 
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		var/max_uses = A.volume / A.amount_per_transfer_from_this
-		max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
-		if(inner && inner.reagents.total_volume > 0 && (A.uses_left < max_uses))
-			inner.reagents.trans_to(A, A.volume)
-			var/uses_left = A.reagents.total_volume / A.amount_per_transfer_from_this
-			uses_left = round(uses_left) == uses_left ? uses_left : round(uses_left) + 1
-			A.uses_left = uses_left
-			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			A.update_icon()
+		fill_autoinjector(A)
 		return ..()
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
 	return ..()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
+	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
+	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
+		inner.reagents.trans_to(autoinjector, autoinjector.volume)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
+		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		autoinjector.update_icon()
+		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
 	if(!inner)
@@ -923,7 +963,18 @@
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
+	//Fill our inner reagent canister
 	O.reagents.trans_to(inner, amt_to_remove)
+
+	//Refill our autoinjector
+	if(contents.len > 0)
+		fill_autoinjector(contents[1])
+
+	//Top up our inner reagent canister after filling up the injector
+	amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	if(amt_to_remove)
+		O.reagents.trans_to(inner, amt_to_remove)
+
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
@@ -940,14 +991,18 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		overlays += "+[icon_state]_loaded"
+		//tint the inner display based on what chemical is inside
+		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
+		if(inner.reagents)
+			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
+		overlays += I
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)
 	return //Useless, it's a one slot.
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!inner)
 		return "This [src] has no container inside!"
@@ -989,6 +1044,20 @@
 		if(inner)
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
+			update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
+	set category = "Weapons"
+	set name = "Remove Canister"
+	set desc = "Removes the Pressurized Canister from the pouch."
+	set src in usr
+	if(!inner)
+		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		return
+
+	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	inner = null
+	update_icon()
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"
@@ -1005,7 +1074,7 @@
 		/obj/item/document_objective/report,
 		/obj/item/document_objective/folder,
 		/obj/item/disk/objective,
-		/obj/item/document_objective/technical_manual
+		/obj/item/document_objective/technical_manual,
 	)
 
 /obj/item/storage/pouch/document/small
@@ -1056,7 +1125,7 @@
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/micro_laser,
 		/obj/item/stock_parts/scanning_module,
-		/obj/item/stock_parts/capacitor
+		/obj/item/stock_parts/capacitor,
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()
@@ -1116,7 +1185,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/stack/cable_coil,
 		/obj/item/tool/extinguisher/mini,
-		/obj/item/tool/shovel/etool
+		/obj/item/tool/shovel/etool,
 	)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
@@ -1175,7 +1244,7 @@
 	can_hold = list(/obj/item/device, /obj/item/tool)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	var/sling_range = 1
+	var/sling_range = 2
 	var/obj/item/slung
 
 /obj/item/storage/pouch/sling/get_examine_text(mob/user)
@@ -1216,7 +1285,7 @@
 	slung.RemoveElement(/datum/element/drop_retrieval/pouch_sling, src)
 	slung = null
 
-/obj/item/storage/pouch/sling/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/sling_return(mob/living/carbon/human/user)
 	if(!slung || !slung.loc)
 		return FALSE
 	if(slung.loc == user)
@@ -1230,7 +1299,7 @@
 			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
 		return TRUE
 
-/obj/item/storage/pouch/sling/proc/attempt_retrieval(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/attempt_retrieval(mob/living/carbon/human/user)
 	if(sling_return(user))
 		return
 	unsling()
@@ -1240,7 +1309,7 @@
 /obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
 	if(slung && slung.loc == src)
 		return
-	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"

@@ -27,14 +27,14 @@
 /// Port Aft Lifeboat (bottom-right, doors on its left side)
 /obj/docking_port/mobile/lifeboat/port
 	name = "port-aft lifeboat"
-	id = "lifeboat1"
+	id = MOBILE_SHUTTLE_LIFEBOAT_PORT
 	preferred_direction = WEST
 	port_direction = WEST
 
 /// Starboard Aft Lifeboat (top-right, doors its right side)
 /obj/docking_port/mobile/lifeboat/starboard
 	name = "starboard-aft lifeboat"
-	id = "lifeboat2"
+	id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
 	preferred_direction = EAST
 	port_direction = EAST
 
@@ -57,12 +57,12 @@
 	var/obj/docking_port/mobile/lifeboat/lifeboat = departing_shuttle
 	if(istype(lifeboat))
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/door in lifeboat.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock), 10)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor.proc/bolt_explosion), 75)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock)), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor, bolt_explosion)), 75)
 
 /obj/docking_port/stationary/lifeboat_dock/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -74,21 +74,21 @@
 	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
 	if(docked_shuttle)
 		for(var/obj/structure/machinery/door/airlock/multi_tile/door in docked_shuttle.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, unlock_and_open))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, unlock_and_open)), 10)
 
 /obj/docking_port/stationary/lifeboat_dock/proc/close_dock()
 	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
 	if(docked_shuttle)
 		for(var/obj/structure/machinery/door/airlock/multi_tile/door in docked_shuttle.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock)), 10)
 
 
 /// Port Aft Lifeboat default dock
@@ -114,22 +114,16 @@
 		GLOB.lifeboat_almayer_docks -= src
 	return ..()
 
-
-/// Admin lifeboat dock temporary dest because someone mapped them in for some reason (use transit instead)
-/obj/docking_port/stationary/lifeboat_dock/admin
-	dir = NORTH
-	id = "admin-lifeboat" // change this
-
 // === SHUTTLE TEMPLATES FOR SPAWNING THEM
 
 /// Port-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_port
 	name = "Port door lifeboat"
-	shuttle_id = "lifeboat-port"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_PORT
 
 /// Starboard-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_starboard
 	name = "Starboard door lifeboat"
-	shuttle_id = "lifeboat-starboard"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
 
 

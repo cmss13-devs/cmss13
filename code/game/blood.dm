@@ -1,5 +1,5 @@
 //to add blood from a mob onto something, and transfer their dna info and blood color
-/atom/proc/add_mob_blood(mob/living/M, var/color_override)
+/atom/proc/add_mob_blood(mob/living/M, color_override)
 	var/b_color = color_override || M.get_blood_color()
 	if(!b_color)
 		return 0

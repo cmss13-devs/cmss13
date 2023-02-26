@@ -8,7 +8,7 @@
  */
 
 
-/mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+/mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
@@ -108,7 +108,7 @@
 						M.visible_message(SPAN_DANGER("The [M] smashes off [src]'s [wear_mask.name]!"), \
 						SPAN_DANGER("You smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
-						if(isYautja(src))
+						if(isyautja(src))
 							emote("roar")
 						else
 							emote("scream")
@@ -144,7 +144,7 @@
 				if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was [M.slash_verb]ed by [key_name(M)] while they were infected and nested</B></font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>[M.slash_verb]ed [key_name(src)] while they were infected and nested</B></font>")
-					message_staff("[key_name(M)] [M.slash_verb]ed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+					message_admins("[key_name(M)] [M.slash_verb]ed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
 					attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)] while they were infected</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)] while they were infected</font>")
@@ -177,7 +177,7 @@
 
 		if(INTENT_DISARM)
 
-			if(M.legcuffed && isYautja(src))
+			if(M.legcuffed && isyautja(src))
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return XENO_NO_DELAY_ACTION
 
@@ -192,7 +192,7 @@
 			var/tackle_mult = 1
 			var/tackle_min_offset = 0
 			var/tackle_max_offset = 0
-			if (isYautja(src))
+			if (isyautja(src))
 				tackle_mult = 0.2
 				tackle_min_offset += 2
 				tackle_max_offset += 2
@@ -214,7 +214,7 @@
 
 
 //Every other type of nonhuman mob
-/mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
+/mob/living/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
@@ -231,8 +231,8 @@
 				M.start_pulling(src)
 
 		if(INTENT_HARM)
-			if(isXeno(src) && xeno_hivenumber(src) == M.hivenumber)
-				var/mob/living/carbon/Xenomorph/X = src
+			if(isxeno(src) && xeno_hivenumber(src) == M.hivenumber)
+				var/mob/living/carbon/xenomorph/X = src
 				if(!X.banished)
 					M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
 					SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
@@ -274,7 +274,7 @@
 				apply_effect(8, WEAKEN)
 	return XENO_ATTACK_ACTION
 
-/mob/living/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/mob/living/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
 	SPAN_DANGER("You nudge your head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
@@ -297,14 +297,14 @@
 /**This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 Note that this is overriden by every proc concerning a child of obj unless inherited
 There is a trait that permits them to handle items.**/
-/obj/item/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS))
-		attack_hand(M)
+/obj/item/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 	return
 
 
-/obj/vehicle/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/vehicle/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HARM)
 		M.animation_attack_on(src)
 		M.flick_attack_overlay(src, "slash")
@@ -318,11 +318,11 @@ There is a trait that permits them to handle items.**/
 		return XENO_NONCOMBAT_ACTION
 
 
-/obj/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return //larva can't do anything
 
 //Breaking tables and racks
-/obj/structure/surface/table/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/surface/table/attack_alien(mob/living/carbon/xenomorph/M)
 	if(breakable)
 		M.animation_attack_on(src)
 		if(sheet_type == /obj/item/stack/sheet/wood)
@@ -340,7 +340,7 @@ There is a trait that permits them to handle items.**/
 		return XENO_ATTACK_ACTION
 
 //Breaking barricades
-/obj/structure/barricade/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)
@@ -357,7 +357,7 @@ There is a trait that permits them to handle items.**/
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
+/obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
 	take_damage((xeno.melee_damage_upper * 1.2) * brute_multiplier)
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
@@ -370,7 +370,7 @@ There is a trait that permits them to handle items.**/
 		xeno.apply_damage(5)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/surface/rack/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
@@ -380,7 +380,7 @@ There is a trait that permits them to handle items.**/
 
 //Default "structure" proc. This should be overwritten by sub procs.
 //If we sent it to monkey we'd get some weird shit happening.
-/obj/structure/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
 	// fuck off dont destroy my unslashables
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
@@ -394,7 +394,7 @@ There is a trait that permits them to handle items.**/
 		. = ..()
 
 //Beds, nests and chairs - unbuckling
-/obj/structure/bed/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HARM)
 		if(unslashable)
 			return
@@ -411,17 +411,17 @@ There is a trait that permits them to handle items.**/
 
 
 //Medevac stretchers. Unbuckle ony
-/obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/M)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
 //Portable surgical bed. Ditto, though it's meltable.
-/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/xenomorph/M)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
 //Smashing lights
-/obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/light/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_broken()) //Ignore if broken. Note that we can't use defines here
 		return FALSE
 	M.animation_attack_on(src)
@@ -431,7 +431,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Smashing windows
-/obj/structure/window/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/window/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HELP)
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		M.visible_message(SPAN_WARNING("[M] creepily taps on [src] with its huge claw."), \
@@ -442,7 +442,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Slashing bots
-/obj/structure/machinery/bot/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/bot/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	health -= rand(15, 30)
 	if(health <= 0)
@@ -458,7 +458,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Slashing cameras
-/obj/structure/machinery/camera/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status)
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -469,7 +469,7 @@ There is a trait that permits them to handle items.**/
 		return XENO_ATTACK_ACTION
 
 //Slashing windoors
-/obj/structure/machinery/door/window/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/window/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
@@ -481,7 +481,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Slashing grilles
-/obj/structure/grille/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/grille/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	var/damage_dealt = 5
@@ -500,7 +500,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Slashing fences
-/obj/structure/fence/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	var/damage_dealt = 5
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
@@ -512,7 +512,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Slashin mirrors
-/obj/structure/mirror/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	if(shattered)
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
@@ -529,7 +529,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 //Prying open doors
-/obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
 		if(shock(M, 100))
@@ -603,11 +603,11 @@ There is a trait that permits them to handle items.**/
 				SPAN_DANGER("You pry [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.scuttle(src)
 
 //Prying open FIREdoors
-/obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(blocked)
 		to_chat(M, SPAN_WARNING("[src] is welded shut."))
@@ -638,11 +638,11 @@ There is a trait that permits them to handle items.**/
 
 
 //Nerfing the damn Cargo Tug Train
-/obj/vehicle/train/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/vehicle/train/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
-/obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
 		return FALSE
@@ -650,7 +650,7 @@ There is a trait that permits them to handle items.**/
 	return TRUE
 
 //clicking on resin doors attacks them, or opens them without harm intent
-/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
 		return XENO_NO_DELAY_ACTION //Some basic logic here
@@ -658,7 +658,7 @@ There is a trait that permits them to handle items.**/
 		TryToSwitchState(M)
 		return XENO_NONCOMBAT_ACTION
 	else
-		if(isXenoLarva(M))
+		if(islarva(M))
 			return
 		else
 			M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"), \
@@ -676,7 +676,7 @@ There is a trait that permits them to handle items.**/
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
-/obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -695,7 +695,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying reagent dispensers
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -714,7 +714,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying filing cabinets
-/obj/structure/filingcabinet/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/filingcabinet/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -733,7 +733,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying morgues & crematoriums
-/obj/structure/morgue/attack_alien(mob/living/carbon/Xenomorph/alien)
+/obj/structure/morgue/attack_alien(mob/living/carbon/xenomorph/alien)
 	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -752,7 +752,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying hydroponics trays
-/obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/Xenomorph/alien)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/xenomorph/alien)
 	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -770,7 +770,7 @@ There is a trait that permits them to handle items.**/
 		SPAN_DANGER("You [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
+/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
 			to_chat(M, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
@@ -792,7 +792,7 @@ There is a trait that permits them to handle items.**/
 			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 		queen_locked = 1
 
-/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)
+/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/xenomorph/M, shuttle_tag)
 	if(!door_override)
 		to_chat(M, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"),3,M.hivenumber)
@@ -800,7 +800,7 @@ There is a trait that permits them to handle items.**/
 		door_override = 1
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in machines)
@@ -819,44 +819,8 @@ There is a trait that permits them to handle items.**/
 			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
 		reardoor.unlock()
 
-/obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if(!istype(shuttle) || !(M.caste && M.caste.is_intelligent))
-		return ..()
-
-	attack_hand(M)
-	if(!shuttle.iselevator)
-		if(shuttle_tag != "Ground Transport 1")
-			shuttle.door_override(M, shuttle_tag)
-		if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
-			shuttle.hijack(M, shuttle_tag)
-	return XENO_ATTACK_ACTION
-
-/obj/structure/machinery/door_control/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.caste && M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
-		var/shuttle_tag
-		switch(id)
-			if("sh_dropship1")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
-			if("sh_dropship2")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
-			if("gr_transport1")
-				shuttle_tag = "Ground Transport 1"
-			else
-				return XENO_NO_DELAY_ACTION
-
-		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.door_override(M, shuttle_tag)
-		xeno_attack_delay(M)
-
-		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			shuttle.hijack(M, shuttle_tag)
-		return XENO_NO_DELAY_ACTION
-	else
-		return ..()
-
 //APCs.
-/obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M)
 
 	if(stat & BROKEN)
 		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
@@ -886,14 +850,14 @@ There is a trait that permits them to handle items.**/
 		beenhit++
 	return XENO_ATTACK_ACTION
 
-/obj/structure/ladder/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/ladder/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/ladder/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/ladder/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return attack_hand(M)
 
-/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!is_lit)
 		to_chat(M, "Why bother? It's just some weird metal thing.")
 		return XENO_NO_DELAY_ACTION
@@ -913,13 +877,13 @@ There is a trait that permits them to handle items.**/
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, you start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
 
 
 
 //Digging up snow
-/turf/open/snow/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/open/snow/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
@@ -942,16 +906,16 @@ There is a trait that permits them to handle items.**/
 
 	return XENO_NO_DELAY_ACTION
 
-/turf/open/snow/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/turf/open/snow/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return //Larvae can't do shit
 
 
 //Crates, closets, other paraphernalia
-/obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/closet/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!unacidable)
 		M.animation_attack_on(src)
 		if(!opened)
-			var/difficulty = 70	//if its just closed we can smash open quite easily
+			var/difficulty = 70 //if its just closed we can smash open quite easily
 			if(welded)
 				difficulty = 30 // if its welded shut it should be harder to smash open
 			if(prob(difficulty))
@@ -963,8 +927,8 @@ There is a trait that permits them to handle items.**/
 			SPAN_DANGER("You smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
+/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
+	if((M.caste && M.caste.tier < 2 && !isqueen(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
@@ -980,7 +944,7 @@ There is a trait that permits them to handle items.**/
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
@@ -1005,7 +969,7 @@ There is a trait that permits them to handle items.**/
 	var/shove_time = 100
 	if(M.mob_size >= MOB_SIZE_BIG)
 		shove_time = 50
-	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
+	if(istype(M,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15
 
 	xeno_attack_delay(M)
@@ -1018,7 +982,7 @@ There is a trait that permits them to handle items.**/
 	return XENO_NO_DELAY_ACTION
 
 
-/obj/structure/inflatable/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/inflatable/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	deflate(1)
 	return XENO_ATTACK_ACTION
@@ -1026,7 +990,7 @@ There is a trait that permits them to handle items.**/
 /obj/structure/machinery/vending/proc/tip_over()
 	var/matrix/A = matrix()
 	is_tipped_over = TRUE
-	density = 0
+	density = FALSE
 	A.Turn(90)
 	apply_transform(A)
 	malfunction()
@@ -1034,7 +998,7 @@ There is a trait that permits them to handle items.**/
 /obj/structure/machinery/vending/proc/flip_back()
 	icon_state = initial(icon_state)
 	is_tipped_over = FALSE
-	density = 1
+	density = TRUE
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS

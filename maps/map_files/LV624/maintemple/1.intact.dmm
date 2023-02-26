@@ -56,8 +56,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -250,7 +249,7 @@
 "eY" = (
 /obj/structure/showcase{
 	color = "#FFE55C";
-	desc = "This statue seems taller and somehow mightier than the others.. it makes you want to steer away from it.";
+	desc = "This statue seems taller and somehow mightier than the others... it makes you want to steer away from it.";
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "massive statue"
@@ -354,7 +353,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
 /turf/open/gm/grass,
@@ -1533,8 +1532,7 @@
 /area/lv624/ground/caves/sand_temple)
 "MB" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1703,8 +1701,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1790,9 +1787,7 @@
 	color = "#b29082"
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple{
-	color = "#b29082"
-	})
+/area/lv624/ground/caves/sand_temple)
 "UU" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/shuttle{
@@ -1818,8 +1813,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1849,12 +1843,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Xb" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Xg" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -1875,8 +1863,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
@@ -2710,7 +2697,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv
@@ -2794,7 +2781,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv

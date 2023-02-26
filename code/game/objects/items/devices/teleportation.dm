@@ -1,7 +1,7 @@
 /* Teleportation devices.
  * Contains:
- *		Locator
- *		Hand-tele
+ * Locator
+ * Hand-tele
  */
 
 /*
@@ -14,7 +14,7 @@
 	var/temp = null
 	var/frequency = 1451
 	var/broadcasting = null
-	var/listening = 1.0
+	var/listening = 1
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	item_state = "electronic"
@@ -151,27 +151,27 @@
 				L["[com.id] (Active)"] = com.locked
 			else
 				L["[com.id] (Inactive)"] = com.locked
-	var/list/turfs = list(	)
+	var/list/turfs = list( )
 	for(var/turf/T in orange(10))
-		if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb
-		if(T.y>world.maxy-8 || T.y<8)	continue
+		if(T.x>world.maxx-8 || T.x<8) continue //putting them at the edge is dumb
+		if(T.y>world.maxy-8 || T.y<8) continue
 		turfs += T
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
 	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
-	var/count = 0	//num of portals from this teleport in the world
+	var/count = 0 //num of portals from this teleport in the world
 	for(var/i in GLOB.portal_list)
 		var/obj/effect/portal/PO = i
 		if(PO.creator == src)
 			count++
 	if(count >= 3)
-		user.show_message(SPAN_NOTICE("\The [src] is recharging!"))
+		user.show_message(SPAN_NOTICE("\The [src] is recharging!"), SHOW_MESSAGE_VISIBLE)
 		return
 	var/T = L[t1]
 	for(var/mob/O in hearers(user, null))
-		O.show_message(SPAN_NOTICE("Locked In."), 2)
+		O.show_message(SPAN_NOTICE("Locked In."), SHOW_MESSAGE_AUDIBLE)
 	var/obj/effect/portal/P = new /obj/effect/portal( get_turf(src) )
 	P.target = T
 	P.creator = src

@@ -58,7 +58,9 @@
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
+#define SPAN_ALERTWARNING(X) "<span class='alertwarning'>[X]</span>"
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_BOLDWARNING(X) "<span class='boldwarning'>[X]</span>"
 #define SPAN_ALERT(X) "<span class='alert'>[X]</span>"
 
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
@@ -78,9 +80,22 @@
 
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
 
+#define SPAN_ROSE(X) "<span class='rose'>[X]</span>"
+#define SPAN_LANGCHAT(X) "<span class='langchat'>[X]</span>"
+#define SPAN_MODERATE(X) "<span class='moderate'>[X]</span>"
+#define SPAN_DISARM(X) "<span class='disarm'>[X]</span>"
+#define SPAN_DL1(X) "<span class='dl1'>[X]</span>"
+#define SPAN_NEWSCASTER(X) "<span class='newscaster'>[X]</span>"
+#define SPAN_ROUND_HEADER(X) "<span class='round header'>[X]</span>"
+#define SPAN_EMOTE(X) "<span class='emote'>[X]</span>"
+#define SPAN_UNCONSCIOUS(X) "<span class='unconscious'>[X]</span>"
+#define SPAN_SUICIDE(X) "<span class='suicide'>[X]</span>"
+#define SPAN_SCANNERB(X) "<span class='scannerb'>[X]</span>"
+
 // Colours
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
 #define SPAN_GREEN(X) "<span class='green'>[X]</span>"
 #define SPAN_RED(X) "<span class='red'>[X]</span>"
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"
 #define SPAN_PURPLE(X) "<span class='purple'>[X]</span>"
+#define SPAN_MAROON(X) "<font color=Maroon>[X]</font>"

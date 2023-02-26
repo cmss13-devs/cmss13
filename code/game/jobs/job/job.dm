@@ -1,22 +1,22 @@
 /datum/job
 	//The name of the job
-	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
-	var/role_ban_alternative	// If the roleban title needs to be an extra check, like Xenomorphs = Alien.
+	var/title = ""  //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
+	var/disp_title  //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
+	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
-	var/total_positions 	= 0 //How many players can be this job
-	var/spawn_positions 	= 0 //How many players can spawn in as this job
+	var/total_positions = 0 //How many players can be this job
+	var/spawn_positions = 0 //How many players can spawn in as this job
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
-	var/allow_additional	= 0 //Can admins modify positions to it
+	var/allow_additional = 0 //Can admins modify positions to it
 	var/scaled = 0
-	var/current_positions 	= 0 //How many players have this job
-	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
-	var/selection_class 	= "" // Job Selection span class (for background color)
+	var/current_positions = 0 //How many players have this job
+	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
+	var/selection_class = "" // Job Selection span class (for background color)
 
-	var/late_joinable 		= TRUE
+	var/late_joinable = TRUE
 
 	var/flags_startup_parameters = NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
-	var/flags_whitelist = NO_FLAGS 			//Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+	var/flags_whitelist = NO_FLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 
 	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes
@@ -40,7 +40,7 @@
 	minimum_playtimes = setup_requirements(list())
 	if(!disp_title) disp_title = title
 
-/datum/job/proc/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
 	if(!roles_whitelist)
 		return FALSE
 
@@ -51,13 +51,13 @@
 	var/time_required
 	var/roles
 
-/datum/timelock/New(var/name, var/time_required, var/list/roles)
+/datum/timelock/New(name, time_required, list/roles)
 	. = ..()
 	if(name) src.name = name
 	if(time_required) src.time_required = time_required
 	if(roles) src.roles = roles
 
-/datum/job/proc/setup_requirements(var/list/L)
+/datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()
 	for(var/PT in L)
 		if(ispath(PT))
@@ -67,7 +67,7 @@
 
 	return to_return
 
-/datum/timelock/proc/can_play(var/client/C)
+/datum/timelock/proc/can_play(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -77,7 +77,7 @@
 	else
 		return get_job_playtime(C, roles) >= time_required
 
-/datum/timelock/proc/get_role_requirement(var/client/C)
+/datum/timelock/proc/get_role_requirement(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -87,7 +87,7 @@
 	else
 		return time_required - get_job_playtime(C, roles)
 
-/datum/job/proc/can_play_role(var/client/client)
+/datum/job/proc/can_play_role(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
@@ -104,7 +104,7 @@
 
 	return TRUE
 
-/datum/job/proc/get_role_requirements(var/client/C)
+/datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
 		var/datum/timelock/T = prereq
@@ -142,11 +142,35 @@
 		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
-/datum/job/proc/set_spawn_positions(var/count)
+/datum/job/proc/set_spawn_positions(count)
 	return spawn_positions
 
-/datum/job/proc/spawn_and_equip(var/mob/new_player/player)
+/datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
+
+/datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
+
+	var/datum/money_account/generated_account
+	//Give them an account in the database.
+	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
+		var/obj/item/card/id/card = account_user.wear_id
+		var/user_has_preexisting_account = account_user.mind?.initial_account
+		if(card && !user_has_preexisting_account)
+			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
+			generated_account = create_account(account_user.real_name, rand(30, 50), account_paygrade)
+			card.associated_account_number = generated_account.account_number
+			if(account_user.mind)
+				var/remembered_info = ""
+				remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"
+				remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
+				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
+
+				if(generated_account.transaction_log.len)
+					var/datum/transaction/T = generated_account.transaction_log[1]
+					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+				account_user.mind.store_memory(remembered_info)
+				account_user.mind.initial_account = generated_account
+	return generated_account
 
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)
@@ -155,7 +179,7 @@
 		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
-/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, var/whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
+/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	set waitfor = 0
 	sleep(10)
 	if(H && H.loc && H.client)
@@ -167,12 +191,12 @@
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		"
 		to_chat_spaced(H, html = entrydisplay)
 
-/datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
+/datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)
 	if (istype(M) && M.client)
 		M.client.soundOutput.update_ambience()
 
@@ -180,10 +204,10 @@
 
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(var/latejoin)
-	return latejoin ? spawn_positions : total_positions
+/datum/job/proc/get_total_positions(latejoin)
+	return latejoin ? total_positions : spawn_positions
 
-/datum/job/proc/spawn_in_player(var/mob/new_player/NP)
+/datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))
 		return
 
@@ -203,9 +227,6 @@
 	new_character.name = NP.real_name
 	new_character.voice = NP.real_name
 
-	if(NP.client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
-
 	if(NP.mind)
 		NP.mind_initialize()
 		NP.mind.transfer_to(new_character, TRUE)
@@ -213,35 +234,18 @@
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
 	return new_character
 
-/datum/job/proc/equip_job(var/mob/living/M)
+/datum/job/proc/equip_job(mob/living/M)
 	if(!istype(M))
 		return
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/human = M
-		human.job = title
-
-		var/datum/money_account/A
-		//Give them an account in the database.
-		if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-			A = create_account(human.real_name, rand(50,500)*10, null)
-			if(human.mind)
-				var/remembered_info = ""
-				remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
-				remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
-				remembered_info += "<b>Your account funds are:</b> $[A.money]<br>"
-
-				if(A.transaction_log.len)
-					var/datum/transaction/T = A.transaction_log[1]
-					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-				human.mind.store_memory(remembered_info)
-				human.mind.initial_account = A
 
 		var/job_whitelist = title
 		var/whitelist_status = get_whitelist_status(RoleAuthority.roles_whitelist, human.client)
@@ -249,19 +253,23 @@
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
 
+		human.job = title //TODO Why is this a mob variable at all?
+
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-			announce_entry_message(human, A, whitelist_status) //Tell them their spawn info.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
 			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
 		else
 			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-			announce_entry_message(human, A) //Tell them their spawn info.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account) //Tell them their spawn info.
 			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			RoleAuthority.randomize_squad(human)
 
-		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job)))	//activates self setting proc for marine headsets for WO
+		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(human)
 

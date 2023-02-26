@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////
-//					INTERNAL WOUND PATCHING						//
+// INTERNAL WOUND PATCHING //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/internal_bleeding
@@ -11,7 +11,7 @@
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/fix_vein)
 
-/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/wound/W as anything in L.wounds)
 		if(W.internal)
 			return TRUE

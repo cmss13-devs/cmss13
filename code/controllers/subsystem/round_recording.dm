@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(round_recording)
-	name     = "Round Recording"
-	wait     = 5 SECONDS
+	name  = "Round Recording"
+	wait  = 5 SECONDS
 	priority = SS_PRIORITY_ROUND_RECORDING
-	flags    = SS_KEEP_TIMING
+	flags = SS_KEEP_TIMING
 
 	var/list/currentrun
 	var/datum/round_recorder/recorder
@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(round_recording)
 /datum/controller/subsystem/round_recording/Initialize()
 	recorder = new()
 	can_fire = FALSE
-	return ..()
+	return SS_INIT_SUCCESS
 
 // use CONFIG_GET(flag/record_rounds)
 
@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(round_recording)
 	can_fire = FALSE
 	return
 
-/*	if(!recorder)
+/* if(!recorder)
 		return
 
 	if(SSticker.current_state != GAME_STATE_PLAYING)

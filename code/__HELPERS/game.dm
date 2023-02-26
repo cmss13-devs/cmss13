@@ -12,7 +12,7 @@
 
 // Like view but bypasses luminosity check
 
-/proc/hear(var/range, var/atom/source)
+/proc/hear(range, atom/source)
 	if(!source)
 		return FALSE
 	var/lum = source.luminosity
@@ -59,7 +59,7 @@
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
 
-/proc/recursive_mob_check(var/atom/O,  var/list/L = list(), var/recursion_limit = 3, var/client_check = 1, var/sight_check = 1, var/include_radio = 1)
+/proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
 	//debug_mob += O.contents.len
 	if(!recursion_limit)
@@ -86,7 +86,7 @@
 	return L
 
 /// Will attempt to find what's holding this item if it's being contained by something, ie if it's in a satchel held by a human, this'll return the human
-/proc/recursive_holder_check(var/obj/item/held_item, var/recursion_limit = 3)
+/proc/recursive_holder_check(obj/item/held_item, recursion_limit = 3)
 	if(recursion_limit <= 0)
 		return held_item
 	if(!held_item.loc || isturf(held_item.loc))
@@ -97,7 +97,7 @@
 // The old system would loop through lists for a total of 5000 per function call, in an empty server.
 // This new system will loop at around 1000 in an empty server.
 // Returns a list of mobs in range of R from source. Used in radio and say code.
-/proc/get_mobs_in_view(var/R, var/atom/source)
+/proc/get_mobs_in_view(R, atom/source)
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -129,7 +129,7 @@
 	return hear
 
 ///only gets FUNCTIONING radios
-/proc/get_radios_in_view(var/R, var/atom/source)
+/proc/get_radios_in_view(R, atom/source)
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -145,7 +145,7 @@
 				hear += A
 	return hear
 
-/proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
+/proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
 
 	set background = 1
 
@@ -179,44 +179,41 @@
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere
 				if(speaker_coverage[ear] || (istype(M, /mob/dead/observer) && (M.client) && (M.client.prefs) && (M.client.prefs.toggles_chat & CHAT_GHOSTRADIO)))
-					. |= M		// Since we're already looping through mobs, why bother using |= ? This only slows things down.
+					. |= M // Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
-#define SIGN(X) ((X<0)?-1:1)
-
-proc
-	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
-		var/turf/T
-		if(X1==X2)
-			if(Y1==Y2)
-				return 1 //Light cannot be blocked on same tile
-			else
-				var/s = SIGN(Y2-Y1)
-				Y1+=s
-				while(Y1!=Y2)
-					T=locate(X1,Y1,Z)
-					if(T.opacity)
-						return 0
-					Y1+=s
+/proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
+	var/turf/T
+	if(X1==X2)
+		if(Y1==Y2)
+			return 1 //Light cannot be blocked on same tile
 		else
-			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
-			var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-			var/signX = SIGN(X2-X1)
-			var/signY = SIGN(Y2-Y1)
-			if(X1<X2)
-				b+=m
-			while(X1!=X2 || Y1!=Y2)
-				if(round(m*X1+b-Y1))
-					Y1+=signY //Line exits tile vertically
-				else
-					X1+=signX //Line exits tile horizontally
+			var/s = SIGN(Y2-Y1)
+			Y1+=s
+			while(Y1!=Y2)
 				T=locate(X1,Y1,Z)
 				if(T.opacity)
 					return 0
-		return 1
+				Y1+=s
+	else
+		var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
+		var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
+		if(X1<X2)
+			b+=m
+		while(X1!=X2 || Y1!=Y2)
+			if(round(m*X1+b-Y1))
+				Y1+=signY //Line exits tile vertically
+			else
+				X1+=signX //Line exits tile horizontally
+			T=locate(X1,Y1,Z)
+			if(T.opacity)
+				return 0
+	return 1
 #undef SIGN
 
-proc/isInSight(var/atom/A, var/atom/B)
+/proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
@@ -273,13 +270,13 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 	return candidates
 
-/proc/convert_k2c(var/temp)
+/proc/convert_k2c(temp)
 	return ((temp - T0C))
 
-/proc/convert_c2k(var/temp)
+/proc/convert_c2k(temp)
 	return ((temp + T0C))
 
-/proc/getWireFlag(var/wire)
+/proc/getWireFlag(wire)
 	return 2**(wire-1)
 
 /**
@@ -331,4 +328,29 @@ proc/isInSight(var/atom/A, var/atom/B)
 /proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration)
 	for(var/client/add_to in show_to)
 		add_to.images += image_to_show
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_images_from_clients), image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+
+/// Get active players who are playing in the round
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, faction_check = FALSE, faction = FACTION_NEUTRAL)
+	var/active_players = 0
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!(current_mob && current_mob.client))
+			continue
+		if(alive_check && current_mob.stat)
+			continue
+		else if(afk_check && current_mob.client.is_afk())
+			continue
+		else if(faction_check)
+			if(!isliving(current_mob))
+				continue
+			var/mob/living/current_living = current_mob
+			if(faction != current_living.faction)
+				continue
+		else if(isnewplayer(current_mob))
+			continue
+		else if(isobserver(current_mob))
+			var/mob/dead/observer/current_observer = current_mob
+			if(current_observer.started_as_observer)
+				continue
+		active_players++
+	return active_players

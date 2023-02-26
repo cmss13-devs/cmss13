@@ -6,11 +6,11 @@
 	desc = "It turns lights on and off. What are you, simple?"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "light1"
-	anchored = 1.0
+	anchored = TRUE
 	var/on = 1
 	var/area/area = null
 	var/otherarea = null
-	//	luminosity = 1
+	// luminosity = 1
 
 /obj/structure/machinery/light_switch/Initialize()
 	. = ..()
@@ -56,7 +56,7 @@
 /obj/structure/machinery/light_switch/power_change()
 
 	if(!otherarea)
-		if(powered(POWER_CHANNEL_LIGHT))
+		if(powered(POWER_CHANNEL_LIGHT) || !src.needs_power)
 			stat &= ~NOPOWER
 		else
 			stat |= NOPOWER

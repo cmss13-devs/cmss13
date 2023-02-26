@@ -12,9 +12,9 @@
 /datum/job/civilian/liaison/generate_entry_conditions(mob/living/liaison, whitelist_status)
 	. = ..()
 	active_liaison = liaison
-	RegisterSignal(liaison, COMSIG_PARENT_QDELETING, .proc/cleanup_active_liaison)
+	RegisterSignal(liaison, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_active_liaison))
 
-/datum/job/civilian/liaison/proc/cleanup_active_liaison(var/mob/liaison)
+/datum/job/civilian/liaison/proc/cleanup_active_liaison(mob/liaison)
 	SIGNAL_HANDLER
 	active_liaison = null
 

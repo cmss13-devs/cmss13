@@ -385,7 +385,357 @@
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
 2022-11-20:
+  John_Rico:
+  - rscadd: Added a UI button to exit a MG or you can resist
+  - rscadd: Added an animation "exiting" an M2c or m56d w/ variant
+  - bugfix: Can no long vault over cades or man a MG on the other side of a barricade
+  Molto:
+  - bugfix: fixed M4A3 belt spawning empty
+  NoKohi:
+  - bugfix: fixed a xeno fun fact showing up in human fun facts
   ThePiachu:
   - rscdel: Removed old, unused radio bindings
   - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
   - code_imp: Small refactor of code around whisper / intercom radio channels
+  - bugfix: Xeno blood is now a finite resource.
+  - rscadd: Living xenos now regenerate blood just in case some unga has the idea
+      to attack one with a syringe.
+  fira:
+  - code_imp: Fixed a number of improper deletions across the game. This is mostly
+      a performance change.
+  harryob:
+  - bugfix: some changelog entries would fail to generate previously - this should
+      now be resolved.
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
+  mullenpaul:
+  - refactor: reworked xeno mark menu
+  - refactor: xenos can see which mark they are tracking
+  - refactor: xenos can see who is tracking what mark
+2022-11-21:
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
+2022-11-22:
+  NoKohi:
+  - rscadd: added a dchat and hive notification for when player facehuggers facehug
+      somebody
+  fira:
+  - bugfix: Fixes issues with clothing traits resulting in, eg, RPG spec losing ear
+      protection by manipulating their spare helmet.
+2022-11-23:
+  BeagleGaming1:
+  - bugfix: Xenonid (Mutant) playable Facehuggers are no longer invisible again
+  Huffie56:
+  - refactor: Removed empty lines and change some annotation to fit current standard
+      for it.
+  - code_imp: All the slice able snack items(cake cheese pizza) will now be cut in
+      six instead of random number
+  - refactor: Removed bitesize = 1lines in children object of snack since it's initiate
+      at 1 already.
+  Molto:
+  - bugfix: fixed the CMP beret description
+  - bugfix: RO, Quartermaster and SEA revolvers can both spawn again
+  - bugfix: fixed the really black suit missing icon
+  Morrow:
+  - bugfix: Fixes LV-522 showing up for whiskey outpost.
+  NoKohi:
+  - admin: adds a VV option for "toggle needing power", this toggles a machine needing
+      APC power
+  - bugfix: fixed stained clothing having an extra "the"
+  PalJohnson:
+  - bugfix: fixed timer on CL briefcase not dispensing items at 12:25 server time
+  ThePiachu:
+  - bugfix: Sorokyne Strata should no longer experience a lot of runtime errors caused
+      by empty tiles being present in the map.
+  - bugfix: Mine boxes can now hold all the mines they are supposed to hold.
+  - bugfix: Hydroponics locker now starts with the correct lock indicator.
+  - spellcheck: Ravager's abilities now have proper capitalization.
+  - qol: Some Working Joe emotes have an alternative way of invoking them now to help
+      you embody the character easier.
+  - code_imp: Moved stim reagent code in with the other reagents. Fixed an unnecesary
+      variable casting.
+  - code_imp: Fixed old style of comments in reagent files.
+  - refactor: Removed snowflake initialize code for various napalms.
+  aceroy:
+  - refactor: Changed xenomorph icon logic to use new var mutation_icon_state and
+      not mutation_type
+  carlarctg:
+  - bugfix: Marines can now shake eachother out of their stupor (They can shake stunned
+      players that aren't lying down)
+  fira:
+  - admin: Added "Change Weather" verb (Major Event, Admin panel) that lets you stop
+      and start new weather events manually.
+  - bugfix: Ending a weather event now displays the actual duration elapsed, and not
+      the duration of the event.
+  harryob:
+  - bugfix: corrected the layering for eggs and stairs.
+  kugamo:
+  - bugfix: Fixed Grey wardrobe missing open sprite.
+2022-11-24:
+  Morrow:
+  - refactor: Refactored battlefield executions using a new point blank signal
+  Sleepynecrons:
+  - bugfix: fixed suppressor attachments not lining up with weapon barrels
+  - bugfix: fixed L42 rail and underbarrel attachments being too far back/high on
+      the gun
+  - imageadd: New icons for cats and the kitten. Added onmob icons for Jones when
+      holding in hands.
+  - imagedel: Removed old icons for cats and kitten
+  - code_imp: Added a holder for the kitten so object sprites and descriptions are
+      consistent when picking one up.
+  carlarc, DrMacCool:
+  - rscadd: Defenders when tail slamming will have their direction turn to a random
+      side to imply spinning their tail into the target's face.
+  - rscadd: Other castes will instead look backwards for to show their tail extending
+      out and stabbing.
+  - rscadd: Defenders also now have a custom on-target slash animation for tail slam.
+  kugamo:
+  - imageadd: New playable facehugger sprites, now with creepy crawly animations.
+  - code_imp: Facehuggers can now scuttle under doors, but cannot pounce while doing
+      so; Fixing a runtime.
+  mullenpaul:
+  - refactor: squad info page is now TGUI
+  - refactor: squad info icons are generated and coloured through stylesheet
+  - refactor: squad info page now shows primary and secondary objectives
+2022-11-25:
+  AnCopper:
+  - spellcheck: Renamed German and Spanish.
+  Drathek:
+  - bugfix: Queens now receive their hive's color.
+  carlarctg:
+  - bugfix: Fixed armor pickup sounds not working.
+  - bugfix: Fixed the loadout item cartridge bayonet's feature not working. Try it
+      again!
+  fira:
+  - bugfix: Fixed a bug with machinery mishandling clicks in statpanel.
+  - bugfix: Machinery now require fine manipulation to be used. As of current this
+      means Humans only (including Yautjas/Synth/Monkeys, but minus Zombies).
+  - bugfix: Fixed a mistake during tgui porting making chat subsystem unused, reducing
+      overall performance
+  - bugfix: SSgarbage won't visibly spam chat with its garbage report when rebooting
+      anymore
+2022-11-26:
+  Huffie56:
+  - rscadd: fuse multiple crates into a new one for large pouch "Large Pouch 2x(pistol,magazine,general)"
+  - rscadd: fuse multiple crates into a new one for surgery "surgery crate(tray,anesthetic,surgeon
+      gear)"
+  - rscdel: remove M3 Pattern Medium Armor Crate (x5 helmet, x5 armor) and M3 Pattern
+      Light Armor Crate (x3) crates.
+  - rscdel: remove M3 Pattern Heavy Armor Crate (x3) and rail attachments crate (x2
+      each) crates.
+  - rscdel: remove muzzle attachments crate (x2 each) and bayonet attachment crate
+      (x8) crates.
+  - rscdel: remove underbarrel attachments crate (x2 each) and general pouches crate
+      (2x normal, 1x medium, 1x large) crates.
+  - rscdel: remove weapons pouches crate (1x bayonet, pistol, explosive) and survival
+      pouches crate (1x radio, flare, survival) crates.
+  - rscdel: remove construction pouches crate (1x electronics, tools, construction)
+      and Lightweight IMP Backpack Crate (x4) crates.
+  - rscdel: remove Marine Satchel Crate (x4) and M39 Belt Holster Crate (x2) and M44
+      Belt Holster Crate (x2) crates.
+  - rscdel: remove M4A3 Belt Holster Crate (x2) and marine outfit crate and anesthetic
+      crate (x4 masks, x4 tanks) crates.
+  - rscdel: remove sterile equipment surplus sidearms and surplus shotguns and M39
+      SMG and M41A MK2 Crate crates.
+  - rscdel: remove old define RO_PRICE and directly input the cost variable number
+      for crates.
+  Sleepynecrons:
+  - imageadd: new sprites for steelcrest defender
+  ThePiachu:
+  - bugfix: Fancy Boxes (cigarettes, etc.) display proper information now when inspected.
+  - bugfix: Marshall and armory doors on LV now have proper civilian access.
+  - bugfix: Solaris Ridge Cargo Lockers now have proper civilian access.
+  - bugfix: Fiora Science Annex's UCF Uniform is no longer honked.
+  - spellcheck: Fixed "defibrilator" to "defibrillator".
+  - bugfix: Recharge Station now properly recharge themselves even if they don't have
+      anyone in them.
+  - bugfix: Recharge Station now can't go below 0% charge.
+  - bugfix: Recharge Station now properly updates its icon when fully charged.
+  - bugfix: You can't repair an APC over 100% anymore.
+  - bugfix: HF2 Health Analyzer now properly clears SSD / Soulless display data between
+      scans.
+  - qol: Buttons now inform you which button you pressed when you press them.
+  - rscadd: Added a View Research Objective verb. This will let Researchers be able
+      to view which chems they still need to synthesize and analyze to keep more organized.
+  - bugfix: Fixed the chem code that saves researchable chems. It used not to save
+      custom chems, now it does.
+  - code_imp: Cleaned up the code around tracking chems and chem objectives a little.
+      It now actually tracks which chems haven't been researched.
+  harryob:
+  - bugfix: windows shatter appropriately, and drop what you'd expect if they are
+      reinforced or not upon deconstruction
+  ihatethisengine:
+  - bugfix: fixed unpowered NVG icon
+  mullenpaul:
+  - refactor: Research terminal now using TGUI
+  - refactor: Medhud published papers now using TGUI
+  - refactor: Added CRT theme in yellow, green and blue
+  - refactor: Reworked research chemicals documents to allow for metadata to be stored
+  - refactor: Improved sorting options for chemicals
+  - refactor: Research paper screen auto-hides olds scans, displaying only the most
+      recent scan. This can be toggled.
+  - refactor: Moved most of the ui_chat messages regarding terminal errors to appear
+      as UI elements.
+  realforest2001:
+  - code_imp: Maintenance Drones no longer have hardcoded health.
+2022-11-27:
+  Mistfrag:
+  - refactor: 'Spitters no longer use HardRefs for their abilities, now use WeakRefs.
+
+      :cl:'
+  SpartanBobby:
+  - rscadd: Security Cameras to LV522 Chances Claim along with consoles at both LZs
+      marines will be able to observe from
+  - balance: rebalanced A-Block Admin and Colony Fitness on LV522 Chances Claim. The
+      Dorm areas now have maint tunnels people can use to move around. More windows
+      were added to make the areas feel more open and a wall was torn down in fitness
+      opening up a large area
+  - bugfix: fixed pipes being behind unbreakable walls on LV522 Chances Claim
+  - rscadd: Synthetic recharging stations to LV522 Chances Claim, 1 at engineering
+      for LZ1, 1 at mining for LZ1 and one in the middle of the map
+  - balance: Numerous ledges removed from LV522 Chances Claim along with props that
+      were blocking movement
+  - balance: 1x1s in A-Block Security have been widened up with the removal of shutters
+  - balance: NE FORECON Shuttle is no longer accessible
+  - balance: Some cargo container/vehicle blockers have been removed opening up flanks
+      from the get-go
+  - balance: ' Corpo-Fitness dead end removed'
+  - balance: backdoor added to NE dorms area redundant bed area removed
+  - bugfix: spelling error in northern dorms area
+  - balance: LV522 Rain is now 3 minutes of light rain every 30 minutes to account
+      for lag extending the duration during high pop
+  - balance: LV522 West A-Block entrance window frames replaced with doors
+  - balance: LV522 West Fitness portable toilet made smaller and cargo containers
+      moved
+  - bugfix: FORECON Major now has correct rank boards
+  - balance: LV522 Reactor chokes wider more breakable walls
+  - bugfix: Fixed problem on LV522 that allowed Xenos to enter an out of bounds area
+  fira:
+  - rscadd: Observer playtime is now tracked and appears in "Other" tab.
+2022-11-28:
+  Geevies:
+  - rscadd: Ballistic goggles now count as helmet garb, so you can put it into the
+      third helmet slot.
+  - bugfix: Ballistic goggles can now render above headbands.
+  Huffie56:
+  - rscadd: spesslaw require two meatball instead of five.
+  - rscadd: replace flour with flatbread for pumpkiepie
+  - rscadd: Replace Flour for bun in roburger and roburger_unsafe
+  - rscadd: Replace Flour for dough in cakes(orange,lemon,lime,chocolate,brain), appletart
+      and creamcheesebread.
+  - balance: Reduce ingredient require to one of each(example banana bread that cost
+      three dough will only cost one dough).
+  Morrow:
+  - rscadd: Added a new role, Commanding Officer Survivor, for anyone CO whitelisted.
+  ThePiachu:
+  - rscadd: Added a telephone to IO's room. Now you can call the RTOs on the field
+      to get you your intel!
+  - qol: Empty Pressurized Reagent Canister Pouch now comes with an empty Autoinjector.
+  - qol: All Pressurized Reagent Canister Pouches now have their Autoinjectors pre-filled.
+  - code_imp: Did a small refactor on how pre-filled Pressurized Reagent Canister
+      Pouches initialize their chems.
+  - rscadd: Empty Pressurized Reagent Canister Pouches have been added to Nurse, Doctor,
+      CMO and Medic vendors.
+  - rscadd: Synth vendor now comes with all the Pressurized Reagent Canister Pouch
+      variants.
+  - rscadd: Synths can now buy empty Autoinjectors (small, medium and large) in their
+      vendor.
+  - rscadd: Synths can now buy the MS-11 Smart Refill Tank in their vendor.
+  - bugfix: Fixed a runtime error around selecting a role with high surgery skill.
+  - rscadd: Added the Pressurized Canister to medilathe. The price of the Pressurized
+      Reagent Canister Pouch has been tweaked somewhat to reflect the price of the
+      Pressurized Canister.
+  - rscadd: Added the janitorial bucket recipe to lathes.
+  - bugfix: Fixed the access to the three vendors in the pilot area of the hangar,
+      they should now be accessible to POs and DCCs as was intended.
+  TotalEpicness5:
+  - qol: Items destroyed by explosions now pop up a message saying they were destroyed
+  fira:
+  - bugfix: Fixed missing Nightmare config files. This should let Predator rounds
+      roll randomly as expected again.
+  kugamo:
+  - bugfix: Removed some stray pixels from Xeno's onfire overlays.
+  - qol: Clicking on acid holes in walls will start you climbing through as xeno if
+      possible.
+  theselfish:
+  - bugfix: Ghillie suit no longer has a direction when thrown.
+  totalepicness:
+  - bugfix: Fixes rejuvenate not removing jitteriness and dizziness
+2022-11-29:
+  AnCopper:
+  - spellcheck: Fixed some weird capitalisation.
+  Sleepynecrons:
+  - bugfix: fixed defender sprite not changing to steelcrest when purchased
+  ThePiachu:
+  - rscadd: Added more E-Z autoinjector sizes to medilathe. They now come with a single
+      shot each of 1, 5, 10, 15, 30, 45 and 60 units. Perfect for both large mixes
+      of healing chemicals as well as very tiny doses of low OD custom chems.
+  - rscdel: Elite Mercenary's Oxycodone Pressurized Reagent Canister Pouch now comes
+      with a 10x1 autoinjector rather than 10x3 to standardise how those E-Z autoinjectors
+      worked.
+  - code_imp: Refactored Autoinjector lathe recipe paths to be consistent with our
+      code style.
+  fira:
+  - code_imp: Refactored part of pixel placement calculations for beams.
+  - bugfix: Beams from/to xenos in particular should now properly attach to them visually.
+  kugamo:
+  - rscadd: Hosts about to chest burst wont play an ethereal sound to everyone, and
+      instead will scream uncontrollably.
+  - imageadd: Alien and Xenoid embryos now have unique sprites!
+  mullenpaul:
+  - refactor: gear vendors now use tgui
+  - refactor: complete rewrite of how vendors operate
+  theselfish:
+  - bugfix: Fixes various obj sprites (mess tech, provost, armorvest, detective, pilot
+      and some CLF armours) having directions.
+2022-11-30:
+  DexterDude:
+  - rscadd: Gives Maintenance Technicians, Cargo Technicians, and Mess Technicians
+      the rank of private if they have under 10 hours in the role
+  - rscadd: Gives Nurses the rank of Lance Corporal if they have under 10 hours in
+      the role
+  - balance: Changes the Senior Enlisted Advisor's endurance skill from 1 to 2
+  Mistfrag:
+  - bugfix: Fixed fireman carry having the same speed to pick someone up with regardless
+      of skill.
+  - refactor: 'Made mob_helpers easier to read.
+
+      :cl:'
+  Morrow:
+  - rscadd: Adds new trait "opiate receptor deficiency" which reduces potency of painkilling
+      effects.
+  - rscadd: Adds a trait point (now at two) for use in character creation.
+  - refactor: Refactors the poor eyesight preference into the trait system.
+  - spellcheck: Removes extraneous wording around robotic limb preferences.
+  NoKohi:
+  - bugfix: fixed missing access entries in airlock electronics and ID consoles
+  Segrain:
+  - bugfix: Examining papers properly shows their custom descriptions if present.
+  Shad0vvs:
+  - bugfix: Changed splint break sound from 100 to 20.
+  - bugfix: Consistency mapping fixes on Almayer for some floor markings and doors
+      of bravo and charlie prep.
+  ThePiachu:
+  - qol: More vendors vend their contents to user's hands.
+  - qol: Vending to user's hands prioritises active hand if it is empty.
+  - qol: The three main Requisitions vendors vend their items straight to the table
+      IF the dispensing person is in the correct spot. This should speed up Requisition
+      lines a bit!
+  - bugfix: Fixed a runtime error caused by APCs breaking down on their own.
+  ThePiachu, Triiodine:
+  - imageadd: Made the various Research-related papers a bit more visually distinct
+      from one another.
+  - qol: Research grants now delete themselves after they are cashed in.
+  - qol: Hydro trays now display their basic information when examined.
+  - qol: You can now rename mutated seeds by right-clicking on their packets. Should
+      come in very handy in Research!
+  - balance: Plant genes now tell you what they relate to for easier gene splicing
+      (CM isn't a botany-focused game, so we cut our Researchers some slack there!).
+  carlarctg:
+  - rscadd: Altered disarm flavor text depending on CQC skill.
+  - rscadd: Slightly increased disarm stun depending on CQC skill.
+  stanalbatross:
+  - bugfix: fixed some runtimes that were causing fancy storage items' examine text
+      to break, among other things.

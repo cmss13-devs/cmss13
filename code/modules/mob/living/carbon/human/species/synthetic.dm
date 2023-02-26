@@ -34,8 +34,8 @@
 	blood_color = "#EEEEEE"
 
 	has_organ = list(
-		"heart" =    /datum/internal_organ/heart/prosthetic,
-		"brain" =    /datum/internal_organ/brain/prosthetic,
+		"heart" = /datum/internal_organ/heart/prosthetic,
+		"brain" = /datum/internal_organ/brain/prosthetic,
 		)
 
 	knock_down_reduction = 5
@@ -44,16 +44,16 @@
 	acid_blood_dodge_chance = 35
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/synthetic/proc/toggle_HUD
+		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH))
+	H.set_languages(ALL_SYNTH_LANGUAGES)
 	GLOB.alive_human_list -= H
 	return ..()
 
-/datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
-	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, .proc/cancel_impregnate, TRUE)
+/datum/species/synthetic/apply_signals(mob/living/carbon/human/H)
+	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, PROC_REF(cancel_impregnate), TRUE)
 
 /datum/species/synthetic/proc/cancel_impregnate(datum/source)
 	SIGNAL_HANDLER
@@ -90,7 +90,7 @@
 	stun_reduction = 3.5
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/colonial/colonial_gen_two
@@ -111,7 +111,7 @@
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
 	uses_ethnicity = FALSE
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT)
 
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
@@ -133,8 +133,8 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 
-	knock_down_reduction = 5.0
-	stun_reduction = 5.0
+	knock_down_reduction = 5
+	stun_reduction = 5
 
 	inherent_verbs = null
 

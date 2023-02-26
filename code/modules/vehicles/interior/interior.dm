@@ -57,7 +57,7 @@
 	//special roles passenger slots, kept in datums
 	var/list/role_reserved_slots = list()
 
-/datum/interior/New(var/atom/E)
+/datum/interior/New(atom/E)
 	. = ..()
 
 	if(!E)
@@ -70,13 +70,13 @@
 	exterior = null
 
 	GLOB.interior_manager.unload_chunk(chunk_id)
-
+	entrance_markers = null
 	QDEL_NULL(interior_data)
 
 	return ..()
 
 // Use this proc to load the template back in
-/datum/interior/proc/create_interior(var/interior_map)
+/datum/interior/proc/create_interior(interior_map)
 	if(!isnull(interior_data))
 		return
 
@@ -174,15 +174,15 @@
 			if(!role_slot_taken)
 				passengers_taken_slots++
 
-		else if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
+		else if(isxeno(M))
+			var/mob/living/carbon/xenomorph/X = M
 			if(X.stat == DEAD)
 				continue
 			xenos_taken_slots++
 
 
 // Moves the atom to the interior
-/datum/interior/proc/enter(var/atom/movable/A, var/entrance_used)
+/datum/interior/proc/enter(atom/movable/A, entrance_used)
 	if(!ready)
 		return FALSE
 
@@ -244,7 +244,7 @@
 					to_chat(M, SPAN_WARNING("There's no more space inside!"))
 				return FALSE
 
-	else if(isXeno(M))
+	else if(isxeno(M))
 		if(M.stat != DEAD)
 			if(xenos_taken_slots < xenos_slots)
 				xenos_taken_slots++
@@ -270,7 +270,7 @@
 	return FALSE
 
 // Moves the atom to the exterior
-/datum/interior/proc/exit(var/atom/movable/A, var/turf/exit_turf)
+/datum/interior/proc/exit(atom/movable/A, turf/exit_turf)
 	if(!exit_turf)
 		exit_turf = get_turf(exterior)
 	if(!exit_turf)

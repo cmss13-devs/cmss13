@@ -21,8 +21,8 @@
 	src.glow_color = glow_color
 
 /datum/component/weed_damage_mult/RegisterWithParent()
-	RegisterSignal(parent, signal_damage_types, .proc/set_incoming_damage)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/check_for_filter)
+	RegisterSignal(parent, signal_damage_types, PROC_REF(set_incoming_damage))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(check_for_filter))
 
 	var/mob/M = parent
 	check_for_filter(M, M.loc, 0, FALSE)
@@ -32,7 +32,7 @@
 	var/mob/M = parent
 	M.remove_filter("weed_damage_mult")
 
-/datum/component/weed_damage_mult/proc/check_for_filter(var/mob/M, var/turf/oldloc, direction, forced)
+/datum/component/weed_damage_mult/proc/check_for_filter(mob/M, turf/oldloc, direction, forced)
 	SIGNAL_HANDLER
 
 	var/turf/T = M.loc
@@ -49,7 +49,7 @@
 	var/alpha = base_alpha*max(1-damage_mult, 0)
 	M.add_filter("weed_damage_mult", 3, list("type" = "outline", "color" = "[glow_color][num2text(alpha, 2, 16)]", "size" = 1))
 
-/datum/component/weed_damage_mult/proc/set_incoming_damage(var/mob/M, var/list/damages)
+/datum/component/weed_damage_mult/proc/set_incoming_damage(mob/M, list/damages)
 	SIGNAL_HANDLER
 	var/turf/T = get_turf(M)
 	if(!T)

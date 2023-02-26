@@ -1,7 +1,7 @@
 //Procedures in this file: Fracture repair surgery
 //Steps will only work in a surgery of /datum/surgery/bone_repair or a child of that due to affected_bone var.
 //////////////////////////////////////////////////////////////////
-//						BONE SURGERY							//
+// BONE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/bone_repair
@@ -12,7 +12,7 @@
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
 		/datum/surgery_step/mend_bones,
-		/datum/surgery_step/set_bones
+		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.
 
@@ -27,7 +27,7 @@
 			if("groin")
 				affected_bone = "pelvis"
 
-/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.status & LIMB_BROKEN
 
 //------------------------------------
@@ -124,8 +124,8 @@
 	desc = "set the bones"
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE
-		)
+		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
+	)
 	time = 4 SECONDS
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)

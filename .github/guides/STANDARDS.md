@@ -4,11 +4,39 @@ These are our code standards. They include information about how to properly wor
 
 As with the style guide, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this file!
 
-1. [General](#general)
-2. [Structural](#structural)
-3. [Optimization](#optimization)
-4. [BYOND Quirks](#dream-maker-quirks/tricks)
-5. [SQL](#sql)
+- [Code Standards](#code-standards)
+	- [General](#general)
+		- [Object Oriented Code](#object-oriented-code)
+		- [Avoid hacky code](#avoid-hacky-code)
+		- [Develop Secure Code](#develop-secure-code)
+		- [User Interfaces](#user-interfaces)
+		- [Dont override type safety checks](#dont-override-type-safety-checks)
+		- [Do not use text/string based type paths](#do-not-use-textstring-based-type-paths)
+		- [Other Notes](#other-notes)
+	- [Structural](#structural)
+		- [No duplicated code (Don't repeat yourself)](#no-duplicated-code-dont-repeat-yourself)
+		- [Prefer `Initialize()` over `New()` for atoms](#prefer-initialize-over-new-for-atoms)
+		- [Files](#files)
+		- [Use of `.proc/xyz` format for callback timers](#use-of-procxyz-format-for-callback-timers)
+		- [PROC\_REF Macros](#proc_ref-macros)
+		- [Signal Handlers](#signal-handlers)
+		- [Enforcing parent calling](#enforcing-parent-calling)
+		- [Avoid unnecessary type checks and obscuring nulls in lists](#avoid-unnecessary-type-checks-and-obscuring-nulls-in-lists)
+		- [All `process` procs need to make use of delta-time and be frame independent](#all-process-procs-need-to-make-use-of-delta-time-and-be-frame-independent)
+	- [Optimization](#optimization)
+		- [Startup/Runtime tradeoffs with lists and the "hidden" init proc](#startupruntime-tradeoffs-with-lists-and-the-hidden-init-proc)
+		- [Icons are for image manipulation and defining an obj's `.icon` var, appearances are for everything else.](#icons-are-for-image-manipulation-and-defining-an-objs-icon-var-appearances-are-for-everything-else)
+		- [Do not abuse associated lists.](#do-not-abuse-associated-lists)
+	- [Dream Maker Quirks/Tricks](#dream-maker-quirkstricks)
+		- [Loops](#loops)
+			- [In-To for-loops](#in-to-for-loops)
+			- [`for(var/A in list)` versus `for(var/i in 1 to list.len)`](#forvara-in-list-versus-forvari-in-1-to-listlen)
+		- [Dot variable (`.`)](#dot-variable-)
+			- [Exception: `. = ..()`](#exception---)
+			- [Exception: Runtime resilience](#exception-runtime-resilience)
+		- [The BYOND walk procs](#the-byond-walk-procs)
+		- [BYOND hellspawn](#byond-hellspawn)
+			- [Icon hell](#icon-hell)
 
 ## General
 
@@ -93,6 +121,52 @@ While we normally encourage (and in some cases, even require) bringing out of da
 * File names should not be mixed case, or contain spaces or any character that would require escaping in a uri.
 
 * Files and path accessed and referenced by code above simply being #included should be strictly lowercase to avoid issues on filesystems where case matters.
+
+### Use of `.proc/xyz` format for callback timers
+This is a simple one - as we will eventually move to 515, we will need to ditch this kind of callback. So please don't add any new ones. Make our lives easier.
+
+### PROC_REF Macros
+ When referencing procs in RegisterSignal, Callback and other procs you should use PROC_REF,TYPE_PROC_REF and GLOBAL_PROC_REF macros.
+ They ensure compilation fails if the reffered to procs change names or get removed.
+ The macro to be used depends on how the proc you're in relates to the proc you want to use:
+
+ PROC_REF if the proc you want to use is defined on the current proc type or any of it's ancestor types.
+ Example:
+ ```
+ /mob/proc/funny()
+ 	to_chat(world,"knock knock")
+
+ /mob/subtype/proc/very_funny()
+ 	to_chat(world,"who's there?")
+
+ /mob/subtype/proc/do_something()
+ 	// Proc on our own type
+ 	RegisterSignal(x, COMSIG_OTHER_FAKE, PROC_REF(very_funny))
+ 	// Proc on ancestor type, /mob is parent type of /mob/subtype
+ 	RegisterSignal(x, COMSIG_FAKE, PROC_REF(funny))
+ ```
+
+ TYPE_PROC_REF if the proc you want to use is defined on a different unrelated type
+ Example:
+ ```
+ /obj/thing/proc/funny()
+ 	to_chat(world,"knock knock")
+
+ /mob/subtype/proc/do_something()
+ 	var/obj/thing/x = new()
+ 	// we're referring to /obj/thing proc inside /mob/subtype proc
+ 	RegisterSignal(x, COMSIG_FAKE, TYPE_PROC_REF(/obj/thing, funny))
+ ```
+
+ GLOBAL_PROC_REF if the proc you want to use is a global proc.
+ Example:
+ ```
+ /proc/funny()
+ 	to_chat(world,"knock knock")
+
+ /mob/subtype/proc/do_something()
+ 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funny)), 100))
+ ```
 
 ### Signal Handlers
 

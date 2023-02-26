@@ -9,12 +9,15 @@
 
 	var/default_cape_type = "None"
 
-/datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H, var/client/mob_client)
+/datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H, client/mob_client)
 	H.set_species(SPECIES_YAUTJA)
+	H.ethnicity = "tan"
+	H.body_type = "pred" //can be removed in future for body types
 	if(!mob_client)
 		mob_client = H.client
 	if(mob_client?.prefs)
 		H.h_style = mob_client.prefs.predator_h_style
+		H.ethnicity = mob_client.prefs.predator_skin_color
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	H.job = rank
@@ -23,7 +26,7 @@
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
 	return //No vanity items for Yautja!
 
-/datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/H, var/client/mob_client)
+/datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/H, client/mob_client)
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1
@@ -65,7 +68,7 @@
 	if(ispath(cape_path))
 		H.equip_to_slot_or_del(new cape_path(H, cape_color), WEAR_BACK)
 
-/datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, randomise)
 	var/final_name = "Le'pro"
 	H.gender = MALE
 	H.age = 100
@@ -87,7 +90,7 @@
 	name = "Yautja Young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/yautja/youngblood/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/youngblood/load_name(mob/living/carbon/human/H, randomise)
 	. = ..()
 	var/new_name = "Young [H.real_name]"
 	H.change_real_name(H, new_name)
@@ -104,7 +107,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 
-/datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/H, randomise)
 	. = ..()
 	var/new_name = "Elite [H.real_name]"
 	H.change_real_name(H, new_name)
@@ -115,7 +118,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
 
-/datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, randomise)
 	. = ..()
 	var/new_name = "Elder [H.real_name]"
 	H.change_real_name(H, new_name)
@@ -130,7 +133,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
 
-/datum/equipment_preset/yautja/leader/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/leader/load_name(mob/living/carbon/human/H, randomise)
 	. = ..()
 	var/new_name = "Clan Leader [H.real_name]"
 	H.change_real_name(H, new_name)
@@ -145,7 +148,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
 
-/datum/equipment_preset/yautja/ancient/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/yautja/ancient/load_name(mob/living/carbon/human/H, randomise)
 	. = ..()
 	var/new_name = "Ancient [H.real_name]"
 	H.change_real_name(H, new_name)

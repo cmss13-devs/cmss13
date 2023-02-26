@@ -10,17 +10,19 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
+		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(H,pouch)
-	uniform.attach_accessory(H,patch)
+	uniform.attach_accessory(H,patch_uscm)
 	uniform.attach_accessory(H,pin)
+	uniform.attach_accessory(H,patch_forecon)
 	H.equip_to_slot_or_del(uniform, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
@@ -41,31 +43,32 @@
 /datum/equipment_preset/survivor/forecon/proc/add_forecon_weapon(mob/living/carbon/human/H)
 	var/random_gun = rand(1,3)
 	switch(random_gun)
-		if(1)
+		if(1 , 2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
-		if(2)
+		if(3)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/l42a(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l42a(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l42a(H), WEAR_IN_BACK)
-		if(3)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/forecon/add_survivor_weapon_pistol(mob/living/carbon/human/H)
 	return
 
 /datum/equipment_preset/survivor/forecon/proc/add_forecon_weapon_pistol(mob/living/carbon/human/H)
-	var/random_pistol = rand(1,3)
+	var/random_pistol = rand(1,5)
 	switch(random_pistol)
 		if(1 , 2)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(H), WEAR_IN_BELT)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BELT)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BELT)
-		if(3)
+		if(3 , 4)
+			H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39, WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(H), WEAR_IN_BACK)
+		if(5)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H),WEAR_WAIST)
 
 /datum/equipment_preset/survivor/forecon/add_random_survivor_equipment(mob/living/carbon/human/H)
@@ -82,7 +85,7 @@
 		if(3)
 			H.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes(H), WEAR_IN_ACCESSORY)
 
-/datum/equipment_preset/survivor/forecon/proc/spawn_random_headgear(var/mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/forecon/proc/spawn_random_headgear(mob/living/carbon/human/H)
 	var/i = rand(1,10)
 	switch(i)
 		if (1 , 2)
@@ -151,7 +154,7 @@
 /datum/equipment_preset/survivor/forecon/smartgunner
 	name = "Survivor - USCM Reconnaissance Smartgunner"
 	assignment = "Reconnaissance Smartgunner"
-	skills = 	/datum/skills/military/survivor/forecon_smartgunner
+	skills = /datum/skills/military/survivor/forecon_smartgunner
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
@@ -168,7 +171,7 @@
 
 /datum/equipment_preset/survivor/forecon/grenadier
 	name = "Survivor - USCM Reconnaissance Grenadier"
-	assignment = "Reconnaissance Genadier"
+	assignment = "Reconnaissance Grenadier"
 	skills = /datum/skills/military/survivor/forecon_grenadier
 
 /datum/equipment_preset/survivor/forecon/grenadier/load_gear(mob/living/carbon/human/H)
@@ -194,10 +197,12 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o1/pin = new()
-	var/obj/item/clothing/accessory/patch/patch = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(H,pouch)
-	uniform.attach_accessory(H,patch)
+	uniform.attach_accessory(H,patch_uscm)
 	uniform.attach_accessory(H,pin)
+	uniform.attach_accessory(H,patch_forecon)
 	H.equip_to_slot_or_del(uniform, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/slugs(H), WEAR_L_HAND)
@@ -219,11 +224,13 @@
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
-	var/obj/item/clothing/accessory/ranks/marine/o5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch = new()
+	var/obj/item/clothing/accessory/ranks/marine/o4/pin = new()
+	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(H,pouch)
-	uniform.attach_accessory(H,patch)
+	uniform.attach_accessory(H,patch_uscm)
 	uniform.attach_accessory(H,pin)
+	uniform.attach_accessory(H,patch_forecon)
 	H.equip_to_slot_or_del(uniform, WEAR_BODY)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba(H), WEAR_WAIST)

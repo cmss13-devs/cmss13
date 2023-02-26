@@ -5,8 +5,9 @@
 	- [Introduction](#introduction)
 	- [Getting Started](#getting-started)
 	- [Meet the Team](#meet-the-team)
-		- [Head Developer and Project Manager](#head-developer-and-project-manager)
+		- [Head Maintainer and Project Manager](#head-maintainer-and-project-manager)
 		- [Maintainers](#maintainers)
+		- [Staff Tools and Major Rule changing PR’s](#staff-tools-and-major-rule-changing-prs)
 		- [Issue Managers](#issue-managers)
 	- [Issues Tracker](#issues-tracker)
 	- [Development Guides](#development-guides)
@@ -17,6 +18,14 @@
 	- [Pull Request Process](#pull-request-process)
 	- [Good Boy Points](#good-boy-points)
 	- [Porting features/sprites/sounds/tools from other codebases](#porting-featuresspritessoundstools-from-other-codebases)
+	- [Things you can work on](#things-you-can-work-on)
+		- [Spriting](#spriting)
+		- [Mapping](#mapping)
+		- [Coding](#coding)
+	- [What we don't want](#what-we-dont-want)
+		- [Spriting](#spriting-1)
+		- [Mapping](#mapping-1)
+		- [Coding](#coding-1)
 	- [Banned content](#banned-content)
 
 ## Reporting Issues
@@ -43,9 +52,9 @@ You can of course, as always, ask for help on the Discord channels or the forums
 
 ## Meet the Team
 
-### Head Developer and Project Manager
+### Head Maintainer and Project Manager
 
-The Head Developer and Project Manager are responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
+The Head Maintainer and Project Manager are responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
 
 ### Maintainers
 
@@ -64,12 +73,20 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
+- Do not merge PRs that contain balance changes without GA approval. Exceptions include:
+  - Any PR that has been un-reviewed by a GA for 7 days.
+- Do not remove the DNM label that another Maintainer has applied. Exceptions include:
+  - GAs removing a DNM label placed by a Maintainer for Balance/Design reasons
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 
 Our team is entirely voluntary, as such we extend our thanks to maintainers, issue managers, and contributors alike for helping keep the project alive.
 
 </details>
+
+### Staff Tools and Major Rule changing PR’s
+
+PR’s that affect staff tools/major rules rewrite (adding/removing/editing etc.) requires certain Head Staff oversight and can be blocked from being merged. The Head Maintainer must be informed about why so a discussion can be had. The Host makes a final decision if the PR is to be merged after changes have been implemented stemming from the discussion.
 
 ### Issue Managers
 
@@ -81,12 +98,12 @@ Issue Managers help out the project by labelling bug reports and PRs and closing
 This should help you understand what you can and can't do with your newfound github permissions.
 
 Things you **CAN** do:
-* Label issues appropriately
-* Close issues when appropriate
+- Label issues appropriately
+- Close issues when appropriate
 
 Things you **CAN'T** do:
-* Close PRs: Only maintainers are allowed to close PRs. Do not hit that button.
-* Label PRs, leave that for maintainers to handle.
+- Close PRs: Only maintainers are allowed to close PRs. Do not hit that button.
+- Label PRs, leave that for maintainers to handle.
 
 </details>
 
@@ -139,7 +156,19 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality *before* you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
 
-* After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
+* After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
+
+### A note on balance review and PR denial
+
+Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow. As such, they are subject to another level of review known as "balance review".
+
+* Any gameplay architect may balance review PRs, after the PR has been open for 7 days without architect review any normal maintainer may balance review it.
+
+* In the process of architect review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
+
+* It should go without saying that denied PRs may not be reopened or remade without changes and prior approval.
+
+* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with an architect or maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
 
 ## Good Boy Points
 
@@ -161,7 +190,73 @@ If you are porting features/tools from other codebases, you must give them credi
 
 Regarding sprites & sounds, you must credit the artist and possibly the codebase.
 
+## Things you can work on
+The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
+
+### Spriting
+
+- Replacements of legacy Bay12 sprites
+- Strain specific designs for Aliens for ones that lack them
+- Alternative Alien sprite sets
+- Icon sheet sorting styled after firearms sheets
+- New cosmetic loadout items, such as additional helmet garb
+- Custom tilesets for maps that don’t have them
+- Map specific props and details
+- Map specific Colonist uniforms and equipment
+- Additional HUD styles
+- Bug fixes and inconsistency fixes
+
+
+### Mapping
+- Nightmare inserts
+- Object placement quality of life improvements (such as widening hallways and combat lanes cluttered with props)
+- Extra map detailing (so long as it doesn’t negatively impact performance)
+- Removal of dead-ends or gameplay dead-space on existing maps
+- New maps*
+- Bug fixes and inconsistency fixes
+
+**A note on new maps.**
+Entirely new maps are generally considered to be stepping stones into the Development team’s mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
+
+
+### Coding
+- Quality of life improvements that don’t impact gameplay, but improve it
+- Latency optimizations and improvements
+- Backend system refactors that improve server stability or performance
+- Minor features that don’t impact the overall round loop
+- Content for jobs currently lacking in it
+- Anything on the public task-board
+- New Alien strains
+- Bay12 legacy feature removal (such as wizard backend, laser eyes, etc)
+- Map specific survivor loadouts
+- Bug fixes and inconsistency fixes
+- New TGUI
+
+## What we don't want
+The following list is non-exhaustive, but should give you a good idea of what the dev team don't want to see in Pull Requests.
+
+### Spriting
+- Resprites of recently updated content, such as uniforms, guns, marine armor
+- Donor item adjustments or changes
+- Joke sprites
+- Tacticool equipment and gear. We’re retro-future (or cassette punk if you will).
+
+### Mapping
+- Nightmare inserts with ridiculous loot or ones that are out of place (don’t put snow on LV, for example)
+- Additional detailing that degrades arena space or hinders gameplay in any sort of way
+- Event or unused maps
+
+### Coding
+- No additional species or races, even Arcturians
+- No new whitelists
+- NanoUI
+- Player-facing HTML UIs
+- Prior denied content/PRs (without approval)
+
+Remember that the following lists are not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:
+* Any content that adds a specific character played by or reference to a single player, contributor, staff member, or maintainer.
+For example, a PR that adds a blue crab named after a staff member’s username is not permitted, as it directly references a specific individual.
 * Code which violates GitHub's [terms of service](https://github.com/site/terms).

@@ -1,7 +1,7 @@
-#define VISION_MODE_OFF		0
-#define VISION_MODE_NVG		1
-#define VISION_MODE_THERMAL	2
-#define VISION_MODE_MESON	3
+#define VISION_MODE_OFF 0
+#define VISION_MODE_NVG 1
+#define VISION_MODE_THERMAL 2
+#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
@@ -26,7 +26,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|BLOCKSHARPOBJ
@@ -34,13 +34,14 @@
 	flags_item = ITEM_PREDATOR
 	filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 	gas_filter_strength = 3
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	var/current_goggles = VISION_MODE_OFF
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
 	time_to_unequip = 20
 	anti_hug = 5
 	fire_intensity_resistance = 10
+	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
 
@@ -56,23 +57,9 @@
 	icon_state = "pred_mask[mask_number]_[armor_material]"
 
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
-	if(elder_restricted) //Not possible for non-elders.
-		switch(mask_number)
-			if(1341)
-				name = "\improper 'Mask of the Dragon'"
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
-			if(7128)
-				name = "\improper 'Mask of the Swamp Horror'"
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
-			if(4879)
-				name = "\improper 'Mask of the Ambivalent Collector'"
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -201,6 +188,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	eye_protection = EYE_PROTECTION_WELDING
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
@@ -208,7 +196,7 @@
 	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
-	if(!isYautja(usr))
+	if(!isyautja(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	..()

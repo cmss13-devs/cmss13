@@ -1,7 +1,7 @@
 //Procedures in this file: Opening and closing incisions. Clamping bleeds. Opening and closing ribcage/skull etc., proof of concept do-nothing non-human surgery.
 
 //////////////////////////////////////////////////////////////////
-//						INCISION SURGERIES						//
+// INCISION SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_incision
@@ -13,7 +13,7 @@
 	steps = list(
 		/datum/surgery_step/incision,
 		/datum/surgery_step/clamp_bleeders_step,
-		/datum/surgery_step/retract_skin
+		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE
 	self_operable = TRUE
@@ -120,7 +120,7 @@
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
-/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/effects/bleeding/external/B in L.bleeding_effects_list)
 		return TRUE
 	return FALSE
@@ -135,12 +135,12 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		)
+	)
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
 
-datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This step is optional.
 
 /datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -335,7 +335,7 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 	return FALSE
 
 //////////////////////////////////////////////////////////////////
-//						BONE-OPENING SURGERIES					//
+// BONE-OPENING SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_encased
@@ -346,7 +346,7 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -363,11 +363,11 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 		/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE
-		)
+		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+	)
 	time = 4 SECONDS
 
-datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
 	if(affecting.status & LIMB_BROKEN)
 		return TRUE //Don't need the saw if it's already fractured.
@@ -425,7 +425,7 @@ datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/ta
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 
-datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -478,7 +478,7 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -589,7 +589,7 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/
 //////////////////////////////////////////////////////////////////
-//						NONHUMAN SURGERIES						//
+// NONHUMAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 /*
 /datum/surgery/open_test_incision
@@ -601,7 +601,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/test_incision)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
@@ -659,8 +659,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 3 SECONDS
 
 /datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -705,7 +705,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	self_operable = TRUE
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 //------------------------------------

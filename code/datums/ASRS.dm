@@ -3,29 +3,16 @@
 //Note these should never show up to buy and some will only show up later in the round.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //We use the cost to determine the spawn chance this equals out the crates that spawn later in the round.
-#define ASRS_HIGHEST_WEIGHT		0 //warning this weight wont change.
-#define ASRS_VERY_HIGH_WEIGHT	5
-#define ASRS_HIGH_WEIGHT		15
-#define ASRS_MEDIUM_WEIGHT		25
-#define ASRS_LOW_WEIGHT			35
-#define ASRS_VERY_LOW_WEIGHT	50
-#define ASRS_LOWEST_WEIGHT		100
+#define ASRS_HIGHEST_WEIGHT 0 //warning this weight wont change.
+#define ASRS_VERY_HIGH_WEIGHT 5
+#define ASRS_HIGH_WEIGHT 15
+#define ASRS_MEDIUM_WEIGHT 25
+#define ASRS_LOW_WEIGHT 35
+#define ASRS_VERY_LOW_WEIGHT 50
+#define ASRS_LOWEST_WEIGHT 100
 
-/datum/supply_packs/gun/ammo_hpr/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
-
-/datum/supply_packs/ammo_rounds_box_smg/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_MEDIUM_WEIGHT
-
-/datum/supply_packs/ammo_rounds_box_smg_ap/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOW_WEIGHT
-
+//===================================
+// Rounds
 /datum/supply_packs/ammo_rounds_box_rifle/asrs
 	buyable = 0
 	group = "ASRS"
@@ -41,6 +28,13 @@
 	group = "ASRS"
 	cost = ASRS_LOW_WEIGHT
 
+//===================================
+// Magazines
+/datum/supply_packs/gun/ammo_hpr/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOWEST_WEIGHT
+
 /datum/supply_packs/ammo_m4a3_mag_box/asrs
 	buyable = 0
 	group = "ASRS"
@@ -50,15 +44,6 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_smg_mag_box/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_smg_mag_box_ap/asrs
-	buyable = 0
-	group = "ASRS"
 
 /datum/supply_packs/ammo_mag_box/asrs
 	buyable = 0
@@ -97,16 +82,6 @@
 	buyable = 0
 	group = "ASRS"
 
-/datum/supply_packs/ammo_sentry/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_sentry_flamer/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
 /datum/supply_packs/ammo_napalm/asrs
 	buyable = 0
 	group = "ASRS"
@@ -121,7 +96,6 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
-
 
 //===================================
 // Mortar ammo
@@ -138,13 +112,23 @@
 	group = "ASRS"
 
 //===================================
-//speciality armor
-/datum/supply_packs/armor_leader/asrs
+// Misc supplies
+/datum/supply_packs/flares/asrs
 	buyable = 0
 	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
-/datum/supply_packs/armor_rto/asrs
+/datum/supply_packs/mre/asrs
 	buyable = 0
 	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/flashlights/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/batteries/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT

@@ -74,12 +74,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -106,6 +106,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
+
+/datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
+	name = "Tail Seize"
+	action_icon_state = "tail_seize"
+	ability_name = "tail seize"
+	action_type = XENO_ACTION_CLICK
+	charge_time = 0.5 SECONDS
+	xeno_cooldown = 15 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
 	action_icon_state = "abduct"
@@ -268,8 +278,8 @@
 
 	// Configurable options
 
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 7 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 7 // Distance to spray
 
 	activation_delay = TRUE
 	activation_delay_length = 5
@@ -309,13 +319,13 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	var/action_icon_result
 
 	if(!X.check_state(1))

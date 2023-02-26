@@ -15,7 +15,7 @@
 
 /datum/component/nmnode_cond/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_NIGHTMARE_APPLYING_NODE, .proc/check_for_cond)
+	RegisterSignal(parent, COMSIG_NIGHTMARE_APPLYING_NODE, PROC_REF(check_for_cond))
 
 /datum/component/nmnode_cond/UnregisterFromParent()
 	. = ..()
@@ -37,7 +37,7 @@
 /datum/element/nmnode_prob/Attach(target, probvalue)
 	. = ..()
 	src.probvalue = probvalue
-	RegisterSignal(target, COMSIG_NIGHTMARE_APPLYING_NODE, .proc/check_prob)
+	RegisterSignal(target, COMSIG_NIGHTMARE_APPLYING_NODE, PROC_REF(check_prob))
 
 /datum/element/nmnode_prob/Detach(datum/source, force)
 	. = ..()

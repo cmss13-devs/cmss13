@@ -7,9 +7,9 @@
 	. = ..()
 	if(!is_type_in_list(target, compatible_types))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMSIG_MOVABLE_PRE_THROW, .proc/cancel_throw)
-	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/dropped)
-	RegisterSignal(target, COMSIG_DROP_RETRIEVAL_CHECK, .proc/dr_check)
+	RegisterSignal(target, COMSIG_MOVABLE_PRE_THROW, PROC_REF(cancel_throw))
+	RegisterSignal(target, COMSIG_ITEM_DROPPED, PROC_REF(dropped))
+	RegisterSignal(target, COMSIG_DROP_RETRIEVAL_CHECK, PROC_REF(dr_check))
 
 /datum/element/drop_retrieval/Detach(datum/source, force)
 	UnregisterSignal(source, list(
@@ -38,7 +38,7 @@
 	compatible_types = list(/obj/item/weapon/gun)
 	var/retrieval_slot
 
-/datum/element/drop_retrieval/gun/Attach(datum/target, var/slot)
+/datum/element/drop_retrieval/gun/Attach(datum/target, slot)
 	. = ..()
 	if(.)
 		return

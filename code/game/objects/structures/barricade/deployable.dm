@@ -17,7 +17,7 @@
 	anchored = TRUE
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
-	var/source_type = /obj/item/stack/folding_barricade	//had to add this here, cause mapped in porta cades were unfoldable.
+	var/source_type = /obj/item/stack/folding_barricade //had to add this here, cause mapped in porta cades were unfoldable.
 
 /obj/structure/barricade/deployable/get_examine_text(mob/user)
 	. = ..()
@@ -103,7 +103,7 @@
 		user.put_in_active_hand(FB)
 	qdel(src)
 
-/obj/structure/barricade/deployable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/deployable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if(PF)
 		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB

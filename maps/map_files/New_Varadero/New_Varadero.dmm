@@ -11180,7 +11180,7 @@
 "jNT" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/table/woodentable,
-/obj/item/staff/stick{
+/obj/item/weapon/melee/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
 	icon = 'icons/obj/items/items.dmi';

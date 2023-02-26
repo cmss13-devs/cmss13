@@ -40369,7 +40369,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/staff/gentcane{
+/obj/item/weapon/melee/pole/fancy_cane{
 	pixel_x = 5
 	},
 /turf/open/floor/wood/ship,

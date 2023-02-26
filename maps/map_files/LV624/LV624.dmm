@@ -17278,6 +17278,11 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
+"jZp" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/caves/south_west_caves)
 "jZL" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/jungle/clear,
@@ -18855,6 +18860,13 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/jungle/clear,
 /area/lv624/ground/jungle/west_central_jungle)
+"nuc" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/barrens/south_west_barrens)
 "nuU" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/jungle/clear,
@@ -19510,13 +19522,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
-"oAr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv624/ground/caves/south_west_caves)
 "oAD" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -20338,6 +20343,13 @@
 "pUm" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east_caves)
+"pWo" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/caves/south_west_caves)
 "pXI" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/jungle/clear,
@@ -34744,7 +34756,7 @@ ane
 ane
 rDO
 rDO
-oAr
+vFe
 gUa
 nfN
 hBN
@@ -34970,7 +34982,7 @@ afJ
 ane
 ubN
 hjk
-hjk
+pWo
 rDO
 tGj
 xiE
@@ -35203,7 +35215,7 @@ flj
 xiE
 iTG
 iTG
-iTG
+jZp
 ane
 ane
 ane
@@ -36351,7 +36363,7 @@ dCZ
 iNB
 gVb
 izP
-qdO
+nuc
 cRT
 fEU
 izP

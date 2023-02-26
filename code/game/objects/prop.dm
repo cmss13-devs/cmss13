@@ -45,3 +45,38 @@
 	icon_state = "redwhiteflowers"
 	desc = "A flower vase filled with red and white roses."
 
+/obj/item/prop/colony/usedbandage
+	name = "dirty bandages"
+	desc = "Some used gauze."
+	icon_state = "bandages_prop"
+	icon = 'icons/monkey_icos.dmi'
+
+/obj/item/prop/colony/folded_bedroll
+	name = "folded bedroll"
+	desc = "a folded up bedroll"
+	icon_state = "bedroll"
+	icon = 'icons/monkey_icos.dmi'
+
+/obj/item/prop/colony/used_flare
+	name = "flare"
+	desc = "A used USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
+	icon_state = "flare-empty"
+	icon = 'icons/obj/items/lighting.dmi'
+
+/obj/item/prop/colony/canister
+	name = "fuel can"
+	desc = "A jerry can. In space! Or maybe a colony."
+	icon_state = "canister"
+	icon = 'icons/obj/items/tank.dmi' 
+	
+/obj/item/prop/colony/proptag
+	name = "information dog tag"
+	desc = "A fallen marine's information dog tag. It reads,(BLANK)"
+	icon_state = "dogtag_taken"
+	icon = 'icons/obj/items/card.dmi'
+
+/obj/item/prop/colony/game
+	name = "portable game kit"
+	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
+	icon_state = "game_kit"
+	icon = 'icons/obj/items/items.dmi'

@@ -418,8 +418,8 @@
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/reconnaissance
-	name = "USCM reconnaissance uniform"
-	desc = "Primarily used during reconnaissance."
+	name = "\improper USCM uniform"
+	desc = "Torn, Burned and blood stained. This uniform has seen much more than you could possibly imagine."
 	icon_state = "recon_marine"
 	worn_state = "recon_marine"
 	flags_atom = NO_SNOW_TYPE

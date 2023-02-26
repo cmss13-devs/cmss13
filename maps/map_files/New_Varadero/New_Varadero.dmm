@@ -13287,7 +13287,7 @@
 "lEB" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/item/clothing/accessory/medal/gold/captain,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},

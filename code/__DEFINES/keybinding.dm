@@ -57,7 +57,11 @@
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
 
-#define COMSIG_KG_HUMAN_PICK_UP "keybinding_human_pick_up"
+#define COMSIG_KB_HUMAN_PICK_UP "keybinding_human_pick_up"
+
+#define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
+
+#define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"

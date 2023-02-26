@@ -23,7 +23,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable
 	name = "attachable item"
 	desc = "It's the very theoretical concept of an attachment. You should never see this."
-	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = null
 	item_state = null
 	var/attach_icon //the sprite to show when the attachment is attached when we want it different from the icon_state.
@@ -249,7 +249,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor
 	name = "suppressor"
-	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
+	desc = "A small tube with exhaust ports to expel noise and gas.\n Does not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "suppressor"
 	slot = "muzzle"
 	pixel_shift_y = 15
@@ -269,12 +270,12 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 	damage_falloff_mod = 0.4
 
-/obj/item/attachable/suppressor/m40_integral
-	name = "\improper M40SD integral suppressor"
+/obj/item/attachable/suppressor/xm40_integral
+	name = "\improper XM40 integral suppressor"
 	icon_state = "m40sd_suppressor"
 	attach_icon = "m40sd_suppressor_a"
 
-/obj/item/attachable/suppressor/m40_integral/New()
+/obj/item/attachable/suppressor/xm40_integral/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
@@ -287,6 +288,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet
 	name = "\improper M5 'Night Raider' bayonet"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "bayonet"
 	item_state = "combat_knife"
 	desc = "The standard-issue bayonet of the Colonial Marines. You can slide this knife into your boots, or attach it to the end of a rifle."
@@ -377,6 +379,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "extended barrel"
 	desc = "The lengthened barrel speeds up and stabilizes the bullet, increasing velocity and accuracy."
 	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "ebarrel"
 	attach_icon = "ebarrel_a"
 	hud_offset_mod = -3
@@ -390,6 +393,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "barrel charger"
 	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
 	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "hbarrel"
 	attach_icon = "hbarrel_a"
 	hud_offset_mod = -3
@@ -413,6 +417,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "recoil compensator"
 	desc = "A muzzle attachment that reduces recoil by diverting expelled gasses upwards. \nIncreases accuracy and reduces recoil, at the cost of a small amount of weapon damage."
 	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "comp"
 	attach_icon = "comp_a"
 	pixel_shift_x = 17
@@ -431,6 +436,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/slavicbarrel
 	name = "sniper barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "slavicbarrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
@@ -447,6 +453,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/sniperbarrel
 	name = "sniper barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "sniperbarrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
@@ -460,6 +467,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m60barrel
 	name = "M60 barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "m60barrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
@@ -473,6 +481,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mar50barrel
 	name = "MAR-50 barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "mar50barrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
@@ -486,6 +495,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "m56_barrel"
 	desc = "The very end of the M56 smart gun, featuring a compensator. CANNOT BE REMOVED."
 	slot = "muzzle"
@@ -497,6 +507,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba
 	name = "standard mateba barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "mateba_medium"
 	desc = "A standard mateba barrel. Offers a balance between accuracy and fire rate."
 	slot = "special"
@@ -561,6 +572,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
 	desc = "An ARMAT S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
 	slot = "rail"
@@ -574,6 +586,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
 	desc = "An ARMAT S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reflex"
 	attach_icon = "reflex_a"
 	slot = "rail"
@@ -590,6 +603,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
 	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
 	attach_icon = "flashlight_a"
 	light_mod = 7
@@ -712,6 +726,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/grip //Grip Light is here because it is a child object. Having it further down might cause a future coder a headache.
 	name = "underbarrel flashlight grip"
 	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "flashgrip"
 	attach_icon = "flashgrip_a"
 	slot = "under"
@@ -732,6 +747,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
 	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "magnetic"
 	attach_icon = "magnetic_a"
 	slot = "rail"
@@ -760,6 +776,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/magnetic_harness/lever_sling
 	name = "R4T magnetic sling" //please don't make this attachable to any other guns...
 	desc = "A custom sling designed for comfortable holstering of a 19th century lever action rifle, for some reason. Contains magnets specifically built to make sure the lever-action rifle never drops from your back, however they somewhat get in the way of the grip."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "r4t-sling"
 	attach_icon = "r4t-sling_a"
 	slot = "under"
@@ -794,6 +811,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "sniperscope"
 	attach_icon = "sniperscope_a"
 	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
@@ -925,7 +943,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/variable_zoom/slavic
 	icon_state = "slavicscope"
 	attach_icon = "slavicscope"
-	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
+	desc = "Oppa! Why did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 /obj/item/attachable/scope/variable_zoom/eva
 	name = "RXF-M5 EVA telescopic variable scope"
@@ -979,11 +997,11 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8
 	delay_scoped_nerf = FIRE_DELAY_TIER_8
 
-/obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
+/obj/item/attachable/scope/mini/hunting
 	name = "2x hunting mini-scope"
 	icon_state = "huntingscope"
 	attach_icon = "huntingscope"
-	desc = "While the Basira-Armstrong rifle is compatible with most telescopic devices, its accompanying scope is usable only with the Basira-Armstrong. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "This civilian-grade scope is a common sight on hunting rifles due to its cheap price and great optics. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
 /obj/item/attachable/scope/mini/nsg23
 	name = "W-Y S4 2x advanced telescopic mini-scope"
@@ -1009,7 +1027,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle and M44 Combat Revolver."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -1105,6 +1123,9 @@ Defined in conflicts.dm of the #defines folder.
 		var/datum/action/A = X
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()
+
+/obj/item/attachable/stock
+	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
@@ -1392,7 +1413,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M16 bump stock"
 	desc = "Technically illegal in the state of California."
 	icon_state = "m16_stock"
-	attach_icon = "m16_stock_a"
+	attach_icon = "m16_stock"
 	wield_delay_mod = WIELD_DELAY_MIN
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
@@ -1404,7 +1425,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper AR10 wooden stock"
 	desc = "The spring's in here, don't take it off!"
 	icon_state = "ar10_stock"
-	attach_icon = "ar10_stock_a"
+	attach_icon = "ar10_stock"
 	wield_delay_mod = WIELD_DELAY_MIN
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
@@ -1471,6 +1492,25 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
+/obj/item/attachable/stock/carbine/wood
+	name = "\improper ABR-40 \"wooden\" stock"
+	desc = "The default \"wooden\" stock for the ABR-40 hunting rifle, the civilian version of the military L42A battle rifle. Theoretically compatible with an L42. Wait, did you just take the stock out of a weapon with no grip...? Great job, genius."
+	icon_state = "abr40stock"
+	attach_icon = "abr40stock_a"
+	melee_mod = 6
+	wield_delay_mod = WIELD_DELAY_FAST
+
+/obj/item/attachable/stock/carbine/wood/Initialize() // The gun is meant to be effectively unusable without the attachment.
+	..()
+	accuracy_mod = (HIT_ACCURACY_MULT_TIER_6) + HIT_ACCURACY_MULT_TIER_10
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = (-SCATTER_AMOUNT_TIER_8) - SCATTER_AMOUNT_TIER_5
+
+/obj/item/attachable/stock/carbine/wood/tactical
+	name = "\improper ABR-40 tactical stock"
+	desc = "An ABR-40 stock with a sleek paintjob. Wait, did you just take the stock out of a weapon with no grip...? Great job, genius."
+	icon_state = "abr40stock_tac"
+	attach_icon = "abr40stock_tac_a"
 
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"
@@ -1734,7 +1774,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/nsg23
 	name = "NSG 23 stock"
-	desc = "If you can read this, someone screwed up. Go Gitlab this and bug a coder."
+	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
 	icon_state = "nsg23_stock"
 	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_NONE
@@ -1748,6 +1788,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	attachment_action_type = /datum/action/item_action/toggle
 	// Some attachments may be fired. So here are the variables related to that.
 	/// Ammo to fire the attachment with
@@ -2309,6 +2350,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"
 	desc = "A vertical foregrip that offers better accuracy, less recoil, and less scatter, especially during burst fire. \nHowever, it also increases weapon size."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "verticalgrip"
 	attach_icon = "verticalgrip_a"
 	size_mod = 1
@@ -2329,6 +2371,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/angledgrip
 	name = "angled grip"
 	desc = "An angled foregrip that improves weapon ergonomics and offers less recoil, and faster wielding time. \nHowever, it also increases weapon size."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "angledgrip"
 	attach_icon = "angledgrip_a"
 	wield_delay_mod = -WIELD_DELAY_FAST
@@ -2349,6 +2392,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/gyro
 	name = "gyroscopic stabilizer"
 	desc = "A set of weights and balances to stabilize the weapon when fired with one hand. Slightly decreases firing speed."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "gyro"
 	attach_icon = "gyro_a"
 	slot = "under"
@@ -2373,6 +2417,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/lasersight
 	name = "laser sight"
 	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy and decreases scatter, especially while one-handed."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "lasersight"
 	attach_icon = "lasersight_a"
 	slot = "under"
@@ -2391,6 +2436,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod
 	name = "bipod"
 	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing. \nGreatly increases accuracy and reduces recoil when properly placed, but also increases weapon size and slows firing speed."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "bipod"
 	attach_icon = "bipod_a"
 	slot = "under"
@@ -2545,6 +2591,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"
 	desc = "A small angled piece of fine machinery that increases the burst count on some weapons, and grants the ability to others. \nIncreases weapon scatter."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "rapidfire"
 	attach_icon = "rapidfire_a"
 	slot = "under"
@@ -2559,6 +2606,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/eva_doodad
 	name = "RXF-M5 EVA beam projector"
 	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "rxfm5_eva_doodad"
 	attach_icon = "rxfm5_eva_doodad_a"
 	slot = "under"

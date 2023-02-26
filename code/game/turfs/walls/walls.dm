@@ -383,6 +383,11 @@
 		place_poster(W,user)
 		return
 
+	if(istype(W, /obj/item/prop/torch_frame))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
+		new /obj/structure/prop/brazier/torch/frame(src)
+		qdel(W)
+
 	if(hull)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 		return

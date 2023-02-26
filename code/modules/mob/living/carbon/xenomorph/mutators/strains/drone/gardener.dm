@@ -1,6 +1,7 @@
 /datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
-	description = "You trade your choice of resin secretions, your corrosive acid, and the ability to transfer plasma for the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
+	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
+	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
@@ -29,6 +30,7 @@
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
+	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 	mutator_update_actions(drone)
 	apply_behavior_delegate(drone)
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
@@ -37,7 +39,6 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			break // Don't need to keep looking
 	mutator_set.recalculate_actions(description, flavor_description)
-	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"

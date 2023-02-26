@@ -116,7 +116,9 @@
 
 	shake_camera(living_mob, 3, 4)
 	knockback_effects(living_mob, fired_projectile)
+	slam_back(living_mob, fired_projectile)
 
+/datum/ammo/proc/slam_back(mob/living/living_mob, obj/item/projectile/fired_projectile)
 	//Either knockback or slam them into an obstacle.
 	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
 	if(!direction) //Same tile.
@@ -139,15 +141,15 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
-/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, max_range = 2)
-	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
+/datum/ammo/proc/pushback(mob/target_mob, obj/item/projectile/fired_projectile, max_range = 2)
+	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.lying)
 		return
 
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(target_mob.mob_size >= MOB_SIZE_BIG)
 		return //too big to push
 
-	to_chat(M, isxeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
-	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))
+	to_chat(target_mob, isxeno(target_mob) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	slam_back(target_mob, fired_projectile, max_range)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
 	if(!target || !P) return
@@ -982,10 +984,16 @@
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
 	damage = 30
+	var/holo_stacks = 10
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+
+/datum/ammo/bullet/rifle/holo_target/hunting
+	name = "holo-targeting hunting bullet"
+	damage = 25
+	holo_stacks = 15
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
@@ -1407,6 +1415,7 @@
 	bonus_projectiles_amount = 0
 	accurate_range = 4
 	max_range = 5 //make use of the ablaze property
+	shell_speed = AMMO_SPEED_TIER_4 // so they hit before the main shell stuns
 
 
 /datum/ammo/bullet/shotgun/heavy/slug
@@ -1692,6 +1701,65 @@
 	burst(T,P,damage_type, 1 , 2, 0)
 	return 1
 
+/datum/ammo/bullet/sniper/crude
+	name = "crude sniper bullet"
+
+/datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	pushback(M, P, 3)
+
+/datum/ammo/bullet/sniper/anti_materiel
+	name = "anti-materiel sniper bullet"
+
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
+	accuracy = HIT_ACCURACY_TIER_8
+	damage = 125
+	shell_speed = AMMO_SPEED_TIER_6
+
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
+		var/mob/living/L = M
+		var/size_damage_mod = 0.8
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.6
+			if(target.mob_size >= MOB_SIZE_BIG)
+				size_damage_mod += 0.6
+		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/elite
+	name = "supersonic sniper bullet"
+
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
+	accuracy = HIT_ACCURACY_TIER_8
+	damage = 150
+	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/sniper/elite/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
+		var/mob/living/L = M
+		var/size_damage_mod = 0.5
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.5
+			if(target.mob_size >= MOB_SIZE_BIG)
+				size_damage_mod += 1
+			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		else
+			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
 /datum/ammo/bullet/tank/flak
 	name = "flak autocannon bullet"
 	icon_state = "autocannon"
@@ -1760,61 +1828,6 @@
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
-
-/datum/ammo/bullet/sniper/svd
-	name = "crude sniper bullet"
-
-/datum/ammo/bullet/sniper/anti_materiel
-	name = "anti-materiel sniper bullet"
-
-	shrapnel_chance = 0 // This isn't leaving any shrapnel.
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 125
-	shell_speed = AMMO_SPEED_TIER_6
-
-/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
-	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
-		var/mob/living/L = M
-		var/size_damage_mod = 0.8
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.6
-			if(target.mob_size >= MOB_SIZE_BIG)
-				size_damage_mod += 0.6
-		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
-
-/datum/ammo/bullet/sniper/elite
-	name = "supersonic sniper bullet"
-
-	shrapnel_chance = 0 // This isn't leaving any shrapnel.
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 150
-	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
-
-/datum/ammo/bullet/sniper/elite/set_bullet_traits()
-	. = ..()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
-	))
-
-/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
-	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
-		var/mob/living/L = M
-		var/size_damage_mod = 0.5
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.5
-			if(target.mob_size >= MOB_SIZE_BIG)
-				size_damage_mod += 1
-			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		else
-			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
-		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
 //======

@@ -4,7 +4,7 @@
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
@@ -613,7 +613,10 @@
 
 	// weapon info
 
-	data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
+	data["icon"] = SSassets.transport.get_asset_url("no_name.png")
+
+	if(SSassets.cache["[base_gun_icon].png"])
+		data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
 
 	data["name"] = name
 	data["desc"] = desc

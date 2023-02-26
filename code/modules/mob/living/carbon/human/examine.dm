@@ -194,7 +194,7 @@
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
-	if (stat)
+	if (stat || status_flags & FAKEDEATH)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
@@ -203,8 +203,8 @@
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
-			if(user && src && distance <= 1 && user.stat != 1)
-				if(pulse == PULSE_NONE)
+			if(user && src && distance <= 1)
+				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
 					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
 				else
 					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))

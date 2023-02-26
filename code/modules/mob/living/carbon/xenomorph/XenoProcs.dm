@@ -66,10 +66,11 @@
 
 	. += ""
 
+	var/stored_evolution = round(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)
-		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
+		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
 		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
@@ -78,6 +79,8 @@
 
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
+	if(stored_evolution > evolution_threshold)
+		. += "Bonus Evolution: [stored_evolution - evolution_threshold]"
 
 	. += ""
 

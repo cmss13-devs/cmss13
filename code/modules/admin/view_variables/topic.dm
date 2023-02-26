@@ -53,7 +53,7 @@
 			vv_update_display(A, "dir", dir2text(A.dir))
 
 		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-			if(!check_rights(NONE))
+			if(!check_rights(R_EVENT))
 				return
 
 			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
@@ -62,7 +62,7 @@
 
 			var/Text = href_list["adjustDamage"]
 
-			var/amount = tgui_input_number("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
+			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0)
 
 			if (isnull(amount))
 				return
@@ -99,17 +99,17 @@
 				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
 				vv_update_display(L, Text, "[newamt]")
 
-		else if(href_list["view_combat_logs"])
-			if(!check_rights(R_MOD))
-				return
+	if(href_list["view_combat_logs"])
+		if(!check_rights(R_MOD))
+			return
 
-			var/mob/A = locate(href_list["view_combat_logs"])
+		var/mob/A = locate(href_list["view_combat_logs"])
 
-			var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Combat Logs</title></head>")
-			for(var/entry in A.attack_log)
-				logs += "[entry]<br>"
+		var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Combat Logs</title></head>")
+		for(var/entry in A.attack_log)
+			logs += "[entry]<br>"
 
-			show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", "size=600x480")
+		show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", "size=600x480")
 
 
 	//Finally, refresh if something modified the list.

@@ -2,8 +2,15 @@ import { useBackend } from '../backend';
 import { Section, Flex, NoticeBox, Button, Box } from '../components';
 import { Window } from '../layouts';
 
+interface EscapePodProps {
+  docking_status: number;
+  door_lock: 0 | 1;
+  door_state: 0 | 1;
+  can_delay: 0 | 1;
+}
+
 export const EscapePodConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<EscapePodProps>(context);
 
   let statusMessage = 'ERROR';
   let buttonColor = 'bad';

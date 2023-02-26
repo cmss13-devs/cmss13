@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "removed some <span>s and replaced w/ macros"

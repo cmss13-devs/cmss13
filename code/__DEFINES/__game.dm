@@ -13,7 +13,6 @@ block( \
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 18
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -40,6 +39,9 @@ block( \
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+
+#define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
+#define GAMEMODE_HIVE_WARS "Hive Wars"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -196,7 +198,6 @@ block( \
 //#define SHUTTLE_IDLE 0
 #define SHUTTLE_WARMUP 1
 #define SHUTTLE_INTRANSIT 2
-#define SHUTTLE_CRASHED 3
 
 //Ferry shuttle processing status
 #define IDLE_STATE 0

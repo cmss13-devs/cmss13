@@ -44935,15 +44935,15 @@
 	icon_state = "N"
 	},
 /obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -55841,15 +55841,15 @@
 /obj/structure/closet/secure_closet{
 	name = "\improper Execution Firearms"
 	},
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -72477,14 +72477,14 @@
 	icon_state = "E"
 	},
 /obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = -30
 	},

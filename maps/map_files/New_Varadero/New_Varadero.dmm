@@ -2844,6 +2844,11 @@
 /area/varadero/interior/security)
 "cvW" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -9740,11 +9745,6 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -10787,6 +10787,11 @@
 /area/varadero/interior/oob)
 "juL" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -11950,21 +11955,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_SE)
-"kyx" = (
-/obj/structure/lattice{
-	icon_state = "lattice4";
-	pixel_x = -16;
-	pixel_y = 24
-	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance)
 "kyG" = (
 /turf/closed/wall,
 /area/varadero/interior/disposals)
@@ -18416,11 +18406,6 @@
 /obj/structure/lattice{
 	icon_state = "lattice4";
 	pixel_x = -16;
-	pixel_y = 24
-	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
 	pixel_y = 24
 	},
 /turf/open/floor/shiva{
@@ -41834,8 +41819,8 @@ qqA
 qqA
 aQc
 qqA
-qqA
-kyx
+kWZ
+rVZ
 aQc
 qqA
 sWs

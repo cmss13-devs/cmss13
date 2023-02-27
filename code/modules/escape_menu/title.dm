@@ -32,9 +32,10 @@ GLOBAL_DATUM(escape_menu_title, /atom/movable/screen/escape_menu/title)
 /atom/movable/screen/escape_menu/title/proc/do_update_text()
 	var/gotten_text = SSticker.mode?.get_escape_menu()
 	var/subtitle_text = MAPTEXT("<span style='font-size: 8px'>[gotten_text ? gotten_text : "Fighting... in space!"]</span>")
+	var/short_name = SSmapping.configs[GROUND_MAP].short_name
 	var/title_text = {"
 		<span style='font-weight: bolder; font-size: 24px'>
-			[SSmapping.configs[GROUND_MAP].map_name]
+			[short_name ? short_name : SSmapping.configs[GROUND_MAP].map_name]
 		</span>
 	"}
 

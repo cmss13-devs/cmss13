@@ -451,3 +451,21 @@
   - rscadd: Added item M276 pattern combat toolbelt rig as a point buy item (15 points)
       to combat engineer vendor.
   - imageadd: Sprites for M276 pattern combat toolbelt rig
+2023-02-27:
+  BeagleGaming1:
+  - bugfix: Working Joes no longer get custom loadout items
+  CapCamIII:
+  - bugfix: Marine Raiders spawn not starving again.
+  NewyearnewmeUwu:
+  - bugfix: you will no longer become Unknown when you ghost
+  - bugfix: speaking a different default language than English while whispering now
+      works.
+  harryob:
+  - bugfix: your hotkeys actually save
+  - bugfix: unbinding hotkeys works properly
+  - bugfix: no ghost "Unbound" when you rebind the key to a new key
+  - bugfix: '"Unbound" appears when you unbind a key in a janky way'
+  - ui: the keybind menu now searches every category for hotkeys, not just the category
+      you're in
+  - ui: the keybind menu is less janky to use, and doesn't require you to click to
+      select your input

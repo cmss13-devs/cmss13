@@ -269,7 +269,7 @@
 
 /datum/reagents/proc/metabolize(mob/M, alien, delta_time)
 	for(var/datum/reagent/R in reagent_list)
-		if(M && R)
+		if(M && R && !QDELETED(R))
 			R.on_mob_life(M, alien, delta_time)
 	update_total()
 

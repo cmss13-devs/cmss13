@@ -68,6 +68,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			if(!params["key"])
 				if(kbinds[old_key])
 					kbinds[old_key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[old_key]))
 						kbinds -= old_key
 				INVOKE_ASYNC(owner, /client/proc/set_macros)
@@ -90,6 +91,9 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				if(!length(kbinds[old_key]))
 					kbinds -= old_key
 
+			if(LAZYISIN(kbinds["Unbound"], old_key))
+				kbinds["Unbound"] -= old_key
+
 			kbinds[full_key] += list(kb_name)
 			kbinds[full_key] = sortList(kbinds[full_key])
 
@@ -106,10 +110,12 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			for(var/key in keys)
 				if(kbinds[key])
 					kbinds[key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[key]))
 						kbinds -= key
 
 			prefs.save_preferences()
+			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 		if("clear_all_keybinds")
 			var/choice = tgui_alert(owner, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))

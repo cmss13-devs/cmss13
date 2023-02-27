@@ -530,6 +530,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
+			return TRUE
 	add_fingerprint(user)
 
 /obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)
@@ -958,6 +959,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
 		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
 		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/m4ra/empty = /obj/item/ammo_box/magazine/m4ra,
+		/obj/item/ammo_box/magazine/m4ra/ap/empty = /obj/item/ammo_box/magazine/m4ra/ap,
+		/obj/item/ammo_box/magazine/m4ra/incen/empty = /obj/item/ammo_box/magazine/m4ra/incen,
 
 		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
 		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,

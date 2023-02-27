@@ -52,6 +52,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/ooccolor
 	var/be_special = 0 // Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
+	var/auto_fit_viewport = FALSE
 	var/UI_style = "midnight"
 	var/toggles_admin = TOGGLES_ADMIN_DEFAULT
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
@@ -224,6 +225,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/unlock_content = 0
 
 	var/current_menu = MENU_MARINE
+
+	/// if this client has custom cursors enabled
+	var/custom_cursors = TRUE
 
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -544,6 +548,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
 			if(!no_radials_preference)
 				dat += "<b>Hide Radial Menu Labels:</b> <a href='?_src_=prefs;preference=no_radial_labels_preference'><b>[no_radial_labels_preference ? "TRUE" : "FALSE"]</b></a><br>"
+			dat += "<b>Custom Cursors:</b> <a href='?_src_=prefs;preference=customcursors'><b>[custom_cursors ? "Enabled" : "Disabled"]</b></a><br>"
 
 			dat += "<h2><b><u>Chat Settings:</u></b></h2>"
 			if(CONFIG_GET(flag/ooc_country_flags))
@@ -563,6 +568,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -1336,7 +1342,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("hair")
 					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
+						var/new_hair = input(user, "Choose your character's hair color:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
@@ -1360,7 +1366,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("grad")
 					if(species == "Human")
-						var/new_hair_grad = input(user, "Choose your character's hair gradient colour:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
+						var/new_hair_grad = input(user, "Choose your character's hair gradient color:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
 						if(new_hair_grad)
 							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
 							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
@@ -1394,7 +1400,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						body_type = new_body_type
 
 				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
+					var/new_facial = input(user, "Choose your character's facial-hair color:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
 					if(new_facial)
 						r_facial = hex2num(copytext(new_facial, 2, 4))
 						g_facial = hex2num(copytext(new_facial, 4, 6))
@@ -1441,7 +1447,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
+					var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1449,7 +1455,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
+					var/new_ooccolor = input(user, "Choose your OOC color:", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
@@ -1608,7 +1614,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("hide_statusbar")
 					hide_statusbar = !hide_statusbar
 					if(hide_statusbar)
-						winset(owner, "atom_name", "text=\"\"")
+						winset(owner, "mapwindow.status_bar", "text=\"\"")
+						winset(owner, "mapwindow.status_bar", "is-visible=false")
+					else
+						winset(owner, "mapwindow.status_bar", "is-visible=true")
+
 
 				if("no_radials_preference")
 					no_radials_preference = !no_radials_preference
@@ -1698,6 +1708,11 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					plane_master.backdrop(user?.client.mob)
 
+				if("auto_fit_viewport")
+					auto_fit_viewport = !auto_fit_viewport
+					if(auto_fit_viewport && owner)
+						owner.fit_viewport()
+
 				if("inputstyle")
 					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
 					if(!result)
@@ -1723,6 +1738,9 @@ var/const/MAX_SAVE_SLOTS = 10
 						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
 					user?.client.tgui_say?.load()
 					save_preferences()
+
+				if("customcursors")
+					owner?.do_toggle_custom_cursors(owner?.mob)
 
 				if("save")
 					if(save_cooldown > world.time)
@@ -1881,7 +1899,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
 	if(character.gender in list(PLURAL, NEUTER))
 		if(isliving(src)) //Ghosts get neuter by default
-			message_staff("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
+			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
 
 // Transfers the character's physical characteristics (age, gender, ethnicity, etc) to the mob
@@ -1953,7 +1971,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
 	if(character.gender in list(PLURAL, NEUTER))
 		if(isliving(src)) //Ghosts get neuter by default
-			message_staff("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
+			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
 
 

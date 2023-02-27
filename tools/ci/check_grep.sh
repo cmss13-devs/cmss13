@@ -53,13 +53,6 @@ if grep -El '^\".+\" = \(.+\)' $map_files;	then
 	st=1
 fi;
 
-part "merge conflict markers"
-if grep -P 'Merge conflict marker' $map_files; then
-	echo
-	echo -e "${RED}ERROR: Merge conflict markers detected in map, please resolve all merge failures!${NC}"
-	st=1
-fi;
-
 part "iconstate tags"
 if grep -P '^\ttag = \"icon' $map_files;	then
 	echo

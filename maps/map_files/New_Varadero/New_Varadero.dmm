@@ -2231,7 +2231,7 @@
 /area/varadero/interior_protected/vessel)
 "bTm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},

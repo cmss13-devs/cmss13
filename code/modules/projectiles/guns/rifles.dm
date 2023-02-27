@@ -1333,13 +1333,73 @@
 	burst_delay = FIRE_DELAY_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
 
+	//-------------------------------------------------------
+
+//M4RA Battle Rifle, standard USCM DMR
+
+/obj/item/weapon/gun/rifle/m4ra
+	name = "\improper M4RA battle rifle"
+	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
+	icon_state = "m4ra"
+	item_state = "m4ra"
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/flashlight/grip,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = 0
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/m4ra_barrel/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/rifle/m4ra/training
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
+
 //-------------------------------------------------------
 
 //L42A Battle Rifle
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "A L42A battle rifle. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy and superior stopping power compared to other pulse rifles. Chambered in 10x24mm caseless."
+	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
@@ -1398,8 +1458,8 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40
 	name = "\improper ABR-40 hunting rifle"
-	desc = "The civilian version of the L42A battle rifle that is often wuielded by Marines. Almost identical and even cross-compatible with L42 magazines, just don't take the stock off.."
-	desc_lore = "The ABR-40 was created after the striking popularity of the L42 battle rifle as a hunting rifle for civilians. Sporting faux wooden furniture and a legally-mandated 12 round magazine, it's still highly accurate and deadly, a favored pick of experienced hunters and retired Marines. However, it's very limited in attachment selection, only being able to fit rail attachments, and the differences in design from the L42 force an awkward pose when attempting to hold it one-handed. Removing the stock is not recommended."
+	desc = "The civilian version of the L42A battle rifle. Almost identical and even cross-compatible with L42 magazines, just don't take the stock off.."
+	desc_lore = "The ABR-40 was created along-side the L42A as a hunting rifle for civilians. Sporting faux wooden furniture and a legally-mandated 12 round magazine, it's still highly accurate and deadly, a favored pick of experienced hunters and retired Marines. However, it's very limited in attachment selection, only being able to fit rail attachments, and the differences in design from the L42 force an awkward pose when attempting to hold it one-handed. Removing the stock is not recommended."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "abr40"
 	item_state = "abr40"

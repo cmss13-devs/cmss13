@@ -4,6 +4,7 @@
 /obj/item/weapon/gun/minigun
 	name = "\improper Ol' Painless"
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "painless"
 	item_state = "painless"
 
@@ -62,6 +63,7 @@
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
 	desc = "The M60. The Pig. The Action Hero's wet dream."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m60"
 	item_state = "m60"
 

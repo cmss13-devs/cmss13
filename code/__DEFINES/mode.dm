@@ -27,9 +27,12 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-#define XENO_ROUNDSTART_PROGRESS_AMOUNT 2
-#define XENO_ROUNDSTART_PROGRESS_TIME_1 0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 15 MINUTES
+#define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
+#define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
+#define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES
+
+#define ROUND_TIME (world.time - SSticker.round_start_time)
+
 //=================================================
 
 

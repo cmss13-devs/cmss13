@@ -375,7 +375,7 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/mob_behind_table in oview(src, 0))
+	for(var/mob/living/mob_behind_table in oview(src, 0))
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
 		return FALSE
 

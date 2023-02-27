@@ -97,7 +97,7 @@
 	operating = 1
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
-	layer = PODDOOR_CLOSED_LAYER
+	layer = closed_layer
 	flick(initial(icon_state) + "c1", src)
 	icon_state = initial(icon_state) + "1"
 	density = TRUE

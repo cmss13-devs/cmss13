@@ -152,6 +152,7 @@
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()
 	if(.)
+		var/mob/living/carbon/human/H = user
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE

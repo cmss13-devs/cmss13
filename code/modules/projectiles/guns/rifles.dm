@@ -952,6 +952,18 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/attached_gun/grenade/m203,
 	)
+	random_spawn_chance = 42
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex/,
+		/obj/item/attachable/scope/mini,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
 
 /obj/item/weapon/gun/rifle/m16/grenadier/handle_starting_attachment()
 	..()
@@ -979,6 +991,10 @@
 	fire_sound = 'sound/weapons/gun_m16.ogg'
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	accepted_ammo = list(
+	 /obj/item/ammo_magazine/rifle/m16,
+	 /obj/item/ammo_magazine/rifle/m16/ap,
+	)
 
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
@@ -990,9 +1006,15 @@
 		/obj/item/attachable/stock/m16/xm177,
 	)
 
-	accepted_ammo = list(
-	 /obj/item/ammo_magazine/rifle/m16,
-	 /obj/item/ammo_magazine/rifle/m16/ap,
+	random_spawn_chance = 75
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex/,
+		/obj/item/attachable/scope/mini,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
@@ -1104,6 +1126,9 @@
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
 	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	starting_attachment_types = list(/obj/item/attachable/bayonet)
+
+
 
 /obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()
@@ -1113,6 +1138,7 @@
 	name = "\improper Dutch's Grenadier M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
 	..()

@@ -777,8 +777,8 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/large/dutch
-name = "\improper Dutch's Grenadier Rigging"
-desc = "A high capacity rig filled to the brim with all the explosives you could ask for, what else is there to want?"
+	name = "\improper Dutch's Grenadier Rigging"
+	desc = "A high capacity rig filled to the brim with all the explosives you could ask for, what else is there to want?"
 
 /obj/item/storage/belt/grenade/large/dutch/full/fill_preset_inventory()
 	new /obj/item/explosive/grenade/incendiary/impact(src)

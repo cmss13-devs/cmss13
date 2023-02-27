@@ -574,10 +574,10 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/m4ra_barrel_custom/INTEGRATED = new(src)
-	INTEGRATED.flags_attach_features &= ~ATTACH_REMOVABLE
-	INTEGRATED.Attach(src)
-	update_attachable(INTEGRATED.slot)
+	var/obj/item/attachable/m4ra_barrel_custom/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()

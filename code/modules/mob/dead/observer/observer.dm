@@ -107,6 +107,9 @@
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(name == "Unknown")
+		if(body)
+			name = body.real_name
 	change_real_name(src, name)
 
 	minimap = new
@@ -161,7 +164,7 @@
 	if(!target.hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
@@ -180,7 +183,7 @@
 	if(!hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	hud_used.show_hud(hud_used.hud_version)
 
 /mob/dead/observer/Login()

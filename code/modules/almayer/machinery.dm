@@ -285,6 +285,10 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/prop/almayer/particle_cannon/corsat
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
+	desc = ""
+
 /obj/structure/prop/almayer/name_stencil
 	name = "USS Almayer"
 	desc = "The name of the ship stenciled on the hull."

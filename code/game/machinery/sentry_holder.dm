@@ -26,6 +26,10 @@
 		ox = pixel_x
 		oy = pixel_y
 
+/obj/structure/machinery/sentry_holder/Destroy()
+	QDEL_NULL(deployed_turret)
+	. = ..()
+
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
 	. = ..()
 	if(!deployed_turret)

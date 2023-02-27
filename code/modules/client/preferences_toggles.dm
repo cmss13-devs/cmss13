@@ -61,7 +61,7 @@
 		if(src.mob.client.midi_silenced) return
 		if(midi_playing)
 			total_silenced++
-			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
+			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
 			src.mob.client.midi_silenced = 1
 			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0
@@ -481,6 +481,24 @@
 		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
 	tgui_say?.load()
 	prefs.save_preferences()
+
+/client/verb/toggle_custom_cursors()
+	set name = "Toggle Custom Cursors"
+	set category = "Preferences.UI"
+	set desc = "Toggle Custom Cursors"
+
+	do_toggle_custom_cursors()
+
+/client/proc/do_toggle_custom_cursors(mob/user)
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	if(!result)
+		return
+	if(result == "Yes")
+		prefs.custom_cursors = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+	else
+		prefs.custom_cursors = FALSE
+		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
 
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"

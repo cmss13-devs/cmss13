@@ -2,6 +2,7 @@
     "map_name": "LV-624",
     "map_path": "map_files/LV624",
     "map_file": "LV624.dmm",
+    "webmap_url": "LV624",
     "weather_holder": "/datum/weather_ss_map_holder/lv624",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",

@@ -2,6 +2,8 @@
     "map_name": "Kutjevo Refinery",
     "map_path": "map_files/Kutjevo",
     "map_file": "Kutjevo.dmm",
+    "webmap_url": "Kutjevo",
+
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/kutjevo",
         "/datum/equipment_preset/survivor/chaplain/kutjevo",

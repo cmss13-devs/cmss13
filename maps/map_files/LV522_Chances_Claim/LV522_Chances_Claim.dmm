@@ -772,13 +772,16 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "aBm" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 25;
-	pixel_y = 3
+	icon_state = "lattice9";
+	pixel_x = -5
 	},
-/turf/closed/wall/strata_outpost,
-/area/lv522/indoors/a_block/kitchen)
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/lv522/indoors/a_block/hallway)
 "aBY" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/decal/cleanable/blood/oil,
@@ -6849,12 +6852,13 @@
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "dEp" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/lattice{
 	icon_state = "lattice1";
-	pixel_x = 6;
-	pixel_y = 19
+	pixel_x = -26;
+	pixel_y = -13
 	},
-/turf/closed/wall/strata_outpost,
+/turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "dEu" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -34354,14 +34358,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"oVu" = (
-/obj/structure/lattice{
-	icon_state = "lattice10";
-	pixel_x = -2;
-	pixel_y = 24
-	},
-/turf/closed/wall/strata_outpost,
-/area/lv522/indoors/a_block/admin)
 "oVA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -40795,12 +40791,14 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "rrf" = (
+/obj/structure/platform,
 /obj/structure/lattice{
-	icon_state = "lattice9";
-	pixel_x = 27
+	icon_state = "lattice10";
+	pixel_x = -2;
+	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost,
-/area/lv522/indoors/a_block/medical)
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "rro" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -45432,6 +45430,11 @@
 	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_y = 11
+	},
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = -7;
+	pixel_y = 35
 	},
 /turf/open/gm/river,
 /area/lv522/indoors/a_block/kitchen/damage)
@@ -80243,7 +80246,7 @@ eUh
 xxs
 uMV
 sjy
-aBm
+kqb
 uVy
 itG
 kcv
@@ -81156,7 +81159,7 @@ ovr
 caP
 wkC
 rRP
-dEp
+kqb
 lVp
 lVp
 lVp
@@ -81382,7 +81385,7 @@ sSl
 fuc
 pNs
 lxL
-xGf
+dEp
 tVN
 qTG
 gLV
@@ -94103,7 +94106,7 @@ tTK
 tTK
 tTK
 tTK
-rrf
+tTK
 tTK
 tTK
 tTK
@@ -94330,7 +94333,7 @@ aIY
 aIY
 ozk
 ozk
-huN
+aBm
 huN
 rmD
 raj
@@ -94754,8 +94757,8 @@ oxT
 pgG
 umR
 ikw
-sYk
-oVu
+rrf
+tDS
 nku
 uqo
 gPp

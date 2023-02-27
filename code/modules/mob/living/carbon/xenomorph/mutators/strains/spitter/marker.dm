@@ -24,7 +24,7 @@
 	var/mob/living/carbon/xenomorph/spitter/marker_strain = marker.xeno
 	marker_strain.mutation_type = SPITTER_MARKER
 	marker_strain.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/marking]
-	marker_strain.viewsize = 16
+	marker_strain.viewsize = 12
 	apply_behavior_holder(marker_strain)
 	mutator_update_actions(marker_strain)
 	marker_strain.recalculate_actions(description, flavor_description)

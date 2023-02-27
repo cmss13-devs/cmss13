@@ -276,8 +276,9 @@
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
 		if(ismob(loc))
 			for(var/slot in attachments)
-				var/obj/item/attachable/R = attachments[slot]
-				if(!R) continue
+				var/obj/item/attachable/potential_attachment = attachments[slot]
+				if(!potential_attachment)
+					continue
 				loc.SetLuminosity(0, FALSE, src)
 		else
 			SetLuminosity(0)

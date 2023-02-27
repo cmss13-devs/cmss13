@@ -26,6 +26,12 @@
 	M.remote_access_pin = rand(1111, 111111)
 	M.money = starting_funds * id_paygrade.pay_multiplier
 
+	if(HAS_TRAIT(SSround, TRAIT_ROUND_ECONOMIC_BOOM))
+		M.money *= 3
+
+	if(HAS_TRAIT(SSround, TRAIT_ROUND_ECONOMIC_SLUMP))
+		M.money *= 0.3
+
 	//create an entry in the account transaction log for when it was created
 	var/datum/transaction/T = new()
 	T.target_name = new_owner_name

@@ -64,3 +64,7 @@
 					affected_mob.apply_damage(1, TOX)
 					affected_mob.updatehealth()
 	return
+
+
+/datum/disease/flu/cryo_flu
+	spread_type = NON_CONTAGIOUS

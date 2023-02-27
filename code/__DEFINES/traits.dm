@@ -197,7 +197,13 @@
 
 // Round Traits
 
-#define TRAIT_STATION_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
+#define TRAIT_ROUND_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
+#define TRAIT_ROUND_FLU_SEASON "t_flu_season"
+#define TRAIT_ROUND_FAULTY_PIPING "t_faulty_piping"
+#define TRAIT_ROUND_ECONOMIC_BOOM "t_economic_boom"
+#define TRAIT_ROUND_ECONOMIC_SLUMP "t_economic_slump"
+#define TRAIT_ROUND_STANDARD_ISSUE "t_standard_issue"
+#define TRAIT_ROUND_WRONG_TUBES "t_wrongtubes"
 
 
 //List of all traits

@@ -4,7 +4,6 @@
 	weight = 5
 	show_in_human_report = TRUE
 	human_report_message = "Someone got us more money upfront for less over time. Hope the operation doesn't drag on."
-	force = TRUE
 
 /datum/round_trait/book_balancing/New()
 	. = ..()
@@ -17,5 +16,3 @@
 /datum/round_trait/book_balancing/on_round_start()
 	supply_controller.points += 800
 	supply_controller.points_per_process = 0.6
-
-/datum/round_trait/

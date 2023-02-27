@@ -448,7 +448,20 @@
 
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
-	C.access += (src.access + extra_access) //Add their squad access to their ID
+
+	var/mapped_access
+	if(HAS_TRAIT(SSround, TRAIT_ROUND_WRONG_TUBES))
+		var/mapped_name
+		for(var/squad in GLOB.squad_mappings)
+			if(GLOB.squad_mappings[squad] == name)
+				mapped_name = squad
+				break
+		var/datum/squad/mapped_squad = get_squad_by_name(mapped_name)
+		mapped_access = mapped_squad.access
+	var/access_to_add = mapped_access ? mapped_access : access
+
+	C.access += (access_to_add + extra_access) //Add their squad access to their ID
+
 	C.assignment = "[name] [assignment]"
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)

@@ -34,6 +34,17 @@
 
 		search_for_connections()
 
+	if(!is_mainship_level(z))
+		return
+
+	if(!HAS_TRAIT(SSround, TRAIT_ROUND_FAULTY_PIPING))
+		return
+
+	if(!prob(1))
+		return
+
+	cell_explosion(src, 40, 40, explosion_cause_data = create_cause_data("faulty pipes"))
+
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
 		M.remove_ventcrawl()

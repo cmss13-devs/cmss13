@@ -20,3 +20,7 @@ GLOBAL_LIST_INIT(gamemode_roles, list())
 GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
+
+GLOBAL_VAR(temperature_change)
+
+GLOBAL_VAR(squad_mappings)

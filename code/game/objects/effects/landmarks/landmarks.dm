@@ -366,7 +366,12 @@
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
+
 	if(squad)
+
+		if(HAS_TRAIT(SSround, TRAIT_ROUND_WRONG_TUBES))
+			squad = GLOB.squad_mappings[squad]
+
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
 	else
 		GLOB.latejoin += src

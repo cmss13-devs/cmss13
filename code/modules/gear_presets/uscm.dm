@@ -23,6 +23,26 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
 
+/datum/equipment_preset/uscm/New()
+	. = ..()
+
+	if(!HAS_TRAIT(SSround, TRAIT_ROUND_WRONG_TUBES))
+		return
+
+	var/static/list/squad_accesses = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+
+	var/has_squad_access = FALSE
+	for(var/squad_access in squad_accesses)
+		if(LAZYISIN(access, squad_access))
+			has_squad_access = TRUE
+			break
+
+	if(!has_squad_access)
+		return
+
+	for(var/squad_access in squad_accesses)
+		access |= squad_access
+
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 

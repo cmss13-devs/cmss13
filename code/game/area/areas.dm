@@ -98,6 +98,11 @@
 	all_areas += src
 	reg_in_areas_in_z()
 
+	if(!is_ground_level(z))
+		return
+
+	temperature += GLOB.temperature_change
+
 /area/proc/initialize_power_and_lighting(override_power)
 	if(requires_power)
 		luminosity = 0

@@ -16,6 +16,17 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/pfc
 
+/obj/effect/landmark/start/marine/Initialize(mapload, ...)
+	. = ..()
+
+	if(!HAS_TRAIT(SSround, TRAIT_ROUND_WRONG_TUBES))
+		return
+
+	if(!squad)
+		return
+
+	squad = GLOB.squad_mappings[squad]
+
 /obj/effect/landmark/start/marine
 	name = JOB_SQUAD_MARINE
 	icon_state = "marine_spawn"

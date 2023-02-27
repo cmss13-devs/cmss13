@@ -564,6 +564,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)
 		if(pod)
 			pod.go_in_cryopod(H, silent = TRUE)
+			if(ishuman_strict(H))
+				if(HAS_TRAIT(SSround, TRAIT_ROUND_CRYOSLEEP_SICKNESS))
+					addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, vomit_on_floor)), rand(1, 5) SECONDS)
+				if(HAS_TRAIT(SSround, TRAIT_ROUND_FLU_SEASON))
+					if(prob(33))
+						H.contract_disease(new /datum/disease/flu/cryo_flu)
 			break
 
 	H.sec_hud_set_ID()

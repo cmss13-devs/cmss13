@@ -8,7 +8,13 @@ PROCESSING_SUBSYSTEM_DEF(round)
 	///A list of currently active round traits
 	var/list/round_traits = list()
 	///Assoc list of trait type || assoc list of traits with weighted value. Used for picking traits from a specific category.
-	var/list/selectable_traits_by_types = list(ROUND_TRAIT_POSITIVE = list(), ROUND_TRAIT_NEUTRAL = list(), ROUND_TRAIT_NEGATIVE = list())
+	var/list/selectable_traits_by_types = list(
+		ROUND_TRAIT_HUMAN_POSITIVE = list(),
+		ROUND_TRAIT_HUMAN_NEGATIVE = list(),
+		ROUND_TRAIT_XENO_POSITIVE = list(),
+		ROUND_TRAIT_XENO_NEGATIVE = list(),
+		ROUND_TRAIT_NEUTRAL = list(),
+	)
 
 /datum/controller/subsystem/processing/round/Initialize()
 

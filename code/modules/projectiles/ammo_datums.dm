@@ -2735,7 +2735,7 @@
 /datum/ammo/xeno/acid/marking
 	name = "marking spit"
 
-	damage = 20
+	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 	accuracy = HIT_ACCURACY_TIER_10*8
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR

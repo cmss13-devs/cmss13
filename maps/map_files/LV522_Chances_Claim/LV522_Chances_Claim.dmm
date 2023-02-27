@@ -771,6 +771,14 @@
 	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
+"aBm" = (
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 25;
+	pixel_y = 3
+	},
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/a_block/kitchen)
 "aBY" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/decal/cleanable/blood/oil,
@@ -4524,11 +4532,6 @@
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 11;
-	pixel_y = 24
-	},
 /obj/structure/prop/invuln/pipe_water{
 	pixel_x = -7;
 	pixel_y = 4
@@ -6845,6 +6848,14 @@
 /obj/structure/closet,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
+"dEp" = (
+/obj/structure/lattice{
+	icon_state = "lattice1";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/a_block/kitchen)
 "dEu" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -8870,6 +8881,18 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor)
+"evS" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/lattice{
+	icon_state = "lattice10";
+	pixel_x = 4;
+	pixel_y = -16
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "ewe" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -10191,11 +10214,6 @@
 /obj/structure/lattice{
 	icon_state = "lattice12";
 	pixel_x = 9;
-	pixel_y = 3
-	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = -7;
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -13461,6 +13479,11 @@
 "gAU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/lattice{
+	icon_state = "lattice2";
+	pixel_x = -37;
+	pixel_y = 17
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"
@@ -16431,11 +16454,6 @@
 /obj/structure/lattice{
 	icon_state = "lattice3";
 	pixel_x = -5
-	},
-/obj/structure/lattice{
-	icon_state = "lattice2";
-	pixel_x = -5;
-	pixel_y = 17
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -30242,6 +30260,11 @@
 /area/lv522/atmos/east_reactor/south)
 "npp" = (
 /obj/structure/girder,
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 11;
+	pixel_y = -8
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -42163,11 +42186,6 @@
 "rRP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/lattice{
-	icon_state = "lattice1";
-	pixel_x = 6;
-	pixel_y = -13
-	},
-/obj/structure/lattice{
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
@@ -47426,11 +47444,6 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tXd" = (
-/obj/structure/lattice{
-	icon_state = "lattice10";
-	pixel_x = 4;
-	pixel_y = 16
-	},
 /obj/structure/lattice{
 	dir = 1;
 	icon_state = "lattice-simple";
@@ -80230,7 +80243,7 @@ eUh
 xxs
 uMV
 sjy
-kqb
+aBm
 uVy
 itG
 kcv
@@ -81143,7 +81156,7 @@ ovr
 caP
 wkC
 rRP
-kqb
+dEp
 lVp
 lVp
 lVp
@@ -94969,7 +94982,7 @@ qSH
 umR
 eKe
 fAq
-sRu
+evS
 tXd
 bCl
 tDS

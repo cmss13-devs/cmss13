@@ -62,7 +62,7 @@
 //M60
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
-	desc = "The M60. The Pig. The Action Hero's wet dream."
+	desc = "The M60. The Pig. The Action Hero's wet dream. \nAlt-click it to open the feed cover and allow for reloading."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m60"
 	item_state = "m60"
@@ -71,8 +71,8 @@
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/m60
 	w_class = SIZE_LARGE
-	force = 20
-	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
+	force = 25
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
 		/obj/item/attachable/m60barrel,
@@ -82,6 +82,7 @@
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
 	)
+	var/cover_open = FALSE
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
@@ -96,7 +97,7 @@
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = 5
+	burst_amount = BURST_AMOUNT_TIER_5
 	burst_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
@@ -106,6 +107,55 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
+
+/obj/item/weapon/gun/m60/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
+		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
+			return TRUE
+		if(user.get_active_hand() && user.get_inactive_hand())
+			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			return TRUE
+		if(!cover_open)
+			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
+			cover_open = TRUE
+		else
+			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
+			to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
+			cover_open = FALSE
+		update_icon()
+		return TRUE
+	else
+		return ..()
+
+/obj/item/weapon/gun/m60/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new belt in! (alt-click to open it)"))
+		return
+	. = ..()
+
+/obj/item/weapon/gun/m60/unload(mob/user, reload_override, drop_override, loc_override)
+	if(!cover_open)
+		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the belt! (alt-click to open it)"))
+		return
+	. = ..()
+
+/obj/item/weapon/gun/m60/update_icon()
+	. = ..()
+	if(cover_open)
+		overlays += "+[base_gun_icon]_cover_open"
+	else
+		overlays += "+[base_gun_icon]_cover_closed"
+
+/obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
+	. = ..()
+	if(.)
+		if(cover_open)
+			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			return FALSE
+
 
 /obj/effect/syringe_gun_dummy
 	name = ""

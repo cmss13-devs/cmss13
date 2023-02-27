@@ -938,7 +938,7 @@
 	fire_sound = 'sound/weapons/gun_m16.ogg'
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -967,12 +967,12 @@
 
 /obj/item/weapon/gun/rifle/xm177
 	name = "\improper XM177E2 carbine"
-	desc = "An old design, essentially a shortened M16A1 with a collapsable stock and M16A2 style foregrip. It is chambered in 5.56x45mm."
+	desc = "An old design, essentially a shortened M16A1 with a collapsable stock. It is chambered in 5.56x45mm. The short length prohibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
 	desc_lore = "placeholder for really autistic and in-depth history of the XM177 because this is my favorite gun of all time"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "xm177"
 	item_state = "m16"
-	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m16
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
@@ -981,26 +981,11 @@
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/grip,
-		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/bipod,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
-		/obj/item/attachable/burstfire_assembly,
-		/obj/item/attachable/attached_gun/grenade,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
-		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/m16/xm177,
 	)
@@ -1011,7 +996,7 @@
 	)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = 15, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
 	..()

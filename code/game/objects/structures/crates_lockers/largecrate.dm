@@ -333,7 +333,6 @@
 					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
 					/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,

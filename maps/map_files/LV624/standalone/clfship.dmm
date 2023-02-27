@@ -1,15 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/m60{
+/obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
+/obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
+/obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_x = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -922,7 +922,7 @@
 /area/lv624/lazarus/crashed_ship)
 "yX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/m60{
+/obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_x = 1;
 	pixel_y = 2
 	},

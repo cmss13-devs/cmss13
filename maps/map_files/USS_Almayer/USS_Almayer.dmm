@@ -36273,6 +36273,10 @@
 	pixel_x = -20;
 	pixel_y = 18
 	},
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_y = -16
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "gls" = (
@@ -39485,6 +39489,12 @@
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/lattice{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -15
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -45492,6 +45502,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_three)
+"kRu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/lattice{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "kRP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -48146,10 +48168,6 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -49560,17 +49578,14 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "mRc" = (
 /obj/structure/lattice{
-	icon_state = "lattice10";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/lattice{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
+	pixel_x = -16;
 	pixel_y = -16
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "mRl" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -55474,6 +55489,11 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/structure/lattice{
+	icon_state = "lattice10";
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -58763,12 +58783,6 @@
 	},
 /area/almayer/hallways/port_hallway)
 "rsj" = (
-/obj/structure/lattice{
-	dir = 1;
-	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = -16
-	},
 /obj/structure/lattice{
 	icon_state = "lattice2";
 	pixel_x = 16;
@@ -70742,12 +70756,6 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure/lattice{
-	dir = 1;
-	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = -15
-	},
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
@@ -71333,12 +71341,6 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "xgM" = (
-/obj/structure/lattice{
-	dir = 1;
-	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = -15
-	},
 /obj/structure/lattice{
 	icon_state = "lattice2";
 	pixel_x = 16;
@@ -109063,11 +109065,11 @@ aaf
 aaf
 aag
 aKW
-aSm
+mRc
 aLf
 hhw
 jFe
-mRc
+sxe
 xZI
 mNZ
 nsY
@@ -110349,7 +110351,7 @@ oDf
 xMh
 fiq
 rNW
-scI
+kRu
 oDf
 yhQ
 aaa

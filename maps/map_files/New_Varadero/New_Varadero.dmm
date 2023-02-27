@@ -716,6 +716,16 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior_protected/vessel)
+"aED" = (
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/hall_SE)
 "aFg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6417,11 +6427,6 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "green"
@@ -6518,6 +6523,16 @@
 "fNn" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior/maintenance/security)
+"fND" = (
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "fOA" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -8555,6 +8570,20 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean,
 /area/varadero/interior/oob)
+"hHt" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/varadero/interior/hall_SE)
 "hHA" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -11655,11 +11684,6 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "green"
@@ -12439,6 +12463,16 @@
 "kWB" = (
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/records)
+"kWZ" = (
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance)
 "kXn" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva{
@@ -12471,6 +12505,16 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
+"kYN" = (
+/obj/structure/lattice{
+	icon_state = "lattice1";
+	pixel_x = -16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "kZg" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva{
@@ -17380,11 +17424,6 @@
 /area/varadero/interior_protected/caves/central)
 "pie" = (
 /obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
-/obj/structure/lattice{
 	icon_state = "lattice4";
 	pixel_x = -16;
 	pixel_y = 24
@@ -17565,6 +17604,17 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/oob)
+"pot" = (
+/obj/structure/lattice{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/varadero/interior/hall_SE)
 "poC" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
 /obj/item/reagent_container/food/snacks/eat_bar{
@@ -18570,11 +18620,6 @@
 	},
 /area/varadero/interior/laundry)
 "qlj" = (
-/obj/structure/lattice{
-	icon_state = "lattice1";
-	pixel_x = 16;
-	pixel_y = -8
-	},
 /obj/structure/lattice{
 	icon_state = "lattice3";
 	pixel_x = 16;
@@ -20728,6 +20773,16 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/administration)
+"rVZ" = (
+/obj/structure/lattice{
+	icon_state = "lattice4";
+	pixel_x = -16;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance)
 "rWx" = (
 /obj/structure/sink{
 	dir = 1;
@@ -24074,11 +24129,6 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -24697,11 +24747,6 @@
 "vvh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/structure/lattice{
-	icon_state = "lattice1";
-	pixel_x = 16;
-	pixel_y = -8
 	},
 /obj/structure/lattice{
 	icon_state = "lattice3";
@@ -27149,11 +27194,6 @@
 	pixel_x = -16;
 	pixel_y = 24
 	},
-/obj/structure/lattice{
-	icon_state = "lattice12";
-	pixel_x = 16;
-	pixel_y = 24
-	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "xCM" = (
@@ -27729,6 +27769,19 @@
 	icon_state = "purplefull"
 	},
 /area/varadero/interior/research)
+"ybj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/lattice{
+	icon_state = "lattice1";
+	pixel_x = -16;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "ybm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
@@ -29959,7 +30012,7 @@ kXQ
 efw
 kXQ
 kXQ
-efw
+fND
 xCq
 kXQ
 efw
@@ -30502,7 +30555,7 @@ qul
 qul
 yks
 efw
-efw
+kYN
 yks
 aHs
 fla
@@ -30846,22 +30899,22 @@ jhW
 jhW
 efw
 efw
-efw
+fND
 uVo
 kXQ
 kXQ
 efw
-efw
+fND
 uVo
 kXQ
 efw
-efw
+fND
 xCq
 kXQ
 kXQ
 neJ
 efw
-efw
+fND
 uVo
 efw
 efw
@@ -32874,7 +32927,7 @@ qul
 qul
 yks
 qMY
-efw
+kYN
 yks
 mkc
 ltW
@@ -33420,7 +33473,7 @@ qul
 uHY
 yks
 qMY
-efw
+kYN
 yks
 fay
 fay
@@ -33573,7 +33626,7 @@ ykc
 ykc
 ykc
 efw
-qMY
+ybj
 yks
 qul
 dxK
@@ -33937,7 +33990,7 @@ wGl
 uQK
 ykc
 efw
-qMY
+ybj
 yks
 dxK
 xCn
@@ -35058,7 +35111,7 @@ qul
 qul
 yks
 qMY
-efw
+kYN
 yks
 qul
 gKR
@@ -41789,8 +41842,8 @@ sWs
 xNY
 qqA
 aQc
-qqA
-kyx
+kWZ
+rVZ
 qqA
 qqA
 qqA
@@ -46324,7 +46377,7 @@ fkj
 tEJ
 pEE
 mux
-mvI
+pot
 kmb
 mvI
 mvI
@@ -46332,7 +46385,7 @@ mvI
 wVE
 mvI
 mvI
-wmC
+hHt
 fJb
 mvI
 wVE
@@ -46353,7 +46406,7 @@ mvI
 mvI
 mvI
 wmC
-rMN
+aED
 pie
 guE
 rgr

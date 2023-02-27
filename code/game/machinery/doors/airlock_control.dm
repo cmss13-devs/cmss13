@@ -127,6 +127,16 @@
 	. = ..()
 	if(!surpress_send) send_status()
 
+/obj/structure/machinery/door/airlock/dropship_hatch/close(forced = FALSE)
+	if(forced)
+		for(var/mob/living/current_living in loc)
+			step(current_living, pick(CARDINAL_DIRS))
+		safe = FALSE
+		..()
+		safe = TRUE
+	else
+		..()
+
 
 /obj/structure/machinery/door/airlock/close(surpress_send)
 	. = ..()

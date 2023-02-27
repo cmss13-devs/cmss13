@@ -10,7 +10,10 @@ jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: run_linters-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
       - name: Restore SpacemanDMM cache
@@ -38,16 +41,17 @@ jobs:
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
-          cargo install ripgrep --features pcre2
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
       - name: Run Linters
         run: |
           bash tools/ci/check_filedirs.sh ColonialMarinesALPHA.dme
-          tools/bootstrap/python tools/ci/validate_dme.py < ColonialMarinesALPHA.dme
           bash tools/ci/check_changelogs.sh
           bash tools/ci/check_grep.sh
           bash tools/ci/check_misc.sh
+          tools/bootstrap/python tools/ci/validate_dme.py < ColonialMarinesALPHA.dme
+          tools/bootstrap/python -m tools.maplint.source --github
           tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test

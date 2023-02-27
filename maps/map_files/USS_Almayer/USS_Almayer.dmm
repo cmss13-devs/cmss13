@@ -55,7 +55,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/space/basic,
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "aak" = (
@@ -24739,8 +24738,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "orange";
-	
+	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
 "bYK" = (
@@ -25316,8 +25314,7 @@
 /area/almayer/command/computerlab)
 "cbo" = (
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	
+	icon_state = "test_floor4"
 	},
 /area/almayer/evacuation/pod4)
 "cbr" = (
@@ -59715,7 +59712,6 @@
 /area/almayer/hallways/port_umbilical)
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
 	name = "spare requisitions officer's rubber stamp";
 	pixel_x = -7;
@@ -74047,8 +74043,7 @@
 "xWo" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	
+	icon_state = "plate"
 	},
 /area/almayer/squads/req)
 "xWp" = (

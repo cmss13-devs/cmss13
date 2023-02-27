@@ -1424,8 +1424,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/xm177
 	name = "\improper collapsible M16 stock"
 	desc = "Very illegal in the state of California."
-	icon_state = "m16_stock" //cant be taken off so this doesn't matter.
-	attach_icon = "m16_folding_a"
+	icon_state = "m16_folding"
+	attach_icon = "m16_folding"
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
 	collapsible = TRUE
@@ -1455,8 +1455,8 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_mod = -SCATTER_AMOUNT_TIER_9
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		icon_state = "m16_stock"
-		attach_icon = "m16_folding_a_on"
+		icon_state = "m16_folding"
+		attach_icon = "m16_folding_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST
 
 	else
@@ -1469,9 +1469,12 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 3
-		icon_state = "m16_stock"
-		attach_icon = "m16_folding_a"
+		icon_state = "m16_folding"
+		attach_icon = "m16_folding"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
 
 /obj/item/attachable/stock/ar10
 	name = "\improper AR10 wooden stock"

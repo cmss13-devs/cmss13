@@ -955,11 +955,11 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attached_gun/grenade/m203/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.hidden = FALSE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/attached_gun/grenade/m203/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.hidden = FALSE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
 
 //-------------------------------------------------------
 //XM177 carbine
@@ -973,6 +973,12 @@
 	icon_state = "xm177"
 	item_state = "m16"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -1009,11 +1015,11 @@
 
 /obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/stock/m16/xm177/INTEGRATED = new(src)
-	INTEGRATED.hidden = FALSE
-	INTEGRATED.flags_attach_features &= ~ATTACH_REMOVABLE
-	INTEGRATED.Attach(src)
-	update_attachable(INTEGRATED.slot)
+	var/obj/item/attachable/stock/m16/xm177/integrated = new(src)
+	integrated.hidden = FALSE
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()

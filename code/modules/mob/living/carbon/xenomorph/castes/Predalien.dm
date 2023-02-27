@@ -27,6 +27,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 
+	minimap_icon = "predalien"
+
 /mob/living/carbon/xenomorph/predalien
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
@@ -70,6 +72,8 @@
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
+
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)

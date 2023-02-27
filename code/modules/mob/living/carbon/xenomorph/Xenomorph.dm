@@ -241,7 +241,7 @@
 	var/acid_blood_damage = 12
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
-
+	var/got_evolution_message = FALSE
 	var/pounce_distance = 0
 
 	// Life reduction variables.
@@ -354,6 +354,7 @@
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
 		life_damage_taken_total = oldXeno.life_damage_taken_total
+		evolution_stored = oldXeno.evolution_stored
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)
@@ -421,6 +422,9 @@
 	add_inherent_verbs()
 	add_abilities()
 	recalculate_actions()
+
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -501,7 +505,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

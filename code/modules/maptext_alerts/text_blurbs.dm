@@ -83,7 +83,7 @@ screen_position = screen loc for the bottom-left corner of the blurb.
 
 text_alignment = "right", "left", or "center"
 
-text_color = colour of the text.
+text_color = color of the text.
 
 blurb_key = a key used for specific blurb types so they are not shown repeatedly. Ex. someone who joins as CLF repeatedly only seeing the mission blurb the first time.
 

@@ -89,6 +89,9 @@ PROCESSING_SUBSYSTEM_DEF(round)
 
 ///Creates a given trait of a specific type, while also removing any blacklisted ones from the future pool.
 /datum/controller/subsystem/processing/round/proc/setup_trait(datum/round_trait/trait_type)
+	if(!trait_type)
+		return
+
 	var/datum/round_trait/trait_instance = new trait_type()
 	round_traits += trait_instance
 	log_game("round trait: [trait_instance.name] chosen for this round.")

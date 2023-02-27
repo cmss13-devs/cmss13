@@ -295,7 +295,7 @@
 				break
 
 		if(HAS_TRAIT(SSround, TRAIT_ROUND_CRYOSLEEP_SICKNESS))
-			human.vomit_on_floor()
+			addtimer(human, CALLBACK(TYPE_PROC_REF(/mob/living/carbon/human, vomit_on_floor)), rand(1, 5) SECONDS)
 
 		human.sec_hud_set_ID()
 		human.hud_set_squad()

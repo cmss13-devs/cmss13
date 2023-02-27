@@ -76,7 +76,7 @@
 
 	if(copytext(message,1,2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -298,6 +298,11 @@ for it but just ignore it.
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
+	if(HAS_TRAIT(src, TRAIT_LISPING))
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb

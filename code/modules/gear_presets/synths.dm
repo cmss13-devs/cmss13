@@ -5,6 +5,8 @@
 	skills = /datum/skills/synthetic
 	paygrade = "SYN"
 
+	minimap_icon = "synth"
+
 /datum/equipment_preset/synth/New()
 	. = ..()
 	access = get_all_accesses()
@@ -347,6 +349,9 @@
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
 	H.set_species(SYNTH_WORKING_JOE)
+
+/datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/H)
+	return
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)

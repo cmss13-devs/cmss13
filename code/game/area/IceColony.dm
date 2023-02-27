@@ -15,6 +15,7 @@
 	icon_state = "cliff_blocked"
 	can_build_special = TRUE
 	powernet_name = "ground"
+	minimap_color = MINIMAP_AREA_COLONY
 
 /*
  *  ----------------
@@ -58,11 +59,13 @@
 	name = "\improper Aerodrome Landing Pad"
 	icon_state = "landing_pad"
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 //Landing Pad for the Vindi. THIS IS NOT THE SHUTTLE AREA
 /area/ice_colony/exterior/surface/landing_pad2
 	name = "\improper Emergency Landing Pad"
 	icon_state = "landing_pad"
+	minimap_color = MINIMAP_AREA_LZ
 
 
 //Everything around the physical landing pad
@@ -70,11 +73,13 @@
 	name = "\improper Aerodrome Landing Valley"
 	icon_state = "landing_pad_ext"
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_LZ
 
 //Aerodrome Container Yard
 /area/ice_colony/exterior/surface/container_yard
 	name = "\improper Aerodrome Container Yard"
 	icon_state = "container_yard"
+	minimap_color = MINIMAP_AREA_LZ
 
 //
 // Valleys
@@ -164,6 +169,7 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	ambience_exterior = AMBIENCE_CAVE
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/ice_colony/exterior/underground/caves/open
 	icon_state = "explored"
@@ -210,6 +216,7 @@
 	icon_state = "medbay"
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 60
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/ice_colony/surface/clinic/lobby
 	name = "\improper Aurora Medical Clinic Lobby"
@@ -229,10 +236,12 @@
 /area/ice_colony/surface/command
 	name = "\improper Colony Administration"
 	icon_state = "bridge"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/ice_colony/surface/command/checkpoint
 	name = "\improper Colony Administration Security Checkpoint"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/ice_colony/surface/command/control
 	name = "\improper Colony Control Center"
@@ -293,6 +302,7 @@
 /area/ice_colony/surface/engineering
 	name = "\improper Engineering"
 	icon_state = "engine_hallway"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/ice_colony/surface/engineering/generator
 	name = "\improper Engineering Generator Room"
@@ -313,6 +323,7 @@
 /area/ice_colony/surface/excavation
 	name = "\improper Excavation Outpost"
 	icon_state = "mining_outpost"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/ice_colony/surface/excavation/storage
 	name = "\improper Excavation Outpost External Storage"
@@ -371,6 +382,7 @@
 	name = "\improper Ice Colony Hydroponics"
 	icon_state = "hydro"
 	ceiling = CEILING_GLASS
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/ice_colony/surface/hydroponics/lobby
 	name = "\improper Hydroponics Relaxation Module"
@@ -391,6 +403,7 @@
 /area/ice_colony/surface/mining
 	name = "\improper Mining Outpost"
 	icon_state = "mining_production"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /*
  * Surface - Power
@@ -399,6 +412,7 @@
 /area/ice_colony/surface/substation
 	name = "\improper Surface Power Substation"
 	icon_state = "dk_yellow"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/ice_colony/surface/substation/smes
 	name = "\improper Surface Power Substation SMES"
@@ -417,9 +431,9 @@
  */
 
 /area/ice_colony/surface/research
-
 	name = "\improper Omicron Dome"
 	icon_state = "toxlab"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/ice_colony/surface/research/tech_storage
 	name = "\improper Omicron Dome Technical Storage"
@@ -475,6 +489,7 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	minimap_color = MINIMAP_AREA_CAVES
 
 /*
  * Underground - Crew Areas
@@ -528,6 +543,7 @@
 /area/ice_colony/underground/command
 	name = "\improper Underground Colonial Administration"
 	icon_state = "bridge"
+	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/ice_colony/underground/command/checkpoint
 	name = "\improper Underground Colonial Administration Lobby"
@@ -552,6 +568,7 @@
 /area/ice_colony/underground/engineering
 	name = "\improper Underground Engineering"
 	icon_state = "engine_hallway"
+	minimap_color = MINIMAP_AREA_ENGI_CAVE
 
 /area/ice_colony/underground/engineering/locker
 	name = "\improper Underground Engineering Locker Room"
@@ -626,6 +643,7 @@
 /area/ice_colony/underground/medical
 	name = "\improper Underground Medical Laboratory"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 
 /area/ice_colony/underground/medical/lobby
 	name = "\improper Underground Medical Laboratory Lobby"
@@ -699,6 +717,7 @@
 /area/ice_colony/underground/research
 	name = "\improper Theta-V Research Laboratory"
 	icon_state = "anolab"
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 /area/ice_colony/underground/research/work
 	name = "\improper Theta-V Research Laboratory Work Station"
@@ -719,6 +738,7 @@
 /area/ice_colony/underground/security
 	name = "\improper Underground Security Center"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC_CAVE
 
 /area/ice_colony/underground/security/marshal
 	name = "\improper Marshal's Office"

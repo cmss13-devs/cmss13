@@ -28,6 +28,10 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "boiler"
+
 /mob/living/carbon/xenomorph/boiler
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER

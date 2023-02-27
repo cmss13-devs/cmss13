@@ -25,8 +25,10 @@
 
 	//parse the language code and consume it
 	var/datum/language/speaking = parse_language(message)
-	if (speaking)
+	if(speaking)
 		message = copytext(message,3)
+	else
+		speaking = get_default_language()
 
 	whisper_say(message, speaking, alt_name)
 

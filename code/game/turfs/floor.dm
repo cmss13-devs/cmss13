@@ -169,8 +169,10 @@
 		make_plating()
 		return
 
-	user.next_move += hitting_item.attack_speed
-	user.show_message(SPAN_NOTICE("You swing \the [hitting_item] through the air."), message_flags = CHAT_TYPE_FLUFF_ACTION)
+	if(!(hitting_item.flags_item & NOBLUDGEON))
+		user.next_move += hitting_item.attack_speed
+	if(!(hitting_item.flags_item & ITEM_ABSTRACT))
+		user.show_message(SPAN_NOTICE("You swing \the [hitting_item] through the air."), message_flags = CHAT_TYPE_FLUFF_ACTION)
 
 	return ..()
 

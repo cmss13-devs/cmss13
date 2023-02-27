@@ -38,7 +38,8 @@
 			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
-	user.next_move += W.attack_speed
+	if(!(W.flags_item & ITEM_ABSTRACT))
+		user.next_move += W.attack_speed
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(user.action_busy)
 			return TRUE

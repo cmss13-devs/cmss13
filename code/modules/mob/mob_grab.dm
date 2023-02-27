@@ -43,6 +43,7 @@
 		if(!T.density && T.Adjacent(user))
 			var/move_dir = get_dir(user.pulling.loc, T)
 			step(user.pulling, move_dir)
+			user.next_move = world.time + attack_speed
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
 				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)

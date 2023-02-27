@@ -144,6 +144,7 @@
 	var/stun = stunforce
 	var/mob/living/L = M
 
+	user.next_move += attack_speed
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
 		if (!..()) //item/attack() does it's own messaging and logs

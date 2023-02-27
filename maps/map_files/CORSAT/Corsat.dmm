@@ -46409,7 +46409,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -60714,7 +60713,6 @@
 	},
 /area/corsat/gamma/residential/west)
 "tJe" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "tJf" = (
@@ -62935,7 +62933,6 @@
 /area/corsat/gamma/biodome/virology)
 "vkS" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},

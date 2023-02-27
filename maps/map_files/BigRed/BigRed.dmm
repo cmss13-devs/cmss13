@@ -14210,7 +14210,6 @@
 	},
 /area/bigredv2/outside/virology)
 "aKi" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -32803,7 +32802,6 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "izh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -36060,7 +36058,6 @@
 	},
 /area/bigredv2/caves_virology)
 "oCR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -38347,7 +38344,6 @@
 	},
 /area/bigredv2/caves_east)
 "sBI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"

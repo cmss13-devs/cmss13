@@ -30802,7 +30802,6 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "daq" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "dbg" = (
@@ -33489,7 +33488,6 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "hEr" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -34753,7 +34751,6 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "jLb" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "jLY" = (
@@ -36722,7 +36719,6 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "mQd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "mQe" = (

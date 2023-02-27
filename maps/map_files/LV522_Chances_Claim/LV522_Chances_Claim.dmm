@@ -11937,7 +11937,6 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "fPt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12094,7 +12093,6 @@
 /area/lv522/indoors/a_block/corpo)
 "fTO" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},

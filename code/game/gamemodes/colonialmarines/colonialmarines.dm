@@ -455,11 +455,13 @@
 			if(incrementer < auxiliary_marines_job_report.len)
 				auxiliary_marine_job_text += ", "
 
+		var/total_non_standard = 0
 		var/non_standard_job_text = ""
 		incrementer = 0
 		var/list/non_standard_job_report = round_status_report["counted humans"]["Non-Standard Humans"]
 		for(var/job_type in non_standard_job_report)
 			non_standard_job_text += "[job_type]: [non_standard_job_report[job_type]]"
+			total_non_standard += non_standard_job_report[job_type]
 			incrementer++
 			if(incrementer < non_standard_job_report.len)
 				non_standard_job_text += ", "
@@ -484,7 +486,8 @@
 		var/final_text = "Marines: [total_marines]\nSquad Marines: [total_squad_marines]\n\n"
 		final_text += "Marine jobs:\n[auxiliary_marine_job_text], [squad_marine_job_text]\n\n"
 
-		final_text += "Non-standard jobs:\n[non_standard_job_text]\n\n"
+		if(total_non_standard)
+			final_text += "Non-standard jobs:\n[non_standard_job_text]\n\n"
 
 		for(var/hive in hive_xeno_numbers)
 			final_text += "[hive]\nXenos: [hive_xeno_numbers[hive]]\n\n"

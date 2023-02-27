@@ -32,6 +32,15 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_buildup_limit = RECOIL_AMOUNT_TIER_3 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
+/obj/item/weapon/gun/minigun/handle_starting_attachment()
+	..()
+	//invisible mag harness
+	var/obj/item/attachable/magnetic_harness/M = new(src)
+	M.hidden = TRUE
+	M.flags_attach_features &= ~ATTACH_REMOVABLE
+	M.Attach(src)
+	update_attachable(M.slot)
+
 //Minigun UPP
 /obj/item/weapon/gun/minigun/upp
 	name = "\improper GSh-7.62 rotary machine gun"
@@ -49,15 +58,6 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 
-
-/obj/item/weapon/gun/minigun/upp/handle_starting_attachment()
-	..()
-	//invisible mag harness
-	var/obj/item/attachable/magnetic_harness/M = new(src)
-	M.hidden = TRUE
-	M.flags_attach_features &= ~ATTACH_REMOVABLE
-	M.Attach(src)
-	update_attachable(M.slot)
 
 //M60
 /obj/item/weapon/gun/m60

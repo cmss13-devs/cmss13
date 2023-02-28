@@ -6561,7 +6561,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "dtb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/rifle/l42a{
+/obj/item/weapon/gun/rifle/m4ra{
 	current_mag = null
 	},
 /turf/open/floor/prison{
@@ -19520,7 +19520,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "iTF" = (
-/obj/item/ammo_box/magazine/l42a/ap/empty,
+/obj/item/ammo_box/magazine/m4ra/ap/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -24334,7 +24334,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "kIM" = (
-/obj/item/ammo_magazine/rifle/l42a/ap{
+/obj/item/ammo_magazine/rifle/m4ra/ap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison{
@@ -25241,7 +25241,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "kZj" = (
-/obj/item/ammo_magazine/rifle/l42a/ap{
+/obj/item/ammo_magazine/rifle/m4ra/ap{
 	current_rounds = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -26223,7 +26223,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "lwZ" = (
-/obj/item/ammo_box/magazine/l42a/ap/empty,
+/obj/item/ammo_box/magazine/m4ra/ap/empty,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
@@ -40051,16 +40051,16 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUf" = (
-/obj/item/ammo_magazine/rifle/l42a/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/l42a/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/l42a/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
-/obj/item/ammo_magazine/rifle/l42a/extended{
+/obj/item/ammo_magazine/rifle/m4ra/ext{
 	current_rounds = 0
 	},
 /obj/structure/closet/crate/ammo,

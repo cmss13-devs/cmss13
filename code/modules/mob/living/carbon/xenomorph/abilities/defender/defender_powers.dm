@@ -262,3 +262,47 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
+
+/datum/action/xeno_action/activable/soak/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/steelcrest = owner
+	to_chat(world, "ability activated")
+
+	if (!action_cooldown_check())
+		return
+
+	if (!steelcrest.check_state())
+		return
+
+	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), soak_duration)
+
+	to_chat(steelcrest, SPAN_XENONOTICE("You begin to take in oncoming damage!"))
+
+	apply_cooldown()
+	..()
+	return
+
+
+/datum/action/xeno_action/activable/soak/proc/damage_accumulate(owner, damage_data, damage_type)
+	to_chat(world, "damage proc")
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/zenomorf = owner
+	to_chat(zenomorf, SPAN_XENONOTICE("Test"))
+
+	var/damage_taken = damage_data["damage"]
+
+	damage_accumulated += damage_taken
+
+	to_chat(world, "[damage_accumulated]")
+
+	if(damage_accumulated >= damage_threshold)
+		zenomorf.flick_heal_overlay(3 SECONDS, "#D9F500")
+		to_chat(zenomorf, SPAN_XENONOTICE("You stop taking in oncoming damage."))
+
+
+/datum/action/xeno_action/activable/soak/proc/stop_accumulating()
+	to_chat(world, "damage_accumulated")
+	UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE)
+
+	damage_accumulated = 0
+	to_chat(src, SPAN_XENONOTICE("You stop taking in oncoming damage."))

@@ -48,3 +48,16 @@
 	name = "Tail Slam"
 	ability_name = "tail slam"
 	blunt_stab = TRUE
+
+/datum/action/xeno_action/activable/soak
+	name = "Soak"
+	action_icon_state = "fortify"
+	ability_name = "soak"
+	macro_path = /datum/action/xeno_action/verb/verb_soak
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 15 SECONDS
+
+	var/damage_threshold = 100
+	var/soak_duration = 10
+	var/damage_accumulated = 0

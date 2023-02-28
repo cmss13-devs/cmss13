@@ -8,6 +8,9 @@
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/tail_sweep,
 	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/soak, //third macro
+	)
 	behavior_delegate_type = /datum/behavior_delegate/defender_steel_crest
 	keystone = TRUE
 

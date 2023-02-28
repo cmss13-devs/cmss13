@@ -26,7 +26,7 @@
 	///If it's a normal drink, let them drink a bit before they start feeling it.
 	var/accumulated_alcohol = 0
 	///This is when the properties are gonna hit. Drink in moderation.
-	var/effect_start = 250
+	var/effect_start = 150
 
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)

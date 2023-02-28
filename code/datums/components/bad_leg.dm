@@ -20,6 +20,9 @@
 /datum/component/bad_leg/Initialize(forced_limb)
 	. = ..()
 	parent_human = parent
+	if(!istype(parent_human))
+		return COMPONENT_INCOMPATIBLE
+
 	var/chosen_leg = forced_limb ? forced_limb : "l_leg" // always left leg by default first because i'm lazy and dont know how to add options to quirks
 	affected_limb = parent_human.get_limb(chosen_leg)
 	if(!affected_limb || affected_limb.status & LIMB_ROBOT)
@@ -30,16 +33,20 @@
 		qdel(src)
 
 /datum/component/bad_leg/Destroy(force, silent)
-	QDEL_NULL(bound_action)
-	parent_human = null
-	affected_limb = null
+	handle_qdel()
 	. = ..()
 
 
 /datum/component/bad_leg/RegisterWithParent()
 	..()
 	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(stumble))
+	RegisterSignal(parent_human, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdel))
 	give_action(parent_human, /datum/action/human_action/rest_legs, null, null, src)
+
+/datum/component/bad_leg/proc/handle_qdel()
+	QDEL_NULL(bound_action)
+	parent_human = null
+	affected_limb = null
 
 /datum/component/bad_leg/UnregisterFromParent()
 	..()
@@ -77,7 +84,6 @@
 			INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob/living/carbon/human, emote), "pain")
 			var/stun_time = 2.5 SECONDS
 			parent_human.Shake(pixelshiftx = 15, pixelshifty = 0, duration = stun_time)
-			parent_human.Stun(stun_time * 0.1) //already are seconds in Stun()
 			parent_human.apply_effect(stun_time, STUN)
 			addtimer(CALLBACK(src, PROC_REF(rest_legs_pain), parent_human, FALSE), stun_time)
 			return

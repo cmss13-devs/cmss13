@@ -82,7 +82,7 @@
 	icon_state = initial(icon_state) + "0"
 	SetOpacity(0)
 	sleep(10)
-	layer = PODDOOR_OPEN_LAYER
+	layer = open_layer
 	density = FALSE
 
 	if(operating == 1) //emag again

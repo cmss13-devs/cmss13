@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - server: "Introduces round results webhook."

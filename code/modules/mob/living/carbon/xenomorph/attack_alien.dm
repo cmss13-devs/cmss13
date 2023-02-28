@@ -156,14 +156,14 @@
 			//nice messages so people know that armor works
 			if(f_damage <= 0.34*damage)
 				to_chat(src, SPAN_WARNING("Your armor absorbs the blow!"))
-				if(prob(33))
-					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] tears off pieces off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
-					var/datum/effect_system/spark_spread/armor_shards/effect = new /datum/effect_system/spark_spread/armor_shards
-					effect.set_up(rand(3, 4), 4, src)
+				if(prob(20))
+					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] tears pieces off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
+					var/datum/effect_system/spark_spread/armor_shards/heavy/effect = new /datum/effect_system/spark_spread/armor_shards/heavy
+					effect.set_up(rand(1, 3), 4, src)
 					effect.start()
 			else if(f_damage <= 0.67*damage)
 				to_chat(src, SPAN_WARNING("Your armor softens the blow!"))
-				if(prob(15))
+				if(prob(20))
 					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] swipes bits off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
 					var/datum/effect_system/spark_spread/armor_shards/effect = new /datum/effect_system/spark_spread/armor_shards
 					effect.set_up(rand(1, 2), 2, src)

@@ -102,7 +102,13 @@ steam.start() -- spawns the effect
 
 /obj/effect/particle_effect/sparks/armor_shards
 	name = "armor shards"
-	icon_state = "armor_shards"
+	icon_state = "armor_shards_light"
+	sound_to_play = null
+	amount = 2
+
+/obj/effect/particle_effect/sparks/armor_shards/heavy
+	name = "large armor shards"
+	icon_state = "armor_shards_heavy"
 	sound_to_play = null
 	amount = 4
 
@@ -150,7 +156,11 @@ steam.start() -- spawns the effect
 /datum/effect_system/spark_spread/armor_shards
 	sparks_type = /obj/effect/particle_effect/sparks/armor_shards
 	spark_sleep_delay = 3
-	spark_duration = 1 SECONDS
+	spark_duration = 0.6 SECONDS
+
+
+/datum/effect_system/spark_spread/armor_shards/heavy
+	sparks_type = /obj/effect/particle_effect/sparks/armor_shards/heavy
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)

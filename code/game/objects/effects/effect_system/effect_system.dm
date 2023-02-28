@@ -87,16 +87,15 @@ steam.start() -- spawns the effect
 	icon_state = "sparks"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	/// Total amount of sparks possible, set to 10 if above that number, sets the variable 'number' on New. Pretty much completely redundant.
 	var/amount = 6
+	/// The sound that's played when sparks are created. Can be set to null for nothing.
 	var/sound_to_play = "sparks"
 
 /obj/effect/particle_effect/sparks/New()
 	..()
 	if(sound_to_play)
 		playsound(src.loc, sound_to_play, 25, 1)
-// var/turf/T = src.loc
-// if (istype(T, /turf))
-// T.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 
@@ -113,12 +112,14 @@ steam.start() -- spawns the effect
 	amount = 4
 
 /datum/effect_system/spark_spread
-	var/total_sparks = 0 // To stop it being spammed and lagging!
+	/// Total sparks. Counts the total amount, does not indicate how many to create. If above 20, stops creating sparks.
+	var/total_sparks = 0
 	/// Amount of sleep ticks before the sparks start moving around.
 	var/spark_sleep_delay = 5
 	/// How long sparks stay on the ground after creation.
 	var/spark_duration = 2 SECONDS
-	var/obj/effect/particle_effect/sparks/sparks_type = /obj/effect/particle_effect/sparks
+	/// Type of sparks to generate.
+	var/obj/effect/particle_effect/sparks/sparks_type
 
 /datum/effect_system/spark_spread/set_up(amount = 3, args_cardinals = 0, loca)
 	if(amount > 10)
@@ -152,6 +153,7 @@ steam.start() -- spawns the effect
 				if(sparks)
 					qdel(sparks)
 				total_sparks--
+
 
 /datum/effect_system/spark_spread/armor_shards
 	sparks_type = /obj/effect/particle_effect/sparks/armor_shards

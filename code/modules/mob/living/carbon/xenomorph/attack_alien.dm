@@ -158,14 +158,14 @@
 				to_chat(src, SPAN_WARNING("Your armor absorbs the blow!"))
 				if(prob(20))
 					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] tears pieces off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
-					var/datum/effect_system/spark_spread/armor_shards/heavy/effect = new /datum/effect_system/spark_spread/armor_shards/heavy
+					var/datum/effect_system/spark_spread/armor_shards/heavy/effect = new
 					effect.set_up(rand(1, 3), 4, src)
 					effect.start()
 			else if(f_damage <= 0.67*damage)
 				to_chat(src, SPAN_WARNING("Your armor softens the blow!"))
 				if(prob(20))
 					visible_message(SPAN_NOTICE("[M]'s [M.slash_verb] swipes bits off [src]'s armor!"), max_distance = 4) // cool visuals indicating the armor absorbing hits.
-					var/datum/effect_system/spark_spread/armor_shards/effect = new /datum/effect_system/spark_spread/armor_shards
+					var/datum/effect_system/spark_spread/armor_shards/effect = new
 					effect.set_up(rand(1, 2), 2, src)
 					effect.start()
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey

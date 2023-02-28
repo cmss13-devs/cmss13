@@ -271,6 +271,9 @@
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
+		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
+			if(headlamp.turn_off_light(src))
+				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))

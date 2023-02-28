@@ -733,15 +733,15 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber,
 		/obj/item/ammo_magazine/rifle/rubber,
-		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/surplus/surplus_l42_extended
-	name = "surplus magazine box (Ext L42A x 12)"
-	contains = list(/obj/item/ammo_box/magazine/l42a/ext)
+/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
+	name = "surplus magazine box (Ext M4RA x 12)"
+	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 

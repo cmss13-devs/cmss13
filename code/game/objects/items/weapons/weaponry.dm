@@ -346,7 +346,7 @@
 
 	if(istype(obj, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/door = obj
-		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG))) //basically IS_PRY_CAPABLE_CROWBAR
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 			if(!door.arePowerSystemsOn())
 				if(!door.operating)
 					if(door.density)
@@ -377,7 +377,7 @@
 
 	else if(istype(obj, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/door = obj
-		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG))) //basically IS_PRY_CAPABLE_CROWBAR
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 			return
 		if(door.isSwitchingStates)
 			return

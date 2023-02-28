@@ -606,6 +606,25 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
+	if(istype(C, /obj/item/weapon/melee/maintenance_jack) && locked)
+		var/obj/item/weapon/melee/maintenance_jack/current_jack = C
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Only Engi 3 can use that part of the ability
+			to_chat(user, SPAN_NOTICE("You can't figure out how to disable the bolts."))
+			return FALSE
+		if(current_jack.mode == "wrench")
+			user.visible_message(SPAN_DANGER("[user] begins to disable [src]'s bolts!"),\
+			SPAN_NOTICE("You start to disable [src]'s bolts."))
+			playsound(src, "pry", 25, TRUE)
+
+			if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+				to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [src] airlock."))
+				return
+
+			user.visible_message(SPAN_DANGER("[user] disables the bolts on [src] airlock."),\
+			SPAN_NOTICE("You unbolt [src] airlock."))
+			unlock(TRUE)
+			return
+
 	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))

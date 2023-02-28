@@ -23156,11 +23156,7 @@
 /area/varadero/interior/hall_SE)
 "tVX" = (
 /obj/structure/surface/rack,
-/obj/item/tool/crowbar/red{
-	desc = "An emergency hammer, crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks.";
-	icon_state = "maintenance_jack";
-	name = "maintenance jack"
-	},
+/obj/item/weapon/melee/maintenance_jack,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},

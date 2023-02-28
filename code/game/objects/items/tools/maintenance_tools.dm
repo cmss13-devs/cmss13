@@ -490,34 +490,6 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
-/obj/item/tool/crowbar/maintenance_jack
-	name = "maintenance jack"
-	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though. Use while in your hand to swap between wrench and crowbar usage."
-	icon_state = "maintenance_jack"
-	item_state = "red_crowbar"
-	hitsound = "swing_hit"
-	w_class = SIZE_MEDIUM
-	force = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_TIER_4
-	inherent_traits = list(TRAIT_TOOL_CROWBAR)
-
-/obj/item/tool/crowbar/maintenance_jack/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("It is set to [HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT) ? "crowbar" : "wrench"] mode.")
-
-/obj/item/tool/crowbar/maintenance_jack/attack_self(mob/user)
-	. = ..()
-	if(HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT))
-		playsound(src, 'sound/weapons/handling/gun_underbarrel_activate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
-		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
-		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-	else
-		playsound(src, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
-		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
-
 /*
 Welding backpack
 */

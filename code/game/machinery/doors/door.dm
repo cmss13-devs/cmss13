@@ -223,6 +223,8 @@
 	do_animate("opening")
 	icon_state = "door0"
 	SetOpacity(FALSE)
+	if(filler)
+		filler.SetOpacity(opacity)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
 	return TRUE
 
@@ -255,6 +257,8 @@
 	update_icon()
 	if(visible && !glass)
 		SetOpacity(TRUE)
+		if(filler)
+			filler.SetOpacity(opacity)
 	operating = FALSE
 
 /obj/structure/machinery/door/proc/requiresID()

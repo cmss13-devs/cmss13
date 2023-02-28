@@ -469,3 +469,27 @@
       you're in
   - ui: the keybind menu is less janky to use, and doesn't require you to click to
       select your input
+2023-02-28:
+  CapCamIII:
+  - rscadd: Adds the M4RA as the standard marine DMR, identical stats to L42 with
+      the exception of fitting a v or agrip and no removable stock, stats still the
+      same as l42 without stock.
+  - rscdel: L42 from all marine accessible sources with the exception of black market
+  - balance: Scout M4RA is now the M4RA Custom, it can use standard M4RA magazines
+      but standard M4RA cannot use custom magazines.
+  - balance: Scout M4RA now has L42/M4RA standard stats with the exception of lower
+      damage.
+  - balance: Scout M4RA now can fit magnetic harness, laser sight, however it can
+      no longer fit recoil compensator
+  - bugfix: R4T sling now has the correct color scheme on LV522
+  - spellcheck: New desc for M4RA and L42 by misty
+  - imageadd: New M4RA icons by triio, both scout and normal
+  Kraso:
+  - bugfix: Berserker ravager's Apprehend ability no longer slows you down for an
+      absurd amount of time.
+  Segrain:
+  - bugfix: Ghosts no longer can stop you from unflipping a table.
+  - bugfix: Igniters can once again be put into containers.
+  harryob:
+  - bugfix: the xm-88 mouse cursor was appearing when it shouldn't (without the scope),
+      and you can now opt out of seeing custom mouse cursors entirely

@@ -2744,7 +2744,7 @@
 
 /datum/ammo/xeno/acid/marking/on_hit_mob(mob/target, obj/item/projectile/impacting_projectile)
 	. = ..()
-	target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
+	target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS) //subject to change
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL
 

@@ -711,16 +711,16 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
-	var/mob/living/carbon/xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	var/spit_target = aim_turf ? get_turf(atom) : atom
-	if(!Xeno.check_state())
+	if(!xeno.check_state())
 		return
 
 	if(spitting)
 		to_chat(src, SPAN_WARNING("You are already preparing a spit!"))
 		return
 
-	if(!isturf(Xeno.loc))
+	if(!isturf(xeno.loc))
 		to_chat(src, SPAN_WARNING("You can't spit from here!"))
 		return
 
@@ -728,7 +728,7 @@
 		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
 		return
 
-	var/turf/current_turf = get_turf(Xeno)
+	var/turf/current_turf = get_turf(xeno)
 
 	if(!current_turf)
 		return
@@ -736,38 +736,38 @@
 	if (!check_plasma_owner())
 		return
 
-	if(Xeno.ammo.spit_windup)
+	if(xeno.ammo.spit_windup)
 		spitting = TRUE
-		if(Xeno.ammo.pre_spit_warn)
-			playsound(Xeno.loc,"alien_drool", 55, 1)
-		to_chat(Xeno, SPAN_WARNING("You begin to prepare a large spit!"))
-		Xeno.visible_message(SPAN_WARNING("[Xeno] prepares to spit a massive glob!"),\
-		SPAN_WARNING("You begin to spit [Xeno.ammo.name]!"))
-		if (!do_after(Xeno, Xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			to_chat(Xeno, SPAN_XENODANGER("You decide to cancel your spit."))
+		if(xeno.ammo.pre_spit_warn)
+			playsound(xeno.loc,"alien_drool", 55, 1)
+		to_chat(xeno, SPAN_WARNING("You begin to prepare a large spit!"))
+		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
+		SPAN_WARNING("You begin to spit [xeno.ammo.name]!"))
+		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("You decide to cancel your spit."))
 			spitting = FALSE
 			return
-	plasma_cost = Xeno.ammo.spit_cost
+	plasma_cost = xeno.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())
 		spitting = FALSE
 		return
 
-	xeno_cooldown = Xeno.caste.spit_delay + Xeno.ammo.added_spit_delay
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] spits at [atom]!"), \
+	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
 
-	SPAN_XENOWARNING("You spit a [Xeno.ammo.name] at [atom]!") )
-	playsound(Xeno.loc, sound_to_play, 25, 1)
+	SPAN_XENOWARNING("You spit a [xeno.ammo.name] at [atom]!") )
+	playsound(xeno.loc, sound_to_play, 25, 1)
 
 
-	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(Xeno.caste_type), Xeno))
-	Proj.generate_bullet(Xeno.ammo)
-	Proj.permutated += Xeno
-	Proj.def_zone = Xeno.get_limbzone_target()
-	Proj.fire_at(spit_target, Xeno, Xeno, Xeno.ammo.max_range, Xeno.ammo.shell_speed)
+	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	Proj.generate_bullet(xeno.ammo)
+	Proj.permutated += xeno
+	Proj.def_zone = xeno.get_limbzone_target()
+	Proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 	spitting = FALSE
 
-	SEND_SIGNAL(Xeno, COMSIG_XENO_POST_SPIT)
+	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()
 	..()

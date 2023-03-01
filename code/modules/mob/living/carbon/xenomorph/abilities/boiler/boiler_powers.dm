@@ -130,7 +130,7 @@
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
-	var/mob/living/carbon/xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!isxeno(owner))
 		return
 
@@ -138,28 +138,28 @@
 		return
 
 
-	if (!Xeno.check_state())
+	if (!xeno.check_state())
 		return
-	playsound(Xeno,"acid_strike", 50, 1)
-	if (!do_after(Xeno, Xeno.ammo.spit_windup/6, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2))
-		to_chat(Xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
+	playsound(xeno,"acid_strike", 50, 1)
+	if (!do_after(xeno, xeno.ammo.spit_windup/6, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2))
+		to_chat(xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
 		return
-	playsound(Xeno,"acid_sizzle", 50, 1)
-	if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+	playsound(xeno,"acid_sizzle", 50, 1)
+	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_acid
-	else if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
-		CRASH("Globber has unknown ammo [Xeno.ammo]! Oh no!")
-	spicy_gas.set_up(1, 0, get_turf(Xeno), null, 6)
+		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
+	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6)
 	spicy_gas.start()
-	to_chat(Xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
 	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/XenoAction = get_xeno_action_by_type(Xeno, action_type)
-		if (!istype(XenoAction))
+		var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+		if (!istype(xeno_action))
 			continue
 
-		XenoAction.apply_cooldown_override(cooldown_duration)
+		xeno_action.apply_cooldown_override(cooldown_duration)
 
 	apply_cooldown()
 	return

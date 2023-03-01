@@ -1070,7 +1070,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/plating,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2"
@@ -1980,12 +1979,10 @@
 	},
 /area/bigredv2/outside/space_port)
 "afN" = (
-/turf/open/floor/plating,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
+/turf/open/floor{
+	icon_state = "dark"
 	},
-/area/bigredv2/outside/space_port)
+/area/bigredv2/outside/telecomm/security)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -8843,7 +8840,6 @@
 	},
 /area/bigredv2/outside/medical)
 "ayT" = (
-/obj/structure/surface/table,
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -31664,7 +31660,7 @@
 	},
 /area/bigredv2/caves/mining)
 "lvh" = (
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -35382,14 +35378,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"sXQ" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/telecomm/security)
 "sYL" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8"
@@ -49041,7 +49029,7 @@ aah
 aah
 aah
 aah
-afN
+agv
 afh
 agv
 ahZ
@@ -54475,7 +54463,7 @@ aZq
 rpc
 akg
 akN
-sXQ
+afN
 ame
 ahj
 anx
@@ -54692,7 +54680,7 @@ aZq
 rpc
 rpc
 akN
-sXQ
+afN
 amg
 ahj
 aer
@@ -54909,7 +54897,7 @@ aZP
 bhM
 bhM
 akO
-sXQ
+afN
 amg
 aic
 acp
@@ -55122,11 +55110,11 @@ agz
 ahm
 aib
 bNy
-sXQ
-sXQ
-sXQ
-sXQ
-sXQ
+afN
+afN
+afN
+afN
+afN
 amg
 aic
 aer

@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - refactor: "Refactors gun, attachment, ammo, and ammo box icons to be held in separate folders per faction."

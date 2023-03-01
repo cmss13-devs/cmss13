@@ -264,6 +264,10 @@
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
+		colonial_marines.add_current_round_status_to_end_results("Hijack")
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)

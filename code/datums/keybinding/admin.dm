@@ -34,7 +34,7 @@
 		return
 	user.admin_holder.player_panel_new()
 	return TRUE
-/*
+
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
 	classic_keys = list("Unbound")
@@ -49,7 +49,7 @@
 		return
 	user.togglebuildmodeself()
 	return TRUE
-*/ /*
+
 /datum/keybinding/admin/stealthmode
 	hotkey_keys = list("F8")
 	classic_keys = list("F8")
@@ -64,7 +64,7 @@
 		return
 	user.invismin()
 	return TRUE
-*/
+
 /datum/keybinding/admin/deadsay
 	hotkey_keys = list("F10")
 	classic_keys = list("Unbound")

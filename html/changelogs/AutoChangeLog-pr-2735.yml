@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - admin: "Editing bitflag variables actually works now."

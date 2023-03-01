@@ -23,7 +23,11 @@
 	tackle_min = 2
 	tackle_max = 4
 
-/mob/living/carbon/Xenomorph/Defender
+	minimum_evolve_time = 4 MINUTES
+
+	minimap_icon = "defender"
+
+/mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
 	desc = "A alien with an armored head crest."
@@ -49,21 +53,21 @@
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_state()
+/mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
 		return TRUE
 	if(crest_defense)
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_wound_states(severity)
+/mob/living/carbon/xenomorph/defender/handle_special_wound_states(severity)
 	. = ..()
 	if(fortify)
 		return "Defender_fortify_[severity]"
 	if(crest_defense)
 		return "Defender_crest_[severity]"
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_backpack_states()
+/mob/living/carbon/xenomorph/defender/handle_special_backpack_states()
 	. = ..()
 	if(fortify)
 		return " Fortify"

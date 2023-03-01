@@ -17,6 +17,7 @@
 	var/sniper_lockon_icon = "sniper_lockon"
 	var/obj/effect/ebeam/sniper_beam_type = /obj/effect/ebeam/laser
 	var/sniper_beam_icon = "laser_beam"
+	var/skill_locked = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/get_examine_text(mob/user)
 	. = ..()
@@ -31,7 +32,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/able_to_fire(mob/living/user)
 	. = ..()
-	if(. && istype(user)) //Let's check all that other stuff first.
+	if(. && istype(user) && skill_locked) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
@@ -41,7 +42,7 @@
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_aim_distance = 2
 
-/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/aimed_shot/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Aimed Shot"
 	button.name = name
@@ -160,7 +161,7 @@
 	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
 	sniper_rifle.Fire(target, human)
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(mob/M, cover_lose_focus)
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
@@ -194,7 +195,7 @@
 
 	return TRUE
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
 	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
 	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
 		return TRUE
@@ -219,7 +220,7 @@
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 
-/datum/action/item_action/specialist/toggle_laser/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_laser/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Tracker Laser"
 	button.name = name
@@ -257,7 +258,7 @@
 		return FALSE
 	sniper_rifle.toggle_laser(owner, src)
 
-/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, var/datum/action/toggling_action)
+/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, datum/action/toggling_action)
 	enable_aimed_shot_laser = !enable_aimed_shot_laser
 	to_chat(user, SPAN_NOTICE("You flip a switch on \the [src] and [enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
 	playsound(user, 'sound/machines/click.ogg', 15, TRUE)
@@ -276,6 +277,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42A
 	name = "\improper M42A scoped rifle"
 	desc = "A heavy sniper rifle manufactured by Armat Systems. It has a scope system and fires armor penetrating rounds out of a 15-round magazine.\n'Peace Through Superior Firepower'"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = TRUE
@@ -327,9 +329,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/sniper/XM42B
-	name = "\improper XM42B experimental anti-materiel rifle"
+/obj/item/weapon/gun/rifle/sniper/xm43e1
+	name = "\improper XM43E1 experimental anti-materiel rifle"
 	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "xm42b"
 	item_state = "xm42b"
 	unacidable = TRUE
@@ -396,6 +399,7 @@
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
 	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/wy.dmi'
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
 
@@ -440,112 +444,158 @@
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
-		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
+		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
 
-//SVD //Based on the actual Dragunov sniper rifle.
+//SVD //Based on the actual Dragunov DMR rifle.
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper SVD Dragunov-033 sniper rifle"
-	desc = "A sniper variant of the MAR-40 rifle, with a new stock, barrel, and scope. It doesn't have the punch of modern sniper rifles, but it's finely crafted in 2133 by someone probably illiterate. Fires 7.62x54mmR rounds."
+	name = "\improper SVD Dragunov-033 designated marksman rifle"
+	desc = "A wannabe replica of an SVD, constructed from a MAR-40 by someone probably illiterate that thought the original SVD was built from an AK pattern. Fires 7.62x54mmR rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "svd003"
 	item_state = "svd003" //NEEDS A ONE HANDED STATE
 
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/scope/variable_zoom/slavic)
-
+		//Muzzle,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp_replica,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		//Barrel,
+		/obj/item/attachable/slavicbarrel,
+		//Rail,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/variable_zoom,
+		/obj/item/attachable/scope/variable_zoom/slavic,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/slavic,
+		//Under,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/bipod,
+		//Stock,
+		/obj/item/attachable/stock/slavic,
+	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
+	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/slavic)
 	sniper_beam_type = null
+	skill_locked = FALSE
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/S = new /obj/item/attachable/scope/variable_zoom/slavic(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
-	S.Attach(src)
-	update_attachable(S.slot)
-	S = new /obj/item/attachable/slavicbarrel(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-	S = new /obj/item/attachable/stock/slavic(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/attachie = new /obj/item/attachable/slavicbarrel(src)
+	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachie.Attach(src)
+	update_attachable(attachie.slot)
 
+	attachie = new /obj/item/attachable/stock/slavic(src)
+	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachie.Attach(src)
+	update_attachable(attachie.slot)
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
-
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_5*2
-	burst_amount = BURST_AMOUNT_TIER_2
-	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
-	scatter = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
-
-
-
-//M4RA marksman rifle
-
-/obj/item/weapon/gun/rifle/m4ra
-	name = "\improper M4RA battle rifle"
-	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Only fielded in small numbers, and sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nIt is equipped with rail scope and takes 10x24mm A19 high velocity magazines."
-	icon_state = "m41b"
-	item_state = "m4ra" //PLACEHOLDER
-	unacidable = TRUE
-	indestructible = 1
-
-	fire_sound = 'sound/weapons/gun_m4ra.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/m4ra
-	force = 16
-	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex
-						)
-
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
-
-	flags_item = TWOHANDED|NO_CRYO_STORE
-
-
-/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-
-/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
 	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
 
-/obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
+//M4RA custom marksman rifle
+
+/obj/item/weapon/gun/rifle/m4ra_custom
+	name = "\improper M4RA custom battle rifle"
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	icon_state = "m4ra_custom"
+	item_state = "m4ra_custom"
+	unacidable = TRUE
+	indestructible = 1
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/m4ra,
+		/obj/item/ammo_magazine/rifle/m4ra/ap,
+		/obj/item/ammo_magazine/rifle/m4ra/ext,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber,
+		/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+		/obj/item/ammo_magazine/rifle/m4ra/heap,
+		/obj/item/ammo_magazine/rifle/m4ra/penetrating,
+		/obj/item/ammo_magazine/rifle/m4ra/custom,
+		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
+
+	)
+
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
+	force = 16
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/flashlight/grip,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	map_specific_decoration = TRUE
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
+/obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/m4ra_barrel_custom/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+
+/obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
+
+/obj/item/weapon/gun/rifle/m4ra_custom/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
@@ -606,7 +656,7 @@
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 5.0
+	force = 5
 
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
@@ -614,7 +664,7 @@
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
 	has_cylinder = TRUE //This weapon won't work otherwise.
-	preload = /obj/item/explosive/grenade/HE
+	preload = /obj/item/explosive/grenade/high_explosive
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
@@ -703,7 +753,7 @@
 	return cylinder.attackby(I, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
 		toggle_firing_level(usr)
@@ -852,6 +902,7 @@
 /obj/item/weapon/gun/launcher/grenade/m92
 	name = "\improper M92 grenade launcher"
 	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m92"
 	item_state = "m92"
 	unacidable = TRUE
@@ -888,6 +939,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81
 	name = "\improper M81 grenade launcher"
 	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m81"
 	item_state = "m81" //needs a wield sprite.
 
@@ -924,6 +976,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
 	name = "\improper M79 grenade launcher"
 	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m79"
 	item_state = "m79"
 	flags_equip_slot = SLOT_BACK
@@ -942,7 +995,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/stock/m79,
-		)
+	)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
 	..()
@@ -966,6 +1019,7 @@
 /obj/item/weapon/gun/launcher/rocket
 	name = "\improper M5 RPG"
 	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m5"
 	item_state = "m5"
 	unacidable = TRUE
@@ -980,8 +1034,8 @@
 	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
-						/obj/item/attachable/magnetic_harness
-						)
+		/obj/item/attachable/magnetic_harness,
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
 	var/datum/effect_system/smoke_spread/smoke
@@ -1158,6 +1212,7 @@
 /obj/item/weapon/gun/launcher/rocket/m57a4
 	name = "\improper M57-A4 'Lightning Bolt' quad thermobaric launcher"
 	desc = "The M57-A4 'Lightning Bolt' is possibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "m57a4"
 	item_state = "m57a4"
 
@@ -1248,7 +1303,7 @@
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
 	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
-	icon = 'icons/obj/items/weapons/guns/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m83a2_folded"
 	w_class = SIZE_MEDIUM
 	garbage = FALSE

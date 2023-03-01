@@ -31,7 +31,7 @@
 	stun_reduction = 2
 	weed_slowdown_mult = 0.5
 
-/datum/species/human/hero/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/human/hero/handle_post_spawn(mob/living/carbon/human/H)
 	H.universal_understand = TRUE
 	H.status_flags |= NO_PERMANENT_DAMAGE //John Wick doesn't get internal bleeding from a grazing gunshot
 	H.status_flags &= ~STATUS_FLAGS_DEBILITATE
@@ -66,7 +66,7 @@
 	cold_level_3 = 20
 
 	//To show them we mean business.
-/datum/species/human/spook/handle_unique_behavior(var/mob/living/carbon/human/H)
+/datum/species/human/spook/handle_unique_behavior(mob/living/carbon/human/H)
 	//if(prob(25)) animation_horror_flick(H)
 
 	//Organ damage will likely still take them down eventually.

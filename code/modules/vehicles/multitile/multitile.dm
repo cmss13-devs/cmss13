@@ -122,7 +122,7 @@
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		// You can't hide from the MPs
 		ACCESS_MARINE_BRIG,
 	)
@@ -137,7 +137,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1.0
+		"cooldown" = 1
 	)
 
 	//Changes how much damage the vehicle takes
@@ -194,7 +194,7 @@
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return
 
-/obj/vehicle/multitile/proc/toggle_cameras_status(var/on)
+/obj/vehicle/multitile/proc/toggle_cameras_status(on)
 	if(camera)
 		camera.toggle_cam_status(on)
 	if(camera_int)
@@ -239,14 +239,14 @@
 		overlays += J
 
 //Normal examine() but tells the player what is installed and if it's broken
-/obj/vehicle/multitile/get_examine_text(var/mob/user)
+/obj/vehicle/multitile/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		. += "There is \a [H] module installed."
 		H.examine(user, TRUE)
 	if(clamped)
 		. += "There is a vehicle clamp attached."
-	if(isXeno(user) && interior)
+	if(isxeno(user) && interior)
 		var/passengers_amount = interior.passengers_taken_slots
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
@@ -264,14 +264,14 @@
 	return list("width" = (bound_width / world.icon_size), "height" = (bound_height / world.icon_size))
 
 //Returns the ratio of damage to take, just a housekeeping thing
-/obj/vehicle/multitile/proc/get_dmg_multi(var/type)
+/obj/vehicle/multitile/proc/get_dmg_multi(type)
 	if(!dmg_multipliers || !dmg_multipliers.Find(type))
 		return 1
 	return dmg_multipliers[type] * dmg_multipliers["all"]
 
 //Generic proc for taking damage
 //ALWAYS USE THIS WHEN INFLICTING DAMAGE TO THE VEHICLES
-/obj/vehicle/multitile/proc/take_damage_type(var/damage, var/type, var/atom/attacker)
+/obj/vehicle/multitile/proc/take_damage_type(damage, type, atom/attacker)
 	var/all_broken = TRUE
 	for(var/obj/item/hardpoint/H in hardpoints)
 		// Health check is done before the hardpoint takes damage
@@ -293,20 +293,20 @@
 		log_attack("[src] took [damage] [type] damage from [attacker].")
 	update_icon()
 
-/obj/vehicle/multitile/Entered(var/atom/movable/A)
+/obj/vehicle/multitile/Entered(atom/movable/A)
 	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint) && !istype(A, /obj/item/hardpoint))
 		A.forceMove(loc)
 		return
 	return ..()
 
 // Add/remove verbs that should be given when a mob sits down or unbuckles here
-/obj/vehicle/multitile/proc/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/proc/add_seated_verbs(mob/living/M, seat)
 	return
 
-/obj/vehicle/multitile/proc/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/proc/remove_seated_verbs(mob/living/M, seat)
 	return
 
-/obj/vehicle/multitile/set_seated_mob(var/seat, var/mob/living/M)
+/obj/vehicle/multitile/set_seated_mob(seat, mob/living/M)
 	// Give/remove verbs
 	if(QDELETED(M))
 		var/mob/living/L = seats[seat]
@@ -324,10 +324,10 @@
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
-/obj/vehicle/multitile/proc/get_seat_mob(var/seat)
+/obj/vehicle/multitile/proc/get_seat_mob(seat)
 	return seats[seat]
 
-/obj/vehicle/multitile/proc/get_mob_seat(var/mob/M)
+/obj/vehicle/multitile/proc/get_mob_seat(mob/M)
 	for(var/seat in seats)
 		if(seats[seat] == M)
 			return seat
@@ -374,11 +374,11 @@
 	return
 
 //Installation of modules kit
-/obj/effect/vehicle_spawner/proc/load_hardpoints(var/obj/vehicle/multitile/V)
+/obj/effect/vehicle_spawner/proc/load_hardpoints(obj/vehicle/multitile/V)
 	return
 
 //Miscellaneous additions
-/obj/effect/vehicle_spawner/proc/load_misc(var/obj/vehicle/multitile/V)
+/obj/effect/vehicle_spawner/proc/load_misc(obj/vehicle/multitile/V)
 
 	V.load_role_reserved_slots()
 	V.initialize_cameras()
@@ -391,12 +391,12 @@
 		V.desc = desc
 
 //Dealing enough damage to destroy the vehicle
-/obj/effect/vehicle_spawner/proc/load_damage(var/obj/vehicle/multitile/V)
+/obj/effect/vehicle_spawner/proc/load_damage(obj/vehicle/multitile/V)
 	V.take_damage_type(1e8, "abstract")
 	V.take_damage_type(1e8, "abstract")
 	V.healthcheck()
 
-/obj/effect/vehicle_spawner/proc/handle_direction(var/obj/vehicle/multitile/M)
+/obj/effect/vehicle_spawner/proc/handle_direction(obj/vehicle/multitile/M)
 	switch(dir)
 		if(EAST)
 			M.try_rotate(90)
@@ -410,6 +410,6 @@
 	return 3 SECONDS
 
 //handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
-/obj/vehicle/multitile/proc/handle_acidic_environment(var/atom/A)
+/obj/vehicle/multitile/proc/handle_acidic_environment(atom/A)
 	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 		Loco.handle_acid_damage(A)

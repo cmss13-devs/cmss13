@@ -15,7 +15,7 @@
 		if(user.client?.prefs?.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
 			return
-	if(!isHumanSynthStrict(user))
+	if(!ishumansynth_strict(user))
 		to_chat(user, SPAN_DANGER("You don't know how to use this!"))
 		return
 	if(user.silent)
@@ -34,7 +34,7 @@
 	if((src.loc == user && !user.is_mob_incapacitated()))
 		var/list/mob/living/carbon/human/human_viewers = viewers(user) // slow but we need it
 		for(var/mob/living/carbon/human/listener in human_viewers)
-			if(isYautja(listener)) //NOPE
+			if(isyautja(listener)) //NOPE
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message

@@ -28,8 +28,8 @@ var/list/ob_type_fuel_requirements
 	COOLDOWN_DECLARE(ob_chambering_cooldown) //cooldown for chambering the gun
 	var/chamber_cooldown_time = 250 SECONDS
 
-/obj/structure/orbital_cannon/New()
-	..()
+/obj/structure/orbital_cannon/Initialize()
+	. = ..()
 	if(!almayer_orbital_cannon)
 		almayer_orbital_cannon = src
 

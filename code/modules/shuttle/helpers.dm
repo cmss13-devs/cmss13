@@ -105,6 +105,12 @@
 			if("force-unlock")
 				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)
 				is_locked = FALSE
+			if("lock-bulkheads")
+				var/list/turf/adjacent_door_turfs = list(get_step(D, NORTH), get_step(D, SOUTH), get_step(D, EAST), get_step(D, WEST))
+				for(var/i in 1 to length(adjacent_door_turfs))
+					for(var/obj/structure/machinery/door/poddoor/almayer/open/evac/evacPoddoor in adjacent_door_turfs[i].contents)
+						evacPoddoor.close()
+
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
 	var/list/door_turfs = list(get_turf(air))

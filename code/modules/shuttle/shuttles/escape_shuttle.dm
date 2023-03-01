@@ -48,6 +48,7 @@
 	if(panel.pod_state == STATE_DELAYED)
 		return
 
+	door_handler.control_doors("lock-bulkheads")
 	door_handler.control_doors("force-lock-launch")
 	destination = null
 	var/occupant_count = 0

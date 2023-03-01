@@ -113,7 +113,7 @@
 
 	// if the AA site matches target site
 	if(target_zone == almayer_aa_cannon.protecting_section)
-		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
+		var/list/remaining_crash_sites = (SSmapping.configs[SHIP_MAP].map_name == "USS Almayer" ? almayer_ship_sections.Copy() : westerneye_ship_sections.Copy())
 		remaining_crash_sites -= target_zone
 		var/new_target_zone = pick(remaining_crash_sites)
 		var/area/target_area = get_crashsite_area(new_target_zone)
@@ -161,11 +161,31 @@
 
 /datum/dropship_hijack/almayer/proc/get_crashsite_area(ship_section)
 	var/list/areas = list()
+	var/map_name = SSmapping.configs[SHIP_MAP].map_name
 	switch(ship_section)
 		if("Upper deck Foreship")
-			areas += typesof(/area/almayer/shipboard/brig)
-			areas += list(/area/almayer/command/cichallway)
-			areas += list(/area/almayer/command/cic)
+			switch(map_name)
+				if("USS Almayer")
+					areas += typesof(/area/almayer/shipboard/brig)
+					areas += list(/area/almayer/command/cichallway)
+					areas += list(/area/almayer/command/cic)
+				if("USS Western Eye")
+					areas += list(
+						/area/westerneye/shipboard/weapon_room,
+						/area/westerneye/shipboard/starboard_missiles,
+						/area/westerneye/shipboard/port_missiles,
+						/area/westerneye/shipboard/navigation,
+						/area/westerneye/hull/upper_hull/u_f_p,
+						/area/westerneye/hull/upper_hull/u_f_s,
+						/area/westerneye/command/cic,
+						/area/westerneye/command/cichallway,
+						/area/westerneye/living/commandbunks,
+						/area/westerneye/living/officer_study,
+						/area/westerneye/living/bridgebunks,
+						/area/westerneye/living/numbertwobunks,
+						/area/westerneye/living/officer_rnr,
+						/area/westerneye/living/briefing
+					)
 		if("Upper deck Midship")
 			areas += list(
 				/area/almayer/medical/morgue,
@@ -177,15 +197,31 @@
 				/area/almayer/medical/hydroponics,
 			)
 		if("Upper deck Aftship")
-			areas += list(
-				/area/almayer/engineering/upper_engineering,
-				/area/almayer/command/computerlab,
-			)
+			switch(map_name)
+				if("USS Almayer")
+					areas += list(
+						/area/almayer/engineering/upper_engineering,
+						/area/almayer/command/computerlab,
+					)
+				if("USS Western Eye")
+					areas += typesof(/area/westerneye/squads)
+					areas += list(
+						/area/westerneye/engineering/engineering_workshop/hangar,
+						/area/westerneye/engineering/upper_engineering
+					)
 		if("Lower deck Foreship")
-			areas += list(
-				/area/almayer/hallways/hangar,
-				/area/almayer/hallways/vehiclehangar
-			)
+			switch(map_name)
+				if("USS Almayer")
+					areas += list(
+						/area/almayer/hallways/hangar,
+						/area/almayer/hallways/vehiclehangar
+					)
+				if("USS Western Eye")
+					areas += typesof(/area/westerneye/shipboard/brig)
+					areas += list(
+						/area/westerneye/hull/starboard_warehouse,
+						/area/westerneye/hull/port_warehouse,
+					)
 		if("Lower deck Midship")
 			areas += list(
 				/area/almayer/medical/chemistry,
@@ -198,12 +234,46 @@
 				/area/almayer/medical/operating_room_four,
 				/area/almayer/living/briefing,
 				/area/almayer/squads/req,
-
 			)
 		if("Lower deck Aftship")
+			switch(map_name)
+				if("USS Almayer")
+					areas += list(
+						/area/almayer/living/cryo_cells,
+						/area/almayer/engineering/engineering_workshop,
+					)
+				if("USS Western Eye")
+					areas += list(
+						/area/westerneye/command/officer_prep,
+						/area/westerneye/hallways/lowerdeck_aft_hallway,
+						/area/westerneye/engineering/starboard_atmos,
+						/area/westerneye/engineering/port_atmos,
+						/area/westerneye/engineering/engineering_workshop,
+						/area/westerneye/engineering/lower_engineering,
+						/area/westerneye/engineering/engine_core
+					)
+		if("Mid deck Foreship")
 			areas += list(
-				/area/almayer/living/cryo_cells,
-				/area/almayer/engineering/engineering_workshop,
+				/area/westerneye/hallways/repair_bay,
+				/area/westerneye/hallways/hangar,
+				/area/westerneye/living/pilotbunks,
+				/area/westerneye/medical/containment,
+				/area/westerneye/medical/morgue,
+				/area/westerneye/medical/lower_medical_medbay,
+				/area/westerneye/living/offices
+			)
+		if("Mid deck Aftship")
+			areas += list(
+				/area/westerneye/living/grunt_rnr,
+				/area/westerneye/living/mess_hall,
+				/area/westerneye/living/chapel,
+				/area/westerneye/living/cryo_cells,
+				/area/westerneye/living/cryo_cell_showers,
+				/area/westerneye/hallways/midship_aft_hallway,
+				/area/westerneye/living/alpha_bunks,
+				/area/westerneye/living/bravo_bunks,
+				/area/westerneye/living/charlie_bunks,
+				/area/westerneye/living/delta_bunks
 			)
 		else
 			CRASH("Crash site [ship_section] unknown.")

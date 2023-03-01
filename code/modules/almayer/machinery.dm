@@ -377,11 +377,21 @@
 /obj/structure/prop/westerneye/hangar_overlook/five
 	icon_state = "CIC_overlook_5"
 
+/obj/structure/prop/westerneye/overhead_lattice
+	name = "overhead lattice"
+	desc = "A lightweight support lattice."
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
+	icon_state = "lattice12"
+	layer = FLY_LAYER
+	pixel_y = 16
+
 /obj/structure/prop/westerneye/trash_chute
+
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "trash_chute"
 	plane = FLOOR_PLANE
 	layer = TURF_LAYER
+
 
 /obj/structure/prop/westerneye/trash_chute/Initialize()
 	. = ..()

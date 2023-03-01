@@ -409,12 +409,12 @@
 	icon_state = "port"
 	fake_zlevel = 3 // lowerdeck
 
-/area/westerneye/hallways/starboard_escape_hallway
+/area/westerneye/hallways/lower_starboard_escape_hallway
 	name = "\improper Lower Starboard Escape Pods"
 	icon_state = "starboard"
 	fake_zlevel = 3
 
-/area/westerneye/hallways/port_escape_hallway
+/area/westerneye/hallways/lower_port_escape_hallway
 	name = "\improper Lower Port Escape Pods"
 	icon_state = "port"
 	fake_zlevel = 3

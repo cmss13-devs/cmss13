@@ -269,13 +269,26 @@
 	var/vector_x
 	var/vector_y
 	var/list/disallowed_atoms = list(/obj/docking_port/stationary/vehicle_elevator,
-									/obj/structure,
 									/obj/effect/projector,
 									/obj/effect/landmark/multi_fakezlevel_supply_elevator,
 									/obj/effect/step_trigger/clone_cleaner,
 									/obj/effect/elevator/supply/multi,
 									/atom/movable/clone,
-									/obj/effect/elevator/animation_overlay)
+									/obj/effect/elevator/animation_overlay,
+									/obj/structure/prop/westerneye)
+
+/turf/open/floor/almayer/empty/multi_elevator/Initialize(mapload, ...)
+	. = ..()
+
+	if(istype(get_area(src),  /area/supply/station))
+		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
+			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+			vector_x = -m_shuttle.offset_distance
+
+/turf/open/floor/almayer/empty/multi_elevator/Crossed(O)
+	. = ..()
+	if(istype(O, /obj/structure))
+		enter_depths(O)
 
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
 	if(is_type_in_list(AM, disallowed_atoms))
@@ -297,10 +310,7 @@
 					AM.layer = UNDER_TURF_LAYER
 					break
 			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				var/debug1 = x + (vector_x ? vector_x :  -m_shuttle.offset_distance)
-				var/debug2 = y + vector_y
-				var/debug3 = z
-				fallonto_turf = locate(x + (vector_x ? vector_x :  -m_shuttle.offset_distance), y + vector_y, z)
+				fallonto_turf = locate(x + vector_x, y + vector_y, z)
 
 			if(ishuman(AM))
 				var/mob/living/carbon/human/human_who_fell = AM

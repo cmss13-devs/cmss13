@@ -232,7 +232,7 @@
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(dropship.is_hijacked)
 		return
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", (SSmapping.configs[SHIP_MAP].map_name == "USS Almayer" ? almayer_ship_sections.Copy() : westerneye_ship_sections.Copy()))
 	if(!result)
 		return
 	if(dropship.is_hijacked)

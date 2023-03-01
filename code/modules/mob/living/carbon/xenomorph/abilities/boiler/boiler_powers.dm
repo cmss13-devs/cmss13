@@ -187,7 +187,7 @@
 	..()
 
 /datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/A)
-	..()
+	. = ..()
 	apply_cooldown()
 
 /////////////////////////////// Trapper boiler powers

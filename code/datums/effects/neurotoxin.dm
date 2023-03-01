@@ -30,6 +30,7 @@
 		return FALSE
 
 	return ..()
+
 /datum/effects/neurotoxin/process_mob() //yandere dev coding style
 	. = ..()
 	var/mob/living/carbon/affected_mob = affected_atom
@@ -128,7 +129,7 @@
 			if(hallu_area)
 				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Schizo Lurker Pounce' hallucination (5% chance) at \the <b>[hallu_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[victim.loc.x];Y=[victim.loc.y];Z=[victim.loc.z]'>JMP</a>)"))
-			playsound_client(victim.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
+			playsound_client(victim?.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
 			victim.KnockDown(3)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bonebreak"), 1 SECONDS)

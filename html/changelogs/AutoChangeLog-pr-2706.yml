@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - rscadd: "Reworks alcohol and its property and makes it way too complicated"
+  - bugfix: "Adds a limit to how long you will be slurring for after drinking alcohol"

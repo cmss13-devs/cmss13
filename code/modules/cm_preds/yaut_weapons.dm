@@ -820,7 +820,7 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
 
-	heat_source = 1500 // Plasma Pistols fire burning hot bounbs of plasma. Makes sense they're hot|TWOHANDED
+	heat_source = 1500 // Plasma Pistols fire burning hot bounbs of plasma. Makes sense they're hot
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Initialize(mapload, spawn_empty)
 	. = ..()

@@ -4,8 +4,9 @@
 // in case you wanted a vent to always smoke north for example
 /////////////////////////////////////////////
 
-/// Chance that cades block the gas. Smoke ticks are calculated very quickly so this has to be high to have an effect.
-#define	BOILER_GAS_CADE_BLOCK_CHANCE 25
+/// Chance that cades block the gas. Smoke spread ticks are calculated very quickly so this has to be high to have an effect.
+#define	BOILER_GAS_CADE_BLOCK_CHANCE 35
+
 /obj/effect/particle_effect/smoke
 	name = "smoke"
 	icon_state = "smoke"

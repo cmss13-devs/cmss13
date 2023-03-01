@@ -180,7 +180,7 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
-	
+
 /obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
@@ -630,7 +630,7 @@
 	var/max_spikes = 12
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/launcher/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
@@ -651,9 +651,9 @@
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
@@ -818,7 +818,7 @@
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -845,13 +845,11 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_7
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
 	if(isYautja(user))

@@ -19,7 +19,7 @@
 	// Tick-based chat cooldown so it doesn't get too spammy
 	var/chat_cd = 0
 	/// Stamina damage per tick. Major balance number.
-	var/stam_dam = 7.5
+	var/stam_dam = 7
 
 /datum/effects/neurotoxin/New(atom/thing)
 	..(thing)
@@ -40,7 +40,7 @@
 		return
 // General effects
 	affected_mob.apply_stamina_damage(stam_dam)
-	affected_mob.make_dizzy(10)
+	affected_mob.make_dizzy(12)
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)
@@ -55,12 +55,12 @@
 			bloodcough_prob = 10
 
 		if(15 to 19) // 3 ticks in smoke
-			msg = SPAN_DANGER("Your eyes sting, you can't see!")
+			msg = pick(SPAN_BOLDNOTICE("Why am I here?"),SPAN_HIGHDANGER("Your entire body feels numb!"), SPAN_HIGHDANGER("You notice your movement is erratic!"), SPAN_HIGHDANGER("You panic as numbness takes over your body!"))
 			bloodcough_prob = 20
 			stumble_prob = 5
 
 		if(20 to 24) // 4 ticks in smoke
-			msg = pick(SPAN_BOLDNOTICE("Why am I here?"),SPAN_HIGHDANGER("Your entire body feels numb!"), SPAN_HIGHDANGER("You notice your movement is erratic!"), SPAN_HIGHDANGER("You panic as numbness takes over your body!"))
+			msg = SPAN_DANGER("Your eyes sting, you can't see!")
 			bloodcough_prob = 25
 			stumble_prob = 25
 
@@ -74,9 +74,6 @@
 		affected_mob.apply_effect(max(affected_mob.eye_blurry, strength), EYE_BLUR)
 
 	if(duration > 14) // 3 ticks in smoke
-		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
-
-	if(duration > 18) // 4 ticks in smoke, neuro is affecting cereberal activity
 		affected_mob.apply_effect(5,AGONY)  // Fake crit, a good way to induce panic
 		affected_mob.make_jittery(15)
 		if(affected_mob.client && ishuman(affected_mob) && hallucinate)
@@ -84,6 +81,9 @@
 			process_hallucination(affected_human)
 			hallucinate = FALSE
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
+
+	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
+		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
@@ -105,7 +105,8 @@
 		affected_mob.make_dizzy(55)
 		affected_mob.emote("pain")
 		stumble = FALSE
-		addtimer(VARSET_CALLBACK(src,stumble,TRUE),2 SECONDS)
+		addtimer(VARSET_CALLBACK(src,stumble,TRUE),3 SECONDS)
+		duration++
 
 	if(prob(bloodcough_prob))
 		affected_mob.emote("cough")

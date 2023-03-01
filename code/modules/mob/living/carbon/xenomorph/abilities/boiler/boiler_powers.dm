@@ -103,31 +103,6 @@
 	return (activated_once || ..())
 
 
-/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/A)
-	if (!isxeno(owner))
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	var/mob/living/carbon/xenomorph/X = owner
-
-	if (!X.check_state())
-		return
-
-	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
-
-	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/XA = get_xeno_action_by_type(X, action_type)
-		if (!istype(XA))
-			continue
-
-		XA.apply_cooldown_override(cooldown_duration)
-
-	apply_cooldown()
-	..()
-	return
-
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -140,8 +115,11 @@
 
 	if (!xeno.check_state())
 		return
-	playsound(xeno,"acid_strike", 50, 1)
-	if (!do_after(xeno, xeno.ammo.spit_windup/6, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2))
+	if(sound_play)
+		playsound(xeno,"acid_strike", 35, 1)
+		sound_play = FALSE
+		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
+	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
 		to_chat(xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
 		return
 	playsound(xeno,"acid_sizzle", 50, 1)
@@ -355,7 +333,17 @@
 	max_range = 4
 
 /datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 6)
+		if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+			carbon_target.reagents.add_reagent("molecularacid", 6)
+		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
+			if(!neuro_effect)
+				neuro_effect = new /datum/effects/neurotoxin(carbon_target)
+			neuro_effect.duration += 16
+			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
+		else
+			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")

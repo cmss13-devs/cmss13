@@ -64,6 +64,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 10
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
+	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam
+	var/sound_play = TRUE
 
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates
 	var/action_types_to_cd = list(

@@ -5,7 +5,7 @@
 /////////////////////////////////////////////
 
 /// Chance that cades block the gas. Smoke ticks are calculated very quickly so this has to be high to have an effect.
-#define	BOILER_GAS_CADE_BLOCK_CHANCE 20
+#define	BOILER_GAS_CADE_BLOCK_CHANCE 25
 /obj/effect/particle_effect/smoke
 	name = "smoke"
 	icon_state = "smoke"
@@ -342,7 +342,7 @@
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
 	/// How much neuro is dosed per tick
-	var/neuro_dose = 5
+	var/neuro_dose = 6
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
 //No effect when merely entering the smoke turf, for balance reasons

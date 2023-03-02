@@ -482,6 +482,24 @@
 	tgui_say?.load()
 	prefs.save_preferences()
 
+/client/verb/toggle_custom_cursors()
+	set name = "Toggle Custom Cursors"
+	set category = "Preferences.UI"
+	set desc = "Toggle Custom Cursors"
+
+	do_toggle_custom_cursors()
+
+/client/proc/do_toggle_custom_cursors(mob/user)
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	if(!result)
+		return
+	if(result == "Yes")
+		prefs.custom_cursors = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+	else
+		prefs.custom_cursors = FALSE
+		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"
 	set category = "Preferences.UI"

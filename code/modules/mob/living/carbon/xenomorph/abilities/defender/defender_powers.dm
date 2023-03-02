@@ -272,6 +272,9 @@
 	if (!steelcrest.check_state())
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	RegisterSignal(steelcrest, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 

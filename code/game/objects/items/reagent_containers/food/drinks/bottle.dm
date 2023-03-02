@@ -342,6 +342,16 @@
 	. = ..()
 	reagents.add_reagent("absinthe", 100)
 
+/obj/item/reagent_container/food/drinks/bottle/blackout //used for testing alcohol code
+	name = "Blackout Stout"
+	desc = "Renowned through space and time, a bottle of Blackout is enough to knock out almost anyone. A true test for the true drunkard."
+	icon_state = "pwineglass"
+	center_of_mass = "x=16;y=6"
+
+/obj/item/reagent_container/food/drinks/bottle/blackout/Initialize()
+	. = ..()
+	reagents.add_reagent("blackout", 100)
+
 /obj/item/reagent_container/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
 	desc = "A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light."

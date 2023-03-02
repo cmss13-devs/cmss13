@@ -57,12 +57,6 @@
 	icon_state = "75"
 	},
 /area/shuttle/drop2/sulaco)
-"eT" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
 "fb" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "23"
@@ -410,8 +404,7 @@
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-<<<<<<< HEAD
+	icon_state = "rasputin3"
 	},
 /area/shuttle/drop2/sulaco)
 "Gy" = (
@@ -422,9 +415,7 @@
 	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-=======
->>>>>>> upstream/master
+	icon_state = "rasputin3"
 	},
 /area/shuttle/drop2/sulaco)
 "GE" = (

@@ -2740,7 +2740,7 @@
 	accuracy = HIT_ACCURACY_TIER_10*8
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR
 	damage_falloff = 0
-	max_range = 32
+	max_range = 16
 
 /datum/ammo/xeno/acid/marking/on_hit_mob(mob/target, obj/item/projectile/impacting_projectile)
 	. = ..()
@@ -2754,8 +2754,12 @@
 		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
 			continue
 
-		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits [target]!"))
+		if (SEND_SIGNAL(boosting_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+			continue
+
+		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
 		boosting_xeno.gain_health(30)
+		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
 		target.balloon_alert(boosting_xeno, "gain energy!")
 
 /datum/ammo/xeno/acid/dot

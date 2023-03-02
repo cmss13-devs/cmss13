@@ -226,6 +226,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/current_menu = MENU_MARINE
 
+	/// if this client has custom cursors enabled
+	var/custom_cursors = TRUE
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -545,6 +548,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Prefer input drop down menus to radial menus, where possible:</b> <a href='?_src_=prefs;preference=no_radials_preference'><b>[no_radials_preference ? "TRUE" : "FALSE"]</b></a><br>"
 			if(!no_radials_preference)
 				dat += "<b>Hide Radial Menu Labels:</b> <a href='?_src_=prefs;preference=no_radial_labels_preference'><b>[no_radial_labels_preference ? "TRUE" : "FALSE"]</b></a><br>"
+			dat += "<b>Custom Cursors:</b> <a href='?_src_=prefs;preference=customcursors'><b>[custom_cursors ? "Enabled" : "Disabled"]</b></a><br>"
 
 			dat += "<h2><b><u>Chat Settings:</u></b></h2>"
 			if(CONFIG_GET(flag/ooc_country_flags))
@@ -1734,6 +1738,9 @@ var/const/MAX_SAVE_SLOTS = 10
 						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
 					user?.client.tgui_say?.load()
 					save_preferences()
+
+				if("customcursors")
+					owner?.do_toggle_custom_cursors(owner?.mob)
 
 				if("save")
 					if(save_cooldown > world.time)

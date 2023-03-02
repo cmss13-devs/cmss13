@@ -344,15 +344,20 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "\improper USCM patch"
+	name = "USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
-	name = "\improper Falling Falcons patch"
+	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/patch/forecon
+	name = "USCM Force Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
+	icon_state = "forecon_patch"
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"

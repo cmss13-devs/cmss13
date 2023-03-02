@@ -1,6 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - rscadd: "Added the ability for xenomorphs to turn off hardhats on the ground."
-  - bugfix: "Hardhat headlamps no longer stay on when their wearer dies."
-  - code_imp: "Changed hardhat code to be in line with flashlight code."

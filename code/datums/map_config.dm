@@ -147,7 +147,6 @@
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
 
-	CHECK_EXISTS("webmap_url")
 	webmap_url = json["webmap_url"]
 
 	map_file = json["map_file"]

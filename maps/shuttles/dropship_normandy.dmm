@@ -41,7 +41,7 @@
 "do" = (
 /obj/effect/attach_point/crew_weapon/dropship2,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin3"
 	},
 /area/shuttle/drop2/sulaco)
 "es" = (
@@ -55,6 +55,12 @@
 "eu" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "75"
+	},
+/area/shuttle/drop2/sulaco)
+"eT" = (
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "fb" = (
@@ -405,6 +411,7 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
+<<<<<<< HEAD
 	},
 /area/shuttle/drop2/sulaco)
 "Gy" = (
@@ -416,6 +423,8 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
+=======
+>>>>>>> upstream/master
 	},
 /area/shuttle/drop2/sulaco)
 "GE" = (

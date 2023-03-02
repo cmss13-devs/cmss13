@@ -22,7 +22,7 @@
 		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
 		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
-		list("L42A Battle Rifle", round(scale * 20), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M4RA Battle Rifle", round(scale * 20), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", round(scale * 15), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
@@ -287,7 +287,7 @@
 		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", round(scale * 2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
-		list("L42A Magazine (10x24mm)", round(scale * 20.8), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M4RA Magazine (10x24mm)", round(scale * 20.8), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Magazine (10x24mm)", round(scale * 18), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", round(scale * 17.1), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", round(scale * 18.1), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
@@ -295,7 +295,7 @@
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("88 Mod 4 AP Magazine (9mm)", round(scale * 16.7), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
-		list("L42A AP Magazine (10x24mm)", round(scale * 15.7), /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24mm)", round(scale * 15.7), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", round(scale * 11.9), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 AP Magazine (10x24mm)", round(scale * 10.5), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine (9mm)", round(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
@@ -386,7 +386,7 @@
 	listed_products = list(
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
-		list("L42A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 
@@ -479,7 +479,6 @@
 		list("Vertical Grip", round(scale * 9.5), /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
-		list("L42 Synthetic Stock", round(scale * 4.5), /obj/item/attachable/stock/carbine, VENDOR_ITEM_REGULAR),
 		list("M37 Wooden Stock", round(scale * 4.5), /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
 		list("M39 Arm Brace", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
 		list("M39 Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),

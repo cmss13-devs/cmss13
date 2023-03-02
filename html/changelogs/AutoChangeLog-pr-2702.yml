@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - code_imp: "Clears up gun and mob related hard dels"

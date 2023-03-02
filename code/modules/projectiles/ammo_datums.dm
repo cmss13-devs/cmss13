@@ -2760,7 +2760,6 @@
 		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
 		boosting_xeno.gain_health(30)
 		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
-		target.balloon_alert(boosting_xeno, "gain energy!")
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"

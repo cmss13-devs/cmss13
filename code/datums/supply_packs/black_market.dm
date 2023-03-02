@@ -646,7 +646,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/belt/champion,
 		/obj/item/clothing/mask/luchador,
 		/obj/item/tool/soap/deluxe,
-		/obj/item/weapon/melee/maintenance_jack,
+		/obj/item/maintenance_jack,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,

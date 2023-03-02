@@ -23153,7 +23153,7 @@
 /area/varadero/interior/hall_SE)
 "tVX" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/maintenance_jack,
+/obj/item/maintenance_jack,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},

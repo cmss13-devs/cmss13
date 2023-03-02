@@ -369,7 +369,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/maintenance_jack(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/maintenance_jack(H), WEAR_J_STORE)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
 	. = ..()

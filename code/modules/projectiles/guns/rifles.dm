@@ -485,6 +485,10 @@
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
 
+/obj/item/weapon/gun/rifle/m46c/Destroy()
+	linked_human = null
+	. = ..()
+
 /obj/item/weapon/gun/rifle/m46c/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/stock/rifle/collapsible/S = new(src)

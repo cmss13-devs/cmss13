@@ -1,4 +1,0 @@
-author: "Kraso"
-delete-after: True
-changes:
-  - bugfix: "Berserker ravager's Apprehend ability no longer slows you down for an absurd amount of time."

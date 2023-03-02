@@ -188,7 +188,7 @@
 		return
 
 	var/obj/structure/bed/chair/chair = locate(/obj/structure/bed/chair) in range(1, user)
-	if(chair)
+	if(chair?.can_rotate)
 		chair.human_rotate()
 
 /datum/keybinding/human/show_held_item

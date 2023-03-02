@@ -1,3 +1,5 @@
+#define HIJACK_EXPLOSION_COUNT 5
+
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
 	config_tag = "Distress Signal"
@@ -157,6 +159,17 @@
 	. = ..()
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+
+	if(is_in_endgame && !TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_BARRAGE))
+		var/list/shortly_exploding_pipes = list()
+		for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
+			shortly_exploding_pipes += pick(GLOB.mainship_pipes)
+
+		for(var/obj/item/pipe/exploding_pipe in shortly_exploding_pipes)
+			exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
+			new /obj/effect/warning/explosive(exploding_pipe)
+
+		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 5 SECONDS)
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
@@ -345,3 +358,5 @@
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."
 	return "Round has ended in a strange way."
+
+#undef HIJACK_EXPLOSION_COUNT

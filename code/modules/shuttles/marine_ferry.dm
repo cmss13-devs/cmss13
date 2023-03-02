@@ -443,13 +443,46 @@
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[T_trg.x];Y=[T_trg.y];Z=[T_trg.z]'>JMP</a>)")))
 
-	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
-	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
+	addtimer(CALLBACK(src, PROC_REF(do_dropship_incoming_sound), turfs_int), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_dropship_collision), T_trg, turfs_int, src_rot), 12 SECONDS)
 
-	sleep(85)
+/datum/shuttle/ferry/marine/proc/do_dropship_incoming_sound(list/turfs_int)
+	playsound_area(get_area(turfs_int[sound_target]), 'sound/effects/dropship_incoming.ogg', 100)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_incoming.ogg')
+
+/datum/shuttle/ferry/marine/proc/do_dropship_collision(turf/T_trg, list/turfs_int, src_rot)
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
+
+	playsound_area(get_area(turfs_int[sound_target]), 'sound/effects/dropship_crash.ogg', 100)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg')
+
+	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list) //knock down mobs
+		if(human.z != T_trg.z)
+			continue
+		if(human.buckled && !human.buckled.anchored)
+			human.buckled.unbuckle()
+		if(human.buckled)
+			to_chat(human, SPAN_WARNING("You are jolted against [human.buckled]!"))
+			shake_camera(human, 3, 1)
+		else
+			to_chat(human, SPAN_WARNING("You are thrown into the air by the force of the impact!"))
+			shake_camera(human, 10, 1)
+			human.KnockDown(3)
+
+			var/throw_dir = pick(alldirs)
+			var/turf/thrown_turf = human.loc
+			var/turf/temp = human.loc
+
+			var/throw_distance = rand(2, 3)
+			for(var/x in 0 to throw_distance)
+				temp = get_step(thrown_turf, throw_dir)
+				if (!temp)
+					break
+				thrown_turf = temp
+
+			human.throw_atom(thrown_turf, throw_distance, SPEED_FAST, null, TRUE)
 
 	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)
@@ -494,7 +527,7 @@
 				break
 		sleep(1)
 
-	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+	for(var/mob/living/carbon/affected_mob in GLOB.living_xeno_list) //knock down mobs
 		if(affected_mob.z != T_trg.z)
 			continue
 		if(affected_mob.buckled)

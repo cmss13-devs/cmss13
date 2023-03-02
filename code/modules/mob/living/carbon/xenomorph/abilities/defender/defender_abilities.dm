@@ -49,15 +49,15 @@
 	ability_name = "tail slam"
 	blunt_stab = TRUE
 
-/datum/action/xeno_action/activable/soak
+/datum/action/xeno_action/onclick/soak
 	name = "Soak"
-	action_icon_state = "fortify"
+	action_icon_state = "soak"
 	ability_name = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 15 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_5
+	plasma_cost = 20
+	xeno_cooldown = 17 SECONDS
 
-	var/damage_threshold = 100
-	var/soak_duration = 10
-	var/damage_accumulated = 0
+	var/damage_threshold = 140 // Requires 140 damage taken within 6 seconds to activate the ability
+	var/damage_accumulated = 0 // Intially zero, gets damage added when the ability is activated

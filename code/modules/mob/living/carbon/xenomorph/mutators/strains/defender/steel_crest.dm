@@ -1,6 +1,6 @@
 /datum/xeno_mutator/steel_crest
 	name = "STRAIN: Defender - Steel Crest"
-	description = "You trade your tail sweep and a small amount of your slash damage for slightly increased headbutt knockback and damage and the ability to slowly move and headbutt while fortified."
+	description = "You trade your tail sweep and a small amount of your slash damage for slightly increased headbutt knockback and damage and the ability to slowly move and headbutt while fortified. Along with this, you gain a unique ability to accumulate damage, and use it to recover a slight amount of HP and refresh your tail slam."
 	flavor_description = "To handle yourself, use your head. To handle others, use your head."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -9,7 +9,7 @@
 		/datum/action/xeno_action/onclick/tail_sweep,
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/soak, //third macro
+		/datum/action/xeno_action/onclick/soak,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/defender_steel_crest
 	keystone = TRUE

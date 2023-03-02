@@ -402,8 +402,10 @@
 	icon_state = "minirocket_smk"
 	point_cost = 100 ///price in the fabricator
 	fire_mission_delay = 3
-	var/chemical = null ///chemical(s) in the chemical minirocket
-	var/state = ASSEMBLY_EMPTY /// current assembly state of the chemsmoke minircoket
+	/// chemical(s) in the chemical minirocket
+	var/chemical
+	/// current assembly state of the chemsmoke minircoket
+	var/state = ASSEMBLY_EMPTY 
 
 /obj/structure/ship_ammo/minirocket/smoke/Destroy()
 	chemical = null

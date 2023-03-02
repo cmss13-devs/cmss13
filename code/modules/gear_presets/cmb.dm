@@ -517,7 +517,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME5"
+	paygrade = "ME6"
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
@@ -547,10 +547,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE) // he's collected the squad's supply of these magazines on request of OW
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_R_STORE) // he's collected the squad's supply of these magazines on request of OW
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/buckshot, WEAR_L_HAND)
 
 //Anchorpoint Station Marine RTO - technical specialist, has the responsibility of engineering as well

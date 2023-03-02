@@ -524,7 +524,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || GLOB.interior_manager.interior_z == X.z)
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for creating a resin hole."))
 		return
 	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
@@ -605,7 +605,7 @@
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
-	if(GLOB.interior_manager.interior_z == X.z)
+	if(SSinterior.in_interior(X))
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 
@@ -664,7 +664,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(GLOB.interior_manager.interior_z == X.z)
+	if(SSinterior.in_interior(X))
 		to_chat(X, SPAN_WARNING("It's too tight in here to build."))
 		qdel(structure_template)
 		return FALSE

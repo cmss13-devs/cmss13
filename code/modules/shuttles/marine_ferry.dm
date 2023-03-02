@@ -4,23 +4,6 @@
 //Front-end this should look exactly the same, save for a minor timing difference (about 1-3 deciseconds)
 //Some of this code is ported from the previous shuttle system and modified for these purposes.
 
-
-/*
-/client/verb/TestAlmayerEvac()
-	set name = "Test Almayer Evac"
-
-	for(var/datum/shuttle/ferry/marine/M in shuttle_controller.process_shuttles)
-		if(M.info_tag == "Almayer Evac" || M.info_tag == "Alt Almayer Evac")
-			spawn(1)
-				M.short_jump()
-				to_world("LAUNCHED THING WITH TAG [M.shuttle_tag]")
-		else if(M.info_tag == "Almayer Dropship")
-			spawn(1)
-				M.short_jump()
-				to_world("LAUNCHED THING WITH TAG [M.shuttle_tag]")
-		else to_world("did not launch thing with tag [M.shuttle_tag]")
-*/
-
 /datum/shuttle/ferry/marine
 	var/shuttle_tag //Unique ID for finding which landmarks to use
 	var/info_tag //Identifies which coord datums to copy
@@ -92,16 +75,10 @@
 
 /datum/shuttle/ferry/marine/proc/load_datums()
 	if(!(info_tag in s_info))
-		message_staff(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
 
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
-
-/datum/shuttle/ferry/marine/proc/launch_crash(user)
-	if(!can_launch()) return //There's another computer trying to launch something
-
-	in_use = user
-	process_state = FORCE_CRASH
 
 /datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
 	automated_launch = bool_v
@@ -151,12 +128,6 @@
 				else short_jump()
 
 				process_state = WAIT_ARRIVE
-
-		if (FORCE_CRASH)
-			if(move_time) long_jump_crash()
-			else short_jump() //If there's no move time, we are doing this normally
-
-			process_state = WAIT_ARRIVE
 
 		if (FORCE_LAUNCH)
 			if (move_time) long_jump()
@@ -209,7 +180,7 @@
 		T_trg = pick(locs_land)
 		trg_rot = locs_land[T_trg]
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
 
 	//Switch the landmarks, to swap docking and landing locs, so we can move back and forth.
 	if(!transit_gun_mission) //gun mission makes you land back where you started. no need to swap dock and land turfs.
@@ -285,11 +256,6 @@
 
 	close_doors(turfs_int) // adding this for safety.
 
-	var/list/lightssource = get_landing_lights(T_src)
-	for(var/obj/structure/machinery/landinglight/F in lightssource)
-		if(F.id == shuttle_tag)
-			F.turn_off()
-
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
 		SSticker.mode.ds_first_drop()
 
@@ -306,13 +272,6 @@
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound(turfs_trg[sound_target], sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
-
-
-	var/list/lightsdest = get_landing_lights(T_trg)
-	for(var/obj/structure/machinery/landinglight/F in lightsdest)
-		if(F.id == shuttle_tag)
-			F.turn_on()
-
 	sleep(100) //Wait for it to finish.
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
@@ -403,11 +362,11 @@
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
-			else message_staff("no crash turf found in Almayer Hangar, contact coders.")
+			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
 	shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -449,11 +408,6 @@
 	var/list/turfs_int = get_shuttle_turfs(T_int, info_datums) //Interim turfs
 
 	close_doors(turfs_int) // adding this for safety.
-
-	var/list/lights = get_landing_lights(T_src)
-	for(var/obj/structure/machinery/landinglight/F in lights)
-		if(F.id == shuttle_tag)
-			F.turn_off()
 
 	in_transit_time_left = travel_time
 	while(in_transit_time_left > 0)
@@ -578,15 +532,15 @@
 
 
 	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
-		if(is_mainship_level(d.z) || is_loworbit_level(d.z))
+		if(is_mainship_level(d.z) || is_reserved_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
 	for (var/obj/structure/machinery/power/apc/APC in machines)
-		if(is_mainship_level(APC.z) || is_loworbit_level(APC.z))
+		if(is_mainship_level(APC.z) || is_reserved_level(APC.z))
 			APC.ion_act()
 	for (var/obj/structure/machinery/power/smes/SMES in machines)
-		if(is_mainship_level(SMES.z) || is_loworbit_level(SMES.z))
+		if(is_mainship_level(SMES.z) || is_reserved_level(SMES.z))
 			SMES.ion_act()
 
 	//END: Heavy lifting backend
@@ -597,6 +551,9 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
+			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
 	enter_allowed = FALSE
@@ -614,7 +571,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
 		return FALSE
 
 	locs_dock -= T_src

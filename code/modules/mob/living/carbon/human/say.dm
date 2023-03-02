@@ -298,6 +298,11 @@ for it but just ignore it.
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
+	if(HAS_TRAIT(src, TRAIT_LISPING))
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb

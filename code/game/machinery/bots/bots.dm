@@ -15,6 +15,10 @@
 	var/open = 0//Maint panel
 	var/locked = 1
 
+/obj/structure/machinery/bot/Destroy()
+	QDEL_NULL(botcard)
+	. = ..()
+
 
 /obj/structure/machinery/bot/proc/turn_on()
 	if(stat)

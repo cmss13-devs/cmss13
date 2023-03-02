@@ -36,6 +36,7 @@
 		/obj/item/reagent_container/food/drinks/tea = 3,
 		/obj/item/reagent_container/food/drinks/h_chocolate = 15,
 		)
+	product_type = VENDOR_PRODUCT_TYPE_BEVERAGES
 
 /obj/structure/machinery/vending/coffee/simple
 	name = "Hot Coffee Machine"
@@ -72,6 +73,7 @@
 		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
 		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
@@ -132,6 +134,7 @@
 		/obj/item/reagent_container/food/drinks/cans/cola = 20,
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+	product_type = VENDOR_PRODUCT_TYPE_SOUTO
 
 /obj/structure/machinery/vending/cola/research
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
@@ -172,6 +175,7 @@
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_NICOTINE
 
 /obj/structure/machinery/vending/cigarette/free
 	product_slogans = ""
@@ -260,7 +264,7 @@
 		/obj/item/ammo_magazine/pistol/rubber = 20,
 		/obj/item/ammo_magazine/pistol/mod88/rubber = 20,
 		/obj/item/ammo_magazine/rifle/rubber = 20,
-		/obj/item/ammo_magazine/rifle/l42a/rubber = 20,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber = 20,
 		/obj/item/ammo_magazine/shotgun/beanbag = 20,
 		/obj/item/storage/firstaid/regular = 2,
 		/obj/item/storage/firstaid/fire = 2,
@@ -424,3 +428,4 @@
 		/obj/item/toy/deck/uno = 15,
 		/obj/item/device/camera = 30,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

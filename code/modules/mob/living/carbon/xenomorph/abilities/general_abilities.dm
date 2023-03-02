@@ -241,6 +241,12 @@
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
 
+/**
+ * Effects to apply *inmediately* before pouncing.
+ */
+/datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	return
+
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return

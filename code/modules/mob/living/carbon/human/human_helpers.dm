@@ -271,6 +271,9 @@
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
+		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
+			if(headlamp.turn_off_light(src))
+				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))
@@ -309,7 +312,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0

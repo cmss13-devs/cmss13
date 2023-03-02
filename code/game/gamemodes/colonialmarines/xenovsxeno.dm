@@ -1,8 +1,8 @@
 #define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_queen)
 
 /datum/game_mode/xenovs
-	name = "Hive Wars"
-	config_tag = "Hive Wars"
+	name = GAMEMODE_HIVE_WARS
+	config_tag = GAMEMODE_HIVE_WARS
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
@@ -199,7 +199,7 @@
 			round_checkwin = 0
 
 
-/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/list/list/hivenumbers = list()
 	var/datum/hive_status/HS
 	for(var/hivenumber in GLOB.hive_datum)

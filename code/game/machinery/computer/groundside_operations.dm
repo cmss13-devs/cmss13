@@ -2,7 +2,7 @@
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -61,7 +61,7 @@
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR>Primary LZ <BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
+		dat += "<BR><A href='?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
@@ -223,7 +223,7 @@
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
 			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
-			message_staff("[key_name(usr)] has made a command announcement.")
+			message_admins("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
@@ -232,13 +232,14 @@
 		if("selectlz")
 			if(SSticker.mode.active_lz)
 				return
-			var/lz_choices = list()
-			for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-				if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
-					lz_choices += console
-			var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
-			if(new_lz)
-				SSticker.mode.select_lz(new_lz)
+			var/lz_choices = list("lz1", "lz2")
+			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+			if(!new_lz)
+				return
+			if(new_lz == "lz1")
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			else
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 
 		if("pick_squad")
 			var/list/squad_list = list()
@@ -286,7 +287,7 @@
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
 			echo_squad.engage_squad(TRUE)
-			message_staff("[key_name(usr)] activated Echo Squad for '[reason]'.")
+			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
 
 		if("refresh")
 			attack_hand(usr)

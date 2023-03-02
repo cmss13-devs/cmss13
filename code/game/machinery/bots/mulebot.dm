@@ -89,6 +89,13 @@
 		suffix = "#[count]"
 	name = "Mulebot ([suffix])"
 
+/obj/structure/machinery/bot/mulebot/Destroy()
+	QDEL_NULL(load)
+	QDEL_NULL(target)
+	QDEL_NULL(cell)
+	SSradio.remove_object(src, control_freq)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 // set up the wire colours in random order
 // and the random wire display order
@@ -99,9 +106,9 @@
 	wire_text = list()
 	wire_order = list()
 	while(colours.len > 0)
-		var/colour = colours[ rand(1,colours.len) ]
-		wire_text += colour
-		colours -= colour
+		var/color = colours[ rand(1,colours.len) ]
+		wire_text += color
+		colours -= color
 
 		var/order = orders[ rand(1,orders.len) ]
 		wire_order += text2num(order)

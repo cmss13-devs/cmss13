@@ -11,9 +11,6 @@
 		if (default_map_traits.len > world.maxz)
 			default_map_traits.Cut(world.maxz + 1)
 
-	//var/datum/space_level/LO = new(2, "Low Orbit", list(ZTRAIT_LOWORBIT))
-	//z_list += LO
-
 	for (var/I in 1 to default_map_traits.len)
 		var/list/features = default_map_traits[I]
 		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])

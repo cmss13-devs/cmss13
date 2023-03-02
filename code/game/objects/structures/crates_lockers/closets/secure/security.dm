@@ -183,7 +183,7 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "Lethal Injections"
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_SENIOR)
 
 /obj/structure/closet/secure_closet/injection/Initialize()
 	. = ..()

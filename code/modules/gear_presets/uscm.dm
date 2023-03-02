@@ -205,8 +205,7 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ALPHA,
@@ -232,7 +231,6 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies
@@ -785,6 +783,9 @@
 
 	minimap_icon = "private"
 
+/datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/H)
+	H.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
@@ -818,8 +819,8 @@
 	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd/heap, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40/heap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/xm40, WEAR_J_STORE)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
 	//limbs

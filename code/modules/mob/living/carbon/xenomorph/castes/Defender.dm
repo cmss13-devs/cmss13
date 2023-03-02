@@ -23,6 +23,8 @@
 	tackle_min = 2
 	tackle_max = 4
 
+	minimum_evolve_time = 4 MINUTES
+
 	minimap_icon = "defender"
 
 /mob/living/carbon/xenomorph/defender

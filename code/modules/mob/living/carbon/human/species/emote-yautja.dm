@@ -89,7 +89,7 @@
 	cooldown = 120 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/yautja/loadroar/get_sound(mob/living/user)
+/datum/emote/living/carbon/human/yautja/loudroar/get_sound(mob/living/user)
 	return pick('sound/voice/pred_roar4.ogg', 'sound/voice/pred_roar5.ogg')
 
 /datum/emote/living/carbon/human/yautja/loudroar/run_emote(mob/user, params, type_override, intentional)
@@ -134,4 +134,9 @@
 /datum/emote/living/carbon/human/yautja/overthere
 	key = "overthere"
 	sound = 'sound/voice/pred_over_there.ogg'
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/yautja/uglyfreak
+	key = "uglyfreak"
+	sound = 'sound/voice/pred_ugly_freak.ogg'
 	emote_type = EMOTE_AUDIBLE

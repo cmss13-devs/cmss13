@@ -119,7 +119,7 @@
 			return TRUE
 		if(!cover_open)
 			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
+			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the belt to be removed."))
 			cover_open = TRUE
 		else
 			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)

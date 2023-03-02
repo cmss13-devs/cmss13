@@ -310,6 +310,11 @@
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
 	iff_signal = FACTION_MERCENARY
 
+/obj/item/device/motiondetector/hacked/dutch
+	name = "hacked motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-Dutch's Dozen movement instead. Fight fire with fire!"
+	iff_signal = FACTION_DUTCH
+
 /obj/item/device/motiondetector/hacked/contractor
 	name = "modified motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been modified with after-market IFF sensors to detect all non-Vanguard's Arrow Incorporated movement instead. Fight fire with fire!"

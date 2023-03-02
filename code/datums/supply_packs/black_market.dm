@@ -77,7 +77,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
 	. = ..()
-	switch(rand(1,7))
+	switch(rand(1,6))
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
@@ -85,33 +85,28 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
+		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
+		if(3) //clf
 			new /obj/item/clothing/under/colonist/clf(src)
 			new /obj/item/clothing/suit/storage/militia(src)
 			new /obj/item/clothing/head/militia(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(5) //upp
+		if(4) //upp
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
 			new /obj/item/clothing/shoes/marine/upp(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(6) //freelancer
+		if(5) //freelancer
 			new /obj/item/clothing/under/marine/veteran/freelancer(src)
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(7) //VAIPO
+		if(6) //VAIPO
 			new /obj/item/clothing/glasses/sunglasses/big(src)
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
 			new /obj/item/clothing/under/tshirt/gray_blu(src)

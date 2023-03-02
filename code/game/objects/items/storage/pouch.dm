@@ -423,6 +423,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/handful,
 	)
 

@@ -84,6 +84,10 @@
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
+	//factors in the distance to the AO
+	flight_duration = DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
+
+
 	dropship.callTime = round(flight_duration)
 	dropship.rechargeTime = round(recharge_duration)
 

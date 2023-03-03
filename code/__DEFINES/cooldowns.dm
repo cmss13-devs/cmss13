@@ -1,4 +1,5 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
+#define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
 
 //// COOLDOWN SYSTEMS
 /*

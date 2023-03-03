@@ -74,8 +74,6 @@
 
 	focus = null
 	overlays_standing = null
-	selected_ability = null
-	assigned_squad = null
 
 	//Equipment slots
 	wear_suit = null

@@ -96,9 +96,9 @@
 
 //unused due to thermal/wallpìercing combo
 /obj/item/ammo_kit/penetrating
-	name = "wall-piercing ammo kit"
+	name = "wall-penetrating ammo kit"
 	icon_state = "kit_penetrating"
-	desc = "Converts magazines into wall-piercing ammo."
+	desc = "Converts magazines into wall-penetrating ammo."
 
 /obj/item/ammo_kit/penetrating/get_convert_map()
 	. = ..()

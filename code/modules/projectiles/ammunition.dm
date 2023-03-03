@@ -31,6 +31,11 @@ They're all essentially identical when it comes to getting the job done.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
 
+	/// If this and ammo_band_icon aren't null, run update_ammo_band(). Is the color of the band, such as green on AP.
+	var/ammo_band_color
+	/// If this and ammo_band_color aren't null, run update_ammo_band() Is the greyscale icon used for the ammo band.
+	var/ammo_band_icon
+
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
 	GLOB.ammo_magazine_list += src
@@ -44,10 +49,20 @@ They're all essentially identical when it comes to getting the job done.
 			item_state += "_e"
 	pixel_y = rand(-6, 6)
 	pixel_x = rand(-7, 7)
+	if(ammo_band_color && ammo_band_icon)
+		update_ammo_band()
+
 
 /obj/item/ammo_magazine/Destroy()
 	GLOB.ammo_magazine_list -= src
 	return ..()
+
+/obj/item/ammo_magazine/proc/update_ammo_band()
+	overlays.Cut()
+	var/image/ammo_band_image = image(icon, src, ammo_band_icon)
+	ammo_band_image.color = ammo_band_color
+	ammo_band_image.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += ammo_band_image
 
 /obj/item/ammo_magazine/update_icon(round_diff = 0)
 	if(current_rounds <= 0)
@@ -63,6 +78,8 @@ They're all essentially identical when it comes to getting the job done.
 			C.update_inv_r_hand()
 		else if(C.l_hand == src)
 			C.update_inv_l_hand()
+	if(ammo_band_color && ammo_band_icon)
+		update_ammo_band()
 
 /obj/item/ammo_magazine/get_examine_text(mob/user)
 	. = ..()

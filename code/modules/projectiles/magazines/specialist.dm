@@ -12,18 +12,19 @@
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/sniper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/M42A
+	ammo_band_icon = "+m42c_band"
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
-	icon_state = "m42c_incen"
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
 	default_ammo = /datum/ammo/bullet/sniper/flak
-	icon_state = "m42c_flak"
+	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
 //M42B Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
@@ -73,21 +74,18 @@
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
 	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/m4ra/impact
 	name = "\improper A19 high velocity impact magazine (10x24mm)"
 	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra_impact"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra
-
-
-
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 //-------------------------------------------------------
 //SMARTGUN

@@ -269,7 +269,7 @@
 	properties = list(PROPERTY_NEOGENETIC = 3)
 
 /datum/reagent/medical/quickclot
-	name = "Quick Clot"
+	name = "wall-penetrating"
 	id = "quickclot"
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	reagent_state = LIQUID

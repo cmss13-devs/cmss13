@@ -330,7 +330,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/ap/penetrating
-	name = "wall-piercing pistol bullet"
+	name = "wall-penetrating pistol bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -504,7 +504,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/squash/penetrating
-	name = "wall-piercing squash-head pistol bullet"
+	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -632,7 +632,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/revolver/penetrating
-	name = "wall-piercing revolver bullet"
+	name = "wall-penetrating revolver bullet"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -895,7 +895,7 @@
 	))
 
 /datum/ammo/bullet/smg/ap/penetrating
-	name = "wall-piercing submachinegun bullet"
+	name = "wall-penetrating submachinegun bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -1039,7 +1039,7 @@
 
 
 /datum/ammo/bullet/rifle/ap/penetrating
-	name = "wall-piercing rifle bullet"
+	name = "wall-penetrating rifle bullet"
 	shrapnel_chance = 0
 
 	damage = 35

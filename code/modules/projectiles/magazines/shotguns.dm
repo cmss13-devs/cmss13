@@ -199,6 +199,16 @@ var/list/shotgun_handfuls_12g = list(
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "shell_greyscale" //unneeded
 
+//updates on init
+/obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
+	overlays.Cut()
+	. = ..()
+	icon_state = "shell_greyscale" + "_[current_rounds]"
+	var/image/I = image(icon, src, "+shell_base_[src.current_rounds]")
+	I.color = "#ffffff"
+	I.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += I
+
 /obj/item/ammo_magazine/handful/shotgun/flechette
 	name = "handful of shotgun flechette shells (12g)"
 	icon_state = "flechette_shell"
@@ -215,15 +225,6 @@ var/list/shotgun_handfuls_12g = list(
 	name = "handful of beanbag slugs (20g)"
 	caliber = "20g"
 
-//updates on init
-/obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
-	overlays.Cut()
-	. = ..()
-	icon_state = "shell_greyscale" + "_[current_rounds]"
-	var/image/I = image(icon, src, "+shell_base_[src.current_rounds]")
-	I.color = "#ffffff"
-	I.appearance_flags = RESET_COLOR|KEEP_APART
-	overlays += I
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
 	name = "handful of heavy shotgun slugs (8g)"

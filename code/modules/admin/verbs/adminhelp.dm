@@ -515,13 +515,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		options += n_option.title
 	return options
 
-// /Resolve ticket with an premade message
+/// Resolve ticket with a premade message
 /datum/admin_help/proc/AutoReply(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
-	var/chosen = tgui_alert(usr, "Which auto response do you wish to send?", "AutoReply", GetReplies())
+	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GetReplies())
 	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]
 
 	if(!response || !istype(response))

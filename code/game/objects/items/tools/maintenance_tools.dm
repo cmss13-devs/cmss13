@@ -505,7 +505,7 @@
 
 /obj/item/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("Interact with the Maintenace Jack to change modes.")
+	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
 	if(crowbar_mode)
 		. += SPAN_NOTICE("It is set to crowbar mode, allowing you to pry open doors, provided you are strong enough. Maybe you could even use this side for surgery...")
 	else

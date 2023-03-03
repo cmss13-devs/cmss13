@@ -638,7 +638,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width - Screen' width. Defaults to 550 to make it look nice.
 //height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(), width = 950, height = 700)
+/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
 	if(!RoleAuthority)
 		return
 
@@ -656,7 +656,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!active_role_names)
 		active_role_names = ROLES_REGULAR_ALL
 
-	var/datum/job/lastJob
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
 		if(!job)
@@ -664,16 +663,10 @@ var/const/MAX_SAVE_SLOTS = 10
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
-			if((index < limit) && (lastJob != null))
-				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-				//the last job's selection color. Creating a rather nice effect.
-				for(var/j = 0, j < (limit - index), j += 1)
-					HTML += "<tr class='[lastJob.selection_class]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
-		lastJob = job
 
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"

@@ -98,6 +98,50 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/reporter
+	name = "Combat Reporter"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	access = list(
+		ACCESS_ILLEGAL_PIRATE,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+	assignment = JOB_COMBAT_REPORTER
+	rank = JOB_COMBAT_REPORTER
+	paygrade = "C"
+	role_comm_title = "PRESS"
+	skills = /datum/skills/civilian
+	idtype = /obj/item/card/id/silver/cl
+
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
+/datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/fedora(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/megaphone(H), WEAR_IN_BACK)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/chief_engineer
 	name = "USCM Chief Engineer (CE)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE

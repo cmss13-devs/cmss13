@@ -137,8 +137,8 @@
 	name = "rat"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -1275,8 +1275,8 @@
 /area/almayer/lifeboat_pumps/north2)
 "aeD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -2180,9 +2180,9 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
-/obj/item/tool/pen,
-/obj/structure/sign/safety/terminal{
-	pixel_x = -17
+/obj/item/tool/pen{
+	pixel_x = 4;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -2195,17 +2195,21 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "ahu" = (
-/obj/item/device/flashlight/lamp/green{
-	pixel_y = 10
-	},
 /obj/structure/surface/table/almayer,
-/obj/item/trash/uscm_mre{
-	pixel_x = 7;
-	pixel_y = 4
+/obj/structure/machinery/computer/emails{
+	pixel_x = 2;
+	pixel_y = 5
 	},
-/obj/item/reagent_container/food/snacks/mre_pack/meal1{
-	pixel_x = -13;
-	pixel_y = 8
+/obj/structure/sign/safety/terminal{
+	pixel_x = 7;
+	pixel_y = 29
+	},
+/obj/structure/transmitter/rotary{
+	name = "Reporter Telephone";
+	phone_category = "Almayer";
+	phone_id = "Reporter";
+	pixel_x = -17;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -2226,15 +2230,14 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahx" = (
-/obj/structure/closet,
-/obj/item/clothing/under/marine/engineer,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "ahy" = (
-/obj/structure/closet,
-/obj/item/clothing/under/marine,
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2396,8 +2399,8 @@
 "aib" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access_txt = "7;19";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -3387,10 +3390,15 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/atmos_alert{
-	dir = 4;
-	pixel_y = 5
+/obj/item/device/camera{
+	pixel_x = -9;
+	pixel_y = 16
 	},
+/obj/item/storage/photo_album{
+	pixel_x = -6;
+	pixel_y = -17
+	},
+/obj/item/clothing/mask/cigarette/pipe,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -3449,10 +3457,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "alr" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/largecrate/random/barrel/green,
+/obj/structure/filingcabinet,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -5372,9 +5377,8 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "arp" = (
-/obj/item/roller,
-/obj/item/roller,
-/obj/structure/surface/rack,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -8329,8 +8333,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	shuttleId = "dropship_normandy";
-	name = "Normandy Remote Control Console"
+	name = "Normandy Remote Control Console";
+	shuttleId = "dropship_normandy"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8349,8 +8353,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
-	shuttleId = "dropship_alamo";
-	name = "Alamo Remote Control Console"
+	name = "Alamo Remote Control Console";
+	shuttleId = "dropship_alamo"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -10344,9 +10348,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
+	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7";
-	no_panel = 1
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10362,9 +10366,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
+	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7";
-	no_panel = 1
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10586,8 +10590,8 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper XO's Quarters";
-	req_access_txt = "1";
-	req_access = null
+	req_access = null;
+	req_access_txt = "1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -25513,12 +25517,12 @@
 /area/almayer/living/cryo_cells)
 "ccc" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = -25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = -25
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -25932,9 +25936,9 @@
 	pixel_y = -7
 	},
 /obj/structure/transmitter/rotary{
+	name = "Flight Deck Telephone";
 	phone_category = "Almayer";
 	phone_id = "Flight Deck";
-	name = "Flight Deck Telephone";
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
@@ -32599,8 +32603,8 @@
 	pixel_x = -6
 	},
 /obj/item/paper_bin/uscm{
-	pixel_y = 12;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -33322,8 +33326,8 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -33606,8 +33610,8 @@
 	icon_state = "S"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
@@ -34361,8 +34365,8 @@
 "fmf" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	dir = 2;
-	req_one_access = "2;21";
-	name = "\improper Requisitions Break Room"
+	name = "\improper Requisitions Break Room";
+	req_one_access = "2;21"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34631,8 +34635,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Cryogenics Bay";
-	req_one_access_txt = "1;3";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;3"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -35379,8 +35383,8 @@
 /area/almayer/medical/lower_medical_medbay)
 "fIX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	req_one_access = "19;21";
-	name = "\improper Requisitions Auxiliary Storage Room"
+	name = "\improper Requisitions Auxiliary Storage Room";
+	req_one_access = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35502,8 +35506,8 @@
 "fKT" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
-	pixel_y = 32;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -36092,8 +36096,8 @@
 "gcN" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Senior Enlisted Advisor's Office";
-	req_access_txt = "19;29";
-	req_access = null
+	req_access = null;
+	req_access_txt = "19;29"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -36168,9 +36172,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	shuttleId = "dropship_normandy";
 	name = "Normandy Remote Control Console";
-	pixel_y = -12
+	pixel_y = -12;
+	shuttleId = "dropship_normandy"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -36568,8 +36572,8 @@
 "gol" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	req_one_access_txt = "7;19";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -39036,8 +39040,8 @@
 "hzx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Chief MP's Office";
-	req_one_access_txt = "1;3";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;3"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -39887,8 +39891,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/recharge_station{
-	name = "Working Joe charging station";
-	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived."
+	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
+	name = "Working Joe charging station"
 	},
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
@@ -40733,8 +40737,8 @@
 /area/almayer/squads/req)
 "iqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access_txt = "19;27";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "19;27"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -44503,8 +44507,8 @@
 	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /obj/item/toy/plushie_cade,
 /turf/open/floor/almayer{
@@ -45074,8 +45078,8 @@
 "kxL" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/structure/largecrate/random/mini/wooden{
-	pixel_y = 6;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /obj/item/storage/box/uscm_mre,
 /obj/item/storage/box/uscm_mre,
@@ -45396,9 +45400,9 @@
 /area/almayer/medical/lower_medical_medbay)
 "kFO" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
 	id = "crate_room2";
-	name = "\improper Storage Shutters";
-	dir = 4
+	name = "\improper Storage Shutters"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -45594,8 +45598,8 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "kLc" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -47087,8 +47091,8 @@
 "lwi" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -47900,9 +47904,9 @@
 /obj/structure/machinery/door_control{
 	id = "cmp_armory";
 	name = "Armory Lockdown";
-	req_access_txt = "4";
+	pixel_x = 24;
 	pixel_y = -6;
-	pixel_x = 24
+	req_access_txt = "4"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -47958,9 +47962,9 @@
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
 	id = "crate_room";
-	name = "\improper Storage Shutters";
-	dir = 4
+	name = "\improper Storage Shutters"
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
@@ -49380,8 +49384,8 @@
 /obj/structure/machinery/photocopier,
 /obj/item/paper{
 	color = "grey";
-	name = "photocopied image";
 	info = "This is seemingly a photocopy of an image, containing.. OH GOD, WHY, GET IT OUT OF MY SIGHT";
+	name = "photocopied image";
 	pixel_y = 5
 	},
 /obj/structure/sign/safety/rad_shield{
@@ -50050,8 +50054,8 @@
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access_txt = "19;30";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "19;30"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -50708,8 +50712,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "\improper Chief Engineer's Office";
-	req_one_access_txt = "1;6";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "1;6"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -51177,9 +51181,9 @@
 /obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
 	name = "CMP Office Shutters";
-	req_one_access_txt = "24;31";
+	pixel_x = -24;
 	pixel_y = 8;
-	pixel_x = -24
+	req_one_access_txt = "24;31"
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
@@ -51245,16 +51249,9 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "nub" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/sign/safety/maint{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/starboard_garden)
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_s)
 "nun" = (
 /obj/structure{
 	health = 150;
@@ -51927,8 +51924,8 @@
 /area/almayer/command/lifeboat)
 "nJy" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -52190,10 +52187,10 @@
 /area/almayer/command/lifeboat)
 "nPT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "crate_room4";
-	name = "dilapidated storage shutters";
+	desc = "These shutters seem to be pretty poorly mantained and almost wedged into the room.. you're not sure if these are official.";
 	dir = 4;
-	desc = "These shutters seem to be pretty poorly mantained and almost wedged into the room.. you're not sure if these are official."
+	id = "crate_room4";
+	name = "dilapidated storage shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -54330,13 +54327,13 @@
 "oTe" = (
 /obj/item/prop/almayer/box,
 /obj/item/prop{
-	name = "broken M57 'Larry's Will' smartgun";
 	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
 	icon_state = "m56c";
 	item_state = "m56c";
-	pixel_y = 3;
-	pixel_x = -7
+	name = "broken M57 'Larry's Will' smartgun";
+	pixel_x = -7;
+	pixel_y = 3
 	},
 /obj/item/frame/light_fixture/small{
 	pixel_y = 17
@@ -54917,8 +54914,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
 	name = "Brig";
-	req_one_access_txt = "1;3";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;3"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -58896,6 +58893,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/port_emb)
+"rhR" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/liaison/reporter,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "rix" = (
 /obj/structure/largecrate/supply/ammo/m41a/half,
 /obj/structure/largecrate/supply/ammo/pistol/half{
@@ -59568,8 +59571,8 @@
 "ryO" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -59593,8 +59596,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
-	req_one_access_txt = "1;3";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;3"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -60164,8 +60167,8 @@
 	indestructible = 1;
 	name = "Shutters";
 	pixel_y = 25;
-	use_power = 0;
-	req_one_access_txt = "201"
+	req_one_access_txt = "201";
+	use_power = 0
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -61128,9 +61131,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
-	shuttleId = "dropship_alamo";
 	name = "Alamo Remote Control Console";
-	pixel_y = 12
+	pixel_y = 12;
+	shuttleId = "dropship_alamo"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -61836,10 +61839,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	dir = 1;
+	id_tag = "CO-Office";
 	name = "\improper Commanding Officer's Office";
 	req_access = null;
-	req_access_txt = "31";
-	id_tag = "CO-Office"
+	req_access_txt = "31"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -62506,11 +62509,11 @@
 	dir = 8
 	},
 /obj/structure/reagent_dispensers/beerkeg/alt_dark{
-	pixel_x = -7;
-	pixel_y = 10;
 	anchored = 1;
+	chemical = null;
 	density = 0;
-	chemical = null
+	pixel_x = -7;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -63246,8 +63249,8 @@
 "tiR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access_txt = "7;19";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -64800,8 +64803,8 @@
 	pixel_y = 29
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -67177,8 +67180,8 @@
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
 /obj/item/trash/cigbutt{
-	pixel_y = 8;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 8
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
 	pixel_x = -9;
@@ -67298,8 +67301,8 @@
 /area/almayer/living/basketball)
 "vak" = (
 /obj/structure/sign/safety/security{
-	pixel_y = 32;
-	pixel_x = 15
+	pixel_x = 15;
+	pixel_y = 32
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_umbilical)
@@ -71094,8 +71097,8 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 1;
 	name = "\improper CMO's Bedroom";
-	req_one_access_txt = "1;5";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;5"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -72399,8 +72402,8 @@
 "xmJ" = (
 /obj/structure/closet,
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -72523,8 +72526,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
-	req_one_access_txt = "1;3";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "1;3"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -72650,8 +72653,8 @@
 "xtC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access_txt = "30;19";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "30;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -73101,8 +73104,8 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /obj/item/reagent_container/food/drinks/cans/cola{
-	pixel_y = 16;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -74439,16 +74442,16 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/crushed_cup,
 /obj/item/reagent_container/food/drinks/cup{
-	pixel_y = 9;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /obj/item/spacecash/c10{
 	pixel_x = 5;
 	pixel_y = 10
 	},
 /obj/item/ashtray/plastic{
-	pixel_y = -10;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = -10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -74487,6 +74490,17 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"yhz" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/starboard_garden)
 "yhI" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -104533,9 +104547,9 @@ acf
 aJW
 ale
 bDD
-nub
 bDD
-ale
+bDD
+yhz
 aJW
 ado
 kHT
@@ -104737,7 +104751,7 @@ aar
 aar
 aar
 aar
-tiM
+aar
 aar
 tiM
 aar
@@ -104940,7 +104954,7 @@ ahs
 alf
 arp
 aar
-aap
+nub
 aao
 aap
 aar
@@ -105141,7 +105155,7 @@ aaa
 lYA
 ahu
 alg
-arp
+aao
 aar
 aap
 aao
@@ -105344,7 +105358,7 @@ aaa
 lYA
 ahx
 aap
-ahN
+alr
 aar
 awJ
 aao
@@ -105545,9 +105559,9 @@ aaa
 aaa
 aaa
 lYA
-ahy
-aap
 aao
+aap
+alr
 aar
 pmn
 aao
@@ -105748,8 +105762,8 @@ aaa
 aaa
 aaa
 lYA
-fZF
-alr
+ahy
+ahg
 aao
 sMs
 aao
@@ -120490,7 +120504,7 @@ xYP
 bbs
 cdm
 bCM
-rbF
+rhR
 qlz
 fOz
 skn

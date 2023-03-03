@@ -658,6 +658,7 @@
 #include "code\game\jobs\job\civilians\civilian.dm"
 #include "code\game\jobs\job\civilians\other\liaison.dm"
 #include "code\game\jobs\job\civilians\other\mess_seargent.dm"
+#include "code\game\jobs\job\civilians\other\reporter.dm"
 #include "code\game\jobs\job\civilians\other\survivors.dm"
 #include "code\game\jobs\job\civilians\support\cmo.dm"
 #include "code\game\jobs\job\civilians\support\doctor.dm"

@@ -196,6 +196,7 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,

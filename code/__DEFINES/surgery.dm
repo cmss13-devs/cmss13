@@ -158,7 +158,8 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 ///Tools used to open and close ribs/skull. Heavy-duty prying, haemostat/wirecutter won't cut it.
 #define SURGERY_TOOLS_PRY_ENCASED list(\
 	/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE\
+	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)
 
 ///Tools used to patch lightly damaged bones or before setting. May need surgical line in future.

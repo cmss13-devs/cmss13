@@ -49,6 +49,7 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
 	)
 	time = 4 SECONDS

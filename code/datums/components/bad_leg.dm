@@ -44,6 +44,7 @@
 	give_action(parent_human, /datum/action/human_action/rest_legs, null, null, src)
 
 /datum/component/bad_leg/proc/handle_qdel()
+	SIGNAL_HANDLER
 	QDEL_NULL(bound_action)
 	parent_human = null
 	affected_limb = null

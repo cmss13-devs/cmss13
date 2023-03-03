@@ -1,9 +1,238 @@
-var/list/obj/structure/machinery/faxmachine/allfaxes = list()
-var/list/alldepartments = list()
+#define UPLINK_WY "Weyland-Yutani Quantum Relay (tm)"
+#define UPLINK_USCM "USCM High Command Quantum Relay"
 
-#define DEPARTMENT_WY "Weyland-Yutani"
-#define DEPARTMENT_HC "USCM High Command"
-#define DEPARTMENT_PROVOST "USCM Provost Office"
+#define NETWORK_HC "USCM High Command"
+#define NETWORK_PROVOST "USCM Provost Office"
+#define NETWORK_WY "Weyland-Yutani Corporate Affairs"
+
+#define USCM_NETWORK "USCM"
+#define WY_NETWORK "Weyland-Yutani"
+
+GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
+
+/datum/communications_network/proc/send_fax(sent, sent_name, mob/sender, target_department, network, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
+	var/local_network_faxes = LAZYACCESS(local_networks, network)
+	if(!local_network_faxes)
+		return
+
+	for(var/obj/structure/machinery/faxmachine/receiving as anything in local_network_faxes)
+		if(receiving.department == target_department && receiving != origin)
+			receiving.receive_fax(sent, sent_name, authoriser)
+			return
+
+	var/remote_uplinks = LAZYACCESS(uplinks, origin.uplink)
+	for(var/datum/uplink/uplink as anything in remote_uplinks)
+		for(var/remote_network in uplink.networks)
+			if(remote_network == target_department)
+				uplink.handle_incoming_fax(sent, sent_name, sender, remote_network, origin)
+				break
+
+/datum/communications_network
+	/// All uplinks available, uplink name -> uplink
+	var/list/uplinks
+	/// All faxes, network name -> fax
+	var/list/local_networks
+
+/datum/communications_network/New()
+	for(var/datum/uplink/linking as anything in subtypesof(/datum/uplink))
+		linking = new linking()
+		LAZYADDASSOC(uplinks, linking.name, linking)
+
+/datum/communications_network/proc/get_available_departments(network, uplink)
+	if(!network || !uplink)
+		return FALSE
+
+	var/department_networks = LAZYACCESS(local_networks, network)
+	var/remote_networks = LAZYACCESS(uplinks, uplink)
+
+	var/list/departments = list(network = department_networks, uplink = remote_networks)
+
+	return departments
+
+/datum/communications_network/proc/register_department(obj/structure/machinery/faxmachine/registering_fax)
+	LAZYADDASSOCLIST(local_networks, registering_fax.network, registering_fax)
+
+/datum/communications_network/proc/announce_fax(msg_admin, msg_ghost)
+	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
+	for(var/client/C in GLOB.admins)
+		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+			if(msg_admin)
+				to_chat(C, msg_admin)
+			else
+				to_chat(C, msg_ghost)
+			SEND_SOUND(C, 'sound/effects/sos-morse-code.ogg')
+	if(msg_ghost)
+		for(var/i in GLOB.observer_list)
+			var/mob/dead/observer/g = i
+			if(!g.client)
+				continue
+			var/client/C = g.client
+			if(C && C.admin_holder)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
+					continue
+			to_chat(C, msg_ghost)
+			SEND_SOUND(C, 'sound/effects/sos-morse-code.ogg')
+
+/datum/communications_network/proc/admin_fax(mob/user, mob/replying_to, obj/structure/machinery/faxmachine/origin, datum/uplink/from_uplink, from_network)
+	if(!from_uplink)
+		var/options = tgui_input_list(user, "Which uplink to appear from?", "Available Uplinks", uplinks)
+		if(!options)
+			return
+		from_uplink = uplinks[options]
+
+	if(!from_network)
+		from_network = tgui_input_list(user, "Which network to appear from?", "Available Networks", from_uplink.networks)
+		if(!from_network)
+			return
+
+	var/list/template_choices = from_uplink.template_choices.Copy()
+	template_choices += "Custom"
+
+	var/template_choice = tgui_input_list(user, "Use which template, or roll your own?", "Fax Templates", template_choices)
+	if(!template_choice)
+		return
+
+	var/fax_message
+	if(template_choice == "Custom")
+		fax_message = tgui_input_text(user, "Enter a message to reply to [key_name(replying_to)]. Note: Only use HTML tags here.", "Message from [from_uplink.name]", encode = FALSE, multiline = TRUE)
+
+	if(!fax_message)
+		var/subject_line = tgui_input_text(user, "Enter subject line")
+		if(!subject_line)
+			return
+
+		var/addressed_to
+		if(replying_to)
+			addressed_to = tgui_alert(user, "Address it to the sender or custom?", buttons = list("Sender", "Custom"))
+			if(!addressed_to)
+				return
+			if(addressed_to == "Sender")
+				addressed_to = replying_to.real_name
+			else
+				addressed_to = tgui_input_text(user, "Who should it be addressed to?")
+		else
+			addressed_to = tgui_input_text(user, "Who should it be sent to?")
+
+		var/message_body = tgui_input_text(user, "Enter message body - HTML is allowed here.", encode = FALSE, multiline = TRUE)
+		if(!message_body)
+			return
+
+		var/sent_by = tgui_input_text(user, "Enter the name and rank you are sending from.")
+		if(!sent_by)
+			return
+
+		fax_message = from_uplink.generate_template(addressed_to, subject_line, message_body, sent_by, template_choice)
+
+	show_browser(user, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
+	var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+	if(send_choice != "Send")
+		return
+
+	var/customname = input(user, "Pick a title for the report", "Title") as text|null
+	if(!customname)
+		return
+
+	from_uplink.handle_incoming_fax(fax_message, customname, network = from_network)
+	origin.receive_fax(fax_message, customname, from_uplink)
+
+/datum/received_fax
+	var/sent
+	var/sent_name
+	var/received_time
+	var/datum/weakref/sender
+	var/datum/weakref/origin_fax
+	var/datum/weakref/uplink
+	var/network
+
+/datum/received_fax/New(sent_paper, sent_name, sender, origin, uplink, network)
+	src.sent = sent_paper
+	src.sent_name = sent_name
+	src.network = network
+	if(sender)
+		src.sender = WEAKREF(sender)
+	if(origin)
+		src.origin_fax = WEAKREF(origin)
+	if(uplink)
+		src.uplink = WEAKREF(uplink)
+
+	received_time = world.time
+
+/datum/received_fax/proc/view_fax(mob/user)
+	show_browser(user, "<body class='paper'>[sent]</body>", "Fax Message", "Fax Message")
+
+/datum/received_fax/proc/reply(mob/user)
+	var/mob/living/carbon/human/replying_to = sender.resolve()
+	var/obj/structure/machinery/faxmachine/origin = origin_fax.resolve()
+	var/datum/uplink/sent_to_uplink = uplink.resolve()
+
+	GLOB.communications_network.admin_fax(user, replying_to, origin, sent_to_uplink, network)
+
+/datum/uplink
+	var/name
+	var/list/networks
+	var/list/incoming_faxes
+	var/stamp_icon
+	var/ghost_color
+	var/list/template_choices
+
+/datum/uplink/proc/handle_incoming_fax(sent, sent_name, sender, network, origin)
+	var/datum/received_fax/abstract_incoming = new(sent, sent_name, sender, origin, src, network)
+	LAZYADDASSOCLIST(incoming_faxes, network, abstract_incoming)
+
+	var/msg_admin = SPAN_NOTICE("<b><font color='[ghost_color]'>[network] FAX: </font>[sender ? key_name(sender, 1) : "REPLY"] ")
+	if(sender)
+		msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[sender]'>PP</A>) "
+		msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[sender]'>SM</A>) "
+		msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[sender]'>JMP</A>) "
+		msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];fax_reply=\ref[abstract_incoming]'>RPLY</a>)</b>: "
+	msg_admin += "Receiving '[sent_name]' via secure connection ... <a href='?fax_view=\ref[abstract_incoming]'>view message</a>"
+
+	var/msg_ghost = SPAN_NOTICE("<b><font color='[ghost_color]'>[network] FAX: </font></b>")
+	msg_ghost += "Receiving '[sent_name]' via secure connection ... <a href='?fax_view=\ref[abstract_incoming]'>view message</a>"
+
+	GLOB.communications_network.announce_fax(msg_admin, msg_ghost)
+
+
+/datum/uplink/proc/view_all_faxes(mob/user)
+
+	var/faxes = tgui_input_list(user, "Which incoming faxes?", buttons = incoming_faxes)
+
+	var/body = "<body>"
+
+	for(var/datum/received_fax/fax as anything in incoming_faxes[faxes])
+		body += "<a href='?fax_view=\ref[fax]'>VIEW</a>"
+		body += "<a href=?_src=admin_holder;[HrefToken(forceGlobal = TRUE)];fax_reply=\ref[fax]'>REPLY</a>"
+		body += " [fax.sent_name ? fax.sent_name : "ADMIN REPLY"] received at [worldtime2text(time = fax.received_time)]"
+		body += "<br><br>"
+
+	body += "<br><br></body>"
+	show_browser(user, body, "Faxes to [name]", "faxviewer", "size=300x600")
+
+/datum/uplink/weyland_yutani
+	name = UPLINK_WY
+	networks = list(NETWORK_WY)
+	stamp_icon = "paper_stamp-wy"
+	ghost_color = "#1F66A0"
+
+	template_choices = list("Weyland-Yutani")
+
+/datum/uplink/uscm
+	name = UPLINK_USCM
+	networks = list(NETWORK_HC, NETWORK_PROVOST)
+	stamp_icon = "paper_stamp-uscm"
+	ghost_color = "#006100"
+
+	template_choices = list("USCM High Command", "Office of the Provost General")
+
+/datum/uplink/proc/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
+	return
+
+/datum/uplink/uscm/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
+	return generate_templated_fax(FALSE, "USCM CENTRAL COMMAND", subject, addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
+
+/datum/uplink/weyland_yutani/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
+	return generate_templated_fax(TRUE, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
+
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -26,10 +255,15 @@ var/list/alldepartments = list()
 	var/department = "General Public"
 
 	///Target department
-	var/target_department = DEPARTMENT_WY
+	var/target_department
 
-	///Fluff network shown by fax machine when logged in
-	var/network = "Weyland-Yutani Public Network"
+	/// Network this fax machine is connected to
+	var/network = USCM_NETWORK
+
+	/// Network this fax machine uplinks to
+	var/uplink = UPLINK_WY
+
+	var/list/available_departments
 
 	///storer var for cooldown on sending faxes
 	var/fax_cooldown = 300
@@ -37,11 +271,10 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	allfaxes += src
 	update_departments()
 
 /obj/structure/machinery/faxmachine/Destroy()
-	allfaxes -= src
+	LAZYREMOVE(GLOB.communications_network.local_networks[network], src)
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -102,14 +335,31 @@ var/list/alldepartments = list()
 	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
-	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		alldepartments += department
-	if(!(DEPARTMENT_WY in alldepartments))
-		alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in alldepartments))
-		alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in alldepartments))
-		alldepartments += DEPARTMENT_PROVOST
+	available_departments = GLOB.communications_network.get_available_departments(network, uplink)
+	GLOB.communications_network.register_department(src)
+
+/obj/structure/machinery/faxmachine/proc/receive_fax(sent, sent_name, authoriser)
+	if(inoperable())
+		return
+
+	flick("faxreceive", src)
+	addtimer(CALLBACK(src, PROC_REF(print_paper), sent, sent_name, authoriser), 2 SECONDS)
+
+/obj/structure/machinery/faxmachine/proc/print_paper(sent, sent_name, datum/uplink/authoriser)
+	var/obj/item/paper/printed = new (src.loc)
+	printed.name = "[sent_name]"
+	printed.info = "[sent]"
+
+	if(authoriser)
+		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+		stampoverlay.icon_state = authoriser.stamp_icon
+		LAZYADD(printed.stamped, /obj/item/tool/stamp)
+		printed.overlays += stampoverlay
+		printed.stamps += "<HR><i>This paper has been stamped by the [authoriser.name].</i>"
+
+	printed.update_icon()
+	playsound(src, "sound/items/polaroid1.ogg", 15, 1)
+
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -159,24 +409,8 @@ var/list/alldepartments = list()
 	switch(action)
 		if("send")
 			if(tofax)
-				if(target_department == DEPARTMENT_HC)
-					highcom_fax(src, tofax.info, tofax.name, usr)
-					fax_cooldown = 600
-
-				else if(target_department == DEPARTMENT_PROVOST)
-					provost_fax(src, tofax.info, tofax.name, usr)
-					fax_cooldown = 600
-
-				else if(target_department == DEPARTMENT_WY)
-					company_fax(src, tofax.info, tofax.name, usr)
-					fax_cooldown = 600
-
-				else
-					general_fax(src, tofax.info, tofax.name, usr)
-					fax_cooldown = 600
-
 				COOLDOWN_START(src, send_cooldown, fax_cooldown)
-				SendFax(tofax.info, tofax.name, usr, target_department, network, src)
+				GLOB.communications_network.send_fax(tofax.info, tofax.name, usr, target_department, network, src)
 				to_chat(usr, "Message transmitted successfully.")
 				. = TRUE
 
@@ -216,7 +450,7 @@ var/list/alldepartments = list()
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(usr, "Which department?", "Choose a department", alldepartments)
+			target_department = tgui_input_list(usr, "Which department?", "Choose a department", available_departments)
 			if(!target_department) target_department = last_target_department
 			. = TRUE
 
@@ -236,118 +470,7 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
-
-/proc/highcom_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
-	GLOB.fax_contents += faxcontents
-
-	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
-	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
-	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-
-	GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
-	announce_fax(msg_admin, msg_ghost)
-
-/proc/provost_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
-	GLOB.fax_contents += faxcontents
-
-	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PROVOST FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
-	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
-	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-
-	GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
-	announce_fax(msg_admin, msg_ghost)
-
-
-/proc/company_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
-	GLOB.fax_contents += faxcontents
-	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
-	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>")
-	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
-	announce_fax(msg_admin, msg_ghost)
-
-/proc/announce_fax(msg_admin, msg_ghost)
-	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			if(msg_admin)
-				to_chat(C, msg_admin)
-			else
-				to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
-	if(msg_ghost)
-		for(var/i in GLOB.observer_list)
-			var/mob/dead/observer/g = i
-			if(!g.client)
-				continue
-			var/client/C = g.client
-			if(C && C.admin_holder)
-				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
-					continue
-			to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
-
-/proc/general_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
-	GLOB.fax_contents += faxcontents
-	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
-
-/proc/SendFax(sent, sentname, mob/Sender, target_department, network, obj/structure/machinery/faxmachine/origin)
-	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
-		if(F != origin && F.department == target_department)
-			if(! (F.inoperable() ) )
-
-				flick("faxreceive", F)
-
-				// give the sprite some time to flick
-				spawn(20)
-					var/obj/item/paper/P = new /obj/item/paper( F.loc )
-					P.name = "[sentname]"
-					P.info = "[sent]"
-					P.update_icon()
-
-					switch(network)
-						if("USCM High Command Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-							stampoverlay.icon_state = "paper_stamp-uscm"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
-						if("Weyland-Yutani Quantum Relay")
-							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-							stampoverlay.icon_state = "paper_stamp-cent"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
-
-					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
-
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_to_fax=\ref[usr];originfax=\ref[src]'>Send fax message</option>"
 
 /obj/structure/machinery/faxmachine/corporate
 	name = "W-Y Corporate Fax Machine"
@@ -357,16 +480,17 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/corporate/liaison
 	department = "W-Y Liaison"
 
+/*
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = DEPARTMENT_WY
 	target_department = "W-Y Liaison"
 	network = "Weyland-Yutani Quantum Relay"
+*/
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "USCM Military Fax Machine"
 	department = "USCM Local Operations"
 	network = "USCM Encrypted Network"
-	target_department = DEPARTMENT_HC
 
 /obj/structure/machinery/faxmachine/uscm/command
 	department = "CIC"
@@ -374,20 +498,23 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/uscm/command/capt
 	department = "Commanding Officer"
 
+/*
 /obj/structure/machinery/faxmachine/uscm/command/highcom
 	department = DEPARTMENT_HC
 	target_department = "Commanding Officer"
 	network = "USCM High Command Quantum Relay"
+*/
 
 /obj/structure/machinery/faxmachine/uscm/brig
 	name = "USCM Provost Fax Machine"
 	department = "Brig"
-	target_department = DEPARTMENT_PROVOST
 
 /obj/structure/machinery/faxmachine/uscm/brig/chief
 	department = "Chief MP"
 
+/*
 /obj/structure/machinery/faxmachine/uscm/brig/provost
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"
+*/

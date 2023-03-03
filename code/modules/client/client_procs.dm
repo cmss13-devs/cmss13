@@ -143,9 +143,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		cmd_admin_pm(receiver_client, null)
 		return
 
-	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+	else if(href_list["fax_view"])
+		var/datum/received_fax/incoming = locate(href_list["fax_view"])
+		incoming.view_fax(usr)
+
+	else if(href_list["fax_reply"])
+		var/datum/received_fax/reply_to = locate(href_list["fax_reply"])
+		reply_to.reply(usr)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)

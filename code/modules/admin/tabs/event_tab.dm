@@ -306,47 +306,11 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Other", "Cancel")
-	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
-	switch(answer)
-		if("Weyland-Yutani")
-			var/body = "<body>"
+	var/list/options = GLOB.communications_network.uplinks
+	var/answer = tgui_input_list(src, "Which uplink would you like to view?", "Faxes", options)
+	var/datum/uplink/link = options[answer]
 
-			for(var/text in GLOB.WYFaxes)
-				body += text
-				body += "<br><br>"
-
-			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
-		if("High Command")
-			var/body = "<body>"
-
-			for(var/text in GLOB.USCMFaxes)
-				body += text
-				body += "<br><br>"
-
-			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
-		if("Provost")
-			var/body = "<body>"
-
-			for(var/text in GLOB.ProvostFaxes)
-				body += text
-				body += "<br><br>"
-
-			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
-		if("Other")
-			var/body = "<body>"
-
-			for(var/text in GLOB.GeneralFaxes)
-				body += text
-				body += "<br><br>"
-
-			body += "<br><br></body>"
-			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
-		if("Cancel")
-			return
+	link.view_all_faxes()
 
 /client/proc/award_medal()
 	if(!check_rights(R_ADMIN))

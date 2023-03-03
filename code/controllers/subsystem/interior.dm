@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(interior)
 	flags = SS_NO_FIRE|SS_NO_INIT
 	var/list/datum/interior/interiors = list()
 
+/// Loads an interior, requires the interior datum
 /datum/controller/subsystem/interior/proc/load_interior(datum/interior/interior)
 	if(!interior || !istype(interior))
 		CRASH("Invalid interior passed to SSinterior.load_interior()")
@@ -10,14 +11,12 @@ SUBSYSTEM_DEF(interior)
 	var/datum/map_template/interior/template = interior.map_template
 	var/datum/turf_reservation/reserved_area = SSmapping.RequestBlockReservation(template.width, template.height, type = /datum/turf_reservation/interior)
 
-	var/turf/bottom_left = TURF_FROM_COORDS_LIST(reserved_area.bottom_left_coords)
-	template.load(bottom_left, centered = FALSE)
+	template.load(TURF_FROM_COORDS_LIST(reserved_area.bottom_left_coords), centered = FALSE)
 
 	interiors += interior
 	return reserved_area
 
-
-// Finds which interior is at (x,y) and returns its interior datum
+/// Finds which interior is at (x, y, z) and returns its interior datum
 /datum/controller/subsystem/interior/proc/get_interior_by_coords(x, y, z)
 	for(var/datum/interior/current_interior in interiors)
 		var/list/turf/bounds = current_interior.get_bound_turfs()
@@ -27,6 +26,7 @@ SUBSYSTEM_DEF(interior)
 			return current_interior
 	return FALSE
 
+/// Checks if an atom is in an interior
 /datum/controller/subsystem/interior/proc/in_interior(loc)
 	if(!loc)
 		CRASH("No loc passed to is_in_interior()")

@@ -128,6 +128,10 @@ var/list/department_radio_keys = list(
 					continue
 				if(M.loc && (M.locs[1] in hearturfs))
 					listening |= M
+					for(var/mob/inner_mob in M.contents)
+						listening |= inner_mob
+						for(var/mob/living/captive_brain/brain in inner_mob)
+							listening |= brain
 
 		var/speech_bubble_test = say_test(message)
 		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)

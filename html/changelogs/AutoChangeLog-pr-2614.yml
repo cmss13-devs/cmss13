@@ -1,5 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - code_imp: "Renamed Warden's 'Protect' ability to 'Aid' and fixed its flavor text to better represent its function."
-  - imageadd: "Added a new ability icon for Warden's aforementioned 'Aid' ability."

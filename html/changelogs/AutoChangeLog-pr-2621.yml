@@ -1,4 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Xenomorph HUD sprites are now properly spaced out so borders no longer overlay one another."

@@ -1,5 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - rscadd: "M4RA now uses L42A handling effects for loading/unloading and chambering"
-  - spellcheck: "HPR now says M4RA instead of L42A when going over the other 10x24 marine weapons"

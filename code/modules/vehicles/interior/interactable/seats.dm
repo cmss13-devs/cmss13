@@ -5,6 +5,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	indestructible = TRUE
+	can_rotate = FALSE
 
 	//you want these chairs to not be easily obscured by objects
 	layer = BELOW_MOB_LAYER
@@ -115,9 +116,6 @@
 		vehicle.vehicle_faction = target.faction
 
 	return ..()
-
-/obj/structure/bed/chair/comfy/vehicle/rotate()
-	set hidden = TRUE
 
 /obj/structure/bed/chair/comfy/vehicle/after_attack_by(obj/item/W, mob/living/user)
 	return
@@ -305,6 +303,7 @@
 	var/image/chairbar = null
 	var/broken = FALSE
 	buildstacktype = 0
+	can_rotate = FALSE
 	picked_up_item = null
 
 	unslashable = FALSE
@@ -450,6 +449,3 @@
 				break_seat()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
-
-/obj/structure/bed/chair/vehicle/rotate()
-	return

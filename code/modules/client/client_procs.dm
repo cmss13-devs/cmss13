@@ -763,6 +763,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
 		admin_holder.filteriffic.tgui_interact(mob)
 
+/// Clears the client's screen, aside from ones that opt out
+/client/proc/clear_screen()
+	for (var/object in screen)
+		if (istype(object, /atom/movable/screen))
+			var/atom/movable/screen/screen_object = object
+			if (!screen_object.clear_with_screen)
+				continue
+
+		screen -= object
+
 ///opens the particle editor UI for the in_atom object for this client
 /client/proc/open_particle_editor(atom/movable/in_atom)
 	if(admin_holder)

@@ -384,3 +384,10 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_folded"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
+
+//bedroll
+/obj/structure/bed/bedroll
+	name = "bedroll"
+	desc = "bedroll"
+	icon_state = "bedroll_o"
+	icon = 'icons/monkey_icos.dmi'

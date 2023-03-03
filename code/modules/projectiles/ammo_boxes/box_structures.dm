@@ -2,13 +2,18 @@
 
 /obj/structure/magazine_box
 	name = "\improper magazine_box"
-	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
 	icon_state = "base_m41"
 	var/obj/item/ammo_box/magazine/item_box
 	var/can_explode = TRUE
 	var/burning = FALSE
 	var/limit_per_tile = 1 //this is inherited from the item when deployed
 	layer = LOWER_ITEM_LAYER //to not hide other items
+
+	var/text_markings_icon = 'icons/obj/items/weapons/guns/ammo_boxes/text.dmi'
+	var/handfuls_icon = 'icons/obj/items/weapons/guns/ammo_boxes/handfuls.dmi'
+	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
+	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
 
 //---------------------GENERAL PROCS
 
@@ -23,31 +28,31 @@
 	if(overlays)
 		overlays.Cut()
 		if(item_box.overlay_gun_type)
-			overlays += image(icon, icon_state = "text[item_box.overlay_gun_type]") //adding text
+			overlays += image(text_markings_icon, icon_state = "text[item_box.overlay_gun_type]") //adding text
 
 	if(!item_box.handfuls)
 		if(item_box.overlay_ammo_type)
-			overlays += image(icon, icon_state = "base_type[item_box.overlay_ammo_type]") //adding base color stripes
+			overlays += image(text_markings_icon, icon_state = "base_type[item_box.overlay_ammo_type]") //adding base color stripes
 		if(item_box.contents.len == item_box.num_of_magazines)
-			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]")
+			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]")
 		else if(item_box.contents.len > (item_box.num_of_magazines/2))
-			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]_3")
+			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_3")
 		else if(item_box.contents.len > (item_box.num_of_magazines/4))
-			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]_2")
+			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_2")
 		else if(item_box.contents.len > 0)
-			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]_1")
+			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_1")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(item_box.overlay_ammo_type)
-			overlays += image(icon, icon_state = "base_type[item_box.overlay_ammo_type]")
+			overlays += image(text_markings_icon, icon_state = "base_type[item_box.overlay_ammo_type]")
 		if(AM.current_rounds == item_box.num_of_magazines)
-			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]")
+			overlays += image(handfuls_icon, icon_state = "[item_box.handful][item_box.overlay_content]")
 		else if(AM.current_rounds > (item_box.num_of_magazines/2))
-			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_3")
+			overlays += image(handfuls_icon, icon_state = "[item_box.handful][item_box.overlay_content]_3")
 		else if(AM.current_rounds > (item_box.num_of_magazines/4))
-			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_2")
+			overlays += image(handfuls_icon, icon_state = "[item_box.handful][item_box.overlay_content]_2")
 		else if(AM.current_rounds > 0)
-			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_1")
+			overlays += image(handfuls_icon, icon_state = "[item_box.handful][item_box.overlay_content]_1")
 
 //handles assigning offsets for stacked boxes
 /obj/structure/magazine_box/proc/assign_offsets(turf/T)
@@ -213,5 +218,5 @@
 	else if(istype(src, /obj/item/ammo_box/magazine/nailgun)) //this snowflake again
 		offset_y += -2
 
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
-	overlays.Add(fire_overlay)
+	var/image/fire_overlay = image(flames_icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	overlays += (fire_overlay)

@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
+	area = null
 	. = ..()
 
 

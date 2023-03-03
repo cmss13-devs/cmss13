@@ -8,6 +8,7 @@
 	name = "\improper M41A magazine (10x24mm)"
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m41a"
 	item_state = "generic_mag"
 	w_class = SIZE_MEDIUM
@@ -123,23 +124,72 @@
 	icon_state = "m41a_mk1_cluster"
 	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
 
+//-------------------------------------------------------
+//M4RA, l42 reskin, same stats as before but different, lore friendly, shell.
+
+/obj/item/ammo_magazine/rifle/m4ra
+	name = "\improper M4RA magazine (10x24mm)"
+	desc = "A magazine of standard 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 25
+	gun_type = /obj/item/weapon/gun/rifle/m4ra
+
+/obj/item/ammo_magazine/rifle/m4ra/ap
+	name = "\improper M4RA armor-piercing magazine (10x24mm)"
+	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 25
+
+/obj/item/ammo_magazine/rifle/m4ra/ext
+	name = "\improper M4RA extended magazine (10x24mm)"
+	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle. Holds an additional 10 rounds, up to 35."
+	icon_state = "m4ra_extended"
+	bonus_overlay = "m4ra_ex"
+	max_rounds = 35
+
+/obj/item/ammo_magazine/rifle/m4ra/rubber
+	name = "M4RA rubber magazine (10x24mm)"
+	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_piercing"
+	default_ammo = /datum/ammo/bullet/rifle/rubber
+
+/obj/item/ammo_magazine/rifle/m4ra/heap
+	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
+	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
+/obj/item/ammo_magazine/rifle/m4ra/penetrating
+	name = "\improper M4RA wall-piercing magazine (10x24mm)"
+	desc = "A magazine of wall-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_heap"
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
+
+/obj/item/ammo_magazine/rifle/m4ra/incendiary
+	name = "\improper M4RA incendiary magazine (10x24mm)"
+	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
+	icon_state = "m4ra_incendiary"
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+
 
 //-------------------------------------------------------
-//M40-SD AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
-/obj/item/ammo_magazine/rifle/m40_sd
-	name = "\improper M40-SD magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+//XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
+/obj/item/ammo_magazine/rifle/xm40
+	name = "\improper xm40 magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the xm40 pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
-/obj/item/ammo_magazine/rifle/m40_sd/heap
-	name = "\improper M40-SD HEAP magazine (10x24mm)"
-	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+/obj/item/ammo_magazine/rifle/xm40/heap
+	name = "\improper XM40 HEAP magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the XM40 pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd_heap"
 	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
 //-------------------------------------------------------
@@ -149,6 +199,7 @@
 	name = "\improper MAR magazine (7.62x39mm)"
 	desc = "A 7.62x39mm magazine for the MAR series of firearms."
 	caliber = "7.62x39mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "mar40"
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
@@ -177,6 +228,7 @@
 	name = "\improper M16 magazine (5.56x45mm)"
 	desc = "A 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "m16"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -200,6 +252,7 @@
 	name = "\improper AR10 magazine (7.62x51mm)"
 	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
 	caliber = "7.62x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "ar10"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -239,6 +292,7 @@
 	name = "\improper Type 71 magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "type_71"
 	default_ammo = /datum/ammo/bullet/rifle/type71
 	max_rounds = 60
@@ -259,7 +313,7 @@
 	bonus_overlay = "type71_heap"
 
 //-------------------------------------------------------
-//USCM L42A Battle Rifle
+//L42A Battle Rifle
 
 /obj/item/ammo_magazine/rifle/l42a
 	name = "\improper L42A magazine (10x24mm)"
@@ -337,6 +391,7 @@
 /obj/item/ammo_magazine/rifle/l42a/abr40
 	name = "\improper ABR-40 magazine (10x24mm)"
 	desc = "An ABR-40 magazine loaded with full metal jacket ammunition, for use at the firing range or while hunting. Theoretically cross-compatible with an L42A battle rifle."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
 	max_rounds = 12
@@ -356,6 +411,7 @@
 	name = "\improper NSG 23 magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine."
 	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/wy.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
 	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
@@ -390,6 +446,7 @@
 	name = "\improper Basira-Armstrong magazine (6.5mm)"
 	desc = "A magazine for the Basira-Armstrong hunting rifle. Compliant with the 15-cartridge limit on civilian hunting rifles."
 	caliber = "6.5mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "hunting"
 	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10

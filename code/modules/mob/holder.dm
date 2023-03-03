@@ -115,3 +115,9 @@
 /obj/item/holder/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+
+/obj/item/holder/borer
+	name = "cortical borer"
+	desc = "Gross..."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "brainslug_dead"

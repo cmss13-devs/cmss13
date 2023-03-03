@@ -4,7 +4,7 @@
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = FLY_LAYER
 
 //Used by spraybottles.
@@ -14,7 +14,7 @@
 	icon_state = "chempuff"
 	var/mob/source_user
 
-/obj/effect/decal/chempuff/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/decal/chempuff/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
@@ -65,11 +65,11 @@
 	desc = "Remains of some unfortunate mecha. Completely unrepairable."
 	icon = 'icons/obj/structures/props/mech.dmi'
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	opacity = FALSE
 	unacidable = FALSE
 
-/obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/decal/mecha_wreckage/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -79,10 +79,10 @@
 		deconstruct(FALSE)
 	return
 
-/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/decal/mecha_wreckage/bullet_act(obj/item/projectile/Proj)
 	return 1
 
-/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))

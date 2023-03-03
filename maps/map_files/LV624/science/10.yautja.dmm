@@ -20,7 +20,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -51,6 +51,7 @@
 "aj" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/item/weapon/melee/yautja/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -154,7 +155,7 @@
 	},
 /area/lv624/lazarus/research)
 "ay" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -184,6 +185,11 @@
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research Dome"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -214,7 +220,7 @@
 	},
 /area/lv624/lazarus/research)
 "aG" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -225,7 +231,7 @@
 	},
 /area/lv624/lazarus/research)
 "aH" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -300,7 +306,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -317,7 +323,7 @@
 	},
 /area/lv624/lazarus/research)
 "aP" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -395,7 +401,6 @@
 "bb" = (
 /obj/structure/surface/table,
 /obj/item/weapon/melee/yautja/scythe,
-/obj/item/weapon/melee/yautja/combistick,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -547,7 +552,7 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = -25;
 	pixel_y = 5
 	},

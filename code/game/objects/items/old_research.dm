@@ -3,6 +3,7 @@
 	desc = "Looking at it makes you want to vomit"
 	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "biomass"
+	black_market_value = 50
 	//For all of them for now, until we have specific organs/more techs
 
 /obj/item/XenoBio/Resin

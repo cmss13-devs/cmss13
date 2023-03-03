@@ -516,7 +516,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	return options
 
 /// Resolve ticket with a premade message
-/datum/admin_help/proc/AutoReply(key_name = key_name_admin(usr))
+/datum/admin_help/proc/AutoReply()
+	var/key_name = key_name_admin(usr)
 	if(state != AHELP_ACTIVE)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return

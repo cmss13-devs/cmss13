@@ -21,3 +21,8 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+/// from /obj/item/proc/do_zoom() : (mob/user)
+#define COMSIG_ITEM_ZOOM "item_zoom"
+/// from /obj/item/proc/unzoom() : (mob/user)
+#define COMSIG_ITEM_UNZOOM "item_unzoom"

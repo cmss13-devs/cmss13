@@ -806,7 +806,7 @@ Defined in conflicts.dm of the #defines folder.
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
 		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
 /obj/item/attachable/scope
@@ -1027,7 +1027,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle and M44 Combat Revolver."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, L42A Battle Rifle, and M44 Combat Revolver."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -1531,6 +1531,59 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 24
 	pixel_shift_y = 16
 	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
+
+/obj/item/attachable/m4ra_barrel
+	name = "M4RA barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "m4ra_barrel"
+	attach_icon = "m4ra_barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+
+/obj/item/attachable/m4ra_barrel/New()
+	..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
+		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+
+
+/obj/item/attachable/m4ra_barrel_custom
+	name = "custom M4RA barrel"
+	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	icon_state = "m4ra_custom_barrel"
+	attach_icon = "m4ra_custom_barrel"
+	slot = "special"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+
+/obj/item/attachable/m4ra_barrel_custom/New()
+	..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
+		if(MAP_ICE_COLONY, MAP_ICE_COLONY_V3, MAP_CORSAT, MAP_SOROKYNE_STRATA)
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"

@@ -138,8 +138,6 @@
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
 	brainmob.blood_type = H.blood_type
-	if(H.mind && !iszombie(H))
-		H.mind.transfer_to(brainmob)
 	brainmob.container = src
 
 /obj/item/limb/head/attackby(obj/item/W as obj, mob/user as mob)

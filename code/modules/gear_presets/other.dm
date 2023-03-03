@@ -634,57 +634,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/zombie
-	name = "Zombie"
-	flags = EQUIPMENT_PRESET_EXTRA
-	rank = FACTION_ZOMBIE
-	languages = list("Zombie")
-	skills = null //no restrictions
-	faction = FACTION_ZOMBIE
-
-//Overloading the function to be able to spawn gear first
-/datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, randomise = FALSE)
-	if(randomise)
-		load_name(H)
-	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
-	load_languages(H)
-	load_gear(H)
-	load_id(H)
-	load_status(H)
-	load_vanity(H)
-	load_race(H)//Race is loaded last, otherwise we wouldn't be able to equip gear!
-	H.assigned_equipment_preset = src
-	H.regenerate_icons()
-
-/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, randomise)
-	H.gender = pick(MALE, FEMALE)
-	var/datum/preferences/A = new
-	A.randomize_appearance(H)
-	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
-	H.change_real_name(H, random_name)
-	H.age = rand(21,45)
-
-/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H, client/mob_client)
-	var/obj/item/clothing/under/uniform = H.w_uniform
-	if(istype(uniform))
-		uniform.has_sensor = UNIFORM_HAS_SENSORS
-		uniform.sensor_faction = FACTION_COLONIST
-	H.job = "Zombie"
-	H.faction = faction
-	return ..()
-
-/datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
-	H.set_species(SPECIES_HUMAN) // Set back, so that we can get our claws again
-	H.set_species(SPECIES_ZOMBIE)
-
-/datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
-	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
-	H.equip_to_slot_or_del(new uniform_path, WEAR_BODY)
-	var/shoe_path = pick(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/leather, /obj/item/clothing/shoes/jackboots)
-	H.equip_to_slot_or_del(new shoe_path, WEAR_FEET)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/other/gladiator
 	name = "Gladiator"
 	flags = EQUIPMENT_PRESET_EXTRA

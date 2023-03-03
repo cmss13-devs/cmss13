@@ -265,8 +265,6 @@
 	if (isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
-	if (iszombie(user))
-		return
 
 	if(density)
 		density = FALSE

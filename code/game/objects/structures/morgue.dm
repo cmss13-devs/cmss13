@@ -84,10 +84,7 @@
 
 
 /obj/structure/morgue/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/zombie_claws))
-		attack_hand()
-		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
 		if(labelcomponent)

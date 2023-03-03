@@ -656,28 +656,6 @@
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
 
-/datum/reagent/blackgoo
-	name = "Black goo"
-	id = "blackgoo"
-	description = "A strange dark liquid of unknown origin and effect."
-	reagent_state = LIQUID
-	color = "#222222"
-	custom_metabolism = 100 //disappears immediately
-	properties = list(PROPERTY_RAVENING = 1)
-
-/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Human")
-			H.contract_disease(new /datum/disease/black_goo)
-
-/datum/reagent/blackgoo/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
-	if(volume < 3) return
-	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
-		new /obj/effect/decal/cleanable/blackgoo(T)
-
-
 // Chemfire supplements
 
 /datum/reagent/napalm

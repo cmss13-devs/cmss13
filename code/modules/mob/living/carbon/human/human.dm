@@ -1003,12 +1003,6 @@
 			H.brainmob.mind.transfer_to(src)
 			qdel(H)
 
-	if(!keep_viruses)
-		for(var/datum/disease/virus in viruses)
-			if(istype(virus, /datum/disease/black_goo))
-				continue
-			virus.cure(0)
-
 	undefibbable = FALSE
 
 	//Remove any larva.
@@ -1603,24 +1597,6 @@
 	next_move = world.time + 100
 	last_special = world.time + 10
 	var/can_break_cuffs
-	if(iszombie(src))
-		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."), \
-		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
-		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
-			return
-
-		if(!restraint || buckled)
-			return
-		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"), \
-			SPAN_NOTICE("You tear [restraint] in half!"))
-		restraint = null
-		if(handcuffed)
-			QDEL_NULL(handcuffed)
-			handcuff_update()
-		else
-			QDEL_NULL(legcuffed)
-			handcuff_update()
-		return
 	if(species.can_shred(src))
 		can_break_cuffs = TRUE
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.

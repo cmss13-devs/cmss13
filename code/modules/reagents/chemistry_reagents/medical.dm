@@ -411,13 +411,3 @@
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 6, PROPERTY_HALLUCINOGENIC = 6)
-
-/datum/reagent/medical/antized
-	name = "Anti-Zed"
-	id = "antiZed"
-	description = "Destroy the zombie virus in living humans and prevents regeneration for those who have already turned."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
-	data = 0
-	properties = list(PROPERTY_CURING = 2)

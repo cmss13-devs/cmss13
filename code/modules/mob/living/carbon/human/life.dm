@@ -27,10 +27,6 @@
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	if(stat == DEAD && species.name == SPECIES_ZOMBIE)
-		handle_chemicals_in_body(delta_time)
-		return
-
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)

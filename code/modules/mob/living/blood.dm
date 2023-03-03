@@ -274,8 +274,6 @@
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"
-	if(species.name == SPECIES_ZOMBIE)
-		return "greyblood"
 	return "blood"
 
 /mob/living/simple_animal/mouse/get_blood_id()

@@ -117,8 +117,6 @@
 		if(labelcomponent)
 			labelcomponent.remove_label()
 		return
-	else if(istype(W, /obj/item/weapon/zombie_claws))
-		open()
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()

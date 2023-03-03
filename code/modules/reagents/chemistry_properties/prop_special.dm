@@ -203,47 +203,6 @@
 	var/mob/living/carbon/human/H = M
 	H.contract_disease(new /datum/disease/xeno_transformation(0),1)
 
-/datum/chem_property/special/ravening
-	name = PROPERTY_RAVENING
-	code = "RAV"
-	description = "The chemical agent carries the X-65 biological organism."
-	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_ANOMALOUS
-	value = 666
-
-/datum/chem_property/special/ravening/process(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
-		return
-	var/mob/living/carbon/human/H = M
-	H.contract_disease(new /datum/disease/black_goo, 1)
-
-/datum/chem_property/special/curing
-	name = PROPERTY_CURING
-	code = "CUR"
-	description = "Binds to and neutralizes specific microbiological organisms."
-	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_MEDICINE|PROPERTY_TYPE_ANOMALOUS
-	value = 666
-	max_level = 4
-
-/datum/chem_property/special/curing/process(mob/living/M, potency = 1, delta_time)
-	var/datum/species/zombie/zs = GLOB.all_species[SPECIES_ZOMBIE]
-
-	if(!ishuman(M))
-		return
-	var/mob/living/carbon/human/H = M
-	if(H.viruses)
-		for(var/datum/disease/D in H.viruses)
-			if(potency >= CREATE_MAX_TIER_1)
-				D.cure()
-				zs.remove_from_revive(H)
-			else
-				if(D.name == "Unknown Mutagenic Disease" && (potency == 0.5 || potency > 1.5))
-					D.cure()
-				if(D.name == "Black Goo" && potency >= 1)
-					D.cure()
-					zs.remove_from_revive(H)
-
 /datum/chem_property/special/omnipotent
 	name = PROPERTY_OMNIPOTENT
 	code = "OMN"

@@ -213,21 +213,6 @@
 		if(blocked)
 			to_chat(user, SPAN_DANGER("\The [src] is welded solid!"))
 			return
-	if(istype(C, /obj/item/weapon/zombie_claws))
-		if(operating)
-			return
-		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),\
-				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",\
-				"You hear metal strain.")
-		if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),\
-			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
-			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
-			if(density)
-				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
-			else
-				INVOKE_ASYNC(src, PROC_REF(close))
-			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)
 	return

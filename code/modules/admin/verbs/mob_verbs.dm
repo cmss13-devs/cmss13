@@ -116,7 +116,7 @@
 		alert("Cannot revive a ghost")
 		return
 
-	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
+	M.revive(FALSE) // Argument means that viruses will be cured
 
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 

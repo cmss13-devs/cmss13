@@ -7,8 +7,6 @@
 #define MODE_INFESTATION_M_MINOR "Marine Minor Victory"
 #define MODE_INFESTATION_DRAW_DEATH "DRAW: Mutual Annihilation"
 
-#define MODE_INFECTION_ZOMBIE_WIN "Major Zombie Victory"
-
 #define MODE_BATTLEFIELD_W_MAJOR "Wey-Yu PMC Major Success"
 #define MODE_BATTLEFIELD_M_MAJOR "Marine Major Success"
 #define MODE_BATTLEFIELD_W_MINOR "Wey-Yu PMC Minor Success"
@@ -318,7 +316,7 @@ Only checks living mobs with a client attached.
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
+			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST))
 				var/mob/living/carbon/human/H = M
 				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
@@ -331,10 +329,6 @@ Only checks living mobs with a client attached.
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
-						continue
-					num_xenos++
-				else if(iszombie(M))
 					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++

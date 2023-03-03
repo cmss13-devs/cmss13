@@ -179,14 +179,6 @@
 	return attack_alien(user)
 
 /obj/structure/barricade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/zombie_claws))
-		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
-		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
-		if(barricade_hitsound)
-			playsound(src, barricade_hitsound, 35, 1)
-		hit_barricade(W)
-		return
-
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")

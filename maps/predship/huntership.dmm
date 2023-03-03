@@ -771,11 +771,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/zombie_claws{
-	anchored = 1;
-	desc = "Claws from a creature that defies nature, you dare not touch it.";
-	force = 1
-	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

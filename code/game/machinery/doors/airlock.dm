@@ -564,23 +564,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	add_fingerprint(user)
 
-	if(istype(C, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
-			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
-			SPAN_NOTICE("You hear tearing noises!"))
-
-		if(do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"), \
-			SPAN_NOTICE("You slam the door open!"), \
-			SPAN_NOTICE("You hear metal screeching!"))
-			locked = 0
-			welded = 0
-			update_icon()
-			open()
-			locked = 1
-
-		return
-
 	if((iswelder(C) && !operating && density))
 		var/obj/item/tool/weldingtool/W = C
 		var/weldtime = 50

@@ -24,9 +24,6 @@
 		"storage2" =  list("loc" = ui_datum.ui_storage2,  "slot" = WEAR_R_STORE, "state" = "pocket"),
 		"belt" =  list("loc" = ui_datum.ui_belt,   "slot" = WEAR_WAIST, "state" = "belt")
 		)
-	if(iszombie(owner))
-		gear = list()
-
 	for(var/slot in gear)
 		equip_slots |= gear[slot]["slot"]
 
@@ -76,9 +73,6 @@
 	draw_act_intent(ui_datum, ui_alpha)
 	draw_mov_intent(ui_datum, ui_alpha, ui_color)
 	draw_resist(ui_datum, ui_alpha, ui_color)
-	if(!iszombie(owner))
-		draw_drop(ui_datum, ui_alpha, ui_color)
-		draw_throw(ui_datum, ui_alpha, ui_color)
 	draw_pull(ui_datum)
 	draw_right_hand(ui_datum, ui_alpha, ui_color)
 	draw_left_hand(ui_datum, ui_alpha, ui_color)
@@ -92,8 +86,6 @@
 
 	draw_status_effects(ui_datum)
 
-	if(!iszombie(owner))
-		draw_nutrition(ui_datum)
 	draw_locator_spot(ui_datum)
 	draw_zone_sel(ui_datum, ui_alpha, ui_color)
 	draw_gun_related(ui_datum, ui_alpha)

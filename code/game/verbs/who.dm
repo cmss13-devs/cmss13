@@ -30,8 +30,6 @@
 							FACTION_SOUTO = 0,
 
 							FACTION_NEUTRAL = 0,
-
-							FACTION_ZOMBIE = 0
 							)
 
 	var/list/counted_xenos = list()
@@ -69,10 +67,7 @@
 
 					if(C.mob && C.mob.stat != DEAD)
 						if(ishuman(C.mob))
-							if(C.mob.faction == FACTION_ZOMBIE)
-								counted_humanoids[FACTION_ZOMBIE]++
-								entry += " - <font color='#2DACB1'><B>Zombie</B></font>"
-							else if(C.mob.faction == FACTION_YAUTJA)
+							if(C.mob.faction == FACTION_YAUTJA)
 								counted_humanoids[FACTION_YAUTJA]++
 								entry += " - <font color='#7ABA19'><B>Predator</B></font>"
 								if(C.mob.status_flags & XENO_HOST)
@@ -106,8 +101,6 @@
 			dat += "<BR><B style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</B> <B style='color:#688944'>(Marines: [counted_humanoids["USCM Marines"]])</B>"
 		if(counted_humanoids[FACTION_YAUTJA])
 			dat += "<BR><B style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</B> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
-		if(counted_humanoids[FACTION_ZOMBIE])
-			dat += "<BR><B style='color:#2DACB1'>Zombies: [counted_humanoids[FACTION_ZOMBIE]]</B>"
 
 		var/show_fact = TRUE
 		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)

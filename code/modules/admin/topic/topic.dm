@@ -748,25 +748,6 @@
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
-	else if(href_list["zombieinfect"])
-		if(!check_rights(R_ADMIN)) return
-		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
-		if(!istype(H))
-			to_chat(usr, "this can only be used on instances of type /human")
-			return
-
-		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
-			return
-
-		var/datum/disease/black_goo/bg = new()
-		if(alert(usr, "Make them non-symptomatic carrier?", "Message", "Yes", "No") == "Yes")
-			bg.carrier = TRUE
-		else
-			bg.carrier = FALSE
-
-		H.AddDisease(bg, FALSE)
-
-		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN)) return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])

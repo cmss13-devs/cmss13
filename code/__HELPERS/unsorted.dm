@@ -475,7 +475,6 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isyautja(M)) continue
-		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -500,7 +499,6 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isyautja(M)) continue
-		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -525,7 +523,6 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isyautja(M)) continue
-		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -550,7 +547,6 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isyautja(M)) continue
-		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++

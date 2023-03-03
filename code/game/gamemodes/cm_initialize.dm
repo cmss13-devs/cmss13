@@ -628,7 +628,7 @@ Additional game mode variables.
 //===================================================\\
 
 
-// Used by XvX and Infection
+// Used by XvX
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
 /datum/game_mode/proc/transform_survivor(datum/mind/ghost, is_synth = FALSE, is_CO = FALSE, turf/xeno_turf)

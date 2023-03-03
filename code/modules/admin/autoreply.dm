@@ -1,8 +1,11 @@
 GLOBAL_REFERENCE_LIST_INDEXED(adminreplies, /datum/autoreply/admin, title)
 
 /datum/autoreply
+	/// What shows up in the list of replies, and the big red header on the reply itself.
 	var/title = "Blank"
+	/// The detailed message in the auto reply.
 	var/message = "Lorem ipsum dolor sit amit."
+	/// If the autoreply will automatically close the ahelp or not.
 	var/closer = TRUE
 
 /// Admin Replies

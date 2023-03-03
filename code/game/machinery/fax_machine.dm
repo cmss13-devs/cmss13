@@ -161,7 +161,7 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	if(send_choice != "Send")
 		return
 
-	var/customname = input(user, "Pick a title for the report", "Title") as text|null
+	var/customname = tgui_input_text(user, "Pick a title for the report", "Title")
 	if(!customname)
 		return
 

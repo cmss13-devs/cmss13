@@ -1510,9 +1510,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		var/next_shot
 
-		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
-			next_shot += 0.1 SECONDS // slower to fire if untrained
-
 		if(active_attachable) //Underbarrel attached weapon?
 			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
 		else //Normal fire.
@@ -1648,7 +1645,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(user && user.mind && user.skills)
 		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
-			total_scatter_angle += SCATTER_AMOUNT_TIER_8
+			total_scatter_angle += SCATTER_AMOUNT_TIER_7
 		else
 			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
 

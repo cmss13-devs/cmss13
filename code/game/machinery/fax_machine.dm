@@ -21,7 +21,17 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 		linking = new linking(src)
 		LAZYADDASSOC(uplinks, linking.name, linking)
 
+/**
+ * Gets a list of available departments, based on the network and uplink connected.
+ * Return is structured as list("network_name" = list("Local Department"), "uplink_name" = list("Remote Department"))
+ *
+ * Arguments:
+ * network: required, the network to fetch the local departments from.
+ * uplink: required, the uplink to fetch the remote departments from.
+ */
 /datum/communications_network/proc/get_available_departments(network, uplink)
+	RETURN_TYPE(/list)
+
 	if(!network || !uplink)
 		return FALSE
 
@@ -34,15 +44,37 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 	return list("[network]" = department_networks, "[uplink]" = remote_networks)
 
+/**
+ * Registers a department to a network.
+ *
+ * Arguments:
+ * network: required, the network to add the department to
+ * department: required, the department to add
+ */
 /datum/communications_network/proc/register_department(network, department)
 	LAZYADDASSOCLIST(local_networks, network, department)
 
+
+/**
+ * Unregisters a department from the a network.
+ *
+ * Arguments:
+ * network: required, the network to remove the department from
+ * department: required, the department to remove
+ */
 /datum/communications_network/proc/unregister_department(network, department)
 	LAZYREMOVEASSOC(local_networks, network, department)
 
 /datum/communications_network/proc/send_fax(sent, sent_name, mob/sender, target_department, network, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
 	SEND_SIGNAL(src, COMSIG_FAX_SENT, target_department, network, sent, sent_name, sender, origin, authoriser)
 
+/**
+ * Announces a fax to ghosts and admins.
+ *
+ * Arguments:
+ * msg_admin: required, the message to send to admins
+ * msg_ghost: optional, the message to send to ghosts
+ */
 /datum/communications_network/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in GLOB.admins)
@@ -64,6 +96,16 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 			to_chat(C, msg_ghost)
 			SEND_SOUND(C, 'sound/effects/sos-morse-code.ogg')
 
+/**
+ * Allows an admin to send a fax.
+ *
+ * Arguments:
+ * user: required, the /mob of the admin attempting to send a fax.
+ * replying_to: optional, the /mob that sent the fax the admin is replying to
+ * origin: optional, the /obj/structure/machinery/faxmachine that sent the fax the admin is replying to
+ * from_uplink: optional, the /datum/uplink that is sending the fax
+ * from_network: optional, the network from /datum/uplink that is sending the fax
+ */
 /datum/communications_network/proc/admin_fax(mob/user, mob/replying_to, obj/structure/machinery/faxmachine/origin, datum/uplink/from_uplink, from_network)
 	if(!from_uplink)
 		var/options = tgui_input_list(user, "Which uplink to appear from?", "Available Uplinks", uplinks)
@@ -126,12 +168,19 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	send_fax(fax_message, customname, target_department = origin.department, network = from_network, authoriser = from_uplink)
 
 /datum/received_fax
+	/// required: the body of the received fax
 	var/sent
+	/// required: the name of the received fax
 	var/sent_name
+	/// required: the world.time that this fax was received
 	var/received_time
+	/// optional: weakref to the original sender
 	var/datum/weakref/sender
+	/// optional: weakref to the original fax
 	var/datum/weakref/origin_fax
+	/// optional: weakref to the original uplink that sent the fax
 	var/datum/weakref/uplink
+	/// optional: the network that the fax was sent to
 	var/network
 
 /datum/received_fax/New(sent_paper, sent_name, sender, origin, uplink, network)
@@ -147,9 +196,21 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 	received_time = world.time
 
+/**
+ * Display the fax.
+ *
+ * Arguments:
+ * user: required, as /mob
+ */
 /datum/received_fax/proc/view_fax(mob/user)
 	show_browser(user, "<body class='paper'>[sent]</body>", "Fax Message", "Fax Message")
 
+/**
+ * Allows an admin to reply to a fax.
+ *
+ * Arguments:
+ * user: required, as /mob
+ */
 /datum/received_fax/proc/reply(mob/user)
 	var/mob/living/carbon/human/replying_to = sender.resolve()
 	var/obj/structure/machinery/faxmachine/origin = origin_fax.resolve()
@@ -158,24 +219,45 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	GLOB.communications_network.admin_fax(user, replying_to, origin, sent_to_uplink, network)
 
 /datum/uplink
+	/// the name of the remote uplink
 	var/name
+	/// list of available remote networks to sent to
 	var/list/networks
+	/// list of received faxes by the network they were sent to
 	var/list/incoming_faxes
+	/// the stamp this uplink will apply to message
 	var/stamp_icon
+	/// the color the text sent to/from this uplink will appear to ghosts and admins
 	var/ghost_color
+	/// the choices available to admins sending messages via this uplink
 	var/list/template_choices
 
 /datum/uplink/New(parent)
 	RegisterSignal(parent, COMSIG_FAX_SENT, PROC_REF(handle_incoming_fax))
 
+/**
+ * Handles incoming faxes to remote uplink networks.
+ *
+ * Arguments:
+ * comms_net: unused
+ * target_department: required, matches the network contained in the uplink's network list
+ * network: unused
+ * sent: required, the body of the paper being received
+ * sent_name: required, the name of the paper being received
+ * sender: optional, as /mob, reference to the mob that sent the fax
+ * origin: optional, as /obj/structure/machinery/faxmachine, reference to the fax machine that sent the fox
+ * authoriser: unused
+ */
 /datum/uplink/proc/handle_incoming_fax(comms_net, target_department, network, sent, sent_name, mob/sender, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
+	SIGNAL_HANDLER
+
 	if(!(target_department in networks))
 		return
 
-	var/datum/received_fax/abstract_incoming = new(sent, sent_name, sender, origin, src, network)
-	LAZYADDASSOCLIST(incoming_faxes, network, abstract_incoming)
+	var/datum/received_fax/abstract_incoming = new(sent, sent_name, sender, origin, src, target_department)
+	LAZYADDASSOCLIST(incoming_faxes, target_department, abstract_incoming)
 
-	var/msg_admin = SPAN_NOTICE("<b><font color='[ghost_color]'>[network] FAX: </font>[sender ? key_name(sender, 1) : "REPLY"] ")
+	var/msg_admin = SPAN_NOTICE("<b><font color='[ghost_color]'>[target_department] FAX: </font>[sender ? key_name(sender, 1) : "REPLY"] ")
 	if(sender)
 		msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[sender]'>PP</A>) "
 		msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[sender]'>SM</A>) "
@@ -183,11 +265,17 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 		msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];fax_reply=\ref[abstract_incoming]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sent_name]' via secure connection ... <a href='?fax_view=\ref[abstract_incoming]'>view message</a>"
 
-	var/msg_ghost = SPAN_NOTICE("<b><font color='[ghost_color]'>[network] FAX: </font></b>")
+	var/msg_ghost = SPAN_NOTICE("<b><font color='[ghost_color]'>[target_department] FAX: </font></b>")
 	msg_ghost += "Receiving '[sent_name]' via secure connection ... <a href='?fax_view=\ref[abstract_incoming]'>view message</a>"
 
 	GLOB.communications_network.announce_fax(msg_admin, msg_ghost)
 
+/**
+ * Allows admins to view all faxes sent from a specific network on an uplink.
+ *
+ * Arguments:
+ * user: required, as /mob, the user viewing the faxes
+ */
 /datum/uplink/proc/view_all_faxes(mob/user)
 	var/faxes = tgui_input_list(user, "Which incoming faxes?", buttons = incoming_faxes)
 	var/body = "<body>"
@@ -201,31 +289,31 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	body += "<br><br></body>"
 	show_browser(user, body, "Faxes to [name]", "faxviewer", "size=300x600")
 
+/**
+ * Hook, used by uplinks to generate fax templates.
+ */
+/datum/uplink/proc/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
+	return
+
 /datum/uplink/weyland_yutani
 	name = UPLINK_WY
 	networks = list(NETWORK_WY)
 	stamp_icon = "paper_stamp-wy"
 	ghost_color = "#1F66A0"
-
 	template_choices = list("Weyland-Yutani")
+
+/datum/uplink/weyland_yutani/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
+	return generate_templated_fax(TRUE, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
 
 /datum/uplink/uscm
 	name = UPLINK_USCM
 	networks = list(NETWORK_HC, NETWORK_PROVOST)
 	stamp_icon = "paper_stamp-uscm"
 	ghost_color = "#006100"
-
 	template_choices = list("USCM High Command", "Office of the Provost General")
-
-/datum/uplink/proc/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
-	return
 
 /datum/uplink/uscm/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
 	return generate_templated_fax(FALSE, "USCM CENTRAL COMMAND", subject, addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
-
-/datum/uplink/weyland_yutani/generate_template(addressed_to, subject, message_body, sent_by, sent_title)
-	return generate_templated_fax(TRUE, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
-
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -248,7 +336,7 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	var/department = "General Public"
 
 	///Target department
-	var/target_department
+	var/target_department = "UNKNOWN NETWORK"
 
 	/// Network this fax machine is connected to
 	var/network = COLONY_NETWORK
@@ -266,8 +354,6 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	. = ..()
 	update_departments()
 	RegisterSignal(GLOB.communications_network, COMSIG_FAX_SENT, PROC_REF(receive_fax))
-
-//	target_department = available_departments["[network]"][1]
 
 
 /obj/structure/machinery/faxmachine/Destroy()
@@ -336,7 +422,7 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	GLOB.communications_network.register_department(network, department)
 
 /obj/structure/machinery/faxmachine/proc/receive_fax(comms_net, target_department, network, sent, sent_name, mob/sender, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
-	if(target_department != department)
+	if(target_department != department && target_department != "General Broadcast")
 		return
 
 	if(inoperable())
@@ -450,8 +536,13 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 		if("select")
 			var/last_target_department = target_department
-			var/target_network = tgui_input_list(usr, "Sending via...", buttons = list("Local Network", "Uplink"))
-			var/targets = target_network == "Local Network" ? available_departments["[network]"] : available_departments["[uplink]"]
+			var/target_network = tgui_input_list(usr, "Sending via...", buttons = list("Local Network", "Uplink", "General Broadcast"))
+
+			if(target_network == "General Broadcast")
+				target_department = "General Broadcast"
+				return TRUE
+
+			var/targets = target_network == "Local Network" ? unique_list(available_departments["[network]"]) : available_departments["[uplink]"]
 			target_department = tgui_input_list(usr, "To which department?", buttons = targets)
 			if(!target_department)
 				target_department = last_target_department

@@ -159,7 +159,7 @@
 	if(!off_hand || !istype(off_hand))
 		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
 	if(M.dir != user.dir || M.loc != get_step(user, user.dir))

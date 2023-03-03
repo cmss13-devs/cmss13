@@ -1,0 +1,7 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - bugfix: "Queen can't hijack dropships on the Almayer"
+  - bugfix: "Ported upstream fix to stop shuttle separation"
+  - bugfix: "Resolved auto launch feature for ERT"
+  - bugfix: "escape pod sound now correct"

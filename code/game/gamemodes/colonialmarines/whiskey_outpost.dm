@@ -729,3 +729,6 @@
 
 /datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
 	return // No bioscans needed in WO
+
+/datum/game_mode/whiskey_outpost/get_escape_menu()
+	return "Making a last stand on..."

@@ -2,3 +2,27 @@
   Morrow:
   - bugfix: Fixes barrel and ammo box sprites for M4RA
   - server: Introduces round results webhook.
+2023-03-02:
+  BeagleGaming1:
+  - rscadd: Reworks alcohol and its property and makes it way too complicated
+  - bugfix: Adds a limit to how long you will be slurring for after drinking alcohol
+  Segrain:
+  - admin: Editing bitflag variables actually works now.
+  - bugfix: Rotating chairs now only works with actual rotating chairs.
+  carlarctg:
+  - code_imp: Clears up gun and mob related hard dels
+2023-03-03:
+  CapCamIII:
+  - rscadd: M4RA now uses L42A handling effects for loading/unloading and chambering
+  - spellcheck: HPR now says M4RA instead of L42A when going over the other 10x24
+      marine weapons
+  Puckaboo2:
+  - bugfix: Xenomorph HUD sprites are now properly spaced out so borders no longer
+      overlay one another.
+  - code_imp: Renamed Warden's 'Protect' ability to 'Aid' and fixed its flavor text
+      to better represent its function.
+  - imageadd: Added a new ability icon for Warden's aforementioned 'Aid' ability.
+  harryob:
+  - ui: the escape menu was made a bit more readable on certain maps and gamemodes
+  realforest2001:
+  - bugfix: Poddoors now use their closed/open_layer vars properly.

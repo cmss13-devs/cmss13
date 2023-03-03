@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/palatine_roar/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -16,7 +16,7 @@
 		xeno.create_shriekwave(color = "#9600d1")
 
 		for(var/mob/living/carbon/carbon in view(7, xeno))
-			if(isXeno(carbon) && xeno.can_not_harm(carbon))
+			if(isxeno(carbon) && xeno.can_not_harm(carbon))
 				var/datum/behavior_delegate/palatine_base/behavior = xeno.behavior_delegate
 				if(!istype(behavior))
 					continue
@@ -37,7 +37,7 @@
 				human.disable_special_items()
 
 				var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
-				if(isYautja(human) && YG)
+				if(isyautja(human) && YG)
 					if(YG.cloaked)
 						YG.decloak(human)
 

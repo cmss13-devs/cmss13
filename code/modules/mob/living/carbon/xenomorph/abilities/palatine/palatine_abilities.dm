@@ -21,7 +21,7 @@
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/palatine_change_roar/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	var/action_icon_result
 
 	if(!X.check_state(1))

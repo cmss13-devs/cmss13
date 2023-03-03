@@ -28,7 +28,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/palatine_base
 
-/mob/living/carbon/Xenomorph/Palatine
+/mob/living/carbon/xenomorph/palatine
 	caste_type = XENO_CASTE_PALATINE
 	name = XENO_CASTE_PALATINE
 	desc = "What god did you anger..."
@@ -79,7 +79,7 @@
 	thirst = min(thirst + 1, max_thirst)
 
 /datum/behavior_delegate/palatine_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if(!isCarbonSizeHuman(A))
+	if(!iscarbonsizehuman(A))
 		return
 //	var/mob/living/carbon/human/H = A
 

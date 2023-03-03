@@ -172,7 +172,7 @@
 			if(XENO_CASTE_PRAETORIAN)
 				new_xeno = new /mob/living/carbon/xenomorph/praetorian(loc)
 			if(XENO_CASTE_PALATINE)
-				new_xeno = new /mob/living/carbon/Xenomorph/Palatine(loc)
+				new_xeno = new /mob/living/carbon/xenomorph/palatine(loc)
 			if(XENO_CASTE_QUEEN)
 				new_xeno = new /mob/living/carbon/xenomorph/queen(loc)
 			if(XENO_CASTE_HELLHOUND)

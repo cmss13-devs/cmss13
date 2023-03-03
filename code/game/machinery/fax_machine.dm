@@ -5,27 +5,10 @@
 #define NETWORK_PROVOST "USCM Provost Office"
 #define NETWORK_WY "Weyland-Yutani Corporate Affairs"
 
-#define USCM_NETWORK "USCM"
-#define WY_NETWORK "Weyland-Yutani"
+#define USCM_NETWORK "USCM Encrypted Network"
+#define COLONY_NETWORK "Colonial Network"
 
 GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
-
-/datum/communications_network/proc/send_fax(sent, sent_name, mob/sender, target_department, network, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
-	var/local_network_faxes = LAZYACCESS(local_networks, network)
-	if(!local_network_faxes)
-		return
-
-	for(var/obj/structure/machinery/faxmachine/receiving as anything in local_network_faxes)
-		if(receiving.department == target_department && receiving != origin)
-			receiving.receive_fax(sent, sent_name, authoriser)
-			return
-
-	var/remote_uplinks = LAZYACCESS(uplinks, origin.uplink)
-	for(var/datum/uplink/uplink as anything in remote_uplinks)
-		for(var/remote_network in uplink.networks)
-			if(remote_network == target_department)
-				uplink.handle_incoming_fax(sent, sent_name, sender, remote_network, origin)
-				break
 
 /datum/communications_network
 	/// All uplinks available, uplink name -> uplink
@@ -35,7 +18,7 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 /datum/communications_network/New()
 	for(var/datum/uplink/linking as anything in subtypesof(/datum/uplink))
-		linking = new linking()
+		linking = new linking(src)
 		LAZYADDASSOC(uplinks, linking.name, linking)
 
 /datum/communications_network/proc/get_available_departments(network, uplink)
@@ -43,14 +26,22 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 		return FALSE
 
 	var/department_networks = LAZYACCESS(local_networks, network)
-	var/remote_networks = LAZYACCESS(uplinks, uplink)
+	if(!department_networks)
+		local_networks[network] = list()
+		department_networks = local_networks[network]
+	var/datum/uplink/remote = LAZYACCESS(uplinks, uplink)
+	var/remote_networks = remote.networks
 
-	var/list/departments = list(network = department_networks, uplink = remote_networks)
+	return list("[network]" = department_networks, "[uplink]" = remote_networks)
 
-	return departments
+/datum/communications_network/proc/register_department(network, department)
+	LAZYADDASSOCLIST(local_networks, network, department)
 
-/datum/communications_network/proc/register_department(obj/structure/machinery/faxmachine/registering_fax)
-	LAZYADDASSOCLIST(local_networks, registering_fax.network, registering_fax)
+/datum/communications_network/proc/unregister_department(network, department)
+	LAZYREMOVEASSOC(local_networks, network, department)
+
+/datum/communications_network/proc/send_fax(sent, sent_name, mob/sender, target_department, network, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
+	SEND_SIGNAL(src, COMSIG_FAX_SENT, target_department, network, sent, sent_name, sender, origin, authoriser)
 
 /datum/communications_network/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
@@ -132,8 +123,7 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	if(!customname)
 		return
 
-	from_uplink.handle_incoming_fax(fax_message, customname, network = from_network)
-	origin.receive_fax(fax_message, customname, from_uplink)
+	send_fax(fax_message, customname, target_department = origin.department, network = from_network, authoriser = from_uplink)
 
 /datum/received_fax
 	var/sent
@@ -175,7 +165,13 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	var/ghost_color
 	var/list/template_choices
 
-/datum/uplink/proc/handle_incoming_fax(sent, sent_name, sender, network, origin)
+/datum/uplink/New(parent)
+	RegisterSignal(parent, COMSIG_FAX_SENT, PROC_REF(handle_incoming_fax))
+
+/datum/uplink/proc/handle_incoming_fax(comms_net, target_department, network, sent, sent_name, mob/sender, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
+	if(!(target_department in networks))
+		return
+
 	var/datum/received_fax/abstract_incoming = new(sent, sent_name, sender, origin, src, network)
 	LAZYADDASSOCLIST(incoming_faxes, network, abstract_incoming)
 
@@ -192,11 +188,8 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 	GLOB.communications_network.announce_fax(msg_admin, msg_ghost)
 
-
 /datum/uplink/proc/view_all_faxes(mob/user)
-
 	var/faxes = tgui_input_list(user, "Which incoming faxes?", buttons = incoming_faxes)
-
 	var/body = "<body>"
 
 	for(var/datum/received_fax/fax as anything in incoming_faxes[faxes])
@@ -258,10 +251,10 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 	var/target_department
 
 	/// Network this fax machine is connected to
-	var/network = USCM_NETWORK
+	var/network = COLONY_NETWORK
 
 	/// Network this fax machine uplinks to
-	var/uplink = UPLINK_WY
+	var/uplink
 
 	var/list/available_departments
 
@@ -272,9 +265,13 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 	update_departments()
+	RegisterSignal(GLOB.communications_network, COMSIG_FAX_SENT, PROC_REF(receive_fax))
+
+//	target_department = available_departments["[network]"][1]
+
 
 /obj/structure/machinery/faxmachine/Destroy()
-	LAZYREMOVE(GLOB.communications_network.local_networks[network], src)
+	GLOB.communications_network.unregister_department(network, department)
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -336,9 +333,12 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
 	available_departments = GLOB.communications_network.get_available_departments(network, uplink)
-	GLOB.communications_network.register_department(src)
+	GLOB.communications_network.register_department(network, department)
 
-/obj/structure/machinery/faxmachine/proc/receive_fax(sent, sent_name, authoriser)
+/obj/structure/machinery/faxmachine/proc/receive_fax(comms_net, target_department, network, sent, sent_name, mob/sender, obj/structure/machinery/faxmachine/origin, datum/uplink/authoriser)
+	if(target_department != department)
+		return
+
 	if(inoperable())
 		return
 
@@ -450,8 +450,11 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(usr, "Which department?", "Choose a department", available_departments)
-			if(!target_department) target_department = last_target_department
+			var/target_network = tgui_input_list(usr, "Sending via...", buttons = list("Local Network", "Uplink"))
+			var/targets = target_network == "Local Network" ? available_departments["[network]"] : available_departments["[uplink]"]
+			target_department = tgui_input_list(usr, "To which department?", buttons = targets)
+			if(!target_department)
+				target_department = last_target_department
 			. = TRUE
 
 		if("auth")
@@ -475,7 +478,8 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 /obj/structure/machinery/faxmachine/corporate
 	name = "W-Y Corporate Fax Machine"
 	department = "W-Y Local Office"
-	network = "Weyland-Yutani Secure Network"
+	network = USCM_NETWORK
+	uplink = UPLINK_WY
 
 /obj/structure/machinery/faxmachine/corporate/liaison
 	department = "W-Y Liaison"
@@ -490,7 +494,8 @@ GLOBAL_DATUM_INIT(communications_network, /datum/communications_network, new)
 /obj/structure/machinery/faxmachine/uscm
 	name = "USCM Military Fax Machine"
 	department = "USCM Local Operations"
-	network = "USCM Encrypted Network"
+	network = USCM_NETWORK
+	uplink = UPLINK_USCM
 
 /obj/structure/machinery/faxmachine/uscm/command
 	department = "CIC"

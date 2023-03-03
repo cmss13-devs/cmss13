@@ -42783,7 +42783,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/static{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -48884,7 +48884,7 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "mqo" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/static{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -55014,7 +55014,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/bed/chair/static{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -59739,7 +59739,7 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rBV" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/static,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
@@ -72206,9 +72206,8 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "xhE" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
+/obj/structure/bed/chair/static{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/main_office)
@@ -73002,9 +73001,8 @@
 	},
 /area/almayer/medical/hydroponics)
 "xAj" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
+/obj/structure/bed/chair/static{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 1;

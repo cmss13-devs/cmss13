@@ -18,6 +18,7 @@
 	var/map_file = "LV624.dmm"
 
 	var/webmap_url
+	var/short_name
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -148,6 +149,7 @@
 	map_path = json["map_path"]
 
 	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
 
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"

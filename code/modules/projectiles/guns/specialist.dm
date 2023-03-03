@@ -544,6 +544,8 @@
 	)
 
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
 	force = 16
 	attachable_allowed = list(

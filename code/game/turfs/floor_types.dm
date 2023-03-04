@@ -268,14 +268,16 @@
 /turf/open/floor/almayer/empty/multi_elevator
 	var/vector_x
 	var/vector_y
-	var/list/disallowed_atoms = list(/obj/docking_port/stationary/vehicle_elevator,
-									/obj/effect/projector,
-									/obj/effect/landmark/multi_fakezlevel_supply_elevator,
-									/obj/effect/step_trigger/clone_cleaner,
-									/obj/effect/elevator/supply/multi,
-									/atom/movable/clone,
-									/obj/effect/elevator/animation_overlay,
-									/obj/structure/prop/westerneye)
+	var/list/disallowed_atoms = list(
+		/obj/docking_port/stationary/vehicle_elevator,
+		/obj/effect/projector,
+		/obj/effect/landmark/multi_fakezlevel_supply_elevator,
+		/obj/effect/step_trigger/clone_cleaner,
+		/obj/effect/elevator/supply/multi,
+		/atom/movable/clone,
+		/obj/effect/elevator/animation_overlay,
+		/obj/structure/prop/westerneye)
+	var/turf/open/floor/almayer/empty/multi_elevator/neighbor_below
 
 /turf/open/floor/almayer/empty/multi_elevator/Initialize(mapload, ...)
 	. = ..()
@@ -284,11 +286,9 @@
 		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
 			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
 			vector_x = -m_shuttle.offset_distance
-
-/turf/open/floor/almayer/empty/multi_elevator/Crossed(O)
-	. = ..()
-	if(istype(O, /obj/structure))
-		enter_depths(O)
+			var/turf/potential_neighbor = locate(x + vector_x, y, z)
+			if(istype(potential_neighbor, type))
+				neighbor_below = potential_neighbor
 
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
 	if(is_type_in_list(AM, disallowed_atoms))
@@ -296,13 +296,23 @@
 	. = ..()
 
 /turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
+	if(neighbor_below && istype(neighbor_below, type))
+		neighbor_below.enter_depths(AM)
+		return
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
 		//also that the fake zlevels of the shipmap are 101 tiles apart
 		var/turf/fallonto_turf = get_turf(src)
 		var/area/my_area = get_area(fallonto_turf)
-		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi) && my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+		var/super_condition = FALSE
+		var/datum/shuttle/ferry/supply/multi/m_shuttle
+		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
+			m_shuttle = supply_controller.shuttle
+			if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
+				super_condition = TRUE
+			else if(my_area.fake_zlevel == length(GLOB.supply_elevator_turfs) && m_shuttle.moving_status == SHUTTLE_INTRANSIT)
+				super_condition = TRUE
+		if(super_condition)
 			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT && istype(my_area, /area/supply/station))
 				for(var/turf/T in m_shuttle.get_location_area())
 					fallonto_turf = T
@@ -333,11 +343,10 @@
 			contents += falling_animation
 			animate(falling_animation, pixel_y = -160, alpha = 120, time = 0.5 SECONDS)
 
-			var/alpha_cache = AM.alpha
 			AM.alpha = 0 //hide the thing thats falling while the animation plays
 
 			spawn(0.5 SECONDS)
-				AM.alpha = alpha_cache
+				AM.alpha = 255
 				fallonto_turf.vis_contents -= fallen_animation
 				contents -= falling_animation
 				qdel(falling_animation)
@@ -358,6 +367,7 @@
 			..(AM)
 
 		if(ishuman(AM))
+			AM.alpha = 255
 			var/mob/living/carbon/human/human_who_fell = AM
 			human_who_fell.take_overall_damage(rand(30, 60), 0, FALSE, FALSE, "Blunt Trauma")
 			for(var/obj/limb/leg/fallen_leg in human_who_fell.limbs)

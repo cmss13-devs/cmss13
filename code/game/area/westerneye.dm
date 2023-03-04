@@ -81,7 +81,7 @@
 /area/westerneye/command/airoom
 	name = "\improper AI Core"
 	icon_state = "airoom"
-	fake_zlevel = 1 // upperdeck
+	fake_zlevel = 2 // middeck
 	soundscape_playlist = SCAPE_PL_ARES
 	soundscape_interval = 8
 	flags_area = AREA_NOTUNNEL
@@ -89,12 +89,12 @@
 /area/westerneye/command/securestorage
 	name = "\improper Secure Storage"
 	icon_state = "corporatespace"
-	fake_zlevel = 1 // upperdeck
+	fake_zlevel = 3 // lowerdeck
 
 /area/westerneye/command/computerlab
 	name = "\improper Computer Lab"
 	icon_state = "ceroom"
-	fake_zlevel = 1 // upperdeck
+	fake_zlevel = 3 // lowerdeck
 
 /area/westerneye/command/telecomms
 	name = "\improper Telecommunications"
@@ -314,10 +314,14 @@
 	name = "\improper Guest Dormitories"
 	icon_state = "livingspace"
 	fake_zlevel = 3
-/area/westerneye/living/meseum
-	name = "\improper Meseum"
+/area/westerneye/living/museum
+	name = "\improper Museum"
 	icon_state = "livingspace"
-	fake_zlevel = 3
+	fake_zlevel = 2
+
+/area/westerneye/living/kitchen
+	name = "Kitchen"
+	fake_zlevel = 2
 
 /area/westerneye/living/tankerbunks
 	name = "\improper Vehicle Crew Bunks"

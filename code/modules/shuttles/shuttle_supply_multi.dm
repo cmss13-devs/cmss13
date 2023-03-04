@@ -43,6 +43,8 @@
 	warmup_time = 5 SECONDS
 	/// used when making things fall down shafts etc
 	var/offset_distance
+	/// please dont break me
+	var/operating = FALSE
 
 /datum/shuttle/ferry/supply/multi/New()
 	for(var/i in 1 to length(GLOB.supply_elevator_turfs))
@@ -171,6 +173,9 @@
 	return fake_zlevel
 
 /datum/shuttle/ferry/supply/multi/short_jump(area/origin, area/destination)
+	if(operating)
+		return
+	operating = TRUE
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -212,6 +217,8 @@
 			if(fake_zlevel == supply_controller.primary_fake_zlevel)
 				lower_railingz(fake_zlevel)
 			update_controller()
+			lower_railingz(fake_zlevel)
+			operating = FALSE
 			return
 	else if(!fake_zlevel)	//at ASRS
 		supply_controller.buy()
@@ -458,6 +465,7 @@
 			for(var/mob/M in destination)
 				M.layer = initial(M.layer)
 				M.plane = initial(M.plane)
+		operating = FALSE
 
 		var/area/target_area
 		if(!target_zlevel)
@@ -512,10 +520,10 @@
 					P.update_state(stage)
 
 /datum/shuttle/ferry/supply/multi/forbidden_atoms_check()
-	if(target_zlevel)
-		return FALSE
-	else
+	if(!target_zlevel)
 		return ..()
+	else
+		return FALSE
 
 /datum/shuttle/ferry/supply/multi/proc/update_controller()
 	in_elevator_controller.attached_to.overlays.Cut()

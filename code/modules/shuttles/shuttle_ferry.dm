@@ -185,3 +185,5 @@
 
 /datum/shuttle/ferry/proc/add_structures()
 	return
+
+/datum/shuttle/ferry/proc/fetch_areas()

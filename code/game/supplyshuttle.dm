@@ -584,6 +584,9 @@ var/datum/controller/supply/supply_controller = new()
 				timer += 0.5 SECONDS
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
+		// If its a shuttle controller NO DELETE
+		else if(istype(movable_atom, /obj/item/elevator_contoller/) || istype(movable_atom, /obj/structure/elevator_control_mount))
+			continue
 		// Delete everything else.
 		else qdel(movable_atom)
 

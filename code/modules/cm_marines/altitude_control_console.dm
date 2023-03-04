@@ -18,8 +18,8 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console
 	icon_state = "overwatch"
-	name = "altitude control console"
-	desc = "placeholder desc"
+	name = "Altitude Control Console"
+	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science."
 
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
 	. = ..()

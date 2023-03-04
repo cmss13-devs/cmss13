@@ -507,14 +507,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	log_ahelp(id, "Rejected", "Rejected by [usr.key]", null, usr.ckey)
 	Close(silent = TRUE)
 
-/// I feel like this is a really roundabout way to do what I want, so I'm open to suggestions on making it more efficient.
-/datum/admin_help/proc/GetReplies()
-	var/list/options = list()
-	for(var/option in subtypesof(/datum/autoreply/admin))
-		var/datum/autoreply/admin/n_option = new option
-		options += n_option.title
-	return options
-
 /// Resolve ticket with a premade message
 /datum/admin_help/proc/AutoReply()
 	var/key_name = key_name_admin(usr)
@@ -522,7 +514,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
-	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GetReplies())
+	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)
 	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]
 
 	if(!response || !istype(response))

@@ -28,11 +28,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(adminreplies, /datum/autoreply/admin, title)
 
 /datum/autoreply/admin/xeno
 	title = "Xeno Guide"
-	message = "Your action can be answered by the <a href='"+URL_WIKI_XENO_QUICKSTART+"'>Marine Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "Your action can be answered by the <a href='"+URL_WIKI_XENO_QUICKSTART+"'>Xeno Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
 
 /datum/autoreply/admin/changelog
 	title = "Changelog"
-	message = "The answer to your question can be found in the <a href='"+URL_CHANGELOG+"'>Changelog</a>. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
 
 /datum/autoreply/admin/intended
 	title = "Intended"

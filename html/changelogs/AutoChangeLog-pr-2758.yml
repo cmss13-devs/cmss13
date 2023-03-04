@@ -1,7 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Warden's Aid ability now has its proper icon state name, so the ability icon will properly display."
-  - spellcheck: "prae_assist has been renamed to prae_aid."
-  - spellcheck: "Renamed Aid Xeno to Aid Xenomorph."
-  - spellcheck: "Renamed Toggle Heal Type to Toggle Aid Type."

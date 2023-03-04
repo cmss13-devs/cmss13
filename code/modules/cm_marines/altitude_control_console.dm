@@ -3,8 +3,7 @@
 #define SHIP_ALT_MED 1
 #define SHIP_ALT_HIGH 1.5
 
-//List of avalible heights
-
+//List of available heights
 GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Altitude" = SHIP_ALT_MED, "High Altitude" = SHIP_ALT_HIGH))
 
 //Defines how much to heat the engines or cool them by, and when to overheat

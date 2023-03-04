@@ -120,7 +120,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			continue
 		current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, 10, 2)
-	ai_silent_announcement("Attention: performing high-G maneuver", ";", TRUE)
+	ai_silent_announcement("Attention: Performing high-G manoeuvre", ";", TRUE)
 
 
 #undef COOLING

@@ -42,12 +42,6 @@
 	default_ammo = /datum/ammo/bullet/revolver/penetrating
 	ammo_band_color = REVOLVER_TIP_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/revolver/cluster
-	name = "\improper M44 cluster speed loader (.44)"
-	desc = "A revolver speed loader. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	default_ammo = /datum/ammo/bullet/revolver/cluster
-	ammo_band_color = REVOLVER_TIP_COLOR_CLUSTER
-
 /**
  * COLONY REVOLVERS
  */

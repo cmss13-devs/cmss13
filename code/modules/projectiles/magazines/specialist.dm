@@ -70,6 +70,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	ammo_band_icon = "+m4ra_band"
 
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper A19 high velocity incendiary magazine (10x24mm)"

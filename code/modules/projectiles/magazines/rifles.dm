@@ -60,13 +60,6 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/rifle/cluster
-	name = "\improper M41A cluster magazine (10x24mm)"
-	desc = "A 10mm cluster magazine. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	icon_state = "m41a_cluster"
-	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
-	//`ammo_band_color = "#"
-
 /obj/item/ammo_magazine/rifle/toxin
 	name = "\improper M41A toxin magazine (10x24mm)"
 	desc = "A 10mm toxin magazine."
@@ -121,12 +114,6 @@
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains wall-penetrating bullets."
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-
-/obj/item/ammo_magazine/rifle/m41aMK1/cluster
-	name = "\improper M41A MK1 cluster magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains cluster bullets."
-	icon_state = "m41a_mk1_cluster"
-	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
 
 //-------------------------------------------------------
 //XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
@@ -188,6 +175,7 @@
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
+	ammo_band_icon = "+m16_band"
 
 /obj/item/ammo_magazine/rifle/m16/ap
 	name = "\improper M16 AP magazine (5.56x45mm)"
@@ -223,6 +211,7 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
+	ammo_band_icon = "+m41ae2_band"
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
@@ -279,7 +268,7 @@
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
-	ammo_band_icon = "+l42mk1"
+	ammo_band_icon = "+l42mk1_band"
 
 /obj/item/ammo_magazine/rifle/l42a/ap
 	name = "\improper L42A AP magazine (10x24mm)"
@@ -308,12 +297,6 @@
 	name = "\improper L42A wall-penetrating magazine (10x24mm)"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-
-/obj/item/ammo_magazine/rifle/l42a/cluster
-	name = "\improper L42A cluster magazine (10x24mm)"
-	desc = "A 10mm battle rifle cluster magazine."
-	icon_state = "l42mk1_cluster"
-	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
 
 /obj/item/ammo_magazine/rifle/l42a/toxin
 	name = "\improper L42A toxin magazine (10x24mm)"

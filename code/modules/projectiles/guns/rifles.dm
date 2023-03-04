@@ -426,7 +426,6 @@
 		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
 		/obj/item/ammo_magazine/rifle/m41aMK1/heap,
-		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 		/obj/item/ammo_magazine/rifle/m41aMK1/penetrating,
 	)

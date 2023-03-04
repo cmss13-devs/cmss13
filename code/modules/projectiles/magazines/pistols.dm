@@ -41,12 +41,6 @@
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/pistol/cluster
-	name = "\improper M4A3 cluster magazine (9mm)"
-	desc = "A pistol magazine. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	icon_state = "m4a3_cluster"
-	default_ammo = /datum/ammo/bullet/pistol/heavy/cluster
-
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
@@ -74,7 +68,7 @@
 	icon_state = "88m4"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
-	ammo_band_icon = "+88m4"
+	ammo_band_icon = "+88m4_band"
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/pistol/mod88/normalpoint // Unused
@@ -98,11 +92,6 @@
 	name = "\improper 88M4 wall-penetrating magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-
-/obj/item/ammo_magazine/pistol/mod88/cluster
-	name = "\improper 88M4 cluster magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap/cluster
-	icon_state = "88m4_mag_cluster"
 
 /obj/item/ammo_magazine/pistol/mod88/incendiary
 	name = "\improper 88M4 incendiary magazine (9mm)"
@@ -135,11 +124,6 @@
 	name = "\improper VP78 wall-penetrating magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-
-/obj/item/ammo_magazine/pistol/vp78/cluster
-	name = "\improper VP78 cluster magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/squash/cluster
-	icon_state = "vp78_cluster"
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
 	name = "\improper VP78 incendiary magazine (9mm)"

@@ -50,12 +50,6 @@
 	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/smg/m39/cluster
-	name = "\improper M39 cluster magazine (10x20mm)"
-	desc = "A 10x20mm caseless cluster bullet submachinegun magazine, containing cluster bullets. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	icon_state = "m39_cluster"
-	default_ammo = /datum/ammo/bullet/smg/ap/cluster
-
 /obj/item/ammo_magazine/smg/m39/toxin
 	name = "\improper M39 toxin magazine (10x20mm)"
 	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armour and destroying biological structures."

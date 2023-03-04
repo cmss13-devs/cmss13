@@ -13,7 +13,6 @@ GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Alti
 #define OVERHEAT 100
 
 //Has the ships temperature set to 0 on startup, sets the global default var to med
-
 GLOBAL_VAR_INIT(ship_temp, 0)
 GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 

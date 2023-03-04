@@ -23,8 +23,8 @@
 	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -43,9 +43,9 @@
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 75)
@@ -124,7 +124,7 @@
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 6.0
+	force = 6
 	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
@@ -164,8 +164,8 @@
 	flags_equip_slot = SLOT_WAIST
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -221,7 +221,7 @@
 
 /obj/item/tool/weldingtool/attack(mob/M, mob/user)
 
-	if(hasorgans(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
@@ -267,7 +267,7 @@
 			SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
-			message_staff("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
+			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
@@ -293,7 +293,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
+/obj/item/tool/weldingtool/proc/remove_fuel(amount = 1, mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)
@@ -320,7 +320,7 @@
 
 
 //Toggles the welder off and on
-/obj/item/tool/weldingtool/proc/toggle(var/message = 0)
+/obj/item/tool/weldingtool/proc/toggle(message = 0)
 	var/mob/M
 	if(ismob(loc))
 		M = loc
@@ -468,8 +468,8 @@
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
@@ -489,6 +489,34 @@
 	icon_state = "tac_prybar"
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
+
+/obj/item/tool/crowbar/maintenance_jack
+	name = "maintenance jack"
+	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though. Use while in your hand to swap between wrench and crowbar usage."
+	icon_state = "maintenance_jack"
+	item_state = "red_crowbar"
+	hitsound = "swing_hit"
+	w_class = SIZE_MEDIUM
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_TIER_4
+	inherent_traits = list(TRAIT_TOOL_CROWBAR)
+
+/obj/item/tool/crowbar/maintenance_jack/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("It is set to [HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT) ? "crowbar" : "wrench"] mode.")
+
+/obj/item/tool/crowbar/maintenance_jack/attack_self(mob/user)
+	. = ..()
+	if(HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT))
+		playsound(src, 'sound/weapons/handling/gun_underbarrel_activate.ogg', 25, TRUE)
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
+		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+	else
+		playsound(src, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 25, TRUE)
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
+		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 
 /*
 Welding backpack
@@ -560,7 +588,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()

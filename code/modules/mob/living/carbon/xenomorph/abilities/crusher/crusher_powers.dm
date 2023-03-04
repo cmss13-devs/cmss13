@@ -1,6 +1,6 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects_always()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -12,14 +12,14 @@
 		to_chat(H, SPAN_XENODANGER("You are slowed as the impact of [X] shakes the ground!"))
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
-	if (!isXenoOrHuman(L))
+	if (!isxeno_human(L))
 		return
 
 	var/mob/living/carbon/H = L
 	if (H.stat == DEAD)
 		return
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -36,7 +36,7 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
 	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
@@ -47,10 +47,10 @@
 	crusher_delegate.is_charging = TRUE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
+/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(interrupted)
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
@@ -61,7 +61,7 @@
 	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
@@ -72,7 +72,7 @@
 	crusher_delegate.is_charging = FALSE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(X.dir & REVERSE_DIR(projectile_direction))
@@ -81,7 +81,7 @@
 
 
 // This ties the pounce/throwing backend into the old collision backend
-/mob/living/carbon/Xenomorph/Crusher/pounced_obj(var/obj/O)
+/mob/living/carbon/xenomorph/crusher/pounced_obj(obj/O)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
@@ -91,12 +91,12 @@
 	if (!handle_collision(O)) // Check old backend
 		obj_launch_collision(O)
 
-/mob/living/carbon/Xenomorph/Crusher/pounced_turf(var/turf/T)
+/mob/living/carbon/xenomorph/crusher/pounced_turf(turf/T)
 	T.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
 	..(T)
 
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -140,7 +140,7 @@
 	return
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger/use_ability()
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	var/mob/living/carbon/Targeted
 	if (!istype(Xeno))
 		return
@@ -187,7 +187,7 @@
 	return
 
 /datum/action/xeno_action/onclick/crusher_shield/use_ability(atom/Target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -220,7 +220,7 @@
 	return
 
 /datum/action/xeno_action/onclick/crusher_shield/proc/remove_explosion_immunity()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -229,7 +229,7 @@
 	to_chat(xeno, SPAN_XENODANGER("Your immunity to explosion damage ends!"))
 
 /datum/action/xeno_action/onclick/crusher_shield/proc/remove_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -248,7 +248,7 @@
 	xeno.overlay_shields()
 
 /datum/action/xeno_action/onclick/charger_charge/use_ability(atom/Target)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 
 	activated = !activated
 	var/will_charge = "[activated ? "now" : "no longer"]"
@@ -283,7 +283,7 @@
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)
 	if(!action_cooldown_check())
 		return
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	if (!Xeno.check_state())
 		return
 	if(Xeno.plasma_stored <= plasma_cost)

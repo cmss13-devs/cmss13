@@ -1,6 +1,6 @@
 
 // Special cases abound, handled below or in subclasses
-/obj/vehicle/multitile/attackby(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/attackby(obj/item/O, mob/user)
 	// Are we trying to install stuff?
 	if(istype(O, /obj/item/hardpoint))
 		var/obj/item/hardpoint/HP = O
@@ -134,7 +134,7 @@
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 
 // Frame repairs on the vehicle itself
-/obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/proc/handle_repairs(obj/item/O, mob/user)
 	if(user.action_busy)
 		return
 	var/max_hp = initial(health)
@@ -216,7 +216,7 @@
 	return
 
 //Special case for entering the vehicle without using the verb
-/obj/vehicle/multitile/attack_hand(var/mob/user)
+/obj/vehicle/multitile/attack_hand(mob/user)
 	var/mob_x = user.x - src.x
 	var/mob_y = user.y - src.y
 	for(var/entrance in entrances)
@@ -236,7 +236,7 @@
 
 	user.forceMove(middle)
 
-/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/X)
+/obj/vehicle/multitile/attack_alien(mob/living/carbon/xenomorph/X)
 	// If they're on help intent, attempt to enter the vehicle
 	if(X.a_intent == INTENT_HELP)
 		handle_player_entrance(X)
@@ -283,7 +283,7 @@
 
 //Differentiates between damage types from different bullets
 //Applies a linear transformation to bullet damage that will generally decrease damage done
-/obj/vehicle/multitile/bullet_act(var/obj/item/projectile/P)
+/obj/vehicle/multitile/bullet_act(obj/item/projectile/P)
 	var/dam_type = "bullet"
 	var/damage = P.damage
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -315,7 +315,7 @@
 	healthcheck()
 
 //to handle IFF bullets
-/obj/vehicle/multitile/proc/get_target_lock(var/access_to_check)
+/obj/vehicle/multitile/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check) || !vehicle_faction)
 		return FALSE
 
@@ -324,13 +324,13 @@
 
 	return vehicle_faction in access_to_check
 
-/obj/vehicle/multitile/ex_act(var/severity)
+/obj/vehicle/multitile/ex_act(severity)
 	take_damage_type(severity * 0.5, "explosive")
 	take_damage_type(severity * 0.1, "slash")
 
 	healthcheck()
 
-/obj/vehicle/multitile/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
+/obj/vehicle/multitile/handle_click(mob/living/user, atom/A, list/mods)
 
 	var/seat
 	for(var/vehicle_seat in seats)
@@ -405,7 +405,7 @@
 
 		HP.activate(user, A)
 
-/obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
+/obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null) return
 
 	var/mob_x = M.x - src.x
@@ -419,7 +419,7 @@
 
 	var/enter_time = 0
 	// door locks break when hull is destroyed. Xenos enter slower, but their speed is not affected by anything and they ignore locks
-	if(isXeno(M))
+	if(isxeno(M))
 		enter_time = 3 SECONDS
 	else
 		if(door_locked && health > 0) //check if lock on and actually works
@@ -436,11 +436,11 @@
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
 		return
-	else if(!entrance_used && !isXeno(M))
+	else if(!entrance_used && !isxeno(M))
 		return
 
 	var/enter_msg = "You start climbing into \the [src]..."
-	if(health <= 0 && isXeno(M))
+	if(health <= 0 && isxeno(M))
 		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything
@@ -489,7 +489,7 @@
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
 //try to fit something into the vehicle
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/living/carbon/human/user, var/atom/dragged_atom)
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(mob/living/carbon/human/user, atom/dragged_atom)
 	if(!ishuman(user))
 		return
 	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
@@ -539,9 +539,9 @@
 	next_move = world.time + move_delay
 	qdel(O)
 	update_icon()
-	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
+	message_admins("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
-/obj/vehicle/multitile/proc/detach_clamp(var/mob/user)
+/obj/vehicle/multitile/proc/detach_clamp(mob/user)
 	clamped = FALSE
 	move_delay = initial(move_delay)
 
@@ -553,8 +553,8 @@
 	var/obj/item/vehicle_clamp/O = new(get_turf(src))
 	if(user)
 		O.forceMove(get_turf(user))
-		message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
+		message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
 	else
 		O.forceMove(get_turf(src))
-		message_staff("Vehicle clamp was detached from \the [src].")
+		message_admins("Vehicle clamp was detached from \the [src].")
 	update_icon()

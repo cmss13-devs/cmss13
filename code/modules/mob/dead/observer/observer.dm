@@ -3,6 +3,22 @@
 	can_block_movement = FALSE
 	recalculate_move_delay = FALSE
 
+/mob/dead/forceMove(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	var/oldloc = loc
+	loc = destination
+	Moved(oldloc, NONE, TRUE)
+
+/mob/dead/abstract_move(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	return ..()
+
 /mob/dead/observer
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -11,7 +27,7 @@
 	density = FALSE
 	canmove = TRUE
 	blinded = FALSE
-	anchored = 1 //  don't get pushed around
+	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
@@ -37,6 +53,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
+	var/datum/action/minimap/observer/minimap
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -90,15 +107,21 @@
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(name == "Unknown")
+		if(body)
+			name = body.real_name
 	change_real_name(src, name)
 
+	minimap = new
+	minimap.give_to(src)
+
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
 
-/mob/dead/observer/proc/set_lighting_alpha_from_pref(var/client/ghost_client)
+/mob/dead/observer/proc/set_lighting_alpha_from_pref(client/ghost_client)
 	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
 	switch(vision_level)
 		if(GHOST_VISION_LEVEL_NO_NVG)
@@ -141,7 +164,7 @@
 	if(!target.hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
@@ -160,7 +183,7 @@
 	if(!hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	hud_used.show_hud(hud_used.hud_version)
 
 /mob/dead/observer/Login()
@@ -458,10 +481,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 		return
 
-	usr.loc = pick(L)
+	usr.forceMove(pick(L))
 	following = null
 
-/mob/dead/observer/proc/scan_health(var/mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in oview())
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -473,7 +496,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
-/mob/dead/observer/verb/follow_local(var/mob/target)
+/mob/dead/observer/verb/follow_local(mob/target)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
@@ -490,7 +513,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	orbit_menu.tgui_interact(src)
 
 // This is the ghost's follow verb with an argument
-/mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
+/mob/dead/observer/proc/ManualFollow(atom/movable/target)
 	if(!istype(target))
 		return
 
@@ -526,7 +549,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	pixel_y = -2
 	animate(src, pixel_y = 0, time = 10, loop = -1)
 
-/mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
+/mob/dead/observer/proc/JumpToCoord(tx, ty, tz)
 	if(!tx || !ty || !tz)
 		return
 	following = null
@@ -565,11 +588,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				to_chat(A, "<span style='color: red;'>This mob is not located in the game world.</span>")
 
 /mob/dead/observer/memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/add_memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/verb/analyze_air()
@@ -820,7 +843,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/hellhound_mob_list = list() // the list we'll be choosing from
-	for(var/mob/living/carbon/Xenomorph/Hellhound/Hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/Hellhound as anything in GLOB.hellhound_list)
 		if(Hellhound.client)
 			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
@@ -829,7 +852,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	var/mob/living/carbon/xenomorph/hellhound/Hellhound = hellhound_mob_list[choice]
 	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 
@@ -884,7 +907,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/target = null
 
 	for(var/mob/living/M in mobs)
-		if(!istype(M,/mob/living/carbon/human) || M.stat || isYautja(M)) mobs -= M
+		if(!istype(M,/mob/living/carbon/human) || M.stat || isyautja(M)) mobs -= M
 
 
 	target = tgui_input_list(usr, "Please, select a contestant!", "Cake Time", mobs)
@@ -952,7 +975,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			. += "Evacuation: [eta_status]"
 
 
-/proc/message_ghosts(var/message)
+/proc/message_ghosts(message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)
 

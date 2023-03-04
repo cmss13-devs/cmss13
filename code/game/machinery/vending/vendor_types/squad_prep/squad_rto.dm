@@ -3,7 +3,7 @@
 GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 
 		list("AMMUNITION", 0, null, null, null),
-		list("L42A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42a/ap, null, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-/obj/structure/machinery/cm_vending/gear/rto/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/rto/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_rto
 
 //------------CLOTHING VENDOR---------------
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/alpha
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/mod
@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/utilities

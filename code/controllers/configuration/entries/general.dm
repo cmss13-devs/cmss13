@@ -41,7 +41,7 @@ Basics, the most important.
 
 /// Host of the webmap
 /datum/config_entry/string/webmap_host
-	config_entry_value = "https://affectedarc07.co.uk/tgmc.php?m="
+	config_entry_value = "https://affectedarc07.github.io/SS13WebMap/CMSS13/"
 
 /datum/config_entry/string/python_path
 
@@ -526,6 +526,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/adminhelp_webhook_name
 
 /datum/config_entry/string/adminhelp_ahelp_link
+
+/datum/config_entry/string/round_results_webhook_url
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset

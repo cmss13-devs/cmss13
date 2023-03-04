@@ -69,7 +69,7 @@ var/list/department_radio_keys = list(
 
 	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-/mob/living/proc/remove_speech_bubble(var/mutable_appearance/speech_bubble, var/list_of_mobs)
+/mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
@@ -90,7 +90,7 @@ var/list/department_radio_keys = list(
 		if (speaking)
 			if (speaking.flags & NONVERBAL)
 				if (prob(30))
-					src.custom_emote(1, "[pick(speaking.signlang_verb)].")
+					manual_emote(pick(speaking.signlang_verb))
 
 			if (speaking.flags & SIGNLANG)
 				say_signlang(message, pick(speaking.signlang_verb), speaking)
@@ -98,6 +98,12 @@ var/list/department_radio_keys = list(
 
 		var/list/listening = list()
 		var/list/listening_obj = list()
+
+		if(HAS_TRAIT(src, TRAIT_LISPING))
+			var/old_message = message
+			message = lisp_replace(message)
+			if(old_message != message)
+				verb = "lisps"
 
 		if(T)
 			var/list/hearturfs = list()
@@ -156,7 +162,7 @@ var/list/department_radio_keys = list(
 
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
 	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 

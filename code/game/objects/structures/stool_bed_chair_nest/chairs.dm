@@ -7,7 +7,8 @@
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
 	buckle_lying = FALSE
-	var/propelled = 0 //Check for fire-extinguisher-driven chairs
+	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
+	var/can_rotate = TRUE
 	var/picked_up_item = /obj/item/weapon/melee/twohanded/folded_metal_chair
 	var/stacked_size = 0
 
@@ -17,6 +18,8 @@
 	update_overlays()
 	for(var/i=1;i<=stacked_size;i++)
 		contents += new/obj/item/weapon/melee/twohanded/folded_metal_chair
+	if(!can_rotate)
+		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -327,6 +330,7 @@
 	anchored = FALSE
 
 /obj/structure/bed/chair/dropship
+	can_rotate = FALSE
 	picked_up_item = null
 
 /obj/structure/bed/chair/dropship/pilot
@@ -334,9 +338,6 @@
 	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
-
-/obj/structure/bed/chair/dropship/pilot/rotate()
-	return // no
 
 /obj/structure/bed/chair/dropship/pilot/unbuckle()
 	if(buckled_mob && buckled_mob.buckled == src)
@@ -425,9 +426,6 @@
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
-
-/obj/structure/bed/chair/dropship/passenger/rotate()
-	return // no
 
 /obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/living/M, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)

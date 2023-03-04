@@ -556,6 +556,9 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
+			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
 	enter_allowed = FALSE

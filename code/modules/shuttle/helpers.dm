@@ -136,8 +136,7 @@
 	air.safe = 0
 	air.operating = 0
 	air.unlock(TRUE)
-	while(!air.density)
-		air.close(TRUE)
+	air.close(TRUE)
 	air.lock(TRUE)
 	air.safe = 1
 

@@ -784,6 +784,9 @@
 
 	minimap_icon = "private"
 
+/datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/H)
+	H.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()

@@ -28,6 +28,11 @@
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
+/obj/structure/machinery/light_construct/Destroy()
+	newlight = null
+	. = ..()
+
+
 /obj/structure/machinery/light_construct/get_examine_text(mob/user)
 	. = ..()
 	switch(stage)

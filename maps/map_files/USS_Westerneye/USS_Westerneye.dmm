@@ -4745,8 +4745,7 @@
 /area/westerneye/hull/mid_hull/l_a_p)
 "bIs" = (
 /turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
+	icon_state = "test_floor5"
 	},
 /area/westerneye/hallways/repair_bay)
 "bIt" = (
@@ -11669,7 +11668,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/westerneye/command/telecomms)
 "dSB" = (
@@ -15078,8 +15077,7 @@
 /obj/structure/machinery/chem_dispenser/soda,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "plate"
 	},
 /area/space)
 "eQI" = (
@@ -23487,8 +23485,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "plate"
 	},
 /area/space)
 "hzv" = (
@@ -31313,8 +31310,7 @@
 /area/space)
 "jWX" = (
 /turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
+	icon_state = "test_floor5"
 	},
 /area/space)
 "jXg" = (
@@ -69306,8 +69302,7 @@
 "wiL" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "plate"
 	},
 /area/space)
 "wiO" = (
@@ -69547,7 +69542,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/westerneye/command/telecomms)
 "wmc" = (

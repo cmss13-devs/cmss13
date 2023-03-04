@@ -109,7 +109,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))
-		to_chat(user, SPAN_WARNING("the engines are not ready to burn yet."))
+		to_chat(user, SPAN_WARNING("The engines are not ready to burn yet."))
 		return
 	if(GLOB.ship_alt == new_altitude)
 		return

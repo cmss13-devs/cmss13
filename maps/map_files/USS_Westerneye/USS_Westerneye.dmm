@@ -31331,10 +31331,6 @@
 "jXr" = (
 /turf/closed/wall/almayer/white,
 /area/westerneye/medical/lockerroom)
-"jXv" = (
-/obj/structure/window/framed/almayer,
-/turf/closed/wall/almayer,
-/area/westerneye/hull/starboard_warehouse)
 "jXF" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
@@ -82773,7 +82769,7 @@ vap
 vap
 vap
 vap
-jXv
+tgu
 vap
 vap
 vap
@@ -88429,7 +88425,7 @@ gou
 gou
 gou
 gou
-gou
+nxv
 gou
 gou
 gou

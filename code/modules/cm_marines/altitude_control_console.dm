@@ -1,4 +1,4 @@
-//Defines what to times the OB and transport shuttle timers by based on the altitutde
+//Defines what to times the OB and transport shuttle timers by based on the altitude
 #define SHIP_ALT_LOW 0.5
 #define SHIP_ALT_MED 1
 #define SHIP_ALT_HIGH 1.5

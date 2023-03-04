@@ -4450,7 +4450,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/prop{
 	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. The trigger is missing, the barrel is bent, and it no longer appropriately feeds magazines.";
-	icon = 'icons\obj\items\weapons\guns\legacy\marine-weapons.dmi';
+	icon = 'icons/obj/items/weapons/guns/legacy/marine-weapons.dmi';
 	icon_state = "##OLD m41amk1_e";
 	item_state = "m41amk1";
 	name = "\improper Broken M41A pulse rifle";

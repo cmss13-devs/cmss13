@@ -30,6 +30,8 @@
 	var/list/obj/effect/elevator/supply/multi/elevator_effects = list()
 	/// contains lists which each contain groups of projectors near each stop of the elevator
 	var/list/shaft_projectors = list()
+	///contains lists which are indexed to each deck and contain clone_cleaners
+	var/list/shaft_cleanerz = list()
 	var/fake_zlevel = 0
 	var/target_zlevel = 1
 	var/obj/structure/elevator_control_mount/in_elevator_controller
@@ -49,23 +51,23 @@
 /datum/shuttle/ferry/supply/multi/New()
 	for(var/i in 1 to length(GLOB.supply_elevator_turfs))
 		elevator_animationz += list(list())
+		shaft_cleanerz += list(list())
+		railingz += list(list())
 	for(var/turf/T in GLOB.supply_elevator_turfs)
 		var/area/T_area = get_area(T)
 		elevator_animationz[T_area.fake_zlevel] = new/obj/effect/elevator/animation_overlay()
 		elevator_animationz[T_area.fake_zlevel].pixel_y = -192
 
+		for(var/obj/effect/step_trigger/clone_cleaner/CC in range(6, T))
+			shaft_cleanerz[T_area.fake_zlevel] |= CC
+
+		for(var/obj/structure/machinery/door/poddoor/railing/R in range(5, T))
+			railingz[T_area.fake_zlevel] |= R
+
 	for(var/area/A in all_areas)
 		if(istype(A, /area/supply/transit))
 			shaft_transit_area = A
 			break
-
-	for(var/turf/T in GLOB.supply_elevator_turfs)
-		var/area/T_area = get_area(T)
-		if(length(railingz) < length(GLOB.supply_elevator_turfs))
-			for(var/i in 1 to length(GLOB.supply_elevator_turfs))
-				railingz += list(list())
-		for(var/obj/structure/machinery/door/poddoor/railing/R in range(5, T))
-			railingz[T_area.fake_zlevel] |= R
 
 	for(var/obj/effect/projector/P in projectors)
 		for(var/turf/T in GLOB.supply_elevator_turfs)
@@ -308,12 +310,16 @@
 
 	for(var/turf/T in get_location_area())
 		for(var/obj/O in T)
+			if(O.clone)
+				O.destroy_clone_movable()
 			O.plane = plane_for_all_elevator_atoms
 			if(O.layer >= T.layer)
 				O.layer = layer_for_all_elevator_atoms + 0.015
 			else
 				O.layer = layer_for_all_elevator_atoms - 0.01
 		for(var/mob/M in destination)
+			if(M.clone)
+				M.destroy_clone_movable()
 			M.layer = layer_for_all_elevator_atoms + 0.02
 			M.plane = plane_for_all_elevator_atoms + 0.02
 		T.layer = layer_for_all_elevator_atoms + 0.01
@@ -518,6 +524,14 @@
 			if(stage != mode)
 				for(var/obj/effect/projector/P in shaft_projectors[(zlevel_key) + 1])
 					P.update_state(stage)
+
+		for(var/obj/effect/step_trigger/clone_cleaner/CC in shaft_cleanerz[zlevel_key])
+			switch(stage)
+				if(TRUE)
+					CC.coord_cache = list(CC.x,CC.y,CC.z)
+					CC.moveToNullspace()
+				if(FALSE)
+					CC.forceMove(locate(CC.coord_cache[1], CC.coord_cache[2], CC.coord_cache[3]))
 
 /datum/shuttle/ferry/supply/multi/forbidden_atoms_check()
 	if(!target_zlevel)

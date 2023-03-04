@@ -231,7 +231,8 @@
 	src.clone = C
 
 /atom/movable/proc/update_clone()
-	if(!clone || !clone.loc)
+	if(clone && clone.z != z)
+		destroy_clone_movable()
 		return
 	///---Var-Copy---////
 	clone.forceMove(locate(x + clone.proj_x, y + clone.proj_y, z))

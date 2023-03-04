@@ -295,32 +295,73 @@
 		return
 	. = ..()
 
-/turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
+/turf/open/floor/almayer/empty/multi_elevator/proc/calculate_fallonto_turf(amount_fallen=0)
+	amount_fallen++
+	var/area/my_area = get_area(src)
+	var/turf/fallonto_turf
+
+	if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
+		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+		if(istype(my_area, /area/supply/station))
+			var/will_fall_onto_elevator = FALSE
+			if(m_shuttle.get_location_area() == m_shuttle.area_offsite)
+				amount_fallen = 5
+			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT)
+				switch(m_shuttle.get_movement_direction())
+					if(1)
+						if(m_shuttle.fake_zlevel == 0 || m_shuttle.fake_zlevel > my_area.fake_zlevel)
+							if(m_shuttle.target_zlevel >= my_area.fake_zlevel)
+								will_fall_onto_elevator = TRUE
+								amount_fallen = amount_fallen + (0.5 * (my_area.fake_zlevel - m_shuttle.target_zlevel))
+					if(0)
+						if(m_shuttle.fake_zlevel >= my_area.fake_zlevel)
+							will_fall_onto_elevator = TRUE
+							amount_fallen = amount_fallen + (0.5 * m_shuttle.fake_zlevel) + (m_shuttle.target_zlevel ? (m_shuttle.target_zlevel - m_shuttle.fake_zlevel):0)
+			else if(m_shuttle.fake_zlevel == 0 || m_shuttle.fake_zlevel > my_area.fake_zlevel)
+				will_fall_onto_elevator = TRUE
+				amount_fallen = m_shuttle.fake_zlevel ? m_shuttle.fake_zlevel - my_area.fake_zlevel : amount_fallen
+
+			var/x_loc_offset = 0
+			var/turf/x_loc_offset_turf = src
+			var/y_loc_offset = 0
+			var/turf/y_loc_offset_turf = src
+
+			while(x_loc_offset_turf && x_loc_offset <= 10)
+				x_loc_offset_turf = locate(x_loc_offset_turf.x+1, x_loc_offset_turf.y, x_loc_offset_turf.z)
+				if(!istype(x_loc_offset_turf, type))
+					break
+				x_loc_offset++
+
+			while(y_loc_offset_turf && y_loc_offset <= 10)
+				y_loc_offset_turf = locate(y_loc_offset_turf.x, y_loc_offset_turf.y+1, y_loc_offset_turf.z)
+				if(!istype(y_loc_offset_turf, type))
+					break
+				y_loc_offset++
+
+			for(var/turf/T in (will_fall_onto_elevator ? m_shuttle.get_location_area() : m_shuttle.area_offsite))
+				var/area/T_area = get_area(T)
+				if(get_area(locate(T.x + x_loc_offset, T.y, T.z)) == T_area && get_area(locate(T.x + (x_loc_offset+1), T.y, T.z)) != T_area)
+					if(get_area(locate(T.x, T.y + y_loc_offset, T.z)) == T_area && get_area(locate(T.x, T.y + (y_loc_offset+1), T.z)) != T_area)
+						return list(T, amount_fallen)
+
 	if(neighbor_below && istype(neighbor_below, type))
-		neighbor_below.enter_depths(AM)
-		return
+		return	neighbor_below.calculate_fallonto_turf(amount_fallen++)
+	else
+		return list(locate(x + vector_x, y + vector_y, z), amount_fallen)
+
+/turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
+	var/area/my_area = get_area(src)
+	var/list/fall_data = calculate_fallonto_turf()
+	var/turf/fallonto_turf = fall_data[1]
+	var/damage_multiplier = fall_data[2]
+
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
 		//also that the fake zlevels of the shipmap are 101 tiles apart
-		var/turf/fallonto_turf = get_turf(src)
-		var/area/my_area = get_area(fallonto_turf)
-		var/super_condition = FALSE
-		var/datum/shuttle/ferry/supply/multi/m_shuttle
-		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
-			m_shuttle = supply_controller.shuttle
-			if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				super_condition = TRUE
-			else if(my_area.fake_zlevel == length(GLOB.supply_elevator_turfs) && m_shuttle.moving_status == SHUTTLE_INTRANSIT)
-				super_condition = TRUE
-		if(super_condition)
-			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT && istype(my_area, /area/supply/station))
-				for(var/turf/T in m_shuttle.get_location_area())
-					fallonto_turf = T
-					AM.plane = FLOOR_PLANE
-					AM.layer = UNDER_TURF_LAYER
-					break
-			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-				fallonto_turf = locate(x + vector_x, y + vector_y, z)
+		if(fallonto_turf)
+			if(istype(my_area, /area/supply/station))
+				AM.plane = FLOOR_PLANE
+				AM.layer = UNDER_TURF_LAYER
 
 			if(ishuman(AM))
 				var/mob/living/carbon/human/human_who_fell = AM
@@ -347,12 +388,14 @@
 
 			spawn(0.5 SECONDS)
 				AM.alpha = 255
+				AM.layer = initial(AM.layer)
+				AM.plane = initial(AM.plane)
 				fallonto_turf.vis_contents -= fallen_animation
 				contents -= falling_animation
 				qdel(falling_animation)
 				qdel(fallen_animation)
 				if(istype(my_area, /area/supply/station))
-					if(m_shuttle.moving_status != SHUTTLE_INTRANSIT)
+					if(supply_controller.shuttle.moving_status != SHUTTLE_INTRANSIT)
 						AM.plane = initial(AM.plane)
 						AM.layer = initial(AM.layer)
 					else
@@ -361,18 +404,24 @@
 				for(var/mob/living/carbon/human/ML in fallonto_turf.contents)
 					ML.KnockDown(2)
 					for(var/obj/limb/head/ouchy_on_mah_head in ML.limbs)
-						ouchy_on_mah_head.take_damage(brute=rand(5, 10))
+						ouchy_on_mah_head.take_damage(brute = rand(5, 10))
 						break
 		else
 			..(AM)
 
 		if(ishuman(AM))
-			AM.alpha = 255
 			var/mob/living/carbon/human/human_who_fell = AM
-			human_who_fell.take_overall_damage(rand(30, 60), 0, FALSE, FALSE, "Blunt Trauma")
+			human_who_fell.take_overall_damage((rand(30, 60) * damage_multiplier), 0, FALSE, FALSE, "Blunt Trauma")
 			for(var/obj/limb/leg/fallen_leg in human_who_fell.limbs)
-				fallen_leg.take_damage(brute=rand(rand(5,15),30), sharp=TRUE, used_weapon="Blunt Trauma")
+				fallen_leg.take_damage(brute = (rand(rand(5,15),30) * damage_multiplier), sharp = TRUE, used_weapon = "Blunt Trauma")
 			to_chat(human_who_fell, SPAN_WARNING("You fall into empty space!"))
+			if(damage_multiplier >= 2)
+				maul_human(human_who_fell)
+				if(damage_multiplier >= 5)
+					var/timer = 0.5 SECONDS
+					for(var/index in 1 to 5)
+						timer += 0.5 SECONDS
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), human_who_fell), timer)
 
 		if(ismob(AM))
 			playsound(AM.loc, 'sound/effects/body_fall.ogg', 50, 1)

@@ -97,6 +97,7 @@
 
 /obj/effect/step_trigger/clone_cleaner
 	icon_state = "cleaner"
+	var/list/coord_cache //used in multi_zlevel elevators
 
 /obj/effect/step_trigger/clone_cleaner/Trigger(atom/movable/A)
 	if(A.clone)

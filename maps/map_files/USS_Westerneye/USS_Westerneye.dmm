@@ -1704,7 +1704,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
-/obj/structure/largecrate/random/mini/small_case,
+/obj/structure/machinery/gear{
+	id = "supply_elevator_gear"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -10487,6 +10489,7 @@
 	id = "supply_elevator_railing_3";
 	dir = 4
 	},
+/obj/structure/largecrate/random/mini/small_case,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -53104,6 +53107,9 @@
 "qYu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
+	},
+/obj/structure/machinery/gear{
+	id = "supply_elevator_gear"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

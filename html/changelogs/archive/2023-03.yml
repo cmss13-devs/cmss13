@@ -11,3 +11,37 @@
   - bugfix: Rotating chairs now only works with actual rotating chairs.
   carlarctg:
   - code_imp: Clears up gun and mob related hard dels
+2023-03-03:
+  CapCamIII:
+  - rscadd: M4RA now uses L42A handling effects for loading/unloading and chambering
+  - spellcheck: HPR now says M4RA instead of L42A when going over the other 10x24
+      marine weapons
+  Puckaboo2:
+  - bugfix: Xenomorph HUD sprites are now properly spaced out so borders no longer
+      overlay one another.
+  - code_imp: Renamed Warden's 'Protect' ability to 'Aid' and fixed its flavor text
+      to better represent its function.
+  - imageadd: Added a new ability icon for Warden's aforementioned 'Aid' ability.
+  harryob:
+  - ui: the escape menu was made a bit more readable on certain maps and gamemodes
+  realforest2001:
+  - bugfix: Poddoors now use their closed/open_layer vars properly.
+2023-03-04:
+  Puckaboo2:
+  - bugfix: Warden's Aid ability now has its proper icon state name, so the ability
+      icon will properly display.
+  - spellcheck: prae_assist has been renamed to prae_aid.
+  - spellcheck: Renamed Aid Xeno to Aid Xenomorph.
+  - spellcheck: Renamed Toggle Heal Type to Toggle Aid Type.
+  harryob:
+  - qol: you now receive notifications when it is possible to evolve into certain
+      castes, based on roundstart time locks
+  - qol: unavailable castes are no longer shown in the evolve list
+  mullenpaul:
+  - bugfix: Queen can't hijack dropships on the Almayer
+  - bugfix: Ported upstream fix to stop shuttle separation
+  - bugfix: Resolved auto launch feature for ERT
+  - bugfix: escape pod sound now correct
+2023-03-05:
+  realforest2001:
+  - rscadd: Re-Adds autoreplies to ahelps.

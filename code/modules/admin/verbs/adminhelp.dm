@@ -375,7 +375,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		ref_src = "[REF(src)]"
 	. = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=mark'>[marked_admin ? "UNMARK" : "MARK"]</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
+	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=autoreply'>AUTO</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
 
@@ -541,23 +541,32 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	log_ahelp(id, "Rejected", "Rejected by [usr.key]", null, usr.ckey)
 	Close(silent = TRUE)
 
-//Resolve ticket with IC Issue message
-/datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
+/// Resolve ticket with a premade message
+/datum/admin_help/proc/AutoReply()
+	var/key_name = key_name_admin(usr)
 	if(state != AHELP_ACTIVE)
+		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
-	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
-	msg += "<font color='red'>Your issue has been determined by an administrator to be an in character issue and does NOT require administrator intervention at this time. For further resolution you should pursue options that are in character.</font>"
+	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)
+	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]
+
+	if(!response || !istype(response))
+		return
+
+	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as [response.title]! -</b></font><br>"
+	msg += "<font color='red'>[response.message]</font>"
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)
 
-	msg = "Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
+	msg = "Ticket [TicketHref("#[id]")] marked as [response.title] by [key_name]"
 	message_admins(msg)
 	log_admin_private(msg)
-	AddInteraction("Marked as IC issue by [key_name]", player_message = "Marked as IC issue!")
-	log_ahelp(id, "IC Issue", "Marked as IC issue by [usr.key]", null,  usr.ckey)
-	Resolve(silent = TRUE)
+	AddInteraction("Marked as [response.title] by [key_name]", player_message = "Marked as [response.title]!")
+	log_ahelp(id, "Autoreply", "Marked as [response.title] by [usr.key]", null,  usr.ckey)
+	if(response.closer)
+		Resolve(silent = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
@@ -642,8 +651,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Reject()
 		if("reply")
 			usr.client.cmd_ahelp_reply(initiator)
-		if("icissue")
-			ICIssue()
+		if("autoreply")
+			AutoReply()
 		if("close")
 			Close()
 		if("resolve")

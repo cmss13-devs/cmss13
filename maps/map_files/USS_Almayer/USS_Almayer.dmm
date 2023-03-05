@@ -28854,12 +28854,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
-"cMA" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/radio,
-/obj/item/device/lightreplacer,
-/turf/open/floor/almayer,
-/area/almayer/engineering/upper_engineering)
 "cMV" = (
 /obj/structure/sign/prop1{
 	pixel_x = -32;
@@ -30602,13 +30596,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"dAd" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "dAq" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -33437,12 +33424,8 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "eMh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access_txt = "2;7";
-	req_one_access = null
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Laundry Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -37807,6 +37790,13 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
+"gPF" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/hallways/stern_hallway)
 "gQl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/bucket{
@@ -43155,15 +43145,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
-"juU" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 10;
-	pixel_y = -26
-	},
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "juX" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -43881,15 +43862,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"jQt" = (
-/obj/structure/sign/safety/cryo{
-	pixel_x = -1;
-	pixel_y = -26
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "jQA" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -44806,7 +44778,10 @@
 	pixel_y = 2
 	},
 /obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
 /area/almayer/engineering/upper_engineering)
 "kpX" = (
 /obj/structure{
@@ -45641,13 +45616,13 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower_engineering)
 "kJG" = (
-/obj/structure/largecrate/supply/supplies/water,
 /obj/item/toy/deck{
 	pixel_y = 12
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32
 	},
+/obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -48089,6 +48064,25 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_two)
+"lPB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/lightreplacer,
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "lPC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -50016,12 +50010,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/engineering_workshop)
-"mOI" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/radio,
-/obj/item/device/lightreplacer,
-/turf/open/floor/almayer,
-/area/almayer/engineering/upper_engineering)
 "mOL" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
@@ -57348,13 +57336,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/lifeboat)
-"qqb" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "qqn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -58384,15 +58365,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"qQI" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/hallways/stern_hallway)
 "qQM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -64362,9 +64334,6 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "tGd" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1
@@ -67480,13 +67449,6 @@
 	icon_state = "emerald"
 	},
 /area/almayer/living/port_emb)
-"uZt" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "uZQ" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -71643,6 +71605,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"wSk" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangecorner"
+	},
+/area/almayer/hallways/stern_hallway)
 "wSm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -118606,7 +118577,7 @@ aoT
 kwd
 rFY
 ctC
-mLU
+gPF
 vuv
 phj
 oIB
@@ -119619,7 +119590,7 @@ atq
 atq
 aBs
 alO
-alJ
+alG
 aDZ
 aWd
 fTF
@@ -119822,7 +119793,7 @@ atq
 atq
 aBs
 alO
-alG
+alJ
 aYj
 apd
 gdS
@@ -120237,7 +120208,7 @@ loP
 loP
 tGd
 amx
-amx
+lPB
 oHl
 alO
 vuv
@@ -120433,12 +120404,12 @@ xBe
 xBe
 alG
 aDZ
-apf
+apd
 alO
 eFK
 wGd
 cZW
-amx
+pZK
 atq
 atq
 aoT
@@ -120638,13 +120609,13 @@ alG
 aDZ
 apd
 vXd
-amA
+duF
 atq
 atq
 amx
 atq
 atq
-juU
+aoT
 alO
 xrN
 fbx
@@ -120839,7 +120810,7 @@ abR
 xBe
 alG
 aDZ
-apd
+apf
 alO
 oih
 atc
@@ -121042,7 +121013,7 @@ amE
 xBe
 alG
 aDZ
-jQt
+rBZ
 alO
 alO
 uUz
@@ -121245,7 +121216,7 @@ amE
 xBe
 alG
 aYj
-rBZ
+apd
 alO
 anO
 anO
@@ -121448,7 +121419,7 @@ abR
 xBe
 alJ
 aYj
-qQI
+aWd
 dEt
 nRX
 jhx
@@ -121854,7 +121825,7 @@ xBe
 xBe
 alG
 aYj
-apd
+wSk
 alO
 alO
 aBq

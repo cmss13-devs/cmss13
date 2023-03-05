@@ -2738,7 +2738,7 @@
 	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 	accuracy = HIT_ACCURACY_TIER_10*8
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR | AMMO_XENO
 	damage_falloff = 0
 	max_range = 16
 

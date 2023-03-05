@@ -26,3 +26,22 @@
   - ui: the escape menu was made a bit more readable on certain maps and gamemodes
   realforest2001:
   - bugfix: Poddoors now use their closed/open_layer vars properly.
+2023-03-04:
+  Puckaboo2:
+  - bugfix: Warden's Aid ability now has its proper icon state name, so the ability
+      icon will properly display.
+  - spellcheck: prae_assist has been renamed to prae_aid.
+  - spellcheck: Renamed Aid Xeno to Aid Xenomorph.
+  - spellcheck: Renamed Toggle Heal Type to Toggle Aid Type.
+  harryob:
+  - qol: you now receive notifications when it is possible to evolve into certain
+      castes, based on roundstart time locks
+  - qol: unavailable castes are no longer shown in the evolve list
+  mullenpaul:
+  - bugfix: Queen can't hijack dropships on the Almayer
+  - bugfix: Ported upstream fix to stop shuttle separation
+  - bugfix: Resolved auto launch feature for ERT
+  - bugfix: escape pod sound now correct
+2023-03-05:
+  realforest2001:
+  - rscadd: Re-Adds autoreplies to ahelps.

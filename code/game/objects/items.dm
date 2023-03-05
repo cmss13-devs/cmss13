@@ -825,6 +825,7 @@ cases. Override_icon_state should be a list.*/
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
@@ -882,6 +883,7 @@ cases. Override_icon_state should be a list.*/
 				user.client.pixel_x = -viewoffset
 				user.client.pixel_y = 0
 
+	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))

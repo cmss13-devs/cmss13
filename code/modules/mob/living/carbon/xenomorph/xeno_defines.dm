@@ -345,6 +345,30 @@
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
+	if(hivenumber != XENO_HIVE_NORMAL)
+		return
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_evolution_announcements))
+
+/datum/hive_status/proc/setup_evolution_announcements()
+	SIGNAL_HANDLER
+
+	for(var/time in GLOB.xeno_evolve_times)
+		if(time == "0")
+			continue
+
+		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+/datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
+
+	var/list/castes_available = list()
+	for(var/datum/caste_datum/current_caste as anything in available_castes)
+		castes_available += initial(current_caste.caste_type)
+
+	var/castes = castes_available.Join(", ")
+	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
+	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)

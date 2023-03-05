@@ -251,7 +251,7 @@
 
 /obj/item/ammo_box/rounds
 	name = "\improper rifle ammunition box (10x24mm)"
-	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42A and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
+	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, M4RA and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_m41"
 	item_state = "base_m41"
 	flags_equip_slot = SLOT_BACK

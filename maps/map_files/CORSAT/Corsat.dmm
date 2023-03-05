@@ -23718,11 +23718,6 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/hangar/arrivals)
-"bmQ" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bmS" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -37852,7 +37847,6 @@
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplecorner"
@@ -40384,7 +40378,6 @@
 "fmR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -43368,7 +43361,6 @@
 "huu" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "huv" = (
@@ -43842,7 +43834,6 @@
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "hHA" = (
@@ -46695,7 +46686,6 @@
 "jWB" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -48856,7 +48846,6 @@
 "lCv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -51120,7 +51109,6 @@
 "njL" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "purplewhite"
@@ -51238,7 +51226,6 @@
 	},
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "noy" = (
@@ -54213,7 +54200,6 @@
 /obj/structure/machinery/light,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -61842,7 +61828,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "vgl" = (
@@ -64129,7 +64114,6 @@
 "wPz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhitecorner"
@@ -65759,7 +65743,6 @@
 "ygx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/corsat,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhitecorner"
@@ -99235,7 +99218,7 @@ ylo
 ylo
 aSa
 aSa
-bmQ
+aSa
 aSa
 aSa
 ylo
@@ -99244,7 +99227,7 @@ ylo
 ylo
 aSa
 aSa
-bmQ
+aSa
 aSa
 aSa
 ylo

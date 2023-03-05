@@ -63,29 +63,31 @@
 
 //M4RA magazines
 
-/obj/item/ammo_magazine/rifle/m4ra
-	name = "\improper A19 high velocity magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "m4ra"
+/obj/item/ammo_magazine/rifle/m4ra/custom
+	name = "\improper A19 HV magazine (10x24mm)"
+	desc = "A magazine of A19 high velocity rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
-	ammo_band_icon = "+m4ra_band"
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_icon = "+a19_band"
 
-/obj/item/ammo_magazine/rifle/m4ra/incendiary
-	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
+	name = "\improper A19 HV incendiary magazine (10x24mm)"
+	desc = "A magazine of A19 HV incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	icon_state = "a19_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
-/obj/item/ammo_magazine/rifle/m4ra/impact
-	name = "\improper A19 high velocity impact magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+/obj/item/ammo_magazine/rifle/m4ra/custom/impact
+	name = "\improper A19 HV high impact magazine (10x24mm)"
+	desc = "A magazine of A19 HV high impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	icon_state = "a19_impact"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 //-------------------------------------------------------

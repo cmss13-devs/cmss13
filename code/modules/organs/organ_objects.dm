@@ -34,6 +34,7 @@
 
 
 /obj/item/organ/Destroy()
+	QDEL_NULL(organ_data)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 

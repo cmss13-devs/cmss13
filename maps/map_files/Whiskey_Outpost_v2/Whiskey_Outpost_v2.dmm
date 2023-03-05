@@ -6799,8 +6799,8 @@
 /area/whiskey_outpost/outside/south/very_far)
 "xB" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/l42a,
-/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/m4ra,
+/obj/item/ammo_box/magazine/m4ra,
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -8255,20 +8255,9 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/three)
-"CC" = (
-/turf/open/space/basic,
-/turf/open/jungle,
-/area/whiskey_outpost/outside/lane/two_north)
 "CD" = (
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
-"CE" = (
-/turf/open/space/basic,
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
-	},
-/area/whiskey_outpost/outside/lane/two_north)
 "CG" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
@@ -12732,10 +12721,6 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
-"UI" = (
-/turf/open/space/basic,
-/turf/closed/wall/strata_ice/jungle,
-/area/whiskey_outpost/inside/caves)
 "UJ" = (
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/metal/wired,
@@ -22665,11 +22650,11 @@ mT
 mT
 Zf
 Zf
-UI
+Zf
 mT
 GJ
 GJ
-CC
+GJ
 Gj
 Zf
 Zf
@@ -23473,11 +23458,11 @@ mT
 mT
 mT
 Gj
-CE
+Gj
 cY
 GJ
 Gj
-CE
+Gj
 GJ
 GJ
 Gj

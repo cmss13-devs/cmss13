@@ -1496,7 +1496,6 @@
 /area/fiorina/station/park)
 "aNw" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
@@ -7603,14 +7602,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/disco)
-"eJQ" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "eKu" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -10008,14 +9999,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/ice_lab)
-"ggQ" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/fiorina/oob)
 "ghg" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -14256,10 +14239,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"iSQ" = (
-/obj/structure/lattice,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station)
 "iTm" = (
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/station/civres_blue)
@@ -17600,11 +17579,6 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/station/power_ring)
-"kPz" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/fiorina/oob)
 "kPC" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -30470,10 +30444,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"tan" = (
-/obj/structure/lattice,
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/oob)
 "tas" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -30624,14 +30594,6 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/fiorina/tumor/servers)
-"tgn" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "tgv" = (
 /obj/structure/machinery/computer/emails{
 	pixel_y = 6
@@ -34056,11 +34018,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/station/research_cells)
-"vnr" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "voa" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
@@ -37478,10 +37435,6 @@
 /obj/item/weapon/gun/smg/mp5,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
-"xwC" = (
-/obj/structure/lattice,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/tumor/fiberbush)
 "xwD" = (
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor/prison,
@@ -37919,10 +37872,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/oob)
-"xLi" = (
-/obj/structure/window/framed/prison,
-/turf/closed/wall/prison,
-/area/fiorina/tumor/ice_lab)
 "xLI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio{
@@ -38836,7 +38785,7 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
@@ -39048,14 +38997,14 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39260,21 +39209,21 @@ tfP
 tfP
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39479,13 +39428,13 @@ bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 pXH
 bQM
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 pqO
@@ -39690,14 +39639,14 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 byb
@@ -39902,7 +39851,7 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
@@ -40154,7 +40103,7 @@ bQM
 bQM
 bQM
 baC
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -40366,8 +40315,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40578,8 +40527,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40790,8 +40739,8 @@ bQM
 bQM
 bQM
 bQM
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -41002,7 +40951,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -41214,7 +41163,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -64621,7 +64570,7 @@ kbO
 kbO
 dFk
 ezJ
-xLi
+lJa
 kLX
 oHn
 ddL
@@ -67224,7 +67173,7 @@ vNq
 tvI
 sYv
 bQM
-ggQ
+bTe
 vNq
 vNq
 tvI
@@ -68502,7 +68451,7 @@ cAW
 cAW
 cAW
 bTe
-eJQ
+vNq
 vNq
 tvI
 sYv
@@ -71464,7 +71413,7 @@ vBP
 vBP
 vBP
 vBP
-tgn
+vBP
 vBP
 vBP
 vBP
@@ -72225,7 +72174,7 @@ bQM
 yaY
 bQM
 rOa
-tan
+eph
 fiq
 fiq
 fiq
@@ -72530,7 +72479,7 @@ cAW
 cAW
 bce
 cAW
-vnr
+bce
 hVS
 vBP
 byl
@@ -73495,12 +73444,12 @@ bQM
 bQM
 rOa
 rOa
-tan
-tan
+eph
+eph
 rOa
 rOa
 rOa
-tan
+eph
 rOa
 eph
 eph
@@ -81801,7 +81750,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 geF
 jmG
 aDs
@@ -82437,7 +82386,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 cAW
 cAW
 cAW
@@ -85633,7 +85582,7 @@ sEi
 hlK
 lRT
 cAW
-vnr
+bce
 cAW
 cAW
 lRT
@@ -86793,7 +86742,7 @@ rOa
 rOa
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM
@@ -88891,7 +88840,7 @@ cAW
 bQM
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM

@@ -30382,6 +30382,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"duF" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "duT" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -30595,6 +30602,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"dAd" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "dAq" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -50002,6 +50016,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/engineering_workshop)
+"mOI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio,
+/obj/item/device/lightreplacer,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "mOL" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
@@ -120217,7 +120237,7 @@ loP
 loP
 tGd
 amx
-cMA
+amx
 oHl
 alO
 vuv
@@ -120618,7 +120638,7 @@ alG
 aDZ
 apd
 vXd
-qqb
+amA
 atq
 atq
 amx
@@ -124684,7 +124704,7 @@ ttd
 nLk
 tim
 atc
-uZt
+lht
 uMc
 ajZ
 aaa

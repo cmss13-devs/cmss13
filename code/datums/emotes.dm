@@ -118,7 +118,7 @@
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message(formatted_message)
-	if(emote_type & (EMOTE_AUDIBLE)) //emote is audible
+	if(emote_type & EMOTE_AUDIBLE) //emote is audible
 		var/formatted_deaf_message = "<b>[paygrade][user]</b> [alt_message ? alt_message : key_third_person] silently."
 		user.audible_message(formatted_message, deaf_message = formatted_deaf_message)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is visible

@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "High Command now show at the top of the Crew Monitor."
+  - rscadd: "Most Provost and Riot MP roles appear in the MP section of the Crew Monitor."
+  - rscadd: "Foxtrot Squad and Marine Raiders now appear in consecutive lists below Delta and Echo."

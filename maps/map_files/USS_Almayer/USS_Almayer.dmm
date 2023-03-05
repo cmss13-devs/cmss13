@@ -53920,8 +53920,7 @@
 /area/almayer/command/lifeboat)
 "nJy" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = -18
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -125007,7 +125006,7 @@ aBq
 alO
 amA
 awy
-axe
+aoT
 oSx
 vuv
 gHg
@@ -125210,7 +125209,7 @@ civ
 alO
 qYm
 iEr
-amx
+aoT
 alR
 lwi
 cxo
@@ -125413,7 +125412,7 @@ atq
 bSN
 pZK
 iEr
-auB
+aoT
 lFA
 vuv
 cxo

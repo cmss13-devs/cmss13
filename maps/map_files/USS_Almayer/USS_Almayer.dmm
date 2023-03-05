@@ -55,7 +55,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
 /area/almayer/engineering/engineering_workshop)
 "aak" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -28090,6 +28093,11 @@
 /obj/item/bedsheet/orange{
 	layer = 3.2
 	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange"
@@ -28846,6 +28854,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"cMA" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio,
+/obj/item/device/lightreplacer,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "cMV" = (
 /obj/structure/sign/prop1{
 	pixel_x = -32;
@@ -29364,6 +29378,10 @@
 	},
 /obj/item/bedsheet/orange{
 	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -33104,6 +33122,10 @@
 	},
 /obj/item/bedsheet/orange{
 	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -37519,7 +37541,9 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
 	name = "\improper Chief Engineer's Bunk";
-	no_panel = 1
+	no_panel = 1;
+	req_one_access_txt = "1;6";
+	req_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -43122,7 +43146,6 @@
 	pixel_x = 10;
 	pixel_y = -26
 	},
-/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -44768,6 +44791,7 @@
 	pixel_x = 25;
 	pixel_y = 2
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "kpX" = (
@@ -52861,6 +52885,11 @@
 /obj/item/bedsheet/orange{
 	layer = 3.2
 	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange"
@@ -53993,7 +54022,8 @@
 	},
 /area/almayer/squads/charlie)
 "oHl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange"
@@ -57298,6 +57328,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/lifeboat)
+"qqb" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "qqn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -60879,14 +60916,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
-"rZT" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/electrical,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "saB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -62672,12 +62701,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/delta)
-"sST" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "sSY" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -67437,6 +67460,13 @@
 	icon_state = "emerald"
 	},
 /area/almayer/living/port_emb)
+"uZt" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "uZQ" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -71153,9 +71183,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "wGd" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/lightreplacer,
-/obj/item/device/radio,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -120190,7 +120217,7 @@ loP
 loP
 tGd
 amx
-amx
+cMA
 oHl
 alO
 vuv
@@ -120394,7 +120421,7 @@ cZW
 amx
 atq
 atq
-sST
+aoT
 alO
 dCt
 xhU
@@ -120591,7 +120618,7 @@ alG
 aDZ
 apd
 vXd
-amA
+qqb
 atq
 atq
 amx
@@ -120795,7 +120822,7 @@ aDZ
 apd
 alO
 oih
-rZT
+atc
 ctx
 amx
 amx
@@ -124657,7 +124684,7 @@ ttd
 nLk
 tim
 atc
-lht
+uZt
 uMc
 ajZ
 aaa

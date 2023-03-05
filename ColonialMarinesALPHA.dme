@@ -1247,6 +1247,7 @@
 #include "code\modules\admin\admin.dm"
 #include "code\modules\admin\admin_ranks.dm"
 #include "code\modules\admin\admin_verbs.dm"
+#include "code\modules\admin\autoreply.dm"
 #include "code\modules\admin\banjob.dm"
 #include "code\modules\admin\callproc.dm"
 #include "code\modules\admin\chat_commands.dm"

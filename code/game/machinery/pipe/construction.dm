@@ -161,16 +161,6 @@ Buildable meters
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)
 
-	if(!is_mainship_level(z))
-		return
-
-	GLOB.mainship_pipes += src
-
-/obj/item/pipe/Destroy()
-	if(is_mainship_level(z))
-		GLOB.mainship_pipes -= src
-	return ..()
-
 //update the name and icon of the pipe item depending on the type
 
 /obj/item/pipe/proc/update()

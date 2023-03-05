@@ -584,12 +584,12 @@
 
 // abstract grenades used for hijack explosions
 
-/obj/item/explosive/grenade/HE/bursting_pipe
+/obj/item/explosive/grenade/high_explosive/bursting_pipe
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/item/explosive/grenade/HE/bursting_pipe/Initialize()
+/obj/item/explosive/grenade/high_explosive/bursting_pipe/Initialize()
 	. = ..()
 	cause_data = create_cause_data("bursting pipe")
 	prime()

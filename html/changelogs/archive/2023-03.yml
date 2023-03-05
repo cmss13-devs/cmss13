@@ -42,3 +42,6 @@
   - bugfix: Ported upstream fix to stop shuttle separation
   - bugfix: Resolved auto launch feature for ERT
   - bugfix: escape pod sound now correct
+2023-03-05:
+  realforest2001:
+  - rscadd: Re-Adds autoreplies to ahelps.

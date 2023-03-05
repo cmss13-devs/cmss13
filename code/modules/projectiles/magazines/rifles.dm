@@ -129,7 +129,6 @@
 /obj/item/ammo_magazine/rifle/m4ra/ap
 	name = "\improper M4RA armor-piercing magazine (10x24mm)"
 	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 25
 	ammo_band_color = AMMO_BAND_COLOR_AP
@@ -144,28 +143,24 @@
 /obj/item/ammo_magazine/rifle/m4ra/rubber
 	name = "M4RA rubber magazine (10x24mm)"
 	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_piercing"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/rifle/m4ra/heap
 	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
 	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"
 	desc = "A magazine of wall-penetrating 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_heap"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper M4RA incendiary magazine (10x24mm)"
 	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 

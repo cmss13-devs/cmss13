@@ -75,7 +75,6 @@
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 HV incendiary magazine (10x24mm)"
 	desc = "A magazine of A19 HV incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "a19_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
@@ -84,7 +83,6 @@
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 HV high impact magazine (10x24mm)"
 	desc = "A magazine of A19 HV high impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "a19_impact"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom

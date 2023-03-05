@@ -31120,9 +31120,7 @@
 	},
 /area/almayer/living/captain_mess)
 "dOL" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
+/obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
 "dPU" = (
@@ -63363,9 +63361,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "tnb" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
+/obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

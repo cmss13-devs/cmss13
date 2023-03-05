@@ -102,6 +102,16 @@
 /datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
 	return (activated_once || ..())
 
+/datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/A)
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!action_cooldown_check()) // activate c/d only if we already spit
+		for (var/action_type in action_types_to_cd)
+			var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+			if (!istype(xeno_action))
+				continue
+
+			xeno_action.apply_cooldown_override(cooldown_duration)
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas

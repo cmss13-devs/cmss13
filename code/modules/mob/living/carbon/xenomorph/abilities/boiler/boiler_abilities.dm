@@ -55,6 +55,13 @@
 	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
+	/// These are actions that will be placed on cooldown for the cooldown_duration when activates. Added acid shroud for now because it can be abused
+	var/action_types_to_cd = list(
+		/datum/action/xeno_action/onclick/acid_shroud,
+	)
+
+	/// Duration for the cooldown of abilities affected by bombard
+	var/cooldown_duration = 20 SECONDS
 
 /datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
 	name = "Acid Shroud"
@@ -76,7 +83,7 @@
 	)
 	xeno_cooldown = 34 SECONDS
 
-	// Duration for the cooldown of abilities affected by acid shroud
+	/// Duration for the cooldown of abilities affected by acid shroud
 	var/cooldown_duration = 30 SECONDS
 
 /datum/action/xeno_action/onclick/dump_acid

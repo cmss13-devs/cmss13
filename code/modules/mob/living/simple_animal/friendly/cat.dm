@@ -43,7 +43,7 @@
 	black_market_value = 50
 	dead_black_market_value = 0
 	var/miaow_counter = 0
-	var/attack_damage = 15
+	var/attack_damage = 25
 
 /mob/living/simple_animal/cat/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -83,7 +83,7 @@
 						livingprey.splat(src)
 					else
 						livingprey.attack_animal(src)
-						livingprey.apply_damage(25,BRUTE)
+						livingprey.apply_damage(attack_damage,BRUTE)
 						livingprey.apply_effect(1,SLOW)
 						livingprey.KnockDown(1,1)
 					playsound(src.loc, "alien_claw_flesh", 25, 1)

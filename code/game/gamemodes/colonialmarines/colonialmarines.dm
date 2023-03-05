@@ -167,11 +167,11 @@
 		for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
 			shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
-		for(var/obj/item/pipe/exploding_pipe in shortly_exploding_pipes)
+		for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
 			exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-			new /obj/effect/warning/explosive(exploding_pipe)
+			new /obj/effect/warning/explosive(exploding_pipe.loc)
 
-		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 5 SECONDS)
+		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 30 SECONDS)
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)

@@ -36,6 +36,6 @@
 	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_until_explosion)
 
 /obj/effect/warning/explosive/proc/kablooie()
-	new /obj/item/explosive/grenade/HE/bursting_pipe(loc)
+	new /obj/item/explosive/grenade/high_explosive/bursting_pipe(loc)
 	new /obj/item/explosive/grenade/incendiary/bursting_pipe(loc)
 	qdel(src)

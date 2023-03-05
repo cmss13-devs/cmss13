@@ -105,6 +105,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
 #define JOB_GENERAL "USCM General"
+#define JOB_ACMC "Assistant Commandant of the Marine Corps"
+#define JOB_CMC "Commandant of the Marine Corps"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \

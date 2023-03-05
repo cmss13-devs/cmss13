@@ -29462,6 +29462,9 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = -17
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45864,6 +45867,7 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = -17
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -52062,9 +52066,6 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "nLk" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	dir = 4;
@@ -66595,6 +66596,7 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = 32
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -68498,6 +68500,9 @@
 	},
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = 32
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -122007,8 +122012,8 @@ alG
 aYj
 apf
 alO
-qLs
-qLs
+gsZ
+gsZ
 civ
 alO
 upR
@@ -122415,7 +122420,7 @@ apd
 aBq
 tZZ
 gLz
-gsZ
+atq
 nph
 aya
 iEr
@@ -122617,7 +122622,7 @@ aYj
 apd
 alO
 jmQ
-qLs
+gsZ
 fhH
 alO
 amA
@@ -122821,7 +122826,7 @@ apd
 aBq
 snE
 sGL
-gsZ
+atq
 bSN
 pZK
 iEr
@@ -124650,7 +124655,7 @@ tim
 awy
 ttd
 nLk
-atc
+tim
 atc
 lht
 uMc

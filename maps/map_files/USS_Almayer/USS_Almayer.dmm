@@ -44350,6 +44350,13 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/port_hallway)
+"kff" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/hallways/stern_hallway)
 "kfp" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 8;
@@ -52010,8 +52017,7 @@
 /area/almayer/command/lifeboat)
 "nJy" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = -18
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -55113,6 +55119,9 @@
 /area/almayer/shipboard/brig/perma)
 "ppc" = (
 /obj/structure/largecrate/supply/generator,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -65160,6 +65169,9 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -67158,6 +67170,12 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"uTZ" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "uUe" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
@@ -121376,7 +121394,7 @@ nNY
 qKi
 abR
 xBe
-alG
+alJ
 aYj
 qQI
 dEt
@@ -121782,7 +121800,7 @@ xBe
 xBe
 xBe
 xBe
-alJ
+alG
 aYj
 apd
 alO
@@ -121987,7 +122005,7 @@ ufx
 alR
 alG
 aYj
-apd
+apf
 alO
 qLs
 qLs
@@ -122596,7 +122614,7 @@ amx
 alR
 alG
 aYj
-apf
+apd
 alO
 jmQ
 qLs
@@ -124220,7 +124238,7 @@ aPa
 aqq
 aGD
 aPb
-apj
+kff
 alO
 anO
 anO
@@ -124228,7 +124246,7 @@ anO
 anO
 pZK
 iEr
-aoT
+uTZ
 bYn
 bYn
 bYn

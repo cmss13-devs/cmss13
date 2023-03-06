@@ -1010,7 +1010,7 @@
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
-		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/flashlight,
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/verticalgrip,
@@ -1128,7 +1128,23 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	starting_attachment_types = list(/obj/item/attachable/bayonet)
 
-
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex/,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/lasersight,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
 
 /obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()

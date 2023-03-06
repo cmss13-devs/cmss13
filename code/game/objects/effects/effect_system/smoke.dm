@@ -263,7 +263,7 @@
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
 	anchored = TRUE
-	spread_speed = 7
+	spread_speed = 8
 	smokeranking = SMOKE_RANK_BOILER
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -339,7 +339,7 @@
 /obj/effect/particle_effect/smoke/xeno_weak
 	time_to_live = 12
 	color = "#ffbf58" //Mustard orange?
-	spread_speed = 10
+	spread_speed = 11
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
 	/// How much neuro is dosed per tick

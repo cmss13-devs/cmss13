@@ -2831,6 +2831,7 @@
 	accuracy = HIT_ACCURACY_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_4
 	max_range = 16
+	/// range on the smoke in tiles from center
 	var/smokerange = 4
 	var/lifetime_mult = 1.0
 
@@ -2872,11 +2873,10 @@
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/proj)
-	var/amount = 4
 	var/lifetime_mult = 1.0
 	if(isboiler(proj.firer))
 		smoke_system.cause_data = proj.weapon_cause_data
-	smoke_system.set_up(amount, 0, turf)
+	smoke_system.set_up(smokerange, 0, turf)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
@@ -2888,6 +2888,7 @@
 	ping = "ping_x"
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 16
+	smokerange = 3
 
 
 /datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/proj)

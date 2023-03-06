@@ -2249,7 +2249,7 @@
 /area/varadero/interior_protected/vessel)
 "bTm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -11180,7 +11180,7 @@
 "jNT" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/table/woodentable,
-/obj/item/staff/stick{
+/obj/item/weapon/melee/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
 	icon = 'icons/obj/items/items.dmi';
@@ -13287,7 +13287,7 @@
 "lEB" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/item/clothing/accessory/medal/gold/captain,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},

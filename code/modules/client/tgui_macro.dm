@@ -68,6 +68,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			if(!params["key"])
 				if(kbinds[old_key])
 					kbinds[old_key] -= kb_name
+					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[old_key]))
 						kbinds -= old_key
 				INVOKE_ASYNC(owner, /client/proc/set_macros)
@@ -89,6 +90,9 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				kbinds[old_key] -= kb_name
 				if(!length(kbinds[old_key]))
 					kbinds -= old_key
+
+			if(LAZYISIN(kbinds["Unbound"], old_key))
+				kbinds["Unbound"] -= old_key
 
 			kbinds[full_key] += list(kb_name)
 			kbinds[full_key] = sortList(kbinds[full_key])

@@ -73,9 +73,10 @@
 		G.die()
 		drop_inv_item_on_ground(G)
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
-		apply_damage(dmg, BURN)
+		apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
+	if(caste.fire_immunity & FIRE_VULNERABILITY)
+		apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * FIRE_VULNERABILITY_MULTIPLIER, BURN)
 
 #undef PASSIVE_BURN_DAM_CALC
 

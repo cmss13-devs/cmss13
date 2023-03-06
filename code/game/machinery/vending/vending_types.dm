@@ -264,7 +264,7 @@
 		/obj/item/ammo_magazine/pistol/rubber = 20,
 		/obj/item/ammo_magazine/pistol/mod88/rubber = 20,
 		/obj/item/ammo_magazine/rifle/rubber = 20,
-		/obj/item/ammo_magazine/rifle/l42a/rubber = 20,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber = 20,
 		/obj/item/ammo_magazine/shotgun/beanbag = 20,
 		/obj/item/storage/firstaid/regular = 2,
 		/obj/item/storage/firstaid/fire = 2,
@@ -372,8 +372,8 @@
 			R.category=CAT_COIN
 			coin_records += R
 		else
-			R.category=CAT_NORMAL
 			product_records += R
+			R.category = CAT_NORMAL
 
 		if(delay_product_spawn)
 			sleep(5) //sleep(1) did not seem to cut it, so here we are.

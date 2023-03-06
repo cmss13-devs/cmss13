@@ -996,8 +996,8 @@
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 	accepted_ammo = list(
-	/obj/item/ammo_magazine/rifle/m16,
-	/obj/item/ammo_magazine/rifle/m16/ap,
+		/obj/item/ammo_magazine/rifle/m16,
+		/obj/item/ammo_magazine/rifle/m16/ap,
 	)
 
 	attachable_allowed = list(

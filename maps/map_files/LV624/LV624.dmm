@@ -11419,7 +11419,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "aUA" = (
 /obj/item/bedsheet/rd,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/structure/bed{
 	desc = "For prime comfort.";
 	name = "fancy bed"
@@ -23392,7 +23392,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /turf/open/floor{
 	icon_state = "white"
 	},

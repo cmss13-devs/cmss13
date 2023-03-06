@@ -571,6 +571,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
 	wield_delay = WIELD_DELAY_NORMAL
+	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
@@ -589,10 +590,10 @@
 	fire_delay = FIRE_DELAY_TIER_6
 	burst_amount = BURST_AMOUNT_TIER_2
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
 

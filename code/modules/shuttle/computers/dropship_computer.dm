@@ -6,6 +6,7 @@
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 	unacidable = TRUE
 	exproof = TRUE
+	needs_power = FALSE
 
 	// True if we are doing a flyby
 	var/is_set_flyby = FALSE
@@ -443,3 +444,4 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	is_remote = TRUE
+	needs_power = TRUE

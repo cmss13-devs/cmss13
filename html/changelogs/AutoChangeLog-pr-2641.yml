@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - ui: "converted money-based vendors to tgui"

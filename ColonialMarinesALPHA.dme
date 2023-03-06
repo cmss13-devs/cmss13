@@ -1346,6 +1346,7 @@
 #include "code\modules\asset_cache\assets\fontawesome.dm"
 #include "code\modules\asset_cache\assets\tgfont.dm"
 #include "code\modules\asset_cache\assets\tgui.dm"
+#include "code\modules\asset_cache\assets\vending.dm"
 #include "code\modules\asset_cache\transports\asset_transport.dm"
 #include "code\modules\buildmode\bm-mode.dm"
 #include "code\modules\buildmode\buildmode.dm"

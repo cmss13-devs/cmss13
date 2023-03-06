@@ -294,6 +294,8 @@
 				S = pick('sound/bullets/acid_impact1.ogg')
 			if("acid_strike")
 				S = pick('sound/weapons/alien_acidstrike1.ogg','sound/weapons/alien_acidstrike2.ogg')
+			if("acid_spit")
+				S = pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg')
 			if("acid_sizzle")
 				S = pick('sound/effects/acid_sizzle1.ogg','sound/effects/acid_sizzle2.ogg','sound/effects/acid_sizzle3.ogg','sound/effects/acid_sizzle4.ogg')
 			if("alien_doorpry")

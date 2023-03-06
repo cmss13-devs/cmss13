@@ -397,6 +397,7 @@
 #include "code\datums\effects\acid.dm"
 #include "code\datums\effects\bleeding.dm"
 #include "code\datums\effects\heal_over_time.dm"
+#include "code\datums\effects\neurotoxin.dm"
 #include "code\datums\effects\plasma_over_time.dm"
 #include "code\datums\effects\tether.dm"
 #include "code\datums\effects\weak_spray_stack.dm"

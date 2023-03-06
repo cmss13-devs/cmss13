@@ -8825,19 +8825,12 @@
 /obj/item/tool/pen,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft,
-/obj/structure/machinery/door/window/westright,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
-"aBj" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "aBk" = (
@@ -8854,10 +8847,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "aBm" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -9331,7 +9321,6 @@
 /area/almayer/engineering/upper_engineering)
 "aDi" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -9356,14 +9345,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
-"aDl" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "aDm" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -30858,7 +30839,7 @@
 "dEt" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
-	name = "\improper Engineering Dorms"
+	name = "\improper Engineering South Hall"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -35072,6 +35053,13 @@
 /obj/item/tool/pen,
 /obj/item/folder/black,
 /obj/item/storage/fancy/cigarettes/kpack,
+/obj/structure/machinery/door_control{
+	id = "CE Office Shutters";
+	name = "CE Office Shutters";
+	pixel_y = 18;
+	req_one_access_txt = "24;31";
+	pixel_x = -6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
 "fAa" = (
@@ -42197,6 +42185,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"iYj" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/hallways/stern_hallway)
 "iYp" = (
 /obj/item/paper/almayer_storage,
 /turf/open/floor/plating/plating_catwalk,
@@ -43009,6 +43006,12 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
+"joh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/engineering/ce_room)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -43286,7 +43289,7 @@
 "jyE" = (
 /obj/structure/machinery/light,
 /obj/effect/landmark/start/engineering,
-/turf/open/floor/wood/ship,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
 "jyR" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
@@ -45575,6 +45578,10 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kIf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "kIm" = (
@@ -46559,6 +46566,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
+"lhJ" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = 12;
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "lhL" = (
 /obj/structure/sign/safety/life_support{
 	pixel_x = 8;
@@ -50031,6 +50048,16 @@
 	dir = 6
 	},
 /area/almayer/command/lifeboat)
+"mPh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 2;
+	name = "\improper Engineering South Hall"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/upper_engineering)
 "mPj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -50825,6 +50852,13 @@
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CE Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -52517,14 +52551,6 @@
 /area/almayer/hallways/starboard_hallway)
 "nWN" = (
 /obj/structure/machinery/cryopod,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -52912,15 +52938,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/shipboard/port_missiles)
-"oiC" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "oiL" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -59856,12 +59873,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/main_office)
-"rBZ" = (
-/obj/structure/machinery/power/apc/almayer,
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "rCp" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/small{
@@ -60446,6 +60457,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
+"rPt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/engineering/ce_room)
 "rPC" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65126,6 +65144,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
+"tYo" = (
+/obj/structure/machinery/power/apc/almayer,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/engineering/upper_engineering)
 "tYB" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -68292,6 +68316,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
+"vrH" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "vrI" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -70218,6 +70251,9 @@
 	pixel_x = -30;
 	pixel_y = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "wiI" = (
@@ -72042,6 +72078,13 @@
 /area/almayer/medical/lower_medical_medbay)
 "wYY" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CE Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/ce_room)
 "wZa" = (
@@ -119582,7 +119625,7 @@ alO
 alO
 axx
 amw
-aBj
+anO
 aDj
 aqY
 aye
@@ -120190,9 +120233,9 @@ atq
 aoT
 alO
 axA
-arm
+amA
 aBl
-aDl
+aOB
 aFl
 aHt
 aIU
@@ -121013,7 +121056,7 @@ amE
 xBe
 alG
 aDZ
-rBZ
+apd
 alO
 alO
 uUz
@@ -121196,7 +121239,7 @@ anO
 anO
 anO
 alO
-oiC
+alG
 aYj
 apd
 alO
@@ -121418,8 +121461,8 @@ qKi
 abR
 xBe
 alJ
-aYj
-aWd
+ajR
+aTS
 dEt
 nRX
 jhx
@@ -121621,8 +121664,8 @@ qJf
 anV
 xBe
 alG
-ajR
-wyK
+aYj
+apd
 alO
 iqH
 atc
@@ -122208,7 +122251,7 @@ iEr
 fhH
 eNi
 ueG
-kIf
+joh
 jyE
 eNi
 alG
@@ -122411,7 +122454,7 @@ iEr
 civ
 eNi
 iKD
-kIf
+rPt
 kIf
 eNi
 alG
@@ -122611,7 +122654,7 @@ atq
 alO
 krS
 awy
-civ
+tYo
 eNi
 eNi
 eNi
@@ -122643,7 +122686,7 @@ jmQ
 gsZ
 fhH
 alO
-amA
+vrH
 awy
 tiK
 bYn
@@ -123455,7 +123498,7 @@ alO
 aBq
 aBq
 alO
-amA
+lhJ
 awy
 aoT
 uGQ
@@ -124465,7 +124508,7 @@ nlV
 aGC
 wqq
 aTS
-dEt
+mPh
 nRX
 tWi
 nRX
@@ -124648,7 +124691,7 @@ atc
 tim
 alO
 aIe
-anR
+iYj
 lNl
 aqq
 eky
@@ -124666,7 +124709,7 @@ pCb
 eky
 aqq
 aIe
-anR
+iYj
 lNl
 alO
 tim

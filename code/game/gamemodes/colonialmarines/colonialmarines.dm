@@ -171,7 +171,7 @@
 			exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
 			new /obj/effect/warning/explosive(exploding_pipe.loc)
 
-		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 30 SECONDS)
+		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)

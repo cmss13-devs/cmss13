@@ -1,0 +1,12 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Adds a new biological trait and component, 'Bad Leg'. This trait will give your character a bad leg, which will flare up in pain if you walk without a cane too much. Combat roles cannot get this trait, and neither can some rookie/physically-demanding roles such as MT, CT, nurse."
+  - imageadd: "Added and separated the one cane into various types of canes. Makeshift, wooden, fancy, holster, gun."
+  - soundadd: "Added sounds for cane walking that will occur while you walk, if you're gripping a cane."
+  - rscadd: "Survivors will get a makeshift cane. Command roles (And the CL) will get a fancy cane. Everyone else gets a normal wooden cane."
+  - rscadd: "You can create a 'cane', a wooden pole, via 3 wooden planks."
+  - rscadd: "Added a 'holster' cane that can fit any melee weapon inside, that the CL can purchase from their briefcase."
+  - admin: "Added a fancy cane that can be unfolded to become a gun! Six shots, more than enough to kill anything that moves, and integrally silenced. Admin-only for now, also comes inside a case with two spare handfuls of ammunition. Admins: Mess around with the cane first, it might be finicky to learn."
+  - code_imp: "Added a new flag for guns that prevents them from showing their gun features in examine."
+  - spellcheck: "Fixed a typo in the CL briefcase."

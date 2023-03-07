@@ -76,6 +76,8 @@
 #define GUN_SUPPORT_PLATFORM (1<<19)
 #define GUN_BURST_ONLY (1<<20)
 #define GUN_FULL_AUTO_ONLY (1<<21)
+/// No gun description, only base desc
+#define GUN_NO_DESCRIPTION (1<<22)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)
@@ -261,7 +263,7 @@
 #define THROW_MODE_NORMAL   1
 #define THROW_MODE_HIGH  2
 
-#define XENO_ACID_BARRICADE_DAMAGE 8
+#define XENO_ACID_GAS_BARRICADE_DAMAGE 8.5
 #define XENO_ACID_HMG_DAMAGE 10
 
 #define MOLOTOV_POTENCY_MAX 20

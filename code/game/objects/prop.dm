@@ -88,4 +88,3 @@
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "facehugger_impregnated"
-	layer = 3

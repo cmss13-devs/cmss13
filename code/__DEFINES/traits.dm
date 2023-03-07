@@ -167,6 +167,8 @@
 #define TRAIT_BIMEX "t_bimex"
 ///Stops emote cooldown
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
+/// If the mob is holding a cane.
+#define TRAIT_HOLDS_CANE "t_holds_cane"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -321,3 +323,5 @@ GLOBAL_LIST(trait_name_map)
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
+///Status trait coming from generic items
+#define TRAIT_SOURCE_ITEM "t_s_item"

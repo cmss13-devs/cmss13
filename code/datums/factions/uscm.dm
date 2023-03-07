@@ -76,7 +76,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_GENERAL, JOB_COLONEL)
+			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_INTEL)

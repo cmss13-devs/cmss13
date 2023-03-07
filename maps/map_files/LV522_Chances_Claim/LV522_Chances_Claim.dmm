@@ -48187,7 +48187,7 @@
 /area/lv522/atmos/cargo_intake)
 "uhF" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;

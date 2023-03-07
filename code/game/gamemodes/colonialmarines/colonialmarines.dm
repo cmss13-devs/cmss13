@@ -168,9 +168,14 @@
 			shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
 		for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
+			var/turf/loc = exploding_pipe
+			if(istype(loc) && protected_by_pylon(TURF_PROTECTION_MORTAR, loc))
+				continue
+
 			exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
 			new /obj/effect/warning/explosive(exploding_pipe.loc)
 
+		addtimer(CALLBACK(PROC_REF(handle_big_explosion)), 5 SECONDS)
 		TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
 	if(next_research_allocation < world.time)
@@ -234,6 +239,12 @@
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
 			next_stat_check = world.time + 10 MINUTES
 
+/datum/game_mode/colonialmarines/proc/shake_ship()
+	for(var/mob/current_mob in GLOB.mob_list)
+		if(!is_mainship_level(current_mob.z))
+			continue
+		shake_camera(current_mob, 10, 1)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg')
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT

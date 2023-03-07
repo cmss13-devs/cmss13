@@ -160,13 +160,13 @@
 
 /datum/dropship_hijack/almayer/proc/do_dropship_incoming_sound()
 	for(var/area/internal_area in shuttle.shuttle_areas)
-		playsound_area(internal_area, 'sound/effects/dropship_incoming.ogg', 100)
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_incoming.ogg')
+		playsound_area(internal_area, 'sound/effects/dropship_incoming.ogg', volume = 75)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_incoming.ogg', volume = 75)
 
 	addtimer(CALLBACK(src, PROC_REF(do_dropship_collision_sound)), 7 SECONDS)
 
 /datum/dropship_hijack/almayer/proc/do_dropship_collision_sound()
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg')
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
 
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
 	enter_allowed = FALSE

@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added a var to decide if morgues update their names to reflect contents. Currently just used to protect Yautja sarcophagi."

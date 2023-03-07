@@ -71,8 +71,6 @@
 	desc = "The memory substrate of ARES, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main ARES Unit operational."
 	icon_state = "substrate"
 
-
-
 // #################### ARES Interface Console #####################
 /// I wonder what this does.
 #define ARES_ACCESS_NONE 0

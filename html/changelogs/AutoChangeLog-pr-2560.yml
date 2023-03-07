@@ -1,5 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - code_imp: "gibbing another human takes an unmodifiable 30 seconds"
-  - admin: "admins are alerted when a human tries to gib another human"

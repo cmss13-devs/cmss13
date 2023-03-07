@@ -17,6 +17,9 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	var/webmap_url
+	var/short_name
+
 	var/traits = null
 	var/space_empty_levels = 1
 	var/list/environment_traits = list()
@@ -144,6 +147,9 @@
 	map_name = json["map_name"]
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
+
+	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
 
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"
@@ -371,7 +377,7 @@
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)
 	if(CONFIG_GET(flag/ephemeral_map_mode))
-		message_staff("NOTICE: Running in ephemeral mode - map change request ignored")
+		message_admins("NOTICE: Running in ephemeral mode - map change request ignored")
 		return TRUE
 	if(maptype == GROUND_MAP)
 		return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")

@@ -190,11 +190,12 @@
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
-/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+// deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
+/atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7
 	if(max_distance) hear_dist = max_distance
 	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, 2, message_flags = message_flags)
+		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
@@ -497,6 +498,20 @@
 		return FALSE
 
 	return do_pull(AM, lunge, no_msg)
+
+/mob/living/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += {"
+		<br><font size='1'>
+			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+		</font>
+	"}
+
 
 /mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
 	if(pulling)

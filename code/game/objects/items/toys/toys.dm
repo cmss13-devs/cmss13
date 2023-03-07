@@ -463,21 +463,38 @@
 	w_class = SIZE_TINY
 	icon_state = "farwaplush"
 	black_market_value = 25
-	var/last_hug_time
+	COOLDOWN_DECLARE(last_hug_time)
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
 	..()
 
-	if(world.time > last_hug_time)
+	if(COOLDOWN_FINISHED(src, last_hug_time))
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							SPAN_NOTICE("You hug [src]. Dawwww... "))
-		last_hug_time = world.time + 50 //5 second cooldown
+		COOLDOWN_START(src, last_hug_time, 5 SECONDS)
 
 /obj/item/toy/farwadoll/pred
 	name = "strange plush doll"
 	desc = "A plush doll depicting some sort of tall humanoid biped..?"
 	w_class = SIZE_TINY
 	icon_state = "predplush"
+
+/obj/item/toy/plushie_cade
+	name = "plushie barricade"
+	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	icon_state = "plushie_cade"
+	item_state = "plushie_cade"
+	w_class = SIZE_SMALL
+	COOLDOWN_DECLARE(last_hug_time)
+
+/obj/item/toy/plushie_cade/attack_self(mob/user)
+	..()
+
+	if(COOLDOWN_FINISHED(src, last_hug_time))
+		user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]. You feel safe."))
+		playsound(user, "plush", 25, TRUE)
+		COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
+
 
 /obj/item/computer3_part
 	name = "computer part"
@@ -509,7 +526,8 @@
 							/obj/item/toy/prize/odysseus = 1,
 							/obj/item/toy/prize/phazon = 1,
 							/obj/item/clothing/shoes/slippers = 1,
-							/obj/item/clothing/shoes/slippers_worn = 1
+							/obj/item/clothing/shoes/slippers_worn = 1,
+							/obj/item/clothing/head/collectable/tophat/super = 1,
 							)
 
 /obj/item/toy/festivizer

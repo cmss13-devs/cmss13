@@ -733,15 +733,15 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber,
 		/obj/item/ammo_magazine/rifle/rubber,
-		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/surplus/surplus_l42_extended
-	name = "surplus magazine box (Ext L42A x 12)"
-	contains = list(/obj/item/ammo_box/magazine/l42a/ext)
+/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
+	name = "surplus magazine box (Ext M4RA x 12)"
+	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
@@ -985,9 +985,9 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/m43_holdout
-	name = "M43 Holdout Pistol"
-	contains = list(/obj/item/storage/box/m43)
+/datum/supply_packs/contraband/deep_storage/clf_holdout
+	name = "D18 Holdout Pistol"
+	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1118,7 +1118,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
 		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
-			new /obj/item/clothing/mask/gas/yautja/damaged(loc)
+			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
 			new /obj/item/clothing/shoes/yautja_flavor(loc)
 			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)

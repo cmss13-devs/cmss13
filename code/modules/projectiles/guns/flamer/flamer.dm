@@ -6,7 +6,7 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m240"
 	item_state = "m240"
 	flags_equip_slot = SLOT_BACK
@@ -56,7 +56,7 @@
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_gun_safety()
 
-/obj/item/weapon/gun/flamer/gun_safety_message(mob/user)
+/obj/item/weapon/gun/flamer/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	update_icon()
@@ -84,7 +84,7 @@
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
-		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
+		var/image/I = image(icon, src, "+lit")
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
@@ -566,6 +566,9 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
+	to_call = null
+	tied_reagent = null
+	tied_reagents = null
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(datum/pass_flags_container/PF)

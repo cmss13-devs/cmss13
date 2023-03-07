@@ -143,6 +143,8 @@
 #define TRAIT_CRAWLER "t_crawler"
 /// If the mob is hidden from examination
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
+/// Replace s with th in talking
+#define TRAIT_LISPING "t_lisping"
 /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
@@ -165,6 +167,8 @@
 #define TRAIT_BIMEX "t_bimex"
 ///Stops emote cooldown
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
+/// If the mob is holding a cane.
+#define TRAIT_HOLDS_CANE "t_holds_cane"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -196,6 +200,11 @@
 
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
+
+//-- structure traits --
+// TABLE TRAITS
+/// If the table is being flipped, prevent any changes that will mess with adjacency handling
+#define TRAIT_TABLE_FLIPPING "t_table_flipping"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -238,6 +247,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_SANTA" = TRAIT_SANTA,
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
 		"TRAIT_EMOTE_CD_EXEMPT" = TRAIT_EMOTE_CD_EXEMPT,
+		"TRAIT_LISPING" = TRAIT_LISPING,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
@@ -263,6 +273,9 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
 	),
+	/obj/structure/surface/table = list(
+		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,
+	)
 ))
 
 /// value -> trait name, generated on use from trait_by_type global
@@ -304,6 +317,11 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+//-- structure traits --
+///Status trait coming from being flipped or unflipped.
+#define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
+///Status trait coming from generic items
+#define TRAIT_SOURCE_ITEM "t_s_item"

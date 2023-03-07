@@ -1,0 +1,115 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall6";
+	},
+/area/shuttle/escape_pod)
+"c" = (
+/obj/docking_port/mobile/escape_shuttle/n,
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall9"
+	},
+/area/shuttle/escape_pod)
+"f" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel{
+	pixel_y = 30
+	},
+/turf/open/shuttle/escapepod{
+	icon_state = "floor7"
+	},
+/area/shuttle/escape_pod)
+"g" = (
+/turf/closed/shuttle/escapepod,
+/area/shuttle/escape_pod)
+"i" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall1"
+	},
+/area/shuttle/escape_pod)
+"j" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor9"
+	},
+/area/shuttle/escape_pod)
+"k" = (
+/obj/structure/machinery/door/airlock/evacuation{
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-3"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/shuttle/escape_pod)
+"l" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall2"
+	},
+/area/shuttle/escape_pod)
+"F" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall3"
+	},
+/area/shuttle/escape_pod)
+"H" = (
+/obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod,
+/area/shuttle/escape_pod)
+"L" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall7"
+	},
+/area/shuttle/escape_pod)
+"Q" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall11"
+	},
+/area/shuttle/escape_pod)
+"V" = (
+/obj/structure/machinery/cryopod/evacuation,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 8;
+	pixel_y = -35
+	},
+/turf/open/shuttle/escapepod,
+/area/shuttle/escape_pod)
+"W" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor8"
+	},
+/area/shuttle/escape_pod)
+"Y" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall4"
+	},
+/area/shuttle/escape_pod)
+
+(1,1,1) = {"
+g
+Q
+Q
+c
+"}
+(2,1,1) = {"
+i
+f
+H
+L
+"}
+(3,1,1) = {"
+k
+W
+V
+L
+"}
+(4,1,1) = {"
+l
+j
+H
+L
+"}
+(5,1,1) = {"
+F
+Y
+Y
+a
+"}

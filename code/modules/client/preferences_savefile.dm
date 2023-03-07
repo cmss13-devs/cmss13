@@ -89,7 +89,7 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 
 /proc/sanitize_keybindings(value)
-	var/list/base_bindings = sanitize_islist(value, null)
+	var/list/base_bindings = sanitize_islist(value, list())
 	if(!base_bindings)
 		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
@@ -174,6 +174,7 @@
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
 	S["key_bindings"] >> key_bindings
+	check_keybindings()
 
 	S["preferred_survivor_variant"]	>> preferred_survivor_variant
 
@@ -189,6 +190,7 @@
 	S["no_radial_labels_preference"] >> no_radial_labels_preference
 	S["hotkeys"] >> hotkeys
 
+	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
 
 	//Sanitize
@@ -249,6 +251,7 @@
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
+	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -363,6 +366,7 @@
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
+	S["custom_cursors"] << custom_cursors
 
 	return TRUE
 
@@ -507,8 +511,9 @@
 	gear = sanitize_list(gear)
 
 	traits = sanitize_list(traits)
-
-	//if(!skin_style) skin_style = "Default"
+	read_traits = FALSE
+	trait_points = initial(trait_points)
+	close_browser(owner, "character_traits")
 
 	if(!origin) origin = ORIGIN_USCM
 	if(!faction)  faction =  "None"
@@ -593,6 +598,49 @@
 
 	return 1
 
+/// checks through keybindings for outdated unbound keys and updates them
+/datum/preferences/proc/check_keybindings()
+	if(!owner)
+		return
+	var/list/user_binds = list()
+	for(var/key in key_bindings)
+		for(var/kb_name in key_bindings[key])
+			user_binds[kb_name] += list(key)
+	var/list/notadded = list()
+	for(var/name in GLOB.keybindings_by_name)
+		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
+		if(length(user_binds[kb.name]))
+			continue // key is unbound and or bound to something
+		var/addedbind = FALSE
+		if(hotkeys)
+			for(var/hotkeytobind in kb.hotkey_keys)
+				if(!length(key_bindings[hotkeytobind]))
+					LAZYADD(key_bindings[hotkeytobind], kb.name)
+					addedbind = TRUE
+		else
+			for(var/classickeytobind in kb.classic_keys)
+				if(!length(key_bindings[classickeytobind]))
+					LAZYADD(key_bindings[classickeytobind], kb.name)
+					addedbind = TRUE
+		if(!addedbind)
+			notadded += kb
+	if(length(notadded))
+		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
+
+/datum/preferences/proc/announce_conflict(list/notadded)
+	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
+	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
+	for(var/datum/keybinding/conflicted as anything in notadded)
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
+
+		if(hotkeys)
+			for(var/entry in conflicted.hotkey_keys)
+				key_bindings[entry] -= conflicted.name
+		else
+			for(var/entry in conflicted.classic_keys)
+				key_bindings[entry] -= conflicted.name
+
+		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

@@ -31,6 +31,8 @@
 
 	aura_strength = 2
 
+	minimum_evolve_time = 1 MINUTES
+
 	minimap_icon = "drone"
 
 /datum/caste_datum/drone/New()
@@ -41,7 +43,7 @@
 /mob/living/carbon/xenomorph/drone
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
-	desc = "An Alien Drone"
+	desc = "An alien drone"
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"

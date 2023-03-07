@@ -300,7 +300,7 @@ CIVILIAN
 	name = "Survivor"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 	)
 
 /datum/skills/civilian/survivor/manager
@@ -334,7 +334,7 @@ CIVILIAN
 	name = "Survivor Doctor"
 	additional_skills = list(
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
-		SKILL_SURGERY = SKILL_SURGERY_TRAINED
+		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/clf
@@ -342,7 +342,7 @@ CIVILIAN
 	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/scientist

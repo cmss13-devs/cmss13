@@ -1,4 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - bugfix: "speaking a different default language than English while whispering now works."

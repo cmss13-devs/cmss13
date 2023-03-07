@@ -210,11 +210,11 @@
 	hand_throwable = FALSE
 	dangerous = TRUE
 	underslug_launchable = TRUE
-	var/flame_level = BURN_TIME_TIER_2
-	var/burn_level = BURN_LEVEL_TIER_3
-	var/flameshape = FLAMESHAPE_DEFAULT
-	var/radius = 2
-	var/fire_type = FIRE_VARIANT_DEFAULT
+	flame_level = BURN_TIME_TIER_2
+	burn_level = BURN_LEVEL_TIER_3
+	flameshape = FLAMESHAPE_DEFAULT
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
 
 /obj/item/explosive/grenade/incendiary/impact/prime()
 

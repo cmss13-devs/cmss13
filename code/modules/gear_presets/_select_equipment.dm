@@ -730,7 +730,7 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
 /datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
-	var/random_gear = rand(0,4)
+	var/random_gear = rand(0,3)
 	switch(random_gear)
 		if(0)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_IN_BACK)
@@ -739,8 +739,6 @@ var/list/rebel_rifles = list(
 		if(2)
 			H.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(H), WEAR_IN_BACK)
 		if(3)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade(H), WEAR_IN_BACK)
-		if(4)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/antiweed(H), WEAR_IN_BACK)
 
 
@@ -841,7 +839,7 @@ var/list/rebel_rifles = list(
 
 /datum/equipment_preset/proc/add_survivor_weapon_civilian(mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet. For the most part you will stil get a shotgun but there is an off chance you get something unique. If you dont like the weapon deal with it. With exception of CMB SHotgun, everything else has some level of ammo. Some weapons may not appear at all in a colony so they will need the extra ammo. MERC, and DB needed a handfull of shells to compete with the normal CMB.
 	// a high chance to just not have a primary weapon
-	if(prob(40))
+	if(prob(60))
 		return
 	var/random_weapon = rand(0,3)
 	switch(random_weapon)
@@ -852,7 +850,7 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/uzi(H), WEAR_WAIST)
 		if(2)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/with_stock(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
 		if(3)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ar10(H), WEAR_L_HAND)

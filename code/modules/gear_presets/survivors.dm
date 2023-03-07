@@ -1201,7 +1201,7 @@
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrade = "WYC7"
-	skills = /datum/skills/civilian/manager_survivor
+	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY

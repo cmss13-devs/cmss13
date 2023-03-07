@@ -62,7 +62,7 @@
 /// Central Core
 /obj/structure/machinery/ares/cpu
 	name = "ARES CPU"
-	desc = "ARES CPU"
+	desc = "This is ARES' central processor. Made of a casing designed to withstand nuclear blasts, the CPU also contains ARES' blackbox recorder."
 	icon_state = "CPU"
 
 /// Memory Substrate,
@@ -261,27 +261,31 @@
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()
 			if(istype(I))
-				last_login = I.registered_name
 				if(I.paygrade in GLOB.highcom_paygrades)
 					authentication = ARES_ACCESS_HIGH
+				else if(ACCESS_MARINE_CAPTAIN in I.access)
+					authentication = ARES_ACCESS_CO
 				else if(ACCESS_MARINE_SENIOR in I.access)
 					authentication = ARES_ACCESS_SENIOR
 				else if(ACCESS_WY_CORPORATE in I.access)
 					authentication = ARES_ACCESS_CORPORATE
 				else if(check_access(I))
 					authentication = ARES_ACCESS_COMMAND
+				last_login = I.registered_name
 			else
 				I = C.wear_id
 				if(istype(I))
-					last_login = I.registered_name
 					if(I.paygrade in GLOB.highcom_paygrades)
 						authentication = ARES_ACCESS_HIGH
+					else if(ACCESS_MARINE_CAPTAIN in I.access)
+					authentication = ARES_ACCESS_CO
 					else if(ACCESS_MARINE_SENIOR in I.access)
 						authentication = ARES_ACCESS_SENIOR
 					else if(ACCESS_WY_CORPORATE in I.access)
 						authentication = ARES_ACCESS_CORPORATE
 					else if(check_access(I))
 						authentication = ARES_ACCESS_COMMAND
+					last_login = I.registered_name
 			access_list += "[last_login] at [worldtime2text()], Access Level [authentication]."
 
 		if("logout")

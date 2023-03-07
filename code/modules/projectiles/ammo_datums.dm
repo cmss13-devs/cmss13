@@ -465,12 +465,9 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 50
+	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-
-/datum/ammo/bullet/pistol/highpower/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
-	pushback(M, P, 3)
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -825,59 +822,10 @@
 	icon_state = "nail-projectile"
 
 	damage = 25
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	accurate_range = 5
 	shell_speed = AMMO_SPEED_TIER_4
-
-
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	if(iscarbonsizexeno(L))
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			return
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		return
-
-	if(L.frozen)
-		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
-		return
-
-	//Check for presence of solid surface behind
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(user, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.frozen = TRUE
-	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
-		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
-	L.update_canmove()
-	addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, unfreeze)), 3 SECONDS)
-
-/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	L.adjust_effect(1, SLOW) //Slow on hit.
-	L.recalculate_move_delay = TRUE
-	var/super_slowdown_duration = 3
-	//If there's an obstacle on the far side, superslow and do extra damage.
-	if(iscarbonsizexeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			super_slowdown_duration = 0.5
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		super_slowdown_duration = 0.5
-
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.adjust_effect(super_slowdown_duration, SUPERSLOW)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -1700,6 +1648,8 @@
 
 /datum/ammo/bullet/sniper/crude
 	name = "crude sniper bullet"
+	damage = 42
+	penetration = ARMOR_PENETRATION_TIER_6
 
 /datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()

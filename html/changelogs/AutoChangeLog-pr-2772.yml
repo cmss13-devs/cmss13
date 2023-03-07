@@ -1,0 +1,5 @@
+author: "Mister-moon1"
+delete-after: True
+changes:
+  - spellcheck: "fixed unneeded commas for caste descriptions"
+  - code_imp: "Removed unnecessary words from defender and crusher description"

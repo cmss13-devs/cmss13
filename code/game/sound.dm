@@ -202,6 +202,8 @@
 				S = pick('sound/effects/zippo_close.ogg')
 			if("bonk") //somewhat quiet, increase volume
 				S = pick('sound/machines/bonk.ogg')
+			if("cane_step")
+				S = pick('sound/items/cane_step_1.ogg', 'sound/items/cane_step_2.ogg', 'sound/items/cane_step_3.ogg', 'sound/items/cane_step_4.ogg', 'sound/items/cane_step_5.ogg', )
 			if("match")
 				S = pick('sound/effects/match.ogg')
 			if("punch")
@@ -292,6 +294,8 @@
 				S = pick('sound/bullets/acid_impact1.ogg')
 			if("acid_strike")
 				S = pick('sound/weapons/alien_acidstrike1.ogg','sound/weapons/alien_acidstrike2.ogg')
+			if("acid_spit")
+				S = pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg')
 			if("acid_sizzle")
 				S = pick('sound/effects/acid_sizzle1.ogg','sound/effects/acid_sizzle2.ogg','sound/effects/acid_sizzle3.ogg','sound/effects/acid_sizzle4.ogg')
 			if("alien_doorpry")

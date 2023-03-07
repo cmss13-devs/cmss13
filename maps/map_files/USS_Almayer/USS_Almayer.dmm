@@ -7017,9 +7017,7 @@
 /area/almayer/command/airoom)
 "avL" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/station_alert{
-	dir = 1
-	},
+/obj/item/folder/yellow,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors"
 	},
@@ -27590,9 +27588,11 @@
 /area/almayer/hallways/starboard_hallway)
 "cnp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/folder/yellow,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/computer/ares_console{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "ai_floors"
@@ -38874,14 +38874,11 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (
-/obj/structure/machinery/r_n_d/server/core{
-	unacidable = 1;
-	unslashable = 1
-	},
 /obj/structure/sign/safety/rewire{
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/ares/cpu,
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -56494,11 +56491,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "pYi" = (
-/obj/structure/machinery/telecomms/processor/preset_four,
 /obj/structure/sign/safety/laser{
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/ares/processor/bioscan,
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -60870,11 +60867,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "sdl" = (
-/obj/structure/machinery/telecomms/processor/preset_four,
 /obj/structure/sign/safety/fibre_optics{
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/ares/processor/interface,
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -62167,7 +62164,7 @@
 /area/almayer/squads/alpha)
 "sIf" = (
 /obj/structure/machinery/door/window/southleft{
-	req_access_txt = "19"
+	req_one_access_txt = "1;200"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -64054,6 +64051,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"tBO" = (
+/obj/structure/machinery/ares/processor/apollo,
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/almayer/command/airoom)
 "tCb" = (
 /obj/structure/surface/rack,
 /obj/item/device/radio{
@@ -64143,7 +64146,7 @@
 	dir = 1;
 	name = "\improper ARES Mainframe";
 	req_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "1;200"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -71976,7 +71979,7 @@
 	},
 /area/almayer/living/gym)
 "xbN" = (
-/obj/structure/machinery/telecomms/processor/preset_four,
+/obj/structure/machinery/ares/substrate,
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -113688,7 +113691,7 @@ aWd
 ajG
 aiC
 aqU
-xbN
+tBO
 gfE
 xbN
 aqU

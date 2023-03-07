@@ -316,4 +316,6 @@ for it but just ignore it.
 		return TRUE
 	for(var/datum/language/apollo/link in languages)
 		return TRUE
+	if(issynth(src))
+		return TRUE
 	return FALSE

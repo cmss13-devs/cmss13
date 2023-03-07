@@ -507,6 +507,24 @@
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 	log_admin("[key_name_admin(src)] Queen Mother ([hive_choice]): [input]")
 
+/client/proc/cmd_admin_create_bioscan()
+	set name = "Report: ARES Bioscan"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	var/choice = tgui_alert(usr, "Are you sure you want to trigger a bioscan?", "Bioscan?", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	else
+		var/force = tgui_alert(usr, "Do you want to Force the bioscan? (Activate regardless of processors)", "Force scan?", list("Yes", "No"))
+		if(force != "Yes")
+			ares_bioscan(FALSE)
+		else
+			ares_bioscan(TRUE)
+
 /client/proc/cmd_admin_create_AI_report()
 	set name = "Report: ARES Comms"
 	set category = "Admin.Factions"
@@ -518,19 +536,19 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
-			C.messagetext.Add(input)
+	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
+		if(processor.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
+		else
 			ai_announcement(input)
 			message_admins("[key_name_admin(src)] has created an AI comms report")
 			log_admin("AI comms report: [input]")
-		else
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			var/obj/structure/machinery/computer/ares_console/interface = processor.link.interface
+			if(!(interface.inoperable()))
+				interface.announcement_title.Add("[MAIN_AI_SYSTEM] Comms Update [worldtime2text()]")
+				interface.announcement_text.Add(input)
+
 
 /client/proc/cmd_admin_create_AI_apollo_report()
 	set name = "Report: ARES Apollo"
@@ -543,12 +561,12 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/console in machines)
-		if(console.inoperable())
+	for(var/obj/structure/machinery/ares/processor/apollo/processor in machines)
+		if(processor.inoperable())
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 			return
 		else
-			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+			var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 				apollo.broadcast(AI, input)
 			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
@@ -567,6 +585,22 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
+	for(var/obj/structure/machinery/ares/processor/interface/processor in machines)
+		if(processor.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
+		else
+			shipwide_ai_announcement(input)
+			message_admins("[key_name_admin(src)] has created an AI shipwide report")
+			log_admin("[key_name_admin(src)] AI shipwide report: [input]")
+			var/obj/structure/machinery/computer/ares_console/interface = processor.link.interface
+			if(!(interface.inoperable()))
+				//var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+				//P.name = "'[MAIN_AI_SYSTEM] Update.'"
+				//P.info = input
+				//P.update_icon()
+				interface.announcement_title.Add("[MAIN_AI_SYSTEM] Shipwide Update [worldtime2text()]")
+				interface.announcement_text.Add(input)
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))

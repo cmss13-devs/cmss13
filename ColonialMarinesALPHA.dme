@@ -748,6 +748,8 @@
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\weather_siren.dm"
+#include "code\game\machinery\ARES\ARES.dm"
+#include "code\game\machinery\ARES\ARES_procs.dm"
 #include "code\game\machinery\atmoalter\canister.dm"
 #include "code\game\machinery\atmoalter\meter.dm"
 #include "code\game\machinery\atmoalter\portable_atmospherics.dm"

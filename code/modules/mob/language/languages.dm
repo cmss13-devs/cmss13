@@ -166,6 +166,8 @@
 	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+	log_say("[key_name(speaker)] : ([name]) [message]")
+	log_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
 			dead.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)

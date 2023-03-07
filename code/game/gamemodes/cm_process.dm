@@ -173,7 +173,6 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	var/numHostsShip = 0
 	var/numXenosPlanet = 0
 	var/numXenosShip = 0
-	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one
 	var/list/hostsPlanetLocations = list()
@@ -209,7 +208,6 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 			xenosPlanetLocations+=where
 		else if(is_mainship_level(where.z))
 			numXenosShip++
-			numXenosShipAres++
 			xenosShipLocations+=where
 
 
@@ -266,7 +264,6 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))
-	numXenosPlanet = max(0, numXenosPlanet + rand(-delta, delta))
 
 	//Depending on how either side is doing, we speed up the bioscans
 	//Formula is - last bioscan time, plus 30 minutes multiplied by ratio of current pop divided by highest pop
@@ -293,10 +290,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	if(world.time > nextHumanBioscan)
 		lastHumanBioscan = world.time
-		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
-		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
-		marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+		ares_bioscan(FALSE)
 
 /*
 Count up surviving humans and aliens.

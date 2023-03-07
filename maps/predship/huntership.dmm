@@ -2435,6 +2435,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/yautja)
+"BS" = (
+/obj/structure/machinery/prop/yautja/bubbler,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "Cn" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -5383,7 +5390,7 @@ eS
 cP
 Uv
 bj
-bL
+BS
 JH
 JH
 bL

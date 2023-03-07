@@ -1,6 +1,8 @@
 
 /obj/item/limb
 	icon = 'icons/mob/humans/species/r_human.dmi'
+	///Predators can flay limbs to eventually turn them into bones for their armor
+	var/flayed
 
 /obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)

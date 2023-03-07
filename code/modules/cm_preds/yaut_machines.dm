@@ -16,9 +16,9 @@
 	name = "yautja cauldron"
 	desc = "A large, black machine emitting an ominous hum with an attached pot of boiling fluid. Bits of what appears to be leftover lard and balls of hair can be seen floating inside of it."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-	icon_state = "cauldron"
+	icon_state = "vat"
 
-/obj/structure/machinery/prop/yautja/bubbler/attackby(obj/item/limb as limb, mob/user as mob)
+/obj/structure/machinery/prop/yautja/bubbler/attackby(obj/item/limb as obj, mob/user as mob)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
 		return

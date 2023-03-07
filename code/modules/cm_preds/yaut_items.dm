@@ -923,3 +923,9 @@
 		icon_state = "medicomp_open"
 	else
 		icon_state = "medicomp"
+
+/obj/item/polishing_rag
+	name = "Polishing Rag"
+	desc = "to do later"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "polishing_rag"

@@ -203,7 +203,7 @@
 
 /obj/item/explosive/grenade/incendiary/impact
 	name = "\improper 40mm incendiary grenade"
-	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
 	icon_state = "grenade_40mm_inc"
 	det_time = 0
 	item_state = "grenade_fire"
@@ -241,7 +241,7 @@
 
 /obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell
 	name = "\improper 40mm HE grenade"
-	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher. This one is marked as a High-Explosive grenade, watch your fire."
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a High-Explosive grenade, watch your fire."
 	icon_state = "grenade_40mm_he"
 	item_state = "grenade_hedp"
 	det_time = 0
@@ -273,7 +273,7 @@
 	item_state = "grenade_hornet_active"
 	shrapnel_count = 10
 	shrapnel_type = /datum/ammo/bullet/shotgun/spread
-	direct_hit_shrapnel = 3
+	direct_hit_shrapnel = 5
 	dispersion_angle = 35//big
 
 /*

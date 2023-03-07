@@ -29380,6 +29380,10 @@
 	},
 /turf/open/floor/wood,
 /area/prison/residential/south)
+"bHd" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/space)
 "bHf" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -36178,7 +36182,6 @@
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "ccz" = (
-/obj/structure/lattice,
 /obj/structure/monorail,
 /turf/open/space,
 /area/space)
@@ -46983,6 +46986,11 @@
 	},
 /turf/open/floor/wood,
 /area/prison/security/monitoring/highsec)
+"oog" = (
+/obj/structure/lattice,
+/obj/structure/monorail,
+/turf/open/space,
+/area/space)
 "ooE" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -62845,8 +62853,8 @@ bVa
 bWH
 bXN
 bYJ
+oog
 ccz
-btd
 btd
 bTP
 bVa

@@ -8258,6 +8258,12 @@
 "CD" = (
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
+"CE" = (
+/turf/open/jungle{
+	bushes_spawn = 0;
+	icon_state = "grass_impenetrable"
+	},
+/area/whiskey_outpost/outside/lane/two_north)
 "CG" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)

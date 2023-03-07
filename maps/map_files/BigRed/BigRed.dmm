@@ -1978,6 +1978,11 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/space_port)
+"afN" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/telecomm/security)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -35373,11 +35378,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"sXQ" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/telecomm/security)
 "sYL" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8"
@@ -54463,7 +54463,7 @@ aZq
 rpc
 akg
 akN
-sXQ
+afN
 ame
 ahj
 anx
@@ -54680,7 +54680,7 @@ aZq
 rpc
 rpc
 akN
-sXQ
+afN
 amg
 ahj
 aer
@@ -54897,7 +54897,7 @@ aZP
 bhM
 bhM
 akO
-sXQ
+afN
 amg
 aic
 acp
@@ -55110,11 +55110,11 @@ agz
 ahm
 aib
 bNy
-sXQ
-sXQ
-sXQ
-sXQ
-sXQ
+afN
+afN
+afN
+afN
+afN
 amg
 aic
 aer

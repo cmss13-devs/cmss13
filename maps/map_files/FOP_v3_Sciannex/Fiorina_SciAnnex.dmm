@@ -7602,6 +7602,13 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/disco)
+"eJQ" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "eKu" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -9999,6 +10006,13 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/ice_lab)
+"ggQ" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "ghg" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -14239,6 +14253,9 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/servers)
+"iSQ" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/station)
 "iTm" = (
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/station/civres_blue)
@@ -17579,6 +17596,10 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/station/power_ring)
+"kPz" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
 "kPC" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -19774,7 +19795,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -30444,6 +30465,9 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
+"tan" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/oob)
 "tas" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -34018,6 +34042,10 @@
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/station/research_cells)
+"vnr" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
 "voa" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
@@ -37435,6 +37463,9 @@
 /obj/item/weapon/gun/smg/mp5,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
+"xwC" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/fiberbush)
 "xwD" = (
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor/prison,
@@ -37872,6 +37903,9 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/oob)
+"xLi" = (
+/turf/closed/wall/prison,
+/area/fiorina/tumor/ice_lab)
 "xLI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio{

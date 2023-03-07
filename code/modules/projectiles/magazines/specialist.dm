@@ -59,8 +59,6 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
-
-
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra/custom

@@ -266,7 +266,7 @@
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 
-		list("STATIONERY", 0, null, null, null),
+		list("STATIONARY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),
@@ -275,4 +275,7 @@
 		list("WY Paper", 1, /obj/item/paper/wy, "white", "A fresh piece of WY-branded paper, for writing important things on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
+
+		list("MISC", 0, null, null, null),
+		list("Hollow Cane", 15, /obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
 	)

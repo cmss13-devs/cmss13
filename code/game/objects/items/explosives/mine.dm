@@ -125,7 +125,7 @@
 		return
 	if(needs_digging)
 		playsound(loc, 'sound/weapons/flipblade.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] pulls the pin on  [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] pulls the pin on [src]."), \
 			SPAN_NOTICE("You pull the activation pin and prepare it to be buried."))
 		user.drop_inv_item_on_ground(src)
 		anchored = TRUE
@@ -151,15 +151,15 @@
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/thing, mob/user)
 	if(needs_digging && HAS_TRAIT(thing,  TRAIT_TOOL_SHOVEL) && !active && anchored && !buried)
-		user.visible_message(SPAN_NOTICE("[user] starts burying  [src]."), \
-			SPAN_NOTICE("You start burying  [src]."))
+		user.visible_message(SPAN_NOTICE("[user] starts burying [src]."), \
+			SPAN_NOTICE("You start burying [src]."))
 		playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops burying  [src]."), \
+		if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_BUILD))
+			user.visible_message(SPAN_WARNING("[user] stops burying [src]."), \
 			SPAN_WARNING("You stop burying [src]."))
-
-		user.visible_message(SPAN_NOTICE("[user] finished burying  [src]."), \
-		SPAN_NOTICE("You finish burying  [src]."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] finished burying [src]."), \
+		SPAN_NOTICE("You finish burying [src]."))
 		buried = TRUE
 		addtimer(CALLBACK(src, PROC_REF(deploy_mine), user), arming_time)
 	if(HAS_TRAIT(thing, TRAIT_TOOL_MULTITOOL))
@@ -170,7 +170,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with  [src], trying to disarm it."), \
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with [src], trying to disarm it."), \
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
@@ -238,22 +238,23 @@
 //Mine can also be triggered if you "cross right in front of it" (same tile)
 /obj/item/explosive/mine/Crossed(atom/victim)
 	..()
-	if(isliving(victim))
-		var/mob/living/unfortunate_soul = victim
-		if(heavy_trigger && buried)
-			unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
-			SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
-			SPAN_DANGER("You hear a click."))
-			playsound(loc, 'sound/weapons/flipblade.ogg', 35, 1)
-
-		if(!unfortunate_soul.stat == DEAD)//so dragged corpses don't trigger mines.
-			return
-		else
-			try_to_prime(victim)
+	try_to_prime(victim)
 
 /obj/item/explosive/mine/Collided(atom/movable/atom_movable)
 	try_to_prime(atom_movable)
 
+/**
+ * Proc that notifies a heavy trigger failing to detonate
+ */
+
+/obj/item/explosive/mine/proc/heavy_trigger_notify(mob/living/unfortunate_soul)
+	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
+	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
+	SPAN_DANGER("You hear a click."))
+
+/**
+ * Proc that runs checks before priming occursc
+ */
 
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/unfortunate_soul)
 	if(!active || triggered || (customizable && !detonator))
@@ -264,17 +265,23 @@
 		return
 	if(unfortunate_soul.get_target_lock(iff_signal) || isrobot(unfortunate_soul))
 		return
-	if(heavy_trigger)
+	if(heavy_trigger && buried)
+		playsound(loc, 'sound/weapons/flipblade.ogg', 35, 1)
 		if(isxeno(unfortunate_soul))
 			var/mob/living/carbon/xenomorph/xeno = unfortunate_soul
 			if(xeno.tier < 2)
+				heavy_trigger_notify(unfortunate_soul)
 				return
 		if(prob(75) && ishuman(unfortunate_soul))
 			var/mob/living/carbon/human/human = unfortunate_soul
 			if(!human.wear_suit)
+				heavy_trigger_notify(unfortunate_soul)
 				return
-			if(human.wear_suit.slowdown < SLOWDOWN_ARMOR_MEDIUM) // "Nice hustle, 'tons-a-fun'! Next time, eat a salad!"
+			if(human.wear_suit.slowdown > SLOWDOWN_ARMOR_MEDIUM) // "Nice hustle, 'tons-a-fun'! Next time, eat a salad!"
+				heavy_trigger_notify(unfortunate_soul)
 				return
+
+
 	unfortunate_soul.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [name] clicks as [unfortunate_soul] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, unfortunate_soul)] [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
@@ -310,13 +317,13 @@
 		return XENO_NO_DELAY_ACTION
 	if(buried)
 		beno.animation_attack_on(src)
-		beno.visible_message(SPAN_NOTICE("[beno] starts digging up  [src]."), \
-		SPAN_NOTICE("You start digging up  [src]. This might end badly..."))
+		beno.visible_message(SPAN_NOTICE("[beno] starts digging up [src]."), \
+		SPAN_NOTICE("You start digging up [src]. This might end badly..."))
 		if(!do_after(beno, deploy_time * 1.5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			beno.visible_message(SPAN_WARNING("[beno] stops disarming [src]."), \
-				SPAN_WARNING("You stop disarming [src]."))
+			SPAN_WARNING("You stop disarming [src]."))
+			return
 	else
-		beno.animation_attack_on(src)
 		beno.visible_message(SPAN_DANGER("[beno] has slashed [src]!"), \
 			SPAN_DANGER("You slash [src]!"))
 		playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
@@ -390,19 +397,16 @@
 	unacidable = TRUE
 	var/datum/effect_system/spark_spread/sparks = new
 
-/obj/item/explosive/mine/bury/get_examine_text(mob/user)
-	. = ..()
-	if(buried)
-		. +=  "\n This is buried."
-	if(heavy_trigger)
-		. +=  "\n It has a heavy trigger."
-
 /obj/item/explosive/mine/bury/examine(mob/user)
 	. = ..()
 	if(!buried)
 		. +=  "\n A small label on the bottom reads: 'To deploy: simply pull the pin to activate it and dig it in with your standard issue e-tool. This munition will automatically arm in [arming_time] seconds after being buried.' "
 	else
 		. +=  SPAN_DANGER("\n This unit is armed and ready")
+
+/obj/item/explosive/mine/bury/Destroy()
+	. = ..()
+	QDEL_NULL(sparks)
 
 /obj/item/explosive/mine/bury/Initialize(mapload, ...)
 	. = ..()

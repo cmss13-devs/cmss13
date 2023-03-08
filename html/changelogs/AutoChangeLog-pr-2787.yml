@@ -1,5 +1,0 @@
-author: "insertnamehere123"
-delete-after: True
-changes:
-  - bugfix: "Grape soda's sprite isn't broken anymore"
-  - imageadd: "copypasted the grape soda sprite from one sheet into the right sheet"

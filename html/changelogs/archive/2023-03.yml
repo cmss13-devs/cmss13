@@ -112,3 +112,34 @@
   - spellcheck: Fixed a typo in the CL briefcase.
   stanalbatross:
   - ui: converted money-based vendors to tgui
+2023-03-08:
+  BeagleGaming1:
+  - admin: Adds logs when you stammered speech
+  LynxSolstice:
+  - maptweak: Increased Dropship capacity from 33 to 64.
+  Morrow:
+  - bugfix: Fixes power issues for shuttle consoles
+  Puckaboo2:
+  - rscdel: Death Commando Masks have been removed, fixing a missing icon state error.
+  - code_imp: Most of the missing icon state linter errors have been fixed through
+      code and the addition of certain icon states.
+  - code_imp: Removed all instances of placeholder icon_state and item_state variables
+      and replaced them with null so no files will be assigned to them.
+  - imageadd: The donator item The Fists of Mandalore no longer has missing icon states.
+  - imageadd: Armored Sandals now have a distinctive sprite from normal sandals.
+  - bugfix: The donator item XXX's custom Cigar can now be flickered on and off.
+  - bugfix: The donator item Ghost Cigar can now be used.
+  carlarctg:
+  - bugfix: Increased maximum amount of text in predator flavor text to the normal
+      1024 characters value.
+  - soundadd: Adds two new sounds for the clan sword.
+  - spellcheck: Slightly tuned some yautja weapon descriptions.
+  insertnamehere123:
+  - bugfix: Grape soda's sprite isn't broken anymore
+  - imageadd: copypasted the grape soda sprite from one sheet into the right sheet
+  realforest2001:
+  - rscadd: Added a var to decide if morgues update their names to reflect contents.
+      Currently just used to protect Yautja sarcophagi.
+  totalepicness:
+  - bugfix: Fixes cats now do 25 damage and a flicker stun to prey instead of instakilling
+      them.

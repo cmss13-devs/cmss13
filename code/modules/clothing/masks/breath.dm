@@ -200,7 +200,6 @@
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 

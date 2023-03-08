@@ -1,0 +1,10 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscdel: "Death Commando Masks have been removed, fixing a missing icon state error."
+  - code_imp: "Most of the missing icon state linter errors have been fixed through code and the addition of certain icon states."
+  - code_imp: "Removed all instances of placeholder icon_state and item_state variables and replaced them with null so no files will be assigned to them."
+  - imageadd: "The donator item The Fists of Mandalore no longer has missing icon states."
+  - imageadd: "Armored Sandals now have a distinctive sprite from normal sandals."
+  - bugfix: "The donator item XXX's custom Cigar can now be flickered on and off."
+  - bugfix: "The donator item Ghost Cigar can now be used."

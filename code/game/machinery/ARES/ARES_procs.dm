@@ -79,3 +79,24 @@ GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 	link.log_bioscan(name, input)
 	if(forced || (link.p_interface && !link.p_interface.inoperable()))
 		marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+
+/obj/structure/machinery/computer/ares_console/proc/get_ares_access(obj/item/card/id/card)
+	if(card.paygrade in GLOB.highcom_paygrades)
+		return ARES_ACCESS_HIGH
+	else if(ACCESS_MARINE_CAPTAIN in card.access)
+		return ARES_ACCESS_CO
+	else if(ACCESS_MARINE_SENIOR in card.access)
+		return ARES_ACCESS_SENIOR
+	else if(ACCESS_WY_CORPORATE in card.access)
+		return ARES_ACCESS_CORPORATE
+	else if(ACCESS_MARINE_COMMAND in card.access)
+		return ARES_ACCESS_COMMAND
+	else
+		return ARES_ACCESS_BASIC
+
+#undef ARES_ACCESS_NONE
+#undef ARES_ACCESS_COMMAND
+#undef ARES_ACCESS_CORPORATE
+#undef ARES_ACCESS_SENIOR
+#undef ARES_ACCESS_CO
+#undef ARES_ACCESS_HIGH

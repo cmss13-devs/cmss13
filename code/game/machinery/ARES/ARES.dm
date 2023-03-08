@@ -266,34 +266,12 @@
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()
 			if(istype(I))
-				if(I.paygrade in GLOB.highcom_paygrades)
-					authentication = ARES_ACCESS_HIGH
-				else if(ACCESS_MARINE_CAPTAIN in I.access)
-					authentication = ARES_ACCESS_CO
-				else if(ACCESS_MARINE_SENIOR in I.access)
-					authentication = ARES_ACCESS_SENIOR
-				else if(ACCESS_WY_CORPORATE in I.access)
-					authentication = ARES_ACCESS_CORPORATE
-				else if(ACCESS_MARINE_COMMAND in I.access)
-					authentication = ARES_ACCESS_COMMAND
-				else
-					authentication = ARES_ACCESS_BASIC
+				authentication = get_ares_access(I)
 				last_login = I.registered_name
 			else
 				I = C.wear_id
 				if(istype(I))
-					if(I.paygrade in GLOB.highcom_paygrades)
-						authentication = ARES_ACCESS_HIGH
-					else if(ACCESS_MARINE_CAPTAIN in I.access)
-						authentication = ARES_ACCESS_CO
-					else if(ACCESS_MARINE_SENIOR in I.access)
-						authentication = ARES_ACCESS_SENIOR
-					else if(ACCESS_WY_CORPORATE in I.access)
-						authentication = ARES_ACCESS_CORPORATE
-					else if(ACCESS_MARINE_COMMAND in I.access)
-						authentication = ARES_ACCESS_COMMAND
-					else
-						authentication = ARES_ACCESS_BASIC
+					authentication = get_ares_access(I)
 					last_login = I.registered_name
 			if(authentication)
 				access_list += "[last_login] at [worldtime2text()], Access Level [authentication]."
@@ -375,12 +353,6 @@
 
 	updateUsrDialog()
 
-#undef ARES_ACCESS_NONE
-#undef ARES_ACCESS_COMMAND
-#undef ARES_ACCESS_CORPORATE
-#undef ARES_ACCESS_SENIOR
-#undef ARES_ACCESS_CO
-#undef ARES_ACCESS_HIGH
 
 #undef MODE_MENU
 #undef MODE_APOLLO

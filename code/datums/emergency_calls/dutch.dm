@@ -50,10 +50,11 @@
 
 /datum/emergency_call/dutch/recon //This can show up in normal rounds.
 	name = "Dutch's Dozen - Recon Expedition"
-	mob_max = 12
-	mob_min = 8
-	max_medics = 2
-	max_heavies = 2
+	mob_max = 6
+	mob_min = 5
+	max_medics = 1
+	max_heavies = 1
+	max_smartgunners = 1
 	probability = 0
 
 /datum/emergency_call/dutch/recon/New()

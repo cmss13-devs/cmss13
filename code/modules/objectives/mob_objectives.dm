@@ -134,6 +134,11 @@
 			corpses -= target
 			scored_corpses += target
 
+			if(isyautja(target))
+				if(locate(/datum/emergency_call/dutch/recon) in SSticker.mode.picked_calls)
+					return
+				var/datum/emergency_call/dutch/recon/new_team = new()
+				new_team.activate()
 			if (isxeno(target))
 				UnregisterSignal(target, COMSIG_XENO_REVIVED)
 			else

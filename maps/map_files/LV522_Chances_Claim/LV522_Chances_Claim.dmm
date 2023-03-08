@@ -12567,7 +12567,7 @@
 "gfi" = (
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
 /obj/item/prop/alien/hugger{
-	pixel_y = 14;
+	pixel_y = 14
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)

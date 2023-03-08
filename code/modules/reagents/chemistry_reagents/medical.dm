@@ -102,6 +102,17 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTICORROSIVE = 3)
 
+/datum/reagent/medical/alinox
+	name = "Alinox"
+	id = "alinox"
+	description = "Specialized medicine used to treat extreme burns. Helps the body recover from life-threatening burns but will rapidly conusme oxygen in the bloodsteam, leading to suffocation. Overdoses can cause severe internal tissue damage."
+	reagent_state = LIQUID
+	color = "#9b5a00"
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_ANTICORROSIVE = 5, PROPERTY_HYPOXEMIC = 1)
+
 /datum/reagent/medical/dexalin
 	name = "Dexalin"
 	id = "dexalin"
@@ -268,6 +279,17 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 3)
 
+/datum/reagent/medical/yarinox
+	name = "Yarinox"
+	id = "yarinox"
+	description = "Specialized analgesic medication used to treat extreme cases of physical trauma. Rapidly repairs damaged tissue but is toxic. Overdoses will cause severe cellular corrosion"
+	reagent_state = LIQUID
+	color = "#580000"
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NEOGENETIC = 5, PROPERTY_TOXIC = 1)
+
 /datum/reagent/medical/quickclot
 	name = "Quick Clot"
 	id = "quickclot"
@@ -279,6 +301,15 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
+
+/datum/reagent/medical/omniblood
+	name = "Omniblood"
+	id = "omniblood"
+	description = "A stimulant for the bone marrow that forces it to produce blood cells at an accelerated rate at the cost of degrading bodily tissue."
+	reagent_state = LIQUID
+	color = "#5a0070"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_HEMOGENIC = 6, PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"

@@ -216,6 +216,8 @@
 		"bicaridine_amount" = H.reagents.get_reagent_amount("bicaridine"),
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
 		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
+		"yarinox_amount" = H.reagents.get_reagent_amount("yarinox"),
+		"alinox_amount" = H.reagents.get_reagent_amount("alinox"),
 		"blood_amount" = H.blood_volume,
 		"max_blood" = H.max_blood,
 		"disabilities" = H.sdisabilities,
@@ -287,6 +289,12 @@
 
 	s_class = occ["dexalin_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
 	dat += "[SET_CLASS("Dexalin:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["dexalin_amount"]] units", s_class)]<BR>"
+
+	s_class = occ["alinox_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Alinox:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["alinox_amount"]] units", s_class)]<BR>"
+
+	s_class = occ["yarinox_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Yarinox:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["yarinox_amount"]] units", s_class)]<BR>"
 
 	for(var/datum/disease/D in occ["tg_diseases_list"])
 		if(!D.hidden[SCANNER])

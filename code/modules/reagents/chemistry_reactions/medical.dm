@@ -210,3 +210,27 @@
 	result = "paroxetine"
 	required_reagents = list("mindbreaker" = 1, "oxygen" = 1, "inaprovaline" = 1)
 	result_amount = 3
+
+/datum/chemical_reaction/omniblood
+	name = "Omniblood"
+	id = "omniblood"
+	result = "omniblood"
+	required_reagents = list("iron" = 1, "dexalinp" = 1, "inaprovaline" = 1)
+	required_catalysts = list("phoron" = 5)
+	result_amount = 3
+
+/datum/chemical_reaction/yarinox
+	name = "Yarinox"
+	id = "yarinox"
+	result = "yarinox"
+	required_reagents = list("bicaridine" = 1, "meralyne" = 1, "inaprovaline" = 1)
+	required_catalysts = list("phoron" = 5)
+	result_amount = 3
+
+/datum/chemical_reaction/alinox
+	name = "Alinox"
+	id = "alinox"
+	result = "alinox"
+	required_reagents = list("kelotane" = 1, "dermaline" = 1, "inaprovaline" = 1)
+	required_catalysts = list("phoron" = 5)
+	result_amount = 3

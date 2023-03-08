@@ -237,6 +237,8 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 			"cryptobiolin",
 			"dermaline",
 			"meralyne",
+			"yarinox",
+			"alinox"
 			"dexalin",
 			"phoron",
 			"impedrezene",

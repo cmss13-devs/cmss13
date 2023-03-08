@@ -51,6 +51,120 @@
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
 
+/obj/structure/largecrate/funny // Funny shit
+	name = "\improper Exotic crate"
+	desc = "A deluxe weapons crate. Something good must be in here."
+	icon_state = "chest"
+
+// oh the misery
+
+/obj/structure/largecrate/funny/New()
+	..()
+	var/spawnchance = pick(1,17)
+	switch(spawnchance)
+		if(1) // VERIFIED TOP QUALITY PRE USED AMMO
+			new /obj/item/prop/helmetgarb/spent_buckshot(src)
+			new /obj/item/prop/helmetgarb/spent_slug(src)
+			new /obj/item/prop/helmetgarb/spent_flech(src)
+			new /obj/item/prop/helmetgarb/spent_buckshot(src)
+			var/obj/item/ammo_casing/bullet/bullets = new(src)
+			bullets.current_casings = 16
+			new /obj/item/ammo_casing/cartridge(src)
+		if(2) // XM40 set (gun not included)
+			new /obj/item/ammo_magazine/rifle/xm40(src)
+			new /obj/item/ammo_magazine/rifle/xm40(src)
+			new /obj/item/ammo_magazine/rifle/xm40(src)
+		if(3) //HEFA SET (m81 doesnt have IFF) (lol!)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/explosive/grenade/high_explosive/frag(src)
+			new /obj/item/weapon/gun/launcher/grenade/m81(src)
+		if(4) //Type 23 SLUGGER (1 in 16, Lucky! Here is your reward, champ! A useful meme loadout)
+			new /obj/item/weapon/gun/shotgun/type23(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+		if(5) // You know what to do.
+			new /obj/item/weapon/melee/twohanded/lungemine(src)
+			new /obj/item/storage/bible(src)
+		if(6) // for the motherland set
+			new /obj/item/weapon/gun/smg/ppsh(src)
+			new /obj/item/weapon/gun/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/stack/flag/red(src)
+			new /obj/item/weapon/gun/boltaction(src)
+			new /obj/item/ammo_magazine/rifle/boltaction(src)
+			new /obj/item/explosive/grenade/high_explosive/stick(src)
+			new /obj/item/clothing/head/ushanka(src)
+			new /obj/item/clothing/head/ushanka(src)
+			new /obj/item/clothing/head/ushanka(src)
+		if(7) // M. A. C. K. (munkie army creation kit)
+			new /obj/item/storage/box/monkeycubes(src)
+			new /obj/item/weapon/gun/smg/mp27(src)
+			new /obj/item/weapon/gun/smg/mp5(src)
+			new /obj/item/weapon/gun/boltaction(src)
+			new /obj/item/ammo_magazine/rifle/boltaction(src)
+			new /obj/item/weapon/gun/boltaction(src)
+			new /obj/item/ammo_magazine/rifle/boltaction(src)
+			new /obj/item/explosive/grenade/high_explosive/stick(src)
+		if(8) // nailgun gaming
+			new /obj/item/weapon/gun/smg/nailgun(src)
+			new /obj/item/ammo_magazine/smg/nailgun(src)
+			new /obj/item/ammo_magazine/smg/nailgun(src)
+			new /obj/item/ammo_magazine/smg/nailgun(src)
+		if(9) // Union busting kit
+			new /obj/item/weapon/shield/riot(src)
+			new /obj/item/ammo_magazine/rifle/rubber(src)
+			new /obj/item/ammo_magazine/rifle/rubber(src)
+			new /obj/item/clothing/head/helmet/riot(src)
+			new /obj/item/prop/helmetgarb/riot_shield(src)
+			new /obj/item/weapon/gun/shotgun/combat/riot(src)
+			new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+		if(10) //The ultimate weapon
+			new /datum/gear/uno_reverse_red(src)
+		if(11) // Banners fly in the wind!
+			new /obj/item/stack/flag/red(src)
+			new /obj/item/stack/flag/blue(src)
+			new /obj/item/stack/flag/purple(src)
+			new /obj/item/stack/flag/yellow(src)
+		if(12) // Well shit
+			new /obj/item/tool/kitchen/utensil/pknife(src)
+		if(13) // boondock saints reference
+			new	/obj/item/weapon/gun/pistol/m4a3(src)
+			new	/obj/item/weapon/gun/pistol/m4a3(src)
+			new /obj/item/ammo_magazine/pistol/hp(src)
+			new /obj/item/ammo_magazine/pistol/hp(src)
+			new /obj/item/prop/helmetgarb/rosary(src)
+			new /obj/item/clothing/under/suit_jacket/really_black(src)
+			new /obj/item/storage/bible(src)
+		if(14)  // "Go Ahead. Make My Day!"
+			new	/obj/item/weapon/gun/revolver/m44(src)
+			new /obj/item/ammo_magazine/revolver/marksman(src)
+			new /obj/item/ammo_magazine/revolver(src)
+			new /obj/item/ammo_magazine/revolver(src)
+			new /obj/item/clothing/under/det(src)
+		if(15)  // The one free man
+			new /obj/item/tool/crowbar/red(src)
+			new /obj/item/weapon/gun/smg/mp5(src)
+			new /obj/item/ammo_magazine/smg/mp5(src)
+		if(16) // ASSAULT DUCKY
+			new /obj/item/toy/bikehorn/rubberducky(src)
+		if(17) // ASSAULT DUCKY
+			/obj/item/ammo_magazine/handful/shotgun/buckshot
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
 

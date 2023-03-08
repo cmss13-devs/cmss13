@@ -27102,6 +27102,7 @@
 	pixel_x = -9;
 	pixel_y = 13
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -27210,7 +27211,12 @@
 /obj/structure/surface/table,
 /obj/item/folder/black_random,
 /obj/item/device/flashlight/lamp{
-	pixel_y = 15
+	pixel_y = 15;
+	pixel_x = -8
+	},
+/obj/item/device/cassette_tape/hairmetal{
+	pixel_y = 14;
+	pixel_x = 10
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -27292,7 +27298,6 @@
 /area/bigredv2/outside/lz2_west_cas)
 "ced" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/obj/item/weapon/gun/rifle/m41a/training,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
@@ -27623,13 +27628,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "cPZ" = (
-/obj/structure/window/framed/solaris/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "cQi" = (
 /obj/effect/landmark/nightmare{
@@ -27808,6 +27809,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/ammo_magazine/pistol/m1911,
 /obj/item/ammo_magazine/pistol/m1911,
 /turf/open/floor/plating{
 	dir = 8;
@@ -28061,7 +28063,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/firealarm{
-	dir = 1
+	dir = 1;
+	pixel_y = 22
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -28276,6 +28279,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/miner,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -28840,6 +28844,14 @@
 	pixel_y = 6
 	},
 /turf/closed/wall/wood,
+/area/bigredv2/caves/mining)
+"fqh" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/gun/special/lowchance,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
 /area/bigredv2/caves/mining)
 "fus" = (
 /turf/open/mars_cave{
@@ -29651,9 +29663,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "hqC" = (
-/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/weapon/gun/smg/nailgun,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_13"
 	},
 /area/bigredv2/caves/mining)
 "hqD" = (
@@ -29700,6 +29712,19 @@
 	icon_state = "elevatorshaft"
 	},
 /area/bigredv2/caves/lambda/breakroom)
+"huj" = (
+/obj/structure/closet/crate,
+/obj/item/weapon/gun/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40/holo_target,
+/obj/item/ammo_magazine/rifle/l42a,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/caves/mining)
 "hvQ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -29843,6 +29868,7 @@
 /area/bigredv2/caves_north)
 "hLp" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "hLs" = (
@@ -30618,6 +30644,14 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_research)
+"jsH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/plastic,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/bigredv2/caves/mining)
 "jsL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -31149,8 +31183,6 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/effect/spawner/random/attachment,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -31236,16 +31268,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "ktE" = (
-/obj/item/tool/wrench{
-	pixel_x = -7;
-	pixel_y = -14
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
 	},
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 4
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_20"
-	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
+/turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "ktN" = (
 /turf/open/mars_cave{
@@ -31660,7 +31687,6 @@
 	},
 /area/bigredv2/caves/mining)
 "lvh" = (
-/obj/item/weapon/gun/rifle/m4ra,
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -31791,9 +31817,7 @@
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "lEw" = (
-/obj/item/tool/pickaxe{
-	pixel_y = -3
-	},
+/obj/structure/largecrate/funny,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -32095,6 +32119,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"mqA" = (
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_20"
+	},
+/area/bigredv2/caves/mining)
 "mqX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
@@ -32220,9 +32251,9 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "mFT" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/corpsespawner/russian,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -32604,6 +32635,11 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage,
+/obj/item/prop/colony/usedbandage{
+	pixel_x = 8;
+	pixel_y = 6
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -32882,7 +32918,26 @@
 	},
 /area/bigredv2/caves/mining)
 "ohg" = (
-/obj/vehicle/train/cargo/trolley,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
+	pixel_y = 4;
+	dir = 4;
+	pixel_x = 13
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -32934,9 +32989,11 @@
 	},
 /area/bigredv2/caves/mining)
 "omw" = (
-/obj/item/clothing/head/helmet/marine/veteran/ua_riot,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
 "omG" = (
@@ -33308,6 +33365,19 @@
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7"
+	},
+/area/bigredv2/caves/mining)
+"oVH" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
 "oWc" = (
@@ -33811,7 +33881,6 @@
 	pixel_x = 12;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/rifle/m41a/training,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17"
 	},
@@ -33972,6 +34041,10 @@
 /area/bigred/ground/garage_workshop)
 "qmm" = (
 /obj/structure/cargo_container/hd/right/alt,
+/obj/item/tool/shovel{
+	pixel_y = -4;
+	pixel_x = 9
+	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "qmG" = (
@@ -34454,6 +34527,26 @@
 "rpc" = (
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/security)
+"rpd" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/vehicles/vehicles.dmi';
+	icon_state = "cargo_trailer";
+	indestructible = 1;
+	layer = 1;
+	pixel_x = -11;
+	projectile_coverage = 0;
+	unacidable = 1;
+	pixel_y = 17
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves/mining)
 "rpl" = (
 /obj/structure/machinery/light/small,
 /turf/open/mars_cave{
@@ -34514,12 +34607,8 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/gun/smg/highchance,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -34715,6 +34804,7 @@
 "rNc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/melee/harpoon,
+/obj/effect/spawner/random/gun/pistol,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "rOK" = (
@@ -34828,9 +34918,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
-	pixel_y = 12
-	},
+/obj/item/ammo_magazine/handful/shotgun/slug,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -35039,7 +35127,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -35176,6 +35263,13 @@
 	icon_state = "mars_cave_16"
 	},
 /area/bigredv2/caves/mining)
+"syN" = (
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/obj/effect/spawner/random/gun/smg,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
 "szg" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -35225,12 +35319,6 @@
 /area/bigredv2/outside/engineering)
 "sDs" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_magazine/smg/nailgun,
-/obj/item/ammo_magazine/smg/nailgun,
-/obj/item/ammo_magazine/smg/nailgun,
-/obj/item/ammo_magazine/smg/nailgun,
-/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -35600,11 +35688,18 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "trW" = (
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/effect/decal/cleanable/blood,
-/obj/item/clothing/head/hardhat,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4"
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
 "tsc" = (
@@ -35826,6 +35921,7 @@
 	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pills/lowchance,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -36084,6 +36180,16 @@
 	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6
+	},
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16"
@@ -36423,8 +36529,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/item/weapon/gun/rifle/mar40/lmg,
-/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -36664,12 +36769,18 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "vzL" = (
-/obj/item/weapon/gun/boltaction,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	dir = 1;
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice-simple";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = -15
 	},
-/area/bigredv2/caves/mining)
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "vAs" = (
 /obj/structure/window/framed/solaris/reinforced/tinted,
 /turf/open/floor/plating,
@@ -36700,9 +36811,6 @@
 /obj/structure/surface/rack,
 /obj/item/weapon/melee/twohanded/lungemine{
 	pixel_y = 8
-	},
-/obj/item/weapon/melee/twohanded/lungemine{
-	pixel_y = -7
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -36848,6 +36956,10 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -5;
 	pixel_y = 10
+	},
+/obj/item/prop/colony/usedbandage{
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5"
@@ -37587,9 +37699,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "xrp" = (
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgy crate"
-	},
+/obj/effect/spawner/random/gun/rifle/midchance,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xrO" = (
@@ -37782,9 +37892,17 @@
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
 "xJP" = (
-/obj/effect/landmark/corpsespawner/miner,
-/obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/blood,
+/obj/item/tool/wrench{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 10;
+	pixel_y = 1
+	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -38015,7 +38133,7 @@
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/security/marshal,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -38127,9 +38245,6 @@
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -42456,7 +42571,7 @@ uHQ
 rjF
 vVl
 lBe
-qeX
+jsH
 kCe
 pDV
 pSa
@@ -42678,7 +42793,7 @@ heG
 pZe
 pSa
 wLD
-kCe
+omw
 uHQ
 szw
 szw
@@ -43328,7 +43443,7 @@ rbD
 kCe
 ufu
 vdS
-rbD
+pSa
 kCe
 uHQ
 aao
@@ -43754,7 +43869,7 @@ rxh
 rxh
 rxh
 oKy
-pSa
+huj
 lIe
 wuC
 nkW
@@ -43762,7 +43877,7 @@ kCe
 kCe
 xWz
 pSa
-lSH
+pSa
 yln
 uHQ
 aao
@@ -45275,7 +45390,7 @@ wCo
 uHQ
 pXn
 rNc
-vzL
+pSa
 pSa
 vvR
 oTL
@@ -45493,7 +45608,7 @@ uHQ
 wtj
 ohY
 pSa
-lSH
+fqh
 pSa
 sWS
 pSa
@@ -46586,7 +46701,7 @@ sZh
 yhc
 dqy
 dvB
-nCX
+ktE
 uHQ
 uHQ
 jVN
@@ -47020,7 +47135,7 @@ bvD
 iqF
 xJT
 wCo
-nCX
+syN
 uHQ
 aao
 rsv
@@ -48953,7 +49068,7 @@ aao
 aao
 uHQ
 pao
-bSw
+oVH
 tBh
 eVo
 fZg
@@ -49391,14 +49506,14 @@ okh
 dCb
 pJS
 cPZ
-rxh
+trW
 umK
-rxh
-pmN
-rxh
-rxh
-waX
-rxh
+trW
+trW
+trW
+ohg
+trW
+vHw
 aao
 aao
 aao
@@ -49611,11 +49726,11 @@ wSj
 rxh
 rxh
 jYD
-fnO
-fnO
+jbU
+hqC
 xJP
-rxh
-rxh
+rpd
+waX
 rxh
 aao
 aao
@@ -49825,14 +49940,14 @@ mrS
 fwO
 fwO
 rIl
-aao
+vzL
 rxh
 uFF
 wCo
 wCo
-wFO
+mqA
 rxh
-ohg
+rxh
 rxh
 aao
 aao
@@ -50047,8 +50162,8 @@ aao
 sZh
 vlA
 oMd
-trW
-ktE
+wCo
+wFO
 rxh
 rxh
 aao
@@ -52237,7 +52352,7 @@ rxh
 rxh
 rxh
 vcA
-hqC
+rxh
 aao
 aao
 aao
@@ -52450,7 +52565,7 @@ rsv
 rxh
 fHF
 miD
-omw
+rxh
 rxh
 pmN
 dUj

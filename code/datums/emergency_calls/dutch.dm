@@ -57,6 +57,6 @@
 	probability = 0
 
 /datum/emergency_call/dutch/recon/New()
-	..()
+	. = ..()
 	dispatch_message = "This is the USCSS Kaspar, hailing the [MAIN_SHIP_NAME]. We've got an expeditionary team from Dutch's Dozen ready to investigate strange signals coming from the AO. Hope your docks still work- USCSS Kaspar, over and out!"
 	objectives = "Investigate the area of operations for signs of Yautja activity. Try not to die."

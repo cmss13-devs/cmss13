@@ -47,3 +47,16 @@
 	arrival_message = "Intercepted Transmission: 'We're here to kick ass and kill Yautja. Mainly kill Yautja."
 	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
 	probability = 0
+
+/datum/emergency_call/dutch/recon //This can show up in normal rounds.
+	name = "Dutch's Dozen - Recon Expedition"
+	mob_max = 12
+	mob_min = 8
+	max_medics = 2
+	max_heavies = 2
+	probability = 0
+
+/datum/emergency_call/dutch/recon/New()
+	..()
+	dispatch_message = "This is the USCSS Kaspar, hailing the [MAIN_SHIP_NAME]. We've got an expeditionary team from Dutch's Dozen ready to investigate strange signals coming from the AO. Hope your docks still work- USCSS Kaspar, over and out!"
+	objectives = "Investigate the area of operations for signs of Yautja activity. Try not to die."

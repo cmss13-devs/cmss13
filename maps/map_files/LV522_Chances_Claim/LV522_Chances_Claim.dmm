@@ -5733,7 +5733,7 @@
 	pixel_y = -4
 	},
 /obj/item/prop/alien/hugger{
-	pixel_x = -9;
+	pixel_x = -9
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
@@ -22441,7 +22441,7 @@
 	pixel_y = 6
 	},
 /obj/item/prop/alien/hugger{
-	pixel_y = -11;
+	pixel_y = -11
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_2)
@@ -30534,8 +30534,7 @@
 "nBv" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = 3;
-	pixel_y = -3;
-
+	pixel_y = -3
 	},
 /obj/item/weapon/gun/pistol/highpower{
 	pixel_x = -11;
@@ -50648,7 +50647,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "vov" = (
 /obj/item/prop/alien/hugger{
-	pixel_x = -6;
+	pixel_x = -6
 	},
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -56833,7 +56832,7 @@
 	},
 /obj/item/prop/alien/hugger{
 	pixel_x = -17;
-	pixel_y = -8;
+	pixel_y = -8
 	},
 /obj/item/ashtray/glass{
 	icon_state = "ashtray_bork_gl";

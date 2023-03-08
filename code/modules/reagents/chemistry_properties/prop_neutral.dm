@@ -68,6 +68,50 @@
 	holder.nutriment_factor += level
 	..()
 
+/datum/chem_property/neutral/lactose
+	name = PROPERTY_LACTOSE
+	code = "LCT"
+	description = "The compound contains lactose, a compound that some people might not be able to process and suffer minor consequences for doing so."
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_METABOLITE
+	value = 0
+
+/datum/chem_property/neutral/lactose/process(mob/living/M, potency = 1)
+	var/mob/living/carbon/human/lactosian = M
+
+	if(!istype(lactosian) || CHECK_BITFIELD(lactosian.disabilities, LACTOSE_INTOLERANCE))
+		return
+
+	// Cycles through the stages faster if it's higher potency.
+	var/ticker = (holder.current_cycle) * max(1, potency)
+
+	switch(ticker)
+		// Stage 1, warning the lactosian.
+		if(1 to 5)
+			if(prob(25 * potency))
+				var/message = pick("You feel your stomach grumbling...", "You feel nauseous.", "You're feeling a little light-headed.")
+				to_chat(lactosian, SPAN_WARNING(message))
+		// Stage 2, the warning's more obvious and shown to everyone nearby.
+		if(5 to 15)
+			if(prob(35 * potency))
+				var/self_message = pick("You feel like you just ingested something you were intolerant to.", "The world seems to spin..", "You're starting to think ingesting that [holder] was a bad idea.")
+				var/others_message = pick("[lactosian] is starting to look a little pale.", "[lactosian] starts swaying in place.")
+				M.visible_message(SPAN_DANGER(others_message), SPAN_WARNING(self_message))
+		// Stage 3, the cheesoid is fucked and is gonna be feeling under the weather until the lactose leaves the body.
+		else
+			if(prob(10 * potency))
+				lactosian.vomit() // Delayed vomit.
+			if(prob(5 * potency))
+				to_chat(lactosian, SPAN_DANGER("Your nausea makes you unable to focus. Your eyes blur.."))
+				lactosian.apply_effect(5, EYE_BLUR)
+			if(prob(5 * potency))
+				lactosian.visible_message(SPAN_NOTICE("You hear a deep, groaning rumbling sound coming from [lactosian]."))
+			if(prob(5 * potency))
+				lactosian.visible_message(SPAN_NOTICE("[lactosian]'s skin looks pale."))
+			if(prob(1 * potency))
+				lactosian.visible_message(SPAN_HIGHDANGER("You hear a deep rumbling sound!"))
+				lactosian.visible_message(SPAN_DANGER("Oh wait, it's coming from [lactosian]."))
+
 /datum/chem_property/neutral/ketogenic
 	name = PROPERTY_KETOGENIC
 	code = "KTG"

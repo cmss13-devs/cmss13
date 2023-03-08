@@ -249,6 +249,10 @@
 			// shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
 
+		var/mob/living/carbon/human/lurcher = affected_mob
+		if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
+			lurcher.vomit()
+
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO

@@ -160,6 +160,7 @@
 	id = "milk"
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
+	properties = list(PROPERTY_LACTOSE = 2)
 
 /datum/reagent/drink/milk/on_mob_life(mob/living/M)
 	. = ..()
@@ -172,6 +173,7 @@
 	name = "Soy Milk"
 	id = "soymilk"
 	description = "An opaque white liquid made from soybeans."
+	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1) // No lactose
 	color = "#DFDFC7" // rgb: 223, 223, 199
 
 /datum/reagent/drink/milk/cream
@@ -409,6 +411,7 @@
 	name = "Cafe Latte"
 	id = "cafe_latte"
 	description = "A nice, strong and tasty beverage while you are reading."
+	properties = list(PROPERTY_LACTOSE = 2) // latte has milk has lactose
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
 	adj_temp = 5
@@ -647,6 +650,7 @@
 	name = "Hot Chocolate"
 	id = "hot_coco"
 	description = "Heated beverage of chocolate."
+	properties = list(PROPERTY_LACTOSE = 2)
 	reagent_state = LIQUID
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#403010" // rgb: 64, 48, 16

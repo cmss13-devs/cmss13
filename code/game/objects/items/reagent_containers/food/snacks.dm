@@ -362,7 +362,7 @@
 
 /obj/item/reagent_container/food/snacks/chocolatebar/Initialize()
 	. = ..()
-	reagents.add_reagent("nutriment", 2)
+	reagents.add_reagent("milk", 2)
 	reagents.add_reagent("sugar", 2)
 	reagents.add_reagent("coco", 2)
 	bitesize = 2
@@ -3140,7 +3140,8 @@
 /obj/item/reagent_container/food/snacks/packaged_burger/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 5)
-	reagents.add_reagent("meatprotein", 5)
+	reagents.add_reagent("meatprotein", 2)
+	reagents.add_reagent("cheese", 3)
 	reagents.add_reagent("sodiumchloride", 2)
 
 
@@ -3341,8 +3342,11 @@
 		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
 			icon_state = "side"
 			desc = "An MRE side component. Contains a side, to be eaten alongside the main. This one is [flavor]."
-			reagents.add_reagent("nutriment", 6)
 			reagents.add_reagent("sodiumchloride", 2)
+			if(newflavor == "cheese spread")
+				reagents.add_reagent("cheese", 6)
+			else
+				reagents.add_reagent("nutriment", 6)
 		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 			icon_state = "snack"
 			desc = "An MRE snack component. Contains a light snack in case you weren't feeling terribly hungry. This one is [flavor]."
@@ -3351,6 +3355,9 @@
 		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 			icon_state = "dessert"
 			desc = "An MRE side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious). This one is [flavor]."
-			reagents.add_reagent("nutriment", 2)
 			reagents.add_reagent("sugar", 2)
 			reagents.add_reagent("coco", 1)
+			if(newflavor == "flan" || newflavor == "honey_flan") // CURSED
+				reagents.add_reagent("milk", 2)
+			else
+				reagents.add_reagent("milk", 2)

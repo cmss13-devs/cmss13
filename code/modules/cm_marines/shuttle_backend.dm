@@ -211,6 +211,9 @@ var/global/list/s_info = null
 						else if (!M.buckled)
 							to_chat(M, SPAN_WARNING("The floor lurches beneath you!"))
 							shake_camera(M, iselevator ? 2 : 10, 1)
+						var/mob/living/carbon/human/lurcher = M
+						if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
+							lurcher.vomit()
 
 					if(!iselevator)
 						if(!M.buckled)

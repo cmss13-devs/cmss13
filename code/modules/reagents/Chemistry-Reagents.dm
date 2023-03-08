@@ -27,6 +27,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/overdose_critical = 0 //The nastier brother of overdose. Expect to die
 	var/overdose_dam = 1//Handeled by heart damage
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
+	/// Increases every life tick. Can be used to track how long a chemical has been in someone's body.
+	var/current_cycle = 0
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
 	var/datum/weakref/last_source_mob
@@ -148,6 +150,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	if((!isliving(M) || alien == IS_YAUTJA) && !mods[REAGENT_FORCE])
 		return
+
+	current_cycle++
 
 	handle_processing(M, mods, delta_time)
 	holder.remove_reagent(id, custom_metabolism * delta_time)

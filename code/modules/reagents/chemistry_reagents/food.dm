@@ -33,6 +33,7 @@
 	name = "Cheese"
 	id = "cheese"
 	description = "This used to be milk."
+	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1, PROPERTY_LACTOSE = 2)
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/meat

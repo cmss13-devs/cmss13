@@ -213,6 +213,9 @@ All ShuttleMove procs go here
 	var/knockdown = movement_force["KNOCKDOWN"]
 	if(knockdown)
 		apply_effect(knockdown, WEAKEN)
+		var/mob/living/carbon/human/lurcher = src
+		if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
+			lurcher.vomit()
 
 
 /* ***********************************Structure move procs************************************/

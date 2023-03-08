@@ -33,6 +33,53 @@
 	..()
 	DISABLE_BITFIELD(target.disabilities, OPIATE_RECEPTOR_DEFICIENCY)
 
+/datum/character_trait/biology/lactose_intolerance
+	trait_name = "Lactose Intolerance"
+	trait_desc = "Either due to a genetic fluke or never having had the gene to begin with, you do not have lactase and thus cannot process lactose. Don't eat dairy products!"
+	applyable = TRUE
+	cost = 0
+	/// Species that will not allow the trait to be added.
+	var/list/inapplicable_species = list(SPECIES_SYNTHETIC) // Let's let predators get sick if they reaaaally want to.
+
+/datum/character_trait/biology/lactose_intolerance/apply_trait(mob/living/carbon/human/target)
+	..()
+
+	if(target.species.group in inapplicable_species)
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the lactose intolerance trait."))
+		return
+
+	ENABLE_BITFIELD(target.disabilities, LACTOSE_INTOLERANCE)
+
+/datum/character_trait/biology/lactose_intolerance/unapply_trait(mob/living/carbon/human/target)
+	..()
+	DISABLE_BITFIELD(target.disabilities, LACTOSE_INTOLERANCE)
+
+/datum/character_trait/biology/air_sickness
+	trait_name = "Air Sickness"
+	trait_desc = "Something about flying at unbelievably high velocities inside a metallic death trap never stood well with your body. You will get nauseous when experiencing movement inside spacecraft."
+	applyable = TRUE
+	cost = 0
+	/// Roles that will not allow the trait to be added
+	var/list/inapplicable_roles = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF)
+	/// Species that will not allow the trait to be added.
+	var/list/inapplicable_species = list(SPECIES_SYNTHETIC) // Let's let predators get sick if they reaaaally want to.
+
+/datum/character_trait/biology/air_sickness/apply_trait(mob/living/carbon/human/target)
+	..()
+
+	if(target.job in inapplicable_roles)
+		to_chat(target, SPAN_WARNING("Your office is too flight-oriented for you to be able to recieve the air sickness trait."))
+		return
+	if(target.species.group in inapplicable_species)
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the air sickness trait."))
+		return
+
+	ENABLE_BITFIELD(target.disabilities, AIR_SICKNESS)
+
+/datum/character_trait/biology/air_sickness/unapply_trait(mob/living/carbon/human/target)
+	..()
+	DISABLE_BITFIELD(target.disabilities, AIR_SICKNESS)
+
 /datum/character_trait/biology/lisp
 	trait_name = "Lisping"
 	trait_desc = "You have difficulty with pronouncing 'S' sounds (and similar). Expect to be mocked mercilessly."

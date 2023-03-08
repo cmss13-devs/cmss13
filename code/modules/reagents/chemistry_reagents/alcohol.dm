@@ -139,7 +139,7 @@
 	id = "bilk"
 	description = "This appears to be beer mixed with milk. Disgusting."
 	color = "#895C4C" // rgb: 137, 92, 76
-	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
+	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2, PROPERTY_LACTOSE = 2)
 	boozepwr = 1
 	nutriment_factor = 2 * FOOD_METABOLISM
 
@@ -239,6 +239,7 @@
 	boozepwr = 1
 
 /datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
+	current_cycle++
 	M.druggy = max(M.druggy, 50)
 	accumulated_alcohol++
 	switch(accumulated_alcohol)

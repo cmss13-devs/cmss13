@@ -400,7 +400,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#899613" // rgb: 137, 150, 19
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_NUTRITIOUS = 2)
+	properties = list(PROPERTY_NUTRITIOUS = 2, PROPERTY_LACTOSE = 2)
 
 /datum/reagent/iron
 	name = "Iron"
@@ -1011,5 +1011,5 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
-	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
+	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_LACTOSE = 5, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE

@@ -51,6 +51,8 @@
 #define TOURETTES (1<<3)
 #define NERVOUS (1<<4)
 #define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
+#define LACTOSE_INTOLERANCE (1<<6)
+#define AIR_SICKNESS (1<<7)
 //=================================================
 
 //sdisabilities

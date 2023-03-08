@@ -130,6 +130,7 @@
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
+#define PROPERTY_LACTOSE "lactose"
 #define PROPERTY_KETOGENIC "ketogenic"
 #define PROPERTY_PAINING "paining"
 #define PROPERTY_NEUROINHIBITING "neuroinhibiting"

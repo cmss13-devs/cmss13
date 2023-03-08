@@ -505,6 +505,10 @@
 			shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
 
+		var/mob/living/carbon/human/lurcher = affected_mob
+		if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
+			lurcher.vomit()
+
 	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>

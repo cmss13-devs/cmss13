@@ -268,6 +268,8 @@
 			return /datum/equipment_preset/uscm_ship/uscm_police/warden
 		if(JOB_SEA)
 			return /datum/equipment_preset/uscm_ship/sea
+		if(JOB_CREWMAN)
+			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_CHIEF_ENGINEER)
 			return /datum/equipment_preset/uscm_ship/chief_engineer
 		if(JOB_ORDNANCE_TECH)

@@ -773,7 +773,7 @@
 /area/lv522/indoors/a_block/dorms)
 "aBm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice9";
 	pixel_x = -5
 	},
@@ -1038,7 +1038,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "aIY" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = -5
 	},
@@ -2467,7 +2467,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "bCl" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 4;
@@ -2860,7 +2860,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "bNJ" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -4;
 	pixel_y = 24
@@ -3389,7 +3389,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
@@ -4520,7 +4520,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "cHC" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -4;
 	pixel_y = 24
@@ -6834,7 +6834,7 @@
 /area/lv522/landing_zone_2)
 "dEp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_x = -26;
 	pixel_y = -13
@@ -8253,7 +8253,7 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "egW" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = 9;
 	pixel_y = 3
@@ -8861,7 +8861,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice10";
 	pixel_x = 4;
 	pixel_y = -16
@@ -10176,7 +10176,7 @@
 /area/lv522/atmos/east_reactor)
 "fbE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = 9;
 	pixel_y = 3
@@ -13415,7 +13415,7 @@
 "gAU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = -37;
 	pixel_y = 17
@@ -15556,7 +15556,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "hsA" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -2;
 	pixel_y = 24
@@ -16342,7 +16342,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "hKO" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = -5
 	},
@@ -20818,7 +20818,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_street)
 "jAz" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
 	pixel_x = -2;
 	pixel_y = 24
@@ -20970,7 +20970,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "jCW" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice10";
 	pixel_x = -2;
 	pixel_y = 8
@@ -25563,7 +25563,7 @@
 "lrG" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = 11;
-	pixel_y = -9;
+	pixel_y = -9
 	},
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/corsat{
@@ -29755,7 +29755,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "nku" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
 	pixel_x = 11;
 	pixel_y = 16
@@ -30003,7 +30003,7 @@
 /area/lv522/atmos/east_reactor/south)
 "npp" = (
 /obj/structure/girder,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = 11;
 	pixel_y = -8
@@ -30535,6 +30535,7 @@
 /obj/item/prop/alien/hugger{
 	pixel_x = 3;
 	pixel_y = -3;
+
 	},
 /obj/item/weapon/gun/pistol/highpower{
 	pixel_x = -11;
@@ -32206,7 +32207,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "ohX" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = 9;
 	pixel_y = 3
@@ -32888,7 +32889,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "ovr" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 6;
 	pixel_y = 19
@@ -33025,7 +33026,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_1)
 "ozk" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = -5
 	},
@@ -40437,7 +40438,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "rrf" = (
 /obj/structure/platform,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice10";
 	pixel_x = -2;
 	pixel_y = -8
@@ -40528,7 +40529,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "rtn" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -4;
 	pixel_y = 24
@@ -41328,7 +41329,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "rIH" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = 11;
 	pixel_y = 24
@@ -41828,7 +41829,7 @@
 /area/lv522/indoors/c_block/t_comm)
 "rRP" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
@@ -45061,7 +45062,7 @@
 /obj/structure/prop/invuln/pipe_water{
 	pixel_y = 11
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -7;
 	pixel_y = 35
@@ -47052,7 +47053,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tXd" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 4;
@@ -48848,7 +48849,7 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "uHc" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -4;
 	pixel_y = 24
@@ -52848,7 +52849,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/dorms)
 "wfb" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_x = -4;
 	pixel_y = 24
@@ -53166,7 +53167,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "wkC" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19

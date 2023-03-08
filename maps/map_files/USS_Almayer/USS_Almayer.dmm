@@ -17801,7 +17801,7 @@
 	pixel_y = 10
 	},
 /obj/item/trash/buritto,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
@@ -32974,7 +32974,7 @@
 	},
 /area/almayer/command/corporateliason)
 "eHq" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 16;
@@ -36273,7 +36273,7 @@
 	pixel_x = -20;
 	pixel_y = 18
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = -16
 	},
@@ -36645,7 +36645,7 @@
 	},
 /area/almayer/squads/req)
 "gwF" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
@@ -39490,7 +39490,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = -16;
@@ -41509,7 +41509,7 @@
 	dir = 2;
 	req_one_access = list(2,34,30)
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 16;
@@ -45506,7 +45506,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = -16;
@@ -47240,7 +47240,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 16;
@@ -48163,7 +48163,7 @@
 	},
 /area/almayer/hallways/hangar)
 "mhl" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
 	pixel_x = 16;
 	pixel_y = 16
@@ -49460,7 +49460,7 @@
 /area/space/almayer/lifeboat_dock)
 "mNZ" = (
 /obj/item/trash/uscm_mre,
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_x = 16;
 	pixel_y = -16
@@ -49577,7 +49577,7 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "mRc" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = -16;
@@ -50040,7 +50040,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_x = 16;
 	pixel_y = -8
@@ -55489,7 +55489,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice10";
 	pixel_x = -16;
 	pixel_y = 16
@@ -58783,7 +58783,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "rsj" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 16;
 	pixel_y = 16
@@ -61102,7 +61102,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "sxe" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 16;
@@ -66248,7 +66248,7 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "uRI" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_x = 16;
 	pixel_y = -8
@@ -70751,7 +70751,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 16;
 	pixel_y = 16
@@ -71341,7 +71341,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "xgM" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 16;
 	pixel_y = 16
@@ -73314,7 +73314,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "xZI" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
 	pixel_x = 16;
@@ -73415,7 +73415,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "ybS" = (
-/obj/structure/lattice{
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
 	},

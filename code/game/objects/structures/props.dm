@@ -997,6 +997,14 @@
 	. = ..()
 	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
 
+/obj/structure/prop/invuln/lattice_prop
+	desc = "A lightweight support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "latticefull"
+	density = FALSE
+	layer = RIPPLE_LAYER
+
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"
 	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"

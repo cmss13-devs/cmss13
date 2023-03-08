@@ -51,7 +51,7 @@
 /datum/emergency_call/dutch/recon //This can show up in normal rounds.
 	name = "Dutch's Dozen - Recon Expedition"
 	mob_max = 6
-	mob_min = 5
+	mob_min = 4
 	max_medics = 1
 	max_heavies = 1
 	max_smartgunners = 1

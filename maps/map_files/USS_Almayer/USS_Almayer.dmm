@@ -38931,9 +38931,9 @@
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = 32
 	},
-/obj/item/cane,
-/obj/item/cane,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -40089,7 +40089,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/staff/gentcane{
+/obj/item/weapon/melee/pole/fancy_cane{
 	pixel_x = 5
 	},
 /turf/open/floor/wood/ship,

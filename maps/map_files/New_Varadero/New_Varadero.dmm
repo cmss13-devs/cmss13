@@ -3398,12 +3398,7 @@
 /turf/open/gm/river,
 /area/varadero/interior_protected/caves)
 "cRn" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -11106,7 +11101,7 @@
 "jNT" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/table/woodentable,
-/obj/item/staff/stick{
+/obj/item/weapon/melee/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
 	icon = 'icons/obj/items/items.dmi';
@@ -13172,7 +13167,7 @@
 "lEB" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/item/clothing/accessory/medal/gold/captain,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},

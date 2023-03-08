@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "you now receive notifications when it is possible to evolve into certain castes, based on roundstart time locks"
-  - qol: "unavailable castes are no longer shown in the evolve list"

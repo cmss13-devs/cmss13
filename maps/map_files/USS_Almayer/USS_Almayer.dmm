@@ -65184,6 +65184,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/port_point_defense)
+"ueg" = (
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/tankerbunks)
 "ueh" = (
 /obj/structure/surface/rack,
 /obj/structure/ob_ammo/ob_fuel,
@@ -89428,8 +89432,8 @@ cop
 bSv
 onY
 wdf
-cop
-cop
+ueg
+ueg
 bSv
 bzy
 bKh

@@ -196,7 +196,7 @@
 			if(already_exists)
 				return
 		var/datum/emergency_call/dutch/recon/new_team = new()
-		new_team.activate(FALSE)
+		new_team.activate()
 
 
 	for(var/obj/limb/L in H.limbs)

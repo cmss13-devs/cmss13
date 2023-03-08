@@ -74,16 +74,18 @@
 // #################### ARES Interface Console #####################
 /// I wonder what this does.
 #define ARES_ACCESS_NONE 0
-/// General Access, can read ARES Announcements and Bioscans.
-#define ARES_ACCESS_COMMAND 1
+/// Generic access for 1:1 conversations with ARES and unrestricted commands.
+#define ARES_ACCESS_BASIC 1
+/// Secure Access, can read ARES Announcements and Bioscans.
+#define ARES_ACCESS_COMMAND 2
 /// CL, can read Apollo Log and also Delete Announcements.
-#define ARES_ACCESS_CORPORATE 2
+#define ARES_ACCESS_CORPORATE 3
 /// Senior Command, can Delete Bioscans.
-#define ARES_ACCESS_SENIOR 3
+#define ARES_ACCESS_SENIOR 4
 /// Commanding Officer, can read the access log.
-#define ARES_ACCESS_CO 4
+#define ARES_ACCESS_CO 5
 /// High Command, can read the deletion log.
-#define ARES_ACCESS_HIGH 5
+#define ARES_ACCESS_HIGH 6
 
 #define MODE_MENU 1
 #define MODE_APOLLO 2
@@ -102,7 +104,6 @@
 	desc = "A console built to interface with ARES, allowing for 1:1 communication."
 	icon = 'icons/obj/structures/machinery/ares.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_WY_CORPORATE)
 	exproof = TRUE
 
 	var/mode = MODE_MENU
@@ -161,19 +162,23 @@
 			if(authentication)
 				dat += "Logged in as <B>[last_login], Access level [authentication]:</B>"
 				dat += "<BR><A HREF='?src=\ref[src];aresconsole=logout'>LOG OUT</A>"
-				dat += "<BR><A HREF='?src=\ref[src];aresconsole=list_announce'>ARES Announcements</A>"
-				dat += "<BR><A HREF='?src=\ref[src];aresconsole=list_bio'>Bioscans</A>"
 
+				if(authentication >= ARES_ACCESS_COMMAND)
+					dat += "<BR><BR><hr>"
+					dat += "<BR><A HREF='?src=\ref[src];aresconsole=list_announce'>ARES Announcements</A>"
+					dat += "<BR><A HREF='?src=\ref[src];aresconsole=list_bio'>Bioscans</A>"
 				if(authentication >= ARES_ACCESS_CORPORATE)
 					dat += "<BR><BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];aresconsole=apollo'>View Apollo Log</A>"
 				if(authentication >= ARES_ACCESS_CO)
+					dat += "<BR><BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];aresconsole=accesslog'>View Access Log</A>"
 				if(authentication >= ARES_ACCESS_HIGH)
+					dat += "<BR><BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];aresconsole=list_delete'>View Deletion Log</A>"
+				dat += "<BR><hr>"
 
 			else
-				dat += "<BR><hr>"
 				dat += "<BR><A HREF='?src=\ref[src];aresconsole=login'>LOG IN</A>"
 
 		if(MODE_APOLLO)
@@ -269,8 +274,10 @@
 					authentication = ARES_ACCESS_SENIOR
 				else if(ACCESS_WY_CORPORATE in I.access)
 					authentication = ARES_ACCESS_CORPORATE
-				else if(check_access(I))
+				else if(ACCESS_MARINE_COMMAND in I.access)
 					authentication = ARES_ACCESS_COMMAND
+				else
+					authentication = ARES_ACCESS_BASIC
 				last_login = I.registered_name
 			else
 				I = C.wear_id
@@ -283,10 +290,13 @@
 						authentication = ARES_ACCESS_SENIOR
 					else if(ACCESS_WY_CORPORATE in I.access)
 						authentication = ARES_ACCESS_CORPORATE
-					else if(check_access(I))
+					else if(ACCESS_MARINE_COMMAND in I.access)
 						authentication = ARES_ACCESS_COMMAND
+					else
+						authentication = ARES_ACCESS_BASIC
 					last_login = I.registered_name
-			access_list += "[last_login] at [worldtime2text()], Access Level [authentication]."
+			if(authentication)
+				access_list += "[last_login] at [worldtime2text()], Access Level [authentication]."
 
 		if("logout")
 			authentication = ARES_ACCESS_NONE

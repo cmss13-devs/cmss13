@@ -90,6 +90,11 @@
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(interface && !(interface.inoperable()))
+		interface.announcement_title.Add("[MAIN_AI_SYSTEM] Comms Update [worldtime2text()]")
+		interface.announcement_text.Add(message)
+
 /proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
 		return
@@ -119,16 +124,27 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
+	else
+		var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+		if(interface && !(interface.inoperable()))
+			interface.announcement_title.Add("[title] Shipwide Update [worldtime2text()]")
+			interface.announcement_text.Add(message)
 
 	announcement_helper(message, title, targets, sound_to_play)
+
 //Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
-/proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'), signature)
+/proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
 		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
 			targets.Remove(T)
+
+	var/obj/structure/machinery/computer/ares_console/interface = GLOB.ares_link.interface
+	if(interface && !(interface.inoperable()))
+		interface.announcement_title.Add("[title] Shipwide Update [worldtime2text()]")
+		interface.announcement_text.Add(message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

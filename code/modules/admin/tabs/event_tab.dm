@@ -593,27 +593,6 @@
 			shipwide_ai_announcement(input)
 			message_admins("[key_name_admin(src)] has created an AI shipwide report")
 			log_admin("[key_name_admin(src)] AI shipwide report: [input]")
-			var/obj/structure/machinery/computer/ares_console/interface = processor.link.interface
-			if(!(interface.inoperable()))
-				//var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-				//P.name = "'[MAIN_AI_SYSTEM] Update.'"
-				//P.info = input
-				//P.update_icon()
-				interface.announcement_title.Add("[MAIN_AI_SYSTEM] Shipwide Update [worldtime2text()]")
-				interface.announcement_text.Add(input)
-
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-// P.name = "'[MAIN_AI_SYSTEM] Update.'"
-// P.info = input
-// P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
-			C.messagetext.Add(input)
-
-	shipwide_ai_announcement(input)
-	message_admins("[key_name_admin(src)] has created an AI shipwide report")
-	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "Report: Yautja AI"

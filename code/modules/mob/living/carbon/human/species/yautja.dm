@@ -188,13 +188,8 @@
 	H.h_style = "Standard"
 	GLOB.yautja_mob_list += H
 	if(length(GLOB.yautja_mob_list) > 4)
-		var/already_exists = FALSE
-		for(var/datum/emergency_call/beacon in SSticker.mode.picked_calls)
-			if(beacon.type == /datum/emergency_call/dutch/recon)
-				already_exists = TRUE
-				return
-			if(already_exists)
-				return
+		if(locate(/datum/emergency_call/dutch/recon) in SSticker.mode.picked_calls)
+			return
 		var/datum/emergency_call/dutch/recon/new_team = new()
 		new_team.activate()
 

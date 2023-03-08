@@ -278,7 +278,7 @@
 					if(I.paygrade in GLOB.highcom_paygrades)
 						authentication = ARES_ACCESS_HIGH
 					else if(ACCESS_MARINE_CAPTAIN in I.access)
-					authentication = ARES_ACCESS_CO
+						authentication = ARES_ACCESS_CO
 					else if(ACCESS_MARINE_SENIOR in I.access)
 						authentication = ARES_ACCESS_SENIOR
 					else if(ACCESS_WY_CORPORATE in I.access)

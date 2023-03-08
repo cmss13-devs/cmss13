@@ -1118,7 +1118,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
 		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
-			new /obj/item/clothing/mask/gas/yautja/damaged(loc)
+			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
 			new /obj/item/clothing/shoes/yautja_flavor(loc)
 			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)

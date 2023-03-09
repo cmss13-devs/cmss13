@@ -8796,10 +8796,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
-"aKB" = (
-/turf/closed/wall/strata_ice/jungle,
-/turf/open/jungle/clear,
-/area/lv624/ground/barrens/west_barrens)
 "aKD" = (
 /obj/structure/flora/grass/ice/both,
 /obj/structure/flora/jungle/vines{
@@ -38556,7 +38552,7 @@ lbD
 lzE
 lzE
 lzE
-aKB
+ugH
 lzE
 duU
 lzE

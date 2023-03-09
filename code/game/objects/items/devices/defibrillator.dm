@@ -189,6 +189,11 @@
 	if(heart && prob(25))
 		heart.take_damage(heart_damage_to_deal, TRUE) //Allow the defibrillator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
+	if(!H.get_ghost()) //In case admins need to put someone back in their body after they get revived while DNR.
+		var/turf/turf_ref = get_turf(user)
+		var/area/area_ref = get_area(user)
+		message_admins("ALERT: [user] ([user.key]) revived a DNR ([H] ([H.key])) in [area_ref.name]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf_ref.x];Y=[turf_ref.y];Z=[turf_ref.z]'>JMP</a>)</font>")
+
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)

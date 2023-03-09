@@ -6,6 +6,9 @@
 //List of available heights
 GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Altitude" = SHIP_ALT_MED, "High Altitude" = SHIP_ALT_HIGH))
 
+//Handles whether or not hijack has disabled the system
+GLOBAL_VAR_INIT(alt_ctrl_disabled, 0)
+
 //Defines how much to heat the engines or cool them by, and when to overheat
 #define COOLING -10
 #define OVERHEAT_COOLING -5
@@ -24,10 +27,12 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
 	. = ..()
 	if(!skillcheck(usr, SKILL_NAVIGATIONS, SKILL_NAVIGATIONS_TRAINED))
-		to_chat(usr,SPAN_WARNING("A window of complex orbital math opens up. You have no idea what you are doing and quickly close it."))
+		to_chat(usr, SPAN_WARNING("A window of complex orbital math opens up. You have no idea what you are doing and quickly close it."))
+		return
+	if(GLOB.alt_ctrl_disabled == 1)
+		to_chat(usr, SPAN_WARNING("The Altitude Control Console has been locked by ARES due to Delta Alert."))
 		return
 	tgui_interact(usr)
-
 
 /obj/structure/machinery/computer/altitude_control_console/Initialize()
 	. = ..()
@@ -46,7 +51,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			current_mob.apply_effect(3, WEAKEN)
 			shake_camera(current_mob, 10, 2)
 		ai_silent_announcement("Attention performing high-G maneuverer", ";", TRUE)
-
 	if(!temperature_change)
 		switch(GLOB.ship_alt)
 			if(SHIP_ALT_LOW)
@@ -121,7 +125,6 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 		current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, 10, 2)
 	ai_silent_announcement("Attention: Performing high-G manoeuvre", ";", TRUE)
-
 
 #undef COOLING
 #undef OVERHEAT_COOLING

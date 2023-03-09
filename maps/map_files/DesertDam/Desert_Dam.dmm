@@ -66462,16 +66462,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
-"xKx" = (
-/obj/effect/vehicle_spawner/van/decrepit,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/garage)
 "xLS" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_5"
@@ -66649,9 +66639,6 @@
 	},
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/hardpoint/locomotion/van_wheels{
-	unacidable = 1
-	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -71444,7 +71431,7 @@ woy
 aPU
 aSQ
 pac
-xKx
+pac
 ieU
 xHA
 cvr

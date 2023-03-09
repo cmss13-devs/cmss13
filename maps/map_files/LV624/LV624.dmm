@@ -15623,13 +15623,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
-"gAS" = (
-/obj/effect/vehicle_spawner/van/decrepit,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv624/lazarus/corporate_dome)
 "gBG" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -34430,7 +34423,7 @@ mgs
 xgE
 rNq
 kWH
-gAS
+mqw
 rNq
 xgE
 xgE

@@ -363,7 +363,7 @@
 /obj/item/reagent_container/food/snacks/chocolatebar/Initialize()
 	. = ..()
 	reagents.add_reagent("milk", 2)
-	reagents.add_reagent("sugar", 2)
+	reagents.add_reagent("nutriment", 2)
 	reagents.add_reagent("coco", 2)
 	bitesize = 2
 

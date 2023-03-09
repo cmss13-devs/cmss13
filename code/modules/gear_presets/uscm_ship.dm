@@ -123,15 +123,15 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
-	minimap_icon = "surv"
+	minimap_icon = "cl"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/fedora(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)

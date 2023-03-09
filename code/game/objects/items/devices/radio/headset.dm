@@ -513,7 +513,7 @@
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
-	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
+	desc = "Used by the war correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 

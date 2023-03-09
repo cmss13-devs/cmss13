@@ -2230,7 +2230,15 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahx" = (
-/obj/structure/machinery/photocopier,
+/obj/item/clothing/head/helmet/marine/reporter,
+/obj/item/clothing/suit/storage/marine/light/reporter,
+/obj/item/clothing/head/cmcap/reporter,
+/obj/item/clothing/head/fedora,
+/obj/structure/closet/secure_closet,
+/obj/item/storage/box/tapes,
+/obj/item/device/camera_film,
+/obj/item/device/camera_film,
+/obj/item/device/camera_film,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -48560,6 +48568,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"mhp" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	dir = 1;
+	name = "\improper War Correspondent Office"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "mhI" = (
 /obj/structure/machinery/vending/cigarette{
 	density = 0;
@@ -52464,6 +52481,12 @@
 	icon_state = "orange"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"nZL" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "oap" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -54934,9 +54957,6 @@
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
 	pixel_y = 32
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -105358,7 +105378,7 @@ aaa
 lYA
 ahx
 aap
-alr
+nZL
 aar
 awJ
 aao
@@ -105765,7 +105785,7 @@ lYA
 ahy
 ahg
 aao
-sMs
+mhp
 aao
 aao
 bWq

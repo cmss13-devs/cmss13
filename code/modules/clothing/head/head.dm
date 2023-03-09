@@ -386,6 +386,15 @@
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
 
+/obj/item/clothing/head/cmcap/reporter
+	name = "war correspondent cap"
+	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_flagcap"
+	item_state = "wc_flagcap"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
 	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."

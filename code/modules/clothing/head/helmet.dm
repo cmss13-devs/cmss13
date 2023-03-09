@@ -1223,5 +1223,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	cell_explosion(loc, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
 
+/obj/item/clothing/head/helmet/marine/reporter
+	name = "press helmet"
+	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_helm"
+	item_state = "wc_helm"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 #undef HELMET_GARB_RELAY_ICON_STATE

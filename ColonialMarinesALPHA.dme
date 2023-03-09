@@ -1743,8 +1743,6 @@
 #include "code\modules\mob\living\carbon\human\species\synthetic.dm"
 #include "code\modules\mob\living\carbon\human\species\yautja.dm"
 #include "code\modules\mob\living\carbon\human\species\zombie.dm"
-#include "code\modules\mob\living\carbon\human\species\zombies_action\zombie_power.dm"
-#include "code\modules\mob\living\carbon\human\species\zombies_action\zombie_actions.dm"
 #include "code\modules\mob\living\carbon\xenomorph\Abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\attack_alien.dm"
 #include "code\modules\mob\living\carbon\xenomorph\damage_procs.dm"

@@ -363,8 +363,8 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_ANTIBIOTIC = 1)
 
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL

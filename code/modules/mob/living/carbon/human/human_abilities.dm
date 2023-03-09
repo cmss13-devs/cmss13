@@ -121,6 +121,7 @@ CULT
 */
 /datum/action/human_action/activable
 	var/ability_used_time = 0
+	var/cooldown_message
 
 /datum/action/human_action/activable/can_use_action()
 	var/mob/living/carbon/human/H = owner
@@ -170,8 +171,15 @@ CULT
 
 	update_button_icon()
 
-	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
+	addtimer(CALLBACK(src, PROC_REF(on_cooldown_over)), amount)
 
+	update_button_icon()
+
+/datum/action/human_action/activable/proc/on_cooldown_over()
+	if(!owner)
+		return
+	if(!isnull(cooldown_message))
+		to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 /datum/action/human_action/activable/droppod
 	name = "Call Droppod"
 	action_icon_state = "techpod_deploy"
@@ -479,6 +487,103 @@ CULT
 
 	playsound(get_turf(chosen), 'sound/scp/scare1.ogg', 25)
 
+/datum/action/human_action/activable/zombie
+	name = "activable zombies abilities"
+
+/datum/action/human_action/activable/zombie/bite
+	name = "bite"
+	action_icon_state = "bite"
+	cooldown_message = TRUE
+
+
+/datum/action/human_action/activable/zombie/bite/use_ability(mob/M)
+	var/mob/living/carbon/human/zombie = owner
+	if (!iszombie(zombie))
+		return
+	if (!ishuman_strict(M))
+		return
+	if(!action_cooldown_check())
+		return
+	var/mob/living/carbon/human/victim = M
+	var/datum/disease/black_goo/D = locate() in victim.viruses
+	if(D)
+		to_chat(zombie, SPAN_XENOWARNING("the target is already infected, you cannot bite him again."))
+	else
+		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M.name] neck, preparing to bite him"))
+		to_chat(M, SPAN_DANGER("[zombie.name] reaches to your neck and starts to open his jaw, agh!"))
+		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_ALL))
+			to_chat(zombie, SPAN_XENOWARNING("You bite [M.name] neck, leaving a bloody mark!"))
+			to_chat(M, SPAN_DANGER("[zombie.name] Bites you right in the neck!"))
+			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, 1)
+			victim.emote("scream")
+			victim.AddDisease(new /datum/disease/black_goo)
+			victim.apply_damage(20, BRUTE, "head")
+			enter_cooldown(10 SECONDS)
+		else
+			to_chat(zombie, SPAN_XENOWARNING("You were interupted!"))
+
+
+/datum/action/human_action/activable/zombie/leap
+	name = "leap"
+	action_icon_state = "bite"
+	cooldown_message = TRUE
+	var/maxdistance = 5 //leap how far again?
+	var/throw_speed = SPEED_SLOW
+	var/windup = FALSE // Is there a do_after before we pounce?
+	var/windup_duration = 20 // How long to wind up, if applicable
+	var/windup_interruptable = TRUE
+	var/leap_distance = 0
+
+
+/datum/action/human_action/activable/zombie/leap/use_ability(atom/target)
+	var/mob/living/carbon/human/zomb = owner
+	if(!action_cooldown_check())
+		return
+
+	if(!iszombie(zomb)) //how did we ended up here?
+		return
+
+	if(!target)
+		return
+
+	if(target.layer >= FLY_LAYER)
+		return
+
+	if(!isturf(zomb.loc))
+		to_chat(zomb, SPAN_XENOWARNING("You can't [name] from here!"))
+		return
+
+	enter_cooldown(10 SECONDS)
+
+	if (windup)
+		zomb.set_face_dir(get_cardinal_dir(zomb, target))
+		if (!windup_interruptable)
+			zomb.frozen = TRUE
+			zomb.anchored = TRUE
+			zomb.update_canmove()
+
+		if (!do_after(zomb, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(zomb, SPAN_XENODANGER("You cancel your [name]!"))
+			return
+
+		if (!windup_interruptable)
+			zomb.frozen = FALSE
+			zomb.anchored = FALSE
+			zomb.update_canmove()
+
+	zomb.visible_message(SPAN_XENOWARNING("\The [zomb.name] [name][findtext(name, "e", -1) || findtext(name, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("You [name] at [target]!"))
+
+	leap_distance = get_dist(zomb, target)
+
+	var/datum/launch_metadata/LM = new()
+	LM.target = target
+	LM.range = maxdistance
+	LM.speed = throw_speed
+	LM.thrower = zomb
+	LM.spin = FALSE
+
+	zomb.launch_towards(LM)
+
 /datum/action/human_action/activable/mutineer
 	name = "Mutiny abilities"
 
@@ -607,3 +712,6 @@ CULT
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
+
+
+

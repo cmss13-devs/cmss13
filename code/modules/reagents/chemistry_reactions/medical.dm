@@ -83,7 +83,7 @@
 	name = "Spaceacillin"
 	id = "spaceacillin"
 	result = "spaceacillin"
-	required_reagents = list("cryptobiolin" = 1, "inaprovaline" = 1)
+	required_reagents = list("cryptobiolin" = 1, "impedrezene" = 1, "sterilizine" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/imidazoline

@@ -134,11 +134,7 @@
 		else
 			var/protected = CLOTHING_ARMOR_HARDCORE - (human.getarmor(null, ARMOR_MELEE) + 60)
 			if(prob(protected))
-				to_chat(user, SPAN_XENOWARNING(protected))
 				target.AddDisease(new /datum/disease/black_goo)
-			else
-				to_chat(user, SPAN_XENOWARNING(protected))
-
 	if(issynth(target))
 		target.apply_effect(2, SLOW)
 	else

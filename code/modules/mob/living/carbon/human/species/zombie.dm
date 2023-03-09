@@ -25,10 +25,10 @@
 	knock_out_reduction = 5
 	has_organ = list()
 	has_species_tab_items = TRUE
-
+	var/d
 	var/action_list = list(
-		/datum/action/zombie_action/toggable/bite,
-		/datum/action/zombie_action/toggable/leap
+		/datum/action/human_action/activable/zombie/bite,
+		/datum/action/human_action/activable/zombie/leap
 	)
 	var/list/to_revive = list()
 	var/list/revive_times = list()

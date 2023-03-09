@@ -538,7 +538,7 @@
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"
 	id = "cryptobiolin"
-	description = "A component to making spaceacilin."
+	description = "A component to making spaceacillin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE

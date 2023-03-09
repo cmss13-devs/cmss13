@@ -10,8 +10,8 @@
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
-		return TRUE
-	return FALSE
+		return FALSE
+	return TRUE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	. = ..()

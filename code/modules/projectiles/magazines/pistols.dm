@@ -13,6 +13,7 @@
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
 	ammo_band_icon = "+m4a3_band"
+	ammo_band_icon_empty = "+m4a3_band_e"
 
 /obj/item/ammo_magazine/pistol/hp
 	name = "\improper M4A3 hollowpoint magazine (9mm)"
@@ -69,6 +70,7 @@
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
 	ammo_band_icon = "+88m4_band"
+	ammo_band_icon_empty = "+88m4_band_e"
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/pistol/mod88/normalpoint // Unused
@@ -114,6 +116,7 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/pistol/vp78
 	ammo_band_icon = "+vp78_band"
+	ammo_band_icon_empty = "+vp78_band_e"
 
 /obj/item/ammo_magazine/pistol/vp78/toxin
 	name = "\improper VP78 toxic magazine (9mm)"
@@ -154,6 +157,7 @@
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
 	ammo_band_icon = "+deagle_band"
+	ammo_band_icon_empty = "+deagle_band_e"
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
 	name = "\improper Heavy Desert Eagle magazine (.50)"

@@ -14,6 +14,7 @@
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
 	ammo_band_icon = "+m44_tip"
+	ammo_band_icon_empty = "empty"
 
 /obj/item/ammo_magazine/revolver/marksman
 	name = "\improper M44 marksman speed loader (.44)"
@@ -133,7 +134,7 @@
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	caliber = ".455"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
-	icon_state = "mateba"
+	icon_state = "357"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
 

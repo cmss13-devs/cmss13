@@ -13,6 +13,7 @@
 	default_ammo = /datum/ammo/bullet/sniper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/M42A
 	ammo_band_icon = "+m42c_band"
+	ammo_band_icon_empty = "+m42c_band_e"
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
@@ -69,6 +70,7 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_icon = "+a19_band"
+	ammo_band_icon_empty = "+a19_band_e"
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 HV incendiary magazine (10x24mm)"

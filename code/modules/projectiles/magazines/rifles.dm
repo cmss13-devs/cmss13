@@ -16,6 +16,7 @@
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
 	ammo_band_icon = "+m41a_band"
+	ammo_band_icon_empty = "+m41a_band_e"
 
 /obj/item/ammo_magazine/rifle/extended
 	name = "\improper M41A extended magazine (10x24mm)"
@@ -84,6 +85,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/m41aMK1
 	default_ammo = /datum/ammo/bullet/rifle
 	ammo_band_icon = "+m41a_mk1_band"
+	ammo_band_icon_empty = "+m41a_mk1_band_e"
 
 /obj/item/ammo_magazine/rifle/m41aMK1/ap
 	name = "\improper M41A MK1 AP magazine (10x24mm)"
@@ -125,6 +127,7 @@
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/m4ra
 	ammo_band_icon = "+m4ra_band"
+	ammo_band_icon_empty = "+m4ra_band_e"
 
 /obj/item/ammo_magazine/rifle/m4ra/ap
 	name = "\improper M4RA armor-piercing magazine (10x24mm)"
@@ -163,56 +166,6 @@
 	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-
-//-------------------------------------------------------
-//M4RA, l42 reskin, same stats as before but different, lore friendly, shell.
-
-/obj/item/ammo_magazine/rifle/m4ra
-	name = "\improper M4RA magazine (10x24mm)"
-	desc = "A magazine of standard 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra"
-	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 25
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
-
-/obj/item/ammo_magazine/rifle/m4ra/ap
-	name = "\improper M4RA armor-piercing magazine (10x24mm)"
-	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_ap"
-	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 25
-
-/obj/item/ammo_magazine/rifle/m4ra/ext
-	name = "\improper M4RA extended magazine (10x24mm)"
-	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle. Holds an additional 10 rounds, up to 35."
-	icon_state = "m4ra_extended"
-	bonus_overlay = "m4ra_ex"
-	max_rounds = 35
-
-/obj/item/ammo_magazine/rifle/m4ra/rubber
-	name = "M4RA rubber magazine (10x24mm)"
-	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_piercing"
-	default_ammo = /datum/ammo/bullet/rifle/rubber
-
-/obj/item/ammo_magazine/rifle/m4ra/heap
-	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
-	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_heap"
-	default_ammo = /datum/ammo/bullet/rifle/heap
-
-/obj/item/ammo_magazine/rifle/m4ra/penetrating
-	name = "\improper M4RA wall-piercing magazine (10x24mm)"
-	desc = "A magazine of wall-piercing 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_heap"
-	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
-
-/obj/item/ammo_magazine/rifle/m4ra/incendiary
-	name = "\improper M4RA incendiary magazine (10x24mm)"
-	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
-	icon_state = "m4ra_incendiary"
-	default_ammo = /datum/ammo/bullet/rifle/incendiary
-
 
 //-------------------------------------------------------
 //XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
@@ -275,6 +228,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
 	ammo_band_icon = "+m16_band"
+	ammo_band_icon_empty = "+m16_band_e"
 
 /obj/item/ammo_magazine/rifle/m16/ap
 	name = "\improper M16 AP magazine (5.56x45mm)"
@@ -311,6 +265,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
 	ammo_band_icon = "+m41ae2_band"
+	ammo_band_icon_empty = "+m41ae2_band_e"
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
@@ -368,6 +323,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 	ammo_band_icon = "+l42mk1_band"
+	ammo_band_icon_empty = "+l42mk1_band_e"
 
 /obj/item/ammo_magazine/rifle/l42a/ap
 	name = "\improper L42A AP magazine (10x24mm)"
@@ -433,6 +389,7 @@
 	max_rounds = 12
 	w_class = SIZE_SMALL
 	ammo_band_icon = "+abr40_band"
+	ammo_band_icon_empty = "+abr40_band_e"
 
 /obj/item/ammo_magazine/rifle/l42a/abr40/holo_target
 	name = "\improper ABR-40 holotargeting magazine (10x24mm)"
@@ -454,6 +411,7 @@
 	max_rounds = 30
 	gun_type = /obj/item/weapon/gun/rifle/nsg23
 	ammo_band_icon = "+nsg23_band"
+	ammo_band_icon_empty = "+nsg23_band_e"
 
 /obj/item/ammo_magazine/rifle/nsg23/extended
 	name = "\improper NSG 23 extended magazine (10x24mm)"

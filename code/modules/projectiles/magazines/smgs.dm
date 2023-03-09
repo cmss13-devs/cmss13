@@ -19,6 +19,7 @@
 	gun_type = /obj/item/weapon/gun/smg/m39
 	default_ammo = /datum/ammo/bullet/smg/m39
 	ammo_band_icon = "+m39_band"
+	ammo_band_icon_empty = "+m39_band_e"
 
 /obj/item/ammo_magazine/smg/m39/ap
 	name = "\improper M39 AP magazine (10x20mm)"

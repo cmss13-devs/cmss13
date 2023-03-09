@@ -35,6 +35,9 @@ They're all essentially identical when it comes to getting the job done.
 	var/ammo_band_color
 	/// If this and ammo_band_color aren't null, run update_ammo_band() Is the greyscale icon used for the ammo band.
 	var/ammo_band_icon
+	/// Is the greyscale icon used for the ammo band when it's empty of bullets.
+	var/ammo_band_icon_empty
+
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -59,7 +62,10 @@ They're all essentially identical when it comes to getting the job done.
 
 /obj/item/ammo_magazine/proc/update_ammo_band()
 	overlays.Cut()
-	var/image/ammo_band_image = image(icon, src, ammo_band_icon)
+	var/band_icon = ammo_band_icon
+	if(!current_rounds)
+		band_icon = ammo_band_icon_empty
+	var/image/ammo_band_image = image(icon, src, band_icon)
 	ammo_band_image.color = ammo_band_color
 	ammo_band_image.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += ammo_band_image

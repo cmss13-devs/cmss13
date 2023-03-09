@@ -123,7 +123,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
-	minimap_icon = "cl"
+	minimap_icon = "correspondent"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/H)

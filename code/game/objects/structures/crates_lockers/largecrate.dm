@@ -60,7 +60,7 @@
 
 /obj/structure/largecrate/funny/New()
 	..()
-	var/spawnchance = pick(1,17)
+	var/spawnchance = pick(1,21)
 	switch(spawnchance)
 		if(1) // VERIFIED TOP QUALITY PRE USED AMMO
 			new /obj/item/prop/helmetgarb/spent_buckshot(src)
@@ -70,8 +70,7 @@
 			var/obj/item/ammo_casing/bullet/bullets = new(src)
 			bullets.current_casings = 16
 			new /obj/item/ammo_casing/cartridge(src)
-		if(2) // XM40 set (gun not included)
-			new /obj/item/ammo_magazine/rifle/xm40(src)
+		if(2) // XM40 set (gun not included) (these can be AP mags if you have the time for them so not too much)
 			new /obj/item/ammo_magazine/rifle/xm40(src)
 			new /obj/item/ammo_magazine/rifle/xm40(src)
 		if(3) //HEFA SET (m81 doesnt have IFF) (lol!)
@@ -100,11 +99,9 @@
 			new /obj/item/storage/bible(src)
 		if(6) // for the motherland set
 			new /obj/item/weapon/gun/smg/ppsh(src)
-			new /obj/item/weapon/gun/smg/ppsh(src)
 			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
-			new /obj/item/ammo_magazine/smg/ppsh(src)
+			new /obj/item/ammo_magazine/smg/ppsh/extended(src)
+			new /obj/item/ammo_magazine/smg/ppsh/extended(src)
 			new /obj/item/stack/flag/red(src)
 			new /obj/item/weapon/gun/boltaction(src)
 			new /obj/item/ammo_magazine/rifle/boltaction(src)
@@ -114,8 +111,6 @@
 			new /obj/item/clothing/head/ushanka(src)
 		if(7) // M. A. C. K. (munkie army creation kit)
 			new /obj/item/storage/box/monkeycubes(src)
-			new /obj/item/weapon/gun/smg/mp27(src)
-			new /obj/item/weapon/gun/smg/mp5(src)
 			new /obj/item/weapon/gun/boltaction(src)
 			new /obj/item/ammo_magazine/rifle/boltaction(src)
 			new /obj/item/weapon/gun/boltaction(src)
@@ -126,7 +121,7 @@
 			new /obj/item/ammo_magazine/smg/nailgun(src)
 			new /obj/item/ammo_magazine/smg/nailgun(src)
 			new /obj/item/ammo_magazine/smg/nailgun(src)
-		if(9) // Union busting kit
+		if(9) // Union busting kit (shotgun only accepts beanbags)
 			new /obj/item/weapon/shield/riot(src)
 			new /obj/item/ammo_magazine/rifle/rubber(src)
 			new /obj/item/ammo_magazine/rifle/rubber(src)
@@ -163,8 +158,20 @@
 			new /obj/item/ammo_magazine/smg/mp5(src)
 		if(16) // ASSAULT DUCKY
 			new /obj/item/toy/bikehorn/rubberducky(src)
-		if(17) // ASSAULT DUCKY
-			/obj/item/ammo_magazine/handful/shotgun/buckshot
+		if(17) // jumpscare, some slugs if you survive
+			new /obj/item/ammo_magazine/handful/shotgun(src)
+			new /obj/item/clothing/mask/facehugger(src)
+		if(18-20) // IOU
+			new /obj/item/paper/misc/iou(src)
+		if(21) // Robust cleaning kit
+			new /obj/item/reagent_container/glass/bucket(src)
+			new /obj/item/tool/mop(src)
+			new /obj/item/tool/wet_sign(src)
+			new /obj/item/tool/wet_sign(src)
+			new /obj/item/tool/weedkiller(src)
+			new /obj/item/storage/bag/trash(src)
+			new /obj/item/reagent_container/spray/cleaner(src)
+			new /obj/item/reagent_container/glass/rag(src)
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
 

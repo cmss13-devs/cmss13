@@ -605,6 +605,9 @@
 	icon_state = "paper_uscm"
 	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
 
+/obj/item/paper/misc/iou
+	info = "Apologies for the empty shipment last time, I 'handled' the guy that stolen your stuff. I hope you enjoy the extra items on the house. Please fax me at +6232498385 if this crate is empty. <p> - Rico</p>"
+
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
 	unacidable = TRUE

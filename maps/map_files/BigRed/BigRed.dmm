@@ -29868,7 +29868,6 @@
 /area/bigredv2/caves_north)
 "hLp" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "hLs" = (
@@ -31922,14 +31921,11 @@
 	},
 /area/bigredv2/caves/mining)
 "lSH" = (
-/obj/structure/largecrate/guns/merc{
-	icon_state = "case_double";
-	name = "supply crate"
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/obj/effect/spawner/random/gun/smg,
+/turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "lSL" = (
 /turf/open/floor{
@@ -32989,11 +32985,9 @@
 	},
 /area/bigredv2/caves/mining)
 "omw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/obj/effect/spawner/random/gun/smg/lowchance,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves/mining)
 "omG" = (
@@ -33368,16 +33362,9 @@
 	},
 /area/bigredv2/caves/mining)
 "oVH" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-10"
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/obj/item/stack/flag/red,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
 "oWc" = (
@@ -34986,10 +34973,6 @@
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/plastic{
-	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
-	name = "Mining explosives"
-	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "sbQ" = (
@@ -35262,13 +35245,6 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16"
 	},
-/area/bigredv2/caves/mining)
-"syN" = (
-/obj/structure/closet/crate/miningcar/yellow{
-	layer = 3
-	},
-/obj/effect/spawner/random/gun/smg,
-/turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "szg" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -37407,8 +37383,11 @@
 /area/bigredv2/outside/lambda_cave_cas)
 "wNA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/pistol/m1911,
-/turf/open/floor/plating,
+/obj/effect/spawner/random/gun/smg/midchance,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
 /area/bigredv2/caves/mining)
 "wPk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -37608,16 +37587,21 @@
 	},
 /area/bigredv2/caves/mining)
 "xhB" = (
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
 "xhU" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 27
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -37970,10 +37954,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "xRl" = (
-/obj/item/weapon/gun/pistol/b92fs{
-	pixel_x = 13;
-	pixel_y = -7
-	},
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -38245,9 +38226,16 @@
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
+	},
+/area/bigredv2/caves/mining)
+"ylX" = (
+/obj/item/stack/flag/red,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/caves/mining)
 "ymi" = (
@@ -42125,7 +42113,7 @@ rsv
 rsv
 rsv
 rsv
-rsv
+omw
 eql
 onh
 wCo
@@ -42793,7 +42781,7 @@ heG
 pZe
 pSa
 wLD
-omw
+xhB
 uHQ
 szw
 szw
@@ -43424,7 +43412,7 @@ dwO
 dBa
 pSa
 gGO
-wNA
+cVd
 cVd
 kCe
 tUL
@@ -44734,7 +44722,7 @@ yhc
 wCo
 xfx
 nSP
-szw
+ylX
 wVQ
 oKy
 kCe
@@ -44954,8 +44942,8 @@ wCo
 wCo
 wVQ
 oKy
-lSH
-xhU
+pSa
+pSa
 vCd
 hCT
 pSa
@@ -45175,7 +45163,7 @@ jhj
 kCe
 ekV
 pSa
-kCe
+wNA
 kCe
 uHT
 pSa
@@ -45829,7 +45817,7 @@ uHQ
 dNr
 buY
 uuO
-xhB
+pSa
 pSa
 qYY
 dKo
@@ -46046,7 +46034,7 @@ lBe
 pSa
 pSa
 iLu
-xhB
+pSa
 kCe
 nqr
 kCe
@@ -47135,7 +47123,7 @@ bvD
 iqF
 xJT
 wCo
-syN
+lSH
 uHQ
 aao
 rsv
@@ -49068,7 +49056,7 @@ aao
 aao
 uHQ
 pao
-oVH
+xhU
 tBh
 eVo
 fZg
@@ -52979,7 +52967,7 @@ aao
 aao
 rsv
 rsv
-rxh
+oVH
 qvI
 gzG
 wCo

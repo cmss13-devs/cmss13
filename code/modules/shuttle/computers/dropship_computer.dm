@@ -254,7 +254,7 @@
 	dropship.is_hijacked = TRUE
 
 	hijack.fire()
-	GLOB.alt_ctrl_disabled = 1
+	GLOB.alt_ctrl_disabled = TRUE
 	if(almayer_orbital_cannon)
 		almayer_orbital_cannon.is_disabled = TRUE
 		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)

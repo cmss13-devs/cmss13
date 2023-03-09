@@ -2,6 +2,10 @@
 	title = JOB_COLONEL
 /datum/job/special/uscm/general
 	title = JOB_GENERAL
+/datum/job/special/uscm/acmc
+	title = JOB_ACMC
+/datum/job/special/uscm/cmc
+	title = JOB_CMC
 /datum/job/special/uscm/sof
 	title = JOB_MARINE_RAIDER
 /datum/job/special/uscm/riot

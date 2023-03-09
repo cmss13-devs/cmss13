@@ -10,10 +10,14 @@
 	unslashable = TRUE
 	health = 0 //do not forget to set health for your bot!
 	var/maxhealth = 0
-	var/fire_dam_coeff = 1.0
-	var/brute_dam_coeff = 1.0
+	var/fire_dam_coeff = 1
+	var/brute_dam_coeff = 1
 	var/open = 0//Maint panel
 	var/locked = 1
+
+/obj/structure/machinery/bot/Destroy()
+	QDEL_NULL(botcard)
+	. = ..()
 
 
 /obj/structure/machinery/bot/proc/turn_on()
@@ -46,7 +50,7 @@
 		else
 			. += SPAN_DANGER("[src]'s parts look very loose!")
 
-/obj/structure/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
+/obj/structure/machinery/bot/attack_animal(mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0) return
 	health -= M.melee_damage_upper
 	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
@@ -85,7 +89,7 @@
 		else
 			..()
 
-/obj/structure/machinery/bot/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/bot/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	healthcheck()
@@ -120,7 +124,7 @@
 /obj/structure/machinery/bot/attack_remote(mob/user as mob)
 	attack_hand(user)
 
-/obj/structure/machinery/bot/attack_hand(var/mob/living/carbon/human/user)
+/obj/structure/machinery/bot/attack_hand(mob/living/carbon/human/user)
 
 	if(!istype(user))
 		return ..()
@@ -140,7 +144,7 @@
 
 // Returns the surrounding cardinal turfs with open links
 // Including through doors openable with the ID
-/turf/proc/CardinalTurfsWithAccess(var/obj/item/card/id/ID)
+/turf/proc/CardinalTurfsWithAccess(obj/item/card/id/ID)
 	var/L[] = new()
 
 	for(var/d in cardinal)
@@ -181,7 +185,7 @@
 
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
-/proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/card/id/ID)
+/proc/DirBlockedWithAccess(turf/loc, dir, obj/item/card/id/ID)
 	for(var/obj/structure/window/D in loc)
 		if(!D.density) continue
 		if(D.dir == SOUTHWEST) return 1

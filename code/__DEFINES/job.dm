@@ -92,7 +92,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE_RAIDER "Marine Raider"
 #define JOB_MARINE_RAIDER_SL "Marine Raider Team Lead"
 #define JOB_MARINE_RAIDER_CMD "Marine Raider Platoon Lead"
-#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
+#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
 
 #define JOB_HUMAN_ROLES  /datum/timelock/human
 
@@ -105,17 +105,19 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
 #define JOB_GENERAL "USCM General"
+#define JOB_ACMC "Assistant Commandant of the Marine Corps"
+#define JOB_CMC "Commandant of the Marine Corps"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L += timelockList;\
 	. = ..(L);\
 }
 
 // Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L = timelockList;\
 	. = ..(L);\
 }
@@ -170,6 +172,19 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEAD_INVEST "PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR "PMC Site Director"
 #define JOB_PMC_SYNTH    "PMC Support Synthetic"
+
+//-------- WY --------//
+
+#define JOB_TRAINEE "Corporate Trainee"
+#define JOB_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_EXECUTIVE "Corporate Executive"
+#define JOB_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_CHIEF_EXECUTIVE "Corporate Chief Executive"
+#define JOB_DIRECTOR "W-Y Director"
 
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"

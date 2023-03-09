@@ -37,7 +37,7 @@
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64
@@ -52,7 +52,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 32
 	bound_height = 32
 
@@ -67,7 +67,7 @@
 /obj/structure/filtration/machine_32x64
 	icon = 'icons/obj/structures/props/32x64.dmi'
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 32
 	bound_height = 64
 
@@ -84,7 +84,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 96
 	bound_height = 96
 
@@ -101,7 +101,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 64
 	bound_height = 96
 
@@ -118,7 +118,7 @@
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	bound_width = 64
 	bound_height = 128
 

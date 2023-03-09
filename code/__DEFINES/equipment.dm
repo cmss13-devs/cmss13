@@ -80,6 +80,8 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// The item goes on top of tables, instead of into them with the overlay system
 #define NOTABLEMERGE (1<<13)
+/// Has heat source but isn't 'on fire' and thus can be stored
+#define IGNITING_ITEM (1<<14)
 
 //==========================================================================================
 
@@ -417,33 +419,33 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 /// what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
-#define SPACE_HELMET_min_cold_protection_temperature 2.0
+#define SPACE_HELMET_MIN_COLD_PROT 2
 /// what min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.
-#define SPACE_SUIT_min_cold_protection_temperature 2.0
+#define SPACE_SUIT_MIN_COLD_PROT 2
 /// These need better heat protect, but not as good heat protect as firesuits.
-#define SPACE_SUIT_max_heat_protection_temperature 5000
+#define SPACE_SUIT_MAX_HEAT_PROT 5000
 /// what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
-#define FIRESUIT_max_heat_protection_temperature 30000
+#define FIRESUIT_MAX_HEAT_PROT 30000
 /// for fire helmet quality items (red and white hardhats)
-#define FIRE_HELMET_max_heat_protection_temperature 30000
+#define FIRE_HELMET_MAX_HEAT_PROT 30000
 /// For normal helmets
-#define HELMET_min_cold_protection_temperature 175
+#define HELMET_MIN_COLD_PROT 175
 /// For normal helmets
-#define HELMET_max_heat_protection_temperature 600
+#define HELMET_MAX_HEAT_PROT 600
 /// For armor
-#define ARMOR_min_cold_protection_temperature 200
+#define ARMOR_MIN_COLD_PROT 200
 /// For armor
-#define ARMOR_max_heat_protection_temperature 600
+#define ARMOR_MAX_HEAT_PROT 600
 /// For some gloves (black and)
-#define GLOVES_min_cold_protection_temperature 175
+#define GLOVES_MIN_COLD_PROT 175
 /// For some gloves
-#define GLOVES_max_heat_protection_temperature 650
-/// For gloves
-#define SHOE_min_cold_protection_temperature 175
-/// For gloves
-#define SHOE_max_heat_protection_temperature 650
+#define GLOVES_MAX_HEAT_PROT 650
+/// For shoes
+#define SHOE_MIN_COLD_PROT 175
+/// For shoes
+#define SHOE_MAX_HEAT_PROT 650
 /// For the ice planet map protection from the elements.
-#define ICE_PLANET_min_cold_protection_temperature 175
+#define ICE_PLANET_MIN_COLD_PROT 175
 
 //=================================================
 
@@ -487,14 +489,6 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define UNIFORM_VEND_DRESS_SHOES "dress shoes"
 #define UNIFORM_VEND_DRESS_EXTRA "dress extra"
 
-/*
-#define UNIFORM_VEND_UTILITY list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES)
-#define UNIFORM_VEND_UTILITY_EXTRA list(UNIFORM_VEND_UTILITY_EXTRA)
-#define UNIFORM_VEND_SERVICE list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES)
-#define UNIFORM_VEND_SERVICE_EXTRA list(UNIFORM_VEND_SERVICE_EXTRA)
-#define UNIFORM_VEND_DRESS list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES)
-#define UNIFORM_VEND_DRESS_EXTRA list(UNIFORM_VEND_DRESS_EXTRA)
-*/
 
 var/global/list/uniform_categories = list(
 	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
@@ -546,3 +540,10 @@ var/global/list/uniform_categories = list(
 #define RADIO_FILTER_TYPE_INTERCOM 1
 #define RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER 2
 #define RADIO_FILTER_TYPE_ANTAG_RADIOS 3
+//=================================================
+
+//=================================================
+#define PHONE_RTO "RTO"
+#define PHONE_MARINE "Marine"
+#define PHONE_UPP_SOLDIER "Soldier"
+#define PHONE_IO "IO"

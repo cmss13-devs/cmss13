@@ -2,7 +2,6 @@
 	ERT Shuttles
 */
 
-#define ERT_SHUTTLE_DEFAULT_CALLTIME 30 SECONDS
 #define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
 
 #define ADMIN_LANDING_PAD_1 "base-ert1"
@@ -18,7 +17,7 @@
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13
-	callTime = ERT_SHUTTLE_DEFAULT_CALLTIME // 30s flight time
+	callTime = ERT_SHUTTLE_TRANSIT_DURATION
 	rechargeTime = ERT_SHUTTLE_DEFAULT_RECHARGE // 90s cooldown to recharge
 	var/list/doors = list()
 	var/list/external_doors = list()
@@ -37,7 +36,7 @@
 	control_doors("force-lock-launch", force = TRUE, external_only = TRUE)
 	..()
 
-/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action, var/force = FALSE, var/external_only = FALSE)
+/obj/docking_port/mobile/emergency_response/proc/control_doors(action, force = FALSE, external_only = FALSE)
 	var/list/door_list = doors
 	if(external_only)
 		door_list = external_doors
@@ -61,7 +60,7 @@
 			if("force-lock-launch")
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 
-/obj/docking_port/mobile/emergency_response/proc/lockdown_door_launch(var/obj/structure/machinery/door/airlock/air)
+/obj/docking_port/mobile/emergency_response/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
 	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 		if(isliving(blocking_mob))
 			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
@@ -72,7 +71,7 @@
 					break
 	lockdown_door(air)
 
-/obj/docking_port/mobile/emergency_response/proc/lockdown_door(var/obj/structure/machinery/door/airlock/air)
+/obj/docking_port/mobile/emergency_response/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
 	air.unlock()
 	air.close()

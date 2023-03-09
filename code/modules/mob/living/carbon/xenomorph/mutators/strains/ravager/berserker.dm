@@ -1,7 +1,7 @@
 /datum/xeno_mutator/berserker
 	name = "STRAIN: Ravager - Berserker"
-	description = "You decrease your health and increase your speed to become a close range melee monster. Build up rage by slashing to increase your attack speed, movement speed, and armor; once you reach max rage you can go nuclear with eviscerate."
-	flavor_description = "Crush and butcher, maim and rage, until the tallhosts are finished."
+	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of six rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every host you hit after an immobilizing wind-up."
+	flavor_description = "They shall be my finest warriors. They will rend and tear, crush and butcher, and maim and rage until every tallhost falls."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RAVAGER)
@@ -13,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
-		/datum/action/xeno_action/activable/eviscerate
+		/datum/action/xeno_action/activable/eviscerate,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
@@ -23,7 +23,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
 	ravager.mutation_type = RAVAGER_BERSERKER
 	ravager.plasma_max = 0
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
@@ -64,7 +64,7 @@
 
 	// State
 	var/next_slash_buffed = FALSE
-	var/slash_slow_duration = 3.5 SECONDS
+	var/slash_slow_duration = 2	//measured in life ticks
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()
@@ -141,7 +141,7 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return original_damage
 
 	if (next_slash_buffed)

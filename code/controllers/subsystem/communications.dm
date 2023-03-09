@@ -5,7 +5,7 @@ The radio_controller is a global object maintaining all radio transmissions, thi
 Note that walkie-talkie, intercoms and headsets handle transmission using nonstandard way.
 procs:
 
-	add_object(obj/device as obj, var/new_frequency as num, var/filter as text|null = null)
+	add_object(obj/device as obj, new_frequency as num, filter as text|null = null)
 		Adds listening object.
 	parameters:
 		device - device receiving signals, must have proc receive_signal (see description below).
@@ -23,14 +23,14 @@ procs:
 		Obliviously, after calling this proc, device will not receive any signals on old_frequency.
 		Other frequencies will left unaffected.
 
-	return_frequency(var/frequency as num)
+	return_frequency(frequency as num)
 		returns:
 			Reference to frequency object. Use it if you need to send and do not need to listen.
 
 radio_frequency is a global object maintaining list of devices that listening specific frequency.
 	procs:
 
-	post_signal(obj/source as obj|null, datum/signal/signal, var/filter as text|null = null, var/range as num|null = null)
+	post_signal(obj/source as obj|null, datum/signal/signal, filter as text|null = null, range as num|null = null)
 		Sends signal to all devices that wants such signal.
 	parameters:
 		source - object, emitted signal. Usually, devices will not receive their own signals.
@@ -38,7 +38,7 @@ radio_frequency is a global object maintaining list of devices that listening sp
 		filter - described above.
 		range - radius of regular byond's square circle on that z-level. null means everywhere, on all z-levels.
 
-	obj/proc/receive_signal(datum/signal/signal, var/receive_method as num, var/receive_param)
+	obj/proc/receive_signal(datum/signal/signal, receive_method as num, receive_param)
 		Handler from received signals. By default does nothing. Define your own for your object.
 		Avoid of sending signals directly from this proc, use spawn(-1). DO NOT use sleep() here or call procs that sleep please. If you must, use spawn()
 	parameters:
@@ -107,6 +107,7 @@ var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
 
 //Ship department channels
+var/const/SENTRY_FREQ = 1480
 var/const/COMM_FREQ = 1481
 var/const/MED_FREQ = 1482
 var/const/ENG_FREQ = 1483
@@ -145,6 +146,7 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_ENGI = ENG_FREQ,
 	RADIO_CHANNEL_MP = SEC_FREQ,
 	RADIO_CHANNEL_REQ = REQ_FREQ,
+	RADIO_CHANNEL_SENTRY = SENTRY_FREQ,
 	RADIO_CHANNEL_JTAC = JTAC_FREQ,
 	RADIO_CHANNEL_INTEL = INTEL_FREQ,
 
@@ -197,7 +199,7 @@ var/list/radiochannels = list(
 #define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -238,6 +240,7 @@ SUBSYSTEM_DEF(radio)
 		"[AI_FREQ]" = "airadio",
 		"[SEC_FREQ]" = "secradio",
 		"[ENG_FREQ]" = "engradio",
+		"[SENTRY_FREQ]" = "sentryradio",
 		"[MED_FREQ]" = "medradio",
 		"[REQ_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",
@@ -256,7 +259,7 @@ SUBSYSTEM_DEF(radio)
 		"[COLONY_FREQ]" = "deptradio",
 	)
 
-/datum/controller/subsystem/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
+/datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -281,7 +284,7 @@ SUBSYSTEM_DEF(radio)
 
 	return 1
 
-/datum/controller/subsystem/radio/proc/return_frequency(var/new_frequency as num)
+/datum/controller/subsystem/radio/proc/return_frequency(new_frequency as num)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -292,7 +295,7 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
-/datum/controller/subsystem/radio/proc/get_available_tcomm_zs(var/frequency)
+/datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
 	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
@@ -305,22 +308,22 @@ SUBSYSTEM_DEF(radio)
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
 		if(!length(T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-			target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
 	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs
 
-/datum/controller/subsystem/radio/proc/add_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))
 		addToListNoDupe(tcomm_machines_ground, machine)
 	if(is_mainship_level(machine.z))
 		addToListNoDupe(tcomm_machines_almayer, machine)
 
-/datum/controller/subsystem/radio/proc/remove_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/remove_tcomm_machine(obj/machine)
 	tcomm_machines_ground -= machine
 	tcomm_machines_almayer -= machine
 
-/datum/controller/subsystem/radio/proc/get_frequency_span(var/frequency)
+/datum/controller/subsystem/radio/proc/get_frequency_span(frequency)
 	var/freq_span = freq_to_span["[frequency]"]
 	if(freq_span)
 		return freq_span
@@ -340,7 +343,7 @@ SUBSYSTEM_DEF(radio)
 	var/frequency as num
 	var/list/list/obj/devices = list()
 
-/datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, var/filter = null as text|null, var/range = null as num|null)
+/datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, filter = null as text|null, range = null as num|null)
 	var/turf/start_point
 	if(range)
 		start_point = get_turf(source)
@@ -356,7 +359,7 @@ SUBSYSTEM_DEF(radio)
 			send_to_filter(source, signal, next_filter, start_point, range)
 
 //Sends a signal to all machines belonging to a given filter. Should be called by post_signal()
-/datum/radio_frequency/proc/send_to_filter(obj/source, datum/signal/signal, var/filter, var/turf/start_point = null, var/range = null)
+/datum/radio_frequency/proc/send_to_filter(obj/source, datum/signal/signal, filter, turf/start_point = null, range = null)
 	if (range && !start_point)
 		return
 
@@ -376,7 +379,7 @@ SUBSYSTEM_DEF(radio)
 
 		device.receive_signal(signal, TRANSMISSION_RADIO, frequency)
 
-/datum/radio_frequency/proc/add_listener(obj/device as obj, var/filter as text|null)
+/datum/radio_frequency/proc/add_listener(obj/device as obj, filter as text|null)
 	if (!filter)
 		filter = RADIO_DEFAULT
 	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")

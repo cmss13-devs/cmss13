@@ -4,10 +4,11 @@
 	name = "\improper recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
 	active_power_usage = 15000 //15 kW
+	black_market_value = 35
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
 	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
@@ -233,6 +234,9 @@
 		if(istype(charging, /obj/item/cell))
 			var/obj/item/cell/C = charging
 			. += "Current charge: [C.charge] ([C.percent()]%)"
+
+/obj/structure/machinery/recharger/unanchored
+	anchored = FALSE
 
 /*
 /obj/structure/machinery/recharger/wallcharger

@@ -77,7 +77,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
 	. = ..()
-	switch(rand(1,7))
+	switch(rand(1,6))
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
@@ -85,33 +85,28 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
+		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
+		if(3) //clf
 			new /obj/item/clothing/under/colonist/clf(src)
 			new /obj/item/clothing/suit/storage/militia(src)
 			new /obj/item/clothing/head/militia(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(5) //upp
+		if(4) //upp
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
 			new /obj/item/clothing/shoes/marine/upp(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(6) //freelancer
+		if(5) //freelancer
 			new /obj/item/clothing/under/marine/veteran/freelancer(src)
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(7) //VAIPO
+		if(6) //VAIPO
 			new /obj/item/clothing/glasses/sunglasses/big(src)
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
 			new /obj/item/clothing/under/tshirt/gray_blu(src)
@@ -128,7 +123,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	switch(rand(1,7))
+	switch(rand(1,6))
 		if(1) //pmc
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
@@ -142,16 +137,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/smg/fp9000(src)
 				new /obj/item/ammo_magazine/smg/fp9000(src)
 				new /obj/item/ammo_magazine/smg/fp9000(src)
-		if(2) //dutch's
-			new /obj/item/weapon/gun/rifle/m16/dutch(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-			new /obj/item/ammo_magazine/rifle/m16/ap(src)
-		if(3) //pizza
+		if(2) //pizza
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
-		if(4) //clf
+		if(3) //clf
 			switch(rand(1, 4))
 				if(1)
 					new /obj/item/weapon/melee/twohanded/lungemine/damaged(src)
@@ -170,7 +159,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/m60(src)
 					new /obj/item/ammo_magazine/m60(src)
 					new /obj/item/ammo_magazine/m60(src)
-		if(5) //upp
+		if(4) //upp
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/type71(src)
 				new /obj/item/ammo_magazine/rifle/type71/ap(src)
@@ -184,7 +173,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
-		if(6) //freelancer
+		if(5) //freelancer
 			if(prob(80))
 				new /obj/item/weapon/gun/rifle/mar40(src)
 				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
@@ -193,7 +182,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			else
 				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
 				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(7) //VAIPO
+		if(6) //VAIPO
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
 				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
@@ -1025,8 +1014,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 
 /obj/structure/largecrate/black_market/secured_wildlife/unpack()
 	//We need to pick a 'secured wildlife' mob that actually makes sense.
-	var/unfit_simplemobs = list(/mob/living/simple_animal/drone)
-	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/retaliate/malf_drone, /mob/living/simple_animal/hostile/retaliate/goat)
+	var/unfit_simplemobs = list(/mob/living/simple_animal/drone, /mob/living/simple_animal/hostile/retaliate/malf_drone)
+	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear,, /mob/living/simple_animal/hostile/retaliate/goat)
 	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
 	var/mob/contained_mob_type = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
 	new contained_mob_type(loc)

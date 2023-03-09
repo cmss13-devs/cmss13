@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	if(!skillcheck(usr, SKILL_NAVIGATIONS, SKILL_NAVIGATIONS_TRAINED))
 		to_chat(usr, SPAN_WARNING("A window of complex orbital math opens up. You have no idea what you are doing and quickly close it."))
 		return
-	if(GLOB.alt_ctrl_disabled == 1)
+	if(GLOB.alt_ctrl_disabled)
 		to_chat(usr, SPAN_WARNING("The Altitude Control Console has been locked by ARES due to Delta Alert."))
 		return
 	tgui_interact(usr)

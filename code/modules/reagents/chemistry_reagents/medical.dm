@@ -365,7 +365,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	properties = list(PROPERTY_UNKNOWN = 1)
+	properties = list(PROPERTY_ANTIBIOTIC = 1)
 
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"

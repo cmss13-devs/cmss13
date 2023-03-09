@@ -900,6 +900,30 @@
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	M.apply_damage(1.5 * potency * delta_time, CLONE)
 
+/datum/chem_property/positive/antibiotic
+	name = PROPERTY_ANTIBIOTIC
+	code = "ABT"
+	description = "Blocks certain biological processes from occuring in all living tissue, while it helps with infections, it also harms the body itself"
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_MEDICINE
+	value = 1
+	max_level = 3
+
+/datum/chem_property/positive/antibiotic/process(mob/living/M, potency = 1)
+	M.apply_damage(0.5 * potency, TOX)
+	var/datum/disease/black_goo/D = locate() in M.viruses
+	if(D)
+		var/datum/disease/black_goo/virus = new
+		var/mob/living/carbon/human/H = M
+		if(virus.stage == 1)
+			if(prob(5* potency))
+				for(var/datum/disease/goo in H.viruses)
+					goo.cure()
+			else
+				to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
+
+/datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency = 1)
+
 /datum/chem_property/positive/oxygenating
 	name = PROPERTY_OXYGENATING
 	code = "OXG"

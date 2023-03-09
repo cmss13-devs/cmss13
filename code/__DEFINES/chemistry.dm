@@ -175,6 +175,7 @@
 #define PROPERTY_ANTIPARASITIC "anti-parasitic"
 #define PROPERTY_ELECTROGENETIC "electrogenetic"
 #define PROPERTY_ORGANSTABILIZE "organ-stabilizing"
+#define PROPERTY_ANTIBIOTIC "anti-biotic"
 //Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING "defibrillating"
 #define PROPERTY_THANATOMETABOL "thanatometabolizing"

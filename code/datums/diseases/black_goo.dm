@@ -4,7 +4,7 @@
 	max_stages = 5
 	cure = "Anti-Zed"
 	cure_id = "antiZed"
-	spread = "Bites"
+	spread = "Blood Contamination"
 	spread_type = SPECIAL
 	affected_species = list("Human")
 	curable = 0
@@ -23,7 +23,8 @@
 
 /datum/disease/black_goo/stage_act()
 	..()
-	if(!ishuman(affected_mob)) return
+	if(!ishuman(affected_mob))
+		return
 	var/mob/living/carbon/human/H = affected_mob
 
 	if(age > 1.5*stage_minimum_age) stage_prob = 100 //if it takes too long we force a stage increase
@@ -31,58 +32,45 @@
 	if(H.stat == DEAD) stage_minimum_age = 75 //the virus progress faster when the host is dead.
 	switch(stage)
 		if(1)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage One! Zombie transformation begins at Stage Four."))
-				stage_counter = stage
 			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
-				if(prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					goo_message_cooldown = world.time + 100
+				var/message = pick("Your mouth feels really dry..", "Your head aches...",)
+				to_chat(H, SPAN_WARNING(message))
+				goo_message_cooldown = world.time + 10 SECONDS
 		if(2)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Two! Zombie transformation begins at Stage Four."))
-				stage_counter = stage
 			if(goo_message_cooldown < world.time)
-				if (prob(3)) to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-				else if (prob(6)) to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-				else if (prob(2)) H.vomit_on_floor()
-				goo_message_cooldown = world.time + 100
-		if(3)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Three! Zombie transformation begins at Stage Four, which will be soon."))
-				stage_counter = stage
-			hidden = list(0,0)
-			//survive_mob_death = TRUE //even if host dies now, the transformation will occur.
-			H.next_move_slowdown = max(H.next_move_slowdown, 1)
-			if(goo_message_cooldown < world.time)
-				if (prob(3))
-					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
-					goo_message_cooldown = world.time + 100
-				else if (prob(6))
-					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
-					goo_message_cooldown = world.time + 100
-				else if (prob(9))
-					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
-					goo_message_cooldown = world.time + 100
-				else if(prob(5))
-					goo_message_cooldown = world.time + 100
+				if(prob(5))
 					H.vomit_on_floor()
+					to_chat(H, SPAN_WARNING("it becomes harder to see"))
+				goo_message_cooldown = world.time + 10 SECONDS
+		if(3)
+			hidden = list(1,0)
+			H.next_move_slowdown = max(H.next_move_slowdown, 1)
+			var/message = pick("Your muscles ache", "Your throat is really dry", "Skin on your hands peels away.", "You can feel your heart skipping a beat...")
+			if(goo_message_cooldown < world.time)
+				to_chat(H, SPAN_WARNING(message))
+				goo_message_cooldown = world.time + 15 SECONDS
+				if(prob(10))
+					H.vomit_on_floor()
+					affected_mob.pain.apply_pain(PAIN_ZOMBIE_TURNING)
 		if(4)
-			if(H.stat == DEAD && stage_counter != stage)
-				to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Four! Your transformation will happen any moment now."))
-				stage_counter = stage
+			H.nutrition = NUTRITION_VERYLOW //brains tasty yey :D
 			H.next_move_slowdown = max(H.next_move_slowdown, 2)
-			if(prob(5) || age >= stage_minimum_age-1)
+			var/message = pick("MAKE IT STOP", "Your skin is pulling itself apart!", "ITS OVER SOON")
+			if(goo_message_cooldown < world.time && prob(30))
+				to_chat(H, SPAN_HIGHDANGER(message))
+				goo_message_cooldown = world.time + 20 SECONDS
+			if(prob(20) || age >= stage_minimum_age-1)
 				if(!zombie_transforming)
 					zombie_transform(H)
-			else if(prob(5))
+					to_chat(H, SPAN_HIGHDANGER(message))
+			else
 				H.vomit_on_floor()
+				affected_mob.pain.apply_pain(PAIN_ZOMBIE_TURNING)
 		if(5)
 			if(H.stat == DEAD && stage_counter != stage)
 				stage_counter = stage
 				if(H.species.name != SPECIES_ZOMBIE && !zombie_transforming)
-					to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Five! Your transformation should have happened already, but will be forced now."))
 					zombie_transform(H)
 			if(!zombie_transforming && prob(50))
 				if(H.stat != DEAD)
@@ -98,6 +86,7 @@
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
 	zombie_transforming = TRUE
+	human.emote("scream")
 	human.vomit_on_floor()
 	human.adjust_effect(5, STUN)
 	sleep(20)
@@ -111,6 +100,7 @@
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 		human.jitteriness = 0
 		human.set_species(SPECIES_ZOMBIE)
+		human.pain.apply_pain_reduction(PAIN_REDUCTION_FULL) //what is pain? I need brains
 		stage = 5
 		human.faction = FACTION_ZOMBIE
 		zombie_transforming = FALSE
@@ -122,7 +112,7 @@
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	force = 40
+	force = 30
 	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
@@ -140,12 +130,14 @@
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
-			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
+			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is already infected.</b>"))
 		else
-			var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
-			if(prob(bio_protected))
+			var/protected = CLOTHING_ARMOR_HARDCORE - (human.getarmor(null, ARMOR_MELEE) + 60)
+			if(prob(protected))
+				to_chat(user, SPAN_XENOWARNING(protected))
 				target.AddDisease(new /datum/disease/black_goo)
-				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
+			else
+				to_chat(user, SPAN_XENOWARNING(protected))
 
 	if(issynth(target))
 		target.apply_effect(2, SLOW)

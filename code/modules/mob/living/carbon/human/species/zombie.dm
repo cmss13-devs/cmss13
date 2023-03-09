@@ -12,7 +12,7 @@
 	death_message = "seizes up and falls limp..."
 	flags = NO_BREATHE|NO_CLONE_LOSS|NO_POISON|NO_NEURO|NO_SHRAPNEL
 	mob_inherent_traits = list(TRAIT_FOREIGN_BIO)
-	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
+	brute_mod = 0.3 //EXTREME BULLET RESISTANCE
 	burn_mod = 0.8 //Lowered burn damage since it would 1-shot zombies from 2 to 0.8.
 	speech_chance  = 5
 	cold_level_1 = -1  //zombies don't mind the cold
@@ -24,9 +24,12 @@
 	stun_reduction = 10
 	knock_out_reduction = 5
 	has_organ = list()
-
 	has_species_tab_items = TRUE
 
+	var/action_list = list(
+		/datum/action/zombie_action/toggable/bite,
+		/datum/action/zombie_action/toggable/leap
+	)
 	var/list/to_revive = list()
 	var/list/revive_times = list()
 
@@ -48,7 +51,8 @@
 	if(zombie.head) zombie.drop_inv_item_on_ground(zombie.head, FALSE, TRUE)
 	if(zombie.glasses) zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask) zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
-
+	for(var/action_path in action_list)
+		give_action(zombie, action_path)
 	if(zombie.lying)
 		zombie.lying = FALSE
 

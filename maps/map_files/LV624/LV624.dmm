@@ -21532,9 +21532,6 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/jungle/clear,
 /area/lv624/ground/jungle/south_central_jungle)
-"sEg" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/barrens/south_west_barrens)
 "sFc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
@@ -31293,7 +31290,7 @@ ahF
 ane
 ane
 ane
-sEg
+mkk
 mkk
 mkk
 mkk
@@ -31521,7 +31518,7 @@ ane
 ane
 ane
 ane
-sEg
+mkk
 mkk
 izP
 mkk
@@ -31749,7 +31746,7 @@ ane
 ane
 ane
 ane
-sEg
+mkk
 izP
 izP
 sIr

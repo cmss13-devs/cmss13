@@ -16,7 +16,7 @@
 #########################################*/
 /obj/item/weapon/melee/harpoon/yautja
 	name = "large harpoon"
-	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
+	desc = "A huge metal spike with a hook at the end. It's carved with mysterious alien writing."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spike"
@@ -43,7 +43,7 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
+	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -118,7 +118,7 @@
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from a metal gauntlet."
+	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
 	attack_speed = 5
@@ -165,7 +165,7 @@
 
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
-	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -176,7 +176,7 @@
 	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = "clan_sword_hit"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
@@ -519,6 +519,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
+	flags_item = NOSHIELD|TWOHANDED
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -598,6 +599,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
+	flags_item = NOSHIELD|TWOHANDED
 
 
 /*#########################################
@@ -806,7 +808,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
-	desc = "A plasma pistol capable of rapid fire. It has an integrated battery."
+	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 

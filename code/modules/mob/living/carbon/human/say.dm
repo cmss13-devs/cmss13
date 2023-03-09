@@ -76,7 +76,7 @@
 
 	if(copytext(message,1,2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -277,6 +277,9 @@ for it but just ignore it.
 				verb = pick("whinnies","neighs", "says")
 				handled = 1
 
+	var/braindam = getBrainLoss()
+	if(slurring || stuttering || dazed || braindam >= 60)
+		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
@@ -289,7 +292,6 @@ for it but just ignore it.
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
 		handled = 1
-	var/braindam = getBrainLoss()
 	if(braindam >= 60)
 		handled = 1
 		if(prob(braindam/4))
@@ -298,6 +300,11 @@ for it but just ignore it.
 		if(prob(braindam))
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
+	if(HAS_TRAIT(src, TRAIT_LISPING))
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
 
 	returns[1] = message
 	returns[2] = verb

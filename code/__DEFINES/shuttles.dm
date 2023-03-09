@@ -5,6 +5,7 @@
 #define SHUTTLE_CALL    "called"
 #define SHUTTLE_DOCKED  "docked"
 #define SHUTTLE_STRANDED   "stranded"
+#define SHUTTLE_CRASHED   "crashed"
 #define SHUTTLE_ESCAPE  "escape"
 #define SHUTTLE_ENDGAME "endgame: game over"
 #define SHUTTLE_RECHARGING "recharging"
@@ -101,4 +102,25 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
-#define TRANSIT_DIR_DEFAULT_PATHS list("[NORTH]" = /turf/open/space/transit/north, "[SOUTH]" = /turf/open/space/transit/south, "[EAST]" = /turf/open/space/transit/east, "[WEST]" = /turf/open/space/transit/west)
+#define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_NORMANDY "dropship_normandy"
+
+#define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
+#define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
+
+#define DROPSHIP_LZ1 "dropship-lz1"
+#define DROPSHIP_LZ2 "dropship-lz2"
+
+#define ESCAPE_SHUTTLE "escape-shuttle"
+#define ESCAPE_SHUTTLE_EAST "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_EAST_CL "escape_shuttle_e_cl"
+#define ESCAPE_SHUTTLE_WEST "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_NORTH "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_WEST_PREFIX "escape_shuttle_w"
+#define ESCAPE_SHUTTLE_EAST_PREFIX "escape_shuttle_e"
+#define ESCAPE_SHUTTLE_NORTH_PREFIX "escape_shuttle_n"
+#define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
+
+#define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"

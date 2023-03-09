@@ -34,7 +34,7 @@ All ShuttleMove procs go here
 				if(M.pulledby)
 					M.pulledby.stop_pulling()
 				M.stop_pulling()
-				M.visible_message("<span class='warning'>[shuttle] slams into [M]!</span>")
+				M.visible_message(SPAN_WARNING("[shuttle] slams into [M]!"))
 				M.gib()
 
 		else //non-living mobs shouldn't be affected by shuttles, which is why this is an else

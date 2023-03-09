@@ -33,6 +33,10 @@
 	update_icon()
 	max_shots = round((cell.maxcharge / charge_cost), 1)
 
+/obj/item/weapon/gun/energy/Destroy()
+	QDEL_NULL(cell)
+	. = ..()
+
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
 
@@ -108,6 +112,7 @@
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 EVA pistol"
 	desc = "A high power focusing laser pistol designed for Extra-Vehicular Activity, though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "rxfm5_eva"
 	item_state = "eva"
 	muzzle_flash = "muzzle_laser"
@@ -164,6 +169,7 @@
 /obj/item/weapon/gun/energy/laz_uzi
 	name = "laser UZI"
 	desc = "A refit of the classic Israeli SMG. Fires laser bolts."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
 	muzzle_flash = "muzzle_laser"
@@ -188,9 +194,12 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
+//############################ Taser ##################
+// Lots of bits for it so splitting off an area
 /obj/item/weapon/gun/energy/taser
 	name = "disabler gun"
 	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns. "
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "taser"
 	item_state = "taser"
 	muzzle_flash = null //TO DO.
@@ -200,7 +209,10 @@
 	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
-	var/precision = TRUE
+	black_market_value = 20
+	actions_types = list(/datum/action/item_action/taser/change_mode)
+	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
+	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
@@ -220,13 +232,66 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
-/obj/item/weapon/gun/energy/taser/use_unique_action()
-	switch(precision)
-		if(TRUE)
-			precision = FALSE
-			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Free mode."))
+/obj/item/weapon/gun/energy/taser/unique_action(mob/user)
+	change_mode(user)
+
+/obj/item/weapon/gun/energy/taser/get_examine_text(mob/user)
+	. = ..()
+	switch(mode)
+		if(TASER_MODE_P)
+			. += SPAN_RED("It is set to precision mode, linked to the wanted database.")
+		if(TASER_MODE_F)
+			. += SPAN_GREEN("It is set to free mode, no longer linked to the wanted database.")
+
+/obj/item/weapon/gun/energy/taser/update_icon()
+	. = ..()
+	overlays += charge_icon + "_[mode]"
+
+/// Changes between targetting wanted persons or any persons. Originally used by unique_action, made own proc to allow for use in action button too.
+/obj/item/weapon/gun/energy/taser/proc/change_mode(mob/user)
+	switch(mode)
+		if(TASER_MODE_P)
+			mode = TASER_MODE_F
+			to_chat(user, SPAN_NOTICE("[src] is now set to Free mode."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser]
-		if(FALSE)
-			precision = TRUE
-			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Precision mode."))
+		if(TASER_MODE_F)
+			mode = TASER_MODE_P
+			to_chat(user, SPAN_NOTICE("[src] is now set to Precision mode."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]
+	var/datum/action/item_action/taser/change_mode/action = locate(/datum/action/item_action/taser/change_mode) in actions
+	action.update_icon()
+	update_icon()
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+
+/datum/action/item_action/taser/action_activate()
+	var/obj/item/weapon/gun/energy/taser/taser = holder_item
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/humie = owner
+	if(humie.is_mob_incapacitated() || taser.get_active_firearm(humie, FALSE) != holder_item)
+		return
+
+/datum/action/item_action/taser/change_mode/New(target, obj/item/holder)
+	. = ..()
+	name = "Change Target Mode"
+	action_icon_state = "id_lock_locked"// As the taser mode is based on the wanted database, it can share this icon as it makes sense.
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/taser/change_mode/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/energy/taser/taser = holder_item
+	taser.change_mode(usr)
+
+/// Updates the action button icon dependant on mode.
+/datum/action/item_action/taser/change_mode/proc/update_icon()
+	var/obj/item/weapon/gun/energy/taser/taser = holder_item
+	switch(taser.mode)
+		if(TASER_MODE_F)
+			action_icon_state = "id_lock_unlocked"
+		if(TASER_MODE_P)
+			action_icon_state = "id_lock_locked"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

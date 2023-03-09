@@ -63,7 +63,7 @@
 	max_w_class = SIZE_HUGE
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,
-		/obj/item/weapon/gun/shotgun/combat
+		/obj/item/weapon/gun/shotgun/combat,
 	)
 	has_gamemode_skin = TRUE
 
@@ -124,8 +124,8 @@
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15,
-		/obj/item/weapon/gun/pistol/skorpion
-		)
+		/obj/item/weapon/gun/pistol/skorpion,
+	)
 	///Guns have a hud offset that throws the vis_contents alignment off.
 	var/gun_offset = 0
 	///Whether the gun had pixel scaling set before being holstered.
@@ -349,7 +349,7 @@
 	if (!istype(FP))
 		return
 
-	var/icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	var/icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	var/icon_state
 	if(istype(FP.active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))
 		icon_state = "flametank_large_blue"

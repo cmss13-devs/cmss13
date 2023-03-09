@@ -144,7 +144,7 @@
 
 	var/datum/surgery/procedure = new surgeryinstance.type(target, target_zone, affecting)
 	#ifdef DEBUG_SURGERY_INIT
-	message_staff("[procedure.name] started.")
+	message_admins("[procedure.name] started.")
 	#endif
 	procedure.attempt_next_step(user, tool)
 	return TRUE

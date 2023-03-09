@@ -16,7 +16,8 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/structure/machinery/door)
+		/obj/structure/machinery/door,
+	)
 
 	var/damage = 0
 	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
@@ -381,6 +382,11 @@
 	if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
+
+	if(istype(W, /obj/item/prop/torch_frame))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
+		new /obj/structure/prop/brazier/torch/frame(src)
+		qdel(W)
 
 	if(hull)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))

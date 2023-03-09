@@ -90,7 +90,7 @@ var/list/department_radio_keys = list(
 		if (speaking)
 			if (speaking.flags & NONVERBAL)
 				if (prob(30))
-					src.custom_emote(1, "[pick(speaking.signlang_verb)].")
+					manual_emote(pick(speaking.signlang_verb))
 
 			if (speaking.flags & SIGNLANG)
 				say_signlang(message, pick(speaking.signlang_verb), speaking)
@@ -98,6 +98,12 @@ var/list/department_radio_keys = list(
 
 		var/list/listening = list()
 		var/list/listening_obj = list()
+
+		if(HAS_TRAIT(src, TRAIT_LISPING))
+			var/old_message = message
+			message = lisp_replace(message)
+			if(old_message != message)
+				verb = "lisps"
 
 		if(T)
 			var/list/hearturfs = list()

@@ -102,13 +102,13 @@
 	icon_state = "fueltank_pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/tool/extinguisher
-					)
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/tool/extinguisher,
+	)
 	bypass_w_limit = list(
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/tool/extinguisher
-					)
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/tool/extinguisher,
+	)
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -119,7 +119,7 @@
 	desc = "Knife to meet you!"
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
 	icon_state = "bayonet"
@@ -166,7 +166,7 @@
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/device/radio,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -190,7 +190,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/stack/sheet/metal,
 		/obj/item/device/radio,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
@@ -212,7 +212,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 /obj/item/storage/pouch/firstaid/full
@@ -247,7 +247,7 @@
 		/obj/item/storage/pill_bottle/packet/tricordrazine,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency
+		/obj/item/reagent_container/hypospray/autoinjector/emergency,
 	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
@@ -327,11 +327,11 @@
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
-					/obj/item/weapon/gun/revolver,
-					/obj/item/weapon/gun/pistol,
-					/obj/item/device/binoculars,
-					/obj/item/device/cotablet
-					)
+		/obj/item/weapon/gun/revolver,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/device/binoculars,
+		/obj/item/device/cotablet,
+	)
 
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet
@@ -414,7 +414,7 @@
 	storage_slots = 3
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg/m39
+		/obj/item/ammo_magazine/smg/m39,
 	)
 	can_hold = list(
 		/obj/item/ammo_magazine/rifle,
@@ -422,7 +422,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
-		/obj/item/ammo_magazine/handful
+		/obj/item/ammo_magazine/handful,
 	)
 
 /obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
@@ -468,6 +468,10 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
+/obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/pouch/magazine/shotgun/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
@@ -481,7 +485,7 @@
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/revolver/mateba(src)
+		new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -559,7 +563,7 @@
 	storage_slots = 5
 	bypass_w_limit = list()
 	can_hold = list(
-		/obj/item/ammo_magazine/handful
+		/obj/item/ammo_magazine/handful,
 	)
 	flap = FALSE
 
@@ -588,7 +592,11 @@
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
-/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+/obj/item/storage/pouch/shotgun/large/beanbag/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
+
+/obj/item/storage/pouch/shotgun/large/beanbag/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 
@@ -610,7 +618,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/explosive/grenade,
-		/obj/item/storage/box/explosive_mines
+		/obj/item/storage/box/explosive_mines,
 	)
 
 /obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
@@ -655,7 +663,7 @@
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/syringe_case,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
 	)
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
@@ -682,7 +690,7 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
 	)
 
 /obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()
@@ -718,6 +726,10 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/pouch/medical/socmed/dutch/unmarked
+	name = "tactical medical pouch"
+	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
@@ -769,7 +781,7 @@
 	storage_slots = 2
 	can_hold = list(
 		/obj/item/reagent_container/glass/beaker,
-		/obj/item/reagent_container/glass/bottle
+		/obj/item/reagent_container/glass/bottle,
 	)
 
 /obj/item/storage/pouch/chem/fill_preset_inventory()
@@ -1062,7 +1074,7 @@
 		/obj/item/document_objective/report,
 		/obj/item/document_objective/folder,
 		/obj/item/disk/objective,
-		/obj/item/document_objective/technical_manual
+		/obj/item/document_objective/technical_manual,
 	)
 
 /obj/item/storage/pouch/document/small
@@ -1113,7 +1125,7 @@
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/micro_laser,
 		/obj/item/stock_parts/scanning_module,
-		/obj/item/stock_parts/capacitor
+		/obj/item/stock_parts/capacitor,
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()
@@ -1173,7 +1185,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/stack/cable_coil,
 		/obj/item/tool/extinguisher/mini,
-		/obj/item/tool/shovel/etool
+		/obj/item/tool/shovel/etool,
 	)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 

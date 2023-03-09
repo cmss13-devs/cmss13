@@ -25,6 +25,9 @@
 	tacklestrength_max = 4
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
+	minimap_icon = "sentinel"
+
+	minimum_evolve_time = 5 MINUTES
 
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL

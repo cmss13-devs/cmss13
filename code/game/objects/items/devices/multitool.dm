@@ -53,8 +53,8 @@
 	var/area/A = get_area(src)
 	var/APC = A? A.get_apc() : null
 	if(APC)
-		to_chat(user, SPAN_NOTICE("The local APC is located at <span class='bold'>[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]</span>."))
+		to_chat(user, SPAN_NOTICE("The local APC is located at [SPAN_BOLD("[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")]."))
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
-		user.balloon_alert(user, "Could not locate")
+		user.balloon_alert(user, "could not locate!")

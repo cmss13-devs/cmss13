@@ -1,7 +1,7 @@
 /datum/xeno_mutator/acider
 	name = "STRAIN: Runner - Acider"
-	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. Your slashes apply acid to living lifeforms that slowly burns them, and you gain powerful acid to melt items and defenses. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around you."
-	flavor_description = "Burn their walls, maim their face!"
+	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a Praetorian that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	flavor_description = "Burn their walls, maim their faces! Your life, for The Hive!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RUNNER)
@@ -14,7 +14,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/acider_acid,
-		/datum/action/xeno_action/activable/acider_for_the_hive
+		/datum/action/xeno_action/activable/acider_for_the_hive,
 	)
 
 /datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)

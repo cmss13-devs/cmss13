@@ -33,7 +33,6 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "fx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/rifle/m16/ap,
 /turf/open/shuttle{
 	icon_state = "floor4"

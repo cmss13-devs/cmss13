@@ -79,7 +79,7 @@
 		to_chat(H, SPAN_NOTICE("You lock \the [src]!"))
 		locking_id = card
 	else
-		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_COMMANDER in card.access)))
+		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_SENIOR in card.access)))
 			to_chat(H, SPAN_NOTICE("You unlock \the [src]!"))
 			locking_id = null
 		else
@@ -272,6 +272,7 @@
 	name = "Giggles von Honkerton"
 	desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank god you're in the Marines now."
 	icon_state = "clownpack"
+	black_market_value = 25
 
 //==========================//COLONY/CIVILIAN PACKS\\================================\\
 
@@ -588,10 +589,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
-
-/obj/item/storage/backpack/marine/satchel/rto/io/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "IO"
+	phone_category = PHONE_IO
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
@@ -943,6 +941,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "ERT_satchel"
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/lightpack/five_slot
+	max_storage_space = 15
+
 /obj/item/storage/backpack/marine/engineerpack/ert
 	name = "\improper lightweight technician welderpack"
 	desc = "A small, lightweight pack for expeditions and short-range operations. Features a small fueltank for quick blowtorch refueling."
@@ -972,7 +973,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
-		/obj/item/weapon
+		/obj/item/weapon,
 	)
 
 /obj/item/storage/backpack/ivan/Initialize()
@@ -984,7 +985,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/list/smartguns = typesof(/obj/item/weapon/gun/smartgun)
 	var/list/training_guns = list(
 		/obj/item/weapon/gun/rifle/m41a/training,
-		/obj/item/weapon/gun/rifle/l42a/training,
+		/obj/item/weapon/gun/rifle/m4ra/training,
 		/obj/item/weapon/gun/smg/m39/training,
 		/obj/item/weapon/gun/pistol/m4a3/training,
 		/obj/item/weapon/gun/pistol/mod88/training) //Ivan doesn't carry toys.

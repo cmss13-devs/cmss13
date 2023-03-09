@@ -186,17 +186,17 @@
 
 #define GHOST_PLANE 80
 
-//---------- LIGHTING -------------
 #define LIGHTING_PLANE 100
 #define EXTERIOR_LIGHTING_PLANE 101
 
-///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 ///Popup Chat Messages
 #define RUNECHAT_PLANE 501
 
-//-------------------- Rendering ---------------------
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
+
+#define ESCAPE_MENU_PLANE 997
+
 #define RENDER_PLANE_MASTER 999
 
 //-------------------- HUD ---------------------
@@ -211,3 +211,4 @@
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"
+#define PLANE_MASTERS_NON_MASTER "plane_masters_non_master"

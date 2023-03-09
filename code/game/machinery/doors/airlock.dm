@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
+	QDEL_NULL(closeOther)
+	QDEL_NULL(electronics)
 	return ..()
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
@@ -782,7 +784,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/proc/lock(forced=0)
-	if(operating || locked) return
+	if((operating && !forced) || locked)
+		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = 1

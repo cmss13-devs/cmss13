@@ -16,8 +16,8 @@
 
 /datum/xeno_mutator/charger
 	name = "STRAIN: Crusher - Charger"
-	description = "Your charge is now momentum based, the further you go, the more damage and speed you will get until you achieve max momentum when you roar. Your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. Your shield is also removed. In return you gain more health, gain an ability to tumble to avoid enemies, and gain an ability to forcefully move enemies via ramming. Finally, you trade being able to resist slowdowns from tall autospitters for being unaffected by frenzy pheros."
-	flavor_description = "We're just getting started. Nothing stops this train."
+	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from autospitters, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through talls and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
+	flavor_description = "We're just getting started. Nothing stops this train. Nothing."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CRUSHER)
@@ -30,7 +30,7 @@
 		/datum/action/xeno_action/onclick/charger_charge,
 		/datum/action/xeno_action/activable/tumble,
 		/datum/action/xeno_action/onclick/crusher_stomp/charger,
-		/datum/action/xeno_action/activable/fling/charger
+		/datum/action/xeno_action/activable/fling/charger,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
@@ -344,7 +344,7 @@
 	if(charger_ability.momentum == charger_ability.max_momentum)
 		momentum_mult = 8
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
-	apply_armoured_damage(charger_ability.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
+	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")

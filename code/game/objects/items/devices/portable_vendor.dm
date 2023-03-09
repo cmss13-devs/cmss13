@@ -253,7 +253,7 @@
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
-		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
+		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
 
 		list("SMOKABLES", 0, null, null, null),
@@ -266,7 +266,7 @@
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 
-		list("STATIONERY", 0, null, null, null),
+		list("STATIONARY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),
@@ -275,4 +275,7 @@
 		list("WY Paper", 1, /obj/item/paper/wy, "white", "A fresh piece of WY-branded paper, for writing important things on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
+
+		list("MISC", 0, null, null, null),
+		list("Hollow Cane", 15, /obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
 	)

@@ -1,7 +1,7 @@
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
@@ -482,3 +482,14 @@
 		return FALSE
 
 	return TRUE
+
+/mob/living/set_stat(new_stat)
+	. = ..()
+	if(isnull(.))
+		return
+	switch(.)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
+	switch(stat)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)

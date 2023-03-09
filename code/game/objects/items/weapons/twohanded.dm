@@ -247,6 +247,9 @@
 	var/unwielded_attack_verb = list("whacked")
 	var/unwielded_hitsound = "swing_hit"
 
+	/// This controls how strong the explosion will be on the lunge mine. Higher is better.
+	var/detonation_force = 150
+
 /obj/item/weapon/melee/twohanded/lungemine/wield(mob/user)
 	. = ..()
 	if(!.) return
@@ -291,9 +294,13 @@
 
 	var/turf/epicenter = get_turf(target)
 	target.ex_act(400, null, src, user, 100)
-	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
 	qdel(src)
 
+/obj/item/weapon/melee/twohanded/lungemine/damaged
+	name = "damaged lunge mine"
+	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
+	detonation_force = 50
 
 /obj/item/weapon/melee/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"

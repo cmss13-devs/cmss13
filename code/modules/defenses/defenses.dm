@@ -120,7 +120,7 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_staff("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
+			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 

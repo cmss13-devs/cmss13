@@ -344,15 +344,20 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "\improper USCM patch"
+	name = "USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
-	name = "\improper Falling Falcons patch"
+	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/patch/forecon
+	name = "USCM Force Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
+	icon_state = "forecon_patch"
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -528,7 +533,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/nanopaste
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
@@ -578,6 +583,9 @@
 	name = "blue surgical webbing vest"
 	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"

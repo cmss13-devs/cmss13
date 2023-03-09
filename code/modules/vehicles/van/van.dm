@@ -45,7 +45,7 @@
 	move_max_momentum = 3
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/van_wheels
+		/obj/item/hardpoint/locomotion/van_wheels,
 	)
 
 	move_turn_momentum_loss_factor = 1

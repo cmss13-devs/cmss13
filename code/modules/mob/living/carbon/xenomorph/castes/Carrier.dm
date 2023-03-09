@@ -36,6 +36,10 @@
 	hugger_delay = 20
 	egg_cooldown = 250
 
+	minimum_evolve_time = 5 MINUTES
+
+	minimap_icon = "carrier"
+
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER
@@ -70,7 +74,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'

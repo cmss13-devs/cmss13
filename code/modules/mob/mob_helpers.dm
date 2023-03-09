@@ -1,6 +1,3 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
-
 /mob/proc/can_use_hands()
 	return
 
@@ -202,34 +199,28 @@ var/global/list/limb_types_by_name = list(
 
 	return returntext
 
-
-/proc/ninjaspeak(n)
-/*
-The difference with stutter is that this proc can stutter more than 1 letter
-The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
-It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
-*/
-	var/te = html_decode(n)
-	var/t = ""
-	n = length(n)
-	var/p = 1
-	while(p <= n)
-		var/n_letter
-		var/n_mod = rand(1,4)
-		if(p+n_mod>n+1)
-			n_letter = copytext(te, p, n+1)
-		else
-			n_letter = copytext(te, p, p+n_mod)
-		if (prob(50))
-			if (prob(30))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-			else
-				n_letter = text("[n_letter]-[n_letter]")
-		else
-			n_letter = text("[n_letter]")
-		t = text("[t][n_letter]")
-		p=p+n_mod
-	return strip_html(t)
+/**
+ * Replaces S and similar sounds with 'th' and such. Stolen from tg.
+ */
+/proc/lisp_replace(message)
+	var/static/regex/replace_s = new("s+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_S = new("S+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_z = new("z+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_Z = new("Z+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_x = new("x+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_X = new("X+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_ceci = new("ceh?|cih?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_CECI = new("CEH?|CIH?", REGEX_FLAG_GLOBAL)
+	if(message[1] != "*")
+		message = replace_s.Replace(message, "th")
+		message = replace_S.Replace(message, "TH")
+		message = replace_z.Replace(message, "th")
+		message = replace_Z.Replace(message, "TH")
+		message = replace_ceci.Replace(message, "th")
+		message = replace_CECI.Replace(message, "TH")
+		message = replace_x.Replace(message, "ckth")
+		message = replace_X.Replace(message, "CKTH")
+	return message
 
 #define PIXELS_PER_STRENGTH_VAL 24
 
@@ -294,7 +285,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()))
+	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -506,4 +497,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return mobs_in_range
 
 /mob/proc/alter_ghost(mob/dead/observer/ghost)
+	return
+
+/mob/proc/get_paygrade()
 	return

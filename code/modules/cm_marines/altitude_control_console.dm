@@ -7,7 +7,7 @@
 GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Altitude" = SHIP_ALT_MED, "High Altitude" = SHIP_ALT_HIGH))
 
 //Handles whether or not hijack has disabled the system
-GLOBAL_VAR_INIT(alt_ctrl_disabled, 0)
+GLOBAL_VAR_INIT(alt_ctrl_disabled, FALSE)
 
 //Defines how much to heat the engines or cool them by, and when to overheat
 #define COOLING -10

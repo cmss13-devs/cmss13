@@ -335,7 +335,7 @@
 	name = "\improper L42A LE magazine (10x24mm)"
 	desc = "A 10mm battle rifle armor shredding magazine."
 	default_ammo = /datum/ammo/bullet/rifle/le
-	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/l42a/rubber
 	name = "L42A rubber magazine (10x24mm)"

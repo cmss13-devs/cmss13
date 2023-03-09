@@ -1,8 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "c" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
@@ -11,7 +8,7 @@
 	tag = "back_right"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_10"
+	icon_state = "floor_3_12"
 	},
 /area/vehicle/van)
 "e" = (
@@ -28,15 +25,20 @@
 /turf/open/void/vehicle,
 /area/space)
 "h" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	alpha = 100;
 	pixel_y = -2
 	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_1"
+	icon_state = "floor_1_10"
 	},
 /area/vehicle/van)
 "i" = (
@@ -64,12 +66,17 @@
 /turf/open/void/vehicle,
 /area/space)
 "o" = (
-/obj/structure/bed/chair/comfy,
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_3"
 	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_8"
+	icon_state = "floor_1_2"
 	},
 /area/vehicle/van)
 "r" = (
@@ -82,7 +89,6 @@
 /turf/open/void/vehicle,
 /area/space)
 "s" = (
-/obj/structure/bed/chair/comfy,
 /obj/effect/vehicle_roof/van,
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -92,7 +98,7 @@
 	tag = "back_left"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_7"
+	icon_state = "floor_3_11"
 	},
 /area/vehicle/van)
 "t" = (
@@ -113,7 +119,7 @@
 	icon_state = "windshield_viewport_bottom"
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_11"
+	icon_state = "floor_1_8"
 	},
 /area/vehicle/van)
 "v" = (
@@ -145,12 +151,8 @@
 	name = "right entrance marker";
 	tag = "right"
 	},
-/obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "comfychair"
-	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_3_12"
+	icon_state = "floor_1_9"
 	},
 /area/vehicle/van)
 "z" = (
@@ -175,11 +177,16 @@
 /turf/open/void/vehicle,
 /area/space)
 "G" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_9"
+	icon_state = "floor_1_1"
 	},
 /area/vehicle/van)
 "J" = (
@@ -192,15 +199,20 @@
 /turf/open/void/vehicle,
 /area/space)
 "M" = (
-/obj/structure/bed/chair/comfy,
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	pixel_y = 30
 	},
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_2"
 	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_2"
+	icon_state = "floor_1_7"
 	},
 /area/vehicle/van)
 "O" = (

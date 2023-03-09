@@ -3,8 +3,8 @@
 //Read the documentation in multitile.dm before trying to decipher this stuff
 
 /obj/vehicle/multitile/van
-	name = "Colony Van"
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
+	name = "USCM Utility Truck"
+	desc = "A rather old truck with six wheels, you know what to do. Entrance on the back and sides."
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/van.dmi'
@@ -28,11 +28,11 @@
 
 	vehicle_flags = VEHICLE_CLASS_WEAK
 
-	passengers_slots = 8
-	xenos_slots = 2
+	passengers_slots = 11
+	xenos_slots = 3
 
 	misc_multipliers = list(
-		"move" = 0.5, // fucking annoying how this is the only way to modify speed
+		"move" = 0.8, // fucking annoying how this is the only way to modify speed
 		"accuracy" = 1,
 		"cooldown" = 1
 	)
@@ -56,11 +56,6 @@
 	door_locked = FALSE
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
-
-	var/overdrive_next = 0
-	var/overdrive_cooldown = 15 SECONDS
-	var/overdrive_duration = 3 SECONDS
-	var/overdrive_speed_mult = 0.3 // Additive (30% more speed, adds to 80% more speed)
 
 	var/momentum_loss_on_weeds_factor = 0.2
 
@@ -196,33 +191,6 @@
 			return
 
 	. = ..()
-
-
-/obj/vehicle/multitile/van/handle_click(mob/living/user, atom/A, list/mods)
-	if(mods["shift"] && !mods["alt"])
-		if(overdrive_next > world.time)
-			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
-			return
-
-		misc_multipliers["move"] -= overdrive_speed_mult
-		addtimer(CALLBACK(src, PROC_REF(reset_overdrive)), overdrive_duration)
-
-		overdrive_next = world.time + overdrive_cooldown
-		to_chat(user, SPAN_NOTICE("You activate overdrive."))
-		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
-		return
-
-	return ..()
-
-/obj/vehicle/multitile/van/proc/reset_overdrive()
-	misc_multipliers["move"] += overdrive_speed_mult
-
-/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
-	if(src == P.original) //clicking on the van itself will hit it.
-		var/hitchance = P.get_effective_accuracy()
-		if(prob(hitchance))
-			return TRUE
-	return FALSE
 
 /obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])

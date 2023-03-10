@@ -1,3 +1,8 @@
+GLOBAL_VAR_INIT(ishighpop, FALSE)
+GLOBAL_VAR_INIT(checkedhighpop, FALSE)
+
+#define HIGHPOP_MIN 120
+
 /datum/equipment_preset/uscm
 	name = "USCM"
 	faction = FACTION_MARINE
@@ -56,23 +61,26 @@
 			equipped_headset.add_hud_tracker(H)
 
 /datum/equipment_preset/uscm/load_rank(mob/living/carbon/human/H)
-	check_players()
+	if(!GLOB.checkedhighpop)
+		check_players()
 	..()
 	//Is it highpop, and does it have either a highpop or playtime rank?
-	if(highpop && (highpop_paygrade || playtime_rank))
+	if(GLOB.ishighpop && (highpop_paygrade || playtime_rank))
 		if(!playtime_rank)
 			return highpop_paygrade
 
 		//All the silver+ LCPLs get to me CPLs on highpop.
-		else if (highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_2)
+		else if (GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_2)
 			return playtime_rank
 
 /datum/equipment_preset/uscm/proc/check_players()
 	var/players = length(GLOB.clients)
 	//Oh god, I do need to know if there is a config value for the # of players for highpop
-	if(players < 120)
-		highpop = TRUE
+	if(players < HIGHPOP_MIN)
+		GLOB.ishighpop = TRUE
+	GLOB.checkedhighpop = TRUE
 
+#undef HIGHPOP_MIN
 
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm/pfc

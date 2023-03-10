@@ -90,22 +90,6 @@
 	new /obj/item/clothing/shoes/black(src)
 	return
 
-/obj/structure/closet/wardrobe/xenos
-	name = "xenos wardrobe"
-	icon_state = "green"
-	icon_closed = "green"
-	icon_opened = "green_open"
-
-/obj/structure/closet/wardrobe/xenos/Initialize()
-	. = ..()
-	new /obj/item/clothing/suit/unathi/mantle(src)
-	new /obj/item/clothing/suit/unathi/robe(src)
-	new /obj/item/clothing/shoes/sandal(src)
-	new /obj/item/clothing/shoes/sandal(src)
-	new /obj/item/clothing/shoes/sandal(src)
-	return
-
-
 /obj/structure/closet/wardrobe/orange
 	name = "prison wardrobe"
 	desc = "It's a storage unit for prisoner attire."

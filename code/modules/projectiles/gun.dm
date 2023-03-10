@@ -505,6 +505,8 @@
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
+	if(flags_gun_features & GUN_NO_DESCRIPTION)
+		return .
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"
@@ -1307,6 +1309,8 @@ and you're good to go.
 		return TRUE
 
 	if(EXECUTION_CHECK) //Execution
+		if(!able_to_fire(user)) //Can they actually use guns in the first place?
+			return ..()
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return TRUE

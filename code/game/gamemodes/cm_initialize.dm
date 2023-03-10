@@ -656,7 +656,7 @@ Additional game mode variables.
 	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
 		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
 		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] > MAX_SURVIVOR_PER_TYPE[preferred_variant])
-			preferred_variant = ANY_SURVIVOR
+			preferred_variant = CIVILIAN_SURVIVOR
 
 	if(is_synth)
 		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types

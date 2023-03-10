@@ -262,8 +262,6 @@
 		WEAR_FEET = /obj/item/clothing/shoes/galoshes
 	)
 
-	survivor_variant = CIVILIAN_SURVIVOR
-
 /datum/equipment_preset/synth/survivor/chef_synth
 	name = "Survivor - Synthetic - Chef Synth"
 	equipment_to_spawn = list(
@@ -279,8 +277,6 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
 	)
-
-	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/bartender_synth
 	name = "Survivor - Synthetic - Bartender Synth"
@@ -299,8 +295,6 @@
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
 	)
-
-	survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/detective_synth
 	name = "Survivor - Synthetic - Detective Synth"
@@ -350,9 +344,6 @@
 		WEAR_L_HAND = /obj/item/weapon/gun/souto,
 		WEAR_FEET = /obj/item/clothing/shoes/souto,
 	)
-
-
-	survivor_variant = CIVILIAN_SURVIVOR
 
 //*****************************************************************************************************/
 

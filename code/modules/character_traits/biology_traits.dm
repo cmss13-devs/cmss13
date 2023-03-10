@@ -65,3 +65,51 @@
 /datum/character_trait/biology/lisp/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_LISPING, TRAIT_SOURCE_QUIRK)
 	..()
+
+/datum/character_trait/biology/bad_leg
+	trait_name = "Bad Leg"
+	trait_desc = "Your left (or right, if the left's robotic) leg suffered an undetermined wound a long time ago that never fully healed. Walking around without a cane will eventually cause you to freeze in pain, but you start with one."
+	applyable = TRUE
+	cost = 1
+	/// Roles that will not allow the trait to be added. (Due to being designed for combat, heavy physical duty, or just being too junior to be worth keeping around as a cripple.)
+	var/list/inapplicable_roles
+	/// Roles that get the shitty wooden pole.
+	var/list/bad_cane_roles
+	/// Roles that get the fancy cane.
+	var/list/fancy_cane_roles
+	/// Species that will not allow the trait to be added.
+	var/list/inapplicable_species
+
+/datum/character_trait/biology/bad_leg/New()
+	. = ..()
+	// Not on definition as several lists are added
+	inapplicable_roles = list(JOB_NURSE, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CARGO_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST
+	bad_cane_roles = list(JOB_SURVIVOR, JOB_STOWAWAY)
+	fancy_cane_roles = list(JOB_CO_SURVIVOR, CORPORATE_SURVIVOR, JOB_CMO, JOB_CORPORATE_LIAISON, JOB_SEA, JOB_CHIEF_ENGINEER) + JOB_COMMAND_ROLES_LIST
+	inapplicable_species = list(SPECIES_SYNTHETIC, SPECIES_YAUTJA)
+
+/datum/character_trait/biology/bad_leg/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
+	if(target.job in inapplicable_roles)
+		to_chat(target, SPAN_WARNING("Your office is too combat-geared or starter for you to be able to recieve the bad leg trait."))
+		return
+	if(target.species.group in inapplicable_species)
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the bad leg trait."))
+		return
+
+	target.AddComponent(/datum/component/bad_leg)
+
+	var/cane_type = /obj/item/weapon/melee/pole/wooden_cane
+	if(target.job in bad_cane_roles)
+		cane_type = /obj/item/weapon/melee/pole // todo - add some sort of override for corporate liaison/director/etc survivors
+	if(target.job in fancy_cane_roles)
+		cane_type = /obj/item/weapon/melee/pole/fancy_cane
+
+	var/obj/item/weapon/melee/pole/cane = new cane_type(target.loc)
+
+	var/success = target.equip_to_slot_if_possible(cane, WEAR_L_HAND)
+	if(!success)
+		success = target.equip_to_slot_if_possible(cane, WEAR_R_HAND)
+
+	..()
+
+//datum/character_trait/biology/bad_leg/unapply_trait(mob/living/carbon/human/target) // IMPOSSIBLE

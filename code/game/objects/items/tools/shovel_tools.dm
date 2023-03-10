@@ -173,7 +173,7 @@
 		if(DIRT_TYPE_SAND)
 			return "sand"
 		if(DIRT_TYPE_SHALE)
-			return "black soil"
+			return "loam"
 
 /obj/item/tool/shovel/proc/check_dirt_type()
 	if(dirt_amt <= 0)

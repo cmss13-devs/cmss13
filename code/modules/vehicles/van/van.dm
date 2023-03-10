@@ -259,4 +259,12 @@
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 /obj/vehicle/multitile/van/colony
 	name = "Colony Truck"
-	health = 0
+
+/obj/effect/vehicle_spawner/van/decrepit/colony/spawn_vehicle()
+	var/obj/vehicle/multitile/van/colony/VAN = new (loc)
+
+	load_misc(VAN)
+	load_hardpoints(VAN)
+	handle_direction(VAN)
+	load_damage(VAN)
+	VAN.update_icon()

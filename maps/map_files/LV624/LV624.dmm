@@ -18399,7 +18399,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "nnR" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/vehicle/multitile/van/colony,
+/obj/effect/vehicle_spawner/van/decrepit/colony,
 /turf/open/floor{
 	icon_state = "dark"
 	},

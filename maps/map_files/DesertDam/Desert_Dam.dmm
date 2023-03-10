@@ -62530,7 +62530,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/vehicle/multitile/van/colony,
+/obj/effect/vehicle_spawner/van/decrepit/colony,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"

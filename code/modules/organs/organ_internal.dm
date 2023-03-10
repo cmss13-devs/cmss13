@@ -208,7 +208,7 @@
 	if(organ_status == ORGAN_BROKEN || organ_status == ORGAN_DESTROYED)
 		STOP_PROCESSING(SSprocessing, src)
 		return
-	if(owner.stat == DEAD)
+	if(owner.stat == DEAD && !owner.in_stasis) // Can stasis or cryo them to stall integrity loss.
 		take_damage(AMOUNT_PER_TIME(min_broken_damage, 7 MINUTES), silent = TRUE)
 		take_organ_integrity_loss(AMOUNT_PER_TIME(integrity_brain_death, 9 MINUTES), silent = TRUE)
 

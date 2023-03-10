@@ -43,7 +43,7 @@
 /mob/living/carbon/xenomorph/drone
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
-	desc = "An Alien Drone"
+	desc = "An alien drone"
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"

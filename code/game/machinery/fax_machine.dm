@@ -3,6 +3,7 @@ var/list/alldepartments = list()
 
 #define DEPARTMENT_WY "Weyland-Yutani"
 #define DEPARTMENT_HC "USCM High Command"
+#define DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define DEPARTMENT_PROVOST "USCM Provost Office"
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
@@ -110,6 +111,8 @@ var/list/alldepartments = list()
 		alldepartments += DEPARTMENT_HC
 	if(!(DEPARTMENT_PROVOST in alldepartments))
 		alldepartments += DEPARTMENT_PROVOST
+	if(!(DEPARTMENT_CMB in alldepartments))
+		alldepartments += DEPARTMENT_CMB
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -165,6 +168,10 @@ var/list/alldepartments = list()
 
 				else if(target_department == DEPARTMENT_PROVOST)
 					provost_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				else if(target_department == DEPARTMENT_CMB)
+					cmb_fax(src, tofax.info, tofax.name, usr)
 					fax_cooldown = 600
 
 				else if(target_department == DEPARTMENT_WY)
@@ -238,6 +245,7 @@ var/list/alldepartments = list()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[usr];originfax=\ref[src]'>Send CMB fax message</option>"
 
 /proc/highcom_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
@@ -271,6 +279,23 @@ var/list/alldepartments = list()
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	announce_fax(msg_admin, msg_ghost)
+
+/proc/cmb_fax(originfax, sent, sentname, mob/Sender)
+	var/faxcontents = "[sent]"
+	GLOB.fax_contents += faxcontents
+
+	var/msg_admin = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX: </font>[key_name(Sender, 1)] ")
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
+	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
+	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
+	msg_admin += "Receiving '[sentname]' via encrypted connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX: </font></b>")
+	msg_ghost += "Receiving '[sentname]' via encrypted connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
+	GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 
@@ -337,6 +362,14 @@ var/list/alldepartments = list()
 							P.stamped += /obj/item/tool/stamp
 							P.overlays += stampoverlay
 							P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
+						if("NC4 UA Federal Secure Network - CMB Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-uscm" // placeholder icon
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 						if("Weyland-Yutani Quantum Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 							stampoverlay.icon_state = "paper_stamp-cent"
@@ -348,6 +381,12 @@ var/list/alldepartments = list()
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
 
+
+/obj/structure/machinery/faxmachine/cmb
+	name = "CMB Incident Command Center Fax Machine"
+	department = "Colonial Marshal Bureau, Anchorpoint Station"
+	network = "NC4 UA Federal Secure Network - CMB Relay"
+	department = DEPARTMENT_CMB
 
 /obj/structure/machinery/faxmachine/corporate
 	name = "W-Y Corporate Fax Machine"

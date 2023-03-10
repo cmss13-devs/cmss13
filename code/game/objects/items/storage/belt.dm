@@ -351,8 +351,8 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 
 /obj/item/storage/belt/security/MP/CMB
-	name = "\improper CMB Duty Belt"
-	desc = "The black duty belt used to carry the instruments of a Colonial Marshal. It is a heavy duty belt with various pouches for various law enforcement items."
+	name = "\improper CMB duty belt"
+	desc = "The black duty belt used to carry the instruments of a Colonial Marshal. It is a heavy police belt with several pouches to contain various law enforcement items."
 	storage_slots = 8
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 30

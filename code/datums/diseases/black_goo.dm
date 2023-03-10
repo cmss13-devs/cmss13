@@ -137,14 +137,15 @@
 /obj/item/weapon/zombie_claws/attack(mob/living/target, mob/living/carbon/human/user)
 	if(iszombie(target))
 		return FALSE
-
+	if(target.stat == DEAD)
+		to_chat(user, SPAN_XENOWARNING("[target.name] is already dead, why would you want to do that?"))
+		return FALSE
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 	if(ishuman_strict(target))
 		var/mob/living/carbon/human/human = target
-
 		if(locate(/datum/disease/black_goo) in human.viruses)
 			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is already infected.</b>"))
 	if(ishuman(target))

@@ -122,6 +122,7 @@ CULT
 /datum/action/human_action/activable
 	var/ability_used_time = 0
 	var/cooldown_message
+	var/cooldown_message_on = FALSE
 
 /datum/action/human_action/activable/can_use_action()
 	var/mob/living/carbon/human/H = owner
@@ -177,8 +178,12 @@ CULT
 	if(!owner)
 		return
 	update_button_icon()
-	if(!isnull(cooldown_message))
-		to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
+	if(cooldown_message_on)
+		if(isnull(cooldown_message))
+			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
+		else
+			to_chat(owner, SPAN_XENODANGER(cooldown_message))
+
 /datum/action/human_action/activable/droppod
 	name = "Call Droppod"
 	action_icon_state = "techpod_deploy"
@@ -492,7 +497,8 @@ CULT
 /datum/action/human_action/activable/zombie/bite
 	name = "bite"
 	action_icon_state = "bite"
-	cooldown_message = TRUE
+	cooldown_message_on = TRUE
+	cooldown_message = "Your glands refill, you can bite again!"
 
 
 /datum/action/human_action/activable/zombie/bite/use_ability(mob/M)
@@ -508,19 +514,20 @@ CULT
 	var/mob/living/carbon/human/victim = M
 	var/datum/disease/black_goo/D = locate() in victim.viruses
 	if(D)
-		to_chat(zombie, SPAN_XENOWARNING("the target is already infected, you cannot bite him again."))
+		to_chat(zombie, SPAN_XENOWARNING("the target is already infected, why would you bite it again?"))
 	else
+		enter_cooldown(10 SECONDS)
 		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M.name] neck, preparing to bite it!"))
 		to_chat(M, SPAN_DANGER("[zombie.name] reaches to your neck and starts to open his jaw, agh!"))
-		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_ALL))
+		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			to_chat(zombie, SPAN_XENOWARNING("You bite [M.name] neck, leaving a bloody mark!"))
 			to_chat(M, SPAN_DANGER("[zombie.name] Bites you right in the neck!"))
 			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, )
 			victim.emote("scream")
 			victim.AddDisease(new /datum/disease/black_goo)
-			zombie.flick_attack_overlay(victim, "slash")
+			zombie.flick_attack_overlay(victim, "bite")
+			zombie.animation_attack_on(victim)
 			victim.apply_damage(20, BRUTE, "head")
-			enter_cooldown(10 SECONDS)
 		else
 			to_chat(zombie, SPAN_XENOWARNING("You were interupted!"))
 
@@ -528,13 +535,13 @@ CULT
 /datum/action/human_action/activable/zombie/leap
 	name = "leap"
 	action_icon_state = "leap"
-	cooldown_message = TRUE
 	var/maxdistance = 5 //leap how far again?
 	var/throw_speed = SPEED_AVERAGE
 	var/windup = FALSE // Is there a do_after before we pounce?
 	var/windup_duration = 20 // How long to wind up, if applicable
 	var/windup_interruptable = TRUE
 	var/leap_distance = 0
+	cooldown_message_on = TRUE
 
 
 /datum/action/human_action/activable/zombie/leap/use_ability(atom/target)

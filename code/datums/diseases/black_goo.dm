@@ -94,8 +94,8 @@
 	for(var/i=1 to affected_mob.reagents.reagent_list.len)
 		var/datum/reagent/S = affected_mob.reagents.reagent_list[i]
 		if(S.get_property(PROPERTY_ANTIBIOTIC))
-        	return TRUE
-        else
+			return TRUE
+		else
 			return FALSE
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)

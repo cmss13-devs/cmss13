@@ -18432,6 +18432,17 @@
 	dir = 9
 	},
 /area/lv624/ground/barrens/east_barrens)
+"nnR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/vehicle/multitile/van{
+	name = "Colony Truck";
+	desc = "A rather old hunk of metal with six wheels, you know what to do. Entrance on the back and sides.";
+	health = 0
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/corporate_dome)
 "npf" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -21050,6 +21061,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"sJn" = (
+/turf/open/space/basic,
+/area/lv624/lazarus/corporate_dome)
 "sJM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/dirt,
@@ -34423,7 +34437,7 @@ mgs
 xgE
 rNq
 kWH
-mqw
+nnR
 rNq
 xgE
 xgE
@@ -36242,7 +36256,7 @@ aDv
 dLn
 cfT
 rah
-rah
+sJn
 sBg
 xgE
 wWK

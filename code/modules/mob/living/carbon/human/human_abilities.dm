@@ -509,7 +509,7 @@ CULT
 	if(D)
 		to_chat(zombie, SPAN_XENOWARNING("the target is already infected, you cannot bite him again."))
 	else
-		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M.name] neck, preparing to bite him"))
+		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M.name] neck, preparing to bite it!"))
 		to_chat(M, SPAN_DANGER("[zombie.name] reaches to your neck and starts to open his jaw, agh!"))
 		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_ALL))
 			to_chat(zombie, SPAN_XENOWARNING("You bite [M.name] neck, leaving a bloody mark!"))

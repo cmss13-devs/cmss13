@@ -468,6 +468,10 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
+/obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/pouch/magazine/shotgun/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
@@ -481,7 +485,7 @@
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/revolver/mateba(src)
+		new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -588,7 +592,11 @@
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
-/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+/obj/item/storage/pouch/shotgun/large/beanbag/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
+
+/obj/item/storage/pouch/shotgun/large/beanbag/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 

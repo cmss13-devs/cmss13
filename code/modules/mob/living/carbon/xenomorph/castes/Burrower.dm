@@ -34,12 +34,14 @@
 	widen_cooldown = 70
 	tremor_cooldown = 450
 
+	minimum_evolve_time = 7 MINUTES
+
 	minimap_icon = "burrower"
 
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
-	desc = "A beefy, alien with sharp claws."
+	desc = "A beefy alien with sharp claws."
 	icon = 'icons/mob/xenos/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"

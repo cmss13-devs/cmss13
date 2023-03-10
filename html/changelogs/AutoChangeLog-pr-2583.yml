@@ -1,4 +1,0 @@
-author: "theflyingflail"
-delete-after: True
-changes:
-  - bugfix: "fixed skylight nightmare insert survivor spawner\n:cl:\n<!-- Both :cl:'s are required for the changelog to work! -->"

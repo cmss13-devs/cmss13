@@ -11,7 +11,7 @@
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("beaten")
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
 	var/status = 0 //whether the thing is on or not
 	var/obj/item/cell/bcell = null
@@ -19,7 +19,7 @@
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
 /obj/item/weapon/melee/baton/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide.</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
 	return (FIRELOSS)
 
 /obj/item/weapon/melee/baton/Initialize(mapload, ...)

@@ -62,7 +62,13 @@
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
 	remove_from_all_mob_huds()
-
+	species = null
+	limbs_to_process = null
+	brute_mod_override = null
+	burn_mod_override = null
+	assigned_squad = null
+	selected_ability = null
+	remembered_dropped_objects = null
 	. = ..()
 
 	overlays_standing = null
@@ -1187,7 +1193,7 @@
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)
-		//Apply colour.
+		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))

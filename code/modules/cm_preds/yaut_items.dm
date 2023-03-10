@@ -492,7 +492,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 	var/true_desc = "This is the scalp of a" //humans and Yautja see different things when examining these.
-	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair colour matrix.
+	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair color matrix.
 
 /obj/item/scalp/Initialize(mapload, mob/living/carbon/human/scalpee, mob/living/carbon/human/user)
 	. = ..()
@@ -512,7 +512,7 @@
 		return
 
 	name = "\proper [scalpee.real_name]'s scalp"
-	color = list(null, null, null, null, rgb(scalpee.r_hair, scalpee.g_hair, scalpee.b_hair)) //Hair colour.
+	color = list(null, null, null, null, rgb(scalpee.r_hair, scalpee.g_hair, scalpee.b_hair)) //Hair color.
 
 	var/they = "they"
 	var/their = "their"
@@ -828,11 +828,11 @@
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "fullarmor_ebony"
-	item_state = "armor"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+	item_state = "armor"
+	icon_state = "fullarmor_ebony"
 
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
@@ -854,7 +854,7 @@
 		/obj/item/weapon/melee/twohanded/yautja,
 	)
 	unacidable = TRUE
-	item_state_slots = list(WEAR_JACKET = "fullarmor")
+	item_state_slots = list(WEAR_JACKET = "fullarmor_ebony")
 
 /obj/item/clothing/shoes/yautja_flavor
 	name = "alien stone greaves"

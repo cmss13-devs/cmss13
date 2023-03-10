@@ -72,7 +72,7 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
-/mob/living/simple_animal/mouse/proc/splat()
+/mob/living/simple_animal/mouse/splat(mob/killer)
 	src.health = 0
 	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"

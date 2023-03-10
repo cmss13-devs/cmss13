@@ -28,7 +28,8 @@ GLOBAL_VAR_INIT(checkedhighpop, FALSE)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
 	var/highpop_paygrade
-	var/playtime_rank	//Only used for Highpop
+	/// Only used for Highpop
+	var/playtime_rank	
 	var/highpop
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)

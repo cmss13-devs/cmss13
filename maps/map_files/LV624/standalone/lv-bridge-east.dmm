@@ -42,7 +42,7 @@
 /area/lv624/ground/river/central_river)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/dirt,
+/turf/open/gm/dirtgrassborder,
 /area/lv624/ground/barrens/central_barrens)
 "ak" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -224,7 +224,7 @@
 /area/lv624/ground/river/central_river)
 "bq" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "br" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -269,20 +269,14 @@
 /area/lv624/ground/jungle/north_jungle)
 "bE" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
-"bH" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "bK" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "bN" = (
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "cp" = (
 /obj/structure/flora/jungle/plantbot1{
@@ -297,6 +291,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/north_jungle)
+"kG" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/barrens/central_barrens)
 "mf" = (
 /turf/open/gm/coast{
 	dir = 2;
@@ -308,7 +306,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "px" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "pW" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -339,6 +337,11 @@
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
+"yV" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/barrens/central_barrens)
 "Bv" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating{
@@ -348,7 +351,7 @@
 /area/lv624/ground/river/central_river)
 "BA" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "DQ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -399,6 +402,17 @@
 "RE" = (
 /turf/open/gm/coast,
 /area/lv624/ground/river/central_river)
+"Sm" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/barrens/central_barrens)
+"VH" = (
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/barrens/central_barrens)
+"WZ" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/barrens/central_barrens)
 "XL" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -425,7 +439,7 @@
 /area/lv624/ground/river/central_river)
 
 (1,1,1) = {"
-ab
+VH
 aj
 aB
 ax
@@ -441,8 +455,8 @@ bN
 bN
 "}
 (2,1,1) = {"
-ab
-ab
+kG
+WZ
 bf
 bf
 aB
@@ -457,8 +471,8 @@ bN
 bN
 "}
 (3,1,1) = {"
-ab
-ab
+VH
+WZ
 bf
 bf
 Jl
@@ -473,8 +487,8 @@ bK
 Ex
 "}
 (4,1,1) = {"
-ab
-ab
+Sm
+yV
 af
 ao
 ao
@@ -489,7 +503,7 @@ bK
 Ex
 "}
 (5,1,1) = {"
-ab
+WZ
 ak
 at
 aK
@@ -501,11 +515,11 @@ DQ
 bf
 bf
 by
-bH
+bK
 Ex
 "}
 (6,1,1) = {"
-ab
+WZ
 ah
 aK
 ay
@@ -566,7 +580,7 @@ am
 aW
 oa
 by
-bH
+bK
 "}
 (10,1,1) = {"
 ad
@@ -853,7 +867,7 @@ aK
 aK
 be
 by
-bH
+bK
 bq
 "}
 (28,1,1) = {"
@@ -869,7 +883,7 @@ YA
 aK
 be
 by
-bH
+bK
 Ex
 "}
 (29,1,1) = {"

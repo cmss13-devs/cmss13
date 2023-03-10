@@ -82,7 +82,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
 "oA" = (
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "pf" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -307,9 +307,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "Xe" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/jungle/clear,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Xq" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,

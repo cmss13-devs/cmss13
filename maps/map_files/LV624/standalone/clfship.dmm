@@ -544,6 +544,9 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
+"op" = (
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/caves/south_west_caves)
 "ou" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
@@ -775,7 +778,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "vw" = (
-/turf/open/gm/dirt,
+/turf/open/gm/grass/weedable,
 /area/lv624/ground/barrens/west_barrens)
 "vO" = (
 /obj/structure/girder/reinforced,
@@ -864,7 +867,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "xu" = (
-/turf/open/gm/dirt,
+/turf/open/gm/grass/weedable,
 /area/lv624/ground/barrens/south_west_barrens)
 "xF" = (
 /obj/structure/machinery/door/airlock/multi_tile/secure{
@@ -1329,6 +1332,12 @@
 	icon_state = "greencorner"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Il" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/caves/south_west_caves)
 "IG" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1354,6 +1363,11 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Jo" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/caves/south_west_caves)
 "JC" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -1504,6 +1518,11 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/crashed_ship)
+"Ny" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/caves/south_west_caves)
 "NC" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -1712,6 +1731,10 @@
 	dir = 8;
 	icon_state = "damaged3"
 	},
+/area/lv624/ground/caves/south_west_caves)
+"RK" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/grass/weedable,
 /area/lv624/ground/caves/south_west_caves)
 "RS" = (
 /turf/open/floor/almayer,
@@ -2839,7 +2862,7 @@ CO
 Ab
 Ab
 Ab
-uq
+Il
 Hj
 Hj
 Yj
@@ -2886,8 +2909,8 @@ vf
 Ab
 Ab
 Ab
-Ab
-Ab
+Jo
+op
 xu
 Yj
 Yj
@@ -2933,8 +2956,8 @@ CO
 Ab
 Ab
 Ab
-Ab
-Ab
+Jo
+op
 xu
 Yj
 Yj
@@ -2980,8 +3003,8 @@ xG
 Ab
 Ab
 Ab
-Ab
-uq
+Jo
+RK
 xu
 Yj
 Yj
@@ -3027,8 +3050,8 @@ pq
 Ab
 Ab
 Ab
-Ab
-Ab
+Jo
+op
 xu
 Yj
 Yj
@@ -3074,8 +3097,8 @@ pq
 Ab
 Ab
 Ab
-Ab
-Ab
+Jo
+op
 xu
 Yj
 Yj
@@ -3121,7 +3144,7 @@ VF
 Ab
 Ab
 Ab
-uq
+Il
 xu
 Yj
 Yj
@@ -4083,13 +4106,13 @@ Hj
 Hj
 Hj
 Hj
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
+Ny
+Ny
+Ny
+Ny
+Ny
+Ny
+Ny
 Hj
 Hj
 Hj
@@ -4129,13 +4152,13 @@ Hj
 Hj
 Ab
 Ab
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
+Jo
+op
+op
+op
+op
+op
+op
 Hj
 Hj
 Hj
@@ -4176,7 +4199,7 @@ Ab
 Ab
 Ab
 Ab
-Ab
+Jo
 vw
 vw
 vw
@@ -4223,7 +4246,7 @@ Ab
 Ab
 Ab
 Ab
-Ab
+Jo
 vw
 vw
 vw

@@ -5,7 +5,9 @@
 /area/lv624/ground/river/west_river)
 "ac" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/gm/dirt,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
 /area/lv624/ground/barrens/south_west_barrens)
 "ad" = (
 /turf/open/gm/coast{
@@ -23,7 +25,7 @@
 "ag" = (
 /obj/effect/alien/weeds/node,
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirt,
+/turf/open/gm/dirtgrassborder,
 /area/lv624/ground/barrens/south_west_barrens)
 "ah" = (
 /obj/structure/flora/jungle/plantbot1{
@@ -197,11 +199,13 @@
 /area/lv624/ground/river/west_river)
 "bf" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirt,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
 /area/lv624/ground/barrens/south_west_barrens)
 "bh" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/dirt,
+/turf/open/gm/grass/weedable,
 /area/lv624/ground/barrens/south_west_barrens)
 "bi" = (
 /turf/open/gm/dirt,
@@ -218,7 +222,7 @@
 /area/lv624/ground/river/west_river)
 "bx" = (
 /obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+/turf/open/gm/grass/weedable,
 /area/lv624/ground/barrens/south_west_barrens)
 "bz" = (
 /turf/open/gm/coast{
@@ -241,6 +245,10 @@
 "gX" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/river/west_river)
+"hQ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/barrens/south_west_barrens)
 "kE" = (
 /turf/open/gm/coast{
 	dir = 4;
@@ -251,6 +259,14 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/west_river)
+"rf" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/barrens/south_west_barrens)
+"tn" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "ve" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
@@ -263,6 +279,9 @@
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/west_jungle)
+"Ea" = (
+/turf/open/gm/grass/weedable,
+/area/lv624/ground/barrens/south_west_barrens)
 "ES" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/west_river)
@@ -276,6 +295,11 @@
 "KD" = (
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
+"LD" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "Ms" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -288,8 +312,19 @@
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
+"Ol" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "Oz" = (
 /turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/south_west_barrens)
+"Va" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
 /area/lv624/ground/barrens/south_west_barrens)
 "VA" = (
 /obj/effect/alien/weeds/node,
@@ -319,7 +354,7 @@ JC
 JC
 JC
 JC
-bi
+rf
 bi
 ES
 ES
@@ -332,8 +367,8 @@ aC
 (3,1,1) = {"
 JC
 JC
-bi
-bi
+Ea
+Ea
 ag
 bi
 ES
@@ -346,10 +381,10 @@ aD
 "}
 (4,1,1) = {"
 JC
-bi
+Ea
 bh
-bi
-bi
+tn
+LD
 bi
 ai
 ad
@@ -361,9 +396,9 @@ aE
 "}
 (5,1,1) = {"
 JC
-bi
-bi
-bi
+Ea
+Ea
+rf
 bz
 ad
 bm
@@ -375,10 +410,10 @@ ay
 az
 "}
 (6,1,1) = {"
-bi
-bi
-bi
-bi
+Ea
+Ea
+Ea
+rf
 bL
 bc
 aj
@@ -390,10 +425,10 @@ Za
 aV
 "}
 (7,1,1) = {"
-bi
-bi
+Ea
+Ea
 bx
-bi
+rf
 bL
 bc
 bc
@@ -405,10 +440,10 @@ Za
 aF
 "}
 (8,1,1) = {"
-bi
-bi
-bh
-bi
+Ea
+Ea
+Ol
+LD
 bL
 bc
 bc
@@ -421,8 +456,8 @@ aG
 "}
 (9,1,1) = {"
 bx
-bi
-bi
+Ea
+rf
 bz
 bm
 bc
@@ -436,7 +471,7 @@ aH
 "}
 (10,1,1) = {"
 bf
-bi
+Va
 ac
 bL
 bc
@@ -450,7 +485,7 @@ aV
 aF
 "}
 (11,1,1) = {"
-bi
+rf
 bz
 ad
 bm
@@ -465,7 +500,7 @@ aB
 aI
 "}
 (12,1,1) = {"
-bi
+rf
 bL
 bc
 bc
@@ -480,7 +515,7 @@ au
 aJ
 "}
 (13,1,1) = {"
-bx
+hQ
 bL
 ae
 bc
@@ -495,7 +530,7 @@ av
 aK
 "}
 (14,1,1) = {"
-bi
+rf
 ab
 af
 af

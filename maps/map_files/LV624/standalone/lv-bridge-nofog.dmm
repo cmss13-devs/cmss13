@@ -55,12 +55,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "aj" = (
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/north_jungle)
-"ak" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_jungle)
 "al" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -182,9 +177,7 @@
 /area/lv624/ground/river/central_river)
 "EG" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_east_jungle)
 "Pz" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -198,7 +191,7 @@
 	},
 /area/lv624/ground/river/central_river)
 "VN" = (
-/turf/open/gm/grass,
+/turf/open/jungle/clear,
 /area/lv624/ground/jungle/north_east_jungle)
 "Wb" = (
 /turf/open/gm/dirtgrassborder{
@@ -284,7 +277,7 @@ km
 lW
 mq
 lS
-ak
+aj
 yu
 "}
 (6,1,1) = {"
@@ -315,7 +308,7 @@ lY
 ai
 lS
 aj
-ak
+aj
 "}
 (8,1,1) = {"
 Yw

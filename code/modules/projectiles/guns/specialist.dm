@@ -307,7 +307,6 @@
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 

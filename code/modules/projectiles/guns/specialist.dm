@@ -355,7 +355,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -418,7 +417,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 

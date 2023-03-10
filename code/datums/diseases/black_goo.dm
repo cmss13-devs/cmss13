@@ -90,7 +90,6 @@
 						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
 
-
 /datum/disease/black_goo/proc/victim_has_antibiotic()
     for(var/i=1 to affected_mob.reagents.reagent_list.len)
         var/datum/reagent/S = affected_mob.reagents.reagent_list[i]

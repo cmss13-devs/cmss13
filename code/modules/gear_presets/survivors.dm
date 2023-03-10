@@ -1304,7 +1304,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
-	add_pmc_survivor_weapon(H)
+	add_survivor_weapon_security(H)
 	add_survivor_weapon_pistol(H)
 
 	..()

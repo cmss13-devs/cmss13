@@ -11219,9 +11219,7 @@
 	dir = 4;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "aMw" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer{
@@ -14143,9 +14141,7 @@
 	dir = 8;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "bbe" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -18284,9 +18280,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "bzj" = (
 /obj/structure/machinery/pipedispenser,
 /turf/open/floor/almayer{
@@ -21871,9 +21865,7 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "bPz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -30510,9 +30502,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "dVF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -35459,9 +35449,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "gfW" = (
 /turf/closed/wall/almayer/white,
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "ggh" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -39042,9 +39030,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "hQU" = (
 /obj/structure/sign/safety/intercom{
 	pixel_x = -17
@@ -39076,9 +39062,7 @@
 	dir = 1;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "hQW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -39956,9 +39940,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "inC" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -43103,9 +43085,7 @@
 	dir = 1;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "jMt" = (
 /obj/structure/sign/poster{
 	pixel_y = -32
@@ -43748,9 +43728,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "kcl" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -45236,9 +45214,7 @@
 	dir = 4;
 	icon_state = "sterile_green_corner"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "kLP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -47351,9 +47327,7 @@
 	dir = 4;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "lGh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/safety/maint{
@@ -54103,9 +54077,7 @@
 	dir = 1;
 	icon_state = "sterile_green_corner"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "oEE" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -57048,9 +57020,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "pYi" = (
 /obj/structure/machinery/telecomms/processor/preset_four,
 /obj/structure/sign/safety/laser{
@@ -58026,9 +57996,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "qxA" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
@@ -59518,9 +59486,7 @@
 	dir = 8;
 	icon_state = "sterile_green_corner"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "rgn" = (
 /obj/structure/filingcabinet/disk,
 /obj/structure/machinery/alarm/almayer{
@@ -60162,9 +60128,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "rui" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -61764,9 +61728,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "sfU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -62192,9 +62154,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "soZ" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -64832,9 +64792,7 @@
 	dir = 8;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "txO" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
@@ -69672,9 +69630,7 @@
 	dir = 4;
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "vAq" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -70053,9 +70009,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "vKe" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -73179,9 +73133,7 @@
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "xaC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/utensil/pfork{
@@ -74581,9 +74533,7 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
-/area/almayer/medical/lockerroom{
-	name = "\improper Medbay Equipment Storage/Distribution"
-	})
+/area/almayer/medical/lockerroom)
 "xHG" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2;

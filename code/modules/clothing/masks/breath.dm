@@ -80,6 +80,11 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
 	var/original_state = "coif"
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/mask/rebreather/scarf/ui_action_click()
+	. = ..()
+	pull_down()
 
 /obj/item/clothing/mask/rebreather/scarf/verb/pull_down()
 	set name = "Pull Up/Down"
@@ -96,8 +101,6 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
-
-
 
 	update_clothing_icon(src) //Update the on-mob icon.
 

@@ -171,13 +171,12 @@ CULT
 
 	update_button_icon()
 
-	addtimer(CALLBACK(src, PROC_REF(on_cooldown_over)), amount)
-
-	update_button_icon()
+	addtimer(CALLBACK(src, PROC_REF(on_cooldown_over)), amount, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /datum/action/human_action/activable/proc/on_cooldown_over()
 	if(!owner)
 		return
+	update_button_icon()
 	if(!isnull(cooldown_message))
 		to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 /datum/action/human_action/activable/droppod
@@ -526,7 +525,7 @@ CULT
 
 /datum/action/human_action/activable/zombie/leap
 	name = "leap"
-	action_icon_state = "bite"
+	action_icon_state = "leap"
 	cooldown_message = TRUE
 	var/maxdistance = 5 //leap how far again?
 	var/throw_speed = SPEED_AVERAGE

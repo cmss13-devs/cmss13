@@ -116,6 +116,7 @@
 	key = "golfclap"
 	key_third_person = "golfclaps"
 	message = "claps, clearly unimpressed."
+	alt_message = "claps"
 	sound = 'sound/misc/golfclap.ogg'
 	cooldown = 5 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -149,6 +150,7 @@
 /datum/emote/living/carbon/human/medic
 	key = "medic"
 	message = "calls for a medic!"
+	alt_message = "shouts something"
 	cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -160,6 +162,9 @@
 
 /datum/emote/living/carbon/human/medic/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
+
 	user.show_speech_bubble("medic")
 
 /datum/emote/living/carbon/human/medic/run_langchat(mob/user, group)
@@ -187,6 +192,7 @@
 /datum/emote/living/carbon/human/pain
 	key = "pain"
 	message = "cries out in pain!"
+	alt_message = "cries out"
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -202,6 +208,8 @@
 
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
 
 	user.show_speech_bubble("pain")
 
@@ -239,6 +247,9 @@
 
 /datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
+
 	user.show_speech_bubble("scream")
 
 /datum/emote/living/carbon/human/scream/run_langchat(mob/user, group)
@@ -322,10 +333,13 @@
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
 	message = "shouts an inspiring cry!"
+	alt_message = "shouts something"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return FALSE
 
 	user.show_speech_bubble("warcry")
 
@@ -335,3 +349,15 @@
 			return get_sfx("male_warcry")
 		else
 			return get_sfx("female_warcry")
+
+/datum/emote/living/carbon/human/whimper
+	key = "whimper"
+	key_third_person = "whimpers"
+	message = "whimpers."
+
+/datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+
+	user.show_speech_bubble("scream")

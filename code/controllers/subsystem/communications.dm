@@ -310,7 +310,7 @@ SUBSYSTEM_DEF(radio)
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
 		if(!length(T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-			target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
+			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
 	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs

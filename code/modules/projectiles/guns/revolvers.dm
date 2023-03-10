@@ -290,6 +290,7 @@
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
 	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well as civilian law enforcement. Fires .44 Magnum rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m44r"
 	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
@@ -346,7 +347,7 @@
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special
 	name = "\improper M2019 Blaster"
 	desc = "Properly known as the Pflager Katsumata Series-D Blaster, the M2019 is a relic of a handgun used by detectives and blade runners, having replaced the snub nose .38 detective special in 2019. Fires .44 custom packed sabot magnum rounds. Legally a revolver, the unconventional but robust internal design has made this model incredibly popular amongst collectors and enthusiasts."
-	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/pkd
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "lapd_2019"
 	item_state = "highpower" //placeholder
 
@@ -357,6 +358,7 @@
 	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
 	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
 	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/pkd
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/internal/revolver/m44/pkd,
 	)
@@ -421,6 +423,7 @@
 	name = "\improper Webley Mk VI service pistol"
 	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "webley"
 	item_state = "m44r"
 	attachable_allowed = list(
@@ -440,6 +443,7 @@
 /obj/item/weapon/gun/revolver/nagant
 	name = "\improper N-Y 7.62mm revolver"
 	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "ny762"
 	item_state = "ny762"
 
@@ -487,6 +491,7 @@
 /obj/item/weapon/gun/revolver/small
 	name = "\improper S&W .38 model 37 revolver"
 	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "sw357"
 	item_state = "ny762" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
@@ -535,6 +540,7 @@
 /obj/item/weapon/gun/revolver/mateba
 	name = "\improper Mateba autorevolver"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "mateba"
 	item_state = "mateba"
 
@@ -602,7 +608,8 @@
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
+/obj/item/weapon/gun/revolver/mateba/pmc
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Mateba autorevolver custom"
@@ -660,7 +667,8 @@
 
 /obj/item/weapon/gun/revolver/cmb
 	name = "\improper CMB Spearhead autorevolver"
-	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals. It has two select fire options, single and burst."
+	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "spearhead"
 	item_state = "spearhead"
 	fire_sound = null

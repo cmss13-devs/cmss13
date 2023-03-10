@@ -163,6 +163,12 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
 
+GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
+
+/proc/setup_xeno_evolve_times()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
+
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
 // Posters

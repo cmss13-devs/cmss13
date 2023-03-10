@@ -134,47 +134,47 @@
 				if(!EvacuationAuthority.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
 				else
-					message_staff("[key_name_admin(usr)] called an evacuation.")
+					message_admins("[key_name_admin(usr)] called an evacuation.")
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
 				else
-					message_staff("[key_name_admin(usr)] canceled an evacuation.")
+					message_admins("[key_name_admin(usr)] canceled an evacuation.")
 
 			if("toggle_evac")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_EVACUATION_DENY
-				message_staff("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY ? "forbidden" : "allowed"] ship-wide evacuation.")
+				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY ? "forbidden" : "allowed"] ship-wide evacuation.")
 
 			if("force_evac")
 				if(!EvacuationAuthority.begin_launch())
 					to_chat(usr, SPAN_WARNING("You are unable to launch the pods directly right now!"))
 				else
-					message_staff("[key_name_admin(usr)] force-launched the escape pods.")
+					message_admins("[key_name_admin(usr)] force-launched the escape pods.")
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
 					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
 				else
-					message_staff("[key_name_admin(usr)] force-enabled the self-destruct system.")
+					message_admins("[key_name_admin(usr)] force-enabled the self-destruct system.")
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the self-destruct right now!"))
 				else
-					message_staff("[key_name_admin(usr)] canceled the self-destruct system.")
+					message_admins("[key_name_admin(usr)] canceled the self-destruct system.")
 
 			if("use_dest")
 
 				var/confirm = alert("Are you sure you want to self-destruct the Almayer?", "Self-Destruct", "Yes", "Cancel")
 				if(confirm != "Yes")
 					return
-				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
+				message_admins("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
 				EvacuationAuthority.trigger_self_destruct()
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
-				message_staff("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
+				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 
 //======================================================
 //======================================================
@@ -183,7 +183,7 @@
 		if(!check_rights(R_SERVER)) return
 
 		SSticker.delay_end = !SSticker.delay_end
-		message_staff("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
+		message_admins("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 
 	else if(href_list["simplemake"])
 
@@ -199,7 +199,7 @@
 			if("Cancel") return
 			if("Yes") delmob = 1
 
-		message_staff("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
+		message_admins("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		var/mob/transformed
 		var/hivenumber = XENO_HIVE_NORMAL
@@ -286,7 +286,7 @@
 		if(!reason) return
 
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
-		message_staff("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
+		message_admins("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << 0
@@ -325,7 +325,7 @@
 		if(!reason) return
 
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
-		message_staff("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
+		message_admins("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << temp
@@ -509,7 +509,7 @@
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
-			message_staff("[key_name_admin(usr)] booted [key_name_admin(M)].")
+			message_admins("[key_name_admin(usr)] booted [key_name_admin(M)].")
 			qdel(M.client)
 
 	else if(href_list["removejobban"])
@@ -518,7 +518,7 @@
 		var/t = href_list["removejobban"]
 		if(t)
 			if((alert("Do you want to unjobban [t]?","Unjobban confirmation", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
-				message_staff("[key_name_admin(usr)] removed [t]")
+				message_admins("[key_name_admin(usr)] removed [t]")
 				jobban_remove(t)
 				jobban_savebanfile()
 				href_list["ban"] = 1 // lets it fall through and refresh
@@ -589,7 +589,7 @@
 			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 			return
 
-		message_staff("[usr.client.ckey] has reset [X.ckey] xeno name")
+		message_admins("[usr.client.ckey] has reset [X.ckey] xeno name")
 
 		to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [usr.client.ckey]."))
 
@@ -615,7 +615,7 @@
 			X.client.prefs.xeno_name_ban = FALSE
 
 			X.client.prefs.save_preferences()
-			message_staff("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
+			message_admins("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
 
 			notes_add(X.ckey, "Xeno Name Unbanned by [usr.client.ckey]", usr)
 			to_chat(X, SPAN_DANGER("Warning: You can use xeno names again."))
@@ -633,7 +633,7 @@
 			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 			return
 
-		message_staff("[usr.client.ckey] has banned [X.ckey] from using xeno names")
+		message_admins("[usr.client.ckey] has banned [X.ckey] from using xeno names")
 
 		notes_add(X.ckey, "Xeno Name Banned by [usr.client.ckey]|Reason: Xeno name was [X.name]", usr)
 
@@ -693,7 +693,7 @@
 		if(!check_rights(R_ADMIN|R_SERVER)) return
 
 		GLOB.master_mode = href_list["c_mode2"]
-		message_staff("[key_name_admin(usr)] set the mode as [GLOB.master_mode].")
+		message_admins("[key_name_admin(usr)] set the mode as [GLOB.master_mode].")
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
@@ -708,7 +708,7 @@
 		if(master_mode != "secret")
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		secret_force_mode = href_list["f_secret2"]
-		message_staff("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].")
+		message_admins("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].")
 		Game() // updates the main game menu
 		.(href, list("f_secret"=1))
 
@@ -720,7 +720,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_staff("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
+		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
 		H.monkeyize()
 
 	else if(href_list["corgione"])
@@ -731,7 +731,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_staff("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]")
+		message_admins("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]")
 		H.corgize()
 
 	else if(href_list["forcespeech"])
@@ -746,7 +746,7 @@
 		if(!speech) return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
+		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
 	else if(href_list["zombieinfect"])
 		if(!check_rights(R_ADMIN)) return
@@ -766,7 +766,7 @@
 
 		H.AddDisease(bg, FALSE)
 
-		message_staff("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
+		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN)) return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
@@ -793,7 +793,7 @@
 		embryo.hivenumber = hives[newhive]
 		embryo.faction = newhive
 
-		message_staff("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
+		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
 
 	else if(href_list["makemutineer"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
@@ -811,7 +811,7 @@
 		var/datum/equipment_preset/other/mutineer/leader/leader_preset = new()
 		leader_preset.load_status(H)
 
-		message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
+		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
 
 	else if(href_list["makecultist"] || href_list["makecultistleader"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
@@ -838,13 +838,13 @@
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H, hive.hivenumber)
 			preset.load_status(H)
-			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H, hive.hivenumber)
 			preset.load_status(H)
-			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
 		H.faction = hive.internal_faction
 
@@ -859,7 +859,7 @@
 		if(!speech) return
 		M.manual_emote(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
+		message_admins("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
 
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_MOD))
@@ -878,7 +878,7 @@
 		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
 			return
 
-		message_staff("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
+		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
 		var/mob/new_player/NP = new()
 		NP.ckey = M.ckey
@@ -906,7 +906,7 @@
 		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
+		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
 		if(!check_rights(R_ADMIN)) return
@@ -930,7 +930,7 @@
 		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
+		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
 		if(!check_rights(R_ADMIN)) return
@@ -951,7 +951,7 @@
 		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
+		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
 		if(!check_rights(R_ADMIN)) return
@@ -979,7 +979,7 @@
 		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
+		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
 		if(!check_rights(R_REJUVINATE)) return
@@ -990,7 +990,7 @@
 			return
 
 		L.revive()
-		message_staff(WRAP_STAFF_LOG(usr, "ahealed [key_name(L)] in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
+		message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(L)] in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN)) return
@@ -1010,7 +1010,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_staff(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
+		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
 		H.AIize()
 
 	else if(href_list["changehivenumber"])
@@ -1054,7 +1054,7 @@
 		spawn(0)
 			M.gender = y_gend
 			M.regenerate_icons()
-			message_staff("[key_name(usr)] made [H] into a Yautja, [M.real_name].")
+			message_admins("[key_name(usr)] made [H] into a Yautja, [M.real_name].")
 			if(H.mind)
 				H.mind.transfer_to(M)
 			else
@@ -1155,7 +1155,7 @@
 		if(alert("Are you sure you want to cancel this OB?",,"Yes","No") != "Yes")
 			return
 		orbital_cannon_cancellation["[cancel_token]"] = null
-		message_staff("[src.owner] has cancelled the orbital strike.")
+		message_admins("[src.owner] has cancelled the orbital strike.")
 
 	else if(href_list["admincancelpredsd"])
 		if (!check_rights(R_MOD)) return
@@ -1166,7 +1166,7 @@
 		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
 			return
 		bracer.exploding = FALSE
-		message_staff("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
+		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_MOD))
@@ -1210,7 +1210,7 @@
 		if(!snack)
 			error("Give Cookie code crumbled!")
 		H.put_in_hands(snack)
-		message_staff("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
+		message_admins("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["adminalert"])
@@ -1343,7 +1343,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1690,13 +1690,13 @@
 			log_admin("[key_name(usr)] created a [english_list(paths)]")
 			for(var/path in paths)
 				if(ispath(path, /mob))
-					message_staff("[key_name_admin(usr)] created a [english_list(paths)]", 1)
+					message_admins("[key_name_admin(usr)] created a [english_list(paths)]", 1)
 					break
 		else
 			log_admin("[key_name(usr)] created [number]ea [english_list(paths)]")
 			for(var/path in paths)
 				if(ispath(path, /mob))
-					message_staff("[key_name_admin(usr)] created [number]ea [english_list(paths)]", 1)
+					message_admins("[key_name_admin(usr)] created [number]ea [english_list(paths)]", 1)
 					break
 		return
 
@@ -1798,7 +1798,7 @@
 		var/mob/ref_person = locate(href_list["ccdeny"])
 		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_staff("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
 		//unanswered_distress -= ref_person
 
@@ -1807,32 +1807,32 @@
 			to_chat(usr, "The distress beacon was either canceled, or you are too late to cancel.")
 			return
 		log_game("[key_name_admin(usr)] has canceled the distress beacon.")
-		message_staff("[key_name_admin(usr)] has canceled the distress beacon.")
+		message_admins("[key_name_admin(usr)] has canceled the distress beacon.")
 		distress_cancel = TRUE
 		return
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel)
 				return
 			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
 			log_game("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]")
-			message_staff("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
+			message_admins("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
 		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
-		message_staff("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
+		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(destroy_cancel)
@@ -1842,7 +1842,7 @@
 			to_chat(usr, "Too late! The self-destruct was started.")
 			return
 		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
-		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
+		message_admins("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
 		return
 
@@ -1909,7 +1909,7 @@
 	distress_cancel = TRUE
 	SSticker.mode.activate_distress()
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
-	message_staff("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0

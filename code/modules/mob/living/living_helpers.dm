@@ -17,3 +17,27 @@
 
 /mob/living/proc/check_fire_intensity_resistance()
 	return 0
+
+/mob/living/proc/fling_mob(atom/cause_atom, direction, distance)
+	if(!distance)
+		return
+
+	if(!direction)
+		direction = pick(alldirs)
+
+	var/turf/target_turf = get_turf(src)
+	var/turf/temporary_turf = get_turf(src)
+	for (var/x in 0 to distance)
+		temporary_turf = get_step(target_turf, direction)
+		if (!temporary_turf)
+			break
+		target_turf = temporary_turf
+
+	shake_camera(src, steps = 10, strength = 1)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target_turf, distance, SPEED_VERY_FAST, cause_atom, TRUE)
+
+/**
+ * 'Splats' src, killing them. Mouses override this proc with their own unique splat.
+ */
+/mob/living/proc/splat(mob/killer)
+	death(create_cause_data("splatting", killer), FALSE, "splatting")

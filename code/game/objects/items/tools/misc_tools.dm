@@ -160,7 +160,7 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	/// what colour the ink is!
+	/// what color the ink is!
 	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE

@@ -113,7 +113,9 @@
 
 	shake_camera(living_mob, 3, 4)
 	knockback_effects(living_mob, fired_projectile)
+	slam_back(living_mob, fired_projectile)
 
+/datum/ammo/proc/slam_back(mob/living/living_mob, obj/item/projectile/fired_projectile)
 	//Either knockback or slam them into an obstacle.
 	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
 	if(!direction) //Same tile.
@@ -136,15 +138,15 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
-/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, max_range = 2)
-	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
+/datum/ammo/proc/pushback(mob/target_mob, obj/item/projectile/fired_projectile, max_range = 2)
+	if(!target_mob || target_mob == fired_projectile.firer || fired_projectile.distance_travelled > max_range || target_mob.lying)
 		return
 
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(target_mob.mob_size >= MOB_SIZE_BIG)
 		return //too big to push
 
-	to_chat(M, isxeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
-	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))
+	to_chat(target_mob, isxeno(target_mob) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	slam_back(target_mob, fired_projectile, max_range)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
 	if(!target || !P) return
@@ -979,10 +981,16 @@
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
 	damage = 30
+	var/holo_stacks = 10
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+
+/datum/ammo/bullet/rifle/holo_target/hunting
+	name = "holo-targeting hunting bullet"
+	damage = 25
+	holo_stacks = 15
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
@@ -1404,6 +1412,7 @@
 	bonus_projectiles_amount = 0
 	accurate_range = 4
 	max_range = 5 //make use of the ablaze property
+	shell_speed = AMMO_SPEED_TIER_4 // so they hit before the main shell stuns
 
 
 /datum/ammo/bullet/shotgun/heavy/slug
@@ -1689,6 +1698,65 @@
 	burst(T,P,damage_type, 1 , 2, 0)
 	return 1
 
+/datum/ammo/bullet/sniper/crude
+	name = "crude sniper bullet"
+
+/datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	pushback(M, P, 3)
+
+/datum/ammo/bullet/sniper/anti_materiel
+	name = "anti-materiel sniper bullet"
+
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
+	accuracy = HIT_ACCURACY_TIER_8
+	damage = 125
+	shell_speed = AMMO_SPEED_TIER_6
+
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
+		var/mob/living/L = M
+		var/size_damage_mod = 0.8
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.6
+			if(target.mob_size >= MOB_SIZE_BIG)
+				size_damage_mod += 0.6
+		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/elite
+	name = "supersonic sniper bullet"
+
+	shrapnel_chance = 0 // This isn't leaving any shrapnel.
+	accuracy = HIT_ACCURACY_TIER_8
+	damage = 150
+	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/sniper/elite/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
+		var/mob/living/L = M
+		var/size_damage_mod = 0.5
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/target = M
+			if(target.mob_size >= MOB_SIZE_XENO)
+				size_damage_mod += 0.5
+			if(target.mob_size >= MOB_SIZE_BIG)
+				size_damage_mod += 1
+			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		else
+			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
 /datum/ammo/bullet/tank/flak
 	name = "flak autocannon bullet"
 	icon_state = "autocannon"
@@ -1757,61 +1825,6 @@
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
-
-/datum/ammo/bullet/sniper/svd
-	name = "crude sniper bullet"
-
-/datum/ammo/bullet/sniper/anti_materiel
-	name = "anti-materiel sniper bullet"
-
-	shrapnel_chance = 0 // This isn't leaving any shrapnel.
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 125
-	shell_speed = AMMO_SPEED_TIER_6
-
-/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
-	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
-		var/mob/living/L = M
-		var/size_damage_mod = 0.8
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.6
-			if(target.mob_size >= MOB_SIZE_BIG)
-				size_damage_mod += 0.6
-		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
-
-/datum/ammo/bullet/sniper/elite
-	name = "supersonic sniper bullet"
-
-	shrapnel_chance = 0 // This isn't leaving any shrapnel.
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 150
-	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
-
-/datum/ammo/bullet/sniper/elite/set_bullet_traits()
-	. = ..()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
-	))
-
-/datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
-	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
-		var/mob/living/L = M
-		var/size_damage_mod = 0.5
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.5
-			if(target.mob_size >= MOB_SIZE_BIG)
-				size_damage_mod += 1
-			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		else
-			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
-		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /*
 //======
@@ -2482,9 +2495,16 @@
 	ping = "ping_x"
 	damage_type = TOX
 	flags_ammo_behavior = AMMO_XENO
-	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
+
+	///used to make cooldown of the different spits vary.
+	var/added_spit_delay = 0
 	var/spit_cost
 
+	/// Should there be a windup for this spit?
+	var/spit_windup = FALSE
+
+	/// Should there be an additional warning while winding up? (do not put to true if there is not a windup)
+	var/pre_spit_warn = FALSE
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
 
@@ -2797,15 +2817,23 @@
 			PAS.increment_stack_count() */
 
 /datum/ammo/xeno/boiler_gas
-	name = "glob of gas"
-	icon_state = "boiler_gas2"
+	name = "glob of neuro gas"
+	icon_state = "neuro_glob"
 	ping = "ping_x"
-	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_ACIDIC
+	debilitate = list(2,2,0,0,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	var/datum/effect_system/smoke_spread/smoke_system
-
+	spit_cost = 200
+	pre_spit_warn = TRUE
+	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
-	max_range = 32
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
+	accuracy = HIT_ACCURACY_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4
+	max_range = 16
+	/// range on the smoke in tiles from center
+	var/smokerange = 4
+	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
 	..()
@@ -2816,38 +2844,66 @@
 	smoke_system = null
 	. = ..()
 
-/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/M, obj/item/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
+/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/item/projectile/proj)
+	if(iscarbon(moob))
+		var/mob/living/carbon/carbon = moob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
 			return
-	drop_nade(get_turf(P), P)
+	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
+	if(!neuro_effect)
+		neuro_effect = new /datum/effects/neurotoxin(moob)
+	neuro_effect.duration += 5
+	moob.apply_effect(3, DAZE)
+	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	drop_nade(get_turf(proj), proj,TRUE)
 
-/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/O, obj/item/projectile/P)
-	drop_nade(get_turf(P), P)
+/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/item/projectile/proj)
+	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/T, obj/item/projectile/P)
-	if(T.density && isturf(P.loc))
-		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/proj)
+	if(Turf.density && isturf(proj.loc))
+		drop_nade(proj.loc, proj) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
-		drop_nade(T, P)
+		drop_nade(Turf, proj)
 
-/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/P)
-	drop_nade(get_turf(P), P)
+/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/proj)
+	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/P)
+/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/proj)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
-/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
-	var/amount = 4
-	var/lifetime_mult = 1
-	if(isboiler(P.firer))
-		smoke_system.cause_data = P.weapon_cause_data
-	smoke_system.set_up(amount, 0, T)
+/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/proj)
+	var/lifetime_mult = 1.0
+	if(isboiler(proj.firer))
+		smoke_system.cause_data = proj.weapon_cause_data
+	smoke_system.set_up(smokerange, 0, turf)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
-	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
+	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+
+/datum/ammo/xeno/boiler_gas/acid
+	name = "glob of acid gas"
+	icon_state = "acid_glob"
+	ping = "ping_x"
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
+	max_range = 16
+	smokerange = 3
+
+
+/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/proj)
+	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+
+/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/item/projectile/proj)
+	if(iscarbon(moob))
+		var/mob/living/carbon/carbon = moob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+			return
+	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
+	playsound(moob,"acid_strike",75,1)
+	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
+	new /datum/effects/acid(moob, proj.firer)
+	drop_nade(get_turf(proj), proj,TRUE)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

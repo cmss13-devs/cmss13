@@ -47,6 +47,8 @@
 
 /mob/hologram/falcon
 	name = "falcon drone"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
 	var/obj/item/falcon_drone/parent_drone
 	desc = "An agile drone used by Yautja to survey the hunting grounds."

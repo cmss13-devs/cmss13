@@ -1200,7 +1200,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/landmark/costume/random(loc)
 			new /obj/effect/landmark/costume/random(loc)
 			loot_message = SPAN_NOTICE("What the hell is this..?")
-		if(76 to 85)
+		if(76 to 90)
 		// Random supply garbage.
 			new /obj/effect/spawner/random/tool(loc)
 			new /obj/effect/spawner/random/tool(loc)
@@ -1211,11 +1211,11 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/effect/spawner/random/toy(loc)
 			new /obj/effect/spawner/random/toy(loc)
 			loot_message = SPAN_NOTICE("It's just a bunch of junk!")
-		if(86 to 90)
+		if(91 to 95)
 		// We don't really have any other kind of booby trap so this will do
 			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
 			loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
-		if(95 to 99)
+		if(96 to 99)
 		// Oh boy. Big booby trap!
 			var/obj/item/mortar_shell/frag/fragshell = new(loc)
 			var/obj/item/explosive/grenade/incendiary/molotov/molotov = new(loc)

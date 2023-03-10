@@ -915,12 +915,14 @@
 	if(D)
 		var/datum/disease/black_goo/virus = new
 		var/mob/living/carbon/human/H = M
-		if(virus.stage == 1)
-			if(prob(3 * potency))
-				for(var/datum/disease/goo in H.viruses)
-					goo.cure()
-			else
-				to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
+		switch(virus.stage)
+			if(1)
+				if(prob(3 * potency))
+					for(var/datum/disease/goo in H.viruses)
+						goo.cure()
+				else
+					if(prob(15 * potency))
+						to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
 
 /datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency, delta_time)
 	M.apply_damage(4 * potency * delta_time, TOX)

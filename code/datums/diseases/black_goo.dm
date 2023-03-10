@@ -38,12 +38,20 @@
 				to_chat(H, SPAN_WARNING(message))
 				goo_message_cooldown = world.time + 10 SECONDS
 		if(2)
+			if(victim_has_antibiotic())
+				age_multiplier = 0.50
+			else
+				age_multiplier = 1
 			if(goo_message_cooldown < world.time)
 				if(prob(5))
 					H.vomit_on_floor()
-					to_chat(H, SPAN_WARNING("it becomes harder to see"))
-				goo_message_cooldown = world.time + 10 SECONDS
+				to_chat(H, SPAN_WARNING(age))
+				goo_message_cooldown = world.time + 1 SECONDS
 		if(3)
+			if(victim_has_antibiotic())
+				age_multiplier = 0.75
+			else
+				age_multiplier = 1
 			hidden = list(1,0)
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
 			var/message = pick("Your muscles ache", "Your throat is really dry", "Skin on your hands peels away.", "You can feel your heart skipping a beat...")
@@ -52,7 +60,6 @@
 				goo_message_cooldown = world.time + 15 SECONDS
 				if(prob(10))
 					H.vomit_on_floor()
-					affected_mob.pain.apply_pain(PAIN_ZOMBIE_TURNING)
 		if(4)
 			H.nutrition = NUTRITION_VERYLOW //brains tasty yey :D
 			H.next_move_slowdown = max(H.next_move_slowdown, 2)
@@ -63,10 +70,11 @@
 			if(prob(20) || age >= stage_minimum_age-1)
 				if(!zombie_transforming)
 					zombie_transform(H)
+					affected_mob.pain.apply_pain(PAIN_ZOMBIE_TURNING)
 					to_chat(H, SPAN_HIGHDANGER(message))
 			else
-				H.vomit_on_floor()
-				affected_mob.pain.apply_pain(PAIN_ZOMBIE_TURNING)
+				if(prob(20))
+					H.vomit_on_floor()
 		if(5)
 			if(H.stat == DEAD && stage_counter != stage)
 				stage_counter = stage
@@ -82,6 +90,14 @@
 						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
 
+
+/datum/disease/black_goo/proc/victim_has_antibiotic()
+    for(var/i=1 to affected_mob.reagents.reagent_list.len)
+        var/datum/reagent/S = affected_mob.reagents.reagent_list[i]
+        if(S.get_property(PROPERTY_ANTIBIOTIC))
+            return TRUE
+        else
+            return FALSE
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
@@ -131,14 +147,8 @@
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
 			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is already infected.</b>"))
-		else
-			var/protected = CLOTHING_ARMOR_HARDCORE - (human.getarmor(null, ARMOR_MELEE) + 60)
-			if(prob(protected))
-				target.AddDisease(new /datum/disease/black_goo)
-	if(issynth(target))
+	if(ishuman(target))
 		target.apply_effect(2, SLOW)
-	else
-		target.apply_effect(2, SUPERSLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)

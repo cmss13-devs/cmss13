@@ -1275,7 +1275,6 @@
 		return
 	var/turf/T = get_turf(src)
 	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
-	src.make_jittery(50)
 	nutrition -= 20
 	apply_damage(-3, TOX)
 	playsound(T, 'sound/effects/splat.ogg', 25, 1, 7)

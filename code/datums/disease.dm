@@ -42,10 +42,10 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	var/age = 0 // age of the disease in the current mob
 	var/stage_minimum_age = 0 // how old the disease must be to advance per stage
 	var/survive_mob_death = FALSE //whether the virus continues processing as normal when the affected mob is dead.
-
+	var/age_multiplier = 1 //Helpfull to slow down progression of virruses, <1 is slower, >1 is faster. 1 is default
 
 /datum/disease/proc/stage_act()
-	age++
+	age = age + 1 * age_multiplier
 	var/cure_present = has_cure()
 
 	if(carrier && !cure_present)

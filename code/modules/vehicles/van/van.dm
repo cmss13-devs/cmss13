@@ -257,3 +257,6 @@
 
 /obj/effect/vehicle_spawner/van/fixed/load_hardpoints(obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+/obj/vehicle/multitile/van/colony
+	name = "Colony Truck"
+	health = 0

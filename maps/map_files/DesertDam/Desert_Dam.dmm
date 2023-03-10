@@ -62530,11 +62530,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/vehicle/multitile/van{
-	name = "Colony Truck";
-	desc = "A rather old hunk of metal with six wheels, you know what to do. Entrance on the back and sides.";
-	health = 0
-	},
+/obj/vehicle/multitile/van/colony,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"

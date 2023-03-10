@@ -18399,11 +18399,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "nnR" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/vehicle/multitile/van{
-	name = "Colony Truck";
-	desc = "A rather old hunk of metal with six wheels, you know what to do. Entrance on the back and sides.";
-	health = 0
-	},
+/obj/vehicle/multitile/van/colony,
 /turf/open/floor{
 	icon_state = "dark"
 	},

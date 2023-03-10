@@ -235,8 +235,9 @@
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."
 	pill_initial_reagents = list("russianred" = 10)
 	pill_icon_class = "spac"
+
 /obj/item/reagent_container/pill/peridaxon
-	pill_desc = "A Peridaxon pill. Temporarily halts the effects of internal organ damage."
+	pill_desc = "A Peridaxon pill. Temporarily halts the effects of internal organ damage, but is metabolized quickly the more active you are. Rest or sleep for best effects."
 	pill_initial_reagents = list("peridaxon" = 7)
 	pill_icon_class = "peri"
 

@@ -10297,7 +10297,8 @@
 	},
 /area/almayer/lifeboat_pumps/north1)
 "aHV" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -14502,13 +14503,8 @@
 	},
 /area/almayer/medical/chemistry)
 "bcA" = (
-/obj/structure/filingcabinet/filingcabinet{
-	pixel_y = 17;
-	density = 0
-	},
-/obj/item/clipboard,
-/obj/item/folder/black,
-/obj/item/folder/white,
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -16590,11 +16586,12 @@
 	},
 /area/almayer/living/offices)
 "bpz" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -28793,10 +28790,11 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "diq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/aft_hallway)
 "dix" = (
@@ -30264,6 +30262,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/captain_mess)
+"dOt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/upper_medical)
 "dOL" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer,
@@ -30506,6 +30513,15 @@
 /area/almayer/medical/lockerroom{
 	name = "\improper Medbay Equipment Storage/Distribution"
 	})
+"dVF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "dVO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -34674,6 +34690,7 @@
 	req_access = null;
 	name = "\improper Medical Bay"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -37151,11 +37168,12 @@
 	},
 /area/almayer/shipboard/sea_office)
 "gYl" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -44386,13 +44404,16 @@
 	},
 /area/almayer/squads/req)
 "krQ" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
 /obj/structure/sign/safety/reception{
 	pixel_x = 47
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -46140,6 +46161,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"ljU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/upper_medical)
 "lkd" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -46394,6 +46423,9 @@
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "lqF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side"
@@ -49358,10 +49390,13 @@
 	},
 /area/almayer/engineering/laundry)
 "mHv" = (
-/obj/structure/bed/roller,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -32
 	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -50036,6 +50071,14 @@
 	icon_state = "blue"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"mSX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "mTb" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -51854,6 +51897,9 @@
 	req_one_access_txt = "19;20"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -52212,6 +52258,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/structure/bed/chair,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -52434,6 +52481,7 @@
 	id = "CMO Shutters";
 	name = "\improper CMO Office Shutters"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -54590,6 +54638,15 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/tankerbunks)
+"oRd" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "oRj" = (
 /obj/structure/stairs{
 	icon_state = "ramptop"
@@ -57213,7 +57270,8 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/bed/chair,
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -59195,6 +59253,12 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
+"qZq" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "qZH" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper{
@@ -59374,15 +59438,16 @@
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_a_s)
 "rdS" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/structure/machinery/door_control{
 	id = "medicalemergency";
 	name = "Medbay Lockdown";
 	pixel_y = 2;
 	req_one_access_txt = "2;3;12;19";
 	pixel_x = -25
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -60549,8 +60614,18 @@
 	name = "CMO Office Telephone";
 	phone_category = "Offices";
 	phone_id = "CMO Office";
-	pixel_y = 29
+	pixel_y = 29;
+	pixel_x = 7
 	},
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_y = 17;
+	density = 0;
+	pixel_x = -8
+	},
+/obj/item/folder/white,
+/obj/item/folder/white,
+/obj/item/folder/black,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -61429,6 +61504,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/offices/flight)
+"rYK" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/hallways/aft_hallway)
 "rZB" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/structure/machinery/light{
@@ -65851,6 +65933,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
+"tZr" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/upper_medical)
 "tZB" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -66425,6 +66517,10 @@
 "unU" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
+	},
+/obj/structure/disposalpipe/segment{
+	layer = 5.1;
+	name = "water pipe"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
@@ -67823,14 +67919,15 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "uRE" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -69282,6 +69379,15 @@
 "vuR" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
+"vuU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vuZ" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -72435,6 +72541,7 @@
 	pixel_x = 13;
 	pixel_y = -28
 	},
+/obj/structure/bed/roller,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -72869,6 +72976,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -101096,7 +101204,7 @@ rJC
 ohP
 rlo
 bei
-bei
+cZp
 bei
 bei
 bei
@@ -101291,8 +101399,8 @@ aWO
 aZZ
 rJc
 bcA
-beA
-vuH
+qZq
+oRd
 nRF
 bpz
 nvE
@@ -102111,7 +102219,7 @@ beA
 kan
 aHV
 unU
-beA
+vuU
 rHS
 gHB
 kan
@@ -102517,7 +102625,7 @@ iWj
 oKc
 dwB
 drD
-beA
+mSX
 gqS
 dwB
 ond
@@ -102716,11 +102824,11 @@ bep
 kan
 kan
 uRE
-beA
-beA
-beA
-beA
-beA
+qZq
+qZq
+qZq
+qZq
+dVF
 beA
 beA
 beA
@@ -105062,7 +105170,7 @@ lWS
 lWS
 sqf
 qdK
-akw
+dOt
 vIf
 ajl
 dtM
@@ -105265,7 +105373,7 @@ sqf
 sqf
 sqf
 nMV
-akw
+ljU
 qpP
 ajl
 ahr
@@ -105468,7 +105576,7 @@ nud
 nud
 ans
 aos
-akw
+ljU
 akw
 vtx
 bYe
@@ -105671,7 +105779,7 @@ akw
 akw
 akw
 akw
-akw
+ljU
 alD
 ajl
 hon
@@ -105874,10 +105982,10 @@ rnN
 maT
 akA
 oap
-kXw
+tZr
 wWl
 fKO
-ait
+rYK
 diq
 mce
 mTb

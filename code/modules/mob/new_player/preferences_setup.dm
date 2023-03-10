@@ -245,6 +245,8 @@
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
+		if(JOB_NAVIGATIONS)
+			return /datum/equipment_preset/uscm_ship/no
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
 		if(JOB_PILOT)

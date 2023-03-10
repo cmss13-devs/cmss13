@@ -61,8 +61,9 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
 #define JOB_SO "Staff Officer"
+#define JOB_NAVIGATIONS "Navigations Officer"
 #define JOB_COMMAND_ROLES /datum/timelock/command
-#define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
+#define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO, JOB_NAVIGATIONS)
 var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_PILOT "Pilot Officer"

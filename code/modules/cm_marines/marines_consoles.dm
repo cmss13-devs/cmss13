@@ -894,6 +894,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				RAIDER_OFFICER_SQUAD = 11,
 				JOB_SO = 12,
 				JOB_SEA = 13,
+				JOB_NAVIGATIONS = 14,
 				// 20-29: Aux Command (Synth isn't Aux head, but important - make him bold)
 				JOB_SYNTH = 20,
 				JOB_PILOT = 21,

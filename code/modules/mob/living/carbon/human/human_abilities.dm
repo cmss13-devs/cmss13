@@ -503,6 +503,8 @@ CULT
 		return
 	if(!action_cooldown_check())
 		return
+	if(get_dist(zombie, M) > 1)
+		return
 	var/mob/living/carbon/human/victim = M
 	var/datum/disease/black_goo/D = locate() in victim.viruses
 	if(D)
@@ -513,7 +515,7 @@ CULT
 		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_ALL))
 			to_chat(zombie, SPAN_XENOWARNING("You bite [M.name] neck, leaving a bloody mark!"))
 			to_chat(M, SPAN_DANGER("[zombie.name] Bites you right in the neck!"))
-			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, 1)
+			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, )
 			victim.emote("scream")
 			victim.AddDisease(new /datum/disease/black_goo)
 			zombie.flick_attack_overlay(victim, "slash")

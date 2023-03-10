@@ -22,6 +22,9 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
+	var/highpop_paygrade
+	var/playtime_rank	//Only used for Highpop
+	var/highpop
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
@@ -52,6 +55,24 @@
 			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_r_ear
 			equipped_headset.add_hud_tracker(H)
 
+/datum/equipment_preset/uscm/load_rank(mob/living/carbon/human/H)
+	check_players()
+	..()
+	//Is it highpop, and does it have either a highpop or playtime rank?
+	if(highpop && (highpop_paygrade || playtime_rank))
+		if(!playtime_rank)
+			return highpop_paygrade
+
+		//All the silver+ LCPLs get to me CPLs on highpop.
+		else if (highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
+			return playtime_rank
+
+/datum/equipment_preset/uscm/proc/check_players()
+	var/players = length(GLOB.clients)
+	//Oh god, I do need to know if there is a config value for the # of players for highpop
+	if(players < 120)
+		highpop = TRUE
+
 
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm/pfc
@@ -64,7 +85,6 @@
 	paygrade = "ME2"
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
-
 	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
@@ -75,9 +95,14 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
+	check_players()
+
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
+		//Only for highpop, I think that this is for plat?
+		if(highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_5)
+			return "ME3"
 	return paygrade
 
 /datum/equipment_preset/uscm/pfc/cryo
@@ -98,6 +123,7 @@
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "ME3"
+	playtime_rank = "ME4"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -272,6 +298,7 @@
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "ME3"
+	playtime_rank = "ME4"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -328,6 +355,7 @@
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
+	playtime_rank = "ME4"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
@@ -360,9 +388,9 @@
 	assignment = JOB_SQUAD_RTO
 	rank = JOB_SQUAD_RTO
 	paygrade = "ME4"
+	highpop_paygrade = "ME5"
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
-
 	minimap_icon = "rto"
 
 /datum/equipment_preset/uscm/rto/load_gear(mob/living/carbon/human/H)
@@ -390,6 +418,7 @@
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "ME3"
+	playtime_rank = "ME4"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
@@ -422,6 +451,7 @@
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
 	paygrade = "ME5"
+	highpop_paygrade = "ME6"
 	role_comm_title = "SL"
 	minimum_age = 27
 	skills = /datum/skills/SL

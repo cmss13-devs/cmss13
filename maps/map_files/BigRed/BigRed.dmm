@@ -36275,8 +36275,12 @@
 	},
 /area/bigredv2/caves/mining)
 "uIB" = (
-/obj/effect/vehicle_spawner/van/decrepit,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/vehicle/multitile/van{
+	name = "Colony Truck";
+	desc = "A rather old hunk of metal with six wheels, you know what to do. Entrance on the back and sides.";
+	health = 0
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor"

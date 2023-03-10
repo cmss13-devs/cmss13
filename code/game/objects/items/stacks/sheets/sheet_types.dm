@@ -150,7 +150,8 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	new/datum/stack_recipe("wooden door", /obj/structure/mineral_door/wood, 10, time = 20, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("baseball bat", /obj/item/weapon/melee/baseballbat, 10, time = 20, on_floor = 1), \
-	new/datum/stack_recipe("wooden cross", /obj/structure/prop/wooden_cross, 2, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1) \
+	new/datum/stack_recipe("wooden cross", /obj/structure/prop/wooden_cross, 2, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("wooden pole", /obj/item/weapon/melee/pole, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1) \
 	)
 
 /obj/item/stack/sheet/wood
@@ -238,6 +239,10 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty magazine box (L42A Ext)", /obj/item/ammo_box/magazine/l42a/ext/empty), \
 		new/datum/stack_recipe("empty magazine box (L42A Incen)", /obj/item/ammo_box/magazine/l42a/incen/empty), \
 		new/datum/stack_recipe("empty magazine box (L42A LE)", /obj/item/ammo_box/magazine/l42a/le/empty), \
+		null, \
+		new/datum/stack_recipe("empty magazine box (M4RA)", /obj/item/ammo_box/magazine/m4ra/empty), \
+		new/datum/stack_recipe("empty magazine box (M4RA AP)", /obj/item/ammo_box/magazine/m4ra/ap/empty), \
+		new/datum/stack_recipe("empty magazine box (M4RA Incen)", /obj/item/ammo_box/magazine/m4ra/incen/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M41A)", /obj/item/ammo_box/magazine/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A AP)", /obj/item/ammo_box/magazine/ap/empty), \

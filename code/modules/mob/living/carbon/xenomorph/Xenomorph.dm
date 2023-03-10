@@ -231,8 +231,13 @@
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/is_zoomed = FALSE
-	var/tileoffset = 0 // Zooming-out related vars
-	var/viewsize = 0
+	var/list/spit_types
+	/// Caste-based spit windup
+	var/spit_windup = FALSE
+	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
+	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
+	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter

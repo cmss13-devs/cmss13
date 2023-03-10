@@ -13,6 +13,8 @@
 	speed = XENO_SPEED_HELLHOUND
 	attack_delay = -2
 
+	minimum_evolve_time = 0
+
 	tackle_min = 4
 	tackle_max = 5
 	tackle_chance = 40

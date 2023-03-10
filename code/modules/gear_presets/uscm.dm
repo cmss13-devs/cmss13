@@ -64,7 +64,7 @@
 			return highpop_paygrade
 
 		//All the silver+ LCPLs get to me CPLs on highpop.
-		else if (highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
+		else if (highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_2)
 			return playtime_rank
 
 /datum/equipment_preset/uscm/proc/check_players()
@@ -101,7 +101,7 @@
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 		//Only for highpop, I think that this is for plat?
-		if(highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_5)
+		if(highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_4)
 			return "ME3"
 	return paygrade
 

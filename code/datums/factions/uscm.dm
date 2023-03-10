@@ -22,6 +22,7 @@
 			if(JOB_XO) marine_rk = "xo"
 			if(JOB_CO) marine_rk = "co"
 			if(JOB_GENERAL) marine_rk = "general"
+			if(JOB_NAVIGATIONS) marine_rk = "no"
 			if(JOB_PILOT) marine_rk = "po"
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
@@ -77,7 +78,7 @@
 				marine_rk = "so"
 				border_rk = "command"
 			if(JOB_NAVIGATIONS)
-				marine_rk = "so"
+				marine_rk = "no"
 				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
 				marine_rk = "general"

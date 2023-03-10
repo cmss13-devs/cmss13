@@ -165,6 +165,17 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot)
 
+/obj/item/clothing/under/marine/officer/navigations
+	name = "navigation officer bodysuit"
+	desc = "A bodysuit worn by navigation officers of the USCM. This one is less rugged than it's pilot bodsuit counterpart, but it is still fitted with an internal g-suit for performance in high-g craft. Navigate the marines to safer shores. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "pilot_flightsuit"
+	item_state = "pilot_flightsuit"
+	worn_state = "pilot_flightsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = NO_NAME_OVERRIDE
+	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/hazardvest)
+
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"
 	desc = "A flightsuit worn by pilot officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."

@@ -489,20 +489,21 @@
 	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_BRONZE)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
-/datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/no/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/navigations(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clipboard(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/document(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/prop/almayer/comp_open(H), WEAR_L_HAND)
 
 //*****************************************************************************************************/
 

@@ -91,12 +91,12 @@
 				H.nutrition = NUTRITION_MAX //never hungry
 
 /datum/disease/black_goo/proc/victim_has_antibiotic()
-    for(var/i=1 to affected_mob.reagents.reagent_list.len)
-        var/datum/reagent/S = affected_mob.reagents.reagent_list[i]
-        if(S.get_property(PROPERTY_ANTIBIOTIC))
-            return TRUE
+	for(var/i=1 to affected_mob.reagents.reagent_list.len)
+		var/datum/reagent/S = affected_mob.reagents.reagent_list[i]
+		if(S.get_property(PROPERTY_ANTIBIOTIC))
+        	return TRUE
         else
-            return FALSE
+			return FALSE
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0

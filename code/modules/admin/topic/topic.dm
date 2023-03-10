@@ -1505,7 +1505,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 

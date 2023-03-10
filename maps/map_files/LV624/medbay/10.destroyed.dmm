@@ -325,7 +325,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "Cq" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/tank/anesthetic,
 /turf/open/floor{
 	icon_state = "whitebluefull"

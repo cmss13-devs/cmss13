@@ -375,7 +375,7 @@
 			mech = "None"
 
 		dat += "<tr>"
-		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td>"
+		dat += "<td>[i.name]</td><td>N/A</td><td>[i.get_total_damage()]</td><td>[mech]</td>"
 		dat += "</tr>"
 	dat += "</table>"
 

@@ -664,7 +664,7 @@
 /turf/open/floor/plating,
 /area/prison/research/secret/bioengineering)
 "abB" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/structure/machinery/light{
 	dir = 8
@@ -3376,7 +3376,7 @@
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
 "aiM" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
@@ -3540,7 +3540,7 @@
 	},
 /area/prison/cellblock/maxsec/south)
 "ajn" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
 "ajo" = (
@@ -5164,7 +5164,7 @@
 	},
 /area/prison/medbay/surgery)
 "anM" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
@@ -29380,10 +29380,6 @@
 	},
 /turf/open/floor/wood,
 /area/prison/residential/south)
-"bHd" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bHf" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -36181,11 +36177,6 @@
 	},
 /turf/open/floor/wood,
 /area/prison/residential/south)
-"ccz" = (
-/obj/structure/monorail,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "ccA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Engineering Hallway"
@@ -62855,7 +62846,7 @@ bWH
 bXN
 bYJ
 oog
-ccz
+btd
 btd
 bTP
 bVa
@@ -63047,7 +63038,7 @@ acL
 acL
 acL
 acL
-bHd
+acL
 acL
 acL
 aAO
@@ -74356,7 +74347,7 @@ czO
 czM
 acL
 acL
-bHd
+acL
 cvj
 aAO
 aAO
@@ -81352,7 +81343,7 @@ cxg
 cxl
 cxx
 cxz
-bHd
+acL
 cvj
 aAO
 aAO
@@ -100158,7 +100149,7 @@ bBe
 bBe
 bzS
 acL
-bHd
+acL
 acL
 acL
 aAO

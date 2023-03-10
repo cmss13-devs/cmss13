@@ -25,7 +25,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 
-/datum/surgery_step/fix_vein/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/fix_vein/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start patching the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts to patch the damaged vein in your [surgery.affected_limb.display_name] with \the [tool]."),

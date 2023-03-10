@@ -54,7 +54,7 @@
 	)
 	time = 6 SECONDS
 
-/datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin opening a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."),
 		SPAN_NOTICE("[user] begins to open a pocket in your [surgery.affected_limb.cavity] wall with \the [tool]."),
@@ -110,7 +110,7 @@
 			to_chat(user, SPAN_WARNING("[tool] is too big to implant into [surgery.target]'s [surgery.affected_limb.cavity]!"))
 			return FALSE
 
-/datum/surgery_step/place_item/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/place_item/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."),
 		SPAN_NOTICE("[user] begins implanting \the [tool] into your [surgery.affected_limb.cavity]."),
@@ -160,7 +160,7 @@
 /datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
-/datum/surgery_step/remove_implant/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_implant/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(surgery.affected_limb.hidden) //Perhaps it self-deleted in the meantime.
 		user.affected_message(target,
 			SPAN_NOTICE("You attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with \the [tool]."),
@@ -214,7 +214,7 @@
 	desc = "seal the implant cavity"
 	time = 5 SECONDS
 
-/datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin sealing the implant pocket in [target]'s [surgery.affected_limb.cavity] with \the [tool]."),
 		SPAN_NOTICE("[user] begins to seal the implant pocket in your [surgery.affected_limb.cavity] with \the [tool]."),
@@ -252,7 +252,7 @@
 	priority = SURGERY_PRIORITY_LOW
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	steps = list(/datum/surgery_step/remove_embedded)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_LIGHT //This is Yank Object without the damage or IB risk.
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -268,7 +268,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-/datum/surgery_step/remove_embedded/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_embedded/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start poking around inside the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts poking around inside the incision on your [surgery.affected_limb.display_name] with \the [tool]."),

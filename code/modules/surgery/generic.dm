@@ -15,7 +15,7 @@
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/retract_skin,
 	)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
@@ -27,7 +27,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
-/datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
 			SPAN_NOTICE("You start to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -116,7 +116,7 @@
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	steps = list(/datum/surgery_step/clamp_bleeders_step)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
@@ -143,7 +143,7 @@
 /datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This step is optional.
 
-/datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
 			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -203,7 +203,7 @@
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
 		)
 
-/datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(target_zone == "groin")
 		user.affected_message(target,
 			SPAN_NOTICE("You begin prying open the incision and rearranging the organs in [target]'s lower abdomen with \the [tool]."),
@@ -282,7 +282,7 @@
 	possible_locs = ALL_LIMBS
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	steps = list(/datum/surgery_step/cauterize)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
@@ -304,7 +304,7 @@
 	if((. in tools_lit) && !tool.heat_source) //Light your damned tools.
 		return FALSE
 
-/datum/surgery_step/cauterize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start cauterizing the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts to cauterize the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
@@ -372,7 +372,7 @@
 	if(affecting.status & LIMB_BROKEN)
 		return TRUE //Don't need the saw if it's already fractured.
 
-/datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."),
 		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with \the [tool]."),
@@ -428,7 +428,7 @@
 /datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
-/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with \the [tool]."),
 		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
@@ -490,7 +490,7 @@
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 
-/datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."),
 		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with \the [tool]."),
@@ -532,7 +532,7 @@
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 
-/datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
 			SPAN_NOTICE("You start applying \the [tool] to [target]'s [surgery.affected_limb.encased]."),
@@ -602,7 +602,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
 	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 
 /datum/surgery_step/test_incision
 	name = "Make Incision (Nonhuman)"
@@ -610,7 +610,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
-/datum/surgery_step/test_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/test_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start to make an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
 		SPAN_NOTICE("[user] starts making an incision on your [parse_zone(target_zone)] with \the [tool]."),
@@ -649,7 +649,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/mend_test_organ_step)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	lying_required = FALSE
+	minimum_conditions_required = 0
 
 //------------------------------------
 
@@ -663,7 +663,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	)
 	time = 3 SECONDS
 
-/datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin attempting to treat [target]'s heart with [tool]."),
 		SPAN_NOTICE("[user] begins an attempt to treat your heart with [tool]."),
@@ -706,11 +706,11 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
 	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 
 //------------------------------------
 
-/datum/surgery_step/cauterize/close_test_incision_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/close_test_incision_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start cauterizing the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
 		SPAN_NOTICE("[user] starts to cauterize the incision on your [parse_zone(target_zone)] with \the [tool]."),

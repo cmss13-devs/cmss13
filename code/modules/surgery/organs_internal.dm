@@ -11,11 +11,14 @@ and organ transplant code which may come in handy in future but haven't been edi
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	minimum_conditions_required = SURGERY_SURFACE_MULT_ADEQUATE
+	/// Can't fix heavy damage without this.
+	//var/complete_conditions_required = SURGERY_SURFACE_MULT_IDEAL
 	steps = list(/datum/surgery_step/repair_organs)
 
 /datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/internal_organ/IO as anything in L.internal_organs)
-		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+		if(IO.get_total_damage() > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE
 	return FALSE
 
@@ -36,18 +39,22 @@ and organ transplant code which may come in handy in future but haven't been edi
 	)
 	time = 3 SECONDS
 	repeat_step = TRUE
+	/// Can't fix heavy damage without this.
+	var/complete_conditions_required = SURGERY_SURFACE_MULT_IDEAL
+	var/surface_modifier
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
-		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+		if(IO.get_total_damage() > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE
 	return FALSE
 
-/datum/surgery_step/repair_organs/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/repair_organs/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
+	src.surface_modifier = surgery_modifier
 	var/list/damaged_organs = list()
 	var/toolname
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
-		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+		if(IO.get_total_damage() > 0 && IO.robotic != ORGAN_ROBOT)
 			damaged_organs += IO
 
 	switch(tool_type)
@@ -76,14 +83,25 @@ and organ transplant code which may come in handy in future but haven't been edi
 /datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.affected_message(target,
-				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
+		if(I && I.get_total_damage() > 0 && I.robotic != ORGAN_ROBOT)
 
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-			I.rejuvenate()
+			if(I.organ_status == ORGAN_DESTROYED)
+				to_chat(user, SPAN_DANGER("[I] is far, far too damaged to be mended."))
+				return
+			var/full_recovery
+			if(surface_modifier >= complete_conditions_required)
+				full_recovery = TRUE
+				I.heal_organ_integrity_loss()
+			I.heal_damage()
+			var/imperfect_outcome
+			if(!full_recovery && I.organ_integrity_loss)
+				// Can't quite heal the heavy damage if it's not at optimum conditions.
+				imperfect_outcome = TRUE
+			user.affected_message(target,
+				SPAN_NOTICE("You finish treating [target]'s damaged [I.name].[imperfect_outcome ? " But there was some damage you couldn't mend in these conditions..." : ""]"),
+				SPAN_NOTICE("[user] finishes treating your damaged [I.name].[imperfect_outcome ? " But it still feels damaged..." : ""]"),
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name].[imperfect_outcome ? " But it still looks damaged..." : ""]"))
 			target.pain.recalculate_pain()
 			break
 
@@ -103,7 +121,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 			target.apply_damage(5, TOX)
 
 	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0)
+		if(I && I.get_total_damage() > 0)
 			I.take_damage(dam_amt,0)
 
 	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
@@ -129,12 +147,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 		if(affected.body_part == BODY_FLAG_HEAD)//brain and eye damage is fixed by a separate surgery
 			return 0
 		for(var/datum/internal_organ/I in affected.internal_organs)
-			if(I.damage > 0 && I.robotic == ORGAN_ROBOT)
+			if(I.get_total_damage() > 0 && I.robotic == ORGAN_ROBOT)
 				return 1
 
 /datum/surgery_step/internal/fix_organ_robotic/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	for(var/datum/internal_organ/I in affected.internal_organs)
-		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
+		if(I && I.get_total_damage() > 0 && I.robotic == ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] starts mending the damage to [target]'s [I.name]'s mechanisms."), \
 			SPAN_NOTICE("You start mending the damage to [target]'s [I.name]'s mechanisms.") )
 			log_interact(user, target, "[key_name(user)] started to repair damage to [key_name(target)]'s [I.name]'s mechanisms.")
@@ -145,11 +163,11 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/internal/fix_organ_robotic/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	for(var/datum/internal_organ/I in affected.internal_organs)
-		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
+		if(I && I.get_total_damage() > 0 && I.robotic == ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] repairs [target]'s [I.name] with [tool]."), \
 			SPAN_NOTICE("You repair [target]'s [I.name] with [tool].") )
 			log_interact(user, target, "[key_name(user)] repaired damage to [key_name(target)]'s [I.name]'s mechanisms.")
-			I.damage = 0
+			I.get_total_damage() = 0
 
 /datum/surgery_step/internal/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!"), \

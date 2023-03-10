@@ -17,7 +17,7 @@
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
+	surgery_object_quality = SURGERY_SURFACE_MULT_UNSUITED
 
 	tiles_with = list(/turf/closed/wall)
 	var/tiles_special[] = list(/obj/structure/machinery/door/airlock,

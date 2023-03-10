@@ -26,7 +26,7 @@
 
 /datum/surgery/eye_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	var/datum/internal_organ/eyes/E = patient.internal_organs_by_name["eyes"]
-	return E && E.damage > 0 && E.robotic != ORGAN_ROBOT
+	return E && E.get_total_damage() > 0 && E.robotic != ORGAN_ROBOT
 
 //------------------------------------
 
@@ -36,7 +36,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
-/datum/surgery_step/separate_cornea/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/separate_cornea/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start to separate the corneas of [target]'s eyes with \the [tool]."),
 		SPAN_NOTICE("[user] starts to separate the corneas of your eyes with \the [tool]."),
@@ -75,7 +75,7 @@
 	tools = SURGERY_TOOLS_PRY_DELICATE
 	time = 2 SECONDS
 
-/datum/surgery_step/lift_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/lift_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin lifting the corneas from [target]'s eyes with \the [tool]."),
 		SPAN_NOTICE("[user] begins to lift the corneas from your eyes with \the [tool]."),
@@ -111,7 +111,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 4 SECONDS
 
-/datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin mending the nerves and lenses in [target]'s eyes with \the [tool]."),
 		SPAN_NOTICE("[user] begins to mend the nerves and lenses in your eyes with \the [tool]."),
@@ -146,7 +146,7 @@
 	name = "cauterize the incisions"
 	time = 3 SECONDS
 
-/datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to reattach [target]'s corneas with \the [tool]."),
 		SPAN_NOTICE("[user] begins to reattach your corneas with \the [tool]."),
@@ -166,7 +166,7 @@
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND
-	surgery.target_eyes.heal_damage(surgery.target_eyes.damage)
+	surgery.target_eyes.rejuvenate()
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	target.pain.recalculate_pain()
 

@@ -368,9 +368,9 @@ var/list/datum/mob_hud/huds = list(
 				holder2.icon_state = "hudsynthdead"
 			return
 	else
-		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
+		var/revive_enabled = stat == DEAD && is_revivable()
 		if(stat == DEAD)
-			revive_enabled = check_tod() && is_revivable()
+			revive_enabled = is_revivable()
 		var/datum/internal_organ/heart/heart = islist(internal_organs_by_name) ? internal_organs_by_name["heart"] : null
 
 		var/holder2_set = 0
@@ -411,13 +411,13 @@ var/list/datum/mob_hud/huds = list(
 					else if(!G.client)
 						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
-				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
+				if(heart && heart.organ_status == ORGAN_ALMOST_BROKEN) // 7 minutes.
 					holder.icon_state = "huddeadalmost"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadalmost"
 						holder3.icon_state = "huddead"
 						holder2_set = 1
-				else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
+				else if(heart && heart.organ_status == ORGAN_BRUISED) // 4 minutes.
 					holder.icon_state = "huddeadclose"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadclose"
@@ -430,7 +430,7 @@ var/list/datum/mob_hud/huds = list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod())) // broken heart icon
+				if(heart && (heart.organ_status == ORGAN_BROKEN || heart.organ_status == ORGAN_DESTROYED)) // 8 or 10 minutes.
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"

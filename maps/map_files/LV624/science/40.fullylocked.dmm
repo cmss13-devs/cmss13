@@ -106,7 +106,7 @@
 	},
 /area/lv624/lazarus/research)
 "as" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"

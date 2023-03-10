@@ -360,24 +360,24 @@
 	var/datum/internal_organ/brain/B = user.internal_organs_by_name["brain"]
 
 	if(H)
-		health -= H.damage
-		if(inject_damage_types & ACID_SCAN_DAMAGE_HEART && H.damage > inject_damage_threshold)
+		health -= H.get_total_damage()
+		if(inject_damage_types & ACID_SCAN_DAMAGE_HEART && H.get_total_damage() > inject_damage_threshold)
 			damage_scan |= ACID_SCAN_DAMAGE_HEART
 	if(L)
-		health -= L.damage
-		if(inject_damage_types & ACID_SCAN_DAMAGE_LIVER && L.damage > inject_damage_threshold)
+		health -= L.get_total_damage()
+		if(inject_damage_types & ACID_SCAN_DAMAGE_LIVER && L.get_total_damage() > inject_damage_threshold)
 			damage_scan |= ACID_SCAN_DAMAGE_LIVER
 	if(U)
-		health -= U.damage
-		if(inject_damage_types & ACID_SCAN_DAMAGE_LUNGS && U.damage > inject_damage_threshold)
+		health -= U.get_total_damage()
+		if(inject_damage_types & ACID_SCAN_DAMAGE_LUNGS && U.get_total_damage() > inject_damage_threshold)
 			damage_scan |= ACID_SCAN_DAMAGE_LUNGS
 	if(K)
-		health -= K.damage
-		if(inject_damage_types & ACID_SCAN_DAMAGE_KIDNEYS && K.damage > inject_damage_threshold)
+		health -= K.get_total_damage()
+		if(inject_damage_types & ACID_SCAN_DAMAGE_KIDNEYS && K.get_total_damage() > inject_damage_threshold)
 			damage_scan |= ACID_SCAN_DAMAGE_KIDNEYS
 	if(B)
-		health -= B.damage
-		if(inject_damage_types & ACID_SCAN_DAMAGE_BRAIN && B.damage > inject_damage_threshold)
+		health -= B.get_total_damage()
+		if(inject_damage_types & ACID_SCAN_DAMAGE_BRAIN && B.get_total_damage() > inject_damage_threshold)
 			damage_scan |= ACID_SCAN_DAMAGE_BRAIN
 
 	//Vitals status
@@ -424,11 +424,11 @@
 		condition_scan |= ACID_SCAN_CONDITION_FOREIGN_OBJECT
 
 	for(var/datum/internal_organ/O in user.internal_organs)
-		if(O.damage > O.min_bruised_damage)
+		if(O.get_total_damage() > O.min_bruised_damage)
 			condition_scan |= ACID_SCAN_CONDITION_ORGAN_DAMAGED
 			if(!(last_condition_scan & ACID_SCAN_CONDITION_ORGAN_DAMAGED))
 				voice(ACID_SCAN_CONDITION_ORGAN_DAMAGED)
-		if(O.damage > O.min_broken_damage)
+		if(O.get_total_damage() > O.min_broken_damage)
 			condition_scan |= ACID_SCAN_CONDITION_ORGAN_FAILURE
 			if(!(last_condition_scan & ACID_SCAN_CONDITION_ORGAN_FAILURE))
 				voice(ACID_SCAN_CONDITION_ORGAN_FAILURE)

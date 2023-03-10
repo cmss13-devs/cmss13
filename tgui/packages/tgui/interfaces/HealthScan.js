@@ -422,7 +422,13 @@ const ScannerOrgans = (props, context) => {
               inline
               color={organ.status === 'Bruised' ? 'orange' : 'red'}
               bold={1}>
-              {organ.status + ' [' + organ.damage + ' damage]'}
+              {organ.status +
+              ' [' +
+              organ.damage +
+              ' damage][' +
+              organ.organ_integrity_loss
+                ? 'and ' + organ.organ_integrity_loss + ' integrity loss'
+                : '' + ']'}
             </Box>
             <Box inline width={'5px'} />
             {organ.robotic ? (

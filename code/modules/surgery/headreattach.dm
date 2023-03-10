@@ -53,7 +53,7 @@
 	)
 	time = 4 SECONDS
 
-/datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	//No need for to-patient messages on this one, they're ghosted or in the head.
 	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") , \
 	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
@@ -84,7 +84,7 @@
 	tools = list(/obj/item/limb/head/synth = SURGERY_TOOL_MULT_IDEAL)
 	time = 10 SECONDS
 
-/datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."), \
 	SPAN_NOTICE("You begin reattaching [tool] to [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
@@ -122,7 +122,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
-/datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.visible_message(SPAN_NOTICE("[user] begins to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."), \
 	SPAN_NOTICE("You begin to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
 
@@ -148,7 +148,7 @@
 	desc = "seal the skin"
 	time = 6 SECONDS
 
-/datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."), \
 	SPAN_NOTICE("You begin making final adjustments to the area around [target]'s neck with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")

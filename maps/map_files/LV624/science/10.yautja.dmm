@@ -138,7 +138,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/colony/south_medbay_road)
 "aw" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 5;

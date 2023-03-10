@@ -24014,7 +24014,7 @@
 	},
 /area/ice_colony/underground/medical/or)
 "btP" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},

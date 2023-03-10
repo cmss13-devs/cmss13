@@ -1946,7 +1946,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "aiG" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
 	},
@@ -22574,7 +22574,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "rZP" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "rZV" = (

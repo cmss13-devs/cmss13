@@ -161,7 +161,11 @@
 
 #define ORGAN_HEALTHY 0
 #define ORGAN_BRUISED 1
-#define ORGAN_BROKEN 2
+// Warning, about to die.
+#define ORGAN_ALMOST_BROKEN 2
+#define ORGAN_BROKEN 3
+// Can't come back from this.
+#define ORGAN_DESTROYED 4
 
 //=================================================
 

@@ -8,6 +8,8 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
+	var/icon_state_idle = "table2-idle"
+	var/icon_state_active = "table2-active"
 	density = TRUE
 	layer = TABLE_LAYER
 	anchored = TRUE
@@ -21,7 +23,7 @@
 	can_buckle = TRUE
 	buckle_lying = TRUE
 	var/buckling_y = -4
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_IDEAL //Ideal surface for surgery.
+	surgery_object_quality = SURGERY_SURFACE_MULT_IDEAL //Ideal surface for surgery.
 	var/patient_exam = 0
 	var/obj/item/tank/anesthetic/anes_tank
 
@@ -179,12 +181,12 @@
 
 /obj/structure/machinery/optable/update_icon()
 	if(inoperable())
-		icon_state = "table2-idle"
+		icon_state = icon_state_idle
 	else if(!ishuman(buckled_mob))
-		icon_state = "table2-idle"
+		icon_state = icon_state_idle
 	else
 		var/mob/living/carbon/human/H = buckled_mob
-		icon_state = H.pulse ? "table2-active" : "table2-idle"
+		icon_state = H.pulse ? icon_state_active : icon_state_idle
 
 /obj/structure/machinery/optable/process()
 	update_icon()
@@ -287,3 +289,12 @@
 		return FALSE
 
 	return TRUE
+
+/obj/structure/machinery/optable/colony
+	name = "Colony Operating Table"
+	desc = "A common, cheap 'build-it-yourself' operating table from a medical brand that specializes in affordable options. Looks a little dented and flimsy, you probably couldn't use this for the most complicated of surgeries."
+	icon = 'icons/obj/structures/machinery/surgery.dmi'
+	icon_state = "table2-idleold"
+	icon_state_idle = "table2-idleold"
+	icon_state_active = "table2-activeold"
+	surgery_object_quality = SURGERY_SURFACE_MULT_GOOD

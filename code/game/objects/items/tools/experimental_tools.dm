@@ -62,7 +62,7 @@
 	if(M.stat == CONSCIOUS)
 		to_chat(user, SPAN_WARNING("They're fine, no need for <b>CPR</b>!"))
 		return
-	if(!M.is_revivable() || !M.check_tod())
+	if(!M.is_revivable())
 		to_chat(user, SPAN_WARNING("That won't be of any use, they're already too far gone!"))
 		return
 	if(istype(M) && user.a_intent == INTENT_HELP)

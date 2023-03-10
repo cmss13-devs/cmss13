@@ -58,7 +58,7 @@
 			playsound(victim, "acid_sizzle", 25, TRUE)
 			animation_flash_color(victim, "#FF0000") //pain hit flicker
 
-/datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start carefully cutting the larva's pseudoroots away from [target]'s vital organs with \the [tool]."),
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
@@ -117,7 +117,7 @@
 		)
 	time = 6 SECONDS
 
-/datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(tool)
 		user.affected_message(target,
 			SPAN_NOTICE("You try to extract the larva from [target]'s chest with \the [tool]."),

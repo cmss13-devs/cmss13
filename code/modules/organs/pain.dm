@@ -119,7 +119,7 @@
 	// Damage to internal organs hurts a lot.
 	var/obj/limb/parent
 	for(var/datum/internal_organ/I as anything in internal_organs)
-		if(I.damage > 2 && prob(2))
+		if(I.get_total_damage() > 2 && prob(2))
 			parent = get_limb(I.parent_limb)
 			custom_pain("You feel a sharp pain in your [parent.display_name]!", 1)
 

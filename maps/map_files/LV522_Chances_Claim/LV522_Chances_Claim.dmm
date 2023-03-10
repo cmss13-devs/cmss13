@@ -27054,7 +27054,7 @@
 	},
 /area/lv522/oob)
 "lPa" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/light{
 	dir = 8
@@ -34022,7 +34022,7 @@
 	},
 /area/lv522/atmos/east_reactor/south/cas)
 "oHB" = (
-/obj/structure/machinery/optable{
+/obj/structure/machinery/optable/colony{
 	density = 0;
 	pixel_x = 16;
 	pixel_y = -6
@@ -38399,7 +38399,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "qrj" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -41443,7 +41443,7 @@
 	},
 /area/lv522/indoors/c_block/garage)
 "ruY" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/structure/machinery/light{
 	dir = 4
 	},

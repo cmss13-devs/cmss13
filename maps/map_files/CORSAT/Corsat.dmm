@@ -8302,7 +8302,7 @@
 	},
 /area/corsat/sigma/north)
 "ayv" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -22224,7 +22224,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "biH" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -23718,10 +23718,6 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/hangar/arrivals)
-"bmQ" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bmS" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -27210,7 +27206,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "byb" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/robot_parts/robot_suit,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -27478,7 +27474,7 @@
 	},
 /area/corsat/omega/complex)
 "byP" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -27996,7 +27992,7 @@
 	},
 /area/corsat/omega/complex)
 "bAb" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -61703,7 +61699,7 @@
 	},
 /area/corsat/sigma/south)
 "val" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "purple"
@@ -63371,7 +63367,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -99231,7 +99227,7 @@ ylo
 ylo
 aSa
 aSa
-bmQ
+aSa
 aSa
 aSa
 ylo

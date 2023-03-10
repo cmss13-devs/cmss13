@@ -58,6 +58,9 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 
+	for(var/datum/internal_organ/organ in internal_organs)
+		SEND_SIGNAL(organ, COMSIG_MOB_DEATH)
+
 	// Finding the last guy for anti-delay.
 	if(SSticker.mode && SSticker.mode.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && is_mainship_level(z))
 		var/mob/last_living_human

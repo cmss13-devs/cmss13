@@ -32,7 +32,7 @@
 	projectile_coverage = 20 //maximum chance of blocking a projectile
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
+	surgery_object_quality = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/surface/table/Initialize()
 	. = ..()

@@ -141,8 +141,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(human_target_mob.is_dead())
 			if(!human_target_mob.is_revivable())
 				permadead = TRUE
-			else if(!human_target_mob.check_tod() && !issynth(human_target_mob))
-				permadead = TRUE
 			if(issynth(target_mob))
 				permadead = FALSE
 
@@ -259,11 +257,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		//organs
 		var/damaged_organs = list()
 		for(var/datum/internal_organ/organ in human_target_mob.internal_organs)
-			if(!organ.damage)
+			if(!organ.get_total_damage())
 				continue
 			var/current_organ = list(
 				"name" = organ.name,
 				"damage" = organ.damage,
+				"organ_integrity_loss" = organ.organ_integrity_loss,
 				"status" = organ.organ_status == ORGAN_BRUISED ? "Bruised" : "Broken",
 				"robotic" = organ.robotic
 			)

@@ -1031,7 +1031,7 @@
 
 	if(L && !L.organ_status >= ORGAN_BRUISED)
 		src.custom_pain("You feel a stabbing pain in your chest!", 1)
-		L.damage = L.min_bruised_damage
+		L.take_damage(ORGAN_BRUISED)
 
 
 /mob/living/carbon/human/get_visible_implants(class = 0)
@@ -1086,7 +1086,7 @@
 	if(knocked_out && stat != DEAD)
 		msg += "They seem to be unconscious\n"
 	if(stat == DEAD)
-		if(src.check_tod() && is_revivable())
+		if(is_revivable())
 			msg += "They're not breathing"
 		else
 			if(has_limb("head"))

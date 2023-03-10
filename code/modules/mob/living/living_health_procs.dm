@@ -159,7 +159,6 @@
 	if(stat == DEAD)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
-		tod = null
 		timeofdeath = 0
 
 	// restore us to conciousness

@@ -93,13 +93,13 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		tool_modifier = tools[tool_type]
 		step_duration *= tool_modifier
 
-	if(surgery.lying_required) //Surgery surface modifier.
-		surface_modifier = target.buckled?.surgery_duration_multiplier //If they're buckled, use the surface modifier of the thing they're buckled to.
+	if(surgery.minimum_conditions_required != SURGERY_SURFACE_MULT_STANDING_UP) //Surgery surface modifier.
+		surface_modifier = target.buckled?.surgery_object_quality //If they're buckled, use the surface modifier of the thing they're buckled to.
 		if(!surface_modifier)
 			surface_modifier = SURGERY_SURFACE_MULT_AWFUL //Surgery on a completely unsuitable surface takes twice as long.
 			for(var/obj/surface in get_turf(target)) //Otherwise, get the lowest surface modifier of objects on their turf.
-				if(surface_modifier > surface.surgery_duration_multiplier)
-					surface_modifier = surface.surgery_duration_multiplier
+				if(surface_modifier > surface.surgery_object_quality)
+					surface_modifier = surface.surgery_object_quality
 
 		step_duration *= surface_modifier
 
@@ -108,7 +108,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		try_to_fail = TRUE
 		user.a_intent_change(INTENT_HELP) //So that stabbing your patient to death takes deliberate malice.
 	else if(!repeating) //Looping steps only play the start message on the first iteration; deliberate failure only plays the failure message.
-		preop(user, target, target_zone, tool, tool_type, surgery)
+		preop(user, target, target_zone, tool, tool_type, surgery, surface_modifier)
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
@@ -123,6 +123,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 				message += "this tool is [pick("awful", "barely usable")]"
 
 		switch(surface_modifier)
+			if(SURGERY_SURFACE_MULT_GOOD)
+				message += "[pick("while it may be a bit complicated, ", "there are some minor difficulties, but ", "this theatre is lacking some equipment, though")] [pick("this is a surprisingly complete field", "it mostly gets the job done", "you are surprised by the table's usability")]"
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
 				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
@@ -182,7 +184,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	return TRUE
 
 ///This is used for beginning-step narration. tool_type may be a typepath or simply '1'.
-/datum/surgery_step/proc/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/proc/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.visible_message(SPAN_NOTICE("[user] begins to perform surgery on [target]."),
 		SPAN_NOTICE("You begin to perform surgery on [target]..."))
 

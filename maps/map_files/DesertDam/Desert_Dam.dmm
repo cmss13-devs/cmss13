@@ -37033,7 +37033,7 @@
 	},
 /area/desert_dam/building/medical/morgue)
 "clP" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white"
@@ -41604,7 +41604,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cAt" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white"
@@ -57024,7 +57024,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dQO" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 8;

@@ -25,8 +25,8 @@
 	var/requires_bodypart_type = LIMB_ORGANIC|LIMB_SYNTHSKIN
 	///TRUE if the surgery requires a non-destroyed limb; FALSE if it requires a destroyed one, or doesn't need a limb.
 	var/requires_bodypart = TRUE
-	///Does the victim needs to be lying down? Surgeries that can be performed while standing aren't affected by the surface the patient is on.
-	var/lying_required = TRUE
+	// Controls on which conditions can the surgery even be attempted. If set to zero can even do it standing up.
+	var/minimum_conditions_required = SURGERY_SURFACE_MULT_UNSUITED
 	///Can the surgery be performed on yourself?
 	var/self_operable = FALSE
 	///How strong a level of anesthesia is needed to avoid risking pain causing a step to fail?
@@ -90,7 +90,7 @@
 			to_chat(user, SPAN_WARNING("You can't operate on [target], \he is being carried by [target.pulledby]!"))
 		return FALSE
 
-	if(lying_required && !target.lying)
+	if( (minimum_conditions_required != SURGERY_SURFACE_MULT_STANDING_UP) && !target.lying)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
 

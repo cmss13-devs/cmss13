@@ -313,7 +313,6 @@
 	life_steps_total = 0
 	last_damage_data = null
 	statistic_tracked = FALSE
-	tod = null
 	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()

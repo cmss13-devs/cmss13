@@ -6,7 +6,7 @@
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 	steps = list(/datum/surgery_step/suture_incision)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 
 //------------------------------------
@@ -18,7 +18,7 @@
 	//Suturing incisions closed is distinctly faster than cauterise-swaphand-suture, but slower than cautery alone, meaning it's only better if wanting to both close and suture the incision.
 	time = 3.5 SECONDS
 
-/datum/surgery_step/suture_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/suture_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to suture the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] begins to suture the incision on your [surgery.affected_limb.display_name] with \the [tool]."),

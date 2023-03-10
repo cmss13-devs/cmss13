@@ -16,12 +16,16 @@
 /*Duration multipliers for patients on surfaces. Used if directly buckled to it, otherwise the shortest mult of the items on the turf is used.
 Only used by complex surgeries; simple field surgeries don't care.
 If you change these, remember to update the GLOB.surgery_invasiveness_levels list as well*/
+///Literally just standing up.
+#define SURGERY_SURFACE_MULT_STANDING_UP 5
 ///A surface that's utterly unsuitable for complex surgery. Worst possible case.
 #define SURGERY_SURFACE_MULT_AWFUL 2
 ///A surface unsuited for surgery, but better than nothing.
 #define SURGERY_SURFACE_MULT_UNSUITED 1.67
 ///A surface that's adequate for surgery, if not ideal.
 #define SURGERY_SURFACE_MULT_ADEQUATE 1.33
+///A surface that's *almost* ideal for performing surgeries.
+#define SURGERY_SURFACE_MULT_GOOD 1.15
 ///A surface that's ideal for performing surgeries.
 #define SURGERY_SURFACE_MULT_IDEAL 1
 

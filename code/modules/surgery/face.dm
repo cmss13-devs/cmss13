@@ -28,7 +28,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 4 SECONDS
 
-/datum/surgery_step/facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start to cut open [target]'s face and neck with \the [tool]."),
 		SPAN_NOTICE("[user] starts to cut open your face and neck with \the [tool]."),
@@ -67,7 +67,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 3 SECONDS
 
-/datum/surgery_step/mend_vocals/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_vocals/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start mending [target]'s vocal cords with \the [tool]."),
 		SPAN_NOTICE("[user] starts to mend your vocal cords with \the [tool]."),
@@ -103,7 +103,7 @@
 	tools = SURGERY_TOOLS_PRY_DELICATE
 	time = 3 SECONDS
 
-/datum/surgery_step/pull_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/pull_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start pulling the skin on [target]'s face back into shape with \the [tool]."),
 		SPAN_NOTICE("[user] starts to pull the skin on your face back into shape with \the [tool]."),
@@ -138,7 +138,7 @@
 	desc = "close the facial incisions"
 	time = 5 SECONDS
 
-/datum/surgery_step/cauterize/close_facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/close_facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to cauterize the incisions on [target]'s face and neck with \the [tool]."),
 		SPAN_NOTICE("[user] begins to cauterize the incisions on your face and neck with \the [tool]."),

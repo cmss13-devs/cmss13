@@ -254,7 +254,7 @@
 		//players that can still be revived are skipped
 		if(O.mind && O.mind.original && ishuman(O.mind.original))
 			var/mob/living/carbon/human/H = O.mind.original
-			if (H.check_tod() && H.is_revivable())
+			if (H.is_revivable())
 				continue
 
 		// copied from join as xeno

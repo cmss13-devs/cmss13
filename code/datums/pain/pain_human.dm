@@ -31,7 +31,7 @@
 
 	//Internal organs
 	for(var/datum/internal_organ/O in H.internal_organs)
-		if(O.damage)
-			apply_pain(O.damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+		if(O.get_total_damage())
+			apply_pain(O.get_total_damage() * PAIN_ORGAN_DAMAGE_MULTIPLIER)
 
 	return TRUE

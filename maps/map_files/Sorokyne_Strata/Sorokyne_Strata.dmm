@@ -300,7 +300,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abc" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/tank/anesthetic,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
@@ -8677,7 +8677,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "azH" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/landmark/corpsespawner/russian,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
@@ -24677,7 +24677,7 @@
 	},
 /area/strata/ag/interior/dorms/maintenance)
 "bHy" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/tank/anesthetic,
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -30572,7 +30572,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "dwO" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"

@@ -76,7 +76,7 @@
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-			if (E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
+			if (E && (E.get_total_damage() > E.min_bruised_damage && prob(E.get_total_damage() + 50)))
 				H.flash_eyes()
 				E.take_damage(rand(1, 5))
 		else

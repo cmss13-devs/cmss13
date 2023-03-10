@@ -236,7 +236,7 @@
 				if(I.robotic == ORGAN_ASSISTED||I.robotic == ORGAN_ROBOT)
 					// we can't deal with these
 					continue
-				if(I.damage > 0)
+				if(I.get_total_damage() > 0)
 					if(I.name == "eyeballs") // treat eye surgery differently
 						continue
 					if(organdamagesurgery > 0) continue // avoid duplicates
@@ -260,7 +260,7 @@
 			if(M.incision_depths[L.name] != SURGERY_DEPTH_SURFACE)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open")
 	var/datum/internal_organ/I = M.internal_organs_by_name["eyes"]
-	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & DISABILITY_BLIND || I.damage > 0))
+	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & DISABILITY_BLIND || I.get_total_damage() > 0))
 		surgery_list += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,I)
 	if(M.getBruteLoss() > 0)
 		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"brute")
@@ -350,7 +350,7 @@
 						if(!istype(S.organ_ref,/datum/internal_organ/brain))
 							sleep(FIX_ORGAN_MAX_DURATION*surgery_mod)
 						else
-							if(S.organ_ref.damage > BONECHIPS_MAX_DAMAGE)
+							if(S.organ_ref.get_total_damage() > BONECHIPS_MAX_DAMAGE)
 								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
 							sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 						if(!surgery) break
@@ -395,7 +395,7 @@
 								if(!surgery) break
 								H.disabilities &= ~NEARSIGHTED
 								H.sdisabilities &= ~DISABILITY_BLIND
-								E.heal_damage(E.damage)
+								E.rejuvenate()
 								E.eye_surgery_stage = 0
 
 
@@ -812,7 +812,7 @@
 							if(I.robotic == ORGAN_ASSISTED||I.robotic == ORGAN_ROBOT)
 								// we can't deal with these
 								continue
-							if(I.damage > 0)
+							if(I.get_total_damage() > 0)
 								N.fields["autodoc_manual"] += create_autodoc_surgery(L,ORGAN_SURGERY,"damage",0,I)
 								needed++
 				if(!needed)

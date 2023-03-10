@@ -34,8 +34,7 @@
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
 			sponge.take_damage(amount)
-			sponge.damage = Clamp(sponge.damage, 0, maxHealth*2)
-			brainloss = sponge.damage
+			brainloss = sponge.get_total_damage()
 		else
 			brainloss = 200
 	else
@@ -49,8 +48,7 @@
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
-			sponge.damage = Clamp(amount, 0, maxHealth*2)
-			brainloss = sponge.damage
+			brainloss = sponge.get_total_damage()
 		else
 			brainloss = 200
 	else
@@ -64,7 +62,7 @@
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(istype(sponge)) //Make sure they actually have a brain
-			brainloss = min(sponge.damage,maxHealth*2)
+			brainloss = min(sponge.get_total_damage(),maxHealth*2)
 		else
 			brainloss = 50 //No brain!
 	else

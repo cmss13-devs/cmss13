@@ -137,7 +137,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aC" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/tank/anesthetic,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,

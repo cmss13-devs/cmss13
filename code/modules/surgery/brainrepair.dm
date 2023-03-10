@@ -10,14 +10,15 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM //Brain doesn't actually have much in the way of nerve endings.
 	steps = list(/datum/surgery_step/remove_bone_chips)
+	minimum_conditions_required = SURGERY_SURFACE_MULT_IDEAL
 	var/dmg_min = 0
 	var/dmg_max = BONECHIPS_MAX_DAMAGE
 
 /datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
-	if(!B || B.damage <= dmg_min || B.robotic == ORGAN_ROBOT)
+	if(!B || B.get_total_damage() <= dmg_min || B.robotic == ORGAN_ROBOT)
 		return FALSE
-	if(dmg_max && B.damage > dmg_max)
+	if(dmg_max && B.get_total_damage() > dmg_max)
 		return FALSE
 	return TRUE
 
@@ -37,7 +38,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-/datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin picking chips of bone out of [target]'s brain with \the [tool]."),
 		SPAN_NOTICE("[user] begins picking chips of bone out of your brain with \the [tool]."),
@@ -55,7 +56,7 @@
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	if(B)
-		B.damage = 0
+		B.heal_damage()
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
 	target.sdisabilities &= ~DISABILITY_MUTE
@@ -85,7 +86,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 
-/datum/surgery_step/treat_hematoma/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/treat_hematoma/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin mending the hematoma in [target]'s brain with \the [tool]."),
 		SPAN_NOTICE("[user] begins to mend the hematoma in your brain with \the [tool]."),

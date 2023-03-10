@@ -23,8 +23,6 @@
 
 	var/cameraFollow = null
 
-	var/tod = null // Time of death
-
 	var/silent = null //Can't talk. Value goes down every life proc.
 
 	// Putting these here for attack_animal().

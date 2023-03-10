@@ -12722,7 +12722,7 @@
 	},
 /area/varadero/interior/hall_SE)
 "leF" = (
-/obj/structure/machinery/optable{
+/obj/structure/machinery/optable/colony{
 	desc = "This maybe could be used for advanced medical procedures.";
 	name = "Exam Table"
 	},
@@ -19441,7 +19441,7 @@
 	},
 /area/varadero/interior_protected/maintenance/south)
 "qMC" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/shiva{
 	dir = 4;

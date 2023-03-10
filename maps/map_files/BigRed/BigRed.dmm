@@ -2327,7 +2327,7 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "agK" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -6028,7 +6028,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aro" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
@@ -11209,7 +11209,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aFy" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/organ/heart/prosthetic,
 /turf/open/floor{

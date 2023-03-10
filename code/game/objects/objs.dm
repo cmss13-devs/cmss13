@@ -18,7 +18,7 @@
 	var/can_buckle = FALSE
 	/**Applied to surgery times for mobs buckled prone to it or lying on the same tile, if the surgery
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
-	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
+	var/surgery_object_quality = SURGERY_SURFACE_MULT_AWFUL
 
 	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/projectile_coverage = 0

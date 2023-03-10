@@ -179,7 +179,7 @@
 
 	var/table
 	for(var/obj/surface in get_turf(M)) //An autopsy needs a surgery table, or a field surgery bed.
-		if(surface.surgery_duration_multiplier <= SURGERY_SURFACE_MULT_ADEQUATE)
+		if(surface.surgery_object_quality <= SURGERY_SURFACE_MULT_ADEQUATE)
 			table = TRUE
 			break
 

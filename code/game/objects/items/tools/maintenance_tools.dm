@@ -383,12 +383,12 @@
 			if(1)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 12)
+				if(E.get_total_damage() > 12)
 					H.AdjustEyeBlur(3,6)
 			if(0)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
 				E.take_damage(rand(2, 4), TRUE)
-				if(E.damage > 10)
+				if(E.get_total_damage() > 10)
 					E.take_damage(rand(4, 10), TRUE)
 			if(-1)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
@@ -396,13 +396,13 @@
 				E.take_damage(rand(12, 16), TRUE)
 
 		if(safety < 2)
-			if (E.damage >= E.min_broken_damage)
+			if (E.get_total_damage() >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return FALSE
-			if (E.damage >= E.min_bruised_damage)
+			if (E.get_total_damage() >= E.min_bruised_damage)
 				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
 				return FALSE
-			if(E.damage > 5)
+			if(E.get_total_damage() > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
 

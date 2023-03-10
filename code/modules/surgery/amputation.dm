@@ -54,7 +54,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
 
-/datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to sever the muscles in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_WARNING("[user] begins to sever the muscles in your [surgery.affected_limb.display_name]!"),
@@ -95,7 +95,7 @@
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
 
-/datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to stitch the muscles in [target]'s [surgery.affected_limb.display_name] back together with \the [tool]."),
 		SPAN_NOTICE("[user] begins to stitch the muscles in your [surgery.affected_limb.display_name] back together with \the [tool]."),
@@ -138,7 +138,7 @@
 		/obj/item/attachable/bayonet
 		)
 
-/datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start cutting through the bone in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_WARNING("[user] starts cutting through the bone in your [surgery.affected_limb.display_name]!"),
@@ -198,7 +198,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 3 SECONDS
 
-/datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin removing irregular chunks of flesh from the stump of [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts cutting away pieces of flesh from what's left of your [surgery.affected_limb.display_name]."),
@@ -233,7 +233,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
-/datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to mend torn blood vessels in [target]'s stump with \the [tool]."),
 		SPAN_NOTICE("[user] begins to mend torn blood vessels in your stump with \the [tool]."),
@@ -275,7 +275,7 @@
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 
-/datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin folding the flesh of [target]'s stump over the bone and stitching it together with \the [tool]."),
 		SPAN_NOTICE("[user] begins folding the flesh of your stump over the bone and stitching it together with \the [tool]."),
@@ -312,7 +312,7 @@
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 
-/datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthesic [surgery.affected_limb.display_name] on with \the [tool]."),
 		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of your prosthetic [surgery.affected_limb.display_name] on with \the [tool]."),
@@ -346,7 +346,7 @@
 	accept_hand = TRUE
 	time = 3 SECONDS
 
-/datum/surgery_step/remove_old_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_old_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin removing the remains of [target]'s damaged prosthetic [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] begins removing the remains of your damaged prosthetic [surgery.affected_limb.display_name]."),

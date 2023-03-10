@@ -3055,7 +3055,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aoL" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/tank/anesthetic,
 /turf/open/floor{
 	icon_state = "whitebluefull"
@@ -5217,7 +5217,7 @@
 	},
 /area/lv624/ground/jungle/west_jungle)
 "ayj" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},

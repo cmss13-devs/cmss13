@@ -11,7 +11,7 @@
 		/datum/surgery_step/mtend_wounds,
 		/datum/surgery_step/cauterize/mclamp_wound,
 				)
-	lying_required = FALSE
+	minimum_conditions_required = 0
 	self_operable = TRUE
 
 /datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
@@ -34,7 +34,7 @@
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
 
-/datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their body with \the [tool]."),
 		SPAN_HELPFUL("You begin to stabilize your wounds with \the [tool]."))
@@ -134,7 +134,7 @@
 	if((. in tools_lit) && !tool.heat_source)
 		return FALSE
 
-/datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, surgery_modifier)
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] begins to close the treated wounds on their body with \the [tool]."),
 			SPAN_HELPFUL("You begin to close your treated wounds with \the [tool]."))

@@ -24,7 +24,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "bE" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"

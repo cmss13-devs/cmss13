@@ -10,8 +10,12 @@
 	var/mob/living/carbon/human/owner = null
 	var/vital //Lose a vital limb, die immediately.
 	var/damage = 0 // amount of damage to the organ
-	var/min_bruised_damage = 10
+	/// A more 'permanent' form of damage that takes more effort to heal, as it requires a surgery table for the organ repair to work. Rare to induce.
+	var/organ_integrity_loss = 0
+	var/min_bruised_damage = 15
 	var/min_broken_damage = 30
+	/// When heavy damage reaches this value, the heart stops delivering O2 to the body, resulting in brain death.
+	var/integrity_brain_death = 20
 	var/parent_limb = "chest"
 	var/robotic = 0 //1 for 'assisted' organs (e.g. pacemaker), 2 for actual cyber organ.
 	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
@@ -31,11 +35,20 @@
 	return FALSE
 
 /datum/internal_organ/proc/rejuvenate()
-	damage=0
-	set_organ_status()
+	damage = 0
+	organ_integrity_loss = 0
+	organ_status = ORGAN_HEALTHY
 
 /// Set the correct organ state
 /datum/internal_organ/proc/set_organ_status()
+
+	if(organ_status == ORGAN_DESTROYED)
+		return TRUE
+
+	if(organ_integrity_loss > integrity_brain_death)
+		organ_status = ORGAN_DESTROYED
+		return TRUE
+
 	if(damage > min_broken_damage || cut_away)
 		if(organ_status != ORGAN_BROKEN)
 			organ_status = ORGAN_BROKEN
@@ -75,12 +88,57 @@
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
 	set_organ_status()
 
+/datum/internal_organ/proc/take_organ_integrity_loss(amount, silent = FALSE)
+	if(src.robotic == ORGAN_ROBOT)
+		src.organ_integrity_loss += (amount * 0.8)
+	else
+		src.organ_integrity_loss += amount
+
+	var/obj/limb/parent = owner.get_limb(parent_limb)
+	if(!silent)
+		owner.custom_pain("Something inside your [parent.display_name] hurts an incredible amount!.", 1)
+	set_organ_status()
+
+/**
+ * Heals normal damage. If amount is zero, heals all.
+ */
 /datum/internal_organ/proc/heal_damage(amount)
-	if(damage < amount)
+	if(damage < amount || !amount)
 		damage = 0
 	else
 		damage -= amount
 	set_organ_status()
+
+/**
+ * Heals heavy damage. If amount is zero, heals all.
+ */
+/datum/internal_organ/proc/heal_organ_integrity_loss(amount)
+	if(organ_integrity_loss < amount || !amount)
+		organ_integrity_loss = 0
+	else
+		organ_integrity_loss -= amount
+	set_organ_status()
+
+/**
+ * Heals both integrity and normal damage, second argument determines if heavy damage is healed first or not.
+ */
+/datum/internal_organ/proc/heal_all_damage(amount, integrity_priority = FALSE)
+
+	if(integrity_priority)
+		organ_integrity_loss = POSITIVE(organ_integrity_loss - amount)
+		var/leftover_1 = (organ_integrity_loss - amount)
+		if(leftover_1 < 0)
+			damage = POSITIVE(damage + leftover_1) // It's a negative.
+	else
+		damage = POSITIVE(damage - amount)
+		var/leftover_2 = (damage - amount)
+		if(leftover_2 < 0)
+			organ_integrity_loss = POSITIVE(organ_integrity_loss + leftover_2) // It's a negative.
+
+	set_organ_status()
+
+/datum/internal_organ/proc/get_total_damage()
+	return max(organ_integrity_loss, damage)
 
 /datum/internal_organ/proc/emp_act(severity)
 	switch(robotic)
@@ -129,6 +187,46 @@
 	parent_limb = "chest"
 	removed_type = /obj/item/organ/heart
 	robotic_type = /obj/item/organ/heart/prosthetic
+	/// So that it doesn't spam timers.
+	var/killing_brain = FALSE
+
+/datum/internal_organ/heart/New(mob/living/carbon/M)
+	. = ..()
+	if(!M)
+		return
+	RegisterSignal(M, COMSIG_MOB_DEATH, PROC_REF(start_decaying))
+	RegisterSignal(M, COMSIG_HUMAN_REVIVED, PROC_REF(stop_decaying))
+
+/datum/internal_organ/heart/proc/start_decaying()
+	START_PROCESSING(SSprocessing, src) // our code is so fucking bad dude this is the best way to do this
+
+/datum/internal_organ/heart/proc/stop_decaying()
+	STOP_PROCESSING(SSprocessing, src) // our code is so fucking bad dude this is the best way to do this
+
+/datum/internal_organ/heart/process()
+	. = ..()
+	if(organ_status == ORGAN_BROKEN || organ_status == ORGAN_DESTROYED)
+		STOP_PROCESSING(SSprocessing, src)
+		return
+	if(owner.stat == DEAD)
+		take_damage(AMOUNT_PER_TIME(min_broken_damage, 7 MINUTES), silent = TRUE)
+		take_organ_integrity_loss(AMOUNT_PER_TIME(integrity_brain_death, 9 MINUTES), silent = TRUE)
+
+/datum/internal_organ/heart/set_organ_status()
+	. = ..()
+	if(organ_status == ORGAN_DESTROYED)
+		var/datum/internal_organ/brain/brain = owner.internal_organs_by_name["brain"]
+		if(brain && brain.organ_status != ORGAN_DESTROYED && !killing_brain)
+			addtimer(CALLBACK(src, PROC_REF(kill_brain), brain), 2 MINUTES)
+			killing_brain = TRUE
+
+// TODO make this slowly kill the brain instead (hypoxia)
+/datum/internal_organ/heart/proc/kill_brain(datum/internal_organ/brain/brain)
+	if(organ_status == ORGAN_DESTROYED && killing_brain)
+		// Cut off all O2 to the brain, it expires.
+		brain.organ_status = ORGAN_DESTROYED
+		brain.owner.death()
+	killing_brain = FALSE
 
 /datum/internal_organ/heart/prosthetic //used by synthetic species
 	robotic = ORGAN_ROBOT
@@ -175,7 +273,7 @@
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 60 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
-			if (src.damage < min_broken_damage)
+			if (src.get_total_damage() < min_broken_damage)
 				src.take_damage(0.2 * PROCESS_ACCURACY)
 			//Damaged one shares the fun
 			else
@@ -184,10 +282,10 @@
 					O.take_damage(0.2 * PROCESS_ACCURACY, TRUE)
 
 		//Detox can heal small amounts of damage
-		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
+		if (get_total_damage() < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
 			src.damage -= 0.2 * PROCESS_ACCURACY
 
-		if(src.damage < 0)
+		if(src.get_total_damage() < 0)
 			src.damage = 0
 
 		// Get the effectiveness of the liver.
@@ -211,9 +309,9 @@
 		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 			return
 		if(organ_status >= ORGAN_BRUISED && prob(25))
-			owner.apply_damage(0.1 * (damage/2), TOX)
+			owner.apply_damage(0.1 * (get_total_damage()*0.5), TOX)
 		else if(organ_status >= ORGAN_BROKEN && prob(50))
-			owner.apply_damage(0.3 * (damage/2), TOX)
+			owner.apply_damage(0.3 * (get_total_damage()*0.5), TOX)
 
 /datum/internal_organ/liver/prosthetic
 	robotic = ORGAN_ROBOT
@@ -231,9 +329,9 @@
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
 	if(organ_status >= ORGAN_BRUISED && prob(25))
-		owner.apply_damage(0.1 * (damage/3), TOX)
+		owner.apply_damage(0.1 * (get_total_damage()*0.3), TOX)
 	else if(organ_status >= ORGAN_BROKEN && prob(50))
-		owner.apply_damage(0.2 * (damage/3), TOX)
+		owner.apply_damage(0.2 * (get_total_damage()*0.3), TOX)
 
 /datum/internal_organ/kidneys/prosthetic
 	robotic = ORGAN_ROBOT

@@ -207,7 +207,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aG" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
@@ -1763,7 +1763,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eH" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/wygoon,
 /obj/item/reagent_container/food/snacks/margheritaslice,

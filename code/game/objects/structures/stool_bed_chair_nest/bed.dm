@@ -26,7 +26,7 @@
 	var/hit_bed_sound = 'sound/effects/metalhit.ogg' //sound player when attacked by a xeno
 	/// Sound when buckled to a bed/chair/stool
 	var/buckling_sound = 'sound/effects/buckle.ogg'
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
+	surgery_object_quality = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -282,7 +282,7 @@
 	foldabletype = /obj/item/roller/surgical
 	base_bed_icon = "surgical"
 	accepts_bodybag = FALSE
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_ADEQUATE
+	surgery_object_quality = SURGERY_SURFACE_MULT_ADEQUATE
 
 /obj/item/roller/surgical
 	name = "portable surgical bed"
@@ -309,7 +309,7 @@ var/global/list/activated_medevac_stretchers = list()
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
+	surgery_object_quality = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)

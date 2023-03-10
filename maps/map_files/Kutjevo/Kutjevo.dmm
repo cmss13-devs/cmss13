@@ -3184,7 +3184,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/colonist/kutjevo/burst,
 /turf/open/floor/kutjevo/colors/cyan/edge{
@@ -5159,7 +5159,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/oob)
 "gLg" = (
-/obj/structure/machinery/optable,
+/obj/structure/machinery/optable/colony,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/kutjevo/interior/complex/med)

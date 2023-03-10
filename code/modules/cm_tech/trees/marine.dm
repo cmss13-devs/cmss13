@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 /datum/techtree/marine/proc/handle_death(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
-	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.check_tod()))
+	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.is_revivable()))
 		RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_dead_leader))
 		RegisterSignal(H, COMSIG_HUMAN_REVIVED, PROC_REF(readd_leader))
 		dead_leader = H

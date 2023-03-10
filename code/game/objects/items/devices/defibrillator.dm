@@ -21,11 +21,6 @@
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
 
-/mob/living/carbon/human/proc/check_tod()
-	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
-		return TRUE
-	return FALSE
-
 /obj/item/device/defibrillator/Initialize(mapload, ...)
 	. = ..()
 
@@ -100,15 +95,43 @@
 			if(ghost && (!check_client || ghost.client) && (!check_can_reenter || ghost.can_reenter_corpse))
 				return ghost
 
-/mob/living/carbon/human/proc/is_revivable()
-	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
-		return FALSE
+#define HEART_DESTROYED "heart_destroyed"
+#define BRAIN_DESTROYED "brain_destroyed"
+
+/mob/living/carbon/human/proc/check_organ_condition()
+
+	var/datum/internal_organ/brain/brain = internal_organs_by_name["brain"]
+	if(!brain)
+		return BRAIN_DESTROYED
+	if(brain.organ_status == ORGAN_DESTROYED)
+		return BRAIN_DESTROYED
+	if(brain.organ_status == ORGAN_BROKEN)
+		return BRAIN_DESTROYED
+
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
+	if(!heart)
+		return HEART_DESTROYED
+	if(heart.organ_status == ORGAN_DESTROYED)
+		return HEART_DESTROYED
+	if(heart.organ_status == ORGAN_BROKEN)
+		return HEART_DESTROYED
+
+	return
+
+/mob/living/carbon/human/proc/is_permadead()
 	var/obj/limb/head = get_limb("head")
 
-	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.organ_status >= ORGAN_BROKEN || !has_brain() || status_flags & PERMANENTLY_DEAD)
+	if(undefibbable || chestburst || !head || head.status & LIMB_DESTROYED || status_flags & PERMANENTLY_DEAD)
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/is_revivable()
+	var/result = check_organ_condition()
+	if(result == HEART_DESTROYED || result == BRAIN_DESTROYED)
 		return FALSE
-	return TRUE
+
+	return !is_permadead()
+
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!ishuman(H) || isyautja(H))
@@ -124,19 +147,28 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
 		return
 
-	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
+	if(H.is_permadead())
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's body has decayed beyond feasible reanimation."))
+		return
+
+	var/value = H.check_organ_condition()
+
+	if(value == BRAIN_DESTROYED)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's brain has suffered terminal hypoxia. Resurrection is impossible."))
+		return
+
+	if(value == HEART_DESTROYED)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's heart is not strong enough to support defillibration. Patient must enter stasis as soon as possible and have their heart mended or replaced. Brain death imminent."))
 		return
 
 	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
-	if((!H.check_tod() && !issynth(H))) //synthetic species have no expiration date
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
-		return
-
 	return TRUE
+
+#undef HEART_DESTROYED
+#undef BRAIN_DESTROYED
 
 /obj/item/device/defibrillator/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(shock_cooldown > world.time) //cooldown is only for shocking, this is so that you can immediately shock when you take the paddles out - stan_albatross

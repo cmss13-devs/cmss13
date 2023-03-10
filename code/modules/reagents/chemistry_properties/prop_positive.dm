@@ -909,7 +909,7 @@
 	value = 1
 	max_level = 3
 
-/datum/chem_property/positive/antibiotic/process(mob/living/M, potency = 1)
+/datum/chem_property/positive/antibiotic/process(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	var/datum/disease/black_goo/D = locate() in M.viruses
 	if(D)
@@ -922,7 +922,7 @@
 			else
 				to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
 
-/datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency)
+/datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency, delta_time)
 	M.apply_damage(4 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/antibiotic/process_critical(mob/living/M, potency, delta_time)

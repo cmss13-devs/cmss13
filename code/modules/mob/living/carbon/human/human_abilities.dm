@@ -517,6 +517,7 @@ CULT
 			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 			victim.emote("scream")
 			victim.AddDisease(new /datum/disease/black_goo)
+			zombie.flick_attack_overlay(victim, "slash")
 			victim.apply_damage(20, BRUTE, "head")
 			enter_cooldown(10 SECONDS)
 		else
@@ -528,7 +529,7 @@ CULT
 	action_icon_state = "bite"
 	cooldown_message = TRUE
 	var/maxdistance = 5 //leap how far again?
-	var/throw_speed = SPEED_SLOW
+	var/throw_speed = SPEED_AVERAGE
 	var/windup = FALSE // Is there a do_after before we pounce?
 	var/windup_duration = 20 // How long to wind up, if applicable
 	var/windup_interruptable = TRUE

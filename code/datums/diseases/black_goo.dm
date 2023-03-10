@@ -35,7 +35,8 @@
 			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
 				var/message = pick("Your mouth feels really dry..", "Your head aches...",)
-				to_chat(H, SPAN_WARNING(message))
+				if(prob(40))
+					to_chat(H, SPAN_WARNING(message))
 				goo_message_cooldown = world.time + 10 SECONDS
 		if(2)
 			if(victim_has_antibiotic())

@@ -26,7 +26,7 @@
 		"back_right" = list(0, 2)
 	)
 
-	vehicle_flags = VEHICLE_CLASS_WEAK
+	vehicle_flags = VEHICLE_CLASS_MEDIUM
 
 	passengers_slots = 11
 	xenos_slots = 3

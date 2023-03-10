@@ -21062,7 +21062,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "sJn" = (
-/turf/open/space/basic,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteblue"
+	},
 /area/lv624/lazarus/corporate_dome)
 "sJM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,

@@ -318,6 +318,9 @@
 	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_DIRT
+/turf/open/gm/dirt/weedable/is_weedable()
+	. = ..()
+	return FULLY_WEEDABLE
 
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()

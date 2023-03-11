@@ -33,7 +33,7 @@
 
 /obj/effect/warning/explosive/Initialize(mapload, ...)
 	. = ..()
-	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 50)
+	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
 	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_until_explosion)
 
 /obj/effect/warning/explosive/proc/kablooie()

@@ -243,7 +243,7 @@
 			continue
 
 		exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-		new /obj/effect/warning/explosive(exploding_pipe.loc)
+		new /obj/effect/warning/explosive(get_turf(exploding_pipe))
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
@@ -256,7 +256,7 @@
 		if(!is_mainship_level(current_mob.z))
 			continue
 		shake_camera(current_mob, 10, 1)
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg')
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 15)
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT

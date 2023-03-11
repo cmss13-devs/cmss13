@@ -49,6 +49,7 @@ var/datum/controller/supply/supply_controller = new()
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
+	fake_zlevel = 0
 
 /area/supply/station_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Vehicle ASRS"

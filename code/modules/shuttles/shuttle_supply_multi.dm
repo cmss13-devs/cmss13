@@ -172,7 +172,8 @@
 		return MOVEMENT_DIRECTION_DOWNWARDS
 
 /datum/shuttle/ferry/supply/multi/at_station()
-	return fake_zlevel
+	var/area/elevator_location_area = get_location_area()
+	return moving_status == SHUTTLE_INTRANSIT ? FALSE : elevator_location_area.fake_zlevel
 
 /datum/shuttle/ferry/supply/multi/short_jump(area/origin, area/destination)
 	if(operating)
@@ -244,15 +245,17 @@
 
 	move_elevator_to_destination(shaft_transit_area, destination)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_jump)), 2 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(finish_jump)), 2.2 SECONDS, TIMER_UNIQUE)
 
 /datum/shuttle/ferry/supply/multi/proc/finish_jump()
+	fake_zlevel = target_zlevel
 	lower_railingz(target_zlevel)
 	update_controller()
 	stop_gears()
 	if (!at_station())	//at centcom
 		handle_sell()
 	recharging = 0
+	operating = FALSE
 
 /datum/shuttle/ferry/supply/multi/proc/raise_railingz(deck)
 	if(!deck)

@@ -13552,15 +13552,17 @@
 /area/westerneye/medical/lockerroom)
 "euR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	dir = 8;
-	pixel_y = -12;
-	layer = 2.97
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/keycard_auth{
 	pixel_y = 7
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	shuttleId = "dropship_alamo";
+	name = "Alamo Remote Control Console";
+	pixel_y = -12;
+	layer = 2.97
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -15674,6 +15676,15 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/westerneye/living/cryo_cells)
+"eZz" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/westerneye/hull/upper_hull/u_f_p)
 "eZW" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/vials/empty{
@@ -16704,6 +16715,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/hallways/hangar)
+"fqS" = (
+/turf/open/floor/almayer_hull,
+/area/westerneye/hull/upper_hull/u_f_s)
 "fqZ" = (
 /turf/closed/wall/almayer,
 /area/westerneye/engineering/upper_engineering)
@@ -18598,9 +18612,6 @@
 	},
 /area/westerneye/medical/lower_medical_medbay)
 "fVb" = (
-/obj/structure/sign/prop2{
-	pixel_y = 32
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_27";
 	layer = 3.6;
@@ -19213,7 +19224,9 @@
 /area/westerneye/hallways/lowerdeck_aft_hallway)
 "gfo" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/skills,
+/obj/structure/machinery/computer/skills{
+	pixel_x = 7
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -27862,6 +27875,13 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "Research Armory";
+	name = "Research Armory";
+	pixel_x = -27;
+	req_access_txt = "28"
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -31334,6 +31354,11 @@
 "jXr" = (
 /turf/closed/wall/almayer/white,
 /area/westerneye/medical/lockerroom)
+"jXv" = (
+/turf/open/floor/almayer_hull{
+	icon_state = "outerhull_dir"
+	},
+/area/westerneye/hull/upper_hull/u_f_s)
 "jXF" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor/plating,
@@ -36783,7 +36808,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	name = "\improper Officer Prep";
 	dir = 2;
-	req_one_access_txt = "1;5;6;23;26;27;29;31;33;36"
+	req_one_access_txt = "1;5;6;19;23;26;27;29;31;33;36"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -37499,14 +37524,16 @@
 /area/westerneye/hallways/lowerdeck_port_hallway)
 "lZB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	dir = 4;
-	pixel_y = -12;
-	layer = 2.97
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/keycard_auth{
 	pixel_y = 7
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	shuttleId = "dropship_normandy";
+	name = "Normandy Remote Control Console";
+	pixel_y = -12;
+	layer = 2.97
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -43261,6 +43288,12 @@
 	},
 /turf/open/floor/plating,
 /area/westerneye/command/self_destruct)
+"nPu" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/westerneye/hull/upper_hull/u_f_p)
 "nPK" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/almayer{
@@ -45049,6 +45082,17 @@
 	icon_state = "plate"
 	},
 /area/westerneye/living/kitchen)
+"owk" = (
+/obj/structure/stairs,
+/obj/effect/projector{
+	name = "Wayfinder_Up";
+	vector_x = 101
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/westerneye/hallways/hangar)
 "own" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter/random,
@@ -49559,7 +49603,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	name = "\improper Officer Prep";
 	dir = 2;
-	req_one_access_txt = "1;5;6;23;26;27;29;31;33;36"
+	req_one_access_txt = "1;5;6;19;23;26;27;29;31;33;36"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -54244,16 +54288,18 @@
 /area/westerneye/command/telecomms)
 "rqQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	dir = 8;
-	pixel_y = 12
-	},
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8;
 	layer = 3.3;
 	pixel_y = -4;
 	network = list("Alamo")
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	shuttleId = "dropship_alamo";
+	name = "Alamo Remote Control Console";
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull"
@@ -58340,6 +58386,9 @@
 /area/westerneye/living/offices)
 "sHR" = (
 /obj/structure/bookcase/manuals/medical,
+/obj/structure/sign/prop2{
+	pixel_y = 32
+	},
 /turf/open/floor/wood/ship,
 /area/westerneye/engineering/engineering_workshop/hangar)
 "sIk" = (
@@ -59736,7 +59785,7 @@
 	pixel_x = -7
 	},
 /obj/structure/machinery/computer/squad_changer{
-	pixel_x = 12
+	pixel_x = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -64165,6 +64214,12 @@
 	icon_state = "plate"
 	},
 /area/westerneye/command/cic)
+"uET" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/westerneye/hull/lower_hull/l_m_s)
 "uEU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -65228,7 +65283,7 @@
 "uUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/emails{
-	pixel_y = 2
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -66448,16 +66503,18 @@
 /area/westerneye/hull/port_warehouse)
 "vox" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	dir = 4;
-	pixel_y = -12
-	},
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 4;
 	pixel_y = 4;
 	layer = 2.97;
 	network = list("Normandy")
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	shuttleId = "dropship_normandy";
+	name = "Normandy Remote Control Console";
+	pixel_y = -12
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull"
@@ -66528,17 +66585,11 @@
 	},
 /area/westerneye/hull/upper_hull/u_a_p)
 "vpy" = (
-/obj/structure/stairs,
-/obj/structure/stairs,
-/obj/effect/projector{
-	name = "Wayfinder_Up";
-	vector_x = 101
-	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/westerneye/hallways/hangar)
+/turf/open/floor/plating/plating_catwalk,
+/area/westerneye/hull/lower_hull/l_m_s)
 "vpF" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -68242,7 +68293,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	name = "\improper Officer Prep";
 	dir = 2;
-	req_one_access_txt = "1;5;6;23;26;27;29;31;33;36"
+	req_one_access_txt = "1;5;6;19;23;26;27;29;31;33;36"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -75773,12 +75824,12 @@
 	},
 /area/westerneye/hull/lower_hull/l_m_s)
 "yli" = (
-/obj/structure/surface/rack,
-/obj/item/paper/almayer_storage,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/westerneye/hull/lower_hull/l_m_p)
+/area/westerneye/hull/lower_hull/l_m_s)
 "ylX" = (
 /obj/structure/curtain/red{
 	pixel_x = -32
@@ -77924,7 +77975,7 @@ fnh
 fnh
 vap
 vap
-yle
+uET
 jvw
 jvw
 yle
@@ -78126,11 +78177,11 @@ wOg
 wOg
 gzJ
 vap
-yle
+yli
 jvw
-jvw
-cEn
+vpy
 yle
+eSJ
 yle
 lZU
 rXo
@@ -90637,7 +90688,7 @@ mnD
 lVa
 bBi
 gqn
-yli
+xtK
 gou
 flr
 flr
@@ -90878,7 +90929,7 @@ vhE
 bur
 onR
 lmD
-gQe
+mnD
 mnD
 mnD
 mnD
@@ -91080,7 +91131,7 @@ lDc
 oJy
 qMT
 hJZ
-gQe
+mnD
 mnD
 mnD
 mnD
@@ -91282,7 +91333,7 @@ vhW
 nvw
 pcl
 hJZ
-gQe
+mnD
 mnD
 mnD
 mnD
@@ -91484,7 +91535,7 @@ lmD
 hJZ
 hJZ
 lmD
-gQe
+mnD
 mnD
 mnD
 mnD
@@ -91683,10 +91734,10 @@ lmD
 nsW
 lmD
 lmD
-gQe
-gQe
-gQe
-gQe
+mnD
+mnD
+mnD
+mnD
 mnD
 mnD
 mnD
@@ -99762,7 +99813,7 @@ pLz
 mSP
 mSP
 wZj
-mnD
+nee
 mnD
 xtZ
 mnD
@@ -102817,7 +102868,7 @@ wJq
 kak
 wJq
 wJq
-kak
+owk
 kak
 wEk
 lpC
@@ -103222,7 +103273,7 @@ kak
 kak
 kak
 kak
-vpy
+wJq
 wEk
 lpC
 fCz
@@ -118490,6 +118541,11 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+mnD
 wUY
 wmI
 wmI
@@ -118505,14 +118561,9 @@ wmI
 wmI
 wmI
 nee
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
+mnD
+mnD
+tXk
 mOd
 mOd
 mOd
@@ -118545,9 +118596,9 @@ uHn
 uHn
 uHn
 uHn
-mnD
-mnD
-mnD
+wmI
+wmI
+nee
 mnD
 mnD
 mnD
@@ -118692,6 +118743,11 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+mnD
 tXk
 gQe
 gQe
@@ -118707,14 +118763,9 @@ gQe
 gQe
 gQe
 vPl
+mnD
+mnD
 tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
 mOd
 jAS
 jAS
@@ -118747,9 +118798,9 @@ piz
 piz
 vlg
 uHn
-mnD
-mnD
-mnD
+gQe
+gQe
+vPl
 mnD
 mnD
 mnD
@@ -118894,29 +118945,29 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+wUY
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+nee
+mnD
 tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
 mOd
 mRb
 nDm
@@ -118949,9 +119000,9 @@ cud
 uCU
 uCU
 uHn
-mnD
-mnD
-mnD
+gQe
+gQe
+vPl
 mnD
 mnD
 mnD
@@ -119096,25 +119147,25 @@ mnD
 mnD
 mnD
 mnD
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
-eoJ
+mnD
+mnD
+mnD
+mnD
+tXk
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 tFd
 tFd
 tFd
@@ -119151,9 +119202,9 @@ xNP
 xNP
 nOH
 uHn
-mnD
-mnD
-mnD
+gQe
+gQe
+fnE
 mnD
 mnD
 mnD
@@ -119302,21 +119353,21 @@ wmI
 wmI
 wmI
 wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 tFd
 iOb
 vTm
@@ -119353,8 +119404,8 @@ opu
 opu
 fwi
 uHn
-njY
-njY
+fqS
+jXv
 njY
 njY
 bEG
@@ -119555,8 +119606,8 @@ piz
 piz
 vlg
 uHn
-njY
-njY
+fqS
+jXv
 njY
 njY
 njY
@@ -119571,22 +119622,22 @@ gQe
 gQe
 gQe
 gQe
-vPl
-tXk
 gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+wmI
+nee
 mnD
 mnD
 mnD
@@ -119773,22 +119824,22 @@ gQe
 gQe
 gQe
 gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 vPl
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
-eoJ
-fnE
 mnD
 mnD
 mnD
@@ -119976,21 +120027,21 @@ gQe
 gQe
 gQe
 gQe
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-wmI
-nee
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+vPl
 mnD
 mnD
 mnD
@@ -130073,7 +130124,7 @@ jlY
 rlV
 cFp
 jlY
-vsh
+eZz
 udY
 vsh
 uAe
@@ -130275,7 +130326,7 @@ oDF
 mKw
 dQj
 jlY
-vsh
+nPu
 hIC
 vsh
 fSl
@@ -130477,7 +130528,7 @@ jlY
 jlY
 jlY
 jlY
-vsh
+nPu
 vsh
 vsh
 uAe
@@ -132904,21 +132955,21 @@ gQe
 gQe
 gQe
 gQe
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-fnE
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+vPl
 mnD
 mnD
 mnD
@@ -133105,22 +133156,22 @@ gQe
 gQe
 gQe
 gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 vPl
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
-wmI
-nee
 mnD
 mnD
 mnD
@@ -133307,22 +133358,22 @@ gQe
 gQe
 gQe
 gQe
-vPl
-tXk
 gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+fnE
 mnD
 mnD
 mnD
@@ -133442,21 +133493,21 @@ eoJ
 eoJ
 eoJ
 eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
-eoJ
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 oxf
 mKw
 fjL
@@ -133640,25 +133691,25 @@ mnD
 mnD
 mnD
 mnD
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
-wmI
-nee
-wUY
-wmI
-wmI
-wmI
+mnD
+mnD
+mnD
+mnD
+tXk
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
+gQe
 oxf
 oxf
 oxf
@@ -133842,29 +133893,29 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+gBR
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+eoJ
+fnE
+mnD
 tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
 oRC
 vMJ
 aCj
@@ -134044,6 +134095,11 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+mnD
 tXk
 gQe
 gQe
@@ -134059,14 +134115,9 @@ gQe
 gQe
 gQe
 vPl
+mnD
+mnD
 tXk
-gQe
-gQe
-gQe
-vPl
-tXk
-gQe
-gQe
 oRC
 imj
 imj
@@ -134246,6 +134297,11 @@ mnD
 mnD
 mnD
 mnD
+mnD
+mnD
+mnD
+mnD
+mnD
 gBR
 eoJ
 eoJ
@@ -134261,14 +134317,9 @@ eoJ
 eoJ
 eoJ
 fnE
-gBR
-eoJ
-eoJ
-eoJ
-fnE
-gBR
-eoJ
-eoJ
+mnD
+mnD
+tXk
 oRC
 oRC
 oRC

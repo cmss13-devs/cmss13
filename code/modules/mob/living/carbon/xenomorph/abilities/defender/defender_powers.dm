@@ -301,7 +301,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
 
 	damage_accumulated = 0
-	to_chat(src, SPAN_XENONOTICE("You stop taking in oncoming damage."))
+	to_chat(owner, SPAN_XENONOTICE("You stop taking in oncoming damage."))
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/xeno_action/onclick/soak/proc/enraged()
@@ -315,7 +315,7 @@
 
 	// Check actions list for tail slam and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions
-	
+
 	if (slam_action && !slam_action.action_cooldown_check())
 		slam_action.end_cooldown()
 

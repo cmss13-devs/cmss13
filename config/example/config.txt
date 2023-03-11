@@ -128,7 +128,7 @@ GUEST_BAN
 #SERVER server.net:port
 
 ## forum address
-FORUMURL https://cm-ss13.com/
+FORUMURL https://forum.cm-ss13.com/
 
 ## Wiki address
 WIKIURL https://cm-ss13/wiki/

@@ -147,3 +147,12 @@
   Totalepicness5:
   - bugfix: Fixed being able to slap dead huggers on your face
   - refactor: Got rid of all dead hugger instances and replaced them with a prop.
+2023-03-10:
+  BeagleGaming1:
+  - qol: If you are unable to fire guns, you are also unable to execute, and instead
+      just melee
+  Morrow:
+  - bugfix: Fixes shuttle console accesses
+  carlarctg:
+  - balance: Plasma pistols and Spike launchers can be wielded.
+  - balance: Removed Wrist Scimitar power reduction.

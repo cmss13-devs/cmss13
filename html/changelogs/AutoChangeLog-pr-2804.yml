@@ -1,0 +1,4 @@
+author: "TopHatPenguin"
+delete-after: True
+changes:
+  - rscadd: "Adds Chinese to the UPP presets."

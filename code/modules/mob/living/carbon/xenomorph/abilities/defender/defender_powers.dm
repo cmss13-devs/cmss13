@@ -285,16 +285,13 @@
 	steelcrest.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 
 /datum/action/xeno_action/onclick/soak/proc/damage_accumulate(owner, damage_data, damage_type)
 	SIGNAL_HANDLER
 
-	var/damage_taken = damage_data["damage"]
-
-	damage_accumulated += damage_taken
+	damage_accumulated += damage_data["damage"]
 
 	if(damage_accumulated >= damage_threshold)
 		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
@@ -317,11 +314,8 @@
 	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
 
 	// Check actions list for tail slam and reset it's cooldown if it's there
-	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = null
-	for (var/datum/action/xeno_action/activable/tail_stab/slam/slam in owner.actions)
-		slam_action = slam
-		break
-
+	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions
+	
 	if (slam_action && !slam_action.action_cooldown_check())
 		slam_action.end_cooldown()
 

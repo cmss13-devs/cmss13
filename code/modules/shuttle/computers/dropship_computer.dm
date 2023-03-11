@@ -304,6 +304,7 @@
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
 
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
+	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE

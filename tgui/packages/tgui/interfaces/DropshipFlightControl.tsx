@@ -23,6 +23,7 @@ interface DropshipNavigationProps extends NavigationProps {
   can_set_automated?: 0 | 1;
   primary_lz?: string;
   automated_control: AutomatedControl;
+  has_flyby_skill: 0 | 1;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -185,7 +186,7 @@ const FlybyControl = (props, context) => {
   const { act, data } = useBackend<DropshipNavigationProps>(context);
   return (
     <Section
-      title="Flyby Controls"
+      title="Flight Controls"
       className="flybyControl"
       buttons={
         <>
@@ -195,17 +196,27 @@ const FlybyControl = (props, context) => {
             </Button>
           )}
           {data.flight_configuration === 'ferry' && (
-            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
+            <Button
+              icon="jet-fighter"
+              disable={data.has_flyby_skill === 0}
+              onClick={() => act('set-flyby')}>
               Set flyby
             </Button>
           )}
           {data.shuttle_mode === 'called' && (
-            <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
+            <Button
+              disable={data.has_flyby_skill === 0}
+              onClick={() => act('cancel-flyby')}>
+              cancel flyby
+            </Button>
           )}
           {data.shuttle_mode === 'idle' && (
             <Button
               icon="rocket"
-              disabled={data.flight_configuration === 'ferry'}
+              disabled={
+                data.flight_configuration === 'ferry' ||
+                data.has_flyby_skill === 0
+              }
               onClick={() => act('move')}>
               Launch
             </Button>

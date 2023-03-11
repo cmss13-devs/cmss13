@@ -540,3 +540,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/number/hard_deletes_overrun_limit
 	default = 0
 	min_val = 0
+
+/datum/config_entry/number/highpop_min
+	default = 120
+	min_val = 0

@@ -1,8 +1,3 @@
-GLOBAL_VAR_INIT(ishighpop, FALSE)
-GLOBAL_VAR_INIT(checkedhighpop, FALSE)
-
-#define HIGHPOP_MIN 120
-
 /datum/equipment_preset/uscm
 	name = "USCM"
 	faction = FACTION_MARINE
@@ -28,9 +23,7 @@ GLOBAL_VAR_INIT(checkedhighpop, FALSE)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
 	var/highpop_paygrade
-	/// Only used for Highpop
-	var/playtime_rank	
-	var/highpop
+	var/playtime_rank	//Only used for Highpop
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
@@ -62,26 +55,16 @@ GLOBAL_VAR_INIT(checkedhighpop, FALSE)
 			equipped_headset.add_hud_tracker(H)
 
 /datum/equipment_preset/uscm/load_rank(mob/living/carbon/human/H)
-	if(!GLOB.checkedhighpop)
-		check_players()
 	..()
 	//Is it highpop, and does it have either a highpop or playtime rank?
 	if(GLOB.ishighpop && (highpop_paygrade || playtime_rank))
 		if(!playtime_rank)
 			return highpop_paygrade
 
-		//All the silver+ LCPLs get to me CPLs on highpop.
-		else if (GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_2)
+		//All the gold+ LCPLs get to be CPLs on highpop.
+		else if (GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
 			return playtime_rank
 
-/datum/equipment_preset/uscm/proc/check_players()
-	var/players = length(GLOB.clients)
-	//Oh god, I do need to know if there is a config value for the # of players for highpop
-	if(players < HIGHPOP_MIN)
-		GLOB.ishighpop = TRUE
-	GLOB.checkedhighpop = TRUE
-
-#undef HIGHPOP_MIN
 
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm/pfc
@@ -104,13 +87,11 @@ GLOBAL_VAR_INIT(checkedhighpop, FALSE)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
-	check_players()
-
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 		//Only for highpop, I think that this is for plat?
-		if(highpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_4)
+		if(GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_4)
 			return "ME3"
 	return paygrade
 

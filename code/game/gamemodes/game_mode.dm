@@ -14,6 +14,8 @@
 var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
 var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracking_ids to tacbinos and signal flares
+GLOBAL_VAR_INIT(ishighpop, FALSE)
+
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
@@ -75,6 +77,13 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	if(corpses_to_spawn)
 		generate_corpses()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
+
+//Set up some things to check playercount at the beginning of the round
+	var/highpop_check = CONFIG_GET(number/highpop_min)
+	var/players = length(GLOB.clients)
+	if(players < highpop_check)
+		GLOB.ishighpop = TRUE
+
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.

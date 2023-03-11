@@ -1416,7 +1416,6 @@
 #include "code\modules\clothing\spacesuits\miscellaneous.dm"
 #include "code\modules\clothing\spacesuits\spacesuits.dm"
 #include "code\modules\clothing\spacesuits\void.dm"
-#include "code\modules\clothing\suits\alien.dm"
 #include "code\modules\clothing\suits\armor.dm"
 #include "code\modules\clothing\suits\bio.dm"
 #include "code\modules\clothing\suits\jobs.dm"

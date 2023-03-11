@@ -55,7 +55,7 @@
 						SPAN_NOTICE("<b>[M]</b> performs <b>CPR</b> on <b>[src]</b>."))
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
-						revive_grace_period += 7 SECONDS
+						revive_buffer += 7 SECONDS
 						M.visible_message(SPAN_NOTICE("<b>[M]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
 					else

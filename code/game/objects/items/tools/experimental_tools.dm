@@ -171,7 +171,7 @@
 			return
 		else if(H.is_revivable() && H.stat == DEAD)
 			if(H.cpr_cooldown < world.time)
-				H.revive_grace_period += 7 SECONDS
+				H.revive_buffer += 7 SECONDS
 				H.visible_message(SPAN_NOTICE("<b>\The [src]</b> automatically performs <b>CPR</b> on <b>[H]</b>."))
 			else
 				H.visible_message(SPAN_NOTICE("<b>\The [src]</b> fails to perform CPR on <b>[H]</b>."))

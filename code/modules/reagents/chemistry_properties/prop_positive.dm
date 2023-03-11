@@ -429,7 +429,7 @@
 	if(!ishuman(M))
 		return FALSE
 	var/mob/living/carbon/human/H = M
-	H.revive_grace_period += 2.5 SECONDS * potency * delta_time
+	H.revive_buffer += 2.5 SECONDS * potency * delta_time
 	return TRUE
 
 /datum/chem_property/positive/neurocryogenic/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)

@@ -289,8 +289,6 @@
 		for(var/obj/item/alien_embryo/AE in contents)
 			if(AE.stage <= 1)
 				return FALSE
-		if(world.time > timeofdeath + revive_grace_period)
-			return FALSE // they ain't gonna burst now
 	else
 		return FALSE // leave the dead alone
 

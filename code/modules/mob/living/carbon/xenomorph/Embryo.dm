@@ -53,7 +53,8 @@
 	if(affected_mob.stat == DEAD)
 		if(ishuman(affected_mob))
 			var/mob/living/carbon/human/H = affected_mob
-			if(world.time > H.timeofdeath + H.revive_grace_period) //Can't be defibbed.
+			var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
+			if(heart.organ_status == ORGAN_BROKEN || heart.organ_status == ORGAN_DESTROYED) // Can't support the embryo's parasitic leeching anymore.
 				var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)

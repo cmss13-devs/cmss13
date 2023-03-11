@@ -82,7 +82,8 @@
 	var/oxygen_alert = 0
 	var/fire_alert = 0
 	var/prev_gender = null // Debug for plural genders
-	var/revive_grace_period = 5 MINUTES //5 minutes
+	/// 'Buffer' that prevents organ decay while dead in internal_organs.dm, reduced every process.
+	var/revive_buffer = 0 SECONDS
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 
 	var/holo_card_color = "" //which color type of holocard is printed on us

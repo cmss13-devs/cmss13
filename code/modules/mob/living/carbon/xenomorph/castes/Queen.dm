@@ -720,9 +720,12 @@
 			if(victim.stat != DEAD) //Not dead yet.
 				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
 				return FALSE
-			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
-				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return FALSE
+			else
+				if(istype(human_victim))
+					var/datum/internal_organ/heart/heart = human_victim.internal_organs_by_name["heart"]
+					if(!(heart.organ_status == ORGAN_BROKEN || heart.organ_status == ORGAN_DESTROYED)) //Dead, but the host can still hatch, possibly.
+						to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
+						return FALSE
 
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim

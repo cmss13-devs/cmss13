@@ -250,7 +250,7 @@
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='purple'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
+			admin_ticket_log(recipient, "<font color='blue'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='purple'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
 
 			if(!already_logged) //Reply to an existing ticket
 				log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)

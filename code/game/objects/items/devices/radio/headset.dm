@@ -959,6 +959,7 @@
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_USCM
 
 /obj/item/device/radio/headset/distress/CMB/ICC
 	name = "\improper ICC Liaison Headset"

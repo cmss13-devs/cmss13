@@ -1,13 +1,13 @@
 /datum/faction/cmb
 	name = "Colonial Marshal Bureau"
-	faction_tag = FACTION_CMB
+	faction_tag = FACTION_MARINE
 
-/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
-	if(H.mind)
-		_role = H.job
+	if(human.mind)
+		_role = human.job
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
@@ -22,4 +22,4 @@
 		if(JOB_CMB_OBS)
 			hud_icon_state = "obs"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "cmb_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "cmb_[hud_icon_state]")

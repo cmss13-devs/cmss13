@@ -3,8 +3,7 @@
 
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
+	faction = FACTION_USCM
 
 /datum/equipment_preset/CMB/New()
 	. = ..()
@@ -45,11 +44,9 @@
 
 /datum/equipment_preset/CMB
 	name = "Colonial Marshal"
-	faction = FACTION_CMB
+	faction = FACTION_USCM
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
@@ -98,7 +95,7 @@
 		var/obj/item/clothing/under/uniform = H.w_uniform
 		if(istype(uniform))
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
-			uniform.sensor_faction = FACTION_CMB
+			uniform.sensor_faction = FACTION_USCM
 	return ..()
 
 //*****************************************************************************************************/
@@ -111,8 +108,6 @@
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
 	skills = /datum/skills/CMB
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 
 /datum/equipment_preset/CMB/standard/load_gear(mob/living/carbon/human/H)
 
@@ -200,8 +195,6 @@
 	skills = /datum/skills/CMB/leader
 	minimum_age = 30
 	languages = ALL_HUMAN_LANGUAGES
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 
 /datum/equipment_preset/CMB/leader/load_gear(mob/living/carbon/human/H)
 	//clothes
@@ -253,8 +246,6 @@
 
 	assignment = "CMB Investigative Synthetic"
 	rank = JOB_CMB_SYN
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/CMB/synth/load_skills(mob/living/carbon/human/H)
@@ -360,8 +351,6 @@
 	rank = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 
 /datum/equipment_preset/CMB/liaison/load_gear(mob/living/carbon/human/H)
 
@@ -413,8 +402,6 @@
 	rank = JOB_CMB_OBS
 	skills = /datum/skills/civilian/survivor/doctor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
-	faction = FACTION_CMB
-	faction_group = list(FACTION_LIST_MARINE_CMB)
 
 /datum/equipment_preset/CMB/observer/load_gear(mob/living/carbon/human/H)
 
@@ -465,6 +452,7 @@
 	paygrade = "ME2"
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
+	faction = FACTION_USCM
 
 /datum/equipment_preset/uscm/CMB/load_status(mob/living/carbon/human/H)
 	. = ..()

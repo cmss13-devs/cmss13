@@ -110,7 +110,7 @@
 		if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
 			preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] > MAX_SURVIVOR_PER_TYPE[preferred_variant])
-				preferred_variant = CIVILIAN_SURVIVOR
+				preferred_variant = ANY_SURVIVOR
 
 		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
@@ -142,7 +142,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
 			preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] > MAX_SURVIVOR_PER_TYPE[preferred_variant])
-				preferred_variant = CIVILIAN_SURVIVOR
+				preferred_variant = ANY_SURVIVOR
 
 		var/list/synth_survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)

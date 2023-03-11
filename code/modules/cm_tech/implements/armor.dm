@@ -2,10 +2,10 @@
 /obj/item/clothing/accessory/health
 	name = "armor plate"
 	desc = "A metal trauma plate, able to absorb some blows."
-
 	icon = 'icons/obj/items/items.dmi'
+	icon_state = "regular2_100"
 	var/base_icon_state
-	icon_state = "regular2"
+	base_icon_state = "regular2"
 
 	slot = ACCESSORY_SLOT_ARMOR_C
 	var/armor_health = 10
@@ -150,13 +150,12 @@
 		qdel(src)
 		user.put_in_active_hand(new /obj/item/clothing/accessory/health/scrap())
 
-/obj/item/clothing/accessory/health/metal_plate
 
 /obj/item/clothing/accessory/health/ceramic_plate
 	name = "ceramic plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."
-
-	icon_state = "ceramic2"
+	icon_state = "ceramic2_100"
+	base_icon_state = "ceramic2"
 
 	take_slash_damage = FALSE
 	scrappable = FALSE
@@ -176,8 +175,8 @@
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"
 	desc = "A weak armour plate, only able to protect from a little bit of damage. Perhaps that will be enough."
-
-	icon_state = "scrap"
+	icon_state = "scrap_100"
+	base_icon_state = "scrap"
 	health_states = list(
 		0,
 		100,

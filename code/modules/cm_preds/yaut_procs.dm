@@ -303,7 +303,6 @@
 			qdel(bracers.right_wristblades)
 			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
 			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-			bracers.charge_max -= 500
 
 	for(var/choice in secondaries)
 		switch(choice)

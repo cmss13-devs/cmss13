@@ -162,7 +162,7 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "null"
+	icon_state = null
 	anchored = TRUE
 	density = FALSE
 

@@ -55,3 +55,104 @@
   - rscadd: Most Provost and Riot MP roles appear in the MP section of the Crew Monitor.
   - rscadd: Foxtrot Squad and Marine Raiders now appear in consecutive lists below
       Delta and Echo.
+2023-03-07:
+  BeagleGaming1:
+  - spellcheck: Corrects smart-disk's to smart-disc's
+  Mister-moon1:
+  - spellcheck: fixed unneeded commas for caste descriptions
+  - code_imp: Removed unnecessary words from defender and crusher description
+  Totalepicness:
+  - rscadd: Added "Globber Boiler", which is a total replacement of base boiler, designed
+      to kill the "safe" gameplay loops of current base boiler in an attempt for a
+      more challenging and fun caste to both play as and against.
+  - balance: 'Globber Active 1 - Bombard: Spit a large acid glob that will, upon impact,
+      immediately spread a gas glob of your choice'
+  - balance: 'Globber Active 2 - Spray acid: Instantly sprays a line of acid'
+  - balance: 'Globber Active 3 - Shift spits: Switch between acid and neuro gas globs.
+      Acid deals damage while neuro slows, blinds and eventually knocks down marines.
+      Neuro has a larger radius than acid'
+  - balance: 'Globber Active 4 -  Acid shroud: A quick windup action that dumps an
+      acid cloud over the boiler. Cooldowns other abilities similar to dump acid.'
+  - balance: 'Globber Active 5 - Zoom: Short-ranged zoom with no windup.'
+  - balance: 'Globber Passive: Globber features armor, but it is weaker against flames!
+      Stay away from fire!'
+  - refactor: Refractored some minor spit code and icons
+  - balance: Neuro has been completely reworked to deal mainly stamina damage, causes
+      dizzyness and has a small chance to make you 'stumble' in a random direction
+      along with minor tox damage. Stay out of it!
+  - rscadd: Completly reworked neuro gas, it now uses a proper effect with escalating
+      effects the larger the dosage rather than RNG.
+  - bugfix: Acid now deals damage to cades and now has a good chance of going over
+      instead of being airtight
+  - bugfix: ' Boiler globs no longer can target mobs and track them.'
+  Unknownity:
+  - bugfix: You can no longer get a functional clan mask in a black market crate.
+  - bugfix: The stone clan armor is no longer invisible if you wear it.
+  - bugfix: Fixed certain useless items showing up on the predator tracking system.
+  carlarctg:
+  - rscadd: Adds a new biological trait and component, 'Bad Leg'. This trait will
+      give your character a bad leg, which will flare up in pain if you walk without
+      a cane too much. Combat roles cannot get this trait, and neither can some rookie/physically-demanding
+      roles such as MT, CT, nurse.
+  - imageadd: Added and separated the one cane into various types of canes. Makeshift,
+      wooden, fancy, holster, gun.
+  - soundadd: Added sounds for cane walking that will occur while you walk, if you're
+      gripping a cane.
+  - rscadd: Survivors will get a makeshift cane. Command roles (And the CL) will get
+      a fancy cane. Everyone else gets a normal wooden cane.
+  - rscadd: You can create a 'cane', a wooden pole, via 3 wooden planks.
+  - rscadd: Added a 'holster' cane that can fit any melee weapon inside, that the
+      CL can purchase from their briefcase.
+  - admin: 'Added a fancy cane that can be unfolded to become a gun! Six shots, more
+      than enough to kill anything that moves, and integrally silenced. Admin-only
+      for now, also comes inside a case with two spare handfuls of ammunition. Admins:
+      Mess around with the cane first, it might be finicky to learn.'
+  - code_imp: Added a new flag for guns that prevents them from showing their gun
+      features in examine.
+  - spellcheck: Fixed a typo in the CL briefcase.
+  stanalbatross:
+  - ui: converted money-based vendors to tgui
+2023-03-08:
+  BeagleGaming1:
+  - admin: Adds logs when you stammered speech
+  LynxSolstice:
+  - maptweak: Increased Dropship capacity from 33 to 64.
+  Morrow:
+  - bugfix: Fixes power issues for shuttle consoles
+  Puckaboo2:
+  - rscdel: Death Commando Masks have been removed, fixing a missing icon state error.
+  - code_imp: Most of the missing icon state linter errors have been fixed through
+      code and the addition of certain icon states.
+  - code_imp: Removed all instances of placeholder icon_state and item_state variables
+      and replaced them with null so no files will be assigned to them.
+  - imageadd: The donator item The Fists of Mandalore no longer has missing icon states.
+  - imageadd: Armored Sandals now have a distinctive sprite from normal sandals.
+  - bugfix: The donator item XXX's custom Cigar can now be flickered on and off.
+  - bugfix: The donator item Ghost Cigar can now be used.
+  carlarctg:
+  - bugfix: Increased maximum amount of text in predator flavor text to the normal
+      1024 characters value.
+  - soundadd: Adds two new sounds for the clan sword.
+  - spellcheck: Slightly tuned some yautja weapon descriptions.
+  insertnamehere123:
+  - bugfix: Grape soda's sprite isn't broken anymore
+  - imageadd: copypasted the grape soda sprite from one sheet into the right sheet
+  realforest2001:
+  - rscadd: Added a var to decide if morgues update their names to reflect contents.
+      Currently just used to protect Yautja sarcophagi.
+  totalepicness:
+  - bugfix: Fixes cats now do 25 damage and a flicker stun to prey instead of instakilling
+      them.
+2023-03-09:
+  Totalepicness5:
+  - bugfix: Fixed being able to slap dead huggers on your face
+  - refactor: Got rid of all dead hugger instances and replaced them with a prop.
+2023-03-10:
+  BeagleGaming1:
+  - qol: If you are unable to fire guns, you are also unable to execute, and instead
+      just melee
+  Morrow:
+  - bugfix: Fixes shuttle console accesses
+  carlarctg:
+  - balance: Plasma pistols and Spike launchers can be wielded.
+  - balance: Removed Wrist Scimitar power reduction.

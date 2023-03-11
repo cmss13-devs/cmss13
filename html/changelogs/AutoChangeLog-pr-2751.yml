@@ -1,0 +1,4 @@
+author: "LynxSolstice"
+delete-after: True
+changes:
+  - bugfix: "Removed old unused code, reducing code debt."

@@ -13975,6 +13975,13 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/jungle/clear,
 /area/lv624/ground/jungle/south_west_jungle)
+"dkR" = (
+/obj/structure/flora/jungle/thickbush,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "dlh" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/structure/flora/jungle/vines{
@@ -14876,6 +14883,12 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/west_central_jungle)
+"eTC" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "eTH" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
@@ -16046,6 +16059,13 @@
 	dir = 8
 	},
 /area/lv624/ground/colony/west_tcomms_road)
+"hjr" = (
+/obj/structure/flora/jungle/thickbush,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "hke" = (
 /obj/structure/platform/mineral/sandstone/runed,
 /obj/structure/stairs/perspective{
@@ -19117,6 +19137,12 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"nGR" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "nHj" = (
 /obj/item/tool/extinguisher,
 /turf/open/floor{
@@ -19493,6 +19519,10 @@
 "oeN" = (
 /turf/closed/wall,
 /area/lv624/ground/barrens/north_east_barrens)
+"oeP" = (
+/obj/structure/flora/jungle/thickbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
 "oeS" = (
 /obj/effect/decal/remains/human,
 /turf/open/gm/grass/weedable,
@@ -33890,8 +33920,8 @@ ane
 ane
 ane
 ane
-mkk
-izP
+qCg
+dkR
 kxf
 mkk
 mkk
@@ -34117,10 +34147,10 @@ ane
 ane
 ane
 ane
-mkk
-izP
-izP
-mkk
+fuh
+oeP
+hjr
+nGR
 mkk
 wrW
 eWD
@@ -34345,10 +34375,10 @@ ane
 ane
 ane
 mkk
-mkk
-mkk
-mkk
-wrW
+fuh
+oyx
+oyx
+eTC
 qCg
 eWD
 aZa
@@ -34573,10 +34603,10 @@ ane
 ane
 ane
 mkk
-mkk
-mkk
-mkk
-fuh
+gNc
+lIH
+oyx
+oyx
 aZa
 aYR
 aYS
@@ -34802,9 +34832,9 @@ ane
 mkk
 mkk
 mkk
-mkk
-wrW
-eWD
+gNc
+lIH
+oyx
 aYQ
 aud
 aud

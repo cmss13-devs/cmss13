@@ -78,7 +78,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
 	. = ..()
 	switch(rand(1,6))
-	switch(rand(1,6))
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)

@@ -343,7 +343,7 @@
 	RegisterSignal(Knight, COMSIG_XENO_BULLET_ACT, PROC_REF(reduce_bullet_damage))
 	RegisterSignal(Knight, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), PROC_REF(reduce_stuns))
 	RegisterSignal(Knight, COMSIG_MOB_SHAKE_CAMERA, PROC_REF(resist_screenshake))
-	RegisterSignal(Knight, COMSIG_LIVING_AMMO_KNOCKBACK, PROC_REF(resist_pushback))
+	RegisterSignal(Knight, COMSIG_LIVING_AMMO_KNOCKBACK, PROC_REF(resist_knockback))
 	RegisterSignal(Knight, COMSIG_ITEM_ATTEMPT_ATTACK, PROC_REF(resist_melee))
 	button.icon_state = "template_active"
 	button.color = knight_delegate.current_color
@@ -396,16 +396,20 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_SHAKE
 
-/datum/action/xeno_action/onclick/bulwark/proc/resist_pushback()
+/datum/action/xeno_action/onclick/bulwark/proc/resist_knockback()
 	SIGNAL_HANDLER
-	return COMPONENT_CANCEL_PUSHBACK
+
+	// Clarity check.
+	if(shatter_shield())
+		return COMPONENT_CANCEL_KNOCKBACK
+	else
+		return
 
 /datum/action/xeno_action/onclick/bulwark/proc/resist_melee(mob/Knight, mob/living/attacker, obj/item/hitting_item)
 	SIGNAL_HANDLER
 	attacker.animation_attack_on(Knight)
 	attacker.flick_attack_overlay(Knight, "punch") //"shield"
 	if(hitting_item.force < MELEE_FORCE_NORMAL)
-		attacker.balloon_alert(attacker, "*the attack bounces off*")
 		var/picked_attack_verb = pick(hitting_item.attack_verb)
 		picked_attack_verb = deconjugate(picked_attack_verb)
 		if(isnull(picked_attack_verb))
@@ -416,6 +420,7 @@
 
 	if(!shatter_shield())
 		return
+
 	return COMPONENT_CANCEL_ATTACK
 
 /datum/action/xeno_action/onclick/bulwark/proc/shatter_shield()
@@ -427,12 +432,10 @@
 	if(knight_delegate.clarity_stacks)
 		playsound(Knight, "ballistic_shield_hit", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark glows and cracks as you resist an attack. You have [knight_delegate.clarity_stacks] clarity left."))
-		Knight.balloon_alert_to_viewers("*cracked*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_CRACKED, "cracked")
 	else
 		playsound(Knight, "shield_shatter", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark shatters you resist an attack! You have no clarity left."))
-		Knight.balloon_alert_to_viewers("*shattered*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_SHATTERED, "shattered")
 	return TRUE
 
@@ -451,7 +454,7 @@
 	xeno.remove_head_layer()
 	qdel(current_shield_image)
 
-	UnregisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT, COMSIG_MOB_SHAKE_CAMERA, COMSIG_ITEM_ATTEMPT_ATTACK, COMSIG_XENO_BULLET_ACT))
+	UnregisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT, COMSIG_MOB_SHAKE_CAMERA, COMSIG_LIVING_AMMO_KNOCKBACK, COMSIG_ITEM_ATTEMPT_ATTACK, COMSIG_XENO_BULLET_ACT))
 
 	to_chat(xeno, SPAN_XENODANGER("You feel your defensive shell dissipate!"))
 	return

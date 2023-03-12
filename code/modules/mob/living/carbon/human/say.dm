@@ -277,6 +277,9 @@ for it but just ignore it.
 				verb = pick("whinnies","neighs", "says")
 				handled = 1
 
+	var/braindam = getBrainLoss()
+	if(slurring || stuttering || dazed || braindam >= 60)
+		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
@@ -289,7 +292,6 @@ for it but just ignore it.
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
 		handled = 1
-	var/braindam = getBrainLoss()
 	if(braindam >= 60)
 		handled = 1
 		if(prob(braindam/4))

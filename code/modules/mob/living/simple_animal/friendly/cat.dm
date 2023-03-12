@@ -43,6 +43,7 @@
 	black_market_value = 50
 	dead_black_market_value = 0
 	var/miaow_counter = 0
+	var/attack_damage = 25
 
 /mob/living/simple_animal/cat/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -65,13 +66,27 @@
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
 			for(var/mob/prey in view(1,src))
-				if(is_type_in_list(prey, hunting_targets) && play_counter < 5)
+				if(is_type_in_list(prey, hunting_targets) && play_counter < 5 && prey.stat != DEAD)
 					var/mob/living/livingprey = prey
-					livingprey.splat(src)
+
+					if(livingprey.stat == DEAD) //quick deadcheck
+						return
+
 					play_counter++
 					visible_message(pick("[src] bites [livingprey]!","[src] toys with [livingprey].","[src] chomps on [livingprey]!"))
 					movement_target = null
 					stop_automated_movement = 0
+
+					animation_attack_on(livingprey)
+					flick_attack_overlay(livingprey, "slash")
+					if(!livingprey.client) // instakilling players bad
+						livingprey.splat(src)
+					else
+						livingprey.attack_animal(src)
+						livingprey.apply_damage(attack_damage,BRUTE)
+						livingprey.apply_effect(1,SLOW)
+						livingprey.KnockDown(1,1)
+					playsound(src.loc, "alien_claw_flesh", 25, 1)
 					break
 
 	..()

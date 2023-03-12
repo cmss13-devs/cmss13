@@ -34695,28 +34695,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
-<<<<<<< HEAD
-"frX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
-=======
-"fsd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/hallways/vehiclehangar)
->>>>>>> upstream/master
 "fso" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -49802,15 +49780,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/squads/bravo)
-"mJY" = (
-/obj/structure/surface/rack,
-/obj/item/circuitboard/firealarm,
-/obj/item/circuitboard,
-/obj/item/clipboard,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "mKb" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -53303,33 +53272,6 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
-"opo" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/hallways/stern_hallway)
 "opy" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -54926,10 +54868,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
-"peM" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_a_s)
 "pfa" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -62548,33 +62486,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/morgue)
-"sKy" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/engineering/upper_engineering)
 "sLo" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -74226,7 +74137,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
-<<<<<<< HEAD
 "xTK" = (
 /obj/effect/vehicle_spawner/van/decrepit,
 /turf/open/floor/almayer{
@@ -74234,20 +74144,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/hallways/vehiclehangar)
-=======
-"xTt" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/stern_hallway)
->>>>>>> upstream/master
 "xTR" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -74770,13 +74666,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
-"yfa" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
 "yfm" = (
 /obj/effect/landmark/start/marine/delta,
 /obj/effect/landmark/late_join/delta,
@@ -124196,7 +124085,7 @@ alO
 alO
 azi
 azi
-sKy
+ets
 kvh
 rka
 alO
@@ -124999,7 +124888,7 @@ cIW
 alO
 alO
 psm
-opo
+dKm
 psm
 aHe
 iOp
@@ -125608,7 +125497,7 @@ lht
 rYv
 alO
 dmQ
-mJY
+jBB
 psm
 svf
 arV
@@ -126619,7 +126508,7 @@ aae
 pVZ
 pVZ
 vcV
-peM
+aIM
 xlX
 xlX
 xlX

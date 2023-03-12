@@ -1,14 +1,14 @@
 /obj/structure/sign/double/barsign
 	icon = 'icons/obj/structures/props/barsigns.dmi'
 	icon_state = "empty"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/sign/double/barsign/New()
 	..()
 	ChangeSign(pick("pinkflamingo", "magmasea", "limbo", "rustyaxe", "armokbar", "brokendrum", "meadbay", "thedamnwall", "thecavern", "cindikate", "theorchard", "thesaucyclown", "theclownshead", "whiskeyimplant", "carpecarp", "robustroadhouse", "greytide", "theredshirt"))
 	return
 
-/obj/structure/sign/double/barsign/proc/ChangeSign(var/Text)
+/obj/structure/sign/double/barsign/proc/ChangeSign(Text)
 	src.icon_state = "[Text]"
 	//on = 0
 	//brightness_on = 4 //uncomment these when the lighting fixes get in

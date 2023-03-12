@@ -1,5 +1,5 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
+/proc/message_all_yautja(msg, soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
@@ -7,7 +7,7 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/mob/living/carbon/human/proc/message_thrall(var/msg)
+/mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
 
@@ -19,7 +19,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(var/perc)
+/mob/living/carbon/human/proc/update_power_display(perc)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
@@ -56,13 +56,13 @@
 		if(Adjacent(M) && M.stat == DEAD)
 			if(ishuman(M))
 				var/mob/living/carbon/human/Q = M
-				if(Q.species && isSameSpecies(Q, src))
+				if(Q.species && issamespecies(Q, src))
 					continue
 			choices += M
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
-	var/mob/living/carbon/Xenomorph/xeno_victim
+	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)
@@ -72,19 +72,19 @@
 	if(!Adjacent(T))
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
-		
-	if(isXenoLarva(T) || isXenoFacehugger(T))
+
+	if(islarva(T) || isfacehugger(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
 		return
 
-	if(isSynth(T))
+	if(issynth(T))
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
 		return
 
-	if(isXeno(T))
+	if(isxeno(T))
 		xeno_victim = T
 
 	var/static/list/procedure_choices = list(
@@ -109,7 +109,7 @@
 		if(!procedure)
 			return
 
-	if(isXeno(T) || procedure == "Skin")
+	if(isxeno(T) || procedure == "Skin")
 		if(T.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
 			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
@@ -238,7 +238,7 @@
 		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
 		return
 
-	if(!isYautja(src))
+	if(!isyautja(src))
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 
@@ -256,7 +256,7 @@
 		return
 
 	var/list/melee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
-	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disk"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
+	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disc"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
 	var/list/restricted = list(YAUTJA_GEAR_LAUNCHER, YAUTJA_GEAR_PISTOL, YAUTJA_GEAR_FULL_ARMOR, YAUTJA_GEAR_SHIELD, YAUTJA_GEAR_DRONE) //Can only select them once each.
 
 	var/list/secondaries = list()
@@ -303,7 +303,6 @@
 			qdel(bracers.right_wristblades)
 			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
 			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-			bracers.charge_max -= 500
 
 	for(var/choice in secondaries)
 		switch(choice)

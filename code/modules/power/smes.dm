@@ -9,7 +9,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	directwired = 0
 
@@ -191,7 +191,7 @@
 	return 1
 
 
-/obj/structure/machinery/power/smes/add_load(var/amount)
+/obj/structure/machinery/power/smes/add_load(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -209,7 +209,7 @@
 	tgui_interact(user)
 
 
-/obj/structure/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!open_hatch)
 			open_hatch = 1
@@ -415,7 +415,7 @@
 	charge = 5000000
 	..()
 
-/proc/rate_control(var/S, var/V, var/C, var/Min=1, var/Max=5, var/Limit=null)
+/proc/rate_control(S, V, C, Min=1, Max=5, Limit=null)
 	var/href = "<A href='?src=\ref[S];rate control=1;[V]"
 	var/rate = "[href]=-[Max]'>-</A>[href]=-[Min]'>-</A> [(C?C : 0)] [href]=[Min]'>+</A>[href]=[Max]'>+</A>"
 	if(Limit) return "[href]=-[Limit]'>-</A>"+rate+"[href]=[Limit]'>+</A>"

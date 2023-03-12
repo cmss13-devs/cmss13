@@ -11,6 +11,7 @@
 #define HEADSHOT_OVERLAY_MEDIUM "medium_headshot"
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
+// flags_ammo_behaviour
 #define AMMO_EXPLOSIVE (1<<0)
 #define AMMO_ACIDIC (1<<1)
 #define AMMO_XENO (1<<2)
@@ -75,7 +76,13 @@
 #define GUN_SUPPORT_PLATFORM (1<<19)
 #define GUN_BURST_ONLY (1<<20)
 #define GUN_FULL_AUTO_ONLY (1<<21)
+/// No gun description, only base desc
+#define GUN_NO_DESCRIPTION (1<<22)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
+
+#define USES_STREAKS (1<<0)
+#define DANGEROUS_TO_ONEHAND_LEVER (1<<1)
+#define MOVES_WHEN_LEVERING (1<<2)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE 1
@@ -99,7 +106,7 @@
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up
-#define SHOES_SLOWDOWN -1.0
+#define SHOES_SLOWDOWN -1
 
 #define SLOWDOWN_ARMOR_NONE 0
 #define SLOWDOWN_ARMOR_VERY_LIGHT 0.20
@@ -256,7 +263,7 @@
 #define THROW_MODE_NORMAL   1
 #define THROW_MODE_HIGH  2
 
-#define XENO_ACID_BARRICADE_DAMAGE 8
+#define XENO_ACID_GAS_BARRICADE_DAMAGE 8.5
 #define XENO_ACID_HMG_DAMAGE 10
 
 #define MOLOTOV_POTENCY_MAX 20

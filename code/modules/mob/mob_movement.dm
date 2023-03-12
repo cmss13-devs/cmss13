@@ -43,7 +43,7 @@
 
 //This gets called when you press the delete button.
 /client/verb/delete_key_pressed()
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!usr.pulling)
 		to_chat(usr, SPAN_NOTICE("You are not pulling anything."))
@@ -52,7 +52,7 @@
 
 /client/verb/swap_hand()
 	set name = ".SwapMobHand"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
@@ -64,13 +64,13 @@
 
 
 /client/verb/attack_self()
-	set hidden = 1
+	set hidden = TRUE
 	if(mob)
 		mob.mode()
 	return
 
 /client/verb/drop_item()
-	set hidden = 1
+	set hidden = TRUE
 	if(!isrobot(mob))
 		mob.drop_item_v()
 	return
@@ -130,6 +130,9 @@
 	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
+
+	if(!isliving(mob))
+		return mob.Move(n, direct)
 
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
 		return
@@ -213,7 +216,7 @@
 ///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
-/mob/proc/Process_Spacemove(var/check_drift = 0)
+/mob/proc/Process_Spacemove(check_drift = 0)
 
 	if(!Check_Dense_Object()) //Nothing to push off of so end here
 		make_floating(1)
@@ -284,7 +287,7 @@
 	return dense_object
 
 
-/mob/proc/Process_Spaceslipping(var/prob_slip = 5)
+/mob/proc/Process_Spaceslipping(prob_slip = 5)
 	//Setup slipage
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)

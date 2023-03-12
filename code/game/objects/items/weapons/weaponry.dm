@@ -145,7 +145,7 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 
-/obj/item/weapon/melee/wirerod/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/weapon/melee/wirerod/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/shard))
 		var/obj/item/weapon/melee/twohanded/spear/S = new /obj/item/weapon/melee/twohanded/spear

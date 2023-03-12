@@ -11,7 +11,7 @@
 	var/html_link = ""
 	var/window_size = "1280x720"
 
-/obj/item/map/attack_self(var/mob/user) //Open the map
+/obj/item/map/attack_self(mob/user) //Open the map
 	..()
 	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
 	initialize_map()

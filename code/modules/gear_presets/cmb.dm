@@ -7,7 +7,7 @@
 
 /datum/equipment_preset/CMB/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_accesses() + get_all_civilian_accesses()
 
 /datum/equipment_preset/CMB/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(80;MALE,20;FEMALE)
@@ -53,7 +53,7 @@
 
 /datum/equipment_preset/CMB/New()
 	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+	access = get_all_accesses() + get_all_civilian_accesses()
 
 
 /datum/equipment_preset/CMB/load_name(mob/living/carbon/human/H)
@@ -446,7 +446,10 @@
 	name = "USCM Anchorpoint Station Squad Marine"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP)
+/datum/equipment_preset/uscm/CMB/New()
+	. = ..()
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP)
+
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
 	paygrade = "ME2"
@@ -499,8 +502,10 @@
 /datum/equipment_preset/uscm/CMB/leader
 	name = "USCM Anchorpoint Station Team Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+/datum/equipment_preset/uscm/CMB/leader/New()
+	. = ..()
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
 	paygrade = "ME6"
@@ -543,8 +548,10 @@
 /datum/equipment_preset/uscm/CMB/rto
 	name = "USCM Anchorpoint Station Technical Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+/datum/equipment_preset/uscm/CMB/rto/New()
+	. = ..()
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_RTO
 	paygrade = "ME4"
@@ -589,8 +596,10 @@
 /datum/equipment_preset/uscm/CMB/medic
 	name = "USCM Anchorpoint Station Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+/datum/equipment_preset/uscm/CMB/medic/New()
+	. = ..()
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = "Anchorpoint Station Corpsman"
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
@@ -649,8 +658,10 @@
 /datum/equipment_preset/uscm/CMB/smartgunner
 	name = "USCM Anchorpoint Station Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+/datum/equipment_preset/uscm/CMB/smartgunner/New()
+	. = ..()
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "ME3"

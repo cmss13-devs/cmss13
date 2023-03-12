@@ -12,7 +12,7 @@
 			clan_info.clan_rank = clan_ranks_ordered[CLAN_RANK_ADMIN]
 			clan_info.permissions |= CLAN_PERMISSION_ALL
 		else
-			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
+			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients.
 
 		clan_info.save()
 

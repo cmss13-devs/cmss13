@@ -12269,6 +12269,10 @@
 	icon_state = "pottedplant_22";
 	pixel_x = 8
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -12373,6 +12377,10 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 8;
 	pixel_y = -2
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -45988,6 +45996,16 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/port_umbilical)
+"kZJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "lah" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -64506,16 +64524,6 @@
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
-"tnA" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "tnY" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -100947,8 +100955,8 @@ baO
 bcx
 bPr
 bPr
+kZJ
 bPr
-tnA
 bdI
 bPr
 tub
@@ -100959,9 +100967,9 @@ aYt
 bPr
 bdI
 bPr
+kZJ
 bPr
 bPr
-tnA
 bEO
 baO
 bcl

@@ -25074,9 +25074,6 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/cane{
-	pixel_x = 6
-	},
 /turf/open/floor/wood/ship,
 /area/westerneye/command/corporateliason)
 "hYr" = (

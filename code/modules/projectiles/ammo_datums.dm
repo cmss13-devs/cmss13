@@ -2768,6 +2768,34 @@
 		boosting_xeno.gain_health(35)
 		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
 
+/datum/ammo/xeno/acid/healing
+	name = "healing spit"
+
+	damage = 0
+	shell_speed = AMMO_SPEED_TIER_2
+	accuracy = HIT_ACCURACY_TIER_10*8
+	flags_ammo_behavior =  AMMO_XENO | AMMO_SKIPS_ALIENS | AMMO_STRIKES_SURFACE | AMMO_HITS_TARGET_TURF
+	damage_falloff = 0
+	max_range = 16
+
+/datum/ammo/xeno/acid/healing/on_hit_turf(mob/target, obj/item/projectile/impacting_projectile)
+	. = ..()
+	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
+		var/hivenumber = XENO_HIVE_NORMAL
+
+		if (!boosting_xeno.check_state())
+			break
+
+		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
+			continue
+
+		if (SEND_SIGNAL(boosting_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+			continue
+
+		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
+		boosting_xeno.gain_health(35)
+		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
+
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 

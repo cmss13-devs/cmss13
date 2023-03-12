@@ -47,9 +47,17 @@
 
 //Marker abilities
 
-/datum/action/xeno_action/onclick/toggle_long_range/marker
-	should_delay = TRUE
-	delay = 20
+/datum/action/xeno_action/onclick/healing_surge
+	name = "Healing surge"
+	action_icon_state = "charge_spit"
+	ability_name = "healing surge"
+	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	movement_buffer = 7
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 50
+	xeno_cooldown = 12 SECONDS
+	cooldown_message = "You feel your corrosive glands swell with acid. You can spit again."
 
+	var/duration = 35
+
+	var/buffs_active = FALSE

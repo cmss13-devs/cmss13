@@ -143,3 +143,33 @@
   totalepicness:
   - bugfix: Fixes cats now do 25 damage and a flicker stun to prey instead of instakilling
       them.
+2023-03-09:
+  Totalepicness5:
+  - bugfix: Fixed being able to slap dead huggers on your face
+  - refactor: Got rid of all dead hugger instances and replaced them with a prop.
+2023-03-10:
+  BeagleGaming1:
+  - qol: If you are unable to fire guns, you are also unable to execute, and instead
+      just melee
+  Morrow:
+  - bugfix: Fixes shuttle console accesses
+  carlarctg:
+  - balance: Plasma pistols and Spike launchers can be wielded.
+  - balance: Removed Wrist Scimitar power reduction.
+2023-03-11:
+  LynxSolstice:
+  - bugfix: Removed old unused code, reducing code debt.
+  NewyearnewmeUwu:
+  - rscdel: Removed the ability to get combat drones and DD gear+guns from black market
+      crates.
+  TopHatPenguin:
+  - rscadd: Adds Chinese to the UPP presets.
+  realforest2001:
+  - config: References to the forum now direct to the new one.
+2023-03-12:
+  Morrow:
+  - bugfix: Fixes runtimes related to leaving the server
+  NewyearnewmeUwu:
+  - bugfix: soil for sandbags on Chance's now has a proper name
+  TopHatPenguin:
+  - rscadd: Adds breaching charges to the RTO vendor

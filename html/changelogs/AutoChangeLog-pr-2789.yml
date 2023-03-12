@@ -1,5 +1,0 @@
-author: "Totalepicness5"
-delete-after: True
-changes:
-  - bugfix: "Fixed being able to slap dead huggers on your face"
-  - refactor: "Got rid of all dead hugger instances and replaced them with a prop."

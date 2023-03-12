@@ -62,7 +62,7 @@
 			return highpop_paygrade
 
 		//All the gold+ LCPLs get to be CPLs on highpop.
-		else if (GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
 			return playtime_rank
 
 

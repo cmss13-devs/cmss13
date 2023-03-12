@@ -27,9 +27,7 @@
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
-
-
-
+	
 /obj/effect/alien/resin/fruit/attack_hand(mob/living/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("You start uprooting \the [src].."))

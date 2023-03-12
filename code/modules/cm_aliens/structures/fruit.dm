@@ -288,8 +288,8 @@
 	var/speed_duration = 15 SECONDS
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
-	if(LAZYISIN(xeno.modifier_sources, XENO_FRUIT_SPEED))
-		to_chat(xeno, SPAN_XENOWARNING("You're already under the effects of this fruit, go out and kill!"))
+	if(LAZYISIN(recipient.modifier_sources, XENO_FRUIT_SPEED))
+		to_chat(recipient, SPAN_XENOWARNING("You're already under the effects of this fruit, go out and kill!"))
 		return
 	if(mature && recipient && !QDELETED(recipient))
 		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates you to move faster!"))

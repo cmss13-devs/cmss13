@@ -78,7 +78,7 @@ GLOBAL_VAR_INIT(ishighpop, FALSE)
 		generate_corpses()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 
-//Set up some things to check playercount at the beginning of the round
+	//Set up some things to check playercount at the beginning of the round
 	var/highpop_check = CONFIG_GET(number/highpop_min)
 	var/players = length(GLOB.clients)
 	if(players < highpop_check)

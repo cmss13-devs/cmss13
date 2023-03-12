@@ -28,6 +28,8 @@
 	var/mob/living/carbon/xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
 
+
+
 /obj/effect/alien/resin/fruit/attack_hand(mob/living/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("You start uprooting \the [src].."))
@@ -285,13 +287,10 @@
 	var/speed_buff_amount = 0.4
 	var/speed_duration = 15 SECONDS
 
-/obj/effect/alien/resin/fruit/speed/prevent_consume(mob/living/carbon/xenomorph/xeno)
+/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(LAZYISIN(xeno.modifier_sources, XENO_FRUIT_SPEED))
 		to_chat(xeno, SPAN_XENOWARNING("You're already under the effects of this fruit, go out and kill!"))
-		return XENO_NO_DELAY_ACTION
-	return ..()
-
-/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
+		return
 	if(mature && recipient && !QDELETED(recipient))
 		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates you to move faster!"))
 		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("You feel the effects of the [name] wane..."))

@@ -188,10 +188,10 @@
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/scythe
-	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	name = "dual war scythe"
+	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
-	item_state = "scythe"
+	item_state = "scythe_dual"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
@@ -211,12 +211,18 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
-
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
 	return
+
+/obj/item/weapon/melee/yautja/scythe/alt
+	name = "double war scythe"
+	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	icon_state = "predscythe_alt"
+	item_state = "scythe_double"
 
 //Combistick
 /obj/item/weapon/melee/yautja/combistick
@@ -590,6 +596,10 @@
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
+
+/obj/item/weapon/melee/twohanded/yautja/glaive/alt
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
 
 /obj/item/weapon/melee/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"

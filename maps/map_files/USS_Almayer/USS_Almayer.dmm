@@ -1491,7 +1491,7 @@
 	},
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 8
@@ -1504,7 +1504,7 @@
 	},
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
@@ -1578,7 +1578,7 @@
 	},
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -21474,19 +21474,6 @@
 "bKh" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
-"bKj" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/hallways/vehiclehangar)
 "bKm" = (
 /obj/structure/closet/crate/freezer{
 	desc = "A freezer crate. There is a note attached, it reads: Do not open, property of Pvt. Mendoza."
@@ -24407,7 +24394,7 @@
 "bXm" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -41539,7 +41526,7 @@
 "iLd" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -50549,7 +50536,7 @@
 "ngl" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 8
@@ -51042,7 +51029,7 @@
 "nqV" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -60812,7 +60799,7 @@
 "scu" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 8
@@ -61705,7 +61692,7 @@
 	},
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -62279,7 +62266,7 @@
 "sLo" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -62374,7 +62361,7 @@
 "sOy" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 8
@@ -67102,19 +67089,6 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/engineering/upper_engineering)
-"uVc" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/hallways/vehiclehangar)
 "uVd" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -25
@@ -70221,7 +70195,7 @@
 "wlF" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -71175,7 +71149,7 @@
 "wLu" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_sn_solo_cap"
 	},
 /obj/structure/platform{
 	dir = 8
@@ -88636,7 +88610,7 @@ bzA
 bzA
 bNp
 pqQ
-uVc
+sxN
 bzA
 bzA
 bzA
@@ -89245,7 +89219,7 @@ bBB
 bKh
 bNp
 pqQ
-bKj
+sxN
 bzA
 bzA
 bzA

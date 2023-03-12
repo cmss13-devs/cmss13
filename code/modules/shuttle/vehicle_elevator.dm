@@ -49,8 +49,9 @@
 	height = 5
 	dwidth = 2
 	dheight = 2
+	roundstart_template = /datum/map_template/shuttle/vehicle
 
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
 	name = "Adminlevel Vehicle Elevator Dock"
 	id = "adminlevel vehicle"
-	roundstart_template = /datum/map_template/shuttle/vehicle
+	roundstart_template = null

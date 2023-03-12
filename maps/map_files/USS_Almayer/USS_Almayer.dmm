@@ -42261,7 +42261,7 @@
 	},
 /obj/structure/transmitter/rotary{
 	name = "Medical Telephone";
-	phone_category = "Command";
+	phone_category = "Almayer";
 	phone_id = "Lower Medical - Reception";
 	pixel_x = -8;
 	pixel_y = 4

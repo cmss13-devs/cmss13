@@ -83,7 +83,6 @@
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/mask/rebreather/scarf/ui_action_click()
-	. = ..()
 	pull_down()
 
 /obj/item/clothing/mask/rebreather/scarf/verb/pull_down()

@@ -17421,6 +17421,17 @@
 	icon_state = "test_floor4"
 	},
 /area/westerneye/engineering/lower_engineering)
+"fAj" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = -28
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
+/area/westerneye/medical/starboard_hallway)
 "fAp" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -25063,8 +25074,8 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/staff/gentcane{
-	pixel_x = 5
+/obj/item/cane{
+	pixel_x = 6
 	},
 /turf/open/floor/wood/ship,
 /area/westerneye/command/corporateliason)
@@ -61814,6 +61825,18 @@
 "tKS" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/hull/mid_hull/l_m_s)
+"tKU" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = -28
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/westerneye/medical/starboard_hallway)
 "tKX" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -61826,6 +61849,17 @@
 	icon_state = "plate"
 	},
 /area/westerneye/hull/lower_hull/l_f_p)
+"tLg" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 28
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
+/area/westerneye/medical/port_hallway)
 "tLk" = (
 /obj/structure/ladder{
 	height = 2;
@@ -68459,6 +68493,19 @@
 	icon_state = "red"
 	},
 /area/westerneye/hallways/starboard_escape_hallway)
+"vUF" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 28
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
+/area/westerneye/medical/port_hallway)
 "vUS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
@@ -103439,7 +103486,7 @@ lqf
 pdz
 iRK
 wVe
-nQt
+fAj
 abl
 abl
 abl
@@ -103657,7 +103704,7 @@ bAE
 sOz
 oiu
 kET
-bAE
+tKU
 kET
 bnm
 nQt
@@ -108496,7 +108543,7 @@ glB
 toz
 cgD
 pga
-cgD
+vUF
 cgD
 jsv
 ovT
@@ -108688,7 +108735,7 @@ tSs
 gNk
 mKZ
 syZ
-mbv
+tLg
 mbv
 mbv
 qsc

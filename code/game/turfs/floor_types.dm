@@ -298,7 +298,6 @@
 /turf/open/floor/almayer/empty/multi_elevator/proc/calculate_fallonto_turf(amount_fallen=0)
 	amount_fallen++
 	var/area/my_area = get_area(src)
-	var/turf/fallonto_turf
 
 	if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
 		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle

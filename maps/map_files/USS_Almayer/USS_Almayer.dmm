@@ -42254,17 +42254,17 @@
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "jjn" = (
-/obj/structure/transmitter{
-	name = "Medical Telephone";
-	phone_category = "Almayer";
-	phone_id = "Medical Lower";
-	pixel_x = -8;
-	pixel_y = 5
-	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = 8;
 	pixel_y = 5
+	},
+/obj/structure/transmitter/rotary{
+	name = "Medical Telephone";
+	phone_category = "Command";
+	phone_id = "Lower Medical - Reception";
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -45376,7 +45376,55 @@
 	},
 /area/almayer/squads/bravo)
 "kLH" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 9;
+	pixel_y = 11;
+	layer = 3.2
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 9;
+	pixel_y = 11;
+	layer = 3.2
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -6;
+	pixel_y = 11;
+	layer = 3.2
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -6;
+	pixel_y = 11;
+	layer = 3.2
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -57275,6 +57323,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -69859,34 +69908,6 @@
 	pixel_y = 11;
 	layer = 3.2
 	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 9;
-	pixel_y = 11;
-	layer = 3.2
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 9;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = -6;
-	pixel_y = 11;
-	layer = 3.2
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = -6;
-	pixel_y = 11;
-	layer = 3.2
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = -6;
-	pixel_y = 11;
-	layer = 3.2
-	},
 /obj/item/storage/firstaid/fire{
 	pixel_x = -6;
 	pixel_y = 11;
@@ -69902,16 +69923,6 @@
 	pixel_y = 11;
 	layer = 3.2
 	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 9;
-	pixel_y = 11;
-	layer = 3.2
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 9;
-	pixel_y = 11;
-	layer = 3.2
-	},
 /obj/item/storage/firstaid/o2{
 	pixel_x = 9;
 	pixel_y = -3
@@ -69922,34 +69933,6 @@
 	},
 /obj/item/storage/firstaid/o2{
 	pixel_x = 9;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 9;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 9;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 9;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -6;
 	pixel_y = -3
 	},
 /obj/item/storage/firstaid/adv{

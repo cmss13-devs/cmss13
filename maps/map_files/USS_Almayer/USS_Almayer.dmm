@@ -61699,6 +61699,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"sxN" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hallways/vehiclehangar)
 "sxV" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = 32;
@@ -67089,6 +67102,19 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/engineering/upper_engineering)
+"uVc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hallways/vehiclehangar)
 "uVd" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -25
@@ -88001,7 +88027,7 @@ egq
 bKh
 bNp
 pqQ
-bKj
+sxN
 bzA
 bzA
 bzA
@@ -88610,7 +88636,7 @@ bzA
 bzA
 bNp
 pqQ
-bKj
+uVc
 bzA
 bzA
 bzA

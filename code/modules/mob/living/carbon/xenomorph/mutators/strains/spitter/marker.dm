@@ -1,6 +1,6 @@
 /datum/xeno_mutator/marker
 	name = "STRAIN: Spitter - Marker"
-	description = "You weaken your corrosive acid in exchange for the ability to see and accurately spit an acid that heals nearby sisters on contact with a hostile target, additonally the targets your acid hits will take extra damage and be marked with a yellow outline."
+	description = "You weaken your corrosive acid in exchange an acid that heals nearby sisters on contact with a hostile target, additonally the targets your acid hits will take extra damage and be marked with a yellow outline, you also gain the ability to empower your healing spits by mixing the acid, plasma and resin to create a spit that heals xenos within an area of a targeted turf."
 	flavor_description = "Help your sisters fight better."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

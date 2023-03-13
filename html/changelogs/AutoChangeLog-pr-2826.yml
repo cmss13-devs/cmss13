@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Admin awarding req points no longer does an alert even if the cancel button is pressed."

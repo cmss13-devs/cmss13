@@ -2752,9 +2752,9 @@
 /datum/ammo/xeno/acid/marking/on_hit_mob(mob/target, obj/item/projectile/impacting_projectile)
 	. = ..()
 	target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS) //subject to change
+	var/healed_xeno = 0
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL
-
 		if (!boosting_xeno.check_state())
 			break
 
@@ -2767,6 +2767,9 @@
 		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
 		boosting_xeno.gain_health(35)
 		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
+		healed_xeno += 1
+		if (healed_xeno == 3)
+			break
 
 /datum/ammo/xeno/acid/healing
 	name = "healing spit"

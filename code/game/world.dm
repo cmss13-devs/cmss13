@@ -411,5 +411,3 @@ var/datum/BSQL_Connection/connection
 			world.log << line
 			if(GLOB.STUI.runtime)
 				GLOB.STUI.runtime.Add(line)
-
-var/bogus_test = stack_trace("static initializer stack_trace()")

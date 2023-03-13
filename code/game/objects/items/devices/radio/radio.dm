@@ -273,7 +273,7 @@
 
 	var/transmit_z = position.z
 	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
-	if(SSinterior.in_interior())
+	if(SSinterior.in_interior(position))
 		var/datum/interior/I = SSinterior.get_interior_by_coords(position.x, position.y, position.z)
 		if(I && I.exterior)
 			transmit_z = I.exterior.z

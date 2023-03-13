@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - qol: "Made Hivemind available for the first 5 minutes of round even without a queen."

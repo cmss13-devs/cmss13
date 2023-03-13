@@ -2509,51 +2509,23 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aip" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -8377,17 +8349,10 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aAe" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8669,28 +8634,14 @@
 	},
 /area/almayer/command/telecomms)
 "aBa" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -8747,39 +8698,18 @@
 	},
 /area/almayer/command/telecomms)
 "aBg" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32
@@ -16809,26 +16739,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
@@ -17835,12 +17751,8 @@
 	pixel_y = 10
 	},
 /obj/item/trash/buritto,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -21445,12 +21357,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure{
-	desc = "A pneumatic waste disposal unit. It does an exemplary job as a table. In fact, it deserves a medal.";
-	icon = 'icons/obj/pipes/disposal.dmi';
-	icon_state = "condisposal";
-	name = "broken disposal unit"
-	},
+/obj/structure/machinery/disposal/broken,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	layer = 3.1;
 	pixel_x = -7;
@@ -25289,17 +25196,10 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -26945,16 +26845,9 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "ckD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -29159,26 +29052,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
 "cWI" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -29467,28 +29346,14 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -30632,36 +30497,16 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "dCh" = (
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water"
-	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_water,
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -32265,15 +32110,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "emG" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -33232,15 +33070,8 @@
 /area/almayer/squads/req)
 "eHf" = (
 /obj/structure/machinery/light/small,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -33253,32 +33084,16 @@
 	},
 /area/almayer/command/corporateliason)
 "eHq" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -15
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -33549,17 +33364,10 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "ePs" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -34964,15 +34772,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower_engineering)
 "fxz" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/effect/landmark/yautja_teleport,
 /obj/structure/sign/safety/hvac_old{
@@ -35902,26 +35703,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -36164,26 +35951,12 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
@@ -36598,6 +36371,10 @@
 	pixel_x = -20;
 	pixel_y = 18
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = -16
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "gls" = (
@@ -36910,40 +36687,19 @@
 /area/almayer/command/cic)
 "gvC" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
@@ -37001,12 +36757,8 @@
 	},
 /area/almayer/squads/req)
 "gwF" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -38095,51 +37847,23 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "gYS" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = -17
@@ -39899,6 +39623,12 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -15
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -39972,17 +39702,10 @@
 	},
 /area/almayer/living/grunt_rnr)
 "hTk" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -40576,15 +40299,8 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "iiP" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
@@ -41319,15 +41035,8 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "iBG" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	anchored = 1
@@ -41917,13 +41626,9 @@
 	dir = 2;
 	req_one_access = list(2,34,30)
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -42379,26 +42084,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -43892,15 +43583,8 @@
 	},
 /area/almayer/medical/upper_medical)
 "jPf" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
@@ -44834,26 +44518,12 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "kpX" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -45354,15 +45024,8 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "kAs" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -45970,6 +45633,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_three)
+"kRu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "kRP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -46897,15 +46572,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
 "lpX" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -47726,23 +47394,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -15
 	},
@@ -47762,15 +47419,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "lGr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -48611,26 +48261,12 @@
 	},
 /area/almayer/squads/alpha)
 "mfe" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -48712,21 +48348,9 @@
 	},
 /area/almayer/hallways/hangar)
 "mhl" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -49309,26 +48933,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/autoopenclose{
 	pixel_y = 32
@@ -49374,15 +48984,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "mzb" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/bed/chair{
 	dir = 4
@@ -50045,12 +49648,8 @@
 /area/space/almayer/lifeboat_dock)
 "mNZ" = (
 /obj/item/trash/uscm_mre,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -50176,26 +49775,15 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "mRc" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
+	pixel_x = -16;
 	pixel_y = -16
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "mRl" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -50647,22 +50235,11 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "ndM" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
@@ -51131,26 +50708,12 @@
 	pixel_y = 9
 	},
 /obj/item/storage/toolbox/mechanical/green,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51461,26 +51024,12 @@
 	},
 /area/almayer/living/starboard_garden)
 "nun" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -52168,12 +51717,7 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "nLb" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure{
-	desc = "You can't see anything behind the screen, it looks half human and half machine.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "arcadeb";
-	name = "Spirit Phone, The Game, The Movie: II"
-	},
+/obj/structure/prop/broken_arcade,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -52364,15 +51908,8 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "nPs" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
@@ -54710,26 +54247,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 8;
@@ -55635,26 +55158,12 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pzi" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -56214,6 +55723,11 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -56484,26 +55998,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "pUY" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -56668,28 +56168,14 @@
 	},
 /area/almayer/squads/alpha)
 "pXn" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -57324,26 +56810,12 @@
 	},
 /area/almayer/living/pilotbunks)
 "qnP" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -58010,16 +57482,9 @@
 /area/almayer/squads/delta)
 "qFQ" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -59433,26 +58898,12 @@
 	},
 /area/almayer/command/cichallway)
 "rpW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -59565,22 +59016,8 @@
 	},
 /area/almayer/hallways/port_hallway)
 "rsj" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
@@ -59883,15 +59320,8 @@
 /area/almayer/squads/alpha)
 "rBa" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
@@ -60362,15 +59792,8 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rJD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/machinery/cm_vending/own_points/experimental_tools,
 /turf/open/floor/almayer,
@@ -61933,13 +61356,9 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "sxe" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -63727,26 +63146,12 @@
 /turf/open/floor/almayer/research/containment/corner3,
 /area/almayer/medical/containment/cell)
 "tpg" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -63829,26 +63234,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -64650,29 +64041,15 @@
 /area/almayer/hallways/hangar)
 "tIU" = (
 /obj/structure/platform,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -64985,16 +64362,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "tSr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65602,15 +64972,8 @@
 /turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "uia" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -67047,15 +66410,8 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "uNW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -67175,24 +66531,13 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "uRI" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/almayer{
@@ -68148,40 +67493,19 @@
 /turf/closed/wall/almayer/white/outer_tile,
 /area/almayer/medical/medical_science)
 "vkD" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
@@ -68254,15 +67578,8 @@
 	},
 /area/almayer/hallways/hangar)
 "vmK" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -68297,19 +67614,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"vnW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+"voi" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s)
+/area/almayer/hallways/stern_hallway)
 "vot" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68327,17 +67637,10 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "voA" = (
 /obj/structure/platform_decoration,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -68498,26 +67801,12 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "vsV" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -68954,15 +68243,8 @@
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
 "vEj" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating/plating_catwalk,
@@ -69155,15 +68437,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -69371,26 +68646,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
 "vPr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -71010,26 +70271,12 @@
 /area/almayer/hallways/stern_hallway)
 "wyO" = (
 /obj/structure/largecrate/random/barrel/red,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
@@ -71832,46 +71079,18 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/aft_hallway)
 "wUD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
-	},
 /obj/structure/prop/almayer/computers/sensor_computer3,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -72460,46 +71679,18 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "xgM" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -73773,40 +72964,19 @@
 /area/almayer/living/synthcloset)
 "xKW" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
@@ -74493,13 +73663,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "xZI" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -74598,12 +73764,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "ybS" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -110253,11 +109415,11 @@ aaf
 aaf
 aag
 aKW
-aSm
+mRc
 aLf
 hhw
 jFe
-mRc
+sxe
 xZI
 mNZ
 nsY
@@ -111539,7 +110701,7 @@ oDf
 xMh
 fiq
 rNW
-scI
+kRu
 oDf
 yhQ
 aaa
@@ -117965,7 +117127,7 @@ aaa
 aaa
 wVb
 qnP
-vnW
+jPf
 aLT
 aLT
 aLT
@@ -123591,12 +122753,10 @@ alG
 aYj
 apd
 alO
-alO
 aBq
 aBq
 alO
 lhJ
-awy
 aoT
 uGQ
 kPR

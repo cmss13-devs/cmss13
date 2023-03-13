@@ -3,7 +3,7 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
@@ -133,6 +133,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_hand(mob/user)
 	. = ..(user)
 	if(.)
+		return TRUE
+
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return TRUE
 
 	// if the dropship has crashed don't allow more interactions

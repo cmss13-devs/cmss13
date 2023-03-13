@@ -52,7 +52,9 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	init_runtimes_stage = 2 // Setting up logging now, so disabling early logging
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
-		backfill_runtime_log()
+		backfill_runtime_log(TRUE)
+	else
+		backfill_runtime_log(FALSE)
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -391,14 +393,15 @@ var/datum/BSQL_Connection/connection
 	qdel(src) //shut it down
 
 
-/world/proc/backfill_runtime_log()
+/world/proc/backfill_runtime_log(logtofile = FALSE)
 	if(length(static_init_runtimes))
 		var/list/log_contents = list("========= STATIC INIT RUNTIME ERRORS ========")
 		for(var/line in static_init_runtimes)
 			log_contents += line
 		log_contents += "============================================="
 		for(var/line in log_contents)
-			world.log << line
+			if(logtofile)
+				world.log << line
 			if(GLOB.STUI.runtime)
 				GLOB.STUI.runtime.Add(line)
 
@@ -408,6 +411,7 @@ var/datum/BSQL_Connection/connection
 			log_contents += line
 		log_contents += "============================================="
 		for(var/line in log_contents)
-			world.log << line
+			if(logtofile)
+				world.log << line
 			if(GLOB.STUI.runtime)
 				GLOB.STUI.runtime.Add(line)

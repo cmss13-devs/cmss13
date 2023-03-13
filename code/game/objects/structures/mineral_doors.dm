@@ -11,6 +11,7 @@
 	icon = 'icons/obj/structures/doors/mineral_doors.dmi'
 	icon_state = "metal"
 
+
 	var/mineralType = "metal"
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0

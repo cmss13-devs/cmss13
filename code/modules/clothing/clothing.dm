@@ -360,7 +360,7 @@
 /obj/item/clothing/shoes/attackby(obj/item/I, mob/living/M)
 	if(items_allowed && items_allowed.len)
 		for (var/i in items_allowed)
-			if(istype(I, i))
+			if(istype(I, i) && I.w_class <= maximum_size)
 				if(stored_item) return
 				stored_item = I
 				M.drop_inv_item_to_loc(I, src)

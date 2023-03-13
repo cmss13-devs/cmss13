@@ -48,6 +48,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,
@@ -223,6 +224,7 @@
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 	)
@@ -365,6 +367,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/magnetic_harness,
@@ -1416,6 +1419,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,

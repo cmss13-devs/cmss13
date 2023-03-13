@@ -321,6 +321,41 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
+/obj/item/attachable/bayonet/bolo_knife
+	name = "\improper M46 'Bolo' Tactical Dagger"
+	desc = "A rarely issued, medium-sized tactical dagger that can be seen as the middle-ground between a bayonet and a machete. Unlike the latter, it can be attached to guns for a stronger prying and stabbing tip, at the cost of handling and stability. Its frame allows for quick stabbing motions, faster than either of its counterparts."
+	desc_lore = "This bolo knife is not often seen on the field, and is mostly issued to troops in operations which would benefit from a machete to clear vegetation but due to their specialization cannot make the space for the bulky piece of equipment. It features a ripping edge on its backside that's useful for chopping up firewood or aircraft fuselage, and a neat compass on its pommel that seems to be broken, unfortunately."
+	icon_state = "bolo_knife"
+	item_state = "bolo_knife"
+	w_class = SIZE_MEDIUM
+	flags_equip_slot = SLOT_WAIST
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_6
+	hitsound = 'sound/weapons/slice.ogg'
+	attack_speed = 7
+	attach_icon = "bolo_knife_a"
+	pixel_shift_x = 14
+	pixel_shift_y = 18
+	hud_offset_mod = -4
+	pry_delay = 1 SECONDS
+
+/obj/item/attachable/bayonet/bolo_knife/New()
+	..()
+	melee_mod = force
+	// Unwieldy, reducing accuracy.
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_2
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4
+	// And scatter.
+	scatter_mod = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mod = SCATTER_AMOUNT_TIER_10
+	// And handling!
+	size_mod = 1
+	aim_speed_mod = SLOWDOWN_ADS_BOLO
+	wield_delay_mod = WIELD_DELAY_MIN
+	// Why? I don't want people to rush req for the Bolo because it's a straight upgrade.
+	// Benefits? Wacko melee damage with your gun. Great for reverse bursting or clearing resin.
+
 /obj/item/attachable/bayonet/upp_replica
 	name = "\improper Type 80 bayonet"
 	icon_state = "upp_bayonet"

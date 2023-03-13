@@ -117,6 +117,7 @@
 #define SLOWDOWN_ARMOR_VERY_HEAVY 1.15
 
 #define SLOWDOWN_ADS_NONE 0
+#define SLOWDOWN_ADS_BOLO 0.05
 #define SLOWDOWN_ADS_QUICK 0.35
 #define SLOWDOWN_ADS_QUICK_MINUS 0.15 //this is stupid
 #define SLOWDOWN_ADS_VERSATILE 0.50
@@ -159,12 +160,6 @@
 
 //Additional explosion damage modifier for open doors
 #define EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN 0.5
-
-//Melee weapons and xenos do more damage to resin structures
-#define RESIN_MELEE_DAMAGE_MULTIPLIER 8.2
-#define RESIN_XENO_DAMAGE_MULTIPLIER 4
-
-#define RESIN_EXPLOSIVE_MULTIPLIER 0.85
 
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_NONE 0
@@ -229,6 +224,27 @@
 #define OB_CRASHING_DOWN 1 SECONDS
 //=================================================
 
+//Melee weapons and xenos do more damage to resin structures
+#define RESIN_MELEE_DAMAGE_MULTIPLIER 8.6
+#define RESIN_MELEE_TRAP_DAMAGE_MULTIPLIER 1
+#define RESIN_XENO_DAMAGE_MULTIPLIER 4
+#define RESIN_EXPLOSIVE_MULTIPLIER 0.85
+
+/* Melee weapons on resin.
+	25 by 8.6 is 215.
+	30 by 8.6 is 258.
+	35 by 8.6 is 301
+
+200 and 300 are the damage breakthrough points for most resin structures as they are, or are close to, multiples of 300.
+
+// Balancing the bayonet, bolo knife, and machete for resin clearing
+Machetes should be able to clear resin doors in 2 hits (600 / 300 = ~2), resin walls in 3 (900 / 300 = ~3).
+Bayonets should be able to clear resin doors in 3 hits,(600 / 200 =  3), resin walls in 5 (900 / 200 = ~5).
+
+Bolo knives (and anything similar) should be an inbetween as much as possible, tending towards bayonet strength rather than machete strength,
+Because otherwise they'd invalidate machetes, and they have a faster attack speed than bayonets.
+*/
+
 //Health of various items
 #define HEALTH_WALL 3000
 #define HEALTH_WALL_REINFORCED 9000
@@ -246,9 +262,9 @@
 #define HEALTH_RESIN_PILLAR 2200
 #define HEALTH_RESIN_XENO_ACID_PILLAR 300
 #define HEALTH_RESIN_XENO_SHIELD_PILLAR 300
-#define HEALTH_RESIN_XENO_SPIKE 45
-#define HEALTH_RESIN_XENO_STICKY 45
-#define HEALTH_RESIN_XENO_FAST 30
+#define HEALTH_RESIN_XENO_SPIKE 25
+#define HEALTH_RESIN_XENO_STICKY 25
+#define HEALTH_RESIN_XENO_FAST 25
 
 /// Coefficient of throwforce when calculating damage from an atom colliding with a mob
 #define THROWFORCE_COEFF 0.02

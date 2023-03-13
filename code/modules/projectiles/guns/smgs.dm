@@ -57,6 +57,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/heavy_barrel,

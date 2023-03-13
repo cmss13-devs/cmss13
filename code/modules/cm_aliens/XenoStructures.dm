@@ -19,6 +19,7 @@
 	anchored = TRUE
 	health = 200
 	unacidable = TRUE
+	var/melee_multiplier = RESIN_MELEE_DAMAGE_MULTIPLIER
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
 	var/list/blocks = list()
@@ -113,7 +114,7 @@
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
-		var/damage = W.force * RESIN_MELEE_DAMAGE_MULTIPLIER
+		var/damage = W.force * melee_multiplier
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
@@ -144,6 +145,7 @@
 	density = FALSE
 	opacity = FALSE
 	health = HEALTH_RESIN_XENO_STICKY
+	melee_multiplier = RESIN_MELEE_TRAP_DAMAGE_MULTIPLIER
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	var/slow_amt = 8
@@ -175,6 +177,7 @@
 	opacity = FALSE
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
+	melee_multiplier = RESIN_MELEE_TRAP_DAMAGE_MULTIPLIER
 	should_track_build = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage = 8

@@ -20,6 +20,7 @@
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver)
+	var/maximum_size = SIZE_SMALL
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)

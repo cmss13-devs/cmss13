@@ -248,6 +248,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,
@@ -502,6 +503,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
@@ -764,6 +766,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,
@@ -1075,6 +1078,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/message //To not spam the above.
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,

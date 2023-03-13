@@ -551,6 +551,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/bolo_knife,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/reddot,

@@ -9,7 +9,7 @@
 	trait_name = "Bad Eyesight"
 	trait_desc = "A condition in which close objects appear clearly, but far ones don't."
 	applyable = TRUE
-	cost = 1
+	cost = 0
 
 /datum/character_trait/biology/bad_eyesight/apply_trait(mob/living/carbon/human/target)
 	..()
@@ -23,7 +23,7 @@
 	trait_name = "Opiate Receptor Deficiency"
 	trait_desc = "Due to overuse of opiates or a genetic fluke, this condition reduces the potency of all basic painkilling drugs."
 	applyable = TRUE
-	cost = 1
+	cost = 0
 
 /datum/character_trait/biology/opiate_receptor_deficiency/apply_trait(mob/living/carbon/human/target)
 	..()
@@ -37,7 +37,7 @@
 	trait_name = "Lisping"
 	trait_desc = "You have difficulty with pronouncing 'S' sounds (and similar). Expect to be mocked mercilessly."
 	applyable = TRUE
-	cost = 1
+	cost = 0
 	/// Roles that will not allow the trait to be added
 	var/list/inapplicable_roles = list(JOB_COMMAND_ROLES_LIST)
 	/// Species that will not allow the trait to be added.
@@ -70,7 +70,7 @@
 	trait_name = "Bad Leg"
 	trait_desc = "Your left (or right, if the left's robotic) leg suffered an undetermined wound a long time ago that never fully healed. Walking around without a cane will eventually cause you to freeze in pain, but you start with one."
 	applyable = TRUE
-	cost = 1
+	cost = 0
 	/// Roles that will not allow the trait to be added. (Due to being designed for combat, heavy physical duty, or just being too junior to be worth keeping around as a cripple.)
 	var/list/inapplicable_roles
 	/// Roles that get the shitty wooden pole.

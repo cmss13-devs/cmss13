@@ -45,8 +45,6 @@
 	warmup_time = 5 SECONDS
 	/// used when making things fall down shafts etc
 	var/offset_distance
-	/// please dont break me
-	var/operating = FALSE
 
 /datum/shuttle/ferry/supply/multi/New()
 	for(var/i in 1 to length(GLOB.supply_elevator_turfs))
@@ -176,9 +174,6 @@
 	return moving_status == SHUTTLE_INTRANSIT ? FALSE : elevator_location_area.fake_zlevel
 
 /datum/shuttle/ferry/supply/multi/short_jump(area/origin, area/destination)
-	if(operating)
-		return
-	operating = TRUE
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -221,7 +216,6 @@
 				lower_railingz(fake_zlevel)
 			update_controller()
 			lower_railingz(fake_zlevel)
-			operating = FALSE
 			return
 	else if(!fake_zlevel)	//at ASRS
 		supply_controller.buy()
@@ -255,7 +249,6 @@
 	if (!at_station())	//at centcom
 		handle_sell()
 	recharging = 0
-	operating = FALSE
 
 /datum/shuttle/ferry/supply/multi/proc/raise_railingz(deck)
 	if(!deck)
@@ -474,7 +467,6 @@
 			for(var/mob/M in destination)
 				M.layer = initial(M.layer)
 				M.plane = initial(M.plane)
-		operating = FALSE
 
 		var/area/target_area
 		if(!target_zlevel)

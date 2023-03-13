@@ -994,6 +994,8 @@ var/datum/controller/supply/supply_controller = new()
 					temp = "Returning plaform to ASRS. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else if(m_shuttle.target_zlevel == m_shuttle.fake_zlevel)
 				temp = "Platform is already at target location.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			else if(m_shuttle.moving_status != SHUTTLE_IDLE)
+				temp = "Platform is still in operation.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else if(m_shuttle.target_zlevel < m_shuttle.fake_zlevel || m_shuttle.fake_zlevel == 0)
 				shuttle.launch(src)
 				temp = "Raising platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"

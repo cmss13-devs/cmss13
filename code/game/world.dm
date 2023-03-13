@@ -379,7 +379,7 @@ var/datum/BSQL_Connection/connection
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
 #endif
-	else
+	if(!GLOB)
 		fail_reasons = list("Missing GLOB!")
 	if(!fail_reasons)
 		text2file("Success!", "data/logs/ci/clean_run.lk")

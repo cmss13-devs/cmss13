@@ -2,16 +2,15 @@
 	Custom runtime handling
 */
 
+// Early errors handling:
+//  for all these cases were errors might occur before code/logging is ready, we stash them away
+//  can't trust initializers here so default/values must be handled at runtime
+GLOBAL_REAL(static_init_runtimes, /list) //! Errors text encountered during static init.
+GLOBAL_REAL(early_init_runtimes, /list) //! Errors text encountered during early runtime init.
+GLOBAL_REAL_VAR(init_runtimes_stage) //! Init stage: null/0=static init, 1=early runtime init, 2=regular logging is ready
 
-// /world/Error might be called during early static init, in which case we don't have
-// GLOB and STUI facilities yet. Initializer expressions for the following globals may not
-// even have been ran yet! In such a case we just log them to globals and let
-// MC-init-time SSearlyruntimes pick them up.
-
+// Deduplication of errors via hash to reduce spamming
 GLOBAL_REAL(runtime_hashes, /list)
-GLOBAL_REAL(early_init_runtimes, /list)
-GLOBAL_REAL_VAR(early_init_runtimes_count)
-
 GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
@@ -21,12 +20,13 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	..()
 	if(!runtime_hashes)
 		runtime_hashes = list()
-	if(!early_init_runtimes)
-		early_init_runtimes = list()
-	if(!early_init_runtimes_count)
-		early_init_runtimes_count = 0
-	if(!SSearlyruntimes?.initialized)
-		early_init_runtimes_count++
+	if(!init_runtimes_stage)
+		init_runtimes_stage = 0
+	if(init_runtimes_stage < 2)
+		if(!static_init_runtimes)
+			static_init_runtimes = list()
+		if(!early_init_runtimes)
+			early_init_runtimes = list()
 
 	// Runtime was already reported once
 	var/hash = md5("[E.name]@[E.file]@[E.line]")
@@ -35,17 +35,24 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
 			var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)"
-			if(GLOB?.STUI?.runtime)
-				GLOB.STUI.runtime.Add(text)
-			else
-				early_init_runtimes.Add(text)
+			switch(init_runtimes_stage)
+				if(0)
+					static_init_runtimes.Add(text)
+				if(1)
+					early_init_runtimes.Add(text)
+				else
+					GLOB.STUI.runtime.Add(text)
 		return
 	runtime_hashes[hash] = 1
 
 	// Log it
 	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"
+	switch(init_runtimes_stage)
+		if(0)
+			static_init_runtimes.Add(text)
+		if(1)
+			early_init_runtimes.Add(text)
+		else
+			GLOB.STUI.runtime.Add(text)
 	if(GLOB?.STUI?.runtime)
-		GLOB.STUI.runtime.Add(text)
 		GLOB.STUI.processing |= STUI_LOG_RUNTIME
-	else
-		early_init_runtimes.Add(text)

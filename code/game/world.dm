@@ -14,6 +14,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	hub = "Exadv1.spacestation13"
 
 /world/New()
+	init_runtimes_stage = 1 // Finished static initialization
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		LIBCALL(debug_server, "auxtools_init")()
@@ -48,8 +49,10 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	init_runtimes_stage = 2 // Setting up logging now, so disabling early logging
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+		backfill_runtime_log()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -386,3 +389,27 @@ var/datum/BSQL_Connection/connection
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
+
+
+/world/proc/backfill_runtime_log()
+	if(length(static_init_runtimes))
+		var/list/log_contents = list("========= STATIC INIT RUNTIME ERRORS ========")
+		for(var/line in static_init_runtimes)
+			log_contents += line
+		log_contents += "============================================="
+		for(var/line in log_contents)
+			world.log << line
+			if(GLOB.STUI.runtime)
+				GLOB.STUI.runtime.Add(line)
+
+	if(length(early_init_runtimes))
+		var/list/log_contents = list("========= WORLD INIT RUNTIME ERRORS =========")
+		for(var/line in early_init_runtimes)
+			log_contents += line
+		log_contents += "============================================="
+		for(var/line in log_contents)
+			world.log << line
+			if(GLOB.STUI.runtime)
+				GLOB.STUI.runtime.Add(line)
+
+var/bogus_test = stack_trace("static initializer stack_trace()")

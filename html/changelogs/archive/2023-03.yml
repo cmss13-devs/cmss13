@@ -173,3 +173,12 @@
   - bugfix: soil for sandbags on Chance's now has a proper name
   TopHatPenguin:
   - rscadd: Adds breaching charges to the RTO vendor
+2023-03-13:
+  LC4492:
+  - bugfix: Fixed poorly made yummy-tummies around the engineering area.
+  - maptweak: The upper engineering area have been properly tweaked to accomodate
+      a shared bunk room for the enlisted ranks of the engineering department, a proper
+      cryosleep room and gave the Chief Engineer his own chamber to sleep in.
+  Morrow:
+  - rscadd: Xenos can now slash and fully destroy vehicle chairs
+  - qol: Made Hivemind available for the first 5 minutes of round even without a queen.

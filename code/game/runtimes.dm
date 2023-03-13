@@ -5,54 +5,58 @@
 // Early errors handling:
 //  for all these cases were errors might occur before code/logging is ready, we stash them away
 //  can't trust initializers here so default/values must be handled at runtime
-GLOBAL_REAL(static_init_runtimes, /list) //! Errors text encountered during static init.
-GLOBAL_REAL(early_init_runtimes, /list) //! Errors text encountered during early runtime init.
-GLOBAL_REAL_VAR(init_runtimes_stage) //! Init stage: null/0=static init, 1=early runtime init, 2=regular logging is ready
+//  note that STUI / runtime log will emphase errors before their respective init happens, which isn't at the same time
+//  this means highlighted early errors in STUI and in runtime log might not be the same.
+//
+// Do NOT convert these to GLOB. because errors can happen BEFORE it exists, and that turns them all into silent errors by crashing too
+
+var/list/stui_init_runtimes //! Shorthand of Static Initializer errors only, for use in STUI
+var/list/full_init_runtimes //! Full text of all Static Initializer + World Init errors, for log backfilling
+var/runtime_logging_ready //! Truthy when init is done and we don't need these shenanigans anymore
+var/init_runtimes_count //! Count of runtimes that occured before logging is ready, for in-game reporting
 
 // Deduplication of errors via hash to reduce spamming
-GLOBAL_REAL(runtime_hashes, /list)
-GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
-GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
+var/list/runtime_hashes
+var/total_runtimes
 
 /world/Error(exception/E)
-	GLOB.total_runtimes++
-
 	..()
 	if(!runtime_hashes)
 		runtime_hashes = list()
-	if(!init_runtimes_stage)
-		init_runtimes_stage = 0
-	if(init_runtimes_stage < 2)
-		if(!static_init_runtimes)
-			static_init_runtimes = list()
-		if(!early_init_runtimes)
-			early_init_runtimes = list()
+	if(!total_runtimes)
+		total_runtimes = 0
+	total_runtimes += 1
+	if(!init_runtimes_count)
+		init_runtimes_count = 0
+	if(!stui_init_runtimes)
+		stui_init_runtimes = list()
+	if(!full_init_runtimes)
+		full_init_runtimes = list()
 
-	// Runtime was already reported once
+	// If this occured during early init, we store the full error to write it to world.log when it's available
+	if(!runtime_logging_ready)
+		init_runtimes_count += 1
+		full_init_runtimes += E.desc
+
+	// Runtime was already reported once, dedup it for STUI
 	var/hash = md5("[E.name]@[E.file]@[E.line]")
 	if(hash in runtime_hashes)
 		runtime_hashes[hash]++
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
 			var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)"
-			switch(init_runtimes_stage)
-				if(0)
-					static_init_runtimes.Add(text)
-				if(1)
-					early_init_runtimes.Add(text)
-				else
-					GLOB.STUI.runtime.Add(text)
+			if(GLOB?.STUI?.runtime)
+				GLOB.STUI.runtime.Add(text)
+				GLOB.STUI.processing |= STUI_LOG_RUNTIME
+			else
+				stui_init_runtimes.Add(text)
 		return
 	runtime_hashes[hash] = 1
 
-	// Log it
+	// Single error logging to STUI
 	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"
-	switch(init_runtimes_stage)
-		if(0)
-			static_init_runtimes.Add(text)
-		if(1)
-			early_init_runtimes.Add(text)
-		else
-			GLOB.STUI.runtime.Add(text)
 	if(GLOB?.STUI?.runtime)
+		GLOB.STUI.runtime.Add(text)
 		GLOB.STUI.processing |= STUI_LOG_RUNTIME
+	else
+		stui_init_runtimes.Add(text)

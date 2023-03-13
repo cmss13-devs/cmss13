@@ -138,7 +138,7 @@
 	set_organ_status()
 
 /datum/internal_organ/proc/get_total_damage()
-	return max(organ_integrity_loss, damage)
+	return max(organ_integrity_loss * 0.5, damage)
 
 /datum/internal_organ/proc/emp_act(severity)
 	switch(robotic)
@@ -198,12 +198,14 @@
 	RegisterSignal(M, COMSIG_HUMAN_REVIVED, PROC_REF(stop_decaying))
 
 /datum/internal_organ/heart/proc/start_decaying()
+	SIGNAL_HANDLER
 	START_PROCESSING(SSprocessing, src) // our code is so fucking bad dude this is the best way to do this
 
 /datum/internal_organ/heart/proc/stop_decaying()
+	SIGNAL_HANDLER
 	STOP_PROCESSING(SSprocessing, src) // our code is so fucking bad dude this is the best way to do this
 
-/datum/internal_organ/heart/process()
+/datum/internal_organ/heart/process(delta_time)
 	. = ..()
 	if(organ_status == ORGAN_BROKEN || organ_status == ORGAN_DESTROYED)
 		STOP_PROCESSING(SSprocessing, src)
@@ -213,8 +215,13 @@
 	if(owner.revive_buffer)
 		owner.revive_buffer = POSITIVE(owner.revive_buffer - 1 SECONDS)
 		return
-	take_damage(AMOUNT_PER_TIME(min_broken_damage, 7 MINUTES), silent = TRUE)
-	take_organ_integrity_loss(AMOUNT_PER_TIME(integrity_brain_death, 9 MINUTES), silent = TRUE)
+
+	var/organ_damage = AMOUNT_PER_TIME(min_broken_damage, 7 MINUTES) * delta_time
+
+	var/integrity_loss = AMOUNT_PER_TIME(integrity_brain_death, 9 MINUTES) * delta_time
+
+	take_damage(organ_damage, silent = TRUE)
+	take_organ_integrity_loss(integrity_loss, silent = TRUE)
 
 /datum/internal_organ/heart/set_organ_status()
 	. = ..()

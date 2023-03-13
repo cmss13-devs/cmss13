@@ -957,7 +957,6 @@
 	// Higher levels make it even slower.
 	rest_multiplier /= level
 	holder.custom_metabolism = holder.custom_metabolism * (rest_multiplier)
-	return
 
 /datum/chem_property/positive/narcoleptic/reset_reagent()
 	holder.custom_metabolism = initial(holder.custom_metabolism)

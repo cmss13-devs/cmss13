@@ -1,3 +1,5 @@
+#define INTERIOR_BORDER_SIZE 2
+
 SUBSYSTEM_DEF(interior)
 	name = "Interiors"
 	flags = SS_NO_FIRE|SS_NO_INIT
@@ -9,9 +11,15 @@ SUBSYSTEM_DEF(interior)
 		CRASH("Invalid interior passed to SSinterior.load_interior()")
 
 	var/datum/map_template/interior/template = interior.map_template
-	var/datum/turf_reservation/reserved_area = SSmapping.RequestBlockReservation(template.width, template.height, type = /datum/turf_reservation/interior)
 
-	template.load(TURF_FROM_COORDS_LIST(reserved_area.bottom_left_coords), centered = FALSE)
+	var/height_to_request = template.height + INTERIOR_BORDER_SIZE
+	var/width_to_request = template.width + INTERIOR_BORDER_SIZE
+
+	var/datum/turf_reservation/reserved_area = SSmapping.RequestBlockReservation(width_to_request, height_to_request, type = /datum/turf_reservation/interior)
+
+	var/list/bottom_left = reserved_area.bottom_left_coords
+
+	template.load(locate(bottom_left[1] + (INTERIOR_BORDER_SIZE / 2), bottom_left[2] + (INTERIOR_BORDER_SIZE / 2), bottom_left[3]), centered = FALSE)
 
 	interiors += interior
 	return reserved_area

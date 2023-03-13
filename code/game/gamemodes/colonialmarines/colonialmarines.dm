@@ -252,10 +252,16 @@
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
 /datum/game_mode/colonialmarines/proc/shake_ship()
-	for(var/mob/current_mob in GLOB.mob_list)
+	for(var/mob/current_mob in GLOB.observer_list)
 		if(!is_mainship_level(current_mob.z))
 			continue
-		shake_camera(current_mob, 10, 1)
+		shake_camera(current_mob, 2, 1)
+
+	for(var/mob/current_mob in GLOB.living_mob_list)
+		if(!is_mainship_level(current_mob.z))
+			continue
+		shake_camera(current_mob, 7, 1)
+
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 15)
 
 #undef FOG_DELAY_INTERVAL

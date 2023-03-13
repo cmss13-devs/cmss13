@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Adds a confirmation button to View Global Variables."

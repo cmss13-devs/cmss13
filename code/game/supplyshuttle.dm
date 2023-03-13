@@ -975,9 +975,9 @@ var/datum/controller/supply/supply_controller = new()
 
 	if(href_list["target"])
 		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
-		var/list/choices = list("ASRS" = 0,"Deck 1" = 1,"Deck 2" = 2,"Deck 3" = 3)
+		var/list/choices_messages = list("ASRS" = 0,"Deck 1 (Requisitions)" = 1,"Deck 2 (Medbay & Messtech)" = 2,"Deck 3 (Warehouses & Brig)" = 3)
 		if(m_shuttle.moving_status == SHUTTLE_IDLE)
-			m_shuttle.target_zlevel =  m_shuttle.choices_to_number(tgui_input_list(usr, "Where should the shuttle move next?", "Pick Target", choices))
+			m_shuttle.target_zlevel = choices_messages[tgui_input_list(usr, "Where should the shuttle move next?", "Pick Target", choices_messages)]
 		else
 			to_chat(usr, SPAN_WARNING("The Elevator cannot change targets while moving. Please wait."))
 			usr.balloon_alert(usr, "not while moving!")

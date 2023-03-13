@@ -332,6 +332,7 @@
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
 	var/obj/item/stored_item
+	var/maximum_size = SIZE_SMALL
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
 

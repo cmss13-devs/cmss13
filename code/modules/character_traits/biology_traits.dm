@@ -37,7 +37,7 @@
 	trait_name = "Lactose Intolerance"
 	trait_desc = "Either due to a genetic fluke or never having had the gene to begin with, you do not have lactase and thus cannot process lactose. Don't eat dairy products!"
 	applyable = TRUE
-	cost = 0
+	cost = 1
 	/// Species that will not allow the trait to be added.
 	var/list/inapplicable_species = list(SPECIES_SYNTHETIC) // Let's let predators get sick if they reaaaally want to.
 
@@ -58,7 +58,7 @@
 	trait_name = "Air Sickness"
 	trait_desc = "Something about flying at unbelievably high velocities inside a metallic death trap never stood well with your body. You will get nauseous when experiencing movement inside spacecraft."
 	applyable = TRUE
-	cost = 0
+	cost = 1
 	/// Roles that will not allow the trait to be added
 	var/list/inapplicable_roles = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF)
 	/// Species that will not allow the trait to be added.

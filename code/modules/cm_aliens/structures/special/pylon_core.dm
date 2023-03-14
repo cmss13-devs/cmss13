@@ -226,7 +226,7 @@
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 		return
 
-	visible_message(SPAN_DANGER("\The [src] engulfs \the [xeno] in resin!"))
+	visible_message(SPAN_DANGER("[src] engulfs [xeno] in resin!"))
 	playsound(src, "alien_resin_build", 25, 1)
 	qdel(xeno)
 

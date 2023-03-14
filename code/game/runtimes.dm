@@ -3,12 +3,10 @@
 */
 
 // Early errors handling:
-//  for all these cases were errors might occur before code/logging is ready, we stash them away
-//  can't trust initializers here so default/values must be handled at runtime
-//  note that STUI / runtime log will emphase errors before their respective init happens, which isn't at the same time
-//  this means highlighted early errors in STUI and in runtime log might not be the same.
-//
-// Do NOT convert these to GLOB. because errors can happen BEFORE it exists, and that turns them all into silent errors by crashing too
+//  For all these cases were errors might occur before logging/debugguer is ready, we stash them away
+//  Can't trust static initializers here so default/values must be handled at runtime
+//  Do NOT convert these to GLOB because errors can happen BEFORE GLOB exists,
+//  which would cause /world/Error handler to also crash and make them all silent!
 
 var/list/stui_init_runtimes //! Shorthand of Static Initializer errors only, for use in STUI
 var/list/full_init_runtimes //! Full text of all Static Initializer + World Init errors, for log backfilling

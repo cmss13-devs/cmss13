@@ -46,3 +46,5 @@ SUBSYSTEM_DEF(interior)
 	if(!istype(reservation))
 		return FALSE
 	return TRUE
+
+#undef INTERIOR_BORDER_SIZE

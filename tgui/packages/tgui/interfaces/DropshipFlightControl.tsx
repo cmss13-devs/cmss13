@@ -338,7 +338,12 @@ const RenderScreen = (props, context) => {
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
-      {data.shuttle_mode === 'called' && <InFlightCountdown />}
+      {data.shuttle_mode === 'called' && data.target_destination && (
+        <InFlightCountdown />
+      )}
+      {data.shuttle_mode === 'called' && !data.target_destination && (
+        <DropshipDestinationSelection />
+      )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
     </>
   );

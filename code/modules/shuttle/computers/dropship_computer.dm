@@ -336,9 +336,10 @@
 
 	switch(action)
 		if("move")
-			if(shuttle.mode != SHUTTLE_IDLE)
-				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
+
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))

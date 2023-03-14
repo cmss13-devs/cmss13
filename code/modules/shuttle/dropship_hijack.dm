@@ -82,6 +82,7 @@
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
+	target_ship_section = ship_section
 	var/area/target_area = get_crashsite_area(ship_section)
 	// spawn crash location
 	var/turf/target = pick(get_area_turfs(target_area))

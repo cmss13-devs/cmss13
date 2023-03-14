@@ -62,6 +62,7 @@
 	top_right_coords = list(top_right.x, top_right.y, top_right.z)
 	for(var/i in final)
 		var/turf/T = i
+		reserved_turfs |= T
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
 		T = T.ChangeTurf(turf_type, turf_type)

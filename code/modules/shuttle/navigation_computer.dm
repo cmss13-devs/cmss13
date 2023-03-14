@@ -297,16 +297,22 @@
 
 /// Checks if the turf is valid for landing
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/proc/checkLandingTurf(turf/T, list/overlappers)
+	if(!CHECK_BITFIELD(T.flags_turf, TURF_LANDABLE))
+		return SHUTTLE_DOCKER_BLOCKED
+
 	// Too close to the map edge is never allowed
 	if(!T || T.x <= 10 || T.y <= 10 || T.x >= world.maxx - 10 || T.y >= world.maxy - 10)
 		return SHUTTLE_DOCKER_BLOCKED
+
 	var/area/turf_area = get_area(T)
-	if(turf_area.ceiling >= CEILING_DEEP_UNDERGROUND)
+	if(turf_area.ceiling >= CEILING_PROTECTION_TIER_2)
 		return SHUTTLE_DOCKER_BLOCKED
+
 	// If it's one of our shuttle areas assume it's ok to be there
 	if(shuttle_port.shuttle_areas[T.loc])
 		return SHUTTLE_DOCKER_LANDING_CLEAR
 	. = SHUTTLE_DOCKER_LANDING_CLEAR
+
 	// See if the turf is hidden from us
 	var/list/hidden_turf_info
 	if(!see_hidden)

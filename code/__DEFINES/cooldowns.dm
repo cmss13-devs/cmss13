@@ -1,4 +1,5 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
+#define COOLDOWN_BEACON_RADIO "beacon_radio_cooldown"
 
 //// COOLDOWN SYSTEMS
 /*

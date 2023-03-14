@@ -105,6 +105,7 @@
 
 	data["current_state"] = current_state
 	data["current_mode"] = shuttle_port ? shuttle_port.mode : SHUTTLE_IDLE
+	data["current_beacons"] = GLOB.active_beacons
 
 	return data
 

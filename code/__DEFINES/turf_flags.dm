@@ -9,6 +9,8 @@
 
 /// Marks a turf as organic. Used for alien wall and membranes.
 #define TURF_ORGANIC (1<<0)
+/// Allows the moveable dropship to land on this turf
+#define TURF_LANDABLE (1<<1)
 
 
 #define REMOVE_CROWBAR  (1<<0)

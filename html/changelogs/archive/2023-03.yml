@@ -182,3 +182,14 @@
   Morrow:
   - rscadd: Xenos can now slash and fully destroy vehicle chairs
   - qol: Made Hivemind available for the first 5 minutes of round even without a queen.
+2023-03-14:
+  NewyearnewmeUwu:
+  - qol: You can now pull a mask up or down with a UI button.
+  - refactor: massively refactored /obj/structure{ objects into proper items
+  - maptweak: every /obj/structure{ item in map files has been removed.
+  carlarctg:
+  - bugfix: Fixed zombie powder perma killing you
+  realforest2001:
+  - admin: Adds a confirmation button to View Global Variables.
+  - bugfix: Admin awarding req points no longer does an alert even if the cancel button
+      is pressed.

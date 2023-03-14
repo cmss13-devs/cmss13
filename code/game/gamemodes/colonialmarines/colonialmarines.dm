@@ -238,12 +238,12 @@
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
 	for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
-		var/turf/loc = exploding_pipe
+		var/turf/loc = get_turf(exploding_pipe)
 		if(istype(loc) && protected_by_pylon(TURF_PROTECTION_MORTAR, loc))
 			continue
 
 		exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-		new /obj/effect/warning/explosive(get_turf(exploding_pipe))
+		new /obj/effect/warning/explosive(loc)
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)

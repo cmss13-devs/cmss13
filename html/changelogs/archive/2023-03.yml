@@ -156,3 +156,40 @@
   carlarctg:
   - balance: Plasma pistols and Spike launchers can be wielded.
   - balance: Removed Wrist Scimitar power reduction.
+2023-03-11:
+  LynxSolstice:
+  - bugfix: Removed old unused code, reducing code debt.
+  NewyearnewmeUwu:
+  - rscdel: Removed the ability to get combat drones and DD gear+guns from black market
+      crates.
+  TopHatPenguin:
+  - rscadd: Adds Chinese to the UPP presets.
+  realforest2001:
+  - config: References to the forum now direct to the new one.
+2023-03-12:
+  Morrow:
+  - bugfix: Fixes runtimes related to leaving the server
+  NewyearnewmeUwu:
+  - bugfix: soil for sandbags on Chance's now has a proper name
+  TopHatPenguin:
+  - rscadd: Adds breaching charges to the RTO vendor
+2023-03-13:
+  LC4492:
+  - bugfix: Fixed poorly made yummy-tummies around the engineering area.
+  - maptweak: The upper engineering area have been properly tweaked to accomodate
+      a shared bunk room for the enlisted ranks of the engineering department, a proper
+      cryosleep room and gave the Chief Engineer his own chamber to sleep in.
+  Morrow:
+  - rscadd: Xenos can now slash and fully destroy vehicle chairs
+  - qol: Made Hivemind available for the first 5 minutes of round even without a queen.
+2023-03-14:
+  NewyearnewmeUwu:
+  - qol: You can now pull a mask up or down with a UI button.
+  - refactor: massively refactored /obj/structure{ objects into proper items
+  - maptweak: every /obj/structure{ item in map files has been removed.
+  carlarctg:
+  - bugfix: Fixed zombie powder perma killing you
+  realforest2001:
+  - admin: Adds a confirmation button to View Global Variables.
+  - bugfix: Admin awarding req points no longer does an alert even if the cancel button
+      is pressed.

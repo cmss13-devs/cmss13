@@ -18060,15 +18060,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
-"buV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "buW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -37287,18 +37278,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
-"gHU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/stern_hallway)
 "gHZ" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -49417,15 +49396,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/squads/bravo)
-"mJY" = (
-/obj/structure/surface/rack,
-/obj/item/circuitboard/firealarm,
-/obj/item/circuitboard,
-/obj/item/clipboard,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "mKb" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -52856,33 +52826,6 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
-"opo" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/hallways/stern_hallway)
 "opy" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -54465,10 +54408,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
-"peM" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_a_s)
 "pfa" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -61957,33 +61896,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/morgue)
-"sKy" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2;
-	layer = 3.33
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/engineering/upper_engineering)
 "sLo" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -67614,12 +67526,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"voi" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "vot" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -73924,13 +73830,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
-"yfa" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
 "yfm" = (
 /obj/effect/landmark/start/marine/delta,
 /obj/effect/landmark/late_join/delta,
@@ -113394,7 +113293,7 @@ ahh
 aiw
 adO
 aEp
-gHU
+xTt
 aEp
 ioU
 ioU
@@ -113412,7 +113311,7 @@ cnS
 cnR
 aHq
 aEp
-gHU
+xTt
 aEp
 aUH
 sIA
@@ -122753,10 +122652,12 @@ alG
 aYj
 apd
 alO
+alO
 aBq
 aBq
 alO
 lhJ
+iEr
 aoT
 uGQ
 kPR
@@ -122768,8 +122669,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -122825,12 +122726,12 @@ aQL
 aQL
 ksp
 rou
-ksp
+rou
 aQL
-aLG
+tBF
 aZl
 tBF
-buV
+aQt
 tBF
 aQt
 bhn
@@ -123348,7 +123249,7 @@ alO
 alO
 azi
 azi
-sKy
+ets
 kvh
 rka
 alO
@@ -124151,7 +124052,7 @@ cIW
 alO
 alO
 psm
-opo
+dKm
 psm
 aHe
 iOp
@@ -124760,7 +124661,7 @@ lht
 rYv
 alO
 dmQ
-mJY
+jBB
 psm
 svf
 arV
@@ -125771,7 +125672,7 @@ aae
 pVZ
 pVZ
 vcV
-peM
+aIM
 xlX
 xlX
 xlX

@@ -153,8 +153,98 @@
 /obj/item/clothing/shoes/marine/stompers
 	name = "stomper sneakers"
 	desc = "A pair of sneakers designed to elicit a morale boosting response within anyone that witnesses them."
-	icon_state = "stompers"
-	item_state = "stompers"
+	icon_state = "stompers_high"
+	item_state = "stompers_high"
+	var/color_state = "stompers_high_overlay"
+	var/shoe_color = "#FF0000"
+	var/color_chosen = FALSE
+
+/obj/item/clothing/shoes/marine/stompers/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+
+/obj/item/clothing/shoes/marine/stompers/get_examine_text(mob/user)
+	. = ..()
+	if(!color_chosen)
+		. += SPAN_NOTICE("Alt-Click on these shoes to change their color! One time only.")
+
+/obj/item/clothing/shoes/marine/stompers/clicked(mob/user, list/mods)
+	. = ..()
+	if(color_chosen)
+		return
+
+	if(mods["alt"])
+
+		if(!CAN_PICKUP(user, src))
+			return
+
+		shoe_color = input("Please select stomper color! Choose \"#FF0000\" to keep the base icon.", "Shoe color") as color
+		color_chosen = TRUE
+		update_icon()
+
+/obj/item/clothing/shoes/marine/stompers/update_icon()
+	. = ..()
+	overlays.Cut()
+
+	if(shoe_color == COLOR_RED)
+		update_clothing_icon()
+		return
+
+	var/image/color_overlay = overlay_image(icon, icon_state = color_state, color = shoe_color, flags = RESET_COLOR)
+
+	overlays.Add(color_overlay)
+	update_clothing_icon()
+
+/obj/item/clothing/shoes/marine/stompers/get_mob_overlay(mob/user_mob, slot)
+	var/image/ret = ..()
+
+	if(slot != WEAR_FEET)
+		return ret
+
+	var/image/color_overlay = overlay_image('icons/mob/humans/onmob/feet.dmi', icon_state = color_state, color = shoe_color, flags = RESET_COLOR)
+
+	ret.overlays += color_overlay
+
+	return ret
+
+/obj/item/clothing/shoes/marine/stompers/yellow
+	shoe_color = "#C8B94D"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/blue
+	shoe_color = "#4D90C8"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/purple
+	shoe_color = "#994DC8"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/green
+	shoe_color = "#7CC84D"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/low
+	name = "low stomper sneakers"
+	desc = "A pair of low sneakers designed to elicit a morale boosting response within anyone that witnesses them."
+	icon_state = "stompers_low"
+	item_state = "stompers_low"
+	color_state = "stompers_low_overlay"
+
+/obj/item/clothing/shoes/marine/stompers/low/yellow
+	shoe_color = "#C8B94D"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/low/blue
+	shoe_color = "#4D90C8"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/low/purple
+	shoe_color = "#994DC8"
+	color_chosen = TRUE
+
+/obj/item/clothing/shoes/marine/stompers/low/green
+	shoe_color = "#7CC84D"
+	color_chosen = TRUE
 
 /obj/item/clothing/shoes/hiking
 	name = "hiking shoes"

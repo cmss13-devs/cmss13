@@ -202,7 +202,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 
 	list("SHOES", 0, null, null, null),
 	list("Boots", 12, /obj/item/clothing/shoes/marine, null, VENDOR_ITEM_REGULAR),
-	list("Sneakers, Stompers", 12, /obj/item/clothing/shoes/marine/stompers, null, VENDOR_ITEM_REGULAR),
+	list("Sneakers, Stompers, High", 12, /obj/item/clothing/shoes/marine/stompers, null, VENDOR_ITEM_REGULAR),
+	list("Sneakers, Stompers, Low", 12, /obj/item/clothing/shoes/marine/stompers/low, null, VENDOR_ITEM_REGULAR),
 	list("Shoes, Black", 12, /obj/item/clothing/shoes/black, null, VENDOR_ITEM_REGULAR),
 	list("Shoes, Blue", 12, /obj/item/clothing/shoes/blue, null, VENDOR_ITEM_REGULAR),
 	list("Shoes, Brown", 12, /obj/item/clothing/shoes/brown, null, VENDOR_ITEM_REGULAR),

@@ -1044,6 +1044,45 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	contains = list(/obj/vehicle/train/cargo/engine)
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/miscellaneous/stored_clothing
+	name = "special civilian clothing and equipment crate"
+	dollar_cost = 75 // you want the drip you gotta get the dosh
+	randomised_num_contained = 7
+	contains = list(
+			/obj/item/clothing/shoes/marine/stompers,
+			/obj/item/clothing/shoes/marine/stompers/low,
+			/obj/item/clothing/shoes/slippers,
+			/obj/item/clothing/shoes/slippers_worn,
+			/obj/item/clothing/shoes/magboots,
+			/obj/item/clothing/under/gimmick/mcclane,
+			/obj/item/clothing/under/gimmick/rambo,
+			/obj/item/clothing/accessory/armband,
+			/obj/item/clothing/accessory/armband/cargo,
+			/obj/effect/essentials_set/po_alternate,
+			/obj/item/clothing/suit/ianshirt,
+			/obj/item/clothing/suit/poncho,
+			/obj/item/clothing/suit/poncho/red,
+			/obj/item/clothing/suit/poncho/green,
+			/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+			/obj/item/clothing/suit/storage/windbreaker/windbreaker_fr,
+			/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
+			/obj/item/clothing/gloves/rainbow,
+			/obj/item/clothing/gloves/captain,
+			/obj/item/clothing/mask/horsehead,
+			/obj/item/clothing/glasses/threedglasses,
+			/obj/item/clothing/glasses/jensen,
+			/obj/item/clothing/glasses/disco_fever,
+			/obj/item/clothing/head/collectable/tophat/super,
+			/obj/item/clothing/head/ushanka,
+			/obj/item/clothing/head/bearpelt,
+			/obj/item/clothing/head/cakehat,
+			/obj/item/clothing/head/headband/rambo,
+			/obj/item/clothing/head/beaverhat,
+			/obj/item/clothing/head/boaterhat,
+			/obj/item/clothing/head/fez,
+			)
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/miscellaneous/clf_supplies
 	name = "unmarked CLF supply crate"
 	dollar_cost = 40

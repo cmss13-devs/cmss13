@@ -42,7 +42,14 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "abS" = (
-/obj/effect/acid_hole,
+/obj/structure{
+	desc = "What could have done this?";
+	dir = 8;
+	icon = 'icons/effects/new_acid.dmi';
+	icon_state = "hole_0";
+	layer = 2.99;
+	name = "hole"
+	},
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
 "abV" = (
@@ -535,10 +542,17 @@
 	},
 /area/lv522/atmos/east_reactor)
 "arh" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -586,15 +600,29 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "asI" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	pixel_x = 16;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
@@ -771,17 +799,6 @@
 	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
-"aBm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice9";
-	pixel_x = -5
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "blue"
-	},
-/area/lv522/indoors/a_block/hallway)
 "aBY" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/decal/cleanable/blood/oil,
@@ -857,10 +874,17 @@
 	},
 /area/lv522/oob)
 "aEF" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -1038,8 +1062,12 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "aIY" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2467,9 +2495,13 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "bCl" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
 	dir = 1;
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 4;
 	pixel_y = -3
 	},
@@ -2860,12 +2892,21 @@
 	},
 /area/lv522/atmos/east_reactor)
 "bNJ" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = -4;
 	pixel_y = 1
 	},
@@ -3178,7 +3219,9 @@
 	pixel_x = -4;
 	pixel_y = 11
 	},
-/obj/structure/sink/puddle{
+/obj/structure{
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "puddle";
 	layer = 2.1;
 	name = "puddle"
 	},
@@ -3389,8 +3432,12 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -4520,12 +4567,30 @@
 	},
 /area/lv522/atmos/east_reactor)
 "cHC" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 11;
+	pixel_y = 24
+	},
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -5733,7 +5798,7 @@
 	pixel_y = -4
 	},
 /obj/item/prop/alien/hugger{
-	pixel_x = -9
+	pixel_x = -9;
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
@@ -6002,10 +6067,17 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "djL" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -6085,7 +6157,13 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
 "dlC" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = 8;
 	pixel_y = 10
 	},
@@ -6832,15 +6910,6 @@
 /obj/structure/closet,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
-"dEp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice1";
-	pixel_x = -26;
-	pixel_y = -13
-	},
-/turf/open/floor/prison,
-/area/lv522/indoors/a_block/kitchen)
 "dEu" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -7370,7 +7439,13 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "dOI" = (
-/obj/structure/prop/invuln/remote_console_pod,
+/obj/structure{
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
+	icon = 'icons/obj/structures/droppod_32x64.dmi';
+	icon_state = "techpod_open";
+	layer = 3.1;
+	name = "Remote Console Pod"
+	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
 	density = 1;
 	layer = 3.5;
@@ -8031,16 +8106,30 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "eeb" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/vehicle/train/cargo/engine,
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 16;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -8253,8 +8342,12 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "egW" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 9;
 	pixel_y = 3
 	},
@@ -8822,7 +8915,10 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "evu" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure{
+	icon_state = "hatchclosed";
+	layer = 2.9;
+	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small{
@@ -8856,18 +8952,6 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor)
-"evS" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice10";
-	pixel_x = 4;
-	pixel_y = -16
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "ewe" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9701,7 +9785,13 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "ePl" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -10176,9 +10266,22 @@
 /area/lv522/atmos/east_reactor)
 "fbE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 9;
+	pixel_y = 3
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = -7;
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -10901,8 +11004,13 @@
 /area/lv522/indoors/c_block/cargo)
 "fuc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
 	dir = 8;
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = -31
 	},
 /turf/open/floor/prison,
@@ -12555,10 +12663,17 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "geT" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform,
@@ -12567,7 +12682,7 @@
 "gfi" = (
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
 /obj/item/prop/alien/hugger{
-	pixel_y = 14
+	pixel_y = 14;
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -13138,7 +13253,10 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "gul" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure{
+	icon_state = "hatchclosed";
+	layer = 2.9;
+	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -13415,11 +13533,6 @@
 "gAU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = -37;
-	pixel_y = 17
-	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"
@@ -13799,10 +13912,17 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "gJr" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -14010,7 +14130,13 @@
 	},
 /area/lv522/atmos/east_reactor/south/cas)
 "gOo" = (
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /obj/structure/prop/turbine_extras,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -14112,7 +14238,13 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "gPQ" = (
 /obj/structure/prop/turbine_extras,
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14151,7 +14283,13 @@
 "gRj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/turbine_extras,
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14640,15 +14778,29 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "haF" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating,
@@ -15556,8 +15708,12 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "hsA" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 24
 	},
@@ -16342,9 +16498,22 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "hKO" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -5
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice2";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = -5;
+	pixel_y = 17
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -16702,7 +16871,13 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "hRy" = (
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18012,7 +18187,13 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "itp" = (
 /obj/structure/prop/turbine_extras/left,
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18590,7 +18771,10 @@
 	},
 /area/lv522/landing_zone_2)
 "iGD" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure{
+	icon_state = "hatchclosed";
+	layer = 2.9;
+	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small,
@@ -18689,10 +18873,17 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stair_cut,
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -20818,12 +21009,21 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_street)
 "jAz" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice13";
+	layer = 5.2;
+	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -20970,8 +21170,12 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "jCW" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice10";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 8
 	},
@@ -21117,10 +21321,17 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "jGe" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -21969,7 +22180,10 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "jYp" = (
-/obj/structure/prop/maintenance_hatch{
+/obj/structure{
+	icon_state = "hatchclosed";
+	layer = 2.9;
+	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -22372,11 +22586,18 @@
 	dir = 1
 	},
 /obj/structure/platform,
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -22441,7 +22662,7 @@
 	pixel_y = 6
 	},
 /obj/item/prop/alien/hugger{
-	pixel_y = -11
+	pixel_y = -11;
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_2)
@@ -22956,10 +23177,17 @@
 /area/lv522/indoors/a_block/admin)
 "kpm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23125,10 +23353,17 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "ksv" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23758,12 +23993,24 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "kFd" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = 17;
 	pixel_y = -2
 	},
@@ -25563,7 +25810,7 @@
 "lrG" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = 11;
-	pixel_y = -9
+	pixel_y = -9;
 	},
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/corsat{
@@ -26933,10 +27180,17 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -28411,10 +28665,17 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "mJs" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating,
@@ -29755,12 +30016,21 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "nku" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice13";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 11;
 	pixel_y = 16
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = 4;
 	pixel_y = -6
 	},
@@ -30003,11 +30273,6 @@
 /area/lv522/atmos/east_reactor/south)
 "npp" = (
 /obj/structure/girder,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_x = 11;
-	pixel_y = -8
-	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -30238,10 +30503,17 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "ntq" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 24
+	pixel_y = 24;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/oob)
@@ -30534,7 +30806,7 @@
 "nBv" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = 3;
-	pixel_y = -3
+	pixel_y = -3;
 	},
 /obj/item/weapon/gun/pistol/highpower{
 	pixel_x = -11;
@@ -30618,13 +30890,25 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 1;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_y = 17
 	},
 /turf/open/gm/river,
@@ -31075,11 +31359,18 @@
 	},
 /area/lv522/indoors/a_block/security)
 "nOg" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31110,17 +31401,31 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "nOS" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 9;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 1;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = 16
+	pixel_y = 16;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31401,13 +31706,27 @@
 	},
 /area/lv522/atmos/filt)
 "nUF" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -32097,7 +32416,12 @@
 "ogA" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_y = 28
 	},
 /turf/open/floor/prison,
@@ -32206,8 +32530,12 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "ohX" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 9;
 	pixel_y = 3
 	},
@@ -32888,8 +33216,12 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "ovr" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice2";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -33025,8 +33357,12 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_1)
 "ozk" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -5
 	},
 /turf/open/floor/prison{
@@ -33197,10 +33533,17 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "oCW" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/platform{
 	dir = 8
@@ -34058,6 +34401,18 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"oVu" = (
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice10";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/a_block/admin)
 "oVA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -35447,7 +35802,13 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "pyO" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -35931,10 +36292,17 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pHi" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/platform_decoration{
 	dir = 8
@@ -36134,10 +36502,17 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "pMc" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/platform_decoration{
 	dir = 4
@@ -36810,9 +37185,16 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pYO" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -37291,7 +37673,13 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "qkw" = (
-/obj/structure/prop/invuln/remote_console_pod,
+/obj/structure{
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
+	icon = 'icons/obj/structures/droppod_32x64.dmi';
+	icon_state = "techpod_open";
+	layer = 3.1;
+	name = "Remote Console Pod"
+	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	density = 1;
 	layer = 3.5;
@@ -37391,7 +37779,13 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "qmM" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -37411,9 +37805,13 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qnk" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/overwatch/almayer/broken{
+/obj/structure{
+	desc = "State of the art machinery for giving orders to a squad.";
 	dir = 8;
+	icon = 'icons/obj/structures/machinery/computer.dmi';
+	icon_state = "overwatch";
 	layer = 2.98;
+	name = "Overwatch Console";
 	pixel_x = -12;
 	pixel_y = 1
 	},
@@ -38051,7 +38449,13 @@
 	pixel_y = -9
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -3;
 	pixel_y = 6
 	},
@@ -38345,11 +38749,18 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 1;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -38703,11 +39114,22 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qME" = (
-/obj/structure/prop/invuln/fire{
+/obj/effect/decal{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	luminosity = 0;
+	name = "fire";
 	pixel_x = -7;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -38840,7 +39262,13 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "qOi" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -38910,15 +39338,29 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -40436,14 +40878,16 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "rrf" = (
-/obj/structure/platform,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice10";
-	pixel_x = -2;
-	pixel_y = -8
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice9";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 27
 	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/north_east_street)
+/turf/closed/wall/strata_outpost,
+/area/lv522/indoors/a_block/medical)
 "rro" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -40528,8 +40972,12 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "rtn" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -41071,7 +41519,12 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "rCI" = (
-/obj/structure/prop/invuln/fire{
+/obj/effect/decal{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	luminosity = 0;
+	name = "fire";
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -41328,8 +41781,12 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "rIH" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -41828,12 +42285,30 @@
 /area/lv522/indoors/c_block/t_comm)
 "rRP" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice1";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 6;
+	pixel_y = -13
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -42383,11 +42858,22 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "sec" = (
-/obj/structure/prop/invuln/fire{
+/obj/effect/decal{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	luminosity = 0;
+	name = "fire";
 	pixel_x = -7;
 	pixel_y = 17
 	},
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -42463,7 +42949,13 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
 "sfZ" = (
-/obj/structure/prop/invuln/fire{
+/obj/structure{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	layer = 4;
+	luminosity = 3;
+	name = "fire";
 	pixel_x = 10;
 	pixel_y = 32
 	},
@@ -45011,10 +45503,17 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "thU" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
@@ -45058,13 +45557,13 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
-/obj/structure/prop/invuln/pipe_water{
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
+	icon_state = "water";
+	name = "pipe water";
 	pixel_y = 11
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_x = -7;
-	pixel_y = 35
 	},
 /turf/open/gm/river,
 /area/lv522/indoors/a_block/kitchen/damage)
@@ -45182,10 +45681,17 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tlB" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/platform,
 /obj/structure/platform{
@@ -47052,9 +47558,22 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tXd" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice10";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
 	dir = 1;
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 4;
 	pixel_y = -15
 	},
@@ -47638,17 +48157,31 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "uhx" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = 16;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 6;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -48587,15 +49120,29 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -48739,7 +49286,12 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "uEX" = (
-/obj/structure/prop/invuln/fire{
+/obj/effect/decal{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	luminosity = 0;
+	name = "fire";
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -48848,8 +49400,12 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "uHc" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -49230,7 +49786,13 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "uNT" = (
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure{
+	density = 1;
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
+	icon_state = "off-0";
+	name = "\improper S-52 fusion reactor"
+	},
 /obj/structure/prop/turbine_extras/left,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -49628,10 +50190,17 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "uTY" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 8;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -49933,11 +50502,18 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "vbm" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 6;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -50647,7 +51223,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "vov" = (
 /obj/item/prop/alien/hugger{
-	pixel_x = -6
+	pixel_x = -6;
 	},
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -52204,7 +52780,10 @@
 /area/lv522/indoors/a_block/executive)
 "vSV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/maintenance_hatch{
+/obj/structure{
+	icon_state = "hatchclosed";
+	layer = 2.9;
+	name = "\improper Maintenance Hatch";
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -52848,8 +53427,12 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/dorms)
 "wfb" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -53166,8 +53749,12 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "wkC" = (
-/obj/structure/prop/invuln/lattice_prop{
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice3";
+	layer = 5.1;
+	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -56020,10 +56607,17 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
 "xxz" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 6;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6
+	pixel_y = 6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -56209,17 +56803,31 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "xBL" = (
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6
+	pixel_y = -6;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/prop/invuln/overhead_pipe{
+/obj/structure{
 	dir = 1;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = 15
+	pixel_y = 15;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -56832,7 +57440,7 @@
 	},
 /obj/item/prop/alien/hugger{
 	pixel_x = -17;
-	pixel_y = -8
+	pixel_y = -8;
 	},
 /obj/item/ashtray/glass{
 	icon_state = "ashtray_bork_gl";
@@ -80862,7 +81470,7 @@ sSl
 fuc
 pNs
 lxL
-dEp
+xGf
 tVN
 qTG
 gLV
@@ -93583,7 +94191,7 @@ tTK
 tTK
 tTK
 tTK
-tTK
+rrf
 tTK
 tTK
 tTK
@@ -93810,7 +94418,7 @@ aIY
 aIY
 ozk
 ozk
-aBm
+huN
 huN
 rmD
 raj
@@ -94234,8 +94842,8 @@ oxT
 pgG
 umR
 ikw
-rrf
-tDS
+sYk
+oVu
 nku
 uqo
 gPp
@@ -94462,7 +95070,7 @@ qSH
 umR
 eKe
 fAq
-evS
+sRu
 tXd
 bCl
 tDS

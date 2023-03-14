@@ -20,8 +20,6 @@
 	density = TRUE
 	///Item mode 0=off 1=charging 2=charged
 	var/mode = DISPOSALS_CHARGING
-	///Used for cosmetic broken disposal units.
-	var/broken = FALSE
 	///True if flush handle is pulled
 	var/flush = 0
 	///The attached pipe trunk
@@ -38,17 +36,11 @@
 	idle_power_usage = 100
 	var/disposal_pressure = 0
 
-/obj/structure/machinery/disposal/broken
-	name = "broken disposal unit"
-	desc = "A pneumatic waste disposal unit. It does an exemplary job as a table. In fact, it deserves a medal."
-	icon_state = "condisposal"
-	broken = TRUE
-
 ///Create a new disposal, find the attached trunk (if present) and init gas resvr.
 /obj/structure/machinery/disposal/Initialize(mapload, ...)
 	. = ..()
 	trunk = locate() in loc
-	if(!trunk || broken)
+	if(!trunk)
 		mode = DISPOSALS_OFF
 		flush = 0
 	else

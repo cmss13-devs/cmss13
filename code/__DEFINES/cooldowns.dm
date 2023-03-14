@@ -1,5 +1,8 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
+=======
+#define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
+#define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
 
 //// COOLDOWN SYSTEMS
 /*

@@ -17,7 +17,17 @@
 	if (!evolve_checks())
 		return
 
-	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to, theme="hive_status")
+	var/castes_available = caste.evolves_to.Copy()
+
+	for(var/caste in castes_available)
+		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
+			castes_available -= caste
+
+	if(!length(castes_available))
+		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes you can evolve to yet."))
+		return
+
+	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
 	if(!castepick) //Changed my mind
 		return
 

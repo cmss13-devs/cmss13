@@ -686,10 +686,10 @@
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
 		if(6) // Scout
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra,
-							/obj/item/ammo_magazine/rifle/m4ra/incendiary,
-							/obj/item/ammo_magazine/rifle/m4ra/impact)
+			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
@@ -729,3 +729,6 @@
 
 /datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
 	return // No bioscans needed in WO
+
+/datum/game_mode/whiskey_outpost/get_escape_menu()
+	return "Making a last stand on..."

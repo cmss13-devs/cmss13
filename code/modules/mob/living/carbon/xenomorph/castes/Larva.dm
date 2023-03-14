@@ -22,6 +22,7 @@
 	evolves_to = list(XENO_CASTE_PREDALIEN)
 
 	minimap_icon = "predalien_larva"
+	minimum_evolve_time = 0
 
 /mob/living/carbon/xenomorph/larva
 	name = XENO_CASTE_LARVA

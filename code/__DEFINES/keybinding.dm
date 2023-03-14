@@ -169,7 +169,7 @@
 #define COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE "keybinding_yautja_activate_suicide"
 #define COMSIG_KB_YAUTJA_INJECTORS "keybinding_yautja_injectors"
 #define COMSIG_KB_YAUTJA_CAPSULE "keybinding_yautja_capsule"
-#define COMSIG_KB_YAUTJA_CALL_DISK "keybinding_yautja_call_disk"
+#define COMSIG_KB_YAUTJA_CALL_DISC "keybinding_yautja_call_disc"
 #define COMSIG_KB_YAUTJA_REMOVE_TRACKED_ITEM "keybinding_yautja_remove_tracked_item"
 #define COMSIG_KB_YAUTJA_ADD_TRACKED_ITEM "keybinding_yautja_add_tracked_item"
 #define COMSIG_KB_YAUTJA_CALL_COMBI "keybinding_yautja_call_combi"

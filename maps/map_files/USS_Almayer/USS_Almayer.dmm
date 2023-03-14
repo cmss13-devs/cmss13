@@ -18060,15 +18060,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
-"buV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "buW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -37287,8 +37278,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
-"gHU" = (
-)
 "gHZ" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -122665,8 +122654,10 @@ apd
 alO
 aBq
 aBq
+aBq
 alO
 lhJ
+iEr
 aoT
 uGQ
 kPR
@@ -122678,8 +122669,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -122735,15 +122726,15 @@ aQL
 aQL
 ksp
 rou
-ksp
+rou
 aQL
-aLG
+tBF
 aZl
 tBF
-buV
-tBF
 aQt
+tBF
 bhn
+aQt
 aQt
 aQt
 aQt
@@ -122801,8 +122792,6 @@ aaa
 aab
 aaa
 aaa
-gHU
-gHU
 "}
 (241,1,1) = {"
 aaa

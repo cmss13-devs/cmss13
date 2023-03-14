@@ -1820,6 +1820,14 @@
 		log_admin("[key_name(usr)] has triggered an event. ([E.name])")
 		return
 
+	if(href_list["viewnotes"])
+		if(!check_rights(R_MOD))
+			return
+
+		var/mob/checking = locate(href_list["viewnotes"])
+
+		player_notes_all(checking.key)
+
 	return
 
 /datum/admins/proc/accept_ert(mob/approver, mob/ref_person)

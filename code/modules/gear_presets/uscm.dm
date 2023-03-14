@@ -23,7 +23,7 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
 	var/highpop_paygrade
-	//Only used for Highpop
+	///Only used for Highpop
 	var/playtime_rank
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
@@ -55,14 +55,14 @@
 			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_r_ear
 			equipped_headset.add_hud_tracker(H)
 
-/datum/equipment_preset/uscm/load_rank(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/load_rank(mob/living/carbon/human/Player)
 	//Is it highpop, and does it have either a highpop or playtime rank?
 	if(GLOB.ishighpop && (highpop_paygrade || playtime_rank))
 		if(!playtime_rank)
 			return highpop_paygrade
 
 		//All the gold+ LCPLs get to be CPLs on highpop.
-		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
+		if(get_job_playtime(Player.client, rank) < JOB_PLAYTIME_TIER_3)
 			return playtime_rank
 	return paygrade
 

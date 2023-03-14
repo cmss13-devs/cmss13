@@ -373,14 +373,14 @@ var/datum/BSQL_Connection/connection
 /world/proc/FinishTestRun()
 	set waitfor = FALSE
 	var/list/fail_reasons
-	if(total_runtimes)
+	if(!GLOB)
+		fail_reasons = list("Missing GLOB!")
+	else if(total_runtimes)
 		fail_reasons = list("Total runtimes: [total_runtimes]")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
 #endif
-	if(!GLOB)
-		fail_reasons = list("Missing GLOB!")
 	if(!fail_reasons)
 		text2file("Success!", "data/logs/ci/clean_run.lk")
 	else

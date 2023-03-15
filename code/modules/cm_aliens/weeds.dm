@@ -28,7 +28,6 @@
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/turf/weeded_turf
-	var/list/obj/structure/bed/nest/nesting_sites = list()
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
@@ -329,43 +328,32 @@
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
-/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/X)
-	if(length(nesting_sites))
-		var/attack_direction = get_dir(X, src)
-		for(var/obj/structure/bed/nest/N in nesting_sites)
-			if(get_dir(N, src) == attack_direction)
-				N.attack_alien(X)
-				return
-		for(var/obj/structure/bed/nest/N in nesting_sites)
-			N.attack_alien(X)
-			return
-
-	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
-		X.animation_attack_on(src)
-		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!indestructible && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
+		attacking_xeno.animation_attack_on(src)
+		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
 		playsound(loc, "alien_resin_break", 25)
-		take_damage(X.melee_damage_lower*WEED_XENO_DAMAGEMULT)
+		take_damage(attacking_xeno.melee_damage_lower*WEED_XENO_DAMAGEMULT)
 		return XENO_ATTACK_ACTION
 
-
-/obj/effect/alien/weeds/attackby(obj/item/W, mob/living/user)
+/obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
 	if(indestructible)
 		return FALSE
 
-	if(QDELETED(W) || QDELETED(user) || (W.flags_item & NOBLUDGEON))
+	if(QDELETED(attacking_item) || QDELETED(user) || (attacking_item.flags_item & NOBLUDGEON))
 		return 0
 
 	if(istype(src, /obj/effect/alien/weeds/node)) //The pain is real
-		to_chat(user, SPAN_WARNING("You hit \the [src] with \the [W]."))
+		to_chat(user, SPAN_WARNING("You hit \the [src] with \the [attacking_item]."))
 	else
-		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [W]."))
+		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
 
-	var/damage = W.force / 3
+	var/damage = attacking_item.force / 3
 	playsound(loc, "alien_resin_break", 25)
 
-	if(iswelder(W))
-		var/obj/item/tool/weldingtool/WT = W
+	if(iswelder(attacking_item))
+		var/obj/item/tool/weldingtool/WT = attacking_item
 		if(WT.remove_fuel(2))
 			damage = WEED_HEALTH_STANDARD
 			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
@@ -408,17 +396,18 @@
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
 
-/obj/effect/alien/weeds/weedwall/attackby(obj/item/W, mob/living/user)
+/obj/effect/alien/weeds/weedwall/attackby(obj/item/attacking_item, mob/living/user)
 	. = ..()
-	if(isxeno(user) && istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		var/mob/living/carbon/xenomorph/X = user
-		X.do_nesting_host(G.grabbed_thing, src)
+	if(isxeno(user) && istype(attacking_item, /obj/item/grab))
+		var/obj/item/grab/attacking_grab = attacking_item
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(attacking_grab.grabbed_thing, src)
 
-/obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/M, mob/user)
+/obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/current_mob, mob/user)
+	. = ..()
 	if(isxeno(user))
-		var/mob/living/carbon/xenomorph/X = user
-		X.do_nesting_host(M, src)
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(current_mob, src)
 
 /obj/effect/alien/weeds/weedwall/update_icon()
 	if(istype(loc, /turf/closed/wall))

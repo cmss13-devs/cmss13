@@ -80,6 +80,7 @@
 	pixel_y = -8
 	pixel_x = -8
 
+	/// This will be used to orient the nest that will be built
 	var/direction_to_put_nest
 
 /datum/construction_template/xenomorph/nest/complete() //Override because we need to pass the hive ref
@@ -89,9 +90,8 @@
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
 	build_loc = get_turf(owner)
-	new build_type(build_loc, hive_ref)
+	var/obj/effect/alien/resin/special/nest/newly_builtor = new build_type(build_loc, hive_ref)
 	playsound(build_loc, "alien_resin_build", 25)
-	var/obj/effect/alien/resin/special/nest/newly_builtor = locate(/obj/effect/alien/resin/special/nest) in build_loc
 	if(newly_builtor)
 		newly_builtor.pred_nest.dir = direction_to_put_nest
 		newly_builtor.pred_nest.pixel_x = newly_builtor.pred_nest.buckling_x["[direction_to_put_nest]"]

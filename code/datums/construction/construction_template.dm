@@ -29,6 +29,7 @@
 	return ..()
 
 /datum/construction_template/proc/post_setup_shenanigans()
+	return
 
 /datum/construction_template/proc/set_structure_image()
 	return

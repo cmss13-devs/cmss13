@@ -700,16 +700,16 @@
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
 
-/mob/living/carbon/xenomorph/proc/do_nesting_host(mob/M, nest_structural_base)
+/mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
 	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())
 
-	if(!ishuman(M))
+	if(!ishuman(current_mob))
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/host_2b_nested = current_mob
 
-	for(var/i; i != 0; i = length(xeno_hands))
+	for(var/i in 1 to length(xeno_hands))
 		if(isnull(xeno_hands[i]))
 			xeno_hands -= xeno_hands[i]
 		else if(istype(xeno_hands[i], /obj/item/grab))
@@ -735,25 +735,24 @@
 			to_chat(src, SPAN_XENOBOLDNOTICE("Hosts need a vertical surface to be nested upon!"))
 			return
 
-	var/dir_to_nest = get_dir(H, nest_structural_base)
+	var/dir_to_nest = get_dir(host_2b_nested, nest_structural_base)
 
-	if(!locate(dir_to_nest) in GLOB.cardinals)
+	if(!host_2b_nested.Adjacent(supplier_turf))
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		return
+	else if(!locate(dir_to_nest) in GLOB.cardinals)
 		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
 		return
 
-	for(var/obj/structure/bed/nest/N in supplier_weeds.nesting_sites)
-		if(get_dir(nest_structural_base, H) == get_dir(supplier_weeds, N))
-			to_chat(src, SPAN_XENOBOLDNOTICE("Theres already a host nested here!"))
+	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_2b_nested))
+		if(preexisting_nest.dir == dir_to_nest)
+			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/funny_nest = new(get_turf(H))
-	supplier_weeds.nesting_sites |= funny_nest
-	funny_nest.foundation = supplier_weeds
+	var/obj/structure/bed/nest/funny_nest = new(get_turf(host_2b_nested))
 	funny_nest.dir = dir_to_nest
-	if(!funny_nest.buckle_mob(H, src))
-		supplier_weeds.nesting_sites -= funny_nest
+	if(!funny_nest.buckle_mob(host_2b_nested, src))
 		qdel(funny_nest)
-
 
 /mob/living/carbon/xenomorph/proc/update_minimap_icon()
 	if(istype(caste, /datum/caste_datum/queen))

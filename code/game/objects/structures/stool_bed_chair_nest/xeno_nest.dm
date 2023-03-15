@@ -16,12 +16,13 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
+	buckle_lying = FALSE
 
 	var/force_nest = FALSE
-	var/structural_base
-	buckle_lying = FALSE
+	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
 	var/list/buckling_x
-	var/obj/effect/alien/weeds/foundation
+	/// this quirky funny lil guy is to prevent endless loops of destroy() proc calls :D
+	var/currently_in_destruction = FALSE
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -34,27 +35,34 @@
 	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
 	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)
 
-/obj/structure/bed/nest/afterbuckle(mob/M)
-	if(buckled_mob == M)
-		M.pixel_y = buckling_y["[dir]"]
-		M.pixel_x = buckling_x["[dir]"]
-		M.dir = turn(dir, 180)
-		M.density = 0
+/obj/structure/bed/nest/afterbuckle(mob/current_mob)
+	. = ..()
+	if(. && current_mob.pulledby)
+		current_mob.pulledby.stop_pulling()
+		resisting = 0 //just in case
+		resisting_ready = 0
+
+	if(buckled_mob == current_mob)
+		current_mob.pixel_y = buckling_y["[dir]"]
+		current_mob.pixel_x = buckling_x["[dir]"]
+		current_mob.dir = turn(dir, 180)
+		current_mob.density = FALSE
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
 			buckled_mob.layer = ABOVE_TURF_LAYER
-			for(var/obj/limb/head/H in buckled_mob)
-				H.layer = TURF_LAYER
+			for(var/obj/limb/head/current_mobs_head in current_mob)
+				current_mobs_head.layer = TURF_LAYER
 	else
-		M.pixel_y = initial(buckled_mob.pixel_y)
-		M.pixel_x = initial(buckled_mob.pixel_x)
-		M.density = 1
+		current_mob.pixel_y = initial(buckled_mob.pixel_y)
+		current_mob.pixel_x = initial(buckled_mob.pixel_x)
+		current_mob.density = TRUE
 		if(dir == SOUTH)
-			M.layer = initial(M.layer)
-			for(var/obj/limb/head/H in M)
-				H.layer =  initial(H.layer)
-		qdel(src)
+			current_mob.layer = initial(current_mob.layer)
+			for(var/obj/limb/head/current_mobs_head in current_mob)
+				current_mobs_head.layer =  initial(current_mobs_head.layer)
+		if(!currently_in_destruction)
+			qdel(src)
 		return
 
 	update_icon()
@@ -172,7 +180,7 @@
 	addtimer(VARSET_CALLBACK(src, recently_nested, FALSE), 5 SECONDS)
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
-	.=FALSE
+	. = FALSE
 	if(!isliving(M) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
@@ -256,14 +264,6 @@
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
-/obj/structure/bed/nest/afterbuckle(mob/M)
-	. = ..()
-	if(. && M.pulledby)
-		M.pulledby.stop_pulling()
-		resisting = 0 //just in case
-		resisting_ready = 0
-	update_icon()
-
 /obj/structure/bed/nest/unbuckle(mob/user)
 	if(!buckled_mob)
 		return
@@ -336,16 +336,9 @@
 	deconstruct()
 
 /obj/structure/bed/nest/Destroy()
+	currently_in_destruction = TRUE //haha :C
 	unbuckle()
 	ghost_of_buckled_mob = null
-	if(foundation)
-		var/turf/foundation_turf = get_turf(foundation)
-		foundation.nesting_sites -= src
-		for(var/obj/structure/bed/nest/N in foundation.nesting_sites)
-			if(get_dir(foundation, N) == NORTH)
-				return ..()
-		foundation_turf.layer = initial(foundation_turf.layer)
-		foundation_turf.plane = initial(foundation_turf.plane)
 	return ..()
 
 /obj/structure/bed/nest/structure
@@ -377,7 +370,7 @@
 		return FALSE
 	. = ..()
 
-/obj/structure/bed/nest/structure/afterbuckle(mob/M)
+/obj/structure/bed/nest/structure/afterbuckle(mob/current_mob)
 	. = ..()
 	switch(buckled_mob.dir)
 		if(NORTH)

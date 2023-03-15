@@ -512,25 +512,25 @@ CULT
 	if(get_dist(zombie, M) > 1)
 		return
 	var/mob/living/carbon/human/victim = M
-	var/datum/disease/black_goo/D = locate() in victim.viruses
-	if(D)
+	var/datum/disease/black_goo/located_disease = locate() in victim.viruses
+	if(located_disease)
 		to_chat(zombie, SPAN_XENOWARNING("The target is already infected, why would you bite it again?"))
 	else
 		enter_cooldown(10 SECONDS)
 		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M] neck, preparing to bite it!"))
 		to_chat(M, SPAN_DANGER("[zombie.name] reaches your neck and starts to open [zombie.p_their()] jaw!"))
-		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			to_chat(zombie, SPAN_XENOWARNING("You bite [M] neck, leaving a bloody mark!"))
-			to_chat(M, SPAN_DANGER("[zombie] bites you right in the neck!"))
-			playsound(get_turf(zombie), 'sound/hallucinations/wail.ogg', 25, TRUE)
-			victim.emote("scream")
-			playsound(victim, "bone_break" , 45, TRUE)
-			victim.AddDisease(new /datum/disease/black_goo)
-			zombie.flick_attack_overlay(victim, "bite")
-			zombie.animation_attack_on(victim)
-			victim.apply_damage(20, BRUTE, "head")
-		else
+		if(!do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			to_chat(zombie, SPAN_XENOWARNING("You were interupted!"))
+			return
+		to_chat(zombie, SPAN_XENOWARNING("You bite [M] neck, leaving a bloody mark!"))
+		to_chat(M, SPAN_DANGER("[zombie] bites you right in the neck!"))
+		playsound(get_turf(zombie), 'sound/hallucinations/wail.ogg', 25, TRUE)
+		victim.emote("scream")
+		playsound(victim, "bone_break" , 45, TRUE)
+		victim.AddDisease(new /datum/disease/black_goo)
+		zombie.flick_attack_overlay(victim, "bite")
+		zombie.animation_attack_on(victim)
+		victim.apply_damage(20, BRUTE, "head")
 
 
 /datum/action/human_action/activable/zombie/leap

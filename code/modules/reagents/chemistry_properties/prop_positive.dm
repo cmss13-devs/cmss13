@@ -911,18 +911,17 @@
 
 /datum/chem_property/positive/antibiotic/process(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, TOX)
-	var/datum/disease/black_goo/D = locate() in M.viruses
-	if(D)
+	var/datum/disease/black_goo/located_disease = locate() in M.viruses
+	if(located_disease)
 		var/datum/disease/black_goo/virus = new
-		var/mob/living/carbon/human/H = M
-		switch(virus.stage)
-			if(1)
-				if(prob(3 * potency))
-					for(var/datum/disease/goo in H.viruses)
-						goo.cure()
-				else
-					if(prob(15 * potency))
-						to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
+		var/mob/living/carbon/human/infected = M
+		if(virus.stage == 1)
+			if(prob(3 * potency))
+				for(var/datum/disease/goo in infected.viruses)
+					goo.cure()
+			else
+				if(prob(15 * potency))
+					to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
 
 /datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency, delta_time)
 	M.apply_damage(4 * potency * delta_time, TOX)

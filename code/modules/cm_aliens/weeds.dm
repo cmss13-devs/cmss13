@@ -329,7 +329,7 @@
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
-/obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/X)
 	if(length(nesting_sites))
 		var/attack_direction = get_dir(X, src)
 		for(var/obj/structure/bed/nest/N in nesting_sites)
@@ -412,12 +412,12 @@
 	. = ..()
 	if(isxeno(user) && istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		X.do_nesting_host(G.grabbed_thing, src)
 
 /obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/M, mob/user)
 	if(isxeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		X.do_nesting_host(M, src)
 
 /obj/effect/alien/weeds/weedwall/update_icon()

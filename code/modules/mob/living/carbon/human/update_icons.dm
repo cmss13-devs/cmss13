@@ -737,19 +737,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[EFFECTS_LAYER] = I
 	apply_overlay(EFFECTS_LAYER)
 
-//for nesting humans in resin ... nests
-/mob/living/carbon/human/proc/update_nested_icon()
-	//this is only for when nesting SOUTH onto NORTH FACING WALLS
-	var/icon/I = getFlatIcon(src, NORTH, no_anim=TRUE)
-	var/icon/remove_these_pixels = icon('icons/effects/effects.dmi', "human_nesting_mask")
-
-	vis_contents.Cut()
-	overlays.Cut()
-
-	I.Blend(remove_these_pixels, ICON_OVERLAY, rand(5), 1)
-	I.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
-	overlays |= I
-
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER

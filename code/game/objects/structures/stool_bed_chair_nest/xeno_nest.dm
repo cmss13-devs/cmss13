@@ -42,10 +42,20 @@
 		M.density = 0
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
+		if(dir == SOUTH)
+			buckled_mob.layer = ABOVE_TURF_LAYER
+			for(var/obj/limb/head/H in buckled_mob)
+				H.layer = TURF_LAYER
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.pixel_x = initial(buckled_mob.pixel_x)
 		M.density = 1
+		if(dir == SOUTH)
+			M.layer = initial(M.layer)
+			for(var/obj/limb/head/H in M)
+				H.layer =  initial(H.layer)
+		qdel(src)
+		return
 
 	update_icon()
 
@@ -276,7 +286,6 @@
 	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
 		window_flash(H.client)
 	G.can_reenter_corpse = TRUE
-	qdel(src)
 
 /obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)

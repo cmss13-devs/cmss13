@@ -700,7 +700,7 @@
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
 
-/mob/living/carbon/Xenomorph/proc/do_nesting_host(mob/M, nest_structural_base)
+/mob/living/carbon/xenomorph/proc/do_nesting_host(mob/M, nest_structural_base)
 	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())
 
 	if(!ishuman(M))
@@ -754,8 +754,6 @@
 		supplier_weeds.nesting_sites -= funny_nest
 		qdel(funny_nest)
 
-	if(dir_to_nest == SOUTH)
-		supplier_turf.layer = ABOVE_MOB_LAYER
 
 /mob/living/carbon/xenomorph/proc/update_minimap_icon()
 	if(istype(caste, /datum/caste_datum/queen))

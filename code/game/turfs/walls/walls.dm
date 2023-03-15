@@ -4,6 +4,7 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
 	opacity = TRUE
+	layer = WALL_LAYER
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
@@ -100,7 +101,7 @@
 			acided_hole.use_wall_hole(user)
 			return
 	if(isxeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		X.do_nesting_host(M, src)
 	..()
 
@@ -322,7 +323,7 @@
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 	if(isxeno(user) && istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		X.do_nesting_host(G.grabbed_thing, src)
 
 	if(!ishuman(user) && !isrobot(user))

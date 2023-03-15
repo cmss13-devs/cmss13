@@ -1184,7 +1184,7 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
-	if(isXeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
 		var/obj/item/grab/G = user.get_active_hand()
 		var/mob/living/carbon/Xenomorph/X = user
 		X.do_nesting_host(G.grabbed_thing, src)

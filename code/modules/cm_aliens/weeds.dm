@@ -410,13 +410,13 @@
 
 /obj/effect/alien/weeds/weedwall/attackby(obj/item/W, mob/living/user)
 	. = ..()
-	if(isXeno(user) && istype(W, /obj/item/grab))
+	if(isxeno(user) && istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		var/mob/living/carbon/Xenomorph/X = user
 		X.do_nesting_host(G.grabbed_thing, src)
 
 /obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/M, mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
 		X.do_nesting_host(M, src)
 

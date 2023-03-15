@@ -163,7 +163,7 @@
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
 	.=FALSE
-	if(!isliving(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
+	if(!isliving(M) || islarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
 	if(isxeno(M))

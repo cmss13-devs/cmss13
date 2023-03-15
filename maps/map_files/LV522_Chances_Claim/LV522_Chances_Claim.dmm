@@ -50748,15 +50748,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
-"vqG" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = null
-	},
-/area/lv522/landing_zone_2)
 "vqH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -92288,7 +92279,7 @@ jMy
 qGI
 wDa
 wDa
-vqG
+rqn
 wDa
 vbF
 kBj

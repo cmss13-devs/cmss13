@@ -3,7 +3,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
-	opacity = 1
+	opacity = TRUE
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
@@ -16,7 +16,8 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/structure/machinery/door)
+		/obj/structure/machinery/door,
+	)
 
 	var/damage = 0
 	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
@@ -60,6 +61,11 @@
 	update_icon()
 
 
+/turf/closed/wall/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
+
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
 
@@ -90,7 +96,7 @@
 
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
-		if(M == user && isXeno(user))
+		if(M == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
 	if(isXeno(user))
@@ -98,7 +104,7 @@
 		X.do_nesting_host(M, src)
 	..()
 
-/turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
@@ -136,6 +142,10 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
+	if(hull)
+		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
+		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
+
 	if(!damage)
 		if (acided_hole)
 			. += SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid.")
@@ -166,7 +176,7 @@
 			. += SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods.")
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam, var/mob/M)
+/turf/closed/wall/proc/take_damage(dam, mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)
@@ -257,8 +267,8 @@
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
-	O.anchored = 1
-	O.density = 1
+	O.anchored = TRUE
+	O.density = TRUE
 	O.layer = FLY_LAYER
 
 	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
@@ -332,10 +342,14 @@
 			return
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
+			return
+		if(hull)
+			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
@@ -379,6 +393,11 @@
 	if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
+
+	if(istype(W, /obj/item/prop/torch_frame))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
+		new /obj/structure/prop/brazier/torch/frame(src)
+		qdel(W)
 
 	if(hull)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))

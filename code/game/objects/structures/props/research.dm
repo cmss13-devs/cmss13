@@ -1,9 +1,9 @@
 /obj/structure/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/structures/machinery/research.dmi'
-	density = 1
-	anchored = 1
-	use_power = 1
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	var/list/parts_to_build
 
 /obj/structure/machinery/r_n_d/Initialize(mapload, ...)
@@ -17,7 +17,7 @@
 	name = "Circuit Imprinter"
 	icon_state = "circuit_imprinter"
 	flags_atom = OPENCONTAINER
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 2500
 	parts_to_build = list(
@@ -60,7 +60,7 @@
 /obj/structure/machinery/r_n_d/destructive_analyzer
 	name = "Destructive Analyzer"
 	icon_state = "d_analyzer"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 2500
 	parts_to_build = list(
@@ -74,7 +74,7 @@
 	name = "Protolathe"
 	icon_state = "protolathe"
 	flags_atom = OPENCONTAINER
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 5000
 	parts_to_build = list(
@@ -135,13 +135,13 @@
 	icon = 'icons/obj/structures/machinery/mainframe.dmi'
 	icon_state = "aimainframe"
 	circuit = /obj/item/circuitboard/computer/rdconsole  //It will eventually need it's own circuit.
-	req_access = list(ACCESS_MARINE_RESEARCH)	//Data and setting manipulation requires scientist access.
+	req_access = list(ACCESS_MARINE_RESEARCH) //Data and setting manipulation requires scientist access.
 
 
 /obj/structure/machinery/r_n_d/organic_analyzer
 	name = "Weyland-Yutani Brand Organic Analyzer(TM)"
 	icon_state = "d_analyzer"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 2500
 	parts_to_build = list(
@@ -155,7 +155,7 @@
 	name = "Weyland-Yutani Brand Bio-Organic Printer(TM)"
 	icon_state = "protolathe"
 	flags_atom = OPENCONTAINER
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 5000
 	parts_to_build = list(
@@ -173,9 +173,9 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
-	density = 1
-	anchored = 1
-	use_power = 1
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
 
@@ -184,8 +184,8 @@
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
-	density = 1
-	anchored = 1
-	use_power = 1
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100

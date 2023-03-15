@@ -1,6 +1,3 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isXeno(A) ? A?:hivenumber : FALSE)
-
 /mob/proc/can_use_hands()
 	return
 
@@ -138,7 +135,7 @@ var/global/list/limb_types_by_name = list(
 		p++
 	return t
 
-proc/slur(phrase)
+/proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
@@ -147,17 +144,17 @@ proc/slur(phrase)
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
 		if(rand(1,3)==3)
-			if(lowertext(newletter)=="o")	newletter="u"
-			if(lowertext(newletter)=="s")	newletter="ch"
-			if(lowertext(newletter)=="a")	newletter="ah"
-			if(lowertext(newletter)=="c")	newletter="k"
+			if(lowertext(newletter)=="o") newletter="u"
+			if(lowertext(newletter)=="s") newletter="ch"
+			if(lowertext(newletter)=="a") newletter="ah"
+			if(lowertext(newletter)=="c") newletter="k"
 		switch(rand(1,7))
-			if(1,3,5)	newletter="[lowertext(newletter)]"
-			if(2,4,6)	newletter="[uppertext(newletter)]"
-			if(7)	newletter+="'"
-			//if(9,10)	newletter="<b>[newletter]</b>"
-			//if(11,12)	newletter="<big>[newletter]</big>"
-			//if(13)	newletter="<small>[newletter]</small>"
+			if(1,3,5) newletter="[lowertext(newletter)]"
+			if(2,4,6) newletter="[uppertext(newletter)]"
+			if(7) newletter+="'"
+			//if(9,10) newletter="<b>[newletter]</b>"
+			//if(11,12) newletter="<big>[newletter]</big>"
+			//if(13) newletter="<small>[newletter]</small>"
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -185,7 +182,7 @@ proc/slur(phrase)
 	return strip_html(t)
 
 
-proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
+/proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
 	var/returntext = ""
 	for(var/i = 1, i <= length(t), i++)
@@ -202,38 +199,32 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 
 	return returntext
 
-
-/proc/ninjaspeak(n)
-/*
-The difference with stutter is that this proc can stutter more than 1 letter
-The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
-It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
-*/
-	var/te = html_decode(n)
-	var/t = ""
-	n = length(n)
-	var/p = 1
-	while(p <= n)
-		var/n_letter
-		var/n_mod = rand(1,4)
-		if(p+n_mod>n+1)
-			n_letter = copytext(te, p, n+1)
-		else
-			n_letter = copytext(te, p, p+n_mod)
-		if (prob(50))
-			if (prob(30))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-			else
-				n_letter = text("[n_letter]-[n_letter]")
-		else
-			n_letter = text("[n_letter]")
-		t = text("[t][n_letter]")
-		p=p+n_mod
-	return strip_html(t)
+/**
+ * Replaces S and similar sounds with 'th' and such. Stolen from tg.
+ */
+/proc/lisp_replace(message)
+	var/static/regex/replace_s = new("s+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_S = new("S+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_z = new("z+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_Z = new("Z+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_x = new("x+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_X = new("X+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_ceci = new("ceh?|cih?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_CECI = new("CEH?|CIH?", REGEX_FLAG_GLOBAL)
+	if(message[1] != "*")
+		message = replace_s.Replace(message, "th")
+		message = replace_S.Replace(message, "TH")
+		message = replace_z.Replace(message, "th")
+		message = replace_Z.Replace(message, "TH")
+		message = replace_ceci.Replace(message, "th")
+		message = replace_CECI.Replace(message, "TH")
+		message = replace_x.Replace(message, "ckth")
+		message = replace_X.Replace(message, "CKTH")
+	return message
 
 #define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+/proc/shake_camera(mob/M, steps = 1, strength = 1, time_per_step = 1)
 	if(!M?.client || (M.shakecamera > world.time))
 		return
 
@@ -258,7 +249,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return FALSE
 
 
-/mob/proc/abiotic(var/full_body = 0)
+/mob/proc/abiotic(full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 
@@ -280,7 +271,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/verb/a_intent_change(intent as num)
 	set name = "a-intent"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(intent)
 		a_intent = intent
@@ -294,7 +285,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()))
+	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -302,11 +293,11 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 2
 
 /mob/proc/get_eye_protection()
-	return FALSE
+	return EYE_PROTECTION_NONE
 
 /mob/verb/a_select_zone(input as text)
 	set name = "a-select-zone"
-	set hidden = 1
+	set hidden = TRUE
 
 	var/atom/movable/screen/zone_sel/zone
 
@@ -370,24 +361,17 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			zone.selecting = prev_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
 	zone.update_icon(usr)
 
-/mob/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
-	if(talked > warn_level)
-		return
-	talked = 0
-	if(message)
-		to_chat(src, SPAN_NOTICE("You may now speak again."))
-	if(increase_warn)
-		chatWarn++
-
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25
-/mob/proc/get_skill_duration_multiplier(var/skill)
+#define DURATION_MULTIPLIER_TIER_4 0.10
+/mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
-	. = 1.0
+	. = 1
 	if(!skills)
 		return
 	switch(skill)
+// CQC
 		if(SKILL_CQC)
 			if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
@@ -395,41 +379,33 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				return DURATION_MULTIPLIER_TIER_2
 			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1
-		//if(SKILL_MELEE_WEAPONS)
-		//if(SKILL_FIREARMS)
-		//if(SKILL_SPEC_WEAPONS)
-		//if(SKILL_ENDURANCE)
+// Engineer
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+// Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-		//if(SKILL_LEADERSHIP)
+// Medical
 		if(SKILL_MEDICAL)
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-				return DURATION_MULTIPLIER_TIER_1
-
-		if(SKILL_SURGERY) //Surgeons are the baseline.
+// Surgeon
+		if(SKILL_SURGERY)
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
-				return 0.6 //Synths are 40% faster. In the same conditions they work almost twice as quickly, and can perform surgeries in rough conditions or with improvised tools at full speed.
+				return 0.6
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
 				return 1
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-				return 1.2 //Medic/nurse.
-
+				return 1.2
+// Intel
 		if(SKILL_INTEL)
 			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))
 				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1
-		//if(SKILL_RESEARCH)
-		//if(SKILL_PILOT)
-		//if(SKILL_POLICE)
-		//if(SKILL_POWERLOADER)
-		//if(SKILL_VEHICLE)
+// Domestic
 		if(SKILL_DOMESTIC)
 			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
 				return 0.5
@@ -437,15 +413,27 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				return 1
 			else
 				return 2
+// Fireman
+		if(SKILL_FIREMAN)
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MAX))
+				return DURATION_MULTIPLIER_TIER_4
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MASTER))
+				return DURATION_MULTIPLIER_TIER_3
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_EXPERT))
+				return DURATION_MULTIPLIER_TIER_2
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_SKILLED))
+				return DURATION_MULTIPLIER_TIER_1
 
-/mob/proc/check_view_change(var/new_size, var/atom/source)
+
+
+/mob/proc/check_view_change(new_size, atom/source)
 	return new_size
 
-/mob/proc/can_be_pulled_by(var/mob/M)
+/mob/proc/can_be_pulled_by(mob/M)
 	return TRUE
 
 /mob/proc/can_see_reagents()
-	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+	return stat == DEAD || issynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
 /**
  * Examine a mob
@@ -494,10 +482,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	if(Adjacent(pullify))
 		start_pulling(pullify)
 
-/mob/proc/handle_blood_splatter(var/splatter_dir)
+/mob/proc/handle_blood_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
 
-/proc/get_mobs_in_z_level_range(var/turf/starting_turf, var/range)
+/proc/get_mobs_in_z_level_range(turf/starting_turf, range)
 	var/list/mobs_in_range = list()
 	var/z_level = starting_turf.z
 	for(var/mob/mob as anything in GLOB.mob_list)
@@ -508,5 +496,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		mobs_in_range += mob
 	return mobs_in_range
 
-/mob/proc/alter_ghost(var/mob/dead/observer/ghost)
+/mob/proc/alter_ghost(mob/dead/observer/ghost)
+	return
+
+/mob/proc/get_paygrade()
 	return

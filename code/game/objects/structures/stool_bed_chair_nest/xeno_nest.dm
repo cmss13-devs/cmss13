@@ -82,6 +82,8 @@
 			user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
 				return
+			if(!buckled_mob)
+				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
@@ -93,6 +95,8 @@
 		if(is_sharp(W))
 			user.visible_message(SPAN_NOTICE("\The [user] starts cutting through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start cutting through the resin binding \the [buckled_mob] in place..."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+				return
+			if(!buckled_mob)
 				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)
@@ -116,9 +120,9 @@
 	if(user.stat || user.lying || user.is_mob_restrained())
 		return
 
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/X = user
+		if(!X.hive.unnesting_allowed && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
@@ -127,13 +131,13 @@
 			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 
-	if(ishuman(buckled_mob) && isXeno(user))
+	if(ishuman(buckled_mob) && isxeno(user))
 		var/mob/living/carbon/human/H = buckled_mob
 		if(H.recently_nested)
 			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
-			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
+			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
 				return
 			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
 				return
@@ -162,7 +166,7 @@
 	if(!isliving(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
-	if(isXeno(M))
+	if(isxeno(M))
 		to_chat(user, SPAN_WARNING("You can't buckle your sisters."))
 		return
 
@@ -174,11 +178,11 @@
 		to_chat(user, SPAN_WARNING("\The [M] is too big to fit in [src]."))
 		return
 
-	if(!isXeno(user) || isSynth(M))
+	if(!isxeno(user) || issynth(M))
 		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 
-	if(isYautja(M) && !force_nest)
+	if(isyautja(M) && !force_nest)
 		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
 		return
 
@@ -193,7 +197,7 @@
 
 	var/securing_time = 15
 	// Don't increase the nesting time for monkeys and other species
-	if(isHumanStrict(M))
+	if(ishuman_strict(M))
 		securing_time = 75
 
 	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
@@ -274,7 +278,7 @@
 	G.can_reenter_corpse = TRUE
 	qdel(src)
 
-/obj/structure/bed/nest/ex_act(var/power)
+/obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -287,7 +291,7 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		density = 0
+		density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()
@@ -297,8 +301,8 @@
 		QDEL_IN(src, rand(225, 400))
 
 
-/obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M)) //Larvae can't do shit
+/obj/structure/bed/nest/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.animation_attack_on(src)
@@ -359,7 +363,7 @@
 		QDEL_NULL(linked_structure)
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
 		return FALSE
 	. = ..()

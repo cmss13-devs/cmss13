@@ -28,7 +28,11 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
-/mob/living/carbon/Xenomorph/Praetorian
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "praetorian"
+
+/mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
 	desc = "A huge, looming beast of an alien."
@@ -59,7 +63,7 @@
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
-	 ///reward for hitting shots instead of spamming acid ball
+	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)

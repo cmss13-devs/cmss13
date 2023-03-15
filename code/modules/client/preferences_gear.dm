@@ -7,12 +7,12 @@ var/global/list/gear_datums = list()
 	return 1
 
 /datum/gear
-	var/display_name         // Name/index.
-	var/path                 // Path to item.
-	var/cost                 // Number of points used.
-	var/slot                 // Slot to equip to.
+	var/display_name  // Name/index.
+	var/path  // Path to item.
+	var/cost  // Number of points used.
+	var/slot  // Slot to equip to.
 	var/list/allowed_roles   // Roles that can spawn with this item.
-	var/whitelisted          // Term to check the whitelist for..
+	var/whitelisted   // Term to check the whitelist for..
 	var/list/allowed_origins
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!
@@ -188,6 +188,18 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 1
 
+/datum/gear/balaclava
+	display_name = "Black Balaclava"
+	path = /obj/item/clothing/mask/balaclava
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/balaclava/green
+	display_name = "Green Balaclava"
+	path = /obj/item/clothing/mask/balaclava/tactical
+	slot = WEAR_FACE
+	cost = 2
+
 /datum/gear/coif
 	display_name = "Coif"
 	path = /obj/item/clothing/mask/rebreather/scarf
@@ -257,40 +269,74 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Tactical Mask (Gray)"
+	display_name = "Face Wrap (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasktan
-	display_name = "Tactical Mask (Tan)"
+	display_name = "Face Wrap (Tan)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskgreen
-	display_name = "Tactical Mask (Red)"
+/datum/gear/tacticalmaskred
+	display_name = "Face Wrap (Red)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
-	slot = WEAR_FACE
-	cost = 2
-
-
-
-/datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
+/datum/gear/tacticalmaskgreeen
+	display_name = "Face Wrap (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasksquad
-	display_name = "Tactical Mask (Squad)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	display_name = "Face Wrap (Squad)"
+	path =/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tacticalmaskblack
+	display_name = "Face Wrap (Black)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	slot = WEAR_FACE
+	cost = 2
+//
+/datum/gear/tornscarfclassic
+	display_name = "Scarf (Grey)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfgreen
+	display_name = "Scarf (Green)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/green
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfwhite
+	display_name = "Scarf (White)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/snow
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfdesert
+	display_name = "Scarf (Desert)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/desert
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfurban
+	display_name = "Scarf (Urban)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/urban
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfblack
+	display_name = "Scarf (Black)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/black
 	slot = WEAR_FACE
 	cost = 2
 //
@@ -312,11 +358,11 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
-/datum/gear/skullfacepaint
-	display_name = "Skull Facepaint"
-	path = /obj/item/facepaint/skull
+/datum/gear/fullbodyfacepaint
+	display_name = "Fullbody Paint"
+	path = /obj/item/facepaint/sniper
 	slot = WEAR_IN_BACK
-	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
+	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"
@@ -354,9 +400,9 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
-/datum/gear/m43pistol
-	display_name = "M43 Holdout Pistol"
-	path = /obj/item/storage/box/m43
+/datum/gear/clfpistol
+	display_name = "D18 Holdout Pistol"
+	path = /obj/item/storage/box/clf
 	slot = WEAR_IN_BACK
 	cost = 4
 
@@ -446,18 +492,6 @@ var/global/list/gear_datums = list()
 	display_name = "Gas Mask"
 	path = /obj/item/clothing/mask/gas
 	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull
-	cost = 4 //same as skull facepaint
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull/black
-	cost = 4
 	slot = WEAR_FACE
 
 /datum/gear/gunoil
@@ -599,8 +633,62 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_IN_BACK
 
+/datum/gear/flask
+	display_name = "Metal Flask"
+	path = /obj/item/reagent_container/food/drinks/flask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_canteen
+	display_name = "Canteen"
+	path = /obj/item/reagent_container/food/drinks/flask/canteen
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_uscm
+	display_name = "USCM Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/marine
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_wy
+	display_name = "WY Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/weylandyutani
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_det
+	display_name = "Leather Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/detflask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_bar
+	display_name = "Black Leather Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/barflask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_vacuum
+	display_name = "Vacuum Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/vacuumflask
+	cost = 3 //they're too cool for 2 points
+	slot = WEAR_IN_BACK
+
 /datum/gear/pdt_kit
 	display_name = "PDT/L Kit"
 	path = /obj/item/storage/box/pdt_kit
 	cost = 3
+	slot = WEAR_IN_BACK
+
+/datum/gear/sunscreen_stick
+	display_name = "USCM Issue Sunscreen"
+	path = /obj/item/facepaint/sunscreen_stick
+	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	slot = WEAR_IN_BACK
+
+/datum/gear/chaplain_patch
+	display_name = "USCM Chaplain Helmet Patch"
+	path = /obj/item/prop/helmetgarb/chaplain_patch
+	cost = 1 //similar price to flairs
 	slot = WEAR_IN_BACK

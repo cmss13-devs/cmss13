@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(xevolution)
 	for(var/hivenumber in GLOB.hive_datum)
 		HS = GLOB.hive_datum[hivenumber]
 		boost_power[HS.hivenumber] = 1
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
 	var/datum/hive_status/HS
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(xevolution)
 		//Update displayed Evilution, which is under larva apparently
 		HS.hive_ui.update_pooled_larva()
 
-/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(var/hivenumber)
+/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(hivenumber)
 	return boost_power[hivenumber]
 
 #undef EVOLUTION_INCREMENT_TIME

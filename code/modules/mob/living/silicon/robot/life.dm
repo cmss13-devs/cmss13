@@ -5,7 +5,7 @@
 	if (src.monkeyizing)
 		return
 
-	src.blinded = null
+	src.blinded = FALSE
 
 	//Status updates, death etc.
 	clamp_values()
@@ -22,9 +22,9 @@
 
 /mob/living/silicon/robot/proc/clamp_values()
 
-//	set_effect(min(stunned, 30), STUN)
+// set_effect(min(stunned, 30), STUN)
 	set_effect(min(knocked_out, 30), PARALYZE)
-//	set_effect(min(knocked_down, 20), WEAKEN)
+// set_effect(min(knocked_down, 20), WEAKEN)
 	sleeping = 0
 	apply_damage(0, BRUTE)
 	apply_damage(0, TOX)
@@ -47,7 +47,7 @@
 			cell_use_power(50)
 
 		if(lights_on)
-			cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.
+			cell_use_power(30) // 30W light. Normal lights would use ~15W, but increased for balance reasons.
 
 		src.has_power = 1
 	else
@@ -80,7 +80,7 @@
 
 	if (stat != DEAD) //Alive.
 		if (knocked_out || stunned || knocked_down || !has_power) //Stunned etc.
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update)
 				if (src.stunned > 0)
 					adjust_effect(-1, STUN)
@@ -88,16 +88,16 @@
 					adjust_effect(-1, WEAKEN)
 				if (src.knocked_out > 0)
 					adjust_effect(-1, PARALYZE)
-					src.blinded = 1
+					src.blinded = TRUE
 				else
-					src.blinded = 0
+					src.blinded = FALSE
 
-		else	//Not stunned.
-			src.stat = 0
+		else //Not stunned.
+			src.set_stat(CONSCIOUS)
 
 	else //Dead.
-		src.blinded = 1
-		src.stat = 2
+		src.blinded = TRUE
+		src.set_stat(DEAD)
 
 	if(!regular_update)
 		return
@@ -105,8 +105,8 @@
 	if (src.stuttering) src.stuttering--
 
 	if (src.eye_blind)
-		src.eye_blind--
-		src.blinded = 1
+		src.ReduceEyeBlind(1)
+		src.blinded = TRUE
 
 	if (src.ear_deaf > 0) src.ear_deaf--
 	if (src.ear_damage < 25)
@@ -116,13 +116,12 @@
 	src.density = !( src.lying )
 
 	if ((src.sdisabilities & DISABILITY_BLIND))
-		src.blinded = 1
+		src.blinded = TRUE
 	if ((src.sdisabilities & DISABILITY_DEAF))
 		SetEarDeafness(1)
 
 	if (src.eye_blurry > 0)
-		src.eye_blurry--
-		src.eye_blurry = max(0, src.eye_blurry)
+		src.ReduceEyeBlur(1)
 
 	if (src.druggy > 0)
 		src.druggy--
@@ -138,9 +137,9 @@
 		radio.on = 1
 
 	if(is_component_functioning("camera"))
-		src.blinded = 0
+		src.blinded = FALSE
 	else
-		src.blinded = 1
+		src.blinded = TRUE
 
 	return 1
 
@@ -215,19 +214,14 @@
 
 
 //Oxygen and fire does nothing yet!!
-//	if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"
-//	if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
+// if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"
+// if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
 
 	if(stat != DEAD) //the dead get zero fullscreens
 		if(blinded)
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
-
-		if (eye_blurry)
-			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-		else
-			clear_fullscreen("eye_blurry")
 
 		if(druggy)
 			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)

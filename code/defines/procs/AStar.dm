@@ -37,147 +37,152 @@ length to avoid portals or something i guess?? Not that they're counted right no
 // Also added 'exclude' turf to avoid travelling over; defaults to null
 
 
-PriorityQueue
+/PriorityQueue
 	var/L[]
 	var/cmp
-	New(compare)
-		L = new()
-		cmp = compare
-	proc
-		IsEmpty()
-			return !L.len
-		Enqueue(d)
-			var/i
-			var/j
-			L.Add(d)
-			i = L.len
-			j = i>>1
-			while(i > 1 &&  call(cmp)(L[j],L[i]) > 0)
-				L.Swap(i,j)
-				i = j
-				j >>= 1
 
-		Dequeue()
-			if(!L.len) return 0
-			. = L[1]
-			Remove(1)
+/PriorityQueue/New(compare)
+	L = new()
+	cmp = compare
 
-		Remove(i)
-			if(i > L.len) return 0
-			L.Swap(i,L.len)
-			L.Cut(L.len)
-			if(i < L.len)
-				_Fix(i)
+/PriorityQueue/proc/IsEmpty()
+	return !L.len
+
+/PriorityQueue/proc/Enqueue(d)
+	var/i
+	var/j
+	L.Add(d)
+	i = L.len
+	j = i>>1
+	while(i > 1 &&  call(cmp)(L[j],L[i]) > 0)
+		L.Swap(i,j)
+		i = j
+		j >>= 1
+
+/PriorityQueue/proc/Dequeue()
+	if(!L.len) return 0
+	. = L[1]
+	Remove(1)
+
+/PriorityQueue/proc/Remove(i)
+	if(i > L.len) return 0
+	L.Swap(i,L.len)
+	L.Cut(L.len)
+	if(i < L.len)
 		_Fix(i)
-			var/child = i + i
-			var/item = L[i]
-			while(child <= L.len)
-				if(child + 1 <= L.len && call(cmp)(L[child],L[child + 1]) > 0)
-					child++
-				if(call(cmp)(item,L[child]) > 0)
-					L[i] = L[child]
-					i = child
-				else
-					break
-				child = i + i
-			L[i] = item
-		List()
-			var/ret[] = new()
-			var/copy = L.Copy()
-			while(!IsEmpty())
-				ret.Add(Dequeue())
-			L = copy
-			return ret
-		RemoveItem(i)
-			var/ind = L.Find(i)
-			if(ind)
-				Remove(ind)
-PathNode
+
+/PriorityQueue/proc/_Fix(i)
+	var/child = i + i
+	var/item = L[i]
+	while(child <= L.len)
+		if(child + 1 <= L.len && call(cmp)(L[child],L[child + 1]) > 0)
+			child++
+		if(call(cmp)(item,L[child]) > 0)
+			L[i] = L[child]
+			i = child
+		else
+			break
+		child = i + i
+	L[i] = item
+
+/PriorityQueue/proc/List()
+	var/ret[] = new()
+	var/copy = L.Copy()
+	while(!IsEmpty())
+		ret.Add(Dequeue())
+	L = copy
+	return ret
+
+/PriorityQueue/proc/RemoveItem(i)
+	var/ind = L.Find(i)
+	if(ind)
+		Remove(ind)
+/PathNode
 	var/datum/source
 	var/PathNode/prevNode
 	var/f
 	var/g
 	var/h
-	var/nt		// Nodes traversed
-	New(s,p,pg,ph,pnt)
-		source = s
-		prevNode = p
-		g = pg
-		h = ph
-		f = g + h
-		source.bestF = f
-		nt = pnt
+	var/nt // Nodes traversed
 
-datum
-	var/bestF
-proc
-	PathWeightCompare(PathNode/a, PathNode/b)
-		return a.f - b.f
+/PathNode/New(s,p,pg,ph,pnt)
+	source = s
+	prevNode = p
+	g = pg
+	h = ph
+	f = g + h
+	source.bestF = f
+	nt = pnt
 
-	AStar(start,end,adjacent,dist,maxnodes,maxnodedepth = 30,mintargetdist,minnodedist,id=null, var/turf/exclude=null)
-		var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
-		var/closed[] = new()
-		var/path[]
-		start = get_turf(start)
-		if(!start) return 0
+/datum/var/bestF
 
-		open.Enqueue(new /PathNode(start,null,0,call(start,dist)(end)))
+/proc/PathWeightCompare(PathNode/a, PathNode/b)
+	return a.f - b.f
 
-		while(!open.IsEmpty() && !path)
-		{
-			var/PathNode/cur = open.Dequeue()
-			closed.Add(cur.source)
+/proc/AStar(start,end,adjacent,dist,maxnodes,maxnodedepth = 30,mintargetdist,minnodedist,id=null, turf/exclude=null)
+	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
+	var/closed[] = new()
+	var/path[]
+	start = get_turf(start)
+	if(!start) return 0
 
-			var/closeenough
-			if(mintargetdist)
-				closeenough = call(cur.source,dist)(end) <= mintargetdist
+	open.Enqueue(new /PathNode(start,null,0,call(start,dist)(end)))
 
-			if(cur.source == end || closeenough)
-				path = new()
+	while(!open.IsEmpty() && !path)
+	{
+		var/PathNode/cur = open.Dequeue()
+		closed.Add(cur.source)
+
+		var/closeenough
+		if(mintargetdist)
+			closeenough = call(cur.source,dist)(end) <= mintargetdist
+
+		if(cur.source == end || closeenough)
+			path = new()
+			path.Add(cur.source)
+			while(cur.prevNode)
+				cur = cur.prevNode
 				path.Add(cur.source)
-				while(cur.prevNode)
-					cur = cur.prevNode
-					path.Add(cur.source)
-				break
+			break
 
-			var/L[] = call(cur.source,adjacent)(id)
-			if(minnodedist && maxnodedepth)
-				if(call(cur.source,minnodedist)(end) + cur.nt >= maxnodedepth)
+		var/L[] = call(cur.source,adjacent)(id)
+		if(minnodedist && maxnodedepth)
+			if(call(cur.source,minnodedist)(end) + cur.nt >= maxnodedepth)
+				continue
+		else if(maxnodedepth)
+			if(cur.nt >= maxnodedepth)
+				continue
+
+		for(var/datum/d in L)
+			if(d == exclude)
+				continue
+			var/ng = cur.g + call(cur.source,dist)(d)
+			if(d.bestF)
+				if(ng + call(d,dist)(end) < d.bestF)
+					for(var/i = 1; i <= open.L.len; i++)
+						var/PathNode/n = open.L[i]
+						if(n.source == d)
+							open.Remove(i)
+							break
+				else
 					continue
-			else if(maxnodedepth)
-				if(cur.nt >= maxnodedepth)
-					continue
 
-			for(var/datum/d in L)
-				if(d == exclude)
-					continue
-				var/ng = cur.g + call(cur.source,dist)(d)
-				if(d.bestF)
-					if(ng + call(d,dist)(end) < d.bestF)
-						for(var/i = 1; i <= open.L.len; i++)
-							var/PathNode/n = open.L[i]
-							if(n.source == d)
-								open.Remove(i)
-								break
-					else
-						continue
+			open.Enqueue(new /PathNode(d,cur,ng,call(d,dist)(end),cur.nt+1))
+			if(maxnodes && open.L.len > maxnodes)
+				open.L.Cut(open.L.len)
+	}
 
-				open.Enqueue(new /PathNode(d,cur,ng,call(d,dist)(end),cur.nt+1))
-				if(maxnodes && open.L.len > maxnodes)
-					open.L.Cut(open.L.len)
-		}
+	var/PathNode/temp
+	while(!open.IsEmpty())
+		temp = open.Dequeue()
+		temp.source.bestF = 0
+	while(closed.len)
+		temp = closed[closed.len]
+		temp.bestF = 0
+		closed.Cut(closed.len)
 
-		var/PathNode/temp
-		while(!open.IsEmpty())
-			temp = open.Dequeue()
-			temp.source.bestF = 0
-		while(closed.len)
-			temp = closed[closed.len]
-			temp.bestF = 0
-			closed.Cut(closed.len)
+	if(path)
+		for(var/i = 1; i <= path.len/2; i++)
+			path.Swap(i,path.len-i+1)
 
-		if(path)
-			for(var/i = 1; i <= path.len/2; i++)
-				path.Swap(i,path.len-i+1)
-
-		return path
+	return path

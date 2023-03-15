@@ -5,14 +5,14 @@
 	desc = "Shoots things into space."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "mass_driver"
-	anchored = 1.0
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 50
 
-	var/power = 1.0
-	var/code = 1.0
-	var/id = 1.0
+	var/power = 1
+	var/code = 1
+	var/id = 1
 	var/drive_range = 50 //this is mostly irrelevant since current mass drivers throw into space, but you could make a lower-range mass driver for interstation transport or something I guess.
 
 
@@ -29,7 +29,7 @@
 					to_chat(M, SPAN_NOTICE(" The mass driver lets out a screech, it mustn't be able to handle any more items."))
 				break
 			use_power(500)
-			INVOKE_ASYNC(O, /atom/movable.proc/throw_atom, target, drive_range * power, 100/power)
+			INVOKE_ASYNC(O, TYPE_PROC_REF(/atom/movable, throw_atom), target, drive_range * power, 100/power)
 	flick("mass_driver1", src)
 	return
 

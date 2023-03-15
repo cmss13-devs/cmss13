@@ -3,14 +3,15 @@
 
 //Oh god what the fuck I am not good at computer
 /obj/item/book/manual
-	due_date = 0 // Game time in 1/10th seconds
-	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
-
+	/// Game time in 1/10th seconds
+	due_date = 0
+	/// 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+	unique = 1
 
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Engineering Encyclopedia"
 	title = "Station Repairs and Construction"
 
 	dat = {"
@@ -30,7 +31,7 @@
 /obj/item/book/manual/engineering_particle_accelerator
 	name = "Particle Accelerator User's Guide"
 	icon_state ="bookParticleAccelerator"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Engineering Encyclopedia"
 	title = "Particle Accelerator User's Guide"
 
 	dat = {"<html>
@@ -185,7 +186,7 @@
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Engineering Encyclopedia"
 	title = "Hacking"
 
 	dat = {"
@@ -205,7 +206,7 @@
 /obj/item/book/manual/engineering_singularity_safety
 	name = "Singularity Safety in Special Circumstances"
 	icon_state ="bookEngineeringSingularitySafety"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Engineering Encyclopedia"
 	title = "Singularity Safety in Special Circumstances"
 
 	dat = {"<html>
@@ -256,7 +257,7 @@
 /obj/item/book/manual/medical_cloning
 	name = "Cloning Techniques of the 26th Century"
 	icon_state ="bookCloning"
-	author = "Medical Journal, volume 3"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Medical Journal, volume 3"
 	title = "Cloning Techniques of the 26th Century"
 
 	dat = {"<html>
@@ -349,7 +350,7 @@
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
 	icon_state ="book"
-	author = "Randall Varn, Einstein Engines Senior Mechanic"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Randall Varn, Einstein Engines Senior Mechanic"
 	title = "APLU \"Ripley\" Construction and Operation Manual"
 
 	dat = {"<html>
@@ -817,7 +818,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='100%' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe>		</body>
+		<iframe width='100%' height='100%' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
 
 		</html>
 
@@ -1171,7 +1172,7 @@
 
 				EVA gear. Wonderful to use. It's useful for mining, engineering, and occasionally just surviving, if things are that bad. Most people have EVA training,
 				but apparently there are some on a space station who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into two sections:
-				 Civilian suits and hardsuits.<BR><BR>
+				Civilian suits and hardsuits.<BR><BR>
 
 				<h2><a name="Civilian">Civilian Suits</a></h2>
 				<I>The bulkiest things this side of Alpha Centauri</I><BR>

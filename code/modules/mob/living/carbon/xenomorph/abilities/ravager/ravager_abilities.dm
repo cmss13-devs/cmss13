@@ -12,9 +12,9 @@
 
 	// Pounce config
 	distance = 5
-	knockdown = FALSE				// Should we knock down the target?
-	slash = FALSE					// Do we slash upon reception?
-	freeze_self = FALSE				// Should we freeze ourselves after the lunge?
+	knockdown = FALSE // Should we knock down the target?
+	slash = FALSE // Do we slash upon reception?
+	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
 
 // Base ravager shield ability
@@ -69,7 +69,7 @@
 
 	// Config values
 	var/speed_buff = 0.75
-	var/buff_duration = 8 SECONDS
+	var/buff_duration = 7 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline
@@ -80,7 +80,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 140
+	xeno_cooldown = 16 SECONDS
 
 	// Config values
 	var/base_heal = 100
@@ -97,7 +97,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	xeno_cooldown = 230
+	xeno_cooldown = 23 SECONDS
 
 	// Config values
 	var/activation_delay = 20
@@ -121,12 +121,12 @@
 	xeno_cooldown = 9 SECONDS + 2 SECONDS // Left operand is the actual CD, right operand is the buffer for the shield duration
 
 	// Config values
-	var/shield_duration = 20  		// Shield lasts 2 seconds by default.
-	var/shield_amount = 500 		// Shield HP amount
+	var/shield_duration = 20 // Shield lasts 2 seconds by default.
+	var/shield_amount = 500 // Shield HP amount
 	var/shield_shrapnel_amount = 7  // How much shrapnel each shield hit should spawn
-	var/shard_cost = 150 			// Minimum spikes to use this ability
-	var/shield_active = FALSE 		// Is our shield active.
-	var/real_hp_per_shield_hp = 0.5	// How many real HP we get for each shield HP
+	var/shard_cost = 150 // Minimum spikes to use this ability
+	var/shield_active = FALSE // Is our shield active.
+	var/real_hp_per_shield_hp = 0.5 // How many real HP we get for each shield HP
 
 /datum/action/xeno_action/activable/rav_spikes
 	name = "Fire Spikes (75 shards)"

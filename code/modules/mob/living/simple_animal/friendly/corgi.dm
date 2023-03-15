@@ -19,6 +19,8 @@
 	response_harm   = "kicks the"
 	see_in_dark = 5
 	mob_size = MOB_SIZE_SMALL
+	black_market_value = 50
+	dead_black_market_value = 0
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	var/facehugger
@@ -26,7 +28,7 @@
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_animal/corgi/Ian
 	name = "Ian"
-	real_name = "Ian"	//Intended to hold the name without altering it.
+	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
 	desc = "It's a corgi."
 	var/turns_since_scan = 0
@@ -37,7 +39,7 @@
 
 /mob/living/simple_animal/corgi/Ian/Life(delta_time)
 	..()
-	INVOKE_ASYNC(src, .proc/look_for_food)
+	INVOKE_ASYNC(src, PROC_REF(look_for_food))
 
 /mob/living/simple_animal/corgi/Ian/proc/look_for_food()
 	//Feeding, chasing food, FOOOOODDDD
@@ -63,7 +65,7 @@
 				sleep(3)
 				step_to(src,movement_target,1)
 
-				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
+				if(movement_target) //Not redundant due to sleeps, Item can be gone in 6 decisecomds
 					if (movement_target.loc.x < src.x)
 						setDir(WEST)
 					else if (movement_target.loc.x > src.x)
@@ -79,10 +81,10 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							INVOKE_ASYNC(src, .proc/emote, "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, PROC_REF(emote), "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
-			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases its tail"))
+			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases its tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)
@@ -90,7 +92,7 @@
 
 /mob/living/simple_animal/corgi/death()
 	. = ..()
-	if(!.)	return //was already dead
+	if(!.) return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -101,12 +103,12 @@
 	desc = "Tastes like... well you know..."
 
 
-/mob/living/simple_animal/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
+/mob/living/simple_animal/corgi/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M as anything in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"))
+					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"), SHOW_MESSAGE_VISIBLE)
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -208,7 +210,7 @@
 
 
 		if(prob(1))
-			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases her tail"))
+			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases her tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)

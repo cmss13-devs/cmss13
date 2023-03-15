@@ -1,7 +1,7 @@
 /client/proc/dsay(msg as text)
 	set category = "Admin.Events"
 	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
-	set hidden = 1
+	set hidden = TRUE
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
@@ -35,10 +35,10 @@
 			continue
 
 		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
-			M.show_message(rendered, 2)
+			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 
 		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
-			M.show_message(rendered, 2)
+			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 
 /client/proc/get_dead_say()
 	var/msg = input(src, null, "dsay \"text\"") as text|null

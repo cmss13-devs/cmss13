@@ -62,7 +62,7 @@
 		burn_tile()
 
 
-/turf/open/floor/ceiling_debris_check(var/size = 1)
+/turf/open/floor/ceiling_debris_check(size = 1)
 	ceiling_debris(size)
 
 /turf/open/floor/return_siding_icon_state()
@@ -96,6 +96,7 @@
 	else if(is_light_floor())
 		icon_state = "light_broken"
 		broken = 1
+		SetLuminosity(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
 		broken = 1
@@ -140,11 +141,14 @@
 	burnt = FALSE
 	ChangeTurf(plating_type)
 
-/turf/open/floor/attackby(obj/item/C, mob/user)
+/turf/open/floor/attackby(obj/item/hitting_item, mob/user)
 	if(hull_floor) //no interaction for hulls
 		return
 
-	if(istype(C, /obj/item/tool/crowbar) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
+	if(src.weeds)
+		return weeds.attackby(hitting_item,user)
+
+	if(istype(hitting_item, /obj/item/tool/crowbar) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
 		if(broken || burnt)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
@@ -158,7 +162,7 @@
 		make_plating()
 		return
 
-	if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
+	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
 		to_chat(user, SPAN_WARNING("You unscrew the planks."))
 		new tile_type(src, 1, type)
 		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -186,18 +190,6 @@
 				overlays -= wet_overlay
 				wet_overlay = null
 
-
-
-/turf/open/floor/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(is_light_floor())
-		M.animation_attack_on(src)
-		playsound(src, 'sound/effects/glasshit.ogg', 25, 1)
-		M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
-		SPAN_DANGER("You smash \the [src]!"), \
-		SPAN_DANGER("You hear broken glass!"), 5)
-		icon_state = "light_off"
-		SetLuminosity(0)
-		return XENO_ATTACK_ACTION
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"

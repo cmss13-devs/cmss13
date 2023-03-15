@@ -26,6 +26,7 @@
 
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
+	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
 	tgui_open_uis = null
@@ -79,7 +80,13 @@
 
 	mob_panel = new(src)
 
-/mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/proc/create_language_menu()
+	QDEL_NULL(mob_language_menu)
+
+	mob_language_menu = new(src)
+
+
+/mob/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_OTHER
@@ -100,22 +107,22 @@
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
-	if(!client || !client.prefs)	return
+	if(!client || !client.prefs) return
 
 	if (type)
-		if(type & 1 && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
-			if (!alt)
+		if(type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
-			if (!alt)
+		if(type & SHOW_MESSAGE_AUDIBLE && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-				if (type & 1 && (sdisabilities & DISABILITY_BLIND))
+				if (type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND))
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
@@ -144,7 +151,7 @@
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
-		M.show_message( msg, 1, blind_message, 2, flags)
+		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 	for(var/obj/vehicle/V in orange(max_distance))
@@ -154,7 +161,7 @@
 				msg = self_message
 				if(flags & CHAT_TYPE_TARGETS_ME)
 					flags = CHAT_TYPE_BEING_HIT
-			M.show_message( msg, 1, blind_message, 2, flags)
+			M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 
@@ -163,12 +170,12 @@
 // message_affected: "Y does something to you!"
 // message_viewer: "X does something to Y!"
 /mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
-	src.show_message(message_mob, 1)
+	src.show_message(message_mob, SHOW_MESSAGE_VISIBLE)
 	if(src != affected)
-		affected.show_message(message_affected, 1)
+		affected.show_message(message_affected, SHOW_MESSAGE_VISIBLE)
 	for(var/mob/V in viewers(7, src))
 		if(V != src && V != affected)
-			V.show_message(message_viewer, 1)
+			V.show_message(message_viewer, SHOW_MESSAGE_VISIBLE)
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
@@ -178,13 +185,23 @@
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
+
+// Show a message to all mobs in earshot of this atom
+// Use for objects performing only audible actions
+// message is output to anyone who can see, e.g. "The [src] does something!"
+// deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
+/atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	var/hear_dist = 7
+	if(max_distance) hear_dist = max_distance
+	for(var/mob/M as anything in hearers(hear_dist, src.loc))
+		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 
 /mob/proc/findname(msg)
@@ -194,10 +211,11 @@
 	return 0
 
 /mob/proc/movement_delay()
-	if(!legcuffed)
-		. = 2 + CONFIG_GET(number/run_speed)
-	else
-		. = 7 + CONFIG_GET(number/walk_speed)
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			. = 2 + CONFIG_GET(number/run_speed)
+		if(MOVE_INTENT_WALK)
+			. = 7 + CONFIG_GET(number/walk_speed)
 	. += speed
 	move_delay = .
 
@@ -219,10 +237,16 @@
 		equip_to_slot_if_possible(W, slot, 0) // equiphere
 
 /mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
-	if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
+	if(hand)
+		if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+	else
+		if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
 	return 0
 
 //This is a SAFE proc. Use this instead of equip_to_slot()!
@@ -243,7 +267,7 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
@@ -302,7 +326,7 @@
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
-/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
 	if(!istype(W)) return 0
 
 	for(var/slot in slot_equipment_priority)
@@ -434,7 +458,7 @@
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
 	if (AM.anchored || AM.throwing)
@@ -474,6 +498,20 @@
 		return FALSE
 
 	return do_pull(AM, lunge, no_msg)
+
+/mob/living/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += {"
+		<br><font size='1'>
+			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+		</font>
+	"}
+
 
 /mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
 	if(pulling)
@@ -545,14 +583,14 @@ currently only humans get dizzy
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
-/mob/proc/make_dizzy(var/amount)
+/mob/proc/make_dizzy(amount)
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
-	dizziness = min(1000, dizziness + amount)	// store what will be new value
+	dizziness = min(1000, dizziness + amount) // store what will be new value
 													// clamped to max 1000
 	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, .proc/dizzy_process)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
 
 /*
@@ -577,19 +615,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // jitteriness - copy+paste of dizziness
 
-/mob/proc/make_jittery(var/amount)
+/mob/proc/make_jittery(amount)
 	return
 
 /mob/proc/remove_jittery()
 	jitteriness = 0
 	return
 
-/mob/living/carbon/human/make_jittery(var/amount)
+/mob/living/carbon/human/make_jittery(amount)
 	if(stat == DEAD) return //dead humans can't jitter
-	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
+	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
-		INVOKE_ASYNC(src, .proc/jittery_process)
+		INVOKE_ASYNC(src, PROC_REF(jittery_process))
 
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
@@ -598,9 +636,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	//var/old_y = pixel_y
 	is_jittery = 1
 	while(jitteriness > 100)
-//		var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
-//		pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
-//		pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
+// var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
+// pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
+// pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
 
 		var/amplitude = min(4, jitteriness / 100)
 		pixel_x = old_x + rand(-amplitude, amplitude)
@@ -614,7 +652,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 //handles up-down floaty effect in space
-/mob/proc/make_floating(var/n)
+/mob/proc/make_floating(n)
 
 	floatiness = n
 
@@ -635,9 +673,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/half_period = period / 2
 	var/quarter_period = period / 4
 
-	animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING|EASE_OUT, loop = -1)		//up
-	animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-	animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING|EASE_IN, loop = -1)			//back
+	animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING|EASE_OUT, loop = -1) //up
+	animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1) //down
+	animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING|EASE_IN, loop = -1) //back
 
 /mob/proc/stop_floating()
 	animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING|EASE_IN) //halt animation
@@ -646,12 +684,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove)						return 0
-	if(client.moving)					return 0
-	if(stat==2)						return 0
-	if(anchored)						return 0
-	if(monkeyizing)						return 0
-	if(is_mob_restrained())					return 0
+	if(!canmove) return 0
+	if(client.moving) return 0
+	if(stat==2) return 0
+	if(anchored) return 0
+	if(monkeyizing) return 0
+	if(is_mob_restrained()) return 0
 	return 1
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
@@ -702,8 +740,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir, var/specific_dir)
-	if(!canface())	return 0
+/mob/proc/face_dir(ndir, specific_dir)
+	if(!canface()) return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
@@ -718,14 +756,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return TRUE
 
-/mob/proc/set_face_dir(var/newdir)
+/mob/proc/set_face_dir(newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
-		facedir(newdir)
+		face_dir(newdir)
 		return
 
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if (facedir(newdir))
+	else if (face_dir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -756,14 +794,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
 			visible_implants += O
 	return visible_implants
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -882,15 +920,15 @@ mob/proc/yank_out_object()
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
 	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -917,7 +955,7 @@ mob/proc/yank_out_object()
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
 /mob/on_stored_atom_del(atom/movable/AM)
@@ -927,6 +965,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_skills(skills_path)
 	if(skills)
 		qdel(skills)
+		skills = null
 	if(!skills_path)
 		skills = null
 	else
@@ -1025,32 +1064,18 @@ mob/proc/yank_out_object()
 /mob/proc/get_role_name()
 	return
 
-/mob/get_vv_options()
-	. = ..()
-	. += "<option value>-----MOB-----</option>"
-	. += "<option value='?_src_=vars;mob_player_panel=\ref[src]'>Show player panel</option>"
-	. += "<option value='?_src_=vars;give_disease=\ref[src]'>Give TG-style Disease</option>"
-	. += "<option value='?_src_=vars;godmode=\ref[src]'>Toggle Godmode</option>"
-	. += "<option value='?_src_=vars;build_mode=\ref[src]'>Toggle Build Mode</option>"
-
-	. += "<option value='?_src_=vars;direct_control=\ref[src]'>Assume Direct Control</option>"
-	. += "<option value='?_src_=vars;drop_everything=\ref[src]'>Drop Everything</option>"
-
-	. += "<option value='?_src_=vars;regenerateicons=\ref[src]'>Regenerate Icons</option>"
-	. += "<option value='?_src_=vars;addlanguage=\ref[src]'>Add Language</option>"
-	. += "<option value='?_src_=vars;remlanguage=\ref[src]'>Remove Language</option>"
-	. += "<option value='?_src_=vars;addorgan=\ref[src]'>Add Organ</option>"
-	. += "<option value='?_src_=vars;remorgan=\ref[src]'>Remove Organ</option>"
-	. += "<option value='?_src_=vars;addlimb=\ref[src]'>Add Limb</option>"
-	. += "<option value='?_src_=vars;amplimb=\ref[src]'>Amputate Limb</option>"
-	. += "<option value='?_src_=vars;remlimb=\ref[src]'>Remove Limb</option>"
-
-	. += "<option value='?_src_=vars;fix_nano=\ref[src]'>Fix NanoUI</option>"
-
-	. += "<option value='?_src_=vars;addverb=\ref[src]'>Add Verb</option>"
-	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
-
-	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+/mob/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, stat))
+			if((var_value < CONSCIOUS) || (var_value > DEAD))
+				return FALSE
+			if((stat == DEAD) && ((var_value == CONSCIOUS) || (var_value == UNCONSCIOUS)))
+				GLOB.dead_mob_list -= src
+				GLOB.alive_mob_list += src
+			if(((stat == CONSCIOUS) || (stat == UNCONSCIOUS)) && (var_value == DEAD))
+				GLOB.alive_mob_list -= src
+				GLOB.dead_mob_list += src
+	return ..()
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -1092,3 +1117,9 @@ mob/proc/yank_out_object()
 			client.eye = loc
 
 	return TRUE
+
+/mob/proc/set_stat(new_stat)
+	if(new_stat == stat)
+		return
+	. = stat //old stat
+	stat = new_stat

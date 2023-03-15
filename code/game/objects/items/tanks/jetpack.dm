@@ -8,9 +8,9 @@
 	item_state = "jetpack"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	var/datum/effect_system/ion_trail_follow/ion_trail
-	var/on = 0.0
+	var/on = 0
 	var/stabilization_on = 0
-	var/volume_rate = 500              //Needed for borg jetpack transfer
+	var/volume_rate = 500   //Needed for borg jetpack transfer
 	actions_types = list(/datum/action/item_action)
 
 /obj/item/tank/jetpack/Initialize()

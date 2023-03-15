@@ -1,5 +1,5 @@
-/mob/living/carbon/human/gib(var/cause = "gibbing")
-	var/is_a_synth = isSynth(src)
+/mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	var/is_a_synth = issynth(src)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue
@@ -37,7 +37,7 @@
 /mob/living/carbon/human/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-h")
 
-/mob/living/carbon/human/death(var/cause, var/gibbed)
+/mob/living/carbon/human/death(cause, gibbed)
 	if(stat == DEAD)
 		species?.handle_dead_death(src, gibbed)
 		return
@@ -47,7 +47,7 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
-	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
+	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.
 	if(species)
@@ -69,6 +69,9 @@
 				break
 			last_living_human = H
 		if(last_living_human)
+			if((last_qm_callout + 2 MINUTES) > world.time)
+				return
+			last_qm_callout = world.time
 			// Tell the xenos where the human is.
 			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.

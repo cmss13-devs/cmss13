@@ -17,7 +17,7 @@
 /obj/structure/interior_exit/get_projectile_hit_boolean(obj/item/projectile/P)
 	return FALSE
 
-/obj/structure/interior_exit/attack_hand(var/mob/M)
+/obj/structure/interior_exit/attack_hand(mob/M)
 
 	// Check if drag anything
 	var/atom/dragged_atom
@@ -29,7 +29,7 @@
 		dragged_atom = G.grabbed_thing
 
 	var/obj/vehicle/multitile/V = interior.exterior
-	var/exit_time = V.entrance_speed SECONDS
+	var/exit_time = V.entrance_speed
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
@@ -50,7 +50,7 @@
 
 	interior.exit(M)
 
-/obj/structure/interior_exit/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
+/obj/structure/interior_exit/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
@@ -58,7 +58,7 @@
 		interior.exit(M)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/interior_exit/vehicle/attackby(var/obj/item/O, var/mob/M)
+/obj/structure/interior_exit/vehicle/attackby(obj/item/O, mob/M)
 	attack_hand(M)
 
 /obj/structure/interior_exit/attack_ghost(mob/dead/observer/user)
@@ -91,7 +91,7 @@
 	var/list/entrance_coords = V.entrances[entrance_id]
 	return locate(V.x + entrance_coords[1], V.y + entrance_coords[2], V.z)
 
-/obj/structure/interior_exit/vehicle/attack_hand(var/mob/M)
+/obj/structure/interior_exit/vehicle/attack_hand(mob/M)
 
 	// Check if drag anything
 	var/atom/dragged_atom
@@ -103,7 +103,7 @@
 		dragged_atom = G.grabbed_thing
 
 	var/obj/vehicle/multitile/V = interior.exterior
-	var/exit_time = V.entrance_speed SECONDS
+	var/exit_time = V.entrance_speed
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
@@ -126,7 +126,7 @@
 
 	interior.exit(M, exit_turf)
 
-/obj/structure/interior_exit/vehicle/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
+/obj/structure/interior_exit/vehicle/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))

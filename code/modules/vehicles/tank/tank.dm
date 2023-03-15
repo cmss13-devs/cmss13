@@ -50,17 +50,17 @@
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
-		/obj/item/hardpoint/locomotion/treads/robust
+		/obj/item/hardpoint/locomotion/treads/robust,
 	)
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	dmg_multipliers = list(
@@ -70,12 +70,12 @@
 		"bullet" = 0.4,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	explosive_resistance = 400
 
-/obj/vehicle/multitile/tank/initialize_cameras(var/change_tag = FALSE)
+/obj/vehicle/multitile/tank/initialize_cameras(change_tag = FALSE)
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
@@ -97,7 +97,7 @@
 /obj/vehicle/multitile/tank/load_hardpoints()
 	add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
-/obj/vehicle/multitile/tank/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/tank/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -119,7 +119,7 @@
 		))
 
 
-/obj/vehicle/multitile/tank/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/tank/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	remove_verb(M.client, list(
@@ -128,6 +128,7 @@
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/proc/switch_hardpoint,
 	))
+	SStgui.close_user_uis(M, src)
 	if(seat == VEHICLE_DRIVER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -142,7 +143,7 @@
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()
-/obj/vehicle/multitile/tank/relaymove(var/mob/user, var/direction)
+/obj/vehicle/multitile/tank/relaymove(mob/user, direction)
 	if(user == seats[VEHICLE_DRIVER])
 		return ..()
 
@@ -188,16 +189,16 @@
 	handle_direction(TANK)
 	TANK.update_icon()
 
-/obj/effect/vehicle_spawner/tank/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
 //PRESET: turret, treads installed
-/obj/effect/vehicle_spawner/tank/plain/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/plain/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 //PRESET: no hardpoints
-/obj/effect/vehicle_spawner/tank/hull/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/hull/load_hardpoints(obj/vehicle/multitile/tank/V)
 	return
 
 //PRESET: default hardpoints, destroyed
@@ -210,7 +211,7 @@
 	load_damage(TANK)
 	TANK.update_icon()
 
-/obj/effect/vehicle_spawner/tank/decrepit/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/decrepit/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/paladin)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
@@ -221,7 +222,7 @@
 		break
 
 //PRESET: default hardpoints
-/obj/effect/vehicle_spawner/tank/fixed/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/fixed/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/paladin)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
@@ -232,7 +233,7 @@
 		break
 
 //PRESET: minigun kit
-/obj/effect/vehicle_spawner/tank/fixed/minigun/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/fixed/minigun/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/support/weapons_sensor)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
@@ -243,7 +244,7 @@
 		break
 
 //PRESET: dragon flamer kit
-/obj/effect/vehicle_spawner/tank/fixed/flamer/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/fixed/flamer/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
@@ -254,7 +255,7 @@
 		break
 
 //PRESET: autocannon kit
-/obj/effect/vehicle_spawner/tank/fixed/autocannon/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+/obj/effect/vehicle_spawner/tank/fixed/autocannon/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)

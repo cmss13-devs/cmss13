@@ -1,11 +1,11 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/chem_master/Initialize()
 	. = ..()
-	create_reagents(240)
+	create_reagents(300)
 	connect_smartfridge()
 
 /obj/structure/machinery/chem_master/Destroy()
@@ -39,7 +39,7 @@
 		return
 	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(connected)
-		RegisterSignal(connected, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(connected, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/chem_master/ex_act(severity)
@@ -90,7 +90,7 @@
 		updateUsrDialog()
 	return
 
-/obj/structure/machinery/chem_master/proc/transfer_chemicals(var/obj/dest, var/obj/source, var/amount, var/reagent_id)
+/obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))
 		if(amount > 0 && source.reagents && amount <= source.reagents.maximum_volume)
 			if(!istype(dest))
@@ -137,7 +137,7 @@
 
 		var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 		if(label)
-			loaded_pill_bottle.set_name_label(label)
+			loaded_pill_bottle.AddComponent(/datum/component/label, label)
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()
@@ -276,7 +276,7 @@
 				P.update_icon()
 
 				if(href_list["store"])
-					connected.add_item(P)
+					connected.add_local_item(P)
 				else if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 
@@ -321,7 +321,7 @@
 			attack_hand(user)
 			return
 
-		connected.add_item(loaded_pill_bottle)
+		connected.add_local_item(loaded_pill_bottle)
 		loaded_pill_bottle = null
 
 	// Connecting a smartfridge

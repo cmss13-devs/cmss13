@@ -9,7 +9,7 @@
 	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
-	req_access = list(ACCESS_MARINE_WO) //Trusting the CMP to be able to open the lockers on any alert level, just in case
+	req_access = list(ACCESS_MARINE_ARMORY)
 	var/req_level = SEC_LEVEL_GREEN
 
 /obj/structure/closet/secure_closet/guncabinet/get_examine_text(mob/user)
@@ -20,7 +20,7 @@
 	. = ..()
 	update_icon()
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
 /obj/structure/closet/secure_closet/guncabinet/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
@@ -57,7 +57,7 @@
 			overlays += icon(src.icon,"open")
 
 //immune to bullets
-/obj/structure/closet/secure_closet/guncabinet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/secure_closet/guncabinet/bullet_act(obj/item/projectile/Proj)
 	return 1
 
 /obj/structure/closet/secure_closet/guncabinet/ex_act(severity)
@@ -66,7 +66,7 @@
 		deconstruct(FALSE)
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory
-//	req_access = list(ACCESS_MARINE_BRIG)
+// req_access = list(ACCESS_MARINE_BRIG)
 	req_level = SEC_LEVEL_RED
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory/Initialize()
@@ -82,9 +82,9 @@
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control
 	name = "riot control equipment closet"
-//	req_access = list(ACCESS_MARINE_BRIG)
+// req_access = list(ACCESS_MARINE_BRIG)
 	storage_capacity = 55 //lots of stuff to fit in
-	req_level = SEC_LEVEL_RED
+	req_level = SEC_LEVEL_BLUE
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control/Initialize()
 	. = ..()

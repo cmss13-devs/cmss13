@@ -7,13 +7,13 @@
 	var/max_alpha = 35
 	var/glow_color = "#00ff00"
 
-/datum/component/toxic_buildup/Initialize(var/toxic_buildup, var/toxic_buildup_dissipation = AMOUNT_PER_TIME(1, 3 SECONDS), var/max_buildup = 75)
+/datum/component/toxic_buildup/Initialize(toxic_buildup, toxic_buildup_dissipation = AMOUNT_PER_TIME(1, 3 SECONDS), max_buildup = 75)
 	. = ..()
 	src.toxic_buildup = toxic_buildup
 	src.toxic_buildup_dissipation = toxic_buildup_dissipation
 	src.max_buildup = max_buildup
 
-/datum/component/toxic_buildup/InheritComponent(datum/component/toxic_buildup/C, i_am_original, var/toxic_buildup)
+/datum/component/toxic_buildup/InheritComponent(datum/component/toxic_buildup/C, i_am_original, toxic_buildup)
 	. = ..()
 	if(!C)
 		src.toxic_buildup += toxic_buildup
@@ -45,8 +45,8 @@
 	RegisterSignal(parent, list(
 		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE,
 		COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE
-	), .proc/apply_toxic_buildup)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+	), PROC_REF(apply_toxic_buildup))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/toxic_buildup/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
@@ -58,10 +58,10 @@
 	var/atom/A = parent
 	A.remove_filter("toxic_buildup")
 
-/datum/component/toxic_buildup/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/toxic_buildup/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Toxin Buildup: [toxic_buildup]/[max_buildup]"
 
-/datum/component/toxic_buildup/proc/apply_toxic_buildup(var/mob/living/carbon/Xenomorph/X, var/list/damagedata)
+/datum/component/toxic_buildup/proc/apply_toxic_buildup(mob/living/carbon/xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER
 	damagedata["armor"] = max(damagedata["armor"] - toxic_buildup, 0)

@@ -10,7 +10,7 @@
 	pixel_x = -48
 	pixel_y = -48
 
-	density = TRUE	//come on, it's huge
+	density = TRUE //come on, it's huge
 
 	activatable = TRUE
 	cooldown = 150
@@ -71,7 +71,7 @@
 
 	..()
 
-/obj/item/hardpoint/holder/tank_turret/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
+/obj/item/hardpoint/holder/tank_turret/get_icon_image(x_offset, y_offset, new_dir)
 	var/icon_state_suffix = "0"
 	if(health <= 0)
 		icon_state_suffix = "1"
@@ -86,10 +86,10 @@
 	return I
 
 // no picking this big beast up
-/obj/item/hardpoint/holder/tank_turret/attack_hand(var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/attack_hand(mob/user)
 	return
 
-/obj/item/hardpoint/holder/tank_turret/attackby(var/obj/item/I, var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
@@ -106,22 +106,27 @@
 		return TRUE
 	..()
 
-/obj/item/hardpoint/holder/tank_turret/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "M34A2-A Turret Smoke Screen<br>"
-	if(health <= 0)
-		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
-	else
-		dat += "Integrity: [round(get_integrity_percent())]%"
-		if(ammo)
-			dat += " | Uses left: [ammo ? (ammo.current_rounds ? ammo.current_rounds / 2 : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds / 2 : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
+
+/obj/item/hardpoint/holder/tank_turret/get_tgui_info()
+	var/list/data = list()
+
+	data += list(list( // turret smokescreen data
+		"name" = "M34A2-A Turret Smoke Screen",
+		"health" = health <= 0 ? null : round(get_integrity_percent()),
+		"uses_ammo" = TRUE,
+		"current_rounds" = ammo.current_rounds / 2,
+		"max_rounds"= ammo.max_rounds / 2,
+		"mags" = LAZYLEN(backup_clips),
+		"max_mags" = max_clips,
+	))
 
 	for(var/obj/item/hardpoint/H in hardpoints)
-		dat += H.get_hardpoint_info()
-	return dat
+		data += list(H.get_tgui_info())
+
+	return data
 
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
-/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
+/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(mob/user)
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("\The [src]'s stabilization systems are busted!"))
 		return
@@ -129,7 +134,7 @@
 	gyro = !gyro
 	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
 
-/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(var/mob/user, var/deg)
+/obj/item/hardpoint/holder/tank_turret/proc/user_rotation(mob/user, deg)
 	// no rotating a broken turret
 	if(health <= 0)
 		return
@@ -147,7 +152,7 @@
 
 	rotate(deg, TRUE)
 
-/obj/item/hardpoint/holder/tank_turret/rotate(var/deg, var/override_gyro = FALSE)
+/obj/item/hardpoint/holder/tank_turret/rotate(deg, override_gyro = FALSE)
 	if(gyro && !override_gyro)
 		return
 
@@ -177,7 +182,7 @@
 					user.client.pixel_x = -1 * AM.view_tile_offset * 32
 					user.client.pixel_y = 0
 
-/obj/item/hardpoint/holder/tank_turret/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/holder/tank_turret/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -211,12 +216,12 @@
 
 	to_chat(user, SPAN_WARNING("Smoke Screen uses left: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds / 2 : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds / 2 : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
-/obj/item/hardpoint/holder/tank_turret/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/holder/tank_turret/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir)	//this should get us tile in front of tank to prevent grenade being stuck under us.
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
 
 	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])

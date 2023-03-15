@@ -74,12 +74,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -106,6 +106,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
+
+/datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
+	name = "Tail Seize"
+	action_icon_state = "tail_seize"
+	ability_name = "tail seize"
+	action_type = XENO_ACTION_CLICK
+	charge_time = 0.5 SECONDS
+	xeno_cooldown = 15 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
 	action_icon_state = "abduct"
@@ -268,16 +278,16 @@
 
 	// Configurable options
 
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 7 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 7 // Distance to spray
 
 	activation_delay = TRUE
 	activation_delay_length = 5
 
 /datum/action/xeno_action/activable/warden_heal
-	name = "Protect"
-	action_icon_state = "transfer_health"
-	ability_name = "protect"
+	name = "Aid Xenomorph"
+	action_icon_state = "prae_aid"
+	ability_name = "aid"
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -302,20 +312,20 @@
 
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
-	name = "Toggle Heal Type"
+	name = "Toggle Aid Type"
 	action_icon_state = "warden_heal" // default = heal
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	var/action_icon_result
 
 	if(!X.check_state(1))
@@ -328,12 +338,12 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
+		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by curing their ailments!"))
 
 	else
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
+		to_chat(X, SPAN_XENOWARNING("You will now aid your allies by healing them!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

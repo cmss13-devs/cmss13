@@ -17,7 +17,8 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
 	var/folded = FALSE
-	var/dirt_type = NO_DIRT // 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	/// 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	var/dirt_type = NO_DIRT
 	var/shovelspeed = 30
 	var/dirt_amt = 0
 	var/dirt_amt_per_dig = 6
@@ -148,7 +149,7 @@
 	else
 		dump_shovel(target, user)
 
-/obj/item/tool/shovel/proc/dump_shovel(var/atom/target, var/mob/user)
+/obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
 	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
@@ -161,7 +162,7 @@
 	dirt_amt = 0
 	update_icon()
 
-/obj/item/tool/shovel/proc/dirt_type_to_name(var/dirt_type)
+/obj/item/tool/shovel/proc/dirt_type_to_name(dirt_type)
 	switch(dirt_type)
 		if(DIRT_TYPE_GROUND)
 			return "dirt"
@@ -171,11 +172,13 @@
 			return "snow"
 		if(DIRT_TYPE_SAND)
 			return "sand"
+		if(DIRT_TYPE_SHALE)
+			return "loam"
 
 /obj/item/tool/shovel/proc/check_dirt_type()
-    if(dirt_amt <= 0)
-        dirt_type = NO_DIRT
-    return dirt_type
+	if(dirt_amt <= 0)
+		dirt_type = NO_DIRT
+	return dirt_type
 
 /obj/item/tool/shovel/spade
 	name = "spade"

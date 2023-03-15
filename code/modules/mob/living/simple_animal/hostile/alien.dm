@@ -29,7 +29,7 @@
 	unsuitable_atoms_damage = 15
 	attack_same = TRUE
 	faction = FACTION_XENOMORPH
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	wall_smash = 1
 	minbodytemp = 0
 	heat_damage_per_tick = 20
@@ -77,7 +77,7 @@
 		icon_state = "Normal [caste_name] Running"
 	update_wounds()
 
-/mob/living/simple_animal/hostile/alien/evaluate_target(var/mob/living/carbon/target)
+/mob/living/simple_animal/hostile/alien/evaluate_target(mob/living/carbon/target)
 	. = ..()
 	if(!. || !hivenumber)
 		return
@@ -179,16 +179,16 @@
 
 // Still using old projectile code - commenting this out for now
 // /mob/living/simple_animal/hostile/alien/sentinel
-// 	name = "alien sentinel"
-// 	icon_state = "Sentinel Running"
-// 	icon_living = "Sentinel Running"
-// 	icon_dead = "Sentinel Dead"
-// 	health = 120
-// 	melee_damage_lower = 15
-// 	melee_damage_upper = 15
-// 	ranged = 1
-// 	projectiletype = /obj/item/projectile/neurotox
-// 	projectilesound = 'sound/weapons/pierce.ogg'
+// name = "alien sentinel"
+// icon_state = "Sentinel Running"
+// icon_living = "Sentinel Running"
+// icon_dead = "Sentinel Dead"
+// health = 120
+// melee_damage_lower = 15
+// melee_damage_upper = 15
+// ranged = 1
+// projectiletype = /obj/item/projectile/neurotox
+// projectilesound = 'sound/weapons/pierce.ogg'
 /obj/item/projectile/neurotox
 	damage = 30
 	icon_state = "toxin"

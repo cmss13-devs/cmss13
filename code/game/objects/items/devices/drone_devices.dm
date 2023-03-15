@@ -28,8 +28,8 @@
 		/obj/item/clipboard,
 		/obj/item/paper,
 		/obj/item/paper_bundle,
-		/obj/item/card/id
-		)
+		/obj/item/card/id,
+	)
 
 /obj/item/device/gripper/attack_self(mob/user as mob)
 	..()
@@ -119,7 +119,7 @@
 				wrapped = A.cell
 
 				A.cell.add_fingerprint(user)
-				A.cell.updateicon()
+				A.cell.update_icon()
 				A.cell.forceMove(src)
 				A.cell = null
 

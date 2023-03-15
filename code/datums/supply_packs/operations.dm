@@ -1,69 +1,6 @@
-//*******************************************************************************
-//OPERATIONS
-//*******************************************************************************/
+//the idea is to put all the bulk items scanner secure crate with lot's of flares MRE in it and at the end OB and non buyable.
 
-
-
-/datum/supply_packs/flares
-	name = "flare packs crate (x20)"
-	contains = list(
-					/obj/item/ammo_box/magazine/misc/flares,
-					/obj/item/ammo_box/magazine/misc/flares,
-					)
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "flare pack crate"
-	group = "Operations"
-
-
-/datum/supply_packs/motiondetector
-	name = "Motion Detector (x2)"
-	contains = list(
-		/obj/item/device/motiondetector,
-		/obj/item/device/motiondetector
-					)
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/supply
-	containername = "Motion Detector crate"
-	group = "Operations"
-
-/datum/supply_packs/signal_flares
-	name = "signal flare packs crate (x4)"
-	contains = list(
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal
-					)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "signal flare pack crate"
-	group = "Operations"
-
-/datum/supply_packs/fulton
-	name = "fulton recovery device crate (x4)"
-	contains = list(
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton
-					)
-	cost = RO_PRICE_VERY_CHEAP
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "fulton recovery device crate"
-	group = "Operations"
-
-/datum/supply_packs/nvg
-	name = "M2 Night Vision Goggles Crate (x3)"
-	contains = list(
-					/obj/item/prop/helmetgarb/helmet_nvg,
-					/obj/item/prop/helmetgarb/helmet_nvg,
-					/obj/item/prop/helmetgarb/helmet_nvg
-					)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate/supply
-	containername = "M2 Night Vission Goggles Crate"
-	group = "Operations"
+//non buyable
 
 /datum/supply_packs/ob_incendiary
 	contains = list(
@@ -148,9 +85,9 @@
 		/obj/item/cell,
 		/obj/item/cell,
 		/obj/item/stack/cable_coil,
-		/obj/item/stack/cable_coil
-					)
-	cost = RO_PRICE_NORMAL
+		/obj/item/stack/cable_coil,
+	)
+	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	buyable = 0
 	containername = "replacement telecommunications crate"
@@ -170,7 +107,7 @@
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs
+		/obj/item/spec_kit/asrs,
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply
@@ -178,13 +115,3 @@
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null
-
-/datum/supply_packs/xeno_tags
-	name = "Xenomorph IFF Tag Case (x7 tags)"
-	contains = list(
-		/obj/item/storage/xeno_tag_case/full
-	)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate/secure/weyland
-	containername = "IFF tag crate"
-	group = "Operations"

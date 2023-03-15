@@ -10,7 +10,7 @@
 	probability = 0
 	hostility = TRUE
 
-/datum/emergency_call/deus_vult/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/deus_vult/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -37,4 +37,4 @@
 		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

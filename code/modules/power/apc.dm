@@ -3,7 +3,7 @@
 
 GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN 	  = "ID scanner"
+		APC_WIRE_IDSCAN   = "ID scanner"
 	))
 
 #define APC_COVER_CLOSED 0
@@ -73,8 +73,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
-	anchored = 1
-	use_power = 0
+	anchored = TRUE
+	use_power = USE_POWER_NONE
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
 	unacidable = TRUE
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/obj/item/cell/cell
 	var/start_charge = 90 //Initial cell charge %
-	var/cell_type = /obj/item/cell/apc //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	var/cell_type = /obj/item/cell/apc/empty //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
 
 	var/opened = APC_COVER_CLOSED
 	var/shorted = 0
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
-/obj/structure/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
+/obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
 	//Offset 24 pixels in direction of dir
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		addtimer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 	start_processing()
 
@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
+	area = null
 	. = ..()
 
 
@@ -349,7 +350,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 //Convert percentage to actual value
+		cell.charge = start_charge * cell.maxcharge / 100 //Convert percentage to actual value
 
 	var/area/A = loc.loc
 
@@ -364,7 +365,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/structure/machinery/power/apc/get_examine_text(mob/user)
 	. = list(desc)
@@ -428,7 +429,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		status_overlays_environ[3] = image(icon, "apco2-2")
 		status_overlays_environ[4] = image(icon, "apco2-3")
 
-	var/update = check_updates()	//Returns 0 if no need to update icons.
+	var/update = check_updates() //Returns 0 if no need to update icons.
 									//1 if we need to update the icon_state
 									//2 if we need to update the overlays
 	if(!update)
@@ -864,7 +865,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 			user.put_in_hands(cell)
 			cell.add_fingerprint(user)
-			cell.updateicon()
+			cell.update_icon()
 
 			src.cell = null
 			user.visible_message(SPAN_NOTICE("[user] removes the power cell from [src]!"),
@@ -891,14 +892,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN       = "ID scanner"
+		APC_WIRE_IDSCAN    = "ID scanner"
 	)
 
-/obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
+/obj/structure/machinery/power/apc/proc/isWireCut(wire)
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/with_message = TRUE)
+/obj/structure/machinery/power/apc/proc/cut(wire, mob/user, with_message = TRUE)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -911,15 +912,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			shorted = 1
 			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
-			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
-			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
 			if(with_message)
 				visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/power/apc/proc/mend(var/wire)
+/obj/structure/machinery/power/apc/proc/mend(wire)
 	apcwires |= getWireFlag(wire)
 
 	switch(wire)
@@ -954,7 +953,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
-/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)
 		return TRUE
 
@@ -1032,7 +1031,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == APC_CHARGING && operating)
 
-/obj/structure/machinery/power/apc/add_load(var/amount)
+/obj/structure/machinery/power/apc/add_load(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -1096,7 +1095,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(cell.charge >= required_power * CELLRATE) //Can we draw enough from cell to cover what's left over?
 				cell.use(required_power * CELLRATE)
 
-			else if (autoflag != 0)	//Not enough power available to run the last tick!
+			else if (autoflag != 0) //Not enough power available to run the last tick!
 				chargecount = 0
 				//This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
 				equipment = autoset(equipment, 0)
@@ -1201,7 +1200,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 //val 0 = off, 1 = off(auto) 2 = on, 3 = on(auto)
 //on 0 = off, 1 = auto-on, 2 = auto-off
 
-/proc/autoset(var/val, var/on)
+/proc/autoset(val, on)
 
 	if(on == 0) //Turn things off
 		if(val == 2) //If on, return off
@@ -1252,7 +1251,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
-	addtimer(CALLBACK(src, .proc/do_set_broken), rand(2, 5))
+	addtimer(CALLBACK(src, PROC_REF(do_set_broken)), rand(2, 5))
 
 /obj/structure/machinery/power/apc/proc/do_set_broken()
 	visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))
@@ -1312,7 +1311,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/power/apc/antag
-	cell_type = /obj/item/cell/apc/full
+	cell_type = /obj/item/cell/apc
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
 //------Almayer APCs ------//

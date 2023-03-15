@@ -23,10 +23,14 @@
 	tackle_min = 2
 	tackle_max = 4
 
-/mob/living/carbon/Xenomorph/Defender
+	minimum_evolve_time = 4 MINUTES
+
+	minimap_icon = "defender"
+
+/mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
-	desc = "A alien with an armored head crest."
+	desc = "A alien with an armored crest."
 	icon = 'icons/mob/xenos/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
@@ -44,23 +48,31 @@
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
 	)
+	mutation_icon_state = DEFENDER_NORMAL
 	mutation_type = DEFENDER_NORMAL
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_state()
+/mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
 		return TRUE
 	if(crest_defense)
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/Xenomorph/Defender/handle_special_wound_states(severity)
+/mob/living/carbon/xenomorph/defender/handle_special_wound_states(severity)
 	. = ..()
 	if(fortify)
 		return "Defender_fortify_[severity]"
 	if(crest_defense)
 		return "Defender_crest_[severity]"
+
+/mob/living/carbon/xenomorph/defender/handle_special_backpack_states()
+	. = ..()
+	if(fortify)
+		return " Fortify"
+	if(crest_defense)
+		return " Crest"
 
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
@@ -69,9 +81,9 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(bound_xeno.fortify)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Fortify"
+	if(bound_xeno.fortify && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Fortify"
 		return TRUE
-	if(bound_xeno.crest_defense)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Crest"
+	if(bound_xeno.crest_defense && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Crest"
 		return TRUE

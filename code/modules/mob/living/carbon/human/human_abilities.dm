@@ -514,15 +514,15 @@ CULT
 	var/mob/living/carbon/human/victim = M
 	var/datum/disease/black_goo/D = locate() in victim.viruses
 	if(D)
-		to_chat(zombie, SPAN_XENOWARNING("the target is already infected, why would you bite it again?"))
+		to_chat(zombie, SPAN_XENOWARNING("The target is already infected, why would you bite it again?"))
 	else
 		enter_cooldown(10 SECONDS)
-		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M.name] neck, preparing to bite it!"))
-		to_chat(M, SPAN_DANGER("[zombie.name] reaches to your neck and starts to open his jaw, agh!"))
+		to_chat(zombie, SPAN_XENOWARNING("You reach down to [M] neck, preparing to bite it!"))
+		to_chat(M, SPAN_DANGER("[zombie.name] reaches your neck and starts to open [zombie.p_their()] jaw!"))
 		if(do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			to_chat(zombie, SPAN_XENOWARNING("You bite [M.name] neck, leaving a bloody mark!"))
-			to_chat(M, SPAN_DANGER("[zombie.name] Bites you right in the neck!"))
-			playsound(zombie.loc, 'sound/hallucinations/wail.ogg', 25, TRUE)
+			to_chat(zombie, SPAN_XENOWARNING("You bite [M] neck, leaving a bloody mark!"))
+			to_chat(M, SPAN_DANGER("[zombie] bites you right in the neck!"))
+			playsound(get_turf(zombie), 'sound/hallucinations/wail.ogg', 25, TRUE)
 			victim.emote("scream")
 			playsound(victim, "bone_break" , 45, TRUE)
 			victim.AddDisease(new /datum/disease/black_goo)
@@ -581,7 +581,7 @@ CULT
 			zomb.anchored = FALSE
 			zomb.update_canmove()
 
-	zomb.visible_message(SPAN_XENOWARNING("\The [zomb.name] [name][findtext(name, "e", -1) || findtext(name, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("You [name] at [target]!"))
+	zomb.visible_message(SPAN_XENOWARNING("[zomb] [name][findtext(name, "e", -1) || findtext(name, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("You [name] at [target]!"))
 
 	leap_distance = get_dist(zomb, target)
 

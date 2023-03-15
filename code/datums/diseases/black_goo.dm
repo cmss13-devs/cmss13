@@ -34,7 +34,7 @@
 		if(1)
 			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
-				var/message = pick("Your mouth feels really dry..", "Your head aches...",)
+				var/message = pick("Your mouth feels really dry...", "Your head aches...",)
 				if(prob(40))
 					to_chat(H, SPAN_WARNING(message))
 				goo_message_cooldown = world.time + 10 SECONDS
@@ -64,7 +64,7 @@
 		if(4)
 			H.nutrition = NUTRITION_VERYLOW //brains tasty yey :D
 			H.next_move_slowdown = max(H.next_move_slowdown, 2)
-			var/message = pick("MAKE IT STOP", "Your skin is pulling itself apart!", "ITS OVER SOON")
+			var/message = pick("MAKE IT STOP!", "Your skin is pulling itself apart!", "IT'S OVER SOON!")
 			if(goo_message_cooldown < world.time && prob(30))
 				to_chat(H, SPAN_HIGHDANGER(message))
 				goo_message_cooldown = world.time + 20 SECONDS
@@ -138,7 +138,7 @@
 	if(iszombie(target))
 		return FALSE
 	if(target.stat == DEAD)
-		to_chat(user, SPAN_XENOWARNING("[target.name] is already dead, why would you want to do that?"))
+		to_chat(user, SPAN_XENOWARNING("[target] is already dead, why would you want to do that?"))
 		return FALSE
 	. = ..()
 	if(.)

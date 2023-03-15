@@ -52405,18 +52405,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/charlie)
-"oho" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
-/obj/item/clothing/mask/rebreather/scarf,
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/pilotbunks)
 "ohA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -97254,7 +97242,7 @@ aoI
 weD
 fdE
 amh
-oho
+fdE
 aiX
 cJu
 pXx

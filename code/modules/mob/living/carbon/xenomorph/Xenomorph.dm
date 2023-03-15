@@ -1074,7 +1074,7 @@
 	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
-	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
 		return
 	return ..()
 

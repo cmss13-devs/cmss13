@@ -2,6 +2,12 @@
 
 //wall
 
+/obj/structure/interior_wall/Initialize()
+	. = ..()
+
+	if(loc.opacity)
+		loc.opacity = FALSE
+
 /obj/structure/interior_wall/apc
 	name = "\improper APC interior wall"
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'

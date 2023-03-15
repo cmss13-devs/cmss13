@@ -10986,13 +10986,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "OS" = (
-/obj/structure{
-	density = 1;
-	desc = "A shuttle control computer. This one seems powered down.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "syndishuttle";
-	name = "nonfunctional shuttle control console"
-	},
+/obj/structure/machinery/computer/shuttle/ert/broken,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},

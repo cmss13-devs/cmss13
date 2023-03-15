@@ -39,8 +39,8 @@
 				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 				var/turf/larva_spawn
 				var/list/players_with_xeno_pref = get_alien_candidates()
-				while(GLOB.hive_datum[hivenumber].stored_larva > 0 && istype(GLOB.hive_datum[hivenumber].spawn_pool, /obj/effect/alien/resin/special/pool)) // stil some left
-					larva_spawn = get_turf(GLOB.hive_datum[hivenumber].spawn_pool)
+				while(GLOB.hive_datum[hivenumber].stored_larva > 0 && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core)) // stil some left
+					larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
 					if(players_with_xeno_pref && players_with_xeno_pref.len)
 						var/mob/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
@@ -54,7 +54,7 @@
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 
 					GLOB.hive_datum[hivenumber].stored_larva--
-					GLOB.hive_datum[hivenumber].hive_ui.update_pooled_larva()
+					GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
@@ -94,10 +94,10 @@
 		A.acid_damage = 0 //Reset the acid damage
 		A.forceMove(loc)
 
-	// Banished xeno provide a pooled larva on death to compensate
+	// Banished xeno provide a burrowed larva on death to compensate
 	if(banished && refunds_larva_if_banished)
 		GLOB.hive_datum[hivenumber].stored_larva++
-		GLOB.hive_datum[hivenumber].hive_ui.update_pooled_larva()
+		GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
 	if(hive)
 		hive.remove_xeno(src)

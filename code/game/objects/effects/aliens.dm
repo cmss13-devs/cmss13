@@ -16,7 +16,7 @@
 	icon_state = "splatter"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
@@ -29,7 +29,7 @@
 	icon_state = "acidblob"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
@@ -42,7 +42,7 @@
 	icon_state = "acid2"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
@@ -58,7 +58,7 @@
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, var/hive) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()
 
 	// Stats tracking
@@ -133,7 +133,7 @@
 	cause_data = null
 	return ..()
 
-/obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/xenomorph/spray/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_ACID_SPRAY
@@ -149,8 +149,8 @@
 		if(H.ally_of_hivenumber(hivenumber))
 			return
 		apply_spray(AM)
-	else if (isXeno(AM))
-		var/mob/living/carbon/Xenomorph/X = AM
+	else if (isxeno(AM))
+		var/mob/living/carbon/xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
@@ -169,8 +169,8 @@
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
-		else if (isXeno(H))
-			var/mob/living/carbon/Xenomorph/X = H
+		else if (isxeno(H))
+			var/mob/living/carbon/xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
 			X.emote("hiss")
@@ -227,7 +227,7 @@
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
 		hooman.UpdateDamageIcon()
 		hooman.updatehealth()
-	else if (isXeno(carbone))
+	else if (isxeno(carbone))
 		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
@@ -275,7 +275,7 @@
 		else
 			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
-	else if (isXeno(M))
+	else if (isxeno(M))
 		..(M)
 
 //Medium-strength acid
@@ -285,7 +285,7 @@
 	icon_state = "acid_normal"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unacidable = TRUE
 	var/atom/acid_t
 	var/ticks = 0
@@ -409,11 +409,11 @@
 	var/smoke_duration = 9
 	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 
-	var/mob/living/carbon/Xenomorph/source_xeno = null
+	var/mob/living/carbon/xenomorph/source_xeno = null
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
-	if (isXeno(source_xeno))
+	if (isxeno(source_xeno))
 		src.source_xeno = source_xeno
 
 	if (isturf(loc))
@@ -433,11 +433,11 @@
 		qdel(src)
 		return
 	for (var/mob/living/carbon/H in loc)
-		if (isXeno(H))
+		if (isxeno(H))
 			if(!source_xeno)
 				continue
 
-			var/mob/living/carbon/Xenomorph/X = H
+			var/mob/living/carbon/xenomorph/X = H
 			if (source_xeno.can_not_harm(X))
 				continue
 
@@ -492,11 +492,11 @@
 
 	var/damage = 20
 	var/message = null
-	var/mob/living/carbon/Xenomorph/linked_xeno = null
+	var/mob/living/carbon/xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/empowered = FALSE
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, PROC_REF(die)), delay)
@@ -523,7 +523,7 @@
 
 		animation_flash_color(H)
 
-		if(isXeno(H))
+		if(isxeno(H))
 			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)

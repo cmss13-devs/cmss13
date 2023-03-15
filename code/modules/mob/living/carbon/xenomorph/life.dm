@@ -1,7 +1,7 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
 
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
-/mob/living/carbon/Xenomorph/Life(delta_time)
+/mob/living/carbon/xenomorph/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 
@@ -36,26 +36,31 @@
 		if(client)
 			handle_regular_hud_updates()
 
-/mob/living/carbon/Xenomorph/proc/update_progression()
+/mob/living/carbon/xenomorph/proc/update_progression()
 	if(isnull(hive))
 		return
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
-	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
-		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
-			evolve_message()
+			if(!got_evolution_message)
+				evolve_message()
+				got_evolution_message = TRUE
+			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+				evolution_stored += progress_amount
+		else
+			evolution_stored += progress_amount
 
-/mob/living/carbon/Xenomorph/proc/evolve_message()
+/mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
 
-/mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
+/mob/living/carbon/xenomorph/proc/handle_xeno_fire()
 	if(!on_fire)
 		return
 
@@ -68,13 +73,14 @@
 		G.die()
 		drop_inv_item_on_ground(G)
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
-		apply_damage(dmg, BURN)
+		apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
+	if(caste.fire_immunity & FIRE_VULNERABILITY)
+		apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * FIRE_VULNERABILITY_MULTIPLIER, BURN)
 
 #undef PASSIVE_BURN_DAM_CALC
 
-/mob/living/carbon/Xenomorph/proc/handle_pheromones()
+/mob/living/carbon/xenomorph/proc/handle_pheromones()
 	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
 	//At least it's more efficient since only Xenos with an aura do this, instead of all Xenos
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
@@ -87,7 +93,7 @@
 		if(aura_strength > 0) //Ignoring pheromone underflow
 			if(current_aura && plasma_stored > 5)
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
-					var/mob/living/carbon/Xenomorph/Queen/Q = src
+					var/mob/living/carbon/xenomorph/queen/Q = src
 					var/atom/phero_center = Q
 					if(Q.observed_xeno)
 						phero_center = Q.observed_xeno
@@ -103,7 +109,7 @@
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
-			for(var/mob/living/carbon/Xenomorph/Z as anything in GLOB.living_xeno_list)
+			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
 				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
@@ -122,7 +128,7 @@
 	warding_new = 0
 	recovery_new = 0
 
-/mob/living/carbon/Xenomorph/proc/affected_by_pheromones(var/aura, var/strength)
+/mob/living/carbon/xenomorph/proc/affected_by_pheromones(aura, strength)
 	switch(aura)
 		if("all")
 			if(strength > frenzy_new)
@@ -152,7 +158,7 @@
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 
-/mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
+/mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
@@ -172,7 +178,7 @@
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -182,10 +188,10 @@
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
 			blinded = FALSE
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
 					apply_damage(-3, HALLOSS)
@@ -201,11 +207,11 @@
 
 	return TRUE
 
-/mob/living/carbon/Xenomorph/proc/handle_stomach_contents()
+/mob/living/carbon/xenomorph/proc/handle_stomach_contents()
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(isHumanStrict(M))
+			if(ishuman_strict(M))
 				if(world.time == (devour_timer - 30))
 					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
@@ -219,7 +225,7 @@
 				stomach_contents.Remove(M)
 				qdel(M)
 
-/mob/living/carbon/Xenomorph/proc/handle_regular_hud_updates()
+/mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)
 		return TRUE
 
@@ -291,7 +297,7 @@ Xenos don't actually take oxyloss, oh well
 hmmmm, this is probably unnecessary
 Make sure their actual health updates immediately.*/
 
-/mob/living/carbon/Xenomorph/proc/heal_wounds(m, recov)
+/mob/living/carbon/xenomorph/proc/heal_wounds(m, recov)
 	var/heal_penalty = 0
 	var/list/L = list("healing" = heal_penalty)
 	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL_WOUNDS, L)
@@ -303,7 +309,7 @@ Make sure their actual health updates immediately.*/
 	updatehealth()
 
 
-/mob/living/carbon/Xenomorph/proc/handle_environment()
+/mob/living/carbon/xenomorph/proc/handle_environment()
 	var/turf/T = loc
 	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || fire_stacks == 0) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
@@ -319,7 +325,7 @@ Make sure their actual health updates immediately.*/
 
 	var/is_runner_hiding
 
-	if(isXenoRunner(src) && layer != initial(layer))
+	if(isrunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
 	if(caste)
@@ -377,7 +383,7 @@ Make sure their actual health updates immediately.*/
 
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
-/mob/living/carbon/Xenomorph/proc/queen_locator()
+/mob/living/carbon/xenomorph/proc/queen_locator()
 	if(!hud_used || !hud_used.locate_leader)
 		return
 
@@ -426,7 +432,7 @@ Make sure their actual health updates immediately.*/
 		else
 			QL.icon_state = "trackondirect"
 
-/mob/living/carbon/Xenomorph/proc/mark_locator()
+/mob/living/carbon/xenomorph/proc/mark_locator()
 	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
 		return
 
@@ -459,10 +465,10 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "no_direction")
 
-/mob/living/carbon/Xenomorph/updatehealth()
+/mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else if(xeno_shields.len != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
@@ -491,12 +497,12 @@ Make sure their actual health updates immediately.*/
 	if(!gibbing)
 		med_hud_set_health()
 
-/mob/living/carbon/Xenomorph/proc/handle_crit()
+/mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat == DEAD || gibbing)
 		return
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide
@@ -505,7 +511,7 @@ Make sure their actual health updates immediately.*/
 	if(!lying)
 		update_canmove()
 
-/mob/living/carbon/Xenomorph/proc/handle_luminosity()
+/mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
 	if(caste)
 		new_luminosity += caste.caste_luminosity
@@ -513,14 +519,14 @@ Make sure their actual health updates immediately.*/
 		new_luminosity += min(fire_stacks, 5)
 	SetLuminosity(new_luminosity) // light up xenos
 
-/mob/living/carbon/Xenomorph/handle_stunned()
+/mob/living/carbon/xenomorph/handle_stunned()
 	if(stunned)
 		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
 		stun_callback_check()
 
 	return stunned
 
-/mob/living/carbon/Xenomorph/proc/handle_interference()
+/mob/living/carbon/xenomorph/proc/handle_interference()
 	if(interference)
 		interference = max(interference-2, 0)
 
@@ -529,28 +535,28 @@ Make sure their actual health updates immediately.*/
 
 	return interference
 
-/mob/living/carbon/Xenomorph/handle_dazed()
+/mob/living/carbon/xenomorph/handle_dazed()
 	if(dazed)
 		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
 	return dazed
 
-/mob/living/carbon/Xenomorph/handle_slowed()
+/mob/living/carbon/xenomorph/handle_slowed()
 	if(slowed)
 		adjust_effect(life_slow_reduction, SLOW, EFFECT_FLAG_LIFE)
 	return slowed
 
-/mob/living/carbon/Xenomorph/handle_superslowed()
+/mob/living/carbon/xenomorph/handle_superslowed()
 	if(superslowed)
 		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
-/mob/living/carbon/Xenomorph/handle_knocked_down()
+/mob/living/carbon/xenomorph/handle_knocked_down()
 	if(knocked_down)
 		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/carbon/Xenomorph/handle_knocked_out()
+/mob/living/carbon/xenomorph/handle_knocked_out()
 	if(knocked_out)
 		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
 		knocked_out_callback_check()
@@ -558,7 +564,7 @@ Make sure their actual health updates immediately.*/
 
 //Returns TRUE if xeno is on weeds
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
-/mob/living/carbon/Xenomorph/proc/check_weeds_for_healing()
+/mob/living/carbon/xenomorph/proc/check_weeds_for_healing()
 	var/turf/T = loc
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
@@ -576,17 +582,17 @@ Make sure their actual health updates immediately.*/
 
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess
-/mob/living/carbon/Xenomorph/stun_clock_adjustment()
+/mob/living/carbon/xenomorph/stun_clock_adjustment()
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
 	if(stunned > shift_left)
 		stunned += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
 
-/mob/living/carbon/Xenomorph/knockdown_clock_adjustment()
+/mob/living/carbon/xenomorph/knockdown_clock_adjustment()
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
 	if(knocked_down > shift_left)
 		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
 
-/mob/living/carbon/Xenomorph/knockout_clock_adjustment()
+/mob/living/carbon/xenomorph/knockout_clock_adjustment()
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
 	if(knocked_out > shift_left)
 		knocked_out += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left

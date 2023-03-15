@@ -27,13 +27,13 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xeno_resting/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.resting)
 		button.icon_state = "template_active"
 
@@ -42,12 +42,12 @@
 	name = "Toggle Spit Type"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_gas_type
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
@@ -91,7 +91,7 @@
 	if(!.)
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X)
 		return X.selected_resin
 	else
@@ -115,7 +115,7 @@
 	xeno_cooldown = 10 SECONDS
 	var/max_markers = 3
 
-/datum/action/xeno_action/activable/info_marker/update_button_icon(var/datum/xeno_mark_define/x)
+/datum/action/xeno_action/activable/info_marker/update_button_icon(datum/xeno_mark_define/x)
 	. = ..()
 	if(!x)
 		return
@@ -152,8 +152,8 @@
 			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
-			name = "Corrosive Acid (200)"
-			acid_plasma_cost = 200
+			name = "Corrosive Acid (125)"
+			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak
@@ -163,8 +163,8 @@
 	acid_type = /obj/effect/xenomorph/acid/weak
 
 /datum/action/xeno_action/activable/corrosive_acid/strong
-	name = "Corrosive Acid (200)"
-	acid_plasma_cost = 200
+	name = "Corrosive Acid (125)"
+	acid_plasma_cost = 125
 	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
@@ -176,7 +176,7 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/emit_pheromones/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated() && (!X.current_aura || X.plasma_stored >= plasma_cost))
 		return TRUE
 
@@ -223,9 +223,9 @@
 	. = ..()
 	initialize_pounce_pass_flags()
 	pounce_callbacks = list()
-	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper)
-	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper)
-	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper)
+	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper)
+	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper)
+	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper)
 
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_OVER_THROW_MOB
@@ -241,10 +241,16 @@
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
 
+/**
+ * Effects to apply *inmediately* before pouncing.
+ */
+/datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	return
+
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.frozen = FALSE
 	X.update_canmove()
 	deltimer(freeze_timer_id)
@@ -256,7 +262,7 @@
 	return
 
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
-/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
+/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(interrupted)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
@@ -270,25 +276,34 @@
 	var/should_delay = FALSE
 	var/delay = 20
 	var/handles_movement = TRUE
+
+	/// how much you can move before zoom breaks
 	var/movement_buffer = 0
 
+	/// if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifier defines.
+	var/movement_slowdown = 0
+
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will also handle icon_state
 		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
 		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+		if(movement_slowdown)
+			xeno.recalculate_speed()
 	else
 		xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
@@ -297,20 +312,22 @@
 		if(xeno.is_zoomed) return
 		if(handles_movement)
 			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
+		if(movement_slowdown)
+			xeno.speed_modifier += movement_slowdown
+			xeno.recalculate_speed()
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
-
+	movement_buffer--
 	if(!actually_moving)
 		return
-
-	movement_buffer--
 	if(movement_buffer <= 0)
 		movement_buffer = initial(movement_buffer)
-		mover.zoom_out() // will also handle icon_state
-		UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
+		xeno.zoom_out() // will also handle icon_state
+		UnregisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK)
+		xeno.recalculate_speed()
 
 // General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values
@@ -348,7 +365,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.xeno_transfer_plasma(A, plasma_transfer_amount, transfer_delay, max_range)
 	..()
 
@@ -360,13 +377,13 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
 		button.icon_state = "template_active"
 
@@ -398,6 +415,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
+
+	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
+	var/spitting = FALSE
+	var/sound_to_play = "acid_spit"
+	var/aim_turf = FALSE
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

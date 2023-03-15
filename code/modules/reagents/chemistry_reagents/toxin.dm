@@ -105,23 +105,26 @@
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list()
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(!.) return
+	if(!. || deleted)
+		return
 	M.status_flags |= FAKEDEATH
 	M.apply_damage(0.5*REM, OXY)
-	M.apply_effect(10, WEAKEN)
+	M.apply_effect(2, WEAKEN)
 	M.silent = max(M.silent, 10)
-	M.tod = worldtime2text()
 
-/datum/reagent/toxin/zombiepowder/Destroy()
-	if(holder && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+/datum/reagent/toxin/zombiepowder/on_delete()
 	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/holder_mob = .
+
+	holder_mob.status_flags &= ~FAKEDEATH
 
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"

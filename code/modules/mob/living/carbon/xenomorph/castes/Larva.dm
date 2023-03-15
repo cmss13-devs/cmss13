@@ -47,7 +47,7 @@
 	)
 	mutation_type = "Normal"
 
-	var/poolable = TRUE //Can it be safely pooled if it has no player?
+	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
 
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
@@ -81,7 +81,7 @@
 	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
-	poolable = FALSE //Not interchangeable with regular larvas in the pool.
+	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
 	state_override = "Predalien "
 
 /mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)

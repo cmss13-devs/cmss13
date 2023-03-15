@@ -193,3 +193,13 @@
   - admin: Adds a confirmation button to View Global Variables.
   - bugfix: Admin awarding req points no longer does an alert even if the cancel button
       is pressed.
+2023-03-15:
+  Geeves:
+  - rscadd: hijack is more cinematic, with explosions and better sound effects
+  Morrow:
+  - bugfix: Removes random flight terminal on big red
+  XSlayer300:
+  - soundadd: Added 23 male *warcry variations.
+  - soundadd: Added 12 female *warcry variations.
+  harryob:
+  - admin: admins can mark ahelps again, and the ticket interface is a different color

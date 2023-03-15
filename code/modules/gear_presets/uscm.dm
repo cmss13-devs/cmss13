@@ -22,8 +22,9 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
+	///What paygrade this role gets on highpop
 	var/highpop_paygrade
-	///Only used for Highpop
+	///Only used for Highpop, what paygrade gold medal roles gets
 	var/playtime_rank
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)

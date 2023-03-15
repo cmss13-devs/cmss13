@@ -12971,9 +12971,8 @@
 	},
 /area/almayer/command/cichallway)
 "aVL" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -24124,16 +24123,43 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/head/bio_hood/virology,
-/obj/item/clothing/head/bio_hood/virology,
-/obj/item/clothing/head/bio_hood/virology,
 /obj/structure/surface/rack,
-/obj/item/clothing/shoes/marine,
-/obj/item/clothing/shoes/marine,
-/obj/item/clothing/shoes/marine,
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/testlab)
 "cbg" = (
@@ -30692,19 +30718,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/navigation)
-"edv" = (
-/obj/structure/bed/chair,
-/obj/structure/machinery/door_control{
-	id = "containmentlockdown_S";
-	name = "Containment Lockdown";
-	pixel_y = 28;
-	req_one_access_txt = "19;28"
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/upper_medical)
 "edx" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/sign/safety/maint{
@@ -34902,6 +34915,15 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
+"fUA" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "fWJ" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_lobby)
@@ -37020,6 +37042,49 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
+"haC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/testlab)
 "haM" = (
 /obj/structure/machinery/constructable_frame,
 /obj/effect/decal/cleanable/blood/oil,
@@ -37948,6 +38013,7 @@
 	pixel_x = 32;
 	pixel_y = 5
 	},
+/obj/item/clothing/accessory/stethoscope,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -43143,16 +43209,43 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/suit/bio_suit/virology,
-/obj/item/clothing/head/bio_hood/virology,
-/obj/item/clothing/head/bio_hood/virology,
-/obj/item/clothing/head/bio_hood/virology,
 /obj/structure/surface/rack,
-/obj/item/clothing/shoes/marine,
-/obj/item/clothing/shoes/marine,
-/obj/item/clothing/shoes/marine,
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/shoes/marine{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = -7;
+	pixel_y = 6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/testlab)
 "jZu" = (
@@ -45741,12 +45834,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"lim" = (
-/obj/structure/largecrate/machine/bodyscanner,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "lin" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
@@ -50412,28 +50499,107 @@
 /area/almayer/living/briefing)
 "nlC" = (
 /obj/structure/surface/rack,
-/obj/item/tank/oxygen/red,
-/obj/item/tank/oxygen/red,
-/obj/item/tank/oxygen/red,
-/obj/item/tank/oxygen/red,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen/red,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 18
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/clothing/mask/gas{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/tank/oxygen{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/tank/oxygen{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/tank/oxygen{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/tank/oxygen{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/tank/oxygen/red{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/item/tank/oxygen/red{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/item/tank/oxygen/red{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/item/tank/oxygen/red{
+	pixel_x = -7;
+	pixel_y = -5
+	},
+/obj/item/tank/oxygen/red{
+	pixel_x = -7;
+	pixel_y = -5
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/testlab)
@@ -55256,8 +55422,13 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pzy" = (
-/obj/structure/sign/safety/maint{
+/obj/structure/sign/safety/ladder{
+	pixel_y = 7;
 	pixel_x = 32
+	},
+/obj/structure/sign/safety/south{
+	pixel_x = 32;
+	pixel_y = -7
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -56349,7 +56520,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -59255,6 +59425,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
+"rrM" = (
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/upper_medical)
 "rrV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -63568,9 +63744,6 @@
 /turf/open/floor/plating,
 /area/almayer/lifeboat_pumps/south1)
 "trk" = (
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -68779,6 +68952,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"vGK" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/upper_medical)
 "vHh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/tool/warning_cone{
@@ -69744,7 +69923,6 @@
 	req_access_txt = "5";
 	pixel_x = 2
 	},
-/obj/item/clothing/accessory/stethoscope,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -74350,7 +74528,7 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "ybT" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
-	name = "\improper Equipment against highly infectious diseases"
+	name = "\improper Personal Projective Equipment"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -100361,7 +100539,7 @@ wfE
 bsk
 sxu
 cBI
-kan
+rJc
 fJI
 aZK
 ezL
@@ -100381,7 +100559,7 @@ gRI
 ros
 pYm
 pqi
-baZ
+iwl
 bLT
 cbQ
 ccq
@@ -100448,7 +100626,7 @@ awW
 awW
 awW
 boT
-add
+fUA
 aVL
 bBl
 aeZ
@@ -100564,7 +100742,7 @@ wfE
 owH
 stY
 owH
-kan
+rJc
 pkA
 beA
 vtN
@@ -100584,7 +100762,7 @@ baZ
 bqN
 vtB
 bEP
-baZ
+iwl
 bGT
 bHH
 bGT
@@ -100670,9 +100848,9 @@ bbL
 kij
 bbL
 bbL
-bbL
-yfv
 bYe
+yfv
+bbL
 aWl
 bbL
 bbL
@@ -101496,7 +101674,7 @@ gGe
 aoe
 sVR
 mZW
-cnZ
+rrM
 ajl
 qVi
 asS
@@ -102308,11 +102486,11 @@ aGW
 aoe
 rNu
 aQz
-cnZ
+vGK
 ajl
 dtM
 biV
-ajC
+aik
 czu
 aiJ
 aiJ
@@ -102515,7 +102693,7 @@ ajl
 ajl
 aDk
 biV
-aik
+ajC
 czu
 aiJ
 aiJ
@@ -103530,7 +103708,7 @@ alD
 gWG
 dtM
 asS
-ajC
+aik
 czu
 alW
 alW
@@ -103733,7 +103911,7 @@ alD
 gWG
 dtM
 asS
-aik
+ajC
 czu
 alW
 alW
@@ -104343,8 +104521,8 @@ vtx
 bYe
 biV
 aGd
-aWl
 bbL
+aWl
 bbL
 atC
 aAa
@@ -105554,7 +105732,7 @@ iQo
 dGB
 trF
 irA
-edv
+nFq
 akw
 wky
 asn
@@ -108888,7 +109066,7 @@ aem
 mUa
 aLG
 bdd
-beQ
+bdd
 bdd
 beQ
 bdd
@@ -108906,7 +109084,7 @@ qYZ
 bdd
 beQ
 bdd
-beQ
+bdd
 bdd
 buH
 bHL
@@ -111637,7 +111815,7 @@ nCH
 rjF
 cba
 emR
-jZs
+haC
 cJM
 rgn
 urc
@@ -118309,7 +118487,7 @@ aaa
 aad
 aag
 pVZ
-lim
+amP
 jXY
 psm
 ano

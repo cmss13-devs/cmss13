@@ -14,13 +14,14 @@
 	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
-	layer = RESIN_STRUCTURE_LAYER
+	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
 
 	var/force_nest = FALSE
 	var/structural_base
 	buckle_lying = FALSE
 	var/list/buckling_x
+	var/obj/effect/alien/weeds/foundation
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -39,6 +40,8 @@
 		M.pixel_x = buckling_x["[dir]"]
 		M.dir = turn(dir, 180)
 		M.density = 0
+		pixel_y = buckling_y["[dir]"]
+		pixel_x = buckling_x["[dir]"]
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.pixel_x = initial(buckled_mob.pixel_x)
@@ -156,7 +159,7 @@
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
 	.=FALSE
-	if(!isliving(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
+	if(!isliving(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
 	if(isXeno(M))
@@ -215,7 +218,7 @@
 	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 
 	if(!ishuman(M))
-		return
+		return TRUE
 
 	//Disabling motion detectors and other stuff they might be carrying
 	var/mob/living/carbon/human/H = M
@@ -269,7 +272,7 @@
 	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
 		window_flash(H.client)
 	G.can_reenter_corpse = TRUE
-	return
+	qdel(src)
 
 /obj/structure/bed/nest/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
@@ -280,8 +283,7 @@
 	if(on_fire)
 		overlays += "alien_fire"
 	if(buckled_mob)
-		overlays += image("icon_state"="nest_overlay","layer"=LYING_LIVING_MOB_LAYER + 0.1)
-
+		overlays += image(icon_state = "nest_overlay", dir = buckled_mob.dir, layer = ABOVE_MOB_LAYER, pixel_y = 1)
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
@@ -323,18 +325,28 @@
 /obj/structure/bed/nest/Destroy()
 	unbuckle()
 	ghost_of_buckled_mob = null
+	if(foundation)
+		var/turf/foundation_turf = get_turf(foundation)
+		foundation.nesting_sites -= src
+		for(var/obj/structure/bed/nest/N in foundation.nesting_sites)
+			if(get_dir(foundation, N) == NORTH)
+				return ..()
+		foundation_turf.layer = initial(foundation_turf.layer)
+		foundation_turf.plane = initial(foundation_turf.plane)
 	return ..()
 
 /obj/structure/bed/nest/structure
 	name = "thick alien nest"
 	desc = "A very thick nest, oozing with a thick sticky substance."
 	layer = ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER
-
+	icon_state = "pred_nest"
 	force_nest = TRUE
 	var/obj/effect/alien/resin/special/nest/linked_structure
 
 /obj/structure/bed/nest/structure/Initialize(mapload, hive, obj/effect/alien/resin/special/nest/to_link)
 	. = ..()
+	buckling_y = list("[NORTH]" = -19, "[SOUTH]" = 27, "[EAST]" = 3, "[WEST]" = 3)
+	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = -17, "[WEST]" = 18)
 
 	if(to_link)
 		linked_structure = to_link
@@ -351,3 +363,15 @@
 		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
 		return FALSE
 	. = ..()
+
+/obj/structure/bed/nest/structure/afterbuckle(mob/M)
+	. = ..()
+	switch(buckled_mob.dir)
+		if(NORTH)
+			buckled_mob.dir = SOUTH
+		if(SOUTH)
+			buckled_mob.dir = NORTH
+		if(EAST)
+			buckled_mob.dir = WEST
+		if(WEST)
+			buckled_mob.dir = EAST

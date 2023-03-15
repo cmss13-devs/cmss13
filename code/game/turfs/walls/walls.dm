@@ -82,13 +82,20 @@
 				var/obj/structure/sign/poster/P = O
 				P.roll_and_drop(src)
 			if(istype(O, /obj/effect/alien/weeds))
-				qdel(O)
+				var/obj/effect/alien/weeds/W = O
+				for(var/obj/structure/bed/nest/N in W.nesting_sites)
+					W.nesting_sites -= N
+					qdel(N)
+				qdel(W)
 
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
 		if(M == user && isXeno(user))
 			acided_hole.use_wall_hole(user)
 			return
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(M, src)
 	..()
 
 /turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
@@ -303,6 +310,10 @@
 
 
 /turf/closed/wall/attackby(obj/item/W, mob/user)
+	if(isXeno(user) && istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(G.grabbed_thing, src)
 
 	if(!ishuman(user) && !isrobot(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))

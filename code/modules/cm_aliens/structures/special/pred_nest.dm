@@ -26,6 +26,7 @@
 
 	pred_nest = new /obj/structure/bed/nest/structure(loc, hive, src) // Nest cannot be destroyed unless the structure itself is destroyed
 
+
 /obj/effect/alien/resin/special/nest/Destroy()
 	. = ..()
 

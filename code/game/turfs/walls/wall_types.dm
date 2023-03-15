@@ -703,11 +703,6 @@
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
 
-/turf/closed/wall/resin/MouseDrop_T(mob/M, mob/user)
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		X.do_nesting_host(M, src, user)
-
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE
@@ -1191,6 +1186,11 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
+	if(isXeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_active_hand()
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(G.grabbed_thing, src)
+
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)

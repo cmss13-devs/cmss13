@@ -27,12 +27,14 @@
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/turf/weeded_turf
+	var/list/obj/structure/bed/nest/nesting_sites = list()
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
 /obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE)
 	. = ..()
+
 	if(node)
 		linked_hive = node.linked_hive
 		if(use_node_strength)
@@ -317,6 +319,16 @@
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
+	if(length(nesting_sites))
+		var/attack_direction = get_dir(X, src)
+		for(var/obj/structure/bed/nest/N in nesting_sites)
+			if(get_dir(N, src) == attack_direction)
+				N.attack_alien(X)
+				return
+		for(var/obj/structure/bed/nest/N in nesting_sites)
+			N.attack_alien(X)
+			return
+
 	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
@@ -385,10 +397,17 @@
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
 
+/obj/effect/alien/weeds/weedwall/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if(isXeno(user) && istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(G.grabbed_thing, src)
+
 /obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/M, mob/user)
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
-		X.do_nesting_host(M, src, user)
+		X.do_nesting_host(M, src)
 
 /obj/effect/alien/weeds/weedwall/update_icon()
 	if(istype(loc, /turf/closed/wall))

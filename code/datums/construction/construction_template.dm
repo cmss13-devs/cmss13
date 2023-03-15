@@ -28,6 +28,8 @@
     build_loc = null
     return ..()
 
+/datum/construction_template/proc/post_setup_shenanigans()
+
 /datum/construction_template/proc/set_structure_image()
 	return
 

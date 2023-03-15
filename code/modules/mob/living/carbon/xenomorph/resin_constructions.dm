@@ -231,6 +231,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 
 // Resin Nests
+/* DEFUNCT --> WALL NESTING
 /datum/resin_construction/resin_obj/nest
 	name = "Resin Nest"
 	desc = "A resin nest used to contain any infected hosts."
@@ -249,6 +250,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		return FALSE
 
 	return TRUE
+*/
 
 
 // Sticky Resin

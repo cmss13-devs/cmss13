@@ -695,50 +695,60 @@
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
 
-/mob/living/carbon/Xenomorph/proc/do_nesting_host(mob/M, nest_structural_base, var/mob/living/carbon/Xenomorph/user)
-	var/obj/structure/bed/nest/my_nest
-	var/dir_towards_wall_from_M = get_dir(M,nest_structural_base)
-	var/list/xeno_hands = list(user.get_active_hand(), user.get_inactive_hand())
+/mob/living/carbon/Xenomorph/proc/do_nesting_host(mob/M, nest_structural_base)
+	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())
 
 	if(!ishuman(M))
-		to_chat(user, SPAN_XENONOTICE("This is not a host."))
+		to_chat(src, SPAN_XENONOTICE("This is not a host."))
 		return
 
 	var/mob/living/carbon/human/H = M
 
-	if(istype(nest_structural_base, /obj/structure/bed/nest))	//if theres a prexisting nest site it should be given as 'nest_structural_base"
-		my_nest = nest_structural_base
-		nest_structural_base = my_nest.structural_base
+	for(var/i; i != 0; i = length(xeno_hands))
+		if(isnull(xeno_hands[i]))
+			xeno_hands -= xeno_hands[i]
+		else if(istype(xeno_hands[i], /obj/item/grab))
+			break
 
-	if(!locate(dir_towards_wall_from_M) in GLOB.cardinals)
-		to_chat(user, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+	if(!length(xeno_hands))
+		to_chat(src, SPAN_XENONOTICE("You must have a surer hold on the host to nest them!"))
 		return
 
-	if(ismob(M))
-		for(var/i in xeno_hands)
-			if(istype(i, /obj/item/grab))
-				var/obj/item/grab/G = i
-				if(G.grabbed_thing != M)
-					xeno_hands -= i
+	var/turf/supplier_turf = get_turf(nest_structural_base)
+	var/obj/effect/alien/weeds/supplier_weeds = locate(/obj/effect/alien/weeds) in supplier_turf
+	if(!supplier_weeds)
+		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! Nesting hosts requires hive weeds."))
+		return
 
-		if(!length(xeno_hands))
-			to_chat(user, SPAN_XENONOTICE("You must have a surer hold on the host to nest them!"))
+	if(supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough for nesting hosts."))
+		return
+
+	if(!supplier_turf.density)
+		var/obj/structure/window/framed/framed_window = locate(/obj/structure/window/framed/) in supplier_turf
+		if(!framed_window)
+			to_chat(src, SPAN_XENOBOLDNOTICE("Hosts need a vertical surface to be nested upon!"))
 			return
 
-		if(!my_nest)			//we arent nesting a host to a preexisting nest .. so make one!!
-			for(var/obj/structure/bed/nest/N in M.loc)
-				if(N.dir == dir_towards_wall_from_M)
-					my_nest = N
-					break
-			if(!my_nest)
-				my_nest = new /obj/structure/bed/nest(H.loc)
+	var/dir_to_nest = get_dir(H, nest_structural_base)
 
-		my_nest.structural_base = nest_structural_base
-		my_nest.dir = dir_towards_wall_from_M
-		my_nest.pixel_x = my_nest.buckling_x["[dir_towards_wall_from_M]"]
-		my_nest.pixel_y = my_nest.buckling_y["[dir_towards_wall_from_M]"]
+	if(!locate(dir_to_nest) in GLOB.cardinals)
+		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		return
 
-		if(!my_nest.buckle_mob(H, user))
-			my_nest = qdel(my_nest)
-		else if(dir_towards_wall_from_M == SOUTH)
-			H.update_nested_icon()
+	for(var/obj/structure/bed/nest/N in supplier_weeds.nesting_sites)
+		if(get_dir(nest_structural_base, H) == get_dir(supplier_weeds, N))
+			to_chat(src, SPAN_XENOBOLDNOTICE("Theres already a host nested here!"))
+			return
+
+	var/obj/structure/bed/nest/funny_nest = new(get_turf(H))
+	supplier_weeds.nesting_sites |= funny_nest
+	funny_nest.foundation = supplier_weeds
+	funny_nest.dir = dir_to_nest
+	if(!funny_nest.buckle_mob(H, src))
+		supplier_weeds.nesting_sites -= funny_nest
+		qdel(funny_nest)
+
+	if(dir_to_nest == SOUTH)
+		supplier_turf.layer = ABOVE_MOB_LAYER
+		//supplier_turf.plane = GAME_PLANE

@@ -61,4 +61,5 @@
 	template.owner = src
 	template.build_loc = get_turf(src)
 	template.hive_ref = linked_hive
+	template.post_setup_shenanigans()
 	update_icon()

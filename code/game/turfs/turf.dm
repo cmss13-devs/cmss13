@@ -552,10 +552,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls

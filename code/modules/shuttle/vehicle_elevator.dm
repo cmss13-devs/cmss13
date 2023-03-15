@@ -51,7 +51,7 @@
 	dheight = 2
 
 /obj/docking_port/stationary/vehicle_elevator/almayer
-	name = "Alamyer Vehicle Elevator Dock"
+	name = "Almayer Vehicle Elevator Dock"
 	id = "almayer vehicle"
 	roundstart_template = /datum/map_template/shuttle/vehicle
 

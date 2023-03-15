@@ -21,7 +21,7 @@
 	. = ..()
 
 /obj/item/device/assembly/infra/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..()) return 0//Cooldown check
 	on = !on
 	update_icon()
 	return 1
@@ -60,11 +60,11 @@
 	if((!(first) && (secured && (istype(loc, /turf) || (holder && istype(holder.loc, /turf))))))
 		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam((holder ? holder.loc : loc) )
 		I.master = src
-		I.density = 1
+		I.density = TRUE
 		I.setDir(dir)
 		step(I, I.dir)
 		if(I)
-			I.density = 0
+			I.density = FALSE
 			first = I
 			I.vis_spread(visible)
 			spawn(0)
@@ -91,14 +91,14 @@
 
 
 /obj/item/device/assembly/infra/holder_movement()
-	if(!holder)	return 0
-//		dir = holder.dir
+	if(!holder) return 0
+// dir = holder.dir
 	QDEL_NULL(first)
 	return 1
 
 
 /obj/item/device/assembly/infra/proc/trigger_beam()
-	if((!secured)||(!on)||(cooldown > 0))	return 0
+	if((!secured)||(!on)||(cooldown > 0)) return 0
 	pulse(0)
 	if(!holder)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*")
@@ -109,7 +109,7 @@
 
 
 /obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
-	if(!secured)	return
+	if(!secured) return
 	user.set_interaction(src)
 
 	/* a testament to autism
@@ -180,9 +180,9 @@
 	var/obj/effect/beam/i_beam/next = null
 	var/obj/item/device/assembly/infra/master = null
 	var/limit = null
-	var/visible = 0.0
+	var/visible = 0
 	var/left = null
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = NOINTERACT
 
 /obj/effect/beam/i_beam/proc/hit()
@@ -222,13 +222,13 @@
 
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
-	I.density = 1
+	I.density = TRUE
 	I.setDir(dir)
 	step(I, I.dir)
 
 	if(I)
 		if(!(next))
-			I.density = 0
+			I.density = FALSE
 			I.vis_spread(visible)
 			next = I
 			spawn(0)

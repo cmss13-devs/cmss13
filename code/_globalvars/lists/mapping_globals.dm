@@ -5,15 +5,12 @@ GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 
 GLOBAL_DATUM(supply_elevator, /turf)
 GLOBAL_DATUM(vehicle_elevator, /turf)
-
-GLOBAL_REFERENCE_LIST_INDEXED(nmreaders, /datum/nmreader, name)
-
 GLOBAL_LIST_EMPTY(spawns_by_job)
 GLOBAL_LIST_EMPTY(spawns_by_squad_and_job)
 GLOBAL_LIST_EMPTY(queen_spawns)
 GLOBAL_LIST_EMPTY(xeno_spawns)
 GLOBAL_LIST_EMPTY(xeno_hive_spawns)
-GLOBAL_LIST_EMPTY(survivor_spawns)
+GLOBAL_LIST_EMPTY(survivor_spawns_by_priority)
 GLOBAL_LIST_EMPTY(corpse_spawns)
 
 GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
@@ -66,3 +63,5 @@ GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_science, /obj/effect/landmark/object
 
 GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_one)
 GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_two)
+
+GLOBAL_LIST_EMPTY(landmarks_list) //list of all landmarks created

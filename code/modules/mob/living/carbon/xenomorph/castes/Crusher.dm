@@ -16,6 +16,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
+	minimum_evolve_time = 15 MINUTES
+
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25
@@ -24,10 +26,12 @@
 	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
-/mob/living/carbon/Xenomorph/Crusher
+	minimap_icon = "crusher"
+
+/mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
-	desc = "A huge alien with an enormous armored head crest."
+	desc = "A huge alien with an enormous armored crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -42,6 +46,8 @@
 	pixel_y = -3
 	old_x = -16
 	old_y = -3
+	base_pixel_x = 0
+	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
 
@@ -55,17 +61,15 @@
 		/datum/action/xeno_action/onclick/crusher_shield,
 	)
 
-	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
+	mutation_icon_state = CRUSHER_NORMAL
+	mutation_type = CRUSHER_NORMAL
 
+	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
-/mob/living/carbon/Xenomorph/Crusher/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_crusher))
-	. = ..()
-
 // Refactored to handle all of crusher's interactions with object during charge.
-/mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
+/mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
 	if(!target)
 		return FALSE
 
@@ -96,7 +100,7 @@
 		if (W.unacidable)
 			. = FALSE
 		else
-			W.shatter_window(1)
+			W.deconstruct(FALSE)
 			. =  TRUE // Continue throw
 
 	else if (istype(target, /obj/structure/machinery/door/airlock))
@@ -105,7 +109,7 @@
 		if (A.unacidable)
 			. = FALSE
 		else
-			A.destroy_airlock()
+			A.deconstruct()
 
 	else if (istype(target, /obj/structure/grille))
 		var/obj/structure/grille/G = target
@@ -206,21 +210,25 @@
 
 	var/aoe_slash_damage_reduction = 0.40
 
+	/// Utilized to update charging animation.
+	var/is_charging = FALSE
+
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return
 
 	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
-	var/cdr_amount = 15
+	var/base_cdr_amount = 15
+	var/cdr_amount = base_cdr_amount
 	for (var/mob/living/carbon/H in orange(1, A))
 		if (H.stat == DEAD)
 			continue
 
-		if(!isXenoOrHuman(H) || bound_xeno.can_not_harm(H))
+		if(!isxeno_human(H) || bound_xeno.can_not_harm(H))
 			continue
 
 		cdr_amount += 5
@@ -237,7 +245,7 @@
 			if(HAS_TRAIT(H, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 				H.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
 				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(H)] while they were infected and nested</B></font>")
-				message_staff("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+				message_admins("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 			else //Host might be rogue, needs further investigation
 				H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
 				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")
@@ -255,7 +263,7 @@
 
 	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
 	if (!sAction.action_cooldown_check())
-		sAction.reduce_cooldown(cdr_amount)
+		sAction.reduce_cooldown(base_cdr_amount)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()
 	. = list()
@@ -267,6 +275,6 @@
 	. += "Shield: [shield_total]"
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
-	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Crusher Charging"
+	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE

@@ -5,9 +5,9 @@
 	####################################################################*/
 
 /obj/item/weapon/melee/twohanded
-	var/force_wielded 	= 0
-	var/wieldsound 		= null
-	var/unwieldsound 	= null
+	var/force_wielded = 0
+	var/wieldsound = null
+	var/unwieldsound = null
 	force = MELEE_FORCE_NORMAL
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
@@ -23,7 +23,7 @@
 	..()
 	unwield(user)
 
-/obj/item/proc/wield(var/mob/user)
+/obj/item/proc/wield(mob/user)
 	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
 
 	var/obj/item/I = user.get_inactive_hand()
@@ -38,8 +38,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item    ^= WIELDED
+	name    += " (Wielded)"
 	item_state += "_w"
 	place_offhand(user,initial(name))
 	return 1
@@ -49,12 +49,12 @@
 		return FALSE//Have to be actually a twohander and wielded.
 	flags_item ^= WIELDED
 	SEND_SIGNAL(src, COMSIG_ITEM_UNWIELD, user)
-	name 	    = copytext(name,1,-10)
+	name = copytext(name,1,-10)
 	item_state  = copytext(item_state,1,-2)
 	remove_offhand(user)
 	return TRUE
 
-/obj/item/proc/place_offhand(var/mob/user,item_name)
+/obj/item/proc/place_offhand(mob/user,item_name)
 	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/melee/twohanded/offhand/offhand = new /obj/item/weapon/melee/twohanded/offhand(user)
@@ -65,7 +65,7 @@
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
 
-/obj/item/proc/remove_offhand(var/mob/user)
+/obj/item/proc/remove_offhand(mob/user)
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/melee/twohanded/offhand/offhand = user.get_inactive_hand()
@@ -78,14 +78,14 @@
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(wieldsound) playsound(user, wieldsound, 15, 1)
-	force 		= force_wielded
+	force = force_wielded
 
 /obj/item/weapon/melee/twohanded/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
-	force 	 	= initial(force)
+	force = initial(force)
 
 /obj/item/weapon/melee/twohanded/attack_self(mob/user)
 	..()
@@ -94,7 +94,7 @@
 		return
 
 	if(flags_item & WIELDED) unwield(user)
-	else 				wield(user)
+	else wield(user)
 
 ///////////OFFHAND///////////////
 /obj/item/weapon/melee/twohanded/offhand
@@ -103,7 +103,7 @@
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED
 
-/obj/item/weapon/melee/twohanded/offhand/unwield(var/mob/user)
+/obj/item/weapon/melee/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)
 		flags_item &= ~WIELDED
 		user.temp_drop_inv_item(src)
@@ -181,7 +181,7 @@
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
 	force = 3
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -214,7 +214,7 @@
 /obj/item/weapon/melee/twohanded/dualsaber/unwield(mob/user)
 	. = ..()
 	if(!.) return
-	icon_state 	= copytext(icon_state,1,-2)
+	icon_state = copytext(icon_state,1,-2)
 
 /obj/item/weapon/melee/twohanded/spear
 	name = "spear"
@@ -246,6 +246,9 @@
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
 	var/unwielded_hitsound = "swing_hit"
+
+	/// This controls how strong the explosion will be on the lunge mine. Higher is better.
+	var/detonation_force = 150
 
 /obj/item/weapon/melee/twohanded/lungemine/wield(mob/user)
 	. = ..()
@@ -291,31 +294,43 @@
 
 	var/turf/epicenter = get_turf(target)
 	target.ex_act(400, null, src, user, 100)
-	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
 	qdel(src)
 
+/obj/item/weapon/melee/twohanded/lungemine/damaged
+	name = "damaged lunge mine"
+	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
+	detonation_force = 50
 
 /obj/item/weapon/melee/twohanded/breacher
-	name = "\improper B5 Breaching Hammer"
-	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
+	name = "\improper D2 Breaching Hammer"
+	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
 	icon = 'icons/obj/items/experimental_tools.dmi'
-	icon_state = "breacher"
-	item_state = "breacher"
+	icon_state = "d2_breacher"
+	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL
-	force_wielded = MELEE_FORCE_VERY_STRONG
+	force_wielded = MELEE_FORCE_NORMAL
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
-
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
+	var/really_heavy = FALSE
 
-/obj/item/weapon/melee/twohanded/breacher/pickup(mob/user)
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+/obj/item/weapon/melee/twohanded/breacher/synth
+	name = "\improper B5 Breaching Hammer"
+	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
+	icon_state = "syn_breacher"
+	item_state = "syn_breacher"
+	force_wielded = MELEE_FORCE_VERY_STRONG
+	really_heavy = TRUE
+
+/obj/item/weapon/melee/twohanded/breacher/synth/pickup(mob/user)
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
 		return
 	..()
 
-/obj/item/weapon/melee/twohanded/breacher/attack(target as mob, mob/living/user as mob)
+/obj/item/weapon/melee/twohanded/breacher/synth/attack(target as mob, mob/living/user as mob)
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return

@@ -1,6 +1,6 @@
 //Procedures in this file: Robotic limbs attachment
 //////////////////////////////////////////////////////////////////
-//						ROBOLIMB SURGERY						//
+// ROBOLIMB SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/prosthetical_replacement
@@ -8,7 +8,7 @@
 	steps = list(
 		/datum/surgery_step/connect_prosthesis,
 		/datum/surgery_step/strenghten_prosthesis_connection,
-		/datum/surgery_step/calibrate_prosthesis
+		/datum/surgery_step/calibrate_prosthesis,
 	)
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -22,7 +22,7 @@
 /datum/surgery_step/connect_prosthesis
 	name = "Connect Prosthesis"
 	desc = "attach a prosthesis"
-	tools =	list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
+	tools = list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
 	time = 2 SECONDS
 
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)

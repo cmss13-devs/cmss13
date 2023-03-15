@@ -82,7 +82,7 @@
 	..()
 	rank = assignment
 
-/datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -240,7 +240,7 @@
 	skills = /datum/skills/dutch
 	idtype = /obj/item/card/id/gold
 
-/datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Arnold 'Dutch' Schäfer")
 	H.f_style = "5 O'clock Shadow"
@@ -297,7 +297,7 @@
 	..()
 	H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 
-/datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	var/list/names = list(
 		"Lancelot", "Gawain", "Geraint", "Percival", "Bors", "Lamorak", "Kay", "Gareth", "Bedivere", "Gaheris", "Galahad", "Tristan", "Palamedes",
@@ -346,38 +346,38 @@
 				qdel(G)
 			launcher.cylinder.storage_slots = launcher.internal_slots //need to adjust the internal storage as well.
 			for(var/i = 1 to launcher.internal_slots)
-				new /obj/item/explosive/grenade/HE/frag(launcher.cylinder)
+				new /obj/item/explosive/grenade/high_explosive/frag(launcher.cylinder)
 			launcher.fire_delay = FIRE_DELAY_TIER_4 //More HEFA per second, per second. Strictly speaking this is probably a nerf.
 
 	// Satchel
 	if(satchel_success)
 		for(var/i in 1 to 7)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.back), WEAR_IN_BACK)
 
 	// Belt
 	if(waist_success)
 		var/obj/item/storage/belt/grenade/large/belt = H.belt
 		belt.name = "M42 HEFA rig Mk. XVII"
 		for(var/i in 1 to belt.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.belt), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.belt), WEAR_IN_BELT)
 
 	// Armor/suit
 	if(jacket_success)
 		var/obj/item/clothing/suit/storage/marine/M3G/armor = H.wear_suit
 		armor.name = "HEFA Knight armor"
 		for(var/i in 1 to armor.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.wear_suit), WEAR_IN_JACKET)
 
 	// Pouch
 	if(pouch_r_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.r_store
 		pouch.name = "HEFA pouch"
 		for(var/i in 1 to pouch.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.r_store), WEAR_IN_R_STORE)
 
 	// Webbing
 	for(var/i in 1 to W.hold.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.back), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/fun/hefa/melee
 	name = "HEFA Knight - Melee"
@@ -411,36 +411,36 @@
 		var/obj/item/storage/backpack/marine/satchel = H.back
 		satchel.name = "HEFA storage bag"
 		for(var/i in 1 to 7)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.back), WEAR_IN_BACK)
 
 	// Belt
 	if(waist_success)
 		var/obj/item/storage/belt/grenade/large/belt = H.belt
 		belt.name = "M42 HEFA rig Mk. XVII"
 		for(var/i in 1 to belt.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.belt), WEAR_IN_BELT)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.belt), WEAR_IN_BELT)
 
 	// Armor/suit
 	if(jacket_success)
 		var/obj/item/clothing/suit/storage/marine/M3G/armor = H.wear_suit
 		armor.name = "HEFA Knight armor"
 		for(var/i in 1 to armor.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.wear_suit), WEAR_IN_JACKET)
 
 	// Pouches
 	if(pouch_r_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.r_store
 		pouch.name = "HEFA pouch"
 		for(var/i in 1 to pouch.storage_slots)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.r_store), WEAR_IN_R_STORE)
 
 	// Webbing
 	for(var/i in 1 to W.hold.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H.back), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = "O8"
+	paygrade = "C"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -454,7 +454,7 @@
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
 
-/datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Santa")
 
@@ -484,6 +484,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/santa(H), WEAR_WAIST)
 
 	H.set_species("Human Hero") //Santa is STRONG.
+	ADD_TRAIT(H, TRAIT_SANTA, TRAIT_SOURCE_ADMIN)
 
 /datum/equipment_preset/upp/ivan
 	name = "Fun - Ivan"
@@ -493,7 +494,7 @@
 	rank = "UPP Armsmaster"
 	role_comm_title = null
 
-/datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Ivan")
 	H.f_style = "Shaved"
@@ -527,7 +528,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
 	//limb
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/ivan, WEAR_WAIST)
 	//belt filled with random magazines, it's cool
@@ -549,7 +550,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Van Bandolier")
 	H.age = 55
@@ -593,7 +594,7 @@
 
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/van_bandolier(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/van_bandolier(H), WEAR_FEET)
 
 	//hands
 	H.equip_to_slot_or_del(new /obj/item/storage/box/twobore(H), WEAR_L_HAND)
@@ -625,13 +626,13 @@
 /datum/equipment_preset/fun/monkey/load_race(mob/living/carbon/human/H, client/mob_client)
 	H.set_species(SPECIES_MONKEY)
 
-/datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/H, var/randomise, var/client/mob_client)
+/datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/H, randomise, client/mob_client)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/random_name = get_random_name(H)
 	H.change_real_name(H, random_name)
 	H.age = rand(1, 40)
 
-/datum/equipment_preset/fun/monkey/proc/get_random_name(var/mob/living/carbon/human/H)
+/datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/H)
 	return pick(monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine
@@ -649,7 +650,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(H), WEAR_IN_JACKET)
 
 /datum/equipment_preset/fun/monkey/soldier
 	name = "Fun - Monkey Soldier"
@@ -669,4 +670,4 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/rifleman(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp(H), WEAR_IN_JACKET)

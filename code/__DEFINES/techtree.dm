@@ -14,11 +14,11 @@
 
 // Tech Flags
 /// The tech can be purchased multiple times
-#define TECH_FLAG_MULTIUSE		(1<<0)
+#define TECH_FLAG_MULTIUSE (1<<0)
 /// Prevents a tech from being added to the tech trees
-#define TECH_FLAG_DISABLED		(1<<1)
+#define TECH_FLAG_DISABLED (1<<1)
 /// Don't announce when this tech is bought.
-#define TECH_FLAG_NO_ANNOUNCE	(1<<2)
+#define TECH_FLAG_NO_ANNOUNCE (1<<2)
 
 #define SITREP_INTERVAL 15 MINUTES // How frequent the ARES updates are for tech point announcements.
 // Resource
@@ -41,14 +41,14 @@
 #define TIER_FLAG_TRANSITORY (1<<0)
 
 #define TECH_TIER_GAMEPLAY list(\
-    /datum/tier/free,\
-    /datum/tier/one,\
-    /datum/tier/one_transition_two,\
-    /datum/tier/two,\
-    /datum/tier/two_transition_three,\
-    /datum/tier/three,\
-    /datum/tier/three_transition_four,\
-    /datum/tier/four\
+	/datum/tier/free,\
+	/datum/tier/one,\
+	/datum/tier/one_transition_two,\
+	/datum/tier/two,\
+	/datum/tier/two_transition_three,\
+	/datum/tier/three,\
+	/datum/tier/three_transition_four,\
+	/datum/tier/four\
 )
 
 // Droppods

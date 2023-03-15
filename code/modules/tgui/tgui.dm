@@ -203,7 +203,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE
-		addtimer(CALLBACK(src, .proc/send_full_update, custom_data, force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), custom_data, force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
 		return
 	refreshing = FALSE
 	var/should_update_data = force || status >= UI_UPDATE
@@ -259,6 +259,10 @@
 			"observer" = isobserver(user),
 		),
 	)
+	// sanity...
+	if(!src_object && !custom_data)
+		return
+
 	var/data = custom_data || with_data && src_object.ui_data(user)
 	if(data)
 		json_data["data"] = data
@@ -325,7 +329,7 @@
 			window = window,
 			src_object = src_object)
 		process_status()
-		//DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/on_act_message, act_type, payload, state))
+		//DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(on_act_message), act_type, payload, state))
 		on_act_message(act_type, payload, state)
 		return FALSE
 	switch(type)

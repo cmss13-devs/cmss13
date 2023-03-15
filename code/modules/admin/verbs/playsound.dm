@@ -6,7 +6,7 @@
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>", confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound via youtube-dl") as text|null
@@ -16,8 +16,8 @@
 	web_sound_input = trim(web_sound_input)
 
 	if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-		to_chat(src, "<span class='warning'>Non-http(s) URIs are not allowed.</span>")
-		to_chat(src, "<span class='warning'>For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website.</span>")
+		to_chat(src, SPAN_WARNING("Non-http(s) URIs are not allowed."))
+		to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
 		return
 
 	var/web_sound_url = ""
@@ -30,14 +30,14 @@
 	var/stderr = output[SHELLEO_STDERR]
 
 	if(errorlevel)
-		to_chat(src, "<span class='warning'>Youtube-dl URL retrieval FAILED: [stderr]</span>")
+		to_chat(src, SPAN_WARNING("Youtube-dl URL retrieval FAILED: [stderr]"))
 		return
 
 	var/list/data = list()
 	try
 		data = json_decode(stdout)
 	catch(var/exception/e)
-		to_chat(src, "<span class='warning'>Youtube-dl JSON parsing FAILED: [e]: [stdout]</span>")
+		to_chat(src, SPAN_WARNING("Youtube-dl JSON parsing FAILED: [e]: [stdout]"))
 		return
 
 	if(data["url"])
@@ -49,12 +49,18 @@
 		music_extra_data["end"] = data["end_time"]
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>", confidential = TRUE)
-		to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>", confidential = TRUE)
+		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
+		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
 		return
 
 	var/list/targets = list()
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
+	var/list/sound_type_list = list(
+		"Meme" = SOUND_ADMIN_MEME,
+		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
+	)
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
+	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
+	sound_type = sound_type_list[sound_type]
 	switch(style)
 		if("Globally")
 			targets = GLOB.mob_list
@@ -62,6 +68,8 @@
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
+		if("Ghosts")
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")
@@ -74,11 +82,11 @@
 
 	for(var/i in targets)
 		var/mob/M = i
-		var/client/C = M?.client
-		if(C?.prefs.toggles_sound & SOUND_INTERNET)
-			C?.tgui_panel?.play_music(web_sound_url, music_extra_data)
+		var/client/client = M?.client
+		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
+			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)
 		else
-			C?.tgui_panel?.stop_music()
+			client?.tgui_panel?.stop_music()
 
 	log_admin("[key_name(src)] played web sound: [web_sound_input] - [title] - [style]")
 	message_admins("[key_name_admin(src)] played web sound: [web_sound_input] - [title] - [style]")
@@ -104,7 +112,7 @@
 		return
 
 	var/freq = 1
-	var/vol = tgui_input_number(src, "What volume would you like the sound to play at?", "Volume", 1, 100, 1)
+	var/vol = tgui_input_number(src, "What volume would you like the sound to play at?", "Volume", 25, 100, 1)
 	if(!vol)
 		return
 	vol = clamp(vol, 1, 100)
@@ -128,7 +136,13 @@
 			return
 
 	var/list/targets = list()
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
+	var/list/sound_type_list = list(
+		"Meme" = SOUND_ADMIN_MEME,
+		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
+	)
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
+	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
+	sound_type = sound_type_list[sound_type]
 	switch(style)
 		if("Globally")
 			targets = GLOB.mob_list
@@ -136,6 +150,8 @@
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
+		if("Ghosts")
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")
@@ -148,13 +164,13 @@
 
 	for(var/items in targets)
 		var/mob/Mob = items
-		var/client/Client = Mob?.client
-		if(Client?.prefs.toggles_sound & SOUND_MIDI)
-			admin_sound.volume = vol * Client?.admin_music_volume
+		var/client/client = Mob?.client
+		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
+			admin_sound.volume = vol * client?.admin_music_volume
 			SEND_SOUND(Mob, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)
-				to_chat(Client, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+				to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [S]"), confidential = TRUE)
 
 	log_admin("[key_name(src)] played midi sound [S] - [style]")
 	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")

@@ -1,35 +1,33 @@
 /obj/structure/sign
 	icon = 'icons/obj/structures/props/decals.dmi'
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
-/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
+/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
 		S.desc = desc
 		S.icon_state = icon_state
-		//var/icon/I = icon('icons/obj/structures/props/decals.dmi', icon_state)
-		//S.icon = I.Scale(24, 24)
 		S.sign_state = icon_state
-		qdel(src)
+		deconstruct(FALSE)
 	else ..()
 
 /obj/item/sign
 	name = "sign"
 	desc = ""
 	icon = 'icons/obj/structures/props/decals.dmi'
-	w_class = SIZE_MEDIUM		//big
+	w_class = SIZE_MEDIUM //big
 	var/sign_state = ""
 
-/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction
+/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel") return
@@ -51,8 +49,8 @@
 		qdel(src)
 	else ..()
 
-  //=====================//
- // Miscellaneous Signs //
+//=====================//
+// Miscellaneous Signs //
 //=====================//
 
 /obj/structure/sign/nosmoking_1
@@ -80,7 +78,7 @@
 	desc = "This is the Arcturian stop sign that some Bravos from First Platoon stole on the last shore leave."
 	icon_state = "arcturian_stop_sign"
 
-/obj/structure/sign/double/maltesefalcon	//The sign is 64x32, so it needs two tiles. ;3
+/obj/structure/sign/double/maltesefalcon //The sign is 64x32, so it needs two tiles. ;3
 	name = "The Maltese Falcon"
 	desc = "The Maltese Falcon, Space Bar and Grill."
 
@@ -115,9 +113,9 @@
 	name = "sign"
 	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 
 /obj/structure/sign/safety/airlock
 	name = "airlock semiotic"
@@ -494,6 +492,26 @@
 	desc = "Semiotic Standard denoting the nearby lack of artificial gravity."
 	icon_state = "zerog"
 
+/obj/structure/sign/safety/flightcontrol
+	name = "\improper flight control semiotic"
+	desc = "Semiotic Standard denoting an area used by or for flight control systems."
+	icon_state = "flightcontrol"
+
+/obj/structure/sign/safety/airtraffictower
+	name = "\improper air traffic tower semiotic"
+	desc = "Semiotic Standard denoting an air traffic tower nearby."
+	icon_state = "airtraffictower"
+
+/obj/structure/sign/safety/luggageclaim
+	name = "\improper luggage claim semiotic"
+	desc = "Semiotic Standard denoting the presecense of a luggage claim area nearby."
+	icon_state = "luggageclaim"
+
+/obj/structure/sign/safety/landingzone
+	name = "\improper landing zone semiotic"
+	desc = "Semiotic Standard denoting the presecense of a landing zone nearby."
+	icon_state = "landingzone"
+
 /obj/structure/sign/safety/zero
 	name = "zero semiotic"
 	desc = "Semiotic Standard denoting the number zero."
@@ -550,7 +568,7 @@
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
-	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Captain may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
+	desc = " 1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cyrosleep underwear is non-permissible.\n 3. The Requsitions Officer has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requsitions staff with respect. They work hard."
 	icon_state = "roplaque"
 
 /obj/structure/sign/prop1

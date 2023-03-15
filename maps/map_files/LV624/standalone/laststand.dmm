@@ -88,8 +88,8 @@
 /area/lv624/ground/caves/north_central_caves)
 "ar" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 8
 	},
 /turf/open/floor/wood,
@@ -417,6 +417,14 @@
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"Yc" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "Lazarus Landing";
+	phone_id = "Lakeside Bar"
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 
 (1,1,1) = {"
 aa
@@ -624,7 +632,7 @@ ah
 "}
 (18,1,1) = {"
 ah
-bf
+Yc
 ak
 bf
 aV

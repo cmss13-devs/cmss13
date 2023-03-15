@@ -9,6 +9,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	plane = ABOVE_HUD_PLANE
 	var/datum/radial_menu/parent
 
+/atom/movable/screen/radial/Destroy()
+	parent = null
+	return ..()
+
 /atom/movable/screen/radial/slice
 	icon_state = "radial_slice"
 	var/choice
@@ -19,17 +23,17 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /atom/movable/screen/radial/slice/MouseEntered(location, control, params)
 	. = ..()
 	icon_state = "radial_slice_focus"
-/*	if(tooltips)
+/* if(tooltips)
 		openToolTip(usr, src, params, title = name) */
 
 /atom/movable/screen/radial/slice/MouseExited(location, control, params)
 	. = ..()
 	icon_state = "radial_slice"
-/*	if(tooltips)
+/* if(tooltips)
 		closeToolTip(usr) */
 
 
-/atom/movable/screen/radial/slice/clicked(var/mob/user)
+/atom/movable/screen/radial/slice/clicked(mob/user)
 	if(user.client == parent.current_user)
 		if(next_page)
 			parent.next_page()
@@ -51,7 +55,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	. = ..()
 	icon_state = "radial_center"
 
-/atom/movable/screen/radial/center/clicked(var/mob/user)
+/atom/movable/screen/radial/center/clicked(mob/user)
 	if(user.client == parent.current_user)
 		parent.finished = TRUE
 		return TRUE
@@ -87,6 +91,15 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+
+/datum/radial_menu/Destroy()
+	Reset()
+	hide()
+	anchor = null
+	QDEL_NULL(custom_check_callback)
+	QDEL_NULL(close_button)
+	QDEL_NULL_LIST(elements)
+	return ..()
 
 //If we swap to vis_contens inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
@@ -243,7 +256,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	setup_menu(use_tooltips)
 
 
-/datum/radial_menu/proc/extract_image(image/E, var/label, var/use_labels)
+/datum/radial_menu/proc/extract_image(image/E, label, use_labels)
 	var/mutable_appearance/MA = new /mutable_appearance(E)
 	if(MA)
 		MA.layer = ABOVE_HUD_LAYER
@@ -290,12 +303,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			else
 				next_check = world.time + check_delay
 		stoplag(1)
-
-/datum/radial_menu/Destroy()
-	Reset()
-	hide()
-	QDEL_NULL(custom_check_callback)
-	return ..()
 
 /*
 	Presents radial menu to user anchored to anchor (or user if the anchor is currently in users screen)

@@ -4,7 +4,7 @@
 	  *
 	  */
 
-proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
+/proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
 	if(!tool)
 		return FALSE
 
@@ -144,7 +144,7 @@ proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/a
 
 	var/datum/surgery/procedure = new surgeryinstance.type(target, target_zone, affecting)
 	#ifdef DEBUG_SURGERY_INIT
-	message_staff("[procedure.name] started.")
+	message_admins("[procedure.name] started.")
 	#endif
 	procedure.attempt_next_step(user, tool)
 	return TRUE

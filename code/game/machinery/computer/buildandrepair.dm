@@ -1,14 +1,14 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/computerframe
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	name = "Computer-frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "0"
 	var/state = 0
 	var/obj/item/circuitboard/computer/circuit = null
-//	weight = 1.0E8
+// weight = 1.0E8
 
 /obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
@@ -17,7 +17,7 @@
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
-					src.anchored = 1
+					src.anchored = TRUE
 					src.state = 1
 			if(iswelder(P))
 				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
@@ -31,14 +31,13 @@
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
 					to_chat(user, SPAN_NOTICE(" You deconstruct the frame."))
-					new /obj/item/stack/sheet/metal( src.loc, 5 )
-					qdel(src)
+					deconstruct()
 		if(1)
 			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
-					src.anchored = 0
+					src.anchored = FALSE
 					src.state = 0
 			if(istype(P, /obj/item/circuitboard/computer) && !circuit)
 				if(user.drop_held_item())
@@ -79,7 +78,7 @@
 						state = 3
 						icon_state = "3"
 		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				src.state = 2
@@ -112,3 +111,8 @@
 				var/B = new src.circuit.build_path ( src.loc )
 				src.circuit.construct(B)
 				qdel(src)
+
+/obj/structure/computerframe/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(src.loc, 5)
+	return ..()

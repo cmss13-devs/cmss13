@@ -51,7 +51,7 @@
 					//stage = 5
 					blind = 1
 
-		if (!blind)	//lol? if(!blind)	#if(src.blind.layer)    <--something here is clearly wrong :P
+		if (!blind) //lol? if(!blind) #if(src.blind.layer) <--something here is clearly wrong :P
 					//I'll get back to this when I find out  how this is -supposed- to work ~Carn //removed this shit since it was confusing as all hell --39kk9t
 			//stage = 4.5
 			src.sight |= SEE_TURFS
@@ -63,14 +63,14 @@
 
 			//Congratulations!  You've found a way for AI's to run without using power!
 			//Todo:  Without snowflaking up master_controller procs find a way to make AI use_power but only when APC's clear the area usage the tick prior
-			//       since mobs are in master_controller before machinery.  We also have to do it in a manner where we don't reset the entire area's need to update
-			//	 the power usage.
+			//    since mobs are in master_controller before machinery.  We also have to do it in a manner where we don't reset the entire area's need to update
+			//  the power usage.
 			//
-			//	 We can probably create a new machine that resides inside of the AI contents that uses power using the idle_usage of 1000 and nothing else and
-			//       be fine.
+			//  We can probably create a new machine that resides inside of the AI contents that uses power using the idle_usage of 1000 and nothing else and
+			//    be fine.
 /*
 			var/area/home = get_area(src)
-			if(!home)	return//something to do with malf fucking things up I guess. <-- aisat is gone. is this still necessary? ~Carn
+			if(!home) return//something to do with malf fucking things up I guess. <-- aisat is gone. is this still necessary? ~Carn
 			if(home.powered(EQUIP))
 				home.use_power(1000)
 */
@@ -171,7 +171,7 @@
 /mob/living/silicon/ai/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		if(fire_res_on_core)
 			health = 100 - getOxyLoss() - getToxLoss() - getBruteLoss()

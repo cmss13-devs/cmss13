@@ -6,13 +6,15 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
+	uses_ethnicity = TRUE
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
 		TRAIT_FOREIGN_BIO,
-		TRAIT_DEXTROUS
-		)
+		TRAIT_DEXTROUS,
+		TRAIT_EMOTE_CD_EXEMPT,
+	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
@@ -46,11 +48,15 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
-		/mob/living/carbon/human/proc/mark_panel
-		)
+		/mob/living/carbon/human/proc/mark_panel,
+	)
 
 	knock_down_reduction = 4
 	stun_reduction = 4
+	weed_slowdown_mult = 0 // no slowdown!
+
+	icobase = 'icons/mob/humans/species/r_predator.dmi'
+	deform = 'icons/mob/humans/species/r_predator.dmi'
 
 	acid_blood_dodge_chance = 70
 
@@ -85,18 +91,7 @@
 
 	ignores_stripdrag_flag = TRUE
 
-/datum/species/yautja/New()
-	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
-/datum/species/yautja/proc/setup_yautja_icons()
-	SIGNAL_HANDLER
-
-	icobase_source = CONFIG_GET(string/species_hunter)
-	deform_source = CONFIG_GET(string/species_hunter)
-	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
-/datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
+/datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
 	if(!istype(hive))
@@ -114,7 +109,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
 
-/datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
 	if(gibbed)
 		GLOB.yautja_mob_list -= H
 
@@ -145,13 +140,13 @@
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
 
-/datum/species/yautja/handle_dead_death(var/mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_dead_death(mob/living/carbon/human/H, gibbed)
 	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
 
-/datum/species/yautja/handle_cryo(var/mob/living/carbon/human/H)
+/datum/species/yautja/handle_cryo(mob/living/carbon/human/H)
 	set_predator_status(H, "Cryo")
 
-/datum/species/yautja/proc/set_predator_status(var/mob/living/carbon/human/H, var/status = "Alive")
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
 	if(!H.persistent_ckey)
 		return
 	var/datum/game_mode/GM
@@ -185,7 +180,7 @@
 				L.max_damage = 35
 		L.time_to_knit = -1
 
-/datum/species/yautja/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
 	GLOB.alive_human_list -= H
 	H.universal_understand = 1
 
@@ -214,12 +209,12 @@
 	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()
 
-/datum/species/yautja/get_hairstyle(var/style)
+/datum/species/yautja/get_hairstyle(style)
 	return GLOB.yautja_hair_styles_list[style]
 
 /datum/species/yautja/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 /datum/species/yautja/handle_paygrades()
 	return ""

@@ -7,7 +7,7 @@
 	result_amount = 2
 	mob_react = FALSE
 
-datum/chemical_reaction/adrenaline
+/datum/chemical_reaction/adrenaline
 	name = "Epinephrine"
 	id = "adrenaline"
 	result = "adrenaline"
@@ -101,8 +101,8 @@ datum/chemical_reaction/adrenaline
 	result_amount = 3
 
 /datum/chemical_reaction/ethanoloxidation
-	name = "ethanoloxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
-	id = "ethanoloxidation"		//	react in the body. Also it would be silly if it didn't exist.
+	name = "ethanoloxidation" //Kind of a placeholder in case someone ever changes it so that chemicals
+	id = "ethanoloxidation" // react in the body. Also it would be silly if it didn't exist.
 	result = "water"
 	required_reagents = list("ethylredoxrazine" = 1, "ethanol" = 1)
 	result_amount = 2

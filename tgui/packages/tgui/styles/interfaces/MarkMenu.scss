@@ -1,0 +1,76 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+
+.MarkMenu {
+  .ActionMenu {
+    margin-bottom: 6px;
+    .Button {
+      font-size: 18px;
+    }
+  }
+
+  .TrackIcon {
+    margin-top: 20px;
+    margin-right: 8px;
+    margin-left: 8px;
+    color: 2px solid lighten(#52375c, 0.2);
+    height: 100%;
+  }
+
+  .MarkWatch {
+    display: inline-flexbox;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    div {
+      padding-left: 3px;
+      padding-right: 3px;
+      display: inline-flex;
+    }
+  }
+
+  .HistoricalLabel {
+    width: 160px;
+  }
+
+  .History {
+    .ChooseMenu {
+      position: absolute;
+      left: 0px;
+      display: block;
+      z-index: 2;
+      background-color: black;
+      border: 2px solid lighten(#52375c, 0.2);
+      width: 100%;
+    }
+
+    .Selected {
+      border: 2px solid lighten(#52375c, 0.2);
+    }
+
+    .MarkStack {
+      line-height: 18px;
+      background-color: base.$color-bg-section;
+      margin-top: 2px;
+      margin-bottom: 2px;
+
+      .MenuSelectionButton {
+        .Button {
+          padding: 0 0em;
+        }
+
+      }
+
+      .MarkName {
+        font-size: 18px;
+      }
+      .MarkLabel {
+        display: inline-block;
+        flex-direction: row;
+        flex-grow: 1;
+      }
+    }
+  }
+}

@@ -20,15 +20,17 @@ map bigredv2
 endmap
 
 map prison_station_fop
-	voteweight 0
+	disabled
 endmap
 
 map fiorina_sciannex
+	minplayers 130
 endmap
 
 map corsat
 	minplayers 130
 	voteweight 0
+	disabled
 endmap
 
 map desert_dam
@@ -37,6 +39,7 @@ endmap
 
 map ice_colony_v2
 	minplayers 130
+	voteweight 0
 	disabled
 endmap
 
@@ -50,9 +53,13 @@ map sorokyne_strata
 	minplayers 130
 endmap
 
-map whiskey_outpost_v2
+map lv522_chances_claim
+	minplayers 130
 endmap
 
-map haunted_house_v2
-	voteweight 0
+map new_varadero
+	disabled
+endmap
+
+map whiskey_outpost_v2
 endmap

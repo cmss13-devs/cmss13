@@ -1,16 +1,16 @@
-#define MODE_AMPLIFY 			1
-#define MODE_SUPPRESS 			2
-#define MODE_RELATE				3
-#define MODE_CREATE				4
+#define MODE_AMPLIFY 1
+#define MODE_SUPPRESS 2
+#define MODE_RELATE 3
+#define MODE_CREATE 4
 
-#define SIMULATION_FAILURE		-1
-#define SIMULATION_STAGE_OFF	0
-#define SIMULATION_STAGE_FINAL	1
-#define SIMULATION_STAGE_WAIT	2
-#define SIMULATION_STAGE_3		3
-#define SIMULATION_STAGE_4		4
-#define SIMULATION_STAGE_5		5
-#define SIMULATION_STAGE_BEGIN	6
+#define SIMULATION_FAILURE -1
+#define SIMULATION_STAGE_OFF 0
+#define SIMULATION_STAGE_FINAL 1
+#define SIMULATION_STAGE_WAIT 2
+#define SIMULATION_STAGE_3 3
+#define SIMULATION_STAGE_4 4
+#define SIMULATION_STAGE_5 5
+#define SIMULATION_STAGE_BEGIN 6
 
 /obj/structure/machinery/chem_simulator
 	name = "Synthesis Simulator"
@@ -19,7 +19,7 @@
 	icon_state = "modifier"
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
-	density = 1
+	density = TRUE
 	bound_x = 32
 
 	var/obj/item/paper/research_report/target
@@ -100,7 +100,7 @@
 		return
 	ui_interact(user)
 
-/obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(
 		"rsc_credits" = chemical_data.rsc_credits,
 		"target" = target,
@@ -147,12 +147,12 @@
 			data["property_data_list"][P.name] = P.level
 
 		data["template_filter"] = list(
-				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE),	PROPERTY_TYPE_MEDICINE),
-				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT),	PROPERTY_TYPE_TOXICANT),
-				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT),	PROPERTY_TYPE_STIMULANT),
-				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT),	PROPERTY_TYPE_REACTANT),
-				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT),	PROPERTY_TYPE_IRRITANT),
-				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE),	PROPERTY_TYPE_METABOLITE)
+				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
 			)
 
 	else if(target && target.data && target.completed)
@@ -513,12 +513,12 @@
 		if(C)
 			for(var/component in C.required_reagents)
 				var/datum/reagent/R = chemical_reagents_list[component]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
 				var/datum/reagent/R = chemical_reagents_list[catalyst]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property)
@@ -566,7 +566,7 @@
 	status_bar = "READY"
 	return TRUE
 
-/obj/structure/machinery/chem_simulator/proc/print(var/id, var/is_new)
+/obj/structure/machinery/chem_simulator/proc/print(id, is_new)
 	icon_state = "modifier"
 	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 	flick("[icon_state]_printing",src)
@@ -581,7 +581,7 @@
 	if(is_new)
 		chemical_data.save_document(report, "Synthesis Simulations", report.name)
 
-/obj/structure/machinery/chem_simulator/proc/encode_reagent(var/datum/reagent/C)
+/obj/structure/machinery/chem_simulator/proc/encode_reagent(datum/reagent/C)
 	var/datum/reagent/O = chemical_reagents_list[C.original_id] //So make the new name based on the Original
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
@@ -602,26 +602,26 @@
 				LAZYADD(L, "RARE")
 	return L
 
-/obj/structure/machinery/chem_simulator/proc/finalize_simulation(var/datum/reagent/generated/C)
+/obj/structure/machinery/chem_simulator/proc/finalize_simulation(datum/reagent/generated/C)
 	simulating = SIMULATION_STAGE_OFF
 	end_simulation(C)
 	chem_cache = null
 
-/obj/structure/machinery/chem_simulator/proc/amplify(var/datum/reagent/generated/C)
+/obj/structure/machinery/chem_simulator/proc/amplify(datum/reagent/generated/C)
 	if(!target || !target_property)
 		return
 	C.make_alike(target.data)
 	//Change the reagent
 	C.relevel_property(target_property.name, target_property.level + 1)
 
-/obj/structure/machinery/chem_simulator/proc/suppress(var/datum/reagent/generated/C)
+/obj/structure/machinery/chem_simulator/proc/suppress(datum/reagent/generated/C)
 	if(!target || !target_property)
 		return
 	C.make_alike(target.data)
 	//Change the reagent
 	C.relevel_property(target_property.name, max(target_property.level - 1, 0))
 
-/obj/structure/machinery/chem_simulator/proc/relate(var/datum/reagent/generated/C)
+/obj/structure/machinery/chem_simulator/proc/relate(datum/reagent/generated/C)
 	if(!target || !reference || !target_property || !reference_property)
 		return
 	C.make_alike(target.data)
@@ -629,7 +629,7 @@
 	C.remove_property(target_property.name)
 	C.insert_property(reference_property.name, reference_property.level)
 
-/obj/structure/machinery/chem_simulator/proc/create(var/datum/reagent/generated/C)
+/obj/structure/machinery/chem_simulator/proc/create(datum/reagent/generated/C)
 	C.chemclass = CHEM_CLASS_RARE
 	C.name = creation_name
 	if(LAZYLEN(C.name) < 2) //Don't know how this would even happen, but here's a safety
@@ -638,13 +638,13 @@
 	C.properties = list()
 	C.custom_metabolism = REAGENTS_METABOLISM
 	C.color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	C.burncolor = color
+	C.burncolor = C.color
 	for(var/datum/chem_property/P in creation_template)
 		C.insert_property(P.name, P.level)
 	creation_name = "" //reset it
 	end_simulation(C)
 
-/obj/structure/machinery/chem_simulator/proc/end_simulation(var/datum/reagent/C)
+/obj/structure/machinery/chem_simulator/proc/end_simulation(datum/reagent/C)
 	//Set tier
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	if(C.chemclass == CHEM_CLASS_SPECIAL)

@@ -1,158 +1,165 @@
 GLOBAL_LIST_INIT(pp_transformables, list(
-  "Humanoid" = list(
+	"Humanoid" = list(
+
 	list(
-	  name = "Human",
-	  key = /mob/living/carbon/human,
-	  color = "green"
+	name = "Human",
+	key = /mob/living/carbon/human,
+	color = "green"
 	),
 	list(
-	  name = "Farwa",
-	  key = /mob/living/carbon/human/farwa,
-	  color = "green"
+	name = "Farwa",
+	key = /mob/living/carbon/human/farwa,
+	color = "green"
 	),
 	list(
-	  name = "Monkey",
-	  key = /mob/living/carbon/human/monkey,
-	  color = "green"
+	name = "Monkey",
+	key = /mob/living/carbon/human/monkey,
+	color = "green"
 	),
 	list(
-	  name = "Neaera",
-	  key = /mob/living/carbon/human/neaera,
-	  color = "green"
+	name = "Neaera",
+	key = /mob/living/carbon/human/neaera,
+	color = "green"
 	),
 	list(
-	  name = "Yiren",
-	  key = /mob/living/carbon/human/yiren,
-	  color = "green"
+	name = "Yiren",
+	key = /mob/living/carbon/human/yiren,
+	color = "green"
 	)
-  ),
-  "Alien Tier 0" = list(
+	),
+
+	"Alien Tier 0" = list(
 	list(
-	  name = "Larva",
-	  key = /mob/living/carbon/Xenomorph/Larva,
-	  color = "purple"
+	name = "Larva",
+	key = /mob/living/carbon/xenomorph/larva,
+	color = "purple"
 	),
 	list(
-	  name = "Facehugger",
-	  key = /mob/living/carbon/Xenomorph/Facehugger,
-	  color = "purple"
+	name = "Facehugger",
+	key = /mob/living/carbon/xenomorph/facehugger,
+	color = "purple"
 	)
-  ),
-  "Alien Tier 1" = list(
+	),
+
+	"Alien Tier 1" = list(
 	list(
-	  name = XENO_CASTE_RUNNER,
-	  key = /mob/living/carbon/Xenomorph/Runner,
-	  color = "purple"
+	name = XENO_CASTE_RUNNER,
+	key = /mob/living/carbon/xenomorph/runner,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_DRONE,
-	  key = /mob/living/carbon/Xenomorph/Drone,
-	  color = "purple"
+	name = XENO_CASTE_DRONE,
+	key = /mob/living/carbon/xenomorph/drone,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_SENTINEL,
-	  key = /mob/living/carbon/Xenomorph/Sentinel,
-	  color = "purple"
+	name = XENO_CASTE_SENTINEL,
+	key = /mob/living/carbon/xenomorph/sentinel,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_DEFENDER,
-	  key = /mob/living/carbon/Xenomorph/Defender,
-	  color = "purple"
+	name = XENO_CASTE_DEFENDER,
+	key = /mob/living/carbon/xenomorph/defender,
+	color = "purple"
 	)
-  ),
-  "Alien Tier 2" = list(
+	),
+
+	"Alien Tier 2" = list(
 	list(
-	  name = XENO_CASTE_LURKER,
-	  key = /mob/living/carbon/Xenomorph/Lurker,
-	  color = "purple"
+	name = XENO_CASTE_LURKER,
+	key = /mob/living/carbon/xenomorph/lurker,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_WARRIOR,
-	  key = /mob/living/carbon/Xenomorph/Warrior,
-	  color = "purple"
+	name = XENO_CASTE_WARRIOR,
+	key = /mob/living/carbon/xenomorph/warrior,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_SPITTER,
-	  key = /mob/living/carbon/Xenomorph/Spitter,
-	  color = "purple"
+	name = XENO_CASTE_SPITTER,
+	key = /mob/living/carbon/xenomorph/spitter,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_BURROWER,
-	  key = /mob/living/carbon/Xenomorph/Burrower,
-	  color = "purple"
+	name = XENO_CASTE_BURROWER,
+	key = /mob/living/carbon/xenomorph/burrower,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_HIVELORD,
-	  key = /mob/living/carbon/Xenomorph/Hivelord,
-	  color = "purple"
+	name = XENO_CASTE_HIVELORD,
+	key = /mob/living/carbon/xenomorph/hivelord,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_CARRIER,
-	  key = /mob/living/carbon/Xenomorph/Carrier,
-	  color = "purple"
+	name = XENO_CASTE_CARRIER,
+	key = /mob/living/carbon/xenomorph/carrier,
+	color = "purple"
 	)
-  ),
-  "Alien Tier 3" = list(
+	),
+
+	"Alien Tier 3" = list(
 	list(
-	  name = XENO_CASTE_RAVAGER,
-	  key = /mob/living/carbon/Xenomorph/Ravager,
-	  color = "purple"
+	name = XENO_CASTE_RAVAGER,
+	key = /mob/living/carbon/xenomorph/ravager,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_PRAETORIAN,
-	  key = /mob/living/carbon/Xenomorph/Praetorian,
-	  color = "purple"
+	name = XENO_CASTE_PRAETORIAN,
+	key = /mob/living/carbon/xenomorph/praetorian,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_BOILER,
-	  key = /mob/living/carbon/Xenomorph/Boiler,
-	  color = "purple"
+	name = XENO_CASTE_BOILER,
+	key = /mob/living/carbon/xenomorph/boiler,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_CRUSHER,
-	  key = /mob/living/carbon/Xenomorph/Crusher,
-	  color = "purple"
+	name = XENO_CASTE_CRUSHER,
+	key = /mob/living/carbon/xenomorph/crusher,
+	color = "purple"
 	)
-  ),
-  "Alien Tier 4" = list(
+	),
+
+	"Alien Tier 4" = list(
 	list(
-	  name = XENO_CASTE_QUEEN+" (Young)",
-	  key = /mob/living/carbon/Xenomorph/Queen,
-	  color = "purple"
+	name = XENO_CASTE_QUEEN+" (Young)",
+	key = /mob/living/carbon/xenomorph/queen,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_QUEEN+" (Mature)",
-	  key = /mob/living/carbon/Xenomorph/Queen/combat_ready,
-	  color = "purple"
+	name = XENO_CASTE_QUEEN+" (Mature)",
+	key = /mob/living/carbon/xenomorph/queen/combat_ready,
+	color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_PREDALIEN,
-	  key = /mob/living/carbon/Xenomorph/Predalien,
-	  color = "purple"
+	name = XENO_CASTE_PREDALIEN,
+	key = /mob/living/carbon/xenomorph/predalien,
+	color = "purple"
 	)
-  ),
-  "Miscellaneous" = list(
+	),
+
+	"Miscellaneous" = list(
 	list(
-	  name = "Cat",
-	  key = /mob/living/simple_animal/cat,
-	  color = "orange"
+	name = "Cat",
+	key = /mob/living/simple_animal/cat,
+	color = "orange"
 	),
 	list(
-	  name = "Crab",
-	  key = /mob/living/simple_animal/crab,
-	  color = "orange"
+	name = "Crab",
+	key = /mob/living/simple_animal/crab,
+	color = "orange"
 	),
 	list(
-	  name = "Corgi",
-	  key = /mob/living/simple_animal/corgi,
-	  color = "orange"
+	name = "Corgi",
+	key = /mob/living/simple_animal/corgi,
+	color = "orange"
 	),
 	list(
-	  name = XENO_CASTE_HELLHOUND,
-	  key = /mob/living/carbon/Xenomorph/Hellhound,
-	  color = "orange"
+	name = XENO_CASTE_HELLHOUND,
+	key = /mob/living/carbon/xenomorph/hellhound,
+	color = "orange"
 	)
-  )
+	)
 ))
 
 /datum/player_action/transform
@@ -160,7 +167,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = "Transform"
 	permissions_required = R_SPAWN
 
-/datum/player_action/transform/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/transform/act(client/user, mob/target, list/params)
 	var/type = text2path(params["key"])
 
 	if(!ispath(type))
@@ -173,15 +180,15 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	target.mind.transfer_to(M, TRUE)
 
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/newXeno = M
-		if(isXeno(target))
-			var/mob/living/carbon/Xenomorph/X = target
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/newXeno = M
+		if(isxeno(target))
+			var/mob/living/carbon/xenomorph/X = target
 			newXeno.set_hive_and_update(X.hivenumber)
 
 
 	QDEL_IN(target, 0.3 SECONDS)
-	addtimer(CALLBACK(M.mob_panel, /datum.proc/tgui_interact, user.mob), 1 SECONDS)
+	addtimer(CALLBACK(M.mob_panel, TYPE_PROC_REF(/datum, tgui_interact), user.mob), 1 SECONDS)
 
-	message_staff("[key_name_admin(user)] has transformed [key_name_admin(target)] into mob type [type]")
+	message_admins("[key_name_admin(user)] has transformed [key_name_admin(target)] into mob type [type]")
 	return TRUE

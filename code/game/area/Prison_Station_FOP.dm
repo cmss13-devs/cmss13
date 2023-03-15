@@ -4,12 +4,14 @@
 	ceiling = CEILING_GLASS
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 
 //SECURITY
 /area/prison/security
 	name = "\improper Security Department"
 	icon_state = "security"
 	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/security/briefing
 	name = "\improper Briefing"
@@ -134,10 +136,12 @@
 /area/prison/holding/holding1
 	name = "\improper Holding Cell 1"
 	icon_state = "blue-red2"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/holding/holding2
 	name = "\improper Holding Cell 2"
 	icon_state = "blue-red-d"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/cleaning
 	name = "\improper Custodial Supplies"
@@ -227,6 +231,7 @@
 /area/prison/engineering
 	name = "\improper Engineering"
 	icon_state = "engine"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/prison/engineering/atmos
 	name = "\improper Atmospherics"
@@ -284,6 +289,7 @@
 /area/prison/hallway/engineering
 	name = "\improper Engineering Hallway"
 	icon_state = "dk_yellow"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/prison/quarters/staff
 	name = "\improper Staff Quarters"
@@ -296,6 +302,10 @@
 /area/prison/quarters/research
 	name = "\improper Research Dorms"
 	icon_state = "purple"
+	minimap_color = MINIMAP_AREA_SEC
+
+/area/prison/cellblock/lowsec
+	minimap_color = MINIMAP_AREA_CELL_LOW
 
 /area/prison/cellblock/lowsec/nw
 	name = "\improper Northwest Low-Security Cellblock"
@@ -316,6 +326,7 @@
 /area/prison/cellblock/mediumsec
 	name = "\improper Medium-Security Cellblock"
 	icon_state = "cells_med"
+	minimap_color = MINIMAP_AREA_CELL_MED
 
 /area/prison/cellblock/mediumsec/north
 	name = "\improper Medium-Security Cellblock North"
@@ -333,6 +344,9 @@
 	name = "\improper Medium-Security Cellblock West"
 	icon_state = "cells_med_w"
 
+/area/prison/cellblock/highsec
+	minimap_color = MINIMAP_AREA_CELL_HIGH
+
 /area/prison/cellblock/highsec/north/north
 	name = "\improper North High-Security Cellblock North"
 	icon_state = "cells_high_nn"
@@ -349,6 +363,9 @@
 	name = "\improper South High-Security Cellblock South"
 	icon_state = "cells_high_ss"
 
+/area/prison/cellblock/maxsec
+	minimap_color = MINIMAP_AREA_CELL_MAX
+
 /area/prison/cellblock/maxsec/north
 	name = "\improper Maximum-Security Panopticon Cellblock"
 	icon_state = "cells_max_n"
@@ -360,10 +377,12 @@
 /area/prison/cellblock/vip
 	name = "\improper VIP Cells"
 	icon_state = "cells_vip"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/prison/cellblock/protective
 	name = "\improper Protective Custody"
 	icon_state = "cells_protective"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/prison/disposal
 	name = "\improper Disposals"
@@ -461,6 +480,9 @@
 	name = "\improper Research Hangar Storage"
 	icon_state = "toxstorage"
 	is_resin_allowed = FALSE
+
+/area/prison/hangar_storage/research/shuttle
+	name = "Corporate Shuttle"
 
 /area/prison/telecomms
 	name = "\improper Telecommunications"

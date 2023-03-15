@@ -1,5 +1,6 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
+	gender = NEUTER
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
 
@@ -40,7 +41,43 @@
 
 /datum/action/item_action/view_publications/action_activate()
 	var/obj/item/clothing/glasses/hud/health/hud = holder_item
-	hud.ui_interact(owner)
+	hud.tgui_interact(owner)
+
+/obj/item/clothing/glasses/hud/health/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/item/clothing/glasses/hud/health/ui_data(mob/user)
+	var/list/data = list(
+		"published_documents" = chemical_data.research_publications,
+		"terminal_view" = FALSE
+	)
+	return data
+
+/obj/item/clothing/glasses/hud/health/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "PublishedDocsHud", name)
+		ui.open()
+
+/obj/item/clothing/glasses/hud/health/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(!ishuman(usr))
+		return
+
+	var/mob/living/carbon/human/user = usr
+	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
+		return
+
+	switch(action)
+		if ("read_document")
+			var/print_type = params["print_type"]
+			var/print_title = params["print_title"]
+			var/obj/item/paper/research_report/report = chemical_data.get_report(print_type, print_title)
+			if(report)
+				report.read_paper(user)
+			return
 
 /obj/item/clothing/glasses/hud/health/verb/view_publications()
 	set category = "Object"
@@ -48,19 +85,7 @@
 	set src in usr
 
 	if(!usr.stat && !usr.is_mob_restrained() && usr.faction != FACTION_SURVIVOR)
-		ui_interact(usr)
-
-/obj/item/clothing/glasses/hud/health/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	var/list/data = list(
-		"published_documents" = chemical_data.research_publications,
-		"terminal_view" = FALSE
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "research_data.tmpl", "Research Publications", 400, 500)
-		ui.set_initial_data(data)
-		ui.open()
+		tgui_interact(usr)
 
 /obj/item/clothing/glasses/hud/health/Topic(href, href_list)
 	. = ..()
@@ -111,6 +136,7 @@
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"
+	gender = PLURAL
 	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
 	icon_state = "jensenshades"
 	item_state = "jensenshades"

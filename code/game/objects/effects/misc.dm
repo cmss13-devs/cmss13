@@ -4,8 +4,8 @@
 	desc = "It's a ... present?"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "strangepresent"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 
 
 
@@ -16,9 +16,9 @@
 	var/mark = ""
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "blank"
-	anchored = 1
+	anchored = TRUE
 	layer = 99
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE//Just to be sure.
 
 /obj/effect/beam
@@ -26,7 +26,7 @@
 	unacidable = TRUE//Just to be sure.
 	var/def_zone
 
-/obj/effect/beam/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/beam/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_THROUGH
@@ -36,7 +36,7 @@
 	name = "begin"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "begin"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 
@@ -54,7 +54,7 @@
 /obj/effect/projection
 	name = "Projection"
 	desc = "This looks like a projection of something."
-	anchored = 1.0
+	anchored = TRUE
 
 
 /obj/effect/shut_controller
@@ -70,9 +70,9 @@
 	name = "engine exhaust"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "exhaust"
-	anchored = 1
+	anchored = TRUE
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/temp)
+/obj/effect/engine_exhaust/New(turf/nloc, ndir, temp)
 	setDir(ndir)
 	..(nloc)
 

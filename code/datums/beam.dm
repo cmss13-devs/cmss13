@@ -49,8 +49,8 @@
 	visuals.icon = icon
 	visuals.icon_state = icon_state
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/redrawing)
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/redrawing)
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -81,19 +81,19 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
 	var/Angle = round(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
 	rot_matrix.Turn(Angle)
 
 	//Translation vector for origin and target
-	var/DX = (32*target.x+target.pixel_x)-(32*origin.x+origin.pixel_x)
-	var/DY = (32*target.y+target.pixel_y)-(32*origin.y+origin.pixel_y)
+	var/DX = get_pixel_position_x(target) - get_pixel_position_x(origin)
+	var/DY = get_pixel_position_y(target) - get_pixel_position_y(origin)
 	var/N = 0
 	var/length = round(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
 
-	for(N in 0 to length-1 step 32)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
+	for(N in 0 to length-1 step world.icon_size)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
 		if(QDELETED(src))
 			break
 		var/obj/effect/ebeam/X = new beam_type(origin_turf)
@@ -102,9 +102,9 @@
 
 		//Assign our single visual ebeam to each ebeam's vis_contents
 		//ends are cropped by a transparent box icon of length-N pixel size laid over the visuals obj
-		if(N+32>length) //went past the target, we draw a box of space to cut away from the beam sprite so the icon actually ends at the center of the target sprite
+		if(N + world.icon_size > length) //went past the target, we draw a box of space to cut away from the beam sprite so the icon actually ends at the center of the target sprite
 			var/icon/II = new(icon, icon_state)//this means we exclude the overshooting object from the visual contents which does mean those visuals don't show up for the final bit of the beam...
-			II.DrawBox(null,1,(length-N),32,32)//in the future if you want to improve this, remove the drawbox and instead use a 513 filter to cut away at the final object's icon
+			II.DrawBox(null,1,(length-N), world.icon_size, world.icon_size)//in the future if you want to improve this, remove the drawbox and instead use a 513 filter to cut away at the final object's icon
 			X.icon = II
 		else
 			X.vis_contents += visuals
@@ -116,31 +116,70 @@
 		if(DX == 0)
 			Pixel_x = 0
 		else
-			Pixel_x = round(sin(Angle)+32*sin(Angle)*(N+16)/32)
+			Pixel_x = round(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
 		if(DY == 0)
 			Pixel_y = 0
 		else
-			Pixel_y = round(cos(Angle)+32*cos(Angle)*(N+16)/32)
+			Pixel_y = round(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
 		//Position the effect so the beam is one continous line
 		var/a
-		if(abs(Pixel_x)>32)
-			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/32, 1)
+		if(abs(Pixel_x)>world.icon_size)
+			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
 			X.x += a
-			Pixel_x %= 32
-		if(abs(Pixel_y)>32)
-			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/32, 1)
+			Pixel_x %= world.icon_size
+		if(abs(Pixel_y)>world.icon_size)
+			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
 			X.y += a
-			Pixel_y %= 32
+			Pixel_y %= world.icon_size
 
-		X.pixel_x = Pixel_x + origin.pixel_x
-		X.pixel_y = Pixel_y + origin.pixel_y
+		X.pixel_x = Pixel_x + get_pixel_position_x(origin, relative = TRUE)
+		X.pixel_y = Pixel_y + get_pixel_position_y(origin, relative = TRUE)
+
 		CHECK_TICK
 
 /obj/effect/ebeam
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	var/datum/beam/owner
+
+/obj/effect/ebeam/laser
+	name = "laser beam"
+	desc = "A laser beam!"
+	alpha = 200
+	var/strength = EYE_PROTECTION_FLAVOR
+	var/probability = 20
+
+/obj/effect/ebeam/laser/Crossed(atom/movable/AM)
+	. = ..()
+	if(! (prob(probability) && ishuman(AM)) )
+		return
+	var/mob/living/carbon/human/moving_human = AM
+	var/laser_protection = moving_human.get_eye_protection()
+	var/rand_laser_power = rand(EYE_PROTECTION_FLAVOR, strength)
+	if(rand_laser_power > laser_protection)
+		//ouch!
+		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
+	else
+		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
+			//drip = bonus balloonchat
+			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
+		else
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
+
+/obj/effect/ebeam/laser/intense
+	name = "intense laser beam"
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
+	probability = 35
+
+/obj/effect/ebeam/laser/weak
+	name = "weak laser beam"
+	alpha = 150
+	strength = EYE_PROTECTION_FLAVOR
+	probability = 5
 
 /obj/effect/ebeam/Destroy()
 	owner = null
@@ -153,9 +192,10 @@
 	mouse_opacity = FALSE
 
 	var/tmp/atom/BeamSource
-	Initialize()
-		..()
-		QDEL_IN(src, 10)
+
+/obj/effect/overlay/beam/Initialize()
+	..()
+	QDEL_IN(src, 10)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**
@@ -171,15 +211,15 @@
  */
 /atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
-	INVOKE_ASYNC(newbeam, /datum/beam/.proc/Start)
+	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
+/proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
 	var/list/zap_data = list()
-	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
+	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
 		zap_data += beno
 	for(var/xeno in zap_data)
-		var/mob/living/carbon/Xenomorph/living = xeno
+		var/mob/living/carbon/xenomorph/living = xeno
 		if(!living)
 			return
 		if(living.stat == DEAD)

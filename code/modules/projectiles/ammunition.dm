@@ -6,14 +6,14 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine
 	name = "generic ammo"
 	desc = "A box of ammo."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = null
 	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 1000)
-	 //Low.
+	//Low.
 	throwforce = 2
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
@@ -22,6 +22,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
 	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
 	var/max_rounds = 7 //How many rounds can it hold?
+	var/max_inherent_rounds = 0 //How many extra rounds the magazine has thats not in use? Used for Sentry Post, specifically for inherent reloading
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
@@ -48,7 +49,7 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list -= src
 	return ..()
 
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
+/obj/item/ammo_magazine/update_icon(round_diff = 0)
 	if(current_rounds <= 0)
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
@@ -78,6 +79,9 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
+			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
+				return
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
@@ -86,7 +90,7 @@ They're all essentially identical when it comes to getting the job done.
 	return ..() //Do normal stuff.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, var/bypass_hold_check = 0)
+/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
 		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
@@ -117,21 +121,33 @@ They're all essentially identical when it comes to getting the job done.
 		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
 	else source.update_icon()
 
-	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
+	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
 
+/// Proc to reload the current_ammo using the items existing inherent ammo, used for Sentry Post
+/obj/item/ammo_magazine/proc/inherent_reload(mob/user)
+	if(current_rounds == max_rounds) //Does the mag actually need reloading?
+		to_chat(user, SPAN_WARNING("[src] is already full."))
+		return 0
+
+	var/rounds_to_reload = max_rounds - current_rounds
+	current_rounds += rounds_to_reload
+	max_inherent_rounds -= rounds_to_reload
+
+	return rounds_to_reload // Returns the amount of ammo it reloaded
+
 //This will attempt to place the ammo in the user's hand if possible.
-/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
+/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, obj_name = src)
 	var/amount_to_transfer
 	if (current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
 		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
 		current_rounds -= amount_to_transfer
-		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
+		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 		if(user)
@@ -149,20 +165,20 @@ They're all essentially identical when it comes to getting the job done.
 	gun_type = source.gun_type
 
 //~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_magazine/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(current_rounds < 1)
 		return
 	else
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)
 
 //our fueltanks are extremely fire-retardant and won't explode
-/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	return
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
@@ -175,7 +191,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/chamber_closed = 1 //Starts out closed. Depends on firearm.
 
 //Helper proc, to allow us to see a percentage of how full the magazine is.
-/obj/item/ammo_magazine/proc/get_ammo_percent()		// return % charge of cell
+/obj/item/ammo_magazine/proc/get_ammo_percent() // return % charge of cell
 	return 100.0*current_rounds/max_rounds
 
 //----------------------------------------------------------------//

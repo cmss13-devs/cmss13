@@ -3,7 +3,7 @@
 	set name = "Pray"
 
 	msg = strip_html(msg)
-	if(!msg)	return
+	if(!msg) return
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
@@ -29,7 +29,7 @@
 	else
 		to_chat(usr, "Your prayers have been received by the gods.")
 
-/proc/high_command_announce(var/text , var/mob/Sender , var/iamessage)
+/proc/high_command_announce(text , mob/Sender , iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
 	msg = "<b>[SPAN_NOTICE("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[Sender]'>RPLY</A>):</b> [msg]"
 	log_admin(msg)

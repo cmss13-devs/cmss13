@@ -3,7 +3,7 @@
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
@@ -24,13 +24,13 @@
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
 	var/exit_stun = 2 //stun time upon exiting, if at all
 
-	anchored = 1 //Yep
+	anchored = TRUE //Yep
 
 	var/mob_size = 15
 
 /obj/structure/closet/Initialize()
 	. = ..()
-	if(!opened && fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
+	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents
 		for(var/obj/item/I in src.loc)
 			if(I.density || I.anchored || I == src)
 				continue
@@ -43,7 +43,7 @@
 	GLOB.closet_list -= src
 	return ..()
 
-/obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -69,7 +69,7 @@
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
 			return 0
-	for(var/mob/living/carbon/Xenomorph/Xeno in get_turf(src))
+	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
 		return 0
 	return 1
 
@@ -80,8 +80,8 @@
 
 	for(var/mob/M in src)
 		M.forceMove(loc)
-		if(!(exit_stun == 0))
-			M.stunned = max(M.stunned, exit_stun) //Action delay when going out of a closet
+		if(exit_stun)
+			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
@@ -96,11 +96,11 @@
 
 	dump_contents()
 
-	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
+	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
-	density = 0
+	density = FALSE
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -114,16 +114,16 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
 
 	playsound(src.loc, close_sound, 15, 1)
-	density = 1
+	density = TRUE
 	return 1
 
-/obj/structure/closet/proc/store_items(var/stored_units)
+/obj/structure/closet/proc/store_items(stored_units)
 	for(var/obj/item/I in src.loc)
 		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
 			var/obj/item/explosive/plastic/P = I
@@ -137,7 +137,7 @@
 			stored_units += item_size
 	return stored_units
 
-/obj/structure/closet/proc/store_mobs(var/stored_units)
+/obj/structure/closet/proc/store_mobs(stored_units)
 	for(var/mob/M in src.loc)
 		if(stored_units + mob_size > storage_capacity)
 			break
@@ -170,29 +170,23 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				for(var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
-					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
-				qdel(src)
+				contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				for (var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
-					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
-				qdel(src)
+				contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
-				A.forceMove(src.loc)
-				A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
-			qdel(src)
+			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
+			deconstruct(FALSE)
 
-/obj/structure/closet/proc/flashbang(var/datum/source, var/obj/item/explosive/grenade/flashbang/FB)
+/obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
 	for(var/mob/living/C in contents)
 		FB.bang(get_turf(FB), C)
 	open()
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(obj/item/projectile/Proj)
 	take_damage(Proj.damage*0.3)
 	if(prob(30))
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
@@ -209,10 +203,10 @@
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
-			if(isXeno(user)) return
+			if(isxeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
@@ -233,7 +227,7 @@
 					return
 				new /obj/item/stack/sheet/metal(src.loc)
 				for(var/mob/M as anything in viewers(src))
-					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
+					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 				qdel(src)
 				return
 		if(material == MATERIAL_WOOD)
@@ -268,10 +262,10 @@
 		welded = !welded
 		update_icon()
 		for(var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
+			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
-		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/opener = user
+		if(isxeno(user))
+			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
 		src.attack_hand(user)
@@ -327,7 +321,7 @@
 			addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
 /obj/structure/closet/attack_hand(mob/living/user)
-	if(opened && isXeno(user))
+	if(opened && isxeno(user))
 		return // stop xeno closing things
 	add_fingerprint(user)
 	toggle(user)

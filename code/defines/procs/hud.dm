@@ -1,9 +1,9 @@
 
 
-mob/proc/in_view(var/turf/T)
+/mob/proc/in_view(turf/T)
 	return view(T)
 
-/mob/aiEye/in_view(var/turf/T)
+/mob/aiEye/in_view(turf/T)
 	var/list/viewed = new
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(get_dist(H, T) <= 7)

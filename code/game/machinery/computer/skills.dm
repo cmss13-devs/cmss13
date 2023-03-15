@@ -4,7 +4,7 @@
 	name = "Employment Records"
 	desc = "Used to view personnel's employment records"
 	icon_state = "medlaptop"
-	req_one_access = list(ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
@@ -83,16 +83,16 @@
 				if(3.0)
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						dat += text("<table><tr><td>	\
+						dat += text("<table><tr><td> \
 						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n	\
-						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n	\
-						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n	\
-						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n	\
-						Physical Status: [active1.fields["p_stat"]]<BR>\n	\
-						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n	\
-						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td>	\
-						<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4>	\
+						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
+						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
+						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
+						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
+						Physical Status: [active1.fields["p_stat"]]<BR>\n \
+						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n \
+						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td> \
+						<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4> \
 						<img src=side.png height=80 width=80 border=4></td></tr></table>")
 					else
 						dat += "<B>General Record Lost!</B><BR>"
@@ -103,7 +103,7 @@
 					else
 						dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">
-<tr>					"}
+<tr> "}
 						dat += text("<th>Search Results for '[]':</th>", tempname)
 						dat += {"
 </tr>
@@ -114,7 +114,7 @@
 <th>ID</th>
 <th>Rank</th>
 <th>Fingerprints</th>
-</tr>					"}
+</tr> "}
 						for(var/i=1, i<=Perp.len, i += 2)
 							var/crimstat = ""
 							var/datum/data/record/R = Perp[i]
@@ -288,7 +288,7 @@ What a mess.*/
 							var/t1 = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
 							if ((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
-							message_staff("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
+							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
 							active1.fields["name"] = t1
 					if("id")
 						if (istype(active1, /datum/data/record))
@@ -362,7 +362,7 @@ What a mess.*/
 				if(1)
 					R.fields["name"] = "[pick(pick(first_names_male), pick(first_names_female))] [pick(last_names)]"
 				if(2)
-					R.fields["sex"]	= pick("Male", "Female")
+					R.fields["sex"] = pick("Male", "Female")
 				if(3)
 					R.fields["age"] = rand(5, 85)
 				if(4)

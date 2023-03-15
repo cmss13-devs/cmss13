@@ -117,6 +117,7 @@
 
 
 /obj/item/weapon/zombie_claws
+	gender = PLURAL
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
@@ -135,7 +136,7 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(isHumanStrict(target))
+	if(ishuman_strict(target))
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
@@ -146,7 +147,7 @@
 				target.AddDisease(new /datum/disease/black_goo)
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-	if(isSynth(target))
+	if(issynth(target))
 		target.apply_effect(2, SLOW)
 	else
 		target.apply_effect(2, SUPERSLOW)
@@ -213,7 +214,7 @@
 /datum/language/zombie
 	name = "Zombie"
 	desc = "If you select this from the language screen, expect a ban."
-	colour = "zombie"
+	color = "zombie"
 
 	speech_verb = "groans"
 	ask_verb = "groans"
@@ -225,6 +226,7 @@
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
+	gender = PLURAL
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL

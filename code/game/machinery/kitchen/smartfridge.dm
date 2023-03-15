@@ -1,10 +1,10 @@
-#define FRIDGE_WIRE_SHOCK		1
-#define FRIDGE_WIRE_SHOOT_INV	2
-#define FRIDGE_WIRE_IDSCAN		3
+#define FRIDGE_WIRE_SHOCK 1
+#define FRIDGE_WIRE_SHOOT_INV 2
+#define FRIDGE_WIRE_IDSCAN 3
 
-#define FRIDGE_LOCK_COMPLETE	1
-#define FRIDGE_LOCK_ID			2
-#define FRIDGE_LOCK_NOLOCK		3
+#define FRIDGE_LOCK_COMPLETE 1
+#define FRIDGE_LOCK_ID 2
+#define FRIDGE_LOCK_NOLOCK 3
 
 /* SmartFridge.  Much todo
 */
@@ -16,7 +16,7 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = NOREACT
@@ -26,7 +26,6 @@
 	var/item_quants = list()
 	var/ispowered = TRUE //starts powered
 	var/is_secure_fridge = FALSE
-	var/seconds_electrified = 0;
 	var/shoot_inventory = FALSE
 	var/locked = FRIDGE_LOCK_ID
 	var/panel_open = FALSE //Hacking a smartfridge
@@ -34,7 +33,14 @@
 	var/networked = FALSE
 	var/transfer_mode = FALSE
 
-/obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+	COOLDOWN_DECLARE(electrified_cooldown)
+
+/obj/structure/machinery/smartfridge/Initialize(mapload, ...)
+	. = ..()
+	GLOB.vending_products[/obj/item/reagent_container/glass/bottle] = 1
+	GLOB.vending_products[/obj/item/storage/pill_bottle] = 1
+
+/obj/structure/machinery/smartfridge/proc/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -42,8 +48,6 @@
 /obj/structure/machinery/smartfridge/process()
 	if(!src.ispowered)
 		return
-	if(src.seconds_electrified > 0)
-		src.seconds_electrified--
 	if(src.shoot_inventory && prob(2))
 		src.throw_item()
 
@@ -61,7 +65,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/smartfridge/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
@@ -86,11 +90,9 @@
 
 	if(accept_check(O))
 		if(user.drop_held_item())
-			add_item(O)
+			add_local_item(O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
-								 SPAN_NOTICE("You add \the [O] to \the [src]."))
-
-		nanomanager.update_uis(src)
+								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
@@ -98,10 +100,7 @@
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
 				P.remove_from_storage(G,src)
-				if(item_quants[G.name])
-					item_quants[G.name]++
-				else
-					item_quants[G.name] = 1
+				add_local_item(G)
 				plants_loaded++
 		if(plants_loaded)
 
@@ -110,8 +109,6 @@
 				SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(P.contents.len > 0)
 				to_chat(user, SPAN_NOTICE("Some items are refused."))
-
-		nanomanager.update_uis(src)
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
@@ -124,28 +121,25 @@
 	if(!ispowered)
 		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return
-	if(seconds_electrified != 0)
+	if(!COOLDOWN_FINISHED(src, electrified_cooldown))
 		if(shock(user, 100))
 			return
 
-	ui_interact(user)
+	tgui_interact(user)
 
-/obj/structure/machinery/smartfridge/proc/add_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_local_item(obj/item/O)
+	add_item(item_quants, O)
+
+/obj/structure/machinery/smartfridge/proc/add_item(list/target, obj/item/O)
 	O.forceMove(src)
-
-	if(item_quants[O.name])
-		item_quants[O.name]++
+	if(target[O.name])
+		target[O.name] += O
 	else
-		item_quants[O.name] = 1
+		target[O.name] = list(O)
 
-/obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_network_item(obj/item/O)
 	if(is_in_network())
-		chemical_data.shared_item_storage.Add(O)
-
-		if(chemical_data.shared_item_quantity[O.name])
-			chemical_data.shared_item_quantity[O.name]++
-		else
-			chemical_data.shared_item_quantity[O.name] = 1
+		add_item(chemical_data.shared_item_storage, O)
 		return TRUE
 	return FALSE
 
@@ -153,188 +147,250 @@
 //*   SmartFridge Menu
 //********************/
 
-/obj/structure/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_interaction(src)
+/obj/structure/machinery/smartfridge/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SmartFridge", name)
+		ui.open()
 
-	var/data[0]
-	data["contents"] = null
-	data["wires"] = null
-	data["panel_open"] = panel_open
-	data["electrified"] = seconds_electrified > 0
-	data["shoot_inventory"] = shoot_inventory
-	data["locked"] = locked
-	data["secure"] = is_secure_fridge
-	data["networked"] = is_in_network()
-	data["transfer_mode"] = transfer_mode
+/obj/structure/machinery/smartfridge/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-	var/list/items[0]
-	for (var/i=1 to length(item_quants))
-		var/K = item_quants[i]
-		var/count = item_quants[K]
-		if (count > 0)
-			items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
+/obj/structure/machinery/smartfridge/ui_static_data(mob/user)
+	. = list()
+	.["networked"] = is_in_network()
 
-	if (length(items) > 0)
-		data["contents"] = items
-
-	if(is_in_network())
-		var/list/networked_items = list()
-		for (var/i=1 to length(chemical_data.shared_item_quantity))
-			var/K = chemical_data.shared_item_quantity[i]
-			var/count = chemical_data.shared_item_quantity[K]
-			if (count > 0)
-				networked_items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
-
-		if (length(networked_items) > 0)
-			data["networked_contents"] = networked_items
+/obj/structure/machinery/smartfridge/ui_data(mob/user)
+	. = list()
+	.["secure"] = is_secure_fridge
+	.["transfer_mode"] = transfer_mode
+	.["locked"] = locked
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
 	for(var/wire = 1 to wire_descriptions.len)
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
-	if (panel_wires)
-		data["wires"] = panel_wires
+	.["electrical"] = list(
+		"electrified" = !COOLDOWN_FINISHED(src, electrified_cooldown),
+		"panel_open" = panel_open,
+		"wires" = panel_wires,
+		"shoot_inventory" = shoot_inventory,
+		"powered" = ispowered,
+	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 420, 500)
-		ui.set_initial_data(data)
-		ui.open()
+	var/list/local_items = list()
+	for (var/i=1 to length(item_quants))
+		var/item_index = item_quants[i]
+		var/list/item_list = item_quants[item_index]
+		var/count = length(item_list)
+		if(count < 1)
+			continue
 
-/obj/structure/machinery/smartfridge/Topic(href, href_list)
-	if (..()) return 0
+		var/obj/example = item_list[1]
+		var/item_name = example.name
+		var/item_path = example.type
+		var/item_desc = example.desc
 
+		var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
+
+		var/item_type = "other"
+		if(ispath(item_path, /obj/item/reagent_container/glass/bottle/))
+			item_type = "bottle"
+		else if(ispath(item_path, /obj/item/storage/pill_bottle/))
+			item_type = "pills"
+
+		if (count > 0)
+			var/list/local_item = list(
+				"display_name" = capitalize(item_name),
+				"item" = item_path,
+				"index" = i,
+				"quantity" = count,
+				"image" = imgid,
+				"category" = item_type,
+				"desc" = item_desc,
+			)
+			local_items += list(local_item)
+
+	var/list/networked_items = list()
+	if(is_in_network())
+		for (var/i=1 to length(chemical_data.shared_item_storage))
+			var/item_index = chemical_data.shared_item_storage[i]
+			var/list/item_list = chemical_data.shared_item_storage[item_index]
+			var/count = length(item_list)
+			if(count < 1)
+				continue
+			var/obj/example = item_list[1]
+			var/item_name = example.name
+			var/item_path = example.type
+			var/item_desc = example.desc
+
+			var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
+
+			var/item_type = "other"
+			if(ispath(item_path, /obj/item/reagent_container/glass/bottle/))
+				item_type = "bottle"
+			else if(ispath(item_path, /obj/item/storage/pill_bottle/))
+				item_type = "pills"
+
+			if (count > 0)
+				var/list/networked_item = list(
+					"display_name" = capitalize(item_name),
+					"item" = item_path,
+					"index" = i,
+					"quantity" = count,
+					"image" = imgid,
+					"category" = item_type,
+					"desc" = item_desc,
+				)
+				networked_items += list(networked_item)
+
+	.["storage"] = list(
+		"contents" = local_items,
+		"networked" = networked_items,
+	)
+
+/obj/structure/machinery/smartfridge/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
+
+/obj/structure/machinery/smartfridge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	var/mob/user = usr
-	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
-
 	src.add_fingerprint(user)
 
-	if (href_list["close"])
-		user.unset_interaction()
-		ui.close()
-		return FALSE
-
-	if (href_list["toggletransfer"])
-		if(is_secure_fridge)
-			if(locked == FRIDGE_LOCK_COMPLETE)
-				to_chat(usr, SPAN_DANGER("Access denied."))
+	switch(action)
+		if("vend")
+			if(inoperable())
+				to_chat(user, SPAN_WARNING("\The [src] has no power."))
 				return FALSE
-			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-				to_chat(usr, SPAN_DANGER("Access denied."))
+			if(is_secure_fridge)
+				if(locked == FRIDGE_LOCK_COMPLETE)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+			var/index=params["index"]
+			var/amount=params["amount"]
+
+			var/list/target_list = item_quants
+			if(params["isLocal"] == 0)
+				target_list = chemical_data.shared_item_storage
+
+			var/item_index = target_list[index]
+			var/list/item_list = target_list[item_index]
+
+			var/count = length(item_list)
+
+			if(count <= 0)
 				return FALSE
-		if(is_in_network() && !transfer_mode)
-			transfer_mode = TRUE
-		else
-			transfer_mode = FALSE
-		return TRUE
 
-	if (href_list["vend"])
-		if(!ispowered)
-			to_chat(usr, SPAN_WARNING("[src] has no power."))
-			return FALSE
-		if (!in_range(src, usr))
-			return FALSE
-		if(is_secure_fridge)
-			if(locked == FRIDGE_LOCK_COMPLETE)
-				to_chat(usr, SPAN_DANGER("Access denied."))
-				return FALSE
-			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-				to_chat(usr, SPAN_DANGER("Access denied."))
-				return FALSE
-		var/index = text2num(href_list["vend"])
-		var/amount = text2num(href_list["amount"])
-		var/from_network = text2num(href_list["network"])
-
-
-		// Sanity check, there are probably ways to press the button when it shouldn't be possible.
-		var/list/source = contents
-		var/list/quantity_holder = item_quants
-		// Validate we can reach the shared network.
-		transfer_mode = transfer_mode && is_in_network()
-
-		if(is_in_network() && from_network)
-			source = chemical_data.shared_item_storage
-			quantity_holder = chemical_data.shared_item_quantity
-
-		var/K = quantity_holder[index]
-		var/count = quantity_holder[K]
-
-		if(count > 0)
-			quantity_holder[K] = max(count - amount, 0)
 			var/i = amount
-			if(!transfer_mode)
-				for(var/obj/O in source)
-					if(O.name == K)
-						source.Remove(O)
-						O.forceMove(loc)
-						i--
-						if (i <= 0)
-							return TRUE
-			else
-				for(var/obj/O in source)
-					if(O.name == K)
-						if(from_network)
-							contents.Add(O)
-							item_quants[K]++
-							source.Remove(O)
-						else
-							chemical_data.shared_item_storage.Add(O)
-							chemical_data.shared_item_quantity[K]++
-							source.Remove(O)
-						i--
-						if(i <= 0)
-							return TRUE
+			for(var/obj/item in item_list)
+				item_list.Remove(item)
+				item.forceMove(loc)
+				user.put_in_any_hand_if_possible(item, disable_warning = TRUE)
+				i--
+				if (i <= 0)
+					return TRUE
+		if("transfer")
+			if(inoperable())
+				to_chat(user, SPAN_WARNING("\The [src] has no power."))
+				return FALSE
+			if(is_secure_fridge)
+				if(locked == FRIDGE_LOCK_COMPLETE)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+			var/index=params["index"]
+			var/amount=params["amount"]
 
-		return TRUE
+			var/source = item_quants
+			var/target = chemical_data.shared_item_storage
+			if(params["isLocal"] == 0)
+				source = chemical_data.shared_item_storage
+				target = item_quants
 
-	if (panel_open)
-		if (href_list["cutwire"])
-			var/obj/item/held_item = usr.get_held_item()
+			var/item_index = source[index]
+			var/list/item_list = source[item_index]
+			var/count = length(item_list)
+
+			if(count <= 0)
+				return FALSE
+
+			var/i = amount
+			for(var/obj/item in item_list)
+				item_list.Remove(item)
+				add_item(target, item)
+				i--
+				if (i <= 0)
+					return TRUE
+		if("cutwire")
+			if(!panel_open)
+				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
-			var/wire = text2num(href_list["cutwire"])
-			if (isWireCut(wire))
-				mend(wire)
-			else
-				cut(wire)
+			var/wire = params["wire"]
+			cut(wire)
 			return TRUE
-
-		if (href_list["pulsewire"])
-			var/obj/item/held_item = usr.get_held_item()
+		if("fixwire")
+			if(!panel_open)
+				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
+				return TRUE
+			var/wire = params["wire"]
+			mend(wire)
+			return TRUE
+		if("pulsewire")
+			if(!panel_open)
+				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(user, "You need multitool!")
 				return TRUE
-
-			var/wire = text2num(href_list["pulsewire"])
+			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return TRUE
-
 			pulse(wire)
 			return TRUE
-
 	return FALSE
 
 //*************
-//*	Hacking
+//* Hacking
 //**************/
 
 /obj/structure/machinery/smartfridge/proc/get_wire_descriptions()
 	return list(
-		FRIDGE_WIRE_SHOCK      = "Ground safety",
+		FRIDGE_WIRE_SHOCK   = "Ground safety",
 		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
-		FRIDGE_WIRE_IDSCAN     = "ID scanner"
+		FRIDGE_WIRE_IDSCAN  = "ID scanner"
 	)
 
-/obj/structure/machinery/smartfridge/proc/cut(var/wire)
+/obj/structure/machinery/smartfridge/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = -1
+			COOLDOWN_START(src, electrified_cooldown, 12 HOURS)
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (FRIDGE_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
@@ -344,11 +400,11 @@
 			locked = FRIDGE_LOCK_COMPLETE //totally lock it down
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/structure/machinery/smartfridge/proc/mend(var/wire)
+/obj/structure/machinery/smartfridge/proc/mend(wire)
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = 0
+			COOLDOWN_RESET(src, electrified_cooldown)
 		if (FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
@@ -356,10 +412,10 @@
 			locked = FRIDGE_LOCK_ID //back to normal
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/pulse(var/wire)
+/obj/structure/machinery/smartfridge/proc/pulse(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = 30
+			COOLDOWN_START(src, electrified_cooldown, 30 SECONDS)
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if(FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = !shoot_inventory
@@ -371,7 +427,7 @@
 			locked = FRIDGE_LOCK_NOLOCK //open sesame
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)
+/obj/structure/machinery/smartfridge/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
 /obj/structure/machinery/smartfridge/proc/throw_item()
@@ -381,15 +437,13 @@
 		return 0
 
 	for (var/O in item_quants)
-		if(item_quants[O] <= 0) //Try to use a record that actually has something to dump.
+		var/list/item_list = item_quants[O]
+		if(length(item_list) <= 0) //Try to use a record that actually has something to dump.
 			continue
-
-		item_quants[O]--
-		for(var/obj/T in contents)
-			if(T.name == O)
-				T.forceMove(src.loc)
-				throw_item = T
-				break
+		var/obj/target_item = item_quants[1]
+		item_list.Remove(target_item)
+		target_item.forceMove(src.loc)
+		throw_item = target_item
 		break
 	if(!throw_item)
 		return 0
@@ -403,7 +457,7 @@
 
 
 //********************
-//*	Smartfridge types
+//* Smartfridge types
 //*********************/
 
 /obj/structure/machinery/smartfridge/seeds
@@ -414,7 +468,7 @@
 	icon_on = "seeds"
 	icon_off = "seeds-off"
 
-/obj/structure/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/seeds/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/seeds/))
 		return 1
 	return 0
@@ -426,9 +480,9 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
-	req_one_access = list(ACCESS_MARINE_CMO, 33)
+	req_one_access = list(ACCESS_MARINE_CMO)
 
-/obj/structure/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/medbay/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))
 		return 1
 	if(istype(O,/obj/item/storage/pill_bottle/))
@@ -447,7 +501,7 @@
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
 
-/obj/structure/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/virology/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/beaker/vial/))
 		return 1
 	return 0
@@ -460,7 +514,7 @@
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MEDPREP)
 	networked = TRUE
 
-/obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/chemistry/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))
 		return 1
 	return 0
@@ -477,6 +531,6 @@
 	name = "\improper Drink Showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
-/obj/structure/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/drinks/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment))
 		return 1

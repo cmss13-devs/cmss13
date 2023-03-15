@@ -10,11 +10,11 @@
 	Note that in all cases the neighbor is handled simply; this is usually the user's mob, in which case it is up to you
 	to check that the mob is not inside of something
 */
-/atom/proc/Adjacent(var/atom/neighbor) // basic inheritance, unused
+/atom/proc/Adjacent(atom/neighbor) // basic inheritance, unused
 	return FALSE
 
 // Not a sane use of the function and (for now) indicative of an error elsewhere
-/area/Adjacent(var/atom/neighbor)
+/area/Adjacent(atom/neighbor)
 	CRASH("Call to /area/Adjacent(), unimplemented proc")
 
 
@@ -25,7 +25,7 @@
 	* If you are diagonally adjacent, ensure you can pass through at least one of the mutually adjacent square.
 		* Passing through in this case ignores anything with the throwpass flag, such as tables, racks, and morgue trays.
 */
-/turf/Adjacent(var/atom/neighbor, var/atom/target = null)
+/turf/Adjacent(atom/neighbor, atom/target = null)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE
@@ -38,8 +38,8 @@
 
 	// Not orthagonal
 	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
-	var/d1 = in_dir&(in_dir-1)		// eg west		(1+8)&(8) = 8
-	var/d2 = in_dir - d1			// eg north		(1+8) - 8 = 1
+	var/d1 = in_dir&(in_dir-1) // eg west (1+8)&(8) = 8
+	var/d2 = in_dir - d1 // eg north (1+8) - 8 = 1
 
 	for(var/d in list(d1,d2))
 		if(!T0.ClickCross(d, border_only = 1))
@@ -60,7 +60,7 @@ Quick adjacency (to turf):
 * If you are in the same turf, always true
 * If you are not adjacent, then false
 */
-/turf/proc/AdjacentQuick(var/atom/neighbor, var/atom/target = null)
+/turf/proc/AdjacentQuick(atom/neighbor, atom/target = null)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE
@@ -78,7 +78,7 @@ Quick adjacency (to turf):
 	Note: Multiple-tile objects are created when the bound_width and bound_height are creater than the tile size.
 	This is not used in stock /tg/station currently.
 */
-/atom/movable/Adjacent(var/atom/neighbor)
+/atom/movable/Adjacent(atom/neighbor)
 	if(neighbor == loc)
 		return TRUE
 	if(!isturf(loc))
@@ -91,7 +91,7 @@ Quick adjacency (to turf):
 	return FALSE
 
 // This is necessary for storage items not on your person.
-/obj/item/Adjacent(var/atom/neighbor, var/recurse = 1)
+/obj/item/Adjacent(atom/neighbor, recurse = 1)
 	if(neighbor == loc || (loc && neighbor == loc.loc))
 		return TRUE
 	if(issurface(loc))
@@ -100,7 +100,10 @@ Quick adjacency (to turf):
 		if(recurse > 0)
 			return loc.Adjacent(neighbor, recurse - 1)
 		return FALSE
+	else if(isxeno(loc)) //Xenos don't count as storage depth.
+		return loc.Adjacent(neighbor, recurse)
 	return ..()
+
 /*
 	Special case: This allows you to reach a door when it is visally on top of,
 	but technically behind, a fire door
@@ -109,7 +112,7 @@ Quick adjacency (to turf):
 	This can be safely removed if border firedoors are ever moved to be on top of doors
 	so they can be interacted with without opening the door.
 */
-/obj/structure/machinery/door/Adjacent(var/atom/neighbor)
+/obj/structure/machinery/door/Adjacent(atom/neighbor)
 	var/obj/structure/machinery/door/firedoor/border_only/BOD = locate() in loc
 	if(BOD)
 		BOD.throwpass = 1 // allow click to pass
@@ -123,7 +126,7 @@ Quick adjacency (to turf):
 	This is defined as any dense ON_BORDER object, or any dense object without throwpass.
 	The border_only flag allows you to not objects (for source and destination squares)
 */
-/turf/proc/ClickCross(var/target_dir, var/border_only, var/target_atom = null)
+/turf/proc/ClickCross(target_dir, border_only, target_atom = null)
 	for(var/obj/O in src)
 		if(!O.density || O == target_atom || O.throwpass)
 			continue // throwpass is used for anything you can click through
@@ -133,7 +136,7 @@ Quick adjacency (to turf):
 				var/obj/structure/window/W = target_atom
 				if (!istype(W))
 					return FALSE
-				else if (!W.is_full_window())	//exception for breaking full tile windows on top of single pane windows
+				else if (!W.is_full_window()) //exception for breaking full tile windows on top of single pane windows
 					return FALSE
 
 		else if( !border_only ) // dense, not on border, cannot pass over
@@ -141,14 +144,14 @@ Quick adjacency (to turf):
 	return TRUE
 
 /*
- *	handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
- *	a single barrier on each direction.
+ * handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
+ * a single barrier on each direction.
  *
- *	I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
- *	for performance impact.
- *	Assumes dist <= 1
+ * I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
+ * for performance impact.
+ * Assumes dist <= 1
  */
-/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), pass_flags)
+/atom/proc/handle_barriers(atom/A, list/atom/ignore = list(), pass_flags)
 	ignore |= src // Make sure that you ignore your target
 	A.add_temp_pass_flags(pass_flags)
 
@@ -161,8 +164,8 @@ Quick adjacency (to turf):
 	)
 	var/list/dense_blockers
 
-	var/rd1 = rdir&(rdir-1)		// eg west		(1+8)&(8) = 8
-	var/rd2 = rdir - rd1		// eg north		(1+8) - 8 = 1
+	var/rd1 = rdir&(rdir-1) // eg west (1+8)&(8) = 8
+	var/rd2 = rdir - rd1 // eg north (1+8) - 8 = 1
 	var/fd1 = fdir&(fdir-1)
 	var/fd2 = fdir - fd1
 
@@ -280,7 +283,7 @@ Quick adjacency (to turf):
 	return src // This should happen if the two barricades checked do not block the slash
 
 
-/atom/proc/clear_path(var/atom/A, var/list/atom/ignore = list())
+/atom/proc/clear_path(atom/A, list/atom/ignore = list())
 	if(get_dist(src, A) <= 1)
 		return handle_barriers(A, ignore)
 

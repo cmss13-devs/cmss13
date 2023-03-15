@@ -6,7 +6,7 @@
 	. = ..()
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = storage_slots
-	pockets.max_w_class = SIZE_SMALL		//fit only small items
+	pockets.max_w_class = SIZE_SMALL //fit only small items
 	pockets.max_storage_space = 4
 	flags_atom |= USES_HEARING
 
@@ -54,7 +54,7 @@
 		pockets.storage_draw_logic(src.name)
 
 // Decides the storage flags when Switch Storage Draw Method gets called
-/obj/item/storage/proc/storage_draw_logic(var/name)
+/obj/item/storage/proc/storage_draw_logic(name)
 	if (!(storage_flags & STORAGE_USING_DRAWING_METHOD))
 		storage_flags |= STORAGE_USING_DRAWING_METHOD
 		to_chat(usr, "Clicking [name] with an empty hand now puts the last stored item in your hand.")

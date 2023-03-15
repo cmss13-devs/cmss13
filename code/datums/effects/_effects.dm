@@ -20,11 +20,11 @@
 	FLAGS FOR EFFECTS
 	They determine when an effect should be processed or deleted
 */
-#define DEL_ON_DEATH	1	//Delete the effect when something dies
-#define DEL_ON_LIVING	2	//Delete the effect when something is alive
-#define INF_DURATION	4	//An effect that lasts forever
-#define NO_PROCESS_ON_DEATH	8	//Don't process while the mob is dead
-#define DEL_ON_UNDEFIBBABLE 16	//Delete the effect when human mob is undefibbable
+#define DEL_ON_DEATH 1 //Delete the effect when something dies
+#define DEL_ON_LIVING 2 //Delete the effect when something is alive
+#define INF_DURATION 4 //An effect that lasts forever
+#define NO_PROCESS_ON_DEATH 8 //Don't process while the mob is dead
+#define DEL_ON_UNDEFIBBABLE 16 //Delete the effect when human mob is undefibbable
 
 /datum/effects
 	var/effect_name = "standard"			//Name of the effect
@@ -38,21 +38,21 @@
 	var/datum/cause_data/cause_data = null	//Cause data for statistics
 	var/do_proccess = TRUE					//Should the effect process?
 
-/datum/effects/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
-	if(!validate_atom(A) || QDELETED(A))
+/datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
+	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
 	if(do_proccess)
 		START_PROCESSING(SSeffects, src)
 
-	affected_atom = A
+	affected_atom = thing
 	LAZYADD(affected_atom.effects_list, src)
 	on_apply_effect()
 	def_zone = zone
 	cause_data = create_cause_data(last_dmg_source, from)
 
-/datum/effects/proc/validate_atom(var/atom/A)
-	if(iscarbon(A) || isobj(A))
+/datum/effects/proc/validate_atom(atom/thing)
+	if(iscarbon(thing) || isobj(thing))
 		return TRUE
 
 	return FALSE

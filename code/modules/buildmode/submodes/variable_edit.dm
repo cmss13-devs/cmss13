@@ -57,15 +57,19 @@
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(object.vars.Find(selected_key))
-			message_staff("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
-			object.vars[selected_key] = selected_value
+			if(!object.vv_edit_var(selected_key, selected_value))
+				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				return
+			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
 			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(selected_key))
 			var/reset_value = initial(object.vars[selected_key])
-			message_staff("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
-			object.vars[selected_key] = reset_value
+			if(!object.vv_edit_var(selected_key, reset_value))
+				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				return
+			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
 			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 

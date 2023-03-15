@@ -29,11 +29,11 @@ var/global/dmm_suite/preloader/_preloader = new
  * WORKING :
  *
  * 1) Makes an associative mapping of model_keys with model
- *		e.g aa = /turf/unsimulated/wall{icon_state = "rock"}
+ * e.g aa = /turf/unsimulated/wall{icon_state = "rock"}
  * 2) Read the map line by line, parsing the result (using parse_grid)
  *
  */
-/dmm_suite/load_map(var/dmm_file, var/x_offset, var/y_offset, var/z_offset, var/cropMap, var/measureOnly, var/no_changeturf, var/clear_contents, var/lower_crop_x, var/lower_crop_y, var/upper_crop_x, var/upper_crop_y, var/initialized_areas_by_type)
+/dmm_suite/load_map(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, clear_contents, lower_crop_x, lower_crop_y, upper_crop_x, upper_crop_y, initialized_areas_by_type)
 	// Master.StartLoadingMap()
 	space_key = null
 	#ifdef TESTING
@@ -136,15 +136,15 @@ var/global/dmm_suite/preloader/_preloader = new
 					maxx = max(maxx, xcrdStart + length(line) / key_len - 1)
 			else
 				for(var/line in gridLines)
-					if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper)				//Reverse operation and check if it is out of bounds of cropping.
+					if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper) //Reverse operation and check if it is out of bounds of cropping.
 						--ycrd
 						continue
 					if(ycrd <= world.maxy && ycrd >= 1)
 						xcrd = xcrdStart
 						for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
-							if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper)			//Same as above.
+							if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper) //Same as above.
 								++xcrd
-								continue								//X cropping.
+								continue //X cropping.
 							if(xcrd > world.maxx)
 								if(cropMap)
 									break
@@ -395,9 +395,9 @@ var/global/dmm_suite/preloader/_preloader = new
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to delay initialization.
 	// if(TICK_CHECK)
-	// 	SSatoms.map_loader_stop()
-	// 	stoplag()
-	// 	SSatoms.map_loader_begin()
+	// SSatoms.map_loader_stop()
+	// stoplag()
+	// SSatoms.map_loader_begin()
 
 /dmm_suite/proc/create_atom(path, crds)
 	// Doing this async is impossible, as we must return the ref.

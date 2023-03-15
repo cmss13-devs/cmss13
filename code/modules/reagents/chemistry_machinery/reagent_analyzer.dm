@@ -45,10 +45,10 @@
 /obj/structure/machinery/reagent_analyzer/proc/reagent_process()
 	status++
 	if(status <= 3)
-		addtimer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer.proc/reagent_process), 2 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/reagent_analyzer, reagent_process)), 2 SECONDS)
 		return
 	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-	addtimer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer.proc/finish_reagent_process), 4 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/reagent_analyzer, finish_reagent_process)), 4 SECONDS)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
 	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
@@ -83,7 +83,7 @@
 	icon_state = "reagent_analyzer"
 	return
 
-/obj/structure/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
+/obj/structure/machinery/reagent_analyzer/proc/print_report(result, reason)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	if(result)
 		var/datum/reagent/S = sample.reagents.reagent_list[1]
@@ -92,7 +92,7 @@
 		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass < CHEM_CLASS_SPECIAL || (S.chemclass >= CHEM_CLASS_SPECIAL && report.completed))
 			chemical_data.save_new_properties(S.properties)
-		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
@@ -102,13 +102,7 @@
 				else
 					return
 
-			chemical_data.update_credits(2)
-			chemical_identified_list[S.id] = S.objective_value
-			SSobjectives.statistics["chemicals_completed"]++
-			SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
-
-			var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-			tree.add_points(S.objective_value)
+			chemical_data.complete_chemical(S)
 	else
 		report.name = "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
@@ -116,7 +110,7 @@
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 
-/datum/reagent/proc/print_report(var/turf/loc, var/obj/item/paper/research_report/report, var/admin_spawned = FALSE, var/sample_number = 0)
+/datum/reagent/proc/print_report(turf/loc, obj/item/paper/research_report/report, admin_spawned = FALSE, sample_number = 0)
 	if(!report)
 		report = new /obj/item/paper/research_report(loc)
 

@@ -1,15 +1,21 @@
 // Individual skill
 /datum/skill
-	var/skill_name = null // Name of the skill
-	var/skill_level = 0 // Level of skill in this... skill
+	/// Name of the skill
+	var/skill_name = null
+	/// used for the view UI
+	var/readable_skill_name = null
+	/// Level of skill in this... skill
+	var/skill_level = 0
+	/// the max level this skill can be, used for tgui
+	var/max_skill_level = 0
 
 /datum/skill/proc/get_skill_level()
 	return skill_level
 
-/datum/skill/proc/set_skill(var/new_level, var/mob/owner)
+/datum/skill/proc/set_skill(new_level, mob/owner)
 	skill_level = new_level
 
-/datum/skill/proc/is_skilled(var/req_level, var/is_explicit = FALSE)
+/datum/skill/proc/is_skilled(req_level, is_explicit = FALSE)
 	if(is_explicit)
 		return (skill_level == req_level)
 	return (skill_level >= req_level)
@@ -18,37 +24,48 @@
 
 /datum/skill/cqc
 	skill_name = SKILL_CQC
+	readable_skill_name = "CQC"
 	skill_level = SKILL_CQC_DEFAULT
+	max_skill_level = SKILL_CQC_MAX
 
 /datum/skill/melee_weapons
 	skill_name = SKILL_MELEE_WEAPONS
+	readable_skill_name = "melee weapons"
 	skill_level = SKILL_MELEE_DEFAULT
+	max_skill_level = SKILL_MELEE_MAX
 
 /datum/skill/firearms
 	skill_name = SKILL_FIREARMS
 	skill_level = SKILL_FIREARMS_DEFAULT
+	max_skill_level = SKILL_FIREARMS_MAX
 
 /datum/skill/spec_weapons
 	skill_name = SKILL_SPEC_WEAPONS
+	readable_skill_name = "specialist weapons"
 	skill_level = SKILL_SPEC_DEFAULT
+	max_skill_level = SKILL_SPEC_ALL
 
 /datum/skill/endurance
 	skill_name = SKILL_ENDURANCE
 	skill_level = SKILL_ENDURANCE_WEAK
+	max_skill_level = SKILL_ENDURANCE_MAX
 
 /datum/skill/engineer
 	skill_name = SKILL_ENGINEER
 	skill_level = SKILL_ENGINEER_DEFAULT
+	max_skill_level = SKILL_ENGINEER_MAX
 
 /datum/skill/construction
 	skill_name = SKILL_CONSTRUCTION
 	skill_level = SKILL_CONSTRUCTION_DEFAULT
+	max_skill_level = SKILL_CONSTRUCTION_MAX
 
 /datum/skill/leadership
 	skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
+	max_skill_level = SKILL_LEAD_MAX
 
-/datum/skill/leadership/set_skill(var/new_level, var/mob/living/owner)
+/datum/skill/leadership/set_skill(new_level, mob/living/owner)
 	..()
 	if(!owner)
 		return
@@ -65,12 +82,14 @@
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
 	skill_level = SKILL_MEDICAL_DEFAULT
+	max_skill_level = SKILL_MEDICAL_MAX
 
 /datum/skill/surgery
 	skill_name = SKILL_SURGERY
 	skill_level = SKILL_SURGERY_DEFAULT
+	max_skill_level = SKILL_SURGERY_MAX
 
-/datum/skill/surgery/set_skill(var/new_level, var/mob/living/owner)
+/datum/skill/surgery/set_skill(new_level, mob/living/owner)
 	..()
 	if(!owner)
 		return
@@ -92,58 +111,74 @@
 /datum/skill/research
 	skill_name = SKILL_RESEARCH
 	skill_level = SKILL_RESEARCH_DEFAULT
+	max_skill_level = SKILL_RESEARCH_MAX
 
 /datum/skill/antag
 	skill_name = SKILL_ANTAG
+	readable_skill_name = "illegal technology"
 	skill_level = SKILL_ANTAG_DEFAULT
+	max_skill_level = SKILL_ANTAG_MAX
 
 /datum/skill/pilot
 	skill_name = SKILL_PILOT
 	skill_level = SKILL_PILOT_DEFAULT
+	max_skill_level = SKILL_PILOT_MAX
 
 /datum/skill/police
 	skill_name = SKILL_POLICE
 	skill_level = SKILL_POLICE_DEFAULT
+	max_skill_level = SKILL_POLICE_MAX
 
 /datum/skill/powerloader
 	skill_name = SKILL_POWERLOADER
 	skill_level = SKILL_POWERLOADER_DEFAULT
+	max_skill_level = SKILL_POWERLOADER_MAX
 
 /datum/skill/vehicles
 	skill_name = SKILL_VEHICLE
 	skill_level = SKILL_VEHICLE_DEFAULT
+	max_skill_level = SKILL_VEHICLE_MAX
 
 /datum/skill/jtac
 	skill_name = SKILL_JTAC
+	readable_skill_name = "JTAC"
 	skill_level = SKILL_JTAC_NOVICE
+	max_skill_level = SKILL_JTAC_MAX
 
 /datum/skill/execution
 	skill_name = SKILL_EXECUTION
 	skill_level = SKILL_EXECUTION_DEFAULT
+	max_skill_level = SKILL_EXECUTION_MAX
 
 /datum/skill/intel
 	skill_name = SKILL_INTEL
 	skill_level = SKILL_INTEL_NOVICE
+	max_skill_level = SKILL_INTEL_MAX
 
 /datum/skill/domestic
 	skill_name = SKILL_DOMESTIC
 	skill_level = SKILL_DOMESTIC_NONE
+	max_skill_level = SKILL_DOMESTIC_MAX
 
 /datum/skill/fireman
 	skill_name = SKILL_FIREMAN
+	readable_skill_name = "fireman carrying"
 	skill_level = SKILL_FIREMAN_DEFAULT
+	max_skill_level = SKILL_FIREMAN_MAX
 
-// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
-// This is to organize and provide a common interface to the huge heap of skills there are
+/// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
+/// This is to organize and provide a common interface to the huge heap of skills there are
 /datum/skills
-	var/name //the name of the skillset
-	var/mob/owner = null // the mind that has this skillset
+	/// The name of the skillset
+	var/name
+	// The mob that has this skillset
+	var/mob/owner
 
-	// List of skill datums.
-	// Also, if this is populated when the datum is created, it will set the skill levels automagically
-	var/list/skills = list()
+	/// List of skill datums.
+	/// Also, if this is populated when the datum is created, it will set the skill levels automagically
+	var/list/datum/skill/skills = list()
 
-/datum/skills/New(var/mob/skillset_owner)
+/datum/skills/New(mob/skillset_owner)
 	owner = skillset_owner
 
 	// Setup every single skill
@@ -160,56 +195,57 @@
 
 /datum/skills/Destroy()
 	owner = null
-
-	for(var/datum/skill/S in skills)
-		qdel(S)
-		skills -= S
-
+	skills = null // Don't need to delete, /datum/skill should softdel
+	SStgui.close_uis(src)
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all
-/datum/skills/proc/has_skill(var/skill)
+/datum/skills/proc/has_skill(skill)
 	return isnull(skills[skill])
 
 // Returns the skill DATUM for the given skill
-/datum/skills/proc/get_skill(var/skill)
+/datum/skills/proc/get_skill(skill)
+	if(!skills)
+		return null
 	return skills[skill]
 
 // Returns the skill level for the given skill
-/datum/skills/proc/get_skill_level(var/skill)
+/datum/skills/proc/get_skill_level(skill)
 	var/datum/skill/S = get_skill(skill)
+	if(!S)
+		return -1
 	if(QDELETED(S))
 		return -1
 	return S.get_skill_level()
 
 // Sets the skill LEVEL for a given skill
-/datum/skills/proc/set_skill(var/skill, var/new_level)
+/datum/skills/proc/set_skill(skill, new_level)
 	var/datum/skill/S = skills[skill]
 	if(!S)
 		return
 	return S.set_skill(new_level, owner)
 
-/datum/skills/proc/increment_skill(var/skill, var/increment, var/cap)
+/datum/skills/proc/increment_skill(skill, increment, cap)
 	var/datum/skill/S = skills[skill]
 	if(!S || skillcheck(owner, skill, cap))
 		return
 	return S.set_skill(min(cap,S.skill_level+increment), owner)
 
-/datum/skills/proc/decrement_skill(var/skill, var/increment)
+/datum/skills/proc/decrement_skill(skill, increment)
 	var/datum/skill/S = skills[skill]
 	if(!S)
 		return
 	return S.set_skill(max(0,S.skill_level-increment), owner)
 
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
-/datum/skills/proc/is_skilled(var/skill, var/req_level, var/is_explicit = FALSE)
+/datum/skills/proc/is_skilled(skill, req_level, is_explicit = FALSE)
 	var/datum/skill/S = get_skill(skill)
 	if(QDELETED(S))
 		return FALSE
 	return S.is_skilled(req_level, is_explicit)
 
 // Adjusts the full skillset to a new type of skillset. Pass the datum type path for the desired skillset
-/datum/skills/proc/set_skillset(var/skillset_type)
+/datum/skills/proc/set_skillset(skillset_type)
 	var/datum/skills/skillset = new skillset_type()
 	var/list/skill_levels = initial(skillset.skills)
 
@@ -230,7 +266,7 @@ CIVILIAN
 		SKILL_CQC = SKILL_CQC_DEFAULT,
 		SKILL_FIREARMS = SKILL_FIREARMS_UNTRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_NONE,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/manager
@@ -241,7 +277,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
 /datum/skills/civilian/manager_survivor
@@ -253,7 +289,7 @@ CIVILIAN
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
 /datum/skills/civilian/manager/director
@@ -266,8 +302,8 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED, //can BE people
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
 /datum/skills/civilian/survivor
@@ -278,7 +314,7 @@ CIVILIAN
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/goon
@@ -292,7 +328,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/pmc
@@ -306,7 +342,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/doctor
@@ -318,7 +354,7 @@ CIVILIAN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/clf
@@ -330,7 +366,7 @@ CIVILIAN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_LARGE
+		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 	)
 
 /datum/skills/civilian/survivor/scientist
@@ -343,7 +379,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/chef
@@ -354,7 +390,7 @@ CIVILIAN
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/miner
@@ -366,7 +402,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/trucker
@@ -389,7 +425,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/chaplain
@@ -401,7 +437,7 @@ CIVILIAN
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/marshal
@@ -416,7 +452,7 @@ CIVILIAN
 		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/prisoner
@@ -429,7 +465,7 @@ CIVILIAN
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/gangleader
@@ -443,8 +479,111 @@ CIVILIAN
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
+/*
+---------------------
+MILITARY SURVIVORS
+---------------------
+*/
+//Hardcore survivors with poor equipment and skills, prove you're the best of the best.
+
+/datum/skills/military/survivor/forecon_standard
+	name = "Reconnaissance Rifleman"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/military/survivor/forecon_techician
+	name = "Reconnaissance Support Technician"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/military/survivor/forecon_marksman
+	name = "Reconnaissance Designated Marksman"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_SCOUT,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/military/survivor/forecon_smartgunner
+	name = "Reconnaissance Smartgunner"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/military/survivor/forecon_grenadier
+	name = "Reconnaissance Grenadier"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_GRENADIER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/military/survivor/forecon_squad_leader
+	name = "Reconnaissance Squad Leader"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
 /*
 ---------------------
 COMMAND STAFF
@@ -516,7 +655,7 @@ COMMAND STAFF
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
-		SKILL_INTEL = SKILL_INTEL_TRAINED
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/SEA
@@ -536,10 +675,11 @@ COMMAND STAFF
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 	)
 
-/datum/skills/SEA/New(var/mob/skillset_owner)
+/datum/skills/SEA/New(mob/skillset_owner)
 	..()
 	give_action(skillset_owner, /datum/action/looc_toggle)
 
@@ -558,7 +698,7 @@ COMMAND STAFF
 		SKILL_POLICE = SKILL_POLICE_FLASH,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
-		SKILL_INTEL = SKILL_INTEL_TRAINED
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/CMP
@@ -574,7 +714,7 @@ COMMAND STAFF
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_INTEL = SKILL_INTEL_TRAINED
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/CE
@@ -587,7 +727,7 @@ COMMAND STAFF
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_JTAC = SKILL_JTAC_MASTER,
-		SKILL_INTEL = SKILL_INTEL_TRAINED
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/RO
@@ -599,7 +739,7 @@ COMMAND STAFF
 		SKILL_POLICE = SKILL_POLICE_FLASH,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
-		SKILL_INTEL = SKILL_INTEL_TRAINED
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /*
@@ -631,6 +771,7 @@ MILITARY NONCOMBATANT
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/pilot
@@ -642,6 +783,7 @@ MILITARY NONCOMBATANT
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/crew_chief
@@ -662,7 +804,7 @@ MILITARY NONCOMBATANT
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 	)
 
 /datum/skills/MW
@@ -675,7 +817,7 @@ MILITARY NONCOMBATANT
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 	)
 
 /datum/skills/provost
@@ -685,7 +827,7 @@ MILITARY NONCOMBATANT
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 	)
 
 /datum/skills/OT
@@ -702,7 +844,7 @@ MILITARY NONCOMBATANT
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_MASTER,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
-		SKILL_DOMESTIC = SKILL_DOMESTIC_TRAINED
+		SKILL_DOMESTIC = SKILL_DOMESTIC_TRAINED,
 	)
 
 /datum/skills/mess_technician
@@ -747,7 +889,7 @@ SYNTHETIC
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
-		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
 	)
 
 /datum/skills/colonial_synthetic
@@ -769,11 +911,11 @@ SYNTHETIC
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 		SKILL_INTEL = SKILL_INTEL_TRAINED,
-		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
 	)
 
 /datum/skills/working_joe
-	name = SYNTH_COLONY
+	name = SYNTH_WORKING_JOE
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -782,6 +924,7 @@ SYNTHETIC
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
 	)
 
 /datum/skills/infiltrator_synthetic
@@ -805,7 +948,7 @@ SYNTHETIC
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
 		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
-		SKILL_ANTAG = SKILL_ANTAG_AGENT
+		SKILL_ANTAG = SKILL_ANTAG_AGENT,
 	)
 
 /*
@@ -822,7 +965,7 @@ United States Colonial Marines
 	name = "Crafty Private"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 	)
 
 /datum/skills/combat_medic
@@ -830,14 +973,14 @@ United States Colonial Marines
 	skills = list(
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/combat_medic/crafty
 	name = "Crafty Combat Medic"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 	)
 
 /datum/skills/combat_engineer
@@ -846,14 +989,14 @@ United States Colonial Marines
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/smartgunner
 	name = "Squad Smartgunner"
 	skills = list(
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/specialist
@@ -888,6 +1031,7 @@ United States Colonial Marines
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/intel
@@ -921,7 +1065,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/clf/combat_engineer
@@ -933,7 +1077,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/clf/combat_medic
@@ -944,7 +1088,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/clf/specialist
@@ -992,7 +1136,7 @@ COLONIAL LIBERATION FRONT
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
 		SKILL_JTAC = SKILL_JTAC_MASTER,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
-		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED
+		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED,
 	)
 
 /*
@@ -1018,7 +1162,7 @@ FREELANCERS
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
-		SKILL_SURGERY = SKILL_SURGERY_TRAINED
+		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 	)
 
 /datum/skills/freelancer/SL
@@ -1030,7 +1174,7 @@ FREELANCERS
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
-		SKILL_JTAC = SKILL_JTAC_EXPERT
+		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
 
 /*
@@ -1050,7 +1194,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREMAN = SKILL_FIREMAN_EXPERT,
-		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 	)
 
 /datum/skills/upp/combat_engineer
@@ -1062,7 +1206,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREMAN = SKILL_FIREMAN_EXPERT,
-		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 	)
 
 /datum/skills/upp/combat_medic
@@ -1087,7 +1231,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_UPP,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CQC = SKILL_CQC_MASTER
+		SKILL_CQC = SKILL_CQC_MASTER,
 	)
 
 /datum/skills/upp/SL
@@ -1099,7 +1243,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
-		SKILL_JTAC = SKILL_JTAC_EXPERT
+		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
 
 /datum/skills/upp/military_police
@@ -1112,7 +1256,7 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 	)
 
 /datum/skills/upp/officer
@@ -1149,7 +1293,7 @@ UNITED PROGRESSIVE PEOPLES
 /datum/skills/upp/conscript
 	name = "UPP Conscript"
 	skills = list(
-		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 	)
 
 /*
@@ -1168,7 +1312,7 @@ Private Military Contractors
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 	)
 
 /datum/skills/pmc/medic
@@ -1180,7 +1324,7 @@ Private Military Contractors
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 	)
 
 /datum/skills/pmc/medic/chem
@@ -1193,7 +1337,7 @@ Private Military Contractors
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
-		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED
+		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
 	)
 
 /datum/skills/pmc/smartgunner
@@ -1206,7 +1350,7 @@ Private Military Contractors
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/pmc/specialist
@@ -1221,7 +1365,7 @@ Private Military Contractors
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/pmc/SL
@@ -1236,7 +1380,7 @@ Private Military Contractors
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
-		SKILL_JTAC = SKILL_JTAC_TRAINED
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
 /datum/skills/pmc/SL/chem
@@ -1252,7 +1396,7 @@ Private Military Contractors
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
-		SKILL_JTAC = SKILL_JTAC_TRAINED
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
 /datum/skills/pmc/tank_crew
@@ -1296,7 +1440,7 @@ Private Military Contractors
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 		SKILL_CQC = SKILL_CQC_TRAINED,
-		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER
+		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 	)
 
 /datum/skills/pmc/director
@@ -1312,7 +1456,7 @@ Private Military Contractors
 		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 		SKILL_JTAC = SKILL_JTAC_MASTER,
-		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED
+		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED,
 	)
 
 /*
@@ -1352,7 +1496,7 @@ CONTRACTORS
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
-		SKILL_JTAC = SKILL_JTAC_MASTER
+		SKILL_JTAC = SKILL_JTAC_MASTER,
 	)
 
 /datum/skills/contractor/medic
@@ -1369,7 +1513,7 @@ CONTRACTORS
 		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_CQC = SKILL_CQC_MASTER,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/contractor/engi
@@ -1424,7 +1568,7 @@ SPEC-OPS
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/commando/medic
@@ -1438,7 +1582,7 @@ SPEC-OPS
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MAX,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
-		SKILL_JTAC = SKILL_JTAC_BEGINNER
+		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
 /datum/skills/commando/leader
@@ -1697,7 +1841,7 @@ MISCELLANEOUS
 		SKILL_SURGERY = SKILL_SURGERY_EXPERT,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_MAX,
-		SKILL_ANTAG = SKILL_ANTAG_HUNTER
+		SKILL_ANTAG = SKILL_ANTAG_HUNTER,
 	)
 
 /datum/skills/dutch
@@ -1739,7 +1883,7 @@ MISCELLANEOUS
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
-		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
 	)
 
 /datum/skills/everything //max it out
@@ -1762,5 +1906,7 @@ MISCELLANEOUS
 		SKILL_FIREMAN = SKILL_FIREMAN_MAX,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MAX,
 		SKILL_VEHICLE = SKILL_VEHICLE_MAX,
-		SKILL_JTAC = SKILL_JTAC_MAX
+		SKILL_JTAC = SKILL_JTAC_MAX,
+		SKILL_EXECUTION = SKILL_EXECUTION_MAX,
+		SKILL_INTEL = SKILL_INTEL_MAX,
 	)

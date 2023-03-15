@@ -5,8 +5,8 @@
 	var/shield_per_slash = 20
 	var/stored_shield = 0
 
-/datum/component/shield_slash/Initialize(var/max_shield = 160, var/shield_per_slash = 20, var/stat_name = "Shield")
-	if(!isXeno(parent))
+/datum/component/shield_slash/Initialize(max_shield = 160, shield_per_slash = 20, stat_name = "Shield")
+	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	src.max_shield = max_shield
@@ -14,8 +14,8 @@
 	src.stat_name = stat_name
 
 /datum/component/shield_slash/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, .proc/handle_shield_buildup)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/handle_stat_display)
+	RegisterSignal(parent, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(handle_shield_buildup))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(handle_stat_display))
 
 /datum/component/shield_slash/UnregisterFromParent()
 	UnregisterSignal(parent, list(
@@ -24,14 +24,14 @@
 	))
 
 /datum/component/shield_slash/PostTransfer()
-	if(!isXeno(parent))
+	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
-/datum/component/shield_slash/proc/handle_stat_display(var/mob/living/carbon/Xenomorph/X, var/list/statdata)
+/datum/component/shield_slash/proc/handle_stat_display(mob/living/carbon/xenomorph/X, list/statdata)
 	SIGNAL_HANDLER
 	statdata += "Stored [stat_name]: [stored_shield]/[max_shield]"
 
-/datum/component/shield_slash/proc/handle_shield_buildup(var/mob/living/carbon/Xenomorph/X)
+/datum/component/shield_slash/proc/handle_shield_buildup(mob/living/carbon/xenomorph/X)
 	SIGNAL_HANDLER
 	stored_shield += shield_per_slash
 	if(stored_shield < max_shield)

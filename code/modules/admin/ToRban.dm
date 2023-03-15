@@ -2,9 +2,9 @@
 //fetches an external list and processes it into a list of ip addresses.
 //It then stores the processed list into a savefile for later use
 #define TORFILE "data/ToR_ban.bdb"
-#define TOR_UPDATE_INTERVAL 216000	//~6 hours
+#define TOR_UPDATE_INTERVAL 216000 //~6 hours
 
-/proc/ToRban_isbanned(var/ip_address)
+/proc/ToRban_isbanned(ip_address)
 	var/savefile/F = new(TORFILE)
 	if(F)
 		if( ip_address in F.dir )
@@ -16,7 +16,7 @@
 	if(F)
 		var/last_update
 		F["last_update"] >> last_update
-		if((last_update + TOR_UPDATE_INTERVAL) < world.realtime)	//we haven't updated for a while
+		if((last_update + TOR_UPDATE_INTERVAL) < world.realtime) //we haven't updated for a while
 			ToRban_update()
 	return
 
@@ -30,14 +30,14 @@
 			fdel(TORFILE)
 			var/savefile/F = new(TORFILE)
 			for( var/line in rawlist )
-				if(!line)	continue
+				if(!line) continue
 				if( copytext(line,1,12) == "ExitAddress" )
 					var/cleaned = copytext(line,13,length(line)-19)
-					if(!cleaned)	continue
+					if(!cleaned) continue
 					F[cleaned] << 1
 			F["last_update"] << world.realtime
 			log_misc("ToR data updated!")
-			if(usr)	to_chat(usr, "ToRban updated.")
+			if(usr) to_chat(usr, "ToRban updated.")
 			return
 		log_misc("ToR data update aborted: no data.")
 		return
@@ -45,7 +45,7 @@
 /client/proc/ToRban(task in list("update","toggle","show","remove","remove all","find"))
 	set name = "ToR Ban Settings"
 	set category = "Server"
-	if(!admin_holder)	return
+	if(!admin_holder) return
 	switch(task)
 		if("update")
 			ToRban_update()
@@ -53,10 +53,10 @@
 			if(config)
 				if(CONFIG_GET(flag/ToRban))
 					CONFIG_SET(flag/ToRban, FALSE)
-					message_staff("<font color='red'>ToR banning disabled.</font>")
+					message_admins("<font color='red'>ToR banning disabled.</font>")
 				else
 					CONFIG_SET(flag/ToRban, TRUE)
-					message_staff("<font colot='green'>ToR banning enabled.</font>")
+					message_admins("<font colot='green'>ToR banning enabled.</font>")
 		if("show")
 			var/savefile/F = new(TORFILE)
 			var/dat

@@ -1,5 +1,5 @@
-#define MAX_ALPHA 				35
-#define GLOW_COLOR 				"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 /*
 This component prevents healing under a certain strength for xenos while active.
 Healing above this strength will be reduced by the strength of the buildup.
@@ -13,15 +13,15 @@ Humans will take continuous damage instead.
 	var/healing_reduction_dissipation = AMOUNT_PER_TIME(1, 5 SECONDS)
 	var/max_buildup = 50 //up to 50 damage off of healing max by default
 
-/datum/component/healing_reduction/Initialize(var/healing_reduction, var/healing_reduction_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 50)
-	if(!isXenoOrHuman(parent))
+/datum/component/healing_reduction/Initialize(healing_reduction, healing_reduction_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), max_buildup = 50)
+	if(!isxeno_human(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
 	src.healing_reduction = healing_reduction
 	src.healing_reduction_dissipation = healing_reduction_dissipation
 	src.max_buildup = max_buildup
 
-/datum/component/healing_reduction/InheritComponent(datum/component/healing_reduction/C, i_am_original, var/healing_reduction)
+/datum/component/healing_reduction/InheritComponent(datum/component/healing_reduction/C, i_am_original, healing_reduction)
 	. = ..()
 	if(!C)
 		src.healing_reduction += healing_reduction
@@ -54,8 +54,8 @@ Humans will take continuous damage instead.
 	RegisterSignal(parent, list(
 		COMSIG_XENO_ON_HEAL,
 		COMSIG_XENO_ON_HEAL_WOUNDS
-		), .proc/apply_healing_reduction)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+		), PROC_REF(apply_healing_reduction))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/healing_reduction/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
@@ -67,11 +67,11 @@ Humans will take continuous damage instead.
 	var/atom/A = parent
 	A.remove_filter("healing_reduction")
 
-/datum/component/healing_reduction/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/healing_reduction/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Healing Reduction: [healing_reduction]/[max_buildup]"
 
-/datum/component/healing_reduction/proc/apply_healing_reduction(var/mob/living/carbon/Xenomorph/X, var/list/healing)
+/datum/component/healing_reduction/proc/apply_healing_reduction(mob/living/carbon/xenomorph/X, list/healing)
 	SIGNAL_HANDLER
 	healing["healing"] -= healing_reduction
 

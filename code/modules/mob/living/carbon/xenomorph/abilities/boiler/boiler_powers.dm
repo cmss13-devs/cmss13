@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X) || !X.check_state())
 		return
@@ -20,7 +20,7 @@
 		X.visible_message(SPAN_XENODANGER("[X] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("You start to gather your acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
-		addtimer(CALLBACK(src, .proc/timeout), max_stacks*stack_time + time_after_max_before_end)
+		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
 		apply_cooldown()
 		return ..()
 
@@ -38,7 +38,7 @@
 				if(istype(S, /obj/structure/window/framed))
 					var/obj/structure/window/framed/W = S
 					if(!W.unslashable)
-						W.shatter_window(TRUE)
+						W.deconstruct(disassembled = FALSE)
 
 				if(S.opacity)
 					should_stop = TRUE
@@ -58,7 +58,7 @@
 		remove_stack_effects("You feel your speed return to normal!")
 
 /datum/action/xeno_action/activable/acid_lance/proc/stack()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -70,14 +70,14 @@
 		X.speed_modifier += movespeed_per_stack
 		movespeed_nerf_applied += movespeed_per_stack
 		X.recalculate_speed()
-		addtimer(CALLBACK(src, .proc/stack), stack_time)
+		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
 		return
 	else
 		to_chat(X, SPAN_XENOHIGHDANGER("You have charged your acid lance to maximum!"))
 		return
 
 /datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -102,46 +102,65 @@
 /datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
 	return (activated_once || ..())
 
-/datum/action/xeno_action/onclick/dump_acid/use_ability(atom/A)
-	if (!isXeno(owner))
+/datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/A)
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!action_cooldown_check()) // activate c/d only if we already spit
+		for (var/action_type in action_types_to_cd)
+			var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+			if (!istype(xeno_action))
+				continue
+
+			xeno_action.apply_cooldown_override(cooldown_duration)
+
+/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/atom)
+	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!isxeno(owner))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X.check_state())
+	if (!xeno.check_state())
 		return
-
-	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
-	addtimer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
-	X.speed_modifier -= speed_buff_amount
-	movespeed_buff_applied = TRUE
-	X.recalculate_speed()
-
-	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
-
+	if(sound_play)
+		playsound(xeno,"acid_strike", 35, 1)
+		sound_play = FALSE
+		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
+	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
+		to_chat(xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
+		return
+	playsound(xeno,"acid_sizzle", 50, 1)
+	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+		spicy_gas = new /datum/effect_system/smoke_spread/xeno_acid
+	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
+	else
+		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
+	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6)
+	spicy_gas.start()
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
 	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/XA = get_xeno_action_by_type(X, action_type)
-		if (!istype(XA))
+		var/datum/action/xeno_action/xeno_action = get_xeno_action_by_type(xeno, action_type)
+		if (!istype(xeno_action))
 			continue
 
-		XA.apply_cooldown_override(cooldown_duration)
+		xeno_action.apply_cooldown_override(cooldown_duration)
 
 	apply_cooldown()
-	..()
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (movespeed_buff_applied && isXeno(owner))
-		var/mob/living/carbon/Xenomorph/xeno = owner
+	if (movespeed_buff_applied && isxeno(owner))
+		var/mob/living/carbon/xenomorph/xeno = owner
 		xeno.speed_modifier += speed_buff_amount
 		xeno.recalculate_speed()
 		movespeed_buff_applied = FALSE
 		UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
 
-/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)
@@ -155,10 +174,14 @@
 	remove_speed_buff()
 	..()
 
+/datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/A)
+	. = ..()
+	apply_cooldown()
+
 /////////////////////////////// Trapper boiler powers
 
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -224,7 +247,7 @@
 
 
 /datum/action/xeno_action/activable/acid_mine/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -265,7 +288,7 @@
 	return
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -294,8 +317,9 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_XENO_ACID
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
+	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/acid_shotgun/New()
 	..()
@@ -319,7 +343,17 @@
 	max_range = 4
 
 /datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 10)
+		if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+			carbon_target.reagents.add_reagent("molecularacid", 6)
+		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
+			if(!neuro_effect)
+				neuro_effect = new /datum/effects/neurotoxin(carbon_target)
+			neuro_effect.duration += 16
+			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
+		else
+			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")

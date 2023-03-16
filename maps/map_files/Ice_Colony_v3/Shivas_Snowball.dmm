@@ -1500,7 +1500,6 @@
 	},
 /area/shiva/interior/colony/central)
 "agh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -2703,7 +2702,6 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "amP" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
 	},
@@ -10033,7 +10031,6 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "euA" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -18812,7 +18809,6 @@
 	},
 /area/shiva/interior/colony/n_admin)
 "nSO" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "nTu" = (
@@ -24975,7 +24971,6 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "uvW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "uwv" = (

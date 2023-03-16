@@ -892,6 +892,19 @@
 	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
 	icon_state = "watertank_old"
 
+/obj/structure/prop/broken_arcade
+	desc = "You can't see anything behind the screen, it looks half human and half machine."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "arcadeb"
+	name = "Spirit Phone, The Game, The Movie: II"
+
+/obj/structure/prop/maintenance_hatch
+	name = "\improper Maintenance Hatch"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "hatchclosed"
+	desc = "Looks like it's rusted shut. Creepy."
+	layer = HATCH_LAYER
+
 //INVULNERABLE PROPS
 
 /obj/structure/prop/invuln
@@ -966,6 +979,61 @@
 	icon_state = "orange_trim"//instance icons
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
+
+/obj/structure/prop/invuln/remote_console_pod
+	name = "Remote Console Pod"
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation"
+	icon = 'icons/obj/structures/droppod_32x64.dmi'
+	icon_state = "techpod_open"
+	layer = DOOR_CLOSED_LAYER
+
+/obj/structure/prop/invuln/overhead_pipe
+	name = "overhead pipe segment"
+	desc = ""
+	icon = 'icons/obj/pipes/pipes.dmi'
+	icon_state = "intact-scrubbers"
+	projectile_coverage = 0
+	density = FALSE
+	layer = RIPPLE_LAYER
+
+/obj/structure/prop/invuln/overhead_pipe/Initialize(mapload)
+	. = ..()
+	desc = "This is a section of the pipe network that carries water (and less pleasant fluids) throughout the [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"]."
+
+///Decorative fire.
+/obj/structure/prop/invuln/fire
+	name = "fire"
+	desc = "That isn't going out any time soon."
+	color = "#FF7700"
+	icon = 'icons/effects/fire.dmi'
+	icon_state = "dynamic_2"
+	layer = MOB_LAYER
+	luminosity = 3
+
+/obj/structure/prop/invuln/fusion_reactor
+	name = "\improper S-52 fusion reactor"
+	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
+	icon_state = "off-0"
+
+/obj/structure/prop/invuln/pipe_water
+	name = "pipe water"
+	desc = ""
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "water"
+	density = 0
+
+/obj/structure/prop/invuln/pipe_water/Initialize(mapload)
+	. = ..()
+	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
+
+/obj/structure/prop/invuln/lattice_prop
+	desc = "A lightweight support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "latticefull"
+	density = FALSE
+	layer = RIPPLE_LAYER
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

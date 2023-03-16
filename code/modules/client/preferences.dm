@@ -1167,7 +1167,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!pred_flv_raw)
 						predator_flavor_text = ""
 						return
-					predator_flavor_text = strip_html(html_encode(pred_flv_raw), MAX_EMOTE_LEN)
+					predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

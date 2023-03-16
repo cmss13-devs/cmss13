@@ -180,7 +180,7 @@
 		return FALSE
 
 	//vehicle interior stuff checks
-	if(target.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(target))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
 		return FALSE
 
@@ -217,7 +217,7 @@
 		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
 		return FALSE
 
-	if(target.z == GLOB.interior_manager.interior_z)// vehicle checks again JUST IN CASE
+	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
 		return FALSE
 

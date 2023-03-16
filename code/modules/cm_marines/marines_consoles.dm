@@ -726,6 +726,10 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 #define SENSOR_LIVING 1
 #define SENSOR_VITALS 2
 #define SENSOR_COORDS 3
+/// This is a really hacky way to make SOF work, but the nice and easy alternative would screw with round spawning
+#define RAIDER_OFFICER_SQUAD "SOF [JOB_MARINE_RAIDER_CMD]"
+#define RAIDER_SL_SQUAD "SOF [JOB_MARINE_RAIDER_SL]"
+#define RAIDER_SQUAD "SOF [JOB_MARINE_RAIDER]"
 
 /datum/crewmonitor
 	/// List of user -> UI source
@@ -874,86 +878,117 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-10: Command
-				JOB_CO = 00,
-				JOB_XO = 01,
-				JOB_SO = 02,
-				JOB_SEA = 03,
-				// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
-				JOB_SYNTH = 10,
-				JOB_PILOT = 11,
-				JOB_DROPSHIP_CREW_CHIEF = 12,
-				JOB_INTEL = 14,
-				// 20-29: Security
-				JOB_CHIEF_POLICE = 20,
-				JOB_WARDEN = 21,
-				JOB_POLICE = 22,
-				// 30-39: MedSci
-				JOB_CMO = 30,
-				JOB_RESEARCHER = 31,
-				JOB_DOCTOR = 32,
-				JOB_NURSE = 33,
-				// 40-49: Engineering
-				JOB_CHIEF_ENGINEER = 40,
-				JOB_ORDNANCE_TECH = 41,
-				JOB_MAINT_TECH = 42,
-				// 50-59: Cargo
-				JOB_CHIEF_REQUISITION = 50,
-				JOB_CARGO_TECH = 51,
-				// 110+: Civilian/other
-				JOB_CORPORATE_LIAISON = 110,
-				JOB_MESS_SERGEANT = 111,
-				JOB_PASSENGER = 112,
+				// 00-09: High Command, defined at bottom
+				JOB_CMC = 00,//Grade O10
+				JOB_ACMC = 00,
+				JOB_PROVOST_CMARSHAL = 00,
+				JOB_GENERAL = 00,
+				JOB_PROVOST_SMARSHAL = 01,//Grade O9
+				JOB_PROVOST_MARSHAL = 02,//Grade O8
+				JOB_COLONEL = 04,//Grade O6
+				JOB_PROVOST_INSPECTOR = 04,
+				// 10-19: Command
+				JOB_CO = 10,
+				JOB_XO = 11,
+				JOB_MARINE_RAIDER_CMD = 11,
+				RAIDER_OFFICER_SQUAD = 11,
+				JOB_SO = 12,
+				JOB_SEA = 13,
+				// 20-29: Aux Command (Synth isn't Aux head, but important - make him bold)
+				JOB_SYNTH = 20,
+				JOB_PILOT = 21,
+				JOB_DROPSHIP_CREW_CHIEF = 22,
+				JOB_INTEL = 24,
+				// 30-39: Security
+				JOB_CHIEF_POLICE = 30,
+				JOB_PROVOST_TML = 30,
+				JOB_WARDEN = 31,
+				JOB_PROVOST_ENFORCER = 31,
+				JOB_RIOT_CHIEF = 32,
+				JOB_RIOT = 33,
+				JOB_POLICE = 34,
+				JOB_PROVOST_ADVISOR = 35,
+				// 40-49: MedSci
+				JOB_CMO = 40,
+				JOB_RESEARCHER = 41,
+				JOB_DOCTOR = 42,
+				JOB_NURSE = 43,
+				// 50-59: Engineering
+				JOB_CHIEF_ENGINEER = 50,
+				JOB_ORDNANCE_TECH = 51,
+				JOB_MAINT_TECH = 52,
+				// 60-69: Cargo
+				JOB_CHIEF_REQUISITION = 60,
+				JOB_CARGO_TECH = 61,
+				// 70-139: SQUADS (look below)
+				// 140+: Civilian/other
+				JOB_CORPORATE_LIAISON = 140,
+				JOB_MESS_SERGEANT = 141,
+				JOB_PASSENGER = 142,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 130,
-				JOB_SURVIVOR = 131,
-				JOB_COLONIST = 132,
-				JOB_WORKING_JOE = 133,
+				JOB_SYNTH_SURVIVOR = 150,
+				JOB_SURVIVOR = 151,
+				JOB_COLONIST = 152,
+				JOB_WORKING_JOE = 153,
 
 				// WO jobs
-				// 00-10: Command
-				JOB_WO_CO = 00,
-				JOB_WO_XO = 01,
-				// 10-19: Aux Command
-				JOB_WO_CHIEF_POLICE = 10,
-				JOB_WO_SO = 11,
-				// 20-29: Security
-				JOB_WO_CREWMAN = 20,
-				JOB_WO_POLICE = 21,
-				JOB_WO_PILOT = 22,
-				// 30-39: MedSci
-				JOB_WO_CMO = 30,
-				JOB_WO_RESEARCHER = 31,
-				JOB_WO_DOCTOR = 32,
-				// 40-49: Engineering
-				JOB_WO_CHIEF_ENGINEER = 40,
-				JOB_WO_ORDNANCE_TECH = 41,
-				// 50-59: Cargo
-				JOB_WO_CHIEF_REQUISITION = 50,
-				JOB_WO_REQUISITION = 51,
-				// 60-109: SQUADS (look above)
-				// 110+: Civilian/other
-				JOB_WO_CORPORATE_LIAISON = 110,
-				JOB_WO_SYNTH = 120,
+				// 10-19: Command
+				JOB_WO_CO = 10,
+				JOB_WO_XO = 11,
+				// 20-29: Aux Command
+				JOB_WO_CHIEF_POLICE = 20,
+				JOB_WO_SO = 21,
+				// 30-39: Security
+				JOB_WO_CREWMAN = 30,
+				JOB_WO_POLICE = 31,
+				JOB_WO_PILOT = 32,
+				// 40-49: MedSci
+				JOB_WO_CMO = 40,
+				JOB_WO_RESEARCHER = 41,
+				JOB_WO_DOCTOR = 42,
+				// 50-59: Engineering
+				JOB_WO_CHIEF_ENGINEER = 50,
+				JOB_WO_ORDNANCE_TECH = 51,
+				// 60-69: Cargo
+				JOB_WO_CHIEF_REQUISITION = 60,
+				JOB_WO_REQUISITION = 61,
+				// 70-139: SQUADS (look below)
+				// 140+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 140,
+				JOB_WO_SYNTH = 150,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
 
-				// 200-229: Centcom
-				JOB_COLONEL = 200,
-				JOB_GENERAL = 200,
-				JOB_MARINE_RAIDER_CMD = 210,
-				JOB_MARINE_RAIDER_SL = 210,
-				JOB_MARINE_RAIDER = 211,
+				// 200-229: Visitors
+				JOB_UPP_REPRESENTATIVE = 201,
+				JOB_TWE_REPRESENTATIVE = 201,
+				JOB_TIS_SA = 210,
+				JOB_TIS_IO = 211,
+				JOB_PMC_DIRECTOR = 220,
 				JOB_PMC_LEADER = 220,
-				JOB_PMC_ELITE = 221,
-				JOB_PMC_GUNNER = 222,
-				JOB_PMC_SNIPER = 223,
-				JOB_PMC = 224,
+				JOB_PMC_LEAD_INVEST = 220,
+				JOB_PMC_SYNTH = 221,
+				JOB_PMC_XENO_HANDLER = 221,
+				JOB_PMC_SNIPER = 222,
+				JOB_PMC_GUNNER = 223,
+				JOB_PMC_MEDIC = 224,
+				JOB_PMC_INVESTIGATOR = 224,
+				JOB_PMC_ENGINEER = 225,
+				JOB_PMC = 226,
+				JOB_PMC_DOCTOR = 227,
+				JOB_WY_GOON_LEAD = 228,
+				JOB_WY_GOON = 229,
+
+				// Appear at bottom of squad list
+				JOB_MARINE_RAIDER_SL = 130,
+				RAIDER_SL_SQUAD = 130,
+				JOB_MARINE_RAIDER = 131,
+				RAIDER_SQUAD = 131,
 			)
-			var/squad_number = 60
+			var/squad_number = 70
 			for(var/squad_name in ROLES_SQUAD_ALL + "")
-				if(!squad_name) squad_number = 12
+				if(!squad_name) squad_number = 120
 				else squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
@@ -978,3 +1013,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 #undef SENSOR_COORDS
 #undef SENSORS_UPDATE_PERIOD
 #undef UNKNOWN_JOB_ID
+#undef RAIDER_SQUAD
+#undef RAIDER_SL_SQUAD
+#undef RAIDER_OFFICER_SQUAD

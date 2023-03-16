@@ -7258,9 +7258,7 @@
 	},
 /area/westerneye/hull/lower_hull/l_m_p)
 "cvY" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -27000,14 +26998,8 @@
 	},
 /area/westerneye/command/telecomms)
 "iAe" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	locked = 1;
-	dir = 2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/westerneye/hull/mid_hull/l_f_p)
+/turf/closed/wall/almayer/outer/viewport,
+/area/westerneye/hallways/midship_starboard_hallway)
 "iAr" = (
 /obj/structure/foamed_metal,
 /turf/open/floor/plating,
@@ -44962,9 +44954,6 @@
 /obj/item/folder/black,
 /turf/open/floor/almayer,
 /area/westerneye/living/pilotbunks)
-"ora" = (
-/turf/closed/wall/almayer/outer/viewport,
-/area/westerneye/hallways/midship_starboard_hallway)
 "ord" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/light/small{
@@ -93454,7 +93443,7 @@ wmI
 mwp
 mwp
 mwp
-ora
+iAe
 fAH
 fAH
 fAH
@@ -105839,7 +105828,7 @@ xMP
 kll
 xMP
 xMP
-iAe
+tlV
 hTR
 hTR
 hTR

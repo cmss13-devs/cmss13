@@ -390,7 +390,7 @@
 		var/mob/M = loc
 		M.drop_inv_item_on_ground(src)
 
-	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
+	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
 	addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
 

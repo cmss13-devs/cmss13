@@ -2776,7 +2776,6 @@
 	},
 /area/varadero/interior/toilets)
 "crY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves)
 "csb" = (
@@ -16152,7 +16151,6 @@
 	},
 /area/varadero/interior/cargo)
 "oei" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -25646,7 +25644,6 @@
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "wku" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},

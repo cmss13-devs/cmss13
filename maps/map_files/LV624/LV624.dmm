@@ -16410,7 +16410,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "iAu" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "iAA" = (
@@ -17402,7 +17401,6 @@
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "kYg" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "kYx" = (
@@ -20905,7 +20903,6 @@
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
 "syA" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "szy" = (

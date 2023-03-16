@@ -274,7 +274,7 @@
 //==================War Correspondent==================\\
 
 /obj/item/clothing/suit/storage/jacket/marine/reporter
-	name = "war correspondent jacket"
+	name = "combat correspondent jacket"
 	desc = "A jacket for the most fashionable war correspondents."
 	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
 	icon_state = "wc_suit"

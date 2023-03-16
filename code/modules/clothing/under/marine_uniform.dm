@@ -776,7 +776,7 @@
 	worn_state = "liaison_suspenders"
 
 /obj/item/clothing/under/marine/reporter
-	name = "war correspondent uniform"
+	name = "combat correspondent uniform"
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."
 	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
 	icon_state = "wc_uniform"

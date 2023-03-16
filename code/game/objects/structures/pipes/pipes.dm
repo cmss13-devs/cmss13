@@ -184,5 +184,30 @@
 
 	return node.pipe_color
 
+/**
+ * Makes a warning telegraph appear and, after a certain duration, explodes.
+ *
+ * Params:
+ * time_till: required, the time until the explosion occurs. The sound file lasts 5 seconds.
+ */
+/obj/structure/pipes/proc/warning_explode(time_till)
+	if(!time_till)
+		CRASH("No time given to /warning_explode.")
+	var/turf/position = get_turf(src)
+	if(protected_by_pylon(TURF_PROTECTION_MORTAR, position))
+		return
+
+	new /obj/effect/warning/explosive(position, time_till)
+	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
+	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_till)
+	visible_message(SPAN_HIGHDANGER("[src] begins hissing violently!"))
+
+/**
+ * Makes the pipe go boom.
+ */
+/obj/structure/pipes/proc/kablooie()
+	new /obj/item/explosive/grenade/high_explosive/bursting_pipe(loc)
+	new /obj/item/explosive/grenade/incendiary/bursting_pipe(loc)
+	qdel(src)
 
 #undef VENT_SOUND_DELAY

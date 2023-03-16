@@ -1133,9 +1133,6 @@
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
-	rank = JOB_WY_GOON
 	paygrade = "WEY-GOON"
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
@@ -1169,10 +1166,9 @@
 /datum/equipment_preset/survivor/pmc
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	assignment = "Weyland-Yutani PMC (Standard)"
+	assignment = "Weyland-Yutani PMC"
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
-	rank = JOB_PMC
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
@@ -1201,7 +1197,6 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
-	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(

@@ -821,10 +821,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
-	gun_safety_message(usr)
+	gun_safety_handle(usr)
 
 
-/obj/item/weapon/gun/proc/gun_safety_message(mob/user)
+/obj/item/weapon/gun/proc/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
 	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 

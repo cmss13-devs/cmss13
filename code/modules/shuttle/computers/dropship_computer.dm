@@ -3,9 +3,10 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 	unacidable = TRUE
 	exproof = TRUE
+	needs_power = FALSE
 
 	// True if we are doing a flyby
 	var/is_set_flyby = FALSE
@@ -134,6 +135,10 @@
 	if(.)
 		return TRUE
 
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		return TRUE
+
 	// if the dropship has crashed don't allow more interactions
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.mode == SHUTTLE_CRASHED)
@@ -185,6 +190,11 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!is_ground_level(z))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		return
+
 	if(xeno.hive_pos != XENO_QUEEN)
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
@@ -230,8 +240,6 @@
 
 	// select crash location
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	if(dropship.is_hijacked)
-		return
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
 	if(!result)
 		return
@@ -260,6 +268,10 @@
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 	playsound(src, 'sound/misc/queen_alarm.ogg')
+
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
+		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
@@ -436,3 +448,4 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	is_remote = TRUE
+	needs_power = TRUE

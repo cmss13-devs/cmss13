@@ -828,11 +828,11 @@
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "fullarmor_ebony"
-	item_state = "armor"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+	item_state = "armor"
+	icon_state = "fullarmor_ebony"
 
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
@@ -854,7 +854,7 @@
 		/obj/item/weapon/melee/twohanded/yautja,
 	)
 	unacidable = TRUE
-	item_state_slots = list(WEAR_JACKET = "fullarmor")
+	item_state_slots = list(WEAR_JACKET = "fullarmor_ebony")
 
 /obj/item/clothing/shoes/yautja_flavor
 	name = "alien stone greaves"

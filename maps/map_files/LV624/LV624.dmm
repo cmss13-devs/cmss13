@@ -3966,12 +3966,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -4082,12 +4077,7 @@
 	},
 /area/lv624/lazarus/research)
 "aup" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -4643,12 +4633,7 @@
 	},
 /area/lv624/lazarus/research)
 "awl" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	icon_state = "white"
@@ -4803,12 +4788,7 @@
 	},
 /area/lv624/lazarus/research)
 "awH" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -4834,12 +4814,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle/south_central_jungle)
 "awM" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "\improper Forced Blast Door"
@@ -5368,12 +5343,7 @@
 	pixel_x = 11
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -5553,12 +5523,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "azh" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 5;
@@ -11419,7 +11384,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "aUA" = (
 /obj/item/bedsheet/rd,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/structure/bed{
 	desc = "For prime comfort.";
 	name = "fancy bed"
@@ -16445,7 +16410,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "iAu" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "iAA" = (
@@ -17437,7 +17401,6 @@
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "kYg" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "kYx" = (
@@ -20940,7 +20903,6 @@
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
 "syA" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "szy" = (
@@ -23392,7 +23354,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /turf/open/floor{
 	icon_state = "white"
 	},

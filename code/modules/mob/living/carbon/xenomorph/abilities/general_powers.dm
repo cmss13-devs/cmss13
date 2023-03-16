@@ -98,7 +98,7 @@
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state(1))
+	if(!X.check_state())
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
@@ -524,7 +524,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || GLOB.interior_manager.interior_z == X.z)
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for creating a resin hole."))
 		return
 	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
@@ -605,7 +605,7 @@
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
-	if(GLOB.interior_manager.interior_z == X.z)
+	if(SSinterior.in_interior(X))
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 
@@ -664,7 +664,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(GLOB.interior_manager.interior_z == X.z)
+	if(SSinterior.in_interior(X))
 		to_chat(X, SPAN_WARNING("It's too tight in here to build."))
 		qdel(structure_template)
 		return FALSE
@@ -710,12 +710,17 @@
 			return FALSE
 	return TRUE
 
-/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/spit_target = aim_turf ? get_turf(atom) : atom
+	if(!xeno.check_state())
 		return
 
-	if(!isturf(X.loc))
+	if(spitting)
+		to_chat(src, SPAN_WARNING("You are already preparing a spit!"))
+		return
+
+	if(!isturf(xeno.loc))
 		to_chat(src, SPAN_WARNING("You can't spit from here!"))
 		return
 
@@ -723,31 +728,46 @@
 		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
 		return
 
-	var/turf/current_turf = get_turf(X)
+	var/turf/current_turf = get_turf(xeno)
 
 	if(!current_turf)
 		return
 
-	plasma_cost = X.ammo.spit_cost
-
-	if(!check_and_use_plasma_owner())
+	if (!check_plasma_owner())
 		return
 
-	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
+	if(xeno.ammo.spit_windup)
+		spitting = TRUE
+		if(xeno.ammo.pre_spit_warn)
+			playsound(xeno.loc,"alien_drool", 55, 1)
+		to_chat(xeno, SPAN_WARNING("You begin to prepare a large spit!"))
+		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),\
+		SPAN_WARNING("You begin to spit [xeno.ammo.name]!"))
+		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("You decide to cancel your spit."))
+			spitting = FALSE
+			return
+	plasma_cost = xeno.ammo.spit_cost
 
-	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
-	SPAN_XENOWARNING("You spit at [A]!") )
-	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(X.loc, sound_to_play, 25, 1)
+	if(!check_and_use_plasma_owner())
+		spitting = FALSE
+		return
+
+	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"), \
+
+	SPAN_XENOWARNING("You spit a [xeno.ammo.name] at [atom]!") )
+	playsound(xeno.loc, sound_to_play, 25, 1)
 
 
-	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))
-	P.generate_bullet(X.ammo)
-	P.permutated += X
-	P.def_zone = X.get_limbzone_target()
-	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+	var/obj/item/projectile/Proj = new (current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	Proj.generate_bullet(xeno.ammo)
+	Proj.permutated += xeno
+	Proj.def_zone = xeno.get_limbzone_target()
+	Proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+	spitting = FALSE
 
-	SEND_SIGNAL(X, COMSIG_XENO_POST_SPIT)
+	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()
 	..()

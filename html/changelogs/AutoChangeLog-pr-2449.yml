@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "the xm-88 mouse cursor was appearing when it shouldn't (without the scope), and you can now opt out of seeing custom mouse cursors entirely"

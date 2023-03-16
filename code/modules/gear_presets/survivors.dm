@@ -1133,14 +1133,14 @@
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR)
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_SURVIVOR)
 	rank = JOB_WY_GOON
 	paygrade = "WEY-GOON"
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -1171,13 +1171,13 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR, FACTION_PMC)
+	faction_group = list(FACTION_SURVIVOR)
 	rank = JOB_PMC
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
@@ -1193,9 +1193,6 @@
 
 	..()
 
-/datum/equipment_preset/survivor/wy/manager/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
 
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
@@ -1206,7 +1203,7 @@
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = list(FACTION_MARINE, FACTION_WY, FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,

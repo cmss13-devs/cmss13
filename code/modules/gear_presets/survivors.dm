@@ -407,7 +407,7 @@
 
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
-	assignment = "Weyland-Yutani Corporate Security Guard"
+	assignment = "Weyland-Yutani Security Guard"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/corsat/load_gear(mob/living/carbon/human/H)
@@ -454,7 +454,7 @@
 
 /datum/equipment_preset/survivor/security/lv
 	name = "Survivor - LV-624 Security Guard"
-	assignment = "Weyland-Yutani Corporate Security Guard"
+	assignment = "Weyland-Yutani Security Guard"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/H)

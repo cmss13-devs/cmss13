@@ -181,7 +181,7 @@
 	var/will_spawn_cmb_observer
 	var/cmb_observer
 
-/datum/emergency_call/inspection_CMB/New()
+/datum/emergency_call/inspection_cmb/New()
 	..()
 	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], This is Anchorpoint Station with the Colonial Marshal Bureau. Be advised, a CMB transport vessel is preparing to board you, submitting Federal docking clearances now. Standby."
 	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
@@ -199,25 +199,25 @@
 	will_spawn_icc_liaison = prob(90)
 	will_spawn_cmb_observer = prob(10)
 
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
+	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/liaison, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/liaison, TRUE, TRUE)
 	else if(!cmb_observer && will_spawn_cmb_observer)
 		cmb_observer = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are an Interstellar Human Rights Observer!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/observer, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/observer, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
 	print_backstory(mob)
 

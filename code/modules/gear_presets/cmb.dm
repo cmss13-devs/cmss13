@@ -1,15 +1,15 @@
-/datum/equipment_preset/CMB
+/datum/equipment_preset/cmb
 	name = "Colonial Marshal"
 
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
 	faction = FACTION_USCM
 
-/datum/equipment_preset/CMB/New()
+/datum/equipment_preset/cmb/New()
 	. = ..()
 	access = get_all_accesses() + get_all_civilian_accesses()
 
-/datum/equipment_preset/CMB/load_name(mob/living/carbon/human/H, randomise)
+/datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(80;MALE,20;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -42,7 +42,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/CMB
+/datum/equipment_preset/cmb
 	name = "Colonial Marshal"
 	faction = FACTION_USCM
 	rank = JOB_CMB
@@ -51,12 +51,12 @@
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
-/datum/equipment_preset/CMB/New()
+/datum/equipment_preset/cmb/New()
 	. = ..()
 	access = get_all_accesses() + get_all_civilian_accesses()
 
 
-/datum/equipment_preset/CMB/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H)
 	H.gender = pick(70;MALE,30;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -90,7 +90,7 @@
 	H.g_hair = rand(15,35)
 	H.b_hair = rand(25,45)
 
-/datum/equipment_preset/CMB/load_id(mob/living/carbon/human/H, client/mob_client)
+/datum/equipment_preset/cmb/load_id(mob/living/carbon/human/H, client/mob_client)
 	if(human_versus_human)
 		var/obj/item/clothing/under/uniform = H.w_uniform
 		if(istype(uniform))
@@ -100,16 +100,16 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/CMB/standard
+/datum/equipment_preset/cmb/standard
 	name = "CMB - Colonial Marshal Deputy"
 	paygrade = "GS-9"
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
-	skills = /datum/skills/CMB
+	skills = /datum/skills/cmb
 
-/datum/equipment_preset/CMB/standard/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/standard/load_gear(mob/living/carbon/human/H)
 
 	var/choice = rand(1,10)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -183,7 +183,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/CMB/leader
+/datum/equipment_preset/cmb/leader
 	name = "CMB - The Colonial Marshal"
 	paygrade = "GS-13"
 	idtype = /obj/item/card/id/marshal
@@ -192,11 +192,11 @@
 
 	assignment = "CMB Marshal"
 	rank = JOB_CMB_TL
-	skills = /datum/skills/CMB/leader
+	skills = /datum/skills/cmb/leader
 	minimum_age = 30
 	languages = ALL_HUMAN_LANGUAGES
 
-/datum/equipment_preset/CMB/leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/leader/load_gear(mob/living/carbon/human/H)
 	//clothes
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
@@ -237,7 +237,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/CMB/synth
+/datum/equipment_preset/cmb/synth
 	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrade = "GS-C.9"
 	idtype = /obj/item/card/id/deputy
@@ -248,11 +248,11 @@
 	rank = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
 
-/datum/equipment_preset/CMB/synth/load_skills(mob/living/carbon/human/H)
-		H.set_skills(/datum/skills/synthetic/CMB)
+/datum/equipment_preset/cmb/synth/load_skills(mob/living/carbon/human/H)
+		H.set_skills(/datum/skills/synthetic/cmb)
 		H.allow_gun_usage = FALSE
 
-/datum/equipment_preset/CMB/synth/load_name(mob/living/carbon/human/H, randomise)
+/datum/equipment_preset/cmb/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -282,10 +282,10 @@
 	H.g_eyes = colors[eye_color][2]
 	H.b_eyes = colors[eye_color][3]
 
-/datum/equipment_preset/CMB/synth/load_race(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/synth/load_race(mob/living/carbon/human/H)
 	H.set_species(SYNTH_COLONY)
 
-/datum/equipment_preset/CMB/synth/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/synth/load_gear(mob/living/carbon/human/H)
 	load_name(H)
 	//backpack
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/security, WEAR_BACK)
@@ -340,7 +340,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/CMB/liaison
+/datum/equipment_preset/cmb/liaison
 	name = "CMB - ICC Liaison"
 	paygrade = "GS-6"
 	idtype = /obj/item/card/id/silver/cl
@@ -352,7 +352,7 @@
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_JAPANESE)
 
-/datum/equipment_preset/CMB/liaison/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/liaison/load_gear(mob/living/carbon/human/H)
 
 	//clothes
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/ICC, WEAR_L_EAR)
@@ -391,7 +391,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/CMB/observer
+/datum/equipment_preset/cmb/observer
 	name = "CMB - Interstellar Human Rights Observer"
 	paygrade = "GS-3"
 	idtype = /obj/item/card/id/lanyard
@@ -403,7 +403,7 @@
 	skills = /datum/skills/civilian/survivor/doctor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 
-/datum/equipment_preset/CMB/observer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/cmb/observer/load_gear(mob/living/carbon/human/H)
 
 	//clothes
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -442,11 +442,11 @@
 //############ Anchorpoint Station Colonial Marines - They serve as reinforcements for the Colonial Marshals of Anchorpoint Station. #############
 //Anchorpoint Station Squad Marine - Similar to the Movie squad but nerfed a bit.
 
-/datum/equipment_preset/uscm/CMB
+/datum/equipment_preset/uscm/cmb
 	name = "USCM Anchorpoint Station Squad Marine"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/CMB/New()
+/datum/equipment_preset/uscm/cmb/New()
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP)
 
@@ -457,17 +457,17 @@
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_USCM
 
-/datum/equipment_preset/uscm/CMB/load_status(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/H)
 	. = ..()
 	H.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
 
-/datum/equipment_preset/uscm/CMB/load_rank(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade
 
-/datum/equipment_preset/uscm/CMB/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
@@ -499,10 +499,10 @@
 
 //Anchorpoint Station Marine Squad Leader
 
-/datum/equipment_preset/uscm/CMB/leader
+/datum/equipment_preset/uscm/cmb/leader
 	name = "USCM Anchorpoint Station Team Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/CMB/leader/New()
+/datum/equipment_preset/uscm/cmb/leader/New()
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
@@ -513,7 +513,7 @@
 	minimum_age = 25
 	skills = /datum/skills/SL
 
-/datum/equipment_preset/uscm/CMB/leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/leader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/custom, WEAR_IN_ACCESSORY)
@@ -545,10 +545,10 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/buckshot, WEAR_L_HAND)
 
 //Anchorpoint Station Marine RTO - technical specialist, has the responsibility of engineering as well
-/datum/equipment_preset/uscm/CMB/rto
+/datum/equipment_preset/uscm/cmb/rto
 	name = "USCM Anchorpoint Station Technical Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/CMB/rto/New()
+/datum/equipment_preset/uscm/cmb/rto/New()
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 
@@ -558,7 +558,7 @@
 	role_comm_title = "A-TS"
 	skills = /datum/skills/rto
 
-/datum/equipment_preset/uscm/CMB/rto/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/rto/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
@@ -593,10 +593,10 @@
 	H.back.pickup()
 
 //Anchorpoint Station Corpsman
-/datum/equipment_preset/uscm/CMB/medic
+/datum/equipment_preset/uscm/cmb/medic
 	name = "USCM Anchorpoint Station Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/CMB/medic/New()
+/datum/equipment_preset/uscm/cmb/medic/New()
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 
@@ -608,7 +608,7 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
-/datum/equipment_preset/uscm/CMB/medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/medic/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
@@ -655,10 +655,10 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full, WEAR_R_STORE)
 
 //Anchorpoint Station Marine Smartgunnner
-/datum/equipment_preset/uscm/CMB/smartgunner
+/datum/equipment_preset/uscm/cmb/smartgunner
 	name = "USCM Anchorpoint Station Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
-/datum/equipment_preset/uscm/CMB/smartgunner/New()
+/datum/equipment_preset/uscm/cmb/smartgunner/New()
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 
@@ -668,7 +668,7 @@
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
 
-/datum/equipment_preset/uscm/CMB/smartgunner/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/cmb/smartgunner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)

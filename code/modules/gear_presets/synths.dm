@@ -204,16 +204,16 @@
 /datum/equipment_preset/synth/survivor/scientist_synth
 	name = "Survivor - Synthetic - Scientist Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/soft/purple,
+		WEAR_HEAD = /obj/item/clothing/head/bio_hood,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
-		WEAR_BACK = /obj/item/storage/backpack/satchel/vir,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/chem,
 		WEAR_IN_BACK = /obj/item/reagent_container/glass/beaker/vial/random/good,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/science,
-		WEAR_IN_JACKET = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
-		WEAR_HANDS = /obj/item/clothing/gloves/purple,
+		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_HAND = /obj/item/device/motiondetector,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
@@ -296,6 +296,18 @@
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
+/datum/equipment_preset/synth/survivor/trucker_synth
+	name = "Survivor - Synthetic - Trucker Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
+		WEAR_BODY = /obj/item/clothing/under/colonist,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
+		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
+		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+	)
+
 /datum/equipment_preset/synth/survivor/bartender_synth
 	name = "Survivor - Synthetic - Bartender Synth"
 	equipment_to_spawn = list(
@@ -337,6 +349,8 @@
 
 /datum/equipment_preset/synth/survivor/cmb_synth
 	name = "Survivor - Synthetic - CMB Synth"
+	idtype = /obj/item/card/id/deputy
+	role_comm_title = "CMB SYN"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
@@ -357,13 +371,15 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/security_synth
-	name = "Survivor - Synthetic - Colony Security Synth"
+	name = "Survivor - Synthetic - Corporate Security Synth"
+	idtype = /obj/item/card/id/silver/cl
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/rank/security2,
+		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/servicedress,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
@@ -375,6 +391,7 @@
 
 /datum/equipment_preset/synth/survivor/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
+	idtype = /obj/item/card/id/pmc
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc,
@@ -416,16 +433,16 @@
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/radiation_synth
-	name = "Survivor - Synthetic - Biohazard Synth"
+	name = "Survivor - Synthetic - Radiation Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/bio_hood,
-		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
-		WEAR_BACK = /obj/item/storage/backpack/satchel,
-		WEAR_IN_BACK = /obj/item/storage/firstaid/toxin,
+		WEAR_HEAD = /obj/item/clothing/head/radiation,
+		WEAR_BODY = /obj/item/clothing/under/marine/officer/engi,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/eng,
 		WEAR_IN_BACK = /obj/item/tool/weldingtool/hugetank,
-		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
+		WEAR_IN_BACK = /obj/item/storage/firstaid/toxin,
+		WEAR_JACKET = /obj/item/clothing/suit/radiation,
 		WEAR_WAIST = /obj/item/tank/emergency_oxygen/double,
-		WEAR_HANDS = /obj/item/clothing/gloves/black,
+		WEAR_HANDS = /obj/item/clothing/gloves/yellow,
 		WEAR_R_HAND = /obj/item/device/motiondetector,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe

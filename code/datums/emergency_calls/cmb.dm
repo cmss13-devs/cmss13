@@ -1,5 +1,5 @@
 // The Colonial Marshal Bureau, a UA Federal investigative/law enforcement functionary from Sol which oversees many colonies among the frontier. They are friendly to USCM.
-/datum/emergency_call/CMB
+/datum/emergency_call/cmb
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
 	probability = 9
@@ -14,7 +14,7 @@
 	var/cmb_observer
 
 
-/datum/emergency_call/CMB/New()
+/datum/emergency_call/cmb/New()
 	..()
 	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
 	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of our Colonial Marines may be ready to act as a QRF to reinforce you."
@@ -22,7 +22,7 @@
 	will_spawn_icc_liaison = prob(50)
 	will_spawn_cmb_observer = prob(20)
 
-/datum/emergency_call/CMB/create_member(datum/mind/M, turf/override_spawn_loc)
+/datum/emergency_call/cmb/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -31,35 +31,32 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	will_spawn_icc_liaison = prob(50)
-	will_spawn_cmb_observer = prob(20)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
+	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/synth, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/liaison, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/liaison, TRUE, TRUE)
 	else if(!cmb_observer && will_spawn_cmb_observer)
 		cmb_observer = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are an Interstellar Human Rights Observer!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/observer, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/observer, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
-		arm_equipment(mob, /datum/equipment_preset/CMB/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
 	print_backstory(mob)
 
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
-/datum/emergency_call/CMB/print_backstory(mob/living/carbon/human/M)
+/datum/emergency_call/cmb/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)
 		to_chat(M, SPAN_BOLD("You are the Colonial Marshal, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You started in the Marshals through [pick(50; "pursuing a career during college", 40;"working for law enforcement", 10;"being recruited for your skills")]."))
@@ -104,7 +101,7 @@
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 
 // Anchorpoint Station Colonial Marines, use this primarily for reinforcing or evacuating the CMB, as the CMB themselves are not equipped to handle heavy engagements.
-/datum/emergency_call/CMB/anchorpoint
+/datum/emergency_call/cmb/anchorpoint
 	name = "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)"
 	mob_max = 6
 	mob_min = 3
@@ -113,12 +110,12 @@
 	max_smartgunners = 1
 	probability = 0
 
-/datum/emergency_call/CMB/anchorpoint/New()
+/datum/emergency_call/cmb/anchorpoint/New()
 	..()
 	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station. Be advised, a QRF Team of our Colonial Marines is currently attempting to board you. Open your ports, transmitting docking codes now. Standby."
-	objectives = "QRF Team. You are here to reinforce the CMB team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
+	objectives = "QRF Team. You are here to reinforce the cmb team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
 
-/datum/emergency_call/CMB/anchorpoint/create_member(datum/mind/M, turf/override_spawn_loc)
+/datum/emergency_call/cmb/anchorpoint/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -127,32 +124,32 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are the Marine Team Leader of Anchorpoint Station!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/CMB/leader, TRUE, TRUE) // placeholder
-	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		arm_equipment(mob, /datum/equipment_preset/uscm/cmb/leader, TRUE, TRUE) // placeholder
+	else if(smartgunners < max_smartgunners && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Smartgunner of Anchorpoint Station!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/CMB/smartgunner, TRUE, TRUE)
-	else if (medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		arm_equipment(mob, /datum/equipment_preset/uscm/cmb/smartgunner, TRUE, TRUE)
+	else if (medics < max_medics && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Marine Corpsman of Anchorpoint Station!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/CMB/medic, TRUE, TRUE)
-	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+		arm_equipment(mob, /datum/equipment_preset/uscm/cmb/medic, TRUE, TRUE)
+	else if(engineers < max_engineers && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Technical Specialist of Anchorpoint Station!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/CMB/rto, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/cmb/rto, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Marine Rifleman of Anchorpoint Station!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/CMB, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/cmb, TRUE, TRUE)
 
 	print_backstory(mob)
 
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
-/datum/emergency_call/CMB/anchorpoint/print_backstory(mob/living/carbon/human/M)
+/datum/emergency_call/cmb/anchorpoint/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)
 		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Leader, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(50; "a Sol year, and a tour of duty", 40;"a couple months", 10;"six years, three tours")]."))

@@ -179,7 +179,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic(H), WEAR_JACKET)
 	add_random_survivor_medical_gear(H)
 
 
@@ -907,9 +906,11 @@
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
+	paygrade = "GS-9"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
+	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -967,7 +968,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris
 	name = "Survivor - Solaris Colonial Marshal Deputy"
-	assignment = "Solaris CMB Deputy"
+	assignment = "CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
@@ -980,7 +981,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo
 	name = "Survivor - Kutjevo Colonial Marshal Deputy"
-	assignment = "Kutjevo CMB Deputy"
+	assignment = "CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo/load_gear(mob/living/carbon/human/H)
 	add_random_kutjevo_survivor_uniform(H)
@@ -991,8 +992,8 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva
-	name = "Survivor - Shiva Colonial Marshal Deputy"
-	assignment = "Shiva Snowball CMB Deputy"
+	name = "Survivor - Shivas Colonial Marshal Deputy"
+	assignment = "CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(H), WEAR_BODY)
@@ -1012,6 +1013,9 @@
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
+	idtype = /obj/item/card/id/silver/cl
+	paygrade = "WYC2"
+	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
 
@@ -1071,7 +1075,7 @@
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
 	name = "Survivor - Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer"
+	assignment = "Interstellar Human Rights Observer(Colony)"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
@@ -1089,8 +1093,8 @@
 	..()
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/soro
-	name = "Survivor - Soro Interstellar Human Rights Observer"
-	assignment = "Interstellar Human Rights Observer"
+	name = "Survivor - Sorokyne Interstellar Human Rights Observer"
+	assignment = "Interstellar Human Rights Observer(Sorokyne)"
 
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/soro/load_gear(mob/living/carbon/human/H)

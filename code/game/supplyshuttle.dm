@@ -67,7 +67,7 @@ var/datum/controller/supply/supply_controller = new()
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	use_ripples = FALSE
 	var/list/gears = list()
-	var/list/obj/machinery/door/poddoor/railing/railings = list()
+	var/list/obj/structure/machinery/door/poddoor/railing/railings = list()
 	///The faction of this docking port (aka, on which ship it is located)
 	var/faction = FACTION_MARINE
 	/// Id of the home docking port

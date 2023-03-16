@@ -75,7 +75,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/docking_port/mobile/supply/Destroy(force)
 	for(var/i in railings)
-		var/obj/machinery/door/poddoor/railing/railing = i
+		var/obj/structure/machinery/door/poddoor/railing/railing = i
 		railing.linked_pad = null
 	railings.Cut()
 	return ..()
@@ -85,29 +85,29 @@ var/datum/controller/supply/supply_controller = new()
 	. = ..()
 	if(getDockedId() == home_id)
 		for(var/j in railings)
-			var/obj/machinery/door/poddoor/railing/R = j
+			var/obj/structure/machinery/door/poddoor/railing/R = j
 			R.open()
 
 /obj/docking_port/mobile/supply/on_ignition()
 	if(getDockedId() == home_id)
 		for(var/j in railings)
-			var/obj/machinery/door/poddoor/railing/R = j
+			var/obj/structure/machinery/door/poddoor/railing/R = j
 			R.close()
 		for(var/i in gears)
-			var/obj/machinery/gear/G = i
+			var/obj/structure/machinery/gear/G = i
 			G.start_moving(NORTH)
 	else
 		for(var/i in gears)
-			var/obj/machinery/gear/G = i
+			var/obj/structure/machinery/gear/G = i
 			G.start_moving(SOUTH)
 
 /obj/docking_port/mobile/supply/register()
 	. = ..()
-	for(var/obj/machinery/gear/G in GLOB.machines)
+	for(var/obj/structure/machinery/gear/G in GLOB.machines)
 		if(G.id == "supply_elevator_gear")
 			gears += G
 			RegisterSignal(G, COMSIG_PARENT_QDELETING, .proc/clean_gear)
-	for(var/obj/machinery/door/poddoor/railing/R in GLOB.machines)
+	for(var/obj/structure/machinery/door/poddoor/railing/R in GLOB.machines)
 		if(R.id == "supply_elevator_railing")
 			railings += R
 			RegisterSignal(R, COMSIG_PARENT_QDELETING, .proc/clean_railing)

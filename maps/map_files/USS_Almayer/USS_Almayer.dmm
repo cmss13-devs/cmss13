@@ -55,7 +55,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
 /area/almayer/engineering/engineering_workshop)
 "aak" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -137,8 +140,8 @@
 	name = "rat"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -1275,8 +1278,8 @@
 /area/almayer/lifeboat_pumps/north2)
 "aeD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	req_one_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -2180,9 +2183,9 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
-/obj/item/tool/pen{
-	pixel_x = 4;
-	pixel_y = -4
+/obj/item/tool/pen,
+/obj/structure/sign/safety/terminal{
+	pixel_x = -17
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -2195,21 +2198,17 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "ahu" = (
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 10
+	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/structure/sign/safety/terminal{
+/obj/item/trash/uscm_mre{
 	pixel_x = 7;
-	pixel_y = 29
+	pixel_y = 4
 	},
-/obj/structure/transmitter/rotary{
-	name = "Reporter Telephone";
-	phone_category = "Almayer";
-	phone_id = "Reporter";
-	pixel_x = -17;
-	pixel_y = 2
+/obj/item/reagent_container/food/snacks/mre_pack/meal1{
+	pixel_x = -13;
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -2230,22 +2229,15 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahx" = (
-/obj/item/clothing/head/helmet/marine/reporter,
-/obj/item/clothing/suit/storage/marine/light/reporter,
-/obj/item/clothing/head/cmcap/reporter,
-/obj/item/clothing/head/fedora,
-/obj/structure/closet/secure_closet,
-/obj/item/storage/box/tapes,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
+/obj/structure/closet,
+/obj/item/clothing/under/marine/engineer,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
 "ahy" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
+/obj/structure/closet,
+/obj/item/clothing/under/marine,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2407,8 +2399,8 @@
 "aib" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -2517,51 +2509,23 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aip" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -3398,15 +3362,10 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/device/camera{
-	pixel_x = -9;
-	pixel_y = 16
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 4;
+	pixel_y = 5
 	},
-/obj/item/storage/photo_album{
-	pixel_x = -6;
-	pixel_y = -17
-	},
-/obj/item/clothing/mask/cigarette/pipe,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -3465,7 +3424,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "alr" = (
-/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -5385,8 +5347,9 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "arp" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine,
+/obj/item/roller,
+/obj/item/roller,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -7531,16 +7494,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
-"axz" = (
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "axA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -7558,28 +7511,14 @@
 /area/almayer/engineering/upper_engineering)
 "axB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
-"axC" = (
-/obj/structure/surface/table/almayer,
-/obj/item/folder/yellow,
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
 "axD" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
@@ -8341,8 +8280,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	name = "Normandy Remote Control Console";
-	shuttleId = "dropship_normandy"
+	shuttleId = "dropship_normandy";
+	name = "Normandy Remote Control Console"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8361,8 +8300,8 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
-	name = "Alamo Remote Control Console";
-	shuttleId = "dropship_alamo"
+	shuttleId = "dropship_alamo";
+	name = "Alamo Remote Control Console"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8410,17 +8349,10 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aAe" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -8702,28 +8634,14 @@
 	},
 /area/almayer/command/telecomms)
 "aBa" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -8780,39 +8698,18 @@
 	},
 /area/almayer/command/telecomms)
 "aBg" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32
@@ -8834,19 +8731,12 @@
 /obj/item/tool/pen,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft,
-/obj/structure/machinery/door/window/westright,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
-"aBj" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "aBk" = (
@@ -8863,10 +8753,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "aBm" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -9340,7 +9227,6 @@
 /area/almayer/engineering/upper_engineering)
 "aDi" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -9365,14 +9251,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/aft_hallway)
-"aDl" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "aDm" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -9436,12 +9314,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
-"aDu" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver"
-	},
-/area/almayer/hallways/stern_hallway)
 "aDv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -9450,12 +9322,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/cic)
-"aDw" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
 "aDx" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -9870,7 +9736,7 @@
 "aFl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 8
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -9962,6 +9828,10 @@
 /obj/item/storage/toolbox/electrical,
 /obj/item/circuitboard/apc,
 /obj/item/tool/screwdriver,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -10356,9 +10226,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
-	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	no_panel = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10374,9 +10244,9 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
-	no_panel = 1;
 	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	no_panel = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10594,12 +10464,16 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
+"aIM" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_a_s)
 "aIQ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper XO's Quarters";
-	req_access = null;
-	req_access_txt = "1"
+	req_access_txt = "1";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10761,9 +10635,6 @@
 /area/almayer/engineering/upper_engineering)
 "aJk" = (
 /obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -13399,12 +13270,9 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "aWb" = (
-/obj/structure/machinery/power/monitor{
-	name = "Main Power Grid Monitoring"
-	},
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "orange"
+	dir = 1;
+	icon_state = "orangecorner"
 	},
 /area/almayer/engineering/ce_room)
 "aWc" = (
@@ -16871,26 +16739,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
@@ -17897,12 +17751,8 @@
 	pixel_y = 10
 	},
 /obj/item/trash/buritto,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -18210,15 +18060,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
-"buV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "buW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -18522,12 +18363,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
-"bwA" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering)
 "bwF" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -21513,12 +21348,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure{
-	desc = "A pneumatic waste disposal unit. It does an exemplary job as a table. In fact, it deserves a medal.";
-	icon = 'icons/obj/pipes/disposal.dmi';
-	icon_state = "condisposal";
-	name = "broken disposal unit"
-	},
+/obj/structure/machinery/disposal/broken,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	layer = 3.1;
 	pixel_x = -7;
@@ -25357,17 +25187,10 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -25525,12 +25348,12 @@
 /area/almayer/living/cryo_cells)
 "ccc" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = -25
+	pixel_y = -25;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -25944,9 +25767,9 @@
 	pixel_y = -7
 	},
 /obj/structure/transmitter/rotary{
-	name = "Flight Deck Telephone";
 	phone_category = "Almayer";
 	phone_id = "Flight Deck";
+	name = "Flight Deck Telephone";
 	pixel_y = 8
 	},
 /turf/open/floor/almayer{
@@ -27013,16 +26836,9 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "ckD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -28092,6 +27908,35 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
+"ctx" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	icon_state = "abed";
+	pixel_y = 12;
+	layer = 3.5
+	},
+/obj/item/bedsheet/orange{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/orange{
+	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "ctC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -28340,6 +28185,22 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
+"cBj" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "cBl" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
@@ -28476,6 +28337,13 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/grunt_rnr)
+"cDW" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/hull/upper_hull/u_a_p)
 "cEg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp{
@@ -29175,26 +29043,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
 "cWI" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -29319,6 +29173,35 @@
 /obj/item/tool/lighter,
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
+"cZW" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	icon_state = "abed";
+	pixel_y = 12;
+	layer = 3.5
+	},
+/obj/item/bedsheet/orange{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/orange{
+	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "daj" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -29411,6 +29294,9 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = -17
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -29451,28 +29337,14 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -29690,15 +29562,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/computerlab)
-"diD" = (
-/obj/structure/sign/safety/cryo{
-	pixel_x = -19
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "diF" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
@@ -29969,6 +29832,12 @@
 	icon_state = "orange"
 	},
 /area/almayer/squads/bravo)
+"dnH" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/engineering/upper_engineering)
 "dnJ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -29987,6 +29856,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
+"dod" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "dof" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Upper Engineering"
@@ -30309,6 +30182,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"duF" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "duT" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -30608,36 +30488,16 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "dCh" = (
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water"
-	},
-/obj/structure{
+/obj/structure/prop/invuln/pipe_water,
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -30784,7 +30644,7 @@
 "dEt" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
-	name = "\improper Engineering Dorms"
+	name = "\improper Engineering South Hall"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -31017,13 +30877,33 @@
 	},
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
-"dJo" = (
-/obj/structure/largecrate/supply/supplies/mre,
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer{
-	icon_state = "plate"
+"dKm" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
 	},
-/area/almayer/hull/upper_hull/u_a_p)
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/hallways/stern_hallway)
 "dKp" = (
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
@@ -32221,15 +32101,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "emG" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -32312,6 +32185,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/containment)
+"eoG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "eoP" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -32545,6 +32425,33 @@
 	icon_state = "plating_striped"
 	},
 /area/almayer/command/lifeboat)
+"ets" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2;
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/engineering/upper_engineering)
 "etB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/sign/safety/storage{
@@ -32611,8 +32518,8 @@
 	pixel_x = -6
 	},
 /obj/item/paper_bin/uscm{
-	pixel_x = 8;
-	pixel_y = 12
+	pixel_y = 12;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -33031,12 +32938,32 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
 "eFK" = (
-/obj/structure/largecrate/random,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	icon_state = "abed";
+	pixel_y = 12;
+	layer = 3.5
+	},
+/obj/item/bedsheet/orange{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/orange{
+	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	dir = 9;
+	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "eFT" = (
@@ -33134,15 +33061,8 @@
 /area/almayer/squads/req)
 "eHf" = (
 /obj/structure/machinery/light/small,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -33155,32 +33075,16 @@
 	},
 /area/almayer/command/corporateliason)
 "eHq" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -15
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -33330,12 +33234,8 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "eMh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = null;
-	req_one_access_txt = "2;7"
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Laundry Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -33360,6 +33260,10 @@
 "eNi" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/ce_room)
+"eNv" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "eNx" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
@@ -33451,17 +33355,10 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "ePs" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_s)
@@ -33618,8 +33515,8 @@
 	icon_state = "S"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
@@ -34308,12 +34205,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engine_core)
-"fjh" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "fjO" = (
 /obj/item/tool/wet_sign,
 /obj/effect/decal/cleanable/blood,
@@ -34373,8 +34264,8 @@
 "fmf" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	dir = 2;
-	name = "\improper Requisitions Break Room";
-	req_one_access = "2;21"
+	req_one_access = "2;21";
+	name = "\improper Requisitions Break Room"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34618,16 +34509,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig/armory)
-"frX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "fsd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -34643,8 +34524,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Cryogenics Bay";
-	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -34882,15 +34763,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower_engineering)
 "fxz" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/effect/landmark/yautja_teleport,
 /obj/structure/sign/safety/hvac_old{
@@ -34988,6 +34862,14 @@
 /obj/item/tool/pen,
 /obj/item/folder/black,
 /obj/item/storage/fancy/cigarettes/kpack,
+/obj/structure/machinery/door_control{
+	id = "CE Office Shutters";
+	name = "CE Office Shutters";
+	pixel_y = 18;
+	req_one_access_txt = "1;6";
+	pixel_x = -6;
+	req_access_txt = list()
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
 "fAa" = (
@@ -35391,8 +35273,8 @@
 /area/almayer/medical/lower_medical_medbay)
 "fIX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	name = "\improper Requisitions Auxiliary Storage Room";
-	req_one_access = "19;21"
+	req_one_access = "19;21";
+	name = "\improper Requisitions Auxiliary Storage Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35514,8 +35396,8 @@
 "fKT" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
-	pixel_x = 8;
-	pixel_y = 32
+	pixel_y = 32;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -35702,10 +35584,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"fQl" = (
-/obj/structure/machinery/light,
-/turf/open/floor/wood/ship,
-/area/almayer/engineering/ce_room)
 "fQu" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "CMO Shutters";
@@ -35816,26 +35694,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -36078,34 +35942,20 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
 "gcN" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Senior Enlisted Advisor's Office";
-	req_access = null;
-	req_access_txt = "19;29"
+	req_access_txt = "19;29";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -36180,9 +36030,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
+	shuttleId = "dropship_normandy";
 	name = "Normandy Remote Control Console";
-	pixel_y = -12;
-	shuttleId = "dropship_normandy"
+	pixel_y = -12
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -36512,6 +36362,10 @@
 	pixel_x = -20;
 	pixel_y = 18
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = -16
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "gls" = (
@@ -36580,8 +36434,8 @@
 "gol" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -36604,6 +36458,16 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"gpc" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering North Hall"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/upper_engineering)
 "gpe" = (
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
@@ -36720,6 +36584,10 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"gsZ" = (
+/obj/effect/landmark/start/tech,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/upper_engineering)
 "gte" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36810,40 +36678,19 @@
 /area/almayer/command/cic)
 "gvC" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
@@ -36901,12 +36748,8 @@
 	},
 /area/almayer/squads/req)
 "gwF" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -37444,7 +37287,9 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
 	name = "\improper Chief Engineer's Bunk";
-	no_panel = 1
+	no_panel = 1;
+	req_one_access_txt = "1;6";
+	req_access = list()
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -37567,6 +37412,22 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
+"gLz" = (
+/obj/structure/machinery/cryopod{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "gLB" = (
 /turf/open/floor/almayer/research/containment/entrance{
 	dir = 8
@@ -37650,15 +37511,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/engine_core)
-"gNi" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	id = "engidorm_2";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
 "gNq" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
@@ -37687,6 +37539,13 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
+"gPF" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/hallways/stern_hallway)
 "gQl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/bucket{
@@ -37967,51 +37826,23 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "gYS" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = -17
@@ -39048,8 +38879,8 @@
 "hzx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Chief MP's Office";
-	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -39219,9 +39050,9 @@
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = 32
 	},
-/obj/item/cane,
-/obj/item/cane,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -39750,13 +39581,6 @@
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
-"hQX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/device/binoculars,
-/obj/item/device/flash,
-/turf/open/floor/wood/ship,
-/area/almayer/engineering/ce_room)
 "hQY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -39777,6 +39601,12 @@
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = -15
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -39800,20 +39630,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/execution)
-"hSf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 2
-	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "hSu" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -39865,17 +39681,10 @@
 	},
 /area/almayer/living/grunt_rnr)
 "hTk" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -39899,8 +39708,8 @@
 	pixel_y = 26
 	},
 /obj/structure/machinery/recharge_station{
-	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
-	name = "Working Joe charging station"
+	name = "Working Joe charging station";
+	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived."
 	},
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
@@ -39935,14 +39744,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
-"hUO" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_20"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering)
 "hUR" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -40188,6 +39989,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
+"iat" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/upper_engineering)
 "iaR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -40378,7 +40185,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/staff/gentcane{
+/obj/item/weapon/melee/pole/fancy_cane{
 	pixel_x = 5
 	},
 /turf/open/floor/wood/ship,
@@ -40471,15 +40278,8 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "iiP" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
@@ -40624,6 +40424,13 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"inw" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/almayer/engineering/upper_engineering)
 "inC" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -40745,8 +40552,8 @@
 /area/almayer/squads/req)
 "iqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = null;
-	req_one_access_txt = "19;27"
+	req_one_access_txt = "19;27";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -40760,6 +40567,17 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"iqH" = (
+/obj/item/trash/chips{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/obj/item/trash/cheesie,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "irn" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -41196,15 +41014,8 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "iBG" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/reagent_dispensers/fueltank{
 	anchored = 1
@@ -41306,13 +41117,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
-"iFe" = (
-/obj/structure/largecrate/supply/generator,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "iFm" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41334,6 +41138,7 @@
 "iFC" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
+/obj/item/clothing/ears/earmuffs,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -41541,14 +41346,10 @@
 	},
 /area/almayer/squads/alpha)
 "iKD" = (
-/obj/structure/bed{
-	icon_state = "psychbed"
-	},
-/obj/item/bedsheet/orange,
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	density = 0;
-	pixel_y = 30
-	},
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/device/flash,
+/obj/item/device/binoculars,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "iKI" = (
@@ -41692,14 +41493,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
-"iOl" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/upper_engineering)
 "iOp" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -41812,13 +41605,9 @@
 	dir = 2;
 	req_one_access = list(2,34,30)
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -42117,6 +41906,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"iYj" = (
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/hallways/stern_hallway)
 "iYp" = (
 /obj/item/paper/almayer_storage,
 /turf/open/floor/plating/plating_catwalk,
@@ -42264,26 +42063,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -42312,11 +42097,14 @@
 	},
 /area/almayer/hull/lower_hull/l_a_s)
 "jbH" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
 /turf/open/floor/almayer{
+	dir = 8;
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
@@ -42793,7 +42581,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/bolted{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -42848,6 +42636,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/captain_mess)
+"jmQ" = (
+/obj/effect/landmark/start/maint,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/upper_engineering)
 "jmR" = (
 /obj/structure/ladder/fragile_almayer{
 	height = 2;
@@ -42919,6 +42714,12 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
+"joh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/engineering/ce_room)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -42947,12 +42748,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"jpq" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "jpt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -43061,23 +42856,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
-"juU" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 10;
-	pixel_y = -26
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "juX" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -43216,6 +42994,11 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/engine_core)
+"jyE" = (
+/obj/structure/machinery/light,
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/ce_room)
 "jyR" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_one_access_txt = "7;23;27"
@@ -43286,6 +43069,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/morgue)
+"jBB" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/firealarm,
+/obj/item/circuitboard,
+/obj/item/clipboard,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_a_s)
 "jBO" = (
 /obj/structure/closet/secure_closet/hydroresearch,
 /obj/structure/machinery/power/apc/almayer{
@@ -43688,14 +43480,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"jNu" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "jOi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -43778,15 +43562,8 @@
 	},
 /area/almayer/medical/upper_medical)
 "jPf" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_s)
@@ -43798,15 +43575,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"jQt" = (
-/obj/structure/sign/safety/cryo{
-	pixel_x = -1;
-	pixel_y = -26
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "jQA" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -43967,6 +43735,13 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/upper_medical)
+"jUL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_a_s)
 "jUW" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -44300,6 +44075,13 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/port_hallway)
+"kff" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/hallways/stern_hallway)
 "kfp" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 8;
@@ -44515,8 +44297,8 @@
 	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /obj/item/toy/plushie_cade,
 /turf/open/floor/almayer{
@@ -44703,34 +44485,24 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kpQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/machinery/door_control{
+	id = "engidorm";
+	pixel_x = 25;
+	pixel_y = 2
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer{
+	dir = 4;
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "kpX" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -44847,15 +44619,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
-"kru" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	id = "engidorm_1";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
 "krN" = (
 /obj/structure/machinery/conveyor{
 	id = "req_belt"
@@ -45086,8 +44849,8 @@
 "kxL" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/structure/largecrate/random/mini/wooden{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = 4
 	},
 /obj/item/storage/box/uscm_mre,
 /obj/item/storage/box/uscm_mre,
@@ -45240,15 +45003,8 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "kAs" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -45408,9 +45164,9 @@
 /area/almayer/medical/lower_medical_medbay)
 "kFO" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
 	id = "crate_room2";
-	name = "\improper Storage Shutters"
+	name = "\improper Storage Shutters";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -45511,6 +45267,10 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "kIf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "kIm" = (
@@ -45552,13 +45312,13 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower_engineering)
 "kJG" = (
-/obj/structure/largecrate/supply/supplies/water,
 /obj/item/toy/deck{
 	pixel_y = 12
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32
 	},
+/obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45606,8 +45366,8 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "kLc" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -45816,6 +45576,7 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = -17
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45851,6 +45612,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_three)
+"kRu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "kRP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -45966,12 +45739,8 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "kTN" = (
 /obj/structure/machinery/light,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
-	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
+	icon_state = "orangecorner"
 	},
 /area/almayer/engineering/ce_room)
 "kTY" = (
@@ -46004,6 +45773,24 @@
 /obj/item/frame/table,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
+"kUw" = (
+/obj/structure/surface/rack,
+/obj/item/storage/bag/trash{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "kUV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -46215,7 +46002,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "laQ" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
 	name = "\improper Engineering Reception"
 	},
@@ -46480,6 +46269,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
+"lhJ" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = 12;
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "lhL" = (
 /obj/structure/sign/safety/life_support{
 	pixel_x = 8;
@@ -46752,15 +46551,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
 "lpX" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -47099,8 +46891,8 @@
 "lwi" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "2;7"
+	req_one_access_txt = "2;7";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -47581,23 +47373,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -15
 	},
@@ -47617,15 +47398,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "lGr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -47912,9 +47686,9 @@
 /obj/structure/machinery/door_control{
 	id = "cmp_armory";
 	name = "Armory Lockdown";
-	pixel_x = 24;
+	req_access_txt = "4";
 	pixel_y = -6;
-	req_access_txt = "4"
+	pixel_x = 24
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -47970,9 +47744,9 @@
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
 	id = "crate_room";
-	name = "\improper Storage Shutters"
+	name = "\improper Storage Shutters";
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
@@ -47985,6 +47759,25 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/operating_room_two)
+"lPB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/lightreplacer,
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "lPC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -48217,6 +48010,15 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"lYk" = (
+/obj/item/trash/c_tube{
+	pixel_x = 16;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "lYu" = (
 /obj/item/tool/wet_sign,
 /obj/structure/disposalpipe/segment,
@@ -48438,26 +48240,12 @@
 	},
 /area/almayer/squads/alpha)
 "mfe" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -48539,21 +48327,9 @@
 	},
 /area/almayer/hallways/hangar)
 "mhl" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/almayer{
@@ -48568,15 +48344,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
-"mhp" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	dir = 1;
-	name = "\improper War Correspondent Office"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hull/upper_hull/u_m_s)
 "mhI" = (
 /obj/structure/machinery/vending/cigarette{
 	density = 0;
@@ -48597,12 +48364,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
-"mif" = (
-/obj/structure/sign/safety/commline_connection{
-	pixel_x = 8
-	},
-/turf/closed/wall/almayer,
-/area/almayer/engineering/ce_room)
 "miE" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -48903,7 +48664,7 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "mqo" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/bolted{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -49151,26 +48912,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/autoopenclose{
 	pixel_y = 32
@@ -49216,15 +48963,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "mzb" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/bed/chair{
 	dir = 4
@@ -49401,8 +49141,8 @@
 /obj/structure/machinery/photocopier,
 /obj/item/paper{
 	color = "grey";
-	info = "This is seemingly a photocopy of an image, containing.. OH GOD, WHY, GET IT OUT OF MY SIGHT";
 	name = "photocopied image";
+	info = "This is seemingly a photocopy of an image, containing.. OH GOD, WHY, GET IT OUT OF MY SIGHT";
 	pixel_y = 5
 	},
 /obj/structure/sign/safety/rad_shield{
@@ -49878,12 +49618,8 @@
 /area/space/almayer/lifeboat_dock)
 "mNZ" = (
 /obj/item/trash/uscm_mre,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -49939,6 +49675,16 @@
 	dir = 6
 	},
 /area/almayer/command/lifeboat)
+"mPh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 2;
+	name = "\improper Engineering South Hall"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/upper_engineering)
 "mPj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -49999,26 +49745,15 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "mRc" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
+	pixel_x = -16;
 	pixel_y = -16
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "mRl" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -50071,8 +49806,8 @@
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access = null;
-	req_one_access_txt = "19;30"
+	req_one_access_txt = "19;30";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -50470,22 +50205,11 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "ndM" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
@@ -50729,10 +50453,17 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "\improper Chief Engineer's Office";
-	req_one_access = null;
-	req_one_access_txt = "1;6"
+	req_one_access_txt = "1;6";
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CE Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -50947,26 +50678,12 @@
 	pixel_y = 9
 	},
 /obj/item/storage/toolbox/mechanical/green,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51198,9 +50915,9 @@
 /obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
 	name = "CMP Office Shutters";
-	pixel_x = -24;
+	req_one_access_txt = "24;31";
 	pixel_y = 8;
-	req_one_access_txt = "24;31"
+	pixel_x = -24
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
@@ -51266,30 +50983,23 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "nub" = (
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_m_s)
-"nun" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/bed/chair{
+	dir = 8
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/sign/safety/maint{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/starboard_garden)
+"nun" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
+	},
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51663,6 +51373,19 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/medical_science)
+"nDL" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/obj/item/stack/tile/carpet{
+	amount = 20
+	},
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "nDM" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -51941,8 +51664,7 @@
 /area/almayer/command/lifeboat)
 "nJy" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_x = -18
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51965,12 +51687,7 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "nLb" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure{
-	desc = "You can't see anything behind the screen, it looks half human and half machine.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "arcadeb";
-	name = "Spirit Phone, The Game, The Movie: II"
-	},
+/obj/structure/prop/broken_arcade,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -51986,6 +51703,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/starboard_hallway)
+"nLk" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "nLt" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -52154,15 +51878,8 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "nPs" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
@@ -52204,10 +51921,10 @@
 /area/almayer/command/lifeboat)
 "nPT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	desc = "These shutters seem to be pretty poorly mantained and almost wedged into the room.. you're not sure if these are official.";
-	dir = 4;
 	id = "crate_room4";
-	name = "dilapidated storage shutters"
+	name = "dilapidated storage shutters";
+	dir = 4;
+	desc = "These shutters seem to be pretty poorly mantained and almost wedged into the room.. you're not sure if these are official."
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -52397,6 +52114,12 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
+"nWN" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/ce_room)
 "nXm" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1
@@ -52481,12 +52204,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
-"nZL" = (
-/obj/structure/machinery/photocopier,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_m_s)
 "oap" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -52749,11 +52466,32 @@
 	},
 /area/almayer/command/lifeboat)
 "oih" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/structure/bed{
+	icon_state = "abed";
+	pixel_y = 12;
+	layer = 3.5
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/item/bedsheet/orange{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/orange{
+	layer = 3.2
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	dir = 5;
+	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "oit" = (
@@ -52765,15 +52503,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/shipboard/port_missiles)
-"oiC" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "oiL" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -53005,15 +52734,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
-"oni" = (
-/obj/structure/surface/rack,
-/obj/item/clipboard,
-/obj/item/circuitboard,
-/obj/item/circuitboard/firealarm,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "onN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/disposalpipe/segment{
@@ -53616,10 +53336,6 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/north1)
-"oBg" = (
-/obj/effect/landmark/start/engineering,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/engineering/upper_engineering)
 "oBq" = (
 /obj/structure/bed,
 /obj/structure/machinery/flasher{
@@ -53887,12 +53603,11 @@
 	},
 /area/almayer/squads/charlie)
 "oHl" = (
-/obj/structure/machinery/cryopod{
-	layer = 3.1;
-	pixel_y = 13
-	},
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical,
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 10;
+	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "oHx" = (
@@ -53926,16 +53641,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
-"oIX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "orangecorner"
-	},
-/area/almayer/engineering/upper_engineering)
 "oJp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -54115,7 +53820,10 @@
 /area/almayer/command/lifeboat)
 "oNb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/ears/earmuffs,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 15
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -54350,13 +54058,13 @@
 "oTe" = (
 /obj/item/prop/almayer/box,
 /obj/item/prop{
+	name = "broken M57 'Larry's Will' smartgun";
 	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
 	icon_state = "m56c";
 	item_state = "m56c";
-	name = "broken M57 'Larry's Will' smartgun";
-	pixel_x = -7;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = -7
 	},
 /obj/item/frame/light_fixture/small{
 	pixel_y = 17
@@ -54482,26 +54190,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 8;
@@ -54762,15 +54456,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
-"pga" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/upper_engineering)
 "pgo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54840,15 +54525,6 @@
 "pji" = (
 /turf/closed/wall/almayer,
 /area/almayer/hallways/stern_hallway)
-"pjt" = (
-/obj/structure/surface/rack,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "pjw" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -54937,8 +54613,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
 	name = "Brig";
-	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -54957,6 +54633,9 @@
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NS-center"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -55029,13 +54708,23 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/bolted{
 	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/perma)
+"ppc" = (
+/obj/structure/largecrate/supply/generator,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/hull/upper_hull/u_a_p)
 "ppe" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -55408,26 +55097,12 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pzi" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -55693,16 +55368,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
-"pGF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "pGG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
@@ -55997,6 +55662,11 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -56267,26 +55937,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "pUY" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -56451,28 +56107,14 @@
 	},
 /area/almayer/squads/alpha)
 "pXn" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -56678,6 +56320,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
+"qbZ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	name = "\improper Engineering Bunks";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/upper_engineering)
 "qce" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/almayer{
@@ -57098,26 +56749,12 @@
 	},
 /area/almayer/living/pilotbunks)
 "qnP" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -57318,9 +56955,7 @@
 /area/almayer/hull/lower_hull/l_a_s)
 "qsL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/ce_room)
 "qtv" = (
 /obj/structure/disposalpipe/segment,
@@ -57598,7 +57233,12 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "qAA" = (
-/obj/structure/machinery/suit_storage_unit/carbon_unit,
+/obj/structure/machinery/power/monitor{
+	name = "Main Power Grid Monitoring"
+	},
+/obj/structure/sign/safety/commline_connection{
+	pixel_x = 32
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -57781,16 +57421,9 @@
 /area/almayer/squads/delta)
 "qFQ" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
@@ -58233,15 +57866,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"qQI" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "qQM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -58913,12 +58537,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/port_emb)
-"rhR" = (
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/start/liaison/reporter,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
 "rix" = (
 /obj/structure/largecrate/supply/ammo/m41a/half,
 /obj/structure/largecrate/supply/ammo/pistol/half{
@@ -59150,14 +58768,6 @@
 "rne" = (
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliason)
-"rnB" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "rnM" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer{
@@ -59174,6 +58784,10 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/upper_medical)
+"rob" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/upper_engineering)
 "rou" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -59223,26 +58837,12 @@
 	},
 /area/almayer/command/cichallway)
 "rpW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -59355,22 +58955,8 @@
 	},
 /area/almayer/hallways/port_hallway)
 "rsj" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
@@ -59500,15 +59086,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/charlie)
-"rwm" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	id = "engidorm_3";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/engineering/upper_engineering)
 "rwv" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/bravo,
@@ -59565,13 +59142,9 @@
 	},
 /area/almayer/command/computerlab)
 "rxV" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Engineering Dorm #1"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/obj/structure/barricade/handrail,
+/obj/structure/largecrate/supply/generator,
+/turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "ryt" = (
 /obj/structure/pipes/standard/manifold/visible,
@@ -59588,16 +59161,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"ryO" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "2;7"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/upper_engineering)
 "ryR" = (
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
 	req_access = list(1)
@@ -59616,8 +59179,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
-	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -59696,15 +59259,8 @@
 /area/almayer/squads/alpha)
 "rBa" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo"
@@ -59760,18 +59316,12 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rBV" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair/bolted,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/main_office)
-"rBZ" = (
-/obj/structure/machinery/power/apc/almayer,
-/turf/open/floor/almayer{
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "rCp" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/small{
@@ -60135,6 +59685,28 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"rJh" = (
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/storage/backpack/marine/satchel{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "rJu" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -60159,15 +59731,8 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rJD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/machinery/cm_vending/own_points/experimental_tools,
 /turf/open/floor/almayer,
@@ -60187,8 +59752,8 @@
 	indestructible = 1;
 	name = "Shutters";
 	pixel_y = 25;
-	req_one_access_txt = "201";
-	use_power = 0
+	use_power = 0;
+	req_one_access_txt = "201"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -60334,6 +59899,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
+"rPt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/engineering/ce_room)
 "rPC" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -61151,9 +60723,9 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 8;
+	shuttleId = "dropship_alamo";
 	name = "Alamo Remote Control Console";
-	pixel_y = 12;
-	shuttleId = "dropship_alamo"
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -61301,6 +60873,20 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/req)
+"snE" = (
+/obj/structure/machinery/cryopod/right,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "snM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -61381,6 +60967,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"soQ" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hull/upper_hull/u_a_s)
 "soS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -61702,13 +61295,9 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "sxe" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -61859,10 +61448,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	dir = 1;
-	id_tag = "CO-Office";
 	name = "\improper Commanding Officer's Office";
 	req_access = null;
-	req_access_txt = "31"
+	req_access_txt = "31";
+	id_tag = "CO-Office"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -62120,10 +61709,19 @@
 /turf/open/floor/almayer/uscm/directional,
 /area/almayer/command/lifeboat)
 "sGL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/lightreplacer,
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering)
 "sGU" = (
@@ -62485,13 +62083,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"sRD" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/toolbox/electrical,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering)
 "sRI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wirecutters/clippers,
@@ -62529,11 +62120,11 @@
 	dir = 8
 	},
 /obj/structure/reagent_dispensers/beerkeg/alt_dark{
-	anchored = 1;
-	chemical = null;
-	density = 0;
 	pixel_x = -7;
-	pixel_y = 10
+	pixel_y = 10;
+	anchored = 1;
+	density = 0;
+	chemical = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -63269,8 +62860,8 @@
 "tiR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	req_one_access = null;
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "7;19";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -63467,26 +63058,12 @@
 /turf/open/floor/almayer/research/containment/corner3,
 /area/almayer/medical/containment/cell)
 "tpg" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -63569,26 +63146,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -63649,10 +63212,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "tst" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/radio,
+/obj/structure/machinery/cryopod/right,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering)
 "tsv" = (
@@ -63789,15 +63359,6 @@
 "tuA" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/port_missiles)
-"tuB" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "tuN" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -64201,12 +63762,12 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "tGd" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_20"
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -64392,29 +63953,15 @@
 /area/almayer/hallways/hangar)
 "tIU" = (
 /obj/structure/platform,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -64727,16 +64274,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "tSr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -64823,8 +64363,8 @@
 	pixel_y = 29
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65046,31 +64586,28 @@
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "tZP" = (
-/obj/structure/machinery/door_control{
-	id = "engidorm_3";
-	pixel_x = 23;
-	pixel_y = 11
+/obj/structure/surface/rack,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/obj/item/bedsheet/orange,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering)
 "tZZ" = (
-/obj/structure/bed{
-	icon_state = "abed"
+/obj/structure/machinery/cryopod,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
-/obj/item/bedsheet/orange,
-/obj/structure/machinery/door_control{
-	id = "engidorm_1";
-	pixel_x = 23;
-	pixel_y = 11
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering)
 "uaa" = (
@@ -65230,15 +64767,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/evidence_storage)
-"ueF" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "ueG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/radio,
+/obj/item/bedsheet/orange,
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	density = 0;
+	pixel_y = 30
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "ueZ" = (
@@ -65347,15 +64884,8 @@
 /turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "uia" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -65625,6 +65155,19 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/offices)
+"upR" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/safety/cryo{
+	pixel_x = 7;
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "uqa" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -66459,6 +66002,7 @@
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = 32
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -66778,15 +66322,8 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "uNW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -66811,15 +66348,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
-"uPd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
-/area/almayer/engineering/upper_engineering)
 "uPr" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -66915,24 +66443,13 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "uRI" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/almayer{
@@ -67043,10 +66560,26 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"uUe" = (
-/obj/structure/reagent_dispensers/watertank,
+"uTZ" = (
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
+"uUe" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
 	},
 /area/almayer/engineering/upper_engineering)
 "uUi" = (
@@ -67087,13 +66620,14 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "uUz" = (
-/obj/structure/machinery/cryopod/right,
-/obj/structure/machinery/light{
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	id = "engidorm";
+	name = "\improper Privacy Shutters";
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
+/turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "uUO" = (
 /obj/structure/surface/table/almayer,
@@ -67200,8 +66734,8 @@
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
 /obj/item/trash/cigbutt{
-	pixel_x = 1;
-	pixel_y = 8
+	pixel_y = 8;
+	pixel_x = 1
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
 	pixel_x = -9;
@@ -67321,8 +66855,8 @@
 /area/almayer/living/basketball)
 "vak" = (
 /obj/structure/sign/safety/security{
-	pixel_x = 15;
-	pixel_y = 32
+	pixel_y = 32;
+	pixel_x = 15
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_umbilical)
@@ -67871,40 +67405,19 @@
 /turf/closed/wall/almayer/white/outer_tile,
 /area/almayer/medical/medical_science)
 "vkD" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
@@ -67977,15 +67490,8 @@
 	},
 /area/almayer/hallways/hangar)
 "vmK" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -68020,25 +67526,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"vnW" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_a_s)
-"voi" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "vot" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68056,17 +67543,10 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "voA" = (
 /obj/structure/platform_decoration,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -68227,26 +67707,12 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "vsV" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -68354,6 +67820,9 @@
 	},
 /obj/structure/sign/safety/suit_storage{
 	pixel_x = 32
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -68465,14 +67934,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"vye" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "vyg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data,
@@ -68545,10 +68006,7 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "vzK" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "orange"
-	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/ce_room)
 "vzP" = (
 /obj/structure/surface/table/almayer,
@@ -68691,15 +68149,8 @@
 /turf/open/floor/almayer/research/containment/corner2,
 /area/almayer/medical/containment/cell)
 "vEj" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating/plating_catwalk,
@@ -68892,15 +68343,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -69108,26 +68552,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
 "vPr" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -69289,6 +68719,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
+"vSE" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange"
+	},
+/area/almayer/engineering/upper_engineering)
 "vSG" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
@@ -69542,6 +68979,15 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower_engineering)
+"vXd" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	id = "engidorm";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/engineering/upper_engineering)
 "vXQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -69826,20 +69272,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
-"wdW" = (
-/obj/structure/bed{
-	icon_state = "abed"
-	},
-/obj/item/bedsheet/orange,
-/obj/structure/machinery/door_control{
-	id = "engidorm_2";
-	pixel_x = 23;
-	pixel_y = 11
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering)
 "wei" = (
 /obj/structure/machinery/door_display/research_cell{
 	dir = 4;
@@ -69967,14 +69399,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
-"wgm" = (
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hull/upper_hull/u_a_s)
 "wgo" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -70069,6 +69493,16 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"wiG" = (
+/obj/structure/sign/poster{
+	pixel_x = -30;
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/engineering/ce_room)
 "wiI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/juicer{
@@ -70165,6 +69599,14 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/command/cichallway)
+"wkX" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/engineering/upper_engineering)
 "wlb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
@@ -70735,26 +70177,12 @@
 /area/almayer/hallways/stern_hallway)
 "wyO" = (
 /obj/structure/largecrate/random/barrel/red,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
@@ -71006,9 +70434,12 @@
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "wGd" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer{
-	icon_state = "cargo"
+	dir = 8;
+	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering)
 "wGi" = (
@@ -71117,8 +70548,8 @@
 /obj/structure/machinery/door/airlock/almayer/research/reinforced{
 	dir = 1;
 	name = "\improper CMO's Bedroom";
-	req_access = null;
-	req_one_access_txt = "1;5"
+	req_one_access_txt = "1;5";
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -71315,6 +70746,13 @@
 /obj/structure/platform,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"wOh" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orangecorner"
+	},
+/area/almayer/hallways/stern_hallway)
 "wOt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -71436,6 +70874,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"wSk" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangecorner"
+	},
+/area/almayer/hallways/stern_hallway)
 "wSm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71492,6 +70939,14 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"wTJ" = (
+/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer,
+/area/almayer/engineering/upper_engineering)
 "wTM" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light,
@@ -71528,48 +70983,20 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/aft_hallway)
 "wUD" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
-	},
 /obj/structure/prop/almayer/computers/sensor_computer3,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -71856,6 +71283,13 @@
 /area/almayer/medical/lower_medical_medbay)
 "wYY" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CE Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/ce_room)
 "wZa" = (
@@ -72151,46 +71585,18 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "xgM" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -72225,9 +71631,8 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
 "xhE" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
+/obj/structure/bed/chair/bolted{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/main_office)
@@ -72366,8 +71771,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "orange"
+	dir = 4;
+	icon_state = "orangecorner"
 	},
 /area/almayer/engineering/ce_room)
 "xlD" = (
@@ -72422,8 +71827,8 @@
 "xmJ" = (
 /obj/structure/closet,
 /obj/structure/sign/safety/bathunisex{
-	pixel_x = 8;
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -72546,8 +71951,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	name = "\improper Brig";
-	req_access = null;
-	req_one_access_txt = "1;3"
+	req_one_access_txt = "1;3";
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -72628,6 +72033,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
 "xrN" = (
+/obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red"
@@ -72673,8 +72079,8 @@
 "xtC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access = null;
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -73021,9 +72427,8 @@
 	},
 /area/almayer/medical/hydroponics)
 "xAj" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
+/obj/structure/bed/chair/bolted{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -73124,8 +72529,8 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /obj/item/reagent_container/food/drinks/cans/cola{
-	pixel_x = -2;
-	pixel_y = 16
+	pixel_y = 16;
+	pixel_x = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -73465,40 +72870,19 @@
 /area/almayer/living/synthcloset)
 "xKW" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -14;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
@@ -73920,6 +73304,18 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
+"xTt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/stern_hallway)
 "xTR" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -74173,13 +73569,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "xZI" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 16;
 	pixel_y = -16
 	},
@@ -74278,12 +73670,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "ybS" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -74462,16 +73850,16 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/crushed_cup,
 /obj/item/reagent_container/food/drinks/cup{
-	pixel_x = -5;
-	pixel_y = 9
+	pixel_y = 9;
+	pixel_x = -5
 	},
 /obj/item/spacecash/c10{
 	pixel_x = 5;
 	pixel_y = 10
 	},
 /obj/item/ashtray/plastic{
-	pixel_x = 5;
-	pixel_y = -10
+	pixel_y = -10;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -74510,17 +73898,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
-"yhz" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/safety/maint{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/starboard_garden)
 "yhI" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -74556,12 +73933,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
-"yiH" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering)
 "yiW" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
@@ -104567,9 +103938,9 @@ acf
 aJW
 ale
 bDD
+nub
 bDD
-bDD
-yhz
+ale
 aJW
 ado
 kHT
@@ -104771,7 +104142,7 @@ aar
 aar
 aar
 aar
-aar
+tiM
 aar
 tiM
 aar
@@ -104974,7 +104345,7 @@ ahs
 alf
 arp
 aar
-nub
+aap
 aao
 aap
 aar
@@ -105175,7 +104546,7 @@ aaa
 lYA
 ahu
 alg
-aao
+arp
 aar
 aap
 aao
@@ -105378,7 +104749,7 @@ aaa
 lYA
 ahx
 aap
-nZL
+ahN
 aar
 awJ
 aao
@@ -105579,9 +104950,9 @@ aaa
 aaa
 aaa
 lYA
-aao
+ahy
 aap
-alr
+aao
 aar
 pmn
 aao
@@ -105782,10 +105153,10 @@ aaa
 aaa
 aaa
 lYA
-ahy
-ahg
+fZF
+alr
 aao
-mhp
+sMs
 aao
 aao
 bWq
@@ -109943,11 +109314,11 @@ aaf
 aaf
 aag
 aKW
-aSm
+mRc
 aLf
 hhw
 jFe
-mRc
+sxe
 xZI
 mNZ
 nsY
@@ -111229,7 +110600,7 @@ oDf
 xMh
 fiq
 rNW
-scI
+kRu
 oDf
 yhQ
 aaa
@@ -113314,7 +112685,7 @@ adO
 adO
 lwm
 akU
-abg
+nQx
 aqU
 pYi
 isC
@@ -113516,8 +112887,8 @@ fpR
 ahf
 adO
 wUz
-ajF
-aiC
+aii
+abg
 aqU
 sdl
 isC
@@ -113533,9 +112904,9 @@ aRi
 aGN
 rbB
 cnS
-fjh
-ajG
-aEY
+cbr
+ajt
+anc
 aUH
 aXx
 jKI
@@ -113718,9 +113089,9 @@ afN
 ahh
 aiw
 ahG
-aWd
-ajG
-aiC
+bYe
+ajt
+abg
 aqU
 xbN
 gfE
@@ -113736,9 +113107,9 @@ aGN
 rbB
 cnq
 cnS
-aDu
-ajF
-aiC
+iWN
+aii
+abg
 aUH
 oyE
 mMP
@@ -113921,9 +113292,9 @@ afO
 ahh
 aiw
 adO
-aSz
-ajG
-aiC
+aEp
+xTt
+aEp
 ioU
 ioU
 ioU
@@ -113939,9 +113310,9 @@ cnH
 cnS
 cnR
 aHq
-voi
-ajG
-aiC
+aEp
+xTt
+aEp
 aUH
 sIA
 gSj
@@ -114327,7 +113698,7 @@ lFt
 ahh
 aiw
 adO
-aiC
+aSz
 anG
 rAd
 jrt
@@ -115157,7 +114528,7 @@ iLO
 iLO
 cnq
 aHq
-aDw
+aiC
 ajG
 aiC
 aUH
@@ -117655,7 +117026,7 @@ aaa
 aaa
 wVb
 qnP
-vnW
+jPf
 aLT
 aLT
 aLT
@@ -118407,14 +117778,14 @@ aoT
 kwd
 rFY
 ctC
-mLU
+gPF
 vuv
 phj
 oIB
 vuv
 tEB
 fbx
-dJo
+gHg
 vuv
 iTf
 cxo
@@ -119412,15 +118783,15 @@ alO
 alO
 axx
 amw
-aBj
+anO
 aDj
-aqY
+inw
 aye
 atq
 atq
 aBs
 alO
-alJ
+alG
 aDZ
 aWd
 fTF
@@ -119617,13 +118988,13 @@ axy
 amA
 atq
 aoT
-aqY
+inw
 aye
 atq
 atq
 aBs
 alO
-alG
+alJ
 aYj
 apd
 gdS
@@ -119816,7 +119187,7 @@ arz
 atq
 aoT
 alO
-axz
+aOG
 azh
 aBk
 aoT
@@ -120020,9 +119391,9 @@ atq
 aoT
 alO
 axA
-arm
+amA
 aBl
-aDl
+aOB
 aFl
 aHt
 aIU
@@ -120037,8 +119408,8 @@ loP
 loP
 loP
 tGd
-uPd
-wGd
+amx
+lPB
 oHl
 alO
 vuv
@@ -120212,7 +119583,7 @@ xlX
 dmQ
 qWT
 lWh
-dmQ
+aiE
 psm
 alG
 aDZ
@@ -120234,15 +119605,15 @@ xBe
 xBe
 alG
 aDZ
-apf
+apd
 alO
 eFK
 wGd
-oHl
-pGF
-kpQ
-qLs
-qLs
+cZW
+pZK
+atq
+atq
+aoT
 alO
 dCt
 xhU
@@ -120415,7 +119786,7 @@ xlX
 dmQ
 dmQ
 dmQ
-aiE
+soQ
 psm
 alJ
 aDZ
@@ -120437,15 +119808,15 @@ arH
 xBe
 alG
 aDZ
-aWd
-bSN
-oih
-oBg
-qLs
-pGF
-oIX
-hSf
-juU
+apd
+vXd
+duF
+atq
+atq
+amx
+atq
+atq
+aoT
 alO
 xrN
 fbx
@@ -120524,7 +119895,7 @@ xYP
 bbs
 cdm
 bCM
-rhR
+rbF
 qlz
 fOz
 skn
@@ -120613,7 +119984,7 @@ xlX
 xoh
 ckB
 afl
-afl
+jUL
 afl
 afl
 afl
@@ -120628,7 +119999,7 @@ arA
 att
 auS
 alO
-axC
+lXg
 amA
 aBn
 aDm
@@ -120640,17 +120011,17 @@ abR
 xBe
 alG
 aDZ
-aWd
-nph
+apf
+alO
 oih
-qLs
-qLs
-pGF
+atc
+ctx
+amx
 amx
 kpQ
-qLs
-ryO
-xrN
+vSE
+alO
+ppc
 iYp
 iZX
 vuv
@@ -120815,13 +120186,13 @@ eKD
 pBW
 xtD
 psm
-dmQ
-wgm
-xlX
-dmQ
-aiE
-dmQ
-aeq
+psm
+psm
+jFX
+psm
+psm
+psm
+psm
 psm
 ylJ
 aDZ
@@ -120843,17 +120214,17 @@ amE
 xBe
 alG
 aDZ
-jQt
+apd
 alO
-pjt
+alO
 uUz
-pga
-pGF
-amx
-kpQ
-iOl
 alO
-xrN
+nph
+qbZ
+alO
+alO
+alO
+cDW
 fbx
 cXq
 vuv
@@ -121018,15 +120389,15 @@ eKD
 nZF
 xxT
 psm
-psm
-psm
-jFX
-psm
-psm
-psm
-psm
-psm
-oiC
+amw
+rTZ
+anO
+anO
+anO
+anO
+anO
+alO
+alG
 aYj
 apd
 alO
@@ -121046,15 +120417,15 @@ amE
 xBe
 alG
 aYj
-rBZ
+apd
 alO
-alO
-alO
-alO
-frX
-amx
+anO
+anO
+anO
+pZK
+axe
 jbH
-alO
+rJh
 alO
 tyz
 eZQ
@@ -121221,15 +120592,15 @@ psm
 jFX
 psm
 psm
-amw
-rTZ
-anO
-anO
-anO
-anO
-anO
-alO
-alG
+amA
+wkX
+jhx
+jhx
+jhx
+jhx
+dnH
+gpc
+aWd
 aYj
 apd
 alO
@@ -121247,18 +120618,18 @@ nNY
 qKi
 abR
 xBe
-alG
-aYj
-qQI
+alJ
+ajR
+aTS
+dEt
+nRX
+jhx
+nRX
+jhx
+nRX
+eoG
+aoT
 alO
-anO
-anO
-diD
-pZK
-amx
-axe
-iFe
-vuv
 vuv
 sdw
 vuv
@@ -121425,14 +120796,14 @@ civ
 xUA
 ozz
 vFv
-tWi
-jhx
-jhx
-nRX
-jhx
-nRX
-dwI
-aTS
+rob
+civ
+civ
+nwU
+civ
+civ
+alO
+wOh
 ajP
 apd
 alO
@@ -121451,17 +120822,17 @@ qJf
 anV
 xBe
 alG
-ajR
-aTS
-dEt
-nRX
-jhx
-nRX
-jhx
-jhx
-tWi
+aYj
+apd
+alO
+iqH
+atc
+atc
+atc
+aya
+iat
 eim
-vuv
+alO
 vuv
 qFW
 vuv
@@ -121630,11 +121001,11 @@ amx
 amA
 iEr
 civ
-civ
-nwU
-civ
-civ
-alO
+eNi
+eNi
+eNi
+eNi
+eNi
 alG
 aDZ
 apf
@@ -121653,16 +121024,16 @@ xBe
 xBe
 xBe
 xBe
-alJ
+alG
 aYj
-apd
+wSk
 alO
-yiH
-alR
-jNu
-jpq
-alR
-iEr
+alO
+aBq
+aBq
+alO
+amA
+awy
 aoT
 oSx
 vuv
@@ -121834,9 +121205,9 @@ amA
 awy
 civ
 eNi
-eNi
-eNi
-eNi
+olO
+wiG
+nWN
 eNi
 alG
 aYj
@@ -121858,14 +121229,14 @@ ufx
 alR
 alG
 aYj
-apd
+apf
 alO
+gsZ
+gsZ
+civ
 alO
-alO
-alO
-alO
-alR
-awy
+upR
+iEr
 aoT
 alR
 lwi
@@ -122038,8 +121409,8 @@ iEr
 fhH
 eNi
 ueG
-hQX
-olO
+joh
+jyE
 eNi
 alG
 aYj
@@ -122062,12 +121433,12 @@ alR
 alG
 aYj
 apd
-kru
+aBq
 tst
 uUe
-bwA
-alO
-rnB
+atq
+bSN
+pZK
 iEr
 aoT
 lFA
@@ -122241,8 +121612,8 @@ iEr
 civ
 eNi
 iKD
+rPt
 kIf
-fQl
 eNi
 alG
 aYj
@@ -122265,14 +121636,14 @@ alR
 alG
 aYj
 apd
-kru
+aBq
 tZZ
-nwU
-civ
-rxV
-alR
+gLz
+atq
+nph
+aya
 iEr
-aoT
+lYk
 bYn
 qMu
 qMu
@@ -122467,13 +121838,13 @@ amx
 alR
 alG
 aYj
-apf
+apd
 alO
+jmQ
+gsZ
+fhH
 alO
-alO
-alO
-alO
-alR
+amA
 awy
 tiK
 bYn
@@ -122645,7 +122016,7 @@ alO
 amA
 iEr
 civ
-mif
+eNi
 aWb
 dyK
 vzK
@@ -122671,12 +122042,12 @@ alR
 alG
 aYj
 apd
-gNi
-tst
+aBq
+snE
 sGL
-bwA
-alO
-alR
+atq
+bSN
+pZK
 iEr
 dbe
 bYn
@@ -122874,12 +122245,12 @@ alR
 alG
 aYj
 apd
-gNi
-wdW
-nwU
-civ
-rxV
-alR
+aBq
+tZZ
+cBj
+atq
+nph
+aya
 iEr
 tiK
 bYn
@@ -123078,12 +122449,12 @@ alG
 aYj
 apf
 alO
+qLs
+qLs
+civ
 alO
-alO
-alO
-alO
-alR
-iEr
+upR
+awy
 aoT
 bYn
 bYn
@@ -123280,13 +122651,13 @@ alR
 alG
 aYj
 apd
-rwm
-tst
-sRD
-bwA
 alO
-alR
-awy
+alO
+aBq
+aBq
+alO
+lhJ
+iEr
 aoT
 uGQ
 kPR
@@ -123298,8 +122669,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -123355,12 +122726,12 @@ aQL
 aQL
 ksp
 rou
-ksp
+rou
 aQL
-aLG
+tBF
 aZl
 tBF
-buV
+aQt
 tBF
 aQt
 bhn
@@ -123483,12 +122854,12 @@ alR
 alG
 aYj
 apd
-rwm
-civ
-civ
-civ
+alO
+kUw
+dod
+eNv
 rxV
-alR
+amA
 iEr
 aoT
 atq
@@ -123686,12 +123057,12 @@ alR
 alG
 aYj
 apd
-rwm
-tZP
-nwU
-hUO
 alO
-rnB
+tZP
+atq
+atq
+amx
+amA
 iEr
 aoT
 atq
@@ -123878,7 +123249,7 @@ alO
 alO
 azi
 azi
-lXg
+ets
 kvh
 rka
 alO
@@ -123890,11 +123261,11 @@ aEp
 lIw
 aEp
 alO
-alO
-alO
-alO
-alO
-alR
+nDL
+amx
+amx
+wTJ
+amA
 awy
 aoT
 uGQ
@@ -124081,7 +123452,7 @@ eky
 alO
 aBq
 aBq
-aBq
+alO
 aBq
 aBq
 alO
@@ -124091,15 +123462,15 @@ aPa
 aqq
 aGD
 aPb
-apj
+kff
 alO
-alR
-alR
-vye
-alR
-alR
+anO
+anO
+anO
+anO
+pZK
 iEr
-aoT
+uTZ
 bYn
 bYn
 bYn
@@ -124295,7 +123666,7 @@ nlV
 aGC
 wqq
 aTS
-dEt
+mPh
 nRX
 tWi
 nRX
@@ -124496,14 +123867,14 @@ pCb
 eky
 aqq
 aIe
-anR
+iYj
 lNl
 alO
 tim
-tuB
+awy
 ttd
+nLk
 tim
-atc
 atc
 lht
 uMc
@@ -124681,7 +124052,7 @@ cIW
 alO
 alO
 psm
-psm
+dKm
 psm
 aHe
 iOp
@@ -124883,8 +124254,8 @@ gPc
 qaV
 exy
 alO
-oni
-ueF
+psm
+psm
 psm
 eky
 eky
@@ -125290,7 +124661,7 @@ lht
 rYv
 alO
 dmQ
-dmQ
+jBB
 psm
 svf
 arV
@@ -126301,7 +125672,7 @@ aae
 pVZ
 pVZ
 vcV
-xlX
+aIM
 xlX
 xlX
 xlX

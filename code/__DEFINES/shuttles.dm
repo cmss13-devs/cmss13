@@ -124,3 +124,5 @@
 #define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
 
 #define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"
+
+#define SHUTTLE_SUPPLY "supply"

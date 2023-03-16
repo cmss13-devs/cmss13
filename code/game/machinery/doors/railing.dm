@@ -15,6 +15,8 @@
 	closed_layer = WINDOW_LAYER
 	density = TRUE
 
+	var/obj/docking_port/mobile/supply/linked_pad
+
 /obj/structure/machinery/door/poddoor/railing/Initialize()
 	. = ..()
 	if(dir == SOUTH)

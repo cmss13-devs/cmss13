@@ -82,7 +82,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
  */
 /datum/authority/branch/evacuation/proc/get_affected_zlevels()
 	//Nuke is not in progress, end the round on ship only.
-	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && SSticker.mode && SSticker.mode.is_in_endgame)
+	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && SSticker?.mode.is_in_endgame)
 		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
 		return
 

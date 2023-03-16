@@ -25878,6 +25878,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/safety/refridgeration{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"
@@ -42414,30 +42417,7 @@
 	icon_state = "water";
 	name = "pipe water"
 	},
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly/end,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -44984,7 +44964,7 @@
 /area/westerneye/living/pilotbunks)
 "ora" = (
 /turf/closed/wall/almayer/outer/viewport,
-/area/westerneye/stair_clone)
+/area/westerneye/hallways/midship_starboard_hallway)
 "ord" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/light/small{
@@ -46271,6 +46251,9 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 4
+	},
+/obj/structure/sign/safety/refridgeration{
+	pixel_x = -17
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -63293,40 +63276,8 @@
 	},
 /area/westerneye/medical/operating_room_two)
 "ulf" = (
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = -16;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure{
-	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly/end{
+	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/hull/mid_hull/l_f_s)
@@ -92493,7 +92444,7 @@ vHm
 lZU
 lZU
 lZU
-ora
+lZU
 lMQ
 lMQ
 lMQ
@@ -93503,7 +93454,7 @@ wmI
 mwp
 mwp
 mwp
-mwp
+ora
 fAH
 fAH
 fAH

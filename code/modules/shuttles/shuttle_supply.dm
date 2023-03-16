@@ -101,7 +101,7 @@
 			SE.icon_state = "supply_elevator_lowering"
 			NW.icon_state = "supply_elevator_lowering"
 			NE.icon_state = "supply_elevator_lowering"
-			animate(elevator_animation, pixel_x = 0, pixel_y = -128, time = 2 SECONDS)
+			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
 			start_gears(SOUTH)
 			sleep(21)
 			SW.icon_state = "supply_elevator_lowered"

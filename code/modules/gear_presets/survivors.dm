@@ -1277,6 +1277,7 @@
 	name = "CLF Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/civilian/survivor/clf
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF) //they were not a part of the colony and as such do not have survivor or marine IFF
 	access = list(ACCESS_CIVILIAN_PUBLIC)

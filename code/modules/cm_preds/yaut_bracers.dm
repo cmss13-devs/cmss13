@@ -34,7 +34,9 @@
 	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
+	/// Determines the alpha level of the cloaking device.
 	var/cloak_alpha = 50
+	/// If TRUE will change the mob invisibility level, providing 100% invisibility. Exclusively for events.
 	var/true_cloak = FALSE
 
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.

@@ -495,6 +495,7 @@
 		return
 
 	var/mob/living/carbon/human/M = caller
+	var/new_alpha = cloak_alpha
 
 	if(!istype(M) || M.is_mob_incapacitated())
 		return FALSE
@@ -526,14 +527,15 @@
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
 
 		cloak_timer = world.time + 1.5 SECONDS
+		if(true_cloak)
+			M.invisibility = INVISIBILITY_LEVEL_ONE
+			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
+			new_alpha = 75
 
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		animate(M, alpha = cloak_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
-		if(true_cloak)
-			M.invisibility = INVISIBILITY_LEVEL_ONE
-			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
+		animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
@@ -570,7 +572,9 @@
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
-	user.invisibility = initial(user.invisibility)
+	if(true_cloak)
+		user.invisibility = initial(user.invisibility)
+		user.see_invisible = initial(user.see_invisible)
 	cloak_timer = world.time + 5 SECONDS
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]

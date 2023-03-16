@@ -34,6 +34,8 @@
 	var/cloaked = 0
 	var/cloak_timer = 0
 	var/cloak_malfunction = 0
+	var/cloak_alpha = 50
+	var/true_cloak = FALSE
 
 	var/mob/living/carbon/human/owner //Pred spawned on, or thrall given to.
 	var/obj/item/clothing/gloves/yautja/linked_bracer //Bracer linked to this one (thrall or mentor).
@@ -198,6 +200,8 @@
 
 	charge = 3000
 	charge_max = 3000
+
+	cloak_alpha = 10
 
 	var/exploding = 0
 	var/inject_timer = 0
@@ -526,7 +530,10 @@
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		animate(M, alpha = 10, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		animate(M, alpha = cloak_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
+		if(true_cloak)
+			M.invisibility = INVISIBILITY_LEVEL_ONE
+			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
@@ -563,6 +570,7 @@
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
+	user.invisibility = initial(user.invisibility)
 	cloak_timer = world.time + 5 SECONDS
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]

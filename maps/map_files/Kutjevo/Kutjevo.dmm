@@ -863,7 +863,6 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "bkR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "blY" = (
@@ -1907,7 +1906,6 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "cGd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "cGf" = (
@@ -3073,7 +3071,6 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "ebB" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "ebP" = (
@@ -13005,7 +13002,6 @@
 	},
 /area/kutjevo/interior/colony_north)
 "rSd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "rSg" = (

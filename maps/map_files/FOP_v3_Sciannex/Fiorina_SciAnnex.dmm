@@ -1422,7 +1422,6 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -11890,7 +11889,6 @@
 	},
 /area/fiorina/tumor/civres)
 "hoZ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "hpd" = (
@@ -13321,7 +13319,6 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -16267,7 +16264,6 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -24437,7 +24433,6 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"

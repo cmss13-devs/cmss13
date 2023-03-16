@@ -48,7 +48,7 @@
 	deploy_handheld(user)
 
 /obj/item/defenses/handheld/proc/deploy_handheld(mob/living/carbon/human/user)
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 

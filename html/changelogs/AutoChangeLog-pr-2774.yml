@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "whitelisted predators can now use apostrophes in their flavour texts"

@@ -268,7 +268,7 @@
 			HS = GLOB.hive_datum[hivenumber]
 			if(length(HS.totalXenos))
 				HS.stored_larva++
-				HS.hive_ui.update_pooled_larva()
+				HS.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - refactor: "the interior manager is gone, long live ssinterior"

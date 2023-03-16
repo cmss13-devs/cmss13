@@ -106,6 +106,11 @@
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/command/combat_correspondent
+	name = "\improper Combat Correspondent Office"
+	icon_state = "selfdestruct"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/engineering
 	minimap_color = MINIMAP_AREA_ENGI
 

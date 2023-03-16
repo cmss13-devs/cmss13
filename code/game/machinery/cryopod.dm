@@ -160,6 +160,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		icon_state = "cryo_rear"
 
 
+GLOBAL_LIST_EMPTY_TYPED(total_cryo_pods, /obj/structure/machinery/cryopod)
+
 //Cryopods themselves.
 /obj/structure/machinery/cryopod
 	name = "hypersleep chamber"
@@ -184,9 +186,13 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	announce = new /obj/item/device/radio/intercom(src)
 	flags_atom |= USES_HEARING
 
+	LAZYADD(GLOB.total_cryo_pods, src)
+
 /obj/structure/machinery/cryopod/Destroy()
 	QDEL_NULL(occupant)
 	QDEL_NULL(announce)
+
+	LAZYREMOVE(GLOB.total_cryo_pods, src)
 	. = ..()
 
 

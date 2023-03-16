@@ -1634,7 +1634,7 @@
 	},
 /area/almayer/living/starboard_garden)
 "afC" = (
-/obj/docking_port/stationary/vehicle_elevator,
+/obj/docking_port/stationary/vehicle_elevator/almayer,
 /turf/open/floor/almayer/empty,
 /area/almayer/hallways/vehiclehangar)
 "afD" = (

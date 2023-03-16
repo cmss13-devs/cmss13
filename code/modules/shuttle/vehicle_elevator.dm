@@ -43,14 +43,18 @@
 		INVOKE_ASYNC(R, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /obj/docking_port/stationary/vehicle_elevator
-	name = "Alamyer Vehicle Elevator Dock"
-	id = "almayer vehicle"
+	name = "Root Vehicle Elevator Dock"
+	id = "root vehicle"
 	width = 5
 	height = 5
 	dwidth = 2
 	dheight = 2
 
+/obj/docking_port/stationary/vehicle_elevator/almayer
+	name = "Almayer Vehicle Elevator Dock"
+	id = "almayer vehicle"
+	roundstart_template = /datum/map_template/shuttle/vehicle
+
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
 	name = "Adminlevel Vehicle Elevator Dock"
 	id = "adminlevel vehicle"
-	roundstart_template = /datum/map_template/shuttle/vehicle

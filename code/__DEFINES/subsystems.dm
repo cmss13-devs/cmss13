@@ -139,6 +139,7 @@
 #define SS_INIT_SHUTTLE 3.5
 #define SS_INIT_LANDMARK    3.2
 #define SS_INIT_MACHINES   3
+#define SS_INIT_INTERIOR 2.7
 #define SS_INIT_TECHTREE    2.5
 #define SS_INIT_RADIO 2
 #define SS_INIT_TIMER   100

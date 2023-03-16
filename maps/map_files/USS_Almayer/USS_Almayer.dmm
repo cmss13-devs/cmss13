@@ -18066,15 +18066,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
-"buV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/starboard_hallway)
 "buW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -37242,18 +37233,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/squads/delta)
-"gHU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/stern_hallway)
 "gHZ" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -67538,12 +67517,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"voi" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/hallways/stern_hallway)
 "vot" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -113291,7 +113264,7 @@ ahh
 aiw
 adO
 aEp
-gHU
+xTt
 aEp
 ioU
 ioU
@@ -113309,7 +113282,7 @@ cnS
 cnR
 aHq
 aEp
-gHU
+xTt
 aEp
 aUH
 sIA
@@ -122650,10 +122623,12 @@ alG
 aYj
 apd
 alO
+alO
 aBq
 aBq
 alO
 lhJ
+iEr
 aoT
 uGQ
 kPR
@@ -122665,8 +122640,8 @@ bdH
 bdH
 bdH
 bdH
-bdH
-bdH
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -122722,12 +122697,12 @@ aQL
 aQL
 ksp
 rou
-ksp
+rou
 aQL
-aLG
+tBF
 aZl
 tBF
-buV
+aQt
 tBF
 aQt
 bhn

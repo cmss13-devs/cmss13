@@ -1,5 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - refactor: "massively refactored /obj/structure{ objects into proper items"
-  - maptweak: "every /obj/structure{ item in map files has been removed."

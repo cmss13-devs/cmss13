@@ -18,7 +18,8 @@
 	bound_x = 0
 	bound_y = 0
 
-	interior_map = "van"
+	interior_map = /datum/map_template/interior/van
+
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-1, 0),

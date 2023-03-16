@@ -331,12 +331,7 @@
 /datum/equipment_preset/proc/spawn_rebel_shoes(mob/living/carbon/human/H)
 	if(!istype(H)) return
 	var/shoespath = pick(
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/brown,
-		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/leather,
-		/obj/item/clothing/shoes/combat,
-		/obj/item/clothing/shoes/swat,
+		/obj/item/clothing/shoes/marine/upp,
 		)
 	H.equip_to_slot_or_del(new shoespath, WEAR_FEET)
 

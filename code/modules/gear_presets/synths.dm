@@ -331,20 +331,6 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/souto_synth
-	name = "Survivor - Synthetic - Souto Mascot Synth"
-	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/space/souto,
-		WEAR_FACE = /obj/item/clothing/mask/gas/fake_mustache,
-		WEAR_BODY = /obj/item/clothing/under/souto,
-		WEAR_BACK = /obj/item/storage/backpack/souto,
-		WEAR_JACKET = /obj/item/clothing/suit/space/souto,
-		WEAR_WAIST = /obj/item/storage/belt/souto,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/souto,
-		WEAR_L_HAND = /obj/item/weapon/gun/souto,
-		WEAR_FEET = /obj/item/clothing/shoes/souto,
-	)
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe

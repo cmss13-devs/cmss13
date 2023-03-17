@@ -22,7 +22,7 @@
 				to_chat(affected_mob, "Your joints feel stiff.")
 				affected_mob.take_limb_damage(1)
 			if (prob(9))
-				to_chat(affected_mob, SPAN_DANGER("Beep...boop.."))
+				to_chat(affected_mob, SPAN_DANGER("Beep...boop..."))
 			if (prob(9))
 				to_chat(affected_mob, SPAN_DANGER("Bop...beeep..."))
 		if(3)

@@ -92,7 +92,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE_RAIDER "Marine Raider"
 #define JOB_MARINE_RAIDER_SL "Marine Raider Team Lead"
 #define JOB_MARINE_RAIDER_CMD "Marine Raider Platoon Lead"
-#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
+#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
 
 #define JOB_HUMAN_ROLES  /datum/timelock/human
 
@@ -105,17 +105,19 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
 #define JOB_GENERAL "USCM General"
+#define JOB_ACMC "Assistant Commandant of the Marine Corps"
+#define JOB_CMC "Commandant of the Marine Corps"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L += timelockList;\
 	. = ..(L);\
 }
 
 // Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L = timelockList;\
 	. = ..(L);\
 }

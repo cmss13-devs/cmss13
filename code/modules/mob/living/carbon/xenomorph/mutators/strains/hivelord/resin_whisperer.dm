@@ -1,6 +1,7 @@
 /datum/xeno_mutator/resinwhisperer
 	name = "STRAIN: Hivelord - Resin Whisperer"
-	description = "You lose the ability to make thick resin and offer up some of your acid and plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures!"
+	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions to a distance of twelve paces!"
+	flavor_description = "Let the resin guide you. It whispers, so listen closely."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_HIVELORD)
@@ -8,21 +9,21 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
-		/datum/action/xeno_action/active_toggle/toggle_speed
+		/datum/action/xeno_action/active_toggle/toggle_speed,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
-		/datum/action/xeno_action/active_toggle/toggle_speed // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/resinwhisperer/apply_mutator(var/datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_mutator/resinwhisperer/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if(!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hivelord/hivelord = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/hivelord/hivelord = mutator_set.xeno
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
@@ -83,7 +84,7 @@
 		else
 			build_speed_mod = initial(build_speed_mod)
 
-	var/mob/living/carbon/Xenomorph/hivelord = owner
+	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())
 		return
 
@@ -98,6 +99,6 @@
 /datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"
 	set name = "Coerce Resin"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)

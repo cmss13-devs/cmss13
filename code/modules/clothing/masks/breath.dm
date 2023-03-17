@@ -55,16 +55,16 @@
 
 /obj/item/clothing/mask/rebreather/skull
 	name = "skull balaclava"
-	desc = "The face of your nightmares. Heed the call of duty as the ghost in the night with this metal 'clava. Additionally protects against the cold."
+	desc = "The face of your nightmares. Or at least that's how you imagined it'd be. Additionally protects against the cold."
 	icon_state = "blue_skull_balaclava"
 	item_state = "blue_skull_balaclava"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/skull/black
-	desc = "The face of your nightmares. Heed the call of duty as the ghost in the night with this metal 'clava. Additionally protects against the cold. Now in black!"
+	desc = "The face of your nightmares. Or at least that's how you imagined it'd be. Now in black!"
 	icon_state = "black_skull_balaclava"
 	item_state = "black_skull_balaclava"
 
@@ -77,9 +77,13 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
 	var/original_state = "coif"
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/mask/rebreather/scarf/ui_action_click()
+	pull_down()
 
 /obj/item/clothing/mask/rebreather/scarf/verb/pull_down()
 	set name = "Pull Up/Down"
@@ -96,8 +100,6 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
-
-
 
 	update_clothing_icon(src) //Update the on-mob icon.
 
@@ -130,7 +132,7 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"
@@ -194,32 +196,31 @@
 	item_state = replacetext("[initial(item_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 
 
-/obj/item/clothing/mask/rebreather/tornscarf
+/obj/item/clothing/mask/tornscarf
 	name = "tactical scarf"
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/mask/rebreather/tornscarf/green
+/obj/item/clothing/mask/tornscarf/green
 	icon_state = "torn_scarf_green"
 	item_state = "torn_scarf_green"
 
-/obj/item/clothing/mask/rebreather/tornscarf/snow
+/obj/item/clothing/mask/tornscarf/snow
 	icon_state = "torn_scarf_snow"
 	item_state = "torn_scarf_snow"
 
-/obj/item/clothing/mask/rebreather/tornscarf/desert
+/obj/item/clothing/mask/tornscarf/desert
 	icon_state = "torn_scarf_desert"
 	item_state = "torn_scarf_desert"
 
-/obj/item/clothing/mask/rebreather/tornscarf/urban
+/obj/item/clothing/mask/tornscarf/urban
 	icon_state = "torn_scarf_urban"
 	item_state = "torn_scarf_urban"
 
-/obj/item/clothing/mask/rebreather/tornscarf/black
+/obj/item/clothing/mask/tornscarf/black
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"

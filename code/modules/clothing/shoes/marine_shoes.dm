@@ -15,11 +15,11 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver)
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
@@ -82,7 +82,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
-/obj/item/clothing/shoes/veteran/PMC
+/obj/item/clothing/shoes/veteran/pmc
 	name = "polished shoes"
 	desc = "The height of fashion, but these look to be woven with protective fiber."
 	icon_state = "jackboots"
@@ -95,26 +95,26 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
 
-/obj/item/clothing/shoes/veteran/PMC/update_icon()
+/obj/item/clothing/shoes/veteran/pmc/update_icon()
 	if(stored_item)
 		icon_state = "[initial(icon_state)]-1"
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/clothing/shoes/veteran/PMC/knife/Initialize(mapload, ...)
+/obj/item/clothing/shoes/veteran/pmc/knife/Initialize(mapload, ...)
 	. = ..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
-/obj/item/clothing/shoes/veteran/PMC/commando
+/obj/item/clothing/shoes/veteran/pmc/commando
 	name = "\improper PMC commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
 	permeability_coefficient = 0.01
@@ -122,16 +122,16 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 
-/obj/item/clothing/shoes/veteran/PMC/commando/knife/Initialize(mapload, ...)
+/obj/item/clothing/shoes/veteran/pmc/commando/knife/Initialize(mapload, ...)
 	. = ..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
-/obj/item/clothing/shoes/veteran/PMC/van_bandolier
+/obj/item/clothing/shoes/veteran/pmc/van_bandolier
 	name = "hiking boots"
 	desc = "Over stone, over ice, through sun and sand, mud and snow, into raging water and hungry bog, these will never let you down."
 
-/obj/item/clothing/shoes/veteran/PMC/van_bandolier/New()
+/obj/item/clothing/shoes/veteran/pmc/van_bandolier/New()
 	..()
 	var/obj/item/attachable/bayonet/upp/knife = new(src)
 	knife.name = "\improper Fairbairn-Sykes fighting knife"
@@ -163,13 +163,13 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol)
 	var/weed_slowdown_mult = 0.5
 
 /obj/item/clothing/shoes/hiking/equipped(mob/user, slot, silent)

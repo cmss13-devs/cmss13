@@ -34,6 +34,11 @@
 
 		search_for_connections()
 
+	if(!is_mainship_level(z))
+		return
+
+	GLOB.mainship_pipes += src
+
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
 		M.remove_ventcrawl()
@@ -41,9 +46,12 @@
 
 	for(var/obj/structure/pipes/P in connected_to)
 		P.remove_connection(src)
+
+	GLOB.mainship_pipes -= src
+
 	. = ..()
 
-/obj/structure/pipes/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/pipes/attackby(obj/item/W, mob/user)
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 
@@ -77,13 +85,13 @@
 
 	update_icon()
 
-/obj/structure/pipes/proc/add_connection(var/obj/structure/pipes/P)
+/obj/structure/pipes/proc/add_connection(obj/structure/pipes/P)
 	addToListNoDupe(connected_to, P)
 
-/obj/structure/pipes/proc/remove_connection(var/obj/structure/pipes/P)
+/obj/structure/pipes/proc/remove_connection(obj/structure/pipes/P)
 	connected_to -= P
 
-/obj/structure/pipes/proc/get_connection(var/direction)
+/obj/structure/pipes/proc/get_connection(direction)
 	var/obj/structure/pipes/best_connected_pipe = null
 	for(var/obj/structure/pipes/target in get_step(src, direction))
 		if(!(target in connected_to))
@@ -106,7 +114,7 @@
 				return
 			var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in V.loc
 			if(W)
-				var/mob/living/carbon/Xenomorph/X = user
+				var/mob/living/carbon/xenomorph/X = user
 				if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
 					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent"))
 					return
@@ -141,7 +149,7 @@
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
 
 
-/obj/structure/pipes/proc/animate_ventcrawl(var/speed = 3, var/loop_amount = -1, var/sections = 4)
+/obj/structure/pipes/proc/animate_ventcrawl(speed = 3, loop_amount = -1, sections = 4)
 	animate(src, pixel_x = rand(-2,2), pixel_y = rand(-2,2), time = speed, loop = loop_amount, easing = JUMP_EASING)
 	for(var/i in 1 to sections)
 		animate(pixel_x = rand(-2,2), pixel_y = rand(-2,2), time = speed, easing = JUMP_EASING)
@@ -149,7 +157,7 @@
 /obj/structure/pipes/proc/animate_ventcrawl_reset()
 	animate(src, pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), easing = JUMP_EASING)
 
-/obj/structure/pipes/proc/add_underlay(var/turf/T, var/direction)
+/obj/structure/pipes/proc/add_underlay(turf/T, direction)
 	if(T && T.intact_tile && level == 1)
 		underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(src), "down")
 	else
@@ -161,7 +169,7 @@
 	else
 		return FALSE
 
-/obj/structure/pipes/proc/check_icon_cache(var/safety = FALSE)
+/obj/structure/pipes/proc/check_icon_cache(safety = FALSE)
 	if(!istype(icon_manager))
 		if(!safety) //to prevent infinite loops
 			icon_manager = new()
@@ -169,7 +177,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/pipes/proc/color_cache_name(var/obj/structure/pipes/node)
+/obj/structure/pipes/proc/color_cache_name(obj/structure/pipes/node)
 	//Don't use this for standard pipes
 	if(!istype(node))
 		return null

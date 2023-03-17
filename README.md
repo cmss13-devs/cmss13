@@ -6,7 +6,7 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Average time to resolve an issue")
 
-* **Website:** https://cm-ss13.com/forums/
+* **Website:** https://forum.cm-ss13.com/
 * **Code:** https://github.com/cmss13-devs/cmss13
 * **Wiki:** https://cm-ss13.com/wiki/Main_Page
 

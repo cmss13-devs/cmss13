@@ -58,7 +58,7 @@
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
 		flags_item |= NODROP
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
-		user.AddComponent(/datum/component/footstep, 6, 25, 4, 1, "cane_step")
+		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
 		gripped = TRUE
 	else
 		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
@@ -98,7 +98,7 @@
 	item_state = "fancy_cane"
 	force = 30
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife // https://www.youtube.com/watch?v=TSGIRFzmyyk
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
 	force = 15 // hollow

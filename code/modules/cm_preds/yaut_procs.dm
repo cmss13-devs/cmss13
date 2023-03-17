@@ -172,6 +172,7 @@
 					else
 						var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 						meat.name = "raw [victim.name] steak"
+					new /obj/item/clothing/accessory/limb/skeleton/torso(victim.loc)
 					var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
 					hide.name = "[victim.name]-hide"
 					hide.singular_name = "[victim.name]-hide"

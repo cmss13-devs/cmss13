@@ -925,7 +925,77 @@
 		icon_state = "medicomp"
 
 /obj/item/polishing_rag
-	name = "Polishing Rag"
-	desc = "to do later"
+	name = "polishing rag"
+	desc = "An astonishingly fine, hand-tailored piece of exotic cloth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
+
+/obj/item/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton)) //Not checking for torso and groin, if you somehow get those, good on you
+		var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb //limb
+		if(current_limb.polished)
+			to_chat(user, SPAN_NOTICE("This limb has already been cleaned."))
+			return
+
+		to_chat(user, SPAN_WARNING("You start wiping the [current_limb.name] with the [name]."))
+		if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
+			to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]"))
+			return
+		to_chat(user, SPAN_NOTICE("You polish the [current_limb.name] to perfection."))
+		current_limb.polished = TRUE
+		current_limb.name = "Polished [current_limb.name]"
+
+//Skeleton limbs, meant to be for bones
+//Only an onmob for the skull
+/obj/item/clothing/accessory/limb/skeleton
+	name = "How did you get this?"
+	desc = "A bone from a human."
+	icon = 'icons/obj/items/skeleton.dmi'
+	icon_state = "head"
+	///Has it been cleaned by a polishing rag?
+	var/polished = FALSE
+/obj/item/clothing/accessory/limb/skeleton/l_arm
+	name = "arm bone"
+	icon_state = "l_arm"
+/obj/item/clothing/accessory/limb/skeleton/l_foot
+	name = "foot bone"
+	icon_state = "l_foot"
+/obj/item/clothing/accessory/limb/skeleton/l_hand
+	name = "hand bone"
+	icon_state = "l_hand"
+/obj/item/clothing/accessory/limb/skeleton/l_leg
+	name = "leg bone"
+	icon_state = "l_leg"
+/obj/item/clothing/accessory/limb/skeleton/r_arm
+	name = "arm bone"
+	icon_state = "r_arm"
+/obj/item/clothing/accessory/limb/skeleton/r_foot
+	name = "foot bone"
+	icon_state = "r_foot"
+/obj/item/clothing/accessory/limb/skeleton/r_hand
+	name = "hand bone"
+	icon_state = "r_hand"
+/obj/item/clothing/accessory/limb/skeleton/r_leg
+	name = "leg bones"
+	icon_state = "r_leg"
+/obj/item/clothing/accessory/limb/skeleton/head
+	name = "skull"
+	icon_state = "head"
+	high_visibility = TRUE
+/obj/item/clothing/accessory/limb/skeleton/torso
+	name = "rib"
+	icon_state = "torso"
+
+/obj/item/clothing/accessory/limb/skeleton/get_examine_text(mob/living/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		if(polished)
+			. += SPAN_NOTICE("Polished to perfection.")
+		else
+			. += SPAN_NOTICE("The [name] is still dirty.")
+
+/obj/item/clothing/accessory/limb/skeleton/can_attach_to(mob/user, obj/item/clothing/C)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) //Only Yautja can wear bones on their clothing
+		to_chat(user, SPAN_NOTICE("Why would you try attaching this to your clothing?"))
+		return

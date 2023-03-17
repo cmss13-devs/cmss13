@@ -82,9 +82,3 @@
 
 /datum/species/human/spook/handle_paygrades()
 	return ""
-
-/datum/species/human/skeleton
-	name = "Skeleton"
-	name_plural = "Skeletons"
-	icobase = 'icons/mob/humans/species/r_skeleton.dmi'
-	deform = 'icons/mob/humans/species/r_skeleton.dmi'

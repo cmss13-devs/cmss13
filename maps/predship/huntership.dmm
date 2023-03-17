@@ -2811,6 +2811,31 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"KD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/polishing_rag,
+/obj/item/polishing_rag{
+	pixel_x = 9
+	},
+/obj/item/polishing_rag{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "KI" = (
 /obj/item/tool/kitchen/tray{
 	pixel_y = -5
@@ -5318,7 +5343,7 @@ bL
 cP
 bL
 bj
-wQ
+KD
 bL
 JH
 JH

@@ -1,4 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - bugfix: "Sandbags are no longer invisible when when in the same tile as a north/south plasteel cade while facing east/west."

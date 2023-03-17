@@ -255,9 +255,9 @@
 	for(var/mob/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
 			continue
-		shake_camera(current_mob, 7, 1)
+		shake_camera(current_mob, 3, 1)
 
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 15)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT

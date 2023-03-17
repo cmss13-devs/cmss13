@@ -48,7 +48,7 @@
 
 		var/area/cryoarea = get_area(possible_cryopod)
 
-		if(cryoarea.flags_area & AREA_CRYO_OR_PREP && spawn_group_type = SPAWN_WILDLIFE) // no spawncamping
+		if((cryoarea.flags_area & AREA_CRYO_OR_PREP) && spawn_group_type == SPAWN_WILDLIFE) // no spawncamping
 			continue
 
 		LAZYADD(cryopod_list, possible_cryopod)
@@ -58,16 +58,21 @@
 	if(!cryogenic_pod) // wtf
 		return
 
-	addtimer(CALLBACK(src, PROC_REF(pop_out), cryogenic_pod), 5 SECONDS)
+	var/mob/living/cryo_monser = new spawn_type(get_turf(cryogenic_pod))
+	cryogenic_pod.go_in_cryopod(cryo_monser, silent = TRUE)
+
 	cryogenic_pod.balloon_alert_to_viewers("*rumble*")
 	cryogenic_pod.sway_jitter(times = 5, steps = 10)
-	cryogenic_pod.icon_state = "body_scanner_closed"
 	cryogenic_pod.visible_message(SPAN_HIGHDANGER("[cryogenic_pod] starts rumbling violently!"))
 
-/datum/round_event/cryopod_malfunction/proc/pop_out(obj/structure/machinery/cryopod/cryogenic_pod)
-	new spawn_type(get_turf(cryogenic_pod))
+	addtimer(CALLBACK(src, PROC_REF(pop_out), cryogenic_pod, cryo_monser), 5 SECONDS)
+
+	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+		to_chat(observer, SPAN_DEADSAY("\a <b>[cryo_monser]</b> is about to pop out of \a [cryogenic_pod] in <b>[get_area(cryogenic_pod)]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[cryogenic_pod.loc.x];Y=[cryogenic_pod.loc.y];Z=[cryogenic_pod.loc.z]'>JMP</a>)"))
+
+/datum/round_event/cryopod_malfunction/proc/pop_out(obj/structure/machinery/cryopod/cryogenic_pod, mob/living/cryo_monser)
 	cryogenic_pod.balloon_alert_to_viewers("*pop!*")
-	cryogenic_pod.icon_state = "body_scanner_open"
+	cryogenic_pod.go_out(cryo_monser)
 	cryogenic_pod.visible_message(SPAN_HIGHDANGER("You see something jump out of [cryogenic_pod]!"))
 
 #undef SPAWN_PET

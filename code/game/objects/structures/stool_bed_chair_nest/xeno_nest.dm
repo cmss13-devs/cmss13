@@ -51,16 +51,20 @@
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
 			buckled_mob.layer = ABOVE_TURF_LAYER
-			for(var/obj/limb/head/current_mobs_head in current_mob)
-				current_mobs_head.layer = TURF_LAYER
+			if(ishuman(current_mob))
+				var/mob/living/carbon/human/current_human = current_mob
+				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
+					current_mobs_head.layer = TURF_LAYER
 	else
 		current_mob.pixel_y = initial(buckled_mob.pixel_y)
 		current_mob.pixel_x = initial(buckled_mob.pixel_x)
 		current_mob.density = TRUE
 		if(dir == SOUTH)
 			current_mob.layer = initial(current_mob.layer)
-			for(var/obj/limb/head/current_mobs_head in current_mob)
-				current_mobs_head.layer =  initial(current_mobs_head.layer)
+			if(!ishuman(current_mob))
+				var/mob/living/carbon/human/current_human = current_mob
+				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
+					current_mobs_head.layer =  initial(current_mobs_head.layer)
 		if(!currently_in_destruction)
 			qdel(src)
 		return

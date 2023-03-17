@@ -709,7 +709,7 @@
 
 	var/mob/living/carbon/human/host_2b_nested = current_mob
 
-	for(var/i in 1 to length(xeno_hands))
+	for(var/i in length(xeno_hands) to 1)
 		if(isnull(xeno_hands[i]))
 			xeno_hands -= xeno_hands[i]
 		else if(istype(xeno_hands[i], /obj/item/grab))

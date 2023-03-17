@@ -1308,6 +1308,7 @@
 #include "code\modules\admin\verbs\pray.dm"
 #include "code\modules\admin\verbs\randomverbs.dm"
 #include "code\modules\admin\verbs\select_equipment.dm"
+#include "code\modules\admin\verbs\shakeship.dm"
 #include "code\modules\admin\verbs\shuttlepanel.dm"
 #include "code\modules\admin\verbs\xooc.dm"
 #include "code\modules\admin\verbs\yooc.dm"

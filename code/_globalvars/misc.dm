@@ -21,6 +21,7 @@ GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
 
+/// Offset for the Operation time
 GLOBAL_VAR_INIT(time_offset, setup_offset())
 
 /proc/setup_offset()

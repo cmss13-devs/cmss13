@@ -251,7 +251,6 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
-	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	var/map_random = FALSE

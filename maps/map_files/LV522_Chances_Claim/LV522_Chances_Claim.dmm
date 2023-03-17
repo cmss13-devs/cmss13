@@ -42,14 +42,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "abS" = (
-/obj/structure{
-	desc = "What could have done this?";
-	dir = 8;
-	icon = 'icons/effects/new_acid.dmi';
-	icon_state = "hole_0";
-	layer = 2.99;
-	name = "hole"
-	},
+/obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
 "abV" = (
@@ -542,17 +535,10 @@
 	},
 /area/lv522/atmos/east_reactor)
 "arh" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -600,29 +586,15 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "asI" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = -12;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	pixel_x = 16;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/oob)
@@ -799,6 +771,17 @@
 	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
+"aBm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice9";
+	pixel_x = -5
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/lv522/indoors/a_block/hallway)
 "aBY" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/decal/cleanable/blood/oil,
@@ -874,17 +857,10 @@
 	},
 /area/lv522/oob)
 "aEF" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -1062,12 +1038,8 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "aIY" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2495,13 +2467,9 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "bCl" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 4;
 	pixel_y = -3
 	},
@@ -2892,21 +2860,12 @@
 	},
 /area/lv522/atmos/east_reactor)
 "bNJ" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -4;
 	pixel_y = 1
 	},
@@ -3219,9 +3178,7 @@
 	pixel_x = -4;
 	pixel_y = 11
 	},
-/obj/structure{
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "puddle";
+/obj/structure/sink/puddle{
 	layer = 2.1;
 	name = "puddle"
 	},
@@ -3432,12 +3389,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -3976,12 +3929,7 @@
 "crP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -4353,12 +4301,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "cCt" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/item/clothing/head/helmet/riot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -4577,30 +4520,12 @@
 	},
 /area/lv522/atmos/east_reactor)
 "cHC" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 11;
-	pixel_y = 24
-	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -5807,12 +5732,8 @@
 	pixel_x = 8;
 	pixel_y = -4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	pixel_x = -9;
-	stat = 2
+/obj/item/prop/alien/hugger{
+	pixel_x = -9
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
@@ -6081,17 +6002,10 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "djL" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -6171,13 +6085,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
 "dlC" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = 8;
 	pixel_y = 10
 	},
@@ -6516,12 +6424,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
 "dsv" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
@@ -6929,6 +6832,15 @@
 /obj/structure/closet,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
+"dEp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = -26;
+	pixel_y = -13
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/kitchen)
 "dEu" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -7458,13 +7370,7 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "dOI" = (
-/obj/structure{
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
-	icon = 'icons/obj/structures/droppod_32x64.dmi';
-	icon_state = "techpod_open";
-	layer = 3.1;
-	name = "Remote Console Pod"
-	},
+/obj/structure/prop/invuln/remote_console_pod,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
 	density = 1;
 	layer = 3.5;
@@ -7973,12 +7879,7 @@
 	pixel_y = 14;
 	tag = null
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -8130,30 +8031,16 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "eeb" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/vehicle/train/cargo/engine,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = 16;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -8366,12 +8253,8 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "egW" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 9;
 	pixel_y = 3
 	},
@@ -8923,12 +8806,7 @@
 /area/lv522/indoors/c_block/cargo)
 "euD" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	dir = 4;
@@ -8944,10 +8822,7 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "evu" = (
-/obj/structure{
-	icon_state = "hatchclosed";
-	layer = 2.9;
-	name = "\improper Maintenance Hatch";
+/obj/structure/prop/maintenance_hatch{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small{
@@ -8981,6 +8856,18 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor)
+"evS" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = 4;
+	pixel_y = -16
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "ewe" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9392,12 +9279,7 @@
 /area/lv522/atmos/cargo_intake)
 "eFK" = (
 /obj/structure/bed/roller,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	dir = 4;
@@ -9560,12 +9442,7 @@
 /obj/structure/bed{
 	can_buckle = 0
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "eJw" = (
@@ -9824,13 +9701,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "ePl" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -10305,22 +10176,9 @@
 /area/lv522/atmos/east_reactor)
 "fbE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 9;
-	pixel_y = 3
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -7;
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -10433,12 +10291,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
 "feu" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -10461,12 +10314,7 @@
 	},
 /area/lv522/indoors/c_block/bridge)
 "ffj" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/cargo)
 "ffo" = (
@@ -11053,13 +10901,8 @@
 /area/lv522/indoors/c_block/cargo)
 "fuc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
+/obj/structure/prop/invuln/pipe_water{
 	dir = 8;
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
 	pixel_x = -31
 	},
 /turf/open/floor/prison,
@@ -12021,7 +11864,6 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "fPt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12214,7 +12056,6 @@
 /area/lv522/outdoors/colony_streets/south_west_street)
 "fTO" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -12447,12 +12288,7 @@
 /area/lv522/indoors/a_block/admin)
 "gaI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -12717,17 +12553,10 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "geT" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform,
@@ -12735,12 +12564,8 @@
 /area/lv522/landing_zone_1/tunnel)
 "gfi" = (
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	pixel_y = 14;
-	stat = 2
+/obj/item/prop/alien/hugger{
+	pixel_y = 14
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -12893,12 +12718,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "gjA" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
@@ -12927,12 +12747,7 @@
 	pixel_x = -12;
 	pixel_y = 12
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/barricade/wooden{
 	dir = 4;
 	layer = 4.1;
@@ -13321,10 +13136,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "gul" = (
-/obj/structure{
-	icon_state = "hatchclosed";
-	layer = 2.9;
-	name = "\improper Maintenance Hatch";
+/obj/structure/prop/maintenance_hatch{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -13601,6 +13413,11 @@
 "gAU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = -37;
+	pixel_y = 17
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"
@@ -13980,17 +13797,10 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "gJr" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -14072,12 +13882,7 @@
 /turf/open/organic/grass,
 /area/lv522/indoors/a_block/garden)
 "gLg" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
@@ -14119,12 +13924,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "gMc" = (
@@ -14208,13 +14008,7 @@
 	},
 /area/lv522/atmos/east_reactor/south/cas)
 "gOo" = (
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /obj/structure/prop/turbine_extras,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -14316,13 +14110,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "gPQ" = (
 /obj/structure/prop/turbine_extras,
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14361,13 +14149,7 @@
 "gRj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/turbine_extras,
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14518,12 +14300,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "gUY" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/strata{
 	dir = 4;
@@ -14638,12 +14415,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
 "gXA" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "greenfull"
@@ -14668,12 +14440,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/atmos/cargo_intake)
 "gXL" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -14871,29 +14638,15 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "haF" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating,
@@ -15042,12 +14795,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hdd" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -15203,12 +14951,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "hfV" = (
@@ -15332,12 +15075,7 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel)
 "hiV" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -15816,12 +15554,8 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "hsA" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 24
 	},
@@ -16253,12 +15987,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "hBB" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -16611,22 +16340,9 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "hKO" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -5
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -5;
-	pixel_y = 17
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -16908,12 +16624,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hPI" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -16989,13 +16700,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "hRy" = (
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -17310,12 +17015,7 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "hXP" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "brown"
@@ -17478,12 +17178,7 @@
 	},
 /area/lv522/atmos/filt)
 "iaY" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -18249,12 +17944,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "iss" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
@@ -18320,13 +18010,7 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "itp" = (
 /obj/structure/prop/turbine_extras/left,
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18904,10 +18588,7 @@
 	},
 /area/lv522/landing_zone_2)
 "iGD" = (
-/obj/structure{
-	icon_state = "hatchclosed";
-	layer = 2.9;
-	name = "\improper Maintenance Hatch";
+/obj/structure/prop/maintenance_hatch{
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/small,
@@ -18996,12 +18677,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "iHD" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
@@ -19011,17 +18687,10 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stair_cut,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -20023,12 +19692,7 @@
 /area/lv522/indoors/c_block/t_comm)
 "jdl" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -20224,12 +19888,7 @@
 "jhY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/glasses/meson,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -20845,12 +20504,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "jsQ" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
 "jtf" = (
@@ -21162,21 +20816,12 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_street)
 "jAz" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
-	layer = 5.2;
-	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -21323,12 +20968,8 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "jCW" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -2;
 	pixel_y = 8
 	},
@@ -21474,17 +21115,10 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "jGe" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -22333,10 +21967,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "jYp" = (
-/obj/structure{
-	icon_state = "hatchclosed";
-	layer = 2.9;
-	name = "\improper Maintenance Hatch";
+/obj/structure/prop/maintenance_hatch{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -22739,18 +22370,11 @@
 	dir = 1
 	},
 /obj/structure/platform,
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -22814,12 +22438,8 @@
 	pixel_x = -10;
 	pixel_y = 6
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	pixel_y = -11;
-	stat = 2
+/obj/item/prop/alien/hugger{
+	pixel_y = -11
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/landing_zone_2)
@@ -22860,12 +22480,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "khx" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/strata{
 	dir = 8;
@@ -22890,12 +22505,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -22910,12 +22520,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/light/small{
@@ -22985,12 +22590,7 @@
 	layer = 2.6;
 	pixel_y = 25
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -23124,12 +22724,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -23255,12 +22850,7 @@
 /obj/item/reagent_container/food/snacks/tofubreadslice{
 	pixel_x = -7
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -23364,17 +22954,10 @@
 /area/lv522/indoors/a_block/admin)
 "kpm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -23540,17 +23123,10 @@
 	},
 /area/lv522/atmos/north_command_centre)
 "ksv" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -24180,24 +23756,12 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "kFd" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 17;
 	pixel_y = -2
 	},
@@ -24409,12 +23973,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -24557,12 +24116,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "kNw" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -25387,12 +24941,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "lcM" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -25498,12 +25047,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "leH" = (
@@ -25650,12 +25194,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "liD" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -25924,12 +25463,7 @@
 /area/lv522/indoors/c_block/bridge)
 "loB" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -4;
 	pixel_y = 9
@@ -25958,12 +25492,7 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "lpq" = (
 /obj/structure/bed/stool,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/carpet,
 /area/lv522/indoors/b_block/bar)
 "lpt" = (
@@ -26030,13 +25559,9 @@
 	},
 /area/lv522/indoors/a_block/security)
 "lrG" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
+/obj/item/prop/alien/hugger{
 	pixel_x = 11;
-	pixel_y = -9;
-	stat = 2
+	pixel_y = -9
 	},
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/corsat{
@@ -26477,12 +26002,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "lCj" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;
@@ -27059,12 +26579,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	dir = 4;
@@ -27416,17 +26931,10 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -27581,12 +27089,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "mbG" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -28122,12 +27625,7 @@
 	},
 /area/lv522/indoors/a_block/garden)
 "mnN" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -28419,12 +27917,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "mvB" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "mvP" = (
@@ -28916,17 +28409,10 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "mJs" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating,
@@ -30267,21 +29753,12 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "nku" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice13";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 11;
 	pixel_y = 16
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = 4;
 	pixel_y = -6
 	},
@@ -30398,12 +29875,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "nmK" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "nmL" = (
@@ -30485,12 +29957,7 @@
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "nnW" = (
 /obj/item/weapon/melee/twohanded/folded_metal_chair,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
@@ -30534,6 +30001,11 @@
 /area/lv522/atmos/east_reactor/south)
 "npp" = (
 /obj/structure/girder,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 11;
+	pixel_y = -8
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -30764,17 +30236,10 @@
 	},
 /area/lv522/indoors/a_block/dorms/glass)
 "ntq" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 24;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 24
 	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/oob)
@@ -30903,12 +30368,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/dorms/glass)
 "nwz" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -31070,13 +30530,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/kitchen/damage)
 "nBv" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
+/obj/item/prop/alien/hugger{
 	pixel_x = 3;
-	pixel_y = -3;
-	stat = 2
+	pixel_y = -3
 	},
 /obj/item/weapon/gun/pistol/highpower{
 	pixel_x = -11;
@@ -31160,25 +30616,13 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 17
 	},
 /turf/open/gm/river,
@@ -31522,12 +30966,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "nMz" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -31634,18 +31073,11 @@
 	},
 /area/lv522/indoors/a_block/security)
 "nOg" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31676,31 +31108,17 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "nOS" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 9;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = 16;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -31732,12 +31150,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "nPo" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
@@ -31986,27 +31399,13 @@
 	},
 /area/lv522/atmos/filt)
 "nUF" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 6;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -32150,12 +31549,7 @@
 	pixel_x = 11;
 	pixel_y = 16
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -32701,12 +32095,7 @@
 "ogA" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 28
 	},
 /turf/open/floor/prison,
@@ -32815,12 +32204,8 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "ohX" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 9;
 	pixel_y = 3
 	},
@@ -32959,12 +32344,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "ojx" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard{
 	icon_state = "medium"
@@ -33506,12 +32886,8 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_street)
 "ovr" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -33647,12 +33023,8 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_1)
 "ozk" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -5
 	},
 /turf/open/floor/prison{
@@ -33766,12 +33138,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "oBx" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
@@ -33828,17 +33195,10 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "oCW" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/platform{
 	dir = 8
@@ -33941,12 +33301,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "oGE" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "oGF" = (
@@ -34701,18 +34056,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"oVu" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -2;
-	pixel_y = 24
-	},
-/turf/closed/wall/strata_outpost,
-/area/lv522/indoors/a_block/admin)
 "oVA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -35252,12 +34595,7 @@
 	},
 /area/lv522/atmos/filt)
 "pfV" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -35933,12 +35271,7 @@
 /area/lv522/indoors/a_block/hallway)
 "puV" = (
 /obj/structure/bed/chair,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -36112,13 +35445,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "pyO" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -36361,12 +35688,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "pCU" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "pCW" = (
@@ -36556,12 +35878,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pFQ" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -36612,17 +35929,10 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pHi" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/platform_decoration{
 	dir = 8
@@ -36822,17 +36132,10 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "pMc" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/platform_decoration{
 	dir = 4
@@ -37042,12 +36345,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	dir = 8;
@@ -37062,12 +36360,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "pQA" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -37261,12 +36554,7 @@
 /obj/item/bedsheet/brown{
 	pixel_y = 13
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -37520,16 +36808,9 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "pYO" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
+/obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -37952,12 +37233,7 @@
 	},
 /area/lv522/landing_zone_1)
 "qjr" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38013,13 +37289,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "qkw" = (
-/obj/structure{
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation";
-	icon = 'icons/obj/structures/droppod_32x64.dmi';
-	icon_state = "techpod_open";
-	layer = 3.1;
-	name = "Remote Console Pod"
-	},
+/obj/structure/prop/invuln/remote_console_pod,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	density = 1;
 	layer = 3.5;
@@ -38119,13 +37389,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "qmM" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -38145,13 +37409,9 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qnk" = (
 /obj/structure/surface/table/almayer,
-/obj/structure{
-	desc = "State of the art machinery for giving orders to a squad.";
+/obj/structure/machinery/computer/overwatch/almayer/broken{
 	dir = 8;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "overwatch";
 	layer = 2.98;
-	name = "Overwatch Console";
 	pixel_x = -12;
 	pixel_y = 1
 	},
@@ -38240,12 +37500,7 @@
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qnY" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -38794,13 +38049,7 @@
 	pixel_y = -9
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -3;
 	pixel_y = 6
 	},
@@ -39094,18 +38343,11 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
 /turf/open/gm/river,
 /area/lv522/atmos/cargo_intake)
@@ -39459,22 +38701,11 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qME" = (
-/obj/effect/decal{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	luminosity = 0;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -7;
 	pixel_y = 24
 	},
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -39547,12 +38778,7 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -39612,13 +38838,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "qOi" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -39688,29 +38908,15 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
@@ -40345,12 +39551,7 @@
 	dir = 8;
 	pixel_y = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -41233,16 +40434,14 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "rrf" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice9";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 27
+/obj/structure/platform,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -2;
+	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost,
-/area/lv522/indoors/a_block/medical)
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "rro" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -41327,12 +40526,8 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "rtn" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -41874,12 +41069,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "rCI" = (
-/obj/effect/decal{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	luminosity = 0;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -42136,12 +41326,8 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "rIH" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -42640,30 +41826,12 @@
 /area/lv522/indoors/c_block/t_comm)
 "rRP" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice1";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 6;
-	pixel_y = -13
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -43213,22 +42381,11 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "sec" = (
-/obj/effect/decal{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	luminosity = 0;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -7;
 	pixel_y = 17
 	},
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -8;
 	pixel_y = 10
 	},
@@ -43304,13 +42461,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
 "sfZ" = (
-/obj/structure{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	layer = 4;
-	luminosity = 3;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = 10;
 	pixel_y = 32
 	},
@@ -43629,12 +42780,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "smi" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
@@ -44183,12 +43329,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "sAn" = (
@@ -44742,12 +43883,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "sKL" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/spider/spiderling/nogrow,
 /turf/open/floor/prison{
 	dir = 10;
@@ -45873,17 +45009,10 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "thU" = (
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
+/obj/structure/prop/invuln/overhead_pipe{
 	name = "overhead pipe";
 	pixel_x = -20;
-	pixel_y = 13;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 13
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
@@ -45927,13 +45056,13 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
-/obj/structure/prop/invuln{
-	density = 0;
-	desc = "The Almayer has sprung a leak!";
-	icon = 'icons/obj/structures/props/watercloset.dmi';
-	icon_state = "water";
-	name = "pipe water";
+/obj/structure/prop/invuln/pipe_water{
 	pixel_y = 11
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -7;
+	pixel_y = 35
 	},
 /turf/open/gm/river,
 /area/lv522/indoors/a_block/kitchen/damage)
@@ -46051,17 +45180,10 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tlB" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/platform,
 /obj/structure/platform{
@@ -46173,12 +45295,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -46439,12 +45556,7 @@
 /obj/item/bedsheet/brown{
 	layer = 3.1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -46884,12 +45996,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "tBS" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -47005,12 +46112,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/admin)
 "tEc" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva{
 	icon_state = "radiator_tile2"
@@ -47478,12 +46580,7 @@
 	},
 /area/lv522/landing_zone_1)
 "tMD" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "tML" = (
@@ -47953,22 +47050,9 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tXd" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 4;
-	pixel_y = 16
-	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
+/obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
 	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 4;
 	pixel_y = -15
 	},
@@ -48005,12 +47089,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -48099,12 +47178,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen/glass)
 "tZs" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -48131,12 +47205,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "tZP" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -48553,12 +47622,7 @@
 	},
 /area/lv522/indoors/c_block/t_comm)
 "uhf" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkpurple2";
@@ -48572,37 +47636,23 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "uhx" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = 16;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
 "uhF" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
@@ -49535,29 +48585,15 @@
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
@@ -49701,12 +48737,7 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
 "uEX" = (
-/obj/effect/decal{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	luminosity = 0;
-	name = "fire";
+/obj/structure/prop/invuln/fire{
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -49815,12 +48846,8 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "uHc" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -50137,12 +49164,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "uMM" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "uMO" = (
@@ -50206,13 +49228,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "uNT" = (
-/obj/structure{
-	density = 1;
-	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat.";
-	icon = 'icons/obj/structures/machinery/fusion_eng.dmi';
-	icon_state = "off-0";
-	name = "\improper S-52 fusion reactor"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /obj/structure/prop/turbine_extras/left,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -50603,29 +49619,17 @@
 /area/lv522/indoors/a_block/executive)
 "uTV" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
 	},
 /area/lv522/indoors/a_block/dorms)
 "uTY" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = -6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -50927,18 +49931,11 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "vbm" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -50974,12 +49971,7 @@
 /obj/item/bedsheet/brown{
 	layer = 3.1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -51652,12 +50644,8 @@
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "vov" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	pixel_x = -6;
-	stat = 2
+/obj/item/prop/alien/hugger{
+	pixel_x = -6
 	},
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -51747,12 +50735,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "vqm" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
@@ -51765,15 +50748,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
-"vqG" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = null
-	},
-/area/lv522/landing_zone_2)
 "vqH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -52171,12 +51145,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "vzu" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = null
@@ -52237,12 +51206,7 @@
 	},
 /area/lv522/atmos/west_reactor)
 "vAn" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
 "vAW" = (
@@ -52453,12 +51417,7 @@
 "vEB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"
@@ -52617,12 +51576,7 @@
 /obj/item/bedsheet/brown{
 	layer = 3.1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -52944,12 +51898,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "vNi" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
@@ -53026,12 +51975,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -53249,10 +52193,7 @@
 /area/lv522/indoors/a_block/executive)
 "vSV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure{
-	icon_state = "hatchclosed";
-	layer = 2.9;
-	name = "\improper Maintenance Hatch";
+/obj/structure/prop/maintenance_hatch{
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
@@ -53438,12 +52379,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "vWl" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -53483,12 +52419,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = null
@@ -53906,12 +52837,8 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/dorms)
 "wfb" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = -4;
 	pixel_y = 24
 	},
@@ -54228,12 +53155,8 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "wkC" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+/obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
-	layer = 5.1;
-	name = "overhead lattice";
 	pixel_x = 6;
 	pixel_y = 19
 	},
@@ -54714,12 +53637,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "wwe" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
@@ -55555,12 +54473,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "wOU" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -55613,12 +54526,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "wRd" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -56515,12 +55423,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = null
@@ -57106,17 +56009,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
 "xxz" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 6;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 5.1;
 	pixel_x = 6;
-	pixel_y = 6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 6
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -57302,31 +56198,17 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "xBL" = (
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -10;
-	pixel_y = -6;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = -6
 	},
-/obj/structure{
+/obj/structure/prop/invuln/overhead_pipe{
 	dir = 1;
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
 	name = "overhead pipe";
 	pixel_x = -8;
-	pixel_y = 15;
-	projectile_coverage = 0;
-	unacidable = 1
+	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
@@ -57373,12 +56255,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "xDp" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
 "xDt" = (
@@ -57694,12 +56571,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "xLm" = (
@@ -57727,12 +56599,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "xLq" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xLU" = (
@@ -57952,13 +56819,9 @@
 	pixel_x = 3;
 	pixel_y = -5
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
+/obj/item/prop/alien/hugger{
 	pixel_x = -17;
-	pixel_y = -8;
-	stat = 2
+	pixel_y = -8
 	},
 /obj/item/ashtray/glass{
 	icon_state = "ashtray_bork_gl";
@@ -58590,12 +57453,7 @@
 	},
 /area/lv522/atmos/filt)
 "ybj" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "ybt" = (
@@ -81993,7 +80851,7 @@ sSl
 fuc
 pNs
 lxL
-xGf
+dEp
 tVN
 qTG
 gLV
@@ -93421,7 +92279,7 @@ jMy
 qGI
 wDa
 wDa
-vqG
+rqn
 wDa
 vbF
 kBj
@@ -94714,7 +93572,7 @@ tTK
 tTK
 tTK
 tTK
-rrf
+tTK
 tTK
 tTK
 tTK
@@ -94941,7 +93799,7 @@ aIY
 aIY
 ozk
 ozk
-huN
+aBm
 huN
 rmD
 raj
@@ -95365,8 +94223,8 @@ oxT
 pgG
 umR
 ikw
-sYk
-oVu
+rrf
+tDS
 nku
 uqo
 gPp
@@ -95593,7 +94451,7 @@ qSH
 umR
 eKe
 fAq
-sRu
+evS
 tXd
 bCl
 tDS

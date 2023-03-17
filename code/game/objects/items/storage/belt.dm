@@ -411,7 +411,7 @@
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
 /obj/item/storage/belt/marine/dutch/m60/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/m60 (src)
 
 // Outer Rim Weapon Belts

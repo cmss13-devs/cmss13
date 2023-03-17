@@ -132,13 +132,13 @@
 	if(!cover_open)
 		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't put a new belt in! <b>(alt-click to open it)</b>"))
 		return
-	. = ..()
+	return ..()
 
 /obj/item/weapon/gun/m60/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
 		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't take out the belt! <b>(alt-click to open it)</b>"))
 		return
-	. = ..()
+	return ..()
 
 /obj/item/weapon/gun/m60/update_icon()
 	. = ..()

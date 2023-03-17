@@ -36,7 +36,7 @@
 
 /datum/equipment_preset/dutch/load_gear(mob/living/carbon/human/NEW_HUMAN)
 
-	var/choice = rand(1,10)
+
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch(NEW_HUMAN), WEAR_HEAD)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes(NEW_HUMAN), WEAR_IN_HELMET)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo(NEW_HUMAN), WEAR_IN_HELMET)
@@ -60,7 +60,7 @@
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(NEW_HUMAN), WEAR_R_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(NEW_HUMAN), WEAR_FEET)
 
-	switch(choice)
+	switch(rand(1, 10))
 		if(1 to 6) // 60%
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/dutch(NEW_HUMAN), WEAR_J_STORE)
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(NEW_HUMAN), WEAR_IN_JACKET)

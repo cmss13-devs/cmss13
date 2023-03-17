@@ -1436,6 +1436,7 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 
 /obj/item/attachable/stock/m16/xm177/Initialize()
+
 	accuracy_mod = 0
 	recoil_mod = 0
 	scatter_mod = 0

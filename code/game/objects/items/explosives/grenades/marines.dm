@@ -237,7 +237,7 @@
 		else
 			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
-		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 		qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell

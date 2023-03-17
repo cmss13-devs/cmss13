@@ -15,7 +15,7 @@
 	if(!sstrength)
 		return
 
-	var/prompt = alert(C, "Drop people?", "Yeet?" ,"Yes","No")
+	var/prompt = alert(C, "Drop people?", "YeetUS?" ,"Yes","No")
 	if(prompt == "Yes")
 		drop = 1
 

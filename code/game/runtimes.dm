@@ -8,14 +8,14 @@
 //  Do NOT convert these to GLOB because errors can happen BEFORE GLOB exists,
 //  which would cause /world/Error handler to also crash and make them all silent!
 
-var/list/stui_init_runtimes //! Shorthand of Static Initializer errors only, for use in STUI
-var/list/full_init_runtimes //! Full text of all Static Initializer + World Init errors, for log backfilling
-var/runtime_logging_ready //! Truthy when init is done and we don't need these shenanigans anymore
-var/init_runtimes_count //! Count of runtimes that occured before logging is ready, for in-game reporting
+GLOBAL_REAL(stui_init_runtimes, /list) //! Shorthand of Static Initializer errors only, for use in STUI
+GLOBAL_REAL(full_init_runtimes, /list) //! Full text of all Static Initializer + World Init errors, for log backfilling
+GLOBAL_REAL_VAR(runtime_logging_ready) //! Truthy when init is done and we don't need these shenanigans anymore
+GLOBAL_REAL_VAR(init_runtimes_count) //! Count of runtimes that occured before logging is ready, for in-game reporting
 
 // Deduplication of errors via hash to reduce spamming
-var/list/runtime_hashes
-var/total_runtimes
+GLOBAL_REAL(runtime_hashes, /list)
+GLOBAL_REAL_VAR(total_runtimes)
 
 /world/Error(exception/E)
 	..()

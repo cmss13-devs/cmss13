@@ -1,0 +1,5 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - rscadd: "Map, shipmap, and gamemode votes have their entries in a random order."
+  - admin: "Admin-created votes can now, optionally, have their entries in a random order."

@@ -961,7 +961,7 @@
 		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	apply_effect(5, STUN)
+	apply_effect(1.5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)

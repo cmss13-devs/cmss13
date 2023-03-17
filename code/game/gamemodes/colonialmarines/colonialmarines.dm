@@ -257,6 +257,10 @@
 			continue
 		shake_camera(current_mob, 7, 1)
 
+		var/mob/living/carbon/human/lurcher = M
+		if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
+			lurcher.vomit() // NAUSEA
+
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 15)
 
 #undef FOG_DELAY_INTERVAL

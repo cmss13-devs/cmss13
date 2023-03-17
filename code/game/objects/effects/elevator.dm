@@ -24,6 +24,9 @@
 	plane = FLOOR_PLANE
 	layer = UNDER_TURF_LAYER
 
+/obj/effect/elevator/animation_overlay/create_clone_movable(shift_x, shift_y, layer_override)
+	return //NO CLONES OF THESE REEEEEE
+
 /obj/effect/elevator/supply/multi
 	icon_state = "enter_darkness"
 	plane = FLOOR_PLANE

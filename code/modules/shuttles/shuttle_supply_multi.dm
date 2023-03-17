@@ -363,6 +363,8 @@
 			else
 				animate(elevator_animationz[Ts_fake_zlevel], pixel_y = 180, time = 2 SECONDS)
 
+			message_admins("[fake_zlevel] ---> [target_zlevel] @ [Ts_fake_zlevel]")
+
 			addtimer(CALLBACK(src, PROC_REF(premove_shenanigans), Ts_fake_zlevel), 4 SECONDS, TIMER_UNIQUE)
 
 	if(movement_direction)

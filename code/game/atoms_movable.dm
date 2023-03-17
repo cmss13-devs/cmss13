@@ -218,10 +218,11 @@
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 	C.layer_override = layer_override
-	if(ishuman(src))
-		C.icon = getFlatIcon(src, dir)
+	for(var/i in vis_contents)
+		C.vis_contents |= i
 	if(layer_override < TURF_LAYER)
-		//C.vis_flags |= VIS_UNDERLAY
+		for(var/obj/found_object in C.vis_contents)
+			found_object.plane = FLOOR_PLANE
 		C.plane = FLOOR_PLANE
 	if(!interactable)
 		C.interactable = FALSE

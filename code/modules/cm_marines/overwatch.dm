@@ -49,6 +49,9 @@
 	if(..())  //Checks for power outages
 		return
 
+	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
+		return
+
 	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
@@ -922,6 +925,9 @@
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
+
+/obj/structure/machinery/computer/overwatch/almayer/broken
+	name = "Broken Overwatch Console"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

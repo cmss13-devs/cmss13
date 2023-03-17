@@ -182,3 +182,50 @@
   Morrow:
   - rscadd: Xenos can now slash and fully destroy vehicle chairs
   - qol: Made Hivemind available for the first 5 minutes of round even without a queen.
+2023-03-14:
+  NewyearnewmeUwu:
+  - qol: You can now pull a mask up or down with a UI button.
+  - refactor: massively refactored /obj/structure{ objects into proper items
+  - maptweak: every /obj/structure{ item in map files has been removed.
+  carlarctg:
+  - bugfix: Fixed zombie powder perma killing you
+  realforest2001:
+  - admin: Adds a confirmation button to View Global Variables.
+  - bugfix: Admin awarding req points no longer does an alert even if the cancel button
+      is pressed.
+2023-03-15:
+  Geeves:
+  - rscadd: hijack is more cinematic, with explosions and better sound effects
+  Morrow:
+  - bugfix: Removes random flight terminal on big red
+  XSlayer300:
+  - soundadd: Added 23 male *warcry variations.
+  - soundadd: Added 12 female *warcry variations.
+  harryob:
+  - admin: admins can mark ahelps again, and the ticket interface is a different color
+2023-03-16:
+  CapCamIII:
+  - bugfix: Torn scarves no longer cover your facial hair or identity
+  DecemberIsHere:
+  - balance: Nerfs to the Scout Custom M4RA.
+  NewyearnewmeUwu:
+  - bugfix: Sandbags are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: AA cannon actually works once again.
+  TheDonkified:
+  - rscdel: Evo pods and spawn pool are removed.
+  - rscadd: Hive core directly affects evolution speed and is where burrowed larva
+      spawn from now on.
+  harryob:
+  - refactor: the interior manager is gone, long live ssinterior
+  - bugfix: whitelisted predators can now use apostrophes in their flavour texts
+  realforest2001:
+  - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+2023-03-17:
+  NewyearnewmeUwu:
+  - maptweak: removed yet another default ss13 door from big red
+  TopHatPenguin:
+  - bugfix: Removes the duplicated closet in DCC bunks.
+  realforest2001:
+  - rscadd: Vehicle Elevator now starts raised.

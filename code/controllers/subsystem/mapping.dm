@@ -53,7 +53,6 @@ SUBSYSTEM_DEF(mapping)
 	// Add the transit level
 	transit = add_new_zlevel("Transit/Reserved", list(ZTRAIT_RESERVED = TRUE))
 	initialize_reserved_level(transit.z_value)
-	GLOB.interior_manager = new
 	repopulate_sorted_areas()
 	for(var/maptype as anything in configs)
 		var/datum/map_config/MC = configs[maptype]

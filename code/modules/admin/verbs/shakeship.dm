@@ -32,3 +32,4 @@
 		shake_camera(current_mob, sstrength, stime)
 		playsound_area(get_area(current_mob), 'sound/machines/bonk.ogg', 100)
 		to_chat(current_mob, SPAN_BOLDANNOUNCE("The deck is shaken around as the ship suddenly bumps!"))
+//just an extra line

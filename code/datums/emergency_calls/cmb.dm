@@ -2,7 +2,7 @@
 /datum/emergency_call/cmb
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
-	probability = 9
+	probability = 10
 
 	var/max_synths = 1
 	var/synths = 0

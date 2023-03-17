@@ -375,6 +375,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/servicedress,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
@@ -415,6 +416,7 @@
 /datum/equipment_preset/synth/survivor/corporate_synth
 	name = "Survivor - Synthetic - Corporate Clerical Synth"
 	equipment_to_spawn = list(
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_BODY = /obj/item/clothing/under/suit_jacket/trainee,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/paper,

@@ -37266,6 +37266,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/engine_core)
+"heJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/upper_medical)
 "heO" = (
 /obj/structure/morgue{
 	dir = 1
@@ -42088,6 +42097,17 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/securestorage)
+"jrV" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	name = "\improper Medical Dormitories"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/medical/upper_medical)
 "jss" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -44041,15 +44061,16 @@
 /area/almayer/squads/req)
 "krQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/power/apc/almayer{
-	dir = 4
-	},
 /obj/structure/sign/safety/reception{
 	pixel_x = 47
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -44194,6 +44215,14 @@
 	icon_state = "greencorner"
 	},
 /area/almayer/living/grunt_rnr)
+"kup" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/lower_medical_lobby)
 "kuu" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
@@ -46959,6 +46988,13 @@
 /obj/item/tool/surgery/circular_saw,
 /obj/item/tool/surgery/retractor,
 /obj/item/tool/surgery/cautery,
+/obj/structure/transmitter{
+	name = "Morgue Telephone";
+	phone_category = "Almayer";
+	phone_id = "Morgue";
+	pixel_x = -1;
+	pixel_y = 32
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -47984,6 +48020,9 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "mgT" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -53873,11 +53912,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "oJy" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/poster{
 	icon_state = "poster8";
 	pixel_y = 3;
 	pixel_x = 28
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -54104,14 +54145,19 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/gloves{
 	pixel_x = 7;
-	pixel_y = 7
+	pixel_y = -1
 	},
-/obj/item/storage/box/gloves{
-	pixel_x = 7;
-	pixel_y = 7
+/obj/item/paper{
+	pixel_x = -9;
+	pixel_y = -2
 	},
-/obj/item/paper,
-/obj/item/tool/lighter/random,
+/obj/item/tool/lighter/random{
+	pixel_x = -8
+	},
+/obj/item/stack/sheet/wood/large_stack{
+	pixel_y = 14;
+	pixel_x = -1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -54525,9 +54571,20 @@
 	dir = 1
 	},
 /area/almayer/command/cic)
+"paP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/upper_medical)
 "paQ" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -54866,6 +54923,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"pkB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/upper_medical)
 "pkD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/masks{
@@ -55008,6 +55074,16 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
+"pon" = (
+/obj/structure/bed/chair,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/upper_medical)
 "pop" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -55276,6 +55352,7 @@
 	dir = 8;
 	name = "ship-grade camera"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side"
@@ -55598,6 +55675,20 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/bravo)
+"pDy" = (
+/obj/structure/sign/safety/medical{
+	pixel_y = 6;
+	pixel_x = 32
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_y = -8;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/almayer/hallways/aft_hallway)
 "pDB" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -62888,6 +62979,10 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 32
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/upper_medical)
 "sWW" = (
@@ -68221,10 +68316,6 @@
 	},
 /area/almayer/command/cic)
 "vqw" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -74581,6 +74672,9 @@
 "ycL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -100761,7 +100855,7 @@ bsp
 baZ
 bqN
 vtB
-bEP
+kup
 iwl
 bGT
 bHH
@@ -101266,7 +101360,7 @@ gyy
 avn
 avn
 avn
-avn
+pDy
 avn
 mTb
 avn
@@ -103489,9 +103583,9 @@ sOZ
 oNJ
 rxs
 paQ
-akw
+kXw
 pwv
-aCC
+pkB
 crv
 gXl
 nbk
@@ -103694,7 +103788,7 @@ ajl
 ajl
 jTj
 ajl
-akx
+heJ
 aHD
 phV
 wJo
@@ -104100,7 +104194,7 @@ ajl
 mEQ
 ljz
 ajl
-akw
+paP
 xNu
 sqf
 aCo
@@ -104303,7 +104397,7 @@ ajl
 ajl
 ajl
 ajl
-vPk
+jrV
 ajl
 sqf
 sqf
@@ -104506,7 +104600,7 @@ slJ
 iIO
 alE
 slJ
-akw
+paP
 asw
 nud
 ubo
@@ -104709,7 +104803,7 @@ akw
 akw
 akw
 akw
-akw
+paP
 akw
 akw
 akw
@@ -105732,7 +105826,7 @@ iQo
 dGB
 trF
 irA
-nFq
+pon
 akw
 wky
 asn

@@ -38,14 +38,22 @@
 /datum/round_event/cryopod_malfunction/announce()
 	if(!cryogenic_pod) // wtf
 		return
-	shipwide_ai_announcement("A cryogenic malfunction has ejected a [spawn_group_type] in [get_area(cryogenic_pod)]. Please secure it for hypersleep re-integration after the operation.")
+	shipwide_ai_announcement("A cryogenic malfunction has ejected a [spawn_group_type] in [get_area(cryogenic_pod)] area. Please secure it for hypersleep re-integration after the operation.")
 
 /datum/round_event/cryopod_malfunction/start()
+	var/list/cryopod_list
 	for(var/obj/structure/machinery/cryopod/possible_cryopod as anything in GLOB.total_cryo_pods)
 		if(!is_mainship_level(possible_cryopod.z) || istype(possible_cryopod, /obj/structure/machinery/cryopod/evacuation) || possible_cryopod.occupant)
 			continue
 
-		cryogenic_pod = possible_cryopod
+		var/area/cryoarea = get_area(possible_cryopod)
+
+		if(cryoarea.flags_area & AREA_CRYO_OR_PREP && spawn_group_type = SPAWN_WILDLIFE) // no spawncamping
+			continue
+
+		LAZYADD(cryopod_list, possible_cryopod)
+
+	cryogenic_pod = pick(cryopod_list)
 
 	if(!cryogenic_pod) // wtf
 		return
@@ -57,7 +65,7 @@
 	cryogenic_pod.visible_message(SPAN_HIGHDANGER("[cryogenic_pod] starts rumbling violently!"))
 
 /datum/round_event/cryopod_malfunction/proc/pop_out(obj/structure/machinery/cryopod/cryogenic_pod)
-	new spawn_type(cryogenic_pod.loc)
+	new spawn_type(get_turf(cryogenic_pod))
 	cryogenic_pod.balloon_alert_to_viewers("*pop!*")
 	cryogenic_pod.icon_state = "body_scanner_open"
 	cryogenic_pod.visible_message(SPAN_HIGHDANGER("You see something jump out of [cryogenic_pod]!"))

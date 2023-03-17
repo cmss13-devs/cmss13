@@ -44,6 +44,9 @@
 #define AREA_ALLOW_XENO_JOIN (1<<2)
 /// Flags the area as a containment area
 #define AREA_CONTAINMENT (1<<3)
+/// cryo/prep area, used for cryopod_malfunction.dm
+#define AREA_CRYO_OR_PREP (1<<4)
+
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 

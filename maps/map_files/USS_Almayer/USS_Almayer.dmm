@@ -4965,6 +4965,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
 "aqk" = (
@@ -7942,7 +7945,7 @@
 "azn" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
 "azo" = (
@@ -8597,7 +8600,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
 "aBn" = (
@@ -9134,7 +9137,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
 "aDv" = (
@@ -13039,6 +13042,11 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "aWb" = (
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_y = 17;
+	density = 0;
+	pixel_x = -8
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orangecorner"
@@ -15714,6 +15722,7 @@
 	req_access = null;
 	req_one_access_txt = "2;4;7;9;21"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -19552,6 +19561,9 @@
 /area/almayer/squads/req)
 "bGz" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green"
@@ -20454,6 +20466,7 @@
 	pixel_y = 16
 	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -21664,6 +21677,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/vehiclehangar)
+"bPk" = (
+/obj/structure/machinery/disposal{
+	density = 0;
+	layer = 3.2;
+	pixel_y = -2
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/living/cryo_cells)
 "bPn" = (
 /obj/structure/machinery/computer/orbital_cannon_console,
 /obj/structure/bed/chair/ob_chair,
@@ -27526,7 +27552,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
 "cHl" = (
@@ -29025,15 +29051,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"dpK" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "dpO" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta,
 /obj/structure/sign/banners/maximumeffort{
@@ -29390,15 +29407,6 @@
 	allow_construction = 0
 	},
 /area/almayer/stair_clone/upper)
-"dxH" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped"
-	},
-/area/almayer/squads/req)
 "dxL" = (
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
@@ -29776,6 +29784,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"dGl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "dGr" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -31315,11 +31330,6 @@
 	eftpos_name = "Cargo Bay EFTPOS scanner";
 	pixel_x = -10
 	},
-/obj/item/tool/stamp{
-	name = "Requisition Officer's stamp";
-	pixel_x = -8;
-	pixel_y = 10
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -31329,6 +31339,11 @@
 /obj/item/ashtray/glass{
 	pixel_x = 11;
 	pixel_y = 9
+	},
+/obj/item/tool/stamp/ro{
+	pixel_x = -8;
+	name = "Requisitions Officer's rubber stamp";
+	pixel_y = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
@@ -32657,17 +32672,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/charlie_delta_shared)
-"eUz" = (
-/obj/structure/machinery/disposal{
-	density = 0;
-	layer = 3.2;
-	pixel_y = 16
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/port_hallway)
 "eUA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -32798,18 +32802,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/port_hallway)
-"eYk" = (
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/almayer/squads/req)
 "eYr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -33952,10 +33944,13 @@
 /area/almayer/squads/charlie)
 "fzP" = (
 /obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
-/obj/item/folder/black,
-/obj/item/storage/fancy/cigarettes/kpack,
+/obj/item/paper_bin/uscm{
+	pixel_y = 4
+	},
+/obj/item/tool/pen{
+	pixel_x = -12;
+	pixel_y = 4
+	},
 /obj/structure/machinery/door_control{
 	id = "CE Office Shutters";
 	name = "CE Office Shutters";
@@ -33963,6 +33958,15 @@
 	req_one_access_txt = "1;6";
 	pixel_x = -6;
 	req_access_txt = list()
+	},
+/obj/item/tool/stamp/ce{
+	pixel_x = 7;
+	pixel_y = 3;
+	name = "Chief Engineer's rubber stamp"
+	},
+/obj/item/tool/pen/red{
+	pixel_x = -12;
+	pixel_y = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
@@ -45087,8 +45091,8 @@
 	pixel_x = 6;
 	pixel_y = -9
 	},
-/obj/item/tool/stamp{
-	name = "Chief Medical Officer's stamp"
+/obj/item/tool/stamp/cmo{
+	name = "Chief Medical Officer's rubber stamp"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -45669,6 +45673,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
+/obj/item/clothing/mask/cigarette/cigar/classic,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "ldl" = (
@@ -45795,6 +45800,9 @@
 "lgX" = (
 /obj/structure/sign/safety/storage{
 	pixel_y = 32
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -53114,6 +53122,9 @@
 	id = "req_belt"
 	},
 /obj/structure/plasticflaps,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "oqZ" = (
@@ -53213,16 +53224,21 @@
 /area/almayer/hull/lower_hull/l_a_p)
 "osJ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/folder/white{
-	pixel_x = 5;
-	pixel_y = 5
+/obj/item/handcuffs{
+	pixel_x = -7
 	},
-/obj/item/paper,
-/obj/item/handcuffs,
-/obj/item/clothing/mask/cigarette/cigar/classic,
 /obj/item/coin/silver{
 	desc = "A small coin, bearing the falling falcons insignia.";
-	name = "falling falcons challenge coin"
+	name = "falling falcons challenge coin";
+	pixel_y = 11;
+	pixel_x = -11
+	},
+/obj/item/device/megaphone{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/device/whistle{
+	pixel_x = 9
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -54088,6 +54104,7 @@
 	icon_state = "pottedplant_21";
 	pixel_y = 15
 	},
+/obj/item/storage/fancy/cigarettes/kpack,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -59893,7 +59910,7 @@
 "rBx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
-	name = "spare requisitions officer's rubber stamp";
+	name = "Spare Requisitions Officer's rubber stamp";
 	pixel_x = -7;
 	pixel_y = 11
 	},
@@ -61152,6 +61169,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"ses" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/living/cryo_cells)
 "seH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -67642,6 +67668,9 @@
 /area/almayer/squads/bravo)
 "vbR" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green"
@@ -68884,11 +68913,21 @@
 /area/almayer/living/briefing)
 "vBJ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen,
-/obj/item/device/whistle,
-/obj/item/device/megaphone,
+/obj/item/tool/pen{
+	pixel_x = 11;
+	pixel_y = 6
+	},
 /obj/item/paper_bin/uscm{
 	pixel_y = 7
+	},
+/obj/item/tool/pen/red{
+	pixel_x = 11;
+	pixel_y = 1
+	},
+/obj/item/tool/stamp/hos{
+	name = "Chief of Military Police's rubber stamp";
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -117296,7 +117335,7 @@ bxg
 bZr
 bNQ
 bNQ
-dpK
+bNQ
 bGz
 hMs
 cbw
@@ -117499,7 +117538,7 @@ bxh
 bZr
 krN
 krN
-eYk
+krN
 oqY
 can
 buH
@@ -117702,7 +117741,7 @@ bxg
 bZr
 ibc
 uly
-dxH
+bNN
 vbR
 pky
 cbv
@@ -119211,7 +119250,7 @@ psm
 ndJ
 anJ
 aoS
-aBq
+wOl
 amA
 amx
 amx
@@ -119225,7 +119264,7 @@ amx
 atq
 amx
 aoT
-aBq
+wOl
 aiB
 anJ
 mnG
@@ -119428,7 +119467,7 @@ ayd
 atq
 atq
 wwJ
-aBq
+wOl
 alG
 aYj
 apd
@@ -119617,7 +119656,7 @@ psm
 ylJ
 aDZ
 aoD
-aBq
+wOl
 qHM
 emn
 rdI
@@ -119631,7 +119670,7 @@ aye
 amx
 amx
 aBs
-aBq
+wOl
 alG
 aYj
 apd
@@ -122373,7 +122412,7 @@ dMB
 dMB
 lJu
 xYP
-hLI
+bPk
 laU
 drt
 rZF
@@ -122576,9 +122615,9 @@ xYP
 jmK
 hcw
 cgE
-hLI
+ses
 blq
-bIT
+dGl
 jHe
 bIS
 bJC
@@ -122781,7 +122820,7 @@ lJu
 xYP
 hLI
 laU
-eUz
+buH
 bHc
 bIT
 bJC
@@ -123775,7 +123814,7 @@ aQL
 tBF
 aZl
 tBF
-aQt
+sOm
 tBF
 aQt
 bhn

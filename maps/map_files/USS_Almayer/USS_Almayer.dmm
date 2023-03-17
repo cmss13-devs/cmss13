@@ -984,15 +984,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/hallways/repair_bay)
-"ado" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/starboard_garden)
 "adp" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -7661,9 +7652,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver"
@@ -11147,7 +11135,13 @@
 	name = "North East Ladders Shutters";
 	pixel_x = 25;
 	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
+	throw_range = 15;
+	pixel_y = 10
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -12272,10 +12266,6 @@
 	},
 /area/almayer/living/captain_mess)
 "aSr" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/sign/safety/one{
 	pixel_x = 32;
 	pixel_y = -8
@@ -21808,10 +21798,6 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /obj/effect/landmark/late_join,
 /turf/open/floor/almayer,
@@ -22860,7 +22846,13 @@
 	name = "South East Ladders Shutters";
 	pixel_x = 25;
 	req_one_access_txt = "2;3;12;19";
-	throw_range = 15
+	throw_range = 15;
+	pixel_y = -10
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	pixel_y = 6
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -24241,7 +24233,7 @@
 /area/almayer/command/computerlab)
 "cbo" = (
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "plate"
 	},
 /area/almayer/evacuation/pod4)
 "cbr" = (
@@ -25484,18 +25476,6 @@
 	icon_state = "green"
 	},
 /area/almayer/squads/req)
-"cit" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/starboard_garden)
 "ciu" = (
 /obj/structure/platform{
 	dir = 8
@@ -25570,10 +25550,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "ciU" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/sign/safety/four{
 	pixel_x = 31;
 	pixel_y = -8
@@ -27239,13 +27215,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
-"czM" = (
-/obj/structure/sign/safety/intercom{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
 "cAH" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -28943,6 +28912,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"dnw" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/stern_hallway)
 "dnx" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light,
@@ -29531,13 +29507,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
-"dBp" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south1)
 "dBs" = (
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer{
@@ -35852,6 +35821,10 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "gwo" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "bluecorner"
@@ -36024,10 +35997,6 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "gyC" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/sign/safety/two{
 	pixel_x = 32;
 	pixel_y = -8
@@ -39848,6 +39817,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
+"irk" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "plating_striped"
+	},
+/area/almayer/squads/req)
 "irn" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -41518,6 +41500,18 @@
 	icon_state = "red"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"jeD" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/starboard_garden)
 "jeK" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -42120,6 +42114,16 @@
 	icon_state = "bluefull"
 	},
 /area/almayer/living/captain_mess)
+"jta" = (
+/obj/structure/machinery/cryopod,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/living/cryo_cells)
 "jtd" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light{
@@ -47970,9 +47974,9 @@
 /area/almayer/squads/alpha)
 "mfj" = (
 /obj/structure/machinery/cryo_cell{
-	layer = 4
+	layer = 4;
+	density = 1
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -52307,6 +52311,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/shipboard/brig/cells)
+"nXp" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_hallway)
 "nXP" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -53598,6 +53608,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"oBP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/hallways/port_hallway)
 "oCi" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -55630,6 +55652,16 @@
 	icon_state = "mono"
 	},
 /area/almayer/hallways/stern_hallway)
+"pCJ" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "emerald"
+	},
+/area/almayer/hallways/port_hallway)
 "pDh" = (
 /obj/structure/machinery/power/monitor{
 	name = "Core Power Monitoring"
@@ -58682,6 +58714,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"qYn" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/starboard_garden)
 "qYr" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down3";
@@ -66334,6 +66378,16 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/upper_medical)
+"uwH" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/almayer/squads/req)
 "uwN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68734,6 +68788,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
+"vyf" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange"
+	},
+/area/almayer/hallways/starboard_hallway)
 "vyi" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -69098,6 +69162,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
+"vHj" = (
+/obj/structure/sign/safety/intercom{
+	pixel_x = 22;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/stern_hallway)
 "vHr" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -69733,10 +69804,6 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "vUU" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
 /obj/structure/sign/safety/three{
 	pixel_x = 31;
 	pixel_y = -8
@@ -74010,6 +74077,10 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "xQg" = (
@@ -74646,6 +74717,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"ybu" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "ybO" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/stack/sheet/mineral/phoron/medium_stack,
@@ -99567,7 +99648,7 @@ mJL
 aiX
 ayT
 amO
-avj
+xQY
 qFl
 qFl
 qFl
@@ -102496,7 +102577,7 @@ laW
 laW
 laW
 laW
-aLG
+nXp
 aZi
 aLG
 kan
@@ -102992,7 +103073,7 @@ aJW
 aJW
 boL
 boL
-boL
+qYn
 aYs
 uoS
 aJW
@@ -104010,7 +104091,7 @@ avV
 afY
 afY
 bLO
-cit
+bWK
 ajb
 adb
 adb
@@ -104264,7 +104345,7 @@ qVM
 qVM
 gnv
 yhI
-tTu
+ybu
 pgD
 tQV
 aag
@@ -105020,16 +105101,16 @@ acf
 acf
 aJW
 ale
-bDD
+jeD
 nub
 bDD
 ale
 aJW
-ado
+aJW
 kHT
 avn
 rqB
-avn
+mRl
 mTb
 atC
 avn
@@ -105065,7 +105146,7 @@ avn
 avn
 atC
 mTb
-avn
+mRl
 dAS
 avn
 avn
@@ -105075,7 +105156,7 @@ cre
 avn
 aim
 baw
-dBp
+baw
 baw
 tQV
 tQV
@@ -108180,7 +108261,7 @@ dVO
 bsR
 aQr
 aQF
-aLG
+nXp
 aYO
 aLG
 kan
@@ -112236,7 +112317,7 @@ gyC
 wbh
 bsX
 bAa
-bKE
+vyf
 eBj
 bBh
 aLG
@@ -112270,7 +112351,7 @@ bHa
 buH
 cbD
 bMt
-bMt
+pCJ
 bOv
 bOX
 jLK
@@ -114472,7 +114553,7 @@ xHp
 aUi
 iow
 jeb
-aLG
+nXp
 aNO
 aYY
 bal
@@ -114799,7 +114880,7 @@ aGN
 aGN
 qrv
 aHq
-aOS
+vHj
 anC
 aiC
 aUH
@@ -115189,7 +115270,7 @@ aiw
 ahJ
 aiC
 anG
-aiC
+dnw
 ioU
 rCX
 cmK
@@ -115205,7 +115286,7 @@ eed
 eEo
 pSU
 aHq
-czM
+aOS
 ajG
 aiC
 aGz
@@ -116113,7 +116194,7 @@ bmD
 bNP
 bmD
 bNP
-bmD
+uwH
 gkg
 doP
 jac
@@ -118340,7 +118421,7 @@ bCA
 bCA
 cvb
 bmC
-nwG
+irk
 lDL
 nwG
 lMw
@@ -118559,7 +118640,7 @@ uys
 bJz
 cbS
 bJz
-bHW
+oBP
 bJC
 bMA
 cfo
@@ -120368,7 +120449,7 @@ cbh
 xYP
 bbs
 gsm
-bCM
+jta
 rbF
 cJE
 bOT
@@ -120378,7 +120459,7 @@ iFD
 vRa
 vub
 bPL
-bCM
+jta
 xSM
 tez
 gsm

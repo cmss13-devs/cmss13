@@ -98,6 +98,8 @@
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
+			give_action(M, /datum/action/join_ert, src)
+
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
@@ -115,11 +117,15 @@
 	set category = "Ghost.Join"
 	set desc = "Join an ongoing distress call response. You must be ghosted to do this."
 
-	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))
-		to_chat(usr, SPAN_DANGER("You are jobbanned from the emergency response team!"))
+	do_join_response_team()
+
+/mob/dead/observer/proc/do_join_response_team()
+
+	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
+		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
 	if(!SSticker.mode || !SSticker.mode.picked_calls.len)
-		to_chat(usr, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
+		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return
 
 	var/list/beacons = list()
@@ -133,46 +139,46 @@
 
 		beacons += list("[name]" = em_call) // I hate byond
 
-	var/choice = tgui_input_list(usr, "Choose a distress beacon to join", "", beacons)
+	var/choice = tgui_input_list(src, "Choose a distress beacon to join", "", beacons)
 
 	if(!choice)
-		to_chat(usr, "Something seems to have gone wrong!")
+		to_chat(src, "Something seems to have gone wrong!")
 		return
 
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))
-		to_chat(usr, "That choice is no longer available!")
+		to_chat(src, "That choice is no longer available!")
 		return
 
 	var/datum/emergency_call/distress = beacons[choice]
 
 	if(!istype(distress) || !distress.mob_max)
-		to_chat(usr, SPAN_WARNING("The emergency response team is already full!"))
+		to_chat(src, SPAN_WARNING("The emergency response team is already full!"))
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 1 MINUTES) //Nice try, ghosting right after the announcement
 		if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
-			to_chat(usr, SPAN_WARNING("You ghosted too recently."))
+			to_chat(src, SPAN_WARNING("You ghosted too recently."))
 			return
 
-	if(!usr.mind) //How? Give them a new one anyway.
-		usr.mind = new /datum/mind(usr.key, usr.ckey)
-		usr.mind.active = 1
-		usr.mind.current = usr
-		usr.mind_initialize()
-	if(usr.mind.key != usr.key)
-		usr.mind.key = usr.key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
+	if(!mind) //How? Give them a new one anyway.
+		mind = new /datum/mind(key, ckey)
+		mind.active = 1
+		mind.current = src
+		mind_initialize()
+	if(mind.key != key)
+		mind.key = key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
 
-	if(!usr.client || !usr.mind)
+	if(!client || !mind)
 		return //Somehow
-	if(usr.mind in distress.candidates)
-		to_chat(usr, SPAN_WARNING("You are already a candidate for this emergency response team."))
+	if(mind in distress.candidates)
+		to_chat(src, SPAN_WARNING("You are already a candidate for this emergency response team."))
 		return
 
-	if(distress.add_candidate(usr))
-		to_chat(usr, SPAN_BOLDNOTICE("You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team."))
+	if(distress.add_candidate(src))
+		to_chat(src, SPAN_BOLDNOTICE("You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team."))
 	else
-		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
+		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
 /datum/emergency_call/proc/activate(announce = TRUE, turf/override_spawn_loc)
 	set waitfor = 0
@@ -192,6 +198,8 @@
 /datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
+
+	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
 
 	if(candidates.len < mob_min && !spawn_max_amount)
 		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")

@@ -9355,7 +9355,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
-/obj/structure/machinery/door/airlock/medical,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Medical Clinic Operating Theatre";
+	dir = 2
+	},
 /turf/open/floor{
 	icon_state = "darkish"
 	},

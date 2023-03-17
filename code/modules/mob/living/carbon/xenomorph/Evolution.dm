@@ -8,6 +8,10 @@
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
+
+	do_evolve()
+
+/mob/living/carbon/xenomorph/proc/do_evolve()
 	var/potential_queens = 0
 
 	if (!evolve_checks())

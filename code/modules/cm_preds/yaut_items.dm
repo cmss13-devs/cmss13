@@ -991,6 +991,8 @@
 	name = "skull"
 	icon_state = "head"
 	high_visibility = TRUE
+/obj/item/clothing/accessory/limb/skeleton/head/spine
+	icon_state = "spine"
 /obj/item/clothing/accessory/limb/skeleton/torso
 	name = "ribcage"
 	icon_state = "torso"

@@ -6,7 +6,7 @@
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Average time to resolve an issue")
 
-* **Website:** https://cm-ss13.com/forums/
+* **Website:** https://forum.cm-ss13.com/
 * **Code:** https://github.com/cmss13-devs/cmss13
 * **Wiki:** https://cm-ss13.com/wiki/Main_Page
 
@@ -29,7 +29,7 @@ On **2022-04-06** we have changed the way to compile the codebase.
 ## Contributors
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
-[Interested in contributing to the design?](https://github.com/cmss13-devs/cmss13-design-docs) - Design documentation here
+[Setting up a Development Environment](https://cm-ss13.com/wiki/Guide_to_Git)
 
 ## LICENSE
 

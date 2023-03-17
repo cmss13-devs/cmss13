@@ -60,9 +60,9 @@
 
 	var/message_prompt = "Message:"
 
-	if(AH?.opening_responders && length(AH.ticket_interactions) == 1)
+	if((AH?.opening_responders && length(AH.ticket_interactions) == 1 ) || (AH?.marked_admin && AH?.marked_admin != usr.key) && length(AH.ticket_interactions) == 2)
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
-		message_prompt += "\n\n**This ticket is already being responded to by: [english_list(AH.opening_responders)]**"
+		message_prompt += "\n\n**This ticket is already being responded to by: [length(AH.opening_responders) ? english_list(AH.opening_responders) : AH.marked_admin]**"
 
 	if(AH)
 		message_admins("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")
@@ -199,8 +199,8 @@
 				confidential = TRUE)
 			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			//omg this is dumb, just fill in both their tickets
-			var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [msg]</font>"
-			var/player_interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
+			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [msg]</font>"
+			var/player_interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
 			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
 			if(recipient != src) //reeee
 				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
@@ -250,7 +250,7 @@
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='purple'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
+			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_admin(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='green'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
 
 			if(!already_logged) //Reply to an existing ticket
 				log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)

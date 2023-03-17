@@ -186,7 +186,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,

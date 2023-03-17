@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	bound_x = -32
 	bound_y = -32
 
-	interior_map = "apc"
+	interior_map = /datum/map_template/interior/apc
 
 	passengers_slots = 15
 	xenos_slots = 8
@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 //Transport version without FPWs
 
 /obj/vehicle/multitile/apc/unarmed
-	interior_map = "apc_no_fpw"
+	interior_map = /datum/map_template/interior/apc_no_fpw
 
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/apc/unarmed/spawn_vehicle()

@@ -35,11 +35,11 @@
 /obj/item/weapon/gun/minigun/handle_starting_attachment()
 	..()
 	//invisible mag harness
-	var/obj/item/attachable/magnetic_harness/M = new(src)
-	M.hidden = TRUE
-	M.flags_attach_features &= ~ATTACH_REMOVABLE
-	M.Attach(src)
-	update_attachable(M.slot)
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.hidden = TRUE
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
 
 //Minigun UPP
 /obj/item/weapon/gun/minigun/upp
@@ -62,7 +62,7 @@
 //M60
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
-	desc = "The M60. The Pig. The Action Hero's wet dream. \nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The M60. The Pig. The Action Hero's wet dream. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m60"
 	item_state = "m60"
@@ -82,7 +82,7 @@
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
 	)
-	var/cover_open = FALSE
+	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
@@ -109,9 +109,9 @@
 	empty_sound = 'sound/weapons/gun_empty.ogg'
 
 /obj/item/weapon/gun/m60/clicked(mob/user, list/mods)
-	if(mods["alt"])
-		if(!CAN_PICKUP(user, src))
-			return ..()
+	if(!mods["alt"] || !CAN_PICKUP(user, src))
+		return ..()
+	else
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
 		if(user.get_active_hand() && user.get_inactive_hand())
@@ -119,26 +119,24 @@
 			return TRUE
 		if(!cover_open)
 			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the belt to be removed."))
+			to_chat(user, SPAN_NOTICE("You open [src]'s feed cover, allowing the belt to be removed."))
 			cover_open = TRUE
 		else
 			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
+			to_chat(user, SPAN_NOTICE("You close [src]'s feed cover."))
 			cover_open = FALSE
 		update_icon()
 		return TRUE
-	else
-		return ..()
 
 /obj/item/weapon/gun/m60/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new belt in! (alt-click to open it)"))
+		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't put a new belt in! <b>(alt-click to open it)</b>"))
 		return
 	. = ..()
 
 /obj/item/weapon/gun/m60/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the belt! (alt-click to open it)"))
+		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't take out the belt! <b>(alt-click to open it)</b>"))
 		return
 	. = ..()
 
@@ -152,9 +150,8 @@
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()
 	if(.)
-		var/mob/living/carbon/human/H = user
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
 			return FALSE
 
 

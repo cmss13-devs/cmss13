@@ -217,6 +217,7 @@
 	fire_type = FIRE_VARIANT_DEFAULT
 
 /obj/item/explosive/grenade/incendiary/impact/prime()
+	return
 
 /obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom)
 	..()
@@ -230,7 +231,7 @@
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
-		var/turf/target = locate(src.loc.x + sin(angle)*radius, src.loc.y + cos(angle)*radius, src.loc.z)
+		var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
 		if(target)
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
 		else

@@ -222,3 +222,10 @@
   - bugfix: whitelisted predators can now use apostrophes in their flavour texts
   realforest2001:
   - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+2023-03-17:
+  NewyearnewmeUwu:
+  - maptweak: removed yet another default ss13 door from big red
+  TopHatPenguin:
+  - bugfix: Removes the duplicated closet in DCC bunks.
+  realforest2001:
+  - rscadd: Vehicle Elevator now starts raised.

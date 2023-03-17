@@ -1,0 +1,4 @@
+author: "memesky"
+delete-after: True
+changes:
+  - qol: "Increased the maximum font size of the chat from 32px to 48px."

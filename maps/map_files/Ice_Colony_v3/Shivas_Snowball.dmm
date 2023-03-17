@@ -895,12 +895,6 @@
 /obj/item/reagent_container/glass/bucket,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"ado" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/weapon/melee/banhammer,
@@ -4635,12 +4629,6 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
-"aBB" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/lz2_habs)
 "aBE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center"
@@ -7849,12 +7837,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/lz2_habs)
-"bOh" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
-/area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
 /turf/open/floor/plating,
@@ -8647,12 +8629,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/medseceng)
-"cKE" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "snow_mat"
-	},
-/area/shiva/interior/colony/botany)
 "cKL" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/valley)
@@ -10116,12 +10092,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"eBU" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/colony/s_admin)
 "eBZ" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -16911,13 +16881,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/valley_huts)
-"lSz" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "redfull"
-	},
-/area/shiva/interior/colony/n_admin)
 "lSU" = (
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
@@ -20957,12 +20920,6 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
-"qiu" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/shiva/interior/bar)
 "qjY" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/snow/layer0,
@@ -29172,7 +29129,7 @@ xQJ
 odz
 xQJ
 xQJ
-aBB
+xQJ
 xQJ
 mrY
 mrY
@@ -43298,7 +43255,7 @@ fZR
 fZR
 fZR
 fZR
-cKE
+fZR
 fZR
 bJF
 uJk
@@ -45099,7 +45056,7 @@ rZD
 uSe
 tEl
 hyu
-eBU
+rGg
 rGg
 rGg
 hyu
@@ -45230,7 +45187,7 @@ jru
 qpu
 uzP
 jBp
-lSz
+jBp
 jBp
 uzP
 hLf
@@ -45454,7 +45411,7 @@ ueG
 iek
 wCU
 xCN
-qiu
+lxn
 oaI
 rBr
 oaI
@@ -52749,7 +52706,7 @@ aUy
 aVL
 aWT
 aVL
-bOh
+aVL
 aVL
 aWS
 aVL
@@ -54819,7 +54776,7 @@ ktd
 ktd
 ktd
 tXd
-ado
+ver
 pSD
 ktd
 ktd

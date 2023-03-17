@@ -414,7 +414,7 @@
 /obj/structure/ship_ammo/minirocket/smoke/attackby(obj/item/attackitem, mob/user)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
-			if(istype(attackitem, /obj/item/reagent_container/glass/beaker) &&  attackitem.reagents.total_volume != attackitem.reagents.maximum_volume)
+			if(istype(attackitem, /obj/item/reagent_container/glass/beaker) &&  attackitem.reagents.total_volume == attackitem.reagents.maximum_volume)
 				user.drop_held_item(attackitem)
 				attackitem.forceMove(src)
 				chemical = attackitem.reagents

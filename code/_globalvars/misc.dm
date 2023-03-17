@@ -20,3 +20,8 @@ GLOBAL_LIST_INIT(gamemode_roles, list())
 GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
+
+GLOBAL_VAR_INIT(time_offset, setup_offset())
+
+/proc/setup_offset()
+	return rand(10 MINUTES, 4 HOURS)

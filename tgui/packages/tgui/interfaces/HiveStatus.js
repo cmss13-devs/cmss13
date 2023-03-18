@@ -106,7 +106,7 @@ export const HiveStatus = (props, context) => {
 };
 
 const GeneralInformation = (props, context) => {
-  const { data } = useBackend(context);
+  const { data, act } = useBackend(context);
   const {
     queen_location,
     hive_location,
@@ -408,9 +408,9 @@ const StatusIcon = (props, context) => {
   }
 };
 
-const XenoCollapsible = (props, context) => {
+export const XenoCollapsible = (props, context) => {
   const { data } = useBackend(context);
-  const { title, children } = props;
+  const { title, children, closed } = props;
   const { hive_color } = data;
 
   return (
@@ -418,7 +418,7 @@ const XenoCollapsible = (props, context) => {
       title={title}
       backgroundColor={!!hive_color && hive_color}
       color={!hive_color && 'xeno'}
-      open>
+      open={!closed}>
       {children}
     </Collapsible>
   );

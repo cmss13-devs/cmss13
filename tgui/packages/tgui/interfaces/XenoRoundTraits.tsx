@@ -1,6 +1,7 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Stack } from '../components';
+import { useBackend } from '../backend';
+import { Stack } from '../components';
 import { Window } from '../layouts';
+import { XenoCollapsible } from './HiveStatus';
 
 interface EventComputerData {
   shipmap_name: string;
@@ -16,74 +17,26 @@ interface TraitItem {
 export const XenoRoundTraits = (props, context) => {
   const { data } = useBackend<EventComputerData>(context);
   return (
-    <Window theme="crtgreen" width={790} height={440}>
+    <Window theme="hive_status" width={790} height={440}>
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item>
-            <ShipInfo />
+          <Stack.Item textAlign="center">
+            <h1 className="whiteTitle">Proclamations from the Queen Mother</h1>
+            <h3 className="whiteTitle">
+              There {data.traits.length > 1 ? 'are' : 'is'} {data.traits.length}{' '}
+              Proclamation
+              {data.traits.length > 1 ? 's' : ''}
+            </h3>
           </Stack.Item>
           <Stack.Item height="100%">
-            <Notifications />
+            {data.traits.map((trait) => (
+              <XenoCollapsible title={trait.name} key={trait.name} closed>
+                {trait.report}
+              </XenoCollapsible>
+            ))}
           </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
-  );
-};
-
-const ShipInfo = (props, context) => {
-  const { data } = useBackend<EventComputerData>(context);
-  const { shipmap_name, groundmap_name } = data;
-  return (
-    <Section title="Information">
-      <Stack justify={'space-between'}>
-        <Stack.Item>
-          <Stack>
-            <Stack.Item>
-              <b>Infesting:</b> {groundmap_name}
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
-
-const Notifications = (props, context) => {
-  const { data } = useBackend<EventComputerData>(context);
-  const traits = Array.from(data.traits);
-
-  const [currentNotification, setNotification] = useLocalState(
-    context,
-    'notificationText',
-    traits[0] ? traits[0]?.name : ''
-  );
-
-  return (
-    <Stack fill>
-      <Stack.Item width="30%" height="100%">
-        <Section scrollable title="Inbox" fill>
-          {traits.map((val) => (
-            <Button
-              key={val.name}
-              selected={val.name === currentNotification}
-              onClick={() => {
-                setNotification(val.name);
-              }}
-              fluid>
-              {val.name}
-            </Button>
-          ))}
-        </Section>
-      </Stack.Item>
-      <Stack.Item width="70%" height="100%" fill>
-        <Section title="Message" fill>
-          {
-            traits.find((element) => element.name === currentNotification)
-              ?.report
-          }
-        </Section>
-      </Stack.Item>
-    </Stack>
   );
 };

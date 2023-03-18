@@ -25,3 +25,6 @@
 	data["groundmap_name"] = SSmapping.configs[GROUND_MAP].map_name
 
 	return data
+
+/datum/xeno_round_traits/ui_state(mob/user)
+	return GLOB.always_state

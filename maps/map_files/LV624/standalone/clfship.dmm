@@ -2,7 +2,7 @@
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = -4;
+	pixel_x = -7;
 	pixel_y = -4
 	},
 /obj/item/ammo_magazine/rifle/mar40/lmg{
@@ -10,7 +10,7 @@
 	pixel_y = -4
 	},
 /obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = 1
+	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -162,11 +162,11 @@
 /area/lv624/lazarus/crashed_ship)
 "fA" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Armoury";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -326,9 +326,9 @@
 /area/lv624/lazarus/crashed_ship)
 "ju" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
 	phone_category = "Lazarus Landing";
-	phone_id = "Cargo"
+	phone_id = "Cargo";
+	pixel_y = 32
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_w_1"
@@ -672,11 +672,11 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/transmitter/colony_net/rotary{
-	phone_category = "CR-116";
-	phone_id = "Engineering";
-	phone_color = "yellow";
 	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	networks_transmit = list("CLF");
+	phone_category = "CR-116";
+	phone_color = "yellow";
+	phone_id = "Engineering"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
@@ -1664,12 +1664,12 @@
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
-	phone_category = "CR-116";
-	phone_id = "Medical Bay";
 	network_receive = "CLF";
 	networks_transmit = list("CLF");
-	phone_color = "green"
+	phone_category = "CR-116";
+	phone_color = "green";
+	phone_id = "Medical Bay";
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1995,11 +1995,11 @@
 /area/lv624/lazarus/crashed_ship)
 "XM" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor{
 	dir = 8;

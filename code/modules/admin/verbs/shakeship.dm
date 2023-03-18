@@ -44,7 +44,7 @@
 					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
 				if(sstrength > 5)
 					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
-					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+					playsound_area(get_area(current_mob), 'sound/machines/airalarm.ogg', 50)
 		 sleep(delayt * 10)
 
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)

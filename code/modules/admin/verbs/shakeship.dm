@@ -31,7 +31,8 @@
 		if(prompt == "Yes")
 			announce = TRUE
 			whattoannounce = input(usr, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
-
+			if(!whattoannounce)
+				whattoannounce = "WARNING, IMPACT IMMINENT. ETA: [delayt]"
 	prompt = alert(C, "Are you sure you want to shake the shipmap?", "Rock the ship!" ,"Yes","No")
 	if(prompt != "Yes")
 		return
@@ -43,7 +44,7 @@
 				if(sstrength <= 5)
 					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
 				if(sstrength > 5)
-					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg', 'sound/machines/airalarm.ogg')
+					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					//playsound_area(get_area(current_mob), 'sound/machines/airalarm.ogg', 50)
 		 sleep(delayt * 10)
 

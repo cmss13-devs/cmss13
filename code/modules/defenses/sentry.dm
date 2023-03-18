@@ -521,7 +521,7 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()

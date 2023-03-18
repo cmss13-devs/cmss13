@@ -547,7 +547,7 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
-	force = 16
+	force = 26
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -570,7 +570,6 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
-	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
@@ -587,13 +586,13 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_6
 	burst_amount = BURST_AMOUNT_TIER_2
 	burst_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
 

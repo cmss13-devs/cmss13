@@ -190,6 +190,7 @@
 	S["no_radial_labels_preference"] >> no_radial_labels_preference
 	S["hotkeys"] >> hotkeys
 
+	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
 
 	//Sanitize
@@ -250,6 +251,7 @@
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
+	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -364,6 +366,7 @@
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
+	S["custom_cursors"] << custom_cursors
 
 	return TRUE
 

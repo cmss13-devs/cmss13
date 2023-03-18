@@ -30,7 +30,7 @@
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
-	desc = "A alien with an armored head crest."
+	desc = "A alien with an armored crest."
 	icon = 'icons/mob/xenos/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"

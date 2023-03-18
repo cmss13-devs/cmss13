@@ -32,4 +32,5 @@ AddTimelock(/datum/job/logistics/tech, list(
 
 /obj/effect/landmark/start/tech
 	name = JOB_ORDNANCE_TECH
+	icon_state = "ot_spawn"
 	job = /datum/job/logistics/tech

@@ -1422,7 +1422,6 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -1495,7 +1494,6 @@
 	},
 /area/fiorina/station/park)
 "aNw" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/platform/kutjevo/smooth{
@@ -7608,7 +7606,6 @@
 	dir = 8
 	},
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "eKu" = (
@@ -10013,7 +10010,6 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space,
 /area/fiorina/oob)
 "ghg" = (
@@ -11893,7 +11889,6 @@
 	},
 /area/fiorina/tumor/civres)
 "hoZ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "hpd" = (
@@ -13324,7 +13319,6 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -14257,7 +14251,6 @@
 	},
 /area/fiorina/tumor/servers)
 "iSQ" = (
-/obj/structure/lattice,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/station)
 "iTm" = (
@@ -16271,7 +16264,6 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -17601,7 +17593,6 @@
 	},
 /area/fiorina/station/power_ring)
 "kPz" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/open/space,
 /area/fiorina/oob)
@@ -19800,7 +19791,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -24442,7 +24433,6 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -30471,7 +30461,6 @@
 	},
 /area/fiorina/station/security)
 "tan" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/oob)
 "tas" = (
@@ -30624,14 +30613,6 @@
 	icon_state = "darkpurplefull2"
 	},
 /area/fiorina/tumor/servers)
-"tgn" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "tgv" = (
 /obj/structure/machinery/computer/emails{
 	pixel_y = 6
@@ -34058,7 +34039,6 @@
 /area/fiorina/station/research_cells)
 "vnr" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "voa" = (
@@ -37479,7 +37459,6 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "xwC" = (
-/obj/structure/lattice,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/fiberbush)
 "xwD" = (
@@ -37920,7 +37899,6 @@
 	},
 /area/fiorina/oob)
 "xLi" = (
-/obj/structure/window/framed/prison,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
 "xLI" = (
@@ -71464,7 +71442,7 @@ vBP
 vBP
 vBP
 vBP
-tgn
+vBP
 vBP
 vBP
 vBP

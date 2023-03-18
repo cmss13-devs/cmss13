@@ -37,6 +37,8 @@
 	if(!is_mainship_level(z))
 		return
 
+	GLOB.mainship_pipes += src
+
 	if(!HAS_TRAIT(SSround, TRAIT_ROUND_FAULTY_PIPING))
 		return
 
@@ -52,6 +54,9 @@
 
 	for(var/obj/structure/pipes/P in connected_to)
 		P.remove_connection(src)
+
+	GLOB.mainship_pipes -= src
+
 	. = ..()
 
 /obj/structure/pipes/attackby(obj/item/W, mob/user)

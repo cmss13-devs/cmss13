@@ -412,6 +412,9 @@
 
 // Outer Rim Weapon Belts
 
+/obj/item/storage/belt/marine/ar10/fill_preset_inventory() // AR-10
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/ar10 (src)
 /obj/item/storage/belt/marine/m16/fill_preset_inventory() // M16
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
@@ -435,10 +438,12 @@
 /obj/item/storage/belt/marine/mp5/fill_preset_inventory() // MP5
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5 (src)
-
-/obj/item/storage/belt/marine/abr40/fill_preset_inventory() // Hunting Rifle
+/obj/item/storage/belt/marine/uzi/fill_preset_inventory() // uzi
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/l42a/abr40(src)
+		new /obj/item/ammo_magazine/smg/uzi (src)
+/obj/item/storage/belt/marine/boltaction/fill_preset_inventory() // Hunting Rifle
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/boltaction(src)
 
 /obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
 	for(var/i = 1 to storage_slots)
@@ -1349,7 +1354,7 @@
 	var/list/internal_mags = (typesof(/obj/item/ammo_magazine/internal) + /obj/item/ammo_magazine/handful)
 	var/list/training_mags = list(
 		/obj/item/ammo_magazine/rifle/rubber,
-		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber,
 		/obj/item/ammo_magazine/smg/m39/rubber,
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber) //Ivan doesn't bring children's ammo.

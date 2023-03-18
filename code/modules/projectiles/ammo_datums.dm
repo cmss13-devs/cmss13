@@ -430,15 +430,12 @@
 
 /datum/ammo/bullet/pistol/deagle
 	name = ".50 heavy pistol bullet"
-	damage = 70
+	damage = 45
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_10
+	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-
-/datum/ammo/bullet/pistol/deagle/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 2)
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -465,12 +462,9 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 50
+	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-
-/datum/ammo/bullet/pistol/highpower/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
-	pushback(M, P, 3)
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -825,59 +819,10 @@
 	icon_state = "nail-projectile"
 
 	damage = 25
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	accurate_range = 5
 	shell_speed = AMMO_SPEED_TIER_4
-
-
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	if(iscarbonsizexeno(L))
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			return
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		return
-
-	if(L.frozen)
-		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
-		return
-
-	//Check for presence of solid surface behind
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(user, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.frozen = TRUE
-	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
-		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
-	L.update_canmove()
-	addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, unfreeze)), 3 SECONDS)
-
-/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	L.adjust_effect(1, SLOW) //Slow on hit.
-	L.recalculate_move_delay = TRUE
-	var/super_slowdown_duration = 3
-	//If there's an obstacle on the far side, superslow and do extra damage.
-	if(iscarbonsizexeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			super_slowdown_duration = 0.5
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		super_slowdown_duration = 0.5
-
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.adjust_effect(super_slowdown_duration, SUPERSLOW)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -1700,6 +1645,8 @@
 
 /datum/ammo/bullet/sniper/crude
 	name = "crude sniper bullet"
+	damage = 42
+	penetration = ARMOR_PENETRATION_TIER_6
 
 /datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
@@ -2495,9 +2442,16 @@
 	ping = "ping_x"
 	damage_type = TOX
 	flags_ammo_behavior = AMMO_XENO
-	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
+
+	///used to make cooldown of the different spits vary.
+	var/added_spit_delay = 0
 	var/spit_cost
 
+	/// Should there be a windup for this spit?
+	var/spit_windup = FALSE
+
+	/// Should there be an additional warning while winding up? (do not put to true if there is not a windup)
+	var/pre_spit_warn = FALSE
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
 
@@ -2810,15 +2764,23 @@
 			PAS.increment_stack_count() */
 
 /datum/ammo/xeno/boiler_gas
-	name = "glob of gas"
-	icon_state = "boiler_gas2"
+	name = "glob of neuro gas"
+	icon_state = "neuro_glob"
 	ping = "ping_x"
-	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_ACIDIC
+	debilitate = list(2,2,0,0,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	var/datum/effect_system/smoke_spread/smoke_system
-
+	spit_cost = 200
+	pre_spit_warn = TRUE
+	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
-	max_range = 32
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
+	accuracy = HIT_ACCURACY_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4
+	max_range = 16
+	/// range on the smoke in tiles from center
+	var/smokerange = 4
+	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
 	..()
@@ -2829,38 +2791,66 @@
 	smoke_system = null
 	. = ..()
 
-/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/M, obj/item/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
+/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/item/projectile/proj)
+	if(iscarbon(moob))
+		var/mob/living/carbon/carbon = moob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
 			return
-	drop_nade(get_turf(P), P)
+	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
+	if(!neuro_effect)
+		neuro_effect = new /datum/effects/neurotoxin(moob)
+	neuro_effect.duration += 5
+	moob.apply_effect(3, DAZE)
+	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	drop_nade(get_turf(proj), proj,TRUE)
 
-/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/O, obj/item/projectile/P)
-	drop_nade(get_turf(P), P)
+/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/item/projectile/proj)
+	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/T, obj/item/projectile/P)
-	if(T.density && isturf(P.loc))
-		drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/proj)
+	if(Turf.density && isturf(proj.loc))
+		drop_nade(proj.loc, proj) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
-		drop_nade(T, P)
+		drop_nade(Turf, proj)
 
-/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/P)
-	drop_nade(get_turf(P), P)
+/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/proj)
+	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/P)
+/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/proj)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
-/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
-	var/amount = 4
-	var/lifetime_mult = 1
-	if(isboiler(P.firer))
-		smoke_system.cause_data = P.weapon_cause_data
-	smoke_system.set_up(amount, 0, T)
+/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/proj)
+	var/lifetime_mult = 1.0
+	if(isboiler(proj.firer))
+		smoke_system.cause_data = proj.weapon_cause_data
+	smoke_system.set_up(smokerange, 0, turf)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
-	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
+	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+
+/datum/ammo/xeno/boiler_gas/acid
+	name = "glob of acid gas"
+	icon_state = "acid_glob"
+	ping = "ping_x"
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
+	max_range = 16
+	smokerange = 3
+
+
+/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/proj)
+	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+
+/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/item/projectile/proj)
+	if(iscarbon(moob))
+		var/mob/living/carbon/carbon = moob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+			return
+	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
+	playsound(moob,"acid_strike",75,1)
+	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
+	new /datum/effects/acid(moob, proj.firer)
+	drop_nade(get_turf(proj), proj,TRUE)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

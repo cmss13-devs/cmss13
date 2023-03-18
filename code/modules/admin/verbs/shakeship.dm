@@ -30,7 +30,7 @@
 		prompt = alert(C, "alert people?", "ARES announcement!" ,"Yes","No")
 		if(prompt == "Yes")
 			announce = TRUE
-			var/whattoannounce = input(usr, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
+			whattoannounce = input(usr, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
 
 	prompt = alert(C, "Are you sure you want to shake the shipmap?", "Rock the ship!" ,"Yes","No")
 	if(prompt != "Yes")

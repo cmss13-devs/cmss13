@@ -229,3 +229,19 @@
   - bugfix: Removes the duplicated closet in DCC bunks.
   realforest2001:
   - rscadd: Vehicle Elevator now starts raised.
+2023-03-18:
+  Morrow:
+  - bugfix: Fix to evacuated personnel not ending the round
+  - balance: Reduces screenshake and volume of klaxons during hijack.
+  Zonespace27:
+  - rscadd: Map, shipmap, and gamemode votes have their entries in a random order.
+  - admin: Admin-created votes can now, optionally, have their entries in a random
+      order.
+  harryob:
+  - qol: added keybinds for joining as xeno, viewing hive status, hiding, evolving
+      and cancelling camera view
+  - qol: added actions buttons for evolving and joining as xeno
+  - code_imp: actions can listen for a keybind to activate the action
+  - bugfix: fixed a very spammy runtime error
+  memesky:
+  - qol: Increased the maximum font size of the chat from 32px to 48px.

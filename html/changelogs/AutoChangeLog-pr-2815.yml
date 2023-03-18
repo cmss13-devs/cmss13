@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - balance: "M42A, M42C, and XM43E1 can no longer scope in faction clash."

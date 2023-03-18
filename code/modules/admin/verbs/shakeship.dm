@@ -32,7 +32,11 @@
 			announce = TRUE
 			whattoannounce = input(usr, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
 			if(!whattoannounce)
-				whattoannounce = "WARNING, IMPACT IMMINENT. ETA: [delayt]"
+				if(sstrength <= 7)
+					whattoannounce = "WARNING, IMPACT IMMINENT. ETA: [delayt] SECONDS. BRACE BRACE BRACE."
+				if(sstrength > 7)
+					whattoannounce = "DANGER, DANGER! HIGH ENERGY IMPACT IMMINENT. ETA: [delayt] SECONDS. BRACE BRACE BRACE."
+
 	prompt = alert(C, "Are you sure you want to shake the shipmap?", "Rock the ship!" ,"Yes","No")
 	if(prompt != "Yes")
 		return
@@ -55,14 +59,16 @@
 			current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, stime, sstrength)
 		if(sstrength <= 2)
-			to_chat(current_mob, SPAN_BOLDANNOUNCE("The deck is shaken around as the ship suddenly bumps!"))
+			to_chat(current_mob, SPAN_DANGER("The whole deck jumps and the ship rocks!"))
 			playsound_area(get_area(current_mob), 'sound/machines/bonk.ogg', 100)
-		if(sstrength > 2 && sstrength <= 5)
-			to_chat(current_mob, SPAN_BOLDANNOUNCE("The deck firmly shakes you around and throws you off your feet!"))
+		if(sstrength > 2 && sstrength <= 7)
+			to_chat(current_mob, SPAN_BOLDANNOUNCE("The deck violently shakes and vibrates with the impact!"))
 			playsound_area(get_area(current_mob), 'sound/machines/bonk.ogg', 100)
-		if(sstrength > 5)
+		if(sstrength > 7)
 			playsound_area(get_area(current_mob), 'sound/effects/metal_crash.ogg', 100)
 			playsound_area(get_area(current_mob), 'sound/effects/bigboom3.ogg', 100)
-			to_chat(current_mob, SPAN_HIGHDANGER("THE GROUND SUDDENLY ISN'T UNDER YOUR FEET NO MORE, AND SUDDENLY, YOU FIND YOURSELF RIGHT AGAINST IT AGAIN AS THE SHIP VIOLENTLY JOLTS!"))
+			if(drop == 1)
+				current_mob.throw_atom( get_ranged_target_turf(current_mob, pick(cardinal), sstrength))
+			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND WITH VIOLENCE AND HIT THE DECK FULL FORCE!!"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_area), get_area(current_mob), 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 

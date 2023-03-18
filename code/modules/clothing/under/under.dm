@@ -321,33 +321,38 @@
 
 /obj/item/clothing/under/proc/toggle_uniform_hood(show_message = TRUE, mob/living/carbon/human/user)
 	update_rollsuit_status() //we need the _d version of the sprite anyways.
-	if(flags_jumpsuit & UNIFORM_HOOD_EXISTS)
-		if(!user.head || istype(user.head, hood_state))
-			flags_jumpsuit ^= UNIFORM_HOOD_ACTIVE
-			if(flags_jumpsuit & UNIFORM_HOOD_ACTIVE)
-				to_chat(user, SPAN_NOTICE("You pull your hood up."))
-				user.equip_to_slot_if_possible(new hood_state(user), WEAR_HEAD) //This is a 'phantom' hood. It disappears if the jumpsuit is unequipped/if it's toggled.
-				LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
-				RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) //These will unequip the phantom hood and toggle the state of the suit
-				RegisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) // If either is unequipped.
-				update_clothing_icon()
-				if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
-					playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
-					TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
-			else
-				to_chat(user, SPAN_NOTICE("You pull your hood down."))
-				UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED) //See above, these deregister the signals so that it doesn't fire twice.
-				UnregisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED)
-				qdel(user.head) //This will only delete the hood, see the typecheck above.
-				LAZYSET(item_state_slots, WEAR_BODY, worn_state)
-				update_clothing_icon()
-				if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
-					playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
-					TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
-		else
-			to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head.name]!"))
-	else if(show_message)
-		to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
+
+	if(!(flags_jumpsuit & UNIFORM_HOOD_EXISTS))
+		if(show_message)
+			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
+		return
+	if(user.head && !istype(user.head, hood_state))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head.name]!"))
+		return
+
+	flags_jumpsuit ^= UNIFORM_HOOD_ACTIVE
+
+	if(flags_jumpsuit & UNIFORM_HOOD_ACTIVE)
+		to_chat(user, SPAN_NOTICE("You pull your hood up."))
+		user.equip_to_slot_if_possible(new hood_state(user), WEAR_HEAD) //This is a 'phantom' hood. It disappears if the jumpsuit is unequipped/if it's toggled.
+		LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
+		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) //These will unequip the phantom hood and toggle the state of the suit
+		RegisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) // If either is unequipped.
+		update_clothing_icon()
+		if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+			playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+			TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
+		return
+
+	to_chat(user, SPAN_NOTICE("You pull your hood down."))
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED) //See above, these deregister the signals so that it doesn't fire twice.
+	UnregisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED)
+	qdel(user.head) //This will only delete the hood, see the typecheck above.
+	LAZYSET(item_state_slots, WEAR_BODY, worn_state)
+	update_clothing_icon()
+	if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+		playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+		TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
 
 /obj/item/clothing/under/attackby(obj/item/B, mob/user)
 	if(istype(B, /obj/item/attachable/bayonet) && (user.a_intent == INTENT_HARM))

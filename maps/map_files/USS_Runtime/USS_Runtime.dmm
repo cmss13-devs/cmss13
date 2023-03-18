@@ -74,7 +74,7 @@
 	},
 /area/event)
 "u" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},

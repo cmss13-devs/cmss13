@@ -36581,7 +36581,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "gsZ" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering)
 "gte" = (
@@ -68434,7 +68434,7 @@
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_four)
 "vMr" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "vMx" = (

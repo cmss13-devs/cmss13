@@ -559,6 +559,9 @@
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
+	if(src.client.prefs.muted & MUTE_IC)
+		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
+		return
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
 		return FALSE

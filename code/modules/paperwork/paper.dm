@@ -327,6 +327,10 @@
 	if(!usr || (usr.stat || usr.is_mob_restrained()))
 		return
 
+	if(usr.client.prefs.muted & MUTE_IC)
+		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
+		return
+
 	if(href_list["write"])
 		var/id = href_list["write"]
 		var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", "", MAX_MESSAGE_LEN)

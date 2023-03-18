@@ -21,6 +21,7 @@
 	var/base_state = "vat"
 	icon_state = "vat"
 	density = TRUE
+
 /obj/structure/machinery/prop/yautja/bubbler/get_examine_text(mob/living/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -34,20 +35,23 @@
 		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
 		return
 
-	if(istype(potential_limb, /obj/item/limb)) //Not checking for torso, if you somehow get one, it'll work
-		var/obj/item/limb/current_limb = potential_limb
-		if(!current_limb.flayed)
-			to_chat(user, SPAN_NOTICE("This limb is not ready."))
-			return
-		icon_state = "[base_state]_boiling"
-		to_chat(user, SPAN_WARNING("You place the [current_limb.name] in the cauldron and start the cauldron."))
-		if(!do_after(user, 15 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, current_limb))
-			to_chat(user, SPAN_NOTICE("You pull the [current_limb.name] back out of the cauldron."))
-			icon_state = "[base_state]"
-			return
-		icon_state = "[base_state]"
+	if(!istype(potential_limb, /obj/item/limb))
+		to_chat(user, SPAN_NOTICE("You cannot put this in [src]."))
+		return
+	var/obj/item/limb/current_limb = potential_limb
 
-		var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(current_limb))
-		if(istype(new_bone, /obj/item/clothing/accessory/limb/skeleton/head))
-			new_bone.desc = SPAN_NOTICE("This skull was [current_limb.name].")
-		qdel(current_limb)
+	if(!current_limb.flayed)
+		to_chat(user, SPAN_NOTICE("This limb is not ready."))
+		return
+	icon_state = "[base_state]_boiling"
+	to_chat(user, SPAN_WARNING("You place the [current_limb.name] in the cauldron and start the cauldron."))
+	if(!do_after(user, 15 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, current_limb))
+		to_chat(user, SPAN_NOTICE("You pull the [current_limb.name] back out of the cauldron."))
+		icon_state = "[base_state]"
+		return
+	icon_state = "[base_state]"
+
+	var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(current_limb))
+	if(istype(new_bone, /obj/item/clothing/accessory/limb/skeleton/head))
+		new_bone.desc = SPAN_NOTICE("This skull was [current_limb.name].")
+	qdel(current_limb)

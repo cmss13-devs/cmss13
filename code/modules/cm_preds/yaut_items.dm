@@ -933,26 +933,29 @@
 /obj/item/polishing_rag/get_examine_text(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		. += "You could use this to polish bones."
+		. += SPAN_NOTICE("You could use this to polish bones.")
 
 /obj/item/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return
 
-	if(istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton)) //Not checking for torso and groin, if you somehow get those, good on you
-		var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb //limb
-		if(current_limb.polished)
-			to_chat(user, SPAN_NOTICE("This limb has already been cleaned."))
-			return
+	if(!istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton))
+		to_chat(user, SPAN_NOTICE("What are you trying to do with this?"))
+		return
+	var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb
 
-		to_chat(user, SPAN_WARNING("You start wiping the [current_limb.name] with the [name]."))
-		if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
-			to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]"))
-			return
-		to_chat(user, SPAN_NOTICE("You polish the [current_limb.name] to perfection."))
-		current_limb.polished = TRUE
-		current_limb.name = "polished [current_limb.name]"
+	if(current_limb.polished)
+		to_chat(user, SPAN_NOTICE("This limb has already been cleaned."))
+		return
+
+	to_chat(user, SPAN_WARNING("You start wiping the [current_limb.name] with the [name]."))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
+		to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]"))
+		return
+	to_chat(user, SPAN_NOTICE("You polish the [current_limb.name] to perfection."))
+	current_limb.polished = TRUE
+	current_limb.name = "polished [current_limb.name]"
 
 //Skeleton limbs, meant to be for bones
 //Only an onmob for the skull
@@ -966,33 +969,43 @@
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bones"
 	icon_state = "l_arm"
+
 /obj/item/clothing/accessory/limb/skeleton/l_foot
 	name = "foot bones"
 	icon_state = "l_foot"
+
 /obj/item/clothing/accessory/limb/skeleton/l_hand
 	name = "hand bones"
 	icon_state = "l_hand"
+
 /obj/item/clothing/accessory/limb/skeleton/l_leg
 	name = "leg bones"
 	icon_state = "l_leg"
+
 /obj/item/clothing/accessory/limb/skeleton/r_arm
 	name = "arm bones"
 	icon_state = "r_arm"
+
 /obj/item/clothing/accessory/limb/skeleton/r_foot
 	name = "foot bones"
 	icon_state = "r_foot"
+
 /obj/item/clothing/accessory/limb/skeleton/r_hand
 	name = "hand bones"
 	icon_state = "r_hand"
+
 /obj/item/clothing/accessory/limb/skeleton/r_leg
 	name = "leg bones"
 	icon_state = "r_leg"
+
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
 	icon_state = "head"
 	high_visibility = TRUE
+
 /obj/item/clothing/accessory/limb/skeleton/head/spine
 	icon_state = "spine"
+
 /obj/item/clothing/accessory/limb/skeleton/torso
 	name = "ribcage"
 	icon_state = "torso"

@@ -497,21 +497,23 @@
 	if(!proximity)
 		return
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		return ..()
+		return
 
-	if(istype(potential_limb, /obj/item/limb)) //Not checking for torso and groin, if you somehow get those, good on you
-		var/obj/item/limb/current_limb = potential_limb //limb
-		if(current_limb.flayed)
-			to_chat(user, SPAN_NOTICE("This limb has already been flayed."))
-			return ..()
+	if(!istype(potential_limb, /obj/item/limb))
+		return
+	var/obj/item/limb/current_limb = potential_limb
 
-		playsound(loc, 'sound/weapons/pierce.ogg', 25)
-		to_chat(user, SPAN_WARNING("You start flaying the skin from the [current_limb.name]."))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, current_limb))
-			to_chat(user, SPAN_NOTICE("You decide not to flay the [current_limb.name]."))
-			return
-		to_chat(user, SPAN_WARNING("You finish flaying the [current_limb.name]."))
-		current_limb.flayed = TRUE
+	if(current_limb.flayed)
+		to_chat(user, SPAN_NOTICE("This limb has already been flayed."))
+		return
+
+	playsound(loc, 'sound/weapons/pierce.ogg', 25)
+	to_chat(user, SPAN_WARNING("You start flaying the skin from the [current_limb.name]."))
+	if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, current_limb))
+		to_chat(user, SPAN_NOTICE("You decide not to flay the [current_limb.name]."))
+		return
+	to_chat(user, SPAN_WARNING("You finish flaying the [current_limb.name]."))
+	current_limb.flayed = TRUE
 
 /*#########################################
 ########### Two Handed Weapons ############

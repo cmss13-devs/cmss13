@@ -8,16 +8,15 @@
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
 	unacidable = TRUE
 	health = 100
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE
+	buckle_lying = FALSE
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
 	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
-	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE
-	buckle_lying = FALSE
-
 	var/force_nest = FALSE
 	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
 	var/list/buckling_x
@@ -39,8 +38,8 @@
 	. = ..()
 	if(. && current_mob.pulledby)
 		current_mob.pulledby.stop_pulling()
-		resisting = 0 //just in case
-		resisting_ready = 0
+		resisting = FALSE //just in case
+		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
 		current_mob.pixel_y = buckling_y["[dir]"]

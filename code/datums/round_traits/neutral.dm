@@ -13,7 +13,7 @@
 	trait_type = ROUND_TRAIT_NEUTRAL
 	weight = 5
 	show_in_human_report = TRUE
-	human_report_message = "A.R.E.S. was flagging up some errors for a minor subsystem in the cryogenics pods. Should all be fine."
+	human_report_message = "ARES was flagging up some errors for a minor subsystem in the cryogenics pods. Should all be fine."
 	trait_to_give = TRAIT_ROUND_CRYOSLEEP_SICKNESS
 
 /datum/round_trait/economic_boom

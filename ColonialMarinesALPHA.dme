@@ -536,6 +536,7 @@
 #include "code\datums\round_traits\human_negative.dm"
 #include "code\datums\round_traits\human_positive.dm"
 #include "code\datums\round_traits\neutral.dm"
+#include "code\datums\round_traits\xeno_round_traits.dm"
 #include "code\datums\stamina\_stamina.dm"
 #include "code\datums\stamina\none.dm"
 #include "code\datums\statistics\cause_data.dm"

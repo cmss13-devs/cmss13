@@ -162,6 +162,8 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
 
+GLOBAL_DATUM_INIT(xeno_round_traits, /datum/xeno_round_traits, new())
+
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
 // Posters

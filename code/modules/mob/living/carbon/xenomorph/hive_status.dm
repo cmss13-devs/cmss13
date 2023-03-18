@@ -215,3 +215,6 @@
 				return
 
 			xenoSrc.overwatch(xenoTarget)
+
+		if("roundtraits")
+			GLOB.xeno_round_traits.tgui_interact(usr)

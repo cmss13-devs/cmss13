@@ -2,16 +2,7 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Input,
-  Button,
-  Flex,
-  Divider,
-  Collapsible,
-  Icon,
-  NumberInput,
-  Table,
-} from '../components';
+import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
 import { Window } from '../layouts';
 
 const redFont = {
@@ -144,6 +135,12 @@ const GeneralInformation = (props, context) => {
       </Flex.Item>
       <Flex.Item>
         <i>Evilution: {evilution_level}</i>
+      </Flex.Item>
+      <Flex.Item>
+        <Button
+          content={'View Queen Mother Proclamations'}
+          onClick={() => act('roundtraits')}
+        />
       </Flex.Item>
     </Flex>
   );

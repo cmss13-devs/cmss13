@@ -13,10 +13,10 @@ interface TraitItem {
   report: string;
 }
 
-export const HumanEventsComputer = (props, context) => {
+export const XenoRoundTraits = (props, context) => {
   const { data } = useBackend<EventComputerData>(context);
   return (
-    <Window theme="hive_status" width={790} height={440}>
+    <Window theme="crtgreen" width={790} height={440}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -40,23 +40,7 @@ const ShipInfo = (props, context) => {
         <Stack.Item>
           <Stack>
             <Stack.Item>
-              <b>Ship:</b> {shipmap_name}
-            </Stack.Item>
-            <Stack.Item>
-              <b>Orbiting:</b> {groundmap_name}
-            </Stack.Item>
-            <Stack.Item>
-              <b>Time:</b> 12:07
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-        <Stack.Item>
-          <Stack>
-            <Stack.Item>
-              <b>User:</b> Daniel Jimenez
-            </Stack.Item>
-            <Stack.Item>
-              <b>Assignment:</b> Executive Officer
+              <b>Infesting:</b> {groundmap_name}
             </Stack.Item>
           </Stack>
         </Stack.Item>

@@ -8,6 +8,7 @@
 	var/delayed
 	var/announce
 	var/delayt = 1
+	/var/whattoannounce = "WARNING, IMPACT IMMINENT"
 
 	var/sstrength = tgui_input_number(src, "How Strong?", "Don't go overboard.", 0, 10)
 	if(!sstrength)
@@ -16,19 +17,20 @@
 	if(!sstrength)
 		return
 
-	var/prompt = alert(C, "Drop people?", "YeetUS?" ,"Yes","No")
+	var/prompt = alert(C, "Drop people?", "Yeet?" ,"Yes","No")
 	if(prompt == "Yes")
 		drop = 1
 
 	prompt = alert(C, "delay it?", "Make them quiver!" ,"Yes","No")
 	if(prompt == "Yes")
 		delayed = TRUE
-		delayt = tgui_input_number(src, "How much delay?", "60 secs max!!", 0, 60, 0)
+		delayt = tgui_input_number(src, "How much delay?", "60 secs maximum", 0, 60, 0)
 		if(!delayt)
 			return
 		prompt = alert(C, "alert people?", "ARES announcement!" ,"Yes","No")
 		if(prompt == "Yes")
 			announce = TRUE
+			var/whattoannounce = input(usr, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
 
 	prompt = alert(C, "Are you sure you want to shake the shipmap?", "Rock the ship!" ,"Yes","No")
 	if(prompt != "Yes")
@@ -39,9 +41,9 @@
 		if(delayed)
 			if(announce)
 				if(sstrength <= 5)
-					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
+					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/alert.ogg')
 				if(sstrength > 5)
-					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 		 sleep(delayt * 10)
 

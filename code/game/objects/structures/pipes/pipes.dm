@@ -14,6 +14,9 @@
 
 	var/ventcrawl_message_busy = FALSE //Prevent spamming
 
+	/// The grenade subtypes that pipes will use when they explode
+	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
+
 /obj/structure/pipes/Initialize(mapload, ...)
 	. = ..()
 
@@ -206,8 +209,11 @@
  * Makes the pipe go boom.
  */
 /obj/structure/pipes/proc/kablooie()
-	new /obj/item/explosive/grenade/high_explosive/bursting_pipe(loc)
-	new /obj/item/explosive/grenade/incendiary/bursting_pipe(loc)
+	var/new_cause_data = create_cause_data("bursting pipe")
+	for(var/path in exploding_types)
+		var/obj/item/explosive/grenade/exploder = new path(get_turf(src))
+		exploder.cause_data = new_cause_data
+		exploder.prime()
 	qdel(src)
 
 #undef VENT_SOUND_DELAY

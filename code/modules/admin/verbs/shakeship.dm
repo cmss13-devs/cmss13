@@ -7,6 +7,7 @@
 	var/drop = 0
 	var/delayed
 	var/announce
+	var/delayt = 1
 
 	var/sstrength = tgui_input_number(src, "How Strong?", "Don't go overboard.", 0, 10)
 	if(!sstrength)
@@ -22,8 +23,8 @@
 	prompt = alert(C, "delay it?", "Make them quiver!" ,"Yes","No")
 	if(prompt == "Yes")
 		delayed = TRUE
-		var/delaytime = tgui_input_number(src, "How much delay?", "60 secs max!!", 0, 60)
-		if(!delaytime)
+		delayt = tgui_input_number(src, "How much delay?", "60 secs max!!", 0, 60, 0)
+		if(!delayt)
 			return
 		prompt = alert(C, "alert people?", "ARES announcement!" ,"Yes","No")
 		if(prompt == "Yes")
@@ -42,7 +43,7 @@
 				if(sstrength > 5)
 					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					shipwide_ai_announcement(MAIN_AI_SYSTEM, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
-		 sleep(delaytime)
+		 sleep(delayt * 10)
 
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
@@ -61,4 +62,4 @@
 			playsound_area(get_area(current_mob), 'sound/effects/bigboom3.ogg', 100)
 			to_chat(current_mob, SPAN_HIGHDANGER("THE GROUND SUDDENLY ISN'T UNDER YOUR FEET NO MORE, AND SUDDENLY, YOU FIND YOURSELF RIGHT AGAINST IT AGAIN AS THE SHIP VIOLENTLY JOLTS!"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_area), get_area(current_mob), 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
-                     //THIS IS A TEST
+

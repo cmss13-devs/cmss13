@@ -62,8 +62,8 @@
 		if(!playtime_rank)
 			return highpop_paygrade
 
-		//All the gold+ LCPLs get to be CPLs on highpop.
-		if(get_job_playtime(Player.client, rank) < JOB_PLAYTIME_TIER_3)
+		//Specs & SGs get their playtime rank on highpop
+		if(get_job_playtime(Player.client, rank) < JOB_PLAYTIME_TIER_1)
 			return playtime_rank
 	return paygrade
 
@@ -347,7 +347,6 @@
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
-	playtime_rank = "ME4"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
@@ -410,7 +409,6 @@
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "ME3"
-	playtime_rank = "ME4"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 

@@ -1,0 +1,5 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - qol: "mapping or remapping ships/HvH made much easier"
+  - imageadd: "added landmark icons for mapper use for USCM Almayer roles"

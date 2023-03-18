@@ -175,6 +175,12 @@
 	icon_state = "plating"
 	},
 /area/event)
+"U" = (
+/obj/effect/landmark/start/intel,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
 "V" = (
 /obj/effect/landmark/start/crew_chief,
 /turf/open/floor/almayer{
@@ -336,7 +342,7 @@ a
 a
 c
 G
-b
+U
 b
 b
 b

@@ -195,22 +195,15 @@ const FlybyControl = (props, context) => {
               Set ferry
             </Button>
           )}
-          {data.flight_configuration === 'ferry' && (
-            <Button
-              icon="jet-fighter"
-              disable={data.has_flyby_skill === 0}
-              onClick={() => act('set-flyby')}>
+          {data.has_flyby_skill === 1 && data.flight_configuration === 'ferry' && (
+            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
               Set flyby
             </Button>
           )}
-          {data.shuttle_mode === 'called' && (
-            <Button
-              disable={data.has_flyby_skill === 0}
-              onClick={() => act('cancel-flyby')}>
-              cancel flyby
-            </Button>
+          {data.has_flyby_skill === 1 && data.shuttle_mode === 'called' && (
+            <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
           )}
-          {data.shuttle_mode === 'idle' && (
+          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
             <Button
               icon="rocket"
               disabled={

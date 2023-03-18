@@ -340,6 +340,9 @@
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
+			if(is_set_flyby && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+				to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
+				return FALSE
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))

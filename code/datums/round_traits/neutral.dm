@@ -26,7 +26,7 @@
 	blacklist = list(/datum/round_trait/economic_boom)
 
 /datum/round_trait/economic_boom/on_round_start()
-	marine_announcement("As an act of generosity from Weyland-Yutani, we have deposited a bonus in each and every account located on the [MAIN_SHIP_NAME]. We hope it is spent effectively, and we hope to see increased co-operation in the future.", "Weyland-Yutani Account Manager")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "As an act of generosity from Weyland-Yutani, we have deposited a bonus in each and every account located on the [MAIN_SHIP_NAME]. We hope it is spent effectively, and we hope to see increased co-operation in the future.", "Weyland-Yutani Account Manager"), 2 MINUTES)
 
 /datum/round_trait/economic_slump
 	name = "Economic Slump"

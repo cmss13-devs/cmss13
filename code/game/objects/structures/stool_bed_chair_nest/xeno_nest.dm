@@ -276,19 +276,21 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
-	var/mob/living/carbon/human/H = buckled_mob
+	var/mob/living/carbon/human/buckled_human = buckled_mob
+	if(buckled_human.stat == DEAD )
+		density = FALSE
 
 	. = ..()
 
 	var/mob/dead/observer/G = ghost_of_buckled_mob
 	var/datum/mind/M = G?.mind
 	ghost_of_buckled_mob = null
-	if(!istype(H) || !istype(G) || !istype(M) || H.undefibbable || H.mind || M.original != H || H.chestburst)
+	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
 		return // Zealous checking as most is handled by ghost code
 	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
 	sound_to(G, 'sound/effects/attackblob.ogg')
-	if(H.client?.prefs.toggles_flashing & FLASH_UNNEST)
-		window_flash(H.client)
+	if(buckled_human.client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(buckled_human.client)
 	G.can_reenter_corpse = TRUE
 
 /obj/structure/bed/nest/ex_act(power)

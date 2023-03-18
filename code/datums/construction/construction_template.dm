@@ -28,7 +28,8 @@
 	build_loc = null
 	return ..()
 
-/datum/construction_template/proc/post_setup_shenanigans()
+///runs in /obj/effect/alien/resin/construction/proc/set_template() for logic needed to occur then
+/datum/construction_template/proc/on_template_creation()
 	return
 
 /datum/construction_template/proc/set_structure_image()

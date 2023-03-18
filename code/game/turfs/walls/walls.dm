@@ -89,8 +89,8 @@
 				var/obj/structure/sign/poster/found_poster = found_object
 				found_poster.roll_and_drop(src)
 			if(istype(found_object, /obj/effect/alien/weeds))
-				var/list/turf/cardinal_nieghbors = list(get_step(found_object, NORTH), get_step(found_object, SOUTH), get_step(found_object, EAST), get_step(found_object, WEST))
-				for(var/turf/cardinal_turf in cardinal_nieghbors)
+				var/list/turf/cardinal_neighbors = list(get_step(found_object, NORTH), get_step(found_object, SOUTH), get_step(found_object, EAST), get_step(found_object, WEST))
+				for(var/turf/cardinal_turf in cardinal_neighbors)
 					for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
 						qdel(found_nest) //nests are built on walls, no walls, no nest
 				qdel(found_object)

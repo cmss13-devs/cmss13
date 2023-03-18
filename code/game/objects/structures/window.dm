@@ -500,8 +500,8 @@
 
 /obj/structure/window/framed/Destroy()
 	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
-		var/list/turf/cardinal_nieghbors = list(get_step(found_weedwall, NORTH), get_step(found_weedwall, SOUTH), get_step(found_weedwall, EAST), get_step(found_weedwall, WEST))
-		for(var/turf/cardinal_turf in cardinal_nieghbors)
+		var/list/turf/cardinal_neighbors = list(get_step(found_weedwall, NORTH), get_step(found_weedwall, SOUTH), get_step(found_weedwall, EAST), get_step(found_weedwall, WEST))
+		for(var/turf/cardinal_turf in cardinal_neighbors)
 			for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
 				qdel(found_nest) //nests are built on walls, no walls, no nest
 		qdel(found_weedwall)

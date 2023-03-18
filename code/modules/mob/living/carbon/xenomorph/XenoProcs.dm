@@ -709,14 +709,14 @@
 
 	var/mob/living/carbon/human/host_2b_nested = current_mob
 
-	for(var/i in length(xeno_hands) to 1)
-		if(isnull(xeno_hands[i]))
-			xeno_hands -= xeno_hands[i]
-		else if(istype(xeno_hands[i], /obj/item/grab))
+	var/found_grab = FALSE
+	for(var/i in 1 to length(xeno_hands))
+		if(istype(xeno_hands[i], /obj/item/grab))
+			found_grab = TRUE
 			break
 
-	if(!length(xeno_hands))
-		to_chat(src, SPAN_XENONOTICE("You must have a surer hold on the host to nest them!"))
+	if(!found_grab)
+		to_chat(src, SPAN_XENONOTICE("To nest the host here, a sure grip is needed to lift them up onto it!"))
 		return
 
 	var/turf/supplier_turf = get_turf(nest_structural_base)

@@ -83,7 +83,7 @@
 	/// This will be used to orient the nest that will be built
 	var/direction_to_put_nest
 
-/datum/construction_template/xenomorph/nest/complete() //Override because we need to pass the hive ref
+/datum/construction_template/xenomorph/nest/complete() //overrided for unique build logic
 	if(!owner || !get_turf(owner))
 		log_debug("Constuction template ([name]) completed construction without a build location")
 		return
@@ -102,7 +102,7 @@
 /datum/construction_template/xenomorph/nest/set_structure_image()
 	build_icon = 'icons/mob/xenos/structures48x48.dmi'
 
-/datum/construction_template/xenomorph/nest/post_setup_shenanigans()
+/datum/construction_template/xenomorph/nest/on_template_creation()
 	var/turf/home_turf = get_turf(owner)
 	if(!home_turf.density)
 		for(var/i in GLOB.cardinals)

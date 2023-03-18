@@ -206,10 +206,7 @@ const FlybyControl = (props, context) => {
           {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
             <Button
               icon="rocket"
-              disabled={
-                data.flight_configuration === 'ferry' ||
-                data.has_flyby_skill === 0
-              }
+              disabled={data.flight_configuration === 'ferry'}
               onClick={() => act('move')}>
               Launch
             </Button>

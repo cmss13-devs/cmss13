@@ -17,7 +17,7 @@ interface TraitItem {
 export const XenoRoundTraits = (props, context) => {
   const { data } = useBackend<EventComputerData>(context);
   return (
-    <Window theme="hive_status" width={790} height={440}>
+    <Window theme="hive_status" width={500} height={300}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item textAlign="center">

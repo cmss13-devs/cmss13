@@ -58,6 +58,6 @@
 	xeno_cooldown = 12 SECONDS
 	cooldown_message = "You feel your corrosive glands swell with acid. You can spit again."
 
-	var/duration = 35
+	var/duration = 3.5 SECONDS
 
 	var/buffs_active = FALSE

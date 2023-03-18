@@ -1,3 +1,4 @@
+#define MAXIMUM_HEALED_XENOS 3
 /datum/ammo
 	var/name = "generic bullet"
 	var/headshot_state = null //Icon state when a human is permanently killed with it by execution/suicide.
@@ -2767,8 +2768,8 @@
 		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
 		boosting_xeno.gain_health(35)
 		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
-		healed_xeno += 1
-		if (healed_xeno == 3)
+		healed_xeno++
+		if (healed_xeno == MAXIMUM_HEALED_XENOS)
 			break
 
 /datum/ammo/xeno/acid/healing
@@ -3509,3 +3510,6 @@
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
+
+
+#undef MAXIMUM_HEALED_XENOS

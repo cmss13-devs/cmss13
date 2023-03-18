@@ -87,7 +87,7 @@
 
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("You mix the resin and acid in your glands to produce a glob with healing fumes."))
 	zenomorf.create_custom_empower(icolor = "#93ec78", ialpha = 200, small_xeno = TRUE)
-	zenomorf.balloon_alert(zenomorf, "your next spit will be heal your sisters in an Area of Effect", text_color = "#93ec78")
+	zenomorf.balloon_alert(zenomorf, "healing in an area of effect", text_color = "#93ec78")
 	buffs_active = TRUE
 	zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/healing] // shitcode is my city
 
@@ -96,15 +96,14 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
-	..()
-	return
+	return ..()
 
 /datum/action/xeno_action/onclick/healing_surge/proc/disable_healing()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/zenomorf = owner
 	if(zenomorf.ammo == GLOB.ammo_list[/datum/ammo/xeno/acid/healing])
 		to_chat(zenomorf, SPAN_XENOWARNING("Your glands empty out and return back to normal. You will once more fire acidic spits."))
-		zenomorf.balloon_alert(zenomorf, "your spits are back to normal", text_color = "#93ec78")
+		zenomorf.balloon_alert(zenomorf, "healing normally", text_color = "#93ec78")
 		zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/marking] // el codigo de mierda es mi ciudad
 	UnregisterSignal(zenomorf, COMSIG_XENO_POST_SPIT)
 

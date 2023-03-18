@@ -27,7 +27,3 @@
 	apply_behavior_holder(marker_strain)
 	mutator_update_actions(marker_strain)
 	marker_strain.recalculate_actions(description, flavor_description)
-
-/datum/behavior_delegate/ranged_attack_on_hit()
-	. = ..()
-

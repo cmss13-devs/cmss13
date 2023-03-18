@@ -1,4 +1,0 @@
-author: "TopHatPenguin"
-delete-after: True
-changes:
-  - bugfix: "Removes the duplicated closet in DCC bunks."

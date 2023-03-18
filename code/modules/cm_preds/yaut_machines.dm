@@ -18,7 +18,6 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	///What bones will come from the vat
 	var/next_limb
-	var/base_state = "vat"
 	icon_state = "vat"
 	density = TRUE
 
@@ -43,13 +42,13 @@
 	if(!current_limb.flayed)
 		to_chat(user, SPAN_NOTICE("This limb is not ready."))
 		return
-	icon_state = "[base_state]_boiling"
+	icon_state = "vat_boiling"
 	to_chat(user, SPAN_WARNING("You place the [current_limb.name] in the cauldron and start the cauldron."))
 	if(!do_after(user, 15 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, current_limb))
 		to_chat(user, SPAN_NOTICE("You pull the [current_limb.name] back out of the cauldron."))
-		icon_state = "[base_state]"
+		icon_state = initial(icon_state)
 		return
-	icon_state = "[base_state]"
+	icon_state = initial(icon_state)
 
 	var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(current_limb))
 	if(istype(new_bone, /obj/item/clothing/accessory/limb/skeleton/head))

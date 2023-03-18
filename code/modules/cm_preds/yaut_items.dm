@@ -967,35 +967,35 @@
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 /obj/item/clothing/accessory/limb/skeleton/l_arm
-	name = "arm bones"
+	name = "arm bone"
 	icon_state = "l_arm"
 
 /obj/item/clothing/accessory/limb/skeleton/l_foot
-	name = "foot bones"
+	name = "foot bone"
 	icon_state = "l_foot"
 
 /obj/item/clothing/accessory/limb/skeleton/l_hand
-	name = "hand bones"
+	name = "hand bone"
 	icon_state = "l_hand"
 
 /obj/item/clothing/accessory/limb/skeleton/l_leg
-	name = "leg bones"
+	name = "leg bone"
 	icon_state = "l_leg"
 
 /obj/item/clothing/accessory/limb/skeleton/r_arm
-	name = "arm bones"
+	name = "arm bone"
 	icon_state = "r_arm"
 
 /obj/item/clothing/accessory/limb/skeleton/r_foot
-	name = "foot bones"
+	name = "foot bone"
 	icon_state = "r_foot"
 
 /obj/item/clothing/accessory/limb/skeleton/r_hand
-	name = "hand bones"
+	name = "hand bone"
 	icon_state = "r_hand"
 
 /obj/item/clothing/accessory/limb/skeleton/r_leg
-	name = "leg bones"
+	name = "leg bone"
 	icon_state = "r_leg"
 
 /obj/item/clothing/accessory/limb/skeleton/head

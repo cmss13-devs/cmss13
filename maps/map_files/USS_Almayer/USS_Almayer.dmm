@@ -207,14 +207,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
-"aaA" = (
-/obj/effect/projector{
-	name = "Almayer_Down1";
-	vector_x = 19;
-	vector_y = -98
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/upper_hull/u_m_s)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -1813,14 +1805,6 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/living/offices/flight)
-"agg" = (
-/obj/effect/projector{
-	name = "Almayer_Up1";
-	vector_x = -19;
-	vector_y = 98
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull/l_m_s)
 "agh" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/floor/grass,
@@ -2690,14 +2674,6 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hull/upper_hull/u_m_s)
-"ajb" = (
-/obj/effect/projector{
-	name = "Almayer_Down2";
-	vector_x = 1;
-	vector_y = -100
-	},
-/turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_m_s)
 "ajd" = (
 /obj/structure/disposalpipe/segment,
@@ -4136,14 +4112,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
-"anQ" = (
-/obj/effect/projector{
-	name = "Almayer_Up4";
-	vector_x = -19;
-	vector_y = 104
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull/l_m_p)
 "anR" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -10876,14 +10844,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/aft_hallway)
-"aKD" = (
-/obj/effect/projector{
-	name = "Almayer_Down4";
-	vector_x = 19;
-	vector_y = -104
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/upper_hull/u_m_p)
 "aKE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -46026,14 +45986,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
-"laW" = (
-/obj/effect/projector{
-	name = "Almayer_Up2";
-	vector_x = -1;
-	vector_y = 100
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull/l_m_s)
 "lbb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/organ/heart/prosthetic{
@@ -55678,14 +55630,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/grunt_rnr)
-"pOZ" = (
-/obj/effect/projector{
-	name = "Almayer_Down3";
-	vector_x = 1;
-	vector_y = -102
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/upper_hull/u_m_p)
 "pPv" = (
 /obj/structure/closet/cabinet,
 /obj/item/reagent_container/food/drinks/bottle/wine,
@@ -63868,14 +63812,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
-"tHD" = (
-/obj/effect/projector{
-	name = "Almayer_Up3";
-	vector_x = -1;
-	vector_y = 102
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull/l_m_p)
 "tHS" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -101075,11 +101011,11 @@ aJJ
 awW
 aar
 aap
-ajb
-ajb
-ajb
-ajb
-ajb
+lYA
+lYA
+lYA
+lYA
+lYA
 lYA
 lYA
 lYA
@@ -101115,9 +101051,9 @@ czu
 czu
 czu
 czu
-pOZ
-pOZ
-pOZ
+czu
+czu
+czu
 mov
 qVM
 baw
@@ -101278,7 +101214,7 @@ awW
 awW
 aar
 wFm
-ajb
+lYA
 aax
 aax
 aax
@@ -101320,7 +101256,7 @@ qYr
 atj
 atj
 atj
-pOZ
+czu
 wKn
 qVM
 uvS
@@ -101382,11 +101318,11 @@ aKW
 aKW
 aKW
 aKW
-laW
-laW
-laW
-laW
-laW
+aKW
+aKW
+aKW
+aKW
+aKW
 aLG
 aZi
 aLG
@@ -101414,11 +101350,11 @@ bCd
 buH
 hop
 vMx
-tHD
-tHD
-tHD
-tHD
-tHD
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
 yhQ
 yhQ
 yhQ
@@ -101481,7 +101417,7 @@ aJL
 aYr
 aar
 aap
-ajb
+lYA
 aax
 aax
 aax
@@ -101523,7 +101459,7 @@ str
 atj
 atj
 atj
-pOZ
+czu
 wKn
 qVM
 nUv
@@ -101589,7 +101525,7 @@ aqM
 arO
 arO
 arO
-laW
+aKW
 beB
 byI
 beB
@@ -101617,7 +101553,7 @@ bCd
 bJz
 rrV
 bJz
-tHD
+yhQ
 aue
 aue
 aue
@@ -101684,7 +101620,7 @@ aar
 aar
 aar
 tiM
-ajb
+lYA
 acV
 acV
 acV
@@ -101726,7 +101662,7 @@ str
 atl
 atl
 atl
-pOZ
+czu
 wKn
 qVM
 gMA
@@ -101792,7 +101728,7 @@ kHj
 arO
 arO
 arO
-laW
+aKW
 aLG
 aZi
 aLG
@@ -101820,7 +101756,7 @@ bCd
 buH
 hop
 buH
-tHD
+yhQ
 aue
 aue
 aue
@@ -101887,7 +101823,7 @@ boL
 aYs
 uoS
 aJW
-ajb
+lYA
 adb
 adb
 adb
@@ -101929,7 +101865,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 mOb
 qVM
 vGk
@@ -101995,7 +101931,7 @@ kHj
 nLg
 nLg
 nLg
-laW
+aKW
 aLG
 aZi
 bad
@@ -102023,7 +101959,7 @@ kan
 bGe
 bHL
 buH
-tHD
+yhQ
 auk
 auk
 auk
@@ -102090,7 +102026,7 @@ apF
 agP
 agh
 aJW
-ajb
+lYA
 adb
 adb
 adb
@@ -102132,7 +102068,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 mOb
 qVM
 vGk
@@ -102194,11 +102130,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 aLG
 aZi
 aLG
@@ -102226,11 +102162,11 @@ kan
 buH
 bHL
 buH
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -102293,7 +102229,7 @@ afY
 afY
 bLO
 bWK
-ajb
+lYA
 adb
 adb
 adb
@@ -102335,7 +102271,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 ekY
 qVM
 csz
@@ -102397,11 +102333,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 aLG
 aZi
 aLG
@@ -102429,11 +102365,11 @@ kan
 buH
 hop
 buH
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -102496,7 +102432,7 @@ agP
 afY
 bLO
 ceC
-ajb
+lYA
 vKF
 adb
 adb
@@ -102538,7 +102474,7 @@ czu
 atI
 atI
 xMk
-pOZ
+czu
 wKn
 xCX
 hoX
@@ -102600,11 +102536,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 bxD
 byI
 beB
@@ -102632,11 +102568,11 @@ biA
 bJz
 bHT
 koc
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -102699,7 +102635,7 @@ afY
 ahl
 bLO
 bWK
-ajb
+lYA
 adb
 adb
 adb
@@ -102741,7 +102677,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 wKn
 qVM
 csz
@@ -102803,11 +102739,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 vgF
-laW
+aKW
 jgU
 aZi
 aLG
@@ -102835,11 +102771,11 @@ biA
 buH
 bHL
 wWQ
-tHD
+yhQ
 aun
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -102902,7 +102838,7 @@ afY
 afY
 bLO
 cit
-ajb
+lYA
 adb
 adb
 adb
@@ -102944,7 +102880,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 mOb
 qVM
 vGk
@@ -103006,11 +102942,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 aLG
 aZi
 aLG
@@ -103038,11 +102974,11 @@ biA
 buH
 bHL
 buH
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -103105,7 +103041,7 @@ afY
 agP
 bLO
 ceC
-ajb
+lYA
 adb
 adb
 adb
@@ -103147,7 +103083,7 @@ czu
 atI
 atI
 atI
-pOZ
+czu
 mOb
 qVM
 vGk
@@ -103209,11 +103145,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 aLG
 aZi
 mzR
@@ -103241,11 +103177,11 @@ biA
 buH
 bHL
 buH
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -103308,7 +103244,7 @@ afY
 afY
 bLO
 bWK
-ajb
+lYA
 adc
 adc
 adc
@@ -103350,7 +103286,7 @@ czu
 adc
 adc
 adc
-pOZ
+czu
 yji
 qVM
 gMA
@@ -103412,11 +103348,11 @@ aKW
 aiR
 aiR
 aiR
-laW
+aKW
 xpI
 xpI
 xpI
-laW
+aKW
 aLG
 aZi
 aLG
@@ -103444,11 +103380,11 @@ biA
 buH
 bHL
 buH
-tHD
+yhQ
 aul
 aul
 aul
-tHD
+yhQ
 azD
 azD
 azD
@@ -103619,7 +103555,7 @@ aKW
 kaF
 jWU
 jWU
-laW
+aKW
 pGM
 aZi
 aLG
@@ -103647,7 +103583,7 @@ biA
 buH
 bHL
 bIR
-tHD
+yhQ
 cyG
 cyG
 sos
@@ -110191,7 +110127,7 @@ aaa
 aaa
 aaa
 aaa
-aaA
+lYA
 aaG
 aaG
 aaI
@@ -110271,7 +110207,7 @@ asx
 aLX
 bbp
 bbp
-aKD
+czu
 aaa
 aaa
 aaa
@@ -110394,7 +110330,7 @@ aaa
 aaa
 aaa
 aaa
-aaA
+lYA
 aaG
 aaG
 aaI
@@ -110474,7 +110410,7 @@ asx
 aLX
 bbp
 bbp
-aKD
+czu
 aaa
 aaa
 aaa
@@ -110597,7 +110533,7 @@ aaa
 aaa
 aaa
 aaa
-aaA
+lYA
 aaG
 aaG
 aaI
@@ -110677,7 +110613,7 @@ asx
 aLX
 bbp
 bbp
-aKD
+czu
 aaa
 aaa
 aaa
@@ -110800,17 +110736,17 @@ aaa
 aaa
 aaa
 aaa
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
-aaA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
+lYA
 aey
 azY
 azY
@@ -110870,17 +110806,17 @@ cgI
 agl
 agN
 ahH
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
-aKD
+czu
+czu
+czu
+czu
+czu
+czu
+czu
+czu
+czu
+czu
+czu
 aaa
 aaa
 aaa
@@ -113131,17 +113067,17 @@ aab
 aKW
 aSm
 aLf
-agg
-agg
-agg
-agg
-agg
-agg
-agg
-agg
-agg
-agg
-agg
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
 wdb
 ahj
 ahj
@@ -113207,17 +113143,17 @@ vra
 ajX
 ajX
 hBC
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
 scI
 oDf
 yhQ
@@ -113334,7 +113270,7 @@ aab
 aKW
 bhC
 aSm
-agg
+aKW
 bbB
 bbB
 arn
@@ -113420,7 +113356,7 @@ aoc
 aAv
 eZi
 eZi
-anQ
+yhQ
 wlp
 ftl
 yhQ
@@ -113537,7 +113473,7 @@ aab
 aKW
 aLf
 aLF
-agg
+aKW
 bbB
 bbB
 arn
@@ -113623,7 +113559,7 @@ aoc
 aAv
 eZi
 eZi
-anQ
+yhQ
 scI
 oDf
 yhQ
@@ -113740,7 +113676,7 @@ aab
 aKW
 cmq
 bPS
-agg
+aKW
 bbB
 bbB
 arn
@@ -113826,7 +113762,7 @@ aoc
 aAv
 eZi
 eZi
-anQ
+yhQ
 oYb
 fxz
 yhQ
@@ -113943,17 +113879,17 @@ aab
 aKW
 rJb
 yaG
-agg
+aKW
 bbC
 aan
 aan
-agg
-agg
-agg
-agg
-agg
-agg
-agg
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
+aKW
 aKW
 aKW
 hhw
@@ -114019,17 +113955,17 @@ bSJ
 bSJ
 fiq
 yhQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
-anQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
+yhQ
 tGq
 tGq
 jjT
-anQ
+yhQ
 trD
 oDf
 yhQ

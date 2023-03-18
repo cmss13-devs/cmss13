@@ -27,12 +27,6 @@
 	var/armor_hitsound = 'sound/effects/metalhit.ogg'
 	var/armor_shattersound = 'sound/effects/metal_shatter.ogg'
 
-/obj/item/clothing/accessory/health/Initialize(mapload, ...)
-	base_icon_state = icon_state
-	. = ..()
-
-	update_icon()
-
 /obj/item/clothing/accessory/health/update_icon()
 	for(var/health_state in health_states)
 		if(armor_health / armor_maxhealth * 100 <= health_state)

@@ -153,7 +153,7 @@
 	original_state = "scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
-	var/dummy_icon_state = "headband%SQUAD%"
+	var/dummy_icon_state = "scarf_%SQUAD%"
 	item_state = "scarf_%SQUAD%"
 	original_state = "scarf_%SQUAD%"
 

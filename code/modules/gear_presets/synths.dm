@@ -305,7 +305,7 @@
 		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
 		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/melee/baseballbat/metal
 	)
 
 /datum/equipment_preset/synth/survivor/bartender_synth

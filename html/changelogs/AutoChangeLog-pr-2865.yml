@@ -1,0 +1,4 @@
+author: "Jackie_Estegado"
+delete-after: True
+changes:
+  - balance: "Reverted the unintentionally nerfed melee damage of the M4RA Custom Battle Rifle."

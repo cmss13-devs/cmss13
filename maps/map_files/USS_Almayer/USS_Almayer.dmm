@@ -20308,9 +20308,7 @@
 	},
 /area/almayer/command/lifeboat)
 "bFJ" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_2{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "bFP" = (
@@ -20320,9 +20318,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bFR" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_1{
-	dwidth = 1
-	},
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "bGb" = (
@@ -33889,8 +33885,8 @@
 	pixel_y = -8
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
+	dir = 8;
+	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "fbw" = (
@@ -36585,7 +36581,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "gsZ" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering)
 "gte" = (
@@ -49778,7 +49774,10 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver"
+	},
 /area/almayer/shipboard/brig/cic_hallway)
 "mSz" = (
 /obj/structure/filingcabinet,
@@ -56951,18 +56950,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/gym)
-"qtN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/shipboard/brig/cic_hallway)
 "qtR" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -68447,7 +68434,7 @@
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_four)
 "vMr" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "vMx" = (
@@ -70632,7 +70619,6 @@
 	pixel_y = 13
 	},
 /obj/item/clothing/head/ushanka{
-	anti_hug = 0;
 	layer = 3.3
 	},
 /obj/structure/window/reinforced{
@@ -88114,12 +88100,12 @@ cQv
 tHr
 mqg
 eiK
-xuZ
-qtN
-fbv
 vka
+uwN
+fbv
+xuZ
 mSs
-pYX
+xuZ
 xuZ
 xuZ
 rCU

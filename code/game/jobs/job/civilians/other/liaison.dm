@@ -20,4 +20,5 @@
 
 /obj/effect/landmark/start/liaison
 	name = JOB_CORPORATE_LIAISON
+	icon_state = "cl_spawn"
 	job = /datum/job/civilian/liaison

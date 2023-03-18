@@ -257,7 +257,7 @@
 			continue
 		shake_camera(current_mob, 3, 1)
 
-		var/mob/living/carbon/human/lurcher = M
+		var/mob/living/carbon/human/lurcher = current_mob
 		if(istype(lurcher) && CHECK_BITFIELD(lurcher.disabilities, AIR_SICKNESS))
 			lurcher.vomit() // NAUSEA
 

@@ -38,7 +38,7 @@
 	blacklist = list(/datum/round_trait/economic_boom)
 
 /datum/round_trait/economic_slump/on_round_start()
-	marine_announcement("Due to budgetary constraints, we have been forced to alter the contracts of USCM employees on board the [MAIN_SHIP_NAME]. This is non-negotiable.", "USCM Office of Fiscal Affairs")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Due to budgetary constraints, we have been forced to alter the contracts of USCM employees on board the [MAIN_SHIP_NAME]. This is non-negotiable.", "USCM Office of Fiscal Affairs"), 2 MINUTES)
 
 /datum/round_trait/temperature_change
 	name = "Temperature Change"

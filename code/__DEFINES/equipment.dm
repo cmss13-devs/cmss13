@@ -188,6 +188,9 @@
 #define UNIFORM_JACKET_REMOVED (1<<5)
 /// are accessories never hidden by sleeve/jacket state? (meant for snow uniform which rolls collar instead of sleeves)
 #define UNIFORM_DO_NOT_HIDE_ACCESSORIES (1<<6)
+/// does the uniform have a hood?
+#define UNIFORM_HOOD_EXISTS (1<<7)
+#define UNIFORM_HOOD_ACTIVE (1<<8)
 
 //===========================================================================================
 

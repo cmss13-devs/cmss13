@@ -611,6 +611,20 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_NO_SENSORS
 
+//=========================//OWLF\\================================\\
+
+/obj/item/clothing/under/marine/veteran/owlf
+	name = "\improper OWLF thermal field uniform"
+	desc = "A high-tech uniform with built-in thermal cloaking technology. It looks like it's worth more than your life."
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS //This is all a copy and paste of the Dutch's stuff for now.
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_jumpsuit = UNIFORM_HOOD_EXISTS
+	icon_state = "owlf_uniform"
+	worn_state = "owlf_uniform"
+	has_sensor = UNIFORM_NO_SENSORS
+	hood_state = /obj/item/clothing/head/owlf_hood
+
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\
 

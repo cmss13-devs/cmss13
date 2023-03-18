@@ -54,14 +54,6 @@
 
 	GLOB.temperature_change = rand(-10, 10)
 
-/datum/round_trait/hair_loss
-	name = "Hair Loss"
-	trait_type = ROUND_TRAIT_NEUTRAL
-	weight = 1
-	show_in_human_report = TRUE
-	human_report_message = "The ship was hit by a big blast of radiation while we were in cryogenics. Seems the systems managed to stabilize our health, but not our hair."
-	trait_to_give = TRAIT_ROUND_HAIR_LOSS
-
 /datum/round_trait/wrong_tubes
 	name = "Mismatched Squads"
 	trait_type = ROUND_TRAIT_NEUTRAL

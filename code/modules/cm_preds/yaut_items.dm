@@ -1003,7 +1003,7 @@
 		if(polished)
 			. += SPAN_NOTICE("Polished to perfection.")
 		else
-			. += SPAN_NOTICE("The [name] is still dirty.")
+			. += SPAN_NOTICE("[src] is still dirty.")
 
 /obj/item/clothing/accessory/limb/skeleton/can_attach_to(mob/user, obj/item/clothing/C)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) //Only Yautja can wear bones on their clothing

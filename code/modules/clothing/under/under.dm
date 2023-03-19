@@ -327,7 +327,7 @@
 			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
 		return
 	if(user.head && !istype(user.head, hood_state))
-		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head.name]!"))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head]!"))
 		return
 
 	flags_jumpsuit ^= UNIFORM_HOOD_ACTIVE

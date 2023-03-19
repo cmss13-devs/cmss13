@@ -23,26 +23,6 @@
 
 	var/datum/shuttle/ferry/shuttle
 
-	// Supply shuttle
-	shuttle = new/datum/shuttle/ferry/supply()
-	shuttle.location = 1
-	shuttle.warmup_time = 1
-	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/dock)
-			shuttle.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/station)
-			shuttle.area_station = A
-			break
-
-	shuttles["Supply"] = shuttle
-	process_shuttles += shuttle
-
-	supply_controller.shuttle = shuttle
-
 //---ELEVATOR---//
 	// Elevator I
 	shuttle = new /datum/shuttle/ferry/elevator()

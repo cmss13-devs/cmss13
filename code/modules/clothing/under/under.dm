@@ -320,9 +320,7 @@
 	toggle_uniform_hood(TRUE, usr)
 
 /obj/item/clothing/under/proc/toggle_uniform_hood(show_message = TRUE, mob/living/carbon/human/user)
-	update_rollsuit_status() //we need the _d version of the sprite anyways.
-	///If you need help with this please contact me on discord @Asbestos Gremlin#1514
-	///I coded this. It's weird, it's funky, but I can help.
+	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
 	if(!(flags_jumpsuit & UNIFORM_HOOD_EXISTS))
 		if(show_message)
 			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))

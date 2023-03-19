@@ -1,0 +1,9 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - refactor: "Refactors how magazine ammo color is handled into overlays."
+  - refactor: "Instead of filling up dmis with a ridiculous amount of icon states for each new barely used magazine type, compatible magazines have a 'band' white overlay icon that is colored based on a variable on the magazine."
+  - imageadd: "This will cause various sprites of various magazines to look subtly different as the exact look couldn't be copied."
+  - spellcheck: "Renamed wallpiercing to wall-penetrating."
+  - code_imp: "Removed cluster magazines from the code."
+  - spellcheck: "Altered the name of A19 magazines a little."

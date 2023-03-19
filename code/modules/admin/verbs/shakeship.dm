@@ -8,7 +8,7 @@
 	var/delayed
 	var/announce
 	var/delayt = 1
-	/var/whattoannounce = "WARNING, IMPACT IMMINENT"
+	var/whattoannounce = "WARNING, IMPACT IMMINENT"
 
 	var/sstrength = tgui_input_number(src, "How Strong?", "Don't go overboard.", 0, 10)
 	if(!sstrength)
@@ -60,15 +60,21 @@
 		shake_camera(current_mob, stime, sstrength)
 		if(sstrength <= 2)
 			to_chat(current_mob, SPAN_DANGER("The whole deck jumps and the ship rocks!"))
-			playsound_area(get_area(current_mob), 'sound/machines/bonk.ogg', 100)
+			//playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/machines/bonk.ogg', 100)
 		if(sstrength > 2 && sstrength <= 7)
 			to_chat(current_mob, SPAN_BOLDANNOUNCE("The deck violently shakes and vibrates with the impact!"))
-			playsound_area(get_area(current_mob), 'sound/machines/bonk.ogg', 100)
+			//playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/machines/bonk.ogg', 100)
 		if(sstrength > 7)
-			playsound_area(get_area(current_mob), 'sound/effects/metal_crash.ogg', 100)
-			playsound_area(get_area(current_mob), 'sound/effects/bigboom3.ogg', 100)
+			//playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/metal_crash.ogg', 100)
+			//playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/bigboom3.ogg', 100)
+
 			if(drop == 1)
-				current_mob.throw_atom( get_ranged_target_turf(current_mob, pick(cardinal), sstrength))
+				//current_mob.throw_atom( get_ranged_target_turf(current_mob, pick(cardinal), sstrength*10, 1))
+				//current_mob.throw_atom( get_ranged_target_turf(current_mob, pick(cardinal), sstrength - 5), sstrength - 5, 1)
+				//current_mob.throw_atom(get_ranged_target_turf(current_mob, pick(cardinal), sstrength - 5), sstrength)
+				//INVOKE_ASYNC(current_mob.throw_atom, get_ranged_target_turf(current_mob, pick(cardinal), sstrength - 5), sstrength)
+				//INVOKE_ASYNC(current_mob, throw_atom, get_ranged_target_turf(current_mob, pick(cardinal), sstrength - 5), sstrength)
 			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND WITH VIOLENCE AND HIT THE DECK FULL FORCE!!"))
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_area), get_area(current_mob), 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_z), SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+			playsound_area()
 

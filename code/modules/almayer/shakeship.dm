@@ -29,7 +29,7 @@
 				playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
 				playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
 
-			if(drop == 1)
+			if(drop == TRUE)
 				current_mob.apply_effect(3, WEAKEN)
 				INVOKE_ASYNC(current_mob,  TYPE_PROC_REF(/atom/movable, throw_atom), get_ranged_target_turf(current_mob, pick(cardinal), sstrength-5), pick(cardinal), sstrength)
 

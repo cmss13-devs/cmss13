@@ -384,15 +384,12 @@
 
 	log_adminpm("MENTOR: [key_name(src)] : [msg]")
 
-	var/color = "mentorsay"
 	var/channel = "Mentor:"
 	channel = "[admin_holder.rank]:"
-	if(check_rights(R_MOD|R_ADMIN,0))
-		color = "staffsay"
 
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='mentorsay'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
 	var/msg = input(src, null, "mentorsay \"text\"") as text|null

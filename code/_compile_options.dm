@@ -12,3 +12,9 @@
 #endif
 
 //#define UNIT_TESTS //If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
+
+#if !defined(CBT) && !defined(SPACEMAN_DMM)
+#warn Building with Dream Maker is no longer supported and will result in errors.
+#warn In order to build, run BUILD.bat in the bin directory.
+#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+#endif

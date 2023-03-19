@@ -27,16 +27,28 @@
 #define DEL_ON_UNDEFIBBABLE 16 //Delete the effect when human mob is undefibbable
 
 /datum/effects
-	var/effect_name = "standard"			//Name of the effect
-	var/duration = 0						//How long it lasts
-	var/flags = DEL_ON_DEATH 				//Flags for the effect
-	var/atom/affected_atom = null			//The affected atom
-	var/def_zone = "chest"					//The area affected if its a mob
-	var/icon_path = null					//The icon path if the effect should apply an overlay to things
-	var/obj_icon_state_path = null			//The icon_state path for objs
-	var/mob_icon_state_path = null			//The icon_state path for mobs
-	var/datum/cause_data/cause_data = null	//Cause data for statistics
-	var/do_proccess = TRUE					//Should the effect process?
+	/// Name of the effect
+	var/effect_name = "standard"
+	///How long it lasts
+	var/duration = 0
+	///Flags for the effect
+	var/flags = DEL_ON_DEATH
+	///The affected atom
+	var/atom/affected_atom = null
+	///The area affected if its a mob
+	var/def_zone = "chest"
+	///The icon path if the effect should apply an overlay to things
+	var/icon_path = null
+	///The icon_state path for objs
+	var/obj_icon_state_path = null
+	///The icon_state path for mobs
+	var/mob_icon_state_path = null
+	///Cause data for statistics
+	var/datum/cause_data/cause_data = null
+	///Should the effect process?
+	var/do_proccess = TRUE
+	///will this effect use the recursive icon alterer?
+	var/use_recursive_icon_alterer
 
 /datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
 	if(!validate_atom(thing) || QDELETED(thing))

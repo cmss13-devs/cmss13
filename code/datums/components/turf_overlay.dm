@@ -12,9 +12,9 @@
 	if(!istype(parent, /atom/movable))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), .proc/update_water_effects)
+	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(update_turf_overlays_effects))
 
-/datum/component/turf_overlay_effect/proc/update_water_effects()
+/datum/component/turf_overlay_effect/proc/update_turf_overlays_effects()
 	SIGNAL_HANDLER
 
 	var/turf/T = get_turf(parent)

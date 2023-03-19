@@ -9,7 +9,10 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/grants_overlay_effect = FALSE //used to determine if to give mobs that cross it overlay effects, set to the icon_state of the effect to add
+	/// used to determine if to give mobs that cross it overlay effects, set to the icon_state of the effect to add
+	var/grants_overlay_effect = FALSE
+	/// used in overlay effects logic, makes the thing "sink" into the turf
+	var/pixel_y_offset = 0
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
@@ -398,6 +401,8 @@
 	supports_surgery = FALSE
 	grants_overlay_effect = "seashallow"
 	minimap_color = MINIMAP_WATER
+	pixel_y_offset = -8
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -414,9 +419,6 @@
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-	else
-		name = default_name
-		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
 
 /turf/open/gm/river/ex_act(severity)
 	if(covered & severity >= EXPLOSION_THRESHOLD_LOW)
@@ -535,7 +537,8 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	grants_overlay_effect = "beach"
-
+	pixel_y_offset = -2
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/riverdeep
 	name = "river"
@@ -545,6 +548,8 @@
 	supports_surgery = FALSE
 	grants_overlay_effect = "seadeep"
 	minimap_color = MINIMAP_WATER
+	pixel_y_offset = -16
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()

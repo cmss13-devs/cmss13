@@ -36183,7 +36183,6 @@
 /area/prison/residential/south)
 "ccz" = (
 /obj/structure/monorail,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "ccA" = (
@@ -63044,7 +63043,7 @@ acL
 acL
 acL
 acL
-bHd
+acL
 acL
 acL
 aAO
@@ -74353,7 +74352,7 @@ czO
 czM
 acL
 acL
-bHd
+acL
 cvj
 aAO
 aAO
@@ -81349,7 +81348,7 @@ cxg
 cxl
 cxx
 cxz
-bHd
+acL
 cvj
 aAO
 aAO
@@ -100155,7 +100154,7 @@ bBe
 bBe
 bzS
 acL
-bHd
+acL
 acL
 acL
 aAO

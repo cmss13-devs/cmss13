@@ -331,7 +331,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/ap/penetrating
-	name = "wall-piercing pistol bullet"
+	name = "wall-penetrating pistol bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -342,15 +342,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/pistol/ap/cluster
-	name = "cluster pistol bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 1.5
-
-/datum/ammo/bullet/pistol/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/ap/toxin
 	name = "toxic pistol bullet"
@@ -395,14 +386,6 @@
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-
-/datum/ammo/bullet/pistol/heavy/cluster
-	name = "heavy cluster pistol bullet"
-	var/cluster_addon = 1.5
-
-/datum/ammo/bullet/pistol/heavy/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
@@ -499,7 +482,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/squash/penetrating
-	name = "wall-piercing squash-head pistol bullet"
+	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -508,15 +491,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/pistol/squash/cluster
-	name = "cluster squash-head pistol bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 2
-
-/datum/ammo/bullet/pistol/squash/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/squash/incendiary
 	name = "incendiary squash-head pistol bullet"
@@ -627,7 +601,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/revolver/penetrating
-	name = "wall-piercing revolver bullet"
+	name = "wall-penetrating revolver bullet"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -637,16 +611,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/revolver/cluster
-	name = "cluster revolver bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 4
-	penetration = ARMOR_PENETRATION_TIER_10
-
-/datum/ammo/bullet/revolver/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/revolver/nagant
 	name = "nagant revolver bullet"
@@ -841,7 +805,7 @@
 	))
 
 /datum/ammo/bullet/smg/ap/penetrating
-	name = "wall-piercing submachinegun bullet"
+	name = "wall-penetrating submachinegun bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -852,17 +816,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/smg/ap/cluster
-	name = "cluster submachinegun bullet"
-	shrapnel_chance = 0
-	damage = 30
-	penetration = ARMOR_PENETRATION_TIER_10
-	var/cluster_addon = 0.8
-
-/datum/ammo/bullet/smg/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
@@ -985,7 +938,7 @@
 
 
 /datum/ammo/bullet/rifle/ap/penetrating
-	name = "wall-piercing rifle bullet"
+	name = "wall-penetrating rifle bullet"
 	shrapnel_chance = 0
 
 	damage = 35
@@ -996,18 +949,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/rifle/ap/cluster
-	name = "cluster rifle bullet"
-	shrapnel_chance = 0
-
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_10
-	var/cluster_addon = 1
-
-/datum/ammo/bullet/rifle/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"

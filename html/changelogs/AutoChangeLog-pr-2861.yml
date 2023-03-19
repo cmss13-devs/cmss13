@@ -1,4 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - bugfix: "fixes OT spawning at latejoin landmark on roundstart"

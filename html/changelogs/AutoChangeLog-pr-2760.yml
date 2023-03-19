@@ -1,6 +1,0 @@
-author: "Moonshanks"
-delete-after: True
-changes:
-  - rscadd: "added altitude control console and related mechanic"
-  - rscadd: "added the 'navigations' skill for using the console and applied it to the CO/Synth"
-  - balance: "added a mechanic for COs to reduce transport and OB cooldown times, and increase hijack transport times"

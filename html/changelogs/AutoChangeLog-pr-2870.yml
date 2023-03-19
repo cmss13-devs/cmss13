@@ -1,4 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - bugfix: "fixed being able to see through walls"

@@ -61,7 +61,6 @@
 	show_in_human_report = TRUE
 	human_report_message = "Cryogenics system's woken everyone up in the wrong pods for their squad. No biggie, looks like they've been given the right access."
 	trait_to_give = TRAIT_ROUND_WRONG_TUBES
-	force = TRUE
 
 /datum/round_trait/wrong_tubes/New()
 	. = ..()

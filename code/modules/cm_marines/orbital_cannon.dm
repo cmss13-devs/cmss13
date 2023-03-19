@@ -188,6 +188,8 @@ var/list/ob_type_fuel_requirements
 
 	ob_cannon_busy = TRUE
 
+	fire_cooldown_time = (100 + 400 * GLOB.ship_alt) SECONDS
+
 	COOLDOWN_START(src, ob_firing_cooldown, fire_cooldown_time)
 	COOLDOWN_START(src, ob_chambering_cooldown, chamber_cooldown_time)
 

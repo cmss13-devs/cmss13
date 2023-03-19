@@ -21,6 +21,15 @@ GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 
 GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())
 
+
 GLOBAL_VAR(temperature_change)
 
 GLOBAL_VAR(squad_mappings)
+
+/// Offset for the Operation time
+GLOBAL_VAR_INIT(time_offset, setup_offset())
+
+/// Sets the offset 2 lines above.
+/proc/setup_offset()
+	return rand(10 MINUTES, 24 HOURS)
+

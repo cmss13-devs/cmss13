@@ -25,4 +25,4 @@ GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_
 GLOBAL_VAR_INIT(time_offset, setup_offset())
 
 /proc/setup_offset()
-	return rand(10 MINUTES, 4 HOURS)
+	return rand(10 MINUTES, 23 HOURS)

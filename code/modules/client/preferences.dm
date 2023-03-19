@@ -100,7 +100,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
-	var/sea_path = "Command"
+	var/sea_path = "ME7"
 
 	var/preferred_survivor_variant = ANY_SURVIVOR
 
@@ -1205,10 +1205,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					commander_sidearm = new_co_sidearm
 
 				if("grade_path")
-					var/list/options = list("Command", "Technical")
+					var/list/options = list(SEA_RANKS[1])
+					if(get_job_playtime(owner, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
+						options += list(SEA_RANKS[2]) + list(SEA_RANKS[3])
+					if(get_job_playtime(owner, JOB_SEA) >= JOB_PLAYTIME_TIER_3)
+						options += list(SEA_RANKS[4]) + list(SEA_RANKS[5])
+
 					var/new_path = tgui_input_list(user, "Choose your preferred promotion path.", "Promotion Paths", options)
 					if(!new_path)
 						return
+
 					sea_path = new_path
 
 				if("yautja_status")

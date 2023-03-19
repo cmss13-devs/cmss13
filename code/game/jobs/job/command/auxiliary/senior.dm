@@ -1,3 +1,5 @@
+#define SEA_RANKS list("ME7", "ME8", "ME8E", "ME9", "ME9E")
+
 /datum/job/command/senior
 	title = JOB_SEA
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED

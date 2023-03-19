@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 20
+#define SAVEFILE_VERSION_MAX 21
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -79,6 +79,9 @@
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 		S["toggles_sound"] << sound_toggles
+
+	if(savefile_version < 21)
+		S["grade_path"] << "ME7"
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -244,7 +247,7 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
-	sea_path = sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
+	sea_path = sanitize_inlist(sea_path, SEA_RANKS, initial(sea_path))
 	preferred_survivor_variant = sanitize_inlist(preferred_survivor_variant, SURVIVOR_VARIANT_LIST, ANY_SURVIVOR)
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))

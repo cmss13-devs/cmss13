@@ -114,6 +114,12 @@
 	icon_state = "upperengineering"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering/upper_engineering/starboard
+	name = "\improper Starboard Upper Engineering"
+
+/area/almayer/engineering/upper_engineering/port
+	name = "\improper Port Upper Engineering"
+
 /area/almayer/engineering/upper_engineering/notunnel
 	flags_area = AREA_NOTUNNEL
 

@@ -203,3 +203,70 @@
   - soundadd: Added 12 female *warcry variations.
   harryob:
   - admin: admins can mark ahelps again, and the ticket interface is a different color
+2023-03-16:
+  CapCamIII:
+  - bugfix: Torn scarves no longer cover your facial hair or identity
+  DecemberIsHere:
+  - balance: Nerfs to the Scout Custom M4RA.
+  NewyearnewmeUwu:
+  - bugfix: Sandbags are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: AA cannon actually works once again.
+  TheDonkified:
+  - rscdel: Evo pods and spawn pool are removed.
+  - rscadd: Hive core directly affects evolution speed and is where burrowed larva
+      spawn from now on.
+  harryob:
+  - refactor: the interior manager is gone, long live ssinterior
+  - bugfix: whitelisted predators can now use apostrophes in their flavour texts
+  realforest2001:
+  - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+2023-03-17:
+  NewyearnewmeUwu:
+  - maptweak: removed yet another default ss13 door from big red
+  TopHatPenguin:
+  - bugfix: Removes the duplicated closet in DCC bunks.
+  realforest2001:
+  - rscadd: Vehicle Elevator now starts raised.
+2023-03-18:
+  Morrow:
+  - bugfix: Fix to evacuated personnel not ending the round
+  - balance: Reduces screenshake and volume of klaxons during hijack.
+  Zonespace27:
+  - rscadd: Map, shipmap, and gamemode votes have their entries in a random order.
+  - admin: Admin-created votes can now, optionally, have their entries in a random
+      order.
+  harryob:
+  - qol: added keybinds for joining as xeno, viewing hive status, hiding, evolving
+      and cancelling camera view
+  - qol: added actions buttons for evolving and joining as xeno
+  - code_imp: actions can listen for a keybind to activate the action
+  - bugfix: fixed a very spammy runtime error
+  memesky:
+  - qol: Increased the maximum font size of the chat from 32px to 48px.
+2023-03-19:
+  CapCamIII:
+  - bugfix: Torn scarves are now small instead of normal sized
+  - balance: M42A, M42C, and XM43E1 can no longer scope in faction clash.
+  Jackie_Estegado:
+  - balance: Reverted the unintentionally nerfed melee damage of the M4RA Custom Battle
+      Rifle.
+  LTNTS:
+  - bugfix: fixed being able to see through walls
+  - bugfix: fixes OT spawning at latejoin landmark on roundstart
+  - qol: mapping or remapping ships/HvH made much easier
+  - imageadd: added landmark icons for mapper use for USCM Almayer roles
+  - bugfix: entrance map marking by brig
+  Moonshanks:
+  - rscadd: added altitude control console and related mechanic
+  - rscadd: added the 'navigations' skill for using the console and applied it to
+      the CO/Synth
+  - balance: added a mechanic for COs to reduce transport and OB cooldown times, and
+      increase hijack transport times
+  Morrow:
+  - bugfix: Removes unintentional survsynth USCM IFF.
+  NewyearnewmeUwu:
+  - maptweak: the lambda graveyard on Solaris Ridge no longer spawns a clown
+  fira:
+  - bugfix: Changed method of logging early game errors to be more convenient.

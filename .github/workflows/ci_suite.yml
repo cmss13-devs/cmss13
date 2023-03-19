@@ -46,11 +46,11 @@ jobs:
           tools/bootstrap/python -c ''
       - name: Run Linters
         run: |
-          bash tools/ci/check_filedirs.sh ColonialMarinesALPHA.dme
+          bash tools/ci/check_filedirs.sh colonialmarines.dme
           bash tools/ci/check_changelogs.sh
           bash tools/ci/check_grep.sh
           bash tools/ci/check_misc.sh
-          tools/bootstrap/python tools/ci/validate_dme.py < ColonialMarinesALPHA.dme
+          tools/bootstrap/python tools/ci/validate_dme.py < colonialmarines.dme
           tools/bootstrap/python -m tools.maplint.source --github
           tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test

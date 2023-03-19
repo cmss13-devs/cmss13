@@ -199,7 +199,7 @@
 				/obj/item/poster,\
 				/obj/item/toy/bikehorn,\
 				/obj/item/toy/beach_ball,\
-				/obj/item/weapon/melee/banhammer,\
+				/obj/item/weapon/banhammer,\
 				/obj/item/toy/balloon,\
 				/obj/item/toy/blink,\
 				/obj/item/toy/crossbow,\

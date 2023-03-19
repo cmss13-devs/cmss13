@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	hitsound = "swing_hit"
 
-/obj/item/weapon/melee/get_examine_text(mob/user)
+/obj/item/weapon/get_examine_text(mob/user)
 	. = ..()
 	var/strong_text = "weak"
 	switch(force)

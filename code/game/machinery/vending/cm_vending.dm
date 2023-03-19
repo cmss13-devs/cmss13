@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				return
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
-		var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+		var/obj/item/weapon/claymore/mercsword/machete/mac = locate(/obj/item/weapon/claymore/mercsword/machete) in item_to_stock
 		if(!mac)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))

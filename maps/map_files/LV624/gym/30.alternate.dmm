@@ -477,8 +477,8 @@
 /area/lv624/lazarus/fitness)
 "JF" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baseballbat,
-/obj/item/weapon/melee/baseballbat{
+/obj/item/weapon/baseballbat,
+/obj/item/weapon/baseballbat{
 	pixel_x = -6;
 	pixel_y = 2
 	},

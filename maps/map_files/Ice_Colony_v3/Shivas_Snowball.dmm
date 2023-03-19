@@ -903,7 +903,7 @@
 /area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/weapon/melee/banhammer,
+/obj/item/weapon/banhammer,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -1446,7 +1446,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "afY" = (
-/obj/item/weapon/melee/ice_axe/green,
+/obj/item/weapon/ice_axe/green,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "afZ" = (
@@ -2379,7 +2379,7 @@
 "akT" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "akX" = (
@@ -2859,7 +2859,7 @@
 /area/shiva/interior/colony/medseceng)
 "anJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "anP" = (
@@ -3422,7 +3422,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "arO" = (
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	name = "ceremonial knife"
 	},
 /turf/open/auto_turf/ice/layer1,
@@ -5244,7 +5244,7 @@
 	},
 /area/shiva/interior/lz2_habs)
 "aIG" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/aerodrome)
 "aIO" = (
@@ -5268,7 +5268,7 @@
 	},
 /area/shiva/interior/valley_huts)
 "aJj" = (
-/obj/item/weapon/melee/throwing_knife,
+/obj/item/weapon/throwing_knife,
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/aerodrome)
 "aJk" = (
@@ -6779,7 +6779,7 @@
 	dir = 4;
 	icon_state = "Straight"
 	},
-/obj/item/weapon/melee/yautja/sword{
+/obj/item/weapon/yautja/sword{
 	anchored = 1;
 	layer = 2.5;
 	pixel_x = -15;
@@ -9626,11 +9626,11 @@
 /area/shiva/interior/colony/medseceng)
 "dWO" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/shiva{
@@ -12099,10 +12099,10 @@
 /area/shiva/exterior/cp_lz2)
 "gOj" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
+/obj/item/weapon/ice_axe,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -12287,11 +12287,11 @@
 /area/shiva/interior/caves/cp_camp)
 "gYd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/shiva{
@@ -13870,7 +13870,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "iDN" = (
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -15170,8 +15170,8 @@
 /area/shiva/interior/colony/s_admin)
 "kdR" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /obj/structure/machinery/light/double{
@@ -16089,7 +16089,7 @@
 /area/shiva/exterior/valley)
 "kVA" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -17214,7 +17214,7 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "mfa" = (
-/obj/item/weapon/melee/ice_axe,
+/obj/item/weapon/ice_axe,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "mfc" = (
@@ -17524,7 +17524,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "mAK" = (
-/obj/item/weapon/melee/ice_axe/green,
+/obj/item/weapon/ice_axe/green,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "mBf" = (
@@ -18211,8 +18211,8 @@
 /area/shiva/interior/telecomm/lz2_research)
 "nhB" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /obj/structure/machinery/light/double{
@@ -18257,7 +18257,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "nmi" = (
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "purplefull"
@@ -18966,7 +18966,7 @@
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
 "ocv" = (
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/s_lz2)
 "ocB" = (
@@ -19436,7 +19436,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "oET" = (
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -20398,7 +20398,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "pGj" = (
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "pGL" = (
@@ -20693,11 +20693,11 @@
 /area/shiva/interior/colony/botany)
 "pTp" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/interior/plastic,
@@ -20769,7 +20769,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "pWn" = (
-/obj/item/weapon/melee/ice_axe{
+/obj/item/weapon/ice_axe{
 	pixel_y = 7
 	},
 /obj/structure/surface/table,
@@ -22374,8 +22374,8 @@
 /area/shiva/interior/colony/medseceng)
 "rRb" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /obj/structure/machinery/light/double{
@@ -22780,11 +22780,11 @@
 /area/shiva/exterior/lz2_fortress)
 "slC" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/shiva{
@@ -22974,11 +22974,11 @@
 /area/shiva/exterior/junkyard)
 "syK" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/shiva{
@@ -24529,7 +24529,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "tZM" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -25241,7 +25241,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "uJk" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "snow_mat"
@@ -27910,8 +27910,8 @@
 /area/shiva/interior/caves/research_caves)
 "xTZ" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/shiva{

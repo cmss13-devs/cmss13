@@ -63,7 +63,7 @@
 			return highpop_paygrade
 
 		//Specs & SGs get their playtime rank on highpop
-		if(get_job_playtime(Player.client, rank) < JOB_PLAYTIME_TIER_1)
+		if(get_job_playtime(Player.client, rank) >= JOB_PLAYTIME_TIER_1)
 			return playtime_rank
 	return paygrade
 
@@ -92,9 +92,6 @@
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
-		//Only for highpop, I think that this is for plat?
-		if(GLOB.ishighpop && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_4)
-			return "ME3"
 	return paygrade
 
 /datum/equipment_preset/uscm/pfc/cryo

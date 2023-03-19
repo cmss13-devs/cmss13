@@ -40218,6 +40218,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"iit" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/start/reporter,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "iiz" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/sake{
@@ -120090,7 +120096,7 @@ kFY
 jmK
 bDL
 bbs
-ccQ
+iit
 bCN
 rbF
 vub

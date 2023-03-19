@@ -4,8 +4,7 @@
 	desc = "A metal trauma plate, able to absorb some blows."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "regular2_100"
-	var/base_icon_state
-	base_icon_state = "regular2"
+	var/base_icon_state = "regular2"
 
 	slot = ACCESSORY_SLOT_ARMOR_C
 	var/armor_health = 10
@@ -41,7 +40,7 @@
 			if(scrappable)
 				. += " If you had two, you could repair it."
 		if(1 to 19)
-			. = "It is falling apart!"
+			. = "It is crumbling apart!"
 		if(20 to 49)
 			. = "It is seriously damaged."
 		if(50 to 79)
@@ -139,7 +138,7 @@
 		return
 
 	if(!I.armor_health && !armor_health)
-		to_chat(user, SPAN_NOTICE("You use the shards of armour to cobble together an improvised trauma plate."))
+		to_chat(user, SPAN_NOTICE("You use the shards of armor to cobble together an improvised trauma plate."))
 		qdel(I)
 		qdel(src)
 		user.put_in_active_hand(new /obj/item/clothing/accessory/health/scrap())

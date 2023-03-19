@@ -2,7 +2,7 @@
 	name = "Don't see this."
 	desc = "A compact version of the USCM defenses. Designed for quick deployment of the associated type in the field."
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
-	icon_state = "uac_sentry_handheld"
+	icon_state = "DMR uac_sentry_handheld"
 
 	force = 5
 	throwforce = 5

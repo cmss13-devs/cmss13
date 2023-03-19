@@ -488,7 +488,7 @@
 
 //Random color tapes
 /obj/item/tape/random
-	icon_state = "random_tape"
+	icon_state = "cassette_rainbow"
 
 /obj/item/tape/random/Initialize(mapload)
 	icon_state = "cassette_[pick(cassette_colours)]"

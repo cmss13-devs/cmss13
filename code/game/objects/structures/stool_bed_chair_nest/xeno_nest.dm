@@ -22,6 +22,8 @@
 	var/list/buckling_x
 	/// this quirky funny lil guy is to prevent endless loops of destroy() proc calls :D
 	var/currently_in_destruction = FALSE
+	/// saves the density of the buckled_mob
+	var/buckled_mob_density
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -42,6 +44,7 @@
 		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
+		buckled_mob_density = current_mob.density
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
@@ -57,7 +60,7 @@
 	else
 		current_mob.pixel_y = initial(buckled_mob.pixel_y)
 		current_mob.pixel_x = initial(buckled_mob.pixel_x)
-		current_mob.density = TRUE
+		current_mob.density = buckled_mob_density
 		if(dir == SOUTH)
 			current_mob.layer = initial(current_mob.layer)
 			if(!ishuman(current_mob))
@@ -277,7 +280,7 @@
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
 	if(buckled_human.stat == DEAD )
-		density = FALSE
+		buckled_mob_density = FALSE
 
 	. = ..()
 
@@ -305,7 +308,7 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		density = FALSE
+		buckled_mob_density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()

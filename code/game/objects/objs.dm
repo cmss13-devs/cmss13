@@ -230,7 +230,6 @@
 		buckled_mob.buckled = null
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		buckled_mob.update_canmove()
-		buckled_mob.density = initial(buckled_mob.density)
 
 		var/M = buckled_mob
 		buckled_mob = null

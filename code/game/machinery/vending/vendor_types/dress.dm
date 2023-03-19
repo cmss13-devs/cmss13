@@ -156,10 +156,10 @@
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
 
-//A clothing vendor for admins and devs to test all the clothes in the game
+//A clothing vendor for admins and devs to test all the items in the game
 /obj/structure/machinery/cm_vending/clothing/super_snowflake
 	name = "\improper Super Snowflake Vendor"
-	desc = "WARNING: The quantity of clothes contained within can slow down reality."
+	desc = "WARNING: The quantity of items contained within can slow down reality."
 	icon_state = "snowflake"
 	use_points = TRUE //"use points", but everything is free
 	show_points = FALSE
@@ -239,26 +239,56 @@
 	log_admin("[key_name(usr)] added an item [chosen] to [src].")
 	msg_admin_niche("[key_name(usr)] added an item [chosen] to [src].")
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
-	name = "\improper Super Snowflake Vendor, Uniforms"
-	item_types = list(/obj/item/clothing/under)
+//Vendor types
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/accessory
+	name = "\improper Super Snowflake Vendor, Accessories"
+	item_types = list(/obj/item/clothing/accessory)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/ammo
+	name = "\improper Super Snowflake Vendor, Ammunition"
+	item_types = list(/obj/item/ammo_magazine)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
+	name = "\improper Super Snowflake Vendor, Backpacks"
+	item_types = list(/obj/item/storage/backpack)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/belt
+	name = "\improper Super Snowflake Vendor, Belts"
+	item_types = list(/obj/item/storage/belt)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
 	name = "\improper Super Snowflake Vendor, Glasses"
 	item_types = list(/obj/item/clothing/glasses)
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
-	name = "\improper Super Snowflake Vendor, Shoes"
-	item_types = list(/obj/item/clothing/shoes)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/gloves
+	name = "\improper Super Snowflake Vendor, Gloves"
+	item_types = list(/obj/item/clothing/gloves)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
 	name = "\improper Super Snowflake Vendor, Helmets"
 	item_types = list(/obj/item/clothing/head)
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/mask
+	name = "\improper Super Snowflake Vendor, Masks"
+	item_types = list(/obj/item/clothing/mask)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/pouch
+	name = "\improper Super Snowflake Vendor, Pouches"
+	item_types = list(/obj/item/storage/pouch)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
+	name = "\improper Super Snowflake Vendor, Shoes"
+	item_types = list(/obj/item/clothing/shoes)
+
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
 	name = "\improper Super Snowflake Vendor, Suits"
 	item_types = list(/obj/item/clothing/suit)
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
-	name = "\improper Super Snowflake Vendor, Backpacks"
-	item_types = list(/obj/item/storage/backpack)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
+	name = "\improper Super Snowflake Vendor, Uniforms"
+	item_types = list(/obj/item/clothing/under)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/weapon
+	name = "\improper Super Snowflake Vendor, Weapons"
+	item_types = list(/obj/item/weapon)

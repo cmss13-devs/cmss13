@@ -5,12 +5,20 @@
 
 // ENLISTED PAYGRADES
 
-/datum/paygrade/marine/e1
-	paygrade = "ME1"
+/datum/paygrade/marine/e0
+	paygrade = "ME0"
 	name = "Private"
 	prefix = "PVT"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e1
 	ranking = 0
+	pay_multiplier = 0.5 //my man is broke
+
+/datum/paygrade/marine/e1
+	paygrade = "ME1"
+	name = "Private Second Class"
+	prefix = "PV2"
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/e1
+	ranking = 1
 	pay_multiplier = 0.8
 
 /datum/paygrade/marine/e2
@@ -18,7 +26,7 @@
 	name = "Private First Class"
 	prefix = "PFC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e2
-	ranking = 1
+	ranking = 1 // same as PV2 this is just a fluff
 	pay_multiplier = 1 // the default.
 
 /datum/paygrade/marine/e3

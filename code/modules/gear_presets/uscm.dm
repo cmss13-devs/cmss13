@@ -77,6 +77,8 @@
 /datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+			return "ME0"
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
 			return "ME1"
 	return paygrade
 
@@ -463,6 +465,8 @@
 /datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+			return "ME0"
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_3)
 			return "ME1"
 	return paygrade
 

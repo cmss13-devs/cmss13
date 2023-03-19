@@ -1,20 +1,16 @@
-//This is the thing that you call to make the ship shake around!
-//despite being in /almayer, this thing should work in any shipmap.
-
 /**
  * Shakes the ship around
  *
  * Shakes the sip around and has the ship
  * make sounds because of it, including
  * warning klaxons it it's a big hit
+ * despite being in /almayer, this thing should work in any shipmap.
  * Arguments:
  * * sstrength - How hard the camera shakes, and how hard the rocking on the ship is
  * * stime - For how long the camera shakes
  * * drop - If the shaking can make people fall, or be thrown away if sstrength is above 7
  */
-
-
-proc/GLOBshakeship(sstrength, stime, drop)
+proc/shakeship(sstrength, stime, drop)
 
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))

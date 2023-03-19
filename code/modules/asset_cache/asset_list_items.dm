@@ -208,12 +208,13 @@
 	var/tier2_state = "hudxenoupgrade2"
 	var/tier3_state = "hudxenoupgrade3"
 	var/tier4_state = "hudxenoupgrade4"
+	var/tier5_state = "hudxenoupgrade5"
 
 	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
 	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
 	var/icon/tier3_icon = icon(icon_file, tier3_state, SOUTH)
 	var/icon/tier4_icon = icon(icon_file, tier4_state, SOUTH)
-
+	var/icon/tier5_icon = icon(icon_file, tier5_state, SOUTH)
 
 	tier1_icon.Crop(6,26,18,14)
 	tier1_icon.Scale(32, 32)
@@ -230,6 +231,10 @@
 	tier4_icon.Crop(6,30,18,18)
 	tier4_icon.Scale(32, 32)
 	Insert("tier4_big", tier4_icon)
+
+	tier5_icon.Crop(6,30,18,18)
+	tier5_icon.Scale(32, 32)
+	Insert("tier5_big", tier5_icon)
 	return ..()
 
 /datum/asset/spritesheet/choose_mark

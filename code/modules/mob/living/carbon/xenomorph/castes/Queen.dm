@@ -413,6 +413,7 @@
 			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+			if(XENO_PRIMEVAL) name = "[name_prefix]Primeval Empress" //Primeval
 	else
 		age = XENO_NORMAL
 		if(client)

@@ -12,8 +12,10 @@
 			age = XENO_ELDER
 		if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
 			age = XENO_ANCIENT
-		if(JOB_PLAYTIME_TIER_4 to INFINITY)
+		if(JOB_PLAYTIME_TIER_4 to JOB_PLAYTIME_TIER_5)
 			age = XENO_PRIME
+		if(JOB_PLAYTIME_TIER_5 to INFINITY)
+			age = XENO_PRIMEVAL
 
 	// For people who wish to remain anonymous
 	if(!client.prefs.playtime_perks)
@@ -30,6 +32,8 @@
 			age_prefix = "Ancient "
 		if(XENO_PRIME)
 			age_prefix = "Prime "
+		if(XENO_PRIMEVAL)
+			age_prefix = "Primeval "
 
 	hud_update() //update the age level insignia on our xeno hud.
 

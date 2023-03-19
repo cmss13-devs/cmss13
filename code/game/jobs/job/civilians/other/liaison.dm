@@ -18,11 +18,6 @@
 	SIGNAL_HANDLER
 	active_liaison = null
 
-
-AddTimelock(/datum/job/civilian/liaison, list(
-	JOB_HUMAN_ROLES = 10 HOURS
-))
-
 /obj/effect/landmark/start/liaison
 	name = JOB_CORPORATE_LIAISON
 	icon_state = "cl_spawn"

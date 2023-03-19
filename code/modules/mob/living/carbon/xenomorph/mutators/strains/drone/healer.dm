@@ -1,7 +1,7 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for a large amount of health, strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
-	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
+	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids and a chunk of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	flavor_description = "To the very last drop, your blood and plasma belong to The Hive; share them with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
@@ -28,7 +28,6 @@
 	drone.mutation_type = DRONE_HEALER
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
-	drone.health_modifier += XENO_HEALTH_MOD_VERYLARGE // 500HP -> 600HP
 	drone.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
@@ -50,9 +49,10 @@
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
 	ability_name = "Apply Resin Salve"
+	plasma_cost = 200
 	var/health_transfer_amount = 100
 	var/max_range = 1
-	var/self_health_drain_mod = 1.2
+	var/self_health_drain_mod = 0.5
 	macro_path = /datum/action/xeno_action/verb/verb_apply_salve
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -86,11 +86,11 @@
 		return
 
 	if(!can_not_harm(target_xeno)) //We don't wanna heal hostile hives, but we do want to heal our allies!
-		to_chat(src, SPAN_WARNING("[target_xeno] is hostile to your hive, so your regenerative resin is incompatible!"))
+		to_chat(src, SPAN_WARNING("[target_xeno] is hostile to your hive, so your regenerative resin salve is incompatible!"))
 		return
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't apply your regenerative resin from here!"))
+		to_chat(src, SPAN_WARNING("You can't apply your regenerative resin salve from here!"))
 		return
 
 	if(get_dist(src, target_xeno) > max_range)
@@ -106,16 +106,19 @@
 		return
 
 	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You do not have enough health to make regenerative resin!"))
+		to_chat(src, SPAN_WARNING("You do not have enough health to make a regenerative resin salve!"))
+		return
+
+	if(plasma_stored > 200)
+		to_chat(src, SPAN_WARNING("You do not have enough plasma to make a regenerative resin salve"))
 		return
 
 	adjustBruteLoss(amount * damage_taken_mod)
 	updatehealth()
-	new /datum/effects/heal_over_time(target_xeno, amount, 12, 2) //Healer now sacrifices the same amount of health that will heal the other xenomorph. Previously, she healed 100 damage while sacrificing 120 health of her own. That is not the law of equivalent exchange!
-	target_xeno.xeno_jitter(1 SECONDS)
+	new /datum/effects/heal_over_time(target_xeno, amount, 10, 2)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
-	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with regenerative resin. You feel reinvigorated!"))
-	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids to create a regenerative resin and apply it to \the [target_xeno]'s wounds. You feel weakened...")) //The vital fluids mix with sticky saliva.
+	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
+	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and use some plasma to create a regenerative resin salve and apply it to \the [target_xeno]'s wounds. You feel weakened...")) //The vital fluids mix with sticky saliva.
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE

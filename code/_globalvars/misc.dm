@@ -24,5 +24,6 @@ GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_
 /// Offset for the Operation time
 GLOBAL_VAR_INIT(time_offset, setup_offset())
 
+/// Sets the offset 2 lines above.
 /proc/setup_offset()
-	return rand(10 MINUTES, 23 HOURS)
+	return rand(10 MINUTES, 24 HOURS)

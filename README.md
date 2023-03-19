@@ -3,8 +3,6 @@
 [![resentment](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://www.monkeyuser.com/assets/images/2019/131-bug-free.png) [![resentment](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 [![Build Status](https://github.com/cmss13-devs/cmss13/workflows/CI%20Suite/badge.svg)](https://github.com/cmss13-devs/cmss13/actions?query=workflow%3A%22CI+Suite%22)
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Percentage of issues still open")
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/cmss13-devs/cmss13.svg)](https://isitmaintained.com/project/cmss13-devs/cmss13 "Average time to resolve an issue")
 
 * **Website:** https://forum.cm-ss13.com/
 * **Code:** https://github.com/cmss13-devs/cmss13

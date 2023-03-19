@@ -51,6 +51,7 @@
 					shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 		 sleep(delayt * 10)
 
+	/*
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
 			continue
@@ -74,5 +75,9 @@
 
 			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND WITH VIOLENCE AND HIT THE DECK FULL FORCE!!"))
 			if(current_mob.client)
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'0), 2 SECONDS)
+
+	*/
+
+	 GLOBshakeship(sstrength, stime, drop)
 

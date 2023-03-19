@@ -962,6 +962,10 @@
 	if(.)
 		return
 
+	if(caller.client.prefs.muted & MUTE_IC)
+		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
+		return
+
 	caller.create_typing_indicator()
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
 	caller.remove_typing_indicator()

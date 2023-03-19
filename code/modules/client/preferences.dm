@@ -102,6 +102,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	//SEA specific preferences
 	var/sea_path = "Command"
 
+	///holds our preferred job options for jobs
+	var/pref_special_job_options = list()
+
 	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
@@ -679,12 +682,19 @@ var/const/MAX_SAVE_SLOTS = 10
 			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b>"
+		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='right'>"
 
-		HTML += "</td><td width='60%'>"
+		if(job.job_options)
+			if(!pref_special_job_options || !pref_special_job_options[role_name])
+				pref_special_job_options[role_name] = job.job_options[1]
+
+			var/txt = pref_special_job_options[role_name]
+			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
+
+		HTML += "</td><td width='50%'>"
 
 		var/cur_priority = get_job_priority(job.title)
 
@@ -1561,6 +1571,21 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_preferred_survivor_variant)
 						return
 					preferred_survivor_variant = new_preferred_survivor_variant
+
+				if("special_job_select")
+					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]
+					if(!job)
+						close_browser(user, "mob_occupation")
+						ShowChoices(user)
+						return
+
+					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", job.job_options)
+					if(!new_special_job_variant)
+						return
+					pref_special_job_options[job.title] = new_special_job_variant
+
+					SetChoices(user)
+					return
 		else
 			switch(href_list["preference"])
 				if("publicity")

@@ -512,6 +512,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/mob/living/carbon/human/H = M
 
+	if(J.job_options && H?.client?.prefs?.pref_special_job_options[J.title])
+		J.handle_job_options(H.client.prefs.pref_special_job_options[J.title])
+
 	var/job_whitelist = J.title
 	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
 

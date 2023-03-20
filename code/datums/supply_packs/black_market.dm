@@ -1069,7 +1069,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 		/obj/item/clothing/head/beaverhat,
 		/obj/item/clothing/head/boaterhat,
 		/obj/item/clothing/head/fez,
-		)
+	)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/clf_supplies

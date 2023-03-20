@@ -1,6 +1,7 @@
 
 var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 
+GLOBAL_LIST_EMPTY(PressFaxes)
 GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)

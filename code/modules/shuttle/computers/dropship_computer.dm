@@ -3,7 +3,7 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE

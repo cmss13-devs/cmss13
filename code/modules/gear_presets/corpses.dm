@@ -46,7 +46,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
+	add_survivor_weapon_civilian(H)
 	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 
@@ -740,7 +740,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
+	add_pmc_survivor_weapon(H)
 	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/clf/burst

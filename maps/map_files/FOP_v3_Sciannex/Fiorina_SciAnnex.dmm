@@ -1422,7 +1422,6 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -11890,7 +11889,6 @@
 	},
 /area/fiorina/tumor/civres)
 "hoZ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "hpd" = (
@@ -13321,7 +13319,6 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -16267,7 +16264,6 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -19795,7 +19791,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -24437,7 +24433,6 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -38819,7 +38814,7 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
@@ -39031,14 +39026,14 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39243,21 +39238,21 @@ tfP
 tfP
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39462,13 +39457,13 @@ bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 pXH
 bQM
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 pqO
@@ -39673,14 +39668,14 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 byb
@@ -39885,7 +39880,7 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
@@ -40137,7 +40132,7 @@ bQM
 bQM
 bQM
 baC
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -40349,8 +40344,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40561,8 +40556,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40773,8 +40768,8 @@ bQM
 bQM
 bQM
 bQM
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40985,7 +40980,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -41197,7 +41192,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -64604,7 +64599,7 @@ kbO
 kbO
 dFk
 ezJ
-xLi
+lJa
 kLX
 oHn
 ddL
@@ -67207,7 +67202,7 @@ vNq
 tvI
 sYv
 bQM
-ggQ
+bTe
 vNq
 vNq
 tvI
@@ -68485,7 +68480,7 @@ cAW
 cAW
 cAW
 bTe
-eJQ
+vNq
 vNq
 tvI
 sYv
@@ -72208,7 +72203,7 @@ bQM
 yaY
 bQM
 rOa
-tan
+eph
 fiq
 fiq
 fiq
@@ -72513,7 +72508,7 @@ cAW
 cAW
 bce
 cAW
-vnr
+bce
 hVS
 vBP
 byl
@@ -73478,12 +73473,12 @@ bQM
 bQM
 rOa
 rOa
-tan
-tan
+eph
+eph
 rOa
 rOa
 rOa
-tan
+eph
 rOa
 eph
 eph
@@ -81784,7 +81779,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 geF
 jmG
 aDs
@@ -82420,7 +82415,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 cAW
 cAW
 cAW
@@ -85616,7 +85611,7 @@ sEi
 hlK
 lRT
 cAW
-vnr
+bce
 cAW
 cAW
 lRT
@@ -86776,7 +86771,7 @@ rOa
 rOa
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM
@@ -88874,7 +88869,7 @@ cAW
 bQM
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM

@@ -226,6 +226,10 @@
 	return
 
 //Chair types
+/obj/structure/bed/chair/bolted
+	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."
+	picked_up_item = null
+
 /obj/structure/bed/chair/wood
 	buildstacktype = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)

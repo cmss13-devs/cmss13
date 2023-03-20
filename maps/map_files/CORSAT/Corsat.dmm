@@ -16817,7 +16817,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/administration)
 "aUs" = (
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
@@ -45725,7 +45725,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -59832,7 +59831,6 @@
 	},
 /area/corsat/gamma/residential/west)
 "tJe" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "tJf" = (
@@ -62022,7 +62020,6 @@
 /area/corsat/gamma/biodome/virology)
 "vkS" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -99231,7 +99228,7 @@ ylo
 ylo
 aSa
 aSa
-bmQ
+aSa
 aSa
 aSa
 ylo

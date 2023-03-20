@@ -12,4 +12,5 @@ AddTimelock(/datum/job/logistics/requisition, list(
 
 /obj/effect/landmark/start/requisition
 	name = JOB_CHIEF_REQUISITION
+	icon_state = "ro_spawn"
 	job = /datum/job/logistics/requisition

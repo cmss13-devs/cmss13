@@ -3,9 +3,10 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 	unacidable = TRUE
 	exproof = TRUE
+	needs_power = FALSE
 
 	// True if we are doing a flyby
 	var/is_set_flyby = FALSE
@@ -84,6 +85,11 @@
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
+	//factors in the distance to the AO when in transit
+	if(!is_set_flyby)
+		flight_duration = DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
+
+
 	dropship.callTime = round(flight_duration)
 	dropship.rechargeTime = round(recharge_duration)
 
@@ -132,6 +138,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_hand(mob/user)
 	. = ..(user)
 	if(.)
+		return TRUE
+
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return TRUE
 
 	// if the dropship has crashed don't allow more interactions
@@ -249,6 +259,7 @@
 	dropship.is_hijacked = TRUE
 
 	hijack.fire()
+	GLOB.alt_ctrl_disabled = TRUE
 	if(almayer_orbital_cannon)
 		almayer_orbital_cannon.is_disabled = TRUE
 		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
@@ -299,6 +310,7 @@
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
 
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
+	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
@@ -330,9 +342,13 @@
 
 	switch(action)
 		if("move")
-			if(shuttle.mode != SHUTTLE_IDLE)
-				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
+
+			if(is_set_flyby && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+				to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
+				return FALSE
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
@@ -443,3 +459,4 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	is_remote = TRUE
+	needs_power = TRUE

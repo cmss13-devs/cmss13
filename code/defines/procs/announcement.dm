@@ -42,7 +42,7 @@
 				continue
 			if(is_mainship_level(H.z)) // People on ship see everything
 				continue
-			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY))) //faction checks
+			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
 
 	else if(faction_to_display == "Everyone (-Yautja)")

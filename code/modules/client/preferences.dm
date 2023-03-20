@@ -672,17 +672,17 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='right'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='right'>"

@@ -881,7 +881,7 @@
 	stamina_damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/bullet/smg/mp27
+/datum/ammo/bullet/smg/simple
 	name = "simple submachinegun bullet"
 	damage = 40
 	accurate_range = 5

@@ -88,6 +88,18 @@
 	gun_type = /obj/item/weapon/gun/smg/mp5
 	max_rounds = 30 //Also comes in 10 and 40.
 
+//-------------------------------------------------------
+//P3A1 SMG, based on the Grease Gun, but is in-lore a modernized version of it sold as a extremely cheap weapon via FTL technologies.
+
+/obj/item/ammo_magazine/smg/grease_gun
+	name = "\improper P3A1 magazine (.45)"
+	desc = "A single-feed 30-rounder box magazine for the P3A1 submachinegun. Notoriously hard to hand-load."
+	default_ammo = /datum/ammo/bullet/smg/simple
+	caliber = ".45"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "grease_gun" // Same as uzi extended as it is basically already perfect.
+	gun_type = /obj/item/weapon/gun/smg/grease_gun
+	max_rounds = 30
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
@@ -95,7 +107,7 @@
 /obj/item/ammo_magazine/smg/mp27
 	name = "\improper MP27 magazine (4.6x30mm)"
 	desc = "A 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy."
-	default_ammo = /datum/ammo/bullet/smg/mp27
+	default_ammo = /datum/ammo/bullet/smg/simple
 	caliber = "4.6x30mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "mp7_30"

@@ -1674,6 +1674,53 @@ Defined in conflicts.dm of the #defines folder.
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
+/obj/item/attachable/stock/smg/collapsible/grease_gun
+	name = "P3A1 submachinegun collapsible stock"
+	desc = "A P3A1 folding stock. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	slot = "stock"
+	melee_mod = 15
+	size_mod = 1
+	pixel_shift_x = 20
+	pixel_shift_y = 16
+	icon_state = "grease_gun_stock_unfolded"
+	attach_icon = "grease_gun_stock_unfolded_a"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+	hud_offset_mod = 3
+
+/obj/item/attachable/stock/smg/collapsible/grease_gun/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
+		size_mod = 1
+		aim_speed_mod = CONFIG_GET(number/slowdown_low)
+		wield_delay_mod = WIELD_DELAY_FAST
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		hud_offset_mod = 5
+		icon_state = "grease_gun_stock_unfolded"
+		attach_icon = "grease_gun_stock_unfolded_a"
+
+	else
+		scatter_unwielded_mod = 0
+		size_mod = 0
+		aim_speed_mod = 0
+		wield_delay_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		hud_offset_mod = 3
+		icon_state = "grease_gun_stock_folded"
+		attach_icon = "grease_gun_stock_folded_a"
+
+	//don't *= -1 on debuffs, you'd actually be making than without stock when it's collapsed.
+	accuracy_mod *= -1
+	recoil_mod *= -1
+	scatter_mod *= -1
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
 /obj/item/attachable/stock/smg/collapsible/brace
 	name = "\improper submachinegun arm brace"
 	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of burst amount. Wielding the weapon with this stock attached confers a major inaccuracy and recoil debuff."

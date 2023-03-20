@@ -389,6 +389,7 @@
 		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
+		/obj/item/weapon/gun/smg/grease_gun = /obj/item/ammo_magazine/smg/grease_gun,
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
@@ -477,6 +478,7 @@ var/list/rebel_shotguns = list(
 var/list/rebel_smgs = list(
 	/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
 	/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
+	/obj/item/weapon/gun/smg/grease_gun = /obj/item/ammo_magazine/smg/grease_gun,
 	/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 	/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 	/obj/item/weapon/gun/pistol/skorpion/upp = /obj/item/ammo_magazine/pistol/skorpion,
@@ -553,6 +555,7 @@ var/list/rebel_rifles = list(
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
+		/obj/item/weapon/gun/smg/grease_gun = /obj/item/ammo_magazine/smg/grease_gun,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15/extended)
@@ -840,7 +843,7 @@ var/list/rebel_rifles = list(
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
  * For the most part you will stil get a shotgun but there is an off chance you get something unique.
- * If you dont like the weapon deal with it. With exception of CMB Shotgun, everything else has some level of ammo. 
+ * If you dont like the weapon deal with it. With exception of CMB Shotgun, everything else has some level of ammo.
  * Some weapons may not appear at all in a colony so they will need the extra ammo.
  * MERC, and DB needed a handfull of shells to compete with the normal CMB.
  */

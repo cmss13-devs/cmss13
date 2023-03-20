@@ -236,11 +236,27 @@
 	var/cap_doodad_state = ""
 	var/center_doodad_state = ""
 	var/color_override = null
-	var/rbarrel_color_list = list(COLOUR_SILVER,COLOUR_FLOORTILE_GRAY,COLOUR_MAROON,COLOUR_SOFT_RED,COLOUR_YELLOW,COLOUR_VERY_SOFT_YELLOW,COLOUR_OLIVE,COLOUR_DARK_MODERATE_LIME_GREEN,COLOUR_TEAL,COLOUR_MODERATE_BLUE,COLOUR_PURPLE,COLOUR_STRONG_VIOLET,COLOUR_BEIGE,COLOUR_DARK_MODERATE_ORANGE,COLOUR_BROWN,COLOUR_DARK_BROWN)
 
-var/global/list/rbarrel_cap_states = list()
-var/global/list/rbarrel_center_states = list()
+
+var/static/list/rbarrel_cap_states = list()
+var/static/list/rbarrel_center_states = list()
 var/global/rbarrel_genned = FALSE
+var/static/list/rbarrel_color_list = list(COLOUR_SILVER,
+	COLOUR_FLOORTILE_GRAY,
+	COLOUR_MAROON,
+	COLOUR_SOFT_RED,
+	COLOUR_YELLOW,
+	COLOUR_VERY_SOFT_YELLOW,
+	COLOUR_OLIVE,
+	COLOUR_DARK_MODERATE_LIME_GREEN,
+	COLOUR_TEAL,
+	COLOUR_MODERATE_BLUE,
+	COLOUR_PURPLE,
+	COLOUR_STRONG_VIOLET,
+	COLOUR_BEIGE,
+	COLOUR_DARK_MODERATE_ORANGE,
+	COLOUR_BROWN,
+	COLOUR_DARK_BROWN)
 
 /obj/structure/largecrate/random/barrel/true_random/Initialize()
 	. = ..()

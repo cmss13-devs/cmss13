@@ -58,7 +58,7 @@ log transactions
 		if(istype(I,/obj/item/spacecash))
 			//consume the money
 			if(I:counterfeit)
-				authenticated_account.money += round(I:worth * 0.33)
+				authenticated_account.money += round(I:worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else

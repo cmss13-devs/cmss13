@@ -74,7 +74,7 @@
 	},
 /area/event)
 "u" = (
-/obj/effect/landmark/start/tech,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
@@ -171,6 +171,12 @@
 /area/event)
 "T" = (
 /obj/effect/landmark/start/marine/leader,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"U" = (
+/obj/effect/landmark/start/intel,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
@@ -336,7 +342,7 @@ a
 a
 c
 G
-b
+U
 b
 b
 b

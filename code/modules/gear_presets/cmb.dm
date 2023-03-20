@@ -57,7 +57,7 @@
 
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H)
-	H.gender = pick(70;MALE,30;FEMALE)
+	H.gender = pick(80;MALE,20;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name

@@ -1,4 +1,0 @@
-author: "LynxSolstice, Harryob"
-delete-after: True
-changes:
-  - code_imp: "Changed the worldtime2text offset to be between 10 minutes and 4 hours."

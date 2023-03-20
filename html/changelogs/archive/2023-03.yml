@@ -270,3 +270,24 @@
   - maptweak: the lambda graveyard on Solaris Ridge no longer spawns a clown
   fira:
   - bugfix: Changed method of logging early game errors to be more convenient.
+2023-03-20:
+  BeagleGaming1:
+  - admin: IC mute now functions properly
+  LynxSolstice, Harryob:
+  - code_imp: Changed the worldtime2text offset to be between 10 minutes and 4 hours.
+  carlarctg:
+  - refactor: Refactors how magazine ammo color is handled into overlays.
+  - refactor: Instead of filling up dmis with a ridiculous amount of icon states for
+      each new barely used magazine type, compatible magazines have a 'band' white
+      overlay icon that is colored based on a variable on the magazine.
+  - imageadd: This will cause various sprites of various magazines to look subtly
+      different as the exact look couldn't be copied.
+  - spellcheck: Renamed wallpiercing to wall-penetrating.
+  - code_imp: Removed cluster magazines from the code.
+  - spellcheck: Altered the name of A19 magazines a little.
+  mullenpaul:
+  - bugfix: DCC is no longer able to launch flybys
+  - bugfix: Queen is once again able to force open dropship airlocks
+  realforest2001:
+  - rscadd: Adds two variables to yautja cloaks for admin customisation. cloak_alpha
+      and true_cloak, true cloak will make the invisibility 100% effective.

@@ -211,6 +211,7 @@
 					to_chat(M, SPAN_WARNING("Sudden acceleration presses you into [M.buckled]!"))
 					shake_camera(M, 3, 1)
 				else if (!M.buckled)
+					to_chat(M, SPAN_WARNING("The floor lurches beneath you!"))
 					shake_camera(M, iselevator? 2 : 10, 1)
 
 				var/mob/living/carbon/human/lurcher = M

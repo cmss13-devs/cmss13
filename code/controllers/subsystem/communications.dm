@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(radio)
 	if(frequency)
 		frequency.remove_listener(device)
 
-		if(length(frequency.devices))
+		if(!length(frequency.devices))
 			qdel(frequency)
 			frequencies -= f_text
 

@@ -3270,6 +3270,7 @@
 /area/westerneye/shipboard/port_missiles)
 "bkU" = (
 /obj/effect/landmark/start/warrant,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "blf" = (
@@ -3584,8 +3585,8 @@
 /turf/open/floor/almayer,
 /area/westerneye/living/offices/flight)
 "bqJ" = (
-/obj/effect/landmark/start/tech,
 /obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "bqN" = (
@@ -14945,6 +14946,7 @@
 /area/westerneye/squads/delta)
 "eNG" = (
 /obj/effect/landmark/late_join,
+/obj/effect/landmark/start/chef,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "eOb" = (
@@ -19400,6 +19402,7 @@
 /area/westerneye/living/mess_hall)
 "ggd" = (
 /obj/effect/landmark/start/synthetic,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "ggg" = (
@@ -20208,6 +20211,11 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/space)
+"gtD" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/start/chef,
+/turf/open/floor/plating/plating_catwalk,
+/area/westerneye/living/cryo_cells)
 "gtE" = (
 /obj/structure/machinery/landinglight/escape_pods/delaytwo{
 	dir = 8
@@ -32792,6 +32800,7 @@
 /area/westerneye/squads/req)
 "kth" = (
 /obj/effect/landmark/start/warden,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "ktl" = (
@@ -43172,6 +43181,7 @@
 /area/westerneye/command/securestorage)
 "nIV" = (
 /obj/effect/landmark/start/senior,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "nJj" = (
@@ -45527,6 +45537,7 @@
 /area/westerneye/medical/testlab)
 "oxO" = (
 /obj/effect/landmark/start/liaison,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "oyh" = (
@@ -62149,6 +62160,11 @@
 	icon_state = "plate"
 	},
 /area/westerneye/engineering/lower_engineering)
+"tLX" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/start/otech,
+/turf/open/floor/plating/plating_catwalk,
+/area/westerneye/living/cryo_cells)
 "tLZ" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -72009,6 +72025,7 @@
 /area/westerneye/command/telecomms)
 "wUv" = (
 /obj/effect/landmark/start/police,
+/obj/effect/landmark/late_join,
 /turf/open/floor/plating/plating_catwalk,
 /area/westerneye/living/cryo_cells)
 "wUy" = (
@@ -102617,7 +102634,7 @@ dbj
 nsJ
 oWk
 tIM
-bqJ
+gtD
 eNG
 iVf
 koi
@@ -103022,7 +103039,7 @@ lWr
 oWk
 tIM
 bqJ
-eNG
+tLX
 iVf
 fUX
 rBm

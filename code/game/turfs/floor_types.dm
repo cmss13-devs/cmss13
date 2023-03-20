@@ -245,11 +245,11 @@
 		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
 			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
-		if(!area_shuttle)
+		var/area/place = get_area(src)
+		if(!place)
 			return
 		var/list/turflist = list()
-		for(var/turf/turf in area_shuttle)
+		for(var/turf/turf in place)
 			turflist |= turf
 
 		thrown_human.forceMove(pick(turflist))

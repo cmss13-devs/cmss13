@@ -10,7 +10,7 @@
 	access = get_all_accesses() + get_all_civilian_accesses()
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H, randomise)
-	H.gender = pick(80;MALE,20;FEMALE)
+	H.gender = pick(75;MALE,25;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
@@ -57,7 +57,7 @@
 
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H)
-	H.gender = pick(80;MALE,20;FEMALE)
+	H.gender = pick(75;MALE,25;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name

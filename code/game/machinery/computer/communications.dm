@@ -113,6 +113,10 @@
 
 		if("announce")
 			if(authenticated == 2)
+				if(usr.client.prefs.muted & MUTE_IC)
+					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+					return
+
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE

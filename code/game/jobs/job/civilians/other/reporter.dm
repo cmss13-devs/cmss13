@@ -25,7 +25,7 @@
 
 /datum/job/civilian/reporter/generate_entry_message(mob/living/carbon/human/H)
 	if(military)
-		. = {"The USCM has assigned you to the USS almayer to better handle messaging on how things run in the Neroid Sector. Get out there and show world that the USCM is doing great thing!"}
+		. = {"The USCM has assigned you to the USS Almayer to better handle messaging on how things run in the Neroid Sector. Get out there and show the universe that the USCM is doing great things!"}
 	else
 		. = {"What a scoop! You've been assigned to the USS Almayer to see what kinda mischief they'd get into and it seems trouble is here!
 This could be the story of the sector! 'Brave Marines responding to dangerous distress signal!' It'd surely get Mr. Parkerson to notice you in the office if you brought him a story like this!"}

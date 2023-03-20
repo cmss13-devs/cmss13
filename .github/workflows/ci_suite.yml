@@ -3,7 +3,11 @@ on:
   push:
     branches:
     - master
+    - 'gh-readonly-queue/master/**'
   pull_request:
+    branches:
+    - master
+  merge_group:
     branches:
     - master
 jobs:
@@ -12,7 +16,7 @@ jobs:
     name: Run Linters
     runs-on: ubuntu-22.04
     concurrency:
-      group: run_linters-${{ github.ref }}
+      group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +62,7 @@ jobs:
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2
-        if: always()
+        if: success() || failure()
         with:
           outputFile: output-annotations.txt
 
@@ -86,7 +90,7 @@ jobs:
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
     concurrency:
-      group: find_all_maps-${{ github.ref }}
+      group: find_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -106,7 +110,7 @@ jobs:
       matrix:
         map: ${{ fromJSON(needs.find_all_maps.outputs.maps).paths }}
     concurrency:
-      group: run_all_tests-${{ github.ref }}-${{ matrix.map }}
+      group: run_all_tests-${{ github.head_ref || github.run_id }}-${{ matrix.map }}
       cancel-in-progress: true
     uses: ./.github/workflows/run_unit_tests.yml
     with:

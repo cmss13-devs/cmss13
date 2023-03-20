@@ -33,3 +33,7 @@ This could be the story of the sector! 'Brave Marines responding to dangerous di
 /obj/effect/landmark/start/reporter
 	name = JOB_COMBAT_REPORTER
 	job = /datum/job/civilian/reporter
+
+AddTimelock(/datum/job/civilian/reporter, list(
+	JOB_HUMAN_ROLES = 10 HOURS,
+))

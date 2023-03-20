@@ -36183,7 +36183,6 @@
 /area/prison/residential/south)
 "ccz" = (
 /obj/structure/monorail,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "ccA" = (
@@ -47234,7 +47233,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "oXr" = (
@@ -48621,7 +48619,6 @@
 /area/prison/residential/north)
 "tVW" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "tWR" = (
@@ -49098,7 +49095,6 @@
 /area/prison/cellblock/protective)
 "vwO" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/south)
 "vxy" = (
@@ -63047,7 +63043,7 @@ acL
 acL
 acL
 acL
-bHd
+acL
 acL
 acL
 aAO
@@ -74356,7 +74352,7 @@ czO
 czM
 acL
 acL
-bHd
+acL
 cvj
 aAO
 aAO
@@ -81352,7 +81348,7 @@ cxg
 cxl
 cxx
 cxz
-bHd
+acL
 cvj
 aAO
 aAO
@@ -100158,7 +100154,7 @@ bBe
 bBe
 bzS
 acL
-bHd
+acL
 acL
 acL
 aAO

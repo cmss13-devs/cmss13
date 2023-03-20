@@ -1302,8 +1302,8 @@
 				if(!organization_type)
 					return
 
-				fax_message = generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, organization_type, organization_type)
-		show_browser(usr, "<body class='paper'>[fax_message]</body>", "uscmfaxpreview", "size=500x400")
+				fax_message = generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type)
+		show_browser(usr, "<body class='paper'>[fax_message]</body>", "pressfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice == "Cancel")
 			return

@@ -1,4 +1,4 @@
-// DM Environment file for baystation12.dme.
+// DM Environment file for colonialmarines.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
  // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -1453,6 +1453,7 @@
 #include "code\modules\cm_aliens\structures\special\pred_nest.dm"
 #include "code\modules\cm_aliens\structures\special\pylon_core.dm"
 #include "code\modules\cm_aliens\structures\special\recovery_node.dm"
+#include "code\modules\cm_marines\altitude_control_console.dm"
 #include "code\modules\cm_marines\anti_air.dm"
 #include "code\modules\cm_marines\codebook.dm"
 #include "code\modules\cm_marines\Donor_Items.dm"

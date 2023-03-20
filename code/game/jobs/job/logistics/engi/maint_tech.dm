@@ -10,4 +10,5 @@
 
 /obj/effect/landmark/start/maint
 	name = JOB_MAINT_TECH
+	icon_state = "mt_spawn"
 	job = /datum/job/logistics/maint

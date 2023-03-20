@@ -201,6 +201,7 @@
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
+	w_class = SIZE_SMALL
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT

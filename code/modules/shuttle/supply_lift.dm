@@ -164,6 +164,40 @@
 		SSpoints.shoppinglist[faction] -= "[SO.id]"
 		SSpoints.shopping_history += SO
 
+/obj/docking_port/mobile/supply/proc/sell()
+	for(var/place in shuttle_areas)
+	if(!shuttle_areas)
+		return
+
+	// Sell crates.
+	for(var/obj/structure/closet/crate/C in shuttle_areas)
+		points += points_per_crate
+		qdel(C)
+
+	// Sell manifests.
+	for(var/atom/movable/movable_atom in shuttle_areas)
+		if(istype(movable_atom, /obj/item/paper/manifest))
+			var/obj/item/paper/manifest/M = movable_atom
+			if(M.stamped && M.stamped.len)
+				points += points_per_slip
+
+		//black market points
+		if(black_market_enabled)
+			var/points_to_add = get_black_market_value(movable_atom)
+			if(points_to_add == KILL_MENDOZA)
+				kill_mendoza()
+			black_market_sold_items[movable_atom.type] += 1
+			black_market_points += points_to_add
+
+		// Don't disintegrate humans! Maul their corpse instead. >:)
+		if(ishuman(movable_atom))
+			var/timer = 0.5 SECONDS
+			for(var/index in 1 to 10)
+				timer += 0.5 SECONDS
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
+
+		// Delete everything else.
+		else qdel(movable_atom)
 
 /datum/supply_ui
 	var/atom/source_object

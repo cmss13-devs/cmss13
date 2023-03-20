@@ -309,6 +309,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 20
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/grease_gun
+	name = "P3A1 submachinegun crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/grease_gun,
+		/obj/item/ammo_magazine/smg/grease_gun,
+		/obj/item/ammo_magazine/smg/grease_gun,
+		/obj/item/ammo_magazine/smg/grease_gun,
+		/obj/item/ammo_magazine/smg/grease_gun,
+		/obj/item/ammo_magazine/smg/grease_gun,
+	)
+	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/mp5
 	name = "MP5 submachinegun crate (x5 magazines included)"
 	contains = list(

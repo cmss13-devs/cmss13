@@ -240,6 +240,78 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
+//P3A1 SMG, based on the Grease Gun, but is in-lore a modernized version of it sold as a extremely cheap weapon via FTL technologies.
+
+/obj/item/weapon/gun/smg/grease_gun
+	name = "\improper P3A1 submachinegun"
+	desc = "This brutalist submachinegun fires a 'steady' barrage of .45 down range. Often used by colonies down on their luck, mass-produced in civil wars, or shipped to insurgents in enemy territory. Though its firerate isn't impressive, its caliber and excellent reliability otherwise more than makes up for it, despite appereances."
+	desc_lore = "The definition of simplification. Clearly a modernization of the ancient and legendary M3 'Grease gun' used in WW1 and WW2, yet it still remains serviceable. This weapon is 3D-printed and stamped directly by interested colonies after they buy and recieve a license and blueprints from Hyperdyne Systems via FTL communication, allowing them to quickly arm themselves without having to pay for transportation."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi' // it was not used in WW1 but 3 centuries after the fact people forget the details
+	icon_state = "grease_gun"
+	item_state = "grease_gun"
+	fire_sound = 'sound/weapons/grease_gun_fire.wav'
+	fire_rattle = 'sound/weapons/grease_gun_fire.wav'
+	current_mag = /obj/item/ammo_magazine/smg/grease_gun
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/stock/smg/collapsible/grease_gun, // Stock
+		)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	aim_slowdown = SLOWDOWN_ADS_VERSATILE
+	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible/grease_gun)
+
+/obj/item/weapon/gun/smg/grease_gun/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	if(!.)
+		return
+	addtimer(CALLBACK(src, PROC_REF(slam_receiver_back)), fire_delay * 2, TIMER_UNIQUE|TIMER_OVERRIDE) // Makes this noise when you stop firing as the reciever slams into the frame.
+
+/obj/item/weapon/gun/smg/grease_gun/proc/slam_receiver_back()
+	playsound(src, 'sound/weapons/tap.mp3', 25, FALSE)
+
+/obj/item/weapon/gun/smg/grease_gun/gun_safety_handle(mob/user)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		to_chat(user, SPAN_DANGER("You flip the dust cover up, locking the firing mechanism."))
+		playsound(src, 'sound/machines/pda_button2.ogg', 25, TRUE)
+	else
+		to_chat(user, SPAN_NOTICE("You flip the dust cover down, unlocking the firing mechanism!"))
+		playsound(src, 'sound/machines/pda_button1.ogg', 25, TRUE)
+
+	update_icon()
+
+/obj/item/weapon/gun/smg/grease_gun/update_icon()
+	. = ..()
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		overlays +=  "+grease_gun_cover"
+
+/obj/item/weapon/gun/smg/grease_gun/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 8, "rail_y" = 21, "under_x" = 13, "under_y" = 14, "stock_x" = 3, "stock_y" = 19)
+
+/obj/item/weapon/gun/smg/grease_gun/set_gun_config_values()
+	..()
+	fire_delay = 0.16 SECONDS
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4 + (SCATTER_AMOUNT_TIER_10 * 0.5)
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4 + SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+//-------------------------------------------------------
 //PPSH //Based on the PPSh-41.
 
 #define PPSH_UNJAM_CHANCE 25

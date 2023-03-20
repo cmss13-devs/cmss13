@@ -39,6 +39,7 @@
 		list("MAR-40 Battle Rifle", 30, /obj/item/weapon/gun/rifle/mar40, null, VENDOR_ITEM_REGULAR),
 		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/mac15, null, VENDOR_ITEM_REGULAR),
 		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, null, VENDOR_ITEM_REGULAR),
+		list("P3A1 Submachinegun", 10, /obj/item/weapon/gun/smg/grease_gun, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, null, VENDOR_ITEM_REGULAR),
 		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, null, VENDOR_ITEM_REGULAR),
 
@@ -55,6 +56,7 @@
 		list("MAR Magazine (7.62x39mm)", 5, /obj/item/ammo_magazine/rifle/mar40, null, VENDOR_ITEM_REGULAR),
 		list("MAR Extended Magazine (7.62x39mm)", 15, /obj/item/ammo_magazine/rifle/mar40/extended, null, VENDOR_ITEM_REGULAR),
 		list("MP27 Magazine (4.6x30mm)", 5, /obj/item/ammo_magazine/smg/mp27, null, VENDOR_ITEM_REGULAR),
+		list("P3A1 Magazine (45)", 5, /obj/item/ammo_magazine/smg/grease_gun, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Magazine (9mm)", 5, /obj/item/ammo_magazine/smg/mp5, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),

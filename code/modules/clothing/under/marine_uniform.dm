@@ -619,7 +619,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS //This is all a copy and paste of the Dutch's stuff for now.
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
-	flags_jumpsuit = UNIFORM_HOOD_EXISTS
 	icon_state = "owlf_uniform"
 	worn_state = "owlf_uniform"
 	has_sensor = UNIFORM_NO_SENSORS

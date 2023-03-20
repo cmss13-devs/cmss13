@@ -11,8 +11,8 @@
  * * drop - If the shaking can make people fall, or be thrown away if sstrength is above 7
  * * osound - not included in the admin verb! Can be set to FALSE if you don't want it's original sounds to play in case you want something different
  */
-/proc/shakeship(sstrength, stime, drop, osound)
-	osound = TRUE
+/proc/shakeship(sstrength, stime, drop, osound = TRUE)
+
 
 	for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))

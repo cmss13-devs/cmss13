@@ -1,5 +1,5 @@
 /client/proc/map_template_load()
-	set category = "Debug"
+	set category = "Admin.Events"
 	set name = "Map Template - Place"
 
 	var/datum/map_template/template
@@ -36,7 +36,7 @@
 	images -= preview
 
 /client/proc/map_template_upload()
-	set category = "Debug"
+	set category = "Admin.Events"
 	set name = "Map Template - Upload"
 
 	var/map = input(src, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
@@ -49,8 +49,8 @@
 	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Cancel")) // TODO: shuttle
 		if("Normal")
 			M = new /datum/map_template(map, "[map]", TRUE)
-		//if("Shuttle")
-		// M = new /datum/map_template/shuttle(map, "[map]", TRUE)
+		if("Shuttle")
+			M = new /datum/map_template/shuttle(map, "[map]", TRUE)
 		else
 			return
 	if(!M.cached_map)

@@ -1,4 +1,5 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
+#define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
 
 //// COOLDOWN SYSTEMS
 /*

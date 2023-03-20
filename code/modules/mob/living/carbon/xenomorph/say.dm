@@ -104,7 +104,7 @@
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions)
+	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 

@@ -119,8 +119,8 @@
 /area/bigredv2/outside/space_port)
 "aau" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Communications Landing Zone";
-	dwidth = 1
+	dwidth = 1;
+	name = "Communications Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -1339,10 +1339,10 @@
 	},
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Communications"
+	phone_id = "Communications";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -8009,8 +8009,8 @@
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lambda Labs";
-	phone_id = "Administration";
-	phone_color = "blue"
+	phone_color = "blue";
+	phone_id = "Administration"
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
@@ -9355,7 +9355,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
-/obj/structure/machinery/door/airlock/medical,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Medical Clinic Operating Theatre";
+	dir = 2
+	},
 /turf/open/floor{
 	icon_state = "darkish"
 	},
@@ -9874,10 +9877,10 @@
 /obj/structure/pipes/vents/pump,
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic"
+	phone_id = "Clinic";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -11132,9 +11135,9 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 10;
@@ -11300,9 +11303,9 @@
 /area/bigredv2/outside/medical)
 "aFK" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
-	dir = 1;
 	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor{
@@ -13029,7 +13032,6 @@
 	},
 /area/bigredv2/outside/virology)
 "aKi" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -14739,8 +14741,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Director";
-	phone_color = "Blue"
+	phone_color = "Blue";
+	phone_id = "Director"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -17461,10 +17463,10 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "blue";
-	phone_id = "Operations"
+	phone_id = "Operations";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -22921,10 +22923,10 @@
 "boY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Filtration"
+	phone_id = "Filtration";
+	pixel_y = 24
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -23437,10 +23439,10 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Engineering"
+	phone_id = "Engineering";
+	pixel_y = 24
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -24156,8 +24158,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Solaris Ridge";
-	phone_id = "Virology Lab";
-	phone_color = "green"
+	phone_color = "green";
+	phone_id = "Virology Lab"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -24247,8 +24249,8 @@
 /obj/item/tool/screwdriver,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Robotics";
-	phone_color = "yellow"
+	phone_color = "yellow";
+	phone_id = "Robotics"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -28920,10 +28922,10 @@
 /area/bigredv2/caves/eta/living)
 "fyO" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic Labs"
+	phone_id = "Clinic Labs";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -29027,9 +29029,9 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lambda Labs";
-	phone_id = "Surgery"
+	phone_id = "Surgery";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29688,12 +29690,12 @@
 /area/bigredv2/outside/filtration_plant)
 "htp" = (
 /obj/structure/transmitter/colony_net{
+	callable = 0;
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Lambda Labs";
-	phone_id = "Secure Storage";
 	phone_color = "red";
-	callable = 0
+	phone_id = "Secure Storage";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 1;
@@ -30203,7 +30205,6 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "izh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -31296,9 +31297,9 @@
 "kyz" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -32857,8 +32858,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Security";
-	phone_color = "red"
+	phone_color = "red";
+	phone_id = "Security"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -33134,7 +33135,6 @@
 	},
 /area/bigredv2/caves_virology)
 "oCR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35207,7 +35207,6 @@
 	},
 /area/bigredv2/caves_east)
 "sBI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35983,10 +35982,6 @@
 	icon_state = "mars_cave_4"
 	},
 /area/bigredv2/caves_se)
-"uey" = (
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/dorms)
 "ufu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -58395,7 +58390,7 @@ amn
 amn
 amn
 amn
-uey
+amn
 amn
 amn
 aHD

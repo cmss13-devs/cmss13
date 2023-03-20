@@ -60,6 +60,55 @@ if grep -P '^\ttag = \"icon' $map_files;	then
 	st=1
 fi;
 
+part "step variables"
+if grep -P 'step_[xy]' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: step_x/step_y variables detected in maps, please remove them.${NC}"
+	st=1
+fi;
+
+part "pixel offsets"
+if grep -P 'pixel_[^xy]' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: incorrect pixel offset variables detected in maps, please remove them.${NC}"
+	st=1
+fi;
+
+#part "varedited cables"
+#if grep -P '/obj/structure/cable(/\w+)+\{' $map_files;	then
+#	echo
+#	echo -e "${RED}ERROR: Variable editted cables detected, please remove them.${NC}"
+#	st=1
+#fi;
+
+part "wrongly offset APCs"
+if grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' $map_files ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' $map_files ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' $map_files ;	then
+	echo -e "${RED}ERROR: found an APC with a manually set pixel_x or pixel_y that is not +-25.${NC}"
+	st=1
+fi;
+
+part "vareditted areas"
+if grep -P '^/area/.+[\{]' $map_files;	then
+	echo -e "${RED}ERROR: Vareditted /area path use detected in maps, please replace with proper paths.${NC}"
+	st=1
+fi;
+
+part "base /turf usage"
+if grep -P '\W\/turf\s*[,\){]' $map_files; then
+	echo
+	echo -e "${RED}ERROR: base /turf path use detected in maps, please replace with proper paths.${NC}"
+	st=1
+fi;
+
+part "/obj/structure misuse"
+if grep -P '^\/obj\/structure\{$' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: individually defined /obj/structure objects detected in map files, please replace them with pre-defined objects.${NC}"
+	st=1
+fi;
+
 section "whitespace issues"
 
 part "space indentation"

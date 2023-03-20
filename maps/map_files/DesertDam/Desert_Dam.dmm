@@ -63471,7 +63471,6 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "nrE" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean"
@@ -64407,7 +64406,6 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "qOu" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
@@ -64741,7 +64739,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rYT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},

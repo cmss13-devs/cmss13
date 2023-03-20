@@ -34,6 +34,11 @@
 
 		search_for_connections()
 
+	if(!is_mainship_level(z))
+		return
+
+	GLOB.mainship_pipes += src
+
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
 		M.remove_ventcrawl()
@@ -41,6 +46,9 @@
 
 	for(var/obj/structure/pipes/P in connected_to)
 		P.remove_connection(src)
+
+	GLOB.mainship_pipes -= src
+
 	. = ..()
 
 /obj/structure/pipes/attackby(obj/item/W, mob/user)

@@ -124,6 +124,11 @@
 	skill_level = SKILL_PILOT_DEFAULT
 	max_skill_level = SKILL_PILOT_MAX
 
+/datum/skill/navigations
+	skill_name = SKILL_NAVIGATIONS
+	skill_level = SKILL_NAVIGATIONS_DEFAULT
+	max_skill_level = SKILL_NAVIGATIONS_MAX
+
 /datum/skill/police
 	skill_name = SKILL_POLICE
 	skill_level = SKILL_POLICE_DEFAULT
@@ -174,9 +179,11 @@
 	// The mob that has this skillset
 	var/mob/owner
 
-	/// List of skill datums.
-	/// Also, if this is populated when the datum is created, it will set the skill levels automagically
-	var/list/datum/skill/skills = list()
+	// List of skill datums.
+	// Also, if this is populated when the datum is created, it will set the skill levels automagically
+	var/list/skills = list()
+	// Same as above, but for children of parents that just add a lil something else
+	var/list/additional_skills = list()
 
 /datum/skills/New(mob/skillset_owner)
 	owner = skillset_owner
@@ -187,7 +194,7 @@
 
 		// Fancy hack to convert a list of desired skill levels in each named skill into a skill level in the actual skill datum
 		// Lets the skills list be used multipurposely for both storing skill datums and choosing skill levels for different skillsets
-		var/predetermined_skill_level = skills[S.skill_name]
+		var/predetermined_skill_level = additional_skills[S.skill_name] ? additional_skills[S.skill_name] : skills[S.skill_name]
 		skills[S.skill_name] = S
 
 		if(!isnull(predetermined_skill_level))
@@ -280,18 +287,6 @@ CIVILIAN
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
-/datum/skills/civilian/manager_survivor
-	name = "Weyland-Yutani Manager" //Manager but balanced for survivor, endurance 5 and can build cades
-	skills = list(
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
-		SKILL_INTEL = SKILL_INTEL_EXPERT,
-	)
-
 /datum/skills/civilian/manager/director
 	name = "Weyland-Yutani Director"
 	skills = list(
@@ -309,178 +304,120 @@ CIVILIAN
 /datum/skills/civilian/survivor
 	name = "Survivor"
 	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
+/datum/skills/civilian/survivor/manager
+	name = "Weyland-Yutani Manager"
+	skills = list(
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
 	)
 
 /datum/skills/civilian/survivor/goon
 	name = "Survivor Goon"
 	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/pmc
 	name = "Survivor PMC"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+	additional_skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/doctor
 	name = "Survivor Doctor"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/clf
 	name = "Survivor CLF"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
-		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 	)
 
 /datum/skills/civilian/survivor/scientist
 	name = "Survivor Scientist"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/chef
 	name = "Survivor Chef"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	additional_skills = list(
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/miner
 	name = "Survivor Miner"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/trucker
 	name = "Survivor Trucker"
-	skills = list(
+	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 	)
 
 /datum/skills/civilian/survivor/engineer
 	name = "Survivor Engineer"
-	skills = list(
+	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/chaplain
 	name = "Survivor Chaplain"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/marshal
 	name = "Survivor Marshal"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
-		SKILL_CQC = SKILL_CQC_SKILLED,
-		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+	additional_skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/prisoner
 	name = "Survivor Prisoner"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
 /datum/skills/civilian/survivor/gangleader
 	name = "Survivor Gang Leader"
-	skills = list(
-		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
-		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
-		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
+
 /*
 ---------------------
 MILITARY SURVIVORS
@@ -623,7 +560,8 @@ COMMAND STAFF
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_MASTER,
 		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED, //can BE people
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_TRAINED //can change ship alt
 	)
 
 /datum/skills/XO
@@ -640,7 +578,8 @@ COMMAND STAFF
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_MASTER,
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_TRAINED,
 	)
 
 /datum/skills/SO
@@ -890,6 +829,7 @@ SYNTHETIC
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
 		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
+		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_TRAINED,
 	)
 
 /datum/skills/colonial_synthetic

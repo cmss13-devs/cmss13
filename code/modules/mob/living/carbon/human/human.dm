@@ -62,6 +62,8 @@
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
 	remove_from_all_mob_huds()
+	. = ..()
+
 	species = null
 	limbs_to_process = null
 	brute_mod_override = null
@@ -69,7 +71,6 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
-	. = ..()
 
 	overlays_standing = null
 	selected_ability = null

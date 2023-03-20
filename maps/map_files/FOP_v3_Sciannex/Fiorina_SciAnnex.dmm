@@ -1422,7 +1422,6 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -11883,7 +11882,6 @@
 	},
 /area/fiorina/tumor/civres)
 "hoZ" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "hpd" = (
@@ -13314,7 +13312,6 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -16257,7 +16254,6 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -24427,7 +24423,6 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -38786,7 +38781,7 @@ bQM
 bQM
 bQM
 pXH
-kPz
+rOa
 bQM
 bQM
 bQM
@@ -38998,12 +38993,12 @@ bQM
 bQM
 bQM
 pXH
-kPz
+rOa
 bQM
 bQM
 bQM
 bQM
-kPz
+rOa
 pXH
 bQM
 bQM
@@ -39210,19 +39205,19 @@ tfP
 bQM
 bQM
 pXH
-kPz
+rOa
 bQM
 bQM
 bQM
 bQM
-kPz
+rOa
 pXH
 bQM
 bQM
 bQM
 bQM
 bQM
-kPz
+rOa
 pXH
 bQM
 bQM
@@ -39427,7 +39422,7 @@ pXH
 bQM
 bQM
 bQM
-kPz
+rOa
 pXH
 pXH
 bQM
@@ -39435,7 +39430,7 @@ bQM
 bQM
 pXH
 pXH
-kPz
+rOa
 bQM
 pqO
 eVO
@@ -39640,14 +39635,14 @@ pXH
 bQM
 bQM
 pXH
-kPz
+rOa
 pXH
 pXH
 bQM
 bQM
 pXH
 pXH
-kPz
+rOa
 bQM
 byb
 wbE
@@ -39852,7 +39847,7 @@ pXH
 bQM
 bQM
 pXH
-kPz
+rOa
 pXH
 pXH
 bQM
@@ -40104,7 +40099,7 @@ bQM
 bQM
 baC
 baC
-kPz
+rOa
 bQM
 bQM
 bQM
@@ -40952,7 +40947,7 @@ bQM
 bQM
 bQM
 baC
-kPz
+rOa
 bQM
 bQM
 bQM
@@ -41164,7 +41159,7 @@ bQM
 bQM
 bQM
 baC
-kPz
+rOa
 bQM
 bQM
 bQM
@@ -67174,8 +67169,8 @@ tvI
 sYv
 bQM
 bTe
-eJQ
-eJQ
+vNq
+vNq
 tvI
 sYv
 kPz
@@ -68451,8 +68446,8 @@ cAW
 cAW
 cAW
 bTe
-eJQ
-eJQ
+vNq
+vNq
 tvI
 sYv
 twb
@@ -72173,7 +72168,7 @@ bQM
 bQM
 yaY
 bQM
-kPz
+rOa
 eph
 fiq
 fiq
@@ -73442,15 +73437,15 @@ cAW
 cAW
 bQM
 bQM
-kPz
-kPz
+rOa
+rOa
 eph
 eph
-kPz
-kPz
-kPz
+rOa
+rOa
+rOa
 eph
-kPz
+rOa
 eph
 eph
 azZ
@@ -86738,12 +86733,12 @@ bzO
 bQM
 bQM
 bQM
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+rOa
+rOa
+rOa
+rOa
+rOa
+rOa
 bQM
 bQM
 bQM
@@ -88838,10 +88833,10 @@ cAW
 cAW
 cAW
 bQM
-kPz
-kPz
-kPz
-kPz
+rOa
+rOa
+rOa
+rOa
 bQM
 bQM
 bQM

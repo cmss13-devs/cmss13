@@ -16,7 +16,7 @@
 #########################################*/
 /obj/item/weapon/melee/harpoon/yautja
 	name = "large harpoon"
-	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
+	desc = "A huge metal spike with a hook at the end. It's carved with mysterious alien writing."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spike"
@@ -43,7 +43,7 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
+	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -118,7 +118,7 @@
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from a metal gauntlet."
+	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
 	attack_speed = 5
@@ -165,7 +165,7 @@
 
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
-	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -176,7 +176,7 @@
 	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = "clan_sword_hit"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
@@ -632,7 +632,7 @@
 	var/max_spikes = 12
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/launcher/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
@@ -653,9 +653,9 @@
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
@@ -808,7 +808,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
-	desc = "A plasma pistol capable of rapid fire. It has an integrated battery."
+	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 
@@ -820,7 +820,7 @@
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR|IGNITING_ITEM
+	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
 
 	heat_source = 1500 // Plasma Pistols fire burning hot bounbs of plasma. Makes sense they're hot
 
@@ -849,13 +849,11 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_7
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
 	if(isyautja(user))

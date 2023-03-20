@@ -251,12 +251,7 @@
 	pixel_y = 5
 	},
 /obj/item/paper/research_notes,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"

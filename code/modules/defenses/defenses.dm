@@ -50,7 +50,8 @@
 	connect()
 
 /obj/structure/machinery/defenses/Destroy()
-	HD = null
+	if(!QDESTROYING(HD))
+		QDEL_NULL(HD)
 	return ..()
 
 /obj/structure/machinery/defenses/proc/connect()

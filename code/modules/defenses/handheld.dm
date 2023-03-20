@@ -27,7 +27,8 @@
 	connect()
 
 /obj/item/defenses/handheld/Destroy()
-	TR = null // FIXME: Might also need to delete. Unsure.
+	if(!QDESTROYING(TR))
+		QDEL_NULL(TR)
 	return ..()
 
 /obj/item/defenses/handheld/proc/connect()

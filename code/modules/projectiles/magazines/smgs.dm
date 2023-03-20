@@ -92,7 +92,7 @@
 	default_ammo = /datum/ammo/bullet/smg/simple
 	caliber = ".45"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
-	icon_state = "grease_gun" // Same as uzi extended as it is basically already perfect.
+	icon_state = "uzi_extended" // Same as uzi extended as it is basically already perfect.
 	gun_type = /obj/item/weapon/gun/smg/grease_gun
 	max_rounds = 30
 

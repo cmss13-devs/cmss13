@@ -84,6 +84,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M240 Incinerator Unit", 18, /obj/item/storage/box/guncase/flamer, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Pistol", 8, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", 12, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
+		list("M1911 Service Pistol", 12, /obj/item/storage/box/guncase/m_1911, null, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", 18, /obj/item/storage/box/guncase/lmg, null, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", 18, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
 

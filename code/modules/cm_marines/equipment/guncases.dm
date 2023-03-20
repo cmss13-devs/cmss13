@@ -42,7 +42,17 @@
 /obj/item/storage/box/guncase/smartpistol/fill_preset_inventory()
 	new /obj/item/storage/belt/gun/smartpistol/full_nogun(src)
 	new /obj/item/weapon/gun/pistol/smart(src)
+//------------
 
+/obj/item/storage/box/guncase/m_1911
+	name = "\improper M1911 pistol case"
+	desc = "A guncase containing the M1911 service pistol. Comes with a full belt holster."
+	can_hold = list(/obj/item/storage/belt/gun/m4a3/m1911, /obj/item/weapon/gun/pistol/m1911)
+	storage_slots = 2
+
+/obj/item/storage/box/guncase/m_1911/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m4a3/m1911(src)
+	new /obj/item/weapon/gun/pistol/m1911
 //------------
 /obj/item/storage/box/guncase/mou53
 	name = "\improper MOU53 shotgun case"

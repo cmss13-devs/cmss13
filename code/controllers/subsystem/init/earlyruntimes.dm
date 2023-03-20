@@ -1,19 +1,14 @@
-// Reports early runtime errors (occuring during static init) to STUI and messages about them
+/// Just messages the unwary coder to tell them there are errors that likely escaped their debugguer.
 SUBSYSTEM_DEF(earlyruntimes)
-	name    = "Early Runtimes"
+	name       = "Early Runtimes"
 	init_order = SS_INIT_EARLYRUNTIMES
-	init_stage = INITSTAGE_EARLY
-	flags   = SS_NO_FIRE
+	flags      = SS_NO_FIRE
 
 /datum/controller/subsystem/earlyruntimes/stat_entry(msg)
-	msg = " | Init Runtimes: [early_init_runtimes_count]"
+	msg = " Early Runtimes: [init_runtimes_count || 0] | All runtimes: [total_runtimes || 0]"
 	return ..()
 
 /datum/controller/subsystem/earlyruntimes/Initialize()
-	if(early_init_runtimes_count)
-		. = SS_INIT_FAILURE
-		to_chat(world, SPAN_BOLDANNOUNCE("[early_init_runtimes_count] errors occured during early init. Reporting them to STUI."))
-	else
-		return SS_INIT_SUCCESS
-	GLOB.STUI.runtime = early_init_runtimes | GLOB.STUI.runtime
-	GLOB.STUI.processing |= STUI_LOG_RUNTIME
+	if(init_runtimes_count)
+		return SS_INIT_FAILURE
+	return SS_INIT_SUCCESS

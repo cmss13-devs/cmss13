@@ -53,4 +53,5 @@
 
 /obj/effect/landmark/start/captain
 	name = JOB_CO
+	icon_state = "co_spawn"
 	job = /datum/job/command/commander

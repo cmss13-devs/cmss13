@@ -80,6 +80,9 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
+	//current amount of survivors by type
+	var/list/survivors_by_type_amounts = list()
+
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
@@ -648,10 +651,17 @@ Additional game mode variables.
 /datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
+	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
+	var/preferred_variant = ANY_SURVIVOR
+	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
+		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+			preferred_variant = ANY_SURVIVOR
+
 	if(is_synth)
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 	else
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
@@ -662,6 +672,7 @@ Additional game mode variables.
 		not_a_xenomorph = FALSE
 	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
+	survivors_by_type_amounts[preferred_variant] += 1
 
 /datum/game_mode/proc/survivor_event_transform(mob/living/carbon/human/H, obj/effect/landmark/survivor_spawner/spawner, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawner))

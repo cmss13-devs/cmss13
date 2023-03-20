@@ -29,7 +29,6 @@
 		if(prompt == "Yes")
 			announce = TRUE
 			whattoannounce = tgui_input_text(src, "Please enter announcement text. Keep it empty to keep the default.", "what?")
-			//whattoannounce = input(src, "Please enter announcement text. Keep it empty to keep the default.", "What?", "")
 			if(!whattoannounce)
 				if(sstrength <= 7)
 					whattoannounce = "WARNING, IMPACT IMMINENT. ETA: [delayt] SECONDS. BRACE BRACE BRACE."

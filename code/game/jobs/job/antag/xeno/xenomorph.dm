@@ -57,7 +57,7 @@
 		var/list/turf/list_to_search = range(count, human_to_transform)
 		list_to_search -= range(count-1, human_to_transform)
 		for(var/turf/closed/wall/wall_in_range in list_to_search)
-			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, NORTH), get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
+			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
 			for(var/turf/open/ground_in_range in neighbor_turfs)
 				if(locate(/obj/structure/bed/nest/) in ground_in_range)
 					continue

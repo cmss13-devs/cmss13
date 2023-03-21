@@ -3,13 +3,10 @@ on:
   push:
     branches:
     - master
-    - 'gh-readonly-queue/master/**'
   pull_request:
     branches:
     - master
   merge_group:
-    branches:
-    - master
 jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"

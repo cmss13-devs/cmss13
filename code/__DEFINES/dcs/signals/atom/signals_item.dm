@@ -22,6 +22,11 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+/// from /obj/item/proc/mob_can_equip
+#define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
+///Return this in response if you don't want items equipped
+	#define COMPONENT_CANCEL_EQUIP (1<<0)
+
 /// from /obj/item/proc/do_zoom() : (mob/user)
 #define COMSIG_ITEM_ZOOM "item_zoom"
 /// from /obj/item/proc/unzoom() : (mob/user)

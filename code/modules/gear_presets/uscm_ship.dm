@@ -339,7 +339,7 @@
 
 /datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/H, client/mob_client)
 	..()
-	ADD_TRAIT(H, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_SPECIES)
+	ADD_TRAIT(H, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
 
 /datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
 	var/sidearm = "Mateba"

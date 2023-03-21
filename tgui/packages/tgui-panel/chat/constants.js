@@ -132,7 +132,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_MENTOR,
     name: 'Mentor',
     description: 'Mentor Chat, Mhelps',
-    selector: '.mentorsay, .mentorhelp, .mentorbody',
+    selector: '.mentorsay, .mentorhelp, .mentorbody, .mentorstaff',
     admin: true,
   },
   {

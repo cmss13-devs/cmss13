@@ -37,7 +37,7 @@
 			if(drop)
 				INVOKE_ASYNC(current_mob,  TYPE_PROC_REF(/atom/movable, throw_atom), get_ranged_target_turf(current_mob, pick(cardinal), sstrength-5), pick(cardinal), sstrength)
 
-			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND WITH VIOLENCE AND HIT THE DECK FULL FORCE!!"))
+			to_chat(current_mob, SPAN_HIGHDANGER("YOU ARE THROWN AROUND VIOLENTLY AND HIT THE DECK WITH FULL FORCE!!"))
 			if(current_mob.client && osound)
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)

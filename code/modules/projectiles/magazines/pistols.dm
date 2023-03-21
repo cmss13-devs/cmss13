@@ -12,44 +12,40 @@
 	w_class = SIZE_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
+	ammo_band_icon = "+m4a3_band"
+	ammo_band_icon_empty = "+m4a3_band_e"
 
 /obj/item/ammo_magazine/pistol/hp
 	name = "\improper M4A3 hollowpoint magazine (9mm)"
 	desc = "A pistol magazine. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmoured targets, and noticeably less on armored targets."
-	icon_state = "m4a3_hp"
 	default_ammo = /datum/ammo/bullet/pistol/hollow
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
 
 /obj/item/ammo_magazine/pistol/ap
 	name = "\improper M4A3 AP magazine (9mm)"
 	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armoured targets, and noticeably less on unarmored or lightly-armored targets."
-	icon_state = "m4a3_ap"
 	default_ammo = /datum/ammo/bullet/pistol/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/pistol/rubber
 	name = "\improper M4A3 Rubber magazine (9mm)"
-	icon_state = "m4a3_le"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/pistol/incendiary
 	name = "\improper M4A3 incendiary magazine (9mm)"
-	icon_state = "m4a3_incendiary"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/penetrating
-	name = "\improper M4A3 wall-piercing magazine (9mm)"
-	icon_state = "m4a3_penetrating"
+	name = "\improper M4A3 wall-penetrating magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
-
-/obj/item/ammo_magazine/pistol/cluster
-	name = "\improper M4A3 cluster magazine (9mm)"
-	desc = "A pistol magazine. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	icon_state = "m4a3_cluster"
-	default_ammo = /datum/ammo/bullet/pistol/heavy/cluster
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
-	icon_state = "m4a3_toxin"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 //-------------------------------------------------------
 //M4A3 45 //Inspired by the 1911
@@ -70,35 +66,44 @@
 	name = "\improper 88M4 AP magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	caliber = "9mm"
-	icon_state = "88m4_mag_ap"
+	icon_state = "88m4"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
+	ammo_band_icon = "+88m4_band"
+	ammo_band_icon_empty = "+88m4_band_e"
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/mod88/normalpoint // Unused
+	name = "\improper 88M4 FMJ magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9mm"
+	ammo_band_color = null
+
+/obj/item/ammo_magazine/pistol/mod88/normalpoint/extended // Unused
+	name = "\improper 88M4 FMJ extended magazine (9mm)"
+	icon_state = "88m4_mag_ex"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9mm"
 
 /obj/item/ammo_magazine/pistol/mod88/toxin
 	name = "\improper 88M4 toxic magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
-	icon_state = "88m4_mag_toxin"
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/pistol/mod88/penetrating
-	name = "\improper 88M4 wall-piercing magazine (9mm)"
+	name = "\improper 88M4 wall-penetrating magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
-	icon_state = "88m4_mag_penetrating"
-
-/obj/item/ammo_magazine/pistol/mod88/cluster
-	name = "\improper 88M4 cluster magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap/cluster
-	icon_state = "88m4_mag_cluster"
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/mod88/incendiary
 	name = "\improper 88M4 incendiary magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
-	icon_state = "88m4_mag_incendiary"
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
-	icon_state = "88m4_mag_rubber"
-
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 //-------------------------------------------------------
 //VP78
@@ -107,30 +112,26 @@
 	name = "\improper VP78 magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
-	icon_state = "vp78" //PLACEHOLDER
+	icon_state = "vp78"
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/pistol/vp78
+	ammo_band_icon = "+vp78_band"
+	ammo_band_icon_empty = "+vp78_band_e"
 
 /obj/item/ammo_magazine/pistol/vp78/toxin
 	name = "\improper VP78 toxic magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
-	icon_state = "vp78_toxin"
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/pistol/vp78/penetrating
-	name = "\improper VP78 wall-piercing magazine (9mm)"
+	name = "\improper VP78 wall-penetrating magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
-	icon_state = "vp78_penetrating"
-
-/obj/item/ammo_magazine/pistol/vp78/cluster
-	name = "\improper VP78 cluster magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/squash/cluster
-	icon_state = "vp78_cluster"
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
 	name = "\improper VP78 incendiary magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
-	icon_state = "vp78_incendiary"
-
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -149,37 +150,36 @@
 
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
-
 	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
+	ammo_band_icon = "+deagle_band"
+	ammo_band_icon_empty = "+deagle_band_e"
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
 	name = "\improper Heavy Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super
-	icon_state = "deagleS"
+	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	name = "\improper High Impact Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
-	icon_state = "deagleE"
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
-	icon_state = "deagleAP"
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.
-
-
 
 /obj/item/ammo_magazine/pistol/c99
 	name = "\improper PK-9 magazine (.380)"

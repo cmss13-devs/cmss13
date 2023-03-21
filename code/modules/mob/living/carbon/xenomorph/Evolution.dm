@@ -8,6 +8,10 @@
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
+
+	do_evolve()
+
+/mob/living/carbon/xenomorph/proc/do_evolve()
 	var/potential_queens = 0
 
 	if (!evolve_checks())
@@ -353,8 +357,8 @@
 	if(free_slots)
 		return TRUE
 
-	var/pooled_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	pooled_factor = round(pooled_factor)
+	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
+	burrowed_factor = round(burrowed_factor)
 
 	var/used_tier_2_slots = length(hive.tier_2_xenos)
 	var/used_tier_3_slots = length(hive.tier_3_xenos)
@@ -366,7 +370,7 @@
 			if(2) used_tier_2_slots--
 			if(3) used_tier_3_slots--
 
-	var/totalXenos = pooled_factor
+	var/totalXenos = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++

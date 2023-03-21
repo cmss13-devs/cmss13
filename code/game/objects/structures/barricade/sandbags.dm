@@ -34,6 +34,8 @@
 	..()
 
 	icon_state = "sandbag[build_stage]"
+	if(dir > 2)
+		layer = OBJ_LAYER
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE

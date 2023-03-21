@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - admin: "admins can mark ahelps again, and the ticket interface is a different color"

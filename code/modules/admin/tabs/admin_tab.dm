@@ -388,7 +388,7 @@
 	var/channel = "Mentor:"
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
-		color = "staffsay"
+		color = "mentorstaff"
 
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)

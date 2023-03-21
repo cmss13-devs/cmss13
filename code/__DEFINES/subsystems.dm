@@ -109,7 +109,6 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define SS_INIT_EARLYRUNTIMES  1000
 #define SS_INIT_TICKER_SPAWN    999
 #define SS_INIT_INPUT   85
 #define SS_INIT_RUST    26
@@ -139,6 +138,7 @@
 #define SS_INIT_SHUTTLE 3.5
 #define SS_INIT_LANDMARK    3.2
 #define SS_INIT_MACHINES   3
+#define SS_INIT_INTERIOR 2.7
 #define SS_INIT_TECHTREE    2.5
 #define SS_INIT_RADIO 2
 #define SS_INIT_TIMER   100
@@ -158,6 +158,7 @@
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
+#define SS_INIT_EARLYRUNTIMES -500 // Post-init notifier
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)

@@ -510,17 +510,17 @@ var/datum/controller/supply/supply_controller = new()
 
 // Called when the elevator is lowered.
 /datum/controller/supply/proc/sell()
-	var/area/area_shuttle = shuttle.get_location_area()
-	if(!area_shuttle)
+	var/area/place = get_area(src)
+	if(!place)
 		return
 
 	// Sell crates.
-	for(var/obj/structure/closet/crate/C in area_shuttle)
+	for(var/obj/structure/closet/crate/C in place)
 		points += points_per_crate
 		qdel(C)
 
 	// Sell manifests.
-	for(var/atom/movable/movable_atom in area_shuttle)
+	for(var/atom/movable/movable_atom in place)
 		if(istype(movable_atom, /obj/item/paper/manifest))
 			var/obj/item/paper/manifest/M = movable_atom
 			if(M.stamped && M.stamped.len)
@@ -561,13 +561,13 @@ var/datum/controller/supply/supply_controller = new()
 
 //Buyin
 /datum/controller/supply/proc/buy()
-	var/area/area_shuttle = shuttle?.get_location_area()
-	if(!area_shuttle || !shoppinglist.len)
+	var/area/place = get_area(src)
+	if(!place || !shoppinglist.len)
 		return
 
 	// Try to find an available turf to place our package
 	var/list/turf/clear_turfs = list()
-	for(var/turf/T in area_shuttle)
+	for(var/turf/T in place)
 		if(T.density || T.contents?.len)
 			continue
 		clear_turfs += T

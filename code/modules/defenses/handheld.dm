@@ -40,7 +40,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
+/obj/item/defenses/handheld/attack_self(mob/living/carbon/human/user)
 	..()
 
 	if(!istype(user))
@@ -48,8 +48,8 @@
 
 	deploy_handheld(user)
 
-/obj/item/defenses/handheld/proc/deploy_handheld(var/mob/living/carbon/human/user)
-	if(user.z == GLOB.interior_manager.interior_z)
+/obj/item/defenses/handheld/proc/deploy_handheld(mob/living/carbon/human/user)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 
@@ -112,7 +112,7 @@
 		"Mini-Sentry Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Mini uac_sentry_handheld")
 	)
 
-/obj/item/defenses/handheld/sentry/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/sentry/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("DMR Upgrade")
 			return /obj/item/defenses/handheld/sentry/dmr
@@ -155,7 +155,7 @@
 		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")
 	)
 
-/obj/item/defenses/handheld/sentry/flamer/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/sentry/flamer/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Long-Range Plasma Upgrade")
 			return /obj/item/defenses/handheld/sentry/flamer/plasma
@@ -211,7 +211,7 @@
 		"Micro-Tesla Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/tesla.dmi', icon_state = "Micro tesla_coil_handheld")
 	)
 
-/obj/item/defenses/handheld/tesla_coil/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/tesla_coil/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Overclocked Upgrade")
 			return /obj/item/defenses/handheld/tesla_coil/stun
@@ -242,7 +242,7 @@
 		"Cloaking Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi', icon_state = "Cloaker bell_tower_handheld")
 	)
 
-/obj/item/defenses/handheld/bell_tower/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/bell_tower/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Motion-Detection Upgrade" )
 			return /obj/item/defenses/handheld/bell_tower/md
@@ -276,7 +276,7 @@
 		"Extended Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi', icon_state = "Range planted_flag_handheld")
 	)
 
-/obj/item/defenses/handheld/planted_flag/upgrade_string_to_type(var/upgrade_string)
+/obj/item/defenses/handheld/planted_flag/upgrade_string_to_type(upgrade_string)
 	switch(upgrade_string)
 		if("Warbanner Upgrade")
 			return /obj/item/defenses/handheld/planted_flag/warbanner

@@ -8,6 +8,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
+	black_market_value = 10
 
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
@@ -50,7 +51,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, var/aoe = FALSE) //actually does the stun and logs it
+/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, aoe = FALSE) //actually does the stun and logs it
 	//spamming the flash before it's fully charged increases the chance of it  breaking
 	//It will never break on the first use.
 	if(flashes_stored)
@@ -132,7 +133,7 @@
 	if(!istype(M)) return
 
 	if(check_if_can_use_flash(user))
-		if(isXeno(M))
+		if(isxeno(M))
 			to_chat(user, SPAN_WARNING("You can't find any eyes!"))
 			return
 
@@ -166,7 +167,7 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
-					M.visible_message("<span class='disarm'>[M] is blinded by \the [src]!</span>")
+					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
 	..()
 
 /obj/item/device/flash/synthetic

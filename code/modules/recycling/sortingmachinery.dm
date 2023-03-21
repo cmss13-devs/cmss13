@@ -11,7 +11,7 @@
 	var/label_y
 	var/label_x
 	var/tag_x
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -215,10 +215,10 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
-	var/amount = 25.0
+	var/amount = 25
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
+/obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(!istype(target)) //this really shouldn't be necessary (but it is). -Pete
 		return
@@ -366,7 +366,7 @@
 /obj/structure/machinery/disposal/deliveryChute/update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/Collided(var/atom/movable/AM) //Go straight into the chute
+/obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
 	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
@@ -404,7 +404,7 @@
 	update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 
@@ -433,7 +433,7 @@
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				C.ptype = 8 // 8 =  Delivery chute
 				C.update()
-				C.anchored = 1
+				C.anchored = TRUE
 				C.density = TRUE
 				qdel(src)
 			return

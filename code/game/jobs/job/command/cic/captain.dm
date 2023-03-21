@@ -16,7 +16,7 @@
 		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_ship/commander/council/plus
 	)
 
-/datum/job/command/commander/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/command/commander/get_whitelist_status(list/roles_whitelist, client/player)
 	. = ..()
 	if(!.)
 		return
@@ -37,7 +37,7 @@
 	GLOB.marine_leaders[JOB_CO] = M
 	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/commander/proc/cleanup_leader_candidate(var/mob/M)
+/datum/job/command/commander/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_CO
 
@@ -53,4 +53,5 @@
 
 /obj/effect/landmark/start/captain
 	name = JOB_CO
+	icon_state = "co_spawn"
 	job = /datum/job/command/commander

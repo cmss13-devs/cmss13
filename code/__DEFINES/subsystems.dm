@@ -109,12 +109,12 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define SS_INIT_EARLYRUNTIMES  1000
 #define SS_INIT_TICKER_SPAWN    999
 #define SS_INIT_INPUT   85
 #define SS_INIT_RUST    26
 #define SS_INIT_SUPPLY_SHUTTLE  25
 #define SS_INIT_GARBAGE 24
+#define SS_INIT_EVENTS 23.5
 #define SS_INIT_JOB 23
 #define SS_INIT_MAPPING 22
 #define SS_INIT_NIGHTMARE   21.5
@@ -128,16 +128,17 @@
 #define SS_INIT_MORE_INIT   16
 #define SS_INIT_AIR 15
 #define SS_INIT_TELEPORTER  13
-#define SS_INIT_LIGHTING    12
-#define SS_INIT_DEFCON  9
+#define SS_INIT_LIGHTING 12
+#define SS_INIT_DEFCON 9
 #define SS_INIT_LAW 6
-#define SS_INIT_FZ_TRANSITIONS  5
+#define SS_INIT_FZ_TRANSITIONS 5
 #define SS_INIT_PROJECTILES 4.1
 #define SS_INIT_ATOMS   4
 #define SS_INIT_DECORATOR   3.7
 #define SS_INIT_SHUTTLE 3.5
 #define SS_INIT_LANDMARK    3.2
 #define SS_INIT_MACHINES   3
+#define SS_INIT_INTERIOR 2.7
 #define SS_INIT_TECHTREE    2.5
 #define SS_INIT_RADIO 2
 #define SS_INIT_TIMER   100
@@ -147,17 +148,17 @@
 #define SS_INIT_TICKER -21
 #define SS_INIT_VOTE   -23
 #define SS_INIT_FINISH -24
-#define SS_INIT_MINIMAP    -25
 #define SS_INIT_ADMIN  -26
 #define SS_INIT_DATABASE   -27
 #define SS_INIT_ENTITYMANAGER   -28
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_PREDSHIPS  -30
 #define SS_INIT_OBJECTIVES -31
-#define SS_INIT_MAPVIEW    -32
 #define SS_INIT_LOBBYART   -33
+#define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
+#define SS_INIT_EARLYRUNTIMES -500 // Post-init notifier
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
@@ -209,6 +210,7 @@
 #define SS_PRIORITY_PAGER_STATUS   22
 #define SS_PRIORITY_LIGHTING    20
 #define SS_PRIORITY_TRACKING    19
+#define SS_PRIORITY_MINIMAPS 11
 #define SS_PRIORITY_PING    10
 #define SS_PRIORITY_DATABASE    15
 #define SS_PRIORITY_PLAYTIME    5

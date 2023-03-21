@@ -2,6 +2,7 @@
     "map_name": "Solaris Ridge",
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
+    "webmap_url": "Solaris",
     "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
@@ -10,7 +11,9 @@
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",
-        "/datum/equipment_preset/survivor/colonial_marshal/solaris"
+        "/datum/equipment_preset/survivor/colonial_marshal/solaris",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         4750,

@@ -12,4 +12,6 @@ jobs:
       - uses: eps1lon/actions-label-merge-conflict@v2.0.0
         with:
           dirtyLabel: 'Merge Conflict'
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          retryAfter: 10
+          retryMax: 2
+          repoToken: ${{ secrets.BOT_TOKEN_CM || secrets.GITHUB_TOKEN }}

@@ -68,13 +68,13 @@ SUBSYSTEM_DEF(objectives)
 				return
 
 	while(length(current_active_run))
-		var/datum/cm_objective/O = current_active_run[length(current_active_run)]
+		var/datum/cm_objective/objective = current_active_run[length(current_active_run)]
 
 		current_active_run.len--
-		O.process()
-		O.check_completion()
-		if(O.state == OBJECTIVE_COMPLETE)
-			stop_processing_objective(O)
+		objective.process()
+		objective.check_completion()
+		if(objective.state == OBJECTIVE_COMPLETE)
+			stop_processing_objective(objective)
 
 		if(MC_TICK_CHECK)
 			return
@@ -249,14 +249,14 @@ SUBSYSTEM_DEF(objectives)
 		CRASH("Unable to pick a location at [dest] for [it]")
 
 	var/generated = FALSE
-	for(var/obj/O in picked_location)
-		if(istype(O, /obj/structure/closet) || istype(O, /obj/structure/safe) || istype(O, /obj/structure/filingcabinet))
-			if(istype(O, /obj/structure/closet))
-				var/obj/structure/closet/c = O
-				if(c.opened)
+	for(var/obj/objective in picked_location)
+		if(istype(objective, /obj/structure/closet) || istype(objective, /obj/structure/safe) || istype(objective, /obj/structure/filingcabinet))
+			if(istype(objective, /obj/structure/closet))
+				var/obj/structure/closet/locker = objective
+				if(locker.opened)
 					continue //container is open, don't put stuff into it
-			var/obj/item/IT = new it(O)
-			O.contents += IT
+			var/obj/item/IT = new it(objective)
+			objective.contents += IT
 			generated = TRUE
 			break
 
@@ -266,13 +266,13 @@ SUBSYSTEM_DEF(objectives)
 /datum/controller/subsystem/objectives/proc/pre_round_start()
 	SIGNAL_HANDLER
 	initialize_objectives()
-	for(var/datum/cm_objective/O in objectives)
-		O.pre_round_start()
+	for(var/datum/cm_objective/objective in objectives)
+		objective.pre_round_start()
 
 /datum/controller/subsystem/objectives/proc/post_round_start()
 	SIGNAL_HANDLER
-	for(var/datum/cm_objective/O in objectives)
-		O.post_round_start()
+	for(var/datum/cm_objective/objective in objectives)
+		objective.post_round_start()
 
 /datum/controller/subsystem/objectives/proc/connect_objectives()
 	// Sets up the objective interdependence tree
@@ -286,20 +286,20 @@ SUBSYSTEM_DEF(objectives)
 	var/list/absolute_value
 
 	// Sort objectives into categories
-	for(var/datum/cm_objective/O in objectives)
-		if(O.objective_flags & OBJECTIVE_DO_NOT_TREE)
+	for(var/datum/cm_objective/objective in objectives)
+		if(objective.objective_flags & OBJECTIVE_DO_NOT_TREE)
 			continue // exempt from the tree
-		switch(O.value)
+		switch(objective.value)
 			if(OBJECTIVE_LOW_VALUE)
-				LAZYADD(low_value, O)
+				LAZYADD(low_value, objective)
 			if(OBJECTIVE_MEDIUM_VALUE)
-				LAZYADD(medium_value, O)
+				LAZYADD(medium_value, objective)
 			if(OBJECTIVE_HIGH_VALUE)
-				LAZYADD(high_value, O)
+				LAZYADD(high_value, objective)
 			if(OBJECTIVE_EXTREME_VALUE)
-				LAZYADD(extreme_value, O)
+				LAZYADD(extreme_value, objective)
 			if(OBJECTIVE_ABSOLUTE_VALUE)
-				LAZYADD(absolute_value, O)
+				LAZYADD(absolute_value, objective)
 
 	// Set up preqrequisites:
 	// Low
@@ -361,14 +361,14 @@ SUBSYSTEM_DEF(objectives)
 	LAZYADD(enabled_objective.required_objectives, required_objective)
 	LAZYADD(required_objective.enables_objectives, enabled_objective)
 
-/datum/controller/subsystem/objectives/proc/add_objective(datum/cm_objective/O)
-	LAZYADD(objectives, O)
+/datum/controller/subsystem/objectives/proc/add_objective(datum/cm_objective/objective)
+	LAZYADD(objectives, objective)
 
-/datum/controller/subsystem/objectives/proc/remove_objective(datum/cm_objective/O)
-	LAZYREMOVE(objectives, O)
+/datum/controller/subsystem/objectives/proc/remove_objective(datum/cm_objective/objective)
+	LAZYREMOVE(objectives, objective)
 
-/datum/controller/subsystem/objectives/proc/start_processing_objective(datum/cm_objective/O)
-	processing_objectives += O
+/datum/controller/subsystem/objectives/proc/start_processing_objective(datum/cm_objective/objective)
+	processing_objectives += objective
 
-/datum/controller/subsystem/objectives/proc/stop_processing_objective(datum/cm_objective/O)
-	processing_objectives -= O
+/datum/controller/subsystem/objectives/proc/stop_processing_objective(datum/cm_objective/objective)
+	processing_objectives -= objective

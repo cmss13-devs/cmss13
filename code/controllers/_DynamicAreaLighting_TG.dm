@@ -62,9 +62,9 @@ GLOBAL_LIST_INIT(comp2table, list(
 	var/atom/owner
 	var/changed = 1
 	var/list/effect = list()
-	var/__x = 0 //x coordinate at last update
-	var/__y = 0 //y coordinate at last update
-	var/__z = 0 //z coordinate at last update
+	var/__x = 0 // x coordinate at last update
+	var/__y = 0 // y coordinate at last update
+	var/__z = 0 // z coordinate at last update
 
 #define turf_update_lumcount(T, amount)\
 	T.lighting_lumcount += amount;\
@@ -75,16 +75,16 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 #define ls_remove_effect(ls)\
 	for(var/t in ls.effect){\
-		var/turf/T = t;\
-		turf_update_lumcount(T, -ls.effect[T]);\
+		var/turf/current_turf = t;\
+		turf_update_lumcount(current_turf, -ls.effect[current_turf]);\
 	}\
 	ls.effect.Cut();
 
-/datum/light_source/New(atom/A)
-	if(!istype(A))
-		CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[A]' instead.")
+/datum/light_source/New(atom/new_atom)
+	if(!istype(new_atom))
+		CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[new_atom]' instead.")
 	..()
-	owner = A
+	owner = new_atom
 	__x = owner.x
 	__y = owner.y
 	__z = owner.z
@@ -104,10 +104,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 	ls_remove_effect(src)
 	if(owner.loc && owner.luminosity > 0)
-		for(var/turf/T in view(owner.luminosity, owner))
+		for(var/turf/current_turf in view(owner.luminosity, owner))
 			var/dist
-			var/dx = abs(T.x - __x)
-			var/dy = abs(T.y - __y)
+			var/dx = abs(current_turf.x - __x)
+			var/dy = abs(current_turf.y - __y)
 			// Use dx+1 and dy+1 because lists use 1-based indexing
 			if(dx >= dy)
 				dist = (GLOB.comp1table[dx+1]) + (GLOB.comp2table[dy+1])
@@ -115,8 +115,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 				dist = (GLOB.comp2table[dx+1]) + (GLOB.comp1table[dy+1])
 			var/delta_lumen = owner.luminosity - dist
 			if(delta_lumen > 0)
-				effect[T] = delta_lumen
-				turf_update_lumcount(T, delta_lumen)
+				effect[current_turf] = delta_lumen
+				turf_update_lumcount(current_turf, delta_lumen)
 		return FALSE
 	else
 		owner.light = null
@@ -134,8 +134,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /datum/light_source/proc/remove_effect()
 	// before we apply the effect we remove the light's current effect.
-	for(var/turf/T in effect) // negate the effect of this light source
-		turf_update_lumcount(T, -effect[T])
+	for(var/turf/current_turf in effect) // negate the effect of this light source
+		turf_update_lumcount(current_turf, -effect[current_turf])
 	effect.Cut() // clear the effect list
 
 /atom
@@ -149,8 +149,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 	. = ..()
 	if(opacity)
 		if(isturf(loc))
-			var/turf/T = loc
-			if(T.lighting_lumcount > 1)
+			var/turf/current_turf = loc
+			if(current_turf.lighting_lumcount > 1)
 				UpdateAffectingLights()
 	if(luminosity)
 		if(light) WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
@@ -161,8 +161,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 /atom/movable/Destroy()
 	if(opacity)
 		if(isturf(loc))
-			var/turf/T = loc
-			if(T.lighting_lumcount > 1)
+			var/turf/current_turf = loc
+			if(current_turf.lighting_lumcount > 1)
 				UpdateAffectingLights()
 	. = ..()
 
@@ -246,9 +246,9 @@ GLOBAL_LIST_INIT(comp2table, list(
 		return
 	// only bother with an update if we're on a turf
 	if(isturf(loc))
-		var/turf/T = loc
+		var/turf/current_turf = loc
 		// only bother with an update if our turf is currently affected by a light
-		if(T.lighting_lumcount)
+		if(current_turf.lighting_lumcount)
 			UpdateAffectingLights()
 
 
@@ -268,31 +268,31 @@ GLOBAL_LIST_INIT(comp2table, list(
 		lighting_changed = 1
 
 /turf/proc/lighting_tag(const/level)
-	var/area/A = loc
-	return A.tagbase + "sd_L[level]"
+	var/area/current_area = loc
+	return current_area.tagbase + "sd_L[level]"
 
 /turf/proc/build_lighting_area(const/tag, const/level)
 	var/area/Area = loc
-	var/area/A = new Area.type() // create area if it wasn't found
+	var/area/new_area = new Area.type() // create area if it wasn't found
 	// replicate vars
 	for(var/V in Area.vars)
 		switch(V)
 			if ("contents","lighting_overlay", "overlays")
 				continue
 			else
-				if(issaved(Area.vars[V])) A.vars[V] = Area.vars[V]
+				if(issaved(Area.vars[V])) new_area.vars[V] = Area.vars[V]
 
-	A.tag = tag
-	A.lighting_subarea = 1
-	A.lighting_space = 0 // in case it was copied from a space subarea
+	new_area.tag = tag
+	new_area.lighting_subarea = 1
+	new_area.lighting_space = 0 // in case it was copied from a space subarea
 
-	A.SetLightLevel(level)
-	Area.related += A
+	new_area.SetLightLevel(level)
+	Area.related += new_area
 
-	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(A))
-		A.overlays += SSweather.curr_master_turf_overlay
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(new_area))
+		new_area.overlays += SSweather.curr_master_turf_overlay
 
-	return A
+	return new_area
 
 /turf/proc/shift_to_subarea()
 	lighting_changed = 0
@@ -304,25 +304,25 @@ GLOBAL_LIST_INIT(comp2table, list(
 	var/new_tag = lighting_tag(level)
 
 	if(Area.tag!=new_tag) //skip if already in this area
-		var/area/A = locate(new_tag) // find an appropriate area
+		var/area/current_area = locate(new_tag) // find an appropriate area
 
-		if (!A)
-			A = build_lighting_area(new_tag, level)
+		if (!current_area)
+			current_area = build_lighting_area(new_tag, level)
 
-		A.contents += src // move the turf into the area
+		current_area.contents += src // move the turf into the area
 
 // Dedicated lighting sublevel for space turfs
 // helps us depower things in space, remove space fire alarms,
 // and evens out space lighting
 /turf/open/space/lighting_tag(level)
-	var/area/A = loc
-	return A.tagbase + "sd_L_space"
+	var/area/current_area = loc
+	return current_area.tagbase + "sd_L_space"
 /turf/open/space/build_lighting_area(tag, level)
-	var/area/A = ..(tag,4)
-	A.lighting_space = 1
-	A.SetLightLevel(4)
-	A.icon_state = null
-	return A
+	var/area/current_area = ..(tag,4)
+	current_area.lighting_space = 1
+	current_area.SetLightLevel(4)
+	current_area.icon_state = null
+	return current_area
 
 
 /area
@@ -352,8 +352,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /area/proc/SetDynamicLighting()
 	src.lighting_use_dynamic = 1
-	for(var/turf/T in src.contents)
-		turf_update_lumcount(T, 0)
+	for(var/turf/current_turf in src.contents)
+		turf_update_lumcount(current_turf, 0)
 
 /area/proc/InitializeLighting() //TODO: could probably improve this bit ~Carn
 	tagbase = "[type]"
@@ -375,18 +375,18 @@ GLOBAL_LIST_INIT(comp2table, list(
 //We don't need to worry about lights which lit us but moved away, since they will have change status set already
 //This proc can cause lots of lights to be updated. :(
 /atom/proc/UpdateAffectingLights()
-// for(var/atom/A in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
-// if(A.light)
-// A.light.changed() //force it to update at next process()
+// for(var/atom/current_area in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
+// if(current_area.light)
+// current_area.light.changed() //force it to update at next process()
 
 /atom/movable/UpdateAffectingLights()
 	if(isturf(loc))
 		loc.UpdateAffectingLights()
 
 /turf/UpdateAffectingLights()
-	for(var/atom/A in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
-		if(A.light)
-			A.light.changed()
+	for(var/atom/current_area in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
+		if(current_area.light)
+			current_area.light.changed()
 
 //caps luminosity effects max-range based on what type the light's owner is.
 /atom/proc/get_light_range()

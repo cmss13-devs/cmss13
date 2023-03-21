@@ -14,35 +14,35 @@ SUBSYSTEM_DEF(fz_transitions)
 	return ..()
 
 /datum/controller/subsystem/fz_transitions/Initialize()
-	for(var/obj/effect/projector/P in world)
-		projectors.Add(P)
+	for(var/obj/effect/projector/transition_projector in world)
+		projectors.Add(transition_projector)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fz_transitions/fire(resumed = FALSE)
-	for(var/obj/effect/projector/P in projectors)
-		if(!P || !P.loc)
-			projectors -= P
+	for(var/obj/effect/projector/transition_projector in projectors)
+		if(!transition_projector || !transition_projector.loc)
+			projectors -= transition_projector
 			continue
-		if(!P.loc.clone)
-			P.loc.create_clone(P.vector_x, P.vector_y)
+		if(!transition_projector.loc.clone)
+			transition_projector.loc.create_clone(transition_projector.vector_x, transition_projector.vector_y)
 
-		if(P.loc.contents)
-			for(var/atom/movable/O in P.loc.contents)
-				if(!istype(O, /obj/effect/projector) && !istype(O, /mob/dead/observer) && !istype(O, /obj/structure/stairs) && !istype(O, /obj/structure/catwalk) && O.type != /atom/movable/clone)
-					if(!O.clone) //Create a clone if it's on a projector
-						O.create_clone_movable(P.vector_x, P.vector_y)
+		if(transition_projector.loc.contents)
+			for(var/atom/movable/current_atom in transition_projector.loc.contents)
+				if(!istype(current_atom, /obj/effect/projector) && !istype(current_atom, /mob/dead/observer) && !istype(current_atom, /obj/structure/stairs) && !istype(current_atom, /obj/structure/catwalk) && current_atom.type != /atom/movable/clone)
+					if(!current_atom.clone) //Create a clone if it's on a projector
+						current_atom.create_clone_movable(transition_projector.vector_x, transition_projector.vector_y)
 					else
-						O.clone.proj_x = P.vector_x //Make sure projection is correct
-						O.clone.proj_y = P.vector_y
+						current_atom.clone.proj_x = transition_projector.vector_x //Make sure projection is correct
+						current_atom.clone.proj_y = transition_projector.vector_y
 
 
-	for(var/atom/movable/clone/C in clones)
-		if(C.mstr == null || !istype(C.mstr.loc, /turf))
-			C.mstr.destroy_clone() //Kill clone if master has been destroyed or picked up
+	for(var/atom/movable/clone/cloned_atom in clones)
+		if(cloned_atom.mstr == null || !istype(cloned_atom.mstr.loc, /turf))
+			cloned_atom.mstr.destroy_clone() //Kill clone if master has been destroyed or picked up
 		else
-			if(C != C.mstr)
-				C.mstr.update_clone() //NOTE: Clone updates are also forced by player movement to reduce latency
+			if(cloned_atom != cloned_atom.mstr)
+				cloned_atom.mstr.update_clone() //NOTE: Clone updates are also forced by player movement to reduce latency
 
-	for(var/atom/T in clones_t)
-		if(T.clone && T.icon_state) //Just keep the icon updated for explosions etc.
-			T.clone.icon_state = T.icon_state
+	for(var/atom/cloned_atom in clones_t)
+		if(cloned_atom.clone && cloned_atom.icon_state) //Just keep the icon updated for explosions etc.
+			cloned_atom.clone.icon_state = cloned_atom.icon_state

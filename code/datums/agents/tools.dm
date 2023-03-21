@@ -54,7 +54,7 @@
 	if(!allowed(user) || user.action_busy)
 		return .
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/current_human = user
 	var/obj/item/ammo_magazine/target_mag = target
 
 	if(!istype(target_mag))
@@ -64,20 +64,20 @@
 		var/type_to_set = types_to_convert[target.type]
 
 		if(target_mag.current_rounds < target_mag.max_rounds)
-			to_chat(H, SPAN_WARNING("[target_mag] needs to be full to convert these into rubber rounds!"))
+			to_chat(current_human, SPAN_WARNING("[target_mag] needs to be full to convert these into rubber rounds!"))
 			return .
 
-		to_chat(H, SPAN_NOTICE("You start converting [target_mag] into a rubber magazine."))
+		to_chat(current_human, SPAN_NOTICE("You start converting [target_mag] into a rubber magazine."))
 		playsound(user.loc, "sound/machines/fax.ogg", 5)
 
-		if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mag, INTERRUPT_ALL))
+		if(!do_after(current_human, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mag, INTERRUPT_ALL))
 			return .
 
-		to_chat(H, SPAN_NOTICE("You convert [target] into a rubber magazine."))
+		to_chat(current_human, SPAN_NOTICE("You convert [target] into a rubber magazine."))
 		var/obj/item/ammo_magazine/mag = new type_to_set(get_turf(user.loc))
 		qdel(target)
 
-		H.put_in_any_hand_if_possible(mag)
+		current_human.put_in_any_hand_if_possible(mag)
 
 
 /obj/item/device/portable_vendor/antag/process()
@@ -85,16 +85,16 @@
 
 /obj/item/device/portable_vendor/antag/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/points))
-		var/obj/item/stack/points/P = W
+		var/obj/item/stack/points/antag_points = W
 
 		if(points >= max_points)
 			return . = ..()
 
-		var/amount_to_add = min(P.amount, max_points - points)
+		var/amount_to_add = min(antag_points.amount, max_points - points)
 
-		to_chat(user, SPAN_NOTICE("You insert [P] into [src]."))
+		to_chat(user, SPAN_NOTICE("You insert [antag_points] into [src]."))
 
-		if(P.use(amount_to_add))
+		if(antag_points.use(amount_to_add))
 			points += amount_to_add
 	else
 		. = ..()

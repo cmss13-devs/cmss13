@@ -18,13 +18,13 @@ SUBSYSTEM_DEF(human)
 		currentrun = processable_human_list.Copy()
 
 	while (currentrun.len)
-		var/mob/living/carbon/human/M = currentrun[currentrun.len]
+		var/mob/living/carbon/human/mob = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || QDELETED(M))
+		if (!mob || QDELETED(mob))
 			continue
 
-		M.Life(wait * 0.1)
+		mob.Life(wait * 0.1)
 
 		if (MC_TICK_CHECK)
 			return

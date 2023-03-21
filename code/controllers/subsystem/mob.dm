@@ -17,13 +17,13 @@ SUBSYSTEM_DEF(mob)
 		currentrun = living_misc_mobs.Copy()
 
 	while (currentrun.len)
-		var/mob/living/M = currentrun[currentrun.len]
+		var/mob/living/mob = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || QDELETED(M))
+		if (!mob || QDELETED(mob))
 			continue
 
-		M.Life(wait * 0.1)
+		mob.Life(wait * 0.1)
 
 		if (MC_TICK_CHECK)
 			return

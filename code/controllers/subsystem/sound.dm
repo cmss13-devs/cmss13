@@ -24,10 +24,10 @@ SUBSYSTEM_DEF(sound)
 			if(MC_TICK_CHECK)
 				return
 		while(length(run_hearers)) // Output sound to hearers
-			var/client/C = run_hearers[run_hearers.len]
+			var/client/current_client = run_hearers[run_hearers.len]
 			run_hearers.len--
-			if(C && C.soundOutput)
-				C.soundOutput.process_sound(run_template)
+			if(current_client && current_client.soundOutput)
+				current_client.soundOutput.process_sound(run_template)
 			if(MC_TICK_CHECK)
 				return
 		run_queue.Remove(run_template) // Everyone that had to get this sound got it. Bye, template

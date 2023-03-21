@@ -13,13 +13,13 @@ SUBSYSTEM_DEF(stamina)
 		currentrun = active_staminas.Copy()
 
 	while (currentrun.len)
-		var/datum/stamina/S = currentrun[currentrun.len]
+		var/datum/stamina/player_stamina = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!S || QDELETED(S))
+		if (!player_stamina || QDELETED(player_stamina))
 			continue
 
-		S.process()
+		player_stamina.process()
 
 		if (MC_TICK_CHECK)
 			return

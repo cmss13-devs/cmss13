@@ -16,14 +16,14 @@ SUBSYSTEM_DEF(clues)
 		currentrun = prints_list.Copy()
 
 	while(currentrun.len)
-		var/obj/effect/decal/prints/P = currentrun[currentrun.len]
+		var/obj/effect/decal/prints/fingerprints = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!P || QDELETED(P))
+		if(!fingerprints || QDELETED(fingerprints))
 			continue
 
-		if(world.timeofday - P.created_time > 10 MINUTES)
-			qdel(P)
+		if(world.timeofday - fingerprints.created_time > 10 MINUTES)
+			qdel(fingerprints)
 
 		if(MC_TICK_CHECK)
 			return

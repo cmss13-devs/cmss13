@@ -22,10 +22,10 @@ SUBSYSTEM_DEF(acid_pillar)
 			data = null
 			continue
 
-		var/obj/effect/alien/resin/acid_pillar/P = data.source
+		var/obj/effect/alien/resin/acid_pillar/pillar = data.source
 
-		if(!P.acid_travel(data))
-			P.currently_firing = FALSE
+		if(!pillar.acid_travel(data))
+			pillar.currently_firing = FALSE
 			qdel(data)
 			queuedrun -= hash
 
@@ -33,17 +33,17 @@ SUBSYSTEM_DEF(acid_pillar)
 			return
 
 
-/datum/controller/subsystem/acid_pillar/proc/queue_attack(obj/effect/alien/resin/acid_pillar/P, atom/target)
-	var/hash  = "([REF(P)])|([REF(target)])"
+/datum/controller/subsystem/acid_pillar/proc/queue_attack(obj/effect/alien/resin/acid_pillar/pillar, atom/target)
+	var/hash  = "([REF(pillar)])|([REF(target)])"
 
 	if(queuedrun[hash])
 		return
 
 	var/datum/acid_spray_info/info = new()
-	info.source = P
+	info.source = pillar
 	info.target = target
 	info.target_turf = get_turf(target)
-	info.current_turf = P.loc
+	info.current_turf = pillar.loc
 	info.hash = hash
 
 	queuedrun[hash] = info

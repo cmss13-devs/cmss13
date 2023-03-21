@@ -21,30 +21,30 @@
 //this is used solely for sechuds
 /obj/proc/GetJobRealName()
 	if (!istype(src,/obj/item/card/id)) return
-	var/obj/item/card/id/I = src
-	if(I.rank in GLOB.joblist) return I.rank
-	if(I.assignment in GLOB.joblist) return I.assignment
+	var/obj/item/card/id/current_id = src
+	if(current_id.rank in GLOB.joblist) return current_id.rank
+	if(current_id.assignment in GLOB.joblist) return current_id.assignment
 	return "Unknown"
 
 /proc/FindNameFromID(mob/living/carbon/human/H)
 	ASSERT(istype(H))
-	var/obj/item/card/id/I = H.wear_id
-	if(istype(I)) return I.registered_name
-	I = H.get_active_hand()
-	if(istype(I)) return I.registered_name
+	var/obj/item/card/id/current_id = H.wear_id
+	if(istype(current_id)) return current_id.registered_name
+	current_id = H.get_active_hand()
+	if(istype(current_id)) return current_id.registered_name
 
 /proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
-	var/obj/item/card/id/I = src
-	if(istype(I))
+	var/obj/item/card/id/current_id = src
+	if(istype(current_id))
 		var/job_icons = get_all_job_icons()
 		var/centcom = get_all_centcom_jobs()
 
-		if(I.assignment in job_icons) return I.assignment//Check if the job has a hud icon
-		if(I.rank in job_icons) return I.rank
-		if(I.assignment in centcom) return "Centcom"//Return with the NT logo if it is a Centcom job
-		if(I.rank in centcom) return "Centcom"
+		if(current_id.assignment in job_icons) return current_id.assignment//Check if the job has a hud icon
+		if(current_id.rank in job_icons) return current_id.rank
+		if(current_id.assignment in centcom) return "Centcom"//Return with the NT logo if it is a Centcom job
+		if(current_id.rank in centcom) return "Centcom"
 	return "Unknown" //Return unknown if none of the above apply
 
 /proc/get_actual_job_name(mob/M)

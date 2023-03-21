@@ -24,40 +24,40 @@
 	RegisterSignal(parent, signal_damage_types, PROC_REF(set_incoming_damage))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(check_for_filter))
 
-	var/mob/M = parent
-	check_for_filter(M, M.loc, 0, FALSE)
+	var/mob/current_mob = parent
+	check_for_filter(current_mob, current_mob.loc, 0, FALSE)
 
 /datum/component/weed_damage_mult/UnregisterFromParent()
 	UnregisterSignal(parent, signal_damage_types)
-	var/mob/M = parent
-	M.remove_filter("weed_damage_mult")
+	var/mob/current_mob = parent
+	current_mob.remove_filter("weed_damage_mult")
 
-/datum/component/weed_damage_mult/proc/check_for_filter(mob/M, turf/oldloc, direction, forced)
+/datum/component/weed_damage_mult/proc/check_for_filter(mob/current_mob, turf/oldloc, direction, forced)
 	SIGNAL_HANDLER
 
-	var/turf/T = M.loc
-	if(!istype(T))
+	var/turf/current_turf = current_mob.loc
+	if(!istype(current_turf))
 		return
 
-	if(!T.weeds || T.weeds.hivenumber != hivenumber)
-		M.remove_filter("weed_damage_mult")
+	if(!current_turf.weeds || current_turf.weeds.hivenumber != hivenumber)
+		current_mob.remove_filter("weed_damage_mult")
 		return
 
-	if(M.get_filter("weed_damage_mult"))
+	if(current_mob.get_filter("weed_damage_mult"))
 		return
 
 	var/alpha = base_alpha*max(1-damage_mult, 0)
-	M.add_filter("weed_damage_mult", 3, list("type" = "outline", "color" = "[glow_color][num2text(alpha, 2, 16)]", "size" = 1))
+	current_mob.add_filter("weed_damage_mult", 3, list("type" = "outline", "color" = "[glow_color][num2text(alpha, 2, 16)]", "size" = 1))
 
-/datum/component/weed_damage_mult/proc/set_incoming_damage(mob/M, list/damages)
+/datum/component/weed_damage_mult/proc/set_incoming_damage(mob/current_mob, list/damages)
 	SIGNAL_HANDLER
-	var/turf/T = get_turf(M)
-	if(!T)
+	var/turf/current_turf = get_turf(current_mob)
+	if(!current_turf)
 		return
 
 	// This shouldn't affect healing
 	if(damages["damage"] <= 0)
 		return
 
-	if(T.weeds && T.weeds.hivenumber == hivenumber)
+	if(current_turf.weeds && current_turf.weeds.hivenumber == hivenumber)
 		damages["damage"] *= damage_mult

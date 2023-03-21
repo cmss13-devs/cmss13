@@ -676,9 +676,9 @@
 /atom/movable/screen/xenonightvision/clicked(mob/user)
 	if (..())
 		return 1
-	var/mob/living/carbon/xenomorph/X = user
-	X.toggle_nightvision()
-	update_icon(X)
+	var/mob/living/carbon/xenomorph/xenomorph = user
+	xenomorph.toggle_nightvision()
+	update_icon(xenomorph)
 	return 1
 
 /atom/movable/screen/xenonightvision/update_icon(mob/living/carbon/xenomorph/owner)

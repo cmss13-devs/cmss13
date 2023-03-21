@@ -66,8 +66,8 @@ SUBSYSTEM_DEF(decorator)
 	while(length(currentrun))
 		var/datum/weakref/ref = currentrun[currentrun.len]
 		currentrun.len--
-		var/atom/A = ref?.resolve()
-		if(A) A.Decorate(deferable = FALSE)
+		var/atom/current_atom = ref?.resolve()
+		if(current_atom) current_atom.Decorate(deferable = FALSE)
 		if(MC_TICK_CHECK)
 			return
 
@@ -95,24 +95,24 @@ SUBSYSTEM_DEF(decorator)
 
 /datum/controller/subsystem/decorator/proc/force_update()
 	// OH GOD YOU BETTER NOT DO THIS IF YOU VALUE YOUR TIME
-	for(var/atom/o in world)
-		o.Decorate()
+	for(var/atom/current_atom in world)
+		current_atom.Decorate()
 
 /datum/controller/subsystem/decorator/stat_entry(msg)
 	if(registered_decorators && decoratable)
 		msg = "D:[registered_decorators.len],P:[decoratable.len]"
 	return ..()
 
-/datum/controller/subsystem/decorator/proc/decorate(atom/o)
-	if (!o || QDELETED(o))
+/datum/controller/subsystem/decorator/proc/decorate(atom/current_atom)
+	if (!current_atom || QDELETED(current_atom))
 		return
 
-	var/list/datum/decorator/decors = registered_decorators[o.type]
+	var/list/datum/decorator/decors = registered_decorators[current_atom.type]
 	if(!decors)
 		return
 
 	for(var/datum/decorator/decor in decors)
-		decor.decorate(o)
+		decor.decorate(current_atom)
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
 /datum/controller/subsystem/decorator/proc/sortDecorators(list/datum/decorator/L)

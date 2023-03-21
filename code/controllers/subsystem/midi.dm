@@ -25,13 +25,13 @@ SUBSYSTEM_DEF(midi)
 		prepped_midis = list()
 
 	while (currentrun.len)
-		var/datum/midi_record/E = currentrun[currentrun.len]
+		var/datum/midi_record/current_midi = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!E)
+		if (!current_midi)
 			continue
 
-		E.target << E.midi
+		current_midi.target << current_midi.midi
 
 		if (MC_TICK_CHECK)
 			return

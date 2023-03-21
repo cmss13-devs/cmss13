@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(html_ui)
 
 /datum/controller/subsystem/html_ui/fire(resumed = FALSE)
 	if (update.len)
-		var/list/L = list()
+		var/list/new_list = list()
 		var/key
 
 		for (var/datum/procqueue_item/item in update)
@@ -29,13 +29,13 @@ SUBSYSTEM_DEF(html_ui)
 					first = 0
 				key += ")"
 
-			if (!(key in L))
+			if (!(key in new_list))
 				if (item.args)
 					call(item.ref, item.procname)(arglist(item.args))
 				else
 					call(item.ref, item.procname)()
 
-				L.Add(key)
+				new_list.Add(key)
 
 		update.Cut()
 

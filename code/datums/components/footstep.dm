@@ -26,8 +26,8 @@
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
 /datum/component/footstep/proc/prepare_step()
-	var/turf/open/T = get_turf(parent)
-	if(!istype(T))
+	var/turf/open/current_turf = get_turf(parent)
+	if(!istype(current_turf))
 		return
 
 	var/mob/living/LM = parent
@@ -37,12 +37,12 @@
 	if(LM.life_steps_total % steps)
 		return
 
-	return T
+	return current_turf
 
 /datum/component/footstep/proc/play_simplestep()
 	SIGNAL_HANDLER
-	var/turf/open/T = prepare_step()
-	if(!T)
+	var/turf/open/current_turf = prepare_step()
+	if(!current_turf)
 		return
 	if(isfile(footstep_sounds) || istext(footstep_sounds))
-		playsound(T, footstep_sounds, volume, rand(20000, 25000), range, falloff = falloff)
+		playsound(current_turf, footstep_sounds, volume, rand(20000, 25000), range, falloff = falloff)

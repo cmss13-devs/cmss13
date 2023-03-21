@@ -131,14 +131,14 @@
 		se_branch.query_range(range, found_players, flags)
 	if(!player_coords)
 		return
-	for(var/datum/coords/qtplayer/P as anything in player_coords)
-		if(!P.player) // Basically client is gone
+	for(var/datum/coords/qtplayer/current_player as anything in player_coords)
+		if(!current_player.player) // Basically client is gone
 			continue
-		if((flags & QTREE_EXCLUDE_OBSERVER) && P.is_observer)
+		if((flags & QTREE_EXCLUDE_OBSERVER) && current_player.is_observer)
 			continue
-		if(range.contains(P))
+		if(range.contains(current_player))
 			if(flags & QTREE_SCAN_MOBS)
-				found_players.Add(P.player.mob)
+				found_players.Add(current_player.player.mob)
 			else
-				found_players.Add(P.player)
+				found_players.Add(current_player.player)
 

@@ -38,23 +38,23 @@
 
 	// Propagate to cardinal directions
 	var/list/to_spread = cardinal.Copy()
-	for(var/datum/automata_cell/vomit_wave/C in neighbors)
-		to_spread -= get_dir(in_turf, C.in_turf)
+	for(var/datum/automata_cell/vomit_wave/cell in neighbors)
+		to_spread -= get_dir(in_turf, cell.in_turf)
 
 	for(var/dir in to_spread)
-		var/turf/T = get_step(in_turf, dir)
+		var/turf/current_turf = get_step(in_turf, dir)
 
-		if(!T)
+		if(!current_turf)
 			continue
 
-		if(is_blocked_turf(T))
+		if(is_blocked_turf(current_turf))
 			continue
 
-		var/datum/automata_cell/vomit_wave/C = propagate(dir)
+		var/datum/automata_cell/vomit_wave/cell = propagate(dir)
 		// Make it weaker
-		C.strength = strength - strength_dropoff
-		if(C.vomit)
-			C.vomit.alpha = 255 * C.strength
+		cell.strength = strength - strength_dropoff
+		if(cell.vomit)
+			cell.vomit.alpha = 255 * cell.strength
 
 	age++
 
@@ -63,5 +63,5 @@
 	set desc = "suck some ass ok"
 	set category = "Debug"
 
-	var/turf/T = get_turf(mob)
-	new /datum/automata_cell/vomit_wave(T)
+	var/turf/current_turf = get_turf(mob)
+	new /datum/automata_cell/vomit_wave(current_turf)

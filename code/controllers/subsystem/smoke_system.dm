@@ -19,13 +19,13 @@ SUBSYSTEM_DEF(smoke_effects)
 		currentrun = active_smoke_effects.Copy()
 
 	while(currentrun.len)
-		var/obj/effect/particle_effect/smoke/E = currentrun[currentrun.len]
+		var/obj/effect/particle_effect/smoke/smoke_particle = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!E || QDELETED(E))
+		if(!smoke_particle || QDELETED(smoke_particle))
 			continue
 
-		E.process()
+		smoke_particle.process()
 
 		if(MC_TICK_CHECK)
 			return

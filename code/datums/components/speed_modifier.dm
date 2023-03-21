@@ -34,11 +34,11 @@
 	speed_modifier = max(speed_modifier - speed_modifier_dissipation * delta_time, 0)
 
 	if(ishuman(parent)) //Damages/heals stamina for humans
-		var/mob/living/carbon/human/H = parent
+		var/mob/living/carbon/human/human = parent
 		if(!increase_speed)
-			H.apply_stamina_damage(HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
+			human.apply_stamina_damage(HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
 		else
-			H.apply_stamina_damage(-HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
+			human.apply_stamina_damage(-HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
 
 	if(speed_modifier <= 0)
 		qdel(src)
@@ -47,8 +47,8 @@
 	var/intensity = speed_modifier/max_buildup
 	color += num2text(MAX_ALPHA*intensity, 2, 16)
 
-	var/atom/A = parent
-	A.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
+	var/atom/current_atom = parent
+	current_atom.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -61,8 +61,8 @@
 		COMSIG_XENO_MOVEMENT_DELAY,
 		COMSIG_XENO_APPEND_TO_STAT
 	))
-	var/atom/A = parent
-	A.remove_filter("speed_modifier")
+	var/atom/current_atom = parent
+	current_atom.remove_filter("speed_modifier")
 
 /datum/component/speed_modifier/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER

@@ -28,37 +28,37 @@
 			return result
 
 	if (mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
-		var/mob/living/carbon/human/H = A
-		H.receive_from(src)
+		var/mob/living/carbon/human/human = A
+		human.receive_from(src)
 		return TRUE
 
 	return ..()
 
 /mob/living/carbon/human/RestrainedClickOn(atom/A) //chewing your handcuffs
 	if (A != src) return ..()
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/human/human = A
 
 	if (last_chew + 75 > world.time)
-		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
+		to_chat(human, SPAN_DANGER("You can't bite your hand again yet..."))
 		return
 
 
-	if (!H.handcuffed) return
-	if (H.a_intent != INTENT_HARM) return
-	if (H.zone_selected != "mouth") return
-	if (H.wear_mask) return
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
+	if (!human.handcuffed) return
+	if (human.a_intent != INTENT_HARM) return
+	if (human.zone_selected != "mouth") return
+	if (human.wear_mask) return
+	if (istype(human.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
 
-	var/obj/limb/O = H.get_limb(H.hand?"l_hand":"r_hand")
-	if (!O) return
+	var/obj/limb/current_obj = human.get_limb(human.hand?"l_hand":"r_hand")
+	if (!current_obj) return
 
-	var/s = SPAN_DANGER("[H.name] chews on \his [O.display_name]!")
-	H.visible_message(s, SPAN_DANGER("You chew on your [O.display_name]!"),null, null, CHAT_TYPE_FLUFF_ACTION)
-	H.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] [key_name(H)]</font>")
-	log_attack("[s] [key_name(H)]")
+	var/s = SPAN_DANGER("[human.name] chews on \his [current_obj.display_name]!")
+	human.visible_message(s, SPAN_DANGER("You chew on your [current_obj.display_name]!"),null, null, CHAT_TYPE_FLUFF_ACTION)
+	human.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] [key_name(human)]</font>")
+	log_attack("[s] [key_name(human)]")
 
-	if(O.take_damage(1,0,1,1,"teeth marks"))
-		H.UpdateDamageIcon()
+	if(current_obj.take_damage(1,0,1,1,"teeth marks"))
+		human.UpdateDamageIcon()
 
 	last_chew = world.time
 
@@ -67,12 +67,12 @@
 	if(lying) //No attacks while laying down
 		return 0
 
-	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
+	var/obj/item/clothing/gloves/current_gloves = gloves // not typecast specifically enough in defines
 
 	// Special glove functions:
 	// If the gloves do anything, have them return 1 to stop
 	// normal attack_hand() here.
-	if(proximity && istype(G) && G.Touch(A, 1))
+	if(proximity && istype(current_gloves) && current_gloves.Touch(A, 1))
 		return
 
 	var/obj/limb/temp = get_limb(hand ? "l_hand" : "r_hand")

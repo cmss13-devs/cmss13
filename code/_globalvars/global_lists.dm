@@ -258,33 +258,33 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		paramslist_cache[params_data] = .
 
 /proc/key_number_decode(key_number_data)
-	var/list/L = params2list(key_number_data)
-	for(var/key in L)
-		L[key] = text2num(L[key])
-	return L
+	var/list/new_list = params2list(key_number_data)
+	for(var/key in new_list)
+		new_list[key] = text2num(new_list[key])
+	return new_list
 
 /proc/number_list_decode(number_list_data)
-	var/list/L = params2list(number_list_data)
-	for(var/i in 1 to L.len)
-		L[i] = text2num(L[i])
-	return L
+	var/list/new_list = params2list(number_list_data)
+	for(var/i in 1 to new_list.len)
+		new_list[i] = text2num(new_list[i])
+	return new_list
 
 /proc/setup_species()
 	var/rkey = 0
 	var/list/all_species = list()
 	for(var/T in subtypesof(/datum/species))
 		rkey++
-		var/datum/species/S = new T
-		S.race_key = rkey //Used in mob icon caching.
-		all_species[S.name] = S
+		var/datum/species/current_species = new T
+		current_species.race_key = rkey //Used in mob icon caching.
+		all_species[current_species.name] = current_species
 	return all_species
 
 /proc/setup_ammo()
 	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
 	var/list/ammo_list = list()
 	for(var/T in subtypesof(/datum/ammo) - blacklist)
-		var/datum/ammo/A = new T
-		ammo_list[A.type] = A
+		var/datum/ammo/current_ammo = new T
+		ammo_list[current_ammo.type] = current_ammo
 	return ammo_list
 
 /proc/setup_resin_constructions()
@@ -324,10 +324,10 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 /proc/setup_language_keys()
 	var/list/language_keys = list()
 	for (var/language_name in subtypesof(/datum/language))
-		var/datum/language/L = language_name
-		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
+		var/datum/language/datum_language = language_name
+		language_keys[":[lowertext(initial(datum_language.key))]"] = initial(datum_language.name)
+		language_keys[".[lowertext(initial(datum_language.key))]"] = initial(datum_language.name)
+		language_keys["#[lowertext(initial(datum_language.key))]"] = initial(datum_language.name)
 	return language_keys
 
 //Comb Sort. This works apparently, so we're keeping it that way
@@ -345,22 +345,22 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
-			var/datum/surgery/l = surgeries[i] //Fucking hate
-			var/datum/surgery/r = surgeries[gap+i] //how lists work here
-			if(l.priority < r.priority)
+			var/datum/surgery/first_surgery = surgeries[i] //Fucking hate
+			var/datum/surgery/second_surgery = surgeries[gap+i] //how lists work here
+			if(first_surgery.priority < second_surgery.priority)
 				surgeries.Swap(i, gap + i)
 				swapped = 1
 	return surgeries
 
 /proc/setup_surgeries_by_zone_and_depth()
 	var/list/surgeries = list()
-	for(var/L in DEFENSE_ZONES_LIVING)
-		surgeries[L] = list()
+	for(var/potential_surgery in DEFENSE_ZONES_LIVING)
+		surgeries[potential_surgery] = list()
 		for(var/I in GLOB.surgery_invasiveness_levels)
-			surgeries[L][I] = list()
-			for(var/datum/surgery/T as anything in GLOB.surgeries_list)
-				if((L in T.possible_locs) && (I in T.invasiveness))
-					surgeries[L][I] += T
+			surgeries[potential_surgery][I] = list()
+			for(var/datum/surgery/current_surgery as anything in GLOB.surgeries_list)
+				if((potential_surgery in current_surgery.possible_locs) && (I in current_surgery.invasiveness))
+					surgeries[potential_surgery][I] += current_surgery
 	return surgeries
 
 /proc/setup_surgical_tools()
@@ -372,8 +372,8 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
 /proc/setup_surgical_patient_types()
 	var/list/mobtypes = list()
-	for(var/datum/surgery/T as anything in GLOB.surgeries_list)
-		mobtypes["[T]"] = typecacheof(T.target_mobtypes)
+	for(var/datum/surgery/current_surgery as anything in GLOB.surgeries_list)
+		mobtypes["[current_surgery]"] = typecacheof(current_surgery.target_mobtypes)
 	return mobtypes
 
 /proc/setup_custom_event_info()
@@ -382,10 +382,10 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 	var/datum/custom_event_info/CEI = new /datum/custom_event_info
 	CEI.faction = "Global" //the old public one for whole server to see
 	custom_event_info_list[CEI.faction] = CEI
-	for(var/T in FACTION_LIST_HUMANOID)
+	for(var/current_faction in FACTION_LIST_HUMANOID)
 		CEI = new /datum/custom_event_info
-		CEI.faction = T
-		custom_event_info_list[T] = CEI
+		CEI.faction = current_faction
+		custom_event_info_list[current_faction] = CEI
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
@@ -439,8 +439,8 @@ GLOBAL_LIST_INIT(emote_list, init_emote_list())
 	for (var/reaction in chemical_reactions_filtered_list)
 		. += "chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[chemical_reactions_filtered_list[reaction]]\"\n"
 		if(islist(chemical_reactions_filtered_list[reaction]))
-			var/list/L = chemical_reactions_filtered_list[reaction]
-			for(var/t in L)
+			var/list/chemical_reaction_list = chemical_reactions_filtered_list[reaction]
+			for(var/t in chemical_reaction_list)
 				. += " has: [t]\n"
 	world << .
 */
@@ -477,17 +477,17 @@ var/global/list/available_specialist_kit_boxes = list(
 /proc/init_emote_list()
 	. = list()
 	for(var/path in subtypesof(/datum/emote))
-		var/datum/emote/E = new path()
-		if(E.key)
-			if(!.[E.key])
-				.[E.key] = list(E)
+		var/datum/emote/current_emote = new path()
+		if(current_emote.key)
+			if(!.[current_emote.key])
+				.[current_emote.key] = list(current_emote)
 			else
-				.[E.key] += E
-		else if(E.message) //Assuming all non-base emotes have this
-			stack_trace("Keyless emote: [E.type]")
+				.[current_emote.key] += current_emote
+		else if(current_emote.message) //Assuming all non-base emotes have this
+			stack_trace("Keyless emote: [current_emote.type]")
 
-		if(E.key_third_person) //This one is optional
-			if(!.[E.key_third_person])
-				.[E.key_third_person] = list(E)
+		if(current_emote.key_third_person) //This one is optional
+			if(!.[current_emote.key_third_person])
+				.[current_emote.key_third_person] = list(current_emote)
 			else
-				.[E.key_third_person] |= E
+				.[current_emote.key_third_person] |= current_emote

@@ -16,13 +16,13 @@ SUBSYSTEM_DEF(soundscape)
 		currentrun = GLOB.clients.Copy()
 
 	while(currentrun.len)
-		var/client/C = currentrun[currentrun.len]
+		var/client/current_client = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!C || !C.soundOutput)
+		if(!current_client || !current_client.soundOutput)
 			continue
 
-		C.soundOutput.update_soundscape()
+		current_client.soundOutput.update_soundscape()
 
 		if(MC_TICK_CHECK)
 			return

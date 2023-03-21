@@ -12,8 +12,8 @@
 	icon_state = "follow_ghost"
 
 /atom/movable/screen/ghost/follow_ghosts/Click()
-	var/mob/dead/observer/G = usr
-	G.follow()
+	var/mob/dead/observer/current_observer = usr
+	current_observer.follow()
 
 /atom/movable/screen/ghost/minimap
 	name = "Minimap"
@@ -29,24 +29,24 @@
 // icon_state = "follow_xeno"
 
 // /atom/movable/screen/ghost/follow_xeno/Click()
-// var/mob/dead/observer/G = usr
-// G.follow_xeno()
+// var/mob/dead/observer/current_observer = usr
+// current_observer.follow_xeno()
 
 // /atom/movable/screen/ghost/follow_human
 // name = "Follow Humans"
 // icon_state = "follow_human"
 
 // /atom/movable/screen/ghost/follow_human/Click()
-// var/mob/dead/observer/G = usr
-// G.follow_human()
+// var/mob/dead/observer/current_observer = usr
+// current_observer.follow_human()
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
 	icon_state = "reenter_corpse"
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
-	var/mob/dead/observer/G = usr
-	G.reenter_corpse()
+	var/mob/dead/observer/current_observer = usr
+	current_observer.reenter_corpse()
 
 /datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
 	. = ..()
@@ -71,8 +71,8 @@
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
 	// don't show this HUD if observing; show the HUD of the observee
-	var/mob/dead/observer/O = mymob
-	if (istype(O) && O.observetarget)
+	var/mob/dead/observer/observing = mymob
+	if (istype(observing) && observing.observetarget)
 		plane_masters_update()
 		return FALSE
 

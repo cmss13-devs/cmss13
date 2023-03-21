@@ -9,29 +9,29 @@ SUBSYSTEM_DEF(landmark_init)
 	// List of all the datums we need to loop through
 	var/list/datum/item_pool_holder/pools = list()
 
-	for (var/obj/effect/landmark/item_pool_spawner/L in item_pool_landmarks)
+	for (var/obj/effect/landmark/item_pool_spawner/item_list in item_pool_landmarks)
 
-		var/curr_pool_name = L.pool_name
+		var/curr_pool_name = item_list.pool_name
 
 		if (!curr_pool_name)
-			log_debug("Item pool spawner [L] has a no pool name populated. Code: ITEM_POOL_1")
-			message_admins("Item pool spawner [L] has a no pool name populated. Tell the devs. Code: ITEM_POOL_1")
+			log_debug("Item pool spawner [item_list] has a no pool name populated. Code: ITEM_POOL_1")
+			message_admins("Item pool spawner [item_list] has a no pool name populated. Tell the devs. Code: ITEM_POOL_1")
 			continue
 
 		if (!pools[curr_pool_name])
-			pools[curr_pool_name] = new /datum/item_pool_holder(L.pool_name)
+			pools[curr_pool_name] = new /datum/item_pool_holder(item_list.pool_name)
 
-		var/datum/item_pool_holder/item_pool_holder = pools[L.pool_name]
+		var/datum/item_pool_holder/item_pool_holder = pools[item_list.pool_name]
 
-		item_pool_holder.turfs += get_turf(L)
+		item_pool_holder.turfs += get_turf(item_list)
 
-		if (L.type_to_spawn)
-			item_pool_holder.type_to_spawn = L.type_to_spawn
+		if (item_list.type_to_spawn)
+			item_pool_holder.type_to_spawn = item_list.type_to_spawn
 
-		if (L.quota)
-			item_pool_holder.quota = L.quota
+		if (item_list.quota)
+			item_pool_holder.quota = item_list.quota
 
-		qdel(L)
+		qdel(item_list)
 
 	for (var/pool_key in pools)
 
@@ -54,11 +54,11 @@ SUBSYSTEM_DEF(landmark_init)
 
 		// Quota times, pick a random turf, spawn an item there, then remove that turf from the list.
 		for (var/i in 1 to pool.quota)
-			var/turf/T = pool.turfs[rand(1, pool.turfs.len)]
+			var/turf/current_turf = pool.turfs[rand(1, pool.turfs.len)]
 			var/atom/movable/newly_spawned = new pool.type_to_spawn()
 
-			newly_spawned.forceMove(T)
-			pool.turfs -= T
+			newly_spawned.forceMove(current_turf)
+			pool.turfs -= current_turf
 
 	return SS_INIT_SUCCESS
 

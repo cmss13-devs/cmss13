@@ -60,18 +60,18 @@
 		return TRUE
 
 /datum/http_request/proc/into_response()
-	var/datum/http_response/R = new()
+	var/datum/http_response/response = new()
 
 	try
-		var/list/L = json_decode(_raw_response)
-		R.status_code = L["status_code"]
-		R.headers = L["headers"]
-		R.body = L["body"]
+		var/list/decode_list = json_decode(_raw_response)
+		response.status_code = decode_list["status_code"]
+		response.headers = decode_list["headers"]
+		response.body = decode_list["body"]
 	catch
-		R.errored = TRUE
-		R.error = _raw_response
+		response.errored = TRUE
+		response.error = _raw_response
 
-	return R
+	return response
 
 /datum/http_response
 	var/status_code

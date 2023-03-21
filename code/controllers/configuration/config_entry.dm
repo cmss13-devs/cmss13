@@ -27,8 +27,8 @@
 		CRASH("Abstract config entry [type] instatiated!")
 	name = lowertext(type2top(type))
 	if(islist(config_entry_value))
-		var/list/L = config_entry_value
-		default = L.Copy()
+		var/list/new_list = config_entry_value
+		default = new_list.Copy()
 	else
 		default = config_entry_value
 

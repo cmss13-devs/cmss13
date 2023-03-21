@@ -70,12 +70,12 @@
 
 	// Head first!
 	if(pre_rotation)
-		var/matrix/M = matrix(orbiter.transform)
+		var/matrix/current_matrix = matrix(orbiter.transform)
 		var/pre_rot = 90
 		if(!clockwise)
 			pre_rot = -90
-		M.Turn(pre_rot)
-		orbiter.transform = M
+		current_matrix.Turn(pre_rot)
+		orbiter.transform = current_matrix
 
 	var/matrix/shift = matrix(orbiter.transform)
 	shift.Translate(0, radius)

@@ -95,17 +95,17 @@
 	if(!isgun(A) && !isturf(A) && !istype(A,/atom/movable/screen))
 		last_target_click = world.time
 
-	var/obj/item/W = get_active_hand()
+	var/obj/item/current_item = get_active_hand()
 
 	// Special gun mode stuff.
-	if(W == A)
+	if(current_item == A)
 		mode()
 		return
 
 	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
 	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
-		if(W)
-			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+		if(current_item)
+			if(current_item.force && (!current_item || !(current_item.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)
 					to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 				return
@@ -125,30 +125,30 @@
 	next_move = world.time
 	// If standing next to the atom clicked.
 	if(A.Adjacent(src))
-		click_adjacent(A, W, mods)
+		click_adjacent(A, current_item, mods)
 		return
 
 	// If not standing next to the atom clicked.
-	if(W)
-		W.afterattack(A, src, 0, mods)
+	if(current_item)
+		current_item.afterattack(A, src, 0, mods)
 		return
 
 	RangedAttack(A, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
-	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
-			next_move += W.attack_speed
+/mob/proc/click_adjacent(atom/A, obj/item/current_item, mods)
+	if(current_item)
+		if(current_item.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
+			next_move += current_item.attack_speed
 
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
+		if(!A.attackby(current_item, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
-			if(!W)
+			if(!current_item)
 				UnarmedAttack(A, 1, mods)
 				return
 
-			W.afterattack(A, src, 1, mods)
+			current_item.afterattack(A, src, 1, mods)
 	else
 		if(!isitem(A) && !issurface(A))
 			next_move += 4
@@ -191,9 +191,9 @@
 		return TRUE
 
 	if (mods["alt"])
-		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && T.contents.len)
-			user.set_listed_turf(T)
+		var/turf/current_turf = get_turf(src)
+		if(current_turf && user.TurfAdjacent(current_turf) && current_turf.contents.len)
+			user.set_listed_turf(current_turf)
 
 		return TRUE
 	return FALSE
@@ -311,9 +311,9 @@
 	newicon.Scale(sx, sy)
 	icon = newicon
 	screen_loc = "CENTER-[(ox-1)*0.5],CENTER-[(oy-1)*0.5]"
-	var/matrix/M = new
-	M.Scale(px/sx, py/sy)
-	apply_transform(M)
+	var/matrix/new_matrix = new
+	new_matrix.Scale(px/sx, py/sy)
+	apply_transform(new_matrix)
 
 
 

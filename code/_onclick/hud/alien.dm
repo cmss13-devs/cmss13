@@ -61,19 +61,19 @@
 /datum/hud/alien/persistent_inventory_update()
 	if(!mymob || !ui_alien_datum)
 		return
-	var/mob/living/carbon/xenomorph/H = mymob
+	var/mob/living/carbon/xenomorph/xenomorph = mymob
 	if(hud_version != HUD_STYLE_NOHUD)
-		if(H.r_hand)
-			H.client.screen += H.r_hand
-			H.r_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.r_hand, ui_alien_datum.ui_rhand)
-		if(H.l_hand)
-			H.client.screen += H.l_hand
-			H.l_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.l_hand, ui_alien_datum.ui_lhand)
+		if(xenomorph.r_hand)
+			xenomorph.client.screen += xenomorph.r_hand
+			xenomorph.r_hand.screen_loc = ui_alien_datum.hud_slot_offset(xenomorph.r_hand, ui_alien_datum.ui_rhand)
+		if(xenomorph.l_hand)
+			xenomorph.client.screen += xenomorph.l_hand
+			xenomorph.l_hand.screen_loc = ui_alien_datum.hud_slot_offset(xenomorph.l_hand, ui_alien_datum.ui_lhand)
 	else
-		if(H.r_hand)
-			H.r_hand.screen_loc = null
-		if(H.l_hand)
-			H.l_hand.screen_loc = null
+		if(xenomorph.r_hand)
+			xenomorph.r_hand.screen_loc = null
+		if(xenomorph.l_hand)
+			xenomorph.l_hand.screen_loc = null
 
 
 /mob/living/carbon/xenomorph/create_hud()

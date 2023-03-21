@@ -55,23 +55,23 @@
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/atom/A = locate(href_list[VV_HK_EXPLODE])
-		if(!isobj(A) && !ismob(A) && !isturf(A))
+		var/atom/current_atom = locate(href_list[VV_HK_EXPLODE])
+		if(!isobj(current_atom) && !ismob(current_atom) && !isturf(current_atom))
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
-		message_admins("[key_name(src, TRUE)] has exploded [A]!")
+		cell_explosion(current_atom, 150, 100, , create_cause_data("divine intervention"))
+		message_admins("[key_name(src, TRUE)] has exploded [current_atom]!")
 	if(href_list[VV_HK_EMPULSE])
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/atom/A = locate(href_list[VV_HK_EMPULSE])
-		if(!isobj(A) && !ismob(A) && !isturf(A))
+		var/atom/current_atom = locate(href_list[VV_HK_EMPULSE])
+		if(!isobj(current_atom) && !ismob(current_atom) && !isturf(current_atom))
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		usr.client.cmd_admin_emp(A)
+		usr.client.cmd_admin_emp(current_atom)
 	return TRUE
 
 /datum/proc/vv_get_header()

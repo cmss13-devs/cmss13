@@ -32,9 +32,9 @@ SUBSYSTEM_DEF(admin)
 		if (MC_TICK_CHECK)
 			return
 
-	for(var/client/C in GLOB.admins)
-		if(C && C.admin_holder && (C.admin_holder.rights & R_MOD))
-			if(C.prefs.toggles_sound & SOUND_ADMINHELP)
-				sound_to(C, 'sound/effects/adminhelp_new.ogg')
-			to_chat(C, msg)
+	for(var/client/current_client in GLOB.admins)
+		if(current_client && current_client.admin_holder && (current_client.admin_holder.rights & R_MOD))
+			if(current_client.prefs.toggles_sound & SOUND_ADMINHELP)
+				sound_to(current_client, 'sound/effects/adminhelp_new.ogg')
+			to_chat(current_client, msg)
 	times_repeated++

@@ -27,16 +27,16 @@ SUBSYSTEM_DEF(machinery)
 		currentrunmachines = processing_machines.Copy()
 
 	while (currentrunmachines.len)
-		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
+		var/obj/structure/machinery/machine = currentrunmachines[currentrunmachines.len]
 		currentrunmachines.len--
 
-		if (!M || QDELETED(M))
+		if (!machine || QDELETED(machine))
 			continue
 
-		M.process()
-		//if (M.process() == PROCESS_KILL)
-			//M.inMachineList = FALSE
-			//machines.Remove(M)
+		machine.process()
+		//if (machine.process() == PROCESS_KILL)
+			//machine.inMachineList = FALSE
+			//machines.Remove(machine)
 			//continue
 
 		if (MC_TICK_CHECK)

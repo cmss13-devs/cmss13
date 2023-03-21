@@ -30,20 +30,20 @@ SUBSYSTEM_DEF(quadtree)
 			new_quadtrees[i] = QTREE(RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy), i)
 
 	while(length(player_feed))
-		var/client/C = player_feed[player_feed.len]
+		var/client/current_client = player_feed[player_feed.len]
 		player_feed.len--
-		if(!C) continue
-		var/turf/T = get_turf(C.mob)
-		if(!T?.z || new_quadtrees.len < T.z)
+		if(!current_client) continue
+		var/turf/current_turf = get_turf(current_client.mob)
+		if(!current_turf?.z || new_quadtrees.len < current_turf.z)
 			continue
 		var/datum/coords/qtplayer/p_coords = new
-		p_coords.player = C
-		p_coords.x_pos = T.x
-		p_coords.y_pos = T.y
-		p_coords.z_pos = T.z
-		if(isobserver(C.mob))
+		p_coords.player = current_client
+		p_coords.x_pos = current_turf.x
+		p_coords.y_pos = current_turf.y
+		p_coords.z_pos = current_turf.z
+		if(isobserver(current_client.mob))
 			p_coords.is_observer = TRUE
-		var/datum/quadtree/QT = new_quadtrees[T.z]
+		var/datum/quadtree/QT = new_quadtrees[current_turf.z]
 		QT.insert_player(p_coords)
 		if(MC_TICK_CHECK)
 			return
@@ -53,8 +53,8 @@ SUBSYSTEM_DEF(quadtree)
 	if(!cur_quadtrees)
 		return players
 	if(z_level && cur_quadtrees.len >= z_level)
-		var/datum/quadtree/Q = cur_quadtrees[z_level]
-		if(!Q)
+		var/datum/quadtree/quadtree = cur_quadtrees[z_level]
+		if(!quadtree)
 			return players
-		players = SEARCH_QTREE(Q, range, flags)
+		players = SEARCH_QTREE(quadtree, range, flags)
 	return players

@@ -46,9 +46,9 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
 	weather_areas = list()
-	for(var/area/A in all_areas)
-		if(A == A.master && A.weather_enabled && map_holder.should_affect_area(A))
-			weather_areas += A
+	for(var/area/current_area in all_areas)
+		if(current_area == current_area.master && current_area.weather_enabled && map_holder.should_affect_area(current_area))
+			weather_areas += current_area
 
 	curr_master_turf_overlay = new /obj/effect/weather_vfx_holder
 	if (map_holder.no_weather_turf_icon_state)

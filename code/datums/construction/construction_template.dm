@@ -82,23 +82,23 @@
 
 /datum/construction_template/proc/add_material(mob/user, obj/item/I)
 	if(isStack(I))
-		var/obj/item/stack/S = I
-		if(!(S.stack_id in materials_required))
+		var/obj/item/stack/mat_stack = I
+		if(!(mat_stack.stack_id in materials_required))
 			to_chat(user, SPAN_WARNING("\The [name] does not require [I.name]."))
 			return
-		if(!materials_required[S.stack_id])
+		if(!materials_required[mat_stack.stack_id])
 			to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))
 			return
 		to_chat(user, SPAN_NOTICE("You begin adding \the [I.name] to \the [name]."))
 		if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		//double-check amount required
-		if(!materials_required[S.stack_id])
+		if(!materials_required[mat_stack.stack_id])
 			to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))
 			return
-		var/amount_to_use = min(S.amount, materials_required[S.stack_id])
-		materials_required[S.stack_id] -= amount_to_use
-		S.use(amount_to_use)
+		var/amount_to_use = min(mat_stack.amount, materials_required[mat_stack.stack_id])
+		materials_required[mat_stack.stack_id] -= amount_to_use
+		mat_stack.use(amount_to_use)
 	else if(I.type in extras_required)
 		if(!extras_required[I.type])
 			to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))

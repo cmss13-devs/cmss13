@@ -301,12 +301,12 @@ SUBSYSTEM_DEF(radio)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
 		target_zs += extra_zs
-	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_ground)
-		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+	for(var/obj/structure/machinery/telecomms/tcomms as anything in tcomm_machines_ground)
+		if(!length(tcomms.freq_listening) || (frequency in tcomms.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
 			break
-	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
-		if(!length(T.freq_listening) || (frequency in T.freq_listening))
+	for(var/obj/structure/machinery/telecomms/tcomms as anything in tcomm_machines_almayer)
+		if(!length(tcomms.freq_listening) || (frequency in tcomms.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
@@ -431,6 +431,6 @@ SUBSYSTEM_DEF(radio)
 	for (var/i in data)
 		. += "data\[\"[i]\"\] = \"[data[i]]\"\n"
 		if(islist(data[i]))
-			var/list/L = data[i]
-			for(var/t in L)
+			var/list/data_list = data[i]
+			for(var/t in data_list)
 				. += "data\[\"[i]\"\] list has: [t]"

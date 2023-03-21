@@ -53,7 +53,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// makes the mc main loop runtime
 	var/make_runtime = FALSE
 
-	var/initializations_finished_with_no_players_logged_in //I wonder what this could be?
+	var/initializations_finished_with_no_players_logged_in // I wonder what this could be?
 
 	/// The type of the last subsystem to be fire()'d.
 	var/last_type_processed
@@ -175,8 +175,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/varname in master_attributes - filtered_variables)
 		var/varval = master_attributes[varname]
 		if (isdatum(varval)) // Check if it has a type var.
-			var/datum/D = varval
-			msg += "\t [varname] = [D]([D.type])\n"
+			var/datum/new_datum = varval
+			msg += "\t [varname] = [new_datum]([new_datum.type])\n"
 		else
 			msg += "\t [varname] = [varval]\n"
 	log_world(msg)

@@ -16,12 +16,12 @@ SUBSYSTEM_DEF(fast_machinery)
 	if(!resumed)
 		currentrun = fast_machines.Copy()
 	while(currentrun.len)
-		var/obj/structure/machinery/M = currentrun[currentrun.len]
+		var/obj/structure/machinery/machine = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(QDELETED(M))
+		if(QDELETED(machine))
 			continue
 
-		M.process()
+		machine.process()
 		if(MC_TICK_CHECK)
 			return

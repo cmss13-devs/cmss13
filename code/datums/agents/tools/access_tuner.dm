@@ -8,9 +8,9 @@
 		return . = ..()
 
 	if(istype(target, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/D = target
+		var/obj/structure/machinery/door/airlock/door = target
 
-		if(!D.density || D.unacidable)
+		if(!door.density || door.unacidable)
 			return . = ..()
 
 		user.visible_message(SPAN_DANGER("[user] begins to hack open [target]!"), SPAN_NOTICE("You start to hack open [target]."))
@@ -21,24 +21,24 @@
 
 		user.visible_message(SPAN_DANGER("[user] hacks open [target]."), SPAN_NOTICE("You hack open [target]."))
 
-		D.unlock()
-		D.open()
+		door.unlock()
+		door.open()
 
 	else if(istype(target, /obj/structure/machinery/door_control))
-		var/obj/structure/machinery/door_control/D = target
+		var/obj/structure/machinery/door_control/door = target
 
 		SHOW_HACK_MESSAGE
-		D.use_button(user, TRUE)
+		door.use_button(user, TRUE)
 
 	else if(istype(target, /obj/structure/machinery/power/apc))
-		var/obj/structure/machinery/power/apc/A = target
+		var/obj/structure/machinery/power/apc/wall_apc = target
 
-		if(!A.locked)
+		if(!wall_apc.locked)
 			return
 
 		SHOW_HACK_MESSAGE
-		A.locked = FALSE
-		A.update_icon()
+		wall_apc.locked = FALSE
+		wall_apc.update_icon()
 	else
 		. = ..()
 

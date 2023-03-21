@@ -21,13 +21,13 @@ SUBSYSTEM_DEF(item_cleanup)
 	var/to_delete = items_to_clean_up.len * percentage_of_garbage_to_delete
 	var/deleted = 0
 	var/total_items = items_to_clean_up.len //save total before we start deleting stuff
-	for (var/atom/o in items_to_clean_up)
-		if(QDELETED(o))
-			items_to_clean_up -= o
-			remove_from_garbage(o)
-		else if(isnull(o.loc) || isturf(o.loc)) //item is in null (probably a decal), or on the ground (as in, not on a person, but on a turf)
-			items_to_clean_up -= o
-			qdel(o)
+	for (var/atom/current_atom in items_to_clean_up)
+		if(QDELETED(current_atom))
+			items_to_clean_up -= current_atom
+			remove_from_garbage(current_atom)
+		else if(isnull(current_atom.loc) || isturf(current_atom.loc)) //item is in null (probably a decal), or on the ground (as in, not on a person, but on a turf)
+			items_to_clean_up -= current_atom
+			qdel(current_atom)
 			deleted++
 		if(deleted > to_delete)
 			//we've deleted enough, end
@@ -50,11 +50,11 @@ SUBSYSTEM_DEF(item_cleanup)
 
 /datum/controller/subsystem/item_cleanup/proc/delete_z_level(list/z_levels)
 	set background = 1
-	for(var/obj/o in world)
-		if(QDELETED(o) || isnull(o.loc))
+	for(var/obj/current_atom in world)
+		if(QDELETED(current_atom) || isnull(current_atom.loc))
 			continue
-		if(o.loc.z in z_levels) //item is on the proper Z-level
-			qdel(o)
+		if(current_atom.loc.z in z_levels) //item is on the proper Z-level
+			qdel(current_atom)
 
 /proc/add_to_garbage(atom/a)
 	addToListNoDupe(item_cleanup_list, a)

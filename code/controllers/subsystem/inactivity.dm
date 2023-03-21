@@ -10,11 +10,11 @@ SUBSYSTEM_DEF(inactivity)
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if (CONFIG_GET(flag/kick_inactive))
 		for(var/i in GLOB.clients)
-			var/client/C = i
-			if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.
+			var/client/current_client = i
+			if(current_client.admin_holder && current_client.admin_holder.rights & R_ADMIN) //Skip admins.
 				continue
-			if (C.is_afk(INACTIVITY_KICK))
-				if (!istype(C.mob, /mob/dead))
-					log_access("AFK: [key_name(C)]")
-					to_chat(C, SPAN_WARNING("You have been inactive for more than 10 minutes and have been disconnected."))
-					qdel(C)
+			if (current_client.is_afk(INACTIVITY_KICK))
+				if (!istype(current_client.mob, /mob/dead))
+					log_access("AFK: [key_name(current_client)]")
+					to_chat(current_client, SPAN_WARNING("You have been inactive for more than 10 minutes and have been disconnected."))
+					qdel(current_client)

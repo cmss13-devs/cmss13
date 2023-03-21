@@ -17,13 +17,13 @@ SUBSYSTEM_DEF(cellauto)
 		currentrun = cellauto_cells.Copy()
 
 	while(currentrun.len)
-		var/datum/automata_cell/C = currentrun[currentrun.len]
+		var/datum/automata_cell/cell = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!C || QDELETED(C))
+		if (!cell || QDELETED(cell))
 			continue
 
-		C.update_state()
+		cell.update_state()
 
 		if (MC_TICK_CHECK)
 			return

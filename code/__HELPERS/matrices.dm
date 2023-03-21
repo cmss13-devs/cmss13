@@ -12,9 +12,9 @@
 		segment = -segment
 	var/list/matrices = list()
 	for(var/i in 1 to segments - 1)
-		var/matrix/M = matrix(transform)
-		M.Turn(segment * i)
-		matrices += M
+		var/matrix/current_matrix = matrix(transform)
+		current_matrix.Turn(segment * i)
+		matrices += current_matrix
 	var/matrix/last = matrix(transform)
 	matrices += last
 
@@ -249,14 +249,14 @@ if you want variations of the same color, color_matrix_recolor_red() is simpler.
 Saturation and Lightness can be anything. Arg is a hex string for a color. Proc is by Lummox JR, www.byond.com/forum/post/2209545
 color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colours.**/
 /proc/color_matrix_recolor_red(new_color)
-	var/image/I = new
-	var/list/M
+	var/image/new_image = new
+	var/list/current_matrix_list
 	// create the matrix via short form
-	I.color = list(new_color, "#fff0", "#0000", null, null)
+	new_image.color = list(new_color, "#fff0", "#0000", null, null)
 	// get the long-form copy
-	M = I.color
+	current_matrix_list = new_image.color
 	// adjust the green row
-	M[5] -= M[1]
-	M[6] -= M[2]
-	M[7] -= M[3]
-	return M
+	current_matrix_list[5] -= current_matrix_list[1]
+	current_matrix_list[6] -= current_matrix_list[2]
+	current_matrix_list[7] -= current_matrix_list[3]
+	return current_matrix_list

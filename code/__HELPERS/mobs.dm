@@ -12,14 +12,14 @@
 
 	var/list/valid_hairstyles = list()
 	for(var/hairstyle in GLOB.hair_styles_list)
-		var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
-		if(gender == MALE && S.gender == FEMALE)
+		var/datum/sprite_accessory/current_accessory = GLOB.hair_styles_list[hairstyle]
+		if(gender == MALE && current_accessory.gender == FEMALE)
 			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(gender == FEMALE && current_accessory.gender == MALE)
 			continue
-		if( !(species in S.species_allowed))
+		if( !(species in current_accessory.species_allowed))
 			continue
-		if(!S.selectable)
+		if(!current_accessory.selectable)
 			continue
 		valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
 
@@ -34,14 +34,14 @@
 
 	var/list/valid_facialhairstyles = list()
 	for(var/facialhairstyle in GLOB.facial_hair_styles_list)
-		var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
-		if(gender == MALE && S.gender == FEMALE)
+		var/datum/sprite_accessory/current_accessory = GLOB.facial_hair_styles_list[facialhairstyle]
+		if(gender == MALE && current_accessory.gender == FEMALE)
 			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(gender == FEMALE && current_accessory.gender == MALE)
 			continue
-		if( !(species in S.species_allowed))
+		if( !(species in current_accessory.species_allowed))
 			continue
-		if(!S.selectable)
+		if(!current_accessory.selectable)
 			continue
 		valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 
@@ -57,11 +57,11 @@
 /proc/has_species(mob/M, species)
 	if(!M || !istype(M,/mob/living/carbon/human))
 		return FALSE
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/human = M
 
-	if(!H.species)
+	if(!human.species)
 		return FALSE
-	if(H.species.name != species)
+	if(human.species.name != species)
 		return FALSE
 
 	return TRUE
@@ -96,8 +96,8 @@
 		return FALSE
 	if(!new_voice_name)
 		new_voice_name = "Unknown"
-	var/mob/living/carbon/human/H = src
-	H.voice = new_voice_name
+	var/mob/living/carbon/human/human = src
+	human.voice = new_voice_name
 	return TRUE
 
 /*Changing/updating a mob's client color matrices. These render over the map window and affect most things the player sees, except things like inventory,

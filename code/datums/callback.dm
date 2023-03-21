@@ -1,18 +1,18 @@
 /*
 HOW TO MAKE A CALLBACK:
-	var/datum/callback/C = new(object|null, GLOBAL_PROC_REF(type/path|"procstring"), arg1, arg2, ... argn)
+	var/datum/callback/call = new(object|null, GLOBAL_PROC_REF(type/path|"procstring"), arg1, arg2, ... argn)
 
 HOW TO MAKE A TIMER:
-	C being a callback datum as shown above,
-	var/timerid = addtimer(C, time, timertype)
+	call being a callback datum as shown above,
+	var/timerid = addtimer(call, time, timertype)
 	var/timerid = addtimer(CALLBACK(object|null, GLOBAL_PROC_REF(type/path|procstring), arg1, arg2, ... argn), time, timertype)
 
 PROC STRINGS ARE BAD, they can only be done for datum proc calls and they dont give compile errors.
 
 INVOKING THE CALLBACK:
-	C being a callback datum ,
-	var/result = C.Invoke(args, to, add) //additional args are added after the ones given when the callback was created
-	var/result = C.InvokeAsync(args, to, add) //Sleeps will not block, returns . on the first sleep (then continues on in the "background" after the sleep/block ends), otherwise operates normally.
+	call being a callback datum ,
+	var/result = call.Invoke(args, to, add) //additional args are added after the ones given when the callback was created
+	var/result = call.InvokeAsync(args, to, add) //Sleeps will not block, returns . on the first sleep (then continues on in the "background" after the sleep/block ends), otherwise operates normally.
 	INVOKE_ASYNC(<CALLBACK args>) to immediately create and call InvokeAsync
 
 HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)

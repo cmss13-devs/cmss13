@@ -12,21 +12,21 @@
 		tile_attack = TRUE
 
 	if(isturf(target) && tile_attack) //Attacks on turfs must be done indirectly through directional attacks or clicking own sprite.
-		var/turf/T = target
-		for(var/mob/living/L in T)
-			if (!iscarbon(L))
+		var/turf/target_turf = target
+		for(var/mob/living/mob in target_turf)
+			if (!iscarbon(mob))
 				if (!alt)
-					alt = L // last option is a simple mob
+					alt = mob // last option is a simple mob
 				continue
 
-			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
+			if (!mob.is_xeno_grabbable() || mob == src) //Xenos never attack themselves.
 				continue
-			if (L.lying)
-				alt = L
+			if (mob.lying)
+				alt = mob
 				continue
-			target = L
+			target = mob
 			break
-		if (target == T && alt)
+		if (target == target_turf && alt)
 			target = alt
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	switch(target.attack_alien(src))
@@ -96,20 +96,20 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 	if (mods["alt"] && mods["shift"])
 		if (istype(A, /mob/living/carbon/xenomorph))
-			var/mob/living/carbon/xenomorph/X = A
+			var/mob/living/carbon/xenomorph/xenomorph = A
 
-			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
+			if (xenomorph && !QDELETED(xenomorph) && xenomorph != observed_xeno && xenomorph.stat != DEAD && !is_admin_level(xenomorph.z) && xenomorph.check_state(1) && xenomorph.hivenumber == hivenumber)
 				if (caste && istype(caste, /datum/caste_datum/queen))
 					var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
-					overwatch(X, FALSE)
+					overwatch(xenomorph, FALSE)
 
 					if (oldXeno)
 						oldXeno.hud_set_queen_overwatch()
-					if (X && !QDELETED(X))
-						X.hud_set_queen_overwatch()
+					if (xenomorph && !QDELETED(xenomorph))
+						xenomorph.hud_set_queen_overwatch()
 
 				else
-					overwatch(X)
+					overwatch(xenomorph)
 
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
 				return 1

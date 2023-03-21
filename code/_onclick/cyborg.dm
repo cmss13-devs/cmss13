@@ -40,10 +40,10 @@
 
 	face_atom(A)
 	if (world.time <= next_move) return
-	var/obj/item/W = get_active_hand()
+	var/obj/item/current_item = get_active_hand()
 
 	// Cyborgs have no range-checking unless there is item use
-	if(!W)
+	if(!current_item)
 		A.add_hiddenprint(src)
 		A.attack_robot(src)
 		return 1
@@ -52,10 +52,10 @@
 	if( buckled )
 		return 1
 
-	if(W == A)
+	if(current_item == A)
 		next_move = world.time + 8
 
-		W.attack_self(src)
+		current_item.attack_self(src)
 		return 1
 
 	// cyborgs are prohibited from using storage items so we can I think safely remove (A.loc in contents)
@@ -63,9 +63,9 @@
 		// No adjacency checks
 		next_move = world.time + 8
 
-		var/resolved = A.attackby(W,src)
-		if(!resolved && A && W)
-			W.afterattack(A, src, 1, mods)
+		var/resolved = A.attackby(current_item,src)
+		if(!resolved && A && current_item)
+			current_item.afterattack(A, src, 1, mods)
 		return 1
 
 	if(!isturf(loc))
@@ -76,13 +76,13 @@
 		if(A.Adjacent(src)) // see adjacent.dm
 			next_move = world.time + 10
 
-			var/resolved = A.attackby(W, src)
-			if(!resolved && A && W)
-				W.afterattack(A, src, 1, mods)
+			var/resolved = A.attackby(current_item, src)
+			if(!resolved && A && current_item)
+				current_item.afterattack(A, src, 1, mods)
 			return 1
 		else
 			next_move = world.time + 10
-			W.afterattack(A, src, 0, mods)
+			current_item.afterattack(A, src, 0, mods)
 			return 1
 	return 0
 

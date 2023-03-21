@@ -172,13 +172,13 @@
 // Otherwise, the user mob's machine var will be reset directly.
 //
 /proc/onclose(user, windowid, atom/ref, list/params)
-	var/client/C = user
+	var/client/current_client = user
 
 	if (ismob(user))
-		var/mob/M = user
-		C = M.client
+		var/mob/curent_user = user
+		current_client = curent_user.client
 
-	if (!istype(C))
+	if (!istype(current_client))
 		return
 
 	var/ref_string = "null"
@@ -192,7 +192,7 @@
 			params_string += "[param]=[params[param]];"
 		params_string = copytext(params_string, 1, -1)
 
-	winset(C, windowid, "on-close=\".windowclose \\\"[ref_string]\\\" \\\"[params_string]\\\"\"")
+	winset(current_client, windowid, "on-close=\".windowclose \\\"[ref_string]\\\" \\\"[params_string]\\\"\"")
 
 
 // the on-close client verb
@@ -227,21 +227,21 @@
 	return
 
 /proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref)
-	var/client/C = target
+	var/client/current_client = target
 
 	if (ismob(target))
-		var/mob/M = target
-		C = M.client
+		var/mob/curent_target = target
+		current_client = curent_target.client
 
-	if (!istype(C))
+	if (!istype(current_client))
 		return
 
-	var/stylesheet = C.prefs.stylesheet
+	var/stylesheet = current_client.prefs.stylesheet
 	if (!(stylesheet in GLOB.stylesheets))
-		C.prefs.stylesheet = "Modern"
+		current_client.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
 
-	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
+	var/datum/browser/popup = new(current_client, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)
@@ -341,15 +341,15 @@
 /proc/presentpicker(mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1,Timeout = 6000,list/values, inputtype = "checkbox", width, height)
 	if (!istype(User))
 		if (istype(User, /client/))
-			var/client/C = User
-			User = C.mob
+			var/client/current_client = User
+			User = current_client.mob
 		else
 			return
-	var/datum/browser/modal/listpicker/A = new(User, Message, Title, Button1, Button2, Button3, StealFocus,Timeout, values, inputtype, width, height)
-	A.open()
-	A.wait()
-	if (A.selectedbutton)
-		return list("button" = A.selectedbutton, "values" = A.valueslist)
+	var/datum/browser/modal/listpicker/list_picker = new(User, Message, Title, Button1, Button2, Button3, StealFocus,Timeout, values, inputtype, width, height)
+	list_picker.open()
+	list_picker.wait()
+	if (list_picker.selectedbutton)
+		return list("button" = list_picker.selectedbutton, "values" = list_picker.valueslist)
 
 /proc/input_bitfield(mob/User, title, bitfield, current_value, nwidth = 350, nheight = 350, allowed_edit_list = null)
 	if (!User || !(bitfield in GLOB.bitfields))

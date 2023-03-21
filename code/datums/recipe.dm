@@ -61,10 +61,10 @@
 			return 1
 	. = 1
 	var/list/checklist = items.Copy()
-	for (var/obj/O in container)
+	for (var/obj/current_obj in container)
 		var/found = 0
 		for (var/type in checklist)
-			if (istype(O,type))
+			if (istype(current_obj,type))
 				checklist-=type
 				found = 1
 				break
@@ -77,9 +77,9 @@
 //general version
 /datum/recipe/proc/make(obj/container as obj)
 	var/obj/result_obj = new result(container)
-	for (var/obj/O in (container.contents-result_obj))
-		O.reagents.trans_to(result_obj, O.reagents.total_volume)
-		qdel(O)
+	for (var/obj/current_obj in (container.contents-result_obj))
+		current_obj.reagents.trans_to(result_obj, current_obj.reagents.total_volume)
+		qdel(current_obj)
 	container.reagents.clear_reagents()
 	return result_obj
 
@@ -87,14 +87,14 @@
 /datum/recipe/proc/make_food(obj/container as obj)
 	var/obj/result_obj = new result(container)
 	var/name_finalized
-	for (var/obj/item/reagent_container/food/snacks/O in (container.contents-result_obj))
-		if (O.reagents)
-			O.reagents.del_reagent("nutriment")
-			O.reagents.update_total()
-			O.reagents.trans_to(result_obj, O.reagents.total_volume)
-		if(!name_finalized && O.made_from_player)
-			result_obj.name = O.made_from_player + result_obj.name
-			result_obj.set_origin_name_prefix(O.made_from_player)
+	for (var/obj/item/reagent_container/food/snacks/current_obj in (container.contents-result_obj))
+		if (current_obj.reagents)
+			current_obj.reagents.del_reagent("nutriment")
+			current_obj.reagents.update_total()
+			current_obj.reagents.trans_to(result_obj, current_obj.reagents.total_volume)
+		if(!name_finalized && current_obj.made_from_player)
+			result_obj.name = current_obj.made_from_player + result_obj.name
+			result_obj.set_origin_name_prefix(current_obj.made_from_player)
 			name_finalized = TRUE
 	container.contents = null
 	container.reagents.clear_reagents()

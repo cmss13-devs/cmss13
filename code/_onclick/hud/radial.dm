@@ -173,23 +173,23 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/list/page_choices = page_data[current_page]
 	var/angle_per_element = round(zone / length(page_choices))
 	for(var/i in 1 to length(elements))
-		var/atom/movable/screen/radial/E = elements[i]
+		var/atom/movable/screen/radial/radial_element = elements[i]
 		var/angle = WRAP(starting_angle + (i - 1) * angle_per_element,0,360)
 		if(i > length(page_choices))
-			HideElement(E)
+			HideElement(radial_element)
 		else
-			SetElement(E,page_choices[i],angle,anim = anim,anim_order = i)
+			SetElement(radial_element,page_choices[i],angle,anim = anim,anim_order = i)
 
-/datum/radial_menu/proc/HideElement(atom/movable/screen/radial/slice/E)
-	E.overlays.Cut()
-	E.alpha = 0
-	E.name = "None"
-	E.maptext = null
-	E.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	E.choice = null
-	E.next_page = FALSE
+/datum/radial_menu/proc/HideElement(atom/movable/screen/radial/slice/radial_element)
+	radial_element.overlays.Cut()
+	radial_element.alpha = 0
+	radial_element.name = "None"
+	radial_element.maptext = null
+	radial_element.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	radial_element.choice = null
+	radial_element.next_page = FALSE
 
-/datum/radial_menu/proc/SetElement(atom/movable/screen/radial/slice/E,choice_id,angle,anim,anim_order)
+/datum/radial_menu/proc/SetElement(atom/movable/screen/radial/slice/radial_element,choice_id,angle,anim,anim_order)
 	//Position
 	var/py = round(cos(angle) * radius) + py_shift
 	var/px = round(sin(angle) * radius)
@@ -197,34 +197,34 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/timing = anim_order * 0.5
 		var/matrix/starting = matrix()
 		starting.Scale(0.1,0.1)
-		E.transform = starting
+		radial_element.transform = starting
 		var/matrix/TM = matrix()
-		animate(E,pixel_x = px,pixel_y = py, transform = TM, time = timing)
+		animate(radial_element,pixel_x = px,pixel_y = py, transform = TM, time = timing)
 	else
-		E.pixel_y = py
-		E.pixel_x = px
+		radial_element.pixel_y = py
+		radial_element.pixel_x = px
 
 	//Visuals
-	E.alpha = 255
-	E.mouse_opacity = MOUSE_OPACITY_ICON
-	E.overlays.Cut()
+	radial_element.alpha = 255
+	radial_element.mouse_opacity = MOUSE_OPACITY_ICON
+	radial_element.overlays.Cut()
 	if(choice_id == NEXT_PAGE_ID)
-		E.name = "Next Page"
-		E.next_page = TRUE
-		E.overlays += ("radial_next")
+		radial_element.name = "Next Page"
+		radial_element.next_page = TRUE
+		radial_element.overlays += ("radial_next")
 	else
 		if(istext(choices_values[choice_id]))
-			E.name = choices_values[choice_id]
-		else if(E.name)
+			radial_element.name = choices_values[choice_id]
+		else if(radial_element.name)
 			var/atom/movable/AM = choices_values[choice_id] //Movables only
-			E.name = AM.name
-		E.choice = choice_id
-		E.maptext = null
-		E.next_page = FALSE
+			radial_element.name = AM.name
+		radial_element.choice = choice_id
+		radial_element.maptext = null
+		radial_element.next_page = FALSE
 		if(choices_icons[choice_id])
-			var/image/I = choices_icons[choice_id]
-			I.layer += max(((py + radius) / 10), 0)
-			E.overlays += (choices_icons[choice_id])
+			var/image/image = choices_icons[choice_id]
+			image.layer += max(((py + radius) / 10), 0)
+			radial_element.overlays += (choices_icons[choice_id])
 
 /datum/radial_menu/New()
 	close_button = new
@@ -250,9 +250,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		choices += id
 		choices_values[id] = E
 		if(new_choices[E])
-			var/I = extract_image(new_choices[E], E, use_labels)
-			if(I)
-				choices_icons[id] = I
+			var/image = extract_image(new_choices[E], E, use_labels)
+			if(image)
+				choices_icons[id] = image
 	setup_menu(use_tooltips)
 
 

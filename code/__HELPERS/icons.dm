@@ -143,13 +143,13 @@ mob
 		overlays += "white"
 
 		// Testing dynamic icon overlays
-		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
-		I.Shift(NORTH,16,1)
-		overlays+=I
+		var/icon/current_icon = icon('old_or_unused.dmi', icon_state="aqua")
+		current_icon.Shift(NORTH,16,1)
+		overlays+=current_icon
 
 		// Testing dynamic image overlays
-		I=image(icon=I,pixel_x = -32, pixel_y = 32)
-		overlays+=I
+		current_icon=image(icon=current_icon,pixel_x = -32, pixel_y = 32)
+		overlays+=current_icon
 
 		// Testing object types (and layers)
 		overlays+=/obj/effect/overlayTest
@@ -174,11 +174,11 @@ mob
 			// Give it a name for the cache
 			var/iconName = "[ckey(src.name)]_flattened.dmi"
 			// Copy the file to the rsc manually
-			var/icon/I = fcopy_rsc(getFlatIcon(src))
+			var/icon/current_icon = fcopy_rsc(getFlatIcon(src))
 			// Send the icon to src's local cache
-			src<<browse_rsc(I, iconName)
+			src<<browse_rsc(current_icon, iconName)
 			// Update the label to show it
-			winset(src,"imageLabel","image='\ref[I]'");
+			winset(src,"imageLabel","image='\ref[current_icon]'");
 
 		Add_Overlay()
 			set name = "4. Add Overlay"
@@ -186,7 +186,7 @@ mob
 
 		Stress_Test()
 			set name = "5. Stress Test"
-			for(var/i = 0 to 1000)
+			for(var/current_icon = 0 to 1000)
 				// The third parameter forces it to generate a new one, even if it's already cached
 				getFlatIcon(src,0,2)
 				if(prob(5))
@@ -195,7 +195,7 @@ mob
 
 		Cache_Test()
 			set name = "6. Cache Test"
-			for(var/i = 0 to 1000)
+			for(var/current_icon = 0 to 1000)
 				getFlatIcon(src)
 			Browse_Icon()
 
@@ -246,10 +246,10 @@ world
 		Blend(upper, ICON_ADD)
 
 /icon/proc/AddAlphaMask(mask)
-	var/icon/M = new(mask)
-	M.Blend("#ffffff", ICON_SUBTRACT)
+	var/icon/alpha_mask = new(mask)
+	alpha_mask.Blend("#ffffff", ICON_SUBTRACT)
 	// apply mask
-	Blend(M, ICON_ADD)
+	Blend(alpha_mask, ICON_ADD)
 
 /*
 	HSV format is represented as "#hhhssvv" or "#hhhssvvaa"
@@ -331,7 +331,7 @@ world
 /// appearance system (overlays/underlays, etc.) is not available.
 ///
 /// Only the first argument is required.
-/proc/getFlatIcon(image/A, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
+/proc/getFlatIcon(image/current_image, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
 	//Define... defines.
 	var/static/icon/flat_template = icon('icons/effects/effects.dmi', "nothing")
 
@@ -365,22 +365,22 @@ world
 	#define PROCESS_SET_VIS_CONTENTS 1
 	#define PROCESS_SET_OVERLAYS 2
 
-	if(!A || A.alpha <= 0)
+	if(!current_image || current_image.alpha <= 0)
 		return BLANK
 
 	var/noIcon = FALSE
 	if(start)
 		if(!defdir)
-			defdir = A.dir
+			defdir = current_image.dir
 		if(!deficon)
-			deficon = A.icon
+			deficon = current_image.icon
 		if(!defstate)
-			defstate = A.icon_state
+			defstate = current_image.icon_state
 		if(!defblend)
-			defblend = A.blend_mode
+			defblend = current_image.blend_mode
 
-	var/curicon = A.icon || deficon
-	var/curstate = A.icon_state || defstate
+	var/curicon = current_image.icon || deficon
+	var/curstate = current_image.icon_state || defstate
 
 	if(!(noIcon = (!curicon)))
 		var/curstates = icon_states(curicon)
@@ -394,18 +394,18 @@ world
 	var/base_icon_dir //We'll use this to get the icon state to display if not null BUT NOT pass it to overlays as the dir we have
 
 	//These should use the parent's direction (most likely)
-	if(!A.dir || A.dir == SOUTH)
+	if(!current_image.dir || current_image.dir == SOUTH)
 		curdir = defdir
 	else
-		curdir = A.dir
+		curdir = current_image.dir
 
 	//Try to remove/optimize this section ASAP, CPU hog.
 	//Determines if there's directionals.
 	if(!noIcon && curdir != SOUTH)
 		var/exist = FALSE
 		var/static/list/checkdirs = list(NORTH, EAST, WEST)
-		for(var/i in checkdirs) //Not using GLOB for a reason.
-			if(length(icon_states(icon(curicon, curstate, i))))
+		for(var/current_icon in checkdirs) //Not using GLOB for a reason.
+			if(length(icon_states(icon(curicon, curstate, current_icon))))
 				exist = TRUE
 				break
 		if(!exist)
@@ -416,36 +416,36 @@ world
 
 	ASSERT(!BLEND_DEFAULT) //I might just be stupid but lets make sure this define is 0.
 
-	var/curblend = A.blend_mode || defblend
+	var/curblend = current_image.blend_mode || defblend
 
-	var/atom/movable/AM = A
-	if(length(A.overlays) || length(A.underlays) || (istype(AM) && AM.vis_contents))
+	var/atom/movable/AM = current_image
+	if(length(current_image.overlays) || length(current_image.underlays) || (istype(AM) && AM.vis_contents))
 		var/icon/flat = BLANK
-		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
+		// Layers will be current_image sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
 		var/image/copy
 		// Add the atom's icon itself, without pixel_x/y offsets.
 		if(!noIcon)
-			copy = image(icon=curicon, icon_state=curstate, layer=A.layer, dir=base_icon_dir)
-			copy.color = A.color
-			copy.alpha = A.alpha
+			copy = image(icon=curicon, icon_state=curstate, layer=current_image.layer, dir=base_icon_dir)
+			copy.color = current_image.color
+			copy.alpha = current_image.alpha
 			copy.blend_mode = curblend
-			layers[copy] = A.layer
+			layers[copy] = current_image.layer
 
 		// Loop through the underlays, then vis_contents, then overlays, sorting them into the layers list
 		for(var/process_set in PROCESS_SET_UNDERLAYS to PROCESS_SET_OVERLAYS)
 			var/list/process
 			switch(process_set)
 				if(PROCESS_SET_UNDERLAYS)
-					process = A.underlays
+					process = current_image.underlays
 				if(PROCESS_SET_VIS_CONTENTS)
 					if(!istype(AM))
 						continue
-					process = A.vis_contents
+					process = current_image.vis_contents
 				else // PROCESS_SET_OVERLAYS
-					process = A.overlays
-			for(var/i in 1 to process.len)
-				var/image/current = process[i]
+					process = current_image.overlays
+			for(var/current_icon in 1 to process.len)
+				var/image/current = process[current_icon]
 				if(!current)
 					continue
 				if(process_set == PROCESS_SET_VIS_CONTENTS && !istype(current))
@@ -454,7 +454,7 @@ world
 				if(current_layer < 0)
 					if(current_layer <= -1000)
 						return flat
-					current_layer = A.layer + ((process_set ? 1000 : 0)+current_layer) / 1000
+					current_layer = current_image.layer + ((process_set ? 1000 : 0)+current_layer) / 1000
 
 				for(var/p in 1 to layers.len)
 					var/image/cmp = layers[p]
@@ -471,25 +471,25 @@ world
 		var/list/add_size[4]
 
 		for(var/V in layers)
-			var/image/I = V
-			if(I.alpha == 0)
+			var/image/current_icon = V
+			if(current_icon.alpha == 0)
 				continue
 
-			if(I == copy) // 'I' is an /image based on the object being flattened.
+			if(current_icon == copy) // 'current_icon' is an /image based on the object being flattened.
 				curblend = BLEND_OVERLAY
-				add = icon(I.icon, I.icon_state, base_icon_dir)
-			else // 'I' is an /image
-				var/image_has_icon = I.icon
+				add = icon(current_icon.icon, current_icon.icon_state, base_icon_dir)
+			else // 'current_icon' is an /image
+				var/image_has_icon = current_icon.icon
 				if(image_has_icon)
-					GENERATE_FLAT_IMAGE_ICON(add, I, I.icon, I.icon_state, base_icon_dir)
+					GENERATE_FLAT_IMAGE_ICON(add, current_icon, current_icon.icon, current_icon.icon_state, base_icon_dir)
 			if(!add)
 				continue
 			// Find the new dimensions of the flat icon to fit the added overlay
 			add_size = list(
-				min(flatX1, I.pixel_x+1),
-				max(flatX2, I.pixel_x+add.Width()),
-				min(flatY1, I.pixel_y+1),
-				max(flatY2, I.pixel_y+add.Height())
+				min(flatX1, current_icon.pixel_x+1),
+				max(flatX2, current_icon.pixel_x+add.Width()),
+				min(flatY1, current_icon.pixel_y+1),
+				max(flatY2, current_icon.pixel_y+add.Height())
 			)
 
 			if(flat_size ~! add_size)
@@ -503,16 +503,16 @@ world
 				flat_size = add_size.Copy()
 
 			// Blend the overlay into the flattened icon
-			flat.Blend(add, blendMode2iconMode(curblend), I.pixel_x + 2 - flatX1, I.pixel_y + 2 - flatY1)
+			flat.Blend(add, blendMode2iconMode(curblend), current_icon.pixel_x + 2 - flatX1, current_icon.pixel_y + 2 - flatY1)
 
-		if(A.color)
-			if(islist(A.color))
-				flat.MapColors(arglist(A.color))
+		if(current_image.color)
+			if(islist(current_image.color))
+				flat.MapColors(arglist(current_image.color))
 			else
-				flat.Blend(A.color, ICON_MULTIPLY)
+				flat.Blend(current_image.color, ICON_MULTIPLY)
 
-		if(A.alpha < 255)
-			flat.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
+		if(current_image.alpha < 255)
+			flat.Blend(rgb(255, 255, 255, current_image.alpha), ICON_MULTIPLY)
 
 		if(no_anim)
 			//Clean up repeated frames
@@ -523,7 +523,7 @@ world
 			. = icon(flat, "", SOUTH)
 	else //There's no overlays.
 		if(!noIcon)
-			GENERATE_FLAT_IMAGE_ICON(., A, curicon, curstate, base_icon_dir)
+			GENERATE_FLAT_IMAGE_ICON(., current_image, curicon, curstate, base_icon_dir)
 
 	//Clear defines
 	#undef flatX1
@@ -543,17 +543,17 @@ world
 	#undef GENERATE_FLAT_IMAGE_ICON
 	#undef BLANK
 
-/proc/getIconMask(atom/A)//By yours truly. Creates a dynamic mask for a mob/whatever. /N
-	var/icon/alpha_mask = new(A.icon,A.icon_state)//So we want the default icon and icon state of A.
-	for(var/I in A.overlays)//For every image in overlays. var/image/I will not work, don't try it.
-		if(I:layer>A.layer) continue//If layer is greater than what we need, skip it.
-		var/icon/image_overlay = new(I:icon,I:icon_state)//Blend only works with icon objects.
+/proc/getIconMask(atom/current_mask)//By yours truly. Creates a dynamic mask for a mob/whatever. /N
+	var/icon/alpha_mask = new(current_mask.icon,current_mask.icon_state)//So we want the default icon and icon state of A.
+	for(var/current_icon in current_mask.overlays)//For every image in overlays. var/image/current_icon will not work, don't try it.
+		if(current_icon:layer>current_mask.layer) continue//If layer is greater than what we need, skip it.
+		var/icon/image_overlay = new(current_icon:icon,current_icon:icon_state)//Blend only works with icon objects.
 		//Also, icons cannot directly set icon_state. Slower than changing variables but whatever.
 		alpha_mask.Blend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
 	return alpha_mask//And now return the mask.
 
-/proc/getHologramIcon(icon/A, safety=1)//If safety is on, a new icon is not created.
-	var/icon/flat_icon = safety ? A : new(A)//Has to be a new icon to not constantly change the same icon.
+/proc/getHologramIcon(icon/current_hologram, safety=1)//If safety is on, a new icon is not created.
+	var/icon/flat_icon = safety ? current_hologram : new(current_hologram)//Has to be a new icon to not constantly change the same icon.
 	flat_icon.ColorTone(rgb(125,180,225))//Let's make it bluish.
 	flat_icon.ChangeOpacity(0.5)//Make it half transparent.
 	var/icon/alpha_mask = new('icons/effects/effects.dmi', "scanline")//Scanline effect.
@@ -581,42 +581,42 @@ world
 			gap = round(gap / 1.3) // 1.3 is the emperic comb sort coefficient
 		if(gap < 1)
 			gap = 1
-		for(var/i = 1; gap + i <= result.len; i++)
-			var/atom/l = result[i] //Fucking hate
-			var/atom/r = result[gap+i] //how lists work here
-			if(l.layer > r.layer) //no "result[i].layer" for me
-				result.Swap(i, gap + i)
+		for(var/current_icon = 1; gap + current_icon <= result.len; current_icon++)
+			var/atom/resulting_icon = result[current_icon] //Fucking hate
+			var/atom/icon_length = result[gap+current_icon] //how lists work here
+			if(resulting_icon.layer > icon_length.layer) //no "result[current_icon].layer" for me
+				result.Swap(current_icon, gap + current_icon)
 				swapped = 1
 	return result
 
 
-/image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
-	A.overlays.Add(src)
-	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)
+/image/proc/flick_overlay(atom/current_atom, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
+	current_atom.overlays.Add(src)
+	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), current_atom), duration)
 
-/image/proc/flick_remove_overlay(atom/A)
-	if(A)
-		A.overlays.Remove(src)
+/image/proc/flick_remove_overlay(atom/current_atom)
+	if(current_atom)
+		current_atom.overlays.Remove(src)
 
 /mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
-	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
+	var/image/current_icon = image('icons/mob/mob.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
-			I.pixel_x = 8
+			current_icon.pixel_x = 8
 		if(64)
-			I.pixel_x = 16
-	I.layer = FLY_LAYER
-	I.appearance_flags = RESET_COLOR
+			current_icon.pixel_x = 16
+	current_icon.layer = FLY_LAYER
+	current_icon.appearance_flags = RESET_COLOR
 
-	I.color = color
-	I.flick_overlay(src, time)
+	current_icon.color = color
+	current_icon.flick_overlay(src, time)
 
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)
 		return
 
 	var/key
-	var/icon/I = thing
+	var/icon/current_icon = thing
 
 	if (!target)
 		return
@@ -630,7 +630,7 @@ world
 		targets = target
 		if (!targets.len)
 			return
-	if (!isicon(I))
+	if (!isicon(current_icon))
 		if (isfile(thing)) //special snowflake
 			var/name = sanitize_filename("[generate_asset_name(thing)].png")
 			if (!SSassets.cache[name])
@@ -640,29 +640,29 @@ world
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
-		var/atom/A = thing
+		var/atom/current_atom = thing
 
-		I = A.icon
+		current_icon = current_atom.icon
 		if (isnull(icon_state))
-			icon_state = A.icon_state
+			icon_state = current_atom.icon_state
 			if (!icon_state)
-				icon_state = initial(A.icon_state)
+				icon_state = initial(current_atom.icon_state)
 				if (isnull(dir))
-					dir = initial(A.dir)
+					dir = initial(current_atom.dir)
 
 		if (isnull(dir))
-			dir = A.dir
+			dir = current_atom.dir
 	else
 		if (isnull(dir))
 			dir = SOUTH
 		if (isnull(icon_state))
 			icon_state = ""
 
-	I = icon(I, icon_state, dir, frame, moving)
+	current_icon = icon(current_icon, icon_state, dir, frame, moving)
 
-	key = "[generate_asset_name(I)].png"
+	key = "[generate_asset_name(current_icon)].png"
 	if(!SSassets.cache[key])
-		SSassets.transport.register_asset(key, I)
+		SSassets.transport.register_asset(key, current_icon)
 	for (var/thing2 in targets)
 		SSassets.transport.send_assets(thing2, key)
 	if(sourceonly)
@@ -679,19 +679,19 @@ world
 	if (isicon(thing))
 		. = icon2html(thing, target)
 	else
-		var/icon/I = getFlatIcon(thing)
-		. = icon2html(I, target, sourceonly = sourceonly)
+		var/icon/current_icon = getFlatIcon(thing)
+		. = icon2html(current_icon, target, sourceonly = sourceonly)
 
 	/* Debugguing due to gamebreaking performance in the Blend calls made by getFlatIcon (think 200ms+ per icon) and overtimes */
 	if(istype(thing, /atom))
-		var/atom/D = thing
-		log_debug("costly_icon2html called on ref=[REF(D)], instance=[D], type=[D.type], with [length(D.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
+		var/atom/debug_obj = thing
+		log_debug("costly_icon2html called on ref=[REF(debug_obj)], instance=[debug_obj], type=[debug_obj.type], with [length(debug_obj.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
 	else if(isicon(thing))
-		var/icon/D = thing
-		log_debug("costly_icon2html called on icon ref=[REF(D)], instance=[D] finished in [(REALTIMEOFDAY-start_time) / 10]s")
+		var/icon/debug_obj = thing
+		log_debug("costly_icon2html called on icon ref=[REF(debug_obj)], instance=[debug_obj] finished in [(REALTIMEOFDAY-start_time) / 10]s")
 	else
-		var/datum/D = thing
-		log_debug("costly_icon2html called on unknown ref=[REF(D)], instance=[D], type=[D.type]")
+		var/datum/debug_obj = thing
+		log_debug("costly_icon2html called on unknown ref=[REF(debug_obj)], instance=[debug_obj], type=[debug_obj.type]")
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name
@@ -795,10 +795,10 @@ world
 		arm_equipment(body, preset)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-		for(var/D in showDirs)
-			body.setDir(D)
+		for(var/direction in showDirs)
+			body.setDir(direction)
 			var/icon/partial = getFlatIcon(body)
-			out_icon.Insert(partial, dir = D)
+			out_icon.Insert(partial, dir = direction)
 
 		humanoid_icon_cache[icon_id] = out_icon
 		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)

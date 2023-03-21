@@ -121,10 +121,10 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		check_range = 1 // everything else, like infect-on-contact things, only infect things on top of it
 
 	if(isturf(source.loc))
-		for(var/mob/living/carbon/M in oview(check_range, source))
-			if(isturf(M.loc))
-				if(AStar(source.loc, M.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
-					M.contract_disease(src, 0, 1, force_spread)
+		for(var/mob/living/carbon/mob in oview(check_range, source))
+			if(isturf(mob.loc))
+				if(AStar(source.loc, mob.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
+					mob.contract_disease(src, 0, 1, force_spread)
 
 	return
 
@@ -137,11 +137,11 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		spread(holder)
 
 	if(affected_mob)
-		for(var/datum/disease/D in affected_mob.viruses)
-			if(D != src)
-				if(IsSame(D))
-					//error("Deleting [D.name] because it's the same as [src.name].")
-					qdel(D) // if there are somehow two viruses of the same kind in the system, delete the other one
+		for(var/datum/disease/current_disease in affected_mob.viruses)
+			if(current_disease != src)
+				if(IsSame(current_disease))
+					//error("Deleting [current_disease.name] because it's the same as [src.name].")
+					qdel(current_disease) // if there are somehow two viruses of the same kind in the system, delete the other one
 
 	if(holder == affected_mob)
 		if((affected_mob.stat != DEAD) || survive_mob_death) //he's alive or disease transcends death.
@@ -170,8 +170,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 /datum/disease/proc/remove_virus()
 	affected_mob.viruses -= src
 	if(ishuman(affected_mob))
-		var/mob/living/carbon/human/H = affected_mob
-		H.med_hud_set_status()
+		var/mob/living/carbon/human/current_human = affected_mob
+		current_human.med_hud_set_status()
 
 
 

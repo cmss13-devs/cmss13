@@ -83,10 +83,10 @@ Quick adjacency (to turf):
 		return TRUE
 	if(!isturf(loc))
 		return FALSE
-	for(var/turf/T in locs)
-		if(isnull(T))
+	for(var/turf/current_turf in locs)
+		if(isnull(current_turf))
 			continue
-		if(T.Adjacent(neighbor,src))
+		if(current_turf.Adjacent(neighbor,src))
 			return TRUE
 	return FALSE
 
@@ -127,16 +127,16 @@ Quick adjacency (to turf):
 	The border_only flag allows you to not objects (for source and destination squares)
 */
 /turf/proc/ClickCross(target_dir, border_only, target_atom = null)
-	for(var/obj/O in src)
-		if(!O.density || O == target_atom || O.throwpass)
+	for(var/obj/current_obj in src)
+		if(!current_obj.density || current_obj == target_atom || current_obj.throwpass)
 			continue // throwpass is used for anything you can click through
 
-		if(O.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
-			if(O.dir & target_dir || O.dir&(O.dir-1)) // full tile windows are just diagonals mechanically
-				var/obj/structure/window/W = target_atom
-				if (!istype(W))
+		if(current_obj.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
+			if(current_obj.dir & target_dir || current_obj.dir&(current_obj.dir-1)) // full tile windows are just diagonals mechanically
+				var/obj/structure/window/window = target_atom
+				if (!istype(window))
 					return FALSE
-				else if (!W.is_full_window()) //exception for breaking full tile windows on top of single pane windows
+				else if (!window.is_full_window()) //exception for breaking full tile windows on top of single pane windows
 					return FALSE
 
 		else if( !border_only ) // dense, not on border, cannot pass over
@@ -289,17 +289,17 @@ Quick adjacency (to turf):
 
 	var/turf/curT = get_turf(A)
 	var/is_turf = isturf(A)
-	for(var/turf/T in getline2(A, src))
-		if(curT == T)
+	for(var/turf/current_turf in getline2(A, src))
+		if(curT == current_turf)
 			continue
-		if(T.density)
-			return T
-		for(var/atom/potential_dense_object in T)
+		if(current_turf.density)
+			return current_turf
+		for(var/atom/potential_dense_object in current_turf)
 			if(potential_dense_object.density)
 				return potential_dense_object
-		var/atom/result = T.handle_barriers(curT, list(A) + ignore)
-		if(result != T)
+		var/atom/result = current_turf.handle_barriers(curT, list(A) + ignore)
+		if(result != current_turf)
 			return result
-		else if(is_turf && T == A || T == A.loc)
+		else if(is_turf && current_turf == A || current_turf == A.loc)
 			break
 	return src

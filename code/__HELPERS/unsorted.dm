@@ -173,7 +173,7 @@
 	var/blocking_dir = 0
 
 	var/obstacle
-	var/turf/T
+	var/turf/current_turf
 	var/atom/A
 
 	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
@@ -189,12 +189,12 @@
 
 	// Check for atoms in adjacent turf EAST/WEST
 	if (fd1 && fd1 != fdir)
-		T = get_step(start_turf, fd1)
-		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
+		current_turf = get_step(start_turf, fd1)
+		if (current_turf.BlockedExitDirs(mover, fd2) || current_turf.BlockedPassDirs(mover, fd1))
 			blocking_dir |= fd1
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				return T
-		for (obstacle in T)
+				return current_turf
+		for (obstacle in current_turf)
 			if(obstacle in forget)
 				continue
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
@@ -208,12 +208,12 @@
 
 	// Check for atoms in adjacent turf NORTH/SOUTH
 	if (fd2 && fd2 != fdir)
-		T = get_step(start_turf, fd2)
-		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
+		current_turf = get_step(start_turf, fd2)
+		if (current_turf.BlockedExitDirs(mover, fd1) || current_turf.BlockedPassDirs(mover, fd2))
 			blocking_dir |= fd2
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				return T
-		for (obstacle in T)
+				return current_turf
+		for (obstacle in current_turf)
 			if(obstacle in forget)
 				continue
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
@@ -245,8 +245,8 @@
 
 
 /proc/TurfBlockedNonWindow(turf/loc)
-	for(var/obj/O in loc)
-		if(O.density && !istype(O, /obj/structure/window))
+	for(var/obj/current_obj in loc)
+		if(current_obj.density && !istype(current_obj, /obj/structure/window))
 			return 1
 	return 0
 
@@ -280,10 +280,10 @@
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
 		var/mob_ref = WEAKREF(src)
-		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/R in L)
-				if(R.fields["ref"] == mob_ref)
-					R.fields["name"] = newname
+		for(var/list/current_list in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
+			for(var/datum/data/record/records in current_list)
+				if(records.fields["ref"] == mob_ref)
+					records.fields["name"] = newname
 					break
 
 		//update our pda and id if we have them on our person
@@ -315,11 +315,11 @@
 		if((world.time-time_passed)>300)
 			return //took too long
 		newname = reject_bad_name(newname,allow_numbers) //returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
-		for(var/mob/living/M in GLOB.alive_mob_list)
-			if(M == src)
+		for(var/mob/living/mob in GLOB.alive_mob_list)
+			if(mob == src)
 				continue
 
-			if(!newname || M.real_name == newname)
+			if(!newname || mob.real_name == newname)
 				newname = null
 				break
 
@@ -332,9 +332,9 @@
 
 	if(cmptext("ai",role))
 		if(isAI(src))
-			var/mob/living/silicon/ai/A = src
+			var/mob/living/silicon/ai/ai = src
 			oldname = null//don't bother with the records update crap
-			A.SetName(newname)
+			ai.SetName(newname)
 
 	fully_replace_character_name(oldname,newname)
 
@@ -343,21 +343,21 @@
 //When a borg is activated, it can choose which AI it wants to be slaved to
 /proc/active_ais()
 	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
+	for(var/mob/living/silicon/ai/ai in GLOB.alive_mob_list)
+		if(ai.stat == DEAD)
 			continue
-		if(A.control_disabled == 1)
+		if(ai.control_disabled == 1)
 			continue
-		. += A
+		. += ai
 	return .
 
 //Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
 /proc/select_active_ai_with_fewest_borgs()
 	var/mob/living/silicon/ai/selected
 	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots > A.connected_robots))
-			selected = A
+	for(var/mob/living/silicon/ai/ai in active)
+		if(!selected || (selected.connected_robots > ai.connected_robots))
+			selected = ai
 
 	return selected
 
@@ -376,17 +376,17 @@
 	var/list/key_list = list()
 	var/list/logged_list = list()
 	for(var/named in old_list)
-		var/mob/M = old_list[named]
-		if(isSilicon(M))
-			AI_list |= M
-		else if(isobserver(M) || M.stat == 2)
-			Dead_list |= M
-		else if(M.key && M.client)
-			keyclient_list |= M
-		else if(M.key)
-			key_list |= M
+		var/mob/mob = old_list[named]
+		if(isSilicon(mob))
+			AI_list |= mob
+		else if(isobserver(mob) || mob.stat == 2)
+			Dead_list |= mob
+		else if(mob.key && mob.client)
+			keyclient_list |= mob
+		else if(mob.key)
+			key_list |= mob
 		else
-			logged_list |= M
+			logged_list |= mob
 		old_list.Remove(named)
 	var/list/new_list = list()
 	new_list += AI_list
@@ -402,25 +402,25 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
+	for(var/mob/mob in mobs)
 		// This thing doesnt want to be seen, a bit snowflake.
-		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
+		if(mob.invisibility == INVISIBILITY_MAXIMUM && mob.alpha == 0)
 			continue
 
-		var/name = M.name
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -429,19 +429,19 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if(isobserver(M))
+		if(isobserver(mob))
 			name += " \[ghost\]"
-		else if(M.stat == DEAD)
+		else if(mob.stat == DEAD)
 			name += " \[dead\]"
-		creatures[name] = M
+		creatures[name] = mob
 	return creatures
 
 /proc/getpreds()
@@ -449,22 +449,22 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(!isyautja(M)) continue
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		if(!isyautja(mob)) continue
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -473,23 +473,23 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		if(isyautja(mob)) continue
+		if(iszombie(mob)) continue
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -498,23 +498,23 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		if(isyautja(mob)) continue
+		if(iszombie(mob)) continue
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -523,23 +523,23 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		if(isyautja(mob)) continue
+		if(iszombie(mob)) continue
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -548,23 +548,23 @@
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isyautja(M)) continue
-		if(iszombie(M)) continue
-		var/name = M.name
+	for(var/mob/mob in mobs)
+		if(isyautja(mob)) continue
+		if(iszombie(mob)) continue
+		var/name = mob.name
 		if (name in names)
 			namecounts[name]++
 			name = "[name] ([namecounts[name]])"
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
+		if (mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if (mob.stat == 2)
 			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(istype(mob, /mob/dead/observer/))
 			name += " \[ghost\]"
-		creatures[name] = M
+		creatures[name] = mob
 
 	return creatures
 
@@ -598,15 +598,15 @@
 	var/list/holograms = list()
 	var/list/namecounts = list()
 	for(var/i in GLOB.hologram_list)
-		var/mob/hologram/H = i
-		var/name = H.name
+		var/mob/hologram/hologram = i
+		var/name = hologram.name
 		if(name in namecounts)
 			namecounts[name]++
 			name = "[name] #([namecounts[name]])"
 		else
 			namecounts[name] = 1
 
-		holograms[name] = H
+		holograms[name] = hologram
 
 	return holograms
 
@@ -614,24 +614,24 @@
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortAtom(GLOB.mob_list)
-	for(var/mob/living/silicon/ai/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/silicon/robot/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/carbon/human/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/brain/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/carbon/xenomorph/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/dead/observer/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/new_player/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/carbon/human/monkey/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/simple_animal/M in sortmob)
-		moblist.Add(M)
+	for(var/mob/living/silicon/ai/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/silicon/robot/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/carbon/human/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/brain/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/carbon/xenomorph/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/dead/observer/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/new_player/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/carbon/human/monkey/mob in sortmob)
+		moblist.Add(mob)
+	for(var/mob/living/simple_animal/mob in sortmob)
+		moblist.Add(mob)
 	for(var/mob/camera/imaginary_friend/friend in sortmob)
 		moblist += friend
 	return moblist
@@ -639,100 +639,100 @@
 /proc/sortxenos()
 	var/list/xenolist = list()
 	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
-	for(var/mob/living/carbon/xenomorph/M in sortmob)
-		if(!M.client)
+	for(var/mob/living/carbon/xenomorph/mob in sortmob)
+		if(!mob.client)
 			continue
-		xenolist.Add(M)
+		xenolist.Add(mob)
 	return xenolist
 
 /proc/sortpreds()
 	var/list/predlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.species.name == "Yautja")
+	for(var/mob/living/carbon/human/mob in sortmob)
+		if(!mob.client || !mob.species.name == "Yautja")
 			continue
-		predlist.Add(M)
+		predlist.Add(mob)
 	return predlist
 
 /proc/sorthumans()
 	var/list/humanlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
+	for(var/mob/living/carbon/human/mob in sortmob)
+		if(!mob.client || mob.species.name == "Yautja")
 			continue
-		humanlist.Add(M)
+		humanlist.Add(mob)
 	return humanlist
 
 /proc/sortsurvivors()
 	var/list/survivorlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
+	for(var/mob/living/carbon/human/mob in sortmob)
+		if(!mob.client || mob.species.name == "Yautja")
 			continue
-		if(M.faction == FACTION_SURVIVOR)
-			survivorlist.Add(M)
+		if(mob.faction == FACTION_SURVIVOR)
+			survivorlist.Add(mob)
 	return survivorlist
 
 /proc/sortertmembers()
 	var/list/ertmemberlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client)
+	for(var/mob/living/carbon/human/mob in sortmob)
+		if(!mob.client)
 			continue
-		if(M.faction in FACTION_LIST_ERT)
-			ertmemberlist.Add(M)
+		if(mob.faction in FACTION_LIST_ERT)
+			ertmemberlist.Add(mob)
 	return ertmemberlist
 
 /proc/sortsynths()
 	var/list/synthlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !issynth(M))
+	for(var/mob/living/carbon/human/mob in sortmob)
+		if(!mob.client || !issynth(mob))
 			continue
-		synthlist.Add(M)
+		synthlist.Add(mob)
 	return synthlist
 
 /proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
-	var/mob/M
-	var/client/C
+	var/mob/mob
+	var/client/current_client
 	var/key
 
 	if(!whom) return "*null*"
 	if(istype(whom, /client))
-		C = whom
-		M = C.mob
-		key = C.key
+		current_client = whom
+		mob = current_client.mob
+		key = current_client.key
 	else if(ismob(whom))
-		M = whom
-		C = M.client
-		key = M.key
+		mob = whom
+		current_client = mob.client
+		key = mob.key
 	else if(istype(whom, /datum))
-		var/datum/D = whom
-		return "*invalid:[D.type]*"
+		var/datum/current_datum = whom
+		return "*invalid:[current_datum.type]*"
 	else
 		return "*invalid*"
 
 	. = ""
 
 	if(key)
-		if(include_link && C)
-			. += "<a href='?priv_msg=[C.ckey]'>"
+		if(include_link && current_client)
+			. += "<a href='?priv_msg=[current_client.ckey]'>"
 
 		. += key
 
 		if(include_link)
-			if(C) . += "</a>"
+			if(current_client) . += "</a>"
 			else . += " (DC)"
 	else
 		. += "*no key*"
 
-	if(include_name && M)
+	if(include_name && mob)
 		var/name
 
-		if(M.real_name)
-			name = M.real_name
-		else if(M.name)
-			name = M.name
+		if(mob.real_name)
+			name = mob.real_name
+		else if(mob.name)
+			name = mob.name
 
 		. += "/([name])"
 
@@ -776,11 +776,11 @@
 		turfs -= get_turf(center)
 	. = list()
 	for(var/V in turfs)
-		var/turf/T = V
-		. += T
-		. += T.contents
+		var/turf/current_turf = V
+		. += current_turf
+		. += current_turf.contents
 		if(areas)
-			. |= T.loc
+			. |= current_turf.loc
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -892,26 +892,26 @@
 	var/steps = 0
 	var/has_nightvision = FALSE
 	if(ismob(source))
-		var/mob/M = source
-		has_nightvision = M.see_in_dark >= 12
+		var/mob/mob = source
+		has_nightvision = mob.see_in_dark >= 12
 	if(!has_nightvision && target_turf.lighting_lumcount == 0)
 		return FALSE
 
 	while(current != target_turf)
 		if(steps > length) return FALSE
 		if(!current || current.opacity) return FALSE
-		for(var/atom/A in current)
-			if(A && A.opacity) return FALSE
+		for(var/atom/current_atom in current)
+			if(current_atom && current_atom.opacity) return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
 	return TRUE
 
-/proc/is_blocked_turf(turf/T)
-	if(T.density)
+/proc/is_blocked_turf(turf/current_turf)
+	if(current_turf.density)
 		return TRUE
-	for(var/atom/A in T)
-		if(A.density)//&&A.anchored
+	for(var/atom/current_atom in current_turf)
+		if(current_atom.density)//&&current_atom.anchored
 			return TRUE
 	return FALSE
 
@@ -1050,9 +1050,9 @@ var/global/image/action_purple_power_up
 		return FALSE
 
 	// This var will only be used for checks that require target to be living.
-	var/mob/living/T = target
+	var/mob/living/target_mob = target
 	var/target_is_mob = FALSE
-	if(has_target && istype(T))
+	if(has_target && istype(target_mob))
 		target_is_mob = TRUE
 
 	var/image/busy_icon
@@ -1074,8 +1074,8 @@ var/global/image/action_purple_power_up
 	busy_user.resisting = FALSE
 	busy_user.clicked_something = list()
 	if(has_target && target_is_mob)
-		T.resisting = FALSE
-		T.clicked_something = list()
+		target_mob.resisting = FALSE
+		target_mob.clicked_something = list()
 
 	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
@@ -1094,10 +1094,10 @@ var/global/image/action_purple_power_up
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
 
-	if(has_target && istype(T))
-		cur_target_zone_sel = T.zone_selected
-		target_holding = T.get_active_hand()
-		cur_target_lying = T.lying
+	if(has_target && istype(target_mob))
+		cur_target_zone_sel = target_mob.zone_selected
+		target_holding = target_mob.get_active_hand()
+		cur_target_lying = target_mob.lying
 
 	. = TRUE
 	for(var/i in 1 to numticks)
@@ -1117,17 +1117,17 @@ var/global/image/action_purple_power_up
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_UNCONSCIOUS && busy_user.stat || \
-			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.stat)
+			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && target_mob.stat)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_KNOCKED_DOWN && busy_user.knocked_down || \
-			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
+			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && target_mob.knocked_down)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_STUNNED && busy_user.stunned || \
-			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
+			target_is_mob && (target_flags & INTERRUPT_STUNNED && target_mob.stunned)
 		)
 			. = FALSE
 			break
@@ -1147,19 +1147,19 @@ var/global/image/action_purple_power_up
 				break
 		if(target_is_mob && target_flags & INTERRUPT_NEEDHAND)
 			if(target_holding)
-				if(!target_holding.loc || T.get_active_hand() != target_holding)
+				if(!target_holding.loc || target_mob.get_active_hand() != target_holding)
 					. = FALSE
 					break
-			else if(T.get_active_hand())
+			else if(target_mob.get_active_hand())
 				. = FALSE
 				break
 		if(user_flags & INTERRUPT_RESIST && busy_user.resisting || \
-			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
+			target_is_mob && (target_flags & INTERRUPT_RESIST && target_mob.resisting)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != busy_user.zone_selected || \
-			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected)
+			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != target_mob.zone_selected)
 		)
 			. = FALSE
 			break
@@ -1167,37 +1167,37 @@ var/global/image/action_purple_power_up
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
-			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && target_mob.clicked_something["left"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
-			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && target_mob.clicked_something["right"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
-			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && target_mob.clicked_something["left"] && target_mob.clicked_something["shift"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
-			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && target_mob.clicked_something["left"] && target_mob.clicked_something["alt"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
-			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && target_mob.clicked_something["left"] && target_mob.clicked_something["ctrl"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
-			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && target_mob.clicked_something["middle"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.lying != cur_user_lying || \
-			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && target_mob.lying != cur_target_lying)
 		)
 			. = FALSE
 			break
@@ -1210,7 +1210,7 @@ var/global/image/action_purple_power_up
 	busy_user.action_busy--
 	busy_user.resisting = FALSE
 	if(target_is_mob)
-		T.resisting = FALSE
+		target_mob.resisting = FALSE
 	busy_user.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)
@@ -1225,9 +1225,9 @@ var/global/image/action_purple_power_up
 //Returns: all the non-lighting areas in the world, sorted.
 /proc/return_sorted_areas()
 	var/list/area/AL = list()
-	for(var/area/A in GLOB.sorted_areas)
-		if(!A.lighting_subarea)
-			AL += A
+	for(var/area/current_area in GLOB.sorted_areas)
+		if(!current_area.lighting_subarea)
+			AL += current_area
 	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -1244,16 +1244,16 @@ var/global/image/action_purple_power_up
 		areatype = areatemp.type
 
 	var/list/turfs = list()
-	var/area/A = GLOB.areas_by_type[areatype]
+	var/area/current_area = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
 	var/list/area/LA
-	if(!length(A.related))
-		LA = list(A)
-	else LA = A.related
+	if(!length(current_area.related))
+		LA = list(current_area)
+	else LA = current_area.related
 	for(var/area/Ai in LA)
-		for(var/turf/T in Ai)
-			turfs += T
+		for(var/turf/current_turf in Ai)
+			turfs += current_turf
 
 	return turfs
 
@@ -1275,76 +1275,76 @@ var/global/image/action_purple_power_up
 
 	return locate(x_pos, y_pos, z_pos)
 
-/area/proc/move_contents_to(area/A, turftoleave=null, direction = null)
+/area/proc/move_contents_to(area/current_area, turftoleave=null, direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
 	//    Movement based on lower left corner. Tiles that do not fit
 	//  into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!current_area || !src) return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
-	var/list/turfs_trg = get_area_turfs(A.type)
+	var/list/turfs_trg = get_area_turfs(current_area.type)
 
 	var/src_min_x = 0
 	var/src_min_y = 0
-	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x = T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y = T.y
+	for (var/turf/current_turf in turfs_src)
+		if(current_turf.x < src_min_x || !src_min_x) src_min_x = current_turf.x
+		if(current_turf.y < src_min_y || !src_min_y) src_min_y = current_turf.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
-	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x = T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y = T.y
+	for (var/turf/current_turf in turfs_trg)
+		if(current_turf.x < trg_min_x || !trg_min_x) trg_min_x = current_turf.x
+		if(current_turf.y < trg_min_y || !trg_min_y) trg_min_y = current_turf.y
 
 	var/list/refined_src = new/list()
-	for(var/turf/T in turfs_src)
-		refined_src += T
-		refined_src[T] = new/datum/coords
-		var/datum/coords/C = refined_src[T]
-		C.x_pos = (T.x - src_min_x)
-		C.y_pos = (T.y - src_min_y)
+	for(var/turf/current_turf in turfs_src)
+		refined_src += current_turf
+		refined_src[current_turf] = new/datum/coords
+		var/datum/coords/coordinates = refined_src[current_turf]
+		coordinates.x_pos = (current_turf.x - src_min_x)
+		coordinates.y_pos = (current_turf.y - src_min_y)
 
 	var/list/refined_trg = new/list()
-	for(var/turf/T in turfs_trg)
-		refined_trg += T
-		refined_trg[T] = new/datum/coords
-		var/datum/coords/C = refined_trg[T]
-		C.x_pos = (T.x - trg_min_x)
-		C.y_pos = (T.y - trg_min_y)
+	for(var/turf/current_turf in turfs_trg)
+		refined_trg += current_turf
+		refined_trg[current_turf] = new/datum/coords
+		var/datum/coords/coordinates = refined_trg[current_turf]
+		coordinates.x_pos = (current_turf.x - trg_min_x)
+		coordinates.y_pos = (current_turf.y - trg_min_y)
 
 	var/list/fromupdate = new/list()
 	var/list/toupdate = new/list()
 
 	moving:
-		for (var/turf/T in refined_src)
-			var/datum/coords/C_src = refined_src[T]
-			for (var/turf/B in refined_trg)
-				var/datum/coords/C_trg = refined_trg[B]
+		for (var/turf/current_turf in refined_src)
+			var/datum/coords/C_src = refined_src[current_turf]
+			for (var/turf/refined_turf in refined_trg)
+				var/datum/coords/C_trg = refined_trg[refined_turf]
 				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
 
-					var/old_dir1 = T.dir
-					var/old_icon_state1 = T.icon_state
-					var/old_icon1 = T.icon
+					var/old_dir1 = current_turf.dir
+					var/old_icon_state1 = current_turf.icon_state
+					var/old_icon1 = current_turf.icon
 
-					var/turf/X = B.ChangeTurf(T.type)
-					if (X)
-						X.setDir(old_dir1)
-						X.icon_state = old_icon_state1
-						X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
+					var/turf/final_turf = refined_turf.ChangeTurf(current_turf.type)
+					if (final_turf)
+						final_turf.setDir(old_dir1)
+						final_turf.icon_state = old_icon_state1
+						final_turf.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 
 					/* Quick visual fix for some weird shuttle corner artefacts when on transit space tiles */
-					if(direction && findtext(X.icon_state, "swall_s"))
+					if(direction && findtext(final_turf.icon_state, "swall_s"))
 
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
-						corner.forceMove(X)
+						corner.forceMove(final_turf)
 						corner.density = TRUE
 						corner.anchored = TRUE
-						corner.icon = X.icon
-						corner.icon_state = replacetext(X.icon_state, "_s", "_f")
+						corner.icon = final_turf.icon
+						corner.icon_state = replacetext(final_turf.icon_state, "_s", "_f")
 						corner.tag = "delete me"
 						corner.name = "wall"
 
@@ -1355,39 +1355,39 @@ var/global/image/action_purple_power_up
 
 
 						// Take on the icon of a neighboring scrolling space icon
-						X.icon = nextturf.icon
-						X.icon_state = nextturf.icon_state
+						final_turf.icon = nextturf.icon
+						final_turf.icon_state = nextturf.icon_state
 
 
-					for(var/obj/O in T)
+					for(var/obj/current_obj in current_turf)
 						// Reset the shuttle corners
-						if(O.tag == "delete me")
-							X.icon = 'icons/turf/shuttle.dmi'
-							X.icon_state = replacetext(O.icon_state, "_f", "_s") // revert the turf to the old icon_state
-							X.name = "wall"
-							qdel(O) // prevents multiple shuttle corners from stacking
+						if(current_obj.tag == "delete me")
+							final_turf.icon = 'icons/turf/shuttle.dmi'
+							final_turf.icon_state = replacetext(current_obj.icon_state, "_f", "_s") // revert the turf to the old icon_state
+							final_turf.name = "wall"
+							qdel(current_obj) // prevents multiple shuttle corners from stacking
 							continue
-						if(!istype(O,/obj)) continue
-						O.forceMove(X)
-					for(var/mob/M in T)
-						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
-						M.forceMove(X)
+						if(!istype(current_obj,/obj)) continue
+						current_obj.forceMove(final_turf)
+					for(var/mob/mob in current_turf)
+						if(!istype(mob,/mob) || istype(mob, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
+						mob.forceMove(final_turf)
 
-// var/area/AR = X.loc
+// var/area/AR = final_turf.loc
 
 // if(AR.lighting_use_dynamic) //TODO: rewrite this code so it's not messed by lighting ~Carn
-// X.opacity = !X.opacity
-// X.SetOpacity(!X.opacity)
+// final_turf.opacity = !final_turf.opacity
+// final_turf.SetOpacity(!final_turf.opacity)
 
-					toupdate += X
+					toupdate += final_turf
 
 					if(turftoleave)
-						fromupdate += T.ChangeTurf(turftoleave)
+						fromupdate += current_turf.ChangeTurf(turftoleave)
 					else
-						T.ChangeTurf(/turf/open/space)
+						current_turf.ChangeTurf(/turf/open/space)
 
-					refined_src -= T
-					refined_trg -= B
+					refined_src -= current_turf
+					refined_trg -= refined_turf
 					continue moving
 
 	var/list/doors = new/list()
@@ -1489,45 +1489,45 @@ var/list/WALLITEMS = list(
 	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
 	)
 /proc/gotwallitem(loc, dir)
-	for(var/obj/O in loc)
+	for(var/obj/current_obj in loc)
 		for(var/item in WALLITEMS)
-			if(istype(O, item))
+			if(istype(current_obj, item))
 				//Direction works sometimes
-				if(O.dir == dir)
+				if(current_obj.dir == dir)
 					return 1
 
 				//Some stuff doesn't use dir properly, so we need to check pixel instead
 				switch(dir)
 					if(SOUTH)
-						if(O.pixel_y > 10)
+						if(current_obj.pixel_y > 10)
 							return 1
 					if(NORTH)
-						if(O.pixel_y < -10)
+						if(current_obj.pixel_y < -10)
 							return 1
 					if(WEST)
-						if(O.pixel_x > 10)
+						if(current_obj.pixel_x > 10)
 							return 1
 					if(EAST)
-						if(O.pixel_x < -10)
+						if(current_obj.pixel_x < -10)
 							return 1
 
 
 	//Some stuff is placed directly on the wallturf (signs)
-	for(var/obj/O in get_step(loc, dir))
+	for(var/obj/current_obj in get_step(loc, dir))
 		for(var/item in WALLITEMS)
-			if(istype(O, item))
-				if(O.pixel_x == 0 && O.pixel_y == 0)
+			if(istype(current_obj, item))
+				if(current_obj.pixel_x == 0 && current_obj.pixel_y == 0)
 					return 1
 	return 0
 
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
 
-/proc/getline(atom/M, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
-	var/px=M.x //starting x
-	var/py=M.y
-	var/line[] = list(locate(px,py,M.z))
-	var/dx=N.x-px //x distance
+/proc/getline(atom/mob, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
+	var/px=mob.x //starting x
+	var/py=mob.y
+	var/line[] = list(locate(px,py,mob.z))
+	var/dx=N.x-px
 	var/dy=N.y-py
 	var/dxabs=abs(dx)//Absolute value of x distance
 	var/dyabs=abs(dy)
@@ -1544,7 +1544,7 @@ var/list/WALLITEMS = list(
 				py+=sdy
 			px+=sdx //Step on in x direction
 			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)//Add the turf to the list
+				line+=locate(px,py,mob.z)//Add the turf to the list
 	else
 		for(j=0;j<dyabs;j++)
 			x+=dxabs
@@ -1553,7 +1553,7 @@ var/list/WALLITEMS = list(
 				px+=sdx
 			py+=sdy
 			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)
+				line+=locate(px,py,mob.z)
 	return line
 
 //Bresenham's algorithm. This one deals efficiently with all 8 octants.
@@ -1634,9 +1634,9 @@ var/list/WALLITEMS = list(
 	if(!origin)
 		return
 	var/list/turfs = list()
-	for(var/turf/T in orange(origin, outer_range))
-		if(!inner_range || get_dist(origin, T) >= inner_range)
-			turfs += T
+	for(var/turf/current_turf in orange(origin, outer_range))
+		if(!inner_range || get_dist(origin, current_turf) >= inner_range)
+			turfs += current_turf
 	if(turfs.len)
 		return pick(turfs)
 
@@ -1770,12 +1770,12 @@ var/list/WALLITEMS = list(
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
 	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 		if(isxeno(user))
-			var/mob/living/carbon/xenomorph/X = user
-			if(X.selected_ability)
+			var/mob/living/carbon/xenomorph/xenomorph = user
+			if(xenomorph.selected_ability)
 				return FALSE
 		else if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.selected_ability)
+			var/mob/living/carbon/human/human = user
+			if(human.selected_ability)
 				return FALSE
 	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
@@ -1787,8 +1787,8 @@ var/list/WALLITEMS = list(
 	if(length(list_or_datum))
 		list_or_datum[var_name] = var_value
 		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
+	var/datum/current_datum = list_or_datum
+	current_datum.vars[var_name] = var_value
 
 //don't question just accept
 /proc/pass(...)
@@ -1833,17 +1833,17 @@ var/list/WALLITEMS = list(
 
 #define UNTIL(X) while(!(X)) stoplag()
 
-/proc/IsValidSrc(datum/D)
-	if(istype(D))
-		return !QDELETED(D)
+/proc/IsValidSrc(datum/current_datum)
+	if(istype(current_datum))
+		return !QDELETED(current_datum)
 	return FALSE
 
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
 	GLOB.sorted_areas = list()
 
-	for(var/area/A in world)
-		GLOB.sorted_areas.Add(A)
+	for(var/area/current_area in world)
+		GLOB.sorted_areas.Add(current_area)
 
 	sortTim(GLOB.sorted_areas, GLOBAL_PROC_REF(cmp_name_asc))
 
@@ -1853,11 +1853,11 @@ var/list/WALLITEMS = list(
 	var/list/processing = list(src)
 	var/list/assembled = list()
 	while(processing.len)
-		var/atom/A = processing[1]
+		var/atom/current_atom = processing[1]
 		processing.Cut(1,2)
-		if(!ignore_typecache[A.type])
-			processing += A.contents
-			assembled += A
+		if(!ignore_typecache[current_atom.type])
+			processing += current_atom.contents
+			assembled += current_atom
 	return assembled
 
 // Returns a list where [1] is all x values and [2] is all y values that overlap between the given pair of rectangles
@@ -1895,28 +1895,28 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	RETURN_TYPE(original.type)
 	if(!original)
 		return
-	var/atom/O
+	var/atom/current_atom
 
 	if(sameloc)
-		O = new original.type(original.loc)
+		current_atom = new original.type(original.loc)
 	else
-		O = new original.type(newloc)
+		current_atom = new original.type(newloc)
 
-	if(perfectcopy && O && original)
+	if(perfectcopy && current_atom && original)
 		for(var/V in original.vars - GLOB.duplicate_forbidden_vars)
 			if(islist(original.vars[V]))
-				var/list/L = original.vars[V]
-				O.vars[V] = L.Copy()
+				var/list/current_list = original.vars[V]
+				current_atom.vars[V] = current_list.Copy()
 			else if(istype(original.vars[V], /datum) || ismob(original.vars[V]))
 				continue // this would reference the original's object, that will break when it is used or deleted.
 			else
-				O.vars[V] = original.vars[V]
+				current_atom.vars[V] = original.vars[V]
 
-	if(ismob(O)) //Overlays are carried over despite disallowing them, if a fix is found remove this.
-		var/mob/M = O
-		M.overlays.Cut()
-		M.regenerate_icons()
-	return O
+	if(ismob(current_atom)) //Overlays are carried over despite disallowing them, if a fix is found remove this.
+		var/mob/mob = current_atom
+		mob.overlays.Cut()
+		mob.regenerate_icons()
+	return current_atom
 
 /proc/convert_to_json_text(json_file_string)
 	var/json_file = file(json_file_string)
@@ -1929,22 +1929,22 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/list/mobs = sortmobs()
 	var/list/namecounts = list()
 	var/list/pois = list()
-	for(var/mob/M as anything in mobs)
-		if(skip_mindless && (!M.mind && !M.ckey))
+	for(var/mob/mob as anything in mobs)
+		if(skip_mindless && (!mob.mind && !mob.ckey))
 			continue
-		if(M.client?.admin_holder)
-			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+		if(mob.client?.admin_holder)
+			if(mob.client.admin_holder.fakekey || mob.client.admin_holder.invisimined) //stealthmins
 				continue
-		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+		var/name = avoid_assoc_duplicate_keys(mob.name, namecounts)
 
-		if(M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if(M.stat == DEAD && specify_dead_role)
-			if(isobserver(M))
+		if(mob.real_name && mob.real_name != mob.name)
+			name += " \[[mob.real_name]\]"
+		if(mob.stat == DEAD && specify_dead_role)
+			if(isobserver(mob))
 				name += " \[ghost\]"
 			else
 				name += " \[dead\]"
-		pois[name] = M
+		pois[name] = mob
 
 	pois.Add(get_multi_vehicles())
 
@@ -1965,8 +1965,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 //Returns the atom sitting on the turf.
 //For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
 //Optional arg 'type' to stop once it reaches a specific type instead of a turf.
-/proc/get_atom_on_turf(atom/movable/M, stop_type)
-	var/atom/turf_to_check = M
+/proc/get_atom_on_turf(atom/movable/current_atom, stop_type)
+	var/atom/turf_to_check = current_atom
 	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
 		turf_to_check = turf_to_check.loc
 		if(stop_type && istype(turf_to_check, stop_type))

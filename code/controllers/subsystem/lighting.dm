@@ -18,9 +18,9 @@ SUBSYSTEM_DEF(lighting)
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	for(var/thing in lights)
-		var/datum/light_source/L = thing
-		if(L)
-			L.check()
+		var/datum/light_source/current_light = thing
+		if(current_light)
+			current_light.check()
 	lights.Cut()
 
 
@@ -45,24 +45,24 @@ SUBSYSTEM_DEF(lighting)
 
 
 	while(lights_current.len)
-		var/datum/light_source/L = lights_current[lights_current.len]
+		var/datum/light_source/current_light = lights_current[lights_current.len]
 		lights_current.len--
-		if(!L)
+		if(!current_light)
 			continue
-		if(!L.owner || L.changed)
-			L.check()
+		if(!current_light.owner || current_light.changed)
+			current_light.check()
 		if(MC_TICK_CHECK)
 			return
 
 	while(changed_turfs_current.len)
-		var/turf/T = changed_turfs_current[changed_turfs_current.len]
+		var/turf/curent_turf = changed_turfs_current[changed_turfs_current.len]
 		changed_turfs_current.len--
-		if(!T)
+		if(!curent_turf)
 			continue
-		if(T.lighting_changed)
-			if(T.lighting_lumcount != T.cached_lumcount)
-				T.cached_lumcount = T.lighting_lumcount
-				T.shift_to_subarea()
-			T.lighting_changed = FALSE
+		if(curent_turf.lighting_changed)
+			if(curent_turf.lighting_lumcount != curent_turf.cached_lumcount)
+				curent_turf.cached_lumcount = curent_turf.lighting_lumcount
+				curent_turf.shift_to_subarea()
+			curent_turf.lighting_changed = FALSE
 		if (MC_TICK_CHECK)
 			return

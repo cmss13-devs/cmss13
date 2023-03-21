@@ -264,12 +264,12 @@ SUBSYSTEM_DEF(timer)
 	// Add all timed events from the secondary queue as well
 	alltimers += second_queue
 
-	for (var/datum/timedevent/t as anything in alltimers)
-		t.timer_subsystem = src // Recovered timers need to be reparented
-		t.bucket_joined = FALSE
-		t.bucket_pos = -1
-		t.prev = null
-		t.next = null
+	for (var/datum/timedevent/event as anything in alltimers)
+		event.timer_subsystem = src // Recovered timers need to be reparented
+		event.bucket_joined = FALSE
+		event.bucket_pos = -1
+		event.prev = null
+		event.next = null
 
 	// If there are no timers being tracked by the subsystem,
 	// there is no need to do any further rebuilding

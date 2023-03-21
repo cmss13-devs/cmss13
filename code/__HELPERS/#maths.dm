@@ -157,7 +157,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 
 	var/list/line = list(get_turf(starting_atom))//get_turf(atom) is faster than locate(x, y, z)
 
-	var/x_distance = ending_atom.x - current_x_step //x distance
+	var/x_distance = ending_atom.x - current_x_step
 	var/y_distance = ending_atom.y - current_y_step
 
 	var/abs_x_distance = abs(x_distance)//Absolute value of x distance

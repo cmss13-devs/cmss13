@@ -5,25 +5,25 @@
 	. = TRUE
 	if(HAS_TRAIT(src, TRAIT_CRAWLER))
 		return
-	for(var/atom/A as anything in src)
-		if(!(is_type_in_list(A, canEnterVentWith)))
+	for(var/atom/current_atom as anything in src)
+		if(!(is_type_in_list(current_atom, canEnterVentWith)))
 			to_chat(src, SPAN_WARNING("You can't be carrying items or have items equipped when vent crawling!"))
 			return FALSE
 
-/mob/living/click(atom/A, list/mods)
+/mob/living/click(atom/current_atom, list/mods)
 	if(..())
 		return TRUE
 	if(mods["alt"])
-		if(can_ventcrawl() && istype(A, /obj/structure/pipes/vents))
-			handle_ventcrawl(A)
+		if(can_ventcrawl() && istype(current_atom, /obj/structure/pipes/vents))
+			handle_ventcrawl(current_atom)
 			return TRUE
 
 /mob/proc/start_ventcrawl()
 	var/atom/pipe
 	var/list/pipes = list()
-	for(var/obj/structure/pipes/vents/V in range(1))
-		if(Adjacent(V) && !V.welded)
-			pipes |= V
+	for(var/obj/structure/pipes/vents/vent in range(1))
+		if(Adjacent(vent) && !vent.welded)
+			pipes |= vent
 	if(!pipes || !pipes.len)
 		to_chat(src, SPAN_WARNING("There are no pipes that you can ventcrawl into within range!"))
 		return
@@ -69,10 +69,10 @@
 	if(!ventcrawl_carry())
 		return
 
-	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in vent_found.loc
-	if(W)
-		var/mob/living/carbon/xenomorph/X = src
-		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
+	var/obj/effect/alien/weeds/current_weed = locate(/obj/effect/alien/weeds) in vent_found.loc
+	if(current_weed)
+		var/mob/living/carbon/xenomorph/xenomorph = src
+		if(!istype(xenomorph) || xenomorph.hivenumber != current_weed.linked_hive.hivenumber)
 			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
 			return
 

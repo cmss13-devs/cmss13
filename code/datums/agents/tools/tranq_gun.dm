@@ -19,11 +19,11 @@
 
 /obj/item/weapon/gun/pistol/tranquilizer/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.
 	..()
-	var/obj/item/attachable/suppressor/S = new(src)
-	S.hidden = TRUE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/suppressor/suppressor = new(src)
+	suppressor.hidden = TRUE
+	suppressor.flags_attach_features &= ~ATTACH_REMOVABLE
+	suppressor.Attach(src)
+	update_attachable(suppressor.slot)
 
 /obj/item/ammo_magazine/pistol/tranq
 	name = "\improper Tranquilizer magazine (Horse Tranquilizer)"

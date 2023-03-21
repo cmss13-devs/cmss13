@@ -80,9 +80,9 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 	// First handle the already running queries
 	while(length(queries_current))
-		var/datum/db/query_response/Q = popleft(queries_current)
-		if(!process_query(Q))
-			queries_active -= Q
+		var/datum/db/query_response/db_response = popleft(queries_current)
+		if(!process_query(db_response))
+			queries_active -= db_response
 		if(MC_TICK_CHECK)
 			return
 
@@ -93,39 +93,39 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 		queries_new = queries_standby.Copy(1, min(length(queries_standby), max_concurrent_queries) + 1)
 
 	while(length(queries_new) && length(queries_active) < max_concurrent_queries)
-		var/datum/db/query_response/Q = queries_new[1]
-		var/list/ar = queries_new[Q]
-		queries_standby.Remove(Q)
-		queries_new.Remove(Q)
-		create_queued_query(Q, ar)
+		var/datum/db/query_response/db_response = queries_new[1]
+		var/list/ar = queries_new[db_response]
+		queries_standby.Remove(db_response)
+		queries_new.Remove(db_response)
+		create_queued_query(db_response, ar)
 		if(MC_TICK_CHECK)
 			return
 
 /// Helper proc for query processing used in fire() - returns TRUE if not done yet
-/datum/controller/subsystem/database_query_manager/proc/process_query(datum/db/query_response/Q)
+/datum/controller/subsystem/database_query_manager/proc/process_query(datum/db/query_response/db_response)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(QDELETED(Q))
+	if(QDELETED(db_response))
 		return FALSE
-	if(Q.process(world.tick_lag))
-		queries_active -= Q
+	if(db_response.process(world.tick_lag))
+		queries_active -= db_response
 		return FALSE
 	return TRUE
 
 /// Helper proc for handling queued new queries
-/datum/controller/subsystem/database_query_manager/proc/create_queued_query(datum/db/query_response/Q, qtargs)
+/datum/controller/subsystem/database_query_manager/proc/create_queued_query(datum/db/query_response/db_response, qtargs)
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	RETURN_TYPE(/datum/db/query)
-	if(!Q.unique_query_id)
-		Q.unique_query_id = last_query_id++
+	if(!db_response.unique_query_id)
+		db_response.unique_query_id = last_query_id++
 	var/datum/db/query/RQ
 	if(islist(qtargs))
 		RQ = connection.query(arglist(qtargs))
 	else
 		RQ = connection.query(qtargs)
-	Q.query = RQ
-	queries_active += Q
+	db_response.query = RQ
+	queries_active += db_response
 	return RQ
 
 /datum/controller/subsystem/database_query_manager/proc/create_query(query_text, success_callback, fail_callback, unique_query_id)

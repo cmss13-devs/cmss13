@@ -46,25 +46,25 @@
 			types = list(path)
 		else
 			types = ignore_root_path ? subtypesof(path) : typesof(path)
-		var/list/L = list()
+		var/list/current_list = list()
 		for(var/T in types)
-			L[T] = TRUE
-		return L
+			current_list[T] = TRUE
+		return current_list
 	else if(islist(path))
 		var/list/pathlist = path
-		var/list/L = list()
+		var/list/current_list = list()
 		if(ignore_root_path)
 			for(var/P in pathlist)
 				for(var/T in subtypesof(P))
-					L[T] = TRUE
+					current_list[T] = TRUE
 		else
 			for(var/P in pathlist)
 				if(only_root_path)
-					L[P] = TRUE
+					current_list[P] = TRUE
 				else
 					for(var/T in typesof(P))
-						L[T] = TRUE
-		return L
+						current_list[T] = TRUE
+		return current_list
 
 //Return either pick(list) or null if list is not of type /list or is empty
 #define SAFEPICK(L) (length(L) ? pick(L) : null)

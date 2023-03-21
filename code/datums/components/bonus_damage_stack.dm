@@ -46,8 +46,8 @@
 	color += num2text(BONUS_DAMAGE_MAX_ALPHA * intensity, 2, 16)
 
 	if(parent)
-		var/atom/A = parent
-		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1))
+		var/atom/current_atom = parent
+		current_atom.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -60,8 +60,8 @@
 		COMSIG_XENO_APPEND_TO_STAT,
 		COMSIG_BONUS_DAMAGE
 	))
-	var/atom/A = parent
-	A.remove_filter("bonus_damage_stacks")
+	var/atom/current_atom = parent
+	current_atom.remove_filter("bonus_damage_stacks")
 
 /datum/component/bonus_damage_stack/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER

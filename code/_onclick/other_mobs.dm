@@ -10,8 +10,8 @@
 
 	if (mods["middle"])
 		if (isStructure(A) && get_dist(src, A) <= 1)
-			var/obj/structure/S = A
-			S.do_climb(src, mods)
+			var/obj/structure/current_structure = A
+			current_structure.do_climb(src, mods)
 		else if(!(isitem(A) && get_dist(src, A) <= 1) && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS)
 			swap_hand()
 		return TRUE

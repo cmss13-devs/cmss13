@@ -26,8 +26,8 @@
 	toxic_buildup = max(toxic_buildup - toxic_buildup_dissipation * delta_time, 0)
 
 	if(ishuman(parent))
-		var/mob/living/carbon/human/H = parent
-		H.apply_damage(toxic_buildup_dissipation * delta_time, TOX)
+		var/mob/living/carbon/human/human = parent
+		human.apply_damage(toxic_buildup_dissipation * delta_time, TOX)
 
 	if(toxic_buildup <= 0)
 		qdel(src)
@@ -37,8 +37,8 @@
 	color += num2text(max_alpha*intensity, 2, 16)
 
 	if(parent)
-		var/atom/A = parent
-		A.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
+		var/atom/current_atom = parent
+		current_atom.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/toxic_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -55,8 +55,8 @@
 		COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE,
 		COMSIG_XENO_APPEND_TO_STAT
 	))
-	var/atom/A = parent
-	A.remove_filter("toxic_buildup")
+	var/atom/current_atom = parent
+	current_atom.remove_filter("toxic_buildup")
 
 /datum/component/toxic_buildup/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER

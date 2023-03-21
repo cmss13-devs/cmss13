@@ -20,10 +20,10 @@ SUBSYSTEM_DEF(events)
 	if(CONFIG_GET(flag/events_disallowed))
 		can_fire = 0
 	for(var/type in typesof(/datum/round_event_control))
-		var/datum/round_event_control/E = new type()
-		if(!E.typepath)
+		var/datum/round_event_control/event_controller = new type()
+		if(!event_controller.typepath)
 			continue //don't want this one! leave it for the garbage collector
-		control += E //add it to the list of all events (controls)
+		control += event_controller //add it to the list of all events (controls)
 	reschedule()
 	return SS_INIT_SUCCESS
 
@@ -64,34 +64,34 @@ SUBSYSTEM_DEF(events)
 	// Only alive, non-AFK human players count towards this.
 
 	var/sum_of_weights = 0
-	for(var/datum/round_event_control/E in control)
-		if(!E.can_spawn_event(players_amt, gamemode))
+	for(var/datum/round_event_control/event_controller in control)
+		if(!event_controller.can_spawn_event(players_amt, gamemode))
 			continue
-		if(E.weight < 0) //for round-start events etc.
-			var/res = trigger_event(E)
+		if(event_controller.weight < 0) //for round-start events etc.
+			var/res = trigger_event(event_controller)
 			if(res == EVENT_INTERRUPTED)
 				continue //like it never happened
 			if(res == EVENT_CANT_RUN)
 				return
-		sum_of_weights += E.weight
+		sum_of_weights += event_controller.weight
 
 	sum_of_weights = rand(0,sum_of_weights)	//reusing this variable. It now represents the 'weight' we want to select
 
-	for(var/datum/round_event_control/E in control)
-		if(!E.can_spawn_event(players_amt, gamemode))
+	for(var/datum/round_event_control/event_controller in control)
+		if(!event_controller.can_spawn_event(players_amt, gamemode))
 			continue
-		sum_of_weights -= E.weight
+		sum_of_weights -= event_controller.weight
 
 		if(sum_of_weights <= 0) //we've hit our goal
-			if(trigger_event(E))
+			if(trigger_event(event_controller))
 				return
 
-/datum/controller/subsystem/events/proc/trigger_event(datum/round_event_control/E)
-	. = E.pre_run_event()
+/datum/controller/subsystem/events/proc/trigger_event(datum/round_event_control/event_controller)
+	. = event_controller.pre_run_event()
 	if(. == EVENT_CANT_RUN) //we couldn't run this event for some reason, set its max_occurrences to 0
-		E.max_occurrences = 0
+		event_controller.max_occurrences = 0
 	else if(. == EVENT_READY)
-		E.run_event(random = TRUE)
+		event_controller.run_event(random = TRUE)
 
 //allows a client to trigger an event
 //aka Badmin Central
@@ -108,8 +108,8 @@ SUBSYSTEM_DEF(events)
 	var/dat = ""
 	var/normal = ""
 
-	for(var/datum/round_event_control/E in SSevents.control)
-		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];force_event=[REF(E)]'>[E]</A>"
+	for(var/datum/round_event_control/event_controller in SSevents.control)
+		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];force_event=[REF(event_controller)]'>[event_controller]</A>"
 		normal += dat
 
 	dat = normal

@@ -23,11 +23,11 @@ SUBSYSTEM_DEF(techtree)
 	if(!length(tech_nodes))
 		log_admin(SPAN_DANGER("Error setting up tech nodes, no datums found."))
 
-	for(var/T in tech_trees)
-		var/datum/techtree/tree = T
+	for(var/current_tree in tech_trees)
+		var/datum/techtree/tree = current_tree
 		if(initial(tree.flags) == NO_FLAGS)
 			continue
-		tree = new T()
+		tree = new current_tree()
 
 		trees += list("[tree.name]" = tree)
 
@@ -40,8 +40,8 @@ SUBSYSTEM_DEF(techtree)
 
 
 
-		for(var/t in block(z_min, z_max))
-			var/turf/Tu = t
+		for(var/current_turf in block(z_min, z_max))
+			var/turf/Tu = current_turf
 			Tu.ChangeTurf(/turf/closed/void, list(/turf/closed/void))
 			new /area/techtree(Tu)
 
@@ -75,12 +75,12 @@ SUBSYSTEM_DEF(techtree)
 
 /datum/controller/subsystem/techtree/proc/activate_passive_nodes()
 	for(var/name in trees)
-		var/datum/techtree/T = trees[name]
+		var/datum/techtree/tree = trees[name]
 
-		if(T.passive_node.active)
+		if(tree.passive_node.active)
 			continue
 
-		T.passive_node.make_active()
+		tree.passive_node.make_active()
 
 /datum/controller/subsystem/techtree/proc/activate_all_nodes()
 	for(var/obj/structure/resource_node/RN in resources)

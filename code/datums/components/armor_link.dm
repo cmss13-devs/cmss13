@@ -49,25 +49,25 @@
 	link_armor(item)
 
 /datum/component/armor_link/proc/link_armor(obj/item/clothing/to_link)
-	var/obj/item/clothing/C = parent
+	var/obj/item/clothing/clothes = parent
 	if(check_values)
-		C.armor_melee = max(C.armor_melee, to_link.armor_melee)
-		C.armor_bullet = max(C.armor_bullet, to_link.armor_bullet)
-		C.armor_laser = max(C.armor_laser, to_link.armor_laser)
-		C.armor_energy = max(C.armor_energy, to_link.armor_energy)
-		C.armor_bomb = max(C.armor_bomb, to_link.armor_bomb)
-		C.armor_bio = max(C.armor_bio, to_link.armor_bio)
-		C.armor_rad = max(C.armor_rad, to_link.armor_rad)
-		C.armor_internaldamage = max(C.armor_internaldamage, to_link.armor_internaldamage)
+		clothes.armor_melee = max(clothes.armor_melee, to_link.armor_melee)
+		clothes.armor_bullet = max(clothes.armor_bullet, to_link.armor_bullet)
+		clothes.armor_laser = max(clothes.armor_laser, to_link.armor_laser)
+		clothes.armor_energy = max(clothes.armor_energy, to_link.armor_energy)
+		clothes.armor_bomb = max(clothes.armor_bomb, to_link.armor_bomb)
+		clothes.armor_bio = max(clothes.armor_bio, to_link.armor_bio)
+		clothes.armor_rad = max(clothes.armor_rad, to_link.armor_rad)
+		clothes.armor_internaldamage = max(clothes.armor_internaldamage, to_link.armor_internaldamage)
 	else
-		C.armor_melee = to_link.armor_melee
-		C.armor_bullet = to_link.armor_bullet
-		C.armor_laser = to_link.armor_laser
-		C.armor_energy = to_link.armor_energy
-		C.armor_bomb = to_link.armor_bomb
-		C.armor_bio = to_link.armor_bio
-		C.armor_rad = to_link.armor_rad
-		C.armor_internaldamage = to_link.armor_internaldamage
+		clothes.armor_melee = to_link.armor_melee
+		clothes.armor_bullet = to_link.armor_bullet
+		clothes.armor_laser = to_link.armor_laser
+		clothes.armor_energy = to_link.armor_energy
+		clothes.armor_bomb = to_link.armor_bomb
+		clothes.armor_bio = to_link.armor_bio
+		clothes.armor_rad = to_link.armor_rad
+		clothes.armor_internaldamage = to_link.armor_internaldamage
 
 	linked = to_link
 	RegisterSignal(linked, COMSIG_ITEM_DROPPED, PROC_REF(break_link))
@@ -78,15 +78,15 @@
 	UnregisterSignal(linked, COMSIG_ITEM_DROPPED)
 	linked = null
 
-	var/obj/item/clothing/C = parent
-	C.reset_armor_melee_value()
-	C.reset_armor_bullet_value()
-	C.reset_armor_laser_value()
-	C.reset_armor_energy_value()
-	C.reset_armor_bomb_value()
-	C.reset_armor_bio_value()
-	C.reset_armor_rad_value()
-	C.reset_armor_internaldamage_value()
+	var/obj/item/clothing/clothes = parent
+	clothes.reset_armor_melee_value()
+	clothes.reset_armor_bullet_value()
+	clothes.reset_armor_laser_value()
+	clothes.reset_armor_energy_value()
+	clothes.reset_armor_bomb_value()
+	clothes.reset_armor_bio_value()
+	clothes.reset_armor_rad_value()
+	clothes.reset_armor_internaldamage_value()
 
 	RegisterSignal(equipped_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(on_human_equipped_item))
 

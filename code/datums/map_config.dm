@@ -168,9 +168,9 @@
 		return
 
 	if (islist(json["shuttles"]))
-		var/list/L = json["shuttles"]
-		for(var/key in L)
-			var/value = L[key]
+		var/list/shuttle_list = json["shuttles"]
+		for(var/key in shuttle_list)
+			var/value = shuttle_list[key]
 			shuttles[key] = value
 	else if ("shuttles" in json)
 		log_world("map_config shuttles is not a list!")
@@ -343,25 +343,25 @@
 
 	var/list/gamemode_names = list()
 	for(var/t in subtypesof(/datum/game_mode))
-		var/datum/game_mode/G = t
-		gamemode_names += initial(G.config_tag)
+		var/datum/game_mode/gamemode = t
+		gamemode_names += initial(gamemode.config_tag)
 
 	if(islist(json["gamemodes"]))
-		for(var/g in json["gamemodes"])
-			if(!(g in gamemode_names))
+		for(var/gamemode in json["gamemodes"])
+			if(!(gamemode in gamemode_names))
 				log_world("map_config has an invalid gamemode name!")
 				return
-			if(g == "Extended") // always allow extended
+			if(gamemode == "Extended") // always allow extended
 				continue
-			gamemodes += g
+			gamemodes += gamemode
 		gamemodes += "Extended"
 	else if(!isnull(json["gamemodes"]))
 		log_world("map_config gamemodes is not a list!")
 		return
 	else
 		for(var/a in subtypesof(/datum/game_mode))
-			var/datum/game_mode/G = a
-			gamemodes += initial(G.config_tag)
+			var/datum/game_mode/gamemode = a
+			gamemodes += initial(gamemode.config_tag)
 
 	defaulted = FALSE
 	return TRUE

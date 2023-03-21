@@ -113,11 +113,11 @@
 		var/all_components = dc[/datum/component]
 		if(length(all_components))
 			for(var/I in all_components)
-				var/datum/component/C = I
-				qdel(C, FALSE, TRUE)
+				var/datum/component/current_component = I
+				qdel(current_component, FALSE, TRUE)
 		else
-			var/datum/component/C = all_components
-			qdel(C, FALSE, TRUE)
+			var/datum/component/current_component = all_components
+			qdel(current_component, FALSE, TRUE)
 		dc.Cut()
 
 	var/list/lookup = comp_lookup

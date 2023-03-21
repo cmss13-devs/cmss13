@@ -119,11 +119,11 @@ SUBSYSTEM_DEF(nightmare)
 	var/list/datum/nmnode/nodes = list()
 	if(!parsed["type"]) // This is a JSON array
 		for(var/list/spec as anything in parsed)
-			var/datum/nmnode/N = read_node(spec)
-			if(N) nodes += N
+			var/datum/nmnode/node = read_node(spec)
+			if(node) nodes += node
 	else // This is a JSON hash
-		var/datum/nmnode/N = read_node(parsed)
-		if(N) nodes += N
+		var/datum/nmnode/node = read_node(parsed)
+		if(node) nodes += node
 	return nodes
 
 /// Instanciate a single nmnode from its JSON definition

@@ -36,8 +36,8 @@ Humans will take continuous damage instead.
 	healing_reduction = max(healing_reduction - healing_reduction_dissipation * delta_time, 0)
 
 	if(ishuman(parent)) //deals brute to humans
-		var/mob/living/carbon/human/H = parent
-		H.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
+		var/mob/living/carbon/human/human = parent
+		human.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
 
 	if(healing_reduction <= 0)
 		qdel(src)
@@ -46,8 +46,8 @@ Humans will take continuous damage instead.
 	var/intensity = healing_reduction/max_buildup
 	color += num2text(MAX_ALPHA*intensity, 2, 16)
 
-	var/atom/A = parent
-	A.add_filter("healing_reduction", 2, list("type" = "outline", "color" = color, "size" = 1))
+	var/atom/current_atom = parent
+	current_atom.add_filter("healing_reduction", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/healing_reduction/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -64,8 +64,8 @@ Humans will take continuous damage instead.
 		COMSIG_XENO_ON_HEAL_WOUNDS,
 		COMSIG_XENO_APPEND_TO_STAT
 	))
-	var/atom/A = parent
-	A.remove_filter("healing_reduction")
+	var/atom/current_atom = parent
+	current_atom.remove_filter("healing_reduction")
 
 /datum/component/healing_reduction/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER

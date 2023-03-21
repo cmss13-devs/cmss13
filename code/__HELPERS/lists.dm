@@ -163,11 +163,11 @@
 
 //Return a list with no duplicate entries
 /proc/uniquelist(list/L)
-	var/list/K = list()
+	var/list/new_list = list()
 	for(var/item in L)
-		if(!(item in K))
-			K += item
-	return K
+		if(!(item in new_list))
+			new_list += item
+	return new_list
 
 //Mergesort: divides up the list into halves to begin the sort
 /proc/sortKey(list/client/L, order = 1)
@@ -198,11 +198,11 @@
 	if(isnull(L) || L.len < 2)
 		return L
 	var/startIndex = 1
-	var/list/atom/M = new/list()
+	var/list/atom/potential_mob = new/list()
 	for(var/atom/mob in L)
 		if(istype(mob))
-			M.Add(mob)
-	var/endIndex = M.len - 1
+			potential_mob.Add(mob)
+	var/endIndex = potential_mob.len - 1
 	var/top = 0
 	var/list/stack[endIndex*2]
 	stack[++top] = startIndex
@@ -216,13 +216,13 @@
 		var/i = startIndex-1
 
 		for(var/j = startIndex, j < endIndex, ++j)
-			var/sort_res = sorttextEx(M[j].name, M[endIndex].name)
+			var/sort_res = sorttextEx(potential_mob[j].name, potential_mob[endIndex].name)
 			if(sort_res == order)
 				++i
-				M.Swap(i,j)
+				potential_mob.Swap(i,j)
 
 		++i
-		M.Swap(i,endIndex)
+		potential_mob.Swap(i,endIndex)
 		// END PARTITION CODE
 		// i is acting as the partition variable.
 
@@ -232,7 +232,7 @@
 		if(i < endIndex)
 			stack[++top] = i+1
 			stack[++top] = endIndex
-	return M
+	return potential_mob
 
 
 
@@ -292,10 +292,10 @@
 
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(list/L)
-	var/list/Q = new()
-	for(var/atom/x in L)
-		Q[x.name] = x
-	return sortList(Q)
+	var/list/new_list = new()
+	for(var/atom/current_atom in L)
+		new_list[current_atom.name] = current_atom
+	return sortList(new_list)
 
 /proc/mergeLists(list/L, list/R)
 	var/Li=1
@@ -393,20 +393,20 @@
 
 //Converts a bitfield to a list of numbers (or words if a wordlist is provided)
 /proc/bitfield2list(bitfield = 0, list/wordlist)
-	var/list/r = list()
+	var/list/current_list = list()
 	if(islist(wordlist))
 		var/max = min(wordlist.len,16)
 		var/bit = 1
 		for(var/i=1, i<=max, i++)
 			if(bitfield & bit)
-				r += wordlist[i]
+				current_list += wordlist[i]
 			bit = bit << 1
 	else
 		for(var/bit=1, bit<=65535, bit = bit << 1)
 			if(bitfield & bit)
-				r += bit
+				current_list += bit
 
-	return r
+	return current_list
 
 /proc/count_by_type(list/L, type)
 	var/i = 0
@@ -559,18 +559,18 @@
 
 /atom/proc/contents_recursive()
 	var/list/found = list()
-	for(var/atom/A in contents)
-		found += A
-		if(A.contents.len)
-			found += A.contents_recursive()
+	for(var/atom/current_atom in contents)
+		found += current_atom
+		if(current_atom.contents.len)
+			found += current_atom.contents_recursive()
 	return found
 
 /atom/proc/contents_twice() // easier version of recursive proc, if we want to check people and items on them
 	var/list/found = list()
-	for(var/atom/A in contents)
-		found += A
-		if(A.contents.len)
-			found += A.contents
+	for(var/atom/current_atom in contents)
+		found += current_atom
+		if(current_atom.contents.len)
+			found += current_atom.contents
 	return found
 
 // Mergesorts a list, using the sort callback to determine ordering
@@ -614,9 +614,9 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/thing in atoms)
-		var/atom/A = thing
-		if(!typecache[A.type])
-			. += A
+		var/atom/current_atom = thing
+		if(!typecache[current_atom.type])
+			. += current_atom
 
 //Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
 #define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])

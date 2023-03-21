@@ -88,8 +88,8 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		var/datum/entity_meta/EM = tables[ET]
 		adapter.sync_table(EM.entity_type, EM.table_name, EM.field_types)
 		if(EM.indexes)
-			for(var/datum/db/index/I in EM.indexes)
-				adapter.sync_index(I.name, EM.table_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
+			for(var/datum/db/index/db_index in EM.indexes)
+				adapter.sync_index(db_index.name, EM.table_name, db_index.fields, db_index.hints & DB_INDEXHINT_UNIQUE, db_index.hints & DB_INDEXHINT_CLUSTER)
 		if(EM.key_field)
 			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, list(EM.key_field), TRUE, TRUE)
 
@@ -100,11 +100,11 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	if(!SSdatabase.connection.connection_ready())
 		return
 	while (currentrun.len)
-		var/datum/entity_meta/Q = currentrun[currentrun.len]
-		do_select(Q)
-		do_insert(Q)
-		do_update(Q)
-		do_delete(Q)
+		var/datum/entity_meta/datum_meta = currentrun[currentrun.len]
+		do_select(datum_meta)
+		do_insert(datum_meta)
+		do_update(datum_meta)
+		do_delete(datum_meta)
 		currentrun.len--
 		if (MC_TICK_CHECK)
 			return
@@ -285,7 +285,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	return result
 
 /datum/controller/subsystem/entity_manager/proc/after_view(datum/entity_view_meta/meta, list/to_write, quid, list/results)
-	for(var/list/r in results)
+	for(var/list/result in results)
 		var/V = new meta.destination_entity()
-		meta.map(V, r)
+		meta.map(V, result)
 		to_write.Add(V)

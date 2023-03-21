@@ -96,8 +96,8 @@
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
-				for(var/obj/item/W in current)
-					current.drop_inv_item_on_ground(W)
+				for(var/obj/item/current_obj in current)
+					current.drop_inv_item_on_ground(current_obj)
 
 /datum/mind/proc/setup_human_stats()
 	if(!player_entity)

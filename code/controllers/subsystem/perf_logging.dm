@@ -29,8 +29,8 @@ SUBSYSTEM_DEF(perf_logging)
 	while(currentrun.len)
 		var/datum/controller/subsystem/SS = currentrun[currentrun.len]
 		currentrun.len--
-		var/datum/entity/mc_controller/C = controller_assoc[SS.type]
-		new_record(SS, C)
+		var/datum/entity/mc_controller/controller = controller_assoc[SS.type]
+		new_record(SS, controller)
 		tcost += SS.cost
 		if(MC_TICK_CHECK)
 			return
@@ -45,23 +45,23 @@ SUBSYSTEM_DEF(perf_logging)
 	round = SSentity_manager.select(/datum/entity/mc_round)
 	round.map_name = ground.map_name
 	round.save()
-	var/datum/entity/mc_controller/C
+	var/datum/entity/mc_controller/controller
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
-		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
-		if(!C) continue
-		C.wait_time = SS.wait
-		C.save()
-		controller_assoc[SS.type] = C
+		controller = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
+		if(!controller) continue
+		controller.wait_time = SS.wait
+		controller.save()
+		controller_assoc[SS.type] = controller
 
 /// Insert a new timing record for a single subsystem
-/datum/controller/subsystem/perf_logging/proc/new_record(datum/controller/subsystem/SS, datum/entity/mc_controller/C)
+/datum/controller/subsystem/perf_logging/proc/new_record(datum/controller/subsystem/SS, datum/entity/mc_controller/controller)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(!C?.id)
+	if(!controller?.id)
 		return // Skip ones that were never taken for recording to begin with
 	var/datum/entity/mc_record/record = SSentity_manager.select(/datum/entity/mc_record)
 	record.round_time = ord
 	record.round_id = round.id
-	record.controller_id = C.id
+	record.controller_id = controller.id
 	record.time_taken = SS.cost * (1 SECONDS) // tick_lag?
 	record.save() && record.detach()
 

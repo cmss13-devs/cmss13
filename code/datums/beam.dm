@@ -96,19 +96,19 @@
 	for(N in 0 to length-1 step world.icon_size)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
 		if(QDELETED(src))
 			break
-		var/obj/effect/ebeam/X = new beam_type(origin_turf)
-		X.owner = src
-		elements += X
+		var/obj/effect/ebeam/beam = new beam_type(origin_turf)
+		beam.owner = src
+		elements += beam
 
 		//Assign our single visual ebeam to each ebeam's vis_contents
 		//ends are cropped by a transparent box icon of length-N pixel size laid over the visuals obj
 		if(N + world.icon_size > length) //went past the target, we draw a box of space to cut away from the beam sprite so the icon actually ends at the center of the target sprite
 			var/icon/II = new(icon, icon_state)//this means we exclude the overshooting object from the visual contents which does mean those visuals don't show up for the final bit of the beam...
 			II.DrawBox(null,1,(length-N), world.icon_size, world.icon_size)//in the future if you want to improve this, remove the drawbox and instead use a 513 filter to cut away at the final object's icon
-			X.icon = II
+			beam.icon = II
 		else
-			X.vis_contents += visuals
-		X.transform = rot_matrix
+			beam.vis_contents += visuals
+		beam.transform = rot_matrix
 
 		//Calculate pixel offsets (If necessary)
 		var/Pixel_x
@@ -126,15 +126,15 @@
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
 			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
-			X.x += a
+			beam.x += a
 			Pixel_x %= world.icon_size
 		if(abs(Pixel_y)>world.icon_size)
 			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
-			X.y += a
+			beam.y += a
 			Pixel_y %= world.icon_size
 
-		X.pixel_x = Pixel_x + get_pixel_position_x(origin, relative = TRUE)
-		X.pixel_y = Pixel_y + get_pixel_position_y(origin, relative = TRUE)
+		beam.pixel_x = Pixel_x + get_pixel_position_x(origin, relative = TRUE)
+		beam.pixel_y = Pixel_y + get_pixel_position_y(origin, relative = TRUE)
 
 		CHECK_TICK
 

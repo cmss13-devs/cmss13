@@ -38,15 +38,15 @@ SUBSYSTEM_DEF(atoms)
 	if(atoms)
 		count = atoms.len
 		for(var/I in atoms)
-			var/atom/A = I
-			if(!(A.flags_atom & INITIALIZED))
+			var/atom/current_atom = I
+			if(!(current_atom.flags_atom & INITIALIZED))
 				InitAtom(I, TRUE, mapload_arg)
 				CHECK_TICK
 	else
 		count = 0
-		for(var/atom/A in world)
-			if(!(A.flags_atom & INITIALIZED))
-				InitAtom(A, FALSE, mapload_arg)
+		for(var/atom/current_atom in world)
+			if(!(current_atom.flags_atom & INITIALIZED))
+				InitAtom(current_atom, FALSE, mapload_arg)
 				++count
 				CHECK_TICK
 
@@ -57,15 +57,15 @@ SUBSYSTEM_DEF(atoms)
 
 	if(late_loaders.len)
 		for(var/I in late_loaders)
-			var/atom/A = I
-			A.LateInitialize()
+			var/atom/current_atom = I
+			current_atom.LateInitialize()
 		testing("Late initialized [late_loaders.len] atoms")
 		late_loaders.Cut()
 
 /// Init this specific atom
-/datum/controller/subsystem/atoms/proc/InitAtom(atom/A, from_template = FALSE, list/arguments)
-	var/the_type = A.type
-	if(QDELING(A))
+/datum/controller/subsystem/atoms/proc/InitAtom(atom/current_atom, from_template = FALSE, list/arguments)
+	var/the_type = current_atom.type
+	if(QDELING(current_atom))
 		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
 		return TRUE
 
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(atoms)
 	var/start_tick = world.time
 	#endif
 
-	var/result = A.Initialize(arglist(arguments))
+	var/result = current_atom.Initialize(arglist(arguments))
 
 	#ifdef UNIT_TESTS
 	if(start_tick != world.time)
@@ -86,36 +86,36 @@ SUBSYSTEM_DEF(atoms)
 		switch(result)
 			if(INITIALIZE_HINT_LATELOAD)
 				if(arguments[1]) //mapload
-					late_loaders += A
+					late_loaders += current_atom
 				else
-					A.LateInitialize()
+					current_atom.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
-				qdel(A)
+				qdel(current_atom)
 				qdeleted = TRUE
 			if(INITIALIZE_HINT_ROUNDSTART)
 				if(SSticker.current_state >= GAME_STATE_PLAYING)
-					A.LateInitialize()
+					current_atom.LateInitialize()
 				else
-					roundstart_loaders += A
+					roundstart_loaders += current_atom
 			else
 				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
-	if(!A) //possible harddel
+	if(!current_atom) //possible harddel
 		qdeleted = TRUE
-	else if(!(A.flags_atom & INITIALIZED))
+	else if(!(current_atom.flags_atom & INITIALIZED))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 	/*
 	else
-		SEND_SIGNAL(A,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
+		SEND_SIGNAL(current_atom,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
 		if(created_atoms && from_template && ispath(the_type, /atom/movable))//we only want to populate the list with movables
-			created_atoms += A.get_all_contents()
+			created_atoms += current_atom.get_all_contents()
 	*/
 
-	return qdeleted || QDELING(A)
+	return qdeleted || QDELING(current_atom)
 
 /datum/controller/subsystem/atoms/proc/lateinit_roundstart_atoms()
-	for(var/atom/A as anything in roundstart_loaders)
-		A.LateInitialize()
+	for(var/atom/current_atom as anything in roundstart_loaders)
+		current_atom.LateInitialize()
 	roundstart_loaders.Cut()
 
 /// Force reset atoms loc, as map expansion can botch turf contents for multitiles
@@ -123,11 +123,11 @@ SUBSYSTEM_DEF(atoms)
 /// and the BYOND Bug Report: http://www.byond.com/forum/post/2777527
 /datum/controller/subsystem/atoms/proc/fix_atoms_locs(list/atoms)
 	if(atoms)
-		for(var/atom/movable/A in atoms)
-			A.loc = A.loc
+		for(var/atom/movable/current_atom in atoms)
+			current_atom.loc = current_atom.loc
 	else
-		for(var/atom/movable/A in world)
-			A.loc = A.loc
+		for(var/atom/movable/current_atom in world)
+			current_atom.loc = current_atom.loc
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_initialized = initialized

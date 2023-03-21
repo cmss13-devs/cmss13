@@ -28,17 +28,17 @@
 
 		if(ismob(A) || isVehicle(A))
 			if(isxeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
-				var/mob/living/carbon/xenomorph/X = A
-				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
-					ManualFollow(X)
+				var/mob/living/carbon/xenomorph/xenomorph = A
+				if(xenomorph.stat == DEAD || is_admin_level(xenomorph.z) || xenomorph.aghosted)
+					to_chat(src, SPAN_WARNING("You cannot join as [xenomorph]."))
+					ManualFollow(xenomorph)
 					return
 
 				if(!SSticker.mode.xeno_bypass_timer)
-					if((!islarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
-						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
-						if(islarva(X))
-							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
+					if((!islarva(xenomorph) && xenomorph.away_timer < XENO_LEAVE_TIMER) || (islarva(xenomorph) && xenomorph.away_timer < XENO_LEAVE_TIMER_LARVA))
+						var/to_wait = XENO_LEAVE_TIMER - xenomorph.away_timer
+						if(islarva(xenomorph))
+							to_wait = XENO_LEAVE_TIMER_LARVA - xenomorph.away_timer
 						if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
 							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 						ManualFollow(A)
@@ -53,12 +53,12 @@
 						ManualFollow(A)
 						return FALSE
 
-				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")
+				if(alert(src, "Are you sure you want to transfer yourself into [xenomorph]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE
-				if(((!islarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case
+				if(((!islarva(xenomorph) && xenomorph.away_timer < XENO_LEAVE_TIMER) || (islarva(xenomorph) && xenomorph.away_timer < XENO_LEAVE_TIMER_LARVA)) || xenomorph.stat == DEAD) // Do it again, just in case
 					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 					return FALSE
-				SSticker.mode.transfer_xeno(src, X)
+				SSticker.mode.transfer_xeno(src, xenomorph)
 				return TRUE
 			ManualFollow(A)
 			return TRUE
@@ -87,8 +87,8 @@
 // Now you can click through portals, wormholes, gateways, and teleporters while observing. -Sayu
 
 /obj/structure/machinery/teleport/hub/attack_ghost(mob/user as mob)
-	var/atom/l = loc
-	var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
+	var/atom/atom_location = loc
+	var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(atom_location.x - 2, atom_location.y, atom_location.z))
 	if(com && com.locked)
 		user.forceMove(get_turf(com.locked))
 

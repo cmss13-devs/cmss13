@@ -36,8 +36,8 @@
 
 /datum/db/filter/and/get_columns()
 	var/list/column_list = list()
-	for(var/datum/db/filter/F in subfilters)
-		var/list/cols = F.get_columns()
+	for(var/datum/db/filter/db_filter in subfilters)
+		var/list/cols = db_filter.get_columns()
 		if(!cols)
 			continue
 		column_list.Add(cols)
@@ -52,8 +52,8 @@
 
 /datum/db/filter/or/get_columns()
 	var/list/column_list = list()
-	for(var/datum/db/filter/F in subfilters)
-		var/list/cols = F.get_columns()
+	for(var/datum/db/filter/db_filter in subfilters)
+		var/list/cols = db_filter.get_columns()
 		if(!cols)
 			continue
 		column_list.Add(cols)

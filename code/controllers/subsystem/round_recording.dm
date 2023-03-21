@@ -36,15 +36,15 @@ SUBSYSTEM_DEF(round_recording)
 		currentrun = recorder.tracked_players.Copy()
 
 	while(currentrun.len)
-		var/mob/M = currentrun[currentrun.len]
+		var/mob/mob = currentrun[currentrun.len]
 		currentrun.len--
 
 		// Try to stop the tracking
-		if(!M || M.disposed)
-			recorder.stop_tracking(M)
+		if(!mob || mob.disposed)
+			recorder.stop_tracking(mob)
 			continue
 
-		recorder.snapshot_player(M)
+		recorder.snapshot_player(mob)
 
 		if (MC_TICK_CHECK)
 			return*/

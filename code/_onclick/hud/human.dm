@@ -114,59 +114,59 @@
 /datum/hud/human/hidden_inventory_update(mob/viewer)
 	if(!mymob || !ui_datum)
 		return
-	var/mob/living/carbon/human/H = mymob
-	var/mob/screenmob = viewer || H
+	var/mob/living/carbon/human/human = mymob
+	var/mob/screenmob = viewer || human
 	if(!gear.len)
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
 
 	if(screenmob.hud_used.inventory_shown && screenmob.hud_used.hud_shown)
-		if(H.shoes)
-			H.shoes.screen_loc = ui_datum.ui_shoes
-			screenmob.client.screen += H.shoes
-		if(H.gloves)
-			H.gloves.screen_loc = ui_datum.ui_gloves
-			screenmob.client.screen += H.gloves
-		if(H.wear_l_ear)
-			H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
-			screenmob.client.screen += H.wear_l_ear
-		if(H.wear_r_ear)
-			H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
-			screenmob.client.screen += H.wear_r_ear
-		if(H.glasses)
-			H.glasses.screen_loc = ui_datum.ui_glasses
-			screenmob.client.screen += H.glasses
-		if(H.w_uniform)
-			H.w_uniform.screen_loc = ui_datum.ui_iclothing
-			screenmob.client.screen += H.w_uniform
-		if(H.wear_suit)
-			H.wear_suit.screen_loc = ui_datum.ui_oclothing
-			screenmob.client.screen += H.wear_suit
-		if(H.wear_mask)
-			H.wear_mask.screen_loc = ui_datum.ui_mask
-			screenmob.client.screen += H.wear_mask
-		if(H.head)
-			H.head.screen_loc = ui_datum.ui_head
-			screenmob.client.screen += H.head
+		if(human.shoes)
+			human.shoes.screen_loc = ui_datum.ui_shoes
+			screenmob.client.screen += human.shoes
+		if(human.gloves)
+			human.gloves.screen_loc = ui_datum.ui_gloves
+			screenmob.client.screen += human.gloves
+		if(human.wear_l_ear)
+			human.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
+			screenmob.client.screen += human.wear_l_ear
+		if(human.wear_r_ear)
+			human.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
+			screenmob.client.screen += human.wear_r_ear
+		if(human.glasses)
+			human.glasses.screen_loc = ui_datum.ui_glasses
+			screenmob.client.screen += human.glasses
+		if(human.w_uniform)
+			human.w_uniform.screen_loc = ui_datum.ui_iclothing
+			screenmob.client.screen += human.w_uniform
+		if(human.wear_suit)
+			human.wear_suit.screen_loc = ui_datum.ui_oclothing
+			screenmob.client.screen += human.wear_suit
+		if(human.wear_mask)
+			human.wear_mask.screen_loc = ui_datum.ui_mask
+			screenmob.client.screen += human.wear_mask
+		if(human.head)
+			human.head.screen_loc = ui_datum.ui_head
+			screenmob.client.screen += human.head
 	else
-		if(H.shoes)
-			screenmob.client.screen -= H.shoes
-		if(H.gloves)
-			screenmob.client.screen -= H.gloves
-		if(H.wear_r_ear)
-			screenmob.client.screen -= H.wear_r_ear
-		if(H.wear_l_ear)
-			screenmob.client.screen -= H.wear_l_ear
-		if(H.glasses)
-			screenmob.client.screen -= H.glasses
-		if(H.w_uniform)
-			screenmob.client.screen -= H.w_uniform
-		if(H.wear_suit)
-			screenmob.client.screen -= H.wear_suit
-		if(H.wear_mask)
-			screenmob.client.screen -= H.wear_mask
-		if(H.head)
-			screenmob.client.screen -= H.head
+		if(human.shoes)
+			screenmob.client.screen -= human.shoes
+		if(human.gloves)
+			screenmob.client.screen -= human.gloves
+		if(human.wear_r_ear)
+			screenmob.client.screen -= human.wear_r_ear
+		if(human.wear_l_ear)
+			screenmob.client.screen -= human.wear_l_ear
+		if(human.glasses)
+			screenmob.client.screen -= human.glasses
+		if(human.w_uniform)
+			screenmob.client.screen -= human.w_uniform
+		if(human.wear_suit)
+			screenmob.client.screen -= human.wear_suit
+		if(human.wear_mask)
+			screenmob.client.screen -= human.wear_mask
+		if(human.head)
+			screenmob.client.screen -= human.head
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
@@ -174,55 +174,55 @@
 
 	. = ..()
 
-	var/mob/living/carbon/human/H = mymob
-	var/mob/screenmob = viewer || H
+	var/mob/living/carbon/human/human = mymob
+	var/mob/screenmob = viewer || human
 
 	if(screenmob.hud_used)
 		if(screenmob.hud_used.hud_shown)
-			if(H.s_store)
-				H.s_store.screen_loc = ui_datum.hud_slot_offset(H.s_store, ui_datum.ui_sstore1)
-				screenmob.client.screen += H.s_store
-			if(H.wear_id)
-				H.wear_id.screen_loc = ui_datum.hud_slot_offset(H.wear_id, ui_datum.ui_id)
-				screenmob.client.screen += H.wear_id
-			if(H.belt)
-				H.belt.screen_loc = ui_datum.hud_slot_offset(H.belt, ui_datum.ui_belt)
-				screenmob.client.screen += H.belt
-			if(H.back)
-				H.back.screen_loc = ui_datum.hud_slot_offset(H.back, ui_datum.ui_back)
-				screenmob.client.screen += H.back
-			if(H.l_store)
-				H.l_store.screen_loc = ui_datum.hud_slot_offset(H.l_store, ui_datum.ui_storage1)
-				screenmob.client.screen += H.l_store
-			if(H.r_store)
-				H.r_store.screen_loc = ui_datum.hud_slot_offset(H.r_store, ui_datum.ui_storage2)
-				screenmob.client.screen += H.r_store
+			if(human.s_store)
+				human.s_store.screen_loc = ui_datum.hud_slot_offset(human.s_store, ui_datum.ui_sstore1)
+				screenmob.client.screen += human.s_store
+			if(human.wear_id)
+				human.wear_id.screen_loc = ui_datum.hud_slot_offset(human.wear_id, ui_datum.ui_id)
+				screenmob.client.screen += human.wear_id
+			if(human.belt)
+				human.belt.screen_loc = ui_datum.hud_slot_offset(human.belt, ui_datum.ui_belt)
+				screenmob.client.screen += human.belt
+			if(human.back)
+				human.back.screen_loc = ui_datum.hud_slot_offset(human.back, ui_datum.ui_back)
+				screenmob.client.screen += human.back
+			if(human.l_store)
+				human.l_store.screen_loc = ui_datum.hud_slot_offset(human.l_store, ui_datum.ui_storage1)
+				screenmob.client.screen += human.l_store
+			if(human.r_store)
+				human.r_store.screen_loc = ui_datum.hud_slot_offset(human.r_store, ui_datum.ui_storage2)
+				screenmob.client.screen += human.r_store
 		else
-			if(H.s_store)
-				screenmob.client.screen -= H.s_store
-			if(H.wear_id)
-				screenmob.client.screen -= H.wear_id
-			if(H.belt)
-				screenmob.client.screen -= H.belt
-			if(H.back)
-				screenmob.client.screen -= H.back
-			if(H.l_store)
-				screenmob.client.screen -= H.l_store
-			if(H.r_store)
-				screenmob.client.screen -= H.r_store
+			if(human.s_store)
+				screenmob.client.screen -= human.s_store
+			if(human.wear_id)
+				screenmob.client.screen -= human.wear_id
+			if(human.belt)
+				screenmob.client.screen -= human.belt
+			if(human.back)
+				screenmob.client.screen -= human.back
+			if(human.l_store)
+				screenmob.client.screen -= human.l_store
+			if(human.r_store)
+				screenmob.client.screen -= human.r_store
 
 	if(hud_version != HUD_STYLE_NOHUD)
-		if(H.r_hand)
-			H.r_hand.screen_loc = ui_datum.hud_slot_offset(H.r_hand, ui_datum.ui_rhand)
-			H.client.screen += H.r_hand
-		if(H.l_hand)
-			H.l_hand.screen_loc = ui_datum.hud_slot_offset(H.l_hand, ui_datum.ui_lhand)
-			H.client.screen += H.l_hand
+		if(human.r_hand)
+			human.r_hand.screen_loc = ui_datum.hud_slot_offset(human.r_hand, ui_datum.ui_rhand)
+			human.client.screen += human.r_hand
+		if(human.l_hand)
+			human.l_hand.screen_loc = ui_datum.hud_slot_offset(human.l_hand, ui_datum.ui_lhand)
+			human.client.screen += human.l_hand
 	else
-		if(H.r_hand)
-			H.r_hand.screen_loc = null
-		if(H.l_hand)
-			H.l_hand.screen_loc = null
+		if(human.r_hand)
+			human.r_hand.screen_loc = null
+		if(human.l_hand)
+			human.l_hand.screen_loc = null
 
 /datum/hud/human/proc/draw_inventory_slots(gear, datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	for(var/gear_slot in gear)

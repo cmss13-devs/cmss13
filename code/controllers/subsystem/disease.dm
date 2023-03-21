@@ -19,13 +19,13 @@ SUBSYSTEM_DEF(disease)
 		currentrun = active_diseases.Copy()
 
 	while (currentrun.len)
-		var/datum/disease/D = currentrun[currentrun.len]
+		var/datum/disease/current_disease = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!D || QDELETED(D))
+		if (!current_disease || QDELETED(current_disease))
 			continue
 
-		D.process()
+		current_disease.process()
 
 		if (MC_TICK_CHECK)
 			return

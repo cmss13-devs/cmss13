@@ -53,13 +53,13 @@
 		return
 
 	var/list/object_choices = list()
-	for(var/obj/O in objects_of_interest)
-		var/z_level_to_compare_from = O.z
-		if(istype(O.loc, /obj/structure/surface))
-			z_level_to_compare_from = O.loc.z
+	for(var/obj/current_obj in objects_of_interest)
+		var/z_level_to_compare_from = current_obj.z
+		if(istype(current_obj.loc, /obj/structure/surface))
+			z_level_to_compare_from = current_obj.loc.z
 
 		if(z_level_to_compare_from == user.z)
-			object_choices += O
+			object_choices += current_obj
 
 	if(!length(object_choices))
 		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))

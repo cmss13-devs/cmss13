@@ -8,8 +8,8 @@
 
 	if(!istype(user, /client))
 		if(ismob(user))
-			var/mob/M = user
-			if(!M.client)
+			var/mob/current_user = user
+			if(!current_user.client)
 				return
 		else
 			return
@@ -39,9 +39,9 @@
 		return
 
 	else if(faction in FACTION_LIST_HUMANOID)
-		for(var/mob/M in GLOB.human_mob_list)
-			if(M && M.faction == faction)
-				show_player_event_info(M)
+		for(var/mob/current_mob in GLOB.human_mob_list)
+			if(current_mob && current_mob.faction == faction)
+				show_player_event_info(current_mob)
 		return
 
 	else
@@ -49,8 +49,8 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.name == faction)
-				for(var/mob/M in hive.totalXenos)
-					show_player_event_info(M)
+				for(var/mob/current_mob in hive.totalXenos)
+					show_player_event_info(current_mob)
 				return
 
 	message_admins("ERROR, ([faction ? faction : "name lost"]) faction is not found for event info.")

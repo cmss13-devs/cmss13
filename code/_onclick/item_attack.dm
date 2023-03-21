@@ -52,9 +52,9 @@
 		return FALSE
 
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(!H.melee_allowed)
-			to_chat(H, SPAN_DANGER("You are currently unable to attack."))
+		var/mob/living/carbon/human/human = user
+		if(!human.melee_allowed)
+			to_chat(human, SPAN_DANGER("You are currently unable to attack."))
 			return FALSE
 
 	var/showname = "."
@@ -95,10 +95,10 @@
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
 		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/X = M
-			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
-			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
-			X.apply_armorbreak(armor_punch)
+			var/mob/living/carbon/xenomorph/xenomorph = M
+			power = armor_damage_reduction(GLOB.xeno_melee, power, xenomorph.armor_deflection + xenomorph.armor_deflection_buff - xenomorph.armor_deflection_debuff, 20, 0, 0, xenomorph.armor_integrity)
+			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, xenomorph.armor_deflection + xenomorph.armor_deflection_buff - xenomorph.armor_deflection_debuff, 20, 0, 0, xenomorph.armor_integrity)
+			xenomorph.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)
 		switch(damtype)
@@ -114,8 +114,8 @@
 				user.track_friendly_fire(initial(name))
 		M.updatehealth()
 	else
-		var/mob/living/carbon/human/H = M
-		var/hit = H.attacked_by(src, user)
+		var/mob/living/carbon/human/human = M
+		var/hit = human.attacked_by(src, user)
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
 		return hit

@@ -153,22 +153,22 @@
 /datum/hud/robot/persistent_inventory_update()
 	if(!mymob || !ui_robot_datum)
 		return
-	var/mob/living/silicon/robot/R = mymob
+	var/mob/living/silicon/robot/robot = mymob
 	if(hud_shown)
-		if(R.module_state_1)
-			R.module_state_1.screen_loc = ui_robot_datum.ui_inv1
-			R.client.screen += R.module_state_1
-		if(R.module_state_2)
-			R.module_state_2.screen_loc = ui_robot_datum.ui_inv2
-			R.client.screen += R.module_state_2
-		if(R.module_state_3)
-			R.module_state_3.screen_loc = ui_robot_datum.ui_inv3
-			R.client.screen += R.module_state_3
+		if(robot.module_state_1)
+			robot.module_state_1.screen_loc = ui_robot_datum.ui_inv1
+			robot.client.screen += robot.module_state_1
+		if(robot.module_state_2)
+			robot.module_state_2.screen_loc = ui_robot_datum.ui_inv2
+			robot.client.screen += robot.module_state_2
+		if(robot.module_state_3)
+			robot.module_state_3.screen_loc = ui_robot_datum.ui_inv3
+			robot.client.screen += robot.module_state_3
 	else
-		if(R.module_state_1)
-			R.module_state_1.screen_loc = null
-		if(R.module_state_2)
-			R.module_state_2.screen_loc = null
-		if(R.module_state_3)
-			R.module_state_3.screen_loc = null
+		if(robot.module_state_1)
+			robot.module_state_1.screen_loc = null
+		if(robot.module_state_2)
+			robot.module_state_2.screen_loc = null
+		if(robot.module_state_3)
+			robot.module_state_3.screen_loc = null
 

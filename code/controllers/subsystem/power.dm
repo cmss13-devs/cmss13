@@ -40,16 +40,16 @@ SUBSYSTEM_DEF(power)
 
 	// Next we let the power machines operate, this way until the next tick it will be as if they have all done their work.
 	while (currentrun_power_machines.len)
-		var/datum/X = currentrun_power_machines[currentrun_power_machines.len]
+		var/datum/current_datum = currentrun_power_machines[currentrun_power_machines.len]
 		currentrun_power_machines.len--
-		if (!X || QDELETED(X))
+		if (!current_datum || QDELETED(current_datum))
 			continue
 
-		if (istype(X, /obj/structure/machinery))
-			var/obj/structure/machinery/M = X
-			if (M.process() == PROCESS_KILL)
-				//M.inMachineList = FALSE
-				power_machines.Remove(M)
+		if (istype(current_datum, /obj/structure/machinery))
+			var/obj/structure/machinery/machine = current_datum
+			if (machine.process() == PROCESS_KILL)
+				//machine.inMachineList = FALSE
+				power_machines.Remove(machine)
 				continue
 
 		if (MC_TICK_CHECK)

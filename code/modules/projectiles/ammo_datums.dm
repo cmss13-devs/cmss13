@@ -330,7 +330,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/ap/penetrating
-	name = "wall-piercing pistol bullet"
+	name = "wall-penetrating pistol bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -341,15 +341,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/pistol/ap/cluster
-	name = "cluster pistol bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 1.5
-
-/datum/ammo/bullet/pistol/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/ap/toxin
 	name = "toxic pistol bullet"
@@ -395,14 +386,6 @@
 	penetration= ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pistol/heavy/cluster
-	name = "heavy cluster pistol bullet"
-	var/cluster_addon = 1.5
-
-/datum/ammo/bullet/pistol/heavy/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
-
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
 	damage = 60
@@ -430,15 +413,12 @@
 
 /datum/ammo/bullet/pistol/deagle
 	name = ".50 heavy pistol bullet"
-	damage = 70
+	damage = 45
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_10
+	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-
-/datum/ammo/bullet/pistol/deagle/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 2)
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -465,12 +445,9 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = 50
+	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-
-/datum/ammo/bullet/pistol/highpower/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
-	pushback(M, P, 3)
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -504,7 +481,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/squash/penetrating
-	name = "wall-piercing squash-head pistol bullet"
+	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -513,15 +490,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/pistol/squash/cluster
-	name = "cluster squash-head pistol bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 2
-
-/datum/ammo/bullet/pistol/squash/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/squash/incendiary
 	name = "incendiary squash-head pistol bullet"
@@ -632,7 +600,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/revolver/penetrating
-	name = "wall-piercing revolver bullet"
+	name = "wall-penetrating revolver bullet"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -642,16 +610,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/revolver/cluster
-	name = "cluster revolver bullet"
-	shrapnel_chance = 0
-	var/cluster_addon = 4
-	penetration = ARMOR_PENETRATION_TIER_10
-
-/datum/ammo/bullet/revolver/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/revolver/nagant
 	name = "nagant revolver bullet"
@@ -825,59 +783,10 @@
 	icon_state = "nail-projectile"
 
 	damage = 25
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	accurate_range = 5
 	shell_speed = AMMO_SPEED_TIER_4
-
-
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	if(iscarbonsizexeno(L))
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			return
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		return
-
-	if(L.frozen)
-		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
-		return
-
-	//Check for presence of solid surface behind
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(user, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.frozen = TRUE
-	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
-		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
-	L.update_canmove()
-	addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, unfreeze)), 3 SECONDS)
-
-/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
-	if(!L || L == P.firer || L.lying)
-		return
-
-	L.adjust_effect(1, SLOW) //Slow on hit.
-	L.recalculate_move_delay = TRUE
-	var/super_slowdown_duration = 3
-	//If there's an obstacle on the far side, superslow and do extra damage.
-	if(iscarbonsizexeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
-		var/mob/living/carbon/xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
-			super_slowdown_duration = 0.5
-	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
-		super_slowdown_duration = 0.5
-
-	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
-	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
-		return
-
-	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.adjust_effect(super_slowdown_duration, SUPERSLOW)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -895,7 +804,7 @@
 	))
 
 /datum/ammo/bullet/smg/ap/penetrating
-	name = "wall-piercing submachinegun bullet"
+	name = "wall-penetrating submachinegun bullet"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -906,17 +815,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/smg/ap/cluster
-	name = "cluster submachinegun bullet"
-	shrapnel_chance = 0
-	damage = 30
-	penetration = ARMOR_PENETRATION_TIER_10
-	var/cluster_addon = 0.8
-
-/datum/ammo/bullet/smg/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
@@ -1039,7 +937,7 @@
 
 
 /datum/ammo/bullet/rifle/ap/penetrating
-	name = "wall-piercing rifle bullet"
+	name = "wall-penetrating rifle bullet"
 	shrapnel_chance = 0
 
 	damage = 35
@@ -1050,18 +948,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
-
-/datum/ammo/bullet/rifle/ap/cluster
-	name = "cluster rifle bullet"
-	shrapnel_chance = 0
-
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_10
-	var/cluster_addon = 1
-
-/datum/ammo/bullet/rifle/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
@@ -1700,6 +1586,8 @@
 
 /datum/ammo/bullet/sniper/crude
 	name = "crude sniper bullet"
+	damage = 42
+	penetration = ARMOR_PENETRATION_TIER_6
 
 /datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()

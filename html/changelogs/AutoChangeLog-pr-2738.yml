@@ -1,5 +1,0 @@
-author: "TheDonkified"
-delete-after: True
-changes:
-  - rscdel: "Evo pods and spawn pool are removed."
-  - rscadd: "Hive core directly affects evolution speed and is where burrowed larva spawn from now on."

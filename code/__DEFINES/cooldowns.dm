@@ -2,6 +2,10 @@
 #define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 
+//Define for ship alt
+#define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
+
+
 //// COOLDOWN SYSTEMS
 /*
  * We have 2 cooldown systems: timer cooldowns (divided between stoppable and regular) and world.time cooldowns.

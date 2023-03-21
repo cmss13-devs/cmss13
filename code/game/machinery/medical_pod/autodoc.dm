@@ -732,8 +732,6 @@
 					dat += "<a href='?src=\ref[src];burn=1'>Burn Damage Treatment</a><br>"
 				if(isnull(surgeryqueue["open"]))
 					dat += "<a href='?src=\ref[src];open=1'>Close Open Incisions</a><br>"
-				if(isnull(surgeryqueue["broken"]))
-					dat += "<a href='?src=\ref[src];broken=1'>Bone Repair Treatment</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))

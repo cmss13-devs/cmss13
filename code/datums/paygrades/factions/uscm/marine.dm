@@ -95,7 +95,7 @@
 
 /datum/paygrade/marine/e9c
 	paygrade = "ME9C"
-	name = "Sergeant Major"
+	name = "Sergeant Major of the Colonial Marine Corps"
 	prefix = "SMCMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11

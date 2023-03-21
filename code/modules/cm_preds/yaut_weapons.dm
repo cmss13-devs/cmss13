@@ -896,8 +896,8 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
-	var/dummy_icon_state = "plasma"
-	var/dummy_item_state = "plasma_wear"
+	var/base_icon_state = "plasma"
+	var/base_item_state = "plasma_wear"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -928,10 +928,10 @@
 	var/strength = "low power stun bolts"//what it's shooting
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
-	icon_state = "[dummy_icon_state]_[caster_material]"
-	item_state = "[dummy_icon_state]_[caster_material]"
-	item_state_slots[WEAR_BACK] = "[dummy_item_state]_off_[caster_material]"
-	item_state_slots[WEAR_J_STORE] = "[dummy_item_state]_off_[caster_material]"
+	icon_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_icon_state]_[caster_material]"
+	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
+	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip

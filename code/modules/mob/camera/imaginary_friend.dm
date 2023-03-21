@@ -172,7 +172,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_IC))

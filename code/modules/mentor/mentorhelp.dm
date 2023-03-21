@@ -176,7 +176,7 @@
 		message_sender_options += " | <a href='?src=\ref[src];action=close'>Close</a> | <a href='?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
-	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>)"]<br>"
+	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)
 

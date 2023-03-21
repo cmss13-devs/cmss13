@@ -216,7 +216,7 @@
 	generated_account = create_account(account_user.real_name, starting_amount, account_paygrade)
 	if(card)
 		card.associated_account_number = generated_account.account_number
-		card.paygrade = account_paygrade
+		card.paygrade = account_paygrade.paygrade
 	if(account_user.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"

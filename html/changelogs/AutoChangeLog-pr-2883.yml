@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Partially fixed upper aft out of bounds hijack crash location"

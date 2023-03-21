@@ -24,8 +24,8 @@
 	idle_power_usage = 15
 	active_power_usage = 450 //Capable of doing various activities
 
-var/stored_metal = 125 // starts with 125 metal loaded
-var/max_metal = 500
+	var/stored_metal = 125 // starts with 125 metal loaded
+	var/max_metal = 500
 
 /obj/structure/machinery/medical_pod/autodoc/update_icon()
 	if(occupant)
@@ -35,11 +35,6 @@ var/max_metal = 500
 			icon_state = "autodoc_closed"
 	else
 		icon_state = "autodoc_open"
-
-///obj/structure/machinery/medical_pod/autodoc/get_examine_text(mob/user)
-//	. = ..()
-//	if(ishuman(user))
-//		. += SPAN_NOTICE("It has [stored_metal] metal available for limb replacements.")
 
 /obj/structure/machinery/medical_pod/autodoc/Initialize()
 	. = ..()
@@ -737,20 +732,8 @@ var/max_metal = 500
 					dat += "<a href='?src=\ref[src];burn=1'>Burn Damage Treatment</a><br>"
 				if(isnull(surgeryqueue["open"]))
 					dat += "<a href='?src=\ref[src];open=1'>Close Open Incisions</a><br>"
-				//dat += "<b>Orthopedic Surgeries</b>"
-				//dat += "<br>"
 				if(isnull(surgeryqueue["broken"]))
 					dat += "<a href='?src=\ref[src];broken=1'>Bone Repair Treatment</a><br>"
-				//if(isnull(surgeryqueue["internal"]))
-				//	dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
-				//if(isnull(surgeryqueue["shrapnel"]))
-				//	dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
-				//dat += "<b>Organ Surgeries</b>"
-				//dat += "<br>"
-				//if(isnull(surgeryqueue["eyes"]))
-				//	dat += "<a href='?src=\ref[src];eyes=1'>Corrective Eye Surgery</a><br>"
-				//if(isnull(surgeryqueue["organdamage"]))
-				//	dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))
@@ -759,12 +742,6 @@ var/max_metal = 500
 					dat += "<a href='?src=\ref[src];dialysis=1'>Dialysis</a><br>"
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
-				//dat += "<b>Special Surgeries</b>"
-				//dat += "<br>"
-				//if(isnull(surgeryqueue["facial"]))
-				//	dat += "<a href='?src=\ref[src];facial=1'>Facial Reconstruction Surgery</a><br>"
-				//if(isnull(surgeryqueue["missing"]))
-				//	dat += "<a href='?src=\ref[src];missing=1'>Limb Replacement Surgery</a><hr>"
 				dat += "<br>"
 		else
 			dat += "The autodoc is empty."

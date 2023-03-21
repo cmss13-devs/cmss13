@@ -56,7 +56,7 @@
 	msg = strip_html(msg)
 	var/log_msg = msg
 	if(from_key && to_key)
-		log_msg = "[from_key] -> [to_key]: [msg]"
+		log_msg = "<span class='mentorhelp'>[from_key] -> [to_key]:</span> [msg]"
 	log_mhelp(log_msg)
 
 /datum/mentorhelp/proc/notify(text, to_thread_mentor = TRUE, to_mentors = TRUE, to_staff = TRUE)

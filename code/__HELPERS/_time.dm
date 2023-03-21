@@ -33,9 +33,9 @@ var/rollovercheck_last_timeofday = 0
 	rollovercheck_last_timeofday = world.timeofday
 	return midnight_rollovers
 
-///Returns the world time in english. Do not use to get date information - starts at 0 + 12 hours.
+///Returns the world time in english. Do not use to get date information - starts at 0 + a random time offset from 10 minutes to 24 hours.
 /proc/worldtime2text(format = "hh:mm", time = world.time)
-	return gameTimestamp(format, time + 12 HOURS)
+	return gameTimestamp(format, time + GLOB.time_offset)
 
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)

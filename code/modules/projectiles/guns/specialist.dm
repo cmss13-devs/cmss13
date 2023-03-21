@@ -307,7 +307,6 @@
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -356,7 +355,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -419,7 +417,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -525,6 +522,7 @@
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
 	unacidable = TRUE
@@ -547,7 +545,7 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
-	force = 16
+	force = 26
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,

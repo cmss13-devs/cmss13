@@ -96,7 +96,8 @@
 		remove_from(owner)
 	SEND_SIGNAL(src, COMSIG_ACTION_GIVEN, L)
 	L.handle_add_action(src)
-	RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
+	if(listen_signal)
+		RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
 	owner = L
 
 /mob/proc/handle_add_action(datum/action/action)

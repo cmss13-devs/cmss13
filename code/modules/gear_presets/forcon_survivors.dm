@@ -249,6 +249,7 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - USCM Synthetic"
 	assignment = "Reconnaissance Synthetic"
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens

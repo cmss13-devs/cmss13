@@ -16,4 +16,5 @@
 
 /obj/effect/landmark/start/working_joe
 	name = JOB_WORKING_JOE
+	icon_state = "wj_spawn"
 	job = /datum/job/civilian/working_joe

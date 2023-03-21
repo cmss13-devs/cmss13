@@ -143,3 +143,163 @@
   totalepicness:
   - bugfix: Fixes cats now do 25 damage and a flicker stun to prey instead of instakilling
       them.
+2023-03-09:
+  Totalepicness5:
+  - bugfix: Fixed being able to slap dead huggers on your face
+  - refactor: Got rid of all dead hugger instances and replaced them with a prop.
+2023-03-10:
+  BeagleGaming1:
+  - qol: If you are unable to fire guns, you are also unable to execute, and instead
+      just melee
+  Morrow:
+  - bugfix: Fixes shuttle console accesses
+  carlarctg:
+  - balance: Plasma pistols and Spike launchers can be wielded.
+  - balance: Removed Wrist Scimitar power reduction.
+2023-03-11:
+  LynxSolstice:
+  - bugfix: Removed old unused code, reducing code debt.
+  NewyearnewmeUwu:
+  - rscdel: Removed the ability to get combat drones and DD gear+guns from black market
+      crates.
+  TopHatPenguin:
+  - rscadd: Adds Chinese to the UPP presets.
+  realforest2001:
+  - config: References to the forum now direct to the new one.
+2023-03-12:
+  Morrow:
+  - bugfix: Fixes runtimes related to leaving the server
+  NewyearnewmeUwu:
+  - bugfix: soil for sandbags on Chance's now has a proper name
+  TopHatPenguin:
+  - rscadd: Adds breaching charges to the RTO vendor
+2023-03-13:
+  LC4492:
+  - bugfix: Fixed poorly made yummy-tummies around the engineering area.
+  - maptweak: The upper engineering area have been properly tweaked to accomodate
+      a shared bunk room for the enlisted ranks of the engineering department, a proper
+      cryosleep room and gave the Chief Engineer his own chamber to sleep in.
+  Morrow:
+  - rscadd: Xenos can now slash and fully destroy vehicle chairs
+  - qol: Made Hivemind available for the first 5 minutes of round even without a queen.
+2023-03-14:
+  NewyearnewmeUwu:
+  - qol: You can now pull a mask up or down with a UI button.
+  - refactor: massively refactored /obj/structure{ objects into proper items
+  - maptweak: every /obj/structure{ item in map files has been removed.
+  carlarctg:
+  - bugfix: Fixed zombie powder perma killing you
+  realforest2001:
+  - admin: Adds a confirmation button to View Global Variables.
+  - bugfix: Admin awarding req points no longer does an alert even if the cancel button
+      is pressed.
+2023-03-15:
+  Geeves:
+  - rscadd: hijack is more cinematic, with explosions and better sound effects
+  Morrow:
+  - bugfix: Removes random flight terminal on big red
+  XSlayer300:
+  - soundadd: Added 23 male *warcry variations.
+  - soundadd: Added 12 female *warcry variations.
+  harryob:
+  - admin: admins can mark ahelps again, and the ticket interface is a different color
+2023-03-16:
+  CapCamIII:
+  - bugfix: Torn scarves no longer cover your facial hair or identity
+  DecemberIsHere:
+  - balance: Nerfs to the Scout Custom M4RA.
+  NewyearnewmeUwu:
+  - bugfix: Sandbags are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: AA cannon actually works once again.
+  TheDonkified:
+  - rscdel: Evo pods and spawn pool are removed.
+  - rscadd: Hive core directly affects evolution speed and is where burrowed larva
+      spawn from now on.
+  harryob:
+  - refactor: the interior manager is gone, long live ssinterior
+  - bugfix: whitelisted predators can now use apostrophes in their flavour texts
+  realforest2001:
+  - bugfix: Dropships can no longer squish oneanother on Chance's Claim.
+2023-03-17:
+  NewyearnewmeUwu:
+  - maptweak: removed yet another default ss13 door from big red
+  TopHatPenguin:
+  - bugfix: Removes the duplicated closet in DCC bunks.
+  realforest2001:
+  - rscadd: Vehicle Elevator now starts raised.
+2023-03-18:
+  Morrow:
+  - bugfix: Fix to evacuated personnel not ending the round
+  - balance: Reduces screenshake and volume of klaxons during hijack.
+  Zonespace27:
+  - rscadd: Map, shipmap, and gamemode votes have their entries in a random order.
+  - admin: Admin-created votes can now, optionally, have their entries in a random
+      order.
+  harryob:
+  - qol: added keybinds for joining as xeno, viewing hive status, hiding, evolving
+      and cancelling camera view
+  - qol: added actions buttons for evolving and joining as xeno
+  - code_imp: actions can listen for a keybind to activate the action
+  - bugfix: fixed a very spammy runtime error
+  memesky:
+  - qol: Increased the maximum font size of the chat from 32px to 48px.
+2023-03-19:
+  CapCamIII:
+  - bugfix: Torn scarves are now small instead of normal sized
+  - balance: M42A, M42C, and XM43E1 can no longer scope in faction clash.
+  Jackie_Estegado:
+  - balance: Reverted the unintentionally nerfed melee damage of the M4RA Custom Battle
+      Rifle.
+  LTNTS:
+  - bugfix: fixed being able to see through walls
+  - bugfix: fixes OT spawning at latejoin landmark on roundstart
+  - qol: mapping or remapping ships/HvH made much easier
+  - imageadd: added landmark icons for mapper use for USCM Almayer roles
+  - bugfix: entrance map marking by brig
+  Moonshanks:
+  - rscadd: added altitude control console and related mechanic
+  - rscadd: added the 'navigations' skill for using the console and applied it to
+      the CO/Synth
+  - balance: added a mechanic for COs to reduce transport and OB cooldown times, and
+      increase hijack transport times
+  Morrow:
+  - bugfix: Removes unintentional survsynth USCM IFF.
+  NewyearnewmeUwu:
+  - maptweak: the lambda graveyard on Solaris Ridge no longer spawns a clown
+  fira:
+  - bugfix: Changed method of logging early game errors to be more convenient.
+2023-03-20:
+  BeagleGaming1:
+  - admin: IC mute now functions properly
+  LynxSolstice, Harryob:
+  - code_imp: Changed the worldtime2text offset to be between 10 minutes and 4 hours.
+  carlarctg:
+  - refactor: Refactors how magazine ammo color is handled into overlays.
+  - refactor: Instead of filling up dmis with a ridiculous amount of icon states for
+      each new barely used magazine type, compatible magazines have a 'band' white
+      overlay icon that is colored based on a variable on the magazine.
+  - imageadd: This will cause various sprites of various magazines to look subtly
+      different as the exact look couldn't be copied.
+  - spellcheck: Renamed wallpiercing to wall-penetrating.
+  - code_imp: Removed cluster magazines from the code.
+  - spellcheck: Altered the name of A19 magazines a little.
+  mullenpaul:
+  - bugfix: DCC is no longer able to launch flybys
+  - bugfix: Queen is once again able to force open dropship airlocks
+  realforest2001:
+  - rscadd: Adds two variables to yautja cloaks for admin customisation. cloak_alpha
+      and true_cloak, true cloak will make the invisibility 100% effective.
+2023-03-21:
+  BeagleGaming1:
+  - admin: Adds more admin super snowflake vendors
+  Morrow:
+  - bugfix: Partially fixed upper aft out of bounds hijack crash location
+  NewyearnewmeUwu:
+  - bugfix: shrapnel removal and robolimb repair is now possible while on the dropship
+      with surgery mode enabled.
+  Segrain:
+  - bugfix: Shuttles' transit time is once again properly calculated.
+  roll1d20st:
+  - qol: Made it easier to make Muffins, Cookies, and Waffles

@@ -23,3 +23,20 @@
 /obj/effect/warning/hover
 	name = "hoverpack warning"
 	color = "#D4AE1E"
+
+	color = "#D4AE1E"
+
+/obj/effect/warning/explosive
+	name = "explosive warning"
+	color = "#ff0000"
+	var/time_until_explosion = 5 SECONDS
+
+/obj/effect/warning/explosive/Initialize(mapload, ...)
+	. = ..()
+	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
+	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_until_explosion)
+
+/obj/effect/warning/explosive/proc/kablooie()
+	new /obj/item/explosive/grenade/high_explosive/bursting_pipe(loc)
+	new /obj/item/explosive/grenade/incendiary/bursting_pipe(loc)
+	qdel(src)

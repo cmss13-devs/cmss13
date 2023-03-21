@@ -52,8 +52,8 @@
 #define URL_WIKI_SURV_GUIDE "https://cm-ss13.com/wiki/Survivor"
 
 // ------ FORUM LINKS ------ //
-#define URL_FORUM "https://cm-ss13.com/forums"
-#define URL_FORUM_APPEALS "https://cm-ss13.com/forums/forms.php?do=form&fid=6"
-#define URL_FORUM_PLAYER_REPORT "https://cm-ss13.com/forums/forms.php?do=form&fid=10"
-#define URL_FORUM_STAFF_REPORT "https://cm-ss13.com/forums/forms.php?do=form&fid=12"
+#define URL_FORUM "https://forum.cm-ss13.com/"
+#define URL_FORUM_APPEALS "https://forum.cm-ss13.com/w/in-game-appeal"
+#define URL_FORUM_PLAYER_REPORT "https://forum.cm-ss13.com/w/player-report"
+#define URL_FORUM_STAFF_REPORT "https://forum.cm-ss13.com/w/staff-report"
 #define URL_QUEEN_GUIDE "https://cm-ss13.com/forums/showthread.php?8404-Ultimate-Queen-Guide-Rip-amp-amp-Tear-(Image-Heavy)"

@@ -53,6 +53,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
+	var/observer_actions = list(/datum/action/observer_action/join_xeno)
 	var/datum/action/minimap/observer/minimap
 	alpha = 127
 
@@ -117,6 +118,10 @@
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+
+	for(var/path in subtypesof(/datum/action/observer_action))
+		var/datum/action/observer_action/new_action = new path()
+		new_action.give_to(src)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -358,6 +363,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
+	do_ghost()
+
+/mob/living/proc/do_ghost()
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(round_statistics)

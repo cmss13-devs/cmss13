@@ -393,7 +393,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/supply_packs = list()
 	var/list/random_supply_packs = list()
 	//shuttle movement
-	var/datum/shuttle/ferry/supply/shuttle
+	var/obj/docking_port/mobile/supply
 
 	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
 
@@ -703,9 +703,9 @@ var/datum/controller/supply/supply_controller = new()
 	if(temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-		if (shuttle)
-			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
+		var/obj/docking_port/mobile/supply = supply_controller.supply
+		if (supply)
+			dat += {"Location: [supply.afterShuttleMove() ? "Raising platform":supply.afterShuttleMove() ? "Raised":"Lowered"]<BR>
 			<HR>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
 		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
@@ -832,34 +832,34 @@ var/datum/controller/supply/supply_controller = new()
 	if (temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
-		if (shuttle)
+		var/obj/docking_port/mobile/supply = supply_controller.supply
+		if (supply)
 			dat += "\nPlatform position: "
-			if (shuttle.has_arrive_time())
+			if (supply.canMove())
 				dat += "Moving<BR>"
 			else
-				if (shuttle.at_station())
-					if (shuttle.docking_controller)
-						switch(shuttle.docking_controller.get_docking_status())
+				if (supply.at_station())
+					if (supply.docking_controller)
+						switch(supply.docking_controller.get_docking_status())
 							if ("docked") dat += "Raised<BR>"
 							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("docking") dat += "Raising [supply.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Lowering [supply.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
 
-					if (shuttle.can_launch())
+					if (supply.can_launch())
 						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
-					else if (shuttle.can_cancel())
+					else if (supply.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
 				else
 					dat += "Lowered<BR>"
-					if (shuttle.can_launch())
+					if (supply.can_launch())
 						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
-					else if (shuttle.can_cancel())
+					else if (supply.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
 					else
 						dat += "*ASRS is busy*"

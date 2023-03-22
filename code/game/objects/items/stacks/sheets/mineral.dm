@@ -260,11 +260,23 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	name = "platinum"
 	desc = "Platinum is a transition metal. Relatively rare and pretty, it is used for its cosmetic value and chemical properties as a catalytic agent. It is also used in electrodes."
 	singular_name = "platinum ingot"
-	icon_state = "sheet-adamantine"
+	icon_state = "sheet-platinum"
 
 	sheettype = "platinum"
 	perunit = 2000
 	stack_id = "platinum"
+	black_market_value = 35
+
+
+/obj/item/stack/sheet/mineral/lead
+	name = "lead"
+	desc = "Lead is a heavy metal and quite dense, yet soft and malleable in its solid state. Though toxic if consumed, lead sheets are are used as a shielding material in walls to protect from radiation, but it also absorbs sound and vibrations."
+	singular_name = "lead brick"
+	icon_state = "sheet-lead"
+
+	sheettype = "lead"
+	perunit = 2000
+	stack_id = "lead"
 	black_market_value = 35
 
 //Extremely valuable to Research.
@@ -301,4 +313,15 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	color = "#9999FF"
 	perunit = 2000
 	stack_id = "osmium"
+	black_market_value = 35
+
+	/obj/item/stack/sheet/mineral/chitin
+	name = "chitin"
+	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	singular_name = "chitin brick"
+	icon_state = "sheet-chitin"
+
+	sheettype = "chitin"
+	perunit = 2000
+	stack_id = "chitin"
 	black_market_value = 35

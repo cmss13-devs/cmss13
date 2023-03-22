@@ -581,3 +581,30 @@
 	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
 	s.start()
 	qdel(src)
+
+// abstract grenades used for hijack explosions
+
+/obj/item/explosive/grenade/high_explosive/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/item/explosive/grenade/high_explosive/bursting_pipe/Initialize()
+	. = ..()
+	cause_data = create_cause_data("bursting pipe")
+	prime()
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	flame_level = BURN_TIME_TIER_3
+	burn_level = BURN_LEVEL_TIER_3
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe/Initialize()
+	. = ..()
+	cause_data = create_cause_data("bursting pipe")
+	prime()

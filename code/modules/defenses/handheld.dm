@@ -2,7 +2,7 @@
 	name = "Don't see this."
 	desc = "A compact version of the USCM defenses. Designed for quick deployment of the associated type in the field."
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
-	icon_state = "uac_sentry_handheld"
+	icon_state = "DMR uac_sentry_handheld"
 
 	force = 5
 	throwforce = 5
@@ -49,7 +49,7 @@
 	deploy_handheld(user)
 
 /obj/item/defenses/handheld/proc/deploy_handheld(mob/living/carbon/human/user)
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 

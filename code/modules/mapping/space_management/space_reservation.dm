@@ -16,6 +16,9 @@
 /datum/turf_reservation/atmosphere
 	turf_type = /turf/open/space/transit/atmosphere
 
+/datum/turf_reservation/interior
+	turf_type = /turf/open/void/vehicle
+
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
 	for(var/i in reserved_turfs)

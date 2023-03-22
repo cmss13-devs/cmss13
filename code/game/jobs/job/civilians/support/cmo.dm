@@ -14,4 +14,5 @@ AddTimelock(/datum/job/civilian/professor, list(
 
 /obj/effect/landmark/start/professor
 	name = JOB_CMO
+	icon_state = "cmo_spawn"
 	job = /datum/job/civilian/professor

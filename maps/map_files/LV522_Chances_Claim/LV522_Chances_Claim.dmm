@@ -11864,7 +11864,6 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "fPt" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12057,7 +12056,6 @@
 /area/lv522/outdoors/colony_streets/south_west_street)
 "fTO" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -50750,15 +50748,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
-"vqG" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Southeast Landing Zone"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = null
-	},
-/area/lv522/landing_zone_2)
 "vqH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -92290,7 +92279,7 @@ jMy
 qGI
 wDa
 wDa
-vqG
+rqn
 wDa
 vbF
 kBj

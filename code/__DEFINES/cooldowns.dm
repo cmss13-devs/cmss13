@@ -1,6 +1,12 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
 #define COOLDOWN_BEACON_RADIO "beacon_radio_cooldown"
 
+#define COOLDOWN_IDLOCK_TEXTALERT "mob_idlock_textalert"
+#define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
+
+//Define for ship alt
+#define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
+
 //// COOLDOWN SYSTEMS
 /*
  * We have 2 cooldown systems: timer cooldowns (divided between stoppable and regular) and world.time cooldowns.

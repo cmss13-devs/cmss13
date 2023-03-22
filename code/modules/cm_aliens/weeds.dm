@@ -32,7 +32,7 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE, do_spread=TRUE)
 	. = ..()
 
 	if(node)
@@ -70,7 +70,7 @@
 	if(node && node.loc)
 		if(get_dist(node, src) >= node.node_range)
 			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
-		else if(!hibernate)
+		else if(!hibernate && do_spread)
 			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
@@ -221,9 +221,13 @@
 				continue
 			qdel(W)
 
-		if(!istype(T, /turf/closed/wall/resin) && istype(T, /turf/closed/wall) && T.density)
-			weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
-			continue
+		if(!istype(T, /turf/closed/wall/resin && T.density))
+			if(istype(T, /turf/closed/wall))
+				weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
+				continue
+			else if( istype(T, /turf/closed))
+				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
+				continue
 
 		if(!weed_expand_objects(T, dirn))
 			continue

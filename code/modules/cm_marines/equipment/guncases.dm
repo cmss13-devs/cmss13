@@ -52,7 +52,6 @@
 
 /obj/item/storage/box/guncase/m_1911/fill_preset_inventory()
 	new /obj/item/storage/belt/gun/m4a3/m1911(src)
-	new /obj/item/weapon/gun/pistol/m1911
 //------------
 /obj/item/storage/box/guncase/mou53
 	name = "\improper MOU53 shotgun case"

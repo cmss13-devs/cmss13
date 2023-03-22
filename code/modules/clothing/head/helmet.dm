@@ -432,7 +432,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 	else
-		..()
 		return pockets.attackby(W, user)
 
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()

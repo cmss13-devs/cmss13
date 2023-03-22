@@ -20,7 +20,7 @@
 	GLOB.survivor_spawns_by_priority["[spawn_priority]"] -= src
 	return ..()
 
-/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
+/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(mob/living/carbon/human/survivor)
 	// prevents stacking survivors on top of eachother
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE
@@ -35,6 +35,8 @@
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 3
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	equipment = /datum/equipment_preset/survivor/clf
@@ -60,7 +62,7 @@
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 	equipment = /datum/equipment_preset/survivor/wy/manager

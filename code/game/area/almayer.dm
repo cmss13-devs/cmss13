@@ -55,12 +55,15 @@
 	req_access = null
 	shuttle_tag = "Maintenance"
 
+/area/almayer/command
+	minimap_color = MINIMAP_AREA_COMMAND
+
 /area/almayer/command/cic
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_CIC
-	soundscape_interval = 20
+	soundscape_interval = 50
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/cichallway
@@ -73,7 +76,7 @@
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ARES
-	soundscape_interval = 8
+	soundscape_interval = 120
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/securestorage
@@ -103,10 +106,19 @@
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering
+	minimap_color = MINIMAP_AREA_ENGI
+
 /area/almayer/engineering/upper_engineering
 	name = "\improper Upper Engineering"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/engineering/upper_engineering/starboard
+	name = "\improper Starboard Upper Engineering"
+
+/area/almayer/engineering/upper_engineering/port
+	name = "\improper Port Upper Engineering"
 
 /area/almayer/engineering/upper_engineering/notunnel
 	flags_area = AREA_NOTUNNEL
@@ -155,6 +167,9 @@
 	name = "\improper Laundry Room"
 	icon_state = "laundry"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/shipboard
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
@@ -274,12 +289,15 @@
 	icon_state = "hangar"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_HANGAR
-	soundscape_interval = 35
+	soundscape_interval = 50
 
 /area/almayer/hallways/vehiclehangar
 	name = "\improper Vehicle Storage"
 	icon_state = "exoarmor"
 	fake_zlevel = 2
+
+/area/almayer/living
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/almayer/living/tankerbunks
 	name = "\improper Vehicle Crew Bunks"
@@ -517,19 +535,22 @@
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical
+	minimap_color = MINIMAP_AREA_MEDBAY
+
 /area/almayer/medical/lower_medical_lobby
 	name = "\improper Medical Lower Lobby"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/upper_medical
 	name = "\improper Medical Upper"
 	icon_state = "medical"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/morgue
 	name = "\improper Morgue"
@@ -541,28 +562,28 @@
 	icon_state = "operating"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/operating_room_two
 	name = "\improper Medical Operating Room 2"
 	icon_state = "operating"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/operating_room_three
 	name = "\improper Medical Operating Room 3"
 	icon_state = "operating"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/operating_room_four
 	name = "\improper Medical Operating Room 4"
 	icon_state = "operating"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/medical_science
 	name = "\improper Medical Research laboratories"
@@ -608,14 +629,14 @@
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/medical/lower_medical_medbay
 	name = "\improper Medical Lower Medbay"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 50
+	soundscape_interval = 120
 
 /area/almayer/squads/alpha
 	name = "\improper Squad Alpha Preparation"

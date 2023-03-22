@@ -3,12 +3,12 @@
 //*******************************************************
 
 
-/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/statistic/round/viewing_round = round_statistics, var/update_data = FALSE)
+/datum/entity/player_entity/proc/show_statistics(mob/user, datum/entity/statistic/round/viewing_round = round_statistics, update_data = FALSE)
 	if(update_data)
 		update_panel_data(round_statistics)
 	ui_interact(user)
 
-/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", datum/nanoui/ui = null, force_open = 1)
 	data["menu"] = menu
 	data["subMenu"] = subMenu
 	data["dataMenu"] = dataMenu
@@ -68,7 +68,7 @@
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/statistic/round/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(datum/entity/statistic/round/viewing_round = round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)

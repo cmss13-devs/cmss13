@@ -21,6 +21,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
+	black_market_value = 5
 
 
 /*
@@ -129,7 +130,8 @@
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
-	var/colour = "#FF0000" //RGB
+	black_market_value = 5
+	var/crayon_color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
@@ -373,6 +375,7 @@
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
+	black_market_value = 20
 
 
 /obj/item/toy/beach_ball
@@ -382,8 +385,8 @@
 	density = FALSE
 	anchored = FALSE
 	w_class = SIZE_SMALL
-	force = 0.0
-	throwforce = 0.0
+	force = 0
+	throwforce = 0
 	throw_speed = SPEED_SLOW
 	throw_range = 20
 
@@ -439,6 +442,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("HONKED")
+	black_market_value = 25
 	var/spam_flag = 0
 	var/sound_effect = 'sound/items/bikehorn.ogg'
 
@@ -458,21 +462,39 @@
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	w_class = SIZE_TINY
 	icon_state = "farwaplush"
-	var/last_hug_time
+	black_market_value = 25
+	COOLDOWN_DECLARE(last_hug_time)
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
 	..()
 
-	if(world.time > last_hug_time)
+	if(COOLDOWN_FINISHED(src, last_hug_time))
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							SPAN_NOTICE("You hug [src]. Dawwww... "))
-		last_hug_time = world.time + 50 //5 second cooldown
+		COOLDOWN_START(src, last_hug_time, 5 SECONDS)
 
 /obj/item/toy/farwadoll/pred
 	name = "strange plush doll"
 	desc = "A plush doll depicting some sort of tall humanoid biped..?"
 	w_class = SIZE_TINY
 	icon_state = "predplush"
+
+/obj/item/toy/plushie_cade
+	name = "plushie barricade"
+	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	icon_state = "plushie_cade"
+	item_state = "plushie_cade"
+	w_class = SIZE_SMALL
+	COOLDOWN_DECLARE(last_hug_time)
+
+/obj/item/toy/plushie_cade/attack_self(mob/user)
+	..()
+
+	if(COOLDOWN_FINISHED(src, last_hug_time))
+		user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]. You feel safe."))
+		playsound(user, "plush", 25, TRUE)
+		COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
+
 
 /obj/item/computer3_part
 	name = "computer part"
@@ -502,7 +524,10 @@
 							/obj/item/toy/prize/seraph = 1,
 							/obj/item/toy/prize/mauler = 1,
 							/obj/item/toy/prize/odysseus = 1,
-							/obj/item/toy/prize/phazon = 1
+							/obj/item/toy/prize/phazon = 1,
+							/obj/item/clothing/shoes/slippers = 1,
+							/obj/item/clothing/shoes/slippers_worn = 1,
+							/obj/item/clothing/head/collectable/tophat/super = 1,
 							)
 
 /obj/item/toy/festivizer
@@ -514,7 +539,7 @@
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that..")
+	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that.")
 
 /obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -535,7 +560,7 @@
 		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
 	user.festivizer_hits_total++
 
-/obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/toy/festivizer/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M) //xenos can use them too.
 	return XENO_NONCOMBAT_ACTION
 

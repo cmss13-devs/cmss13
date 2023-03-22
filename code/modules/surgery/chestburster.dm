@@ -13,10 +13,10 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/cut_larval_pseudoroots,
-		/datum/surgery_step/remove_larva
+		/datum/surgery_step/remove_larva,
 	)
 
-/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	if(!locate(/obj/structure/machinery/optable) in get_turf(patient))
 		return FALSE
 
@@ -33,8 +33,8 @@
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 5 SECONDS
 
 /datum/surgery_step/cut_larval_pseudoroots/proc/larva_blood_spray(mob/living/carbon/human/user, mob/living/carbon/human/patient) //Mostly check_blood_splash().
@@ -154,7 +154,7 @@
 				user.apply_damage(15, BURN, "r_hand")
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in target //the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)

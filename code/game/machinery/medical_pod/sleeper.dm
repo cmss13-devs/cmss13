@@ -202,7 +202,7 @@
 			if(!connected.occupant)
 				return
 			if(connected.occupant.stat == DEAD)
-				to_chat(usr, "<span class='danger'>This person has no life to preserve anymore. Take them to a department capable of reanimating them.</span>")
+				to_chat(usr, SPAN_DANGER("This person has no life to preserve anymore. Take them to a department capable of reanimating them."))
 				return
 			var/chemical = params["chemid"]
 			var/amount = text2num(params["amount"])
@@ -211,7 +211,7 @@
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)
 			else
-				to_chat(usr, "<span class='danger'>This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!</span>")
+				to_chat(usr, SPAN_DANGER("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
 		if("togglefilter")
 			connected.toggle_filter()
 		if("ejectify")
@@ -230,7 +230,7 @@
 
 /obj/structure/machinery/medical_pod/sleeper
 	name = "sleeper"
-	icon_state = "sleeper"
+	icon_state = "sleeper_open"
 	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
 
 	entry_timer = 2 SECONDS

@@ -35,11 +35,11 @@
 	if (!holed_wall)
 		return
 
-	if(M == user && isXeno(user))
+	if(M == user && isxeno(user))
 		use_wall_hole(user)
 
 
-/obj/effect/acid_hole/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/effect/acid_hole/attack_alien(mob/living/carbon/xenomorph/user)
 	if (!holed_wall)
 		qdel(src) //no wall?! then cease existence...
 		return
@@ -49,7 +49,7 @@
 			expand_hole(user)
 			return XENO_NO_DELAY_ACTION
 
-/obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/Xenomorph/user)
+/obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/xenomorph/user)
 	if(user.action_busy || user.lying)
 		return
 

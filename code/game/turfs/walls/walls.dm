@@ -16,7 +16,8 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/structure/machinery/door)
+		/obj/structure/machinery/door,
+	)
 
 	var/damage = 0
 	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
@@ -91,12 +92,12 @@
 
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
-		if(M == user && isXeno(user))
+		if(M == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
 	..()
 
-/turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
@@ -168,7 +169,7 @@
 			. += SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods.")
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam, var/mob/M)
+/turf/closed/wall/proc/take_damage(dam, mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)
@@ -381,6 +382,11 @@
 	if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
+
+	if(istype(W, /obj/item/prop/torch_frame))
+		to_chat(user, SPAN_NOTICE("You place the torch down on the wall."))
+		new /obj/structure/prop/brazier/torch/frame(src)
+		qdel(W)
 
 	if(hull)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))

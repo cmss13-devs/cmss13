@@ -109,7 +109,7 @@ DEFINES in setup.dm, referenced here.
 			//   \\
 //----------------------------------------------------------
 
-/obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
+/obj/item/weapon/gun/clicked(mob/user, list/mods)
 	if (mods["alt"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
@@ -221,14 +221,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
-/obj/item/weapon/gun/proc/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_J_STORE)
 		var/obj/item/suit = user.wear_suit
 		if(!istype(suit, /obj/item/clothing/suit/storage/marine))
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
 	if (!loc || !user)
 		return FALSE
 	if (!isturf(loc))
@@ -252,7 +252,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_NOTICE(message))
 	return TRUE
 
-/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
 		return
 	if (!retrieval_check(user, retrieval_slot))
@@ -282,7 +282,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	addtimer(CALLBACK(src, PROC_REF(sling_return), user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/sling_return(mob/living/carbon/human/user)
 	if (!loc || !user)
 		return
 	if (!isturf(loc))
@@ -465,10 +465,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		overlays += gun_image
 	else attachable_overlays[slot] = null
 
-/obj/item/weapon/gun/proc/x_offset_by_attachment_type(var/attachment_type)
+/obj/item/weapon/gun/proc/x_offset_by_attachment_type(attachment_type)
 	return 0
 
-/obj/item/weapon/gun/proc/y_offset_by_attachment_type(var/attachment_type)
+/obj/item/weapon/gun/proc/y_offset_by_attachment_type(attachment_type)
 	return 0
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
@@ -532,7 +532,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 
 
-/mob/living/carbon/human/proc/can_unholster_from_storage_slot(var/obj/item/storage/slot)
+/mob/living/carbon/human/proc/can_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot))
 		return FALSE
 	if(slot == shoes)//Snowflakey check for shoes and uniform
@@ -561,12 +561,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return FALSE
 
 //For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb(var/unholster_number_offset = 1 as num)
+/mob/living/silicon/robot/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE
 	uneq_active()
 
-/mob/living/carbon/human/verb/holster_verb(var/unholster_number_offset = 1 as num)
+/mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
@@ -675,7 +675,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
-/obj/item/weapon/gun/proc/toggle_burst(var/mob/user)
+/obj/item/weapon/gun/proc/toggle_burst(mob/user)
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
 	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
@@ -821,10 +821,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
-	gun_safety_message(usr)
+	gun_safety_handle(usr)
 
 
-/obj/item/weapon/gun/proc/gun_safety_message(var/mob/user)
+/obj/item/weapon/gun/proc/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
 	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 

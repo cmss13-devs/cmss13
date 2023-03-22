@@ -46,6 +46,7 @@ var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4
 ///////////////
 
 var/diary = null
+var/tgui_diary = null
 var/round_stats = null
 var/round_scheduler_stats = null
 var/mutator_logs = null
@@ -55,7 +56,7 @@ var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/game_year = 2182
 
-var/going = 1.0
+var/going = 1
 var/master_mode = "Distress Signal"
 
 /// If this is anything but "secret", the secret rotation will forceably choose this mode.
@@ -87,6 +88,8 @@ var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()
+/// This is for dogtags placed on crosses- they will show up at the end-round memorial.
+var/list/fallen_list_cross = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
@@ -179,30 +182,4 @@ var/list/almayer_ship_sections = list(
 	"Lower deck Foreship",
 	"Lower deck Midship",
 	"Lower deck Aftship"
-
-	/*
-	why the fuck is the code below commented you may ask? its a much cleaner solution, isn't it? i agree, but look at this:
-
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		Upper deck Aftship Lower deck Foreship Lower deck Midship Lower deck Aftship
-		almayer_ship_sections almayer_ship_sections
-
-
-
-	these are actual, real debug prints of the contents of the list if it is defined with the code below.
-	i'm not fucking with you, dm really grabbed all the drugs it had on hand, stuffed it in the dishwasher,
-	sniffed the fumes and licked every plate clean after.
-
-	it even managed to get the VARIABLE NAME in the fucking list AS AN ELEMENT. THE VARIABLE NAME.
-
-	this is by far the most cursed code i have ever written, someone needs to hire a fucking excorcist
-
-	(UPPER_DECK + " " + FORESHIP),
-	(UPPER_DECK + " " + MIDSHIP),
-	(UPPER_DECK + " " + AFTSHIP),
-	(LOWER_DECK + " " + FORESHIP),
-	(LOWER_DECK + " " + MIDSHIP),
-	(LOWER_DECK + " " + AFTSHIP)
-	*/
 )

@@ -59,7 +59,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/gun.dmi'
+								halitem.icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
 								halitem.icon_state = "revolver"
 								halitem.name = "Revolver"
 							if(2) //c4
@@ -247,7 +247,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	health = 100
 
-/obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
+/obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(world_view_size,my_target))
 		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
@@ -258,7 +258,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	return
 
-/obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
+/obj/effect/fake_attacker/Crossed(mob/M, somenumber)
 	if(M == my_target)
 		step_away(src,my_target,2)
 		if(prob(30))
@@ -332,7 +332,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	collapse = 1
 	updateimage()
 
-/proc/fake_blood(var/mob/target)
+/proc/fake_blood(mob/target)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
@@ -344,7 +344,7 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	/obj/item/clothing/shoes/magboots, /obj/item/disk/nuclear,\
 	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
 
-/proc/fake_attack(var/mob/living/target)
+/proc/fake_attack(mob/living/target)
 // var/list/possible_clones = new/list()
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null

@@ -1,6 +1,7 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You trade your choice of resin secretions and ten slash damage for 100 more health, strong pheromones, lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may die..."
+	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for a large amount of health, strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
@@ -12,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant
 		/datum/action/xeno_action/activable/apply_salve, //Third macro.
-		/datum/action/xeno_action/activable/transfer_plasma //fourth macro
+		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
 		)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
@@ -23,7 +24,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Drone/drone = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
 	drone.mutation_type = DRONE_HEALER
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
@@ -57,7 +58,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, self_health_drain_mod)
 	..()
 
@@ -68,7 +69,7 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/Xenomorph/proc/xeno_apply_salve(mob/living/carbon/Xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
 
 	if(!istype(target_xeno))
 		return

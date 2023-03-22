@@ -1,6 +1,3 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isXeno(A) ? A?:hivenumber : FALSE)
-
 /mob/proc/can_use_hands()
 	return
 
@@ -202,38 +199,32 @@ var/global/list/limb_types_by_name = list(
 
 	return returntext
 
-
-/proc/ninjaspeak(n)
-/*
-The difference with stutter is that this proc can stutter more than 1 letter
-The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
-It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
-*/
-	var/te = html_decode(n)
-	var/t = ""
-	n = length(n)
-	var/p = 1
-	while(p <= n)
-		var/n_letter
-		var/n_mod = rand(1,4)
-		if(p+n_mod>n+1)
-			n_letter = copytext(te, p, n+1)
-		else
-			n_letter = copytext(te, p, p+n_mod)
-		if (prob(50))
-			if (prob(30))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
-			else
-				n_letter = text("[n_letter]-[n_letter]")
-		else
-			n_letter = text("[n_letter]")
-		t = text("[t][n_letter]")
-		p=p+n_mod
-	return strip_html(t)
+/**
+ * Replaces S and similar sounds with 'th' and such. Stolen from tg.
+ */
+/proc/lisp_replace(message)
+	var/static/regex/replace_s = new("s+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_S = new("S+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_z = new("z+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_Z = new("Z+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_x = new("x+h?h?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_X = new("X+H?H?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_ceci = new("ceh?|cih?", REGEX_FLAG_GLOBAL)
+	var/static/regex/replace_CECI = new("CEH?|CIH?", REGEX_FLAG_GLOBAL)
+	if(message[1] != "*")
+		message = replace_s.Replace(message, "th")
+		message = replace_S.Replace(message, "TH")
+		message = replace_z.Replace(message, "th")
+		message = replace_Z.Replace(message, "TH")
+		message = replace_ceci.Replace(message, "th")
+		message = replace_CECI.Replace(message, "TH")
+		message = replace_x.Replace(message, "ckth")
+		message = replace_X.Replace(message, "CKTH")
+	return message
 
 #define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+/proc/shake_camera(mob/M, steps = 1, strength = 1, time_per_step = 1)
 	if(!M?.client || (M.shakecamera > world.time))
 		return
 
@@ -258,7 +249,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return FALSE
 
 
-/mob/proc/abiotic(var/full_body = 0)
+/mob/proc/abiotic(full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 
@@ -294,7 +285,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return
 
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()))
+	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
 
 
 //returns how many non-destroyed legs the mob has (currently only useful for humans)
@@ -374,9 +365,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25
 #define DURATION_MULTIPLIER_TIER_4 0.10
-/mob/proc/get_skill_duration_multiplier(var/skill)
+/mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
-	. = 1.0
+	. = 1
 	if(!skills)
 		return
 	switch(skill)
@@ -435,14 +426,14 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 
 
-/mob/proc/check_view_change(var/new_size, var/atom/source)
+/mob/proc/check_view_change(new_size, atom/source)
 	return new_size
 
-/mob/proc/can_be_pulled_by(var/mob/M)
+/mob/proc/can_be_pulled_by(mob/M)
 	return TRUE
 
 /mob/proc/can_see_reagents()
-	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+	return stat == DEAD || issynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
 /**
  * Examine a mob
@@ -491,10 +482,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	if(Adjacent(pullify))
 		start_pulling(pullify)
 
-/mob/proc/handle_blood_splatter(var/splatter_dir)
+/mob/proc/handle_blood_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
 
-/proc/get_mobs_in_z_level_range(var/turf/starting_turf, var/range)
+/proc/get_mobs_in_z_level_range(turf/starting_turf, range)
 	var/list/mobs_in_range = list()
 	var/z_level = starting_turf.z
 	for(var/mob/mob as anything in GLOB.mob_list)
@@ -505,5 +496,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		mobs_in_range += mob
 	return mobs_in_range
 
-/mob/proc/alter_ghost(var/mob/dead/observer/ghost)
+/mob/proc/alter_ghost(mob/dead/observer/ghost)
+	return
+
+/mob/proc/get_paygrade()
 	return

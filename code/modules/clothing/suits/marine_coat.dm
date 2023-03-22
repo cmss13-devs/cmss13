@@ -10,7 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -137,7 +137,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
 	icon_state = "marine_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW

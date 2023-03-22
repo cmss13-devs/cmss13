@@ -25,6 +25,24 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+GLOBAL_LIST_EMPTY(mainship_pipes)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
@@ -126,7 +144,7 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
-GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
+GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
@@ -145,6 +163,12 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
+
+GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
+
+/proc/setup_xeno_evolve_times()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
@@ -216,22 +240,30 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 #undef HALF_EDGE_RIGHT
 #undef HALF_EDGE_LEFT
 
+GLOBAL_LIST_INIT(color_vars, list("color"))
+
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 
-/proc/cached_params_decode(var/params_data, var/decode_proc)
+GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))
+
+GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
+
+GLOBAL_LIST_INIT(emote_list, init_emote_list())
+
+/proc/cached_params_decode(params_data, decode_proc)
 	. = paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
 		paramslist_cache[params_data] = .
 
-/proc/key_number_decode(var/key_number_data)
+/proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
 	for(var/key in L)
 		L[key] = text2num(L[key])
 	return L
 
-/proc/number_list_decode(var/number_list_data)
+/proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
 	for(var/i in 1 to L.len)
 		L[i] = text2num(L[i])
@@ -437,3 +469,25 @@ var/global/list/available_specialist_kit_boxes = list(
 			"Scout" = 2,
 			"Demo" = 2,
 			)
+
+/proc/init_global_referenced_datums()
+	init_keybindings()
+	generate_keybind_ui_data()
+
+/proc/init_emote_list()
+	. = list()
+	for(var/path in subtypesof(/datum/emote))
+		var/datum/emote/E = new path()
+		if(E.key)
+			if(!.[E.key])
+				.[E.key] = list(E)
+			else
+				.[E.key] += E
+		else if(E.message) //Assuming all non-base emotes have this
+			stack_trace("Keyless emote: [E.type]")
+
+		if(E.key_third_person) //This one is optional
+			if(!.[E.key_third_person])
+				.[E.key_third_person] = list(E)
+			else
+				.[E.key_third_person] |= E

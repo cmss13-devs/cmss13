@@ -89,7 +89,7 @@
 
 // --- TGUI GOES HERE --- \\
 
-/obj/structure/machinery/autolathe/attack_hand(var/mob/user)
+/obj/structure/machinery/autolathe/attack_hand(mob/user)
 	if(..())
 		return
 	if(shocked)
@@ -204,7 +204,7 @@
 			//Exploit detection, not sure if necessary after rewrite.
 			if(!making || multiplier < 0 || multiplier > 100)
 				var/turf/exploit_loc = get_turf(usr)
-				message_staff("[key_name_admin(usr)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])")
+				message_admins("[key_name_admin(usr)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])")
 				return
 
 			if(making.is_stack)
@@ -267,7 +267,7 @@
 
 // --- END TGUI --- \\
 
-/obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/autolathe/attackby(obj/item/O as obj, mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
@@ -357,7 +357,7 @@
 	for(var/material in storage_capacity)
 		storage_capacity[material] = tot_rating  * 30000
 
-/obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
+/obj/structure/machinery/autolathe/proc/try_queue(mob/living/carbon/human/user, datum/autolathe/recipe/making, turf/make_loc, multiplier = 1)
 	if(queue.len >= queue_max)
 		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
@@ -399,7 +399,7 @@
 
 	busy = FALSE
 
-/obj/structure/machinery/autolathe/proc/print_item(var/datum/autolathe/recipe/making, var/multiplier, var/turf/make_loc)
+/obj/structure/machinery/autolathe/proc/print_item(datum/autolathe/recipe/making, multiplier, turf/make_loc)
 	// Make sure autolathe can print the item
 	for(var/material in making.resources)
 		if(isnull(stored_material[material]) || stored_material[material] < (making.resources[material]*multiplier))
@@ -446,10 +446,10 @@
 		AUTOLATHE_WIRE_SHOCK = "Ground safety"
 	)
 
-/obj/structure/machinery/autolathe/proc/isWireCut(var/wire)
+/obj/structure/machinery/autolathe/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/autolathe/proc/cut(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/cut(wire, mob/user)
 	wires ^= getWireFlag(wire)
 
 	switch (wire)
@@ -463,7 +463,7 @@
 			visible_message(SPAN_DANGER("A green light turns on in the panel of \the [src] \
 				as electric arcs continuously shoot off from it!"))
 
-/obj/structure/machinery/autolathe/proc/mend(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/mend(wire, mob/user)
 	wires |= getWireFlag(wire)
 
 	switch (wire)
@@ -476,7 +476,7 @@
 			shocked = FALSE
 			visible_message(SPAN_DANGER("A green light turns off in the panel of \the [src]."))
 
-/obj/structure/machinery/autolathe/proc/pulse(var/wire, var/mob/user)
+/obj/structure/machinery/autolathe/proc/pulse(wire, mob/user)
 	switch (wire)
 		if(AUTOLATHE_WIRE_HACK)
 			hacked = !hacked
@@ -580,7 +580,7 @@
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/manipulator,
-		/obj/item/stock_parts/console_screen
+		/obj/item/stock_parts/console_screen,
 	)
 
 /obj/structure/machinery/autolathe/armylathe/full

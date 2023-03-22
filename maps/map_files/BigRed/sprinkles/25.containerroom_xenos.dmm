@@ -22,8 +22,7 @@
 "f" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	icon_state = "tube1"
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -39,8 +38,7 @@
 "i" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
+	icon_state = "tube1"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
@@ -103,17 +101,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "v" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
-	},
+/obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "w" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
-	},
+/obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "x" = (
@@ -121,10 +113,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "y" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
-	},
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "z" = (

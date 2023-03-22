@@ -14,7 +14,7 @@
 	var/locked = 1
 	var/smashed = 0
 
-/obj/structure/closet/fireaxecabinet/attackby(obj/item/O, var/mob/user)  //Marker -Agouri
+/obj/structure/closet/fireaxecabinet/attackby(obj/item/O, mob/user)  //Marker -Agouri
 	//..() //That's very useful, Erro
 
 	var/hasaxe = 0       //gonna come in handy later~
@@ -157,7 +157,7 @@
 	if (isrobot(usr))
 		return
 
-	if (istype(usr, /mob/living/carbon/Xenomorph))
+	if (istype(usr, /mob/living/carbon/xenomorph))
 		return
 
 	if (localopened)

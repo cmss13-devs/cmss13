@@ -33,13 +33,13 @@ SUBSYSTEM_DEF(sound)
 		run_queue.Remove(run_template) // Everyone that had to get this sound got it. Bye, template
 		run_hearers = null // Reset so we know next one is new
 
-/datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, var/list/client/hearers, list/datum/interior/extra_interiors)
+/datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, list/client/hearers, list/datum/interior/extra_interiors)
 	if(!hearers)
 		hearers = list()
-	if(extra_interiors && GLOB.interior_manager)
+	if(extra_interiors && SSmapping)
 		for(var/datum/interior/VI in extra_interiors)
-			if(VI?.ready && VI?.chunk_id)
-				var/list/bounds = GLOB.interior_manager.get_chunk_coords(VI.chunk_id)
+			if(VI?.ready)
+				var/list/bounds = VI.get_middle_coords()
 				if(bounds.len >= 2)
-					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], GLOB.interior_manager.chunk_size, GLOB.interior_manager.chunk_size), GLOB.interior_manager.interior_z)
+					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], VI.map_template.height, VI.map_template.width), bounds[3])
 	template_queue[template] = hearers

@@ -20,7 +20,7 @@
 	matter = list("glass" = 10,"metal" = 10)
 
 	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
-	var/bullets = 7.0
+	var/bullets = 7
 
 /obj/item/toy/gun/get_examine_text(mob/user)
 	desc = "There are [bullets] caps\s left. Looks almost like the real thing! Ages 8 and up."
@@ -187,7 +187,7 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/toy.dmi'
-	icon_state = "null"
+	icon_state = null
 	anchored = TRUE
 	density = FALSE
 
@@ -201,7 +201,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "sword0"
 	item_state = "sword0"
-	var/active = 0.0
+	var/active = 0
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")

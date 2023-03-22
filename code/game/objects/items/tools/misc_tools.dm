@@ -7,7 +7,7 @@
 
 
 /// meant for use with qdelling/newing things to transfer labels between them
-/atom/proc/transfer_label_component(var/atom/target)
+/atom/proc/transfer_label_component(atom/target)
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
 	if(src_label_component)
 		var/target_label_text = src_label_component.label_name
@@ -105,7 +105,7 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(var/atom/A, var/mob/user)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
 	if(label)
 		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."), \
@@ -160,7 +160,7 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	/// what colour the ink is!
+	/// what color the ink is!
 	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE
@@ -392,7 +392,9 @@
 /obj/item/tool/stamp/ro
 	name = "requisitions officer's rubber stamp"
 	icon_state = "stamp-ro"
-/obj/item/tool/barricade_hammer//doesn't do anything, yet
+
+/obj/item/tool/carpenters_hammer //doesn't do anything, yet
 	name = "carpenter's hammer"
-	icon_state = "carpenters_hammer"
-	desc = "Can be used to thwack nails or wooden objects to hammer or even repair them."
+	icon_state = "carpenters_hammer" //yay, it now has a sprite.
+	item_state = "carpenters_hammer"
+	desc = "Can be used to thwack nails into wooden objects to repair them."

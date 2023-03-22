@@ -8,7 +8,6 @@
 	/// 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 	unique = 1
 
-
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"

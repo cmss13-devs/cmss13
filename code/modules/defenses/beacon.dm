@@ -11,6 +11,7 @@
 	. = ..()
 
 	identifier = "DS-[beacon_identifiers]"
+	name = "[initial(name)] ([identifier])"
 	beacon_identifiers++
 
 	if(turned_on)
@@ -33,11 +34,16 @@
 		overlays += "off"
 
 /obj/structure/machinery/defenses/beacon/power_on_action(mob/user)
+	if(!is_ground_level(z))
+		power_off()
+		balloon_alert(user, "not here!")
+		return
+
 	GLOB.active_beacons += src
 	apply_ranged_effect()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[src] emits a series of loud beeps as it comes alive.")]")
 
-	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_BEACON_RADIO))
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_BEACON_RADIO))
 		return
 
 	ai_silent_announcement("Beacon [identifier] is now available.", ":j")
@@ -49,7 +55,7 @@
 	remove_ranged_effect()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[src] gives a beep and powers down.")]")
 
-	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_BEACON_RADIO))
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_BEACON_RADIO))
 		return
 
 	ai_silent_announcement("Beacon [identifier] is no longer available.", ":j")

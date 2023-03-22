@@ -427,29 +427,20 @@
 	var/mob/camera/eye/remote/remote_eye = C.remote_control
 	var/obj/structure/machinery/computer/camera_advanced/shuttle_docker/console = remote_eye.origin
 
-	playsound(console, 'sound/machines/terminal_prompt_deny.ogg', 25, FALSE)
-
-	var/list/L = list()
-	for(var/V in SSshuttle.stationary)
-		if(!V)
-			stack_trace("SSshuttle.stationary have null entry!")
-			continue
-		var/obj/docking_port/stationary/S = V
-		if(console.z_lock.len && !(S.z in console.z_lock))
-			continue
-		if(console.jumpto_ports[S.id])
-			L["([L.len])[S.name]"] = S
-
 	playsound(console, 'sound/machines/terminal_prompt.ogg', 25, FALSE)
-	var/selected = input("Choose location to jump to", "Locations", null) as null|anything in sortList(L)
-	if(QDELETED(src) || QDELETED(target) || !isliving(target))
-		return
+
+	var/list/available_beacons = list()
+	for(var/obj/structure/machinery/defenses/beacon/current_beacon as anything in GLOB.active_beacons)
+		available_beacons[current_beacon.identifier] = current_beacon
+
+	var/selected = tgui_input_list(usr, "Choose location to jump to", "Locations", available_beacons)
 	playsound(src, "terminal_type", 25, FALSE)
+
 	if(selected)
-		var/turf/T = get_turf(L[selected])
-		if(T)
+		var/turf/jump_to = get_turf(available_beacons[selected])
+		if(jump_to)
 			playsound(console, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
-			remote_eye.setLoc(T)
+			remote_eye.setLoc(jump_to)
 			to_chat(target, SPAN_NOTICE("Jumped to [selected]."))
 			C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/noise)
 			C.clear_fullscreen("flash", 3)

@@ -59,6 +59,8 @@
 	unacidable = TRUE
 	open_prompt = FALSE
 
+	var/maximum_capacity = 8
+
 	COOLDOWN_DECLARE(launch_cooldown)
 
 	var/current_state = STATE_ON_SHIP
@@ -82,8 +84,12 @@
 		land_action.give_to(user)
 		actions += land_action
 
-	if(jumpto_ports.len)
+	if(length(GLOB.active_beacons))
 		jump_action = new /datum/action/innate/camera_jump/shuttle_docker
+		jump_action.give_to(user)
+		jump_action.target = user
+		actions += jump_action
+
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/attack_hand(mob/user)
 	. = ..()
@@ -151,6 +157,15 @@
 	shuttle_port.shuttle_computer = src
 
 	if(shuttle_port.mode != SHUTTLE_IDLE)
+		return
+
+	var/list/mob/living/living_mobs = list()
+	for(var/area/current_area as anything in shuttle_port.shuttle_areas)
+		for(var/mob/living/current_mob in current_area)
+			living_mobs += current_mob
+
+	if(length(living_mobs) > maximum_capacity)
+		balloon_alert_to_viewers("over maximum capacity!")
 		return
 
 	if(current_state == STATE_ON_SHIP && !transit_to)

@@ -114,36 +114,36 @@
 	if(!checked_objective)
 		check_objective_info()
 
-	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(world_view_size)
+	var/mob/living/carbon/human/human = new(spawn_loc)
+	human.key = M.key
+	if(human.client)
+		human.client.change_view(world_view_size)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
-		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Team Leader of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	if(!leader && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
+		leader = human
+		to_chat(human, SPAN_ROLE_HEADER("You are a Covert Contractor Team Leader of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/leader, TRUE, TRUE)
+	else if(synths < max_synths && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[human.ckey] & WHITELIST_SYNTHETIC)
 		synths++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/synth, TRUE, TRUE)
-	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		to_chat(human, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/synth, TRUE, TRUE)
+	else if(medics < max_medics && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Medical Specialist of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/medic, TRUE, TRUE)
-	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		to_chat(human, SPAN_ROLE_HEADER("You are a Covert Contractor Medical Specialist of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/medic, TRUE, TRUE)
+	else if(heavies < max_heavies && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(human.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Machinegunner of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/heavy, TRUE, TRUE)
-	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI))
+		to_chat(human, SPAN_ROLE_HEADER("You are a Covert Contractor Machinegunner of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/heavy, TRUE, TRUE)
+	else if(engineers < max_engineers && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(human.client, JOB_SQUAD_ENGI))
 		engineers++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Engineering Specialist of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/engi, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Covert Contractor Engineering Specialist of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/engi, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor of Vanguard's Arrow Incorporated!"))
-		arm_equipment(H, /datum/equipment_preset/contractor/covert/standard, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Covert Contractor of Vanguard's Arrow Incorporated!"))
+		arm_equipment(human, /datum/equipment_preset/contractor/covert/standard, TRUE, TRUE)
 
-	print_backstory(H)
+	print_backstory(human)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), human, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 

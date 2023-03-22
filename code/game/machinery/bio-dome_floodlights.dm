@@ -14,9 +14,9 @@
 
 /obj/structure/machinery/hydro_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
-	for(var/obj/structure/machinery/hydro_floodlight/F in machines)
-		floodlist += F
-		F.fswitch = src
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight in machines)
+		floodlist += floodlight
+		floodlight.fswitch = src
 	start_processing()
 
 /obj/structure/machinery/hydro_floodlight_switch/Destroy()
@@ -28,10 +28,10 @@
 
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/structure/machinery/hydro_floodlight/H in floodlist)
-		if(!H.is_lit)
+	for(var/obj/structure/machinery/hydro_floodlight/current_floodlight in floodlist)
+		if(!current_floodlight.is_lit)
 			continue
-		lightpower += H.power_tick
+		lightpower += current_floodlight.power_tick
 	use_power(lightpower)
 
 /obj/structure/machinery/hydro_floodlight_switch/update_icon()
@@ -55,16 +55,16 @@
 		update_icon()
 
 /obj/structure/machinery/hydro_floodlight_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/hydro_floodlight/F in floodlist)
-		if(!istype(F) || QDELETED(F) || F.damaged) continue //Missing or damaged, skip it
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight in floodlist)
+		if(!istype(floodlight) || QDELETED(floodlight) || floodlight.damaged) continue //Missing or damaged, skip it
 
 		spawn(rand(0,50))
-			if(F.is_lit) //Shut it down
-				F.SetLuminosity(0)
+			if(floodlight.is_lit) //Shut it down
+				floodlight.SetLuminosity(0)
 			else
-				F.SetLuminosity(F.lum_value)
-			F.is_lit = !(F.is_lit)
-			F.update_icon()
+				floodlight.SetLuminosity(floodlight.lum_value)
+			floodlight.is_lit = !(floodlight.is_lit)
+			floodlight.update_icon()
 	return 0
 
 /obj/structure/machinery/hydro_floodlight_switch/attack_hand(mob/user as mob)

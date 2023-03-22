@@ -85,8 +85,8 @@
 		return FALSE
 
 	if((flags & DEL_ON_UNDEFIBBABLE) && ishuman(affected_atom))
-		var/mob/living/carbon/human/H = affected_atom
-		if(H.undefibbable && H.stat == DEAD)
+		var/mob/living/carbon/human/human = affected_atom
+		if(human.undefibbable && human.stat == DEAD)
 			qdel(src)
 			return FALSE
 

@@ -7,29 +7,29 @@
 	/// Ghetto flag indicating whether we actually placed the freeze or not, until we have an actual effects system
 	var/freezer = FALSE
 
-/datum/effects/boiler_trap/New(atom/A, mob/from, last_dmg_source, zone)
+/datum/effects/boiler_trap/New(atom/current_atom, mob/from, last_dmg_source, zone)
 	. = ..()
 	if(!QDELETED(src))
-		var/mob/M = affected_atom
-		freezer = M.freeze()
+		var/mob/mob = affected_atom
+		freezer = mob.freeze()
 
 /datum/effects/boiler_trap/Destroy(force)
 	if(ismob(affected_atom) && freezer)
-		var/mob/M = affected_atom
-		M.unfreeze()
+		var/mob/mob = affected_atom
+		mob.unfreeze()
 	return ..()
 
-/datum/effects/boiler_trap/validate_atom(atom/A)
-	if(!isxeno_human(A))
+/datum/effects/boiler_trap/validate_atom(atom/current_atom)
+	if(!isxeno_human(current_atom))
 		return FALSE
-	var/mob/M = A
-	return (M.stat != DEAD)
+	var/mob/mob = current_atom
+	return (mob.stat != DEAD)
 
 /datum/effects/boiler_trap/process_mob()
 	. = ..()
 	if(!.) return FALSE
-	var/mob/M = affected_atom
-	if(M.frozen) return TRUE
+	var/mob/mob = affected_atom
+	if(mob.frozen) return TRUE
 	if(!freezer)
-		freezer = M.freeze()
+		freezer = mob.freeze()
 	return TRUE

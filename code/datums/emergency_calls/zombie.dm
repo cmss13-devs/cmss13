@@ -10,17 +10,17 @@
 
 /datum/emergency_call/zombie/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
-	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+	var/turf/current_turf = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(T))
+	if(!istype(current_turf))
 		return FALSE
 
-	var/mob/living/carbon/human/H = new(T)
-	M.transfer_to(H, TRUE)
+	var/mob/living/carbon/human/human = new(current_turf)
+	M.transfer_to(human, TRUE)
 
-	arm_equipment(H, /datum/equipment_preset/other/zombie, TRUE, TRUE)
+	arm_equipment(human, /datum/equipment_preset/other/zombie, TRUE, TRUE)
 
 	sleep(20)
-	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Zombie!"))
-		to_chat(H, SPAN_ROLE_BODY("Spread... Consume... Infect..."))
+	if(human && human.loc)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Zombie!"))
+		to_chat(human, SPAN_ROLE_BODY("Spread... Consume... Infect..."))

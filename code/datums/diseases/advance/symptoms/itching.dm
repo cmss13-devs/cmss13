@@ -28,6 +28,6 @@ BONUS
 /datum/symptom/itching/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
-		to_chat(M, SPAN_NOTICE("Your [pick("back", "arm", "leg", "elbow", "head")] itches."))
+		var/mob/living/mob = A.affected_mob
+		to_chat(mob, SPAN_NOTICE("Your [pick("back", "arm", "leg", "elbow", "head")] itches."))
 	return

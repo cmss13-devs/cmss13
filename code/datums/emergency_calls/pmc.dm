@@ -117,30 +117,30 @@
 	if(!checked_objective)
 		check_objective_info()
 
-	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(world_view_size)
+	var/mob/living/carbon/human/human = new(spawn_loc)
+	human.key = M.key
+	if(human.client)
+		human.client.change_view(world_view_size)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
-		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
-	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+	if(!leader && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
+		leader = human
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
+		arm_equipment(human, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
+	else if(medics < max_medics && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medical Investigator!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
-	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medical Investigator!"))
+		arm_equipment(human, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
+	else if(heavies < max_heavies && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(human.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
+		arm_equipment(human, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
+		arm_equipment(human, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
 
-	print_backstory(H)
+	print_backstory(human)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), human, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
 

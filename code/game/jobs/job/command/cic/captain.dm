@@ -44,12 +44,12 @@
 /datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
 		all_hands_on_deck("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
 	//for(var/i in GLOB.co_secure_boxes)
-		//var/obj/structure/closet/secure_closet/securecom/S = i
-		//var/loc_to_spawn = S.opened ? get_turf(S) : S
-		//var/obj/item/weapon/gun/rifle/m46c/I = new(loc_to_spawn)
+		//var/obj/structure/closet/secure_closet/securecom/locker = i
+		//var/loc_to_spawn = locker.opened ? get_turf(locker) : locker
+		//var/obj/item/weapon/gun/rifle/m46c/m46c = new(loc_to_spawn)
 		//new /obj/item/clothing/suit/storage/marine/MP/CO(loc_to_spawn)
 		//new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
-		//I.name_after_co(H, I)
+		//m46c.name_after_co(H, m46c)
 
 /obj/effect/landmark/start/captain
 	name = JOB_CO

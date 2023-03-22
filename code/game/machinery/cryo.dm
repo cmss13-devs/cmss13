@@ -110,8 +110,8 @@
 	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	var/beakerContents = list()
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents += list(list("name" = R.name, "volume" = R.volume))
+		for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
+			beakerContents += list(list("name" = reagent.name, "volume" = reagent.volume))
 	data["beakerContents"] = beakerContents
 	return data
 
@@ -157,8 +157,8 @@
 		beaker =  W
 
 		var/reagentnames = ""
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			reagentnames += ";[R.name]"
+		for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
+			reagentnames += ";[reagent.name]"
 
 		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
 
@@ -166,11 +166,11 @@
 			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
 	else if(istype(W, /obj/item/grab))
 		if(isxeno(user)) return
-		var/obj/item/grab/G = W
-		if(!ismob(G.grabbed_thing))
+		var/obj/item/grab/grabbing = W
+		if(!ismob(grabbing.grabbed_thing))
 			return
-		var/mob/M = G.grabbed_thing
-		put_mob(M)
+		var/mob/current_mob = grabbing.grabbed_thing
+		put_mob(current_mob)
 
 	updateUsrDialog()
 
@@ -247,25 +247,25 @@
 	update_icon()
 	return
 
-/obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
+/obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/current_mob as mob)
 	if(inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if(!istype(M) || isxeno(M))
+	if(!istype(current_mob) || isxeno(current_mob))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if(occupant)
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell is already occupied!</B>"))
 		return
-	if(M.abiotic())
+	if(current_mob.abiotic())
 		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
 		return
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(usr, SPAN_NOTICE("You move [M.name] inside the cryo cell."))
-		M.forceMove(src)
-		if(M.health >= -100 && (M.health <= 0 || M.sleeping))
-			to_chat(M, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
-		occupant = M
+		to_chat(usr, SPAN_NOTICE("You move [current_mob.name] inside the cryo cell."))
+		current_mob.forceMove(src)
+		if(current_mob.health >= -100 && (current_mob.health <= 0 || current_mob.sleeping))
+			to_chat(current_mob, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
+		occupant = current_mob
 		update_use_power(USE_POWER_ACTIVE)
 		update_icon()
 		return TRUE
@@ -308,8 +308,8 @@
 //clickdrag code - "resist to get out" code is in living_verbs.dm
 /obj/structure/machinery/cryo_cell/MouseDrop_T(mob/target, mob/user)
 	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+	var/mob/living/human = user
+	if(!istype(human) || target != user) //cant make others get in. grab-click for this
 		return
 
 	put_mob(target)

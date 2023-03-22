@@ -58,8 +58,8 @@ structure:
 /area/event/Initialize()
 	. = ..()
 	if(exterior_light)
-		for(var/turf/T in contents)
-			T.update_lumcount(exterior_light)
+		for(var/turf/current_turf in contents)
+			current_turf.update_lumcount(exterior_light)
 
 //no dynamic lighting, unpowered.
 /area/event/unpowered

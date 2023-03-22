@@ -42,16 +42,16 @@
 		if(stored_metal == max_metal)
 			to_chat(user, SPAN_WARNING("\The [src] is full!"))
 			return
-		var/obj/item/stack/sheet/metal/M = W
+		var/obj/item/stack/sheet/metal/metal = W
 		var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
 		if(!sheets_to_eat)
 			sheets_to_eat = 1
-		if(M.amount >= sheets_to_eat)
+		if(metal.amount >= sheets_to_eat)
 			stored_metal += sheets_to_eat * 100
-			M.use(sheets_to_eat)
+			metal.use(sheets_to_eat)
 		else
-			stored_metal += M.amount * 100
-			M.use(M.amount)
+			stored_metal += metal.amount * 100
+			metal.use(metal.amount)
 		if(stored_metal > max_metal)
 			stored_metal = max_metal
 		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))

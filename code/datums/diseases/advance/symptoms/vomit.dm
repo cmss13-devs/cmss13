@@ -31,21 +31,21 @@ Bonus
 /datum/symptom/vomit/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB / 2))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
 				var/message = "[pick("You feel nauseous.", "You feel like you're going to throw up!")]"
 				message = SPAN_NOTICE("[message]")
-				to_chat(M, message)
+				to_chat(mob, message)
 			else
-				Vomit(M)
+				Vomit(mob)
 
 	return
 
-/datum/symptom/vomit/proc/Vomit(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.vomit_on_floor()
+/datum/symptom/vomit/proc/Vomit(mob/living/mob)
+	if(ishuman(mob))
+		var/mob/living/carbon/human/human = mob
+		human.vomit_on_floor()
 /*
 //////////////////////////////////////
 
@@ -75,16 +75,16 @@ Bonus
 	transmittable = 1
 	level = 4
 
-/datum/symptom/vomit/blood/Vomit(mob/living/M)
+/datum/symptom/vomit/blood/Vomit(mob/living/mob)
 
-	M.apply_effect(1, STUN)
-	M.visible_message("<B>[M]</B> vomits on the floor!")
+	mob.apply_effect(1, STUN)
+	mob.visible_message("<B>[mob]</B> vomits on the floor!")
 
 	// They lose blood and health.
-	var/brute_dam = M.getBruteLoss()
+	var/brute_dam = mob.getBruteLoss()
 	if(brute_dam < 50)
-		M.apply_damage(3, BRUTE)
+		mob.apply_damage(3, BRUTE)
 
-	var/turf/pos = get_turf(M)
-	M.add_splatter_floor(pos)
+	var/turf/pos = get_turf(mob)
+	mob.add_splatter_floor(pos)
 	playsound(pos, 'sound/effects/splat.ogg', 25, 1)

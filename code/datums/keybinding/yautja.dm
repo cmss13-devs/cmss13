@@ -20,10 +20,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
+	var/mob/living/carbon/human/human = user.mob
+	if(!isyautja(human))
 		return
-	H.butcher()
+	human.butcher()
 
 /datum/keybinding/yautja/pred_buy
 	hotkey_keys = list("Unbound")
@@ -36,10 +36,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
+	var/mob/living/carbon/human/human = user.mob
+	if(!isyautja(human))
 		return
-	H.pred_buy()
+	human.pred_buy()
 
 /datum/keybinding/yautja/mark_panel
 	hotkey_keys = list("Unbound")
@@ -52,10 +52,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
+	var/mob/living/carbon/human/human = user.mob
+	if(!isyautja(human))
 		return
-	H.mark_panel()
+	human.mark_panel()
 
 /datum/keybinding/yautja/mark_for_hunt
 	hotkey_keys = list("Unbound")
@@ -68,10 +68,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
+	var/mob/living/carbon/human/human = user.mob
+	if(!isyautja(human))
 		return
-	H.mark_for_hunt()
+	human.mark_for_hunt()
 
 /datum/keybinding/yautja/remove_from_hunt
 	hotkey_keys = list("Unbound")
@@ -84,10 +84,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
+	var/mob/living/carbon/human/human = user.mob
+	if(!isyautja(human))
 		return
-	H.remove_from_hunt()
+	human.remove_from_hunt()
 
 // BRACER SPECIFIC \\
 
@@ -97,10 +97,10 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(istype(H.get_held_item(), /obj/item/clothing/gloves/yautja))
+	var/mob/living/carbon/human/human = user.mob
+	if(istype(human.get_held_item(), /obj/item/clothing/gloves/yautja))
 		return TRUE
-	if(istype(H.gloves, /obj/item/clothing/gloves/yautja))
+	if(istype(human.gloves, /obj/item/clothing/gloves/yautja))
 		return TRUE
 
 /datum/keybinding/yautja/bracer/toggle_notification_sound
@@ -114,14 +114,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/gloves = human.gloves
 	if(istype(gloves))
 		gloves.toggle_notification_sound()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/held = human.get_held_item()
 	if(istype(held))
 		held.toggle_notification_sound()
 		return TRUE
@@ -137,14 +137,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/gloves = human.gloves
 	if(istype(gloves))
 		gloves.toggle_notification_sound()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/held = human.get_held_item()
 	if(istype(held))
 		held.bracer_message()
 		return TRUE
@@ -155,10 +155,10 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(istype(H.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
+	var/mob/living/carbon/human/human = user.mob
+	if(istype(human.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
 		return TRUE
-	if(istype(H.gloves, /obj/item/clothing/gloves/yautja/hunter))
+	if(istype(human.gloves, /obj/item/clothing/gloves/yautja/hunter))
 		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/wristblades
@@ -172,14 +172,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.wristblades()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.wristblades()
 		return TRUE
@@ -195,14 +195,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.track_gear()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.track_gear()
 		return TRUE
@@ -218,14 +218,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.cloaker()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.cloaker()
 		return TRUE
@@ -241,14 +241,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.caster()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.caster()
 		return TRUE
@@ -264,14 +264,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.change_explosion_type()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.change_explosion_type()
 		return TRUE
@@ -287,14 +287,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.activate_suicide()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.activate_suicide()
 		return TRUE
@@ -310,14 +310,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.injectors()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.injectors()
 		return TRUE
@@ -332,14 +332,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.healing_capsule()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.healing_capsule()
 		return TRUE
@@ -355,14 +355,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.call_disc()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.call_disc()
 		return TRUE
@@ -378,14 +378,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.remove_tracked_item()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.remove_tracked_item()
 		return TRUE
@@ -401,14 +401,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.add_tracked_item()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.add_tracked_item()
 		return TRUE
@@ -424,14 +424,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.call_combi()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.call_combi()
 		return TRUE
@@ -447,14 +447,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.translate()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.translate()
 		return TRUE
@@ -470,14 +470,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.bracername()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.bracername()
 		return TRUE
@@ -493,14 +493,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.idchip()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.idchip()
 		return TRUE
@@ -516,14 +516,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
+	var/mob/living/carbon/human/human = user.mob
 
-	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = human.gloves
 	if(istype(gloves))
 		gloves.link_bracer()
 		return TRUE
 
-	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	var/obj/item/clothing/gloves/yautja/hunter/held = human.get_held_item()
 	if(istype(held))
 		held.link_bracer()
 		return TRUE
@@ -536,8 +536,8 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	if(istype(H.wear_mask, /obj/item/clothing/mask/gas/yautja))
+	var/mob/living/carbon/human/human = user.mob
+	if(istype(human.wear_mask, /obj/item/clothing/mask/gas/yautja))
 		return TRUE
 
 /datum/keybinding/yautja/mask/toggle_zoom
@@ -551,8 +551,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/clothing/mask/gas/yautja/mask = human.wear_mask
 	mask.toggle_zoom()
 	return TRUE
 
@@ -567,8 +567,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/clothing/mask/gas/yautja/mask = human.wear_mask
 	mask.togglesight()
 	return TRUE
 
@@ -576,8 +576,8 @@
 
 /datum/keybinding/yautja/tele_loc/can_use(client/user)
 	. = ..()
-	var/mob/living/carbon/human/H = user.mob
-	if(locate(/obj/item/device/yautja_teleporter) in H.contents)
+	var/mob/living/carbon/human/human = user.mob
+	if(locate(/obj/item/device/yautja_teleporter) in human.contents)
 		return TRUE
 
 /datum/keybinding/yautja/tele_loc
@@ -591,6 +591,6 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/device/yautja_teleporter/tele = locate(/obj/item/device/yautja_teleporter) in H.contents
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/device/yautja_teleporter/tele = locate(/obj/item/device/yautja_teleporter) in human.contents
 	tele.add_tele_loc()

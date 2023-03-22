@@ -1,7 +1,7 @@
 /mob/proc/has_disease(datum/disease/virus)
-	for(var/datum/disease/D in viruses)
-		if(D.IsSame(virus))
-			//error("[D.name]/[D.type] is the same as [virus.name]/[virus.type]")
+	for(var/datum/disease/current_disease in viruses)
+		if(current_disease.IsSame(virus))
+			//error("[current_disease.name]/[current_disease.type] is the same as [virus.name]/[virus.type]")
 			return 1
 	return 0
 
@@ -10,8 +10,8 @@
 	if(stat == DEAD)
 		return
 	if(istype(virus, /datum/disease/advance))
-		var/datum/disease/advance/A = virus
-		if(A.GetDiseaseID() in resistances)
+		var/datum/disease/advance/advanced_disease = virus
+		if(advanced_disease.GetDiseaseID() in resistances)
 			return
 		if(count_by_type(viruses, /datum/disease/advance) >= 3)
 			return
@@ -26,9 +26,9 @@
 	if(force_species_check)
 		var/fail = TRUE
 		if(ishuman(src))
-			var/mob/living/carbon/human/H = src
+			var/mob/living/carbon/human/human = src
 			for(var/vuln_species in virus.affected_species)
-				if(H.species.name == vuln_species)
+				if(human.species.name == vuln_species)
 					fail = FALSE
 					break
 
@@ -37,13 +37,13 @@
 	if(skip_this == 1)
 		//if(src.virus) < -- this used to replace the current disease. Not anymore!
 			//src.virus.cure(0)
-		var/datum/disease/v = virus.Copy()
-		src.viruses += v
-		v.affected_mob = src
-		v.strain_data = v.strain_data.Copy()
-		v.holder = src
-		if(v.can_carry && prob(5))
-			v.carrier = 1
+		var/datum/disease/current_disease = virus.Copy()
+		src.viruses += current_disease
+		current_disease.affected_mob = src
+		current_disease.strain_data = current_disease.strain_data.Copy()
+		current_disease.holder = src
+		if(current_disease.can_carry && prob(5))
+			current_disease.carrier = 1
 		return
 
 	if(prob(15/virus.permeability_mod)) return //the power of immunity compels this disease! but then you forgot resistances
@@ -90,8 +90,8 @@
 	if(species.flags & IS_SYNTHETIC) return //synthetic species are immune
 	..(virus, skip_this, force_species_check, spread_type)
 
-/mob/proc/AddDisease(datum/disease/D, roll_for_carrier = TRUE)
-	var/datum/disease/DD = new D.type(1, D)
+/mob/proc/AddDisease(datum/disease/current_disease, roll_for_carrier = TRUE)
+	var/datum/disease/DD = new current_disease.type(1, current_disease)
 	viruses += DD
 	DD.affected_mob = src
 	DD.strain_data = DD.strain_data.Copy()
@@ -101,7 +101,7 @@
 
 	return DD
 
-/mob/living/carbon/human/AddDisease(datum/disease/D)
+/mob/living/carbon/human/AddDisease(datum/disease/current_disease)
 	. = ..()
 	med_hud_set_status()
 

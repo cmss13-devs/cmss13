@@ -20,8 +20,8 @@
 	steps_to_take = steps
 	color = bcolor
 
-	var/mob/living/carbon/human/H = target
-	H.bloody_footsteps = steps_to_take
+	var/mob/living/carbon/human/human = target
+	human.bloody_footsteps = steps_to_take
 	LAZYADD(entered_bloody_turf, target)
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
@@ -45,9 +45,9 @@
 		UnregisterSignal(target_shoes[target], COMSIG_ITEM_DROPPED)
 		LAZYREMOVE(target_shoes, target)
 
-	var/mob/living/carbon/human/H = target
-	if(ishuman(H))
-		H.bloody_footsteps = 0
+	var/mob/living/carbon/human/human = target
+	if(ishuman(human))
+		human.bloody_footsteps = 0
 
 	return ..()
 
@@ -71,8 +71,8 @@
 	if(istype(T_in))
 		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
 		if(FP)
-			var/image/I = LAZYACCESS(FP.steps_in, "[direction]")
-			if(!I)
+			var/image/current_image = LAZYACCESS(FP.steps_in, "[direction]")
+			if(!current_image)
 				FP.add_tracks(direction, color, FALSE)
 		else
 			FP = new(T_in)
@@ -81,8 +81,8 @@
 	if(istype(T_out))
 		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_out.cleanables, CLEANABLE_TRACKS)
 		if(FP)
-			var/image/I = LAZYACCESS(FP.steps_out, "[direction]")
-			if(!I)
+			var/image/current_image = LAZYACCESS(FP.steps_out, "[direction]")
+			if(!current_image)
 				FP.add_tracks(direction, color, TRUE)
 		else
 			FP = new(T_out)

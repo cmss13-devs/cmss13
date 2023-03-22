@@ -72,8 +72,8 @@
 	for(var/datum/effects/stamina/prev_S in source_mob.effects_list)
 		qdel(prev_S)
 
-	var/datum/effects/stamina/S = new tier(source_mob)
-	stamina_slowdown = S.slowdown
+	var/datum/effects/stamina/stamina = new tier(source_mob)
+	stamina_slowdown = stamina.slowdown
 
 /datum/stamina/Destroy()
 	. = ..()

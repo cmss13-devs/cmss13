@@ -27,17 +27,17 @@ Bonus
 /datum/symptom/damage_converter/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(4, 5)
-				Convert(M)
+				Convert(mob)
 	return
 
-/datum/symptom/damage_converter/proc/Convert(mob/living/M)
+/datum/symptom/damage_converter/proc/Convert(mob/living/mob)
 
-	if(M.getFireLoss() < M.getMaxHealth() || M.getBruteLoss() < M.getMaxHealth())
+	if(mob.getFireLoss() < mob.getMaxHealth() || mob.getBruteLoss() < mob.getMaxHealth())
 		var/get_damage = rand(1, 2)
-		M.apply_damage(-get_damage, BURN)
-		M.apply_damage(-get_damage, BRUTE)
-		M.apply_damage(get_damage, TOX)
+		mob.apply_damage(-get_damage, BURN)
+		mob.apply_damage(-get_damage, BRUTE)
+		mob.apply_damage(get_damage, TOX)
 		return 1

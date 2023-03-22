@@ -99,17 +99,17 @@
 		return -1
 
 	var/relative_dir
-	for(var/mob/M in range(15, initial_turf))
-		if(get_turf(M) == initial_turf)
+	for(var/mob/mob in range(15, initial_turf))
+		if(get_turf(mob) == initial_turf)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, initial_turf)
+			relative_dir = get_dir(mob, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
-		M.show_message( \
+		mob.show_message( \
 			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
@@ -117,17 +117,17 @@
 	// Xenos have time to react to the first message
 	sleep(0.5 SECONDS)
 
-	for(var/mob/M in range(10, initial_turf))
-		if(get_turf(M) == initial_turf)
+	for(var/mob/mob in range(10, initial_turf))
+		if(get_turf(mob) == initial_turf)
 			relative_dir = 0
 		else
-			relative_dir = get_dir(M, initial_turf)
+			relative_dir = get_dir(mob, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
-		M.show_message( \
+		mob.show_message( \
 			SPAN_HIGHDANGER("A [ds_identifier] FIRES TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE TO YOUR [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
@@ -166,8 +166,8 @@
 			if (current_turf == null)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
-			var/area/A = get_area(shootloc)
-			if(shootloc && !CEILING_IS_PROTECTED(A?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
+			var/area/area = get_area(shootloc)
+			if(shootloc && !CEILING_IS_PROTECTED(area?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
 				item.weapon.open_fire_firemission(shootloc)
 		sleep(step_delay)
 	if(envelope)

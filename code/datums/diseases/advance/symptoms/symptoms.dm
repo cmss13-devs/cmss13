@@ -18,9 +18,9 @@ var/global/const/SYMPTOM_ACTIVATION_PROB = 3
 	var/id = ""
 
 /datum/symptom/New()
-	var/list/S = list_symptoms
-	for(var/i = 1; i <= S.len; i++)
-		if(src.type == S[i])
+	var/list/symptom = list_symptoms
+	for(var/i = 1; i <= symptom.len; i++)
+		if(src.type == symptom[i])
 			id = "[i]"
 			return
 	CRASH("We couldn't assign an ID!")

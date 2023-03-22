@@ -138,16 +138,16 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	var/surviving_total = 0
 	var/ghosts = 0
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.client)
+	for(var/mob/mob in GLOB.player_list)
+		if(mob.client)
 			clients++
-			if(ishuman(M))
-				if(!M.stat)
+			if(ishuman(mob))
+				if(!mob.stat)
 					surviving_humans++
-			if(!M.stat)
+			if(!mob.stat)
 				surviving_total++
 
-			if(isobserver(M))
+			if(isobserver(mob))
 				ghosts++
 
 	if(clients > 0)
@@ -163,22 +163,22 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/i in GLOB.alive_mob_list)
-		var/mob/M = i
-		M.life_time_total = world.time - M.life_time_start
-		M.track_death_calculations()
-		M.statistic_exempt = TRUE
+		var/mob/mob = i
+		mob.life_time_total = world.time - mob.life_time_start
+		mob.track_death_calculations()
+		mob.statistic_exempt = TRUE
 
-		if(M.client && M.client.player_data)
-			if(M.stat == DEAD)
-				record_playtime(M.client.player_data, JOB_OBSERVER, type)
+		if(mob.client && mob.client.player_data)
+			if(mob.stat == DEAD)
+				record_playtime(mob.client.player_data, JOB_OBSERVER, type)
 			else
-				record_playtime(M.client.player_data, M.job, type)
+				record_playtime(mob.client.player_data, mob.job, type)
 
 /datum/game_mode/proc/show_end_statistics(icon_state)
 	round_statistics.update_panel_data()
-	for(var/mob/M in GLOB.player_list)
-		if(M.client)
-			give_action(M, /datum/action/show_round_statistics, null, icon_state)
+	for(var/mob/mob in GLOB.player_list)
+		if(mob.client)
+			give_action(mob, /datum/action/show_round_statistics, null, icon_state)
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
@@ -244,9 +244,9 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		var/obj/effect/landmark/corpsespawner/spawner = pick(gamemode_spawn_corpse)
 		var/turf/spawnpoint = get_turf(spawner)
 		if(spawnpoint)
-			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
-			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+			var/mob/living/carbon/human/mob = new /mob/living/carbon/human(spawnpoint)
+			mob.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(mob, spawner.equip_path, TRUE, FALSE)
 		gamemode_spawn_corpse.Remove(spawner)
 
 /datum/game_mode/proc/spawn_static_comms()
@@ -268,47 +268,47 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 /proc/display_roundstart_logout_report()
 	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
 	for(var/i in GLOB.living_mob_list)
-		var/mob/living/L = i
+		var/mob/living/living_mob = i
 
-		if(L.ckey)
+		if(living_mob.ckey)
 			var/found = 0
-			for(var/client/C in GLOB.clients)
-				if(C.ckey == L.ckey)
+			for(var/client/client in GLOB.clients)
+				if(client.ckey == living_mob.ckey)
 					found = 1
 					break
 			if(!found)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
+				msg += "<b>[key_name(living_mob)]</b>, the [living_mob.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
 
 
-		if(L.ckey && L.client)
-			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5)) //Connected, but inactive (alt+tabbed or something)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
+		if(living_mob.ckey && living_mob.client)
+			if(living_mob.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5)) //Connected, but inactive (alt+tabbed or something)
+				msg += "<b>[key_name(living_mob)]</b>, the [living_mob.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
-			if(L.stat)
-				if(L.stat == UNCONSCIOUS)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dying)\n"
+			if(living_mob.stat)
+				if(living_mob.stat == UNCONSCIOUS)
+					msg += "<b>[key_name(living_mob)]</b>, the [living_mob.job] (Dying)\n"
 					continue //Unconscious
-				if(L.stat == DEAD)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dead)\n"
+				if(living_mob.stat == DEAD)
+					msg += "<b>[key_name(living_mob)]</b>, the [living_mob.job] (Dead)\n"
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/dead/observer/D in GLOB.observer_list)
-			if(D.mind && (D.mind.original == L || D.mind.current == L))
-				if(L.stat == DEAD)
-					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+		for(var/mob/dead/observer/disconnected in GLOB.observer_list)
+			if(disconnected.mind && (disconnected.mind.original == living_mob || disconnected.mind.current == living_mob))
+				if(living_mob.stat == DEAD)
+					msg += "<b>[living_mob.name]</b> ([ckey(disconnected.mind.key)]), the [living_mob.job] (Dead)\n"
 					continue //Dead mob, ghost abandoned
 				else
-					if(D.can_reenter_corpse)
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
+					if(disconnected.can_reenter_corpse)
+						msg += "<b>[living_mob.name]</b> ([ckey(disconnected.mind.key)]), the [living_mob.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
 						continue //Lolwhat
 					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
+						msg += "<b>[living_mob.name]</b> ([ckey(disconnected.mind.key)]), the [living_mob.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
-			to_chat_spaced(M, html = msg)
+	for(var/mob/mob in GLOB.player_list)
+		if(mob.client.admin_holder && (mob.client.admin_holder.rights & R_MOD))
+			to_chat_spaced(mob, html = msg)
 
 //Announces objectives/generic antag text.
 /proc/show_generic_antag_text(datum/mind/player)

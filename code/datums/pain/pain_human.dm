@@ -13,25 +13,25 @@
 
 	if(!ishuman(source_mob))
 		return
-	var/mob/living/carbon/human/H = source_mob
+	var/mob/living/carbon/human/human = source_mob
 
-	for(var/obj/limb/O in H.limbs)
+	for(var/obj/limb/current_limb in human.limbs)
 		// Delimbed
-		if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
+		if((current_limb.status & LIMB_DESTROYED) && !(current_limb.status & LIMB_AMPUTATED))
 			apply_pain(PAIN_DELIMB)
 		// Broken bones
-		else if(O.status & LIMB_BROKEN || H.incision_depths[O.name] != SURGERY_DEPTH_SURFACE)
+		else if(current_limb.status & LIMB_BROKEN || human.incision_depths[current_limb.name] != SURGERY_DEPTH_SURFACE)
 			// Splinted else non-splinted
-			if(O.status & LIMB_SPLINTED)
+			if(current_limb.status & LIMB_SPLINTED)
 				apply_pain(PAIN_BONE_BREAK - PAIN_BONE_BREAK_SPLINTED)
 			else
 				apply_pain(PAIN_BONE_BREAK)
-		else if((O.status & LIMB_SPLINTED) && !(O.status & LIMB_BROKEN))
+		else if((current_limb.status & LIMB_SPLINTED) && !(current_limb.status & LIMB_BROKEN))
 			apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 	//Internal organs
-	for(var/datum/internal_organ/O in H.internal_organs)
-		if(O.damage)
-			apply_pain(O.damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+	for(var/datum/internal_organ/organ in human.internal_organs)
+		if(organ.damage)
+			apply_pain(organ.damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
 
 	return TRUE

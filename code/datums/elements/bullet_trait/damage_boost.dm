@@ -73,10 +73,10 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 
 	switch(atom_type)
 		if("door")
-			var/obj/structure/machinery/door/D = A
-			if(D.masterkey_resist)
-				if(D.masterkey_mod)
-					active_damage_mult = damage_mult * D.masterkey_mod
+			var/obj/structure/machinery/door/door = A
+			if(door.masterkey_resist)
+				if(door.masterkey_mod)
+					active_damage_mult = damage_mult * door.masterkey_mod
 				else
 					active_damage_mult = 1 //no bonus damage
 			else

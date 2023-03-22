@@ -23,11 +23,11 @@
 
 	to_chat(A, SPAN_XENONOTICE("You feel empowered"))
 
-	var/mob/living/carbon/xenomorph/X = A
-	X.melee_damage_lower += bonus_damage
-	X.melee_damage_upper += bonus_damage
+	var/mob/living/carbon/xenomorph/xenomorph = A
+	xenomorph.melee_damage_lower += bonus_damage
+	xenomorph.melee_damage_upper += bonus_damage
 
-	X.ability_speed_modifier -= bonus_speed
+	xenomorph.ability_speed_modifier -= bonus_speed
 
 	src.bonus_damage = bonus_damage
 	src.bonus_speed = bonus_speed
@@ -38,8 +38,8 @@
 	if (!isxeno(A))
 		return FALSE
 
-	var/mob/M = A
-	if (M.stat == DEAD)
+	var/mob/mob = A
+	if (mob.stat == DEAD)
 		return FALSE
 
 	. = ..()
@@ -48,11 +48,11 @@
 
 	if(affected_atom)
 		to_chat(affected_atom, SPAN_XENONOTICE("You no longer feel empowered"))
-		var/mob/living/carbon/xenomorph/X = affected_atom
-		X.melee_damage_lower -= bonus_damage
-		X.melee_damage_upper -= bonus_damage
+		var/mob/living/carbon/xenomorph/xenomorph = affected_atom
+		xenomorph.melee_damage_lower -= bonus_damage
+		xenomorph.melee_damage_upper -= bonus_damage
 
-		X.ability_speed_modifier += bonus_speed
+		xenomorph.ability_speed_modifier += bonus_speed
 
 	. = ..()
 

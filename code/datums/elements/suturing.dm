@@ -258,10 +258,10 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 		if(remaining_brute - sutured_brute <= 0)
 			target_limb.remove_all_bleeding(TRUE)
 			suture_brute = FALSE
-			for(var/datum/wound/W as anything in target_limb.wounds)
-				if(W.internal || W.damage_type == BURN) //Can't suture IB.
+			for(var/datum/wound/wound as anything in target_limb.wounds)
+				if(wound.internal || wound.damage_type == BURN) //Can't suture IB.
 					continue
-				W.bandaged |= WOUND_SUTURED
+				wound.bandaged |= WOUND_SUTURED
 
 	if(suture_burn)
 		burn_to_heal = min(maximum_heal, (remaining_burn - sutured_burn) * 0.5)
@@ -269,11 +269,11 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 		remaining_burn -= burn_to_heal
 		if(remaining_burn - sutured_burn <= 0)
 			suture_burn = FALSE
-			for(var/datum/wound/W as anything in target_limb.wounds)
-				if(W.internal)
+			for(var/datum/wound/wound as anything in target_limb.wounds)
+				if(wound.internal)
 					continue
-				if(W.damage_type == BURN)
-					W.salved |= WOUND_SUTURED
+				if(wound.damage_type == BURN)
+					wound.salved |= WOUND_SUTURED
 
 	target_limb.heal_damage(brute_to_heal, burn_to_heal)
 

@@ -108,8 +108,8 @@ var/waiting_for_drop_votes = 0
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
-/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
-	if(istype(H)) H.gib() //No mercy.
+/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/hellhound)
+	if(istype(hellhound)) hellhound.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
 	return TRUE
@@ -172,8 +172,8 @@ var/waiting_for_drop_votes = 0
 
 	for(var/G in GLOB.gun_list)
 		qdel(G) //No guns or ammo allowed.
-	for(var/M in GLOB.ammo_magazine_list)
-		qdel(M)
+	for(var/current_mob in GLOB.ammo_magazine_list)
+		qdel(current_mob)
 
 	for(var/mob/new_player/player in GLOB.new_player_list)
 		if(player && player.ready)
@@ -188,10 +188,10 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/post_setup()
 	contestants = list()
 	for(var/i in GLOB.human_mob_list)
-		var/mob/M = i
-		if(M.client)
-			contestants += M
-			spawn_contestant(M)
+		var/mob/current_mob = i
+		if(current_mob.client)
+			contestants += current_mob
+			spawn_contestant(current_mob)
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE) //This will allow anyone to use cool guns.
 
@@ -208,9 +208,9 @@ var/waiting_for_drop_votes = 0
 
 	return ..()
 
-/datum/game_mode/huntergames/proc/spawn_contestant(mob/M)
+/datum/game_mode/huntergames/proc/spawn_contestant(mob/current_mob)
 
-	var/mob/living/carbon/human/H
+	var/mob/living/carbon/human/human
 	var/turf/picked
 
 	if(GLOB.hunter_primaries.len)
@@ -225,83 +225,83 @@ var/waiting_for_drop_votes = 0
 		message_admins("Warning, null picked spawn in spawn_contestant")
 		return 0
 
-	if(istype(M,/mob/living/carbon/human)) //somehow?
-		H = M
-		if(H.contents.len)
-			for(var/obj/item/I in H.contents)
-				qdel(I)
-		H.forceMove(picked)
+	if(istype(current_mob,/mob/living/carbon/human)) //somehow?
+		human = current_mob
+		if(human.contents.len)
+			for(var/obj/item/current_item in human.contents)
+				qdel(current_item)
+		human.forceMove(picked)
 	else
-		H = new(picked)
+		human = new(picked)
 
-	H.key = M.key
-	if(H.client) H.client.change_view(world_view_size)
+	human.key = current_mob.key
+	if(human.client) human.client.change_view(world_view_size)
 
-	if(!H.mind)
-		H.mind = new(H.key)
-		H.mind_initialize()
+	if(!human.mind)
+		human.mind = new(human.key)
+		human.mind_initialize()
 
-	H.name = H.real_name
+	human.name = human.real_name
 
-	H.skills = null //no restriction on what the contestants can do
+	human.skills = null //no restriction on what the contestants can do
 
-	H.apply_effect(15, WEAKEN)
-	H.nutrition = NUTRITION_NORMAL
+	human.apply_effect(15, WEAKEN)
+	human.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)
 	switch(randjob)
 		if(0) //colonial marine
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(human), WEAR_FEET)
 		if(1) //MP
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(human), WEAR_FEET)
 		if(2) //Commander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(human), WEAR_FEET)
 		if(3) //CL
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(human), WEAR_FEET)
 		if(4) //pmc!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(H), WEAR_FACE)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(human), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(human), WEAR_FACE)
 		if(5) //Merc!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(human), WEAR_BODY)
 			if(prob(50))
-				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+				human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(human), WEAR_HANDS)
 			else
-				M.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+				current_mob.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(human), WEAR_HANDS)
 			if(prob(75))
-				M.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(M), WEAR_FEET)
+				current_mob.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(current_mob), WEAR_FEET)
 			else
-				M.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots(M), WEAR_FEET)
+				current_mob.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots(current_mob), WEAR_FEET)
 		if(6)//BEARS!!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/bear(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-			H.remove_language(LANGUAGE_ENGLISH)
-			H.add_language(LANGUAGE_RUSSIAN)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/bear(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(human), WEAR_FEET)
+			human.remove_language(LANGUAGE_ENGLISH)
+			human.add_language(LANGUAGE_RUSSIAN)
 		if(7) //Highlander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(human), WEAR_FEET)
 		if(8) //Assassin!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(human), WEAR_FEET)
 		if(9) //Corporate guy
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(human), WEAR_JACKET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(human), WEAR_FEET)
 		if(10) //Colonial Marshal
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+			human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(human), WEAR_BODY)
+			human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(human), WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight/flare(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general(H), WEAR_R_STORE)
+	human.equip_to_slot_or_del(new /obj/item/device/flashlight/flare(human), WEAR_L_STORE)
+	human.equip_to_slot_or_del(new /obj/item/storage/pouch/general(human), WEAR_R_STORE)
 
 	//Give them some information
 	spawn(4)
-		to_chat(H, "<h2>There can be only one!!</h2>")
-		to_chat(H, "Use the flare in your pocket to light the way!")
+		to_chat(human, "<h2>There can be only one!!</h2>")
+		to_chat(human, "Use the flare in your pocket to light the way!")
 	return 1
 
 /datum/game_mode/huntergames/proc/loop_package()
@@ -309,8 +309,8 @@ var/waiting_for_drop_votes = 0
 		if(!drops_disabled)
 			to_world(SPAN_ROUNDBODY("Your Predator capturers have decided it is time to bestow a gift upon the scurrying humans."))
 			to_world(SPAN_ROUNDBODY("One lucky contestant should prepare for a supply drop in 60 seconds."))
-			for(var/mob/dead/D in GLOB.dead_mob_list)
-				to_chat(D, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!"))
+			for(var/mob/dead/dead in GLOB.dead_mob_list)
+				to_chat(dead, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!"))
 			world << sound('sound/effects/alert.ogg')
 			last_drop = world.time
 			waiting_for_drop_votes = 1
@@ -373,9 +373,9 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/proc/count_humans()
 	var/human_count = 0
 
-	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(istype(H) && H.stat == 0 && !istype(get_area(H.loc),/area/centcom) && !istype(get_area(H.loc),/area/tdome))
-			if(H.species != "Yautja") // Preds don't count in round end.
+	for(var/mob/living/carbon/human/human in GLOB.alive_mob_list)
+		if(istype(human) && human.stat == 0 && !istype(get_area(human.loc),/area/centcom) && !istype(get_area(human.loc),/area/tdome))
+			if(human.species != "Yautja") // Preds don't count in round end.
 				human_count += 1 //Add them to the amount of people who're alive.
 
 	return human_count
@@ -398,9 +398,9 @@ var/waiting_for_drop_votes = 0
 		round_statistics.track_round_end()
 	var/mob/living/carbon/winner = null
 
-	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
-		if(istype(Q) && Q.stat == 0 && !isyautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
-			winner = Q
+	for(var/mob/living/carbon/human/contestant in GLOB.alive_mob_list)
+		if(istype(contestant) && contestant.stat == 0 && !isyautja(contestant) && !istype(get_area(contestant.loc),/area/centcom) && !istype(get_area(contestant.loc),/area/tdome))
+			winner = contestant
 			break
 
 	if(finished == 1 && !QDELETED(winner) && istype(winner))

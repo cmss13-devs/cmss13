@@ -10,7 +10,7 @@
 		give_action(target, action_type)
 
 /datum/element/traitbound/leadership/Detach(datum/target)
-	var/mob/living/carbon/human/H = target
-	for(var/datum/action/human_action/issue_order/O in H.actions)
-		O.remove_from(H)
+	var/mob/living/carbon/human/human = target
+	for(var/datum/action/human_action/issue_order/order in human.actions)
+		order.remove_from(human)
 	return ..()

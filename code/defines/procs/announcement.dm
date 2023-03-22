@@ -12,19 +12,19 @@
 /proc/xeno_announcement(message, hivenumber, title = QUEEN_ANNOUNCE)
 	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
 	if(hivenumber == "everything")
-		for(var/mob/M in targets)
-			var/mob/living/carbon/xenomorph/X = M
-			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
-				targets.Remove(X)
+		for(var/mob/mob in targets)
+			var/mob/living/carbon/xenomorph/xenomorph = mob
+			if(!isobserver(xenomorph) && !istype(xenomorph)) //filter out any potential non-xenomorphs/observers mobs
+				targets.Remove(xenomorph)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
 	else
-		for(var/mob/M in targets)
-			if(isobserver(M))
+		for(var/mob/mob in targets)
+			if(isobserver(mob))
 				continue
-			var/mob/living/carbon/X = M
-			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
-				targets.Remove(X)
+			var/mob/living/carbon/xenomorph = mob
+			if(!istype(xenomorph) || !xenomorph.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
+				targets.Remove(xenomorph)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
 
@@ -33,36 +33,36 @@
 /proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = TRUE, signature)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
+		for(var/mob/mob in targets)
+			if(isobserver(mob)) //observers see everything
 				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
-				targets.Remove(H)
+			var/mob/living/carbon/human/human = mob
+			if(!istype(human) || human.stat != CONSCIOUS || isyautja(human)) //base human checks
+				targets.Remove(human)
 				continue
-			if(is_mainship_level(H.z)) // People on ship see everything
+			if(is_mainship_level(human.z)) // People on ship see everything
 				continue
-			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
-				targets.Remove(H)
+			if((human.faction != faction_to_display && !add_PMCs) || (human.faction != faction_to_display && add_PMCs && !(human.faction in FACTION_LIST_WY)) && !(faction_to_display in human.faction_group)) //faction checks
+				targets.Remove(human)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
+		for(var/mob/mob in targets)
+			if(isobserver(mob)) //observers see everything
 				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-				targets.Remove(H)
+			var/mob/living/carbon/human/human = mob
+			if(!istype(human) || human.stat != CONSCIOUS || isyautja(human))
+				targets.Remove(human)
 
 	else
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
+		for(var/mob/mob in targets)
+			if(isobserver(mob)) //observers see everything
 				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-				targets.Remove(H)
+			var/mob/living/carbon/human/human = mob
+			if(!istype(human) || human.stat != CONSCIOUS || isyautja(human))
+				targets.Remove(human)
 				continue
-			if(H.faction != faction_to_display)
-				targets.Remove(H)
+			if(human.faction != faction_to_display)
+				targets.Remove(human)
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
@@ -72,20 +72,20 @@
 //yautja ship AI announcement
 /proc/yautja_announcement(message, title = YAUTJA_ANNOUNCE, sound_to_play = sound('sound/misc/notice1.ogg'))
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/M in targets)
-		if(isobserver(M)) //observers see everything
+	for(var/mob/mob in targets)
+		if(isobserver(mob)) //observers see everything
 			continue
-		var/mob/living/carbon/human/H = M
-		if(!isyautja(H) || H.stat != CONSCIOUS)
-			targets.Remove(H)
+		var/mob/living/carbon/human/human = mob
+		if(!isyautja(human) || human.stat != CONSCIOUS)
+			targets.Remove(human)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'))
-	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
-			playsound_client(M.client, sound_to_play, M, vol = 45)
+	for(var/mob/mob in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(isobserver(mob) || ishuman(mob) && is_mainship_level(mob.z))
+			playsound_client(mob.client, sound_to_play, mob, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
@@ -111,11 +111,11 @@
 //to ensure that all humans on ship hear it regardless of comms and power
 /proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/T in targets)
-		if(isobserver(T))
+	for(var/mob/current_turf in targets)
+		if(isobserver(current_turf))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
-			targets.Remove(T)
+		if(!ishuman(current_turf) || isyautja(current_turf) || !is_mainship_level(current_turf.z))
+			targets.Remove(current_turf)
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
@@ -124,11 +124,11 @@
 //Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'), signature)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/T in targets)
-		if(isobserver(T))
+	for(var/mob/target in targets)
+		if(isobserver(target))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
-			targets.Remove(T)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
+			targets.Remove(target)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -136,9 +136,9 @@
 /proc/announcement_helper(message, title, list/targets, sound_to_play)
 	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
 		return
-	for(var/mob/T in targets)
-		if(istype(T, /mob/new_player))
+	for(var/mob/target in targets)
+		if(istype(target, /mob/new_player))
 			continue
 
-		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]")
-		playsound_client(T.client, sound_to_play, T, vol = 45)
+		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]")
+		playsound_client(target.client, sound_to_play, target, vol = 45)

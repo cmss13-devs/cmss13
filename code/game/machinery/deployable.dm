@@ -76,9 +76,9 @@
 /obj/structure/machinery/deployable/barrier/proc/explode()
 
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"))
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(3, 1, src)
+	spark.start()
 
 	deconstruct(FALSE)
 	explosion(src.loc,-1,-1,0)

@@ -17,8 +17,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/L = user.mob
-	L.resist()
+	var/mob/living/mob = user.mob
+	mob.resist()
 	return TRUE
 
 /datum/keybinding/living/rest
@@ -66,8 +66,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/M = user.mob
-	M.toggle_mov_intent()
+	var/mob/living/mob = user.mob
+	mob.toggle_mov_intent()
 	return TRUE
 
 /datum/keybinding/living/cancel_camera_view

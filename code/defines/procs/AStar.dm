@@ -48,10 +48,10 @@ length to avoid portals or something i guess?? Not that they're counted right no
 /PriorityQueue/proc/IsEmpty()
 	return !L.len
 
-/PriorityQueue/proc/Enqueue(d)
+/PriorityQueue/proc/Enqueue(datum_list)
 	var/i
 	var/j
-	L.Add(d)
+	L.Add(datum_list)
 	i = L.len
 	j = i>>1
 	while(i > 1 &&  call(cmp)(L[j],L[i]) > 0)
@@ -153,21 +153,21 @@ length to avoid portals or something i guess?? Not that they're counted right no
 			if(cur.nt >= maxnodedepth)
 				continue
 
-		for(var/datum/d in L)
-			if(d == exclude)
+		for(var/datum/datum_list in L)
+			if(datum_list == exclude)
 				continue
-			var/ng = cur.g + call(cur.source,dist)(d)
-			if(d.bestF)
-				if(ng + call(d,dist)(end) < d.bestF)
+			var/ng = cur.g + call(cur.source,dist)(datum_list)
+			if(datum_list.bestF)
+				if(ng + call(datum_list,dist)(end) < datum_list.bestF)
 					for(var/i = 1; i <= open.L.len; i++)
-						var/PathNode/n = open.L[i]
-						if(n.source == d)
+						var/PathNode/node = open.L[i]
+						if(node.source == datum_list)
 							open.Remove(i)
 							break
 				else
 					continue
 
-			open.Enqueue(new /PathNode(d,cur,ng,call(d,dist)(end),cur.nt+1))
+			open.Enqueue(new /PathNode(datum_list,cur,ng,call(datum_list,dist)(end),cur.nt+1))
 			if(maxnodes && open.L.len > maxnodes)
 				open.L.Cut(open.L.len)
 	}

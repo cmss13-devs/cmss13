@@ -26,11 +26,11 @@
 	if(!job_name)
 		return
 	if(!humans_killed["[job_name]"])
-		var/datum/entity/statistic/N = new()
-		N.name = job_name
-		humans_killed["[job_name]"] = N
-	var/datum/entity/statistic/S = humans_killed["[job_name]"]
-	S.value++
+		var/datum/entity/statistic/new_stat = new()
+		new_stat.name = job_name
+		humans_killed["[job_name]"] = new_stat
+	var/datum/entity/statistic/stat = humans_killed["[job_name]"]
+	stat.value++
 	if(job)
 		count_personal_human_kill(job_name, cause, job)
 	total_kills++
@@ -39,11 +39,11 @@
 	if(!caste)
 		return
 	if(!xenos_killed["[caste]"])
-		var/datum/entity/statistic/N = new()
-		N.name = caste
-		xenos_killed["[caste]"] = N
-	var/datum/entity/statistic/S = xenos_killed["[caste]"]
-	S.value++
+		var/datum/entity/statistic/new_stat = new()
+		new_stat.name = caste
+		xenos_killed["[caste]"] = new_stat
+	var/datum/entity/statistic/stat = xenos_killed["[caste]"]
+	stat.value++
 	if(job)
 		count_personal_xeno_kill(caste, cause, job)
 	total_kills++
@@ -150,11 +150,11 @@
 	if(!niche_name)
 		return
 	if(!niche_stats["[niche_name]"])
-		var/datum/entity/statistic/N = new()
-		N.name = niche_name
-		niche_stats["[niche_name]"] = N
-	var/datum/entity/statistic/S = niche_stats["[niche_name]"]
-	S.value += amount
+		var/datum/entity/statistic/new_stat = new()
+		new_stat.name = niche_name
+		niche_stats["[niche_name]"] = new_stat
+	var/datum/entity/statistic/stat = niche_stats["[niche_name]"]
+	stat.value += amount
 	if(job)
 		count_personal_niche_stat(niche_name, amount, job)
 

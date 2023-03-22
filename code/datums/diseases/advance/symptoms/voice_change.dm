@@ -28,27 +28,27 @@ Bonus
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 
-		var/mob/living/carbon/M = A.affected_mob
+		var/mob/living/carbon/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("Your throat hurts.", "You clear your throat.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("Your throat hurts.", "You clear your throat.")]"))
 			else
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
+				if(ishuman(mob))
+					var/mob/living/carbon/human/human = mob
 					var/random_name = ""
-					switch(H.gender)
+					switch(human.gender)
 						if(MALE)
 							random_name = pick(first_names_male)
 						else
 							random_name = pick(first_names_female)
 					random_name += " [pick(last_names)]"
-					H.SetSpecialVoice(random_name)
+					human.SetSpecialVoice(random_name)
 
 	return
 
 /datum/symptom/voice_change/End(datum/disease/advance/A)
 	..()
 	if(ishuman(A.affected_mob))
-		var/mob/living/carbon/human/H = A.affected_mob
-		H.UnsetSpecialVoice()
+		var/mob/living/carbon/human/human = A.affected_mob
+		human.UnsetSpecialVoice()
 	return

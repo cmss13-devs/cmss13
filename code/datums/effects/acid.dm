@@ -16,15 +16,15 @@
 /datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(A, from, last_dmg_source, zone)
 	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		H.update_effects()
+		var/mob/living/carbon/human/human = A
+		human.update_effects()
 
 	if(isobj(A))
-		var/obj/O = A
-		if(istype(O, /obj/structure/barricade))
-			var/obj/structure/barricade/B = O
-			acid_multiplier = B.burn_multiplier
-		O.update_icon()
+		var/obj/current_obj = A
+		if(istype(current_obj, /obj/structure/barricade))
+			var/obj/structure/barricade/cade = current_obj
+			acid_multiplier = cade.burn_multiplier
+		current_obj.update_icon()
 
 	original_duration = duration
 
@@ -40,8 +40,8 @@
 		return FALSE
 
 	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD)
+		var/mob/living/carbon/human/human = A
+		if(human.status_flags & XENO_HOST && HAS_TRAIT(human, TRAIT_NESTED) || human.stat == DEAD)
 			return FALSE
 
 	. = ..()
@@ -72,12 +72,12 @@
 		LAZYREMOVE(affected_atom.effects_list, src)
 
 	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/H = affected_atom
-		H.update_effects()
+		var/mob/living/carbon/human/human = affected_atom
+		human.update_effects()
 
 	if(isobj(affected_atom))
-		var/obj/O = affected_atom
-		O.update_icon()
+		var/obj/current_obj = affected_atom
+		current_obj.update_icon()
 	return ..()
 
 /datum/effects/acid/proc/enhance_acid()

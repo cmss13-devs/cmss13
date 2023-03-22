@@ -43,9 +43,9 @@
 ///Hides the image, if one exists. Do not null the langchat image; it is rotated when the mob is buckled or proned to maintain text orientation.
 /atom/proc/langchat_drop_image()
 	if(langchat_listeners)
-		for(var/mob/M in langchat_listeners)
-			if(M.client)
-				M.client.images -= langchat_image
+		for(var/mob/mob in langchat_listeners)
+			if(mob.client)
+				mob.client.images -= langchat_image
 	langchat_listeners = null
 
 ///Creates the image if one does not exist, resets settings that are modified by speech procs.
@@ -105,9 +105,9 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH
 
 	langchat_listeners = listeners
-	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
-			M.client.images += langchat_image
+	for(var/mob/mob in langchat_listeners)
+		if(langchat_client_enabled(mob) && !mob.ear_deaf && (skip_language_check || mob.say_understands(src, language)))
+			mob.client.images += langchat_image
 
 	if(isturf(loc))
 		langchat_image.loc = src
@@ -151,9 +151,9 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
 
 	langchat_listeners = listeners
-	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
-			M.client.images += langchat_image
+	for(var/mob/mob in langchat_listeners)
+		if(langchat_client_enabled(mob) && !mob.ear_deaf && mob.say_understands(src, language))
+			mob.client.images += langchat_image
 
 	if(isturf(loc))
 		langchat_image.loc = src
@@ -168,11 +168,11 @@
 
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
-/atom/proc/langchat_display_image(mob/M)
+/atom/proc/langchat_display_image(mob/current_mob)
 	if(langchat_image)
-		if(!langchat_client_enabled(M))
+		if(!langchat_client_enabled(current_mob))
 			return
 		if(!langchat_listeners) // shouldn't happen
 			langchat_listeners = list()
-		langchat_listeners |= M
-		M.client.images += langchat_image
+		langchat_listeners |= current_mob
+		current_mob.client.images += langchat_image

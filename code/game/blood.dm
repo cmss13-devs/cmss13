@@ -31,8 +31,8 @@
 	return TRUE //we applied blood to the item
 
 /obj/item/proc/generate_blood_overlay(b_color)
-	var/icon/I = new /icon('icons/effects/blood.dmi', "itemblood")
-	blood_overlay = image(I)
+	var/icon/overlay = new /icon('icons/effects/blood.dmi', "itemblood")
+	blood_overlay = image(overlay)
 	blood_overlay.blend_mode = BLEND_INSET_OVERLAY
 	blood_overlay.color = b_color
 
@@ -46,16 +46,16 @@
 			update_inv_w_uniform()
 	if(blood_flags & BLOOD_HANDS)
 		if(gloves)
-			var/obj/item/clothing/gloves/G = gloves
-			G.add_blood(b_color)
+			var/obj/item/clothing/gloves/current_gloves = gloves
+			current_gloves.add_blood(b_color)
 		else
 			hands_blood_color = b_color
 			hands_blood_amt = rand(2, 4)
 		update_inv_gloves() // Adds blood overlays for gloves or hands
 	if(blood_flags & BLOOD_FEET)
 		if(shoes)
-			var/obj/item/clothing/shoes/S = shoes
-			S.add_blood(b_color)
+			var/obj/item/clothing/shoes/current_shoes = shoes
+			current_shoes.add_blood(b_color)
 		else
 			feet_blood_color = b_color
 		update_inv_shoes() // Adds blood overlays for shoes or feet
@@ -66,8 +66,8 @@
 	return FALSE
 
 /turf/clean_blood()
-	for(var/obj/effect/decal/cleanable/blood/B in src)
-		qdel(B)
+	for(var/obj/effect/decal/cleanable/blood/blood in src)
+		qdel(blood)
 		. = 1
 
 /obj/item/clean_blood()

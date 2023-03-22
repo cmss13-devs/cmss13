@@ -6,12 +6,12 @@
 	if(isRemoteControlling(M)) return TRUE //AI can do whatever he wants
 
 	else if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+		var/mob/living/carbon/human/human = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
+		if(check_access(human.get_active_hand()) || check_access(human.wear_id)) return TRUE
 	else if(istype(M, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand())) return TRUE
+		var/mob/living/carbon/carbon = M
+		if(check_access(carbon.get_active_hand())) return TRUE
 	return FALSE
 
 /obj/item/proc/GetAccess() return list()
@@ -53,14 +53,14 @@
 	if(!L.len && (!req_one_access || !req_one_access.len)) return 1//no requirements
 	if(!I) return
 
-	var/list/A = I.GetAccess()
+	var/list/access = I.GetAccess()
 	for(var/i in req_access)
-		if(!(i in A))
+		if(!(i in access))
 			return FALSE//doesn't have this access
 
 	if(req_one_access && req_one_access.len)
 		for(var/i in req_one_access)
-			if(i in A)
+			if(i in access)
 				return TRUE//has an access from the single access list
 		return FALSE
 	return TRUE
@@ -202,8 +202,8 @@
 		if(8)
 			return "Civilian" // Civilian
 
-/proc/get_access_desc(A)
-	switch(A)
+/proc/get_access_desc(access)
+	switch(access)
 		if(ACCESS_MARINE_CMP) return "CMP's Office"
 		if(ACCESS_MARINE_BRIG) return "Brig"
 		if(ACCESS_MARINE_ARMORY) return "Armory"
@@ -247,8 +247,8 @@
 		if(ACCESS_MARINE_KITCHEN) return "Kitchen"
 		if(ACCESS_MARINE_SYNTH) return "Synthetic Storage"
 
-/proc/get_centcom_access_desc(A)
-	switch(A)
+/proc/get_centcom_access_desc(access)
+	switch(access)
 		if(ACCESS_WY_PMC_GREEN) return "Wey-Yu PMC Green"
 		if(ACCESS_WY_PMC_ORANGE) return "Wey-Yu PMC Orange"
 		if(ACCESS_WY_PMC_RED) return "Wey-Yu PMC Red"

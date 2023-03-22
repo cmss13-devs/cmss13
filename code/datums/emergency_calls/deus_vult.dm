@@ -16,25 +16,25 @@
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/H = new(spawn_loc)
-	M.transfer_to(H, TRUE)
+	var/mob/living/carbon/human/human = new(spawn_loc)
+	M.transfer_to(human, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = H
-		arm_equipment(H, /datum/equipment_preset/other/gladiator/leader, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are the leader of these holy warriors!"))
-		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
-		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
-	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY))
+	if(!leader && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = human
+		arm_equipment(human, /datum/equipment_preset/other/gladiator/leader, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are the leader of these holy warriors!"))
+		to_chat(human, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(human, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
+	else if(heavies < max_heavies && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_HEAVY))
 		heavies++
-		arm_equipment(H, /datum/equipment_preset/other/gladiator/champion, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a champion of the holy warriors!"))
-		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
-		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
+		arm_equipment(human, /datum/equipment_preset/other/gladiator/champion, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a champion of the holy warriors!"))
+		to_chat(human, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(human, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 	else
-		arm_equipment(H, /datum/equipment_preset/other/gladiator, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a holy warrior!"))
-		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
-		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
+		arm_equipment(human, /datum/equipment_preset/other/gladiator, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a holy warrior!"))
+		to_chat(human, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(human, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), human, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

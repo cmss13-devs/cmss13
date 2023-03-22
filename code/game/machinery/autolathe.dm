@@ -70,16 +70,16 @@
 			recipes += recipe
 			categories |= recipe.category
 
-			var/obj/item/I = new recipe.path
-			if(I.matter && !recipe.resources) //This can be overidden in the datums.
+			var/obj/item/item = new recipe.path
+			if(item.matter && !recipe.resources) //This can be overidden in the datums.
 				recipe.resources = list()
-				for(var/material in I.matter)
+				for(var/material in item.matter)
 					if(!isnull(storage_capacity[material]))
-						if(istype(I,/obj/item/stack/sheet))
-							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
+						if(istype(item,/obj/item/stack/sheet))
+							recipe.resources[material] = item.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
 						else
-							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
-				qdel(I)
+							recipe.resources[material] = round(item.matter[material]*1.25) // More expensive to produce than they are to recycle.
+				qdel(item)
 
 	//Create parts for lathe.
 	for(var/component in components)
@@ -435,10 +435,10 @@
 		return
 
 	//Create the desired item.
-	var/obj/item/I = new making.path(make_loc)
-	if(multiplier > 1 && istype(I,/obj/item/stack))
-		var/obj/item/stack/S = I
-		S.amount = multiplier
+	var/obj/item/item = new making.path(make_loc)
+	if(multiplier > 1 && istype(item,/obj/item/stack))
+		var/obj/item/stack/stack = item
+		stack.amount = multiplier
 
 /obj/structure/machinery/autolathe/proc/get_wire_descriptions()
 	return list(
@@ -502,40 +502,40 @@
 
 	printables = list()
 
-	for(var/datum/autolathe/recipe/R in recipes)
+	for(var/datum/autolathe/recipe/current_recipe in recipes)
 		index++
 
-		if(R.hidden && !hacked)
+		if(current_recipe.hidden && !hacked)
 			continue
 
 		var/list/print_data = list()
 
-		print_data["name"] = R.name
+		print_data["name"] = current_recipe.name
 		print_data["index"] = index
 		print_data["can_make"] = TRUE
 		print_data["materials"] = list()
 		print_data["multipliers"] = null
 		print_data["has_multipliers"] = FALSE
-		print_data["hidden"] = R.hidden
-		print_data["recipe_category"] = R.category
+		print_data["hidden"] = current_recipe.hidden
+		print_data["recipe_category"] = current_recipe.category
 
 		max_print_amt = -1
 
-		if(!R.resources || !R.resources.len)
+		if(!current_recipe.resources || !current_recipe.resources.len)
 			print_data["materials"] = "No resources required"
 		else
 			//Make sure it's buildable and list requires resources.
-			for(var/material in R.resources)
-				if(isnull(projected_stored_material[material]) || projected_stored_material[material] < R.resources[material])
+			for(var/material in current_recipe.resources)
+				if(isnull(projected_stored_material[material]) || projected_stored_material[material] < current_recipe.resources[material])
 					print_data["can_make"] = FALSE
 					max_print_amt = 0
 				else
-					print_amt = round(projected_stored_material[material]/R.resources[material])
+					print_amt = round(projected_stored_material[material]/current_recipe.resources[material])
 
 				if(print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
 					max_print_amt = print_amt
 
-				print_data["materials"][material] = "[R.resources[material]] [material]"
+				print_data["materials"][material] = "[current_recipe.resources[material]] [material]"
 
 			if(print_data["can_make"] && max_print_amt > 1)
 				print_data["has_multipliers"] = TRUE
@@ -543,7 +543,7 @@
 
 				var/max = max_print_amt
 
-				if(R.is_stack)
+				if(current_recipe.is_stack)
 					for (var/i = 5; i < max_print_amt; i += i) //5,10,20,40...
 						print_data["multipliers"]["[i]"] =  i
 				else

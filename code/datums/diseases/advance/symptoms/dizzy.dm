@@ -27,11 +27,11 @@ Bonus
 /datum/symptom/dizzy/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You feel dizzy.", "Your head starts spinning.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You feel dizzy.", "Your head starts spinning.")]"))
 			else
-				to_chat(M, SPAN_NOTICE("You are unable to look straight!"))
-				M.make_dizzy(5)
+				to_chat(mob, SPAN_NOTICE("You are unable to look straight!"))
+				mob.make_dizzy(5)
 	return

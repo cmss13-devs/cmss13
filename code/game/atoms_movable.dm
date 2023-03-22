@@ -23,8 +23,8 @@
 
 //===========================================================================
 /atom/movable/Destroy()
-	for(var/atom/movable/I in contents)
-		qdel(I)
+	for(var/atom/movable/current_atom in contents)
+		qdel(current_atom)
 	if(pulledby)
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
@@ -71,8 +71,8 @@
 		return
 
 	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
-		var/client/C = usr.client
-		C?.open_particle_editor(src)
+		var/client/current_client = usr.client
+		current_client?.open_particle_editor(src)
 
 //when a mob interact with something that gives them a special view,
 //check_eye() is called to verify that they're still eligible.
@@ -192,8 +192,8 @@
 /atom/movable/clone/attack_animal(mob/living/M as mob)
 	return src.mstr.attack_animal(M)
 
-/atom/movable/clone/attackby(obj/item/I, mob/living/user)
-	return src.mstr.attackby(I, user)
+/atom/movable/clone/attackby(obj/item/current_item, mob/living/user)
+	return src.mstr.attackby(current_item, user)
 
 /atom/movable/clone/get_examine_text(mob/user)
 	return src.mstr.get_examine_text(user)
@@ -203,14 +203,14 @@
 /////////////////////
 
 /atom/movable/proc/create_clone_movable(shift_x, shift_y)
-	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = FALSE
-	C.proj_x = shift_x
-	C.proj_y = shift_y
+	var/atom/movable/clone/clone = new /atom/movable/clone(src.loc)
+	clone.density = FALSE
+	clone.proj_x = shift_x
+	clone.proj_y = shift_y
 
-	clones.Add(C)
-	C.mstr = src //Link clone and master
-	src.clone = C
+	clones.Add(clone)
+	clone.mstr = src //Link clone and master
+	src.clone = clone
 
 /atom/movable/proc/update_clone()
 	///---Var-Copy---////

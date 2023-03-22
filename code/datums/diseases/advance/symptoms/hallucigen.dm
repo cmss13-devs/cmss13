@@ -27,11 +27,11 @@ Bonus
 /datum/symptom/hallucigen/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/carbon/M = A.affected_mob
+		var/mob/living/carbon/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You notice someone in the corner of your eye.", "Is that footsteps?.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You notice someone in the corner of your eye.", "Is that footsteps?.")]"))
 			else
-				M.hallucination += 5
+				mob.hallucination += 5
 
 	return

@@ -112,14 +112,14 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(matrix/M)
+/atom/proc/apply_transform(matrix/current_matrix)
 	if(!base_transform)
-		transform = M
+		transform = current_matrix
 		return
 
 	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	transform = base_copy.Multiply(current_matrix)
 
 /atom/proc/on_reagent_change()
 	return
@@ -175,17 +175,17 @@ directive is properly returned.
 
 /atom/proc/search_contents_for(path,list/filter_path=null)
 	var/list/found = list()
-	for(var/atom/A in src)
-		if(istype(A, path))
-			found += A
+	for(var/atom/current_atom in src)
+		if(istype(current_atom, path))
+			found += current_atom
 		if(filter_path)
 			var/pass = 0
 			for(var/type in filter_path)
-				pass |= istype(A, type)
+				pass |= istype(current_atom, type)
 			if(!pass)
 				continue
-		if(A.contents.len)
-			found += A.search_contents_for(path,filter_path)
+		if(current_atom.contents.len)
+			found += current_atom.search_contents_for(path,filter_path)
 	return found
 
 /atom/proc/examine(mob/user)
@@ -210,8 +210,8 @@ directive is properly returned.
 	return
 
 /atom/proc/contents_explosion(severity)
-	for(var/atom/A in contents)
-		A.ex_act(severity)
+	for(var/atom/current_atom in contents)
+		current_atom.ex_act(severity)
 
 /atom/proc/ex_act(severity)
 	contents_explosion(severity)
@@ -223,75 +223,75 @@ directive is properly returned.
 	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM)
 	return
 
-/atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
+/atom/proc/add_hiddenprint(mob/living/current_mob)
+	if(!current_mob || QDELETED(current_mob) || !current_mob.key || !(flags_atom  & FPRINT) || fingerprintslast == current_mob.key)
 		return
-	if (ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if (H.gloves)
-			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+	if (ishuman(current_mob))
+		var/mob/living/carbon/human/human = current_mob
+		if (human.gloves)
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [human.real_name], Key: [human.key]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [human.real_name], Key: [human.key]"
 	else
-		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
-	fingerprintslast = M.key
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [current_mob.real_name], Key: [current_mob.key]"
+	fingerprintslast = current_mob.key
 
 
-/atom/proc/add_fingerprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
+/atom/proc/add_fingerprint(mob/living/current_mob)
+	if(!current_mob || QDELETED(current_mob) || !current_mob.key || !(flags_atom & FPRINT) || fingerprintslast == current_mob.key)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
-	fingerprintslast = M.key
+	fingerprintslast = current_mob.key
 
-	if (ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if (ishuman(current_mob))
+		var/mob/living/carbon/human/human = current_mob
 
 		//Fibers~
-		blood_touch(H)
+		blood_touch(human)
 
-		fingerprintslast = M.key
+		fingerprintslast = current_mob.key
 
 		//Now, deal with gloves.
-		if (H.gloves && H.gloves != src)
-			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+		if (human.gloves && human.gloves != src)
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [human.real_name], Key: [human.key]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [human.real_name], Key: [human.key]"
 	else
-		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [current_mob.real_name], Key: [current_mob.key]"
 
 
 
 //put blood on stuff we touched
-/atom/proc/blood_touch(mob/living/carbon/human/M)
-	if(M.gloves)
-		var/obj/item/clothing/gloves/G = M.gloves
-		if(G.gloves_blood_amt && add_blood(G.blood_color)) //only reduces the bloodiness of our gloves if the item wasn't already bloody
-			G.gloves_blood_amt--
-	else if(M.hands_blood_amt && add_blood(M.hands_blood_color))
-		M.hands_blood_amt--
+/atom/proc/blood_touch(mob/living/carbon/human/current_mob)
+	if(current_mob.gloves)
+		var/obj/item/clothing/gloves/current_gloves = current_mob.gloves
+		if(current_gloves.gloves_blood_amt && add_blood(current_gloves.blood_color)) //only reduces the bloodiness of our gloves if the item wasn't already bloody
+			current_gloves.gloves_blood_amt--
+	else if(current_mob.hands_blood_amt && add_blood(current_mob.hands_blood_color))
+		current_mob.hands_blood_amt--
 
 
 
 
-/atom/proc/transfer_fingerprints_to(atom/A)
+/atom/proc/transfer_fingerprints_to(atom/current_atom)
 
-	if(!istype(A.fingerprintshidden,/list))
-		A.fingerprintshidden = list()
+	if(!istype(current_atom.fingerprintshidden,/list))
+		current_atom.fingerprintshidden = list()
 
 	if(!istype(fingerprintshidden, /list))
 		fingerprintshidden = list()
 
-	if(A.fingerprintshidden && fingerprintshidden)
-		A.fingerprintshidden |= fingerprintshidden.Copy()
+	if(current_atom.fingerprintshidden && fingerprintshidden)
+		current_atom.fingerprintshidden |= fingerprintshidden.Copy()
 
 
 
 
-/atom/proc/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
+/atom/proc/add_vomit_floor(mob/living/carbon/current_mob, toxvomit = 0)
 	return
 
-/turf/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
+/turf/add_vomit_floor(mob/living/carbon/current_mob, toxvomit = 0)
 	var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
 
 	// Make toxins vomit look different
@@ -350,20 +350,20 @@ Parameters are passed from New.
 	var/proj_y = 0
 
 /atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
-	var/turf/T = null
-	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+	var/turf/current_turf = null
+	current_turf = locate(src.x + shift_x, src.y + shift_y, src.z)
 
-	T.appearance = src.appearance
-	T.setDir(src.dir)
+	current_turf.appearance = src.appearance
+	current_turf.setDir(src.dir)
 
 	clones_t.Add(src)
-	src.clone = T
+	src.clone = current_turf
 
 // EFFECTS
 /atom/proc/extinguish_acid()
-	for(var/datum/effects/acid/A in effects_list)
-		if(A.cleanse_acid())
-			qdel(A)
+	for(var/datum/effects/acid/acid in effects_list)
+		if(acid.cleanse_acid())
+			qdel(acid)
 			return TRUE
 	return FALSE
 
@@ -457,9 +457,9 @@ Parameters are passed from New.
 
 /atom/proc/add_filter(name,priority,list/params)
 	LAZYINITLIST(filter_data)
-	var/list/p = params.Copy()
-	p["priority"] = priority
-	filter_data[name] = p
+	var/list/parameter = params.Copy()
+	parameter["priority"] = priority
+	filter_data[name] = parameter
 	update_filters()
 
 /atom/proc/update_filters()
@@ -497,8 +497,8 @@ Parameters are passed from New.
 /*/obj/item/update_filters()
 	. = ..()
 	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()*/
+		var/datum/action/action = X
+		action.UpdateButtonIcon()*/
 
 /atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])
@@ -564,8 +564,8 @@ Parameters are passed from New.
 	return
 
 /atom/proc/get_orbit_size()
-	var/icon/I = icon(icon, icon_state, dir)
-	return (I.Width() + I.Height()) * 0.5
+	var/icon/current_icon = icon(icon, icon_state, dir)
+	return (current_icon.Width() + current_icon.Height()) * 0.5
 
 /**
  * Return the markup to for the dropdown list for the VV panel for this atom
@@ -633,7 +633,7 @@ Parameters are passed from New.
 		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
 		if(!result)
 			return
-		var/matrix/M = transform
+		var/matrix/current_matrix = transform
 		if(!result)
 			return
 		switch(result)
@@ -642,18 +642,18 @@ Parameters are passed from New.
 				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Scale(x,y)
+				transform = current_matrix.Scale(x,y)
 			if("Translate")
 				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
 				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
-				transform = M.Translate(x,y)
+				transform = current_matrix.Translate(x,y)
 			if("Rotate")
 				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
-				transform = M.Turn(angle)
+				transform = current_matrix.Turn(angle)
 
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
@@ -663,12 +663,12 @@ Parameters are passed from New.
 			name = newname
 
 	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
-		var/client/C = usr.client
-		C?.open_filter_editor(src)
+		var/client/current_client = usr.client
+		current_client?.open_filter_editor(src)
 
 	if(href_list[VV_HK_EDIT_COLOR_MATRIX] && check_rights(R_VAREDIT))
-		var/client/C = usr.client
-		C?.open_color_matrix_editor(src)
+		var/client/current_client = usr.client
+		current_client?.open_color_matrix_editor(src)
 
 	if(href_list[VV_HK_ENABLEPIXELSCALING])
 		if(!check_rights(R_DEBUG|R_VAREDIT))

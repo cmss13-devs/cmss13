@@ -67,7 +67,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
 		return FALSE
 	dest_rods = new
-	for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
+	for(var/obj/structure/machinery/self_destruct/rod/rod in dest_master.loc.loc) dest_rods += rod
 	if(!dest_rods.len)
 		log_debug("ERROR CODE SD2: could not find any self-destruct rods")
 		to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
@@ -197,19 +197,19 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
 		spawn(0)
-			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in machines)
-				if(D.id == "sd_lockdown")
-					D.open()
+			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/door in machines)
+				if(door.id == "sd_lockdown")
+					door.open()
 		return TRUE
 
 //Override is for admins bypassing normal player restrictions.
 /datum/authority/branch/evacuation/proc/cancel_self_destruct(override)
 	if(dest_status == NUKE_EXPLOSION_ACTIVE)
-		var/obj/structure/machinery/self_destruct/rod/I
+		var/obj/structure/machinery/self_destruct/rod/rod
 		var/i
 		for(i in EvacuationAuthority.dest_rods)
-			I = i
-			if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
+			rod = i
+			if(rod.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
 				dest_master.state(SPAN_WARNING("WARNING: Unable to cancel detonation. Please disarm all control rods."))
 				return FALSE
 
@@ -217,8 +217,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_master.in_progress = 1
 		dest_started_at = 0
 		for(i in dest_rods)
-			I = i
-			if(I.active_state == SELF_DESTRUCT_MACHINE_ACTIVE || (I.active_state == SELF_DESTRUCT_MACHINE_ARMED && override)) I.lock_or_unlock(1)
+			rod = i
+			if(rod.active_state == SELF_DESTRUCT_MACHINE_ACTIVE || (rod.active_state == SELF_DESTRUCT_MACHINE_ARMED && override)) rod.lock_or_unlock(1)
 		dest_master.lock_or_unlock(1)
 		dest_index = 1
 		ai_announcement("The emergency destruct system has been deactivated.", 'sound/AI/selfdestruct_deactivated.ogg')
@@ -228,17 +228,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/initiate_self_destruct(override)
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS)
-		var/obj/structure/machinery/self_destruct/rod/I
+		var/obj/structure/machinery/self_destruct/rod/rod
 		var/i
 		for(i in dest_rods)
-			I = i
-			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
+			rod = i
+			if(rod.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
 				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Please arm all control rods."))
 				return FALSE
 		dest_master.in_progress = !dest_master.in_progress
 		for(i in EvacuationAuthority.dest_rods)
-			I = i
-			I.in_progress = 1
+			rod = i
+			rod.in_progress = 1
 		ai_announcement("DANGER. DANGER. Self-destruct system activated. DANGER. DANGER. Self-destruct in progress. DANGER. DANGER.")
 		trigger_self_destruct(,,override)
 		return TRUE
@@ -272,15 +272,15 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		sleep(100)
 		/*Hardcoded for now, since this was never really used for anything else.
 		Would ideally use a better system for showing cutscenes.*/
-		var/atom/movable/screen/cinematic/explosion/C = new
+		var/atom/movable/screen/cinematic/explosion/explosion = new
 
 		if(play_anim)
 			for(M in L1 + L2)
 				if(M && M.loc && M.client)
-					M.client.screen |= C //They may have disconnected in the mean time.
+					M.client.screen |= explosion //They may have disconnected in the mean time.
 
 			sleep(15) //Extra 1.5 seconds to look at the ship.
-			flick(override ? "intro_override" : "intro_nuke", C)
+			flick(override ? "intro_override" : "intro_nuke", explosion)
 		sleep(35)
 		for(M in L1)
 			if(M && M.loc) //Who knows, maybe they escaped, or don't exist anymore.
@@ -291,10 +291,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 					M.death(create_cause_data("nuclear explosion"))
 				else
 					if(play_anim)
-						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
+						M.client.screen -= explosion //those who managed to escape the z level at last second shouldn't have their view obstructed.
 		if(play_anim)
-			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
-			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
+			flick(ship_status ? "ship_spared" : "ship_destroyed", explosion)
+			explosion.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
 		world << sound('sound/effects/explosionfar.ogg')
 
 		if(end_round)
@@ -315,12 +315,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	set background = 1
 
 	spawn while(dest_master && dest_master.loc && dest_master.active_state == SELF_DESTRUCT_MACHINE_ARMED && dest_status == NUKE_EXPLOSION_ACTIVE && dest_index <= dest_rods.len)
-		var/obj/structure/machinery/self_destruct/rod/I = dest_rods[dest_index]
-		if(world.time >= dest_cooldown + I.activate_time)
-			I.lock_or_unlock() //Unlock it.
+		var/obj/structure/machinery/self_destruct/rod/rod = dest_rods[dest_index]
+		if(world.time >= dest_cooldown + rod.activate_time)
+			rod.lock_or_unlock() //Unlock it.
 			if(++dest_index <= dest_rods.len)
-				I = dest_rods[dest_index]//Start the next sequence.
-				I.activate_time = world.time
+				rod = dest_rods[dest_index]//Start the next sequence.
+				rod.activate_time = world.time
 		sleep(10) //Checks every second. Could integrate into another controller for better tracking.
 
 //Generic parent base for the self_destruct items.
@@ -416,8 +416,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(2 SECONDS)
 			ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 			active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-			var/obj/structure/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
-			I.activate_time = world.time
+			var/obj/structure/machinery/self_destruct/rod/rod = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
+			rod.activate_time = world.time
 			EvacuationAuthority.process_self_destruct()
 			. = TRUE
 

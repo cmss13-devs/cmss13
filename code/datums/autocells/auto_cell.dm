@@ -21,20 +21,20 @@
 	// This affects what neighbors you'll get passed in update_state()
 	var/neighbor_type = NEIGHBORS_CARDINAL
 
-/datum/automata_cell/New(turf/T)
+/datum/automata_cell/New(turf/current_turf)
 	..()
 
-	if(!istype(T))
+	if(!istype(current_turf))
 		qdel(src)
 		return
 
 	// Attempt to merge the two cells if they end up in the same turf
-	var/datum/automata_cell/C = T.get_cell(type)
-	if(C && merge(C))
+	var/datum/automata_cell/cell = current_turf.get_cell(type)
+	if(cell && merge(cell))
 		qdel(src)
 		return
 
-	in_turf = T
+	in_turf = current_turf
 	LAZYADD(in_turf.autocells, src)
 
 	cellauto_cells += src
@@ -89,25 +89,25 @@
 	// Get cardinal neighbors
 	if(neighbor_type & NEIGHBORS_CARDINAL)
 		for(var/dir in cardinal)
-			var/turf/T = get_step(in_turf, dir)
-			if(QDELETED(T))
+			var/turf/current_turf = get_step(in_turf, dir)
+			if(QDELETED(current_turf))
 				continue
 
 			// Only add neighboring cells of the same type
-			for(var/datum/automata_cell/C in T.autocells)
-				if(istype(C, type))
-					neighbors += C
+			for(var/datum/automata_cell/cell in current_turf.autocells)
+				if(istype(cell, type))
+					neighbors += cell
 
 	// Get ordinal/diagonal neighbors
 	if(neighbor_type & NEIGHBORS_ORDINAL)
 		for(var/dir in diagonals)
-			var/turf/T = get_step(in_turf, dir)
-			if(QDELETED(T))
+			var/turf/current_turf = get_step(in_turf, dir)
+			if(QDELETED(current_turf))
 				continue
 
-			for(var/datum/automata_cell/C in T.autocells)
-				if(istype(C, type))
-					neighbors += C
+			for(var/datum/automata_cell/cell in current_turf.autocells)
+				if(istype(cell, type))
+					neighbors += cell
 
 	return neighbors
 
@@ -118,13 +118,13 @@
 	if(!dir)
 		return
 
-	var/turf/T = get_step(in_turf, dir)
-	if(QDELETED(T))
+	var/turf/current_turf = get_step(in_turf, dir)
+	if(QDELETED(current_turf))
 		return
 
 	// Create the new cell
-	var/datum/automata_cell/C = new type(T)
-	return C
+	var/datum/automata_cell/cell = new type(current_turf)
+	return cell
 
 // Update the state of this cell
 /datum/automata_cell/proc/update_state(list/turf/neighbors)

@@ -12,8 +12,8 @@
 		return ELEMENT_INCOMPATIBLE
 
 	if(ispath(reagent))
-		var/datum/reagent/R = reagent
-		burn_reagent = chemical_reagents_list[initial(R.id)]
+		var/datum/reagent/current_reagent = reagent
+		burn_reagent = chemical_reagents_list[initial(current_reagent.id)]
 	else
 		burn_reagent = reagent
 	burn_stacks = stacks

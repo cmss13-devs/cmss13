@@ -32,9 +32,9 @@
 		signal.data["tag"] = id_tag
 		signal.data["timestamp"] = world.time
 
-		var/turf/T = loc
-		var/pressure_ = T.return_pressure()
-		var/temperature_ = T.return_temperature()
+		var/turf/current_turf = loc
+		var/pressure_ = current_turf.return_pressure()
+		var/temperature_ = current_turf.return_temperature()
 
 		if(output&1)
 			signal.data["pressure"] = num2text(round(pressure_,0.1),)

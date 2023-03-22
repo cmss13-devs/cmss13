@@ -28,6 +28,6 @@ BONUS
 /datum/symptom/headache/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
-		to_chat(M, SPAN_NOTICE("[pick("Your head hurts.", "Your head starts pounding.")]"))
+		var/mob/living/mob = A.affected_mob
+		to_chat(mob, SPAN_NOTICE("[pick("Your head hurts.", "Your head starts pounding.")]"))
 	return

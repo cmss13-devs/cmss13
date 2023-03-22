@@ -45,25 +45,25 @@
 
 	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
 
-	for(var/datum/mind/A in possible_synth_survivors)
-		if(A.roundstart_picked)
-			possible_synth_survivors -= A
+	for(var/datum/mind/synth_surv in possible_synth_survivors)
+		if(synth_surv.roundstart_picked)
+			possible_synth_survivors -= synth_surv
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
-			if(A in possible_survivors)
+		if(RoleAuthority.roles_whitelist[ckey(synth_surv.key)] & WHITELIST_SYNTHETIC)
+			if(synth_surv in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
-				possible_survivors += A
+				possible_survivors += synth_surv
 				continue
 
-		possible_synth_survivors -= A
+		possible_synth_survivors -= synth_surv
 
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
 	if(possible_survivors.len) //We have some, it looks like.
-		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
-			if(A.roundstart_picked)
-				possible_survivors -= A
+		for(var/datum/mind/surv in possible_survivors) //Strip out any xenos first so we don't double-dip.
+			if(surv.roundstart_picked)
+				possible_survivors -= surv
 
 		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
 			var/i = surv_starting_num

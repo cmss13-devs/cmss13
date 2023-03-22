@@ -13,12 +13,12 @@
 
 /obj/structure/machinery/bluespace_beacon/Initialize(mapload, ...)
 	. = ..()
-	var/turf/T = loc
+	var/turf/current_turf = loc
 	Beacon = new /obj/item/device/radio/beacon
 	Beacon.invisibility = INVISIBILITY_MAXIMUM
-	Beacon.forceMove(T)
+	Beacon.forceMove(current_turf)
 
-	hide(T.intact_tile)
+	hide(current_turf.intact_tile)
 
 /obj/structure/machinery/bluespace_beacon/Destroy()
 	QDEL_NULL(Beacon)
@@ -41,10 +41,10 @@
 
 /obj/structure/machinery/bluespace_beacon/process()
 	if(!Beacon)
-		var/turf/T = loc
+		var/turf/current_turf = loc
 		Beacon = new /obj/item/device/radio/beacon
 		Beacon.invisibility = INVISIBILITY_MAXIMUM
-		Beacon.forceMove(T)
+		Beacon.forceMove(current_turf)
 	if(Beacon)
 		if(Beacon.loc != loc)
 			Beacon.forceMove(loc)

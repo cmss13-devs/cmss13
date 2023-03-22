@@ -42,10 +42,10 @@
 			to_chat(user, SPAN_DANGER("There is already a cell in the charger."))
 			return
 		else
-			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-			if(!isarea(a))
+			var/area/current_area = loc.loc // Gets our locations location, like a dream within a dream
+			if(!isarea(current_area))
 				return
-			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
+			if(current_area.power_equip == 0) // There's no APC in this area, don't try to cheat power!
 				to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the cell!"))
 				return
 

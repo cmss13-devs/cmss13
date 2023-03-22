@@ -39,8 +39,8 @@
 /datum/element/bullet_trait_iff/proc/set_iff(datum/target, mob/living/carbon/human/firer)
 	SIGNAL_HANDLER
 
-	var/obj/item/projectile/P = target
-	P.runtime_iff_group = get_user_iff_group(firer)
+	var/obj/item/projectile/iff_projectile = target
+	iff_projectile.runtime_iff_group = get_user_iff_group(firer)
 
 // We have a "cache" to avoid getting ID card iff every shot,
 // The cache is reset when the user drops their ID

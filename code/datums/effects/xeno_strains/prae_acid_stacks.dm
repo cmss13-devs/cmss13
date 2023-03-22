@@ -11,15 +11,15 @@
 	var/increment_grace_time = 50
 	var/proc_damage = 30
 
-/datum/effects/prae_acid_stacks/New(mob/living/carbon/human/H, mob/from = null, last_dmg_source = null, zone = "chest")
+/datum/effects/prae_acid_stacks/New(mob/living/carbon/human/human, mob/from = null, last_dmg_source = null, zone = "chest")
 	last_decrement_time = world.time
 	last_increment_time = world.time
-	. = ..(H, from, last_dmg_source, zone)
-	H.update_xeno_hostile_hud()
+	. = ..(human, from, last_dmg_source, zone)
+	human.update_xeno_hostile_hud()
 
 
-/datum/effects/prae_acid_stacks/validate_atom(mob/living/carbon/human/H)
-	if (H.stat == DEAD)
+/datum/effects/prae_acid_stacks/validate_atom(mob/living/carbon/human/human)
+	if (human.stat == DEAD)
 		return FALSE
 
 	return ..()
@@ -37,16 +37,16 @@
 			qdel(src)
 			return
 
-	var/mob/living/carbon/human/H = affected_atom
-	H.update_xeno_hostile_hud()
+	var/mob/living/carbon/human/human = affected_atom
+	human.update_xeno_hostile_hud()
 
 
 /datum/effects/prae_acid_stacks/Destroy()
 	if (!ishuman(affected_atom))
 		return ..()
 
-	var/mob/living/carbon/human/H = affected_atom
-	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
+	var/mob/living/carbon/human/human = affected_atom
+	addtimer(CALLBACK(human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 
 	return ..()
 
@@ -56,8 +56,8 @@
 	if (!istype(affected_atom, /mob/living/carbon/human))
 		return
 
-	var/mob/living/carbon/human/H = affected_atom
-	H.update_xeno_hostile_hud()
+	var/mob/living/carbon/human/human = affected_atom
+	human.update_xeno_hostile_hud()
 
 	last_increment_time = world.time
 
@@ -69,8 +69,8 @@
 	if (!ishuman(affected_atom))
 		return
 
-	var/mob/living/carbon/human/H = affected_atom
-	H.apply_damage(proc_damage, BURN)
-	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin!"))
+	var/mob/living/carbon/human/human = affected_atom
+	human.apply_damage(proc_damage, BURN)
+	to_chat(human, SPAN_XENODANGER("You feel acid eat into your skin!"))
 	qdel(src)
 	return

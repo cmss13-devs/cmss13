@@ -27,13 +27,13 @@ Bonus
 /datum/symptom/weight_gain/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You feel blubbery.", "You feel full.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You feel blubbery.", "You feel full.")]"))
 			else
-				M.overeatduration = min(M.overeatduration + 100, 600)
-				M.nutrition = min(M.nutrition + 100, 500)
+				mob.overeatduration = min(mob.overeatduration + 100, 600)
+				mob.nutrition = min(mob.nutrition + 100, 500)
 
 	return
 
@@ -68,14 +68,14 @@ Bonus
 /datum/symptom/weight_loss/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You feel hungry.", "You crave for food.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You feel hungry.", "You crave for food.")]"))
 			else
-				to_chat(M, SPAN_NOTICE("Your stomach rumbles."))
-				M.overeatduration = max(M.overeatduration - 100, 0)
-				M.nutrition = max(M.nutrition - 100, 0)
+				to_chat(mob, SPAN_NOTICE("Your stomach rumbles."))
+				mob.overeatduration = max(mob.overeatduration - 100, 0)
+				mob.nutrition = max(mob.nutrition - 100, 0)
 
 	return
 
@@ -110,10 +110,10 @@ Bonus
 /datum/symptom/weight_loss/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(4, 5)
-				M.overeatduration = 0
-				M.nutrition = 400
+				mob.overeatduration = 0
+				mob.nutrition = 400
 
 	return

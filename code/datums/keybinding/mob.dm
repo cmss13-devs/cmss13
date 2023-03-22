@@ -14,11 +14,11 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
-	if(!M.pulling)
+	var/mob/mob = user.mob
+	if(!mob.pulling)
 		to_chat(user, SPAN_NOTICE("You are not pulling anything."))
 	else
-		M.stop_pulling()
+		mob.stop_pulling()
 	return TRUE
 
 /datum/keybinding/mob/swap_hands
@@ -33,8 +33,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
-	M.swap_hand()
+	var/mob/mob = user.mob
+	mob.swap_hand()
 	return TRUE
 
 /datum/keybinding/mob/activate_inhand
@@ -49,8 +49,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
-	M.mode()
+	var/mob/mob = user.mob
+	mob.mode()
 	return TRUE
 
 /datum/keybinding/mob/drop_item
@@ -65,12 +65,12 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
-	var/obj/item/I = M.get_held_item()
-	if(!I)
+	var/mob/mob = user.mob
+	var/obj/item/held_item = mob.get_held_item()
+	if(!held_item)
 		to_chat(user, SPAN_WARNING("You have nothing to drop in your hand!"))
 	else
-		user.mob.drop_held_item(I)
+		user.mob.drop_held_item(held_item)
 	return TRUE
 
 /datum/keybinding/mob/target_head_cycle

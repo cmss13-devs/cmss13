@@ -16,8 +16,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.xeno_primary_action_one()
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.xeno_primary_action_one()
 	return TRUE
 
 /datum/keybinding/xenomorph/primary_attack_two
@@ -31,8 +31,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.xeno_primary_action_two()
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.xeno_primary_action_two()
 	return TRUE
 
 /datum/keybinding/xenomorph/primary_attack_three
@@ -46,8 +46,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.xeno_primary_action_three()
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.xeno_primary_action_three()
 	return TRUE
 
 /datum/keybinding/xenomorph/primary_attack_four
@@ -61,8 +61,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.xeno_primary_action_four()
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.xeno_primary_action_four()
 	return TRUE
 
 /datum/keybinding/xenomorph/primary_attack_five
@@ -76,8 +76,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.xeno_primary_action_five()
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.xeno_primary_action_five()
 	return TRUE
 
 /datum/keybinding/xenomorph/emit_pheromones
@@ -93,8 +93,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/X = user.mob
-	X.emit_pheromones(pheromone)
+	var/mob/living/carbon/xenomorph/xenomorph = user.mob
+	xenomorph.emit_pheromones(pheromone)
 	return TRUE
 
 /datum/keybinding/xenomorph/emit_pheromones/frenzy

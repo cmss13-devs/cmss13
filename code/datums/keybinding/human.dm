@@ -22,8 +22,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_PRIMARY)
+	var/mob/living/carbon/human/human = user.mob
+	human.holster_verb(QUICK_EQUIP_PRIMARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_secondary
@@ -38,8 +38,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_SECONDARY)
+	var/mob/living/carbon/human/human = user.mob
+	human.holster_verb(QUICK_EQUIP_SECONDARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_tertiary
@@ -54,8 +54,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_TERTIARY)
+	var/mob/living/carbon/human/human = user.mob
+	human.holster_verb(QUICK_EQUIP_TERTIARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_quaternary
@@ -70,8 +70,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb(QUICK_EQUIP_QUATERNARY)
+	var/mob/living/carbon/human/human = user.mob
+	human.holster_verb(QUICK_EQUIP_QUATERNARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_inventory
@@ -86,8 +86,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.quick_equip()
+	var/mob/living/carbon/human/human = user.mob
+	human.quick_equip()
 	return TRUE
 
 /datum/keybinding/human/issue_order
@@ -103,8 +103,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.issue_order(order)
+	var/mob/living/carbon/human/human = user.mob
+	human.issue_order(order)
 	return TRUE
 
 /datum/keybinding/human/issue_order/move
@@ -139,8 +139,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_one()
+	var/mob/living/carbon/human/human = user.mob
+	human.spec_activation_one()
 	return TRUE
 
 /datum/keybinding/human/specialist_two
@@ -154,8 +154,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	H.spec_activation_two()
+	var/mob/living/carbon/human/human = user.mob
+	human.spec_activation_two()
 	return TRUE
 
 /datum/keybinding/human/pick_up

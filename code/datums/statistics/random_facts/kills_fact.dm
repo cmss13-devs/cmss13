@@ -17,10 +17,10 @@
 	var/list/list_to_check = list()
 	if(check_human) list_to_check += GLOB.alive_human_list
 	if(check_xeno) list_to_check += GLOB.living_xeno_list
-	for(var/mob/M as anything in list_to_check)
-		if(living_kills_gotten < M.life_kills_total)
-			mob_to_report = M
-			living_kills_gotten = M.life_kills_total
+	for(var/mob/mob as anything in list_to_check)
+		if(living_kills_gotten < mob.life_kills_total)
+			mob_to_report = mob
+			living_kills_gotten = mob.life_kills_total
 
 	if(!death_to_report && !mob_to_report)
 		return

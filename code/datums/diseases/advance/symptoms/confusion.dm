@@ -28,12 +28,12 @@ Bonus
 /datum/symptom/confusion/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/carbon/M = A.affected_mob
+		var/mob/living/carbon/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You feel confused.", "You forgot what you were thinking about.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You feel confused.", "You forgot what you were thinking about.")]"))
 			else
-				to_chat(M, SPAN_NOTICE("You are unable to think straight!"))
-				M.confused = min(100, M.confused + 2)
+				to_chat(mob, SPAN_NOTICE("You are unable to think straight!"))
+				mob.confused = min(100, mob.confused + 2)
 
 	return

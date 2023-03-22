@@ -13,19 +13,19 @@
 
 /datum/emergency_call/colonist/create_member(datum/mind/M, turf/override_spawn_loc) //Blank ERT with only basic items.
 	set waitfor = 0
-	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+	var/turf/current_turf = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(T))
+	if(!istype(current_turf))
 		return FALSE
 
-	var/mob/living/carbon/human/H = new(T)
-	M.transfer_to(H, TRUE)
-	arm_equipment(H, preset, TRUE, TRUE)
+	var/mob/living/carbon/human/human = new(current_turf)
+	M.transfer_to(human, TRUE)
+	arm_equipment(human, preset, TRUE, TRUE)
 
 	sleep(20)
-	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a colonist!"))
-		to_chat(H, SPAN_ROLE_BODY("You have been put into the game by a staff member. Please follow all staff instructions."))
+	if(human && human.loc)
+		to_chat(human, SPAN_ROLE_HEADER("You are a colonist!"))
+		to_chat(human, SPAN_ROLE_BODY("You have been put into the game by a staff member. Please follow all staff instructions."))
 
 /datum/emergency_call/colonist/engineers
 	name = "Colonists - Engineers"

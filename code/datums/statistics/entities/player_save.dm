@@ -15,16 +15,16 @@
 	if(!path || !save_loaded)
 		log_debug("STATISTICS: stats failed to save for [ckey] in [path] (save_loaded: [save_loaded])")
 		return FALSE
-	var/savefile/S = new /savefile(path)
-	if(!S)
+	var/savefile/save = new /savefile(path)
+	if(!save)
 		return FALSE
-	S.cd = "/"
+	save.cd = "/"
 
 	update_panel_data()
 
-	S["version"] << savefile_version
-	S["xeno"] << data["xeno"]
-	S["human"] << data["human"]
+	save["version"] << savefile_version
+	save["xeno"] << data["xeno"]
+	save["human"] << data["human"]
 
 	return TRUE
 
@@ -32,22 +32,22 @@
 	if(!path || !fexists(path))
 		save_loaded = TRUE
 		return FALSE
-	var/savefile/S = new /savefile(path)
-	if(!S)
+	var/savefile/save = new /savefile(path)
+	if(!save)
 		log_debug("STATISTICS: fexists but load failed for [ckey] in [path]")
 		return FALSE
-	S.cd = "/"
+	save.cd = "/"
 
-	if(S["version"] < PREFFILE_VERSION_MIN)
+	if(save["version"] < PREFFILE_VERSION_MIN)
 		return FALSE
 
-	S["version"] >> savefile_version
+	save["version"] >> savefile_version
 
 	var/list/human_save = list()
 	var/list/xeno_save = list()
 
-	S["human"] >> human_save
-	S["xeno"] >> xeno_save
+	save["human"] >> human_save
+	save["xeno"] >> xeno_save
 
 	if(human_save)
 		setup_human_stats()

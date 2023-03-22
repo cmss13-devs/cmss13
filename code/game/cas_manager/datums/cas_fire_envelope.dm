@@ -35,9 +35,9 @@
 
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	for(var/X in linked_console.shuttle_equipments)
-		var/obj/structure/dropship_equipment/E = X
-		if(E.is_weapon)
-			weapons += E
+		var/obj/structure/dropship_equipment/equipment = X
+		if(equipment.is_weapon)
+			weapons += equipment
 
 	var/datum/cas_fire_mission/fm = new()
 
@@ -159,9 +159,9 @@
 
 /datum/cas_fire_envelope/proc/change_current_loc(location)
 	if(!location && guidance)
-		for(var/mob/M in guidance.users)
-			if(istype(M) && M.client)
-				M.reset_view()
+		for(var/mob/mob in guidance.users)
+			if(istype(mob) && mob.client)
+				mob.reset_view()
 		qdel(guidance)
 		return
 	if(!guidance)
@@ -175,9 +175,9 @@
 /datum/cas_fire_envelope/proc/add_user_to_tracking(user)
 	if(!guidance)
 		return
-	var/mob/M = user
-	if(istype(M) && M.client)
-		M.reset_view(guidance)
+	var/mob/mob = user
+	if(istype(mob) && mob.client)
+		mob.reset_view(guidance)
 		apply_upgrade(user)
 		if(!(user in guidance.users))
 			guidance.users += user
@@ -185,28 +185,28 @@
 
 
 /datum/cas_fire_envelope/proc/apply_upgrade(user)
-	var/mob/M = user
+	var/mob/mob = user
 	if(linked_console.upgraded == MATRIX_NVG)
 		if(linked_console.power <= 8)
-			M.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(1), color_matrix_rotate_x(-1*(20.8571-1.57143*linked_console.power)), color_matrix_from_string(linked_console.matrixcol))) // (20.8571-1.57143*linked_console.power) is an equation so we can make low level properties look bad
-			M.overlay_fullscreen("matrix_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
-		M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
-		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-		M.sync_lighting_plane_alpha()
+			mob.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(1), color_matrix_rotate_x(-1*(20.8571-1.57143*linked_console.power)), color_matrix_from_string(linked_console.matrixcol))) // (20.8571-1.57143*linked_console.power) is an equation so we can make low level properties look bad
+			mob.overlay_fullscreen("matrix_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+		mob.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
+		mob.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		mob.sync_lighting_plane_alpha()
 	else if (linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(linked_console.power + 5, M)
+		mob.client?.change_view(linked_console.power + 5, mob)
 
 
 /datum/cas_fire_envelope/proc/remove_upgrades(user)
-	var/mob/M = user
+	var/mob/mob = user
 	if(linked_console.upgraded == MATRIX_NVG)
-		M.remove_client_color_matrix("matrix_nvg")
-		M.clear_fullscreen("matrix")
-		M.clear_fullscreen("matrix_blur")
-		M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
-		M.sync_lighting_plane_alpha()
+		mob.remove_client_color_matrix("matrix_nvg")
+		mob.clear_fullscreen("matrix")
+		mob.clear_fullscreen("matrix_blur")
+		mob.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		mob.sync_lighting_plane_alpha()
 	if(linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(7, M)
+		mob.client?.change_view(7, mob)
 	else
 		return
 
@@ -214,10 +214,10 @@
 /datum/cas_fire_envelope/proc/remove_user_from_tracking(user)
 	if(!guidance)
 		return
-	var/mob/M = user
+	var/mob/mob = user
 	if(user && (user in guidance.users))
-		if(istype(M) && M.client)
-			M.reset_view()
+		if(istype(mob) && mob.client)
+			mob.reset_view()
 			remove_upgrades(user)
 		guidance.users -= user
 

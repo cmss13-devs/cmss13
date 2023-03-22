@@ -18,16 +18,16 @@
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/H = new(spawn_loc)
-	M.transfer_to(H, TRUE)
+	var/mob/living/carbon/human/human = new(spawn_loc)
+	M.transfer_to(human, TRUE)
 
 	sleep(5)
-	arm_equipment(H, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
-	to_chat(H, SPAN_ROLE_HEADER("You are a Vehicle Crewman in the USCM"))
-	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+	arm_equipment(human, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
+	to_chat(human, SPAN_ROLE_HEADER("You are a Vehicle Crewman in the USCM"))
+	to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
 	sleep(10)
-	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
+	to_chat(human, SPAN_BOLD("Objectives: [objectives]"))
 
-	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
+	GLOB.data_core.manifest_inject(human) //Put people in crew manifest
 

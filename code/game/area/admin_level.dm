@@ -101,10 +101,10 @@
 /area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
 	. = ..()
 	if(isxeno(A))
-		var/mob/living/carbon/xenomorph/X = A
+		var/mob/living/carbon/xenomorph/xenomorph = A
 
-		X.away_timer = XENO_LEAVE_TIMER
-		X.set_hive_and_update(hivenumber)
+		xenomorph.away_timer = XENO_LEAVE_TIMER
+		xenomorph.set_hive_and_update(hivenumber)
 
 // ERT Station
 /area/adminlevel/ert_station

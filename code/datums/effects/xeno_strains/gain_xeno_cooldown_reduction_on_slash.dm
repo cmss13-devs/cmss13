@@ -26,19 +26,19 @@
 
 /datum/effects/gain_xeno_cooldown_reduction_on_slash/Destroy()
 	if(affected_atom)
-		var/mob/living/carbon/xenomorph/X  = affected_atom
-		X.cooldown_reduction_percentage -= current_reduction
-		to_chat(X, SPAN_XENOWARNING("You feel your frenzy wanes! Your cooldowns are back to normal."))
-		if(X.cooldown_reduction_percentage < 0)
-			X.cooldown_reduction_percentage = 0
+		var/mob/living/carbon/xenomorph/xenomorph  = affected_atom
+		xenomorph.cooldown_reduction_percentage -= current_reduction
+		to_chat(xenomorph, SPAN_XENOWARNING("You feel your frenzy wanes! Your cooldowns are back to normal."))
+		if(xenomorph.cooldown_reduction_percentage < 0)
+			xenomorph.cooldown_reduction_percentage = 0
 
 	return ..()
 
 /datum/effects/gain_xeno_cooldown_reduction_on_slash/proc/increase_cooldown_reduction()
 	SIGNAL_HANDLER
 	if(affected_atom && current_reduction < max_reduction_amount)
-		var/mob/living/carbon/xenomorph/X  = affected_atom
+		var/mob/living/carbon/xenomorph/xenomorph  = affected_atom
 		var/previous_reduction = current_reduction
 		current_reduction = min(current_reduction + reduction_amount_per_slash, max_reduction_amount)
 		var/delta = current_reduction - previous_reduction
-		X.cooldown_reduction_percentage += delta
+		xenomorph.cooldown_reduction_percentage += delta

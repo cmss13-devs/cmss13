@@ -7,12 +7,12 @@
 	if(istype(squad))
 		var/squad_clr = squad_colors[H.assigned_squad.color]
 		var/marine_rk
-		var/obj/item/card/id/I = H.get_idcard()
+		var/obj/item/card/id/id_card = H.get_idcard()
 		var/_role
 		if(H.job)
 			_role = H.job
-		else if(I)
-			_role = I.rank
+		else if(id_card)
+			_role = id_card.rank
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
@@ -167,9 +167,9 @@
 				marine_rk = "wo_mcrew"
 
 		if(marine_rk)
-			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
-			I.color = "#5A934A"
-			holder.overlays += I
+			var/image/id_card = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
+			id_card.color = "#5A934A"
+			holder.overlays += id_card
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudsquad_[marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudmarineborder[border_rk]")

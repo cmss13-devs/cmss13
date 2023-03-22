@@ -11,11 +11,11 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		return TRUE
 	if(job == XENO_CASTE_QUEEN)
-		var/datum/caste_datum/C = RoleAuthority.castes_by_name[XENO_CASTE_QUEEN]
-		return C.can_play_caste(client)
+		var/datum/caste_datum/caste = RoleAuthority.castes_by_name[XENO_CASTE_QUEEN]
+		return caste.can_play_caste(client)
 	if(job == JOB_SURVIVOR)
-		var/datum/job/J = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
-		return J.can_play_role(client)
+		var/datum/job/surv_job = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
+		return surv_job.can_play_role(client)
 	return TRUE
 
 GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")

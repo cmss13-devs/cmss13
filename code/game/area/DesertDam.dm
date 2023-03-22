@@ -825,8 +825,8 @@
 			R.toxic = 1
 	R.update_icon()
 	if(Next_areas && !(src in Next_areas)) //Shouldn't ever happen but just to be safe
-		for(var/area/desert_dam/exterior/river/A in Next_areas)
-			A.check_filtered()
+		for(var/area/desert_dam/exterior/river/current_area in Next_areas)
+			current_area.check_filtered()
 
 
 

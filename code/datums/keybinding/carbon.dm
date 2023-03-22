@@ -19,8 +19,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/C = user.mob
-	C.toggle_throw_mode(throw_mode)
+	var/mob/living/carbon/mob = user.mob
+	mob.toggle_throw_mode(throw_mode)
 	return TRUE
 
 /datum/keybinding/carbon/toggle_throw_mode/high
@@ -128,6 +128,6 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/C = user.mob
-	C.give()
+	var/mob/living/carbon/mob = user.mob
+	mob.give()
 	return TRUE

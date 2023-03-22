@@ -7,17 +7,17 @@
 	var/datum/beam/tether_beam
 	var/always_face
 
-/datum/effects/tethering/New(atom/A, range, icon, always_face)
+/datum/effects/tethering/New(atom/current_atom, range, icon, always_face)
 	..()
 	src.range = range
 	tether_icon = icon
 	src.always_face = always_face
 
-/datum/effects/tethering/validate_atom(atom/A)
-	if (isturf(A))
+/datum/effects/tethering/validate_atom(atom/current_atom)
+	if (isturf(current_atom))
 		return TRUE
 
-	if (istype(A, /atom/movable))
+	if (istype(current_atom, /atom/movable))
 		return TRUE
 
 	return FALSE
@@ -46,17 +46,17 @@
 		if(anchored_object.anchored)
 			return
 
-	var/atom/movable/A = tethered.affected_atom
-	if (get_dist(affected_atom, A) <= range)
+	var/atom/movable/current_atom = tethered.affected_atom
+	if (get_dist(affected_atom, current_atom) <= range)
 		return
 
 	var/turf/T
-	var/dir_away = get_dir(affected_atom, A)
+	var/dir_away = get_dir(affected_atom, current_atom)
 	for (var/dir in alldirs)
 		if (dir & dir_away)
 			continue
-		T = get_step(A, dir)
-		if (get_dist(T, affected_atom) <= range && A.Move(T))
+		T = get_step(current_atom, dir)
+		if (get_dist(T, affected_atom) <= range && current_atom.Move(T))
 			return
 
 	// Integrity of tether is compromised (cannot maintain range), so delete it
@@ -74,12 +74,12 @@
 	var/resistable = FALSE
 	var/resist_time = 15 SECONDS
 
-/datum/effects/tethered/New(atom/A, resistable)
+/datum/effects/tethered/New(atom/current_atom, resistable)
 	src.resistable = resistable
 	..()
 
-/datum/effects/tethered/validate_atom(atom/A)
-	if (istype(A, /atom/movable))
+/datum/effects/tethered/validate_atom(atom/current_atom)
+	if (istype(current_atom, /atom/movable))
 		return TRUE
 
 	return FALSE
@@ -96,11 +96,11 @@
 	if (isnull(tether))
 		return
 
-	var/atom/A = tether.affected_atom
+	var/atom/current_atom = tether.affected_atom
 
 	// If the target turf is out of range, can't move
-	if (get_dist(target, A) > tether.range)
-		to_chat(affected_atom, SPAN_WARNING("Your tether to \the [A] prevents you from moving any further!"))
+	if (get_dist(target, current_atom) > tether.range)
+		to_chat(affected_atom, SPAN_WARNING("Your tether to \the [current_atom] prevents you from moving any further!"))
 		return COMPONENT_CANCEL_MOVE
 
 /datum/effects/tethered/Destroy()

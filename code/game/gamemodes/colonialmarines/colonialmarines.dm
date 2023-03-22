@@ -74,9 +74,9 @@
 	if(SSmapping.configs[GROUND_MAP].map_item_type)
 		var/type_to_spawn = SSmapping.configs[GROUND_MAP].map_item_type
 		for(var/i in GLOB.map_items)
-			var/turf/T = get_turf(i)
+			var/turf/current_turf = get_turf(i)
 			qdel(i)
-			new type_to_spawn(T)
+			new type_to_spawn(current_turf)
 
 	if(!round_fog.len)
 		round_fog = null //No blockers?
@@ -92,13 +92,13 @@
 
 	..()
 
-	var/obj/structure/tunnel/T
+	var/obj/structure/tunnel/current_turf
 	var/i = 0
 	var/turf/t
 	while(GLOB.xeno_tunnels.len && i++ < 3)
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
-		T = new(t)
-		T.id = "hole[i]"
+		current_turf = new(t)
+		current_turf.id = "hole[i]"
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -136,9 +136,9 @@
 	var/amount_to_spawn = round(players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
-		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
+		var/turf/current_turf = get_turf(pick_n_take(GLOB.monkey_spawns))
 		var/monkey_to_spawn = pick(monkey_types)
-		new monkey_to_spawn(T)
+		new monkey_to_spawn(current_turf)
 
 /datum/game_mode/colonialmarines/proc/ares_online()
 	var/name = "ARES Online"
@@ -200,10 +200,10 @@
 						var/name = "Automated Security Authority Announcement"
 						marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 						for(var/i in GLOB.living_xeno_list)
-							var/mob/M = i
-							sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-							to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
+							var/mob/mob = i
+							sound_to(mob, sound(get_sfx("queen"), wait = 0, volume = 50))
+							to_chat(mob, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+							to_chat(mob, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
 						addtimer(CALLBACK(src, PROC_REF(open_podlocks), "map_lockdown"), 300)
 
 			if(round_should_check_for_win)
@@ -354,9 +354,9 @@
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 			if(round_statistics && round_statistics.current_map)
 				round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+	var/sound/current_sound = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	current_sound.status = SOUND_STREAM
+	sound_to(world, current_sound)
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time

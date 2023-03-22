@@ -27,13 +27,13 @@ BONUS
 /datum/symptom/cough/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
-		var/mob/living/M = A.affected_mob
+		var/mob/living/mob = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3)
-				to_chat(M, SPAN_NOTICE("[pick("You swallow excess mucus.", "You lightly cough.")]"))
+				to_chat(mob, SPAN_NOTICE("[pick("You swallow excess mucus.", "You lightly cough.")]"))
 			else
-				M.emote("cough")
-				var/obj/item/I = M.get_active_hand()
-				if(I && I.w_class < SIZE_MEDIUM)
-					M.drop_held_item()
+				mob.emote("cough")
+				var/obj/item/item = mob.get_active_hand()
+				if(item && item.w_class < SIZE_MEDIUM)
+					mob.drop_held_item()
 	return

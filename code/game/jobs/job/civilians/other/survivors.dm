@@ -19,52 +19,52 @@
 
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
-	var/mob/living/carbon/human/H = .
+	var/mob/living/carbon/human/human = .
 
 	var/list/potential_spawners = list()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
 		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
 			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
-				if(spawner.check_can_spawn(H))
+				if(spawner.check_can_spawn(human))
 					potential_spawners += spawner
 			if(length(potential_spawners))
 				break
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
-	H.forceMove(get_turf(picked_spawner))
+	human.forceMove(get_turf(picked_spawner))
 
-	handle_equip_gear(H, picked_spawner)
+	handle_equip_gear(human, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)
-			H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
+			human.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
-	H.name = H.get_visible_name()
+	human.name = human.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
 		intro_text = picked_spawner.intro_text
 
 	if(picked_spawner.story_text)
 		story_text = picked_spawner.story_text
-	new /datum/cm_objective/move_mob/almayer/survivor(H)
+	new /datum/cm_objective/move_mob/almayer/survivor(human)
 
-/datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/human)
 	if(intro_text)
 		for(var/line in intro_text)
-			to_chat(H, line)
+			to_chat(human, line)
 	else
-		to_chat(H, "<h2>You are a survivor!</h2>")
-		to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+		to_chat(human, "<h2>You are a survivor!</h2>")
+		to_chat(human, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
+		to_chat(human, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
+		to_chat(human, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
 
 	if(story_text)
-		to_chat(H, story_text)
-		H.mind.memory += story_text
+		to_chat(human, story_text)
+		human.mind.memory += story_text
 	else
-		tell_survivor_story(H)
+		tell_survivor_story(human)
 
-/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
+/datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/human)
 	var/list/survivor_story = list(
 								"You watched as a larva burst from the chest of your friend, {name}. You tried to capture the alien thing, but it escaped through the ventilation.",
 								"{name} was attacked by a facehugging alien, which impregnated them with an alien lifeform. {name}'s chest exploded in gore as some creature escaped.",
@@ -97,8 +97,8 @@
 
 	var/random_name = pick(random_name(FEMALE), random_name(MALE))
 	var/temp_story = "<b>Your story thus far</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")
-	to_chat(H, temp_story)
-	H.mind.memory += temp_story
+	to_chat(human, temp_story)
+	human.mind.memory += temp_story
 
 	return TRUE
 

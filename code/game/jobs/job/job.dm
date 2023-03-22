@@ -98,8 +98,8 @@
 		return TRUE
 
 	for(var/prereq in minimum_playtimes)
-		var/datum/timelock/T = prereq
-		if(!T.can_play(client))
+		var/datum/timelock/time = prereq
+		if(!time.can_play(client))
 			return FALSE
 
 	return TRUE
@@ -107,10 +107,10 @@
 /datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
-		var/datum/timelock/T = prereq
-		var/time_required = T.get_role_requirement(C)
+		var/datum/timelock/time = prereq
+		var/time_required = time.get_role_requirement(C)
 		if(time_required > 0)
-			return_requirements[T] = time_required
+			return_requirements[time] = time_required
 
 	return return_requirements
 
@@ -166,8 +166,8 @@
 				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
 				if(generated_account.transaction_log.len)
-					var/datum/transaction/T = generated_account.transaction_log[1]
-					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+					var/datum/transaction/transaction = generated_account.transaction_log[1]
+					remembered_info += "<b>Your account was created:</b> [transaction.time], [transaction.date] at [transaction.source_terminal]<br>"
 				account_user.mind.store_memory(remembered_info)
 				account_user.mind.initial_account = generated_account
 	return generated_account

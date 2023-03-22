@@ -84,8 +84,8 @@
 
 	new_death.is_xeno = FALSE
 
-	var/area/A = get_area(death_loc)
-	new_death.area_name = A.name
+	var/area/current_area = get_area(death_loc)
+	new_death.area_name = current_area.name
 
 	new_death.cause_name = cause_data?.cause_name
 	var/datum/entity/player/cause_player = get_player_from_key(cause_data?.ckey)
@@ -118,7 +118,7 @@
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
 
-	handle_observer_message(cause_data, cause_mob, death_loc, A)
+	handle_observer_message(cause_data, cause_mob, death_loc, current_area)
 
 	if(round_statistics)
 		round_statistics.track_death(new_death)
@@ -159,8 +159,8 @@
 
 	if(src)
 		to_chat(src, SPAN_DEADSAY(observer_message))
-	for(var/mob/dead/observer/g in GLOB.observer_list)
-		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
+	for(var/mob/dead/observer/ghost in GLOB.observer_list)
+		to_chat(ghost, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[ghost];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
 
 /mob/living/carbon/xenomorph/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	if(hardcore)

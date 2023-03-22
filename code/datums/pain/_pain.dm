@@ -156,8 +156,8 @@
 	if(level == last_level) //Check if the new level is same as old one
 		return FALSE
 
-	for(var/datum/effects/pain/P in source_mob.effects_list)
-		qdel(P)
+	for(var/datum/effects/pain/pain in source_mob.effects_list)
+		qdel(pain)
 
 	pain_slowdown = 0
 
@@ -248,8 +248,8 @@
 	current_pain = 0
 	pain_slowdown = 0
 
-	for(var/datum/effects/pain/P in source_mob.effects_list)
-		qdel(P)
+	for(var/datum/effects/pain/pain in source_mob.effects_list)
+		qdel(pain)
 
 	// Reapply it all
 	apply_pain(source_mob.getBruteLoss(), BRUTE)
@@ -287,8 +287,8 @@
 	SIGNAL_HANDLER
 	if(isxeno(puller) && source.stat == UNCONSCIOUS)
 		if(source.get_species())
-			var/mob/living/carbon/human/H = source
-			if(H.species.flags & HAS_HARDCRIT)
+			var/mob/living/carbon/human/human = source
+			if(human.species.flags & HAS_HARDCRIT)
 				source.apply_damage(20, OXY)
 
 /datum/pain/proc/handle_devour(mob/living/source)

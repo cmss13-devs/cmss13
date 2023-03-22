@@ -22,19 +22,19 @@
 	if(!players_to_offer.len)
 		return // No more players
 
-	var/mob/living/carbon/human/H = pick(players_to_offer)
+	var/mob/living/carbon/human/human = pick(players_to_offer)
 
-	if(!H) // Something went wrong
+	if(!human) // Something went wrong
 		return
 
-	M.transfer_to(H, TRUE)
+	M.transfer_to(human, TRUE)
 
-	players_to_offer -= H
+	players_to_offer -= human
 
 	return
 
 /datum/emergency_call/custom/spawn_candidates(announce, override_spawn_loc)
 	. = ..()
 	if(owner)
-		for(var/mob/living/carbon/human/H in players_to_offer)
-			owner.free_for_ghosts(H)
+		for(var/mob/living/carbon/human/human in players_to_offer)
+			owner.free_for_ghosts(human)

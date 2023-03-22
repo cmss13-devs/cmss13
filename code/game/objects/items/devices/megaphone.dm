@@ -39,7 +39,8 @@
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 
-
+		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+			to_chat(observer, SPAN_DEADSAY("<B>[user]</B> (<a href='?src=\ref[observer];jumptocoord=1;X=[user.loc.x];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>)(<a href='byond://?src=\ref[observer];track=\ref[user]'>FLW</a>), uses megapone to broadcast: [FONT_SIZE_LARGE("\"[message]\"")]"))
 		user.langchat_long_speech(message, human_viewers, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

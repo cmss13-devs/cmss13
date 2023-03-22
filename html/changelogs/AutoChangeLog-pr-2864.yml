@@ -1,0 +1,5 @@
+author: "Tsunamico"
+delete-after: True
+changes:
+  - admin: "panel that allows admins to trash the ship about."
+  - code_imp: "adds a shakeship proc that can be called to rock the shipmap."

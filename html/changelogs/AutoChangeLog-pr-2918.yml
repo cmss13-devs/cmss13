@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - spellcheck: "fixed the to_chat for the katana cane"

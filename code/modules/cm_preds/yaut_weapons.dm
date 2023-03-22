@@ -729,6 +729,7 @@
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = null
 	works_in_recharger = FALSE
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -913,12 +914,11 @@
 	if(refund) charge_time *= 2
 	return TRUE
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
-	icon_state = "plasma"
-	item_state = "plasma_wear"
+	var/base_icon_state = "plasma"
+	var/base_item_state = "plasma_wear"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -949,10 +949,10 @@
 	var/strength = "low power stun bolts"//what it's shooting
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
-	icon_state += "_[caster_material]"
-	item_state += "_[caster_material]"
-	item_state_slots[WEAR_BACK] += "_[caster_material]"
-	item_state_slots[WEAR_J_STORE] += "_[caster_material]"
+	icon_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_icon_state]_[caster_material]"
+	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
+	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip

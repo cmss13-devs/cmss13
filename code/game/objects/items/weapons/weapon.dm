@@ -6,14 +6,14 @@
 
 /obj/item/weapon/get_examine_text(mob/user)
 	. = ..()
-	var/strong_text = "weak"
+	var/strong_text = "a weak"
 	switch(force)
 		if((MELEE_FORCE_WEAK + 1) to MELEE_FORCE_NORMAL)
-			strong_text = "normal"
+			strong_text = "a normal"
 		if(MELEE_FORCE_NORMAL to MELEE_FORCE_STRONG)
-			strong_text = "strong"
+			strong_text = "a strong"
 		if(MELEE_FORCE_STRONG to MELEE_FORCE_VERY_STRONG)
-			strong_text = "very strong"
+			strong_text = "a very strong"
 		if(MELEE_FORCE_VERY_STRONG to INFINITY)
-			strong_text = "inhumanely strong"
-	. += SPAN_INFO("This weapon looks [strong_text].")
+			strong_text = "an inhumanely strong"
+	. += SPAN_INFO("[src] would be [strong_text] weapon if you were hit someone with it.")

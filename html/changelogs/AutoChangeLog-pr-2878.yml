@@ -1,0 +1,5 @@
+author: "H20Begod"
+delete-after: True
+changes:
+  - rscadd: " sound/voice/upp_warcry/* (Sound files, such as `warcry_male_1` , for the UPP)"
+  - code_imp: "changed `code/modules/mob/living/carbon/human/emote.dm`, in order to add conditionals that will check a player's faction. Right now, it's a simple conditional, however, the code is there to be changed to an switch should somebody else come and add more faction-based voicelines."

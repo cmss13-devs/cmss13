@@ -54,7 +54,7 @@
 //don't see anywhere else to put these, maybe together they could be used to make the xenos suit?
 /obj/item/stack/sheet/xenochitin
 	name = "alien chitin"
-	desc = "A piece of the hide of a terrible creature."
+	desc = "A piece of chitin from a terrible creature."
 	singular_name = "alien hide piece"
 	icon_state = "chitin"
 	sheettype = "chitin"
@@ -65,12 +65,10 @@
 	desc = "The claw of a terrible creature."
 	icon_state = "claw"
 
-
 /obj/item/weed_extract
 	name = "weed extract"
-	desc = "A piece of slimy, purplish weed."
+	desc = "A piece of slimy, greenish weed."
 	icon_state = "weed_extract"
-
 
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"

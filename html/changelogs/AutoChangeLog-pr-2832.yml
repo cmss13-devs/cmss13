@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Changed method of logging early game errors to be more convenient."

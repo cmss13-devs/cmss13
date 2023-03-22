@@ -64,7 +64,7 @@
 	plasma_cost = 100
 
 /datum/action/xeno_action/onclick/toggle_mute
-	name = "Toggle a Xenomorph's Hivemind Connection"
+	name = "Toggle Excommunication"
 	action_icon_state = "queen_mute"
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen

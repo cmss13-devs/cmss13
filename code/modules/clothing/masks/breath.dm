@@ -155,7 +155,7 @@
 	original_state = "scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
-	icon_state = "scarf_%SQUAD%"
+	var/dummy_icon_state = "scarf_%SQUAD%"
 	item_state = "scarf_%SQUAD%"
 	original_state = "scarf_%SQUAD%"
 
@@ -192,36 +192,36 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("scarf_[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	icon_state = replacetext("[initial(icon_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
+	icon_state = replacetext("[initial(dummy_icon_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 	item_state = replacetext("[initial(item_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 
 
-/obj/item/clothing/mask/rebreather/tornscarf
+/obj/item/clothing/mask/tornscarf
 	name = "tactical scarf"
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	w_class = SIZE_SMALL
+	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/mask/rebreather/tornscarf/green
+/obj/item/clothing/mask/tornscarf/green
 	icon_state = "torn_scarf_green"
 	item_state = "torn_scarf_green"
 
-/obj/item/clothing/mask/rebreather/tornscarf/snow
+/obj/item/clothing/mask/tornscarf/snow
 	icon_state = "torn_scarf_snow"
 	item_state = "torn_scarf_snow"
 
-/obj/item/clothing/mask/rebreather/tornscarf/desert
+/obj/item/clothing/mask/tornscarf/desert
 	icon_state = "torn_scarf_desert"
 	item_state = "torn_scarf_desert"
 
-/obj/item/clothing/mask/rebreather/tornscarf/urban
+/obj/item/clothing/mask/tornscarf/urban
 	icon_state = "torn_scarf_urban"
 	item_state = "torn_scarf_urban"
 
-/obj/item/clothing/mask/rebreather/tornscarf/black
+/obj/item/clothing/mask/tornscarf/black
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"

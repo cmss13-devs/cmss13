@@ -16,6 +16,9 @@
 /datum/turf_reservation/atmosphere
 	turf_type = /turf/open/space/transit/atmosphere
 
+/datum/turf_reservation/interior
+	turf_type = /turf/open/void/vehicle
+
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
 	for(var/i in reserved_turfs)
@@ -62,6 +65,7 @@
 	top_right_coords = list(top_right.x, top_right.y, top_right.z)
 	for(var/i in final)
 		var/turf/T = i
+		reserved_turfs |= T
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
 		T = T.ChangeTurf(turf_type, turf_type)

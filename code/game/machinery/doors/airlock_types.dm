@@ -833,6 +833,20 @@
 		return
 	..()
 
+/obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
+
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(1)
+		lock(TRUE)
+
 /obj/structure/machinery/door/airlock/dropship_hatch/two
 	icon = 'icons/obj/structures/doors/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship2"

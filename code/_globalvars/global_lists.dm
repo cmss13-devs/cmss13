@@ -29,6 +29,8 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
 GLOBAL_LIST_EMPTY(minimap_icons)
 
+GLOBAL_LIST_EMPTY(mainship_pipes)
+
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
 	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))

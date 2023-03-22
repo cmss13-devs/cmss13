@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			title = "Resolved Tickets"
 	if(!l2b)
 		return
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[title]</title></head>")
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>[title]</title></head>")
 	dat += "<A href='?_src_=admin_holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
@@ -199,6 +199,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/player_interactions
 	/// List of admin ckeys that are involved, like through responding
 	var/list/admins_involved = list()
+	/// Which admin has marked this ahelp?
+	var/marked_admin
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
 
@@ -371,7 +373,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
-	. = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
+	. = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=mark'>[marked_admin ? "UNMARK" : "MARK"]</A>)"
+	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=autoreply'>AUTO</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
@@ -486,6 +489,37 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		log_ahelp(id, "Resolved", "Resolved by [usr.key]", null, usr.ckey)
 		log_admin_private(msg)
 
+/datum/admin_help/proc/mark_ticket()
+	if(marked_admin)
+		if(marked_admin == usr.key)
+			unmark_ticket()
+			return
+		to_chat(usr, SPAN_WARNING("This ticket has already been marked by [marked_admin]."))
+		var/unmark_option = tgui_alert(usr, "This message has been marked by [marked_admin]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
+		if(unmark_option == "Cancel")
+			return
+		if(unmark_option == "Unmark")
+			unmark_ticket()
+			return
+
+	var/key_name = key_name_admin(usr)
+	AddInteraction("Marked by [key_name].", player_message = "Ticket marked!")
+	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
+	var/msg = "Ticket [TicketHref("#[id]")] marked by [key_name]."
+	message_admins(msg)
+	log_admin_private(msg)
+	log_ahelp(id, "Marked", "Marked by [usr.key]", sender = usr.ckey)
+	marked_admin = usr.key
+
+/datum/admin_help/proc/unmark_ticket()
+	var/key_name = key_name_admin(usr)
+	AddInteraction("Unmarked by [key_name] (previously [marked_admin]).", player_message = "Ticket unmarked!")
+	var/msg = "Ticket [TicketHref("#[id]")] unmarked by [key_name]."
+	message_admins(msg)
+	log_admin_private(msg)
+	log_ahelp(id, "Unmarked", "Unmarked by [usr.key] (previously [marked_admin])", sender = usr.ckey)
+	marked_admin = null
+
 //Close and return ahelp verb, use if ticket is incoherent
 /datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
@@ -536,7 +570,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Ticket #[id]</title></head>")
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>Ticket #[id]</title></head>")
 	var/ref_src = "[REF(src)]"
 	dat += "<h4>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
 	dat += "<b>State: [ticket_status()]</b>"
@@ -611,6 +645,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			TicketPanel()
 		if("retitle")
 			Retitle()
+		if("mark")
+			mark_ticket()
 		if("reject")
 			Reject()
 		if("reply")

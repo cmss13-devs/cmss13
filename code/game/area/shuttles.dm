@@ -45,6 +45,10 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 
+/area/shuttle/trijent_shuttle
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+
 /area/shuttle/escape_pod
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

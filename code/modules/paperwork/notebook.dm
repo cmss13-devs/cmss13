@@ -2,8 +2,8 @@
 	name = "notebook"
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
-	icon_state = "notebook_black"
-	item_state = "notebook_black"
+	icon_state = "notebook"
+	item_state = "notebook"
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_range = 2

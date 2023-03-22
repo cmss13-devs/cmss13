@@ -469,6 +469,36 @@
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
 
+/datum/action/xeno_action/onclick/toggle_mute/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/queen_user = owner
+	if(!queen_user.check_state())
+		return
+
+	var/choice = tgui_input_list(queen_user, "Pick a Xenomorph:", "Toggle the Hivemind Connection of a Xenomorph", queen_user.hive.totalXenos)
+
+	if(!choice)
+		return
+
+	var/mob/living/carbon/xenomorph/target_xeno
+
+	for(var/mob/living/carbon/xenomorph/xeno in queen_user.hive.totalXenos)
+		if(html_encode(xeno.name) == html_encode(choice))
+			target_xeno = xeno
+			break
+
+	var/datum/weakref/target_ref = WEAKREF(target_xeno)
+
+	if(target_ref in queen_user.hive.muted_xenos)
+		queen_user.hive.muted_xenos -= target_ref
+		to_chat(queen_user, SPAN_XENONOTICE("[target_xeno] has been allowed to rejoin the Hivemind."))
+		to_chat(target_xeno, SPAN_XENOBOLDNOTICE("You are now able to communicate on the Hivemind."))
+		return
+
+	xeno_announcement("By [queen_user]'s will, [target_xeno] has been forbidden to communicate on the Hivemind!", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Excommunication"))
+	xeno_maptext("[target_xeno] is no longer able to communicate on the Hivemind.", "Excommunication", queen_user.hivenumber)
+	queen_user.hive.muted_xenos += target_ref
+
+
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
 	. = ..()
 	if(!.)

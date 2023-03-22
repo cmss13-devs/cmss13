@@ -63,6 +63,10 @@
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
 
+/datum/action/xeno_action/onclick/toggle_mute
+	name = "Toggle a Xenomorph's Hivemind Connection"
+	action_icon_state = "queen_mute"
+
 /datum/action/xeno_action/activable/secrete_resin/remote/queen
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"

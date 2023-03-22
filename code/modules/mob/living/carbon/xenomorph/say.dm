@@ -108,6 +108,10 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
+	if(WEAKREF(src) in hive.muted_xenos)
+		to_chat(src, SPAN_WARNING("The Queen has forbidden you to speak in the Hivemind."))
+		return
+
 	log_hivemind("[key_name(src)] : [message]")
 
 	var/track = ""

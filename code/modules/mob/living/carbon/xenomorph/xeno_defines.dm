@@ -334,6 +334,9 @@
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
+	/// Weakrefs of xenos that have been muted from speaking in Hivemind
+	var/list/datum/weakref/muted_xenos = list()
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)

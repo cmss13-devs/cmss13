@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "id locks can now be removed icly"

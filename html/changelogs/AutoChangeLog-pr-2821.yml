@@ -1,7 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - code_imp: "Made some icon state text strings empty so they would not cause missing icon state errors."
-  - rscdel: "Deleted some lines of code that caused missing icon state errors."
-  - imageadd: "All weapons that can be camouflaged now have a basic USCM sprite to make the linter happy."
-  - imageadd: "The Energy Pistol now has an icon state."

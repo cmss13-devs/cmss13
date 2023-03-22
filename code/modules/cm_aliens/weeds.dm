@@ -221,7 +221,7 @@
 				continue
 			qdel(W)
 
-		if(!istype(T, /turf/closed/wall/resin && T.density))
+		if(!istype(T, /turf/closed/wall/resin) && T.density)
 			if(istype(T, /turf/closed/wall))
 				weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
 				continue

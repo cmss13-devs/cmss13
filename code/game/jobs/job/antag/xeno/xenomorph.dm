@@ -58,13 +58,15 @@
 		list_to_search -= range(count-1, human_to_transform)
 		for(var/turf/closed/wall/wall_in_range in list_to_search)
 			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
-			for(var/turf/open/ground_in_range in neighbor_turfs)
-				if(locate(/obj/structure/bed/nest/) in ground_in_range)
-					continue
-				human_to_transform.forceMove(ground_in_range)
-				start_nest = new /obj/structure/bed/nest(human_to_transform.loc) //Create a new nest for the host
-				start_nest.dir = get_dir(human_to_transform,wall_in_range)
-				break
+			test_name:
+				for(var/turf/open/ground_in_range in neighbor_turfs)
+					for(var/obj/found_object in ground_in_range)
+						if(istype(found_object, /obj/structure/bed/nest/) || found_object.density)
+							break test_name
+					human_to_transform.forceMove(ground_in_range)
+					start_nest = new /obj/structure/bed/nest(human_to_transform.loc) //Create a new nest for the host
+					start_nest.dir = get_dir(human_to_transform,wall_in_range)
+					break
 		if(count > 20) // we dont got all day, we got a game to play baby!
 			start_nest = new /obj/structure/bed/nest(human_to_transform.loc)
 			start_nest.dir = NORTH

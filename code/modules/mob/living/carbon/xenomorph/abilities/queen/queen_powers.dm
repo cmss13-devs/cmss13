@@ -486,17 +486,17 @@
 			target_xeno = xeno
 			break
 
-	var/reason = tgui_input_text(queen_user, "Why is [target_xeno] being excommunicated?")
-
-	if(!reason)
-		return
-
 	var/datum/weakref/target_ref = WEAKREF(target_xeno)
 
 	if(target_ref in queen_user.hive.muted_xenos)
 		queen_user.hive.muted_xenos -= target_ref
 		to_chat(queen_user, SPAN_XENONOTICE("[target_xeno] has been allowed to rejoin the Hivemind."))
 		to_chat(target_xeno, SPAN_XENOBOLDNOTICE("You are now able to communicate on the Hivemind."))
+		return
+
+	var/reason = tgui_input_text(queen_user, "Why is [target_xeno] being excommunicated?")
+
+	if(!reason)
 		return
 
 	xeno_announcement("By [queen_user]'s will, [target_xeno] has been forbidden to communicate on the Hivemind!\n\nReason: [reason]", queen_user.hivenumber, title = SPAN_ANNOUNCEMENT_HEADER_BLUE("Excommunication"))

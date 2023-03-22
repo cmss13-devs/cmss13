@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Adds two variables to yautja cloaks for admin customisation. cloak_alpha and true_cloak, true cloak will make the invisibility 100% effective."

@@ -315,6 +315,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
+///Status trait coming from their job
+#define TRAIT_SOURCE_JOB "t_s_job"
 ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
 ///Status trait coming from equipment

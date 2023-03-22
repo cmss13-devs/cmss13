@@ -3,7 +3,7 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
@@ -60,7 +60,7 @@
 		return
 
 	// initial flight time
-	var/flight_duration = DROPSHIP_TRANSIT_DURATION
+	var/flight_duration =  is_set_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 	if(optimised)
 		if(is_set_flyby)
 			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
@@ -84,10 +84,6 @@
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
-
-	//factors in the distance to the AO when in transit
-	if(!is_set_flyby)
-		flight_duration = DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 
 
 	dropship.callTime = round(flight_duration)

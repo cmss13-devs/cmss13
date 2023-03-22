@@ -197,6 +197,7 @@
 	item_state = "beaker"
 	matter = list("glass" = 500)
 	attack_speed = 4
+	flags_item = NOBLUDGEON
 
 /obj/item/reagent_container/glass/beaker/on_reagent_change()
 	update_icon()

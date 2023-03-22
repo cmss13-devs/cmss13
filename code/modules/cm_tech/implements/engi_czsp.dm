@@ -4,6 +4,7 @@
 
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "upgradekit"
+	flags_item = NOBLUDGEON
 
 /obj/item/engi_upgrade_kit/Initialize(mapload, ...)
 	. = ..()

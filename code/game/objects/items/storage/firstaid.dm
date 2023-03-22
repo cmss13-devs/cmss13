@@ -276,6 +276,7 @@
 		/obj/item/paper,
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	flags_item = NOBLUDGEON
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16

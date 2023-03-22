@@ -138,7 +138,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/megaphone(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/notebook(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"
@@ -180,7 +180,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/megaphone(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/notebook(H), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -457,6 +457,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/notebook(H), WEAR_IN_BACK)
 	if(kit)
 		H.equip_to_slot_or_del(new kit(H), WEAR_IN_BACK)
 
@@ -523,6 +524,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/notebook(H), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -556,6 +558,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/notebook(H), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 

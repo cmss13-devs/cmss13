@@ -407,6 +407,8 @@
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
 		/obj/item/device/camera = 5,
+		/obj/item/device/camera_film = 10,
+		/obj/item/notebook = 5,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)

@@ -325,17 +325,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "pizza-slice",
 						"color" = "white"
 						))
-				if(internal_bleeding)
-					temp_advice = list(list(
-						"advice" = "Administer a single dose of quickclot.",
-						"icon" = "syringe",
-						"color" = "red"
-						))
-					if(chemicals_lists["quickclot"])
-						if(chemicals_lists["quickclot"]["amount"] < 5)
-							advice += temp_advice
-					else
-						advice += temp_advice
 				if(human_target_mob.getToxLoss() > 10)
 					temp_advice = list(list(
 						"advice" = "Administer a single dose of dylovene.",
@@ -674,8 +663,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/advice = ""
 			if(blood_volume <= 500 && !reagents_in_body["nutriment"])
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
-			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
-				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"
 			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
 			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5)

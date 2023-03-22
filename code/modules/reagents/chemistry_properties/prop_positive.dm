@@ -110,7 +110,7 @@
 	if(M.nutrition < 200)
 		return
 	if(M.nutrition >= 200)
-		nutrition -= 5
+		M.nutrition -= 5
 	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
 	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)
@@ -123,6 +123,29 @@
 
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
+
+/datum/chem_property/positive/hemostatic
+	name = PROPERTY_HEMOSTATIC
+	code = "HST"
+	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
+	rarity = PROPERTY_UNCOMMON
+	max_level = 1
+
+/datum/chem_property/positive/hemostatic/process(mob/living/effected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/on_delete(mob/living/effected_mob)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/process_overdose(mob/living/effected_mob, potency = 1)
+	effected_mob.apply_damage(potency, BRUTE)
+
+/datum/chem_property/positive/hemostatic/process_critical(mob/living/effected_mob, potency = 1)
+	effected_mob.apply_damage(potency * 9, BRUTE)
+	effected_mob.apply_damage(potency * 9, BURN)
+	effected_mob.apply_damage(potency * 9, TOX)
 
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING

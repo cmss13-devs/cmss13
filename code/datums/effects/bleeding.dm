@@ -69,9 +69,12 @@
 		if(affected_mob.reagents) // Annoying QC check
 			if(affected_mob.reagents.get_reagent_amount("thwei"))
 				blood_loss -= THWEI_BLOOD_REDUCTION
-			if(affected_mob.reagents.get_reagent_amount("quickclot"))
-				buffer_blood_loss = 0
-				return FALSE
+
+			var/mob/living/carbon/human/affected_human = affected_mob
+			if(istype(affected_human))
+				if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
+					buffer_blood_loss = 0
+					return FALSE
 		affected_mob.drip(buffer_blood_loss)
 		buffer_blood_loss = 0
 
@@ -101,8 +104,11 @@
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
 			blood_loss -= THWEI_BLOOD_REDUCTION
-		if(affected_mob.reagents.get_reagent_amount("quickclot"))
-			return FALSE
+
+		var/mob/living/carbon/human/affected_human = affected_mob
+		if(istype(affected_human))
+			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
+				return FALSE
 
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 

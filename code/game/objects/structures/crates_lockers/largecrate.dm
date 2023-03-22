@@ -391,7 +391,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/firstaid/full(src)
-	new /obj/item/storage/box/quickclot(src)
 
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"

@@ -546,16 +546,6 @@
 /obj/item/storage/pill_bottle/russianRed/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-
-/obj/item/storage/pill_bottle/quickclot
-	name = "\improper Quickclot pill bottle"
-	icon_state = "pill_canister8"
-	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
-	maptext_label = "Qc"
-
-/obj/item/storage/pill_bottle/quickclot/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
-
 //Ultrazine
 /obj/item/storage/pill_bottle/ultrazine
 	name = "pill bottle"

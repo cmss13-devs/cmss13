@@ -18,6 +18,7 @@
 /obj/item/storage/bag
 	storage_flags = STORAGE_FLAGS_BAG
 	flags_equip_slot = SLOT_WAIST
+	flags_item = NOBLUDGEON
 
 // -----------------------------
 //   Trash bag

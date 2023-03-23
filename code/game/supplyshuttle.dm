@@ -788,7 +788,7 @@ var/datum/controller/supply/supply_controller = new()
 			continue
 		var/list/packs = list()
 		var/cost = 0
-		for(var/datum/supply_packs/SP in SO.pack)
+		for(var/datum/supply_packs/SP AS in SO.pack)
 			packs += SP.type
 			cost += SP.cost
 		.["approvedrequests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
@@ -798,7 +798,7 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_order/SO = LAZYACCESSASSOC(SSpoints.shoppinglist, faction, key)
 		.["awaiting_delivery_orders"]++
 		var/list/packs = list()
-		for(var/datum/supply_packs/SP in SO.pack)
+		for(var/datum/supply_packs/SP AS in SO.pack)
 			packs += SP.type
 		.["awaiting_delivery"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "packs" = packs, "authed_by" = SO.authorised_by))
 	.["export_history"] = list()

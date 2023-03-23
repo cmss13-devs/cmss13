@@ -58,7 +58,7 @@
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
 		flags_item |= NODROP
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
-		user.AddComponent(/datum/component/footstep, 6, 25, 4, 1, "cane_step")
+		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
 		gripped = TRUE
 	else
 		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
@@ -134,7 +134,7 @@
 					return
 				stored_item = object
 				mobber.drop_inv_item_to_loc(object, src)
-				to_chat(mobber, SPAN_NOTICE("notice'>You slide the [object] into [src]."))
+				to_chat(mobber, SPAN_NOTICE("You slide the [object] into [src]."))
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break

@@ -74,6 +74,7 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+#include "create_and_destroy.dm"
 #include "focus_only_tests.dm"
 #include "resist.dm"
 #include "spritesheets.dm"

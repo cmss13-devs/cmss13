@@ -81,12 +81,13 @@
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0")
 	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
-	wound_overlay.color = owner.species.blood_color
+	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
 	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
-	forceMove(mob_owner)
+	if(owner)
+		forceMove(owner)
 
 
 

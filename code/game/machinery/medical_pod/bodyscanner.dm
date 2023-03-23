@@ -3,7 +3,7 @@
 
 /obj/structure/machinery/medical_pod/bodyscanner
 	name = "body scanner"
-	icon_state = "body_scanner"
+	icon_state = "body_scanner_open"
 
 
 	use_power = USE_POWER_IDLE

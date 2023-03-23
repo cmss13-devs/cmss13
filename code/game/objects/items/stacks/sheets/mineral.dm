@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	icon_state = "sheet-enruranium"
 
 	perunit = 1000
-	stack_id = "uranium"
+	stack_id = "enuranium"
 
 //Valuable resource, cargo can now actually sell it.
 /obj/item/stack/sheet/mineral/platinum

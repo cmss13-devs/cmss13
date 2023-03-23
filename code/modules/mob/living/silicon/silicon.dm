@@ -20,6 +20,7 @@
 /mob/living/silicon/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
+	ADD_TRAIT(src, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_INHERENT)
 	add_language(LANGUAGE_ENGLISH)
 
 /mob/living/silicon/Destroy()

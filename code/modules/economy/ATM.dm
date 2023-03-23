@@ -56,13 +56,14 @@ log transactions
 				authenticated_account = null
 	else if(authenticated_account)
 		if(istype(I,/obj/item/spacecash))
+			var/obj/item/spacecash = I
 			//consume the money
-			if(I:counterfeit)
-				authenticated_account.money += round(I:worth * 0.25)
+			if(spacecash.counterfeit)
+				authenticated_account.money += round(spacecash.worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else
-				authenticated_account.money += I:worth
+				authenticated_account.money += spacecash.worth
 			if(prob(50))
 				playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
 			else

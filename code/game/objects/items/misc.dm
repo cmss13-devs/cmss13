@@ -98,7 +98,7 @@
 	item_state = "fancy_cane"
 	force = 30
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife // https://www.youtube.com/watch?v=TSGIRFzmyyk
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
 	force = 15 // hollow

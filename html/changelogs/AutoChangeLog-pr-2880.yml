@@ -1,7 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - code_imp: "Renamed some text strings to apply existing icon states."
-  - imageadd: "Added dozens of new icon states to missing objects."
-  - bugfix: "A huge list of items can now be used."
-  - imageadd: "Adds a few missing goodies."

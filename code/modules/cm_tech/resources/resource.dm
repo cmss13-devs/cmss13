@@ -55,6 +55,10 @@
 		controlled_area = A
 		A.r_node = src
 
+/obj/structure/resource_node/Destroy()
+	controlled_area = null
+	return ..()
+
 /obj/structure/resource_node/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()
 	if(PF)

@@ -697,7 +697,7 @@ var/datum/controller/supply/supply_controller = new()
 
 	name = "[name] - [ordername]"
 
-/datum/supply_ui
+/datum/controller/subsystem/supply_ui
 	var/atom/source_object
 	var/tgui_name = "Cargo"
 	///Id of the shuttle controlled
@@ -710,33 +710,33 @@ var/datum/controller/supply/supply_controller = new()
 	var/home_id = ""
 	var/stat = 0
 
-/datum/supply_ui/proc/inoperable(additional_flags = 0)
+/datum/controller/subsystem/supply_ui/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
-/datum/supply_ui/New(atom/source_object)
+/datum/controller/subsystem/supply_ui/New(atom/source_object)
 	. = ..()
 	src.source_object = source_object
 	RegisterSignal(source_object, COMSIG_PARENT_QDELETING, .proc/clean_ui)
 
 ///Signal handler to delete the ui when the source object is deleting
-/datum/supply_ui/proc/clean_ui()
+/datum/controller/subsystem/supply_ui/proc/clean_ui()
 	SIGNAL_HANDLER
 	qdel(src)
 
-/datum/supply_ui/Destroy(force, ...)
+/datum/controller/subsystem/supply_ui/Destroy(force, ...)
 	source_object = null
 	return ..()
 
-/datum/supply_ui/ui_host()
+/datum/controller/subsystem/supply_ui/ui_host()
 	return source_object
 
-/datum/supply_ui/ui_status(mob/user)
+/datum/controller/subsystem/supply_ui/ui_status(mob/user)
 	. = ..()
 	if(inoperable(MAINT))
 		return UI_CLOSE
 	return TRUE
 
-/datum/supply_ui/ui_interact(mob/user, datum/tgui/ui)
+/datum/controller/subsystem/supply_ui/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 
 	if(!ui)
@@ -747,14 +747,14 @@ var/datum/controller/supply/supply_controller = new()
 		ui = new(user, src, tgui_name, source_object.name)
 		ui.open()
 
-/datum/supply_ui/ui_static_data(mob/user)
+/datum/controller/subsystem/supply_ui/ui_static_data(mob/user)
 	. = list()
 	.["categories"] = GLOB.all_supply_groups
 	.["supplypacks"] = SSpoints.supply_packs_ui
 	.["supplypackscontents"] = SSpoints.supply_packs_contents
-	.["elevator_size"] = supply?.return_number_of_turfs()
+	.["elevator_size"] = supply.return_number_of_turfs()
 
-/datum/supply_ui/ui_data(mob/living/user)
+/datum/controller/subsystem/supply_ui/ui_data(mob/living/user)
 	. = list()
 	.["currentpoints"] = round(SSpoints.supply_points[user.faction])
 	.["requests"] = list()
@@ -788,7 +788,7 @@ var/datum/controller/supply/supply_controller = new()
 			continue
 		var/list/packs = list()
 		var/cost = 0
-		for(var/datum/supply_packs/SP AS in SO.pack)
+		for(var/datum/supply_packs/SP as anything in SO.pack)
 			packs += SP.type
 			cost += SP.cost
 		.["approvedrequests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
@@ -798,18 +798,18 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_order/SO = LAZYACCESSASSOC(SSpoints.shoppinglist, faction, key)
 		.["awaiting_delivery_orders"]++
 		var/list/packs = list()
-		for(var/datum/supply_packs/SP AS in SO.pack)
+		for(var/datum/supply_packs/SP as anything in SO.pack)
 			packs += SP.type
 		.["awaiting_delivery"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "packs" = packs, "authed_by" = SO.authorised_by))
 	.["export_history"] = list()
 	var/id = 0
-	for(var/datum/export_report/report AS in SSpoints.export_history)
+	for(var/datum/export_report/report as anything in SSpoints.export_history)
 		if(report.faction != user.faction)
 			continue
 		.["export_history"] += list(list("id" = id, "name" = report.export_name, "points" = report.points))
 		id++
 	.["shopping_history"] = list()
-	for(var/datum/supply_order/SO AS in SSpoints.shopping_history)
+	for(var/datum/supply_order/SO as anything in SSpoints.shopping_history)
 		if(SO.faction != user.faction)
 			continue
 		var/list/packs = list()
@@ -852,10 +852,10 @@ var/datum/controller/supply/supply_controller = new()
 	else
 		.["elevator"] = "MISSING!"
 
-/datum/supply_ui/proc/get_shopping_cart(mob/user)
+/datum/controller/subsystem/supply_ui/proc/get_shopping_cart(mob/user)
 	return SSpoints.shopping_cart
 
-/datum/supply_ui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/controller/subsystem/supply_ui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

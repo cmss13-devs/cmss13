@@ -197,3 +197,14 @@
 
 		// Delete everything else.
 		else qdel(movable_atom)
+
+/datum/supply_ui/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+
+	if(!ui)
+		if(shuttle_id)
+			supply = SSshuttle.getShuttle(shuttle_id)
+			supply.home_id = home_id
+			supply.faction = faction
+		ui = new(user, src, tgui_name, source_object.name)
+		ui.open()

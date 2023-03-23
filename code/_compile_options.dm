@@ -12,9 +12,3 @@
 #endif
 
 //#define UNIT_TESTS //If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
-
-#if DM_BUILD < 1540
-#define AS as()
-#else
-#define AS as anything
-#endif

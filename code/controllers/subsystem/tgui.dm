@@ -358,3 +358,15 @@ SUBSYSTEM_DEF(tgui)
 	// Clear the old list.
 	source.tgui_open_uis.Cut()
 	return TRUE
+
+/**
+ * public
+ *
+ * Used to open and update UIs.
+ * If this proc is not implemented properly, the UI will not update correctly.
+ *
+ * required user mob The mob who opened/is using the UI.
+ * optional ui datum/tgui The UI to be updated, if it exists.
+ */
+/datum/controller/subsystem/proc/ui_interact(mob/user, datum/tgui/ui)
+	return FALSE // Not implemented.

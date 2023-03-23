@@ -22,14 +22,14 @@
 	use_power(500)
 	var/O_limit
 	var/atom/target = get_edge_target_turf(src, dir)
-	for(var/atom/movable/O in loc)
-		if(!O.anchored)
+	for(var/atom/movable/current_obj in loc)
+		if(!current_obj.anchored)
 			if(O_limit >= 20)
-				for(var/mob/M in hearers(src, null))
-					to_chat(M, SPAN_NOTICE(" The mass driver lets out a screech, it mustn't be able to handle any more items."))
+				for(var/mob/current_mob in hearers(src, null))
+					to_chat(current_mob, SPAN_NOTICE(" The mass driver lets out a screech, it mustn't be able to handle any more items."))
 				break
 			use_power(500)
-			INVOKE_ASYNC(O, TYPE_PROC_REF(/atom/movable, throw_atom), target, drive_range * power, 100/power)
+			INVOKE_ASYNC(current_obj, TYPE_PROC_REF(/atom/movable, throw_atom), target, drive_range * power, 100/power)
 	flick("mass_driver1", src)
 	return
 

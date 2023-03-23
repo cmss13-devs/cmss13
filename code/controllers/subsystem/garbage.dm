@@ -62,8 +62,8 @@ SUBSYSTEM_DEF(garbage)
 
 /datum/controller/subsystem/garbage/stat_entry(msg)
 	var/list/counts = list()
-	for (var/list/L in queues)
-		counts += length(L)
+	for (var/list/trash_queue in queues)
+		counts += length(trash_queue)
 	msg += "Q:[counts.Join(",")]|D:[delslasttick]|G:[gcedlasttick]|"
 	msg += "GR:"
 	if (!(delslasttick+gcedlasttick))
@@ -87,26 +87,26 @@ SUBSYSTEM_DEF(garbage)
 	//sort by how long it's wasted hard deleting
 	sortTim(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in items)
-		var/datum/qdel_item/I = items[path]
+		var/datum/qdel_item/item = items[path]
 		dellog += "Path: [path]"
-		if (I.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
+		if (item.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
 			dellog += "\tSUSPENDED FOR LAG"
-		if (I.failures)
-			dellog += "\tFailures: [I.failures]"
-		dellog += "\tqdel() Count: [I.qdels]"
-		dellog += "\tDestroy() Cost: [I.destroy_time]ms"
-		if (I.hard_deletes)
-			dellog += "\tTotal Hard Deletes: [I.hard_deletes]"
-			dellog += "\tTime Spent Hard Deleting: [I.hard_delete_time]ms"
-			dellog += "\tHighest Time Spent Hard Deleting: [I.hard_delete_max]ms"
-			if (I.hard_deletes_over_threshold)
-				dellog += "\tHard Deletes Over Threshold: [I.hard_deletes_over_threshold]"
-		if (I.slept_destroy)
-			dellog += "\tSleeps: [I.slept_destroy]"
-		if (I.no_respect_force)
-			dellog += "\tIgnored force: [I.no_respect_force] times"
-		if (I.no_hint)
-			dellog += "\tNo hint: [I.no_hint] times"
+		if (item.failures)
+			dellog += "\tFailures: [item.failures]"
+		dellog += "\tqdel() Count: [item.qdels]"
+		dellog += "\tDestroy() Cost: [item.destroy_time]ms"
+		if (item.hard_deletes)
+			dellog += "\tTotal Hard Deletes: [item.hard_deletes]"
+			dellog += "\tTime Spent Hard Deleting: [item.hard_delete_time]ms"
+			dellog += "\tHighest Time Spent Hard Deleting: [item.hard_delete_max]ms"
+			if (item.hard_deletes_over_threshold)
+				dellog += "\tHard Deletes Over Threshold: [item.hard_deletes_over_threshold]"
+		if (item.slept_destroy)
+			dellog += "\tSleeps: [item.slept_destroy]"
+		if (item.no_respect_force)
+			dellog += "\tIgnored force: [item.no_respect_force] times"
+		if (item.no_hint)
+			dellog += "\tNo hint: [item.no_hint] times"
 	log_qdel(dellog.Join("\n"))
 
 /datum/controller/subsystem/garbage/fire()
@@ -158,18 +158,18 @@ SUBSYSTEM_DEF(garbage)
 	//We do this rather then for(var/refID in queue) because that sort of for loop copies the whole list.
 	//Normally this isn't expensive, but the gc queue can grow to 40k items, and that gets costly/causes overrun.
 	for (var/i in 1 to length(queue))
-		var/list/L = queue[i]
-		if (length(L) < 2)
+		var/list/trash_queue = queue[i]
+		if (length(trash_queue) < 2)
 			count++
 			if (MC_TICK_CHECK)
 				return
 			continue
 
-		var/GCd_at_time = L[1]
+		var/GCd_at_time = trash_queue[1]
 		if(GCd_at_time > cut_off_time)
 			break // Everything else is newer, skip them
 		count++
-		var/refID = L[2]
+		var/refID = trash_queue[2]
 		var/datum/D
 		D = locate(refID)
 
@@ -205,7 +205,7 @@ SUBSYSTEM_DEF(garbage)
 				reference_find_on_fail -= refID
 				#endif
 				var/type = D.type
-				var/datum/qdel_item/I = items[type]
+				var/datum/qdel_item/item = items[type]
 
 				//log_world("## TESTING: GC: -- [text_ref(D)] | [type] was unable to be GC'd --")
 				#ifdef TESTING
@@ -215,9 +215,9 @@ SUBSYSTEM_DEF(garbage)
 						continue
 					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
 				#endif
-				I.failures++
+				item.failures++
 
-				if (I.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
+				if (item.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
 					#ifdef REFERENCE_TRACKING
 					if(ref_searching)
 						return //ref searching intentionally cancels all further fires while running so things that hold references don't end up getting deleted, so we want to return here instead of continue
@@ -268,11 +268,11 @@ SUBSYSTEM_DEF(garbage)
 		del(D)
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
 
-	var/datum/qdel_item/I = items[type]
-	I.hard_deletes++
-	I.hard_delete_time += tick_usage
-	if (tick_usage > I.hard_delete_max)
-		I.hard_delete_max = tick_usage
+	var/datum/qdel_item/item = items[type]
+	item.hard_deletes++
+	item.hard_delete_time += tick_usage
+	if (tick_usage > item.hard_delete_max)
+		item.hard_delete_max = tick_usage
 	if (tick_usage > highest_del_ms)
 		highest_del_ms = tick_usage
 		highest_del_type_string = "[type]"
@@ -283,14 +283,14 @@ SUBSYSTEM_DEF(garbage)
 		postpone(time)
 	var/threshold = CONFIG_GET(number/hard_deletes_overrun_threshold)
 	if (threshold && (time > threshold SECONDS))
-		if (!(I.qdel_flags & QDEL_ITEM_ADMINS_WARNED))
+		if (!(item.qdel_flags & QDEL_ITEM_ADMINS_WARNED))
 			log_game("Error: [type]([refID]) took longer than [threshold] seconds to delete (took [round(time/10, 0.1)] seconds to delete)")
 			message_admins("Error: [type]([refID]) took longer than [threshold] seconds to delete (took [round(time/10, 0.1)] seconds to delete).")
-			I.qdel_flags |= QDEL_ITEM_ADMINS_WARNED
-		I.hard_deletes_over_threshold++
+			item.qdel_flags |= QDEL_ITEM_ADMINS_WARNED
+		item.hard_deletes_over_threshold++
 		var/overrun_limit = CONFIG_GET(number/hard_deletes_overrun_limit)
-		if (overrun_limit && I.hard_deletes_over_threshold >= overrun_limit)
-			I.qdel_flags |= QDEL_ITEM_SUSPENDED_FOR_LAG
+		if (overrun_limit && item.hard_deletes_over_threshold >= overrun_limit)
+			item.qdel_flags |= QDEL_ITEM_SUSPENDED_FOR_LAG
 
 /datum/controller/subsystem/garbage/Recover()
 	InitQueues() //We first need to create the queues before recovering data
@@ -325,10 +325,10 @@ SUBSYSTEM_DEF(garbage)
 		del(D)
 		return
 
-	var/datum/qdel_item/I = SSgarbage.items[D.type]
-	if (!I)
-		I = SSgarbage.items[D.type] = new /datum/qdel_item(D.type)
-	I.qdels++
+	var/datum/qdel_item/item = SSgarbage.items[D.type]
+	if (!item)
+		item = SSgarbage.items[D.type] = new /datum/qdel_item(D.type)
+	item.qdels++
 
 	if(isnull(D.gc_destroyed))
 		if (SEND_SIGNAL(D, COMSIG_PARENT_PREQDELETED, force)) // Give the components a chance to prevent their parent from being deleted
@@ -339,9 +339,9 @@ SUBSYSTEM_DEF(garbage)
 		SEND_SIGNAL(D, COMSIG_PARENT_QDELETING, force) // Let the (remaining) components know about the result of Destroy
 		var/hint = D.Destroy(arglist(args.Copy(2))) // Let our friend know they're about to get fucked up.
 		if(world.time != start_time)
-			I.slept_destroy++
+			item.slept_destroy++
 		else
-			I.destroy_time += TICK_USAGE_TO_MS(start_tick)
+			item.destroy_time += TICK_USAGE_TO_MS(start_tick)
 		if(!D)
 			return
 		switch(hint)
@@ -357,14 +357,14 @@ SUBSYSTEM_DEF(garbage)
 				// Returning LETMELIVE after being told to force destroy
 				// indicates the objects Destroy() does not respect force
 				#ifdef TESTING
-				if(!I.no_respect_force)
+				if(!item.no_respect_force)
 					testing("WARNING: [D.type] has been force deleted, but is \
 						returning an immortal QDEL_HINT, indicating it does \
 						not respect the force flag for qdel(). It has been \
 						placed in the queue, further instances of this type \
 						will also be queued.")
 				#endif
-				I.no_respect_force++
+				item.no_respect_force++
 
 				SSgarbage.Queue(D)
 			if (QDEL_HINT_HARDDEL) //qdel should assume this object won't gc, and queue a hard delete
@@ -381,10 +381,10 @@ SUBSYSTEM_DEF(garbage)
 			#endif
 			else
 				#ifdef TESTING
-				if(!I.no_hint)
+				if(!item.no_hint)
 					testing("WARNING: [D.type] is not returning a qdel hint. It is being placed in the queue. Further instances of this type will also be queued.")
 				#endif
-				I.no_hint++
+				item.no_hint++
 				SSgarbage.Queue(D)
 	else if(D.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 		CRASH("[D.type] destroy proc was called multiple times, likely due to a qdel loop in the Destroy logic")

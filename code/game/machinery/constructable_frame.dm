@@ -56,15 +56,15 @@
 				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
-				var/obj/item/stack/cable_coil/C = P
-				if(C.get_amount() < 5)
+				var/obj/item/stack/cable_coil/coil = P
+				if(coil.get_amount() < 5)
 					to_chat(user, SPAN_WARNING("You need five lengths of cable to add them to the frame."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
 				SPAN_NOTICE("You start adding cables to [src]."))
 				if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0)
-					if(C && istype(C) && C.use(5))
+					if(coil && istype(coil) && coil.use(5))
 						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
@@ -92,12 +92,12 @@
 					state = CONSTRUCTION_STATE_FINISHED
 					components = list()
 					req_components = circuit.req_components.Copy()
-					for(var/A in circuit.req_components)
-						req_components[A] = circuit.req_components[A]
+					for(var/circuit_components in circuit.req_components)
+						req_components[circuit_components] = circuit.req_components[circuit_components]
 					req_component_names = circuit.req_components.Copy()
-					for(var/A in req_components)
-						var/obj/ct = A
-						req_component_names[A] = initial(ct.name)
+					for(var/circuit_components in req_components)
+						var/obj/ct = circuit_components
+						req_component_names[circuit_components] = initial(ct.name)
 					if(circuit.frame_desc)
 						requirements_left = circuit.frame_desc
 					to_chat(user, requirements_left)
@@ -110,8 +110,8 @@
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				state = CONSTRUCTION_STATE_BEGIN
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
-				A.amount = 5
+				var/obj/item/stack/cable_coil/new_coil = new /obj/item/stack/cable_coil( src.loc )
+				new_coil.amount = 5
 
 		if(CONSTRUCTION_STATE_FINISHED)
 			if(istype(P, /obj/item/tool/crowbar))
@@ -128,8 +128,8 @@
 					to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				else
 					to_chat(user, SPAN_NOTICE("You remove the circuit board and other components."))
-					for(var/obj/item/W in components)
-						W.forceMove(loc)
+					for(var/obj/item/component in components)
+						component.forceMove(loc)
 				update_desc()
 				req_components = null
 				components = null
@@ -147,9 +147,9 @@
 					var/obj/structure/machinery/new_machine = new src.circuit.build_path(src.loc)
 					QDEL_NULL_LIST(new_machine.component_parts)
 					src.circuit.construct(new_machine)
-					for(var/obj/O in src)
-						O.forceMove(new_machine)
-						LAZYADD(new_machine.component_parts, O)
+					for(var/obj/current_obj in src)
+						current_obj.forceMove(new_machine)
+						LAZYADD(new_machine.component_parts, current_obj)
 					circuit.forceMove(new_machine)
 					new_machine.RefreshParts()
 					qdel(src)

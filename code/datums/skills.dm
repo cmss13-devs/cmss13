@@ -190,15 +190,15 @@
 
 	// Setup every single skill
 	for(var/skill_type in subtypesof(/datum/skill))
-		var/datum/skill/S = new skill_type()
+		var/datum/skill/current_skill = new skill_type()
 
 		// Fancy hack to convert a list of desired skill levels in each named skill into a skill level in the actual skill datum
 		// Lets the skills list be used multipurposely for both storing skill datums and choosing skill levels for different skillsets
-		var/predetermined_skill_level = additional_skills[S.skill_name] ? additional_skills[S.skill_name] : skills[S.skill_name]
-		skills[S.skill_name] = S
+		var/predetermined_skill_level = additional_skills[current_skill.skill_name] ? additional_skills[current_skill.skill_name] : skills[current_skill.skill_name]
+		skills[current_skill.skill_name] = current_skill
 
 		if(!isnull(predetermined_skill_level))
-			S.set_skill(predetermined_skill_level, owner)
+			current_skill.set_skill(predetermined_skill_level, owner)
 
 /datum/skills/Destroy()
 	owner = null
@@ -218,38 +218,38 @@
 
 // Returns the skill level for the given skill
 /datum/skills/proc/get_skill_level(skill)
-	var/datum/skill/S = get_skill(skill)
-	if(!S)
+	var/datum/skill/current_skill = get_skill(skill)
+	if(!current_skill)
 		return -1
-	if(QDELETED(S))
+	if(QDELETED(current_skill))
 		return -1
-	return S.get_skill_level()
+	return current_skill.get_skill_level()
 
 // Sets the skill LEVEL for a given skill
 /datum/skills/proc/set_skill(skill, new_level)
-	var/datum/skill/S = skills[skill]
-	if(!S)
+	var/datum/skill/current_skill = skills[skill]
+	if(!current_skill)
 		return
-	return S.set_skill(new_level, owner)
+	return current_skill.set_skill(new_level, owner)
 
 /datum/skills/proc/increment_skill(skill, increment, cap)
-	var/datum/skill/S = skills[skill]
-	if(!S || skillcheck(owner, skill, cap))
+	var/datum/skill/current_skill = skills[skill]
+	if(!current_skill || skillcheck(owner, skill, cap))
 		return
-	return S.set_skill(min(cap,S.skill_level+increment), owner)
+	return current_skill.set_skill(min(cap,current_skill.skill_level+increment), owner)
 
 /datum/skills/proc/decrement_skill(skill, increment)
-	var/datum/skill/S = skills[skill]
-	if(!S)
+	var/datum/skill/current_skill = skills[skill]
+	if(!current_skill)
 		return
-	return S.set_skill(max(0,S.skill_level-increment), owner)
+	return current_skill.set_skill(max(0,current_skill.skill_level-increment), owner)
 
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
 /datum/skills/proc/is_skilled(skill, req_level, is_explicit = FALSE)
-	var/datum/skill/S = get_skill(skill)
-	if(QDELETED(S))
+	var/datum/skill/current_skill = get_skill(skill)
+	if(QDELETED(current_skill))
 		return FALSE
-	return S.is_skilled(req_level, is_explicit)
+	return current_skill.is_skilled(req_level, is_explicit)
 
 // Adjusts the full skillset to a new type of skillset. Pass the datum type path for the desired skillset
 /datum/skills/proc/set_skillset(skillset_type)

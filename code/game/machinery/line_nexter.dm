@@ -25,16 +25,16 @@
 
 /obj/structure/machinery/line_nexter/BlockedExitDirs(atom/movable/O, target_dir)
 	if(iscarbon(O))
-		var/mob/living/carbon/C = O
-		if(C.pulledby)
-			if(!C.is_mob_incapacitated())
+		var/mob/living/carbon/mob = O
+		if(mob.pulledby)
+			if(!mob.is_mob_incapacitated())
 				return BLOCKED_MOVEMENT
 	return NO_BLOCKED_MOVEMENT
 
 /obj/structure/machinery/line_nexter/proc/next()
 	//if((last_use + 20) > world.time) // 20 seconds
-	for(var/mob/living/carbon/human/H in loc)
-		step(H,dir)
+	for(var/mob/living/carbon/human/human in loc)
+		step(human,dir)
 	last_use = world.time
 
 /obj/structure/machinery/line_nexter_control
@@ -47,8 +47,8 @@
 	set name = "Push Button"
 	set category = "Object"
 	if(isliving(usr))
-		var/mob/living/L = usr
-		attack_hand(L)
+		var/mob/living/mob = usr
+		attack_hand(mob)
 
 /obj/structure/machinery/line_nexter_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
@@ -58,8 +58,8 @@
 	icon_state = "doorctrl1"
 	add_fingerprint(user)
 
-	for(var/obj/structure/machinery/line_nexter/L in machines)
-		if(id == L.id)
-			L.next()
+	for(var/obj/structure/machinery/line_nexter/turnstile in machines)
+		if(id == turnstile.id)
+			turnstile.next()
 
 	addtimer(VARSET_CALLBACK(src, icon_state, "doorctrl0"), 1.5 SECONDS)

@@ -32,9 +32,9 @@
 /obj/structure/machinery/magnetic_module/Initialize(mapload, ...)
 	. = ..()
 
-	var/turf/T = loc
-	hide(T.intact_tile)
-	center = T
+	var/turf/current_turf = loc
+	hide(current_turf.intact_tile)
+	center = current_turf
 
 	SSradio.add_object(src, freq, RADIO_MAGNETS)
 
@@ -179,13 +179,13 @@
 		pulling = 1
 		center = locate(x+center_x, y+center_y, z)
 		if(center)
-			for(var/obj/M in orange(magnetic_field, center))
-				if(!M.anchored && (M.flags_atom & CONDUCT))
-					step_towards(M, center)
+			for(var/obj/current_mob in orange(magnetic_field, center))
+				if(!current_mob.anchored && (current_mob.flags_atom & CONDUCT))
+					step_towards(current_mob, center)
 
-			for(var/mob/living/silicon/S in orange(magnetic_field, center))
-				if(isAI(S)) continue
-				step_towards(S, center)
+			for(var/mob/living/silicon/current_silicon in orange(magnetic_field, center))
+				if(isAI(current_silicon)) continue
+				step_towards(current_silicon, center)
 
 		use_power(electricity_level * 5)
 		sleep(13 - electricity_level)
@@ -219,9 +219,9 @@
 /obj/structure/machinery/magnetic_controller/Initialize(mapload, ...)
 	. = ..()
 	if(autolink)
-		for(var/obj/structure/machinery/magnetic_module/M in machines)
-			if(M.freq == frequency && M.code == code)
-				magnets.Add(M)
+		for(var/obj/structure/machinery/magnetic_module/magnet in machines)
+			if(magnet.freq == frequency && magnet.code == code)
+				magnets.Add(magnet)
 
 	SSradio.add_object(src, frequency, RADIO_MAGNETS)
 
@@ -236,9 +236,9 @@
 
 /obj/structure/machinery/magnetic_controller/process()
 	if(magnets.len == 0 && autolink)
-		for(var/obj/structure/machinery/magnetic_module/M in machines)
-			if(M.freq == frequency && M.code == code)
-				magnets.Add(M)
+		for(var/obj/structure/machinery/magnetic_module/magnet in machines)
+			if(magnet.freq == frequency && magnet.code == code)
+				magnets.Add(magnet)
 
 /obj/structure/machinery/magnetic_controller/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
@@ -259,9 +259,9 @@
 
 		dat += "Magnets confirmed: <br>"
 		var/i = 0
-		for(var/obj/structure/machinery/magnetic_module/M in magnets)
+		for(var/obj/structure/machinery/magnetic_module/magnet in magnets)
 			i++
-			dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< \[[i]\] (<a href='?src=\ref[src];radio-op=togglepower'>[M.on ? "On":"Off"]</a>)|Electricity level: <a href='?src=\ref[src];radio-op=minuselec'>-</a> [M.electricity_level] <a href='?src=\ref[src];radio-op=pluselec'>+</a>; Magnetic field: <a href='?src=\ref[src];radio-op=minusmag'>-</a> [M.magnetic_field] <a href='?src=\ref[src];radio-op=plusmag'>+</a><br>"
+			dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< \[[i]\] (<a href='?src=\ref[src];radio-op=togglepower'>[magnet.on ? "On":"Off"]</a>)|Electricity level: <a href='?src=\ref[src];radio-op=minuselec'>-</a> [magnet.electricity_level] <a href='?src=\ref[src];radio-op=pluselec'>+</a>; Magnetic field: <a href='?src=\ref[src];radio-op=minusmag'>-</a> [magnet.magnetic_field] <a href='?src=\ref[src];radio-op=plusmag'>+</a><br>"
 
 	dat += "<br>Speed: <a href='?src=\ref[src];operation=minusspeed'>-</a> [speed] <a href='?src=\ref[src];operation=plusspeed'>+</a><br>"
 	dat += "Path: {<a href='?src=\ref[src];operation=setpath'>[path]</a>}<br>"

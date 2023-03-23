@@ -129,17 +129,17 @@ Class Procs:
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
 	machines += src
-	var/area/A = get_area(src)
-	if(A)
-		A.add_machine(src) //takes care of adding machine's power usage
+	var/area/current_area = get_area(src)
+	if(current_area)
+		current_area.add_machine(src) //takes care of adding machine's power usage
 
 /obj/structure/machinery/Destroy()
 	machines -= src
 	processing_machines -= src
 	power_machines -= src
-	var/area/A = get_area(src)
-	if(A)
-		A.remove_machine(src) //takes care of removing machine from power usage
+	var/area/current_area = get_area(src)
+	if(current_area)
+		current_area.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
 /obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -265,11 +265,11 @@ Class Procs:
 		return 1
 */
 	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.getBrainLoss() >= 60)
-			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
+		var/mob/living/carbon/human/human = user
+		if(human.getBrainLoss() >= 60)
+			visible_message(SPAN_DANGER("[human] stares cluelessly at [src] and drools."))
 			return TRUE
-		else if(prob(H.getBrainLoss()))
+		else if(prob(human.getBrainLoss()))
 			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
 			return TRUE
 
@@ -281,8 +281,8 @@ Class Procs:
 	return
 
 /obj/structure/machinery/proc/state(msg)
-	for(var/mob/O in hearers(src, null))
-		O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
+	for(var/mob/current_mob in hearers(src, null))
+		current_mob.show_message("[icon2html(src, current_mob)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
 
 /obj/structure/machinery/proc/ping(text=null)
 	if (!text)
@@ -296,9 +296,9 @@ Class Procs:
 		return 0
 	if(!prob(prb))
 		return 0
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(5, 1, src)
+	spark.start()
 	if (electrocute_mob(user, get_area(src), src, 0.7))
 		return 1
 	else
@@ -306,13 +306,13 @@ Class Procs:
 
 /obj/structure/machinery/proc/dismantle()
 	playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-	var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(loc)
-	M.state = CONSTRUCTION_STATE_PROGRESS
-	M.update_icon()
-	for(var/obj/I in component_parts)
-		if(I.reliability != 100 && crit_fail)
-			I.crit_fail = 1
-		I.forceMove(loc)
+	var/obj/structure/machinery/constructable_frame/frame = new /obj/structure/machinery/constructable_frame(loc)
+	frame.state = CONSTRUCTION_STATE_PROGRESS
+	frame.update_icon()
+	for(var/obj/current_obj in component_parts)
+		if(current_obj.reliability != 100 && crit_fail)
+			current_obj.crit_fail = 1
+		current_obj.forceMove(loc)
 	qdel(src)
 	return 1
 

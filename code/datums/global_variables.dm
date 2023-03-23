@@ -136,10 +136,10 @@
 
 	else if (isicon(value))
 		#ifdef VARSICON
-		var/icon/I = new/icon(value)
+		var/icon/image = new/icon(value)
 		var/rnd = rand(1,10000)
-		var/rname = "tmp\ref[I][rnd].png"
-		usr << browse_rsc(I, rname)
+		var/rname = "tmp\ref[image][rnd].png"
+		usr << browse_rsc(image, rname)
 		html += "[name] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
 		html += "[name] = /icon (<span class='value'>[value]</span>)"
@@ -149,27 +149,27 @@
 		html += "[name] = <span class='value'>'[value]'</span>"
 
 	else if (istype(value, /datum))
-		var/datum/D = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
+		var/datum/current_datum = value
+		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [current_datum.type]"
 
 	else if (istype(value, /client))
-		var/client/C = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
+		var/client/current_client = value
+		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [current_client] [current_client.type]"
 
 	else if (istype(value, /list))
-		var/list/L = value
-		html += "[name] = /list ([L.len])"
+		var/list/current_list = value
+		html += "[name] = /list ([current_list.len])"
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
+		if (current_list.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || current_list.len > 500))
 			// not sure if this is completely right...
 			html += "<ul>"
 			var/index = 1
-			for (var/entry in L)
+			for (var/entry in current_list)
 				if(istext(entry))
-					html += debug_variable(entry, L[entry], level + 1)
-				//html += debug_variable("[index]", L[index], level + 1)
+					html += debug_variable(entry, current_list[entry], level + 1)
+				//html += debug_variable("[index]", current_list[index], level + 1)
 				else
-					html += debug_variable(index, L[index], level + 1)
+					html += debug_variable(index, current_list[index], level + 1)
 				index++
 			html += "</ul>"
 
@@ -411,20 +411,20 @@
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, matrix_name)
+			if(!current_matrix)
 				return
 
-			global.vars[variable] = M
+			global.vars[variable] = current_matrix
 
-			world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
-			message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
+			world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([current_matrix.a], [current_matrix.b], [current_matrix.c]), ([current_matrix.d], [current_matrix.e], [current_matrix.f])"
+			message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([current_matrix.a], [current_matrix.b], [current_matrix.c]), ([current_matrix.d], [current_matrix.e], [current_matrix.f])", 1)
 
 			return
 
 		if("marked datum")
-			var/datum/D = admin_holder.marked_datum
-			global.vars[variable] = D
+			var/datum/current_datum = admin_holder.marked_datum
+			global.vars[variable] = current_datum
 
 	world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => [html_encode("[global.vars[variable]]")]"
 	message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => [global.vars[variable]]", 1)

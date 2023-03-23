@@ -32,12 +32,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		)
 		departments += marines_by_squad
 		var/list/manifest_out = list()
-		for(var/datum/data/record/t in GLOB.data_core.general)
-			if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+		for(var/datum/data/record/data_record in GLOB.data_core.general)
+			if(data_record.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 				continue
-			var/name = t.fields["name"]
-			var/rank = t.fields["rank"]
-			var/squad = t.fields["squad"]
+			var/name = data_record.fields["name"]
+			var/rank = data_record.fields["rank"]
+			var/squad = data_record.fields["squad"]
 			if(isnull(name) || isnull(rank))
 				continue
 			var/has_department = FALSE
@@ -85,26 +85,26 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
 	var/list/squad_sublists = ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
-	for(var/datum/data/record/t in GLOB.data_core.general)
-		if(t.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
+	for(var/datum/data/record/data_record in GLOB.data_core.general)
+		if(data_record.fields["mob_faction"] != FACTION_MARINE) //we process only USCM humans
 			continue
 
-		var/name = t.fields["name"]
-		var/rank = t.fields["rank"]
-		var/real_rank = t.fields["real_rank"]
-		var/squad_name = t.fields["squad"]
+		var/name = data_record.fields["name"]
+		var/rank = data_record.fields["rank"]
+		var/real_rank = data_record.fields["real_rank"]
+		var/squad_name = data_record.fields["squad"]
 		if(isnull(name) || isnull(rank) || isnull(real_rank))
 			continue
 
 		if(OOC)
 			var/active = 0
-			for(var/mob/M in GLOB.player_list)
-				if(M.real_name == name && M.client && M.client.inactivity <= 10 * 60 * 10)
+			for(var/mob/current_mob in GLOB.player_list)
+				if(current_mob.real_name == name && current_mob.client && current_mob.client.inactivity <= 10 * 60 * 10)
 					active = 1
 					break
 			isactive[name] = active ? "Active" : "Inactive"
 		else
-			isactive[name] = t.fields["p_stat"]
+			isactive[name] = data_record.fields["p_stat"]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 
 		if(real_rank in ROLES_CIC)
@@ -203,24 +203,24 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			sleep(40)
 
 		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
-		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-			if(is_admin_level(H.z))
+		for(var/mob/living/carbon/human/human in GLOB.human_mob_list)
+			if(is_admin_level(human.z))
 				continue
-			if(H.job in jobs_to_check)
-				manifest_inject(H)
+			if(human.job in jobs_to_check)
+				manifest_inject(human)
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
 
 	var/use_name = isnull(ref)
-	for(var/datum/data/record/t in GLOB.data_core.general)
+	for(var/datum/data/record/data_record in GLOB.data_core.general)
 		if(use_name)
-			if(t.fields["name"] == name)
-				foundrecord = t
+			if(data_record.fields["name"] == name)
+				foundrecord = data_record
 				break
 		else
-			if(t.fields["ref"] == ref)
-				foundrecord = t
+			if(data_record.fields["ref"] == ref)
+				foundrecord = data_record
 				break
 
 	if(foundrecord)
@@ -236,110 +236,110 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		return TRUE
 	return FALSE
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/human)
 	var/assignment
-	if(H.job)
-		assignment = H.job
+	if(human.job)
+		assignment = human.job
 	else
 		assignment = "Unassigned"
 
-	var/id = add_zero(num2hex(H.gid), 6) //this was the best they could come up with? A large random number? *sigh*
-	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
-	//var/icon/side = new(get_id_photo(H), dir = WEST)
+	var/id = add_zero(num2hex(human.gid), 6) //this was the best they could come up with? A large random number? *sigh*
+	//var/icon/front = new(get_id_photo(human), dir = SOUTH)
+	//var/icon/side = new(get_id_photo(human), dir = WEST)
 
 	//General Record
-	var/datum/data/record/G = new()
-	G.fields["id"] = id
-	G.fields["name"] = H.real_name
-	G.fields["real_rank"] = H.job
-	G.fields["rank"] = assignment
-	G.fields["squad"] = H.assigned_squad ? H.assigned_squad.name : null
-	G.fields["age"] = H.age
-	G.fields["p_stat"] = "Active"
-	G.fields["m_stat"] = "Stable"
-	G.fields["sex"] = H.gender
-	G.fields["species"] = H.get_species()
-	G.fields["origin"] = H.origin
-	G.fields["faction"] = H.personal_faction
-	G.fields["mob_faction"] = H.faction
-	G.fields["religion"] = H.religion
-	G.fields["ref"] = WEAKREF(H)
-	//G.fields["photo_front"] = front
-	//G.fields["photo_side"] = side
+	var/datum/data/record/gen_record = new()
+	gen_record.fields["id"] = id
+	gen_record.fields["name"] = human.real_name
+	gen_record.fields["real_rank"] = human.job
+	gen_record.fields["rank"] = assignment
+	gen_record.fields["squad"] = human.assigned_squad ? human.assigned_squad.name : null
+	gen_record.fields["age"] = human.age
+	gen_record.fields["p_stat"] = "Active"
+	gen_record.fields["m_stat"] = "Stable"
+	gen_record.fields["sex"] = human.gender
+	gen_record.fields["species"] = human.get_species()
+	gen_record.fields["origin"] = human.origin
+	gen_record.fields["faction"] = human.personal_faction
+	gen_record.fields["mob_faction"] = human.faction
+	gen_record.fields["religion"] = human.religion
+	gen_record.fields["ref"] = WEAKREF(human)
+	//gen_record.fields["photo_front"] = front
+	//gen_record.fields["photo_side"] = side
 
-	if(H.gen_record && !jobban_isbanned(H, "Records"))
-		G.fields["notes"] = H.gen_record
+	if(human.gen_record && !jobban_isbanned(human, "Records"))
+		gen_record.fields["notes"] = human.gen_record
 	else
-		G.fields["notes"] = "No notes found."
-	general += G
+		gen_record.fields["notes"] = "No notes found."
+	general += gen_record
 
 	//Medical Record
-	var/datum/data/record/M = new()
-	M.fields["id"] = id
-	M.fields["name"] = H.real_name
-	M.fields["b_type"] = H.blood_type
-	M.fields["mi_dis"] = "None"
-	M.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	M.fields["ma_dis"] = "None"
-	M.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	M.fields["alg"] = "None"
-	M.fields["alg_d"] = "No allergies have been detected in this patient."
-	M.fields["cdi"] = "None"
-	M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-	M.fields["last_scan_time"] = null
-	M.fields["last_scan_result"] = "No scan data on record" // body scanner results
-	M.fields["autodoc_data"] = list()
-	M.fields["autodoc_manual"] = list()
-	M.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/current_mob = new()
+	current_mob.fields["id"] = id
+	current_mob.fields["name"] = human.real_name
+	current_mob.fields["b_type"] = human.blood_type
+	current_mob.fields["mi_dis"] = "None"
+	current_mob.fields["mi_dis_d"] = "No minor disabilities have been declared."
+	current_mob.fields["ma_dis"] = "None"
+	current_mob.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
+	current_mob.fields["alg"] = "None"
+	current_mob.fields["alg_d"] = "No allergies have been detected in this patient."
+	current_mob.fields["cdi"] = "None"
+	current_mob.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	current_mob.fields["last_scan_time"] = null
+	current_mob.fields["last_scan_result"] = "No scan data on record" // body scanner results
+	current_mob.fields["autodoc_data"] = list()
+	current_mob.fields["autodoc_manual"] = list()
+	current_mob.fields["ref"] = WEAKREF(human)
 
-	if(H.med_record && !jobban_isbanned(H, "Records"))
-		M.fields["notes"] = H.med_record
+	if(human.med_record && !jobban_isbanned(human, "Records"))
+		current_mob.fields["notes"] = human.med_record
 	else
-		M.fields["notes"] = "No notes found."
-	medical += M
+		current_mob.fields["notes"] = "No notes found."
+	medical += current_mob
 
 	//Security Record
-	var/datum/data/record/S = new()
-	S.fields["id"] = id
-	S.fields["name"] = H.real_name
-	S.fields["criminal"] = "None"
-	S.fields["incident"] = ""
-	S.fields["ref"] = WEAKREF(H)
-	security += S
+	var/datum/data/record/sec_record = new()
+	sec_record.fields["id"] = id
+	sec_record.fields["name"] = human.real_name
+	sec_record.fields["criminal"] = "None"
+	sec_record.fields["incident"] = ""
+	sec_record.fields["ref"] = WEAKREF(human)
+	security += sec_record
 
 	//Locked Record
-	var/datum/data/record/L = new()
-	L.fields["id"] = md5("[H.real_name][H.job]")
-	L.fields["name"] = H.real_name
-	L.fields["rank"] = H.job
-	L.fields["age"] = H.age
-	L.fields["sex"] = H.gender
-	L.fields["b_type"] = H.b_type
-	L.fields["species"] = H.get_species()
-	L.fields["origin"] = H.origin
-	L.fields["faction"] = H.personal_faction
-	L.fields["religion"] = H.religion
-	L.fields["ref"] = WEAKREF(H)
+	var/datum/data/record/lock_record = new()
+	lock_record.fields["id"] = md5("[human.real_name][human.job]")
+	lock_record.fields["name"] = human.real_name
+	lock_record.fields["rank"] = human.job
+	lock_record.fields["age"] = human.age
+	lock_record.fields["sex"] = human.gender
+	lock_record.fields["b_type"] = human.b_type
+	lock_record.fields["species"] = human.get_species()
+	lock_record.fields["origin"] = human.origin
+	lock_record.fields["faction"] = human.personal_faction
+	lock_record.fields["religion"] = human.religion
+	lock_record.fields["ref"] = WEAKREF(human)
 
-	if(H.exploit_record && !jobban_isbanned(H, "Records"))
-		L.fields["exploit_record"] = H.exploit_record
+	if(human.exploit_record && !jobban_isbanned(human, "Records"))
+		lock_record.fields["exploit_record"] = human.exploit_record
 	else
-		L.fields["exploit_record"] = "No additional information acquired."
-	locked += L
+		lock_record.fields["exploit_record"] = "No additional information acquired."
+	locked += lock_record
 
 
-/proc/get_id_photo(mob/living/carbon/human/H)
+/proc/get_id_photo(mob/living/carbon/human/human)
 	var/icon/preview_icon = null
 
 	//var/g = "m"
-	//if (H.gender == FEMALE)
+	//if (human.gender == FEMALE)
 	// g = "f"
 
-	var/icon/icobase = H.species.icobase
+	var/icon/icobase = human.species.icobase
 	var/icon/temp
 
-	var/datum/ethnicity/ET = GLOB.ethnicities_list[H.ethnicity]
-	var/datum/body_type/B = GLOB.body_types_list[H.body_type]
+	var/datum/ethnicity/ET = GLOB.ethnicities_list[human.ethnicity]
+	var/datum/body_type/body = GLOB.body_types_list[human.body_type]
 
 	var/e_icon
 	var/b_icon
@@ -349,44 +349,44 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		e_icon = ET.icon_name
 
-	if (!B)
+	if (!body)
 		b_icon = "mesomorphic"
 	else
-		b_icon = B.icon_name
+		b_icon = body.icon_name
 
-	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "torso", e_icon))
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "groin", e_icon))
+	preview_icon = new /icon(icobase, get_limb_icon_name(human.species, b_icon, human.gender, "torso", e_icon))
+	temp = new /icon(icobase, get_limb_icon_name(human.species, b_icon, human.gender, "groin", e_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
-	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "head", e_icon))
+	temp = new /icon(icobase, get_limb_icon_name(human.species, b_icon, human.gender, "head", e_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
-	for(var/obj/limb/E in H.limbs)
-		if(E.status & LIMB_DESTROYED) continue
-		temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, E.name, e_icon))
-		if(E.status & LIMB_ROBOT)
+	for(var/obj/limb/current_limb in human.limbs)
+		if(current_limb.status & LIMB_DESTROYED) continue
+		temp = new /icon(icobase, get_limb_icon_name(human.species, b_icon, human.gender, current_limb.name, e_icon))
+		if(current_limb.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 	//Tail
-	if(H.species.tail)
-		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
+	if(human.species.tail)
+		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[human.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 
-	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
+	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = human.species ? human.species.eyes : "eyes_s")
 
-	eyes_s.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
+	eyes_s.Blend(rgb(human.r_eyes, human.g_eyes, human.b_eyes), ICON_ADD)
 
-	var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[H.h_style]
+	var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[human.h_style]
 	if(hair_style)
 		var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-		hair_s.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
+		hair_s.Blend(rgb(human.r_hair, human.g_hair, human.b_hair), ICON_ADD)
 		eyes_s.Blend(hair_s, ICON_OVERLAY)
 
-	var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[H.f_style]
+	var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[human.f_style]
 	if(facial_hair_style)
 		var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-		facial_s.Blend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
+		facial_s.Blend(rgb(human.r_facial, human.g_facial, human.b_facial), ICON_ADD)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null

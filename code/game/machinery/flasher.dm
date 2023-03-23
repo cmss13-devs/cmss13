@@ -60,27 +60,27 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for (var/mob/O in viewers(src, null))
-		if (get_dist(src, O) > src.range)
+	for (var/mob/current_obj in viewers(src, null))
+		if (get_dist(src, current_obj) > src.range)
 			continue
 
-		if (istype(O, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = O
-			if(H.get_eye_protection() > 0)
+		if (istype(current_obj, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = current_obj
+			if(human.get_eye_protection() > 0)
 				continue
 
-		if (istype(O, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
+		if (istype(current_obj, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.apply_effect(strength, WEAKEN)
-		if (istype(O, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = O
-			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-			if (E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
-				H.flash_eyes()
-				E.take_damage(rand(1, 5))
+		current_obj.apply_effect(strength, WEAKEN)
+		if (istype(current_obj, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = current_obj
+			var/datum/internal_organ/eyes/eyes = human.internal_organs_by_name["eyes"]
+			if (eyes && (eyes.damage > eyes.min_bruised_damage && prob(eyes.damage + 50)))
+				human.flash_eyes()
+				eyes.take_damage(rand(1, 5))
 		else
-			O.flash_eyes()
+			current_obj.flash_eyes()
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
@@ -134,9 +134,9 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/flasher/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
+	for(var/obj/structure/machinery/flasher/flash in machines)
+		if(flash.id == src.id)
+			INVOKE_ASYNC(flash, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 
 	sleep(50)
 

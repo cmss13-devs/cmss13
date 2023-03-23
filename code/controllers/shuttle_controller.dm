@@ -28,14 +28,14 @@
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/dock)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/supply/dock)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/station)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/supply/station)
+			shuttle.area_station = current_area
 			break
 
 	shuttles["Supply"] = shuttle
@@ -50,19 +50,19 @@
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator1/underground)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator1/underground)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator1/ground)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator1/ground)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator1/transit)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator1/transit)
+			shuttle.area_transition = current_area
 			break
 
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
@@ -76,19 +76,19 @@
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator2/underground)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator2/underground)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator2/ground)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator2/ground)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator2/transit)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator2/transit)
+			shuttle.area_transition = current_area
 			break
 
 	shuttle.transit_direction = NORTH
@@ -102,19 +102,19 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator3/underground)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator3/underground)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator3/ground)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator3/ground)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator3/transit)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator3/transit)
+			shuttle.area_transition = current_area
 			break
 	shuttle.transit_direction = NORTH
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
@@ -127,19 +127,19 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator4/underground)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator4/underground)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator4/ground)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator4/ground)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/elevator4/transit)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/elevator4/transit)
+			shuttle.area_transition = current_area
 			break
 	shuttle.transit_direction = NORTH
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
@@ -152,19 +152,19 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans1/omega)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans1/omega)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans1/alpha)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans1/alpha)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans1/away)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans1/away)
+			shuttle.area_transition = current_area
 			break
 	shuttle.transit_direction = NORTH
 	shuttle.move_time = TRANSIT_POD_TRANSIT_DURATION
@@ -178,19 +178,19 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans2/omega)
-			shuttle.area_offsite = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans2/omega)
+			shuttle.area_offsite = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans2/alpha)
-			shuttle.area_station = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans2/alpha)
+			shuttle.area_station = current_area
 			break
 
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/tri_trans2/away)
-			shuttle.area_transition = A
+	for(var/area/current_area in all_areas)
+		if(current_area.type == /area/shuttle/tri_trans2/away)
+			shuttle.area_transition = current_area
 			break
 	shuttle.transit_direction = NORTH
 	shuttle.move_time = TRANSIT_POD_TRANSIT_DURATION
@@ -199,8 +199,8 @@
 	shuttles["Transit 2"] = shuttle
 	process_shuttles += shuttle
 
-	for(var/obj/structure/machinery/computer/shuttle_control/S in GLOB.shuttle_controls)
-		S.shuttle_datum = shuttles[S.shuttle_tag]
+	for(var/obj/structure/machinery/computer/shuttle_control/controller in GLOB.shuttle_controls)
+		controller.shuttle_datum = shuttles[controller.shuttle_tag]
 
 
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized
@@ -216,12 +216,12 @@
 
 	//search for the controllers, if we have one.
 	if(dock_controller_map.len)
-		for(var/obj/structure/machinery/embedded_controller/radio/C in machines) //only radio controllers are supported at the moment
-			if (istype(C.program, /datum/computer/file/embedded_program/docking))
-				if(dock_controller_map[C.id_tag])
-					shuttle = dock_controller_map[C.id_tag]
-					shuttle.docking_controller = C.program
-					dock_controller_map -= C.id_tag
+		for(var/obj/structure/machinery/embedded_controller/radio/radio_controller in machines) //only radio controllers are supported at the moment
+			if (istype(radio_controller.program, /datum/computer/file/embedded_program/docking))
+				if(dock_controller_map[radio_controller.id_tag])
+					shuttle = dock_controller_map[radio_controller.id_tag]
+					shuttle.docking_controller = radio_controller.program
+					dock_controller_map -= radio_controller.id_tag
 
 
 	//sanity check

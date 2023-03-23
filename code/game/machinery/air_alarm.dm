@@ -195,8 +195,8 @@
 /obj/structure/machinery/alarm/proc/elect_master()
 	if(!alarm_area)
 		return 0
-	for (var/area/A in alarm_area.related)
-		for (var/obj/structure/machinery/alarm/AA in A)
+	for (var/area/new_area in alarm_area.related)
+		for (var/obj/structure/machinery/alarm/AA in new_area)
 			if (!(AA.inoperable()))
 				alarm_area.master_air_alarm = AA
 				return 1
@@ -271,13 +271,13 @@
 
 /obj/structure/machinery/alarm/proc/refresh_all()
 	for(var/id_tag in alarm_area.air_vent_names)
-		var/list/I = alarm_area.air_vent_info[id_tag]
-		if (I && I["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
+		var/list/id = alarm_area.air_vent_info[id_tag]
+		if (id && id["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
 			continue
 		send_signal(id_tag, list("status") )
 	for(var/id_tag in alarm_area.air_scrub_names)
-		var/list/I = alarm_area.air_scrub_info[id_tag]
-		if (I && I["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
+		var/list/id = alarm_area.air_scrub_info[id_tag]
+		if (id && id["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
 			continue
 		send_signal(id_tag, list("status") )
 
@@ -975,8 +975,8 @@ table tr:first-child th:first-child { border: none;}
 
 		if(1)
 			if(iscoil(W))
-				var/obj/item/stack/cable_coil/C = W
-				if(C.use(5))
+				var/obj/item/stack/cable_coil/coil = W
+				if(coil.use(5))
 					to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 					buildstage = 2
 					update_icon()

@@ -62,47 +62,47 @@
 	shuttle.control_doors("lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
-	for(var/obj/structure/machinery/door/airlock/D in range(range))
-		if(D.id_tag == src.id)
+	for(var/obj/structure/machinery/door/airlock/current_door in range(range))
+		if(current_door.id_tag == src.id)
 			if(specialfunctions & OPEN)
-				if (D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+				if (current_door.density)
+					INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+					INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 1
+					current_door.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
-					D.lock()
+					current_door.lock()
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = -1
+					current_door.secondsElectrified = -1
 				if(specialfunctions & SAFE)
-					D.safe = 0
+					current_door.safe = 0
 			else
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 0
+					current_door.remoteDisabledIdScanner = 0
 				if(specialfunctions & BOLTS)
-					if(!D.isWireCut(4) && D.arePowerSystemsOn())
-						D.unlock()
+					if(!current_door.isWireCut(4) && current_door.arePowerSystemsOn())
+						current_door.unlock()
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = 0
+					current_door.secondsElectrified = 0
 				if(specialfunctions & SAFE)
-					D.safe = 1
+					current_door.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_pod()
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == id)
-			if(M.density)
-				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+	for(var/obj/structure/machinery/door/poddoor/current_door in machines)
+		if(current_door.id == id)
+			if(current_door.density)
+				INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 			else
-				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+				INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
 	set category = "Object"
 	if(isliving(usr))
-		var/mob/living/L = usr
-		attack_hand(L)
+		var/mob/living/living_mob = usr
+		attack_hand(living_mob)
 
 /obj/structure/machinery/door_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
@@ -165,21 +165,21 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+	for(var/obj/structure/machinery/door/poddoor/current_door in machines)
+		if(current_door.id == src.id)
+			INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	sleep(20)
 
-	for(var/obj/structure/machinery/mass_driver/M in machines)
-		if(M.id == src.id)
-			M.drive()
+	for(var/obj/structure/machinery/mass_driver/current_door in machines)
+		if(current_door.id == src.id)
+			current_door.drive()
 
 	sleep(50)
 
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	for(var/obj/structure/machinery/door/poddoor/current_door in machines)
+		if(current_door.id == src.id)
+			INVOKE_ASYNC(current_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	icon_state = "launcherbtt"
 	active = 0
@@ -223,14 +223,14 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == id)
+	for(var/obj/structure/machinery/door/poddoor/current_door in machines)
+		if(current_door.id == id)
 			effective = 1
 			spawn()
 				if(desiredstate)
-					M.open()
+					current_door.open()
 				else
-					M.close()
+					current_door.close()
 	if(effective)
 		playsound(get_turf(SSshuttle.vehicle_elevator), 'sound/machines/elevator_openclose.ogg', 50, 0)
 

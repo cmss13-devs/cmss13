@@ -94,9 +94,9 @@
 
 
 	flick("[base_state]-spark", src)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(2, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(2, 1, src)
+	spark.start()
 	src.last_spark = world.time
 	use_power(1000)
 // var/turf/location = src.loc
@@ -125,15 +125,15 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/sparker/M in machines)
-		if (M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
+	for(var/obj/structure/machinery/sparker/sparker_machine in machines)
+		if (sparker_machine.id == src.id)
+			INVOKE_ASYNC(sparker_machine, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
 
-	for(var/obj/structure/machinery/igniter/M in machines)
-		if(M.id == src.id)
+	for(var/obj/structure/machinery/igniter/sparker_machine in machines)
+		if(sparker_machine.id == src.id)
 			use_power(50)
-			M.on = !( M.on )
-			M.icon_state = text("igniter[]", M.on)
+			sparker_machine.on = !( sparker_machine.on )
+			sparker_machine.icon_state = text("igniter[]", sparker_machine.on)
 
 	sleep(50)
 

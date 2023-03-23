@@ -192,10 +192,10 @@ var/list/alldepartments = list()
 				. = TRUE
 
 		if("insertpaper")
-			var/obj/item/I = usr.get_active_hand()
-			if(istype(I, /obj/item/paper))
-				usr.drop_inv_item_to_loc(I, src)
-				tofax = I
+			var/obj/item/current_item = usr.get_active_hand()
+			if(istype(current_item, /obj/item/paper))
+				usr.drop_inv_item_to_loc(current_item, src)
+				tofax = current_item
 				to_chat(usr, SPAN_NOTICE("You put \the [tofax] into \the [src]."))
 			. = TRUE
 
@@ -290,24 +290,24 @@ var/list/alldepartments = list()
 
 /proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+	for(var/client/current_client in GLOB.admins)
+		if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
 			if(msg_admin)
-				to_chat(C, msg_admin)
+				to_chat(current_client, msg_admin)
 			else
-				to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+				to_chat(current_client, msg_ghost)
+			current_client << 'sound/effects/sos-morse-code.ogg'
 	if(msg_ghost)
 		for(var/i in GLOB.observer_list)
-			var/mob/dead/observer/g = i
-			if(!g.client)
+			var/mob/dead/observer/ghost = i
+			if(!ghost.client)
 				continue
-			var/client/C = g.client
-			if(C && C.admin_holder)
-				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
+			var/client/current_client = ghost.client
+			if(current_client && current_client.admin_holder)
+				if((R_ADMIN|R_MOD) & current_client.admin_holder.rights) //staff don't need to see the fax twice
 					continue
-			to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+			to_chat(current_client, msg_ghost)
+			current_client << 'sound/effects/sos-morse-code.ogg'
 
 /proc/general_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
@@ -315,38 +315,38 @@ var/list/alldepartments = list()
 	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
 /proc/SendFax(sent, sentname, mob/Sender, target_department, network, obj/structure/machinery/faxmachine/origin)
-	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
-		if(F != origin && F.department == target_department)
-			if(! (F.inoperable() ) )
+	for(var/obj/structure/machinery/faxmachine/machine in allfaxes)
+		if(machine != origin && machine.department == target_department)
+			if(! (machine.inoperable() ) )
 
-				flick("faxreceive", F)
+				flick("faxreceive", machine)
 
 				// give the sprite some time to flick
 				spawn(20)
-					var/obj/item/paper/P = new /obj/item/paper( F.loc )
-					P.name = "[sentname]"
-					P.info = "[sent]"
-					P.update_icon()
+					var/obj/item/paper/new_fax = new /obj/item/paper( machine.loc )
+					new_fax.name = "[sentname]"
+					new_fax.info = "[sent]"
+					new_fax.update_icon()
 
 					switch(network)
 						if("USCM High Command Quantum Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 							stampoverlay.icon_state = "paper_stamp-uscm"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
+							if(!new_fax.stamped)
+								new_fax.stamped = new
+							new_fax.stamped += /obj/item/tool/stamp
+							new_fax.overlays += stampoverlay
+							new_fax.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 						if("Weyland-Yutani Quantum Relay")
 							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 							stampoverlay.icon_state = "paper_stamp-cent"
-							if(!P.stamped)
-								P.stamped = new
-							P.stamped += /obj/item/tool/stamp
-							P.overlays += stampoverlay
-							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
+							if(!new_fax.stamped)
+								new_fax.stamped = new
+							new_fax.stamped += /obj/item/tool/stamp
+							new_fax.overlays += stampoverlay
+							new_fax.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
-					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
+					playsound(machine.loc, "sound/items/polaroid1.ogg", 15, 1)
 
 
 /obj/structure/machinery/faxmachine/corporate

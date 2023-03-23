@@ -91,8 +91,8 @@ SUBSYSTEM_DEF(vote)
 		var/list/non_voters = GLOB.directory.Copy()
 		non_voters -= voted
 		for (var/non_voter_ckey in non_voters)
-			var/client/C = non_voters[non_voter_ckey]
-			if(!C || C.is_afk())
+			var/client/current_client = non_voters[non_voter_ckey]
+			if(!current_client || current_client.is_afk())
 				non_voters -= non_voter_ckey
 		if(length(non_voters) > 0)
 			if(mode == "restart")
@@ -178,8 +178,8 @@ SUBSYSTEM_DEF(vote)
 				SSmapping.changemap(VM, SHIP_MAP)
 	if(restart)
 		var/active_admins = 0
-		for(var/client/C in GLOB.admins)
-			if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
+		for(var/client/current_client in GLOB.admins)
+			if(!current_client.is_afk() && check_client_rights(current_client, R_SERVER, FALSE))
 				active_admins = TRUE
 				break
 		if(!active_admins)
@@ -191,13 +191,13 @@ SUBSYSTEM_DEF(vote)
 	return .
 
 
-/datum/controller/subsystem/vote/proc/handle_client_joining(dcs, client/C)
+/datum/controller/subsystem/vote/proc/handle_client_joining(dcs, client/current_client)
 	SIGNAL_HANDLER
 
-	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
+	var/datum/action/innate/vote/vote_option = give_action(current_client.mob, /datum/action/innate/vote)
 	if(question)
-		V.set_name("Vote: [question]")
-	C.player_details.player_actions += V
+		vote_option.set_name("Vote: [question]")
+	current_client.player_details.player_actions += vote_option
 
 /datum/controller/subsystem/vote/proc/submit_vote(vote)
 	if(mode)
@@ -243,14 +243,14 @@ SUBSYSTEM_DEF(vote)
 			admin = TRUE
 		else
 			for(var/i in GLOB.admins)
-				var/client/C = i
-				if(C.ckey == ckey)
+				var/client/current_client = i
+				if(current_client.ckey == ckey)
 					admin = TRUE
 					break
 
 		if(!admin && vote_type == "restart")
-			for(var/client/C as anything in GLOB.admins)
-				if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
+			for(var/client/current_client as anything in GLOB.admins)
+				if(!current_client.is_afk() && check_client_rights(current_client, R_SERVER, FALSE))
 					to_chat(usr, SPAN_WARNING("You cannot make a restart vote while there are active admins online."))
 					return FALSE
 
@@ -273,11 +273,11 @@ SUBSYSTEM_DEF(vote)
 				question = "Gamemode vote"
 				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
-					var/datum/game_mode/M = initial(mode_type)
-					if(initial(M.config_tag))
-						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
-						if(initial(M.votable) && vote_cycle_met)
-							choices += initial(M.config_tag)
+					var/datum/game_mode/mode = initial(mode_type)
+					if(initial(mode.config_tag))
+						var/vote_cycle_met = !initial(mode.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(mode.vote_cycle) == 0)
+						if(initial(mode.votable) && vote_cycle_met)
+							choices += initial(mode.config_tag)
 			if("groundmap")
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
@@ -362,13 +362,13 @@ SUBSYSTEM_DEF(vote)
 		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'<b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
-			var/client/C = c
-			var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
+			var/client/current_client = c
+			var/datum/action/innate/vote/vote_option = give_action(current_client.mob, /datum/action/innate/vote)
 			if(question)
-				V.set_name("Vote: [question]")
-			C.player_details.player_actions += V
+				vote_option.set_name("Vote: [question]")
+			current_client.player_details.player_actions += vote_option
 			if(send_clients_vote)
-				C.mob.vote()
+				current_client.mob.vote()
 
 		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
@@ -399,7 +399,7 @@ SUBSYSTEM_DEF(vote)
 	name = "Vote!"
 	action_icon_state = "vote"
 
-/datum/action/innate/vote/give_to(mob/M)
+/datum/action/innate/vote/give_to(mob/current_mob)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, PROC_REF(remove_vote_action))
 
@@ -419,9 +419,9 @@ SUBSYSTEM_DEF(vote)
 	if(owner.client)
 		owner.client.player_details.player_actions -= src
 	else if(owner.ckey)
-		var/datum/player_details/P = GLOB.player_details[owner.ckey]
-		if(P)
-			P.player_actions -= src
+		var/datum/player_details/player = GLOB.player_details[owner.ckey]
+		if(player)
+			player.player_actions -= src
 	return TRUE
 
 /datum/controller/subsystem/vote/tgui_interact(mob/user, datum/tgui/ui)

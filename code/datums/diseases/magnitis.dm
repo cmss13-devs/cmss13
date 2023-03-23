@@ -18,21 +18,21 @@
 			if(prob(2))
 				to_chat(affected_mob, SPAN_DANGER("You feel a slight shock course through your body."))
 			if(prob(2))
-				for(var/obj/M in orange(2,affected_mob))
-					if(!M.anchored && (M.flags_atom & CONDUCT))
-						step_towards(M,affected_mob)
-				for(var/mob/living/silicon/S in orange(2,affected_mob))
-					if(isAI(S)) continue
-					step_towards(S,affected_mob)
+				for(var/obj/conductive in orange(2,affected_mob))
+					if(!conductive.anchored && (conductive.flags_atom & CONDUCT))
+						step_towards(conductive,affected_mob)
+				for(var/mob/living/silicon/silicon in orange(2,affected_mob))
+					if(isAI(silicon)) continue
+					step_towards(silicon,affected_mob)
 						/*
-						if(M.x > affected_mob.x)
-							M.x--
-						else if(M.x < affected_mob.x)
-							M.x++
-						if(M.y > affected_mob.y)
-							M.y--
-						else if(M.y < affected_mob.y)
-							M.y++
+						if(conductive.x > affected_mob.x)
+							conductive.x--
+						else if(conductive.x < affected_mob.x)
+							conductive.x++
+						if(conductive.y > affected_mob.y)
+							conductive.y--
+						else if(conductive.y < affected_mob.y)
+							conductive.y++
 						*/
 		if(3)
 			if(prob(2))
@@ -40,27 +40,27 @@
 			if(prob(2))
 				to_chat(affected_mob, SPAN_DANGER("You feel like clowning around."))
 			if(prob(4))
-				for(var/obj/M in orange(4,affected_mob))
-					if(!M.anchored && (M.flags_atom & CONDUCT))
+				for(var/obj/conductive in orange(4,affected_mob))
+					if(!conductive.anchored && (conductive.flags_atom & CONDUCT))
 						var/i
 						var/iter = rand(1,2)
 						for(i=0,i<iter,i++)
-							step_towards(M,affected_mob)
-				for(var/mob/living/silicon/S in orange(4,affected_mob))
-					if(isAI(S)) continue
+							step_towards(conductive,affected_mob)
+				for(var/mob/living/silicon/silicon in orange(4,affected_mob))
+					if(isAI(silicon)) continue
 					var/i
 					var/iter = rand(1,2)
 					for(i=0,i<iter,i++)
-						step_towards(S,affected_mob)
+						step_towards(silicon,affected_mob)
 						/*
-						if(M.x > affected_mob.x)
-							M.x-=rand(1,min(3,M.x-affected_mob.x))
-						else if(M.x < affected_mob.x)
-							M.x+=rand(1,min(3,affected_mob.x-M.x))
-						if(M.y > affected_mob.y)
-							M.y-=rand(1,min(3,M.y-affected_mob.y))
-						else if(M.y < affected_mob.y)
-							M.y+=rand(1,min(3,affected_mob.y-M.y))
+						if(conductive.x > affected_mob.x)
+							conductive.x-=rand(1,min(3,conductive.x-affected_mob.x))
+						else if(conductive.x < affected_mob.x)
+							conductive.x+=rand(1,min(3,affected_mob.x-conductive.x))
+						if(conductive.y > affected_mob.y)
+							conductive.y-=rand(1,min(3,conductive.y-affected_mob.y))
+						else if(conductive.y < affected_mob.y)
+							conductive.y+=rand(1,min(3,affected_mob.y-conductive.y))
 						*/
 		if(4)
 			if(prob(2))
@@ -68,26 +68,26 @@
 			if(prob(2))
 				to_chat(affected_mob, SPAN_DANGER("You query upon the nature of miracles."))
 			if(prob(8))
-				for(var/obj/M in orange(6,affected_mob))
-					if(!M.anchored && (M.flags_atom & CONDUCT))
+				for(var/obj/conductive in orange(6,affected_mob))
+					if(!conductive.anchored && (conductive.flags_atom & CONDUCT))
 						var/i
 						var/iter = rand(1,3)
 						for(i=0,i<iter,i++)
-							step_towards(M,affected_mob)
-				for(var/mob/living/silicon/S in orange(6,affected_mob))
-					if(isAI(S)) continue
+							step_towards(conductive,affected_mob)
+				for(var/mob/living/silicon/silicon in orange(6,affected_mob))
+					if(isAI(silicon)) continue
 					var/i
 					var/iter = rand(1,3)
 					for(i=0,i<iter,i++)
-						step_towards(S,affected_mob)
+						step_towards(silicon,affected_mob)
 						/*
-						if(M.x > affected_mob.x)
-							M.x-=rand(1,min(5,M.x-affected_mob.x))
-						else if(M.x < affected_mob.x)
-							M.x+=rand(1,min(5,affected_mob.x-M.x))
-						if(M.y > affected_mob.y)
-							M.y-=rand(1,min(5,M.y-affected_mob.y))
-						else if(M.y < affected_mob.y)
-							M.y+=rand(1,min(5,affected_mob.y-M.y))
+						if(conductive.x > affected_mob.x)
+							conductive.x-=rand(1,min(5,conductive.x-affected_mob.x))
+						else if(conductive.x < affected_mob.x)
+							conductive.x+=rand(1,min(5,affected_mob.x-conductive.x))
+						if(conductive.y > affected_mob.y)
+							conductive.y-=rand(1,min(5,conductive.y-affected_mob.y))
+						else if(conductive.y < affected_mob.y)
+							conductive.y+=rand(1,min(5,affected_mob.y-conductive.y))
 						*/
 	return

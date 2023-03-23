@@ -18,10 +18,10 @@
 			if(name == selected_matrix)
 				data += "-> <b>[name]</b><br>"
 
-				var/matrix/M = stored_matrices[name]
-				data += "\[[M.a] [M.d] 0\]<br>"
-				data += "\[[M.b] [M.e] 0\]<br>"
-				data += "\[[M.c] [M.f] 1\]"
+				var/matrix/current_matrix = stored_matrices[name]
+				data += "\[[current_matrix.a] [current_matrix.d] 0\]<br>"
+				data += "\[[current_matrix.b] [current_matrix.e] 0\]<br>"
+				data += "\[[current_matrix.c] [current_matrix.f] 1\]"
 			else
 				data += "<a href='?_src_=matrices;select_matrix=[name]'>[name]</a>"
 			data += "<br>"
@@ -63,10 +63,10 @@
 
 	switch(href_list["operation"])
 		if("new")
-			var/matrix/M
+			var/matrix/current_matrix
 
 			if(alert("Identity matrix?", "Matrix creation", "Yes", "No") == "Yes")
-				M = matrix()
+				current_matrix = matrix()
 			else
 				var/elements_str = input("Please enter the elements of the matrix as a comma-separated string. Elements should be given by column first, not row!", "Matrix elements") as null|text
 				if(!elements_str)
@@ -91,7 +91,7 @@
 				var/e = elements[5]
 				var/f = elements[6]
 
-				M = matrix(a,b,c,d,e,f)
+				current_matrix = matrix(a,b,c,d,e,f)
 
 			var/matrix_name = input("Name your newborn matrix", "Matrix name") as null|text
 			if(!matrix_name || matrix_name == "Cancel")
@@ -101,7 +101,7 @@
 				to_chat(usr, "There's already a matrix with that name!")
 				return
 
-			LAZYSET(stored_matrices, matrix_name, M)
+			LAZYSET(stored_matrices, matrix_name, current_matrix)
 
 		if("copy")
 			if(!selected_matrix)
@@ -121,8 +121,8 @@
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
 			var/matrix_name = input("Enter the new matrix name", "Matrix name") as null|text
@@ -134,21 +134,21 @@
 				return
 
 			LAZYREMOVE(stored_matrices, selected_matrix)
-			LAZYSET(stored_matrices, matrix_name, M)
+			LAZYSET(stored_matrices, matrix_name, current_matrix)
 			selected_matrix = matrix_name
 
 		if("delete")
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
 			if(alert("Are you sure you want to delete [selected_matrix]?", "Matrix deletion", "Yes", "No") != "Yes")
 				return
 
-			qdel(M)
+			qdel(current_matrix)
 			LAZYREMOVE(stored_matrices, selected_matrix)
 			selected_matrix = ""
 
@@ -156,22 +156,22 @@
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
 			var/deg = input("Enter how much to rotate the matrix by. The angle is clockwise rotation in degrees.", "Matrix rotation") as null|num
 			if(isnull(deg))
 				return
 
-			M.Turn(deg)
+			current_matrix.Turn(deg)
 
 		if("scale")
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
 			var/sx = input("Enter how much to scale the matrix by in the X direction.", "Matrix scaling") as null|num
@@ -182,14 +182,14 @@
 			if(isnull(sy))
 				return
 
-			M.Scale(sx, sy)
+			current_matrix.Scale(sx, sy)
 
 		if("translate")
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
 			var/tx = input("Enter how much to translate the matrix by in the X direction.", "Matrix translation") as null|num
@@ -200,78 +200,78 @@
 			if(isnull(ty))
 				return
 
-			M.Translate(tx, ty)
+			current_matrix.Translate(tx, ty)
 
 		if("invert")
 			if(!selected_matrix)
 				return
 
-			var/matrix/M = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!M)
+			var/matrix/current_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!current_matrix)
 				return
 
-			M.Invert()
+			current_matrix.Invert()
 
 		if("multiply")
 			if(!selected_matrix)
 				return
 
-			var/matrix/A = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!A)
+			var/matrix/first_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!first_matrix)
 				return
 
 			var/other_m = tgui_input_list(usr, "Select the other matrix to multiply by:", "Matrix multiplication", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 
-			var/matrix/B = LAZYACCESS(stored_matrices, other_m)
-			if(!B)
+			var/matrix/second_matrix = LAZYACCESS(stored_matrices, other_m)
+			if(!second_matrix)
 				return
 
 			var/left_right = alert("Multiply with [other_m] from the left or the right?", "Matrix multiplication", "Left", "Right")
 			if(left_right == "Left")
-				// Since matrix multiplication directly alters the datum, store the old B so we can set it back later
-				var/old_b = matrix(B)
-				B.Multiply(A)
-				LAZYSET(stored_matrices, selected_matrix, B)
+				// Since matrix multiplication directly alters the datum, store the old second_matrix so we can set it back later
+				var/old_b = matrix(second_matrix)
+				second_matrix.Multiply(first_matrix)
+				LAZYSET(stored_matrices, selected_matrix, second_matrix)
 				LAZYSET(stored_matrices, other_m, old_b)
 			else if(left_right == "Right")
-				A.Multiply(B)
+				first_matrix.Multiply(second_matrix)
 
 		if("subtract")
 			if(!selected_matrix)
 				return
 
-			var/matrix/A = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!A)
+			var/matrix/first_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!first_matrix)
 				return
 
 			var/other_m = tgui_input_list(usr, "Select the other matrix to subtract by:", "Matrix subtraction", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 
-			var/matrix/B = LAZYACCESS(stored_matrices, other_m)
-			if(!B)
+			var/matrix/second_matrix = LAZYACCESS(stored_matrices, other_m)
+			if(!second_matrix)
 				return
 
-			A.Subtract(B)
+			first_matrix.Subtract(second_matrix)
 
 		if("add")
 			if(!selected_matrix)
 				return
 
-			var/matrix/A = LAZYACCESS(stored_matrices, selected_matrix)
-			if(!A)
+			var/matrix/first_matrix = LAZYACCESS(stored_matrices, selected_matrix)
+			if(!first_matrix)
 				return
 
 			var/other_m = tgui_input_list(usr, "Select the other matrix to add by:", "Matrix addition", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 
-			var/matrix/B = LAZYACCESS(stored_matrices, other_m)
-			if(!B)
+			var/matrix/second_matrix = LAZYACCESS(stored_matrices, other_m)
+			if(!second_matrix)
 				return
 
-			A.Add(B)
+			first_matrix.Add(second_matrix)
 
 	matrix_editor()

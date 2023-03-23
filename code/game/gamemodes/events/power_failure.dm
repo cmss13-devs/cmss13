@@ -2,21 +2,21 @@
 /proc/power_failure(announce = 1)
 	var/ship_zlevels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 
-	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(!is_mainship_level(S.z))
+	for(var/obj/structure/machinery/power/smes/smes in machines)
+		if(!is_mainship_level(smes.z))
 			continue
-		S.last_charge = S.charge
-		S.last_output = S.output_level
-		S.last_outputting = S.outputting
-		S.charge = 0
-		S.output_level = 0
-		S.outputting = 0
-		S.updateicon()
-		S.power_change()
+		smes.last_charge = smes.charge
+		smes.last_output = smes.output_level
+		smes.last_outputting = smes.outputting
+		smes.charge = 0
+		smes.output_level = 0
+		smes.outputting = 0
+		smes.updateicon()
+		smes.power_change()
 
-	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(!is_mainship_level(C.z) && C.cell)
-			C.cell.charge = 0
+	for(var/obj/structure/machinery/power/apc/apc_cell in machines)
+		if(!is_mainship_level(apc_cell.z) && apc_cell.cell)
+			apc_cell.cell.charge = 0
 
 	playsound_z(ship_zlevels, 'sound/effects/powerloss.ogg')
 
@@ -25,18 +25,18 @@
 		marine_announcement("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(announce = 1)
-	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(!is_mainship_level(S.z))
+	for(var/obj/structure/machinery/power/smes/smes in machines)
+		if(!is_mainship_level(smes.z))
 			continue
-		S.charge = S.capacity
-		S.output_level = S.output_level_max
-		S.outputting = 1
-		S.updateicon()
-		S.power_change()
+		smes.charge = smes.capacity
+		smes.output_level = smes.output_level_max
+		smes.outputting = 1
+		smes.updateicon()
+		smes.power_change()
 
-	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(C.cell && is_mainship_level(C.z))
-			C.cell.charge = C.cell.maxcharge
+	for(var/obj/structure/machinery/power/apc/apc_cell in machines)
+		if(apc_cell.cell && is_mainship_level(apc_cell.z))
+			apc_cell.cell.charge = apc_cell.cell.maxcharge
 
 	sleep(100)
 	if(announce)
@@ -44,14 +44,14 @@
 
 /proc/power_restore_quick(announce = 1)
 
-	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(!is_mainship_level(S.z)) // Ship only
+	for(var/obj/structure/machinery/power/smes/smes in machines)
+		if(!is_mainship_level(smes.z)) // Ship only
 			continue
-		S.charge = S.capacity
-		S.output_level = S.output_level_max
-		S.outputting = 1
-		S.updateicon()
-		S.power_change()
+		smes.charge = smes.capacity
+		smes.output_level = smes.output_level_max
+		smes.outputting = 1
+		smes.updateicon()
+		smes.power_change()
 
 	sleep(100)
 	if(announce)
@@ -59,16 +59,16 @@
 
 /proc/power_restore_everything(announce = 1)
 
-	for(var/obj/structure/machinery/power/smes/S in machines)
-		S.charge = S.capacity
-		S.output_level = S.output_level_max
-		S.outputting = 1
-		S.updateicon()
-		S.power_change()
+	for(var/obj/structure/machinery/power/smes/smes in machines)
+		smes.charge = smes.capacity
+		smes.output_level = smes.output_level_max
+		smes.outputting = 1
+		smes.updateicon()
+		smes.power_change()
 
-	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(C.cell)
-			C.cell.charge = C.cell.maxcharge
+	for(var/obj/structure/machinery/power/apc/apc_cell in machines)
+		if(apc_cell.cell)
+			apc_cell.cell.charge = apc_cell.cell.maxcharge
 
 	sleep(100)
 	if(announce)

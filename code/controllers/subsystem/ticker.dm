@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/delay_end = FALSE //If set true, the round will not restart on it's own
 	var/delay_start = FALSE
-	var/admin_delay_notice = "" //A message to display to anyone who tries to restart the world after a delay
+	var/admin_delay_notice = "" // A message to display to anyone who tries to restart the world after a delay
 
 	var/time_left //Pre-game timer
 	var/start_at
@@ -134,8 +134,8 @@ SUBSYSTEM_DEF(ticker)
 	current_state = GAME_STATE_SETTING_UP
 	INVOKE_ASYNC(src, PROC_REF(setup_start))
 
-	for(var/client/C in GLOB.admins)
-		remove_verb(C, roundstart_mod_verbs)
+	for(var/client/current_client in GLOB.admins)
+		remove_verb(current_client, roundstart_mod_verbs)
 	admin_verbs_minor_event -= roundstart_mod_verbs
 
 	return TRUE
@@ -257,10 +257,10 @@ SUBSYSTEM_DEF(ticker)
 	supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
-		var/obj/structure/closet/C = i
-		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
-	for(var/obj/structure/machinery/vending/V in machines)
-		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
+		var/obj/structure/closet/locker = i
+		INVOKE_ASYNC(locker, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
+	for(var/obj/structure/machinery/vending/vender in machines)
+		INVOKE_ASYNC(vender, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 
@@ -386,18 +386,18 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
-	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
-	if(J.handle_spawn_and_equip)
-		J.spawn_and_equip(player)
+	var/datum/job/current_job = RoleAuthority.roles_for_mode[player.job]
+	if(current_job.handle_spawn_and_equip)
+		current_job.spawn_and_equip(player)
 	else
-		var/mob/M = J.spawn_in_player(player)
-		if(istype(M))
-			J.equip_job(M)
-			EquipCustomItems(M)
+		var/mob/current_mob = current_job.spawn_in_player(player)
+		if(istype(current_mob))
+			current_job.equip_job(current_mob)
+			EquipCustomItems(current_mob)
 
-			if(M.client)
-				var/client/C = M.client
-				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+			if(current_mob.client)
+				var/client/current_client = current_mob.client
+				if(current_client.player_data && current_client.player_data.playtime_loaded && length(current_client.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 	QDEL_IN(player, 5)
 
@@ -425,15 +425,15 @@ SUBSYSTEM_DEF(ticker)
 				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job], late_join = FALSE)
 				EquipCustomItems(player)
 			if(player.client)
-				var/client/C = player.client
-				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+				var/client/current_client = player.client
+				if(current_client.player_data && current_client.player_data.playtime_loaded && length(current_client.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
-					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
+				if(current_client.player_data && current_client.player_data.playtime_loaded && ((round(current_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(current_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
 	if(captainless)
-		for(var/mob/M in GLOB.player_list)
-			if(!istype(M,/mob/new_player))
-				to_chat(M, "Marine commanding officer position not forced on anyone.")
+		for(var/mob/current_mob in GLOB.player_list)
+			if(!istype(current_mob,/mob/new_player))
+				to_chat(current_mob, "Marine commanding officer position not forced on anyone.")
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/message
@@ -468,13 +468,13 @@ SUBSYSTEM_DEF(ticker)
 	log_debug("Switching to lazy Subsystem timings for performance")
 
 /datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(taskbar_icon)
-	for(var/client/C as anything in GLOB.clients)
-		winset(C, null, "mainwindow.icon=[taskbar_icon]")
+	for(var/client/current_client as anything in GLOB.clients)
+		winset(current_client, null, "mainwindow.icon=[taskbar_icon]")
 
-/datum/controller/subsystem/ticker/proc/handle_mode_icon(dcs, client/C)
+/datum/controller/subsystem/ticker/proc/handle_mode_icon(dcs, client/current_client)
 	SIGNAL_HANDLER
 
-	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
+	winset(current_client, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
 
 
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()

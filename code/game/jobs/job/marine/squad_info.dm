@@ -26,13 +26,13 @@
 	return data
 
 /datum/squad/proc/get_leadership(mob/user)
-	var/mob/living/carbon/human/H = user
-	if (squad_leader && H.name == squad_leader.name)
+	var/mob/living/carbon/human/human = user
+	if (squad_leader && human.name == squad_leader.name)
 		return "sl"
 	else
 		for(var/fireteam in fireteams)
 			var/mob/living/carbon/human/ftl = fireteam_leaders[fireteam]
-			if (ftl && ftl.name == H.name)
+			if (ftl && ftl.name == human.name)
 				return fireteam
 	return FALSE
 
@@ -137,24 +137,24 @@
 		return
 
 	if(fireteam_leaders[team])
-		var/mob/living/carbon/human/H = null
+		var/mob/living/carbon/human/human = null
 		var/obj/item/card/id/ID = null
-		H = fireteam_leaders[team]
+		human = fireteam_leaders[team]
 		var/Med = FALSE
 		var/Eng = FALSE
-		if(H.has_used_pamphlet)
-			if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+		if(human.has_used_pamphlet)
+			if(skillcheck(human, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 				Med = TRUE
 			else
-				if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				if(skillcheck(human, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					Eng = TRUE
-		ID = H.get_idcard()
+		ID = human.get_idcard()
 		squad_info_data["fireteams"][team]["tl"] = list(
-							"name" = H.real_name,
+							"name" = human.real_name,
 							"med" = Med,
 							"eng" = Eng,
-							"status" = H.squad_status,
-							"refer" = "\ref[H]")
+							"status" = human.squad_status,
+							"refer" = "\ref[human]")
 		if(ID)
 			squad_info_data["fireteams"][team]["tl"] += list("paygrade" = get_paygrades(ID.paygrade, 1))
 			var/rank = ID.rank
@@ -211,29 +211,29 @@
 /datum/squad/proc/get_marines(team)
 	var/list/mar = list()
 	if(!team)
-		for(var/mob/living/carbon/human/H in marines_list)
-			if(H.assigned_fireteam || H == squad_leader)
+		for(var/mob/living/carbon/human/human in marines_list)
+			if(human.assigned_fireteam || human == squad_leader)
 				continue
-			if(H.squad_status == "K.I.A.")
+			if(human.squad_status == "K.I.A.")
 				squad_info_data["total_kia"]++
-			var/obj/item/card/id/ID = H.get_idcard()
+			var/obj/item/card/id/ID = human.get_idcard()
 			var/Med = FALSE
 			var/Eng = FALSE
-			if(H.has_used_pamphlet)
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+			if(human.has_used_pamphlet)
+				if(skillcheck(human, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+					if(skillcheck(human, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 						Eng = TRUE
-			mar[H.real_name] = list(
-					"name" = H.real_name,
+			mar[human.real_name] = list(
+					"name" = human.real_name,
 					"med" = Med,
 					"eng" = Eng,
-					"status" = H.squad_status,
-					"refer" = "\ref[H]"
+					"status" = human.squad_status,
+					"refer" = "\ref[human]"
 					)
 			if(ID)
-				mar[H.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
+				mar[human.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
 				var/rank = ID.rank
 				switch(rank)
 					if(JOB_SQUAD_MARINE)
@@ -252,35 +252,35 @@
 						rank = "SL"
 					else
 						rank = ""
-				if(H.rank_fallback)
-					rank = H.rank_fallback
-				mar[H.real_name] += list("rank" = rank)
+				if(human.rank_fallback)
+					rank = human.rank_fallback
+				mar[human.real_name] += list("rank" = rank)
 			else
-				mar[H.real_name] += list("paygrade" = "N/A")
-				mar[H.real_name] += list("rank" = "")
+				mar[human.real_name] += list("paygrade" = "N/A")
+				mar[human.real_name] += list("rank" = "")
 
 	else
-		for(var/mob/living/carbon/human/H in fireteams[team])
-			if(H == fireteam_leaders[team])
+		for(var/mob/living/carbon/human/human in fireteams[team])
+			if(human == fireteam_leaders[team])
 				continue
-			var/obj/item/card/id/ID = H.get_idcard()
+			var/obj/item/card/id/ID = human.get_idcard()
 			var/Med = FALSE
 			var/Eng = FALSE
-			if(H.has_used_pamphlet)
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+			if(human.has_used_pamphlet)
+				if(skillcheck(human, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+					if(skillcheck(human, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 						Eng = TRUE
-			mar[H.real_name] = list(
-				"name" = H.real_name,
+			mar[human.real_name] = list(
+				"name" = human.real_name,
 				"med" = Med,
 				"eng" = Eng,
-				"status" = H.squad_status,
-				"refer" = "\ref[H]"
+				"status" = human.squad_status,
+				"refer" = "\ref[human]"
 				)
 			if(ID)
-				mar[H.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
+				mar[human.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
 				var/rank = ID.rank
 				switch(rank)
 					if(JOB_SQUAD_MARINE)
@@ -299,8 +299,8 @@
 						rank = "SL"
 					else
 						rank = ""
-				mar[H.real_name] += list("rank" = rank)
+				mar[human.real_name] += list("rank" = rank)
 			else
-				mar[H.real_name] += list("paygrade" = "N/A")
-				mar[H.real_name] += list("rank" = "")
+				mar[human.real_name] += list("paygrade" = "N/A")
+				mar[human.real_name] += list("rank" = "")
 	return mar

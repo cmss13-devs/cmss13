@@ -408,22 +408,22 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		LAZYSET(playtime_data, "stored_xeno_playtime", list())
 		LAZYSET(playtime_data, "stored_other_playtime", list())
 
-		for(var/datum/entity/player_time/S in _stat)
-			LAZYSET(playtimes, S.role_id, S)
+		for(var/datum/entity/player_time/playtime in _stat)
+			LAZYSET(playtimes, playtime.role_id, playtime)
 
 /datum/entity/player/proc/on_read_stats(list/datum/entity/player_stat/_stat)
 	if(_stat)
-		for(var/datum/entity/player_stat/S as anything in _stat)
-			LAZYSET(stats, S.stat_id, S)
+		for(var/datum/entity/player_stat/current_stat as anything in _stat)
+			LAZYSET(stats, current_stat.stat_id, current_stat)
 
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)
 	if(!safe_key)
 		return null
-	var/datum/entity/player/P = DB_EKEY(/datum/entity/player, safe_key)
-	P.save()
-	P.sync()
-	return P
+	var/datum/entity/player/current_player = DB_EKEY(/datum/entity/player, safe_key)
+	current_player.save()
+	current_player.sync()
+	return current_player
 
 /client/var/datum/entity/player/player_data
 
@@ -526,28 +526,28 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		return
 	if(!notes)
 		notes = list()
-	for(var/datum/player_info/I in infos)
+	for(var/datum/player_info/current_info in infos)
 		var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
 		notes.Add(note)
 		note.player = src
 		note.player_id = id
-		note.admin_rank = I.rank
+		note.admin_rank = current_info.rank
 		if(!note.admin_rank)
 			note.admin_rank = "N/A"
-		note.date = I.timestamp
-		var/list/splitting = splittext(I.content, "|")
+		note.date = current_info.timestamp
+		var/list/splitting = splittext(current_info.content, "|")
 		if(splitting.len == 1)
-			note.text = I.content
+			note.text = current_info.content
 			note.is_ban = FALSE
 		if(splitting.len == 3)
 			note.text = splitting[3]
 			note.ban_time = text2num(replacetext(replacetext(splitting[2],"Duration: ","")," minutes",""))
 			note.is_ban = TRUE
 		if(splitting.len == 2)
-			note.text = I.content
+			note.text = current_info.content
 			note.is_ban = TRUE
 
-		var/admin_ckey = "[ckey(I.author)]"
+		var/admin_ckey = "[ckey(current_info.author)]"
 		var/datum/entity/player/admin = get_player_from_key(admin_ckey)
 		admin.sync()
 

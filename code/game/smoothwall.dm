@@ -9,20 +9,20 @@
 /atom/proc/relativewall() //atom because it should be useable both for walls, false walls, doors, windows, etc
 	var/junction = 0 //flag used for icon_state
 	var/i //iterator
-	var/turf/T //The turf we are checking
+	var/turf/current_turf //The turf we are checking
 	var/j //second iterator
-	var/k //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
+	var/current_atom //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
 
 	for(i in cardinal) //For all cardinal dir turfs
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with) //And for all types that we tile with
-			if(istype(T, j))
+			if(istype(current_turf, j))
 				junction |= i
 				break
 
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					junction |= i
 					break
 
@@ -30,21 +30,21 @@
 
 /atom/proc/relativewall_neighbours()
 	var/i //iterator
-	var/turf/T //The turf we are checking
+	var/turf/current_turf //The turf we are checking
 	var/j //second iterator
-	var/atom/k //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
+	var/atom/current_atom //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
 
 	for(i in cardinal) //For all cardinal dir turfs
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with) //And for all types that we tile with
-			if(istype(T, j))
-				T.relativewall() //If we tile this type, junction it
+			if(istype(current_turf, j))
+				current_turf.relativewall() //If we tile this type, junction it
 				break
 
-			for(k in T)
-				if(istype(k, j))
-					k.relativewall() //get_dir to i, since k is something inside the turf T
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
+					current_atom.relativewall() //get_dir to i, since current_atom is something inside the turf current_turf
 					break
 
 /atom/proc/handle_icon_junction(junction)
@@ -56,27 +56,27 @@
 /obj/structure/window/framed/relativewall()
 	var/jun_1 = 0 //Junction 1.
 	var/jun_2 = 0 //Junction 2.
-	var/turf/T
+	var/turf/current_turf
 	var/i
 	var/j
-	var/k
+	var/current_atom
 
 	for(i in cardinal)
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with)
-			if(istype(T, j))
+			if(istype(current_turf, j))
 				jun_1 |= i
 				break
 
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					jun_1 |= i
 					break
 
 		for(j in tiles_special)
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					jun_2 |= i
 					break
 
@@ -88,27 +88,27 @@
 /obj/structure/window_frame/relativewall()
 	var/jun_1 = 0 //Junction 1.
 	var/jun_2 = 0 //Junction 2.
-	var/turf/T
+	var/turf/current_turf
 	var/i
 	var/j
-	var/k
+	var/current_atom
 
 	for(i in cardinal)
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with)
-			if(istype(T, j))
+			if(istype(current_turf, j))
 				jun_1 |= i
 				break
 
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					jun_1 |= i
 					break
 
 		for(j in tiles_special)
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					jun_2 |= i
 					break
 
@@ -116,50 +116,50 @@
 
 // Special case for smoothing walls around multi-tile doors.
 /obj/structure/machinery/door/airlock/multi_tile/relativewall_neighbours()
-	var/turf/T //The turf we are checking
-	var/atom/k
+	var/turf/current_turf //The turf we are checking
+	var/atom/current_atom
 	var/j
 
 	if (dir == SOUTH)
-		T = locate(x, y+2, z)
+		current_turf = locate(x, y+2, z)
 		for(j in tiles_with)
-			if(istype(T, j))
-				T.relativewall()
+			if(istype(current_turf, j))
+				current_turf.relativewall()
 				break
-			for(k in T)
-				if(istype(k, j))
-					k.relativewall()
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
+					current_atom.relativewall()
 					break
 
-		T = get_step(src, SOUTH)
+		current_turf = get_step(src, SOUTH)
 		for(j in tiles_with)
-			if(istype(T, j))
-				T.relativewall()
+			if(istype(current_turf, j))
+				current_turf.relativewall()
 				break
-			for(k in T)
-				if(istype(k, j))
-					k.relativewall()
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
+					current_atom.relativewall()
 					break
 
 	else if (dir == EAST)
-		T = locate(x+2, y, z)
+		current_turf = locate(x+2, y, z)
 		for(j in tiles_with)
-			if(istype(T, j))
-				T.relativewall()
+			if(istype(current_turf, j))
+				current_turf.relativewall()
 				break
-			for(k in T)
-				if(istype(k, j))
-					k.relativewall()
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
+					current_atom.relativewall()
 					break
 
-		T = get_step(src, WEST)
+		current_turf = get_step(src, WEST)
 		for(j in tiles_with)
-			if(istype(T, j))
-				T.relativewall()
+			if(istype(current_turf, j))
+				current_turf.relativewall()
 				break
-			for(k in T)
-				if(istype(k, j))
-					k.relativewall()
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
+					current_atom.relativewall()
 					break
 
 // Not proud of this.
@@ -213,20 +213,20 @@
 /turf/open/asphalt/cement/relativewall()
 	var/junction = 0 //flag used for icon_state
 	var/i //iterator
-	var/turf/T //The turf we are checking
+	var/turf/current_turf //The turf we are checking
 	var/j //second iterator
-	var/k //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
+	var/current_atom //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
 
 	for(i in alldirs) //For all cardinal dir turfs
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with) //And for all types that we tile with
-			if(istype(T, j))
+			if(istype(current_turf, j))
 				junction |= i
 				break
 
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					junction |= i
 					break
 
@@ -235,20 +235,20 @@
 /turf/open/asphalt/cement_sunbleached/relativewall()
 	var/junction = 0 //flag used for icon_state
 	var/i //iterator
-	var/turf/T //The turf we are checking
+	var/turf/current_turf //The turf we are checking
 	var/j //second iterator
-	var/k //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
+	var/current_atom //third iterator (I know, that's a lot, but I'm trying to make this modular, so bear with me)
 
 	for(i in alldirs) //For all cardinal dir turfs
-		T = get_step(src, i)
-		if(!istype(T)) continue
+		current_turf = get_step(src, i)
+		if(!istype(current_turf)) continue
 		for(j in tiles_with) //And for all types that we tile with
-			if(istype(T, j))
+			if(istype(current_turf, j))
 				junction |= i
 				break
 
-			for(k in T)
-				if(istype(k, j))
+			for(current_atom in current_turf)
+				if(istype(current_atom, j))
 					junction |= i
 					break
 

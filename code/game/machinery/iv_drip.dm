@@ -39,12 +39,12 @@
 	..()
 
 	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		if(H.stat || get_dist(H, src) > 1 || H.blinded || H.lying)
+		var/mob/living/carbon/human/human = usr
+		if(human.stat || get_dist(human, src) > 1 || human.blinded || human.lying)
 			return
 
 		if(attached)
-			H.visible_message("[H] detaches \the [src] from \the [attached].", \
+			human.visible_message("[human] detaches \the [src] from \the [attached].", \
 			"You detach \the [src] from \the [attached].")
 			attached = null
 			update_icon()
@@ -52,7 +52,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
+			human.visible_message("[human] attaches \the [src] to \the [over_object].", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			update_icon()
@@ -73,8 +73,8 @@
 			beaker = W
 
 			var/reagentnames = ""
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				reagentnames += ";[R.name]"
+			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
+				reagentnames += ";[chem.name]"
 
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
@@ -118,20 +118,20 @@
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
 
-			var/mob/living/carbon/T = attached
+			var/mob/living/carbon/mob = attached
 
-			if(!istype(T))
+			if(!istype(mob))
 				return
-			if(ishuman(T))
-				var/mob/living/carbon/human/H = T
-				if(H.species && H.species.flags & NO_BLOOD)
+			if(ishuman(mob))
+				var/mob/living/carbon/human/human = mob
+				if(human.species && human.species.flags & NO_BLOOD)
 					return
 
 			// If the human is losing too much blood, beep.
-			if(T.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
+			if(mob.blood_volume < BLOOD_VOLUME_SAFE) if(prob(5))
 				visible_message("\The [src] beeps loudly.")
 
-			T.take_blood(beaker,amount)
+			mob.take_blood(beaker,amount)
 			update_icon()
 
 /obj/structure/machinery/iv_drip/attack_hand(mob/user as mob)

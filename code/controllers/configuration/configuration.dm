@@ -119,8 +119,8 @@
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
-	for(var/list/L in maplist)
-		QDEL_LIST_ASSOC_VAL(L)
+	for(var/list/map in maplist)
+		QDEL_LIST_ASSOC_VAL(map)
 	maplist = null
 	QDEL_LIST_ASSOC_VAL(defaultmaps)
 	defaultmaps = null
@@ -140,18 +140,18 @@
 	entries_by_type = _entries_by_type
 
 	for(var/I in typesof(/datum/config_entry)) //typesof is faster in this case
-		var/datum/config_entry/E = I
-		if(initial(E.abstract_type) == I)
+		var/datum/config_entry/current_entry = I
+		if(initial(current_entry.abstract_type) == I)
 			continue
-		E = new I
-		var/esname = E.name
+		current_entry = new I
+		var/esname = current_entry.name
 		var/datum/config_entry/test = _entries[esname]
 		if(test)
-			log_config("Error: [test.type] has the same name as [E.type]: [esname]! Not initializing [E.type]!")
-			qdel(E)
+			log_config("Error: [test.type] has the same name as [current_entry.type]: [esname]! Not initializing [current_entry.type]!")
+			qdel(current_entry)
 			continue
-		_entries[esname] = E
-		_entries_by_type[I] = E
+		_entries[esname] = current_entry
+		_entries_by_type[I] = current_entry
 
 
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)
@@ -172,28 +172,28 @@
 	log_config("Loading config file [filename]...")
 	var/list/lines = file2list("[directory]/[filename]")
 	var/list/_entries = entries
-	for(var/L in lines)
-		L = trim(L)
-		if(!L)
+	for(var/config in lines)
+		config = trim(config)
+		if(!config)
 			continue
 
-		var/firstchar = L[1]
+		var/firstchar = config[1]
 		if(firstchar == "#")
 			continue
 
 		var/lockthis = firstchar == "@"
 		if(lockthis)
-			L = copytext(L, length(firstchar) + 1)
+			config = copytext(config, length(firstchar) + 1)
 
-		var/pos = findtext(L, " ")
+		var/pos = findtext(config, " ")
 		var/entry = null
 		var/value = null
 
 		if(pos)
-			entry = lowertext(copytext(L, 1, pos))
-			value = copytext(L, pos + length(L[pos]))
+			entry = lowertext(copytext(config, 1, pos))
+			value = copytext(config, pos + length(config[pos]))
 		else
-			entry = lowertext(L)
+			entry = lowertext(config)
 
 		if(!entry)
 			continue
@@ -206,17 +206,17 @@
 				++.
 			continue
 
-		var/datum/config_entry/E = _entries[entry]
-		if(!E)
+		var/datum/config_entry/current_entry = _entries[entry]
+		if(!current_entry)
 			log_config("Unknown setting in configuration: '[entry]'")
 			continue
 
 		if(lockthis)
-			E.protection |= CONFIG_ENTRY_LOCKED
+			current_entry.protection |= CONFIG_ENTRY_LOCKED
 
-		if(E.deprecated_by)
-			var/datum/config_entry/new_ver = entries_by_type[E.deprecated_by]
-			var/new_value = E.DeprecationUpdate(value)
+		if(current_entry.deprecated_by)
+			var/datum/config_entry/new_ver = entries_by_type[current_entry.deprecated_by]
+			var/new_value = current_entry.DeprecationUpdate(value)
 			var/good_update = istext(new_value)
 			log_config("Entry [entry] is deprecated and will be removed soon. Migrate to [new_ver.name]![good_update ? " Suggested new value is: [new_value]" : ""]")
 			if(!warned_deprecated_configs)
@@ -224,21 +224,21 @@
 				warned_deprecated_configs = TRUE
 			if(good_update)
 				value = new_value
-				E = new_ver
+				current_entry = new_ver
 			else
 				warning("[new_ver.type] is deprecated but gave no proper return for DeprecationUpdate()")
 
-		var/validated = E.ValidateAndSet(value)
+		var/validated = current_entry.ValidateAndSet(value)
 		if(!validated)
 			log_config("Failed to validate setting \"[value]\" for [entry]")
 		else
-			if(E.modified && !E.dupes_allowed)
-				log_config("Duplicate setting for [entry] ([value], [E.resident_file]) detected! Using latest.")
+			if(current_entry.modified && !current_entry.dupes_allowed)
+				log_config("Duplicate setting for [entry] ([value], [current_entry.resident_file]) detected! Using latest.")
 
-		E.resident_file = filename
+		current_entry.resident_file = filename
 
 		if(validated)
-			E.modified = TRUE
+			current_entry.modified = TRUE
 
 	++.
 
@@ -253,31 +253,31 @@
 
 
 /datum/controller/configuration/proc/Get(entry_type)
-	var/datum/config_entry/E = entry_type
-	var/entry_is_abstract = initial(E.abstract_type) == entry_type
+	var/datum/config_entry/current_entry = entry_type
+	var/entry_is_abstract = initial(current_entry.abstract_type) == entry_type
 	if(entry_is_abstract)
 		CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
-	E = entries_by_type[entry_type]
-	if(!E)
+	current_entry = entries_by_type[entry_type]
+	if(!current_entry)
 		CRASH("Missing config entry for [entry_type]!")
-	if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+	if((current_entry.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
 		log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
 		return
-	return E.config_entry_value
+	return current_entry.config_entry_value
 
 
 /datum/controller/configuration/proc/Set(entry_type, new_val)
-	var/datum/config_entry/E = entry_type
-	var/entry_is_abstract = initial(E.abstract_type) == entry_type
+	var/datum/config_entry/current_entry = entry_type
+	var/entry_is_abstract = initial(current_entry.abstract_type) == entry_type
 	if(entry_is_abstract)
 		CRASH("Tried to set an abstract config_entry: [entry_type]")
-	E = entries_by_type[entry_type]
-	if(!E)
+	current_entry = entries_by_type[entry_type]
+	if(!current_entry)
 		CRASH("Missing config entry for [entry_type]!")
-	if((E.protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Set" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+	if((current_entry.protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Set" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
 		log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
 		return
-	return E.ValidateAndSet("[new_val]")
+	return current_entry.ValidateAndSet("[new_val]")
 
 
 /datum/controller/configuration/proc/LoadModes()
@@ -287,18 +287,18 @@
 	for(var/T in gamemode_cache)
 		// I wish I didn't have to instance the game modes in order to look up
 		// their information, but it is the only way (at least that I know of).
-		var/datum/game_mode/M = new T()
-		if(M.config_tag)
-			if(!(M.config_tag in modes)) //Ensure each mode is added only once
-				modes += M.config_tag
-				mode_names[M.config_tag] = M.name
-		GLOB.gamemode_roles[M.name] = M.get_roles_list()
-		qdel(M)
+		var/datum/game_mode/mode = new T()
+		if(mode.config_tag)
+			if(!(mode.config_tag in modes)) //Ensure each mode is added only once
+				modes += mode.config_tag
+				mode_names[mode.config_tag] = mode.name
+		GLOB.gamemode_roles[mode.name] = mode.get_roles_list()
+		qdel(mode)
 
 /datum/controller/configuration/proc/pick_mode(mode_name)
 	for(var/T in gamemode_cache)
-		var/datum/game_mode/M = T
-		var/ct = initial(M.config_tag)
+		var/datum/game_mode/mode = T
+		var/ct = initial(mode.config_tag)
 		if(ct && ct == mode_name)
 			return new T
 	return new /datum/game_mode/extended()

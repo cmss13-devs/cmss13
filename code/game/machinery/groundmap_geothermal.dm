@@ -220,9 +220,9 @@
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/F in machines)
-		floodlist += F
-		F.fswitch = src
+	for(var/obj/structure/machinery/colony_floodlight/light in machines)
+		floodlist += light
+		light.fswitch = src
 	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/Destroy()
@@ -242,10 +242,10 @@
 
 /obj/structure/machinery/colony_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/structure/machinery/colony_floodlight/C in floodlist)
-		if(!C.is_lit)
+	for(var/obj/structure/machinery/colony_floodlight/light_power in floodlist)
+		if(!light_power.is_lit)
 			continue
-		lightpower += C.power_tick
+		lightpower += light_power.power_tick
 	use_power(lightpower)
 
 /obj/structure/machinery/colony_floodlight_switch/power_change()
@@ -261,15 +261,15 @@
 		update_icon()
 
 /obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/colony_floodlight/F in floodlist)
+	for(var/obj/structure/machinery/colony_floodlight/light in floodlist)
 		spawn(rand(0,50))
-			F.is_lit = !F.is_lit
-			if(!F.damaged)
-				if(F.is_lit) //Shut it down
-					F.SetLuminosity(F.lum_value)
+			light.is_lit = !light.is_lit
+			if(!light.damaged)
+				if(light.is_lit) //Shut it down
+					light.SetLuminosity(light.lum_value)
 				else
-					F.SetLuminosity(0)
-			F.update_icon()
+					light.SetLuminosity(0)
+			light.update_icon()
 	return 0
 
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
@@ -409,13 +409,13 @@
 			return TRUE
 
 		else if(iscoil(I))
-			var/obj/item/stack/cable_coil/C = I
+			var/obj/item/stack/cable_coil/coil = I
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_CABLE)
-				if(C.get_amount() < 2)
+				if(coil.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -424,7 +424,7 @@
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
-					if(C.use(2))
+					if(coil.use(2))
 						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_SCREW
 						user.visible_message(SPAN_NOTICE("[user] starts replaces [src]'s damaged cables."),\

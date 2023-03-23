@@ -30,12 +30,12 @@
 	var/list/available_xenos = list()
 	var/list/unique_xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
-		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && !X.client)
-			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
-				available_xenos += X
+	for(var/mob/living/carbon/xenomorph/xenomorph as anything in GLOB.living_xeno_list)
+		var/area/current_area = get_area(xenomorph)
+		if(is_admin_level(xenomorph.z) && (!current_area || !(current_area.flags_area & AREA_ALLOW_XENO_JOIN)) || xenomorph.aghosted) continue //xenos on admin z level and aghosted ones don't count
+		if(istype(xenomorph) && !xenomorph.client)
+			if((xenomorph.away_timer >= XENO_LEAVE_TIMER) || (islarva(xenomorph) && xenomorph.away_timer >= XENO_LEAVE_TIMER_LARVA))
+				available_xenos += xenomorph
 
 	for(var/name in xeno_pool)
 		if(!(name in unique_xenos))
@@ -64,8 +64,8 @@
 		new_xeno.nocrit(xeno_wave)
 		xeno_pool -= userInput
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/player = xeno_candidate
+			player.close_spawn_windows()
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return TRUE
 	else
@@ -97,8 +97,8 @@
 
 		if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 			if(isnewplayer(xeno_candidate))
-				var/mob/new_player/N = xeno_candidate
-				N.close_spawn_windows()
+				var/mob/new_player/player = xeno_candidate
+				player.close_spawn_windows()
 			if(transfer_xeno(xeno_candidate, new_xeno))
 				return TRUE
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")

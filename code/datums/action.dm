@@ -71,12 +71,12 @@
  */
 /proc/give_action(mob/L, action_path, ...)
 	for(var/a in L.actions)
-		var/datum/action/A = a
-		if(A.unique && A.type == action_path)
-			if(A.hidden)
-				A.hidden = FALSE
+		var/datum/action/current_action = a
+		if(current_action.unique && current_action.type == action_path)
+			if(current_action.hidden)
+				current_action.hidden = FALSE
 				L.update_action_buttons()
-			return A
+			return current_action
 
 	var/datum/action/action
 	/// Cannot use arglist for both cases because of
@@ -108,10 +108,10 @@
 
 /proc/remove_action(mob/L, action_path)
 	for(var/a in L.actions)
-		var/datum/action/A = a
-		if(A.type == action_path)
-			A.remove_from(L)
-			return A
+		var/datum/action/current_action = a
+		if(current_action.type == action_path)
+			current_action.remove_from(L)
+			return current_action
 
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
@@ -132,11 +132,11 @@
 
 /proc/hide_action(mob/L, action_path)
 	for(var/a in L.actions)
-		var/datum/action/A = a
-		if(A.type == action_path)
-			A.hidden = TRUE
+		var/datum/action/current_action = a
+		if(current_action.type == action_path)
+			current_action.hidden = TRUE
 			L.update_action_buttons()
-			return A
+			return current_action
 
 /datum/action/proc/hide_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
@@ -146,11 +146,11 @@
 
 /proc/unhide_action(mob/L, action_path)
 	for(var/a in L.actions)
-		var/datum/action/A = a
-		if(A.type == action_path)
-			A.hidden = FALSE
+		var/datum/action/current_action = a
+		if(current_action.type == action_path)
+			current_action.hidden = FALSE
 			L.update_action_buttons()
-			return A
+			return current_action
 
 /datum/action/proc/unhide_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
@@ -183,8 +183,8 @@
 
 /datum/action/item_action/action_activate()
 	if(target)
-		var/obj/item/I = target
-		I.ui_action_click(owner, holder_item)
+		var/obj/item/item = target
+		item.ui_action_click(owner, holder_item)
 
 /datum/action/item_action/can_use_action()
 	if(ishuman(owner) && !owner.is_mob_incapacitated() && !owner.lying)
@@ -216,20 +216,20 @@
 	var/button_number = 0
 
 	if(hud_used.action_buttons_hidden)
-		for(var/datum/action/A in actions)
-			A.button.screen_loc = null
+		for(var/datum/action/current_action in actions)
+			current_action.button.screen_loc = null
 			if(reload_screen)
-				client.screen += A.button
+				client.screen += current_action.button
 	else
-		for(var/datum/action/A in actions)
-			var/atom/movable/screen/action_button/B = A.button
+		for(var/datum/action/current_action in actions)
+			var/atom/movable/screen/action_button/current_button = current_action.button
 			if(reload_screen)
-				client.screen += B
-			if(A.hidden)
-				B.screen_loc = null
+				client.screen += current_button
+			if(current_action.hidden)
+				current_button.screen_loc = null
 				continue
 			button_number++
-			B.screen_loc = B.get_button_screen_loc(button_number)
+			current_button.screen_loc = current_button.get_button_screen_loc(button_number)
 
 		if(!button_number)
 			hud_used.hide_actions_toggle.screen_loc = null

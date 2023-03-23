@@ -102,10 +102,10 @@
 		return
 	var/job_key = strip_improper(job)
 	if(job_stats_list["[job_key]"])
-		var/datum/entity/player_stats/job/S = job_stats_list["[job_key]"]
-		if(!S.display_stat && noteworthy)
-			S.display_stat = noteworthy
-		return S
+		var/datum/entity/player_stats/job/current_stat = job_stats_list["[job_key]"]
+		if(!current_stat.display_stat && noteworthy)
+			current_stat.display_stat = noteworthy
+		return current_stat
 	var/datum/entity/player_stats/job/new_stat = new()
 	new_stat.display_stat = noteworthy
 	new_stat.player = src
@@ -119,10 +119,10 @@
 		return
 	var/weapon_key = strip_improper(weapon)
 	if(weapon_stats_list["[weapon_key]"])
-		var/datum/entity/weapon_stats/S = weapon_stats_list["[weapon_key]"]
-		if(!S.display_stat && noteworthy)
-			S.display_stat = noteworthy
-		return S
+		var/datum/entity/weapon_stats/current_stat = weapon_stats_list["[weapon_key]"]
+		if(!current_stat.display_stat && noteworthy)
+			current_stat.display_stat = noteworthy
+		return current_stat
 	var/datum/entity/weapon_stats/new_stat = new()
 	new_stat.display_stat = noteworthy
 	new_stat.player = src
@@ -135,10 +135,10 @@
 		return
 	var/caste_key = strip_improper(caste)
 	if(caste_stats_list["[caste_key]"])
-		var/datum/entity/player_stats/caste/S = caste_stats_list["[caste_key]"]
-		if(!S.display_stat && noteworthy)
-			S.display_stat = noteworthy
-		return S
+		var/datum/entity/player_stats/caste/current_stat = caste_stats_list["[caste_key]"]
+		if(!current_stat.display_stat && noteworthy)
+			current_stat.display_stat = noteworthy
+		return current_stat
 	var/datum/entity/player_stats/caste/new_stat = new()
 	new_stat.display_stat = noteworthy
 	new_stat.player = src
@@ -153,11 +153,11 @@
 	var/ability_key = strip_improper(ability)
 	if(abilities_used["[ability_key]"])
 		return abilities_used["[ability_key]"]
-	var/datum/entity/statistic/S = new()
-	S.name = ability_key
-	S.value = 0
-	abilities_used["[ability_key]"] = S
-	return S
+	var/datum/entity/statistic/current_stat = new()
+	current_stat.name = ability_key
+	current_stat.value = 0
+	abilities_used["[ability_key]"] = current_stat
+	return current_stat
 
 /datum/entity/statistic/round/proc/recalculate_nemesis()
 	for(var/caste_statistic in caste_stats_list)
@@ -168,56 +168,56 @@
 		job_entity.recalculate_nemesis()
 
 /datum/entity/statistic/round/proc/track_ability_usage(ability, amount = 1)
-	var/datum/entity/statistic/S = setup_ability(ability)
-	S.value += amount
+	var/datum/entity/statistic/current_stat = setup_ability(ability)
+	current_stat.value += amount
 
 /datum/entity/statistic/round/proc/setup_faction(faction)
 	if(!faction)
 		return
 	var/faction_key = strip_improper(faction)
 	if(!participants["[faction_key]"])
-		var/datum/entity/statistic/S = new()
-		S.name = faction_key
-		S.value = 0
-		participants["[faction_key]"] = S
+		var/datum/entity/statistic/current_stat = new()
+		current_stat.name = faction_key
+		current_stat.value = 0
+		participants["[faction_key]"] = current_stat
 	if(!final_participants["[faction_key]"])
-		var/datum/entity/statistic/S = new()
-		S.name = faction_key
-		S.value = 0
-		final_participants["[faction_key]"] = S
+		var/datum/entity/statistic/current_stat = new()
+		current_stat.name = faction_key
+		current_stat.value = 0
+		final_participants["[faction_key]"] = current_stat
 	if(!hijack_participants["[faction_key]"])
-		var/datum/entity/statistic/S = new()
-		S.name = faction_key
-		S.value = 0
-		hijack_participants["[faction_key]"] = S
+		var/datum/entity/statistic/current_stat = new()
+		current_stat.name = faction_key
+		current_stat.value = 0
+		hijack_participants["[faction_key]"] = current_stat
 	if(!total_deaths["[faction_key]"])
-		var/datum/entity/statistic/S = new()
-		S.name = faction_key
-		S.value = 0
-		total_deaths["[faction_key]"] = S
+		var/datum/entity/statistic/current_stat = new()
+		current_stat.name = faction_key
+		current_stat.value = 0
+		total_deaths["[faction_key]"] = current_stat
 
 /datum/entity/statistic/round/proc/track_new_participant(faction, amount = 1)
 	if(!faction)
 		return
 	if(!participants["[faction]"])
 		setup_faction(faction)
-	var/datum/entity/statistic/S = participants["[faction]"]
-	S.value += amount
+	var/datum/entity/statistic/current_stat = participants["[faction]"]
+	current_stat.value += amount
 
 /datum/entity/statistic/round/proc/track_final_participant(faction, amount = 1)
 	if(!faction)
 		return
 	if(!final_participants["[faction]"])
 		setup_faction(faction)
-	var/datum/entity/statistic/S = final_participants["[faction]"]
-	S.value += amount
+	var/datum/entity/statistic/current_stat = final_participants["[faction]"]
+	current_stat.value += amount
 
 /datum/entity/statistic/round/proc/track_round_end()
 	real_time_end = world.realtime
 	for(var/i in GLOB.alive_mob_list)
-		var/mob/M = i
-		if(M.mind)
-			track_final_participant(M.faction)
+		var/mob/mob = i
+		if(mob.mind)
+			track_final_participant(mob.faction)
 
 	save()
 	detach()
@@ -227,14 +227,14 @@
 		return
 	if(!hijack_participants["[faction]"])
 		setup_faction(faction)
-	var/datum/entity/statistic/S = hijack_participants["[faction]"]
-	S.value += amount
+	var/datum/entity/statistic/current_stat = hijack_participants["[faction]"]
+	current_stat.value += amount
 
 /datum/entity/statistic/round/proc/track_hijack()
 	for(var/i in GLOB.alive_mob_list)
-		var/mob/M = i
-		if(M.mind)
-			track_hijack_participant(M.faction)
+		var/mob/mob = i
+		if(mob.mind)
+			track_hijack_participant(mob.faction)
 	round_hijack_time = world.time
 	save()
 
@@ -247,8 +247,8 @@
 		return
 	if(!total_deaths["[faction]"])
 		setup_faction(faction)
-	var/datum/entity/statistic/S = total_deaths["[faction]"]
-	S.value += amount
+	var/datum/entity/statistic/current_stat = total_deaths["[faction]"]
+	current_stat.value += amount
 
 /datum/entity/statistic/round/proc/track_death(datum/entity/statistic/death/new_death)
 	if(new_death)
@@ -302,43 +302,43 @@
 	var/total_predaliens = 0
 	var/total_humans_created = 0
 	for(var/statistic in participants)
-		var/datum/entity/statistic/S = participants[statistic]
-		if(S.name in FACTION_LIST_XENOMORPH)
-			total_xenos_created += S.value
-		else if(S.name == FACTION_YAUTJA)
-			total_predators_spawned += S.value
-		else if(S.name == FACTION_PREDALIEN)
-			total_predators_spawned += S.value
+		var/datum/entity/statistic/current_stat = participants[statistic]
+		if(current_stat.name in FACTION_LIST_XENOMORPH)
+			total_xenos_created += current_stat.value
+		else if(current_stat.name == FACTION_YAUTJA)
+			total_predators_spawned += current_stat.value
+		else if(current_stat.name == FACTION_PREDALIEN)
+			total_predators_spawned += current_stat.value
 		else
-			total_humans_created += S.value
+			total_humans_created += current_stat.value
 
 	var/xeno_count_during_hijack = 0
 	var/human_count_during_hijack = 0
 
 	for(var/statistic in hijack_participants)
-		var/datum/entity/statistic/S = hijack_participants[statistic]
-		if(S.name in FACTION_LIST_XENOMORPH)
-			xeno_count_during_hijack += S.value
-		else if(S.name == FACTION_PREDALIEN)
-			xeno_count_during_hijack += S.value
-		else if(S.name == FACTION_YAUTJA)
+		var/datum/entity/statistic/current_stat = hijack_participants[statistic]
+		if(current_stat.name in FACTION_LIST_XENOMORPH)
+			xeno_count_during_hijack += current_stat.value
+		else if(current_stat.name == FACTION_PREDALIEN)
+			xeno_count_during_hijack += current_stat.value
+		else if(current_stat.name == FACTION_YAUTJA)
 			continue
 		else
-			human_count_during_hijack += S.value
+			human_count_during_hijack += current_stat.value
 
 	var/end_of_round_marines = 0
 	var/end_of_round_xenos = 0
 
 	for(var/statistic in final_participants)
-		var/datum/entity/statistic/S = final_participants[statistic]
-		if(S.name in FACTION_LIST_XENOMORPH)
-			end_of_round_xenos += S.value
-		else if(S.name == FACTION_PREDALIEN)
-			end_of_round_xenos += S.value
-		else if(S.name == FACTION_YAUTJA)
+		var/datum/entity/statistic/current_stat = final_participants[statistic]
+		if(current_stat.name in FACTION_LIST_XENOMORPH)
+			end_of_round_xenos += current_stat.value
+		else if(current_stat.name == FACTION_PREDALIEN)
+			end_of_round_xenos += current_stat.value
+		else if(current_stat.name == FACTION_YAUTJA)
 			continue
 		else
-			end_of_round_marines += S.value
+			end_of_round_marines += current_stat.value
 
 	var/stats = ""
 	stats += "[SSticker.mode.round_finished]\n"

@@ -30,8 +30,8 @@ SUBSYSTEM_DEF(mapping)
 	if(!configs)
 		configs = load_map_configs(ALL_MAPTYPES, error_if_missing = FALSE)
 		for(var/i in GLOB.clients)
-			var/client/C = i
-			winset(C, null, "mainwindow.title='[CONFIG_GET(string/title)] - [SSmapping.configs[SHIP_MAP].map_name]'")
+			var/client/current_client = i
+			winset(current_client, null, "mainwindow.title='[CONFIG_GET(string/title)] - [SSmapping.configs[SHIP_MAP].map_name]'")
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
@@ -188,8 +188,8 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
 	var/list/filelist = flist(path)
 	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-		map_templates[T.name] = T
+		var/datum/map_template/template = new(path = "[path][map]", rename = "[map]")
+		map_templates[template.name] = template
 
 	preloadShuttleTemplates()
 
@@ -227,10 +227,10 @@ SUBSYSTEM_DEF(mapping)
 	for(var/item in subtypesof(/datum/map_template/shuttle))
 		var/datum/map_template/shuttle/shuttle_type = item
 
-		var/datum/map_template/shuttle/S = new shuttle_type()
+		var/datum/map_template/shuttle/current_shuttle = new shuttle_type()
 
-		shuttle_templates[S.shuttle_id] = S
-		map_templates[S.shuttle_id] = S
+		shuttle_templates[current_shuttle.shuttle_id] = current_shuttle
+		map_templates[current_shuttle.shuttle_id] = current_shuttle
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
 	UNTIL(initialized && !clearing_reserved_turfs)
@@ -268,26 +268,26 @@ SUBSYSTEM_DEF(mapping)
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
-	var/turf/A = get_turf(locate(8,8,z))
-	var/turf/B = get_turf(locate(world.maxx - 8,world.maxy - 8,z))
-	var/block = block(A, B)
+	var/turf/first_turf = get_turf(locate(8,8,z))
+	var/turf/second_turf = get_turf(locate(world.maxx - 8,world.maxy - 8,z))
+	var/block = block(first_turf, second_turf)
 	for(var/t in block)
 		// No need to empty() these, because it's world init and they're
 		// already /turf/open/space/basic.
-		var/turf/T = t
-		T.flags_atom |= UNUSED_RESERVATION_TURF
+		var/turf/current_turf = t
+		current_turf.flags_atom |= UNUSED_RESERVATION_TURF
 	unused_turfs["[z]"] = block
 	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
 
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
 	for(var/i in turfs)
-		var/turf/T = i
-		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
-		LAZYINITLIST(unused_turfs["[T.z]"])
-		unused_turfs["[T.z]"] |= T
-		T.flags_atom |= UNUSED_RESERVATION_TURF
-		GLOB.areas_by_type[world.area].contents += T
+		var/turf/reserve_turf = i
+		reserve_turf.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
+		LAZYINITLIST(unused_turfs["[reserve_turf.z]"])
+		unused_turfs["[reserve_turf.z]"] |= reserve_turf
+		reserve_turf.flags_atom |= UNUSED_RESERVATION_TURF
+		GLOB.areas_by_type[world.area].contents += reserve_turf
 		CHECK_TICK
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
@@ -308,9 +308,9 @@ SUBSYSTEM_DEF(mapping)
 	reserve_turfs(clearing)
 
 /datum/controller/subsystem/mapping/proc/reg_in_areas_in_z(list/areas)
-	for(var/B in areas)
-		var/area/A = B
-		A.reg_in_areas_in_z()
+	for(var/second_turf in areas)
+		var/area/first_turf = second_turf
+		first_turf.reg_in_areas_in_z()
 
 /// Gets a name for the marine ship as per the enabled ship map configuration
 /datum/controller/subsystem/mapping/proc/get_main_ship_name()

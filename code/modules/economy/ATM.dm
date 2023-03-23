@@ -56,7 +56,7 @@ log transactions
 				authenticated_account = null
 	else if(authenticated_account)
 		if(istype(I,/obj/item/spacecash))
-			var/obj/item/spacecash = I
+			var/obj/item/spacecash/spacecash = I
 			//consume the money
 			if(spacecash.counterfeit)
 				authenticated_account.money += round(spacecash.worth * 0.25)

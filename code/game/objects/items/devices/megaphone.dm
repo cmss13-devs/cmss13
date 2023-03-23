@@ -32,15 +32,13 @@
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 
 	if((src.loc == user && !user.is_mob_incapacitated()))
-		var/list/mob/living/carbon/human/human_viewers = viewers(user) // slow but we need it
-		for(var/mob/living/carbon/human/listener in human_viewers)
+		var/list/mob/human_viewers = viewers(user) // slow but we need it
+		for(var/mob/listener in human_viewers)
 			if(isyautja(listener)) //NOPE
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 
-		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_LOCALSAY("<B>[user]</B> (<a href='byond://?src=\ref[observer];track=\ref[user]'>F</a>) broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]"))
 		user.langchat_long_speech(message, human_viewers, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

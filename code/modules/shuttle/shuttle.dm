@@ -374,6 +374,9 @@
 	var/can_move_docking_ports = FALSE //if this shuttle can move docking ports other than the one it is docked at
 	var/list/hidden_turfs = list()
 
+	var/faction = FACTION_MARINE  ///The faction of this docking port (aka, on which ship it is located)
+	var/home_id = "" ///Id of the home port
+
 	var/crashing = FALSE
 
 	var/shuttle_flags = NONE

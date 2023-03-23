@@ -19,7 +19,6 @@
 	use_ripples = FALSE
 	var/list/gears = list()
 	var/list/obj/structure/machinery/door/poddoor/railing/railings = list()
-
 /obj/docking_port/stationary/supply/alamyer
 	name ="ASRS platform"
 	id = "supply platform"

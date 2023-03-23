@@ -688,6 +688,249 @@ var/datum/controller/supply/supply_controller = new()
 
 	name = "[name] - [ordername]"
 
+/datum/supply_ui
+	var/atom/source_object
+	var/tgui_name = "Cargo"
+	///Id of the shuttle controlled
+	var/shuttle_id = ""
+	///Reference to the supply shuttle
+	var/obj/docking_port/mobile/supply
+	///Faction of the supply console linked
+	var/faction = FACTION_MARINE
+	///Id of the home port
+	var/home_id = ""
+	var/stat = 0
+
+/datum/supply_ui/proc/inoperable(additional_flags = 0)
+	return (stat & (NOPOWER|BROKEN|additional_flags))
+
+/datum/supply_ui/New(atom/source_object)
+	. = ..()
+	src.source_object = source_object
+	RegisterSignal(source_object, COMSIG_PARENT_QDELETING, .proc/clean_ui)
+
+///Signal handler to delete the ui when the source object is deleting
+/datum/supply_ui/proc/clean_ui()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/datum/supply_ui/Destroy(force, ...)
+	source_object = null
+	return ..()
+
+/datum/supply_ui/ui_host()
+	return source_object
+
+/datum/supply_ui/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+	return TRUE
+
+/datum/supply_ui/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+
+	if(!ui)
+		if(shuttle_id)
+			supply = SSshuttle.getShuttle(shuttle_id)
+			supply.home_id = home_id
+			supply.faction = faction
+		ui = new(user, src, tgui_name, source_object.name)
+		ui.open()
+
+/datum/supply_ui/ui_static_data(mob/user)
+	. = list()
+	.["categories"] = GLOB.all_supply_groups
+	.["supplypacks"] = SSpoints.supply_packs_ui
+	.["supplypackscontents"] = SSpoints.supply_packs_contents
+	.["elevator_size"] = supply_shuttle?.return_number_of_turfs()
+
+/datum/supply_ui/ui_data(mob/living/user)
+	. = list()
+	.["currentpoints"] = round(SSpoints.supply_points[user.faction])
+	.["requests"] = list()
+	for(var/key in SSpoints.requestlist)
+		var/datum/supply_order/SO = SSpoints.requestlist[key]
+		if(SO.faction != user.faction)
+			continue
+		var/list/packs = list()
+		var/cost = 0
+		for(var/P in SO.pack)
+			var/datum/supply_packs/SP = P
+			packs += SP.type
+			cost += SP.cost
+		.["requests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
+	.["deniedrequests"] = list()
+	for(var/i in length(SSpoints.deniedrequests) to 1 step -1)
+		var/datum/supply_order/SO = SSpoints.deniedrequests[SSpoints.deniedrequests[i]]
+		if(SO.faction != user.faction)
+			continue
+		var/list/packs = list()
+		var/cost = 0
+		for(var/P in SO.pack)
+			var/datum/supply_packs/SP = P
+			packs += SP.type
+			cost += SP.cost
+		.["deniedrequests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
+	.["approvedrequests"] = list()
+	for(var/i in length(SSpoints.approvedrequests) to 1 step -1)
+		var/datum/supply_order/SO = SSpoints.approvedrequests[SSpoints.approvedrequests[i]]
+		if(SO.faction != user.faction)
+			continue
+		var/list/packs = list()
+		var/cost = 0
+		for(var/datum/supply_packs/SP AS in SO.pack)
+			packs += SP.type
+			cost += SP.cost
+		.["approvedrequests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
+	.["awaiting_delivery"] = list()
+	.["awaiting_delivery_orders"] = 0
+	for(var/key in SSpoints.shoppinglist[faction])
+		var/datum/supply_order/SO = LAZYACCESSASSOC(SSpoints.shoppinglist, faction, key)
+		.["awaiting_delivery_orders"]++
+		var/list/packs = list()
+		for(var/datum/supply_packs/SP AS in SO.pack)
+			packs += SP.type
+		.["awaiting_delivery"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "packs" = packs, "authed_by" = SO.authorised_by))
+	.["export_history"] = list()
+	var/id = 0
+	for(var/datum/export_report/report AS in SSpoints.export_history)
+		if(report.faction != user.faction)
+			continue
+		.["export_history"] += list(list("id" = id, "name" = report.export_name, "points" = report.points))
+		id++
+	.["shopping_history"] = list()
+	for(var/datum/supply_order/SO AS in SSpoints.shopping_history)
+		if(SO.faction != user.faction)
+			continue
+		var/list/packs = list()
+		var/cost = 0
+		for(var/P in SO.pack)
+			var/datum/supply_packs/SP = P
+			packs += SP.type
+			cost += SP.cost
+		.["shopping_history"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
+	.["shopping_list_cost"] = 0
+	.["shopping_list_items"] = 0
+	.["shopping_list"] = list()
+	for(var/i in SSpoints.shopping_cart)
+		var/datum/supply_packs/SP = SSpoints.supply_packs[i]
+		.["shopping_list_items"] += SSpoints.shopping_cart[i]
+		.["shopping_list_cost"] += SP.cost * SSpoints.shopping_cart[SP.type]
+		.["shopping_list"][SP.type] = list("count" = SSpoints.shopping_cart[SP.type])
+	if(supply_shuttle)
+		if(supply_shuttle?.mode == SHUTTLE_CALL)
+			if(is_mainship_level(supply_shuttle.destination.z))
+				.["elevator"] = "Raising"
+				.["elevator_dir"] = "up"
+			else
+				.["elevator"] = "Lowering"
+				.["elevator_dir"] = "down"
+		else if(supply_shuttle?.mode == SHUTTLE_IDLE)
+			if(is_mainship_level(supply_shuttle.z))
+				.["elevator"] = "Raised"
+				.["elevator_dir"] = "down"
+			else
+				.["elevator"] = "Lowered"
+				.["elevator_dir"] = "up"
+		else
+			if(is_mainship_level(supply_shuttle.z))
+				.["elevator"] = "Lowering"
+				.["elevator_dir"] = "down"
+			else
+				.["elevator"] = "Raising"
+				.["elevator_dir"] = "up"
+	else
+		.["elevator"] = "MISSING!"
+
+/datum/supply_ui/proc/get_shopping_cart(mob/user)
+	return SSpoints.shopping_cart
+
+/datum/supply_ui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("cart")
+			var/datum/supply_packs/P = SSpoints.supply_packs[text2path(params["id"])]
+			if(!P)
+				return
+			var/shopping_cart = get_shopping_cart(ui.user)
+			switch(params["mode"])
+				if("removeall")
+					shopping_cart -= P.type
+				if("removeone")
+					if(shopping_cart[P.type] > 1)
+						shopping_cart[P.type]--
+					else
+						shopping_cart -= P.type
+				if("addone")
+					if(shopping_cart[P.type])
+						shopping_cart[P.type]++
+					else
+						shopping_cart[P.type] = 1
+				if("addall")
+					var/mob/living/ui_user = ui.user
+					var/cart_cost = 0
+					for(var/i in shopping_cart)
+						var/datum/supply_packs/SP = SSpoints.supply_packs[i]
+						cart_cost += SP.cost * shopping_cart[SP.type]
+					var/excess_points = SSpoints.supply_points[ui_user.faction] - cart_cost
+					var/number_to_buy = min(round(excess_points / P.cost), 20) //hard cap at 20
+					if(shopping_cart[P.type])
+						shopping_cart[P.type] += number_to_buy
+					else
+						shopping_cart[P.type] = number_to_buy
+			. = TRUE
+		if("send")
+			if(supply_shuttle.mode == SHUTTLE_IDLE && is_mainship_level(supply_shuttle.z))
+				if (!supply_shuttle.check_blacklist())
+					to_chat(usr, "For safety reasons, the Automated Storage and Retrieval System cannot store live, friendlies, classified nuclear weaponry or homing beacons.")
+					playsound(supply_shuttle.return_center_turf(), 'sound/machines/buzz-two.ogg', 50, 0)
+				else
+					playsound(supply_shuttle.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
+					SSshuttle.moveShuttleToTransit(shuttle_id, TRUE)
+					addtimer(CALLBACK(supply_shuttle, /obj/docking_port/mobile/supply/proc/sell), 15 SECONDS)
+			else
+				var/obj/docking_port/D = SSshuttle.getDock(home_id)
+				supply_shuttle.buy(usr)
+				playsound(D.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
+				SSshuttle.moveShuttle(shuttle_id, home_id, TRUE)
+			. = TRUE
+		if("approve")
+			var/datum/supply_order/O = SSpoints.requestlist["[params["id"]]"]
+			if(!O)
+				O = SSpoints.deniedrequests["[params["id"]]"]
+			if(!O)
+				return
+			SSpoints.approve_request(O, ui.user)
+			. = TRUE
+		if("deny")
+			var/datum/supply_order/O = SSpoints.requestlist["[params["id"]]"]
+			if(!O)
+				return
+			SSpoints.deny_request(O)
+			. = TRUE
+		if("approveall")
+			for(var/i in SSpoints.requestlist)
+				var/datum/supply_order/O = SSpoints.requestlist[i]
+				SSpoints.approve_request(O, ui.user)
+			. = TRUE
+		if("denyall")
+			for(var/i in SSpoints.requestlist)
+				var/datum/supply_order/O = SSpoints.requestlist[i]
+				SSpoints.deny_request(O)
+			. = TRUE
+		if("buycart")
+			SSpoints.buy_cart(ui.user)
+			. = TRUE
+		if("clearcart")
+			var/list/shopping_cart = get_shopping_cart(ui.user)
+			shopping_cart.Cut()
+			. = TRUE
+
+
+
 
 /obj/structure/machinery/computer/ordercomp/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -838,17 +1081,17 @@ var/datum/controller/supply/supply_controller = new()
 			if (supply.canMove())
 				dat += "Moving<BR>"
 			else
-				if (supply.at_station())
-					if (supply.docking_controller)
-						switch(supply.docking_controller.get_docking_status())
+				if (supply.afterShuttleMove())
+					if (supply.canMove)
+						switch(supply.canMove.afterShuttleMove())
 							if ("docked") dat += "Raised<BR>"
 							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [supply.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [supply.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("docking") dat += "Raising [supply.check_blacklist()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Lowering [supply.check_blacklist()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
 
-					if (supply.can_launch())
+					if (supply.canMove())
 						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
 					else if (supply.can_cancel())
 						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
@@ -1201,10 +1444,10 @@ var/datum/controller/supply/supply_controller = new()
 	play_sound_handler('sound/handling/click_2.ogg', 11 SECONDS) // armor suit light turns off (cause he died)
 
 	var/list/turf/open/clear_turfs = list()
-	var/area/area_shuttle = shuttle?.get_location_area()
-	if(!area_shuttle)
+	var/area/place = get_area(src)
+	if(!place)
 		return
-	for(var/turf/elevator_turfs in area_shuttle)
+	for(var/turf/elevator_turfs in place)
 		if(elevator_turfs.density || elevator_turfs.contents?.len)
 			continue
 		clear_turfs |= elevator_turfs

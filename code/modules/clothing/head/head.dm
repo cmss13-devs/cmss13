@@ -283,7 +283,6 @@
 		..()
 
 /obj/item/clothing/head/cmcap/attackby(obj/item/W, mob/user)
-	..()
 	return pockets.attackby(W, user)
 
 /obj/item/clothing/head/cmcap/on_pocket_insertion()

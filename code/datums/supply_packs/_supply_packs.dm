@@ -6,6 +6,7 @@
 
 // The lists of supply groups and contraband groups have been moved to /obj/structure/machinery/computer/supplycomp definition as static variables.
 
+GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory"))
 /datum/supply_packs
 	var/name = "Basic supply pack."
 	/// If this variable is null (not if it's an empty list), *and* so is containertype, it won't show up on the order computer.

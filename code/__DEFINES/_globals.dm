@@ -48,6 +48,8 @@
 	##X = sortAssoc(##X);\
 }
 
+#define GLOBAL_LIST_INIT(X, InitValue) GLOBAL_RAW(/list/##X); GLOBAL_MANAGED(X, InitValue)
+
 /// Standard BYOND global, do not use
 #define GLOBAL_REAL_VAR(X) var/global/##X
 

@@ -98,7 +98,16 @@ var/datum/controller/supply/supply_controller = new()
 	name = "\improper Airtight plastic flaps"
 	desc = "Heavy-duty, airtight, plastic flaps."
 
-
+/datum/supply_order
+	var/id
+	var/orderer
+	var/orderer_rank
+	var/orderer_ckey
+	var/reason
+	var/authorised_by
+	var/list/datum/supply_packs/pack
+	///What faction ordered this
+	var/faction = FACTION_MARINE
 /obj/structure/machinery/computer/supplycomp
 	name = "ASRS console"
 	desc = "A console for the Automated Storage Retrieval System"
@@ -743,7 +752,7 @@ var/datum/controller/supply/supply_controller = new()
 	.["categories"] = GLOB.all_supply_groups
 	.["supplypacks"] = SSpoints.supply_packs_ui
 	.["supplypackscontents"] = SSpoints.supply_packs_contents
-	.["elevator_size"] = supply_shuttle?.return_number_of_turfs()
+	.["elevator_size"] = supply?.return_number_of_turfs()
 
 /datum/supply_ui/ui_data(mob/living/user)
 	. = list()
@@ -779,7 +788,7 @@ var/datum/controller/supply/supply_controller = new()
 			continue
 		var/list/packs = list()
 		var/cost = 0
-		for(var/datum/supply_packs/SP AS in SO.pack)
+		for(var/datum/supply_packs/SP in SO.pack)
 			packs += SP.type
 			cost += SP.cost
 		.["approvedrequests"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "cost" = cost, "packs" = packs, "authed_by" = SO.authorised_by))
@@ -789,7 +798,7 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_order/SO = LAZYACCESSASSOC(SSpoints.shoppinglist, faction, key)
 		.["awaiting_delivery_orders"]++
 		var/list/packs = list()
-		for(var/datum/supply_packs/SP AS in SO.pack)
+		for(var/datum/supply_packs/SP in SO.pack)
 			packs += SP.type
 		.["awaiting_delivery"] += list(list("id" = SO.id, "orderer" = SO.orderer, "orderer_rank" = SO.orderer_rank, "reason" = SO.reason, "packs" = packs, "authed_by" = SO.authorised_by))
 	.["export_history"] = list()
@@ -883,17 +892,17 @@ var/datum/controller/supply/supply_controller = new()
 						shopping_cart[P.type] = number_to_buy
 			. = TRUE
 		if("send")
-			if(supply_shuttle.mode == SHUTTLE_IDLE && is_mainship_level(supply_shuttle.z))
-				if (!supply_shuttle.check_blacklist())
+			if(supply.mode == SHUTTLE_IDLE && is_mainship_level(supply.z))
+				if (!supply.check_blacklist())
 					to_chat(usr, "For safety reasons, the Automated Storage and Retrieval System cannot store live, friendlies, classified nuclear weaponry or homing beacons.")
-					playsound(supply_shuttle.return_center_turf(), 'sound/machines/buzz-two.ogg', 50, 0)
+					playsound(supply.return_center_turf(), 'sound/machines/buzz-two.ogg', 50, 0)
 				else
-					playsound(supply_shuttle.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
+					playsound(supply.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
 					SSshuttle.moveShuttleToTransit(shuttle_id, TRUE)
-					addtimer(CALLBACK(supply_shuttle, /obj/docking_port/mobile/supply/proc/sell), 15 SECONDS)
+					addtimer(CALLBACK(supply, /obj/docking_port/mobile/supply/proc/sell), 15 SECONDS)
 			else
 				var/obj/docking_port/D = SSshuttle.getDock(home_id)
-				supply_shuttle.buy(usr)
+				supply.buy(usr)
 				playsound(D.return_center_turf(), 'sound/machines/elevator_move.ogg', 50, 0)
 				SSshuttle.moveShuttle(shuttle_id, home_id, TRUE)
 			. = TRUE

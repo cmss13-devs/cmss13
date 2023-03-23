@@ -291,7 +291,7 @@
 
 /obj/item/clothing/under/marine/dress
 	name = "old marine dress uniform"
-	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
+	desc = "A dress uniform typically worn by marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
@@ -302,6 +302,14 @@
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
 	black_market_value = 15
+
+/obj/item/clothing/under/marine/dress/command
+	name = "old marine command dress uniform"
+	desc = "A dress uniform typically worn by the most battle-hardened marines of the USCM. Shame on you if you get this dirty."
+	icon_state = "command_formal"
+	worn_state = "command_formal"
+	specialty = "command dress"
+	black_market_value = 20
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\

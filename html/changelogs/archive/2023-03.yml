@@ -303,3 +303,71 @@
   - bugfix: Shuttles' transit time is once again properly calculated.
   roll1d20st:
   - qol: Made it easier to make Muffins, Cookies, and Waffles
+2023-03-22:
+  BeagleGaming1:
+  - qol: Adds a new chat tab for Mentor-related stuff
+  CapCamIII:
+  - bugfix: Most non-standard armored gloves no longer take on squad color.
+  Morrow:
+  - rscadd: Added timelock for corporate liaison
+  - rscdel: Removed corporate liaison dropship control access
+  - rscadd: COs no longer have emote cooldown
+  Puckaboo2:
+  - code_imp: Renamed some text strings to apply existing icon states.
+  - imageadd: Added dozens of new icon states to missing objects.
+  - bugfix: A huge list of items can now be used.
+  - imageadd: Adds a few missing goodies.
+  - code_imp: Made some icon state text strings empty so they would not cause missing
+      icon state errors.
+  - rscdel: Deleted some lines of code that caused missing icon state errors.
+  - imageadd: All weapons that can be camouflaged now have a basic USCM sprite to
+      make the linter happy.
+  - imageadd: The Energy Pistol now has an icon state.
+  - imageadd: Everything under the obj/item/clothing path that had missing icon states
+      now have their icon states again, including all donor clothing.
+  - imageadd: Added all missing Donor clothing icon states.
+  - imageadd: Added a Formal Command uniform. Fancyyy. Don't get this dirty.
+  - code_imp: Fixed some lines of code responsible for flagging some objects as having
+      missing icon states when they already existed.
+  - bugfix: Added icon states that have been deleted in previous PRs of long ago.
+  - bugfix: Jungle Cowls will now have their proper camouflage in jungle maps instead
+      of using snow for all maps.
+  - bugfix: Metal, ceramic, and scrap plates are functional and can now be slipped
+      into armor.
+  - bugfix: Yellow and Blue jumpsuits exist and can now be worn.
+  - bugfix: The M44R Holster and the Medical Storage Rig will now properly appear
+      in the map editor.
+  - rscdel: Deleted some unnecessary and outdated objects that were flagged as having
+      missing icon states.
+  - rscdel: Removed a few duplicate icon states.
+  Tsunamico:
+  - spellcheck: A minimal change to the text!
+  harryob:
+  - qol: id locks can now be removed icly
+  realforest2001:
+  - bugfix: Create Bank Account verb now correctly assigns a paygrade to ID
+  - bugfix: Fixes camel case in hellhound typepath causing duplication of entries
+2023-03-23:
+  BeagleGaming1:
+  - spellcheck: fixed the to_chat for the katana cane
+  H20Begod:
+  - rscadd: ' sound/voice/upp_warcry/* (Sound files, such as `warcry_male_1` , for
+      the UPP)'
+  - code_imp: changed `code/modules/mob/living/carbon/human/emote.dm`, in order to
+      add conditionals that will check a player's faction. Right now, it's a simple
+      conditional, however, the code is there to be changed to an switch should somebody
+      else come and add more faction-based voicelines.
+  Tsunamico:
+  - admin: panel that allows admins to trash the ship about.
+  - code_imp: adds a shakeship proc that can be called to rock the shipmap.
+  harryob:
+  - code_imp: cleaned up some mentorhelp code
+  nauticall:
+  - code_imp: Reduced the frequency of several ambient sounds on the Almayer to make
+      them less annoying.
+  - sounddel: Removed a CIC ambient sound that didn't fit with the rest.
+  - mapadd: Readds the autodoc back to the Almayer.
+  - balance: Neuters the autodoc so that it can only perform emergency treatments
+      and life-saving procedures; it can no longer do complex surgeries.
+  - bugfix: Fixed broken icon states on the autodoc, sleeper, and body scanner console
+      when using a map editor.

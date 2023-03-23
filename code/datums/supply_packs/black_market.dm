@@ -1046,6 +1046,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	/// If you want to use this in mapping, you can force-set the contents via this.
 	var/forced_rng
 
+#define UNLUCKY_GRENADE_AMOUNT 3
+
 /obj/structure/largecrate/black_market/clf_supplies/unpack()
 	var/loot_luck = rand(1, 100)
 	if(forced_rng)
@@ -1213,7 +1215,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_NOTICE("It's just a bunch of junk!")
 		if(91 to 95)
 		// We don't really have any other kind of booby trap so this will do
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			var/obj/item/explosive/grenade/spawnergrenade/claymore_launcher/spawner = new(loc)
+			spawner.prime()
 			loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
 		if(96 to 99)
 		// Oh boy. Big booby trap!
@@ -1226,10 +1229,12 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_HIGHDANGER("RUN!!!")
 		if(100)
 		// You got real fuckin' unlucky kid :joker:
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
-			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			for(var/i = 1 to UNLUCKY_GRENADE_AMOUNT)
+				var/obj/item/explosive/grenade/spawnergrenade/claymore_launcher/spawner = new(loc)
+				spawner.prime()
 			loot_message = SPAN_HIGHDANGER("It was SUPER booby trapped! RUN!")
 
 	visible_message(loot_message, max_distance = 4)
 	return ..()
+
+#undef UNLUCKY_GRENADE_AMOUNT

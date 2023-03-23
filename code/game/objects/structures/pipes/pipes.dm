@@ -14,6 +14,9 @@
 
 	var/ventcrawl_message_busy = FALSE //Prevent spamming
 
+	/// The grenade subtypes that pipes will use when they explode
+	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
+
 /obj/structure/pipes/Initialize(mapload, ...)
 	. = ..()
 
@@ -184,5 +187,33 @@
 
 	return node.pipe_color
 
+/**
+ * Makes a warning telegraph appear and, after a certain duration, explodes.
+ *
+ * Params:
+ * time_till: required, the time until the explosion occurs. The sound file lasts 5 seconds.
+ */
+/obj/structure/pipes/proc/warning_explode(time_till)
+	if(!time_till)
+		CRASH("No time given to /warning_explode.")
+	var/turf/position = get_turf(src)
+	if(protected_by_pylon(TURF_PROTECTION_MORTAR, position))
+		return
+
+	new /obj/effect/warning/explosive(position, time_till)
+	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
+	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_till)
+	visible_message(SPAN_HIGHDANGER("[src] begins hissing violently!"))
+
+/**
+ * Makes the pipe go boom.
+ */
+/obj/structure/pipes/proc/kablooie()
+	var/new_cause_data = create_cause_data("bursting pipe")
+	for(var/path in exploding_types)
+		var/obj/item/explosive/grenade/exploder = new path(get_turf(src))
+		exploder.cause_data = new_cause_data
+		exploder.prime()
+	qdel(src)
 
 #undef VENT_SOUND_DELAY

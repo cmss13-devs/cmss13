@@ -1,5 +1,0 @@
-author: "nauticall"
-delete-after: True
-changes:
-  - code_imp: "Reduced the frequency of several ambient sounds on the Almayer to make them less annoying."
-  - sounddel: "Removed a CIC ambient sound that didn't fit with the rest."

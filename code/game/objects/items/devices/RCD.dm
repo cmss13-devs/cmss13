@@ -35,6 +35,10 @@ RCD
 	spark_system.attach(src)
 	return
 
+/obj/item/device/rcd/Initialize()
+	QDEL_NULL(spark_system)
+	return ..()
+
 
 /obj/item/device/rcd/attackby(obj/item/W, mob/user)
 	..()

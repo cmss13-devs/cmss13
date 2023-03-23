@@ -347,3 +347,27 @@
   realforest2001:
   - bugfix: Create Bank Account verb now correctly assigns a paygrade to ID
   - bugfix: Fixes camel case in hellhound typepath causing duplication of entries
+2023-03-23:
+  BeagleGaming1:
+  - spellcheck: fixed the to_chat for the katana cane
+  H20Begod:
+  - rscadd: ' sound/voice/upp_warcry/* (Sound files, such as `warcry_male_1` , for
+      the UPP)'
+  - code_imp: changed `code/modules/mob/living/carbon/human/emote.dm`, in order to
+      add conditionals that will check a player's faction. Right now, it's a simple
+      conditional, however, the code is there to be changed to an switch should somebody
+      else come and add more faction-based voicelines.
+  Tsunamico:
+  - admin: panel that allows admins to trash the ship about.
+  - code_imp: adds a shakeship proc that can be called to rock the shipmap.
+  harryob:
+  - code_imp: cleaned up some mentorhelp code
+  nauticall:
+  - code_imp: Reduced the frequency of several ambient sounds on the Almayer to make
+      them less annoying.
+  - sounddel: Removed a CIC ambient sound that didn't fit with the rest.
+  - mapadd: Readds the autodoc back to the Almayer.
+  - balance: Neuters the autodoc so that it can only perform emergency treatments
+      and life-saving procedures; it can no longer do complex surgeries.
+  - bugfix: Fixed broken icon states on the autodoc, sleeper, and body scanner console
+      when using a map editor.

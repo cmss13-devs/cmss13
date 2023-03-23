@@ -107,6 +107,7 @@
 
 /obj/effect/landmark/thunderdome/one
 	name = "Thunderdome Team 1"
+	icon_state = "thunderdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload, ...)
 	. = ..()
@@ -118,6 +119,7 @@
 
 /obj/effect/landmark/thunderdome/two
 	name = "Thunderdome Team 2"
+	icon_state = "thunderdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload, ...)
 	. = ..()
@@ -129,6 +131,7 @@
 
 /obj/effect/landmark/thunderdome/admin
 	name = "Thunderdome Admin"
+	icon_state = "thunderdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload, ...)
 	. = ..()
@@ -140,6 +143,7 @@
 
 /obj/effect/landmark/thunderdome/observer
 	name = "Thunderdome Observer"
+	icon_state = "thunderdome_observer"
 
 /obj/effect/landmark/thunderdome/observer/Initialize(mapload, ...)
 	. = ..()
@@ -163,6 +167,7 @@
 
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
+	icon_state = "xeno_spawn"
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()

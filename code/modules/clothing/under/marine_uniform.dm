@@ -81,12 +81,11 @@
 	flags_jumpsuit = FALSE
 	specialty = "USCM tanker"
 
-/obj/item/clothing/under/marine/tanker/New(loc,expected_type = type,
-	new_name[] = list(MAP_ICE_COLONY = "\improper USCM tanker snow uniform"),
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT),
-	override_icon_state[] = list(MAP_ICE_COLONY = "s_marine_tanker")
-	)
-	..(loc,expected_type, override_icon_state, new_name, new_protection)
+/obj/item/clothing/under/marine/tanker/New(loc,
+	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT),
+	override_icon_state = list(MAP_ICE_COLONY = "s_marine_tanker"))
+
+	..(loc, new_protection, override_icon_state)
 
 /obj/item/clothing/under/marine/chef
 	name = "\improper USCM Mess Technician uniform"

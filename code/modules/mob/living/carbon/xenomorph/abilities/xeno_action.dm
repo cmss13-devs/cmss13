@@ -204,12 +204,14 @@
 // IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
-/datum/action/xeno_action/proc/apply_cooldown(cooldown_modifier = 1)
+/datum/action/xeno_action/proc/apply_cooldown(cooldown_modifier = 1, bypass_return = FALSE)
 	if(!owner)
 		return
 	var/mob/living/carbon/xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
-	if (cooldown_timer_id != TIMER_ID_NULL)
+	//Bypass_return is used for abilities that reduce cooldown upon hitting a target.
+	//ie. vamp's Rush
+	if (cooldown_timer_id != TIMER_ID_NULL && !bypass_return)
 	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.

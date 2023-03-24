@@ -769,12 +769,11 @@
 /obj/item/weapon/gun/rifle/xm52/get_examine_text(mob/user)
 	. = ..()
 	if(linked_human)
-		if(is_locked)
 			. += SPAN_NOTICE("It is registered to [linked_human].")
-		else
-			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
+		if(!is_locked)
+			. += SPAN_HELPFUL("Biometric restrictions are unlocked.")
 	else
-		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
+		. += SPAN_NOTICE("It's unregistered. Place your hand on the trigger guard to register biometrics.")
 
 /obj/item/weapon/gun/rifle/xm52/proc/remove_idlock()
 	SIGNAL_HANDLER

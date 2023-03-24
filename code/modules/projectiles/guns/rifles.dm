@@ -761,8 +761,9 @@
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
-/obj/item/weapon/gun/rifle/xm52/proc/name_after_co(mob/living/carbon/human/H)
+/obj/item/weapon/gun/rifle/xm52/proc/register_owner(mob/living/carbon/human/H)
 	linked_human = H
+	to_chat(H, SPAN_NOTICE("[icon2html(src, usr)] You place your hand on \the [src], and register your biometrics."))
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/rifle/xm52/get_examine_text(mob/user)

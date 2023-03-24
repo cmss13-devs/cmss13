@@ -352,15 +352,17 @@
 	//If limb was damaged before and took enough damage, try to cut or tear it off
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
-		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !issynth(owner))\
-			&& CONFIG_GET(flag/limbs_can_break)\
-			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
-		)
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
-				droplimb(0, 0, damage_source)
-				return
+				var/obj/item/clothing/head/helmet/owner_helmet = owner.head
+				if(istype(owner_helmet) && !issynth(owner))
+					owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", "Your helmet goes flying off from the impact!")
+					owner.drop_inv_item_on_ground(owner_helmet)
+					owner_helmet.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				else
+					droplimb(0, 0, damage_source)
+					return
 
 	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()

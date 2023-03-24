@@ -664,7 +664,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/suppressor,
-		/obj/item/attachable/attached_gun/underbarrel_8g
+		/obj/item/attachable/attached_gun/underbarrel_8g,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/underbarrel_8g)

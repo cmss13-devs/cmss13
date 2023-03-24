@@ -32,8 +32,9 @@
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 
 	if((src.loc == user && !user.is_mob_incapacitated()))
-		var/list/mob/human_viewers = viewers(user) // slow but we need it
-		for(var/mob/listener in human_viewers)
+		// get mobs in the range of the user
+		var/list/mob/listeners = viewers(user) // slow but we need it
+		for(var/mob/listener in listeners)
 			if(!ishuman(listener) && !isobserver(listener))
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue

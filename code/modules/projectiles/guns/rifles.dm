@@ -636,6 +636,143 @@
 /obj/item/weapon/gun/rifle/m46c/stripped
 	random_spawn_chance = 0//no extra attachies on spawn, still gets its stock though.
 
+
+//-------------------------------------------------------
+// Commanding Officer Shotgun // Its like rainbow six siege
+
+/obj/item/weapon/gun/rifle/xm52
+	name = "\improper XM52 tactical shotgun"
+	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	icon_state = "xm52"
+	item_state = "xm52"
+	fire_sound = 'sound/weapons/gun_lever_action_fire.ogg'
+	reload_sound = 'sound/weapons/handling/m41_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/xm52
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/attached_gun/underbarrel_8g
+	)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/underbarrel_8g)
+	map_specific_decoration = TRUE
+	indestructible = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
+
+	var/mob/living/carbon/human/linked_human
+	var/is_locked = TRUE
+
+/obj/item/weapon/gun/rifle/xm52/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 17, "rail_x" = 20, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 1, "stock_y" = 16)
+
+/obj/item/weapon/gun/rifle/xm52/Initialize(mapload, ...)
+	LAZYADD(actions_types, /datum/action/item_action/xm52/toggle_id_lock)
+	. = ..()
+
+/obj/item/weapon/gun/rifle/xm52/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 21, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+
+/obj/item/weapon/gun/rifle/xm52/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_5*2
+	burst_amount = 0
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/xm52/able_to_fire(mob/user)
+	. = ..()
+	if(is_locked && linked_human && linked_human != user)
+		if(linked_human.is_revivable() || linked_human.stat != DEAD)
+			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
+			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
+			return FALSE
+
+		linked_human = null
+		is_locked = FALSE
+		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
+
+/obj/item/weapon/gun/rifle/xm52/pickup(user)
+	if(!linked_human)
+		name_after_co(user)
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
+	..()
+
+//---ability actions--\\
+
+/datum/action/item_action/xm52/action_activate()
+	var/obj/item/weapon/gun/rifle/xm52/protag_gun = holder_item
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/protagonist = owner
+	if(protagonist.is_mob_incapacitated() || protag_gun.get_active_firearm(protagonist, FALSE) != holder_item)
+		return
+
+/datum/action/item_action/xm52/update_button_icon()
+	return
+
+/datum/action/item_action/xm52/toggle_id_lock/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle ID lock"
+	action_icon_state = "id_lock_locked"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/xm52/toggle_id_lock/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/xm52/protag_gun = holder_item
+	protag_gun.toggle_lock()
+	if(protag_gun.is_locked)
+		action_icon_state = "id_lock_locked"
+	else
+		action_icon_state = "id_lock_unlocked"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+
+// -- ability actions procs -- \\
+
+/obj/item/weapon/gun/rifle/xm52/proc/toggle_lock(mob/user)
+	if(linked_human && usr != linked_human)
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
+		return
+	else if(!linked_human)
+		name_after_co(usr)
+
+	is_locked = !is_locked
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] [src]."))
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+/obj/item/weapon/gun/rifle/xm52/proc/name_after_co(mob/living/carbon/human/H)
+	linked_human = H
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
+
+/obj/item/weapon/gun/rifle/xm52/get_examine_text(mob/user)
+	. = ..()
+	if(linked_human)
+		if(is_locked)
+			. += SPAN_NOTICE("It is registered to [linked_human].")
+		else
+			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
+	else
+		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
+
+/obj/item/weapon/gun/rifle/xm52/proc/remove_idlock()
+	SIGNAL_HANDLER
+	linked_human = null
+
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
 

@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/effect/essentials_set/co/riflepreset, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("XM52 tactical shotgun", 0, /obj/effect/essentials_set/co/shotgunpreset, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A MK1 Magazine", 30, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
@@ -11,6 +12,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Extended Magazine", 20, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
 		list("M56B Smartgun Drum", 20, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_REGULAR),
+		list("XM52 slug magazine", 30, /obj/item/ammo_magazine/rifle/xm52, null, VENDOR_ITEM_REGULAR),
+		list("XM52 flechette magazine", 30, /obj/item/ammo_magazine/rifle/xm52/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("High Impact Mateba Speedloader (.454)", 15, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_RECOMMENDED),
@@ -21,12 +24,13 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("SHOTGUN AMMUNITION", 0, null, null, null),
 		list("Buckshot Shells", 20, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
 		list("Shotgun Slugs", 20, /obj/item/ammo_magazine/shotgun/slugs, null, VENDOR_ITEM_REGULAR),
-		list("Flechette Shells", 20, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
+		list("Buckshot 8g shells", 20, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
+		list("XM52 incendiary magazine", 60, /obj/item/ammo_magazine/rifle/xm52/incendiary, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
@@ -115,4 +119,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 /obj/effect/essentials_set/co/riflepreset
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/rifle/m46c,
+	)
+
+/obj/effect/essentials_set/co/shotgunpreset
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/rifle/xm52,
 	)

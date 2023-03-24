@@ -395,3 +395,34 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+//--------------------------------------------------------
+//Xm52 12 gauge ammo
+/obj/item/ammo_magazine/rifle/xm52
+	name = "\improper XM52 slug magazine (12g)"
+	desc = "A magazine for the XM52 semi-automatic tactical shotgun. It carries twenty slug rounds in twelve gauge, more than enough for your close-quarter combat needs."
+	caliber = "12g"
+	icon_state = "xm52_slug"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/slug
+	max_rounds = 15
+	gun_type = /obj/item/weapon/gun/rifle/xm52
+	transfer_handful_amount = 5
+
+/obj/item/ammo_magazine/rifle/xm52/flechette
+	name = "\improper XM52 flechette magazine (12g)"
+	desc = "A magazine for the XM52 semi-automatic tactical shotgun. It carries twenty flechette rounds in twelve gauge, more than enough for your close-quarter combat needs."
+	caliber = "12g"
+	icon_state = "xm52_flechette"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/flechette
+	gun_type = /obj/item/weapon/gun/rifle/xm52
+
+/obj/item/ammo_magazine/rifle/xm52/incendiary
+	name = "\improper XM52 incendiary magazine (12g)"
+	desc = "A magazine for the XM52 semi-automatic tactical shotgun. It carries twenty incendiary rounds in twelve gauge, more than enough for your close-quarter combat needs."
+	caliber = "12g"
+	icon_state = "xm52_incendiary"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/incendiary
+	gun_type = /obj/item/weapon/gun/rifle/xm52

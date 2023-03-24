@@ -712,8 +712,7 @@
 
 /obj/item/weapon/gun/rifle/xm52/pickup(user)
 	if(!linked_human)
-		name_after_co(user)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
+		register_owner(user)
 	..()
 
 //---ability actions--\\

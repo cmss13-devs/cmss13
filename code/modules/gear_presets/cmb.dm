@@ -600,7 +600,7 @@
 	. = ..()
 	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 
-	assignment = "Anchorpoint Station Corpsman"
+	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
 	role_comm_title = "A-HM"

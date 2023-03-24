@@ -536,10 +536,15 @@ CULT
 /datum/action/human_action/activable/zombie/leap
 	name = "Leap"
 	action_icon_state = "leap"
-	var/maxdistance = 5 //leap how far again?
+	///how far can we leap?
+	var/maxdistance = 5
+	/// speed at which we pounce
 	var/throw_speed = SPEED_AVERAGE
-	var/windup = FALSE // Is there a do_after before we pounce?
-	var/windup_duration = 20 // How long to wind up, if applicable
+	/// Is there a do_after before we pounce?
+	var/windup = FALSE
+	/// How long to wind up, if applicable
+	var/windup_duration = 20
+	/// can it be interrupted?
 	var/windup_interruptable = TRUE
 	var/leap_distance = 0
 	cooldown_message_on = TRUE

@@ -175,6 +175,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/merc
 	name = "custom built shotgun"
 	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "cshotgun"
 	item_state = "cshotgun"
 
@@ -238,6 +239,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/combat
 	name = "\improper MK221 tactical shotgun"
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "mk221"
 	item_state = "mk221"
 
@@ -314,8 +316,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
-	name = "\improper MK210 tactical shotgun"
-	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM Special Operations Forces wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
+	name = "\improper XM38 tactical shotgun"
+	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM Special Operations Forces wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, designated XM38, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
 	icon_state = "mk210"
 	item_state = "mk210"
 
@@ -361,6 +363,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/type23
 	name = "\improper Type 23 riot shotgun"
 	desc = "As UPP soldiers frequently reported being outmatched by enemy combatants, UPP High Command commissioned a large amount of Type 23 shotguns, originally used for quelling defector colony riots. This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "type23"
 	item_state = "type23"
 	fire_sound = 'sound/weapons/gun_type23.ogg' //not perfect, too small
@@ -488,6 +491,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double
 	name = "\improper Spearhead Rival 78"
 	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. Only holds two 12g shells at a time."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
 
@@ -600,7 +604,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_position--
 	return 1
 
-/obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user)
+/obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user, override)
 	if(!current_mag)
 		return
 	current_mag.chamber_closed = !current_mag.chamber_closed
@@ -659,6 +663,89 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+
+// COULDN'T THINK OF ANOTHER WAY SORRY!!!! SOMEONE ADD A GUN COMPONENT!!
+
+/obj/item/weapon/gun/shotgun/double/cane
+	name = "fancy cane"
+	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "fancy_cane"
+	item_state = "fancy_cane"
+	pickup_sound = null
+	drop_sound = null
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		)
+	caliber = ".44"
+	gauge = ".44" // misery
+	force = 15 // hollow. also too hollow to support one's weight like normal canes
+	attack_speed = 1.5 SECONDS
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/cane
+	fire_sound = null
+	fire_sounds = list('sound/weapons/gun_silenced_oldshot1.ogg', 'sound/weapons/gun_silenced_oldshot2.ogg') // Uses the old sounds because they're more 'James Bond'-y
+	break_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
+	seal_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
+	attachable_allowed = list()
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY|GUN_ONE_HAND_WIELDED|GUN_ANTIQUE|GUN_NO_DESCRIPTION|GUN_UNUSUAL_DESIGN
+	flags_item = NO_FLAGS
+
+	inherent_traits = list(TRAIT_GUN_SILENCED)
+
+/obj/item/weapon/gun/shotgun/double/cane/Initialize(mapload, spawn_empty)
+	. = ..()
+	AddElement(/datum/element/traitbound/gun_silenced)
+
+/obj/item/weapon/gun/shotgun/double/cane/set_gun_config_values()
+	..()
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = FIRE_DELAY_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/shotgun/double/cane/gun_safety_handle(mob/user)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		to_chat(user, SPAN_NOTICE("You turn [src] back into its normal cane stance."))
+		playsound(user, 'sound/weapons/handling/nsg23_unload.ogg', 25, 1)
+	else
+		to_chat(user, SPAN_DANGER("You unlock the safety and change [src] into its gun stance!"))
+		playsound(user, 'sound/weapons/handling/smg_reload.ogg', 25, 1)
+
+	if(current_mag.chamber_closed == FALSE) // close the chamber
+		open_chamber(user, TRUE)
+
+	update_desc()
+	update_icon()
+
+	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
+
+/obj/item/weapon/gun/shotgun/double/cane/proc/update_desc()
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		name = initial(name)
+		desc = initial(desc)
+	else
+		name = "cane revolver"
+		desc = initial(desc) + " Apparently, because it's a large revolver. Who'da thunk it?"
+
+/obj/item/weapon/gun/shotgun/double/cane/open_chamber(mob/user, override)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY && !override)
+		to_chat(user, SPAN_WARNING("Not with the safety on!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/shotgun/double/cane/update_icon()
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		icon_state = initial(icon_state)
+
+	else if(current_mag.chamber_closed == FALSE)
+		icon_state = initial(icon_state) + "_gun_open"
+	else
+		icon_state = initial(icon_state) + "_gun"
 
 //M-OU53 SHOTGUN | Marine mid-range slug/flechette only coach gun (except its an over-under). Support weapon for slug stuns / flechette DOTS (when implemented). Buckshot in this thing is just stupidly strong, hence the denial.
 
@@ -760,6 +847,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/twobore
 	name = "two-bore rifle"
 	desc = "An enormously heavy double-barreled rifle with a bore big enough to fire the Moon. If you want an intact trophy, don't aim for the head. \nThe recoil is apocalyptic: if you aren't highly experienced with it and braced using a Specialist Activation, you won't get a second shot."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "twobore"
 	item_state = "twobore"
 	unacidable = TRUE
@@ -973,6 +1061,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump
 	name = "\improper M37A2 pump shotgun"
 	desc = "An Armat Battlefield Systems classic design, the M37A2 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m37"
 	item_state = "m37"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
@@ -1138,6 +1227,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
 	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling burst fire mode."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
@@ -1176,6 +1266,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
 	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling burst fire mode."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m3717"
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717

@@ -113,6 +113,10 @@
 
 		if("announce")
 			if(authenticated == 2)
+				if(usr.client.prefs.muted & MUTE_IC)
+					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+					return
+
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
@@ -294,13 +298,15 @@
 
 		if("selectlz")
 			if(!SSticker.mode.active_lz)
-				var/lz_choices = list()
-				for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-					if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
-						lz_choices += console
-				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
-				if(new_lz)
-					SSticker.mode.select_lz(new_lz)
+				var/lz_choices = list("lz1", "lz2")
+				var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+				if(!new_lz)
+					return
+				if(new_lz == "lz1")
+					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+				else
+					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
 
 		else return FALSE
 

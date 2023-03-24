@@ -4,7 +4,7 @@
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
 
-/atom/movable/screen/ghost/attack_ghost(mob/dead/observer/user)
+/atom/movable/screen/attack_ghost(mob/dead/observer/user)
 	Click()
 
 /atom/movable/screen/ghost/follow_ghosts

@@ -16,6 +16,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
+	minimum_evolve_time = 15 MINUTES
+
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25
@@ -29,7 +31,7 @@
 /mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
-	desc = "A huge alien with an enormous armored head crest."
+	desc = "A huge alien with an enormous armored crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"
 	plasma_types = list(PLASMA_CHITIN)

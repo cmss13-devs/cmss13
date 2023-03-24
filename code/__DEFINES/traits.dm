@@ -167,6 +167,8 @@
 #define TRAIT_BIMEX "t_bimex"
 ///Stops emote cooldown
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
+/// If the mob is holding a cane.
+#define TRAIT_HOLDS_CANE "t_holds_cane"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -303,6 +305,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
+///Status trait coming from their job
+#define TRAIT_SOURCE_JOB "t_s_job"
 ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
 ///Status trait coming from equipment
@@ -321,3 +325,5 @@ GLOBAL_LIST(trait_name_map)
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
+///Status trait coming from generic items
+#define TRAIT_SOURCE_ITEM "t_s_item"

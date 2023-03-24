@@ -3170,7 +3170,7 @@
 /area/adminlevel/chinook/offices)
 "kW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/m4ra,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -10986,13 +10986,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "OS" = (
-/obj/structure{
-	density = 1;
-	desc = "A shuttle control computer. This one seems powered down.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "syndishuttle";
-	name = "nonfunctional shuttle control console"
-	},
+/obj/structure/machinery/computer/shuttle/ert/broken,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
@@ -12981,12 +12975,12 @@
 /obj/structure/window/reinforced/ultra,
 /obj/structure/machinery/door/window/ultra{
 	dir = 8;
-	name = "L42A execution rifles";
+	name = "M4RA execution rifles";
 	req_access_txt = "2;3;12;19"
 	},
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
+/obj/item/weapon/gun/rifle/m4ra,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"

@@ -242,7 +242,7 @@
 		T.SetOpacity(opacity)
 		multi_filler += list(T)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/proc/get_filler_turfs()
+/obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()
 	. = list()
 	for(var/i = 1, i < width, i++)
 		if(dir in list(NORTH, SOUTH))
@@ -277,9 +277,22 @@
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
-	if(is_loworbit_level(z))
+	if(is_reserved_level(z))
 		return // in orbit
 	..()
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(1)
+		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

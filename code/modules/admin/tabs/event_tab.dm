@@ -261,20 +261,6 @@
 
 	message_admins("[key_name_admin(usr)] canceled an emergency evacuation.")
 
-/datum/admins/proc/disable_shuttle_console()
-	set name = "Disable Shuttle Console"
-	set desc = "Prevents a shuttle control console from being accessed."
-	set category = "Admin.Events"
-	if(!SSticker.mode || !check_rights(R_ADMIN))
-		return
-
-	var/obj/structure/machinery/computer/shuttle_control/input = tgui_input_list(usr, "Choose which console to disable", "Shuttle Controls", GLOB.shuttle_controls)
-	if(!input)
-		return
-	input.disabled = !input.disabled
-
-	message_admins("[key_name_admin(usr)] set [input]'s disabled to [input.disabled].")
-
 /datum/admins/proc/add_req_points()
 	set name = "Add Requisitions Points"
 	set desc = "Add points to the ship requisitions department."
@@ -283,7 +269,7 @@
 		return
 
 	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
-	if(points_to_add == 0)
+	if(!points_to_add)
 		return
 	else if((supply_controller.points + points_to_add) < 0)
 		supply_controller.points = 0
@@ -421,50 +407,27 @@
 	set desc = "Force a dropship to launch"
 	set category = "Admin.Shuttles"
 
-	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", list("Dropship 1", "Dropship 2"))
+	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
+	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", shuttles)
 	if(!tag) return
 	var/crash = 0
-	switch(alert("Would you like to force a crash?", , "Yes", "No", "Cancel"))
+	switch(tgui_input_list(usr, "Would you like to force a crash?", "Force crash", list("Yes", "No")))
 		if("Yes") crash = 1
 		if("No") crash = 0
 		else return
 
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles[MAIN_SHIP_NAME + " " + tag]
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
+
 	if(!dropship)
 		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
 		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
-	if(crash && dropship.location != 1)
-		switch(alert("Error: Shuttle is on the ground. Proceed with standard launch anyways?", , "Yes", "No"))
-			if("Yes")
-				dropship.process_state = WAIT_LAUNCH
-				log_admin("[usr] ([usr.key]) forced a [dropship.iselevator? "elevator" : "shuttle"] using the Force Dropship verb")
-			if("No")
-				to_chat(src, SPAN_WARNING("Aborting shuttle launch."))
-				return
-	else if(crash)
-		dropship.process_state = FORCE_CRASH
+	if(crash)
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
+		computer.hijack(usr)
 	else
-		dropship.process_state = WAIT_LAUNCH
-
-/client/proc/force_ground_shuttle()
-	set name = "Force Ground Transport"
-	set desc = "Force a ground transport vehicle to launch"
-	set category = "Admin.Shuttles"
-
-	var/tag = tgui_input_list(usr, "Which vehicle should be force launched?", "Select a dropship:", list("Transport 1"))
-	if(!tag)
-		return
-
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles["Ground" + " " + tag]
-	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN_2</span>"))
-		to_chat(src, SPAN_DANGER("This is expected if map != CORSAT.</span>"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
-		return
-
-	dropship.process_state = WAIT_LAUNCH
+		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to normally move a shuttle"))
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"

@@ -15,18 +15,6 @@
 		var/mob/living/carbon/C = AM
 		C.slip(name, 4, 2)
 
-/obj/item/cane
-	name = "cane"
-	desc = "A cane used by a true gentleman. Or a clown."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "cane"
-	item_state = "stick"
-	flags_atom = FPRINT|CONDUCT
-	force = 5
-	throwforce = 7
-	w_class = SIZE_SMALL
-	matter = list("metal" = 50)
-	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 /*
 /obj/item/game_kit
 	name = "Gaming Kit"
@@ -50,25 +38,124 @@
 	item_state = "gift"
 	w_class = SIZE_LARGE
 
-/obj/item/staff/gentcane
-	name = "Gentlemans Cane"
-	desc = "An ebony cane with an ivory tip."
+/obj/item/weapon/melee/pole
+	name = "wooden pole"
+	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "cane"
-	item_state = "stick"
+	icon_state = "wooden_pole"
+	item_state = "wooden_pole"
+	force = 20
+	attack_speed = 1.5 SECONDS
+	var/gripped = FALSE
 
-/obj/item/staff/stick
-	name = "stick"
-	desc = "A great tool to drag someone else's drinks across the bar."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "stick"
-	item_state = "stick"
-	force = 3
-	throwforce = 5
-	throw_speed = SPEED_FAST
-	throw_range = 5
-	w_class = SIZE_SMALL
-	flags_item = NOSHIELD
+/obj/item/weapon/melee/pole/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Activate on your hand to grip this tightly. Useful if you have a bad leg.")
+
+/obj/item/weapon/melee/pole/attack_self(mob/living/user)
+	..()
+	if(!gripped)
+		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
+		flags_item |= NODROP
+		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
+		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
+		gripped = TRUE
+	else
+		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
+		flags_item &= ~NODROP
+		REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
+		// Ideally, this would be something like a component added onto every mob that prioritizes certain sounds, such as stomping over canes.
+		var/component = user.GetComponent(/datum/component/footstep)
+		qdel(component)
+		// However, I'm not going to do that. :)
+		gripped = FALSE
+
+/obj/item/weapon/melee/pole/pickup(mob/user, silent)
+	. = ..()
+	gripped = FALSE
+	REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM) // no fucking around with two canes
+	var/component = user.GetComponent(/datum/component/footstep)
+	qdel(component)
+
+/obj/item/weapon/melee/pole/dropped(mob/user)
+	. = ..()
+	gripped = FALSE
+	REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM) // in case their arm is chopped off or something
+	var/component = user.GetComponent(/datum/component/footstep)
+	qdel(component)
+
+/obj/item/weapon/melee/pole/wooden_cane
+	name = "wooden cane"
+	desc = "A bog standard wooden cane with a dark tip."
+	icon_state = "wooden_cane"
+	item_state = "wooden_cane"
+	force = 15
+
+/obj/item/weapon/melee/pole/fancy_cane
+	name = "fancy cane"
+	desc = "An ebony cane with a fancy, seemingly-golden tip."
+	icon_state = "fancy_cane"
+	item_state = "fancy_cane"
+	force = 30
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife
+	name = "fancy cane"
+	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	force = 15 // hollow
+	var/obj/item/stored_item
+	var/list/allowed_items = list(/obj/item/weapon/melee, /obj/item/attachable/bayonet)
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/Destroy()
+	if(stored_item)
+		QDEL_NULL(stored_item)
+	. = ..()
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/attack_hand(mob/living/mobber)
+	if(stored_item && src.loc == mobber && !mobber.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
+		if(mobber.put_in_active_hand(stored_item))
+			mobber.visible_message(SPAN_DANGER("[mobber] slides [stored_item] out of [src]!"), SPAN_NOTICE("You slide [stored_item] out of [src]."))
+			playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+			stored_item = null
+			update_icon()
+		return
+	..()
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/update_icon()
+	if(stored_item == null)
+		icon_state = initial(icon_state) + "_open"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/attackby(obj/item/object, mob/living/mobber)
+	if(length(allowed_items))
+		for (var/i in allowed_items)
+			if(istype(object, i))
+				if(stored_item)
+					return
+				stored_item = object
+				mobber.drop_inv_item_to_loc(object, src)
+				to_chat(mobber, SPAN_NOTICE("You slide the [object] into [src]."))
+				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+				update_icon()
+				break
+	. = ..()
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/machete
+	stored_item = new /obj/item/weapon/melee/claymore/mercsword/machete
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/ceremonial_sword
+	stored_item = new /obj/item/weapon/melee/claymore/mercsword/ceremonial
+
+/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/katana
+	stored_item = new /obj/item/weapon/melee/katana
+
+// IN SHOTGUNS.DM!!
+
+/*obj/item/weapon/melee/pole/fancy_cane/gun
+	name = "fancy cane"
+	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	force = 15 // hollow
+*/
 
 /obj/item/research//Makes testing much less of a pain -Sieve
 	name = "research"

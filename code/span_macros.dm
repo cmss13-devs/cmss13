@@ -46,6 +46,9 @@
 #define SPAN_ADMIN(X) "<span class='admin'>[X]</span>"
 #define SPAN_ADMINHELP(X) ("<span class='adminhelp'>" + X + "</span>")
 #define SPAN_ADMINSAY(str) ("<span class='adminsay'>" + str + "</span>")
+#define SPAN_MENTORHELP(X) ("<span class='mentorhelp'>" + X + "</span>")
+#define SPAN_MENTORSAY(X) ("<span class='mentorsay'>" + X + "</span>")
+#define SPAN_MENTORBODY(X) ("<span class='mentorbody'>" + X + "</span>")
 
 #define SPAN_PM(X) "<span class='pm'>[X]</span>"
 
@@ -58,6 +61,7 @@
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
+#define SPAN_ALERTWARNING(X) "<span class='alertwarning'>[X]</span>"
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 #define SPAN_BOLDWARNING(X) "<span class='boldwarning'>[X]</span>"
 #define SPAN_ALERT(X) "<span class='alert'>[X]</span>"

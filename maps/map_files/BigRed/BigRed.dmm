@@ -118,8 +118,12 @@
 	},
 /area/bigredv2/outside/space_port)
 "aau" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	dwidth = 1;
+	name = "Communications Landing Zone"
+	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/BigRed)
+/area/bigredv2/outside/space_port)
 "aav" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
@@ -340,10 +344,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/space_port)
-"abb" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating,
-/area/shuttle/drop1/BigRed)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
@@ -486,7 +486,9 @@
 /area/bigredv2/outside/space_port)
 "aby" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -701,7 +703,7 @@
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
-/area/shuttle/drop1/BigRed)
+/area/bigredv2/outside/space_port)
 "ace" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating{
@@ -1068,7 +1070,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/plating,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2"
@@ -1245,12 +1246,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/space_port)
-"adK" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "1"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "adL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1344,10 +1339,10 @@
 	},
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Communications"
+	phone_id = "Communications";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1984,12 +1979,10 @@
 	},
 /area/bigredv2/outside/space_port)
 "afN" = (
-/turf/open/floor/plating,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2"
+/turf/open/floor{
+	icon_state = "dark"
 	},
-/area/bigredv2/outside/space_port)
+/area/bigredv2/outside/telecomm/security)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -8016,8 +8009,8 @@
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lambda Labs";
-	phone_id = "Administration";
-	phone_color = "blue"
+	phone_color = "blue";
+	phone_id = "Administration"
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
@@ -8848,7 +8841,6 @@
 /area/bigredv2/outside/medical)
 "ayT" = (
 /obj/structure/surface/table,
-/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -9363,7 +9355,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
-/obj/structure/machinery/door/airlock/medical,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Medical Clinic Operating Theatre";
+	dir = 2
+	},
 /turf/open/floor{
 	icon_state = "darkish"
 	},
@@ -9882,10 +9877,10 @@
 /obj/structure/pipes/vents/pump,
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic"
+	phone_id = "Clinic";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -11140,9 +11135,9 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 10;
@@ -11308,9 +11303,9 @@
 /area/bigredv2/outside/medical)
 "aFK" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
-	dir = 1;
 	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor{
@@ -13037,7 +13032,6 @@
 	},
 /area/bigredv2/outside/virology)
 "aKi" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -14747,8 +14741,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Director";
-	phone_color = "Blue"
+	phone_color = "Blue";
+	phone_id = "Director"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -17469,10 +17463,10 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "blue";
-	phone_id = "Operations"
+	phone_id = "Operations";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -21408,8 +21402,12 @@
 	},
 /area/bigredv2/outside/space_port_lz2)
 "biI" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	dwidth = 1;
+	name = "Engineering Landing Zone"
+	},
 /turf/open/floor/plating,
-/area/shuttle/drop2/BigRed)
+/area/bigredv2/outside/space_port_lz2)
 "biK" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor,
@@ -21564,7 +21562,7 @@
 "bjo" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop2/BigRed)
+/area/bigredv2/outside/space_port_lz2)
 "bjp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2{
@@ -22395,7 +22393,7 @@
 "bmM" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
-/area/shuttle/drop2/BigRed)
+/area/bigredv2/outside/space_port_lz2)
 "bmN" = (
 /turf/open/floor{
 	dir = 4;
@@ -22925,10 +22923,10 @@
 "boY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Filtration"
+	phone_id = "Filtration";
+	pixel_y = 24
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -23441,10 +23439,10 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Engineering"
+	phone_id = "Engineering";
+	pixel_y = 24
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -23518,12 +23516,6 @@
 "brE" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/filtration_cave_cas)
-"brF" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port_lz2)
 "brG" = (
 /turf/open/floor{
 	dir = 8;
@@ -24166,8 +24158,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Solaris Ridge";
-	phone_id = "Virology Lab";
-	phone_color = "green"
+	phone_color = "green";
+	phone_id = "Virology Lab"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -24257,8 +24249,8 @@
 /obj/item/tool/screwdriver,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Robotics";
-	phone_color = "yellow"
+	phone_color = "yellow";
+	phone_id = "Robotics"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -28930,10 +28922,10 @@
 /area/bigredv2/caves/eta/living)
 "fyO" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic Labs"
+	phone_id = "Clinic Labs";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -29037,9 +29029,9 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lambda Labs";
-	phone_id = "Surgery"
+	phone_id = "Surgery";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29698,12 +29690,12 @@
 /area/bigredv2/outside/filtration_plant)
 "htp" = (
 /obj/structure/transmitter/colony_net{
+	callable = 0;
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Lambda Labs";
-	phone_id = "Secure Storage";
 	phone_color = "red";
-	callable = 0
+	phone_id = "Secure Storage";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 1;
@@ -30213,7 +30205,6 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "izh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -31306,9 +31297,9 @@
 "kyz" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -31670,7 +31661,7 @@
 	},
 /area/bigredv2/caves/mining)
 "lvh" = (
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m4ra,
 /obj/effect/landmark/corpsespawner/ua_riot,
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -32867,8 +32858,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Security";
-	phone_color = "red"
+	phone_color = "red";
+	phone_id = "Security"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -33144,7 +33135,6 @@
 	},
 /area/bigredv2/caves_virology)
 "oCR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35217,7 +35207,6 @@
 	},
 /area/bigredv2/caves_east)
 "sBI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35388,14 +35377,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"sXQ" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/telecomm/security)
 "sYL" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8"
@@ -35524,7 +35505,9 @@
 /area/bigredv2/caves/mining)
 "tgk" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+	dir = 4
+	},
 /turf/open/floor,
 /area/bigredv2/landing/console2)
 "tgF" = (
@@ -42946,22 +42929,22 @@ aah
 aah
 aah
 aah
-aau
-aau
-aau
+aah
+aah
+aah
 aah
 aah
 aah
 aaF
 aah
 aah
-aau
-aau
-aau
-aau
 aah
 aah
-adK
+aah
+aah
+aah
+aah
+aah
 aeh
 aaf
 aaf
@@ -43162,20 +43145,20 @@ aah
 aah
 aaF
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
 aah
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aaF
 aah
 aau
@@ -43379,23 +43362,23 @@ aah
 aah
 aah
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 acx
-aau
+aah
 aej
 aaf
 aaf
@@ -43593,26 +43576,26 @@ aae
 aaf
 aal
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aek
 aaf
 aaf
@@ -43810,24 +43793,24 @@ aae
 aaf
 aai
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 acd
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aah
 aah
 aeh
@@ -44027,24 +44010,24 @@ aae
 aaf
 aaj
 aah
-aau
-aau
-aau
-abb
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+acx
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aah
 aah
 aei
@@ -44244,24 +44227,24 @@ aae
 aaf
 aak
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 acd
-aau
-aau
+aah
+aah
 aah
 aah
 aej
@@ -44348,22 +44331,22 @@ bie
 bie
 bie
 bie
-biI
-biI
-biI
+bie
+bie
+bie
 bie
 bie
 bje
 bie
 bie
 bie
-biI
-biI
-biI
-biI
 bie
 bie
-brF
+bie
+bie
+bie
+bie
+bie
 bsb
 eWd
 eWd
@@ -44461,26 +44444,26 @@ aae
 aaf
 aal
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-abb
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+acx
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aek
 aaf
 aaf
@@ -44564,20 +44547,20 @@ bie
 bie
 bje
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
 bie
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bjo
-biI
+bie
 bje
 bie
 biI
@@ -44681,23 +44664,23 @@ aah
 aah
 aah
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
 aah
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aeh
 aaf
 aaf
@@ -44781,23 +44764,23 @@ bie
 bie
 bie
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
 bie
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bsd
 eWd
 eWd
@@ -44898,23 +44881,23 @@ aah
 aah
 aaF
 aah
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
-aau
 aah
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aaF
 aah
-aau
+aah
 aei
 aaf
 aaf
@@ -44995,26 +44978,26 @@ aSB
 bgX
 bhx
 bie
-biI
-biI
+bie
+bie
 bjo
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bse
 eWd
 eWd
@@ -45116,19 +45099,19 @@ aah
 aah
 aah
 aah
-aau
-aau
-aau
+aah
+aah
+aah
 aah
 aah
 aah
 aaF
 aah
 aah
-aau
-aau
-aau
-aau
+aah
+aah
+aah
+aah
 aah
 aah
 aah
@@ -45212,24 +45195,24 @@ bcp
 bgX
 bhu
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bmM
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bie
 bie
 bsb
@@ -45429,24 +45412,24 @@ aSB
 bgX
 bhy
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bie
 bie
 bsc
@@ -45646,24 +45629,24 @@ aSB
 bgX
 bhw
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bie
 bie
 bsd
@@ -45863,26 +45846,26 @@ aWk
 bgX
 bhz
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bse
 eWd
 eWd
@@ -46083,21 +46066,21 @@ bie
 bie
 bie
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bie
 bjo
 bsb
@@ -46300,23 +46283,23 @@ bie
 bie
 bje
 bie
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
-biI
 bie
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
+bie
 bje
 bie
-biI
+bie
 bsc
 eWd
 eWd
@@ -46518,19 +46501,19 @@ bie
 bie
 bie
 bie
-biI
-biI
-biI
+bie
+bie
+bie
 bie
 bie
 bje
 bie
 bie
 bie
-biI
-biI
-biI
-biI
+bie
+bie
+bie
+bie
 bie
 bie
 bie
@@ -49041,7 +49024,7 @@ aah
 aah
 aah
 aah
-afN
+agv
 afh
 agv
 ahZ
@@ -54475,7 +54458,7 @@ aZq
 rpc
 akg
 akN
-sXQ
+afN
 ame
 ahj
 anx
@@ -54692,7 +54675,7 @@ aZq
 rpc
 rpc
 akN
-sXQ
+afN
 amg
 ahj
 aer
@@ -54909,7 +54892,7 @@ aZP
 bhM
 bhM
 akO
-sXQ
+afN
 amg
 aic
 acp
@@ -55122,11 +55105,11 @@ agz
 ahm
 aib
 bNy
-sXQ
-sXQ
-sXQ
-sXQ
-sXQ
+afN
+afN
+afN
+afN
+afN
 amg
 aic
 aer

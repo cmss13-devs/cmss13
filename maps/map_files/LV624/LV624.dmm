@@ -3966,12 +3966,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -4082,12 +4077,7 @@
 	},
 /area/lv624/lazarus/research)
 "aup" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -4643,12 +4633,7 @@
 	},
 /area/lv624/lazarus/research)
 "awl" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	icon_state = "white"
@@ -4803,12 +4788,7 @@
 	},
 /area/lv624/lazarus/research)
 "awH" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -4834,12 +4814,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle/south_central_jungle)
 "awM" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "\improper Forced Blast Door"
@@ -5368,12 +5343,7 @@
 	pixel_x = 11
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -5553,12 +5523,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "azh" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 5;
@@ -6215,8 +6180,12 @@
 	},
 /area/lv624/ground/river/west_river)
 "aBo" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	dwidth = 1;
+	name = "Robotics Landing Zone"
+	},
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624)
+/area/lv624/lazarus/landing_zones/lz2)
 "aBp" = (
 /obj/structure/prop/mech/tesla_energy_relay{
 	layer = 2.5
@@ -7078,10 +7047,6 @@
 	icon_state = "barber"
 	},
 /area/lv624/lazarus/fitness)
-"aEq" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/plating,
-/area/shuttle/drop2/LV624)
 "aEs" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -7396,9 +7361,6 @@
 	icon_state = "loadingarea"
 	},
 /area/lv624/lazarus/quartstorage)
-"aFc" = (
-/turf/open/floor/plating,
-/area/shuttle/drop1/LV624)
 "aFh" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/machinery/door/window,
@@ -7831,7 +7793,7 @@
 "aGC" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624)
+/area/lv624/lazarus/landing_zones/lz1)
 "aGE" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
@@ -7912,7 +7874,7 @@
 "aGU" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624)
+/area/lv624/lazarus/landing_zones/lz1)
 "aGV" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,
@@ -9089,11 +9051,12 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
+/obj/docking_port/stationary/marine_dropship/lz1{
+	dwidth = 1;
+	name = "Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/lv624/lazarus/landing_zones/lz1)
 "aLF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass,
@@ -10477,12 +10440,6 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/canteen)
-"aQU" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "1"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aQX" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines{
@@ -10578,7 +10535,7 @@
 	dir = 1;
 	flipped = 1
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "aRu" = (
@@ -11427,7 +11384,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "aUA" = (
 /obj/item/bedsheet/rd,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /obj/structure/bed{
 	desc = "For prime comfort.";
 	name = "fancy bed"
@@ -14794,7 +14751,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "eCF" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/gm/dirt,
 /area/lv624/landing/console2)
 "eDy" = (
@@ -16453,7 +16410,6 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "iAu" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "iAA" = (
@@ -17445,7 +17401,6 @@
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "kYg" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "kYx" = (
@@ -20948,7 +20903,6 @@
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
 "syA" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "szy" = (
@@ -23400,7 +23354,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/cane,
+/obj/item/weapon/melee/pole/fancy_cane,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -30545,22 +30499,22 @@ aRg
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
 aRg
 aRg
 aCi
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
-aBo
 aRg
 aRg
-aLz
+aRg
+aRg
+aRg
+aRg
+aRg
 odw
 aRg
 wLz
@@ -30772,20 +30726,20 @@ aRg
 aRg
 aRg
 aCi
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
 aRg
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aCi
 aKO
 aBo
@@ -31000,23 +30954,23 @@ aRg
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
 aRg
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 byK
 aRg
 wLz
@@ -31225,26 +31179,26 @@ aZP
 aOB
 aTt
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aZT
 aRg
 wLz
@@ -31453,24 +31407,24 @@ aZP
 aOB
 oOB
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aRg
 aRg
 odw
@@ -31681,24 +31635,24 @@ aZP
 aOB
 aTv
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aEq
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aKO
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aRg
 aRg
 aEw
@@ -31909,24 +31863,24 @@ aZP
 aOB
 kvE
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aRg
 aRg
 byK
@@ -32137,26 +32091,26 @@ aZP
 aOB
 aTt
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aEq
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aKO
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aZT
 aRg
 wLz
@@ -32368,23 +32322,23 @@ aRg
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
 aRg
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 odw
 aRg
 wLz
@@ -32596,23 +32550,23 @@ aRg
 aRg
 aRg
 aCi
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aBo
-aEq
-aBo
 aRg
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
+aKO
+aRg
+aRg
+aRg
+aRg
+aRg
+aRg
 aCi
 aRg
-aBo
+aRg
 aEw
 aRg
 wLz
@@ -32825,19 +32779,19 @@ aRg
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
 aRg
 aRg
 aCi
 aRg
 aRg
 aRg
-aBo
-aBo
-aBo
-aBo
+aRg
+aRg
+aRg
+aRg
 aRg
 aRg
 aRg
@@ -57228,22 +57182,22 @@ ank
 ano
 ank
 ank
-aFc
-aFc
-aFc
+ank
+ank
+ank
 ank
 ank
 ano
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
 ank
 ano
-aQU
+ank
 aRZ
 aMq
 aky
@@ -57455,23 +57409,23 @@ ank
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-ank
-aFc
-aFc
-aFc
-aFc
 ank
 ank
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+aLz
 aSa
 aMq
 aky
@@ -57683,23 +57637,23 @@ ank
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
 ank
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aSb
 aMq
 aky
@@ -57908,26 +57862,26 @@ btF
 aDi
 aDL
 ank
-aFc
-aFc
-aFc
+ank
+ank
+ank
 aGC
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
 aGC
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aSc
 aMq
 aky
@@ -58136,24 +58090,24 @@ btF
 aDi
 aDI
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 ank
 ank
 aRZ
@@ -58364,24 +58318,24 @@ btF
 aDi
 aDJ
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aGC
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
 ank
 ank
 aSa
@@ -58592,24 +58546,24 @@ btF
 aDi
 aDK
 ank
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
 aGU
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 ank
 ank
 aSb
@@ -58820,26 +58774,26 @@ btF
 aDi
 aDL
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
 aGC
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aSc
 aMq
 btF
@@ -59051,23 +59005,23 @@ ank
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
 ank
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aRZ
 aMq
 btF
@@ -59279,23 +59233,23 @@ ank
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-aFc
-ank
-aFc
-aFc
-aFc
-aFc
 ank
 ank
-aFc
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
+ank
 aSa
 aMq
 btF
@@ -59508,19 +59462,19 @@ ank
 ano
 ank
 ank
-aFc
-aFc
-aFc
+ank
+ank
+ank
 ank
 ank
 ano
 ank
 ank
 ank
-aFc
-aFc
-aFc
-aFc
+ank
+ank
+ank
+ank
 ank
 ano
 ank

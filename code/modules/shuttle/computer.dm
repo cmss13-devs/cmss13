@@ -94,6 +94,11 @@
 	var/disabled = FALSE
 	var/compatible_landing_zones = list()
 
+/obj/structure/machinery/computer/shuttle/ert/broken
+	name = "nonfunctional shuttle control console"
+	disabled = TRUE
+	desc = "A transport shuttle flight computer. This one seems broken."
+
 /obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
@@ -155,8 +160,7 @@
 			locked_count++
 	.["locked_down"] = door_count == locked_count
 
-	if(ert.destination)
-		.["target_destination"] = ert.destination.name
+	.["target_destination"] = ert.destination?.name
 
 	.["destinations"] = list()
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)

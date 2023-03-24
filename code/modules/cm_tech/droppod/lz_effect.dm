@@ -23,3 +23,16 @@
 /obj/effect/warning/hover
 	name = "hoverpack warning"
 	color = "#D4AE1E"
+
+	color = "#D4AE1E"
+
+/obj/effect/warning/explosive
+	name = "explosive warning"
+	color = "#ff0000"
+
+/obj/effect/warning/explosive/Initialize(mapload, time_until_explosion)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(disappear)), time_until_explosion)
+
+/obj/effect/warning/explosive/proc/disappear()
+	qdel(src)

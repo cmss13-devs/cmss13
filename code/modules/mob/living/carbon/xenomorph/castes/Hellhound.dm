@@ -13,6 +13,8 @@
 	speed = XENO_SPEED_HELLHOUND
 	attack_delay = -2
 
+	minimum_evolve_time = 0
+
 	tackle_min = 4
 	tackle_max = 5
 	tackle_chance = 40
@@ -85,7 +87,7 @@
 	banished_holder.pixel_x = -12
 	banished_holder.pixel_y = -6
 
-/mob/living/carbon/Xenomorph/Hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER

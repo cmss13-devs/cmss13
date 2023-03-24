@@ -41,4 +41,3 @@
 /obj/item/explosive/grenade/spawnergrenade/claymore_launcher/Initialize()
 	. = ..()
 	deliveryamt = rand(4,6)
-	prime()

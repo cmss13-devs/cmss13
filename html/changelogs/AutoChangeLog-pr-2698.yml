@@ -1,4 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - bugfix: "crates are now always unanchored when they land"

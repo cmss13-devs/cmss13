@@ -740,7 +740,8 @@
 	if(!host_2b_nested.Adjacent(supplier_turf))
 		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
 		return
-	else if(!locate(dir_to_nest) in GLOB.cardinals)
+
+	if(!locate(dir_to_nest) in GLOB.cardinals)
 		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
 		return
 

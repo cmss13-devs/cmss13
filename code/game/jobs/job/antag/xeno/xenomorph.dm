@@ -65,14 +65,16 @@
 					bad_entries |= found_open_turf
 		for(var/turf/closed/wall/wall_in_range in new_entries)
 			var/list/turf/neighbor_turfs = list(get_step(wall_in_range, SOUTH), get_step(wall_in_range, EAST), get_step(wall_in_range, WEST))
-			test_name:
-				for(var/turf/open/ground_in_range in neighbor_turfs)
-					var/area/in_range_area = get_area(ground_in_range)
-					if(in_range_area.flags_area & AREA_NOTUNNEL)
-						continue
-					for(var/obj/found_object in ground_in_range)
-						if(istype(found_object, /obj/structure/bed/nest/) || found_object.density)
-							continue test_name //pretty sure this is how this works, want it to continue for(var/turf/open/ground_in_range in neighbor_turfs)
+			for(var/turf/open/ground_in_range in neighbor_turfs)
+				var/area/in_range_area = get_area(ground_in_range)
+				if(in_range_area.flags_area & AREA_NOTUNNEL)
+					continue
+				var/finish_proc = TRUE
+				for(var/obj/found_object in ground_in_range)
+					if(istype(found_object, /obj/structure/bed/nest/) || found_object.density)
+						finish_proc = FALSE
+						break
+				if(finish_proc)
 					human_to_transform.forceMove(ground_in_range)
 					start_nest = new /obj/structure/bed/nest(human_to_transform.loc) //Create a new nest for the host
 					start_nest.dir = get_dir(human_to_transform,wall_in_range)

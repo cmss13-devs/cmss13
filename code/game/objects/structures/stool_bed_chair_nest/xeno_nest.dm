@@ -20,8 +20,6 @@
 	var/force_nest = FALSE
 	/// counterpart to buckling_y --> offsets the buckled mob when it buckles
 	var/list/buckling_x
-	/// this quirky funny lil guy is to prevent endless loops of destroy() proc calls :D
-	var/currently_in_destruction = FALSE
 	/// saves the density of the buckled_mob
 	var/buckled_mob_density
 
@@ -35,6 +33,16 @@
 
 	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
 	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)
+
+	spawn_check() //nests mapped in without hosts shouldn't persist
+
+/obj/structure/bed/nest/proc/spawn_check(check_count = 0)
+	if(!buckled_mob || !locate(/mob/living/carbon) in get_turf(src))
+		if(check_count > 3)
+			qdel(src)
+		else
+			check_count++
+			addtimer(CALLBACK(src, PROC_REF(spawn_check), check_count), 10 SECONDS)
 
 /obj/structure/bed/nest/afterbuckle(mob/current_mob)
 	. = ..()
@@ -57,21 +65,20 @@
 				var/mob/living/carbon/human/current_human = current_mob
 				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
 					current_mobs_head.layer = TURF_LAYER
-	else
-		current_mob.pixel_y = initial(buckled_mob.pixel_y)
-		current_mob.pixel_x = initial(buckled_mob.pixel_x)
-		current_mob.density = buckled_mob_density
-		if(dir == SOUTH)
-			current_mob.layer = initial(current_mob.layer)
-			if(!ishuman(current_mob))
-				var/mob/living/carbon/human/current_human = current_mob
-				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
-					current_mobs_head.layer =  initial(current_mobs_head.layer)
-		if(!currently_in_destruction)
-			qdel(src)
+		update_icon()
 		return
 
-	update_icon()
+	current_mob.pixel_y = initial(buckled_mob.pixel_y)
+	current_mob.pixel_x = initial(buckled_mob.pixel_x)
+	current_mob.density = buckled_mob_density
+	if(dir == SOUTH)
+		current_mob.layer = initial(current_mob.layer)
+		if(!ishuman(current_mob))
+			var/mob/living/carbon/human/current_human = current_mob
+			for(var/obj/limb/head/current_mobs_head in current_human.limbs)
+				current_mobs_head.layer =  initial(current_mobs_head.layer)
+	if(!QDESTROYING(src))
+		qdel(src)
 
 /obj/structure/bed/nest/alpha
 	color = "#ff4040"
@@ -344,7 +351,6 @@
 	deconstruct()
 
 /obj/structure/bed/nest/Destroy()
-	currently_in_destruction = TRUE //haha :C
 	unbuckle()
 	ghost_of_buckled_mob = null
 	return ..()

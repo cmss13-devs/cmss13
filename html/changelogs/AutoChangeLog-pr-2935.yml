@@ -1,0 +1,5 @@
+author: "Khadd"
+delete-after: True
+changes:
+  - rscadd: "three sound files ```joe_report.ogg```, ```joe_breach.ogg```, ```joe_species.ogg```"
+  - code_imp: "modified ```code\\modules\\mob\\living\\carbon\\human\\species\\emote-synthetic.dm``` in order to add the new emotes"

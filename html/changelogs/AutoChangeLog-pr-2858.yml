@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Laundering money through the ATM is now only 25% as effective."
-  - bugfix: "Increased cane pacing sound a little."
-  - bugfix: "Fixed not actually ever being harmed from walking around with a bad leg and no cane."

@@ -769,7 +769,7 @@
 /obj/item/weapon/gun/rifle/xm52/get_examine_text(mob/user)
 	. = ..()
 	if(linked_human)
-			. += SPAN_NOTICE("It is registered to [linked_human].")
+		. += SPAN_NOTICE("It is registered to [linked_human].")
 		if(!is_locked)
 			. += SPAN_HELPFUL("Biometric restrictions are unlocked.")
 	else

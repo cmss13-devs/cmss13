@@ -12,8 +12,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Extended Magazine", 20, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
 		list("M56B Smartgun Drum", 20, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_REGULAR),
-		list("XM52 slug magazine", 30, /obj/item/ammo_magazine/rifle/xm52, null, VENDOR_ITEM_REGULAR),
-		list("XM52 flechette magazine", 30, /obj/item/ammo_magazine/rifle/xm52/flechette, null, VENDOR_ITEM_REGULAR),
+		list("XM52 slug magazine", 20, /obj/item/ammo_magazine/rifle/xm52, null, VENDOR_ITEM_REGULAR),
+		list("XM52 flechette magazine", 20, /obj/item/ammo_magazine/rifle/xm52/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("High Impact Mateba Speedloader (.454)", 15, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_RECOMMENDED),
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
-		list("XM52 incendiary magazine", 60, /obj/item/ammo_magazine/rifle/xm52/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("XM52 incendiary magazine", 65, /obj/item/ammo_magazine/rifle/xm52/incendiary, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
@@ -124,4 +124,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 /obj/effect/essentials_set/co/shotgunpreset
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/rifle/xm52,
+		/obj/item/storage/box/guncase/xm52,
 	)
+/obj/item/storage/box/guncase/xm52
+	name = "\improper XM52 ammunition case"
+	desc = "A case containing ammunition for an XM52."
+	can_hold = list(/obj/item/ammo_magazine/rifle/xm52, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot)
+	storage_slots = 6
+
+/obj/item/storage/box/guncase/xm52/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/xm52(src)
+	new /obj/item/ammo_magazine/rifle/xm52(src)
+	new /obj/item/ammo_magazine/rifle/xm52/flechette(src)
+	new /obj/item/ammo_magazine/rifle/xm52/flechette(src)
+	new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
+	new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)

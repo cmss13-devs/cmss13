@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		/obj/item/map/current_map,
 		/obj/item/device/whistle,
 		/obj/item/weapon/gun/energy/taser,
-		/obj/item/device/megaphone
+		/obj/item/device/megaphone,
 	)
 
 // This gets around the COs' weapon not spawning without incendiary mag.

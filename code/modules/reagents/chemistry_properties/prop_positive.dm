@@ -912,22 +912,26 @@
 /datum/chem_property/positive/antibiotic/process(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	var/datum/disease/black_goo/located_disease = locate() in M.viruses
-	if(located_disease)
-		var/datum/disease/black_goo/virus = new
-		var/mob/living/carbon/human/infected = M
-		if(virus.stage == 1)
-			if(prob(3 * potency))
-				for(var/datum/disease/goo in infected.viruses)
-					goo.cure()
-			else
-				if(prob(15 * potency))
-					to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
+	if(!located_disease)
+		return
+		
+	if(located_disease.stage != 1)
+		return
+	
+	if(prob(3 * potency))
+		for(var/datum/disease/black_goo/goo in M.viruses)
+			goo.cure()
+		return
+
+	if(prob(15 * potency))
+		to_chat(M, SPAN_WARNING("Your insides feel insanely hot!"))
 
 /datum/chem_property/positive/antibiotic/process_overdose(mob/living/M, potency, delta_time)
 	M.apply_damage(4 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/antibiotic/process_critical(mob/living/M, potency, delta_time)
 	M.apply_damage(8 * potency * delta_time, TOX)
+
 /datum/chem_property/positive/oxygenating
 	name = PROPERTY_OXYGENATING
 	code = "OXG"

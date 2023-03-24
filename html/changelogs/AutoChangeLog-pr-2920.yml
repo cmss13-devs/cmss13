@@ -1,5 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - imageadd: "landmarks for xeno_spawn"
-  - imageadd: "landmarks for thunderdome"

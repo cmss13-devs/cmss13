@@ -508,6 +508,11 @@
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
 
+/obj/item/clothing/accessory/storage/black_vest/white_vest
+	name = "white webbing vest"
+	desc = "Pristine white synthcotton vest with lots of pockets to unload your hands."
+	icon_state = "vest_white"
+
 /obj/item/clothing/accessory/storage/black_vest/waistcoat
 	name = "tactical waistcoat"
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
@@ -587,6 +592,14 @@
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
+/obj/item/clothing/accessory/storage/surg_vest/white
+	name = "white surgical webbing vest"
+	desc = "A pristine white synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_white"
+
+/obj/item/clothing/accessory/storage/surg_vest/white/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
 	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."
@@ -613,6 +626,7 @@
 /obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
+	max_w_class = 3
 	can_hold = list(
 		/obj/item/weapon/unathiknife,
 	)

@@ -47,6 +47,7 @@ Additional game mode variables.
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/predators = list()
+	var/joes	  = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
@@ -830,3 +831,68 @@ Additional game mode variables.
 
 /datum/game_mode/proc/get_escape_menu()
 	return "On the [SSmapping.configs[SHIP_MAP].map_name], orbiting..."
+
+
+//===================================================\\
+
+				//JOE INITIATLIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_joe(mob/living/carbon/human/joe)
+	joes[joe.ckey] = list("Name" = joe.real_name, "Status" = "Alive")
+
+
+/datum/game_mode/proc/attempt_to_join_as_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe) return
+
+	msg_admin_niche("([new_joe.key]) has late joined as Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate) joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_joe_late_join(mob/joe_candidate, show_warning = 1)
+
+	if(!joe_candidate.client)
+		return
+
+	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+
+	if(!J)
+		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return
+
+	if(!(RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
+		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
+		return
+
+	if(joe_candidate.ckey in joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a working joe!"))
+		return
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return
+
+	return 1
+
+/datum/game_mode/proc/transform_joe(mob/joe_candidate)
+	set waitfor = FALSE
+
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_joe")
+		return
+
+	var/mob/living/carbon/human/synthetic/new_joe = new()
+	pred_candidate.mind.transfer_to(new_joe, TRUE)
+	new_joe.client = joe_candidate.client
+
+	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+
+	if(!J)
+		qdel(new_joe)
+		return
+
+	RoleAuthority.equip_role(new_joe, J, new_joe.loc)
+
+	return new_joe

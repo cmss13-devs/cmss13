@@ -262,6 +262,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("XO Essentials Kit", 0, /obj/effect/essentials_set/executive_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
 		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -292,3 +293,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
+
+//------------ Executive officer kit ---------------
+/obj/effect/essentials_set/executive_officer
+	spawned_gear_list = list(
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/map/current_map,
+		/obj/item/device/whistle,
+		/obj/item/device/megaphone,
+	)
+

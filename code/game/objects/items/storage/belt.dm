@@ -1136,7 +1136,7 @@
 	name = "custom-tooled gunslinger's belt"
 	desc = "You think this makes you look cool, High command doesn't seem to share that opinion."
 	icon_state = "gunslinger_holster"
-	storage_slots = 10
+	storage_slots = 12
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,

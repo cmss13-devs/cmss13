@@ -359,7 +359,7 @@
 				if(istype(owner_helmet) && !issynth(owner))
 					owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", "Your helmet goes flying off from the impact!")
 					owner.drop_inv_item_on_ground(owner_helmet)
-					owner_helmet.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+					INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
 				else
 					droplimb(0, 0, damage_source)
 					return

@@ -481,7 +481,7 @@
 
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in queen_user.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in queen_user.hive.totalXenos)
 		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break

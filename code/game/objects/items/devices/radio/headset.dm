@@ -254,7 +254,7 @@
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE
 	))
-	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
+	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
 		H.remove_hud_from(user)
 		//squad leader locator is invisible again

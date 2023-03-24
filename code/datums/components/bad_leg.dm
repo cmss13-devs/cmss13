@@ -2,10 +2,11 @@
 
 #define MESSAGE_COOLDOWN 1.5 SECONDS
 
+/// Maximum amount of steps you can take until you get stunned from pain.
+#define MAX_STEPS 30
+
 /datum/component/bad_leg
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	/// Maximum amount of steps you can take until you get stunned from pain.
-	var/max_steps = 30
 	/// Tracker for steps walked.
 	var/steps_walking
 	/// Holds the last time a message was sent to prevent spam.
@@ -71,22 +72,22 @@
 	steps_walking++
 
 	switch(steps_walking)
-		if(max_steps * 0.3 to max_steps * 0.6)
+		if(MAX_STEPS * 0.3 to MAX_STEPS * 0.6)
 			if(last_message_time + MESSAGE_COOLDOWN < world.time)
 				to_chat(parent_human, SPAN_WARNING("Your damaged [affected_limb.display_name] skips half a step as you lose control of it from the increasing pain."))
 				last_message_time = world.time
-		if(max_steps * 0.6 to max_steps)
+		if(MAX_STEPS * 0.6 to MAX_STEPS - 1)
 			if(last_message_time + MESSAGE_COOLDOWN < world.time)
 				to_chat(parent_human, SPAN_DANGER("You stumble for an agonizing moment as your [affected_limb.display_name] rebels against you. You feel like you need to take a breath before walking again."))
 				last_message_time = world.time
-		if(max_steps to INFINITY)
+		if(MAX_STEPS to INFINITY)
 			to_chat(parent_human, SPAN_HIGHDANGER("Your [affected_limb.display_name] jerks wildly from incoherent pain!"))
-			steps_walking = POSITIVE(steps_walking - max_steps * 0.3) //pity reduction
+			steps_walking = POSITIVE(steps_walking - MAX_STEPS * 0.3) //pity reduction
 			INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob/living/carbon/human, emote), "pain")
-			var/stun_time = 2.5 SECONDS
-			parent_human.Shake(pixelshiftx = 15, pixelshifty = 0, duration = stun_time)
+			var/stun_time = 2.5
+			parent_human.Shake(pixelshiftx = 32, pixelshifty = 0, duration = stun_time SECONDS)
 			parent_human.apply_effect(stun_time, STUN)
-			addtimer(CALLBACK(src, PROC_REF(rest_legs_pain), parent_human, FALSE), stun_time)
+			addtimer(CALLBACK(src, PROC_REF(rest_legs_pain), parent_human, FALSE), stun_time SECONDS)
 			return
 
 	INVOKE_ASYNC(src, PROC_REF(rest_legs), parent_human, FALSE)
@@ -114,8 +115,8 @@
 		return FALSE
 
 	if(action)
-		to_chat(parent_human, SPAN_HELPFUL("The pain in your [affected_limb.display_name] [ (steps_walking > max_steps * 0.3) ? "slightly abates" : "subsides"] after your short rest."))
-	steps_walking = max(steps_walking - max_steps * 0.3, 0)
+		to_chat(parent_human, SPAN_HELPFUL("The pain in your [affected_limb.display_name] [ (steps_walking > MAX_STEPS * 0.3) ? "slightly abates" : "subsides"] after your short rest."))
+	steps_walking = max(steps_walking - MAX_STEPS * 0.3, 0)
 	bound_action.in_use = FALSE
 	rest_legs(parent_human, action)
 	return TRUE
@@ -151,3 +152,4 @@
 
 #undef MESSAGE_COOLDOWN
 
+#undef MAX_STEPS

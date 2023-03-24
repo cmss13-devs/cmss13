@@ -17,9 +17,9 @@
 	var/mob/living/brain/brainmob = null
 
 /obj/item/organ/brain/xeno
-	name = "thinkpan"
-	desc = "It looks kind of like an enormous wad of purple bubblegum."
-	icon_state = "chitin"
+	name = "alien brain"
+	desc = "For a brain, it looks kind of like an enormous wad of purple bubblegum."
+	icon_state = "xenobrain"
 
 /obj/item/organ/brain/New()
 	..()

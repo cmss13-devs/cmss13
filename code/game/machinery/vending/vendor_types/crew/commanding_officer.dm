@@ -1,9 +1,12 @@
 //------------GEAR VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
-		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
+		list("COMMANDER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/effect/essentials_set/co/riflepreset, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("Spare Mateba", 0, /obj/item/storage/box/kit/matebadual, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("Spare Desert Eagle", 0, /obj/item/storage/box/kit/deagledual, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A MK1 Magazine", 30, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
@@ -27,8 +30,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
+		list("Powercell", 10, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
+		list("M2 Night Vision Goggles", 25, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
@@ -43,10 +48,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 
 		list("BARREL ATTACHMENTS", 0, null, null, null),
 		list("Barrel Charger", 25, /obj/item/attachable/heavy_barrel, null, VENDOR_ITEM_RECOMMENDED),
-		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
-	))
+		list("Spare Mateba Customization kit", 25, /obj/item/storage/mateba_case/captain, null, VENDOR_ITEM_RECOMMENDED),
+		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
+			))
 
 /obj/structure/machinery/cm_vending/gear/commanding_officer
 	name = "\improper ColMarTech Commanding Officer Weapon Rack"
@@ -56,16 +62,24 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 	icon_state = "guns"
 	use_snowflake_points = TRUE
 
-/obj/structure/machinery/cm_vending/gear/commanding_officer/get_listed_products(mob/user)
-	return GLOB.cm_vending_gear_commanding_officer
+/obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_commanding_officer
 
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Satchel", 0, /obj/item/storage/backpack/satchel/lockable, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+
+		list("COMMANDING OFFICER ESSENTIALS KIT (Take ALL)", 0, null, null, null),
+		list("Commanding Officer essentials Kit", 0, /obj/effect/essentials_set/commanding_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
+		list("BAGS (TAKE One)", 0, null, null, null),
+		list("Commanding Officer Backpack", 0, /obj/item/storage/backpack/mcommander, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Expedition Pack", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("M3 Sniper's Smock", 0, /obj/item/storage/backpack/marine/smock, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Military Police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -85,8 +99,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
-		list("BELTS (TAKE ALL)", 0, null, null, null),
+		list("BELTS (TAKE ONE)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("Military Police Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Medical Storage Rig", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 M82F Holster Rig", 0, /obj/item/storage/belt/gun/flaregun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
@@ -94,6 +112,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Command Pouch", 0, /obj/item/storage/pouch/pistol/command, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
@@ -108,11 +127,23 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 	req_access = list(ACCESS_MARINE_SENIOR)
 	vendor_role = list(JOB_CO, JOB_WO_CO)
 
-/obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_commanding_officer
+/obj/structure/machinery/cm_vending/clothing/commanding_officer/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_commanding_officer
+
+
+/obj/effect/essentials_set/commanding_officer
+	spawned_gear_list = list(
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/map/current_map,
+		/obj/item/device/whistle,
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/device/megaphone
+	)
 
 // This gets around the COs' weapon not spawning without incendiary mag.
 /obj/effect/essentials_set/co/riflepreset
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/rifle/m46c,
 	)
+

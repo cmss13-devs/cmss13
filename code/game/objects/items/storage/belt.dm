@@ -1132,6 +1132,35 @@
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
+/obj/item/storage/belt/gun/co/dual
+	name = "custom-tooled gunslinger's belt"
+	desc = "You think this makes you look cool, High command doesn't seem to share that opinion."
+	icon_state = "gunslinger_holster"
+	storage_slots = 10
+	can_hold = list(
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/weapon/gun/revolver/mateba/general,
+		/obj/item/ammo_magazine/revolver/mateba/highimpact/ap,
+		/obj/item/ammo_magazine/revolver/mateba/highimpact,
+		/obj/item/ammo_magazine/revolver/mateba/,
+		/obj/item/weapon/gun/pistol/heavy/co,
+		/obj/item/ammo_magazine/pistol/heavy/super,
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
+		new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap,
+
+	)
+	has_gamemode_skin = FALSE
+	holster_slots = list(
+		"1" = list("icon_x" = -9, "icon_y" = -3),
+		"2" = list("icon_x" = 9, "icon_y" = -3))
+
+/obj/item/storage/belt/gun/co/dual/Initialize()
+	var/matrix/M = matrix()
+	M.Scale(-1, 1) //Flip the sprite of the second gun.
+	holster_slots["2"]["underlay_transform"] = M
+	. = ..()
+
 /obj/item/storage/belt/gun/m44/lever_action
 	name = "\improper M276 pattern 45-70 revolver rig"
 	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle. This version has reduced capacity in exchange for a whole revolver holster."

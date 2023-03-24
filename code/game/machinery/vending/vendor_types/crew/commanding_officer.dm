@@ -2,7 +2,7 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("COMMANDER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
-		list("M46C pulse rifle", 0, /obj/effect/essentials_set/co/riflepreset, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("M46C pulse rifle", 0, /obj/effect/essentials_set/co/riflepreset,MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 		list("Spare Mateba", 0, /obj/item/storage/box/kit/matebadual, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 		list("Spare Desert Eagle", 0, /obj/item/storage/box/kit/deagledual, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),

@@ -55,7 +55,7 @@
 				age_multiplier = 1
 			hidden = list(1,0)
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
-			var/message = pick("Your muscles ache", "Your throat is really dry", "Skin on your hands peels away.", "You can feel your heart skipping a beat...")
+			var/message = pick("Your muscles ache.", "Your throat is really dry.", "Skin on your hands peels away.", "You can feel your heart skipping a beat...")
 			if(goo_message_cooldown < world.time)
 				to_chat(H, SPAN_WARNING(message))
 				goo_message_cooldown = world.time + 15 SECONDS
@@ -92,12 +92,10 @@
 				H.nutrition = NUTRITION_MAX //never hungry
 
 /datum/disease/black_goo/proc/victim_has_antibiotic()
-	for(var/i=1 to affected_mob.reagents.reagent_list.len)
-		var/datum/reagent/S = affected_mob.reagents.reagent_list[i]
-		if(S.get_property(PROPERTY_ANTIBIOTIC))
+	for(var/datum/reagent/current_reagent as anything in affected_mob.reagents.reagent_list)
+		if(current_reagent.get_property(PROPERTY_ANTIBIOTIC))
 			return TRUE
-		else
-			return FALSE
+	return FALSE
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0

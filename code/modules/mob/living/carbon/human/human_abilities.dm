@@ -522,7 +522,7 @@ CULT
 		if(!do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			to_chat(zombie, SPAN_XENOWARNING("You were interupted!"))
 			return
-		to_chat(zombie, SPAN_XENOWARNING("You bite [M] neck, leaving a bloody mark!"))
+		to_chat(zombie, SPAN_XENOWARNING("You bite [M]'s neck, leaving a bloody mark!"))
 		to_chat(M, SPAN_DANGER("[zombie] bites you right in the neck!"))
 		playsound(get_turf(zombie), 'sound/hallucinations/wail.ogg', 25, TRUE)
 		victim.emote("scream")
@@ -534,7 +534,7 @@ CULT
 
 
 /datum/action/human_action/activable/zombie/leap
-	name = "leap"
+	name = "Leap"
 	action_icon_state = "leap"
 	var/maxdistance = 5 //leap how far again?
 	var/throw_speed = SPEED_AVERAGE
@@ -722,6 +722,3 @@ CULT
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
-
-
-

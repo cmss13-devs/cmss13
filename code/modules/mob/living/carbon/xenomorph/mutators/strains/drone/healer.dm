@@ -110,7 +110,7 @@
 		return
 
 	if(plasma_stored > 200)
-		to_chat(src, SPAN_WARNING("You do not have enough plasma to make a regenerative resin salve."))
+		to_chat(src, SPAN_WARNING("You do not have enough plasma to make a regenerative resin salve!"))
 		return
 
 	adjustBruteLoss(amount * damage_taken_mod)

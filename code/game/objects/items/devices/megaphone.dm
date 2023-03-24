@@ -40,6 +40,6 @@
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 
-		user.langchat_long_speech(message, human_viewers, user.get_default_language())
+		user.langchat_long_speech(message, listeners, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

@@ -220,8 +220,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(w_class == SIZE_TINY)
 		AddElement(/datum/element/mouth_drop_item)
 
+/obj/item/clothing/mask/cigarette/Moved(atom/oldloc, direction, Forced)
+	. = ..()
+	if(ismob(oldloc) && isturf(loc) && SSweather.is_weather_event && locate(get_area(loc)) in SSweather.weather_areas)
+		go_out()
+
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
+	if(SSweather.is_weather_event && locate(get_area(user)) in SSweather.weather_areas)
+		if(prob(80))
+			to_chat(user, SPAN_WARNING("This weather is making lighting anything impossible!"))
+			return
+
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())//Badasses dont get blinded while lighting their cig with a blowtorch

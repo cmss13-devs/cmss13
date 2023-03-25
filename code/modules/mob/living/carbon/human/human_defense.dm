@@ -408,10 +408,11 @@ Contains most of the procs that are called when a mob is attacked by something
 			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 
 /mob/living/carbon/human/proc/handle_weather_extinguishables(is_starting = TRUE)
-	if(is_starting)
+	if(is_starting && SSweather.is_weather_event && locate(get_area(src)) in SSweather.weather_areas)
 		for(var/obj/item/clothing/mask/cigarette/found_smokable in contents)
 			if(wear_mask == found_smokable || l_hand == found_smokable || r_hand == found_smokable)
-				found_smokable.go_out()
+				if(found_smokable.icon_state == found_smokable.icon_on)
+					found_smokable.go_out()
 		extinguishing_timer = addtimer(CALLBACK(src, PROC_REF(handle_weather_extinguishables)), 30 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
-		extinguishing_timer = TIMER_ID_NULL //stop checking every few minutes
+		deltimer(extinguishing_timer)

@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "ERT Station hangars have lockdowns toggleable only from inside each, to prevent theft."

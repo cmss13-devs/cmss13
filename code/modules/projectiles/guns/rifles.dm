@@ -758,12 +758,12 @@
 		register_owner(usr)
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked ? "lock": "unlock"] [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
-/obj/item/weapon/gun/rifle/xm52/proc/register_owner(mob/living/carbon/human/H)
-	linked_human = H
-	to_chat(H, SPAN_NOTICE("[icon2html(src, usr)] You place your hand on \the [src], and register your biometrics."))
+/obj/item/weapon/gun/rifle/xm52/proc/register_owner(mob/living/carbon/human/user)
+	linked_human = user
+	to_chat(user, SPAN_NOTICE("[icon2html(src, usr)] You place your hand on [src], and register your biometrics."))
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/rifle/xm52/get_examine_text(mob/user)

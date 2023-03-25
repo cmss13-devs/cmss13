@@ -827,23 +827,23 @@ var/datum/controller/supply/supply_controller = new()
 		.["shopping_list_items"] += SSpoints.shopping_cart[i]
 		.["shopping_list_cost"] += SP.cost * SSpoints.shopping_cart[SP.type]
 		.["shopping_list"][SP.type] = list("count" = SSpoints.shopping_cart[SP.type])
-	if(supply_shuttle)
-		if(supply_shuttle?.mode == SHUTTLE_CALL)
-			if(is_mainship_level(supply_shuttle.destination.z))
+	if(supply)
+		if(supply?.mode == SHUTTLE_CALL)
+			if(is_mainship_level(supply.destination.z))
 				.["elevator"] = "Raising"
 				.["elevator_dir"] = "up"
 			else
 				.["elevator"] = "Lowering"
 				.["elevator_dir"] = "down"
-		else if(supply_shuttle?.mode == SHUTTLE_IDLE)
-			if(is_mainship_level(supply_shuttle.z))
+		else if(supply?.mode == SHUTTLE_IDLE)
+			if(supply(supply.z))
 				.["elevator"] = "Raised"
 				.["elevator_dir"] = "down"
 			else
 				.["elevator"] = "Lowered"
 				.["elevator_dir"] = "up"
 		else
-			if(is_mainship_level(supply_shuttle.z))
+			if(is_mainship_level(supply.z))
 				.["elevator"] = "Lowering"
 				.["elevator_dir"] = "down"
 			else

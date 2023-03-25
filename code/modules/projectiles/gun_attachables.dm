@@ -2693,20 +2693,22 @@ Defined in conflicts.dm of the #defines folder.
 	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/underbarrel_8g/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
-	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
-		if(mag.default_ammo == /datum/ammo/bullet/shotgun/heavy/buckshot)
-			if(current_rounds >= max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is full."))
-			else
-				if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					return
-				current_rounds++
-				mag.current_rounds--
-				mag.update_icon()
-				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
-				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
-				if(mag.current_rounds <= 0)
-					user.temp_drop_inv_item(mag)
-					qdel(mag)
+	if(!istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
+		return
+	if(mag.default_ammo != /datum/ammo/bullet/shotgun/heavy/buckshot)
+		to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+		return
+	if(current_rounds >= max_rounds)
+		to_chat(user, SPAN_WARNING("[src] is full."))
+	else
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
-	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+		current_rounds++
+		mag.current_rounds--
+		mag.update_icon()
+		to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
+		playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
+		if(mag.current_rounds <= 0)
+			user.temp_drop_inv_item(mag)
+			qdel(mag)
+

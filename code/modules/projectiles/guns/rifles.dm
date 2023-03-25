@@ -754,8 +754,7 @@
 	if(linked_human && usr != linked_human)
 		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [usr]. Unauthorized user."))
 		return
-	else if(!linked_human)
-		register_owner(usr)
+	register_owner(usr)
 
 	is_locked = !is_locked
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked ? "lock": "unlock"] [src]."))

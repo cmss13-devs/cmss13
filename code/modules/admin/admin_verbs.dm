@@ -123,7 +123,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd
+	/client/proc/toggle_shipside_sd,
+	/client/proc/shakeshipverb
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
@@ -186,7 +187,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/generate_sound_queues,
 	/client/proc/sound_debug_query,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,

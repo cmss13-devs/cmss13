@@ -48,8 +48,10 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+		backfill_runtime_log()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -371,18 +373,26 @@ var/datum/BSQL_Connection/connection
 /world/proc/FinishTestRun()
 	set waitfor = FALSE
 	var/list/fail_reasons
-	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
-#ifdef UNIT_TESTS
-		if(GLOB.failed_any_test)
-			LAZYADD(fail_reasons, "Unit Tests failed!")
-#endif
-	else
+	if(!GLOB)
 		fail_reasons = list("Missing GLOB!")
+	else if(total_runtimes)
+		fail_reasons = list("Total runtimes: [total_runtimes]")
+#ifdef UNIT_TESTS
+	if(GLOB.failed_any_test)
+		LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
 	if(!fail_reasons)
 		text2file("Success!", "data/logs/ci/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
+
+
+/world/proc/backfill_runtime_log()
+	if(length(full_init_runtimes))
+		world.log << "========= EARLY RUNTIME ERRORS ========"
+		for(var/line in full_init_runtimes)
+			world.log << line
+		world.log << "======================================="
+		world.log << ""

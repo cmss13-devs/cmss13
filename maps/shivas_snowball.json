@@ -12,7 +12,9 @@
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
         "/datum/equipment_preset/survivor/colonial_marshal/shiva",
-        "/datum/equipment_preset/survivor/security/shiva"
+        "/datum/equipment_preset/survivor/security/shiva",
+        "/datum/equipment_preset/survivor/clf/cold",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3300,

@@ -296,7 +296,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."),2,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
@@ -359,7 +359,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
 	. = ..()
@@ -383,7 +383,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
 	. = ..()

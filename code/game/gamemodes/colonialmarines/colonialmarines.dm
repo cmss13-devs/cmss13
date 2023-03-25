@@ -237,13 +237,8 @@
 	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
-	for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
-		var/turf/loc = get_turf(exploding_pipe)
-		if(istype(loc) && protected_by_pylon(TURF_PROTECTION_MORTAR, loc))
-			continue
-
-		exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-		new /obj/effect/warning/explosive(loc)
+	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)
+		exploding_pipe.warning_explode(5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
@@ -255,9 +250,9 @@
 	for(var/mob/current_mob in GLOB.living_mob_list)
 		if(!is_mainship_level(current_mob.z))
 			continue
-		shake_camera(current_mob, 7, 1)
+		shake_camera(current_mob, 3, 1)
 
-	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 15)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT

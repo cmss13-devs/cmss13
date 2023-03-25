@@ -2,7 +2,7 @@
 /datum/dropship_hijack
 	var/obj/docking_port/mobile/shuttle
 	var/obj/docking_port/stationary/crash_site
-	var/target_zone
+	var/target_ship_section
 	var/hijacked_bypass_aa = FALSE
 	var/final_announcement = FALSE
 
@@ -75,13 +75,14 @@
 /datum/dropship_hijack/almayer/proc/fire()
 	if(!shuttle || !crash_site)
 		return FALSE
-	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION
+	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
 	if(round_statistics)
 		round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
+	target_ship_section = ship_section
 	var/area/target_area = get_crashsite_area(ship_section)
 	// spawn crash location
 	var/turf/target = pick(get_area_turfs(target_area))
@@ -112,16 +113,16 @@
 		return
 
 	// if the AA site matches target site
-	if(target_zone == almayer_aa_cannon.protecting_section)
+	if(target_ship_section == almayer_aa_cannon.protecting_section)
 		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
-		remaining_crash_sites -= target_zone
-		var/new_target_zone = pick(remaining_crash_sites)
-		var/area/target_area = get_crashsite_area(new_target_zone)
+		remaining_crash_sites -= target_ship_section
+		var/new_target_ship_section = pick(remaining_crash_sites)
+		var/area/target_area = get_crashsite_area(new_target_ship_section)
 		// spawn crash location
 		var/turf/target = pick(get_area_turfs(target_area))
 		crash_site.Move(target)
-		marine_announcement("A hostile aircraft on course for the [target_zone] has been successfully deterred.", "IX-50 MGAD System")
-		target_zone = new_target_zone
+		marine_announcement("A hostile aircraft on course for the [target_ship_section] has been successfully deterred.", "IX-50 MGAD System")
+		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
 			for(var/turf/internal_turf in internal_area)
@@ -192,6 +193,7 @@
 			areas += list(
 				/area/almayer/engineering/upper_engineering,
 				/area/almayer/command/computerlab,
+				/area/almayer/engineering/laundry,
 			)
 		if("Lower deck Foreship")
 			areas += list(

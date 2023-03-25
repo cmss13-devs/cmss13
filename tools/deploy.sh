@@ -23,7 +23,7 @@ if [ -d ".git" ]; then
   cp -r .git/logs/* $1/.git/logs/
 fi
 
-cp ColonialMarinesALPHA.dmb ColonialMarinesALPHA.rsc $1/
+cp colonialmarines.dmb colonialmarines.rsc $1/
 cp -r maps/* $1/maps/
 cp -r icons/* $1/icons/
 cp -r sound/* $1/sound/

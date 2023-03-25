@@ -13,6 +13,7 @@
 #define SKILL_RESEARCH "research"
 #define SKILL_ANTAG "antag"
 #define SKILL_PILOT "pilot"
+#define SKILL_NAVIGATIONS "navigations"
 #define SKILL_POLICE "police"
 #define SKILL_POWERLOADER "powerloader"
 #define SKILL_VEHICLE "vehicles"
@@ -156,6 +157,10 @@
 #define SKILL_PILOT_EXPERT 2 // Pilot
 #define SKILL_PILOT_MAX 2
 
+//Navigations skill - for seting orbital alt
+#define SKILL_NAVIGATIONS_DEFAULT 0
+#define SKILL_NAVIGATIONS_TRAINED 1
+#define SKILL_NAVIGATIONS_MAX 1
 
 //endurance skill - Leaving surv for ease of change
 #define SKILL_ENDURANCE_NONE 0

@@ -55,9 +55,10 @@
 	// Hellpullverizer ready or not??
 	var/charged = FALSE
 
-/obj/item/weapon/gun/rifle/techweb_railgun/Initialize(mapload, spawn_empty)
-	. = ..()
-	AddElement(/datum/element/bullet_trait_iff)
+/obj/item/weapon/gun/rifle/techweb_railgun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/rifle/techweb_railgun/able_to_fire()
 	return charged

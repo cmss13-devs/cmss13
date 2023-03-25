@@ -307,7 +307,6 @@
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -356,7 +355,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -419,7 +417,6 @@
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -525,6 +522,7 @@
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
 	unacidable = TRUE
@@ -1048,6 +1046,10 @@
 	. = ..()
 	smoke = new()
 	smoke.attach(src)
+
+/obj/item/weapon/gun/launcher/rocket/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()

@@ -203,6 +203,11 @@
 /mob/living/proc/handle_weather(delta_time = 1)
 	var/starting_weather_type = current_weather_effect_type
 	var/area/area = get_area(src)
+	var/mob/living/carbon/human/src_as_human
+
+	if(istype(src, /mob/living/carbon/human))
+		src_as_human = src
+
 	// Check if we're supposed to be something affected by weather
 	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area))
 		current_weather_effect_type = null
@@ -213,8 +218,12 @@
 	if(current_weather_effect_type != starting_weather_type)
 		if(current_weather_effect_type)
 			overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
+			if(src_as_human)
+				src_as_human.handle_weather_extinguishables(TRUE)
 		else
 			clear_fullscreen("weather")
+			if(src_as_human)
+				src_as_human.handle_weather_extinguishables(FALSE)
 
 /mob/living/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()

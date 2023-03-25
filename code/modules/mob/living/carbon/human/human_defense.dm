@@ -406,3 +406,12 @@ Contains most of the procs that are called when a mob is attacked by something
 				resist_modifier = 0.25
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
+
+/mob/living/carbon/human/proc/handle_weather_extinguishables(is_starting = TRUE)
+	if(is_starting)
+		for(var/obj/item/clothing/mask/cigarette/found_smokable in contents)
+			if(wear_mask == found_smokable || l_hand == found_smokable || r_hand == found_smokable)
+				found_smokable.go_out()
+		extinguishing_timer = addtimer(CALLBACK(src, PROC_REF(handle_weather_extinguishables)), 30 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+	else
+		extinguishing_timer = TIMER_ID_NULL //stop checking every few minutes

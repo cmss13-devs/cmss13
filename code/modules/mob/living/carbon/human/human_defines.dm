@@ -164,6 +164,9 @@
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
 
+	///timer for extinguishing smokables in weather
+	var/extinguishing_timer = TIMER_ID_NULL
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

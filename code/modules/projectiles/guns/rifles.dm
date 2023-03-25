@@ -752,7 +752,7 @@
 
 /obj/item/weapon/gun/rifle/xm52/proc/toggle_lock(mob/user)
 	if(linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [usr]. Unauthorized user."))
 		return
 	else if(!linked_human)
 		register_owner(usr)

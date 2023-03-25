@@ -149,14 +149,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		if(M.id == podlock_id && M.density)
 			M.open()
 
-//Variables for the below function that we need to keep throught the round
-var/peakHumans = 1
-var/peakXenos = 1
+// Variables for the below function that we need to keep throught the round
+GLOBAL_VAR_INIT(peak_humans, 1)
+GLOBAL_VAR_INIT(peak_xenos, 1)
 
-var/lastXenoBioscan = 30 MINUTES//30 minutes in (we will add to that!)
-var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
-var/nextPredatorBioscan = 5 MINUTES//5 minutes in
-var/nextAdminBioscan = 30 MINUTES//30 minutes in
+// 30 minutes in (we will add to that!)
+GLOBAL_VAR_INIT(last_xeno_bioscan, 30 MINUTES)
+// 30 minutes in (we will add to that!)
+GLOBAL_VAR_INIT(last_human_bioscan, 30 MINUTES)
+// 5 minutes in
+GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
+// 30 minutes in
+GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 /datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
 	if(active_lz)
@@ -173,19 +177,19 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	//So if you have peak 30 xenos, if you still have 30 xenos, humans will have to wait 30 minutes between bioscans
 	//But if you fall down to 15 xenos, humans will get them every 15 minutes
 	//But never more often than 5 minutes apart
-	var/nextXenoBioscan = lastXenoBioscan + max(30 MINUTES * length(GLOB.alive_human_list) / peakHumans, 5 MINUTES)
-	var/nextHumanBioscan = lastHumanBioscan + max(30 MINUTES * length(GLOB.living_xeno_list) / peakXenos, 5 MINUTES)
+	var/nextXenoBioscan = GLOB.last_xeno_bioscan + max(30 MINUTES * length(GLOB.alive_human_list) / GLOB.peak_humans, 5 MINUTES)
+	var/nextHumanBioscan = GLOB.last_human_bioscan + max(30 MINUTES * length(GLOB.living_xeno_list) / GLOB.peak_xenos, 5 MINUTES)
 
-	if(world.time > nextPredatorBioscan)
+	if(world.time > GLOB.next_predator_bioscan)
 		GLOB.bioscan_data.yautja_bioscan()//Also does ghosts
-		nextPredatorBioscan += 5 MINUTES//5 minutes, straight
+		GLOB.next_predator_bioscan += 5 MINUTES//5 minutes, straight
 
 	if(world.time > nextXenoBioscan)
-		lastXenoBioscan = world.time
+		GLOB.last_xeno_bioscan = world.time
 		GLOB.bioscan_data.qm_bioscan()
 
 	if(world.time > nextHumanBioscan)
-		lastHumanBioscan = world.time
+		GLOB.last_human_bioscan = world.time
 		GLOB.bioscan_data.ares_bioscan(FALSE)
 
 

@@ -1,97 +1,92 @@
 GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
+
 /datum/bioscan_data
-	var/numHostsPlanet = 0
-	var/numHostsShip = 0
-	var/numXenosPlanet = 0
-	var/numXenosShip = 0
-	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
+	var/marines_on_planet = 0
+	var/marines_on_ship = 0
+	var/xenos_on_planet = 0
+	var/xenos_on_ship = 0
+	var/xenos_on_ship_uncontained = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one
-	var/list/hostsPlanetLocations = list()
-	var/list/hostsShipLocations = list()
-	var/list/xenosPlanetLocations = list()
-	var/list/xenosShipLocations = list()
+	var/list/marine_possible_planet_locations = list()
+	var/list/marine_possible_ship_locations = list()
+	var/list/xeno_possible_planet_locations = list()
+	var/list/xeno_possible_ship_locations = list()
+
 	/// All larva on all hives
 	var/larva = 0
 
 	/// Random mentioned locations
-	var/RandomHostsPlanetLocation = ""
-	var/RandomHostsShipLocation = ""
-	var/RandomXenosPlanetLocation = ""
-	var/RandomXenosShipLocation = ""
+	var/marine_planet_location
+	var/marine_ship_location
+	var/xenos_planet_location
+	var/xenos_ship_location
 
 /datum/bioscan_data/proc/get_scan_data()
 	/// Count all larva across all hives
-	var/datum/hive_status/HS
 	for(var/hivenumber in GLOB.hive_datum)
-		HS = GLOB.hive_datum[hivenumber]
-		larva += HS.stored_larva
+		larva += GLOB.hive_datum[hivenumber].stored_larva
 
 	/// Keeping track of peak numbers to determine when a side is "losing"
-	if(peakHumans < length(GLOB.alive_human_list))
-		peakHumans = length(GLOB.alive_human_list)
-	if(peakXenos < length(GLOB.living_xeno_list))
-		peakXenos = length(GLOB.living_xeno_list)
+	if(GLOB.peak_humans < length(GLOB.alive_human_list))
+		GLOB.peak_humans = length(GLOB.alive_human_list)
+	if(GLOB.peak_xenos < length(GLOB.living_xeno_list))
+		GLOB.peak_xenos = length(GLOB.living_xeno_list)
 
-	for(var/mob/M in GLOB.living_xeno_list)
-		if(M.mob_flags & NOBIOSCAN)
+	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
+		if(current_mob.mob_flags & NOBIOSCAN)
 			continue
-		var/area/A = get_area(M)
+		var/area/A = get_area(current_mob)
 		if(A?.flags_area & AREA_AVOID_BIOSCAN)
-			numXenosShip++
+			xenos_on_ship++
 			continue
-		var/atom/where = M
-		if (where.z == 0 && M.loc)
-			where = M.loc
+		var/atom/where = current_mob
+		if (where.z == 0 && current_mob.loc)
+			where = current_mob.loc
 		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
-			numXenosPlanet++
-			xenosPlanetLocations+=where
+			xenos_on_planet++
+			xeno_possible_planet_locations += where
 		else if(is_mainship_level(where.z))
-			numXenosShip++
-			numXenosShipAres++
-			xenosShipLocations+=where
+			xenos_on_ship++
+			xenos_on_ship_uncontained++
+			xeno_possible_ship_locations += where
 
-	for(var/i in GLOB.alive_human_list)
-		var/mob/living/carbon/human/H = i
-		if(H.mob_flags & NOBIOSCAN)
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(current_human.mob_flags & NOBIOSCAN)
 			continue
-		var/atom/where = H
-		if(isspecieshuman(H))
-			if (where.z == 0 && H.loc)
-				where = H.loc
+		var/atom/where = current_human
+		if(isspecieshuman(current_human))
+			if (where.z == 0 && current_human.loc)
+				where = current_human.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
-				numHostsPlanet++
-				hostsPlanetLocations += where
+				marines_on_planet++
+				marine_possible_planet_locations += where
 			else if(is_mainship_level(where.z))
-				numHostsShip++
-				hostsShipLocations += where
+				marines_on_ship++
+				marine_possible_ship_locations += where
 
-/// Pick one random location to disclose
-	if (hostsPlanetLocations.len>0)
-		RandomHostsPlanetLocation = get_area_name(pick(hostsPlanetLocations))
-	if (hostsShipLocations.len>0)
-		RandomHostsShipLocation = get_area_name(pick(hostsShipLocations))
-	if (xenosPlanetLocations.len>0)
-		RandomXenosPlanetLocation = get_area_name(pick(xenosPlanetLocations))
-	if (xenosShipLocations.len>0)
-		RandomXenosShipLocation = get_area_name(pick(xenosShipLocations))
+	/// Pick one random location to disclose
+	marine_planet_location = get_area_name(SAFEPICK(marine_possible_planet_locations))
+	marine_ship_location = get_area_name(SAFEPICK(marine_possible_ship_locations))
+	xenos_planet_location = get_area_name(SAFEPICK(xeno_possible_planet_locations))
+	xenos_ship_location = get_area_name(SAFEPICK(xeno_possible_ship_locations))
 
 /// Inform Yautja and Ghosts exactly what's what.
 /datum/bioscan_data/proc/yautja_bioscan()
-	var/xeno_colony_location = "[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]"
-	var/xeno_ship_location = "[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]"
-	var/marine_colony_location = "[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]"
-	var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
-	for(var/mob/M in GLOB.player_list)
-		//Announce the numbers to Yautja, they have good scanners
-		if (isyautja(M))
-			to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-			to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
+	var/xeno_planet_location_string = "[xenos_planet_location ? ", including one in [xenos_planet_location]" : ""]"
+	var/xeno_ship_location_string = "[xenos_ship_location ? ", including one in [xenos_ship_location]." : "."]"
+	var/marine_planet_location_string = "[marine_planet_location ? ", including one in [marine_planet_location]." : "."]"
+	var/marine_ship_location_string = "[marine_ship_location ? ", including one in [marine_ship_location]." : "."]"
 
-		//Let the ghosts know what's up, they also get good numbers
-		if (isobserver(M))
-			to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-			to_chat(M, SPAN_ALERT("[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship."))
+	//Announce the numbers to Yautja, they have good scanners
+	for(var/mob/living/carbon/human/yautja as anything in GLOB.yautja_mob_list)
+		to_chat(yautja, "<h2 class='alert'>Bioscan complete</h2>")
+		to_chat(yautja, SPAN_ALERT("[xenos_on_planet] serpents present in the hunting ground[xeno_planet_location_string], with [larva] larva.\n[xenos_on_ship] serpents present on the human ship[xeno_ship_location_string]\n[marines_on_planet] humans present in the hunting ground[marine_planet_location_string]\n[marines_on_ship] humans present on the human ship[marine_ship_location_string]"))
+
+	//Let the ghosts know what's up, they also get good numbers
+	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		to_chat(ghost, "<h2 class='alert'>Bioscan complete</h2>")
+		to_chat(ghost, SPAN_ALERT("[xenos_on_planet] xenos on planet, with [larva] larva.\n[xenos_on_ship] xenos on the ship.\n[marines_on_planet] humans on the planet.\n[marines_on_ship] humans on the ship."))
 
 
 /// This will do something after Project ARES.
@@ -105,24 +100,23 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		return
 
 	//Adjust the randomness there so everyone gets the same thing
-	var/fakeNumXenosPlanet = max(0, numXenosPlanet + rand(-variance, variance))
+	var/fake_xenos_on_planet = max(0, xenos_on_planet + rand(-variance, variance))
 
 	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-	var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [fakeNumXenosPlanet ? "approximately [fakeNumXenosPlanet]":"no"] signature[!fakeNumXenosPlanet || fakeNumXenosPlanet > 1 ? "s":""] located elsewhere[fakeNumXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
+	var/input = "Bioscan complete.\n\nSensors indicate [xenos_on_ship_uncontained ? "[xenos_on_ship_uncontained]" : "no"] unknown lifeform signature[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1 ? "s":""] present on the ship[xenos_on_ship_uncontained && xenos_ship_location ? ", including one in [xenos_ship_location]," : ""] and [fake_xenos_on_planet ? "approximately [fake_xenos_on_planet]" : "no"] signature[!fake_xenos_on_planet || fake_xenos_on_planet > 1 ? "s":""] located elsewhere[fake_xenos_on_planet && xenos_planet_location ? ", including one in [xenos_planet_location]":""]."
 	marine_announcement(input, name, 'sound/AI/bioscan.ogg')
 
 /// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 /datum/bioscan_data/proc/qm_bioscan(variance = 2)
 	/// Adjust the randomness there so everyone gets the same thing
-	var/fakeNumHostsShip = max(0, numHostsShip + rand(-variance, variance))
+	var/fake_marines_on_ship = max(0, marines_on_ship + rand(-variance, variance))
 	/// Shout it at everyone
-	for(var/i in GLOB.living_xeno_list)
-		var/mob/M = i
-		M << sound(get_sfx("queen"), wait = 0, volume = 50)
-		to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-		var/metalhive_hosts = "[fakeNumHostsShip ? "approximately [fakeNumHostsShip]":"no"]"
-		var/plural = "[!fakeNumHostsShip || fakeNumHostsShip > 1 ? "s":""]"
-		var/metalhive_location = "[fakeNumHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
-		var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
-		var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
-		to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
+	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
+		current_mob << sound(get_sfx("queen"), wait = 0, volume = 50)
+		to_chat(current_mob, SPAN_XENOANNOUNCE("The Queen current_mobother reaches into your mind from worlds away."))
+		var/metalhive_hosts = "[fake_marines_on_ship ? "approximately [fake_marines_on_ship]":"no"]"
+		var/plural = "[!fake_marines_on_ship || fake_marines_on_ship > 1 ? "s":""]"
+		var/metalhive_location = "[fake_marines_on_ship&&marine_ship_location?", including one in [marine_ship_location],":""]"
+		var/planet_hosts = "[marines_on_planet ? "[marines_on_planet]" : "none"]"
+		var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
+		to_chat(current_mob, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))

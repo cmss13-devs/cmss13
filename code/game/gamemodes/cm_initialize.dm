@@ -884,7 +884,7 @@ Additional game mode variables.
 		return
 
 	var/mob/living/carbon/human/synthetic/new_joe = new()
-	pred_candidate.mind.transfer_to(new_joe, TRUE)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	new_joe.client = joe_candidate.client
 
 	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]

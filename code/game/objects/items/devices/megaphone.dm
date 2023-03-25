@@ -34,12 +34,14 @@
 	if((src.loc == user && !user.is_mob_incapacitated()))
 		// get mobs in the range of the user
 		var/list/mob/listeners = viewers(user) // slow but we need it
+		// mobs that pass the conditionals will be added here
+		var/list/mob/langchat_long_listeners = list()
 		for(var/mob/listener in listeners)
-			if(!ishuman(listener) && !isobserver(listener))
+			if(!ishumansynth_strict(listener) && !isobserver(listener))
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
-
-		user.langchat_long_speech(message, listeners, user.get_default_language())
+			langchat_long_listeners += listener
+		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

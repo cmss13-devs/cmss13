@@ -24,7 +24,9 @@
 	desc = "attach a prosthesis"
 	tools = list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
 	time = 2 SECONDS
-
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/clothingrustle5.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)
 	. = ..()
 	if(. && (!tool.part || !(user.zone_selected in tool.part)))
@@ -71,6 +73,9 @@
 	accept_hand = TRUE
 	time = 3 SECONDS
 	tools = SURGERY_TOOLS_PINCH
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/retractor1.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -105,6 +110,9 @@
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH
+	preop_sound = 'sound/items/Screwdriver.ogg'
+	success_sound = 'sound/handling/click_2.ogg'
+	failure_sound = 'sound/items/Screwdriver2.ogg'
 
 /datum/surgery_step/calibrate_prosthesis/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/nerves = (target.species && (target.species.flags & IS_SYNTHETIC)) ? "control wiring" : "nervous system"

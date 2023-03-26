@@ -1,19 +1,13 @@
 /datum/emote/silicon
 	mob_type_allowed_typecache = list(/mob/living/silicon/robot)
 	emote_type = EMOTE_AUDIBLE
+	keybind_category = CATEGORY_ROBOTIC_EMOTE
 
 /datum/emote/silicon/salute
 	key = "salute"
 	key_third_person = "salutes"
 	message = "salutes."
 	message_param = "salutes at %t."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/bow
-	key = "bow"
-	key_third_person = "bows"
-	message = "bows."
-	message_param = "bows at %t."
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/silicon/clap
@@ -33,43 +27,9 @@
 	message = "flaps their wings ANGRILY!"
 	emote_type = EMOTE_VISIBLE
 
-/datum/emote/silicon/twitch
-	key = "twitch"
-	key_third_person = "twitches"
-	message = "twitches violently."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/twitch_subtle
-	key = "twitch_s"
-	message = "twitches."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/nod
-	key = "nod"
-	message = "nods."
-	emote_type = EMOTE_VISIBLE
-
 /datum/emote/silicon/deathgasp
 	key = "deathgasp"
 	message = "shudders violently for a moment, then becomes motionless, its eyes slowly darkening."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/glare
-	key = "glare"
-	message = "glares."
-	message_param = "glares at %t."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/stare
-	key = "stare"
-	message = "stares."
-	message_param = "stares at %t."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/silicon/look
-	key = "look"
-	message = "looks."
-	message_param = "looks at %t."
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/silicon/beep

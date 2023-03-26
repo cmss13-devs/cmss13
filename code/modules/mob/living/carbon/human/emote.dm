@@ -32,12 +32,6 @@
 	key = "rapidblink"
 	message = "blinks rapidly."
 
-/datum/emote/living/carbon/human/bow
-	key = "bow"
-	key_third_person = "bows"
-	message = "bows."
-	message_param = "bows to %t."
-
 /datum/emote/living/carbon/human/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
@@ -106,12 +100,6 @@
 	message = "giggles."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/glare
-	key = "glare"
-	key_third_person = "glares"
-	message = "glares."
-	message_param = "glares at %t."
-
 /datum/emote/living/carbon/human/golfclap
 	key = "golfclap"
 	key_third_person = "golfclaps"
@@ -140,12 +128,6 @@
 	key_third_person = "laughs"
 	message = "laughs!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/look
-	key = "look"
-	key_third_person = "looks"
-	message = "looks."
-	message_param = "looks at %t."
 
 /datum/emote/living/carbon/human/medic
 	key = "medic"
@@ -183,11 +165,6 @@
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mumbles."
-
-/datum/emote/living/carbon/human/nod
-	key = "nod"
-	key_third_person = "nods"
-	message = "nods."
 
 /datum/emote/living/carbon/human/pain
 	key = "pain"
@@ -296,12 +273,6 @@
 	message = "snores."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/stare
-	key = "stare"
-	key_third_person = "stares"
-	message = "stares."
-	message_param = "stares at %t."
-
 /datum/emote/living/carbon/human/signal
 	key = "signal"
 	key_third_person = "signals"
@@ -314,11 +285,6 @@
 		return "raises one finger."
 	params = num2text(clamp(params, 2, 10))
 	return ..()
-
-/datum/emote/living/carbon/human/twitch
-	key = "twitch"
-	key_third_person = "twitches"
-	message = "twitches."
 
 /datum/emote/living/carbon/human/wave
 	key = "wave"

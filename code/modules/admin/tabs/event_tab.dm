@@ -950,6 +950,7 @@
 	else
 		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
 		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		GLOB.bioscan_data.get_scan_data()
 		switch(faction)
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)

@@ -22,7 +22,23 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/xenos_planet_location
 	var/xenos_ship_location
 
+/datum/bioscan_data/proc/clear_data()
+	marines_on_planet = 0
+	marines_on_ship = 0
+	xenos_on_planet = 0
+	xenos_on_ship = 0
+	xenos_on_ship_uncontained = 0
+	marine_possible_planet_locations = list()
+	marine_possible_ship_locations = list()
+	xeno_possible_planet_locations = list()
+	xeno_possible_ship_locations = list()
+
 /datum/bioscan_data/proc/get_scan_data()
+	clear_data()
+	/// All larva on all hives
+	var/larva = 0
+
+
 	/// Count all larva across all hives
 	for(var/hivenumber in GLOB.hive_datum)
 		larva += GLOB.hive_datum[hivenumber].stored_larva

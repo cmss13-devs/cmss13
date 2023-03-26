@@ -1000,8 +1000,8 @@
 /obj/structure/prop/invuln/lattice_prop
 	desc = "A lightweight support lattice."
 	name = "lattice"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "latticefull"
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
+	icon_state = "lattice0"
 	density = FALSE
 	layer = RIPPLE_LAYER
 

@@ -58,3 +58,7 @@
 /obj/structure/machinery/air_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
+
+/obj/structure/machinery/air_sensor/Destroy()
+	SSradio.remove_object(src, frequency)
+	return ..()

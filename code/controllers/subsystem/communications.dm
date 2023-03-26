@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(radio)
 	if(frequency)
 		frequency.remove_listener(device)
 
-		if(frequency.devices.len == 0)
+		if(!length(frequency.devices))
 			qdel(frequency)
 			frequencies -= f_text
 
@@ -341,7 +341,7 @@ SUBSYSTEM_DEF(radio)
 
 /datum/radio_frequency
 	var/frequency as num
-	var/list/list/obj/devices = list()
+	var/list/list/datum/weakref/devices = list()
 
 /datum/radio_frequency/proc/post_signal(obj/source as obj|null, datum/signal/signal, filter = null as text|null, range = null as num|null)
 	var/turf/start_point
@@ -363,7 +363,9 @@ SUBSYSTEM_DEF(radio)
 	if (range && !start_point)
 		return
 
-	for(var/obj/device in devices[filter])
+	for(var/datum/weakref/device_ref as anything in devices[filter])
+		var/obj/device = device_ref.resolve()
+
 		if(device == source)
 			continue
 
@@ -382,21 +384,21 @@ SUBSYSTEM_DEF(radio)
 /datum/radio_frequency/proc/add_listener(obj/device as obj, filter as text|null)
 	if (!filter)
 		filter = RADIO_DEFAULT
-	//log_admin("add_listener(device=[device],filter=[filter]) frequency=[frequency]")
-	var/list/obj/devices_line = devices[filter]
+
+	var/datum/weakref/new_listener = WEAKREF(device)
+	if(isnull(new_listener))
+		return stack_trace("null, non-datum or qdeleted device")
+
+	var/list/devices_line = devices[filter]
 	if (!devices_line)
 		devices_line = new
 		devices[filter] = devices_line
-	devices_line+=device
-// var/list/obj/devices_line___ = devices[filter_str]
-// var/l = devices_line___.len
-	//log_admin("DEBUG: devices_line.len=[devices_line.len]")
-	//log_admin("DEBUG: devices(filter_str).len=[l]")
+	devices_line += new_listener
 
 /datum/radio_frequency/proc/remove_listener(obj/device)
 	for (var/devices_filter in devices)
 		var/list/devices_line = devices[devices_filter]
-		devices_line-=device
+		devices_line -= WEAKREF(device)
 		while (null in devices_line)
 			devices_line -= null
 		if (devices_line.len==0)

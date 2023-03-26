@@ -33,6 +33,9 @@
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/surgery/cautery2.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
@@ -72,6 +75,9 @@
 	desc = "tend the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_MEND_WOUND
 	time = 15 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mtend_wounds/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	var/obj/item/tool/surgery/healing_gun/gun = tool

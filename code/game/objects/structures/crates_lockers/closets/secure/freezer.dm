@@ -135,6 +135,10 @@
 	CU.start_processing()
 	. = ..()
 
+/obj/structure/closet/secure_closet/freezer/industry/Destroy()
+	QDEL_NULL(CU)
+	return ..()
+
 /obj/structure/machinery/paraform_cooler
 	var/cooldown = 5
 	var/list/polymerization_recipe = list("formaldehyde" = 3, "water" = 3)

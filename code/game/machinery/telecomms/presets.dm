@@ -48,7 +48,9 @@
 
 /obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+
+	if(z)
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)

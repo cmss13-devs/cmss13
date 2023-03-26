@@ -4763,17 +4763,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"apN" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/medical/medical_science)
 "apO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer{
@@ -15120,13 +15109,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"bff" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment)
 "bfl" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -28643,13 +28625,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/hydroponics)
-"cLK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
 "cLN" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -30865,12 +30840,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
-"dJf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
 "dKm" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -33699,13 +33668,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
-"eXD" = (
-/obj/structure/disposalpipe/down/almayer{
-	dir = 2;
-	id = "almayerlink_med_req"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment)
 "eXE" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -38548,16 +38510,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
-"hpw" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/almayer/medical/medical_science)
 "hpN" = (
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/light,
@@ -41809,13 +41761,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
-"iWa" = (
-/obj/structure/disposalpipe/down/almayer{
-	dir = 4;
-	id = "almayerlink_ot_med"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment)
 "iWc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -42615,9 +42560,6 @@
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Researcher Study"
 	},
@@ -43629,12 +43571,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"jRU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/outer_tile,
-/area/almayer/medical/medical_science)
 "jSo" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer{
@@ -51366,13 +51302,6 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
-"nCp" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
 "nDd" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/smg/m39,
@@ -53393,10 +53322,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/cells)
-"oBy" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment)
 "oBA" = (
 /obj/structure/sign/safety/conference_room{
 	pixel_x = -17;
@@ -58566,9 +58491,6 @@
 	name = "Requisitions Delivery Unit";
 	pixel_y = 28
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -60276,10 +60198,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/port_missiles)
-"rWb" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/almayer/white/outer_tile,
-/area/almayer/medical/medical_science)
 "rWs" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -60470,13 +60388,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"scl" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "sco" = (
 /obj/structure/sign/prop1{
 	layer = 3.1
@@ -61902,13 +61813,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/engineering/port_atmos)
-"sIO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
 "sIT" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/hull/lower_hull/l_f_s)
@@ -62359,10 +62263,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/hydroponics)
-"sWZ" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
 "sXd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/reagent_scanner{
@@ -63470,12 +63370,6 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/weapon_room)
-"tvh" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/containment)
 "tvu" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/item/clipboard,
@@ -65610,12 +65504,6 @@
 	icon_state = "plating"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
-"uvJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "uvS" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -66480,9 +66368,6 @@
 	icon_state = "delivery_med";
 	name = "Requisitions Delivery Unit";
 	pixel_y = 28
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -67509,13 +67394,6 @@
 	dir = 1
 	},
 /area/almayer/medical/containment/cell)
-"vkB" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/closed/wall/almayer/white/outer_tile,
-/area/almayer/medical/medical_science)
 "vkD" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -107135,7 +107013,7 @@ lea
 lea
 lea
 qEn
-iWa
+irA
 awQ
 jeq
 aqR
@@ -107333,14 +107211,14 @@ irA
 irA
 irA
 irA
-eXD
-tvh
-oBy
-oBy
-oBy
-bff
-rWb
-rWb
+irA
+irA
+irA
+irA
+irA
+irA
+amk
+amk
 rhO
 qqQ
 nPE
@@ -107537,7 +107415,7 @@ vOy
 wWm
 mHD
 bkT
-jRU
+amk
 axn
 ayY
 eNI
@@ -107740,7 +107618,7 @@ vOy
 ecx
 elH
 elH
-hpw
+aLP
 cSK
 aCR
 aAT
@@ -107943,7 +107821,7 @@ vOy
 tvu
 bnL
 bnL
-hpw
+aLP
 aqO
 aoM
 mtI
@@ -108349,7 +108227,7 @@ vOy
 amm
 bnL
 bnL
-apN
+aPJ
 aqQ
 aoM
 aoM
@@ -108552,7 +108430,7 @@ vOy
 woh
 avp
 aoJ
-hpw
+aLP
 rGR
 avH
 oeg
@@ -108755,7 +108633,7 @@ vOy
 qxP
 anz
 aoJ
-jRU
+amk
 pYo
 avF
 coJ
@@ -108957,8 +108835,8 @@ avj
 vOy
 vOy
 vOy
-scl
-vkB
+vOy
+amk
 aqR
 avG
 oeg
@@ -109160,7 +109038,7 @@ avj
 alH
 aqG
 ata
-uvJ
+vOy
 apR
 aqS
 kCE
@@ -109363,7 +109241,7 @@ bYe
 apI
 aqG
 atb
-uvJ
+vOy
 apS
 avA
 rzN
@@ -109563,10 +109441,10 @@ aej
 iiC
 amO
 tHh
-sIO
-sWZ
-sWZ
-cLK
+hgv
+hgv
+hgv
+hgv
 msi
 kDk
 msi
@@ -109766,7 +109644,7 @@ aej
 ayT
 amO
 avj
-dJf
+hgv
 elR
 anx
 aoO
@@ -109969,7 +109847,7 @@ yaz
 bYe
 ajt
 avj
-dJf
+hgv
 nGr
 eNT
 anF
@@ -110172,7 +110050,7 @@ eup
 bYe
 ajt
 avj
-nCp
+hgv
 uPX
 anF
 anF

@@ -1,44 +1,93 @@
 /obj/docking_port/mobile/trijent_elevator
 	name="Elevator"
 	id=MOBILE_TRIJENT_ELEVATOR
+
+	// Map information
+	height=6
+	width=7
 	preferred_direction = NORTH
 	port_direction = SOUTH
+
 	area_type = /area/shuttle/trijent_shuttle
-	width=7
-	height=6
+
+	// Shuttle timings
+	callTime = 30 SECONDS
+	rechargeTime = 30 SECONDS
+	ignitionTime = 4 SECONDS
+	ambience_flight = 'sound/vehicles/tank_driving.ogg'
+	ignition_sound = 'sound/mecha/powerup.ogg'
+
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
+	var/datum/door_controller/aggregate/controller
+
+/obj/docking_port/mobile/trijent_elevator/Initialize(mapload)
+	. = ..()
+	controller = new()
+	controller.label = "elevator"
+	for(var/area/shuttle_area in shuttle_areas)
+		for(var/obj/structure/machinery/door/door in shuttle_area)
+			controller.add_door(door, door.id)
+
+/obj/docking_port/mobile/trijent_elevator/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	controller.control_doors("force-lock-launch", "all", force=TRUE)
 
 /obj/docking_port/stationary/trijent_elevator
-	preferred_direction = NORTH
-	port_direction = SOUTH
+	dir=NORTH
 	width=7
 	height=6
 	// shutters to clear the area
 	var/datum/door_controller/single/cont
-	var/shutter_dir
+	var/airlock_area
+	var/airlock_exit
 
 /obj/docking_port/stationary/trijent_elevator/Initialize(mapload)
 	. = ..()
 	cont = new()
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
+	for(var/area/target_area in world)
+		if(istype(target_area, airlock_area))
+			for(var/obj/structure/machinery/door/door in target_area)
+				cont.doors += list(door)
 
+/obj/docking_port/stationary/trijent_elevator/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	cont.control_doors("open", FALSE, FALSE)
+	if(istype(arriving_shuttle, /obj/docking_port/mobile/trijent_elevator))
+		var/obj/docking_port/mobile/trijent_elevator/elevator = arriving_shuttle
+		elevator.controller.control_doors("open", airlock_exit)
+
+	playsound(src, 'sound/machines/ping.ogg', 25, 1)
+	playsound(arriving_shuttle, 'sound/machines/ping.ogg', 25, 1)
+
+/obj/docking_port/stationary/trijent_elevator/on_departure(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+	cont.control_doors("force-lock-launch")
 
 /obj/docking_port/stationary/trijent_elevator/lz1
 	name="Lz1 Elevator"
 	id=STAT_TRIJENT_LZ1
-	shutter_dir=WEST
+	airlock_area=/area/shuttle/trijent_shuttle/lz1
+	airlock_exit="west"
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator
 
 /obj/docking_port/stationary/trijent_elevator/lz2
 	name="Lz2 Elevator"
 	id=STAT_TRIJENT_LZ2
-	shutter_dir=WEST
+	airlock_area=/area/shuttle/trijent_shuttle/lz2
+	airlock_exit="west"
 
 /obj/docking_port/stationary/trijent_elevator/engineering
 	name="Engineering Elevator"
 	id=STAT_TRIJENT_ENGI
-	shutter_dir=EAST
+	airlock_area=/area/shuttle/trijent_shuttle/engi
+	airlock_exit="east"
 
 /obj/docking_port/stationary/trijent_elevator/omega
 	name="Omega Elevator"
 	id=STAT_TRIJENT_OMEGA
-	shutter_dir=EAST
+	airlock_area=/area/shuttle/trijent_shuttle/omega
+	airlock_exit="east"
+
+/datum/map_template/shuttle/trijent_elevator
+	name = "Trijent Elevator"
+	shuttle_id = MOBILE_TRIJENT_ELEVATOR

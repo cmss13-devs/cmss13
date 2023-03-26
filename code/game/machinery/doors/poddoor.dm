@@ -76,6 +76,8 @@
 		return
 	if(!operating) //in case of emag
 		operating = 1
+	if(!opacity)
+		return 1
 
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 	flick(initial(icon_state) + "c0", src)
@@ -94,6 +96,9 @@
 /obj/structure/machinery/door/poddoor/close()
 	if(operating)
 		return
+	if(opacity == initial(opacity))
+		return
+
 	operating = 1
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 

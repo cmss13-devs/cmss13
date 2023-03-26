@@ -1,0 +1,88 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$border-color: rgba(base.$color-fg, 0.6);
+
+.ElevatorPanel {
+  background-color: #4e5558;
+  padding-top: 12px;
+  font-family: monospace;
+  font-weight: bold;
+  .InfoPanel {
+    .InfoBox {
+      padding-top: 6px;
+      text-align: center;
+      margin: 0 1rem 1rem 0;
+      border-radius: 6px;
+      border: 2px solid $border-color;
+      width: 200px;
+
+      .Title {
+        position: relative;
+        display: inline-block;
+        height: 18px;
+        top: -16px;
+        background-color: base.$color-bg;
+        border: 2px solid $border-color;
+        border-radius: 3px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .InfoText {
+        font-size: large;
+        margin-top: -15px;
+      }
+      .InfoNoTitle {
+        font-size: large;
+        margin-top: -5px;
+      }
+    }
+  }
+
+  .ButtonPanel {
+    width: 370px;
+    flex-wrap: wrap;
+    border: 2px solid $border-color;
+    border-radius: 3px;
+    justify-content: center;
+
+    .ButtonContainer {
+      width: 170px;
+      flex-direction: row;
+      margin: 2px;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+      .pushButtonOuter {
+        height: 35px;
+        width: 35px;
+        .pushButton {
+          height: 25px;
+          width: 25px;
+          background-color: #e3eb14;
+          border-radius: 50%;
+          display: inline-block;
+          margin-top: 5px;
+          margin-left: -1px;
+        }
+      }
+
+      .buttonLabel {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: large;
+        text-align: left;
+      }
+    }
+  }
+
+  .ButtonPanel :nth-child(odd) {
+    .ButtonContainer {
+      flex-direction: row-reverse;
+      .buttonLabel {
+        text-align: right;
+      }
+    }
+  }
+}

@@ -4516,11 +4516,11 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anw" = (
-/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans1,
+/obj/structure/machinery/computer/shuttle/elevator_call,
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/hanger)
+/area/shuttle/trijent_shuttle/lz1)
 "anx" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -4617,7 +4617,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/hanger)
+/area/shuttle/trijent_shuttle/lz1)
 "anK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4794,10 +4794,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
-"aol" = (
-/obj/docking_port/stationary/trijent_elevator/lz1,
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle)
 "aoq" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -6965,7 +6961,6 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auG" = (
-/obj/structure/machinery/light,
 /turf/open/desert/rock,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "auH" = (
@@ -6982,16 +6977,6 @@
 	icon_state = "dark2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
-"auJ" = (
-/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans1{
-	link = 1;
-	pixel_y = 8;
-	use_power = 0
-	},
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/interior/dam_interior/west_tunnel)
 "auK" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -7069,7 +7054,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/west_tunnel)
+/area/shuttle/trijent_shuttle/engi)
 "auX" = (
 /obj/structure/stairs{
 	dir = 1
@@ -7151,11 +7136,17 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "avj" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = null;
+	name = "\improper Elevator Lock";
+	unacidable = 0
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/desert_dam/interior/dam_interior/west_tunnel)
+/area/shuttle/trijent_shuttle/engi)
 "avk" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -10006,7 +9997,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/exterior/valley/valley_medical)
+/area/shuttle/trijent_shuttle/omega)
 "aDU" = (
 /obj/structure/flora/tree/joshua,
 /turf/open/desert/dirt{
@@ -10022,10 +10013,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
-"aDX" = (
-/obj/docking_port/stationary/trijent_elevator/omega,
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle)
 "aDY" = (
 /obj/structure/prop/dam/boulder/boulder3,
 /turf/open/desert/dirt{
@@ -10052,14 +10039,16 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/exterior/valley/valley_medical)
+/area/shuttle/trijent_shuttle/omega)
 "aEd" = (
 /obj/structure/machinery/computer/shuttle_control/trijent/tri_trans2{
 	link = 1;
 	pixel_y = 8
 	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/building/medical/west_wing_hallway)
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/shuttle/trijent_shuttle/omega)
 "aEe" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/decal/sand_overlay/sand1{
@@ -10147,11 +10136,17 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEs" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = null;
+	name = "\improper Elevator Lock";
+	unacidable = 0
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/desert_dam/exterior/valley/valley_medical)
+/area/shuttle/trijent_shuttle/omega)
 "aEu" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -10163,7 +10158,7 @@
 	dir = 8;
 	icon_state = "sterile_white"
 	},
-/area/desert_dam/building/medical/west_wing_hallway)
+/area/desert_dam/exterior/valley/valley_medical)
 "aEv" = (
 /obj/structure/stairs{
 	dir = 1
@@ -10240,7 +10235,7 @@
 	dir = 8;
 	icon_state = "sterile_white"
 	},
-/area/desert_dam/building/medical/west_wing_hallway)
+/area/desert_dam/exterior/valley/valley_medical)
 "aED" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -11549,10 +11544,6 @@
 	icon_state = "dirt2"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aIz" = (
-/obj/docking_port/stationary/trijent_elevator/engineering,
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle)
 "aIA" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
@@ -13406,13 +13397,11 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "aNW" = (
-/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans2{
-	pixel_y = 8
-	},
+/obj/structure/machinery/computer/shuttle/elevator_call,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/building/warehouse/loading)
+/area/shuttle/trijent_shuttle/lz2)
 "aNX" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -13427,17 +13416,13 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/building/warehouse/loading)
+/area/shuttle/trijent_shuttle/lz2)
 "aNZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached2"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
-"aOb" = (
-/obj/docking_port/stationary/trijent_elevator/lz2,
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle)
 "aOc" = (
 /turf/closed/wall,
 /area/desert_dam/building/substation/northwest)
@@ -13702,11 +13687,17 @@
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/river_mouth/southern)
 "aOW" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = null;
+	name = "\improper Elevator Lock";
+	unacidable = 0
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "cell_stripe"
 	},
-/area/desert_dam/building/warehouse/loading)
+/area/shuttle/trijent_shuttle/lz2)
 "aOY" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -13891,13 +13882,10 @@
 	},
 /area/desert_dam/building/water_treatment_two/purification)
 "aPH" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4
-	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/shuttle/trijent_shuttle)
+/area/shuttle/trijent_shuttle/lz2)
 "aPI" = (
 /turf/open/floor{
 	dir = 4;
@@ -14499,8 +14487,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aRB" = (
+/obj/docking_port/stationary/trijent_elevator/lz2,
 /turf/open/gm/empty,
-/area/shuttle/trijent_shuttle)
+/area/shuttle/trijent_shuttle/lz2)
 "aRC" = (
 /turf/open/floor{
 	dir = 8;
@@ -60611,6 +60600,9 @@
 	icon_state = "cement_sunbleached2"
 	},
 /area/desert_dam/exterior/valley/south_valley_dam)
+"eyL" = (
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/engi)
 "eAe" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -60828,6 +60820,9 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"fmP" = (
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/lz1)
 "foq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -61775,6 +61770,10 @@
 "ioA" = (
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/caves/temple)
+"ipQ" = (
+/obj/docking_port/stationary/trijent_elevator/omega,
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/omega)
 "iqs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/liquidfood,
@@ -62239,6 +62238,11 @@
 "kcH" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz2_containers)
+"kdo" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/shuttle/trijent_shuttle/lz1)
 "kee" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
@@ -62923,6 +62927,12 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+"mEV" = (
+/obj/structure/machinery/light,
+/turf/open/desert/rock/deep/transition{
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/west_tunnel)
 "mGo" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -63545,6 +63555,11 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
+"oYt" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/shuttle/trijent_shuttle/engi)
 "pac" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -63581,6 +63596,10 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/interior/caves/central_caves)
+"pif" = (
+/obj/docking_port/stationary/trijent_elevator/engineering,
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/engi)
 "pij" = (
 /turf/open/desert/dirt{
 	dir = 6;
@@ -64205,6 +64224,10 @@
 	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
+"rxS" = (
+/obj/docking_port/stationary/trijent_elevator/lz1,
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/lz1)
 "ryG" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
@@ -64263,6 +64286,9 @@
 	icon_state = "whiteyellow"
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
+"rFi" = (
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/lz2)
 "rFz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -65451,6 +65477,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
+"vHQ" = (
+/turf/open/gm/empty,
+/area/shuttle/trijent_shuttle/omega)
 "vIx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -65493,6 +65522,15 @@
 	icon_state = "cement_sunbleached15"
 	},
 /area/desert_dam/exterior/landing_pad_one)
+"vRX" = (
+/obj/structure/machinery/computer/shuttle/elevator_call{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/shuttle/trijent_shuttle/engi)
 "vSF" = (
 /turf/open/desert/dirt{
 	dir = 8;
@@ -65978,6 +66016,18 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"xss" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = null;
+	name = "\improper Elevator Lock";
+	unacidable = 0
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
+/area/shuttle/trijent_shuttle/lz1)
 "xsQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -77812,10 +77862,10 @@ dTs
 dTs
 bhu
 anJ
-bhR
-bhR
-bhR
-bhR
+xss
+xss
+xss
+xss
 anJ
 bhu
 dTs
@@ -78045,12 +78095,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+rxS
 bhu
 dTs
 dTs
@@ -78279,12 +78329,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 dTs
 dTs
@@ -78513,12 +78563,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 dTs
 dTs
@@ -78747,12 +78797,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aol
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 dTs
 blZ
@@ -78981,12 +79031,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 blZ
 blZ
@@ -79215,12 +79265,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 blZ
 bmm
@@ -79449,12 +79499,12 @@ dTs
 dTs
 dTs
 bhu
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+fmP
+fmP
+fmP
+fmP
+fmP
+fmP
 bhu
 blZ
 bmn
@@ -79683,12 +79733,12 @@ dTs
 dTs
 dTs
 bhu
-aPH
-aPH
-aPH
-aPH
-aPH
-aPH
+kdo
+kdo
+kdo
+kdo
+kdo
+kdo
 bhu
 blZ
 bmo
@@ -82662,11 +82712,11 @@ dfL
 cZB
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
 aRB
 cZB
 acu
@@ -82896,12 +82946,12 @@ dfL
 cZB
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -83130,12 +83180,12 @@ cZB
 cZB
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -83364,12 +83414,12 @@ dTs
 dTs
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aOb
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -83598,12 +83648,12 @@ dTs
 dTs
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -83832,12 +83882,12 @@ dTs
 dTs
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -84066,12 +84116,12 @@ dTs
 dTs
 dTs
 cZB
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+rFi
+rFi
+rFi
+rFi
+rFi
+rFi
 cZB
 acu
 "}
@@ -94016,12 +94066,12 @@ dTs
 dTs
 dTs
 aDT
-aPH
-aPH
-aPH
-aPH
-aPH
-aPH
+aDT
+aDT
+aDT
+aDT
+aDT
+aDT
 aDT
 dTs
 dTs
@@ -94250,12 +94300,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+ipQ
 aDT
 dTs
 cft
@@ -94484,12 +94534,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 cdF
@@ -94718,12 +94768,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 dTs
@@ -94952,12 +95002,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aDX
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 dTs
@@ -95186,12 +95236,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 dTs
@@ -95420,12 +95470,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 dTs
@@ -95654,12 +95704,12 @@ dTs
 dTs
 dTs
 aDT
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
+vHQ
 aDT
 dTs
 dTs
@@ -99114,12 +99164,12 @@ blj
 ato
 biy
 bTI
-aPH
-aPH
-aPH
-aPH
-aPH
-aPH
+oYt
+oYt
+oYt
+oYt
+oYt
+oYt
 bTI
 dTs
 dTs
@@ -99348,12 +99398,12 @@ blj
 bmJ
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+pif
 bTI
 dTs
 dTs
@@ -99582,12 +99632,12 @@ blj
 bmJ
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -99816,12 +99866,12 @@ blj
 bmJ
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -100050,12 +100100,12 @@ blj
 bmJ
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aIz
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -100284,12 +100334,12 @@ blj
 att
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -100518,12 +100568,12 @@ dOZ
 biy
 biy
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -100752,12 +100802,12 @@ blj
 atD
 dTs
 bTI
-aRB
-aRB
-aRB
-aRB
-aRB
-aRB
+eyL
+eyL
+eyL
+eyL
+eyL
+eyL
 bTI
 dTs
 dTs
@@ -100984,8 +101034,8 @@ aVZ
 aVZ
 aZk
 atH
-aut
-bTI
+mEV
+vRX
 auW
 avj
 avj
@@ -101453,7 +101503,7 @@ aWB
 aZk
 atH
 auG
-auJ
+aut
 avc
 avk
 aCP

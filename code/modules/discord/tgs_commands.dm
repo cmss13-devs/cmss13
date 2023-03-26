@@ -64,7 +64,7 @@
 	name = "testmerges"
 	help_text = "Gets the current TMs"
 
-/datum/tgs_chat_command/gameversion/Run(datum/tgs_chat_user/sender, params)
+/datum/tgs_chat_command/testmerges/Run(datum/tgs_chat_user/sender, params)
 	var/list/msg = list("")
 	if(!GLOB.revdata)
 		msg += "No revision information found."

@@ -371,8 +371,9 @@
 	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
 	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
-	var/flipped_name //used to store the tape's name for one side
-	var/unflipped_name //see above
+	///used to store the tape's name for one side and the other side
+	var/flipped_name
+	var/unflipped_name
 
 
 /obj/item/tape/get_examine_text(mob/user)

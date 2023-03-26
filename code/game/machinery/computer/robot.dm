@@ -36,43 +36,43 @@
 			dat += "<A href='?src=\ref[src];screen=1'>1. Cyborg Status</A><BR>"
 			dat += "<A href='?src=\ref[src];screen=2'>2. Emergency Full Destruct</A><BR>"
 		if(screen == 1)
-			for(var/mob/living/silicon/robot/R in GLOB.mob_list)
-				if(istype(R, /mob/living/silicon/robot/drone))
+			for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
+				if(istype(robot, /mob/living/silicon/robot/drone))
 					continue //There's a specific console for drones.
 				if(isRemoteControlling(user))
-					if (R.connected_ai != user)
+					if (robot.connected_ai != user)
 						continue
 				if(isrobot(user))
-					if (R != user)
+					if (robot != user)
 						continue
-				if(R.scrambledcodes)
+				if(robot.scrambledcodes)
 					continue
 
-				dat += "[R.name] |"
-				if(R.stat)
+				dat += "[robot.name] |"
+				if(robot.stat)
 					dat += " Not Responding |"
-				else if (!R.canmove)
+				else if (!robot.canmove)
 					dat += " Locked Down |"
 				else
 					dat += " Operating Normally |"
-				if (!R.canmove)
-				else if(R.cell)
-					dat += " Battery Installed ([R.cell.charge]/[R.cell.maxcharge]) |"
+				if (!robot.canmove)
+				else if(robot.cell)
+					dat += " Battery Installed ([robot.cell.charge]/[robot.cell.maxcharge]) |"
 				else
 					dat += " No Cell Installed |"
-				if(R.module)
-					dat += " Module Installed ([R.module.name]) |"
+				if(robot.module)
+					dat += " Module Installed ([robot.module.name]) |"
 				else
 					dat += " No Module Installed |"
-				if(R.connected_ai)
-					dat += " Slaved to [R.connected_ai.name] |"
+				if(robot.connected_ai)
+					dat += " Slaved to [robot.connected_ai.name] |"
 				else
 					dat += " Independent from AI |"
 				if (isRemoteControlling(user))
 					if((user.mind.original == user))
-						dat += "<A href='?src=\ref[src];magbot=\ref[R]'>(<font color=blue><i>Hack</i></font>)</A> "
-				dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<font color=green><i>[R.canmove ? "Lockdown" : "Release"]</i></font>)</A> "
-				dat += "<A href='?src=\ref[src];killbot=\ref[R]'>(<font color=red><i>Destroy</i></font>)</A>"
+						dat += "<A href='?src=\ref[src];magbot=\ref[robot]'>(<font color=blue><i>Hack</i></font>)</A> "
+				dat += "<A href='?src=\ref[src];stopbot=\ref[robot]'>(<font color=green><i>[robot.canmove ? "Lockdown" : "Release"]</i></font>)</A> "
+				dat += "<A href='?src=\ref[src];killbot=\ref[robot]'>(<font color=red><i>Destroy</i></font>)</A>"
 				dat += "<BR>"
 			dat += "<A href='?src=\ref[src];screen=0'>(Return to Main Menu)</A><BR>"
 		if(screen == 2)
@@ -109,9 +109,9 @@
 			<A href='?src=\ref[src];temp=1'>Cancel</A>"}
 
 		else if (href_list["eject2"])
-			var/obj/item/card/id/I = usr.get_active_hand()
-			if (istype(I))
-				if(src.check_access(I))
+			var/obj/item/card/id/id_card = usr.get_active_hand()
+			if (istype(id_card))
+				if(src.check_access(id_card))
 					if (!status)
 						message_admins("[key_name_admin(usr)] has initiated the global cyborg killswitch!")
 						log_game(SPAN_NOTICE("[key_name(usr)] has initiated the global cyborg killswitch!"))
@@ -148,51 +148,51 @@
 					screen = 2
 		else if (href_list["killbot"])
 			if(src.allowed(usr))
-				var/mob/living/silicon/robot/R = locate(href_list["killbot"])
-				if(R)
-					var/choice = tgui_input_list(usr, "Are you certain you wish to detonate [R.name]?", "Hack machine", list("Confirm", "Abort"))
+				var/mob/living/silicon/robot/robot = locate(href_list["killbot"])
+				if(robot)
+					var/choice = tgui_input_list(usr, "Are you certain you wish to detonate [robot.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
-						if(R && istype(R))
-							message_admins("[key_name_admin(usr)] detonated [R.name]!")
-							log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
-							R.self_destruct()
+						if(robot && istype(robot))
+							message_admins("[key_name_admin(usr)] detonated [robot.name]!")
+							log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [robot.name]!"))
+							robot.self_destruct()
 			else
 				to_chat(usr, SPAN_DANGER("Access Denied."))
 
 		else if (href_list["stopbot"])
 			if(src.allowed(usr))
-				var/mob/living/silicon/robot/R = locate(href_list["stopbot"])
-				if(R && istype(R)) // Extra sancheck because of input var references
-					var/choice = tgui_input_list(usr, "Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?", "Hack machine", list("Confirm", "Abort"))
+				var/mob/living/silicon/robot/robot = locate(href_list["stopbot"])
+				if(robot && istype(robot)) // Extra sancheck because of input var references
+					var/choice = tgui_input_list(usr, "Are you certain you wish to [robot.canmove ? "lock down" : "release"] [robot.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
-						if(R && istype(R))
-							message_admins("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
-							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
-							R.canmove = !R.canmove
-							if (R.lockcharge)
-							// R.cell.charge = R.lockcharge
-								R.lockcharge = !R.lockcharge
-								to_chat(R, "Your lockdown has been lifted!")
+						if(robot && istype(robot))
+							message_admins("[key_name_admin(usr)] [robot.canmove ? "locked down" : "released"] [robot.name]!")
+							log_game("[key_name(usr)] [robot.canmove ? "locked down" : "released"] [robot.name]!")
+							robot.canmove = !robot.canmove
+							if (robot.lockcharge)
+							// robot.cell.charge = robot.lockcharge
+								robot.lockcharge = !robot.lockcharge
+								to_chat(robot, "Your lockdown has been lifted!")
 							else
-								R.lockcharge = !R.lockcharge
-						// R.cell.charge = 0
-								to_chat(R, "You have been locked down!")
+								robot.lockcharge = !robot.lockcharge
+						// robot.cell.charge = 0
+								to_chat(robot, "You have been locked down!")
 
 			else
 				to_chat(usr, SPAN_DANGER("Access Denied."))
 
 		else if (href_list["magbot"])
 			if(src.allowed(usr))
-				var/mob/living/silicon/robot/R = locate(href_list["magbot"])
+				var/mob/living/silicon/robot/robot = locate(href_list["magbot"])
 
 				// whatever weirdness this is supposed to be, but that is how the href gets added, so here it is again
-				if(istype(R) && isRemoteControlling(usr) && (usr.mind.original == usr))
+				if(istype(robot) && isRemoteControlling(usr) && (usr.mind.original == usr))
 
-					var/choice = tgui_input_list(usr, "Are you certain you wish to hack [R.name]?", "Hack machine", list("Confirm", "Abort"))
+					var/choice = tgui_input_list(usr, "Are you certain you wish to hack [robot.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
-						if(R && istype(R))
-							log_game("[key_name(usr)] emagged [R.name] using robotic console!")
-							add_verb(R, /mob/living/silicon/robot/proc/ResetSecurityCodes)
+						if(robot && istype(robot))
+							log_game("[key_name(usr)] emagged [robot.name] using robotic console!")
+							add_verb(robot, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
 		src.add_fingerprint(usr)
 	src.updateUsrDialog()
@@ -205,8 +205,8 @@
 			return
 		src.timeleft--
 	sleep(10)
-	for(var/mob/living/silicon/robot/R in GLOB.mob_list)
-		if(!R.scrambledcodes && !istype(R, /mob/living/silicon/robot/drone))
-			R.self_destruct()
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
+		if(!robot.scrambledcodes && !istype(robot, /mob/living/silicon/robot/drone))
+			robot.self_destruct()
 
 	return

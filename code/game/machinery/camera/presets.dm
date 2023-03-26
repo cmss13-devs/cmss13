@@ -34,8 +34,8 @@
 /obj/structure/machinery/camera/laser_cam/Initialize(mapload, laser_name)
 	. = ..()
 	if(!c_tag && laser_name)
-		var/area/A = get_area(src)
-		c_tag = "[laser_name] ([A.name])"
+		var/area/current_area = get_area(src)
+		c_tag = "[laser_name] ([current_area.name])"
 
 /obj/structure/machinery/camera/laser_cam/emp_act(severity)
 	return //immune to EMPs, just in case
@@ -77,15 +77,15 @@
 /obj/structure/machinery/camera/autoname/Initialize(mapload, ...)
 	. = ..()
 	number = 1
-	var/area/A = get_area(src)
-	if(A)
-		for(var/obj/structure/machinery/camera/autoname/C in machines)
-			if(C == src) continue
-			var/area/CA = get_area(C)
-			if(CA.type == A.type)
-				if(C.number)
-					number = max(number, C.number+1)
-		c_tag = "[A.name] #[number]"
+	var/area/current_area = get_area(src)
+	if(current_area)
+		for(var/obj/structure/machinery/camera/autoname/current_camera in machines)
+			if(current_camera == src) continue
+			var/area/CA = get_area(current_camera)
+			if(CA.type == current_area.type)
+				if(current_camera.number)
+					number = max(number, current_camera.number+1)
+		c_tag = "[current_area.name] #[number]"
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
 /obj/structure/machinery/camera/autoname/almayer/dropship_one
@@ -132,18 +132,18 @@
 // CHECKS
 
 /obj/structure/machinery/camera/proc/isEmpProof()
-	var/O = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
-	return O
+	var/module = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
+	return module
 
 /obj/structure/machinery/camera/proc/isXRay()
-	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades
-	if (O && O.rating >= 2)
-		return O
+	var/obj/item/stock_parts/scanning_module/module = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades
+	if (module && module.rating >= 2)
+		return module
 	return null
 
 /obj/structure/machinery/camera/proc/isMotion()
-	var/O = locate(/obj/item/device/assembly/prox_sensor) in assembly.upgrades
-	return O
+	var/module = locate(/obj/item/device/assembly/prox_sensor) in assembly.upgrades
+	return module
 
 // UPGRADE PROCS
 

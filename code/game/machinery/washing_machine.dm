@@ -40,8 +40,8 @@
 		state = 5
 	update_icon()
 	sleep(200)
-	for(var/atom/movable/A in contents)
-		A.clean_blood()
+	for(var/atom/movable/current_atom in contents)
+		current_atom.clean_blood()
 
 	//Tanning!
 	for(var/obj/item/stack/sheet/hairlesshide/HH in contents)
@@ -149,14 +149,14 @@
 			state = 2
 		if(2)
 			state = 1
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+			for(var/atom/movable/current_contents in contents)
+				current_contents.forceMove(loc)
 		if(3)
 			state = 4
 		if(4)
 			state = 3
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+			for(var/atom/movable/current_contents in contents)
+				current_contents.forceMove(loc)
 			crayon = null
 			state = 1
 		if(5)
@@ -167,10 +167,10 @@
 			if(gibs_ready)
 				gibs_ready = 0
 				if(locate(/mob,contents))
-					var/mob/M = locate(/mob,contents)
-					M.gib()
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+					var/mob/current_mob = locate(/mob,contents)
+					current_mob.gib()
+			for(var/atom/movable/current_contents in contents)
+				current_contents.forceMove(loc)
 			crayon = null
 			state = 1
 

@@ -62,15 +62,15 @@
 	var/total_probablity = 0
 
 	//Ensure that if someone messed up the math we still get the good probability
-	for(var/datum/emergency_call/E in all_calls)
-		total_probablity += E.probability
+	for(var/datum/emergency_call/emergency in all_calls)
+		total_probablity += emergency.probability
 	var/chance = rand(1, total_probablity)
 
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(chance >= E.probability + add_prob) //Tally up probabilities till we find which one we landed on
-			add_prob += E.probability
+	for(var/datum/emergency_call/emergency in all_calls) //Loop through all potential candidates
+		if(chance >= emergency.probability + add_prob) //Tally up probabilities till we find which one we landed on
+			add_prob += emergency.probability
 			continue
-		chosen_call = new E.type() //Our random chance found one.
+		chosen_call = new emergency.type() //Our random chance found one.
 		break
 
 	if(!istype(chosen_call))
@@ -80,9 +80,9 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, announce = TRUE, is_emergency = TRUE, info = "")
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.name == call_name)
-			var/datum/emergency_call/em_call = new E.type()
+	for(var/datum/emergency_call/emergency in all_calls) //Loop through all potential candidates
+		if(emergency.name == call_name)
+			var/datum/emergency_call/em_call = new emergency.type()
 			em_call.objective_info = info
 			em_call.activate(announce, is_emergency)
 			return
@@ -93,12 +93,12 @@
 	if(!mob_max || !SSticker.mode) //Just a supply drop, don't bother.
 		return
 
-	for(var/mob/dead/observer/M in GLOB.observer_list)
-		if(M.client)
-			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
-			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
+	for(var/mob/dead/observer/current_mob in GLOB.observer_list)
+		if(current_mob.client)
+			to_chat(current_mob, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[current_mob];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
+			to_chat(current_mob, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
-			give_action(M, /datum/action/join_ert, src)
+			give_action(current_mob, /datum/action/join_ert, src)
 
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
@@ -216,25 +216,25 @@
 	if(mob_max > 0)
 		var/mob_count = 0
 		while (mob_count < mob_max && candidates.len)
-			var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
-			if(!istype(M))//Something went horrifically wrong
-				candidates.Remove(M)
+			var/datum/mind/current_mob = pick(candidates) //Get a random candidate, then remove it from the candidates list.
+			if(!istype(current_mob))//Something went horrifically wrong
+				candidates.Remove(current_mob)
 				continue //Lets try this again
-			if(!GLOB.directory[M.ckey])
-				candidates -= M
+			if(!GLOB.directory[current_mob.ckey])
+				candidates -= current_mob
 				continue
-			if(M.current && M.current.stat != DEAD)
-				candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
+			if(current_mob.current && current_mob.current.stat != DEAD)
+				candidates.Remove(current_mob) //Strip them from the list, they aren't dead anymore.
 				if(!candidates.len)
 					break //NO picking from empty lists
 				continue
-			picked_candidates.Add(M)
-			candidates.Remove(M)
+			picked_candidates.Add(current_mob)
+			candidates.Remove(current_mob)
 			mob_count++
 		if(candidates.len)
-			for(var/datum/mind/I in candidates)
-				if(I.current)
-					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
+			for(var/datum/mind/current_mind in candidates)
+				if(current_mind.current)
+					to_chat(current_mind.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
 	if(announce)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
@@ -242,9 +242,9 @@
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 
 	//Let the deadchat know what's up since they are usually curious
-	for(var/mob/dead/observer/M in GLOB.observer_list)
-		if(M.client)
-			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
+	for(var/mob/dead/observer/current_mob in GLOB.observer_list)
+		if(current_mob.client)
+			to_chat(current_mob, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttle_id)
 
@@ -275,12 +275,12 @@
 
 	var/i = 0
 	if(picked_candidates.len)
-		for(var/datum/mind/M in picked_candidates)
-			members += M
+		for(var/datum/mind/current_mob in picked_candidates)
+			members += current_mob
 			i++
 			if(i > mob_max)
 				break //Some logic. Hopefully this will never happen..
-			create_member(M, override_spawn_loc)
+			create_member(current_mob, override_spawn_loc)
 
 
 	if(spawn_max_amount && i < mob_max)
@@ -289,16 +289,16 @@
 
 	candidates = list()
 
-/datum/emergency_call/proc/add_candidate(mob/M)
-	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
+/datum/emergency_call/proc/add_candidate(mob/current_mob)
+	if(!current_mob.client || (current_mob.mind && (current_mob.mind in candidates)) || istype(current_mob, /mob/living/carbon/xenomorph))
 		return FALSE //Not connected or already there or something went wrong.
-	if(M.mind)
-		candidates += M.mind
+	if(current_mob.mind)
+		candidates += current_mob.mind
 	else
-		if(M.key)
-			M.mind = new /datum/mind(M.key, M.ckey)
-			M.mind_initialize()
-			candidates += M.mind
+		if(current_mob.key)
+			current_mob.mind = new /datum/mind(current_mob.key, current_mob.ckey)
+			current_mob.mind_initialize()
+			candidates += current_mob.mind
 	return TRUE
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
@@ -309,7 +309,7 @@
 		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
 	return landmark ? get_turf(landmark) : null
 
-/datum/emergency_call/proc/create_member(datum/mind/M, turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
+/datum/emergency_call/proc/create_member(datum/mind/current_mob, turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
 	return
 
 //Spawn various items around the shuttle area thing.
@@ -317,5 +317,5 @@
 	return
 
 
-/datum/emergency_call/proc/print_backstory(mob/living/carbon/human/M)
+/datum/emergency_call/proc/print_backstory(mob/living/carbon/human/current_mob)
 	return

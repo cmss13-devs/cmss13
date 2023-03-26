@@ -301,8 +301,8 @@
 		return
 
 	if(filtering)
-		for(var/datum/reagent/x in occupant.reagents.reagent_list)
-			occupant.reagents.remove_reagent(x.id, reagent_removed_per_second*delta_time)
+		for(var/datum/reagent/chem in occupant.reagents.reagent_list)
+			occupant.reagents.remove_reagent(chem.id, reagent_removed_per_second*delta_time)
 
 		if(!occupant.reagents.total_volume)
 			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)

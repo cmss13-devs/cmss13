@@ -148,10 +148,10 @@
 	var/L[] = new()
 
 	for(var/d in cardinal)
-		var/turf/T = get_step(src, d)
-		if(istype(T) && !T.density)
-			if(!LinkBlockedWithAccess(src, T, ID))
-				L.Add(T)
+		var/turf/current_turf = get_step(src, d)
+		if(istype(current_turf) && !current_turf.density)
+			if(!LinkBlockedWithAccess(src, current_turf, ID))
+				L.Add(current_turf)
 	return L
 
 // Returns true if a link between A and B is blocked
@@ -177,8 +177,8 @@
 	if(DirBlockedWithAccess(B,rdir, ID))
 		return 1
 
-	for(var/obj/O in B)
-		if(O.density && !istype(O, /obj/structure/machinery/door) && !(O.flags_atom & ON_BORDER))
+	for(var/obj/current_obj in B)
+		if(current_obj.density && !istype(current_obj, /obj/structure/machinery/door) && !(current_obj.flags_atom & ON_BORDER))
 			return 1
 
 	return 0
@@ -186,17 +186,17 @@
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
 /proc/DirBlockedWithAccess(turf/loc, dir, obj/item/card/id/ID)
-	for(var/obj/structure/window/D in loc)
-		if(!D.density) continue
-		if(D.dir == SOUTHWEST) return 1
-		if(D.dir == dir) return 1
+	for(var/obj/structure/window/window in loc)
+		if(!window.density) continue
+		if(window.dir == SOUTHWEST) return 1
+		if(window.dir == dir) return 1
 
-	for(var/obj/structure/machinery/door/D in loc)
-		if(!D.density) continue
-		if(istype(D, /obj/structure/machinery/door/window))
-			if( dir & D.dir ) return !D.check_access(ID)
+	for(var/obj/structure/machinery/door/door in loc)
+		if(!door.density) continue
+		if(istype(door, /obj/structure/machinery/door/window))
+			if( dir & door.dir ) return !door.check_access(ID)
 
-			//if((dir & SOUTH) && (D.dir & (EAST|WEST))) return !D.check_access(ID)
-			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH))) return !D.check_access(ID)
-		else return !D.check_access(ID) // it's a real, air blocking door
+			//if((dir & SOUTH) && (door.dir & (EAST|WEST))) return !door.check_access(ID)
+			//if((dir & EAST ) && (door.dir & (NORTH|SOUTH))) return !door.check_access(ID)
+		else return !door.check_access(ID) // it's a real, air blocking door
 	return 0

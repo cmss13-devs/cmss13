@@ -144,11 +144,11 @@
 						giver = null
 					accesses.Cut()
 				else
-					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card/id))
+					var/obj/item/current_item = usr.get_active_hand()
+					if (istype(current_item, /obj/item/card/id))
 						if(usr.drop_held_item())
-							I.forceMove(src)
-							giver = I
+							current_item.forceMove(src)
+							giver = current_item
 				updateUsrDialog()
 
 			if ("print")
@@ -157,9 +157,9 @@
 					dat += "[entry]<br><hr>"
 				//to_chat(usr, "Printing the log, standby...")
 				//sleep(50)
-				var/obj/item/paper/P = new/obj/item/paper( loc )
-				P.name = "activity log"
-				P.info = dat
+				var/obj/item/paper/new_paper = new/obj/item/paper(loc)
+				new_paper.name = "activity log"
+				new_paper.info = dat
 
 			if ("issue")
 				if (giver)

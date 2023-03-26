@@ -132,7 +132,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	if (T == "ping")
 		var/x = 1
-		for (var/client/C)
+		for (var/client/current_client)
 			x++
 		return x
 
@@ -140,39 +140,39 @@ var/world_topic_spam_protect_time = world.timeofday
 		return length(GLOB.clients)
 
 	else if (T == "status")
-		var/list/s = list()
-		s["version"] = game_version
-		s["mode"] = master_mode
-		s["respawn"] = CONFIG_GET(flag/respawn)
-		s["enter"] = enter_allowed
-		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
-		s["ai"] = CONFIG_GET(flag/allow_ai)
-		s["host"] = host ? host : null
-		s["players"] = list()
-		s["stationtime"] = duration2text()
+		var/list/status = list()
+		status["version"] = game_version
+		status["mode"] = master_mode
+		status["respawn"] = CONFIG_GET(flag/respawn)
+		status["enter"] = enter_allowed
+		status["vote"] = CONFIG_GET(flag/allow_vote_mode)
+		status["ai"] = CONFIG_GET(flag/allow_ai)
+		status["host"] = host ? host : null
+		status["players"] = list()
+		status["stationtime"] = duration2text()
 		var/n = 0
 		var/admins = 0
 
-		for(var/client/C in GLOB.clients)
-			if(C.admin_holder)
-				if(C.admin_holder.fakekey)
+		for(var/client/current_client in GLOB.clients)
+			if(current_client.admin_holder)
+				if(current_client.admin_holder.fakekey)
 					continue //so stealthmins aren't revealed by the hub
 				admins++
-			s["player[n]"] = C.key
+			status["player[n]"] = current_client.key
 			n++
-		s["players"] = n
+		status["players"] = n
 
-		s["admins"] = admins
+		status["admins"] = admins
 
-		return list2params(s)
+		return list2params(status)
 
 	// Used in external requests for player data.
 	else if (T == "pinfo")
 		var/retdata = ""
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"
-		for(var/client/C in GLOB.clients)
-			retdata  += C.key+","+C.address+","+C.computer_id+"|"
+		for(var/client/current_client in GLOB.clients)
+			retdata  += current_client.key+","+current_client.address+","+current_client.computer_id+"|"
 
 		return retdata
 
@@ -184,18 +184,18 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/input[] = params2list(T)
 		var/ckey = trim(input["ckey"])
 		var/dat = "Notes for [ckey]:<br/><br/>"
-		var/datum/entity/player/P = get_player_from_key(ckey)
-		if(!P)
+		var/datum/entity/player/current_player = get_player_from_key(ckey)
+		if(!current_player)
 			return ""
-		P.load_refs()
-		if(!P.notes || !P.notes.len)
+		current_player.load_refs()
+		if(!current_player.notes || !current_player.notes.len)
 			return dat + "No information found on the given key."
 
-		for(var/datum/entity/player_note/N in P.notes)
-			var/admin_name = (N.admin && N.admin.ckey) ? "[N.admin.ckey]" : "-LOADING-"
-			var/ban_text = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
-			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
-			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
+		for(var/datum/entity/player_note/note in current_player.notes)
+			var/admin_name = (note.admin && note.admin.ckey) ? "[note.admin.ckey]" : "-LOADING-"
+			var/ban_text = note.ban_time ? "Banned for [note.ban_time] minutes | " : ""
+			var/confidential_text = note.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+			dat += "[ban_text][note.text]<br/>by [admin_name] ([note.admin_rank])[confidential_text] on [note.date]<br/><br/>"
 		return dat
 
 /world/Reboot(reason)
@@ -205,10 +205,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	for(var/thing in GLOB.clients)
 		if(!thing)
 			continue
-		var/client/C = thing
-		C?.tgui_panel?.send_roundrestart()
+		var/client/current_client = thing
+		current_client?.tgui_panel?.send_roundrestart()
 		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[server]")
+			current_client << link("byond://[server]")
 
 	#ifdef UNIT_TESTS
 	FinishTestRun()
@@ -265,19 +265,19 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
-	var/s = ""
+	var/status = ""
 
 	if(CONFIG_GET(string/servername))
-		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b></a>"
+		status += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b></a>"
 
 	if(SSmapping?.configs)
 		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]
-		s += "<br>Map: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
+		status += "<br>Map: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
 	if(SSticker?.mode)
-		s += "<br>Mode: <b>[SSticker.mode.name]</b>"
-		s += "<br>Round time: <b>[duration2text()]</b>"
+		status += "<br>Mode: <b>[SSticker.mode.name]</b>"
+		status += "<br>Round time: <b>[duration2text()]</b>"
 
-	world.status = s
+	world.status = status
 
 #define FAILED_DB_CONNECTION_CUTOFF 1
 var/failed_db_connections = 0
@@ -301,18 +301,18 @@ var/datum/BSQL_Connection/connection
 
 /proc/set_global_view(view_size)
 	world_view_size = view_size
-	for(var/client/c in GLOB.clients)
-		c.view = world_view_size
+	for(var/client/current_client in GLOB.clients)
+		current_client.view = world_view_size
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
 /proc/give_image_to_client(obj/O, icon_text)
-	var/image/I = image(null, O)
-	I.maptext = icon_text
-	for(var/client/c in GLOB.clients)
-		if(!ishuman(c.mob))
+	var/image/current_image = image(null, O)
+	current_image.maptext = icon_text
+	for(var/client/current_client in GLOB.clients)
+		if(!ishuman(current_client.mob))
 			continue
-		c.images += I
+		current_client.images += current_image
 
 /world/proc/change_fps(new_value = 20)
 	if(new_value <= 0)

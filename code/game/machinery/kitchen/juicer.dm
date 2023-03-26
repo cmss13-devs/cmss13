@@ -34,26 +34,26 @@
 	return
 
 
-/obj/structure/machinery/juicer/attackby(obj/item/O as obj, mob/user as mob)
-	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+/obj/structure/machinery/juicer/attackby(obj/item/current_obj as obj, mob/user as mob)
+	if(HAS_TRAIT(current_obj, TRAIT_TOOL_WRENCH))
 		. = ..()
-	if (istype(O,/obj/item/reagent_container/glass) || \
-		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass))
+	if (istype(current_obj,/obj/item/reagent_container/glass) || \
+		istype(current_obj,/obj/item/reagent_container/food/drinks/drinkingglass))
 		if (beaker)
 			return 1
 		else
 			if(user.drop_held_item())
-				O.forceMove(src)
-				beaker = O
+				current_obj.forceMove(src)
+				beaker = current_obj
 				verbs += /obj/structure/machinery/juicer/verb/detach
 				update_icon()
 			updateUsrDialog()
 			return 0
-	if (!is_type_in_list(O, allowed_items))
+	if (!is_type_in_list(current_obj, allowed_items))
 		to_chat(user, "It looks as not containing any juice.")
 		return 1
 	if(user.drop_held_item())
-		O.forceMove(src)
+		current_obj.forceMove(src)
 	updateUsrDialog()
 	return 0
 
@@ -71,10 +71,10 @@
 	var/beaker_contents = ""
 
 	for (var/i in allowed_items)
-		for (var/obj/item/O in src.contents)
-			if (!istype(O,i))
+		for (var/obj/item/current_obj in src.contents)
+			if (!istype(current_obj,i))
 				continue
-			processing_chamber+= "some <B>[O]</B><BR>"
+			processing_chamber+= "some <B>[current_obj]</B><BR>"
 			break
 	if (!processing_chamber)
 		is_chamber_empty = 1
@@ -130,18 +130,18 @@
 	beaker = null
 	update_icon()
 
-/obj/structure/machinery/juicer/proc/get_juice_id(obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_id(obj/item/reagent_container/food/snacks/grown/plant)
 	for (var/i in allowed_items)
-		if (istype(O, i))
+		if (istype(plant, i))
 			return allowed_items[i]
 
-/obj/structure/machinery/juicer/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
-	if (!istype(O))
+/obj/structure/machinery/juicer/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/plant)
+	if (!istype(plant))
 		return 5
-	else if (O.potency == -1)
+	else if (plant.potency == -1)
 		return 5
 	else
-		return round(5*sqrt(O.potency))
+		return round(5*sqrt(plant.potency))
 
 /obj/structure/machinery/juicer/proc/juice()
 	power_change() //it is a portable machine
@@ -150,10 +150,10 @@
 	if (!beaker || beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 		return
 	playsound(src.loc, 'sound/machines/juicer.ogg', 25, 1)
-	for (var/obj/item/reagent_container/food/snacks/O in src.contents)
-		var/r_id = get_juice_id(O)
-		beaker.reagents.add_reagent(r_id,get_juice_amount(O))
-		qdel(O)
+	for (var/obj/item/reagent_container/food/snacks/snack in src.contents)
+		var/r_id = get_juice_id(snack)
+		beaker.reagents.add_reagent(r_id,get_juice_amount(snack))
+		qdel(snack)
 		if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
 

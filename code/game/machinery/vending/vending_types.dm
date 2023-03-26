@@ -349,36 +349,36 @@
 		if(isnull(amount)) amount = 1
 
 		var/obj/item/temp_path = typepath
-		var/datum/data/vending_product/R = shared_products[i]
+		var/datum/data/vending_product/products = shared_products[i]
 
-		if(!R.product_path)
-			R.product_path = typepath
-			R.amount = amount
-			R.price = price
+		if(!products.product_path)
+			products.product_path = typepath
+			products.amount = amount
+			products.price = price
 
 			if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
-				R.display_color = "black"
+				products.display_color = "black"
 // else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
-// R.display_color = "green"
+// products.display_color = "green"
 // else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
-// R.display_color = "blue"
+// products.display_color = "blue"
 			else
-				R.display_color = "white"
+				products.display_color = "white"
 
 		if(hidden)
-			R.category=CAT_HIDDEN
-			hidden_records += R
+			products.category=CAT_HIDDEN
+			hidden_records += products
 		else if(req_coin)
-			R.category=CAT_COIN
-			coin_records += R
+			products.category=CAT_COIN
+			coin_records += products
 		else
-			product_records += R
-			R.category = CAT_NORMAL
+			product_records += products
+			products.category = CAT_NORMAL
 
 		if(delay_product_spawn)
 			sleep(5) //sleep(1) did not seem to cut it, so here we are.
 
-		R.product_name = initial(temp_path.name)
+		products.product_name = initial(temp_path.name)
 
 		i++;
 	return

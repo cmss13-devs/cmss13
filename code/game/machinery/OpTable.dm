@@ -87,51 +87,51 @@
 	else
 		. = ..()
 
-/obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
-	if(!istype(H) || !ishuman(user) || H == user || H.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)
+/obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/human, mob/living/user)
+	if(!istype(human) || !ishuman(user) || human == user || human.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)
 		return
 
-	if(H.loc != loc)
+	if(human.loc != loc)
 		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
 		return
 
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
-	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
+	human.visible_message(SPAN_NOTICE("[user] begins to connect [human] to the anesthetic system."))
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
+		to_chat(user, SPAN_NOTICE("You stop placing the mask on [human]'s face."))
 		return
 
-	if(H.buckled || buckled_mob || H.loc != loc)
+	if(human.buckled || buckled_mob || human.loc != loc)
 		return
 
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
-	if(H.wear_mask)
-		var/obj/item/mask = H.wear_mask
+	if(human.wear_mask)
+		var/obj/item/mask = human.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)
 			to_chat(user, SPAN_DANGER("You can't remove their mask!"))
 			return
-		H.drop_inv_item_on_ground(mask)
-	var/obj/item/clothing/mask/breath/medical/B = new()
-	if(!H.equip_if_possible(B, WEAR_FACE, TRUE))
+		human.drop_inv_item_on_ground(mask)
+	var/obj/item/clothing/mask/breath/medical/breath_mask = new()
+	if(!human.equip_if_possible(breath_mask, WEAR_FACE, TRUE))
 		to_chat(user, SPAN_DANGER("You can't fit the gas mask over their face!"))
 		return
-	H.update_inv_wear_mask()
+	human.update_inv_wear_mask()
 
-	do_buckle(H, user)
+	do_buckle(human, user)
 
 /obj/structure/machinery/optable/do_buckle(mob/target, mob/user)
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/human/H = target
-	H.internal = anes_tank
-	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
-	to_chat(H, SPAN_INFO("You begin to feel sleepy."))
-	H.setDir(SOUTH)
+	var/mob/living/carbon/human/human = target
+	human.internal = anes_tank
+	human.visible_message(SPAN_NOTICE("[user] fits the mask over [human]'s face and turns on the anesthetic."))
+	to_chat(human, SPAN_INFO("You begin to feel sleepy."))
+	human.setDir(SOUTH)
 	start_processing()
 	update_icon()
 
@@ -139,37 +139,37 @@
 	if(!buckled_mob)
 		return
 	if(ishuman(buckled_mob)) // sanity check
-		var/mob/living/carbon/human/H = buckled_mob
-		H.internal = null
-		var/obj/item/M = H.wear_mask
-		H.drop_inv_item_on_ground(M)
-		qdel(M)
+		var/mob/living/carbon/human/human = buckled_mob
+		human.internal = null
+		var/obj/item/mask = human.wear_mask
+		human.drop_inv_item_on_ground(mask)
+		qdel(mask)
 		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
-			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+			human.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [human]."))
 		else
-			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
+			human.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [human]'s face!"))
 		stop_processing()
 		patient_exam = 0
 		..()
 		update_icon()
 
-/obj/structure/machinery/optable/afterbuckle(mob/M)
+/obj/structure/machinery/optable/afterbuckle(mob/current_mob)
 	. = ..()
-	if(. && buckled_mob == M)
-		M.old_y = M.pixel_y
-		M.pixel_y = buckling_y
+	if(. && buckled_mob == current_mob)
+		current_mob.old_y = current_mob.pixel_y
+		current_mob.pixel_y = buckling_y
 	else
-		M.pixel_y = M.old_y
+		current_mob.pixel_y = current_mob.old_y
 
 /obj/structure/machinery/optable/MouseDrop_T(atom/A, mob/user)
 
 	if(istype(A, /obj/item))
-		var/obj/item/I = A
-		if (!istype(I) || user.get_active_hand() != I)
+		var/obj/item/current_item = A
+		if (!istype(current_item) || user.get_active_hand() != current_item)
 			return
 		if(user.drop_held_item())
-			if (I.loc != loc)
-				step(I, get_dir(I, src))
+			if (current_item.loc != loc)
+				step(current_item, get_dir(current_item, src))
 	else if(ismob(A))
 		..()
 
@@ -183,8 +183,8 @@
 	else if(!ishuman(buckled_mob))
 		icon_state = "table2-idle"
 	else
-		var/mob/living/carbon/human/H = buckled_mob
-		icon_state = H.pulse ? "table2-active" : "table2-idle"
+		var/mob/living/carbon/human/human = buckled_mob
+		icon_state = human.pulse ? "table2-active" : "table2-idle"
 
 /obj/structure/machinery/optable/process()
 	update_icon()
@@ -192,27 +192,27 @@
 	if(!ishuman(buckled_mob))
 		stop_processing()
 
-	var/mob/living/carbon/human/H = buckled_mob
+	var/mob/living/carbon/human/human = buckled_mob
 
 	// Check for problems
 	// Check for blood
-	if(H.blood_volume < BLOOD_VOLUME_SAFE)
+	if(human.blood_volume < BLOOD_VOLUME_SAFE)
 		if(!(patient_exam & PATIENT_LOW_BLOOD))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [round(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [round(human.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [human.blood_type].")
 			patient_exam |= PATIENT_LOW_BLOOD
 	else
 		patient_exam &= ~PATIENT_LOW_BLOOD
 
 	// Check for nutrition
-	if(H.nutrition < NUTRITION_LOW)
+	if(human.nutrition < NUTRITION_LOW)
 		if(!(patient_exam & PATIENT_LOW_NUTRITION))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [round(H.nutrition / NUTRITION_MAX * 100)]%.")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [round(human.nutrition / NUTRITION_MAX * 100)]%.")
 			patient_exam |= PATIENT_LOW_NUTRITION
 	else
 		patient_exam &= ~PATIENT_LOW_NUTRITION
 
 	// Check if they awake
-	switch(H.stat)
+	switch(human.stat)
 		if(0)
 			patient_exam &= ~PATIENT_NOT_AWAKE
 		if(1)
@@ -224,14 +224,14 @@
 				visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient is deceased.")
 				patient_exam |= PATIENT_NOT_AWAKE
 
-/obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
-	if (C == user)
+/obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/current_mob, mob/living/carbon/user)
+	if (current_mob == user)
 		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
-		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
-	C.resting = 1
-	C.forceMove(loc)
+		visible_message(SPAN_NOTICE("[current_mob] has been laid on the operating table by [user]."), null, 4)
+	current_mob.resting = 1
+	current_mob.forceMove(loc)
 
 	add_fingerprint(user)
 
@@ -240,11 +240,11 @@
 	set category = "Object"
 	set src in oview(1)
 
-	var/mob/living/carbon/human/H = usr
-	if(!istype(H) || H.stat || H.is_mob_restrained() || !check_table(H))
+	var/mob/living/carbon/human/human = usr
+	if(!istype(human) || human.stat || human.is_mob_restrained() || !check_table(human))
 		return
 
-	take_victim(H, H)
+	take_victim(human, human)
 
 /obj/structure/machinery/optable/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/tank/anesthetic))
@@ -254,28 +254,28 @@
 			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
 			return
 	if (istype(W, /obj/item/grab) && ishuman(user))
-		var/obj/item/grab/G = W
+		var/obj/item/grab/grabbing = W
 		if(buckled_mob)
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))
 			return
-		var/mob/living/carbon/human/M
-		if(ishuman(G.grabbed_thing))
-			M = G.grabbed_thing
-			if(M.buckled)
+		var/mob/living/carbon/human/current_mob
+		if(ishuman(grabbing.grabbed_thing))
+			current_mob = grabbing.grabbed_thing
+			if(current_mob.buckled)
 				to_chat(user, SPAN_WARNING("Unbuckle first!"))
 				return
-		else if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
-			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
-			if(!C.stasis_mob)
+		else if(istype(grabbing.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
+			var/obj/structure/closet/bodybag/cryobag/bag = grabbing.grabbed_thing
+			if(!bag.stasis_mob)
 				return
-			M = C.stasis_mob
-			C.open()
+			current_mob = bag.stasis_mob
+			bag.open()
 			user.stop_pulling()
-			user.start_pulling(M)
+			user.start_pulling(current_mob)
 		else
 			return
 
-		take_victim(M,user)
+		take_victim(current_mob,user)
 
 /obj/structure/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	if(buckled_mob)

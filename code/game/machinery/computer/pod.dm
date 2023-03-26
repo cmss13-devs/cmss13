@@ -17,9 +17,9 @@
 /obj/structure/machinery/computer/pod/New()
 	..()
 	spawn( 5 )
-		for(var/obj/structure/machinery/mass_driver/M in machines)
-			if(M.id == id)
-				connected = M
+		for(var/obj/structure/machinery/mass_driver/driver in machines)
+			if(driver.id == id)
+				connected = driver
 			else
 		return
 	return
@@ -33,21 +33,21 @@
 		to_chat(viewers(null, null), "Cannot locate mass driver connector. Cancelling firing sequence!")
 		return
 
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == id)
-			M.open()
+	for(var/obj/structure/machinery/door/poddoor/door in machines)
+		if(door.id == id)
+			door.open()
 
 	sleep(20)
 
-	for(var/obj/structure/machinery/mass_driver/M in machines)
-		if(M.id == id)
-			M.power = connected.power
-			M.drive()
+	for(var/obj/structure/machinery/mass_driver/driver in machines)
+		if(driver.id == id)
+			driver.power = connected.power
+			driver.drive()
 
 	sleep(50)
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == id)
-			M.close()
+	for(var/obj/structure/machinery/door/poddoor/door in machines)
+		if(door.id == id)
+			door.close()
 			return
 	return
 
@@ -70,8 +70,8 @@
 		var/minute = (time - second) / 60
 		dat += "<HR>\nTimer System: [d2]\nTime Left: [minute ? "[minute]:" : null][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>"
 		var/temp = ""
-		var/list/L = list( 0.25, 0.5, 1, 2, 4, 8, 16 )
-		for(var/t in L)
+		var/list/time_left_list = list( 0.25, 0.5, 1, 2, 4, 8, 16 )
+		for(var/t in time_left_list)
 			if(t == connected.power)
 				temp += "[t] "
 			else
@@ -112,10 +112,10 @@
 		if(href_list["alarm"])
 			alarm()
 		if(href_list["drive"])
-			for(var/obj/structure/machinery/mass_driver/M in machines)
-				if(M.id == id)
-					M.power = connected.power
-					M.drive()
+			for(var/obj/structure/machinery/mass_driver/driver in machines)
+				if(driver.id == id)
+					driver.power = connected.power
+					driver.drive()
 
 		if(href_list["time"])
 			timing = text2num(href_list["time"])
@@ -124,12 +124,12 @@
 			time += tp
 			time = min(max(round(time), 0), 120)
 		if(href_list["door"])
-			for(var/obj/structure/machinery/door/poddoor/M in machines)
-				if(M.id == id)
-					if(M.density)
-						M.open()
+			for(var/obj/structure/machinery/door/poddoor/door in machines)
+				if(door.id == id)
+					if(door.density)
+						door.open()
 					else
-						M.close()
+						door.close()
 		updateUsrDialog()
 	return
 

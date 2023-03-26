@@ -158,19 +158,19 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 
 	if(src.screwloose && prob(5))
 		if(isturf(loc))
-			var/turf/T = loc
-			T.wet_floor(FLOOR_WET_WATER)
+			var/turf/current_turf = loc
+			current_turf.wet_floor(FLOOR_WET_WATER)
 	if(src.oddbutton && prob(5))
 		visible_message("Something flies out of [src]. He seems to be acting oddly.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(src.loc)
 		src.oldtarget = gib
 	if(!src.target || src.target == null)
-		for (var/obj/effect/decal/cleanable/D in view(7,src))
-			for(var/T in src.target_types)
-				if(isnull(D.targeted_by) && (D.type == T || D.parent_type == T) && D != src.oldtarget)   // If the mess isn't targeted
-					src.oldtarget = D  // or if it is but the bot is gone.
-					src.target = D  // and it's stuff we clean?  Clean it.
-					D.targeted_by = src // Claim the mess we are targeting.
+		for (var/obj/effect/decal/cleanable/cleanable_turf in view(7,src))
+			for(var/current_turf in src.target_types)
+				if(isnull(cleanable_turf.targeted_by) && (cleanable_turf.type == current_turf || cleanable_turf.parent_type == current_turf) && cleanable_turf != src.oldtarget)   // If the mess isn't targeted
+					src.oldtarget = cleanable_turf  // or if it is but the bot is gone.
+					src.target = cleanable_turf  // and it's stuff we clean?  Clean it.
+					cleanable_turf.targeted_by = src // Claim the mess we are targeting.
 					return
 
 	if(!src.target || src.target == null)
@@ -305,8 +305,8 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if (prob(50))
 		new /obj/item/robot_parts/arm/l_arm(Tsec)
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(3, 1, src)
+	spark.start()
 	qdel(src)
 	return

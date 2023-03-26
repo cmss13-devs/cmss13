@@ -63,10 +63,10 @@
 
 /obj/structure/machinery/processor/proc/select_recipe(X)
 	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
-		var/datum/food_processor_process/P = new Type()
-		if (!istype(X, P.input))
+		var/datum/food_processor_process/process = new Type()
+		if (!istype(X, process.input))
 			continue
-		return P
+		return process
 	return 0
 
 /obj/structure/machinery/processor/attackby(obj/item/O as obj, mob/user as mob)
@@ -81,11 +81,11 @@
 		return
 	var/obj/what = O
 	if (istype(O, /obj/item/grab))
-		var/obj/item/grab/G = O
-		what = G.grabbed_thing
+		var/obj/item/grab/grabbing = O
+		what = grabbing.grabbed_thing
 
-	var/datum/food_processor_process/P = select_recipe(what)
-	if (!P)
+	var/datum/food_processor_process/process = select_recipe(what)
+	if (!process)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
@@ -103,8 +103,8 @@
 		to_chat(user, SPAN_DANGER("The processor is empty."))
 		return 1
 	for(var/O in src.contents)
-		var/datum/food_processor_process/P = select_recipe(O)
-		if (!P)
+		var/datum/food_processor_process/process = select_recipe(O)
+		if (!process)
 			log_admin("DEBUG: [O] in processor havent suitable recipe. How do you put it in?") //-rastaf0
 			continue
 		src.processing = 1
@@ -113,8 +113,8 @@
 			"You hear a food processor.")
 		playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
 		use_power(500)
-		sleep(P.time)
-		P.process(src.loc, O)
+		sleep(process.time)
+		process.process(src.loc, O)
 		src.processing = 0
 	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
 		"You hear the food processor stopping/")

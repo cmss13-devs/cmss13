@@ -47,25 +47,25 @@
 
 /obj/structure/machinery/door/firedoor/Initialize()
 	. = ..()
-	for(var/obj/structure/machinery/door/firedoor/F in loc)
-		if(F != src)
+	for(var/obj/structure/machinery/door/firedoor/firedoor in loc)
+		if(firedoor != src)
 			QDEL_IN(src, 1)
 			return .
-	var/area/A = get_area(src)
-	ASSERT(istype(A))
+	var/area/current_area = get_area(src)
+	ASSERT(istype(current_area))
 
-	A.all_doors.Add(src)
-	areas_added = list(A)
+	current_area.all_doors.Add(src)
+	areas_added = list(current_area)
 
 	for(var/direction in cardinal)
-		A = get_area(get_step(src,direction))
-		if(istype(A) && !(A in areas_added))
-			A.all_doors.Add(src)
-			areas_added += A
+		current_area = get_area(get_step(src,direction))
+		if(istype(current_area) && !(current_area in areas_added))
+			current_area.all_doors.Add(src)
+			areas_added += current_area
 
 /obj/structure/machinery/door/firedoor/Destroy()
-	for(var/area/A in areas_added)
-		A.all_doors.Remove(src)
+	for(var/area/current_area in areas_added)
+		current_area.all_doors.Remove(src)
 	return ..()
 
 
@@ -128,8 +128,8 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
-		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
+	for(var/area/current_area in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
+		if(current_area.flags_alarm_state & ALARM_WARNING_FIRE || current_area.air_doors_activated)
 			alarmed = 1
 	if(tgui_alert(user,\
 	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
@@ -163,8 +163,8 @@
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
-				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
+			for(var/area/current_area in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+				if(current_area.flags_alarm_state & ALARM_WARNING_FIRE || current_area.air_doors_activated)
 					alarmed = 1
 			if(alarmed)
 				nextstate = CLOSED
@@ -175,11 +175,11 @@
 	if(operating)
 		return//Already doing something.
 	if(iswelder(C))
-		var/obj/item/tool/weldingtool/W = C
-		if(W.remove_fuel(0, user))
+		var/obj/item/tool/weldingtool/welder = C
+		if(welder.remove_fuel(0, user))
 			blocked = !blocked
-			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [welder]."),\
+			"You [blocked ? "weld" : "unweld"] \the [src] with \the [welder].",\
 			"You hear something being welded.")
 			update_icon()
 			return

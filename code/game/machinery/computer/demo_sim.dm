@@ -202,22 +202,22 @@
 	//Mortars
 	else if(istype(configuration,/obj/item/mortar_shell))
 		if(istype(configuration,/obj/item/mortar_shell/custom))//we only need the warhead
-			var/obj/item/mortar_shell/custom/O = configuration
-			if(O.warhead)
-				make_and_prime_explosive(O.warhead)
+			var/obj/item/mortar_shell/custom/custom_explosive = configuration
+			if(custom_explosive.warhead)
+				make_and_prime_explosive(custom_explosive.warhead)
 		else
-			var/obj/item/mortar_shell/O = new configuration.type(simulation.loc)
-			O.detonate(simulation.loc)
+			var/obj/item/mortar_shell/custom_explosive = new configuration.type(simulation.loc)
+			custom_explosive.detonate(simulation.loc)
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))
-		var/obj/item/ammo_magazine/rocket/custom/O = configuration
-		if(O.warhead)
-			make_and_prime_explosive(O.warhead)
+		var/obj/item/ammo_magazine/rocket/custom/custom_explosive = configuration
+		if(custom_explosive.warhead)
+			make_and_prime_explosive(custom_explosive.warhead)
 
-/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
-	var/obj/item/explosive/E = new O.type(simulation.loc)
-	E.make_copy_of(O)
-	E.prime(TRUE)
+/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/custom_explosive)
+	var/obj/item/explosive/explosive = new custom_explosive.type(simulation.loc)
+	explosive.make_copy_of(custom_explosive)
+	explosive.prime(TRUE)
 	var/turf/sourceturf = get_turf(simulation)
 	sourceturf.chemexploded = FALSE //Make sure that this actually resets
-	QDEL_IN(E,1 MINUTES)
+	QDEL_IN(explosive,1 MINUTES)

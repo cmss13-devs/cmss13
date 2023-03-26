@@ -8,8 +8,8 @@
 /datum/computer/file/embedded_program/New(obj/structure/machinery/embedded_controller/M)
 	master = M
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio))
-		var/obj/structure/machinery/embedded_controller/radio/R = M
-		id_tag = R.id_tag
+		var/obj/structure/machinery/embedded_controller/radio/controller = M
+		id_tag = controller.id_tag
 
 /datum/computer/file/embedded_program/proc/receive_user_command(command)
 	return

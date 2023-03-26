@@ -143,15 +143,15 @@
 	if(src.occupant)
 		var/doing_stuff = FALSE
 		if (isrobot(occupant))
-			var/mob/living/silicon/robot/R = occupant
-			if(R.module)
-				R.module.respawn_consumable(R)
-			if(!R.cell)
+			var/mob/living/silicon/robot/robot = occupant
+			if(robot.module)
+				robot.module.respawn_consumable(robot)
+			if(!robot.cell)
 				return
-			if(!R.cell.fully_charged())
-				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
+			if(!robot.cell.fully_charged())
+				var/diff = min(robot.cell.maxcharge - robot.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
 				diff = min(diff, current_internal_charge) // No over-discharging
-				R.cell.give(diff)
+				robot.cell.give(diff)
 				current_internal_charge = max(current_internal_charge - diff, 0)
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
@@ -178,8 +178,8 @@
 /obj/structure/machinery/recharge_station/proc/go_out()
 	if(!( src.occupant ))
 		return
-	//for(var/obj/O in src)
-	// O.forceMove(src.loc)
+	//for(var/obj/current_obj in src)
+	// current_obj.forceMove(src.loc)
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
@@ -203,21 +203,21 @@
 /obj/structure/machinery/recharge_station/do_buckle(mob/target, mob/user)
 	return move_mob_inside(target)
 
-/obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
-	if (!isrobot(M) && !issynth(M))
+/obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/current_mob)
+	if (!isrobot(current_mob) && !issynth(current_mob))
 		return FALSE
 	if (occupant)
 		return FALSE
-	if (isrobot(M))
-		var/mob/living/silicon/robot/R = M
-		if(QDELETED(R.cell))
+	if (isrobot(current_mob))
+		var/mob/living/silicon/robot/robot = current_mob
+		if(QDELETED(robot.cell))
 			return FALSE
-	M.stop_pulling()
-	if(M && M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
-	M.forceMove(src)
-	src.occupant = M
+	current_mob.stop_pulling()
+	if(current_mob && current_mob.client)
+		current_mob.client.perspective = EYE_PERSPECTIVE
+		current_mob.client.eye = src
+	current_mob.forceMove(src)
+	src.occupant = current_mob
 	start_processing()
 	src.add_fingerprint(usr)
 	update_icon()
@@ -239,8 +239,8 @@
 		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
 		return
 	if (isrobot(usr))
-		var/mob/living/silicon/robot/R = usr
-		if(QDELETED(R.cell))
+		var/mob/living/silicon/robot/robot = usr
+		if(QDELETED(robot.cell))
 			to_chat(usr, SPAN_NOTICE("Without a powercell, you can't be recharged."))
 			//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
 			return
@@ -250,26 +250,26 @@
 /obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
 		if(isxeno(user)) return
-		var/obj/item/grab/G = W
-		if(!ismob(G.grabbed_thing))
+		var/obj/item/grab/grabbing = W
+		if(!ismob(grabbing.grabbed_thing))
 			return
-		if(!issynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
+		if(!issynth(grabbing.grabbed_thing) && !isrobot(grabbing.grabbed_thing))
 			return
 
 		if(occupant)
 			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)
+		visible_message(SPAN_NOTICE("[user] starts putting [grabbing.grabbed_thing] into the sleeper."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
 				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 				return
-			if(!G || !G.grabbed_thing) return
-			var/mob/M = G.grabbed_thing
+			if(!grabbing || !grabbing.grabbed_thing) return
+			var/mob/current_mob = grabbing.grabbed_thing
 			user.stop_pulling()
-			move_mob_inside(M)
+			move_mob_inside(current_mob)
 			add_fingerprint(user)
 
 #ifdef OBJECTS_PROXY_SPEECH

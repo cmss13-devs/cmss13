@@ -83,17 +83,17 @@
 /obj/structure/machinery/door/Collided(atom/movable/AM)
 	if(panel_open || operating) return
 	if(ismob(AM))
-		var/mob/M = AM
-		if(world.time - M.last_bumped <= openspeed) return //Can bump-open one airlock per second. This is to prevent shock spam.
-		M.last_bumped = world.time
-		if(!M.is_mob_restrained() && M.mob_size > MOB_SIZE_SMALL)
-			bumpopen(M)
+		var/mob/current_mob = AM
+		if(world.time - current_mob.last_bumped <= openspeed) return //Can bump-open one airlock per second. This is to prevent shock spam.
+		current_mob.last_bumped = world.time
+		if(!current_mob.is_mob_restrained() && current_mob.mob_size > MOB_SIZE_SMALL)
+			bumpopen(current_mob)
 		return
 
 	if(istype(AM, /obj))
-		var/obj/O = AM
-		if(O.buckled_mob)
-			Collided(O.buckled_mob)
+		var/obj/current_object = AM
+		if(current_object.buckled_mob)
+			Collided(current_object.buckled_mob)
 
 	if(istype(AM, /obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/bot = AM
@@ -161,18 +161,18 @@
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				if(prob(80))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, src)
+					spark.start()
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
 				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(80))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, src)
+					spark.start()
 			else
 				qdel(src)
 	return
@@ -269,8 +269,8 @@
 
 
 /obj/structure/machinery/door/proc/autoclose()
-	var/obj/structure/machinery/door/airlock/A = src
-	if(!A.density && !A.operating && !A.locked && !A.welded && A.autoclose)
+	var/obj/structure/machinery/door/airlock/airlock = src
+	if(!airlock.density && !airlock.operating && !airlock.locked && !airlock.welded && airlock.autoclose)
 		close()
 	return
 

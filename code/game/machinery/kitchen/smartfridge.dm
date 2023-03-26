@@ -95,19 +95,19 @@
 								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
-		var/obj/item/storage/bag/plants/P = O
+		var/obj/item/storage/bag/plants/bagged_plant = O
 		var/plants_loaded = 0
-		for(var/obj/G in P.contents)
-			if(accept_check(G))
-				P.remove_from_storage(G,src)
-				add_local_item(G)
+		for(var/obj/plants in bagged_plant.contents)
+			if(accept_check(plants))
+				bagged_plant.remove_from_storage(plants,src)
+				add_local_item(plants)
 				plants_loaded++
 		if(plants_loaded)
 
 			user.visible_message( \
-				SPAN_NOTICE("[user] loads \the [src] with \the [P]."), \
-				SPAN_NOTICE("You load \the [src] with \the [P]."))
-			if(P.contents.len > 0)
+				SPAN_NOTICE("[user] loads \the [src] with \the [bagged_plant]."), \
+				SPAN_NOTICE("You load \the [src] with \the [bagged_plant]."))
+			if(bagged_plant.contents.len > 0)
 				to_chat(user, SPAN_NOTICE("Some items are refused."))
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.

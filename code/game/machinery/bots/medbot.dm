@@ -60,8 +60,8 @@
 
 		src.botcard = new /obj/item/card/id(src)
 		if(isnull(src.botcard_access) || (src.botcard_access.len < 1))
-			var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
-			botcard.access = J.get_access()
+			var/datum/job/current_job = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
+			botcard.access = current_job.get_access()
 		else
 			src.botcard.access = src.botcard_access
 	start_processing()
@@ -238,25 +238,25 @@
 			var/message = pick("Radar, put a mask on!","There's always a catch, and it's the best there is.","I knew it, I should've been a plastic surgeon.","What kind of medbay is this? Everyone's dropping like dead flies.","Delicious!")
 			src.speak(message)
 
-		for (var/mob/living/carbon/C in view(7,src)) //Time to find a patient!
-			if ((C.stat == 2) || !ishuman_strict(C))
+		for (var/mob/living/carbon/current_mob in view(7,src)) //Time to find a patient!
+			if ((current_mob.stat == 2) || !ishuman_strict(current_mob))
 				continue
 
-			if ((C == src.oldpatient) && (world.time < src.last_found + 100))
+			if ((current_mob == src.oldpatient) && (world.time < src.last_found + 100))
 				continue
 
-			if(src.assess_patient(C))
-				src.patient = C
-				src.oldpatient = C
+			if(src.assess_patient(current_mob))
+				src.patient = current_mob
+				src.oldpatient = current_mob
 				src.last_found = world.time
 				if((src.last_newpatient_speak + 300) < world.time) //Don't spam these messages!
-					var/message = pick("Hey, [C.name]! Hold on, I'm coming.","Wait [C.name]! I want to help!","[C.name], you appear to be injured!")
+					var/message = pick("Hey, [current_mob.name]! Hold on, I'm coming.","Wait [current_mob.name]! I want to help!","[current_mob.name], you appear to be injured!")
 					src.speak(message)
-					src.visible_message("<b>[src]</b> points at [C.name]!")
+					src.visible_message("<b>[src]</b> points at [current_mob.name]!")
 					src.last_newpatient_speak = world.time
 // if(declare_treatment)
 // var/area/location = get_area(src)
-// broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
+// broadcast_medical_hud_message("[src.name] is treating <b>[current_mob]</b> in <b>[location]</b>", src)
 				break
 			else
 				continue
@@ -298,58 +298,58 @@
 
 	return
 
-/obj/structure/machinery/bot/medbot/proc/assess_patient(mob/living/carbon/C as mob)
+/obj/structure/machinery/bot/medbot/proc/assess_patient(mob/living/carbon/current_mob as mob)
 	//Time to see if they need medical help!
-	if(C.stat == 2)
+	if(current_mob.stat == 2)
 		return 0 //welp too late for them!
 
 	if(safety_checks)
-		if(C.reagents.total_volume > 0)
-			for(var/datum/reagent/R in C.reagents.reagent_list)
-				if((src.injection_amount + R.volume) >= R.overdose)
+		if(current_mob.reagents.total_volume > 0)
+			for(var/datum/reagent/chem in current_mob.reagents.reagent_list)
+				if((src.injection_amount + chem.volume) >= chem.overdose)
 					return 0 //Don't medicate if it will kill them --MadSnailDisease
 
 	//If they're injured, we're using a beaker, and don't have one of our WONDERCHEMS.
-	if((src.reagent_glass) && (src.use_beaker) && ((C.getBruteLoss() >= heal_threshold) || (C.getToxLoss() >= heal_threshold) || (C.getToxLoss() >= heal_threshold) || (C.getOxyLoss() >= (heal_threshold + 15))))
-		for(var/datum/reagent/R in src.reagent_glass.reagents.reagent_list)
-			if(!C.reagents.has_reagent(R))
+	if((src.reagent_glass) && (src.use_beaker) && ((current_mob.getBruteLoss() >= heal_threshold) || (current_mob.getToxLoss() >= heal_threshold) || (current_mob.getToxLoss() >= heal_threshold) || (current_mob.getOxyLoss() >= (heal_threshold + 15))))
+		for(var/datum/reagent/chem in src.reagent_glass.reagents.reagent_list)
+			if(!current_mob.reagents.has_reagent(chem))
 				return 1
 			continue
 
 	//They're injured enough for it!
-	if((C.getBruteLoss() >= heal_threshold) && (!C.reagents.has_reagent(src.treatment_brute)))
+	if((current_mob.getBruteLoss() >= heal_threshold) && (!current_mob.reagents.has_reagent(src.treatment_brute)))
 		return 1 //If they're already medicated don't bother!
 
-	if((C.getOxyLoss() >= (15 + heal_threshold)) && (!C.reagents.has_reagent(src.treatment_oxy)))
+	if((current_mob.getOxyLoss() >= (15 + heal_threshold)) && (!current_mob.reagents.has_reagent(src.treatment_oxy)))
 		return 1
 
-	if((C.getFireLoss() >= heal_threshold) && (!C.reagents.has_reagent(src.treatment_fire)))
+	if((current_mob.getFireLoss() >= heal_threshold) && (!current_mob.reagents.has_reagent(src.treatment_fire)))
 		return 1
 
-	if((C.getToxLoss() >= heal_threshold) && (!C.reagents.has_reagent(src.treatment_tox)))
+	if((current_mob.getToxLoss() >= heal_threshold) && (!current_mob.reagents.has_reagent(src.treatment_tox)))
 		return 1
 
 
-	for(var/datum/disease/D in C.viruses)
-		if((D.stage > 1) || (D.spread_type == AIRBORNE))
+	for(var/datum/disease/current_disease in current_mob.viruses)
+		if((current_disease.stage > 1) || (current_disease.spread_type == AIRBORNE))
 
-			if (!C.reagents.has_reagent(src.treatment_virus))
+			if (!current_mob.reagents.has_reagent(src.treatment_virus))
 				return 1 //STOP DISEASE FOREVER
 
 	return 0
 
-/obj/structure/machinery/bot/medbot/proc/medicate_patient(mob/living/carbon/C as mob)
+/obj/structure/machinery/bot/medbot/proc/medicate_patient(mob/living/carbon/current_mob as mob)
 	if(!src.on)
 		return
 
-	if(!istype(C))
+	if(!istype(current_mob))
 		src.oldpatient = src.patient
 		src.patient = null
 		src.currently_healing = 0
 		src.last_found = world.time
 		return
 
-	if(C.stat == 2)
+	if(current_mob.stat == 2)
 		var/death_message = pick("No! NO!","Live, damnit! LIVE!","I...I've never lost a patient before. Not today, I mean.")
 		src.speak(death_message)
 		src.oldpatient = src.patient
@@ -363,35 +363,35 @@
 	//Use whatever is inside the loaded beaker. If there is one.
 	if(use_beaker && reagent_glass && reagent_glass.reagents.total_volume)
 		var/safety_fail = 0
-		for(var/datum/reagent/R in reagent_glass.reagents.reagent_list)
-			if(!C.reagents.has_reagent(R))
+		for(var/datum/reagent/chem in reagent_glass.reagents.reagent_list)
+			if(!current_mob.reagents.has_reagent(chem))
 				safety_fail = 1
 				break
 		if(!safety_fail)
 			reagent_id = "internal_beaker"
 
 	var/virus = 0
-	for(var/datum/disease/D in C.viruses)
+	for(var/datum/disease/current_disease in current_mob.viruses)
 		virus = 1
 
 	if (!reagent_id && (virus))
-		if(!C.reagents.has_reagent(src.treatment_virus))
+		if(!current_mob.reagents.has_reagent(src.treatment_virus))
 			reagent_id = src.treatment_virus
 
-	if (!reagent_id && (C.getBruteLoss() >= heal_threshold))
-		if(!C.reagents.has_reagent(src.treatment_brute))
+	if (!reagent_id && (current_mob.getBruteLoss() >= heal_threshold))
+		if(!current_mob.reagents.has_reagent(src.treatment_brute))
 			reagent_id = src.treatment_brute
 
-	if (!reagent_id && (C.getOxyLoss() >= (15 + heal_threshold)))
-		if(!C.reagents.has_reagent(src.treatment_oxy))
+	if (!reagent_id && (current_mob.getOxyLoss() >= (15 + heal_threshold)))
+		if(!current_mob.reagents.has_reagent(src.treatment_oxy))
 			reagent_id = src.treatment_oxy
 
-	if (!reagent_id && (C.getFireLoss() >= heal_threshold))
-		if(!C.reagents.has_reagent(src.treatment_fire))
+	if (!reagent_id && (current_mob.getFireLoss() >= heal_threshold))
+		if(!current_mob.reagents.has_reagent(src.treatment_fire))
 			reagent_id = src.treatment_fire
 
-	if (!reagent_id && (C.getToxLoss() >= heal_threshold))
-		if(!C.reagents.has_reagent(src.treatment_tox))
+	if (!reagent_id && (current_mob.getToxLoss() >= heal_threshold))
+		if(!current_mob.reagents.has_reagent(src.treatment_tox))
 			reagent_id = src.treatment_tox
 
 	if(!reagent_id) //If they don't need any of that they're probably cured!
@@ -407,7 +407,7 @@
 		visible_message(SPAN_DANGER("<B>[src] is trying to inject [src.patient]!</B>"))
 		spawn(30)
 			if ((get_dist(src, src.patient) <= 1) && (src.on))
-				if (!assess_patient(C))
+				if (!assess_patient(current_mob))
 					visible_message(SPAN_DANGER("<B>[src] pulls the syringe away. Safety protocol engaged!</B>"))
 				else if (reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
 					src.reagent_glass.reagents.trans_to(src.patient,src.injection_amount) //Inject from beaker instead.
@@ -449,20 +449,20 @@
 	if (prob(50))
 		new /obj/item/robot_parts/arm/l_arm(Tsec)
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(3, 1, src)
+	spark.start()
 	qdel(src)
 	return
 
-/obj/structure/machinery/bot/medbot/Collide(atom/A) //Leave no door unopened!
-	if ((istype(A, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
-		var/obj/structure/machinery/door/D = A
-		if (!istype(D, /obj/structure/machinery/door/firedoor) && D.check_access(src.botcard) && !istype(D,/obj/structure/machinery/door/poddoor))
-			D.open()
+/obj/structure/machinery/bot/medbot/Collide(atom/current_atom) //Leave no door unopened!
+	if ((istype(current_atom, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
+		var/obj/structure/machinery/door/door = current_atom
+		if (!istype(door, /obj/structure/machinery/door/firedoor) && door.check_access(src.botcard) && !istype(door,/obj/structure/machinery/door/poddoor))
+			door.open()
 			src.frustration = 0
-	else if ((istype(A, /mob/living/)) && (!src.anchored))
-		src.forceMove(A.loc)
+	else if ((istype(current_atom, /mob/living/)) && (!src.anchored))
+		src.forceMove(current_atom.loc)
 		src.frustration = 0
 	return
 
@@ -482,16 +482,16 @@
 		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
 		return
 
-	var/obj/item/frame/firstaid_arm_assembly/A = new /obj/item/frame/firstaid_arm_assembly
+	var/obj/item/frame/firstaid_arm_assembly/assembly = new /obj/item/frame/firstaid_arm_assembly
 	if(istype(src,/obj/item/storage/firstaid/fire))
-		A.skin = "ointment"
+		assembly.skin = "ointment"
 	else if(istype(src,/obj/item/storage/firstaid/toxin))
-		A.skin = "tox"
+		assembly.skin = "tox"
 	else if(istype(src,/obj/item/storage/firstaid/o2))
-		A.skin = "o2"
+		assembly.skin = "o2"
 
 	qdel(S)
-	user.put_in_hands(A)
+	user.put_in_hands(assembly)
 	to_chat(user, SPAN_NOTICE("You add the robot arm to the first aid kit."))
 	user.temp_drop_inv_item(src)
 	qdel(src)

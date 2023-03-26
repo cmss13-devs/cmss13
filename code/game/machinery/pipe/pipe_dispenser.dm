@@ -84,9 +84,9 @@
 		if(!wait)
 			var/p_type = text2num(href_list["make"])
 			var/p_dir = text2num(href_list["dir"])
-			var/obj/item/pipe/P = new (/*usr.loc*/ src.loc, p_type, p_dir)
-			P.update()
-			P.add_fingerprint(usr)
+			var/obj/item/pipe/new_pipe = new (/*usr.loc*/ src.loc, p_type, p_dir)
+			new_pipe.update()
+			new_pipe.add_fingerprint(usr)
 			wait = 1
 			addtimer(VARSET_CALLBACK(src, wait, FALSE), 1 SECONDS)
 	if(href_list["makemeter"])
@@ -197,35 +197,35 @@ Nah
 			return
 		if(!wait)
 			var/p_type = text2num(href_list["dmake"])
-			var/obj/structure/disposalconstruct/C = new (src.loc)
+			var/obj/structure/disposalconstruct/disposals_type = new (src.loc)
 			switch(p_type)
 				if(0)
-					C.ptype = 0
+					disposals_type.ptype = 0
 				if(1)
-					C.ptype = 1
+					disposals_type.ptype = 1
 				if(2)
-					C.ptype = 2
+					disposals_type.ptype = 2
 				if(3)
-					C.ptype = 4
+					disposals_type.ptype = 4
 				if(4)
-					C.ptype = 5
+					disposals_type.ptype = 5
 				if(5)
-					C.ptype = 6
-					C.density = TRUE
+					disposals_type.ptype = 6
+					disposals_type.density = TRUE
 				if(6)
-					C.ptype = 7
-					C.density = TRUE
+					disposals_type.ptype = 7
+					disposals_type.density = TRUE
 				if(7)
-					C.ptype = 8
-					C.density = TRUE
+					disposals_type.ptype = 8
+					disposals_type.density = TRUE
 ///// Z-Level stuff
 				if(21)
-					C.ptype = 11
+					disposals_type.ptype = 11
 				if(22)
-					C.ptype = 12
+					disposals_type.ptype = 12
 ///// Z-Level stuff
-			C.add_fingerprint(usr)
-			C.update()
+			disposals_type.add_fingerprint(usr)
+			disposals_type.update()
 			wait = 1
 			addtimer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return

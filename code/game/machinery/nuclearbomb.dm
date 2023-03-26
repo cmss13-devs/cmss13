@@ -35,17 +35,17 @@ var/bomb_set = FALSE
 /obj/structure/machinery/nuclearbomb/update_icon()
 	overlays.Cut()
 	if(anchored)
-		var/image/I = image(icon, "+deployed")
-		overlays += I
+		var/image/current_image = image(icon, "+deployed")
+		overlays += current_image
 	if(!safety)
-		var/image/I = image(icon, "+unsafe")
-		overlays += I
+		var/image/current_image = image(icon, "+unsafe")
+		overlays += current_image
 	if(timing)
-		var/image/I = image(icon, "+timing")
-		overlays += I
+		var/image/current_image = image(icon, "+timing")
+		overlays += current_image
 	if(timing == -1)
-		var/image/I = image(icon, "+activation")
-		overlays += I
+		var/image/current_image = image(icon, "+activation")
+		overlays += current_image
 
 /obj/structure/machinery/nuclearbomb/power_change()
 	return
@@ -78,8 +78,8 @@ var/bomb_set = FALSE
 	else
 		stop_processing()
 
-/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/current_mob)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), current_mob)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
@@ -153,7 +153,7 @@ var/bomb_set = FALSE
 	if(.)
 		return
 
-	var/area/A = get_area(src)
+	var/area/current_area = get_area(src)
 	switch(action)
 		if("toggleNuke")
 			if(timing == -1)
@@ -174,7 +174,7 @@ var/bomb_set = FALSE
 				to_chat(usr, SPAN_DANGER("The safety is still on."))
 				return
 
-			if(!A.can_build_special)
+			if(!current_area.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 
@@ -209,7 +209,7 @@ var/bomb_set = FALSE
 			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if(!A.can_build_special)
+			if(!current_area.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			if(usr.action_busy)
@@ -239,11 +239,11 @@ var/bomb_set = FALSE
 			else
 				//Check if they have command access
 				var/list/acc = list()
-				var/mob/living/carbon/human/H = usr
-				if(H.wear_id)
-					acc += H.wear_id.GetAccess()
-				if(H.get_active_hand())
-					acc += H.get_active_hand().GetAccess()
+				var/mob/living/carbon/human/human = usr
+				if(human.wear_id)
+					acc += human.wear_id.GetAccess()
+				if(human.get_active_hand())
+					acc += human.get_active_hand().GetAccess()
 				if(!(ACCESS_MARINE_COMMAND in acc))
 					to_chat(usr, SPAN_DANGER("Access denied!"))
 					return
@@ -257,7 +257,7 @@ var/bomb_set = FALSE
 			if(timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if(!A.can_build_special)
+			if(!current_area.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			if(usr.action_busy)
@@ -297,8 +297,8 @@ var/bomb_set = FALSE
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
-	var/area/A = get_area(src)
-	if(!A.can_build_special)
+	var/area/current_area = get_area(src)
+	if(!current_area.can_build_special)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
 
@@ -321,15 +321,15 @@ var/bomb_set = FALSE
 		//humans part
 		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 		var/list/humans_USCM = list()
-		for(var/mob/M in humans_other)
-			var/mob/living/carbon/human/H = M
-			if(istype(H)) //if it's unconsious human or yautja, we remove them
-				if(H.stat != CONSCIOUS || isyautja(H))
-					humans_other.Remove(M)
+		for(var/mob/current_mob in humans_other)
+			var/mob/living/carbon/human/human = current_mob
+			if(istype(human)) //if it's unconsious human or yautja, we remove them
+				if(human.stat != CONSCIOUS || isyautja(human))
+					humans_other.Remove(current_mob)
 					continue
-			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
-				humans_USCM += M
-				humans_other -= M
+			if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
+				humans_USCM += current_mob
+				humans_other -= current_mob
 		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
 		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 		//preds part
@@ -354,15 +354,15 @@ var/bomb_set = FALSE
 	//deal with start/stop announcements for players
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_USCM = list()
-	for(var/mob/M in humans_other)
-		var/mob/living/carbon/human/H = M
-		if(istype(H)) //if it's unconsious human or yautja, we remove them
-			if(H.stat != CONSCIOUS || isyautja(H))
-				humans_other.Remove(M)
+	for(var/mob/current_mob in humans_other)
+		var/mob/living/carbon/human/human = current_mob
+		if(istype(human)) //if it's unconsious human or yautja, we remove them
+			if(human.stat != CONSCIOUS || isyautja(human))
+				humans_other.Remove(current_mob)
 				continue
-		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
-			humans_USCM += M
-			humans_other -= M
+		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
+			humans_USCM += current_mob
+			humans_other -= current_mob
 	var/datum/hive_status/hive
 	if(timing)
 		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')

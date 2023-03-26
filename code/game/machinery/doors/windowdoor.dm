@@ -49,10 +49,10 @@
 				sleep(50)
 				close()
 		return
-	var/mob/M = AM // we've returned by here if M is not a mob
+	var/mob/current_mob = AM // we've returned by here if current_mob is not a mob
 	if (src.operating)
 		return
-	if (src.density && M.mob_size > MOB_SIZE_SMALL && src.allowed(AM))
+	if (src.density && current_mob.mob_size > MOB_SIZE_SMALL && src.allowed(AM))
 		open()
 		if(src.check_access(null))
 			sleep(50)
@@ -149,8 +149,8 @@
 
 /obj/structure/machinery/door/window/attack_hand(mob/user)
 	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
+		var/mob/living/carbon/human/human = user
+		if(human.species.can_shred(human))
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 			visible_message(SPAN_DANGER("<B>[user] smashes against the [src.name].</B>"), 1)
 			take_damage(25)

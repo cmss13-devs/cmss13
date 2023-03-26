@@ -135,10 +135,10 @@
 
 			var/signed = null
 			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
+				var/mob/living/carbon/human/human = usr
+				var/obj/item/card/id/id = human.wear_id
 				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
 					signed = "[paygrade] [id.registered_name]"
 
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
@@ -207,9 +207,9 @@
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/current_client in GLOB.admins)
+					if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
+						current_client << 'sound/effects/sos-morse-code.ogg'
 				message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
@@ -240,9 +240,9 @@
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/current_client in GLOB.admins)
+					if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
+						current_client << 'sound/effects/sos-morse-code.ogg'
 				message_admins("[key_name(usr)] has requested Self-Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time

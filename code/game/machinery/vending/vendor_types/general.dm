@@ -35,8 +35,8 @@ GLOBAL_LIST_INIT(cm_vending_walkman, list(
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3])
 			if(istype(item_to_stock,/obj/item/device/walkman))
-				var/obj/item/device/walkman/W = item_to_stock
-				if(W.tape)
+				var/obj/item/device/walkman/walkman = item_to_stock
+				if(walkman.tape)
 					to_chat(user,SPAN_WARNING("Remove the tape first!"))
 					return
 
@@ -46,8 +46,8 @@ GLOBAL_LIST_INIT(cm_vending_walkman, list(
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/storage = item_to_stock.loc
+				storage.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),

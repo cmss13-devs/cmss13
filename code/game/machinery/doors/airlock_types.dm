@@ -195,8 +195,8 @@
 	..()
 
 /obj/structure/machinery/door/airlock/uranium/proc/radiate()
-	for(var/mob/living/L in range (3,src))
-		L.apply_effect(15,IRRADIATE,0)
+	for(var/mob/living/current_mob in range (3,src))
+		current_mob.apply_effect(15,IRRADIATE,0)
 	return
 
 /obj/structure/machinery/door/airlock/phoron

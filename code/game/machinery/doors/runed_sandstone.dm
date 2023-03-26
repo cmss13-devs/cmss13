@@ -138,14 +138,14 @@
 	operating = FALSE
 
 	for(var/turf/turf in locs)
-		for(var/mob/living/M in turf)
-			M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			M.set_effect(5, STUN)
-			M.set_effect(5, WEAKEN)
-			M.emote("pain")
+		for(var/mob/living/current_mob in turf)
+			current_mob.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+			current_mob.set_effect(5, STUN)
+			current_mob.set_effect(5, WEAKEN)
+			current_mob.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
-				location.add_mob_blood(M)
+				location.add_mob_blood(current_mob)
 
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
@@ -172,16 +172,16 @@
 	return TRUE
 
 //Damage procs needed to be redefined because unacidable apparently makes doors immortal.
-/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(dam, mob/M)
+/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(dam, mob/current_mob)
 	if(!dam)
 		return FALSE
 
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
-		if(M && istype(M))
-			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
-			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
+		if(current_mob && istype(current_mob))
+			current_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
+			SEND_SIGNAL(current_mob, COMSIG_MOB_DESTROY_AIRLOCK, src)
 		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
 		deconstruct(FALSE)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
@@ -195,11 +195,11 @@
 		return
 
 	if(!disassembled)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		var/turf/current_turf = get_turf(src)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(current_turf)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(current_turf)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(current_turf)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(current_turf)
 	return ..()
 
 /obj/structure/machinery/door/airlock/sandstone/runed/ex_act(severity, explosion_direction)

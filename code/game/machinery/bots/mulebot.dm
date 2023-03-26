@@ -122,9 +122,9 @@
 // other: chance to knock rider off bot
 /obj/structure/machinery/bot/mulebot/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/cell) && open && !cell)
-		var/obj/item/cell/C = I
-		if(user.drop_inv_item_to_loc(C, src))
-			cell = C
+		var/obj/item/cell/power_cell = I
+		if(user.drop_inv_item_to_loc(power_cell, src))
+			cell = power_cell
 			updateDialog()
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(locked)
@@ -320,12 +320,12 @@
 
 			if("cellinsert")
 				if(open && !cell)
-					var/obj/item/cell/C = usr.get_active_hand()
-					if(istype(C))
+					var/obj/item/cell/power_cell = usr.get_active_hand()
+					if(istype(power_cell))
 						if(usr.drop_held_item())
-							cell = C
-							C.forceMove(src)
-							C.add_fingerprint(usr)
+							cell = power_cell
+							power_cell.forceMove(src)
+							power_cell.add_fingerprint(usr)
 
 							usr.visible_message(SPAN_NOTICE("[usr] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 							updateDialog()
@@ -438,61 +438,61 @@
 
 // mousedrop a crate to load the bot
 
-/obj/structure/machinery/bot/mulebot/MouseDrop_T(atom/movable/C, mob/user)
+/obj/structure/machinery/bot/mulebot/MouseDrop_T(atom/movable/current_atom, mob/user)
 	if(user.stat)
 		return
-	if (!on || !istype(C)|| C.anchored || get_dist(user, src) > 1 || get_dist(src,C) > 1 )
+	if (!on || !istype(current_atom)|| current_atom.anchored || get_dist(user, src) > 1 || get_dist(src,current_atom) > 1 )
 		return
 	if(load)
 		return
-	load(C)
+	load(current_atom)
 
 
 // called to load a crate
-/obj/structure/machinery/bot/mulebot/proc/load(atom/movable/C)
-	if((wires & WIRE_LOADCHECK) && !istype(C,/obj/structure/closet/crate))
+/obj/structure/machinery/bot/mulebot/proc/load(atom/movable/current_atom)
+	if((wires & WIRE_LOADCHECK) && !istype(current_atom,/obj/structure/closet/crate))
 		src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
 		return // if not emagged, only allow crates to be loaded
 
 	//I'm sure someone will come along and ask why this is here... well people were dragging screen items onto the mule, and that was not cool.
 	//So this is a simple fix that only allows a selection of item types to be considered. Further narrowing-down is below.
-	if(!istype(C,/obj/item) && !istype(C,/obj/structure/machinery) && !istype(C,/obj/structure) && !ismob(C))
+	if(!istype(current_atom,/obj/item) && !istype(current_atom,/obj/structure/machinery) && !istype(current_atom,/obj/structure) && !ismob(current_atom))
 		return
-	if(!isturf(C.loc)) //To prevent the loading from stuff from someone's inventory, which wouldn't get handled properly.
+	if(!isturf(current_atom.loc)) //To prevent the loading from stuff from someone's inventory, which wouldn't get handled properly.
 		return
-	if(get_dist(C, src) > 1 || load || !on)
+	if(get_dist(current_atom, src) > 1 || load || !on)
 		return
 
 	var/move_dir = 0
-	for(var/obj/structure/plasticflaps/P in src.loc)//Takes flaps into account
-		move_dir = get_dir(C, P)
-		if(BlockedPassDirs(C,move_dir))
+	for(var/obj/structure/plasticflaps/flap in src.loc)//Takes flaps into account
+		move_dir = get_dir(current_atom, flap)
+		if(BlockedPassDirs(current_atom,move_dir))
 			return
 	mode = 1
 
 	// if a create, close before loading
-	var/obj/structure/closet/crate/crate = C
+	var/obj/structure/closet/crate/crate = current_atom
 	if(istype(crate))
 		crate.close()
 
-	C.forceMove(loc)
+	current_atom.forceMove(loc)
 	sleep(2)
-	if(C.loc != src.loc) //To prevent you from going onto more thano ne bot.
+	if(current_atom.loc != src.loc) //To prevent you from going onto more thano ne bot.
 		return
-	C.forceMove(src)
-	load = C
+	current_atom.forceMove(src)
+	load = current_atom
 
-	C.pixel_y += 9
-	if(C.layer < layer)
-		C.layer = layer + 0.1
-	overlays += C
+	current_atom.pixel_y += 9
+	if(current_atom.layer < layer)
+		current_atom.layer = layer + 0.1
+	overlays += current_atom
 
-	if(ismob(C))
-		var/mob/M = C
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
+	if(ismob(current_atom))
+		var/mob/current_mob = current_atom
+		if(current_mob.client)
+			current_mob.client.perspective = EYE_PERSPECTIVE
+			current_mob.client.eye = src
 
 	mode = 0
 	send_status()
@@ -511,10 +511,10 @@
 	load.pixel_y -= 9
 	load.layer = initial(load.layer)
 	if(ismob(load))
-		var/mob/M = load
-		if(M.client)
-			M.client.perspective = MOB_PERSPECTIVE
-			M.client.eye = src
+		var/mob/current_mob = load
+		if(current_mob.client)
+			current_mob.client.perspective = MOB_PERSPECTIVE
+			current_mob.client.eye = src
 
 
 	if(dirn)
@@ -536,10 +536,10 @@
 		AM.layer = initial(AM.layer)
 		AM.pixel_y = initial(AM.pixel_y)
 		if(ismob(AM))
-			var/mob/M = AM
-			if(M.client)
-				M.client.perspective = MOB_PERSPECTIVE
-				M.client.eye = src
+			var/mob/current_mob = AM
+			if(current_mob.client)
+				current_mob.client.perspective = MOB_PERSPECTIVE
+				current_mob.client.eye = src
 	mode = 0
 
 
@@ -597,17 +597,17 @@
 
 
 					if(bloodiness)
-						var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
+						var/obj/effect/decal/cleanable/blood/tracks/blood = new(loc)
 						var/newdir = get_dir(next, loc)
 						if(newdir == dir)
-							B.setDir(newdir)
+							blood.setDir(newdir)
 						else
 							newdir = newdir|dir
 							if(newdir == 3)
 								newdir = 1
 							else if(newdir == 12)
 								newdir = 4
-							B.setDir(newdir)
+							blood.setDir(newdir)
 						bloodiness--
 
 
@@ -730,9 +730,9 @@
 			if(auto_pickup) // find a crate
 				var/atom/movable/AM
 				if(!(wires & WIRE_LOADCHECK)) // if emagged, load first unanchored thing we find
-					for(var/atom/movable/A in get_step(loc, loaddir))
-						if(!A.anchored)
-							AM = A
+					for(var/atom/movable/current_atom in get_step(loc, loaddir))
+						if(!current_atom.anchored)
+							AM = current_atom
 							break
 				else // otherwise, look for crates only
 					AM = locate(/obj/structure/closet/crate) in get_step(loc,loaddir)
@@ -752,18 +752,18 @@
 	return
 
 // called when bot bumps into anything
-/obj/structure/machinery/bot/mulebot/Collide(atom/A)
+/obj/structure/machinery/bot/mulebot/Collide(atom/current_atom)
 	if(!(wires & WIRE_MOBAVOID)) //usually just bumps, but if avoidance disabled knock over mobs
-		var/mob/M = A
-		if(ismob(M))
-			if(isborg(M))
-				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))
+		var/mob/current_mob = current_atom
+		if(ismob(current_mob))
+			if(isborg(current_mob))
+				src.visible_message(SPAN_DANGER("[src] bumps into [current_mob]!"))
 			else
-				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
-				M.stop_pulling()
-				M.apply_effect(8, STUN)
-				M.apply_effect(5, WEAKEN)
-				M.lying = 1
+				src.visible_message(SPAN_DANGER("[src] knocks over [current_mob]!"))
+				current_mob.stop_pulling()
+				current_mob.apply_effect(8, STUN)
+				current_mob.apply_effect(5, WEAKEN)
+				current_mob.lying = 1
 	..()
 
 /obj/structure/machinery/bot/mulebot/alter_health()
@@ -936,9 +936,9 @@
 		cell.update_icon()
 		cell = null
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+	spark.set_up(3, 1, src)
+	spark.start()
 
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	unload(0)

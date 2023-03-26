@@ -43,12 +43,12 @@
 	if(!input_plate) return
 
 	if(ismob(A))
-		var/mob/M = A
+		var/mob/current_mob = A
 
-		if(M.loc == input_plate
+		if(current_mob.loc == input_plate
 		)
-			M.forceMove(src)
-			M.gib()
+			current_mob.forceMove(src)
+			current_mob.gib()
 
 
 /obj/structure/machinery/gibber/New()
@@ -145,8 +145,8 @@
 /obj/structure/machinery/gibber/proc/go_out()
 	if (!occupant)
 		return
-	for(var/obj/O in src)
-		O.forceMove(loc)
+	for(var/obj/current_obj in src)
+		current_obj.forceMove(loc)
 	if (occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
@@ -171,16 +171,16 @@
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
 	if(istype(occupant, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/X = occupant
+		var/mob/living/carbon/xenomorph/xenomorph = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
-		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
+		if(xenomorph.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
 			totalslabs = 5
 		else
-			if(X.caste_type == XENO_CASTE_PREDALIEN)
+			if(xenomorph.caste_type == XENO_CASTE_PREDALIEN)
 				totalslabs = 6
 			else
-				totalslabs += X.tier
+				totalslabs += xenomorph.tier
 	else
 		if(istypestrict(occupant, /mob/living/carbon/human))
 			meat_template = /obj/item/reagent_container/food/snacks/meat/human

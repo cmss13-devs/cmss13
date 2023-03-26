@@ -13,17 +13,17 @@
 
 /obj/structure/machinery/robotic_fabricator/attackby(obj/item/O as obj, mob/user as mob)
 	if (istype(O, /obj/item/stack/sheet/metal))
-		var/obj/item/stack/sheet/metal/M = O
+		var/obj/item/stack/sheet/metal/metal = O
 		if (src.metal_amount < 150000.0)
 			var/count = 0
 			src.overlays += "fab-load-metal"
 			spawn(15)
-				if(M)
-					if(!M.get_amount())
+				if(metal)
+					if(!metal.get_amount())
 						return
-					while(metal_amount < 150000 && M.amount)
+					while(metal_amount < 150000 && metal.amount)
 						src.metal_amount += O.matter["metal"] /*O:height * O:width * O:length * 100000.0*/
-						M.use(1)
+						metal.use(1)
 						count++
 
 					to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
@@ -134,6 +134,6 @@ Please wait until completion...</TT><BR>
 			else return //Someone's doing href fuckery if this gets here.
 		return
 
-	for (var/mob/M as anything in viewers(1, src))
-		if (M.client && M.interactee == src)
-			src.attack_hand(M)
+	for (var/mob/metal as anything in viewers(1, src))
+		if (metal.client && metal.interactee == src)
+			src.attack_hand(metal)

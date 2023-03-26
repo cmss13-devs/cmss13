@@ -248,49 +248,49 @@
 		if(isopen)
 
 			if( istype(I,/obj/item/clothing/suit/space) )
-				var/obj/item/clothing/suit/space/S = I
+				var/obj/item/clothing/suit/space/spacesuit = I
 				if(inserted_suit)
 					to_chat(user, SPAN_WARNING("The unit already contains a suit."))
 					return
-				if(user.drop_inv_item_to_loc(S, src))
-					to_chat(user, SPAN_NOTICE("You load the [S.name] into the storage compartment."))
-					inserted_suit = S
+				if(user.drop_inv_item_to_loc(spacesuit, src))
+					to_chat(user, SPAN_NOTICE("You load the [spacesuit.name] into the storage compartment."))
+					inserted_suit = spacesuit
 					update_icon()
 					updateUsrDialog()
 				return
 
 			if( istype(I,/obj/item/clothing/head/helmet) )
-				var/obj/item/clothing/head/helmet/H = I
+				var/obj/item/clothing/head/helmet/helmet = I
 				if(inserted_helmet)
 					to_chat(user, SPAN_WARNING("The unit already contains a helmet."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [H.name] into the storage compartment."))
-				if(user.drop_inv_item_to_loc(H, src))
-					inserted_helmet = H
+				to_chat(user, SPAN_NOTICE("You load the [helmet.name] into the storage compartment."))
+				if(user.drop_inv_item_to_loc(helmet, src))
+					inserted_helmet = helmet
 					update_icon()
 					updateUsrDialog()
 				return
 
 			if( istype(I,/obj/item/clothing/mask) )
-				var/obj/item/clothing/mask/M = I
+				var/obj/item/clothing/mask/mask = I
 				if(inserted_mask)
 					to_chat(user, SPAN_WARNING("The unit already contains a mask."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [M.name] into the storage compartment."))
-				if(user.drop_inv_item_to_loc(M, src))
-					inserted_mask = M
+				to_chat(user, SPAN_NOTICE("You load the [mask.name] into the storage compartment."))
+				if(user.drop_inv_item_to_loc(mask, src))
+					inserted_mask = mask
 					update_icon()
 					updateUsrDialog()
 				return
 
 			if( istype(I,/obj/item/tank) )
-				var/obj/item/tank/T = I
+				var/obj/item/tank/gas_tank = I
 				if(inserted_tank)
 					to_chat(user, SPAN_WARNING("The unit already contains a tank."))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [T.name] into the storage compartment."))
-				if(user.drop_inv_item_to_loc(T, src))
-					inserted_tank = T
+				to_chat(user, SPAN_NOTICE("You load the [gas_tank.name] into the storage compartment."))
+				if(user.drop_inv_item_to_loc(gas_tank, src))
+					inserted_tank = gas_tank
 					update_icon()
 					updateUsrDialog()
 				return

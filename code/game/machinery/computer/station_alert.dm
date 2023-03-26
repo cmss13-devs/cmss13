@@ -43,39 +43,39 @@
 	if(stat & (BROKEN))
 		return
 
-	var/list/L = alarms[class]
-	for(var/I in L)
+	var/list/alert_list = alarms[class]
+	for(var/I in alert_list)
 		if (I == A.name)
-			var/list/alarm = L[I]
+			var/list/alarm = alert_list[I]
 			var/list/sources = alarm[3]
 			if (!(source in sources))
 				sources += source
 			return 1
-	var/obj/structure/machinery/camera/C = null
+	var/obj/structure/machinery/camera/current_camera = null
 	var/list/CL = null
 	if(O && islist(O))
 		CL = O
 		if (CL.len == 1)
-			C = CL[1]
+			current_camera = CL[1]
 	else if(O && istype(O, /obj/structure/machinery/camera))
-		C = O
-	L[A.name] = list(A, (C ? C : O), list(source))
+		current_camera = O
+	alert_list[A.name] = list(A, (current_camera ? current_camera : O), list(source))
 	return 1
 
 /obj/structure/machinery/computer/station_alert/proc/cancelAlarm(class, area/A, obj/origin)
 	if(stat & (BROKEN))
 		return
-	var/list/L = alarms[class]
+	var/list/alert_list = alarms[class]
 	var/cleared = 0
-	for (var/I in L)
+	for (var/I in alert_list)
 		if (I == A.name)
-			var/list/alarm = L[I]
+			var/list/alarm = alert_list[I]
 			var/list/srcs  = alarm[3]
 			if (origin in srcs)
 				srcs -= origin
 			if (srcs.len == 0)
 				cleared = 1
-				L -= I
+				alert_list -= I
 	return !cleared
 
 /obj/structure/machinery/computer/station_alert/process()
@@ -84,8 +84,8 @@
 		return
 	var/active_alarms = 0
 	for (var/cat in src.alarms)
-		var/list/L = src.alarms[cat]
-		if(L.len) active_alarms = 1
+		var/list/alert_list = src.alarms[cat]
+		if(alert_list.len) active_alarms = 1
 	if(active_alarms)
 		icon_state = "alert:2"
 	else

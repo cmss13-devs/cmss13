@@ -290,17 +290,17 @@
 	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
-	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
-		if(M.id == id)
-			targets += M
+	for(var/obj/structure/machinery/door/window/brigdoor/door in machines)
+		if(door.id == id)
+			targets += door
 
-	for(var/obj/structure/machinery/flasher/F in machines)
-		if(F.id == id)
-			targets += F
+	for(var/obj/structure/machinery/flasher/flash in machines)
+		if(flash.id == id)
+			targets += flash
 
-	for(var/obj/structure/machinery/door/poddoor/almayer/locked/P in machines)
-		if(P.id == id)
-			targets += P
+	for(var/obj/structure/machinery/door/poddoor/almayer/locked/pod_door in machines)
+		if(pod_door.id == id)
+			targets += pod_door
 
 	if(!length(targets))
 		stat |= BROKEN
@@ -360,7 +360,7 @@
 		maptext = new_text
 
 /obj/structure/machinery/brig_cell/proc/texticon(tn, px = 0, py = 0)
-	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
+	var/image/cell_display = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = length(tn)
 
 	for(var/d = 1 to len)
@@ -370,8 +370,8 @@
 		var/image/ID = image('icons/obj/structures/machinery/status_display.dmi', icon_state=char)
 		ID.pixel_x = -(d-1)*5 + px
 		ID.pixel_y = py
-		I.overlays += ID
-	return I
+		cell_display.overlays += ID
+	return cell_display
 
 
 /obj/structure/machinery/brig_cell/cell_1

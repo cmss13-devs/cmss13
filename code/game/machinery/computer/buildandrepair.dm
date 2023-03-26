@@ -66,14 +66,14 @@
 				src.state = 1
 				src.icon_state = "1"
 			if(istype(P, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/C = P
-				if (C.get_amount() < 5)
+				var/obj/item/stack/cable_coil/coil = P
+				if (coil.get_amount() < 5)
 					to_chat(user, SPAN_WARNING("You need five coils of wire to add them to the frame."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to add cables to the frame."))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 2)
-					if (C.use(5))
+					if (coil.use(5))
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 						state = 3
 						icon_state = "3"
@@ -83,18 +83,18 @@
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				src.state = 2
 				src.icon_state = "2"
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
-				A.amount = 5
+				var/obj/item/stack/cable_coil/new_coil = new /obj/item/stack/cable_coil( src.loc )
+				new_coil.amount = 5
 
 			if(istype(P, /obj/item/stack/sheet/glass))
-				var/obj/item/stack/sheet/glass/G = P
-				if (G.get_amount() < 2)
+				var/obj/item/stack/sheet/glass/glass = P
+				if (glass.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 3)
-					if (G.use(2))
+					if (glass.use(2))
 						to_chat(user, SPAN_NOTICE("You put in the glass panel."))
 						src.state = 4
 						src.icon_state = "4"

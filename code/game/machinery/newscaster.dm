@@ -478,9 +478,9 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		else if(href_list["set_channel_receiving"])
 			//var/list/datum/feed_channel/available_channels = list()
 			var/list/available_channels = list()
-			for(var/datum/feed_channel/F in news_network.network_channels)
-				if( (!F.locked || F.author == scanned_user) && !F.censored)
-					available_channels += F.channel_name
+			for(var/datum/feed_channel/feed in news_network.network_channels)
+				if( (!feed.locked || feed.author == scanned_user) && !feed.censored)
+					available_channels += feed.channel_name
 			src.channel_name = strip_html(tgui_input_list(usr, "Choose receiving Feed Channel", "Network Channel Handler", available_channels ))
 			src.updateUsrDialog()
 
@@ -699,24 +699,24 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 
 	if (src.isbroken)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
-		for (var/mob/O in hearers(5, src.loc))
-			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].", SHOW_MESSAGE_VISIBLE)
+		for (var/mob/current_mob in hearers(5, src.loc))
+			current_mob.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].", SHOW_MESSAGE_VISIBLE)
 	else
 		if(!(I.flags_item & NOBLUDGEON) && I.force)
 			if(I.force <15)
-				for (var/mob/O in hearers(5, src.loc))
-					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect.", SHOW_MESSAGE_VISIBLE)
+				for (var/mob/current_mob in hearers(5, src.loc))
+					current_mob.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect.", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 			else
 				src.hitstaken++
 				if(src.hitstaken==3)
-					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] smashes the [src.name]!", SHOW_MESSAGE_VISIBLE)
+					for (var/mob/current_mob in hearers(5, src.loc))
+						current_mob.show_message("[user.name] smashes the [src.name]!", SHOW_MESSAGE_VISIBLE)
 					src.isbroken=1
 					playsound(src.loc, 'sound/effects/Glassbr3.ogg', 50, 1)
 				else
-					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!", SHOW_MESSAGE_VISIBLE)
+					for (var/mob/current_mob in hearers(5, src.loc))
+						current_mob.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		else
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")
@@ -741,9 +741,9 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		if (!selection)
 			return
 
-		var/obj/item/photo/P = new/obj/item/photo()
-		P.construct(selection)
-		photo = P
+		var/obj/item/photo/new_photo = new/obj/item/photo()
+		new_photo.construct(selection)
+		photo = new_photo
 
 
 //########################################################################################################################
@@ -800,17 +800,17 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		if(1) // X channel pages inbetween.
 			for(var/datum/feed_channel/NP in src.news_content)
 				src.pages++ //Let's get it right again.
-			var/datum/feed_channel/C = src.news_content[src.curr_page]
-			dat+="<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.author]</FONT>\]</FONT><BR><BR>"
-			if(C.censored)
+			var/datum/feed_channel/channel = src.news_content[src.curr_page]
+			dat+="<FONT SIZE=4><B>[channel.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[channel.author]</FONT>\]</FONT><BR><BR>"
+			if(channel.censored)
 				dat+="This channel was deemed dangerous to the general welfare of the station and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
 			else
-				if(!length(C.messages))
+				if(!length(channel.messages))
 					dat+="No Feed stories stem from this channel..."
 				else
 					dat+="<ul>"
 					var/i = 0
-					for(var/datum/feed_message/MESSAGE in C.messages)
+					for(var/datum/feed_message/MESSAGE in channel.messages)
 						i++
 						dat+="-[MESSAGE.body] <BR>"
 						if(MESSAGE.img)
@@ -848,10 +848,10 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 
 
 /obj/item/newspaper/Topic(href, href_list)
-	var/mob/living/U = usr
+	var/mob/living/user = usr
 	..()
-	if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ))
-		U.set_interaction(src)
+	if ((src in user.contents) || ( istype(loc, /turf) && in_range(src, user) ))
+		user.set_interaction(src)
 		if(href_list["next_page"])
 			if(curr_page==src.pages+1)
 				return //Don't need that at all, but anyway.
@@ -930,10 +930,10 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 // return   //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
 
 /obj/structure/machinery/newscaster/proc/newsAlert(channel)   //This isn't Agouri's work, for it is ugly and vile.
-	var/turf/T = get_turf(src)   //Who the fuck uses spawn(600) anyway, jesus christ
+	var/turf/current_turf = get_turf(src)   //Who the fuck uses spawn(600) anyway, jesus christ
 	if(channel)
-		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\""), SHOW_MESSAGE_AUDIBLE)
+		for(var/mob/current_mob in hearers(world_view_size-1, current_turf))
+			current_mob.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\""), SHOW_MESSAGE_AUDIBLE)
 		src.alert = 1
 		src.update_icon()
 		spawn(30 SECONDS)
@@ -941,7 +941,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 			src.update_icon()
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 	else
-		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\""), SHOW_MESSAGE_AUDIBLE)
+		for(var/mob/current_mob in hearers(world_view_size-1, current_turf))
+			current_mob.show_message(SPAN_NEWSCASTER("<EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\""), SHOW_MESSAGE_AUDIBLE)
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 25, 1)
 	return

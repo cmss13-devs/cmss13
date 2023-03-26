@@ -68,9 +68,9 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/scoreboard/X in machines)
-		if(X.id == id)
-			X.reset_scores()
+	for(var/obj/structure/machinery/scoreboard/board in machines)
+		if(board.id == id)
+			board.reset_scores()
 
 	sleep(50)
 

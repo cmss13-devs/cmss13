@@ -73,19 +73,19 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/reagent_container/C = I
-		if(!(C.type in chem_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot refill the [C.name]."))
+		var/obj/item/reagent_container/container = I
+		if(!(container.type in chem_refill))
+			to_chat(user, SPAN_WARNING("[src] cannot refill the [container.name]."))
 			return
 
-		if(C.reagents.total_volume == C.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
+		if(container.reagents.total_volume == container.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [container.name] is currently full."))
 			return
 
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
-		var/obj/item/reagent_container/new_container = new C.type(src)
-		qdel(C)
+		var/obj/item/reagent_container/new_container = new container.type(src)
+		qdel(container)
 		user.put_in_hands(new_container)
 	else if(stat == WORKING && LAZYLEN(stack_refill) && (istype(I, /obj/item/stack)))
 		if(!hacked)
@@ -97,18 +97,18 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/stack/S = I
-		if(!(S.type in stack_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot restock the [S.name]."))
+		var/obj/item/stack/stack = I
+		if(!(stack.type in stack_refill))
+			to_chat(user, SPAN_WARNING("[src] cannot restock the [stack.name]."))
 			return
 
-		if(S.amount == S.max_amount)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
+		if(stack.amount == stack.max_amount)
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [stack.name] is currently fully stacked."))
 			return
 
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
-		S.amount = S.max_amount
-		S.update_icon()
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [stack.name]."))
+		stack.amount = stack.max_amount
+		stack.update_icon()
 	else
 		. = ..()
 

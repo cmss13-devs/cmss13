@@ -24,19 +24,19 @@
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
 	//Collecting grants
 	if(istype(B, /obj/item/paper/research_notes))
-		var/obj/item/paper/research_notes/N = B
-		if(N.note_type == "grant")
-			if(!N.grant)
+		var/obj/item/paper/research_notes/notes = B
+		if(notes.note_type == "grant")
+			if(!notes.grant)
 				return
-			chemical_data.update_credits(N.grant)
-			visible_message(SPAN_NOTICE("[user] scans the [N.name] on the [src], collecting the [N.grant] research credits."))
-			N.grant = 0
-			qdel(N)
+			chemical_data.update_credits(notes.grant)
+			visible_message(SPAN_NOTICE("[user] scans the [notes.name] on the [src], collecting the [notes.grant] research credits."))
+			notes.grant = 0
+			qdel(notes)
 			return
 	//Saving to database
 	if(istype(B, /obj/item/paper))
-		var/obj/item/paper/P = B
-		var/response = alert(usr,"Do you want to save [P.name] to the research database?","[src]","Yes","No")
+		var/obj/item/paper/current_paper = B
+		var/response = alert(usr,"Do you want to save [current_paper.name] to the research database?","[src]","Yes","No")
 		if(response != "Yes")
 			return
 		response = alert(usr,"Use existing or new category?","[src]","Existing","New")
@@ -50,7 +50,7 @@
 			response = input(usr,"Please enter the category of the paper:")
 		if(!response)
 			response = "Misc."
-		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
+		var/obj/item/paper/research_report/CR = current_paper.convert_to_chem_report()
 		chemical_data.save_document(CR, response, CR.name)
 		return
 	//Clearance Updating
@@ -187,19 +187,19 @@
 			var/purchase_cost = base_purchase_cost + purchase_tier * 2
 			if(purchase_cost <= chemical_data.rsc_credits)
 				chemical_data.update_credits(purchase_cost * -1)
-				var/obj/item/paper/research_notes/unique/N
+				var/obj/item/paper/research_notes/unique/notes
 				switch(purchase_tier)
 					if(1)
-						N = new /obj/item/paper/research_notes/unique/tier_one/(photocopier.loc)
+						notes = new /obj/item/paper/research_notes/unique/tier_one/(photocopier.loc)
 					if(2)
-						N = new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)
+						notes = new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)
 					if(3)
-						N = new /obj/item/paper/research_notes/unique/tier_three/(photocopier.loc)
+						notes = new /obj/item/paper/research_notes/unique/tier_three/(photocopier.loc)
 					if(4)
-						N = new /obj/item/paper/research_notes/unique/tier_four/(photocopier.loc)
+						notes = new /obj/item/paper/research_notes/unique/tier_four/(photocopier.loc)
 					else
-						N = new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
-				visible_message(SPAN_NOTICE("Research report for [N.data.name] has been purchased."))
+						notes = new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
+				visible_message(SPAN_NOTICE("Research report for [notes.data.name] has been purchased."))
 		if("publish_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]

@@ -13,8 +13,8 @@
 /obj/structure/machinery/constructable_frame/porta_comms/update_icon()
 	..()
 	var/is_wired = 0
-	for(var/obj/item/I in contents)
-		if(iswire(I))
+	for(var/obj/item/current_item in contents)
+		if(iswire(current_item))
 			is_wired = 1
 			break
 	if(components)
@@ -31,12 +31,12 @@
 /obj/structure/machinery/constructable_frame/porta_comms/ex_act(severity)
 	return
 
-/obj/structure/machinery/constructable_frame/porta_comms/attackby(obj/item/I, mob/user)
-	var/area/A = get_area(src)
-	if (!A.can_build_special)
+/obj/structure/machinery/constructable_frame/porta_comms/attackby(obj/item/current_item, mob/user)
+	var/area/current_area = get_area(src)
+	if (!current_area.can_build_special)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
-	if(istype(I, /obj/item/circuitboard/machine) && !istype(I, /obj/item/circuitboard/machine/telecomms/relay/tower))
+	if(istype(current_item, /obj/item/circuitboard/machine) && !istype(current_item, /obj/item/circuitboard/machine/telecomms/relay/tower))
 		return
 	..()
 

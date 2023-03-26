@@ -130,24 +130,24 @@
 		if(istype(source)) //Only report power alarms on the z-level where the source is located.
 			var/list/cameras = list()
 			for (var/area/RA in related)
-				for (var/obj/structure/machinery/camera/C in RA)
-					cameras += C
+				for (var/obj/structure/machinery/camera/current_camera in RA)
+					cameras += current_camera
 					if(state == 1)
-						C.network.Remove(CAMERA_NET_POWER_ALARMS)
+						current_camera.network.Remove(CAMERA_NET_POWER_ALARMS)
 					else
-						C.network.Add(CAMERA_NET_POWER_ALARMS)
+						current_camera.network.Add(CAMERA_NET_POWER_ALARMS)
 			for (var/mob/living/silicon/aiPlayer in ai_mob_list)
 				if(aiPlayer.z == source.z)
 					if (state == 1)
 						aiPlayer.cancelAlarm("Power", src, source)
 					else
 						aiPlayer.triggerAlarm("Power", src, cameras, source)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
-				if(a.z == source.z)
+			for(var/obj/structure/machinery/computer/station_alert/alert in machines)
+				if(alert.z == source.z)
 					if(state == 1)
-						a.cancelAlarm("Power", src, source)
+						alert.cancelAlarm("Power", src, source)
 					else
-						a.triggerAlarm("Power", src, cameras, source)
+						alert.triggerAlarm("Power", src, cameras, source)
 	return
 
 /area/proc/atmosalert(danger_level)
@@ -167,24 +167,24 @@
 
 		if (danger_level < 2 && atmosalm >= 2)
 			for(var/area/RA in related)
-				for(var/obj/structure/machinery/camera/C in RA)
-					C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
+				for(var/obj/structure/machinery/camera/current_camera in RA)
+					current_camera.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.cancelAlarm("Atmosphere", src, src)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
-				a.cancelAlarm("Atmosphere", src, src)
+			for(var/obj/structure/machinery/computer/station_alert/alert in machines)
+				alert.cancelAlarm("Atmosphere", src, src)
 
 		if (danger_level >= 2 && atmosalm < 2)
 			var/list/cameras = list()
 			for(var/area/RA in related)
 				//updateicon()
-				for(var/obj/structure/machinery/camera/C in RA)
-					cameras += C
-					C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
+				for(var/obj/structure/machinery/camera/current_camera in RA)
+					cameras += current_camera
+					current_camera.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
-			for(var/obj/structure/machinery/computer/station_alert/a in machines)
-				a.triggerAlarm("Atmosphere", src, cameras, src)
+			for(var/obj/structure/machinery/computer/station_alert/alert in machines)
+				alert.triggerAlarm("Atmosphere", src, cameras, src)
 			air_doors_close()
 
 		atmosalm = danger_level
@@ -198,22 +198,22 @@
 /area/proc/air_doors_close()
 	if(!src.master.air_doors_activated)
 		src.master.air_doors_activated = 1
-		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
-			if(!E:blocked)
-				if(E.operating)
-					E:nextstate = OPEN
-				else if(!E.density)
-					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+		for(var/obj/structure/machinery/door/firedoor/firedoor in src.master.all_doors)
+			if(!firedoor:blocked)
+				if(firedoor.operating)
+					firedoor:nextstate = OPEN
+				else if(!firedoor.density)
+					INVOKE_ASYNC(firedoor, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /area/proc/air_doors_open()
 	if(src.master.air_doors_activated)
 		src.master.air_doors_activated = 0
-		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
-			if(!E:blocked)
-				if(E.operating)
-					E:nextstate = OPEN
-				else if(E.density)
-					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+		for(var/obj/structure/machinery/door/firedoor/firedoor in src.master.all_doors)
+			if(!firedoor:blocked)
+				if(firedoor.operating)
+					firedoor:nextstate = OPEN
+				else if(firedoor.density)
+					INVOKE_ASYNC(firedoor, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 
 /area/proc/firealert()
@@ -224,21 +224,21 @@
 		master.flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
 		updateicon()
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
-			if(!D.blocked)
-				if(D.operating)
-					D.nextstate = CLOSED
-				else if(!D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+		for(var/obj/structure/machinery/door/firedoor/door in all_doors)
+			if(!door.blocked)
+				if(door.operating)
+					door.nextstate = CLOSED
+				else if(!door.density)
+					INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 		var/list/cameras = list()
 		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
-				cameras.Add(C)
-				C.network.Add(CAMERA_NET_FIRE_ALARMS)
+			for (var/obj/structure/machinery/camera/current_camera in RA)
+				cameras.Add(current_camera)
+				current_camera.network.Add(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
-			a.triggerAlarm("Fire", src, cameras, src)
+		for (var/obj/structure/machinery/computer/station_alert/alert in machines)
+			alert.triggerAlarm("Fire", src, cameras, src)
 
 /area/proc/firereset()
 	if(flags_alarm_state & ALARM_WARNING_FIRE)
@@ -246,19 +246,19 @@
 		master.flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		updateicon()
-		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
-			if(!D.blocked)
-				if(D.operating)
-					D.nextstate = OPEN
-				else if(D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+		for(var/obj/structure/machinery/door/firedoor/door in all_doors)
+			if(!door.blocked)
+				if(door.operating)
+					door.nextstate = OPEN
+				else if(door.density)
+					INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		for(var/area/RA in related)
-			for (var/obj/structure/machinery/camera/C in RA)
-				C.network.Remove(CAMERA_NET_FIRE_ALARMS)
+			for (var/obj/structure/machinery/camera/current_camera in RA)
+				current_camera.network.Remove(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
-		for (var/obj/structure/machinery/computer/station_alert/a in machines)
-			a.cancelAlarm("Fire", src, src)
+		for (var/obj/structure/machinery/computer/station_alert/alert in machines)
+			alert.cancelAlarm("Fire", src, src)
 
 /area/proc/readyalert()
 	if(!(flags_alarm_state & ALARM_WARNING_READY))
@@ -339,9 +339,9 @@
 // called when power status changes
 /area/proc/power_change()
 	for(var/area/RA in related)
-		for(var/obj/structure/machinery/M in RA) // for each machine in the area
-			if(!M.gc_destroyed)
-				M.power_change() // reverify power status (to update icons etc.)
+		for(var/obj/structure/machinery/current_machine in RA) // for each machine in the area
+			if(!current_machine.gc_destroyed)
+				current_machine.power_change() // reverify power status (to update icons etc.)
 		if(flags_alarm_state)
 			RA.updateicon()
 
@@ -380,11 +380,11 @@
 	if(ismob(A))
 		if(!OldLoc)
 			return
-		var/mob/M = A
+		var/mob/current_machine = A
 		var/area/old_area = get_area(OldLoc)
 		if(old_area.master == master)
 			return
-		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
+		current_machine?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
 
@@ -395,16 +395,16 @@
 		var/mob/exiting_mob = A
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/current_machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(M.calculate_current_power_usage(), M.power_channel)
-		M.power_change()
+	if(istype(current_machine))
+		use_power(current_machine.calculate_current_power_usage(), current_machine.power_channel)
+		current_machine.power_change()
 
-/area/proc/remove_machine(obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/current_machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(-M.calculate_current_power_usage(), M.power_channel)
+	if(istype(current_machine))
+		use_power(-current_machine.calculate_current_power_usage(), current_machine.power_channel)
 
 /area/proc/gravitychange(gravitystate = 0, area/A)
 
@@ -414,33 +414,33 @@
 		SubA.has_gravity = gravitystate
 
 		if(gravitystate)
-			for(var/mob/living/carbon/human/M in SubA)
-				thunk(M)
+			for(var/mob/living/carbon/human/current_mob in SubA)
+				thunk(current_mob)
 			for(var/mob/M1 in SubA)
 				M1.make_floating(0)
 		else
-			for(var/mob/M in SubA)
-				if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
-					var/mob/living/carbon/human/H = src
-					if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
-						H.make_floating(0)
+			for(var/mob/current_mob in SubA)
+				if(current_mob.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
+					var/mob/living/carbon/human/human = src
+					if(istype(human.shoes, /obj/item/clothing/shoes/magboots) && (human.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
+						human.make_floating(0)
 					else
-						H.make_floating(1)
+						human.make_floating(1)
 				else
-					M.make_floating(1)
+					current_mob.make_floating(1)
 
-/area/proc/thunk(M)
-	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
+/area/proc/thunk(current_mob)
+	if(istype(get_turf(current_mob), /turf/open/space)) // Can't fall onto nothing.
 		return
 
-	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		var/mob/living/carbon/human/H = M
-		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
+	if(istype(current_mob,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
+		var/mob/living/carbon/human/human = current_mob
+		if((istype(human.shoes, /obj/item/clothing/shoes/magboots) && (human.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
+		human.adjust_effect(5, STUN)
+		human.adjust_effect(5, WEAKEN)
 
-	to_chat(M, "Gravity!")
+	to_chat(current_mob, "Gravity!")
 
 
 

@@ -11,7 +11,7 @@
 
 // Holographic Items!
 
-/turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
+/turf/open/floor/holofloor/attackby(obj/item/current_item as obj, mob/user as mob)
 	return
 
 /turf/open/floor/holofloor/grass
@@ -60,20 +60,20 @@
 	return // HOLOTABLE DOES NOT GIVE A FUCK
 
 
-/obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
-		var/obj/item/grab/G = W
-		if(ismob(G.grabbed_thing))
-			var/mob/M = G.grabbed_thing
+/obj/structure/surface/table/holotable/attackby(obj/item/current_item, mob/user)
+	if (istype(current_item, /obj/item/grab) && get_dist(src,user)<=1)
+		var/obj/item/grab/grabbing = current_item
+		if(ismob(grabbing.grabbed_thing))
+			var/mob/current_mob = grabbing.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
-			M.forceMove(loc)
-			M.apply_effect(5, WEAKEN)
-			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
+			current_mob.forceMove(loc)
+			current_mob.apply_effect(5, WEAKEN)
+			user.visible_message(SPAN_DANGER("[user] puts [current_mob] on the table."))
 		return
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if (HAS_TRAIT(current_item, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
@@ -138,45 +138,45 @@
 	var/side = ""
 	var/id = ""
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
-		var/obj/item/grab/G = W
-		if(ismob(G.grabbed_thing))
-			var/mob/M = G.grabbed_thing
+/obj/structure/holohoop/attackby(obj/item/current_item as obj, mob/user as mob)
+	if (istype(current_item, /obj/item/grab) && get_dist(src,user)<=1)
+		var/obj/item/grab/grabbing = current_item
+		if(ismob(grabbing.grabbed_thing))
+			var/mob/current_mob = grabbing.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
-			M.forceMove(loc)
-			M.apply_effect(5, WEAKEN)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
-				if(X.id == id)
-					X.score(side, 3)// 3 points for dunking a mob
+			current_mob.forceMove(loc)
+			current_mob.apply_effect(5, WEAKEN)
+			for(var/obj/structure/machinery/scoreboard/scoreboard in machines)
+				if(scoreboard.id == id)
+					scoreboard.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
+			visible_message(SPAN_DANGER("[user] dunks [current_mob] into the [src]!"))
 		return
-	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		user.drop_inv_item_to_loc(W, loc)
-		for(var/obj/structure/machinery/scoreboard/X in machines)
-			if(X.id == id)
-				X.score(side)
+	else if (istype(current_item, /obj/item) && get_dist(src,user)<2)
+		user.drop_inv_item_to_loc(current_item, loc)
+		for(var/obj/structure/machinery/scoreboard/scoreboard in machines)
+			if(scoreboard.id == id)
+				scoreboard.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
+		visible_message(SPAN_NOTICE("[user] dunks [current_item] into the [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		var/obj/item/current_item = mover
+		if(istype(current_item, /obj/item/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
-			I.forceMove(src.loc)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
-				if(X.id == id)
-					X.score(side)
+			current_item.forceMove(src.loc)
+			for(var/obj/structure/machinery/scoreboard/scoreboard in machines)
+				if(scoreboard.id == id)
+					scoreboard.score(side)
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
+			visible_message(SPAN_NOTICE("Swish! \the [current_item] lands in \the [src]."), null, null, 3)
 		else
-			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
+			visible_message(SPAN_DANGER("\the [current_item] bounces off of \the [src]'s rim!"), null, null, 3)
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
@@ -201,7 +201,7 @@
 	to_chat(user, "The station AI is not to interact with these devices!")
 	return
 
-/obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/readybutton/attackby(obj/item/current_item as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/structure/machinery/readybutton/attack_hand(mob/user as mob)
@@ -241,12 +241,12 @@
 
 	eventstarted = 1
 
-	for(var/obj/structure/holowindow/W in currentarea)
-		currentarea -= W
-		qdel(W)
+	for(var/obj/structure/holowindow/window in currentarea)
+		currentarea -= window
+		qdel(window)
 
-	for(var/mob/M in currentarea)
-		to_chat(M, "FIGHT!")
+	for(var/mob/current_mob in currentarea)
+		to_chat(current_mob, "FIGHT!")
 
 //Holorack
 
@@ -259,7 +259,7 @@
 /obj/structure/surface/rack/holorack/attack_hand(mob/user as mob)
 	return
 
-/obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+/obj/structure/surface/rack/holorack/attackby(obj/item/current_item as obj, mob/user as mob)
+	if (HAS_TRAIT(current_item, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

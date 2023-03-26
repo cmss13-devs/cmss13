@@ -7,7 +7,7 @@
 	entry_timer = 2 SECONDS
 	skilllock = SKILL_SURGERY_NOVICE
 
-	var/list/surgery_todo_list = list() //a list of surgeries to do.
+	var/list/surgery_todo_list = list() // a list of surgeries to do.
 	var/surgery = 0 //Are we operating or no? 0 for no, 1 for yes
 	var/surgery_mod = 1 //What multiple to increase the surgery timer? This is used for any non-WO maps or events that are done.
 	var/obj/item/reagent_container/blood/OMinus/blood_pack = new()

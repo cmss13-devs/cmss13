@@ -24,8 +24,8 @@
 	. = ..()
 	set_codes()
 
-	var/turf/T = loc
-	hide(T.intact_tile)
+	var/turf/current_turf = loc
+	hide(current_turf.intact_tile)
 
 	SSradio.add_object(src, freq, RADIO_NAVBEACONS)
 
@@ -102,8 +102,8 @@
 
 
 /obj/structure/machinery/navbeacon/attackby(obj/item/I, mob/user)
-	var/turf/T = loc
-	if(T.intact_tile)
+	var/turf/current_turf = loc
+	if(current_turf.intact_tile)
 		return // prevent intraction when T-scanner revealed
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
@@ -132,8 +132,8 @@
 	interact(user, 0)
 
 /obj/structure/machinery/navbeacon/interact(mob/user, ai = 0)
-	var/turf/T = loc
-	if(T.intact_tile)
+	var/turf/current_turf = loc
+	if(current_turf.intact_tile)
 		return // prevent intraction when T-scanner revealed
 
 	if(!open && !ai) // can't alter controls if not open, unless you're an AI

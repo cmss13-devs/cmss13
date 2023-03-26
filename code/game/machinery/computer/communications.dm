@@ -74,26 +74,26 @@
 		if("login")
 			if(isRemoteControlling(usr))
 				return
-			var/mob/living/carbon/human/C = usr
-			var/obj/item/card/id/I = C.get_active_hand()
-			if(istype(I))
-				if(check_access(I)) authenticated = 1
-				if(ACCESS_MARINE_SENIOR in I.access)
+			var/mob/living/carbon/human/current_human = usr
+			var/obj/item/card/id/current_id = current_human.get_active_hand()
+			if(istype(current_id))
+				if(check_access(current_id)) authenticated = 1
+				if(ACCESS_MARINE_SENIOR in current_id.access)
 					authenticated = 2
 			else
-				I = C.wear_id
-				if(istype(I))
-					if(check_access(I)) authenticated = 1
-					if(ACCESS_MARINE_SENIOR in I.access)
+				current_id = current_human.wear_id
+				if(istype(current_id))
+					if(check_access(current_id)) authenticated = 1
+					if(ACCESS_MARINE_SENIOR in current_id.access)
 						authenticated = 2
 		if("logout")
 			authenticated = 0
 
 		if("swipeidseclevel")
-			var/mob/M = usr
-			var/obj/item/card/id/I = M.get_active_hand()
-			if(istype(I))
-				if((ACCESS_MARINE_SENIOR in I.access) || (ACCESS_MARINE_COMMAND in I.access)) //Let heads change the alert level.
+			var/mob/current_mob = usr
+			var/obj/item/card/id/current_id = current_mob.get_active_hand()
+			if(istype(current_id))
+				if((ACCESS_MARINE_SENIOR in current_id.access) || (ACCESS_MARINE_COMMAND in current_id.access)) //Let heads change the alert level.
 					switch(tmp_alertlevel)
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
@@ -194,9 +194,9 @@
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/current_client in GLOB.admins)
+					if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
+						current_client << 'sound/effects/sos-morse-code.ogg'
 				message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
@@ -228,9 +228,9 @@
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 					return FALSE
 
-				for(var/client/C in GLOB.admins)
-					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-						C << 'sound/effects/sos-morse-code.ogg'
+				for(var/client/current_client in GLOB.admins)
+					if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
+						current_client << 'sound/effects/sos-morse-code.ogg'
 				message_admins("[key_name(usr)] has requested Self-Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time

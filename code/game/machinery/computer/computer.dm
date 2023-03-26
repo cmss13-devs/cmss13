@@ -101,22 +101,22 @@
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
-			var/obj/item/circuitboard/computer/M = new circuit( A )
-			A.circuit = M
-			A.anchored = TRUE
-			for (var/obj/C in src)
-				C.forceMove(loc)
+			var/obj/structure/computerframe/frame = new /obj/structure/computerframe(src.loc)
+			var/obj/item/circuitboard/computer/computer = new circuit(frame)
+			frame.circuit = computer
+			frame.anchored = TRUE
+			for (var/obj/current_obj in src)
+				current_obj.forceMove(loc)
 			if (src.stat & BROKEN)
 				to_chat(user, SPAN_NOTICE("The broken glass falls out."))
-				new /obj/item/shard( src.loc )
-				A.state = 3
-				A.icon_state = "3"
+				new /obj/item/shard(src.loc)
+				frame.state = 3
+				frame.icon_state = "3"
 			else
 				to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
-				A.state = 4
-				A.icon_state = "4"
-			M.disassemble(src)
+				frame.state = 4
+				frame.icon_state = "4"
+			computer.disassemble(src)
 			deconstruct()
 	else
 		if(isxeno(user))

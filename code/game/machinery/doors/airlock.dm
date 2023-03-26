@@ -112,16 +112,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(masterkey_resist)
 		. += SPAN_INFO("It has been reinforced against breaching attempts.")
 
-/obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
+/obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/current_mob)
 	if(!dam || unacidable)
 		return FALSE
 
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
-		if(M && istype(M))
-			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
-			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
+		if(current_mob && istype(current_mob))
+			current_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
+			SEND_SIGNAL(current_mob, COMSIG_MOB_DESTROY_AIRLOCK, src)
 		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
 		deconstruct(FALSE)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
@@ -553,8 +553,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
-			var/obj/item/clothing/mask/cigarette/L = C
-			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
+			var/obj/item/clothing/mask/cigarette/cig = C
+			cig.light(SPAN_NOTICE("[user] lights their [cig] on an electrical arc from the [src]"))
 			return
 
 	if(!isRemoteControlling(user))
@@ -582,20 +582,20 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return
 
 	if((iswelder(C) && !operating && density))
-		var/obj/item/tool/weldingtool/W = C
+		var/obj/item/tool/weldingtool/welder = C
 		var/weldtime = 50
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
 			weldtime = 70
 
 		if(not_weldable)
-			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than \the [W] to weld!"))
+			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than \the [welder] to weld!"))
 			return
-		if(!W.isOn())
-			to_chat(user, SPAN_WARNING("\The [W] needs to be on!"))
+		if(!welder.isOn())
+			to_chat(user, SPAN_WARNING("\The [welder] needs to be on!"))
 			return
-		if(W.remove_fuel(0,user))
-			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."), \
-			SPAN_NOTICE("You start working on \the [src] with \the [W]."), \
+		if(welder.remove_fuel(0,user))
+			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [welder]."), \
+			SPAN_NOTICE("You start working on \the [src] with \the [welder]."), \
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
@@ -623,10 +623,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return attack_hand(user)
 
 	else if(isgun(C))
-		var/obj/item/weapon/gun/G = C
-		for(var/slot in G.attachments)
-			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))
-				var/obj/item/attachable/bayonet/a_bayonet = G.attachments[slot]
+		var/obj/item/weapon/gun/gun = C
+		for(var/slot in gun.attachments)
+			if(istype(gun.attachments[slot], /obj/item/attachable/bayonet))
+				var/obj/item/attachable/bayonet/a_bayonet = gun.attachments[slot]
 				if(arePowerSystemsOn())
 					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 				else if(locked)
@@ -752,22 +752,22 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				return
 
 	for(var/turf/turf in locs)
-		for(var/mob/living/M in turf)
-			if(isborg(M))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			else if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+		for(var/mob/living/current_mob in turf)
+			if(isborg(current_mob))
+				current_mob.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+			else if(HAS_TRAIT(current_mob, TRAIT_SUPER_STRONG))
+				current_mob.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.set_effect(5, STUN)
-				M.set_effect(5, WEAKEN)
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					if(H.pain.feels_pain)
-						M.emote("pain")
+				current_mob.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+				current_mob.set_effect(5, STUN)
+				current_mob.set_effect(5, WEAKEN)
+				if(ishuman(current_mob))
+					var/mob/living/carbon/human/human = current_mob
+					if(human.pain.feels_pain)
+						current_mob.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
-				location.add_mob_blood(M)
+				location.add_mob_blood(current_mob)
 
 	break_resin_objects()
 
@@ -808,22 +808,22 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	. = ..()
 
 	if(autoname)
-		var/area/A = get_area(loc)
-		name = A.name
+		var/area/current_area = get_area(loc)
+		name = current_area.name
 
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/machinery/door/airlock/LateInitialize()
 	. = ..()
 	if(closeOtherId != null)
-		for(var/obj/structure/machinery/door/airlock/A in machines)
-			if(A.closeOtherId == closeOtherId && A != src)
-				closeOther = A
+		for(var/obj/structure/machinery/door/airlock/airlock in machines)
+			if(airlock.closeOtherId == closeOtherId && airlock != src)
+				closeOther = airlock
 				break
 	// fix smoothing
-	for(var/turf/closed/wall/W in orange(1))
-		W.update_connections()
-		W.update_icon()
+	for(var/turf/closed/wall/wall in orange(1))
+		wall.update_connections()
+		wall.update_icon()
 
 /obj/structure/machinery/door/airlock/proc/prison_open()
 	unlock()
@@ -831,18 +831,18 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	lock()
 	return
 
-/obj/structure/machinery/door/airlock/allowed(mob/M)
+/obj/structure/machinery/door/airlock/allowed(mob/current_mob)
 	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
-	return ..(M)
+	return ..(current_mob)
 
 /obj/structure/machinery/door/airlock/proc/break_resin_objects()
 	var/list/things_to_shmush = locs
-	for(var/turf/i in things_to_shmush)
-		things_to_shmush |= i.contents
+	for(var/turf/current_turf in things_to_shmush)
+		things_to_shmush |= current_turf.contents
 	for(var/x in things_to_shmush)
-		for(var/i in resin_door_shmushereds)
-			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+		for(var/current_turf in resin_door_shmushereds)
+			if(istype(x,current_turf)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
 				playsound(loc, "alien_resin_break", 25)
 				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
 				if(isturf(x))

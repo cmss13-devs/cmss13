@@ -13,11 +13,11 @@
 		if(user.temp_drop_inv_item(O))
 			var/datum/seed/new_seed_type
 			if(istype(O, /obj/item/grown))
-				var/obj/item/grown/F = O
-				new_seed_type = seed_types[F.plantname]
+				var/obj/item/grown/plant = O
+				new_seed_type = seed_types[plant.plantname]
 			else
-				var/obj/item/reagent_container/food/snacks/grown/F = O
-				new_seed_type = seed_types[F.plantname]
+				var/obj/item/reagent_container/food/snacks/grown/plant = O
+				new_seed_type = seed_types[plant.plantname]
 
 			if(new_seed_type)
 				to_chat(user, SPAN_NOTICE("You extract some seeds from [O]."))
@@ -31,7 +31,7 @@
 			qdel(O)
 	//Grass.
 	else if(istype(O, /obj/item/stack/tile/grass))
-		var/obj/item/stack/tile/grass/S = O
-		if (S.use(1))
+		var/obj/item/stack/tile/grass/grass = O
+		if (grass.use(1))
 			to_chat(user, SPAN_NOTICE("You extract some seeds from the grass tile."))
 			new /obj/item/seeds/grassseed(loc)

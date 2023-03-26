@@ -29,12 +29,12 @@
 			to_chat(user, "There is already a power cell installed.")
 			return
 
-		var/obj/item/cell/C = I
+		var/obj/item/cell/power_cell = I
 
-		if(user.drop_inv_item_to_loc(C, src))
-			C.add_fingerprint(user)
-			cell = C
-			user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and inserts [C]."), SPAN_NOTICE("You open the panel on [src] and insert [C]."))
+		if(user.drop_inv_item_to_loc(power_cell, src))
+			power_cell.add_fingerprint(user)
+			cell = power_cell
+			user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and inserts [power_cell]."), SPAN_NOTICE("You open the panel on [src] and insert [power_cell]."))
 		return
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))

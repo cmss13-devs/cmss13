@@ -123,23 +123,23 @@
 			var/role = "unknown"
 			var/act_sl = ""
 			var/area_name = "<b>???</b>"
-			var/mob/living/carbon/human/H
+			var/mob/living/carbon/human/current_human
 			if(ishuman(X))
-				H = X
-				mob_name = H.real_name
-				var/area/A = get_area(H)
-				var/turf/M_turf = get_turf(H)
-				if(A)
-					area_name = sanitize_area(A.name)
+				current_human = X
+				mob_name = current_human.real_name
+				var/area/current_area = get_area(current_human)
+				var/turf/M_turf = get_turf(current_human)
+				if(current_area)
+					area_name = sanitize_area(current_area.name)
 
-				if(H.job)
-					role = H.job
-				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
+				if(current_human.job)
+					role = current_human.job
+				else if(istype(current_human.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
+					var/obj/item/card/id/ID = current_human.wear_id //we use their ID to get their role.
 					if(ID.rank)
 						role = ID.rank
 
-				switch(H.stat)
+				switch(current_human.stat)
 					if(CONSCIOUS)
 						mob_state = "Conscious"
 						living_count++
@@ -153,15 +153,15 @@
 					almayer_count++
 					continue
 
-				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+				if(!istype(current_human.head, /obj/item/clothing/head/helmet/marine))
 					helmetless_count++
 					continue
 
-				if(!H.key || !H.client)
+				if(!current_human.key || !current_human.client)
 					SSD_count++
 					continue
 
-			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[current_human]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 			switch(role)
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
@@ -219,10 +219,10 @@
 
 			var/signed = null
 			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
+				var/mob/living/carbon/human/current_human = usr
+				var/obj/item/card/id/id = current_human.wear_id
 				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, current_human.gender)
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
@@ -247,9 +247,9 @@
 
 		if("pick_squad")
 			var/list/squad_list = list()
-			for(var/datum/squad/S in RoleAuthority.squads)
-				if(S.active && S.faction == faction)
-					squad_list += S.name
+			for(var/datum/squad/current_squad in RoleAuthority.squads)
+				if(current_squad.active && current_squad.faction == faction)
+					squad_list += current_squad.name
 
 			var/name_sel = tgui_input_list(usr, "Which squad would you like to look at?", "Pick Squad", squad_list)
 			if(!name_sel)
@@ -310,10 +310,10 @@
 		user.reset_view(null)
 
 //returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
+/obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/current_human)
 	if(current_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
+		if(current_human && istype(current_human) && istype(current_human.head, /obj/item/clothing/head/helmet/marine))
+			var/obj/item/clothing/head/helmet/marine/helm = current_human.head
 			return helm.camera
 
 /obj/structure/machinery/computer/groundside_operations/upp

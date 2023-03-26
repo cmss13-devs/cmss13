@@ -75,11 +75,11 @@
 	deployed_turret.forceMove(loc)
 	icon_state = "sentry_system_deployed"
 
-	for(var/mob/M in deployed_turret.loc)
+	for(var/mob/current_mob in deployed_turret.loc)
 		if(deployed_turret.loc == src.loc)
-			step(M, deployed_turret.dir)
+			step(current_mob, deployed_turret.dir)
 		else
-			step(M, get_dir(src,deployed_turret))
+			step(current_mob, get_dir(src,deployed_turret))
 
 	deployed_turret.setDir(dir)
 	deployed_turret.pixel_x = 0

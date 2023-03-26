@@ -55,11 +55,11 @@
 				return
 			else
 				// insert cell
-				var/obj/item/cell/C = usr.get_active_hand()
-				if(istype(C))
-					if(user.drop_inv_item_to_loc(C, src))
-						cell = C
-						C.add_fingerprint(usr)
+				var/obj/item/cell/power_cell = usr.get_active_hand()
+				if(istype(power_cell))
+					if(user.drop_inv_item_to_loc(power_cell, src))
+						cell = power_cell
+						power_cell.add_fingerprint(usr)
 
 						user.visible_message(SPAN_NOTICE("[user] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 		else
@@ -141,14 +141,14 @@
 
 			if("cellinstall")
 				if(open && !cell)
-					var/obj/item/cell/C = usr.get_active_hand()
-					if(istype(C))
+					var/obj/item/cell/power_cell = usr.get_active_hand()
+					if(istype(power_cell))
 						if(usr.drop_held_item())
-							cell = C
-							C.forceMove(src)
-							C.add_fingerprint(usr)
+							cell = power_cell
+							power_cell.forceMove(src)
+							power_cell.add_fingerprint(usr)
 
-							usr.visible_message(SPAN_NOTICE("[usr] inserts \the [C] into \the [src]."), SPAN_NOTICE("You insert \the [C] into \the [src]."))
+							usr.visible_message(SPAN_NOTICE("[usr] inserts \the [power_cell] into \the [src]."), SPAN_NOTICE("You insert \the [power_cell] into \the [src]."))
 
 		updateDialog()
 	else
@@ -161,10 +161,10 @@
 /obj/structure/machinery/space_heater/process()
 	if(on)
 		if(isturf(loc) && cell && cell.charge)
-			for(var/mob/living/carbon/human/H in range(2, src))
-				if(H.bodytemperature < T20C)
-					H.bodytemperature += min(round(T20C - H.bodytemperature)*0.7, 25)
-					H.recalculate_move_delay = TRUE
+			for(var/mob/living/carbon/human/human in range(2, src))
+				if(human.bodytemperature < T20C)
+					human.bodytemperature += min(round(T20C - human.bodytemperature)*0.7, 25)
+					human.recalculate_move_delay = TRUE
 
 
 			cell.use(50*CELLRATE)

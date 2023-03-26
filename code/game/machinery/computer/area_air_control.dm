@@ -158,16 +158,16 @@
 
 	var/found = 0
 
-	var/turf/T = get_turf(src)
-	if(!T.loc) return
-	var/area/A = T.loc
-	if (A.master)
-		A = A.master
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf.loc) return
+	var/area/current_area = current_turf.loc
+	if (current_area.master)
+		current_area = current_area.master
 	for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in machines )
 		var/turf/T2 = get_turf(scrubber)
 		if(T2 && T2.loc)
 			var/area/A2 = T2.loc
-			if(istype(A2) && A2.master && A2.master == A )
+			if(istype(A2) && A2.master && A2.master == current_area )
 				connectedscrubbers += scrubber
 				found = 1
 

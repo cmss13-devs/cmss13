@@ -74,7 +74,7 @@ Additional game mode variables.
 	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types = list() //What type of monkeys do we spawn
 	var/latejoin_tally = 0 //How many people latejoined Marines
-	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA // A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -118,9 +118,9 @@ Additional game mode variables.
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
 	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
-		if(J.scaled)
-			J.set_spawn_positions(marine_starting_num)
+		var/datum/job/current_job = RoleAuthority.roles_by_name[i]
+		if(current_job.scaled)
+			current_job.set_spawn_positions(marine_starting_num)
 
 
 //===================================================\\
@@ -176,9 +176,9 @@ Additional game mode variables.
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/current_job = RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
+	if(!current_job)
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
@@ -195,9 +195,9 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(current_job.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
-	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
+	if(current_job.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
@@ -232,13 +232,13 @@ Additional game mode variables.
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/current_job = RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!J)
+	if(!current_job)
 		qdel(new_predator)
 		return
 
-	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	RoleAuthority.equip_role(new_predator, current_job, new_predator.loc)
 
 	return new_predator
 
@@ -259,11 +259,11 @@ Additional game mode variables.
 		return
 
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
-	for(var/datum/mind/A in possible_queens)
-		var/mob/living/original = A.current
-		var/client/client = GLOB.directory[A.ckey]
+	for(var/datum/mind/current_mind in possible_queens)
+		var/mob/living/original = current_mind.current
+		var/client/client = GLOB.directory[current_mind.ckey]
 		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
-			LAZYREMOVE(possible_queens, A)
+			LAZYREMOVE(possible_queens, current_mind)
 
 	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
 		for(var/hive in hives)
@@ -273,9 +273,9 @@ Additional game mode variables.
 				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
 				LAZYREMOVE(possible_xenomorphs, new_queen)
 
-	for(var/datum/mind/A in possible_xenomorphs)
-		if(A.roundstart_picked)
-			LAZYREMOVE(possible_xenomorphs, A)
+	for(var/datum/mind/current_mind in possible_xenomorphs)
+		if(current_mind.roundstart_picked)
+			LAZYREMOVE(possible_xenomorphs, current_mind)
 
 	for(var/hive in hives)
 		xenomorphs[GLOB.hive_datum[hive]] = list()
@@ -338,15 +338,15 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
+	for(var/mob/living/carbon/xenomorph/xenomorph in GLOB.living_xeno_list)
+		var/area/current_area = get_area(xenomorph)
+		if(is_admin_level(xenomorph.z) && (!current_area || !(current_area.flags_area & AREA_ALLOW_XENO_JOIN)) || xenomorph.aghosted)
 			continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && ((!islarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
-			if(!X.client)
-				available_xenos += X
+		if(istype(xenomorph) && ((!islarva(xenomorph) && (XENO_LEAVE_TIMER - xenomorph.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(xenomorph) && (XENO_LEAVE_TIMER_LARVA - xenomorph.away_timer < XENO_AVAILABLE_TIMER))))
+			if(!xenomorph.client)
+				available_xenos += xenomorph
 			else
-				available_xenos_non_ssd += X
+				available_xenos_non_ssd += xenomorph
 
 
 	var/datum/hive_status/hive
@@ -437,8 +437,8 @@ Additional game mode variables.
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))
-			var/mob/new_player/N = xeno_candidate
-			N.close_spawn_windows()
+			var/mob/new_player/player = xeno_candidate
+			player.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
@@ -521,16 +521,16 @@ Additional game mode variables.
 	if(ismind(xeno_candidate))
 		xeno_candidate_mind = xeno_candidate
 	else if(ismob(xeno_candidate))
-		var/mob/M = xeno_candidate
-		if(M.mind)
-			xeno_candidate_mind = M.mind
+		var/mob/mob_candidate = xeno_candidate
+		if(mob_candidate.mind)
+			xeno_candidate_mind = mob_candidate.mind
 		else
-			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
+			xeno_candidate_mind = new /datum/mind(mob_candidate.key, mob_candidate.ckey)
 			xeno_candidate_mind.active = TRUE
 			xeno_candidate_mind.current = new_xeno
 	else if(isclient(xeno_candidate))
-		var/client/C = xeno_candidate
-		xeno_candidate_mind = new /datum/mind(C.key, C.ckey)
+		var/client/client_candidate = xeno_candidate
+		xeno_candidate_mind = new /datum/mind(client_candidate.key, client_candidate.ckey)
 		xeno_candidate_mind.active = TRUE
 		xeno_candidate_mind.current = new_xeno
 	else
@@ -551,10 +551,10 @@ Additional game mode variables.
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord
-		var/mob/living/carbon/xenomorph/X = new_xeno
-		X.generate_name()
-		if(X.is_ventcrawling)
-			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
+		var/mob/living/carbon/xenomorph/xenomorph = new_xeno
+		xenomorph.generate_name()
+		if(xenomorph.is_ventcrawling)
+			xenomorph.update_pipe_icons(xenomorph.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
@@ -572,13 +572,13 @@ Additional game mode variables.
 
 	// Make the list pretty
 	var/list/spawn_list_map = list()
-	for(var/obj/effect/landmark/queen_spawn/T as anything in GLOB.queen_spawns)
-		var/area_name = get_area_name(T)
+	for(var/obj/effect/landmark/queen_spawn/spawn_point as anything in GLOB.queen_spawns)
+		var/area_name = get_area_name(spawn_point)
 		var/spawn_name = area_name
 		var/spawn_counter = 1
 		while(spawn_list_map[spawn_name])
 			spawn_name = "[area_name] [++spawn_counter]"
-		spawn_list_map[spawn_name] = T
+		spawn_list_map[spawn_name] = spawn_point
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 	if(!selected_spawn)

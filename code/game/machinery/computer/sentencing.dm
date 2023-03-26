@@ -39,12 +39,12 @@
 
 		// Current charges.
 		var/list/current_charges = list()
-		for(var/datum/law/L as anything in incident.charges)
+		for(var/datum/law/current_law as anything in incident.charges)
 			var/list/current_charge = list()
-			current_charge["name"] = L.name
-			current_charge["desc"] = L.desc
-			current_charge["special_punishment"] = L.special_punishment
-			current_charge["ref"] = "\ref[L]"
+			current_charge["name"] = current_law.name
+			current_charge["desc"] = current_law.desc
+			current_charge["special_punishment"] = current_law.special_punishment
+			current_charge["ref"] = "\ref[current_law]"
 			current_charges += list(current_charge)
 		data["current_charges"] = current_charges
 
@@ -85,13 +85,13 @@
 	var/list/data = list()
 
 	var/list/formatted_laws = list()
-	for(var/datum/law/L as anything in laws)
+	for(var/datum/law/current_law as anything in laws)
 		var/law = list()
-		law["name"] = L.name
-		law["desc"] = L.desc
-		law["brig_time"] = L.brig_time
-		law["special_punishment"] = L.special_punishment
-		law["ref"] = "\ref[L]"
+		law["name"] = current_law.name
+		law["desc"] = current_law.desc
+		law["brig_time"] = current_law.brig_time
+		law["special_punishment"] = current_law.special_punishment
+		law["ref"] = "\ref[current_law]"
 		formatted_laws += list(law)
 
 	data["label"] = label
@@ -120,14 +120,14 @@
 			current_menu = "incident_report"
 
 		if ("new_charge")
-			var/datum/law/L = locate(params["law"])
-			incident.charges += L
+			var/datum/law/current_law = locate(params["law"])
+			incident.charges += current_law
 			incident.refresh_sentences()
 			current_menu = "incident_report"
 
 		if ("remove_charge")
-			var/datum/law/L = locate(params["charge"])
-			incident.charges -= L
+			var/datum/law/current_law = locate(params["charge"])
+			incident.charges -= current_law
 			incident.refresh_sentences()
 
 		if ("set_suspect")
@@ -165,10 +165,10 @@
 			incident.witnesses -= locate(params["witness"])
 
 		if ("add_evidence")
-			var/obj/O = usr.get_active_hand()
-			if(istype(O))
-				incident.evidence += O
-				ping("\The [src] pings, \"Evidence [O.name] catalogued.\"")
+			var/obj/evidence = usr.get_active_hand()
+			if(istype(evidence))
+				incident.evidence += evidence
+				ping("\The [src] pings, \"Evidence [evidence.name] catalogued.\"")
 			else
 				to_chat(usr, SPAN_INFO("You need the evidence in your hand."))
 
@@ -197,9 +197,9 @@
 
 	// Update criminal record.
 	if (incident.criminal_gid)
-		for (var/datum/data/record/R in GLOB.data_core.security)
-			if (R.fields["id"] == incident.criminal_gid)
-				var/datum/data/record/found_record = R
+		for (var/datum/data/record/criminal_record in GLOB.data_core.security)
+			if (criminal_record.fields["id"] == incident.criminal_gid)
+				var/datum/data/record/found_record = criminal_record
 
 				found_record.fields["incident"] += "<BR> \
 												Crime: [incident.charges_to_string()].<BR> \
@@ -213,10 +213,10 @@
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	return TRUE
 
-/obj/structure/machinery/computer/sentencing/attackby(obj/item/O, mob/user)
-	if (istype(O, /obj/item/paper/incident))
+/obj/structure/machinery/computer/sentencing/attackby(obj/item/current_obj, mob/user)
+	if (istype(current_obj, /obj/item/paper/incident))
 		if (current_menu == "main")
-			var/obj/item/paper/incident/paper = O
+			var/obj/item/paper/incident/paper = current_obj
 			user.temp_drop_inv_item(paper)
 			paper.forceMove(loc)
 			incident = paper.incident
@@ -227,11 +227,11 @@
 		else
 			to_chat(user, SPAN_ALERT("A report is already in progress."))
 
-	else if (istype(O, /obj/item/paper/) && current_menu == "main")
+	else if (istype(current_obj, /obj/item/paper/) && current_menu == "main")
 		to_chat(user, SPAN_ALERT("This console only accepts authentic incident reports. Copies are invalid."))
 
-	else if (istype(O, /obj/item/grab))
-		var/obj/item/grab/grab = O
+	else if (istype(current_obj, /obj/item/grab))
+		var/obj/item/grab/grab = current_obj
 		if (ishuman(grab.grabbed_thing))
 			var/mob/living/carbon/human/human = grab.grabbed_thing
 			var/obj/item/card/id/id = human.get_idcard()

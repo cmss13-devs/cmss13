@@ -15,10 +15,10 @@
 /obj/structure/machinery/computer/emails/Initialize()
 	. = ..()
 	email_list = list()
-	var/list/L = typesof(email_type) - email_type
+	var/list/current_emails = typesof(email_type) - email_type
 	var/email_amt = rand(2,4)
 	for(var/i=1 to email_amt)
-		var/path = pick_n_take(L)
+		var/path = pick_n_take(current_emails)
 		email_list += new path()
 
 /obj/structure/machinery/computer/emails/Destroy()
@@ -38,11 +38,11 @@
 		if(1)
 			dat += "<font size=4>Inbox</font> | <A href='?src=\ref[src];close_inbox=1'>Close</A><HR>"
 			if(selected_mail)
-				var/datum/fluff_email/E = email_list[selected_mail]
-				dat += "<b>SUBJECT: [E.title]</b><HR>"
+				var/datum/fluff_email/email = email_list[selected_mail]
+				dat += "<b>SUBJECT: [email.title]</b><HR>"
 				dat += "<b>FROM:</b> NAME EXPUNGED<BR>"
 				dat += "<b>TO:</b> NAME EXPUNGED<BR><BR>"
-				dat += "[E.entry_text]<HR>"
+				dat += "[email.entry_text]<HR>"
 				dat += "<A href='?src=\ref[src];back=1'>Back</A>"
 			else
 				var/i = 0

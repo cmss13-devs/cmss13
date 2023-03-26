@@ -115,9 +115,9 @@
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
 	for(var/i in cameras)
-		var/obj/structure/machinery/camera/C = cameras[i]
+		var/obj/structure/machinery/camera/current_camera = cameras[i]
 		data["cameras"] += list(list(
-			name = C.c_tag,
+			name = current_camera.c_tag,
 		))
 
 	return data
@@ -229,18 +229,18 @@
 
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
-	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
-		if(!C.network)
+	var/list/camera_list = list()
+	for(var/obj/structure/machinery/camera/current_camera in cameranet.cameras)
+		if(!current_camera.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
-		if(!(islist(C.network)))
+		if(!(islist(current_camera.network)))
 			stack_trace("Camera in a cameranet has a non-list camera network")
 			continue
-		var/list/tempnetwork = C.network & network
+		var/list/tempnetwork = current_camera.network & network
 		if(tempnetwork.len)
-			D["[C.c_tag]"] = C
-	return D
+			camera_list["[current_camera.c_tag]"] = current_camera
+	return camera_list
 
 /obj/structure/machinery/computer/cameras/telescreen
 	name = "Telescreen"

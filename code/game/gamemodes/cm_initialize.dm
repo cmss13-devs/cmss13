@@ -866,10 +866,17 @@ Additional game mode variables.
 		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	/*if(joe_candidate.ckey in joes)
+	if(joe_candidate.ckey in joes)
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a working joe this round!"))
-		return*/
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
+		return
+
+	// council doesn't count towards this conditional.
+	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+		var/joe_max = J.total_positions
+		if(J.current_positions >= J.total_positions)
+			if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
+			return
 
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return

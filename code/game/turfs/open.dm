@@ -9,10 +9,6 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	/// used to determine if to give mobs that cross it overlay effects, set to the icon_state of the effect to add
-	var/grants_overlay_effect = FALSE
-	/// used in overlay effects logic, makes the thing "sink" into the turf
-	var/pixel_y_offset = 0
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
@@ -148,14 +144,6 @@
 				. += "Medium Roasted."
 			if(3)
 				. += "Well Done."
-
-/turf/open/Entered(atom/movable/A)
-	. = ..()
-	if(grants_overlay_effect)
-		if(ishuman(A))
-			var/datum/component/turf_overlay_effect/found_component = A.GetComponent(/datum/component/turf_overlay_effect)
-			if(!found_component || found_component.parent_turf.type != src.type)
-				A.AddComponent(/datum/component/turf_overlay_effect, src)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -400,14 +388,18 @@
 	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
-	grants_overlay_effect = "seashallow"
 	minimap_color = MINIMAP_WATER
-	pixel_y_offset = -8
 	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
+
+/turf/open/gm/river/Entered(atom/movable/A)
+	. = ..()
+	if(!covered)
+		if(ishuman(A))
+			A.AddComponent(/datum/component/turf_overlay_effect, src.type, -8)
 
 /turf/open/gm/river/update_icon()
 	..()
@@ -537,9 +529,12 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
-	grants_overlay_effect = "beach"
-	pixel_y_offset = -2
 	layer = UNDER_TURF_LAYER -0.03
+
+/turf/open/gm/coast/Entered(atom/movable/A)
+	. = ..()
+	if(ishuman(A))
+		A.AddComponent(/datum/component/turf_overlay_effect, src.type, -2)
 
 /turf/open/gm/riverdeep
 	name = "river"
@@ -547,14 +542,17 @@
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
-	grants_overlay_effect = "seadeep"
 	minimap_color = MINIMAP_WATER
-	pixel_y_offset = -16
 	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()
 	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
+
+/turf/open/gm/riverdeep/Entered(atom/movable/A)
+	. = ..()
+	if(ishuman(A))
+		A.AddComponent(/datum/component/turf_overlay_effect, src.type, -16)
 
 /turf/open/gm/river/no_overlay
 	no_overlay = TRUE

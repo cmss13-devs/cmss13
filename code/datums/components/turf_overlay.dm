@@ -2,37 +2,41 @@
 /datum/component/turf_overlay_effect
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/datum/effects/turf_overlay_effect/my_turf_overlay_effect
-	var/turf/open/parent_turf
+	var/turf_type //! Turf type the effect applies to
+	var/ttl = 1
 
-/datum/component/turf_overlay_effect/New(raw_args)
-	parent_turf = raw_args[2]
-	. = ..()
-
-/datum/component/turf_overlay_effect/Initialize(parent_turf_type)
+/datum/component/turf_overlay_effect/Initialize(turf_type, y_offset)
 	if(!istype(parent, /atom/movable))
 		return COMPONENT_INCOMPATIBLE
+	src.turf_type = turf_type
+	my_turf_overlay_effect = new(parent)
+	my_turf_overlay_effect.pixel_y_offset = y_offset
 
-	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(update_turf_overlays_effects))
+/datum/component/turf_overlay_effect/Destroy()
+	. = ..()
+	QDEL_NULL(my_turf_overlay_effect)
 
-/datum/component/turf_overlay_effect/proc/update_turf_overlays_effects()
+/datum/component/turf_overlay_effect/proc/update_turf_overlays_effects(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER
 
-	var/turf/T = get_turf(parent)
-	if(T.type != parent_turf.type)
-		UnregisterFromParent()
+	if(!ttl || forced)
 		qdel(src)
+		return
+	ttl = 0
+	my_turf_overlay_effect.update_icons(get_turf(parent))
 
 /datum/component/turf_overlay_effect/RegisterWithParent(datum/target)
 	. = ..()
-	my_turf_overlay_effect = new /datum/effects/turf_overlay_effect(parent, parent_turf)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update_turf_overlays_effects))
 
 /datum/component/turf_overlay_effect/UnregisterFromParent(datum/source, force)
 	. = ..()
-	my_turf_overlay_effect = qdel(my_turf_overlay_effect)
+	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 
-/datum/component/turf_overlay_effect/InheritComponent(thing, thing2, thing3)
+/datum/component/turf_overlay_effect/InheritComponent(datum/component/C, i_am_original, turf_type, y_offset)
 	. = ..()
 
-	parent_turf = thing3
-	my_turf_overlay_effect.update_icons(parent_turf)
-
+	ttl = 1
+	src.turf_type = turf_type
+	my_turf_overlay_effect.pixel_y_offset = y_offset
+	my_turf_overlay_effect.update_icons(get_turf(parent))

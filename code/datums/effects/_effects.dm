@@ -20,11 +20,12 @@
 	FLAGS FOR EFFECTS
 	They determine when an effect should be processed or deleted
 */
-#define DEL_ON_DEATH 1 //Delete the effect when something dies
-#define DEL_ON_LIVING 2 //Delete the effect when something is alive
-#define INF_DURATION 4 //An effect that lasts forever
-#define NO_PROCESS_ON_DEATH 8 //Don't process while the mob is dead
-#define DEL_ON_UNDEFIBBABLE 16 //Delete the effect when human mob is undefibbable
+#define DEL_ON_DEATH (1<<0) //Delete the effect when something dies
+#define DEL_ON_LIVING (1<<1) //Delete the effect when something is alive
+#define INF_DURATION (1<<2) //An effect that lasts forever
+#define NO_PROCESS_ON_DEATH (1<<3) //Don't process while the mob is dead
+#define DEL_ON_UNDEFIBBABLE (1<<4) //Delete the effect when human mob is undefibbable
+#define EFFECT_NO_PROCESS (1<<5) //! Do not process this effect at all
 
 /datum/effects
 	/// Name of the effect
@@ -45,16 +46,12 @@
 	var/mob_icon_state_path = null
 	///Cause data for statistics
 	var/datum/cause_data/cause_data = null
-	///Should the effect process?
-	var/do_proccess = TRUE
-	///will this effect use the recursive icon alterer?
-	var/use_recursive_icon_alterer
 
 /datum/effects/New(atom/thing, mob/from = null, last_dmg_source = null, zone = "chest")
 	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
-	if(do_proccess)
+	if(flags & EFFECT_NO_PROCESS)
 		START_PROCESSING(SSeffects, src)
 
 	affected_atom = thing

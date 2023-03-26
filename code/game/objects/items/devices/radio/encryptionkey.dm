@@ -83,7 +83,7 @@
 /obj/item/device/encryptionkey/req/ct
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE)
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/mmpo
 	name = "\improper Military Police Radio Encryption Key"
@@ -113,7 +113,7 @@
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE,  RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"

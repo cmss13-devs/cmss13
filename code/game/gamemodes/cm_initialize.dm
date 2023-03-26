@@ -847,7 +847,7 @@ Additional game mode variables.
 	var/mob/living/carbon/human/new_joe = transform_joe(joe_candidate) //Initialized and ready.
 	if(!new_joe) return
 
-	msg_admin_niche("([new_joe.key]) has late joined as Working Joe, [new_joe.real_name].")
+	msg_admin_niche("Ghost ([new_joe.key]) has joined as Working Joe, [new_joe.real_name].")
 
 	if(joe_candidate) joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
@@ -866,12 +866,12 @@ Additional game mode variables.
 		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if(joe_candidate.ckey in joes)
+	/*if(joe_candidate.ckey in joes)
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a working joe!"))
-		return
+			to_chat(joe_candidate, SPAN_WARNING("You already were a working joe this round!"))
+		return*/
 
-	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
 	return 1
@@ -882,8 +882,8 @@ Additional game mode variables.
 	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_joe")
 		return
-
-	var/mob/living/carbon/human/synthetic/new_joe = new()
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	new_joe.client = joe_candidate.client
 
@@ -892,7 +892,10 @@ Additional game mode variables.
 	if(!J)
 		qdel(new_joe)
 		return
-
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	J.current_positions++
 	RoleAuthority.equip_role(new_joe, J, new_joe.loc)
 
+	GLOB.data_core.manifest_inject(new_joe)
+	SSticker.minds += new_joe.mind
 	return new_joe

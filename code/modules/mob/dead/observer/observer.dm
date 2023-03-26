@@ -898,7 +898,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/verb/join_as_joe()
 	set category = "Ghost.Join"
-	set name = "Join as a working joe"
+	set name = "Join as a Working Joe"
 	set desc = "If you are whitelisted, you'll be able to join in."
 
 	if (!client)

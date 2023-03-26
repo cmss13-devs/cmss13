@@ -501,7 +501,7 @@
 
 	xeno_announcement("By [queen_user]'s will, [target_xeno] has been forbidden to communicate on the Hivemind!\n\nReason: [reason]", queen_user.hivenumber, title = SPAN_ANNOUNCEMENT_HEADER_BLUE("Excommunication"))
 	xeno_maptext("[target_xeno] is no longer able to communicate on the Hivemind.", "Excommunication", queen_user.hivenumber)
-	message_admins("[key_name_admin(queen_user)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
+	message_admins("[key_name_admin(queen_user)] has excommunicated [key_name_admin(target_xeno)]. Reason: [reason]")
 	queen_user.hive.muted_xenos += target_ref
 
 

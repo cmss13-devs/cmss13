@@ -1,0 +1,10 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "trucker survivors now spawn with van wheels"
+  - rscadd: "engineer survivors now spawn with a toolbelt"
+  - rscadd: "survivor shotgun spawns should start with more ammo"
+  - rscdel: "removed free screwdriver from all survivor loadouts"
+  - rscdel: "removed R4T scout kit from random survivor weapon pool"
+  - bugfix: "survivors will no longer sometimes spawn with two motion detectors"
+  - bugfix: "survivors will no longer spawn with incorrect shotgun types"

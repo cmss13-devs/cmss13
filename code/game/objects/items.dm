@@ -308,7 +308,7 @@ cases. Override_icon_state should be a list.*/
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
 	. = ..()
-	if(!.)
+	if(.)
 		return
 
 	if(istype(W,/obj/item/storage))

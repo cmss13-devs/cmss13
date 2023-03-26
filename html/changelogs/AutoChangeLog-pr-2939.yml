@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - balance: "Replaces spare CT headsets with req keys. Removes most spare mcom headsets. Lowers armory mcom headsets to 6 from 12."

@@ -115,6 +115,10 @@
 			name = body.real_name
 	change_real_name(src, name)
 
+	//To prevent weirdly offset ghosts.
+	pixel_x = 0
+	pixel_y = 0
+
 	minimap = new
 	minimap.give_to(src)
 

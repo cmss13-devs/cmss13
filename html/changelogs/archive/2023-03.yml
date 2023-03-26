@@ -384,3 +384,24 @@
       and no cane.
   harryob:
   - bugfix: fixed a bunch of bad dels causing lag
+2023-03-25:
+  BeagleGaming1:
+  - rscadd: You can now drag people up ledges
+  Khadd:
+  - rscadd: three sound files ```joe_report.ogg```, ```joe_breach.ogg```, ```joe_species.ogg```
+  - code_imp: modified ```code\modules\mob\living\carbon\human\species\emote-synthetic.dm```
+      in order to add the new emotes
+  LTNTS:
+  - rscdel: deletes unconnected piping in research
+  NewyearnewmeUwu:
+  - bugfix: overhead lattices now properly show up
+  - bugfix: Ghosts can no longer become offset.
+2023-03-26:
+  LynxSolstice:
+  - bugfix: Fixes PMC survivors spawning with ID locked NSG-23s.
+  kugamo:
+  - imageadd: Sink filling animation improved.
+  realforest2001:
+  - rscadd: ERT Station hangars have lockdowns toggleable only from inside each, to
+      prevent theft.
+  - rscdel: Removed sneaky CKeys from monkey name list

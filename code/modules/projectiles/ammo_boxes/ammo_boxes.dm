@@ -31,7 +31,7 @@
 	if(user.a_intent == INTENT_HARM)
 		unfold_box(user)
 		return
-	deploy_ammo_box(user, user.loc)	
+	deploy_ammo_box(user, user.loc)
 
 /obj/item/ammo_box/proc/unfold_box(mob/user)
 	if(is_loaded())

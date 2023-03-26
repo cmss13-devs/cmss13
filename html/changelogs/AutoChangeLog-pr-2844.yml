@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscdel: "Removed sneaky CKeys from monkey name list"

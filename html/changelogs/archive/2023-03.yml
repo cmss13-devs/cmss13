@@ -396,3 +396,12 @@
   NewyearnewmeUwu:
   - bugfix: overhead lattices now properly show up
   - bugfix: Ghosts can no longer become offset.
+2023-03-26:
+  LynxSolstice:
+  - bugfix: Fixes PMC survivors spawning with ID locked NSG-23s.
+  kugamo:
+  - imageadd: Sink filling animation improved.
+  realforest2001:
+  - rscadd: ERT Station hangars have lockdowns toggleable only from inside each, to
+      prevent theft.
+  - rscdel: Removed sneaky CKeys from monkey name list

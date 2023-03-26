@@ -1,4 +1,0 @@
-author: "LynxSolstice"
-delete-after: True
-changes:
-  - bugfix: "Fixes PMC survivors spawning with ID locked NSG-23s."

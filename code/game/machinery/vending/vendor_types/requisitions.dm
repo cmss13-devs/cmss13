@@ -158,8 +158,8 @@
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/storage = item_to_stock.loc
+				storage.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
@@ -174,20 +174,20 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(mob/living/carbon/human/current_human)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTH))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		if(current_human.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 		else
 			turf_to_vent_to = get_turf(get_step(src, SOUTH))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			if(current_human.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 			else
-				turf_to_vent_to = H.loc
+				turf_to_vent_to = current_human.loc
 	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
@@ -349,8 +349,8 @@
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/storage = item_to_stock.loc
+				storage.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
@@ -415,20 +415,20 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(mob/living/carbon/human/current_human)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		if(current_human.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 		else
 			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			if(current_human.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 			else
-				turf_to_vent_to = H.loc
+				turf_to_vent_to = current_human.loc
 	return turf_to_vent_to
 
 //------------ATTACHMENTS VENDOR---------------
@@ -488,18 +488,18 @@
 		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 
-/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/current_human)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		if(current_human.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 		else
 			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			if(current_human.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(current_human.loc, WEST))
 			else
 				turf_to_vent_to = loc
 	return turf_to_vent_to
@@ -634,9 +634,9 @@
 					return
 			//Marine helmet handling
 			else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
-				var/obj/item/clothing/head/helmet/marine/H = item_to_stock
-				if(H.pockets && H.pockets.contents.len)
-					to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+				var/obj/item/clothing/head/helmet/marine/helmet = item_to_stock
+				if(helmet.pockets && helmet.pockets.contents.len)
+					to_chat(user, SPAN_WARNING("\The [helmet] has something inside it. Empty it before restocking."))
 					return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
@@ -645,8 +645,8 @@
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/storage = item_to_stock.loc
+				storage.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),

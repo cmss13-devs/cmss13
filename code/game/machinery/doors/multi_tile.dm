@@ -4,9 +4,9 @@
 	damage_cap = 650 // Bigger = more endurable
 
 /obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
-	for(var/turf/T in locs)
-		for(var/obj/vehicle/multitile/M in T)
-			if(M) return 0
+	for(var/turf/current_turf in locs)
+		for(var/obj/vehicle/multitile/current_vehicle in current_turf)
+			if(current_vehicle) return 0
 
 	return ..()
 
@@ -140,10 +140,10 @@
 	. = ..()
 	relativewall_neighbours()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(dam, mob/M)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(dam, mob/current_mob)
 	var/damage_check = max(0, damage + dam)
-	if(damage_check >= damage_cap && M && is_mainship_level(z))
-		SSclues.create_print(get_turf(M), M, "The fingerprint contains bits of wire and metal specks.")
+	if(damage_check >= damage_cap && current_mob && is_mainship_level(z))
+		SSclues.create_print(get_turf(current_mob), current_mob, "The fingerprint contains bits of wire and metal specks.")
 	..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
@@ -234,25 +234,25 @@
 
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
-	for(var/turf/T in multi_filler)
-		T.SetOpacity(null)
+	for(var/turf/current_turf in multi_filler)
+		current_turf.SetOpacity(null)
 
 	multi_filler = list()
-	for(var/turf/T in get_filler_turfs())
-		T.SetOpacity(opacity)
-		multi_filler += list(T)
+	for(var/turf/current_turf in get_filler_turfs())
+		current_turf.SetOpacity(opacity)
+		multi_filler += list(current_turf)
 
 /obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()
 	. = list()
 	for(var/i = 1, i < width, i++)
 		if(dir in list(NORTH, SOUTH))
-			var/turf/T = locate(x, y + i, z)
-			if(T)
-				. += list(T)
+			var/turf/current_turf = locate(x, y + i, z)
+			if(current_turf)
+				. += list(current_turf)
 		else if(dir in list(EAST, WEST))
-			var/turf/T = locate(x + i, y, z)
-			if(T)
-				. += list(T)
+			var/turf/current_turf = locate(x + i, y, z)
+			if(current_turf)
+				. += list(current_turf)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/open()
 	. = ..()

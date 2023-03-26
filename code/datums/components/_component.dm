@@ -83,11 +83,11 @@
 * Internal proc to handle behaviour of components when joining a parent
 */
 /datum/component/proc/_JoinParent()
-	var/datum/P = parent
+	var/datum/parent_component = parent
 	//lazy init the parent's dc list
-	var/list/dc = P.datum_components
+	var/list/dc = parent_component.datum_components
 	if(!dc)
-		P.datum_components = dc = list()
+		parent_component.datum_components = dc = list()
 
 	//set up the typecache
 	var/our_type = type
@@ -103,8 +103,8 @@
 			if(I == our_type) //exact match, take priority
 				var/inserted = FALSE
 				for(var/J in 1 to components_of_type.len)
-					var/datum/component/C = components_of_type[J]
-					if(C.type != our_type) //but not over other exact matches
+					var/datum/component/current_component = components_of_type[J]
+					if(current_component.type != our_type) //but not over other exact matches
 						components_of_type.Insert(J, I)
 						inserted = TRUE
 						break
@@ -121,8 +121,8 @@
 * Internal proc to handle behaviour when being removed from a parent
 */
 /datum/component/proc/_RemoveFromParent()
-	var/datum/P = parent
-	var/list/dc = P.datum_components
+	var/datum/parent_component = parent
+	var/list/dc = parent_component.datum_components
 	for(var/I in _GetInverseTypeList())
 		var/list/components_of_type = dc[I]
 		if(length(components_of_type)) //
@@ -134,7 +134,7 @@
 		else //just us
 			dc -= I
 	if(!dc.len)
-		P.datum_components = null
+		parent_component.datum_components = null
 
 	UnregisterFromParent()
 
@@ -251,9 +251,9 @@
 *
 * See [/datum/component/var/dupe_mode]
 *
-* `C`'s type will always be the same of the called component
+* `current_component`'s type will always be the same of the called component
 */
-/datum/component/proc/InheritComponent(datum/component/C, i_am_original)
+/datum/component/proc/InheritComponent(datum/component/current_component, i_am_original)
 	return
 
 
@@ -262,11 +262,11 @@
 *
 * See [/datum/component/var/dupe_mode]
 *
-* `C`'s type will always be the same of the called component
+* `current_component`'s type will always be the same of the called component
 *
 * return TRUE if you are absorbing the component, otherwise FALSE if you are fine having it exist as a duplicate component
 */
-/datum/component/proc/CheckDupeComponent(datum/component/C, ...)
+/datum/component/proc/CheckDupeComponent(datum/component/current_component, ...)
 	return
 
 
@@ -310,18 +310,18 @@
 /datum/proc/_SendSignal(sigtype, list/arguments)
 	var/target = comp_lookup[sigtype]
 	if(!length(target))
-		var/datum/C = target
-		if(!C.signal_enabled)
+		var/datum/current_component = target
+		if(!current_component.signal_enabled)
 			return NONE
-		var/proctype = C.signal_procs[src][sigtype]
-		return NONE | CallAsync(C, proctype, arguments)
+		var/proctype = current_component.signal_procs[src][sigtype]
+		return NONE | CallAsync(current_component, proctype, arguments)
 	. = NONE
 	for(var/I in target)
-		var/datum/C = I
-		if(!C.signal_enabled)
+		var/datum/current_component = I
+		if(!current_component.signal_enabled)
 			continue
-		var/proctype = C.signal_procs[src][sigtype]
-		. |= CallAsync(C, proctype, arguments)
+		var/proctype = current_component.signal_procs[src][sigtype]
+		. |= CallAsync(current_component, proctype, arguments)
 
 // The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
@@ -359,12 +359,12 @@
 	var/list/dc = datum_components
 	if(!dc)
 		return null
-	var/datum/component/C = dc[c_type]
-	if(C)
-		if(length(C))
-			C = C[1]
-		if(C.type == c_type)
-			return C
+	var/datum/component/current_component = dc[c_type]
+	if(current_component)
+		if(length(current_component))
+			current_component = current_component[1]
+		if(current_component.type == c_type)
+			return current_component
 	return null
 
 /**
@@ -441,8 +441,8 @@
 					arguments[1] = new_comp
 					var/make_new_component = TRUE
 					for(var/i in GetComponents(new_type))
-						var/datum/component/C = i
-						if(C.CheckDupeComponent(arglist(arguments)))
+						var/datum/component/current_component = i
+						if(current_component.CheckDupeComponent(arglist(arguments)))
 							make_new_component = FALSE
 							QDEL_NULL(new_comp)
 							break
@@ -522,12 +522,12 @@
 		return
 	var/comps = dc[/datum/component]
 	if(islist(comps))
-		for(var/datum/component/I in comps)
-			if(I.can_transfer)
-				target.TakeComponent(I)
+		for(var/datum/component/component in comps)
+			if(component.can_transfer)
+				target.TakeComponent(component)
 	else
-		var/datum/component/C = comps
-		if(C.can_transfer)
+		var/datum/component/current_component = comps
+		if(current_component.can_transfer)
 			target.TakeComponent(comps)
 
 /**

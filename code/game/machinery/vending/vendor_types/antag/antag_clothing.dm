@@ -27,12 +27,12 @@
 
 	if(!ishuman(user))
 		return
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/current_human = user
 	var/list/products_sets = list()
-	if(H.assigned_equipment_preset)
-		if(!(H.assigned_equipment_preset.type in listed_products))
-			listed_products[H.assigned_equipment_preset.type] = H.assigned_equipment_preset.get_antag_clothing_equipment()
-		products_sets = listed_products[H.assigned_equipment_preset.type]
+	if(current_human.assigned_equipment_preset)
+		if(!(current_human.assigned_equipment_preset.type in listed_products))
+			listed_products[current_human.assigned_equipment_preset.type] = current_human.assigned_equipment_preset.get_antag_clothing_equipment()
+		products_sets = listed_products[current_human.assigned_equipment_preset.type]
 	else
 		if(!(/datum/equipment_preset/clf in listed_products))
 			listed_products[/datum/equipment_preset/clf] = GLOB.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()

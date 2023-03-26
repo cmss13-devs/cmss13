@@ -58,18 +58,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
-		var/mob/M
+		var/mob/current_mob
 		for (var/msg in dead_queens)
 			dat += msg
-		for(var/datum/mind/X in xenomorphs)
-			if(!istype(X))
+		for(var/datum/mind/xenomorph in xenomorphs)
+			if(!istype(xenomorph))
 				continue
 
-			M = X.current
-			if(!M || !M.loc)
-				M = X.original
-			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
-				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
+			current_mob = xenomorph.current
+			if(!current_mob || !current_mob.loc)
+				current_mob = xenomorph.original
+			if(current_mob && current_mob.loc && isqueen(current_mob) && current_mob.stat != DEAD) // Dead queens handled separately
+				dat += "<br>[xenomorph.key] was [current_mob] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
 
@@ -145,9 +145,9 @@ of predators), but can be added to include variant game modes (like humans vs. h
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(podlock_id)
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == podlock_id && M.density)
-			M.open()
+	for(var/obj/structure/machinery/door/poddoor/door in machines)
+		if(door.id == podlock_id && door.density)
+			door.open()
 
 //Variables for the below function that we need to keep throught the round
 var/peakHumans = 1
@@ -194,16 +194,16 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	if (peakXenos < length(GLOB.living_xeno_list))
 		peakXenos = length(GLOB.living_xeno_list)
 
-	for(var/mob/M in GLOB.living_xeno_list)
-		if(M.mob_flags & NOBIOSCAN)
+	for(var/mob/current_mob in GLOB.living_xeno_list)
+		if(current_mob.mob_flags & NOBIOSCAN)
 			continue
-		var/area/A = get_area(M)
-		if(A?.flags_area & AREA_AVOID_BIOSCAN)
+		var/area/current_area = get_area(current_mob)
+		if(current_area?.flags_area & AREA_AVOID_BIOSCAN)
 			numXenosShip++
 			continue
-		var/atom/where = M
-		if (where.z == 0 && M.loc)
-			where = M.loc
+		var/atom/where = current_mob
+		if (where.z == 0 && current_mob.loc)
+			where = current_mob.loc
 		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
 			numXenosPlanet++
 			xenosPlanetLocations+=where
@@ -214,13 +214,13 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 
 	for (var/i in GLOB.alive_human_list)
-		var/mob/living/carbon/human/H = i
-		if(H.mob_flags & NOBIOSCAN)
+		var/mob/living/carbon/human/human = i
+		if(human.mob_flags & NOBIOSCAN)
 			continue
-		var/atom/where = H
-		if(isspecieshuman(H))
-			if (where.z == 0 && H.loc)
-				where = H.loc
+		var/atom/where = human
+		if(isspecieshuman(human))
+			if (where.z == 0 && human.loc)
+				where = human.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)))
 				numHostsPlanet++
 				hostsPlanetLocations += where
@@ -253,16 +253,16 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		var/xeno_ship_location = "[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]"
 		var/marine_colony_location = "[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]"
 		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
-		for(var/mob/M in GLOB.player_list)
+		for(var/mob/current_mob in GLOB.player_list)
 			//Announce the numbers to Yautja, they have good scanners
-			if (isyautja(M))
-				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-				to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
+			if (isyautja(current_mob))
+				to_chat(current_mob, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(current_mob, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
 
 			//Let the ghosts know what's up, they also get good numbers
-			if (isobserver(M))
-				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-				to_chat(M, SPAN_ALERT("[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship."))
+			if (isobserver(current_mob))
+				to_chat(current_mob, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(current_mob, SPAN_ALERT("[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship."))
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))
@@ -280,15 +280,15 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		lastXenoBioscan = world.time
 		// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 		for(var/i in GLOB.living_xeno_list)
-			var/mob/M = i
-			M << sound(get_sfx("queen"), wait = 0, volume = 50)
-			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+			var/mob/current_mob = i
+			current_mob << sound(get_sfx("queen"), wait = 0, volume = 50)
+			to_chat(current_mob, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 			var/metalhive_hosts = "[numHostsShip ? "approximately [numHostsShip]":"no"]"
 			var/plural = "[!numHostsShip || numHostsShip > 1 ? "s":""]"
 			var/metalhive_location = "[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
 			var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
 			var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
-			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
+			to_chat(current_mob, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
 
 
 	if(world.time > nextHumanBioscan)
@@ -307,8 +307,8 @@ Only checks living mobs with a client attached.
 /datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_xenos = 0
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		var/mob/current_mob = i
+		if(current_mob.z && (current_mob.z in z_levels) && !istype(current_mob.loc, /turf/open/space)) //If they have a z var, they are on a turf.
 			num_xenos++
 	return num_xenos
 
@@ -316,26 +316,26 @@ Only checks living mobs with a client attached.
 	var/num_humans = 0
 	var/num_xenos = 0
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
-				var/mob/living/carbon/human/H = M
-				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
+	for(var/mob/current_mob in GLOB.player_list)
+		if(current_mob.z && (current_mob.z in z_levels) && current_mob.stat != DEAD && !istype(current_mob.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+			if(ishuman(current_mob) && !isyautja(current_mob) && !(current_mob.status_flags & XENO_HOST) && !iszombie(current_mob))
+				var/mob/living/carbon/human/human = current_mob
+				if(((human.species && human.species.name == "Human") || (human.is_important)) && !human.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
-				var/area/A = get_area(M)
-				if(isxeno(M))
-					var/mob/living/carbon/xenomorph/xeno = M
+				var/area/current_area = get_area(current_mob)
+				if(isxeno(current_mob))
+					var/mob/living/carbon/xenomorph/xeno = current_mob
 					if(!xeno.counts_for_roundend)
 						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+					if (current_area.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
-				else if(iszombie(M))
-					if (A.flags_area & AREA_AVOID_BIOSCAN)
+				else if(iszombie(current_mob))
+					if (current_area.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 
@@ -346,11 +346,11 @@ Only checks living mobs with a client attached.
 	var/num_pmcs = 0
 
 	for(var/i in GLOB.alive_human_list)
-		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space))
-			if(M.faction in FACTION_LIST_WY)
+		var/mob/current_mob = i
+		if(current_mob.z && (current_mob.z in z_levels) && !istype(current_mob.loc, /turf/open/space))
+			if(current_mob.faction in FACTION_LIST_WY)
 				num_pmcs++
-			else if(M.faction == FACTION_MARINE)
+			else if(current_mob.faction == FACTION_MARINE)
 				num_marines++
 
 	return list(num_marines,num_pmcs)
@@ -359,9 +359,9 @@ Only checks living mobs with a client attached.
 	var/num_marines = 0
 
 	for(var/i in GLOB.alive_human_list)
-		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space))
-			if(M.faction == FACTION_MARINE)
+		var/mob/current_mob = i
+		if(current_mob.z && (current_mob.z in z_levels) && !istype(current_mob.loc, /turf/open/space))
+			if(current_mob.faction == FACTION_MARINE)
 				num_marines++
 
 	return num_marines

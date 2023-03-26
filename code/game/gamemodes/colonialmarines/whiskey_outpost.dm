@@ -98,8 +98,8 @@
 	for(var/i in 1 to WO_MAX_WAVE)
 		whiskey_outpost_waves += i
 		whiskey_outpost_waves[i] = list()
-	for(var/T in paths)
-		var/datum/whiskey_outpost_wave/WOW = new T
+	for(var/current_turf in paths)
+		var/datum/whiskey_outpost_wave/WOW = new current_turf
 		if(WOW.wave_number > 0)
 			whiskey_outpost_waves[WOW.wave_number] += WOW
 
@@ -206,22 +206,22 @@
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/mob_amount = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 
-	if(C[1] == 0)
+	if(mob_amount[1] == 0)
 		finished = 1 //Alien win
 	else if(world.time > last_wave_time + 15 MINUTES) // Around 1:12 hh:mm
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
 	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+		var/datum/job/current_job = RoleAuthority.roles_by_name[i]
 
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
-		if (J.spawn_positions < 0)
-			J.spawn_positions = J.current_positions
-			J.total_positions = J.current_positions
-		J.current_positions = J.get_total_positions(TRUE)
+		if (current_job.spawn_positions < 0)
+			current_job.spawn_positions = current_job.current_positions
+			current_job.total_positions = current_job.current_positions
+		current_job.current_positions = current_job.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
 	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
@@ -230,8 +230,8 @@
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/living/carbon/xenomorph/X = i
-		if(is_ground_level(X.z) && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
+		var/mob/living/carbon/xenomorph/xenomorph = i
+		if(is_ground_level(xenomorph.z) && !istype(xenomorph.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 			xeno_count += 1 //Add them to the amount of people who're alive.
 
 	return xeno_count
@@ -309,7 +309,7 @@
 	return
 
 /datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
-	var/turf/T = pick(supply_spawns)
+	var/turf/current_turf = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
 	var/list/spawnitems = list()
@@ -323,7 +323,7 @@
 		randpick = rand(0,50)
 		switch(randpick)
 			if(0 to 5)//Marine Gear 10% Chance.
-				crate = new /obj/structure/closet/crate/secure/gear(T)
+				crate = new /obj/structure/closet/crate/secure/gear(current_turf)
 				choosemax = rand(5,10)
 				randomitems = list(/obj/item/clothing/head/helmet/marine,
 								/obj/item/clothing/head/helmet/marine,
@@ -339,19 +339,19 @@
 								/obj/item/device/binoculars)
 
 			if(6 to 10)//Lights and shiet 10%
-				new /obj/structure/largecrate/supply/floodlights(T)
-				new /obj/structure/largecrate/supply/supplies/flares(T)
+				new /obj/structure/largecrate/supply/floodlights(current_turf)
+				new /obj/structure/largecrate/supply/supplies/flares(current_turf)
 
 
 			if(11 to 13) //6% Chance to drop this !FUN! junk.
-				crate = new /obj/structure/closet/crate/secure/gear(T)
+				crate = new /obj/structure/closet/crate/secure/gear(current_turf)
 				spawnitems = list(/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full,
 									/obj/item/storage/belt/utility/full)
 
 			if(14 to 18)//Materials 10% Chance.
-				crate = new /obj/structure/closet/crate/secure/gear(T)
+				crate = new /obj/structure/closet/crate/secure/gear(current_turf)
 				choosemax = rand(3,8)
 				randomitems = list(/obj/item/stack/sheet/metal,
 								/obj/item/stack/sheet/metal,
@@ -362,7 +362,7 @@
 								/obj/item/stack/sandbags_empty/half)
 
 			if(19 to 20)//Blood Crate 4% chance
-				crate = new /obj/structure/closet/crate/medical(T)
+				crate = new /obj/structure/closet/crate/medical(current_turf)
 				spawnitems = list(/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus,
@@ -370,7 +370,7 @@
 								/obj/item/reagent_container/blood/OMinus)
 
 			if(21 to 25)//Advanced meds Crate 10%
-				crate = new /obj/structure/closet/crate/medical(T)
+				crate = new /obj/structure/closet/crate/medical(current_turf)
 				spawnitems = list(/obj/item/storage/firstaid/fire,
 								/obj/item/storage/firstaid/regular,
 								/obj/item/storage/firstaid/toxin,
@@ -385,7 +385,7 @@
 								/obj/item/device/defibrillator)
 
 			if(26 to 30)//Random Medical Items 10% as well. Made the list have less small junk
-				crate = new /obj/structure/closet/crate/medical(T)
+				crate = new /obj/structure/closet/crate/medical(current_turf)
 				spawnitems = list(/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/storage/belt/medical/lifesaver/full,
@@ -393,7 +393,7 @@
 								/obj/item/storage/belt/medical/lifesaver/full)
 
 			if(31 to 35)//Random explosives Crate 10% because the lord commeth and said let there be explosives.
-				crate = new /obj/structure/closet/crate/ammo(T)
+				crate = new /obj/structure/closet/crate/ammo(current_turf)
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
 								/obj/item/storage/box/explosive_mines,
@@ -403,7 +403,7 @@
 								/obj/item/storage/box/nade_box
 								)
 			if(36 to 40) // Junk
-				crate = new /obj/structure/closet/crate/ammo(T)
+				crate = new /obj/structure/closet/crate/ammo(current_turf)
 				spawnitems = list(
 									/obj/item/attachable/heavy_barrel,
 									/obj/item/attachable/heavy_barrel,
@@ -411,14 +411,14 @@
 									/obj/item/attachable/heavy_barrel)
 
 			if(40 to 48)//Weapon + supply beacon drop. 6%
-				crate = new /obj/structure/closet/crate/ammo(T)
+				crate = new /obj/structure/closet/crate/ammo(current_turf)
 				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon)
 
 			if(49 to 50)//Rare weapons. Around 4%
-				crate = new /obj/structure/closet/crate/ammo(T)
+				crate = new /obj/structure/closet/crate/ammo(current_turf)
 				spawnitems = list(/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag,
 								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend,
@@ -430,12 +430,12 @@
 	if(randomitems.len)
 		for(var/i = 0; i < choosemax; i++)
 			var/path = pick(randomitems)
-			var/obj/I = new path(crate)
+			var/obj/current_item = new path(crate)
 			if(OT == "sup")
-				if(I && istype(I,/obj/item/stack/sheet/mineral/phoron) || istype(I,/obj/item/stack/rods) || istype(I,/obj/item/stack/sheet/glass) || istype(I,/obj/item/stack/sheet/metal) || istype(I,/obj/item/stack/sheet/plasteel) || istype(I,/obj/item/stack/sheet/wood))
-					I:amount = rand(30,50) //Give them more building materials.
-				if(I && istype(I,/obj/structure/machinery/floodlight))
-					I.anchored = FALSE
+				if(current_item && istype(current_item,/obj/item/stack/sheet/mineral/phoron) || istype(current_item,/obj/item/stack/rods) || istype(current_item,/obj/item/stack/sheet/glass) || istype(current_item,/obj/item/stack/sheet/metal) || istype(current_item,/obj/item/stack/sheet/plasteel) || istype(current_item,/obj/item/stack/sheet/wood))
+					current_item:amount = rand(30,50) //Give them more building materials.
+				if(current_item && istype(current_item,/obj/structure/machinery/floodlight))
+					current_item.anchored = FALSE
 
 
 	else
@@ -471,37 +471,37 @@
 		return
 
 	var/remove_max = 10
-	var/turf/T = src.loc
-	if(T)
+	var/turf/current_turf = src.loc
+	if(current_turf)
 		to_chat(user, SPAN_DANGER("You turn on the recycler."))
 		var/removed = 0
 		for(var/i, i < remove_max, i++)
-			for(var/obj/O in T)
-				if(istype(O,/obj/structure/closet/crate))
-					var/obj/structure/closet/crate/C = O
-					if(C.contents.len)
-						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+			for(var/obj/current_obj in current_turf)
+				if(istype(current_obj,/obj/structure/closet/crate))
+					var/obj/structure/closet/crate/crate = current_obj
+					if(crate.contents.len)
+						to_chat(user, SPAN_DANGER("[current_obj] must be emptied before it can be recycled"))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
-					O.forceMove(get_turf(locate(84,237,2))) //z.2
-// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					current_obj.forceMove(get_turf(locate(84,237,2))) //z.2
+// current_obj.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
-				else if(istype(O,/obj/item))
-					var/obj/item/I = O
-					if(I.anchored)
+				else if(istype(current_obj,/obj/item))
+					var/obj/item/current_item = current_obj
+					if(current_item.anchored)
 						continue
-					O.forceMove(get_turf(locate(84,237,2))) //z.2
-// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					current_obj.forceMove(get_turf(locate(84,237,2))) //z.2
+// current_obj.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
-			for(var/mob/M in T)
-				if(istype(M,/mob/living/carbon/xenomorph))
-					var/mob/living/carbon/xenomorph/X = M
-					if(!X.stat == DEAD)
+			for(var/mob/current_mob in current_turf)
+				if(istype(current_mob,/mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/xenomorph = current_mob
+					if(!xenomorph.stat == DEAD)
 						continue
-					X.forceMove(get_turf(locate(84,237,2))) //z.2
-// X.forceMove(get_turf(locate(30,70,1)) )//z.1
+					xenomorph.forceMove(get_turf(locate(84,237,2))) //z.2
+// xenomorph.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 			if(removed && !working)
@@ -604,22 +604,22 @@
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
 	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/current_mob = user
+	if(istype(current_mob) && !current_mob.throw_mode)
+		current_mob.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/current_turf = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(current_turf, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return
 
-/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
-	if(!istype(T)) return
+/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/current_turf, SD)
+	if(!istype(current_turf)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
-	crate = new /obj/structure/closet/crate/secure/weapon(T)
+	crate = new /obj/structure/closet/crate/secure/weapon(current_turf)
 	switch(SD)
 		if(0) // Alright 2 mags for the SL, a few mags for M41As that people would need. M39s get some love and split the shotgun load between slugs and buckshot.
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m41aMK1,
@@ -722,9 +722,9 @@
 
 /obj/item/storage/box/attachments/update_icon()
 	if(!contents.len)
-		var/turf/T = get_turf(src)
-		if(T)
-			new /obj/item/paper/crumpled(T)
+		var/turf/current_turf = get_turf(src)
+		if(current_turf)
+			new /obj/item/paper/crumpled(current_turf)
 		qdel(src)
 
 /datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)

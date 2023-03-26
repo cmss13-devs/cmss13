@@ -19,17 +19,17 @@
 	if(!user)
 		var/list/all_equipment = list()
 		for (var/i in 1 to length(factions))
-			var/datum/faction/F = get_faction(factions[i])
-			var/list/equipment = F.get_antag_guns_snowflake_equipment()
+			var/datum/faction/current_faction = get_faction(factions[i])
+			var/list/equipment = current_faction.get_antag_guns_snowflake_equipment()
 			if(LAZYLEN(equipment))
 				all_equipment += equipment
 		return all_equipment
 
-	var/mob/living/carbon/human/H = user
-	var/faction = H.faction ? H.faction : FACTION_CLF
+	var/mob/living/carbon/human/human = user
+	var/faction = human.faction ? human.faction : FACTION_CLF
 	if(!(faction in listed_products))
-		var/datum/faction/F = get_faction(H.faction)
-		listed_products[faction] = F.get_antag_guns_snowflake_equipment()
+		var/datum/faction/current_faction = get_faction(human.faction)
+		listed_products[faction] = current_faction.get_antag_guns_snowflake_equipment()
 
 	return listed_products[faction]
 

@@ -370,6 +370,9 @@
 	var/radial_icon_file = 'icons/mob/radial_tape.dmi'
 	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
+	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
+	var/flipped_name //used to store the tape's name for one side
+	var/unflipped_name //see above
 
 
 /obj/item/tape/get_examine_text(mob/user)
@@ -409,6 +412,8 @@
 	initial_icon_state = icon_state //random tapes will set this after choosing their icon
 	if(prob(50))
 		tapeflip()
+	flipped_name = name
+	unflipped_name = name
 
 /obj/item/tape/proc/update_available_icons()
 	icons_available = list()
@@ -483,8 +488,12 @@
 
 	if(icon_state == initial_icon_state)
 		icon_state = "cassette_flip"
+		unflipped_name = name
+		name = flipped_name
 	else if(icon_state == "cassette_flip") //so flipping doesn't overwrite an unexpected icon_state (e.g. an admin's)
 		icon_state = initial_icon_state
+		flipped_name = name
+		name = unflipped_name
 
 //Random color tapes
 /obj/item/tape/random

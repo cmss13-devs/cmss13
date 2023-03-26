@@ -18,13 +18,13 @@
 #define HELD_KEY_BUFFER_LENGTH 15
 
 ///This note is used by staff for disciplinary record keeping.
-#define NOTE_ADMIN			1
+#define NOTE_ADMIN 1
 ///This note is used by staff for positive record keeping.
-#define NOTE_MERIT			2
+#define NOTE_MERIT 2
 ///These notes are used by respective whitelist councils for record keeping.
-#define NOTE_COMMANDER		3
-#define NOTE_SYNTHETIC		4
-#define NOTE_YAUTJA			5
+#define NOTE_COMMANDER 3
+#define NOTE_SYNTHETIC 4
+#define NOTE_YAUTJA 5
 ///Note categories in text form, in order of their numerical #defines.
 var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "Synthetic", "Yautja")
 
@@ -32,11 +32,13 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define ADMIN_PP(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=[REF(user)]'>PP</a>)"
 #define ADMIN_VV(atom) "(<a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[REF(atom)]'>VV</a>)"
 #define ADMIN_SM(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=[REF(user)]'>SM</a>)"
+#define ADMIN_NOTES(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];viewnotes=[REF(user)]'>N</a>)"
+#define ADMIN_CL(user) "(<a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];view_combat_logs=[REF(user)]'>CL</a>)"
 #define ADMIN_KICK(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];boot2=[REF(user)]'>KICK</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=[REF(user)]'>SC</a>)"
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
-#define ADMIN_FULLMONTY_NONAME(user) "[ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_FLW(user)]"
+#define ADMIN_FULLMONTY_NONAME(user) "[ADMIN_PP(user)] [ADMIN_NOTES(user)] [ADMIN_VV(user)] [ADMIN_CL(user)] [ADMIN_SM(user)] [ADMIN_FLW(user)]"
 #define ADMIN_FULLMONTY(user) "[key_name_admin(user)] [ADMIN_FULLMONTY_NONAME(user)]"
 #define ADMIN_JMP(src) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"
 #define COORD(src) "[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]"
@@ -54,3 +56,10 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+
+/// Disables antigrief entirely: Anyone can activate explosives at any time on the Almayer.
+#define ANTIGRIEF_DISABLED 0
+/// Enables antigrief on the Almayer, but only for new players: Those who've had less than 10 total human hours.
+#define ANTIGRIEF_NEW_PLAYERS 1
+/// Enables antigrief entirely: Nobody can activate explosives on the Almayer, unless the ship crashed.
+#define ANTIGRIEF_ENABLED 2

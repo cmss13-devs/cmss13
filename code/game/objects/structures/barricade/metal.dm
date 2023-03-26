@@ -23,7 +23,7 @@
 	. = ..()
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
+			. += SPAN_INFO("The protection panel is still tightly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
 			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)
@@ -91,7 +91,7 @@
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
-				if(user.client.prefs?.no_radials_preference)
+				if(user.client?.prefs?.no_radials_preference)
 					var/choice = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE))
 					if(!choice)
 						return
@@ -244,7 +244,7 @@
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					destroy(TRUE) //Note : Handles deconstruction too !
+					deconstruct(TRUE) //Note : Handles deconstruction too !
 				return
 
 	. = ..()
@@ -258,7 +258,7 @@
 	update_icon()
 	. = ..()
 
-/obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/metal/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

@@ -2,18 +2,25 @@
 	name = "landmark"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
+
+	var/invisibility_value = INVISIBILITY_MAXIMUM
 
 /obj/effect/landmark/New()
 	..()
 	tag = "landmark*[name]"
-	invisibility = 101
+	invisibility = invisibility_value
 	return 1
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()
-	invisibility = 101
+	GLOB.landmarks_list += src
+	invisibility = invisibility_value
+
+/obj/effect/landmark/Destroy()
+	GLOB.landmarks_list -= src
+	return ..()
 
 /obj/effect/landmark/newplayer_start
 	name = "New player start"
@@ -51,9 +58,9 @@
 /obj/effect/landmark/nightmare
 	name = "Nightmare Insert"
 	icon_state = "nightmare_insert"
-	var/insert_tag            // Identifier for global mapping
-	var/replace = FALSE       // Replace another existing landmark mapping of same name
-	var/autoremove = TRUE     // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
+	var/insert_tag // Identifier for global mapping
+	var/replace = FALSE    // Replace another existing landmark mapping of same name
+	var/autoremove = TRUE  // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
 /obj/effect/landmark/nightmare/Initialize(mapload, ...)
 	. = ..()
 	if(!insert_tag) return
@@ -100,6 +107,7 @@
 
 /obj/effect/landmark/thunderdome/one
 	name = "Thunderdome Team 1"
+	icon_state = "thunderdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload, ...)
 	. = ..()
@@ -111,6 +119,7 @@
 
 /obj/effect/landmark/thunderdome/two
 	name = "Thunderdome Team 2"
+	icon_state = "thunderdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload, ...)
 	. = ..()
@@ -122,6 +131,7 @@
 
 /obj/effect/landmark/thunderdome/admin
 	name = "Thunderdome Admin"
+	icon_state = "thunderdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload, ...)
 	. = ..()
@@ -133,6 +143,7 @@
 
 /obj/effect/landmark/thunderdome/observer
 	name = "Thunderdome Observer"
+	icon_state = "thunderdome_observer"
 
 /obj/effect/landmark/thunderdome/observer/Initialize(mapload, ...)
 	. = ..()
@@ -156,6 +167,7 @@
 
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
+	icon_state = "xeno_spawn"
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()
@@ -405,3 +417,57 @@
 /obj/effect/landmark/static_comms/net_two/Destroy()
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
+
+
+// zombie spawn
+/obj/effect/landmark/zombie
+	name = "zombie spawnpoint"
+	desc = "The spot a zombie spawns in. Players in-game can't see this."
+	icon_state = "corpse_spawner"
+	invisibility_value = INVISIBILITY_OBSERVER
+	var/spawns_left = 1
+	var/infinite_spawns = FALSE
+
+/obj/effect/landmark/zombie/Initialize(mapload, ...)
+	. = ..()
+	GLOB.zombie_landmarks += src
+
+/obj/effect/landmark/zombie/Destroy()
+	GLOB.zombie_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/zombie/proc/spawn_zombie(mob/dead/observer/observer)
+	if(!infinite_spawns)
+		spawns_left--
+	if(spawns_left <= 0)
+		GLOB.zombie_landmarks -= src
+	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
+	observer.see_invisible = SEE_INVISIBLE_LIVING
+	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
+	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
+
+/obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
+	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
+	if(!zombie.hud_used)
+		zombie.create_hud()
+	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
+	observer.client.eye = zombie
+	observer.mind.transfer_to(zombie)
+	if(spawns_left <= 0)
+		qdel(src)
+
+/obj/effect/landmark/zombie/three
+	spawns_left = 3
+
+/obj/effect/landmark/zombie/infinite
+	infinite_spawns = TRUE
+
+/// Marks the bottom left of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_bottom_left
+	name = "unit test zone bottom left"
+
+/// Marks the top right of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_top_right
+	name = "unit test zone top right"

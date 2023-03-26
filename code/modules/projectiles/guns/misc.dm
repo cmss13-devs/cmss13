@@ -4,6 +4,7 @@
 /obj/item/weapon/gun/minigun
 	name = "\improper Ol' Painless"
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	icon_state = "painless"
 	item_state = "painless"
 
@@ -41,7 +42,7 @@
 	. = ..()
 	if(!. || !istype(user)) //Let's check all that other stuff first.
 		return 0
-	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
@@ -62,6 +63,7 @@
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
 	desc = "The M60. The Pig. The Action Hero's wet dream."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "m60"
 	item_state = "m60"
 
@@ -72,10 +74,14 @@
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
-	attachable_allowed = list(/obj/item/attachable/m60barrel,
-							/obj/item/attachable/bipod/m60)
-	starting_attachment_types = list(/obj/item/attachable/m60barrel,
-									/obj/item/attachable/bipod/m60)
+	attachable_allowed = list(
+		/obj/item/attachable/m60barrel,
+		/obj/item/attachable/bipod/m60,
+	)
+	starting_attachment_types = list(
+		/obj/item/attachable/m60barrel,
+		/obj/item/attachable/bipod/m60,
+	)
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
@@ -105,10 +111,10 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "null"
-	anchored = 1
-	density = 0
+	icon_state = null
+	anchored = TRUE
+	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()
-		create_reagents(15)
-		..()
+	create_reagents(15)
+	. = ..()

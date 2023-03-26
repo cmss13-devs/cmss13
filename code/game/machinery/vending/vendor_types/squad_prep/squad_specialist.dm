@@ -9,9 +9,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 
 		list("EXTRA SCOUT AMMUNITION", 0, null, null, null),
-		list("A19 High Velocity Impact Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/impact, null, VENDOR_ITEM_REGULAR),
-		list("A19 High Velocity Incendiary Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/incendiary, null, VENDOR_ITEM_REGULAR),
-		list("A19 High Velocity Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Impact Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom/impact, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Incendiary Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("A19 High Velocity Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/custom, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA SNIPER AMMUNITION", 0, null, null, null),
 		list("M42A Flak Magazine (10x28mm)", 15, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
@@ -65,13 +65,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	desc = "An automated gear rack for Squad Weapons Specialists."
 	icon_state = "spec_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
-/obj/structure/machinery/cm_vending/gear/spec/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_spec
+/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_spec
+
 
 //------------CLOTHING VENDOR---------------
 
@@ -126,9 +125,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 
-/obj/structure/machinery/cm_vending/clothing/specialist/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_specialist
+/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_specialist
 
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha
 	squad_tag = SQUAD_MARINE_1
@@ -154,22 +152,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/hedp_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
 	)
 
 /obj/effect/essentials_set/hefa_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
 	)
 
 /obj/effect/essentials_set/hidp_6_pack
@@ -194,12 +192,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/agmf_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
 	)
 
 /obj/effect/essentials_set/agmi_6_pack

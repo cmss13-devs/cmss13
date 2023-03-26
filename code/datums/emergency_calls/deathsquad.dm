@@ -18,7 +18,7 @@
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------
-/datum/emergency_call/death/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/death/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -47,19 +47,19 @@
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 //################################################################################################
-// MARSOC commandos - USCM Deathsquad. Event only
+// Marine commandos - USCM Deathsquad. Event only
 /datum/emergency_call/marsoc
-	name = "MARSOC Operatives"
+	name = "Marine Raider Strike Team"
 	mob_max = 8
 	mob_min = 5
 	probability = 0
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
-/datum/emergency_call/marsoc/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/marsoc/create_member(datum/mind/M, turf/override_spawn_loc)
 
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
@@ -69,19 +69,19 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a MARSOC Team Leader, better than all the rest.")))
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/sl, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite MARSOC Operative, the best of the best.")))
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider Operative, the best of the best.")))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc, TRUE, TRUE)
 	to_chat(H, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
 	to_chat(H, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))
 	return
 
 /datum/emergency_call/marsoc_covert
-	name = "MARSOC Operatives (Covert)"
+	name = "Marine Raider Operatives (Covert)"
 	mob_max = 8
 	mob_min = 5
 	probability = 0
@@ -97,12 +97,12 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a MARSOC Team Leader, better than all the rest.")))
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/sl/covert, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite MARSOC Operative, the best of the best.")))
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider, the best of the best.")))
 		arm_equipment(H, /datum/equipment_preset/uscm/marsoc/covert, TRUE, TRUE)
 	to_chat(H, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
 	to_chat(H, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))

@@ -1,9 +1,10 @@
 /obj/item/hardpoint/locomotion
 	name = "locomotive aid hardpoint"
 	desc = "i help the vehicle move :)"
+	gender = PLURAL // it's always wheels or treads
 
 	damage_multiplier = 0.15
-	var/acid_resistant = FALSE	//reduces damage dealt by acid spray
+	var/acid_resistant = FALSE //reduces damage dealt by acid spray
 
 	// these are used to change all vehicle's movement characteristics, 0 means no change
 	var/move_delay = VEHICLE_SPEED_FASTNORMAL
@@ -18,7 +19,7 @@
 	owner.move_turn_momentum_loss_factor = initial(owner.move_turn_momentum_loss_factor)
 	owner.next_move = world.time + move_delay
 
-/obj/item/hardpoint/locomotion/on_install(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/locomotion/on_install(obj/vehicle/multitile/V)
 	if(move_delay)
 		V.move_delay = move_delay
 	if(move_max_momentum)
@@ -29,11 +30,11 @@
 		V.move_turn_momentum_loss_factor = move_turn_momentum_loss_factor
 	owner.next_move = world.time + move_delay
 
-/obj/item/hardpoint/locomotion/on_uninstall(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/locomotion/on_uninstall(obj/vehicle/multitile/V)
 	deactivate()
 
 //unique proc for locomotion modules, taking damage from acid spray and toxic waters and other stuff on ground
-/obj/item/hardpoint/locomotion/proc/handle_acid_damage(var/atom/A)
+/obj/item/hardpoint/locomotion/proc/handle_acid_damage(atom/A)
 	if(health <= 0)
 		return
 	var/take_damage = 0

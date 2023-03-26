@@ -1,5 +1,4 @@
-
-/mob/proc/has_disease(var/datum/disease/virus)
+/mob/proc/has_disease(datum/disease/virus)
 	for(var/datum/disease/D in viruses)
 		if(D.IsSame(virus))
 			//error("[D.name]/[D.type] is the same as [virus.name]/[virus.type]")
@@ -7,7 +6,7 @@
 	return 0
 
 // This proc has some procs that should be extracted from it. I believe we can develop some helper procs from it - Rockdtben
-/mob/proc/contract_disease(var/datum/disease/virus, var/skip_this = 0, var/force_species_check=1, var/spread_type = -5)
+/mob/proc/contract_disease(datum/disease/virus, skip_this = 0, force_species_check=1, spread_type = -5)
 	if(stat == DEAD)
 		return
 	if(istype(virus, /datum/disease/advance))
@@ -32,11 +31,11 @@
 				if(H.species.name == vuln_species)
 					fail = FALSE
 					break
-		
+
 		if(fail) return
 
 	if(skip_this == 1)
-		//if(src.virus)				< -- this used to replace the current disease. Not anymore!
+		//if(src.virus) < -- this used to replace the current disease. Not anymore!
 			//src.virus.cure(0)
 		var/datum/disease/v = virus.Copy()
 		src.viruses += v
@@ -91,7 +90,7 @@
 	if(species.flags & IS_SYNTHETIC) return //synthetic species are immune
 	..(virus, skip_this, force_species_check, spread_type)
 
-/mob/proc/AddDisease(datum/disease/D, var/roll_for_carrier = TRUE)
+/mob/proc/AddDisease(datum/disease/D, roll_for_carrier = TRUE)
 	var/datum/disease/DD = new D.type(1, D)
 	viruses += DD
 	DD.affected_mob = src

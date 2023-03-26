@@ -16,7 +16,7 @@
 	var/build_stage = BARRICADE_SANDBAG_1
 	metallic = FALSE
 
-/obj/structure/barricade/sandbags/New(loc, mob/user, direction, var/amount = 1)
+/obj/structure/barricade/sandbags/New(loc, mob/user, direction, amount = 1)
 	if(direction)
 		setDir(direction)
 
@@ -34,6 +34,8 @@
 	..()
 
 	icon_state = "sandbag[build_stage]"
+	if(dir > 2)
+		layer = OBJ_LAYER
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE
@@ -74,7 +76,7 @@
 			if(do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 				SPAN_NOTICE("You disassemble [src]."))
-				destroy(TRUE)
+				deconstruct(TRUE)
 		return TRUE
 
 	if(istype(W, stack_type))
@@ -99,11 +101,13 @@
 	else
 		. = ..()
 
-/obj/structure/barricade/sandbags/destroy(deconstruct)
-	if(deconstruct && is_wired)
-		new /obj/item/stack/barbed_wire(loc)
-	if(stack_type && health > 0)
-		new stack_type(loc, stack_amount)
+/obj/structure/barricade/sandbags/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(is_wired)
+			new /obj/item/stack/barbed_wire(loc)
+		if(stack_type && health > 0)
+			new stack_type(loc, stack_amount)
+	density = FALSE
 	qdel(src)
 
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
@@ -143,7 +147,7 @@
 	climbable = FALSE
 	. = ..()
 
-/obj/structure/barricade/sandbags/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/sandbags/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

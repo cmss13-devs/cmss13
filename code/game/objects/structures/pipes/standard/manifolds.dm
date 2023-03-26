@@ -6,7 +6,7 @@
 	dir = SOUTH
 	valid_directions = list(EAST, NORTH, WEST)
 
-/obj/structure/pipes/standard/manifold/color_cache_name(var/obj/structure/pipes/node)
+/obj/structure/pipes/standard/manifold/color_cache_name(obj/structure/pipes/node)
 	if(pipe_color == node.pipe_color)
 		return node.pipe_color
 	else
@@ -28,7 +28,7 @@
 		if(WEST)
 			valid_directions = list(NORTH, EAST, SOUTH)
 
-/obj/structure/pipes/standard/manifold/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/manifold/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -83,7 +83,7 @@
 
 /obj/structure/pipes/standard/manifold/hidden
 	icon_state = "map"
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
+	alpha = 128 //set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/structure/pipes/standard/manifold/hidden/update_icon()
 	level = 1
@@ -161,7 +161,7 @@
 
 /obj/structure/pipes/standard/manifold/fourway/hidden
 	icon_state = "map_4way"
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
+	alpha = 128 //set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/update_icon()
 	level = 1

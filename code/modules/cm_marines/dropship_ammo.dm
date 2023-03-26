@@ -1,29 +1,42 @@
 
 
 
-//////////////////////////////////// dropship weapon ammunition ////////////////////////////
-
+/// Dropship weaponry ammunition
 /obj/structure/ship_ammo
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	density = TRUE
 	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
-	var/fire_mission_delay = 4 // from 1 to 4 (or more if ya want)
-	var/travelling_time = 100 //time to impact
-	var/equipment_type //type of equipment that accept this type of ammo.
+	/// Delay between firing steps
+	var/fire_mission_delay = 4
+	/// Time to impact in deciseconds
+	var/travelling_time = 100
+	/// Type of equipment that accept this type of ammo.
+	var/equipment_type
+	/// Ammunition count remaining
 	var/ammo_count
+	/// Maximal ammunition count
 	var/max_ammo_count
-	var/ammo_name = "round" //what to call the ammo in the ammo transfering message
+	/// What to call the ammo in the ammo transfering message
+	var/ammo_name = "round"
 	var/ammo_id
-	var/transferable_ammo = FALSE //whether the ammo inside this magazine can be transfered to another magazine.
-	var/accuracy_range = 3 //how many tiles the ammo can deviate from the laser target
-	var/warning_sound = 'sound/machines/hydraulics_2.ogg' //sound played mere seconds before impact
+	/// Whether the ammo inside this magazine can be transfered to another magazine.
+	var/transferable_ammo = FALSE
+	/// How many tiles the ammo can deviate from the laser target
+	var/accuracy_range = 3
+	/// Sound played mere seconds before impact
+	var/warning_sound = 'sound/effects/rocketpod_fire.ogg'
+	/// Volume of the sound played before impact
 	var/warning_sound_volume = 70
+	/// Ammunition expended each time this is fired
 	var/ammo_used_per_firing = 1
-	var/max_inaccuracy = 6 //what's the max deviation allowed when the ammo is no longer guided by a laser.
-	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
-	var/source_mob //who fired it
+	/// Maximum deviation allowed when the ammo is not longer guided by a laser
+	var/max_inaccuracy = 6
+	/// Cost to build in the fabricator, zero means unbuildable
+	var/point_cost
+	/// Mob that fired this ammunition (the pilot pressing the trigger)
+	var/mob/source_mob
 	var/combat_equipment = TRUE
 
 
@@ -68,7 +81,7 @@
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
-/obj/structure/ship_ammo/proc/transfer_ammo(var/obj/structure/ship_ammo/target, var/mob/user)
+/obj/structure/ship_ammo/proc/transfer_ammo(obj/structure/ship_ammo/target, mob/user)
 	if(type != target.type)
 		to_chat(user, SPAN_NOTICE("\The [src] and \the [target] use incompatible types of ammunition!"))
 		return
@@ -392,18 +405,22 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 600
+	point_cost = 800
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
+	/// Special structures it needs to break with drop pod
+	var/list/breakeable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 
 /obj/structure/ship_ammo/sentry/detonate_on(turf/impact)
 	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
+	droppod.special_structures_to_damage = breakeable_structures
+	droppod.special_structure_damage = 500
 	droppod.drop_time = 5 SECONDS
 	droppod.launch(impact)
 	qdel(src)
 
 /obj/structure/ship_ammo/sentry/can_fire_at(turf/impact, mob/user)
-	for(var/obj/structure/machinery/defenses/def in urange(2, impact))
+	for(var/obj/structure/machinery/defenses/def in urange(4, impact))
 		to_chat(user, SPAN_WARNING("The selected drop site is too close to another deployed defense!"))
 		return FALSE
 	if(istype(impact, /turf/closed))

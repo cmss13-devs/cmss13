@@ -40,9 +40,7 @@ export const captureExternalLinks = () => {
       url = 'https://' + url;
     }
     // Open the link
-    Byond.topic({
-      tgui: 1,
-      window_id: window.__windowId__,
+    Byond.sendMessage({
       type: 'openLink',
       url,
     });

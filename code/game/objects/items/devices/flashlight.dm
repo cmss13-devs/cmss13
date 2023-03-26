@@ -16,7 +16,14 @@
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
 
+	var/can_be_broken = TRUE //can xenos swipe at this to break it/turn it off?
+	var/breaking_sound = 'sound/handling/click_2.ogg' //sound used when this happens
+
 /obj/item/device/flashlight/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/device/flashlight/update_icon()
 	. = ..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
@@ -31,10 +38,9 @@
 			SetLuminosity(0)
 	. = ..()
 
-
-/obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
+/obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
-		icon_state = "[initial(icon_state)]-on"
+		update_icon()
 		if(loc && loc == user)
 			user.SetLuminosity(brightness_on, FALSE, src)
 		else if(isturf(loc))
@@ -99,36 +105,44 @@
 	add_fingerprint(user)
 	if(on && user.zone_selected == "eyes")
 
-		if((user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
-			return ..()	//just hit them in the head
+		if((user.getBrainLoss() >= 60) && prob(50)) //too dumb to use flashlight properly
+			return ..() //just hit them in the head
 
-		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey")	//don't have dexterity
+		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
-		var/mob/living/carbon/human/H = M	//mob has protective eyewear
+		var/mob/living/carbon/human/H = M //mob has protective eyewear
 		if(ishuman(H) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
 			to_chat(user, SPAN_NOTICE("You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first."))
 			return
 
-		if(M == user)	//they're using it on themselves
+		if(M == user) //they're using it on themselves
 			M.flash_eyes()
 			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
-									 SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
+							SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
-							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
+							SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
-		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND)	//mob is dead or fully blind
+		if(istype(M, /mob/living/carbon/human)) //robots and aliens are unaffected
+			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND) //mob is dead or fully blind
 				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
-			else	//they're okay!
+			else //they're okay!
 				M.flash_eyes()
 				to_chat(user, SPAN_NOTICE("[M]'s pupils narrow."))
 	else
 		return ..()
 
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M)
+	. = ..()
+
+	if(on && can_be_broken)
+		if(breaking_sound)
+			playsound(src.loc, breaking_sound, 25, 1)
+		on = FALSE
+		update_brightness()
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
@@ -176,7 +190,15 @@
 	on = 0
 	raillight_compatible = 0
 
-/obj/item/device/flashlight/lamp/on/Initialize()
+	breaking_sound = 'sound/effects/Glasshit.ogg'
+
+/obj/item/device/flashlight/lamp/Initialize()
+	. = ..()
+
+	if(on)
+		update_brightness()
+
+/obj/item/device/flashlight/lamp/on/Initialize() //unused, but im leaving it here anyways :D
 	. = ..()
 	on = 1
 	update_brightness()
@@ -190,6 +212,7 @@
 	brightness_on = 2
 	w_class = SIZE_LARGE
 	on = 1
+	breaking_sound = null
 
 //Generic Candelabra
 /obj/item/device/flashlight/lamp/candelabra
@@ -197,6 +220,9 @@
 	desc = "A fire hazard that can be used to thwack things with impunity."
 	icon_state = "candelabra"
 	force = 15
+	on = TRUE
+
+	breaking_sound = null
 
 //Green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
@@ -213,10 +239,6 @@
 	w_class = SIZE_LARGE
 	on = 1
 
-//obj/item/device/flashlight/lamp/tripod/New() //start all tripod lamps as on.
-//	..()
-//	update_brightness()
-
 /obj/item/device/flashlight/lamp/tripod/grey
 	icon_state = "tripod_lamp_grey"
 
@@ -225,7 +247,7 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(istype(usr, /mob/living/carbon/Xenomorph)) //Sneaky xenos turning off the lights
+	if(istype(usr, /mob/living/carbon/xenomorph)) //Sneaky xenos turning off the lights
 		attack_alien(usr)
 		return
 
@@ -241,16 +263,49 @@
 	brightness_on = 5 //As bright as a flashlight, but more disposable. Doesn't burn forever though
 	icon_state = "flare"
 	item_state = "flare"
-	actions = list()	//just pull it manually, neckbeard.
+	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
+	can_be_broken = FALSE
+	var/burnt_out = FALSE
 	var/fuel = 0
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
 
+	/// Whether to use flame overlays for this flare type
+	var/show_flame = TRUE
+	/// Tint for the greyscale flare flame
+	var/flame_tint = "#ffcccc"
+	/// Color correction, added to the whole flame overlay
+	var/flame_base_tint = "#ff0000"
+	// "But, why are there two colors?"
+	// The flame_tint is applied multiplicatively to the greyscale animation
+	// However it represents levels within the flame, not the color of the flame as a whole.
+	// To get around this, we additively apply flame_base_tint for coloring.
+
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(1600 SECONDS, 2000 SECONDS)
+
+/obj/item/device/flashlight/flare/update_icon()
+	overlays?.Cut()
+	. = ..()
+	if(on)
+		icon_state = "[initial(icon_state)]-on"
+		if(show_flame)
+			var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame.color = flame_tint
+			flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+			var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame_base.color = flame_base_tint
+			flame_base.appearance_flags = KEEP_APART|RESET_COLOR
+			flame_base.blend_mode = BLEND_ADD
+			flame.overlays += flame_base
+			overlays += flame
+	else if(burnt_out)
+		icon_state = "[initial(icon_state)]-empty"
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/device/flashlight/flare/dropped(mob/user)
 	. = ..()
@@ -267,10 +322,24 @@
 	if(fuel <= 0 || !on)
 		burn_out()
 
+// Causes flares to stop with a rotation offset for visual purposes
+/obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
+	pixel_fuzz = 16
+	return ..()
+/obj/item/device/flashlight/flare/pickup()
+	if(transform)
+		apply_transform(matrix()) // reset rotation
+	pixel_x = 0
+	pixel_y = 0
+	return ..()
+
 /obj/item/device/flashlight/flare/proc/burn_out()
 	turn_off()
 	fuel = 0
-	icon_state = "[initial(icon_state)]-empty"
+	burnt_out = TRUE
+	update_icon()
 	add_to_garbage(src)
 	STOP_PROCESSING(SSobj, src)
 
@@ -321,7 +390,7 @@
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
-			
+
 /obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
 	return
 
@@ -340,12 +409,16 @@
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
 	invisibility = 101 //Can't be seen or found, it's "up in the sky"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	brightness_on = 7 //Way brighter than most lights
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
 	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/update_icon()
+	return
 
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
 	..()
@@ -359,8 +432,9 @@
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
-	anchored = 1//can't be picked up
+	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
@@ -372,7 +446,7 @@
 	name = "chemical light"
 	brightness_on = 0
 
-/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, var/amount)
+/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
 	brightness_on = round(amount * 0.04)
 	if(!brightness_on)
@@ -408,7 +482,7 @@
 	name = "lantern"
 	icon_state = "lantern"
 	desc = "A mining lantern."
-	brightness_on = 6			// luminosity when on
+	brightness_on = 6 // luminosity when on
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -421,6 +495,8 @@
 	var/faction = ""
 	var/datum/cas_signal/signal
 	var/activate_message = TRUE
+	flame_base_tint = "#00aa00"
+	flame_tint = "#aaccaa"
 
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
@@ -434,7 +510,7 @@
 
 	if(.)
 		faction = user.faction
-		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_signal), user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()
@@ -488,7 +564,7 @@
 	desc = "A signal flare used to test CAS runs. If you're seeing this, someone messed up."
 
 /obj/item/device/flashlight/flare/signal/debug/Initialize()
-	..()
+	. = ..()
 	fuel = INFINITY
 	return INITIALIZE_HINT_ROUNDSTART
 

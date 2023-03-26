@@ -2,6 +2,7 @@
     "map_name": "Fiorina Science Annex",
     "map_path": "map_files/FOP_v3_Sciannex",
     "map_file": "Fiorina_SciAnnex.dmm",
+    "webmap_url": "Fiorina",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/florina",
         "/datum/equipment_preset/survivor/doctor/florina",
@@ -11,7 +12,9 @@
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/gangleader",
-        "/datum/equipment_preset/survivor/engineer/florina"
+        "/datum/equipment_preset/survivor/engineer/florina",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3750,
@@ -24,10 +27,7 @@
     "map_item_type": "/obj/item/map/FOP_map_v3",
     "announce_text": "An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "traits": [{ "Ground": true }],
-    "nightmare": {
-		"scenario": "maps/Nightmare/maps/FOP_v3_Sciannex/scenario.json",
-        "mapgen": "maps/Nightmare/maps/FOP_v3_Sciannex/mapgen.json"
-    },
+    "nightmare_path": "maps/Nightmare/maps/FOP_v3_Sciannex/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

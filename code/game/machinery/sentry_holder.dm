@@ -1,15 +1,15 @@
 /obj/structure/machinery/sentry_holder
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	unacidable = 1
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sentry_system_installed"
 	active_power_usage = 5000
 	idle_power_usage = 1000
 	power_channel = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	machine_processing = 1
 	var/deployment_cooldown
 	var/turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable // Path of the turret used
@@ -26,8 +26,12 @@
 		ox = pixel_x
 		oy = pixel_y
 
+/obj/structure/machinery/sentry_holder/Destroy()
+	QDEL_NULL(deployed_turret)
+	. = ..()
+
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
-	..()
+	. = ..()
 	if(!deployed_turret)
 		. += "It's offline."
 
@@ -56,7 +60,7 @@
 		else
 			icon_state = "sentry_system_destroyed"
 	else
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(!ind)
 			deploy_sentry()
 			ind = TRUE

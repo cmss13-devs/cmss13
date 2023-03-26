@@ -1,10 +1,12 @@
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
 /**
  * tgui state: hands_state
  *
  * Checks that the src_object is in the user's hands.
- *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
  */
 
 GLOBAL_DATUM_INIT(hands_state, /datum/ui_state/hands_state, new)
@@ -18,6 +20,7 @@ GLOBAL_DATUM_INIT(hands_state, /datum/ui_state/hands_state, new)
 	return UI_CLOSE
 
 /mob/living/hands_can_use_topic(src_object)
-	if(is_holding(src_object))
-		return UI_INTERACTIVE
-	return UI_CLOSE
+	if(!is_holding(src_object))
+		message_admins("[src_object] holding check failed")
+		return UI_CLOSE
+	return UI_INTERACTIVE

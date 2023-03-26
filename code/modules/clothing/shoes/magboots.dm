@@ -20,7 +20,7 @@
 		magpulse = 1
 		icon_state = "magboots1"
 		to_chat(user, "You enable the mag-pulse traction system.")
-	user.update_inv_shoes()	//so our mob-overlays update
+	user.update_inv_shoes() //so our mob-overlays update
 
 	for(var/X in actions)
 		var/datum/action/A = X

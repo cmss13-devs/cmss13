@@ -30,7 +30,7 @@ var/cmp_field = "name"
 	return sorttext(a.ckey, b.ckey)
 
 /proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	return initial(b.init_order) - initial(a.init_order)	//uses initial() so it can be used on types
+	return initial(b.init_order) - initial(a.init_order) //uses initial() so it can be used on types
 
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return sorttext(b.name, a.name)
@@ -54,3 +54,6 @@ var/cmp_field = "name"
 		. = B.qdels - A.qdels
 
 var/atom/cmp_dist_origin=null
+
+/proc/cmp_typepaths_asc(A, B)
+	return sorttext("[B]","[A]")

@@ -19,16 +19,16 @@
 		3. Each time the explosion propagates, it loses power_falloff power
 
 		4. Each time the explosion propagates, atoms in the tile the explosion is in
-		   may reduce the power of the explosion by their explosive resistance
+		may reduce the power of the explosion by their explosive resistance
 
 	That's it. There are some special rules, though, namely:
 
 		* If the explosion occured in a wall, the wave is strengthened
-		  with power *= reflection_multiplier and reflected back in the
-		  direction it came from
+		with power *= reflection_multiplier and reflected back in the
+		direction it came from
 
 		* If two explosions meet, they will either merge into an amplified
-		  or weakened explosion
+		or weakened explosion
 */
 
 /datum/automata_cell/explosion
@@ -80,7 +80,7 @@
 
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
-/datum/automata_cell/explosion/merge(var/datum/automata_cell/explosion/E)
+/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)
 	// Non-merging explosions take priority
 	if(!should_merge)
 		return TRUE
@@ -115,7 +115,7 @@
 	return is_stronger
 
 // Get a list of all directions the explosion should propagate to before dying
-/datum/automata_cell/explosion/proc/get_propagation_dirs(var/reflected)
+/datum/automata_cell/explosion/proc/get_propagation_dirs(reflected)
 	var/list/propagation_dirs = list()
 
 	// If the cell is the epicenter, propagate in all directions
@@ -132,12 +132,12 @@
 	return propagation_dirs
 
 // If you need to set vars on the new cell other than the basic ones
-/datum/automata_cell/explosion/proc/setup_new_cell(var/datum/automata_cell/explosion/E)
+/datum/automata_cell/explosion/proc/setup_new_cell(datum/automata_cell/explosion/E)
 	if(E.shockwave)
 		E.shockwave.alpha = E.power
 	return
 
-/datum/automata_cell/explosion/update_state(var/list/turf/neighbors)
+/datum/automata_cell/explosion/update_state(list/turf/neighbors)
 	if(delay > 0)
 		delay--
 		return
@@ -147,13 +147,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, /atom.proc/ex_act, power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -219,16 +219,17 @@
 	qdel(src)
 
 /*
-  The issue is that between the cell being birthed and the cell processing,
-  someone could potentially move through the cell unharmed.
+The issue is that between the cell being birthed and the cell processing,
+someone could potentially move through the cell unharmed.
 
-  To prevent that, we track all atoms that enter the explosion cell's turf
-  and blow them up immediately once they do.
+To prevent that, we track all atoms that enter the explosion cell's turf
+and blow them up immediately once they do.
 
-  When the cell processes, we simply don't blow up atoms that were tracked
-  as having entered the turf.
+When the cell processes, we simply don't blow up atoms that were tracked
+as having entered the turf.
 */
-/datum/automata_cell/explosion/proc/on_turf_entered(var/atom/movable/A)
+
+/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
 	// Once is enough
 	if(A in exploded_atoms)
 		return
@@ -240,13 +241,13 @@
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, /atom.proc/ex_act, power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(var/turf/epicenter, var/power, var/falloff, var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, var/direction, var/datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -273,6 +274,9 @@
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
+	if(power > EXPLOSION_MAX_POWER)
+		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
+		power = EXPLOSION_MAX_POWER
 
 	// something went wrong :(
 	if(QDELETED(E))
@@ -287,10 +291,9 @@
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
-		sleep(1)
 		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
 
-/proc/log_explosion(var/atom/A, var/datum/automata_cell/explosion/E)
+/proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))
 		var/mob/living/M = A
 		var/turf/T = get_turf(A)
@@ -341,6 +344,6 @@
 	name = "shockwave"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = 1
-	mouse_opacity = 0
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = FLY_LAYER

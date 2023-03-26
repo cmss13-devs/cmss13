@@ -30,7 +30,7 @@
 
 	if(animated)
 		animate(screen, alpha = 0, time = animated)
-		addtimer(CALLBACK(src, .proc/clear_fullscreen_after_animate, screen), animated, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(clear_fullscreen_after_animate), screen), animated, TIMER_CLIENT_TIME)
 	else
 		if(client)
 			client.screen -= screen
@@ -68,7 +68,7 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
@@ -131,6 +131,12 @@
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
 
+/atom/movable/screen/fullscreen/blurry
+	icon = 'icons/mob/hud/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "blurry"
+	layer = FULLSCREEN_BLURRY_LAYER
+
 /atom/movable/screen/fullscreen/nvg
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
@@ -160,6 +166,9 @@
 	icon_state = "xeno_painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
+/atom/movable/screen/fullscreen/laser_blind
+	icon_state = "impairedoverlay1"
+
 //Weather overlays//
 
 /atom/movable/screen/fullscreen/weather
@@ -169,31 +178,11 @@
 	show_when_dead = TRUE
 
 
-/atom/movable/screen/fullscreen/weather/snow
-	icon_state = "test state"
+/atom/movable/screen/fullscreen/weather/low
+	icon_state = "impairedoverlay1"
 
-/atom/movable/screen/fullscreen/weather/snowstorm
-	icon_state = "impairedoverlay1" // Populate this
+/atom/movable/screen/fullscreen/weather/medium
+	icon_state = "impairedoverlay2"
 
-/atom/movable/screen/fullscreen/weather/blizzard
-	icon_state = "impairedoverlay2" // Populate this
-
-/atom/movable/screen/fullscreen/lighting_backdrop
-	icon = 'icons/mob/hud/screen1.dmi'
-	icon_state = "flash"
-	transform = matrix(200, 0, 0, 0, 200, 0)
-	plane = LIGHTING_PLANE
-	blend_mode = BLEND_OVERLAY
-	show_when_dead = TRUE
-
-//Provides darkness to the back of the lighting plane
-/atom/movable/screen/fullscreen/lighting_backdrop/lit
-	invisibility = INVISIBILITY_LIGHTING
-	layer = BACKGROUND_LAYER+21
-	color = "#000"
-	show_when_dead = TRUE
-
-//Provides whiteness in case you don't see lights so everything is still visible
-/atom/movable/screen/fullscreen/lighting_backdrop/unlit
-	layer = BACKGROUND_LAYER+20
-	show_when_dead = TRUE
+/atom/movable/screen/fullscreen/weather/high
+	icon_state = "impairedoverlay3"

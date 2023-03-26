@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_teleports(var/href)
+/datum/admins/proc/topic_teleports(href)
 	switch(href)
 		if("jump_to_area")
 			var/area/choice = tgui_input_list(owner, "Pick an area to jump to:", "Jump", return_sorted_areas())
@@ -45,7 +45,10 @@
 			owner.jumptooffsetcoord(targ_x, targ_y)
 
 		if("jump_to_obj")
-			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", "Jump", GLOB.object_list)
+			var/list/obj/targets = list()
+			for(var/obj/O in world)
+				targets += O
+			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", "Jump", targets)
 			if(QDELETED(choice))
 				return
 
@@ -91,7 +94,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 
-			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_mobs_by_faction")
 			var/faction = tgui_input_list(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", list("Humanoids", "Xenomorphs"))
@@ -118,7 +121,7 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else if(faction == "Xenomorphs")
 				faction = null
@@ -134,7 +137,7 @@
 					return
 				var/datum/hive_status/Hive = GLOB.hive_datum[hives[faction]]
 				var/list/targets = Hive.totalXenos
-				for(var/mob/living/carbon/Xenomorph/X in targets)
+				for(var/mob/living/carbon/xenomorph/X in targets)
 					var/area/AR = get_area(X)
 					if(X.stat == DEAD || AR.statistic_exempt)
 						targets.Remove(X)
@@ -150,8 +153,69 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else
 				to_chat(owner, SPAN_ALERT("Mobs choice error. Aborting."))
 				return
+
+		if("teleport_corpses")
+			if(GLOB.dead_mob_list.len < 0)
+				to_chat(owner, SPAN_ALERT("No corpses found. Aborting."))
+				return
+
+			if(alert(owner, "[GLOB.dead_mob_list.len] corpses are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				return
+			for(var/mob/M in GLOB.dead_mob_list)
+				if(!M)
+					continue
+				M.on_mob_jump()
+				M.forceMove(get_turf(owner.mob))
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+
+		if("teleport_items_by_type")
+			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
+			if(!item)
+				return
+
+			var/list/types = typesof(/obj)
+			var/list/matches = new()
+
+			//Figure out which object they might be trying to fetch
+			for(var/path in types)
+				if(findtext("[path]", item))
+					matches += path
+
+			if(matches.len==0)
+				return
+
+			var/chosen
+			if(matches.len==1)
+				chosen = matches[1]
+			else
+				//If we have multiple options, let them select which one they meant
+				chosen = tgui_input_list(usr, "Select an object type", "Find Object", matches)
+
+			if(!chosen)
+				return
+
+			//Find all items in the world
+			var/list/targets = list()
+			for(var/obj/item/M in world)
+				if(istype(M, chosen))
+					targets += M
+
+			if(targets.len < 1)
+				to_chat(owner, SPAN_ALERT("No items of type [chosen] were found. Aborting."))
+				return
+
+			if(alert(owner, "[targets.len] items are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				return
+
+			//Fetch the items
+			for(var/obj/item/M in targets)
+				if(!M)
+					continue
+				M.forceMove(get_turf(owner.mob))
+
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)

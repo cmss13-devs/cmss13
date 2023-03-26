@@ -43,7 +43,7 @@
 		return
 
 	if(status)
-		M.KnockDown(6)
+		M.apply_effect(6, WEAKEN)
 		charges -= 2
 		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
 
@@ -78,7 +78,7 @@
 
 /obj/item/weapon/stunprod/improved/attack(mob/M, mob/user)
 	..()
-	M.KnockDown(14)
+	M.apply_effect(14, WEAKEN)
 
 /obj/item/weapon/stunprod/improved/get_examine_text(mob/user)
 	. = ..()

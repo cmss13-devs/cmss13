@@ -2,7 +2,7 @@
 /obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipment and weapons installed on the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
 	var/faction = FACTION_MARINE
@@ -19,6 +19,10 @@
 	var/datum/cas_fire_mission/editing_firemission
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
+	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
+	var/matrixcol //color of matrix, only used when we upgrade to nv
+	var/power //level of the property
+	var/datum/cas_signal/selected_cas_signal
 
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -36,19 +40,36 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
+/obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
+	if(istype(W, /obj/item/frame/matrix_frame))
+		var/obj/item/frame/matrix_frame/MATRIX = W
+		if(MATRIX.state == ASSEMBLY_LOCKED)
+			user.drop_held_item(W, src)
+			W.forceMove(src)
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			upgraded = MATRIX.upgrade
+			matrixcol = MATRIX.matrixcol
+			power = MATRIX.power
 
-/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+		else
+			to_chat(user, SPAN_WARNING("matrix is not complete!"))
+
+/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
-	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(FM))
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if (!istype(dropship))
 		return
 
 	var/shuttle_state
-	switch(FM.moving_status)
-		if(SHUTTLE_IDLE) shuttle_state = "idle"
-		if(SHUTTLE_WARMUP) shuttle_state = "warmup"
-		if(SHUTTLE_INTRANSIT) shuttle_state = "in_transit"
-		if(SHUTTLE_CRASHED) shuttle_state = "crashed"
+	switch(dropship.mode)
+		if(SHUTTLE_IDLE)
+			shuttle_state = "idle"
+		if(SHUTTLE_IGNITING)
+			shuttle_state = "warmup"
+		if(SHUTTLE_CALL)
+			shuttle_state = "in_transit"
+		if(SHUTTLE_CRASHED)
+			shuttle_state = "crashed"
 
 
 	var/list/equipment_data = list()
@@ -75,9 +96,9 @@
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)
 		targets_data += list(list("target_name" = "[LT.name] ([laser_area.name])", "target_tag" = LT.target_id))
-	shuttle_equipments = FM.equipments
+	shuttle_equipments = dropship.equipments
 	var/element_nbr = 1
-	for(var/X in FM.equipments)
+	for(var/X in dropship.equipments)
 		var/obj/structure/dropship_equipment/E = X
 		equipment_data += list(list("name"= sanitize(copytext(E.name,1,MAX_MESSAGE_LEN)), "eqp_tag" = element_nbr, "is_weapon" = E.is_weapon, "is_interactable" = E.is_interactable))
 		element_nbr++
@@ -157,12 +178,10 @@
 
 		if((screen_mode != 0 && in_firemission_mode) || !selected_firemission)
 			in_firemission_mode = FALSE
-
 		if(selected_firemission && in_firemission_mode)
 			if(selected_firemission.check(src)!=FIRE_MISSION_ALL_GOOD)
 				in_firemission_mode = FALSE
 				selected_firemission = null
-
 		if(selected_firemission && in_firemission_mode)
 			screen_mode = 3
 			fm_offset = firemission_envelope.recorded_offset
@@ -180,7 +199,7 @@
 
 	data = list(
 		"shuttle_state" = shuttle_state,
-		"fire_mission_enabled" = FM.transit_gun_mission,
+		"fire_mission_enabled" = dropship.in_flyby,
 		"equipment_data" = equipment_data,
 		"targets_data" = targets_data,
 		"selected_eqp" = selected_eqp_name,
@@ -220,8 +239,8 @@
 
 	add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if (!istype(dropship))
 		return
 
 	if(href_list["equip_interact"])
@@ -257,10 +276,10 @@
 		for(var/X in cas_group.cas_signals)
 			var/datum/cas_signal/LT = X
 			if(LT.target_id == targ_id && LT.valid_signal())
-				if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+				if(dropship.mode != SHUTTLE_CALL)
 					to_chat(usr, SPAN_WARNING("Dropship can only fire while in flight."))
 					return
-				if(shuttle.queen_locked)
+				if(dropship.door_override)
 					return
 				if(!selected_equipment || !selected_equipment.is_weapon)
 					to_chat(usr, SPAN_WARNING("No weapon selected."))
@@ -269,7 +288,7 @@
 				if(!skillcheck(M, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
 					to_chat(usr, SPAN_WARNING("You don't have the training to fire this weapon!"))
 					return
-				if(!shuttle.transit_gun_mission && DEW.fire_mission_only)
+				if(!dropship.in_flyby && DEW.fire_mission_only)
 					to_chat(usr, SPAN_WARNING("[DEW] requires a fire mission flight type to be fired."))
 					return
 
@@ -401,6 +420,7 @@
 		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
+		firemission_envelope.remove_user_from_tracking(usr)
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
@@ -445,7 +465,7 @@
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
-		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+		if(dropship.mode != SHUTTLE_CALL)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 		var/datum/cas_iff_group/cas_group = cas_groups[faction]
@@ -473,7 +493,7 @@
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
 			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
-		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+		if(dropship.mode != SHUTTLE_CALL)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 		if(!firemission_envelope.recorded_loc)
@@ -522,7 +542,7 @@
 			to_chat(usr, SPAN_WARNING("System Error. Delete this Fire Mission."))
 
 	if(href_list["firemission_camera"])
-		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+		if(dropship.mode != SHUTTLE_CALL)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 
@@ -538,7 +558,7 @@
 		if(!ishuman(usr))
 			to_chat(usr, SPAN_WARNING("You have no idea how to do that!"))
 			return
-		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+		if(dropship.mode != SHUTTLE_CALL)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 
@@ -551,7 +571,6 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return
 
-		var/datum/cas_signal/selected_cas_signal
 		var/targ_id = text2num(href_list["cas_camera"])
 		for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 			if(LT.target_id == targ_id && LT.valid_signal())
@@ -561,21 +580,35 @@
 		if(!selected_cas_signal)
 			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
 			return
-
-		selected_cas_signal.linked_cam.view_directly(usr)
-		to_chat(usr, "You peek through the guidance camera.")
+		if(selected_cas_signal && selected_cas_signal.linked_cam)
+			selected_cas_signal.linked_cam.view_directly(usr)
+		else
+			to_chat(usr, SPAN_WARNING("Error!"))
+			return
+		give_action(usr, /datum/action/human_action/cancel_view)
+		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from_view))
+		RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(remove_from_view))
+		firemission_envelope.apply_upgrade(usr)
+		to_chat(usr, SPAN_NOTICE("You peek through the guidance camera."))
 
 	ui_interact(usr)
 
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view(mob/living/carbon/human/user)
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(user, COMSIG_MOB_RESISTED)
+	if(selected_cas_signal && selected_cas_signal.linked_cam)
+		selected_cas_signal.linked_cam.remove_from_view(user)
+	firemission_envelope.remove_upgrades(user)
+
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	if (!istype(dropship))
 		return
-	if (shuttle.in_transit_time_left < firemission_envelope.get_total_duration())
+	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
 		to_chat(usr, "Not enough time to complete the Fire Mission")
 		return
-	if (!shuttle.transit_gun_mission || shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(usr, "Has to be in Fly By mode")
 		return
 
@@ -617,7 +650,6 @@
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
 
-
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)
 		return
@@ -656,21 +688,20 @@
 	else
 		firemission_envelope.change_current_loc(shootloc)
 
-/obj/structure/machinery/computer/dropship_weapons
-	density = TRUE
-
 /obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
-	New()
-		..()
-		shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+
+/obj/structure/machinery/computer/dropship_weapons/dropship1/New()
+	..()
+	shuttle_tag = DROPSHIP_ALAMO
 
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
-	New()
-		..()
-		shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+
+/obj/structure/machinery/computer/dropship_weapons/dropship2/New()
+	..()
+	shuttle_tag = DROPSHIP_NORMANDY

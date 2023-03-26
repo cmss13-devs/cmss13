@@ -89,7 +89,7 @@
 /obj/item/storage/beer_pack
 	name = "beer pack"
 	desc = "A pack of Aspen beer cans."
-	icon = 'icons/obj/items/drinks.dmi'
+	icon = 'icons/obj/items/drinkcans.dmi'
 	icon_state = "6_pack_6"
 	item_state = "souto_classic"
 	storage_slots = 6
@@ -111,29 +111,30 @@
 	else
 		icon_state = "6_pack_[contents.len]"
 
-/obj/item/storage/box/m43
-	name = "M43-storing box"
-	desc = "A fairly decorated and ceremonial box containing a CLF M43 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
+/obj/item/storage/box/clf
+	name = "D18-storing box"
+	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_TINY
 	storage_slots = 2
 
-/obj/item/storage/box/m43/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/m43pistol(src)
-	new /obj/item/ammo_magazine/pistol/m43pistol(src)
+/obj/item/storage/box/clf/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/clfpistol(src)
+	new /obj/item/ammo_magazine/pistol/clfpistol(src)
 
 /obj/item/storage/box/c02_knife
 	name = "M8 cartridge bayonet packaging"
-	desc = "Contains one M8 Cartridge Bayonet and sister C02 cartridge. Thanks for being a dedicated Boots magazine subscriber!"
+	desc = "Contains one M8 Cartridge Bayonet and two sister C02 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
 	icon_state = "c02_box"
 	can_hold = list(/obj/item/attachable/bayonet/c02, /obj/item/c02_cartridge)
 	foldable = TRUE
-	storage_slots = 2
+	storage_slots = 3
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_SMALL
 
 /obj/item/storage/box/c02_knife/fill_preset_inventory()
 	new /obj/item/attachable/bayonet/c02(src)
+	new /obj/item/c02_cartridge(src)
 	new /obj/item/c02_cartridge(src)

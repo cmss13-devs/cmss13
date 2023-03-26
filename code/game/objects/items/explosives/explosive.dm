@@ -13,15 +13,15 @@
 	var/antigrief_protection
 	//Below is used for customization
 	var/obj/item/device/assembly_holder/detonator = null
-	var/list/containers = new/list()
+	var/list/obj/containers = list()
 	var/list/allowed_sensors = list()
 	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle)
 	var/max_container_volume = 120
 	var/current_container_volume = 0
 	var/assembly_stage = ASSEMBLY_EMPTY //The assembly_stage of the assembly
-	var/list/reaction_limits = list("max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
-									"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
-									"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	var/list/reaction_limits = list("max_ex_power" = 175, "base_ex_falloff" = 75, "max_ex_shards" = 32,
+									"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/use_dir = FALSE
@@ -43,10 +43,14 @@
 /obj/item/explosive/Destroy()
 	cause_data = null
 	creator = null
+	QDEL_NULL(detonator)
+	QDEL_NULL_LIST(containers)
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(Adjacent(user) && mods["alt"])
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(!has_blast_wave_dampener)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have blast wave dampening."))
 			return
@@ -171,7 +175,7 @@
 			detonator.a_left.activate()
 		active = TRUE
 
-/obj/item/explosive/proc/prime(var/force = FALSE)
+/obj/item/explosive/proc/prime(force = FALSE)
 	if(!force && (!customizable || !assembly_stage || assembly_stage < ASSEMBLY_LOCKED))
 		return
 
@@ -230,7 +234,7 @@
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
 		QDEL_IN(src, 50) //To make sure all reagents can work correctly before deleting the grenade.
 
-/obj/item/explosive/proc/make_copy_of(var/obj/item/explosive/other)
+/obj/item/explosive/proc/make_copy_of(obj/item/explosive/other)
 	cause_data = other.cause_data
 	assembly_stage = other.assembly_stage
 	falloff_mode = other.falloff_mode
@@ -241,13 +245,13 @@
 
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
-	set	name = "Toggle Blast Wave Dampener"
+	set name = "Toggle Blast Wave Dampener"
 	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
 	set src in usr
 
 	toggle_blast_dampener(usr)
 
-/obj/item/explosive/proc/toggle_blast_dampener(var/mob/living/carbon/human/H)
+/obj/item/explosive/proc/toggle_blast_dampener(mob/living/carbon/human/H)
 	if(!istype(H))
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
 		return

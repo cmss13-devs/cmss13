@@ -83,7 +83,7 @@ screen_position = screen loc for the bottom-left corner of the blurb.
 
 text_alignment = "right", "left", or "center"
 
-text_color = colour of the text.
+text_color = color of the text.
 
 blurb_key = a key used for specific blurb types so they are not shown repeatedly. Ex. someone who joins as CLF repeatedly only seeing the mission blurb the first time.
 
@@ -148,7 +148,7 @@ but should see their own spawn message even if the player already dropped as USC
 		T.maptext = "<span style=\"[style]\">[copytext(message,1,i)]</span>"
 		sleep(speed)
 
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/fade_blurb, targets, T), duration)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fade_blurb), targets, T), duration)
 
 /proc/fade_blurb(list/mob/targets, obj/T)
 	animate(T, alpha = 0, time = 0.5 SECONDS)

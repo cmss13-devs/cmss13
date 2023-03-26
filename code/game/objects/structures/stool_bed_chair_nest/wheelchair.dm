@@ -2,7 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //pulling something on wheels is easy
 	picked_up_item = null
 	var/bloodiness = 0
@@ -44,7 +44,7 @@
 			move_delay += 2
 		if(!working_hands)
 			return // No hands to drive your chair? Tough luck!
-		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
+		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
 			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_miltiplier()
 			move_delay += max(driver.pull_speed + pull_delay + 3*driver.grab_level, 0) //harder grab makes you slower
 
@@ -68,7 +68,7 @@
 
 /obj/structure/bed/chair/wheelchair/Collide(atom/A)
 	..()
-	if(!buckled_mob)	return
+	if(!buckled_mob) return
 
 	if(propelled)
 		var/mob/living/occupant = buckled_mob
@@ -81,7 +81,7 @@
 		occupant.apply_effect(6, STUTTER)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
-		if(ishuman(A) && !isYautja(A))
+		if(ishuman(A) && !isyautja(A))
 			var/mob/living/victim = A
 			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)

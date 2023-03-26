@@ -1,6 +1,3 @@
-
-
-
 /*
 FIRE ALARM
 */
@@ -9,24 +6,20 @@ FIRE ALARM
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire0"
-	var/detecting = 1.0
-	var/working = 1.0
-	var/time = 10.0
-	var/timing = 0.0
-	var/lockdownbyai = 0
-	anchored = 1.0
-	use_power = 1
+	var/detecting = 1
+	var/working = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
-	var/last_process = 0
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
 /obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
@@ -43,13 +36,14 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				icon_state="fire_b2"
+				icon_state = "fire_b2"
 			if(1)
-				icon_state="fire_b1"
+				icon_state = "fire_b1"
 			if(0)
-				icon_state="fire_b0"
-
+				icon_state = "fire_b0"
 		return
+
+	icon_state = "fire0"
 
 	if(stat & BROKEN)
 		icon_state = "firex"
@@ -59,7 +53,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
 		if(temperature > T0C+200)
-			src.alarm()			// added check of detector status here
+			src.alarm() // added check of detector status here
 	return
 
 /obj/structure/machinery/firealarm/attack_remote(mob/user as mob)
@@ -72,10 +66,10 @@ FIRE ALARM
 	if(prob(50/severity)) alarm()
 	..()
 
-/obj/structure/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
+	if (HAS_TRAIT(held_object, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
 		wiresexposed = !wiresexposed
 		update_icon()
 		return
@@ -83,28 +77,29 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+				if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
 						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
 						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
-				else if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+				else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
 					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
 					update_icon()
 			if(1)
-				if(istype(W, /obj/item/stack/cable_coil))
-					var/obj/item/stack/cable_coil/C = W
-					if (C.use(5))
+				if(istype(held_object, /obj/item/stack/cable_coil))
+					var/obj/item/stack/cable_coil/cable = held_object
+					if (cable.use(5))
 						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 						buildstage = 2
+						update_icon()
 						return
 					else
 						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 						return
-				else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				else if(HAS_TRAIT(held_object, TRAIT_TOOL_CROWBAR))
 					to_chat(user, "You pry out the circuit!")
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					spawn(20)
@@ -113,13 +108,13 @@ FIRE ALARM
 						buildstage = 0
 						update_icon()
 			if(0)
-				if(istype(W, /obj/item/circuitboard/firealarm))
+				if(istype(held_object, /obj/item/circuitboard/firealarm))
 					to_chat(user, "You insert the circuit!")
-					qdel(W)
+					qdel(held_object)
 					buildstage = 1
 					update_icon()
 
-				else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+				else if(HAS_TRAIT(held_object, TRAIT_TOOL_WRENCH))
 					to_chat(user, "You remove the fire alarm assembly from the wall!")
 					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
 					frame.forceMove(user.loc)
@@ -127,108 +122,49 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	//src.alarm() // why was this even a thing?
 	..()
 	return
 
 /obj/structure/machinery/firealarm/power_change()
 	..()
-	addtimer(CALLBACK(src, .proc/update_icon), rand(0,15))
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
 		return
 
-	if (buildstage != 2)
+	if (buildstage != 2 || wiresexposed)
 		return
 
-	user.set_interaction(src)
-	var/area/A = src.loc
-	var/d1
-	var/d2
-	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
-		A = A.loc
+	var/area/area = get_area(src)
 
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
-			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]\n<HR>The current alert level is: [get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-		show_browser(user, dat, "Fire Alarm", "firealarm")
+	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
+		reset()
 	else
-		A = A.loc
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-		show_browser(user, dat, "**Fire Alarm**", "firealarm")
-	return
+		alarm()
 
-/obj/structure/machinery/firealarm/Topic(href, href_list)
-	..()
-	if (usr.stat || inoperable())
-		return
-
-	if (buildstage != 2)
-		return
-
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
-		usr.set_interaction(src)
-		if (href_list["reset"])
-			src.reset()
-		else if (href_list["alarm"])
-			src.alarm()
-		else if (href_list["time"])
-			src.timing = text2num(href_list["time"])
-			last_process = world.timeofday
-			//START_PROCESSING(SSobj, src)
-		else if (href_list["tp"])
-			var/tp = text2num(href_list["tp"])
-			src.time += tp
-			src.time = min(max(round(src.time), 0), 120)
-
-		src.updateUsrDialog()
-
-		src.add_fingerprint(usr)
-	else
-		close_browser(usr, "firealarm")
-		return
 	return
 
 /obj/structure/machinery/firealarm/proc/reset()
 	if (!( src.working ))
 		return
-	var/area/A = src.loc
-	A = A.loc
-	if (!( istype(A, /area) ))
+	var/area/area = get_area(src)
+
+	if (!( istype(area, /area) ))
 		return
-	A.firereset()
+	area.firereset()
 	update_icon()
 	return
 
 /obj/structure/machinery/firealarm/proc/alarm()
 	if (!( src.working ))
 		return
-	var/area/A = src.loc
-	A = A.loc
-	if (!( istype(A, /area) ))
+	var/area/area = get_area(src)
+
+	if (!( istype(area, /area) ))
 		return
-	A.firealert()
+	area.firealert()
 	update_icon()
-	//playsound(src.loc, 'sound/ambience/signal.ogg', 50, 0)
 	return
 
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)

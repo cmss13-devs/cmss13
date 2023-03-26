@@ -13,6 +13,15 @@
 	var/volume = 30
 	var/transparent = FALSE //can we see what's in it?
 	var/reagent_desc_override = FALSE //does it have a special examining mechanic that should override the normal /reagent_containers examine proc?
+	actions_types = list(/datum/action/item_action/reagent_container/set_transfer_amount)
+
+/obj/item/reagent_container/Initialize()
+	if(!possible_transfer_amounts)
+		actions_types -= /datum/action/item_action/reagent_container/set_transfer_amount
+	. = ..()
+	if(!possible_transfer_amounts)
+		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
+	create_reagents(volume)
 
 /obj/item/reagent_container/get_examine_text(mob/user)
 	. = ..()
@@ -21,7 +30,7 @@
 		. += reagent_info
 
 /obj/item/reagent_container/proc/show_reagent_info(mob/user)
-	if(isXeno(user) || reagent_desc_override)
+	if(isxeno(user) || reagent_desc_override)
 		return
 	var/list/reagent_desc
 	if(reagents && (transparent || user.can_see_reagents()))
@@ -72,7 +81,7 @@
 // this proc is general-purpose and primarily for medical items that you shouldn't need scigoggles to scan - ie pills, syringes, etc.
 */
 /obj/item/reagent_container/proc/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		return "[src] contains: [get_reagent_list_text()]."//this the pill
@@ -91,3 +100,18 @@
 			. += "; [R.name]([R.volume]u)"
 	else
 		. = "No reagents"
+
+
+/datum/action/item_action/reagent_container/set_transfer_amount
+
+/datum/action/item_action/reagent_container/set_transfer_amount/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Set Transfer Amount"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image(holder_item.icon, button, holder_item.icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/reagent_container/set_transfer_amount/action_activate()
+	var/obj/item/reagent_container/cont = holder_item
+	cont.set_APTFT()

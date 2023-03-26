@@ -27,7 +27,8 @@
 
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)
@@ -77,18 +78,18 @@
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
 	new /obj/item/clothing/head/helmet/marine/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/weapon/gun/rifle/m4ra_custom(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -150,8 +151,8 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
- //-----------------SPEC KIT BOX------------------
- //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
+//-----------------SPEC KIT BOX------------------
+//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
 /obj/item/spec_kit
 	name = "specialist kit"
@@ -164,7 +165,7 @@
 /obj/item/spec_kit/asrs
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/get_examine_text(var/mob/user)
+/obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
 	if(!ishuman(user) && !isobserver(user))
 		return
@@ -180,7 +181,7 @@
 		allowed_roles = SPAN_HELPFUL("anyone")
 	. += SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet.")
 
-/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
@@ -194,7 +195,7 @@
 		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
 	return
 
-/obj/item/spec_kit/proc/can_use(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/proc/can_use(mob/living/carbon/human/user)
 	if(!length(allowed_roles_list))
 		return TRUE
 
@@ -348,16 +349,16 @@
 
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper L42A Sniper Kit"
+	name = "\improper M4RA Marksman Kit"
 	pro_case_overlay = "sniper"
 
 /obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
-	new /obj/item/weapon/gun/rifle/l42a(src)
+	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/attachable/scope(src)
 	new /obj/item/attachable/suppressor(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
 
 /obj/item/storage/box/kit/heavy_support
@@ -520,3 +521,11 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/engineering_supply_kit
+	name = "\improper Engineering Supply Kit"
+
+/obj/item/storage/box/kit/engineering_supply_kit/fill_preset_inventory()
+	new /obj/item/storage/pouch/construction/low_grade_full(src)
+	new /obj/item/storage/pouch/electronics/full(src)
+	new /obj/item/clothing/glasses/welding(src)

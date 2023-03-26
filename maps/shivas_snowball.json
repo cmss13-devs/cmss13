@@ -2,6 +2,7 @@
     "map_name": "Shivas Snowball",
     "map_path": "map_files/Ice_Colony_v3",
     "map_file": "Shivas_Snowball.dmm",
+    "webmap_url": "Shivas",
     "environment_traits": {
         "COLD": true
     },
@@ -11,7 +12,9 @@
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
         "/datum/equipment_preset/survivor/colonial_marshal/shiva",
-        "/datum/equipment_preset/survivor/security/shiva"
+        "/datum/equipment_preset/survivor/security/shiva",
+        "/datum/equipment_preset/survivor/clf/cold",
+        "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [
         3300,
@@ -27,10 +30,7 @@
         "yiren"
     ],
     "traits": [{ "Ground": true }],
-	"nightmare": {
-        "scenario": "maps/Nightmare/maps/Ice_Colony_v3/scenario.json",
-        "mapgen": "maps/Nightmare/maps/Ice_Colony_v3/mapgen.json"
-    },
+    "nightmare_path": "maps/Nightmare/maps/Ice_Colony_v3/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

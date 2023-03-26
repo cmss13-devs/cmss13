@@ -31,7 +31,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/m56cupola/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/m56cupola/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -46,6 +46,6 @@
 		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break
-		if(bullets_fired < burst_amount)	//we need to sleep only if there are more bullets to shoot in the burst
+		if(bullets_fired < burst_amount) //we need to sleep only if there are more bullets to shoot in the burst
 			sleep(3)
 	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))

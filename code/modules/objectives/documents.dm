@@ -10,7 +10,7 @@
 	state = OBJECTIVE_ACTIVE
 	controller = TREE_MARINE
 
-/datum/cm_objective/document/New(var/obj/item/document_objective/D)
+/datum/cm_objective/document/New(obj/item/document_objective/D)
 	. = ..()
 	document = D
 	initial_area = get_area(document)
@@ -19,7 +19,7 @@
 	SSobjectives.statistics["documents_total_instances"]++
 
 /datum/cm_objective/document/Destroy()
-	document.objective = null
+	document?.objective = null
 	document = null
 	initial_area = null
 	return ..()
@@ -27,7 +27,7 @@
 /datum/cm_objective/document/get_related_label()
 	return document.label
 
-/datum/cm_objective/document/complete(var/mob/living/carbon/human/user)
+/datum/cm_objective/document/complete(mob/living/carbon/human/user)
 	. = ..()
 
 	SSobjectives.statistics["documents_total_points_earned"] += value
@@ -135,9 +135,9 @@
 	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
-	objective.document = null
+	qdel(objective)
 	objective = null
-	retrieve_objective.target_item = null
+	qdel(retrieve_objective)
 	retrieve_objective = null
 	return ..()
 

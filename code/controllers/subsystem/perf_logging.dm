@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(perf_logging)
 	name = "Perf Logging"
 	wait = 60 SECONDS
-	flags = SS_NO_INIT | SS_DISABLE_FOR_TESTING | SS_KEEP_TIMING
+	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_PERFLOGGING
 	var/datum/entity/mc_round/round
 	var/list/datum/entity/mc_controller/controller_assoc = list()

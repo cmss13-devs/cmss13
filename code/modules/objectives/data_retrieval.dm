@@ -42,13 +42,13 @@
 	var/uploading = FALSE
 	value = OBJECTIVE_EXTREME_VALUE
 
-/datum/cm_objective/retrieve_data/terminal/New(var/obj/structure/machinery/computer/objective/D)
+/datum/cm_objective/retrieve_data/terminal/New(obj/structure/machinery/computer/objective/D)
 	. = ..()
 	terminal = D
 	initial_area = get_area(terminal)
 
 /datum/cm_objective/retrieve_data/terminal/Destroy()
-	terminal.objective = null
+	terminal?.objective = null
 	terminal = null
 	return ..()
 
@@ -101,7 +101,7 @@
 	var/obj/item/disk/objective/disk
 	value = OBJECTIVE_HIGH_VALUE
 
-/datum/cm_objective/retrieve_data/disk/New(var/obj/item/disk/objective/O)
+/datum/cm_objective/retrieve_data/disk/New(obj/item/disk/objective/O)
 	. = ..()
 	disk = O
 	initial_area = get_area(disk)
@@ -215,9 +215,9 @@
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
-	objective?.disk = null
+	qdel(objective)
 	objective = null
-	retrieve_objective.target_item = null
+	qdel(retrieve_objective)
 	retrieve_objective = null
 	return ..()
 
@@ -241,8 +241,13 @@
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
+///Disabled explosions due to issues with the Objectives UI should it be destroyed.
+/obj/structure/machinery/computer/objective/ex_act(severity)
+	return
+
 /obj/structure/machinery/computer/objective/Destroy()
 	objective?.terminal = null
+	qdel(objective)
 	objective = null
 	return ..()
 
@@ -291,7 +296,7 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(disk)
 		to_chat(user, SPAN_NOTICE("[disk] is currently being uploaded to ARES."))

@@ -2,6 +2,7 @@
 // *** Basic retrieve item and get it to an area ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
+	name = "Retrieve an Item"
 	var/obj/target_item
 	var/list/area/target_areas
 	var/area/initial_area
@@ -10,20 +11,20 @@
 	target_areas = list(
 		/area/almayer/command/securestorage,
 		/area/almayer/command/computerlab,
-		/area/almayer/medical/medical_science
+		/area/almayer/medical/medical_science,
 	)
 
-/datum/cm_objective/retrieve_item/New(var/T)
+/datum/cm_objective/retrieve_item/New(T)
 	..()
 	if(T)
 		target_item = T
 		initial_area = get_area(target_item)
-	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, .proc/clean_up_ref)
+	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_ref))
 
 /datum/cm_objective/retrieve_item/Destroy()
 	target_item = null
 	target_areas = null
-	initial_area= null
+	initial_area = null
 	return ..()
 
 /datum/cm_objective/retrieve_item/proc/clean_up_ref()
@@ -82,7 +83,7 @@
 	return SPAN_DANGER("Retrieve lost fulton of [target_item] in [initial_area]")
 
 /datum/cm_objective/retrieve_item/fulton/get_tgui_data()
-	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, .proc/clean_up_fulton, override = TRUE)
+	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_fulton), override = TRUE)
 
 	var/list/clue = list()
 

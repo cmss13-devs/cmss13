@@ -13,7 +13,7 @@
 	var/obj/vehicle/multitile/vehicle = null
 
 // Loading new magazines
-/obj/structure/weapons_loader/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/weapons_loader/attackby(obj/item/I, mob/user)
 	if(!istype(I, /obj/item/ammo_magazine/hardpoint))
 		return ..()
 
@@ -38,14 +38,14 @@
 	reloading_hardpoint.try_add_clip(I, user)
 
 // Hardpoint reloading
-/obj/structure/weapons_loader/attack_hand(var/mob/living/carbon/human/user)
+/obj/structure/weapons_loader/attack_hand(mob/living/carbon/human/user)
 
 	if(!user || !istype(user))
 		return
 
 	handle_reload(user)
 
-obj/structure/weapons_loader/proc/reload_ammo()
+/obj/structure/weapons_loader/proc/reload_ammo()
 	set name = "Reload Ammo"
 	set category = "Object"
 	set src in range(1)
@@ -56,7 +56,7 @@ obj/structure/weapons_loader/proc/reload_ammo()
 
 	handle_reload(H)
 
-/obj/structure/weapons_loader/proc/handle_reload(var/mob/living/carbon/human/user)
+/obj/structure/weapons_loader/proc/handle_reload(mob/living/carbon/human/user)
 
 	//something went bad, try to reconnect to vehicle if user is currently buckled in and connected to vehicle
 	if(!vehicle)

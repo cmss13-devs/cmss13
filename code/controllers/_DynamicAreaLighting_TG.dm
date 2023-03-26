@@ -29,9 +29,9 @@
 		No directional lighting support. (prototype looked ugly)
 */
 
-#define LIGHTING_CIRCULAR 1									//comment this out to use old square lighting effects.
-#define LIGHTING_LAYER 10									//Drawing layer for lighting overlays
-#define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi'	//Icon used for lighting shading effects
+#define LIGHTING_CIRCULAR 1 //comment this out to use old square lighting effects.
+#define LIGHTING_LAYER 10 //Drawing layer for lighting overlays
+#define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi' //Icon used for lighting shading effects
 #define LIGHTING_STATES 6
 
 // Update these lists if the luminosity cap
@@ -62,9 +62,9 @@ GLOBAL_LIST_INIT(comp2table, list(
 	var/atom/owner
 	var/changed = 1
 	var/list/effect = list()
-	var/__x = 0		//x coordinate at last update
-	var/__y = 0		//y coordinate at last update
-	var/__z = 0		//z coordinate at last update
+	var/__x = 0 //x coordinate at last update
+	var/__y = 0 //y coordinate at last update
+	var/__z = 0 //z coordinate at last update
 
 #define turf_update_lumcount(T, amount)\
 	T.lighting_lumcount += amount;\
@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 /datum/light_source/proc/check()
 	if(!owner)
 		ls_remove_effect(src)
-		return TRUE	//causes it to be removed from our list of lights. The garbage collector will then destroy it.
+		return TRUE //causes it to be removed from our list of lights. The garbage collector will then destroy it.
 
 	if(owner.luminosity > 8)
 		owner.luminosity = 8
@@ -134,14 +134,14 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /datum/light_source/proc/remove_effect()
 	// before we apply the effect we remove the light's current effect.
-	for(var/turf/T in effect)	// negate the effect of this light source
+	for(var/turf/T in effect) // negate the effect of this light source
 		turf_update_lumcount(T, -effect[T])
-	effect.Cut()					// clear the effect list
+	effect.Cut() // clear the effect list
 
 /atom
 	var/datum/light_source/light
 	var/trueLuminosity = 0  // Typically 'luminosity' squared.  The builtin luminosity must remain linear.
-	                        // We may read it, but NEVER set it directly.
+							// We may read it, but NEVER set it directly.
 
 //Movable atoms with opacity when they are constructed will trigger nearby lights to update
 //Movable atoms with luminosity when they are constructed will create a light_source automatically
@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 			if(T.lighting_lumcount > 1)
 				UpdateAffectingLights()
 	if(luminosity)
-		if(light)	WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
+		if(light) WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
 		trueLuminosity = luminosity * luminosity
 		light = new(src)
 
@@ -166,6 +166,12 @@ GLOBAL_LIST_INIT(comp2table, list(
 				UpdateAffectingLights()
 	. = ..()
 
+/atom/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, luminosity))
+			SetLuminosity(var_value)
+	return ..()
+
 //Sets our luminosity.
 //If we have no light it will create one.
 //If we are setting luminosity to 0 the light will be cleaned up by the controller and garbage collected once all its
@@ -177,7 +183,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if(!trueLum)
 		new_luminosity *= new_luminosity
 	if(light)
-		if(trueLuminosity != new_luminosity)	//non-luminous lights are removed from the lights list in add_effect()
+		if(trueLuminosity != new_luminosity) //non-luminous lights are removed from the lights list in add_effect()
 			light.changed()
 	else
 		if(new_luminosity)
@@ -203,15 +209,15 @@ GLOBAL_LIST_INIT(comp2table, list(
 			highest_luminosity = lumonisity_rating
 	if(source && new_luminosity > 0)
 		LAZYSET(luminosity_sources, source, new_luminosity)
-		RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/remove_luminosity_source)
+		RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(remove_luminosity_source))
 	if(new_luminosity < highest_luminosity)
 		new_luminosity = highest_luminosity
 	return ..()
 
-/mob/proc/remove_luminosity_source(var/atom/source)
+/mob/proc/remove_luminosity_source(atom/source)
 	SetLuminosity(0, FALSE, source)
 
-/area/SetLuminosity(new_luminosity)			//we don't want dynamic lighting for areas
+/area/SetLuminosity(new_luminosity) //we don't want dynamic lighting for areas
 	luminosity = !!new_luminosity
 	trueLuminosity = luminosity
 
@@ -219,10 +225,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 //change our opacity (defaults to toggle), and then update all lights that affect us.
 /atom/proc/SetOpacity(new_opacity)
 	if(new_opacity == null)
-		new_opacity = !opacity			//default = toggle opacity
+		new_opacity = !opacity //default = toggle opacity
 	else if(opacity == new_opacity)
-		return FALSE					//opacity hasn't changed! don't bother doing anything
-	opacity = new_opacity				//update opacity, the below procs now call light updates.
+		return FALSE //opacity hasn't changed! don't bother doing anything
+	opacity = new_opacity //update opacity, the below procs now call light updates.
 	return TRUE
 
 /turf/SetOpacity(new_opacity)
@@ -230,7 +236,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	//only bother if opacity changed
 	if(!.)
 		return
-	if(lighting_lumcount)			//only bother with an update if our turf is currently affected by a light
+	if(lighting_lumcount) //only bother with an update if our turf is currently affected by a light
 		UpdateAffectingLights()
 
 /atom/movable/SetOpacity(new_opacity)
@@ -252,7 +258,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	var/cached_lumcount = 0
 
 /turf/open/space
-	lighting_lumcount = 4		//starlight
+	lighting_lumcount = 4 //starlight
 
 /turf/proc/update_lumcount(amount, removing = 0)
 	lighting_lumcount += amount
@@ -267,7 +273,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /turf/proc/build_lighting_area(const/tag, const/level)
 	var/area/Area = loc
-	var/area/A = new Area.type()    // create area if it wasn't found
+	var/area/A = new Area.type() // create area if it wasn't found
 	// replicate vars
 	for(var/V in Area.vars)
 		switch(V)
@@ -282,6 +288,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 	A.SetLightLevel(level)
 	Area.related += A
+
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(A))
+		A.overlays += SSweather.curr_master_turf_overlay
+
 	return A
 
 /turf/proc/shift_to_subarea()
@@ -293,21 +303,21 @@ GLOBAL_LIST_INIT(comp2table, list(
 	var/level = min(max(round(lighting_lumcount,1),0),LIGHTING_STATES)
 	var/new_tag = lighting_tag(level)
 
-	if(Area.tag!=new_tag)	//skip if already in this area
-		var/area/A = locate(new_tag)	// find an appropriate area
+	if(Area.tag!=new_tag) //skip if already in this area
+		var/area/A = locate(new_tag) // find an appropriate area
 
 		if (!A)
 			A = build_lighting_area(new_tag, level)
 
-		A.contents += src	// move the turf into the area
+		A.contents += src // move the turf into the area
 
 // Dedicated lighting sublevel for space turfs
 // helps us depower things in space, remove space fire alarms,
 // and evens out space lighting
-/turf/open/space/lighting_tag(var/level)
+/turf/open/space/lighting_tag(level)
 	var/area/A = loc
 	return A.tagbase + "sd_L_space"
-/turf/open/space/build_lighting_area(var/tag,var/level)
+/turf/open/space/build_lighting_area(tag, level)
 	var/area/A = ..(tag,4)
 	A.lighting_space = 1
 	A.SetLightLevel(4)
@@ -316,10 +326,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 
 /area
-	var/lighting_use_dynamic = 1	//Turn this flag off to prevent sd_DynamicAreaLighting from affecting this area
-	var/image/lighting_overlay		//tracks the darkness image of the area for easy removal
-	var/lighting_subarea = 0		//tracks whether we're a lighting sub-area
-	var/lighting_space = 0			// true for space-only lighting subareas
+	var/lighting_use_dynamic = 1 //Turn this flag off to prevent sd_DynamicAreaLighting from affecting this area
+	var/image/lighting_overlay //tracks the darkness image of the area for easy removal
+	var/lighting_subarea = 0 //tracks whether we're a lighting sub-area
+	var/lighting_space = 0 // true for space-only lighting subareas
 	var/tagbase
 	var/exterior_light = 2
 
@@ -336,7 +346,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
-		lighting_overlay.plane = LIGHTING_PLANE
+		lighting_overlay.plane = ceiling <= CEILING_GLASS ? EXTERIOR_LIGHTING_PLANE : LIGHTING_PLANE
 	if (light < 6)
 		overlays.Add(lighting_overlay)
 
@@ -345,11 +355,11 @@ GLOBAL_LIST_INIT(comp2table, list(
 	for(var/turf/T in src.contents)
 		turf_update_lumcount(T, 0)
 
-/area/proc/InitializeLighting()	//TODO: could probably improve this bit ~Carn
+/area/proc/InitializeLighting() //TODO: could probably improve this bit ~Carn
 	tagbase = "[type]"
 	if(!tag) tag = tagbase
 	if(!lighting_use_dynamic)
-		if(!lighting_subarea)	// see if this is a lighting subarea already
+		if(!lighting_subarea) // see if this is a lighting subarea already
 		//show the dark overlay so areas, not yet in a lighting subarea, won't be bright as day and look silly.
 			SetLightLevel(4)
 
@@ -357,17 +367,17 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_CIRCULAR
 //#undef LIGHTING_ICON
 
-#define LIGHTING_MAX_LUMINOSITY_STATIC	8	//Maximum luminosity to reduce lag.
-#define LIGHTING_MAX_LUMINOSITY_MOBILE	6	//Moving objects have a lower max luminosity since these update more often. (lag reduction)
-#define LIGHTING_MAX_LUMINOSITY_TURF	1	//turfs have a severely shortened range to protect from inevitable floor-lighttile spam.
+#define LIGHTING_MAX_LUMINOSITY_STATIC 8 //Maximum luminosity to reduce lag.
+#define LIGHTING_MAX_LUMINOSITY_MOBILE 6 //Moving objects have a lower max luminosity since these update more often. (lag reduction)
+#define LIGHTING_MAX_LUMINOSITY_TURF 1 //turfs have a severely shortened range to protect from inevitable floor-lighttile spam.
 
 //set the changed status of all lights which could have possibly lit this atom.
 //We don't need to worry about lights which lit us but moved away, since they will have change status set already
 //This proc can cause lots of lights to be updated. :(
 /atom/proc/UpdateAffectingLights()
-//	for(var/atom/A in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
-//		if(A.light)
-//			A.light.changed()	//force it to update at next process()
+// for(var/atom/A in oview(LIGHTING_MAX_LUMINOSITY_STATIC-1,src))
+// if(A.light)
+// A.light.changed() //force it to update at next process()
 
 /atom/movable/UpdateAffectingLights()
 	if(isturf(loc))
@@ -394,9 +404,3 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_MAX_LUMINOSITY_STATIC
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
-
-/area/proc/add_thunder()
-	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
-		underlays += GLOB.weather_rain_effect
-		for(var/turf/T in contents)
-			T.update_lumcount(exterior_light)

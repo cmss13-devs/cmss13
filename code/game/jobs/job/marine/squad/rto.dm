@@ -5,7 +5,7 @@
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/rto
-	entry_message_body = "You are the Radio Telegraph Operator. Your task is to work as a forward observer for overwatch, dropship pilots and mortar operators to provide fire support, and facilitate communications between groundside marines and shipside departments such as CIC and Requisitions."
+	entry_message_body = "You are the <a href='"+URL_WIKI_RTO_GUIDE+"'>Radio Telegraph Operator.</a>Your task is to work as a forward observer for overwatch, dropship pilots and mortar operators to provide fire support, and facilitate communications between groundside marines and shipside departments such as CIC and Requisitions."
 
 /datum/job/marine/rto/generate_entry_conditions(mob/living/carbon/human/H)
 	. = ..()

@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(mob)
-	name          = "Misc Mobs"
-	wait          = 2 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
-	priority      = SS_PRIORITY_MOB
+	name   = "Misc Mobs"
+	wait   = 2 SECONDS
+	flags  = SS_NO_INIT | SS_KEEP_TIMING
+	priority   = SS_PRIORITY_MOB
 
 	var/list/currentrun = list()
 	var/list/living_misc_mobs = list()

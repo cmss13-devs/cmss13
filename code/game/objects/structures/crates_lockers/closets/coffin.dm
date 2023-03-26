@@ -4,7 +4,8 @@
 	icon_state = "coffin"
 	icon_closed = "coffin"
 	icon_opened = "coffin_open"
-	anchored = 0
+	material = MATERIAL_WOOD
+	anchored = FALSE
 
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)
@@ -29,6 +30,7 @@
 	icon_state = "closed_woodcrate"
 	icon_opened = "open_woodcrate"
 	icon_closed = "closed_woodcrate"
+	material = MATERIAL_WOOD
 	store_mobs = FALSE
 	climbable = TRUE
 	throwpass = 1

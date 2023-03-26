@@ -1,12 +1,12 @@
 /obj/item/ashtray
 	icon = 'icons/obj/items/ashtray.dmi'
-	var/
-		max_butts 	= 0
-		empty_desc 	= ""
-		icon_empty 	= ""
-		icon_half  	= ""
-		icon_full  	= ""
-		icon_broken	= ""
+
+	var/max_butts = 0
+	var/empty_desc = ""
+	var/icon_empty = ""
+	var/icon_half = ""
+	var/icon_full = ""
+	var/icon_broken = ""
 
 /obj/item/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health < 1)
@@ -83,15 +83,16 @@
 	icon_full  = "ashtray_full_bl"
 	icon_broken  = "ashtray_bork_bl"
 	max_butts = 14
-	health = 24.0
+	health = 24
 	matter = list("metal" = 30,"glass" = 30)
 	empty_desc = "Cheap plastic ashtray."
-	throwforce = 3.0
-	die()
-		..()
-		name = "pieces of plastic"
-		desc = "Pieces of plastic with ash on them."
-		return
+	throwforce = 3
+
+/obj/item/ashtray/plastic/die()
+	..()
+	name = "pieces of plastic"
+	desc = "Pieces of plastic with ash on them."
+	return
 
 
 /obj/item/ashtray/bronze
@@ -103,16 +104,16 @@
 	icon_full  = "ashtray_full_br"
 	icon_broken  = "ashtray_bork_br"
 	max_butts = 10
-	health = 72.0
+	health = 72
 	matter = list("metal" = 80)
 	empty_desc = "Massive bronze ashtray."
-	throwforce = 10.0
+	throwforce = 10
 
-	die()
-		..()
-		name = "pieces of bronze"
-		desc = "Pieces of bronze with ash on them."
-		return
+/obj/item/ashtray/bronze/die()
+	..()
+	name = "pieces of bronze"
+	desc = "Pieces of bronze with ash on them."
+	return
 
 
 /obj/item/ashtray/glass
@@ -124,14 +125,14 @@
 	icon_full  = "ashtray_full_gl"
 	icon_broken  = "ashtray_bork_gl"
 	max_butts = 12
-	health = 12.0
+	health = 12
 	matter = list("glass" = 60)
 	empty_desc = "Glass ashtray. Looks fragile."
-	throwforce = 6.0
+	throwforce = 6
 
-	die()
-		..()
-		name = "shards of glass"
-		desc = "Shards of glass with ash on them."
-		playsound(src, "glassbreak", 25, 1)
-		return
+/obj/item/ashtray/glass/die()
+	..()
+	name = "shards of glass"
+	desc = "Shards of glass with ash on them."
+	playsound(src, "glassbreak", 25, 1)
+	return

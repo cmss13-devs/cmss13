@@ -3,7 +3,7 @@
 
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
-	density = 1
+	density = TRUE
 
 
 	var/on = 0
@@ -12,7 +12,7 @@
 	..()
 	cell = new/obj/item/cell(src)
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -43,10 +43,10 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge
 	name = "Huge Air Scrubber"
 	icon_state = "scrubber:0"
-	anchored = 1
+	anchored = TRUE
 
 	chan
-	use_power = 0
+	use_power = USE_POWER_NONE
 
 	var/global/gid = 1
 	var/id = 0
@@ -60,7 +60,7 @@
 
 	name = "[name] (ID [id])"
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user as mob)
 		to_chat(usr, SPAN_NOTICE(" You can't directly interact with this machine. Use the scrubber control console."))
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
@@ -72,7 +72,7 @@
 		icon_state = "scrubber:0"
 
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(on)
 			to_chat(user, SPAN_NOTICE(" Turn it off first!"))
@@ -100,7 +100,7 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	name = "Stationary Air Scrubber"
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(obj/item/I as obj, mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
 		return

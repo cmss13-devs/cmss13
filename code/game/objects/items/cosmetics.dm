@@ -1,13 +1,14 @@
 /obj/item/facepaint
 	gender = PLURAL
 	name = "facepaint"
-	desc = "Paint, for your face. Who woulda thought?. Wipe it off your face with some paper if you need to."
+	desc = "Paint, for your face. Wipe it off your face with some paper if you need to. This one is a deep, forest green."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "camo"
 	var/paint_type = "green"
 	w_class = SIZE_TINY
 	var/uses = 10
-	var/open = TRUE //for lipstick
+	/// for lipstick
+	var/open = TRUE
 
 //FACEPAINT
 /obj/item/facepaint/green
@@ -40,6 +41,12 @@
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
 
+/obj/item/facepaint/sunscreen_stick
+	name= "\improper USCM issue sunscreen"
+	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."
+	paint_type = "sunscreen_stick"
+	icon_state = "sunscreen_stick"
+
 /obj/item/facepaint/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
@@ -55,7 +62,7 @@
 			to_chat(user, SPAN_WARNING("The lid is on!"))
 			return FALSE
 
-		if(H.lip_style)	//if they already have lipstick on
+		if(H.lip_style) //if they already have lipstick on
 			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
 			return
 
@@ -74,11 +81,11 @@
 	to_chat(user, SPAN_WARNING("Foiled!"))
 
 
-/obj/item/facepaint/proc/paint_face(var/mob/living/carbon/human/H, var/mob/user)
+/obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
 	if(!H || !user)
 		return //In case they're passed as null.
 	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
-						 SPAN_NOTICE("You apply [src]."))
+						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()
 	uses--
@@ -115,12 +122,12 @@
 
 /obj/item/facepaint/lipstick/purple
 	name = "purple lipstick"
-	paint_type = "purp_lipstick" //not 'purple' because dream maker farts if the name is too long
+	paint_type = "purp_lipstick"
 	icon_state_open = "lipstick_purple"
 
 /obj/item/facepaint/lipstick/maroon
 	name = "maroon lipstick"
-	paint_type = "marn_lipstick" //not 'maroon' because dream maker farts if the name is too long
+	paint_type = "marn_lipstick"
 	icon_state_open = "lipstick_maroon"
 
 /obj/item/facepaint/lipstick/jade

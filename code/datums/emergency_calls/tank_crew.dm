@@ -10,7 +10,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
-/datum/emergency_call/tank_crew/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/tank_crew/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
@@ -23,7 +23,7 @@
 
 	sleep(5)
 	arm_equipment(H, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
-	to_chat(H, SPAN_ROLE_HEADER("You are a vehicle crewman in the USCM"))
+	to_chat(H, SPAN_ROLE_HEADER("You are a Vehicle Crewman in the USCM"))
 	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
 	sleep(10)

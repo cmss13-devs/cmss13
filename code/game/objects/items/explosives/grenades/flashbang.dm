@@ -2,6 +2,7 @@
 	name = "flashbang"
 	icon_state = "flashbang"
 	item_state = "grenade_flashbang"
+	black_market_value = 10
 
 	//can be used by synths
 	harmful = FALSE
@@ -22,7 +23,7 @@
 			new /obj/item/explosive/grenade/flashbang/noskill(loc)
 			return INITIALIZE_HINT_QDEL
 		else if(SSticker.current_state < GAME_STATE_PLAYING)
-			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_flashbang)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(replace_flashbang))
 	return ..()
 
 /obj/item/explosive/grenade/flashbang/proc/replace_flashbang()
@@ -52,7 +53,7 @@
 
 	var/turf/T = get_turf(src)
 	for(var/obj/structure/closet/L in hear(7, T))
-		SEND_SIGNAL(L, COMSIG_OBJ_FLASHBANGED, src)
+		SEND_SIGNAL(L, COMSIG_CLOSET_FLASHBANGED, src)
 
 	for(var/mob/living/carbon/M in hear(7, T))
 		bang(T, M)
@@ -66,9 +67,9 @@
 // Added a new proc called 'bang' that takes a location and a person to be banged.
 // Called during the loop that bangs people in lockers/containers and when banging
 // people in normal view.  Could theoretically be called during other explosions.
-/obj/item/explosive/grenade/flashbang/proc/bang(var/turf/T , var/mob/living/carbon/M)
+/obj/item/explosive/grenade/flashbang/proc/bang(turf/T , mob/living/carbon/M)
 
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
@@ -93,18 +94,22 @@
 			to_chat(M, SPAN_HELPFUL("Your gear protects you from \the [src]."))
 			return
 
+	var/weaken_amount
+	var/paralyze_amount
+	var/deafen_amount
+
 	if(M.flash_eyes())
-		M.Stun(2)
-		M.KnockDown(10)
+		weaken_amount += 2
+		paralyze_amount += 10
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(trained_human)
-			M.Stun(2)
-			M.KnockDown(1)
+			weaken_amount += 2
+			paralyze_amount += 1
 		else
-			M.Stun(10)
-			M.KnockDown(3)
-			M.SetEarDeafness(max(M.ear_deaf,15))
+			weaken_amount += 10
+			paralyze_amount += 3
+			deafen_amount += 15
 			if(!no_damage)
 				if((prob(14) || (M == src.loc && prob(70))))
 					M.ear_damage += rand(1, 10)
@@ -113,16 +118,27 @@
 
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
-			M.Stun(8)
-			M.SetEarDeafness(max(M.ear_deaf,10))
+			weaken_amount += 8
+			deafen_amount += 10
 			if(!no_damage)
 				M.ear_damage += rand(0, 3)
 
 	else if(!trained_human)
-		M.Stun(4)
-		M.SetEarDeafness(max(M.ear_deaf,5))
+		weaken_amount += 4
+		deafen_amount += 5
 		if(!no_damage)
 			M.ear_damage += rand(0, 1)
+
+	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
+		weaken_amount *= 0.85
+		paralyze_amount *= 0.85
+		deafen_amount = 0
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+
+	M.apply_effect(weaken_amount, WEAKEN)
+	M.apply_effect(paralyze_amount, PARALYZE)
+	if(deafen_amount)
+		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 
 //This really should be in mob not every check
 	if(ishuman(M))
@@ -156,7 +172,7 @@
 	det_time = 10
 	active = TRUE
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/flashbang/cluster/prime()
 	for(var/i in 1 to rand(2,5))
@@ -177,7 +193,7 @@
 	var/temploc = get_turf(src)
 	//segments scatter in all directions
 	walk_away(src,temploc,rand(1,4))
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 	return ..()
 
 //Segment spawns cluster versions of flashbangs, 3 total
@@ -195,7 +211,7 @@
 	var/temploc = get_turf(src)
 	walk_away(src,temploc,rand(1,4))
 	playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 
 //special flashbang nade for events. Skills are not required neither affect the effect.
 //Knockdowns only within 3x3 area, causes temporary blindness, deafness and daze, depending on range and type of mob. Effects reduced when lying.
@@ -216,7 +232,7 @@
 	. = ..()
 	activate()
 
-/obj/item/explosive/grenade/flashbang/noskill/bang(var/turf/T , var/mob/living/M)
+/obj/item/explosive/grenade/flashbang/noskill/bang(turf/T , mob/living/M)
 	if(M.stat == DEAD)
 		return
 
@@ -224,12 +240,12 @@
 
 	//some effects for non-humans
 	if(!ishuman(M))
-		if(isXeno(M))
+		if(isxeno(M))
 			if(get_dist(M, T) <= 4)
-				var/mob/living/carbon/Xenomorph/X = M
+				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
-		else	//simple mobs?
+		else //simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
 
@@ -244,7 +260,7 @@
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now
 	if(H.get_eye_protection() > 0)
-		to_chat(H, SPAN_HELPFUL("Your gear protects your eyes from \the [src]."))
+		to_chat(H, SPAN_HELPFUL("Your gear protects you from \the [src]."))
 		if((get_dist(H, T) <= 1 || src.loc == H.loc || src.loc == H))
 			H.apply_damage(5, BRUTE)
 			H.apply_damage(5, BURN)
@@ -275,27 +291,47 @@
 	else
 		bang_effect = 2
 
+
+	var/flash_amount
+	var/daze_amount
+	var/paralyze_amount
+	var/deafen_amount
+
 	switch(bang_effect)
 		if(1)
-			M.SetEarDeafness(max(M.ear_deaf, 2))
+			deafen_amount = 2
 		if(2)
-			M.Daze(2)
-			M.SetEarDeafness(max(M.ear_deaf, 3))
+			daze_amount = 2
+			deafen_amount = 3
 		if(3)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 10)
-			M.Daze(5)
-			M.SetEarDeafness(max(M.ear_deaf, 5))
+			flash_amount = 10
+			daze_amount = 5
+			deafen_amount = 5
 		if(4)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 20)
-			M.Daze(5)
-			M.SetEarDeafness(max(M.ear_deaf, 7))
+			flash_amount = 20
+			daze_amount = 5
+			deafen_amount = 7
 			M.ear_damage += rand(1, 5)
 		if(5)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 50)
-			M.Daze(10)
-			M.KnockDown(5)
-			M.SetEarDeafness(max(M.ear_deaf, 10))
+			flash_amount = 50
+			daze_amount = 10
+			paralyze_amount = 5
+			deafen_amount = 10
 			M.ear_damage += rand(1, 10)
+
+	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
+		daze_amount *= 0.85
+		paralyze_amount *= 0.85
+		deafen_amount = 0
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+
+	M.apply_effect(daze_amount, DAZE)
+	M.apply_effect(paralyze_amount, PARALYZE)
+
+	if(flash_amount)
+		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+	if(deafen_amount)
+		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 	if(E && E.damage >= E.min_bruised_damage)

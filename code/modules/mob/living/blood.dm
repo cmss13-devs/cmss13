@@ -10,9 +10,9 @@
 	if(NO_BLOOD in species.flags)
 		return
 
-	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
+	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL)
+		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
 
 		var/b_volume = blood_volume
@@ -42,12 +42,12 @@
 					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
-					eye_blurry += 6
+					AdjustEyeBlur(6)
 				if(oxyloss < 50)
 					oxyloss += 10
 				oxyloss += 2
 				if(prob(15))
-					KnockOut(rand(1,3))
+					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
@@ -66,6 +66,12 @@
 			else if(nutrition >= 200)
 				nutrition -= 3
 
+// Xeno blood regeneration
+/mob/living/carbon/xenomorph/handle_blood()
+	if(stat != DEAD) //Only living xenos regenerate blood
+		//Blood regeneration if there is some space
+		if(blood_volume < max_blood)
+			blood_volume = min(blood_volume + 1, max_blood)
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)
@@ -132,11 +138,11 @@
 
 //Gets blood from mob to the container, preserving all data in it.
 /mob/living/carbon/proc/take_blood(obj/O, amount)
-	if(!O.reagents)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 
 	if(blood_volume < amount)
-		return
+		amount = blood_volume
 
 	var/b_id = get_blood_id()
 	if(!b_id)
@@ -150,15 +156,18 @@
 	return 1
 
 
-/mob/living/carbon/human/take_blood(obj/O, var/amount)
+/mob/living/carbon/human/take_blood(obj/O, amount)
 	if(species && species.flags & NO_BLOOD)
 		return
 
 	. = ..()
 
-/mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
-	if(!O.reagents)
+/mob/living/carbon/xenomorph/take_blood(obj/O, amount)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
+
+	if(blood_volume < amount)
+		amount = blood_volume
 
 	var/b_id = get_blood_id()
 	if(!b_id)
@@ -169,8 +178,14 @@
 		plasmas += plasma
 
 	for(var/plasma in plasmas)
-		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
+		//An even amount of each plasma and blood type
+		if(plasma == PLASMA_EGG)
+			//Preserve hive_number for the possible larva
+			O.reagents.add_reagent(plasma, amount / plasmas.len, list("hive_number" = hivenumber))
+		else
+			O.reagents.add_reagent(plasma, amount / plasmas.len)
 
+	blood_volume = max(0, blood_volume - amount)
 	return 1
 
 
@@ -232,7 +247,7 @@
 /mob/living/proc/get_blood_color()
 	return "#A10808"
 
-/mob/living/carbon/Xenomorph/get_blood_color()
+/mob/living/carbon/xenomorph/get_blood_color()
 	return "#dffc00"
 
 /mob/living/carbon/human/get_blood_color()
@@ -243,13 +258,13 @@
 /mob/proc/get_blood_id()
 	return
 
-/mob/living/carbon/Xenomorph/get_blood_id()
+/mob/living/carbon/xenomorph/get_blood_id()
 	return "xenoblood"
 
-/mob/living/carbon/Xenomorph/Queen/get_blood_id()
+/mob/living/carbon/xenomorph/queen/get_blood_id()
 	return "xenobloodroyal"
 
-/mob/living/carbon/Xenomorph/Praetorian/get_blood_id()
+/mob/living/carbon/xenomorph/praetorian/get_blood_id()
 	return "xenobloodroyal"
 
 /mob/living/carbon/human/get_blood_id()
@@ -259,7 +274,7 @@
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"
-	if(species.name == "Zombie")
+	if(species.name == SPECIES_ZOMBIE)
 		return "greyblood"
 	return "blood"
 
@@ -340,7 +355,7 @@
 
 	..()
 
-/mob/living/carbon/Xenomorph/add_splatter_floor(turf/T, small_drip, b_color)
+/mob/living/carbon/xenomorph/add_splatter_floor(turf/T, small_drip, b_color)
 	if(!T)
 		T = get_turf(src)
 

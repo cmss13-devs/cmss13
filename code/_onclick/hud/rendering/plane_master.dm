@@ -76,6 +76,10 @@
 	blend_mode_override = BLEND_MULTIPLY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/screen/plane_master/lighting/exterior
+	name = "exterior lighting plane master"
+	plane = EXTERIOR_LIGHTING_PLANE
+
 /atom/movable/screen/plane_master/runechat
 	name = "runechat plane master"
 	plane = RUNECHAT_PLANE
@@ -108,3 +112,9 @@
 	name = "cinematic plane"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/escape_menu
+	name = "Escape Menu"
+	plane = ESCAPE_MENU_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+	render_relay_plane = RENDER_PLANE_MASTER

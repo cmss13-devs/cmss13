@@ -11,8 +11,9 @@
 	icon_state = "unknown"
 	layer = AREAS_LAYER
 	plane = BLACKNESS_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
+	minimap_color = null
 	var/lightswitch = 1
 
 	/// Bitfield of special area features
@@ -23,11 +24,11 @@
 	var/unique = TRUE
 
 	var/has_gravity = 1
-	var/area/master				// master area used for power calcluations
+	var/area/master // master area used for power calcluations
 								// (original area before splitting due to sd_DAL)
-	var/list/related			// the other areas of the same type as this
-//	var/list/lights				// list of all lights on this area
-	var/list/all_doors = list()		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
+	var/list/related // the other areas of the same type as this
+// var/list/lights // list of all lights on this area
+	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
 	var/statistic_exempt = FALSE
 
@@ -39,12 +40,15 @@
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
-	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
+	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
 	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
-	var/resin_construction_allowed = TRUE	// Allow construction of resin walls, and other special
+	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
 
 	// Weather
-	var/weather_enabled = TRUE	// Manual override for weather if set to false
+	var/weather_enabled = TRUE // Manual override for weather if set to false
+
+	// Fishing
+	var/fishing_loot = /datum/fish_loot_table
 
 	// Ambience sounds
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
@@ -61,7 +65,7 @@
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
 	var/requires_power = 1
 	var/unlimited_power = 0
-	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
+	var/always_unpowered = 0 //this gets overriden to 1 for space in area/New()
 
 	//which channels are powered
 	var/power_equip = TRUE
@@ -105,23 +109,25 @@
 			if(lighting_use_dynamic)
 				SetDynamicLighting()
 	else
-		power_light = FALSE			//rastaf0
-		power_equip = FALSE			//rastaf0
-		power_environ = FALSE		//rastaf0
+		power_light = FALSE //rastaf0
+		power_equip = FALSE //rastaf0
+		power_environ = FALSE //rastaf0
 		luminosity = 1
 		lighting_use_dynamic = 0
 
-	power_change()		// all machines set to current power level, also updates lighting icon
+	power_change() // all machines set to current power level, also updates lighting icon
 	InitializeLighting()
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
-/area/proc/poweralert(var/state, var/obj/source as obj)
+/area/proc/poweralert(state, obj/source as obj)
 	if (state != poweralm)
 		poweralm = state
-		if(istype(source))	//Only report power alarms on the z-level where the source is located.
+		if(istype(source)) //Only report power alarms on the z-level where the source is located.
 			var/list/cameras = list()
 			for (var/area/RA in related)
 				for (var/obj/structure/machinery/camera/C in RA)
@@ -145,8 +151,8 @@
 	return
 
 /area/proc/atmosalert(danger_level)
-//	if(type==/area) //No atmos alarms in space
-//		return 0 //redudant
+// if(type==/area) //No atmos alarms in space
+// return 0 //redudant
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/area/RA in related)
@@ -197,7 +203,7 @@
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(!E.density)
-					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /area/proc/air_doors_open()
 	if(src.master.air_doors_activated)
@@ -207,7 +213,7 @@
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(E.density)
-					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 
 /area/proc/firealert()
@@ -215,15 +221,15 @@
 		return
 	if(!(flags_alarm_state & ALARM_WARNING_FIRE))
 		flags_alarm_state |= ALARM_WARNING_FIRE
-		master.flags_alarm_state |= ALARM_WARNING_FIRE		//used for firedoor checks
+		master.flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
 		updateicon()
-		mouse_opacity = 0
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = CLOSED
 				else if(!D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 		var/list/cameras = list()
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
@@ -237,15 +243,15 @@
 /area/proc/firereset()
 	if(flags_alarm_state & ALARM_WARNING_FIRE)
 		flags_alarm_state &= ~ALARM_WARNING_FIRE
-		master.flags_alarm_state &= ~ALARM_WARNING_FIRE		//used for firedoor checks
-		mouse_opacity = 0
+		master.flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		updateicon()
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = OPEN
 				else if(D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
 				C.network.Remove(CAMERA_NET_FIRE_ALARMS)
@@ -268,10 +274,10 @@
 	flags_alarm_state ^= ALARM_WARNING_EVAC
 	master.flags_alarm_state ^= ALARM_WARNING_EVAC
 	//if(flags_alarm_state & ALARM_WARNING_EVAC)
-	//	master.lightswitch = FALSE
+	// master.lightswitch = FALSE
 		//lightswitch = FALSE //Lights going off.
-//	else
-	//	master.lightswitch = TRUE
+// else
+	// master.lightswitch = TRUE
 		//lightswitch = TRUE //Coming on.
 	master.updateicon()
 
@@ -293,13 +299,13 @@
 	if(flags_alarm_state && (!requires_power || power_environ)) //It either doesn't require power or the environment is powered. And there is an alarm.
 		if(flags_alarm_state & ALARM_WARNING_READY) I = "alarm_ready" //Area is ready for something.
 		if(flags_alarm_state & ALARM_WARNING_EVAC) I = "alarm_evac" //Evacuation happening.
-		if(flags_alarm_state & ALARM_WARNING_ATMOS) I = "alarm_atmos"	//Atmos breach.
+		if(flags_alarm_state & ALARM_WARNING_ATMOS) I = "alarm_atmos" //Atmos breach.
 		if(flags_alarm_state & ALARM_WARNING_FIRE) I = "alarm_fire" //Fire happening.
 		if(flags_alarm_state & ALARM_WARNING_DOWN) I = "alarm_down" //Area is shut down.
 
 	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
-/area/proc/powered(var/chan)		// return true if the area has power to given channel
+/area/proc/powered(chan) // return true if the area has power to given channel
 	if(!master.requires_power)
 		return 1
 	if(master.always_unpowered)
@@ -314,7 +320,7 @@
 
 	return 0
 
-/area/proc/update_power_channels(var/equip, var/light, var/environ)
+/area/proc/update_power_channels(equip, light, environ)
 	if(!master)
 		CRASH("CALLED update_power_channels on non-master channel!")
 	var/changed = FALSE
@@ -333,13 +339,13 @@
 // called when power status changes
 /area/proc/power_change()
 	for(var/area/RA in related)
-		for(var/obj/structure/machinery/M in RA)	// for each machine in the area
+		for(var/obj/structure/machinery/M in RA) // for each machine in the area
 			if(!M.gc_destroyed)
-				M.power_change()				// reverify power status (to update icons etc.)
+				M.power_change() // reverify power status (to update icons etc.)
 		if(flags_alarm_state)
 			RA.updateicon()
 
-/area/proc/usage(var/chan, var/reset_oneoff = FALSE)
+/area/proc/usage(chan, reset_oneoff = FALSE)
 	var/used = 0
 	switch(chan)
 		if(POWER_CHANNEL_LIGHT)
@@ -359,7 +365,7 @@
 
 	return used
 
-/area/proc/use_power(var/amount, var/chan)
+/area/proc/use_power(amount, chan)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			master.used_equip += amount
@@ -378,9 +384,6 @@
 		var/area/old_area = get_area(OldLoc)
 		if(old_area.master == master)
 			return
-		if(isliving(M))
-			var/mob/living/L = M
-			L.update_weather()
 		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
@@ -392,18 +395,18 @@
 		var/mob/exiting_mob = A
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(var/obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(M.calculate_current_power_usage(), M.power_channel)
 		M.power_change()
 
-/area/proc/remove_machine(var/obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
-/area/proc/gravitychange(var/gravitystate = 0, var/area/A)
+/area/proc/gravitychange(gravitystate = 0, area/A)
 
 	A.has_gravity = gravitystate
 
@@ -434,8 +437,8 @@
 		var/mob/living/carbon/human/H = M
 		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.AdjustStunned(5)
-		H.AdjustKnockeddown(5)
+		H.adjust_effect(5, STUN)
+		H.adjust_effect(5, WEAKEN)
 
 	to_chat(M, "Gravity!")
 

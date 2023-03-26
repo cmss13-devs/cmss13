@@ -1,12 +1,12 @@
 /* Utility Closets
  * Contains:
- *		Emergency Closet
- *		Fire Closet
- *		Tool Closet
- *		Radiation Closet
- *		Bombsuit Closet
- *		Hydrant
- *		First Aid
+ * Emergency Closet
+ * Fire Closet
+ * Tool Closet
+ * Radiation Closet
+ * Bombsuit Closet
+ * Hydrant
+ * First Aid
  */
 
 /*
@@ -200,8 +200,8 @@
 	icon_state = "hydrant"
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 	var/spawn_empty = FALSE
@@ -227,8 +227,8 @@
 	icon_state = "medical_wall"
 	icon_closed = "medical_wall"
 	icon_opened = "medical_wall_open"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 

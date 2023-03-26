@@ -42,7 +42,7 @@
 /obj/structure/machinery/computer/guestpass
 	name = "guest pass terminal"
 	icon_state = "guest"
-	density = 0
+	density = FALSE
 
 
 	var/obj/item/card/id/giver
@@ -64,10 +64,10 @@
 		else
 			to_chat(user, SPAN_WARNING("There is already ID card inside."))
 
-/obj/structure/machinery/computer/guestpass/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/guestpass/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/guestpass/attack_hand(mob/user as mob)
 	if(..())
 		return
 

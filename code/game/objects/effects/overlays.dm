@@ -7,17 +7,17 @@
 	name = "Palm tree"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm1"
-	density = 1
+	density = TRUE
 	layer = FLY_LAYER
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm2"
-	density = 1
+	density = TRUE
 	layer = FLY_LAYER
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
@@ -33,9 +33,9 @@
 	appearance_flags = RESET_COLOR|KEEP_APART
 
 /obj/effect/overlay/temp
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_FLY_LAYER //above mobs
-	mouse_opacity = 0 //can't click to examine it
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //can't click to examine it
 	var/effect_duration = 10 //in deciseconds
 
 	var/start_on_spawn = TRUE
@@ -51,14 +51,18 @@
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "arrow"
-	anchored = 1
+	anchored = TRUE
 	effect_duration = 2.5 SECONDS
 	var/glide_time = 0.5 SECONDS
 
 	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M)
+/obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
+
+	if(!M)
+		return INITIALIZE_HINT_QDEL
+
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
 
@@ -69,7 +73,10 @@
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
 
-		animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
+		var/offset_x = actual_pointed_atom ? get_pixel_position_x(actual_pointed_atom, relative = TRUE) : 0
+		var/offset_y = actual_pointed_atom ? get_pixel_position_y(actual_pointed_atom, relative = TRUE) : 0
+
+		animate(src, pixel_x = offset_x, pixel_y = offset_y, time = glide_time, easing = QUAD_EASING)
 
 	QDEL_IN(src, effect_duration + glide_time)
 
@@ -80,8 +87,11 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/greyscale
+/obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
+	color = "#1c00f6"
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
 
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"
@@ -90,7 +100,7 @@
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/C)
 	if(!C)
 		return
 
@@ -100,6 +110,9 @@
 
 /obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
 	. = ..()
+
+	if(!owner)
+		return INITIALIZE_HINT_QDEL
 
 	self_icon = image(icon, src, icon_state = icon_state)
 	LAZYINITLIST(clients)
@@ -131,7 +144,7 @@
 /obj/effect/overlay/temp/laser_coordinate
 	name = "laser"
 	anchored = TRUE
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_ICON
 	luminosity = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
@@ -149,7 +162,7 @@
 /obj/effect/overlay/temp/laser_target
 	name = "laser"
 	anchored = TRUE
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_ICON
 	luminosity = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target2"
@@ -203,7 +216,7 @@
 	anchored = TRUE
 	luminosity = 2
 	effect_duration = 10
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 
@@ -217,9 +230,9 @@
 	name = "emp sparks"
 	effect_duration = 10
 
-	New(loc)
-		setDir(pick(cardinal))
-		..()
+/obj/effect/overlay/temp/emp_sparks/New(loc)
+	setDir(pick(cardinal))
+	..()
 
 /obj/effect/overlay/temp/emp_pulse
 	name = "emp pulse"
@@ -237,6 +250,9 @@
 	effect_duration = 14
 
 /obj/effect/overlay/temp/gib_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon
@@ -252,7 +268,7 @@
 
 
 /obj/effect/overlay/temp/gib_animation/xeno
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	effect_duration = 10
 
 /obj/effect/overlay/temp/gib_animation/xeno/Initialize(mapload, mob/source_mob, gib_icon, new_icon)
@@ -267,6 +283,9 @@
 	effect_duration = 12
 
 /obj/effect/overlay/temp/dust_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon
@@ -276,6 +295,6 @@
 
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
-	icon = 'icons/mob/hostiles/Effects.dmi'
-	icon_state = "acidpoolsplash"
+	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS

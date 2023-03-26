@@ -1,7 +1,0 @@
-[
-	{ "type": "map_sprinkle", "path": "map_files/FOP_v3_Sciannex/sprinkles/" },
-	{
-		"type": "include", "name": "Standalone variations",
-		"file": "maps/FOP_v3_Sciannex/mapgen_variations.json"
-	}
-]

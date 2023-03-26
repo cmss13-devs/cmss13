@@ -1,15 +1,7 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Component, Fragment } from 'inferno';
-import {
-  Box,
-  Button,
-  Dropdown,
-  Icon,
-  Section,
-  Stack,
-  Table,
-} from '../components';
+import { Box, Button, Dropdown, Icon, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
 import dateformat from 'dateformat';
@@ -17,6 +9,7 @@ import yaml from 'js-yaml';
 
 const icons = {
   bugfix: { icon: 'bug', color: 'green' },
+  fix: { icon: 'bug', color: 'green' },
   wip: { icon: 'hammer', color: 'orange' },
   qol: { icon: 'hand-holding-heart', color: 'green' },
   soundadd: { icon: 'tg-sound-plus', color: 'green' },
@@ -35,7 +28,11 @@ const icons = {
   config: { icon: 'cogs', color: 'purple' },
   admin: { icon: 'user-shield', color: 'purple' },
   server: { icon: 'server', color: 'purple' },
+  tgs: { icon: 'toolbox', color: 'purple' },
   tweak: { icon: 'wrench', color: 'green' },
+  ui: { icon: 'desktop', color: 'blue' },
+  mapadd: { icon: 'earth-africa', color: 'yellow' },
+  maptweak: { icon: 'map-location-dot', color: 'green' },
   unknown: { icon: 'info-circle', color: 'label' },
 };
 
@@ -196,6 +193,10 @@ export class Changelog extends Component {
           <a href="https://github.com/cmss13-devs/cmss13/pulse/monthly">here</a>
           .
         </p>
+        <p>
+          {'You can also join our discord '}
+          <a href="https://discord.gg/cmss13">here</a>.
+        </p>
         {dateDropdown}
       </Section>
     );
@@ -227,6 +228,26 @@ export class Changelog extends Component {
             GPLv3.txt
           </a>
           {' for more details.'}
+        </p>
+        <p>
+          The TGS DMAPI API is licensed as a subproject under the MIT license.
+          {' See the footer of '}
+          <a
+            href={
+              'https://github.com/tgstation/tgstation/blob/master' +
+              '/code/__DEFINES/tgs.dm'
+            }>
+            code/__DEFINES/tgs.dm
+          </a>
+          {' and '}
+          <a
+            href={
+              'https://github.com/tgstation/tgstation/blob/master' +
+              '/code/modules/tgs/LICENSE'
+            }>
+            code/modules/tgs/LICENSE
+          </a>
+          {' for the MIT license.'}
         </p>
         <p>
           {'All assets including icons and sound are under a '}

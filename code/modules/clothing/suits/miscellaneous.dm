@@ -1,8 +1,8 @@
 /*
  * Contains:
- *		Lasertag
- *		Costume
- *		Misc
+ * Lasertag
+ * Costume
+ * Misc
  */
 
 /*
@@ -25,7 +25,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /obj/item/clothing/suit/redtag
 	name = "red laser tag armour"
@@ -44,7 +44,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /*
  * Costume
@@ -211,7 +211,7 @@
 	item_state = "chickensuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 
 
 /obj/item/clothing/suit/monkeysuit
@@ -221,7 +221,7 @@
 	item_state = "monkeysuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 
 
 /obj/item/clothing/suit/holidaypriest
@@ -256,13 +256,13 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-	equipped(var/mob/user, var/slot)
-		if(slot == WEAR_JACKET && ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.drop_inv_item_on_ground(H.handcuffed)
-			H.drop_l_hand()
-			H.drop_r_hand()
-		..()
+/obj/item/clothing/suit/straight_jacket/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.drop_inv_item_on_ground(H.handcuffed)
+		H.drop_l_hand()
+		H.drop_r_hand()
+	..()
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -334,26 +334,6 @@
 	item_state = "red_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
-//coats
-
-/obj/item/clothing/suit/leathercoat
-	name = "leather coat"
-	desc = "A long, thick black leather coat."
-	icon_state = "leathercoat"
-	item_state = "leathercoat"
-
-/obj/item/clothing/suit/browncoat
-	name = "brown leather coat"
-	desc = "A long, brown leather coat."
-	icon_state = "browncoat"
-	item_state = "browncoat"
-
-/obj/item/clothing/suit/neocoat
-	name = "black coat"
-	desc = "A flowing, black coat."
-	icon_state = "neocoat"
-	item_state = "neocoat"
-
 //stripper
 /obj/item/clothing/under/stripper
 	flags_armor_protection = 0
@@ -371,7 +351,7 @@
 	item_state = "xenos_helm"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 //swimsuit
 /obj/item/clothing/under/swimsuit
 	siemens_coefficient = 1
@@ -467,7 +447,7 @@
 
 	allowed = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/device/flashlight
+		/obj/item/device/flashlight,
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -499,7 +479,7 @@
 
 	allowed = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/device/flashlight
+		/obj/item/device/flashlight,
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN

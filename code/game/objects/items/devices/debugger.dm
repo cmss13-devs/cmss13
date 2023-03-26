@@ -1,17 +1,11 @@
-/**
- * Multitool -- A multitool is used for hacking electronic devices.
- * TO-DO -- Using it as a power measurement tool for cables etc. Nannek.
- *
- */
-
 /obj/item/device/debugger
 	name = "debugger"
 	desc = "Used to debug electronic equipment."
 	icon_state = "hacktool-g"
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 	desc = "You can use this on airlocks or APCs to try to hack them without cutting wires."

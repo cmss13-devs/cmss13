@@ -301,3 +301,89 @@
   kugamo:
   - imageadd: Added muzzle flashes to APC weapons.
   - bugfix: Fixed Carrier's Hugger overlays not being directional.
+  realforest2001:
+  - bugfix: Fixes tailstab going through blocked tiles.
+2022-10-26:
+  Morrow:
+  - admin: Added human name reset and human name ban to player panel.
+  Usnpeepoo:
+  - bugfix: Fixes a few issues with client/pref checks. SG auto fire now works with
+      help intent safety.
+  aceroy:
+  - bugfix: All fueltank dispensers are now wrenchable
+2022-10-27:
+  Aceroy:
+  - bugfix: Health Analyzers now accurately recommend when to administer dosages
+  Usnpeepoo:
+  - bugfix: M2C can no longer be shot at with an item/gun in your active hand.
+  Usnpepoo:
+  - bugfix: Defenders crest down now blocks rest similar to fortify
+  Youbar:
+  - balance: Xenos can now slash morgues, crematoriums, and hydro trays
+  - bugfix: Removed hardcoding on hydro trays on Kutjevo to be unslashable/unacidable
+  harryob:
+  - bugfix: cables now appear under weeds and catwalks correctly.
+  - bugfix: coffin's no longer transmutate wood into metal, and require a crowbar
+      to break.
+  - admin: build mode 2 now allows you to copy variables in advanced mode by holding
+      down shift
+  kugamo:
+  - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.
+  - bugfix: Fixed bad shading around resin traps, fast/sticky resin, eggs, and tunnels.
+2022-10-28:
+  Aceroy:
+  - bugfix: No more zoom glitches with binoculars and mounted turrets.
+  Morrow:
+  - bugfix: Stops the ability to grab or grab-throw simple animals with C4 on them.
+  Segrain:
+  - bugfix: Requisitions once again can properly order all ammunition boxes and mortar
+      shells.
+  - bugfix: ASRS should no longer randomly deliver crate of components for communications
+      tower.
+  Shad0vvs:
+  - bugfix: Fixes Ravagers being able to use scissor cuts though corners that are
+      walled off.
+  Unknownity:
+  - bugfix: The property Repairing now works again and also on synthetics via TOUCH
+  carlarctg:
+  - bugfix: Fixed resin spikes deleting on evolution, allowing drones who evolve into
+      hivelord (or vice versa) to keep them.
+  - bugfix: Tail stab now has a msg if you aim for a nonexistent limb
+  harryob:
+  - server: new round alert lives again, via tgs
+  - bugfix: autoreconnect now works
+  stanalbatross:
+  - bugfix: xenos can no longer build most structures on the same tile as open doors
+2022-10-29:
+  Joe lampost:
+  - bugfix: Stops duplication of smart discs
+  - bugfix: Stops the skinning of synths
+  Shad0vvs:
+  - bugfix: Now displays the first letter of areas properly on the Xeno death alert
+      message.
+  usnpeepoo:
+  - balance: Berserkers apprehend now has an actual cooldown, its speed increased
+      very slightly.
+  - balance: Berserkers eviscerates life steal gain and max has been lowered
+2022-10-30:
+  Geevies:
+  - admin: The ghost verb alert component now allows Aghosting as well as regular
+      ghosting.
+  - qol: Added a revive timer for zombies, as well as an alert for ghosts when their
+      bodies revive.
+  - balance: Zombie claws now apply a slowdown even if the slashed target is already
+      infected. Synths only get a regular slowdown, not a super slowdown.
+  - balance: You can now permanently kill zombies by decapitating them.
+  - bugfix: Fixes zombie eyes rendering incorrectly.
+  - bugfix: Zombies that zombify while lying down now get their equipment correctly.
+  - spellcheck: Zombie claw attacks now have sensical attack names.
+  Mister-moon1:
+  - code_imp: removed unused antihug code for the welding helmet
+  TotalEpicness:
+  - bugfix: Putting bodies in the pool now disrupts grab.
+  harryob:
+  - server: the server no longer allows graceful server restarts, and forcefully dies
+      at the end of every round
+2022-10-31:
+  Morrow:
+  - rscadd: Added suit slot sprites for mateba belts

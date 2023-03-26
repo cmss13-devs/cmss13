@@ -6,12 +6,12 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/M = user.mob
-	return isgun(M.get_held_item())
+	var/mob/user_mob = user.mob
+	return isgun(user_mob.get_held_item())
 
 /datum/keybinding/human/combat/field_strip_weapon
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "field_strip_weapon"
 	full_name = "Field Strip Weapon"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP
@@ -20,15 +20,15 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
 
-	G.field_strip()
+	held_item.field_strip()
 	return TRUE
 
 /datum/keybinding/human/combat/toggle_burst_fire
 	hotkey_keys = list("Ctrl+Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_burst_fire"
 	full_name = "Toggle Burst Fire"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_BURSTFIRE
@@ -37,14 +37,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_burst()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.use_toggle_burst()
 	return TRUE
 
 /datum/keybinding/human/combat/stock_attachment
 	hotkey_keys = list("Shift+X")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_stock_attachment"
 	full_name = "Toggle Stock Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT
@@ -53,14 +53,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_stock_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_stock_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/auto_eject
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "toggle_auto_eject"
 	full_name = "Toggle Auto Eject"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_AUTOEJECT
@@ -69,14 +69,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_auto_eject_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_auto_eject_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/underbarrel
 	hotkey_keys = list("Shift+Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_underbarrel_attachment"
 	full_name = "Toggle Underbarrel Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL
@@ -85,14 +85,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_underbarrel_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_underbarrel_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/unique_action
 	hotkey_keys = list("Space")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "unique_action"
 	full_name = "Unique Action"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNIQUEACTION
@@ -101,14 +101,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.use_unique_action()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.use_unique_action()
 	return TRUE
 
 /datum/keybinding/human/combat/unload_gun
 	hotkey_keys = list("Shift+Z")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "unload_weapon"
 	full_name = "Unload Weapon"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_UNLOAD
@@ -117,14 +117,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.empty_mag()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.empty_mag()
 	return TRUE
 
 /datum/keybinding/human/combat/safety
 	hotkey_keys = list("Shift+V")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_weapon_safety"
 	full_name = "Toggle Weapon Safety"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_SAFETY
@@ -133,14 +133,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_gun_safety()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_gun_safety()
 	return TRUE
 
 /datum/keybinding/human/combat/attachment
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "toggle_attachment"
 	full_name = "Toggle Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT
@@ -149,14 +149,14 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.activate_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.activate_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/attachment_rail
 	hotkey_keys = list("Shift+G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "toggle_rail_attachment"
 	full_name = "Toggle Rail Attachment"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL
@@ -165,7 +165,29 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.activate_rail_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.activate_rail_attachment_verb()
 	return TRUE
+
+/datum/keybinding/human/combat/toggle_iff
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_iff"
+	full_name = "Toggle IFF"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF
+
+/datum/keybinding/human/combat/toggle_iff/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	if(istype(held_item, /obj/item/weapon/gun/smartgun))
+		var/obj/item/weapon/gun/smartgun/clevergun = held_item
+		clevergun.toggle_lethal_mode(human)
+		return TRUE
+	else if(istype(held_item, /obj/item/weapon/gun/rifle/m46c))
+		var/obj/item/weapon/gun/rifle/m46c/COgun = held_item
+		COgun.toggle_iff(human)
+		return TRUE

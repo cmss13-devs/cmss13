@@ -1,10 +1,10 @@
 /* Glass stack types
  * Contains:
- *		Glass sheets
- *		Reinforced glass sheets
- *		Phoron Glass Sheets
- *		Reinforced Phoron Glass Sheets (AKA Holy fuck strong windows)
- *		Glass shards - TODO: Move this into code/game/object/item/weapons
+ * Glass sheets
+ * Reinforced glass sheets
+ * Phoron Glass Sheets
+ * Reinforced Phoron Glass Sheets (AKA Holy fuck strong windows)
+ * Glass shards - TODO: Move this into code/game/object/item/weapons
  */
 
 /*
@@ -70,7 +70,7 @@
 				user.put_in_hands(RG)
 
 /obj/item/stack/sheet/glass/proc/construct_window(mob/user)
-	if(!user || !src)	return FALSE
+	if(!user || !src) return FALSE
 	if(!istype(user.loc,/turf)) return FALSE
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
@@ -100,8 +100,8 @@
 		return
 	switch(to_build)
 		if("One Direction")
-			if(!src)	return TRUE
-			if(src.loc != user)	return TRUE
+			if(!src) return TRUE
+			if(src.loc != user) return TRUE
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
 			if(AC)
 				to_chat(usr, SPAN_WARNING("\The [src] cannot be built here!"))
@@ -132,8 +132,8 @@
 			WD.set_constructed_window(dir_to_set)
 			src.use(1)
 		if("Full Window")
-			if(!src)	return TRUE
-			if(src.loc != user)	return TRUE
+			if(!src) return TRUE
+			if(src.loc != user) return TRUE
 			if(src.amount < 4)
 				to_chat(user, SPAN_DANGER("You need more glass to do that."))
 				return TRUE

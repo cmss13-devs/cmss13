@@ -18,7 +18,8 @@
 	bound_x = 0
 	bound_y = 0
 
-	interior_map = "van"
+	interior_map = /datum/map_template/interior/van
+
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-1, 0),
@@ -30,7 +31,6 @@
 
 	passengers_slots = 8
 	xenos_slots = 2
-	list/datum/role_served_slots/role_reserved_slots = list()
 
 	misc_multipliers = list(
 		"move" = 0.5, // fucking annoying how this is the only way to modify speed
@@ -46,7 +46,7 @@
 	move_max_momentum = 3
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/van_wheels
+		/obj/item/hardpoint/locomotion/van_wheels,
 	)
 
 	move_turn_momentum_loss_factor = 1
@@ -83,7 +83,7 @@
 
 	icon_state = null
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, .proc/add_default_image)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, PROC_REF(add_default_image))
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
@@ -119,19 +119,19 @@
 		if(!(M.loc in locs))
 			remove_under_van(M)
 
-/obj/vehicle/multitile/van/proc/add_under_van(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/add_under_van(mob/living/L)
 	if(L in mobs_under)
 		return
 
 	mobs_under += L
-	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/remove_under_van)
-	RegisterSignal(L, COMSIG_MOB_LOGIN, .proc/add_client)
-	RegisterSignal(L, COMSIG_MOVABLE_MOVED, .proc/check_under_van)
+	RegisterSignal(L, COMSIG_PARENT_QDELETING, PROC_REF(remove_under_van))
+	RegisterSignal(L, COMSIG_MOB_LOGIN, PROC_REF(add_client))
+	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(check_under_van))
 
 	if(L.client)
 		add_client(L)
 
-/obj/vehicle/multitile/van/proc/remove_under_van(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/remove_under_van(mob/living/L)
 	SIGNAL_HANDLER
 	mobs_under -= L
 
@@ -145,17 +145,17 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
-/obj/vehicle/multitile/van/proc/check_under_van(var/mob/M, var/turf/oldloc, var/direction)
+/obj/vehicle/multitile/van/proc/check_under_van(mob/M, turf/oldloc, direction)
 	SIGNAL_HANDLER
 	if(!(M.loc in locs))
 		remove_under_van(M)
 
-/obj/vehicle/multitile/van/proc/add_client(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/add_client(mob/living/L)
 	SIGNAL_HANDLER
 	L.client.images += under_image
 	L.client.images -= normal_image
 
-/obj/vehicle/multitile/van/proc/add_default_image(var/subsystem, var/mob/M)
+/obj/vehicle/multitile/van/proc/add_default_image(subsystem, mob/M)
 	SIGNAL_HANDLER
 	M.client.images += normal_image
 
@@ -206,7 +206,7 @@
 			return
 
 		misc_multipliers["move"] -= overdrive_speed_mult
-		addtimer(CALLBACK(src, .proc/reset_overdrive), overdrive_duration)
+		addtimer(CALLBACK(src, PROC_REF(reset_overdrive)), overdrive_duration)
 
 		overdrive_next = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))
@@ -225,7 +225,7 @@
 			return TRUE
 	return FALSE
 
-/obj/vehicle/multitile/van/Collide(var/atom/A)
+/obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
 		return FALSE
 
@@ -276,7 +276,7 @@
 	load_damage(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(var/obj/vehicle/multitile/van/V)
+/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 //PRESET: wheels installed
@@ -288,5 +288,5 @@
 	handle_direction(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(var/obj/vehicle/multitile/van/V)
+/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

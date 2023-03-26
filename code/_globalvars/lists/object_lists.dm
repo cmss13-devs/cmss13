@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY_TYPED(object_list, /obj)
-GLOBAL_LIST_EMPTY_TYPED(item_list, /obj/item)
 GLOBAL_LIST_EMPTY_TYPED(cm_vending_vendors, /obj/structure/machinery/cm_vending/sorted) //Used by our gamemode code
 
 GLOBAL_LIST_EMPTY_TYPED(gun_list, /obj/item/weapon/gun)

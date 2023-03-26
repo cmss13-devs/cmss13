@@ -1,5 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////////
-
 /datum/chemical_reaction
 	var/name = null
 	var/id = null
@@ -16,13 +14,13 @@
 
 	var/result_amount = 0 //I recommend you set the result amount to the total volume of all components.
 	var/secondary = 0 // set to nonzero if secondary reaction
-	var/list/secondary_results = list()		//additional reagents produced by the reaction
+	var/list/secondary_results = list() //additional reagents produced by the reaction
 	var/requires_heating = 0
 
-/datum/chemical_reaction/proc/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
 	return
 
-/datum/chemical_reaction/proc/add_to_filtered_list(var/reset = FALSE)
+/datum/chemical_reaction/proc/add_to_filtered_list(reset = FALSE)
 	if(reset)
 		for(var/R in chemical_reactions_filtered_list)
 			LAZYREMOVE(chemical_reactions_filtered_list[R], src)

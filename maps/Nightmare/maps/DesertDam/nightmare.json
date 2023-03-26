@@ -1,0 +1,14 @@
+[
+	{ "type": "pick", "choices": [
+		{ "type": "map_insert",  "landmark": "green-east-bridge", "path": "greenriver/bridgerepaired.dmm" },
+		{ "type": "map_insert",  "landmark": "green-new-bridge", "path": "greenriver/newbridge.dmm" }
+	], "chance": 0.5 },
+	{ "type": "pick", "choices": [
+		{ "weight": 1, "type": "map_insert",  "landmark": "purple-center-bridge", "path": "purpleriver/bridgerepaired.dmm" },
+		{ "weight": 1, "type": "map_insert",  "landmark": "purple-center-bridge", "path": "purpleriver/bridgedamaged.dmm" },
+		{ "weight": 1, "type": "map_insert",  "landmark": "purple-south-bridge", "path": "purpleriver/bridgedamaged.dmm" },
+		{ "weight": 1, "type": "map_insert",  "landmark": "purple-south-bridge", "path": "purpleriver/bridgerepaired.dmm" },
+		{ "weight": 2, "type": "map_insert",  "landmark": "purple-new-bridge", "path": "purpleriver/newbridge.dmm" }
+	], "chance": 0.6 },
+	{ "type": "map_sprinkle", "path": "sprinkles/" }
+]

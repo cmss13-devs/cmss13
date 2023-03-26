@@ -12,7 +12,7 @@
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/card
 	var/obj/item/card/id/user_id_card
 	var/obj/item/card/id/target_id_card
@@ -25,16 +25,16 @@
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
-		visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: Authority confirmation card is missing!\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
 	if(check_access(id_card))
 		authenticated = TRUE
-		visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
 		update_static_data(user)
 		return TRUE
 
-	visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
+	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
 
 /obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
@@ -72,7 +72,7 @@
 					user_id_card.forceMove(loc)
 				user_id_card = null
 		if("PRG_logout")
-			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 			authenticated = FALSE
 			if(ishuman(user))
 				user_id_card.forceMove(user.loc)
@@ -149,7 +149,7 @@
 				else
 					target_id_card.forceMove(loc)
 					target_id_card = null
-				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
@@ -157,7 +157,7 @@
 					if(user.drop_held_item())
 						I.forceMove(src)
 						target_id_card = I
-						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 						update_static_data(user)
 						origin_assignment = target_id_card.assignment
 						origin_name = target_id_card.registered_name
@@ -170,12 +170,12 @@
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
 			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
-			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
+			message_admins("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
 			return TRUE
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
 				return
-			var/new_name = params["name"]	// reject_bad_name() can be added here
+			var/new_name = params["name"] // reject_bad_name() can be added here
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -200,14 +200,14 @@
 					var/datum/job/job = RoleAuthority.roles_for_mode[target]
 
 					if(!job)
-						visible_message("<span class='bold'>[src]</span> states, \"DATA ERROR: Can not find next entry in database: [target]\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"DATA ERROR: Can not find next entry in database: [target]\"")
 						return
 					new_access = job.get_access()
 				target_id_card.access -= get_all_centcom_access() + get_all_accesses()
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
-			message_staff("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
+			message_admins("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
 			if(!authenticated)
@@ -398,7 +398,7 @@
 					O.forceMove(src)
 					target_id_card = O
 					update_static_data(user)
-					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 		else
@@ -407,13 +407,13 @@
 					O.forceMove(src)
 					target_id_card = O
 					update_static_data(user)
-					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
 		..()
 
-/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/bullet_act()
@@ -424,27 +424,27 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
-		if(operable())	// Powered. Console can response.
-			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+		if(operable()) // Powered. Console can response.
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
 			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
-		authenticated = FALSE	// No card - no access
+		authenticated = FALSE // No card - no access
 		user_id_card = null
 
 	else if(target_id_card)
 		target_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
-		if(operable())	// Powered. Make comp proceed ejection
+		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
-			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
 			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
 		target_id_card = null
@@ -453,7 +453,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/card/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(inoperable())
@@ -480,7 +480,7 @@
 	name = "Squad Distribution Computer"
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
 	var/faction = FACTION_MARINE
@@ -490,7 +490,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -532,7 +532,7 @@
 				else
 					ID_to_modify.forceMove(loc)
 					ID_to_modify = null
-				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: ID modification protocol disabled.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: ID modification protocol disabled.\"")
 				return TRUE
 			else
 				var/obj/item/I = user.get_active_hand()
@@ -540,7 +540,7 @@
 					if(user.drop_held_item())
 						I.forceMove(src)
 						ID_to_modify = I
-						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 						return TRUE
 		if("PRG_squad")
 			if(
@@ -553,21 +553,21 @@
 				if(!selected)
 					return
 				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
-					visible_message("<span class='bold'>[src]</span> states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
 					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
-					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
 				else
-					visible_message("<span class='bold'>[src]</span> states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
+					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
 			else if(!istype(ID_to_modify))
 				to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
 			else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
-				visible_message("<span class='bold'>[src]</span> states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
 			else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
-				visible_message("<span class='bold'>[src]</span> states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
 			else
-				visible_message("<span class='bold'>[src]</span> states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
 			return TRUE
 
 /obj/structure/machinery/computer/squad_changer/ui_data(mob/user)
@@ -610,7 +610,7 @@
 				H.drop_held_item()
 				idcard.forceMove(src)
 				ID_to_modify = idcard
-				visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+				visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
 		else if(istype(O, /obj/item/grab))
@@ -619,24 +619,24 @@
 				if(!operable())
 					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
 					return
-				var/isXenos = isXeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+				var/isxenos = isxeno(G.grabbed_thing)
+				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+				visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
-				if(!isXenos)
+				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
 		..()
 
 
-/obj/structure/machinery/computer/squad_changer/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/squad_changer/bullet_act()
 	return 0
 
-/obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(user)
@@ -648,25 +648,26 @@
 	if(allowed(user))
 		tgui_interact(user)
 	else
-		var/isXenos = isXeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+		var/isxenos = isxeno(user)
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
-		if(!isXenos)
+		if(!isxenos)
 			person_to_modify = user
 
 /// How often the sensor data is updated
-#define SENSORS_UPDATE_PERIOD	10 SECONDS //How often the sensor data updates.
+#define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
-#define UNKNOWN_JOB_ID			998
+#define UNKNOWN_JOB_ID 998
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
+	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
@@ -725,6 +726,10 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 #define SENSOR_LIVING 1
 #define SENSOR_VITALS 2
 #define SENSOR_COORDS 3
+/// This is a really hacky way to make SOF work, but the nice and easy alternative would screw with round spawning
+#define RAIDER_OFFICER_SQUAD "SOF [JOB_MARINE_RAIDER_CMD]"
+#define RAIDER_SL_SQUAD "SOF [JOB_MARINE_RAIDER_SL]"
+#define RAIDER_SQUAD "SOF [JOB_MARINE_RAIDER]"
 
 /datum/crewmonitor
 	/// List of user -> UI source
@@ -737,7 +742,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/jobs
 	var/faction = FACTION_MARINE
 
-/datum/crewmonitor/New(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/New(set_faction = FACTION_MARINE)
 	..()
 	faction = set_faction
 	setup_for_faction(faction)
@@ -762,7 +767,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	// Update active users UI
 	for(var/H in ui_sources)
 		var/datum/tgui/ui = SStgui.try_update_ui(H, src)
-		if(!ui)	// What are you doing in list?
+		if(!ui) // What are you doing in list?
 			ui_sources -= H
 
 /datum/crewmonitor/ui_close(mob/M)
@@ -784,7 +789,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/results = list()
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		// Predators
-		if(isYautja(H))
+		if(isyautja(H))
 			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform
@@ -862,99 +867,128 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				if(entry["name"] == params["name"])
 					H = locate(entry["ref"])
 					break
-			if(!H)	// Sanity check
+			if(!H) // Sanity check
 				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
 			else
 				// We do not care is there camera or no - we just know his location
 				AI.ai_actual_track(H)
 
-/datum/crewmonitor/proc/setup_for_faction(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-10: Command
-				JOB_CO = 00,
-				JOB_XO = 01,
-				JOB_SO = 02,
-				JOB_SEA = 03,
-				// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
-				JOB_SYNTH = 10,
-				JOB_PILOT = 11,
-				JOB_DROPSHIP_CREW_CHIEF = 12,
-				JOB_CREWMAN = 13,
-				JOB_INTEL = 14,
-				// 20-29: Security
-				JOB_CHIEF_POLICE = 20,
-				JOB_WARDEN = 21,
-				JOB_POLICE = 22,
-				JOB_POLICE_CADET = 23,
-				// 30-39: MedSci
-				JOB_CMO = 30,
-				JOB_RESEARCHER = 31,
-				JOB_DOCTOR = 32,
-				JOB_NURSE = 33,
-				// 40-49: Engineering
-				JOB_CHIEF_ENGINEER = 40,
-				JOB_ORDNANCE_TECH = 41,
-				JOB_MAINT_TECH = 42,
-				// 50-59: Cargo
-				JOB_CHIEF_REQUISITION = 50,
-				JOB_CARGO_TECH = 51,
-				// 110+: Civilian/other
-				JOB_CORPORATE_LIAISON = 110,
-				JOB_MESS_SERGEANT = 111,
-				JOB_PASSENGER = 112,
+				// 00-09: High Command, defined at bottom
+				JOB_CMC = 00,//Grade O10
+				JOB_ACMC = 00,
+				JOB_PROVOST_CMARSHAL = 00,
+				JOB_GENERAL = 00,
+				JOB_PROVOST_SMARSHAL = 01,//Grade O9
+				JOB_PROVOST_MARSHAL = 02,//Grade O8
+				JOB_COLONEL = 04,//Grade O6
+				JOB_PROVOST_INSPECTOR = 04,
+				// 10-19: Command
+				JOB_CO = 10,
+				JOB_XO = 11,
+				JOB_MARINE_RAIDER_CMD = 11,
+				RAIDER_OFFICER_SQUAD = 11,
+				JOB_SO = 12,
+				JOB_SEA = 13,
+				// 20-29: Aux Command (Synth isn't Aux head, but important - make him bold)
+				JOB_SYNTH = 20,
+				JOB_PILOT = 21,
+				JOB_DROPSHIP_CREW_CHIEF = 22,
+				JOB_INTEL = 24,
+				// 30-39: Security
+				JOB_CHIEF_POLICE = 30,
+				JOB_PROVOST_TML = 30,
+				JOB_WARDEN = 31,
+				JOB_PROVOST_ENFORCER = 31,
+				JOB_RIOT_CHIEF = 32,
+				JOB_RIOT = 33,
+				JOB_POLICE = 34,
+				JOB_PROVOST_ADVISOR = 35,
+				// 40-49: MedSci
+				JOB_CMO = 40,
+				JOB_RESEARCHER = 41,
+				JOB_DOCTOR = 42,
+				JOB_NURSE = 43,
+				// 50-59: Engineering
+				JOB_CHIEF_ENGINEER = 50,
+				JOB_ORDNANCE_TECH = 51,
+				JOB_MAINT_TECH = 52,
+				// 60-69: Cargo
+				JOB_CHIEF_REQUISITION = 60,
+				JOB_CARGO_TECH = 61,
+				// 70-139: SQUADS (look below)
+				// 140+: Civilian/other
+				JOB_CORPORATE_LIAISON = 140,
+				JOB_MESS_SERGEANT = 141,
+				JOB_PASSENGER = 142,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 130,
-				JOB_SURVIVOR = 131,
-				JOB_COLONIST = 132,
-				JOB_WORKING_JOE = 133,
+				JOB_SYNTH_SURVIVOR = 150,
+				JOB_SURVIVOR = 151,
+				JOB_COLONIST = 152,
+				JOB_WORKING_JOE = 153,
 
 				// WO jobs
-				// 00-10: Command
-				JOB_WO_CO = 00,
-				JOB_WO_XO = 01,
-				// 10-19: Aux Command
-				JOB_WO_CHIEF_POLICE = 10,
-				JOB_WO_SO = 11,
-				// 20-29: Security
-				JOB_WO_CREWMAN = 20,
-				JOB_WO_POLICE = 21,
-				JOB_WO_PILOT = 22,
-				// 30-39: MedSci
-				JOB_WO_CMO = 30,
-				JOB_WO_RESEARCHER = 31,
-				JOB_WO_DOCTOR = 32,
-				// 40-49: Engineering
-				JOB_WO_CHIEF_ENGINEER = 40,
-				JOB_WO_ORDNANCE_TECH = 41,
-				// 50-59: Cargo
-				JOB_WO_CHIEF_REQUISITION = 50,
-				JOB_WO_REQUISITION = 51,
-				// 60-109: SQUADS (look above)
-				// 110+: Civilian/other
-				JOB_WO_CORPORATE_LIAISON = 110,
-				JOB_WO_SYNTH = 120,
+				// 10-19: Command
+				JOB_WO_CO = 10,
+				JOB_WO_XO = 11,
+				// 20-29: Aux Command
+				JOB_WO_CHIEF_POLICE = 20,
+				JOB_WO_SO = 21,
+				// 30-39: Security
+				JOB_WO_CREWMAN = 30,
+				JOB_WO_POLICE = 31,
+				JOB_WO_PILOT = 32,
+				// 40-49: MedSci
+				JOB_WO_CMO = 40,
+				JOB_WO_RESEARCHER = 41,
+				JOB_WO_DOCTOR = 42,
+				// 50-59: Engineering
+				JOB_WO_CHIEF_ENGINEER = 50,
+				JOB_WO_ORDNANCE_TECH = 51,
+				// 60-69: Cargo
+				JOB_WO_CHIEF_REQUISITION = 60,
+				JOB_WO_REQUISITION = 61,
+				// 70-139: SQUADS (look below)
+				// 140+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 140,
+				JOB_WO_SYNTH = 150,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
 
-				// 200-229: Centcom
-				JOB_COLONEL = 200,
-				JOB_GENERAL = 200,
-				JOB_MARSOC_CMD = 210,
-				JOB_MARSOC_SL = 210,
-				JOB_MARSOC = 211,
+				// 200-229: Visitors
+				JOB_UPP_REPRESENTATIVE = 201,
+				JOB_TWE_REPRESENTATIVE = 201,
+				JOB_TIS_SA = 210,
+				JOB_TIS_IO = 211,
+				JOB_PMC_DIRECTOR = 220,
 				JOB_PMC_LEADER = 220,
-				JOB_PMC_ELITE = 221,
-				JOB_PMC_GUNNER = 222,
-				JOB_PMC_SNIPER = 223,
-				JOB_PMC = 224,
+				JOB_PMC_LEAD_INVEST = 220,
+				JOB_PMC_SYNTH = 221,
+				JOB_PMC_XENO_HANDLER = 221,
+				JOB_PMC_SNIPER = 222,
+				JOB_PMC_GUNNER = 223,
+				JOB_PMC_MEDIC = 224,
+				JOB_PMC_INVESTIGATOR = 224,
+				JOB_PMC_ENGINEER = 225,
+				JOB_PMC = 226,
+				JOB_PMC_DOCTOR = 227,
+				JOB_WY_GOON_LEAD = 228,
+				JOB_WY_GOON = 229,
+
+				// Appear at bottom of squad list
+				JOB_MARINE_RAIDER_SL = 130,
+				RAIDER_SL_SQUAD = 130,
+				JOB_MARINE_RAIDER = 131,
+				RAIDER_SQUAD = 131,
 			)
-			var/squad_number = 60
+			var/squad_number = 70
 			for(var/squad_name in ROLES_SQUAD_ALL + "")
-				if(!squad_name) squad_number = 12
+				if(!squad_name) squad_number = 120
 				else squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
@@ -979,3 +1013,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 #undef SENSOR_COORDS
 #undef SENSORS_UPDATE_PERIOD
 #undef UNKNOWN_JOB_ID
+#undef RAIDER_SQUAD
+#undef RAIDER_SL_SQUAD
+#undef RAIDER_OFFICER_SQUAD

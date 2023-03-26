@@ -161,15 +161,15 @@
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 
 		for(var/line in gset.gridLines)
-			if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper)				//Reverse operation and check if it is out of bounds of cropping.
+			if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper) //Reverse operation and check if it is out of bounds of cropping.
 				--ycrd
 				continue
 			if(ycrd <= world.maxy && ycrd >= 1)
 				var/xcrd = gset.xcrd + x_offset - 1
 				for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
-					if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper)			//Same as above.
+					if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper) //Same as above.
 						++xcrd
-						continue								//X cropping.
+						continue //X cropping.
 					if(xcrd > world.maxx)
 						if(cropMap)
 							break
@@ -203,10 +203,10 @@
 		CHECK_TICK
 
 	//if(!no_changeturf)// mapping TODO:
-	//	for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
-	//		var/turf/T = t
-	//		//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
-	//		T.AfterChange(CHANGETURF_IGNORE_AIR)
+	// for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
+	// var/turf/T = t
+	// //we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
+	// T.AfterChange(CHANGETURF_IGNORE_AIR)
 
 	#ifdef TESTING
 	if(turfsSkipped)
@@ -361,6 +361,8 @@
 		if(ispath(path, /turf))
 			if(delete)
 				for(var/atom/A as anything in crds.GetAllTurfStrictContents())
+					if(isobserver(A))
+						continue
 					qdel(A, force=TRUE)
 
 			if(placeOnTop)

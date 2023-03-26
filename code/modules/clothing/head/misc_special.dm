@@ -1,9 +1,9 @@
 /*
  * Contents:
- *		Welding mask
- *		Cakehat
- *		Ushanka
- *		Pumpkin head
+ * Welding mask
+ * Cakehat
+ * Ushanka
+ * Pumpkin head
  *
  */
 
@@ -32,9 +32,8 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	vision_impair = VISION_IMPAIR_MAX
-	var/hug_memory = 0 //Variable to hold the "memory" of how many anti-hugs remain.  Because people were abusing the fuck out of it.
 
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
@@ -54,16 +53,13 @@
 			icon_state = initial(icon_state)
 			eye_protection = initial(eye_protection)
 			to_chat(usr, "You flip the [src] down to protect your eyes.")
-			anti_hug = hug_memory //This will reset the hugged var, but ehh. More efficient than making a new var for it.
 		else
 			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 			flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[initial(icon_state)]up"
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You push the [src] up out of your face.")
-			hug_memory = anti_hug
-			anti_hug = 0
 		up = !up
 
 		if(ishuman(loc))
@@ -71,7 +67,7 @@
 			if(H.head == src)
 				H.update_tint()
 
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 		for(var/X in actions)
 			var/datum/action/A = X
@@ -85,9 +81,9 @@
 	desc = "It's tasty looking!"
 	icon_state = "cake0"
 	flags_inventory = COVEREYES
-	var/onfire = 0.0
+	var/onfire = 0
 	var/status = 0
-	var/fire_resist = T0C+1300	//this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
+	var/fire_resist = T0C+1300 //this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
 	var/processing = 0 //I dont think this is used anywhere.
 	flags_armor_protection = BODY_FLAG_EYES
 

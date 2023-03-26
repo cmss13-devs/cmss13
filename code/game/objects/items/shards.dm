@@ -6,7 +6,7 @@
 	icon_state = ""
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
-	desc = "Could probably be used as ... a throwing weapon?"
+	desc = "A shard of broken glass. Could probably be used as ... a throwing weapon?"
 	w_class = SIZE_TINY
 	force = 5
 	throwforce = 8
@@ -31,13 +31,16 @@
 		if("small")
 			pixel_x = rand(-12, 12)
 			pixel_y = rand(-12, 12)
+			icon_state += shardsize
 		if("medium")
 			pixel_x = rand(-8, 8)
 			pixel_y = rand(-8, 8)
+			icon_state += shardsize
 		if("large")
 			pixel_x = rand(-5, 5)
 			pixel_y = rand(-5, 5)
-	icon_state += shardsize
+			icon_state += shardsize
+
 
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
@@ -64,7 +67,7 @@
 
 /obj/item/shard/phoron
 	name = "phoron shard"
-	desc = "A shard of phoron glass. Considerably tougher than normal glass shards. Apparently not tough enough to be a window."
+	desc = "A shard of broken phoron glass. Considerably tougher than normal glass shards. Apparently not tough enough to be a window."
 	force = 8
 	throwforce = 15
 	icon_state = "phoron"
@@ -75,18 +78,19 @@
 // on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
 // on_embedded_movement is called from human.dm, handle_embedded_objects().
 
-/obj/item/large_shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/large_shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	return
 
-/obj/item/large_shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/large_shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
 /obj/item/large_shrapnel/at_rocket_dud
 	name = "unexploded anti-tank rocket"
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "custom_rocket_no_fuel"
 	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
-	matter = list("metal" = 11250) //same as custom warhead
+	/// same as custom warhead
+	matter = list("metal" = 11250)
 	w_class = SIZE_LARGE
 	force = 20
 	throw_range = 5
@@ -98,8 +102,10 @@
 	var/detonating = 0
 	var/thrown = 0
 	var/cause = null
-	var/drop_sensitivity = 25 //% chance of it detonating when dropped. THIS ALSO TRIGGERS WHEN PUTTING IT IN A BAG.
-	var/impact_sensitivity = 75 //% chance of it detonating when thrown and hitting an atom.
+	/// % chance of it detonating when dropped. THIS ALSO TRIGGERS WHEN PUTTING IT IN A BAG.
+	var/drop_sensitivity = 25
+	/// % chance of it detonating when thrown and hitting an atom.
+	var/impact_sensitivity = 75
 
 /obj/item/large_shrapnel/at_rocket_dud/dropped(mob/user)
 	. = ..()
@@ -110,7 +116,7 @@
 		manual_detonate(get_turf(src), user)
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/try_to_throw(var/mob/living/user)
+/obj/item/large_shrapnel/at_rocket_dud/try_to_throw(mob/living/user)
 	to_chat(user, SPAN_NOTICE("You heft \the [src] up, preparing to throw it."))
 	user.visible_message(SPAN_DANGER("[user] strains to lift up \the [src]. It looks like they're trying to throw it!"))
 	throw_range = 5
@@ -125,7 +131,7 @@
 	thrown = 1
 	return TRUE
 
-/obj/item/large_shrapnel/at_rocket_dud/launch_impact(var/atom/hit_atom)
+/obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
 	. = ..()
 	var/datum/launch_metadata/LM = src.launch_metadata
 	var/user = LM.thrower
@@ -138,7 +144,7 @@
 	cause = null
 	thrown = 0
 
-/obj/item/large_shrapnel/at_rocket_dud/afterattack(var/atom/target, var/mob/user, var/proximity_flag, var/click_parameters)
+/obj/item/large_shrapnel/at_rocket_dud/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!detonating && (user.a_intent == INTENT_HARM) && proximity_flag && (istype(target, /obj/vehicle) || istype(target, /obj/structure) || istype(target, /turf)))
 		cause = "manually triggered"
 		vehicle_impact(target, user)
@@ -146,7 +152,7 @@
 		return
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/attack(var/mob/living/M, var/mob/living/user)
+/obj/item/large_shrapnel/at_rocket_dud/attack(mob/living/M, mob/living/user)
 	. = ..()
 	if(!detonating && (user.a_intent == INTENT_HARM) && istype(M, /mob/living/carbon))
 		cause = "manually triggered"
@@ -154,7 +160,7 @@
 		return
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/proc/vehicle_impact(var/atom/T, var/mob/U)
+/obj/item/large_shrapnel/at_rocket_dud/proc/vehicle_impact(atom/T, mob/U)
 	if(istype(T, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = T
 		M.next_move = world.time + vehicle_slowdown_time
@@ -165,7 +171,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(var/atom/target, var/mob/living/user, var/melee = 1, var/direction = null)
+/obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(atom/target, mob/living/user, melee = 1, direction = null)
 	detonating = 1
 	if(user && (cause == "manually triggered"))
 		user.visible_message(SPAN_DANGER("[user] [melee?"slams \the [src] into":"throws \the [src] at"] [target]!"))
@@ -174,7 +180,7 @@
 	cell_explosion(get_turf(target), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, create_cause_data("[cause] UXO detonation", user))
 	qdel(src)
 
-/obj/item/large_shrapnel/at_rocket_dud/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/large_shrapnel/at_rocket_dud/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -183,7 +189,7 @@
 	if(istype(target_organ))
 		target_organ.embed(src)
 
-/obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -206,7 +212,7 @@
 	source_sheet_type = null
 	var/damage_on_move = 0.5
 
-/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -215,7 +221,7 @@
 	if(istype(target_organ))
 		target_organ.embed(src)
 
-/obj/item/shard/shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/shard/shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -228,23 +234,30 @@
 
 /obj/item/shard/shrapnel/nagant
 	name = "small shrapnel"
-	desc = "Some shrapnel that used to be embedded on someone's skin."
+	desc = "Some shrapnel that used to be embedded underneath someone's skin."
+	icon_state = "small"
 	damage_on_move = 2
 
 /obj/item/shard/shrapnel/nagant/bits
 	name = "tiny shrapnel"
+	desc = "A tiny piece of shrapnel that used to be embedded underneath someone's skin."
+	icon_state = "tiny"
 	damage_on_move = 0.5
 
 /obj/item/shard/shrapnel/bone_chips
 	name = "bone shrapnel chips"
-	icon_state = "shrapnel"
+	gender = PLURAL
+	icon_state = "bonechips"
+	matter = list("bone" = 50)
 	desc = "It looks like it came from a prehistoric animal."
 	damage_on_move = 0.6
 
 /obj/item/shard/shrapnel/bone_chips/human
 	name = "human bone fragments"
+	icon_state = "humanbonechips"
 	desc = "Oh god, their bits are everywhere!"
 
 /obj/item/shard/shrapnel/bone_chips/xeno
 	name = "alien bone fragments"
+	icon_state = "alienbonechips"
 	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."

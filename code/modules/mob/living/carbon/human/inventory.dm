@@ -1,6 +1,6 @@
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -135,7 +135,7 @@
 		if(updatename)
 			name = get_visible_name()
 		if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-			update_hair()	//rebuild hair
+			update_hair() //rebuild hair
 		if(I.flags_inv_hide & HIDEEARS)
 			update_inv_ears()
 		if(I.flags_inv_hide & HIDEMASK)
@@ -192,7 +192,7 @@
 			apply_damage(25, BRUTE, "head")
 	name = get_visible_name() // doing this without a check, still cheaper than doing it every Life() tick -spookydonut
 	if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-		update_hair()	//rebuild hair
+		update_hair() //rebuild hair
 	if(I.flags_inv_hide & HIDEEARS)
 		update_inv_ears()
 	if(I.flags_inv_hide & HIDEEYES)
@@ -297,7 +297,7 @@
 			if(head.flags_inv_hide & HIDEFACE)
 				name = get_visible_name()
 			if(head.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
-				update_hair()	//rebuild hair
+				update_hair() //rebuild hair
 			if(head.flags_inv_hide & HIDEEARS)
 				update_inv_ears()
 			if(head.flags_inv_hide & HIDEMASK)
@@ -543,3 +543,9 @@
 	if(M)
 		if(interactee == M && Adjacent(M))
 			M.show_inv(src)
+
+/mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
+	remember_dropped_object(I)
+	return ..()
+
+

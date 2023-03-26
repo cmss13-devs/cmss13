@@ -1,0 +1,48 @@
+name: Bug Report
+description: File a bug report
+labels: ["Bug"]
+body:
+  - type: input
+    id: current-tms
+    attributes:
+      label: Testmerges
+      description: Are there any current TMs on the server? You can see this from the message when you join, or via using the OOC -> Show Revision Info verb. If you're certain the issue is to be caused by a test merge, report it in the pull request's comment section rather than on the tracker.
+      placeholder: "#1, #2, #3, etc"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Description of the bug
+      description: What went wrong? Give us a 1-2 sentence summary.
+      placeholder: Maintainers hate this one simple trick...
+    validations:
+      required: true
+  - type: textarea
+    id: what-should-have-happened
+    attributes:
+      label: What's the difference with what should have happened?
+      description: What's the expected behaviour?
+      placeholder: Not this. Never this...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How do we reproduce this bug?
+      description: Using as much detail as necessary, give us the steps to reproducing this error.
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+  - type: checkboxes
+    id: issue-bingo
+    attributes:
+      label: Issue Bingo
+      options:
+        - label: Issue could be reproduced at least once
+        - label: Issue happened in a recent (less than 7 days ago) round
+        - label: Couldn't find an existing issue about this (https://github.com/cmss13-devs/cmss13/issues)

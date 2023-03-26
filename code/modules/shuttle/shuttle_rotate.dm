@@ -4,7 +4,7 @@ All shuttleRotate procs go here
 If ever any of these procs are useful for non-shuttles, rename it to proc/rotate and move it to be a generic atom proc
 */
 
-/************************************Base proc************************************/
+/* ***********************************Base proc*********************************** */
 
 /atom/proc/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
 	if(params & ROTATE_DIR)
@@ -12,8 +12,8 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 		setDir(angle2dir(rotation+dir2angle(dir)))
 
 	//resmooth if need be.
-//	if(smooth && (params & ROTATE_SMOOTH))
-//		queue_smooth(src)
+// if(smooth && (params & ROTATE_SMOOTH))
+// queue_smooth(src)
 
 	//rotate the pixel offsets too.
 	if((pixel_x || pixel_y) && (params & ROTATE_OFFSET))
@@ -25,13 +25,13 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			pixel_x = oldPY
 			pixel_y = (oldPX*(-1))
 
-/************************************Turf rotate procs************************************/
+/* ***********************************Turf rotate procs*********************************** */
 
 /turf/closed/mineral/shuttleRotate(rotation, params)
 	params &= ~ROTATE_OFFSET
 	return ..()
 
-/************************************Mob rotate procs************************************/
+/* ***********************************Mob rotate procs*********************************** */
 
 //override to avoid rotating pixel_xy on mobs
 /mob/shuttleRotate(rotation, params)
@@ -44,7 +44,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 	. = ..()
 	update_icons()
 
-/************************************Structure rotate procs************************************/
+/* ***********************************Structure rotate procs*********************************** */
 
 //Fixes dpdir on shuttle rotation
 /obj/structure/disposalpipe/shuttleRotate(rotation, params)

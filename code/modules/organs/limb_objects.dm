@@ -1,8 +1,8 @@
 
-obj/item/limb
+/obj/item/limb
 	icon = 'icons/mob/humans/species/r_human.dmi'
 
-obj/item/limb/New(loc, mob/living/carbon/human/H)
+/obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
 	if(!istype(H))
 		return
@@ -33,6 +33,10 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name
+
+	if(isspeciesyautja(H))
+		e_icon = H.ethnicity
+		b_icon = H.body_type
 
 	icon_state = "[get_limb_icon_name(H.species, b_icon, H.gender, name, e_icon)]"
 	setDir(SOUTH)
@@ -75,10 +79,14 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	var/brain_mob_type = /mob/living/brain
 	var/braindeath_on_decap = 1 //whether the brainmob dies when head is decapitated (used by synthetics)
 
-/obj/item/limb/head/New(loc, mob/living/carbon/human/H, var/cause = "decapitation")
+/obj/item/limb/head/New(loc, mob/living/carbon/human/H, cause = "decapitation")
 	if(istype(H))
 		src.icon_state = H.gender == MALE? "head_m" : "head_f"
 	..()
+
+	if(!H)
+		return
+
 	//Add (facial) hair.
 	if(H.f_style)
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[H.f_style]
@@ -115,7 +123,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	H.regenerate_icons()
 
 	if(braindeath_on_decap)
-		brainmob.stat = DEAD
+		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
 
 	GLOB.head_limb_list += src
@@ -125,12 +133,12 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	GLOB.head_limb_list -= src
 	return ..()
 
-/obj/item/limb/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
+/obj/item/limb/head/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
 	brainmob = new brain_mob_type(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
 	brainmob.blood_type = H.blood_type
-	if(H.mind)
+	if(H.mind && !iszombie(H))
 		H.mind.transfer_to(brainmob)
 	brainmob.container = src
 
@@ -149,7 +157,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
-				brain_op_stage = 3.0
+				brain_op_stage = 3
 			else
 				..()
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
@@ -174,7 +182,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 					brainmob.death(create_cause_data("brain extraction", user)) //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
-				brain_op_stage = 4.0
+				brain_op_stage = 4
 			else
 				..()
 	else
@@ -193,7 +201,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	flags_atom |= USES_HEARING
 
 //as ugly and painful as it is to write, the synth can still be revived, and mind needs to be updated if ghosted
-/obj/item/limb/head/synth/transfer_identity(var/mob/living/carbon/human/H)
+/obj/item/limb/head/synth/transfer_identity(mob/living/carbon/human/H)
 	..()
 	if(!brainmob.mind)
 		for(var/mob/dead/observer/G in GLOB.observer_list)

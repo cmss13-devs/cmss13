@@ -1,11 +1,10 @@
-////////////////////HOLOSIGN///////////////////////////////////////
 /obj/structure/machinery/holosign
 	name = "holosign"
 	desc = "Small wall-mounted holographic projector"
 	icon = 'icons/obj/structures/machinery/holosign.dmi'
 	icon_state = "sign_off"
 	layer = MOB_LAYER
-	anchored = 1
+	anchored = TRUE
 	var/lit = 0
 	var/id = null
 	var/on_icon = "sign_on"
@@ -31,7 +30,6 @@
 	name = "surgery holosign"
 	desc = "Small wall-mounted holographic projector. This one reads SURGERY."
 	on_icon = "surgery"
-////////////////////SWITCH///////////////////////////////////////
 
 /obj/structure/machinery/holosign_switch
 	name = "holosign switch"
@@ -40,8 +38,8 @@
 	desc = "A remote control switch for holosign."
 	var/id = null
 	var/active = 0
-	anchored = 1
-	use_power = 1
+	anchored = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -67,6 +65,6 @@
 
 	for(var/obj/structure/machinery/holosign/M in machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/holosign.proc/toggle)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/holosign, toggle))
 
 	return

@@ -16,7 +16,7 @@
 	. = ..()
 
 	new_player_panel()
-	addtimer(CALLBACK(src, .proc/lobby), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
 
 /mob/new_player/proc/lobby()
 	if(!client)
@@ -34,3 +34,5 @@
 			to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 	if(join_motd)
 		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
+	if(current_tms)
+		to_chat(src, SPAN_BOLDANNOUNCE(current_tms))

@@ -44,9 +44,9 @@
 	siemens_coefficient = 0.6
 
 	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/space_ninja
 	name = "ninja shoes"
@@ -65,9 +65,9 @@
 	siemens_coefficient = 0.2
 
 	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/sandal
 	desc = "A pair of rather plain, wooden sandals."
@@ -94,7 +94,8 @@
 	icon_state = "clown"
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
-	var/footstep = 1	//used for squeeks whilst walking
+	black_market_value = 25
+	var/footstep = 1 //used for squeeks whilst walking
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
@@ -111,9 +112,9 @@
 	siemens_coefficient = 0.7
 
 	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/cyborg
 	name = "cyborg boots"
@@ -154,8 +155,8 @@
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/souto
 	name = "\improper Souto Man's boots. Harder than the kick of Souto Red."

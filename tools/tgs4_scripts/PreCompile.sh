@@ -46,7 +46,7 @@ if ! ( [ -x "$has_git" ] && [ -x "$has_grep" ] && [ -f "/usr/lib/i386-linux-gnu/
 fi
 dpkg --add-architecture i386
 apt-get update
-apt-get install -y lib32z1 pkg-config libssl-dev:i386 libssl-dev libssl1.1:i386 gcc-multilib
+apt-get install -y zlib1g:i386 zlib1g-dev:i386 pkg-config libssl-dev:i386 libssl-dev libssl1.1:i386 gcc-multilib
 # update rust-g
 if [ ! -d "rust-g" ]; then
 	echo "Cloning rust-g..."
@@ -88,3 +88,6 @@ echo "Compiling tgui..."
 cd "$1"
 chmod +x tools/bootstrap/node  # Workaround for https://github.com/tgstation/tgstation-server/issues/1167
 env TG_BOOTSTRAP_CACHE="$original_dir" TG_BOOTSTRAP_NODE_LINUX=1 CBT_BUILD_MODE="TGS" tools/bootstrap/node tools/build/build.js
+
+echo "Running changelog script..."
+python3 .github/ss13_genchangelog.py html/changelogs

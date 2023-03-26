@@ -15,9 +15,10 @@
 #define HUNDRED_MEGAWATTS 100000000
 #define GIGAWATT 1000000000
 
-#define GAS_CRITICAL_TEMPERATURE     132.65    // K. The critical point temperature for air.
+/// K. The critical point temperature for air.
+#define GAS_CRITICAL_TEMPERATURE 132.65
 
-#define QUANTIZE(variable)		(round(variable, 0.0001))
+#define QUANTIZE(variable) (round(variable, 0.0001))
 
 #define INFINITY 1.#INF
 
@@ -28,7 +29,7 @@
 #define MELTPOINT_STEEL   (1510+T0C)
 #define MELTPOINT_SILICON 1687 // KELVIN
 #define MELTPOINT_PLASTIC (180+T0C)
-#define MELTPOINT_SNOW	304.15	//about 30°C
+#define MELTPOINT_SNOW 304.15 //about 30°C
 
 // The highest number supported is a signed 32-bit floating point number.
 // Integers beyond the 24 bit range are represented as single-precision floating points, and thus will lose accuracy beyond the range of +/- 16777216

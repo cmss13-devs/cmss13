@@ -38,13 +38,19 @@
 	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
 	layer = ABOVE_FLY_LAYER
-	use_power = 0
+	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	unslashable = FALSE
 	unacidable = TRUE
 	health = 450
 	tcomms_machine = TRUE
 	freq_listening = DEPT_FREQS
+
+/obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
+	. = ..()
+
+	if(z)
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -60,16 +66,17 @@
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
 		msg_admin_niche("Portable communication relay started for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
-		// This is the first time colony comms have been established.
-		if (SSobjectives.comms.state != OBJECTIVE_COMPLETE && is_ground_level(loc.z) && operable())
-			SSobjectives.comms.complete()
+		if(SSobjectives && SSobjectives.comms)
+			// This is the first time colony comms have been established.
+			if (SSobjectives.comms.state != OBJECTIVE_COMPLETE && is_ground_level(loc.z) && operable())
+				SSobjectives.comms.complete()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
 		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
 	..()
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)
@@ -90,7 +97,7 @@
 	health = Clamp(health, 0, initial(health))
 
 	if(health <= 0)
-		toggled = FALSE		// requires flipping on again once repaired
+		toggled = FALSE // requires flipping on again once repaired
 	if(health < initial(health))
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
@@ -160,7 +167,7 @@
 	icon_state = "relay"
 	id = "UPP Relay"
 	hide = TRUE
-	freq_listening = list(RUS_FREQ, CCT_FREQ)
+	freq_listening = UPP_FREQS
 	var/faction_shorthand = "UPP"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/Initialize(mapload, ...)
@@ -171,11 +178,11 @@
 	return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/clf
-	freq_listening = list(CLF_FREQ, CCT_FREQ)
+	freq_listening = CLF_FREQS
 	faction_shorthand = "CLF"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/pmc
-	freq_listening = list(PMC_FREQ, CCT_FREQ)
+	freq_listening = PMC_FREQS
 	faction_shorthand = "PMC"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
@@ -195,7 +202,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
 	name = "TC-3T static telecommunications tower"
 	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. Will need to have extra communication frequencies programmed into it by multitool."
-	use_power = 0
+	use_power = USE_POWER_NONE
 	idle_power_usage = 10000
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
 	icon_state = "static1"
@@ -227,10 +234,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/turf/commloc = get_turf(src)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
-		use_power = 1
+		use_power = USE_POWER_IDLE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
 	else
-		use_power = 0
+		use_power = USE_POWER_NONE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
 	toggle_cooldown = world.time + 40
 
@@ -251,9 +258,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
 				if(FACTION_CLF)
-					freq_listening |= list(CLF_FREQ, CCT_FREQ)
+					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
-					freq_listening |= list(RUS_FREQ, CCT_FREQ)
+					freq_listening |= UPP_FREQS
+				if(FACTION_WY,FACTION_PMC)
+					freq_listening |= PMC_FREQS
 				if(FACTION_YAUTJA)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return
@@ -285,7 +294,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Centcom Relay"
 	hide = 1
 	toggled = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	autolinkers = list("c_relay")
 
 //HUB
@@ -319,7 +328,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -331,7 +340,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
 
 
 //Buses
@@ -339,7 +348,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_one
 	id = "Bus 1"
 	network = "tcommsat"
-	freq_listening = list(MED_FREQ, ENG_FREQ, SUP_FREQ)
+	freq_listening = list(MED_FREQ, ENG_FREQ, REQ_FREQ)
 	autolinkers = list("processor1", "medical", "engineering", "cargo")
 
 /obj/structure/machinery/telecomms/bus/preset_two
@@ -351,7 +360,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, MARSOC_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, SOF_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -367,7 +376,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
 	network = "tcommsat"
-	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
 //Processors
@@ -415,7 +424,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /*
 /obj/structure/machinery/telecomms/server/presets/supply
 	id = "Supply Server"
-	freq_listening = list(SUP_FREQ)
+	freq_listening = list(REQ_FREQ)
 	autolinkers = list("supply")
 */
 /obj/structure/machinery/telecomms/server/presets/common
@@ -432,12 +441,12 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, MARSOC_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, SOF_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering
 	id = "Engineering Server"
-	freq_listening = list(ENG_FREQ, SUP_FREQ)
+	freq_listening = list(ENG_FREQ, REQ_FREQ)
 	autolinkers = list("engineering", "cargo")
 
 /obj/structure/machinery/telecomms/server/presets/security
@@ -447,7 +456,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
-	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
 	autolinkers = list("centcomm")
 
 
@@ -482,9 +491,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommunications processing."
-	density = 1
-	anchored = 1
-	use_power = 0
+	density = TRUE
+	anchored = TRUE
+	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	machinetype = 6
 	unslashable = TRUE
@@ -494,4 +503,4 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/allinone/interceptor
 	name = "Message Intercept Mainframe"
 	intercept = 1
-	freq_listening = list(RUS_FREQ)
+	freq_listening = list(UPP_FREQ)

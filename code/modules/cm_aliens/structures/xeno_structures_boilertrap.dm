@@ -6,21 +6,21 @@
 	desc = "It looks like a trap for catching tallhosts."
 	name = "resin hole"
 	icon_state = "trap_boiler"
-	density = 0
-	opacity = 0
-	anchored = 1
+	density = FALSE
+	opacity = FALSE
+	anchored = TRUE
 	health = 1
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/root_duration = 17.5
 
-	var/mob/living/carbon/Xenomorph/bound_xeno // Boiler linked to this trap
+	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap
 
 /obj/effect/alien/resin/boilertrap/empowered
-	root_duration = 30.0
+	root_duration = 30
 
-/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	if(mapload || !istype(X))
 		return INITIALIZE_HINT_QDEL
 	bound_xeno = X
@@ -34,7 +34,7 @@
 	return ..()
 
 /obj/effect/alien/resin/boilertrap/get_examine_text(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return ..()
 	. = ..()
 	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
@@ -45,7 +45,7 @@
 
 /obj/effect/alien/resin/boilertrap/bullet_act(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	return ..()
 
@@ -58,13 +58,13 @@
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	qdel(src)
 
-/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)
 	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
-	if (isXeno(A))
-		var/mob/living/carbon/Xenomorph/X = A
+	if (isxeno(A))
+		var/mob/living/carbon/xenomorph/X = A
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))
@@ -75,7 +75,7 @@
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/boilertrap/linked_trap

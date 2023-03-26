@@ -81,7 +81,7 @@
 		if(5)
 			if(H.stat == DEAD && stage_counter != stage)
 				stage_counter = stage
-				if(H.species.name != "Zombie" && !zombie_transforming)
+				if(H.species.name != SPECIES_ZOMBIE && !zombie_transforming)
 					to_chat(H, SPAN_CENTERBOLD("Your zombie infection is now at Stage Five! Your transformation should have happened already, but will be forced now."))
 					zombie_transform(H)
 			if(!zombie_transforming && prob(50))
@@ -95,26 +95,29 @@
 				H.nutrition = NUTRITION_MAX //never hungry
 
 
-/datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/H)
+/datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
 	zombie_transforming = TRUE
-	H.vomit_on_floor()
-	H.AdjustStunned(5)
+	human.vomit_on_floor()
+	human.adjust_effect(5, STUN)
 	sleep(20)
-	H.make_jittery(500)
+	human.make_jittery(500)
 	sleep(30)
-	if(H && H.loc)
-		if(H.stat == DEAD)
-			H.revive(TRUE)
-		playsound(H.loc, 'sound/hallucinations/wail.ogg', 25, 1)
-		H.jitteriness = 0
-		H.set_species("Zombie")
+	if(human && human.loc)
+		if(human.stat == DEAD)
+			human.revive(TRUE)
+			var/datum/species/zombie/zombie_species = GLOB.all_species[SPECIES_ZOMBIE]
+			zombie_species.handle_alert_ghost(human)
+		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
+		human.jitteriness = 0
+		human.set_species(SPECIES_ZOMBIE)
 		stage = 5
-		H.faction = FACTION_ZOMBIE
+		human.faction = FACTION_ZOMBIE
 		zombie_transforming = FALSE
 
 
 /obj/item/weapon/zombie_claws
+	gender = PLURAL
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
@@ -122,31 +125,32 @@
 	force = 40
 	w_class = SIZE_MASSIVE
 	sharp = 1
-	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
+	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
 	pry_capable = IS_PRY_CAPABLE_FORCE
 
-/obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user)
-	if(iszombie(M))
+/obj/item/weapon/zombie_claws/attack(mob/living/target, mob/living/carbon/human/user)
+	if(iszombie(target))
 		return FALSE
 
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(isHumanStrict(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman_strict(target))
+		var/mob/living/carbon/human/human = target
 
-		for(var/datum/disease/black_goo/BG in H.viruses)
-			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
-			return .
+		if(locate(/datum/disease/black_goo) in human.viruses)
+			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
+		else
+			var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
+			if(prob(bio_protected))
+				target.AddDisease(new /datum/disease/black_goo)
+				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(user.zone_selected, ARMOR_BIO), 0)
-
-		if(prob(bio_protected))
-			M.AddDisease(new /datum/disease/black_goo())
-			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
-
-	M.SetSuperslowed(max(2, M.superslowed)) // Make them slower
+	if(issynth(target))
+		target.apply_effect(2, SLOW)
+	else
+		target.apply_effect(2, SUPERSLOW)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)
@@ -193,8 +197,8 @@
 	garbage = FALSE
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo/Initialize()
-		..()
-		reagents.add_reagent("blackgoo", 30)
+	. = ..()
+	reagents.add_reagent("blackgoo", 30)
 
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo_cure
@@ -210,7 +214,7 @@
 /datum/language/zombie
 	name = "Zombie"
 	desc = "If you select this from the language screen, expect a ban."
-	colour = "zombie"
+	color = "zombie"
 
 	speech_verb = "groans"
 	ask_verb = "groans"
@@ -222,7 +226,9 @@
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
-	icon = null
+	gender = PLURAL
+	icon_state = "stub"
+	item_state = "BLANK"
 	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
 	darkness_view = 7

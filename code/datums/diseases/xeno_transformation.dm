@@ -27,7 +27,7 @@
 				affected_mob.take_limb_damage(2)
 			if (prob(4))
 				to_chat(affected_mob, SPAN_DANGER("You feel a stabbing pain in your head."))
-				affected_mob.KnockOut(2)
+				affected_mob.apply_effect(2, PARALYZE)
 			if (prob(4))
 				to_chat(affected_mob, SPAN_DANGER("You can feel something move...inside."))
 			if (prob(5))

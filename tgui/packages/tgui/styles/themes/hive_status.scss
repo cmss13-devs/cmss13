@@ -1,4 +1,8 @@
 @use 'sass:meta';
+@use '../base.scss';
+@use '../colors.scss' with (
+   $primary: #52375c,
+ );
 
 .theme-hive_status {
   // Components
@@ -12,6 +16,10 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/TitleBar.scss');
+
+  hr {
+    color: #52375c;
+  }
 
   .Layout__content {
     background-color: #1b1e25;

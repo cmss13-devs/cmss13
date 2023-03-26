@@ -1,53 +1,71 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table } from '../components';
+import { Box, Button, Section, Table, Icon } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-  '#2ecc71',
+  '#c4cf2d',
   '#e67e22',
   '#ed5100',
   '#e74c3c',
   '#ed2814',
 ];
 
+const HEALTH_ICON_BY_LEVEL = [
+  'heart',
+  'heart',
+  'heart',
+  'heart',
+  'heartbeat',
+  'skull',
+];
+
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
 const jobToColor = (jobId) => {
   if (jobId >= 0 && jobId < 10) {
-    return COLORS.department.captain;
+    return COLORS.shipDeps.highcom;
   }
   if (jobId >= 10 && jobId < 20) {
-    return COLORS.shipDeps.command;
+    return COLORS.department.captain;
   }
   if (jobId >= 20 && jobId < 30) {
-    return COLORS.shipDeps.security;
+    return COLORS.shipDeps.command;
   }
   if (jobId >= 30 && jobId < 40) {
-    return COLORS.shipDeps.medsci;
+    return COLORS.shipDeps.security;
   }
   if (jobId >= 40 && jobId < 50) {
-    return COLORS.shipDeps.engineering;
+    return COLORS.shipDeps.medsci;
   }
   if (jobId >= 50 && jobId < 60) {
-    return COLORS.shipDeps.cargo;
+    return COLORS.shipDeps.engineering;
   }
   if (jobId >= 60 && jobId < 70) {
-    return COLORS.shipDeps.alpha;
+    return COLORS.shipDeps.cargo;
   }
   if (jobId >= 70 && jobId < 80) {
-    return COLORS.shipDeps.bravo;
+    return COLORS.shipDeps.alpha;
   }
   if (jobId >= 80 && jobId < 90) {
-    return COLORS.shipDeps.charlie;
+    return COLORS.shipDeps.bravo;
   }
   if (jobId >= 90 && jobId < 100) {
-    return COLORS.shipDeps.delta;
+    return COLORS.shipDeps.charlie;
   }
   if (jobId >= 100 && jobId < 110) {
+    return COLORS.shipDeps.delta;
+  }
+  if (jobId >= 110 && jobId < 120) {
     return COLORS.shipDeps.echo;
+  }
+  if (jobId >= 120 && jobId < 130) {
+    return COLORS.shipDeps.foxtrot;
+  }
+  if (jobId >= 130 && jobId < 140) {
+    return COLORS.shipDeps.raiders;
   }
   if (jobId >= 200 && jobId < 230) {
     return COLORS.department.centcom;
@@ -55,10 +73,10 @@ const jobToColor = (jobId) => {
   return COLORS.department.other;
 };
 
-const healthToColor = (oxy, tox, burn, brute) => {
+const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
-  return HEALTH_COLOR_BY_LEVEL[level];
+  return attributeList[level];
 };
 
 const HealthStat = (props) => {
@@ -72,7 +90,7 @@ const HealthStat = (props) => {
 
 export const CrewConsole = () => {
   return (
-    <Window title="Crew Monitor" width={600} height={600} resizable>
+    <Window title="Crew Monitor" width={600} height={600}>
       <Window.Content scrollable>
         <Section minHeight="540px">
           <CrewTable />
@@ -93,9 +111,11 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>Position</Table.Cell>
+        <Table.Cell bold textAlign="center">
+          Position
+        </Table.Cell>
         {!!data.link_allowed && (
-          <Table.Cell bold collapsing>
+          <Table.Cell bold collapsing textAlign="center">
             Tracking
           </Table.Cell>
         )}
@@ -132,7 +152,29 @@ const CrewTableEntry = (props, context) => {
         {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        <ColorBox color={healthToColor(oxydam, toxdam, burndam, brutedam)} />
+        {oxydam !== undefined ? (
+          <Icon
+            name={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_ICON_BY_LEVEL
+            )}
+            color={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_COLOR_BY_LEVEL
+            )}
+            size={1}
+          />
+        ) : life_status ? (
+          <Icon name="heart" color="#17d568" size={1} />
+        ) : (
+          <Icon name="skull" color="#801308" size={1} />
+        )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -157,7 +199,11 @@ const CrewTableEntry = (props, context) => {
             ? COLORS.damageType['oxy']
             : COLORS.damageType['brute']
         }>
-        {area !== undefined ? area : 'N/A'}
+        {area !== undefined ? (
+          area
+        ) : (
+          <Icon name="question" color="#ffffff" size={1} />
+        )}
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>

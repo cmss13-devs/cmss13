@@ -8,19 +8,24 @@
 	..()
 
 	handle_fire() //Check if we're on fire
+	if(SSweather.is_weather_event)
+		handle_weather(delta_time)
+
+	if(stat != CONSCIOUS)
+		remove_all_indicators()
 
 /mob/living/carbon/Destroy()
-	QDEL_NULL_LIST(internal_organs)
-
+	stomach_contents?.Cut()
+	view_change_sources = null
 	. = ..()
 
+	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL(handcuffed)
 	QDEL_NULL(legcuffed)
 	QDEL_NULL(halitem)
 
 	hunter_data?.clean_data()
 	hunter_data = null
-	stomach_contents?.Cut()
 	halimage = null
 	halbody = null
 
@@ -39,7 +44,7 @@
 		if(prob(30))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), 2)
+					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
 			var/d = rand(round(I.force / 4), I.force)
@@ -55,18 +60,18 @@
 				src.take_limb_damage(d)
 			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
+					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
 			user.track_hit(initial(I.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
-	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
-		var/mob/living/carbon/Xenomorph/Larva/L = user
+	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
+		var/mob/living/carbon/xenomorph/larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -85,10 +90,10 @@
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)
-		KnockOut(knock_value)
+		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib(var/cause = "gibbing")
+/mob/living/carbon/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -174,7 +179,7 @@
 	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
 
-/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode
 		return FALSE
 	shock_damage *= siemens_coeff
@@ -190,12 +195,12 @@
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
-		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
-			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
-			KnockDown(1)
+		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
+			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
+			apply_effect(1, WEAKEN)
 		else
-			Stun(6)//This should work for now, more is really silly and makes you lay there forever
-			KnockDown(6)
+			apply_effect(6, STUN)//This should work for now, more is really silly and makes you lay there forever
+			apply_effect(6, WEAKEN)
 
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
 
@@ -226,7 +231,7 @@
 		wielded_item.zoom(src)
 	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
+		if(hand) //This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "hand_active"
 			hud_used.r_hand_hud_object.icon_state = "hand_inactive"
 		else
@@ -234,7 +239,7 @@
 			hud_used.r_hand_hud_object.icon_state = "hand_active"
 	return
 
-/mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/living/carbon/proc/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -273,9 +278,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	AdjustKnockedout(-3)
-	AdjustStunned(-3)
-	AdjustKnockeddown(-3)
+	adjust_effect(-3, PARALYZE)
+	adjust_effect(-3, STUN)
+	adjust_effect(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
@@ -402,8 +407,8 @@
 	show_browser(user, dat, name, "mob[name]")
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0								//see setup.dm:694
+/mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
+	var/temp = 0 //see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)
 			return "0"
@@ -421,7 +426,7 @@
 			return num2text(method ? temp : temp + rand(-10, 10))
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-//			output for machines^	^^^^^^^output for people^^^^^^^^^
+// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
@@ -446,8 +451,8 @@
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
-	Stun(stun_level)
-	KnockDown(weaken_level)
+	apply_effect(stun_level, STUN)
+	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
 	if(slide_steps && lying)//lying check to make sure we downed the mob
 		var/slide_dir = dir
@@ -494,7 +499,7 @@
 
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
-	if(isYautja(user))
+	if(isyautja(user))
 		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
@@ -508,10 +513,3 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
-/mob/living/carbon/get_vv_options()
-	. = ..()
-	. += "<option value>-----CARBON-----</option>"
-	. += "<option value='?_src_=vars;changehivenumber=\ref[src]'>Change Hivenumber</option>"
-	. += "<option value='?_src_=vars;addtrait=\ref[src]'>Add Trait</option>"
-	. += "<option value='?_src_=vars;removetrait=\ref[src]'>Remove Trait</option>"

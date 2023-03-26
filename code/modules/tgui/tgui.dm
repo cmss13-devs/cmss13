@@ -37,6 +37,8 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
+	/// Are byond mouse events beyond the window passed in to the ui
+	var/mouse_hooked = FALSE
 
 /**
  * public
@@ -94,21 +96,26 @@
 	window.acquire_lock(src)
 	if(!window.is_ready())
 		window.initialize(
+			strict_mode = TRUE,
 			fancy = user.client?.prefs.tgui_fancy,
-			inline_assets = list(
+			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
 	else
 		window.send_message("ping")
 	var/flush_queue = window.send_asset(get_asset_datum(
-		/datum/asset/simple/fontawesome))
+		/datum/asset/simple/namespaced/fontawesome))
+	flush_queue |= window.send_asset(get_asset_datum(
+		/datum/asset/simple/namespaced/tgfont))
 	for(var/datum/asset/asset in src_object.ui_assets(user))
 		flush_queue |= window.send_asset(asset)
 	if (flush_queue)
-		user.client?.browse_queue_flush()
+		user.client.browse_queue_flush()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE))
+	if(mouse_hooked)
+		window.set_mouse_macro()
 	SStgui.on_open(src)
 
 	return TRUE
@@ -150,6 +157,18 @@
 /**
  * public
  *
+ * Enable/disable passing through byond mouse events to the window
+ *
+ * required value bool Enable/disable hooking.
+ */
+/datum/tgui/proc/set_mouse_hook(value)
+	src.mouse_hooked = value
+	//Handle unhooking/hooking on already open windows ?
+
+
+/**
+ * public
+ *
  * Replace current ui.state with a new one.
  *
  * required state datum/ui_state/state Next state
@@ -184,7 +203,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE
-		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(send_full_update), custom_data, force), COOLDOWN_TIMELEFT(src, refresh_cooldown), TIMER_UNIQUE)
 		return
 	refreshing = FALSE
 	var/should_update_data = force || status >= UI_UPDATE
@@ -231,15 +250,19 @@
 			"locked" = user.client?.prefs.tgui_lock,
 		),
 		"client" = list(
-			"ckey" = user.client?.ckey,
-			"address" = user.client?.address,
-			"computer_id" = user.client?.computer_id,
+			"ckey" = user.client.ckey,
+			"address" = user.client.address,
+			"computer_id" = user.client.computer_id,
 		),
 		"user" = list(
 			"name" = "[user]",
 			"observer" = isobserver(user),
 		),
 	)
+	// sanity...
+	if(!src_object && !custom_data)
+		return
+
 	var/data = custom_data || with_data && src_object.ui_data(user)
 	if(data)
 		json_data["data"] = data
@@ -306,8 +329,8 @@
 			window = window,
 			src_object = src_object)
 		process_status()
-		if(src_object.ui_act(act_type, payload, src, state))
-			SStgui.update_uis(src_object)
+		//DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(on_act_message), act_type, payload, state))
+		on_act_message(act_type, payload, state)
 		return FALSE
 	switch(type)
 		if("ready")
@@ -315,7 +338,7 @@
 			if(initialized)
 				send_full_update()
 			initialized = TRUE
-		if("pingReply")
+		if("ping/reply")
 			initialized = TRUE
 		if("suspend")
 			close(can_be_suspended = TRUE)
@@ -330,3 +353,10 @@
 			LAZYINITLIST(src_object.tgui_shared_states)
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
+
+/// Wrapper for behavior to potentially wait until the next tick if the server is overloaded
+/datum/tgui/proc/on_act_message(act_type, payload, state)
+	if(QDELETED(src) || QDELETED(src_object))
+		return
+	if(src_object.ui_act(act_type, payload, src, state))
+		SStgui.update_uis(src_object)

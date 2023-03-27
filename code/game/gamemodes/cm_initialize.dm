@@ -840,8 +840,7 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_joe(mob/living/carbon/human/joe)
-	joes[joe.ckey] = list("Name" = joe.real_name, "Status" = "Alive")
-
+	joes += joe.ckey
 
 /datum/game_mode/proc/attempt_to_join_as_joe(mob/joe_candidate)
 	var/mob/living/carbon/human/new_joe = transform_joe(joe_candidate) //Initialized and ready.

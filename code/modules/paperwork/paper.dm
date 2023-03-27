@@ -52,7 +52,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -60,6 +60,10 @@
 			return
 		if(icon_state == "paper_uscm")
 			icon_state = "paper_uscm_words"
+			return
+		if(icon_state == "paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
 			return
 		icon_state = "paper_words"
 		return

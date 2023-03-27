@@ -232,7 +232,7 @@ bullets/shells. ~N
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
-	icon_state = "bullet_4"
+	icon_state = "bullet_1"
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL
@@ -325,7 +325,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	. = ..()
 	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
 	pixel_y = rand(-2.0, 2)
-	icon_state += "[rand(1,number_of_states)]" //Set the icon to it.
+	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
 
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/item/ammo_casing/update_icon()

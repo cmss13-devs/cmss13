@@ -387,6 +387,8 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/current_job = RoleAuthority.roles_for_mode[player.job]
+	if(current_job.job_options && player?.client?.prefs?.pref_special_job_options[current_job.title])
+		current_job.handle_job_options(player.client.prefs.pref_special_job_options[current_job.title])
 	if(current_job.handle_spawn_and_equip)
 		current_job.spawn_and_equip(player)
 	else

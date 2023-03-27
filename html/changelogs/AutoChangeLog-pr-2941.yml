@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Helmets now get thrown off if they save you from a decapitation."

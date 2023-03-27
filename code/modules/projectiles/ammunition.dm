@@ -232,7 +232,7 @@ bullets/shells. ~N
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
-	icon_state = "bullet"
+	icon_state = "bullet_4"
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL
@@ -308,7 +308,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	name = "spent casing"
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/casings.dmi'
-	icon_state = "casing_"
+	icon_state = "casing"
 	throwforce = 1
 	w_class = SIZE_TINY
 	layer = LOWER_ITEM_LAYER //Below other objects
@@ -349,11 +349,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_casing/cartridge
 	name = "spent cartridge"
-	icon_state = "cartridge_"
+	icon_state = "cartridge"
 
 /obj/item/ammo_casing/shell
 	name = "spent shell"
-	icon_state = "shell_"
+	icon_state = "shell"
 
 /obj/item/ammo_box/magazine/lever_action/xm88
 	name = "\improper .458 bullets box (.458 x 300)"

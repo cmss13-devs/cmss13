@@ -155,7 +155,7 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(world_view_size)
+	if(M.client) M.client.view_size.reset_to_default()
 // M.Login() //wat
 	return
 

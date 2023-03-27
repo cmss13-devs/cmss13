@@ -413,11 +413,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
+	view_size = new(src, get_screen_size(prefs.widescreenpref))
+	view_size.update_pixel_format()
+	view_size.update_zoom_mode()
+	fit_viewport()
+
+	/*
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 		toggle_fullscreen(TRUE)
 	else
 		toggle_fullscreen(FALSE)
-
+	*/
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -431,8 +437,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	// set_night_skin()
 
 	load_player_data()
-
-	view = world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 

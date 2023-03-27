@@ -110,6 +110,7 @@
 // The numbers just define the ordering, they are meaningless otherwise.
 
 #define SS_INIT_TICKER_SPAWN    999
+#define SS_INIT_TITLE 990
 #define SS_INIT_INPUT   85
 #define SS_INIT_RUST    26
 #define SS_INIT_SUPPLY_SHUTTLE  25

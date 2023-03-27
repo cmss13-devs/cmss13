@@ -24,7 +24,7 @@
 	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
-	M.client?.change_view(world_view_size)
+	M.client?.view_size.reset_to_default()
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"

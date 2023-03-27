@@ -345,7 +345,7 @@ Works together with spawning an observer, noted above.
 
 	if(ghost.client)
 		ghost.client.init_verbs()
-		ghost.client.change_view(world_view_size) //reset view range to default
+		ghost.client.view_size.reset_to_default() //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
 		ghost.set_lighting_alpha_from_pref(ghost.client)
@@ -641,9 +641,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(client)
 		if(client.view != world_view_size)
-			client.change_view(world_view_size)
+			client.view_size.reset_to_default()
 		else
-			client.change_view(14)
+			client.view_size.set_view_radius_to(14)
 
 
 /mob/dead/observer/verb/toggle_darkness()

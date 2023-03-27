@@ -108,7 +108,7 @@
 			O.mind.original = O
 	else
 		O.key = key
-		if(O.client) O.client.change_view(world_view_size)
+		if(O.client) O.client.view_size.reset_to_default()
 
 	O.forceMove(loc)
 	O.job = "Cyborg"
@@ -180,7 +180,7 @@
 
 	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
-	if(new_xeno.client) new_xeno.client.change_view(world_view_size)
+	if(new_xeno.client) new_xeno.client.view_size.reset_to_default()
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	qdel(src)
@@ -202,7 +202,7 @@
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
 	new_corgi.a_intent = INTENT_HARM
 	new_corgi.key = key
-	if(new_corgi.client) new_corgi.client.change_view(world_view_size)
+	if(new_corgi.client) new_corgi.client.view_size.reset_to_default()
 
 	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	qdel(src)
@@ -234,7 +234,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	if(new_mob.client) new_mob.client.change_view(world_view_size)
+	if(new_mob.client) new_mob.client.view_size.reset_to_default()
 	new_mob.a_intent = INTENT_HARM
 
 
@@ -254,7 +254,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	if(new_mob.client) new_mob.client.change_view(world_view_size)
+	if(new_mob.client) new_mob.client.view_size.reset_to_default()
 	new_mob.a_intent = INTENT_HARM
 	to_chat(new_mob, "You feel more... animalistic")
 

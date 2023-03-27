@@ -936,7 +936,7 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(world_view_size)
+			user.client.view_size.reset_to_default()
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
@@ -1608,7 +1608,7 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(world_view_size)
+			user.client.view_size.reset_to_default()
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 			UnregisterSignal(user.client, list(

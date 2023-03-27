@@ -558,7 +558,7 @@ CULT
 
 	H.cancel_camera()
 	H.reset_view()
-	H.client.change_view(world_view_size, target)
+	H.client.view_size.set_view_radius_to(world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 
@@ -590,7 +590,7 @@ CULT
 		remove_from(H)
 
 	H.unset_interaction()
-	H.client.change_view(world_view_size, target)
+	H.client.view_size.set_view_radius_to(world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 	H.reset_view()

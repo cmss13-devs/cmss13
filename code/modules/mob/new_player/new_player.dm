@@ -146,7 +146,7 @@
 				mind.transfer_to(observer, TRUE)
 
 				if(observer.client)
-					observer.client.change_view(world_view_size)
+					observer.client.view_size.reset_to_default()
 
 				observer.set_huds_from_prefs()
 
@@ -392,7 +392,7 @@
 	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
 	new_character.key = key //Manually transfer the key to log them in
-	new_character.client?.change_view(world_view_size)
+	new_character.client?.view_size.reset_to_default()
 
 	return new_character
 

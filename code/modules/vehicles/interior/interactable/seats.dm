@@ -43,7 +43,7 @@
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.view_size.set_view_radius_to(world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -53,11 +53,11 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			M.client.view_size.set_view_radius_to(8, vehicle)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
 	if(user == buckled_mob && mods["shift"] && !user.is_mob_incapacitated())
-		user.client.change_view(8, vehicle)
+		user.client.view_size.set_view_radius_to(8, vehicle)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
 	else
@@ -177,7 +177,7 @@
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.view_size.set_view_radius_to(world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -188,9 +188,9 @@
 		if(M && M.client)
 			if(istype(vehicle, /obj/vehicle/multitile/apc))
 				var/obj/vehicle/multitile/apc/APC = vehicle
-				M.client.change_view(APC.gunner_view_buff, vehicle)
+				M.client.view_size.set_view_radius_to(APC.gunner_view_buff, vehicle)
 			else
-				M.client.change_view(8, vehicle)
+				M.client.view_size.set_view_radius_to(8, vehicle)
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()
@@ -255,7 +255,7 @@
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.view_size.set_view_radius_to(world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -265,7 +265,7 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			M.client.view_size.set_view_radius_to(8, vehicle)
 
 		if(vehicle.health < initial(vehicle.health) / 2)
 			to_chat(M, SPAN_WARNING("\The [vehicle] is too damaged to operate the Firing Port Weapon!"))

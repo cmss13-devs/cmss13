@@ -143,14 +143,14 @@
 		far_sight = TRUE
 		if(user)
 			if(user.client)
-				user.client.change_view(8, src)
+				user.client.view_size.set_view_radius_to(8, src)
 		START_PROCESSING(SSobj, src)
 	else
 		powerpack = null
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.change_view(world_view_size, src)
+				user.client.view_size.set_view_radius_to(world_view_size, src)
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions

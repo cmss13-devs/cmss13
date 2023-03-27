@@ -58,7 +58,7 @@
 #define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage" // TODO: move COMSIG_XENO_TAKE_DAMAGE & COMSIG_HUMAN_TAKE_DAMAGE to this
-///called in /client/change_view()
+///called in /client/view_size.set_view_radius_to()
 #define COMSIG_MOB_CHANGE_VIEW "mob_change_view"
 	#define COMPONENT_OVERRIDE_VIEW (1<<0)
 

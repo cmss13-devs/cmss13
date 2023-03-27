@@ -61,7 +61,7 @@
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.init_verbs()
-			new_character.client.change_view(world_view_size) //reset view range to default.
+			new_character.client.view_size.reset_to_default() //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
 			if(usr && usr.open_uis)

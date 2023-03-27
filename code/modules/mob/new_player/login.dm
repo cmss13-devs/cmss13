@@ -25,7 +25,7 @@
 	client.playtitlemusic()
 
 	// To show them the full lobby art. This fixes itself on a mind transfer so no worries there.
-	client.change_view(lobby_view_size)
+	client.view_size.add(7)
 	// Credit the lobby art author
 	if(displayed_lobby_art != -1)
 		var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)

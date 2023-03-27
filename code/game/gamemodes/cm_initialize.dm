@@ -547,7 +547,7 @@ Additional game mode variables.
 	// Let the round recorder know that the key has changed
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
-		new_xeno.client.change_view(world_view_size)
+		new_xeno.client.view_size.reset_to_default()
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord

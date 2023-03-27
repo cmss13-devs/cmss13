@@ -538,3 +538,13 @@ block( \
 #define PERF_TOGGLE_SHUTTLES (1<<3)
 /// Disables loading Techwebs and additional Z-Levels
 #define PERF_TOGGLE_TECHWEBS (1<<4)
+
+#define PIXEL_SCALING_AUTO 0
+#define PIXEL_SCALING_1X 1
+#define PIXEL_SCALING_1_2X 1.5
+#define PIXEL_SCALING_2X 2
+#define PIXEL_SCALING_3X 3
+
+#define SCALING_METHOD_NORMAL "normal"
+#define SCALING_METHOD_DISTORT "distort"
+#define SCALING_METHOD_BLUR "blur"

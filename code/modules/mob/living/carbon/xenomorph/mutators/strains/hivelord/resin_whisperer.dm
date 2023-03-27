@@ -28,7 +28,7 @@
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
 
-	hivelord.client.change_view(10, src)
+	hivelord.client.view_size.set_view_radius_to(10, src)
 
 	hivelord.mutation_type = HIVELORD_RESIN_WHISPERER
 	mutator_update_actions(hivelord)

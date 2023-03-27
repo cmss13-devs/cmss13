@@ -229,6 +229,12 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
+	var/widescreenpref = TRUE
+
+	var/pixel_size = 0
+
+	var/scaling_method = SCALING_METHOD_NORMAL
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)

@@ -357,10 +357,11 @@
 			if(prob(cut_prob))
 				var/obj/item/clothing/head/helmet/owner_helmet = owner.head
 				if(istype(owner_helmet) && !issynth(owner))
-					owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
-					owner.drop_inv_item_on_ground(owner_helmet)
-					INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
-					playsound(owner, 'sound/effects/thud3.ogg', 100)
+					if(!(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION))
+						owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
+						owner.drop_inv_item_on_ground(owner_helmet)
+						INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+						playsound(owner, 'sound/effects/helmet_noise.ogg', 100)
 				else
 					droplimb(0, 0, damage_source)
 					return

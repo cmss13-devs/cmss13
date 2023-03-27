@@ -119,6 +119,6 @@ Handfuls of lever_action rounds. For spawning directly on mobs in roundstart, ER
 	name = "handful of .458 SOCOM rounds (.458)"
 	desc = "A handful of .458 SOCOM rounds, chambered for the XM88 heavy rifle."
 	caliber = ".458"
-	icon_state = "marksman_lever_action_bullet"
+	icon_state = "marksman_lever_action_bullet_4"
 	default_ammo = /datum/ammo/bullet/lever_action/xm88
 	handful_state = "boomslang_bullet"

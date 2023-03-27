@@ -19,14 +19,14 @@
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
-/obj/effect/decal/chempuff/proc/move_towards(atom/A, move_delay = 3, tiles_left = 1)
-	if(!step_towards(src, A))
-		check_reactions(get_step(src, get_dir(src, A)))
+/obj/effect/decal/chempuff/proc/move_towards(atom/current_atom, move_delay = 3, tiles_left = 1)
+	if(!step_towards(src, current_atom))
+		check_reactions(get_step(src, get_dir(src, current_atom)))
 	else
 		check_reactions()
 	tiles_left--
 	if(tiles_left)
-		addtimer(CALLBACK(src, PROC_REF(move_towards), A, move_delay, tiles_left), move_delay)
+		addtimer(CALLBACK(src, PROC_REF(move_towards), current_atom, move_delay, tiles_left), move_delay)
 	else
 		qdel(src)
 
@@ -36,29 +36,29 @@
 	if(!T)
 		T = get_turf(src)
 	reagents.reaction(T)
-	for(var/atom/A in T)
-		reagents.reaction(A)
+	for(var/atom/current_atom in T)
+		reagents.reaction(current_atom)
 
 		// Are we hitting someone?
-		if(ishuman(A))
+		if(ishuman(current_atom))
 			// Check what they are hit with
 			var/list/reagent_list = list()
 			for(var/X in reagents.reagent_list)
-				var/datum/reagent/R = X
-				// Is it a chemical we should log?
-				if(R.spray_warning)
-					reagent_list += "[R]"
+				var/datum/reagent/chem = X
+				// Is it current_atom chemical we should log?
+				if(chem.spray_warning)
+					reagent_list += "[chem]"
 
 			// One or more bad reagents means we log it
 			if(length(reagent_list) && source_user)
 				var/reagent_list_text = english_list(reagent_list)
-				var/mob/living/carbon/human/M = A
-				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [name] (REAGENT: [reagent_list_text]) by [key_name(source_user)]</font>")
-				source_user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [name] (REAGENT: [reagent_list_text]) to spray [key_name(M)]</font>")
-				msg_admin_attack("[key_name(source_user)] used \a [name] to spray [key_name(M)] with [name] (REAGENT: [reagent_list_text]) in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+				var/mob/living/carbon/human/current_mob = current_atom
+				current_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [name] (REAGENT: [reagent_list_text]) by [key_name(source_user)]</font>")
+				source_user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [name] (REAGENT: [reagent_list_text]) to spray [key_name(current_mob)]</font>")
+				msg_admin_attack("[key_name(source_user)] used \a [name] to spray [key_name(current_mob)] with [name] (REAGENT: [reagent_list_text]) in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
-		if(istype(A, /obj/structure/machinery/portable_atmospherics/hydroponics) || istype(A, /obj/item/reagent_container/glass))
-			reagents.trans_to(A)
+		if(istype(current_atom, /obj/structure/machinery/portable_atmospherics/hydroponics) || istype(current_atom, /obj/item/reagent_container/glass))
+			reagents.trans_to(current_atom)
 
 /obj/effect/decal/mecha_wreckage
 	name = "Exosuit wreckage"
@@ -82,10 +82,10 @@
 /obj/effect/decal/mecha_wreckage/bullet_act(obj/item/projectile/Proj)
 	return 1
 
-/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/current_mob)
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
-	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
+	current_mob.animation_attack_on(src)
+	current_mob.visible_message(SPAN_DANGER("[current_mob] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
 	deconstruct(TRUE)
 	return XENO_ATTACK_ACTION
 

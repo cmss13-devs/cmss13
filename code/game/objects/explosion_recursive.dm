@@ -106,23 +106,23 @@ explosion resistance exactly as much as their health
 	var/resistance = 0
 	var/obj/structure/ladder/L
 
-	for(var/atom/A in src)  //add resistance
-		resistance += max(0, A.get_explosion_resistance(direction) )
+	for(var/atom/current_area in src)  //add resistance
+		resistance += max(0, current_area.get_explosion_resistance(direction) )
 
 		//check for stair-teleporters. If there is a stair teleporter, switch to the teleported-to tile instead
-		if(istype(A, /obj/effect/step_trigger/teleporter_vector))
-			var/obj/effect/step_trigger/teleporter_vector/V = A
-			var/turf/T = locate(V.x + V.vector_x, V.y + V.vector_y, V.z)
-			if(T)
+		if(istype(current_area, /obj/effect/step_trigger/teleporter_vector))
+			var/obj/effect/step_trigger/teleporter_vector/vector = current_area
+			var/turf/current_turf = locate(vector.x + vector.vector_x, vector.y + vector.vector_y, vector.z)
+			if(current_turf)
 				spawn(0)
-					T.explosion_spread(Controller, power, direction)
+					current_turf.explosion_spread(Controller, power, direction)
 					Controller.active_spread_num--
 					if(Controller.active_spread_num <= 0 && Controller.explosion_in_progress)
 						Controller.explosion_damage()
 				return
 
-		else if (istype(A, /obj/structure/ladder)) //check for ladders
-			L = A
+		else if (istype(current_area, /obj/structure/ladder)) //check for ladders
+			L = current_area
 
 	Controller.explosion_turfs[src] = power  //recording the power applied
 	Controller.explosion_turf_directions[src] = direction
@@ -172,12 +172,12 @@ explosion resistance exactly as much as their health
 			if (spread_power <= Controller.minimum_spread_power)
 				continue
 
-			var/turf/T = get_step(src, spread_direction)
+			var/turf/current_turf = get_step(src, spread_direction)
 
-			if(!T) //prevents trying to spread into "null" (edge of the map?)
+			if(!current_turf) //prevents trying to spread into "null" (edge of the map?)
 				continue
 
-			T.explosion_spread(Controller, spread_power, spread_direction)
+			current_turf.explosion_spread(Controller, spread_power, spread_direction)
 
 
 		//spreading up/down ladders
@@ -218,9 +218,9 @@ explosion resistance exactly as much as their health
 
 	var/num_tiles_affected = 0
 
-	for(var/turf/T in explosion_turfs)
-		if(!T) continue
-		if(explosion_turfs[T] >= 0)
+	for(var/turf/current_turf in explosion_turfs)
+		if(!current_turf) continue
+		if(explosion_turfs[current_turf] >= 0)
 			num_tiles_affected++
 
 	reflected_power *= reflection_multiplier
@@ -230,67 +230,67 @@ explosion resistance exactly as much as their health
 	var/tiles_processed = 0
 	var/increment = min(50, sqrt(num_tiles_affected)*3 )//how many tiles we damage per tick
 
-	for(var/turf/T in explosion_turfs)
-		if(!T) continue
+	for(var/turf/current_turf in explosion_turfs)
+		if(!current_turf) continue
 
-		var/severity = explosion_turfs[T] + damage_addon
+		var/severity = explosion_turfs[current_turf] + damage_addon
 		if (severity <= 0)
 			continue
-		var/direction = explosion_turf_directions[T]
+		var/direction = explosion_turf_directions[current_turf]
 
-		var/x = T.x
-		var/y = T.y
-		var/z = T.z
-		T.ex_act(severity, direction)
-		if(!T)
-			T = locate(x,y,z)
+		var/x = current_turf.x
+		var/y = current_turf.y
+		var/z = current_turf.z
+		current_turf.ex_act(severity, direction)
+		if(!current_turf)
+			current_turf = locate(x,y,z)
 
-		for(var/atom/A in T)
+		for(var/atom/current_area in current_turf)
 			spawn(0)
-				if(isliving(A))
-					var/mob/M = A
+				if(isliving(current_area))
+					var/mob/current_mob = current_area
 					var/explosion_source
 					if(explosion_cause_data)
 						explosion_source = explosion_cause_data.resolve_mob()
 					if(!explosion_source) // Gotta call them something
 						explosion_source = "unknown"
-					M.last_damage_data = explosion_cause_data
-					log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([M.loc.x],[M.loc.y],[M.loc.z])")
+					current_mob.last_damage_data = explosion_cause_data
+					log_attack("Mob [current_mob.name] ([current_mob.ckey]) was harmed by explosion in [current_turf.loc.name] caused by [explosion_source] at ([current_mob.loc.x],[current_mob.loc.y],[current_mob.loc.z])")
 					var/mob/explosion_source_mob = explosion_source
 					if(ismob(explosion_source_mob))
 						var/mob/firingMob = explosion_source_mob
 						var/turf/location_of_mob = get_turf(firingMob)
-						var/area/thearea = get_area(M)
-						if(M == firingMob)
-							M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> blew himself up with \a <b>[explosion_source]</b> in [thearea]."
-						else if(ishuman(firingMob) && ishuman(M) && M.faction == firingMob.faction && !thearea?.statistic_exempt) //One human blew up another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
-							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
-							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
-							var/ff_msg = "[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
+						var/area/thearea = get_area(current_mob)
+						if(current_mob == firingMob)
+							current_mob.attack_log += "\[[time_stamp()]\] <b>[current_mob]/[current_mob.ckey]</b> blew himself up with \a <b>[explosion_source]</b> in [thearea]."
+						else if(ishuman(firingMob) && ishuman(current_mob) && current_mob.faction == firingMob.faction && !thearea?.statistic_exempt) //One human blew up another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
+							current_mob.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[current_mob]/[current_mob.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[current_mob]/[current_mob.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							var/ff_msg = "[firingMob] ([firingMob.ckey]) blew up [current_mob] ([current_mob.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
 							var/ff_living = TRUE
-							if(M.stat == DEAD)
+							if(current_mob.stat == DEAD)
 								ff_living = FALSE
 							msg_admin_ff(ff_msg, ff_living)
 							if(ishuman(firingMob))
-								var/mob/living/carbon/human/H = firingMob
-								H.track_friendly_fire(explosion_source)
+								var/mob/living/carbon/human/human = firingMob
+								human.track_friendly_fire(explosion_source)
 						else
-							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
-							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
-							msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+							current_mob.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[current_mob]/[current_mob.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[current_mob]/[current_mob.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [current_mob] ([current_mob.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
 					else if(explosion_source_mob)
 						var/mob/firingMob = explosion_source_mob
 						var/turf/location_of_mob = get_turf(firingMob)
 						if(ishuman(firingMob))
-							var/mob/living/carbon/human/H = firingMob
-							H.track_shot_hit(initial(name), M)
-						M.attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firingMob)]."
-						msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+							var/mob/living/carbon/human/human = firingMob
+							human.track_shot_hit(initial(name), current_mob)
+						current_mob.attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> blew up <b>[current_mob]/[current_mob.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firingMob)]."
+						msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [current_mob] ([current_mob.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
 					else if(explosion_source)
-						M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
+						current_mob.attack_log += "\[[time_stamp()]\] <b>[current_mob]/[current_mob.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(current_mob)].</b>"
 					else
-						M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up in [get_area(M)]."
-				A.ex_act(severity, direction, explosion_cause_data)
+						current_mob.attack_log += "\[[time_stamp()]\] <b>[current_mob]/[current_mob.ckey]</b> was blown up in [get_area(current_mob)]."
+				current_area.ex_act(severity, direction, explosion_cause_data)
 
 		tiles_processed++
 		if(tiles_processed >= increment)

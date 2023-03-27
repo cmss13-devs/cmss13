@@ -71,22 +71,22 @@
 			return
 
 /obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
-	var/obj/item/poster/P = new(src, serial_number)
-	P.forceMove(newloc)
-	src.forceMove(P)
+	var/obj/item/poster/new_poster = new(src, serial_number)
+	new_poster.forceMove(newloc)
+	src.forceMove(new_poster)
 	qdel(src)
 
 
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
-/turf/closed/wall/proc/place_poster(obj/item/poster/P, mob/user)
+/turf/closed/wall/proc/place_poster(obj/item/poster/current_poster, mob/user)
 
 	if(!istype(src,/turf/closed/wall))
 		to_chat(user, SPAN_DANGER("You can't place this here!"))
 		return
 
 	var/stuff_on_wall = 0
-	for(var/obj/O in contents) //Let's see if it already has a poster on it or too much stuff
-		if(istype(O,/obj/structure/sign/poster))
+	for(var/obj/current_obj in contents) //Let's see if it already has a poster on it or too much stuff
+		if(istype(current_obj,/obj/structure/sign/poster))
 			to_chat(user, SPAN_NOTICE("The wall is far too cluttered to place a poster!"))
 			return
 		stuff_on_wall++
@@ -96,23 +96,23 @@
 
 	to_chat(user, SPAN_NOTICE("You start placing the poster on the wall...")) //Looks like it's uncluttered enough. Place the poster.
 
-	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
-	var/obj/structure/sign/poster/D = new(null, P.serial_number)
+	//declaring poster because otherwise if current_poster gets 'deconstructed' we lose our reference to current_poster.resulting_poster
+	var/obj/structure/sign/poster/poster = new(null, current_poster.serial_number)
 
 	var/temp_loc = user.loc
-	flick("poster_being_set",D)
-	D.forceMove(src)
-	qdel(P) //delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
-	playsound(D.loc, 'sound/items/poster_being_created.ogg', 25, 1)
+	flick("poster_being_set",poster)
+	poster.forceMove(src)
+	qdel(current_poster) //delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
+	playsound(poster.loc, 'sound/items/poster_being_created.ogg', 25, 1)
 
 	if(!do_after(user, 17, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		D.roll_and_drop(temp_loc)
+		poster.roll_and_drop(temp_loc)
 		return
 
 	to_chat(user, SPAN_NOTICE("You place the poster!"))
 
 	SSclues.create_print(get_turf(user), user, "The fingerprint contains paper pieces.")
-	SEND_SIGNAL(P, COMSIG_POSTER_PLACED, user)
+	SEND_SIGNAL(current_poster, COMSIG_POSTER_PLACED, user)
 
 /datum/poster
 	// Name suffix. Poster - [name]

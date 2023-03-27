@@ -23,8 +23,8 @@
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
-				var/obj/O = uniform_path
-				var/name = sanitize(initial(O.name))
+				var/obj/current_uniform = uniform_path
+				var/name = sanitize(initial(current_uniform.name))
 				. += list(
 					list(name, 0, uniform_path, NO_FLAGS, VENDOR_ITEM_REGULAR)
 				)
@@ -44,8 +44,8 @@
 	if(!ishuman(user))
 		return
 
-	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/mob/living/carbon/human/human = user
+	var/obj/item/card/id/id_card = human.wear_id
 	var/list/role_specific_uniforms
 	var/list/vended_items
 	var/list/display_list = list()
@@ -69,11 +69,11 @@
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
-				var/obj/O = uniform_path
+				var/obj/current_uniform = uniform_path
 				var/can_vend = TRUE
 				if(uniform_path in vended_items)
 					can_vend = FALSE
-				var/name = sanitize(initial(O.name))
+				var/name = sanitize(initial(current_uniform.name))
 				var/flags = can_vend ? NO_FLAGS : MARINE_CAN_BUY_ALL
 				display_list += list(
 					list(name, 0, uniform_path, flags, VENDOR_ITEM_REGULAR)
@@ -82,8 +82,8 @@
 
 /obj/structure/machinery/cm_vending/clothing/dress/ui_data(mob/user)
 
-	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/mob/living/carbon/human/human = user
+	var/obj/item/card/id/id_card = human.wear_id
 	var/list/vended_items
 	if(istype(id_card))
 		vended_items = id_card.vended_items
@@ -109,29 +109,29 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/human/H = usr
+	var/mob/living/carbon/human/human = usr
 	switch (action)
 		if ("vend")
 			var/exploiting = TRUE
 			var/idx=params["prod_index"]
 
 			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
+			var/list/products_list = topic_listed_products[idx]
 
-			var/item_path = L[3]
+			var/item_path = products_list[3]
 
-			var/obj/item/card/id/id_card = H.wear_id
+			var/obj/item/card/id/id_card = human.wear_id
 
 			if(!istype(id_card)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+				to_chat(human, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
-			if(id_card.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+			if(id_card.registered_name != human.real_name)
+				to_chat(human, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
 			if(LAZYLEN(vendor_role) && !vendor_role.Find(id_card.rank))
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				to_chat(human, SPAN_WARNING("This machine isn't for you."))
 				return
 
 			for(var/category in uniform_categories) // Very Hacky fix
@@ -210,8 +210,8 @@
 	return chosen
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(obj/item/item_type)
-	for(var/obj/item/I as anything in typesof(item_type))
-		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	for(var/obj/item/current_item as anything in typesof(item_type))
+		items += list(list(initial(current_item.name), 0, current_item, null, VENDOR_ITEM_REGULAR))
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_get_dropdown()
 	. = ..()

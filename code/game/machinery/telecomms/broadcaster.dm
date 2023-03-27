@@ -95,45 +95,45 @@
 	// --- Broadcast only to intercom devices ---
 	if(data == RADIO_FILTER_TYPE_INTERCOM)
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/intercom/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/intercom/current_radio = device_ref.resolve()
+			if(!current_radio)
 				continue
-			var/atom/loc = R.loc
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			var/atom/loc = current_radio.loc
+			if(current_radio.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += current_radio
 
 	// --- Broadcast only to intercoms and shortwave radios ---
 	else if(data == RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER)
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/current_radio = device_ref.resolve()
+			if(!current_radio)
 				continue
-			if(istype(R, /obj/item/device/radio/headset))
+			if(istype(current_radio, /obj/item/device/radio/headset))
 				continue
-			var/atom/loc = R.loc
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			var/atom/loc = current_radio.loc
+			if(current_radio.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += current_radio
 
 	/* Currently unused, but leaving incase someone revives agents or another use for it.
 	// --- Broadcast to antag radios! ---
 	else if(data == RADIO_FILTER_TYPE_ANTAG_RADIOS)
 		for(var/antag_freq in ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = SSradio.return_frequency(antag_freq)
-			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
-				var/atom/loc = R.loc
-				if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-					radios += R
+			for (var/obj/item/device/radio/current_radio in antag_connection.devices["[RADIO_CHAT]"])
+				var/atom/loc = current_radio.loc
+				if(current_radio.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+					radios += current_radio
 	*/
 
 	// --- Broadcast to ALL radio devices ---
 	else
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/current_radio = device_ref.resolve()
+			if(!current_radio)
 				continue
-			var/atom/loc = R.loc
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			var/atom/loc = current_radio.loc
+			if(current_radio.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += current_radio
 
 	// Get a list of mobs who can hear from the radios we collected.
 	var/list/receive = get_mobs_in_radio_ranges(radios)
@@ -153,58 +153,58 @@
 		if(isAI(M))
 			volume = RADIO_VOLUME_CRITICAL
 		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+			var/mob/living/carbon/human/human = M
+			if(skillcheck(human, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
 			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
-			comm_title = H.comm_title //Set up [CO] and stuff after frequency
-			if(H.assigned_squad)
-				if(freq != H.assigned_squad.radio_freq)
-					comm_title = H.assigned_squad.name + " " + comm_title
+			comm_title = human.comm_title //Set up [CO] and stuff after frequency
+			if(human.assigned_squad)
+				if(freq != human.assigned_squad.radio_freq)
+					comm_title = human.assigned_squad.name + " " + comm_title
 				else
-					if(H.assigned_fireteam)
-						if(H.assigned_squad.fireteam_leaders[H.assigned_fireteam] == H)
-							comm_title = H.comm_title + " [H.assigned_fireteam] TL"
+					if(human.assigned_fireteam)
+						if(human.assigned_squad.fireteam_leaders[human.assigned_fireteam] == human)
+							comm_title = human.comm_title + " [human.assigned_fireteam] TL"
 						else
-							comm_title = H.comm_title + " [H.assigned_fireteam]"
+							comm_title = human.comm_title + " [human.assigned_fireteam]"
 
 
 		else if(istype(M,/mob/living/silicon/decoy/ship_ai))
 			volume = RADIO_VOLUME_CRITICAL
 
-	for (var/mob/R in receive)
+	for (var/mob/current_mob in receive)
 		/* --- Loop through the receivers and categorize them --- */
-		if (R.client && !(R.client.prefs.toggles_chat & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
+		if (current_mob.client && !(current_mob.client.prefs.toggles_chat & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
 			continue
-		if(istype(R, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
+		if(istype(current_mob, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
 			continue
 		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
-		if(data == 3 && istype(R, /mob/dead/observer) && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
+		if(data == 3 && istype(current_mob, /mob/dead/observer) && current_mob.client && (current_mob.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
 			continue
 		// --- Check for compression ---
 		if(compression > 0)
-			heard_gibberish += R
+			heard_gibberish += current_mob
 			continue
 
 		// --- Can understand the speech ---
-		if (!M || R.say_understands(M))
+		if (!M || current_mob.say_understands(M))
 			// - Not human or wearing a voice mask -
 			if (!M || !ishuman(M) || vmask)
-				heard_masked += R
+				heard_masked += current_mob
 			// - Human and not wearing voice mask -
 			else
-				heard_normal += R
+				heard_normal += current_mob
 
 		// --- Can't understand the speech ---
 		else
 			// - The speaker has a prespecified "voice message" to display if not understood -
 			if (vmessage)
-				heard_voice += R
+				heard_voice += current_mob
 			// - Just display a garbled message -
 			else
-				heard_garbled += R
+				heard_garbled += current_mob
 
 
 
@@ -234,27 +234,27 @@
 
 		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
-			for (var/mob/R in heard_masked)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)
+			for (var/mob/current_mob in heard_masked)
+				current_mob.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)
 
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 		if (length(heard_normal))
-			for (var/mob/R in heard_normal)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
+			for (var/mob/current_mob in heard_normal)
+				current_mob.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
 
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 		if (length(heard_voice))
-			for (var/mob/R in heard_voice)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname, 0)
+			for (var/mob/current_mob in heard_voice)
+				current_mob.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname, 0)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")
 		if (length(heard_garbled))
-			for (var/mob/R in heard_garbled)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 1, vname, 0)
+			for (var/mob/current_mob in heard_garbled)
+				current_mob.hear_radio(message, verbage, speaking, part_a, part_b, M, 1, vname, 0)
 
 
 		/* --- Complete gibberish. Usually happens when there's a compressed message --- */
 		if (length(heard_gibberish))
-			for (var/mob/R in heard_gibberish)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 1, 0)
+			for (var/mob/current_mob in heard_gibberish)
+				current_mob.hear_radio(message, verbage, speaking, part_a, part_b, M, 1, 0)

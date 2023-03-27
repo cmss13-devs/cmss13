@@ -58,9 +58,9 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/microwave/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/microwave/attackby(obj/item/current_obj as obj, mob/user as mob)
 	if(broken > 0)
-		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
+		if(broken == 2 && HAS_TRAIT(current_obj, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
@@ -71,7 +71,7 @@
 					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!") \
 				)
 				src.broken = 1 // Fix it a bit
-		else if(src.broken == 1 && HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
+		else if(src.broken == 1 && HAS_TRAIT(current_obj, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
@@ -91,11 +91,11 @@
 			else
 				to_chat(user, SPAN_DANGER("It's broken! Use a wrench to fix it!"))
 			return 1
-	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+	else if(HAS_TRAIT(current_obj, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
-		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
+		if(istype(current_obj, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to clean the microwave."), \
 				SPAN_NOTICE("You start to clean the microwave.") \
@@ -114,36 +114,36 @@
 			return 1
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
-	else if(is_type_in_list(O,acceptable_items))
+	else if(is_type_in_list(current_obj,acceptable_items))
 		if (contents.len>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
 			return 1
-		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
-			var/obj/item/stack/S = O
-			new O.type (src)
-			S.use(1)
+		if(istype(current_obj, /obj/item/stack) && current_obj:get_amount() > 1) // This is bad, but I can't think of how to change it
+			var/obj/item/stack/stack = current_obj
+			new current_obj.type (src)
+			stack.use(1)
 			user.visible_message( \
-				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
-				SPAN_NOTICE("You add one of [O] to \the [src]."))
+				SPAN_NOTICE("[user] has added one of [current_obj] to \the [src]."), \
+				SPAN_NOTICE("You add one of [current_obj] to \the [src]."))
 		else
-		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
+		// user.before_take_item(current_obj) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
-				O.forceMove(src)
+				current_obj.forceMove(src)
 				user.visible_message( \
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
-					SPAN_NOTICE("You add \the [O] to \the [src]."))
-	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
-		if (!O.reagents)
+					SPAN_NOTICE("[user] has added \the [current_obj] to \the [src]."), \
+					SPAN_NOTICE("You add \the [current_obj] to \the [src]."))
+	else if(istype(current_obj,/obj/item/reagent_container/glass) || istype(current_obj,/obj/item/reagent_container/food/drinks) || istype(current_obj,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
+		if (!current_obj.reagents)
 			return 1
-		for (var/datum/reagent/R in O.reagents.reagent_list)
-			if (!(R.id in acceptable_reagents))
-				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
+		for (var/datum/reagent/chem in current_obj.reagents.reagent_list)
+			if (!(chem.id in acceptable_reagents))
+				to_chat(user, SPAN_DANGER("Your [current_obj] contains components unsuitable for cookery."))
 				return 1
 		//G.reagents.trans_to(src,G.amount_per_transfer_from_this)
-	else if(istype(O,/obj/item/grab))
+	else if(istype(current_obj,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
+		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [current_obj]."))
 		return 1
 	src.updateUsrDialog()
 
@@ -170,42 +170,42 @@
 		var/list/items_counts = new
 		var/list/items_measures = new
 		var/list/items_measures_p = new
-		for (var/obj/O in contents)
-			var/display_name = O.name
-			if (istype(O,/obj/item/reagent_container/food/snacks/egg))
+		for (var/obj/microwave_contents in contents)
+			var/display_name = microwave_contents.name
+			if (istype(microwave_contents,/obj/item/reagent_container/food/snacks/egg))
 				items_measures[display_name] = "egg"
 				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_container/food/snacks/tofu))
+			if (istype(microwave_contents,/obj/item/reagent_container/food/snacks/tofu))
 				items_measures[display_name] = "tofu chunk"
 				items_measures_p[display_name] = "tofu chunks"
-			if (istype(O,/obj/item/reagent_container/food/snacks/meat)) //any meat
+			if (istype(microwave_contents,/obj/item/reagent_container/food/snacks/meat)) //any meat
 				items_measures[display_name] = "slab of meat"
 				items_measures_p[display_name] = "slabs of meat"
-			if (istype(O,/obj/item/reagent_container/food/snacks/donkpocket))
+			if (istype(microwave_contents,/obj/item/reagent_container/food/snacks/donkpocket))
 				display_name = "Turnovers"
 				items_measures[display_name] = "turnover"
 				items_measures_p[display_name] = "turnovers"
-			if (istype(O,/obj/item/reagent_container/food/snacks/carpmeat))
+			if (istype(microwave_contents,/obj/item/reagent_container/food/snacks/carpmeat))
 				items_measures[display_name] = "fillet of meat"
 				items_measures_p[display_name] = "fillets of meat"
 			items_counts[display_name]++
-		for (var/O in items_counts)
-			var/N = items_counts[O]
-			if (!(O in items_measures))
-				dat += {"<B>[capitalize(O)]:</B> [N] [lowertext(O)]\s<BR>"}
+		for (var/microwave_contents in items_counts)
+			var/N = items_counts[microwave_contents]
+			if (!(microwave_contents in items_measures))
+				dat += {"<B>[capitalize(microwave_contents)]:</B> [N] [lowertext(microwave_contents)]\s<BR>"}
 			else
 				if (N==1)
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures[O]]<BR>"}
+					dat += {"<B>[capitalize(microwave_contents)]:</B> [N] [items_measures[microwave_contents]]<BR>"}
 				else
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
+					dat += {"<B>[capitalize(microwave_contents)]:</B> [N] [items_measures_p[microwave_contents]]<BR>"}
 
-		for (var/datum/reagent/R in reagents.reagent_list)
-			var/display_name = R.name
-			if (R.id == "hotsauce")
+		for (var/datum/reagent/chem in reagents.reagent_list)
+			var/display_name = chem.name
+			if (chem.id == "hotsauce")
 				display_name = "Hotsauce"
-			if (R.id == "frostoil")
+			if (chem.id == "frostoil")
 				display_name = "Coldsauce"
-			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+			dat += {"<B>[display_name]:</B> [chem.volume] unit\s<BR>"}
 
 		if (items_counts.len==0 && reagents.reagent_list.len==0)
 			dat = {"<B>The microwave is empty</B><BR>"}
@@ -291,10 +291,10 @@
 	return 1
 
 /obj/structure/machinery/microwave/proc/has_extra_item()
-	for (var/obj/O in contents)
+	for (var/obj/microwave_contents in contents)
 		if ( \
-				!istype(O,/obj/item/reagent_container/food) && \
-				!istype(O, /obj/item/grown) \
+				!istype(microwave_contents,/obj/item/reagent_container/food) && \
+				!istype(microwave_contents, /obj/item/grown) \
 			)
 			return 1
 	return 0
@@ -317,8 +317,8 @@
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/dispose()
-	for (var/obj/O in contents)
-		O.forceMove(src.loc)
+	for (var/obj/microwave_contents in contents)
+		microwave_contents.forceMove(src.loc)
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()
@@ -339,9 +339,9 @@
 	updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/broke()
-	var/datum/effect_system/spark_spread/s = new
-	s.set_up(2, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/spark = new
+	spark.set_up(2, 1, src)
+	spark.start()
 	icon_state = "mwb" // Make it look all busted up and shit
 	visible_message(SPAN_DANGER("The microwave breaks!")) //Let them know they're stupid
 	broken = 2 // Make it broken so it can't be used util fixed
@@ -352,13 +352,13 @@
 /obj/structure/machinery/microwave/proc/fail()
 	var/obj/item/reagent_container/food/snacks/badrecipe/ffuu = new(src)
 	var/amount = 0
-	for (var/obj/O in contents-ffuu)
+	for (var/obj/microwave_contents in contents-ffuu)
 		amount++
-		if (O.reagents)
-			var/id = O.reagents.get_master_reagent_id()
+		if (microwave_contents.reagents)
+			var/id = microwave_contents.reagents.get_master_reagent_id()
 			if (id)
-				amount+=O.reagents.get_reagent_amount(id)
-		qdel(O)
+				amount+=microwave_contents.reagents.get_reagent_amount(id)
+		qdel(microwave_contents)
 	if(src.reagents)
 		src.reagents.clear_reagents()
 	ffuu.reagents.add_reagent("carbon", amount)

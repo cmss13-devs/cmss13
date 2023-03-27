@@ -57,14 +57,14 @@
 
 	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
+/obj/effect/overlay/temp/point/Initialize(mapload, mob/current_mob, atom/actual_pointed_atom)
 	. = ..()
 
-	if(!M)
+	if(!current_mob)
 		return INITIALIZE_HINT_QDEL
 
 	var/turf/T1 = loc
-	var/turf/T2 = M.loc
+	var/turf/T2 = current_mob.loc
 
 	if(T2.x && T2.y)
 		var/dist_x = (T2.x - T1.x)
@@ -100,12 +100,12 @@
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/C)
-	if(!C)
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/current_client)
+	if(!current_client)
 		return
 
-	C.images |= self_icon
-	clients |= C
+	current_client.images |= self_icon
+	clients |= current_client
 
 
 /obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
@@ -120,20 +120,20 @@
 	show_to_client(owner.client)
 
 	for(var/i in GLOB.observer_list)
-		var/mob/M = i
-		show_to_client(M.client)
+		var/mob/current_mob = i
+		show_to_client(current_mob.client)
 
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/M = i
-		show_to_client(M.client)
+		var/mob/current_mob = i
+		show_to_client(current_mob.client)
 
 /obj/effect/overlay/temp/point/big/queen/Destroy()
 	for(var/i in clients)
-		var/client/C = i
-		if(!C) continue
+		var/client/current_client = i
+		if(!current_client) continue
 
-		C.images -= self_icon
-		LAZYREMOVE(clients, C)
+		current_client.images -= self_icon
+		LAZYREMOVE(clients, current_client)
 
 	clients = null
 	self_icon = null

@@ -11,11 +11,11 @@
 /obj/effect/acid_hole/Initialize()
 	. = ..()
 	if(istype(loc, /turf/closed/wall))
-		var/turf/closed/wall/W = loc
-		W.acided_hole = src
-		holed_wall = W
+		var/turf/closed/wall/wall = loc
+		wall.acided_hole = src
+		holed_wall = wall
 		holed_wall.opacity = FALSE
-		setDir(W.acided_hole_dir)
+		setDir(wall.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
 	if(holed_wall)
@@ -73,9 +73,9 @@
 
 	var/entrance_dir = crawl_dir ^ mob_dir
 
-	var/turf/T = get_step(src, crawl_dir)
+	var/turf/current_turf = get_step(src, crawl_dir)
 
-	if (!T || T.density)
+	if (!current_turf || current_turf.density)
 		to_chat(user, "This hole leads nowhere!")
 		return
 
@@ -84,8 +84,8 @@
 			to_chat(user, SPAN_WARNING("You can't reach the hole's entrance."))
 			return
 
-	for(var/obj/O in T)
-		if(O.BlockedPassDirs(user, crawl_dir))
+	for(var/obj/current_obj in current_turf)
+		if(current_obj.BlockedPassDirs(user, crawl_dir))
 			to_chat(user, SPAN_WARNING("The hole's exit is blocked by something!"))
 			return
 
@@ -96,15 +96,15 @@
 
 	if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
-			if (T.density)
+			if (current_turf.density)
 				return
-			for(var/obj/O in T)
-				if(O.BlockedPassDirs(user, crawl_dir))
+			for(var/obj/current_obj in current_turf)
+				if(current_obj.BlockedPassDirs(user, crawl_dir))
 					return
 			if(user.pulling)
 				user.stop_pulling()
 				to_chat(user, SPAN_WARNING("You release what you're pulling to fit into the tunnel!"))
-			user.forceMove(T)
+			user.forceMove(current_turf)
 
 			// If the wall is on fire, ignite the xeno.
 			var/turf/wall = get_turf(src)
@@ -115,7 +115,7 @@
 
 
 //Throwing Shiet
-/obj/effect/acid_hole/attackby(obj/item/W, mob/user)
+/obj/effect/acid_hole/attackby(obj/item/current_item, mob/user)
 
 	var/mob_dir = get_dir(user, src)
 	var/crawl_dir = dir & mob_dir
@@ -126,46 +126,46 @@
 	var/turf/Target = get_step(src, crawl_dir)
 
 	//Throwing Grenades
-	if(istype(W,/obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/G = W
+	if(istype(current_item,/obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/grenade = current_item
 
 		if(!Target ||Target.density)
 			to_chat(user, SPAN_WARNING("This hole leads nowhere!"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You take the position to throw [G]."))
+		to_chat(user, SPAN_NOTICE("You take the position to throw [grenade]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message(SPAN_WARNING("[user] throws [G] through [src]!"), \
-								SPAN_WARNING("You throw [G] through [src]"))
+			user.visible_message(SPAN_WARNING("[user] throws [grenade] through [src]!"), \
+								SPAN_WARNING("You throw [grenade] through [src]"))
 			user.drop_held_item()
-			G.forceMove(Target)
-			G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-			step_away(G,src,rand(2,5))
-			if(!G.active)
-				G.activate(user)
+			grenade.forceMove(Target)
+			grenade.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+			step_away(grenade,src,rand(2,5))
+			if(!grenade.active)
+				grenade.activate(user)
 		return
 
 	//Throwing Flares and flashlights
-	else if(istype(W,/obj/item/device/flashlight))
-		var/obj/item/device/flashlight/F = W
+	else if(istype(current_item, /obj/item/device/flashlight))
+		var/obj/item/device/flashlight/light = current_item
 
 		if(!Target ||Target.density)
 			to_chat(user, SPAN_WARNING("This hole leads nowhere!"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You take the position to throw [F]."))
+		to_chat(user, SPAN_NOTICE("You take the position to throw [light]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message(SPAN_WARNING("[user] throws [F] through [src]!"), \
-								SPAN_WARNING("You throw [F] through [src]"))
+			user.visible_message(SPAN_WARNING("[user] throws [light] through [src]!"), \
+								SPAN_WARNING("You throw [light] through [src]"))
 			user.drop_held_item()
-			F.forceMove(Target)
-			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-			step_away(F,src,rand(1,5))
-			F.SetLuminosity(0)
-			if(F.on && loc != user)
-				F.SetLuminosity(F.brightness_on)
+			light.forceMove(Target)
+			light.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+			step_away(light,src,rand(1,5))
+			light.SetLuminosity(0)
+			if(light.on && loc != user)
+				light.SetLuminosity(light.brightness_on)
 		return

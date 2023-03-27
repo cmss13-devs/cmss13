@@ -143,13 +143,13 @@
 	if(in_use)
 		var/is_in_use = 0
 		var/list/nearby = viewers(1, src)
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
+		for(var/mob/nearby_mob in nearby)
+			if ((nearby_mob.client && nearby_mob.interactee == src))
 				is_in_use = 1
-				attack_hand(M)
+				attack_hand(nearby_mob)
 		if (ishighersilicon(usr))
 			if (!(usr in nearby))
-				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
+				if (usr.client && usr.interactee==src) // && nearby_mob.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
 					is_in_use = 1
 					attack_remote(usr)
 		in_use = is_in_use
@@ -159,10 +159,10 @@
 	if(in_use)
 		var/list/nearby = viewers(1, src)
 		var/is_in_use = 0
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
+		for(var/mob/nearby_mob in nearby)
+			if ((nearby_mob.client && nearby_mob.interactee == src))
 				is_in_use = 1
-				src.interact(M)
+				src.interact(nearby_mob)
 		var/ai_in_use = AutoUpdateAI(src)
 
 		if(!ai_in_use && !is_in_use)
@@ -172,17 +172,17 @@
 	return
 
 /obj/proc/update_icon()
-	for(var/datum/effects/E in effects_list)
-		if(E.icon_path && E.obj_icon_state_path)
-			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
+	for(var/datum/effects/current_effect in effects_list)
+		if(current_effect.icon_path && current_effect.obj_icon_state_path)
+			overlays += image(current_effect.icon_path, icon_state = current_effect.obj_icon_state_path)
 	return
 
 
 
 /obj/item/proc/updateSelfDialog()
-	var/mob/M = loc
-	if(istype(M) && M.client && M.interactee == src)
-		attack_self(M)
+	var/mob/current_mob = loc
+	if(istype(current_mob) && current_mob.client && current_mob.interactee == src)
+		attack_self(current_mob)
 
 /obj/proc/update_health(damage = 0)
 	if(damage)
@@ -197,7 +197,7 @@
 	return
 
 
-/obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
+/obj/proc/hear_talk(mob/living/current_mob as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
 /obj/attack_hand(mob/user)
@@ -215,13 +215,13 @@
 	if(!can_buckle)
 		. = ..()
 
-/obj/MouseDrop_T(mob/M, mob/user)
+/obj/MouseDrop_T(mob/current_mob, mob/user)
 	if(can_buckle)
-		if(!istype(M)) return
-		buckle_mob(M, user)
+		if(!istype(current_mob)) return
+		buckle_mob(current_mob, user)
 	else . = ..()
 
-/obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
+/obj/proc/afterbuckle(mob/current_mob as mob) // Called after somebody buckled / unbuckled
 	handle_rotation()
 	return buckled_mob
 
@@ -231,10 +231,10 @@
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		buckled_mob.update_canmove()
 
-		var/M = buckled_mob
+		var/current_mob = buckled_mob
 		buckled_mob = null
 
-		afterbuckle(M)
+		afterbuckle(current_mob)
 
 
 /obj/proc/manual_unbuckle(mob/user as mob)
@@ -258,8 +258,8 @@
 
 
 //trying to buckle a mob
-/obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+/obj/proc/buckle_mob(mob/current_mob, mob/user)
+	if (!ismob(current_mob) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || current_mob.buckled || !isturf(user.loc))
 		return
 
 	if (isxeno(user))
@@ -270,23 +270,23 @@
 
 	if(density)
 		density = FALSE
-		if(!step(M, get_dir(M, src)) && loc != M.loc)
+		if(!step(current_mob, get_dir(current_mob, src)) && loc != current_mob.loc)
 			density = TRUE
 			return
 		density = TRUE
 	else
-		if(M.loc != src.loc)
-			step_towards(M, src) //buckle if you're right next to it
-			if(M.loc != src.loc)
+		if(current_mob.loc != src.loc)
+			step_towards(current_mob, src) //buckle if you're right next to it
+			if(current_mob.loc != src.loc)
 				return
-			. = buckle_mob(M)
-	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
-		do_buckle(M, user)
+			. = buckle_mob(current_mob)
+	if (current_mob.mob_size <= MOB_SIZE_XENO && current_mob.stat == DEAD && istype(src, /obj/structure/bed/roller))
+		do_buckle(current_mob, user)
 		return
-	if (M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+	if (current_mob.mob_size > MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("[current_mob] is too big to buckle in."))
 		return
-	do_buckle(M, user)
+	do_buckle(current_mob, user)
 
 // the actual buckling proc
 // Yes I know this is not style but its unreadable otherwise
@@ -301,22 +301,22 @@
 		src.add_fingerprint(user)
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
-			var/matrix/M = matrix()
-			var/matrix/L = matrix() //Counterrotation for langchat text.
-			M.Turn(90)
-			L.Turn(270)
-			target.apply_transform(M)
+			var/matrix/current_matrix = matrix()
+			var/matrix/langchat_matrix = matrix() //Counterrotation for langchat text.
+			current_matrix.Turn(90)
+			langchat_matrix.Turn(270)
+			target.apply_transform(current_matrix)
 		return TRUE
 
-/obj/proc/send_buckling_message(mob/M, mob/user)
-	if (M == user)
-		M.visible_message(\
-			SPAN_NOTICE("[M] buckles in!"),\
+/obj/proc/send_buckling_message(mob/current_mob, mob/user)
+	if (current_mob == user)
+		current_mob.visible_message(\
+			SPAN_NOTICE("[current_mob] buckles in!"),\
 			SPAN_NOTICE("You buckle yourself to [src]."),\
 			SPAN_NOTICE("You hear metal clanking."))
 	else
-		M.visible_message(\
-			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),\
+		current_mob.visible_message(\
+			SPAN_NOTICE("[current_mob] is buckled in to [src] by [user]!"),\
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),\
 			SPAN_NOTICE("You hear metal clanking"))
 

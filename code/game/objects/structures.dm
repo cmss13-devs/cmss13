@@ -22,12 +22,12 @@
 
 /obj/structure/Destroy()
 	//before ..() because the parent does loc = null
-	for(var/atom/movable/A in contents_recursive())
-		var/obj/O = A
-		if(!istype(O))
+	for(var/atom/movable/current_atom in contents_recursive())
+		var/obj/current_obj = current_atom
+		if(!istype(current_obj))
 			continue
-		if(O.unacidable)
-			O.forceMove(get_turf(loc))
+		if(current_obj.unacidable)
+			current_obj.forceMove(get_turf(loc))
 	debris = null
 	. = ..()
 
@@ -64,8 +64,8 @@
 				new thing(loc)
 		if(0 to EXPLOSION_THRESHOLD_HIGH) //beyond EXPLOSION_THRESHOLD_HIGH, the explosion is too powerful to create debris. It's all atomized.
 			for(var/thing in debris)
-				var/obj/item/I = new thing(loc)
-				I.explosion_throw(severity, direction)
+				var/obj/item/new_item = new thing(loc)
+				new_item.explosion_throw(severity, direction)
 
 /obj/structure/proc/climb_on()
 
@@ -78,8 +78,8 @@
 
 /obj/structure/MouseDrop_T(mob/target, mob/user)
 	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //No making other people climb onto tables.
+	var/mob/living/human = user
+	if(!istype(human) || target != user) //No making other people climb onto tables.
 		return
 
 	do_climb(target)
@@ -88,18 +88,18 @@
 	if(!climbable || !can_touch(user))
 		return FALSE
 
-	var/turf/T = get_turf(src)
+	var/turf/current_turf = get_turf(src)
 	if(flags_atom & ON_BORDER)
-		T = get_step(get_turf(src), dir)
-		if(user.loc == T)
-			T = get_turf(src)
+		current_turf = get_step(get_turf(src), dir)
+		if(user.loc == current_turf)
+			current_turf = get_turf(src)
 
-	var/turf/U = get_turf(user)
-	if(!istype(T) || !istype(U))
+	var/turf/climbing_turf = get_turf(user)
+	if(!istype(current_turf) || !istype(climbing_turf))
 		return FALSE
 
 	user.add_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
-	var/atom/blocker = LinkBlocked(user, U, T, list(src))
+	var/atom/blocker = LinkBlocked(user, climbing_turf, current_turf, list(src))
 	user.remove_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
 
 	if(blocker)
@@ -133,8 +133,8 @@
 
 	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(skillcheck(H, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
+		var/mob/living/carbon/human/human = user
+		if(skillcheck(human, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
 			climb_string = "[user] tactically vaults over \the [src]!"
 	user.visible_message(SPAN_WARNING(climb_string))
 
@@ -148,47 +148,47 @@
 
 /obj/structure/proc/structure_shaken()
 
-	for(var/mob/living/M in get_turf(src))
+	for(var/mob/living/current_mob in get_turf(src))
 
-		if(M.lying) return //No spamming this on people.
+		if(current_mob.lying) return //No spamming this on people.
 
-		M.apply_effect(5, WEAKEN)
-		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))
+		current_mob.apply_effect(5, WEAKEN)
+		to_chat(current_mob, SPAN_WARNING("You topple as \the [src] moves under you!"))
 
 		if(prob(25))
 
 			var/damage = rand(15,30)
-			var/mob/living/carbon/human/H = M
-			if(!istype(H))
-				to_chat(H, SPAN_DANGER("You land heavily!"))
-				M.apply_damage(damage, BRUTE)
+			var/mob/living/carbon/human/human = current_mob
+			if(!istype(human))
+				to_chat(human, SPAN_DANGER("You land heavily!"))
+				current_mob.apply_damage(damage, BRUTE)
 				return
 
 			var/obj/limb/affecting
 
 			switch(pick(list("ankle","wrist","head","knee","elbow")))
 				if("ankle")
-					affecting = H.get_limb(pick("l_foot", "r_foot"))
+					affecting = human.get_limb(pick("l_foot", "r_foot"))
 				if("knee")
-					affecting = H.get_limb(pick("l_leg", "r_leg"))
+					affecting = human.get_limb(pick("l_leg", "r_leg"))
 				if("wrist")
-					affecting = H.get_limb(pick("l_hand", "r_hand"))
+					affecting = human.get_limb(pick("l_hand", "r_hand"))
 				if("elbow")
-					affecting = H.get_limb(pick("l_arm", "r_arm"))
+					affecting = human.get_limb(pick("l_arm", "r_arm"))
 				if("head")
-					affecting = H.get_limb("head")
+					affecting = human.get_limb("head")
 
 			if(affecting)
-				to_chat(M, SPAN_DANGER("You land heavily on your [affecting.display_name]!"))
+				to_chat(current_mob, SPAN_DANGER("You land heavily on your [affecting.display_name]!"))
 				affecting.take_damage(damage, 0)
 				if(affecting.parent)
 					affecting.parent.add_autopsy_data("Misadventure", damage)
 			else
-				to_chat(H, SPAN_DANGER("You land heavily!"))
-				H.apply_damage(damage, BRUTE)
+				to_chat(human, SPAN_DANGER("You land heavily!"))
+				human.apply_damage(damage, BRUTE)
 
-			H.UpdateDamageIcon()
-			H.updatehealth()
+			human.UpdateDamageIcon()
+			human.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/user)

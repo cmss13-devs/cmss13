@@ -28,19 +28,19 @@
 			to_chat(user, SPAN_DANGER("\A [charging] is already charging here."))
 			return
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
-		var/area/a = get_area(src)
-		if(!isarea(a) || (a.power_equip == 0 && !a.unlimited_power))
+		var/area/current_area = get_area(src)
+		if(!isarea(current_area) || (current_area.power_equip == 0 && !current_area.unlimited_power))
 			to_chat(user, SPAN_DANGER("\The [name] blinks red as you try to insert the item!"))
 			return
 		if(istype(G, /obj/item/device/defibrillator))
-			var/obj/item/device/defibrillator/D = G
-			if(D.ready)
-				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into \the [D] first!"))
+			var/obj/item/device/defibrillator/defibrillator = G
+			if(defibrillator.ready)
+				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into \the [defibrillator] first!"))
 				return
 		if(istype(G, /obj/item/tool/portadialysis))
-			var/obj/item/tool/portadialysis/P = G
-			if(P.attached)
-				to_chat(user, SPAN_WARNING("It won't fit, detach it from [P.attached] first!"))
+			var/obj/item/tool/portadialysis/portadialysis = G
+			if(portadialysis.attached)
+				to_chat(user, SPAN_WARNING("It won't fit, detach it from [portadialysis.attached] first!"))
 				return
 		if(user.drop_inv_item_to_loc(G, src))
 			charging = G
@@ -80,12 +80,12 @@
 	//This is an awful check. Holy cow.
 	else
 		if(istype(charging, /obj/item/weapon/gun/energy))
-			var/obj/item/weapon/gun/energy/E = charging
-			if(!E.works_in_recharger)
+			var/obj/item/weapon/gun/energy/laser_gun = charging
+			if(!laser_gun.works_in_recharger)
 				return;
-			if(!E.cell.fully_charged())
-				E.cell.give(charge_amount)
-				percent_charge_complete = E.cell.percent()
+			if(!laser_gun.cell.fully_charged())
+				laser_gun.cell.give(charge_amount)
+				percent_charge_complete = laser_gun.cell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()
 			else
@@ -95,11 +95,11 @@
 			return
 
 		if(istype(charging, /obj/item/weapon/melee/baton))
-			var/obj/item/weapon/melee/baton/B = charging
-			if(B.bcell)
-				if(!B.bcell.fully_charged())
-					B.bcell.give(charge_amount)
-					percent_charge_complete = B.bcell.percent()
+			var/obj/item/weapon/melee/baton/stunbaton = charging
+			if(stunbaton.bcell)
+				if(!stunbaton.bcell.fully_charged())
+					stunbaton.bcell.give(charge_amount)
+					percent_charge_complete = stunbaton.bcell.percent()
 					update_use_power(USE_POWER_ACTIVE)
 					update_icon()
 				else
@@ -113,10 +113,10 @@
 			return
 
 		if(istype(charging, /obj/item/device/defibrillator))
-			var/obj/item/device/defibrillator/D = charging
-			if(!D.dcell.fully_charged())
-				D.dcell.give(active_power_usage*CELLRATE)
-				percent_charge_complete = D.dcell.percent()
+			var/obj/item/device/defibrillator/defibrillator = charging
+			if(!defibrillator.dcell.fully_charged())
+				defibrillator.dcell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = defibrillator.dcell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()
 			else
@@ -128,10 +128,10 @@
 
 
 		if(istype(charging, /obj/item/clothing/suit/auto_cpr))
-			var/obj/item/clothing/suit/auto_cpr/A = charging
-			if(!A.pdcell.fully_charged())
-				A.pdcell.give(active_power_usage*CELLRATE)
-				percent_charge_complete = A.pdcell.percent()
+			var/obj/item/clothing/suit/auto_cpr/auto_cpr = charging
+			if(!auto_cpr.pdcell.fully_charged())
+				auto_cpr.pdcell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = auto_cpr.pdcell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()
 			else
@@ -141,10 +141,10 @@
 			return
 
 		if(istype(charging, /obj/item/tool/portadialysis))
-			var/obj/item/tool/portadialysis/P = charging
-			if(!P.pdcell.fully_charged())
-				P.pdcell.give(active_power_usage*CELLRATE)
-				percent_charge_complete = P.pdcell.percent()
+			var/obj/item/tool/portadialysis/portadialysis = charging
+			if(!portadialysis.pdcell.fully_charged())
+				portadialysis.pdcell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = portadialysis.pdcell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()
 			else
@@ -154,10 +154,10 @@
 			return
 
 		if(istype(charging, /obj/item/cell))
-			var/obj/item/cell/C = charging
-			if(!C.fully_charged())
-				C.give(active_power_usage*CELLRATE)
-				percent_charge_complete = C.percent()
+			var/obj/item/cell/power_cell = charging
+			if(!power_cell.fully_charged())
+				power_cell.give(active_power_usage*CELLRATE)
+				percent_charge_complete = power_cell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()
 			else
@@ -168,11 +168,11 @@
 
 		/* Disable defib recharging
 		if(istype(charging, /obj/item/device/defibrillator))
-			var/obj/item/device/defibrillator/D = charging
-			if(D.dcell)
-				if(!D.dcell.fully_charged())
+			var/obj/item/device/defibrillator/defibrillator = charging
+			if(defibrillator.dcell)
+				if(!defibrillator.dcell.fully_charged())
 					icon_state = icon_state_charging
-					D.dcell.give(active_power_usage*CELLRATE)
+					defibrillator.dcell.give(active_power_usage*CELLRATE)
 					update_use_power(USE_POWER_ACTIVE)
 				else
 					icon_state = icon_state_charged
@@ -193,14 +193,14 @@
 		return
 /*
 	if(istype(charging,  /obj/item/weapon/gun/energy))
-		var/obj/item/weapon/gun/energy/E = charging
-		if(E.power_supply)
-			E.power_supply.emp_act(severity)
+		var/obj/item/weapon/gun/energy/laser_gun = charging
+		if(laser_gun.power_supply)
+			laser_gun.power_supply.emp_act(severity)
 */
 	if(istype(charging, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = charging
-		if(B.bcell)
-			B.bcell.charge = 0
+		var/obj/item/weapon/melee/baton/stunbaton = charging
+		if(stunbaton.bcell)
+			stunbaton.bcell.charge = 0
 	..(severity)
 
 /obj/structure/machinery/recharger/update_icon() //we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
@@ -232,8 +232,8 @@
 	. += "There's [charging ? "[charging]" : "nothing"] in the charger."
 	if(charging)
 		if(istype(charging, /obj/item/cell))
-			var/obj/item/cell/C = charging
-			. += "Current charge: [C.charge] ([C.percent()]%)"
+			var/obj/item/cell/power_cell = charging
+			. += "Current charge: [power_cell.charge] ([power_cell.percent()]%)"
 
 /obj/structure/machinery/recharger/unanchored
 	anchored = FALSE

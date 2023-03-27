@@ -21,9 +21,9 @@
 				var/obj/effect/decal/cleanable/blood/oil/streak = new(src.loc)
 				streak.update_icon()
 			else if (prob(10))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(3, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+				sparks.set_up(3, 1, src)
+				sparks.start()
 		if (step_to(src, get_step(src, direction), 0))
 			break
 

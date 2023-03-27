@@ -25,16 +25,16 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	. = ..()
 	if (random_icon_states && length(src.random_icon_states) > 0)
 		src.icon_state = pick(src.random_icon_states)
-	var/turf/T = loc
+	var/turf/current_turf = loc
 
-	if(!T)
+	if(!current_turf)
 		return INITIALIZE_HINT_QDEL
 
-	var/obj/effect/decal/cleanable/C = LAZYACCESS(T.cleanables, cleanable_type)
-	if(C && !can_place_cleanable(C))
+	var/obj/effect/decal/cleanable/cleanable = LAZYACCESS(current_turf.cleanables, cleanable_type)
+	if(cleanable && !can_place_cleanable(cleanable))
 		return INITIALIZE_HINT_QDEL
 
-	place_cleanable(T, overlay_on_initialize)
+	place_cleanable(current_turf, overlay_on_initialize)
 
 /obj/effect/decal/cleanable/Destroy()
 	if(!cleaned_up)
@@ -50,22 +50,22 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	return ..()
 
 /obj/effect/decal/cleanable/attackby(obj/item/W, mob/user)
-	var/obj/effect/alien/weeds/A = locate() in loc
-	if(A)
-		return A.attackby(W,user)
+	var/obj/effect/alien/weeds/weeds = locate() in loc
+	if(weeds)
+		return weeds.attackby(W,user)
 	else
 		return ..()
 
 /obj/effect/decal/cleanable/proc/can_place_cleanable(obj/effect/decal/cleanable/old_cleanable)
 	return TRUE
 
-/obj/effect/decal/cleanable/proc/place_cleanable(turf/T, overlayed)
-	var/obj/effect/decal/cleanable/C = LAZYACCESS(T.cleanables, cleanable_type)
-	if(C)
-		C.cleanup_cleanable()
+/obj/effect/decal/cleanable/proc/place_cleanable(turf/current_turf, overlayed)
+	var/obj/effect/decal/cleanable/cleanable = LAZYACCESS(current_turf.cleanables, cleanable_type)
+	if(cleanable)
+		cleanable.cleanup_cleanable()
 	cleaned_up = FALSE
-	LAZYSET(T.cleanables, cleanable_type, src)
-	cleanable_turf = T
+	LAZYSET(current_turf.cleanables, cleanable_type, src)
+	cleanable_turf = current_turf
 	if(overlayed)
 		create_overlay()
 

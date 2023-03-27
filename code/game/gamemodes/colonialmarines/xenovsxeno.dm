@@ -44,19 +44,19 @@
 		if(monkey_types.len)
 			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
 
-				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
+				var/turf/current_turf = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
-				new monkey_to_spawn(T)
+				new monkey_to_spawn(current_turf)
 
 
-	for(var/atom/A in world)
+	for(var/atom/current_atom in world)
 		for(var/type in structures_to_delete)
-			if(istype(A, type))
-				if(istype(A, /turf))
-					var/turf/T = A
-					T.ScrapeAway()
+			if(istype(current_atom, type))
+				if(istype(current_atom, /turf))
+					var/turf/current_turf = current_atom
+					current_turf.ScrapeAway()
 				else
-					qdel(A)
+					qdel(current_atom)
 
 	round_time_sd = (time_until_sd + world.time)
 
@@ -91,9 +91,9 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+	for(var/area/current_area in all_areas)
+		if(!(current_area.is_resin_allowed))
+			current_area.is_resin_allowed = TRUE
 
 	open_podlocks("map_lockdown")
 
@@ -116,13 +116,13 @@
 	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
 	for(var/datum/hive_status/hive in picked_queens)
 		transform_queen(picked_queens[hive], hive_spots[hive], hive.hivenumber)
-		var/datum/mind/M = picked_queens[hive]
-		M.current.close_spawn_windows()
+		var/datum/mind/current_mind = picked_queens[hive]
+		current_mind.current.close_spawn_windows()
 
 	for(var/datum/hive_status/hive in hive_spots)
-		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
-		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
-		hive_cores += C
+		var/obj/effect/alien/resin/special/pylon/core/hivecore = new(hive_spots[hive], hive)
+		hivecore.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
+		hive_cores += hivecore
 
 /datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL, should_spawn_nest = TRUE)
 	if(should_spawn_nest)
@@ -152,15 +152,15 @@
 		if(original && !original.first_xeno)
 			qdel(original)
 	else
-		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
-		ghost_mind.transfer_to(L)
+		var/mob/living/carbon/xenomorph/larva/new_larva = new(xeno_turf, null, hivenumber)
+		ghost_mind.transfer_to(new_larva)
 
 /datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures
-	var/turf/T  = .
-	var/area/AR = get_area(T)
+	var/turf/current_turf  = .
+	var/area/AR = get_area(current_turf)
 	if(!AR) return
 	for(var/obj/effect/landmark/structure_spawner/xvx_hive/SS in AR)
 		SS.apply()
@@ -189,8 +189,8 @@
 			if(!sudden_death && world.time > round_time_sd)
 				sudden_death = TRUE
 				xeno_announcement("The hives have entered sudden death mode. No more respawns, no more Queens", "everything", HIGHER_FORCE_ANNOUNCE)
-				for(var/obj/effect/alien/resin/special/pylon/core/C in hive_cores)
-					qdel(C)
+				for(var/obj/effect/alien/resin/special/pylon/core/hivecore in hive_cores)
+					qdel(hivecore)
 				hive_cores = list()
 
 			if(round_should_check_for_win)
@@ -205,15 +205,15 @@
 		HS = GLOB.hive_datum[hivenumber]
 		hivenumbers += list(HS.name = list())
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			var/mob/living/carbon/xenomorph/X = M
-			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
+	for(var/mob/current_mob in GLOB.player_list)
+		if(current_mob.z && (current_mob.z in z_levels) && current_mob.stat != DEAD && !istype(current_mob.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+			var/mob/living/carbon/xenomorph/xenomorph = current_mob
+			var/datum/hive_status/hive = GLOB.hive_datum[xenomorph.hivenumber]
 			if(!hive)
 				continue
 
-			if(istype(X) && is_hive_living(hive))
-				hivenumbers[hive.name].Add(X)
+			if(istype(xenomorph) && is_hive_living(hive))
+				hivenumbers[hive.name].Add(xenomorph)
 
 
 	return hivenumbers
@@ -260,9 +260,9 @@
 	var/musical_track
 	musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+	var/sound/fanfare = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	fanfare.status = SOUND_STREAM
+	sound_to(world, fanfare)
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time

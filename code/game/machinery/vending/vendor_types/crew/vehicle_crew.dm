@@ -35,9 +35,9 @@
 	return ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = loc
-	T = get_step(T, SOUTH)
-	return T
+	var/turf/current_turf = loc
+	current_turf = get_step(current_turf, SOUTH)
+	return current_turf
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
@@ -119,9 +119,9 @@
 		budget_points -= L[2]
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = get_turf(src)
-	T = get_step(T, SOUTH)
-	return T
+	var/turf/current_turf = get_turf(src)
+	current_turf = get_step(current_turf, SOUTH)
+	return current_turf
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

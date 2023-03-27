@@ -125,9 +125,9 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/spider/spiderling/Collide(atom/A)
-	if(istype(A, /obj/structure/surface/table))
-		src.forceMove(A.loc)
+/obj/effect/spider/spiderling/Collide(atom/current_atom)
+	if(istype(current_atom, /obj/structure/surface/table))
+		src.forceMove(current_atom.loc)
 	else
 		..()
 
@@ -151,9 +151,9 @@
 				src.visible_message(SPAN_NOTICE("\the [src] skitters[pick(" away"," around","")]."))
 	else if(prob(5))
 		//vent crawl!
-		for(var/obj/structure/pipes/vents/pump/v in view(7,src))
-			if(!v.welded)
-				entry_vent = v
+		for(var/obj/structure/pipes/vents/pump/visible_vent in view(7,src))
+			if(!visible_vent.welded)
+				entry_vent = visible_vent
 				walk_to(src, entry_vent, 5)
 				break
 
@@ -177,9 +177,9 @@
 				src.visible_message(SPAN_NOTICE("\the [src] skitters[pick(" away"," around","")]."))
 	else if(prob(5))
 		//vent crawl!
-		for(var/obj/structure/pipes/vents/pump/v in view(7,src))
-			if(!v.welded)
-				entry_vent = v
+		for(var/obj/structure/pipes/vents/pump/visible_vent in view(7,src))
+			if(!visible_vent.welded)
+				entry_vent = visible_vent
 				walk_to(src, entry_vent, 5)
 				break
 
@@ -204,6 +204,6 @@
 
 /obj/effect/spider/cocoon/Destroy()
 	visible_message(SPAN_DANGER("[src] splits open."))
-	for(var/atom/movable/A in contents)
-		A.forceMove(loc)
+	for(var/atom/movable/current_atom in contents)
+		current_atom.forceMove(loc)
 	. = ..()

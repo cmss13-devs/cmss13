@@ -23,9 +23,9 @@
 	forceMove(location)
 	criminal_name = criminal_mob.name
 
-	var/obj/item/card/id/I = criminal_mob.get_idcard()
-	if(I)
-		criminal_rank = I.rank
+	var/obj/item/card/id/id_card = criminal_mob.get_idcard()
+	if(id_card)
+		criminal_rank = id_card.rank
 
 	if(criminal_mob.assigned_squad)
 		criminal_squad = criminal_mob.assigned_squad.name
@@ -41,25 +41,25 @@
 		..()
 		return
 
-	var/obj/item/device/clue_scanner/S = W
+	var/obj/item/device/clue_scanner/scanner = W
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [S]..."))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [scanner]..."))
 		return
 
-	S.scanning = TRUE
-	S.update_icon()
+	scanner.scanning = TRUE
+	scanner.update_icon()
 	to_chat(user, SPAN_NOTICE("You start scanning [src]..."))
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		S.scanning = FALSE
-		S.update_icon()
+		scanner.scanning = FALSE
+		scanner.update_icon()
 		return
-	S.scanning = FALSE
+	scanner.scanning = FALSE
 
 	moveToNullspace()
-	LAZYADD(S.print_list, src)
-	S.update_icon()
-	to_chat(user, SPAN_INFO("New print sets found: 1, total amount: [length(S.print_list)]"))
+	LAZYADD(scanner.print_list, src)
+	scanner.update_icon()
+	to_chat(user, SPAN_INFO("New print sets found: 1, total amount: [length(scanner.print_list)]"))
 
 /obj/effect/decal/prints/proc/decipher_clue()
 	var/information = ""

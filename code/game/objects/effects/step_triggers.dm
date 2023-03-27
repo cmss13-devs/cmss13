@@ -43,14 +43,14 @@
 	var/atom/movable/AM = A
 	var/curtiles = 0
 	var/stopthrow = 0
-	for(var/obj/effect/step_trigger/thrower/T in orange(2, src))
-		if(AM in T.affecting)
+	for(var/obj/effect/step_trigger/thrower/thrower in orange(2, src))
+		if(AM in thrower.affecting)
 			return
 
 	if(ismob(AM))
-		var/mob/M = AM
+		var/mob/current_mob = AM
 		if(immobilize)
-			M.canmove = 0
+			current_mob.canmove = 0
 
 	affecting.Add(AM)
 	while(AM && !stopthrow)
@@ -66,12 +66,12 @@
 
 		// Calculate if we should stop the process
 		if(!nostop)
-			for(var/obj/effect/step_trigger/T in get_step(AM, direction))
-				if(T.stopper && T != src)
+			for(var/obj/effect/step_trigger/trigger in get_step(AM, direction))
+				if(trigger.stopper && trigger != src)
 					stopthrow = 1
 		else
-			for(var/obj/effect/step_trigger/teleporter/T in get_step(AM, direction))
-				if(T.stopper)
+			for(var/obj/effect/step_trigger/teleporter/teleporter in get_step(AM, direction))
+				if(teleporter.stopper)
 					stopthrow = 1
 
 		if(AM)
@@ -85,9 +85,9 @@
 	affecting.Remove(AM)
 
 	if(ismob(AM))
-		var/mob/M = AM
+		var/mob/current_mob = AM
 		if(immobilize)
-			M.canmove = 1
+			current_mob.canmove = 1
 
 /* Stops things thrown by a thrower, doesn't do anything */
 
@@ -127,8 +127,8 @@
 		if(!Adjacent(A, locate(lx, ly, A.z))) //If the subject has moved too quickly, abort - this prevents double jumping
 			return
 
-		for(var/mob/M in target) //If the target location is obstructed, abort
-			if(M.BlockedPassDirs(A, target_dir))
+		for(var/mob/current_mob in target) //If the target location is obstructed, abort
+			if(current_mob.BlockedPassDirs(A, target_dir))
 				return
 
 		A.x += vector_x
@@ -159,9 +159,9 @@
 	if(istype(A,/obj/effect) || A.anchored)
 		return
 	var/mob/User = A
-	var/mob/M
+	var/mob/current_mob
 	if(isliving(User))
-		M = User.pulling
+		current_mob = User.pulling
 
 	if(teleport_x && teleport_y && teleport_z)
 		/* TODO: replace this -spookydonut
@@ -175,8 +175,8 @@
 
 		if(A && A.loc)
 			A.forceMove(locate(teleport_x,teleport_y,teleport_z))
-		if(M && M.loc)
-			M.forceMove(locate(teleport_x,teleport_y,teleport_z))
+		if(current_mob && current_mob.loc)
+			current_mob.forceMove(locate(teleport_x,teleport_y,teleport_z))
 			/*
 			switch(teleportation_type)
 				if(1)

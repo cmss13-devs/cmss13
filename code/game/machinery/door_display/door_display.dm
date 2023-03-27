@@ -31,9 +31,9 @@
 	get_targets()
 
 /obj/structure/machinery/door_display/proc/get_targets()
-	for(var/obj/structure/machinery/door/D in machines)
-		if (D.id == id)
-			targets += D
+	for(var/obj/structure/machinery/door/door in machines)
+		if (door.id == id)
+			targets += door
 
 	if(targets.len == 0)
 		stat |= BROKEN
@@ -54,9 +54,9 @@
 /obj/structure/machinery/door_display/proc/open_door()
 	if(inoperable()) return FALSE
 
-	for(var/obj/structure/machinery/door/D in targets)
-		if(!D.density) continue
-		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+	for(var/obj/structure/machinery/door/door in targets)
+		if(!door.density) continue
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	return TRUE
 
@@ -65,9 +65,9 @@
 /obj/structure/machinery/door_display/proc/close_door()
 	if(inoperable()) return FALSE
 
-	for(var/obj/structure/machinery/door/D in targets)
-		if(D.density) continue
-		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	for(var/obj/structure/machinery/door/door in targets)
+		if(door.density) continue
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	return TRUE
 
@@ -173,7 +173,7 @@
 //Actual string input to icon display for loop, with 5 pixel x offsets for each letter.
 //Stolen from status_display
 /obj/structure/machinery/door_display/proc/texticon(tn, px = 0, py = 0)
-	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
+	var/image/display_image = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = length(tn)
 
 	for(var/d = 1 to len)
@@ -183,8 +183,8 @@
 		var/image/ID = image('icons/obj/structures/machinery/status_display.dmi', icon_state = char)
 		ID.pixel_x = -(d - 1) * 5 + px
 		ID.pixel_y = py
-		I.overlays += ID
-	return I
+		display_image.overlays += ID
+	return display_image
 
 //************ RESEARCH DOORS ****************\\
 // Research cells have flashers and shutters/pod doors.
@@ -199,12 +199,12 @@
 
 /obj/structure/machinery/door_display/research_cell/get_targets()
 	..()
-	for(var/obj/structure/machinery/flasher/F in machines)
-		if(F.id == id)
-			targets += F
+	for(var/obj/structure/machinery/flasher/flash in machines)
+		if(flash.id == id)
+			targets += flash
 	if(has_wall_divider)
-		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
-			targets += W
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall_divider in orange(src, 8))
+			targets += wall_divider
 
 /obj/structure/machinery/door_display/research_cell/Destroy()
 	//Opening doors and shutters
@@ -257,8 +257,8 @@
 	var/flash_charging
 
 	flash_charging = FALSE
-	for(var/obj/structure/machinery/flasher/F in targets)
-		if(F.last_flash && (F.last_flash + 150) > world.time)
+	for(var/obj/structure/machinery/flasher/flash in targets)
+		if(flash.last_flash && (flash.last_flash + 150) > world.time)
 			flash_charging = TRUE
 
 	data["open_door"] = open
@@ -274,16 +274,16 @@
 
 	switch(action)
 		if("flash")
-			for(var/obj/structure/machinery/flasher/F in targets)
-				F.flash()
+			for(var/obj/structure/machinery/flasher/flash in targets)
+				flash.flash()
 				. = TRUE
 
 		if("divider")
-			for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in targets)
-				if(W.density)
-					W.open()
+			for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall_divider in targets)
+				if(wall_divider.density)
+					wall_divider.open()
 				else
-					W.close()
+					wall_divider.close()
 				playsound(loc, 'sound/machines/elevator_openclose.ogg', 25, 1)
 				. = TRUE
 
@@ -317,11 +317,11 @@
 	if(inoperable() && !force)
 		return FALSE
 
-	for(var/obj/structure/machinery/door/airlock/D in targets)
-		if(!D.density)
+	for(var/obj/structure/machinery/door/airlock/door in targets)
+		if(!door.density)
 			continue
-		D.unlock(force)
-		D.open(force)
+		door.unlock(force)
+		door.open(force)
 		open = TRUE
 
 	return TRUE
@@ -331,11 +331,11 @@
 	if(inoperable())
 		return FALSE
 
-	for(var/obj/structure/machinery/door/airlock/D in targets)
-		if(D.density)
+	for(var/obj/structure/machinery/door/airlock/door in targets)
+		if(door.density)
 			continue
-		D.close()
-		D.lock()
+		door.close()
+		door.lock()
 		open = FALSE
 
 	return TRUE
@@ -345,12 +345,12 @@
 	if(inoperable() && !force)
 		return FALSE
 
-	for(var/obj/structure/machinery/door/poddoor/D in targets)
-		if(D.stat & BROKEN)
+	for(var/obj/structure/machinery/door/poddoor/door in targets)
+		if(door.stat & BROKEN)
 			continue
-		if(!D.density)
+		if(!door.density)
 			continue
-		D.open()
+		door.open()
 		open_shutter = TRUE
 	return TRUE
 
@@ -359,11 +359,11 @@
 	if(inoperable())
 		return FALSE
 
-	for(var/obj/structure/machinery/door/poddoor/D in targets)
-		if(D.stat & BROKEN)
+	for(var/obj/structure/machinery/door/poddoor/door in targets)
+		if(door.stat & BROKEN)
 			continue
-		if(D.density)
+		if(door.density)
 			continue
-		D.close()
+		door.close()
 		open_shutter = FALSE
 	return TRUE

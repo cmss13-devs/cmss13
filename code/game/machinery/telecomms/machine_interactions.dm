@@ -15,10 +15,10 @@
 	var/deconstructable = FALSE
 
 
-/obj/structure/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/machinery/telecomms/attackby(obj/item/attacking_obj as obj, mob/user as mob)
 
 	// Using a multitool lets you access the receiver's interface
-	if(istype(P, /obj/item/device/multitool))
+	if(istype(attacking_obj, /obj/item/device/multitool))
 		attack_hand(user)
 
 	else
@@ -28,41 +28,41 @@
 
 	switch(construct_op)
 		if(0)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
+			if(HAS_TRAIT(attacking_obj, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
 				to_chat(user, "You unfasten the bolts.")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op ++
 		if(1)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attacking_obj, TRAIT_TOOL_SCREWDRIVER))
 				to_chat(user, "You fasten the bolts.")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op --
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
+			if(HAS_TRAIT(attacking_obj, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You dislodge the external plating.")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op ++
 		if(2)
-			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
+			if(HAS_TRAIT(attacking_obj, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You secure the external plating.")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op --
-			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
+			if(HAS_TRAIT(attacking_obj, TRAIT_TOOL_WIRECUTTERS))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, "You remove the cables.")
 				construct_op ++
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( user.loc )
-				A.amount = 5
+				var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil(user.loc)
+				coil.amount = 5
 				stat |= BROKEN // the machine's been borked!
 		if(3)
-			if(istype(P, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/A = P
-				if (A.use(5))
+			if(istype(attacking_obj, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/coil = attacking_obj
+				if (coil.use(5))
 					to_chat(user, SPAN_NOTICE("You insert the cables."))
 					construct_op--
 					stat &= ~BROKEN // the machine's not borked anymore!
 				else
 					to_chat(user, SPAN_WARNING("You need five coils of wire for this."))
-			if(istype(P, /obj/item/tool/crowbar))
+			if(istype(attacking_obj, /obj/item/tool/crowbar))
 				to_chat(user, "You begin prying out the circuit board other components...")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -70,25 +70,25 @@
 
 					// Drop all the component stuff
 					if(contents.len > 0)
-						for(var/obj/x in src)
-							x.forceMove(user.loc)
+						for(var/obj/current_obj in src)
+							current_obj.forceMove(user.loc)
 					else
 
 						// If the machine wasn't made during runtime, probably doesn't have components:
 						// manually find the components and drop them!
 						var/newpath = circuitboard
-						var/obj/item/circuitboard/machine/C = new newpath
-						for(var/I in C.req_components)
-							for(var/i = 1, i <= C.req_components[I], i++)
+						var/obj/item/circuitboard/machine/machine_board = new newpath
+						for(var/I in machine_board.req_components)
+							for(var/i = 1, i <= machine_board.req_components[I], i++)
 								newpath = I
-								var/obj/item/s = new newpath
-								s.forceMove(user.loc)
-								if(istype(P, /obj/item/stack/cable_coil))
-									var/obj/item/stack/cable_coil/A = P
-									A.amount = 1
+								var/obj/item/current_item = new newpath
+								current_item.forceMove(user.loc)
+								if(istype(attacking_obj, /obj/item/stack/cable_coil))
+									var/obj/item/stack/cable_coil/coil = attacking_obj
+									coil.amount = 1
 
 						// Drop a circuit board too
-						C.forceMove(user.loc)
+						machine_board.forceMove(user.loc)
 					deconstruct()
 
 /obj/structure/machinery/telecomms/deconstruct(disassembled = TRUE)
@@ -134,23 +134,23 @@
 		dat += "<br>Linked Network Entities: <ol>"
 
 		var/i = 0
-		for(var/obj/structure/machinery/telecomms/T in links)
+		for(var/obj/structure/machinery/telecomms/comms in links)
 			i++
-			if(T.hide && !src.hide)
+			if(comms.hide && !src.hide)
 				continue
-			dat += "<li>\ref[T] [T.name] ([T.id])  <a href='?src=\ref[src];unlink=[i]'>\[X\]</a></li>"
+			dat += "<li>\ref[comms] [comms.name] ([comms.id])  <a href='?src=\ref[src];unlink=[i]'>\[X\]</a></li>"
 		dat += "</ol>"
 
 		dat += "<br>Filtering Frequencies: "
 
 		i = 0
 		if(length(freq_listening))
-			for(var/x in freq_listening)
+			for(var/freq in freq_listening)
 				i++
 				if(i < length(freq_listening))
-					dat += "[format_frequency(x)] GHz<a href='?src=\ref[src];delete=[x]'>\[X\]</a>; "
+					dat += "[format_frequency(freq)] GHz<a href='?src=\ref[src];delete=[freq]'>\[X\]</a>; "
 				else
-					dat += "[format_frequency(x)] GHz<a href='?src=\ref[src];delete=[x]'>\[X\]</a>"
+					dat += "[format_frequency(freq)] GHz<a href='?src=\ref[src];delete=[freq]'>\[X\]</a>"
 		else
 			dat += "NONE"
 
@@ -186,19 +186,19 @@
 
 /obj/structure/machinery/telecomms/proc/get_multitool(mob/user as mob)
 
-	var/obj/item/device/multitool/P = null
+	var/obj/item/device/multitool/access_tuner = null
 	// Let's double check
 	var/obj/item/held_item = user.get_active_hand()
 	if(!ishighersilicon(user) && held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-		P = user.get_active_hand()
+		access_tuner = user.get_active_hand()
 	else if(isAI(user))
-		var/mob/living/silicon/ai/U = user
-		P = U.aiMulti
+		var/mob/living/silicon/ai/ai = user
+		access_tuner = ai.aiMulti
 	else if(isborg(user) && in_range(user, src))
 		var/obj/item/borg_held_item = user.get_active_hand()
 		if(held_item && HAS_TRAIT(borg_held_item, TRAIT_TOOL_MULTITOOL))
-			P = user.get_active_hand()
-	return P
+			access_tuner = user.get_active_hand()
+	return access_tuner
 
 // Additional Options for certain machines. Use this when you want to add an option to a specific machine.
 // Example of how to use below.
@@ -315,8 +315,8 @@
 						temp = "<font color = #666633>-% Too many characters in new network tag %-</font color>"
 
 					else
-						for(var/obj/structure/machinery/telecomms/T in links)
-							T.links.Remove(src)
+						for(var/obj/structure/machinery/telecomms/comms in links)
+							comms.links.Remove(src)
 
 						network = newnet
 						links = list()
@@ -336,22 +336,22 @@
 
 		// changed the layout about to workaround a pesky runtime -- Doohl
 
-		var/x = text2num(href_list["delete"])
-		temp = "<font color = #666633>-% Removed frequency filter [x] %-</font color>"
-		freq_listening.Remove(x)
+		var/freq = text2num(href_list["delete"])
+		temp = "<font color = #666633>-% Removed frequency filter [freq] %-</font color>"
+		freq_listening.Remove(freq)
 
 	if(href_list["unlink"])
 
 		if(text2num(href_list["unlink"]) <= length(links))
-			var/obj/structure/machinery/telecomms/T = links[text2num(href_list["unlink"])]
-			if(istype(T))
-				temp = "<font color = #666633>-% Removed \ref[T] [T.name] from linked entities. %-</font color>"
+			var/obj/structure/machinery/telecomms/comms = links[text2num(href_list["unlink"])]
+			if(istype(comms))
+				temp = "<font color = #666633>-% Removed \ref[comms] [comms.name] from linked entities. %-</font color>"
 
-				// Remove link entries from both T and src.
+				// Remove link entries from both comms and src.
 
-				if(src in T.links)
-					T.links.Remove(src)
-				links.Remove(T)
+				if(src in comms.links)
+					comms.links.Remove(src)
+				links.Remove(comms)
 
 	src.Options_Topic(href, href_list)
 

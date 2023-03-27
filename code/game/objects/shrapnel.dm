@@ -17,11 +17,11 @@
 	var/mob/living/mob_lying_on_turf
 	var/atom/source = epicenter
 
-	for(var/mob/living/M in epicenter) //find a mob at the epicenter. Non-prone mobs take priority
-		if(M.density && !mob_standing_on_turf)
-			mob_standing_on_turf = M
+	for(var/mob/living/current_mob in epicenter) //find a mob at the epicenter. Non-prone mobs take priority
+		if(current_mob.density && !mob_standing_on_turf)
+			mob_standing_on_turf = current_mob
 		else if(!mob_lying_on_turf)
-			mob_lying_on_turf = M
+			mob_lying_on_turf = current_mob
 
 	if(mob_standing_on_turf && isturf(mob_standing_on_turf.loc))
 		source = mob_standing_on_turf//we designate any mob standing on the turf as the "source" so that they don't simply get hit by every projectile
@@ -29,19 +29,19 @@
 
 	for(var/i=0;i<shrapnel_number;i++)
 
-		var/obj/item/projectile/S = new(epicenter, cause_data)
-		S.generate_bullet(new shrapnel_type)
+		var/obj/item/projectile/shrapnel = new(epicenter, cause_data)
+		shrapnel.generate_bullet(new shrapnel_type)
 
 		var/mob/source_mob = cause_data?.resolve_mob()
 		if(!(ignore_source_mob && mob_standing_on_turf == source_mob) && mob_standing_on_turf && prob(100*on_hit_coefficient)) //if a non-prone mob is on the same turf as the shrapnel explosion, some of the shrapnel hits him
-			S.ammo.on_hit_mob(mob_standing_on_turf, S)
-			S.handle_mob(mob_standing_on_turf)
+			shrapnel.ammo.on_hit_mob(mob_standing_on_turf, shrapnel)
+			shrapnel.handle_mob(mob_standing_on_turf)
 		else if (!(ignore_source_mob && mob_lying_on_turf == source_mob) && mob_lying_on_turf && prob(100*on_hit_coefficient))
-			S.ammo.on_hit_mob(mob_lying_on_turf, S)
-			S.handle_mob(mob_lying_on_turf)
+			shrapnel.ammo.on_hit_mob(mob_lying_on_turf, shrapnel)
+			shrapnel.handle_mob(mob_lying_on_turf)
 
 		else
 			var/angle = initial_angle + i*angle_increment + rand(-angle_randomization,angle_randomization)
 			var/atom/target = get_angle_target_turf(epicenter, angle, 20)
-			S.projectile_flags |= PROJECTILE_SHRAPNEL
-			S.fire_at(target, source_mob, source, S.ammo.max_range, S.ammo.shell_speed, null)
+			shrapnel.projectile_flags |= PROJECTILE_SHRAPNEL
+			shrapnel.fire_at(target, source_mob, source, shrapnel.ammo.max_range, shrapnel.ammo.shell_speed, null)

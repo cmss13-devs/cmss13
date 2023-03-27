@@ -14,20 +14,20 @@
 	if(heavy_range > light_range)
 		light_range = heavy_range
 
-	for(var/mob/M in range(heavy_range, epicenter))
-		M << 'sound/effects/EMPulse.ogg'
+	for(var/mob/current_mob in range(heavy_range, epicenter))
+		current_mob << 'sound/effects/EMPulse.ogg'
 
-	for(var/atom/T in range(light_range, epicenter))
-		var/distance = get_dist(epicenter, T)
+	for(var/atom/current_atom in range(light_range, epicenter))
+		var/distance = get_dist(epicenter, current_atom)
 		if(distance < 0)
 			distance = 0
 		if(distance < heavy_range)
-			T.emp_act(1)
+			current_atom.emp_act(1)
 		else if(distance == heavy_range)
 			if(prob(50))
-				T.emp_act(1)
+				current_atom.emp_act(1)
 			else
-				T.emp_act(2)
+				current_atom.emp_act(2)
 		else if(distance <= light_range)
-			T.emp_act(2)
+			current_atom.emp_act(2)
 	return 1

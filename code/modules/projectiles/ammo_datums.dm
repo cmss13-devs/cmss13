@@ -2717,6 +2717,7 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
 	accuracy = HIT_ACCURACY_TIER_2
+	shell_speed = 0.5 //what even is a define
 	scatter = SCATTER_AMOUNT_TIER_4
 	max_range = 16
 	/// range on the smoke in tiles from center

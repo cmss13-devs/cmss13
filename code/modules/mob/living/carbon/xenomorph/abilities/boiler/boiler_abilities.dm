@@ -61,7 +61,7 @@
 	)
 
 	/// Duration for the cooldown of abilities affected by bombard
-	var/cooldown_duration = 20 SECONDS
+	var/cooldown_duration = 25 SECONDS
 
 /datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
 	name = "Acid Shroud"

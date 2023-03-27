@@ -324,16 +324,6 @@
 	icon_state = "bluecorner"
 	},
 /area/lv624/lazarus/crashed_ship)
-"ju" = (
-/obj/structure/transmitter/colony_net{
-	pixel_y = 32;
-	phone_category = "Lazarus Landing";
-	phone_id = "Cargo"
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "stan_inner_w_1"
-	},
-/area/lv624/lazarus/crashed_ship)
 "jx" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating{
@@ -1605,8 +1595,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
-	pixel_y = 30;
-	start_charge = 1
+	pixel_y = 30
 	},
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -3384,7 +3373,7 @@ GY
 IP
 Xq
 Nw
-ju
+Xq
 Dm
 VX
 iq

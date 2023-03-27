@@ -80,7 +80,7 @@
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 
 /obj/structure/surface/table/Destroy()
 	var/tableloc = loc
@@ -307,7 +307,7 @@
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 				SPAN_DANGER("You slice [src] apart!"))
-			deconstruct()
+			deconstruct(FALSE)
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
@@ -675,7 +675,7 @@
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 
 /obj/structure/surface/rack/deconstruct(disassembled = TRUE)
 	if(disassembled)

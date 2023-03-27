@@ -1,5 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - bugfix: "DCC is no longer able to launch flybys"
-  - bugfix: "Queen is once again able to force open dropship airlocks"

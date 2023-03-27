@@ -145,7 +145,7 @@
 	icon_state = "rebelband"
 
 /obj/item/clothing/head/headband/squad
-	icon_state = "headband%SQUAD%"
+	var/dummy_icon_state = "headband%SQUAD%"
 
 	var/static/list/valid_icon_states
 
@@ -187,7 +187,7 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("headband[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
+	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."

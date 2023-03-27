@@ -136,9 +136,9 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
-	name = "command dress jacket"
-	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
-	icon_state = "command_formal"
+	name = "marine dress jacket"
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy, but it still gives off that unga vibe."
+	icon_state = "marine_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -148,11 +148,6 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_atom = NO_SNOW_TYPE
-
-/obj/item/clothing/suit/storage/jacket/marine/dress/casual
-	name = "marine dress jacket"
-	desc = "Smells like vanilla. A little flashy, but it still gives off that unga vibe."
-	icon_state = "marine_formal"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"

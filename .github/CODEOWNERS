@@ -30,6 +30,3 @@
 /code/modules/gear_presets/survivors.dm @morrowwolf
 
 # MULTIPLE OWNERS
-*.dmi @cmss13-devs/spriters
-*.dmm @cmss13-devs/mappers
-*.dm @cmss13-devs/coders

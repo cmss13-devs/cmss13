@@ -9,7 +9,7 @@ jobs:
   triage:
     runs-on: ubuntu-20.04
     steps:
-      - uses: eps1lon/actions-label-merge-conflict@v2.0.0
+      - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:
           dirtyLabel: 'Merge Conflict'
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          repoToken: ${{ secrets.BOT_TOKEN_CM || secrets.GITHUB_TOKEN }}

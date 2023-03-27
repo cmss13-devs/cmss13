@@ -46,8 +46,8 @@ Additional game mode variables.
 	var/datum/mind/CO_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
-	var/predators = list()
-	var/joes	  = list()
+	var/predators	= list()
+	var/list/joes	= list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
@@ -835,7 +835,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-				//JOE INITIATLIZE\\
+				//JOE INITIALIZE\\
 
 //===================================================\\
 
@@ -844,20 +844,22 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_joe(mob/joe_candidate)
 	var/mob/living/carbon/human/new_joe = transform_joe(joe_candidate) //Initialized and ready.
-	if(!new_joe) return
+	if(!new_joe)
+		return
 
 	msg_admin_niche("Ghost ([new_joe.key]) has joined as Working Joe, [new_joe.real_name].")
 
-	if(joe_candidate) joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/check_joe_late_join(mob/joe_candidate, show_warning = 1)
 
 	if(!joe_candidate.client)
 		return
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
-	if(!J)
+	if(!joe_job)
 		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
@@ -871,9 +873,9 @@ Additional game mode variables.
 		return
 
 	// council doesn't count towards this conditional.
-	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
-		var/joe_max = J.total_positions
-		if(J.current_positions >= joe_max)
+	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+		var/joe_max = joe_job.total_positions
+		if(joe_job.current_positions >= joe_max)
 			if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
@@ -896,15 +898,14 @@ Additional game mode variables.
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
-	new_joe.client = joe_candidate.client
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
+	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
-	if(!J)
+	if(!joe_job)
 		qdel(new_joe)
 		return
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
-	J.current_positions++
-	RoleAuthority.equip_role(new_joe, J, new_joe.loc)
+	joe_job.current_positions++
+	RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	GLOB.data_core.manifest_inject(new_joe)
 	SSticker.minds += new_joe.mind
 	return new_joe

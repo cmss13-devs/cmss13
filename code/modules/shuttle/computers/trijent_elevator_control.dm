@@ -1,8 +1,33 @@
-/obj/structure/machinery/computer/shuttle/elevator_call
+/datum/elevator/destination
+	var/id
+	var/name
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call
 	name = "\improper Elevator Call"
 	desc = "Control panel for the elevator"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
+	shuttleId = MOBILE_TRIJENT_ELEVATOR
+	var/dockId
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
+	. = list()
+	var/datum/elevator/destination/site = new()
+	site.id = dockId
+	site.name = "call"
+	. += list(site)
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
+	dockId = STAT_TRIJENT_LZ1
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2
+	dockId = STAT_TRIJENT_LZ2
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi
+	dockId = STAT_TRIJENT_ENGI
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega
+	dockId = STAT_TRIJENT_OMEGA
 
 /obj/structure/machinery/computer/shuttle/elevator_controller
 	name = "\improper Elevator Panel"
@@ -17,9 +42,6 @@
 	req_access = null
 	needs_power = TRUE
 
-/obj/structure/machinery/computer/shuttle/elevator_controller/Initialize(mapload, ...)
-	. = ..()
-
 /obj/structure/machinery/computer/shuttle/elevator_controller/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/trijent_elevator/elev in SSshuttle.stationary)
@@ -28,7 +50,6 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 		ui = new(user, src, "ElevatorControl", "Elevator Panel")
 		ui.open()
 
@@ -45,7 +66,7 @@
 	. = ..()
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	var/obj/docking_port/stationary/dockedAt = shuttle.get_docked()
-	.["docked_at"] = dockedAt.name
+	.["docked_at"] = list("id"= dockedAt.id, "name" = dockedAt.name)
 	.["destination"] = shuttle.destination
 	.["mode"] = shuttle.mode
 	.["eta"] = shuttle.timeLeft(0)
@@ -55,7 +76,7 @@
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	var/list/stops = get_landing_zones()
 	.["destinations"] = list()
-	for(var/obj/docking_port/stationary/dock in stops)
+	for(var/obj/docking_port/stationary/dock as anything in stops)
 		var/list/dockinfo = list(
 			"id" = dock.id,
 			"name" = dock.name,

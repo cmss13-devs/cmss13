@@ -4516,7 +4516,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anw" = (
-/obj/structure/machinery/computer/shuttle/elevator_call,
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1,
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
@@ -10041,10 +10041,7 @@
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aEd" = (
-/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans2{
-	link = 1;
-	pixel_y = 8
-	},
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -13397,7 +13394,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "aNW" = (
-/obj/structure/machinery/computer/shuttle/elevator_call,
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -65523,10 +65520,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "vRX" = (
-/obj/structure/machinery/computer/shuttle/elevator_call{
-	pixel_y = 8;
-	pixel_x = 8
-	},
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},

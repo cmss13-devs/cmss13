@@ -10,7 +10,7 @@ interface Destination {
 
 interface ElevatorContext {
   destinations: Array<Destination>;
-  docked_at: string;
+  docked_at: Destination;
   destination: string;
   mode: string;
   eta: number;
@@ -45,11 +45,12 @@ const ElevatorPanel = (props, context) => {
     data.mode === 'idle' ||
     data.mode === 'igniting' ||
     data.mode === 'recharging';
+  const docked_label = data.docked_at.name;
   return (
     <Stack vertical className="InfoPanel">
       {is_stationary && (
         <Stack.Item>
-          <InfoBox title="Located at" text={data.docked_at} />
+          <InfoBox title="Located at" text={docked_label} />
         </Stack.Item>
       )}
 
@@ -84,6 +85,7 @@ const ElevatorPanel = (props, context) => {
 };
 
 interface ElevatorButtonProps {
+  id: string;
   name: string;
   onClick: () => void;
 }
@@ -97,7 +99,7 @@ const ElevatorButton = (props: ElevatorButtonProps, context) => {
           circular
           color="yellow"
           className="pushButtonOuter"
-          disabled={data.mode !== 'idle' || props.name === data.docked_at}
+          disabled={data.mode !== 'idle' || props.id === data.docked_at.id}
           onClick={props.onClick}>
           <span className="pushButton" />
         </Button>
@@ -121,6 +123,7 @@ export const ElevatorControl = (props, context) => {
               {data.destinations.map((x) => (
                 <Flex.Item key={x.id}>
                   <ElevatorButton
+                    id={x.id}
                     name={x.name}
                     onClick={() => {
                       logger.info(x.id);

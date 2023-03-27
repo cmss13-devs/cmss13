@@ -711,15 +711,15 @@
 	desc = "A drinking glass for soda."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/soda/Initialize()
-		..()
-		reagents.add_reagent("sodawater", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("sodawater", 50)
+	on_reagent_change()
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola
 	name = "cola glass"
 	desc = "A drinking glass for cola."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola/Initialize()
-		..()
-		reagents.add_reagent("cola", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("cola", 50)
+	on_reagent_change()

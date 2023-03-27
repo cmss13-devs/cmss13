@@ -19,7 +19,7 @@
 
 
 /obj/structure/toilet/Initialize()
-	..()
+	. = ..()
 	open = round(rand(0, 1))
 	cistern_overlay = new()
 	cistern_overlay.icon = icon
@@ -437,7 +437,7 @@
 	var/busy = FALSE //Something's being washed at the moment
 
 /obj/structure/sink/Initialize()
-	..()
+	. = ..()
 	if(prob(50))
 		icon_state = "sink_emptied"
 

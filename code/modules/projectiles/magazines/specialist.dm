@@ -12,18 +12,20 @@
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/sniper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/M42A
+	ammo_band_icon = "+m42c_band"
+	ammo_band_icon_empty = "+m42c_band_e"
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
-	icon_state = "m42c_incen"
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
 	default_ammo = /datum/ammo/bullet/sniper/flak
-	icon_state = "m42c_flak"
+	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
 //M42B Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
@@ -58,36 +60,33 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 
-
-
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
-	name = "\improper A19 high velocity magazine (10x24mm)"
+	name = "\improper A19 HV magazine (10x24mm)"
 	desc = "A magazine of A19 high velocity rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_icon = "+a19_band"
+	ammo_band_icon_empty = "+a19_band_e"
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
-	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "a19_incendiary"
+	name = "\improper A19 HV incendiary magazine (10x24mm)"
+	desc = "A magazine of A19 HV incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
-	name = "\improper A19 high velocity impact magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
-	icon_state = "a19_impact"
+	name = "\improper A19 HV high impact magazine (10x24mm)"
+	desc = "A magazine of A19 HV high impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
-
-
-
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 //-------------------------------------------------------
 //SMARTGUN
@@ -159,7 +158,7 @@
 	if(!off_hand || !istype(off_hand))
 		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
 	if(M.dir != user.dir || M.loc != get_step(user, user.dir))

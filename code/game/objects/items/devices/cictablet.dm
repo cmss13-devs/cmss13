@@ -31,6 +31,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 	return ..()
 
+/obj/item/device/cotablet/Destroy()
+	QDEL_NULL(tacmap)
+	return ..()
+
 /obj/item/device/cotablet/proc/disable_pmc()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
@@ -87,6 +91,10 @@
 
 	switch(action)
 		if("announce")
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
 				to_chat(usr, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
 				return FALSE

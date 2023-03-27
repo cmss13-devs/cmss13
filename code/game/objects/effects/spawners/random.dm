@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)
@@ -31,7 +31,7 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
-	if(isnull(build_path))
+	if(!ispath(build_path))
 		return
 	return (new build_path(src.loc))
 

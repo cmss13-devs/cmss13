@@ -1170,7 +1170,7 @@
 	icon_state = "xm177"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 
-/obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
+/obj/item/weapon/gun/rifle/xm177/dutch/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_SMG
 	burst_amount = BURST_AMOUNT_TIER_3

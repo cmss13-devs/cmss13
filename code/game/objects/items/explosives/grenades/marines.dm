@@ -249,7 +249,7 @@
 	hand_throwable = FALSE
 	dangerous = TRUE
 	underslug_launchable = TRUE
-	explosion_power = 135
+	explosion_power = 100 //hedp
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /obj/item/explosive/grenade/high_explosive/impact/prime()

@@ -893,11 +893,11 @@ Additional game mode variables.
 	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_joe")
 		return
+
 	var/turf/spawn_point = get_turf(pick(GLOB.latejoin))
 	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	new_joe.client = joe_candidate.client
-
 	var/datum/job/J = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!J)
@@ -906,7 +906,6 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	J.current_positions++
 	RoleAuthority.equip_role(new_joe, J, new_joe.loc)
-
 	GLOB.data_core.manifest_inject(new_joe)
 	SSticker.minds += new_joe.mind
 	return new_joe

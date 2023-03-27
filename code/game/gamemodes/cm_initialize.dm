@@ -878,6 +878,10 @@ Additional game mode variables.
 			if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
+	if(!enter_allowed)
+		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
+		return
+
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 

@@ -874,7 +874,7 @@ Additional game mode variables.
 	// council doesn't count towards this conditional.
 	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = J.total_positions
-		if(J.current_positions >= J.total_positions)
+		if(J.current_positions >= joe_max)
 			if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 

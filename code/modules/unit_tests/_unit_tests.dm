@@ -75,6 +75,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 #include "focus_only_tests.dm"
+#include "missing_icons.dm"
 #include "resist.dm"
 #include "spritesheets.dm"
 #include "subsystem_init.dm"

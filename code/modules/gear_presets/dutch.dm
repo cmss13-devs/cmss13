@@ -69,7 +69,7 @@
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/grenadier/dutch(NEW_HUMAN), WEAR_J_STORE)
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(NEW_HUMAN), WEAR_IN_JACKET)
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(NEW_HUMAN), WEAR_IN_JACKET)
-			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/dutch/large/full(NEW_HUMAN), WEAR_WAIST)
+			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large/dutch/full(NEW_HUMAN), WEAR_WAIST)
 			NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16/ap(NEW_HUMAN), WEAR_L_STORE)
 
 		if(10) // 10% for M60

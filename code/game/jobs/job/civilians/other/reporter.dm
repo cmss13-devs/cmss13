@@ -12,11 +12,11 @@
 	selection_class = "job_cl"
 
 	job_options = list(CIVILIAN_VARIANT, MILITARY_VARIANT)
-
+	/// If this job is a military variant of the reporter role
 	var/military = FALSE
 
 /datum/job/civilian/reporter/handle_job_options(option)
-	if(option != job_options[1])
+	if(option != CIVILIAN_VARIANT)
 		gear_preset = /datum/equipment_preset/uscm_ship/reporter_uscm
 		military = TRUE
 	else

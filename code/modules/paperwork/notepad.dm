@@ -95,7 +95,7 @@
 				page = contents.len
 			var/obj/item/ripped_out_page = contents[page]
 			usr.put_in_hands(ripped_out_page)
-			to_chat(usr, SPAN_NOTICE("You rip out \the [ripped_out_page.name] from \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You rip out [ripped_out_page] from [src]."))
 			paper_left--
 			if(paper_left == 1)
 				var/obj/item/paper/P = contents[1]
@@ -121,7 +121,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = strip_html(input(usr, "What would you like to label the notepad?", "notepad Labelling", null)  as text)
-	if((loc == usr && usr.stat == 0))
+	var/n_name = strip_html(tgui_input_text(usr, "What would you like to label the notepad?", "notepad Labelling", null, 16))
+	if((loc == usr && usr.stat == CONSCIOUS))
 		name = "[(n_name ? text("[n_name]") : "notepad")]"
 	add_fingerprint(usr)

@@ -304,5 +304,6 @@
 
 	return TRUE
 
+/// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)
 	return

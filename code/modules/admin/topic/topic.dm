@@ -1316,7 +1316,7 @@
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
-		announce_fax( ,msg_ghost)
+		announce_fax(msg_ghost = msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)

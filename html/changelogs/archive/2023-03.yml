@@ -303,3 +303,134 @@
   - bugfix: Shuttles' transit time is once again properly calculated.
   roll1d20st:
   - qol: Made it easier to make Muffins, Cookies, and Waffles
+2023-03-22:
+  BeagleGaming1:
+  - qol: Adds a new chat tab for Mentor-related stuff
+  CapCamIII:
+  - bugfix: Most non-standard armored gloves no longer take on squad color.
+  Morrow:
+  - rscadd: Added timelock for corporate liaison
+  - rscdel: Removed corporate liaison dropship control access
+  - rscadd: COs no longer have emote cooldown
+  Puckaboo2:
+  - code_imp: Renamed some text strings to apply existing icon states.
+  - imageadd: Added dozens of new icon states to missing objects.
+  - bugfix: A huge list of items can now be used.
+  - imageadd: Adds a few missing goodies.
+  - code_imp: Made some icon state text strings empty so they would not cause missing
+      icon state errors.
+  - rscdel: Deleted some lines of code that caused missing icon state errors.
+  - imageadd: All weapons that can be camouflaged now have a basic USCM sprite to
+      make the linter happy.
+  - imageadd: The Energy Pistol now has an icon state.
+  - imageadd: Everything under the obj/item/clothing path that had missing icon states
+      now have their icon states again, including all donor clothing.
+  - imageadd: Added all missing Donor clothing icon states.
+  - imageadd: Added a Formal Command uniform. Fancyyy. Don't get this dirty.
+  - code_imp: Fixed some lines of code responsible for flagging some objects as having
+      missing icon states when they already existed.
+  - bugfix: Added icon states that have been deleted in previous PRs of long ago.
+  - bugfix: Jungle Cowls will now have their proper camouflage in jungle maps instead
+      of using snow for all maps.
+  - bugfix: Metal, ceramic, and scrap plates are functional and can now be slipped
+      into armor.
+  - bugfix: Yellow and Blue jumpsuits exist and can now be worn.
+  - bugfix: The M44R Holster and the Medical Storage Rig will now properly appear
+      in the map editor.
+  - rscdel: Deleted some unnecessary and outdated objects that were flagged as having
+      missing icon states.
+  - rscdel: Removed a few duplicate icon states.
+  Tsunamico:
+  - spellcheck: A minimal change to the text!
+  harryob:
+  - qol: id locks can now be removed icly
+  realforest2001:
+  - bugfix: Create Bank Account verb now correctly assigns a paygrade to ID
+  - bugfix: Fixes camel case in hellhound typepath causing duplication of entries
+2023-03-23:
+  BeagleGaming1:
+  - spellcheck: fixed the to_chat for the katana cane
+  H20Begod:
+  - rscadd: ' sound/voice/upp_warcry/* (Sound files, such as `warcry_male_1` , for
+      the UPP)'
+  - code_imp: changed `code/modules/mob/living/carbon/human/emote.dm`, in order to
+      add conditionals that will check a player's faction. Right now, it's a simple
+      conditional, however, the code is there to be changed to an switch should somebody
+      else come and add more faction-based voicelines.
+  Tsunamico:
+  - admin: panel that allows admins to trash the ship about.
+  - code_imp: adds a shakeship proc that can be called to rock the shipmap.
+  harryob:
+  - code_imp: cleaned up some mentorhelp code
+  nauticall:
+  - code_imp: Reduced the frequency of several ambient sounds on the Almayer to make
+      them less annoying.
+  - sounddel: Removed a CIC ambient sound that didn't fit with the rest.
+  - mapadd: Readds the autodoc back to the Almayer.
+  - balance: Neuters the autodoc so that it can only perform emergency treatments
+      and life-saving procedures; it can no longer do complex surgeries.
+  - bugfix: Fixed broken icon states on the autodoc, sleeper, and body scanner console
+      when using a map editor.
+2023-03-24:
+  LTNTS:
+  - imageadd: landmarks for xeno_spawn
+  - imageadd: landmarks for thunderdome
+  Morrow:
+  - bugfix: Fixed icons for sleepers and body scanners
+  carlarctg:
+  - bugfix: Laundering money through the ATM is now only 25% as effective.
+  - bugfix: Increased cane pacing sound a little.
+  - bugfix: Fixed not actually ever being harmed from walking around with a bad leg
+      and no cane.
+  harryob:
+  - bugfix: fixed a bunch of bad dels causing lag
+2023-03-25:
+  BeagleGaming1:
+  - rscadd: You can now drag people up ledges
+  Khadd:
+  - rscadd: three sound files ```joe_report.ogg```, ```joe_breach.ogg```, ```joe_species.ogg```
+  - code_imp: modified ```code\modules\mob\living\carbon\human\species\emote-synthetic.dm```
+      in order to add the new emotes
+  LTNTS:
+  - rscdel: deletes unconnected piping in research
+  NewyearnewmeUwu:
+  - bugfix: overhead lattices now properly show up
+  - bugfix: Ghosts can no longer become offset.
+2023-03-26:
+  LynxSolstice:
+  - bugfix: Fixes PMC survivors spawning with ID locked NSG-23s.
+  kugamo:
+  - imageadd: Sink filling animation improved.
+  realforest2001:
+  - rscadd: ERT Station hangars have lockdowns toggleable only from inside each, to
+      prevent theft.
+  - rscdel: Removed sneaky CKeys from monkey name list
+2023-03-27:
+  BeagleGaming1:
+  - balance: Replaces spare CT headsets with req keys. Removes most spare mcom headsets.
+      Lowers armory mcom headsets to 6 from 12.
+  H20Begod:
+  - bugfix: Ghosts can now see megaphone messages
+  - code_imp: When a message is sent (using the megaphone), a new iteration over  GLOB.observer_list
+      has been added to send the a notification to observers.
+  Morrow:
+  - rscadd: trucker survivors now spawn with van wheels
+  - rscadd: engineer survivors now spawn with a toolbelt
+  - rscadd: survivor shotgun spawns should start with more ammo
+  - rscdel: removed free screwdriver from all survivor loadouts
+  - rscdel: removed R4T scout kit from random survivor weapon pool
+  - bugfix: survivors will no longer sometimes spawn with two motion detectors
+  - bugfix: survivors will no longer spawn with incorrect shotgun types
+  NewyearnewmeUwu:
+  - bugfix: Metal cades are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: Items doing things by clicking on floors can do those things again.
+  carlarctg:
+  - balance: Vampire's Tail Jab now needs you to directly click the target like a
+      tail stab, like it used to be.
+  - balance: Reworks the firearms skill. Civilians can now fire pistols, SMGs, and
+      certain other civilian weapons without penalties. Civilian gun penalties have
+      had their firerate reduction remove and scatter increased.
+  kugamo:
+  - bugfix: Fixed certain structures dropping parts when they should have been destroyed.

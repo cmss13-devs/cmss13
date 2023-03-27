@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - qol: "Activating ammo boxes in hand now unfolds them on harm intent and deploys them on any other intent, even if empty."

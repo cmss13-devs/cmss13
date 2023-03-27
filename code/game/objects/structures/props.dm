@@ -696,6 +696,7 @@
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
+	icon = 'icons/obj/structures/structures.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 	luminosity = 0
@@ -1000,8 +1001,8 @@
 /obj/structure/prop/invuln/lattice_prop
 	desc = "A lightweight support lattice."
 	name = "lattice"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "latticefull"
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
+	icon_state = "lattice0"
 	density = FALSE
 	layer = RIPPLE_LAYER
 

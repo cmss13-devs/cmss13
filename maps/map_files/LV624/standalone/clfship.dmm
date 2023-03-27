@@ -1595,7 +1595,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
-	pixel_y = 30
+	pixel_y = 25
 	},
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{

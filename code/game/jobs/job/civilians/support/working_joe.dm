@@ -1,7 +1,7 @@
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 3
+	spawn_positions = 3
 	allow_additional = 1
 	supervisors = "ARES and the acting commanding officer"
 	selection_class = "job_working_joe"

@@ -52,7 +52,7 @@
 	plasma_cost = 200
 	var/health_transfer_amount = 100
 	var/max_range = 1
-	var/self_health_drain_mod = 0.5
+	var/self_health_drain_mod = 0.75
 	macro_path = /datum/action/xeno_action/verb/verb_apply_salve
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -69,7 +69,7 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75)
 
 	if(!istype(target_xeno))
 		return
@@ -110,7 +110,7 @@
 		return
 
 	if(plasma_stored > 200)
-		to_chat(src, SPAN_WARNING("You do not have enough plasma to make a regenerative resin salve!"))
+		to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require 200 plasma but only have [plasma_stored] stored."))
 		return
 
 	adjustBruteLoss(amount * damage_taken_mod)

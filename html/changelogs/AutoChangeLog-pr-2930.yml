@@ -1,5 +1,0 @@
-author: "H20Begod"
-delete-after: True
-changes:
-  - bugfix: "Ghosts can now see megaphone messages"
-  - code_imp: "When a message is sent (using the megaphone), a new iteration over  GLOB.observer_list has been added to send the a notification to observers."

@@ -1,4 +1,0 @@
-author: "kugamo"
-delete-after: True
-changes:
-  - bugfix: "Fixed certain structures dropping parts when they should have been destroyed."

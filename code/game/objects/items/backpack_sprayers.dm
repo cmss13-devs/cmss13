@@ -251,11 +251,12 @@
 
 /obj/item/reagent_container/spray/mister/atmos/Initialize(mapload)
 	. = ..()
+	if(!istype(loc, /obj/item/reagent_container/glass/watertank/atmos))
+		return INITIALIZE_HINT_QDEL
+
 	tank = loc
 	nozzle_mode = tank.nozzle_mode
 
-/obj/item/reagent_container/spray/mister/atmos/Initialize()
-	. = ..()
 	initialize_internal_extinguisher()
 	update_icon()
 

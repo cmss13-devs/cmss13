@@ -11,7 +11,7 @@
 
 /mob/living/brain/Initialize()
 	create_reagents(1000)
-	..()
+	. = ..()
 
 /mob/living/brain/Destroy()
 	container = null

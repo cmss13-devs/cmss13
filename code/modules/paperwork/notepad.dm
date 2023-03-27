@@ -30,7 +30,7 @@
 	if(HAS_TRAIT(attack_item, TRAIT_TOOL_PEN) || istype(attack_item, /obj/item/toy/crayon))
 		close_browser(usr, name) //Closes the dialog
 		if(page < contents.len)
-			page = contents.len
+			page = 1
 		var/obj/item/paper/paper = contents[page]
 		paper.attackby(attack_item, user)
 
@@ -48,15 +48,15 @@
 	switch(screen)
 		if(0)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV>"
 			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(1)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV>"
 			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(2)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove paper</A></DIV><BR><HR>"
 			dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
 
 	var/obj/item/paper/paper = src[page]

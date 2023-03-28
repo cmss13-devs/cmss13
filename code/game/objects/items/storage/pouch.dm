@@ -8,7 +8,7 @@
 	flags_equip_slot = SLOT_STORE
 	storage_slots = 1
 	storage_flags = STORAGE_FLAGS_POUCH
-	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///If it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
@@ -121,7 +121,7 @@
 	name = "bayonet sheath"
 	desc = "Knife to meet you!"
 	can_hold = list(
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
@@ -130,7 +130,7 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
-	var/default_knife_type = /obj/item/weapon/melee/throwing_knife
+	var/default_knife_type = /obj/item/weapon/throwing_knife
 
 /obj/item/storage/pouch/bayonet/Initialize()
 	. = ..()
@@ -1354,7 +1354,7 @@
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
-	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
 
 	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'
 	var/draw_sound = 'sound/weapons/gun_rifle_draw.ogg'
@@ -1374,4 +1374,4 @@
 	playsound(src, draw_sound, vol = 15, vary = TRUE)
 
 /obj/item/storage/pouch/machete/full/fill_preset_inventory()
-	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
+	new /obj/item/weapon/claymore/mercsword/machete(src)

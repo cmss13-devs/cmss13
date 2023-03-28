@@ -487,7 +487,7 @@
 	},
 /area/bigredv2/outside/lz2_south_cas)
 "Sy" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"

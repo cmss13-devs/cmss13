@@ -67,6 +67,11 @@ SUBSYSTEM_DEF(redis)
 		return
 
 	connected = TRUE
+	can_fire = TRUE
+
+/datum/controller/subsystem/redis/proc/disconnect()
+	rustg_redis_disconnect()
+	connected = FALSE
 
 /datum/controller/subsystem/redis/proc/check_messages()
 	var/raw_data = rustg_redis_get_messages()
@@ -104,12 +109,13 @@ SUBSYSTEM_DEF(redis)
 
 	rustg_redis_publish(channel, message)
 
+/*
 /datum/controller/subsystem/redis/CanProcCall(procname)
 	return FALSE
 
 /datum/controller/subsystem/redis/vv_edit_var(var_name, var_value)
 	return FALSE
-
+*/
 
 /world/Del()
 	. = ..()

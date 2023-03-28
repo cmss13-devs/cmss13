@@ -464,6 +464,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
 
+		var/list/adm = get_admin_counts(R_MOD)
+		var/list/activemins = adm["present"]
+		var/list/data = list("type" = "logout", "key" = src.key, "remaining" = length(activemins), "source" = "game")
+
+		rustg_redis_publish("byond.access", json_encode(data))
+
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -477,6 +483,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin login: [key_name(src)]")
+
+		var/list/adm = get_admin_counts(R_MOD)
+		var/list/activemins = adm["present"]
+		var/list/data = list("type" = "login", "key" = src.key, "remaining" = length(activemins), "source" = "game")
+
+		rustg_redis_publish("byond.access", json_encode(data))
+
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if( M.key && (M.key != key) )

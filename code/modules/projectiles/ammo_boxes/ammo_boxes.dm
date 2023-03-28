@@ -22,10 +22,30 @@
 	SetLuminosity(0)
 	. = ..()
 
-/obj/item/ammo_box/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
+/obj/item/ammo_box/attack_self(mob/living/user)
+	..()
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		return
+
+	if(user.a_intent == INTENT_HARM)
+		unfold_box(user)
+		return
+	deploy_ammo_box(user, user.loc)
+
+/obj/item/ammo_box/proc/unfold_box(mob/user)
+	if(is_loaded())
+		to_chat(user, SPAN_WARNING("You need to empty the box before unfolding it!"))
+		return
+	new /obj/item/stack/sheet/cardboard(user.loc)
 	qdel(src)
 
+/obj/item/ammo_box/proc/is_loaded()
+	return FALSE
+
+/obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
+	user.drop_held_item()
+	
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
 	if(burning)
@@ -130,24 +150,13 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/magazine/attack_self(mob/living/user)
-	..()
-	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
-		return
+/obj/item/ammo_box/magazine/is_loaded()
+	if(handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		return AM?.current_rounds
+	return length(contents)
 
-	if(length(contents))
-		if(!handfuls)
-			deploy_ammo_box(user, user.loc)
-			return
-		else
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
-			if(AM && AM.current_rounds)
-				deploy_ammo_box(user, user.loc)
-				return
-	unfold_box(user.loc)
-
-/obj/item/ammo_box/magazine/proc/deploy_ammo_box(mob/living/user, turf/T)
+/obj/item/ammo_box/magazine/deploy_ammo_box(mob/living/user, turf/T)
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
@@ -300,10 +309,10 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/rounds/attack_self(mob/living/user)
-	..()
-	if(bullet_amount < 1)
-		unfold_box(user.loc)
+
+
+/obj/item/ammo_box/rounds/is_loaded()
+	return bullet_amount
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)

@@ -48,31 +48,31 @@
 		var/obj/item/spawned_weapon
 		switch(main_weapon)
 			if(YAUTJA_GEAR_GLAIVE)
-				spawned_weapon = new /obj/item/weapon/melee/twohanded/yautja/glaive(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/twohanded/yautja/glaive(wearer.loc)
 			if(YAUTJA_GEAR_SPEAR)
-				spawned_weapon = new /obj/item/weapon/melee/twohanded/yautja/spear(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/twohanded/yautja/spear(wearer.loc)
 			if(YAUTJA_GEAR_WHIP)
-				spawned_weapon = new /obj/item/weapon/melee/yautja/chain(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/chain(wearer.loc)
 			if(YAUTJA_GEAR_SWORD)
-				spawned_weapon = new /obj/item/weapon/melee/yautja/sword(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/sword(wearer.loc)
 			if(YAUTJA_GEAR_SCYTHE)
-				spawned_weapon = new /obj/item/weapon/melee/yautja/scythe(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/scythe(wearer.loc)
 			if(YAUTJA_GEAR_STICK)
-				spawned_weapon = new /obj/item/weapon/melee/yautja/combistick(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/yautja/combistick(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_MACHETE)
-				spawned_weapon = new /obj/item/weapon/melee/claymore/mercsword/machete(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/claymore/mercsword/machete(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_RAPIER)
-				spawned_weapon = new /obj/item/weapon/melee/claymore/mercsword/ceremonial(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/claymore/mercsword/ceremonial(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_CLAYMORE)
-				spawned_weapon = new /obj/item/weapon/melee/claymore(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/claymore(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_FIREAXE)
-				spawned_weapon = new /obj/item/weapon/melee/twohanded/fireaxe(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/twohanded/fireaxe(wearer.loc)
 
-		if(istype(spawned_weapon, /obj/item/weapon/melee/yautja))
-			var/obj/item/weapon/melee/yautja/yautja_melee = spawned_weapon
+		if(istype(spawned_weapon, /obj/item/weapon/yautja))
+			var/obj/item/weapon/yautja/yautja_melee = spawned_weapon
 			yautja_melee.human_adapted = TRUE
-		else if(istype(spawned_weapon, /obj/item/weapon/melee/twohanded/yautja))
-			var/obj/item/weapon/melee/twohanded/yautja/yautja_melee = spawned_weapon
+		else if(istype(spawned_weapon, /obj/item/weapon/twohanded/yautja))
+			var/obj/item/weapon/twohanded/yautja/yautja_melee = spawned_weapon
 			yautja_melee.human_adapted = TRUE
 		spawned_weapon.desc += " It looks like this one has been modified for human use."
 

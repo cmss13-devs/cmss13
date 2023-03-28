@@ -105,7 +105,7 @@
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
-		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/melee/throwing_knife, VENDOR_ITEM_REGULAR),
+		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/throwing_knife, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR)
 	)
 

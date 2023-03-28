@@ -514,6 +514,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
+	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
@@ -779,6 +780,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/stock/mou53,
 	)
 	map_specific_decoration = TRUE
+	civilian_usable_override = FALSE
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
@@ -865,6 +867,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	actions_types = list(/datum/action/item_action/specialist/twobore_brace)
 	starting_attachment_types = list(/obj/item/attachable/stock/twobore)
 	aim_slowdown = SLOWDOWN_ADS_LMG //Quite slow, but VB has light-armour slowdown and doesn't feel pain.
+	civilian_usable_override = FALSE
 	var/braced = FALSE
 	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes.
 	var/image/fired_casing
@@ -1245,6 +1248,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	)
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
+	civilian_usable_override = TRUE // Come on. It's THE, er, other, survivor shotgun.
 
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_attachment_offsets()

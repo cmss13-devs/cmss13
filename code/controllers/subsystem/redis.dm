@@ -49,6 +49,10 @@ SUBSYSTEM_DEF(redis)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/redis/fire()
+	if(!connected)
+		can_fire = FALSE
+		return
+
 	check_messages()
 
 /datum/controller/subsystem/redis/proc/connect()

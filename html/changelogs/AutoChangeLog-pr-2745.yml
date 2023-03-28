@@ -1,0 +1,5 @@
+author: "Mister-moon1"
+delete-after: True
+changes:
+  - bugfix: "fixed sprite for ceremonial sword empty holster on mob icon"
+  - imageadd: "new sprites for the ceremonial sword including sprites for the scabbard"

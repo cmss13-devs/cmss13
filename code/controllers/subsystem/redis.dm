@@ -76,6 +76,12 @@ SUBSYSTEM_DEF(redis)
 	rustg_redis_disconnect()
 	connected = FALSE
 
+/datum/controller/subsystem/redis/proc/reconnect()
+	connect()
+
+	for(var/channel in subbed_channels)
+		rustg_redis_subscribe(channel)
+
 /datum/controller/subsystem/redis/proc/check_messages()
 	var/raw_data = rustg_redis_get_messages()
 	var/list/usable_data

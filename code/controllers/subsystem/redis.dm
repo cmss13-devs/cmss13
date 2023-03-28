@@ -99,21 +99,14 @@ SUBSYSTEM_DEF(redis)
 
 	rustg_redis_publish(channel, message)
 
-/*
-
 /datum/controller/subsystem/redis/CanProcCall(procname)
 	return FALSE
 
 /datum/controller/subsystem/redis/vv_edit_var(var_name, var_value)
 	return FALSE
 
-*/
 
 /world/Del()
 	. = ..()
 
 	rustg_redis_disconnect()
-
-
-
-

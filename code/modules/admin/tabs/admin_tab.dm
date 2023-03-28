@@ -231,7 +231,7 @@
 		return
 
 	log_adminpm("ADMIN : [key_name(src)] : [msg]")
-	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg))
+	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -368,7 +368,7 @@
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
 
-	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg))
+	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 	rustg_redis_publish("byond.msay", json_encode(data))
 
 /client/proc/get_mod_say()

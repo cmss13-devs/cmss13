@@ -56,6 +56,9 @@ SUBSYSTEM_DEF(redis)
 
 	check_messages()
 
+	for(var/datum/redis_message/message as anything in queue)
+		publish(message.channel, message.message)
+
 /datum/controller/subsystem/redis/proc/connect()
 	if(!CONFIG_GET(flag/redis_enabled))
 		return CONFIG_DISABLED

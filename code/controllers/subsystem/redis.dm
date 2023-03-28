@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(redis)
 
 /datum/controller/subsystem/redis/Initialize()
 	if(connect() == CONFIG_DISABLED)
+		can_fire = FALSE
 		return SS_INIT_SUCCESS
 
 	if(!connected)

@@ -406,6 +406,14 @@
 	icon_state = "wood-broken"
 	},
 /area/lv624/ground/caves/north_central_caves)
+"Pn" = (
+/obj/effect/landmark/survivor_spawner/lv624_skylight{
+	pixel_x = -1
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "Td" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor/wood{
@@ -624,7 +632,7 @@ ah
 "}
 (18,1,1) = {"
 ah
-bf
+aH
 ak
 bf
 aV
@@ -636,7 +644,7 @@ aZ
 "}
 (19,1,1) = {"
 ah
-ak
+Pn
 bf
 aI
 ak

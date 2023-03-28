@@ -507,7 +507,7 @@ CULT
 		return
 	if (!ishuman_strict(M))
 		return
-	if(!action_cooldown_check())
+	if(!action_cooldown_check() || !can_use_action())
 		return
 	if(get_dist(zombie, M) > 1)
 		return
@@ -558,7 +558,7 @@ CULT
 	if(!iszombie(zomb)) //how did we ended up here?
 		return
 
-	if(!target)
+	if(!target || !can_use_action())
 		return
 
 	if(target.layer >= FLY_LAYER)

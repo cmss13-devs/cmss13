@@ -642,7 +642,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/classic_baton(H), WEAR_WAIST)
 
 	switch(random)
 		if(1)
@@ -843,7 +843,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
@@ -864,7 +864,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
@@ -1022,7 +1022,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"

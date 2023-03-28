@@ -80,7 +80,7 @@
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
@@ -215,7 +215,7 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 	allowed = list(
-		/obj/item/weapon/melee/claymore/mercsword,
+		/obj/item/weapon/claymore/mercsword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
@@ -247,7 +247,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 1
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -352,7 +352,7 @@
 	item_state = "centcom"
 	w_class = SIZE_LARGE//bulky item
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
+	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS

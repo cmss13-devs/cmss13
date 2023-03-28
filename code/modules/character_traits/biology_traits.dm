@@ -98,13 +98,13 @@
 
 	target.AddComponent(/datum/component/bad_leg)
 
-	var/cane_type = /obj/item/weapon/melee/pole/wooden_cane
+	var/cane_type = /obj/item/weapon/pole/wooden_cane
 	if(target.job in bad_cane_roles)
-		cane_type = /obj/item/weapon/melee/pole // todo - add some sort of override for corporate liaison/director/etc survivors
+		cane_type = /obj/item/weapon/pole // todo - add some sort of override for corporate liaison/director/etc survivors
 	if(target.job in fancy_cane_roles)
-		cane_type = /obj/item/weapon/melee/pole/fancy_cane
+		cane_type = /obj/item/weapon/pole/fancy_cane
 
-	var/obj/item/weapon/melee/pole/cane = new cane_type(target.loc)
+	var/obj/item/weapon/pole/cane = new cane_type(target.loc)
 
 	var/success = target.equip_to_slot_if_possible(cane, WEAR_L_HAND)
 	if(!success)

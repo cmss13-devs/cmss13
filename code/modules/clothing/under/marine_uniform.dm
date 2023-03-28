@@ -783,6 +783,15 @@
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
+/obj/item/clothing/under/marine/reporter
+	name = "combat correspondent uniform"
+	desc = "A relaxed and robust uniform fit for any potential reporting needs."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_uniform"
+	worn_state = "wc_uniform"
+	contained_sprite = TRUE
+	flags_atom = NO_NAME_OVERRIDE
+
 /obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
 	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Three World Empire. Expertly crafted to make you look as important as possible."

@@ -19,6 +19,11 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
+/obj/structure/barricade/metal/update_icon()
+	. = ..()
+	if(dir > 2)
+		layer = OBJ_LAYER //This prevents cades from becoming invisible under a north/south facing plasteel cade.
+
 /obj/structure/barricade/metal/get_examine_text(mob/user)
 	. = ..()
 	switch(build_state)

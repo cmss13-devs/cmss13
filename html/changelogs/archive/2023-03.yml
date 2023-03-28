@@ -384,3 +384,76 @@
       and no cane.
   harryob:
   - bugfix: fixed a bunch of bad dels causing lag
+2023-03-25:
+  BeagleGaming1:
+  - rscadd: You can now drag people up ledges
+  Khadd:
+  - rscadd: three sound files ```joe_report.ogg```, ```joe_breach.ogg```, ```joe_species.ogg```
+  - code_imp: modified ```code\modules\mob\living\carbon\human\species\emote-synthetic.dm```
+      in order to add the new emotes
+  LTNTS:
+  - rscdel: deletes unconnected piping in research
+  NewyearnewmeUwu:
+  - bugfix: overhead lattices now properly show up
+  - bugfix: Ghosts can no longer become offset.
+2023-03-26:
+  LynxSolstice:
+  - bugfix: Fixes PMC survivors spawning with ID locked NSG-23s.
+  kugamo:
+  - imageadd: Sink filling animation improved.
+  realforest2001:
+  - rscadd: ERT Station hangars have lockdowns toggleable only from inside each, to
+      prevent theft.
+  - rscdel: Removed sneaky CKeys from monkey name list
+2023-03-27:
+  BeagleGaming1:
+  - balance: Replaces spare CT headsets with req keys. Removes most spare mcom headsets.
+      Lowers armory mcom headsets to 6 from 12.
+  H20Begod:
+  - bugfix: Ghosts can now see megaphone messages
+  - code_imp: When a message is sent (using the megaphone), a new iteration over  GLOB.observer_list
+      has been added to send the a notification to observers.
+  Morrow:
+  - rscadd: trucker survivors now spawn with van wheels
+  - rscadd: engineer survivors now spawn with a toolbelt
+  - rscadd: survivor shotgun spawns should start with more ammo
+  - rscdel: removed free screwdriver from all survivor loadouts
+  - rscdel: removed R4T scout kit from random survivor weapon pool
+  - bugfix: survivors will no longer sometimes spawn with two motion detectors
+  - bugfix: survivors will no longer spawn with incorrect shotgun types
+  NewyearnewmeUwu:
+  - bugfix: Metal cades are no longer invisible when when in the same tile as a north/south
+      plasteel cade while facing east/west.
+  Segrain:
+  - bugfix: Items doing things by clicking on floors can do those things again.
+  carlarctg:
+  - balance: Vampire's Tail Jab now needs you to directly click the target like a
+      tail stab, like it used to be.
+  - balance: Reworks the firearms skill. Civilians can now fire pistols, SMGs, and
+      certain other civilian weapons without penalties. Civilian gun penalties have
+      had their firerate reduction remove and scatter increased.
+  kugamo:
+  - bugfix: Fixed certain structures dropping parts when they should have been destroyed.
+2023-03-28:
+  Morrow:
+  - balance: Helmets now get thrown off if they save you from a decapitation.
+  - rscadd: Added the role Combat Correspondent.
+  Puckaboo2:
+  - imageadd: Added several icon states for miscellaneous items that did not have
+      any.
+  - imageadd: Added lead sheets to shield from radiation poisoning and to possibly
+      soundproof rooms.
+  - imageadd: Platinum sheet now have a new sprite that looks like platinum.
+  - bugfix: The dark indigo blocks that were Platinum have been repurposed as Chitin
+      blocks. Not to be confused with sheets of chitin.
+  - bugfix: Mercs with battle-related mental trauma may now comfort themselves with
+      therapy dolls! Don't pop their heads off, please.
+  - bugfix: Several miscellaneous items may now be used, such as paper flags, unlit
+      torches, flower vases, and other items.
+  - bugfix: Marine specialist weapon tokens can be used again.
+  - bugfix: Silver, platinum, and uranium coins' color palettes match their metals.
+  - code_imp: Renamed some icon states and incorrect strings of text to apply more
+      missing icon states.
+  Segrain:
+  - qol: Activating ammo boxes in hand now unfolds them on harm intent and deploys
+      them on any other intent, even if empty.

@@ -52,7 +52,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -60,6 +60,10 @@
 			return
 		if(icon_state == "paper_uscm")
 			icon_state = "paper_uscm_words"
+			return
+		if(icon_state == "paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
 			return
 		icon_state = "paper_words"
 		return
@@ -495,8 +499,11 @@
 	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
 
 /obj/item/paper/flag
-	icon_state = "flag_neutral"
-	item_state = "paper"
+	name = "paper flag"
+	desc = "Somebody attached a blank piece of paper to a stick. You feel like waving it around like an idiot."
+	icon_state = "paper_flag"
+	item_state = "paper_flag"
+
 	anchored = TRUE
 
 /obj/item/paper/jobs

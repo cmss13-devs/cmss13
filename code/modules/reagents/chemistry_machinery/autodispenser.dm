@@ -16,7 +16,6 @@
 	desc = "A chem dispenser variant that can not be operated manually, but will instead automatically dispense chemicals based on a program of chemicals, loaded using a vial box. Despite having a digital screen the machine is mostly analog."
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "autodispenser"
-	var/base_icon_state = "autodispenser"
 	active_power_usage = 40
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
@@ -73,13 +72,13 @@
 		overlays += "+autodispenser_beaker"
 
 	if(stat & NOPOWER)
-		icon_state = "[base_icon_state]_nopower"
+		icon_state = "autodispenser_nopower"
 		return // do not show state info
 	else if(stat & BROKEN)
-		icon_state = "[base_icon_state]_broken"
+		icon_state = "autodispenser_broken"
 		return
 	else
-		icon_state = "[base_icon_state]"
+		icon_state = "autodispenser"
 
 	if(status < AUTODISPENSER_IDLE)
 		overlays += "+stuck"

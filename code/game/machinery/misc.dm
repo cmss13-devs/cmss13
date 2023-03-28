@@ -103,7 +103,7 @@
 
 /obj/structure/machinery/computer/mecha
 	name = "Exosuit Control"
-	icon = 'icons/obj/structures/machinery/computer3.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "mecha"
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	circuit = /obj/item/circuitboard/computer/mecha_control

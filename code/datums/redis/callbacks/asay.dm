@@ -7,7 +7,7 @@
 	if(data["source"] == "game")
 		return
 
-	var/msg = SPAN_ADMINSAY("<span class='prefix'>ADMIN:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[data["message"]]</span>")
+	var/msg = SPAN_ADMINSAY("<span class='prefix'>ADMIN:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")
 
 	for(var/client/client in GLOB.admins)
 		if(!(R_ADMIN & client.admin_holder.rights))

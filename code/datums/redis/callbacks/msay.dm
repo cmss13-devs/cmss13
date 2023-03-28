@@ -7,7 +7,7 @@
 	if(data["source"] == "game")
 		return
 
-	var/msg = "<span class='mod'><span class='prefix'>MOD:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[data["message"]]</span></span>"
+	var/msg = "<span class='mod'><span class='prefix'>MOD:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span></span>"
 
 	for(var/client/client in GLOB.admins)
 		if(!(R_MOD & client.admin_holder.rights))

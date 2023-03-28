@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(redis)
 
 	for(var/channel in usable_data)
 		if(channel == RUSTG_REDIS_ERROR_CHANNEL)
-			message_admins("Redis error: [usable_data[channel]]")
+			message_admins("Redis error: [json_encode(usable_data[channel])]")
 			continue
 
 		if(!(channel in subbed_channels))

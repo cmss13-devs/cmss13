@@ -599,23 +599,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/device/whistle(H), WEAR_R_HAND)
 
-/datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		var/grade8 = "ME8E"
-		var/grade9 = "ME9E"
+/datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee)
+	if(rankee?.client?.prefs?.pref_special_job_options[rank])
+		paygrade = rankee.client.prefs.pref_special_job_options[rank]
 
-		if(H.client && H.client.prefs)
-			var/path = H.client.prefs.sea_path
-			if(path == "Technical")
-				grade8 = "ME8"
-				grade9 = "ME9"
-
-		if(!H.client.prefs.playtime_perks)
-			return paygrade
-		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_3)
-			return grade9
-		else if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
-			return grade8
 	return paygrade
 
 //*****************************************************************************************************/

@@ -903,7 +903,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/own_points
 	name = "\improper ColMarTech generic vendor"
 	desc = "This is a vendor with its own points system."
-	icon_state = "guns_rack"
+	icon_state = "gear"
 	vendor_theme = VENDOR_THEME_USCM
 	use_points = TRUE
 	use_snowflake_points = FALSE

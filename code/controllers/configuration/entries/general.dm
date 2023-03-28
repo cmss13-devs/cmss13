@@ -546,5 +546,5 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/redis_connection
-	default = "redis://127.0.0.1/"
+	config_entry_value = "redis://127.0.0.1/"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED

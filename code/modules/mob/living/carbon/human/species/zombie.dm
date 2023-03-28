@@ -86,7 +86,7 @@
 		playsound(zombie.loc, rare_moan, 15, rare_variance)
 
 /datum/species/zombie/handle_death(mob/living/carbon/human/zombie, gibbed)
-	set waitfor = 0
+	set waitfor = FALSE
 
 	if(gibbed)
 		remove_from_revive(zombie)
@@ -98,7 +98,7 @@
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
+			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie), 1 MINUTES, TIMER_STOPPABLE)
 			revive_times[WEAKREF(zombie)] = world.time + 1 MINUTES
 		else
 			if(zombie.client)

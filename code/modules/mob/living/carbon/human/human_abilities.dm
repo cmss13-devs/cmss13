@@ -517,14 +517,14 @@ CULT
 		to_chat(zombie, SPAN_XENOWARNING("The target is already infected, why would you bite it again?"))
 		return
 
-	enter_cooldown(10 SECONDS)
+	enter_cooldown(6 SECONDS)
 	to_chat(zombie, SPAN_XENOWARNING("You reach down to [M] neck, preparing to bite it!"))
 	to_chat(M, SPAN_DANGER("[zombie.name] reaches your neck and starts to open [zombie.p_their()] jaw!"))
-	
-	if(!do_after(zombie, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+
+	if(!do_after(zombie, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		to_chat(zombie, SPAN_XENOWARNING("You were interupted!"))
 		return
-	
+
 	to_chat(zombie, SPAN_XENOWARNING("You bite [M]'s neck, leaving a bloody mark!"))
 	to_chat(M, SPAN_DANGER("[zombie] bites you right in the neck!"))
 	playsound(get_turf(zombie), 'sound/hallucinations/wail.ogg', 25, TRUE)

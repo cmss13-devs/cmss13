@@ -36,14 +36,14 @@
 			M << 'sound/effects/mousesqueek.ogg'
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		icon_state = "mouse_[body_color]_sleep"
 		wander = 0
 		speak_chance = 0
 		//snuffles
 	else if(stat == UNCONSCIOUS)
 		if(ckey || prob(1))
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "mouse_[body_color]"
 			wander = 1
 			canmove = 1
@@ -67,28 +67,28 @@
 	if(!desc)
 		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_animal/mouse/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/mouse/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
-/mob/living/simple_animal/mouse/proc/splat()
+/mob/living/simple_animal/mouse/splat(mob/killer)
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = ABOVE_LYING_MOB_LAYER
 	if(client)
 		client.time_died_as_mouse = world.time
 
-/mob/living/simple_animal/mouse/start_pulling(var/atom/movable/AM)//Prevents mouse from pulling things
+/mob/living/simple_animal/mouse/start_pulling(atom/movable/AM)//Prevents mouse from pulling things
 	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
 	return
 
 /mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
 	if( ishuman(AM) )
 		if(!ckey && stat == UNCONSCIOUS)
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "mouse_[body_color]"
 			wander = 1
 		else if(!stat && prob(5))
@@ -115,7 +115,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_animal/mouse/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()

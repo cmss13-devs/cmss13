@@ -1,7 +1,7 @@
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
@@ -35,7 +35,7 @@
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(var/pressure)
+/mob/living/proc/calculate_affecting_pressure(pressure)
 	return
 
 /mob/living/proc/initialize_pain()
@@ -48,7 +48,7 @@
 	for(var/location in incision_depths)
 		incision_depths[location] = SURGERY_DEPTH_SURFACE
 
-/mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
+/mob/living/proc/apply_stamina_damage(damage, def_zone, armor_type)
 	if(!stamina)
 		return
 
@@ -95,7 +95,7 @@
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/storage/Storage = null)
+/mob/living/get_contents(obj/item/storage/Storage = null)
 	var/list/L = list()
 
 	if(Storage) //If it called itself
@@ -294,14 +294,19 @@
 		if(grab_level == GRAB_CARRY)
 			return 0.1
 		else
-			return 1.0
+			return 1
 	else
 		return 0
 
 /mob/living/forceMove(atom/destination)
-	stop_pulling()
+	if(pulling)
+		var/pull_dist = get_dist(pulling, destination)
+		if(pulling.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			stop_pulling()
 	if(pulledby)
-		pulledby.stop_pulling()
+		var/pull_dist = get_dist(pulledby, destination)
+		if(pulledby.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			pulledby.stop_pulling()
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()
@@ -345,9 +350,9 @@
 		now_pushing = FALSE
 		return
 
-	if(isXeno(L) && !isXenoLarva(L))
-		var/mob/living/carbon/Xenomorph/X = L
-		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isYautja(src))) // Small xenos can be pushed by other xenos or preds
+	if(isxeno(L) && !islarva(L))
+		var/mob/living/carbon/xenomorph/X = L
+		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 
@@ -400,7 +405,7 @@
 
 	..()
 
-/mob/living/launch_towards(var/datum/launch_metadata/LM)
+/mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 	if(!istype(LM) || !LM.target || !src || buckled)
@@ -412,7 +417,7 @@
 	. = ..()
 
 //to make an attack sprite appear on top of the target atom.
-/mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state, var/duration = 4)
+/mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state, duration = 4)
 	set waitfor = 0
 
 	if(!attack_icon)
@@ -447,7 +452,7 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, flash_timer = 40)
 	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)
@@ -465,3 +470,13 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+/mob/living/set_stat(new_stat)
+	. = ..()
+	if(isnull(.))
+		return
+	switch(.)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
+	switch(stat)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)

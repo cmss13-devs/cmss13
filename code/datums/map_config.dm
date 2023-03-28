@@ -17,6 +17,9 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	var/webmap_url
+	var/short_name
+
 	var/traits = null
 	var/space_empty_levels = 1
 	var/list/environment_traits = list()
@@ -33,8 +36,10 @@
 	var/weather_holder
 
 	var/list/survivor_types
+	var/list/survivor_types_by_variant
 
 	var/list/synth_survivor_types
+	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
 
@@ -66,11 +71,20 @@
 		/datum/equipment_preset/survivor/chaplain,
 		/datum/equipment_preset/survivor/miner,
 		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
+		/datum/equipment_preset/survivor/engineer,
 	)
 
 	synth_survivor_types = list(
-		/datum/equipment_preset/synth/survivor
+		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/engineer_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
+		/datum/equipment_preset/synth/survivor/janitor_synth,
+		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/bartender_synth,
+		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
@@ -134,6 +148,9 @@
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
 
+	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
+
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"
 	if (istext(map_file))
@@ -176,6 +193,13 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
+	survivor_types_by_variant = list()
+	for(var/surv_type in survivor_types)
+		var/datum/equipment_preset/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		survivor_types_by_variant[survivor_variant] += surv_type
+
 	if(islist(json["synth_survivor_types"]))
 		synth_survivor_types = json["synth_survivor_types"]
 	else if ("synth_survivor_types" in json)
@@ -192,6 +216,13 @@
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
 	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	synth_survivor_types_by_variant = list()
+	for(var/surv_type in synth_survivor_types)
+		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		synth_survivor_types_by_variant[survivor_variant] += surv_type
 
 	if(islist(json["CO_survivor_types"]))
 		CO_survivor_types = json["CO_survivor_types"]
@@ -346,7 +377,7 @@
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)
 	if(CONFIG_GET(flag/ephemeral_map_mode))
-		message_staff("NOTICE: Running in ephemeral mode - map change request ignored")
+		message_admins("NOTICE: Running in ephemeral mode - map change request ignored")
 		return TRUE
 	if(maptype == GROUND_MAP)
 		return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")

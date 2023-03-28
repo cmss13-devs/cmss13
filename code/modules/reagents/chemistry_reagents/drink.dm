@@ -9,28 +9,29 @@
 	id = "drink"
 	description = "Uh, some kind of drink."
 	reagent_state = LIQUID
-	nutriment_factor = 1 * REAGENTS_METABOLISM
+	nutriment_factor = 0.5 * REAGENTS_METABOLISM
+	// Drinks should be used up faster than other reagents.
+	custom_metabolism = FOOD_METABOLISM
 	color = "#E78108" // rgb: 231, 129, 8
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
 	var/adj_temp = 0
 
-/datum/reagent/drink/on_mob_life(mob/living/M, alien)
-	//This is all way too snowflake to accurately transition to the property system so it stays here
-	if(alien == IS_YAUTJA || alien == IS_HORROR || !holder)
+/datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
+	. = ..()
+	if(!.)
 		return
-	M.nutrition += nutriment_factor
-	// Drinks should be used up faster than other reagents.
-	holder.remove_reagent(src.id, FOOD_METABOLISM * 2)
+	//This is all way too snowflake to accurately transition to the property system so it stays here
+	M.nutrition += nutriment_factor * delta_time
 	if(adj_dizzy)
-		M.dizziness = max(0,M.dizziness + adj_dizzy)
+		M.dizziness = max(0,M.dizziness + adj_dizzy * delta_time)
 	if(adj_drowsy)
-		M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
 	if(adj_sleepy)
-		M.sleeping = max(0,M.sleeping + adj_sleepy)
+		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 	if(adj_temp && M.bodytemperature < 310) //310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
 		M.recalculate_move_delay = TRUE
 
 /datum/reagent/drink/cold
@@ -363,7 +364,7 @@
 	. = ..()
 	if(!.) return
 	M.make_jittery(5)
-	if(adj_temp > 0)
+	if(adj_temp > 0 && holder)
 		holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
 
 	if(volume > overdose)
@@ -618,25 +619,15 @@
 	if(!.) return
 	M.make_jittery(5)
 
-/datum/reagent/doctor_delight
+/datum/reagent/drink/doctor_delight
 	name = "The Doctor's Delight"
 	id = "doctorsdelight"
 	description = "A gulp a day keeps the MediBot away. That's probably for the best."
-	reagent_state = LIQUID
 	color = "#FF8CFF" // rgb: 255, 140, 255
-	nutriment_factor = 1 * FOOD_METABOLISM
-
-/datum/reagent/doctor_delight/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M:nutrition += nutriment_factor
-	holder.remove_reagent(src.id, FOOD_METABOLISM)
-	if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)
-	if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
-	if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-	if(M:getToxLoss() && prob(50)) M:apply_damage(-2, TOX)
-	if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-	if(M.confused !=0) M.confused = max(0,M.confused - 5)
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
+	adj_dizzy = -3
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"

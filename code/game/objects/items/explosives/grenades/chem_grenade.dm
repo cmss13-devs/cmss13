@@ -3,7 +3,7 @@
 	icon_state = "grenade_custom"
 	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be thrown by hand."
 	w_class = SIZE_SMALL
-	force = 2.0
+	force = 2
 	dangerous = TRUE
 	customizable = TRUE
 	underslug_launchable = TRUE

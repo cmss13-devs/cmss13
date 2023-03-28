@@ -1,3 +1,5 @@
+#define HIJACK_EXPLOSION_COUNT 5
+
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
 	config_tag = "Distress Signal"
@@ -11,6 +13,8 @@
 
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
+	var/next_stat_check = 0
+	var/list/running_round_stats = list()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -158,6 +162,9 @@
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
+	if(is_in_endgame)
+		check_hijack_explosions()
+
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
@@ -173,10 +180,7 @@
 				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
-			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
-				if(is_ground_level(default_console.z) && !default_console.onboard)
-					select_lz(default_console)
-					break
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
@@ -218,13 +222,46 @@
 		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
 			set_lz_resin_allowed(TRUE)
 
+		if(next_stat_check <= world.time)
+			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
+			next_stat_check = world.time + 10 MINUTES
+
+/**
+ * Primes and fires off the explodey-pipes during hijack.
+ */
+/datum/game_mode/colonialmarines/proc/check_hijack_explosions()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_BARRAGE))
+		return
+
+	var/list/shortly_exploding_pipes = list()
+	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
+		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
+
+	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)
+		exploding_pipe.warning_explode(5 SECONDS)
+
+	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
+
+/**
+ * Makes the mainship shake, along with playing a klaxon sound effect.
+ */
+/datum/game_mode/colonialmarines/proc/shake_ship()
+	for(var/mob/current_mob in GLOB.living_mob_list)
+		if(!is_mainship_level(current_mob.z))
+			continue
+		shake_camera(current_mob, 3, 1)
+
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
+
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
 // Resource Towers
 
-/datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
+	add_current_round_status_to_end_results("First Drop")
 
 ///////////////////////////
 //Checks to see who won///
@@ -254,7 +291,7 @@
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(var/hivenumber)
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
 	set waitfor = 0
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths++
@@ -332,6 +369,9 @@
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 
+	add_current_round_status_to_end_results("Round End")
+	handle_round_results_statistics_output()
+
 	return 1
 
 // for the toolbox
@@ -348,3 +388,157 @@
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."
 	return "Round has ended in a strange way."
+
+/datum/game_mode/colonialmarines/proc/add_current_round_status_to_end_results(special_round_status as text)
+	var/players = GLOB.clients
+	var/list/counted_humans = list(
+		"Squad Marines" = list(),
+		"Auxiliary Marines" = list(),
+		"Non-Standard Humans" = list()
+	)
+
+	//organize our jobs in a readable and standard way
+	for(var/job in ROLES_MARINES)
+		counted_humans["Squad Marines"][job] = 0
+	for(var/job in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES - ROLES_WHITELISTED - ROLES_SPECIAL)
+		counted_humans["Auxiliary Marines"][job] = 0
+	for(var/job in ROLES_SPECIAL)
+		counted_humans["Non-Standard Humans"][job] = 0
+
+	var/list/counted_xenos = list()
+
+	//organize our hives and castes in a readable and standard way | don't forget our pooled larva
+	for(var/hive in ALL_XENO_HIVES)
+		counted_xenos[hive] = list()
+		for(var/caste in ALL_XENO_CASTES)
+			counted_xenos[hive][caste] = 0
+		counted_xenos[hive]["Pooled Larva"] = GLOB.hive_datum[hive].stored_larva
+
+	//Run through all our clients
+	//add up our marines by job type, surv numbers, and non-standard humans we don't care too much about
+	//add up our xenos by hive and caste
+	for(var/client/player_client in players)
+		if(player_client.mob && player_client.mob.stat != DEAD)
+			if(ishuman(player_client.mob))
+				if(player_client.mob.faction == FACTION_MARINE)
+					if(player_client.mob.job in (ROLES_MARINES))
+						counted_humans["Squad Marines"][player_client.mob.job]++
+					else
+						counted_humans["Auxiliary Marines"][player_client.mob.job]++
+				else
+					counted_humans["Non-Standard Humans"][player_client.mob.job]++
+			else if(isxeno(player_client.mob))
+				var/mob/living/carbon/xenomorph/xeno = player_client.mob
+				counted_xenos[xeno.hivenumber][xeno.caste_type]++
+
+	var/list/total_data = list("special round status" = special_round_status, "round time" = duration2text(), "counted humans" = counted_humans, "counted xenos" = counted_xenos)
+	running_round_stats = running_round_stats + list(total_data)
+
+/datum/game_mode/colonialmarines/proc/handle_round_results_statistics_output()
+	var/webhook = CONFIG_GET(string/round_results_webhook_url)
+
+	if(!webhook)
+		return
+
+	var/datum/discord_embed/embed = new()
+	embed.title = "[SSperf_logging.round?.id]"
+	embed.description = "[round_stats.round_name]\n[round_stats.map_name]\n[end_round_message()]"
+
+	var/list/webhook_info = list()
+	webhook_info["embeds"] = list(embed.convert_to_list())
+
+	var/list/headers = list()
+	headers["Content-Type"] = "application/json"
+
+	var/list/requests = list()
+
+	var/datum/http_request/beginning_request = new()
+	beginning_request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/response.json")
+
+	requests += beginning_request
+
+	for(var/list/round_status_report in running_round_stats)
+		var/special_status = round_status_report["special round status"]
+		var/round_time = round_status_report["round time"]
+
+		var/field_name = "[special_status ? "[round_time] - [special_status]" : "[round_time]"]"
+
+		var/total_marines = 0
+		var/total_squad_marines = 0
+
+		var/squad_marine_job_text = ""
+		var/list/squad_marines_job_report = round_status_report["counted humans"]["Squad Marines"]
+		var/incrementer = 0
+		for(var/job_type in squad_marines_job_report)
+			squad_marine_job_text += "[job_type]: [squad_marines_job_report[job_type]]"
+			total_marines += squad_marines_job_report[job_type]
+			total_squad_marines += squad_marines_job_report[job_type]
+			incrementer++
+			if(incrementer < squad_marines_job_report.len)
+				squad_marine_job_text += ", "
+
+		var/auxiliary_marine_job_text = ""
+		var/list/auxiliary_marines_job_report = round_status_report["counted humans"]["Auxiliary Marines"]
+		incrementer = 0
+		for(var/job_type in auxiliary_marines_job_report)
+			auxiliary_marine_job_text += "[job_type]: [auxiliary_marines_job_report[job_type]]"
+			total_marines += auxiliary_marines_job_report[job_type]
+			incrementer++
+			if(incrementer < auxiliary_marines_job_report.len)
+				auxiliary_marine_job_text += ", "
+
+		var/total_non_standard = 0
+		var/non_standard_job_text = ""
+		incrementer = 0
+		var/list/non_standard_job_report = round_status_report["counted humans"]["Non-Standard Humans"]
+		for(var/job_type in non_standard_job_report)
+			non_standard_job_text += "[job_type]: [non_standard_job_report[job_type]]"
+			total_non_standard += non_standard_job_report[job_type]
+			incrementer++
+			if(incrementer < non_standard_job_report.len)
+				non_standard_job_text += ", "
+
+		var/list/hive_xeno_numbers = list()
+		var/list/hive_caste_texts = list()
+		for(var/hive in round_status_report["counted xenos"])
+			var/hive_amount = 0
+			var/hive_caste_text = ""
+			incrementer = 0
+			var/list/per_hive_status = round_status_report["counted xenos"][hive]
+			for(var/hive_caste in per_hive_status)
+				hive_caste_text += "[hive_caste]: [per_hive_status[hive_caste]]"
+				hive_amount += per_hive_status[hive_caste]
+				incrementer++
+				if(incrementer < per_hive_status.len)
+					hive_caste_text += ", "
+			if(hive_amount)
+				hive_xeno_numbers[hive] = hive_amount
+				hive_caste_texts[hive] = hive_caste_text
+
+		var/final_text = "Marines: [total_marines]\nSquad Marines: [total_squad_marines]\n\n"
+		final_text += "Marine jobs:\n[auxiliary_marine_job_text], [squad_marine_job_text]\n\n"
+
+		if(total_non_standard)
+			final_text += "Non-standard jobs:\n[non_standard_job_text]\n\n"
+
+		for(var/hive in hive_xeno_numbers)
+			final_text += "[hive]\nXenos: [hive_xeno_numbers[hive]]\n\n"
+			final_text += "Xeno castes:\n[hive_caste_texts[hive]]\n"
+
+		var/datum/discord_embed/per_report_embed = new()
+		per_report_embed.title = "[field_name]"
+		per_report_embed.description = "[final_text]"
+
+		var/list/per_report_webhook_info = list()
+		per_report_webhook_info["embeds"] = list(per_report_embed.convert_to_list())
+
+		var/datum/http_request/per_report_request = new()
+		per_report_request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(per_report_webhook_info), headers, "tmp/response.json")
+		requests += per_report_request
+
+	var/incrementer = 1
+	for(var/datum/http_request/request in requests)
+		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
+		incrementer++
+
+#undef HIJACK_EXPLOSION_COUNT

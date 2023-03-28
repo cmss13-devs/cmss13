@@ -46,7 +46,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
+	add_survivor_weapon_civilian(H)
 	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 
@@ -219,7 +219,7 @@
 	//As a joke, clown has all access so they can clown everywhere...
 	access = get_all_accesses()
 
-/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, randomise)
 	. = ..() //To load gender, randomise appearance, etc.
 	H.change_real_name(H, pick(clown_names)) //Picking a proper clown name!
 
@@ -362,7 +362,7 @@
 	name = "Corpse - Corporate Liaison"
 	assignment = "Corporate Liaison"
 	xenovictim = TRUE
-	paygrade = "WY-2B-X"
+	paygrade = "WYC2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -381,7 +381,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
@@ -454,7 +454,7 @@
 	idtype = /obj/item/card/id/general
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
-	paygrade = "WY-1B-X"
+	paygrade = "WYC2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -475,7 +475,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/waiter(H), WEAR_BODY)
 	. = ..()
 
-/datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/H, randomise)
 	H.change_real_name(H, "Johnson Telovin")
 
 //*****************************************************************************************************/
@@ -539,7 +539,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 
@@ -580,13 +580,9 @@
 	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
-	add_random_synth_survivor_equipment(H)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
+	var/datum/equipment_preset/survivor/surv_equipment = new random_surv_type
+	surv_equipment.load_gear(H)
 
 /datum/equipment_preset/corpse/colonist/random/burst
 	name = "Corpse - Burst Colonist Random"
@@ -644,7 +640,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton(H), WEAR_WAIST)
 
@@ -658,7 +654,7 @@
 		if(4)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 		if(5)
-			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(H), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/corpse/ua_riot/burst
@@ -670,7 +666,7 @@
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "WYC7"
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
@@ -680,10 +676,9 @@
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY
+		ACCESS_MARINE_MEDBAY,
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/H)
@@ -695,7 +690,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
@@ -739,13 +734,13 @@
 	spawn_rebel_belt(H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
+	add_pmc_survivor_weapon(H)
 	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/corpse/clf/burst
@@ -809,16 +804,16 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
@@ -841,13 +836,13 @@
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
@@ -862,13 +857,13 @@
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate/lead, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/lead, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate/lead, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
@@ -898,10 +893,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
@@ -939,7 +934,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)

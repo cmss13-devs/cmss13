@@ -12,7 +12,7 @@
 	desc = "A device that uses station power to create points of magnetic energy."
 	level = 1 // underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 
@@ -40,8 +40,14 @@
 
 	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
+/obj/structure/machinery/magnetic_module/Destroy()
+	center = null
+	SSradio.remove_object(src, freq)
+	. = ..()
+
+
 	// update the invisibility and icon
-/obj/structure/machinery/magnetic_module/hide(var/intact)
+/obj/structure/machinery/magnetic_module/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -69,7 +75,7 @@
 
 
 
-/obj/structure/machinery/magnetic_module/proc/Cmd(var/command, var/modifier)
+/obj/structure/machinery/magnetic_module/proc/Cmd(command, modifier)
 
 	if(command)
 		switch(command)
@@ -191,7 +197,7 @@
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 45
 	var/frequency = 1449
@@ -221,6 +227,12 @@
 
 	if(path) // check for default path
 		filter_path() // renders rpath
+
+/obj/structure/machinery/magnetic_controller/Destroy()
+	QDEL_NULL_LIST(magnets)
+	SSradio.remove_object(src, frequency)
+	. = ..()
+
 
 /obj/structure/machinery/magnetic_controller/process()
 	if(magnets.len == 0 && autolink)

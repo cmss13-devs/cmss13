@@ -30,6 +30,26 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_SYNTH_SURVIVOR "Synth Survivor"
 #define JOB_CO_SURVIVOR "CO Survivor"
 
+#define ANY_SURVIVOR "Any Survivor"
+#define CIVILIAN_SURVIVOR "Civilian Survivor"
+#define SECURITY_SURVIVOR "Security Survivor"
+#define SCIENTIST_SURVIVOR "Scientist Survivor"
+#define MEDICAL_SURVIVOR "Medical Survivor"
+#define ENGINEERING_SURVIVOR "Engineering Survivor"
+#define CORPORATE_SURVIVOR "Corporate Survivor"
+#define HOSTILE_SURVIVOR "Hostile Survivor" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
+#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR, CIVILIAN_SURVIVOR, SECURITY_SURVIVOR, SCIENTIST_SURVIVOR, MEDICAL_SURVIVOR, ENGINEERING_SURVIVOR, CORPORATE_SURVIVOR, HOSTILE_SURVIVOR)
+
+//-1 is infinite amount, these are soft caps and can be bypassed by randomization
+#define MAX_SURVIVOR_PER_TYPE list(ANY_SURVIVOR = -1, CIVILIAN_SURVIVOR = -1, SECURITY_SURVIVOR = 2, SCIENTIST_SURVIVOR = 2, MEDICAL_SURVIVOR = 3, ENGINEERING_SURVIVOR = 4, CORPORATE_SURVIVOR = 2, HOSTILE_SURVIVOR = 1)
+
+#define SPAWN_PRIORITY_VERY_HIGH 1
+#define SPAWN_PRIORITY_HIGH 2
+#define SPAWN_PRIORITY_MEDIUM 3
+#define SPAWN_PRIORITY_LOW 4
+#define SPAWN_PRIORITY_VERY_LOW 5
+#define LOWEST_SPAWN_PRIORITY 5
+
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
 #define JOB_NURSE "Nurse"
@@ -38,6 +58,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
 #define JOB_WORKING_JOE "Working Joe"
@@ -76,27 +97,32 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE_RAIDER "Marine Raider"
 #define JOB_MARINE_RAIDER_SL "Marine Raider Team Lead"
 #define JOB_MARINE_RAIDER_CMD "Marine Raider Platoon Lead"
-#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
+#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
 
 #define JOB_HUMAN_ROLES  /datum/timelock/human
+
 #define JOB_XENO_ROLES   /datum/timelock/xeno
+#define JOB_DRONE_ROLES /datum/timelock/drone
+#define JOB_T3_ROLES /datum/timelock/tier3
 
 #define JOB_STOWAWAY "Stowaway"
 
 #define JOB_MARINE "USCM Marine" //generic marine
 #define JOB_COLONEL "USCM Colonel"
 #define JOB_GENERAL "USCM General"
+#define JOB_ACMC "Assistant Commandant of the Marine Corps"
+#define JOB_CMC "Commandant of the Marine Corps"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L += timelockList;\
 	. = ..(L);\
 }
 
 // Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L = timelockList;\
 	. = ..(L);\
 }
@@ -151,6 +177,19 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEAD_INVEST "PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR "PMC Site Director"
 #define JOB_PMC_SYNTH    "PMC Support Synthetic"
+
+//-------- WY --------//
+
+#define JOB_TRAINEE "Corporate Trainee"
+#define JOB_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_EXECUTIVE "Corporate Executive"
+#define JOB_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_CHIEF_EXECUTIVE "Corporate Chief Executive"
+#define JOB_DIRECTOR "W-Y Director"
 
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"

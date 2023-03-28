@@ -10,8 +10,8 @@
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -45,6 +45,7 @@
 	desc = "Shiny and impressive. They look expensive."
 	icon_state = "black"
 	item_state = "bgloves"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/officer/chief
 	name = "chief officer gloves"
@@ -57,6 +58,7 @@
 	item_state = "ygloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.01
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/techofficer/commander
 	name = "commanding officer's gloves"
@@ -105,6 +107,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated
 	name = "insulated armored gloves"
@@ -112,13 +115,13 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 
-/obj/item/clothing/gloves/marine/veteran/PMC
+/obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
 	icon_state = "pmc"
 	item_state = "pmc"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
-/obj/item/clothing/gloves/marine/veteran/PMC/commando
+/obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper M5X gauntlets"
 	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor"
 	icon_state = "gauntlets"
@@ -155,6 +158,7 @@
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	unacidable = TRUE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"

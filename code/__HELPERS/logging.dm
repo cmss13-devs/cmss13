@@ -3,6 +3,10 @@
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
 
+//This is an external call, "true" and "false" are how rust parses out booleans
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
+
 //print an error message to world.log
 
 
@@ -11,7 +15,6 @@
 // in the logs.  ascii character 13 = CR
 
 /var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
-
 
 /proc/error(msg)
 	world.log << "## ERROR: [msg][log_end]"
@@ -71,7 +74,7 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_interact(var/mob/living/carbon/origin, var/mob/living/carbon/target, var/msg)
+/proc/log_interact(mob/living/carbon/origin, mob/living/carbon/target, msg)
 	if (CONFIG_GET(flag/log_interact))
 		diary << html_decode("\[[time_stamp()]]INTERACT: [msg][log_end]")
 	origin.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
@@ -87,7 +90,7 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
+/proc/log_idmod(obj/item/card/id/target_id, msg)
 	if (CONFIG_GET(flag/log_idmod))
 		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")
 	target_id.modification_log += "\[[time_stamp()]]: [msg]"
@@ -197,12 +200,9 @@
 	// Insert message
 	if(message)
 		entry += "\n[message]"
-	diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
+	tgui_diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
-
-//wrapper macros for easier grepping
-#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
 
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
@@ -214,3 +214,22 @@ GLOBAL_PROTECT(config_error_log)
 
 /proc/log_admin_private(text)
 	log_admin(text)
+
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+/proc/log_test(text)
+	WRITE_LOG(GLOB.test_log, text)
+	SEND_TEXT(world.log, text)
+#endif
+
+#if defined(REFERENCE_DOING_IT_LIVE)
+#define log_reftracker(msg) log_harddel("## REF SEARCH [msg]")
+
+/proc/log_harddel(text)
+	WRITE_LOG(GLOB.harddel_log, text)
+
+#elif defined(REFERENCE_TRACKING) // Doing it locally
+#define log_reftracker(msg) log_world("## REF SEARCH [msg]")
+
+#else //Not tracking at all
+#define log_reftracker(msg)
+#endif

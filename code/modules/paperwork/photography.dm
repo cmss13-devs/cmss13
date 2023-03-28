@@ -86,6 +86,7 @@
 	icon_state = "album"
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo,)
+	storage_slots = 20
 
 /obj/item/storage/photo_album/MouseDrop(obj/over_object as obj)
 
@@ -124,6 +125,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 2000)
+	black_market_value = 20
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1
@@ -196,7 +198,7 @@
 				// Check if we're looking at a mob that's lying down
 				if(istype(A, /mob/living))
 					var/mob/living/L = A
-					if(!istype(L, /mob/living/carbon/Xenomorph)) //xenos don't use icon rotatin for lying.
+					if(!istype(L, /mob/living/carbon/xenomorph)) //xenos don't use icon rotatin for lying.
 						if(L.lying)
 							// If they are, apply that effect to their picture.
 							IM.BecomeLying()
@@ -287,7 +289,7 @@
 
 	return P
 
-/obj/item/device/camera/proc/printpicture(mob/user, var/datum/picture/P)
+/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
 	Photo.forceMove(user.loc)
 	if(!user.get_inactive_hand())
@@ -304,7 +306,7 @@
 	pictures_left = 30
 
 
-/obj/item/photo/proc/construct(var/datum/picture/P)
+/obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
 	tiny = P.fields["tiny"]
 	img = P.fields["img"]

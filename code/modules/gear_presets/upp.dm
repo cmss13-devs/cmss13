@@ -1,6 +1,6 @@
 /datum/equipment_preset/upp
 	name = FACTION_UPP
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
 	origin_override = ORIGIN_UPP
@@ -9,7 +9,7 @@
 	. = ..()
 	access = get_antagonist_access()
 
-/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -111,9 +111,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/full, WEAR_WAIST)
 	//rpocket
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_R_STORE)
 	//lpocket
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
@@ -222,7 +222,7 @@
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -394,7 +394,7 @@
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -528,7 +528,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -599,7 +599,7 @@
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -657,7 +657,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -724,7 +724,7 @@
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -782,7 +782,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -936,7 +936,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -968,7 +968,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	//uniform
@@ -1037,7 +1037,7 @@
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
@@ -1091,7 +1091,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -1148,8 +1148,8 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1201,7 +1201,7 @@
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
@@ -1255,7 +1255,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -1309,8 +1309,8 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1359,7 +1359,7 @@
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
@@ -1413,7 +1413,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -1467,8 +1467,8 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1517,7 +1517,7 @@
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
@@ -1571,7 +1571,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -1626,8 +1626,8 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1676,7 +1676,7 @@
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
@@ -1730,7 +1730,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -1793,7 +1793,7 @@
 	paygrade = "SYN"
 	idtype = /obj/item/card/id/gold
 
-/datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -2027,7 +2027,7 @@
 		H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/vodka, WEAR_IN_JACKET)
 		//limit of snowcoat
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_JACKET)
 
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
@@ -2111,7 +2111,7 @@
 	role_comm_title = "JKdo"
 	paygrade = "UC1"
 	idtype = /obj/item/card/id/data
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -2123,7 +2123,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
@@ -2144,13 +2144,13 @@
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Fatigues", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/kdo, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("UM5CU Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -2208,7 +2208,7 @@
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -2243,7 +2243,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
@@ -2273,14 +2273,14 @@
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Fatigues Medic", 0, /obj/item/clothing/under/marine/veteran/UPP/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/kdo/medic, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("UM5CU Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -2378,7 +2378,7 @@
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -2413,7 +2413,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9/tranq, WEAR_WAIST)
@@ -2437,13 +2437,13 @@
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Fatigues", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/kdo/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("UM5CU Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/PMC/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -2531,7 +2531,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -2648,7 +2648,7 @@
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/HE/upp, null, VENDOR_ITEM_REGULAR),
+		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),

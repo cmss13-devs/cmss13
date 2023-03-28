@@ -2,7 +2,7 @@
 	name = "landmark"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
@@ -15,7 +15,12 @@
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()
+	GLOB.landmarks_list += src
 	invisibility = invisibility_value
+
+/obj/effect/landmark/Destroy()
+	GLOB.landmarks_list -= src
+	return ..()
 
 /obj/effect/landmark/newplayer_start
 	name = "New player start"
@@ -102,6 +107,7 @@
 
 /obj/effect/landmark/thunderdome/one
 	name = "Thunderdome Team 1"
+	icon_state = "thunderdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload, ...)
 	. = ..()
@@ -113,6 +119,7 @@
 
 /obj/effect/landmark/thunderdome/two
 	name = "Thunderdome Team 2"
+	icon_state = "thunderdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload, ...)
 	. = ..()
@@ -124,6 +131,7 @@
 
 /obj/effect/landmark/thunderdome/admin
 	name = "Thunderdome Admin"
+	icon_state = "thunderdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload, ...)
 	. = ..()
@@ -135,6 +143,7 @@
 
 /obj/effect/landmark/thunderdome/observer
 	name = "Thunderdome Observer"
+	icon_state = "thunderdome_observer"
 
 /obj/effect/landmark/thunderdome/observer/Initialize(mapload, ...)
 	. = ..()
@@ -158,6 +167,7 @@
 
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
+	icon_state = "xeno_spawn"
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()
@@ -426,7 +436,7 @@
 	GLOB.zombie_landmarks -= src
 	return ..()
 
-/obj/effect/landmark/zombie/proc/spawn_zombie(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/spawn_zombie(mob/dead/observer/observer)
 	if(!infinite_spawns)
 		spawns_left--
 	if(spawns_left <= 0)
@@ -436,7 +446,7 @@
 	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
-/obj/effect/landmark/zombie/proc/handle_zombie_spawn(var/mob/dead/observer/observer)
+/obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
 	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
 	if(!zombie.hud_used)
 		zombie.create_hud()
@@ -451,3 +461,13 @@
 
 /obj/effect/landmark/zombie/infinite
 	infinite_spawns = TRUE
+
+/// Marks the bottom left of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_bottom_left
+	name = "unit test zone bottom left"
+
+/// Marks the top right of the testing zone.
+/// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
+/obj/effect/landmark/unit_test_top_right
+	name = "unit test zone top right"

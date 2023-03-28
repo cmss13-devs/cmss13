@@ -13,6 +13,7 @@
 #define SKILL_RESEARCH "research"
 #define SKILL_ANTAG "antag"
 #define SKILL_PILOT "pilot"
+#define SKILL_NAVIGATIONS "navigations"
 #define SKILL_POLICE "police"
 #define SKILL_POWERLOADER "powerloader"
 #define SKILL_VEHICLE "vehicles"
@@ -30,11 +31,10 @@
 
 //firearms skill (general knowledge of guns) (hidden skill)
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
-#define SKILL_FIREARMS_UNTRAINED 0  //civilian
-#define SKILL_FIREARMS_DEFAULT 1   //marines (allow tactical reloads)
-#define SKILL_FIREARMS_TRAINED 2   //special training
+#define SKILL_FIREARMS_CIVILIAN 0  //civilian
+#define SKILL_FIREARMS_TRAINED 1   //marines (allow tactical reloads)
+#define SKILL_FIREARMS_EXPERT 2   //special training
 #define SKILL_FIREARMS_MAX 2
-
 
 //spec_weapons skill
 //hidden. who can and can't use specialist weapons
@@ -156,14 +156,18 @@
 #define SKILL_PILOT_EXPERT 2 // Pilot
 #define SKILL_PILOT_MAX 2
 
+//Navigations skill - for seting orbital alt
+#define SKILL_NAVIGATIONS_DEFAULT 0
+#define SKILL_NAVIGATIONS_TRAINED 1
+#define SKILL_NAVIGATIONS_MAX 1
 
 //endurance skill - Leaving surv for ease of change
 #define SKILL_ENDURANCE_NONE 0
 #define SKILL_ENDURANCE_WEAK 1
+#define SKILL_ENDURANCE_SURVIVOR 2
 #define SKILL_ENDURANCE_TRAINED 2
 #define SKILL_ENDURANCE_MASTER 3
 #define SKILL_ENDURANCE_EXPERT 4
-#define SKILL_ENDURANCE_SURVIVOR 2
 #define SKILL_ENDURANCE_MAX 5
 
 //domestic skill, how well you work cleaning equipment and cooking stuff

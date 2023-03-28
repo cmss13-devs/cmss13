@@ -306,37 +306,37 @@ var/global/list/gear_datums = list()
 //
 /datum/gear/tornscarfclassic
 	display_name = "Scarf (Grey)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf
+	path = /obj/item/clothing/mask/tornscarf
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfgreen
 	display_name = "Scarf (Green)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/green
+	path = /obj/item/clothing/mask/tornscarf/green
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfwhite
 	display_name = "Scarf (White)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/snow
+	path = /obj/item/clothing/mask/tornscarf/snow
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfdesert
 	display_name = "Scarf (Desert)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/desert
+	path = /obj/item/clothing/mask/tornscarf/desert
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfurban
 	display_name = "Scarf (Urban)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/urban
+	path = /obj/item/clothing/mask/tornscarf/urban
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tornscarfblack
 	display_name = "Scarf (Black)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/black
+	path = /obj/item/clothing/mask/tornscarf/black
 	slot = WEAR_FACE
 	cost = 2
 //
@@ -358,17 +358,11 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
-/datum/gear/skullfacepaint
-	display_name = "Skull Facepaint"
-	path = /obj/item/facepaint/skull
-	slot = WEAR_IN_BACK
-	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
-
 /datum/gear/fullbodyfacepaint
 	display_name = "Fullbody Paint"
 	path = /obj/item/facepaint/sniper
 	slot = WEAR_IN_BACK
-	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint
+	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"
@@ -406,9 +400,9 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
-/datum/gear/m43pistol
-	display_name = "M43 Holdout Pistol"
-	path = /obj/item/storage/box/m43
+/datum/gear/clfpistol
+	display_name = "D18 Holdout Pistol"
+	path = /obj/item/storage/box/clf
 	slot = WEAR_IN_BACK
 	cost = 4
 
@@ -498,18 +492,6 @@ var/global/list/gear_datums = list()
 	display_name = "Gas Mask"
 	path = /obj/item/clothing/mask/gas
 	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull
-	cost = 4 //same as skull facepaint
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull/black
-	cost = 4
 	slot = WEAR_FACE
 
 /datum/gear/gunoil

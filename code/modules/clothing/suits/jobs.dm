@@ -49,7 +49,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
-	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROT
 
 	allowed = list(
 		/obj/item/weapon/gun/,
@@ -65,7 +65,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/device/motiondetector,
-		/obj/item/device/walkman
+		/obj/item/device/walkman,
 	)
 
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -88,6 +88,9 @@
 	item_state = "nun"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
+	allowed = list(
+		/obj/item/weapon/gun,
+	)
 
 //Chef
 /obj/item/clothing/suit/chef

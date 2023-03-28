@@ -32,7 +32,7 @@ var/global/list/cached_icons = list()
 		name = "paint remover bucket"
 	else if(paint_type && length(paint_type) > 0)
 		name = "[paint_type] [name]"
-	..()
+	. = ..()
 	reagents.add_reagent("paint_[paint_type]", volume)
 
 /obj/item/reagent_container/glass/paint/on_reagent_change() //Until we have a generic "paint", this will give new colours to all paints in the can
@@ -78,12 +78,12 @@ var/global/list/cached_icons = list()
 	color = "#808080"
 	description = "This paint will only adhere to floor tiles."
 
-/datum/reagent/paint/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/paint/reaction_turf(turf/T, volume)
 	if(!istype(T) || istype(T, /turf/open/space))
 		return
 	T.color = color
 
-/datum/reagent/paint/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/paint/reaction_obj(obj/O, volume)
 	..()
 	if(istype(O,/obj/item/light_bulb))
 		O.color = color
@@ -130,7 +130,7 @@ var/global/list/cached_icons = list()
 	reagent_state = 2
 	color = "#808080"
 
-/datum/reagent/paint_remover/reaction_turf(var/turf/T, var/volume)
+/datum/reagent/paint_remover/reaction_turf(turf/T, volume)
 	if(istype(T) && T.icon != initial(T.icon))
 		T.icon = initial(T.icon)
 	return

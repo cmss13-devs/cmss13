@@ -16,7 +16,7 @@
 #########################################*/
 /obj/item/weapon/melee/harpoon/yautja
 	name = "large harpoon"
-	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
+	desc = "A huge metal spike with a hook at the end. It's carved with mysterious alien writing."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spike"
@@ -43,7 +43,7 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	var/plural_name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
+	desc = "A pair of huge, serrated blades extending out from metal gauntlets."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
@@ -118,7 +118,7 @@
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"
 	plural_name = "wrist scimitars"
-	desc = "A huge, serrated blade extending from a metal gauntlet."
+	desc = "A huge, serrated blade extending from metal gauntlets."
 	icon_state = "scim"
 	item_state = "scim"
 	attack_speed = 5
@@ -159,13 +159,13 @@
 
 /obj/item/weapon/melee/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
-	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -176,20 +176,20 @@
 	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = "clan_sword_hit"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
-	
+
 /obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
+	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
@@ -207,8 +207,8 @@
 
 /obj/item/weapon/melee/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
 
@@ -275,7 +275,7 @@
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
-/obj/item/weapon/melee/yautja/combistick/wield(var/mob/user)
+/obj/item/weapon/melee/yautja/combistick/wield(mob/user)
 	. = ..()
 	if(!.)
 		return
@@ -346,8 +346,8 @@
 	. = ..()
 	if(!.)
 		return
-	if((human_adapted || isSpeciesYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 	if(target == user || target.stat == DEAD)
@@ -372,7 +372,7 @@
 	else ..()
 
 /obj/item/weapon/melee/yautja/combistick/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
+	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
 			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
@@ -413,11 +413,11 @@
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
 		return
 
-	if(isSameSpecies(user, victim))
+	if(issamespecies(user, victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
 		return
 
-	if(isSpeciesSynth(victim))
+	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
 		return
 
@@ -473,14 +473,14 @@
 					victim.status_flags |= PERMANENTLY_DEAD
 					victim.add_flay_overlay(stage = 3)
 
-/mob/living/carbon/human/proc/add_flay_overlay(var/stage = 1)
+/mob/living/carbon/human/proc/add_flay_overlay(stage = 1)
 	remove_overlay(FLAY_LAYER)
 	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
 	flay_icon.layer = -FLAY_LAYER
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, var/has_meat, var/skin_amount)
+/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
 	if(has_meat)
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 		meat.name = "raw [victim.name] steak"
@@ -519,6 +519,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
+	flags_item = NOSHIELD|TWOHANDED
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -586,8 +587,8 @@
 	. = ..()
 	if(!.)
 		return
-	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/twohanded/yautja/glaive/damaged
@@ -598,6 +599,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
+	flags_item = NOSHIELD|TWOHANDED
 
 
 /*#########################################
@@ -630,7 +632,7 @@
 	var/max_spikes = 12
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|TWOHANDED
 
 /obj/item/weapon/gun/launcher/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
@@ -651,9 +653,9 @@
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
@@ -664,7 +666,7 @@
 	))
 
 /obj/item/weapon/gun/launcher/spike/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
 	else
@@ -706,6 +708,7 @@
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = null
 	works_in_recharger = FALSE
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -760,7 +763,7 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/100</b> charge.")
 	else
@@ -806,7 +809,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
-	desc = "A plasma pistol capable of rapid fire. It has an integrated battery."
+	desc = "A plasma pistol capable of rapid fire. It has an integrated battery. Can be used to set fires, either to braziers or on people."
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 
@@ -818,7 +821,9 @@
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|IGNITING_ITEM|TWOHANDED
+
+	heat_source = 1500 // Plasma Pistols fire burning hot bounbs of plasma. Makes sense they're hot
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -845,16 +850,14 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_7
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
-
-
 /obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
 	else
@@ -890,12 +893,11 @@
 	if(refund) charge_time *= 2
 	return TRUE
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
-	icon_state = "plasma"
-	item_state = "plasma_wear"
+	var/base_icon_state = "plasma"
+	var/base_item_state = "plasma_wear"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -913,21 +915,23 @@
 	force = 0
 	fire_delay = 3
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
+	flags_item = NOBLUDGEON|DELONDROP|IGNITING_ITEM //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 	indestructible = TRUE
+
+	heat_source = 1500 // Plasma Casters fire burning hot bounbs of plasma. Makes sense they're hot
 
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, var/caster_material = "ebony")
-	icon_state += "_[caster_material]"
-	item_state += "_[caster_material]"
-	item_state_slots[WEAR_BACK] += "_[caster_material]"
-	item_state_slots[WEAR_J_STORE] += "_[caster_material]"
+/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
+	icon_state = "[base_icon_state]_[caster_material]"
+	item_state = "[base_icon_state]_[caster_material]"
+	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
+	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip

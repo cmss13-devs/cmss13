@@ -95,7 +95,7 @@
 		/mob/living/simple_animal/parrot/proc/perch_player,
 	))
 
-/mob/living/simple_animal/parrot/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/parrot/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
@@ -240,7 +240,7 @@
 		icon_state = "parrot_fly"
 
 //Mobs with objects
-/mob/living/simple_animal/parrot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/parrot/attackby(obj/item/O as obj, mob/user as mob)
 	..()
 	if(!stat && !client && !istype(O, /obj/item/stack/medical))
 		if(O.force)
@@ -254,7 +254,7 @@
 	return
 
 //Bullets
-/mob/living/simple_animal/parrot/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/parrot/bullet_act(obj/item/projectile/Proj)
 	..()
 	if(!stat && !client)
 		if(parrot_state == PARROT_PERCH)
@@ -366,7 +366,7 @@
 			step(src, pick(cardinal))
 			return
 
-		if(!held_item && !parrot_perch) //If we've got nothing to do.. look for something to do.
+		if(!held_item && !parrot_perch) //If we've got nothing to do... look for something to do.
 			var/atom/movable/AM = search_for_perch_and_item() //This handles checking through lists so we know it's either a perch or stealable item
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM)) //If stealable item
@@ -638,7 +638,7 @@
 
 	return
 
-/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(var/drop_gently = 1)
+/mob/living/simple_animal/parrot/proc/drop_parrot_held_item(drop_gently = 1)
 	set name = "Drop held item"
 	set category = "Parrot"
 	set desc = "Drop the item you're holding."
@@ -694,9 +694,9 @@
 /mob/living/simple_animal/parrot/Poly/Initialize()
 	ears = new /obj/item/device/radio/headset(src)
 	available_channels = list(":e")
-	..()
+	. = ..()
 
-/mob/living/simple_animal/parrot/say(var/message)
+/mob/living/simple_animal/parrot/say(message)
 
 	if(stat)
 		return
@@ -730,20 +730,20 @@
 	..(message)
 
 
-/mob/living/simple_animal/parrot/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/living/simple_animal/parrot/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	if(prob(50))
 		parrot_hear(message)
 	..(message,verb,language,alt_name,italics,speaker)
 
 
 
-/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/command, var/vname, var/no_paygrade)
+/mob/living/simple_animal/parrot/hear_radio(message, verb="says", datum/language/language=null, part_a, part_b, mob/speaker = null, hard_to_hear = 0, command, vname, no_paygrade)
 	if(prob(50))
 		parrot_hear("[pick(available_channels)] [message]")
 	..(message,verb,language,part_a,part_b,speaker,hard_to_hear)
 
 
-/mob/living/simple_animal/parrot/proc/parrot_hear(var/message="")
+/mob/living/simple_animal/parrot/proc/parrot_hear(message="")
 	if(!message || stat)
 		return
 	speech_buffer.Add(message)

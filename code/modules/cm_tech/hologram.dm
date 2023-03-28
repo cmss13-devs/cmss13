@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(hologram_list)
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
 
-/mob/hologram/Initialize(mapload, var/mob/M)
+/mob/hologram/Initialize(mapload, mob/M)
 	if(!M)
 		return INITIALIZE_HINT_QDEL
 
@@ -52,19 +52,19 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	SIGNAL_HANDLER
 	return TRUE
 
-/mob/hologram/proc/take_damage(var/mob/M, var/damage, var/damagetype)
+/mob/hologram/proc/take_damage(mob/M, damage, damagetype)
 	SIGNAL_HANDLER
 
 	if(damage["damage"] > 5)
 		qdel(src)
 
-/mob/hologram/proc/handle_move(var/mob/M, NewLoc, direct)
+/mob/hologram/proc/handle_move(mob/M, NewLoc, direct)
 	SIGNAL_HANDLER
 
 	Move(get_step(loc, direct), direct)
 	return COMPONENT_OVERRIDE_MOVE
 
-/mob/hologram/proc/handle_view(var/mob/M, var/atom/target)
+/mob/hologram/proc/handle_view(mob/M, atom/target)
 	SIGNAL_HANDLER
 
 	if(M.client)
@@ -79,9 +79,10 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	return NO_BLOCKED_MOVEMENT
 
 /mob/hologram/Destroy()
-	UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
-	linked_mob.reset_view()
-	linked_mob = null
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
+		linked_mob.reset_view()
+		linked_mob = null
 
 	if(!QDESTROYING(leave_button))
 		QDEL_NULL(leave_button)
@@ -110,6 +111,6 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	RegisterSignal(M, COMSIG_MOB_ENTER_TREE, PROC_REF(disallow_tree_entering))
 
 
-/mob/hologram/techtree/proc/disallow_tree_entering(var/mob/M, var/datum/techtree/T, var/force)
+/mob/hologram/techtree/proc/disallow_tree_entering(mob/M, datum/techtree/T, force)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_TREE_ENTRY

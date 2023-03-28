@@ -16,7 +16,7 @@
 	var/build_stage = BARRICADE_SANDBAG_1
 	metallic = FALSE
 
-/obj/structure/barricade/sandbags/New(loc, mob/user, direction, var/amount = 1)
+/obj/structure/barricade/sandbags/New(loc, mob/user, direction, amount = 1)
 	if(direction)
 		setDir(direction)
 
@@ -34,6 +34,8 @@
 	..()
 
 	icon_state = "sandbag[build_stage]"
+	if(dir > 2)
+		layer = OBJ_LAYER //This prevents cades from becoming invisible under a north/south facing plasteel cade.
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE
@@ -145,7 +147,7 @@
 	climbable = FALSE
 	. = ..()
 
-/obj/structure/barricade/sandbags/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/sandbags/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

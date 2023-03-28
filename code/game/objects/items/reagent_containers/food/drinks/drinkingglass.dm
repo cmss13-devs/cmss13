@@ -653,7 +653,7 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && iscarbon(target) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isxeno(target))
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
 				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a glass of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
@@ -711,15 +711,15 @@
 	desc = "A drinking glass for soda."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/soda/Initialize()
-		..()
-		reagents.add_reagent("sodawater", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("sodawater", 50)
+	on_reagent_change()
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola
 	name = "cola glass"
 	desc = "A drinking glass for cola."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola/Initialize()
-		..()
-		reagents.add_reagent("cola", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("cola", 50)
+	on_reagent_change()

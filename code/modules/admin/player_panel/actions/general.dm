@@ -3,7 +3,7 @@
 	action_tag = "mob_rejuvenate"
 	name = "Rejuvenate"
 
-/datum/player_action/rejuvenate/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/rejuvenate/act(client/user, mob/target, list/params)
 	user.cmd_admin_rejuvenate(target)
 	return TRUE
 
@@ -12,9 +12,9 @@
 	action_tag = "mob_kill"
 	name = "Kill"
 
-/datum/player_action/kill/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/kill/act(client/user, mob/target, list/params)
 	target.death(create_cause_data("[user.key]"))
-	message_staff("[key_name_admin(user)] killed [key_name_admin(target)].")
+	message_admins("[key_name_admin(user)] killed [key_name_admin(target)].")
 	return TRUE
 
 
@@ -23,9 +23,9 @@
 	name = "Gib"
 	permissions_required = R_ADMIN
 
-/datum/player_action/gib/act(var/client/user, var/mob/target, var/list/params)
-	target.gib(create_cause_data(user.key))
-	message_staff("[key_name_admin(user)] gibbed [key_name_admin(target)].")
+/datum/player_action/gib/act(client/user, mob/target, list/params)
+	target.gib(create_cause_data("gibbing", user.key))
+	message_admins("[key_name_admin(user)] gibbed [key_name_admin(target)].")
 	return TRUE
 
 // MISC
@@ -33,7 +33,7 @@
 	action_tag = "mob_sleep"
 	name = "Toggle Sleeping"
 
-/datum/player_action/mob_sleep/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
 	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
 		target.sleeping = 0
 		target.RemoveSleepingIcon()
@@ -41,7 +41,7 @@
 		target.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		target.AddSleepingIcon()
 
-	message_staff("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
+	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 
 	return TRUE
 
@@ -50,7 +50,7 @@
 	action_tag = "send_to_lobby"
 	name = "Send To Lobby"
 
-/datum/player_action/send_to_lobby/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/send_to_lobby/act(client/user, mob/target, list/params)
 	if(!isobserver(target))
 		to_chat(user, SPAN_NOTICE("You can only send ghost players back to the Lobby."))
 		return
@@ -62,7 +62,7 @@
 	if(alert(user, "Send [key_name(target)] back to Lobby?", "Message", "Yes", "No") != "Yes")
 		return
 
-	message_staff("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
+	message_admins("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
 
 	var/mob/new_player/NP = new()
 
@@ -80,12 +80,12 @@
 	name = "Force Say"
 	permissions_required = R_ADMIN
 
-/datum/player_action/force_say/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/force_say/act(client/user, mob/target, list/params)
 	if(!params["to_say"]) return
 
 	target.say(params["to_say"])
 
-	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]")
+	message_admins("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]")
 
 	return TRUE
 
@@ -95,12 +95,12 @@
 	name = "Force Emote"
 	permissions_required = R_ADMIN
 
-/datum/player_action/force_emote/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/force_emote/act(client/user, mob/target, list/params)
 	if(!params["to_emote"]) return
 
-	target.custom_emote(1, params["to_emote"], TRUE)
+	target.manual_emote(params["to_emote"])
 
-	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
+	message_admins("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
 	return TRUE
 
 
@@ -108,10 +108,10 @@
 	action_tag = "toggle_frozen"
 	name = "Toggle Frozen"
 
-/datum/player_action/toggle_frozen/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/toggle_frozen/act(client/user, mob/target, list/params)
 	target.frozen = text2num(params["freeze"])
 
-	message_staff("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
+	message_admins("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
 	return TRUE
 
 // MESSAGE
@@ -119,7 +119,7 @@
 	action_tag = "subtle_message"
 	name = "Subtle Message"
 
-/datum/player_action/subtle_message/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/subtle_message/act(client/user, mob/target, list/params)
 	user.cmd_admin_subtle_message(target)
 	return TRUE
 
@@ -128,7 +128,7 @@
 	action_tag = "private_message"
 	name = "Private Message"
 
-/datum/player_action/private_message/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/private_message/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -139,7 +139,7 @@
 	action_tag = "alert_message"
 	name = "Alert Message"
 
-/datum/player_action/alert_message/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/alert_message/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -151,16 +151,16 @@
 	action_tag = "set_name"
 	name = "Set Name"
 
-/datum/player_action/set_name/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/set_name/act(client/user, mob/target, list/params)
 	target.name = params["name"]
-	message_staff("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
+	message_admins("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
 	return TRUE
 
 /datum/player_action/set_ckey
 	action_tag = "set_ckey"
 	name = "Set ckey"
 
-/datum/player_action/set_ckey/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/set_ckey/act(client/user, mob/target, list/params)
 	if(params["ckey"] == "")
 		params["ckey"] = " "
 
@@ -173,18 +173,18 @@
 	name = "Bring"
 
 
-/datum/player_action/bring/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/bring/act(client/user, mob/target, list/params)
 	var/mob/M = user.mob
 
 	target.forceMove(M.loc)
-	message_staff("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
+	message_admins("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
 	return TRUE
 
 /datum/player_action/follow
 	action_tag = "mob_follow"
 	name = "Follow"
 
-/datum/player_action/follow/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/follow/act(client/user, mob/target, list/params)
 	if(istype(user.mob, /mob/dead/observer))
 		var/mob/dead/observer/O = user.mob
 		O.ManualFollow(target)
@@ -199,7 +199,7 @@
 	name = "Jump To"
 
 
-/datum/player_action/jump_to/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/jump_to/act(client/user, mob/target, list/params)
 	user.jumptomob(target)
 	return TRUE
 
@@ -210,7 +210,7 @@
 	name = "Access Variables"
 
 
-/datum/player_action/access_variables/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/access_variables/act(client/user, mob/target, list/params)
 	user.debug_variables(target)
 	return TRUE
 
@@ -218,8 +218,8 @@
 	action_tag = "access_playtimes"
 	name = "Access Playtimes"
 
-/datum/player_action/access_playtimes/act(var/client/user, var/mob/target, var/list/params)
-	target?.client?.player_data.ui_interact(user.mob)
+/datum/player_action/access_playtimes/act(client/user, mob/target, list/params)
+	target?.client?.player_data.tgui_interact(user.mob)
 
 	return TRUE
 
@@ -228,7 +228,7 @@
 	action_tag = "access_admin_datum"
 	name = "Access Admin Datum"
 
-/datum/player_action/access_admin_datum/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/access_admin_datum/act(client/user, mob/target, list/params)
 	if(!target.client || !target.client.admin_holder)
 		return
 

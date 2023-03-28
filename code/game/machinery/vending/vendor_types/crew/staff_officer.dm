@@ -1,10 +1,10 @@
 /obj/structure/machinery/cm_vending/clothing/staff_officer
 	name = "\improper ColMarTech Staff Officer Equipment Rack"
 	desc = "An automated equipment vendor for Staff Officers."
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	req_access = list(ACCESS_MARINE_COMMAND)
 	vendor_role = list(JOB_SO)
 
-/obj/structure/machinery/cm_vending/clothing/staff_officer/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/staff_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_staff_officer
 
 //------------GEAR---------------

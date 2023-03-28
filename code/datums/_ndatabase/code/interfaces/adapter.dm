@@ -24,38 +24,38 @@
 /datum/db/adapter/proc/sync_table_meta()
 	return
 
-/datum/db/adapter/proc/sync_table(type_name, table_name, var/list/field_types)
+/datum/db/adapter/proc/sync_table(type_name, table_name, list/field_types)
 	return
 
-/datum/db/adapter/proc/sync_index(index_name, table_name, var/list/fields, unique, cluster)
+/datum/db/adapter/proc/sync_index(index_name, table_name, list/fields, unique, cluster)
 	return
 
-/datum/db/adapter/proc/read_table(table_name, var/list/ids, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/read_table(table_name, list/ids, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/update_table(table_name, var/list/values, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/update_table(table_name, list/values, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/insert_table(table_name, var/list/values, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/insert_table(table_name, list/values, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/delete_table(table_name, list/ids, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/read_filter(table_name, datum/db/filter, datum/callback/CB, sync=FALSE)
 	return
 
-/datum/db/adapter/proc/prepare_view(var/datum/entity_view_meta/view)
+/datum/db/adapter/proc/prepare_view(datum/entity_view_meta/view)
 	return
 
-/datum/db/adapter/proc/read_view(var/datum/entity_view_meta/view, var/datum/db/filter/filter, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/proc/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/CB, sync=FALSE)
 	return
 
 
 // DEFAULT IMPLEMENTATIONS
 // DO NOT USE EXCEPT IN ADAPTER CODE
 
-/datum/db/adapter/proc/get_filter_comparison(var/datum/db/filter/comparison/filter, var/list/casts, var/list/pflds)
+/datum/db/adapter/proc/get_filter_comparison(datum/db/filter/comparison/filter, list/casts, list/pflds)
 	var/field_cast = "[filter.field]"
 	if(casts && casts[field_cast])
 		field_cast = casts[field_cast]
@@ -104,7 +104,7 @@
 			return "[field_cast] NOTIN ([text])"
 	return "1=1" // shunt
 
-/datum/db/adapter/proc/get_filter_comparetwo(var/datum/db/filter/compare_two/filter, var/list/casts, var/list/pflds)
+/datum/db/adapter/proc/get_filter_comparetwo(datum/db/filter/compare_two/filter, list/casts, list/pflds)
 	var/field1_cast = "[filter.field1]"
 	if(casts && casts[field1_cast])
 		field1_cast = casts[field1_cast]
@@ -126,7 +126,7 @@
 			return "[field1_cast] <= [field2_cast]"
 	return "1=1" // shunt
 
-/datum/db/adapter/proc/get_filter_and(var/datum/db/filter/and/filter, var/list/casts, var/list/pflds)
+/datum/db/adapter/proc/get_filter_and(datum/db/filter/and/filter, list/casts, list/pflds)
 	var/first = TRUE
 	var/text = ""
 	for(var/item in filter.subfilters)
@@ -138,8 +138,8 @@
 	if(!text)
 		text = "(1=1)"
 	return text
-	
-/datum/db/adapter/proc/get_filter_or(var/datum/db/filter/or/filter, var/list/casts, var/list/pflds)
+
+/datum/db/adapter/proc/get_filter_or(datum/db/filter/or/filter, list/casts, list/pflds)
 	var/first = TRUE
 	var/text = ""
 	for(var/item in filter.subfilters)
@@ -152,10 +152,10 @@
 		text = "(1=1)"
 	return text
 
-/datum/db/adapter/proc/get_filter_link(var/datum/db/filter/link/filter)
+/datum/db/adapter/proc/get_filter_link(datum/db/filter/link/filter)
 	return "([filter.a_table].[filter.a_field] = [filter.b_table].[filter.b_field])"
 
-/datum/db/adapter/proc/get_filter(var/datum/db/filter/filter, var/list/casts, var/list/pflds)
+/datum/db/adapter/proc/get_filter(datum/db/filter/filter, list/casts, list/pflds)
 	if(istype(filter,/datum/db/filter/and))
 		return get_filter_and(filter, casts, pflds)
 	if(istype(filter,/datum/db/filter/or))

@@ -13,7 +13,7 @@
 	steps = list(
 		/datum/surgery_step/incision,
 		/datum/surgery_step/clamp_bleeders_step,
-		/datum/surgery_step/retract_skin
+		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE
 	self_operable = TRUE
@@ -26,6 +26,9 @@
 	desc = "make an incision"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
@@ -120,7 +123,7 @@
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
-/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/effects/bleeding/external/B in L.bleeding_effects_list)
 		return TRUE
 	return FALSE
@@ -135,10 +138,13 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		)
+	)
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This step is optional.
@@ -202,6 +208,9 @@
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
 		)
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(target_zone == "groin")
@@ -298,6 +307,9 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/tool/weldingtool,
 		)
+	preop_sound = 'sound/surgery/cautery1.ogg'
+	success_sound = 'sound/surgery/cautery2.ogg'
+	failure_sound = 'sound/items/welder.ogg'
 
 /datum/surgery_step/cauterize/tool_check(mob/user, obj/item/tool, datum/surgery/surgery)
 	. = ..()
@@ -346,7 +358,7 @@
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -363,9 +375,12 @@
 		/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE
-		)
+		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+	)
 	time = 4 SECONDS
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/effects/bone_break6.ogg'
 
 /datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
@@ -424,6 +439,9 @@
 	desc = "prise the bones open"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/effects/bone_break4.ogg'
 
 /datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -478,7 +496,7 @@
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -489,6 +507,9 @@
 	desc = "bend the bones back into place"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/effects/bone_break7.ogg'
 
 /datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -531,6 +552,9 @@
 	desc = "repair the damaged bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
@@ -601,7 +625,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/test_incision)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
@@ -659,8 +683,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 3 SECONDS
 
 /datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -705,7 +729,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	self_operable = TRUE
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 //------------------------------------

@@ -145,7 +145,7 @@
 	icon_state = "rebelband"
 
 /obj/item/clothing/head/headband/squad
-	icon_state = "headband%SQUAD%"
+	var/dummy_icon_state = "headband%SQUAD%"
 
 	var/static/list/valid_icon_states
 
@@ -155,7 +155,7 @@
 		valid_icon_states = icon_states(icon)
 	adapt_to_squad()
 
-/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(var/mob/living/carbon/human/wearer)
+/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)
 	SIGNAL_HANDLER
 
 	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
@@ -187,7 +187,7 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("headband[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
+	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -386,6 +386,16 @@
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
 
+/obj/item/clothing/head/cmcap/reporter
+	name = "combat correspondent cap"
+	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_flagcap"
+	item_state = "wc_flagcap"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_hat = HAT_GARB_OVERLAY
+
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
 	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
@@ -397,108 +407,86 @@
 
 //============================//BERETS\\=================================\\
 //=======================================================================\\
-//Berets have armor, so they have their own category. PMC caps are helmets, so they're in helmets.dm.
+//Berets DO NOT have armor, so they have their own category. PMC caps are helmets, so they're in helmets.dm.
 /obj/item/clothing/head/beret/marine
 	name = "marine officer beret"
 	desc = "A beret with the USCM insignia emblazoned on it. It radiates respect and authority."
 	icon_state = "beret_badge"
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_inventory = BLOCKSHARPOBJ
 
-/obj/item/clothing/head/helmet/beret/marine/mp
+/obj/item/clothing/head/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 25
 
-/obj/item/clothing/head/helmet/beret/marine/mp/warden
+/obj/item/clothing/head/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typically used by Wardens on USCM ships."
+	desc = "A peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. It is typically used by Wardens on USCM ships."
 
-/obj/item/clothing/head/helmet/beret/marine/mp/cmp
+/obj/item/clothing/head/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A Kevlar reinforced beret with the USCM Military Police First Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
+	black_market_value = 30
 
-/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked
+/obj/item/clothing/head/beret/marine/mp/mppeaked
 	name = "\improper USCM MP peaked cap"
-	desc = "A Kevlar reinforced peaked cap worn by the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. Something about it reminds you of an event you once read about in a history book."
+	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
 	icon_state = "mppeaked"
 
-/obj/item/clothing/head/helmet/beret/marine/mp/mpcap
+/obj/item/clothing/head/beret/marine/mp/mpcap
 	name = "\improper USCM MP ball-cap"
-	desc = "A Kevlar reinforced ball-cap, typically worn by the more casual of the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. "
+	desc = "A ball-cap, typically worn by the more casual of the USCM's Military Police."
 	icon_state = "mpcap"
 
-/obj/item/clothing/head/helmet/beret/marine/mp/provost
+/obj/item/clothing/head/beret/marine/mp/provost
 	name = "\improper USCM provost beret"
 	icon_state = "beretwo"
-	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
+	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
-/obj/item/clothing/head/helmet/beret/marine/mp/provost/senior
+/obj/item/clothing/head/beret/marine/mp/provost/senior
 	name = "\improper USCM senior provost beret"
 	icon_state = "coblackberet"
-	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
+	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 
-/obj/item/clothing/head/helmet/beret/marine/mp/tis
+/obj/item/clothing/head/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
 	icon_state = "berettis"
-	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
+	desc = "A beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
-	desc = "An armored beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
 	icon_state = "codressberet"
-	desc = "An armored white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	desc = "A white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine major black beret"
 	icon_state = "coblackberet"
-	desc = "An armored black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	desc = "A black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
-	desc = "An armored blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
+	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
 	icon_state = "cdreberet"
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
 	name = "marine colonel beret"
-	desc = "A dark blue, custom-tailored armored beret signifying The Colonel. Definitely not an alias for a General."
+	desc = "A dark blue, custom-tailored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
@@ -518,6 +506,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
 	name = "captain's dress white peaked cap"
@@ -561,10 +550,9 @@ D
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	anti_hug = 1
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
 	..()
@@ -583,8 +571,7 @@ D
 	name = "bear pelt hat"
 	desc = "Fuzzy."
 	icon_state = "bearpelt"
-	siemens_coefficient = 2.0
-	anti_hug = 4
+	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -595,7 +582,7 @@ D
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
@@ -608,7 +595,7 @@ D
 	)
 	icon_state = "ivan_beret"
 	item_state = "ivan_beret"
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -619,7 +606,7 @@ D
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
@@ -631,7 +618,7 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	icon_state = "freelancer_cap"
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -642,7 +629,7 @@ D
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
@@ -658,7 +645,7 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	icon_state = "rebel_hood"
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -669,7 +656,7 @@ D
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
@@ -682,7 +669,7 @@ D
 	name = "\improper armored General cap"
 	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
 	icon_state = "general_helmet"
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -693,7 +680,7 @@ D
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 

@@ -51,14 +51,14 @@
 	if(.)
 		return
 
-	if(!isXenoQueen(usr) && !allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+	if(!isqueen(usr) && !allowed(usr))
+		to_chat(usr, SPAN_DANGER("Access denied."))
 		return TRUE
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 // if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// to_chat(usr, SPAN_WARNING("The engines are still refueling."))
 // return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
@@ -71,14 +71,14 @@
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(DOCKING_SUCCESS)
 				if(previous_status != SHUTTLE_IDLE)
-					visible_message("<span class='notice'>Destination updated, recalculating route.</span>")
+					visible_message(SPAN_NOTICE("Destination updated, recalculating route."))
 				else
-					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
+					visible_message(SPAN_NOTICE("Shuttle departing. Please stand away from the doors."))
 			if(DOCKING_NULL_SOURCE)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				return TRUE
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, SPAN_NOTICE("Unable to comply."))
 				return TRUE
 
 /obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
@@ -92,6 +92,23 @@
 	req_access = list()
 	breakable = FALSE
 	var/disabled = FALSE
+	var/compatible_landing_zones = list()
+
+/obj/structure/machinery/computer/shuttle/ert/broken
+	name = "nonfunctional shuttle control console"
+	disabled = TRUE
+	desc = "A transport shuttle flight computer. This one seems broken."
+
+/obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
+	. = ..()
+	compatible_landing_zones = get_landing_zones()
+
+/obj/structure/machinery/computer/shuttle/ert/proc/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!dock.is_external)
+			. += list(dock)
+
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
 	return disabled
@@ -131,24 +148,22 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	var/list/docks = SSshuttle.stationary
 	. = list()
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
 	.["is_disabled"] = disabled
 
-	var/door_count = length(ert.doors)
+	var/door_count = length(ert.external_doors)
 	var/locked_count = 0
-	for(var/obj/structure/machinery/door/airlock/air as anything in ert.doors)
+	for(var/obj/structure/machinery/door/airlock/air as anything in ert.external_doors)
 		if(air.locked)
 			locked_count++
 	.["locked_down"] = door_count == locked_count
 
-	if(ert.destination)
-		.["target_destination"] = ert.destination.name
+	.["target_destination"] = ert.destination?.name
 
 	.["destinations"] = list()
-	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
@@ -206,29 +221,57 @@
 		if("open")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("open")
+			ert.control_doors("open", external_only = TRUE)
 		if("close")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("close")
+			ert.control_doors("close", external_only = TRUE)
 		if("lockdown")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("force-lock")
+			ert.control_doors("force-lock", external_only = TRUE)
 		if("lock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("lock")
+			ert.control_doors("lock", external_only = TRUE)
 		if("unlock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("unlock")
+			ert.control_doors("unlock", external_only = TRUE)
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)
 	if(.)
 		return TRUE
 	tgui_interact(user)
+
+/obj/structure/machinery/computer/shuttle/ert/small
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "comm_alt"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/small/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_port))
+			continue
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_starboard))
+			continue
+		. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/big
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "comm_alt"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/big/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		. += list(dock)
 
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
@@ -253,7 +296,7 @@
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
-/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)
 		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)

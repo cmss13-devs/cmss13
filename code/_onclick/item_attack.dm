@@ -14,6 +14,10 @@
 	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if(.)
+		return
+
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
@@ -94,8 +98,8 @@
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
+		if(isxeno(M))
+			var/mob/living/carbon/xenomorph/X = M
 			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)

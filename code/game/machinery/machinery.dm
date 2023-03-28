@@ -110,6 +110,22 @@ Class Procs:
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
+/obj/structure/machinery/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----MACHINERY-----")
+	VV_DROPDOWN_OPTION(VV_HK_TOGGLEPOWER, "Toggle Needs Power")
+
+/obj/structure/machinery/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_TOGGLEPOWER])
+		if(!check_rights(R_VAREDIT))
+			return
+
+		needs_power = !needs_power
+		power_change()
+		message_admins("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
+
+
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
 	machines += src
@@ -126,7 +142,7 @@ Class Procs:
 		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
-/obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -169,19 +185,19 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				deconstruct()
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			deconstruct()
+			deconstruct(FALSE)
 			return
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/structure/machinery/proc/update_use_power(var/new_use_power)
+/obj/structure/machinery/proc/update_use_power(new_use_power)
 	if (new_use_power == use_power)
 		return //don't need to do anything
 
@@ -201,10 +217,10 @@ Class Procs:
 			return idle_power_usage + active_power_usage
 	return 0
 
-/obj/structure/machinery/proc/operable(var/additional_flags = 0)
+/obj/structure/machinery/proc/operable(additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/structure/machinery/proc/inoperable(additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
@@ -264,7 +280,7 @@ Class Procs:
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 
-/obj/structure/machinery/proc/state(var/msg)
+/obj/structure/machinery/proc/state(msg)
 	for(var/mob/O in hearers(src, null))
 		O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
 
@@ -300,7 +316,7 @@ Class Procs:
 	qdel(src)
 	return 1
 
-/obj/structure/machinery/proc/get_repair_move_text(var/include_name = TRUE)
+/obj/structure/machinery/proc/get_repair_move_text(include_name = TRUE)
 	return
 
 // UI related procs \\

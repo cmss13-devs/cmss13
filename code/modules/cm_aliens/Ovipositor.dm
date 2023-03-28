@@ -57,7 +57,7 @@
 	health -= severity/4
 
 //Every other type of nonhuman mob
-/obj/ovipositor/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/ovipositor/attack_alien(mob/living/carbon/xenomorph/M)
 	switch(M.a_intent)
 		if(INTENT_HELP)
 			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its claws."), \
@@ -79,7 +79,7 @@
 
 	return XENO_ATTACK_ACTION
 
-/obj/ovipositor/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/ovipositor/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
 	SPAN_DANGER("You nudge your head against [src]."))
 
@@ -87,6 +87,6 @@
 /obj/ovipositor/get_projectile_hit_boolean(obj/item/projectile/P)
 	return TRUE
 
-/obj/ovipositor/bullet_act(var/obj/item/projectile/Proj)
+/obj/ovipositor/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	return 1

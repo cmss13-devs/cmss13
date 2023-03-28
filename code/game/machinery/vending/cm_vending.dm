@@ -752,7 +752,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/gear
 	name = "ColMarTech Automated Gear Rack"
 	desc = "An automated equipment rack hooked up to a colossal storage of standard-issue gear."
-	icon_state = "gear_rack"
+	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND
@@ -786,7 +786,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted
 	name = "\improper ColMarTech generic sorted rack/vendor"
 	desc = "This is pure vendor without points system."
-	icon_state = "guns_rack"
+	icon_state = "guns"
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 	show_points = FALSE

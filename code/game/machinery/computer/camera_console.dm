@@ -286,20 +286,23 @@
 
 /obj/structure/machinery/computer/cameras/mining
 	name = "Outpost Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the various cameras on the outpost."
-	icon_state = "miningcameras"
+	icon_state = "cameras"
 	network = list("MINE")
 	circuit = /obj/item/circuitboard/computer/cameras/mining
 
 /obj/structure/machinery/computer/cameras/engineering
 	name = "Engineering Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to monitor fires and breaches."
-	icon_state = "engineeringcameras"
+	icon_state = "cameras"
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	circuit = /obj/item/circuitboard/computer/cameras/engineering
 
 /obj/structure/machinery/computer/cameras/nuclear
 	name = "Mission Monitor"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the built-in cameras in helmets."
 	icon_state = "syndicam"
 	network = list("NUKE")

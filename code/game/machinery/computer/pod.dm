@@ -136,15 +136,13 @@
 
 
 /obj/structure/machinery/computer/pod/old
-	icon_state = "old"
 	name = "DoorMex Control Computer"
 	title = "Door Controls"
-
-
 
 /obj/structure/machinery/computer/pod/old/syndicate
 	name = "ProComp Executive IIc"
 	desc = "The Syndicate operate on a tight budget. Operates external airlocks."
+	icon_state = "syndicomp"
 	title = "External Airlock Controls"
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
@@ -157,4 +155,5 @@
 
 /obj/structure/machinery/computer/pod/old/swf
 	name = "Magix System IV"
+	icon_state = "wizard"
 	desc = "An arcane artifact that holds much magic. Running E-Knock 2.2: Sorceror's Edition"

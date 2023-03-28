@@ -15,7 +15,8 @@
 	name = "\improper Turing Dispenser"
 	desc = "A chem dispenser variant that can not be operated manually, but will instead automatically dispense chemicals based on a program of chemicals, loaded using a vial box. Despite having a digital screen the machine is mostly analog."
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
-	icon_state = "autodispenser_empty_open"
+	icon_state = "autodispenser"
+	var/base_icon_state = "autodispenser"
 	active_power_usage = 40
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
@@ -72,13 +73,13 @@
 		overlays += "+autodispenser_beaker"
 
 	if(stat & NOPOWER)
-		icon_state = "autodispenser_nopower"
+		icon_state = "[base_icon_state]_nopower"
 		return // do not show state info
 	else if(stat & BROKEN)
-		icon_state = "autodispenser_broken"
+		icon_state = "[base_icon_state]_broken"
 		return
 	else
-		icon_state = "autodispenser"
+		icon_state = "[base_icon_state]"
 
 	if(status < AUTODISPENSER_IDLE)
 		overlays += "+stuck"

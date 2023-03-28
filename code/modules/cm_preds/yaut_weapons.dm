@@ -896,6 +896,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
+	icon_state = "plasma_ebony"
 	var/base_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
 	item_icons = list(

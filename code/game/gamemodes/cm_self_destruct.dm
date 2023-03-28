@@ -326,6 +326,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //Generic parent base for the self_destruct items.
 /obj/structure/machinery/self_destruct
 	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
+	icon_state = "console_1"
+	var/base_icon_state = "console"
 	use_power = USE_POWER_NONE //Runs unpowered, may need to change later.
 	density = FALSE
 	anchored = TRUE //So it doesn't go anywhere.
@@ -337,7 +339,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/Initialize(mapload, ...)
 	. = ..()
-	icon_state += "_1"
+	icon_state = "[base_icon_state]_1"
 
 /obj/structure/machinery/self_destruct/Destroy()
 	. = ..()
@@ -356,16 +358,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/proc/lock_or_unlock(lock)
 	set waitfor = 0
 	in_progress = 1
-	flick(initial(icon_state) + (lock? "_5" : "_2"),src)
+	flick("[base_icon_state]" + (lock? "_5" : "_2"),src)
 	sleep(9)
 	mouse_opacity = !mouse_opacity
-	icon_state = initial(icon_state) + (lock? "_1" : "_3")
+	icon_state = "[base_icon_state]" + (lock? "_1" : "_3")
 	in_progress = 0
 	active_state = active_state > SELF_DESTRUCT_MACHINE_INACTIVE ? SELF_DESTRUCT_MACHINE_INACTIVE : SELF_DESTRUCT_MACHINE_ACTIVE
 
 /obj/structure/machinery/self_destruct/console
 	name = "self-destruct control panel"
-	icon_state = "console"
+	icon_state = "console_1"
+	base_icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/self_destruct/console/Destroy()
@@ -435,7 +438,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/rod
 	name = "self-destruct control rod"
 	desc = "It is part of a complicated self-destruct sequence, but relatively simple to operate. Twist to arm or disarm."
-	icon_state = "rod"
+	icon_state = "rod_1"
+	base_icon_state = "rod"
 	layer = BELOW_OBJ_LAYER
 	var/activate_time
 

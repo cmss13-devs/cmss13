@@ -186,7 +186,7 @@
 	icon_state = "bptube1"
 	base_state = "bptube"
 /obj/structure/machinery/light/alt
-	icon_state = "ltube1"
+	icon_state = "ltube"
 	base_state = "ltube"
 
 

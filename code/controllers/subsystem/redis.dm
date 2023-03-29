@@ -1,5 +1,8 @@
 #define CONFIG_DISABLED "config_disabled"
 
+#define SHUTDOWN "Server Shutdown"
+#define TGS_COMPILE "TGS Compile"
+
 SUBSYSTEM_DEF(redis)
 	name = "Redis"
 	init_order = SS_INIT_REDIS
@@ -61,6 +64,9 @@ SUBSYSTEM_DEF(redis)
 		publish(message.channel, message.message)
 		queue -= message
 
+/datum/controller/subsystem/redis/Shutdown()
+	disconnect(SHUTDOWN)
+
 /datum/controller/subsystem/redis/proc/connect()
 	if(!CONFIG_GET(flag/redis_enabled))
 		return CONFIG_DISABLED
@@ -77,8 +83,8 @@ SUBSYSTEM_DEF(redis)
 	connected = TRUE
 	can_fire = TRUE
 
-/datum/controller/subsystem/redis/proc/disconnect()
-	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "disconnect")
+/datum/controller/subsystem/redis/proc/disconnect(reason)
+	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "disconnect", "reason" = reason)
 	publish("byond.meta", json_encode(data))
 	rustg_redis_disconnect()
 	connected = FALSE
@@ -133,8 +139,3 @@ SUBSYSTEM_DEF(redis)
 
 /datum/controller/subsystem/redis/vv_edit_var(var_name, var_value)
 	return FALSE
-
-/world/Del()
-	. = ..()
-
-	rustg_redis_disconnect()

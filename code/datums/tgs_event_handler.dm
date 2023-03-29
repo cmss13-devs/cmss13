@@ -15,7 +15,7 @@
 		if(TGS_EVENT_COMPILE_START)
 			message_admins("TGS: Deployment started, new game version incoming...")
 			message_admins("Note: Redis connection interrupted.")
-			SSredis.disconnect()
+			SSredis.disconnect(TGS_COMPILE)
 		if(TGS_EVENT_COMPILE_CANCELLED)
 			message_admins("TGS: Deployment cancelled!")
 			SSredis.reconnect()

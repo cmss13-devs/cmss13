@@ -401,10 +401,20 @@
 
 /obj/item/storage/backpack/marine/ammo_rack
 	name = "\improper IMP ammo rack"
-	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans. Helps you lug around extra rounds."
+	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
 	has_gamemode_skin = FALSE
-	icon_state = ""
-	item_state = ""
+	storage_slots = 3
+	can_hold = list(/obj/item/ammo_box)
+	max_w_class = SIZE_MASSIVE
+	xeno_types = null
+	var/base_icon_state = "ammo_pack_"
+/obj/item/storage/backpack/marine/ammo_rack/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/backpack/marine/ammo_rack/update_icon()
+	. = ..()
+	icon_state = "[base_icon_state][length(contents)]"
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."

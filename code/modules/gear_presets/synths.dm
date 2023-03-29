@@ -119,7 +119,7 @@
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
@@ -173,7 +173,7 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -196,7 +196,7 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -217,7 +217,7 @@
 		WEAR_R_HAND = /obj/item/device/motiondetector,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = SCIENTIST_SURVIVOR
@@ -236,7 +236,7 @@
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -261,7 +261,7 @@
 		WEAR_R_HAND = /obj/item/tool/mop,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/galoshes,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/chef_synth
@@ -277,7 +277,7 @@
 		WEAR_JACKET = /obj/item/clothing/suit/chef,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/teacher_synth
@@ -305,7 +305,7 @@
 		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
 		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/baseballbat/metal
+		WEAR_L_HAND = /obj/item/weapon/baseballbat/metal
 	)
 
 /datum/equipment_preset/synth/survivor/bartender_synth
@@ -324,7 +324,7 @@
 		WEAR_R_HAND = /obj/item/storage/beer_pack,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/detective_synth
@@ -336,12 +336,12 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/det_suit/black,
-		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_HAND = /obj/item/device/camera,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -359,7 +359,7 @@
 		WEAR_IN_BACK = /obj/item/device/camera,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB,
-		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/CMB/synth,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
@@ -378,13 +378,13 @@
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/servicedress,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_BACK = /obj/item/weapon/telebaton,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -404,7 +404,7 @@
 		WEAR_BACK = /obj/item/storage/backpack/lightpack,
 		WEAR_IN_BACK = /obj/item/device/binoculars,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
-		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/pmc,
 		WEAR_FEET = /obj/item/clothing/shoes/veteran/pmc/knife,
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
@@ -428,7 +428,7 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_R_HAND = /obj/item/clipboard,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR
@@ -446,7 +446,7 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/yellow,
 		WEAR_R_HAND = /obj/item/device/motiondetector,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
+		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR

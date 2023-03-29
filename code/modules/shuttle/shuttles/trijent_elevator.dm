@@ -8,7 +8,7 @@
 	preferred_direction = NORTH
 	port_direction = SOUTH
 
-	area_type = /area/shuttle/trijent_shuttle
+	area_type = /area/shuttle/trijent_shuttle/elevator
 
 	// Shuttle timings
 	callTime = 30 SECONDS

@@ -9,13 +9,20 @@
 	icon_state = "elevator_screen"
 	shuttleId = MOBILE_TRIJENT_ELEVATOR
 	var/dockId
+	var/datum/elevator/destination/site
 
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
-	. = list()
-	var/datum/elevator/destination/site = new()
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/Initialize()
+	. = ..()
+	site = new()
 	site.id = dockId
 	site.name = "call"
-	. += list(site)
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/Destroy()
+	. = ..()
+	site = null
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
+	. = list(site)
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
 	dockId = STAT_TRIJENT_LZ1

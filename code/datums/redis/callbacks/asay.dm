@@ -4,7 +4,7 @@
 /datum/redis_callback/asay/on_message(message)
 	var/list/data = json_decode(message)
 
-	if(data["source"] == "game")
+	if(data["source"] == CONFIG_GET(string/instance_name))
 		return
 
 	var/msg = SPAN_ADMINSAY("<span class='prefix'>ADMIN:</span> <EM>[data["author"]]@[data["source"]]</EM>: <span class='message'>[strip_html(data["message"])]</span>")

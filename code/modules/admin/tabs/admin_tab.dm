@@ -231,7 +231,7 @@
 		return
 
 	log_adminpm("ADMIN : [key_name(src)] : [msg]")
-	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
+	var/list/data = list("author" = src.key, "source" = CONFIG_GET(string/instance_name), "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -343,7 +343,7 @@
 	if (!msg)
 		return
 
-	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
+	var/list/data = list("author" = src.key, "source" = CONFIG_GET(string/instance_name), "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)

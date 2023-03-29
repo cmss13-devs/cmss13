@@ -283,8 +283,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("PATCHES", 0, null, null, null),
-		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("USCM Shoulder Patch", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falcon, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("USCM Shoulder Patch", 0, /obj/item/clothing/accessory/patch, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),

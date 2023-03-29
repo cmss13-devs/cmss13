@@ -113,6 +113,6 @@
 	if (!istype(zenomorf))
 		return
 
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("the mixture leaves your glands!"))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("The mixture leaves your glands!"))
 	disable_healing()
 	buffs_active = FALSE

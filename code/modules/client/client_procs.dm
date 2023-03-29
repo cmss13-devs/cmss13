@@ -468,7 +468,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/list/activemins = adm["present"]
 		var/list/data = list("type" = "logout", "key" = src.key, "remaining" = length(activemins), "source" = "game")
 
-		rustg_redis_publish("byond.access", json_encode(data))
+		SSredis.publish("byond.access", json_encode(data))
 
 	..()
 	return QDEL_HINT_HARDDEL_NOW
@@ -488,7 +488,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/list/activemins = adm["present"]
 		var/list/data = list("type" = "login", "key" = src.key, "remaining" = length(activemins), "source" = "game")
 
-		rustg_redis_publish("byond.access", json_encode(data))
+		SSredis.publish("byond.access", json_encode(data))
 
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)

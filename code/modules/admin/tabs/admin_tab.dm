@@ -243,7 +243,7 @@
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
 
-	rustg_redis_publish("byond.asay", json_encode(data))
+	SSredis.publish("byond.asay", json_encode(data))
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -369,7 +369,7 @@
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
 
 	var/list/data = list("author" = src.key, "source" = "game", "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
-	rustg_redis_publish("byond.msay", json_encode(data))
+	SSredis.publish("byond.msay", json_encode(data))
 
 /client/proc/get_mod_say()
 	var/msg = input(src, null, "msay \"text\"") as text|null

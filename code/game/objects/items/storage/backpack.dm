@@ -399,6 +399,12 @@
 	xeno_icon_state = "marinepack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
+/obj/item/storage/backpack/marine/ammo_rack
+	name = "\improper IMP ammo rack"
+	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans. Helps you lug around extra rounds."
+	has_gamemode_skin = FALSE
+	icon_state = ""
+	item_state = ""
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."

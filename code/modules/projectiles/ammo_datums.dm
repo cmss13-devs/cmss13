@@ -2670,7 +2670,7 @@
 	damage_falloff = 0
 	max_range = 16
 
-/datum/ammo/xeno/acid/healing/on_hit_turf(mob/target, obj/item/projectile/impacting_projectile)
+/datum/ammo/xeno/acid/healing/on_hit_turf(turf/target, obj/item/projectile/impacting_projectile)
 	. = ..()
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL

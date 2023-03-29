@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		list("Underbarrel Flashlight Grip", 4, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
 
 		list("UTILITIES", -1, null, null),
-		list("M11 Throwing Knife", 18, /obj/item/weapon/melee/throwing_knife, VENDOR_ITEM_REGULAR),
+		list("M11 Throwing Knife", 18, /obj/item/weapon/throwing_knife, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", 4, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", 2, /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)

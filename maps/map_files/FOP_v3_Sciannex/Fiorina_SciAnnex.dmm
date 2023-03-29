@@ -133,7 +133,7 @@
 /area/fiorina/station/security/wardens)
 "aat" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -147,7 +147,7 @@
 /area/fiorina/station/research_cells)
 "aav" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -502,7 +502,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/aux_engi)
 "ane" = (
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	name = "ceremonial knife"
 	},
 /turf/open/floor/wood,
@@ -4736,7 +4736,7 @@
 /area/fiorina/station/lowsec)
 "cRN" = (
 /obj/structure/closet/emcloset,
-/obj/item/weapon/melee/nullrod{
+/obj/item/weapon/nullrod{
 	desc = "The explosive tip has been deactivated.";
 	force = 25;
 	icon_state = "hefasword";
@@ -10550,7 +10550,7 @@
 	},
 /area/fiorina/station/park)
 "gyW" = (
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "gzb" = (
@@ -12588,7 +12588,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "hMX" = (
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -14428,7 +14428,7 @@
 /area/fiorina/station/power_ring)
 "jas" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -6;
 	pixel_y = 12
@@ -14778,7 +14778,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "jki" = (
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -15361,7 +15361,7 @@
 	},
 /area/fiorina/station/medbay)
 "jBL" = (
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -17142,7 +17142,7 @@
 	},
 /area/fiorina/station/botany)
 "kCI" = (
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "kCK" = (
@@ -18382,7 +18382,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -19661,7 +19661,7 @@
 /area/fiorina/station/power_ring)
 "mfe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/twohanded/sledgehammer{
+/obj/item/weapon/twohanded/sledgehammer{
 	throwforce = 45
 	},
 /turf/open/floor/plating/prison,
@@ -19791,7 +19791,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -25523,7 +25523,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "pRH" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "pSm" = (
@@ -26459,7 +26459,7 @@
 	},
 /area/fiorina/maintenance)
 "qwy" = (
-/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitepurple"
@@ -34800,7 +34800,7 @@
 /area/fiorina/station/security)
 "vKP" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/katana,
+/obj/item/weapon/katana,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "vLH" = (
@@ -35640,7 +35640,7 @@
 	},
 /area/fiorina/station/medbay)
 "wot" = (
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -37214,7 +37214,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/item/clothing/mask/muzzle,
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/chainofcommand,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "xoQ" = (
@@ -38814,7 +38814,7 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
@@ -39026,14 +39026,14 @@ bQM
 bQM
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39238,21 +39238,21 @@ tfP
 tfP
 bQM
 bQM
-xwC
+pXH
 rOa
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 bQM
 bQM
 bQM
@@ -39457,13 +39457,13 @@ bQM
 bQM
 bQM
 rOa
-xwC
+pXH
 pXH
 bQM
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 pqO
@@ -39668,14 +39668,14 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
 bQM
 bQM
 pXH
-xwC
+pXH
 rOa
 bQM
 byb
@@ -39880,7 +39880,7 @@ pXH
 pXH
 bQM
 bQM
-xwC
+pXH
 rOa
 pXH
 pXH
@@ -40132,7 +40132,7 @@ bQM
 bQM
 bQM
 baC
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -40344,8 +40344,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40556,8 +40556,8 @@ bQM
 bQM
 bQM
 baC
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40768,8 +40768,8 @@ bQM
 bQM
 bQM
 bQM
-iSQ
-iSQ
+baC
+baC
 bQM
 bQM
 bQM
@@ -40980,7 +40980,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -41192,7 +41192,7 @@ bQM
 bQM
 bQM
 bQM
-iSQ
+baC
 rOa
 bQM
 bQM
@@ -64599,7 +64599,7 @@ kbO
 kbO
 dFk
 ezJ
-xLi
+lJa
 kLX
 oHn
 ddL
@@ -67202,7 +67202,7 @@ vNq
 tvI
 sYv
 bQM
-ggQ
+bTe
 vNq
 vNq
 tvI
@@ -68480,7 +68480,7 @@ cAW
 cAW
 cAW
 bTe
-eJQ
+vNq
 vNq
 tvI
 sYv
@@ -72203,7 +72203,7 @@ bQM
 yaY
 bQM
 rOa
-tan
+eph
 fiq
 fiq
 fiq
@@ -72508,7 +72508,7 @@ cAW
 cAW
 bce
 cAW
-vnr
+bce
 hVS
 vBP
 byl
@@ -73473,12 +73473,12 @@ bQM
 bQM
 rOa
 rOa
-tan
-tan
+eph
+eph
 rOa
 rOa
 rOa
-tan
+eph
 rOa
 eph
 eph
@@ -81779,7 +81779,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 geF
 jmG
 aDs
@@ -82415,7 +82415,7 @@ cAW
 cAW
 cAW
 cAW
-tan
+eph
 cAW
 cAW
 cAW
@@ -85611,7 +85611,7 @@ sEi
 hlK
 lRT
 cAW
-vnr
+bce
 cAW
 cAW
 lRT
@@ -86771,7 +86771,7 @@ rOa
 rOa
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM
@@ -88869,7 +88869,7 @@ cAW
 bQM
 rOa
 rOa
-kPz
+rOa
 rOa
 bQM
 bQM

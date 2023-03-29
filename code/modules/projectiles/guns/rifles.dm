@@ -426,7 +426,6 @@
 		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
 		/obj/item/ammo_magazine/rifle/m41aMK1/heap,
-		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 		/obj/item/ammo_magazine/rifle/m41aMK1/penetrating,
 	)
@@ -1492,6 +1491,7 @@
 	wield_delay = WIELD_DELAY_FAST
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood, /obj/item/attachable/scope/mini/hunting)
 	map_specific_decoration = FALSE
+	civilian_usable_override = TRUE
 
 // Identical to the L42 in stats, *except* for extra recoil and scatter that are nulled by keeping the stock on.
 /obj/item/weapon/gun/rifle/l42a/abr40/set_gun_config_values()

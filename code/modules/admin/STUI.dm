@@ -38,6 +38,11 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	var/list/tgui = list() //TGUI
 	var/list/processing = 0 //bitflag for logs that need processing
 
+/datum/STUI/New()
+	. = ..()
+	if(length(stui_init_runtimes)) // Report existing errors that might have occured during static initializers
+		runtime = stui_init_runtimes.Copy()
+
 /datum/STUI/Topic(href, href_list)
 	if(href_list["command"])
 		usr.STUI_log = text2num(href_list["command"])

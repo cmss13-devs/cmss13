@@ -1,4 +1,4 @@
-// DM Environment file for baystation12.dme.
+// DM Environment file for colonialmarines.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
  // New source code should be placed in .dm files: choose File/New --> Code File.
 // BEGIN_INTERNALS
@@ -420,6 +420,7 @@
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\bloody_feet.dm"
 #include "code\datums\elements\drop_retrieval.dm"
+#include "code\datums\elements\id_lock.dm"
 #include "code\datums\elements\mouth_drop_item.dm"
 #include "code\datums\elements\poor_eyesight_correction.dm"
 #include "code\datums\elements\suturing.dm"
@@ -597,6 +598,7 @@
 #include "code\defines\procs\records.dm"
 #include "code\game\atoms.dm"
 #include "code\game\atoms_movable.dm"
+#include "code\game\bioscans.dm"
 #include "code\game\blood.dm"
 #include "code\game\runtimes.dm"
 #include "code\game\shuttle_engines.dm"
@@ -662,6 +664,7 @@
 #include "code\game\jobs\job\civilians\civilian.dm"
 #include "code\game\jobs\job\civilians\other\liaison.dm"
 #include "code\game\jobs\job\civilians\other\mess_seargent.dm"
+#include "code\game\jobs\job\civilians\other\reporter.dm"
 #include "code\game\jobs\job\civilians\other\survivors.dm"
 #include "code\game\jobs\job\civilians\support\cmo.dm"
 #include "code\game\jobs\job\civilians\support\doctor.dm"
@@ -1308,6 +1311,7 @@
 #include "code\modules\admin\verbs\pray.dm"
 #include "code\modules\admin\verbs\randomverbs.dm"
 #include "code\modules\admin\verbs\select_equipment.dm"
+#include "code\modules\admin\verbs\shakeshipverb.dm"
 #include "code\modules\admin\verbs\shuttlepanel.dm"
 #include "code\modules\admin\verbs\xooc.dm"
 #include "code\modules\admin\verbs\yooc.dm"
@@ -1330,6 +1334,7 @@
 #include "code\modules\admin\view_variables\topic_list.dm"
 #include "code\modules\admin\view_variables\view_variables.dm"
 #include "code\modules\almayer\machinery.dm"
+#include "code\modules\almayer\shakeship.dm"
 #include "code\modules\animations\animation_library.dm"
 #include "code\modules\assembly\assembly.dm"
 #include "code\modules\assembly\helpers.dm"
@@ -1453,6 +1458,7 @@
 #include "code\modules\cm_aliens\structures\special\pred_nest.dm"
 #include "code\modules\cm_aliens\structures\special\pylon_core.dm"
 #include "code\modules\cm_aliens\structures\special\recovery_node.dm"
+#include "code\modules\cm_marines\altitude_control_console.dm"
 #include "code\modules\cm_marines\anti_air.dm"
 #include "code\modules\cm_marines\codebook.dm"
 #include "code\modules\cm_marines\Donor_Items.dm"
@@ -1971,6 +1977,7 @@
 #include "code\modules\paperwork\clipboard.dm"
 #include "code\modules\paperwork\filingcabinet.dm"
 #include "code\modules\paperwork\folders.dm"
+#include "code\modules\paperwork\notepad.dm"
 #include "code\modules\paperwork\paper.dm"
 #include "code\modules\paperwork\paper_bundle.dm"
 #include "code\modules\paperwork\paperbin.dm"

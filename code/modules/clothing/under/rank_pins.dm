@@ -64,11 +64,6 @@
 	rank_short = "ME9C"
 	icon_state = "ranks_snco"
 
-/obj/item/clothing/accessory/ranks/marine/e10c
-	rank_short = "ME10C"
-	icon_state = "ranks_snco"
-	icon_state = "ranks_snco"
-
 //OFFICERS
 /obj/item/clothing/accessory/ranks/marine/o1
 	name = "rank boards"

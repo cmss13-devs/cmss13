@@ -254,7 +254,7 @@
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE
 	))
-	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
+	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
 		H.remove_hud_from(user)
 		//squad leader locator is invisible again
@@ -510,6 +510,11 @@
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
+
+/obj/item/device/radio/headset/almayer/reporter
+	name = "reporter radio headset"
+	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 
 /obj/item/device/radio/headset/almayer/rep
 	name = "representative radio headset"

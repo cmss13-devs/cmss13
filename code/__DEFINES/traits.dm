@@ -201,6 +201,10 @@
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
+//This item will use special rename component behaviors.
+//ie. naming a regulation tape "example" will become regulation tape (example)
+#define TRAIT_ITEM_RENAME_SPECIAL "t_item_rename_special"
+
 //-- structure traits --
 // TABLE TRAITS
 /// If the table is being flipped, prevent any changes that will mess with adjacency handling
@@ -269,6 +273,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_TOOL_PEN" = TRAIT_TOOL_PEN,
 		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
+		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
@@ -305,6 +310,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
+///Status trait coming from their job
+#define TRAIT_SOURCE_JOB "t_s_job"
 ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
 ///Status trait coming from equipment

@@ -33,7 +33,6 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_COMMAND,
-		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_CIVILIAN_PUBLIC,
@@ -95,6 +94,92 @@
 			else
 				return paygrade
 	return paygrade
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/reporter
+	name = "Combat Correspondent"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	access = list(
+		ACCESS_ILLEGAL_PIRATE,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_PRESS,
+	)
+	assignment = JOB_COMBAT_REPORTER
+	rank = JOB_COMBAT_REPORTER
+	paygrade = "C"
+	role_comm_title = "PRESS"
+	skills = /datum/skills/civilian
+	idtype = /obj/item/card/id/silver/cl
+
+	minimap_icon = "correspondent"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
+/datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/H)
+	var/back_item = /obj/item/storage/backpack/satchel
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/notepad(H), WEAR_IN_BACK)
+
+/datum/equipment_preset/uscm_ship/reporter_uscm
+	name = "Combat Correspondent"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	access = list(
+		ACCESS_MARINE_COMMAND,
+		ACCESS_PRESS,
+		ACCESS_MARINE_PREP,
+	)
+	assignment = JOB_COMBAT_REPORTER
+	rank = JOB_COMBAT_REPORTER
+	paygrade = "ME4"
+	role_comm_title = "CC"
+	skills = /datum/skills/pfc
+	idtype = /obj/item/card/id/dogtag
+
+	minimap_icon = "correspondent"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+
+/datum/equipment_preset/uscm_ship/reporter_uscm/load_gear(mob/living/carbon/human/H)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	var/obj/item/clothing/under/marine/uniform = new()
+	uniform.attach_accessory(H, new /obj/item/clothing/accessory/storage/black_vest/brown_vest)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(uniform, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/device/camera(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/camera_film(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/notepad(H), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
@@ -336,6 +421,10 @@
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
 	access = get_all_marine_access()
+
+/datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/H, client/mob_client)
+	..()
+	ADD_TRAIT(H, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
 
 /datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
 	var/sidearm = "Mateba"

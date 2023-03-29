@@ -4,6 +4,7 @@ var/list/alldepartments = list()
 #define DEPARTMENT_WY "Weyland-Yutani"
 #define DEPARTMENT_HC "USCM High Command"
 #define DEPARTMENT_PROVOST "USCM Provost Office"
+#define DEPARTMENT_PRESS "Various Press Organizations"
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -110,6 +111,8 @@ var/list/alldepartments = list()
 		alldepartments += DEPARTMENT_HC
 	if(!(DEPARTMENT_PROVOST in alldepartments))
 		alldepartments += DEPARTMENT_PROVOST
+	if(!(DEPARTMENT_PRESS in alldepartments))
+		alldepartments += DEPARTMENT_PRESS
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -169,6 +172,10 @@ var/list/alldepartments = list()
 
 				else if(target_department == DEPARTMENT_WY)
 					company_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				else if(target_department == DEPARTMENT_PRESS)
+					press_fax(src, tofax.info, tofax.name, usr)
 					fax_cooldown = 600
 
 				else
@@ -238,6 +245,7 @@ var/list/alldepartments = list()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[usr];originfax=\ref[src]'>Send Press fax message</option>"
 
 /proc/highcom_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
@@ -273,7 +281,6 @@ var/list/alldepartments = list()
 	GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
-
 /proc/company_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
@@ -286,6 +293,23 @@ var/list/alldepartments = list()
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	announce_fax(msg_admin, msg_ghost)
+
+/proc/press_fax(originfax, sent, sentname, mob/Sender)
+	var/faxcontents = "[sent]"
+	GLOB.fax_contents += faxcontents
+
+	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PRESS FAX: </font>[key_name(Sender, 1)] ")
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
+	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
+	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
+	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
+	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
+	GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/announce_fax(msg_admin, msg_ghost)

@@ -81,12 +81,13 @@
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0")
 	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
-	wound_overlay.color = owner.species.blood_color
+	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
 	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
-	forceMove(mob_owner)
+	if(owner)
+		forceMove(owner)
 
 
 
@@ -351,15 +352,19 @@
 	//If limb was damaged before and took enough damage, try to cut or tear it off
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
-		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !issynth(owner))\
-			&& CONFIG_GET(flag/limbs_can_break)\
-			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
-		)
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
-				droplimb(0, 0, damage_source)
-				return
+				var/obj/item/clothing/head/helmet/owner_helmet = owner.head
+				if(istype(owner_helmet) && !issynth(owner))
+					if(!(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION))
+						owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
+						owner.drop_inv_item_on_ground(owner_helmet)
+						INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+						playsound(owner, 'sound/effects/helmet_noise.ogg', 100)
+				else
+					droplimb(0, 0, damage_source)
+					return
 
 	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()

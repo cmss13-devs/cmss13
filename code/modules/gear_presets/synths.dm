@@ -106,7 +106,7 @@
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = list(FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	rank = JOB_SYNTH_SURVIVOR
@@ -148,7 +148,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(H), WEAR_L_HAND)
 
 /datum/equipment_preset/synth/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform
@@ -200,7 +200,7 @@
 		WEAR_HEAD = /obj/item/clothing/head/hardhat,
 		WEAR_BODY = /obj/item/clothing/under/rank/engineer,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/eng,
-		WEAR_IN_BACK = /obj/item/weapon/melee/twohanded/fireaxe,
+		WEAR_IN_BACK = /obj/item/weapon/twohanded/fireaxe,
 		WEAR_IN_BACK = /obj/item/weapon/gun/smg/nailgun/compact,
 		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
 		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
@@ -219,7 +219,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/rank/security2,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_BACK = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
@@ -303,7 +303,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/det,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_BACK = /obj/item/weapon/telebaton,
 		WEAR_IN_BACK = /obj/item/book/manual/detective,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_IN_BACK = /obj/item/device/camera,
@@ -411,7 +411,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 	var/obj/item/clothing/head/cultist_hood/hood = new /obj/item/clothing/head/cultist_hood(H)
@@ -441,7 +441,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/xenos(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 
@@ -519,8 +519,8 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/butterfly(H), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/butterfly(H), WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/chloroform(H), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/chloroform(H), WEAR_IN_L_STORE)
 
 //*****************************************************************************************************/

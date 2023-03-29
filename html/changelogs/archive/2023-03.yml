@@ -457,3 +457,10 @@
   Segrain:
   - qol: Activating ammo boxes in hand now unfolds them on harm intent and deploys
       them on any other intent, even if empty.
+2023-03-29:
+  BeagleGaming1:
+  - code_imp: Repaths melee weapons
+  - qol: You can see the melee and throw force of more items
+  Mister-moon1:
+  - bugfix: fixed sprite for ceremonial sword empty holster on mob icon
+  - imageadd: new sprites for the ceremonial sword including sprites for the scabbard

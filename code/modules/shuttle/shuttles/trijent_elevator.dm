@@ -28,6 +28,10 @@
 		for(var/obj/structure/machinery/door/door in shuttle_area)
 			controller.add_door(door, door.id)
 
+/obj/docking_port/mobile/trijent_elevator/Destroy(force)
+	. = ..()
+	qdel(controller)
+
 /obj/docking_port/mobile/trijent_elevator/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	controller.control_doors("force-lock-launch", "all", force=TRUE)
@@ -48,6 +52,10 @@
 		if(istype(target_area, airlock_area))
 			for(var/obj/structure/machinery/door/door in target_area)
 				cont.doors += list(door)
+
+/obj/docking_port/stationary/trijent_elevator/Destroy(force)
+	. = ..()
+	qdel(cont)
 
 /obj/docking_port/stationary/trijent_elevator/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

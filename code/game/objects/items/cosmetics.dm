@@ -1,7 +1,7 @@
 /obj/item/facepaint
 	gender = PLURAL
 	name = "facepaint"
-	desc = "Paint, for your face. Who woulda thought?. Wipe it off your face with some paper if you need to."
+	desc = "Paint, for your face. Wipe it off your face with some paper if you need to. This one is a deep, forest green."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "camo"
 	var/paint_type = "green"

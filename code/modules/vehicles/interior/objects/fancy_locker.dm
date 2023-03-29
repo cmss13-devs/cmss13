@@ -13,7 +13,14 @@
 	. = ..()
 
 	interior = new(src)
+	INVOKE_ASYNC(src, PROC_REF(do_create_interior))
+
+/obj/structure/closet/fancy/proc/do_create_interior()
 	interior.create_interior("fancylocker")
+
+/obj/structure/closet/fancy/Destroy()
+	QDEL_NULL(interior)
+	return ..()
 
 /obj/structure/closet/fancy/store_mobs(stored_units)
 	for(var/mob/M in loc)

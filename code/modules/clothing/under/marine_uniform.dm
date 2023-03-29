@@ -81,12 +81,11 @@
 	flags_jumpsuit = FALSE
 	specialty = "USCM tanker"
 
-/obj/item/clothing/under/marine/tanker/New(loc,expected_type = type,
-	new_name[] = list(MAP_ICE_COLONY = "\improper USCM tanker snow uniform"),
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT),
-	override_icon_state[] = list(MAP_ICE_COLONY = "s_marine_tanker")
-	)
-	..(loc,expected_type, override_icon_state, new_name, new_protection)
+/obj/item/clothing/under/marine/tanker/New(loc,
+	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT),
+	override_icon_state = list(MAP_ICE_COLONY = "s_marine_tanker"))
+
+	..(loc, new_protection, override_icon_state)
 
 /obj/item/clothing/under/marine/chef
 	name = "\improper USCM Mess Technician uniform"
@@ -292,7 +291,7 @@
 
 /obj/item/clothing/under/marine/dress
 	name = "old marine dress uniform"
-	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
+	desc = "A dress uniform typically worn by marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
@@ -303,6 +302,14 @@
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
 	black_market_value = 15
+
+/obj/item/clothing/under/marine/dress/command
+	name = "old marine command dress uniform"
+	desc = "A dress uniform typically worn by the most battle-hardened marines of the USCM. Shame on you if you get this dirty."
+	icon_state = "command_formal"
+	worn_state = "command_formal"
+	specialty = "command dress"
+	black_market_value = 20
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
@@ -774,6 +781,15 @@
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
+
+/obj/item/clothing/under/marine/reporter
+	name = "combat correspondent uniform"
+	desc = "A relaxed and robust uniform fit for any potential reporting needs."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_uniform"
+	worn_state = "wc_uniform"
+	contained_sprite = TRUE
+	flags_atom = NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"

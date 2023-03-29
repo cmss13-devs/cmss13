@@ -149,9 +149,9 @@
 	load_skills(H, mob_client) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H, mob_client)
 	load_age(H, mob_client)
+	load_id(H, mob_client)
 	if(show_job_gear)
 		load_gear(H, mob_client)
-	load_id(H, mob_client)
 	load_status(H, mob_client)
 	load_vanity(H, mob_client)
 	load_traits(H, mob_client)

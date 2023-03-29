@@ -1169,7 +1169,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC"
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	faction_group = list(FACTION_SURVIVOR, FACTION_WY, FACTION_PMC)
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
@@ -1255,6 +1255,7 @@
 	name = "Survivor - Freelancer"
 	assignment = "Freelancer"
 	skills = /datum/skills/civilian/survivor/pmc
+	faction_group = list(FACTION_SURVIVOR, FACTION_FREELANCER)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

@@ -51,7 +51,7 @@
 "aj" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/obj/item/weapon/melee/yautja/combistick,
+/obj/item/weapon/yautja/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -395,7 +395,7 @@
 /area/lv624/lazarus/research)
 "bb" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/scythe,
+/obj/item/weapon/yautja/scythe,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -438,7 +438,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "bi" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;

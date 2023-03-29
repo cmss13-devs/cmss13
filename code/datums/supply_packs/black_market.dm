@@ -143,7 +143,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 		if(3) //clf
 			switch(rand(1, 4))
 				if(1)
-					new /obj/item/weapon/melee/twohanded/lungemine/damaged(src)
+					new /obj/item/weapon/twohanded/lungemine/damaged(src)
 				if(2)
 					new /obj/item/weapon/gun/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi/extended(src)
@@ -639,7 +639,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
-		/obj/item/weapon/melee/banhammer,
+		/obj/item/weapon/banhammer,
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/fireripley,
 		/obj/item/toy/prize/deathripley,
@@ -702,9 +702,9 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "surplus riot control equipment"
 	randomised_num_contained = 3
 	contains = list(
-		/obj/item/weapon/melee/baton/damaged,
+		/obj/item/weapon/baton/damaged,
 		/obj/item/reagent_container/spray/pepper,
-		/obj/item/weapon/melee/baton/cattleprod,
+		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
 		/obj/item/storage/box/guncase/m79,
@@ -1112,14 +1112,14 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
 			new /obj/item/clothing/shoes/yautja_flavor(loc)
-			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)
+			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
 		if(26 to 30)
 		// Damaged lunge mines, don't let the marines near these. Not even *close* to effective against even a runner.
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
 			loot_message = SPAN_NOTICE("It's a bunch of lunge mines..?")
 		if(31 to 35)
 		// CLF nades!

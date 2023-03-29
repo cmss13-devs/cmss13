@@ -7216,7 +7216,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "avr" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms)
@@ -20744,7 +20744,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
 	dir = 4;

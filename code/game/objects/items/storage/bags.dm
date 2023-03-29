@@ -33,7 +33,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 
@@ -64,7 +64,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 // -----------------------------
 // Mining Satchel

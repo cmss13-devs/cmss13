@@ -598,6 +598,7 @@
 #include "code\defines\procs\records.dm"
 #include "code\game\atoms.dm"
 #include "code\game\atoms_movable.dm"
+#include "code\game\bioscans.dm"
 #include "code\game\blood.dm"
 #include "code\game\runtimes.dm"
 #include "code\game\shuttle_engines.dm"

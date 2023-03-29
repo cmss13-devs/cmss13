@@ -949,7 +949,7 @@
 	if(.)
 		return
 
-	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
+	for(var/obj/item/weapon/yautja/combistick/C in range(7))
 		if(caller.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
 			if(!drain_power(caller, 70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return TRUE

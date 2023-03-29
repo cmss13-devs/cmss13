@@ -42,7 +42,7 @@
 	reagents.remove_any(100)
 	reagents.add_reagent("hippiesdelight", 100)
 
-/obj/item/weapon/melee/baton/damaged
+/obj/item/weapon/baton/damaged
 	name = "damaged stunbaton"
 	desc = "A stun baton for incapacitating people with. This one seems pretty broken and beat up, especially around the on/off switch.."
 	force = 12

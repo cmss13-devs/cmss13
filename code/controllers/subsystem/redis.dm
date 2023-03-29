@@ -71,15 +71,23 @@ SUBSYSTEM_DEF(redis)
 		message_admins("Failed to connect to redis: [connection_attempt]")
 		return
 
+	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "connect")
+	publish("byond.meta", json_encode(data))
+
 	connected = TRUE
 	can_fire = TRUE
 
 /datum/controller/subsystem/redis/proc/disconnect()
+	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "disconnect")
+	publish("byond.meta", json_encode(data))
 	rustg_redis_disconnect()
 	connected = FALSE
 
 /datum/controller/subsystem/redis/proc/reconnect()
 	connect()
+
+	if(!connected)
+		return
 
 	for(var/channel in subbed_channels)
 		rustg_redis_subscribe(channel)

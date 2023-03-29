@@ -404,7 +404,7 @@
 	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
 	has_gamemode_skin = FALSE
 	storage_slots = 3
-	icon_state = "ammo_pack_empty"
+	icon_state = "ammo_pack_0"
 	can_hold = list(/obj/item/ammo_box)
 	max_w_class = SIZE_MASSIVE
 	xeno_types = null

@@ -60,6 +60,8 @@ SUBSYSTEM_DEF(redis)
 		queue -= message
 
 /datum/controller/subsystem/redis/Shutdown()
+	if(!connected)
+		return
 	disconnect(SHUTDOWN)
 
 /datum/controller/subsystem/redis/proc/connect()

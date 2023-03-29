@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Adds procs to bioscans to make them individually callable and a little more optimised."

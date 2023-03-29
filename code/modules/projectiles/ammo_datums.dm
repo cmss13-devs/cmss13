@@ -2644,8 +2644,6 @@
 	var/healed_xeno = 0
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL
-		if (!boosting_xeno.check_state())
-			break
 
 		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
 			continue
@@ -2674,9 +2672,6 @@
 	. = ..()
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
 		var/hivenumber = XENO_HIVE_NORMAL
-
-		if (!boosting_xeno.check_state())
-			break
 
 		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
 			continue

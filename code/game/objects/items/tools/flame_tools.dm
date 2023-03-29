@@ -227,10 +227,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
-	if(SSweather.is_weather_event && locate(get_area(user)) in SSweather.weather_areas)
-		if(prob(80))
-			to_chat(user, SPAN_WARNING("This weather is making lighting anything impossible!"))
-			return
+
+	if(length(user.fullscreens) && SSweather.is_weather_event)
+		for(var/i in 1 to length(user.fullscreens))
+			if(user.fullscreens[i] == "weather")
+				if(prob(80))
+					to_chat(user, SPAN_WARNING("This weather is making lighting anything impossible!"))
+					return
+				else
+					break
 
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W

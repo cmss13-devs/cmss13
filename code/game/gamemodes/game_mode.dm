@@ -159,6 +159,8 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
 
+	send_redis_update()
+
 	return 0
 
 /datum/game_mode/proc/calculate_end_statistics()

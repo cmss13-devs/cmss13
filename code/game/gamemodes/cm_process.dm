@@ -104,6 +104,10 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
+/datum/game_mode/proc/send_redis_update()
+	var/list/data = list("type" = "round-complete", "source" = CONFIG_GET(string/instance_name))
+	SSredis.publish("byond.round", json_encode(data))
+
 /datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)

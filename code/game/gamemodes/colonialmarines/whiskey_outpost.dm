@@ -303,6 +303,8 @@
 
 	calculate_end_statistics()
 
+	send_redis_update()
+
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()

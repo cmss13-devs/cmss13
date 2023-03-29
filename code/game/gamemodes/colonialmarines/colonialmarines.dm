@@ -369,6 +369,8 @@
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 
+	send_redis_update()
+
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
 

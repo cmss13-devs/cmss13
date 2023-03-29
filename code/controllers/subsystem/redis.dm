@@ -31,6 +31,7 @@ SUBSYSTEM_DEF(redis)
 
 	for(var/datum/redis_message/message as anything in queue)
 		publish(message.channel, message.message)
+		queue -= message
 
 	for(var/callback in subtypesof(/datum/redis_callback))
 		var/datum/redis_callback/redis_cb = new callback()
@@ -58,6 +59,7 @@ SUBSYSTEM_DEF(redis)
 
 	for(var/datum/redis_message/message as anything in queue)
 		publish(message.channel, message.message)
+		queue -= message
 
 /datum/controller/subsystem/redis/proc/connect()
 	if(!CONFIG_GET(flag/redis_enabled))

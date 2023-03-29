@@ -134,6 +134,9 @@ SUBSYSTEM_DEF(ticker)
 	current_state = GAME_STATE_SETTING_UP
 	INVOKE_ASYNC(src, PROC_REF(setup_start))
 
+	var/list/data = list("type" = "round-start", "source" = CONFIG_GET(string/instance_name))
+	SSredis.publish("byond.round", json_encode(data))
+
 	for(var/client/C in GLOB.admins)
 		remove_verb(C, roundstart_mod_verbs)
 	admin_verbs_minor_event -= roundstart_mod_verbs

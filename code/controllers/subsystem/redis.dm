@@ -1,8 +1,3 @@
-#define CONFIG_DISABLED "config_disabled"
-
-#define SHUTDOWN "Server Shutdown"
-#define TGS_COMPILE "TGS Compile"
-
 SUBSYSTEM_DEF(redis)
 	name = "Redis"
 	init_order = SS_INIT_REDIS

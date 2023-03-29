@@ -231,7 +231,7 @@
 		return
 
 	log_adminpm("ADMIN : [key_name(src)] : [msg]")
-	var/list/data = list("author" = src.key, "source" = CONFIG_GET(string/instance_name), "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
+	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "host" = ishost(src), "rank" = admin_holder.rank)
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -242,8 +242,6 @@
 		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
-
-	SSredis.publish("byond.asay", json_encode(data))
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -343,7 +341,7 @@
 	if (!msg)
 		return
 
-	var/list/data = list("author" = src.key, "source" = CONFIG_GET(string/instance_name), "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
+	REDIS_PUBLISH("byond.msay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 
 	if(findtext(msg, "@") || findtext(msg, "#"))
 		var/list/link_results = check_asay_links(msg)
@@ -369,8 +367,6 @@
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
-
-	SSredis.publish("byond.msay", json_encode(data))
 
 /client/proc/get_mod_say()
 	var/msg = input(src, null, "msay \"text\"") as text|null

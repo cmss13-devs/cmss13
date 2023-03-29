@@ -105,8 +105,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		to_world(dat)
 
 /datum/game_mode/proc/send_redis_update()
-	var/list/data = list("type" = "round-complete", "source" = CONFIG_GET(string/instance_name))
-	SSredis.publish("byond.round", json_encode(data))
+	REDIS_PUBLISH("byond.round", "type" = "round-complete")
 
 /datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0

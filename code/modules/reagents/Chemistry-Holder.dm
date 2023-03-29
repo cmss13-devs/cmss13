@@ -217,7 +217,7 @@
 	return amount
 
 ///You can search for specific reagents using the specific reagents arg.
-/datum/reagents/proc/set_source_mob(new_source_mob, specific_reagent = null)
+/datum/reagents/proc/set_source_mob(new_source_mob, specific_reagent)
 	for(var/datum/reagent/R in reagent_list)
 		if(specific_reagent)
 			if(istype(R, specific_reagent))

@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		message_admins("Admin logout: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
-		var/list/data = list("type" = "logout", "key" = src.key, "remaining" = length(adm["total"]), "source" = CONFIG_GET(string/instance_name))
+		var/list/data = list("type" = "logout", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]), "source" = CONFIG_GET(string/instance_name))
 
 		SSredis.publish("byond.access", json_encode(data))
 
@@ -484,7 +484,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		message_admins("Admin login: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
-		var/list/data = list("type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "source" = CONFIG_GET(string/instance_name))
+		var/list/data = list("type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]), "source" = CONFIG_GET(string/instance_name))
 
 		SSredis.publish("byond.access", json_encode(data))
 

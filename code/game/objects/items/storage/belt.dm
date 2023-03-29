@@ -8,7 +8,7 @@
 	attack_verb = list("whipped", "lashed", "disciplined")
 	w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_POUCH
-	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
 
@@ -296,7 +296,7 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/reagent_container/food/snacks/donut/normal,
 		/obj/item/reagent_container/food/snacks/donut/jelly,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/tool/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
@@ -333,7 +333,7 @@
 /obj/item/storage/belt/security/MP/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
-	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
@@ -346,7 +346,7 @@
 /obj/item/storage/belt/security/MP/UPP/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
-	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 
@@ -453,6 +453,9 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23(src)
 
+/obj/item/storage/belt/marine/shotgun_ammo/fill_preset_inventory() // shotgun ammo for survs, cursed but we want non-optimal storage on purpose
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 
 /obj/item/storage/belt/marine/smartgunner
@@ -691,7 +694,7 @@
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
@@ -701,7 +704,7 @@
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/weapon/melee/throwing_knife(src)
+		new /obj/item/weapon/throwing_knife(src)
 
 /obj/item/storage/belt/knifepouch/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()

@@ -73,7 +73,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
@@ -106,7 +106,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)

@@ -520,7 +520,7 @@ ICE GRASS
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)
-		if(istype(I,/obj/item/weapon/melee/claymore/mercsword))
+		if(istype(I,/obj/item/weapon/claymore/mercsword))
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it

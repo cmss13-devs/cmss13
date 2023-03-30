@@ -332,7 +332,7 @@
 	current_squad.send_message("'[target_crate.name]' supply drop incoming. Heads up!")
 	current_squad.send_maptext(target_crate.name, "Incoming Supply Drop:")
 	var/datum/squad/selected_squad = current_squad //in case the operator changes the overwatched squad mid-drop
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/finish_supplydrop, target_crate, selected_squad, selected_turf), 10 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, finish_supplydrop), target_crate, selected_squad, selected_turf), 10 SECONDS)
 
 /obj/structure/machinery/computer/overwatch/proc/finish_supplydrop(obj/structure/closet/crate/target_crate, datum/squad/selected_squad, turf/selected_turf)
 	if(!target_crate || target_crate.loc != selected_squad.drop_pad.loc) //Crate no longer on pad somehow, abort.

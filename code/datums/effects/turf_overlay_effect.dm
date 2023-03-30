@@ -10,6 +10,7 @@
 	.=..()
 
 	the_effect = new /obj/effect/turf_overlay_effect()
+	the_effect.owner = src
 
 	update_icons(get_turf(A))
 
@@ -77,8 +78,24 @@
 	mouse_opacity = FALSE
 	alpha = 180
 	blend_mode = BLEND_INSET_OVERLAY
+	var/datum/effects/turf_overlay_effect/owner
+
+/obj/effect/turf_overlay_effect/proc/adjust_transform(turf/open/O, mob/living/carbon/human/H, pixel_y_offset = 0)
+	set_up_icon(O, H, pixel_y_offset)
 
 /obj/effect/turf_overlay_effect/proc/set_up_icon(turf/open/O, mob/living/carbon/human/H, pixel_y_offset = 0)
+	if(H.lying)
+		var/matrix/matrix = matrix() //all this to make their face actually face the floor... sigh... I hate resting code
+		switch(H.transform.b)
+			if(1) //uh I have no idea how matricies work
+				matrix.Turn(270)
+			if(-1) //but I noticed these values were unique between the laying directions :0)
+				matrix.Turn(90)
+		pixel_y_offset = -12
+		apply_transform(matrix)
+	else
+		apply_transform()
+
 	overlays.Cut()
 	var/icon/output_texture = icon(O.icon, O.icon_state)
 	output_texture.Shift(SOUTH, pixel_y_offset, TRUE) //south since we want it opposite the + - of the value
@@ -90,19 +107,5 @@
 	final_texture.plane = FLOOR_PLANE
 	overlays += final_texture
 
-	if(H.lying || H.resting)
-		var/matrix/matrix = matrix() //all this to make their face actually face the floor... sigh... I hate resting code
-		apply_transform(matrix)
-		if(dir == WEST)
-			matrix.Turn(270)
-		else if(dir == EAST)
-			matrix.Turn(90)
-		else
-			if(prob(50))
-				dir = EAST
-				matrix.Turn(90)
-			else
-				dir = WEST
-				matrix.Turn(270)
-		apply_transform(matrix)
+
 

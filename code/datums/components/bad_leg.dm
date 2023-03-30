@@ -59,6 +59,10 @@
 /datum/component/bad_leg/proc/stumble(mob/living/carbon/human/parent_human)
 	SIGNAL_HANDLER
 
+	///Otherwise dragged corpses of people with canes equipped will make the message proc.
+	if(parent_human.stat != CONSCIOUS)
+		return
+
 	if(parent_human.throwing == TRUE)
 		return // unaffected on throws
 

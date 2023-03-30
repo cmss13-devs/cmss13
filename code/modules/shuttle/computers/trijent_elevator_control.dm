@@ -1,7 +1,3 @@
-/datum/elevator/destination
-	var/id
-	var/name
-
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call
 	name = "\improper Elevator Call"
 	desc = "Control panel for the elevator"
@@ -11,18 +7,8 @@
 	var/dockId
 	var/datum/elevator/destination/site
 
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/Initialize()
-	. = ..()
-	site = new()
-	site.id = dockId
-	site.name = "call"
-
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/Destroy()
-	. = ..()
-	QDEL_NULL(site)
-
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
-	. = list(site)
+	return list(list("id"=dockId, "name"="call"))
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
 	dockId = STAT_TRIJENT_LZ1

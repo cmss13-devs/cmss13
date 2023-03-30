@@ -27,3 +27,8 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /// Sets the offset 2 lines above.
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
+
+GLOBAL_VAR_INIT(instance_name, get_instance_name())
+
+/proc/get_instance_name()
+	return CONFIG_GET(string/instance_name)

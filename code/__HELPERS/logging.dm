@@ -33,18 +33,20 @@
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_admin(text)
+	var/time = time_stamp()
 	admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
-		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
-		LOG_REDIS("admin", text)
-	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
+		diary << "\[[time]]ADMIN: [text][log_end]"
+		LOG_REDIS("admin", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_asset(text)
 	asset_log.Add(text)
 	if (CONFIG_GET(flag/log_asset))
-		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
-		LOG_REDIS("asset", text)
+		var/time = time_stamp()
+		diary << "\[[time]]ADMIN: [text][log_end]"
+		LOG_REDIS("asset", "\[[time]\] [text]")
 
 /proc/log_adminpm(text)
 	admin_log.Add(text)
@@ -57,14 +59,15 @@
 	SEND_TEXT(world.log, text)
 
 /proc/log_debug(text, diary_only=FALSE)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_debug))
-		diary << "\[[time_stamp()]]DEBUG: [text][log_end]"
-		LOG_REDIS("debug", text)
+		diary << "\[[time]]DEBUG: [text][log_end]"
+		LOG_REDIS("debug", "\[[time]\] [text]")
 
 	if(diary_only)
 		return
 
-	GLOB.STUI?.debug.Add("\[[time_stamp()]]DEBUG: [text]")
+	GLOB.STUI?.debug.Add("\[[time]]DEBUG: [text]")
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
 	for(var/client/C in GLOB.admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
@@ -72,87 +75,99 @@
 
 
 /proc/log_game(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_game))
-		diary << html_decode("\[[time_stamp()]]GAME: [text][log_end]")
-		LOG_REDIS("game", text)
-	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]")
+		diary << html_decode("\[[time]]GAME: [text][log_end]")
+		LOG_REDIS("game", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]GAME: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_interact(mob/living/carbon/origin, mob/living/carbon/target, msg)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_interact))
-		diary << html_decode("\[[time_stamp()]]INTERACT: [msg][log_end]")
-		LOG_REDIS("interact", msg)
-	origin.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
-	target.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
+		diary << html_decode("\[[time]]INTERACT: [msg][log_end]")
+		LOG_REDIS("interact", "\[[time]\] [msg]")
+	origin.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
+	target.attack_log += "\[[time]\]<font color='green'> [msg] </font>"
 
-	GLOB.STUI.attack.Add("\[[time_stamp()]]INTERACT: [msg]")
+	GLOB.STUI.attack.Add("\[[time]]INTERACT: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 
 
 /proc/log_overwatch(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_overwatch))
-		diary << html_decode("\[[time_stamp()]]OVERWATCH: [text][log_end]")
-		LOG_REDIS("overwatch", text)
-	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]")
+		diary << html_decode("\[[time]]OVERWATCH: [text][log_end]")
+		LOG_REDIS("overwatch", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_idmod(obj/item/card/id/target_id, msg)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_idmod))
-		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")
-		LOG_REDIS("idmod", msg)
-	target_id.modification_log += "\[[time_stamp()]]: [msg]"
+		diary << html_decode("\[[time]]ID MOD: [msg][log_end]")
+		LOG_REDIS("idmod", "\[[time]\] [msg]")
+	target_id.modification_log += "\[[time]]: [msg]"
 
 /proc/log_vote(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_vote))
-		diary << html_decode("\[[time_stamp()]]VOTE: [text][log_end]")
-		LOG_REDIS("vote", text)
+		diary << html_decode("\[[time]]VOTE: [text][log_end]")
+		LOG_REDIS("vote", "\[[time]\] [text]")
 
 
 /proc/log_access(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_access))
-		diary << html_decode("\[[time_stamp()]]ACCESS: [text][log_end]")
-		LOG_REDIS("access", text)
-	GLOB.STUI.debug.Add("\[[time_stamp()]]ACCESS: [text]")
+		diary << html_decode("\[[time]]ACCESS: [text][log_end]")
+		LOG_REDIS("access", "\[[time]\] [text]")
+	GLOB.STUI.debug.Add("\[[time]]ACCESS: [text]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_say(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_say))
-		diary << html_decode("\[[time_stamp()]]SAY: [text][log_end]")
-		LOG_REDIS("say", text)
-	GLOB.STUI.game.Add("\[[time_stamp()]]SAY: [text]")
+		diary << html_decode("\[[time]]SAY: [text][log_end]")
+		LOG_REDIS("say", "\[[time]\] [text]")
+	GLOB.STUI.game.Add("\[[time]]SAY: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_hivemind(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_hivemind))
-		diary << html_decode("\[[time_stamp()]]HIVEMIND: [text][log_end]")
-		LOG_REDIS("hivemind", text)
-	GLOB.STUI.game.Add("\[[time_stamp()]]HIVEMIND: [text]")
+		diary << html_decode("\[[time]]HIVEMIND: [text][log_end]")
+		LOG_REDIS("hivemind", "\[[time]\] [text]")
+	GLOB.STUI.game.Add("\[[time]]HIVEMIND: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_ooc(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_ooc))
-		LOG_REDIS("ooc", text)
-		diary << html_decode("\[[time_stamp()]]OOC: [text][log_end]")
+		LOG_REDIS("ooc", "\[[time]\] [text]")
+		diary << html_decode("\[[time]]OOC: [text][log_end]")
 
 /proc/log_whisper(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_whisper))
-		LOG_REDIS("whisper", text)
-		diary << html_decode("\[[time_stamp()]]WHISPER: [text][log_end]")
-	GLOB.STUI.game.Add("\[[time_stamp()]]WHISPER: [text]")
+		LOG_REDIS("whisper", "\[[time]\] [text]")
+		diary << html_decode("\[[time]]WHISPER: [text][log_end]")
+	GLOB.STUI.game.Add("\[[time]]WHISPER: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_emote(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_emote))
-		LOG_REDIS("emote", text)
-		diary << html_decode("\[[time_stamp()]]EMOTE: [text][log_end]")
-	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#999999'>EMOTE: [text]</font>")
+		LOG_REDIS("emote", "\[[time]\] [text]")
+		diary << html_decode("\[[time]]EMOTE: [text][log_end]")
+	GLOB.STUI.game.Add("\[[time]]<font color='#999999'>EMOTE: [text]</font>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_attack(text)
+	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_attack))
-		LOG_REDIS("flag", text)
-		diary << html_decode("\[[time_stamp()]]ATTACK: [text][log_end]")
-	GLOB.STUI.attack.Add("\[[time_stamp()]]ATTACK: [text]")
+		LOG_REDIS("flag", "\[[time]\] [text]")
+		diary << html_decode("\[[time]]ATTACK: [text][log_end]")
+	GLOB.STUI.attack.Add("\[[time]]ATTACK: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 
 /proc/log_adminsay(text)
@@ -166,9 +181,10 @@
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_misc(text)
-	LOG_REDIS("misc", text)
-	diary << html_decode("\[[time_stamp()]]MISC: [text][log_end]")
-	GLOB.STUI?.debug.Add("\[[time_stamp()]]MISC: [text]")
+	var/time = time_stamp()
+	LOG_REDIS("misc", "\[[time]\] [text]")
+	diary << html_decode("\[[time]]MISC: [text][log_end]")
+	GLOB.STUI?.debug.Add("\[[time]]MISC: [text]")
 
 /proc/log_mutator(text)
 	if(!mutator_logs)
@@ -176,19 +192,22 @@
 	mutator_logs << text + "[log_end]"
 
 /proc/log_hiveorder(text)
-	LOG_REDIS("hiveorder", text)
-	diary << html_decode("\[[time_stamp()]]HIVE ORDER: [text][log_end]")
-	GLOB.STUI.debug.Add("\[[time_stamp()]]HIVE ORDER: [text]")
+	var/time = time_stamp()
+	LOG_REDIS("hiveorder", "\[[time]\] [text]")
+	diary << html_decode("\[[time]]HIVE ORDER: [text][log_end]")
+	GLOB.STUI.debug.Add("\[[time]]HIVE ORDER: [text]")
 
 /proc/log_announcement(text)
-	LOG_REDIS("announcement", text)
-	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
-	GLOB.STUI.admin.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]")
+	var/time = time_stamp()
+	LOG_REDIS("announcement", "\[[time]\] [text]")
+	diary << html_decode("\[[time]]ANNOUNCEMENT: [text][log_end]")
+	GLOB.STUI.admin.Add("\[[time]]ANNOUNCEMENT: [text]")
 
 /proc/log_mhelp(text)
-	LOG_REDIS("mhelp", text)
-	diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][log_end]")
-	GLOB.STUI.admin.Add("\[[time_stamp()]]MENTORHELP: [text]")
+	var/time = time_stamp()
+	LOG_REDIS("mhelp", "\[[time]\] [text]")
+	diary << html_decode("\[[time]]MENTORHELP: [text][log_end]")
+	GLOB.STUI.admin.Add("\[[time]]MENTORHELP: [text]")
 
 /**
  * Appends a tgui-related log entry. All arguments are optional.

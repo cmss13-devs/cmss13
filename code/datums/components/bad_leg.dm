@@ -60,7 +60,7 @@
 	SIGNAL_HANDLER
 
 	///Otherwise dragged corpses of people with canes equipped will make the message proc.
-	if(parent_human.stat != CONSCIOUS)
+	if(parent_human.stat)
 		return
 
 	if(parent_human.throwing == TRUE)

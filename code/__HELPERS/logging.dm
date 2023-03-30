@@ -38,6 +38,7 @@
 		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
+	REDIS_PUBLISH("byond.log", "text" = text)
 
 /proc/log_asset(text)
 	asset_log.Add(text)

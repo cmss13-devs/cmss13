@@ -19,7 +19,7 @@
 
 
 /obj/structure/toilet/Initialize()
-	..()
+	. = ..()
 	open = round(rand(0, 1))
 	cistern_overlay = new()
 	cistern_overlay.icon = icon
@@ -437,7 +437,7 @@
 	var/busy = FALSE //Something's being washed at the moment
 
 /obj/structure/sink/Initialize()
-	..()
+	. = ..()
 	if(prob(50))
 		icon_state = "sink_emptied"
 
@@ -494,8 +494,8 @@
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
-	else if (istype(O, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = O
+	else if (istype(O, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)

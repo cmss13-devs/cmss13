@@ -60,11 +60,12 @@
 		return FALSE
 	bottom_left_coords = list(bottom_left.x, bottom_left.y, bottom_left.z)
 	top_right_coords = list(top_right.x, top_right.y, top_right.z)
+	var/weakref = WEAKREF(src)
 	for(var/i in final)
 		var/turf/T = i
 		reserved_turfs |= T
 		SSmapping.unused_turfs["[T.z]"] -= T
-		SSmapping.used_turfs[T] = src
+		SSmapping.used_turfs[T] = weakref
 		T = T.ChangeTurf(turf_type, turf_type)
 		T.flags_atom &= ~UNUSED_RESERVATION_TURF
 	src.width = width

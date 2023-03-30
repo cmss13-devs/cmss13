@@ -58,6 +58,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
 #define JOB_WORKING_JOE "Working Joe"
@@ -209,6 +210,13 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CONTRACTOR_COVMG "VAISO Automatic Rifleman"
 #define JOB_CONTRACTOR_COVTL "VAISO Team Leader"
 #define JOB_CONTRACTOR_COVSYN "VAISO Support Synthetic"
+
+//-------- CMB --------//
+#define JOB_CMB "CMB Deputy"
+#define JOB_CMB_TL "CMB Marshal"
+#define JOB_CMB_SYN "CMB Investigative Synthetic"
+#define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
+#define JOB_CMB_OBS "Interstellar Human Rights Observer"
 
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"

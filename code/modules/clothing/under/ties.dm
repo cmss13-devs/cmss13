@@ -601,7 +601,7 @@
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 	)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
@@ -614,12 +614,12 @@
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
-		/obj/item/weapon/melee/unathiknife,
+		/obj/item/weapon/unathiknife,
 	)
 
 /obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
 
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"

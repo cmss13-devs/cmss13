@@ -394,7 +394,7 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
 /obj/structure/barricade/sandbags/wired,
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},

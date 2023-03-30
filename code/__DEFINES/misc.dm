@@ -223,6 +223,9 @@
 #define GUN_CATEGORY_SHOTGUN 4
 #define GUN_CATEGORY_HEAVY 5
 
+// These guns can be used at maximum efficacy by untrained civilians.
+#define UNTRAINED_USABLE_CATEGORIES list(GUN_CATEGORY_HANDGUN, GUN_CATEGORY_SMG)
+
 /**
  * Get the ultimate area of `A`, similarly to [get_turf].
  *

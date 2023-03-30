@@ -17,6 +17,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
+	/client/proc/cmd_admin_create_bioscan,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
@@ -123,7 +124,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd
+	/client/proc/toggle_shipside_sd,
+	/client/proc/shakeshipverb
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

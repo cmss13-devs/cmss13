@@ -349,6 +349,7 @@
 		var/mob/living/carbon/carbon_target = target
 		if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
 			carbon_target.reagents.add_reagent("molecularacid", 6)
+			carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/molecular_acid)
 		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
 			if(!neuro_effect)

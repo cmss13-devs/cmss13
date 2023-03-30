@@ -178,118 +178,69 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/tail_jab/use_ability(atom/target_atom)
+/datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
+
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/hit_target = targeted_atom
+	var/distance = get_dist(xeno, hit_target)
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
 
-	if(xeno.mutation_type != LURKER_VAMPIRE)
+	if(distance > 2)
 		return
 
-	xeno.emote("tail")
+	var/list/turf/path = getline2(xeno, hit_target, include_from_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
+			return
+		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
+			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(istype(current_structure, /obj/structure/window/framed))
+				var/obj/structure/window/framed/target_window = current_structure
+				if(target_window.unslashable)
+					return
+				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
+				target_window.shatter_window(TRUE)
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
+				apply_cooldown(cooldown_modifier = 0.5)
+				return
 
-// Get line of turfs
-	var/list/turf/target_turfs = list()
-
-	var/facing = Get_Compass_Dir(xeno, target_atom)
-	var/turf/var_turf = xeno.loc
-	var/turf/temp = xeno.loc
-	var/list/telegraph_atom_list = list()
-
-	var/detached = FALSE
-
-	for (var/x in 1 to 2)
-		temp = get_step(var_turf, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
-			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
-			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left || back_left.density) && (!back_right || back_right.density))
-				break
-		if(!temp || temp.density || temp.opacity)
-			break
-
-		var/blocked = FALSE
-		for(var/obj/structure/S in temp)
-			if(S.opacity || (istype(S, /obj/structure/barricade) && S.density))
-				blocked = TRUE
-				break
-		if(blocked)
-			break
-
-		var_turf = temp
-
-		if (var_turf in target_turfs)
-			break
-
-		if(get_turf(target_atom) == var_turf) // If the turf we're on is the same as the target atom, we 'detach' from the target atom so the ability continues without stopping suddenly.
-			detached = TRUE
-		if(!detached)
-			facing = Get_Compass_Dir(var_turf, target_atom)
-		target_turfs += var_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(var_turf, 0.25 SECONDS)
-
-	if(length(target_turfs))
-		xeno.animation_attack_on(target_turfs[target_turfs.len], pixel_offset = 16)
-
-	var/mob/living/carbon/hit_target
-	for (var/turf/target_turf as anything in target_turfs)
-		if(hit_target)
-			break
-
-		for (var/mob/living/carbon/carbone in target_turf)
-			if (carbone.stat == DEAD || xeno.can_not_harm(carbone))
-				continue
-			hit_target = carbone
-			break
-
-	if(!hit_target)
-		apply_cooldown()
+	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target))
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0.2)
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
-
-	// Variable to buff if it's a direct aimed hit.
-	var/slam_damage = get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper)
 
 	// FX
 	var/stab_direction
-	var/stab_overlay
 
-	if(hit_target == target_atom) //bonus if they aim!
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
-		playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
+	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
-		slam_damage *= 1.5
+	stab_direction = turn(get_dir(xeno, hit_target), 180)
 
-		stab_direction = turn(get_dir(xeno, hit_target), 180)
-		stab_overlay = "tail"
-
-		if(hit_target.mob_size < MOB_SIZE_BIG)
-			xeno_throw_human(hit_target, xeno, get_dir(xeno, hit_target), 1) // only a 'real' throw if it's a direct hit. Same distance
-
-	else
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You slam [hit_target] with your tail and push it backwards!"))
-		playsound(hit_target,'sound/weapons/alien_claw_block.ogg', 50, TRUE)
-
-		stab_direction = turn(xeno.dir, pick(90, -90))
-		stab_overlay = "slam"
-
-		if(hit_target.mob_size < MOB_SIZE_BIG)
-			step_away(hit_target, xeno)
+	if(hit_target.mob_size < MOB_SIZE_BIG)
+		step_away(hit_target, xeno)
 
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
 	xeno.setDir(stab_direction)
-	xeno.flick_attack_overlay(hit_target, stab_overlay)
+	xeno.flick_attack_overlay(hit_target, "tail")
+	xeno.animation_attack_on(hit_target)
 
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	hit_target.apply_armoured_damage(slam_damage, ARMOR_MELEE, BRUTE, "chest")
+	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 
 	if(hit_target.mob_size < MOB_SIZE_BIG)
 		hit_target.apply_effect(0.5, WEAKEN)

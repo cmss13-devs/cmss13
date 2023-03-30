@@ -23,7 +23,7 @@
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
@@ -265,3 +265,13 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
+
+//==================War Correspondent==================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter
+	name = "combat correspondent jacket"
+	desc = "A jacket for the most fashionable war correspondents."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_suit"
+	item_state = "wc_suit"
+	contained_sprite = TRUE

@@ -40,3 +40,21 @@
 	sound = 'sound/voice/joe_firearm.ogg'
 	say_message = "Firearms can cause serious injury. Let me assist you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/report
+	key = "report"
+	sound = 'sound/voice/joe_report.ogg'
+	say_message = "Logging report to APOLLO."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/breach
+	key = "breach"
+	sound = 'sound/voice/joe_breach.ogg'
+	say_message = "Hazard Containment breach logged."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/species
+	key = "species"
+	sound = 'sound/voice/joe_species.ogg'
+	say_message = "Unidentified species."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

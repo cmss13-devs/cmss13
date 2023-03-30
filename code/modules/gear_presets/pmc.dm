@@ -88,7 +88,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
@@ -228,7 +228,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
@@ -360,7 +360,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK)
@@ -534,7 +534,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/device/reagent_scanner, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
 
@@ -715,7 +715,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 
@@ -864,7 +864,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
@@ -1363,7 +1363,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
@@ -1847,7 +1847,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		idtype = /obj/item/card/id/data
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
-		role_comm_title = "SYN"
+		role_comm_title = "Syn"
 		headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 
@@ -1885,7 +1885,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 		H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 

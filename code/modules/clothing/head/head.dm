@@ -386,6 +386,16 @@
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
 
+/obj/item/clothing/head/cmcap/reporter
+	name = "combat correspondent cap"
+	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_flagcap"
+	item_state = "wc_flagcap"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_hat = HAT_GARB_OVERLAY
+
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
 	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
@@ -599,6 +609,26 @@ D
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
+
+/obj/item/clothing/head/CMB
+	name = "\improper Colonial Marshal Bureau cap"
+	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	icon_state = "cmbcap"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
 
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"

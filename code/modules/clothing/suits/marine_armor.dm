@@ -316,7 +316,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
@@ -324,7 +324,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/device/hailer,
 		/obj/item/storage/belt/gun,
-		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
+		/obj/item/weapon/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
@@ -1014,13 +1014,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
-		/obj/item/weapon/melee/claymore/mercsword/machete,
+		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
@@ -1398,8 +1398,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
@@ -1450,19 +1450,25 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/CMB
 	name = "\improper CMB jacket"
-	desc = "A green jacket worn by crew on the Colonial Marshals."
+	desc = "A black jacket worn by Colonial Marshals. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -1473,7 +1479,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/storage/large_holster/machete,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
@@ -1518,13 +1524,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
-		/obj/item/weapon/melee/claymore/mercsword/machete,
+		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
@@ -1553,13 +1559,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
-		/obj/item/weapon/melee/claymore/mercsword/machete,
+		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
@@ -1655,7 +1661,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
@@ -1663,7 +1669,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/device/hailer,
 		/obj/item/storage/belt/gun,
-		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
+		/obj/item/weapon/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
@@ -1688,3 +1694,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT  // it's lighter
 	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
 	flags_atom = NO_SNOW_TYPE
+
+//==================War Correspondent==================\\
+
+/obj/item/clothing/suit/storage/marine/light/reporter
+	name = "press body armor"
+	desc = "Body armor used by war correspondents in battles and wars across the universe."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_armor"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	contained_sprite = TRUE

@@ -14,11 +14,16 @@ SUBSYSTEM_DEF(redis)
 	/// message queue, for messages sent prior to initialization
 	var/list/datum/redis_message/queue = list()
 
+	/// the name this server uses externally
+	var/instance_name = "game"
+
 /datum/controller/subsystem/redis/stat_entry(msg)
 	msg =  "S:[length(subbed_channels)] | Q:[length(queue)] | C:[connected ? "Y" : "N"]"
 	return ..()
 
 /datum/controller/subsystem/redis/Initialize()
+	instance_name = CONFIG_GET(string/instance_name)
+
 	if(connect() == CONFIG_DISABLED)
 		can_fire = FALSE
 		return SS_INIT_SUCCESS
@@ -74,14 +79,14 @@ SUBSYSTEM_DEF(redis)
 		message_admins("Failed to connect to redis: [connection_attempt]")
 		return
 
-	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "connect")
+	var/list/data = list("source" = SSredis.instance_name, "type" = "connect")
 	publish("byond.meta", json_encode(data))
 
 	connected = TRUE
 	can_fire = TRUE
 
 /datum/controller/subsystem/redis/proc/disconnect(reason)
-	var/list/data = list("source" = CONFIG_GET(string/instance_name), "type" = "disconnect", "reason" = reason)
+	var/list/data = list("source" = SSredis.instance_name, "type" = "disconnect", "reason" = reason)
 	publish("byond.meta", json_encode(data))
 	rustg_redis_disconnect()
 	connected = FALSE

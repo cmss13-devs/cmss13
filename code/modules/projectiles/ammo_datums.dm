@@ -2643,9 +2643,9 @@
 	target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS) //subject to change
 	var/healed_xeno = 0
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
-		var/hivenumber = XENO_HIVE_NORMAL
+		var/mob/living/carbon/xenomorph/firer = impacting_projectile.firer
 
-		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
+		if (firer.hivenumber != boosting_xeno.hivenumber || boosting_xeno.stat == DEAD)
 			continue
 
 		if (SEND_SIGNAL(boosting_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
@@ -2671,9 +2671,9 @@
 /datum/ammo/xeno/acid/healing/on_hit_turf(turf/target, obj/item/projectile/impacting_projectile)
 	. = ..()
 	for(var/mob/living/carbon/xenomorph/boosting_xeno in range(5, target))
-		var/hivenumber = XENO_HIVE_NORMAL
+		var/mob/living/carbon/xenomorph/firer = impacting_projectile.firer
 
-		if (boosting_xeno.hivenumber != hivenumber || boosting_xeno.stat == DEAD)
+		if (firer.hivenumber != boosting_xeno.hivenumber || boosting_xeno.stat == DEAD)
 			continue
 
 		if (SEND_SIGNAL(boosting_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)

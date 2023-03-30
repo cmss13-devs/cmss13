@@ -30,7 +30,7 @@
 
 /obj/docking_port/mobile/trijent_elevator/Destroy(force)
 	. = ..()
-	qdel(controller)
+	QDEL_NULL(controller)
 
 /obj/docking_port/mobile/trijent_elevator/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -55,7 +55,7 @@
 
 /obj/docking_port/stationary/trijent_elevator/Destroy(force)
 	. = ..()
-	qdel(cont)
+	QDEL_NULL(cont)
 
 /obj/docking_port/stationary/trijent_elevator/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

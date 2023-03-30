@@ -19,7 +19,7 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/Destroy()
 	. = ..()
-	qdel(site)
+	QDEL_NULL(site)
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
 	. = list(site)

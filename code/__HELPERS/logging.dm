@@ -32,13 +32,16 @@
 	GLOB.STUI.debug.Add("\[[time_stamp()]]TESTING: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
+/proc/redis_log(type, text)
+	REDIS_PUBLISH("byond.log", "type" = type, "text" = text)
+
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
 		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
-	REDIS_PUBLISH("byond.log", "text" = text)
+	redis_log("admin", text)
 
 /proc/log_asset(text)
 	asset_log.Add(text)

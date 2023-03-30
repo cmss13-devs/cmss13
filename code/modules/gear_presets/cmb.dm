@@ -241,7 +241,7 @@
 	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrade = "GS-C.9"
 	idtype = /obj/item/card/id/deputy
-	role_comm_title = "CMB SYN"
+	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "CMB Investigative Synthetic"

@@ -349,7 +349,7 @@
 /datum/equipment_preset/synth/survivor/cmb_synth
 	name = "Survivor - Synthetic - CMB Synth"
 	idtype = /obj/item/card/id/deputy
-	role_comm_title = "CMB SYN"
+	role_comm_title = "CMB Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,

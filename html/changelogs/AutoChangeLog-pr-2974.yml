@@ -1,0 +1,4 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - bugfix: "Corrosive tail stabs now properly credit their users for kills."

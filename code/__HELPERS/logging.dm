@@ -165,7 +165,7 @@
 /proc/log_attack(text)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_attack))
-		LOG_REDIS("flag", "\[[time]\] [text]")
+		LOG_REDIS("attack", "\[[time]\] [text]")
 		diary << html_decode("\[[time]]ATTACK: [text][log_end]")
 	GLOB.STUI.attack.Add("\[[time]]ATTACK: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK

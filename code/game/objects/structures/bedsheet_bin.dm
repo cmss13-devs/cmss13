@@ -100,14 +100,14 @@ LINEN BINS
 
 
 /obj/structure/bedsheetbin/update_icon()
-		if(amount == 0)
-			icon_state = "linenbin-empty"
-			return
-		if(amount >= 1 && amount < initial(amount) / 2)
-			icon_state = "linenbin-half"
-			return
+	if(amount == 0)
+		icon_state = "linenbin-empty"
+		return
+	if(amount >= 1 && amount < initial(amount) / 2)
+		icon_state = "linenbin-half"
+		return
 
-		icon_state = "linenbin-full"
+	icon_state = "linenbin-full"
 
 
 /obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)

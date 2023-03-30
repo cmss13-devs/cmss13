@@ -184,8 +184,7 @@ Additional game mode variables.
 		return
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
-		if(show_warning)
-			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
 
 	if(!(flags_round_type & MODE_PREDATOR))
@@ -205,7 +204,7 @@ Additional game mode variables.
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
 			return
 
-	return TRUE
+	return 1
 
 #undef calculate_pred_max
 

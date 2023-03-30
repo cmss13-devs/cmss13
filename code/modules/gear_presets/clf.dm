@@ -736,7 +736,7 @@
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
-	role_comm_title = "SYN"
+	role_comm_title = "Syn"
 
 
 /datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/H, randomise)

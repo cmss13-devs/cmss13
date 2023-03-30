@@ -1320,7 +1320,7 @@
 	icon_state = "cassette_pouch_closed"
 	var/base_icon_state = "cassette_pouch"
 	w_class = SIZE_SMALL
-	can_hold = list(/obj/item/device/cassette_tape)
+	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 
 /obj/item/storage/pouch/cassette/update_icon()

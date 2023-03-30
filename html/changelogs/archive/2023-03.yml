@@ -464,3 +464,17 @@
   Mister-moon1:
   - bugfix: fixed sprite for ceremonial sword empty holster on mob icon
   - imageadd: new sprites for the ceremonial sword including sprites for the scabbard
+2023-03-30:
+  BeagleGaming1:
+  - bugfix: Fixes a Skills Menu runtime when you have null skills
+  Nanu:
+  - code_imp: Bumped required byond version to compile similar to the dependencies
+      file. Now 514.1588 is the minimum required version.
+  NewyearnewmeUwu:
+  - rscadd: Cassette pouches now fit regulation tapes.
+  - rscadd: Flipping a previously labeled tape will store the label for that side
+      and vice versa.
+  - rscadd: Tapes now have a unique renaming system.
+  realforest2001:
+  - code_imp: Adds procs to bioscans to make them individually callable and a little
+      more optimised.

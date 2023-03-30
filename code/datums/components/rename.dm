@@ -47,7 +47,10 @@
 	var/atom/owner = parent
 	original_name = owner.name
 	original_desc = owner.desc
-	owner.name = custom_name
+	if(HAS_TRAIT(owner, TRAIT_ITEM_RENAME_SPECIAL))
+		owner.name = "[initial(owner.name)] ([custom_name])"
+	else
+		owner.name = custom_name
 	owner.desc = custom_desc
 
 ///Reverts the name and description to the state before they were changed.

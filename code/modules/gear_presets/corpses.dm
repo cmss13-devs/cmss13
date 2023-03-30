@@ -343,7 +343,7 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(H), WEAR_WAIST)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)

@@ -216,8 +216,14 @@
 	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
-/datum/reagents/proc/set_source_mob(new_source_mob)
+///You can search for specific reagents using the specific reagents arg.
+/datum/reagents/proc/set_source_mob(new_source_mob, specific_reagent)
 	for(var/datum/reagent/R in reagent_list)
+		if(specific_reagent)
+			if(istype(R, specific_reagent))
+				R.last_source_mob = WEAKREF(new_source_mob)
+				return
+			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)

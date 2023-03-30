@@ -33,7 +33,7 @@
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/redis_log(type, text)
-	REDIS_PUBLISH("byond.log", "type" = type, "text" = text)
+	SSredis.publish("byond.log.[type]", text)
 
 /proc/log_admin(text)
 	admin_log.Add(text)

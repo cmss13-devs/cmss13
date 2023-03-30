@@ -336,6 +336,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+
 		if("Press")
 			var/body = "<body>"
 
@@ -345,6 +346,17 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
+
+		if("CMB")
+			var/body = "<body>"
+			
+			for(var/text in GLOB.CMBFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
 		if("Other")
 			var/body = "<body>"
 
@@ -943,3 +955,27 @@
 		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
 		return
 	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))
+
+
+/client/proc/cmd_admin_create_bioscan()
+	set name = "Report: Bioscan"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	var/choice = tgui_alert(usr, "Are you sure you want to trigger a bioscan?", "Bioscan?", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	else
+		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
+		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		GLOB.bioscan_data.get_scan_data()
+		switch(faction)
+			if("Xeno")
+				GLOB.bioscan_data.qm_bioscan(variance)
+			if("Marine")
+				GLOB.bioscan_data.ares_bioscan(FALSE, variance)
+			if("Yautja")
+				GLOB.bioscan_data.yautja_bioscan()

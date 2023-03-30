@@ -76,14 +76,18 @@
 
 	synth_survivor_types = list(
 		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/emt_synth,
 		/datum/equipment_preset/synth/survivor/scientist_synth,
 		/datum/equipment_preset/synth/survivor/engineer_synth,
-		/datum/equipment_preset/synth/survivor/security_synth,
-		/datum/equipment_preset/synth/survivor/corporate_synth,
 		/datum/equipment_preset/synth/survivor/janitor_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/teacher_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/cmb_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/protection_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
 		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 

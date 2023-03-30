@@ -727,7 +727,7 @@
 			new /obj/item/paper/crumpled(current_turf)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(variance = 2)
 	return // No bioscans needed in WO
 
 /datum/game_mode/whiskey_outpost/get_escape_menu()

@@ -475,6 +475,7 @@
 		/obj/item/clothing/suit/storage/marine/veteran/pmc,
 		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
 		/obj/item/clothing/suit/armor/vest/security,
+		/obj/item/clothing/suit/storage/hazardvest,
 	)
 
 /obj/item/clothing/under/marine/veteran/pmc/leader

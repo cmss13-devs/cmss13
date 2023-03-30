@@ -108,12 +108,13 @@
 	if(pdcell && pdcell.charge)
 		overlays.Cut()
 	switch(round(pdcell.charge * 100 / pdcell.maxcharge))
+		if(1 to 32)
+			overlays += "cpr_batt_lo"
+		if(33 to 65)
+			overlays += "cpr_batt_mid"
 		if(66 to INFINITY)
 			overlays += "cpr_batt_hi"
-		if(65 to 33)
-			overlays += "cpr_batt_mid"
-		if(32 to 1)
-			overlays += "cpr_batt_lo"
+
 
 /obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()

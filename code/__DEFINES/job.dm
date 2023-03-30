@@ -224,6 +224,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
 #define JOB_CMB_OBS "Interstellar Human Rights Observer"
 
+#define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
+
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
 #define JOB_UPP_CONSCRIPT "UPP Conscript"
@@ -350,4 +352,4 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 ///For denying certain traits being applied to people. ie. bad leg
 ///'Grunt' lists are for people who wouldn't logically get the bad leg trait, ie. UPP marine counterparts.
-#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, JOB_WY_GOON_LIST, JOB_PMC_GRUNT_LIST)
+#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, JOB_WY_GOON_LIST, JOB_PMC_GRUNT_LIST)

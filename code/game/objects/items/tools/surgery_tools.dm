@@ -235,7 +235,7 @@
 /obj/item/tool/surgery/surgical_line
 	name = "\proper surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
-	icon_state = "line"
+	icon_state = "line_brute"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -253,10 +253,7 @@
 	name = "Synth-Graft"
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
-	/// Placeholder.
-	icon_state = "line"
-	/// Placeholder, to distinguish from surgical line.
-	color = "yellow"
+	icon_state = "line_burn"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL

@@ -424,6 +424,7 @@
 	name = "industrial blowtorch"
 	max_fuel = 40
 	matter = list("metal" = 70, "glass" = 60)
+	icon_state = "welder_c"
 
 
 /obj/item/tool/weldingtool/hugetank
@@ -451,9 +452,9 @@
 	name = "\improper ME3 hand welder"
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
 	max_fuel = 5
-	color = "#cc0000"
 	has_welding_screen = TRUE
 	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+	icon_state = "welder_b"
 
 /*
  * Crowbar

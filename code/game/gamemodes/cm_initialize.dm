@@ -877,7 +877,8 @@ Additional game mode variables.
 	if(joe_job.get_whitelist_status(RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
 		if(joe_job.current_positions >= joe_max)
-			if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
+			if(show_warning)
+				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
 	if(!enter_allowed)
@@ -887,7 +888,7 @@ Additional game mode variables.
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
-	return 1
+	return TRUE
 
 /datum/game_mode/proc/transform_joe(mob/joe_candidate)
 	set waitfor = FALSE

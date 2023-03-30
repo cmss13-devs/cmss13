@@ -35,7 +35,7 @@
 	QDEL_NULL(tacmap)
 	return ..()
 
-/obj/structure/machinery/computer/overwatch/attackby(obj/current_obj as obj, mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(obj/current_obj, mob/user)  //Can't break or disassemble.
 	return
 
 /obj/structure/machinery/computer/overwatch/bullet_act(obj/item/projectile/Proj) //Can't shoot it
@@ -73,7 +73,7 @@
 		return
 	var/ob_type = almayer_orbital_cannon.tray.warhead ? almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
 
-	for(var/datum/squad/current_squad in RoleAuthority.squads)
+	for(var/datum/squad/current_squad as anything in RoleAuthority.squads)
 		if(!current_squad.active)
 			continue
 		for(var/mob/living/carbon/human/current_human in current_squad.marines_list)
@@ -88,8 +88,9 @@
 		return
 
 /obj/structure/machinery/computer/overwatch/proc/change_lead(picked)
-	var/new_lead = locate(picked)
-	var/mob/living/carbon/human/selected_human = new_lead
+	var/mob/living/carbon/human/selected_human = locate(picked)
+	if(!istype(selected_human))
+		return
 	if(current_squad.squad_leader)
 		current_squad.send_message("Attention: [current_squad.squad_leader] is [current_squad.squad_leader.stat == DEAD ? "stepping down" : "demoted"]. A new Squad Leader has been set: [selected_human.real_name].")
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Squad Leader [current_squad.squad_leader] of squad '[current_squad]' has been [current_squad.squad_leader.stat == DEAD ? "replaced" : "demoted and replaced"] by [selected_human.real_name]! Logging to enlistment files.")]")
@@ -450,9 +451,7 @@
 	return(squad_data)
 
 /obj/structure/machinery/computer/overwatch/proc/get_marine_data(datum/squad/squad)
-	var/list/current_marines_list = squad.marines_list.Copy()
-
-	for(var/current_member in current_marines_list)
+	for(var/current_member in squad.marines_list)
 		if(!current_member)
 			continue
 

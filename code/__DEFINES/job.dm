@@ -217,6 +217,13 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define CONTRACTOR_JOB_LIST list(JOB_CONTRACTOR, JOB_CONTRACTOR_ST, JOB_CONTRACTOR_MEDIC, JOB_CONTRACTOR_ENGI, JOB_CONTRACTOR_MG, JOB_CONTRACTOR_TL, JOB_CONTRACTOR_COV, JOB_CONTRACTOR_COVST, JOB_CONTRACTOR_COVMED, JOB_CONTRACTOR_COVENG, JOB_CONTRACTOR_COVTL)
 
+//-------- CMB --------//
+#define JOB_CMB "CMB Deputy"
+#define JOB_CMB_TL "CMB Marshal"
+#define JOB_CMB_SYN "CMB Investigative Synthetic"
+#define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
+#define JOB_CMB_OBS "Interstellar Human Rights Observer"
+
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
 #define JOB_UPP_CONSCRIPT "UPP Conscript"

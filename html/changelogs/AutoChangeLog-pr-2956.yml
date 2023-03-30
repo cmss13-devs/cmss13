@@ -1,6 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - rscadd: "Cassette pouches now fit regulation tapes."
-  - rscadd: "Flipping a previously labeled tape will store the label for that side and vice versa."
-  - rscadd: "Tapes now have a unique renaming system."

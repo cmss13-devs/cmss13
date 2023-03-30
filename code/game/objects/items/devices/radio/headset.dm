@@ -956,6 +956,24 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
 	has_hud = TRUE
 
+//CMB Headsets
+/obj/item/device/radio/headset/distress/CMB
+	name = "\improper CMB Earpiece"
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel."
+	frequency = CMB_FREQ
+	icon_state = "cmb_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmb)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_USCM
+
+/obj/item/device/radio/headset/distress/CMB/ICC
+	name = "\improper ICC Liaison Headset"
+	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
+	frequency = CMB_FREQ
+	icon_state = "wy_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
+	has_hud = TRUE
+
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"

@@ -452,8 +452,6 @@
 
 /obj/structure/machinery/computer/overwatch/proc/get_marine_data(datum/squad/squad)
 	for(var/current_member in squad.marines_list)
-		if(!current_member)
-			continue
 
 		if(ishuman(current_member))
 			var/mob/living/carbon/human/current_squaddie = current_member

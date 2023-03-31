@@ -17,6 +17,9 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	var/webmap_url
+	var/short_name
+
 	var/traits = null
 	var/space_empty_levels = 1
 	var/list/environment_traits = list()
@@ -68,20 +71,24 @@
 		/datum/equipment_preset/survivor/chaplain,
 		/datum/equipment_preset/survivor/miner,
 		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
+		/datum/equipment_preset/survivor/engineer,
 	)
 
 	synth_survivor_types = list(
 		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/emt_synth,
 		/datum/equipment_preset/synth/survivor/scientist_synth,
 		/datum/equipment_preset/synth/survivor/engineer_synth,
-		/datum/equipment_preset/synth/survivor/security_synth,
-		/datum/equipment_preset/synth/survivor/corporate_synth,
 		/datum/equipment_preset/synth/survivor/janitor_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/teacher_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
-		/datum/equipment_preset/synth/survivor/radiation_synth
+		/datum/equipment_preset/synth/survivor/cmb_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/protection_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
+		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
@@ -144,6 +151,9 @@
 	map_name = json["map_name"]
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
+
+	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
 
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"
@@ -371,7 +381,7 @@
 
 /datum/map_config/proc/MakeNextMap(maptype = GROUND_MAP)
 	if(CONFIG_GET(flag/ephemeral_map_mode))
-		message_staff("NOTICE: Running in ephemeral mode - map change request ignored")
+		message_admins("NOTICE: Running in ephemeral mode - map change request ignored")
 		return TRUE
 	if(maptype == GROUND_MAP)
 		return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")

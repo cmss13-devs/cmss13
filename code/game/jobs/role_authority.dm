@@ -58,7 +58,12 @@ var/global/players_preassigned = 0
 											/datum/job/logistics,
 											/datum/job/marine,
 											/datum/job/antag,
-											/datum/job/special
+											/datum/job/special,
+											/datum/job/special/provost,
+											/datum/job/special/uaac,
+											/datum/job/special/uaac/tis,
+											/datum/job/special/uscm,
+											/datum/job/command/tank_crew //Rip VC
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -478,7 +483,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
 	J.current_positions--
-	message_staff("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
+	message_admins("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
 	return 1
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
@@ -506,6 +511,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return
 
 	var/mob/living/carbon/human/H = M
+
+	if(J.job_options && H?.client?.prefs?.pref_special_job_options[J.title])
+		J.handle_job_options(H.client.prefs.pref_special_job_options[J.title])
 
 	var/job_whitelist = J.title
 	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)

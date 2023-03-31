@@ -69,15 +69,15 @@
 	src.modules += new /obj/item/tool/crowbar(src)
 	src.modules += new /obj/item/device/healthanalyzer(src)
 	src.modules += new /obj/item/robot/stun(src)
-	src.emag = new /obj/item/weapon/melee/energy/sword(src)
+	src.emag = new /obj/item/weapon/energy/sword(src)
 	return
 
 /obj/item/circuitboard/robot_module/surgeon
 	name = "surgeon robot module"
 	stacktypes = list(
 		/obj/item/stack/medical/advanced/bruise_pack = 5,
-		/obj/item/stack/nanopaste = 5
-		)
+		/obj/item/stack/nanopaste = 5,
+	)
 
 /obj/item/circuitboard/robot_module/surgeon/Initialize()
 	. = ..()
@@ -117,8 +117,8 @@
 	stacktypes = list(
 		/obj/item/stack/medical/ointment = 15,
 		/obj/item/stack/medical/advanced/bruise_pack = 15,
-		/obj/item/stack/medical/splint = 15
-		)
+		/obj/item/stack/medical/splint = 15,
+	)
 
 /obj/item/circuitboard/robot_module/medic/Initialize()
 	. = ..()
@@ -172,8 +172,8 @@
 		/obj/item/stack/sheet/glass/reinforced = 50,
 		/obj/item/stack/cable_coil = 50,
 		/obj/item/stack/rods = 50,
-		/obj/item/stack/tile/plasteel = 20
-		)
+		/obj/item/stack/tile/plasteel = 20,
+	)
 
 /obj/item/circuitboard/robot_module/engineering/Initialize()
 	. = ..()
@@ -307,7 +307,7 @@
 	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
-	src.modules += new /obj/item/weapon/melee/energy/sword(src)
+	src.modules += new /obj/item/weapon/energy/sword(src)
 // src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
 
 /obj/item/circuitboard/robot_module/drone
@@ -321,8 +321,8 @@
 		/obj/item/stack/tile/plasteel = 15,
 		/obj/item/stack/sheet/metal = 20,
 		/obj/item/stack/sheet/glass = 20,
-		/obj/item/stack/cable_coil = 30
-		)
+		/obj/item/stack/cable_coil = 30,
+	)
 
 /obj/item/circuitboard/robot_module/drone/Initialize()
 	. = ..()

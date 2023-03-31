@@ -28,7 +28,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -152,9 +152,9 @@
 
 		//Human-like, sorta, heard by those who understand humans.
 		var/rendered_a = "<span class='game say'><span class='name'>[name]</span> [verb], <span class='message'>\"[message]\"</span></span>"
-
 		//Speach distorted, heard by those who do not understand AIs.
 		var/message_stars = stars(message)
+
 		var/rendered_b = "<span class='game say'><span class='name'>[voice_name]</span> [verb], <span class='message'>\"[message_stars]\"</span></span>"
 
 		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> [verb], <span class='message'>[message]</span></span></i>")//The AI can "hear" its own message.

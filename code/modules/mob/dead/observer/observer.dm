@@ -3,6 +3,22 @@
 	can_block_movement = FALSE
 	recalculate_move_delay = FALSE
 
+/mob/dead/forceMove(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	var/oldloc = loc
+	loc = destination
+	Moved(oldloc, NONE, TRUE)
+
+/mob/dead/abstract_move(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	return ..()
+
 /mob/dead/observer
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -37,6 +53,8 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
+	var/observer_actions = list(/datum/action/observer_action/join_xeno)
+	var/datum/action/minimap/observer/minimap
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -85,15 +103,31 @@
 	if(!own_orbit_size)
 		own_orbit_size = 32
 
-	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin)) //Safety in case we cannot find the body's position
-	forceMove(spawn_turf)
+	if(!isturf(spawn_turf))
+		spawn_turf = get_turf(SAFEPICK(GLOB.latejoin)) //Safety in case we cannot find the body's position
+	if(spawn_turf)
+		forceMove(spawn_turf)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(name == "Unknown")
+		if(body)
+			name = body.real_name
 	change_real_name(src, name)
+
+	//To prevent weirdly offset ghosts.
+	pixel_x = 0
+	pixel_y = 0
+
+	minimap = new
+	minimap.give_to(src)
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+
+	for(var/path in subtypesof(/datum/action/observer_action))
+		var/datum/action/observer_action/new_action = new path()
+		new_action.give_to(src)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -141,7 +175,7 @@
 	if(!target.hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	LAZYINITLIST(target.observers)
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
@@ -160,7 +194,7 @@
 	if(!hud_used)
 		return
 
-	client.screen = list()
+	client.clear_screen()
 	hud_used.show_hud(hud_used.hud_version)
 
 /mob/dead/observer/Login()
@@ -335,6 +369,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
+	do_ghost()
+
+/mob/living/proc/do_ghost()
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(round_statistics)
@@ -458,7 +495,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 		return
 
-	usr.loc = pick(L)
+	usr.forceMove(pick(L))
 	following = null
 
 /mob/dead/observer/proc/scan_health(mob/living/target in oview())

@@ -144,7 +144,7 @@
 				if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was [M.slash_verb]ed by [key_name(M)] while they were infected and nested</B></font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>[M.slash_verb]ed [key_name(src)] while they were infected and nested</B></font>")
-					message_staff("[key_name(M)] [M.slash_verb]ed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+					message_admins("[key_name(M)] [M.slash_verb]ed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
 					attack_log += text("\[[time_stamp()]\] <font color='orange'>was [M.slash_verb]ed by [key_name(M)] while they were infected</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)] while they were infected</font>")
@@ -328,7 +328,7 @@
 		if(health <= 0)
 			M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			deconstruct()
+			deconstruct(FALSE)
 		else
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 			SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -370,7 +370,7 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 	SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	deconstruct()
+	deconstruct(FALSE)
 	return XENO_ATTACK_ACTION
 
 //Default "structure" proc. This should be overwritten by sub procs.
@@ -392,7 +392,7 @@
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		unbuckle()
-		deconstruct()
+		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else
 		attack_hand(M)
@@ -789,7 +789,7 @@
 		door_override = 1
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in machines)
@@ -807,42 +807,6 @@
 		if(!reardoor)
 			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
 		reardoor.unlock()
-
-/obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/xenomorph/M)
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if(!istype(shuttle) || !(M.caste && M.caste.is_intelligent))
-		return ..()
-
-	attack_hand(M)
-	if(!shuttle.iselevator)
-		if(shuttle_tag != "Ground Transport 1")
-			shuttle.door_override(M, shuttle_tag)
-		if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
-			shuttle.hijack(M, shuttle_tag)
-	return XENO_ATTACK_ACTION
-
-/obj/structure/machinery/door_control/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.caste && M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
-		var/shuttle_tag
-		switch(id)
-			if("sh_dropship1")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
-			if("sh_dropship2")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
-			if("gr_transport1")
-				shuttle_tag = "Ground Transport 1"
-			else
-				return XENO_NO_DELAY_ACTION
-
-		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.door_override(M, shuttle_tag)
-		xeno_attack_delay(M)
-
-		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			shuttle.hijack(M, shuttle_tag)
-		return XENO_NO_DELAY_ACTION
-	else
-		return ..()
 
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M)

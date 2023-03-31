@@ -1,7 +1,7 @@
 /datum/xeno_mutator/vanguard
 	name = "STRAIN: Praetorian - Vanguard"
-	description = "You forfeit some durability to gain an ability that pierces through the talls, a dash that flies over their heads and can be followed up with a sweeping slash to the surrounding area by using it again, and an ability that can fling or immobilize at your choice. You gain a shield that blocks one attack; while the shield is active your cleave has a magnified effect."
-	flavor_description = "...They shall be the finest warriors among my children, my Vanguard against the tallhosts. And they shall know no fear."
+	description = "You forfeit all of your acid-based abilities and some health for some extra speed and a rechargable shield that can block one attack. Use your Pierce from up to three paces away to stab through talls, while stabbing through several will completely recharge your shield. Use your charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. You also have a Cleave ability, amplified by your shield, which you can toggle to either immobilize or fling a target away."
+	flavor_description = "They are my bulwark against the tallhosts. They are my Vanguard and they shall know no fear."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN) //Only praetorian.
@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/pierce,
 		/datum/action/xeno_action/activable/pounce/prae_dash,
 		/datum/action/xeno_action/activable/cleave,
-		/datum/action/xeno_action/onclick/toggle_cleave
+		/datum/action/xeno_action/onclick/toggle_cleave,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 	keystone = TRUE

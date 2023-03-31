@@ -41,7 +41,7 @@
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
-	health = 50.0
+	health = 50
 	var/deflated = FALSE
 
 /obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
@@ -112,12 +112,12 @@
 		visible_message("[src] rapidly deflates!")
 		flick("wall_popping", src)
 		sleep(10)
-		deconstruct(TRUE)
+		deconstruct(FALSE)
 	else
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
-			deconstruct(FALSE)
+			deconstruct(TRUE)
 
 
 /obj/structure/inflatable/deconstruct(disassembled = TRUE)

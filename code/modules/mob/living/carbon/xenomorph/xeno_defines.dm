@@ -9,7 +9,8 @@
 	var/language = LANGUAGE_XENOMORPH
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
-	var/melee_vehicle_damage = 10 //allows fine tuning melee damage to vehicles per caste.
+	///allows fine tuning melee damage to vehicles per caste.
+	var/melee_vehicle_damage = 10
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -20,14 +21,18 @@
 	var/crystal_max = 0
 
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
-
-	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
-	var/evolution_threshold = 0 //Threshold to next evolution
-	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
-
-	var/list/evolves_to = list() //This is where you add castes to evolve into. "Separated", "by", "commas"
-	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
-	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
+	///Are they allowed to evolve (and have their evolution progress group)
+	var/evolution_allowed = 1
+	///Threshold to next evolution
+	var/evolution_threshold = 0
+	/// whether they can get evo points without needing an ovi queen
+	var/evolve_without_queen = FALSE
+	///This is where you add castes to evolve into. "Separated", "by", "commas"
+	var/list/evolves_to = list()
+	/// what caste or castes to de-evolve to.
+	var/list/deevolves_to = list()
+	///If they can use consoles, etc. Set on Queen
+	var/is_intelligent = 0
 	var/caste_desc = null
 
 	// Tackles
@@ -37,18 +42,29 @@
 	var/tacklestrength_min = 2
 	var/tacklestrength_max = 3
 
-	var/armor_deflection = 0 //Chance of deflecting projectiles.
+	///Chance of deflecting projectiles.
+	var/armor_deflection = 0
 	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
-	var/spit_delay = 60 //Delay timer for spitting
+	///Delay timer for spitting
+	var/spit_delay = 60
 
-	var/aura_strength = 0 //The strength of our aura. Zero means we can't emit one
-	var/aura_allowed = list("frenzy", "warding", "recovery") //"Evolving" removed for the time being
+	/// Windup for spits
+	var/spit_windup = FALSE
 
-	var/adjust_size_x = 1 //Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
+	///The strength of our aura. Zero means we can't emit one
+	var/aura_strength = 0
+
+	///"Evolving" removed for the time being
+	var/aura_allowed = list("frenzy", "warding", "recovery")
+
+	///Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
+	var/adjust_size_x = 1
 	var/adjust_size_y = 1
-	var/list/spit_types //list of datum projectile types the xeno can use.
+
+	///list of datum projectile types the xeno can use.
+	var/list/spit_types
 
 	var/attack_delay = 0 //Bonus or pen to time in between attacks. + makes slashes slower.
 
@@ -59,7 +75,8 @@
 	var/behavior_delegate_type = /datum/behavior_delegate
 
 	// Resin building-related vars
-	var/build_time_mult = BUILD_TIME_MULT_XENO // Default build time and build distance
+	/// Default build time and build distance
+	var/build_time_mult = BUILD_TIME_MULT_XENO
 	var/max_build_dist = 0
 
 	// Carrier vars //
@@ -71,8 +88,8 @@
 	var/hugger_delay = 0
 	var/eggs_max = 0
 	var/egg_cooldown = 30
-
-	var/xeno_explosion_resistance = 0 //Armor but for explosions
+	///Armor but for explosions
+	var/xeno_explosion_resistance = 0
 
 	//Queen vars
 	var/can_hold_facehuggers = 0
@@ -88,14 +105,15 @@
 	var/burrow_cooldown = 5 SECONDS
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 10 SECONDS
-	var/tremor_cooldown = 30 SECONDS //Big strong ability, big cooldown.
-
-	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
+	///Big strong ability, big cooldown.
+	var/tremor_cooldown = 30 SECONDS
+	///whether the xeno heals even outside weeds.
+	var/innate_healing = FALSE
 
 	var/acid_level = 0
 	var/weed_level = WEED_LEVEL_STANDARD
-
-	var/acid_splash_cooldown = 3 SECONDS //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+	///Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+	var/acid_splash_cooldown = 3 SECONDS
 
 	// regen vars
 
@@ -106,6 +124,14 @@
 
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
+
+// cannot evolve to this caste until the round has been going on for this amount of time
+	// IMPORTANT: this is ROUND_TIME, not world.time
+	var/minimum_evolve_time = 1 MINUTES
+	/// Iconstate for the xeno on the minimap
+	var/minimap_icon = "xeno"
+	///The iconstate for leadered xenos on the minimap, added as overlay
+	var/minimap_leadered_overlay = "xenoleader"
 
 
 /datum/caste_datum/can_vv_modify()
@@ -191,6 +217,17 @@
 /datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
+/datum/caste_datum/proc/get_minimap_icon()
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
+	background.color = MINIMAP_ICON_BACKGROUND_XENO
+
+	var/iconstate = minimap_icon ? minimap_icon : "unknown"
+	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+	icon.appearance_flags = RESET_COLOR
+	background.overlays += icon
+
+	return background
+
 /datum/hive_status
 	var/name = "Normal Hive"
 
@@ -227,16 +264,15 @@
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
-	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
-	var/obj/effect/alien/resin/special/pool/spawn_pool = null // Ref to the spawn pool if there is one
+	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
 	var/xenocon_points = 0 //Xeno version of DEFCON
 
 	var/datum/mutator_set/hive_mutators/mutators = new
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
-	var/bonus_larva_spawn_chance = 1.0
-	var/hijack_pooled_surge = FALSE //at hijack, start spawning lots of pooled
+	var/tier_slot_multiplier = 1
+	var/larva_gestation_multiplier = 1
+	var/bonus_larva_spawn_chance = 1
+	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
@@ -266,9 +302,7 @@
 	var/global/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
-		XENO_STRUCTURE_POOL = /datum/construction_template/xenomorph/pool,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_EVOPOD = /datum/construction_template/xenomorph/evopod,
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
 	)
 
@@ -297,13 +331,41 @@
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_XENO
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
+	if(hivenumber != XENO_HIVE_NORMAL)
+		return
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_evolution_announcements))
+
+/datum/hive_status/proc/setup_evolution_announcements()
+	SIGNAL_HANDLER
+
+	for(var/time in GLOB.xeno_evolve_times)
+		if(time == "0")
+			continue
+
+		addtimer(CALLBACK(src, PROC_REF(announce_evolve_available), GLOB.xeno_evolve_times[time]), text2num(time))
+
+/datum/hive_status/proc/announce_evolve_available(list/datum/caste_datum/available_castes)
+
+	var/list/castes_available = list()
+	for(var/datum/caste_datum/current_caste as anything in available_castes)
+		castes_available += initial(current_caste.caste_type)
+
+	var/castes = castes_available.Join(", ")
+	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
+	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
@@ -432,6 +494,8 @@
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
+	xeno.update_minimap_icon()
+
 	give_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
 	hive_ui.update_xeno_keys()
@@ -462,6 +526,8 @@
 	for(var/obj/effect/alien/resin/marker/leaderless_mark in resin_marks) //no resin_mark limit abuse
 		if(leaderless_mark.createdby == xeno.nicknumber)
 			qdel(leaderless_mark)
+
+	xeno.update_minimap_icon()
 
 	remove_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
@@ -680,8 +746,8 @@
 		),
 	)
 
-	var/pooled_factor = min(stored_larva, sqrt(4*stored_larva))
-	pooled_factor = round(pooled_factor)
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	burrowed_factor = round(burrowed_factor)
 
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
@@ -704,7 +770,7 @@
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
 	var/total_xenos = 0
-	var/effective_total = pooled_factor
+	var/effective_total = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			total_xenos++
@@ -825,16 +891,16 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
-	hijack_pooled_surge = TRUE
+	hijack_burrowed_surge = TRUE
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
-	if(!spawn_pool || !spawn_pool.spawn_pooled_larva(C.mob))
+	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
 		stored_larva--
 	else
-		hive_ui.update_pooled_larva()
+		hive_ui.update_burrowed_larva()
 
 /datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
 	var/spawning_area
@@ -869,7 +935,7 @@
 			window_flash(new_xeno.client)
 
 	stored_larva--
-	hive_ui.update_pooled_larva()
+	hive_ui.update_burrowed_larva()
 
 /mob/living/proc/ally_of_hivenumber(hivenumber)
 	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]

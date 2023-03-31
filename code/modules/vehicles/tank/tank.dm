@@ -13,7 +13,7 @@
 	bound_x = -32
 	bound_y = -32
 
-	interior_map = "tank"
+	interior_map = /datum/map_template/interior/tank
 
 	//tank always has 2 crewmen slot reserved and 1 general slot for other roles.
 	passengers_slots = 1
@@ -50,17 +50,17 @@
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
-		/obj/item/hardpoint/locomotion/treads/robust
+		/obj/item/hardpoint/locomotion/treads/robust,
 	)
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	dmg_multipliers = list(
@@ -70,7 +70,7 @@
 		"bullet" = 0.4,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	explosive_resistance = 400

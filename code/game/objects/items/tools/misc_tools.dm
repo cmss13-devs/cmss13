@@ -160,7 +160,7 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	/// what colour the ink is!
+	/// what color the ink is!
 	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE
@@ -392,7 +392,9 @@
 /obj/item/tool/stamp/ro
 	name = "requisitions officer's rubber stamp"
 	icon_state = "stamp-ro"
-/obj/item/tool/barricade_hammer//doesn't do anything, yet
+
+/obj/item/tool/carpenters_hammer //doesn't do anything, yet
 	name = "carpenter's hammer"
-	icon_state = "carpenters_hammer"
-	desc = "Can be used to thwack nails or wooden objects to hammer or even repair them."
+	icon_state = "carpenters_hammer" //yay, it now has a sprite.
+	item_state = "carpenters_hammer"
+	desc = "Can be used to thwack nails into wooden objects to repair them."

@@ -22,6 +22,10 @@
 	var/list/faction_group
 	var/origin_override
 
+	var/minimap_icon = "private"
+	var/minimap_background = MINIMAP_ICON_BACKGROUND_USCM
+	var/always_minimap_visible = TRUE
+
 	//Uniform data
 	var/utility_under = null
 	var/utility_over = null
@@ -45,6 +49,7 @@
 	var/dress_extra = null
 
 	var/list/uniform_sets = null
+
 
 
 /datum/equipment_preset/New()
@@ -252,6 +257,32 @@
 		var/datum/character_trait/CT = GLOB.character_traits[trait]
 		CT.apply_trait(H, src)
 
+/datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
+	if(user.assigned_squad)
+		background.color = user.assigned_squad.minimap_color
+	else if(minimap_background)
+		background.color = minimap_background
+	else
+		background.color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
+	if(islist(minimap_icon))
+		for(var/icons in minimap_icon)
+			var/iconstate = icons ? icons : "unknown"
+			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+			icon.appearance_flags = RESET_COLOR
+
+			if(minimap_icon[icons])
+				icon.color = minimap_icon[icons]
+			background.overlays += icon
+	else
+		var/iconstate = minimap_icon ? minimap_icon : "unknown"
+		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+		icon.appearance_flags = RESET_COLOR
+		background.overlays += icon
+
+	return background
+
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -352,10 +383,10 @@
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -367,8 +398,8 @@
 
 	//no guns in sidearms list, we don't want players spawning with a gun in hand.
 	var/list/rebel_sidearms = list(
-		/obj/item/weapon/melee/twohanded/lungemine = null,
-		/obj/item/weapon/melee/twohanded/lungemine = null,
+		/obj/item/weapon/twohanded/lungemine = null,
+		/obj/item/weapon/twohanded/lungemine = null,
 		/obj/item/attachable/bayonet = null,
 		/obj/item/attachable/bayonet/upp = null,
 		/obj/item/explosive/grenade/custom/ied = null,
@@ -389,10 +420,10 @@
 		/obj/item/storage/belt/utility/full = null,
 		/obj/item/storage/belt/utility/full = null,
 		/obj/item/storage/bible = null,
-		/obj/item/weapon/melee/baseballbat = null,
-		/obj/item/weapon/melee/baseballbat = null,
-		/obj/item/weapon/melee/baseballbat = null,
-		/obj/item/weapon/melee/baseballbat/metal = null,
+		/obj/item/weapon/baseballbat = null,
+		/obj/item/weapon/baseballbat = null,
+		/obj/item/weapon/baseballbat = null,
+		/obj/item/weapon/baseballbat/metal = null,
 		/obj/item/explosive/grenade/empgrenade = null,
 		/obj/item/explosive/grenade/smokebomb = null,
 		/obj/item/explosive/grenade/smokebomb = null,
@@ -406,8 +437,8 @@
 		/obj/item/clothing/glasses/night/m42_night_goggles/upp = null,
 		/obj/item/storage/box/handcuffs = null,
 		/obj/item/storage/pill_bottle/happy = null,
-		/obj/item/weapon/melee/twohanded/fireaxe = null,
-		/obj/item/weapon/melee/twohanded/spear = null
+		/obj/item/weapon/twohanded/fireaxe = null,
+		/obj/item/weapon/twohanded/spear = null
 		)
 
 	var/gunpath = sidearm? pick(rebel_sidearms) : pick(rebel_firearms)
@@ -462,8 +493,8 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 	/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 	/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
+	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 	)
 
 /datum/equipment_preset/proc/spawn_rebel_smg(atom/M, ammo_amount = 12)
@@ -698,6 +729,17 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
+/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+	var/random_gear = rand(0,3)
+	switch(random_gear)
+		if(0)
+			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_IN_BACK)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(H), WEAR_IN_BACK)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(H), WEAR_IN_BACK)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/antiweed(H), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/H) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.
@@ -742,12 +784,11 @@ var/list/rebel_rifles = list(
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun(H), WEAR_IN_BACK)
 		if(3)
-			H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(H), WEAR_IN_BACK)
 		if(4)
 			H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(H), WEAR_IN_BACK)
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
-
 
 // Random Survivor Weapon Spawners
 /datum/equipment_preset/proc/add_survivor_weapon_pistol(mob/living/carbon/human/H) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one becuase of hostile natives.
@@ -785,43 +826,60 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 		if(3)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/stripped(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/nsg23(H), WEAR_WAIST)
 		if(4)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(H), WEAR_WAIST)
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 
-/datum/equipment_preset/proc/add_survivor_weapon(mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet. For the most part you will stil get a shotgun but there is an off chance you get something unique. If you dont like the weapon deal with it. With exception of CMB SHotgun, everything else has some level of ammo. Some weapons may not appear at all in a colony so they will need the extra ammo. MERC, and DB needed a handfull of shells to compete with the normal CMB.
-	var/random_weapon = rand(0,15)
+/**
+ * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
+ * For the most part you will stil get a shotgun but there is an off chance you get something unique.
+ * If you dont like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
+ * Some weapons may not appear at all in a colony so they will need the extra ammo.
+ * MERC, and DB needed a handfull of shells to compete with the normal CMB.
+ */
+/datum/equipment_preset/proc/add_survivor_weapon_civilian(mob/living/carbon/human/H)
+	// a high chance to just not have a primary weapon
+	if(prob(60))
+		return
+	var/random_weapon = rand(0,3)
 	switch(random_weapon)
-		if(0 to 8)
+		if(0)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/boltaction(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/boltaction(H), WEAR_WAIST)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/uzi(H), WEAR_WAIST)
+		if(2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_L_HAND)
-		if(9)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
-		if(10)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/hunting(H), WEAR_WAIST)
-		if(11)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ar10(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/ar10(H), WEAR_WAIST)
+
+/datum/equipment_preset/proc/add_survivor_weapon_security(mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
+
+	var/random_weapon = rand(0, 3)
+	switch(random_weapon)
+		if(0)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(H), WEAR_WAIST)
-		if(12)
+		if(1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mp5(H), WEAR_WAIST)
-		if(13)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_L_HAND)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
+		if(3)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(H), WEAR_WAIST)
-		if(14)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
-		if(15)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
+
 
 
 /////////////// Antag Vendor Equipment ///////////////

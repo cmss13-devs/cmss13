@@ -50,6 +50,8 @@
 	faction = FACTION_XENOMORPH
 	gender = NEUTER
 	icon_size = 48
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 50
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -125,7 +127,7 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
-	var/pull_multiplier = 1.0
+	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
@@ -141,7 +143,7 @@
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated
-	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+	var/ability_speed_modifier = 0 //Things that add on top of our base speed, based on what powers we are using
 
 	// Progression-related
 	var/age_prefix = ""
@@ -229,8 +231,13 @@
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/is_zoomed = FALSE
-	var/tileoffset = 0 // Zooming-out related vars
-	var/viewsize = 0
+	var/list/spit_types
+	/// Caste-based spit windup
+	var/spit_windup = FALSE
+	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
+	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
+	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter
@@ -239,7 +246,7 @@
 	var/acid_blood_damage = 12
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
-
+	var/got_evolution_message = FALSE
 	var/pounce_distance = 0
 
 	// Life reduction variables.
@@ -352,6 +359,7 @@
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
 		life_damage_taken_total = oldXeno.life_damage_taken_total
+		evolution_stored = oldXeno.evolution_stored
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)
@@ -419,6 +427,9 @@
 	add_inherent_verbs()
 	add_abilities()
 	recalculate_actions()
+
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -499,7 +510,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -924,7 +939,7 @@
 	pull_multiplier = mutators.pull_multiplier
 	if(isrunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))
@@ -1059,7 +1074,7 @@
 	announce_dchat("[src] ([mutation_type] [caste_type])</b> has ghosted and their body is up for grabs!", src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
-	if(locate(/obj/effect/alien/resin/special/pool) in range(2, get_turf(src)))
+	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))
 		return
 	return ..()
 

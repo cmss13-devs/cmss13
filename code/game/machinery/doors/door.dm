@@ -9,6 +9,7 @@
 	density = TRUE
 	throwpass = 0
 	layer = DOOR_OPEN_LAYER
+	minimap_color = MINIMAP_DOOR
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
@@ -213,50 +214,55 @@
 
 
 /obj/structure/machinery/door/proc/open(forced=0)
-	if(!density) return 1
-	if(operating > 0 || !loc) return
-	if(!operating) operating = 1
-	CHECK_TICK
+	if(!density)
+		return TRUE
+	if(operating || !loc)
+		return FALSE
+
+	operating = TRUE
 	do_animate("opening")
 	icon_state = "door0"
-	src.set_opacity(0)
-	sleep(openspeed)
-	src.layer = open_layer
-	src.density = FALSE
-	update_icon()
-	set_opacity(0)
-	if (filler)
+	set_opacity(FALSE)
+	if(filler)
 		filler.set_opacity(opacity)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	return TRUE
 
-	if(operating) operating = 0
+/obj/structure/machinery/door/proc/finish_open()
+	layer = open_layer
+	density = FALSE
+	update_icon()
 
-	if(autoclose  && normalspeed && !forced)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150 + openspeed)
-	if(autoclose && !normalspeed && !forced)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 5)
+	if(operating)
+		operating = FALSE
 
-	return 1
+	if(autoclose)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), normalspeed ? 150 + openspeed : 5)
 
 
 /obj/structure/machinery/door/proc/close()
-	if(density) return 1
-	if(operating > 0 || !loc) return
-	operating = 1
+	if(density)
+		return TRUE
+	if(operating)
+		return FALSE
+
+	operating = TRUE
 	CHECK_TICK
 	src.density = TRUE
 	src.layer = closed_layer
 	do_animate("closing")
-	sleep(openspeed)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
+
+/obj/structure/machinery/door/proc/finish_close()
 	update_icon()
 	if(visible && !glass)
-		set_opacity(1) //caaaaarn!
-		if (filler)
+		set_opacity(TRUE)
+		if(filler)
 			filler.set_opacity(opacity)
-	operating = 0
-	return
+	operating = FALSE
 
 /obj/structure/machinery/door/proc/requiresID()
-	return 1
+	return TRUE
 
 
 /obj/structure/machinery/door/proc/update_flags_heat_protection(turf/source)

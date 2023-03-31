@@ -13,9 +13,14 @@
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 
+/datum/turf_reservation/interior
+	turf_type = /turf/open/void/vehicle
+
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
 	for(var/i in reserved_turfs)
+		var/turf/T = i
+		T.flags_atom |= UNUSED_RESERVATION_TURF
 		reserved_turfs -= i
 		SSmapping.used_turfs -= i
 	SSmapping.reserve_turfs(v)
@@ -25,44 +30,44 @@
 		log_debug("turf reservation had invalid dimensions")
 		return FALSE
 	var/list/avail = SSmapping.unused_turfs["[zlevel]"]
-	var/turf/BL
-	var/turf/TR
+	var/turf/bottom_left
+	var/turf/top_right
 	var/list/turf/final = list()
 	var/passing = FALSE
 	for(var/i in avail)
 		CHECK_TICK
-		BL = i
-		if(!(BL.flags_atom & UNUSED_RESERVATION_TURF_1))
+		bottom_left = i
+		if(!(bottom_left.flags_atom & UNUSED_RESERVATION_TURF))
 			continue
-		if(BL.x + width > world.maxx || BL.y + height > world.maxy)
+		if(bottom_left.x + width > world.maxx || bottom_left.y + height > world.maxy)
 			continue
-		TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
-		if(!(TR.flags_atom & UNUSED_RESERVATION_TURF_1))
+		top_right = locate(bottom_left.x + width - 1, bottom_left.y + height - 1, bottom_left.z)
+		if(!(top_right.flags_atom & UNUSED_RESERVATION_TURF))
 			continue
-		final = block(BL, TR)
+		final = block(bottom_left, top_right)
 		if(!final)
 			continue
 		passing = TRUE
-		for(var/I in final)
-			var/turf/checking = I
-			if(!(checking.flags_atom & UNUSED_RESERVATION_TURF_1))
+		for(var/turf/checking as anything in final)
+			if(!(checking.flags_atom & UNUSED_RESERVATION_TURF))
 				passing = FALSE
 				break
 		if(!passing)
 			continue
 		break
-	if(!passing || !istype(BL) || !istype(TR))
-		log_debug("failed to pass reservation tests, [passing], [istype(BL)], [istype(TR)]")
+	if(!passing || !istype(bottom_left) || !istype(top_right))
+		log_debug("failed to pass reservation tests, [passing], [istype(bottom_left)], [istype(top_right)]")
 		return FALSE
-	bottom_left_coords = list(BL.x, BL.y, BL.z)
-	top_right_coords = list(TR.x, TR.y, TR.z)
+	bottom_left_coords = list(bottom_left.x, bottom_left.y, bottom_left.z)
+	top_right_coords = list(top_right.x, top_right.y, top_right.z)
+	var/weakref = WEAKREF(src)
 	for(var/i in final)
 		var/turf/T = i
 		reserved_turfs |= T
-		T.flags_atom &= ~UNUSED_RESERVATION_TURF_1
 		SSmapping.unused_turfs["[T.z]"] -= T
-		SSmapping.used_turfs[T] = src
-		T.ChangeTurf(turf_type, turf_type)
+		SSmapping.used_turfs[T] = weakref
+		T = T.ChangeTurf(turf_type, turf_type)
+		T.flags_atom &= ~UNUSED_RESERVATION_TURF
 	src.width = width
 	src.height = height
 	return TRUE

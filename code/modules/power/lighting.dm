@@ -28,6 +28,11 @@
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
+/obj/structure/machinery/light_construct/Destroy()
+	newlight = null
+	. = ..()
+
+
 /obj/structure/machinery/light_construct/get_examine_text(mob/user)
 	. = ..()
 	switch(stage)
@@ -276,7 +281,7 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 
-					message_staff("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 					explode()
 			else if( prob( min(60, switchcount*switchcount*0.01) ) )
@@ -350,7 +355,7 @@
 
 					if(on && rigged)
 
-						message_staff("LOG: Rigged light explosion, last touched by [fingerprintslast]")
+						message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 						explode()
 			else
@@ -659,8 +664,8 @@
 /obj/item/light_bulb/tube/prison
 	name = "light tubes"
 	desc = "Replacement light tubes."
-	icon_state = "pbulb"
-	base_state = "pbulb"
+	icon_state = "ptube0"
+	base_state = "ptube0"
 	item_state = "contvapour"
 	matter = list("glass" = 100)
 	brightness = 5

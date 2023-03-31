@@ -147,7 +147,7 @@
 /obj/item/coin/marine
 	name = "marine specialist weapon token"
 	desc = "Insert this into a specialist vendor in order to access a single highly dangerous weapon."
-	icon_state = "coin_adamantine"
+	icon_state = "coin_platinum"
 
 /obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
 	return
@@ -222,7 +222,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2
 	name = "\improper USCM Prepared Meal (pork)"
-	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some water mashed potatoes fill this tray."
+	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some watery mashed potatoes fill this tray."
 	icon_state = "MREb"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2/Initialize()
@@ -274,6 +274,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Sugar Cookies"
 	desc = "The USCM M25 Sugar Cookies Meal was designed to give marines a feeling of Christmas joy. But to the bemusement of superior officers, the costs-savings measure of simply fabricating protein bars in the shape of cookies with chocolate substitute chips and the replacement of the expected milk with artificially colored water did not go over well with most marines."
 	icon_state = "mreCookies"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1/Initialize()
 	. = ..()
@@ -285,6 +286,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Gingerbread Cookies"
 	desc = "The USCM M25 Gingerbread Cookies Meal was designed to give marines convenient and cheap access to gingerbread cookies as a replacement for annual gingerbread making classes due to rising expenses and comically low success rates for the Basic Holidays Festivities Course. However, due to cost saving measures, these cookies seldom inspire happiness, nor holiday spirit."
 	icon_state = "mreGingerbread"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas2/Initialize()
 	. = ..()
@@ -296,6 +298,7 @@
 	name = "\improper USCM M25 'X-MAS' Meal: Fruitcake"
 	desc = "The USCM M25 Fruitcake Meal was the third meal designed by an officers' committee as part of the M25 Project; this shows through the terrible hardness and tartness of the bread and raisined fruits. It can be logically deduced that the people who vended this option are worse than the Grinch and the Miser combined, along with the people who designed and prepared this fruitcake."
 	icon_state = "mreFruitcake"
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas3/Initialize()
 	. = ..()

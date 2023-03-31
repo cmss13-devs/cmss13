@@ -182,6 +182,9 @@
 
 /datum/action/xeno_action/onclick/psychic_whisper/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.client.prefs.muted & MUTE_IC)
+		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+		return
 	if(!X.check_state(TRUE))
 		return
 	var/list/target_list = list()
@@ -211,6 +214,9 @@
 
 /datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.client.prefs.muted & MUTE_IC)
+		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+		return
 	if(!X.check_state(TRUE))
 		return
 	var/list/target_list = list()
@@ -301,7 +307,7 @@
 					X.use_plasma(plasma_cost)
 					to_chat(target, "[queen_order]")
 					log_admin("[queen_order]")
-					message_staff("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
+					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))

@@ -32,7 +32,7 @@
 			message = stars(message)
 
 	if(language)
-		style = language.colour
+		style = language.color
 
 	var/speaker_name = speaker.name
 	if(ishuman(speaker) && ishuman(src))
@@ -91,7 +91,7 @@
 			message = stars(message)
 
 	if(language)
-		style = language.colour
+		style = language.color
 
 	if(hard_to_hear)
 		message = stars(message)

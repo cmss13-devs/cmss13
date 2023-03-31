@@ -24,6 +24,10 @@
 
 	heal_resting = 1.75
 
+	minimum_evolve_time = 5 MINUTES
+
+	minimap_icon = "runner"
+
 /mob/living/carbon/xenomorph/runner
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER

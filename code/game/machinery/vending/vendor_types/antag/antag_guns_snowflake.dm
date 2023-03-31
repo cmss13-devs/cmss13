@@ -56,7 +56,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range,
 		/obj/item/map/current_map,
-		/obj/item/storage/box/zipcuffs
+		/obj/item/storage/box/zipcuffs,
 	)
 
 /obj/effect/essentials_set/kit/svd
@@ -65,7 +65,7 @@
 		/obj/item/ammo_magazine/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd
+		/obj/item/ammo_magazine/sniper/svd,
 	)
 
 /obj/effect/essentials_set/kit/custom_shotgun
@@ -73,7 +73,7 @@
 		/obj/item/weapon/gun/shotgun/merc,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/shotgun,
-		/obj/item/ammo_magazine/shotgun/flechette
+		/obj/item/ammo_magazine/shotgun/flechette,
 	)
 
 /obj/effect/essentials_set/kit/m60
@@ -81,17 +81,17 @@
 		/obj/item/weapon/gun/m60,
 		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/m60,
-		/obj/item/ammo_magazine/m60
+		/obj/item/ammo_magazine/m60,
 	)
 
 /obj/effect/essentials_set/random/clf_melee
 	spawned_gear_list = list(
-					/obj/item/tool/hatchet,
-					/obj/item/tool/hatchet,
-					/obj/item/weapon/melee/baseballbat,
-					/obj/item/weapon/melee/baseballbat,
-					/obj/item/weapon/melee/baseballbat/metal,
-					/obj/item/weapon/melee/twohanded/spear,
-					/obj/item/weapon/melee/twohanded/spear,
-					/obj/item/weapon/melee/twohanded/fireaxe,
-					)
+		/obj/item/tool/hatchet,
+		/obj/item/tool/hatchet,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/fireaxe,
+	)

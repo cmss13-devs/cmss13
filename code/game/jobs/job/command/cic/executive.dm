@@ -19,9 +19,9 @@
 
 AddTimelock(/datum/job/command/executive, list(
 	JOB_COMMAND_ROLES = 5 HOURS,
-	JOB_POLICE_ROLES = 3 HOURS
 ))
 
 /obj/effect/landmark/start/executive
 	name = JOB_XO
+	icon_state = "xo_spawn"
 	job = /datum/job/command/executive

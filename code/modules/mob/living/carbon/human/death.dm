@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib(cause = "gibbing")
+/mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
@@ -54,6 +54,8 @@
 		species.handle_death(src, gibbed)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MARINE_DEATH, src, gibbed)
+
+	give_action(src, /datum/action/ghost)
 
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)

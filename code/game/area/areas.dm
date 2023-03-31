@@ -13,6 +13,7 @@
 	plane = BLACKNESS_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
+	minimap_color = null
 	var/lightswitch = 1
 
 	/// Bitfield of special area features

@@ -1,16 +1,3 @@
-#define VEND_TO_HAND (1<<0)
-#define VEND_UNIFORM_RANKS (1<<1)
-#define VEND_UNIFORM_AUTOEQUIP (1<<2)
-#define VEND_LIMITED_INVENTORY (1<<3)
-#define VEND_CLUTTER_PROTECTION (1<<4)
-#define VEND_CATEGORY_CHECK (1<<5)
-#define VEND_INSTANCED_CATEGORY (1<<6)
-#define VEND_FACTION_THEMES (1<<7)
-#define VEND_USE_VENDOR_FLAGS (1<<8)
-//Whether or not to load ammo boxes depending on ammo loaded into the vendor
-//Only relevant in big vendors, like Requisitions or Squad Prep
-#define VEND_LOAD_AMMO_BOXES (1<<9)
-
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 
@@ -254,7 +241,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				return
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
-		var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+		var/obj/item/weapon/claymore/mercsword/machete/mac = locate(/obj/item/weapon/claymore/mercsword/machete) in item_to_stock
 		if(!mac)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
@@ -543,6 +530,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
+			return TRUE
 	add_fingerprint(user)
 
 /obj/structure/machinery/cm_vending/proc/handle_points(mob/living/carbon/human/user, list/itemspec)
@@ -945,6 +933,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //same thing, but spawns only 1 item from the list
 /obj/effect/essentials_set/random/New(loc)
+	if(!spawned_gear_list)
+		return
+
 	var/typepath = pick(spawned_gear_list)
 	if(ispath(typepath, /obj/item/weapon/gun))
 		new typepath(loc, TRUE)
@@ -971,6 +962,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
 		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
 		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/m4ra/empty = /obj/item/ammo_box/magazine/m4ra,
+		/obj/item/ammo_box/magazine/m4ra/ap/empty = /obj/item/ammo_box/magazine/m4ra/ap,
+		/obj/item/ammo_box/magazine/m4ra/incen/empty = /obj/item/ammo_box/magazine/m4ra/incen,
 
 		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
 		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,

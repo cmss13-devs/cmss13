@@ -8,8 +8,8 @@
 	icon_state = "pickaxe"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 15.0
-	throwforce = 4.0
+	force = 15
+	throwforce = 4
 	item_state = "pickaxe"
 	w_class = SIZE_LARGE
 	matter = list("metal" = 3750)
@@ -23,9 +23,10 @@
 	var/excavation_amount = 100
 
 /obj/item/tool/pickaxe/hammer
-	name = "sledgehammer"
-	//icon_state = "sledgehammer" Waiting on sprite
-	desc = "A mining hammer made of reinforced metal. You feel like smashing your boss in the face with this."
+	name = "mining sledgehammer"
+	icon_state = "minesledge"
+	item_state = "minesledge"
+	desc = "A mining hammer made of reinforced metal. Works just as well as a pickaxe."
 
 /obj/item/tool/pickaxe/silver
 	name = "silver pickaxe"
@@ -34,6 +35,7 @@
 	digspeed = 30
 
 	desc = "This makes no metallurgic sense."
+	black_market_value = 25
 
 /obj/item/tool/pickaxe/drill
 	/// Can dig sand as well!
@@ -62,6 +64,7 @@
 	digspeed = 20
 
 	desc = "This makes no metallurgic sense."
+	black_market_value = 30
 
 /obj/item/tool/pickaxe/plasmacutter
 	name = "plasma cutter"
@@ -75,6 +78,7 @@
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	heat_source = 3800
+	flags_item = IGNITING_ITEM
 
 /obj/item/tool/pickaxe/diamond
 	name = "diamond pickaxe"
@@ -83,6 +87,7 @@
 	digspeed = 10
 
 	desc = "A pickaxe with a diamond pick head, this is just like minecraft."
+	black_market_value = 5 //fuck you!
 
 /obj/item/tool/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
@@ -93,6 +98,7 @@
 
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
+	black_market_value = 35
 
 /obj/item/tool/pickaxe/borgdrill
 	name = "cyborg mining drill"

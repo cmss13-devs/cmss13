@@ -8,6 +8,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
+	black_market_value = 10
 
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
@@ -166,7 +167,7 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
-					M.visible_message("<span class='disarm'>[M] is blinded by \the [src]!</span>")
+					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
 	..()
 
 /obj/item/device/flash/synthetic

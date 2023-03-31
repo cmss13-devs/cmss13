@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)
@@ -31,7 +31,7 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
-	if(isnull(build_path))
+	if(!ispath(build_path))
 		return
 	return (new build_path(src.loc))
 
@@ -138,6 +138,35 @@
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
+/obj/effect/spawner/random/balaclavas
+	name = "Random Balaclava"
+	desc = "This is a randomly chosen balaclava."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/balaclavas/item_to_spawn()
+	return pick(prob(100);/obj/item/clothing/mask/balaclava,\
+				prob(50);/obj/item/clothing/mask/balaclava/tactical,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/green,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/gray,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/tan,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull/black)
+
+///If anyone wants to make custom sprites for this and the bala random spawner, be my guest.
+/obj/effect/spawner/random/facepaint
+	name = "Random Facepaint"
+	desc = "This is a randomly chosen facepaint."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/facepaint/item_to_spawn()
+	return pick(prob(100);/obj/item/facepaint/black,\
+				prob(50);/obj/item/facepaint/green,\
+				prob(25);/obj/item/facepaint/brown,\
+				prob(25);/obj/item/facepaint/sunscreen_stick,\
+				prob(10);/obj/item/facepaint/sniper,\
+				prob(10);/obj/item/facepaint/skull)
 
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"
@@ -170,7 +199,7 @@
 				/obj/item/poster,\
 				/obj/item/toy/bikehorn,\
 				/obj/item/toy/beach_ball,\
-				/obj/item/weapon/melee/banhammer,\
+				/obj/item/weapon/banhammer,\
 				/obj/item/toy/balloon,\
 				/obj/item/toy/blink,\
 				/obj/item/toy/crossbow,\
@@ -193,7 +222,8 @@
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
 				/obj/item/clothing/accessory/horrible,\
 				/obj/item/clothing/shoes/slippers,\
-				/obj/item/clothing/shoes/slippers_worn)
+				/obj/item/clothing/shoes/slippers_worn,\
+				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
@@ -201,11 +231,14 @@
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
-	return pick(prob(4);/obj/item/storage/pill_bottle/ultrazine/skillless,\
+	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/skillless,\
 				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
-				prob(4);/obj/item/storage/pill_bottle/stimulant/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance
@@ -380,9 +413,9 @@
 	desc = "spawns a surv rifle and some ammo"
 	icon_state = "loot_rifle"
 	guns = list(
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
-		/obj/item/weapon/gun/boltaction/colony = /obj/item/ammo_magazine/rifle/boltaction/colony,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
@@ -393,7 +426,7 @@
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
-		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23
 		)
 

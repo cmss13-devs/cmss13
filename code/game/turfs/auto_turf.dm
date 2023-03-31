@@ -4,7 +4,7 @@
 	icon_state = "sand_1"//editor icon
 	is_groundmap_turf = TRUE
 	var/icon_prefix = "sand"
-	var/layer_name = new/list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
+	var/layer_name = list("layer 1", "layer2", "layer 3", "layer 4", "layer 5")
 	var/variant = 0
 	var/variant_prefix_name = ""
 

@@ -4,7 +4,7 @@
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor"
-	id = 1.0
+	id = 1
 	dir = NORTH
 	unslashable = TRUE
 	health = 0
@@ -82,7 +82,7 @@
 	icon_state = initial(icon_state) + "0"
 	set_opacity(0)
 	sleep(10)
-	layer = PODDOOR_OPEN_LAYER
+	layer = open_layer
 	density = FALSE
 
 	if(operating == 1) //emag again
@@ -97,7 +97,7 @@
 	operating = 1
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
-	layer = PODDOOR_CLOSED_LAYER
+	layer = closed_layer
 	flick(initial(icon_state) + "c1", src)
 	icon_state = initial(icon_state) + "1"
 	density = TRUE
@@ -277,7 +277,8 @@
 	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE

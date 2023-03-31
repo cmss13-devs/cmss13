@@ -5,7 +5,7 @@
 
 	icon_state = "apc_base_med"
 
-	interior_map = "apc_med"
+	interior_map = /datum/map_template/interior/apc_med
 
 
 	passengers_slots = 8
@@ -21,12 +21,12 @@
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 /obj/vehicle/multitile/apc/medical/load_role_reserved_slots()

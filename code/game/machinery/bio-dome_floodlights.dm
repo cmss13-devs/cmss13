@@ -19,6 +19,13 @@
 		F.fswitch = src
 	start_processing()
 
+/obj/structure/machinery/hydro_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/hydro_floodlight/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
+
 /obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
 	for(var/obj/structure/machinery/hydro_floodlight/H in floodlist)
@@ -91,6 +98,9 @@
 	var/lum_value = 7
 
 /obj/structure/machinery/hydro_floodlight/Destroy()
+	if(fswitch?.floodlist)
+		fswitch.floodlist -= src
+	fswitch = null
 	set_light(0)
 	return ..()
 

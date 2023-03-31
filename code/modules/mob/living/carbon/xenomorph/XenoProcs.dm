@@ -66,10 +66,11 @@
 
 	. += ""
 
+	var/stored_evolution = round(evolution_stored)
 	var/evolve_progress
 
 	if(caste && caste.evolution_allowed)
-		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
+		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
 		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
@@ -78,6 +79,8 @@
 
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
+	if(stored_evolution > evolution_threshold)
+		. += "Bonus Evolution: [stored_evolution - evolution_threshold]"
 
 	. += ""
 
@@ -341,7 +344,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.deconstruct() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct(FALSE) //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else
@@ -667,13 +670,13 @@
 	switch(aura)
 		if(-INFINITY to 0.9)
 			return "Very Weak"
-		if(1.0 to 1.9)
+		if(1 to 1.9)
 			return "Weak"
-		if(2.0 to 2.9)
+		if(2 to 2.9)
 			return "Moderate"
-		if(3.0 to 3.9)
+		if(3 to 3.9)
 			return "Strong"
-		if(4.0 to INFINITY)
+		if(4 to INFINITY)
 			return "Very Strong"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
@@ -696,3 +699,10 @@
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
+
+/mob/living/carbon/xenomorph/proc/update_minimap_icon()
+	if(istype(caste, /datum/caste_datum/queen))
+		return
+
+	SSminimaps.remove_marker(src)
+	add_minimap_marker()

@@ -122,7 +122,7 @@
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		// You can't hide from the MPs
 		ACCESS_MARINE_BRIG,
 	)
@@ -137,7 +137,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1.0
+		"cooldown" = 1
 	)
 
 	//Changes how much damage the vehicle takes
@@ -165,12 +165,7 @@
 
 	if(interior_map)
 		interior = new(src)
-		interior.create_interior(interior_map)
-
-		if(!interior)
-			to_world("Interior [interior_map] failed to load for [src]! Tell a developer!")
-			qdel(src)
-			return
+		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
 
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
@@ -180,6 +175,14 @@
 	update_icon()
 
 	GLOB.all_multi_vehicles += src
+
+/obj/vehicle/multitile/proc/do_create_interior()
+	interior.create_interior(interior_map)
+
+	if(!interior)
+		to_world("Interior [interior_map] failed to load for [src]! Tell a developer!")
+		qdel(src)
+		return
 
 /obj/vehicle/multitile/Destroy()
 	if(!QDELETED(interior))

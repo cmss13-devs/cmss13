@@ -71,8 +71,7 @@
 "s" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -80,7 +79,7 @@
 /area/shiva/interior/lz2_habs)
 "t" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -117,8 +116,7 @@
 	pixel_y = 8
 	},
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (EAST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -201,8 +199,7 @@
 /area/shiva/interior/lz2_habs)
 "P" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -253,13 +250,13 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "X" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_y = -5;
 	pixel_x = -6
 	},
-/obj/item/ammo_magazine/rifle/boltaction/colony{
+/obj/item/ammo_magazine/rifle/boltaction{
 	pixel_y = -5;
 	pixel_x = 2
 	},

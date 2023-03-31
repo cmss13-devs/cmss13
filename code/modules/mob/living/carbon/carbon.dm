@@ -16,7 +16,7 @@
 
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
-
+	view_change_sources = null
 	. = ..()
 
 	QDEL_NULL_LIST(internal_organs)
@@ -93,7 +93,7 @@
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib(cause = "gibbing")
+/mob/living/carbon/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -221,7 +221,7 @@
 /mob/living/carbon/swap_hand()
 	var/obj/item/wielded_item = get_active_hand()
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
-		var/obj/item/weapon/melee/twohanded/offhand/offhand = get_inactive_hand()
+		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
 			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
 			return
@@ -513,10 +513,3 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
-/mob/living/carbon/get_vv_options()
-	. = ..()
-	. += "<option value>-----CARBON-----</option>"
-	. += "<option value='?_src_=vars;changehivenumber=\ref[src]'>Change Hivenumber</option>"
-	. += "<option value='?_src_=vars;addtrait=\ref[src]'>Add Trait</option>"
-	. += "<option value='?_src_=vars;removetrait=\ref[src]'>Remove Trait</option>"

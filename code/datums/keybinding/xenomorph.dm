@@ -7,7 +7,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_one
 	hotkey_keys = list("C")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_one"
 	full_name = "Primary Attack One"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_ONE
@@ -22,7 +22,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_two
 	hotkey_keys = list("V")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_two"
 	full_name = "Primary Attack Two"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_TWO
@@ -37,7 +37,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_three
 	hotkey_keys = list("G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_three"
 	full_name = "Primary Attack Three"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_THREE
@@ -52,7 +52,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_four
 	hotkey_keys = list("B")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_four"
 	full_name = "Primary Attack Four"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR
@@ -67,7 +67,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_five
 	hotkey_keys = list("N")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_five"
 	full_name = "Primary Attack Five"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE
@@ -81,8 +81,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/emit_pheromones
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "emit_pheromones"
 	full_name = "Emit Pheromones"
 	description = "Select a pheromone to emit or cease emitting pheromones."
@@ -120,7 +120,7 @@
 
 /datum/keybinding/xenomorph/corrosive_acid
 	hotkey_keys = list("Shift+C")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "corrosive_acid"
 	full_name = "Corrosive Acid"
 	keybind_signal = COMSIG_KB_XENO_CORROSIVE_ACID
@@ -135,7 +135,7 @@
 
 /datum/keybinding/xenomorph/tech_secrete_resin
 	hotkey_keys = list("Shift+B")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "tech_secrete_resin"
 	full_name = "Secrete Resin (Tech)"
 	keybind_signal = COMSIG_KB_XENO_TECH_SECRETE_RESIN
@@ -149,8 +149,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/screech
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "screech"
 	full_name = "Screech"
 	keybind_signal = COMSIG_KB_XENO_SCREECH
@@ -164,8 +164,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/tail_stab
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "tail_stab"
 	full_name = "Tail Stab"
 	keybind_signal = COMSIG_KB_TAIL_STAB
@@ -177,3 +177,44 @@
 	var/mob/living/carbon/xenomorph/xeno = user.mob
 	xeno.xeno_tail_stab_action()
 	return TRUE
+
+/datum/keybinding/xenomorph/hive_status
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hive_status"
+	full_name = "View Hive Status"
+	keybind_signal = COMSIG_KB_XENO_HIVE_STATUS
+
+/datum/keybinding/xenomorph/hive_status/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
+
+	if(!current_xeno?.hive)
+		return
+
+	if((!current_xeno.hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !current_xeno.hive.allow_no_queen_actions) //No Hive status on WO
+		to_chat(current_xeno, SPAN_WARNING("There is no Queen. You are alone."))
+		return
+
+	if(current_xeno.interference)
+		to_chat(current_xeno, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
+	current_xeno.hive.hive_ui.open_hive_status(current_xeno)
+
+/datum/keybinding/xenomorph/hide
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hide"
+	full_name = "Hide"
+	keybind_signal = COMSIG_KB_XENO_HIDE
+
+/datum/keybinding/xenomorph/evolve
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "evolve"
+	full_name = "Evolve"
+	keybind_signal = COMSIG_KB_XENO_EVOLVE

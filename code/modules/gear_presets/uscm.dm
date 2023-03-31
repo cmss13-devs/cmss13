@@ -65,6 +65,8 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
+	minimap_icon = "private"
+
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -98,6 +100,8 @@
 	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
+
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/sg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -155,6 +159,8 @@
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
+	minimap_icon = "vc"
+
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -199,8 +205,7 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ALPHA,
@@ -216,6 +221,8 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
+	minimap_icon = "io"
+
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -224,7 +231,6 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies
@@ -268,6 +274,8 @@
 	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
+
+	minimap_icon = "spec"
 
 /datum/equipment_preset/uscm/spec/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -323,6 +331,8 @@
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
+	minimap_icon = "medic"
+
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
 /datum/equipment_preset/uscm/medic/load_gear(mob/living/carbon/human/H)
@@ -353,6 +363,8 @@
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
+	minimap_icon = "rto"
+
 /datum/equipment_preset/uscm/rto/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -380,6 +392,8 @@
 	paygrade = "ME3"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
+
+	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
@@ -412,6 +426,8 @@
 	minimum_age = 27
 	skills = /datum/skills/SL
 
+	minimap_icon = "leader"
+
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -442,6 +458,8 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
+	minimap_icon = "private"
+
 /datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
@@ -463,7 +481,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
@@ -486,12 +504,15 @@
 	minimum_age = 27
 	skills = /datum/skills/SL
 
+	minimap_icon = "leader"
+
 /datum/equipment_preset/uscm/leader_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
@@ -500,9 +521,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/leader_equipped/cryo
 	name = "USCM Cryo Squad Leader (Equipped)"
@@ -520,6 +541,8 @@
 	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
+
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/smartgunner_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
@@ -557,6 +580,8 @@
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
+	minimap_icon = "engi"
+
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
 /datum/equipment_preset/uscm/engineer_equipped/load_gear(mob/living/carbon/human/H)
@@ -567,20 +592,17 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/engi(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
@@ -600,6 +622,8 @@
 	paygrade = "ME3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
+
+	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -621,13 +645,12 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended(H.back), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line(H), WEAR_IN_BACK)
@@ -650,6 +673,8 @@
 	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
+
+	minimap_icon = "spec"
 
 /datum/equipment_preset/uscm/specialist_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -716,6 +741,8 @@
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
+	minimap_icon = "rto"
+
 /datum/equipment_preset/uscm/rto_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	var/obj/item/clothing/under/marine/rto/U = new(H)
@@ -751,6 +778,11 @@
 	auto_squad_name = SQUAD_SOF
 	paygrade = "ME6"
 
+	minimap_icon = "private"
+
+/datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/H)
+	H.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
@@ -784,8 +816,8 @@
 	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd/heap, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40/heap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/xm40, WEAR_J_STORE)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
 	//limbs
@@ -820,6 +852,8 @@
 	role_comm_title = "TL."
 	paygrade = "MO1"
 	skills = /datum/skills/commando/deathsquad/leader
+
+	minimap_icon = "leader"
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
 	if(H.client)

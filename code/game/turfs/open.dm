@@ -3,6 +3,7 @@
 
 /turf/open
 	plane = FLOOR_PLANE
+	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/bleed_layer = 0 //snow layer
@@ -155,6 +156,7 @@
 
 /turf/open/void/vehicle
 	density = TRUE
+	opacity = TRUE
 
 /turf/open/void/is_weedable()
 	return NOT_WEEDABLE
@@ -176,6 +178,7 @@
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_sand_1"
 	is_groundmap_turf = TRUE
+	minimap_color = MINIMAP_MARS_DIRT
 
 
 /turf/open/mars_cave
@@ -196,6 +199,7 @@
 	name = "dirt"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_dirt_1"
+	minimap_color = MINIMAP_DIRT
 
 
 /turf/open/mars_dirt/Initialize(mapload, ...)
@@ -314,6 +318,7 @@
 	name = "dirt"
 	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()
@@ -344,6 +349,7 @@
 	name = "dirt"
 	icon_state = "dirt"
 	baseturfs = /turf/open/gm/dirt2
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirtgrassborder
 	name = "grass"
@@ -382,6 +388,7 @@
 	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -527,6 +534,7 @@
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -695,6 +703,7 @@
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass_path"
 	icon_spawn_state = "dirt"
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/jungle/path/Initialize(mapload, ...)
 	. = ..()

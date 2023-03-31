@@ -194,7 +194,7 @@
 	var/tmp/atom/BeamSource
 
 /obj/effect/overlay/beam/Initialize()
-	..()
+	. = ..()
 	QDEL_IN(src, 10)
 
 /**

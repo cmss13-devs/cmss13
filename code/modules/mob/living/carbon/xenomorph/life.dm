@@ -42,15 +42,23 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
-	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
-		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
-			evolve_message()
+			if(!got_evolution_message)
+				evolve_message()
+				got_evolution_message = TRUE
+			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+				evolution_stored += progress_amount
+		else
+			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+	evolve_action.give_to(src)
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -68,9 +76,10 @@
 		G.die()
 		drop_inv_item_on_ground(G)
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
-		apply_damage(dmg, BURN)
+		apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
+	if(caste.fire_immunity & FIRE_VULNERABILITY)
+		apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * FIRE_VULNERABILITY_MULTIPLIER, BURN)
 
 #undef PASSIVE_BURN_DAM_CALC
 
@@ -172,7 +181,7 @@
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -182,10 +191,10 @@
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
 			blinded = FALSE
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
 					apply_damage(-3, HALLOSS)
@@ -462,7 +471,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else if(xeno_shields.len != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
@@ -496,7 +505,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide

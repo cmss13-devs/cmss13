@@ -700,7 +700,7 @@
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_5,
 		PROPERTY_DURATION = BURN_TIME_TIER_2,
-		PROPERTY_RADIUS = 5
+		PROPERTY_RADIUS = 5,
 	)
 
 // This is gellie fuel. Green Flames.
@@ -715,7 +715,7 @@
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
-		PROPERTY_RADIUS = 7
+		PROPERTY_RADIUS = 7,
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
@@ -730,7 +730,7 @@
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION = BURN_TIME_TIER_4,
-		PROPERTY_RADIUS = 6
+		PROPERTY_RADIUS = 6,
 	)
 
 // This is the green flamer fuel for the pyro.
@@ -745,13 +745,13 @@
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
-		PROPERTY_RADIUS = 6
+		PROPERTY_RADIUS = 6,
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/penetrating
-	name = "Napalm EX"
-	id = "napalmex"
+	name = "Napalm E"
+	id = "napalme"
 	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
@@ -760,7 +760,21 @@
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
 		PROPERTY_RADIUS = 6,
-		PROPERTY_FIRE_PENETRATING = 1
+		PROPERTY_FIRE_PENETRATING = 1,
+	)
+
+/datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
+	name = "Napalm EX"
+	id = "napalmex"
+	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
+	color = "#641dd6"
+	burncolor = "#641dd6"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_4,
+		PROPERTY_RADIUS 			= 6,
+		PROPERTY_FIRE_PENETRATING	= 1
 	)
 
 /datum/reagent/chlorinetrifluoride

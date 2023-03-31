@@ -37,6 +37,7 @@
 	var/repair_form_cooldown = 180
 
 	var/saved_melee_allowed = TRUE
+	var/saved_throw_allowed = TRUE
 	var/saved_gun_allowed = TRUE
 
 /obj/item/storage/backpack/marine/smartpack/verb/toggle_exoskeleton()
@@ -208,8 +209,10 @@
 	LAZYSET(user.burn_mod_override, src, 0.2)
 	saved_melee_allowed = user.melee_allowed
 	saved_gun_allowed = user.allow_gun_usage
+	saved_throw_allowed = user.throw_allowed
 	user.melee_allowed = FALSE
 	user.allow_gun_usage = FALSE
+	user.throw_allowed = FALSE
 	to_chat(user, SPAN_DANGER("[name] beeps, \"You are now protected, but unable to attack.\""))
 	battery_charge -= PROTECTIVE_COST
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
@@ -229,6 +232,7 @@
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP
 	user.melee_allowed = saved_melee_allowed
+	user.throw_allowed = saved_throw_allowed
 	user.allow_gun_usage = saved_gun_allowed
 	LAZYREMOVE(user.brute_mod_override, src)
 	LAZYREMOVE(user.burn_mod_override, src)

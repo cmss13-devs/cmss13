@@ -5,6 +5,7 @@
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
 	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "m56"
 	item_state = "m56"
 	fire_sound = "gun_smartgun"
@@ -20,13 +21,13 @@
 	var/powerpack = null
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
-						/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-						/datum/action/item_action/smartgun/toggle_ammo_type,
-						/datum/action/item_action/smartgun/toggle_auto_fire,
-						/datum/action/item_action/smartgun/toggle_lethal_mode,
-						/datum/action/item_action/smartgun/toggle_motion_detector,
-						/datum/action/item_action/smartgun/toggle_recoil_compensation
-						)
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
@@ -48,8 +49,9 @@
 	indestructible = 1
 
 	attachable_allowed = list(
-						/obj/item/attachable/smartbarrel,
-						/obj/item/attachable/flashlight)
+		/obj/item/attachable/smartbarrel,
+		/obj/item/attachable/flashlight,
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -63,6 +65,12 @@
 	MD = new(src)
 	. = ..()
 	update_icon()
+
+/obj/item/weapon/gun/smartgun/Destroy()
+	ammo_primary = null
+	ammo_secondary = null
+	QDEL_NULL(MD)
+	. = ..()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)

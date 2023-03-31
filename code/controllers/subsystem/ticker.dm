@@ -387,6 +387,8 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
+	if(J.job_options && player?.client?.prefs?.pref_special_job_options[J.title])
+		J.handle_job_options(player.client.prefs.pref_special_job_options[J.title])
 	if(J.handle_spawn_and_equip)
 		J.spawn_and_equip(player)
 	else
@@ -445,7 +447,7 @@ SUBSYSTEM_DEF(ticker)
 		CRASH("send_tip_of_the_round() failed somewhere")
 
 	if(message)
-		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(message)]</span>")
+		to_chat(world, SPAN_PURPLE("<b>Tip of the round: </b>[html_encode(message)]"))
 		return TRUE
 	else
 		return FALSE
@@ -475,3 +477,9 @@ SUBSYSTEM_DEF(ticker)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
+
+
+/datum/controller/subsystem/ticker/proc/hijack_ocurred()
+	if(mode)
+		mode.is_in_endgame = TRUE
+		mode.force_end_at = (world.time + 25 MINUTES)

@@ -3,7 +3,7 @@
 GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 
 		list("AMMUNITION", 0, null, null, null),
-		list("L42A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42a/ap, null, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
@@ -35,6 +35,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 		list("Large Magazine Pouch", 10, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
+		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
 		list("SensorMate Medical HUD", 15, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
 		list("M2 Night Vision Goggles", 30, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
@@ -167,7 +168,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/mod
@@ -180,7 +181,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/utilities

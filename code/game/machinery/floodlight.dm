@@ -21,6 +21,7 @@
 
 /obj/structure/machinery/floodlight/Destroy()
 	set_light(0)
+	QDEL_NULL(cell)
 	return ..()
 
 /obj/structure/machinery/floodlight/proc/updateicon()

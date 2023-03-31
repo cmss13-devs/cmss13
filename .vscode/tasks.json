@@ -26,12 +26,12 @@
         },
         {
             "type": "dreammaker",
-            "dme": "ColonialMarinesALPHA.dme",
+            "dme": "colonialmarines.dme",
             "problemMatcher": [
                 "$dreammaker"
             ],
             "group": "build",
-            "label": "dm: build - ColonialMarinesALPHA.dme"
+            "label": "dm: build - colonialmarines.dme"
         },
         {
             "command": "${command:dreammaker.reparse}",

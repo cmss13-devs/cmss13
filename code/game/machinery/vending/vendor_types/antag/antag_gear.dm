@@ -44,14 +44,14 @@
 		/obj/item/device/healthanalyzer,
 		/obj/item/roller,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
 	)
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/minigun/upp,
 		/obj/item/ammo_magazine/minigun,
-		/obj/item/ammo_magazine/minigun
+		/obj/item/ammo_magazine/minigun,
 	)
 
 /obj/effect/essentials_set/leader/upp
@@ -59,7 +59,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range,
 		/obj/item/map/current_map,
-		/obj/item/storage/box/zipcuffs
+		/obj/item/storage/box/zipcuffs,
 	)
 
 /obj/effect/essentials_set/kit/svd
@@ -67,7 +67,7 @@
 		/obj/item/weapon/gun/rifle/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd
+		/obj/item/ammo_magazine/sniper/svd,
 	)
 
 /obj/effect/essentials_set/kit/custom_shotgun
@@ -75,34 +75,34 @@
 		/obj/item/weapon/gun/shotgun/merc,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/shotgun,
-		/obj/item/ammo_magazine/shotgun/flechette
+		/obj/item/ammo_magazine/shotgun/flechette,
 	)
 
 /obj/effect/essentials_set/kit/m60
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/m60,
 		/obj/item/ammo_magazine/m60,
-		/obj/item/ammo_magazine/m60
+		/obj/item/ammo_magazine/m60,
 	)
 
 /obj/effect/essentials_set/random/clf_bonus_item
 	spawned_gear_list = list(
-					/obj/item/storage/pill_bottle/tramadol/skillless,
-					/obj/item/storage/pill_bottle/tramadol/skillless,
-					/obj/item/storage/pill_bottle/tramadol/skillless,
-					/obj/item/tool/hatchet,
-					/obj/item/tool/hatchet,
-					/obj/item/weapon/melee/twohanded/spear,
-					/obj/item/reagent_container/spray/pepper,
-					/obj/item/reagent_container/spray/pepper,
-					/obj/item/reagent_container/spray/pepper,
-					/obj/item/reagent_container/ld50_syringe/choral,
-					/obj/item/storage/bible,
-					/obj/item/clothing/mask/gas/pmc,
-					/obj/item/clothing/accessory/storage/holster,
-					/obj/item/clothing/accessory/storage/webbing,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/explosive/grenade/smokebomb,
-					)
+		/obj/item/storage/pill_bottle/tramadol/skillless,
+		/obj/item/storage/pill_bottle/tramadol/skillless,
+		/obj/item/storage/pill_bottle/tramadol/skillless,
+		/obj/item/tool/hatchet,
+		/obj/item/tool/hatchet,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/reagent_container/ld50_syringe/choral,
+		/obj/item/storage/bible,
+		/obj/item/clothing/mask/gas/pmc,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/storage/pill_bottle/happy,
+		/obj/item/storage/pill_bottle/happy,
+		/obj/item/storage/pill_bottle/happy,
+		/obj/item/explosive/grenade/smokebomb,
+	)

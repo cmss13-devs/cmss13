@@ -6,7 +6,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine
 	name = "generic ammo"
 	desc = "A box of ammo."
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = null
 	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on
@@ -22,6 +22,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
 	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
 	var/max_rounds = 7 //How many rounds can it hold?
+	var/max_inherent_rounds = 0 //How many extra rounds the magazine has thats not in use? Used for Sentry Post, specifically for inherent reloading
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
@@ -29,6 +30,14 @@ They're all essentially identical when it comes to getting the job done.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
+
+	/// If this and ammo_band_icon aren't null, run update_ammo_band(). Is the color of the band, such as green on AP.
+	var/ammo_band_color
+	/// If this and ammo_band_color aren't null, run update_ammo_band() Is the greyscale icon used for the ammo band.
+	var/ammo_band_icon
+	/// Is the greyscale icon used for the ammo band when it's empty of bullets.
+	var/ammo_band_icon_empty
+
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -43,10 +52,23 @@ They're all essentially identical when it comes to getting the job done.
 			item_state += "_e"
 	pixel_y = rand(-6, 6)
 	pixel_x = rand(-7, 7)
+	if(ammo_band_color && ammo_band_icon)
+		update_ammo_band()
+
 
 /obj/item/ammo_magazine/Destroy()
 	GLOB.ammo_magazine_list -= src
 	return ..()
+
+/obj/item/ammo_magazine/proc/update_ammo_band()
+	overlays.Cut()
+	var/band_icon = ammo_band_icon
+	if(!current_rounds)
+		band_icon = ammo_band_icon_empty
+	var/image/ammo_band_image = image(icon, src, band_icon)
+	ammo_band_image.color = ammo_band_color
+	ammo_band_image.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += ammo_band_image
 
 /obj/item/ammo_magazine/update_icon(round_diff = 0)
 	if(current_rounds <= 0)
@@ -62,6 +84,8 @@ They're all essentially identical when it comes to getting the job done.
 			C.update_inv_r_hand()
 		else if(C.l_hand == src)
 			C.update_inv_l_hand()
+	if(ammo_band_color && ammo_band_icon)
+		update_ammo_band()
 
 /obj/item/ammo_magazine/get_examine_text(mob/user)
 	. = ..()
@@ -125,6 +149,18 @@ They're all essentially identical when it comes to getting the job done.
 
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
+
+/// Proc to reload the current_ammo using the items existing inherent ammo, used for Sentry Post
+/obj/item/ammo_magazine/proc/inherent_reload(mob/user)
+	if(current_rounds == max_rounds) //Does the mag actually need reloading?
+		to_chat(user, SPAN_WARNING("[src] is already full."))
+		return 0
+
+	var/rounds_to_reload = max_rounds - current_rounds
+	current_rounds += rounds_to_reload
+	max_inherent_rounds -= rounds_to_reload
+
+	return rounds_to_reload // Returns the amount of ammo it reloaded
 
 //This will attempt to place the ammo in the user's hand if possible.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, obj_name = src)

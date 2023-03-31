@@ -156,7 +156,7 @@
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE
@@ -307,7 +307,7 @@
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
-		Destroy()
+		qdel(src)
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/handle_vehicle_bump(obj/vehicle/multitile/V)
@@ -316,14 +316,14 @@
 			visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 			playsound(V, 'sound/effects/metal_crash.ogg', 35)
 			V.take_damage_type(10, "blunt", V)
-			Destroy()
+			qdel(src)
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/shutters/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 35)
-		Destroy()
+		qdel(src)
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
@@ -334,7 +334,7 @@
 		else
 			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 			playsound(V, 'sound/effects/metal_crash.ogg', 35)
-			Destroy()
+			qdel(src)
 	return FALSE
 
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(obj/vehicle/multitile/V)
@@ -415,7 +415,7 @@
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
 				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
-				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_admins("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
 				qdel(src)
 				return FALSE
 	return FALSE

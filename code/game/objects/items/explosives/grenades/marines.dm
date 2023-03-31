@@ -96,6 +96,12 @@
 	shrapnel_count = 48
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
+/obj/item/explosive/grenade/high_explosive/frag/toy
+	name = "toy HEFA grenade"
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. Wait, the labeling on the side indicates this is a toy, what the hell?"
+	explosion_power = 0
+	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
+	antigrief_protection = FALSE
 
 
 /obj/item/explosive/grenade/high_explosive/m15
@@ -320,6 +326,10 @@
 	smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)
 
+/obj/item/explosive/grenade/smokebomb/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
@@ -338,16 +348,20 @@
 	harmful = TRUE
 	var/smoke_radius = 3
 
+/obj/item/explosive/grenade/phosphorus/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
+
 /obj/item/explosive/grenade/phosphorus/weak
 	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus
 	smoke.attach(src)
 
 /obj/item/explosive/grenade/phosphorus/weak/Initialize()
-	..()
+	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke.attach(src)
 
@@ -575,3 +589,20 @@
 	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
 	s.start()
 	qdel(src)
+
+// abstract grenades used for hijack explosions
+
+/obj/item/explosive/grenade/high_explosive/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	flame_level = BURN_TIME_TIER_3
+	burn_level = BURN_LEVEL_TIER_3
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT

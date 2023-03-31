@@ -33,7 +33,7 @@
 /mob/living/silicon/robot/drone/Initialize()
 	nicknumber = rand(100,999)
 
-	..()
+	. = ..()
 
 
 	add_verb(src, /mob/living/proc/hide)
@@ -126,7 +126,7 @@
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = health
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = health - (getBruteLoss() + getFireLoss())
 	return

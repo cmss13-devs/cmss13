@@ -17,7 +17,7 @@
 	cant_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
-		/obj/item/tool
+		/obj/item/tool,
 	) //to prevent powergaming.
 	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
@@ -150,6 +150,30 @@
 /obj/item/storage/firstaid/adv/empty/fill_preset_inventory()
 	return
 
+
+
+/obj/item/storage/firstaid/synth
+	name = "synthetic repair kit"
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.'"
+	icon_state = "bezerk"
+	item_state = "firstaid-advanced"
+	cant_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+	)
+
+/obj/item/storage/firstaid/synth/fill_preset_inventory()
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/nanopaste(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/stack/cable_coil/white(src)
+	new /obj/item/tool/weldingtool/largetank(src)
+
+/obj/item/storage/firstaid/synth/empty/fill_preset_inventory()
+	return
+
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
 	desc = "Contains treatment for radiation exposure"
@@ -172,7 +196,7 @@
 	icon_state = "bezerk"
 	cant_hold = list(
 		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade
+		/obj/item/explosive/grenade,
 	) // we need surgery tools buddy
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
@@ -204,7 +228,7 @@
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/paper,
 		/obj/item/reagent_container/syringe,
-		/obj/item/reagent_container/hypospray/autoinjector
+		/obj/item/reagent_container/hypospray/autoinjector,
 	)
 
 /obj/item/storage/syringe_case/regular
@@ -249,7 +273,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,
-		/obj/item/paper
+		/obj/item/paper,
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
@@ -285,7 +309,7 @@
 		overlays += "pills_closed"
 
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[maptext_label]</span>"
+		maptext = SPAN_LANGCHAT("[maptext_label]")
 	else
 		maptext = ""
 
@@ -307,7 +331,6 @@
 				. += SPAN_INFO("The [name] feels like it's nearly empty!")
 	else
 		. += SPAN_INFO("The [name] is empty.")
-
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	..()
@@ -545,6 +568,7 @@
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = JOB_CORPORATE_LIAISON
+	black_market_value = 35
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
@@ -616,6 +640,15 @@
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
+
+//NOT FOR USCM USE!!!!
+/obj/item/storage/pill_bottle/paracetamol
+	name = "\improper Paracetamol pill bottle"
+	desc = "This is probably someone's prescription bottle."
+	icon_state = "pill_canister7"
+	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Pc"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet

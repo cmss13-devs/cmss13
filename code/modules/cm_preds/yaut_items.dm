@@ -46,16 +46,19 @@
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.1
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
+	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
+	black_market_value = 100
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
@@ -124,12 +127,14 @@
 	slowdown = 1
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/storage/backpack/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/storage/backpack/yautja,
+		/obj/item/weapon/twohanded/yautja,
+	)
 	fire_intensity_resistance = 20
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
@@ -214,9 +219,9 @@
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	items_allowed = list(
-		/obj/item/weapon/melee/yautja/knife,
-		/obj/item/weapon/gun/energy/yautja/plasmapistol
-		)
+		/obj/item/weapon/yautja/knife,
+		/obj/item/weapon/gun/energy/yautja/plasmapistol,
+	)
 
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -229,6 +234,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
+	black_market_value = 50
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
@@ -256,7 +262,7 @@
 
 /obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
-	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
+	stored_item = new /obj/item/weapon/yautja/knife(src)
 	update_icon()
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
@@ -297,6 +303,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	black_market_value = 50
 
 //=================//\\=================\\
 //======================================\\
@@ -317,6 +324,7 @@
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
+	black_market_value = 100
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -358,6 +366,7 @@
 	flags_item = ITEM_PREDATOR
 	storage_slots = 12
 	max_storage_space = 30
+	black_market_value = 50
 
 
 /obj/item/device/yautja_teleporter
@@ -373,6 +382,7 @@
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
+	black_market_value = 100
 	var/timer = 0
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
@@ -482,7 +492,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 	var/true_desc = "This is the scalp of a" //humans and Yautja see different things when examining these.
-	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair colour matrix.
+	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair color matrix.
 
 /obj/item/scalp/Initialize(mapload, mob/living/carbon/human/scalpee, mob/living/carbon/human/user)
 	. = ..()
@@ -502,7 +512,7 @@
 		return
 
 	name = "\proper [scalpee.real_name]'s scalp"
-	color = list(null, null, null, null, rgb(scalpee.r_hair, scalpee.g_hair, scalpee.b_hair)) //Hair colour.
+	color = list(null, null, null, null, rgb(scalpee.r_hair, scalpee.g_hair, scalpee.b_hair)) //Hair color.
 
 	var/they = "they"
 	var/their = "their"
@@ -674,6 +684,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
+	black_market_value = 50
 	var/armed = 0
 	var/datum/effects/tethering/tether_effect
 	var/tether_range = 5
@@ -817,11 +828,11 @@
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "fullarmor_ebony"
-	item_state = "armor"
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+	item_state = "armor"
+	icon_state = "fullarmor_ebony"
 
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
@@ -835,13 +846,15 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	siemens_coefficient = 0.1
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
+	)
 	unacidable = TRUE
-	item_state_slots = list(WEAR_JACKET = "fullarmor")
+	item_state_slots = list(WEAR_JACKET = "fullarmor_ebony")
 
 /obj/item/clothing/shoes/yautja_flavor
 	name = "alien stone greaves"
@@ -884,13 +897,14 @@
 	flags_item = ITEM_PREDATOR
 	storage_slots = 12
 	can_hold = list(
-					/obj/item/tool/surgery/stabilizer_gel,
-					/obj/item/tool/surgery/healing_gun,
-					/obj/item/tool/surgery/wound_clamp,
-					/obj/item/reagent_container/hypospray/autoinjector/yautja,
-					/obj/item/device/healthanalyzer/alien,
-					/obj/item/tool/surgery/healing_gel
-					)
+		/obj/item/tool/surgery/stabilizer_gel,
+		/obj/item/tool/surgery/healing_gun,
+		/obj/item/tool/surgery/wound_clamp,
+		/obj/item/reagent_container/hypospray/autoinjector/yautja,
+		/obj/item/device/healthanalyzer/alien,
+		/obj/item/tool/surgery/healing_gel,
+	)
+	black_market_value = 10
 
 /obj/item/storage/medicomp/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/stabilizer_gel(src)

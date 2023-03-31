@@ -66,7 +66,7 @@
 	passive_block = 20
 	readied_block = 40
 	readied_slowdown = SLOWDOWN_ARMOR_LIGHT
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -85,7 +85,7 @@
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(cooldown < world.time - 25)
-		if(istype(W, /obj/item/weapon/melee/baton) || istype(W, /obj/item/weapon/melee/claymore) || istype(W, /obj/item/weapon/melee/baseballbat) || istype(W, /obj/item/weapon/melee/katana) || istype(W, /obj/item/weapon/melee/twohanded/fireaxe) || istype(W, /obj/item/weapon/melee/chainofcommand))
+		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/claymore) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/katana) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
@@ -101,7 +101,7 @@
 	force = 3
 	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
 	readied_block = 50
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_SMALL

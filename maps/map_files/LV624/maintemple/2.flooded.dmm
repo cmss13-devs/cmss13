@@ -258,7 +258,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
 /turf/open/gm/grass,
@@ -303,7 +303,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
-/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
 /turf/open/gm/coast{
 	icon_state = "beachcorner2"
 	},
@@ -321,8 +321,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hO" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -339,7 +338,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -453,7 +452,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -513,7 +512,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -643,7 +642,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -758,7 +757,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -1063,7 +1062,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1121,7 +1120,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BI" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1212,7 +1211,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -1312,7 +1311,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Ff" = (
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
@@ -1390,8 +1389,7 @@
 "Hk" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -1426,7 +1424,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1480,7 +1478,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Je" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1632,7 +1630,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1777,7 +1775,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "PO" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1830,8 +1828,7 @@
 /area/lv624/ground/caves/sand_temple)
 "QX" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -1850,8 +1847,7 @@
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	tag = "icon-comfychair (EAST)"
+	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1995,8 +1991,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)

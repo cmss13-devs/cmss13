@@ -1,10 +1,8 @@
 // Holds props for helmet garb
 
 /obj/item/prop/helmetgarb
-	name = "Placeholder"
-	desc = "placeholder"
 	icon = 'icons/obj/items/helmet_garb.dmi'
-	icon_state = "placeholder"
+	icon_state = null
 	w_class = SIZE_TINY
 	garbage = TRUE
 
@@ -56,7 +54,7 @@
 
 /obj/item/prop/helmetgarb/rosary
 	name = "rosary"
-	desc = "The Emperor Protects! I mean, Jesus Saves!"
+	desc = "Jesus Saves Lives!"
 	icon_state = "rosary"
 
 /obj/item/prop/helmetgarb/lucky_feather

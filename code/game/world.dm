@@ -31,6 +31,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	var/year_string = time2text(world.realtime, "YYYY")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+	tgui_diary = file("data/logs/[date_string]_tgui.log")
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
@@ -47,8 +48,10 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+		backfill_runtime_log()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -67,7 +70,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
@@ -82,6 +85,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
+
+	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -368,18 +373,26 @@ var/datum/BSQL_Connection/connection
 /world/proc/FinishTestRun()
 	set waitfor = FALSE
 	var/list/fail_reasons
-	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
-#ifdef UNIT_TESTS
-		if(GLOB.failed_any_test)
-			LAZYADD(fail_reasons, "Unit Tests failed!")
-#endif
-	else
+	if(!GLOB)
 		fail_reasons = list("Missing GLOB!")
+	else if(total_runtimes)
+		fail_reasons = list("Total runtimes: [total_runtimes]")
+#ifdef UNIT_TESTS
+	if(GLOB.failed_any_test)
+		LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
 	if(!fail_reasons)
 		text2file("Success!", "data/logs/ci/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
+
+
+/world/proc/backfill_runtime_log()
+	if(length(full_init_runtimes))
+		world.log << "========= EARLY RUNTIME ERRORS ========"
+		for(var/line in full_init_runtimes)
+			world.log << line
+		world.log << "======================================="
+		world.log << ""

@@ -13,7 +13,7 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/cut_larval_pseudoroots,
-		/datum/surgery_step/remove_larva
+		/datum/surgery_step/remove_larva,
 	)
 
 /datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
@@ -33,9 +33,12 @@
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 5 SECONDS
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/cut_larval_pseudoroots/proc/larva_blood_spray(mob/living/carbon/human/user, mob/living/carbon/human/patient) //Mostly check_blood_splash().
 	var/i = 0 //Tally up our victims.
@@ -116,6 +119,9 @@
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/organ2.ogg'
+	failure_sound = 'sound/effects/acid_sizzle2.ogg'
 
 /datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)

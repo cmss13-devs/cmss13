@@ -321,7 +321,7 @@
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "\improper Weyland-Yutani IPA"
 	desc = "Beer's misunderstood cousin."
-	icon_state = "alebottle"
+	icon_state = "ale"
 	item_state = "beer"
 	center_of_mass = "x=16;y=10"
 
@@ -434,6 +434,7 @@
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
+	black_market_value = 10 //mendoza likes blue souto
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue/Initialize()
 	. = ..()

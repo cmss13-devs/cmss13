@@ -23,6 +23,10 @@
 
 	heal_resting = 1.5
 
+	minimum_evolve_time = 9 MINUTES
+
+	minimap_icon = "lurker"
+
 /mob/living/carbon/xenomorph/lurker
 	caste_type = XENO_CASTE_LURKER
 	name = XENO_CASTE_LURKER
@@ -41,10 +45,10 @@
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
-		)
+	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
-		)
+	)
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 

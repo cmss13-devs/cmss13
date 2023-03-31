@@ -7,48 +7,50 @@
 	default_ammo = /datum/ammo/bullet/revolver
 	flags_equip_slot = NO_FLAGS
 	caliber = ".44"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
 	w_class = SIZE_SMALL
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
+	ammo_band_icon = "+m44_tip"
+	ammo_band_icon_empty = "empty"
 
 /obj/item/ammo_magazine/revolver/marksman
 	name = "\improper M44 marksman speed loader (.44)"
 	default_ammo = /datum/ammo/bullet/revolver/marksman
 	caliber = ".44"
-	icon_state = "m_m44"
+	ammo_band_color = REVOLVER_TIP_COLOR_MARKSMAN
 
 /obj/item/ammo_magazine/revolver/heavy
 	name = "\improper M44 heavy speed loader (.44)"
 	default_ammo = /datum/ammo/bullet/revolver/heavy
 	caliber = ".44"
-	icon_state = "h_m44"
+	ammo_band_color = REVOLVER_TIP_COLOR_HEAVY
 
 /obj/item/ammo_magazine/revolver/incendiary
 	name = "\improper M44 incendiary speed loader (.44)"
 	default_ammo = /datum/ammo/bullet/revolver/incendiary
-	icon_state = "m44_incendiary"
+	ammo_band_color = REVOLVER_TIP_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/revolver/marksman/toxin
 	name = "\improper M44 toxic speed loader (.44)"
 	default_ammo = /datum/ammo/bullet/revolver/marksman/toxin
-	icon_state = "m44_toxin"
+	ammo_band_color = REVOLVER_TIP_COLOR_TOXIN
 
 /obj/item/ammo_magazine/revolver/penetrating
-	name = "\improper M44 wall-piercing speed loader (.44)"
+	name = "\improper M44 wall-penetrating speed loader (.44)"
 	default_ammo = /datum/ammo/bullet/revolver/penetrating
-	icon_state = "m44_penetrating"
+	ammo_band_color = REVOLVER_TIP_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/revolver/cluster
-	name = "\improper M44 cluster speed loader (.44)"
-	desc = "A revolver speed loader. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
-	default_ammo = /datum/ammo/bullet/revolver/cluster
-	icon_state = "m44_cluster"
+/**
+ * COLONY REVOLVERS
+ */
 
 /obj/item/ammo_magazine/revolver/pkd
 	name = "\improper Plfager Katsuma stripper clip (.44)"
 	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "pkd_44"
 	caliber = ".44 sabot"
 
@@ -56,6 +58,7 @@
 	name = "\improper N-Y speed loader (7.62x38mmR)"
 	default_ammo = /datum/ammo/bullet/revolver/nagant
 	caliber = "7.62x38mmR"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
 	icon_state = "ny762"
 	gun_type = /obj/item/weapon/gun/revolver/nagant
 
@@ -69,6 +72,7 @@
 	name = "\improper S&W speed loader (.38)"
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".38"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
@@ -78,6 +82,7 @@
 	desc = "This speedloader was created for the Colonial Marshals' most commonly issued sidearm, loaded with hollowpoint rounds either for colonies with wildlife problems or orbital stations, which favor the lesser penetration over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
 	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
 	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
@@ -87,6 +92,10 @@
 	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
 	default_ammo = /datum/ammo/bullet/revolver/small
 	icon_state = "cmb"
+
+/**
+ * MATEBA REVOLVER
+ */
 
 /obj/item/ammo_magazine/revolver/mateba
 	name = "\improper Mateba speed loader (.454)"
@@ -101,27 +110,31 @@
 	name = "\improper High Impact Mateba speed loader (.454)"
 	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't point at anything you don't want to destroy."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
-	icon_state = "matebaE"
+	ammo_band_color = REVOLVER_TIP_COLOR_HIGH_IMPACT
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Mateba speed loader (.454)"
 	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This armor-piercing variant is optimized against armored targets at the cost of lower overall damage. Don't point at anything you don't want to destroy."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
-	icon_state = "matebaAP"
+	ammo_band_color = REVOLVER_TIP_COLOR_AP
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"
 	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. There's an impact charge built into the bullet tip. Firing this at anything will result in a powerful explosion. Use with EXTREME caution."
-	icon_state = "mateba_explosive"
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
+	ammo_band_color = REVOLVER_TIP_COLOR_EXPLOSIVE
 
+/**
+ * WEBLEY REVOLVER
+*/
 
 /obj/item/ammo_magazine/revolver/webley
 	name = "\improper Webley speed loader (.455)"
 	desc = ".455 Webley, the last decent pistol calibre. Loaded with Mk III dum-dum bullets, because Marines are not human and the Hague Conventions do not apply to them."
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	caliber = ".455"
-	icon_state = "mateba"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon_state = "357"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
 
@@ -181,6 +194,9 @@
 
 /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
+
+/obj/item/ammo_magazine/internal/revolver/mateba/ap
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
 
 /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive

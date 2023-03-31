@@ -17,8 +17,8 @@
 	var/on = 0
 	health = 100
 	var/maxhealth = 100
-	var/fire_dam_coeff = 1.0
-	var/brute_dam_coeff = 1.0
+	var/fire_dam_coeff = 1
+	var/brute_dam_coeff = 1
 	var/open = 0 //Maint panel
 	var/locked = TRUE
 	var/stat = 0

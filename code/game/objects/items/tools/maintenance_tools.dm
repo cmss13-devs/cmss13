@@ -162,6 +162,7 @@
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	var/base_icon_state = ""
 
 	//Amount of OUCH when it's thrown
 	force = 3
@@ -189,6 +190,7 @@
 	. = ..()
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
+	base_icon_state = initial(icon_state)
 	return
 
 
@@ -336,7 +338,7 @@
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
-			icon_state = "welder1"
+			icon_state = base_icon_state + "_on"
 			w_class = SIZE_LARGE
 			heat_source = 3800
 			START_PROCESSING(SSobj, src)
@@ -348,7 +350,7 @@
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
 		force = 3
 		damtype = "brute"
-		icon_state = "welder"
+		icon_state = base_icon_state
 		welding = 0
 		w_class = initial(w_class)
 		heat_source = 0

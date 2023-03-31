@@ -178,6 +178,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_DIRECTOR "PMC Site Director"
 #define JOB_PMC_SYNTH    "PMC Support Synthetic"
 
+#define JOB_PMC_GRUNT_LIST list(JOB_PMC, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR, JOB_PMC_ELITE, JOB_PMC_GUNNER, JOB_PMC_SNIPER, JOB_PMC_CREWMAN, JOB_PMC_NINJA, JOB_PMC_XENO_HANDLER, JOB_PMC_COMMANDO, JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
+
 //-------- WY --------//
 
 #define JOB_TRAINEE "Corporate Trainee"
@@ -195,6 +197,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
 
+#define JOB_WY_GOON_LIST list(JOB_WY_GOON, JOB_WY_GOON_LEAD)
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST "VAIPO Mercenary"
@@ -211,12 +215,16 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CONTRACTOR_COVTL "VAISO Team Leader"
 #define JOB_CONTRACTOR_COVSYN "VAISO Support Synthetic"
 
+#define CONTRACTOR_JOB_LIST list(JOB_CONTRACTOR, JOB_CONTRACTOR_ST, JOB_CONTRACTOR_MEDIC, JOB_CONTRACTOR_ENGI, JOB_CONTRACTOR_MG, JOB_CONTRACTOR_TL, JOB_CONTRACTOR_COV, JOB_CONTRACTOR_COVST, JOB_CONTRACTOR_COVMED, JOB_CONTRACTOR_COVENG, JOB_CONTRACTOR_COVTL)
+
 //-------- CMB --------//
 #define JOB_CMB "CMB Deputy"
 #define JOB_CMB_TL "CMB Marshal"
 #define JOB_CMB_SYN "CMB Investigative Synthetic"
 #define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
 #define JOB_CMB_OBS "Interstellar Human Rights Observer"
+
+#define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
 
 //-------- UPP --------//
 #define JOB_UPP "UPP Private"
@@ -236,6 +244,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 
 #define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
+#define UPP_JOB_GRUNT_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_CREWMAN)
 
 #define JOB_UPP_COMMANDO "UPP Junior Kommando"
 #define JOB_UPP_COMMANDO_MEDIC "UPP 2nd Kommando"
@@ -293,6 +302,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_RIOT "Riot Control"
 #define JOB_RIOT_CHIEF "Chief Riot Control"
 
+#define RIOT_JOB_LIST list(JOB_RIOT, JOB_RIOT_CHIEF)
 //-------- UAAC --------//
 #define JOB_TIS_IO "UAAC-TIS Intelligence Officer"
 #define JOB_TIS_SA "UAAC-TIS Special Agent"
@@ -339,3 +349,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define FLAG_SHOW_MEDICAL 64
 #define FLAG_SHOW_MARINES 128
 #define FLAG_SHOW_ALL_JOBS FLAG_SHOW_CIC|FLAG_SHOW_AUXIL_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES
+
+///For denying certain traits being applied to people. ie. bad leg
+///'Grunt' lists are for people who wouldn't logically get the bad leg trait, ie. UPP marine counterparts.
+#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, JOB_WY_GOON_LIST, JOB_PMC_GRUNT_LIST)

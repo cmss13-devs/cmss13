@@ -201,13 +201,32 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
-	req_access = list(ACCESS_MARINE_ALPHA)
+	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
 
 	vend_x_offset = 2
 	vend_y_offset = 1
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/alpha
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_ALPHA)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/bravo
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_BRAVO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/charlie
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_CHARLIE)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/delta
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_DELTA)
+	vend_x_offset = 0
+	vend_y_offset = 0
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -371,12 +390,32 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various ammunition types. Can be accessed by any Marine Rifleman."
-	req_access = list(ACCESS_MARINE_ALPHA)
+	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 	vend_x_offset = 2
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/alpha
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_ALPHA)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/bravo
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_BRAVO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/charlie
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_CHARLIE)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/delta
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_DELTA)
+	vend_x_offset = 0
+	vend_y_offset = 0
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -516,11 +555,31 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
 	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Marine Rifleman."
-	req_access = list(ACCESS_MARINE_ALPHA)
+	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
 
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/alpha
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_ALPHA)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/bravo
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_BRAVO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/charlie
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_CHARLIE)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/delta
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO, ACCESS_MARINE_DELTA)
+	vend_x_offset = 0
+	vend_y_offset = 0
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

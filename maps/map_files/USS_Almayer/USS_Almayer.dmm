@@ -5860,7 +5860,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "asX" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -11214,16 +11214,10 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "aMx" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21";
-	vend_x_offset = 0;
-	vend_y_offset = 0
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -21725,10 +21719,10 @@
 	},
 /area/almayer/squads/req)
 "bMq" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -21740,16 +21734,10 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bMu" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21";
-	vend_x_offset = 0;
-	vend_y_offset = 0
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -37491,12 +37479,7 @@
 	},
 /area/almayer/engineering/engine_core)
 "gNq" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21";
-	vend_x_offset = 0
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -40452,12 +40435,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "iow" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21";
-	vend_y_offset = 0
-	},
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -45017,6 +44995,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"kAM" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/charlie,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/charlie_delta_shared)
 "kAU" = (
 /obj/structure/platform{
 	dir = 4
@@ -51247,14 +51231,8 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "nBa" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21";
-	vend_x_offset = 0;
-	vend_y_offset = 0
-	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -52259,10 +52237,10 @@
 	},
 /area/almayer/engineering/port_atmos)
 "obE" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -54855,8 +54833,8 @@
 	},
 /area/almayer/medical/upper_medical)
 "ptj" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -55778,14 +55756,8 @@
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
 "pQF" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21";
-	vend_x_offset = 0;
-	vend_y_offset = 0
-	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -56783,6 +56755,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/pilotbunks)
+"qnM" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/alpha,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha_bravo_shared)
 "qnP" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -59640,8 +59618,8 @@
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "rHf" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -62942,12 +62920,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/weapon_room)
 "tkN" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21";
-	vend_x_offset = 0
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -67516,7 +67489,7 @@
 	},
 /area/almayer/shipboard/port_missiles)
 "vlX" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -68389,6 +68362,12 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/navigation)
+"vJx" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/alpha,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha_bravo_shared)
 "vJy" = (
 /obj/structure/machinery/vending/cigarette{
 	density = 0;
@@ -68589,6 +68568,12 @@
 "vOy" = (
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/medical_science)
+"vOW" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/alpha,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/alpha_bravo_shared)
 "vPj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp{
@@ -69795,6 +69780,12 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/bridgebunks)
+"wmX" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/charlie,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/charlie_delta_shared)
 "wnL" = (
 /obj/item/stack/tile/carpet{
 	amount = 12
@@ -71009,12 +71000,7 @@
 	},
 /area/almayer/living/briefing)
 "wTw" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/squad{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21";
-	vend_y_offset = 0
-	},
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -72658,6 +72644,12 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/securestorage)
+"xDO" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/charlie,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/charlie_delta_shared)
 "xEc" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -111641,7 +111633,7 @@ dEC
 aNO
 qHl
 jeb
-vlX
+vOW
 aNx
 qGc
 jhD
@@ -111685,7 +111677,7 @@ bHT
 bHa
 deH
 vra
-asX
+kAM
 chf
 wDJ
 tJz
@@ -112047,7 +112039,7 @@ rlG
 aNO
 nFy
 jeb
-vlX
+vOW
 thA
 gAA
 gAA
@@ -112091,7 +112083,7 @@ bHT
 bHa
 rKy
 vra
-asX
+kAM
 drj
 cgo
 cgo
@@ -112250,7 +112242,7 @@ enx
 aQt
 xPg
 jeb
-vlX
+vOW
 tdE
 qGc
 rth
@@ -112294,7 +112286,7 @@ bHT
 bHa
 bIR
 vra
-asX
+kAM
 qUq
 wDJ
 nyQ
@@ -112656,7 +112648,7 @@ aLG
 aNO
 jJs
 jeb
-vlX
+vOW
 tdE
 qGc
 rth
@@ -112700,7 +112692,7 @@ bHV
 bHa
 rbX
 vra
-asX
+kAM
 qUq
 wDJ
 nyQ
@@ -113062,7 +113054,7 @@ ahj
 ahj
 ahj
 jeb
-tkN
+qnM
 qHg
 gAA
 beP
@@ -113106,7 +113098,7 @@ bHX
 bHa
 buH
 vra
-gNq
+xDO
 hXb
 cgo
 fwY
@@ -113468,7 +113460,7 @@ ahj
 ahj
 ahj
 jeb
-iow
+vJx
 aMO
 qGc
 hxe
@@ -113512,7 +113504,7 @@ bHW
 bHa
 vMx
 vra
-wTw
+wmX
 bNE
 wDJ
 ivs

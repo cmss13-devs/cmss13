@@ -9,6 +9,26 @@
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/alpha
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_ALPHA, ACCESS_MARINE_CARGO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/bravo
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CARGO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/charlie
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_CARGO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/delta
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_DELTA, ACCESS_MARINE_CARGO)
+	vend_x_offset = 0
+	vend_y_offset = 0
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 

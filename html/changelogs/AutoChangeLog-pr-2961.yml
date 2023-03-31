@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscdel: "Removed a floating phone in the toilet in the apc of the CLF crashed ship."
+  - maptweak: "increase the starting charge in the apc of the CLF crashed ship."

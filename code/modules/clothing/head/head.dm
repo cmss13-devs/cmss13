@@ -754,3 +754,13 @@ D
 	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
 	icon_state = "o_cap"
 	item_state = "o_cap"
+
+/obj/item/clothing/head/owlf_hood
+	name = "\improper OWLF thermal hood"
+	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "owlf_hood"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	item_state = "owlf_hood"

@@ -190,20 +190,20 @@
 	for(var/obj/limb/limb in H.limbs)
 		switch(limb.name)
 			if("groin","chest")
-				limb.min_broken_damage = 139
-				limb.max_damage = 140
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
 				limb.time_to_knit = 1200 // 2 minutes to self heal bone break, time is in tenths of a second to auto heal this
 			if("head")
-				limb.min_broken_damage = 129
-				limb.max_damage = 130
+				limb.min_broken_damage = 140
+				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 			if("l_hand","r_hand","r_foot","l_foot")
-				limb.min_broken_damage = 129
-				limb.max_damage = 130
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 			if("r_leg","r_arm","l_leg","l_arm")
-				limb.min_broken_damage = 119
-				limb.max_damage = 130
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	H.set_languages(list(LANGUAGE_YAUTJA))

@@ -93,6 +93,8 @@
 	if(light_system == MOVABLE_LIGHT)
 		AddComponent(/datum/component/overlay_lighting)
 
+/*
+
 ///Updates this movables emissive overlay
 /atom/movable/proc/update_emissive_block()
 	if(!blocks_emissive)
@@ -108,7 +110,10 @@
 
 /atom/movable/update_overlays()
 	. = ..()
+
 	. += update_emissive_block()
+
+*/
 
 /atom/movable/vv_get_dropdown()
 	. = ..()

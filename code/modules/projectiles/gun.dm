@@ -282,9 +282,9 @@
 				var/obj/item/attachable/potential_attachment = attachments[slot]
 				if(!potential_attachment)
 					continue
-				loc.SetLuminosity(0, FALSE, src)
+				loc.set_light(0, FALSE, src)
 		else
-			SetLuminosity(0)
+			set_light(0)
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)

@@ -167,5 +167,5 @@
 			step_away(F,src,rand(1,5))
 			F.set_light(0)
 			if(F.on && loc != user)
-				F.set_light(F.brightness_on)
+				F.set_light_on(F.on)
 		return

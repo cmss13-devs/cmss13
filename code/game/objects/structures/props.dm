@@ -641,7 +641,7 @@
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
 	if(luminosity)
-		SetLuminosity(luminosity)
+		set_light(luminosity)
 
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"

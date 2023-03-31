@@ -143,6 +143,7 @@
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	light_system = STATIC_LIGHT
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
 	var/brightness = 8 // luminosity when on, also used in power calculation

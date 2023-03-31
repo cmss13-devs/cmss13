@@ -188,6 +188,8 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+// CLOTHING TRAITS
+#define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
@@ -275,6 +277,9 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
 		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
 	),
+	/obj/item/clothing = list(
+		"TRAIT_CLOTHING_HOOD" = TRAIT_CLOTHING_HOOD
+	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
 	),
@@ -332,3 +337,6 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
 ///Status trait coming from generic items
 #define TRAIT_SOURCE_ITEM "t_s_item"
+
+//Status trait coming from clothing.
+#define TRAIT_SOURCE_CLOTHING "t_s_clothing"

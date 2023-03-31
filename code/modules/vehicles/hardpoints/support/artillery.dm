@@ -11,7 +11,7 @@
 	activatable = TRUE
 
 	var/is_active = 0
-	var/view_buff = 10 //This way you can VV for more or less fun
+	var/view_buff = 3 //This way you can VV for more or less fun
 	var/view_tile_offset = 7
 
 /obj/item/hardpoint/support/artillery_module/activate(mob/user, atom/A)
@@ -19,7 +19,7 @@
 		return
 
 	if(is_active)
-		user.client.view_size.set_view_radius_to(8, owner)
+		user.client.view_size.reset_to_default()
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 		is_active = FALSE
@@ -30,7 +30,7 @@
 		holder = T
 		break
 
-	user.client.view_size.set_view_radius_to(view_buff, owner)
+	user.client.view_size.add(3)
 	is_active = TRUE
 
 	switch(holder.dir)
@@ -57,7 +57,7 @@
 			continue
 		var/mob/user = C.seats[seat]
 		if(!user.client) continue
-		user.client.view_size.set_view_radius_to(world_view_size, owner)
+		user.client.view_size.reset_to_default()
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 	is_active = FALSE

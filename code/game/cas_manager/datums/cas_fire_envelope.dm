@@ -194,7 +194,7 @@
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		M.sync_lighting_plane_alpha()
 	else if (linked_console.upgraded == MATRIX_WIDE)
-		M.client?.view_size.set_view_radius_to(linked_console.power + 5, M)
+		M.client?.view_size.add(linked_console.power - 2, M)
 
 
 /datum/cas_fire_envelope/proc/remove_upgrades(user)
@@ -206,7 +206,7 @@
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		M.sync_lighting_plane_alpha()
 	if(linked_console.upgraded == MATRIX_WIDE)
-		M.client?.view_size.set_view_radius_to(7, M)
+		M.client?.view_size.reset_to_default()
 	else
 		return
 

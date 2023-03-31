@@ -201,7 +201,7 @@
 	if(!client)
 		return
 	is_zoomed = 1
-	client.view_size.set_view_radius_to(viewsize)
+	client.view_size.add(viewsize)
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)

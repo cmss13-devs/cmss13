@@ -356,7 +356,7 @@
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				var/obj/item/clothing/head/helmet/owner_helmet = owner.head
-				if(istype(owner_helmet) && !issynth(owner))
+				if(istype(owner_helmet) && owner.allow_gun_usage)
 					if(!(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION))
 						owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
 						owner.drop_inv_item_on_ground(owner_helmet)

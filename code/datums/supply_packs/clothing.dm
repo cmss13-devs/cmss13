@@ -27,6 +27,17 @@
 	containername = "medical pouches crate"
 	group = "Clothing"
 
+/datum/supply_packs/earmuffs
+	name = "earmuffs crate (x2)"
+	contains = list(
+		/obj/item/clothing/ears/earmuffs
+		/obj/item/clothing/ears/earmuffs
+	)
+	cost = 75
+	containertype = /obj/structure/closet/crate
+	containername = "Earmuffs Crate"
+	group = "Clothing"
+
 //---------------------------------------------
 //HOLSTERS & WEBBING BELOW THIS LINE
 //---------------------------------------------

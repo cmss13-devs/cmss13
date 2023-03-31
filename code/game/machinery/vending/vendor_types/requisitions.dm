@@ -136,6 +136,7 @@
 		list("Powerloader Certification", round(scale * 0.1) + 1, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
 		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
+		list("Earmuffs", round(scale * 4), /obj/item/clothing/ears/earmuffs, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)

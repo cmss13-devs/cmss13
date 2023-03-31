@@ -1549,7 +1549,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
-/obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
+/obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/living/carbon/human/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
 	if(isnull(fire_sound))
 		actual_sound = pick(fire_sounds)
@@ -1615,12 +1615,16 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
 				playsound(user, active_attachable.fire_sound, 50)
+				if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs))
+					user.AdjustEarDeafness(1)
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
 				if (firing_sndfreq && fire_rattle)
 					playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 				else
 					playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+					if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs))
+						user.AdjustEarDeafness(1)
 			else
 				playsound(user, actual_sound, 25, firing_sndfreq)
 

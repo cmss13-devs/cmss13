@@ -34,11 +34,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -298,7 +298,7 @@
 	dir = 1;
 	icon_state = "phoronrwindow"
 	},
-/obj/item/weapon/melee/katana{
+/obj/item/weapon/katana{
 	color = "#b2ffff";
 	desc = "A finely made Japanese sword, with a well sharpened blade. It appears to have cobalt infused within the blade. There are Japanese engravings on the blade which say 'He who wields this sword becomes the next Titan.'.";
 	name = "ancient katana";
@@ -548,10 +548,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 7
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = -7
 	},
 /turf/open/floor/sandstone/runed,
@@ -588,7 +588,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/chainofcommand,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "KA" = (
@@ -672,7 +672,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/unathiknife,
+/obj/item/weapon/unathiknife,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "QT" = (

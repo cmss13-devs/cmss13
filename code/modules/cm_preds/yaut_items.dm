@@ -47,11 +47,11 @@
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.1
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
@@ -128,12 +128,12 @@
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
+		/obj/item/weapon/yautja,
 		/obj/item/storage/backpack/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	fire_intensity_resistance = 20
 
@@ -219,7 +219,7 @@
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	items_allowed = list(
-		/obj/item/weapon/melee/yautja/knife,
+		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 	)
 
@@ -262,7 +262,7 @@
 
 /obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
-	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
+	stored_item = new /obj/item/weapon/yautja/knife(src)
 	update_icon()
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
@@ -847,11 +847,11 @@
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	siemens_coefficient = 0.1
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "fullarmor_ebony")

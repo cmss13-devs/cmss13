@@ -1524,7 +1524,7 @@
 /obj/structure/safe,
 /obj/item/moneybag,
 /obj/item/clothing/glasses/monocle,
-/obj/item/weapon/melee/telebaton,
+/obj/item/weapon/telebaton,
 /obj/item/book/codebook,
 /obj/item/coin/silver{
 	desc = "A small coin, bearing the falling falcons insignia.";
@@ -39028,9 +39028,9 @@
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = 32
 	},
-/obj/item/weapon/melee/pole/wooden_cane,
-/obj/item/weapon/melee/pole/wooden_cane,
-/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -40166,7 +40166,7 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/item/weapon/melee/pole/fancy_cane{
+/obj/item/weapon/pole/fancy_cane{
 	pixel_x = 5
 	},
 /turf/open/floor/wood/ship,
@@ -62991,7 +62991,7 @@
 	pixel_y = 6
 	},
 /obj/item/handcuffs,
-/obj/item/weapon/melee/baton{
+/obj/item/weapon/baton{
 	pixel_x = -12
 	},
 /turf/open/floor/almayer{
@@ -72873,7 +72873,7 @@
 /area/almayer/hull/lower_hull/l_f_p)
 "xIj" = (
 /obj/structure/largecrate/random/secure,
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal{
 	pixel_x = -2;
 	pixel_y = 8
 	},

@@ -59,6 +59,10 @@
 /datum/component/bad_leg/proc/stumble(mob/living/carbon/human/parent_human)
 	SIGNAL_HANDLER
 
+	///This prevents weird shit like corpses being dragged triggering the messages.
+	if(parent_human.stat || parent_human.buckled || parent_human.is_mob_incapacitated() || parent_human.is_mob_restrained())
+		return
+
 	if(parent_human.throwing == TRUE)
 		return // unaffected on throws
 

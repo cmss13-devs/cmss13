@@ -22,14 +22,6 @@
 "ah" = (
 /turf/closed/wall/wood,
 /area/lv624/ground/caves/north_central_caves)
-"ai" = (
-/obj/effect/landmark/survivor_spawner/lv624_skylight{
-	pixel_x = -1
-	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
-/area/lv624/ground/caves/north_central_caves)
 "aj" = (
 /obj/structure/largecrate/supply/explosives/mines{
 	unacidable = 1;
@@ -154,9 +146,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aH" = (
-/obj/effect/landmark/survivor_spawner/lv624_skylight{
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aI" = (
@@ -180,6 +170,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aM" = (
 /obj/structure/bed/alien,
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aN" = (
@@ -281,6 +272,12 @@
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"hY" = (
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
+/turf/open/floor/wood{
+	icon_state = "wood-broken4"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "jP" = (
 /obj/item/weapon/gun/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
@@ -366,6 +363,12 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"En" = (
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "EY" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -377,6 +380,11 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"KK" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "Lu" = (
@@ -399,6 +407,13 @@
 	icon_state = "wood-broken6"
 	},
 /area/lv624/ground/caves/north_central_caves)
+"OB" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
 "OT" = (
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
@@ -415,6 +430,7 @@
 "UM" = (
 /obj/structure/bed/alien,
 /obj/structure/barricade/sandbags/wired,
+/obj/effect/landmark/survivor_spawner/lv624_skylight,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "Yc" = (
@@ -467,7 +483,7 @@ aa
 ah
 ao
 bf
-aC
+hY
 bf
 lP
 ah
@@ -525,7 +541,7 @@ aZ
 (9,1,1) = {"
 ah
 ae
-bf
+aH
 aP
 bf
 bb
@@ -540,7 +556,7 @@ ac
 bf
 bf
 bf
-bc
+OB
 oj
 bf
 bf
@@ -560,7 +576,7 @@ lJ
 "}
 (12,1,1) = {"
 ah
-aH
+bf
 bf
 bf
 aP
@@ -572,7 +588,7 @@ ah
 "}
 (13,1,1) = {"
 ah
-aH
+bf
 bf
 aG
 aQ
@@ -584,19 +600,19 @@ aZ
 "}
 (14,1,1) = {"
 ah
-aH
+bf
 ak
 aG
 aR
 at
 Ic
-aV
+KK
 aA
 aZ
 "}
 (15,1,1) = {"
 ah
-ai
+aP
 bg
 aG
 aS
@@ -608,7 +624,7 @@ aZ
 "}
 (16,1,1) = {"
 ah
-aH
+bf
 bf
 aP
 bf
@@ -620,7 +636,7 @@ ah
 "}
 (17,1,1) = {"
 ah
-aH
+bf
 bf
 aV
 aU
@@ -633,9 +649,9 @@ ah
 (18,1,1) = {"
 ah
 Yc
-ak
+En
 bf
-aV
+KK
 jQ
 bc
 bf

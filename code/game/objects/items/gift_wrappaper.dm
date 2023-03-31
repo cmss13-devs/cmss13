@@ -53,15 +53,15 @@
 
 	to_chat(user, SPAN_NOTICE(" You cut open the present."))
 
-	for(var/mob/M in src) //Should only be one but whatever.
-		M.forceMove(src.loc)
-		if (M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
+	for(var/mob/current_mob in src) //Should only be one but whatever.
+		current_mob.forceMove(src.loc)
+		if (current_mob.client)
+			current_mob.client.eye = current_mob.client.mob
+			current_mob.client.perspective = MOB_PERSPECTIVE
 
 	deconstruct()
 
-/obj/item/a_gift/attack_self(mob/M)
+/obj/item/a_gift/attack_self(mob/current_mob)
 	..()
 
 	var/gift_type = pick(
@@ -105,10 +105,10 @@
 
 	if(!ispath(gift_type,/obj/item)) return
 
-	var/obj/item/I = new gift_type(M)
-	M.temp_drop_inv_item(src)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	var/obj/item/new_item = new gift_type(current_mob)
+	current_mob.temp_drop_inv_item(src)
+	current_mob.put_in_hands(new_item)
+	new_item.add_fingerprint(current_mob)
 	qdel(src)
 	return
 
@@ -140,13 +140,13 @@
 
 				if(user.drop_held_item())
 					amount -= a_used
-					var/obj/item/gift/G = new /obj/item/gift( src.loc )
-					G.size = W.w_class
-					G.w_class = G.size + 1
-					G.icon_state = text("gift[]", G.size)
-					G.gift = W
-					W.forceMove(G)
-					G.add_fingerprint(user)
+					var/obj/item/gift/new_gift = new /obj/item/gift( src.loc )
+					new_gift.size = W.w_class
+					new_gift.w_class = new_gift.size + 1
+					new_gift.icon_state = text("gift[]", new_gift.size)
+					new_gift.gift = W
+					W.forceMove(new_gift)
+					new_gift.add_fingerprint(user)
 					W.add_fingerprint(user)
 					add_fingerprint(user)
 			if (src.amount <= 0)
@@ -170,22 +170,22 @@
 
 /obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
 	if (!istype(target, /mob/living/carbon/human)) return
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/human/current_human = target
 
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)
+	if (istype(current_human.wear_suit, /obj/item/clothing/suit/straight_jacket) || current_human.stat)
 		if (src.amount > 2)
-			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
+			var/obj/effect/spresent/present = new /obj/effect/spresent (current_human.loc)
 			src.amount -= 2
 
-			if (H.client)
-				H.client.perspective = EYE_PERSPECTIVE
-				H.client.eye = present
+			if (current_human.client)
+				current_human.client.perspective = EYE_PERSPECTIVE
+				current_human.client.eye = present
 
-			H.forceMove(present)
+			current_human.forceMove(present)
 
-			H.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been wrapped with [src.name]  by [user.name] ([user.ckey])</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to wrap [H.name] ([H.ckey])</font>")
-			msg_admin_attack("[key_name(user)] used [src] to wrap [key_name(H)] in [get_area(user)] ([user.loc.x], [user.loc.y], [user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			current_human.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been wrapped with [src.name]  by [user.name] ([user.ckey])</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to wrap [current_human.name] ([current_human.ckey])</font>")
+			msg_admin_attack("[key_name(user)] used [src] to wrap [key_name(current_human)] in [get_area(user)] ([user.loc.x], [user.loc.y], [user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		else
 			to_chat(user, SPAN_NOTICE(" You need more paper."))

@@ -27,8 +27,8 @@
 /obj/effect/landmark/wo_spawners/New()
 	..()
 	var/num
-	for(var/turf/open/O in range(range))
-		new Landmark(O)
+	for(var/turf/open/open_turf in range(range))
+		new Landmark(open_turf)
 		num ++
 	sleep(5)
 	message_admins("[num] [src]\s were spawned in at [loc.loc.name] ([loc.x],[loc.y],[loc.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")

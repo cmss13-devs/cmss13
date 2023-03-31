@@ -351,20 +351,20 @@
 		gun = new gunpath(spawnloc)
 		if(scatter)
 			var/direction = pick(alldirs)
-			var/turf/T = get_step(gun, direction)
-			if(!T || T.density)
+			var/turf/current_turf = get_step(gun, direction)
+			if(!current_turf || current_turf.density)
 				return
-			gun.loc = T
+			gun.loc = current_turf
 	if(ammopath)
 		for(var/i in 0 to ammo_amount-1)
 			ammo = new ammopath(spawnloc)
 			if(scatter)
 				for(i=0, i<rand(1,3), i++)
 					var/direction = pick(alldirs)
-					var/turf/T = get_step(ammo, direction)
-					if(!T || T.density)
+					var/turf/current_turf = get_step(ammo, direction)
+					if(!current_turf || current_turf.density)
 						break
-					ammo.loc = T
+					ammo.loc = current_turf
 
 /*
 // the actual spawners themselves
@@ -550,8 +550,8 @@
 
 /obj/effect/spawner/random/claymore/spawn_item()
 	var/build_path = item_to_spawn()
-	var/obj/item/explosive/mine/M = new build_path(src.loc)
-	M.dir = src.dir
+	var/obj/item/explosive/mine/mine = new build_path(src.loc)
+	mine.dir = src.dir
 	return
 
 /obj/effect/spawner/random/claymore/lowchance

@@ -21,19 +21,19 @@
 	return FALSE
 
 /obj/effect/decal/cleanable/blood/tracks/proc/add_tracks(direction, tcolor, out)
-	var/image/I = image(icon = icon, icon_state = out ? going_state : coming_state, dir = direction)
-	var/mutable_appearance/MA = new(I)
+	var/image/blood_tracks = image(icon = icon, icon_state = out ? going_state : coming_state, dir = direction)
+	var/mutable_appearance/MA = new(blood_tracks)
 	MA.color = tcolor
 	MA.layer = layer
 	MA.appearance_flags |= RESET_COLOR
-	I.appearance = MA
+	blood_tracks.appearance = MA
 	if(out)
-		LAZYSET(steps_out, "[direction]", I)
+		LAZYSET(steps_out, "[direction]", blood_tracks)
 	else
-		LAZYSET(steps_in, "[direction]", I)
+		LAZYSET(steps_in, "[direction]", blood_tracks)
 
-	overlay_images += I
-	cleanable_turf.overlays += I
+	overlay_images += blood_tracks
+	cleanable_turf.overlays += blood_tracks
 
 /obj/effect/decal/cleanable/blood/tracks/clear_overlay()
 	if(length(overlay_images))

@@ -29,12 +29,12 @@
 					to_chat(user, "You place \the [cig] in \the [src] without even smoking it. Why would you do that?")
 			else
 				drop = FALSE
-				var/obj/item/clothing/mask/cigarette/pipe/P = W
-				if(P.ash)
-					user.visible_message("[user] empties the ash out of \the [P] into \the [src].", "You empty the ash out of \the [P] into \the [src].")
-					P.ash = FALSE
+				var/obj/item/clothing/mask/cigarette/pipe/pipe = W
+				if(pipe.ash)
+					user.visible_message("[user] empties the ash out of \the [pipe] into \the [src].", "You empty the ash out of \the [pipe] into \the [src].")
+					pipe.ash = FALSE
 				else
-					to_chat(user, "There is no ash in \the [P].")
+					to_chat(user, "There is no ash in \the [pipe].")
 
 		if(drop)
 			user.visible_message("[user] places \the [W] into \the [src].", "You place \the [W] into \the [src].")
@@ -63,15 +63,15 @@
 			return
 		if (contents.len)
 			src.visible_message(SPAN_DANGER("[src] slams into [hit_atom] spilling its contents!"))
-		for (var/obj/item/clothing/mask/cigarette/O in contents)
-			O.forceMove(src.loc)
+		for (var/obj/item/clothing/mask/cigarette/cig in contents)
+			cig.forceMove(src.loc)
 		icon_state = icon_empty
 	return ..()
 
 /obj/item/ashtray/proc/die()
 	src.visible_message(SPAN_DANGER("[src] shatters spilling its contents!"))
-	for (var/obj/item/clothing/mask/cigarette/O in contents)
-		O.forceMove(src.loc)
+	for (var/obj/item/clothing/mask/cigarette/cig in contents)
+		cig.forceMove(src.loc)
 	icon_state = icon_broken
 
 /obj/item/ashtray/plastic

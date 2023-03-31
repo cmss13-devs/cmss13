@@ -102,14 +102,14 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
-	if(!istype(H))
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/current_human)
+	if(!istype(current_human))
 		return
 
-	registered_name = H.real_name
-	registered_ref = WEAKREF(H)
-	registered_gid = H.gid
-	blood_type = H.blood_type
+	registered_name = current_human.real_name
+	registered_ref = WEAKREF(current_human)
+	registered_gid = current_human.gid
+	blood_type = current_human.blood_type
 
 /obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
@@ -265,8 +265,8 @@
 /obj/item/card/id/syndicate/afterattack(obj/item/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/I = O
-		src.access |= I.access
+		var/obj/item/card/id/card = O
+		src.access |= card.access
 		if(istype(user, /mob/living) && user.mind)
 			to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
 
@@ -346,17 +346,17 @@
 	..()
 
 
-/obj/item/card/id/equipped(mob/living/carbon/human/H, slot)
-	if(istype(H))
-		H.update_inv_head() //updating marine helmet squad coloring
-		H.update_inv_wear_suit()
+/obj/item/card/id/equipped(mob/living/carbon/human/current_human, slot)
+	if(istype(current_human))
+		current_human.update_inv_head() //updating marine helmet squad coloring
+		current_human.update_inv_wear_suit()
 	..()
 
 /obj/item/card/id/dropped(mob/user)
 	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_head() //Don't do a full update yet
-		H.update_inv_wear_suit()
+		var/mob/living/carbon/human/current_human = user
+		current_human.update_inv_head() //Don't do a full update yet
+		current_human.update_inv_wear_suit()
 	..()
 
 
@@ -393,16 +393,16 @@
 	fallen_blood_types = list()
 	fallen_assgns = list()
 
-/obj/item/dogtag/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
+/obj/item/dogtag/attackby(obj/item/current_item, mob/user)
+	if(istype(current_item, /obj/item/dogtag))
+		var/obj/item/dogtag/card = current_item
 		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
-		if(D.fallen_names)
-			fallen_names += D.fallen_names
-			fallen_blood_types += D.fallen_blood_types
-			fallen_assgns += D.fallen_assgns
-		qdel(D)
+		if(card.fallen_names)
+			fallen_names += card.fallen_names
+			fallen_blood_types += card.fallen_blood_types
+			fallen_assgns += card.fallen_assgns
+		qdel(card)
 		return TRUE
 	else
 		. = ..()

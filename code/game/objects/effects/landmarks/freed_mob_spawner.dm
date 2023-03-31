@@ -14,12 +14,12 @@
 	return ..()
 
 /obj/effect/landmark/freed_mob_spawner/proc/spawn_freed_mob()
-	var/mob/living/carbon/human/H = new(loc)
-	H.setDir(dir)
-	if(!H.hud_used)
-		H.create_hud()
-	arm_equipment(H, equipment_path, TRUE, count_participant)
-	H.free_for_ghosts()
+	var/mob/living/carbon/human/current_human = new(loc)
+	current_human.setDir(dir)
+	if(!current_human.hud_used)
+		current_human.create_hud()
+	arm_equipment(current_human, equipment_path, TRUE, count_participant)
+	current_human.free_for_ghosts()
 
 /obj/effect/landmark/freed_mob_spawner/upp_conscript
 	name = "UPP Conscript"

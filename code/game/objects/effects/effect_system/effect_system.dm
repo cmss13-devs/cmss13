@@ -92,9 +92,9 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/sparks/New()
 	..()
 	playsound(src.loc, "sparks", 25, 1)
-// var/turf/T = src.loc
-// if (istype(T, /turf))
-// T.hotspot_expose(1000,100)
+// var/turf/current_turf = src.loc
+// if (istype(current_turf, /turf))
+// current_turf.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 
@@ -165,15 +165,15 @@ steam.start() -- spawns the effect
 	if(src.processing)
 		src.processing = 0
 		spawn(0)
-			var/turf/T = get_turf(src.holder)
-			if(T != src.oldposition)
-				if(istype(T, /turf/open/space))
-					var/obj/effect/particle_effect/ion_trails/I = new /obj/effect/particle_effect/ion_trails(src.oldposition)
-					src.oldposition = T
-					I.setDir(src.holder.dir)
-					flick("ion_fade", I)
-					I.icon_state = "blank"
-					QDEL_IN(I, 20)
+			var/turf/current_turf = get_turf(src.holder)
+			if(current_turf != src.oldposition)
+				if(istype(current_turf, /turf/open/space))
+					var/obj/effect/particle_effect/ion_trails/particle = new /obj/effect/particle_effect/ion_trails(src.oldposition)
+					src.oldposition = current_turf
+					particle.setDir(src.holder.dir)
+					flick("ion_fade", particle)
+					particle.icon_state = "blank"
+					QDEL_IN(particle, 20)
 				spawn(2)
 					if(src.on)
 						src.processing = 1
@@ -213,12 +213,12 @@ steam.start() -- spawns the effect
 		src.processing = 0
 		spawn(0)
 			if(src.number < 3)
-				var/obj/effect/particle_effect/steam/I = new /obj/effect/particle_effect/steam(src.oldposition)
+				var/obj/effect/particle_effect/steam/particle = new /obj/effect/particle_effect/steam(src.oldposition)
 				src.number++
 				src.oldposition = get_turf(holder)
-				I.setDir(src.holder.dir)
+				particle.setDir(src.holder.dir)
 				spawn(10)
-					qdel(I)
+					qdel(particle)
 					number--
 				spawn(2)
 					if(src.on)

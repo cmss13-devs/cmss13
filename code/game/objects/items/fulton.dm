@@ -77,8 +77,8 @@ var/global/list/deployed_fultons = list()
 		to_chat(user, SPAN_WARNING("You can't attach [src] to something here."))
 		return
 
-	var/area/A = get_area(target_atom)
-	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
+	var/area/current_area = get_area(target_atom)
+	if(current_area && CEILING_IS_PROTECTED(current_area.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, SPAN_WARNING("You can't attach [src] to something when underground!"))
 		return
 
@@ -86,17 +86,17 @@ var/global/list/deployed_fultons = list()
 
 	if(isliving(target_atom))
 		if(ishuman(target_atom))
-			var/mob/living/carbon/human/H = target_atom
-			if(isyautja(H) && H.stat == DEAD)
+			var/mob/living/carbon/human/current_human = target_atom
+			if(isyautja(current_human) && current_human.stat == DEAD)
 				can_attach = TRUE
-			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
+			else if((current_human.stat != DEAD || current_human.mind && current_human.check_tod() && current_human.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
 				can_attach = TRUE
 		else if(isxeno(target_atom))
-			var/mob/living/carbon/xenomorph/X = target_atom
-			if(X.stat != DEAD)
+			var/mob/living/carbon/xenomorph/xeno = target_atom
+			if(xeno.stat != DEAD)
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
 				return
 			can_attach = TRUE
@@ -116,26 +116,26 @@ var/global/list/deployed_fultons = list()
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
 				return
-			for(var/obj/item/stack/fulton/F in get_turf(target_atom))
+			for(var/obj/item/stack/fulton/fulton in get_turf(target_atom))
 				return
-			var/obj/item/stack/fulton/F = new /obj/item/stack/fulton(get_turf(target_atom), 1, target_atom)
-			transfer_fingerprints_to(F)
+			var/obj/item/stack/fulton/fulton = new /obj/item/stack/fulton(get_turf(target_atom), 1, target_atom)
+			transfer_fingerprints_to(fulton)
 			src.add_fingerprint(user)
-			F.add_fingerprint(user)
+			fulton.add_fingerprint(user)
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)
 			use(1)
-			F.deploy_fulton()
+			fulton.deploy_fulton()
 	else
 		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
 
 /obj/item/stack/fulton/proc/deploy_fulton()
 	if(!attached_atom)
 		return
-	var/image/I = image(icon, icon_state)
+	var/image/current_image = image(icon, icon_state)
 	if(isxeno(attached_atom))
-		var/mob/living/carbon/xenomorph/X = attached_atom
-		I.pixel_x = (X.pixel_x * -1)
-	attached_atom.overlays += I
+		var/mob/living/carbon/xenomorph/xeno = attached_atom
+		current_image.pixel_x = (xeno.pixel_x * -1)
+	attached_atom.overlays += current_image
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
@@ -151,7 +151,7 @@ var/global/list/deployed_fultons = list()
 
 	forceMove(attached_atom)
 	deployed_fultons += src
-	attached_atom.overlays -= I
+	attached_atom.overlays -= current_image
 
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 

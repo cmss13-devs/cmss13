@@ -74,8 +74,8 @@
 	else
 		return ..()
 
-/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
+/obj/item/reagent_container/glass/watertank/attackby(obj/item/current_item, mob/user, params)
+	if(current_item == noz)
 		remove_noz()
 	else
 		. = ..()
@@ -102,8 +102,8 @@
 			usr.put_in_l_hand(src)
 	add_fingerprint(usr)
 
-/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
+/obj/item/reagent_container/glass/watertank/attackby(obj/item/current_item, mob/user, params)
+	if(current_item == noz)
 		remove_noz()
 		return 1
 	else
@@ -142,21 +142,21 @@
 
 /obj/item/reagent_container/spray/mister/Initialize()
 	. = ..()
-	var/obj/item/reagent_container/glass/watertank/W = loc
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = loc
+	if(!istype(tank))
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/reagent_container/spray/mister/get_examine_text(mob/user)
 	. = ..()
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
 		return
-	. += "It is linked to \the [W]."
+	. += "It is linked to \the [tank]."
 
 /obj/item/reagent_container/spray/mister/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
 		return
 
 	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
@@ -166,8 +166,8 @@
 	if(A == user) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
 		return
 
-	if(W.reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE("\The [W] is empty!"))
+	if(tank.reagents.total_volume < amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE("\The [tank] is empty!"))
 		return
 
 	if(safety)
@@ -181,15 +181,15 @@
 
 
 /obj/item/reagent_container/spray/mister/Spray_at(atom/A, mob/user)
-	var/obj/item/reagent_container/glass/watertank/W = user.back
-	if(!istype(W))
+	var/obj/item/reagent_container/glass/watertank/tank = user.back
+	if(!istype(tank))
 		return
-	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
-	D.create_reagents(amount_per_transfer_from_this)
-	W.reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
-	D.color = mix_color_from_reagents(D.reagents.reagent_list)
-	D.source_user = user
-	D.move_towards(A, 3, spray_size)
+	var/obj/effect/decal/chempuff/puff = new /obj/effect/decal/chempuff(get_turf(src))
+	puff.create_reagents(amount_per_transfer_from_this)
+	tank.reagents.trans_to(puff, amount_per_transfer_from_this, 1 / spray_size)
+	puff.color = mix_color_from_reagents(puff.reagents.reagent_list)
+	puff.source_user = user
+	puff.move_towards(A, 3, spray_size)
 
 //ATMOS FIRE FIGHTING BACKPACK
 
@@ -335,13 +335,13 @@
 		if(tank.reagents.has_reagent("water", launcher_cost))
 			tank.reagents.remove_reagent("water", launcher_cost)
 			tank.launcher_cooldown = world.time + 50
-			var/obj/effect/resin_container/A = new (get_turf(src))
+			var/obj/effect/resin_container/container = new (get_turf(src))
 			playsound(src,'sound/items/syringeproj.ogg',40,TRUE)
 			//projectile movement
 			for(var/i in 1 to 5)
-				step_towards(A, target)
+				step_towards(container, target)
 				sleep(2)
-			A.Smoke()
+			container.Smoke()
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need at least [launcher_cost] units of water to use the metal foam launcher!"))
@@ -359,9 +359,9 @@
 		if(tank.reagents.has_reagent("water", foamer_cost))
 			//firing code
 			tank.reagents.remove_reagent("water", foamer_cost)
-			var/datum/effect_system/foam_spread/S = new /datum/effect_system/foam_spread(get_turf(target))
-			S.set_up(0, target, null, metal_foam = FOAM_METAL_TYPE_ALUMINIUM)
-			S.start()
+			var/datum/effect_system/foam_spread/foam = new /datum/effect_system/foam_spread(get_turf(target))
+			foam.set_up(0, target, null, metal_foam = FOAM_METAL_TYPE_ALUMINIUM)
+			foam.start()
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need at least [foamer_cost] units of water to use the metal foamer!"))
@@ -377,9 +377,9 @@
 	var/foam_metal_type = FOAM_METAL_TYPE_ALUMINIUM
 
 /obj/effect/resin_container/proc/Smoke()
-	var/datum/effect_system/foam_spread/s = new /datum/effect_system/foam_spread(get_turf(loc))
-	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
-	s.start()
+	var/datum/effect_system/foam_spread/foam = new /datum/effect_system/foam_spread(get_turf(loc))
+	foam.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
+	foam.start()
 	playsound(src,'sound/effects/bamf.ogg',100,TRUE)
 	qdel(src)
 

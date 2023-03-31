@@ -55,39 +55,39 @@
 		return FALSE
 
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+		var/mob/living/carbon/human/current_human = M
 		var/mob/living/carbon/human/Huser = user
-		Huser.animation_attack_on(H)
+		Huser.animation_attack_on(current_human)
 		if(!open)
 			to_chat(user, SPAN_WARNING("The lid is on!"))
 			return FALSE
 
-		if(H.lip_style) //if they already have lipstick on
+		if(current_human.lip_style) //if they already have lipstick on
 			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
 			return
 
-		if(H == user)
-			paint_face(H, user)
+		if(current_human == user)
+			paint_face(current_human, user)
 			return TRUE
 
 		else
-			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [H]..."))
-			to_chat(H, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
-			if(alert(H,"Will you allow [user] to apply makeup to your face?",,"Sure","No") == "Sure")
-				if( user && loc == user && (user in range(1,H)) ) //Have to be close and hold the thing.
-					paint_face(H, user)
+			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [current_human]..."))
+			to_chat(current_human, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
+			if(alert(current_human,"Will you allow [user] to apply makeup to your face?",,"Sure","No") == "Sure")
+				if( user && loc == user && (user in range(1,current_human)) ) //Have to be close and hold the thing.
+					paint_face(current_human, user)
 					return TRUE
 
 	to_chat(user, SPAN_WARNING("Foiled!"))
 
 
-/obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
-	if(!H || !user)
+/obj/item/facepaint/proc/paint_face(mob/living/carbon/human/current_human, mob/user)
+	if(!current_human || !user)
 		return //In case they're passed as null.
-	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
+	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [current_human]'s face."), \
 						SPAN_NOTICE("You apply [src]."))
-	H.lip_style = paint_type
-	H.update_body()
+	current_human.lip_style = paint_type
+	current_human.update_body()
 	uses--
 	if(!uses)
 		user.temp_drop_inv_item(src)

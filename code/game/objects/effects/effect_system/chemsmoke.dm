@@ -54,10 +54,10 @@
 	targetTurfs = new()
 
 	//build affected area list
-	for(var/turf/T in view(range, location))
+	for(var/turf/current_turf in view(range, location))
 		//cull turfs to circle
-		if(cheap_pythag(T.x - location.x, T.y - location.y) <= range)
-			targetTurfs += T
+		if(cheap_pythag(current_turf.x - location.x, current_turf.y - location.y) <= range)
+			targetTurfs += current_turf
 
 	//make secondary list for reagents that affect walls
 	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
@@ -75,16 +75,16 @@
 		contained += " [reagent] "
 	if(contained)
 		contained = "\[[contained]\]"
-	var/area/A = get_area(location)
+	var/area/current_area = get_area(location)
 
-	var/where = "[A.name]|[location.x], [location.y]"
+	var/where = "[current_area.name]|[location.x], [location.y]"
 	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
-		var/mob/M = GLOB.directory[carry.my_atom.fingerprintslast]
+		var/mob/current_mob = GLOB.directory[carry.my_atom.fingerprintslast]
 		var/more = ""
-		if(M)
-			more = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[M]'>?</a>)"
+		if(current_mob)
+			more = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[current_mob]'>?</a>)"
 		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
@@ -107,42 +107,42 @@
 
 	//reagent application - only run if there are extra reagents in the smoke
 	if(chemholder.reagents.reagent_list.len)
-		for(var/datum/reagent/R in chemholder.reagents.reagent_list)
+		for(var/datum/reagent/chem in chemholder.reagents.reagent_list)
 			var/proba = 100
 			var/runs = 5
 
 			//dilute the reagents according to cloud density
-			R.volume /= density
+			chem.volume /= density
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
-				for(var/turf/T in wallList)
-					R.reaction_turf(T, R.volume)
+			if(chem.id in list("thermite", "plantbgone"))
+				for(var/turf/current_turf in wallList)
+					chem.reaction_turf(current_turf, chem.volume)
 
 			//reagents that should be applied to turfs in a random pattern
-			if(R.id == "carbon")
+			if(chem.id == "carbon")
 				proba = 75
-			else if(R.id in list("blood", "radium", "uranium"))
+			else if(chem.id in list("blood", "radium", "uranium"))
 				proba = 25
-			else if(istype(R, /datum/reagent/generated)) //ensures custom chemicals will apply turf effects
+			else if(istype(chem, /datum/reagent/generated)) //ensures custom chemicals will apply turf effects
 				proba = 100
 
 			spawn(0)
 				for(var/i = 0, i < runs, i++)
-					for(var/turf/T in targetTurfs)
+					for(var/turf/current_turf in targetTurfs)
 						if(prob(proba))
-							R.reaction_turf(T, R.volume)
-						for(var/atom/A in T.contents)
-							if(istype(A, /obj/effect/particle_effect/smoke/chem)) //skip the item if it is chem smoke
+							chem.reaction_turf(current_turf, chem.volume)
+						for(var/atom/current_atom in current_turf.contents)
+							if(istype(current_atom, /obj/effect/particle_effect/smoke/chem)) //skip the item if it is chem smoke
 								continue
-							else if(istype(A, /mob))
-								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
+							else if(istype(current_atom, /mob))
+								var/dist = cheap_pythag(current_turf.x - location.x, current_turf.y - location.y)
 								if(!dist)
 									dist = 1
-								R.reaction_mob(A, volume = R.volume / dist)
-							else if(istype(A, /obj))
-								R.reaction_obj(A, R.volume)
+								chem.reaction_mob(current_atom, volume = chem.volume / dist)
+							else if(istype(current_atom, /obj))
+								chem.reaction_obj(current_atom, chem.volume)
 					sleep(30)
 
 
@@ -178,11 +178,11 @@
 			var/a = (angle * j) + offset
 			var/x = round(radius * cos(a) + location.x, 1)
 			var/y = round(radius * sin(a) + location.y, 1)
-			var/turf/T = locate(x,y,location.z)
-			if(!T)
+			var/turf/current_turf = locate(x,y,location.z)
+			if(!current_turf)
 				continue
-			if(T in targetTurfs)
-				INVOKE_ASYNC(src, PROC_REF(spawnSmoke), T, I, range)
+			if(current_turf in targetTurfs)
+				INVOKE_ASYNC(src, PROC_REF(spawnSmoke), current_turf, I, range)
 
 #undef arcLength
 
@@ -191,7 +191,7 @@
 // Randomizes and spawns the smoke effect.
 // Also handles deleting the smoke once the effect is finished.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1)
+/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/current_turf, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
 	if(chemholder.reagents.reagent_list.len)
 		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
@@ -200,7 +200,7 @@
 	smoke.setDir(pick(cardinal))
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
-	walk_to(smoke, T)
+	walk_to(smoke, current_turf)
 	smoke.SetOpacity(1) //switching opacity on after the smoke has spawned, and then
 	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
 	if(smoke.opacity)
@@ -211,10 +211,10 @@
 //------------------------------------------
 // Fades out the smoke smoothly using it's alpha variable.
 //------------------------------------------
-/datum/effect_system/smoke_spread/chem/proc/fadeOut(atom/A, frames = 16)
-	var/step = A.alpha / frames
+/datum/effect_system/smoke_spread/chem/proc/fadeOut(atom/current_atom, frames = 16)
+	var/step = current_atom.alpha / frames
 	for(var/i = 0, i < frames, i++)
-		A.alpha -= step
+		current_atom.alpha -= step
 		sleep(world.tick_lag)
 	return
 
@@ -247,11 +247,11 @@
 					continue
 				if(target.density) //this is needed to stop chemsmoke from passing through thin window walls
 					continue
-				for(var/atom/movable/M in target)
-					if(M.flags_atom & ON_BORDER)
-						if(M.dir == get_dir(target, current))
+				for(var/atom/movable/movable_atom in target)
+					if(movable_atom.flags_atom & ON_BORDER)
+						if(movable_atom.dir == get_dir(target, current))
 							continue
-					else if(M.density)
+					else if(movable_atom.density)
 						continue
 				pending += target
 

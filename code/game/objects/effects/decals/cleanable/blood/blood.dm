@@ -20,8 +20,8 @@
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
-	for(var/datum/disease/D in viruses)
-		D.cure(0)
+	for(var/datum/disease/disease in viruses)
+		disease.cure(0)
 	viruses = null
 	return ..()
 
@@ -52,8 +52,8 @@
 	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
 		return
 
-	var/mob/living/carbon/human/H = AM
-	H.add_blood(basecolor, BLOOD_FEET)
+	var/mob/living/carbon/human/current_human = AM
+	current_human.add_blood(basecolor, BLOOD_FEET)
 
 	var/dry_time_left = 0
 	if(drying_time)
@@ -62,10 +62,10 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
 		return
 
-	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, basecolor)
+	if(!current_human.bloody_footsteps)
+		current_human.AddElement(/datum/element/bloody_feet, dry_time_left, current_human.shoes, amount, basecolor)
 	else
-		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, basecolor, dry_time_left)
+		SEND_SIGNAL(current_human, COMSIG_HUMAN_BLOOD_CROSSED, amount, basecolor, dry_time_left)
 
 /obj/effect/decal/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
@@ -82,8 +82,8 @@
 /obj/effect/decal/cleanable/blood/can_place_cleanable(obj/effect/decal/cleanable/old_cleanable)
 	. = ..()
 
-	var/obj/effect/decal/cleanable/blood/B = old_cleanable
-	if(istype(B) && B.amount > amount)
+	var/obj/effect/decal/cleanable/blood/blood = old_cleanable
+	if(istype(blood) && blood.amount > amount)
 		return FALSE
 
 /obj/effect/decal/cleanable/blood/splatter
@@ -113,8 +113,8 @@
 /obj/effect/decal/cleanable/blood/writing/New()
 	..()
 	if(random_icon_states.len)
-		for(var/obj/effect/decal/cleanable/blood/writing/W in loc)
-			random_icon_states.Remove(W.icon_state)
+		for(var/obj/effect/decal/cleanable/blood/writing/writing in loc)
+			random_icon_states.Remove(writing.icon_state)
 		icon_state = pick(random_icon_states)
 	else
 		icon_state = "writing1"
@@ -168,13 +168,13 @@
 	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
 		sleep(3)
 		if (i > 0)
-			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
-			b.basecolor = src.basecolor
-			b.update_icon()
-			for(var/datum/disease/D in src.viruses)
-				var/datum/disease/ND = D.Copy(1)
-				LAZYADD(b.viruses, ND)
-				ND.holder = b
+			var/obj/effect/decal/cleanable/blood/blood = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
+			blood.basecolor = src.basecolor
+			blood.update_icon()
+			for(var/datum/disease/disease in src.viruses)
+				var/datum/disease/ND = disease.Copy(1)
+				LAZYADD(blood.viruses, ND)
+				ND.holder = blood
 
 		if (step_to(src, get_step(src, direction), 0))
 			break

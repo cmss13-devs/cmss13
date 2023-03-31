@@ -21,16 +21,16 @@
 
 /datum/effect_system/reagents_explosion/start()
 	if (amount <= 2)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(2, 1, location)
-		s.start()
+		var/datum/effect_system/spark_spread/particle = new /datum/effect_system/spark_spread
+		particle.set_up(2, 1, location)
+		particle.start()
 
-		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution violently explodes."))
-		for(var/mob/M as anything in viewers(1, location))
+		for(var/mob/current_mob as anything in viewers(5, location))
+			to_chat(current_mob, SPAN_WARNING("The solution violently explodes."))
+		for(var/mob/current_mob as anything in viewers(1, location))
 			if (prob (50 * amount))
-				to_chat(M, SPAN_WARNING("The explosion knocks you down."))
-				M.apply_effect(rand(1,5), WEAKEN)
+				to_chat(current_mob, SPAN_WARNING("The explosion knocks you down."))
+				current_mob.apply_effect(rand(1,5), WEAKEN)
 		return
 	else
 		var/light = -1
@@ -39,8 +39,8 @@
 		light = max(-1, amount/8)
 		if (flash && flashing_factor) flash = light + 1
 
-		for(var/mob/M as anything in viewers(8, location))
-			to_chat(M, SPAN_WARNING("The solution violently explodes."))
+		for(var/mob/current_mob as anything in viewers(8, location))
+			to_chat(current_mob, SPAN_WARNING("The solution violently explodes."))
 
 		explosion(location, -1, -1, light, flash)
 		if(light > 0)
@@ -129,10 +129,10 @@
 
 /datum/effect_system/explosion/start()
 	new/obj/effect/particle_effect/explosion( location )
-	var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-	P.set_up(10, 0, location)
-	P.start()
+	var/datum/effect_system/expl_particles/explosion = new/datum/effect_system/expl_particles()
+	explosion.set_up(10, 0, location)
+	explosion.start()
 	spawn(5)
-		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-		S.set_up(3,0,location,null, 2)
-		S.start()
+		var/datum/effect_system/smoke_spread/smoke = new/datum/effect_system/smoke_spread()
+		smoke.set_up(3,0,location,null, 2)
+		smoke.start()

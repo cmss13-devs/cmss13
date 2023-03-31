@@ -19,8 +19,8 @@ var/global/list/cached_icons = list()
 /obj/item/reagent_container/glass/paint/afterattack(turf/target, mob/user, proximity)
 	if(!proximity) return
 	if(istype(target) && reagents.total_volume > 5)
-		for(var/mob/O in viewers(user))
-			O.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), SHOW_MESSAGE_VISIBLE)
+		for(var/mob/mob_viewers in viewers(user))
+			mob_viewers.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), SHOW_MESSAGE_VISIBLE)
 		spawn(5)
 			reagents.reaction(target, TOUCH)
 			reagents.remove_any(5)
@@ -37,8 +37,8 @@ var/global/list/cached_icons = list()
 
 /obj/item/reagent_container/glass/paint/on_reagent_change() //Until we have a generic "paint", this will give new colours to all paints in the can
 	var/mixedcolor = mix_color_from_reagents(reagents.reagent_list)
-	for(var/datum/reagent/paint/P in reagents.reagent_list)
-		P.color = mixedcolor
+	for(var/datum/reagent/paint/paint in reagents.reagent_list)
+		paint.color = mixedcolor
 
 /obj/item/reagent_container/glass/paint/red
 	icon_state = "paint_red"
@@ -83,10 +83,10 @@ var/global/list/cached_icons = list()
 		return
 	T.color = color
 
-/datum/reagent/paint/reaction_obj(obj/O, volume)
+/datum/reagent/paint/reaction_obj(obj/current_obj, volume)
 	..()
-	if(istype(O,/obj/item/light_bulb))
-		O.color = color
+	if(istype(current_obj,/obj/item/light_bulb))
+		current_obj.color = color
 
 /datum/reagent/paint/red
 	name = "Red Paint"

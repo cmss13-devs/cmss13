@@ -34,8 +34,8 @@
 	if(!target_location)
 		target_location = get_spawn_location()
 	if(is_turf)
-		var/turf/T = target_location
-		return T?.PlaceOnTop(path_to_spawn)
+		var/turf/current_turf = target_location
+		return current_turf?.PlaceOnTop(path_to_spawn)
 	return new path_to_spawn(target_location)
 
 /// Post-Setup hook, mainly to delete unused landmarks. By default delete all non-applicable ones

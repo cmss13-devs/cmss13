@@ -28,23 +28,23 @@
 /obj/item/legcuffs/beartrap/Crossed(atom/movable/AM)
 	if(armed)
 		if(ismob(AM))
-			var/mob/M = AM
-			if(!M.buckled)
+			var/mob/current_mob = AM
+			if(!current_mob.buckled)
 				if(ishuman(AM))
 					if(isturf(src.loc))
-						var/mob/living/carbon/H = AM
-						if(!H.legcuffed)
-							H.legcuffed = src
-							forceMove(H)
-							H.legcuff_update()
+						var/mob/living/carbon/current_human = AM
+						if(!current_human.legcuffed)
+							current_human.legcuffed = src
+							forceMove(current_human)
+							current_human.legcuff_update()
 						armed = 0
 						icon_state = "beartrap0"
 						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-						to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
-						for(var/mob/O in viewers(H, null))
-							if(O == H)
+						to_chat(current_human, SPAN_DANGER("<B>You step on \the [src]!</B>"))
+						for(var/mob/human_observers in viewers(current_human, null))
+							if(human_observers == current_human)
 								continue
-							O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
+							human_observers.show_message(SPAN_DANGER("<B>[current_human] steps on \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

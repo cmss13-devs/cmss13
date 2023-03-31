@@ -44,8 +44,8 @@
 	. = ..()
 	if(!can_hover || !reservoir.reagents.total_volume)
 		return
-	var/image/I = image(icon, "+[icon_state]_charged")
-	overlays += I
+	var/image/current_image = image(icon, "+[icon_state]_charged")
+	overlays += current_image
 
 /obj/item/hoverpack/attack_self(mob/user)
 	..()
@@ -103,13 +103,13 @@
 	var/datum/chem_property/OP
 	var/boom_chance = 0
 	for(var/datum/reagent/FR as anything in reservoir.reagents.reagent_list)
-		for(var/datum/chem_property/P as anything in FR.properties)
-			if(P.name in EXPLOSIVE_PROPERTIES)
-				boom_chance += P.level // If the reagent is explosive, risk blowing up.
+		for(var/datum/chem_property/property as anything in FR.properties)
+			if(property.name in EXPLOSIVE_PROPERTIES)
+				boom_chance += property.level // If the reagent is explosive, risk blowing up.
 
-			if(P.name == PROPERTY_OXIDIZING)
-				if(P.level > OP?.level)
-					OP = P
+			if(property.name == PROPERTY_OXIDIZING)
+				if(property.level > OP?.level)
+					OP = property
 
 	if(prob(boom_chance))
 		to_chat(user, SPAN_DANGER("Something feels wrong..."))
@@ -203,25 +203,25 @@
 	button.overlays += IMG
 
 /datum/action/item_action/hover/can_use_action()
-	var/mob/living/carbon/human/H = owner
-	if(!H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	var/mob/living/carbon/human/current_human = owner
+	if(!current_human.is_mob_incapacitated() && !current_human.lying && holder_item == current_human.back)
 		return TRUE
 
 /datum/action/item_action/hover/action_activate()
-	var/mob/living/carbon/human/H = owner
-	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+	var/mob/living/carbon/human/current_human = owner
+	if(current_human.selected_ability == src)
+		to_chat(current_human, "You will no longer use [name] with \
+			[current_human.client && current_human.client.prefs && current_human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		current_human.selected_ability = null
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		if(H.selected_ability)
-			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+		to_chat(current_human, "You will now use [name] with \
+			[current_human.client && current_human.client.prefs && current_human.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(current_human.selected_ability)
+			current_human.selected_ability.button.icon_state = "template"
+			current_human.selected_ability = null
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		current_human.selected_ability = src
 
 /datum/action/item_action/hover/update_button_icon()
 	var/obj/item/hoverpack/HP = holder_item
@@ -236,16 +236,16 @@
 	button.overlays += IMG
 
 /datum/action/item_action/hover/proc/use_ability(atom/A)
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/current_human = owner
 	var/obj/item/hoverpack/HP = holder_item
-	HP.hover(H, A)
+	HP.hover(current_human, A)
 	update_button_icon()
 	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), HP.hover_cooldown)
 
-/datum/action/item_action/hover/remove_from(mob/living/carbon/human/H)
+/datum/action/item_action/hover/remove_from(mob/living/carbon/human/current_human)
 	..()
-	if(H.selected_ability == src)
-		H.selected_ability = null
+	if(current_human.selected_ability == src)
+		current_human.selected_ability = null
 		update_button_icon()
 		button.icon_state = "template"
 

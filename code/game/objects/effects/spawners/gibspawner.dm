@@ -48,15 +48,15 @@
 		return
 
 	var/obj/effect/decal/cleanable/blood/gibs/gib = null
-	for(var/datum/disease/D in viruses)
-		if(D.spread_type == SPECIAL)
-			viruses -= D
-			qdel(D)
+	for(var/datum/disease/disease in viruses)
+		if(disease.spread_type == SPECIAL)
+			viruses -= disease
+			qdel(disease)
 
 	if(sparks)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(2, 1, loc)
-		s.start()
+		var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+		spark.set_up(2, 1, loc)
+		spark.start()
 
 	for(var/i = 1, i<= gibtypes.len, i++)
 		if(gibamounts[i])
@@ -73,9 +73,9 @@
 				gib.update_icon()
 
 				if(viruses.len > 0)
-					for(var/datum/disease/D in viruses)
+					for(var/datum/disease/disease in viruses)
 						if(prob(virusProb))
-							var/datum/disease/viruus = D.Copy(1)
+							var/datum/disease/viruus = disease.Copy(1)
 							LAZYADD(gib.viruses, viruus)
 							viruus.holder = gib
 

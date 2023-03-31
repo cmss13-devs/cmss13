@@ -1064,7 +1064,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	//stops division by zero
 	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
-		bonebreak_probability = 100
+		bonebreak_probability = 0
 
 	//If you have this special flag you are exempt from the endurance bone break check
 	if(owner.species.flags & SPECIAL_BONEBREAK)

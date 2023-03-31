@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - bugfix: "You can no longer spawn with bad leg as most ERT roles."
+  - bugfix: "You no longer make the step messages (ie. using the cane to pace your steps) if you're dead, KO, buckled to something or restrained."

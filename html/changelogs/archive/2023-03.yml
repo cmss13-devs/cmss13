@@ -478,3 +478,6 @@
   realforest2001:
   - code_imp: Adds procs to bioscans to make them individually callable and a little
       more optimised.
+2023-03-31:
+  NewyearnewmeUwu:
+  - bugfix: Corrosive tail stabs now properly credit their users for kills.

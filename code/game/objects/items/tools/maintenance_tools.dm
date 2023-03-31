@@ -512,7 +512,7 @@
 		. += SPAN_NOTICE("It is set to wrench mode, allowing you to unbolt doors, provided you are smart enough to know how.")
 
 /obj/item/maintenance_jack/attack_self(mob/living/user)
-
+	. = ..()
 	playsound(src, 'sound/weapons/punchmiss.ogg', 15, TRUE, 3)
 	if(crowbar_mode) //Switch to wrench mode | Remove bolts
 		user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a wrench."),
@@ -524,18 +524,18 @@
 		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 		pry_capable = null
+		return
 
-	else //Switch to crowbar mode | Pry open doors if super strong trait
-		user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a crowbar."),
-		SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
-		crowbar_mode = TRUE
-		animate(src, transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_IN)
-		animate(transform = matrix(270, MATRIX_ROTATE), time = 1)
-		animate(transform = matrix(360, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
-		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
-		pry_capable = IS_PRY_CAPABLE_FORCE
-	. = ..()
+	//Switch to crowbar mode | Pry open doors if super strong trait
+	user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a crowbar."),
+	SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
+	crowbar_mode = TRUE
+	animate(src, transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_IN)
+	animate(transform = matrix(270, MATRIX_ROTATE), time = 1)
+	animate(transform = matrix(360, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
+	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+	pry_capable = IS_PRY_CAPABLE_FORCE
 
 /obj/item/maintenance_jack/afterattack(obj/door, mob/living/user, proximity)
 	if(!crowbar_mode) //Otherwise it lets you pry open right after unbolting
@@ -546,7 +546,7 @@
 	if(istype(door, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/airlock = door
 		if(airlock.locked)
-			to_chat(user, SPAN_DANGER("How will you pry this open when it is still bolted shut?"))
+			to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
 			return
 		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 			if(!airlock.arePowerSystemsOn())

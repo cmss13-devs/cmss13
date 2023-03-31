@@ -35,7 +35,7 @@ RCD
 	spark_system.attach(src)
 	return
 
-/obj/item/device/rcd/Initialize()
+/obj/item/device/rcd/Destroy()
 	QDEL_NULL(spark_system)
 	return ..()
 

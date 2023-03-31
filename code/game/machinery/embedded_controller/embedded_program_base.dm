@@ -5,6 +5,10 @@
 
 	var/id_tag
 
+/datum/computer/file/embedded_program/Destroy(force, ...)
+	master = null
+	return ..()
+
 /datum/computer/file/embedded_program/New(obj/structure/machinery/embedded_controller/M)
 	master = M
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio))

@@ -18,6 +18,10 @@
 	src.ion_trail = new /datum/effect_system/ion_trail_follow()
 	src.ion_trail.set_up(src)
 
+/obj/item/tank/jetpack/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"

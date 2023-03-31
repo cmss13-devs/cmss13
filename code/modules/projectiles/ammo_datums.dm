@@ -2680,7 +2680,7 @@
 			continue
 
 		to_chat(boosting_xeno, SPAN_XENOBOLDNOTICE("Your carapace regenerates as the acid hits [target]!"))
-		boosting_xeno.gain_health(75)
+		boosting_xeno.gain_health(60)
 		boosting_xeno.flick_heal_overlay(3 SECONDS, "#D9F500")
 
 /datum/ammo/xeno/acid/dot

@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscadd: "Added OWLF placeholder items, none of which are properly statted yet."
+  - code_imp: "CM's code now has support for integrated hoods for uniforms."

@@ -46,8 +46,7 @@
 	attack_log = null
 	item_verbs = null
 	luminosity_sources = null
-
-
+	focus = null
 
 /mob/Initialize()
 	if(!faction_group)

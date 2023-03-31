@@ -26,6 +26,10 @@
 	..()
 	missions = list()
 
+/datum/cas_fire_envelope/Destroy(force, ...)
+	linked_console = null
+	return ..()
+
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
 

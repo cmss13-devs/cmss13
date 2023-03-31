@@ -705,3 +705,8 @@
 /obj/structure/machinery/computer/dropship_weapons/dropship2/New()
 	..()
 	shuttle_tag = DROPSHIP_NORMANDY
+
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+
+	QDEL_NULL(firemission_envelope)

@@ -1481,7 +1481,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return //We just put the gun up. Can't do it that fast
 
 	if(ismob(user)) //Could be an object firing the gun.
-		if(!user.IsAdvancedToolUser())
+		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 

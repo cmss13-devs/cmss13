@@ -52,6 +52,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
+	SSround_recording.recorder.stop_tracking(src)
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -62,6 +63,8 @@
 	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
 	QDEL_NULL_LIST(limbs)
 	remove_from_all_mob_huds()
+	. = ..()
+
 	species = null
 	limbs_to_process = null
 	brute_mod_override = null
@@ -69,11 +72,9 @@
 	assigned_squad = null
 	selected_ability = null
 	remembered_dropped_objects = null
-	. = ..()
 
+	focus = null
 	overlays_standing = null
-	selected_ability = null
-	assigned_squad = null
 
 	//Equipment slots
 	wear_suit = null
@@ -89,6 +90,15 @@
 	r_store = null
 	l_store = null
 	s_store = null
+
+	species = null
+	limbs_to_process = null
+	brute_mod_override = null
+	burn_mod_override = null
+	assigned_squad = null
+	selected_ability = null
+	remembered_dropped_objects = null
+
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

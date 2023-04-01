@@ -27,4 +27,5 @@
 
 /obj/effect/landmark/start/cargo
 	name = JOB_CARGO_TECH
+	icon_state = "ct_spawn"
 	job = /datum/job/logistics/cargo

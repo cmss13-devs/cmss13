@@ -27,7 +27,7 @@
 /mob/living/simple_animal/hostile/retaliate/goat/Initialize()
 	udder = new(50)
 	udder.my_atom = src
-	..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()

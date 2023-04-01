@@ -94,6 +94,11 @@
 	var/disabled = FALSE
 	var/compatible_landing_zones = list()
 
+/obj/structure/machinery/computer/shuttle/ert/broken
+	name = "nonfunctional shuttle control console"
+	disabled = TRUE
+	desc = "A transport shuttle flight computer. This one seems broken."
+
 /obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()

@@ -57,12 +57,6 @@
 	icon_state = "75"
 	},
 /area/shuttle/drop2/sulaco)
-"eT" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
 "fb" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "23"
@@ -111,8 +105,13 @@
 	},
 /area/shuttle/drop2/sulaco)
 "it" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -187,8 +186,13 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -391,11 +395,16 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin3"
 	},
 /area/shuttle/drop2/sulaco)
 "GE" = (
@@ -528,11 +537,16 @@
 	},
 /area/shuttle/drop2/sulaco)
 "OJ" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -553,8 +567,11 @@
 	dir = 8;
 	pixel_x = 16
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -620,8 +637,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "SY" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -761,12 +781,12 @@ Rr
 Rr
 Ld
 Qo
-it
+SY
 mz
-it
+SY
 PJ
 PJ
-it
+SY
 it
 Eo
 Cl
@@ -791,11 +811,11 @@ vd
 vd
 vd
 Co
-it
+SY
 Fq
+SY
 it
-it
-it
+SY
 it
 Kl
 fQ
@@ -809,9 +829,9 @@ LJ
 HB
 xx
 SY
+it
 SY
-SY
-SY
+it
 SY
 xx
 vd
@@ -837,7 +857,7 @@ Bs
 Bb
 Iv
 rc
-eT
+vd
 do
 vd
 do
@@ -854,11 +874,11 @@ lH
 gP
 ac
 xx
+SY
 it
+SY
 it
-it
-it
-it
+SY
 xx
 vd
 vd
@@ -886,9 +906,9 @@ qg
 SY
 OJ
 Qd
+it
 SY
-SY
-SY
+it
 QF
 iI
 RJ
@@ -900,12 +920,12 @@ Rr
 xd
 yl
 SY
-SY
+it
 SY
 PJ
 PJ
 SY
-SY
+it
 AN
 BC
 Nw

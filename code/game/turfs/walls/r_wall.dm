@@ -38,8 +38,8 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
-		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
+	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))

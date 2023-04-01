@@ -14,6 +14,10 @@
 	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	if(.)
+		return
+
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
 			user.next_move += W.attack_speed

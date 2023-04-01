@@ -50,7 +50,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/general
@@ -95,34 +95,40 @@
 	H.equip_to_slot_or_del(new /obj/item/device/cotablet(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/mateba_case/general(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
 /datum/equipment_preset/uscm_event/general/o7
-		name = "USCM O-7 - Brigadier General (High Command)"
-		paygrade = "MO7"
+	name = "USCM O-7 - Brigadier General (High Command)"
+	paygrade = "MO7"
 
 /datum/equipment_preset/uscm_event/general/o8
-		name = "USCM O-8 - Major General (High Command)"
-		paygrade = "MO8"
+	name = "USCM O-8 - Major General (High Command)"
+	paygrade = "MO8"
 
 /datum/equipment_preset/uscm_event/general/o9
-		name = "USCM O-9 - Lieutenant General (High Command)"
-		paygrade = "MO9"
+	name = "USCM O-9 - Lieutenant General (High Command)"
+	paygrade = "MO9"
 
 /datum/equipment_preset/uscm_event/general/o10
-		name = "USCM O-10 - General (High Command)"
-		paygrade = "MO10"
+	name = "USCM O-10 - General (High Command)"
+	paygrade = "MO10"
 
 /datum/equipment_preset/uscm_event/general/o10c
-		name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
-		paygrade = "MO10C"
+	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
+	paygrade = "MO10C"
+	assignment = JOB_ACMC
+	rank = JOB_ACMC
+	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
-		name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
-		paygrade = "MO10S"
+	name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
+	paygrade = "MO10S"
+	assignment = JOB_CMC
+	rank = JOB_CMC
+	role_comm_title = "CMC"
 
 /*****************************************************************************************************/
 

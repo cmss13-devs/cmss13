@@ -285,7 +285,7 @@
 	activation_delay_length = 5
 
 /datum/action/xeno_action/activable/warden_heal
-	name = "Aid Xeno"
+	name = "Aid Xenomorph"
 	action_icon_state = "prae_aid"
 	ability_name = "aid"
 	// todo: macro
@@ -312,7 +312,7 @@
 
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
-	name = "Toggle Heal Type"
+	name = "Toggle Aid Type"
 	action_icon_state = "warden_heal" // default = heal
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE

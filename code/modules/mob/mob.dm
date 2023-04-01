@@ -190,11 +190,12 @@
 // Show a message to all mobs in earshot of this atom
 // Use for objects performing only audible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
-/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+// deaf_message (optional) is what deaf people will see e.g. "[X] shouts something silently."
+/atom/proc/audible_message(message, deaf_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/hear_dist = 7
 	if(max_distance) hear_dist = max_distance
 	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, 2, message_flags = message_flags)
+		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7

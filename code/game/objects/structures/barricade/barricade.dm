@@ -133,7 +133,7 @@
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
@@ -342,7 +342,7 @@
 	if(!health)
 		if(!nomessage)
 			visible_message(SPAN_DANGER("[src] falls apart!"))
-		deconstruct()
+		deconstruct(FALSE)
 		return
 
 	update_damage_state()

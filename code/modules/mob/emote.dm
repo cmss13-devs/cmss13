@@ -55,5 +55,8 @@
 	keybind = FALSE
 
 /datum/emote/custom/run_emote(mob/user, params, type_override, intentional = FALSE, prefix)
+	if(user.client.prefs.muted & MUTE_IC)
+		to_chat(user, SPAN_DANGER("You cannot emote (muted)."))
+		return
 	message = params
 	return ..()

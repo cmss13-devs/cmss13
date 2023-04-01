@@ -193,6 +193,8 @@
 	S["custom_cursors"] >> custom_cursors
 	S["autofit_viewport"] >> auto_fit_viewport
 
+	S["pref_special_job_options"] >> pref_special_job_options
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -252,6 +254,7 @@
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
+	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -367,6 +370,8 @@
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference
 	S["custom_cursors"] << custom_cursors
+
+	S["pref_special_job_options"] << pref_special_job_options
 
 	return TRUE
 

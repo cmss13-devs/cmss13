@@ -30,6 +30,7 @@
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
 	var/worn_state = null
+	var/hood_state //for uniforms with hoods.
 	drag_unequip = TRUE
 	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_ARMOR_C)
@@ -307,6 +308,50 @@
 		return
 
 	roll_suit_jacket(TRUE, usr)
+
+/obj/item/clothing/under/verb/togglehood()
+	set name = "Toggle Hood"
+	set category = "Object"
+	set src in usr
+	if(!isliving(usr))
+		return
+	if(usr.stat)
+		return
+	toggle_uniform_hood(TRUE, usr)
+
+/obj/item/clothing/under/proc/toggle_uniform_hood(show_message = TRUE, mob/living/carbon/human/user)
+	if(!hood_state)
+		if(show_message)
+			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
+		return
+	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
+	if(user.head && !istype(user.head, hood_state))
+		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing the [user.head]!"))
+		return
+
+	if(!HAS_TRAIT(src, TRAIT_CLOTHING_HOOD))
+		to_chat(user, SPAN_NOTICE("You pull your hood up."))
+		user.equip_to_slot_if_possible(new hood_state(user), WEAR_HEAD) //This is a 'phantom' hood. It disappears if the jumpsuit is unequipped/if it's toggled.
+		LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
+		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) //These will unequip the phantom hood and toggle the state of the suit
+		RegisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) // If either is unequipped.
+		update_clothing_icon()
+		if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+			playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+			TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
+		ADD_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
+		return
+
+	to_chat(user, SPAN_NOTICE("You pull your hood down."))
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED) //See above, these deregister the signals so that it doesn't fire twice.
+	UnregisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED)
+	qdel(user.head) //This will only delete the hood, see the typecheck above.
+	LAZYSET(item_state_slots, WEAR_BODY, worn_state)
+	update_clothing_icon()
+	if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_ITEM_HOOD_SOUND))
+		playsound(user.loc, pick('sound/handling/armorequip_1.ogg', 'sound/handling/armorequip_2.ogg'), 25, 1)
+		TIMER_COOLDOWN_START(user, COOLDOWN_ITEM_HOOD_SOUND, 1 SECONDS)
+	REMOVE_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
 
 /obj/item/clothing/under/attackby(obj/item/B, mob/user)
 	if(istype(B, /obj/item/attachable/bayonet) && (user.a_intent == INTENT_HARM))

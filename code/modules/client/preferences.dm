@@ -102,6 +102,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	//SEA specific preferences
 	var/sea_path = "Command"
 
+	///holds our preferred job options for jobs
+	var/pref_special_job_options = list()
+
 	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
@@ -638,7 +641,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width - Screen' width. Defaults to 550 to make it look nice.
 //height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(), width = 950, height = 700)
+/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
 	if(!RoleAuthority)
 		return
 
@@ -656,7 +659,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!active_role_names)
 		active_role_names = ROLES_REGULAR_ALL
 
-	var/datum/job/lastJob
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
 		if(!job)
@@ -664,34 +666,35 @@ var/const/MAX_SAVE_SLOTS = 10
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
-			if((index < limit) && (lastJob != null))
-				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-				//the last job's selection color. Creating a rather nice effect.
-				for(var/j = 0, j < (limit - index), j += 1)
-					HTML += "<tr class='[lastJob.selection_class]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
-		lastJob = job
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='right'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b>"
+		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='right'>"
 
-		HTML += "</td><td width='60%'>"
+		if(job.job_options)
+			if(!pref_special_job_options || !pref_special_job_options[role_name])
+				pref_special_job_options[role_name] = job.job_options[1]
+
+			var/txt = pref_special_job_options[role_name]
+			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
+
+		HTML += "</td><td width='50%'>"
 
 		var/cur_priority = get_job_priority(job.title)
 
@@ -1174,7 +1177,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!pred_flv_raw)
 						predator_flavor_text = ""
 						return
-					predator_flavor_text = strip_html(html_encode(pred_flv_raw), MAX_EMOTE_LEN)
+					predator_flavor_text = strip_html(pred_flv_raw, MAX_MESSAGE_LEN)
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
@@ -1568,6 +1571,21 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_preferred_survivor_variant)
 						return
 					preferred_survivor_variant = new_preferred_survivor_variant
+
+				if("special_job_select")
+					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]
+					if(!job)
+						close_browser(user, "mob_occupation")
+						ShowChoices(user)
+						return
+
+					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", job.job_options)
+					if(!new_special_job_variant)
+						return
+					pref_special_job_options[job.title] = new_special_job_variant
+
+					SetChoices(user)
+					return
 		else
 			switch(href_list["preference"])
 				if("publicity")

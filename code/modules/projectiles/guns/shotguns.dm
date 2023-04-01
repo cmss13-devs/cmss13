@@ -514,6 +514,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
+	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
@@ -604,7 +605,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_position--
 	return 1
 
-/obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user)
+/obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user, override)
 	if(!current_mag)
 		return
 	current_mag.chamber_closed = !current_mag.chamber_closed
@@ -664,6 +665,89 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
+// COULDN'T THINK OF ANOTHER WAY SORRY!!!! SOMEONE ADD A GUN COMPONENT!!
+
+/obj/item/weapon/gun/shotgun/double/cane
+	name = "fancy cane"
+	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "fancy_cane"
+	item_state = "fancy_cane"
+	pickup_sound = null
+	drop_sound = null
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		)
+	caliber = ".44"
+	gauge = ".44" // misery
+	force = 15 // hollow. also too hollow to support one's weight like normal canes
+	attack_speed = 1.5 SECONDS
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/cane
+	fire_sound = null
+	fire_sounds = list('sound/weapons/gun_silenced_oldshot1.ogg', 'sound/weapons/gun_silenced_oldshot2.ogg') // Uses the old sounds because they're more 'James Bond'-y
+	break_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
+	seal_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
+	attachable_allowed = list()
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY|GUN_ONE_HAND_WIELDED|GUN_ANTIQUE|GUN_NO_DESCRIPTION|GUN_UNUSUAL_DESIGN
+	flags_item = NO_FLAGS
+
+	inherent_traits = list(TRAIT_GUN_SILENCED)
+
+/obj/item/weapon/gun/shotgun/double/cane/Initialize(mapload, spawn_empty)
+	. = ..()
+	AddElement(/datum/element/traitbound/gun_silenced)
+
+/obj/item/weapon/gun/shotgun/double/cane/set_gun_config_values()
+	..()
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = FIRE_DELAY_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/shotgun/double/cane/gun_safety_handle(mob/user)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		to_chat(user, SPAN_NOTICE("You turn [src] back into its normal cane stance."))
+		playsound(user, 'sound/weapons/handling/nsg23_unload.ogg', 25, 1)
+	else
+		to_chat(user, SPAN_DANGER("You unlock the safety and change [src] into its gun stance!"))
+		playsound(user, 'sound/weapons/handling/smg_reload.ogg', 25, 1)
+
+	if(current_mag.chamber_closed == FALSE) // close the chamber
+		open_chamber(user, TRUE)
+
+	update_desc()
+	update_icon()
+
+	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
+
+/obj/item/weapon/gun/shotgun/double/cane/proc/update_desc()
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		name = initial(name)
+		desc = initial(desc)
+	else
+		name = "cane revolver"
+		desc = initial(desc) + " Apparently, because it's a large revolver. Who'da thunk it?"
+
+/obj/item/weapon/gun/shotgun/double/cane/open_chamber(mob/user, override)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY && !override)
+		to_chat(user, SPAN_WARNING("Not with the safety on!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/shotgun/double/cane/update_icon()
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		icon_state = initial(icon_state)
+
+	else if(current_mag.chamber_closed == FALSE)
+		icon_state = initial(icon_state) + "_gun_open"
+	else
+		icon_state = initial(icon_state) + "_gun"
+
 //M-OU53 SHOTGUN | Marine mid-range slug/flechette only coach gun (except its an over-under). Support weapon for slug stuns / flechette DOTS (when implemented). Buckshot in this thing is just stupidly strong, hence the denial.
 
 /obj/item/weapon/gun/shotgun/double/mou53
@@ -696,6 +780,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/stock/mou53,
 	)
 	map_specific_decoration = TRUE
+	civilian_usable_override = FALSE
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
@@ -782,6 +867,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	actions_types = list(/datum/action/item_action/specialist/twobore_brace)
 	starting_attachment_types = list(/obj/item/attachable/stock/twobore)
 	aim_slowdown = SLOWDOWN_ADS_LMG //Quite slow, but VB has light-armour slowdown and doesn't feel pain.
+	civilian_usable_override = FALSE
 	var/braced = FALSE
 	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes.
 	var/image/fired_casing
@@ -1162,6 +1248,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	)
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
+	civilian_usable_override = TRUE // Come on. It's THE, er, other, survivor shotgun.
 
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_attachment_offsets()

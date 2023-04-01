@@ -31,7 +31,7 @@
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
-	icon_state = "vase"
+	icon_state = "flowervase"
 	w_class = SIZE_SMALL
 	desc = "An empty glass flower vase."
 
@@ -67,8 +67,8 @@
 	name = "fuel can"
 	desc = "A jerry can. In space! Or maybe a colony."
 	icon_state = "canister"
-	icon = 'icons/obj/items/tank.dmi' 
-	
+	icon = 'icons/obj/items/tank.dmi'
+
 /obj/item/prop/colony/proptag
 	name = "information dog tag"
 	desc = "A fallen marine's information dog tag. It reads,(BLANK)"
@@ -80,3 +80,11 @@
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
 	icon = 'icons/obj/items/items.dmi'
+
+/// Xeno-specific props
+
+/obj/item/prop/alien/hugger
+	name = "????"
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"
+	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "facehugger_impregnated"

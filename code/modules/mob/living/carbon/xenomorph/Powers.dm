@@ -12,7 +12,7 @@
 		return SECRETE_RESIN_FAIL
 	if(use_plasma && !check_plasma(total_resin_cost))
 		return SECRETE_RESIN_FAIL
-	if(GLOB.interior_manager.interior_z == z)
+	if(SSinterior.in_interior(src))
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
 		return SECRETE_RESIN_FAIL
 

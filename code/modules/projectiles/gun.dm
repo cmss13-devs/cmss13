@@ -221,6 +221,9 @@
 	var/list/fire_delay_group
 	var/additional_fire_group_delay = 0 // adds onto the fire delay of the above
 
+	// Set to TRUE or FALSE, it overrides the is_civilian_usable check with its value. Does nothing if null.
+	var/civilian_usable_override = null
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -505,6 +508,8 @@
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
+	if(flags_gun_features & GUN_NO_DESCRIPTION)
+		return .
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"
@@ -717,7 +722,7 @@
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user.skills.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			wield_time += 3
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
@@ -1307,6 +1312,8 @@ and you're good to go.
 		return TRUE
 
 	if(EXECUTION_CHECK) //Execution
+		if(!able_to_fire(user)) //Can they actually use guns in the first place?
+			return ..()
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return TRUE
@@ -1507,9 +1514,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		var/next_shot
 
-		if(user && user.skills && user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			next_shot += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
-
 		if(active_attachable) //Underbarrel attached weapon?
 			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
 		else //Normal fire.
@@ -1570,7 +1574,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
 		var/skill_accuracy = 0
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			skill_accuracy = -1
 		else
 			skill_accuracy = user.skills.get_skill_level(SKILL_FIREARMS)
@@ -1644,8 +1648,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_scatter_angle += max(0, 2 * bullet_amt_scat * burst_scatter_mult)
 
 	if(user && user.mind && user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			total_scatter_angle += SCATTER_AMOUNT_TIER_8
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
+			total_scatter_angle += SCATTER_AMOUNT_TIER_7
 		else
 			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
 
@@ -1683,7 +1687,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_recoil++
 
 	if(user && user.mind && user.skills)
-		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5

@@ -47,6 +47,7 @@
 				/obj/item/tool/weldingtool,\
 				/obj/item/tool/crowbar,\
 				/obj/item/tool/wrench,\
+				/obj/item/reagent_container/glass/glue,\
 				/obj/item/device/flashlight)
 
 
@@ -117,6 +118,7 @@
 				prob(3);/obj/item/stack/cable_coil,\
 				prob(2);/obj/effect/spawner/random/toolbox,\
 				prob(2);/obj/item/storage/belt/utility,\
+				prob(2);/obj/item/reagent_container/glass/glue,\
 				prob(5);/obj/effect/spawner/random/tool)
 
 
@@ -223,6 +225,7 @@
 				/obj/item/clothing/accessory/horrible,\
 				/obj/item/clothing/shoes/slippers,\
 				/obj/item/clothing/shoes/slippers_worn,\
+				/obj/item/reagent_container/glass/glue,\
 				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills

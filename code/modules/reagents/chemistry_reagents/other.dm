@@ -642,11 +642,15 @@
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_UNCOMMON
 
-/datum/reagent/ultraglue
-	name = "Ultra Glue"
+/datum/reagent/glue
+	name = "Glue"
 	id = "glue"
-	description = "An extremely powerful bonding agent."
+	description = "A powerful bonding agent. Created with the best chemicals a cost-cutting, underfunded department can bring. Most commonly known for its... infamous side effects. Try not to inhale it, especially too much."
 	color = "#FFFFCC" // rgb: 255, 255, 204
+	overdose = REAGENTS_OVERDOSE * 0.66
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL * 0.66
+	chemclass = CHEM_CLASS_UNCOMMON // lots of properties, but all subtle
+	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_NUTRITIOUS = 1, PROPERTY_RELAXING = 1, PROPERTY_EUPHORIC = 2, PROPERTY_PSYCHOSTIMULATING = 1)
 
 /datum/reagent/diethylamine
 	name = "Diethylamine"

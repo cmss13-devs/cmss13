@@ -646,6 +646,18 @@
 	matter = list("metal" = 8000)
 	volume = 500
 
+/obj/item/reagent_container/glass/glue
+	name = "glue bottle"
+	desc = "It's a fun-sized bottle of glue for use in low-level construction projects. Unfortunately, unlike pill bottles, it does not have a child lock. Keep away from marines."
+	icon_state = "tasty_treat"
+	matter = list("plastic" = 2000)
+	volume = 40
+	possible_transfer_amounts = list(5,10,20,30,40)
+
+/obj/item/reagent_container/glass/glue/Initialize()
+	. = ..()
+	reagents.add_reagent("glue", 40)
+	update_icon()
 
 /obj/item/reagent_container/glass/rag
 	name = "damp rag"

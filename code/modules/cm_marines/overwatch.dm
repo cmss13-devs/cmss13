@@ -33,6 +33,7 @@
 	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.

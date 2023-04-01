@@ -29,6 +29,11 @@
 	if(!VehicleGearConsole)
 		VehicleGearConsole = src
 
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/Destroy()
+	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
+	VehicleGearConsole = null
+	return ..()
+
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/T = loc
 	T = get_step(T, SOUTH)

@@ -32,6 +32,7 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/hunting, /obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL
+	civilian_usable_override = TRUE
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.

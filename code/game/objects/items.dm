@@ -170,6 +170,9 @@
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
 
+	if(flags_item & MOB_LOCK_ON_EQUIP)
+		AddComponent(/datum/component/id_lock)
+
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
@@ -304,6 +307,10 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(.)
+		return
+
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -409,8 +416,6 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
-	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
-		locked_to_mob = user
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
@@ -462,14 +467,8 @@ cases. Override_icon_state should be a list.*/
 	if(!M)
 		return FALSE
 
-	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
-			locked_to_mob = null
-
-		if(locked_to_mob != M)
-			if(!disable_warning)
-				to_chat(M, SPAN_WARNING("This item has been ID-locked to [locked_to_mob]."))
-			return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTEMPTING_EQUIP, M) & COMPONENT_CANCEL_EQUIP)
+		return FALSE
 
 	if(ishuman(M))
 		//START HUMAN

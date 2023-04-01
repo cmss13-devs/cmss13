@@ -253,6 +253,8 @@
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
+		if(JOB_COMBAT_REPORTER)
+			return /datum/equipment_preset/uscm_ship/reporter
 		if(JOB_SYNTH)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_SYNTH]

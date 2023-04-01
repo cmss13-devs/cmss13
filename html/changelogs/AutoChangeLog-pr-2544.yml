@@ -1,6 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "added keybinds for joining as xeno, viewing hive status, hiding, evolving and cancelling camera view"
-  - qol: "added actions buttons for evolving and joining as xeno"
-  - code_imp: "actions can listen for a keybind to activate the action"

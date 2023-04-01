@@ -28,7 +28,7 @@
 	var/atom/exterior = null
 
 	// A list of entry/exit markers in the interior
-	var/list/entrance_markers = list()
+	var/list/entrance_markers
 
 	//check multitile.dm for detailed explanation
 	//common passenger slots
@@ -332,7 +332,7 @@
 	for(var/turf/T in block(bounds[1], bounds[2]))
 		var/obj/effect/landmark/interior/spawn/entrance/E = locate() in T
 		if(E)
-			entrance_markers += E
+			LAZYADD(entrance_markers, E)
 
 // Spawn interactables like driver and gunner seats
 // Also open view blockers where there are windows

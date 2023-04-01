@@ -155,7 +155,7 @@
 	original_state = "scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
-	icon_state = "scarf_%SQUAD%"
+	var/dummy_icon_state = "scarf_%SQUAD%"
 	item_state = "scarf_%SQUAD%"
 	original_state = "scarf_%SQUAD%"
 
@@ -192,7 +192,7 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("scarf_[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	icon_state = replacetext("[initial(icon_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
+	icon_state = replacetext("[initial(dummy_icon_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 	item_state = replacetext("[initial(item_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 
 
@@ -201,6 +201,7 @@
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
+	w_class = SIZE_SMALL
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -224,3 +225,14 @@
 /obj/item/clothing/mask/tornscarf/black
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"
+
+/obj/item/clothing/mask/owlf_mask
+	name = "\improper OWLF gas mask"
+	desc = "A close-fitting mask that can be connected to an air supply."
+	icon_state = "owlf_mask"
+	item_state = "owlf_mask"
+	flags_inventory = COVERMOUTH|ALLOWINTERNALS
+	flags_armor_protection = 0
+	w_class = SIZE_SMALL
+	gas_transfer_coefficient = 0.10
+	permeability_coefficient = 0.50

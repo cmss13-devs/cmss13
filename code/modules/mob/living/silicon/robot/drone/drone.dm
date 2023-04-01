@@ -33,7 +33,7 @@
 /mob/living/silicon/robot/drone/Initialize()
 	nicknumber = rand(100,999)
 
-	..()
+	. = ..()
 
 
 	add_verb(src, /mob/living/proc/hide)

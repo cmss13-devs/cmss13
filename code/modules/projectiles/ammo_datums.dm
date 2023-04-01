@@ -286,7 +286,6 @@
 		execution_target.gib()
 
 	for(var/mob/living/carbon/human/M in view(user))
-		to_chat(SPAN_WARNING("The thunderous crack of the gunshot renders you deaf!"))
 		M.AdjustEarDeafness(15)
 
 /*

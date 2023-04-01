@@ -19,6 +19,9 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
+	var/requires_power = TRUE
+	var/requires_powerpack = TRUE
+	var/requires_harness = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -296,9 +299,10 @@
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
-		if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-			to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
-			return FALSE
+		if(requires_harness)
+			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+				return FALSE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			return FALSE
@@ -350,6 +354,12 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!requires_powerpack)
+		if(requires_power)
+			to_chat(user, SPAN_BOLDWARNING("Smartgun Improperly Configured. Attempting to fix. Smartgun cannot require power without requiring a powerpack."))
+			requires_power = FALSE
+		..()
+
 	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
 			to_chat(user, SPAN_WARNING("You need a powerpack to be able to fire \the [src]..."))
@@ -360,6 +370,10 @@
 		if(istype(pp))
 			var/obj/item/cell/c = pp.pcell
 			var/d = drain
+			if(!requires_power)
+				..()
+				return
+
 			if(flags_gun_features & GUN_BURST_ON)
 				d = drain*burst_amount*1.5
 			if(pp.drain_powerpack(d, c))
@@ -367,6 +381,9 @@
 
 
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(mob/user)
+	if(!requires_powerpack)
+		return TRUE
+
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			powerpack = user.back
@@ -691,3 +708,8 @@
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_CLF
+
+/obj/item/weapon/gun/smartgun/admin
+	requires_power = FALSE
+	requires_powerpack = FALSE
+	requires_harness = FALSE

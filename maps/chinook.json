@@ -1,0 +1,6 @@
+{
+    "map_name": "Chinook 91 GSO",
+    "map_path": "templates/",
+    "map_file": "Chinook.dmm",
+	"traits": [{ "Station": true, "Admin": true }]
+}

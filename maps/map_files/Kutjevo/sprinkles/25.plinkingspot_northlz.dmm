@@ -1,0 +1,67 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"h" = (
+/obj/item/ammo_magazine/rifle/l42a/abr40{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/template_noop,
+/area/template_noop)
+"p" = (
+/obj/structure/target,
+/turf/template_noop,
+/area/template_noop)
+"B" = (
+/obj/structure/bed/chair/wood,
+/turf/template_noop,
+/area/template_noop)
+"W" = (
+/obj/item/weapon/gun/rifle/l42a/abr40{
+	pixel_y = 15
+	},
+/obj/item/device/binoculars/civ{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/template_noop)
+"Y" = (
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = 12;
+	pixel_y = -5
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+Y
+h
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+B
+W
+a
+a
+a
+a
+a
+p
+"}

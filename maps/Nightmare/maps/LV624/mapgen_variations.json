@@ -1,0 +1,19 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+	{ "type": "map_variations",   "landmark": "lv-centralcaves", "path": "centralcaves/",                "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "crashed-ship",    "path": "crashedship/",                 "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "storage-crashed-ship", "path": "storage-crashed-ship/",   "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "lv-medbay",       "path": "medbay/",                      "chance": 0.4 },
+	{ "type": "map_variations",   "landmark": "lv-hydro",        "path": "hydro/",                       "chance": 0.3 },
+	{ "type": "map_variations",   "landmark": "lv-science",      "path": "science/",                     "chance": 0.5 },
+	{ "type": "map_variations",   "landmark": "lv-gym",          "path": "gym/",                         "chance": 0.5 },
+	{ "type": "map_variations",   "landmark": "armory",          "path": "armory/",                      "chance": 0.4 },
+	{ "type": "map_variations",   "landmark": "maintemple",      "path": "maintemple/",                  "chance": 0.4 },
+	{ "type": "branch", "nodes": [
+		{ "type": "map_insert",  "landmark": "sandtemple-jungle", "path": "standalone/sandtemple-jungle.dmm" },
+		{ "type": "map_insert",  "landmark": "sandtemple-lz1",    "path": "standalone/sandtemple-se.dmm" }
+	], "chance": 0.5 },
+	{ "type": "map_insert", "landmark": "cargospecial1", "path": "cargospecial/cargospecial1_mines.dmm", "chance": 0.1 },
+	{ "type": "map_insert", "landmark": "cargospecial2", "path": "cargospecial/cargospecial2_weapons.dmm", "chance": 0.1 },
+	{ "type": "map_insert", "landmark": "cargospecial3", "path": "cargospecial/cargospecial3_gear.dmm", "chance": 0.1 }
+]

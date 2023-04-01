@@ -1,0 +1,484 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/r_wall/bunker,
+/area/event)
+"b" = (
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"c" = (
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"d" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"e" = (
+/obj/effect/landmark/start/requisition,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"h" = (
+/obj/effect/landmark/start/police,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"k" = (
+/obj/effect/landmark/start/liaison,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"l" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"n" = (
+/obj/effect/landmark/start/professor,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"q" = (
+/obj/effect/landmark/start/warden,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"r" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"s" = (
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"t" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"u" = (
+/obj/effect/landmark/start/otech,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"v" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"x" = (
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"z" = (
+/obj/effect/landmark/start/pilot,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"A" = (
+/obj/effect/landmark/start/cargo,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"C" = (
+/obj/effect/landmark/start/bridge,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"D" = (
+/obj/effect/landmark/start/warrant,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"F" = (
+/obj/effect/landmark/start/marine/rto,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"G" = (
+/obj/effect/landmark/start/marine/spec,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"I" = (
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"J" = (
+/obj/effect/landmark/start/executive,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"L" = (
+/obj/effect/landmark/start/researcher,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"N" = (
+/obj/effect/landmark/start/nurse,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"P" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Q" = (
+/obj/effect/landmark/start/senior,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"R" = (
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"T" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"U" = (
+/obj/effect/landmark/start/intel,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"V" = (
+/obj/effect/landmark/start/crew_chief,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"W" = (
+/obj/effect/landmark/start/chef,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+s
+k
+z
+q
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(3,1,1) = {"
+a
+x
+v
+h
+D
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(4,1,1) = {"
+a
+J
+t
+n
+d
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(5,1,1) = {"
+a
+C
+T
+e
+V
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(6,1,1) = {"
+a
+A
+l
+L
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(7,1,1) = {"
+a
+W
+F
+Q
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(8,1,1) = {"
+a
+P
+R
+I
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(9,1,1) = {"
+a
+c
+G
+U
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(10,1,1) = {"
+a
+r
+N
+u
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(11,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(12,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(13,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(14,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(15,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

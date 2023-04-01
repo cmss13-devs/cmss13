@@ -1,0 +1,10 @@
+{
+    "map_name": "USS Runtime",
+    "map_path": "map_files/USS_Runtime",
+    "map_file": "USS_Runtime.dmm",
+	"survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv"
+    ],
+    "traits": [{"Marine Main Ship": true}],
+	"disable_ship_map": true
+}

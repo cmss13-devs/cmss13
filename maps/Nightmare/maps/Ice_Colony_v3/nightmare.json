@@ -1,0 +1,100 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+    { "type": "map_variations",   "landmark": "lz2-south-caves", "path": "lz2-south-caves/",  "chance": 0.5 },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southwest",
+        "path": "lz2-variations/southwest/half-open.dmm",
+        "when": { "lz2-southwest": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southwest",
+        "path": "lz2-variations/southwest/full-open.dmm",
+        "when": { "lz2-southwest": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-south-gate",
+        "path": "lz2-variations/south-gate/blocked.dmm",
+        "when": { "lz2-south-gate": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-south-gate",
+        "path": "lz2-variations/south-gate/closed.dmm",
+        "when": { "lz2-south-gate": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southeast",
+        "path": "lz2-variations/southeast/half-open.dmm",
+        "when": { "lz2-southeast": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southeast",
+        "path": "lz2-variations/southeast/full-closed.dmm",
+        "when": { "lz2-southeast": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southeast-gate",
+        "path": "lz2-variations/southeast-gate/cleared.dmm",
+        "when": { "lz2-southeast-gate": "open" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-southeast-gate",
+        "path": "lz2-variations/southeast-gate/closed.dmm",
+        "when": { "lz2-southeast-gate": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-eastsouth",
+        "path": "lz2-variations/eastsouth/half-open.dmm",
+        "when": { "lz2-eastsouth": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-eastsouth",
+        "path": "lz2-variations/eastsouth/full-closed.dmm",
+        "when": { "lz2-eastsouth": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-east",
+        "path": "lz2-variations/east/half-closed.dmm",
+        "when": { "lz2-east": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-east",
+        "path": "lz2-variations/east/full-closed.dmm",
+        "when": { "lz2-east": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-east-gate",
+        "path": "lz2-variations/east-gate/blocked.dmm",
+        "when": { "lz2-east-gate": "half" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-east-gate",
+        "path": "lz2-variations/east-gate/closed.dmm",
+        "when": { "lz2-east-gate": "full" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-north",
+        "path": "lz2-variations/north/full-open.dmm",
+        "when": { "lz2-north": "open" }
+    },
+    {
+        "type": "map_insert",
+        "landmark": "lz2-north",
+        "path": "lz2-variations/north/full-closed.dmm",
+        "when": { "lz2-north": "full" }
+    }
+]

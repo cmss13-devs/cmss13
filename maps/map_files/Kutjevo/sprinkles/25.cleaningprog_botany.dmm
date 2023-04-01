@@ -1,0 +1,73 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"k" = (
+/obj/item/key{
+	pixel_x = -10;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/blood{
+	basecolor = "#B01414"
+	},
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/obj/effect/decal/cleanable/blood/drip{
+	basecolor = "#B01414";
+	pixel_x = -9;
+	pixel_y = 22
+	},
+/turf/template_noop,
+/area/template_noop)
+"x" = (
+/obj/structure/bed/chair/janicart,
+/turf/template_noop,
+/area/template_noop)
+"y" = (
+/obj/item/tool/wet_sign,
+/turf/template_noop,
+/area/template_noop)
+"B" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/template_noop,
+/area/template_noop)
+"G" = (
+/obj/effect/decal/cleanable/blood/drip{
+	basecolor = "#B01414";
+	pixel_x = 9
+	},
+/turf/template_noop,
+/area/template_noop)
+"M" = (
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/template_noop,
+/area/template_noop)
+"W" = (
+/obj/item/tool/mop{
+	pixel_x = 10
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+M
+x
+W
+a
+"}
+(2,1,1) = {"
+y
+G
+k
+n
+y
+"}
+(3,1,1) = {"
+a
+a
+a
+B
+a
+"}

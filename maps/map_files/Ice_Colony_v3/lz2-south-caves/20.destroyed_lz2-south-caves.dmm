@@ -1,0 +1,382 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/s_lz2)
+"b" = (
+/turf/open/floor/plating,
+/area/shiva/interior/lz2_habs)
+"d" = (
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/exterior/lz2_fortress)
+"f" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"g" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/s_lz2)
+"h" = (
+/turf/open/floor/plating,
+/area/shiva/interior/caves/s_lz2)
+"k" = (
+/turf/closed/wall/shiva/prefabricated/pink,
+/area/shiva/interior/lz2_habs)
+"l" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/caves/s_lz2)
+"o" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/s_lz2)
+"p" = (
+/obj/item/stack/snow,
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/s_lz2)
+"q" = (
+/obj/item/stack/snow,
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/s_lz2)
+"r" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/interior/caves/s_lz2)
+"u" = (
+/obj/structure/barricade/snow,
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/s_lz2)
+"v" = (
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/caves/s_lz2)
+"w" = (
+/obj/structure/barricade/snow,
+/turf/open/floor/plating,
+/area/shiva/interior/caves/s_lz2)
+"x" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/obj/structure/barricade/snow,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/caves/s_lz2)
+"z" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"B" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
+"D" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/exterior/lz2_fortress)
+"E" = (
+/obj/item/weapon/ice_axe/red,
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/s_lz2)
+"G" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/s_lz2)
+"I" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/exterior/lz2_fortress)
+"K" = (
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"L" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/oob)
+"M" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/exterior/lz2_fortress)
+"N" = (
+/obj/item/stack/snow,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/s_lz2)
+"P" = (
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/s_lz2)
+"Q" = (
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/cp_lz2)
+"S" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"T" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/caves/s_lz2)
+"U" = (
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/cp_lz2)
+"V" = (
+/obj/item/shard{
+	icon_state = "large";
+	name = "ice shard"
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard";
+	pixel_x = -10;
+	pixel_y = -19
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/s_lz2)
+"W" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/caves/s_lz2)
+"X" = (
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/s_lz2)
+"Y" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/caves/s_lz2)
+"Z" = (
+/obj/structure/barricade/snow,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/caves/s_lz2)
+
+(1,1,1) = {"
+k
+k
+L
+L
+L
+L
+L
+L
+L
+L
+L
+L
+L
+"}
+(2,1,1) = {"
+k
+k
+P
+a
+p
+X
+h
+X
+X
+X
+L
+L
+L
+"}
+(3,1,1) = {"
+b
+h
+P
+V
+w
+T
+X
+X
+u
+h
+q
+L
+L
+"}
+(4,1,1) = {"
+b
+v
+o
+v
+Z
+P
+P
+Y
+x
+P
+q
+X
+X
+"}
+(5,1,1) = {"
+k
+k
+P
+a
+u
+X
+v
+P
+P
+a
+P
+P
+X
+"}
+(6,1,1) = {"
+k
+k
+W
+p
+a
+v
+P
+u
+h
+g
+h
+g
+P
+"}
+(7,1,1) = {"
+k
+k
+W
+P
+Y
+X
+Y
+w
+P
+P
+P
+P
+P
+"}
+(8,1,1) = {"
+k
+k
+W
+G
+X
+q
+N
+v
+g
+P
+a
+P
+P
+"}
+(9,1,1) = {"
+k
+D
+W
+X
+Y
+E
+P
+h
+W
+W
+P
+P
+P
+"}
+(10,1,1) = {"
+k
+f
+z
+P
+P
+l
+a
+W
+W
+W
+W
+P
+a
+"}
+(11,1,1) = {"
+K
+K
+I
+d
+d
+K
+B
+B
+B
+B
+B
+B
+r
+"}
+(12,1,1) = {"
+K
+d
+K
+M
+S
+M
+B
+B
+B
+B
+B
+B
+U
+"}
+(13,1,1) = {"
+K
+K
+K
+K
+d
+K
+K
+K
+B
+B
+U
+U
+Q
+"}

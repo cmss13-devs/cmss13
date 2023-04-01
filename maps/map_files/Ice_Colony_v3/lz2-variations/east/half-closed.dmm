@@ -1,0 +1,107 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
+"c" = (
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"d" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"q" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/shiva/exterior/lz2_fortress)
+"t" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+"O" = (
+/turf/closed/wall/shiva/prefabricated/pink,
+/area/shiva/exterior/lz2_fortress)
+"P" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_3"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
+"Q" = (
+/turf/open/auto_turf/snow/layer4,
+/area/shiva/exterior/cp_lz2)
+"U" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz2_fortress)
+
+(1,1,1) = {"
+c
+c
+c
+c
+c
+c
+"}
+(2,1,1) = {"
+c
+t
+q
+q
+c
+c
+"}
+(3,1,1) = {"
+U
+d
+q
+q
+c
+c
+"}
+(4,1,1) = {"
+O
+O
+q
+q
+O
+O
+"}
+(5,1,1) = {"
+O
+O
+q
+q
+O
+O
+"}
+(6,1,1) = {"
+Q
+Q
+q
+q
+Q
+Q
+"}
+(7,1,1) = {"
+P
+Q
+q
+q
+Q
+a
+"}
+(8,1,1) = {"
+a
+a
+Q
+Q
+a
+Q
+"}

@@ -1,6 +1,5 @@
 /*
 I mean, who actually reads code anyway?
-
 Lorem
 ipsum
 dolor
@@ -67,7 +66,6 @@ vel
 varius
 risus
 scelerisque.
-
 Proin
 ac
 elit
@@ -132,7 +130,6 @@ euismod
 orci
 vestibulum
 eget.
-
 Aenean
 porttitor
 luctus
@@ -200,9 +197,9 @@ Suspendisse
 varius
 lectus
 id
- metus
- egestas
- placerat.
+metus
+egestas
+placerat.
 Ut
 faucibus
 augue
@@ -274,8 +271,8 @@ Vestibulum
 ante
 ipsum
 primis
- in
- faucibus
+in
+faucibus
 orci
 luctus
 et
@@ -307,12 +304,12 @@ ac,
 lacinia
 vel
 libero.
- Aenean
+Aenean
 blandit
 hendrerit
 ante
 sed
- sagittis.
+sagittis.
 Ut
 in
 nibh
@@ -336,7 +333,6 @@ nostra,
 per
 inceptos
 himenaeos.
-
 Donec
 ullamcorper
 est
@@ -353,7 +349,7 @@ dui
 ut
 mollis
 hendrerit
-, risus
+risus
 quam
 faucibus
 est,

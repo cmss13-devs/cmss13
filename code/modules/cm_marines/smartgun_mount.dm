@@ -881,11 +881,15 @@
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	var/mob/living/carbon/user = usr
+	var/mob/living/carbon/human/human_user
 	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat_immediate(world,"a")
 	// If the gun sprite wasn't dragged onto the user, or the user isn't adjacent.
 	if(over_object != usr || !in_range(src, usr))
 		return
+	else
+		human_user = user
+	var/user_turf = get_turf(user)
 	// If the user is already manning the gun.
 	if(operator == usr)
 		// Exit the gun.
@@ -908,10 +912,13 @@
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 		return
 
-	// If the user is invisible.
-	if(user.alpha <= 60)
-		to_chat(user, SPAN_WARNING("You can't use [src] while cloaked!"))
-		return
+					if(!human_user.allow_gun_usage)
+						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+						return
+					else
+						user.freeze()
+						user.set_interaction(src)
+						give_action(user, /datum/action/human_action/mg_exit)
 
 	// Make sure we're not manning two guns at once, tentacle arms.
 	if(user.interactee)

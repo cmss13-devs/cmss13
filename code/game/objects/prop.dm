@@ -31,7 +31,7 @@
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
-	icon_state = "vase"
+	icon_state = "flowervase"
 	w_class = SIZE_SMALL
 	desc = "An empty glass flower vase."
 

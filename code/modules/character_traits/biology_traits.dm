@@ -83,7 +83,7 @@
 /datum/character_trait/biology/bad_leg/New()
 	. = ..()
 	// Not on definition as several lists are added
-	inapplicable_roles = list(JOB_NURSE, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CARGO_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST
+	inapplicable_roles = list(JOB_NURSE, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CARGO_TECH, JOB_MARINE) + JOB_SQUAD_ROLES_LIST + JOB_MARINE_RAIDER_ROLES_LIST + JOB_ERT_GRUNT_LIST
 	bad_cane_roles = list(JOB_SURVIVOR, JOB_STOWAWAY)
 	fancy_cane_roles = list(JOB_CO_SURVIVOR, CORPORATE_SURVIVOR, JOB_CMO, JOB_CORPORATE_LIAISON, JOB_SEA, JOB_CHIEF_ENGINEER) + JOB_COMMAND_ROLES_LIST
 	inapplicable_species = list(SPECIES_SYNTHETIC, SPECIES_YAUTJA)
@@ -98,13 +98,13 @@
 
 	target.AddComponent(/datum/component/bad_leg)
 
-	var/cane_type = /obj/item/weapon/melee/pole/wooden_cane
+	var/cane_type = /obj/item/weapon/pole/wooden_cane
 	if(target.job in bad_cane_roles)
-		cane_type = /obj/item/weapon/melee/pole // todo - add some sort of override for corporate liaison/director/etc survivors
+		cane_type = /obj/item/weapon/pole // todo - add some sort of override for corporate liaison/director/etc survivors
 	if(target.job in fancy_cane_roles)
-		cane_type = /obj/item/weapon/melee/pole/fancy_cane
+		cane_type = /obj/item/weapon/pole/fancy_cane
 
-	var/obj/item/weapon/melee/pole/cane = new cane_type(target.loc)
+	var/obj/item/weapon/pole/cane = new cane_type(target.loc)
 
 	var/success = target.equip_to_slot_if_possible(cane, WEAR_L_HAND)
 	if(!success)

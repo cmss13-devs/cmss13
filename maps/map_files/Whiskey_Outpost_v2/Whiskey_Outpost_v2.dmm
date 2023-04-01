@@ -1002,7 +1002,7 @@
 /obj/structure/safe,
 /obj/item/moneybag,
 /obj/item/clothing/glasses/monocle,
-/obj/item/weapon/melee/telebaton,
+/obj/item/weapon/telebaton,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -12444,7 +12444,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "TD" = (
-/obj/item/weapon/melee/claymore/mercsword/machete,
+/obj/item/weapon/claymore/mercsword/machete,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"

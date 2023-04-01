@@ -34,6 +34,11 @@
 	dcell = new/obj/item/cell(src)
 	update_icon()
 
+/obj/item/device/defibrillator/Destroy()
+	QDEL_NULL(dcell)
+	QDEL_NULL(sparks)
+	return ..()
+
 /obj/item/device/defibrillator/update_icon()
 	icon_state = initial(icon_state)
 	overlays.Cut()

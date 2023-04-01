@@ -14,7 +14,7 @@
 	crusher_resistant = FALSE
 	can_wire = FALSE
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
-	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
 	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE //Reinforced to be a cade or not
 
@@ -188,6 +188,7 @@
 /obj/structure/barricade/handrail/sandstone
 	name = "sandstone handrail"
 	icon_state = "hr_sandstone"
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	stack_type = /obj/item/stack/sheet/mineral/sandstone
 	debris = list(/obj/item/stack/sheet/mineral/sandstone)
 

@@ -27,6 +27,12 @@
 // src.jetpack = new /obj/item/toy/sword(src)
 // src.jetpack.name = "Placeholder Upgrade Item"
 
+/obj/item/circuitboard/robot_module/Destroy()
+	. = ..()
+	QDEL_NULL(emag)
+	QDEL_NULL(jetpack)
+	QDEL_NULL_LIST(stacktypes)
+	QDEL_NULL_LIST(modules)
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 
@@ -308,7 +314,6 @@
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/energy/sword(src)
-// src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
 
 /obj/item/circuitboard/robot_module/drone
 	name = "drone module"

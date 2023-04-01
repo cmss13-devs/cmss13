@@ -38601,10 +38601,6 @@
 "hvH" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"hvQ" = (
-/obj/effect/landmark/start/professor,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "hws" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -40080,7 +40076,12 @@
 	name = "\improper Combat Correspondent Room";
 	req_access = list(203)
 	},
-/turf/open/floor/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/command/combat_correspondent)
 "ihn" = (
 /obj/structure/surface/table/almayer,
@@ -107179,7 +107180,7 @@ aQF
 aQF
 aPH
 xIQ
-hvQ
+pbb
 aWD
 rrK
 aRy
@@ -123149,8 +123150,8 @@ alG
 aYj
 apf
 edc
-gfA
-gfA
+qLs
+qLs
 xaZ
 edc
 upR
@@ -123759,7 +123760,7 @@ aYj
 apd
 edc
 jmQ
-gfA
+qLs
 fhH
 edc
 kMJ

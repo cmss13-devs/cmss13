@@ -9,13 +9,13 @@
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
-	armor_deflection = XENO_ARMOR_TIER_2
+	armor_deflection = XENO_ARMOR_TIER_1
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
-	evolution_allowed = FALSE
+	evolution_allowed = TRUE
 	deevolves_to = list(XENO_CASTE_SPITTER)
 	spit_delay = 30 SECONDS
 	caste_desc = "Gross!"
@@ -23,6 +23,8 @@
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 	fire_immunity = FIRE_VULNERABILITY
+	// 2x fire damage
+	fire_vulnerability_mult = FIRE_MULTIPLIER_EXTREME
 
 	tackle_min = 2
 	tackle_max = 6
@@ -49,8 +51,8 @@
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
 	mutation_type = BOILER_NORMAL
-	spit_delay  = 25 SECONDS
-	tileoffset = 4
+	spit_delay  = 30 SECONDS
+	tileoffset = 3
 	viewsize = 7
 
 	icon_xeno = 'icons/mob/xenos/boiler.dmi'

@@ -29,9 +29,10 @@
 
 /obj/item/circuitboard/robot_module/Destroy()
 	. = ..()
-	QDEL_NULL(emag)
-	QDEL_NULL(jetpack)
-	QDEL_NULL_LIST(stacktypes)
+	if(emag)
+		QDEL_NULL(emag)
+	if(jetpack)
+		QDEL_NULL(jetpack)
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 

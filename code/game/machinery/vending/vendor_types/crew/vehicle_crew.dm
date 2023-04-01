@@ -19,7 +19,7 @@
 	var/budget_points = 0
 	var/available_categories = VEHICLE_ALL_AVAILABLE
 
-	available_points_to_display = 0
+	available_points_to_display = 1
 
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_USE_VENDOR_FLAGS
 
@@ -53,15 +53,9 @@
 	selected_vehicle = "APC"
 	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
-	var/list/display_list = list()
-
-	if(!user)
-		display_list += GLOB.cm_vending_vehicle_crew_tank
-		display_list += GLOB.cm_vending_vehicle_crew_tank_spare
-		display_list += GLOB.cm_vending_vehicle_crew_apc
-		display_list += GLOB.cm_vending_vehicle_crew_apc_spare
-		return display_list
+	if(istype(V, /obj/effect/vehicle_spawner/tank))
+		selected_vehicle = "TANK"
+		available_categories = (VEHICLE_ALL_AVAILABLE)
 
 	if(selected_vehicle == "TANK")
 		if(available_categories)

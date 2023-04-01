@@ -1615,7 +1615,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
 				playsound(user, active_attachable.fire_sound, 50)
-				if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs))
+				if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.head, /obj/item/clothing/head/helmet/marine/M3T))
 					user.AdjustEarDeafness(1)
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
@@ -1623,7 +1623,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 					playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 				else
 					playsound(user, actual_sound, firesound_volume, firing_sndfreq)
-					if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs))
+					if(!istype(user.wear_r_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.wear_l_ear, /obj/item/clothing/ears/earmuffs) && !istype(user.head, /obj/item/clothing/head/helmet/marine/M3T))
 						user.AdjustEarDeafness(1)
 			else
 				playsound(user, actual_sound, 25, firing_sndfreq)

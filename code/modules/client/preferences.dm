@@ -573,6 +573,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreenpref'><b>[widescreenpref ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
@@ -1794,6 +1795,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("change_menu")
 					current_menu = href_list["menu"]
+
+				if("widescreenpref")
+					widescreenpref = !widescreenpref
+					user.client.view_size.set_default(get_screen_size(widescreenpref))
 
 	ShowChoices(user)
 	return 1

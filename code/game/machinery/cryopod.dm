@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	/obj/item/clothing/glasses/mgoggles, \
 	/obj/item/clothing/head/beret/marine/mp, \
 	/obj/item/clothing/gloves/black, \
-	/obj/item/weapon/melee/baton, \
+	/obj/item/weapon/baton, \
 	/obj/item/weapon/gun/energy/taser, \
 	/obj/item/clothing/glasses/sunglasses/sechud, \
 	/obj/item/device/radio/headset/almayer, \

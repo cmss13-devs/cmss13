@@ -57,6 +57,16 @@
 		selected_vehicle = "TANK"
 		available_categories = (VEHICLE_ALL_AVAILABLE)
 
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
+	var/list/display_list = list()
+
+	if(!user)
+		display_list += GLOB.cm_vending_vehicle_crew_tank
+		display_list += GLOB.cm_vending_vehicle_crew_tank_spare
+		display_list += GLOB.cm_vending_vehicle_crew_apc
+		display_list += GLOB.cm_vending_vehicle_crew_apc_spare
+		return display_list
+
 	if(selected_vehicle == "TANK")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_tank

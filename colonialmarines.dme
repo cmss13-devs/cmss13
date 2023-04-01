@@ -869,6 +869,7 @@
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_leader.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_medic.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_prep.dm"
+#include "code\game\machinery\vending\vendor_types\squad_prep\squad_rifleman.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_rto.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_smartgunner.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_specialist.dm"

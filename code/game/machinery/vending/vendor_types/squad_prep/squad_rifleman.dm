@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 	vendor_role = list(JOB_SQUAD_MARINE)
 
-/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_marine
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha

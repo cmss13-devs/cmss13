@@ -16,7 +16,7 @@
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"
 	desc = "Insert this into an engineer vendor in order to access a support weapon."
-	icon_state = "coin_adamantine"
+	icon_state = "coin_platinum"
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d

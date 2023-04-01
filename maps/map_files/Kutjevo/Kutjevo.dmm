@@ -6101,7 +6101,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
 "iiy" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/Northwest_Colony)
 "iiG" = (
@@ -8059,7 +8059,7 @@
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "laI" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "lbu" = (
@@ -9118,7 +9118,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/exterior/stonyfields)
 "mBG" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},

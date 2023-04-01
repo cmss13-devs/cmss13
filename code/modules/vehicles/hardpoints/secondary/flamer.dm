@@ -45,7 +45,8 @@
 		if(distance >= max_range) break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
-		ammo.current_rounds--
+		if(!bottomless_mag)
+			ammo.current_rounds--
 		flame_turf(T, user)
 		distance++
 		prev_T = T

@@ -22,6 +22,7 @@
 	var/locked = FALSE
 	var/composite_icon = TRUE
 	var/display_additional_stats = FALSE
+	var/bottomless_mag = FALSE //If the mag has atleast 1 ammo in it, it won't consume ammo to fire
 
 	var/defense_check_range = 2
 	var/can_be_near_defense = FALSE

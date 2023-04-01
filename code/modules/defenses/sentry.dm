@@ -314,7 +314,8 @@
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
 	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
-	ammo.current_rounds--
+	if(!bottomless_mag)
+		ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)
 		handle_empty()

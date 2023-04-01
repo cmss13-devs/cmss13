@@ -216,9 +216,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(current_mag.current_rounds > 0)
 		ammo = GLOB.ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
 		in_chamber = create_bullet(ammo, initial(name))
-		current_mag.current_rounds--
-		current_mag.chamber_contents[current_mag.chamber_position] = "empty"
-		current_mag.chamber_position--
+		if(!bottomless_mag)
+			current_mag.current_rounds--
+			current_mag.chamber_contents[current_mag.chamber_position] = "empty"
+			current_mag.chamber_position--
 		return in_chamber
 
 /obj/item/weapon/gun/lever_action/ready_in_chamber()

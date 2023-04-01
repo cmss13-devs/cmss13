@@ -58,6 +58,7 @@
 	on those unique vars. This is done for quicker pathing. Just keep in mind most mags aren't internal, though some are.
 	This is also the default magazine path loaded into a projectile weapon for reverse lookups on New(). Leave this null to do your own thing.*/
 	var/obj/item/ammo_magazine/internal/current_mag = null
+	var/bottomless_mag = FALSE //If the mag has atleast 1 ammo in it, it won't consume ammo to fire
 
 	//Basic stats.
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's accuracy by this number.
@@ -938,7 +939,8 @@ and you're good to go.
 	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
 	if(active_attachable)
 		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
-			active_attachable.current_rounds--
+			if(!bottomless_mag)
+				active_attachable.current_rounds--
 			var/obj/item/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
 			// For now, only bullet traits from the attachment itself will apply to its projectiles
 			for(var/entry in active_attachable.traits_to_give_attached)
@@ -992,7 +994,8 @@ and you're good to go.
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
 		apply_traits(in_chamber)
-		current_mag.current_rounds-- //Subtract the round from the mag.
+		if(!bottomless_mag)
+			current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
 
 

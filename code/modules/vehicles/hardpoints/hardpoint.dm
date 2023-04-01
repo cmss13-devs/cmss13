@@ -101,6 +101,7 @@
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile fired from the hardpoint
 	var/list/list/traits_to_give
+	var/bottomless_mag = FALSE //If the mag has atleast 1 ammo in it, it won't consume ammo to fire
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -557,7 +558,8 @@
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(origin_turf, A))
 
-	ammo.current_rounds--
+	if(!bottomless_mag)
+		ammo.current_rounds--
 
 //-----------------------------
 //------ICON PROCS----------

@@ -1448,7 +1448,8 @@
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
-	current_mag.current_rounds--
+	if(!bottomless_mag)
+		current_mag.current_rounds--
 
 	flare_turf.ceiling_debris()
 

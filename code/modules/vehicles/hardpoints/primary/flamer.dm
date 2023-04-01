@@ -58,4 +58,5 @@
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))
 
-	ammo.current_rounds--
+	if(!bottomless_mag)
+		ammo.current_rounds--

@@ -835,9 +835,11 @@
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	var/mob/living/carbon/user = usr
+	var/mob/living/carbon/human/human_user
 	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
-
+	else
+		human_user = user
 	var/user_turf = get_turf(user)
 
 	for(var/opp_dir in reverse_nearby_direction(src.dir))
@@ -861,7 +863,7 @@
 					if(user.get_active_hand() != null)
 						to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
 
-					if(!user.allow_gun_usage)
+					if(!human_user.allow_gun_usage)
 						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 						return
 					else

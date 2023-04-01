@@ -116,6 +116,7 @@
 	key = "golfclap"
 	key_third_person = "golfclaps"
 	message = "claps, clearly unimpressed."
+	alt_message = "claps"
 	sound = 'sound/misc/golfclap.ogg'
 	cooldown = 5 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -149,6 +150,7 @@
 /datum/emote/living/carbon/human/medic
 	key = "medic"
 	message = "calls for a medic!"
+	alt_message = "shouts something"
 	cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -190,6 +192,7 @@
 /datum/emote/living/carbon/human/pain
 	key = "pain"
 	message = "cries out in pain!"
+	alt_message = "cries out"
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -330,6 +333,7 @@
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
 	message = "shouts an inspiring cry!"
+	alt_message = "shouts something"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
@@ -342,9 +346,15 @@
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
 		if(user.gender == MALE)
-			return get_sfx("male_warcry")
+			if(user.faction == FACTION_UPP)
+				return get_sfx("male_upp_warcry")
+			else
+				return get_sfx("male_warcry")
 		else
-			return get_sfx("female_warcry")
+			if(user.faction == FACTION_UPP)
+				return get_sfx("female_upp_warcry")
+			else
+				return get_sfx("female_warcry")
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

@@ -28,4 +28,5 @@ AddTimelock(/datum/job/command/intel, list(
 
 /obj/effect/landmark/start/intel
 	name = JOB_INTEL
+	icon_state = "io_spawn"
 	job = /datum/job/command/intel

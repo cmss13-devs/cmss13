@@ -60,3 +60,4 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.reagents.add_reagent("molecularacid", 2)
+		carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/molecular_acid)

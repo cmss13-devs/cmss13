@@ -110,7 +110,7 @@
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(!.)
+	if(!. || deleted)
 		return
 	M.status_flags |= FAKEDEATH
 	M.apply_damage(0.5*REM, OXY)

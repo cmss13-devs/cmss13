@@ -75,6 +75,7 @@
 	GLOB.cable_list += src
 
 /obj/structure/cable/Destroy()
+	breaker_box = null
 	GLOB.cable_list -= src
 	return ..()
 

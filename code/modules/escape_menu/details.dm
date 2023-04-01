@@ -39,8 +39,8 @@ GLOBAL_DATUM(escape_menu_details, /atom/movable/screen/escape_menu/details)
 	var/new_maptext = {"
 		<span style='text-align: right; line-height: 0.7'>
 			Round Time: [duration2text()]<br />
-			Ship Map: [ship_map]<br />
-			Ground Map: [ground_map]<br />
+			[SSmapping.configs[GROUND_MAP].disable_ship_map ? "" : "Ship: [ship_map]<br />"]
+			Ground: [ground_map]<br />
 		</span>
 	"}
 

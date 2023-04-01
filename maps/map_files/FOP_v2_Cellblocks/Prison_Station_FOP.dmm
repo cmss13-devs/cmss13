@@ -3465,8 +3465,8 @@
 /area/prison/research/secret)
 "aja" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baton,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "ajb" = (
@@ -13802,7 +13802,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/item/clothing/mask/muzzle,
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/chainofcommand,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "blue"
@@ -15559,7 +15559,7 @@
 /area/prison/command/secretary_office)
 "aRX" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/katana/replica,
+/obj/item/weapon/katana/replica,
 /turf/open/floor/wood,
 /area/prison/command/office)
 "aRY" = (
@@ -29382,7 +29382,6 @@
 /area/prison/residential/south)
 "bHd" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "bHf" = (
@@ -35022,7 +35021,7 @@
 /area/prison/cellblock/highsec/south/south)
 "bYD" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/telebaton,
+/obj/item/weapon/telebaton,
 /obj/effect/landmark/item_pool_spawner/prison_lock,
 /turf/open/floor/prison,
 /area/prison/security/head)
@@ -36183,9 +36182,7 @@
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "ccz" = (
-/obj/structure/lattice,
 /obj/structure/monorail,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "ccA" = (
@@ -37555,8 +37552,8 @@
 /area/prison/security/head)
 "chb" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/classic_baton,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)
 "chc" = (
@@ -46990,9 +46987,10 @@
 /turf/open/floor/wood,
 /area/prison/security/monitoring/highsec)
 "oog" = (
-/obj/structure/window/framed/prison/cell,
-/turf/closed/wall/r_wall/prison,
-/area/prison/medbay/morgue)
+/obj/structure/lattice,
+/obj/structure/monorail,
+/turf/open/space,
+/area/space)
 "ooE" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -47235,7 +47233,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "oXr" = (
@@ -48622,7 +48619,6 @@
 /area/prison/residential/north)
 "tVW" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "tWR" = (
@@ -49099,7 +49095,6 @@
 /area/prison/cellblock/protective)
 "vwO" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/south)
 "vxy" = (
@@ -62643,8 +62638,8 @@ bUZ
 bWG
 bXM
 bTL
-bHd
-bHd
+acL
+acL
 acL
 bTL
 bUZ
@@ -62855,7 +62850,7 @@ bVa
 bWH
 bXN
 bYJ
-ccz
+oog
 ccz
 btd
 bTP
@@ -63048,7 +63043,7 @@ acL
 acL
 acL
 acL
-bHd
+acL
 acL
 acL
 aAO
@@ -63067,7 +63062,7 @@ bUZ
 bWG
 bXM
 bTO
-bHd
+acL
 acL
 acL
 bTO
@@ -74357,7 +74352,7 @@ czO
 czM
 acL
 acL
-bHd
+acL
 cvj
 aAO
 aAO
@@ -81353,7 +81348,7 @@ cxg
 cxl
 cxx
 cxz
-bHd
+acL
 cvj
 aAO
 aAO
@@ -83967,7 +83962,7 @@ alf
 arf
 aoJ
 apG
-oog
+atf
 atJ
 arC
 arZ
@@ -84603,7 +84598,7 @@ alf
 anP
 arN
 asy
-oog
+atf
 atJ
 arE
 asa
@@ -100159,7 +100154,7 @@ bBe
 bBe
 bzS
 acL
-bHd
+acL
 acL
 acL
 aAO

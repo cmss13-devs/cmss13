@@ -18,6 +18,7 @@
 	var/map_file = "LV624.dmm"
 
 	var/webmap_url
+	var/short_name
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -75,14 +76,18 @@
 
 	synth_survivor_types = list(
 		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/emt_synth,
 		/datum/equipment_preset/synth/survivor/scientist_synth,
 		/datum/equipment_preset/synth/survivor/engineer_synth,
-		/datum/equipment_preset/synth/survivor/security_synth,
-		/datum/equipment_preset/synth/survivor/corporate_synth,
 		/datum/equipment_preset/synth/survivor/janitor_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/teacher_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/cmb_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/protection_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
 		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
@@ -147,8 +152,8 @@
 	CHECK_EXISTS("map_path")
 	map_path = json["map_path"]
 
-	CHECK_EXISTS("webmap_url")
 	webmap_url = json["webmap_url"]
+	short_name = json["short_name"]
 
 	map_file = json["map_file"]
 	// "map_file": "BoxStation.dmm"

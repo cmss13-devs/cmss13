@@ -9,7 +9,7 @@
 	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convection stations."
 
 	icon_state = "stunrevolver"
-	item_state = "m44"//temp
+	item_state = "stunrevolver"
 	muzzle_flash = null//replace at some point
 	fire_sound = 'sound/weapons/emitter2.ogg'
 
@@ -32,6 +32,10 @@
 	cell = new /obj/item/cell/high(src)
 	update_icon()
 	max_shots = round((cell.maxcharge / charge_cost), 1)
+
+/obj/item/weapon/gun/energy/Destroy()
+	QDEL_NULL(cell)
+	. = ..()
 
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()

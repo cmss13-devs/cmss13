@@ -69,3 +69,27 @@
 	var/mob/living/M = user.mob
 	M.toggle_mov_intent()
 	return TRUE
+
+/datum/keybinding/living/cancel_camera_view
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "cancel_camera_view"
+	full_name = "Cancel Camera View"
+	description = "Reset your view to your mob"
+	keybind_signal = COMSIG_KB_LIVING_CANCEL_CAMERA_VIEW
+
+/datum/keybinding/living/cancel_camera_view/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/used_mob = user?.mob
+	if(!used_mob)
+		return
+
+	used_mob.reset_view(null)
+	used_mob.unset_interaction()
+	if(isliving(used_mob))
+		var/mob/living/living_mob = used_mob
+		if(living_mob.cameraFollow)
+			living_mob.cameraFollow = null

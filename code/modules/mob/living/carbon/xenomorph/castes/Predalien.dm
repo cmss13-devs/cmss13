@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_7
 
 	evolution_allowed = FALSE
+	minimum_evolve_time = 0
 
 	tackle_min = 3
 	tackle_max = 6

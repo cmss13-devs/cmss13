@@ -82,7 +82,7 @@
 	icon_state = initial(icon_state) + "0"
 	SetOpacity(0)
 	sleep(10)
-	layer = PODDOOR_OPEN_LAYER
+	layer = open_layer
 	density = FALSE
 
 	if(operating == 1) //emag again
@@ -97,7 +97,7 @@
 	operating = 1
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
-	layer = PODDOOR_CLOSED_LAYER
+	layer = closed_layer
 	flick(initial(icon_state) + "c1", src)
 	icon_state = initial(icon_state) + "1"
 	density = TRUE

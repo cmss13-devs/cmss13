@@ -4,8 +4,11 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -31,8 +34,13 @@
 	dir = 8;
 	pixel_x = 16
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -124,12 +132,6 @@
 	icon_state = "67"
 	},
 /area/shuttle/drop1/sulaco)
-"jw" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "jz" = (
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "70"
@@ -207,8 +209,13 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -266,12 +273,17 @@
 "wr" = (
 /obj/effect/attach_point/crew_weapon/dropship1,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop1/sulaco)
 "ws" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -579,8 +591,13 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
 	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -592,8 +609,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "TK" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -729,12 +749,12 @@ mb
 Da
 oo
 TK
-TK
+ws
 TK
 il
 il
 TK
-TK
+ws
 SM
 de
 de
@@ -761,9 +781,9 @@ Ce
 TK
 qF
 aj
+ws
 TK
-TK
-TK
+ws
 WQ
 Me
 if
@@ -775,11 +795,11 @@ UG
 wC
 Vm
 in
+TK
 ws
+TK
 ws
-ws
-ws
-ws
+TK
 in
 Zo
 Zo
@@ -804,11 +824,11 @@ BB
 BB
 OK
 OU
-jw
+il
 wr
-Zo
+il
 wr
-Zo
+il
 wr
 il
 mb
@@ -822,9 +842,9 @@ Co
 Jb
 in
 TK
+ws
 TK
-TK
-TK
+ws
 TK
 in
 Zo
@@ -850,11 +870,11 @@ Zo
 Zo
 Zo
 Tt
-ws
+TK
 Tu
+TK
 ws
-ws
-ws
+TK
 ws
 LP
 Ta
@@ -866,12 +886,12 @@ mb
 mb
 De
 oo
-ws
+TK
 cr
-ws
+TK
 il
 il
-ws
+TK
 ws
 BS
 Zv

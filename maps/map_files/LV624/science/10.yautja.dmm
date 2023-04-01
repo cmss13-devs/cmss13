@@ -51,7 +51,7 @@
 "aj" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/obj/item/weapon/melee/yautja/combistick,
+/obj/item/weapon/yautja/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -251,12 +251,7 @@
 	pixel_y = 5
 	},
 /obj/item/paper/research_notes,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -400,7 +395,7 @@
 /area/lv624/lazarus/research)
 "bb" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/scythe,
+/obj/item/weapon/yautja/scythe,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -443,7 +438,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "bi" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;

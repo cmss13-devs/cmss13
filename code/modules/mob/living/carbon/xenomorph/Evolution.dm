@@ -8,12 +8,26 @@
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
+
+	do_evolve()
+
+/mob/living/carbon/xenomorph/proc/do_evolve()
 	var/potential_queens = 0
 
 	if (!evolve_checks())
 		return
 
-	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to, theme="hive_status")
+	var/castes_available = caste.evolves_to.Copy()
+
+	for(var/caste in castes_available)
+		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
+			castes_available -= caste
+
+	if(!length(castes_available))
+		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes you can evolve to yet."))
+		return
+
+	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
 	if(!castepick) //Changed my mind
 		return
 
@@ -343,8 +357,8 @@
 	if(free_slots)
 		return TRUE
 
-	var/pooled_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	pooled_factor = round(pooled_factor)
+	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
+	burrowed_factor = round(burrowed_factor)
 
 	var/used_tier_2_slots = length(hive.tier_2_xenos)
 	var/used_tier_3_slots = length(hive.tier_3_xenos)
@@ -356,7 +370,7 @@
 			if(2) used_tier_2_slots--
 			if(3) used_tier_3_slots--
 
-	var/totalXenos = pooled_factor
+	var/totalXenos = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++

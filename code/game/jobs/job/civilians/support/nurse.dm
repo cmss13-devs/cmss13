@@ -10,6 +10,7 @@
 
 /obj/effect/landmark/start/nurse
 	name = JOB_NURSE
+	icon_state = "nur_spawn"
 	job = /datum/job/civilian/nurse
 
 AddTimelock(/datum/job/civilian/nurse, list(

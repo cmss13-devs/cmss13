@@ -62,8 +62,6 @@
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
-	var/icon/stand_icon = null
-
 	var/voice
 
 	var/speech_problem_flag = 0

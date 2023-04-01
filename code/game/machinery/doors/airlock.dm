@@ -784,7 +784,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/proc/lock(forced=0)
-	if(operating || locked) return
+	if((operating && !forced) || locked)
+		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = 1

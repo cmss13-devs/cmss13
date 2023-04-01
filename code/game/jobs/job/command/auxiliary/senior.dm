@@ -22,4 +22,5 @@ AddTimelock(/datum/job/command/senior, list(
 
 /obj/effect/landmark/start/senior
 	name = JOB_SEA
+	icon_state = "sea_spawn"
 	job = /datum/job/command/senior

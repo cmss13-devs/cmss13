@@ -11,7 +11,7 @@
 	black_market_value = 35
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
+	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
 
 	var/charge_amount = 1000
 
@@ -94,8 +94,8 @@
 				update_icon()
 			return
 
-		if(istype(charging, /obj/item/weapon/melee/baton))
-			var/obj/item/weapon/melee/baton/B = charging
+		if(istype(charging, /obj/item/weapon/baton))
+			var/obj/item/weapon/baton/B = charging
 			if(B.bcell)
 				if(!B.bcell.fully_charged())
 					B.bcell.give(charge_amount)
@@ -197,8 +197,8 @@
 		if(E.power_supply)
 			E.power_supply.emp_act(severity)
 */
-	if(istype(charging, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = charging
+	if(istype(charging, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/B = charging
 		if(B.bcell)
 			B.bcell.charge = 0
 	..(severity)
@@ -224,7 +224,7 @@
 
 	if(istype(charging, /obj/item/weapon/gun/energy))
 		overlays += "recharger-taser"//todo make more generic I guess. It works for now -trii
-	else if(istype(charging, /obj/item/weapon/melee/baton))
+	else if(istype(charging, /obj/item/weapon/baton))
 		overlays += "recharger-baton"
 
 /obj/structure/machinery/recharger/get_examine_text(mob/user)
@@ -244,7 +244,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 25000 //25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton)
+	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/baton)
 	icon_state_charged = "wrecharger2"
 	icon_state_idle = "wrecharger0"
 	icon_state_charging = "wrecharger1"

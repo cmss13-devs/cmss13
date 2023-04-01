@@ -10,8 +10,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
-	icon_state = "disk"
-	item_state = "pred_disk"
+	icon_state = "disc"
+	item_state = "pred_disc"
 	w_class = SIZE_TINY
 	det_time = 30
 	unacidable = TRUE
@@ -114,10 +114,10 @@
 	name = "smart-disc"
 	desc = "A furious, whirling array of blades and alien technology."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "disk_active"
-	icon_living = "disk_active"
-	icon_dead = "disk"
-	icon_gib = "disk"
+	icon_state = "disc_active"
+	icon_living = "disc_active"
+	icon_dead = "disc"
+	icon_gib = "disc"
 	speak_chance = 0
 	turns_per_move = 1
 	response_help = "stares at the"

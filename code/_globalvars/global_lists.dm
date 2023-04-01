@@ -1,9 +1,11 @@
 
 var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 
+GLOBAL_LIST_EMPTY(PressFaxes)
 GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
+GLOBAL_LIST_EMPTY(CMBFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
@@ -26,6 +28,8 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
 GLOBAL_LIST_EMPTY(minimap_icons)
+
+GLOBAL_LIST_EMPTY(mainship_pipes)
 
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
@@ -161,6 +165,12 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja()
 ))
+
+GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
+
+/proc/setup_xeno_evolve_times()
+	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
+		LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 

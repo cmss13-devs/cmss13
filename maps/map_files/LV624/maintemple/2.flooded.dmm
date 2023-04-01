@@ -303,7 +303,7 @@
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
-/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/claymore/mercsword,
 /turf/open/gm/coast{
 	icon_state = "beachcorner2"
 	},
@@ -338,7 +338,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -452,7 +452,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -512,7 +512,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "mZ" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -642,7 +642,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rI" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -757,7 +757,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -1062,7 +1062,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1120,7 +1120,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BI" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1211,7 +1211,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -1311,7 +1311,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Ff" = (
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},
@@ -1424,7 +1424,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},
@@ -1478,7 +1478,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Je" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1630,7 +1630,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = 6
 	},
@@ -1775,7 +1775,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "PO" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	name = "Alien Harpoon";
 	pixel_x = -7
 	},

@@ -2,62 +2,52 @@
 "a" = (
 /obj/docking_port/mobile/escape_shuttle/w,
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall9";
-	
+	icon_state = "wall9"
 	},
 /area/shuttle/escape_pod)
 "b" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall8";
-	
+	icon_state = "wall8"
 	},
 /area/shuttle/escape_pod)
 "e" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall6";
-	
+	icon_state = "wall6"
 	},
 /area/shuttle/escape_pod)
 "j" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall7";
-	
+	icon_state = "wall7"
 	},
 /area/shuttle/escape_pod)
 "o" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall3";
-	
+	icon_state = "wall3"
 	},
 /area/shuttle/escape_pod)
 "p" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall2";
-	
+	icon_state = "wall2"
 	},
 /area/shuttle/escape_pod)
 "B" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall10";
-	
+	icon_state = "wall10"
 	},
 /area/shuttle/escape_pod)
 "F" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall1";
-	
+	icon_state = "wall1"
 	},
 /area/shuttle/escape_pod)
 "G" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall4";
-	
+	icon_state = "wall4"
 	},
 /area/shuttle/escape_pod)
 "H" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5";
-	
+	icon_state = "floor5"
 	},
 /area/shuttle/escape_pod)
 "I" = (
@@ -73,8 +63,7 @@
 /area/shuttle/escape_pod)
 "P" = (
 /turf/closed/shuttle/escapepod{
-	icon_state = "wall13";
-	
+	icon_state = "wall13"
 	},
 /area/shuttle/escape_pod)
 "S" = (
@@ -82,8 +71,7 @@
 	name = "\improper Evacuation Airlock PL-3"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	
+	icon_state = "test_floor4"
 	},
 /area/shuttle/escape_pod)
 "V" = (
@@ -91,14 +79,12 @@
 	pixel_y = 30
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4";
-	
+	icon_state = "floor4"
 	},
 /area/shuttle/escape_pod)
 "W" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12";
-	
+	icon_state = "floor12"
 	},
 /area/shuttle/escape_pod)
 

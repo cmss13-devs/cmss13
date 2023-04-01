@@ -282,3 +282,14 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
+
+/obj/item/storage/box/guncase/cane_gun_kit
+	name = "spy-agent cane case"
+	desc = "A gun case containing a top-secret Gun Cane chambered in .44, alongside two spare handfuls of said caliber. Make sure to fold this after you use it!"
+	can_hold = list(/obj/item/weapon/gun/shotgun/double/cane, /obj/item/ammo_magazine/handful/revolver)
+	storage_slots = 3
+
+/obj/item/storage/box/guncase/cane_gun_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/double/cane(src)
+	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)
+	new /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds(src)

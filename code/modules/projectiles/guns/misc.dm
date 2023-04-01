@@ -42,7 +42,7 @@
 	. = ..()
 	if(!. || !istype(user)) //Let's check all that other stuff first.
 		return 0
-	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
@@ -111,10 +111,10 @@
 	name = ""
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "null"
+	icon_state = null
 	anchored = TRUE
 	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()
-		create_reagents(15)
-		..()
+	create_reagents(15)
+	. = ..()

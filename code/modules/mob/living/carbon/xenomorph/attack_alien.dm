@@ -333,7 +333,7 @@ There is a trait that permits them to handle items.**/
 		if(health <= 0)
 			M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			deconstruct()
+			deconstruct(FALSE)
 		else
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 			SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -375,7 +375,7 @@ There is a trait that permits them to handle items.**/
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 	SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	deconstruct()
+	deconstruct(FALSE)
 	return XENO_ATTACK_ACTION
 
 //Default "structure" proc. This should be overwritten by sub procs.
@@ -403,7 +403,7 @@ There is a trait that permits them to handle items.**/
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		unbuckle()
-		deconstruct()
+		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else
 		attack_hand(M)

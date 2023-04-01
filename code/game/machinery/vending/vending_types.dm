@@ -232,7 +232,7 @@
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,
-		/obj/item/weapon/melee/baton = 4,
+		/obj/item/weapon/baton = 4,
 		/obj/item/device/flashlight = 4,
 		/obj/item/storage/belt/security/MP = 4,
 		/obj/item/device/flash = 5,
@@ -264,7 +264,7 @@
 		/obj/item/ammo_magazine/pistol/rubber = 20,
 		/obj/item/ammo_magazine/pistol/mod88/rubber = 20,
 		/obj/item/ammo_magazine/rifle/rubber = 20,
-		/obj/item/ammo_magazine/rifle/l42a/rubber = 20,
+		/obj/item/ammo_magazine/rifle/m4ra/rubber = 20,
 		/obj/item/ammo_magazine/shotgun/beanbag = 20,
 		/obj/item/storage/firstaid/regular = 2,
 		/obj/item/storage/firstaid/fire = 2,
@@ -372,8 +372,8 @@
 			R.category=CAT_COIN
 			coin_records += R
 		else
-			R.category=CAT_NORMAL
 			product_records += R
+			R.category = CAT_NORMAL
 
 		if(delay_product_spawn)
 			sleep(5) //sleep(1) did not seem to cut it, so here we are.
@@ -407,6 +407,8 @@
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
 		/obj/item/device/camera = 5,
+		/obj/item/device/camera_film = 10,
+		/obj/item/notepad = 5,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)

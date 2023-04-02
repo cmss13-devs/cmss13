@@ -19,20 +19,18 @@
 
 	job_options = list(DOCTOR_VARIANT, SURGEON_VARIANT)
 	/// If this job is a military variant of the reporter role
-	//var/doctor = TRUE
+	var/doctor = TRUE
 
-/*
-/datum/job/civilian/reporter/handle_job_options(option)
-	if(option != CIVILIAN_VARIANT)
-		gear_preset = /datum/equipment_preset/uscm_ship/reporter_uscm
-		military = TRUE
+/datum/job/civilian/doctor/handle_job_options(option)
+	if(option != SURGEON_VARIANT)
+
+		var/doctor = TRUE
 	else
-		gear_preset = initial(gear_preset)
-		military = initial(military)
-*/
+
+		var/doctor = FALSE
 
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
-	if(option==DOCTOR_VARIANT)
+	if(doctor)
 		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 	else
 		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are an expert in all the surgeries but you are also very capable when it comes to medicaticate and treat your patients. If you do not know what you are doing, mentorhelp so a mentor can assist you."}

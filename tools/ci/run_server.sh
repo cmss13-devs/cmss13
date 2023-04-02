@@ -13,6 +13,6 @@ cp maps/$MAP.json ci_test/data/next_map.json
 cp maps/templates/space.json ci_test/data/next_ship.json
 
 cd ci_test
-DreamDaemon ColonialMarinesALPHA.dmb -close -trusted -verbose -params "log-directory=ci"
+DreamDaemon colonialmarines.dmb -close -trusted -verbose -params "log-directory=ci"
 cd ..
 cat ci_test/data/logs/ci/clean_run.lk

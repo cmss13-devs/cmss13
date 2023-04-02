@@ -58,7 +58,7 @@
 	},
 /area/template_noop)
 "s" = (
-/obj/item/weapon/melee/broken_bottle{
+/obj/item/weapon/broken_bottle{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -173,7 +173,7 @@
 	pixel_x = 12;
 	pixel_y = 19
 	},
-/obj/item/weapon/melee/broken_bottle{
+/obj/item/weapon/broken_bottle{
 	pixel_x = 8;
 	pixel_y = 1
 	},

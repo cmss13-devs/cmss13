@@ -58,7 +58,7 @@
 	},
 /obj/item/weapon/gun/revolver/small,
 /obj/item/reagent_container/food/drinks/bottle/rum,
-/obj/effect/landmark/corpsespawner/clown,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "l" = (

@@ -33,6 +33,7 @@
 	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -47,6 +48,9 @@
 
 /obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
+		return
+
+	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
 	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
@@ -919,6 +923,9 @@
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
+
+/obj/structure/machinery/computer/overwatch/almayer/broken
+	name = "Broken Overwatch Console"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

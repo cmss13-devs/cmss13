@@ -68,6 +68,9 @@
 /// Under all objects if opened. 2.85 due to tables being at 2.8
 #define DOOR_OPEN_LAYER 2.85
 
+///For hatches on the floor.
+#define HATCH_LAYER 2.9
+
 #define BELOW_VAN_LAYER 2.98
 
 /// just below all items

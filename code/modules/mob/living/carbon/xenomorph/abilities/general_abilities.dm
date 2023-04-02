@@ -375,6 +375,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_hide
 	action_type = XENO_ACTION_CLICK
+	listen_signal = COMSIG_KB_XENO_HIDE
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
 	var/mob/living/carbon/xenomorph/X = owner
@@ -451,3 +452,14 @@
 	ability_primacy = XENO_TAIL_STAB
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+
+/datum/action/xeno_action/onclick/evolve
+	name = "Evolve"
+	action_icon_state = "evolve"
+	action_type = XENO_ACTION_CLICK
+	listen_signal = COMSIG_KB_XENO_EVOLVE
+
+/datum/action/xeno_action/onclick/evolve/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	xeno.do_evolve()

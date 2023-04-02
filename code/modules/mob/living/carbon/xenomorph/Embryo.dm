@@ -141,6 +141,8 @@
 	if(!affected_mob || is_admin_level(affected_mob.z))
 		return
 
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
 	var/mob/picked
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
 	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
@@ -166,10 +168,11 @@
 	else
 		new_xeno = new(affected_mob)
 
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
 		hive.add_xeno(new_xeno)
+		if(!affected_mob.first_xeno)
+			hive.stored_larva++
+			hive.hive_ui.update_burrowed_larva()
 
 	new_xeno.update_icons()
 
@@ -254,12 +257,12 @@
 			round_statistics.total_larva_burst++
 		burstcount++
 
-		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+		if(!L.ckey && L.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
-			hive.hive_ui.update_pooled_larva()
+			hive.hive_ui.update_burrowed_larva()
 			qdel(L)
 
 		if(!victim.first_xeno)

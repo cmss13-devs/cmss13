@@ -18,6 +18,11 @@
 		return FALSE
 	else
 		if(!T.supports_surgery)
+			if(tool.flags_item & CAN_DIG_SHRAPNEL) //Both shrapnel removal and prosthetic repair shouldn't be affected by being on the dropship.
+				tool.dig_out_shrapnel_check(target, user)
+				return TRUE //Otherwise you get 'poked' by the knife.
+			if(HAS_TRAIT(tool, TRAIT_TOOL_BLOWTORCH) && affecting)
+				return FALSE
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE

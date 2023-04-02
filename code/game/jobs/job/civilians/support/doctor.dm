@@ -32,4 +32,5 @@ AddTimelock(/datum/job/civilian/doctor, list(
 
 /obj/effect/landmark/start/doctor
 	name = JOB_DOCTOR
+	icon_state = "doc_spawn"
 	job = /datum/job/civilian/doctor

@@ -36,11 +36,11 @@
 /obj/item/ammo_magazine/rifle/grenadespawner
 	name = "\improper GRENADE SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
-	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/grenade_container/rifle
+	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/huggerspawner
 	name = "\improper HUGGER SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
-	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/hugger_container
+	ammo_band_color = AMMO_BAND_COLOR_SUPER

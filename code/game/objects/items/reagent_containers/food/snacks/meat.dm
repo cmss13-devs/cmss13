@@ -68,13 +68,13 @@
 	desc = "Delicious crab meat still attached to bits of shell."
 	icon_state = "crab_meat_2"
 
-/obj/item/reagent_container/food/snack/meat/fish/squid
+/obj/item/reagent_container/food/snacks/meat/fish/squid
 	name = "squid meat"
 	desc = "Mmm, calimari."
 	icon_state = "squid_meat"
 
 
-/obj/item/reagent_container/food/snack/meat/fish/squid/alt
+/obj/item/reagent_container/food/snacks/meat/fish/squid/alt
 	name = "sock squid meat"
 	desc = "Pink squishy meat from a squid or squid like creature. You're no marine biologist."
 	icon_state = "squid_meat_2"

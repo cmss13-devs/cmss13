@@ -1,3 +1,5 @@
+#define HIJACK_EXPLOSION_COUNT 5
+
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
 	config_tag = "Distress Signal"
@@ -160,6 +162,9 @@
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
+	if(is_in_endgame)
+		check_hijack_explosions()
+
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
@@ -221,6 +226,33 @@
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
 			next_stat_check = world.time + 10 MINUTES
 
+/**
+ * Primes and fires off the explodey-pipes during hijack.
+ */
+/datum/game_mode/colonialmarines/proc/check_hijack_explosions()
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_BARRAGE))
+		return
+
+	var/list/shortly_exploding_pipes = list()
+	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
+		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
+
+	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)
+		exploding_pipe.warning_explode(5 SECONDS)
+
+	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
+
+/**
+ * Makes the mainship shake, along with playing a klaxon sound effect.
+ */
+/datum/game_mode/colonialmarines/proc/shake_ship()
+	for(var/mob/current_mob in GLOB.living_mob_list)
+		if(!is_mainship_level(current_mob.z))
+			continue
+		shake_camera(current_mob, 3, 1)
+
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
@@ -508,3 +540,5 @@
 	for(var/datum/http_request/request in requests)
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
+
+#undef HIJACK_EXPLOSION_COUNT

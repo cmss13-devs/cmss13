@@ -220,7 +220,7 @@
 /obj/item/clothing/under/serviceoveralls
 	name = "Workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."
-	icon_state = "mechanic_s"
+	icon_state = "mechanic"
 
 /obj/item/clothing/under/suit_jacket/director
 	name = "director's suit"

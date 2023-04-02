@@ -183,9 +183,9 @@
 	prefs.toggles_flashing ^= FLASH_POOLSPAWN
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a pooled larva."))
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a burrowed larva."))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a pooled larva."))
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a burrowed larva."))
 
 
 /client/verb/toggle_adminpm_flash()

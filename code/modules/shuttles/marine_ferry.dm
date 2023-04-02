@@ -494,7 +494,7 @@
 				break
 		sleep(1)
 
-	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list))
 		if(affected_mob.z != T_trg.z)
 			continue
 		if(affected_mob.buckled)

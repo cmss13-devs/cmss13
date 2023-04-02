@@ -120,7 +120,6 @@
 		M.current.close_spawn_windows()
 
 	for(var/datum/hive_status/hive in hive_spots)
-		new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos
 		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
@@ -183,7 +182,7 @@
 			if(world.time > round_time_larva_interval)
 				for(var/hive in hives)
 					GLOB.hive_datum[hive].stored_larva++
-					GLOB.hive_datum[hive].hive_ui.update_pooled_larva()
+					GLOB.hive_datum[hive].hive_ui.update_burrowed_larva()
 
 				round_time_larva_interval = world.time + hive_larva_interval_gain
 

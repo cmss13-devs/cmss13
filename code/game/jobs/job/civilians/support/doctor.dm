@@ -15,13 +15,27 @@
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
-	entry_message_body = "You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."
+	//entry_message_body = "You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."
 
 	job_options = list(DOCTOR_VARIANT, SURGEON_VARIANT)
 	/// If this job is a military variant of the reporter role
-	//var/military = FALSE
+	//var/doctor = TRUE
 
+/*
+/datum/job/civilian/reporter/handle_job_options(option)
+	if(option != CIVILIAN_VARIANT)
+		gear_preset = /datum/equipment_preset/uscm_ship/reporter_uscm
+		military = TRUE
+	else
+		gear_preset = initial(gear_preset)
+		military = initial(military)
+*/
 
+/datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
+	if(option==DOCTOR_VARIANT)
+		. = {You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+	else
+		. = {You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are an expert in all the surgeries but you are also very capable when it comes to medicaticate and treat your patients. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 
 
 /datum/job/civilian/doctor/set_spawn_positions(count)

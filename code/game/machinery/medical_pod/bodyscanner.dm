@@ -390,6 +390,9 @@
 	if(occ["sdisabilities"] & NEARSIGHTED)
 		dat += SET_CLASS("Retinal misalignment detected.", INTERFACE_RED)
 		dat += "<BR>"
+	if(connected.occupant.has_brain_worms())
+		dat += SET_CLASS("Cranial anomoly detected.", INTERFACE_RED)
+		dat += "<BR>"
 
 	dat += "</body></html>"
 	return dat

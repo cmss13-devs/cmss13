@@ -497,7 +497,7 @@
 	if(player_2)
 		if(player_2.controlling)
 			player_2.detach()
-			to_chat(src, SPAN_HIGHDANGER("You relinquish the unknown chemical overwhelms you!"))
+			to_chat(src, SPAN_HIGHDANGER("You relinquish control as the unknown chemical overwhelms you!"))
 
 		player_2.leave_host()
 		to_chat(src, SPAN_HIGHDANGER("The overwhelming flow of powerful chemicals forces you to flee your host!"))

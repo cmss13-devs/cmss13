@@ -624,6 +624,8 @@
 		moblist.Add(M)
 	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/living/carbon/cortical_borer/M in sortmob)
+		moblist.Add(M)
 	for(var/mob/dead/observer/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/new_player/M in sortmob)

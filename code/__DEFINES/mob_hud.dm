@@ -25,6 +25,7 @@
 #define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
 #define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
+#define STATUS_HUD_BRAINWORM "27" //Displays infested HUD for brainworms.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -44,6 +45,7 @@
 #define MOB_HUD_FACTION_PMC 15
 #define MOB_HUD_HUNTER 16
 #define MOB_HUD_HUNTER_CLAN 17
+#define MOB_HUD_BRAINWORM 18
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

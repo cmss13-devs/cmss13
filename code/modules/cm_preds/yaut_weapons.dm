@@ -597,7 +597,7 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
-/obj/item/weapon/melee/twohanded/yautja/glaive/alt
+/obj/item/weapon/twohanded/yautja/glaive/alt
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
 

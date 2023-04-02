@@ -53,7 +53,7 @@
 	desc = "A small, quivering sluglike creature."
 	speak_emote = list("chirrups")
 	icon = 'icons/mob/brainslug.dmi'
-	icon_state = "brainslug"
+	icon_state = "Borer"
 	speed = 0
 	a_intent = INTENT_HARM
 	status_flags = CANPUSH
@@ -70,6 +70,7 @@
 	holder_type = /obj/item/holder/borer
 
 	var/generation = 1
+	var/stealthy = FALSE
 	var/static/list/borer_names = list(
 			"Primary", "Secondary", "Tertiary", "Quaternary", "Quinary", "Senary",
 			"Septenary", "Octonary", "Novenary", "Decenary", "Undenary", "Duodenary",
@@ -93,25 +94,55 @@
 	var/leaving = FALSE
 	var/hiding = FALSE
 	var/can_reproduce = FALSE				// Locked to manual override to prevent things getting out of hand.
-	var/infect_hunter = FALSE				// Locked for normal use.
+
+	var/infect_humans = TRUE				// Locked for normal use.
+	var/infect_xenos = FALSE
+	var/infect_yautja = FALSE
 
 	var/list/datum/reagent/synthesized_chems
 
-	/// All of these surely have a better way of being handled.
-	var/datum/action/innate/borer/talk_to_host/action_talk_to_host = new
-	var/datum/action/innate/borer/infest_host/action_infest_host = new
-	var/datum/action/innate/borer/toggle_hide/action_toggle_hide = new
-	var/datum/action/innate/borer/talk_to_borer/action_talk_to_borer = new
-	var/datum/action/innate/borer/talk_to_brain/action_talk_to_brain = new
-	var/datum/action/innate/borer/take_control/action_take_control = new
-	var/datum/action/innate/borer/give_back_control/action_give_back_control = new
-	var/datum/action/innate/borer/leave_body/action_leave_body = new
-	var/datum/action/innate/borer/make_chems/action_make_chems = new
-	var/datum/action/innate/borer/make_larvae/action_make_larvae = new
-	var/datum/action/innate/borer/freeze_victim/action_freeze_victim = new
-	var/datum/action/innate/borer/torment/action_torment = new
-	var/datum/action/innate/borer/scan_chems/action_scan_chems = new
-	var/datum/action/innate/borer/hibernate/action_hibernate = new
+	var/current_actions = ACTION_SET_HOSTLESS
+	var/list/actions_hostless = list(
+		/datum/action/innate/borer/toggle_hide,
+		/datum/action/innate/borer/freeze_victim,
+		/datum/action/innate/borer/infest_host
+	)
+	var/list/actions_humanoidhost = list(
+		/datum/action/innate/borer/take_control,
+		/datum/action/innate/borer/talk_to_host,
+		/datum/action/innate/borer/leave_body,
+		/datum/action/innate/borer/hibernate,
+		/datum/action/innate/borer/scan_chems,
+		/datum/action/innate/borer/make_chems
+	)
+	var/list/actions_xenohost = list(
+		/datum/action/innate/borer/take_control,
+		/datum/action/innate/borer/talk_to_host,
+		/datum/action/innate/borer/leave_body,
+		/datum/action/innate/borer/hibernate
+	)
+	var/list/actions_control = list(
+		/datum/action/innate/borer/give_back_control,
+		/datum/action/innate/borer/make_larvae,
+		/datum/action/innate/borer/talk_to_brain,
+		/datum/action/innate/borer/torment
+	)
+
+//################### INIT & LIFE ###################//
+/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0)
+	..(newloc)
+	SSmob.living_misc_mobs += src
+	generation = gen
+	add_language(LANGUAGE_BORER)
+	var/mob_number = rand(1000,9999)
+	real_name = "Cortical Borer [mob_number]"
+	truename = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
+	can_reproduce = reproduction
+	give_new_actions(ACTION_SET_HOSTLESS)
+	//GrantBorerActions()
+	GiveBorerHUD()
+	if((!is_admin_level(z)) && ERT)
+		summon()
 
 /mob/living/carbon/cortical_borer/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -119,9 +150,59 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
+/mob/living/carbon/cortical_borer/initialize_pain()
+	pain = new /datum/pain/zombie(src)
+/mob/living/carbon/cortical_borer/initialize_stamina()
+	stamina = new /datum/stamina/none(src)
+
+/mob/living/carbon/cortical_borer/updatehealth()
+	if(status_flags & GODMODE)
+		health = maxHealth
+		set_stat(CONSCIOUS)
+	else
+		health = maxHealth - getFireLoss() - getBruteLoss() - getToxLoss() //Borer can only take brute, fire and tox damage.
+
+	if(stat != DEAD && !gibbing)
+		if(health <= -50) //dead
+			death(last_damage_data)
+			return
+		else if(health <= 0) //in crit
+			handle_crit()
+
+/mob/living/carbon/cortical_borer/proc/handle_crit()
+	if(stat == DEAD || gibbing)
+		return
+
+	sound_environment_override = SOUND_ENVIRONMENT_NONE
+	set_stat(UNCONSCIOUS)
+	blinded = TRUE
+	if(layer != initial(layer)) //Unhide
+		layer = initial(layer)
+	recalculate_move_delay = TRUE
+	if(!lying)
+		update_canmove()
+	update_icons()
+
+/mob/living/carbon/cortical_borer/death()
+	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
+	c_link.broadcast(src, null, src.truename, TRUE)
+	SSmob.living_misc_mobs -= src
+	. = ..()
+
+/mob/living/carbon/cortical_borer/rejuvenate()
+	..()
+	update_icons()
+	update_canmove()
+	SSmob.living_misc_mobs |= src
+
+/mob/living/carbon/cortical_borer/Destroy()
+	SSmob.living_misc_mobs -= src
+	return ..()
+//###################################################//
+
 /mob/living/carbon/cortical_borer/proc/summon()
 	var/datum/emergency_call/custom/em_call = new()
-	em_call.name = "Cortical Borer"
+	em_call.name = real_name
 	em_call.mob_max = 1
 	em_call.players_to_offer = list(src)
 	em_call.owner = null
@@ -131,24 +212,6 @@
 	em_call.activate(announce = FALSE)
 
 	message_admins("A new Cortical Borer has spawned at [get_area(loc)]")
-
-/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0)
-	..(newloc)
-	generation = gen
-	add_language(LANGUAGE_BORER)
-	var/mob_number = rand(1000,9999)
-	real_name = "Cortical Borer [mob_number]"
-	truename = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
-	can_reproduce = reproduction
-	GrantBorerActions()
-	GiveBorerHUD()
-	if((!is_admin_level(z)) && ERT)
-		summon()
-
-/mob/living/carbon/cortical_borer/death()
-	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
-	c_link.broadcast(src, null, null, TRUE)
-	. = ..()
 
 /mob/living/carbon/cortical_borer/update_icons()
 	if(stat == DEAD)
@@ -163,7 +226,7 @@
 		icon_state = "Borer"
 
 /mob/living/carbon/cortical_borer/proc/GiveBorerHUD()
-	var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
+	var/datum/mob_hud/H = huds[MOB_HUD_BRAINWORM]
 	H.add_hud_to(src)
 
 /mob/living/carbon/cortical_borer/can_ventcrawl()
@@ -213,14 +276,16 @@
 
 /mob/living/carbon/cortical_borer/Life(delta_time)
 	..()
+	update_canmove()
+	update_icons()
 	if(host)
 		if(!stat && host.stat != DEAD)
 			if(((host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !host.reagents.has_reagent("benzyme")) || host.reagents.has_reagent("bcure"))
 				if(!docile)
 					if(controlling)
-						to_chat(host, SPAN_XENODANGER("You feel the soporific flow of a chemical in your host's blood, lulling you into docility."))
+						to_chat(host, SPAN_XENODANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
 					else
-						to_chat(src, SPAN_XENODANGER("You feel the soporific flow of a chemical in your host's blood, lulling you into docility."))
+						to_chat(src, SPAN_XENODANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
 					docile = TRUE
 			else
 				if(docile)
@@ -248,9 +313,6 @@
 			contaminant = max(contaminant - 0.3, 0)
 		else
 			SetLuminosity(0)
-
-	update_canmove()
-	update_icons()
 /datum/action/innate/borer
 	icon_file = 'icons/mob/hud/actions_borer.dmi'
 

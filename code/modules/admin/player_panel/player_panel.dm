@@ -201,6 +201,8 @@
 					M_job = "Monkey"
 				else if(isxeno(M))
 					M_job = "Alien"
+				else if(isborer(M))
+					M_job = "Brainslug"
 				else
 					M_job = "Carbon-based"
 			else if(isSilicon(M)) //silicon

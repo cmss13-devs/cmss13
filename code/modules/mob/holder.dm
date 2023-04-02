@@ -119,5 +119,5 @@
 /obj/item/holder/borer
 	name = "cortical borer"
 	desc = "Gross..."
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "brainslug_dead"
+	icon = 'icons/mob/brainslug.dmi'
+	icon_state = "Borer Dead"

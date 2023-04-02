@@ -39,13 +39,14 @@
 	var/mob/living/carbon/cortical_borer/B = loc
 	if(!istype(B))
 		log_debug(EXCEPTION("Trapped mind found without a borer!"), src)
-		return
+		return FALSE
 
 	to_chat(src, SPAN_DANGER("You begin doggedly resisting the parasite's control (this will take approximately sixty seconds)."))
 	to_chat(B.host, SPAN_XENOWARNING("You feel the captive mind of [src] begin to resist your control."))
 
 	var/delay = (rand(350,450) + B.host.getBrainLoss())
 	addtimer(CALLBACK(src, PROC_REF(return_control), B), delay)
+	return TRUE
 
 /mob/living/carbon/cortical_borer
 	name = "cortical borer"

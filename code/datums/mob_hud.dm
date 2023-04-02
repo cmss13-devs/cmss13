@@ -18,7 +18,8 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
-	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan()
+	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
+	MOB_HUD_BRAINWORM = new /datum/mob_hud/brainworm(),
 	)
 
 /datum/mob_hud
@@ -129,7 +130,7 @@ var/list/datum/mob_hud/huds = list(
 
 //medical hud used by ghosts
 /datum/mob_hud/medical/observer
-	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST)
+	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, STATUS_HUD_BRAINWORM)
 
 
 //infection status that appears on humans, viewed by xenos only and observers.
@@ -151,6 +152,8 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/hunter_hud
 	hud_icons = list(HUNTER_HUD)
 
+/datum/mob_hud/brainworm
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, STATUS_HUD_BRAINWORM)
 //Security
 
 /datum/mob_hud/security
@@ -207,7 +210,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
-		if(!istype(hud, /datum/mob_hud/xeno))
+		if(!istype(hud, /datum/mob_hud/xeno) && !istype(hud, /datum/mob_hud/brainworm))
 			continue
 		hud.add_to_hud(src)
 
@@ -230,7 +233,7 @@ var/list/datum/mob_hud/huds = list(
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection))
+		else if (istype(hud, /datum/mob_hud/xeno_infection) || istype(hud, /datum/mob_hud/brainworm))
 			hud.remove_hud_from(src)
 
 
@@ -263,6 +266,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/xenomorph/med_hud_set_health()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
+	var/image/holder2 = hud_list[STATUS_HUD_BRAINWORM]
 
 	var/health_hud_type = "xenohealth"
 	if(stat == DEAD)
@@ -277,6 +281,13 @@ var/list/datum/mob_hud/huds = list(
 		if(!amount)
 			amount = -1 //don't want the 'zero health' icon when we are crit
 		holder.icon_state = "[health_hud_type][amount]"
+
+	holder2.icon_state = null
+	if(has_brain_worms())
+		holder2.icon_state = "hudbrainwormhost"
+		holder2.pixel_x = 9
+		holder2.pixel_y = -8
+
 
 /mob/living/carbon/xenomorph/proc/overlay_shields()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
@@ -340,10 +351,12 @@ var/list/datum/mob_hud/huds = list(
 	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
+	var/image/holder5 = hud_list[STATUS_HUD_BRAINWORM]
 
 	holder2.color = null
 	holder3.color = null
 	holder4.color = null
+	holder5.color = null
 
 	holder4.icon_state = "hudblank"
 
@@ -447,11 +460,14 @@ var/list/datum/mob_hud/huds = list(
 			return
 
 		var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-		if(B && B.controlling)
-			holder.icon_state = "hudbrainworm"
-			if(!holder2_set)
-				holder2.icon_state = "hudbrainworm"
-			return
+		holder5.icon_state = null
+		if(B)
+			holder5.icon_state = "hudbrainwormhost"
+			if(B.controlling)
+				holder.icon_state = "hudbrainworm"
+				if(!holder2_set)
+					holder2.icon_state = "hudbrainworm"
+				return
 
 		for(var/datum/disease/D in viruses)
 			if(!D.hidden[SCANNER])

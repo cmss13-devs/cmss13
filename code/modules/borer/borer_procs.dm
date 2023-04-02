@@ -1,6 +1,9 @@
 //############# Physical Interaction Procs #############
 /mob/living/carbon/cortical_borer/UnarmedAttack(atom/A)
-	A.attack_borer(src)
+	if(istype(A, /obj/structure/ladder))
+		A.attack_hand(src)
+	else
+		A.attack_borer(src)
 
 /atom/proc/attack_borer(mob/living/carbon/cortical_borer/user)
 	return
@@ -42,43 +45,47 @@
 	forceMove(S.loc)
 
 //############# Action Give/Take Procs #############
-/mob/living/carbon/cortical_borer/proc/GrantBorerActions()
-	action_infest_host.give_to(src)
-	action_toggle_hide.give_to(src)
-	action_freeze_victim.give_to(src)
+/mob/living/carbon/cortical_borer/proc/give_new_actions(actions_list = ACTION_SET_HOSTLESS, target = src)
+	for(var/datum/action/innate/borer/action in actions)
+		action.hide_from(target)
 
-/mob/living/carbon/cortical_borer/proc/RemoveBorerActions()
-	action_infest_host.remove_from(src)
-	action_toggle_hide.remove_from(src)
-	action_freeze_victim.remove_from(src)
+	if(host && current_actions == ACTION_SET_CONTROL)
+		for(var/datum/action/innate/borer/action in host.actions)
+			action.hide_from(host)
 
-/mob/living/carbon/cortical_borer/proc/GrantInfestActions()
-	action_talk_to_host.give_to(src)
-	action_leave_body.give_to(src)
-	action_take_control.give_to(src)
-	action_make_chems.give_to(src)
-	action_scan_chems.give_to(src)
-	action_hibernate.give_to(src)
+	var/list/abilities_to_give
+	switch(actions_list)
+		if(ACTION_SET_HOSTLESS)
+			abilities_to_give = actions_hostless.Copy()
+			if(host)
+				for(var/datum/action/innate/borer/action in host.actions)
+					action.hide_from(host)
+		if(ACTION_SET_HUMANOID)
+			abilities_to_give = actions_humanoidhost.Copy()
+		if(ACTION_SET_XENO)
+			abilities_to_give = actions_xenohost.Copy()
+		if(ACTION_SET_CONTROL)
+			if(!host)
+				return FALSE
+			abilities_to_give = actions_control.Copy()
+			target = host
 
-/mob/living/carbon/cortical_borer/proc/RemoveInfestActions()
-	action_talk_to_host.remove_from(src)
-	action_take_control.remove_from(src)
-	action_leave_body.remove_from(src)
-	action_make_chems.remove_from(src)
-	action_scan_chems.remove_from(src)
-	action_hibernate.remove_from(src)
+	for(var/path in abilities_to_give)
+		give_action(target, path)
+	current_actions = actions_list
+	return TRUE
 
-/mob/living/carbon/cortical_borer/proc/GrantControlActions()
-	action_talk_to_brain.give_to(host)
-	action_give_back_control.give_to(host)
-	action_make_larvae.give_to(host)
-	action_torment.give_to(host)
-
-/mob/living/carbon/cortical_borer/proc/RemoveControlActions()
-	action_talk_to_brain.remove_from(host)
-	action_make_larvae.remove_from(host)
-	action_give_back_control.remove_from(host)
-	action_torment.remove_from(host)
+/mob/living/carbon/cortical_borer/proc/get_host_actions()
+	if(!host)
+		return FALSE
+	if(ishuman(host))
+		give_new_actions(ACTION_SET_HUMANOID)
+	else if(isxeno(host))
+		give_new_actions(ACTION_SET_XENO)
+	else
+		return FALSE
+	give_action(host, /datum/action/innate/borer/talk_to_borer)
+	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/hibernate()
 	hibernating = !hibernating
@@ -114,15 +121,21 @@
 		to_chat(src, "You cannot infest a target in your current state.")
 		return
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/H in view(1,src))
-		var/obj/limb/head/head = H.get_limb("head")
-		if(head.status & LIMB_ROBOT)
+	for(var/mob/living/carbon/candidate in view(1,src))
+		var/obj/limb/head/head = candidate.get_limb("head")
+		if((isborer(candidate)) || (head?.status & (LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN)))//No infecting synths, or borers.
 			continue
-		if(isspeciesyautja(H) && !infect_hunter)
+		if(ishuman(candidate))
+			var/mob/living/carbon/human/h_candidate = candidate
+			if(isspecieshuman(h_candidate) && !infect_humans)//Can it infect humans? Normally, yes.
+				continue
+			else if(isspeciesyautja(h_candidate) && !infect_yautja)//Can it infect yautja? Normally, no.
+				continue
+		if(isxeno(candidate) && !infect_xenos)//Can it infect xenos? Normally, no.
 			continue
-		if(H.stat != DEAD && Adjacent(H) && !H.has_brain_worms())
-			choices += H
-	var/mob/living/carbon/human/target = tgui_input_list(src, "Who do you wish to infest?", "Targets", choices)
+		if(candidate.stat != DEAD && Adjacent(candidate) && !candidate.has_brain_worms())
+			choices += candidate
+	var/mob/living/carbon/target = tgui_input_list(src, "Who do you wish to infest?", "Targets", choices)
 	if(!target || !src)
 		return
 	if(!Adjacent(target))
@@ -146,10 +159,8 @@
 		return
 	if(target in view(1, src))
 		to_chat(src, SPAN_NOTICE("You wiggle into [target]'s ear."))
-		/*
-		if(!target.stat)
-			to_chat(target, "Something disgusting and slimy wiggles into your ear!")
-		*/ // Let's see how stealthborers work out
+		if(!stealthy && !target.stat)
+			to_chat(target, SPAN_DANGER("Something disgusting and slimy wiggles into your ear!"))
 		perform_infestation(target)
 		return
 	else
@@ -168,8 +179,7 @@
 	forceMove(target)
 	host.status_flags |= PASSEMOTES
 	host.verbs += /mob/living/proc/borer_comm
-	RemoveBorerActions()
-	GrantInfestActions()
+	get_host_actions()
 
 
 //Brainslug abandons the host
@@ -217,16 +227,16 @@
 		return
 	if(controlling)
 		detach()
-	GrantBorerActions()
-	RemoveInfestActions()
-	forceMove(get_turf(host))
+	give_new_actions(ACTION_SET_HOSTLESS)
 
+	forceMove(get_turf(host))
+	apply_effect(1, STUN)
+
+	log_interact(src, host, "Borer: [key_name(src)] left their host; [key_name(host)]")
 	host.reset_view(null)
 
 	var/mob/living/carbon/H = host
 	H.borer = null
-	H.verbs -= /mob/living/proc/borer_comm
-	action_talk_to_borer.remove_from(host)
 	H.status_flags &= ~PASSEMOTES
 	host = null
 	return
@@ -319,14 +329,7 @@
 		bonding = FALSE
 		controlling = TRUE
 
-		host.verbs += /mob/living/carbon/proc/release_control
-		host.verbs += /mob/living/carbon/proc/punish_host
-		host.verbs += /mob/living/carbon/proc/spawn_larvae
-		host.verbs -= /mob/living/proc/borer_comm
-		host.verbs += /mob/living/proc/trapped_mind_comm
-
-		GrantControlActions()
-		action_talk_to_borer.remove_from(host)
+		give_new_actions(ACTION_SET_CONTROL)
 		host.med_hud_set_status()
 
 		if(src && !src.key)
@@ -366,14 +369,7 @@
 	controlling = FALSE
 	reset_view(null)
 
-	host.verbs -= /mob/living/carbon/proc/release_control
-	host.verbs -= /mob/living/carbon/proc/punish_host
-	host.verbs -= /mob/living/carbon/proc/spawn_larvae
-	host.verbs += /mob/living/proc/borer_comm
-	host.verbs -= /mob/living/proc/trapped_mind_comm
-
-	RemoveControlActions()
-	action_talk_to_borer.give_to(host)
+	get_host_actions()
 	host.med_hud_set_status()
 	sleeping = 0
 	if(host_brain)
@@ -456,7 +452,7 @@
 		return
 	var/list/choices = list()
 	for(var/mob/living/carbon/C in view(3,src))
-		if((C.stat != DEAD) && !(issynth(C)))
+		if((C != src) && (C.stat != DEAD) && !(issynth(C)))
 			choices += C
 	if(world.time - used_dominate < 300)
 		to_chat(src, SPAN_XENOWARNING("You cannot use that ability again so soon."))
@@ -610,7 +606,6 @@
 			to_chat(host, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			log_say("BORER: ([key_name(src)] to [key_name(host)]) [input]", src)
 			to_chat(src, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
-			action_talk_to_borer.give_to(host)
 			for (var/mob/dead in GLOB.dead_mob_list)
 				var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[host]'>F</a>)"
 				if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping

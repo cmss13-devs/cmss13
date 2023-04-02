@@ -31,6 +31,7 @@ export const HealthScan = (props, context) => {
     implants,
     core_fracture,
     lung_ruptured,
+    brainslug,
     hugged,
     detail_level,
     permadead,
@@ -195,6 +196,7 @@ export const HealthScan = (props, context) => {
             <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
           </LabeledList>
           {internal_bleeding ||
+          (brainslug && bodyscanner) ||
           implants ||
           hugged ||
           core_fracture ||
@@ -221,6 +223,9 @@ export const HealthScan = (props, context) => {
           ) : null}
           {lung_ruptured && bodyscanner ? (
             <NoticeBox danger>Ruptured lung detected!</NoticeBox>
+          ) : null}
+          {brainslug && bodyscanner ? (
+            <NoticeBox danger>Cranial anomaly detected!</NoticeBox>
           ) : null}
           {core_fracture && healthanalyser ? (
             <NoticeBox danger>

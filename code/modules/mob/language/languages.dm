@@ -213,18 +213,16 @@
 	key = "0"
 	flags = RESTRICTED|HIVEMIND
 
-/datum/language/corticalborer/broadcast(mob/living/speaker, message, speaker_mask, death)
+/datum/language/corticalborer/broadcast(mob/living/carbon/speaker, message, speaker_mask, death)
 	var/mob/living/carbon/cortical_borer/B
-	if(!speaker_mask)
-		speaker_mask = speaker
-	if(iscarbon(speaker))
-		var/mob/living/carbon/M = speaker
-		B = M.has_brain_worms()
-	else if(istype(speaker,/mob/living/carbon/cortical_borer))
+	if(isborer(speaker))
 		B = speaker
-
+	else if(speaker.has_brain_worms())
+		B = speaker.has_brain_worms()
 	if(B)
 		speaker_mask = B.truename
+	if(!speaker_mask)
+		speaker_mask = speaker.real_name
 
 	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span>"
 	var/message_body = "<span class='message'>[speech_verb], \"[message]\"</span></span></i>"

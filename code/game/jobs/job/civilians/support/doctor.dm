@@ -24,10 +24,10 @@
 /datum/job/civilian/doctor/handle_job_options(option)
 	if(option != SURGEON_VARIANT)
 
-		var/doctor = TRUE
+		doctor = TRUE
 	else
 
-		var/doctor = FALSE
+		doctor = FALSE
 
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
 	if(doctor)

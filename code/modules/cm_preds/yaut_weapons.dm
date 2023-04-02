@@ -218,7 +218,7 @@
 
 	return
 
-/obj/item/weapon/melee/yautja/scythe/alt
+/obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe_alt"

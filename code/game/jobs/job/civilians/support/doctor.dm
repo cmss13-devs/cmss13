@@ -33,9 +33,9 @@
 
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
 	if(option==DOCTOR_VARIANT)
-		. = {You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 	else
-		. = {You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are an expert in all the surgeries but you are also very capable when it comes to medicaticate and treat your patients. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are an expert in all the surgeries but you are also very capable when it comes to medicaticate and treat your patients. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 
 
 /datum/job/civilian/doctor/set_spawn_positions(count)

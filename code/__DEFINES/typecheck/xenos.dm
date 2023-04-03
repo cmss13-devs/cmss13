@@ -1,6 +1,7 @@
 //Xenomorph Hud Test APOPHIS 22MAY2015
 #define isxeno(A) (istype(A, /mob/living/carbon/xenomorph))
 #define isborer(A) (istype(A, /mob/living/carbon/cortical_borer))
+#define iscaptivemind(A) (istype(A, /mob/living/captive_brain))
 
 #define isxeno_human(A) (isxeno(A) || ishuman(A))
 //ask walter if i should turn into castechecks

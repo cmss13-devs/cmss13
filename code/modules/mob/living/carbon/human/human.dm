@@ -150,7 +150,8 @@
 		. += "Name: [B.truename]"
 		. += "Can Reproduce: [CR]"
 		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
-		. += "Health: P:[round(getBruteLoss())] B:[round(getFireLoss())] T:[round(getToxLoss())]"
+		. += "Health: [B.health]/[B.maxHealth]"
+		. += "Injuries: Brute:[round(B.getBruteLoss())] Burn:[round(B.getFireLoss())] Toxin:[round(B.getToxLoss())]"
 		. += ""
 		. += "Host Brain Damage: [brainloss]/100"
 

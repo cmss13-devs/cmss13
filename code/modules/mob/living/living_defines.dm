@@ -110,3 +110,6 @@
 
 	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
 	var/dead_black_market_value = 0
+
+	/// Used to highlight on follow menu.
+	var/special_mob = FALSE

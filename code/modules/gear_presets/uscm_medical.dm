@@ -125,7 +125,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Surgeon"
+	///change this to change the name on your ID.
+	assignment = JOB_SURGEON
 	rank = JOB_DOCTOR
 	paygrade = "MO1"
 	role_comm_title = "Doc"

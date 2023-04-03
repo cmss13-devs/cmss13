@@ -531,6 +531,17 @@
 	dir = 5
 	},
 /area/kutjevo/interior/oob)
+"aHh" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/auto_doc)
 "aHl" = (
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
@@ -1034,6 +1045,14 @@
 	dir = 8
 	},
 /area/kutjevo/exterior/runoff_river)
+"bxi" = (
+/obj/structure/barricade/metal{
+	dir = 2;
+	health = 150;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "byl" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/window/framed/kutjevo/reinforced/hull,
@@ -1344,6 +1363,10 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/kutjevo/interior/oob)
+"bRa" = (
+/obj/effect/landmark/corpsespawner/colonist/kutjevo/burst,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "bRl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/communications{
@@ -1794,6 +1817,13 @@
 "cAt" = (
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
+"cAH" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 12
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "cAK" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
@@ -3055,6 +3085,13 @@
 "dYB" = (
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_central)
+"dZX" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/complex/med/auto_doc)
 "eaB" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -3661,6 +3698,11 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/telecomm/lz1_south)
 "eIL" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 150;
+	icon_state = "metal_2"
+	},
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 4
 	},
@@ -4760,6 +4802,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "gjK" = (
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/auto_doc)
 "gkU" = (
@@ -4865,6 +4908,10 @@
 	dir = 1
 	},
 /area/kutjevo/interior/complex/med)
+"gsC" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "gtr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -6075,6 +6122,12 @@
 	dir = 8
 	},
 /area/kutjevo/interior/construction)
+"ifJ" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
 "ifT" = (
 /obj/structure/largecrate/random,
 /obj/structure/machinery/light,
@@ -6653,6 +6706,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "jfs" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/shard/shrapnel,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "jfG" = (
@@ -7547,6 +7601,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"ktU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/boltaction,
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "kut" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -9067,6 +9127,14 @@
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/med/operating)
+"mwZ" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 150;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "mxB" = (
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/interior/oob)
@@ -9698,6 +9766,10 @@
 	dir = 8
 	},
 /area/kutjevo/interior/foremans_office)
+"noj" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "nps" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/colors/cyan/tile,
@@ -11472,6 +11544,11 @@
 /area/kutjevo/interior/complex/med/auto_doc)
 "pGO" = (
 /obj/item/storage/briefcase,
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 150;
+	icon_state = "metal_2"
+	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner{
 	dir = 1
 	},
@@ -12034,6 +12111,14 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"qxT" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 150;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "qyD" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/filtration/machine_32x64/indestructible{
@@ -13716,6 +13801,14 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/locks)
+"sOB" = (
+/obj/structure/barricade/metal{
+	dir = 2;
+	health = 150;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "sOF" = (
 /obj/item/stack/sheet/wood{
 	pixel_x = -4
@@ -14027,6 +14120,17 @@
 	},
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
+"tiU" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med/auto_doc)
 "tiW" = (
 /obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -15588,6 +15692,7 @@
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med/auto_doc)
 "vls" = (
@@ -16770,6 +16875,7 @@
 /obj/structure/machinery/power/apc{
 	pixel_x = 25
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "wXd" = (
@@ -31576,12 +31682,12 @@ bEp
 jkR
 vlg
 uRA
-xKb
+aHh
 uHP
+gsC
 iYo
 iYo
-iYo
-uHP
+noj
 aAq
 fJq
 ffv
@@ -31743,8 +31849,8 @@ bEp
 jkR
 hSo
 tob
-xKb
-uHP
+tiU
+noj
 iYo
 iYo
 jfs
@@ -32076,13 +32182,13 @@ bEp
 bEp
 jkR
 sSq
-uRA
+dZX
 xKb
 vuj
 iYo
 iYo
 iYo
-uHP
+sOB
 bVK
 sGs
 snn
@@ -32247,7 +32353,7 @@ tob
 xKb
 sSF
 iYo
-iYo
+gsC
 iYo
 uHP
 koX
@@ -32415,7 +32521,7 @@ sGs
 oDe
 iYo
 iYo
-iYo
+gsC
 uHP
 koX
 iTg
@@ -32583,7 +32689,7 @@ rpB
 iYo
 iYo
 iYo
-uHP
+sOB
 koX
 iTg
 iYo
@@ -32746,11 +32852,11 @@ iYo
 iYo
 iYo
 iYo
+cAH
+ktU
 iYo
-jfs
 iYo
-iYo
-uHP
+sOB
 uKA
 wfO
 uHP
@@ -32916,8 +33022,8 @@ iYo
 iYo
 iYo
 iYo
-iYo
-uHP
+qxT
+mwZ
 sGs
 xSX
 oRE
@@ -33081,9 +33187,9 @@ iYo
 iYo
 iYo
 iYo
-iYo
-iYo
-iYo
+gsC
+bxi
+bRa
 oUM
 sGs
 vNt
@@ -33413,8 +33519,8 @@ ify
 pSK
 ify
 fIm
-yjI
-yjI
+ifJ
+ifJ
 aHl
 gwY
 gwY

@@ -786,6 +786,15 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/research_cells)
+"avM" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/chapel_carpet{
+	dir = 1;
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "avX" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -7453,15 +7462,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/flight_deck)
-"eEn" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/prison/chapel_carpet{
-	dir = 1;
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "eEo" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -12316,11 +12316,8 @@
 	},
 /area/fiorina/station/lowsec)
 "hCS" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/plating/prison,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "hCT" = (
 /obj/item/stack/tile/plasteel,
@@ -18957,23 +18954,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/park)
-"lID" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/flashlight/lamp/candelabra{
-	layer = 3.2;
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/attachable/stock/m16{
-	step_x = -4
-	},
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "lIG" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -19934,10 +19914,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
-"mph" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
-/area/fiorina/station/chapel)
 "mpr" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -21080,12 +21056,6 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/station/lowsec)
-"mXD" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "mXI" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -21684,6 +21654,12 @@
 /obj/effect/landmark/corpsespawner/ua_riot,
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
+"nrr" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "nrI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/plantspray/pests,
@@ -33847,6 +33823,20 @@
 	name = "pool"
 	},
 /area/fiorina/station/park)
+"vhT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 10
+	},
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "viH" = (
 /obj/item/clipboard,
 /turf/open/floor/prison{
@@ -34377,6 +34367,13 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/station/park)
+"vyC" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/chapel)
 "vyF" = (
 /obj/structure/platform{
 	dir = 8
@@ -58233,10 +58230,10 @@ mxR
 nzI
 bis
 bis
-lID
+vhT
 qQA
 uAX
-mXD
+nrr
 efk
 aXk
 dbq
@@ -58445,13 +58442,13 @@ lqq
 geL
 sBA
 dXv
-mph
+hCS
 kNs
 ane
 vvp
 amd
 uGu
-hCS
+vyC
 gPS
 dyB
 mNh
@@ -58868,14 +58865,14 @@ hPY
 lqq
 lqq
 sBA
-eEn
+avM
 jpc
 lNv
 lqq
 qbW
 dOE
 kNs
-mph
+hCS
 agT
 eFD
 uRO
@@ -59086,7 +59083,7 @@ wvH
 xNg
 rFu
 daA
-mXD
+nrr
 dbq
 bis
 bis
@@ -59510,7 +59507,7 @@ bis
 rFu
 clP
 fzO
-mXD
+nrr
 nUy
 aWD
 aGs

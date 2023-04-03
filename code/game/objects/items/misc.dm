@@ -38,7 +38,7 @@
 	item_state = "gift"
 	w_class = SIZE_LARGE
 
-/obj/item/weapon/melee/pole
+/obj/item/weapon/pole
 	name = "wooden pole"
 	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
@@ -48,11 +48,11 @@
 	attack_speed = 1.5 SECONDS
 	var/gripped = FALSE
 
-/obj/item/weapon/melee/pole/get_examine_text(mob/user)
+/obj/item/weapon/pole/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Activate on your hand to grip this tightly. Useful if you have a bad leg.")
 
-/obj/item/weapon/melee/pole/attack_self(mob/living/user)
+/obj/item/weapon/pole/attack_self(mob/living/user)
 	..()
 	if(!gripped)
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
@@ -70,47 +70,47 @@
 		// However, I'm not going to do that. :)
 		gripped = FALSE
 
-/obj/item/weapon/melee/pole/pickup(mob/user, silent)
+/obj/item/weapon/pole/pickup(mob/user, silent)
 	. = ..()
 	gripped = FALSE
 	REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM) // no fucking around with two canes
 	var/component = user.GetComponent(/datum/component/footstep)
 	qdel(component)
 
-/obj/item/weapon/melee/pole/dropped(mob/user)
+/obj/item/weapon/pole/dropped(mob/user)
 	. = ..()
 	gripped = FALSE
 	REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM) // in case their arm is chopped off or something
 	var/component = user.GetComponent(/datum/component/footstep)
 	qdel(component)
 
-/obj/item/weapon/melee/pole/wooden_cane
+/obj/item/weapon/pole/wooden_cane
 	name = "wooden cane"
 	desc = "A bog standard wooden cane with a dark tip."
 	icon_state = "wooden_cane"
 	item_state = "wooden_cane"
 	force = 15
 
-/obj/item/weapon/melee/pole/fancy_cane
+/obj/item/weapon/pole/fancy_cane
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip."
 	icon_state = "fancy_cane"
 	item_state = "fancy_cane"
 	force = 30
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
 	force = 15 // hollow
 	var/obj/item/stored_item
-	var/list/allowed_items = list(/obj/item/weapon/melee, /obj/item/attachable/bayonet)
+	var/list/allowed_items = list(/obj/item/weapon, /obj/item/attachable/bayonet)
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/Destroy()
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/Destroy()
 	if(stored_item)
 		QDEL_NULL(stored_item)
 	. = ..()
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/attack_hand(mob/living/mobber)
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/attack_hand(mob/living/mobber)
 	if(stored_item && src.loc == mobber && !mobber.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(mobber.put_in_active_hand(stored_item))
 			mobber.visible_message(SPAN_DANGER("[mobber] slides [stored_item] out of [src]!"), SPAN_NOTICE("You slide [stored_item] out of [src]."))
@@ -120,13 +120,13 @@
 		return
 	..()
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/update_icon()
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/update_icon()
 	if(stored_item == null)
 		icon_state = initial(icon_state) + "_open"
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/attackby(obj/item/object, mob/living/mobber)
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/attackby(obj/item/object, mob/living/mobber)
 	if(length(allowed_items))
 		for (var/i in allowed_items)
 			if(istype(object, i))
@@ -140,18 +140,18 @@
 				break
 	. = ..()
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/machete
-	stored_item = new /obj/item/weapon/melee/claymore/mercsword/machete
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete
+	stored_item = new /obj/item/weapon/claymore/mercsword/machete
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/ceremonial_sword
-	stored_item = new /obj/item/weapon/melee/claymore/mercsword/ceremonial
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/ceremonial_sword
+	stored_item = new /obj/item/weapon/claymore/mercsword/ceremonial
 
-/obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife/katana
-	stored_item = new /obj/item/weapon/melee/katana
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/katana
+	stored_item = new /obj/item/weapon/katana
 
 // IN SHOTGUNS.DM!!
 
-/*obj/item/weapon/melee/pole/fancy_cane/gun
+/*obj/item/weapon/pole/fancy_cane/gun
 	name = "fancy cane"
 	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
 	force = 15 // hollow

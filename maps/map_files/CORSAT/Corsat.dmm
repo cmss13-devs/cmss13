@@ -16817,7 +16817,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/administration)
 "aUs" = (
-/obj/item/weapon/melee/pole/fancy_cane,
+/obj/item/weapon/pole/fancy_cane,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,

@@ -202,6 +202,7 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,
@@ -372,8 +373,8 @@
 	tools = list(
 		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)

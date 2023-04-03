@@ -55,7 +55,7 @@
 	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. The professor may call for PMC back up if things get out of hand."
 	checked_objective = TRUE
 
-/datum/emergency_call/goon/chem_retrieval/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/goon/chem_retrieval/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

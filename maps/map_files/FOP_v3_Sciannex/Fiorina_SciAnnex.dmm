@@ -269,6 +269,10 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	health = 25000
+	},
 /turf/open/floor/prison/chapel_carpet{
 	dir = 1;
 	icon_state = "doubleside"
@@ -4316,7 +4320,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/security)
 "cCF" = (
-/obj/effect/spawner/random/sentry/midchance,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "cDf" = (
@@ -5798,7 +5802,6 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
 	},
-/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "dyM" = (
@@ -8888,6 +8891,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/chapel_carpet{
 	icon_state = "doubleside"
 	},
@@ -11027,6 +11031,10 @@
 /area/fiorina/tumor/aux_engi)
 "gPS" = (
 /obj/item/stack/rods,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	health = 25000
+	},
 /turf/open/floor/prison/chapel_carpet{
 	dir = 1;
 	icon_state = "doubleside"
@@ -12299,10 +12307,8 @@
 	},
 /area/fiorina/station/lowsec)
 "hCS" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "hCT" = (
 /obj/item/stack/tile/plasteel,
@@ -12344,6 +12350,15 @@
 	icon_state = "wy20"
 	},
 /area/fiorina/station/medbay)
+"hEe" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/chapel_carpet{
+	dir = 1;
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "hEs" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/prison,
@@ -28539,6 +28554,13 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/chapel)
+"rLS" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/chapel)
 "rLT" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/prison{
@@ -31476,6 +31498,12 @@
 /obj/item/tool/candle,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/maintenance)
+"tJd" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "tJe" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -32806,6 +32834,7 @@
 /area/fiorina/station/lowsec)
 "uAX" = (
 /obj/effect/decal/hefa_cult_decals/d32,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/chapel_carpet{
 	icon_state = "doubleside"
 	},
@@ -34573,6 +34602,23 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
+"vFz" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 10
+	},
+/obj/item/attachable/stock/m16{
+	step_x = -4
+	},
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "vFF" = (
 /obj/item/trash/candy,
 /turf/open/floor/prison{
@@ -35707,6 +35753,7 @@
 /area/fiorina/station/security)
 "wvH" = (
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/chapel_carpet{
 	icon_state = "doubleside"
 	},
@@ -36304,6 +36351,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/chapel_carpet{
 	dir = 1;
 	icon_state = "doubleside"
@@ -37877,6 +37925,7 @@
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "2"
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/chapel_carpet{
 	icon_state = "doubleside"
 	},
@@ -57984,7 +58033,7 @@ dje
 bEO
 bEO
 uRO
-hCS
+bEO
 kEE
 bEO
 kEE
@@ -58184,10 +58233,10 @@ mxR
 nzI
 bis
 bis
-dbq
+vFz
 qQA
 uAX
-clP
+tJd
 efk
 aXk
 dbq
@@ -58396,13 +58445,13 @@ lqq
 geL
 sBA
 dXv
-lqq
+hCS
 kNs
 ane
 vvp
 amd
 uGu
-puw
+rLS
 gPS
 dyB
 mNh
@@ -58819,14 +58868,14 @@ hPY
 lqq
 lqq
 sBA
-jjW
+hEe
 jpc
 lNv
 lqq
 qbW
 dOE
 kNs
-lqq
+hCS
 agT
 eFD
 uRO
@@ -59037,7 +59086,7 @@ wvH
 xNg
 rFu
 daA
-clP
+tJd
 dbq
 bis
 bis
@@ -59461,7 +59510,7 @@ bis
 rFu
 clP
 fzO
-clP
+tJd
 nUy
 aWD
 aGs
@@ -59483,7 +59532,7 @@ fXv
 eAy
 jiW
 fXv
-fXv
+hUf
 joz
 lhj
 aVh

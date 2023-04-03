@@ -13,7 +13,7 @@ only see what the cameras could see. Not only this but the cameras could see thr
 With this, the AI controls an "AI Eye" mob, which moves just like a ghost; such as moving through walls and being invisible to players.
 The AI's eye is set to this mob and then we use a system (explained below) to determine what the cameras around the AI Eye can and
 cannot see. If the camera cannot see a turf, it will black it out, otherwise it won't and the AI will be able to see it.
-This creates several features, such as.. no more see-through-wall cameras, easier to control camera movement, easier tracking,
+This creates several features, such as... no more see-through-wall cameras, easier to control camera movement, easier tracking,
 the AI only being able to track mobs which are visible to a camera, only trackable mobs appearing on the mob list and many more.
 
 

@@ -31,6 +31,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	var/year_string = time2text(world.realtime, "YYYY")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+	tgui_diary = file("data/logs/[date_string]_tgui.log")
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
@@ -47,8 +48,14 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
 	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+		backfill_runtime_log()
+
+	#ifdef UNIT_TESTS
+	GLOB.test_log = "data/logs/tests.log"
+	#endif
 
 	load_admins()
 	jobban_loadbanfile()
@@ -63,10 +70,13 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
+	#ifdef UNIT_TESTS
+	running_tests = TRUE
+	#endif
 	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
 	sleep_offline = (!running_tests && !testing_locally)
 
@@ -76,10 +86,17 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
 
+	initiate_minimap_icons()
+
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
+
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
+
 	update_status()
 
 	//Scramble the coords obsfucator
@@ -90,28 +107,10 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
 
-	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
-	if(running_tests)
-		test_executor.host_tests()
-
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
 		master_mode = "extended"
-
-		// If a test environment was specified, initialize it
-		if(fexists("test_environment.txt"))
-			var/test_environment = file2text("test_environment.txt")
-
-			var/env_type = null
-			for(var/type in subtypesof(/datum/test_environment))
-				if("[type]" == test_environment)
-					env_type = type
-					break
-
-			if(env_type)
-				var/datum/test_environment/env = new env_type()
-				env.initialize()
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
@@ -199,7 +198,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
 		return dat
 
-/world/Reboot(var/reason)
+/world/Reboot(reason)
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -210,6 +209,11 @@ var/world_topic_spam_protect_time = world.timeofday
 		C?.tgui_panel?.send_roundrestart()
 		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
+
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 	if(TgsAvailable())
 		send_tgs_restart()
@@ -246,7 +250,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			master_mode = Lines[1]
 			log_misc("Saved mode is '[master_mode]'")
 
-/world/proc/save_mode(var/the_mode)
+/world/proc/save_mode(the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
@@ -302,7 +306,7 @@ var/datum/BSQL_Connection/connection
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
-/proc/give_image_to_client(var/obj/O, icon_text)
+/proc/give_image_to_client(obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)
@@ -352,3 +356,43 @@ var/datum/BSQL_Connection/connection
 	var/init = LIBCALL(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.request_start()
+	CONFIG_SET(number/round_end_countdown, 0)
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests))
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
+
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(!GLOB)
+		fail_reasons = list("Missing GLOB!")
+	else if(total_runtimes)
+		fail_reasons = list("Total runtimes: [total_runtimes]")
+#ifdef UNIT_TESTS
+	if(GLOB.failed_any_test)
+		LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+	if(!fail_reasons)
+		text2file("Success!", "data/logs/ci/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down
+
+
+/world/proc/backfill_runtime_log()
+	if(length(full_init_runtimes))
+		world.log << "========= EARLY RUNTIME ERRORS ========"
+		for(var/line in full_init_runtimes)
+			world.log << line
+		world.log << "======================================="
+		world.log << ""

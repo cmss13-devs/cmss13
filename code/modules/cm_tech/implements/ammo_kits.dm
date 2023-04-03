@@ -57,6 +57,7 @@
 	. = ..()
 	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/incendiary
 	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/incendiary
+	.[/obj/item/ammo_magazine/rifle/m4ra] = /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/incendiary
 	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/incendiary
@@ -81,7 +82,7 @@
 	name = "incendiary buckshot kit"
 	desc = "A box containing 5 handfuls of incendiary buckshot."
 	can_hold = list(
-		/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
+		/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary,
 	)
 	to_hold = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
@@ -90,42 +91,27 @@
 	desc = "A box containing 5 handfuls of incendiary slugs."
 	icon_state = "incenslug"
 	can_hold = list(
-		/obj/item/ammo_magazine/handful/shotgun/incendiary
+		/obj/item/ammo_magazine/handful/shotgun/incendiary,
 	)
 	to_hold = /obj/item/ammo_magazine/handful/shotgun/incendiary
 
 //unused due to thermal/wallpìercing combo
 /obj/item/ammo_kit/penetrating
-	name = "wall-piercing ammo kit"
+	name = "wall-penetrating ammo kit"
 	icon_state = "kit_penetrating"
-	desc = "Converts magazines into wall-piercing ammo."
+	desc = "Converts magazines into wall-penetrating ammo."
 
 /obj/item/ammo_kit/penetrating/get_convert_map()
 	. = ..()
 	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/penetrating
 	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/penetrating
+	.[/obj/item/ammo_magazine/rifle/m4ra] = /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/penetrating
 	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/penetrating
 	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/penetrating
 	.[/obj/item/ammo_magazine/pistol/vp78] =  /obj/item/ammo_magazine/pistol/vp78/penetrating
 	.[/obj/item/ammo_magazine/pistol/mod88] =  /obj/item/ammo_magazine/pistol/mod88/penetrating
 	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/penetrating
-
-/obj/item/ammo_kit/cluster
-	name = "cluster ammo kit"
-	icon_state = "kit_cluster"
-	desc = "Converts magazines into cluster-hit ammo. The ammo will stack up cluster micro-missiles inside the target, detonating them at a certain threshold."
-
-/obj/item/ammo_kit/cluster/get_convert_map()
-	. = ..()
-	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/cluster
-	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/cluster
-	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/cluster
-	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/cluster
-	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/cluster
-	.[/obj/item/ammo_magazine/pistol/vp78] =  /obj/item/ammo_magazine/pistol/vp78/cluster
-	.[/obj/item/ammo_magazine/pistol/mod88] =  /obj/item/ammo_magazine/pistol/mod88/cluster
-	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/cluster
 
 /obj/item/ammo_kit/toxin
 	name = "toxin ammo kit"

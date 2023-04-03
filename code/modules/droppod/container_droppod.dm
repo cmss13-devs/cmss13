@@ -54,7 +54,7 @@
 	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 	indestructible = FALSE
 
-/obj/structure/droppod/container/warn_turf(var/turf/T)
+/obj/structure/droppod/container/warn_turf(turf/T)
 	if(!stealth)
 		return ..()
 
@@ -72,7 +72,7 @@
 /obj/structure/droppod/container/attackby(obj/item/W, mob/user)
 	if(droppod_flags & DROPPOD_OPEN)
 		if(istype(W, /obj/item/grab))
-			if(isXeno(user)) return
+			if(isxeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
@@ -97,7 +97,7 @@
 		dropoff_point = null
 
 
-/obj/structure/droppod/container/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/droppod/container/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!(droppod_flags & DROPPOD_DROPPED) || !can_be_opened || (droppod_flags & DROPPOD_OPEN))
 		return
 
@@ -128,7 +128,7 @@
 		collect_objects(loc.contents)
 	density = TRUE
 
-/obj/structure/droppod/container/proc/collect_objects(var/list/L)
+/obj/structure/droppod/container/proc/collect_objects(list/L)
 	for(var/atom/movable/A in L)
 		if(A == src)
 			continue

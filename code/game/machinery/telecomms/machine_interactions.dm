@@ -46,7 +46,7 @@
 				to_chat(user, "You secure the external plating.")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op --
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, "You remove the cables.")
 				construct_op ++
@@ -96,10 +96,10 @@
 		new /obj/structure/machinery/constructable_frame(src)
 	return ..()
 
-/obj/structure/machinery/telecomms/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/telecomms/attack_remote(mob/user as mob)
 	attack_hand(user)
 
-/obj/structure/machinery/telecomms/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/telecomms/attack_hand(mob/user as mob)
 
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
@@ -360,7 +360,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/telecomms/proc/canAccess(var/mob/user)
+/obj/structure/machinery/telecomms/proc/canAccess(mob/user)
 	if(isRemoteControlling(user) || in_range(user, src))
 		return 1
 	return 0

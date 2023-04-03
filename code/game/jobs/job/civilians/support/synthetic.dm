@@ -19,7 +19,7 @@
 		"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor
 	)
 
-/datum/job/civilian/synthetic/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/civilian/synthetic/get_whitelist_status(list/roles_whitelist, client/player)
 	. = ..()
 	if(!.)
 		return
@@ -31,10 +31,10 @@
 	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC)
 		return get_desired_status(player.prefs.synth_status, WHITELIST_NORMAL)
 
-/datum/job/civilian/synthetic/set_spawn_positions(var/count)
+/datum/job/civilian/synthetic/set_spawn_positions(count)
 	spawn_positions = synth_slot_formula(count)
 
-/datum/job/civilian/synthetic/get_total_positions(var/latejoin = 0)
+/datum/job/civilian/synthetic/get_total_positions(latejoin = 0)
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = synth_slot_formula(get_total_marines())
@@ -48,4 +48,5 @@
 
 /obj/effect/landmark/start/synthetic
 	name = JOB_SYNTH
+	icon_state = "syn_spawn"
 	job = /datum/job/civilian/synthetic

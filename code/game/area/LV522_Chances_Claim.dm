@@ -4,6 +4,7 @@
 	icon_state = "lv-626"
 	can_build_special = TRUE
 	powernet_name = "ground"
+	minimap_color = MINIMAP_AREA_COLONY
 
 //parent types
 
@@ -34,6 +35,7 @@
 	icon_state = "explored"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
@@ -60,6 +62,7 @@
 	icon_state = "explored"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
@@ -167,10 +170,12 @@
 /area/lv522/indoors/lone_buildings/engineering
 	name = "Emergency Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv522/indoors/lone_buildings/spaceport
 	name = "North LZ1 - Spaceport"
 	icon_state = "red"
+	minimap_color = MINIMAP_AREA_LZ
 
 /area/lv522/indoors/lone_buildings/outdoor_bot
 	name = "East LZ1 - Outdoor T-Comms"
@@ -194,6 +199,7 @@
 /area/lv522/indoors/a_block/admin
 	name = "A-Block - Colony Operations Centre"
 	icon_state = "mechbay"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv522/indoors/a_block/dorms
 	name = "A-Block - Western Dorms And Offices"
@@ -220,6 +226,7 @@
 /area/lv522/indoors/a_block/medical
 	name = "A-Block - Medical"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/lv522/indoors/a_block/medical/glass
 	ceiling = CEILING_GLASS
@@ -227,6 +234,7 @@
 /area/lv522/indoors/a_block/security
 	name = "A-Block - Security"
 	icon_state = "head_quarters"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv522/indoors/a_block/security/glass
 	ceiling = CEILING_GLASS
@@ -305,6 +313,7 @@
 /area/lv522/indoors/b_block/hydro
 	name = "B-Block - Hydroponics"
 	icon_state = "hydro"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv522/indoors/b_block/hydro/glass
 	ceiling = CEILING_GLASS
@@ -385,6 +394,7 @@
 	icon_state = "engineering"
 	ceiling = CEILING_REINFORCED_METAL
 	ambience_exterior = AMBIENCE_SHIP
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv522/atmos/outdoor
 	name = "Atmospheric Processor - Outdoors"

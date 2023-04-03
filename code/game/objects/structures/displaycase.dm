@@ -4,7 +4,7 @@
 	icon_state = "glassbox1"
 	desc = "A display case for prized possessions. It taunts you to kick it."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1
@@ -30,7 +30,7 @@
 		occupied = 0
 	return ..()
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	src.healthcheck()

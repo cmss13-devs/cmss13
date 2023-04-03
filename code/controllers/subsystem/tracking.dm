@@ -48,8 +48,8 @@ SUBSYSTEM_DEF(tracking)
 					human_mob.locate_squad_leader(earpiece.locate_setting)
 				else
 					human_mob.locate_squad_leader()
-			else if(isXeno(current_mob))
-				var/mob/living/carbon/Xenomorph/xeno_mob = current_mob
+			else if(isxeno(current_mob))
+				var/mob/living/carbon/xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
 				if(xeno_mob.tracked_marker)
 					xeno_mob.mark_locator()
@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(tracking)
 				return
 		currentrun -= tracked_group
 
-/datum/controller/subsystem/tracking/proc/start_tracking(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/start_tracking(tracked_group, mob/living/carbon/mob)
 	if(!mob)
 		return FALSE
 	if(mobs_in_processing[mob] == tracked_group)
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(tracking)
 	if(tracked_mobs[tracked_group])
 		tracked_mobs[tracked_group] += mob
 
-/datum/controller/subsystem/tracking/proc/stop_tracking(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/stop_tracking(tracked_group, mob/living/carbon/mob)
 	if(!mobs_in_processing[mob])
 		return TRUE // already removed
 	var/tracking_id = mobs_in_processing[mob]
@@ -81,22 +81,22 @@ SUBSYSTEM_DEF(tracking)
 	if(tracked_mobs[tracking_id])
 		tracked_mobs[tracking_id] -= mob
 
-/datum/controller/subsystem/tracking/proc/start_misc_tracking(var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/start_misc_tracking(mob/living/carbon/mob)
 	misc_tracking_mobs |= mob
 
-/datum/controller/subsystem/tracking/proc/stop_misc_tracking(var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/stop_misc_tracking(mob/living/carbon/mob)
 	misc_tracking_mobs -= mob
 
-/datum/controller/subsystem/tracking/proc/set_leader(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/set_leader(tracked_group, mob/living/carbon/mob)
 	if(leaders[tracked_group])
 		delete_leader(tracked_group)
 
 	leaders[tracked_group] = mob
 
-/datum/controller/subsystem/tracking/proc/delete_leader(var/tracked_group)
+/datum/controller/subsystem/tracking/proc/delete_leader(tracked_group)
 	leaders.Remove(tracked_group)
 
-/datum/controller/subsystem/tracking/proc/setup_trackers(mob/mob, var/tracked_group)
+/datum/controller/subsystem/tracking/proc/setup_trackers(mob/mob, tracked_group)
 	if(!tracked_group)
 		tracked_group = "tracked_[tracked_mobs.len]"
 

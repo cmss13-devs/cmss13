@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -29,7 +29,7 @@
 
 
 /datum/action/xeno_action/activable/acider_acid/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(A, /obj/item) && !istype(A, /obj/structure/) && !istype(A, /obj/vehicle/multitile))
 		to_chat(X, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
@@ -45,7 +45,7 @@
 		X.corrosive_acid(E,acid_type,0)
 	..()
 
-/mob/living/carbon/Xenomorph/Runner/corrosive_acid(atom/O, acid_type, plasma_cost)
+/mob/living/carbon/xenomorph/runner/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if (mutation_type != RUNNER_ACIDER)
 		..(O, acid_type, plasma_cost)
 		return
@@ -147,7 +147,7 @@
 
 
 /datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if(!istype(X))
 		return
@@ -194,7 +194,7 @@
 	X.say(";FOR THE HIVE!!!")
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if(!istype(X))
 		return

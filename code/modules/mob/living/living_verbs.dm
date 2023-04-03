@@ -150,7 +150,7 @@
 			to_chat(src, SPAN_DANGER("You successfully break out!"))
 			for(var/mob/O in viewers(loc))
 				O.show_message(SPAN_DANGER("<B>\the [src] successfully broke out of \the [C]!</B>"), SHOW_MESSAGE_VISIBLE)
-			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect.. read the comment above
+			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect... read the comment above
 				var/obj/structure/bigDelivery/BD = C.loc
 				BD.attack_hand(src)
 			C.open()

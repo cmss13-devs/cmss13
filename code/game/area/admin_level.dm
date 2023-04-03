@@ -100,8 +100,8 @@
 
 /area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
 	. = ..()
-	if(isXeno(A))
-		var/mob/living/carbon/Xenomorph/X = A
+	if(isxeno(A))
+		var/mob/living/carbon/xenomorph/X = A
 
 		X.away_timer = XENO_LEAVE_TIMER
 		X.set_hive_and_update(hivenumber)
@@ -124,3 +124,7 @@
 	icon_state = "green"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+
+/area/misc/testroom
+	requires_power = FALSE
+	name = "Test Room"

@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 
 	var/datum/hive_status/assoc_hive = null
 
-/datum/hive_faction_ui/New(var/datum/hive_status/hive_to_assign)
+/datum/hive_faction_ui/New(datum/hive_status/hive_to_assign)
 	. = ..()
 	assoc_hive = hive_to_assign
 

@@ -4,27 +4,23 @@
 /area/bigredv2/outside/c)
 "ab" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
+	icon_state = "mars_dirt_8"
 	},
 /area/bigredv2/outside/c)
 "ac" = (
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
+	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/c)
 "ad" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
+	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/c)
 "ae" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
+	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/c)
 "af" = (
@@ -33,33 +29,28 @@
 /area/bigredv2/outside/c)
 "ag" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
+	icon_state = "mars_dirt_9"
 	},
 /area/bigredv2/outside/c)
 "ah" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
+	icon_state = "mars_dirt_13"
 	},
 /area/bigredv2/outside/c)
 "ai" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
+	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/outside/c)
 "aj" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
+	icon_state = "mars_dirt_14"
 	},
 /area/bigredv2/outside/c)
 "ak" = (
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/c)
 "al" = (
@@ -145,11 +136,10 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
-	locked = 1;
-	name = "\improper Emergency Vault";
-	req_access = null
+	locked = 0;
+	name = "\improper Emergency Vault"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)
@@ -201,8 +191,7 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/s)
 "aN" = (
@@ -212,8 +201,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/s)
 "aO" = (
@@ -222,35 +210,30 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/s)
 "aP" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
+	icon_state = "mars_dirt_3"
 	},
 /area/bigredv2/outside/s)
 "aQ" = (
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
+	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/s)
 "aR" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/s)
 "aS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/s)
 "aT" = (
@@ -258,40 +241,34 @@
 /area/bigredv2/outside/s)
 "aU" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
+	icon_state = "mars_dirt_11"
 	},
 /area/bigredv2/outside/s)
 "aV" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
+	icon_state = "mars_dirt_9"
 	},
 /area/bigredv2/outside/s)
 "aW" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
+	icon_state = "mars_dirt_8"
 	},
 /area/bigredv2/outside/s)
 "aX" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
+	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/outside/s)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/s)
 "aZ" = (
 /turf/open/mars{
-	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
+	icon_state = "mars_dirt_12"
 	},
 /area/bigredv2/outside/s)
 "ba" = (

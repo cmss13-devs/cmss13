@@ -19,7 +19,7 @@
 	owner.move_turn_momentum_loss_factor = initial(owner.move_turn_momentum_loss_factor)
 	owner.next_move = world.time + move_delay
 
-/obj/item/hardpoint/locomotion/on_install(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/locomotion/on_install(obj/vehicle/multitile/V)
 	if(move_delay)
 		V.move_delay = move_delay
 	if(move_max_momentum)
@@ -30,11 +30,11 @@
 		V.move_turn_momentum_loss_factor = move_turn_momentum_loss_factor
 	owner.next_move = world.time + move_delay
 
-/obj/item/hardpoint/locomotion/on_uninstall(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/locomotion/on_uninstall(obj/vehicle/multitile/V)
 	deactivate()
 
 //unique proc for locomotion modules, taking damage from acid spray and toxic waters and other stuff on ground
-/obj/item/hardpoint/locomotion/proc/handle_acid_damage(var/atom/A)
+/obj/item/hardpoint/locomotion/proc/handle_acid_damage(atom/A)
 	if(health <= 0)
 		return
 	var/take_damage = 0

@@ -18,7 +18,7 @@
 		STAMINA_LEVEL_5 = 0 // 0 - 9
 	)
 
-/datum/stamina/New(var/mob/owner)
+/datum/stamina/New(mob/owner)
 	. = ..()
 
 	if(istype(owner))
@@ -27,10 +27,10 @@
 	else
 		qdel(src)
 
-/datum/stamina/proc/apply_rest_period(var/amount)
+/datum/stamina/proc/apply_rest_period(amount)
 	stamina_rest_period = max(world.time + amount, stamina_rest_period)
 
-/datum/stamina/proc/apply_damage(var/amount = 0)
+/datum/stamina/proc/apply_damage(amount = 0)
 	if(!has_stamina)
 		return
 
@@ -68,7 +68,7 @@
 
 			break
 
-/datum/stamina/proc/activate_stamina_debuff(var/tier)
+/datum/stamina/proc/activate_stamina_debuff(tier)
 	for(var/datum/effects/stamina/prev_S in source_mob.effects_list)
 		qdel(prev_S)
 

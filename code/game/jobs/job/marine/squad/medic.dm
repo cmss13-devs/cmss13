@@ -7,12 +7,12 @@
 	gear_preset = /datum/equipment_preset/uscm/medic
 	entry_message_body = "<a href='"+URL_WIKI_MEDIC_GUIDE+"'>You tend the wounds of your squad mates</a> and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
 
-/datum/job/marine/medic/set_spawn_positions(var/count)
+/datum/job/marine/medic/set_spawn_positions(count)
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
 			sq.max_medics = medic_slot_formula(count)
 
-/datum/job/marine/medic/get_total_positions(var/latejoin=0)
+/datum/job/marine/medic/get_total_positions(latejoin=0)
 	var/slots = medic_slot_formula(get_total_marines())
 
 	if(slots <= total_positions_so_far)

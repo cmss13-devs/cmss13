@@ -5,6 +5,16 @@
     font-size: 2rem;
   }
 
+  .flybyControl {
+    .Section__title {
+      border-bottom: none;
+    }
+    .Section__content {
+      padding: 0;
+      visibility: hidden;
+    }
+  }
+
   .Button {
     font-size: 2rem;
   }

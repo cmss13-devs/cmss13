@@ -4,7 +4,7 @@
 	name = "\improper Jurisdictional Automated System"
 	desc = "A powerful machine produced by Weyland-Yutani to streamline all punishment of prisoners. The best grade policing gear seen on this side of the galaxy."
 	icon_state = "jas"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND)
 	var/datum/crime_incident/incident
 	var/current_menu = "main"
 	var/static/paper_counter = 0
@@ -213,7 +213,7 @@
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	return TRUE
 
-/obj/structure/machinery/computer/sentencing/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/computer/sentencing/attackby(obj/item/O, mob/user)
 	if (istype(O, /obj/item/paper/incident))
 		if (current_menu == "main")
 			var/obj/item/paper/incident/paper = O

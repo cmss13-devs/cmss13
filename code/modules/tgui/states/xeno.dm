@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(hive_state, setup_hive_states())
 	var/hivenumber
 	var/datum/hive_status/hive
 
-/datum/ui_state/hive_state/New(var/hive_to_assign)
+/datum/ui_state/hive_state/New(hive_to_assign)
 	. = ..()
 	hivenumber = hive_to_assign
 	hive = GLOB.hive_datum[hive_to_assign]

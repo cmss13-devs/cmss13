@@ -4,6 +4,7 @@
 	can_build_special = TRUE
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_JUNGLE
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv624/ground
 	name = "Ground"
@@ -11,6 +12,9 @@
 	always_unpowered = 1 //Will this mess things up? God only knows
 
 //Jungle
+/area/lv624/ground/jungle
+	minimap_color = MINIMAP_AREA_JUNGLE
+
 /area/lv624/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
@@ -203,6 +207,7 @@
 	soundscape_interval = 25
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -283,22 +288,27 @@
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/lv624/lazarus/armory
 	name = "\improper Armory"
 	icon_state = "armory"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/security
 	name = "\improper Security"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
 	icon_state = "captain"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"

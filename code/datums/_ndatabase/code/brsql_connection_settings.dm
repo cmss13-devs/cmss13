@@ -28,7 +28,7 @@
 	var/min_threads
 	var/max_threads
 
-/datum/db/connection_settings/brsql/New(var/list/config)
+/datum/db/connection_settings/brsql/New(list/config)
 	..()
 	ipaddress = config["db_address"]
 	port = text2num(config["db_port"])

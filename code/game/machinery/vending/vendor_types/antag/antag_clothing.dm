@@ -13,7 +13,7 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(mob/user)
 	if(!user)
 		var/list/all_equipment = list()
 		var/list/presets = typesof(/datum/equipment_preset)
@@ -43,59 +43,59 @@
 
 /obj/effect/essentials_set/random/clf_shoes
 	spawned_gear_list = list(
-					/obj/item/clothing/shoes/black,
-					/obj/item/clothing/shoes/brown,
-					/obj/item/clothing/shoes/combat,
-					/obj/item/clothing/shoes/laceup,
-					/obj/item/clothing/shoes/leather,
-					/obj/item/clothing/shoes/swat
-					)
+		/obj/item/clothing/shoes/black,
+		/obj/item/clothing/shoes/brown,
+		/obj/item/clothing/shoes/combat,
+		/obj/item/clothing/shoes/laceup,
+		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/swat,
+	)
 
 /obj/effect/essentials_set/random/clf_armor
 	spawned_gear_list = list(
-					/obj/item/clothing/suit/armor/vest,
-					/obj/item/clothing/suit/armor/bulletproof,
-					/obj/item/clothing/suit/storage/militia/brace,
-					/obj/item/clothing/suit/storage/militia,
-					/obj/item/clothing/suit/storage/militia/partial,
-					/obj/item/clothing/suit/storage/militia/vest
-					)
+		/obj/item/clothing/suit/armor/vest,
+		/obj/item/clothing/suit/armor/bulletproof,
+		/obj/item/clothing/suit/storage/militia/brace,
+		/obj/item/clothing/suit/storage/militia,
+		/obj/item/clothing/suit/storage/militia/partial,
+		/obj/item/clothing/suit/storage/militia/vest,
+	)
 
 /obj/effect/essentials_set/random/clf_gloves
 	spawned_gear_list = list(
-					/obj/item/clothing/gloves/black,
-					/obj/item/clothing/gloves/botanic_leather,
-					/obj/item/clothing/gloves/combat,
-					/obj/item/clothing/gloves/swat
-					)
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/gloves/botanic_leather,
+		/obj/item/clothing/gloves/combat,
+		/obj/item/clothing/gloves/swat,
+	)
 
 /obj/effect/essentials_set/random/clf_head
 	spawned_gear_list = list(
-					/obj/item/clothing/head/militia,
-					/obj/item/clothing/head/militia/bucket,
-					/obj/item/clothing/head/helmet/skullcap,
-					/obj/item/clothing/head/hardhat,
-					/obj/item/clothing/head/helmet,
-					/obj/item/clothing/head/bandana,
-					/obj/item/clothing/head/headband/red,
-					/obj/item/clothing/head/headband/rambo,
-					/obj/item/clothing/head/headband/rebel,
-					/obj/item/clothing/head/helmet/swat
-					)
+		/obj/item/clothing/head/militia,
+		/obj/item/clothing/head/militia/bucket,
+		/obj/item/clothing/head/helmet/skullcap,
+		/obj/item/clothing/head/hardhat,
+		/obj/item/clothing/head/helmet,
+		/obj/item/clothing/head/bandana,
+		/obj/item/clothing/head/headband/red,
+		/obj/item/clothing/head/headband/rambo,
+		/obj/item/clothing/head/headband/rebel,
+		/obj/item/clothing/head/helmet/swat,
+	)
 
 /obj/effect/essentials_set/random/clf_belt
 	spawned_gear_list = list(
-					/obj/item/storage/belt/marine,
-					/obj/item/storage/belt/marine,
-					/obj/item/storage/belt/marine,
-					/obj/item/storage/belt/marine,
-					/obj/item/storage/belt/marine,
-					/obj/item/storage/belt/gun/flaregun/full,
-					/obj/item/storage/belt/gun/flaregun/full,
-					/obj/item/storage/backpack/general_belt,
-					/obj/item/storage/backpack/general_belt,
-					/obj/item/storage/backpack/general_belt,
-					/obj/item/storage/belt/knifepouch,
-					/obj/item/storage/large_holster/katana/full,
-					/obj/item/storage/large_holster/machete/full
-					)
+		/obj/item/storage/belt/marine,
+		/obj/item/storage/belt/marine,
+		/obj/item/storage/belt/marine,
+		/obj/item/storage/belt/marine,
+		/obj/item/storage/belt/marine,
+		/obj/item/storage/belt/gun/flaregun/full,
+		/obj/item/storage/belt/gun/flaregun/full,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/belt/knifepouch,
+		/obj/item/storage/large_holster/katana/full,
+		/obj/item/storage/large_holster/machete/full,
+	)

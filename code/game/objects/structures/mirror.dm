@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/shattered = 0
 
 
@@ -76,7 +76,7 @@
 	desc = "Oh no, seven years of bad luck!"
 
 
-/obj/structure/mirror/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/mirror/bullet_act(obj/item/projectile/Proj)
 	if(prob(Proj.damage * 2))
 		if(!shattered)
 			shatter()

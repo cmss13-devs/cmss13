@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
-/obj/structure/machinery/cm_vending/gear/smartgun/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/smartgun/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_smartgun
 
 //------------CLOTHING VENDOR---------------
@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 
-/obj/structure/machinery/cm_vending/clothing/smartgun/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/smartgun/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_smartgun
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha

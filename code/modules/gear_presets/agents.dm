@@ -13,7 +13,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_STOWAWAY
 	rank = JOB_STOWAWAY
@@ -53,7 +53,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -62,7 +62,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_UPP_REPRESENTATIVE
 	rank = JOB_UPP_REPRESENTATIVE
@@ -86,7 +86,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -95,7 +95,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_TWE_REPRESENTATIVE
 	rank = JOB_TWE_REPRESENTATIVE
@@ -103,7 +103,7 @@
 	role_comm_title = "TWE Rep."
 	skills = /datum/skills/civilian/survivor
 
-/datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

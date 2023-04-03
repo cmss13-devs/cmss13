@@ -62,7 +62,7 @@
 		burn_tile()
 
 
-/turf/open/floor/ceiling_debris_check(var/size = 1)
+/turf/open/floor/ceiling_debris_check(size = 1)
 	ceiling_debris(size)
 
 /turf/open/floor/return_siding_icon_state()

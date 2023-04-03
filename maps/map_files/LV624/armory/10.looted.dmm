@@ -179,7 +179,7 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
@@ -191,7 +191,7 @@
 /obj/item/stack/sheet/metal,
 /obj/structure/machinery/door_control{
 	id = "secure_inner_blast";
-	name = "Inner Blast Door";
+	name = "Secure Inner Doors";
 	pixel_x = 25;
 	pixel_y = 5
 	},

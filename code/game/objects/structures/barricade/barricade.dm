@@ -40,7 +40,7 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
-/obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
@@ -119,8 +119,8 @@
 /obj/structure/barricade/Collided(atom/movable/AM)
 	..()
 
-	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/Crusher/C = AM
+	if(istype(AM, /mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/crusher/C = AM
 
 		if (!C.throwing)
 			return
@@ -132,7 +132,7 @@
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
@@ -318,20 +318,20 @@
 	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
 	new /datum/effects/acid(src, null, null)
 
-/obj/structure/barricade/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/barricade/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	take_damage(dam * burn_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	take_damage(I.force * 0.5 * brute_multiplier)
 
-/obj/structure/barricade/proc/take_damage(var/damage)
+/obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(B.dir == reverse_direction(dir))
 			B.update_health(damage)
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(var/damage)
+/obj/structure/barricade/proc/take_acid_damage(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)
@@ -341,7 +341,7 @@
 	if(!health)
 		if(!nomessage)
 			visible_message(SPAN_DANGER("[src] falls apart!"))
-		deconstruct()
+		deconstruct(FALSE)
 		return
 
 	update_damage_state()
@@ -392,7 +392,7 @@
 
 	rotate(usr,-1)
 
-/obj/structure/barricade/proc/rotate(var/mob/user, var/rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
+/obj/structure/barricade/proc/rotate(mob/user, rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
 	if(world.time <= user.next_move || !ishuman(user) || !Adjacent(user) || user.is_mob_incapacitated())
 		return
 

@@ -214,7 +214,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "sd" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100";
@@ -477,8 +477,8 @@
 /area/lv624/lazarus/fitness)
 "JF" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baseballbat,
-/obj/item/weapon/melee/baseballbat{
+/obj/item/weapon/baseballbat,
+/obj/item/weapon/baseballbat{
 	pixel_x = -6;
 	pixel_y = 2
 	},

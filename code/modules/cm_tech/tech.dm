@@ -21,7 +21,7 @@
 	var/background_icon = "background"
 	var/background_icon_locked = "marine"
 
-/datum/tech/proc/can_unlock(var/mob/M)
+/datum/tech/proc/can_unlock(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(!holder.has_access(M, TREE_ACCESS_MODIFY))
@@ -41,7 +41,7 @@
 
 	return TRUE
 
-/datum/tech/proc/check_tier_level(var/mob/M)
+/datum/tech/proc/check_tier_level(mob/M)
 	if(holder.tier.tier < tier.tier)
 		if(M)
 			to_chat(M, SPAN_WARNING("This tier level has not been unlocked yet!"))
@@ -113,12 +113,12 @@
 			holder.purchase_node(usr, src)
 			. = TRUE
 
-/datum/tech/proc/on_tree_insertion(var/datum/techtree/tree)
+/datum/tech/proc/on_tree_insertion(datum/techtree/tree)
 	holder = tree
 	background_icon = tree.background_icon
 	background_icon_locked = tree.background_icon_locked
 
-/datum/tech/proc/update_icon(var/obj/effect/node)
+/datum/tech/proc/update_icon(obj/effect/node)
 	node.overlays.Cut()
 	if(!icon_state)
 		node.icon = 'icons/effects/techtree/tech.dmi'

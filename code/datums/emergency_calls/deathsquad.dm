@@ -18,7 +18,7 @@
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------
-/datum/emergency_call/death/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/death/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -47,7 +47,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 //################################################################################################
 // Marine commandos - USCM Deathsquad. Event only
@@ -59,7 +59,7 @@
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
-/datum/emergency_call/marsoc/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/marsoc/create_member(datum/mind/M, turf/override_spawn_loc)
 
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_sea, list(
 	vendor_role = list(JOB_SEA)
 	icon_state = "guns"
 
-/obj/structure/machinery/cm_vending/gear/sea/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/sea/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_sea
 
 //------------CLOTHING VENDOR---------------
@@ -77,5 +77,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 	req_access = list(ACCESS_MARINE_SEA)
 	vendor_role = list(JOB_SEA)
 
-/obj/structure/machinery/cm_vending/clothing/sea/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/sea/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_sea

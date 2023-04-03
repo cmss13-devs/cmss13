@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
-/obj/structure/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
+/obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
 	//Offset 24 pixels in direction of dir
@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
+	area = null
 	. = ..()
 
 
@@ -349,7 +350,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 //Convert percentage to actual value
+		cell.charge = start_charge * cell.maxcharge / 100 //Convert percentage to actual value
 
 	var/area/A = loc.loc
 
@@ -894,11 +895,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		APC_WIRE_IDSCAN    = "ID scanner"
 	)
 
-/obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
+/obj/structure/machinery/power/apc/proc/isWireCut(wire)
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(var/wire, mob/user, var/with_message = TRUE)
+/obj/structure/machinery/power/apc/proc/cut(wire, mob/user, with_message = TRUE)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -917,7 +918,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(with_message)
 				visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/structure/machinery/power/apc/proc/mend(var/wire)
+/obj/structure/machinery/power/apc/proc/mend(wire)
 	apcwires |= getWireFlag(wire)
 
 	switch(wire)
@@ -952,7 +953,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
-/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)
 		return TRUE
 
@@ -1030,7 +1031,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == APC_CHARGING && operating)
 
-/obj/structure/machinery/power/apc/add_load(var/amount)
+/obj/structure/machinery/power/apc/add_load(amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
@@ -1199,7 +1200,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 //val 0 = off, 1 = off(auto) 2 = on, 3 = on(auto)
 //on 0 = off, 1 = auto-on, 2 = auto-off
 
-/proc/autoset(var/val, var/on)
+/proc/autoset(val, on)
 
 	if(on == 0) //Turn things off
 		if(val == 2) //If on, return off

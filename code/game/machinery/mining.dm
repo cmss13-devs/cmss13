@@ -3,7 +3,7 @@
 	icon_state = "x2"
 	name = "Input area"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/structure/machinery/mineral/input/Initialize(mapload, ...)
 	. = ..()
@@ -14,7 +14,7 @@
 	icon_state = "x"
 	name = "Output area"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/structure/machinery/mineral/output/Initialize(mapload, ...)
 	. = ..()
@@ -25,5 +25,5 @@
 	icon = 'icons/obj/structures/machinery/mining_machines.dmi'
 	icon_state = "furnace"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	luminosity = 3

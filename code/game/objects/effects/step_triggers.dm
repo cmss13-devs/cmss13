@@ -4,11 +4,11 @@
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope cant see this shit
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
 
-/obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/proc/Trigger(atom/movable/A)
 	return 0
 
 /obj/effect/step_trigger/Crossed(H as mob|obj)
@@ -32,7 +32,7 @@
 	var/nostop = 0 // if 1: will only be stopped by teleporters
 	var/list/affecting = list()
 
-/obj/effect/step_trigger/thrower/Trigger(var/atom/A)
+/obj/effect/step_trigger/thrower/Trigger(atom/A)
 	if(!A || !istype(A, /atom/movable))
 		return
 
@@ -98,7 +98,7 @@
 /obj/effect/step_trigger/clone_cleaner
 	icon_state = "cleaner"
 
-/obj/effect/step_trigger/clone_cleaner/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/clone_cleaner/Trigger(atom/movable/A)
 	if(A.clone)
 		A.destroy_clone()
 
@@ -110,7 +110,7 @@
 	var/vector_z = 0
 	affect_ghosts = 1
 
-/obj/effect/step_trigger/teleporter_vector/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter_vector/Trigger(atom/movable/A)
 	if(A && A.loc && A.type != /atom/movable/clone) //Prevent clones from teleporting
 		var/lx = A.x
 		var/ly = A.y
@@ -150,7 +150,7 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-/obj/effect/step_trigger/teleporter/Trigger(var/atom/movable/A, teleportation_type)
+/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A, teleportation_type)
 	set waitfor = 0
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
@@ -207,7 +207,7 @@
 	var/teleport_y_offset = 0
 	var/teleport_z_offset = 0
 
-/obj/effect/step_trigger/teleporter/random/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
 	if(istype(A, /obj)) //mobs and objects only.
 		if(istype(A, /obj/effect)) return
 		qdel(A)

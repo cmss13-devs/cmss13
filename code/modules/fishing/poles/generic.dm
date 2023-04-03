@@ -59,7 +59,7 @@
 			return
 	return ..()
 
-/obj/item/fishing_pole/proc/transfer_to_pole(var/obj/structure/prop/fishing/pole_interactive/pole, var/mob/user)
+/obj/item/fishing_pole/proc/transfer_to_pole(obj/structure/prop/fishing/pole_interactive/pole, mob/user)
 	pole.dir = user.dir
 
 	pole.common_weight = common_weight
@@ -75,7 +75,7 @@
 	transfer_fingerprints_to(pole)
 	qdel(src)
 
-/obj/item/fishing_pole/proc/transfer_to_user(var/obj/structure/prop/fishing/pole_interactive/parent, var/mob/user)
+/obj/item/fishing_pole/proc/transfer_to_user(obj/structure/prop/fishing/pole_interactive/parent, mob/user)
 	common_weight = parent.common_weight
 	uncommon_weight = parent.uncommon_weight
 	rare_weight = parent.rare_weight

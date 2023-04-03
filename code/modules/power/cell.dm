@@ -9,8 +9,8 @@
 	icon_state = "cell"
 	item_state = "cell"
 
-	force = 5.0
-	throwforce = 5.0
+	force = 5
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -41,13 +41,13 @@
 	return (charge == maxcharge)
 
 // use power from a cell
-/obj/item/cell/proc/use(var/amount)
+/obj/item/cell/proc/use(amount)
 	if(charge < amount) return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
-/obj/item/cell/proc/give(var/amount)
+/obj/item/cell/proc/give(amount)
 	if(maxcharge < amount) return 0
 	var/amount_used = min(maxcharge-charge,amount)
 	if(crit_fail) return 0

@@ -1,7 +1,7 @@
 /client/proc/dsay(msg as text)
 	set category = "Admin.Events"
 	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
-	set hidden = 1
+	set hidden = TRUE
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return

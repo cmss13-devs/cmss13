@@ -48,7 +48,9 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(Adjacent(user) && mods["alt"])
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(!has_blast_wave_dampener)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have blast wave dampening."))
 			return
@@ -173,7 +175,7 @@
 			detonator.a_left.activate()
 		active = TRUE
 
-/obj/item/explosive/proc/prime(var/force = FALSE)
+/obj/item/explosive/proc/prime(force = FALSE)
 	if(!force && (!customizable || !assembly_stage || assembly_stage < ASSEMBLY_LOCKED))
 		return
 
@@ -232,7 +234,7 @@
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
 		QDEL_IN(src, 50) //To make sure all reagents can work correctly before deleting the grenade.
 
-/obj/item/explosive/proc/make_copy_of(var/obj/item/explosive/other)
+/obj/item/explosive/proc/make_copy_of(obj/item/explosive/other)
 	cause_data = other.cause_data
 	assembly_stage = other.assembly_stage
 	falloff_mode = other.falloff_mode
@@ -249,7 +251,7 @@
 
 	toggle_blast_dampener(usr)
 
-/obj/item/explosive/proc/toggle_blast_dampener(var/mob/living/carbon/human/H)
+/obj/item/explosive/proc/toggle_blast_dampener(mob/living/carbon/human/H)
 	if(!istype(H))
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
 		return

@@ -33,7 +33,7 @@
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, GROUND_MAP))
-		to_chat(usr, "<span class='warning'>Failed to change the ground map.</span>")
+		to_chat(usr, SPAN_WARNING("Failed to change the ground map."))
 		return
 
 	log_admin("[key_name(usr)] changed the map to [VM.map_name].")
@@ -85,7 +85,7 @@
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, SHIP_MAP))
-		to_chat(usr, "<span class='warning'>Failed to change the ship map.</span>")
+		to_chat(usr, SPAN_WARNING("Failed to change the ship map."))
 		return
 
 	log_admin("[key_name(usr)] changed the ship map to [VM.map_name].")

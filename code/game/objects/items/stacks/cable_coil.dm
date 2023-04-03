@@ -21,7 +21,7 @@
 	stack_id = "cable coil"
 	attack_speed = 3
 
-/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
+/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color = null)
 	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
@@ -117,13 +117,13 @@
 		..()
 	return
 
-/obj/item/stack/cable_coil/use(var/used)
+/obj/item/stack/cable_coil/use(used)
 	if( ..() )
 		updateicon()
 		update_wclass()
 		return 1
 
-/obj/item/stack/cable_coil/add(var/extra)
+/obj/item/stack/cable_coil/add(extra)
 	if( ..() )
 		updateicon()
 		update_wclass()

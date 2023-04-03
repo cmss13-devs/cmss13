@@ -24,10 +24,10 @@
 	. = ..()
 	flags_atom |= USES_HEARING
 
-/obj/item/device/assembly_holder/proc/attach_special(var/obj/O, var/mob/user)
+/obj/item/device/assembly_holder/proc/attach_special(obj/O, mob/user)
 	return
 
-/obj/item/device/assembly_holder/proc/process_activation(var/obj/item/device/D)
+/obj/item/device/assembly_holder/proc/process_activation(obj/item/device/D)
 	return
 
 /obj/item/device/assembly_holder/proc/detached()
@@ -36,7 +36,7 @@
 /obj/item/device/assembly_holder/IsAssemblyHolder()
 	return 1
 
-/obj/item/device/assembly_holder/proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
+/obj/item/device/assembly_holder/proc/attach(obj/item/device/D, obj/item/device/D2, mob/user)
 	if((!D)||(!D2)) return 0
 	if((!isassembly(D))||(!isassembly(D2))) return 0
 	if((D:secured)||(D2:secured)) return 0
@@ -60,7 +60,7 @@
 
 	return 1
 
-/obj/item/device/assembly_holder/attach_special(var/obj/O, var/mob/user)
+/obj/item/device/assembly_holder/attach_special(obj/O, mob/user)
 	if(!O) return
 	if(!O.IsSpecialAssembly()) return 0
 
@@ -174,7 +174,7 @@
 			a_right = null
 		qdel(src)
 
-/obj/item/device/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
+/obj/item/device/assembly_holder/process_activation(obj/D, normal = 1, special = 1)
 	if(!D) return 0
 	if(!secured)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")

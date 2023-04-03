@@ -11,7 +11,7 @@
 	var/increment_grace_time = 50
 	var/proc_damage = 30
 
-/datum/effects/prae_acid_stacks/New(mob/living/carbon/human/H, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
+/datum/effects/prae_acid_stacks/New(mob/living/carbon/human/H, mob/from = null, last_dmg_source = null, zone = "chest")
 	last_decrement_time = world.time
 	last_increment_time = world.time
 	. = ..(H, from, last_dmg_source, zone)
@@ -50,7 +50,7 @@
 
 	return ..()
 
-/datum/effects/prae_acid_stacks/proc/increment_stack_count(var/increment_number = 1)
+/datum/effects/prae_acid_stacks/proc/increment_stack_count(increment_number = 1)
 	stack_count = min(max_stacks, stack_count + increment_number)
 
 	if (!istype(affected_atom, /mob/living/carbon/human))

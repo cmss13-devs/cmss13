@@ -4,7 +4,7 @@
 #define TORFILE "data/ToR_ban.bdb"
 #define TOR_UPDATE_INTERVAL 216000 //~6 hours
 
-/proc/ToRban_isbanned(var/ip_address)
+/proc/ToRban_isbanned(ip_address)
 	var/savefile/F = new(TORFILE)
 	if(F)
 		if( ip_address in F.dir )
@@ -53,10 +53,10 @@
 			if(config)
 				if(CONFIG_GET(flag/ToRban))
 					CONFIG_SET(flag/ToRban, FALSE)
-					message_staff("<font color='red'>ToR banning disabled.</font>")
+					message_admins("<font color='red'>ToR banning disabled.</font>")
 				else
 					CONFIG_SET(flag/ToRban, TRUE)
-					message_staff("<font colot='green'>ToR banning enabled.</font>")
+					message_admins("<font colot='green'>ToR banning enabled.</font>")
 		if("show")
 			var/savefile/F = new(TORFILE)
 			var/dat

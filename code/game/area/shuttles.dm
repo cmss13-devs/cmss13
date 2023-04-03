@@ -45,6 +45,14 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 
+/area/shuttle/escape_pod
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+
+/area/shuttle/escape_pod/afterShuttleMove(new_parallax_dir)
+	. = ..()
+	playsound_area(src, 'sound/effects/escape_pod_launch.ogg', 50, 1)
+
 /area/shuttle/lifeboat
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

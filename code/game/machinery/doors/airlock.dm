@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
+	QDEL_NULL(closeOther)
+	QDEL_NULL(electronics)
 	return ..()
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
@@ -110,7 +112,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(masterkey_resist)
 		. += SPAN_INFO("It has been reinforced against breaching attempts.")
 
-/obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
 	if(!dam || unacidable)
 		return FALSE
 
@@ -160,7 +162,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return FALSE
 
-/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/door/airlock/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	if(P.damage)
 		if(P.ammo.flags_ammo_behavior & AMMO_ROCKET)
@@ -171,7 +173,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/pulse(var/wire)
+/obj/structure/machinery/door/airlock/proc/pulse(wire)
 	switch(wire)
 		if(AIRLOCK_WIRE_IDSCAN)
 			//Sending a pulse through this flashes the red light on the door (if the door has power).
@@ -235,7 +237,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = !lights
 
-/obj/structure/machinery/door/airlock/proc/cut(var/wire)
+/obj/structure/machinery/door/airlock/proc/cut(wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -272,7 +274,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = 0
 
-/obj/structure/machinery/door/airlock/proc/mend(var/wire)
+/obj/structure/machinery/door/airlock/proc/mend(wire)
 	wires |= getWireFlag(wire)
 
 	switch(wire)
@@ -307,10 +309,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/isWireCut(var/wire)
+/obj/structure/machinery/door/airlock/proc/isWireCut(wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/structure/machinery/door/airlock/proc/getAssembly(var/wire)
+/obj/structure/machinery/door/airlock/proc/getAssembly(wire)
 	for(var/signaller in attached_signallers)
 		if(wire == attached_signallers[signaller])
 			return signaller
@@ -604,6 +606,32 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
+	if(istype(C, /obj/item/maintenance_jack) && locked)
+		var/obj/item/maintenance_jack/current_jack = C
+
+		if(current_jack.crowbar_mode)
+			return
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
+			user.visible_message(SPAN_DANGER("[user] begins to search for [src]'s bolts!"),\
+			SPAN_NOTICE("You search for [src]'s bolts."))
+			if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				to_chat(user, SPAN_WARNING("You fail to find the bolts on [src]."))
+				return
+
+		user.visible_message(SPAN_DANGER("[user] begins to disable [src]'s bolts!"),\
+		SPAN_NOTICE("You start to disable [src]'s bolts."))
+		playsound(src, "pry", 25, TRUE)
+
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+			to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] disables the bolts on [src]."),\
+		SPAN_NOTICE("You unbolt [src]."))
+		unlock(TRUE)
+		return
+
 	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
@@ -659,7 +687,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.setDir(dir)
 
-				da.anchored = 1
+				da.anchored = TRUE
 				if(mineral)
 					da.glass = mineral
 				//else if(glass)
@@ -720,7 +748,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return ..()
 
 
-/obj/structure/machinery/door/airlock/open(var/forced=0)
+/obj/structure/machinery/door/airlock/open(forced=0)
 	if( operating || welded || locked || !loc)
 		return FALSE
 	if(!forced)
@@ -735,7 +763,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		closeOther.close()
 	return ..(forced)
 
-/obj/structure/machinery/door/airlock/close(var/forced=0)
+/obj/structure/machinery/door/airlock/close(forced=0)
 	if(operating || welded || locked || !loc)
 		return
 	if(!forced)
@@ -781,15 +809,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..()
 	return
 
-/obj/structure/machinery/door/airlock/proc/lock(var/forced=0)
-	if(operating || locked) return
+/obj/structure/machinery/door/airlock/proc/lock(forced=0)
+	if((operating && !forced) || locked)
+		return
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = 1
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
-/obj/structure/machinery/door/airlock/proc/unlock(var/forced=0)
+/obj/structure/machinery/door/airlock/proc/unlock(forced=0)
 	if(operating || !locked) return
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
@@ -849,7 +878,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					qdel(x)
 				break
 
-/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/door/airlock/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
 	if(isElectrified() && arePowerSystemsOn())
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)

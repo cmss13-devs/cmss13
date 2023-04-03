@@ -64,7 +64,7 @@
 				E.internal_organs = list()
 			E.internal_organs |= src
 
-/datum/internal_organ/proc/take_damage(amount, var/silent = FALSE)
+/datum/internal_organ/proc/take_damage(amount, silent = FALSE)
 	if(src.robotic == ORGAN_ROBOT)
 		src.damage += (amount * 0.8)
 	else
@@ -275,7 +275,7 @@
 	robotic = ORGAN_ROBOT
 	removed_type = /obj/item/organ/eyes/prosthetic
 
-/datum/internal_organ/proc/remove(var/mob/user)
+/datum/internal_organ/proc/remove(mob/user)
 	if(!removed_type)
 		return 0
 

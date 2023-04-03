@@ -10,6 +10,7 @@ $text-color: base.$color-fg !default;
 $background-color: #0a0a0a !default;
 $border-color: #88bfff !default;
 $border-radius: base.$border-radius !default;
+$font-family: Verdana, sans-serif !default;
 
 .Input {
   position: relative;
@@ -51,7 +52,7 @@ $border-radius: base.$border-radius !default;
   height: base.em(17px);
   margin: 0;
   padding: 0 0.5em;
-  font-family: Verdana, sans-serif;
+  font-family: $font-family;
   background-color: transparent;
   color: $text-color;
   color: inherit;

@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(techtree)
 
 		tree.generate_tree()
 		var/msg = "Loaded [tree.name]!"
-		to_chat(world, "<span class='boldannounce'>[msg]</span>")
+		to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 
 	return SS_INIT_SUCCESS
 

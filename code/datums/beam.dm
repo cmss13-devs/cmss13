@@ -150,7 +150,7 @@
 	var/strength = EYE_PROTECTION_FLAVOR
 	var/probability = 20
 
-/obj/effect/ebeam/laser/Crossed(var/atom/movable/AM)
+/obj/effect/ebeam/laser/Crossed(atom/movable/AM)
 	. = ..()
 	if(! (prob(probability) && ishuman(AM)) )
 		return
@@ -194,7 +194,7 @@
 	var/tmp/atom/BeamSource
 
 /obj/effect/overlay/beam/Initialize()
-	..()
+	. = ..()
 	QDEL_IN(src, 10)
 
 /**
@@ -214,12 +214,12 @@
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
+/proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
 	var/list/zap_data = list()
-	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
+	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
 		zap_data += beno
 	for(var/xeno in zap_data)
-		var/mob/living/carbon/Xenomorph/living = xeno
+		var/mob/living/carbon/xenomorph/living = xeno
 		if(!living)
 			return
 		if(living.stat == DEAD)

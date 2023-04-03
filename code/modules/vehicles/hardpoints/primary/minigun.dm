@@ -38,7 +38,7 @@
 	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4) //how many shots per click we do
 
 
-/obj/item/hardpoint/primary/minigun/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/primary/minigun/fire(mob/user, atom/A)
 
 	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
 	//check how much time since last shot. 2 seconds are grace period before minigun starts to lose rotation momentum

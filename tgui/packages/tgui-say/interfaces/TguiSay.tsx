@@ -1,5 +1,5 @@
 import { TextArea } from 'tgui/components';
-import { WINDOW_SIZES } from '../constants';
+import { CHANNELS, WINDOW_SIZES } from '../constants';
 import { Dragzone } from '../components/dragzone';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
@@ -13,6 +13,7 @@ export class TguiSay extends Component<{}, State> {
     historyCounter: 0,
     innerRef: createRef(),
     lightMode: false,
+    availableChannels: CHANNELS,
     maxLength: 1024,
     radioPrefix: '',
     tempHistory: '',
@@ -38,9 +39,17 @@ export class TguiSay extends Component<{}, State> {
 
   render() {
     const { onClick, onEnter, onEscape, onKeyDown, onInput } = this.events;
-    const { innerRef, lightMode, maxLength, radioPrefix, value } = this.fields;
+    const {
+      innerRef,
+      lightMode,
+      maxLength,
+      radioPrefix,
+      value,
+      availableChannels,
+    } = this.fields;
     const { buttonContent, channel, edited, size } = this.state;
-    const theme = getTheme(lightMode, radioPrefix, channel);
+
+    const theme = getTheme(lightMode, radioPrefix, channel, availableChannels);
 
     return (
       <div className={getCss('modal', theme, size)} $HasKeyedChildren>

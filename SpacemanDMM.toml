@@ -10,3 +10,6 @@ dreamchecker = true
 
 [debugger]
 engine = "auxtools"
+
+[diagnostics]
+var_in_proc_parameter = "error"

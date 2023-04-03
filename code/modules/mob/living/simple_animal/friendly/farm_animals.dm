@@ -27,7 +27,7 @@
 /mob/living/simple_animal/hostile/retaliate/goat/Initialize()
 	udder = new(50)
 	udder.my_atom = src
-	..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
@@ -71,7 +71,7 @@
 			if(prob(10))
 				INVOKE_ASYNC(src, PROC_REF(say), "Nom")
 
-/mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/hostile/retaliate/goat/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
@@ -111,7 +111,7 @@
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_animal/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/cow/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
@@ -182,7 +182,7 @@
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_animal/chick/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/chick/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_UNDER
@@ -234,7 +234,7 @@ var/global/chicken_count = 0
 	pixel_y = rand(0, 10)
 	chicken_count++
 
-/mob/living/simple_animal/chicken/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/chicken/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_UNDER
@@ -247,7 +247,7 @@ var/global/chicken_count = 0
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
 
-/mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/chicken/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
 			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))

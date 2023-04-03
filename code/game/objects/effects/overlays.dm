@@ -9,7 +9,7 @@
 	icon_state = "palm1"
 	density = TRUE
 	layer = FLY_LAYER
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
@@ -17,7 +17,7 @@
 	icon_state = "palm2"
 	density = TRUE
 	layer = FLY_LAYER
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
@@ -33,7 +33,7 @@
 	appearance_flags = RESET_COLOR|KEEP_APART
 
 /obj/effect/overlay/temp
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_FLY_LAYER //above mobs
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //can't click to examine it
 	var/effect_duration = 10 //in deciseconds
@@ -51,14 +51,18 @@
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "arrow"
-	anchored = 1
+	anchored = TRUE
 	effect_duration = 2.5 SECONDS
 	var/glide_time = 0.5 SECONDS
 
 	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M, atom/actual_pointed_atom)
+/obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
+
+	if(!M)
+		return INITIALIZE_HINT_QDEL
+
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
 
@@ -96,7 +100,7 @@
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/C)
 	if(!C)
 		return
 
@@ -106,6 +110,9 @@
 
 /obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
 	. = ..()
+
+	if(!owner)
+		return INITIALIZE_HINT_QDEL
 
 	self_icon = image(icon, src, icon_state = icon_state)
 	LAZYINITLIST(clients)
@@ -243,6 +250,9 @@
 	effect_duration = 14
 
 /obj/effect/overlay/temp/gib_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon
@@ -273,6 +283,9 @@
 	effect_duration = 12
 
 /obj/effect/overlay/temp/dust_animation/New(Loc, mob/source_mob, gib_icon)
+	if(!source_mob)
+		return
+
 	pixel_x = source_mob.pixel_x
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon

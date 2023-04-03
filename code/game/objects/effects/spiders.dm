@@ -3,7 +3,7 @@
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	health = 15
 
@@ -20,13 +20,13 @@
 			deconstruct(FALSE)
 	return
 
-/obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/spider/attackby(obj/item/W, mob/user)
 	if(W.attack_verb.len)
 		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
 
-	var/damage = W.force / 4.0
+	var/damage = W.force / 4
 
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
@@ -38,7 +38,7 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/spider/bullet_act(obj/item/projectile/Proj)
 	..()
 	health -= Proj.ammo.damage
 	healthcheck()
@@ -99,7 +99,7 @@
 	name = "spiderling"
 	desc = "It never stays still for long."
 	icon_state = "spiderling"
-	anchored = 0
+	anchored = FALSE
 	layer = BELOW_TABLE_LAYER
 	health = 3
 	var/amount_grown = -1

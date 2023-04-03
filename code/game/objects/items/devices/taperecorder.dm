@@ -29,18 +29,17 @@
 	///Seconds under which to warn that the tape is almost up.
 	var/time_left_warning = 60 SECONDS
 
-	///Sound loop that plays when recording or playing back. I will add this in once the MC port is in.
-	//var/datum/looping_sound/tape_recorder_hiss/soundloop
+	var/datum/looping_sound/tape_recorder_hiss/soundloop
 
 /obj/item/device/taperecorder/Initialize(mapload)
 	. = ..()
 	if(starting_tape_type)
 		mytape = new starting_tape_type(src)
-	//soundloop = new(src)
+	soundloop = new(src)
 	update_icon()
 
 /obj/item/device/taperecorder/Destroy()
-	//QDEL_NULL(soundloop)
+	QDEL_NULL(soundloop)
 	QDEL_NULL(mytape)
 	return ..()
 
@@ -77,13 +76,13 @@
 	if(mytape)
 		icons_available += list("Eject" = image(radial_icon_file,"eject"))
 
-/*
+
 /obj/item/device/taperecorder/proc/update_sound()
-	if(!playing && !recording)
+	if(!playing)
 		soundloop.stop()
 	else
 		soundloop.start()
-*/
+
 
 /obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
 	if(!mytape && istype(I, /obj/item/tape))
@@ -119,9 +118,9 @@
 	eject(user)
 
 /obj/item/device/taperecorder/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(loc == user)
 			play()
 			return TRUE
@@ -191,7 +190,7 @@
 	if(mytape.used_capacity < mytape.max_capacity)
 		recording = TRUE
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Recording started."))
-		//update_sound()
+		update_sound()
 		update_icon()
 		var/used = mytape.used_capacity //to stop runtimes when you eject the tape
 		var/max = mytape.max_capacity
@@ -227,7 +226,7 @@
 		playing = FALSE
 	time_warned = FALSE
 	update_icon()
-	//update_sound()
+	update_sound()
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"
@@ -248,7 +247,7 @@
 
 	playing = TRUE
 	update_icon()
-	//update_sound()
+	update_sound()
 	audible_message(SPAN_MAROON("[icon2html(src, usr)] Playback started."))
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 	var/used = mytape.used_capacity //to stop runtimes when you eject the tape
@@ -371,6 +370,10 @@
 	var/radial_icon_file = 'icons/mob/radial_tape.dmi'
 	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
+	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
+	///used to store the tape's name for one side and the other side
+	var/flipped_name
+	var/unflipped_name
 
 
 /obj/item/tape/get_examine_text(mob/user)
@@ -410,6 +413,8 @@
 	initial_icon_state = icon_state //random tapes will set this after choosing their icon
 	if(prob(50))
 		tapeflip()
+	flipped_name = name
+	unflipped_name = name
 
 /obj/item/tape/proc/update_available_icons()
 	icons_available = list()
@@ -484,12 +489,16 @@
 
 	if(icon_state == initial_icon_state)
 		icon_state = "cassette_flip"
+		unflipped_name = name
+		name = flipped_name
 	else if(icon_state == "cassette_flip") //so flipping doesn't overwrite an unexpected icon_state (e.g. an admin's)
 		icon_state = initial_icon_state
+		flipped_name = name
+		name = unflipped_name
 
-//Random colour tapes
+//Random color tapes
 /obj/item/tape/random
-	icon_state = "random_tape"
+	icon_state = "cassette_rainbow"
 
 /obj/item/tape/random/Initialize(mapload)
 	icon_state = "cassette_[pick(cassette_colours)]"

@@ -20,7 +20,7 @@
 	desc = "A Multiple Utility Load Effector bot."
 	icon_state = "mulebot0"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	animate_movement=1
 	health = 150 //yeah, it's tougher than ed209 because it is a big metal box with wheels --rastaf0
 	maxhealth = 150
@@ -89,6 +89,13 @@
 		suffix = "#[count]"
 	name = "Mulebot ([suffix])"
 
+/obj/structure/machinery/bot/mulebot/Destroy()
+	QDEL_NULL(load)
+	QDEL_NULL(target)
+	QDEL_NULL(cell)
+	SSradio.remove_object(src, control_freq)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 // set up the wire colours in random order
 // and the random wire display order
@@ -99,9 +106,9 @@
 	wire_text = list()
 	wire_order = list()
 	while(colours.len > 0)
-		var/colour = colours[ rand(1,colours.len) ]
-		wire_text += colour
-		colours -= colour
+		var/color = colours[ rand(1,colours.len) ]
+		wire_text += color
+		colours -= color
 
 		var/order = orders[ rand(1,orders.len) ]
 		wire_order += text2num(order)
@@ -113,7 +120,7 @@
 // screwdriver: open/close hatch
 // cell: insert it
 // other: chance to knock rider off bot
-/obj/structure/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/bot/mulebot/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/cell) && open && !cell)
 		var/obj/item/cell/C = I
 		if(user.drop_inv_item_to_loc(C, src))
@@ -154,7 +161,7 @@
 	return
 
 
-/obj/structure/machinery/bot/mulebot/ex_act(var/severity)
+/obj/structure/machinery/bot/mulebot/ex_act(severity)
 	unload(0)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -180,18 +187,18 @@
 	return 1
 
 
-/obj/structure/machinery/bot/mulebot/attack_remote(var/mob/user)
+/obj/structure/machinery/bot/mulebot/attack_remote(mob/user)
 	user.set_interaction(src)
 	interact(user, 1)
 
-/obj/structure/machinery/bot/mulebot/attack_hand(var/mob/user)
+/obj/structure/machinery/bot/mulebot/attack_hand(mob/user)
 	. = ..()
 	if (.)
 		return
 	user.set_interaction(src)
 	interact(user, 0)
 
-/obj/structure/machinery/bot/mulebot/interact(var/mob/user, var/ai=0)
+/obj/structure/machinery/bot/mulebot/interact(mob/user, ai=0)
 	var/dat
 	dat += "<TT><B>Multiple Utility Load Effector Mk. III</B></TT><BR><BR>"
 	dat += "ID: [suffix]<BR>"
@@ -431,7 +438,7 @@
 
 // mousedrop a crate to load the bot
 
-/obj/structure/machinery/bot/mulebot/MouseDrop_T(var/atom/movable/C, mob/user)
+/obj/structure/machinery/bot/mulebot/MouseDrop_T(atom/movable/C, mob/user)
 	if(user.stat)
 		return
 	if (!on || !istype(C)|| C.anchored || get_dist(user, src) > 1 || get_dist(src,C) > 1 )
@@ -442,7 +449,7 @@
 
 
 // called to load a crate
-/obj/structure/machinery/bot/mulebot/proc/load(var/atom/movable/C)
+/obj/structure/machinery/bot/mulebot/proc/load(atom/movable/C)
 	if((wires & WIRE_LOADCHECK) && !istype(C,/obj/structure/closet/crate))
 		src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
@@ -493,7 +500,7 @@
 // called to unload the bot
 // argument is optional direction to unload
 // if zero, unload at bot's location
-/obj/structure/machinery/bot/mulebot/proc/unload(var/dirn = 0)
+/obj/structure/machinery/bot/mulebot/proc/unload(dirn = 0)
 	if(!load)
 		return
 
@@ -678,7 +685,7 @@
 
 // calculates a path to the current destination
 // given an optional turf to avoid
-/obj/structure/machinery/bot/mulebot/proc/calc_path(var/turf/avoid = null)
+/obj/structure/machinery/bot/mulebot/proc/calc_path(turf/avoid = null)
 	src.path = AStar(src.loc, src.target, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 250, id=botcard, exclude=avoid)
 	if(!src.path)
 		src.path = list()
@@ -687,7 +694,7 @@
 // sets the current destination
 // signals all beacons matching the delivery code
 // beacons will return a signal giving their locations
-/obj/structure/machinery/bot/mulebot/proc/set_destination(var/new_dest)
+/obj/structure/machinery/bot/mulebot/proc/set_destination(new_dest)
 	spawn(0)
 		new_destination = new_dest
 		post_signal(beacon_freq, "findbeacon", "delivery")
@@ -765,7 +772,7 @@
 
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
-/obj/structure/machinery/bot/mulebot/proc/RunOver(var/mob/living/carbon/human/H)
+/obj/structure/machinery/bot/mulebot/proc/RunOver(mob/living/carbon/human/H)
 	src.visible_message(SPAN_DANGER("[src] drives over [H]!"))
 	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
 
@@ -862,11 +869,11 @@
 			updateDialog()
 
 // send a radio signal with a single data key/value pair
-/obj/structure/machinery/bot/mulebot/proc/post_signal(var/freq, var/key, var/value)
+/obj/structure/machinery/bot/mulebot/proc/post_signal(freq, key, value)
 	post_signal_multiple(freq, list("[key]" = value) )
 
 // send a radio signal with multiple data key/values
-/obj/structure/machinery/bot/mulebot/proc/post_signal_multiple(var/freq, var/list/keyval)
+/obj/structure/machinery/bot/mulebot/proc/post_signal_multiple(freq, list/keyval)
 
 	if(freq == beacon_freq && !(wires & WIRE_BEACON_TX))
 		return

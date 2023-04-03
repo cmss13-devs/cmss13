@@ -9,18 +9,18 @@
 
 // define who is being decorated
 /datum/decorator/christmas/queen/get_decor_types()
-	return typesof(/mob/living/carbon/Xenomorph/Queen)
+	return typesof(/mob/living/carbon/xenomorph/queen)
 
 // maybe we want to have screech separate from this. Also good test
 /datum/decorator/christmas/queen/screech
 	priority = DECORATOR_DAY_SPECIFIC
 
-/datum/decorator/christmas/queen/screech/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
+/datum/decorator/christmas/queen/screech/decorate(mob/living/carbon/xenomorph/queen/queen)
 	if(!istype(queen))
 		return
 	queen.screech_sound_effect_list = list('sound/voice/alien_queen_xmas.ogg','sound/voice/alien_queen_xmas_2.ogg')
 
-/datum/decorator/christmas/queen/hat/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
+/datum/decorator/christmas/queen/hat/decorate(mob/living/carbon/xenomorph/queen/queen)
 	if(!istype(queen))
 		return
 	//queen.icon_body = 'icons/mob/xenos_old/xenomorph_64x64_christmas.dmi'
@@ -29,7 +29,7 @@
 /datum/decorator/christmas/barbed_wire/get_decor_types()
 	return list(/obj/item/stack/barbed_wire)
 
-/datum/decorator/christmas/barbed_wire/decorate(var/obj/item/stack/barbed_wire/wire)
+/datum/decorator/christmas/barbed_wire/decorate(obj/item/stack/barbed_wire/wire)
 	if(!istype(wire))
 		return
 	wire.name = "christmas wire"
@@ -42,7 +42,7 @@
 /datum/decorator/christmas/marine_helmet/get_decor_types()
 	return list(/obj/item/clothing/head/helmet/marine)
 
-/datum/decorator/christmas/marine_helmet/decorate(var/obj/item/clothing/head/helmet/marine/helmet)
+/datum/decorator/christmas/marine_helmet/decorate(obj/item/clothing/head/helmet/marine/helmet)
 	if(!istype(helmet))
 		return
 	helmet.name = "\improper USCM [helmet.specialty] santa hat"
@@ -60,7 +60,7 @@
 /datum/decorator/christmas/barricade/get_decor_types()
 	return typesof(/obj/structure/barricade/metal) + typesof(/obj/structure/barricade/plasteel)
 
-/datum/decorator/christmas/barricade/decorate(var/obj/structure/barricade/barricade)
+/datum/decorator/christmas/barricade/decorate(obj/structure/barricade/barricade)
 	if(!istype(barricade))
 		return
 	barricade.icon = 'icons/obj/structures/barricades_christmas.dmi'
@@ -92,9 +92,9 @@
 	)
 
 /datum/decorator/christmas/builder_list/get_decor_types()
-	return typesof(/mob/living/carbon/Xenomorph)
+	return typesof(/mob/living/carbon/xenomorph)
 
-/datum/decorator/christmas/builder_list/decorate(var/mob/living/carbon/Xenomorph/Xeno)
+/datum/decorator/christmas/builder_list/decorate(mob/living/carbon/xenomorph/Xeno)
 	if(!istype(Xeno))
 		return
 	LAZYDISTINCTADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)

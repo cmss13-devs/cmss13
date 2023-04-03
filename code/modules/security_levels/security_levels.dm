@@ -7,7 +7,7 @@
 //config.alert_desc_blue_downto
 
 
-/proc/set_security_level(var/level, no_sound=0, announce=1)
+/proc/set_security_level(level, no_sound=0, announce=1)
 	if(level != security_level)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_SECURITY_LEVEL_CHANGED, level)
 
@@ -56,7 +56,7 @@
 		if(SEC_LEVEL_DELTA)
 			return "delta"
 
-/proc/num2seclevel(var/num)
+/proc/num2seclevel(num)
 	switch(num)
 		if(SEC_LEVEL_GREEN)
 			return "green"
@@ -67,7 +67,7 @@
 		if(SEC_LEVEL_DELTA)
 			return "delta"
 
-/proc/seclevel2num(var/seclevel)
+/proc/seclevel2num(seclevel)
 	switch( lowertext(seclevel) )
 		if("green")
 			return SEC_LEVEL_GREEN

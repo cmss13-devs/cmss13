@@ -169,7 +169,7 @@
 	return
 
 //Converts an angle (degrees) into an ss13 direction
-/proc/angle2dir(var/degree)
+/proc/angle2dir(degree)
 	degree = ((degree+22.5)%365)
 	if(degree < 45) return NORTH
 	if(degree < 90) return NORTHEAST
@@ -182,7 +182,7 @@
 
 //returns the north-zero clockwise angle in degrees, given a direction
 
-/proc/dir2angle(var/D)
+/proc/dir2angle(D)
 	switch(D)
 		if(NORTH) return 0
 		if(SOUTH) return 180
@@ -196,7 +196,7 @@
 
 //returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
 
-/proc/dir2indexnum(var/D)
+/proc/dir2indexnum(D)
 	switch(D)
 		if(NORTH) return 2
 		if(SOUTH) return 1

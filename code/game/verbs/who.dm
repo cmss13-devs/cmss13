@@ -87,8 +87,8 @@
 										counted_humanoids["USCM Marines"]++
 								else
 									counted_humanoids[C.mob.faction]++
-						else if(isXeno(C.mob))
-							var/mob/living/carbon/Xenomorph/X = C.mob
+						else if(isxeno(C.mob))
+							var/mob/living/carbon/xenomorph/X = C.mob
 							counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[FACTION_PREDALIEN]++

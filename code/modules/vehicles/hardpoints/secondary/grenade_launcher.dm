@@ -33,7 +33,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/secondary/grenade_launcher/can_activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/can_activate(mob/user, atom/A)
 	if(!..())
 		return FALSE
 
@@ -45,7 +45,7 @@
 
 	return TRUE
 
-/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)

@@ -7,7 +7,7 @@
 	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
 	var/obj/structure/ladder/down = null //The ladder below this one
 	var/obj/structure/ladder/up = null //The ladder above this one
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
@@ -140,7 +140,7 @@
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
-		if(isXenoLarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
+		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
 			to_chat(usr, "You can't do that in your current state.")
 			return
 		if(is_watching)
@@ -277,7 +277,7 @@
 	desc = "Well, it was only a matter of time."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder00"
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER

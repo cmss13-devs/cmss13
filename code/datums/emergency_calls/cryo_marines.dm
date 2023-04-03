@@ -18,7 +18,7 @@
 	leaders = cryo_squad.num_leaders
 	return ..()
 
-/datum/emergency_call/cryo_squad/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/cryo_squad/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo

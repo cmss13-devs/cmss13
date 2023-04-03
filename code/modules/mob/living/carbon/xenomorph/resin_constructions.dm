@@ -19,8 +19,8 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/thick_hiveweed = FALSE // if this is set, the thick variants will only work on hiveweeds
 	var/can_build_on_doors = TRUE // if it can be built on a tile with an open door or not
 
-/datum/resin_construction/proc/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
-	var/mob/living/carbon/Xenomorph/blocker = locate() in T
+/datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
+	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
@@ -72,10 +72,10 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	return TRUE
 
-/datum/resin_construction/proc/build(var/turf/T, var/hivenumber, var/builder)
+/datum/resin_construction/proc/build(turf/T, hivenumber, builder)
 	return
 
-/datum/resin_construction/proc/check_thick_build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+/datum/resin_construction/proc/check_thick_build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/can_build_thick = TRUE
 	if(thick_hiveweed)
 		var/obj/effect/alien/weeds/weeds = locate() in build_turf
@@ -87,14 +87,14 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	return FALSE
 
 // Subtype encompassing all resin constructions that are of type /obj
-/datum/resin_construction/resin_obj/build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+/datum/resin_construction/resin_obj/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
 	if(pass_hivenumber)
 		return new path(build_turf, hivenumber, builder)
 	return new path(build_turf)
 
 // Subtype encompassing all resin constructions that are of type /turf
-/datum/resin_construction/resin_turf/build(var/turf/build_turf, var/hivenumber, var/mob/living/carbon/Xenomorph/builder)
+/datum/resin_construction/resin_turf/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
 
 	build_turf.PlaceOnTop(path)
@@ -188,7 +188,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
 
-/datum/resin_construction/resin_obj/door/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
+/datum/resin_construction/resin_obj/door/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	if (!..())
 		return FALSE
 
@@ -227,7 +227,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_DOOR_THICK_COST
 
 	build_path = /obj/structure/mineral_door/resin/thick
-	build_animation_effect = /obj/effect/resin_construct/door
+	build_animation_effect = /obj/effect/resin_construct/thickdoor
 
 
 // Resin Nests
@@ -239,7 +239,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	build_path = /obj/structure/bed/nest
 
-/datum/resin_construction/resin_obj/nest/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
+/datum/resin_construction/resin_obj/nest/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	if (!..())
 		return FALSE
 

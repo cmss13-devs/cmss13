@@ -4,10 +4,10 @@
 	flags = DEL_ON_DEATH | INF_DURATION
 
 
-/datum/effects/dancer_tag/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 35)
+/datum/effects/dancer_tag/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35)
 	. = ..(A, from, last_dmg_source, zone)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -15,7 +15,7 @@
 
 
 /datum/effects/dancer_tag/validate_atom(mob/living/carbon/H)
-	if (!isXenoOrHuman(H) || H.stat == DEAD)
+	if (!isxeno_human(H) || H.stat == DEAD)
 		return FALSE
 	return ..()
 

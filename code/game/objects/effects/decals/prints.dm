@@ -14,8 +14,11 @@
 
 	var/created_time = 0
 
-/obj/effect/decal/prints/New(var/turf/location, var/mob/living/carbon/human/criminal_mob, var/incident = "")
+/obj/effect/decal/prints/New(turf/location, mob/living/carbon/human/criminal_mob, incident = "")
 	. = ..()
+
+	if(!criminal_mob)
+		return
 
 	forceMove(location)
 	criminal_name = criminal_mob.name
@@ -33,7 +36,7 @@
 
 	SSclues.prints_list += src
 
-/obj/effect/decal/prints/attackby(var/obj/item/W, var/mob/living/user)
+/obj/effect/decal/prints/attackby(obj/item/W, mob/living/user)
 	if(!istype(W, /obj/item/device/clue_scanner))
 		..()
 		return

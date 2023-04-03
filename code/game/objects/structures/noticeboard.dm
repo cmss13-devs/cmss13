@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "nboard00"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/notices = 0
 
 /obj/structure/noticeboard/Initialize()
@@ -17,7 +17,7 @@
 	icon_state = "nboard0[notices]"
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/noticeboard/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		if(notices < 5)
 			O.add_fingerprint(user)

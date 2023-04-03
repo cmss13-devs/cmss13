@@ -6,7 +6,7 @@
 	var/bonus_health = 0
 	var/original_color = null
 
-/datum/effects/xeno_structure_reinforcement/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 3 SECONDS, bonus_health = 6000)
+/datum/effects/xeno_structure_reinforcement/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3 SECONDS, bonus_health = 6000)
 	. = ..(A, from, last_dmg_source, zone)
 
 	src.bonus_health = bonus_health
@@ -28,7 +28,7 @@
 	QDEL_IN(src, ttl)
 
 
-/datum/effects/xeno_structure_reinforcement/validate_atom(var/atom/A)
+/datum/effects/xeno_structure_reinforcement/validate_atom(atom/A)
 	if(istype(A, /obj/structure/mineral_door/resin) || istype(A, /turf/closed/wall/resin))
 		return TRUE
 

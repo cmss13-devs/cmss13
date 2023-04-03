@@ -56,6 +56,7 @@
 	desc = "<i>'HONK!'</i>"
 	icon_state = "clown"
 	flags_jumpsuit = FALSE
+	black_market_value = 25
 
 /obj/item/clothing/under/rank/hydroponics
 	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."

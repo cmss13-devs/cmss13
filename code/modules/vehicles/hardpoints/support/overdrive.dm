@@ -20,7 +20,7 @@
 		"8" = list(0, 0)
 	)
 
-/obj/item/hardpoint/support/overdrive_enhancer/apply_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/support/overdrive_enhancer/apply_buff(obj/vehicle/multitile/V)
 	if(buff_applied)
 		return
 	for(var/obj/item/hardpoint/locomotion/TR in V.hardpoints)
@@ -29,7 +29,7 @@
 			buff_applied = TRUE
 			break
 
-/obj/item/hardpoint/support/overdrive_enhancer/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/support/overdrive_enhancer/remove_buff(obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	V.misc_multipliers["move"] /= LAZYACCESS(buff_multipliers, "move")

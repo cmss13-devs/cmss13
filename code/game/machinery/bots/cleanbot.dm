@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cleanbot0"
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	//weight = 1.0E7
 	health = 25
 	maxhealth = 25
@@ -47,6 +47,11 @@
 
 	start_processing()
 
+/obj/structure/machinery/bot/cleanbot/Destroy()
+	QDEL_NULL(target)
+	QDEL_NULL(oldtarget)
+	SSradio.remove_object(src, beacon_freq)
+	. = ..()
 
 /obj/structure/machinery/bot/cleanbot/turn_on()
 	. = ..()
@@ -273,8 +278,8 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if(src.blood)
 		target_types += /obj/effect/decal/cleanable/blood
 
-/obj/structure/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
-	anchored = 1
+/obj/structure/machinery/bot/cleanbot/proc/clean(obj/effect/decal/cleanable/target)
+	anchored = TRUE
 	icon_state = "cleanbot-c"
 	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
 	cleaning = 1
@@ -285,7 +290,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		cleaning = 0
 		qdel(target)
 		icon_state = "cleanbot[on]"
-		anchored = 0
+		anchored = FALSE
 		target = null
 
 /obj/structure/machinery/bot/cleanbot/explode()

@@ -33,7 +33,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 
@@ -64,7 +64,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 // -----------------------------
 // Mining Satchel
@@ -100,7 +100,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/grown
+		/obj/item/grown,
 	)
 
 
@@ -205,7 +205,7 @@
 
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/storage/bag/sheetsnatcher/empty(var/mob/user)
+/obj/item/storage/bag/sheetsnatcher/empty(mob/user)
 	var/location = get_turf(src)
 	for(var/obj/item/stack/sheet/S in contents)
 		while(S.amount)

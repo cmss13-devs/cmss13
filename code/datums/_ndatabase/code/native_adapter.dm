@@ -58,7 +58,7 @@
 	post_pflds = _post_pflds
 
 // maybe pflds can be changed to named parameters? but that might take time. The contract is set, so changes here shouldn't affect your code besides performance
-/datum/db/native_cached_query/proc/spawn_query(var/datum/db/filter/F, var/list/pflds)
+/datum/db/native_cached_query/proc/spawn_query(datum/db/filter/F, list/pflds)
 	for(var/i in pre_pflds)
 		pflds.Add(i)
 	var/query = "[pre_filter] [adapter.get_filter(F, casts, pflds)] [post_filter]"
@@ -75,14 +75,14 @@
 	return TRUE
 
 
-/datum/db/adapter/native_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/native_adapter/read_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
 	if(sync)
 		SSdatabase.create_query_sync(query_gettable, CB)
 	else
 		SSdatabase.create_query(query_gettable, CB)
 
-/datum/db/adapter/native_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/native_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	if(!sync)
 		set waitfor = 0
 
@@ -91,7 +91,7 @@
 		var/query_updaterow = getquery_update_row(table_name, vals, qpars)
 		SSdatabase.create_parametric_query_sync(query_updaterow, qpars, CB)
 
-/datum/db/adapter/native_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/native_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	set waitfor = 0
 	var/length = values.len
 	var/startid = internal_request_insert_allocation(table_name, length)
@@ -105,14 +105,14 @@
 	else
 		SSdatabase.create_parametric_query(query_inserttable, qpars, CB)
 
-/datum/db/adapter/native_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/native_adapter/delete_table(table_name, list/ids, datum/callback/CB, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
 	if(sync)
 		SSdatabase.create_query_sync(query_deletetable, CB)
 	else
 		SSdatabase.create_query(query_deletetable, CB)
 
-/datum/db/adapter/native_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
+/datum/db/adapter/native_adapter/read_filter(table_name, datum/db/filter, datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
 	if(sync)
@@ -120,7 +120,7 @@
 	else
 		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
 
-/datum/db/adapter/native_adapter/read_view(var/datum/entity_view_meta/view, var/datum/db/filter/filter, var/datum/callback/CB, sync=FALSE)
+/datum/db/adapter/native_adapter/read_view(datum/entity_view_meta/view, datum/db/filter/filter, datum/callback/CB, sync=FALSE)
 	var/v_key = "v_[view.type]"
 	var/list/qpars = list()
 	var/datum/db/native_cached_query/cached_view = cached_queries[v_key]
@@ -132,7 +132,7 @@
 	else
 		SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
-/datum/db/adapter/native_adapter/sync_table(type_name, table_name, var/list/field_types)
+/datum/db/adapter/native_adapter/sync_table(type_name, table_name, list/field_types)
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
 	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
@@ -223,7 +223,7 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/native_adapter/proc/internal_migrate_table(table_name, var/list/field_types_old)
+/datum/db/adapter/native_adapter/proc/internal_migrate_table(table_name, list/field_types_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
 	for(var/field in field_types_old)
 		fields += field
@@ -235,7 +235,7 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
-/datum/db/adapter/native_adapter/proc/internal_migrate_to_backup(table_name, var/list/field_types_old)
+/datum/db/adapter/native_adapter/proc/internal_migrate_to_backup(table_name, list/field_types_old)
 	var/list/fields = list(DB_DEFAULT_ID_FIELD)
 	for(var/field in field_types_old)
 		fields += field
@@ -253,7 +253,7 @@
 		CREATE TABLE IF NOT EXISTS [NATIVE_SYSTABLENAME] (id INTEGER PRIMARY KEY,type_name TEXT NOT NULL,table_name TEXT NOT NULL,fields_hash TEXT NOT NULL,fields_current TEXT NOT NULL)
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_systable_gettable(table_name, var/list/qpar)
+/datum/db/adapter/native_adapter/proc/getquery_systable_gettable(table_name, list/qpar)
 	qpar.Add("[table_name]")
 	return {"
 		SELECT id, type_name, table_name, fields_hash, fields_current FROM [NATIVE_SYSTABLENAME] WHERE table_name = ?
@@ -276,7 +276,7 @@
 		);
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, var/list/qpar, id = null)
+/datum/db/adapter/native_adapter/proc/getquery_systable_recordtable(type_name, table_name, field_types, list/qpar, id = null)
 	var/field_text = fields2savetext(field_types)
 	var/new_hash = sha1(field_text)
 	qpar.Add("[type_name]")
@@ -292,14 +292,14 @@
 			UPDATE [NATIVE_SYSTABLENAME] SET type_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
 		"}
 
-/datum/db/adapter/native_adapter/proc/getquery_insert_into_backup(table_name, var/list/fields)
+/datum/db/adapter/native_adapter/proc/getquery_insert_into_backup(table_name, list/fields)
 	var/field_text = jointext(fields, ", ")
 	return {"
 		INSERT INTO [NATIVE_BACKUP_PREFIX][table_name] ([field_text])
 		SELECT [field_text] FROM [table_name]
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_insert_from_backup(table_name, var/list/fields)
+/datum/db/adapter/native_adapter/proc/getquery_insert_from_backup(table_name, list/fields)
 	var/field_text = jointext(fields, ", ")
 	return {"
 		INSERT INTO [table_name] ([field_text])
@@ -307,7 +307,7 @@
 	"}
 
 
-/datum/db/adapter/native_adapter/proc/getquery_select_table(table_name, var/list/ids, var/list/fields)
+/datum/db/adapter/native_adapter/proc/getquery_select_table(table_name, list/ids, list/fields)
 	var/id_text = ""
 	var/first = TRUE
 	for(var/id in ids)
@@ -319,12 +319,12 @@
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM [table_name] WHERE id in ([id_text])
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_filter_table(table_name, var/datum/db/filter, var/list/pflds, var/list/fields)
+/datum/db/adapter/native_adapter/proc/getquery_filter_table(table_name, datum/db/filter, list/pflds, list/fields)
 	return {"
 		SELECT [fields?(""+jointext(fields,",")+""):"*"]  FROM [table_name] WHERE [get_filter(filter, null, pflds)]
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_insert_table(table_name, var/list/values, start_id, var/list/pflds)
+/datum/db/adapter/native_adapter/proc/getquery_insert_table(table_name, list/values, start_id, list/pflds)
 	var/calltext = ""
 	var/insert_items = ""
 	var/id = text2num(start_id)
@@ -357,7 +357,7 @@
 		INSERT INTO [table_name] (id, [insert_items]) [calltext];
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_update_row(table_name, var/list/values, var/list/pflds)
+/datum/db/adapter/native_adapter/proc/getquery_update_row(table_name, list/values, list/pflds)
 	var/calltext = ""
 	var/first = TRUE
 	var/id = 0
@@ -382,7 +382,7 @@
 		UPDATE [table_name] SET [calltext] WHERE id = [id];
 	"}
 
-/datum/db/adapter/native_adapter/proc/getquery_delete_table(table_name, var/list/ids)
+/datum/db/adapter/native_adapter/proc/getquery_delete_table(table_name, list/ids)
 	var/idtext = ""
 	var/first = TRUE
 	for(var/id in ids)
@@ -425,13 +425,13 @@
 			return "NUMERIC"
 	return FALSE
 
-/datum/db/adapter/native_adapter/proc/fields2text(var/list/L)
+/datum/db/adapter/native_adapter/proc/fields2text(list/L)
 	var/list/result = list()
 	for(var/item in L)
 		result += "[item] [fieldtype2text(L[item])]"
 	return jointext(result, ",")
 
-/datum/db/adapter/native_adapter/proc/fields2savetext(var/list/L)
+/datum/db/adapter/native_adapter/proc/fields2savetext(list/L)
 	var/list/result = list()
 	for(var/item in L)
 		result += "[item]:[L[item]]"
@@ -445,7 +445,7 @@
 		result[split2[1]] = text2num(split2[2])
 	return result
 
-/datum/db/adapter/native_adapter/prepare_view(var/datum/entity_view_meta/view)
+/datum/db/adapter/native_adapter/prepare_view(datum/entity_view_meta/view)
 	var/list/datum/entity_meta/meta_to_load = list(NATIVE_ROOT_NAME = view.root_entity_meta)
 	var/list/meta_to_table = list(NATIVE_ROOT_NAME = NATIVE_ROOT_ALIAS)
 	var/list/datum/db/filter/join_conditions = list()
@@ -471,7 +471,7 @@
 
 	internal_generate_view_query(view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 
-/datum/db/adapter/native_adapter/proc/internal_proc_to_text(var/datum/db/native_function/NF, var/list/field_alias, var/list/pflds)
+/datum/db/adapter/native_adapter/proc/internal_proc_to_text(datum/db/native_function/NF, list/field_alias, list/pflds)
 	switch(NF.type)
 		if(/datum/db/native_function/case)
 			var/datum/db/native_function/case/case_f = NF
@@ -504,7 +504,7 @@
 		else
 			return NF.default_to_string(field_alias, pflds)
 
-/datum/db/adapter/native_adapter/proc/internal_generate_view_query(var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
+/datum/db/adapter/native_adapter/proc/internal_generate_view_query(datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
 	var/list/pre_pflds = list()
 	var/query_text = "SELECT "
 	for(var/fld in view.fields)
@@ -573,7 +573,7 @@
 	cached_queries[key] = new /datum/db/native_cached_query(src, query_part_1, query_part_2, field_alias, pre_pflds, post_pflds)
 
 
-/datum/db/adapter/native_adapter/proc/internal_parse_column(field, field_value, var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
+/datum/db/adapter/native_adapter/proc/internal_parse_column(field, field_value, datum/entity_view_meta/view, list/shared_options, list/datum/entity_meta/meta_to_load, list/meta_to_table, list/datum/db/filter/join_conditions, list/field_alias)
 	var/datum/db/native_function/NF = field_value
 	// this is a function?
 	if(istype(NF))

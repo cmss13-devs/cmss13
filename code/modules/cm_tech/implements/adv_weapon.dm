@@ -55,14 +55,15 @@
 	// Hellpullverizer ready or not??
 	var/charged = FALSE
 
-/obj/item/weapon/gun/rifle/techweb_railgun/Initialize(mapload, spawn_empty)
-	. = ..()
-	AddElement(/datum/element/bullet_trait_iff)
+/obj/item/weapon/gun/rifle/techweb_railgun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/rifle/techweb_railgun/able_to_fire()
 	return charged
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(user)
 	if (charged)
 		to_chat(user, SPAN_WARNING("Your railgun is already charged."))
 		return
@@ -82,7 +83,7 @@
 		abort_charge()
 	. = ..()
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(user)
 	if (!charged)
 		return
 	charged = FALSE
@@ -167,5 +168,5 @@
 	damage_falloff = 0
 
 /datum/ammo/bullet/sniper/railgun/on_hit_mob(mob/M, _unused)
-	if (isXeno(M))
+	if (isxeno(M))
 		M.apply_effect(1, SLOW)

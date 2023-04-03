@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(projectiles)
 	name = "Projectiles"
 	wait = 1
+	init_order = SS_INIT_PROJECTILES
 	flags = SS_TICKER
 	priority = SS_PRIORITY_PROJECTILES
 

@@ -5,12 +5,12 @@
 	var/tackle_chance
 	var/tackle_reset_id
 
-/datum/tackle_counter/New(var/min, var/max, var/chance)
+/datum/tackle_counter/New(min, max, chance)
 	min_tackles = min
 	max_tackles = max
 	tackle_chance = chance
 
-/datum/tackle_counter/proc/attempt_tackle(var/tackle_bonus = 0)
+/datum/tackle_counter/proc/attempt_tackle(tackle_bonus = 0)
 	tackle_count++
 
 	if (tackle_count >= max_tackles)

@@ -6,7 +6,7 @@
 	adjacency code.
 */
 
-/mob/living/silicon/robot/click(var/atom/A, var/mods)
+/mob/living/silicon/robot/click(atom/A, mods)
 	if(lockcharge || is_mob_incapacitated(TRUE))
 		return 1
 
@@ -91,20 +91,20 @@
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
 
-/atom/proc/BorgCtrlShiftClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
+/atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overriden
 	return 1
 
 /obj/structure/machinery/door/airlock/BorgCtrlShiftClick()
 	AICtrlShiftClick()
 
-/atom/proc/BorgShiftClick(var/mob/living/silicon/robot/user) //this should only return 1 if it is not overridden. this prevents things like examining objects also clicking them with an activated module.
+/atom/proc/BorgShiftClick(mob/living/silicon/robot/user) //this should only return 1 if it is not overridden. this prevents things like examining objects also clicking them with an activated module.
 	return 1
 
 /obj/structure/machinery/door/airlock/BorgShiftClick()  // Opens and closes doors! Forwards to AI code.
 	AIShiftClick()
 
 
-/atom/proc/BorgCtrlClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
+/atom/proc/BorgCtrlClick(mob/living/silicon/robot/user) //forward to human click if not overriden
 	return 1
 
 /obj/structure/machinery/door/airlock/BorgCtrlClick() // Bolts doors. Forwards to AI code.
@@ -116,7 +116,7 @@
 /obj/structure/machinery/turretid/BorgCtrlClick() //turret control on/off. Forwards to AI code.
 	AICtrlClick()
 
-/atom/proc/BorgAltClick(var/mob/living/silicon/robot/user)
+/atom/proc/BorgAltClick(mob/living/silicon/robot/user)
 	return 1
 
 /obj/structure/machinery/door/airlock/BorgAltClick() // Eletrifies doors. Forwards to AI code.

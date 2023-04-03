@@ -225,7 +225,7 @@ This could be the story of the world! 'Brave Marines in brutal combat with unkno
 You just gotta get out of this jungle to tell the tale!"}
 
 //this calls  self-setting headsets for marines AFTER they are assigned squads
-/datum/game_mode/whiskey_outpost/proc/self_set_headset(var/mob/living/carbon/human/H)
+/datum/game_mode/whiskey_outpost/proc/self_set_headset(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine/self_setting)

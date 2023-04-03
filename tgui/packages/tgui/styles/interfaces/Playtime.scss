@@ -1,0 +1,35 @@
+@use '../base.scss';
+
+.PlaytimeInterface {
+  td {
+    padding: 0;
+    height: 34px;
+  }
+  table {
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+  .Table__cell {
+    padding: 0px !important;
+    border-bottom: 1px solid white !important;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(base.$color-bg, 0.5);
+  }
+  .AwardIcon {
+    max-height: 32px;
+    width: 32px;
+    margin-bottom: -12px;
+  }
+  span {
+    height: 32px;
+    line-height: 32px;
+  }
+  .LabelSpan {
+    margin-left: 6px;
+  }
+  .AwardCell {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -26,7 +26,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|BLOCKSHARPOBJ
@@ -41,6 +41,7 @@
 	time_to_unequip = 20
 	anti_hug = 5
 	fire_intensity_resistance = 10
+	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
 
@@ -58,7 +59,7 @@
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -195,7 +196,7 @@
 	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
-	if(!isYautja(usr))
+	if(!isyautja(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	..()
@@ -250,7 +251,6 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
-	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	var/map_random = FALSE

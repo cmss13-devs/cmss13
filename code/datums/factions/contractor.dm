@@ -1,3 +1,3 @@
 /datum/faction/contractor
-	var/name = "Vanguard's Arrow Incorporated"
-	var/faction_tag = FACTION_CONTRACTOR
+	name = "Vanguard's Arrow Incorporated"
+	faction_tag = FACTION_CONTRACTOR

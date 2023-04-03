@@ -33,3 +33,11 @@
 	name = "carp delivery grenade"
 	spawner_type = /mob/living/simple_animal/hostile/carp
 	deliveryamt = 5
+
+/obj/item/explosive/grenade/spawnergrenade/claymore_launcher
+	spawner_type = /obj/item/explosive/mine/pmc/active
+	deliveryamt = 5
+
+/obj/item/explosive/grenade/spawnergrenade/claymore_launcher/Initialize()
+	. = ..()
+	deliveryamt = rand(4,6)

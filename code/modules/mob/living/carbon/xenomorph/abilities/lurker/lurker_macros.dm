@@ -33,3 +33,10 @@
 	set hidden = TRUE
 	var/action_name = "Tail Jab"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_headbite()
+	set category = "Alien"
+	set name = "Headbite"
+	set hidden = TRUE
+	var/action_name = "Headbite"
+	handle_xeno_macro(src, action_name)

@@ -18,7 +18,7 @@
 	var/time = ""
 	var/source_terminal = ""
 
-/proc/create_account(var/new_owner_name = "Default user", var/starting_funds = 0, var/datum/paygrade/id_paygrade)
+/proc/create_account(new_owner_name = "Default user", starting_funds = 0, datum/paygrade/id_paygrade)
 
 	//create a new account
 	var/datum/money_account/M = new()
@@ -42,7 +42,7 @@
 
 	return M
 
-/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
+/proc/charge_to_account(attempt_account_number, source_name, purpose, terminal_id, amount)
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
@@ -66,14 +66,14 @@
 	return 0
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
-/proc/attempt_account_access(var/attempt_account_number, var/attempt_pin_number, var/security_level_passed = 0)
+/proc/attempt_account_access(attempt_account_number, attempt_pin_number, security_level_passed = 0)
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == attempt_account_number)
 			if( D.security_level <= security_level_passed && (!D.security_level || D.remote_access_pin == attempt_pin_number) )
 				return D
 			break
 
-/proc/get_account(var/account_number)
+/proc/get_account(account_number)
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == account_number)
 			return D

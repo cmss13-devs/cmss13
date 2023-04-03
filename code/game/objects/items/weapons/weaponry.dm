@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/banhammer
+/obj/item/weapon/banhammer
 	desc = "A banhammer"
 	name = "banhammer"
 	icon = 'icons/obj/items/items.dmi'
@@ -10,7 +10,7 @@
 	throw_range = 15
 	attack_verb = list("banned")
 
-/obj/item/weapon/melee/nullrod
+/obj/item/weapon/nullrod
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
@@ -22,7 +22,7 @@
 	throwforce = 10
 	w_class = SIZE_SMALL
 
-/obj/item/weapon/melee/harpoon
+/obj/item/weapon/harpoon
 	name = "harpoon"
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 0
@@ -34,7 +34,7 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("jabbed","stabbed","ripped")
 
-/obj/item/weapon/melee/ice_axe
+/obj/item/weapon/ice_axe
 	name = "ice axe"
 	desc = "For climbing, mostly. Makes for a good improvised weapon."
 	icon = 'icons/obj/items/items.dmi'
@@ -48,13 +48,13 @@
 	throw_range = 2
 	throwforce = 40
 
-/obj/item/weapon/melee/ice_axe/red
+/obj/item/weapon/ice_axe/red
 	icon_state = "ice_axe_red"
 
-/obj/item/weapon/melee/ice_axe/green
+/obj/item/weapon/ice_axe/green
 	icon_state = "ice_axe_green"
 
-/obj/item/weapon/melee/baseballbat
+/obj/item/weapon/baseballbat
 	name = "\improper wooden baseball bat"
 	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
 	icon_state = "woodbat"
@@ -69,7 +69,7 @@
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 
-/obj/item/weapon/melee/baseballbat/metal
+/obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"
 	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians."
 	icon_state = "metalbat"
@@ -79,7 +79,7 @@
 
 
 
-/obj/item/weapon/melee/butterfly
+/obj/item/weapon/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
@@ -97,7 +97,7 @@
 	attack_speed = 10
 
 
-/obj/item/weapon/melee/butterfly/attack_self(mob/user)
+/obj/item/weapon/butterfly/attack_self(mob/user)
 	..()
 
 	active = !active
@@ -123,18 +123,18 @@
 		attack_verb = initial(attack_verb)
 		add_fingerprint(user)
 
-/obj/item/weapon/melee/butterfly/switchblade
+/obj/item/weapon/butterfly/switchblade
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 
-/obj/item/weapon/melee/butterfly/katana
+/obj/item/weapon/butterfly/katana
 	name = "katana"
 	desc = "A ancient weapon from Japan."
 	icon_state = "samurai"
 	force = MELEE_FORCE_VERY_STRONG
 
-/obj/item/weapon/melee/wirerod
+/obj/item/weapon/wirerod
 	name = "wired rod"
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
@@ -145,10 +145,10 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 
-/obj/item/weapon/melee/wirerod/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/weapon/wirerod/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/shard))
-		var/obj/item/weapon/melee/twohanded/spear/S = new /obj/item/weapon/melee/twohanded/spear
+		var/obj/item/weapon/twohanded/spear/S = new /obj/item/weapon/twohanded/spear
 
 		user.put_in_hands(S)
 		to_chat(user, SPAN_NOTICE("You fasten the glass shard to the top of the rod with the cable."))
@@ -157,7 +157,7 @@
 		update_icon(user)
 
 	else if(HAS_TRAIT(I, TRAIT_TOOL_WIRECUTTERS))
-		var/obj/item/weapon/melee/baton/cattleprod/P = new /obj/item/weapon/melee/baton/cattleprod
+		var/obj/item/weapon/baton/cattleprod/P = new /obj/item/weapon/baton/cattleprod
 
 		user.put_in_hands(P)
 		to_chat(user, SPAN_NOTICE("You fasten the wirecutters to the top of the rod with the cable, prongs outward."))
@@ -167,7 +167,7 @@
 	update_icon(user)
 
 
-/obj/item/weapon/melee/katana/sharp
+/obj/item/weapon/katana/sharp
 	name = "absurdly sharp katana"
 	desc = "<p>That's it. I'm sick of all this \"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
 <p>I should know what I'm talking about. I myself commissioned a genuine katana in Japan for 2,400,000 Yen (that's about $20,000) and have been practicing with it for almost 2 years now. I can even cut slabs of solid steel with my katana.</p>\
@@ -190,7 +190,7 @@
 
 	attack_verb = list("sliced", "diced", "cut")
 
-/obj/item/weapon/melee/katana/sharp/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/katana/sharp/attack(mob/living/M, mob/living/user)
 
 	if(flags_item & NOBLUDGEON)
 		return
@@ -223,7 +223,7 @@
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense
-	if( ( istype(M.get_active_hand(), /obj/item/weapon/melee/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/melee/katana) ) && M != user )
+	if( ( istype(M.get_active_hand(), /obj/item/weapon/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/katana) ) && M != user )
 
 		if(prob(50))
 			user.visible_message(SPAN_DANGER("[M] and [user] cross blades!"))

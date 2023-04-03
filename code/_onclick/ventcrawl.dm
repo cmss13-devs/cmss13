@@ -10,7 +10,7 @@
 			to_chat(src, SPAN_WARNING("You can't be carrying items or have items equipped when vent crawling!"))
 			return FALSE
 
-/mob/living/click(var/atom/A, var/list/mods)
+/mob/living/click(atom/A, list/mods)
 	if(..())
 		return TRUE
 	if(mods["alt"])
@@ -40,7 +40,7 @@
 /mob/living/simple_animal/spiderbot/can_ventcrawl()
 	return TRUE
 
-/mob/living/proc/handle_ventcrawl(var/atom/clicked_on)
+/mob/living/proc/handle_ventcrawl(atom/clicked_on)
 	if(stat)
 		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
 		return
@@ -71,7 +71,7 @@
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in vent_found.loc
 	if(W)
-		var/mob/living/carbon/Xenomorph/X = src
+		var/mob/living/carbon/xenomorph/X = src
 		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
 			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
 			return
@@ -100,7 +100,7 @@
 	else
 		to_chat(src, SPAN_WARNING("This vent is not connected to anything."))
 
-/mob/living/proc/update_pipe_icons(var/obj/structure/pipes/P)
+/mob/living/proc/update_pipe_icons(obj/structure/pipes/P)
 	is_ventcrawling = TRUE
 
 	if(!client)
@@ -126,7 +126,7 @@
 
 	pipes_shown = list()
 
-/mob/living/proc/remove_specific_pipe_image(var/obj/structure/pipes/P)
+/mob/living/proc/remove_specific_pipe_image(obj/structure/pipes/P)
 	if(!client || !P || !P.pipe_vision_img)
 		return
 

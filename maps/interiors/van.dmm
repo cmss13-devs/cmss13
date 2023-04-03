@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "c" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -30,8 +29,7 @@
 /area/space)
 "h" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	alpha = 100;
@@ -178,8 +176,7 @@
 /area/space)
 "G" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_9"

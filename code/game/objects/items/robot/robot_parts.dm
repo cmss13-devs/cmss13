@@ -60,7 +60,7 @@
 	name = "robot torso"
 	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell."
 	icon_state = "chest"
-	var/wires = 0.0
+	var/wires = 0
 	var/obj/item/cell/cell = null
 
 /obj/item/robot_parts/head
@@ -249,7 +249,7 @@
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
-			src.wires = 1.0
+			src.wires = 1
 			to_chat(user, SPAN_NOTICE(" You insert the wire!"))
 	return
 

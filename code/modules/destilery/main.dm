@@ -20,7 +20,7 @@
 	desc = "It is a machine that grinds produce."
 	icon_state = "autolathe"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 1000
@@ -60,14 +60,14 @@
 	QDEL_NULL(milled_item)
 	busy = FALSE
 
-/obj/structure/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/mill/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/structure/machinery/mill/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/mill/attack_hand(mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -91,7 +91,7 @@
 	desc = "It is a machine that ferments produce into alcoholic drinks."
 	icon_state = "autolathe"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
@@ -133,14 +133,14 @@
 	QDEL_NULL(fermenting_item)
 	busy = FALSE
 
-/obj/structure/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/fermenter/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/structure/machinery/fermenter/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/fermenter/attack_hand(mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -160,7 +160,7 @@
 	desc = "It is a machine that produces hard liquor from alcoholic drinks."
 	icon_state = "autolathe"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
@@ -197,14 +197,14 @@
 	QDEL_NULL(destilling_item)
 	busy = FALSE
 
-/obj/structure/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/still/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, loc))
 			input += W
 	else
 		..()
 
-/obj/structure/machinery/still/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/still/attack_hand(mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -225,7 +225,7 @@
 	desc = "It is a machine that squeezes extracts from produce."
 	icon_state = "autolathe"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
@@ -249,7 +249,7 @@
 	desc = "It is a machine that spins produce."
 	icon_state = "autolathe"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
@@ -281,14 +281,14 @@
 	output += spinning_item
 	busy = FALSE
 
-/obj/structure/machinery/centrifuge/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/centrifuge/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/structure/machinery/centrifuge/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/centrifuge/attack_hand(mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F

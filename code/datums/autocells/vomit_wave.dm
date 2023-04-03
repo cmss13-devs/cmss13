@@ -31,7 +31,7 @@
 
 	return FALSE
 
-/datum/automata_cell/vomit_wave/update_state(var/list/turf/neighbors)
+/datum/automata_cell/vomit_wave/update_state(list/turf/neighbors)
 	if(should_die())
 		qdel(src)
 		return

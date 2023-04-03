@@ -13,7 +13,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
-	
+
 	var/mode = 1;
 
 /obj/item/device/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
@@ -29,7 +29,7 @@
 	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!isrobot(M) && !isSynth(M))
+	if(!isrobot(M) && !issynth(M))
 		to_chat(user, SPAN_DANGER("You can't analyze non-robotic things!"))
 		return
 
@@ -58,7 +58,7 @@
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)
 
-	if (isSynth(M))
+	if (issynth(M))
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_limbs(1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage, Brute/Electronics:"),1)

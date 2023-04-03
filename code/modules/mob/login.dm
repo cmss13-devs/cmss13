@@ -28,7 +28,7 @@
 	reload_fullscreens()
 
 	if(length(client_color_matrices))
-		update_client_color_matrices(time = 0) //This mob has client colour matrices set, apply them instantly on login.
+		update_client_color_matrices(time = 0) //This mob has client color matrices set, apply them instantly on login.
 	else
 		update_client_color_matrices(time = 1.5 SECONDS) //Otherwise, fade any matrices from a previous mob.
 
@@ -45,8 +45,8 @@
 
 	if(isnewplayer(src))
 		check_event_info()
-	else if(isXeno(src))
-		var/mob/living/carbon/Xenomorph/X = src
+	else if(isxeno(src))
+		var/mob/living/carbon/xenomorph/X = src
 		check_event_info(X.hive.name)
 	else if(!isobserver(src) && faction)
 		check_event_info(faction)
@@ -59,4 +59,5 @@
 	client.init_verbs()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGIN, src)
+	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGIN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)

@@ -8,7 +8,7 @@
 	xeno_cooldown = 10
 
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 

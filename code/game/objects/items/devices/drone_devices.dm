@@ -28,8 +28,8 @@
 		/obj/item/clipboard,
 		/obj/item/paper,
 		/obj/item/paper_bundle,
-		/obj/item/card/id
-		)
+		/obj/item/card/id,
+	)
 
 /obj/item/device/gripper/attack_self(mob/user as mob)
 	..()

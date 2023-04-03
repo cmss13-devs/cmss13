@@ -40,7 +40,7 @@
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()
 
-/datum/wound/New(var/damage)
+/datum/wound/New(damage)
 	created = world.time
 
 	// reading from a list("stage" = damage) is pretty difficult, so build two separate
@@ -55,7 +55,7 @@
 	src.init_stage(damage)
 
 // returns 1 if there's a next stage, 0 otherwise
-/datum/wound/proc/init_stage(var/initial_damage)
+/datum/wound/proc/init_stage(initial_damage)
 	current_stage = stages.len
 
 	while(src.current_stage > 1 && src.damage_list[current_stage-1] <= initial_damage / src.amount)
@@ -82,7 +82,7 @@
 		return salved
 
 // Checks whether other other can be merged into src.
-/datum/wound/proc/can_merge(var/datum/wound/other)
+/datum/wound/proc/can_merge(datum/wound/other)
 	if (other.type != src.type) return 0
 	if (other.current_stage != src.current_stage) return 0
 	if (other.damage_type != src.damage_type) return 0
@@ -91,7 +91,7 @@
 	if (!(other.salved) != !(src.salved)) return 0
 	return 1
 
-/datum/wound/proc/merge_wound(var/datum/wound/other)
+/datum/wound/proc/merge_wound(datum/wound/other)
 	src.damage += other.damage
 	src.amount += other.amount
 	src.created = max(src.created, other.created) //take the newer created time
@@ -152,7 +152,7 @@
 //the damage amount for the stage with the same name as the wound.
 //e.g. /datum/wound/cut/deep should only be applied for 15 damage and up,
 //because in it's stages list, "deep cut" = 15.
-/proc/get_wound_type(var/type = CUT, var/damage)
+/proc/get_wound_type(type = CUT, damage)
 	switch(type)
 		if(CUT)
 			switch(damage)
@@ -248,7 +248,7 @@
 	damage_type = CUT
 	stages = list("ripped stump" = 65, "bloody stump" = 50, "clotted stump" = 25, "scarred stump" = 0)
 
-/datum/wound/lost_limb/can_merge(var/datum/wound/other)
+/datum/wound/lost_limb/can_merge(datum/wound/other)
 	return 0 //cannot be merged
 
 /datum/wound/lost_limb/small

@@ -114,3 +114,5 @@
 /datum/config_entry/string/nightmare_path
 	config_entry_value = "maps/Nightmare/"
 
+/datum/config_entry/flag/events_disallowed
+	config_entry_value = FALSE

@@ -31,7 +31,7 @@
 		add_underlay(T, turn(dir, -180))
 		add_underlay(T, dir)
 
-/obj/structure/pipes/binary/pump/hide(var/invis)
+/obj/structure/pipes/binary/pump/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/binary/pump/high_power
@@ -60,7 +60,7 @@
 		add_underlay(T, turn(dir, 180))
 		add_underlay(T, dir)
 
-/obj/structure/pipes/binary/passive_gate/hide(var/invis)
+/obj/structure/pipes/binary/passive_gate/hide(invis)
 	update_underlays()
 
 
@@ -69,7 +69,7 @@
 	desc = "A gas circulator pump and heat exchanger."
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "circ-off"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 
 /obj/structure/pipes/binary/circulator/New()

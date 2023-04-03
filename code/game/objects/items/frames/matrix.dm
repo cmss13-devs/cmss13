@@ -1,5 +1,5 @@
-/obj/item/frame/matrix
-	name = "Matrix frame"
+/obj/item/frame/matrix_frame
+	name = "matrix frame"
 	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted. "
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
@@ -9,11 +9,13 @@
 	var/power //power of the property
 	var/matrixcol // related to the upgrade color and zoom amount
 	var/matrixsize
+
 //Upgrade types
 //Matrix default - the default dropship camera system you start with
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
 //Matrix wide - gives a wider view which depends on the potency of the proeprty
-/obj/item/frame/matrix/attackby(var/obj/item/W, mob/user as mob)
+
+/obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
 			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && W.reagents.reagent_list.len == 1)

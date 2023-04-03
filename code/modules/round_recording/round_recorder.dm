@@ -43,7 +43,7 @@
 	export_data()
 
 // Begin tracking a mob if it isn't already being tracked
-/datum/round_recorder/proc/track_player(var/mob/M)
+/datum/round_recorder/proc/track_player(mob/M)
 	if(LAZYISIN(tracked_players, M))
 		return
 
@@ -56,9 +56,9 @@
 	var/player_squad = "none"
 	var/player_name = M.name
 
-	if(isXeno(M))
+	if(isxeno(M))
 		// Xeno role = their caste
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		player_role = X.caste_type
 
 		// Xeno name = their caste, pre-/postfix and number (because upgrades changes their name)
@@ -88,7 +88,7 @@
 	))
 
 // Stops tracking a mob completely
-/datum/round_recorder/proc/stop_tracking(var/mob/M)
+/datum/round_recorder/proc/stop_tracking(mob/M)
 	if(!M)
 		return
 
@@ -103,7 +103,7 @@
 	LAZYREMOVE(tracked_players, M)
 
 // Update the key playing the given mob
-/datum/round_recorder/proc/update_key(var/mob/M)
+/datum/round_recorder/proc/update_key(mob/M)
 	if(!M)
 		return
 
@@ -128,7 +128,7 @@
 	last_snapshot = world.time
 
 // Take a snapshot of a single player and add it to the player history
-/datum/round_recorder/proc/snapshot_player(var/mob/M)
+/datum/round_recorder/proc/snapshot_player(mob/M)
 	LAZYINITLIST(player_info)
 	var/list/history = LAZYACCESS(player_history, "[M.gid]")
 	if(!history)

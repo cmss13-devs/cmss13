@@ -48,7 +48,7 @@
 			. += pill_info
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!identificable)
 		return
@@ -223,6 +223,12 @@
 /obj/item/reagent_container/pill/happy
 	pill_desc = "A Happy Pill! Happy happy joy joy!"
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
+	pill_icon_class = "drug"
+
+/obj/item/reagent_container/pill/zombie_powder
+	desc = "A strange pill that smells like death itself."
+	pill_desc = "A strange pill that smells like death itself."
+	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
 	pill_icon_class = "drug"
 
 /obj/item/reagent_container/pill/russianRed

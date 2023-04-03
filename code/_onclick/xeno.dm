@@ -2,7 +2,7 @@
 	Xenomorph
 */
 
-/mob/living/carbon/Xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE)
+/mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE)
 	if(lying || burrow) //No attacks while laying down
 		return FALSE
 	var/mob/alt
@@ -54,9 +54,9 @@
 										firepatted = TRUE
 										fire.firelevel -= 2*fire_level_to_extinguish
 										fire.update_flame()
-									else 
+									else
 										qdel(fire)
-								else 
+								else
 									qdel(fire)
 				xeno_miss_delay(src)
 				animation_attack_on(target)
@@ -69,7 +69,7 @@
 					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
-/mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
+/mob/living/carbon/xenomorph/RangedAttack(atom/A)
 	. = ..()
 	if (.)
 		return
@@ -89,18 +89,18 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
+/mob/living/carbon/xenomorph/click(atom/A, list/mods)
 	if (queued_action)
 		handle_queued_action(A)
 		return TRUE
 
 	if (mods["alt"] && mods["shift"])
-		if (istype(A, /mob/living/carbon/Xenomorph))
-			var/mob/living/carbon/Xenomorph/X = A
+		if (istype(A, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/xenomorph/X = A
 
 			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
 				if (caste && istype(caste, /datum/caste_datum/queen))
-					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
+					var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
 					overwatch(X, FALSE)
 
 					if (oldXeno)
@@ -130,5 +130,5 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	return ..()
 
 //Larva attack, will default to attack_alien behaviour unless overriden
-/atom/proc/attack_larva(mob/living/carbon/Xenomorph/Larva/user)
+/atom/proc/attack_larva(mob/living/carbon/xenomorph/larva/user)
 	return attack_alien(user)

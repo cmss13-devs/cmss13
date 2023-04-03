@@ -22,7 +22,7 @@
 /obj/item/implanter/attack(mob/M as mob, mob/user as mob)
 	if (!istype(M, /mob/living/carbon/human))
 		return
-	if(isYautja(M))
+	if(isyautja(M))
 		return
 	if (user && src.imp)
 		user.visible_message(SPAN_WARNING("[user] is attemping to implant [M]."), SPAN_NOTICE("You're attemping to implant [M]."))

@@ -111,18 +111,18 @@
 	else
 		icon_state = "6_pack_[contents.len]"
 
-/obj/item/storage/box/m43
-	name = "M43-storing box"
-	desc = "A fairly decorated and ceremonial box containing a CLF M43 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
+/obj/item/storage/box/clf
+	name = "D18-storing box"
+	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_TINY
 	storage_slots = 2
 
-/obj/item/storage/box/m43/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/m43pistol(src)
-	new /obj/item/ammo_magazine/pistol/m43pistol(src)
+/obj/item/storage/box/clf/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/clfpistol(src)
+	new /obj/item/ammo_magazine/pistol/clfpistol(src)
 
 /obj/item/storage/box/c02_knife
 	name = "M8 cartridge bayonet packaging"

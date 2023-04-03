@@ -47,7 +47,7 @@
 		NE.pixel_y = -128
 		NE.vis_contents += elevator_animation
 
-/datum/shuttle/ferry/supply/short_jump(var/area/origin,var/area/destination)
+/datum/shuttle/ferry/supply/short_jump(area/origin, area/destination)
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -172,7 +172,7 @@
 	if(effective)
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
-/datum/shuttle/ferry/supply/proc/start_gears(var/direction = 1)
+/datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
 	for(var/obj/structure/machinery/gear/M in machines)
 		if(M.id == gear_id)
 			spawn()

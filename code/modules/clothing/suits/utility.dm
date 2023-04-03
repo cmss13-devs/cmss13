@@ -29,11 +29,11 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	slowdown = 1.0
+	slowdown = 1
 	flags_inventory = NOPRESSUREDMAGE
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
 /obj/item/clothing/suit/fire/equipped(mob/user, slot)
@@ -97,7 +97,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inv_hide = HIDEJUMPSUIT|HIDETAIL
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0
 
 
@@ -111,7 +111,7 @@
 	item_state = "bombsuitsec"
 	allowed = list(
 		/obj/item/weapon/gun,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 
 		/obj/item/device/flashlight,

@@ -16,7 +16,7 @@
 	desc = "A large storage machine containing various tools and devices for general repair."
 	icon_state = "tool"
 
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
 		list("Combat Flashlight", round(scale * 2), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
@@ -49,7 +49,7 @@
 	icon_state = "tool"
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
 		list("Utility Tool Belt", round(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
@@ -62,7 +62,11 @@
 		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
 		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
 		list("Multitool", round(scale * 4), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR)
+		list("ME3 Hand Welder", round(scale * 2), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
+
+		list("UTILITY", -1, null, null),
+		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
+		list("Sentry Gun Network Encryption Key", 4, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/circuits
@@ -70,7 +74,7 @@
 	desc = "A safe storage for pre-programmed circuit boards, it has an internal gyroscope to keep any external force from moving the boards, thick insulation and a custom 2.1mm UPS port for charging various W-Y exclusive devices (sold separately)."
 	icon_state = "robotics"
 
-/obj/structure/machinery/cm_vending/sorted/tech/circuits/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/circuits/populate_product_list(scale)
 	listed_products = list(
 		list("CIRCUITBOARDS", -1, null, null),
 		list("Fire Alarm", 5, /obj/item/circuitboard/firealarm, VENDOR_ITEM_REGULAR),
@@ -94,7 +98,7 @@
 	desc = "Spare tool vendor. What? Did you expect some witty description?"
 	icon_state = "engivend"
 
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/populate_product_list(scale)
 	listed_products = list(
 		list("TOOLS", -1, null, null),
 		list("Cable Coil", round(scale * 3), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
@@ -117,7 +121,7 @@
 	desc = "A large storage machine containing various components."
 	icon_state = "engi"
 
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/populate_product_list(scale)
 	listed_products = list(
 		list("ASSEMBLY COMPONENTS", -1, null, null),
 		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
@@ -149,7 +153,7 @@
 	icon_state = "robotics"
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
-/obj/structure/machinery/cm_vending/sorted/tech/science/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/science/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
 		list("Bio Hood", 2, /obj/item/clothing/head/bio_hood, VENDOR_ITEM_REGULAR),
@@ -170,7 +174,7 @@
 	icon_state = "robotics"
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
-/obj/structure/machinery/cm_vending/sorted/tech/robotics/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/tech/robotics/populate_product_list(scale)
 	listed_products = list(
 		list("EQUIPMENT", -1, null, null),
 		list("Labcoat", 2, /obj/item/clothing/suit/storage/labcoat, VENDOR_ITEM_REGULAR),

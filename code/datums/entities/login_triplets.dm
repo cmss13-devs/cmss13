@@ -11,13 +11,15 @@
 /datum/entity_meta/login_triplet
 	entity_type = /datum/entity/login_triplet
 	table_name = "login_triplets"
-	field_types = list("ckey" = DB_FIELDTYPE_STRING_MEDIUM,
+	field_types = list(
+		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"ip1" = DB_FIELDTYPE_INT,
 		"ip2" = DB_FIELDTYPE_INT,
 		"ip3" = DB_FIELDTYPE_INT,
 		"ip4" = DB_FIELDTYPE_INT,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
-		"login_date" = DB_FIELDTYPE_DATE)
+		"login_date" = DB_FIELDTYPE_DATE,
+	)
 
 /proc/record_login_triplet(ckey, last_known_ip, last_known_cid)
 	var/datum/entity/login_triplet/LT = DB_ENTITY(/datum/entity/login_triplet)

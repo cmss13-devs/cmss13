@@ -223,7 +223,7 @@
 	output_container.contents = vials
 
 
-/obj/structure/machinery/centrifuge/proc/split(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/split(obj/item/source_container, list/vials)
 //Split reagent types best possible, if we have move volume that types available, split volume best possible
 	for(var/datum/reagent/R in source_container.reagents.reagent_list)
 
@@ -257,7 +257,7 @@
 			V.update_icon()
 
 
-/obj/structure/machinery/centrifuge/proc/distribute(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/distribute(obj/item/source_container, list/vials)
 	for(var/obj/item/reagent_container/V in vials)
 		if(source_container.reagents.total_volume <= 0) //We're out
 			break

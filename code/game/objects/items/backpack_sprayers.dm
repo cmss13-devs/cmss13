@@ -251,11 +251,12 @@
 
 /obj/item/reagent_container/spray/mister/atmos/Initialize(mapload)
 	. = ..()
+	if(!istype(loc, /obj/item/reagent_container/glass/watertank/atmos))
+		return INITIALIZE_HINT_QDEL
+
 	tank = loc
 	nozzle_mode = tank.nozzle_mode
 
-/obj/item/reagent_container/spray/mister/atmos/Initialize()
-	. = ..()
 	initialize_internal_extinguisher()
 	update_icon()
 
@@ -307,7 +308,7 @@
 	update_icon()
 
 /obj/item/reagent_container/spray/mister/atmos/afterattack(atom/target, mob/user)
-	if(!isSynth(user))
+	if(!issynth(user))
 		to_chat(user, SPAN_WARNING("You have no idea how use \the [src]!"))
 		return
 	if(nozzle_mode == EXTINGUISHER)

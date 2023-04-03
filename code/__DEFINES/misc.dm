@@ -32,6 +32,8 @@
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
 
+#define EXPLOSION_MAX_POWER 5000
+
 //area flags
 
 /// used to make mobs skip bioscans
@@ -220,6 +222,9 @@
 #define GUN_CATEGORY_RIFLE 3
 #define GUN_CATEGORY_SHOTGUN 4
 #define GUN_CATEGORY_HEAVY 5
+
+// These guns can be used at maximum efficacy by untrained civilians.
+#define UNTRAINED_USABLE_CATEGORIES list(GUN_CATEGORY_HANDGUN, GUN_CATEGORY_SMG)
 
 /**
  * Get the ultimate area of `A`, similarly to [get_turf].

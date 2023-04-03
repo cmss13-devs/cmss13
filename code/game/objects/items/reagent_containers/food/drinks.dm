@@ -154,6 +154,7 @@
 	possible_transfer_amounts = null
 	volume = 150
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
+	black_market_value = 20
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
 	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."

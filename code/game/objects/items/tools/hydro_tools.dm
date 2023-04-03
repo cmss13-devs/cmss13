@@ -90,8 +90,8 @@
 	item_state = "hoe"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
@@ -108,13 +108,13 @@
 	flags_atom = FPRINT|CONDUCT
 	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
-	throwforce = 20.0
+	throwforce = 20
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	matter = list("metal" = 15000)
-	
+
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("chopped", "torn", "cut")
 
@@ -124,15 +124,15 @@
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "scythe"
-	force = 13.0
-	throwforce = 5.0
+	force = 13
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 3
 	w_class = SIZE_LARGE
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_BACK
-	
+
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
 /obj/item/tool/scythe/afterattack(atom/A, mob/user as mob, proximity)

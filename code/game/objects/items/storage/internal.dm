@@ -121,7 +121,7 @@
 	if(master_object.on_pocket_attackby(W,user))
 		. = ..()
 
-/obj/item/storage/internal/Adjacent(var/atom/neighbor)
+/obj/item/storage/internal/Adjacent(atom/neighbor)
 	return master_object.Adjacent(neighbor)
 
 /obj/item/storage/internal/open(mob/user)

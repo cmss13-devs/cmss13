@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(xeno)
 		currentrun = GLOB.xeno_mob_list.Copy()
 
 	while (currentrun.len)
-		var/mob/living/carbon/Xenomorph/M = currentrun[currentrun.len]
+		var/mob/living/carbon/xenomorph/M = currentrun[currentrun.len]
 		currentrun.len--
 
 		if (!M || QDELETED(M))

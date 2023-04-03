@@ -29,10 +29,10 @@
 #define VEHICLE_SPEED_DEBUGFAST  1
 
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_1  22.5
-#define VEHICLE_TRAMPLE_DAMAGE_TIER_2  18.0
+#define VEHICLE_TRAMPLE_DAMAGE_TIER_2  18
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_3  13.5
-#define VEHICLE_TRAMPLE_DAMAGE_SPECIAL 10.0 // Larva, Queen, Abomination, or Xenoborg
-#define VEHICLE_TRAMPLE_DAMAGE_MIN 5.0  // Minimum is 5% damage from a ram
+#define VEHICLE_TRAMPLE_DAMAGE_SPECIAL 10 // Larva, Queen, Abomination, or Xenoborg
+#define VEHICLE_TRAMPLE_DAMAGE_MIN 5  // Minimum is 5% damage from a ram
 
 #define VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION 0.2  // APC deals 1/5 of normal damage
 

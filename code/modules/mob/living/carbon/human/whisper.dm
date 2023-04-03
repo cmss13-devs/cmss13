@@ -25,14 +25,16 @@
 
 	//parse the language code and consume it
 	var/datum/language/speaking = parse_language(message)
-	if (speaking)
+	if(speaking)
 		message = copytext(message,3)
+	else
+		speaking = get_default_language()
 
 	whisper_say(message, speaking, alt_name)
 
 
 //This is used by both the whisper verb and human/say() to handle whispering
-/mob/living/carbon/human/proc/whisper_say(var/message, var/datum/language/speaking = null, var/alt_name="", var/verb="whispers")
+/mob/living/carbon/human/proc/whisper_say(message, datum/language/speaking = null, alt_name="", verb="whispers")
 	var/message_range = 1
 	var/eavesdropping_range = 2
 	var/watching_range = 5

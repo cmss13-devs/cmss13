@@ -80,12 +80,15 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
+	//current amount of survivors by type
+	var/list/survivors_by_type_amounts = list()
+
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_pooled_cutoff = 25 MINUTES //Time for when free pooled larvae stop spawning.
+	var/round_time_burrowed_cutoff = 25 MINUTES //Time for when free burrowed larvae stop spawning.
 
 	var/round_time_resin = 40 MINUTES //Time for when resin placing is allowed close to LZs
 
@@ -126,7 +129,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, var/ignore_pred_num = FALSE)
+/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
 	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
@@ -138,7 +141,7 @@ Additional game mode variables.
 	var/mob/new_player/new_pred
 	for(var/mob/player in GLOB.player_list)
 		if(!player.client) continue //No client. DCed.
-		if(isYautja(player)) continue //Already a predator. Might be dead, who knows.
+		if(isyautja(player)) continue //Already a predator. Might be dead, who knows.
 		if(readied) //Ready check for new players.
 			new_pred = player
 			if(!istype(new_pred)) continue //Have to be a new player here.
@@ -248,7 +251,7 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(var/list/hives = list(XENO_HIVE_NORMAL), var/force_xenos = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), force_xenos = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -291,13 +294,13 @@ Additional game mode variables.
 
 			if(!new_xeno)
 				hive.stored_larva++
-				hive.hive_ui.update_pooled_larva()
+				hive.hive_ui.update_burrowed_larva()
 				continue  //Looks like we didn't get anyone. Keep going.
 
 			setup_new_xeno(new_xeno)
 
 			xenomorphs[hive] += new_xeno
-		else //Out of candidates, fill the xeno hive with pooled larva
+		else //Out of candidates, fill the xeno hive with burrowed larva
 			remaining_slots = round((xeno_starting_num - i))
 			break
 
@@ -321,7 +324,7 @@ Additional game mode variables.
 	return 1
 
 // Helper proc to set some constants
-/proc/setup_new_xeno(var/datum/mind/new_xeno)
+/proc/setup_new_xeno(datum/mind/new_xeno)
 	new_xeno.roundstart_picked = TRUE
 	new_xeno.setup_xeno_stats()
 
@@ -335,11 +338,11 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
 			continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && ((!isXenoLarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (isXenoLarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
+		if(istype(X) && ((!islarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
 			if(!X.client)
 				available_xenos += X
 			else
@@ -349,7 +352,7 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.spawn_pool || (world.time < 30 MINUTES + SSticker.round_start_time)))
+		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < 30 MINUTES + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 				available_xenos |= "any buried larva"
 				LAZYADD(available_xenos["any buried larva"], hive)
@@ -359,10 +362,10 @@ Additional game mode variables.
 				available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!instant_join)
 		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
@@ -386,8 +389,8 @@ Additional game mode variables.
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
-				if(picked_hive.spawn_pool)
-					picked_hive.spawn_pool.spawn_pooled_larva(xeno_candidate)
+				if(picked_hive.hive_location)
+					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
 				else if((world.time < 30 MINUTES + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
@@ -398,7 +401,7 @@ Additional game mode variables.
 				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
 				return FALSE
 
-		if(!isXeno(userInput) || !xeno_candidate)
+		if(!isxeno(userInput) || !xeno_candidate)
 			return FALSE
 		new_xeno = userInput
 
@@ -419,15 +422,15 @@ Additional game mode variables.
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 				return FALSE
-			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
+			if((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
-				if(isXenoLarva(new_xeno))
+				if(islarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 				return FALSE
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
-			if(((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
+			if(((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 				return FALSE
 		else return FALSE
@@ -472,7 +475,7 @@ Additional game mode variables.
 	//We have our Hive picked, time to figure out what we can join via
 	var/list/available_facehugger_sources = list()
 
-	for(var/mob/living/carbon/Xenomorph/Carrier/carrier in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.totalXenos)
 		if(carrier.huggers_cur > carrier.huggers_reserved)
 			var/area_name = get_area_name(carrier)
 			var/descriptive_name = "[carrier.name] in [area_name]"
@@ -502,8 +505,8 @@ Additional game mode variables.
 		return FALSE
 
 	//Call the appropriate procs to spawn with
-	if(isXenoCarrier(facehugger_choice))
-		var/mob/living/carbon/Xenomorph/Carrier/carrier = facehugger_choice
+	if(iscarrier(facehugger_choice))
+		var/mob/living/carbon/xenomorph/carrier/carrier = facehugger_choice
 		carrier.join_as_facehugger_from_this(xeno_candidate)
 	else
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
@@ -511,8 +514,8 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
-	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
+/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
+	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))
@@ -547,15 +550,15 @@ Additional game mode variables.
 		new_xeno.client.change_view(world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
-	if(isXeno(new_xeno)) //Dear lord
-		var/mob/living/carbon/Xenomorph/X = new_xeno
+	if(isxeno(new_xeno)) //Dear lord
+		var/mob/living/carbon/xenomorph/X = new_xeno
 		X.generate_name()
 		if(X.is_ventcrawling)
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
 
 	var/mob/living/original = ghost_mind.current
@@ -598,13 +601,13 @@ Additional game mode variables.
 	transform_queen(ghost_mind, QS, hivenumber)
 	return QS
 
-/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
 
-	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen(xeno_turf, null, hivenumber)
+	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 
@@ -631,34 +634,47 @@ Additional game mode variables.
 // Used by XvX and Infection
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
-/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE, var/is_CO = FALSE, var/turf/xeno_turf)
+/datum/game_mode/proc/transform_survivor(datum/mind/ghost, is_synth = FALSE, is_CO = FALSE, turf/xeno_turf)
 	var/picked_spawn = null
 	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = xeno_turf
 	else
-		picked_spawn = pick(GLOB.survivor_spawns)
+		for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+			if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+				picked_spawn = pick(GLOB.survivor_spawns_by_priority["[priority]"])
+				break
 	if(istype(picked_spawn, /obj/effect/landmark/survivor_spawner))
 		return survivor_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE, var/is_CO = FALSE)
+/datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
+	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
+	var/preferred_variant = ANY_SURVIVOR
+	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
+		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+			preferred_variant = ANY_SURVIVOR
+
 	if(is_synth)
-		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+	else
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
 	var/not_a_xenomorph = TRUE
-	if(H.first_xeno)
+	if(equipping_human.first_xeno)
 		not_a_xenomorph = FALSE
-	arm_equipment(H, randjob, FALSE, not_a_xenomorph)
+	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
+	survivors_by_type_amounts[preferred_variant] += 1
 
-/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE, var/is_CO = FALSE)
+/datum/game_mode/proc/survivor_event_transform(mob/living/carbon/human/H, obj/effect/landmark/survivor_spawner/spawner, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawner))
 	var/not_a_xenomorph = TRUE
 	if(H.first_xeno)
@@ -811,3 +827,6 @@ Additional game mode variables.
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
 	return "Extended round has ended."
+
+/datum/game_mode/proc/get_escape_menu()
+	return "On the [SSmapping.configs[SHIP_MAP].map_name], orbiting..."

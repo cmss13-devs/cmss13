@@ -2,7 +2,7 @@
 	name = "R&D Device"
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	var/list/parts_to_build
 
@@ -174,7 +174,7 @@
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
@@ -185,7 +185,7 @@
 	icon_state = "server"
 	name = "Messaging Server"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100

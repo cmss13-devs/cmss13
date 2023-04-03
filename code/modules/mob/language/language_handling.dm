@@ -1,4 +1,4 @@
-/mob/proc/add_language(var/language)
+/mob/proc/add_language(language)
 	var/datum/language/new_language = GLOB.all_languages[language]
 
 	if(!istype(new_language) || (new_language in languages))
@@ -7,13 +7,13 @@
 	languages.Add(new_language)
 	return 1
 
-/mob/proc/set_languages(var/list/new_languages)
+/mob/proc/set_languages(list/new_languages)
 	languages = list()
 	for(var/language in new_languages)
 		add_language(language)
 
 
-/mob/proc/remove_language(var/rem_language)
+/mob/proc/remove_language(rem_language)
 	languages.Remove(GLOB.all_languages[rem_language])
 	return 0
 
@@ -39,7 +39,7 @@
 /datum/language_menu
 	var/mob/target_mob
 
-/datum/language_menu/New(var/mob/target)
+/datum/language_menu/New(mob/target)
 	. = ..()
 	target_mob = target
 

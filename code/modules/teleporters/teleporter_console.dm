@@ -13,7 +13,7 @@
 	linked_teleporter = null
 	. = ..()
 
-/obj/structure/machinery/computer/teleporter_console/attack_hand(var/mob/user)
+/obj/structure/machinery/computer/teleporter_console/attack_hand(mob/user)
 	if(..(user))
 		return
 
@@ -29,8 +29,8 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/teleporter_console/attack_alien(var/mob/living/carbon/Xenomorph/X)
-	if(!isXenoQueen(X))
+/obj/structure/machinery/computer/teleporter_console/attack_alien(mob/living/carbon/xenomorph/X)
+	if(!isqueen(X))
 		return FALSE
 	attack_hand(X)
 	return XENO_ATTACK_ACTION
@@ -166,7 +166,7 @@
 		..()
 
 
-/obj/structure/machinery/computer/teleporter_console/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/computer/teleporter_console/bullet_act(obj/item/projectile/P)
 	visible_message("[P] doesn't even scratch [src]!")
 	return FALSE
 

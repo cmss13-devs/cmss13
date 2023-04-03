@@ -19,7 +19,7 @@
 
 // Use this when setting the aiEye's location.
 // It will also stream the chunk that the new loc is in.
-/mob/aiEye/proc/setLoc(var/T, var/cancel_tracking = 1)
+/mob/aiEye/proc/setLoc(T, cancel_tracking = 1)
 
 	if(ai)
 		if(!isturf(ai.loc))

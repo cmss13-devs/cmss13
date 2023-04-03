@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
+
 /obj/structure/transmitter/hidden
 	callable = FALSE
 
@@ -72,22 +75,24 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	|| !T.enabled\
 )
 
-/proc/get_transmitters()
+/obj/structure/transmitter/proc/get_transmitters()
 	var/list/phone_list = list()
 
-	for(var/t in GLOB.transmitters)
-		var/obj/structure/transmitter/T = t
-		if(TRANSMITTER_UNAVAILABLE(T) || !T.callable) // Phone not available
+	for(var/possible_phone in GLOB.transmitters)
+		var/obj/structure/transmitter/target_phone = possible_phone
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
+			continue
+		if(!(target_phone.network_receive in networks_transmit))
 			continue
 
-		var/id = T.phone_id
+		var/id = target_phone.phone_id
 		var/num_id = 1
 		while(id in phone_list)
-			id = "[T.phone_id] [num_id]"
+			id = "[target_phone.phone_id] [num_id]"
 			num_id++
 
-		T.phone_id = id
-		phone_list[id] = T
+		target_phone.phone_id = id
+		phone_list[id] = target_phone
 
 	return phone_list
 
@@ -133,7 +138,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	.["transmitters"] = transmitters
 
-/obj/structure/transmitter/proc/call_phone(var/mob/living/carbon/human/user, calling_phone_id)
+/obj/structure/transmitter/proc/call_phone(mob/living/carbon/human/user, calling_phone_id)
 	var/list/transmitters = get_transmitters()
 	transmitters -= phone_id
 
@@ -202,13 +207,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		ui = new(user, src, "PhoneMenu", phone_id)
 		ui.open()
 
-/obj/structure/transmitter/proc/set_tether_holder(var/atom/A)
+/obj/structure/transmitter/proc/set_tether_holder(atom/A)
 	tether_holder = A
 
 	if(attached_to)
 		attached_to.reset_tether()
 
-/obj/structure/transmitter/proc/reset_call(var/timeout = FALSE)
+/obj/structure/transmitter/proc/reset_call(timeout = FALSE)
 	var/obj/structure/transmitter/T = get_calling_phone()
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
@@ -293,7 +298,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	return
 
-/obj/structure/transmitter/proc/handle_speak(var/message, var/datum/language/L, var/mob/speaking)
+/obj/structure/transmitter/proc/handle_speak(message, datum/language/L, mob/speaking)
 	if(L.flags & SIGNLANG) return
 
 	var/obj/structure/transmitter/T = get_calling_phone()
@@ -353,7 +358,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	remove_attached()
 	return ..()
 
-/obj/item/phone/proc/handle_speak(var/mob/speaking, var/message, var/datum/language/L)
+/obj/item/phone/proc/handle_speak(mob/speaking, message, datum/language/L)
 	SIGNAL_HANDLER
 
 	if(!attached_to || loc == attached_to)
@@ -362,7 +367,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	attached_to.handle_speak(message, L, speaking)
 
-/obj/item/phone/proc/handle_hear(var/message, var/datum/language/L, var/mob/speaking)
+/obj/item/phone/proc/handle_hear(message, datum/language/L, mob/speaking)
 	if(!attached_to)
 		return
 
@@ -389,7 +394,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		part_b = "</span><span class='message'> ", vname = vname,
 		speaker = speaking, command = loudness, no_paygrade = TRUE)
 
-/obj/item/phone/proc/attach_to(var/obj/structure/transmitter/to_attach)
+/obj/item/phone/proc/attach_to(obj/structure/transmitter/to_attach)
 	if(!istype(to_attach))
 		return
 
@@ -458,7 +463,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
 
 
-/obj/item/phone/proc/set_raised(var/to_raise, var/mob/living/carbon/human/H)
+/obj/item/phone/proc/set_raised(to_raise, mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -478,7 +483,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	H.update_inv_r_hand()
 	H.update_inv_l_hand()
 
-/obj/item/phone/dropped(var/mob/user)
+/obj/item/phone/dropped(mob/user)
 	. = ..()
 	UnregisterSignal(user, COMSIG_LIVING_SPEAK)
 
@@ -518,7 +523,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		return TRUE
 	return FALSE
 
-/obj/item/phone/proc/transmitter_move_handler(var/datum/source)
+/obj/item/phone/proc/transmitter_move_handler(datum/source)
 	SIGNAL_HANDLER
 	zlevel_transfer = FALSE
 	if(zlevel_transfer_timer)
@@ -532,6 +537,15 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
+
+/obj/structure/transmitter/colony_net
+	network_receive = FACTION_COLONIST
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary

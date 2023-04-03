@@ -40,7 +40,7 @@
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("beeps","clicks","chirps")
 
-/mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/spiderbot/attackby(obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
@@ -133,7 +133,7 @@
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
-/mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
+/mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
@@ -141,7 +141,7 @@
 		if(client) client.change_view(world_view_size)
 		src.name = "Spider-bot ([M.brainmob.name])"
 
-/mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
+/mob/living/simple_animal/spiderbot/proc/explode(cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."), SHOW_MESSAGE_VISIBLE)

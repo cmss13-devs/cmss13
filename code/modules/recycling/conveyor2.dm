@@ -7,7 +7,7 @@
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	layer = CONVEYOR_LAYER // so they appear under stuff
-	anchored = 1
+	anchored = TRUE
 	var/operating = 0 // 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1 // true if can operate (no broken segments in this belt run)
 	var/forwards // this is the default (forward) direction, set by the map dir
@@ -100,7 +100,7 @@
 				break
 
 // attack with item, place item on conveyor
-/obj/structure/machinery/conveyor/attackby(var/obj/item/I, mob/user)
+/obj/structure/machinery/conveyor/attackby(obj/item/I, mob/user)
 	if(isrobot(user)) return //Carn: fix for borgs dropping their modules on conveyor belts
 	var/obj/item/grab/G = I
 	if(istype(G)) // handle grabbed mob
@@ -185,7 +185,7 @@
 	var/id = "" // must match conveyor IDs to control them
 
 	var/list/conveyors // the list of converyors that are controlled by this switch
-	anchored = 1
+	anchored = TRUE
 
 
 

@@ -42,7 +42,7 @@
 	var/uploading = FALSE
 	value = OBJECTIVE_EXTREME_VALUE
 
-/datum/cm_objective/retrieve_data/terminal/New(var/obj/structure/machinery/computer/objective/D)
+/datum/cm_objective/retrieve_data/terminal/New(obj/structure/machinery/computer/objective/D)
 	. = ..()
 	terminal = D
 	initial_area = get_area(terminal)
@@ -101,7 +101,7 @@
 	var/obj/item/disk/objective/disk
 	value = OBJECTIVE_HIGH_VALUE
 
-/datum/cm_objective/retrieve_data/disk/New(var/obj/item/disk/objective/O)
+/datum/cm_objective/retrieve_data/disk/New(obj/item/disk/objective/O)
 	. = ..()
 	disk = O
 	initial_area = get_area(disk)
@@ -296,7 +296,7 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(disk)
 		to_chat(user, SPAN_NOTICE("[disk] is currently being uploaded to ARES."))

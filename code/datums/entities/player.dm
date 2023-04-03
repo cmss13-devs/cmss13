@@ -52,7 +52,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	entity_type = /datum/entity/player
 	table_name = "players"
 	key_field = "ckey"
-	field_types = list("ckey" = DB_FIELDTYPE_STRING_MEDIUM,
+	field_types = list(
+		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
 		"last_login" = DB_FIELDTYPE_STRING_LARGE,
@@ -68,7 +69,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"migrated_notes" = DB_FIELDTYPE_INT,
 		"migrated_bans" = DB_FIELDTYPE_INT,
 		"migrated_jobbans" = DB_FIELDTYPE_INT,
-		"stickyban_whitelisted" = DB_FIELDTYPE_INT)
+		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
+	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
 // is_ban DOES NOT MEAN THAT NOTE IS _THE_ BAN, IT MEANS THAT NOTE WAS CREATED FOR A BAN
@@ -87,7 +89,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
+		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
 	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
@@ -128,7 +130,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	message_staff("[key_name_admin(admin)] deleted one of [ckey]'s notes.")
+	message_admins("[key_name_admin(admin)] deleted one of [ckey]'s notes.")
 	// get note from our list
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
 	// de-list it
@@ -153,7 +155,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		AddBan(ckey, last_known_cid, ban_text, admin.ckey, 1, duration, last_known_ip)
 		notes_add(ckey, "Banned by [admin.ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]", usr)
 
-	message_staff("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
+	message_admins("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
 	ban_unban_log_save("[admin.ckey] has banned [ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]")
 
 	add_note(ban_text, FALSE, NOTE_ADMIN, TRUE, duration)
@@ -192,7 +194,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		message_admins(SPAN_WARNING("CANNOT REMOVE BANS FROM OLD BAN MANAGER. If you see this during test period - reapply unban after test round is done."), 1)
 
 	ban_unban_log_save("[key_name(admin)] removed [ckey]'s ban.")
-	message_staff("[key_name_admin(admin)] removed [ckey]'s ban.", 1)
+	message_admins("[key_name_admin(admin)] removed [ckey]'s ban.", 1)
 
 	time_ban_date = null
 	time_ban_expiration = null
@@ -204,7 +206,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return TRUE
 
-/datum/entity/player/proc/add_job_ban(ban_text, var/list/ranks, duration = null)
+/datum/entity/player/proc/add_job_ban(ban_text, list/ranks, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
@@ -327,7 +329,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			note.load_refs()
 	refs_loaded = TRUE
 
-/datum/entity_meta/player/on_read(var/datum/entity/player/player)
+/datum/entity_meta/player/on_read(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
 	player.notes_loaded = FALSE
@@ -346,7 +348,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	player.auto_unban()
 
-/datum/entity_meta/player/on_insert(var/datum/entity/player/player)
+/datum/entity_meta/player/on_insert(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
 	player.notes_loaded = FALSE
@@ -383,12 +385,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 
 
-/datum/entity/player/proc/on_read_notes(var/list/datum/entity/player_note/_notes)
+/datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
 	if(notes)
 		notes = _notes
 
-/datum/entity/player/proc/on_read_job_bans(var/list/datum/entity/player_job_ban/_job_bans)
+/datum/entity/player/proc/on_read_job_bans(list/datum/entity/player_job_ban/_job_bans)
 	jobbans_loaded = TRUE
 	if(_job_bans)
 		for(var/datum/entity/player_job_ban/JB in _job_bans)
@@ -397,7 +399,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	auto_unjobban()
 
-/datum/entity/player/proc/on_read_timestat(var/list/datum/entity/player_time/_stat)
+/datum/entity/player/proc/on_read_timestat(list/datum/entity/player_time/_stat)
 	playtime_loaded = TRUE
 	if(_stat) // Viewable playtime statistics are only loaded when the player connects, as they do not need constant updates since playtime is a statistic that is recorded over a long period of time
 		LAZYSET(playtime_data, "category", 0)
@@ -409,7 +411,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
 
-/datum/entity/player/proc/on_read_stats(var/list/datum/entity/player_stat/_stat)
+/datum/entity/player/proc/on_read_stats(list/datum/entity/player_stat/_stat)
 	if(_stat)
 		for(var/datum/entity/player_stat/S as anything in _stat)
 			LAZYSET(stats, S.stat_id, S)
@@ -430,7 +432,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	WAIT_DB_READY
 	load_player_data_info(get_player_from_key(ckey))
 
-/client/proc/load_player_data_info(var/datum/entity/player/player)
+/client/proc/load_player_data_info(datum/entity/player/player)
 	if(ckey != player.ckey)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
@@ -442,7 +444,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(var/computer_id, var/address)
+/datum/entity/player/proc/check_ban(computer_id, address)
 	. = list()
 
 	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
@@ -467,7 +469,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 				source_ckey = SLW.ckey
 
 			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
-			message_staff("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
+			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
 
 			DB_FILTER(/datum/entity/player_sticky_ban,
 				DB_AND(
@@ -488,7 +490,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(is_permabanned)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
+		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
 		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
 		.["reason"] = "ckey/id"
 		return .
@@ -505,7 +507,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		else
 			timeleftstring = "[time_left] Minutes"
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
+		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
 		.["desc"] = "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"] = "ckey/id"
 		return .
@@ -633,7 +635,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	migrated_jobbans = TRUE
 	save()
 
-/datum/entity/player/proc/adjust_stat(var/stat_id, var/stat_category, var/num, var/set_to_num = FALSE)
+/datum/entity/player/proc/adjust_stat(stat_id, stat_category, num, set_to_num = FALSE)
 	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
 	if(!stat)
 		stat = DB_ENTITY(/datum/entity/player_stat)

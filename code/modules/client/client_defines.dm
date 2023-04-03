@@ -128,3 +128,6 @@
 
 	/// Does this client have typing indicators enabled?
 	var/typing_indicators = TRUE
+
+	///datum that controls the displaying and hiding of tooltips
+	var/datum/tooltip/tooltips

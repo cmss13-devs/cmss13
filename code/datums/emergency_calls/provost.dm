@@ -8,7 +8,7 @@
 	probability = 0
 
 
-/datum/emergency_call/provost_enforcer/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/provost_enforcer/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
@@ -29,7 +29,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Team Leader!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/provost_enforcer/spawn_items()

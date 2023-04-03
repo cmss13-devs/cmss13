@@ -3,7 +3,7 @@
 	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/blood.dmi'
@@ -128,7 +128,7 @@
 	desc = "They look bloody and gruesome."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "gibbl5"
@@ -163,7 +163,7 @@
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
 
-/obj/effect/decal/cleanable/blood/gibs/proc/streak(var/list/directions)
+/obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
 	var/direction = pick(directions)
 	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
 		sleep(3)

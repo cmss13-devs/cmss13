@@ -39,7 +39,7 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/primary/dualcannon/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/primary/dualcannon/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 

@@ -17,10 +17,10 @@
 	//So the scrubbers have time to spawn
 	addtimer(CALLBACK(src, PROC_REF(scanscrubbers)), 10)
 
-/obj/structure/machinery/computer/area_atmos/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/area_atmos/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/computer/area_atmos/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/area_atmos/attack_hand(mob/user as mob)
 	if(..(user))
 		return
 	src.add_fingerprint(usr)
@@ -105,7 +105,7 @@
 		scrubber.on = text2num(href_list["toggle"])
 		scrubber.update_icon()
 
-/obj/structure/machinery/computer/area_atmos/proc/validscrubber( var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
+/obj/structure/machinery/computer/area_atmos/proc/validscrubber(obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
 	if(!isobj(scrubber) || get_dist(scrubber.loc, src.loc) > src.range || scrubber.loc.z != src.loc.z)
 		return 0
 
@@ -129,7 +129,7 @@
 /obj/structure/machinery/computer/area_atmos/area
 	zone = "This computer is working in a wired network limited to this area."
 
-/obj/structure/machinery/computer/area_atmos/area/validscrubber( var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
+/obj/structure/machinery/computer/area_atmos/area/validscrubber(obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
 	if(!isobj(scrubber))
 		return 0
 

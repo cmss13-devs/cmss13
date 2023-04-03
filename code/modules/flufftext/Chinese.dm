@@ -14,7 +14,7 @@
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high
 #define CHINESE_SOUND_ZERO_INITIAL_CHANCE 15
 
-/proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 35;2, 5;3))
+/proc/randomly_generate_chinese_word(syllables = pick(60;1, 35;2, 5;3))
 	var/datum/chinese_syllable/C = new /datum/chinese_syllable
 	if(syllables == 1) //only one syllable, no need for a loop
 		C.randomly_generate_chinese_syllable()

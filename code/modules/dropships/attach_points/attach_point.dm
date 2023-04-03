@@ -57,10 +57,10 @@
 	installed_equipment = SE
 	SE.ship_base = src
 
-	for(var/datum/shuttle/ferry/marine/S in shuttle_controller.process_shuttles)
-		if(S.shuttle_tag == ship_tag)
-			SE.linked_shuttle = S
-			S.equipments += SE
+	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
+		if(shuttle.id == ship_tag)
+			SE.linked_shuttle = shuttle
+			shuttle.equipments += SE
 			break
 
 	SE.update_equipment()

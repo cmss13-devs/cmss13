@@ -10,8 +10,6 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey = null
 
-	var/list/datum/marked_datums = list()
-
 	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
@@ -19,10 +17,14 @@ GLOBAL_PROTECT(href_token)
 
 	var/href_token
 
+	var/datum/marked_datum
+	var/list/datum/tagged_datums
+
 	///Whether this admin is invisiminning
 	var/invisimined = FALSE
 
 	var/datum/filter_editor/filteriffic
+	var/datum/particle_editor/particle_test
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey, list/new_extra_titles)
 	if(!ckey)
@@ -46,6 +48,8 @@ GLOBAL_PROTECT(href_token)
 		owner.admin_holder = src
 		owner.add_admin_verbs()
 		owner.add_admin_whitelists()
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
 			if(!world.GetConfig("admin", C.ckey))
@@ -56,6 +60,8 @@ GLOBAL_PROTECT(href_token)
 		GLOB.admins -= owner
 		owner.remove_admin_verbs()
 		owner.admin_holder = null
+		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		owner = null
 
 /*
@@ -71,7 +77,7 @@ generally it would be used like so:
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
 you will have to do something like if(client.admin_holder.rights & R_ADMIN) yourself.
 */
-/proc/check_client_rights(var/client/C, rights_required, show_msg = TRUE)
+/proc/check_client_rights(client/C, rights_required, show_msg = TRUE)
 	if(!C)
 		return FALSE
 
@@ -137,6 +143,17 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(rights_required && !(rights_required & rights))
 		return FALSE
 	return TRUE
+
+/// gets the role dependant data for tgui-say
+/datum/admins/proc/get_tgui_say_roles()
+	var/roles = list()
+	if(check_for_rights(R_ADMIN))
+		roles += "Admin"
+	if(check_for_rights(R_MOD))
+		roles += "Mod"
+	if(check_for_rights(R_MENTOR))
+		roles += "Mentor"
+	return roles
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

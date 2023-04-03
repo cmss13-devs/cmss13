@@ -45,7 +45,7 @@
 	W.time_inflicted = time_inflicted
 	return W
 
-/obj/item/device/autopsy_scanner/proc/add_data(var/obj/limb/O)
+/obj/item/device/autopsy_scanner/proc/add_data(obj/limb/O)
 	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
 
 	for(var/V in O.autopsy_data)
@@ -192,7 +192,7 @@
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		to_chat(user, SPAN_DANGER("A new patient has been registered.. Purging data for previous patient."))
+		to_chat(user, SPAN_DANGER("A new patient has been registered. Purging data for previous patient."))
 
 	src.timeofdeath = M.timeofdeath
 

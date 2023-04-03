@@ -28,7 +28,7 @@
 		"8" = list(-3, 18)
 	)
 
-/obj/item/hardpoint/secondary/small_flamer/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/small_flamer/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)

@@ -33,6 +33,7 @@
 #define RADIO_CHANNEL_MP "MP"
 #define RADIO_CHANNEL_NORMANDY "Normandy"
 #define RADIO_CHANNEL_REQ "Req"
+#define RADIO_CHANNEL_SENTRY "Sentry Network"
 #define RADIO_CHANNEL_SPECIAL "special"
 
 //CLF Comms
@@ -62,5 +63,6 @@
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
+#define RADIO_CHANNEL_CMB "CMB"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"

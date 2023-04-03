@@ -64,7 +64,7 @@
 	return max(avail - load, 0)
 
 //Attempts to draw power from a powernet. Returns the actual amount of power drawn
-/datum/powernet/proc/draw_power(var/requested_amount)
+/datum/powernet/proc/draw_power(requested_amount)
 	var/surplus = max(avail - newload, 0)
 	var/actual_draw = min(requested_amount, surplus)
 	newload += actual_draw

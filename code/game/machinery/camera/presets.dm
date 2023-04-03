@@ -61,7 +61,7 @@
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
+/obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
 		status = TRUE
 	else
@@ -104,7 +104,7 @@
 	unacidable = TRUE
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden

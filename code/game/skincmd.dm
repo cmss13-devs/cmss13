@@ -1,11 +1,11 @@
 /mob/var/skincmds = list()
-/obj/proc/SkinCmd(mob/user as mob, var/data as text)
+/obj/proc/SkinCmd(mob/user as mob, data as text)
 
-/proc/SkinCmdRegister(var/mob/user, var/name as text, var/O as obj)
+/proc/SkinCmdRegister(mob/user, name as text, O as obj)
 			user.skincmds[name] = O
 
 /mob/verb/skincmd(data as text)
-	set hidden = 1
+	set hidden = TRUE
 
 	var/ref = copytext(data, 1, findtext(data, ";"))
 	if (src.skincmds[ref] != null)

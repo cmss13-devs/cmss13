@@ -22,7 +22,7 @@
 /datum/db/connection_settings/native
 	var/filename
 
-/datum/db/connection_settings/native/New(var/list/config)
+/datum/db/connection_settings/native/New(list/config)
 	..()
 	filename = config["db_filename"]
 

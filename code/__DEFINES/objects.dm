@@ -160,3 +160,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define OBJ_IS_HELMET_GARB (1<<2)
 /// can you customize the description/name of the thing?
 #define OBJ_UNIQUE_RENAME (1<<3)
+
+// For reinforced table status
+#define RTABLE_WEAKENED 1
+#define RTABLE_NORMAL 2

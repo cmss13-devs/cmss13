@@ -29,12 +29,10 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	msg = "Edit"
 	return msg
 
-/*
 /datum/controller/global_vars/vv_edit_var(var_name, var_value)
 	if(gvars_datum_protected_varlist[var_name])
 		return FALSE
 	return ..()
-*/
 
 /datum/controller/global_vars/Initialize()
 	gvars_datum_init_order = list()

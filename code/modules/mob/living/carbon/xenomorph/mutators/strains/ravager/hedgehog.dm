@@ -1,7 +1,7 @@
 /datum/xeno_mutator/hedgehog
 	name = "STRAIN: Ravager - Hedgehog"
-	description = "You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these to power several abilities, offensive and defensive in nature."
-	flavor_description = "In the midst of the Chaos of the battlefield, there is also opportunity."
+	description = "You lose your empower, charge, and scissor cut and a decent amount of your speed for a bit more explosive resistance, immunity to small explosions, and you gain several new abilities that allow you to become a spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these shards to power three new abilities: Spike Shield, which gives you a temporary shield that spits bone shards around you when damaged, Fire Spikes, which launches spikes at your target that slows them and does extra damage if they move, and finally, Spike Shed, which launches spikes all around yourself and gives you a temporary speed boost as an escape plan at the cost of all your stored shards and being unable to gain shards for thirty seconds."
+	flavor_description = "They will be of iron will and steely muscle. In great armour shall they be clad, and with the mightiest spikes will they be armed."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RAVAGER) // Only Ravager.
@@ -23,7 +23,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
 
 	ravager.mutation_type = RAVAGER_HEDGEHOG
 	ravager.plasma_max = 0

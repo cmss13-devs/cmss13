@@ -15,6 +15,14 @@
 
 	can_be_near_defense = TRUE
 
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -72,7 +80,7 @@
 
 		apply_buff_to_player(H)
 
-/obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(var/mob/living/carbon/human/H)
+/obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 1.5 SECONDS)
 
@@ -95,7 +103,7 @@
 	handheld_type = /obj/item/defenses/handheld/planted_flag/warbanner
 	defense_type = "Warbanner"
 
-/obj/structure/machinery/defenses/planted_flag/warbanner/apply_buff_to_player(var/mob/living/carbon/human/H)
+/obj/structure/machinery/defenses/planted_flag/warbanner/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 5 SECONDS)

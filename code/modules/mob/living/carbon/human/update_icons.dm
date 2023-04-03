@@ -90,7 +90,7 @@ There are several things that need to be remembered:
 		overlays_standing[cache_index] = null
 
 
-/mob/living/carbon/human/update_transform(var/force = FALSE)
+/mob/living/carbon/human/update_transform(force = FALSE)
 	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying

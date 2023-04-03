@@ -12,8 +12,9 @@
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
 		TRAIT_FOREIGN_BIO,
-		TRAIT_DEXTROUS
-		)
+		TRAIT_DEXTROUS,
+		TRAIT_EMOTE_CD_EXEMPT,
+	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
@@ -47,8 +48,8 @@
 		/mob/living/carbon/human/proc/unmark_dishonored,
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
-		/mob/living/carbon/human/proc/mark_panel
-		)
+		/mob/living/carbon/human/proc/mark_panel,
+	)
 
 	knock_down_reduction = 4
 	stun_reduction = 4
@@ -90,7 +91,7 @@
 
 	ignores_stripdrag_flag = TRUE
 
-/datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
+/datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
 	if(!istype(hive))
@@ -108,7 +109,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
 
-/datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
 	if(gibbed)
 		GLOB.yautja_mob_list -= H
 
@@ -139,13 +140,13 @@
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
 
-/datum/species/yautja/handle_dead_death(var/mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_dead_death(mob/living/carbon/human/H, gibbed)
 	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
 
-/datum/species/yautja/handle_cryo(var/mob/living/carbon/human/H)
+/datum/species/yautja/handle_cryo(mob/living/carbon/human/H)
 	set_predator_status(H, "Cryo")
 
-/datum/species/yautja/proc/set_predator_status(var/mob/living/carbon/human/H, var/status = "Alive")
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
 	if(!H.persistent_ckey)
 		return
 	var/datum/game_mode/GM
@@ -179,7 +180,7 @@
 				L.max_damage = 35
 		L.time_to_knit = -1
 
-/datum/species/yautja/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
 	GLOB.alive_human_list -= H
 	H.universal_understand = 1
 
@@ -208,7 +209,7 @@
 	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()
 
-/datum/species/yautja/get_hairstyle(var/style)
+/datum/species/yautja/get_hairstyle(style)
 	return GLOB.yautja_hair_styles_list[style]
 
 /datum/species/yautja/handle_on_fire(humanoidmob)

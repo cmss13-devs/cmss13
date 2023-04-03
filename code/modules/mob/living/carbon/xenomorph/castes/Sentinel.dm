@@ -25,8 +25,11 @@
 	tacklestrength_max = 4
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
+	minimap_icon = "sentinel"
 
-/mob/living/carbon/Xenomorph/Sentinel
+	minimum_evolve_time = 5 MINUTES
+
+/mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL
 	desc = "A slithery, spitting kind of alien."
@@ -47,7 +50,7 @@
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SENTINEL_NORMAL
 
@@ -66,7 +69,7 @@
 	if (!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(carbon_target))
+	if (!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))

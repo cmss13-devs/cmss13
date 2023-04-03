@@ -7,7 +7,7 @@
 	icon_state = "van_right_1"
 	density = TRUE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WINDOW_LAYER
 	flags_atom = NOINTERACT

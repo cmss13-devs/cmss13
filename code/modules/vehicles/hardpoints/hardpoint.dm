@@ -154,7 +154,7 @@
 	if(health > 0)
 		return TRUE
 
-/obj/item/hardpoint/proc/take_damage(var/damage)
+/obj/item/hardpoint/proc/take_damage(damage)
 	health = max(0, health - damage * damage_multiplier)
 
 /obj/item/hardpoint/proc/is_activatable()
@@ -166,16 +166,16 @@
 /obj/item/hardpoint/proc/get_integrity_percent()
 	return 100.0*health/initial(health)
 
-/obj/item/hardpoint/proc/on_install(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/on_install(obj/vehicle/multitile/V)
 	apply_buff(V)
 	return
 
-/obj/item/hardpoint/proc/on_uninstall(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/on_uninstall(obj/vehicle/multitile/V)
 	remove_buff(V)
 	return
 
 //applying passive buffs like damage type resistance, speed, accuracy, cooldowns
-/obj/item/hardpoint/proc/apply_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/apply_buff(obj/vehicle/multitile/V)
 	if(buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -187,7 +187,7 @@
 	buff_applied = TRUE
 
 //removing buffs
-/obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/remove_buff(obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -199,7 +199,7 @@
 	buff_applied = FALSE
 
 //this proc called on each move of vehicle
-/obj/item/hardpoint/proc/on_move(var/turf/old, var/turf/new_turf, var/move_dir)
+/obj/item/hardpoint/proc/on_move(turf/old, turf/new_turf, move_dir)
 	return
 
 /obj/item/hardpoint/proc/get_root_origins()
@@ -209,7 +209,7 @@
 /obj/item/hardpoint/proc/reset_rotation()
 	rotate(turning_angle(dir, SOUTH))
 
-/obj/item/hardpoint/proc/rotate(var/deg)
+/obj/item/hardpoint/proc/rotate(deg)
 	if(!deg)
 		return
 
@@ -231,20 +231,30 @@
 	// Update dir
 	setDir(turn(dir, deg))
 
-//for status window
-/obj/item/hardpoint/proc/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "[name]<br>"
+//for le tgui
+/obj/item/hardpoint/proc/get_tgui_info()
+	var/list/data = list()
+
+	data["name"] = name
+
 	if(health <= 0)
-		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
+		data["health"] = null
 	else
-		dat += "Integrity: [round(get_integrity_percent())]%"
-		if(ammo)
-			dat += " | Ammo: [ammo ? (ammo.current_rounds ? ammo.current_rounds : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
-	return dat
+		data["health"] = round(get_integrity_percent())
+
+	if(ammo)
+		data["uses_ammo"] = TRUE
+		data["current_rounds"] = ammo.current_rounds
+		data["max_rounds"] = ammo.max_rounds
+		data["mags"] = LAZYLEN(backup_clips)
+		data["max_mags"] = max_clips
+	else
+		data["uses_ammo"] = FALSE
+
+	return data
 
 // Traces backwards from the gun origin to the vehicle to check for obstacles between the vehicle and the muzzle
-/obj/item/hardpoint/proc/clear_los(var/atom/A)
+/obj/item/hardpoint/proc/clear_los(atom/A)
 
 	if(origins[1] == 0 && origins[2] == 0) //skipping check for modules we don't need this
 		return TRUE
@@ -288,7 +298,7 @@
 //-----------------------------
 
 //If the hardpoint can be activated by current user
-/obj/item/hardpoint/proc/can_activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/proc/can_activate(mob/user, atom/A)
 	if(!owner)
 		return
 
@@ -325,14 +335,14 @@
 
 //Called when you want to activate the hardpoint, by default firing a gun
 //This can also be used for some type of temporary buff or toggling mode, up to you
-/obj/item/hardpoint/proc/activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/proc/activate(mob/user, atom/A)
 	fire(user, A)
 
 /obj/item/hardpoint/proc/deactivate()
 	return
 
 //used during bumping. Every mob we bump is getting affected by this proc from every module.
-/obj/item/hardpoint/proc/livingmob_interact(var/mob/living/M)
+/obj/item/hardpoint/proc/livingmob_interact(mob/living/M)
 	return
 
 //examining a hardpoint
@@ -344,7 +354,7 @@
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
-/obj/item/hardpoint/proc/reload(var/mob/user)
+/obj/item/hardpoint/proc/reload(mob/user)
 	if(!LAZYLEN(backup_clips))
 		to_chat(usr, SPAN_WARNING("\The [name] has no remaining backup clips."))
 		return
@@ -366,7 +376,7 @@
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
-/obj/item/hardpoint/proc/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)
+/obj/item/hardpoint/proc/try_add_clip(obj/item/ammo_magazine/A, mob/user)
 	if(!ammo)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition."))
 		return FALSE
@@ -394,7 +404,7 @@
 	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo.current_rounds)]/[SPAN_HELPFUL(ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 	return TRUE
 
-/obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
+/obj/item/hardpoint/attackby(obj/item/O, mob/user)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -404,7 +414,7 @@
 	..()
 
 //repair procs
-/obj/item/hardpoint/proc/handle_repair(var/obj/item/tool/weldingtool/WT, var/mob/user)
+/obj/item/hardpoint/proc/handle_repair(obj/item/tool/weldingtool/WT, mob/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -481,7 +491,7 @@
 	return
 
 //determines whether something is in firing arc of a hardpoint
-/obj/item/hardpoint/proc/in_firing_arc(var/atom/A)
+/obj/item/hardpoint/proc/in_firing_arc(atom/A)
 	if(!owner)
 		return FALSE
 
@@ -518,7 +528,7 @@
 	return abs(angle) <= (firing_arc/2)
 
 //doing last preparation before actually firing gun
-/obj/item/hardpoint/proc/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/proc/fire(mob/user, atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -534,7 +544,7 @@
 	to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
 //finally firing the gun
-/obj/item/hardpoint/proc/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/proc/fire_projectile(mob/user, atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
@@ -566,7 +576,7 @@
 	return I
 
 //Returns the image object to overlay onto the root object
-/obj/item/hardpoint/proc/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
+/obj/item/hardpoint/proc/get_icon_image(x_offset, y_offset, new_dir)
 	var/is_broken = health <= 0
 	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 	switch(round((health / initial(health)) * 100))
@@ -583,7 +593,7 @@
 	return I
 
 // debug proc
-/obj/item/hardpoint/proc/set_offsets(var/dir, var/x, var/y)
+/obj/item/hardpoint/proc/set_offsets(dir, x, y)
 	if(isnull(px_offsets))
 		px_offsets = list(
 			"1" = list(0, 0),
@@ -595,7 +605,7 @@
 
 	owner.update_icon()
 
-/obj/item/hardpoint/proc/muzzle_flash(var/angle)
+/obj/item/hardpoint/proc/muzzle_flash(angle)
 	if(isnull(angle)) return
 
 	// The +48 and +64 centers the muzzle flash
@@ -624,7 +634,7 @@
 	I.flick_overlay(owner, 3)
 
 // debug proc
-/obj/item/hardpoint/proc/set_mf_offset(var/dir, var/x, var/y)
+/obj/item/hardpoint/proc/set_mf_offset(dir, x, y)
 	if(!muzzle_flash_pos)
 		muzzle_flash_pos = list(
 			"1" = list(0,0),
@@ -636,11 +646,11 @@
 	muzzle_flash_pos[dir] = list(x,y)
 
 // debug proc
-/obj/item/hardpoint/proc/set_mf_use_px(var/use)
+/obj/item/hardpoint/proc/set_mf_use_px(use)
 	use_mz_px_offsets = use
 
 // debug proc
-/obj/item/hardpoint/proc/set_mf_use_trt(var/use)
+/obj/item/hardpoint/proc/set_mf_use_trt(use)
 	use_mz_trt_offsets = use
 
 /obj/item/hardpoint/get_applying_acid_time()

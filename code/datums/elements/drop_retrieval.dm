@@ -38,7 +38,7 @@
 	compatible_types = list(/obj/item/weapon/gun)
 	var/retrieval_slot
 
-/datum/element/drop_retrieval/gun/Attach(datum/target, var/slot)
+/datum/element/drop_retrieval/gun/Attach(datum/target, slot)
 	. = ..()
 	if(.)
 		return

@@ -6,7 +6,7 @@
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>", confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound via youtube-dl") as text|null
@@ -16,8 +16,8 @@
 	web_sound_input = trim(web_sound_input)
 
 	if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-		to_chat(src, "<span class='warning'>Non-http(s) URIs are not allowed.</span>")
-		to_chat(src, "<span class='warning'>For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website.</span>")
+		to_chat(src, SPAN_WARNING("Non-http(s) URIs are not allowed."))
+		to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
 		return
 
 	var/web_sound_url = ""
@@ -30,14 +30,14 @@
 	var/stderr = output[SHELLEO_STDERR]
 
 	if(errorlevel)
-		to_chat(src, "<span class='warning'>Youtube-dl URL retrieval FAILED: [stderr]</span>")
+		to_chat(src, SPAN_WARNING("Youtube-dl URL retrieval FAILED: [stderr]"))
 		return
 
 	var/list/data = list()
 	try
 		data = json_decode(stdout)
 	catch(var/exception/e)
-		to_chat(src, "<span class='warning'>Youtube-dl JSON parsing FAILED: [e]: [stdout]</span>")
+		to_chat(src, SPAN_WARNING("Youtube-dl JSON parsing FAILED: [e]: [stdout]"))
 		return
 
 	if(data["url"])
@@ -49,8 +49,8 @@
 		music_extra_data["end"] = data["end_time"]
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>", confidential = TRUE)
-		to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>", confidential = TRUE)
+		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
+		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
 		return
 
 	var/list/targets = list()
@@ -170,7 +170,7 @@
 			SEND_SOUND(Mob, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)
-				to_chat(client, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+				to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [S]"), confidential = TRUE)
 
 	log_admin("[key_name(src)] played midi sound [S] - [style]")
 	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")

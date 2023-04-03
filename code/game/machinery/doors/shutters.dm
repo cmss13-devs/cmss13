@@ -70,7 +70,8 @@
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/open
 	density = FALSE
@@ -82,14 +83,14 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoQueen(M) && density && !operating)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
+	if(isqueen(M) && density && !operating)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), M)
 		return XENO_ATTACK_ACTION
 	else
 		. = ..(M)
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	. = ..()
 	if(. && !(stat & BROKEN))
 		stat |= BROKEN

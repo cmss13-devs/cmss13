@@ -8,12 +8,12 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	anchored = 0
+	anchored = FALSE
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
 
-/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -375,6 +375,12 @@
 	weapon_type = /obj/item/weapon/gun/rifle/m41a/training
 	ammo_type = /obj/item/ammo_magazine/rifle/rubber
 
+/obj/structure/closet/crate/weapon/training/m4ra
+	name = "training M4RA crate"
+	desc = "A crate with an M4RA battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/rifle/m4ra/training
+	ammo_type = /obj/item/ammo_magazine/rifle/m4ra/rubber
+
 /obj/structure/closet/crate/weapon/training/l42a
 	name = "training L42A crate"
 	desc = "A crate with an L42A battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
@@ -402,7 +408,7 @@
 /obj/structure/closet/crate/weapon/training/grenade
 	name = "rubber pellet M15 grenades crate"
 	desc = "A crate with multiple nonlethal M15 grenades. Intended for use in combat exercises and riot control."
-	ammo_type = /obj/item/explosive/grenade/HE/m15/rubber
+	ammo_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 	ammo_count = 6
 
 

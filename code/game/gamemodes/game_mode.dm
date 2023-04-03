@@ -30,7 +30,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
-	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
 
@@ -78,11 +78,11 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
-/datum/game_mode/proc/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_landed(obj/docking_port/mobile/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
@@ -174,7 +174,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 			else
 				record_playtime(M.client.player_data, M.job, type)
 
-/datum/game_mode/proc/show_end_statistics(var/icon_state)
+/datum/game_mode/proc/show_end_statistics(icon_state)
 	round_statistics.update_panel_data()
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
@@ -183,7 +183,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
 
-/datum/game_mode/proc/get_players_for_role(var/role, override_jobbans = 0)
+/datum/game_mode/proc/get_players_for_role(role, override_jobbans = 0)
 	var/list/players = list()
 	var/list/candidates = list()
 
@@ -311,7 +311,7 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 			to_chat_spaced(M, html = msg)
 
 //Announces objectives/generic antag text.
-/proc/show_generic_antag_text(var/datum/mind/player)
+/proc/show_generic_antag_text(datum/mind/player)
 	if(player.current)
 		player.current << \
 		"You are an antagonist! <font color=blue>Within the rules,</font> \

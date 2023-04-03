@@ -5,7 +5,7 @@
 
 	receive_from(usr)
 
-/mob/living/carbon/proc/receive_from(var/mob/living/carbon/giver)
+/mob/living/carbon/proc/receive_from(mob/living/carbon/giver)
 	if(stat == DEAD || giver.stat == DEAD || client == null)
 		return
 	if(src == giver)

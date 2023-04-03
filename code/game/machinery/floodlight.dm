@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
 	icon_state = "flood00"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/on = 0
 	var/obj/item/cell/cell = null
 	var/use = 0
@@ -20,6 +20,7 @@
 	cell = new /obj/item/cell(src)
 
 /obj/structure/machinery/floodlight/Destroy()
+	QDEL_NULL(cell)
 	SetLuminosity(0)
 	return ..()
 
@@ -79,10 +80,10 @@
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (!anchored)
-			anchored = 1
+			anchored = TRUE
 			to_chat(user, "You anchor the [src] in place.")
 		else
-			anchored = 0
+			anchored = FALSE
 			to_chat(user, "You remove the bolts from the [src].")
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

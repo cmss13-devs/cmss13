@@ -17,6 +17,7 @@
 	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
+	black_market_value = 20
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = FALSE
@@ -87,17 +88,17 @@
 			qdel(src)
 			return
 
-/obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user)
 	if(stat != DEAD)
 		if(!sterile && can_hug(user, hivenumber))
 			attach(user)
 		//If we're alive, don't let them pick us up, even if attach fails. Just return.
-		if(!isXeno(user))
+		if(!isxeno(user))
 			return
 	return ..()
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
-/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
@@ -113,7 +114,7 @@
 		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))
+	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -136,8 +137,8 @@
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
 	..()
 
-	if(isXenoCarrier(user))
-		var/mob/living/carbon/Xenomorph/Carrier/C = user
+	if(iscarrier(user))
+		var/mob/living/carbon/xenomorph/carrier/C = user
 		C.store_hugger(src)
 
 /obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
@@ -187,7 +188,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -238,7 +239,7 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, silent = FALSE, knockout_mod = 1)
 	if(attached || !can_hug(M, hivenumber))
 		return FALSE
 
@@ -248,8 +249,8 @@
 	if(!silent)
 		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
-	if(isXeno(loc)) //Being carried? Drop it
-		var/mob/living/carbon/Xenomorph/X = loc
+	if(isxeno(loc)) //Being carried? Drop it
+		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
 	if(isturf(H.loc))
@@ -264,8 +265,10 @@
 	H.update_inv_wear_mask()
 	H.disable_lights()
 	H.disable_special_items()
-	if(isHumanStrict(H))
+	if(ishuman_strict(H))
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+	else if(isyautja(H))
+		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
@@ -333,8 +336,8 @@
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
 
-	if(isXeno(loc))
-		var/mob/living/carbon/Xenomorph/X = loc
+	if(isxeno(loc))
+		var/mob/living/carbon/xenomorph/X = loc
 		if(X.caste.hugger_nurturing) // caste can prevent hugger death
 			return
 
@@ -395,8 +398,8 @@
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
-/proc/can_hug(mob/living/carbon/M, var/hivenumber)
-	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || (M.huggable == FALSE))
+/proc/can_hug(mob/living/carbon/M, hivenumber)
+	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
 
 	if(M.ally_of_hivenumber(hivenumber))

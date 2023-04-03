@@ -214,7 +214,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 		new_luminosity = highest_luminosity
 	return ..()
 
-/mob/proc/remove_luminosity_source(var/atom/source)
+/mob/proc/remove_luminosity_source(atom/source)
 	SetLuminosity(0, FALSE, source)
 
 /area/SetLuminosity(new_luminosity) //we don't want dynamic lighting for areas
@@ -314,10 +314,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 // Dedicated lighting sublevel for space turfs
 // helps us depower things in space, remove space fire alarms,
 // and evens out space lighting
-/turf/open/space/lighting_tag(var/level)
+/turf/open/space/lighting_tag(level)
 	var/area/A = loc
 	return A.tagbase + "sd_L_space"
-/turf/open/space/build_lighting_area(var/tag,var/level)
+/turf/open/space/build_lighting_area(tag, level)
 	var/area/A = ..(tag,4)
 	A.lighting_space = 1
 	A.SetLightLevel(4)

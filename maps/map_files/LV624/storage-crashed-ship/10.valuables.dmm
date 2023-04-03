@@ -213,7 +213,7 @@
 	},
 /area/lv624/ground/barrens/north_east_barrens)
 "X" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
 	locked = 1;
 	name = "Mining Storage";

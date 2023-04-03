@@ -1,7 +1,7 @@
 /obj/structure/machinery/power
 	name = null
 	icon = 'icons/obj/structures/machinery/power.dmi'
-	anchored = 1.0
+	anchored = TRUE
 	unslashable = TRUE
 	health = 0
 	var/datum/powernet/powernet = null
@@ -16,11 +16,11 @@
 	. = ..()
 
 // common helper procs for all power machines
-/obj/structure/machinery/power/proc/add_avail(var/amount)
+/obj/structure/machinery/power/proc/add_avail(amount)
 	if(powernet)
 		powernet.newavail += amount
 
-/obj/structure/machinery/power/proc/add_load(var/amount)
+/obj/structure/machinery/power/proc/add_load(amount)
 	if(powernet)
 		return powernet.draw_power(amount)
 	return 0
@@ -40,7 +40,7 @@
 // returns true if the area has power on given channel (or doesn't require power).
 // defaults to power_channel
 
-/obj/structure/machinery/proc/powered(var/chan = -1)
+/obj/structure/machinery/proc/powered(chan = -1)
 
 	if(!src.loc)
 		return 0
@@ -59,7 +59,7 @@
 
 // increment the power usage stats for an area
 
-/obj/structure/machinery/proc/use_power(var/amount, var/chan = POWER_CHANNEL_ONEOFF, var/autocalled = 0) // defaults to one-off power charge, not constant power change
+/obj/structure/machinery/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF, autocalled = 0) // defaults to one-off power charge, not constant power change
 	var/area/A = get_area(src) // make sure it's in an area
 	if(!A || !isarea(A) || !A.master)
 		return
@@ -69,7 +69,7 @@
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.
-/obj/structure/machinery/proc/power_change(var/area/master_area = null) // called whenever the power settings of the containing area change
+/obj/structure/machinery/proc/power_change(area/master_area = null) // called whenever the power settings of the containing area change
 										// by default, check equipment channel & set flag
 										// can override if needed
 	var/has_power
@@ -118,7 +118,7 @@
 // returns a list of all power-related objects (nodes, cable, junctions) in turf,
 // excluding source, that match the direction d
 // if unmarked==1, only return those with no powernet
-/proc/power_list(var/turf/T, var/source, var/d, var/unmarked=0)
+/proc/power_list(turf/T, source, d, unmarked=0)
 	. = list()
 	var/fdir = (!d)? 0 : turn(d, 180)
 			// the opposite direction to d (or 0 if d==0)
@@ -285,7 +285,7 @@
 //power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
-/proc/electrocute_mob(mob/living/carbon/M as mob, var/power_source, var/obj/source, var/siemens_coeff = 1.0)
+/proc/electrocute_mob(mob/living/carbon/M as mob, power_source, obj/source, siemens_coeff = 1.0)
 	//This is for performance optimization only.
 	//DO NOT modify siemens_coeff here. That is checked in human/electrocute_act()
 	if(istype(M,/mob/living/carbon/human))

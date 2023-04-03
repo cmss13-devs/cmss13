@@ -83,7 +83,7 @@
 	icon_state = "reagent_analyzer"
 	return
 
-/obj/structure/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
+/obj/structure/machinery/reagent_analyzer/proc/print_report(result, reason)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	if(result)
 		var/datum/reagent/S = sample.reagents.reagent_list[1]
@@ -110,7 +110,7 @@
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 
-/datum/reagent/proc/print_report(var/turf/loc, var/obj/item/paper/research_report/report, var/admin_spawned = FALSE, var/sample_number = 0)
+/datum/reagent/proc/print_report(turf/loc, obj/item/paper/research_report/report, admin_spawned = FALSE, sample_number = 0)
 	if(!report)
 		report = new /obj/item/paper/research_report(loc)
 

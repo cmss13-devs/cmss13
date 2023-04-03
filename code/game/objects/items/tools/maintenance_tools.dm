@@ -23,8 +23,8 @@
 	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -43,9 +43,9 @@
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 75)
@@ -124,7 +124,7 @@
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 6.0
+	force = 6
 	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
@@ -164,8 +164,8 @@
 	flags_equip_slot = SLOT_WAIST
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -176,9 +176,13 @@
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
 	//blowtorch specific stuff
-	var/welding = 0 //Whether or not the blowtorch is off(0), on(1) or currently welding(2)
-	var/max_fuel = 20 //The max amount of fuel the welder can hold
-	var/weld_tick = 0 //Used to slowly deplete the fuel when the tool is left on.
+
+	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
+	var/welding = 0
+	/// The max amount of fuel the welder can hold
+	var/max_fuel = 20
+	/// Used to slowly deplete the fuel when the tool is left on.
+	var/weld_tick = 0
 	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
@@ -217,7 +221,7 @@
 
 /obj/item/tool/weldingtool/attack(mob/M, mob/user)
 
-	if(hasorgans(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
@@ -263,7 +267,7 @@
 			SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
-			message_staff("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
+			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
@@ -289,7 +293,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
+/obj/item/tool/weldingtool/proc/remove_fuel(amount = 1, mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)
@@ -316,7 +320,7 @@
 
 
 //Toggles the welder off and on
-/obj/item/tool/weldingtool/proc/toggle(var/message = 0)
+/obj/item/tool/weldingtool/proc/toggle(message = 0)
 	var/mob/M
 	if(ismob(loc))
 		M = loc
@@ -464,8 +468,8 @@
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
@@ -486,6 +490,117 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
+/obj/item/maintenance_jack
+	name = "\improper K92 Maintenance Jack"
+	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
+	icon_state = "maintenance_jack"
+	item_state = "maintenance_jack"
+	hitsound = "swing_hit"
+	w_class = SIZE_LARGE
+	force = MELEE_FORCE_STRONG
+	flags_equip_slot = SLOT_SUIT_STORE
+	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
+	///Whether the Maintenance Jack is on crowbar or wrench mode
+	var/crowbar_mode = TRUE
+
+/obj/item/maintenance_jack/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
+	if(crowbar_mode)
+		. += SPAN_NOTICE("It is set to crowbar mode, allowing you to pry open doors, provided you are strong enough. Maybe you could even use this side for surgery...")
+	else
+		. += SPAN_NOTICE("It is set to wrench mode, allowing you to unbolt doors, provided you are smart enough to know how.")
+
+/obj/item/maintenance_jack/attack_self(mob/living/user)
+	. = ..()
+	playsound(src, 'sound/weapons/punchmiss.ogg', 15, TRUE, 3)
+	if(crowbar_mode) //Switch to wrench mode | Remove bolts
+		user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a wrench."),
+		SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
+		crowbar_mode = FALSE
+		animate(src, transform = matrix(0, MATRIX_ROTATE), time = 2, easing = EASE_IN)
+		animate(transform = matrix(90, MATRIX_ROTATE), time = 1)
+		animate(transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
+		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+		pry_capable = null
+		return
+
+	//Switch to crowbar mode | Pry open doors if super strong trait
+	user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a crowbar."),
+	SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
+	crowbar_mode = TRUE
+	animate(src, transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_IN)
+	animate(transform = matrix(270, MATRIX_ROTATE), time = 1)
+	animate(transform = matrix(360, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
+	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+	pry_capable = IS_PRY_CAPABLE_FORCE
+
+/obj/item/maintenance_jack/afterattack(obj/door, mob/living/user, proximity)
+	if(!crowbar_mode) //Otherwise it lets you pry open right after unbolting
+		return
+	if(!proximity)
+		return
+
+	if(istype(door, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/airlock = door
+		if(airlock.locked)
+			to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+			if(!airlock.arePowerSystemsOn())
+				if(!airlock.operating)
+					if(airlock.density)
+						airlock.open(TRUE)
+					else
+						airlock.close(TRUE)
+				else
+					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+			return
+		if(!airlock.density)
+			return
+		if(airlock.heavy)
+			to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
+			return FALSE
+		if(user.action_busy || user.a_intent == INTENT_HARM)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
+		playsound(src, "pry", 15, TRUE)
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+		if(!airlock.density)
+			return
+		if(airlock.locked)
+			user.visible_message(SPAN_DANGER("[user] fails to force [airlock] open with [src]."),
+			SPAN_DANGER("You fail to force [airlock] open with [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
+		SPAN_DANGER("You force [airlock] open with [src]."))
+		airlock.open(TRUE)
+
+	else if(istype(door, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/resin_door = door
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+			return
+		if(resin_door.isSwitchingStates)
+			return
+		if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
+		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && resin_door.density)
+			user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
+			SPAN_DANGER("You force [resin_door] open with [src]."))
+			resin_door.Open()
+
 /*
 Welding backpack
 */
@@ -497,9 +612,12 @@ Welding backpack
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
-	health = 75 // More robust liner I guess
-	var/original_health = 1 //placeholder value to be replaced in init
-	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	/// More robust liner I guess
+	health = 75
+	/// placeholder value to be replaced in init
+	var/original_health = 1
+	/// Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	var/max_fuel = 600
 
 /obj/item/tool/weldpack/Initialize()
 	. = ..()
@@ -553,7 +671,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -575,7 +693,8 @@ Welding backpack
 	name = "ES-11 fuel canister"
 	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
 	icon_state = "welderpackmini"
-	max_fuel = 120 //Just barely enough to be better than the satchel
+	/// Just barely enough to be better than the satchel
+	max_fuel = 120
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
 	health = 50

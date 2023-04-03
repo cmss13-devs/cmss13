@@ -58,7 +58,7 @@
 
 	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
-	if(bodytemperature < species.cold_level_1 && !isYautja(src))
+	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
 
 	if(temporary_slowdown)
@@ -100,7 +100,7 @@
 
 	move_delay = .
 
-/mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
+/mob/living/carbon/human/Process_Spacemove(check_drift = 0)
 	//Can we act
 	if(is_mob_restrained()) return 0
 
@@ -118,7 +118,7 @@
 	return 0
 
 
-/mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)
+/mob/living/carbon/human/Process_Spaceslipping(prob_slip = 5)
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 
 	if(species.flags & NO_SLIP)

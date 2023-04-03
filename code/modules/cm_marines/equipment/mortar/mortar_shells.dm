@@ -16,10 +16,10 @@
 	. = ..()
 	cause_data = null
 
-/obj/item/mortar_shell/proc/detonate(var/turf/T)
+/obj/item/mortar_shell/proc/detonate(turf/T)
 	forceMove(T)
 
-/obj/item/mortar_shell/proc/deploy_camera(var/turf/T)
+/obj/item/mortar_shell/proc/deploy_camera(turf/T)
 	var/obj/structure/machinery/camera/mortar/old_cam = locate() in T
 	if(old_cam)
 		qdel(old_cam)
@@ -30,7 +30,7 @@
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
 
-/obj/item/mortar_shell/he/detonate(var/turf/T)
+/obj/item/mortar_shell/he/detonate(turf/T)
 	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
 
 /obj/item/mortar_shell/frag
@@ -38,7 +38,7 @@
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
 
-/obj/item/mortar_shell/frag/detonate(var/turf/T)
+/obj/item/mortar_shell/frag/detonate(turf/T)
 	create_shrapnel(T, 60, cause_data = cause_data)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -53,7 +53,7 @@
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
-/obj/item/mortar_shell/incendiary/detonate(var/turf/T)
+/obj/item/mortar_shell/incendiary/detonate(turf/T)
 	explosion(T, 0, 2, 4, 7, explosion_cause_data = cause_data)
 	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
@@ -63,7 +63,7 @@
 	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"
 
-/obj/item/mortar_shell/flare/detonate(var/turf/T)
+/obj/item/mortar_shell/flare/detonate(turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 	deploy_camera(T)
@@ -86,7 +86,7 @@
 	if(warhead)
 		. += SPAN_NOTICE("Contains a warhead[warhead.has_camera ? " with integrated camera drone." : ""].")
 
-/obj/item/mortar_shell/custom/detonate(var/turf/T)
+/obj/item/mortar_shell/custom/detonate(turf/T)
 	if(fuel)
 		var/fuel_amount = fuel.reagents.get_reagent_amount(fuel_type)
 		if(fuel_amount >= fuel_requirement)
@@ -212,5 +212,11 @@
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range(src)
 
-/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/cct
-	jtac_key_type = /obj/item/device/encryptionkey/cct
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh
+	jtac_key_type = /obj/item/device/encryptionkey/upp/engi
+
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/pmc
+	jtac_key_type = /obj/item/device/encryptionkey/pmc/engi
+
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/clf
+	jtac_key_type = /obj/item/device/encryptionkey/clf/engi

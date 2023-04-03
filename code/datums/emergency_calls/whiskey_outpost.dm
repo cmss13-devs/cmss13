@@ -13,7 +13,7 @@
 	max_engineers = 2
 	max_medics = 2
 
-/datum/emergency_call/wo/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/wo/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo

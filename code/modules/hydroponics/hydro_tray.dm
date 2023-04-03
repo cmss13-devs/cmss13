@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	unslashable = FALSE
 	health = 100
 	flags_atom = OPENCONTAINER
@@ -143,12 +143,12 @@
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/item/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)
@@ -335,7 +335,7 @@
 	update_icon()
 
 //Harvests the product of a plant.
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(var/mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(mob/user)
 
 	//Harvest the product of the plant,
 	if(!seed || !harvest || !user)
@@ -364,7 +364,7 @@
 	return
 
 //Clears out a dead plant.
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user)
 	if(!user || !dead) return
 
 	if(closed_system)
@@ -451,7 +451,7 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(severity)
 
 	// No seed, no mutations.
 	if(!seed)
@@ -508,7 +508,7 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(obj/item/O as obj, mob/user as mob)
 
 	if (O.is_open_container())
 		return 0
@@ -740,7 +740,7 @@
 	use_power = USE_POWER_NONE
 	draw_warnings = 0
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/tool/shovel))
 		to_chat(user, "You clear up [src]!")
 		qdel(src)

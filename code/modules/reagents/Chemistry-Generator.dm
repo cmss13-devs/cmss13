@@ -20,7 +20,7 @@
 //***************************************Recipe Generator**********************************************/
 //*****************************************************************************************************/
 
-/datum/chemical_reaction/proc/generate_recipe(var/list/complexity)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -59,7 +59,7 @@
 
 	return TRUE
 
-/datum/chemical_reaction/proc/add_component(var/my_chemid, var/my_modifier, var/is_catalyst, var/tier, var/class)
+/datum/chemical_reaction/proc/add_component(my_chemid, my_modifier, is_catalyst, tier, class)
 	var/chem_id //The id of the picked chemical
 	var/modifier //The number of required reagents
 
@@ -180,7 +180,7 @@
 //***********************************Reagent Generator*************************************************/
 //*****************************************************************************************************/
 
-/datum/reagent/proc/generate_stats(var/no_properties)
+/datum/reagent/proc/generate_stats(no_properties)
 	//Properties
 	if(!no_properties)
 		var/gen_value
@@ -216,7 +216,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE, var/track_added_properties = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, make_rare = FALSE, track_added_properties = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -318,7 +318,7 @@
 //***********************************Generator Helper Procs********************************************/
 //*****************************************************************************************************/
 
-/datum/reagent/proc/insert_property(var/property, var/level)
+/datum/reagent/proc/insert_property(property, level)
 	//The list below defines what properties should override each other.
 	var/list/conflicting_properties = list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
 											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
@@ -417,7 +417,7 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(var/list/complexity)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
@@ -430,7 +430,7 @@
 	return C
 
 //Returns false if a property has been generated in a previous reagent and all properties of that category haven't been generated yet.
-/datum/reagent/proc/check_generated_properties(var/datum/chem_property/P)
+/datum/reagent/proc/check_generated_properties(datum/chem_property/P)
 	if(LAZYISIN(chemical_properties_list["positive"], P))
 		if(LAZYISIN(GLOB.generated_properties["positive"], P) && LAZYLEN(GLOB.generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
 			return FALSE

@@ -136,7 +136,7 @@
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
-	var/mob/living/carbon/cortical_borer/B = borer
+	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
 	if(B && B.controlling)
 
 		var/CR = "Yes"
@@ -150,6 +150,7 @@
 		. += "Name: [B.truename]"
 		. += "Can Reproduce: [CR]"
 		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
+		. += "Health: P:[round(getBruteLoss())] B:[round(getFireLoss())] T:[round(getToxLoss())]"
 		. += ""
 		. += "Host Brain Damage: [brainloss]/100"
 

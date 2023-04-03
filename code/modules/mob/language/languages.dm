@@ -243,4 +243,4 @@
 				var/area/A = get_area(speaker)
 				to_chat(player, "<span class='[color]'>[message_start] has [SPAN_BOLD("perished")][A? " at [sanitize_area(A.name)]":""]!</i></span>")
 			else
-				to_chat(player, "<span class='[color]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start] [message_body]</span>")
+				to_chat(player, "<span class='[color]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start][message_body]</span>")

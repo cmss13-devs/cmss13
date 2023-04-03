@@ -16,6 +16,8 @@ SUBSYSTEM_DEF(redis)
 
 	/// the name this server uses externally
 	var/instance_name = "game"
+	/// if this server is sending logs to redis, in addition to the file system
+	var/redis_logging = FALSE
 
 /datum/controller/subsystem/redis/stat_entry(msg)
 	msg =  "S:[length(subbed_channels)] | Q:[length(queue)] | C:[connected ? "Y" : "N"]"
@@ -23,6 +25,7 @@ SUBSYSTEM_DEF(redis)
 
 /datum/controller/subsystem/redis/Initialize()
 	instance_name = CONFIG_GET(string/instance_name)
+	redis_logging = CONFIG_GET(flag/redis_logging)
 
 	if(connect() == CONFIG_DISABLED)
 		can_fire = FALSE

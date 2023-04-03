@@ -26,6 +26,7 @@
 		doctor = TRUE
 	else
 		doctor = FALSE
+		assignment = Surgeon
 
 //check what job option you took and generate the corresponding the good texte.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)

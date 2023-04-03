@@ -118,6 +118,11 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
 
+/datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
+	assignement = "Surgeon"
+
+
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse

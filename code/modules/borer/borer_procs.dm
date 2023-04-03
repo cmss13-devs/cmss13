@@ -593,7 +593,7 @@
 			T.add_vomit_floor()
 			B.contaminant = 0
 			var/repro = max(B.can_reproduce - 1, 0)
-			new /mob/living/carbon/cortical_borer(T, B.generation + 1, TRUE, repro)
+			new /mob/living/carbon/cortical_borer(T, B.generation + 1, TRUE, repro, B.infect_humans, B.infect_xenos, B.infect_yautja)
 			return TRUE
 		else
 			to_chat(src, SPAN_XENONOTICE("You need at least [BORER_LARVAE_COST] enzymes to reproduce!"))
@@ -719,9 +719,9 @@
 	if(!input)
 		return FALSE
 
-	to_chat(B, SPAN_XENO("[src] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	to_chat(B, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	log_say("BORER: ([key_name(src)] to [key_name(B)]) [input]", src)
-	to_chat(src, SPAN_XENO("[src] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	to_chat(src, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[B.host]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping

@@ -133,34 +133,34 @@
 		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/toggle_hide,
 		/datum/action/innate/borer/freeze_victim,
-		/datum/action/innate/borer/infest_host
+		/datum/action/innate/borer/infest_host,
 	)
 	var/list/actions_humanoidhost = list(
 		/datum/action/innate/borer/helpme,
-		/datum/action/innate/borer/take_control,
 		/datum/action/innate/borer/talk_to_host,
-		/datum/action/innate/borer/leave_body,
 		/datum/action/innate/borer/hibernate,
+		/datum/action/innate/borer/take_control,
+		/datum/action/innate/borer/leave_body,
 		/datum/action/innate/borer/scan_chems,
-		/datum/action/innate/borer/make_chems
+		/datum/action/innate/borer/make_chems,
 	)
 	var/list/actions_xenohost = list(
 		/datum/action/innate/borer/helpme,
-		/datum/action/innate/borer/take_control,
 		/datum/action/innate/borer/talk_to_host,
+		/datum/action/innate/borer/hibernate,
+		/datum/action/innate/borer/take_control,
 		/datum/action/innate/borer/leave_body,
-		/datum/action/innate/borer/hibernate
 	)
 	var/list/actions_control = list(
 		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/give_back_control,
 		/datum/action/innate/borer/make_larvae,
 		/datum/action/innate/borer/talk_to_brain,
-		/datum/action/innate/borer/torment
+		/datum/action/innate/borer/torment,
 	)
 
 //################### INIT & LIFE ###################//
-/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0)
+/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0, infect_humans = TRUE, infect_xenos = FALSE, infect_yautja = FALSE)
 	..(newloc)
 	SSmob.living_misc_mobs += src
 	generation = gen

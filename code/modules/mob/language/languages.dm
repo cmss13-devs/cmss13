@@ -215,6 +215,7 @@
 
 /datum/language/corticalborer/broadcast(mob/living/carbon/speaker, message, speaker_mask, death)
 	var/mob/living/carbon/cortical_borer/B
+	if(!message) return FALSE
 	if(isborer(speaker))
 		B = speaker
 	else if(speaker.has_brain_worms())
@@ -224,6 +225,7 @@
 	if(!speaker_mask)
 		speaker_mask = speaker.real_name
 
+	message = trim(message)
 	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span>"
 	var/message_body = "<span class='message'>[speech_verb], \"[message]\"</span></span></i>"
 	log_say("[key_name(speaker)] : ([name]) [message]")
@@ -243,4 +245,5 @@
 				var/area/A = get_area(speaker)
 				to_chat(player, "<span class='[color]'>[message_start] has [SPAN_BOLD("perished")][A? " at [sanitize_area(A.name)]":""]!</i></span>")
 			else
-				to_chat(player, "<span class='[color]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start][message_body]</span>")
+				to_chat(player, "<span class='[color]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start] [message_body]</span>")
+	return TRUE

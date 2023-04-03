@@ -86,7 +86,7 @@
 	var/max_contaminant = 120				//Decreases through hibernation or reproduction.
 	var/hibernating = FALSE					//Usable inside a host, but not when controlling. Allows clearing of impurities.
 
-	var/mob/living/carbon/human/host		// Human host for the brain worm.
+	var/mob/living/carbon/host		// Human host for the brain worm.
 	var/truename							// Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain	// Used for swapping control of the body back and forth.
 	var/controlling							// Used in human death check.
@@ -104,11 +104,13 @@
 
 	var/current_actions = ACTION_SET_HOSTLESS
 	var/list/actions_hostless = list(
+		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/toggle_hide,
 		/datum/action/innate/borer/freeze_victim,
 		/datum/action/innate/borer/infest_host
 	)
 	var/list/actions_humanoidhost = list(
+		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/take_control,
 		/datum/action/innate/borer/talk_to_host,
 		/datum/action/innate/borer/leave_body,
@@ -117,12 +119,14 @@
 		/datum/action/innate/borer/make_chems
 	)
 	var/list/actions_xenohost = list(
+		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/take_control,
 		/datum/action/innate/borer/talk_to_host,
 		/datum/action/innate/borer/leave_body,
 		/datum/action/innate/borer/hibernate
 	)
 	var/list/actions_control = list(
+		/datum/action/innate/borer/helpme,
 		/datum/action/innate/borer/give_back_control,
 		/datum/action/innate/borer/make_larvae,
 		/datum/action/innate/borer/talk_to_brain,
@@ -188,6 +192,7 @@
 	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
 	c_link.broadcast(src, null, src.truename, TRUE)
 	SSmob.living_misc_mobs -= src
+	leave_host()
 	. = ..()
 
 /mob/living/carbon/cortical_borer/rejuvenate()
@@ -198,6 +203,9 @@
 
 /mob/living/carbon/cortical_borer/Destroy()
 	SSmob.living_misc_mobs -= src
+	if(host)
+		for(var/datum/action/innate/borer/action in host.actions)
+			action.hide_from(host)
 	return ..()
 //###################################################//
 
@@ -254,9 +262,14 @@
 	. += "Can Reproduce: [CR]"
 	. += "Enzymes: [round(enzymes)]/[round(max_enzymes)]"
 	. += "Contaminant: [round(contaminant)]/[round(max_contaminant)]"
+	. += "Health: P:[round(getBruteLoss())] B:[round(getFireLoss())] T:[round(getToxLoss())]"
 	if(host)
 		. += ""
-		. += "Host Brain Damage: [host.brainloss]/100"
+		if(ishuman(host))
+			. += "Host Brain Damage: [host.brainloss]/100"
+		else if(isxeno(host))
+		//	. += "Host Plasma: [plasma_stored]/[plasma_max]"
+			. += "Host Integrity: [health]/[maxHealth]"
 
 /mob/living/carbon/cortical_borer/say(message)//I need to parse the message properly so it doesn't look stupid
 	var/datum/language/parsed_language = parse_language(message)
@@ -279,9 +292,14 @@
 	..()
 	update_canmove()
 	update_icons()
+	var/heal_amt = 1
 	if(host)
+		heal_amt = 3
 		if(!stat && host.stat != DEAD)
-			if(((host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !host.reagents.has_reagent("benzyme")) || host.reagents.has_reagent("bcure"))
+			var/mob/living/carbon/human/human_host
+			if(ishuman(host))
+				human_host = host
+			if(((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !human_host.reagents.has_reagent("benzyme")) || human_host.reagents.has_reagent("bcure"))
 				if(!docile)
 					if(controlling)
 						to_chat(host, SPAN_XENODANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
@@ -291,7 +309,7 @@
 			else
 				if(docile)
 					if(controlling)
-						to_chat(host, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
+						to_chat(human_host, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
 					else
 						to_chat(src, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
 					docile = FALSE
@@ -314,8 +332,30 @@
 			contaminant = max(contaminant - 0.3, 0)
 		else
 			SetLuminosity(0)
+	if(bruteloss || fireloss)
+		heal_overall_damage(heal_amt, heal_amt)
+	if(toxloss)
+		apply_damage(-(heal_amt/2), TOX)
+
+//################### ABILITIES ###################//
 /datum/action/innate/borer
 	icon_file = 'icons/mob/hud/actions_borer.dmi'
+
+/datum/action/innate/borer/helpme
+	name = "Help!"
+	action_icon_state = "borer_help"
+
+/datum/action/innate/borer/helpme/action_activate()
+	var/mob/living/carbon/cortical_borer/B
+	if(!isborer(owner))
+		if(owner.has_brain_worms())
+			B = owner.has_brain_worms()
+		else
+			to_chat(owner, SPAN_DANGER("How did you get this command? It's gone now."))
+			hide_action(owner, /datum/action/innate/borer/helpme)
+	else
+		B = owner
+	B.show_help()
 
 /datum/action/innate/borer/talk_to_host
 	name = "Converse with Host"

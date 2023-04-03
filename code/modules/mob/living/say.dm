@@ -116,6 +116,10 @@ var/list/department_radio_keys = list(
 					for(var/obj/O in M.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
+					for(var/mob/inner_mob in M.contents)
+						listening |= inner_mob
+						for(var/mob/living/captive_brain/brain in inner_mob)
+							listening |= brain
 				else if(istype(I, /obj/))
 					var/obj/O = I
 					hearturfs += O.locs[1]

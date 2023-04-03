@@ -105,11 +105,7 @@
 		to_chat(src, SPAN_WARNING("\The [target_xeno] is already at max health!"))
 		return
 
-	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You do not have enough health to make a regenerative resin salve!"))
-		return
-
-	if(plasma_stored > 200)
+	if(plasma_stored < 200)
 		to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require 200 plasma but only have [plasma_stored] stored."))
 		return
 

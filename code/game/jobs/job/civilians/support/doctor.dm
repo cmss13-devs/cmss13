@@ -14,19 +14,20 @@
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
-	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+
 	// job option
 	job_options = list(DOCTOR_VARIANT, SURGEON_VARIANT)
 	/// If this job is a doctor variant of the doctor role
 	var/doctor = TRUE
 
-//check the job option.
+//check the job option. and change the gear preset
 /datum/job/civilian/doctor/handle_job_options(option)
 	if(option != SURGEON_VARIANT)
 		doctor = TRUE
+		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	else
 		doctor = FALSE
-		assignment = Surgeon
+		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 
 //check what job option you took and generate the corresponding the good texte.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)

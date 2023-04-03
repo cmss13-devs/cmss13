@@ -14966,6 +14966,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
+"fmY" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/corporate_dome)
 "fpn" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -19499,6 +19505,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_jungle)
 "puo" = (
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "pwq" = (
@@ -19823,6 +19830,12 @@
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor{
 	icon_state = "white"
+	},
+/area/lv624/lazarus/corporate_dome)
+"qew" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv624/lazarus/corporate_dome)
 "qeW" = (
@@ -21367,6 +21380,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -22314,10 +22328,24 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/east_jungle)
+"vRZ" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/lazarus/corporate_dome)
 "vSG" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
+"vSM" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/corporate_dome)
 "vUw" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
@@ -22901,6 +22929,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "xbu" = (
 /obj/item/shard,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whiteyellow"
@@ -22961,6 +22990,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
+"xjn" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "whitebluecorner"
+	},
+/area/lv624/lazarus/corporate_dome)
 "xkU" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor{
@@ -34745,16 +34781,16 @@ aXX
 xgE
 kWH
 kWH
+qew
 kWH
-kWH
-kWH
+qew
 czq
 kWH
 kWH
 vdy
 fau
 fau
-fau
+vRZ
 xgE
 efp
 efp
@@ -35660,13 +35696,13 @@ tWw
 gnx
 yiw
 gnx
-gnx
+fmY
 xCF
 sbt
 sne
 yiw
 gnx
-tWw
+vSM
 eZD
 yiw
 qIO
@@ -36797,13 +36833,13 @@ xEt
 xgE
 xgE
 whr
-nrb
+xjn
 qeb
 tLS
 jzm
 gnx
 veo
-gnx
+fmY
 wSY
 puo
 lFv

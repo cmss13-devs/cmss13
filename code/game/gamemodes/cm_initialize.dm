@@ -860,11 +860,13 @@ Additional game mode variables.
 	var/datum/job/joe_job = RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
 	if(!joe_job)
-		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
 	if(!(RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
-		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
 	if(joe_candidate.ckey in joes)
@@ -881,7 +883,8 @@ Additional game mode variables.
 			return
 
 	if(!enter_allowed)
-		if(show_warning) to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
 		return
 
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")

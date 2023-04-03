@@ -8118,6 +8118,18 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
+"cdY" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "cex" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -9039,6 +9051,10 @@
 /obj/vehicle/train/cargo/engine,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
+"dhi" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "dhx" = (
 /obj/item/device/binoculars/civ,
 /turf/open/auto_turf/ice/layer1,
@@ -9817,7 +9833,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "ejF" = (
-/obj/item/ammo_magazine/handful/shotgun/incendiary,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "ejX" = (
@@ -13390,6 +13406,13 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/botany)
+"iiY" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "iji" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/corpsespawner/wygoon,
@@ -13485,6 +13508,7 @@
 /area/shiva/exterior/cp_lz2)
 "iqh" = (
 /obj/item/device/flashlight,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "iqt" = (
@@ -13550,6 +13574,14 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/colony/central)
+"irM" = (
+/obj/structure/window_frame/shiva,
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/bar)
 "irT" = (
 /obj/structure/platform/strata{
 	dir = 4
@@ -13571,6 +13603,14 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/central)
+"itb" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
 "itG" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/medium,
@@ -16147,10 +16187,6 @@
 /area/shiva/interior/colony/research_hab)
 "kZK" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/handful/shotgun/buckshot{
-	pixel_x = 4;
-	pixel_y = -16
-	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "las" = (
@@ -16579,6 +16615,10 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
+"lAz" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/shiva/interior/bar)
 "lAN" = (
 /obj/item/lightstick/red/variant/planted,
 /turf/open/auto_turf/ice/layer1,
@@ -17328,6 +17368,11 @@
 	},
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
+"mpP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
 "mqd" = (
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
@@ -19823,7 +19868,6 @@
 /area/shiva/exterior/cp_lz2)
 "pfP" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "pgh" = (
@@ -22825,6 +22869,14 @@
 "ssf" = (
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/central)
+"ssu" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "stv" = (
 /obj/structure/platform_decoration/strata{
 	dir = 8
@@ -23219,6 +23271,10 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"sLE" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
 "sLV" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/shiva{
@@ -23290,6 +23346,16 @@
 	icon_state = "wood"
 	},
 /area/shiva/interior/colony/central)
+"sQx" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/bar)
 "sQU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/shiva{
@@ -24631,6 +24697,10 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
+"ufB" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/shiva/interior/bar)
 "ufK" = (
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random/mini{
@@ -25718,6 +25788,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/central)
+"vff" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "vhp" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
@@ -25946,6 +26020,10 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
+"vtW" = (
+/obj/item/shard/shrapnel,
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "vuj" = (
 /obj/structure/bed/roller,
 /turf/open/floor/shiva{
@@ -26236,6 +26314,14 @@
 /obj/structure/flora/grass/tallgrass/ice/corner,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
+"vNc" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/bar)
 "vNJ" = (
 /turf/open/floor/shiva{
 	icon_state = "green"
@@ -48165,7 +48251,7 @@ xOb
 fEC
 aRc
 qXS
-xOb
+itb
 tnu
 kPZ
 aWE
@@ -48326,8 +48412,8 @@ ejF
 aMA
 gWk
 aRm
-qXS
-xOb
+vtW
+lAz
 tnu
 msu
 aKK
@@ -48489,7 +48575,7 @@ oNZ
 aPj
 aRn
 tmh
-xOb
+lAz
 tnu
 pEe
 elR
@@ -48650,7 +48736,7 @@ oNZ
 nIN
 avu
 kvu
-bwb
+sQx
 jDp
 tnu
 kPZ
@@ -48812,7 +48898,7 @@ cZZ
 oNZ
 aMB
 aMC
-xhJ
+mpP
 sFu
 tnu
 kPZ
@@ -48967,11 +49053,11 @@ bFg
 bFg
 sbj
 gWk
-tWz
+iiY
 oNZ
 cAZ
 sRV
-oNZ
+ufB
 iqA
 cAZ
 mZb
@@ -49129,7 +49215,7 @@ bFg
 bFg
 cZk
 gWk
-qXS
+iiY
 pfP
 fse
 jhR
@@ -49138,7 +49224,7 @@ ihp
 lXM
 bAn
 aMB
-oNZ
+ufB
 tWz
 tnu
 ofw
@@ -49290,16 +49376,16 @@ bIV
 bFg
 bFg
 fIO
-gWk
-qXS
+irM
+cdY
 oNZ
 aMB
-oNZ
-oNZ
+ufB
+ufB
 aMB
 oNZ
-oNZ
-oNZ
+ufB
+ufB
 iCK
 qXS
 gWk
@@ -49454,16 +49540,16 @@ bFg
 cZk
 tnu
 tnu
-diL
-oNZ
-oNZ
+ssu
+sLE
+sLE
 cAZ
 cAZ
 oNZ
 cAZ
 iqh
 oNZ
-qXS
+dhi
 gWk
 qLS
 kop
@@ -49616,16 +49702,16 @@ bFg
 bFg
 bFg
 gWk
-tWz
+iiY
 aMC
 asv
 aeX
 maA
-oNZ
+ufB
 uPE
 lYk
 aLO
-qXS
+vff
 gWk
 jMf
 kop
@@ -49778,8 +49864,8 @@ bFg
 bFg
 bFg
 gWk
-qXS
-oNZ
+iiY
+ufB
 aMB
 oNZ
 oNZ
@@ -49787,7 +49873,7 @@ oNZ
 oNZ
 aMB
 oNZ
-qXS
+dhi
 gWk
 ofw
 kop
@@ -49941,9 +50027,9 @@ bFg
 bFg
 tnu
 cBL
-tWz
 qXS
-qXS
+vNc
+vNc
 iZX
 ocF
 qXS

@@ -23,8 +23,8 @@
 	add_language(LANGUAGE_ENGLISH)
 
 /mob/living/silicon/Destroy()
-	..()
 	SSmob.living_misc_mobs -= src
+	return ..()
 
 /mob/living/silicon/proc/show_laws()
 	return

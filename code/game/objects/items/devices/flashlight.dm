@@ -564,7 +564,7 @@
 	desc = "A signal flare used to test CAS runs. If you're seeing this, someone messed up."
 
 /obj/item/device/flashlight/flare/signal/debug/Initialize()
-	..()
+	. = ..()
 	fuel = INFINITY
 	return INITIALIZE_HINT_ROUNDSTART
 

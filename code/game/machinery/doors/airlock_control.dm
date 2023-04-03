@@ -215,6 +215,11 @@
 	set_frequency(frequency)
 	start_processing()
 
+/obj/structure/machinery/airlock_sensor/Destroy()
+	stop_processing()
+	SSradio.remove_object(src, frequency)
+	QDEL_NULL(radio_connection)
+	return ..()
 
 /obj/structure/machinery/airlock_sensor/airlock_interior
 	command = "cycle_interior"
@@ -276,6 +281,11 @@
 /obj/structure/machinery/access_button/Initialize()
 	. = ..()
 	set_frequency(frequency)
+
+/obj/structure/machinery/access_button/Destroy()
+	SSradio.remove_object(src, frequency)
+	QDEL_NULL(radio_connection)
+	return ..()
 
 /obj/structure/machinery/access_button/airlock_interior
 	frequency = 1379

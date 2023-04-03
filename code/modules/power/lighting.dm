@@ -666,8 +666,8 @@
 /obj/item/light_bulb/tube/prison
 	name = "light tubes"
 	desc = "Replacement light tubes."
-	icon_state = "pbulb"
-	base_state = "pbulb"
+	icon_state = "ptube0"
+	base_state = "ptube0"
 	item_state = "contvapour"
 	matter = list("glass" = 100)
 	brightness = 5

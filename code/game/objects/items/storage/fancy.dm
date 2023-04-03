@@ -16,8 +16,9 @@
 
 /obj/item/storage/fancy
 	icon = 'icons/obj/items/food.dmi'
-	icon_state = "donutbox6"
+	icon_state = "donutbox"
 	name = "donut box"
+	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
 
 /obj/item/storage/fancy/update_icon()
@@ -47,7 +48,8 @@
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg box"
+	name = "egg carton"
+	desc = "A storage container filled with neatly-lined, egg-shaped holes."
 	storage_slots = 12
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
@@ -123,6 +125,9 @@
 ////////////
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/cigarettes.dmi'
+	icon_state = "cigpacket"
+	name = "cigarette packet"
+	desc = "A packet of cigarettes with a built-in lighter compartment."
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
@@ -344,6 +349,7 @@
 	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
+	desc = "A place to store your fragile vials when you are not using them."
 	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER

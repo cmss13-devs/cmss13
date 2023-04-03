@@ -32,7 +32,7 @@ var/global/list/cached_icons = list()
 		name = "paint remover bucket"
 	else if(paint_type && length(paint_type) > 0)
 		name = "[paint_type] [name]"
-	..()
+	. = ..()
 	reagents.add_reagent("paint_[paint_type]", volume)
 
 /obj/item/reagent_container/glass/paint/on_reagent_change() //Until we have a generic "paint", this will give new colours to all paints in the can

@@ -23,7 +23,7 @@
 
 /obj/structure/machinery/constructable_frame/Destroy()
 	QDEL_NULL(circuit)
-	..()
+	return ..()
 
 /obj/structure/machinery/constructable_frame/proc/update_desc()
 	if(state == CONSTRUCTION_STATE_BEGIN)

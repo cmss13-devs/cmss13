@@ -51,12 +51,14 @@
 	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
 	var/obj/item/falcon_drone/parent_drone
+	var/obj/item/clothing/gloves/yautja/owned_bracers
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
-	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
+	owned_bracers = bracers
+	RegisterSignal(owned_bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
@@ -75,8 +77,11 @@
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
+	if(!hud_list)
+		return
+
 	var/image/holder = hud_list[HUNTER_HUD]
-	holder.icon_state = "falcon_drone_active"
+	holder?.icon_state = "falcon_drone_active"
 
 /mob/hologram/falcon/Destroy()
 	if(parent_drone)
@@ -84,7 +89,12 @@
 			if(!linked_mob.equip_to_slot_if_possible(parent_drone, WEAR_R_EAR, TRUE, FALSE, TRUE, TRUE, FALSE))
 				linked_mob.put_in_hands(parent_drone)
 		parent_drone = null
+	if(owned_bracers)
+		UnregisterSignal(owned_bracers, COMSIG_ITEM_DROPPED)
+		owned_bracers = null
+
 	remove_from_all_mob_huds()
+
 	return ..()
 
 /mob/hologram/falcon/ex_act()

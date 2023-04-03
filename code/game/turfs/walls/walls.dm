@@ -344,7 +344,7 @@
 				thermitemelt(user)
 			return
 
-	if(istype(attacking_item, /obj/item/weapon/melee/twohanded/breacher))
+	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
 		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = attacking_item
 		if(user.action_busy)
 			return

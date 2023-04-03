@@ -1541,7 +1541,7 @@
 	},
 /area/lv522/atmos/east_reactor/north)
 "aXx" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
@@ -3596,7 +3596,7 @@
 /area/lv522/indoors/lone_buildings/chunk)
 "cil" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/melee/wirerod{
+/obj/item/weapon/wirerod{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -5182,7 +5182,7 @@
 /area/lv522/indoors/c_block/garage)
 "cUX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -9;
 	pixel_y = 11
 	},
@@ -6118,7 +6118,7 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "dmm" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_y = -8
 	},
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -12563,7 +12563,7 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel)
 "gfi" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/item/prop/alien/hugger{
 	pixel_y = 14
 	},
@@ -14018,7 +14018,7 @@
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/rack,
 /obj/item/weapon/shield/riot,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -20167,7 +20167,7 @@
 /area/lv522/indoors/c_block/cargo)
 "jmd" = (
 /obj/item/weapon/shield/riot,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -24161,7 +24161,7 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "kOr" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -13;
 	pixel_y = -9
 	},
@@ -24333,7 +24333,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "kRb" = (
-/obj/item/weapon/melee/telebaton,
+/obj/item/weapon/telebaton,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
@@ -25215,7 +25215,7 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
 "ljq" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -29631,7 +29631,7 @@
 /turf/open/floor/plating,
 /area/lv522/atmos/filt)
 "nhs" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
@@ -29956,7 +29956,7 @@
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "nnW" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -31683,7 +31683,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "nYF" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
@@ -31896,8 +31896,8 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baseballbat/metal,
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal{
 	pixel_x = 5
 	},
 /turf/open/floor/strata{
@@ -34391,7 +34391,7 @@
 /area/lv522/indoors/b_block/bridge)
 "pcQ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "pcY" = (
@@ -35501,7 +35501,7 @@
 	},
 /area/lv522/indoors/c_block/garage)
 "pzo" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "pzs" = (
@@ -39668,7 +39668,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "rbj" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/structure/foamed_metal,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -43505,7 +43505,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "sDz" = (
@@ -43530,7 +43530,7 @@
 	pixel_y = 6
 	},
 /obj/item/handcuffs,
-/obj/item/weapon/melee/baton{
+/obj/item/weapon/baton{
 	pixel_x = -2;
 	pixel_y = 10
 	},
@@ -44293,7 +44293,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "sQZ" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -45026,7 +45026,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "tiC" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
 	},
@@ -45941,7 +45941,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "tAr" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1)
 "tAu" = (
@@ -47652,7 +47652,7 @@
 /area/lv522/atmos/cargo_intake)
 "uhF" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/weapon/melee/pole/fancy_cane,
+/obj/item/weapon/pole/fancy_cane,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
@@ -47944,7 +47944,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "unX" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -49810,7 +49810,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "uXp" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -52262,7 +52262,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bridge)
 "vUf" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/structure/foamed_metal,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms/glass)
@@ -54977,7 +54977,7 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/item/weapon/melee/butterfly/switchblade{
+/obj/item/weapon/butterfly/switchblade{
 	pixel_x = 11;
 	pixel_y = 4
 	},
@@ -57568,7 +57568,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "ydD" = (
 /obj/item/weapon/shield/riot,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"

@@ -874,7 +874,6 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "bkR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "blY" = (
@@ -1936,7 +1935,6 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "cGd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "cGf" = (
@@ -3109,7 +3107,6 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "ebB" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "ebP" = (
@@ -6156,7 +6153,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
 "iiy" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/Northwest_Colony)
 "iiG" = (
@@ -8116,7 +8113,7 @@
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "laI" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "lbu" = (
@@ -9182,7 +9179,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/exterior/stonyfields)
 "mBG" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
@@ -13071,7 +13068,6 @@
 	},
 /area/kutjevo/interior/colony_north)
 "rSd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "rSg" = (

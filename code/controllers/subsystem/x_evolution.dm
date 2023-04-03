@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(xevolution)
 
 		if(!HS.dynamic_evolution)
 			boost_power[HS.hivenumber] = HS.evolution_rate + HS.evolution_bonus
-			HS.hive_ui.update_pooled_larva()
+			HS.hive_ui.update_burrowed_larva()
 			continue
 
 		var/boost_power_new
@@ -37,11 +37,10 @@ SUBSYSTEM_DEF(xevolution)
 		if((world.time - SSticker.round_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
 			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT)
 		else
-			//boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - SSticker.round_start_time) / EVOLUTION_INCREMENT_TIME) / 10
 			boost_power_new = 1
 
-			//Add on any bonuses from evopods after applying upgrade progress
-			boost_power_new += (0.25 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
+			//Add on any bonuses from thie hivecore after applying upgrade progress
+			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_CORE))
 
 		boost_power_new = Clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
@@ -50,7 +49,7 @@ SUBSYSTEM_DEF(xevolution)
 			boost_power[HS.hivenumber] = boost_power_new
 
 		//Update displayed Evilution, which is under larva apparently
-		HS.hive_ui.update_pooled_larva()
+		HS.hive_ui.update_burrowed_larva()
 
 /datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(hivenumber)
 	return boost_power[hivenumber]

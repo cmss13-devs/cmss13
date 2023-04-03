@@ -80,12 +80,15 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
+	//current amount of survivors by type
+	var/list/survivors_by_type_amounts = list()
+
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_pooled_cutoff = 25 MINUTES //Time for when free pooled larvae stop spawning.
+	var/round_time_burrowed_cutoff = 25 MINUTES //Time for when free burrowed larvae stop spawning.
 
 	var/round_time_resin = 40 MINUTES //Time for when resin placing is allowed close to LZs
 
@@ -291,13 +294,13 @@ Additional game mode variables.
 
 			if(!new_xeno)
 				hive.stored_larva++
-				hive.hive_ui.update_pooled_larva()
+				hive.hive_ui.update_burrowed_larva()
 				continue  //Looks like we didn't get anyone. Keep going.
 
 			setup_new_xeno(new_xeno)
 
 			xenomorphs[hive] += new_xeno
-		else //Out of candidates, fill the xeno hive with pooled larva
+		else //Out of candidates, fill the xeno hive with burrowed larva
 			remaining_slots = round((xeno_starting_num - i))
 			break
 
@@ -349,7 +352,7 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!hive.hardcore && hive.stored_larva && (hive.spawn_pool || (world.time < 30 MINUTES + SSticker.round_start_time)))
+		if(!hive.hardcore && hive.stored_larva && (hive.hive_location || (world.time < 30 MINUTES + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 				available_xenos |= "any buried larva"
 				LAZYADD(available_xenos["any buried larva"], hive)
@@ -359,7 +362,7 @@ Additional game mode variables.
 				available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -386,8 +389,8 @@ Additional game mode variables.
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
-				if(picked_hive.spawn_pool)
-					picked_hive.spawn_pool.spawn_pooled_larva(xeno_candidate)
+				if(picked_hive.hive_location)
+					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
 				else if((world.time < 30 MINUTES + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
@@ -648,10 +651,17 @@ Additional game mode variables.
 /datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
+	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
+	var/preferred_variant = ANY_SURVIVOR
+	if(equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR)
+		preferred_variant = equipping_human.client?.prefs?.preferred_survivor_variant
+		if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && survivors_by_type_amounts[preferred_variant] && survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+			preferred_variant = ANY_SURVIVOR
+
 	if(is_synth)
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 	else
-		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
@@ -662,6 +672,7 @@ Additional game mode variables.
 		not_a_xenomorph = FALSE
 	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
+	survivors_by_type_amounts[preferred_variant] += 1
 
 /datum/game_mode/proc/survivor_event_transform(mob/living/carbon/human/H, obj/effect/landmark/survivor_spawner/spawner, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawner))

@@ -66,6 +66,13 @@
 			src.botcard.access = src.botcard_access
 	start_processing()
 
+/obj/structure/machinery/bot/medbot/Destroy()
+	botcard_access = null
+	patient = null
+	oldpatient = null
+	path = null
+	return ..()
+
 /obj/structure/machinery/bot/medbot/turn_on()
 	. = ..()
 	src.icon_state = "medibot[src.on]"

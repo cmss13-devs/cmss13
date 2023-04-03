@@ -277,5 +277,5 @@
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
 		list("MISC", 0, null, null, null),
-		list("Hollow Cane", 15, /obj/item/weapon/melee/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
+		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
 	)

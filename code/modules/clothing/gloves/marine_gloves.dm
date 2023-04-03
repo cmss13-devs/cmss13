@@ -45,6 +45,7 @@
 	desc = "Shiny and impressive. They look expensive."
 	icon_state = "black"
 	item_state = "bgloves"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/officer/chief
 	name = "chief officer gloves"
@@ -57,6 +58,7 @@
 	item_state = "ygloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.01
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/techofficer/commander
 	name = "commanding officer's gloves"
@@ -105,6 +107,7 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated
 	name = "insulated armored gloves"
@@ -155,6 +158,7 @@
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	unacidable = TRUE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"

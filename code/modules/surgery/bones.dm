@@ -37,6 +37,9 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
@@ -127,6 +130,9 @@
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
 	)
 	time = 4 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/effects/bone_break6.ogg'
+	failure_sound = 'sound/effects/bone_break1.ogg'
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	switch(surgery.affected_limb.name) //Yet another set of different messages because I just have to be Like This.

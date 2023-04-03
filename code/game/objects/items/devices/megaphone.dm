@@ -32,14 +32,16 @@
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 
 	if((src.loc == user && !user.is_mob_incapacitated()))
-		var/list/mob/living/carbon/human/human_viewers = viewers(user) // slow but we need it
-		for(var/mob/living/carbon/human/listener in human_viewers)
-			if(isyautja(listener)) //NOPE
+		// get mobs in the range of the user
+		var/list/mob/listeners = viewers(user) // slow but we need it
+		// mobs that pass the conditionals will be added here
+		var/list/mob/langchat_long_listeners = list()
+		for(var/mob/listener in listeners)
+			if(!ishumansynth_strict(listener) && !isobserver(listener))
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
-
-
-		user.langchat_long_speech(message, human_viewers, user.get_default_language())
+			langchat_long_listeners += listener
+		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

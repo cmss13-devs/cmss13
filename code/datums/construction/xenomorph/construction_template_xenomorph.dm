@@ -48,18 +48,6 @@
 	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
-/datum/construction_template/xenomorph/pool
-	name = XENO_STRUCTURE_POOL
-	build_type = /obj/effect/alien/resin/special/pool
-	build_icon_state = "pool_preview"
-	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
-
-/datum/construction_template/xenomorph/evopod
-	name = XENO_STRUCTURE_EVOPOD
-	build_type = /obj/effect/alien/resin/special/evopod
-	build_icon_state = "evopod"
-	crystals_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
-
 /datum/construction_template/xenomorph/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
 	build_type = /obj/effect/alien/resin/special/eggmorph

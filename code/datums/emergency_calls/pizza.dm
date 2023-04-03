@@ -8,7 +8,7 @@
 	objectives = "Make sure you get a tip!"
 	shuttle_id = "Distress_Small"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pizza
-	probability = 5
+	probability = 0
 
 /datum/emergency_call/pizza/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

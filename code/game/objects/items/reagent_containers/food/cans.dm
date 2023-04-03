@@ -321,7 +321,7 @@
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "\improper Weyland-Yutani IPA"
 	desc = "Beer's misunderstood cousin."
-	icon_state = "alebottle"
+	icon_state = "ale"
 	item_state = "beer"
 	center_of_mass = "x=16;y=10"
 

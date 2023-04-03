@@ -5,6 +5,8 @@
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
 		return
+	if(tgui_alert(usr, "Are you sure you want to view global variables? This will cause a large lag spike.", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+		return
 
 	var/body = {"<script type="text/javascript">
 

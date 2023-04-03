@@ -26,14 +26,9 @@
 
 	// Which atom we represent the interior of
 	var/atom/exterior = null
-	// A map template representing the interior
-	var/datum/map_load_metadata/interior_data = null
-
-	// Which interior chunk we've been assigned by the interior manager
-	var/chunk_id = null
 
 	// A list of entry/exit markers in the interior
-	var/list/entrance_markers = list()
+	var/list/entrance_markers
 
 	//check multitile.dm for detailed explanation
 	//common passenger slots
@@ -57,6 +52,12 @@
 	//special roles passenger slots, kept in datums
 	var/list/role_reserved_slots = list()
 
+	/// the map template associated with this interior
+	var/datum/map_template/interior/map_template
+
+	/// the turf reservation associated with this interior
+	var/datum/turf_reservation/interior/reservation
+
 /datum/interior/New(atom/E)
 	. = ..()
 
@@ -68,33 +69,31 @@
 
 /datum/interior/Destroy()
 	exterior = null
-
-	GLOB.interior_manager.unload_chunk(chunk_id)
 	entrance_markers = null
-	QDEL_NULL(interior_data)
+
+	QDEL_NULL(reservation)
 
 	return ..()
 
 // Use this proc to load the template back in
 /datum/interior/proc/create_interior(interior_map)
-	if(!isnull(interior_data))
+	if(reservation)
 		return
 
 	if(!interior_map)
 		return
-	name = interior_map
 
-	var/list/data = GLOB.interior_manager.load_interior(src)
+	map_template = new interior_map()
+	name = map_template.interior_id
 
-	if(!data)
+	reservation = SSinterior.load_interior(src)
+
+	if(!reservation)
 		qdel(src)
 		return
 
-	interior_data = data[1]
-	chunk_id = data[2]
-
-	width = (interior_data.bounds[MAP_MAXX] - interior_data.bounds[MAP_MINX]) + 1
-	height = (interior_data.bounds[MAP_MAXY] - interior_data.bounds[MAP_MINY]) + 1
+	width = map_template.width
+	height = map_template.height
 
 	find_entrances()
 	handle_landmarks()
@@ -304,15 +303,21 @@
 
 // Returns min and max turfs for the interior
 /datum/interior/proc/get_bound_turfs()
-	var/turf/min = locate(interior_data.bounds[MAP_MINX], interior_data.bounds[MAP_MINY], GLOB.interior_manager.interior_z)
+	var/turf/min = TURF_FROM_COORDS_LIST(reservation.bottom_left_coords)
 	if(!min)
 		return null
 
-	var/turf/max = locate(interior_data.bounds[MAP_MAXX], interior_data.bounds[MAP_MAXY], GLOB.interior_manager.interior_z)
+	var/turf/max = TURF_FROM_COORDS_LIST(reservation.top_right_coords)
 	if(!max)
 		return null
 
 	return list(min, max)
+
+/datum/interior/proc/get_middle_coords()
+	var/turf/min = reservation.bottom_left_coords
+	var/turf/max = reservation.top_right_coords
+
+	return list(Floor(min[1] + (max[1] - min[1])), Floor(min[2] + (max[2] - min[2])), min[3])
 
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()
@@ -327,7 +332,7 @@
 	for(var/turf/T in block(bounds[1], bounds[2]))
 		var/obj/effect/landmark/interior/spawn/entrance/E = locate() in T
 		if(E)
-			entrance_markers += E
+			LAZYADD(entrance_markers, E)
 
 // Spawn interactables like driver and gunner seats
 // Also open view blockers where there are windows

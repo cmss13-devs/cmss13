@@ -20,7 +20,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
 	var/requires_power = TRUE
-	var/requires_powerpack = TRUE
+	var/requires_powerpack = TRUE //If requires_powerpack is false, requires_power will be ignored
 	var/requires_harness = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
@@ -355,10 +355,8 @@
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_powerpack)
-		if(requires_power)
-			to_chat(user, SPAN_BOLDWARNING("Smartgun Improperly Configured. Attempting to fix. Smartgun cannot require power without requiring a powerpack."))
-			requires_power = FALSE
 		..()
+		return
 
 	if(!powerpack || (powerpack && user.back != powerpack))
 		if(!link_powerpack(user))
@@ -366,14 +364,13 @@
 			unlink_powerpack()
 			return
 	if(powerpack)
+		if(!requires_power)
+			..()
+			return
 		var/obj/item/smartgun_powerpack/pp = user.back
 		if(istype(pp))
 			var/obj/item/cell/c = pp.pcell
 			var/d = drain
-			if(!requires_power)
-				..()
-				return
-
 			if(flags_gun_features & GUN_BURST_ON)
 				d = drain*burst_amount*1.5
 			if(pp.drain_powerpack(d, c))

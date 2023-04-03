@@ -133,7 +133,7 @@
 /area/fiorina/station/security/wardens)
 "aat" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -147,7 +147,7 @@
 /area/fiorina/station/research_cells)
 "aav" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -506,7 +506,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/aux_engi)
 "ane" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/melee/unathiknife{
 	name = "ceremonial knife"
 	},
 /turf/open/floor/wood,
@@ -1426,6 +1426,7 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -4723,7 +4724,7 @@
 /area/fiorina/station/lowsec)
 "cRN" = (
 /obj/structure/closet/emcloset,
-/obj/item/weapon/nullrod{
+/obj/item/weapon/melee/nullrod{
 	desc = "The explosive tip has been deactivated.";
 	force = 25;
 	icon_state = "hefasword";
@@ -7452,6 +7453,15 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/flight_deck)
+"eEn" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/chapel_carpet{
+	dir = 1;
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "eEo" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -10516,7 +10526,7 @@
 	},
 /area/fiorina/station/park)
 "gyW" = (
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "gzb" = (
@@ -11859,6 +11869,7 @@
 	},
 /area/fiorina/tumor/civres)
 "hoZ" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "hpd" = (
@@ -12305,8 +12316,11 @@
 	},
 /area/fiorina/station/lowsec)
 "hCS" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "hCT" = (
 /obj/item/stack/tile/plasteel,
@@ -12348,15 +12362,6 @@
 	icon_state = "wy20"
 	},
 /area/fiorina/station/medbay)
-"hEe" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/prison/chapel_carpet{
-	dir = 1;
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "hEs" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/prison,
@@ -12565,7 +12570,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "hMX" = (
-/obj/item/weapon/twohanded/spear,
+/obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -13296,6 +13301,7 @@
 	},
 /area/fiorina/station/research_cells)
 "inh" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
@@ -14402,7 +14408,7 @@
 /area/fiorina/station/power_ring)
 "jas" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -6;
 	pixel_y = 12
@@ -14752,7 +14758,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "jki" = (
-/obj/item/weapon/twohanded/spear,
+/obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -15322,7 +15328,7 @@
 	},
 /area/fiorina/station/medbay)
 "jBL" = (
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -16225,6 +16231,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -17103,7 +17110,7 @@
 	},
 /area/fiorina/station/botany)
 "kCI" = (
-/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "kCK" = (
@@ -18343,7 +18350,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/classic_baton,
+/obj/item/weapon/melee/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -18950,6 +18957,23 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/park)
+"lID" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/candelabra{
+	layer = 3.2;
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 10
+	},
+/obj/item/attachable/stock/m16{
+	step_x = -4
+	},
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "lIG" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -19622,7 +19646,7 @@
 /area/fiorina/station/power_ring)
 "mfe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/twohanded/sledgehammer{
+/obj/item/weapon/melee/twohanded/sledgehammer{
 	throwforce = 45
 	},
 /turf/open/floor/plating/prison,
@@ -19752,7 +19776,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/weapon/pole/wooden_cane,
+/obj/item/weapon/melee/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -19910,6 +19934,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
+"mph" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/fiorina/station/chapel)
 "mpr" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -21052,6 +21080,12 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/station/lowsec)
+"mXD" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/prison/chapel_carpet{
+	icon_state = "doubleside"
+	},
+/area/fiorina/station/chapel)
 "mXI" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -24388,6 +24422,7 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -25478,7 +25513,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "pRH" = (
-/obj/item/weapon/wirerod,
+/obj/item/weapon/melee/wirerod,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "pSm" = (
@@ -26408,7 +26443,7 @@
 	},
 /area/fiorina/maintenance)
 "qwy" = (
-/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitepurple"
@@ -28548,13 +28583,6 @@
 "rLJ" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/chapel)
-"rLS" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "rLT" = (
 /obj/structure/machinery/photocopier,
@@ -31493,12 +31521,6 @@
 /obj/item/tool/candle,
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/maintenance)
-"tJd" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "tJe" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -34597,23 +34619,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
-"vFz" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/flashlight/lamp/candelabra{
-	layer = 3.2;
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/attachable/stock/m16{
-	step_x = -4
-	},
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/fiorina/station/chapel)
 "vFF" = (
 /obj/item/trash/candy,
 /turf/open/floor/prison{
@@ -34749,7 +34754,7 @@
 /area/fiorina/station/security)
 "vKP" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/katana,
+/obj/item/weapon/melee/katana,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "vLH" = (
@@ -35582,7 +35587,7 @@
 	},
 /area/fiorina/station/medbay)
 "wot" = (
-/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -37154,7 +37159,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/item/clothing/mask/muzzle,
-/obj/item/weapon/chainofcommand,
+/obj/item/weapon/melee/chainofcommand,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "xoQ" = (
@@ -38750,11 +38755,7 @@ bQM
 bQM
 bQM
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
@@ -38966,20 +38967,12 @@ bQM
 bQM
 bQM
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
 bQM
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 bQM
 bQM
@@ -39186,31 +39179,19 @@ tfP
 bQM
 bQM
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
 bQM
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 bQM
 bQM
 bQM
 bQM
 bQM
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 bQM
 bQM
@@ -39415,11 +39396,7 @@ pXH
 bQM
 bQM
 bQM
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 pXH
 bQM
@@ -39427,11 +39404,7 @@ bQM
 bQM
 pXH
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 pqO
 eVO
@@ -39636,22 +39609,14 @@ pXH
 bQM
 bQM
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 pXH
 bQM
 bQM
 pXH
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 byb
 wbE
@@ -39856,11 +39821,7 @@ pXH
 bQM
 bQM
 pXH
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 pXH
 pXH
 bQM
@@ -40112,11 +40073,7 @@ bQM
 bQM
 baC
 baC
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
@@ -40964,11 +40921,7 @@ bQM
 bQM
 bQM
 baC
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
@@ -41180,11 +41133,7 @@ bQM
 bQM
 bQM
 baC
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 bQM
 bQM
 bQM
@@ -58284,10 +58233,10 @@ mxR
 nzI
 bis
 bis
-vFz
+lID
 qQA
 uAX
-tJd
+mXD
 efk
 aXk
 dbq
@@ -58496,13 +58445,13 @@ lqq
 geL
 sBA
 dXv
-hCS
+mph
 kNs
 ane
 vvp
 amd
 uGu
-rLS
+hCS
 gPS
 dyB
 mNh
@@ -58919,14 +58868,14 @@ hPY
 lqq
 lqq
 sBA
-hEe
+eEn
 jpc
 lNv
 lqq
 qbW
 dOE
 kNs
-hCS
+mph
 agT
 eFD
 uRO
@@ -59137,7 +59086,7 @@ wvH
 xNg
 rFu
 daA
-tJd
+mXD
 dbq
 bis
 bis
@@ -59561,7 +59510,7 @@ bis
 rFu
 clP
 fzO
-tJd
+mXD
 nUy
 aWD
 aGs
@@ -67194,13 +67143,8 @@ tvI
 sYv
 bQM
 bTe
-<<<<<<< HEAD
 eJQ
 eJQ
-=======
-vNq
-vNq
->>>>>>> master
 tvI
 sYv
 kPz
@@ -68476,13 +68420,8 @@ cAW
 cAW
 cAW
 bTe
-<<<<<<< HEAD
 eJQ
 eJQ
-=======
-vNq
-vNq
->>>>>>> master
 tvI
 sYv
 twb
@@ -72203,11 +72142,7 @@ bQM
 bQM
 yaY
 bQM
-<<<<<<< HEAD
 kPz
-=======
-rOa
->>>>>>> master
 eph
 fiq
 fiq
@@ -73476,7 +73411,6 @@ cAW
 cAW
 bQM
 bQM
-<<<<<<< HEAD
 kPz
 kPz
 eph
@@ -73486,17 +73420,6 @@ kPz
 kPz
 eph
 kPz
-=======
-rOa
-rOa
-eph
-eph
-rOa
-rOa
-rOa
-eph
-rOa
->>>>>>> master
 eph
 eph
 azZ
@@ -86784,12 +86707,12 @@ bzO
 bQM
 bQM
 bQM
-rOa
-rOa
-rOa
-rOa
-rOa
-rOa
+kPz
+kPz
+kPz
+kPz
+kPz
+kPz
 bQM
 bQM
 bQM
@@ -88884,10 +88807,10 @@ cAW
 cAW
 cAW
 bQM
-rOa
-rOa
-rOa
-rOa
+kPz
+kPz
+kPz
+kPz
 bQM
 bQM
 bQM

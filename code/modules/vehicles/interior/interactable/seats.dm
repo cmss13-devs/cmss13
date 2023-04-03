@@ -409,7 +409,7 @@
 		if(!broken)
 			break_seat()
 		else
-			deconstruct()
+			deconstruct(FALSE)
 
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)

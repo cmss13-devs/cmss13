@@ -188,6 +188,8 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+// CLOTHING TRAITS
+#define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
@@ -201,8 +203,8 @@
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
-// Round Traits
 
+// Round Traits
 #define TRAIT_ROUND_CRYOSLEEP_SICKNESS "t_cryosleep_sickness"
 #define TRAIT_ROUND_FLU_SEASON "t_flu_season"
 #define TRAIT_ROUND_FAULTY_PIPING "t_faulty_piping"
@@ -210,6 +212,11 @@
 #define TRAIT_ROUND_ECONOMIC_SLUMP "t_economic_slump"
 #define TRAIT_ROUND_STANDARD_ISSUE "t_standard_issue"
 #define TRAIT_ROUND_WRONG_TUBES "t_wrongtubes"
+
+//This item will use special rename component behaviors.
+//ie. naming a regulation tape "example" will become regulation tape (example)
+#define TRAIT_ITEM_RENAME_SPECIAL "t_item_rename_special"
+
 
 //-- structure traits --
 // TABLE TRAITS
@@ -279,6 +286,10 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_TOOL_PEN" = TRAIT_TOOL_PEN,
 		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
+		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
+	),
+	/obj/item/clothing = list(
+		"TRAIT_CLOTHING_HOOD" = TRAIT_CLOTHING_HOOD
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
@@ -339,3 +350,6 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
 ///Status trait coming from generic items
 #define TRAIT_SOURCE_ITEM "t_s_item"
+
+//Status trait coming from clothing.
+#define TRAIT_SOURCE_CLOTHING "t_s_clothing"

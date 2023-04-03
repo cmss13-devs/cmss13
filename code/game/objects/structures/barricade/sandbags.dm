@@ -35,7 +35,7 @@
 
 	icon_state = "sandbag[build_stage]"
 	if(dir > 2)
-		layer = OBJ_LAYER
+		layer = OBJ_LAYER //This prevents cades from becoming invisible under a north/south facing plasteel cade.
 
 /obj/structure/barricade/sandbags/update_damage_state()
 	var/changed = FALSE

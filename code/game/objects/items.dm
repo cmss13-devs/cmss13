@@ -307,8 +307,7 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
-	. = ..()
-	if(!.)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
 	if(istype(W,/obj/item/storage))

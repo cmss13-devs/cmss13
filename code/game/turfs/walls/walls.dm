@@ -345,7 +345,7 @@
 			return
 
 	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
-		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = attacking_item
+		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
 		if(user.action_busy)
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))

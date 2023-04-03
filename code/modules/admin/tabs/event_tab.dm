@@ -336,6 +336,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+
 		if("Press")
 			var/body = "<body>"
 
@@ -345,6 +346,17 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
+
+		if("CMB")
+			var/body = "<body>"
+			
+			for(var/text in GLOB.CMBFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
 		if("Other")
 			var/body = "<body>"
 

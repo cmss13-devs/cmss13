@@ -1,6 +1,15 @@
 /mob/living/captive_brain
-	name = "host brain"
-	real_name = "host brain"
+	name = "captive mind"
+	real_name = "captive mind"
+	icon = 'icons/obj/items/organs.dmi'
+	icon_state = "xenobrain"
+
+	/// Whether or not the brain is mid-resisting control.
+	var/resisting_control = FALSE
+
+/mob/living/captive_brain/New(loc, ...)
+	. = ..()
+	give_action(src, /datum/action/innate/borer/brain_resist)
 
 /mob/living/captive_brain/say(message)
 	if(client)
@@ -40,14 +49,31 @@
 	if(!istype(B))
 		log_debug(EXCEPTION("Trapped mind found without a borer!"), src)
 		return FALSE
+	if(resisting_control)
+		to_chat(src, SPAN_DANGER("You stop resisting control."))
+		to_chat(B.host, SPAN_XENODANGER("The captive mind of [src] is no longer attempting to resist you."))
+		resisting_control = FALSE
+		return FALSE
 
-	to_chat(src, SPAN_DANGER("You begin doggedly resisting the parasite's control (this will take approximately sixty seconds)."))
-	to_chat(B.host, SPAN_XENOWARNING("You feel the captive mind of [src] begin to resist your control."))
-
+	to_chat(src, SPAN_HIGHDANGER("You begin doggedly resisting the parasite's control (this will take approximately sixty seconds)."))
+	to_chat(B.host, SPAN_XENOHIGHDANGER("You feel the captive mind of [src] begin to resist your control."))
+	resisting_control = TRUE
 	var/delay = (rand(350,450) + B.host.getBrainLoss())
 	addtimer(CALLBACK(src, PROC_REF(return_control), B), delay)
 	return TRUE
 
+/datum/action/innate/borer/brain_resist
+	name = "Resist!"
+	action_icon_state = "brain_resist"
+
+/datum/action/innate/borer/brain_resist/action_activate()
+	if(isliving(owner))
+		var/mob/living/live_owner = owner
+		live_owner.resist()
+	else
+		to_chat(owner, SPAN_WARNING("Error: CB1, tell forest2001! "))
+		return FALSE
+//################################################//
 /mob/living/carbon/cortical_borer
 	name = "cortical borer"
 	real_name = "cortical borer"
@@ -262,7 +288,8 @@
 	. += "Can Reproduce: [CR]"
 	. += "Enzymes: [round(enzymes)]/[round(max_enzymes)]"
 	. += "Contaminant: [round(contaminant)]/[round(max_contaminant)]"
-	. += "Health: P:[round(getBruteLoss())] B:[round(getFireLoss())] T:[round(getToxLoss())]"
+	. += "Health: [health]/[maxHealth]"
+	. += "Injuries: Brute:[round(getBruteLoss())] Burn:[round(getFireLoss())] Toxin:[round(getToxLoss())]"
 	if(host)
 		. += ""
 		if(ishuman(host))
@@ -302,9 +329,9 @@
 			if(((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !human_host.reagents.has_reagent("benzyme")) || human_host.reagents.has_reagent("bcure"))
 				if(!docile)
 					if(controlling)
-						to_chat(host, SPAN_XENODANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
+						to_chat(host, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
 					else
-						to_chat(src, SPAN_XENODANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
+						to_chat(src, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
 					docile = TRUE
 			else
 				if(docile)
@@ -322,7 +349,7 @@
 					contaminant = max(contaminant -= 0.1, 0)
 			if(controlling)
 				if(docile)
-					to_chat(host, SPAN_XENOWARNING("You are feeling far too docile to continue controlling your host..."))
+					to_chat(host, SPAN_WARNING("You are feeling far too docile to continue controlling your host..."))
 					host.release_control()
 					return
 	else

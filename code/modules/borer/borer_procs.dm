@@ -6,37 +6,47 @@
 
 	var/target = src
 
-	var/list/options = list("Communicating")
+	var/list/options = list("Communicating","Contaminant & Enzymes")
 	if(!host)
 		options += list("Infecting a host")
 	else if(controlling)
 		target = host
-		options = list("Captive Host", "Releasing Control", "Reproducing")
+		options += list("Captive Host", "Releasing Control", "Reproducing")
 	else if(isxeno(host))
-		options = list("Assuming Control","Contaminant & Enzymes","Hibernation","Reproducing")
+		options += list("Assuming Control","Hibernation","Reproducing")
 	else
-		options = list("Assuming Control","Contaminant & Enzymes","Hibernation","Secreting Chemicals","Reproducing")
+		options += list("Assuming Control","Hibernation","Secreting Chemicals","Reproducing")
 
 	var/choice = tgui_input_list(target, "What would you like help with?", "Help", options, 20 SECONDS)
 
 	var/help_message = ""
 	switch(choice)
 		if("Infecting a host")
-			help_message = "Infecting a host is the first major step for a borer to complete.\n\nThis is done by getting close to a potential host (This can be Human, Xeno or Yautja depending on settings controlled by admins) and clicking the Infest button in the top left of your screen.\n\nYour host will need to keep still for you to do this, and it's rare that they do so; for this reason you have Dominate Victim, which will allow you to temporarily stun a target.\n\nNote: This is not sufficient to keep them down for 100% of the time it takes to infect however, so be careful with it."
+			var/possible_targets = ""
+			if(infect_humans) possible_targets += "\nHumans"
+			if(infect_xenos) possible_targets += "\nXenos"
+			if(infect_yautja) possible_targets += "\nYautja"
+			if(!possible_targets) possible_targets += "No one."
+			help_message = "Infecting a host is the first major step for a borer to complete.\n\nThis is done by getting close to a potential host (This can be Human, Xeno or Yautja depending on settings controlled by admins) and clicking the Infest button in the top left of your screen.\n\nYour host will need to keep still for you to do this, and it's rare that they do so; for this reason you have Dominate Victim, which will allow you to temporarily stun a target.\n\nNote: Dominate is not sufficient to keep them down for 100% of the time it takes to infect however, so be careful with it.\n\nWhilst inside a host, and NOT in direct control, you can be detected by body scanners but otherwise are hidden from everyone but your host and other borers.\nYou can currently infect: [possible_targets]"
 		if("Communicating")
 			help_message = "All borers share a hivemind, the Cortical Link, this can be accessed using :0 (that's ZERO).\n\nThe hivemind can be used by any borer who is NOT in direct control of their host.\n\nAny borer in direct control of a host can only hear what their host can hear.\n\nA borer inside a host can communicate directly with that host using 'Converse with Host'."
 		if("Captive Host")
-			help_message = ""
+			help_message = "Your host is now unable to act or speak to anyone but yourself. While in this state you have complete control of your host body, but you are disconnected from the hivemind.\n\nYour host can resist your control and regain their body however this can cause brain damage in humanoids.\n\nNote: Whilst in direct control of your host medical HUDs will detect you.\n\n\nIMPORTANT: While in direct control of a mob you MUST NOT perform antag actions unless you have permission from staff."
 		if("Releasing Control")
-			help_message = ""
+			help_message = "Releasing control will do as it suggests, give your host their body back.\n\nYour host can resist your control and regain their body however this can cause brain damage in humanoids."
 		if("Reproducing")
-			help_message = ""
+			var/capability = "able"
+			if(!can_reproduce) capability = "forbidden"
+			else if((enzymes < BORER_LARVAE_COST)) capability = "unable"
+			help_message = "Reproduction will take [BORER_LARVAE_COST] enzymes and direct control of your host.\n\nWhen in direct control you can use the Reproduce ability to spit out a new borer.\nMake sure to do this in a safe place, the new borer will not have a player to start with.\n\nYou are currently [capability] to reproduce."
 		if("Assuming Control")
-			help_message = ""
-		if("Contaminant & Enzymes", "Hibernation")
-			help_message = ""
+			help_message = "Assuming control will put you in direct control of your host, acting as if you are their player.\n\nYour host will be disassociated with their body, and trapped in their own mind unable to speak to anyone but you.\nWhile in this state you are unable to make use of the hivemind.\n\nYour host can resist your control and regain their body however this can cause brain damage in humanoids.\nYou must assume control to reproduce.\n\nNote: Whilst in direct control of your host medical HUDs will detect you.\n\n\nIMPORTANT: While in direct control of a mob you MUST NOT perform antag actions unless you have permission from staff."
+		if("Contaminant & Enzymes")
+			help_message = "Enzymes are the cost of using most of your active abilities, such as secreting chemicals. They are gained passively over time whilst inside a host.\n\nUsing enzymes will in most cases produce Contaminant which upon reaching its capacity will prevent you using abilities.\nYou can clear Contaminant by hibernating when inside a host, alternately Contaminant will naturally be turned into a weak light source whilst outside a host."
+		if("Hibernation")
+			help_message = "Hibernation is how you purify contaminants from your body, allowing you to use your enzymes more freely.\n\nYou can only hibernate whilst inside a host, and it renders you unable to act other than to speak to your host.\n\nYou can freely enter or leave hibernation by clicking the Hibernate button."
 		if("Secreting Chemicals")
-			help_message = ""
+			help_message = "Whilst inside a humanoid host you can secrete chemicals to facilitate your relationship.\nThese can vary from helpful medications to harmful control measures.\n\nSecreting chemicals costs enzymes and if a chemical is impure will cause you to gain contaminant.\nIf you are at, or will go over, your contaminant capacity you will be unable to secrete chemicals.\nPure chemicals are chemicals native to borers such as Cortical Enzyme."
 
 	alert(target, help_message, choice, "Ok")
 
@@ -185,6 +195,8 @@
 	for(var/mob/living/carbon/candidate in view(1,src))
 		if(can_target(candidate))
 			choices += candidate
+	if(!choices)
+		to_chat(src, SPAN_XENOWARNING("No possible targets found."))
 	var/mob/living/carbon/target = tgui_input_list(src, "Who do you wish to infest?", "Targets", choices)
 	if(!target || !src || !Adjacent(target))
 		return FALSE
@@ -381,6 +393,7 @@
 
 		give_new_actions(ACTION_SET_CONTROL)
 		host.med_hud_set_status()
+		host.special_mob = TRUE
 
 		if(src && !src.key)
 			src.key = "@[borer_key]"
@@ -388,11 +401,12 @@
 
 //Captive mind reclaims their body.
 /mob/living/captive_brain/proc/return_control(mob/living/carbon/cortical_borer/B)
-	if(!B || !B.controlling)
+	if(!B || !B.controlling || !resisting_control)
 		return FALSE
 	B.host.adjustBrainLoss(rand(5,10))
-	to_chat(src, SPAN_DANGER("With an immense exertion of will, you regain control of your body!"))
-	to_chat(B.host, SPAN_XENODANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
+	to_chat(src, SPAN_HIGHDANGER("With an immense exertion of will, you regain control of your body!"))
+	to_chat(B.host, SPAN_XENOHIGHDANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
+	resisting_control = FALSE
 	B.detach()
 	return TRUE
 
@@ -425,6 +439,7 @@
 	sleeping = 0
 	if(host_brain)
 		log_interact(host, src, "Borer: [key_name(host)] Took control back")
+		host.special_mob = FALSE
 		// host -> self
 		var/h2s_id = host.computer_id
 		var/h2s_ip= host.lastKnownIP
@@ -457,9 +472,9 @@
 		return FALSE
 	if(controlling)
 		detach()
-		to_chat(src, SPAN_HIGHDANGER("You release your proboscis and flee as the psychic shock of your host's death washes over you!"))
+		to_chat(src, SPAN_XENOHIGHDANGER("You release your proboscis and flee as the psychic shock of your host's death washes over you!"))
 	if(perma)
-		to_chat(src, SPAN_HIGHDANGER("You flee your host in anguish!"))
+		to_chat(src, SPAN_XENOHIGHDANGER("You flee your host in anguish!"))
 		leave_host()
 	return TRUE
 
@@ -470,7 +485,7 @@
 	set desc = "Become invisible to the common eye."
 
 	if(host)
-		to_chat(usr, SPAN_XENOWARNING("You cannot do this while you're inside a host."))
+		to_chat(usr, SPAN_WARNING("You cannot do this while you're inside a host."))
 		return FALSE
 
 	if(stat != CONSCIOUS)
@@ -511,6 +526,8 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot use that ability again so soon."))
 		return FALSE
 	attempting_to_dominate = TRUE
+	if(!choices)
+		to_chat(src, SPAN_XENOWARNING("No possible targets found."))
 	var/mob/living/carbon/M = tgui_input_list(src, "Who do you wish to dominate?", "Targets", choices)
 	if(!M)
 		attempting_to_dominate = FALSE
@@ -554,7 +571,7 @@
 
 	if(B.host_brain)
 		to_chat(src, SPAN_XENONOTICE("You send a punishing spike of psychic agony lancing into your host's brain."))
-		to_chat(B.host_brain, SPAN_XENOHIGHDANGER("Horrific, burning agony lances through you, ripping a soundless scream from your trapped mind!"))
+		to_chat(B.host_brain, SPAN_HIGHDANGER("Horrific, burning agony lances through you, ripping a soundless scream from your trapped mind!"))
 		return TRUE
 
 

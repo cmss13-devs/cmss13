@@ -217,6 +217,8 @@
 					M_job = "Corgi"
 				else
 					M_job = "Animal"
+			else if(iscaptivemind(M))
+				M_job = "Captive Mind"
 			else
 				M_job = "Living"
 		else if(istype(M,/mob/new_player))

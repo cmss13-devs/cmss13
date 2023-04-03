@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Jamming smartguns now properly clean themselves (as they were meant to be doing all along)."

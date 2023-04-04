@@ -1,6 +1,0 @@
-author: "Triiodine"
-delete-after: True
-changes:
-  - balance: "Reduced projectile coverage of platforms from 60% to 0%."
-  - balance: "Reduced projectile coverage on handrail types from 35% to 10%. Sandstone handrails are unaffected and remain at 35% projectile coverage."
-  - balance: "Sandstone handrails can no longer be reinforced."

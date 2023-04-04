@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/device/flashlight/pen,
-		/obj/item/clothing/accessory/stethoscope
+		/obj/item/clothing/accessory/stethoscope,
 
 	)
 

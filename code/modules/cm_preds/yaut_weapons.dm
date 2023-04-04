@@ -493,19 +493,16 @@
 		hide.amount = skin_amount
 
 /obj/item/weapon/melee/yautja/knife/afterattack(obj/potential_limb, mob/living/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		return
+		return ..()
 
 	if(!istype(potential_limb, /obj/item/limb))
-		return
+		return ..()
 	var/obj/item/limb/current_limb = potential_limb
 
 	if(current_limb.flayed)
 		to_chat(user, SPAN_NOTICE("This limb has already been flayed."))
-		return
+		return ..()
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	to_chat(user, SPAN_WARNING("You start flaying the skin from the [current_limb.name]."))

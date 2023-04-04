@@ -69,7 +69,7 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75, plasma_cost = 200)
 
 	if(!istype(target_xeno))
 		return

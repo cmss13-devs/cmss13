@@ -80,9 +80,9 @@
 
 	utility_under = list(/obj/item/clothing/under/rank/medical)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)
-	utility_gloves = list(/obj/item/clothing/gloves/latex)
+	utility_gloves = list()
 	utility_shoes = list(/obj/item/clothing/shoes/white)
-	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
+	utility_extra = list()
 
 	service_under = list()
 	service_over = list()
@@ -102,9 +102,9 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
+	//H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	//H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
 	else

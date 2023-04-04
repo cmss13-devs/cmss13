@@ -105,7 +105,7 @@
 		to_chat(src, SPAN_WARNING("[target_xeno] is already at max health!"))
 		return
 
-	if((target_xeno.maxhealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
+	if((target_xeno.maxHealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
 		to_chat(src, SPAN_WARNING("[target_xeno] is healthy, so your resources would be wasted."))
 		return
 

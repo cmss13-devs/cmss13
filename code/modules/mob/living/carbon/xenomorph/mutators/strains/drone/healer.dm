@@ -106,7 +106,7 @@
 		return
 
 	if((target_xeno.maxhealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
-		to_chat(src, SPAN_WARNING('[target_xeno] is healthy, so your resources would be wasted."))
+		to_chat(src, SPAN_WARNING("[target_xeno] is healthy, so your resources would be wasted."))
 		return
 
 	if(plasma_stored < 200)

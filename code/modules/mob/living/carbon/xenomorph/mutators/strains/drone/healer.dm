@@ -1,6 +1,6 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by applying a regenerative resin salve by using your health and a chunk of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by applying a regenerative resin salve by using a chunk of your health and fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "To the very last drop, your blood and plasma belong to The Hive; share them with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -69,7 +69,7 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75, plasma_cost = 200)
 
 	if(!istype(target_xeno))
 		return
@@ -105,8 +105,8 @@
 		to_chat(src, SPAN_WARNING("[target_xeno] is already at max health!"))
 		return
 
-	if((target_xeno.maxhealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
-		to_chat(src, SPAN_WARNING('[target_xeno] is healthy, so your resources would be wasted."))
+	if((target_xeno.maxHealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
+		to_chat(src, SPAN_WARNING("[target_xeno] is healthy, so your resources would be wasted."))
 		return
 
 	if(plasma_stored < 200)

@@ -27,7 +27,7 @@
 		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	else
 		doctor = FALSE
-		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/surgeon
+		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 
 //check what job option you took and generate the corresponding the good texte.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)

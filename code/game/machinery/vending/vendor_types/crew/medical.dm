@@ -38,14 +38,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Cap", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("penlight", 0, /obj/item/device/flashlight/pen, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("stethoscope", 0, /obj/item/clothing/accessory/stethoscope, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Purple Scrubs", 0, /obj/item/clothing/under/rank/medical/purple, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Doctor Uniform", 0, /obj/item/clothing/under/rank/medical, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+
+		list("HELMET", 0, null, null, null),
+		list("Surgical Cap, Blue", 0, /obj/item/clothing/head/surgery/blue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Surgical Cap, Purple", 0, /obj/item/clothing/head/surgery/purple, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
 		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
@@ -84,7 +87,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		/obj/item/storage/firstaid/adv,
 		/obj/item/device/healthanalyzer,
 		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/device/flashlight/pen,
+		/obj/item/clothing/accessory/stethoscope
+
 	)
 
 ///If there are no issues with docs getting nurse uniforms and vice-versa, or we remove Nurse role, this will be nuked

@@ -2823,11 +2823,11 @@
 	dir = 8;
 	health = 80
 	},
-/obj/item/polishing_rag,
-/obj/item/polishing_rag{
+/obj/item/reagent_container/glass/rag/polishing_rag,
+/obj/item/reagent_container/glass/rag/polishing_rag{
 	pixel_x = 9
 	},
-/obj/item/polishing_rag{
+/obj/item/reagent_container/glass/rag/polishing_rag{
 	pixel_x = 4;
 	pixel_y = 3
 	},

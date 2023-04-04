@@ -924,34 +924,34 @@
 	else
 		icon_state = "medicomp"
 
-/obj/item/polishing_rag
+/obj/item/reagent_container/glass/rag/polishing_rag
 	name = "polishing rag"
 	desc = "An astonishingly fine, hand-tailored piece of exotic cloth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "polishing_rag"
+	reagent_desc_override = TRUE //Hide the fact its actually a reagent container
 
-/obj/item/polishing_rag/get_examine_text(mob/user)
+/obj/item/reagent_container/glass/rag/polishing_rag/get_examine_text(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		. += SPAN_NOTICE("You could use this to polish bones.")
 
-/obj/item/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
-	. = ..()
+/obj/item/reagent_container/glass/rag/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
+
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		return
+		return ..()
 
 	if(!istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton))
-		to_chat(user, SPAN_NOTICE("What are you trying to do with this?"))
-		return
-	var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb
+		return ..()
 
+	var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb
 	if(current_limb.polished)
-		to_chat(user, SPAN_NOTICE("This limb has already been cleaned."))
-		return
+		to_chat(user, SPAN_NOTICE("This limb has already been polished."))
+		return ..()
 
 	to_chat(user, SPAN_WARNING("You start wiping the [current_limb.name] with the [name]."))
 	if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
-		to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]"))
+		to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]."))
 		return
 	to_chat(user, SPAN_NOTICE("You polish the [current_limb.name] to perfection."))
 	current_limb.polished = TRUE

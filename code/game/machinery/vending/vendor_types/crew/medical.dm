@@ -29,6 +29,9 @@
 //------------ DOCTOR ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 
+		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
+		list("Essential Medical Set", 0, /obj/effect/essentials_set/doctor, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/doc, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
@@ -68,6 +71,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
+/obj/effect/essentials_set/doctor
+	spawned_gear_list = list(
+		/obj/item/device/defibrillator,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/device/healthanalyzer,
+		/obj/item/tool/surgery/surgical_line,
+	)
 
 ///If there are no issues with docs getting nurse uniforms and vice-versa, or we remove Nurse role, this will be nuked
 ///Only difference is available uniforms, and removal of surgical webbing from accessory list

@@ -38,6 +38,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Cap", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("penlight", 0, /obj/item/device/flashlight/pen, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("stethoscope", 0, /obj/item/clothing/accessory/stethoscope, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),

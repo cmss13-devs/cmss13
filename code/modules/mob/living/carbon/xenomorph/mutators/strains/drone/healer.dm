@@ -1,6 +1,6 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids and a chunk of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "You lose your choice of resin secretions, half of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by applying a regenerative resin salve by using your health and a chunk of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "To the very last drop, your blood and plasma belong to The Hive; share them with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -75,7 +75,7 @@
 		return
 
 	if(target_xeno == src)
-		to_chat(src, "You can't heal yourself with your own resin!")
+		to_chat(src, "You cannot heal yourself with your own regenerative resin salve!")
 		return
 
 	if(!check_state())
@@ -94,7 +94,7 @@
 		return
 
 	if(get_dist(src, target_xeno) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target_xeno]."))
+		to_chat(src, SPAN_WARNING("You need to be closer to [target_xeno] to apply your regenerative resin salve!"))
 		return
 
 	if(target_xeno.stat == DEAD)
@@ -102,11 +102,15 @@
 		return
 
 	if(target_xeno.health >= target_xeno.maxHealth)
-		to_chat(src, SPAN_WARNING("\The [target_xeno] is already at max health!"))
+		to_chat(src, SPAN_WARNING("[target_xeno] is already at max health!"))
+		return
+
+	if((target_xeno.maxhealth > 250) && (target_xeno.health >= target_xeno.maxHealth - 100))
+		to_chat(src, SPAN_WARNING('[target_xeno] is healthy, so your resources would be wasted."))
 		return
 
 	if(plasma_stored < 200)
-		to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require 200 plasma but only have [plasma_stored] stored."))
+		to_chat(src, SPAN_WARNING("You do not have enough plasma to make a regenerative resin salve. You require [plasma_cost] plasma but only have [plasma_stored] stored."))
 		return
 
 	adjustBruteLoss(amount * damage_taken_mod)

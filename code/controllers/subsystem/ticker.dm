@@ -99,6 +99,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				REDIS_PUBLISH("byond.round", "type" = "round-complete")
 				flash_clients()
 				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
 					addtimer(CALLBACK(

@@ -423,7 +423,6 @@ var/waiting_for_drop_votes = 0
 
 		round_statistics.log_round_statistics()
 
-	send_redis_update()
 
 	return 1
 

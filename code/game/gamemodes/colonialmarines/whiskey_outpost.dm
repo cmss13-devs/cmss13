@@ -303,7 +303,6 @@
 
 	calculate_end_statistics()
 
-	send_redis_update()
 
 	return 1
 

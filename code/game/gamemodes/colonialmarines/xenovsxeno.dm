@@ -274,7 +274,6 @@
 	calculate_end_statistics()
 	declare_fun_facts()
 
-	send_redis_update()
 
 	return TRUE
 

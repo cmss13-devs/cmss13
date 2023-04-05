@@ -490,33 +490,116 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
-/obj/item/tool/crowbar/maintenance_jack
-	name = "maintenance jack"
-	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though. Use while in your hand to swap between wrench and crowbar usage."
+/obj/item/maintenance_jack
+	name = "\improper K92 Maintenance Jack"
+	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
-	item_state = "red_crowbar"
+	item_state = "maintenance_jack"
 	hitsound = "swing_hit"
-	w_class = SIZE_MEDIUM
-	force = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_TIER_4
-	inherent_traits = list(TRAIT_TOOL_CROWBAR)
+	w_class = SIZE_LARGE
+	force = MELEE_FORCE_STRONG
+	flags_equip_slot = SLOT_SUIT_STORE
+	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
+	///Whether the Maintenance Jack is on crowbar or wrench mode
+	var/crowbar_mode = TRUE
 
-/obj/item/tool/crowbar/maintenance_jack/get_examine_text(mob/user)
+/obj/item/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It is set to [HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT) ? "crowbar" : "wrench"] mode.")
+	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
+	if(crowbar_mode)
+		. += SPAN_NOTICE("It is set to crowbar mode, allowing you to pry open doors, provided you are strong enough. Maybe you could even use this side for surgery...")
+	else
+		. += SPAN_NOTICE("It is set to wrench mode, allowing you to unbolt doors, provided you are smart enough to know how.")
 
-/obj/item/tool/crowbar/maintenance_jack/attack_self(mob/user)
+/obj/item/maintenance_jack/attack_self(mob/living/user)
 	. = ..()
-	if(HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT))
-		playsound(src, 'sound/weapons/handling/gun_underbarrel_activate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
+	playsound(src, 'sound/weapons/punchmiss.ogg', 15, TRUE, 3)
+	if(crowbar_mode) //Switch to wrench mode | Remove bolts
+		user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a wrench."),
+		SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
+		crowbar_mode = FALSE
+		animate(src, transform = matrix(0, MATRIX_ROTATE), time = 2, easing = EASE_IN)
+		animate(transform = matrix(90, MATRIX_ROTATE), time = 1)
+		animate(transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
 		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-	else
-		playsound(src, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
-		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
-		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+		pry_capable = null
+		return
+
+	//Switch to crowbar mode | Pry open doors if super strong trait
+	user.visible_message(SPAN_INFO("[user] changes their grip on [src]. They will now use it as a crowbar."),
+	SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
+	crowbar_mode = TRUE
+	animate(src, transform = matrix(180, MATRIX_ROTATE), time = 2, easing = EASE_IN)
+	animate(transform = matrix(270, MATRIX_ROTATE), time = 1)
+	animate(transform = matrix(360, MATRIX_ROTATE), time = 2, easing = EASE_OUT)
+	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+	pry_capable = IS_PRY_CAPABLE_FORCE
+
+/obj/item/maintenance_jack/afterattack(obj/door, mob/living/user, proximity)
+	if(!crowbar_mode) //Otherwise it lets you pry open right after unbolting
+		return
+	if(!proximity)
+		return
+
+	if(istype(door, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/airlock = door
+		if(airlock.locked)
+			to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+			if(!airlock.arePowerSystemsOn())
+				if(!airlock.operating)
+					if(airlock.density)
+						airlock.open(TRUE)
+					else
+						airlock.close(TRUE)
+				else
+					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+			return
+		if(!airlock.density)
+			return
+		if(airlock.heavy)
+			to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
+			return FALSE
+		if(user.action_busy || user.a_intent == INTENT_HARM)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
+		playsound(src, "pry", 15, TRUE)
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+		if(!airlock.density)
+			return
+		if(airlock.locked)
+			user.visible_message(SPAN_DANGER("[user] fails to force [airlock] open with [src]."),
+			SPAN_DANGER("You fail to force [airlock] open with [src]."))
+			return
+
+		user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
+		SPAN_DANGER("You force [airlock] open with [src]."))
+		airlock.open(TRUE)
+
+	else if(istype(door, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/resin_door = door
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+			return
+		if(resin_door.isSwitchingStates)
+			return
+		if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
+		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && resin_door.density)
+			user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
+			SPAN_DANGER("You force [resin_door] open with [src]."))
+			resin_door.Open()
 
 /*
 Welding backpack

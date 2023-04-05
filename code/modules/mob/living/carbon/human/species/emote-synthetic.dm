@@ -152,7 +152,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/health_risks
 	key = "healthrisks"
 	sound = 'sound/voice/joe/health_risks.ogg'
-	say_message = "This items carry notable health risks."
+	say_message = "These items carry notable health risks."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/hello

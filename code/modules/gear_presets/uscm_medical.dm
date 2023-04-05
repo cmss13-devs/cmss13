@@ -1,6 +1,20 @@
+/datum/equipment_preset/uscm_ship/uscm_medical
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	service_under = list()
+	service_over = list()
+	service_hat = list()
+	service_shoes = list(/obj/item/clothing/shoes/laceup)
+
+	dress_under = list(/obj/item/clothing/under/suit_jacket)
+	dress_over = list()
+	dress_hat = list()
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup)
+
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 	name = "USCM Chief Medical Officer (CMO)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	//flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -27,7 +41,7 @@
 	utility_gloves = list(/obj/item/clothing/gloves/latex)
 	utility_shoes = list(/obj/item/clothing/shoes/white)
 	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
-
+/*
 	service_under = list()
 	service_over = list()
 	service_hat = list()
@@ -38,7 +52,7 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
+*/
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -67,7 +81,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	name = "USCM Surgeon"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	//flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_DOCTOR
@@ -83,7 +97,7 @@
 	utility_gloves = list()
 	utility_shoes = list(/obj/item/clothing/shoes/white)
 	utility_extra = list()
-
+/*
 	service_under = list()
 	service_over = list()
 	service_hat = list()
@@ -94,7 +108,7 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
+*/
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -120,7 +134,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 	name = "USCM Nurse"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	//flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_NURSE
@@ -136,7 +150,7 @@
 	utility_gloves = list(/obj/item/clothing/gloves/latex)
 	utility_shoes = list(/obj/item/clothing/shoes/white)
 	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
-
+/*
 	service_under = list()
 	service_over = list()
 	service_hat = list()
@@ -147,7 +161,7 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
+*/
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -179,7 +193,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	name = "USCM Researcher"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	//flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
@@ -197,6 +211,8 @@
 	utility_extra = list(/obj/item/clothing/suit/storage/labcoat/researcher)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/researcher)
+/*
+	service_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	service_over = list()
 	service_hat = list()
 	service_shoes = list(/obj/item/clothing/shoes/laceup)
@@ -206,7 +222,7 @@
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
+*/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))

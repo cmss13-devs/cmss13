@@ -110,7 +110,7 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-//Surgeon this pqrt of the code is to change the name on your ID
+//Surgeon this part of the code is to change the name on your ID
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 

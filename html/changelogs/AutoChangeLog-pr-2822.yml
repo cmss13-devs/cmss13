@@ -1,0 +1,6 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Allows Predators to pick between weapon variations, specifically the two-blades-on-one-end ripper scythe, and the long polearm-like glaive."
+  - rscadd: "Sprited inhands for both scythes."
+  - rscadd: "Added a cool spin to double hitting with the scythe."

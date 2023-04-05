@@ -43,3 +43,12 @@
   - balance: Sandstone handrails can no longer be reinforced.
   harryob:
   - bugfix: random items no longer cause attacking animations
+2023-04-05:
+  H20Begod:
+  - rscadd: Added a new verb for ghosts to join in as working joes (ONLY WHITELISTED
+      GHOSTS).
+  - code_imp: Edited max spawns of the working joes to 3.
+  NewyearnewmeUwu:
+  - bugfix: xeno ghosts no longer have weird offsets
+  realforest2001:
+  - admin: Deleting notes now logs what note is deleted.

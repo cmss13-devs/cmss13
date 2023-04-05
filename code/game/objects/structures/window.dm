@@ -706,6 +706,16 @@
 	reinf = 1
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
+/obj/structure/window/framed/strata/hull
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
 //Kutjevo Windows
 
 /obj/structure/window/framed/kutjevo

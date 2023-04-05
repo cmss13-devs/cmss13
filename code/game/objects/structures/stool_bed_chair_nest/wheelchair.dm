@@ -103,3 +103,12 @@
 			newdir = EAST
 		B.setDir(newdir)
 	bloodiness--
+
+/obj/structure/bed/chair/wheelchair/do_buckle(mob/target, mob/user)
+	if(ishuman(target) && ishuman(user))
+		ADD_TRAIT(target, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)
+	. = ..()
+
+/obj/structure/bed/chair/wheelchair/manual_unbuckle(mob/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)

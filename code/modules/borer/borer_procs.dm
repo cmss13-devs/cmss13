@@ -9,7 +9,7 @@
 	var/list/options = list("Communicating","Contaminant & Enzymes")
 	if(!host)
 		options += list("Infecting a host")
-	else if(controlling)
+	else if(borer_flags_status & BORER_STATUS_CONTROLLING)
 		target = host
 		options += list("Captive Host", "Releasing Control", "Reproducing")
 	else if(isxeno(host))
@@ -23,9 +23,9 @@
 	switch(choice)
 		if("Infecting a host")
 			var/possible_targets = ""
-			if(infect_humans) possible_targets += "\nHumans"
-			if(infect_xenos) possible_targets += "\nXenos"
-			if(infect_yautja) possible_targets += "\nYautja"
+			if(borer_flags_targets & BORER_TARGET_HUMANS) possible_targets += "\nHumans"
+			if(borer_flags_targets & BORER_TARGET_XENOS) possible_targets += "\nXenos"
+			if(borer_flags_targets & BORER_TARGET_YAUTJA) possible_targets += "\nYautja"
 			if(!possible_targets) possible_targets += "No one."
 			help_message = "Infecting a host is the first major step for a borer to complete.\n\nThis is done by getting close to a potential host (This can be Human, Xeno or Yautja depending on settings controlled by admins) and clicking the Infest button in the top left of your screen.\n\nYour host will need to keep still for you to do this, and it's rare that they do so; for this reason you have Dominate Victim, which will allow you to temporarily stun a target.\n\nNote: Dominate is not sufficient to keep them down for 100% of the time it takes to infect however, so be careful with it.\n\nWhilst inside a host, and NOT in direct control, you can be detected by body scanners but otherwise are hidden from everyone but your host and other borers.\nYou can currently infect: [possible_targets]"
 		if("Communicating")
@@ -51,6 +51,19 @@
 	alert(target, help_message, choice, "Ok")
 
 //############# Physical Interaction Procs #############
+/mob/living/carbon/cortical_borer/proc/summon()
+	var/datum/emergency_call/custom/em_call = new()
+	em_call.name = real_name
+	em_call.mob_max = 1
+	em_call.players_to_offer = list(src)
+	em_call.owner = null
+	em_call.ert_message = "A new Cortical Borer has been birthed!"
+	em_call.objectives = "Create enjoyable Roleplay. Do not kill your host. Do not take control unless granted permission or directed to by admins. Hivemind is :0 (That's Zero, not Oscar)"
+
+	em_call.activate(announce = FALSE)
+
+	message_admins("A new Cortical Borer has spawned at [get_area(loc)]")
+
 /mob/living/carbon/cortical_borer/UnarmedAttack(atom/A)
 	if(istype(A, /obj/structure/ladder))
 		A.attack_hand(src)
@@ -60,21 +73,48 @@
 /atom/proc/attack_borer(mob/living/carbon/cortical_borer/user)
 	return
 
+/mob/living/carbon/cortical_borer/MouseDrop(atom/over_object)
+	if(!CAN_PICKUP(usr, src))
+		return ..()
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
+
+	if(H.a_intent == INTENT_HELP)
+		get_scooped(H)
+		return
+	else
+		return ..()
+
+/mob/living/carbon/cortical_borer/get_scooped(mob/living/carbon/grabber)
+	if(stat != DEAD)
+		to_chat(grabber, SPAN_WARNING("You probably shouldn't pick that thing up while it still lives."))
+		return
+	..()
 
 //Brainslug scans the reagents in a target's bloodstream.
 /mob/living/carbon/human/attack_borer(mob/M)
 	borerscan(M, src)
+/mob/living/carbon/xenomorph/attack_borer(mob/M)
+	borerscan(M, src)
 
 /proc/borerscan(mob/living/user, mob/living/M)
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.reagents)
-			if(H.reagents.reagent_list.len)
+		var/mob/living/carbon/human/human_target = M
+		if(human_target.reagents)
+			if(human_target.reagents.reagent_list.len)
 				to_chat(user, SPAN_XENONOTICE("Subject contains the following reagents:"))
-				for(var/datum/reagent/R in H.reagents.reagent_list)
+				for(var/datum/reagent/R in human_target.reagents.reagent_list)
 					to_chat(user, "[R.overdose != 0 && R.volume >= R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>")
 			else
 				to_chat(user, SPAN_XENONOTICE("Subject contains no reagents."))
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/xeno_target = M
+		to_chat(user, SPAN_XENONOTICE("Subject status as follows:"))
+		var/health_perc = xeno_target.maxHealth / 100
+		to_chat(user, SPAN_XENONOTICE("Subject is at [xeno_target.health / health_perc]% bio integrity."))
+		if(xeno_target.plasma_max)
+			var/plasma_perc = xeno_target.plasma_max / 100
+			to_chat(user, SPAN_XENONOTICE("Subject has [xeno_target.plasma_stored / plasma_perc]% bio plasma."))
 
 //Brainslug scuttles under a door, same code as used by xeno larva.
 /obj/structure/machinery/door/airlock/attack_borer(mob/living/carbon/cortical_borer/M)
@@ -168,11 +208,11 @@
 		return FALSE
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
-		if(isspecieshuman(human_target) && !infect_humans)//Can it infect humans? Normally, yes.
+		if(isspecieshuman(human_target) && !(borer_flags_targets & BORER_TARGET_HUMANS))//Can it infect humans? Normally, yes.
 			return FALSE
-		else if(isspeciesyautja(human_target) && !infect_yautja)//Can it infect yautja? Normally, no.
+		else if(isspeciesyautja(human_target) && !(borer_flags_targets & BORER_TARGET_YAUTJA))//Can it infect yautja? Normally, no.
 			return FALSE
-	if(isxeno(target) && !infect_xenos)//Can it infect xenos? Normally, no.
+	if(isxeno(target) && !(borer_flags_targets & BORER_TARGET_XENOS))//Can it infect xenos? Normally, no.
 		return FALSE
 	if(target.stat != DEAD && Adjacent(target) && !target.has_brain_worms())
 		return TRUE
@@ -271,7 +311,7 @@
 /mob/living/carbon/cortical_borer/proc/let_go()
 	if(!host || !src || QDELETED(host) || QDELETED(src))
 		return FALSE
-	if(!leaving || controlling)
+	if(!leaving || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
 	if(stat)
 		to_chat(src, SPAN_XENOWARNING("You cannot release a target in your current state."))
@@ -286,7 +326,7 @@
 /mob/living/carbon/cortical_borer/proc/leave_host()
 	if(!host)
 		return FALSE
-	if(controlling)
+	if(borer_flags_status & BORER_STATUS_CONTROLLING)
 		detach()
 	give_new_actions(ACTION_SET_HOSTLESS)
 
@@ -342,7 +382,7 @@
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/assume_control()
-	if(!host || !src || controlling)
+	if(!host || !src || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
 	if(!bonding)
 		return FALSE
@@ -389,7 +429,7 @@
 			host.lastKnownIP = s2h_ip
 
 		bonding = FALSE
-		controlling = TRUE
+		borer_flags_status |= BORER_STATUS_CONTROLLING
 
 		give_new_actions(ACTION_SET_CONTROL)
 		host.med_hud_set_status()
@@ -401,7 +441,7 @@
 
 //Captive mind reclaims their body.
 /mob/living/captive_brain/proc/return_control(mob/living/carbon/cortical_borer/B)
-	if(!B || !B.controlling || !resisting_control)
+	if(!B || !(B.borer_flags_status & BORER_STATUS_CONTROLLING) || !resisting_control)
 		return FALSE
 	B.host.adjustBrainLoss(rand(5,10))
 	to_chat(src, SPAN_HIGHDANGER("With an immense exertion of will, you regain control of your body!"))
@@ -428,10 +468,10 @@
 		log_debug(EXCEPTION("Missing borer or missing host brain upon borer release."), src)
 
 /mob/living/carbon/cortical_borer/proc/detach()
-	if(!host || !controlling)
+	if(!host || !(borer_flags_status & BORER_STATUS_CONTROLLING))
 		return FALSE
 
-	controlling = FALSE
+	borer_flags_status &= ~BORER_STATUS_CONTROLLING
 	reset_view(null)
 
 	get_host_actions()
@@ -470,7 +510,7 @@
 	if(!(host && loc == host))
 		log_debug("Borer ([key_name(src)]) called host_death without being inside a host!")
 		return FALSE
-	if(controlling)
+	if(borer_flags_status & BORER_STATUS_CONTROLLING)
 		detach()
 		to_chat(src, SPAN_XENOHIGHDANGER("You release your proboscis and flee as the psychic shock of your host's death washes over you!"))
 	if(perma)
@@ -593,7 +633,7 @@
 			T.add_vomit_floor()
 			B.contaminant = 0
 			var/repro = max(B.can_reproduce - 1, 0)
-			new /mob/living/carbon/cortical_borer(T, B.generation + 1, TRUE, repro, B.infect_humans, B.infect_xenos, B.infect_yautja)
+			new /mob/living/carbon/cortical_borer(T, B.generation + 1, TRUE, repro, B.borer_flags_targets)
 			return TRUE
 		else
 			to_chat(src, SPAN_XENONOTICE("You need at least [BORER_LARVAE_COST] enzymes to reproduce!"))
@@ -772,7 +812,7 @@
 				C = new test()
 				break
 
-		if(!C || !host || controlling || !src || stat)
+		if(!C || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE
 		var/datum/reagent/R = chemical_reagents_list[C.chem_id]
 		if(enzymes < C.cost)

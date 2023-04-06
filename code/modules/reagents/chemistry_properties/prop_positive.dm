@@ -495,7 +495,7 @@
 	M.apply_damage(potency, TOX)
 	var/mob/living/carbon/cortical_borer/player_2 = M.has_brain_worms()
 	if(player_2)
-		if(player_2.controlling)
+		if(player_2.borer_flags_status & BORER_STATUS_CONTROLLING)
 			player_2.detach()
 			to_chat(src, SPAN_HIGHDANGER("You relinquish control as the unknown chemical overwhelms you!"))
 

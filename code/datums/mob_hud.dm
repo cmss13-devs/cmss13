@@ -463,7 +463,7 @@ var/list/datum/mob_hud/huds = list(
 		holder5.icon_state = null
 		if(B)
 			holder5.icon_state = "hudbrainwormhost"
-			if(B.controlling)
+			if(B.borer_flags_status & BORER_STATUS_CONTROLLING)
 				holder.icon_state = "hudbrainworm"
 				if(!holder2_set)
 					holder2.icon_state = "hudbrainworm"

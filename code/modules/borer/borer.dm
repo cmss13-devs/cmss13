@@ -115,16 +115,18 @@
 	var/mob/living/carbon/host		// Human host for the brain worm.
 	var/truename							// Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain	// Used for swapping control of the body back and forth.
-	var/controlling							// Used in human death check.
 	var/docile = FALSE						// Anti-Parasite or Anti-Enzyme chemicals can stop borers from acting.
 	var/bonding = FALSE
 	var/leaving = FALSE
 	var/hiding = FALSE
 	var/can_reproduce = FALSE				// Locked to manual override to prevent things getting out of hand.
 
-	var/infect_humans = TRUE				// Locked for normal use.
-	var/infect_xenos = FALSE
-	var/infect_yautja = FALSE
+	/// Flags that show what active abilities are toggled. Better than a dozen different boolean vars.
+	var/borer_flags_actives
+	/// Flags determining what the borer can infect
+	var/borer_flags_targets = BORER_TARGET_HUMANS
+	/// Borer status, controlling or docile.
+	var/borer_flags_status //Controlling or Docile. Unsure if I want to put hibernating in here or in actives as active abilities will stop enzyme production.
 
 	var/list/datum/reagent/synthesized_chems
 
@@ -160,7 +162,7 @@
 	)
 
 //################### INIT & LIFE ###################//
-/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0, infect_humans = TRUE, infect_xenos = FALSE, infect_yautja = FALSE)
+/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0, new_targets = BORER_TARGET_HUMANS)
 	..(newloc)
 	SSmob.living_misc_mobs += src
 	generation = gen
@@ -169,6 +171,7 @@
 	real_name = "Cortical Borer [mob_number]"
 	truename = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
 	can_reproduce = reproduction
+	borer_flags_targets = new_targets
 	give_new_actions(ACTION_SET_HOSTLESS)
 	//GrantBorerActions()
 	GiveBorerHUD()
@@ -185,6 +188,55 @@
 	pain = new /datum/pain/zombie(src)
 /mob/living/carbon/cortical_borer/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
+
+/mob/living/carbon/cortical_borer/Life(delta_time)
+	..()
+	update_canmove()
+	update_icons()
+	var/heal_amt = 1
+	if(host)
+		heal_amt = 3
+		if(!stat && host.stat != DEAD)
+			var/mob/living/carbon/human/human_host
+			if(ishuman(host))
+				human_host = host
+			if(((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !human_host.reagents.has_reagent("benzyme")) || human_host.reagents.has_reagent("bcure"))
+				if(!docile)
+					if(borer_flags_status & BORER_STATUS_CONTROLLING)
+						to_chat(host, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
+					else
+						to_chat(src, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
+					docile = TRUE
+			else
+				if(docile)
+					if(borer_flags_status & BORER_STATUS_CONTROLLING)
+						to_chat(human_host, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
+					else
+						to_chat(src, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
+					docile = FALSE
+			if(!hibernating && (enzymes < max_enzymes))
+				enzymes++
+			if(contaminant > 0)
+				if(hibernating)
+					contaminant = max(contaminant -= 1, 0)
+				else
+					contaminant = max(contaminant -= 0.1, 0)
+			if(borer_flags_status & BORER_STATUS_CONTROLLING)
+				if(docile)
+					to_chat(host, SPAN_WARNING("You are feeling far too docile to continue controlling your host..."))
+					host.release_control()
+					return
+	else
+		if(contaminant > 0)
+			if(!luminosity)
+				SetLuminosity(2)
+			contaminant = max(contaminant - 0.3, 0)
+		else
+			SetLuminosity(0)
+	if(bruteloss || fireloss)
+		heal_overall_damage(heal_amt, heal_amt)
+	if(toxloss && !contaminant)//no clearing toxic impurities while contaminated.
+		apply_damage(-(heal_amt/2), TOX)
 
 /mob/living/carbon/cortical_borer/updatehealth()
 	if(status_flags & GODMODE)
@@ -235,18 +287,6 @@
 	return ..()
 //###################################################//
 
-/mob/living/carbon/cortical_borer/proc/summon()
-	var/datum/emergency_call/custom/em_call = new()
-	em_call.name = real_name
-	em_call.mob_max = 1
-	em_call.players_to_offer = list(src)
-	em_call.owner = null
-	em_call.ert_message = "A new Cortical Borer has been birthed!"
-	em_call.objectives = "Create enjoyable Roleplay. Do not kill your host. Do not take control unless granted permission or directed to by admins. Hivemind is :0 (That's Zero, not Oscar)"
-
-	em_call.activate(announce = FALSE)
-
-	message_admins("A new Cortical Borer has spawned at [get_area(loc)]")
 
 /mob/living/carbon/cortical_borer/update_icons()
 	if(stat == DEAD)
@@ -292,11 +332,15 @@
 	. += "Injuries: Brute:[round(getBruteLoss())] Burn:[round(getFireLoss())] Toxin:[round(getToxLoss())]"
 	if(host)
 		. += ""
+		var/health_perc = host.maxHealth / 100
+		. += "Host Integrity: [host.health / health_perc]%"
 		if(ishuman(host))
-			. += "Host Brain Damage: [host.brainloss]/100"
+			. += "Host Brain Damage: [host.brainloss]%"
 		else if(isxeno(host))
-		//	. += "Host Plasma: [plasma_stored]/[plasma_max]"
-			. += "Host Integrity: [health]/[maxHealth]"
+			var/mob/living/carbon/xenomorph/xeno_host = host
+			if(xeno_host.plasma_max)
+				var/plasma_perc = xeno_host.plasma_max / 100
+				. += "Host Plasma: [xeno_host.plasma_stored / plasma_perc]%"
 
 /mob/living/carbon/cortical_borer/say(message)//I need to parse the message properly so it doesn't look stupid
 	var/datum/language/parsed_language = parse_language(message)
@@ -313,56 +357,6 @@
 		to_chat(src, SPAN_WARNING("You've disabled audible speech while inside a host! Re-enable it under the borer tab, or stick to borer communications."))
 		return
 	. = ..()
-
-
-/mob/living/carbon/cortical_borer/Life(delta_time)
-	..()
-	update_canmove()
-	update_icons()
-	var/heal_amt = 1
-	if(host)
-		heal_amt = 3
-		if(!stat && host.stat != DEAD)
-			var/mob/living/carbon/human/human_host
-			if(ishuman(host))
-				human_host = host
-			if(((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !human_host.reagents.has_reagent("benzyme")) || human_host.reagents.has_reagent("bcure"))
-				if(!docile)
-					if(controlling)
-						to_chat(host, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
-					else
-						to_chat(src, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))
-					docile = TRUE
-			else
-				if(docile)
-					if(controlling)
-						to_chat(human_host, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
-					else
-						to_chat(src, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
-					docile = FALSE
-			if(!hibernating && (enzymes < max_enzymes))
-				enzymes++
-			if(contaminant > 0)
-				if(hibernating)
-					contaminant = max(contaminant -= 1, 0)
-				else
-					contaminant = max(contaminant -= 0.1, 0)
-			if(controlling)
-				if(docile)
-					to_chat(host, SPAN_WARNING("You are feeling far too docile to continue controlling your host..."))
-					host.release_control()
-					return
-	else
-		if(contaminant > 0)
-			if(!luminosity)
-				SetLuminosity(2)
-			contaminant = max(contaminant - 0.3, 0)
-		else
-			SetLuminosity(0)
-	if(bruteloss || fireloss)
-		heal_overall_damage(heal_amt, heal_amt)
-	if(toxloss)
-		apply_damage(-(heal_amt/2), TOX)
 
 //################### ABILITIES ###################//
 /datum/action/innate/borer
@@ -405,6 +399,7 @@
 	action_icon_state = "borer_hiding_0"
 
 /datum/action/innate/borer/toggle_hide/action_activate()
+	if(!isborer(owner)) return FALSE
 	var/mob/living/carbon/cortical_borer/B = owner
 	B.hide_borer()
 
@@ -434,6 +429,7 @@
 	action_icon_state = "borer_control"
 
 /datum/action/innate/borer/take_control/action_activate()
+	if(!isborer(owner)) return FALSE
 	var/mob/living/carbon/cortical_borer/B = owner
 	if(B.hibernating)
 		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
@@ -454,6 +450,7 @@
 	action_icon_state = "borer_leave"
 
 /datum/action/innate/borer/leave_body/action_activate()
+	if(!isborer(owner)) return FALSE
 	var/mob/living/carbon/cortical_borer/B = owner
 	if(B.hibernating)
 		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
@@ -465,6 +462,7 @@
 	action_icon_state = "borer_chems"
 
 /datum/action/innate/borer/make_chems/action_activate()
+	if(!isborer(owner)) return FALSE
 	var/mob/living/carbon/cortical_borer/B = owner
 	if(B.hibernating)
 		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
@@ -476,6 +474,7 @@
 	action_icon_state = "borer_scan"
 
 /datum/action/innate/borer/scan_chems/action_activate()
+	if(!isborer(owner)) return FALSE
 	var/mob/living/carbon/cortical_borer/B = owner
 	if(B.hibernating)
 		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
@@ -517,21 +516,3 @@
 	B.hibernate()
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_borer.dmi', button, "borer_sleeping_[B.hibernating]")
-
-/mob/living/carbon/cortical_borer/MouseDrop(atom/over_object)
-	if(!CAN_PICKUP(usr, src))
-		return ..()
-	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
-
-	if(H.a_intent == INTENT_HELP)
-		get_scooped(H)
-		return
-	else
-		return ..()
-
-/mob/living/carbon/cortical_borer/get_scooped(mob/living/carbon/grabber)
-	if(stat != DEAD)
-		to_chat(grabber, SPAN_WARNING("You probably shouldn't pick that thing up while it still lives."))
-		return
-	..()

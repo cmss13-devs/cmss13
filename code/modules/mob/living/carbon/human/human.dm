@@ -137,7 +137,7 @@
 			. += "Evacuation: [eta_status]"
 
 	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-	if(B && B.controlling)
+	if(B && (B.borer_flags_status & BORER_STATUS_CONTROLLING))
 
 		var/CR = "Yes"
 		if(!B.can_reproduce)

@@ -63,6 +63,7 @@
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		to_chat(parasite, SPAN_HIGHDANGER("You are ripped forcibly from your host's head!"))
 		parasite.leave_host()
+		parasite.apply_damage(30, BRUTE)
 
 		log_interact(user, target, "[key_name(user)] removed a parasite from [key_name(target)]'s head with [tool ? "\the [tool]" : "their hands"], ending [surgery].")
 

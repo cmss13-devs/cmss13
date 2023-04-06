@@ -103,9 +103,23 @@
 	chem_id = "antineurotoxin"
 	desc = "A bioagent that counteracts neurotoxins."
 	cost = 100
+	category = BORER_CAT_STIM
+
+/datum/borer_chem/human/chloralhydrate
+	chem_name = "Chloral Hydrate"
+	chem_id = "chloralhydrate"
+	desc = "A powerful sedative which causes near instant sleepiness, but can be deadly in large quantities."
+	cost = 125
+	quantity = 5
 	category = BORER_CAT_PUNISH
 
-
+/datum/borer_chem/human/potassium_chlorophoride
+	chem_name = "Potassium Chlorophoride"
+	chem_id = "potassium_chlorophoride"
+	desc = "A powerful chemical based on Potassium Chloride that causes instant cardiac arrest."
+	cost = 250
+	quantity = 3
+	category = BORER_CAT_PUNISH
 
 //Yautja chemicals
 /datum/borer_chem/yautja/thwei

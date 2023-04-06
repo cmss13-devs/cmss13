@@ -38,7 +38,7 @@
 			var/capability = "able"
 			if(!can_reproduce) capability = "forbidden"
 			else if((enzymes < BORER_LARVAE_COST)) capability = "unable"
-			help_message = "Reproduction will take [BORER_LARVAE_COST] enzymes and direct control of your host.\n\nWhen in direct control you can use the Reproduce ability to spit out a new borer.\nMake sure to do this in a safe place, the new borer will not have a player to start with.\n\nYou are currently [capability] to reproduce."
+			help_message = "Reproduction will take a minimum of [BORER_LARVAE_COST] enzymes and direct control of your host.\n\nWhen in direct control you can use the Reproduce ability to spit out a new borer.\nMake sure to do this in a safe place, the new borer will not have a player to start with.\n\nYou are currently [capability] to reproduce."
 		if("Assuming Control")
 			help_message = "Assuming control will put you in direct control of your host, acting as if you are their player.\n\nYour host will be disassociated with their body, and trapped in their own mind unable to speak to anyone but you.\nWhile in this state you are unable to make use of the hivemind.\n\nYour host can resist your control and regain their body however this can cause brain damage in humanoids.\nYou must assume control to reproduce.\n\nNote: Whilst in direct control of your host medical HUDs will detect you.\n\n\nIMPORTANT: While in direct control of a mob you MUST NOT perform antag actions unless you have permission from staff."
 		if("Contaminant & Enzymes")
@@ -628,7 +628,10 @@
 		if(B.enzymes >= BORER_LARVAE_COST)
 			to_chat(src, SPAN_XENOWARNING("Your host twitches and quivers as you rapdly excrete a larva from your sluglike body.</span>"))
 			visible_message(SPAN_WARNING("[src] heaves violently, expelling a rush of vomit and a wriggling, sluglike creature!</span>"))
-			B.enzymes = 0
+			if(B.generation == 1)
+				B.enzymes -= BORER_LARVAE_COST
+			else
+				B.enzymes = 0
 			var/turf/T = get_turf(src)
 			T.add_vomit_floor()
 			B.contaminant = 0
@@ -675,14 +678,14 @@
 				var/chem = initial(C.chem_id)
 				var/datum/reagent/R = chemical_reagents_list[chem]
 				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [C.chem_name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
 		else
 			for(var/datum in subtypesof(/datum/borer_chem/human))
 				var/datum/borer_chem/C = datum
 				var/chem = initial(C.chem_id)
 				var/datum/reagent/R = chemical_reagents_list[chem]
 				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [R.name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [C.chem_name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
 
 	content += "</table>"
 
@@ -797,7 +800,7 @@
 /mob/living/carbon/cortical_borer/Topic(href, href_list, hsrc)
 	if(href_list["borer_use_chem"])
 		locate(href_list["src"])
-		if(!istype(src, /mob/living/carbon/cortical_borer))
+		if(!isborer(src))
 			return FALSE
 		if(docile)
 			to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
@@ -816,13 +819,13 @@
 			return FALSE
 		var/datum/reagent/R = chemical_reagents_list[C.chem_id]
 		if(enzymes < C.cost)
-			to_chat(src, SPAN_XENOWARNING("You need [C.cost] enzymes stored to secrete [R.name]!"))
+			to_chat(src, SPAN_XENOWARNING("You need [C.cost] enzymes stored to secrete [C.chem_name]!"))
 			return FALSE
 		var/contamination = round(C.cost / 10)
 		if(C.impure && ((contaminant + contamination) > max_contaminant))
-			to_chat(src, SPAN_XENOWARNING("You are too contaminated to secrete [R.name]!"))
+			to_chat(src, SPAN_XENOWARNING("You are too contaminated to secrete [C.chem_name]!"))
 			return FALSE
-		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [R.name] from your reservoirs into [host]'s bloodstream."))
+		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [C.chem_name] from your reservoirs into [host]'s bloodstream."))
 		contaminant += contamination
 		host.reagents.add_reagent(C.chem_id, C.quantity)
 		enzymes -= C.cost

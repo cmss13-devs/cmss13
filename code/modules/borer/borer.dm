@@ -385,7 +385,7 @@
 
 /datum/action/innate/borer/talk_to_host
 	name = "Converse with Host"
-	action_icon_state = "borer_whisper"
+	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_host/action_activate()
 	var/mob/living/carbon/cortical_borer/B = owner
@@ -413,7 +413,7 @@
 
 /datum/action/innate/borer/talk_to_borer
 	name = "Converse with Borer"
-	action_icon_state = "borer_whisper"
+	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_borer/action_activate()
 	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
@@ -422,7 +422,7 @@
 
 /datum/action/innate/borer/talk_to_brain
 	name = "Converse with Trapped Mind"
-	action_icon_state = "borer_whisper"
+	action_icon_state = "borer_talk"
 
 /datum/action/innate/borer/talk_to_brain/action_activate()
 	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
@@ -464,7 +464,7 @@
 
 /datum/action/innate/borer/make_chems
 	name = "Secrete Chemicals"
-	action_icon_state = "borer_chems"
+	action_icon_state = "borer_human_chems"
 
 /datum/action/innate/borer/make_chems/action_activate()
 	if(!isborer(owner)) return FALSE
@@ -476,7 +476,7 @@
 
 /datum/action/innate/borer/scan_chems
 	name = "Scan Chemicals"
-	action_icon_state = "borer_scan"
+	action_icon_state = "borer_human_scan"
 
 /datum/action/innate/borer/scan_chems/action_activate()
 	if(!isborer(owner)) return FALSE

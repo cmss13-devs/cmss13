@@ -112,7 +112,7 @@
 	var/max_contaminant = 120				//Decreases through hibernation or reproduction.
 	var/hibernating = FALSE					//Usable inside a host, but not when controlling. Allows clearing of impurities.
 
-	var/mob/living/carbon/host		// Human host for the brain worm.
+	var/mob/living/carbon/host				// Carbon host for the brain worm.
 	var/truename							// Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain	// Used for swapping control of the body back and forth.
 	var/docile = FALSE						// Anti-Parasite or Anti-Enzyme chemicals can stop borers from acting.
@@ -173,8 +173,11 @@
 	can_reproduce = reproduction
 	borer_flags_targets = new_targets
 	give_new_actions(ACTION_SET_HOSTLESS)
-	//GrantBorerActions()
 	GiveBorerHUD()
+	if(generation == 1)
+		maxHealth = maxHealth + (maxHealth / 2)
+		max_enzymes = max_enzymes + (max_enzymes / 2)
+		max_contaminant = max_contaminant + (max_contaminant / 2)
 	if((!is_admin_level(z)) && ERT)
 		summon()
 
@@ -216,6 +219,8 @@
 					docile = FALSE
 			if(!hibernating && (enzymes < max_enzymes))
 				enzymes++
+				if(generation == 1)
+					enzymes++
 			if(contaminant > 0)
 				if(hibernating)
 					contaminant = max(contaminant -= 1, 0)

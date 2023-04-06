@@ -52,3 +52,16 @@
   - bugfix: xeno ghosts no longer have weird offsets
   realforest2001:
   - admin: Deleting notes now logs what note is deleted.
+2023-04-06:
+  LTNTS:
+  - rscdel: Removed unused Nexus Lockdown Button
+  LynxSolstice:
+  - bugfix: Vamps can no longer headbite while dead or unconscious.
+  carlarctg:
+  - rscadd: Allows Predators to pick between weapon variations, specifically the two-blades-on-one-end
+      ripper scythe, and the long polearm-like glaive.
+  - rscadd: Sprited inhands for both scythes.
+  - rscadd: Added a cool spin to double hitting with the scythe.
+  harryob:
+  - server: the server now supports a redis connection
+  - admin: admin messages are logged to discord, and vice versa

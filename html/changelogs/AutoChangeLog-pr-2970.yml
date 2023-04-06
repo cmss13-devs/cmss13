@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - server: "the server now supports a redis connection"
-  - admin: "admin messages are logged to discord, and vice versa"

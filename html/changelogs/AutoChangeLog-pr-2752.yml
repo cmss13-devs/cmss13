@@ -1,0 +1,4 @@
+author: "Usnpeepoo"
+delete-after: True
+changes:
+  - rscadd: "Added a new ability to the Steel Crest strain, called Soak. It tracks your accumulated damage and once it reaches a threshold, reset your tail slam cooldown and slightly heal you."

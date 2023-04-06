@@ -24,7 +24,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), WEAR_EYES)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword/pirate(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/energy/sword/pirate(H), WEAR_L_HAND)
 
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
@@ -47,7 +47,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/pirate(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), WEAR_EYES)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword/pirate(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/energy/sword/pirate(H), WEAR_L_HAND)
 
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
@@ -397,8 +397,8 @@
 	var/satchel_success = H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/hefa(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(H), WEAR_IN_BACK)
 
 	if(shoes_success)
 		var/obj/item/clothing/shoes/marine/knife/shoes = H.shoes

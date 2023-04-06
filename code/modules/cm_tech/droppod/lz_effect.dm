@@ -29,14 +29,10 @@
 /obj/effect/warning/explosive
 	name = "explosive warning"
 	color = "#ff0000"
-	var/time_until_explosion = 5 SECONDS
 
-/obj/effect/warning/explosive/Initialize(mapload, ...)
+/obj/effect/warning/explosive/Initialize(mapload, time_until_explosion)
 	. = ..()
-	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
-	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_until_explosion)
+	addtimer(CALLBACK(src, PROC_REF(disappear)), time_until_explosion)
 
-/obj/effect/warning/explosive/proc/kablooie()
-	new /obj/item/explosive/grenade/high_explosive/bursting_pipe(loc)
-	new /obj/item/explosive/grenade/incendiary/bursting_pipe(loc)
+/obj/effect/warning/explosive/proc/disappear()
 	qdel(src)

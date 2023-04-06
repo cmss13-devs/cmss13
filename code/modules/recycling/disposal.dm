@@ -947,7 +947,7 @@
 	GLOB.disposalpipe_up_list += src
 
 /obj/structure/disposalpipe/up/almayer/Destroy()
-	GLOB.disposalpipe_up_list += src
+	GLOB.disposalpipe_up_list -= src
 	return ..()
 
 /obj/structure/disposalpipe/down/almayer
@@ -958,7 +958,7 @@
 	GLOB.disposalpipe_down_list += src
 
 /obj/structure/disposalpipe/down/almayer/Destroy()
-	GLOB.disposalpipe_down_list += src
+	GLOB.disposalpipe_down_list -= src
 	return ..()
 
 /obj/structure/disposalpipe/up/almayer/transfer(obj/structure/disposalholder/H)
@@ -1410,7 +1410,7 @@
 	GLOB.disposal_retrieval_list += src
 
 /obj/structure/disposaloutlet/retrieval/Destroy()
-	GLOB.disposal_retrieval_list += src
+	GLOB.disposal_retrieval_list -= src
 	return ..()
 
 /obj/structure/disposaloutlet/retrieval/attackby(obj/item/I, mob/user)

@@ -87,7 +87,7 @@
 	banished_holder.pixel_x = -12
 	banished_holder.pixel_y = -6
 
-/mob/living/carbon/Xenomorph/Hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER

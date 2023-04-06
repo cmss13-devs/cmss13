@@ -193,6 +193,7 @@
 			areas += list(
 				/area/almayer/engineering/upper_engineering,
 				/area/almayer/command/computerlab,
+				/area/almayer/engineering/laundry,
 			)
 		if("Lower deck Foreship")
 			areas += list(

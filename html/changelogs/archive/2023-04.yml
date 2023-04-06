@@ -1,0 +1,67 @@
+2023-04-01:
+  BeagleGaming1:
+  - balance: Combat Synthetics can get decapitation protection from helmets
+  Huffie56:
+  - rscdel: Removed a floating phone in the toilet in the apc of the CLF crashed ship.
+  - maptweak: increase the starting charge in the apc of the CLF crashed ship.
+  - maptweak: add two spawn point for survivor and spread them around so it's not
+      a straight line at the back.
+  NewyearnewmeUwu:
+  - bugfix: You can no longer spawn with bad leg as most ERT roles.
+  - bugfix: You no longer make the step messages (ie. using the cane to pace your
+      steps) if you're dead, KO, buckled to something or restrained.
+  - rscadd: Added OWLF placeholder items, none of which are properly statted yet.
+  - code_imp: CM's code now has support for integrated hoods for uniforms.
+  realforest2001:
+  - bugfix: Fixes ID locked items not spawning in presets due to load order.
+2023-04-02:
+  BeagleGaming1:
+  - rscadd: Added a Maintenance Jack for Synthetics (Experimental Vendor) and Working
+      Joes (Standard Kit). It has two modes, being able to switch between a crowbar
+      and a wrench. You can use it to unbolt doors, and, if strong enough, pry them
+      open.
+2023-04-04:
+  BeagleGaming1:
+  - soundadd: Makes the surgery sounds quieter
+  - spellcheck: Corrected the RTOs entry message typo
+  Morrow:
+  - rscadd: You can now choose your SEA rank
+  NewyearnewmeUwu:
+  - balance: Gas masks no longer provide armor.
+  Segrain:
+  - bugfix: Jamming smartguns now properly clean themselves (as they were meant to
+      be doing all along).
+  SparkleKing47:
+  - balance: Egg morpher now on a higher layer than tall grass
+  Totalepicness5:
+  - rscadd: Updates the XO vendor to include more hats,accessories and standard marine
+      pouches.
+  Triiodine:
+  - balance: Reduced projectile coverage of platforms from 60% to 0%.
+  - balance: Reduced projectile coverage on handrail types from 35% to 10%. Sandstone
+      handrails are unaffected and remain at 35% projectile coverage.
+  - balance: Sandstone handrails can no longer be reinforced.
+  harryob:
+  - bugfix: random items no longer cause attacking animations
+2023-04-05:
+  H20Begod:
+  - rscadd: Added a new verb for ghosts to join in as working joes (ONLY WHITELISTED
+      GHOSTS).
+  - code_imp: Edited max spawns of the working joes to 3.
+  NewyearnewmeUwu:
+  - bugfix: xeno ghosts no longer have weird offsets
+  realforest2001:
+  - admin: Deleting notes now logs what note is deleted.
+2023-04-06:
+  LTNTS:
+  - rscdel: Removed unused Nexus Lockdown Button
+  LynxSolstice:
+  - bugfix: Vamps can no longer headbite while dead or unconscious.
+  carlarctg:
+  - rscadd: Allows Predators to pick between weapon variations, specifically the two-blades-on-one-end
+      ripper scythe, and the long polearm-like glaive.
+  - rscadd: Sprited inhands for both scythes.
+  - rscadd: Added a cool spin to double hitting with the scythe.
+  harryob:
+  - server: the server now supports a redis connection
+  - admin: admin messages are logged to discord, and vice versa

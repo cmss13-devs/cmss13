@@ -237,13 +237,8 @@
 	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
-	for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
-		var/turf/loc = get_turf(exploding_pipe)
-		if(istype(loc) && protected_by_pylon(TURF_PROTECTION_MORTAR, loc))
-			continue
-
-		exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-		new /obj/effect/warning/explosive(loc)
+	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)
+		exploding_pipe.warning_explode(5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
@@ -373,6 +368,7 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
+
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()

@@ -18,7 +18,7 @@
 /obj/effect/alien/resin/construction/Initialize(mapload, hive_ref)
 	. = ..()
 	linked_hive = hive_ref
-	if (linked_hive.color)
+	if (linked_hive?.color)
 		color = linked_hive.color
 
 /obj/effect/alien/resin/construction/Destroy()

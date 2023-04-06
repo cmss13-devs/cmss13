@@ -103,8 +103,10 @@
 	if(!own_orbit_size)
 		own_orbit_size = 32
 
-	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin)) //Safety in case we cannot find the body's position
-	forceMove(spawn_turf)
+	if(!isturf(spawn_turf))
+		spawn_turf = get_turf(SAFEPICK(GLOB.latejoin)) //Safety in case we cannot find the body's position
+	if(spawn_turf)
+		forceMove(spawn_turf)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
@@ -112,6 +114,11 @@
 		if(body)
 			name = body.real_name
 	change_real_name(src, name)
+
+	//To prevent weirdly offset ghosts.
+	if(ishuman(body))
+		pixel_x = 0
+		pixel_y = 0
 
 	minimap = new
 	minimap.give_to(src)
@@ -889,6 +896,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(SSticker.mode.check_predator_late_join(src))
 		SSticker.mode.attempt_to_join_as_predator(src)
+
+/mob/dead/verb/join_as_joe()
+	set category = "Ghost.Join"
+	set name = "Join as a Working Joe"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_joe_late_join(src))
+		SSticker.mode.attempt_to_join_as_joe(src)
+
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

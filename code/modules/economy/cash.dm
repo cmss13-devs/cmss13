@@ -13,7 +13,7 @@
 	throw_range = 2
 	w_class = SIZE_TINY
 	var/worth = 15
-	/// 'Counterfeit' bills cannot be inserted into the black market for dosh.
+	/// 'Counterfeit' bills cannot be inserted into the black market for dosh. Their worth is also quartered when entered into an ATM.
 	var/counterfeit = FALSE
 
 /obj/item/spacecash/Initialize(mapload, ...)

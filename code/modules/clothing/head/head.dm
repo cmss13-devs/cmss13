@@ -145,7 +145,7 @@
 	icon_state = "rebelband"
 
 /obj/item/clothing/head/headband/squad
-	icon_state = "headband%SQUAD%"
+	var/dummy_icon_state = "headband%SQUAD%"
 
 	var/static/list/valid_icon_states
 
@@ -187,7 +187,7 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("headband[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
+	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -384,6 +384,16 @@
 	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
+	flags_marine_hat = HAT_GARB_OVERLAY
+
+/obj/item/clothing/head/cmcap/reporter
+	name = "combat correspondent cap"
+	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_flagcap"
+	item_state = "wc_flagcap"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
@@ -600,6 +610,26 @@ D
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/CMB
+	name = "\improper Colonial Marshal Bureau cap"
+	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	icon_state = "cmbcap"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
 	desc = "A sturdy freelancer's cap. More protective than it seems."
@@ -724,3 +754,13 @@ D
 	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
 	icon_state = "o_cap"
 	item_state = "o_cap"
+
+/obj/item/clothing/head/owlf_hood
+	name = "\improper OWLF thermal hood"
+	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "owlf_hood"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	item_state = "owlf_hood"

@@ -9,7 +9,7 @@
 	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convection stations."
 
 	icon_state = "stunrevolver"
-	item_state = "m44"//temp
+	item_state = "stunrevolver"
 	muzzle_flash = null//replace at some point
 	fire_sound = 'sound/weapons/emitter2.ogg'
 

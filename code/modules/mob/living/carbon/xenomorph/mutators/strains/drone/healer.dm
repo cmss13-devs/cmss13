@@ -123,6 +123,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
+	healer.face_atom(patient)
 	healer.adjustBruteLoss(amount * damage_taken_mod)
 	healer.updatehealth()
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 2)

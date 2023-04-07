@@ -32,7 +32,7 @@
 //check what job option you took and generate the corresponding the good texte.
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
 	if(doctor)
-		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are a doctor and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a jack of all trade in all the medicals skills you can medicate and perform surgery on your patients. Your also know how to produce medecine If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are a doctor and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a jack of all trades in medicine: you can medicate, perform surgery and produce pharmaceuticals. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 	else
 		. = {"You're a commissioned officer of the USCM, though you are not in the ship's chain of command. <a href='"+URL_WIKI_DOC_GUIDE+"'>You are a surgeon and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a doctor that specialize in surgery but you are also very capable when as a doctor. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 

@@ -2,7 +2,6 @@
 
 #define DOCTOR_VARIANT "Doc"
 #define SURGEON_VARIANT "Sur"
-//#define PHARMACY_TECHNICIAN_VARIANT "Pha"
 
 // Doctor
 /datum/job/civilian/doctor

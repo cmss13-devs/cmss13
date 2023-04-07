@@ -7,6 +7,8 @@
  * Probably doesn't work in other shipmaps.
  * Arguments:
  * * weaponused - chooses the weapon through a switchcase
+ * * shotnumber - how many shots of the weapon will be fired, may not have effect with specific weapons
  * * specificlocation - bool, if yes, it will instead of choosing a random location on the ship, hit at a chosen location
+ * * location - location to be used.
  */
-/proc/weaponhits(weaponused, specificlocation, location)
+/proc/weaponhits(weaponused, shotnumber specificlocation, location)

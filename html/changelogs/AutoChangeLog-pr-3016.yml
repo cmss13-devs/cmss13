@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes some perms in VV dropdown"
+  - bugfix: "Fixes Queen Mother bioscan"

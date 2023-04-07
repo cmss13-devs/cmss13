@@ -48,7 +48,7 @@
 /datum/action/xeno_action/activable/transfer_plasma/healer //Improved plasma transfer but not as much as Hivey.
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_transfer_amount = 100
-	transfer_delay = 12.5
+	transfer_delay = 15
 	max_range = 1
 
 /*
@@ -128,8 +128,8 @@
 	healer.updatehealth()
 	new /datum/effects/heal_over_time(target_xeno, amount, 10, 2)
 	patient.flick_heal_overlay(10 SECONDS, "#00be6f")
-	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
-	to_chat(healer, SPAN_XENOWARNING("You regurgitate your vital fluids and use some plasma to create a regenerative resin salve and apply it to \the [target_xeno]'s wounds. You feel weakened..."))
+	to_chat(target_xeno, SPAN_XENOWARNING("[healer] covers your wounds with a regenerative resin salve. You feel reinvigorated!"))
+	to_chat(healer, SPAN_XENOWARNING("You regurgitate your vital fluids and use some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. You feel weakened..."))
 	playsound(healer, "alien_drool", 25)
 	playsound(target_xeno, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = healer.behavior_delegate

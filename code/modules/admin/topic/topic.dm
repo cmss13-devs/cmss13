@@ -1510,6 +1510,87 @@
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
+	else if(href_list["CMBFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CMBFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
+		var/fax_message = ""
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				if(!input)
+					return
+				fax_message = "[input]"
+			if("Anchorpoint")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from The Colonial Marshal Bureau, Anchorpoint Station", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau")
+		show_browser(usr, "<body class='paper'>[fax_message]</body>", "PREVIEW OF CMB FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice == "Cancel")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+
+		for(var/obj/structure/machinery/faxmachine/F in machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Colonial Marshal Bureau - [customname]"
+						P.info = fax_message
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-cent"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
 	else if(href_list["customise_paper"])
 		if(!check_rights(R_MOD))
 			return

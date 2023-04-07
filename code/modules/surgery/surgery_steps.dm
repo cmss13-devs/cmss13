@@ -201,7 +201,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!preop_sound)
 		return
-	playsound(get_turf(target), preop_sound, vol = 75, sound_range = 1)
+	playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -212,7 +212,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!success_sound)
 		return
-	playsound(get_turf(target), success_sound, vol = 75, sound_range = 1)
+	playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
@@ -225,7 +225,7 @@ tool_type may be a typepath or simply '1'. Note that a first step done on help-i
 /datum/surgery_step/proc/play_failure_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!failure_sound)
 		return
-	playsound(get_turf(target), failure_sound, vol = 75, sound_range = 1)
+	playsound(get_turf(target), failure_sound, vol = 40, sound_range = 1)
 
 ///Finishes the surgery and removes it from the target's lists.
 /datum/surgery_step/proc/complete(mob/living/carbon/target, datum/surgery/surgery, cancelled)

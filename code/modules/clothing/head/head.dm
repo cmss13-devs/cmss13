@@ -610,6 +610,26 @@ D
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/CMB
+	name = "\improper Colonial Marshal Bureau cap"
+	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	icon_state = "cmbcap"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
 	desc = "A sturdy freelancer's cap. More protective than it seems."
@@ -734,3 +754,13 @@ D
 	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
 	icon_state = "o_cap"
 	item_state = "o_cap"
+
+/obj/item/clothing/head/owlf_hood
+	name = "\improper OWLF thermal hood"
+	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "owlf_hood"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	item_state = "owlf_hood"

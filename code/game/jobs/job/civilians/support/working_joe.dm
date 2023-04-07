@@ -1,7 +1,7 @@
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 3
+	spawn_positions = 3
 	allow_additional = 1
 	supervisors = "ARES and the acting commanding officer"
 	selection_class = "job_working_joe"
@@ -18,3 +18,9 @@
 	name = JOB_WORKING_JOE
 	icon_state = "wj_spawn"
 	job = /datum/job/civilian/working_joe
+
+/datum/job/civilian/working_joe/generate_entry_conditions(mob/living/M, whitelist_status)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_joe(M)

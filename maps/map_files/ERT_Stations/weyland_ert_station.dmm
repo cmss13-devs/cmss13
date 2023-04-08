@@ -1,1722 +1,2540 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/open/space/basic,
-/area/space)
-"g" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+"ab" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
 	},
-/turf/open/floor/plating/almayer,
 /area/space)
-"r" = (
+"al" = (
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"aG" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"bk" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"bv" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/wood/ship,
+/area/space)
+"ck" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_y = 18;
+	pixel_x = 2;
+	density = 0
+	},
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "blue"
+	},
+/area/space)
+"cX" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_y = 18;
+	pixel_x = 2;
+	density = 0
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/space)
+"dE" = (
+/turf/open/floor/corsat{
+	icon_state = "greencorner"
+	},
+/area/space)
+"dO" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"ee" = (
+/obj/structure/bed/roller,
+/turf/open/floor/corsat{
+	icon_state = "darkgreen"
+	},
+/area/space)
+"ek" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"el" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/space)
+"eB" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	req_access = null
+	},
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/space)
+"eX" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"fl" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"fy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/space)
-"v" = (
+"fX" = (
+/turf/closed/wall/r_wall/biodome,
+/area/space)
+"gf" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/structure/machinery/autodoc_console{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"gW" = (
+/obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"hu" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"iw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_y = 10
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 20;
+	pixel_x = 16
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"iU" = (
+/obj/structure/closet/crate/internals,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"jY" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/space)
+"ka" = (
+/obj/structure/closet/crate/medical,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"kq" = (
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"kO" = (
+/obj/structure/window/framed/corsat/research,
+/turf/open/floor/plating,
+/area/space)
+"kW" = (
+/obj/structure/machinery/sleep_console{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"ll" = (
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"lD" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"lS" = (
+/obj/structure/largecrate/supply/medicine/blood,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/space)
+"nb" = (
+/obj/structure/filingcabinet/filingcabinet{
+	pixel_x = 8;
+	density = 0
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"nq" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
+	req_access = null
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/space)
+"nz" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/space)
+"nJ" = (
+/obj/item/roller,
+/obj/item/roller,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/space)
+"nS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"nY" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/space)
+"ob" = (
+/obj/structure/closet/secure_closet/chemical{
+	req_access_txt = "100"
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"ou" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"oT" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/space)
+"oX" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"pB" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/space)
+"qF" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "greencorner"
+	},
+/area/space)
+"qL" = (
+/obj/structure/morgue,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/space)
+"ro" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"su" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/wood/ship,
+/area/space)
+"sy" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 19
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/space)
+"sA" = (
+/obj/structure/machinery/blackbox_recorder,
+/turf/open/floor/wood/ship,
+/area/space)
+"sH" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"sM" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/wood/ship,
+/area/space)
+"sO" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"th" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = 30
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"tW" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/space)
+"va" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"wa" = (
+/obj/item/device/defibrillator/upgraded,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"wU" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pill_bottle/tramadol,
+/obj/item/storage/pill_bottle/bicaridine{
+	pixel_x = 5
+	},
+/obj/item/storage/pill_bottle/kelotane{
+	pixel_x = -7
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"yj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"zC" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "Morgue";
+	req_one_access = null
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"zR" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "darkgreencorner"
+	},
+/area/space)
+"zS" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/space)
+"Ai" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/item/device/defibrillator/upgraded,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"AQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/space)
+"BG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"CU" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"De" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 9
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Dk" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/firstaid/rad{
+	pixel_y = 6;
+	pixel_x = 7
+	},
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Dn" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"DH" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/glass,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 21;
+	pixel_x = 16
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"DT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/black,
+/obj/item/tool/pen/blue,
+/turf/open/floor/wood/ship,
+/area/space)
+"ED" = (
+/obj/structure/morgue,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"ES" = (
 /obj/docking_port/stationary/emergency_response/idle_port2,
 /turf/open/floor/plating,
 /area/space)
-"A" = (
-/turf/open/floor/plating/almayer,
+"FE" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
 /area/space)
-"O" = (
-/turf/closed/wall/r_wall/unmeltable,
+"Gb" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "greencorner"
+	},
 /area/space)
-"R" = (
+"Gg" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"Gz" = (
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap/hidden,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"He" = (
+/turf/open/floor/wood/ship,
+/area/space)
+"Id" = (
+/obj/structure/machinery/door/airlock/almayer/medical/colony,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Jk" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"Jt" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "darkgreencorner"
+	},
+/area/space)
+"KP" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null
+	},
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/space)
+"Le" = (
+/obj/structure/morgue,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"LF" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/space/basic,
+/area/space)
+"MA" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"MQ" = (
+/obj/structure/pipes/unary/freezer{
+	icon_state = "freezer_1"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/space)
+"MV" = (
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/mask/surgical,
+/obj/item/clothing/mask/surgical,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"Nf" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/space)
+"Ns" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "darkgreen"
+	},
+/area/space)
+"NC" = (
+/obj/structure/pipes/standard/manifold/visible,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"NK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/space)
-"T" = (
+"Oc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/storage/box/monkeycubes,
+/turf/open/space/basic,
+/area/space)
+"Oo" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pill_bottle/inaprovaline{
+	pixel_x = 7
+	},
+/obj/item/storage/pill_bottle/dexalin,
+/obj/item/storage/pill_bottle/antitox{
+	pixel_x = -5
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"OE" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "greencorner"
+	},
+/area/space)
+"OG" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	icon_state = "greencorner"
+	},
+/area/space)
+"PL" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/space)
+"QQ" = (
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap/hidden,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/space)
+"QT" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/space)
+"QZ" = (
 /turf/open/floor/plating,
 /area/space)
-"V" = (
+"Rd" = (
+/obj/structure/machinery/chem_master,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"Si" = (
+/obj/structure/bed/roller,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/space)
+"Sw" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/space)
+"SE" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary{
+	name = "W-Y Station";
+	phone_category = "Weyland-Yutani";
+	phone_id = "W-Y Station";
+	callable = 0
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"SJ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/firstaid/fire,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"SM" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/wood/ship,
+/area/space)
+"Tx" = (
+/obj/structure/bed/roller,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/space)
+"TL" = (
+/obj/structure/machinery/medical_pod/autodoc/unskilled{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/space)
+"Us" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "green"
+	},
+/area/space)
+"Ux" = (
+/turf/open/space/basic,
+/area/space)
+"Vm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Wu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"WU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger,
+/obj/item/device/defibrillator/upgraded,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/roller,
+/turf/open/space/basic,
+/area/space)
+"WW" = (
+/obj/structure/bed/chair,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"Xi" = (
+/obj/structure/pipes/standard/tank/oxygen,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/space)
+"Xn" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/space)
+"Xt" = (
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/space)
+"Yb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood/ship,
+/area/space)
+"Za" = (
+/obj/structure/morgue,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "green"
+	},
 /area/space)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+QT
+QT
+QT
+QT
+QT
+Wu
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+va
+BG
+QT
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-A
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-A
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+fX
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+al
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+ES
+QZ
+fy
+al
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-v
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
+Ux
+Ux
+al
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+al
+Ux
+Ux
+Ux
+Ux
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+al
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+al
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+al
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+al
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+Vm
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+QZ
+fy
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-V
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-r
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+nS
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+NK
+yj
+fX
+fX
+Ux
+Ux
+Ux
+fX
+fX
+fX
+fX
+QT
+Ux
+Ux
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-A
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-R
-A
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
+fX
+fX
+fX
+al
+al
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+al
+al
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+Za
+Us
+qL
+QT
+Ux
+Ux
 "}
 (16,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+th
+Jk
+Ns
+fX
+fX
+KP
+nq
+fX
+fX
+al
+al
+al
+fX
+fX
+Xn
+Us
+jY
+fX
+Dn
+al
+Xt
+QT
+Ux
+Ux
 "}
 (17,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+hu
+al
+ee
+kO
+eB
+el
+qF
+nJ
+fX
+al
+al
+al
+fX
+QQ
+Sw
+al
+FE
+fX
+ED
+al
+Le
+QT
+Ux
+Ux
 "}
 (18,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+MV
+al
+zR
+kO
+gW
+al
+al
+ll
+fX
+al
+al
+al
+fX
+Xi
+NC
+al
+kW
+fX
+Dn
+al
+Xt
+QT
+Ux
+Ux
 "}
 (19,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+wa
+Jt
+al
+kO
+Rd
+al
+al
+ob
+fX
+al
+al
+al
+fX
+Gz
+NC
+al
+bk
+fX
+zS
+eX
+nz
+QT
+Ux
+Ux
 "}
 (20,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+kO
+kO
+Id
+fX
+Ai
+al
+al
+OE
+fX
+dO
+al
+al
+fX
+MQ
+De
+al
+Xt
+fX
+fX
+zC
+fX
+QT
+Ux
+Ux
 "}
 (21,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+Nf
+Us
+Us
+Us
+el
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+qF
+Us
+el
+al
+OG
+QT
+Ux
+Ux
 "}
 (22,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+gf
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+dE
+eX
+eX
+Gb
+al
+CU
+QT
+Ux
+Ux
 "}
 (23,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+TL
+Gb
+al
+al
+al
+al
+dE
+kq
+fX
+al
+al
+al
+fX
+Gb
+al
+ek
+ou
+lD
+WW
+al
+oX
+QT
+Ux
+Ux
 "}
 (24,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+fX
+oT
+Gg
+MA
+Si
+Gg
+Tx
+fX
+fX
+Ux
+Ux
+Ux
+fX
+iU
+al
+ek
+SJ
+lD
+WW
+al
+wU
+QT
+Ux
+Ux
 "}
 (25,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+LF
+Ux
+Ux
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+Ux
+Ux
+Ux
+Ux
+fX
+ka
+al
+ek
+Dk
+lD
+WW
+al
+Oo
+QT
+Ux
+Ux
 "}
 (26,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+lS
+Gb
+qF
+Us
+Us
+el
+dE
+AQ
+QT
+Ux
+Ux
 "}
 (27,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Oc
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+fX
+nY
+nb
+nb
+nb
+Gg
+ab
+fX
+QT
+Ux
+Ux
 "}
 (28,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+WU
+Ux
+Ux
+fX
+fX
+fX
+He
+He
+fX
+fX
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+QT
+Ux
+Ux
 "}
 (29,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+fX
+fl
+He
+He
+He
+He
+fl
+fX
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (30,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+ck
+He
+He
+He
+He
+He
+He
+SM
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (31,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+cX
+He
+ro
+ro
+ro
+ro
+He
+sM
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (32,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+tW
+He
+Yb
+DH
+Yb
+iw
+He
+bv
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (33,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+PL
+He
+Yb
+SE
+aG
+Yb
+He
+sA
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (34,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+sy
+He
+sO
+sO
+sO
+sO
+su
+sH
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (35,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+fX
+pB
+He
+He
+He
+He
+He
+He
+DT
+fX
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
 "}
 (36,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
 "}
 (37,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (38,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (39,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}
 (40,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
+Ux
 "}

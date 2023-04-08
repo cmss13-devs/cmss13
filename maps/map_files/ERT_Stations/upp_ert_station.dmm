@@ -1506,7 +1506,7 @@
 	dir = 4
 	},
 /obj/effect/decal/strata_decals/catwalk/prison{
-	layer = 1.9
+	layer = 2.2
 	},
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -1727,6 +1727,7 @@
 "Ak" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
+/obj/item/device/defibrillator,
 /turf/open/floor/strata{
 	dir = 1;
 	icon_state = "white_cyan3"
@@ -2479,7 +2480,7 @@
 /area/adminlevel/ert_station/upp_station)
 "Mk" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/device/defibrillator,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
 /turf/open/floor/strata{
 	dir = 1;
 	icon_state = "white_cyan3"
@@ -2600,7 +2601,7 @@
 	layer = 2.5
 	},
 /obj/effect/decal/strata_decals/catwalk/prison{
-	layer = 1.9
+	layer = 2.2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating,
@@ -3554,10 +3555,10 @@ AN
 AN
 AN
 AN
-AN
-AN
-AN
-AN
+GI
+GI
+GI
+GI
 Cp
 Cp
 Cp
@@ -3583,9 +3584,9 @@ AN
 AN
 AN
 GI
+AN
 GI
-GI
-GI
+AN
 AN
 jt
 LG
@@ -3612,8 +3613,8 @@ ws
 ws
 oP
 GI
-AN
-AN
+Px
+GI
 AN
 AN
 AN
@@ -3622,11 +3623,11 @@ AN
 (3,1,1) = {"
 AN
 AN
-GI
-GI
-GI
 AN
-AN
+GI
+GI
+GI
+GI
 GI
 GI
 mJ
@@ -3637,7 +3638,7 @@ ws
 ws
 ue
 AN
-AN
+GI
 Cp
 Cp
 Cp
@@ -3655,17 +3656,17 @@ ws
 NQ
 Cp
 Cp
-AN
-AN
+GI
+GI
 AN
 AN
 AN
 "}
 (4,1,1) = {"
 AN
-Px
-GI
 AN
+GI
+GI
 El
 We
 We
@@ -3698,15 +3699,15 @@ Cp
 Cp
 Cp
 Cp
-AN
-AN
+GI
+GI
 AN
 AN
 "}
 (5,1,1) = {"
 AN
 GI
-AN
+GI
 El
 El
 YW
@@ -3741,12 +3742,12 @@ Cp
 Cp
 Cp
 Cp
-AN
+GI
 AN
 AN
 "}
 (6,1,1) = {"
-AN
+GI
 GI
 El
 El
@@ -3788,7 +3789,7 @@ AN
 AN
 "}
 (7,1,1) = {"
-AN
+GI
 El
 El
 yn
@@ -3964,7 +3965,7 @@ zX
 Bt
 UE
 UE
-UE
+RS
 UE
 Bq
 UU
@@ -3994,11 +3995,11 @@ po
 Cp
 Cp
 Cp
-AN
+GI
 AN
 "}
 (12,1,1) = {"
-AN
+GI
 El
 El
 eX
@@ -4036,11 +4037,11 @@ po
 Cp
 Cp
 Cp
-AN
+GI
 AN
 "}
 (13,1,1) = {"
-AN
+GI
 Cp
 po
 po
@@ -4077,12 +4078,12 @@ dH
 po
 Cp
 Cp
-AN
-AN
+GI
+GI
 AN
 "}
 (14,1,1) = {"
-AN
+GI
 Cp
 po
 Rd
@@ -4418,7 +4419,7 @@ AN
 UV
 "}
 (22,1,1) = {"
-AN
+GI
 El
 vY
 Zm
@@ -4460,7 +4461,7 @@ Mc
 AU
 "}
 (23,1,1) = {"
-AN
+GI
 El
 po
 po
@@ -4502,7 +4503,7 @@ AN
 AN
 "}
 (24,1,1) = {"
-AN
+GI
 Cp
 Cp
 po
@@ -4540,11 +4541,11 @@ po
 El
 Cp
 GI
-AN
+GI
 AN
 "}
 (25,1,1) = {"
-AN
+GI
 Cp
 El
 po
@@ -4582,12 +4583,12 @@ JZ
 Dv
 Cp
 Cp
-AN
+GI
 AN
 "}
 (26,1,1) = {"
-AN
-AN
+GI
+Px
 El
 bp
 UM
@@ -4629,7 +4630,7 @@ AN
 "}
 (27,1,1) = {"
 AN
-AN
+GI
 Kq
 Jl
 Tu
@@ -4671,7 +4672,7 @@ AN
 "}
 (28,1,1) = {"
 AN
-AN
+Px
 El
 Cp
 Cp
@@ -4713,7 +4714,7 @@ AN
 "}
 (29,1,1) = {"
 AN
-AN
+Px
 Cp
 Cp
 Cp
@@ -4755,8 +4756,8 @@ AN
 "}
 (30,1,1) = {"
 AN
-AN
-AN
+GI
+Px
 Cp
 Cp
 fM
@@ -5054,7 +5055,7 @@ AN
 AN
 AN
 AN
-AN
+GI
 Cp
 Cp
 Cp
@@ -5096,8 +5097,8 @@ AN
 AN
 AN
 AN
-AN
-AN
+GI
+GI
 Cp
 Cp
 Cp
@@ -5139,10 +5140,10 @@ AN
 AN
 AN
 AN
-AN
-AN
-AN
-AN
+GI
+GI
+GI
+GI
 Cp
 Cp
 Cp
@@ -5157,8 +5158,8 @@ Cp
 Cp
 Cp
 Cp
-AN
-AN
+GI
+GI
 uL
 ws
 ws
@@ -5184,9 +5185,9 @@ AN
 AN
 AN
 AN
-AN
-AN
-AN
+GI
+GI
+GI
 Cp
 Cp
 Cp
@@ -5195,11 +5196,11 @@ Cp
 Cp
 Cp
 Cp
-AN
-AN
-AN
-AN
-AN
+GI
+GI
+GI
+GI
+GI
 AN
 pN
 pl

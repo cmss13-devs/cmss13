@@ -1,4 +1,0 @@
-author: "NewyearnewmeUwu"
-delete-after: True
-changes:
-  - bugfix: "Pickup keybind can't pick up anchored objects anymore."

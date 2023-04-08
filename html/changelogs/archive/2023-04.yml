@@ -70,3 +70,12 @@
   - rscadd: Added a new ability to the Steel Crest strain, called Soak. It tracks
       your accumulated damage and once it reaches a threshold, reset your tail slam
       cooldown and slightly heal you.
+2023-04-08:
+  BelleCl:
+  - imageadd: Adds two new hairstyle options
+  NewyearnewmeUwu:
+  - rscadd: Wheelchairs now help people with a bad leg move around.
+  - bugfix: Pickup keybind can't pick up anchored objects anymore.
+  realforest2001:
+  - bugfix: Fixes some perms in VV dropdown
+  - bugfix: Fixes Queen Mother bioscan

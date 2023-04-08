@@ -144,8 +144,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 /datum/game_mode/proc/disperse_short_fog()
 	set waitfor = FALSE
-	var/i
-	for(i in short_round_fog)
+	for(var/i in short_round_fog)
 		short_round_fog -= i
 		qdel(i)
 		CHECK_TICK

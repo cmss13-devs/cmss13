@@ -41,21 +41,15 @@
 	width=7
 	height=6
 	// shutters to clear the area
-	var/datum/door_controller/single/door_control
 	var/airlock_area
 	var/airlock_exit
 
-/obj/docking_port/stationary/trijent_elevator/Initialize(mapload, ...)
-	. = ..()
-	door_control = new()
+/obj/docking_port/stationary/trijent_elevator/proc/get_doors()
+	. = list()
 	for(var/area/target_area in world)
 		if(istype(target_area, airlock_area))
 			for(var/obj/structure/machinery/door/door in target_area)
-				door_control.doors += list(door)
-
-/obj/docking_port/stationary/trijent_elevator/Destroy(force, ...)
-	. = ..()
-	QDEL_NULL(door_control)
+				. += list(door)
 
 /obj/docking_port/stationary/trijent_elevator/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
@@ -63,15 +57,22 @@
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/trijent_elevator))
 		var/obj/docking_port/mobile/trijent_elevator/elevator = arriving_shuttle
 		elevator.door_control.control_doors("open", airlock_exit)
+
 	// open dock doors
+	var/datum/door_controller/single/door_control = new()
+	door_control.doors = get_doors()
 	door_control.control_doors("open", FALSE, FALSE)
+	qdel(door_control)
 
 	playsound(src, 'sound/machines/ping.ogg', 25, 1)
 	playsound(arriving_shuttle, 'sound/machines/ping.ogg', 25, 1)
 
 /obj/docking_port/stationary/trijent_elevator/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
+	var/datum/door_controller/single/door_control = new()
+	door_control.doors = get_doors()
 	door_control.control_doors("force-lock-launch")
+	qdel(door_control)
 
 /obj/docking_port/stationary/trijent_elevator/lz1
 	name="Lz1 Elevator"

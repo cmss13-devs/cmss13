@@ -91,10 +91,6 @@
 	},
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
-"F" = (
-/obj/structure/machinery/light,
-/turf/open/shuttle/escapepod,
-/area/shuttle/trijent_shuttle/elevator)
 "J" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -103,13 +99,6 @@
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
-/area/shuttle/trijent_shuttle/elevator)
-"M" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	pixel_y = 20
-	},
-/turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "Q" = (
 /turf/open/shuttle/escapepod{
@@ -184,10 +173,10 @@ s
 "}
 (4,1,1) = {"
 q
-M
+a
 Q
 Y
-F
+a
 s
 "}
 (5,1,1) = {"

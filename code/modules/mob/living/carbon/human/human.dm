@@ -1096,7 +1096,7 @@
 
 	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
-			msg += "They have bloating and discoloration on their [internal_bleed.limb]\n"
+			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
 
 	if(knocked_out && stat != DEAD)
 		msg += "They seem to be unconscious\n"

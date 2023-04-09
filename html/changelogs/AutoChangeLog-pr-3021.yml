@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - code_imp: "Sets up \"short\" fog blockers for mappers"

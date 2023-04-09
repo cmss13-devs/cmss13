@@ -53,9 +53,14 @@ type StockItem = {
 
 const getInventory = (context) => {
   const { data } = useBackend<VendingData>(context);
-  const { product_records = [], coin_records = [], hidden_records = [] } = data;
+  const {
+    product_records = [],
+    coin_records = [],
+    hidden_records = [],
+    extended_inventory,
+  } = data;
 
-  if (data.extended_inventory) {
+  if (extended_inventory) {
     return [...product_records, ...coin_records, ...hidden_records];
   }
 
@@ -64,17 +69,18 @@ const getInventory = (context) => {
 
 export const Vending = (props, context) => {
   const { data } = useBackend<VendingData>(context);
+  const { categories } = data;
 
   const [selectedCategory, setSelectedCategory] = useLocalState<string>(
     context,
     'selectedCategory',
-    Object.keys(data.categories)[0]
+    Object.keys(categories)[0]
   );
 
   const inventory = getInventory(context);
 
   const filteredCategories = Object.fromEntries(
-    Object.entries(data.categories).filter(([categoryName]) => {
+    Object.entries(categories).filter(([categoryName]) => {
       return inventory.find((product) => {
         if ('category' in product) {
           return product.category === categoryName;
@@ -117,7 +123,7 @@ export const Vending = (props, context) => {
 /** Displays user details if an ID is present and the user is on the station */
 export const UserDetails = (props, context) => {
   const { data } = useBackend<VendingData>(context);
-  const { user } = data;
+  const { user, checking_id } = data;
 
   if (!user) {
     return (
@@ -133,10 +139,10 @@ export const UserDetails = (props, context) => {
         <Stack.Item>
           <LabeledList>
             <LabeledList.Item label="User">
-              {data.checking_id ? user.name : 'UNKNOWN'}
+              {checking_id ? user.name : 'UNKNOWN'}
             </LabeledList.Item>
             <LabeledList.Item label="Occupation">
-              {data.checking_id ? user.job || 'Unemployed' : 'UNKNOWN'}
+              {checking_id ? user.job || 'Unemployed' : 'UNKNOWN'}
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
@@ -254,8 +260,9 @@ const ProductStock = (props) => {
 const ProductButton = (props, context) => {
   const { act, data } = useBackend<VendingData>(context);
   const { disabled, product } = props;
-  const price =
-    product.price && data.checking_id ? '$' + product.price : 'FREE';
+  const { checking_id } = data;
+
+  const price = product.price && checking_id ? '$' + product.price : 'FREE';
   return (
     <Button
       fluid

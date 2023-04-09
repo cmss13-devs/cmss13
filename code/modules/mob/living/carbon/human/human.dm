@@ -1093,6 +1093,11 @@
 		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
 	if(is_bleeding())
 		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body\n"
+
+	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
+			msg += "They have bloating and discoloration on their [internal_bleed.limb]\n"
+
 	if(knocked_out && stat != DEAD)
 		msg += "They seem to be unconscious\n"
 	if(stat == DEAD)

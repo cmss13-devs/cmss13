@@ -1,0 +1,4 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - balance: "buffed ointment healing only 1 burn, now heals 5 burn"

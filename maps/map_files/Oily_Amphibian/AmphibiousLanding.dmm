@@ -67,6 +67,10 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"aj" = (
+/obj/item/prop/colony/folded_bedroll,
+/turf/open/gm/dirtgrassborder2,
+/area/event)
 "ak" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -95,16 +99,15 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
-"aq" = (
-/obj/item/reagent_container/glass/paint/red,
-/obj/item/reagent_container/glass/paint/remover{
-	pixel_x = -9
+"ar" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
 	},
-/obj/item/reagent_container/glass/bottle/cyanide{
-	pixel_x = 10
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
 	},
-/turf/open/floor,
-/area/event/metal)
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS/dynamic)
 "at" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -127,16 +130,6 @@
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/serviceoveralls,
 /turf/open/floor,
-/area/event/metal)
-"aw" = (
-/turf/open/floor/plating,
-/area/event/metal)
-"ax" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
-	},
 /area/event/metal)
 "ay" = (
 /obj/structure/surface/table/reinforced/black,
@@ -222,6 +215,19 @@
 /area/event/underground_no_CAS)
 "aL" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
@@ -359,6 +365,46 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
+"bk" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "bm" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/invisible_wall,
@@ -374,6 +420,12 @@
 	icon_state = "red"
 	},
 /area/event/metal)
+"bo" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner";
+	dir = 1
+	},
+/area/event)
 "bq" = (
 /obj/structure/machinery/cryopod{
 	dir = 1
@@ -385,6 +437,10 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"br" = (
+/obj/structure/prop/dam/truck,
+/turf/open/gm,
+/area/event)
 "bt" = (
 /obj/effect/mist{
 	can_block_movement = 1;
@@ -414,6 +470,31 @@
 	icon_state = "desert2"
 	},
 /area/event/underground_no_CAS)
+"bx" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/item/ammo_magazine/m2c{
+	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "by" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -482,10 +563,6 @@
 	},
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/event/underground_no_CAS/dynamic)
-"bD" = (
-/obj/structure/machinery/vending/cigarette/free,
-/turf/open/floor,
-/area/event/metal)
 "bG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/type23/breacher,
@@ -642,6 +719,11 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "bX" = (
@@ -661,6 +743,34 @@
 	icon_state = "vault"
 	},
 /area/event/underground_no_CAS/dynamic)
+"bZ" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/box/condimentbottles{
+	pixel_x = -5;
+	pixel_y = 12
+	},
+/obj/item/storage/box/condimentbottles{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/storage/box/condimentbottles{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/storage/box/condimentbottles{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/storage/box/condimentbottles{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/storage/box/condimentbottles{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "ca" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -686,11 +796,6 @@
 	stack_amount = 50;
 	starting_maxhealth = 500
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -703,6 +808,11 @@
 	projectile_coverage = 100;
 	stack_amount = 50;
 	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /obj/structure/platform/kutjevo{
 	layer = 2.96;
@@ -726,34 +836,6 @@
 	tag = "icon-outerhull_dir (NORTH)"
 	},
 /area/event)
-"cg" = (
-/obj/structure/surface/table/almayer,
-/obj/item/toy/deck{
-	pixel_y = 8
-	},
-/obj/item/toy/prize/deathripley{
-	pixel_x = -9;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/durand{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/honk{
-	pixel_y = 7
-	},
-/obj/item/toy/dice/d20{
-	pixel_x = 11;
-	pixel_y = -3
-	},
-/turf/open/floor,
-/area/event/metal)
-"ch" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Backroom"
-	},
-/turf/open/floor,
-/area/event/metal)
 "cj" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -780,26 +862,6 @@
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
-"cn" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/floor/interior/wood,
-/area/event)
 "co" = (
 /obj/structure/coatrack{
 	pixel_x = 9
@@ -874,10 +936,13 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "cB" = (
-/obj/structure/bed/chair{
+/obj/structure/barricade/handrail/kutjevo{
 	dir = 1
 	},
-/turf/open/floor,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "cC" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -898,7 +963,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/platform/kutjevo,
 /turf/closed/wall/wood,
@@ -944,13 +1010,6 @@
 /obj/item/device/megaphone,
 /turf/open/floor/wood,
 /area/event/metal)
-"cQ" = (
-/obj/item/tool/warning_cone{
-	pixel_x = 8;
-	pixel_y = 24
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "cR" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -981,9 +1040,15 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal)
-"cX" = (
-/obj/item/tool/screwdriver,
-/turf/open/floor,
+"cY" = (
+/obj/structure/surface/rack,
+/obj/item/storage/beer_pack{
+	pixel_y = 5
+	},
+/obj/item/storage/beer_pack{
+	pixel_y = 5
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "cZ" = (
 /turf/open/floor/almayer_hull{
@@ -1010,66 +1075,8 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal)
-"dd" = (
-/obj/structure/largecrate/black_market,
-/turf/open/gm,
-/area/event)
-"de" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/event/metal)
 "dh" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
-/turf/open/floor,
-/area/event/metal)
-"di" = (
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/structure/closet/crate/freezer,
 /turf/open/floor,
 /area/event/metal)
 "dk" = (
@@ -1097,10 +1104,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"dn" = (
-/obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
-/turf/open/floor,
-/area/event/metal)
 "dq" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle{
@@ -1198,11 +1201,6 @@
 	icon_state = "sterile_green"
 	},
 /area/event/metal)
-"du" = (
-/obj/structure/platform/kutjevo,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/interior/wood,
-/area/event)
 "dv" = (
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/event)
@@ -1219,15 +1217,6 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
-"dy" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor,
-/area/event/metal)
 "dz" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/attachable/attached_gun/shotgun,
@@ -1285,10 +1274,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"dF" = (
-/obj/item/tool/warning_cone,
-/turf/open/asphalt/cement,
-/area/event)
 "dH" = (
 /turf/open/floor/almayer_hull{
 	dir = 5;
@@ -1349,45 +1334,17 @@
 	tag = "icon-outerhull_dir (EAST)"
 	},
 /area/event)
-"dS" = (
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
+"dQ" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner2";
+	dir = 4
 	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
+/area/event)
+"dR" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner"
 	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/structure/closet/crate/freezer,
-/turf/open/floor,
-/area/event/metal)
+/area/event)
 "dT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/belt/utility/full,
@@ -1405,16 +1362,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"dU" = (
-/obj/item/storage/beer_pack,
-/obj/item/storage/beer_pack,
-/obj/item/storage/beer_pack,
-/obj/item/storage/beer_pack,
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/beer_pack,
-/obj/item/storage/beer_pack,
-/turf/open/floor,
-/area/event/metal)
 "dV" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -1509,11 +1456,6 @@
 	layer = 2.96;
 	projectile_coverage = 0
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -1532,6 +1474,11 @@
 	dir = 8;
 	projectile_coverage = 0
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "ep" = (
@@ -1546,32 +1493,6 @@
 	},
 /turf/open/floor,
 /area/event/metal)
-"eq" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/turf/open/floor,
-/area/event/metal)
-"et" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/event/metal)
 "ev" = (
 /obj/structure/machinery/bioprinter{
 	name = "\improper Synthetic limb printer 500";
@@ -1581,14 +1502,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
-"ew" = (
-/obj/structure/transmitter{
-	phone_category = "UPP";
-	phone_id = "UPP Bunker White Pawn";
-	pixel_y = 29
-	},
-/turf/open/floor,
-/area/event/metal)
 "ex" = (
 /obj/structure/surface/rack,
 /obj/item/mortar_kit,
@@ -1602,58 +1515,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/event/underground_no_CAS/dynamic)
-"ez" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event/metal)
 "eB" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -1680,6 +1541,10 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
+"eF" = (
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "eH" = (
 /obj/structure/flora/jungle/thickbush{
 	indestructable = 1;
@@ -1749,6 +1614,26 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt/cement,
 /area/event)
+"eO" = (
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "eP" = (
 /obj/structure/flora/jungle/thickbush,
 /turf/open/asphalt/cement,
@@ -1780,6 +1665,11 @@
 	color = "#b29082";
 	dir = 1;
 	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -1841,6 +1731,34 @@
 	},
 /turf/open/floor,
 /area/event/metal)
+"eY" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 7
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "eZ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -1967,9 +1885,7 @@
 /obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/ammo_magazine/rifle/boltaction,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "fj" = (
 /turf/open/floor/almayer_hull{
@@ -2053,12 +1969,6 @@
 /obj/item/reagent_container/food/snacks/upp,
 /turf/open/shuttle/elevator/grating,
 /area/event/underground_no_CAS/dynamic)
-"fo" = (
-/obj/structure/barricade/sandbags{
-	dir = 8
-	},
-/turf/open/gm,
-/area/event)
 "fp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/light,
@@ -2193,6 +2103,11 @@
 	},
 /turf/open/floor,
 /area/event/metal)
+"fz" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 8
+	},
+/area/event)
 "fA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2237,40 +2152,6 @@
 /obj/structure/barricade/sandbags,
 /turf/open/asphalt/cement,
 /area/event)
-"fJ" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/turf/open/floor,
-/area/event/metal)
 "fK" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -2308,6 +2189,10 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/event/metal)
+"fU" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/grass,
+/area/event)
 "fV" = (
 /obj/structure/flora/pottedplant{
 	pixel_y = 13
@@ -2379,15 +2264,6 @@
 /area/event/metal)
 "gb" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -2411,6 +2287,15 @@
 	projectile_coverage = 100;
 	stack_amount = 50;
 	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -2462,6 +2347,11 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"gm" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 1
+	},
+/area/event)
 "gp" = (
 /obj/item/reagent_container/food/drinks/bottle/beer/craft{
 	pixel_x = -5;
@@ -2551,11 +2441,6 @@
 /area/event/underground_no_CAS/dynamic)
 "gt" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -2577,6 +2462,11 @@
 	dir = 8;
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = 7
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -2602,27 +2492,9 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
-"gx" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
-	},
-/area/event/metal)
-"gy" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/transmitter/touchtone{
-	phone_category = "UPP";
-	phone_id = "UPP Bunker Black Pawn"
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor,
-/area/event/metal)
+"gA" = (
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "gD" = (
 /obj/structure/machinery/telecomms/server,
 /turf/open/floor/plating{
@@ -2703,6 +2575,64 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"gL" = (
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"gM" = (
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "gN" = (
 /turf/open/floor,
 /area/event/metal)
@@ -2721,6 +2651,10 @@
 	icon_state = "platebot"
 	},
 /area/event)
+"gR" = (
+/obj/structure/window/framed/wood,
+/turf/open/floor/plating,
+/area/event/metal)
 "gS" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/hypospray/autoinjector/tramadol,
@@ -2763,6 +2697,52 @@
 	dir = 8;
 	icon_state = "yellow"
 	},
+/area/event/underground_no_CAS/dynamic)
+"gX" = (
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "gY" = (
 /obj/structure/machinery/space_heater/radiator{
@@ -3049,10 +3029,10 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"hF" = (
-/obj/structure/reagent_dispensers/beerkeg/alt,
-/turf/open/gm/grass,
-/area/event)
+"hH" = (
+/obj/structure/bed/chair/wood/wings,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "hI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	req_access = null;
@@ -3070,16 +3050,6 @@
 /obj/structure/kitchenspike,
 /turf/open/floor/plating/plating_catwalk,
 /area/event/metal)
-"hM" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "hN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -3109,11 +3079,6 @@
 	},
 /turf/open/gm,
 /area/event)
-"hP" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC,
-/turf/open/floor,
-/area/event/metal)
 "hQ" = (
 /obj/structure/machinery/chem_dispenser/beer{
 	pixel_x = -31
@@ -3162,6 +3127,14 @@
 /obj/structure/machinery/vending/sovietsoda,
 /turf/open/floor,
 /area/event/metal)
+"hX" = (
+/obj/structure/transmitter{
+	phone_category = "UPP";
+	phone_id = "UPP Bunker White Pawn";
+	pixel_y = 29
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "hY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3208,15 +3181,6 @@
 	icon_state = "cult"
 	},
 /area/event/metal)
-"id" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7"
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "ie" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -3281,6 +3245,35 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal)
+"iw" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/platform/kutjevo,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "iA" = (
 /obj/structure/bedsheetbin,
 /obj/structure/machinery/light/small{
@@ -3333,6 +3326,28 @@
 	},
 /turf/open/gm,
 /area/event)
+"iF" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "iG" = (
 /obj/structure/machinery/light/built{
 	dir = 8
@@ -3379,6 +3394,14 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"iP" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/event)
 "iQ" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert1"
@@ -3390,6 +3413,49 @@
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
+"iU" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "iW" = (
 /obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_box/magazine/type71,
@@ -3415,6 +3481,12 @@
 	dir = 4
 	},
 /turf/open/gm/river/desert/deep,
+/area/event)
+"ja" = (
+/turf/open/gm/dirtgrassborder2{
+	dir = 4;
+	icon_state = "grassdirt2_corner"
+	},
 /area/event)
 "jb" = (
 /obj/structure/platform{
@@ -3503,13 +3575,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
-"jk" = (
-/obj/item/tool/warning_cone{
-	pixel_y = 13
-	},
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
 "jm" = (
 /obj/structure/machinery/chem_dispenser/medbay,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -3587,9 +3652,7 @@
 /obj/item/ammo_magazine/m2c{
 	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "jv" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -3663,10 +3726,6 @@
 /obj/item/ammo_magazine/pistol/b92fs,
 /turf/open/floor,
 /area/event/metal)
-"jy" = (
-/obj/structure/airlock_assembly,
-/turf/open/floor,
-/area/event/metal)
 "jA" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
@@ -3681,6 +3740,40 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/event/metal)
+"jC" = (
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "jE" = (
 /turf/open/floor/almayer{
@@ -3703,6 +3796,15 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event)
+"jK" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/turf/closed/wall/wood,
+/area/event/metal)
 "jM" = (
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
@@ -3778,10 +3880,44 @@
 "jV" = (
 /turf/open/asphalt/cement,
 /area/event)
+"jX" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "jY" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/beer_pack,
-/turf/open/gm/grass,
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/item/ammo_magazine/m2c{
+	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
 /area/event)
 "ka" = (
 /obj/structure/closet/secure_closet/cargotech,
@@ -3976,11 +4112,6 @@
 /area/event/metal)
 "kD" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -3997,6 +4128,11 @@
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
 	dir = 8;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
 	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
@@ -4031,6 +4167,12 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
+/area/event/metal)
+"kL" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "kP" = (
 /obj/structure/barricade/plasteel/wired{
@@ -4143,11 +4285,6 @@
 /area/event)
 "la" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -4164,6 +4301,11 @@
 /obj/structure/machinery/m56d_hmg/auto{
 	dir = 8;
 	name = "\improper T37 Medium Machinegun"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -4272,7 +4414,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -4473,46 +4616,6 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
-"lr" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -2;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 4;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -2;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -2;
-	pixel_y = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 4;
-	pixel_y = 8
-	},
-/turf/open/floor,
-/area/event/metal)
 "ls" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp22"
@@ -4532,6 +4635,55 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"lx" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
+"lz" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "lA" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
@@ -4654,6 +4806,64 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
+"lR" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "lS" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -4661,15 +4871,6 @@
 /area/event)
 "lU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -4699,6 +4900,15 @@
 	dir = 8;
 	projectile_coverage = 0
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "lV" = (
@@ -4713,6 +4923,50 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"lX" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
+"lY" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "ma" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /turf/open/floor/corsat{
@@ -4733,11 +4987,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
-"mc" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
 "md" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/closet/secure_closet/surgical{
@@ -5031,6 +5280,13 @@
 	icon_state = "plate"
 	},
 /area/event/metal)
+"mL" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "mM" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -5083,6 +5339,12 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event)
+"mS" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "mT" = (
 /obj/structure/barricade/sandbags,
 /obj/structure/barricade/sandbags{
@@ -5111,6 +5373,58 @@
 /obj/structure/prop/vehicles,
 /turf/open/asphalt/cement,
 /area/event)
+"nd" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"ng" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/prop/cash_register/broken,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "nh" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -5347,9 +5661,7 @@
 /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 /obj/structure/machinery/light/built,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "nI" = (
 /obj/effect/decal/warning_stripes{
@@ -5393,35 +5705,6 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
-"nP" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = -2;
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_y = 16;
-	pixel_x = -2
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
 "nQ" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -5488,17 +5771,6 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"nY" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5;
-	pixel_y = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "ob" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/corsat{
@@ -5535,9 +5807,7 @@
 /obj/item/mortar_shell/frag,
 /obj/item/mortar_shell/frag,
 /obj/item/mortar_shell/frag,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "og" = (
 /obj/structure/surface/rack,
@@ -5555,9 +5825,7 @@
 /obj/item/mortar_shell/flare,
 /obj/item/mortar_shell/flare,
 /obj/item/mortar_shell/flare,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "oh" = (
 /obj/item/stool{
@@ -5606,6 +5874,34 @@
 	icon_state = "white"
 	},
 /area/event/underground_no_CAS/dynamic)
+"or" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 7
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "os" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
@@ -5631,15 +5927,11 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
-"ow" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper  Supplies Depot - White Hook";
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/event/metal)
+"ox" = (
+/obj/effect/decal/warning_stripes,
+/obj/structure/prop/static_tank/fuel,
+/turf/open/floor/corsat,
+/area/event/underground_no_CAS/dynamic)
 "oy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -5661,6 +5953,12 @@
 	dir = 1;
 	icon_state = "blue"
 	},
+/area/event/underground_no_CAS/dynamic)
+"oD" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
 /area/event/underground_no_CAS/dynamic)
 "oE" = (
 /obj/structure/surface/table/reinforced/black,
@@ -5709,6 +6007,12 @@
 	layer = 3.5;
 	pixel_y = 4
 	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "oL" = (
@@ -5726,6 +6030,49 @@
 	icon_state = "retrosquareslight"
 	},
 /area/event/metal)
+"oO" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "oQ" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -5760,6 +6107,10 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"oT" = (
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/gm,
+/area/event)
 "oU" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4;
@@ -5806,13 +6157,6 @@
 	icon_state = "plate"
 	},
 /area/event/metal)
-"pc" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/item/tool/warning_cone,
-/turf/open/asphalt/cement,
-/area/event)
 "pd" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -5894,12 +6238,12 @@
 	},
 /area/event/underground_no_CAS)
 "pn" = (
-/obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
 	id = "Perma 1L";
 	name = "\improper cell shutter"
 	},
+/obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
 "po" = (
@@ -5962,6 +6306,53 @@
 /obj/item/attachable/heavy_barrel,
 /turf/open/floor,
 /area/event/metal)
+"pt" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
+"pu" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "pw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -6147,6 +6538,12 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
+"pP" = (
+/obj/item/prop/colony/folded_bedroll,
+/turf/open/gm/dirtgrassborder2{
+	dir = 1
+	},
+/area/event)
 "pQ" = (
 /obj/item/toy/deck/uno,
 /obj/item/toy/deck/uno,
@@ -6258,10 +6655,6 @@
 	},
 /turf/open/floor,
 /area/event/metal)
-"qa" = (
-/obj/structure/largecrate/black_market,
-/turf/open/gm/dirtgrassborder,
-/area/event)
 "qe" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/franks,
@@ -6277,11 +6670,12 @@
 /turf/closed/wall/r_wall/bunker,
 /area/event/metal)
 "qh" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = -13;
+	pixel_y = 10
 	},
 /turf/open/asphalt/cement,
 /area/event)
@@ -6303,15 +6697,6 @@
 	},
 /turf/closed/wall/r_wall/bunker,
 /area/event/metal)
-"qo" = (
-/obj/structure/sign/poster/clf{
-	pixel_x = 32
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/event/underground_no_CAS/dynamic)
 "qq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/corsat{
@@ -6512,11 +6897,6 @@
 /area/event)
 "qJ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -6531,6 +6911,11 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/stairs/perspective/kutjevo,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "qK" = (
@@ -6594,12 +6979,55 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"qR" = (
+"qS" = (
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
+/obj/item/reagent_container/food/snacks/grown/wheat{
+	color = "#90EE90";
+	name = "barley";
+	plantname = "barley"
+	},
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/beer_pack,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "qT" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -6645,6 +7073,35 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
+"qW" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/item/ammo_magazine/m2c{
+	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/turf/open/floor/interior/wood,
+/area/event)
+"qX" = (
+/obj/structure/surface/rack,
+/turf/open/floor/wood,
+/area/event/metal)
 "qY" = (
 /obj/structure/window{
 	dir = 4
@@ -6695,6 +7152,13 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
+"rf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt,
+/turf/open/asphalt/cement,
+/area/event)
 "rg" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "beach"
@@ -6998,13 +7462,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"sj" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
 "sl" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer{
@@ -7012,6 +7469,13 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"sm" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn{
+	anchored = 1;
+	name = "Warehouse White Pawn"
+	},
+/turf/closed/wall/wood,
+/area/event/metal)
 "sn" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert1"
@@ -7031,47 +7495,27 @@
 	layer = 3.5;
 	pixel_y = 4
 	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "ss" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
 	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/open/gm/grass,
-/area/event)
-"st" = (
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 1;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 10;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 1;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/structure/desertdam/decals/road_edge,
 /turf/open/floor/interior/wood,
 /area/event)
 "su" = (
@@ -7129,6 +7573,12 @@
 	layer = 3.5;
 	pixel_y = 5
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "sC" = (
@@ -7138,6 +7588,16 @@
 	},
 /turf/open/gm/dirt2,
 /area/event)
+"sF" = (
+/obj/structure/bed/bedroll,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
+"sG" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "sH" = (
 /obj/structure/platform/kutjevo/rock{
 	projectile_coverage = 0
@@ -7173,9 +7633,7 @@
 /obj/item/explosive/grenade/high_explosive/stick,
 /obj/item/explosive/grenade/high_explosive/stick,
 /obj/item/explosive/grenade/high_explosive/stick,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "sK" = (
 /obj/structure/barricade/handrail{
@@ -7344,6 +7802,22 @@
 	dir = 1;
 	name = "\improper T37 Medium Machinegun"
 	},
+/turf/open/floor/interior/wood,
+/area/event)
+"te" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event)
 "tf" = (
@@ -7611,11 +8085,6 @@
 /area/event)
 "tG" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -7631,6 +8100,11 @@
 	},
 /obj/item/ammo_magazine/m2c{
 	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -7760,6 +8234,12 @@
 	dir = 1
 	},
 /area/event)
+"tZ" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "ua" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/packet/hefa,
@@ -7920,37 +8400,50 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"ux" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "uy" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/prop/cash_register,
 /obj/structure/machinery/light/small,
 /turf/open/floor,
 /area/event/metal)
-"uA" = (
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 1;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 10;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 1;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "uB" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/window{
@@ -8128,6 +8621,9 @@
 /obj/item/device/flashlight,
 /turf/open/floor,
 /area/event/metal)
+"uU" = (
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "uW" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop{
 	anchored = 1;
@@ -8171,16 +8667,13 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
-"ve" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Backroom"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/event/metal)
 "vf" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -8190,6 +8683,12 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
+"vg" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "vh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -8231,20 +8730,58 @@
 /turf/open/floor,
 /area/event/metal)
 "vk" = (
-/obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "UPPreq1";
 	name = "\improper Requsitions Line"
 	},
+/obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
+"vl" = (
+/obj/item/reagent_container/glass/paint/red,
+/obj/item/reagent_container/glass/paint/remover{
+	pixel_x = -9
+	},
+/obj/item/reagent_container/glass/bottle/cyanide{
+	pixel_x = 10
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "vm" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/wood,
 /area/event/metal)
+"vo" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 7
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "vp" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -8252,6 +8789,11 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "vq" = (
@@ -8379,6 +8921,43 @@
 	icon_state = "darkgreen"
 	},
 /area/event/underground_no_CAS/dynamic)
+"vI" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "vJ" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
 /obj/structure/machinery/light,
@@ -8404,10 +8983,6 @@
 	dir = 4;
 	icon_state = "greenwhite"
 	},
-/area/event/underground_no_CAS/dynamic)
-"vO" = (
-/obj/structure/desertdam/decals/road_stop,
-/turf/open/floor/corsat,
 /area/event/underground_no_CAS/dynamic)
 "vP" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -8680,6 +9255,46 @@
 /obj/item/clothing/under/marine/veteran/UPP/officer,
 /turf/open/floor/wood,
 /area/event/underground_no_CAS/dynamic)
+"ww" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "wx" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_y = -5
@@ -8801,6 +9416,63 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"wU" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -2;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 9;
+	pixel_y = 19
+	},
+/obj/item/reagent_container/glass/paint/yellow{
+	desc = "why is it yellow?";
+	name = "lager bucket"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor,
+/area/event/metal)
+"wV" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "wY" = (
 /obj/structure/largecrate/supply/medicine/medkits,
 /turf/open/floor/corsat{
@@ -8857,9 +9529,7 @@
 /obj/structure/machinery/light/built{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "xb" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8911,14 +9581,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"xj" = (
-/obj/item/bedsheet,
-/obj/structure/bed,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor,
-/area/event/metal)
 "xk" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_box/magazine/misc/flashlight,
@@ -8950,11 +9612,6 @@
 /area/event/metal)
 "xn" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -8974,6 +9631,11 @@
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = 7
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "xo" = (
@@ -8984,6 +9646,17 @@
 /obj/item/stack/sheet/mineral/uranium/small_stack,
 /turf/open/floor,
 /area/event/metal)
+"xq" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.5
+	},
+/obj/structure/machinery/microwave{
+	pixel_y = 8
+	},
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "xr" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -9029,6 +9702,36 @@
 /obj/item/stack/sheet/mineral/silver/small_stack,
 /turf/open/floor,
 /area/event/metal)
+"xA" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "xB" = (
 /obj/structure/machinery/telecomms/processor{
 	name = "Automated AA Control"
@@ -9038,8 +9741,44 @@
 	},
 /area/event/metal)
 "xC" = (
-/obj/structure/bed/chair/wood/wings,
-/turf/open/gm/grass,
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
 /area/event)
 "xD" = (
 /obj/structure/machinery/light/small{
@@ -9090,6 +9829,43 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
+"xM" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "xN" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -9097,6 +9873,11 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/gm/dirt2,
 /area/event)
 "xO" = (
@@ -9216,6 +9997,43 @@
 	name = "reinforced bunker wall"
 	},
 /area/event/underground_no_CAS/dynamic)
+"yi" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "yj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/organ/eyes{
@@ -9244,6 +10062,12 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"yk" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/event)
 "yl" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/storage/box/packet/smoke,
@@ -9254,6 +10078,9 @@
 /obj/item/storage/box/packet/smoke,
 /turf/open/floor,
 /area/event/metal)
+"ym" = (
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "yn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
@@ -9296,6 +10123,10 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal)
+"yv" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass,
+/area/event)
 "yw" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -9431,20 +10262,12 @@
 /turf/open/floor/wood,
 /area/event/metal)
 "yV" = (
-/obj/structure/closet,
-/obj/item/clothing/accessory/armband/hydro,
-/obj/item/clothing/gloves/green{
-	desc = "Always good to keep a green thumb";
-	name = "gardener gloves"
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
 	},
-/obj/item/clothing/head/cmcap,
-/obj/item/clothing/mask/cigarette/pipe,
-/obj/item/clothing/shoes/leather,
-/obj/item/clothing/under/color/green,
-/obj/item/tool/minihoe,
-/obj/item/tool/shovel,
-/obj/item/tool/plantspray/weeds,
-/turf/open/floor,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "yW" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -9512,15 +10335,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"zb" = (
-/obj/structure/barricade/sandbags{
-	dir = 1
-	},
-/obj/structure/barricade/sandbags{
-	dir = 8
-	},
-/turf/open/gm,
-/area/event)
 "zc" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/attachable/extended_barrel,
@@ -9533,16 +10347,6 @@
 /obj/item/attachable/extended_barrel,
 /turf/open/floor,
 /area/event/metal)
-"zd" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5;
-	pixel_y = 4
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/interior/wood,
-/area/event)
 "ze" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -9593,11 +10397,6 @@
 	stack_amount = 50;
 	starting_maxhealth = 500
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -9613,6 +10412,11 @@
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "zk" = (
@@ -9651,6 +10455,18 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
+/area/event/metal)
+"zo" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/reagent_container/food/snacks/grown/banana,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "zp" = (
 /obj/structure/machinery/light/small,
@@ -9772,7 +10588,24 @@
 	pixel_y = 5
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
+/area/event)
+"zE" = (
+/obj/structure/barricade/sandbags{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags{
+	dir = 8
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
 /area/event)
 "zF" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -9802,6 +10635,12 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor,
 /area/event/metal)
+"zI" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "zJ" = (
 /obj/structure/foamed_metal/iron,
 /turf/open/floor/corsat{
@@ -9814,10 +10653,57 @@
 	icon_state = "plate"
 	},
 /area/event/metal)
-"zN" = (
-/obj/item/bedsheet,
-/obj/structure/bed,
-/turf/open/floor,
+"zL" = (
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "zQ" = (
 /obj/structure/prop/rock/black_ground,
@@ -9866,9 +10752,7 @@
 /obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_box/magazine/type71,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "Aa" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -9902,46 +10786,6 @@
 /area/event)
 "Ae" = (
 /turf/open/gm/grass,
-/area/event/metal)
-"Af" = (
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/kitchen/utensil/knife,
-/turf/open/floor,
 /area/event/metal)
 "Ah" = (
 /turf/open/gm/dirtgrassborder{
@@ -10075,37 +10919,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/event)
-"AA" = (
-/obj/structure/prop/dam/truck,
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = 12;
-	pixel_y = 26
-	},
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = 25;
-	pixel_y = 26
-	},
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = 39;
-	pixel_y = 26
-	},
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = 29;
-	pixel_y = 21
-	},
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = 16;
-	pixel_y = 21
-	},
-/turf/open/gm/grass,
-/area/event)
-"AB" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/item/tool/warning_cone,
-/turf/open/asphalt/cement,
-/area/event)
 "AC" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -10203,20 +11016,14 @@
 "AL" = (
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_x = 32;
-	name = "Town's Light Poles Switch"
+	name = "Town's Light Poles Switch";
+	desc = "This switch controls the light poles surrounding The Town of Rosansk. It only functions when there is power."
 	},
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
-"AM" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor,
-/area/event/metal)
 "AN" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/paracetamol,
@@ -10255,13 +11062,67 @@
 /obj/item/toy/farwadoll,
 /turf/open/floor,
 /area/event/metal)
-"AS" = (
-/obj/structure/largecrate/black_market,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
+"AR" = (
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
-/area/event)
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "AT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = UPP_Garage2
@@ -10286,13 +11147,6 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
-"AV" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/beer_pack,
-/obj/item/storage/beer_pack,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event)
 "AW" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/explosive/grenade/incendiary,
@@ -10325,48 +11179,8 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Ba" = (
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/kitchen/utensil/knife,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor,
+"AZ" = (
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Bb" = (
 /obj/structure/largecrate/supply/explosives/grenades,
@@ -10433,6 +11247,19 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
+"Bi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/prop/dam/van{
+	dir = 4;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/event/metal)
 "Bj" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -10483,11 +11310,10 @@
 /turf/open/floor,
 /area/event/metal)
 "Bs" = (
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn{
-	anchored = 1;
-	name = "Bunker Black Pawn"
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
-/turf/closed/wall/r_wall/bunker,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Bt" = (
 /obj/structure/machinery/processor,
@@ -10526,6 +11352,30 @@
 /obj/item/attachable/lasersight,
 /obj/item/attachable/lasersight,
 /turf/open/floor,
+/area/event/metal)
+"Bz" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "BA" = (
 /obj/structure/prop/rock/black_ground/dense{
@@ -10597,34 +11447,6 @@
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
-/area/event/metal)
-"BM" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/box/condimentbottles{
-	pixel_x = -5;
-	pixel_y = 12
-	},
-/obj/item/storage/box/condimentbottles{
-	pixel_x = -5;
-	pixel_y = 7
-	},
-/obj/item/storage/box/condimentbottles{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/storage/box/condimentbottles{
-	pixel_x = 8;
-	pixel_y = 12
-	},
-/obj/item/storage/box/condimentbottles{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/item/storage/box/condimentbottles{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/turf/open/floor,
 /area/event/metal)
 "BO" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -10723,13 +11545,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
-"Ce" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "blue"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Cg" = (
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/r_wall/bunker{
@@ -10737,6 +11552,20 @@
 	name = "reinforced bunker wall"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Ch" = (
+/obj/item/reagent_container/glass/paint/yellow{
+	desc = "why is it yellow?";
+	name = "lager bucket";
+	pixel_y = 9
+	},
+/obj/item/reagent_container/glass/paint/yellow{
+	desc = "why is it yellow?";
+	name = "lager bucket";
+	pixel_x = 17;
+	pixel_y = 12
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Cj" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -10758,8 +11587,9 @@
 /turf/open/floor/wood,
 /area/event/metal)
 "Cq" = (
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/gm/grass,
+/turf/open/gm/dirtgrassborder2{
+	dir = 4
+	},
 /area/event)
 "Cs" = (
 /obj/structure/platform/kutjevo{
@@ -10829,12 +11659,6 @@
 	icon_state = "white"
 	},
 /area/event/underground_no_CAS/dynamic)
-"CC" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "CE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
@@ -10850,6 +11674,16 @@
 	},
 /turf/open/floor/carpet,
 /area/event/underground_no_CAS/dynamic)
+"CG" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "CJ" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -10860,12 +11694,32 @@
 /obj/structure/mineral_door/wood,
 /turf/open/space/basic,
 /area/event/metal)
-"CM" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+"CL" = (
+/obj/structure/platform/kutjevo,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"CM" = (
+/obj/structure/window/framed/bunker/reinforced,
+/turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
+"CN" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/event/underground_no_CAS)
 "CT" = (
 /obj/structure/bed/chair/comfy/black{
 	pixel_y = -7
@@ -10902,6 +11756,9 @@
 	pixel_y = -32
 	},
 /turf/open/gm/grass,
+/area/event)
+"Df" = (
+/turf/open/gm/dirtgrassborder2,
 /area/event)
 "Dg" = (
 /turf/open/gm/dirtgrassborder{
@@ -10972,6 +11829,18 @@
 	},
 /turf/open/gm/river,
 /area/event)
+"Dp" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/obj/item/reagent_container/food/snacks/grown/apple,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Dq" = (
 /obj/structure/machinery/m56d_hmg/auto{
 	dir = 8
@@ -11054,9 +11923,7 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/minigun,
 /obj/item/ammo_magazine/minigun,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "DD" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
@@ -11088,12 +11955,6 @@
 	icon_state = "darkgreen"
 	},
 /area/event/underground_no_CAS/dynamic)
-"DI" = (
-/obj/structure/mineral_door/wood,
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/event/metal)
 "DL" = (
 /obj/structure/transmitter/touchtone{
 	phone_category = "UPP";
@@ -11199,13 +12060,6 @@
 	icon_state = "plate"
 	},
 /area/event/underground_no_CAS)
-"Eb" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 1
-	},
-/turf/open/floor,
-/area/event/metal)
 "Ec" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert3"
@@ -11252,6 +12106,13 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
+/area/event/metal)
+"En" = (
+/obj/structure/barricade/handrail/kutjevo,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Er" = (
 /obj/structure/surface/rack,
@@ -11332,6 +12193,13 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"EB" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "EC" = (
 /obj/effect/attach_point/weapon/dropship1/right_fore,
 /turf/open/gm/river/ocean,
@@ -11353,6 +12221,32 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
+"EI" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 8;
+	name = "\improper T37 Medium Machinegun"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "EJ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/intel{
@@ -11363,18 +12257,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"EK" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "EM" = (
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
@@ -11392,6 +12274,12 @@
 	icon_state = "greenwhitecorner"
 	},
 /area/event/underground_no_CAS/dynamic)
+"ER" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "ET" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert0"
@@ -11403,18 +12291,19 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"EX" = (
-/obj/structure/stairs/perspective/kutjevo,
-/turf/open/floor/interior/wood,
-/area/event)
-"EZ" = (
+"EV" = (
+/obj/structure/surface/table/woodentable/poor,
 /obj/structure/prop/souto_land/streamer{
 	dir = 1
 	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
+/obj/item/tool/kitchen/knife,
+/obj/item/tool/kitchen/knife,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
+"EX" = (
+/obj/structure/stairs/perspective/kutjevo,
+/turf/open/floor/interior/wood,
 /area/event)
 "Fa" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -11440,16 +12329,6 @@
 	},
 /turf/open/floor/carpet,
 /area/event/metal)
-"Fd" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "Fh" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/condiment/hotsauce/franks,
@@ -11517,10 +12396,9 @@
 /turf/open/floor/wood,
 /area/event/metal)
 "Fs" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 1
-	},
-/turf/open/gm/grass,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
 /area/event)
 "Ft" = (
 /obj/item/reagent_container/food/condiment/sugar,
@@ -11562,11 +12440,6 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Fx" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/glass/bucket/mopbucket,
-/turf/open/floor,
-/area/event/metal)
 "Fy" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/touchtone{
@@ -11620,6 +12493,43 @@
 /obj/structure/prop/cash_register,
 /turf/open/floor,
 /area/event/metal)
+"FE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "FG" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/smg/uzi,
@@ -11637,10 +12547,10 @@
 /turf/open/floor,
 /area/event/metal)
 "FH" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/turf/open/gm/grass,
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner";
+	dir = 4
+	},
 /area/event)
 "FI" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -11695,19 +12605,6 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
-"FM" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/reagent_container/food/snacks/grown/grapes,
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/utensil/spoon,
-/turf/open/floor,
-/area/event/metal)
 "FN" = (
 /turf/open/floor{
 	icon_state = "cult"
@@ -11744,6 +12641,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
+"FR" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/prop/cash_register/broken,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
 "FS" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Kolonel's Quarters"
@@ -11825,6 +12734,67 @@
 	},
 /turf/open/gm,
 /area/event)
+"Gi" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "Gl" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin{
@@ -11874,6 +12844,27 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal)
+"Gt" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/obj/item/reagent_container/food/snacks/grown/grapes,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Gu" = (
 /obj/structure/platform{
 	dir = 4
@@ -11894,28 +12885,6 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Gx" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "Gy" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt/cement,
@@ -11949,12 +12918,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"GH" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/turf/open/floor,
-/area/event/metal)
 "GJ" = (
 /obj/structure/bed/chair/wood/wings,
 /obj/structure/machinery/light{
@@ -12055,7 +13018,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -12098,12 +13062,6 @@
 	name = "Backline Landing Zone East"
 	},
 /turf/open/gm,
-/area/event)
-"Hj" = (
-/obj/item/tool/warning_cone{
-	pixel_y = 13
-	},
-/turf/open/asphalt/cement,
 /area/event)
 "Hk" = (
 /obj/structure/pipes/standard/simple/visible{
@@ -12181,54 +13139,32 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Hx" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -8;
-	pixel_y = 15
+"Hy" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
 	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -5;
-	pixel_y = 15
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -2;
-	pixel_y = 15
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 1;
+	name = "\improper T37 Medium Machinegun"
 	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 4;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/glass/paint/red{
-	desc = "suspiciously like a paint bucket";
-	name = "wine bucket"
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 10;
-	pixel_y = 23
-	},
-/turf/open/floor,
-/area/event/metal)
+/turf/open/floor/interior/wood,
+/area/event)
 "Hz" = (
 /obj/structure/surface/rack,
 /obj/item/stack/medical/advanced/bruise_pack/upgraded,
@@ -12386,6 +13322,15 @@
 	icon_state = "freezerfloor"
 	},
 /area/event/metal)
+"HP" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "HS" = (
 /turf/open/floor/corsat{
 	dir = 6;
@@ -12508,13 +13453,21 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"If" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/obj/item/reagent_container/food/snacks/grown/pumpkin,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Ig" = (
 /turf/open/floor/wood,
 /area/event/underground_no_CAS/dynamic)
-"Ih" = (
-/obj/structure/machinery/vending/dinnerware,
-/turf/open/asphalt/cement,
-/area/event)
 "Ii" = (
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/gm/dirt2,
@@ -12524,7 +13477,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -12624,6 +13578,65 @@
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
+/area/event/underground_no_CAS/dynamic)
+"Iy" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
+"Iz" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "IB" = (
 /turf/open/floor/plating{
@@ -12797,12 +13810,6 @@
 	dir = 1;
 	icon_state = "sterile_green_side"
 	},
-/area/event/metal)
-"IX" = (
-/obj/structure/sink/kitchen{
-	pixel_y = 23
-	},
-/turf/open/floor,
 /area/event/metal)
 "IY" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -13165,7 +14172,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -13249,6 +14257,66 @@
 	},
 /turf/open/gm/grass,
 /area/event)
+"JW" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"JX" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "JY" = (
 /obj/structure/platform/kutjevo{
 	dir = 4;
@@ -13297,11 +14365,6 @@
 	icon_state = "bluecorner"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Kd" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/glass/bucket,
-/turf/open/floor,
-/area/event/metal)
 "Kg" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -13497,6 +14560,18 @@
 	icon_state = "white"
 	},
 /area/event/underground_no_CAS/dynamic)
+"KP" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/obj/item/reagent_container/food/snacks/grown/ricestalk,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "KQ" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -13504,10 +14579,6 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor,
-/area/event/metal)
-"KR" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/closed/wall/r_wall/bunker,
 /area/event/metal)
 "KS" = (
 /obj/structure/barricade/handrail{
@@ -13526,6 +14597,10 @@
 "KV" = (
 /turf/open/gm/river,
 /area/event)
+"KX" = (
+/obj/item/prop/colony/folded_bedroll,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "KY" = (
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/corsat{
@@ -13642,6 +14717,16 @@
 	icon_state = "sterile_green"
 	},
 /area/event/metal)
+"Lo" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "Lp" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/flashlight/lamp,
@@ -13840,12 +14925,12 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "LI" = (
-/obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
 	id = "Perma 2L";
 	name = "\improper cell shutter"
 	},
+/obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
 "LJ" = (
@@ -13884,6 +14969,10 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"LN" = (
+/obj/structure/barricade/handrail/kutjevo,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "LP" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha,
@@ -13930,6 +15019,59 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/event/metal)
+"LV" = (
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/light/small,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "LW" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/corsat{
@@ -13971,16 +15113,56 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
-"Me" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert2"
+"Mb" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
 	},
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 8;
+	name = "\improper T37 Medium Machinegun"
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
 /area/event)
-"Mf" = (
-/obj/structure/flora/pottedplant,
-/turf/open/floor,
-/area/event/metal)
-"Mi" = (
+"Mc" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -13995,16 +15177,66 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"Md" = (
 /obj/structure/platform/kutjevo{
 	dir = 1;
 	layer = 2.96;
 	projectile_coverage = 0
 	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
+"Me" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "desert2"
+	},
+/area/event)
+"Mf" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor,
+/area/event/metal)
+"Mh" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Mj" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king{
 	anchored = 1;
@@ -14101,6 +15333,37 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Mu" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS/dynamic)
+"Mv" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS/dynamic)
 "Mw" = (
 /obj/structure/transmitter{
 	phone_category = "UPP";
@@ -14108,6 +15371,15 @@
 	pixel_y = 29
 	},
 /turf/open/floor/wood,
+/area/event/metal)
+"Mx" = (
+/obj/structure/sink{
+	desc = "A sink used for washing one's hands and face. Let that sink in.";
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 16
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Mz" = (
 /obj/structure/machinery/light/small{
@@ -14135,6 +15407,25 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
+"MC" = (
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "MD" = (
 /obj/structure/surface/rack,
 /obj/item/hardpoint/locomotion/van_wheels,
@@ -14153,14 +15444,6 @@
 /obj/structure/barricade/sandbags,
 /turf/open/asphalt/cement,
 /area/event)
-"MF" = (
-/obj/item/bedsheet,
-/obj/structure/bed,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor,
-/area/event/metal)
 "MG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mac15,
@@ -14171,6 +15454,28 @@
 /obj/item/ammo_magazine/smg/mac15,
 /turf/open/floor,
 /area/event/metal)
+"MH" = (
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "MI" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/warning_stripes,
@@ -14213,12 +15518,46 @@
 /turf/open/floor/interior/wood,
 /area/event)
 "MP" = (
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn{
-	anchored = 1;
-	name = "Bunker White Pawn"
-	},
-/turf/closed/wall/r_wall/bunker,
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/obj/item/reagent_container/food/snacks/grown/carrot,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
+"MQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS/dynamic)
+"MS" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "MT" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -14233,6 +15572,34 @@
 	},
 /turf/open/floor/corsat,
 /area/event/underground_no_CAS/dynamic)
+"MV" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "MW" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
@@ -14241,6 +15608,10 @@
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
 /turf/open/floor,
 /area/event/metal)
+"MX" = (
+/obj/structure/prop/dam/truck/UPP,
+/turf/open/gm,
+/area/event)
 "MZ" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/type23{
@@ -14330,6 +15701,18 @@
 	dir = 4;
 	icon_state = "sterile_green_corner"
 	},
+/area/event/metal)
+"Nh" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/obj/item/reagent_container/food/snacks/grown/tomato,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Nk" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -14444,67 +15827,6 @@
 	},
 /turf/open/floor/wood,
 /area/event/underground_no_CAS)
-"NA" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "NB" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -14522,171 +15844,6 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/open/floor/wood,
 /area/event/metal)
-"NG" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/floor/interior/wood,
-/area/event)
-"NH" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event)
-"NI" = (
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "NJ" = (
 /obj/structure/platform{
 	dir = 8
@@ -14870,49 +16027,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"NW" = (
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "NX" = (
 /obj/structure/surface/rack,
 /obj/item/toy/spinningtoy,
@@ -14921,7 +16035,7 @@
 /obj/item/toy/spinningtoy,
 /turf/open/floor,
 /area/event/metal)
-"Oa" = (
+"NZ" = (
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	pixel_x = -6;
 	pixel_y = 18
@@ -14963,10 +16077,10 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/interior/wood,
-/area/event)
+/area/event/underground_no_CAS/dynamic)
 "Od" = (
 /obj/structure/machinery/cm_vending/gear/antag,
 /obj/structure/machinery/light,
@@ -14981,46 +16095,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Oh" = (
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event)
-"Oi" = (
-/obj/structure/sign/poster/clf{
-	pixel_x = -32
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "blue"
-	},
-/area/event/underground_no_CAS/dynamic)
-"Ok" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 2.5
-	},
-/obj/structure/machinery/microwave{
-	pixel_y = 8
-	},
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/floor/interior/wood,
-/area/event)
 "Ol" = (
 /obj/structure/surface/table/almayer{
 	indestructible = 1
@@ -15140,26 +16214,6 @@
 	},
 /turf/open/gm,
 /area/event)
-"OA" = (
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "OB" = (
 /obj/structure/bed/chair,
 /turf/open/floor/corsat{
@@ -15265,28 +16319,6 @@
 	},
 /turf/open/gm/dirt2,
 /area/event)
-"OL" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "OM" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/corsat{
@@ -15334,25 +16366,54 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"OV" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
+"OW" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -8;
+	pixel_y = 15
 	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -5;
+	pixel_y = 15
 	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -2;
+	pixel_y = 15
 	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 1;
+	pixel_y = 15
 	},
-/obj/structure/barricade/handrail{
-	dir = 1
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 4;
+	pixel_y = 15
 	},
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/floor/interior/wood,
-/area/event)
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/glass/paint/red{
+	desc = "suspiciously like a paint bucket";
+	name = "wine bucket"
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 10;
+	pixel_y = 23
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "OX" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -15381,40 +16442,71 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event)
-"OY" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "OZ" = (
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Pb" = (
-/obj/structure/prop/vehicles/crawler{
-	icon_state = "crawler_covered_bed"
+"Pa" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/transmitter/touchtone{
+	phone_category = "UPP";
+	phone_id = "UPP Bunker Black Pawn"
 	},
-/turf/open/gm,
-/area/event)
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
+"Pb" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = -2;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle{
+	icon = 'icons/obj/items/chemistry.dmi';
+	icon_state = "bottle-1";
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/glass/paint/violet{
+	desc = "suspiciously like a paint bucket";
+	name = "wine bucket"
+	},
+/obj/item/reagent_container/food/drinks/bottle/pwine{
+	pixel_x = 10;
+	pixel_y = 20
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Pe" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -15447,11 +16539,6 @@
 	layer = 2.96;
 	projectile_coverage = 0
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -15465,16 +16552,16 @@
 	stack_amount = 50;
 	starting_maxhealth = 500
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "Pk" = (
 /obj/structure/platform/kutjevo{
 	dir = 1;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
 	layer = 2.96;
 	projectile_coverage = 0
 	},
@@ -15517,10 +16604,47 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
 	layer = 2.96;
 	projectile_coverage = 0
 	},
 /turf/open/gm/dirt2,
+/area/event)
+"Pl" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 8;
+	name = "\improper T37 Medium Machinegun"
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 7
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
 /area/event)
 "Pm" = (
 /obj/structure/machinery/light,
@@ -15606,11 +16730,6 @@
 	layer = 2.96;
 	projectile_coverage = 0
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -15626,6 +16745,11 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
@@ -15644,6 +16768,18 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Px" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "Py" = (
 /obj/structure/machinery/cryopod,
 /obj/structure/machinery/light,
@@ -15662,12 +16798,6 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"PB" = (
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "PC" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -15741,6 +16871,35 @@
 	},
 /turf/open/gm/dirt2,
 /area/event)
+"PJ" = (
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"PM" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "PQ" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/structure/machinery/light/small{
@@ -15803,6 +16962,40 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Qb" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "Qc" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/barricade/metal/wired{
@@ -15833,65 +17026,15 @@
 	icon_state = "desert3"
 	},
 /area/event)
-"Qg" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
+"Qf" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
 	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
 	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event)
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "Qh" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/corsat{
@@ -15963,6 +17106,62 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Qt" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 6;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "Qu" = (
 /turf/open/floor/corsat{
 	dir = 6;
@@ -15994,10 +17193,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Qz" = (
-/obj/structure/bed/chair/wood/wings,
-/turf/open/floor/interior/wood,
-/area/event)
 "QA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -16028,7 +17223,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -16049,33 +17245,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
-"QG" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 8;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 6;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "QH" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/rifle/m16,
@@ -16112,77 +17281,9 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
-"QM" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "QN" = (
 /turf/closed/wall/rock/brown,
 /area/event/underground_no_CAS/dynamic)
-"QP" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "QQ" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -16197,7 +17298,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -16219,16 +17321,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
-"QT" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/knife,
-/turf/open/floor/interior/wood,
-/area/event)
 "QU" = (
 /obj/structure/machinery/light/built,
 /obj/structure/surface/table/reinforced/prison,
@@ -16261,18 +17353,6 @@
 	dir = 8;
 	icon_state = "grassdirt_corner"
 	},
-/area/event)
-"QZ" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/prop/cash_register/broken,
-/turf/open/floor/interior/wood,
 /area/event)
 "Ra" = (
 /obj/structure/machinery/light{
@@ -16335,29 +17415,6 @@
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Rh" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "Ri" = (
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/corsat{
@@ -16390,12 +17447,6 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Ro" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/gm/grass,
-/area/event)
 "Rp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ashtray/plastic,
@@ -16424,14 +17475,28 @@
 /obj/structure/bed/chair/wood/wings,
 /turf/open/floor/interior/wood,
 /area/event)
-"Rr" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
+"Rs" = (
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
 	},
-/turf/open/gm/grass,
-/area/event)
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "Ru" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -16453,45 +17518,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Rx" = (
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/item/reagent_container/food/snacks/grown/wheat{
-	color = "#90EE90";
-	name = "barley";
-	plantname = "barley"
-	},
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/floor,
-/area/event/metal)
 "RB" = (
 /obj/structure/bed/alien,
 /turf/open/floor/corsat{
@@ -16513,9 +17539,7 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "RD" = (
 /obj/structure/bed/chair/office/dark{
@@ -16527,11 +17551,6 @@
 /area/event/metal)
 "RE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -16550,6 +17569,11 @@
 	},
 /obj/item/ammo_magazine/m2c{
 	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -16595,6 +17619,43 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
+"RL" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "RM" = (
 /obj/structure/closet/coffin/woodencrate,
 /turf/open/floor,
@@ -16630,15 +17691,14 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
-"RV" = (
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+"RU" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_x = 6
 	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/turf/open/floor/interior/wood,
-/area/event)
+/obj/item/tool/kitchen/utensil/spoon,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "RW" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen{
 	anchored = 1;
@@ -16748,11 +17808,6 @@
 /area/event)
 "Su" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -16765,6 +17820,11 @@
 	projectile_coverage = 100;
 	stack_amount = 50;
 	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/floor/interior/wood,
 /area/event)
@@ -16797,6 +17857,33 @@
 	},
 /turf/open/floor/carpet,
 /area/event/metal)
+"SA" = (
+/obj/structure/prop/dam/truck,
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = 12;
+	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = 25;
+	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = 39;
+	pixel_y = 26
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = 29;
+	pixel_y = 21
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt{
+	pixel_x = 16;
+	pixel_y = 21
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event)
 "SB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -16878,54 +17965,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"SC" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -8;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = -2;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 4;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle{
-	icon = 'icons/obj/items/chemistry.dmi';
-	icon_state = "bottle-1";
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/glass/paint/violet{
-	desc = "suspiciously like a paint bucket";
-	name = "wine bucket"
-	},
-/obj/item/reagent_container/food/drinks/bottle/pwine{
-	pixel_x = 10;
-	pixel_y = 20
-	},
-/turf/open/floor,
-/area/event/metal)
 "SD" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -16961,13 +18000,38 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
 /area/event)
-"SK" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/glass/bucket,
-/obj/item/reagent_container/glass/bucket,
-/obj/item/reagent_container/glass/bucket,
-/turf/open/floor,
-/area/event/metal)
+"SI" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "SL" = (
 /obj/structure/flora/jungle/thickbush,
 /obj/structure/desertdam/decals/road_edge{
@@ -16975,9 +18039,11 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
-"SM" = (
-/obj/structure/bed/chair,
-/turf/open/floor,
+"SN" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "SQ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -17010,6 +18076,12 @@
 	name = "oil-eating bacteria"
 	},
 /area/event/underground_no_CAS/dynamic)
+"SS" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner";
+	dir = 8
+	},
+/area/event)
 "ST" = (
 /obj/structure/platform{
 	dir = 8
@@ -17041,21 +18113,13 @@
 	tag = "icon-S"
 	},
 /obj/structure/prop/dam/van{
-	dir = 4
+	dir = 4;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/event/metal)
-"SX" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/open/floor/interior/wood,
-/area/event)
 "SY" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/barricade/metal/wired{
@@ -17114,6 +18178,65 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Tf" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "Th" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -17143,11 +18266,6 @@
 /area/event/metal)
 "Tj" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -17173,6 +18291,11 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
 	layer = 2.96;
 	projectile_coverage = 0
 	},
@@ -17299,12 +18422,81 @@
 	},
 /turf/open/floor/plating,
 /area/event)
-"TA" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/turf/open/floor,
+"Tx" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
+"Ty" = (
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "TB" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap/upp{
@@ -17576,13 +18768,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"Uh" = (
-/obj/structure/reagent_dispensers/beerkeg/alt{
-	pixel_x = -13;
-	pixel_y = 10
-	},
-/turf/open/gm/grass,
-/area/event)
 "Ui" = (
 /obj/structure/platform/kutjevo{
 	dir = 4;
@@ -17608,6 +18793,10 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Uo" = (
+/obj/structure/bed/chair/wood/wings,
+/turf/open/floor/interior/wood,
+/area/event/underground_no_CAS)
 "Up" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -17693,12 +18882,55 @@
 	},
 /area/event/metal)
 "Ux" = (
-/obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "UPPreq2";
 	name = "Requsitions Lockdown"
 	},
+/obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
+/area/event/underground_no_CAS/dynamic)
+"Uy" = (
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "UB" = (
 /obj/structure/computerframe,
@@ -17747,6 +18979,23 @@
 	},
 /turf/open/asphalt/cement,
 /area/event)
+"UE" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "UF" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -17756,6 +19005,11 @@
 	icon_state = "darkgreen"
 	},
 /area/event/underground_no_CAS/dynamic)
+"UG" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner2"
+	},
+/area/event)
 "UH" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -17994,13 +19248,48 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"UZ" = (
+"Va" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 7
+	},
 /obj/structure/barricade/sandbags{
-	dir = 8
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/turf/open/floor/interior/wood,
 /area/event)
 "Vb" = (
 /obj/structure/barricade/handrail/sandstone/b{
@@ -18023,7 +19312,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/platform/kutjevo{
 	layer = 2.96;
@@ -18177,8 +19467,11 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Vn" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn{
+	anchored = 1;
+	name = "Distillery Black Pawn"
+	},
+/turf/closed/wall/wood,
 /area/event/metal)
 "Vo" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -18215,61 +19508,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Vr" = (
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor,
-/area/event/metal)
 "Vs" = (
 /turf/closed/wall/rock/brown,
 /area/event)
@@ -18479,11 +19717,6 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -18496,6 +19729,11 @@
 	projectile_coverage = 100;
 	stack_amount = 50;
 	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /turf/open/gm/dirt2,
 /area/event)
@@ -18651,12 +19889,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Wg" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/event)
 "Wj" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat,
@@ -18677,10 +19909,17 @@
 /obj/structure/surface/rack,
 /turf/open/floor,
 /area/event/metal)
-"Wo" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/item/stack/cable_coil,
-/turf/open/floor,
+"Wn" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "Wr" = (
 /obj/structure/sign/safety/medical{
@@ -18728,6 +19967,33 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
 /area/event)
+"Wv" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
+"Ww" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
+"Wz" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/beer_pack,
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS)
 "WA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18735,7 +20001,8 @@
 	},
 /obj/structure/prop/dam/truck{
 	dir = 4;
-	layer = 4
+	layer = 4;
+	pixel_x = -6
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -18747,6 +20014,23 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"WD" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS/dynamic)
+"WE" = (
+/obj/structure/barricade/handrail/kutjevo,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/event/metal)
 "WF" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/sniper/svd,
@@ -18846,11 +20130,6 @@
 	stack_amount = 50;
 	starting_maxhealth = 500
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
 	build_stage = 5;
@@ -18874,6 +20153,11 @@
 	projectile_coverage = 100;
 	stack_amount = 50;
 	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
 	},
 /obj/structure/platform/kutjevo{
 	layer = 2.96;
@@ -18919,13 +20203,26 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Xe" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/prop/souto_land/streamer{
+"Xd" = (
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
 	dir = 1
 	},
 /turf/open/floor/interior/wood,
-/area/event)
+/area/event/underground_no_CAS/dynamic)
 "Xf" = (
 /obj/structure/platform/kutjevo,
 /turf/closed/wall/wood,
@@ -18997,6 +20294,40 @@
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Xj" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "Xk" = (
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -19020,6 +20351,35 @@
 	},
 /turf/closed/wall/wood,
 /area/event/metal)
+"Xo" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = 16;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt/cement,
+/area/event/underground_no_CAS/dynamic)
 "Xq" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
 /turf/open/floor/corsat{
@@ -19144,7 +20504,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8;
 	layer = 2.96;
-	projectile_coverage = 0
+	projectile_coverage = 0;
+	density = 0
 	},
 /obj/structure/platform/kutjevo{
 	layer = 2.96;
@@ -19208,6 +20569,14 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal)
+"XR" = (
+/obj/structure/machinery/colony_floodlight_switch{
+	pixel_x = 32;
+	name = "Town's Light Poles Switch";
+	desc = "This switch controls the light poles surrounding The Town of Rosansk. It only functions when there is power."
+	},
+/turf/open/floor/wood,
+/area/event/metal)
 "XT" = (
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
@@ -19270,6 +20639,25 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Yd" = (
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event)
 "Ye" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -19379,10 +20767,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
-"Yr" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/event/underground_no_CAS/dynamic)
 "Ys" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/explosive/grenade/phosphorus/upp,
@@ -19596,6 +20980,11 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
+	},
 /turf/open/floor/interior/wood,
 /area/event)
 "YR" = (
@@ -19604,13 +20993,6 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"YS" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/tool/kitchen/utensil/knife,
-/obj/item/tool/kitchen/utensil/knife,
-/obj/item/reagent_container/glass/bucket,
-/turf/open/floor,
-/area/event/metal)
 "YT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp{
@@ -19659,12 +21041,17 @@
 	tag = "icon-S"
 	},
 /obj/structure/prop/dam/truck{
-	dir = 4
+	dir = 4;
+	pixel_x = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/event/metal)
+"Ze" = (
+/obj/structure/bed/bedroll,
+/turf/open/gm/dirt2,
+/area/event)
 "Zf" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/corsat{
@@ -19725,6 +21112,43 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
+"Zj" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event)
 "Zk" = (
 /obj/structure/flora/jungle/thickbush{
 	indestructable = 1;
@@ -19789,9 +21213,7 @@
 /obj/item/ammo_box/magazine/su6,
 /obj/item/ammo_box/magazine/su6,
 /obj/item/ammo_box/magazine/su6,
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/wood,
 /area/event/metal)
 "Zu" = (
 /turf/closed/wall/r_wall/bunker{
@@ -19873,10 +21295,6 @@
 	name = "Backline Landing Zone West"
 	},
 /turf/open/gm,
-/area/event)
-"ZG" = (
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/asphalt/cement,
 /area/event)
 "ZH" = (
 /obj/structure/platform/kutjevo{
@@ -20022,11 +21440,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor,
-/area/event/metal)
-"ZU" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor,
 /area/event/metal)
 "ZW" = (
@@ -23041,17 +24454,17 @@ WZ
 WZ
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-Hl
-hg
-hg
+ww
+Cs
+Cs
+Cs
+Cs
+qW
+HL
+Cs
+Cs
+Cs
+Qb
 hg
 Ja
 Ja
@@ -23263,17 +24676,17 @@ WZ
 WZ
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+qI
+RH
+Vv
+te
+MV
+Vv
+Vv
+te
+MV
+RH
+CL
 hg
 Ja
 Ja
@@ -23485,17 +24898,17 @@ WZ
 WZ
 hg
 hg
-Hl
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+kX
+Xj
+NR
+zf
+bN
+aY
+jr
+zf
+Av
+Mc
+Xj
 hg
 Ja
 Ja
@@ -23574,12 +24987,12 @@ Xk
 Xk
 fh
 LG
-Oi
 Kt
 Kt
 Kt
 Kt
-Oi
+Kt
+Kt
 Kt
 Kt
 Kt
@@ -23704,21 +25117,21 @@ WZ
 WZ
 WZ
 hg
-Pg
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-gb
+hg
+hg
+hg
+hg
+hg
+NR
+zf
+zf
+zf
+zf
+zf
+bN
+aY
+aY
+Gp
 Ja
 Ja
 hg
@@ -23888,8 +25301,8 @@ WZ
 WZ
 hv
 js
-iG
-wH
+Lc
+qX
 hv
 Hl
 hg
@@ -23926,21 +25339,21 @@ WZ
 WZ
 hg
 hg
-oQ
-RH
-TQ
-TQ
-TQ
-TQ
-TQ
-TQ
-zd
-OX
-TQ
-TQ
-TQ
-TQ
-uR
+hg
+hg
+hg
+hg
+hg
+NR
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+Av
 Ja
 Ja
 hg
@@ -24018,12 +25431,12 @@ Xk
 Xk
 mm
 Kb
-qo
+fR
 Jm
 fR
 Jm
 Jm
-qo
+fR
 Jm
 fR
 Jm
@@ -24110,8 +25523,8 @@ hv
 hv
 hv
 js
-FN
-wH
+om
+qX
 hv
 hg
 hg
@@ -24148,21 +25561,21 @@ WZ
 WZ
 hg
 hg
-oQ
-Ut
-Bs
+hg
+hg
+hg
+hg
 Vn
+hv
+hv
 Vn
-qg
-qg
-aw
-aw
-aw
-qg
-qg
+zf
 Vn
+hv
+hv
 Vn
-Bs
+zf
+Av
 Ja
 Ja
 Fp
@@ -24332,8 +25745,8 @@ hv
 hv
 js
 js
-FN
-wH
+om
+qX
 hv
 aY
 aY
@@ -24370,21 +25783,21 @@ hg
 hg
 hg
 hg
-oQ
-Ut
-qg
-lr
-bf
-qg
+Ah
+aY
+aY
+aY
+hv
+bZ
+Gt
+hv
+lX
+hv
 yV
-SM
-ax
-cB
-yV
-qg
-Kd
-ZU
-qg
+bZ
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -24462,7 +25875,7 @@ Xk
 Xk
 Xk
 kS
-Ce
+CM
 WC
 Je
 mz
@@ -24552,11 +25965,11 @@ WZ
 WZ
 hv
 zZ
-FN
-FN
-FN
-FN
-ow
+om
+om
+om
+om
+hJ
 zf
 zf
 zf
@@ -24592,21 +26005,21 @@ hg
 hg
 hg
 hg
-oQ
-Ut
-Vn
-lr
-gN
-qg
-zN
-gN
-gN
-gN
-zN
-qg
-IX
-Fx
-KR
+NR
+br
+zf
+zf
+hv
+RU
+AZ
+Bz
+AZ
+SN
+AZ
+RU
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -24774,10 +26187,10 @@ WZ
 WZ
 hv
 Zr
-FN
+om
 oe
-FN
-wH
+om
+qX
 hv
 UU
 UU
@@ -24813,22 +26226,22 @@ hg
 hg
 hg
 hg
-hg
-oQ
-Ut
-Vn
-lr
-gN
-qg
-qg
-qg
-ve
-qg
-qg
-qg
-gN
-Kd
-qg
+Hl
+NR
+zf
+zf
+zf
+gR
+Tx
+AZ
+AZ
+AZ
+AZ
+AZ
+zL
+gR
+zf
+Av
 Ja
 Ja
 hg
@@ -24996,15 +26409,15 @@ WZ
 WZ
 hv
 xa
-FN
+om
 og
-FN
+om
 nH
 hv
 hg
 hg
 Ql
-zf
+MX
 zf
 zf
 Av
@@ -25031,26 +26444,26 @@ WZ
 WZ
 hg
 hg
-SH
-hg
-hg
-hg
-Hl
-oQ
-Ut
-qg
-lr
-qG
-mB
-gN
-pG
-gN
-pG
-gN
-mB
-qG
-FM
-qg
+bk
+Cs
+Qb
+aY
+Gp
+NR
+zf
+zf
+zf
+hv
+Tx
+AZ
+cY
+cY
+cY
+AZ
+zL
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -25218,9 +26631,9 @@ WZ
 WZ
 hv
 fi
-FN
+om
 sJ
-FN
+om
 DC
 hv
 hv
@@ -25253,26 +26666,26 @@ WZ
 WZ
 hg
 Hl
-hg
-hg
-hg
-hg
-hg
-oQ
-Ut
-qg
-qg
-qg
-qg
-qg
-qg
-ch
-qg
-qg
-qg
-qg
-qg
-qg
+iF
+RH
+lz
+zf
+Av
+NR
+br
+zf
+zf
+Vn
+iU
+AZ
+AZ
+AZ
+AZ
+AZ
+LV
+Vn
+zf
+Av
 Ja
 Ja
 hg
@@ -25439,13 +26852,13 @@ WZ
 WZ
 WZ
 hv
-wH
-FN
-wH
-FN
+qX
+om
+qX
+om
 RC
-wH
-wH
+qX
+qX
 hv
 Ql
 zf
@@ -25475,26 +26888,26 @@ WZ
 WZ
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-oQ
-vp
-aw
-gx
-gN
-mB
-gN
-gN
-gN
-gN
-gN
-lF
-gN
-pG
-de
+iF
+CL
+NR
+zf
+Av
+NR
+zf
+zf
+zf
+lX
+AZ
+AZ
+cY
+Pa
+cY
+AZ
+AZ
+lX
+zf
+Av
 Ja
 Ja
 hg
@@ -25662,15 +27075,15 @@ WZ
 WZ
 hv
 hv
-FN
-FN
-FN
-FN
-FN
-FN
+om
+om
+om
+om
+om
+om
 hv
 Ql
-zf
+MX
 zf
 zf
 Av
@@ -25697,26 +27110,26 @@ WZ
 WZ
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-oQ
-vp
-ax
-gN
-gN
-qg
-gN
-TA
-gN
-TA
-gN
-qg
-Wo
-et
-de
+iF
+CL
+NR
+zf
+Av
+NR
+zf
+zf
+zf
+Vn
+iU
+AZ
+AZ
+AZ
+AZ
+AZ
+LV
+Vn
+zf
+Av
 Ja
 Ja
 hg
@@ -25887,7 +27300,7 @@ hv
 CZ
 CZ
 hv
-DI
+hJ
 hv
 hv
 Xn
@@ -25919,26 +27332,26 @@ hg
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-oQ
-Ut
-Vn
-Hx
-aq
-qg
-SM
-Eb
-gN
-hP
-cB
-qg
-jy
-cX
-de
+bx
+CL
+NR
+zf
+Av
+NR
+oT
+zf
+zf
+hv
+Tx
+AZ
+cY
+cY
+cY
+AZ
+zL
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -26141,26 +27554,26 @@ hg
 hg
 hg
 SH
-hg
-hg
-hg
-hg
-hg
-oQ
-Ut
-qg
-SC
-BM
-qg
-bD
-AM
-gN
-gy
-dh
-qg
-eq
-eq
-qg
+Hy
+CL
+NR
+zf
+Av
+NR
+zf
+zf
+zf
+gR
+Tx
+AZ
+AZ
+AZ
+AZ
+AZ
+zL
+gR
+zf
+Av
 Ja
 Ja
 hg
@@ -26363,26 +27776,26 @@ hg
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-oQ
-Ut
+iF
+RH
+SI
+zf
+Av
+NR
+zf
+zf
+zf
+hv
+OW
+vl
 Bs
-qg
-qg
-qg
-qg
+AZ
 Bs
-ve
-Bs
-qg
-qg
-qg
-qg
-Bs
+Ch
+dq
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -26551,7 +27964,7 @@ GB
 Su
 Su
 Su
-nY
+lx
 xn
 Su
 Su
@@ -26585,26 +27998,26 @@ WZ
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-oQ
-Ut
-hg
-NR
-zf
-Pb
-zf
-zf
-zf
-zf
-zf
-zf
+nd
+Vv
+Xj
 zf
 Av
-hg
+Ay
+Ki
+zf
+zf
+hv
+Pb
+Mx
+hv
+lX
+hv
+AZ
+wU
+hv
+zf
+Av
 Ja
 Ja
 hg
@@ -26808,25 +28221,25 @@ WZ
 hg
 hg
 hg
-hg
-hg
 Hl
-hg
-oQ
-Ut
-hg
-qa
+NR
+zf
+bN
+aY
+jr
 zf
 zf
+Vn
+hv
+hv
+Vn
 zf
+Vn
+hv
+hv
+Vn
 zf
-zf
-zf
-zf
-zf
-Pb
 Av
-hg
 Ja
 Ja
 Fp
@@ -27031,24 +28444,24 @@ WZ
 hg
 hg
 hg
-hg
-hg
-hg
-oQ
-Ut
-hg
 NR
 zf
 zf
-dd
 zf
 zf
 zf
-dd
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+zf
 zf
 zf
 Av
-hg
 Ja
 Ja
 hg
@@ -27253,24 +28666,24 @@ WZ
 WZ
 WZ
 hg
-hg
-hg
-hg
-oQ
-Ut
-hg
-NR
-zf
-fb
+Ay
+ww
+iw
+UU
 Ki
 zf
 zf
 zf
-fb
-AS
 zf
-Av
-hg
+zf
+zf
+zf
+zf
+fb
+Ki
+zf
+fb
+vU
 Ja
 Ja
 hg
@@ -27476,15 +28889,15 @@ WZ
 WZ
 WZ
 hg
+qI
+CL
 hg
-hg
-oQ
-RH
-Su
-Su
-zD
-xn
-gb
+NR
+zf
+fb
+UU
+UU
+Ki
 zf
 zf
 zf
@@ -27492,7 +28905,7 @@ Pg
 Su
 zD
 xn
-gb
+FE
 Ja
 Ja
 hg
@@ -27697,16 +29110,16 @@ WZ
 WZ
 WZ
 WZ
-Ja
-Hp
-Ja
-kX
-TQ
-TQ
-TQ
-TQ
-TQ
-uR
+hg
+qI
+RH
+Cs
+Cs
+UE
+or
+Cs
+Qb
+NR
 zf
 zf
 zf
@@ -27920,14 +29333,14 @@ hg
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+kX
+Vv
+Vv
+Vv
+Vv
+Vv
+Vv
+Xj
 NR
 zf
 zf
@@ -28428,9 +29841,9 @@ EG
 MI
 cr
 MI
-MI
-MI
-MI
+ox
+ox
+ox
 MI
 cr
 MI
@@ -28679,7 +30092,7 @@ qQ
 lL
 qQ
 Hn
-Yr
+CM
 Rd
 Qy
 ai
@@ -29123,7 +30536,7 @@ No
 ob
 an
 tp
-Yr
+CM
 Rw
 DO
 TU
@@ -29570,7 +30983,7 @@ RB
 YW
 Rw
 Ap
-Yr
+CM
 YG
 Xm
 Tb
@@ -29578,7 +30991,7 @@ Zu
 Tb
 wM
 YG
-Yr
+CM
 Rw
 Xk
 Ap
@@ -29759,9 +31172,9 @@ QN
 QN
 YW
 MU
-vO
-vO
-vO
+cr
+cr
+cr
 cr
 cr
 NP
@@ -29792,7 +31205,7 @@ mj
 YW
 Rw
 Ap
-Yr
+CM
 YG
 Xm
 WG
@@ -29800,7 +31213,7 @@ Zu
 WG
 wM
 YG
-Yr
+CM
 Rw
 Xk
 Ap
@@ -30248,7 +31661,7 @@ qK
 Rw
 Xk
 Ap
-Yr
+CM
 Zv
 Ul
 Xm
@@ -30470,7 +31883,7 @@ Zu
 dm
 YA
 kP
-Yr
+CM
 Zv
 Ul
 Xm
@@ -30870,12 +32283,6 @@ QN
 YW
 MU
 cr
-JL
-JL
-JL
-JL
-cr
-cr
 cr
 JL
 JL
@@ -30885,8 +32292,14 @@ cr
 cr
 JL
 JL
+cr
+cr
+cr
+cr
+cr
 JL
 JL
+cr
 cr
 cr
 cr
@@ -31568,7 +32981,7 @@ mj
 YW
 Rw
 Ap
-Yr
+CM
 YG
 Yc
 WG
@@ -31576,7 +32989,7 @@ Zu
 Bu
 Tu
 ds
-Yr
+CM
 Rw
 Xk
 Ap
@@ -31648,7 +33061,7 @@ zf
 iE
 iE
 by
-SX
+TQ
 uR
 sH
 aY
@@ -31790,7 +33203,7 @@ RB
 YW
 Rw
 Ap
-Yr
+CM
 YG
 Yc
 Vm
@@ -31798,7 +33211,7 @@ Zu
 Es
 Tu
 ds
-Zu
+CM
 Rw
 Xk
 Ap
@@ -31883,8 +33296,8 @@ Av
 hg
 hg
 zj
-HL
-Cs
+EI
+yw
 RH
 Ut
 hg
@@ -32138,7 +33551,7 @@ hg
 hg
 hg
 Pg
-gb
+ux
 WZ
 WZ
 WZ
@@ -32651,7 +34064,7 @@ Om
 Om
 Om
 Pu
-Vd
+yi
 Om
 Om
 Om
@@ -32787,10 +34200,10 @@ xg
 xg
 xg
 xg
-xg
-xg
-xg
-xg
+Ae
+Ae
+Ae
+Ae
 NR
 zf
 zf
@@ -33570,7 +34983,7 @@ Ud
 Ai
 Ky
 ev
-Yr
+CM
 Xc
 oy
 oy
@@ -34581,9 +35994,9 @@ hg
 hg
 oQ
 RH
-vZ
-vZ
-vZ
+jK
+jK
+jK
 cF
 hg
 Ja
@@ -35517,12 +36930,12 @@ kV
 kV
 kV
 kV
-Pk
+Qt
 FT
 jV
 jV
 DX
-Pk
+Qt
 Kv
 gN
 lJ
@@ -35573,9 +36986,9 @@ Zu
 Ex
 kw
 yh
-Yr
-Yr
-Yr
+CM
+CM
+CM
 Ku
 Ex
 kw
@@ -36994,7 +38407,7 @@ Su
 Su
 Su
 Su
-gb
+oO
 zf
 zf
 zf
@@ -39918,8 +41331,8 @@ WZ
 hg
 hg
 hg
-Pg
-QG
+hg
+hg
 hg
 Ja
 hg
@@ -40135,13 +41548,13 @@ aY
 aY
 aY
 aY
+iP
 aY
 aY
 aY
 aY
 aY
-kX
-uR
+aY
 aY
 Ja
 hg
@@ -40357,11 +41770,11 @@ zf
 zf
 zf
 zf
+Uf
 zf
 zf
 zf
-zb
-fo
+zf
 zf
 zf
 zf
@@ -40582,7 +41995,7 @@ zf
 zf
 zf
 zf
-Uf
+zf
 zf
 zf
 zf
@@ -40837,8 +42250,8 @@ Gy
 Gy
 Gy
 Gy
-st
-cn
+Vl
+Ut
 Gy
 Gy
 Gy
@@ -41024,20 +42437,20 @@ zf
 zf
 fb
 UU
-UU
-UU
-UZ
-UZ
+zE
 UU
 UU
 UU
+Ki
+zf
+fb
 Ja
-hg
-hg
-hg
-hg
-hg
-jV
+Ja
+Ja
+Ja
+Ja
+Ja
+Ja
 WZ
 WZ
 WZ
@@ -41246,26 +42659,26 @@ zf
 zf
 Av
 hg
+yk
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-MP
-Vn
-Vn
-qg
-qg
-MP
-ve
-MP
-qg
-qg
-qg
-qg
-MP
+Hl
+NR
+zf
+Av
+Ja
+Ja
+Ja
+Ja
+Ja
+Ja
+Ja
+Ja
+WZ
+WZ
+WZ
+WZ
+WZ
 PW
 Yh
 jV
@@ -41281,8 +42694,8 @@ Il
 Il
 Il
 Il
-Mi
-Gx
+oQ
+Ut
 Il
 Il
 Il
@@ -41468,26 +42881,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-Hl
-hg
-hg
+Md
+xM
 aY
-qg
-di
-di
-dS
-qg
-gN
-gN
-qg
-Rx
-Af
-Rx
-SK
-qg
+aY
+jr
+zf
+bN
+aY
+aY
+aY
+Gp
+hg
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 Fp
 FT
 jV
@@ -41689,27 +43102,27 @@ zf
 zf
 zf
 Av
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+SH
+qI
+Yd
 zf
-de
-gN
-gN
-gN
-mB
-gN
-gN
-mB
-gN
-gN
-gN
-gN
-qg
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+Av
+hg
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -41912,26 +43325,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
+qI
+jX
 zf
-aw
-de
-qG
-di
-qg
-gN
-gN
-qg
-Rx
-Ba
-fJ
-YS
-qg
+fb
+UU
+UU
+UU
+sm
+lX
+lX
+sm
+hg
+hg
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -41971,7 +43384,7 @@ kV
 kV
 kV
 kV
-Pg
+Ty
 Su
 tG
 la
@@ -42134,26 +43547,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-UU
-qg
-qg
-qg
-qg
-qg
-ew
-gN
-qg
-qg
-qg
-qg
-qg
-qg
+qI
+Yd
+zf
+Av
+sm
+hv
+gR
+hv
+hX
+AZ
+hv
+gR
+hv
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -42356,26 +43769,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-qg
-bD
-cg
+qI
+Yd
+zf
+Av
+hv
+qS
+Px
+En
+AZ
+AZ
 cB
-qg
-gN
-gN
-mB
-gN
-gN
-GH
-MF
-Qw
+Px
+Wn
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -42577,27 +43990,27 @@ zf
 zf
 zf
 Av
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-qg
-dn
-dy
-gN
-mB
-gN
-gN
-qg
-yV
-xj
-qg
-yV
-Qw
+Hl
+qI
+Yd
+zf
+Av
+hv
+kL
+KX
+AZ
+AZ
+AZ
+AZ
+AZ
+pt
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -42800,26 +44213,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-qg
-qg
-qg
-qg
-qg
-gN
-gN
-qg
-qg
-qg
-qg
-qg
-qg
+qI
+Yd
+zf
+Av
+hv
+Px
+gM
+LN
+AZ
+sF
+vg
+Dp
+jC
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -43022,26 +44435,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-Hl
-hg
-hg
-hg
-hg
-Vn
-dq
-pG
-dU
-qg
-gN
-gN
-qg
-gp
-Vr
-gp
-gp
-Qw
+qI
+Yd
+zf
+Av
+gR
+AZ
+AZ
+LN
+AZ
+sF
+vg
+AZ
+AZ
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -43244,26 +44657,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-Vn
-dq
-gN
-gN
-mB
-gN
-gN
-mB
-gN
-gN
-gN
-gN
-Qw
+qI
+jX
+zf
+Av
+gR
+Nh
+MP
+LN
+KX
+AZ
+vg
+If
+Nh
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -43466,26 +44879,26 @@ zf
 zf
 Av
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-qg
-dq
-dq
-dq
-qg
-gN
-gN
-qg
-ez
-ez
-ez
-ez
-qg
+qI
+Yd
+UU
+vU
+hv
+kL
+AZ
+LN
+sF
+AZ
+vg
+AZ
+pt
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 hg
 FT
 jV
@@ -43688,26 +45101,26 @@ zf
 zf
 Av
 hg
+kX
+vI
 hg
-hg
-hg
-hg
-hg
-hg
-hg
+SH
+hv
+Wn
+zo
+AZ
+AZ
+AZ
+AZ
+KP
 MP
-Vn
-Vn
-qg
-qg
-MP
-ch
-MP
-qg
-qg
-qg
-qg
-MP
+hv
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 Fp
 FT
 jV
@@ -43914,22 +45327,22 @@ hg
 hg
 hg
 hg
+hv
+AZ
+AZ
+WE
+AZ
+sF
+Mh
+AZ
+AZ
+hv
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-NR
-zf
-Av
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 FT
 jV
@@ -44136,22 +45549,22 @@ hg
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+sm
+hv
+gR
+hv
+AZ
+AZ
+hv
+gR
+hv
+sm
 hg
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 FT
 jV
@@ -44353,27 +45766,27 @@ zf
 zf
 zf
 Av
+Md
+RL
+aY
+Gp
 hg
 hg
+Hl
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+sm
+lX
+lX
+sm
+aY
+aY
+Gp
 hg
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 FT
 jV
@@ -44575,27 +45988,27 @@ zf
 zf
 zf
 Av
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+qI
+gL
+zf
+bN
+aY
+aY
+aY
+aY
+jr
+zf
+zf
+zf
+zf
+zf
+Av
 hg
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 FT
 jV
@@ -44797,27 +46210,27 @@ zf
 zf
 zf
 Av
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-Hl
-hg
-hg
-hg
-hg
+qI
+Yd
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+zf
+fb
+UU
+Ki
+zf
+Av
 hg
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 FT
 Ad
@@ -44858,8 +46271,8 @@ it
 ZE
 kV
 Pg
-Su
-la
+lx
+Pl
 tG
 Su
 gb
@@ -45019,27 +46432,27 @@ zf
 zf
 zf
 Av
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-SH
-hg
-hg
-hg
-hg
-hg
-hg
+qI
+RH
+yw
+UE
+Va
+UU
+UU
+UU
+Ki
+zf
+Av
+Md
+yw
+Ww
+vo
+yw
 WZ
 WZ
 WZ
 WZ
-Yo
+WZ
 hg
 QA
 Bl
@@ -45064,10 +46477,10 @@ LC
 MG
 Kv
 pA
-AB
+FT
 jV
 jV
-pc
+DX
 hg
 Kv
 ov
@@ -45241,22 +46654,22 @@ zf
 zf
 zf
 Av
+kX
+Vv
+Vv
+Vv
+vI
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+SH
+NR
+zf
+Av
+qI
+RH
+Vv
+Vv
+Vv
 WZ
 WZ
 WZ
@@ -45287,8 +46700,8 @@ kV
 kV
 hg
 FT
-dF
-dF
+jV
+jV
 DX
 hg
 Kv
@@ -45465,17 +46878,17 @@ zf
 Av
 hg
 hg
+SH
+Hl
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+Md
+yw
+Ww
+eY
+RH
+SZ
 hg
 hg
 hg
@@ -45503,9 +46916,9 @@ qg
 qg
 qg
 qg
+SH
 hg
-hg
-hg
+yv
 hg
 hg
 FT
@@ -45529,7 +46942,7 @@ jV
 jV
 DX
 hg
-hg
+Hl
 hg
 hg
 hg
@@ -45692,12 +47105,12 @@ hg
 hg
 hg
 hg
-hg
-Hl
-hg
-hg
-hg
-hg
+kX
+Vv
+Vv
+Vv
+Vv
+Zj
 SH
 hg
 hg
@@ -45729,7 +47142,7 @@ hg
 hg
 hg
 pA
-hg
+Hl
 FT
 jV
 jV
@@ -45739,9 +47152,9 @@ It
 Hl
 Fp
 hg
-Pg
-Su
-gb
+hg
+fU
+hg
 hg
 Fp
 cv
@@ -45752,7 +47165,7 @@ jV
 DX
 hg
 hg
-hg
+fU
 hg
 hg
 kV
@@ -45947,7 +47360,7 @@ qg
 Gf
 qg
 qg
-hg
+fU
 hg
 xP
 Gy
@@ -45961,13 +47374,13 @@ Gy
 Gy
 Gy
 Gy
-uA
-Pr
-Ut
 Gy
 Gy
 Gy
-jk
+Gy
+Gy
+Gy
+Gy
 lD
 jV
 jV
@@ -46169,7 +47582,7 @@ cO
 om
 qg
 qg
-hg
+Hl
 hg
 FT
 jV
@@ -46183,9 +47596,6 @@ jV
 jV
 jV
 jV
-td
-Pr
-YP
 jV
 jV
 jV
@@ -46195,7 +47605,10 @@ jV
 jV
 jV
 jV
-dF
+jV
+jV
+jV
+jV
 jV
 DX
 hg
@@ -46393,10 +47806,7 @@ Lc
 qg
 Mj
 hg
-hM
-NA
-Pr
-Qg
+FT
 jV
 jV
 jV
@@ -46405,17 +47815,20 @@ jV
 jV
 jV
 jV
-oQ
-Pr
-Ut
 jV
 jV
 jV
 jV
-Hj
 jV
-cQ
-dF
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
 jV
 jV
 jV
@@ -46615,10 +48028,10 @@ om
 NF
 Ja
 pA
-EZ
-NG
-Qz
-Xe
+FT
+jV
+jV
+tc
 Il
 Il
 Il
@@ -46627,9 +48040,9 @@ Il
 Il
 Il
 Il
-kX
-TQ
-uR
+Il
+Il
+Il
 Il
 Il
 Il
@@ -46836,11 +48249,11 @@ eJ
 om
 As
 HB
-hg
-Fd
-NH
-PB
-QZ
+fU
+FT
+jV
+jV
+DX
 hg
 hg
 hg
@@ -47063,11 +48476,11 @@ FT
 jV
 jV
 DX
+Md
+yw
+yw
+RL
 hg
-xC
-jY
-FH
-Fs
 jV
 jV
 jV
@@ -47077,11 +48490,11 @@ jV
 jV
 jV
 jV
-hg
-hg
-hg
-hg
-hg
+Md
+Mb
+yw
+yw
+RL
 FT
 jV
 jV
@@ -47280,30 +48693,30 @@ qg
 In
 qg
 Ja
-hg
-hM
-NI
-Pr
-QM
-hg
-xC
-ss
-Cq
+yv
+FT
+jV
+jV
+DX
+JW
 Fs
+ss
+pu
+SS
 jV
 Fp
 OT
 OG
-hg
+fU
 OT
 OG
 Fp
 jV
 xC
 jY
-FH
+Vv
 Fs
-hg
+PJ
 FT
 jV
 jV
@@ -47503,29 +48916,29 @@ om
 om
 Ja
 uu
-EZ
-NW
-Qz
-Xe
-hg
-xC
-Cq
-Cq
-Fs
+FT
 jV
-hF
+jV
+DX
+qI
+Yd
+UG
+OF
+pP
+jV
+Hl
 Vb
 Wt
 Wt
 Wt
 YC
-hg
+yv
 jV
-xC
+dR
 Cq
-Cq
-Fs
-hg
+SS
+qI
+Yd
 FT
 jV
 jV
@@ -47725,17 +49138,17 @@ EN
 om
 yF
 jV
-Fd
-Oa
-PB
-QZ
-hg
-hg
-hg
-hg
-hg
+FT
 jV
-Uh
+jV
+DX
+qI
+Yd
+Ze
+OF
+gm
+jV
+hg
 Vu
 Vb
 Wt
@@ -47743,11 +49156,11 @@ YC
 YE
 hg
 jV
-xC
-Cq
-Rr
-Fs
-hg
+Df
+Ze
+gm
+qI
+Yd
 FT
 jV
 jV
@@ -47951,13 +49364,13 @@ FT
 jV
 jV
 DX
-hg
-hg
-hg
-hg
-hg
+qI
+Yd
+Ze
+OF
+gm
 jV
-AA
+hg
 Vu
 Vu
 VM
@@ -47965,11 +49378,11 @@ YE
 YE
 hg
 jV
-hg
-hg
-hg
-hg
-hg
+aj
+Ze
+gm
+lY
+xA
 FT
 jV
 jV
@@ -48169,28 +49582,28 @@ Io
 om
 yF
 jV
-hM
-Oh
-Pr
-QP
-hg
-xC
-Cq
-Cq
-Fs
+FT
 jV
-hg
+jV
+DX
+qI
+Yd
+dQ
+OF
+gm
+jV
+SH
 Vu
 iY
 rs
 YI
 YE
-hg
+fU
 jV
-xC
-jY
+bo
+fz
 FH
-Fs
+hg
 hg
 FT
 jV
@@ -48391,17 +49804,17 @@ om
 om
 Ja
 hg
-EZ
-Ok
-Qz
-QT
-hg
-xC
-Cq
-ss
-Fs
+FT
 jV
-hg
+jV
+DX
+qI
+Yd
+aj
+Ze
+gm
+jV
+yv
 iY
 rs
 rs
@@ -48409,12 +49822,12 @@ rs
 YI
 Hl
 jV
-xC
-ss
+dR
 Cq
-Fs
+Cq
+SS
 hg
-FT
+SA
 jV
 jV
 DX
@@ -48613,15 +50026,15 @@ In
 qg
 Ja
 Dn
-Fd
-OA
-PB
-QZ
-hg
-xC
-FH
-jY
-Fs
+FT
+jV
+jV
+DX
+kX
+JX
+Df
+Ze
+gm
 jV
 Fp
 cv
@@ -48631,10 +50044,10 @@ cv
 It
 Fp
 jV
-xC
-Cq
-Cq
-Fs
+Df
+Ze
+Ze
+pP
 hg
 FT
 jV
@@ -48841,24 +50254,24 @@ jV
 DX
 hg
 hg
+Df
+Ze
+gm
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+Df
+Ze
+Ze
+gm
 hg
-hg
-hg
-jV
-jV
-jV
-jV
-jV
-jV
-jV
-jV
-jV
-hg
-hg
-hg
-hg
-hg
-FT
+rf
 jV
 jV
 DX
@@ -49056,18 +50469,18 @@ eJ
 om
 GP
 HB
-hg
-hM
-OL
-Pr
-Rh
-hg
-hg
+Hl
+FT
+jV
+jV
+DX
 hg
 hg
-Ro
-Ro
-Ro
+bo
+fz
+ja
+hg
+hg
 hg
 jV
 jV
@@ -49075,13 +50488,13 @@ jV
 hg
 hg
 hg
+bo
+fz
+fz
+ja
 hg
-hg
-hg
-hg
-Ro
 qh
-CC
+jV
 jV
 DX
 hg
@@ -49271,39 +50684,39 @@ yt
 ti
 Bn
 qg
-om
+XR
 om
 om
 om
 om
 NF
 Ja
-hg
-EZ
-OV
-Qz
-QT
-Gy
-nP
-Gy
-Gy
-AV
-mc
-sj
-Gy
-oQ
-Pr
-Ut
-Gy
-nP
+yv
+FT
+jV
+jV
+Kj
 Gy
 Gy
 Gy
 Gy
 Gy
-qR
-id
-ZG
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+Gy
+lD
+jV
 jV
 DX
 hg
@@ -49501,34 +50914,34 @@ CJ
 qg
 Mj
 hg
-Fd
-OY
-PB
-QZ
-jV
-Ih
-jV
-jV
-ZG
-EK
-ZG
-jV
-td
-RV
-YP
-jV
-Ih
+FT
 jV
 jV
 jV
 jV
 jV
-ZG
-EK
-ZG
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
 jV
 DX
-hg
+SH
 Kv
 Nu
 om
@@ -49721,36 +51134,36 @@ cO
 om
 qg
 qg
-hg
+fU
 hg
 FT
 jV
 jV
 jV
 jV
-ZG
-jV
-jV
-Wg
-Wg
-Wg
-jV
-oQ
-Pr
-du
-jV
-ZG
 jV
 jV
 jV
 jV
 jV
-Wg
-Wg
-Wg
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+jV
 jV
 DX
-hg
+pA
 kV
 om
 om
@@ -49760,10 +51173,10 @@ kV
 QN
 QN
 QN
-QN
-QN
-QN
-QN
+WD
+NZ
+gA
+Iz
 QN
 QN
 QN
@@ -49943,7 +51356,7 @@ qg
 Gf
 qg
 qg
-hg
+Hl
 hg
 PW
 Il
@@ -49957,9 +51370,9 @@ tc
 Il
 Il
 Il
-oQ
-Pr
-Ut
+Il
+Il
+Il
 Il
 Il
 Il
@@ -49982,10 +51395,10 @@ kV
 QN
 QN
 QN
-QN
-QN
-QN
-QN
+ar
+Uy
+hH
+mL
 QN
 QN
 QN
@@ -50166,22 +51579,22 @@ GV
 pV
 qg
 pA
-hg
+fU
 hg
 hg
 OT
 OG
+pA
 hg
-SH
 FT
 Ad
 DX
 pA
 Fp
 Hl
-oQ
-Pr
-Ut
+hg
+pA
+hg
 hg
 Fp
 SH
@@ -50191,7 +51604,7 @@ DX
 hg
 OT
 OG
-hg
+fU
 hg
 jV
 jV
@@ -50204,10 +51617,10 @@ kV
 QN
 QN
 QN
-QN
-QN
-QN
-QN
+Mv
+gX
+ER
+FR
 QN
 QN
 QN
@@ -50387,24 +51800,24 @@ Fc
 GV
 om
 qg
+yv
 hg
 pA
 hg
 hg
 hg
 hg
-hg
-hg
+SH
 nj
 Xz
 DR
 hk
 pA
 hg
-kX
-TQ
-uR
 hg
+hg
+Hl
+SH
 hg
 hk
 nj
@@ -50426,10 +51839,10 @@ kV
 QN
 QN
 QN
-QN
-QN
-QN
-QN
+MQ
+hm
+hm
+oD
 QN
 QN
 QN
@@ -50648,12 +52061,12 @@ kV
 QN
 QN
 QN
+WD
+Xd
+gA
+Mu
 QN
-QN
-QN
-QN
-QN
-QN
+Xo
 QN
 QN
 QN
@@ -50870,12 +52283,12 @@ kV
 WZ
 WZ
 WZ
+Qf
+xq
+Uo
+EV
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+Wv
 WZ
 WZ
 WZ
@@ -51092,12 +52505,12 @@ kV
 WZ
 WZ
 WZ
+Lo
+eO
+sG
+ng
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+eF
 WZ
 WZ
 WZ
@@ -51285,7 +52698,7 @@ cI
 Ey
 FB
 FB
-SW
+Bi
 Ua
 FB
 SW
@@ -51314,14 +52727,14 @@ kV
 WZ
 WZ
 WZ
+mS
+uU
+uU
+wV
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+CN
+HP
+tZ
 WZ
 WZ
 WZ
@@ -51536,14 +52949,14 @@ WZ
 WZ
 WZ
 WZ
+CG
+MH
+ym
+MS
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+Wz
+PM
+Iy
 WZ
 WZ
 WZ
@@ -51758,14 +53171,14 @@ WZ
 WZ
 WZ
 WZ
+Qf
+MC
+Uo
+EV
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+zI
+zI
+zI
 WZ
 WZ
 WZ
@@ -51980,10 +53393,10 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
+Lo
+Rs
+sG
+ng
 WZ
 WZ
 WZ
@@ -52202,10 +53615,10 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
+CG
+Gi
+ym
+Tf
 WZ
 WZ
 WZ
@@ -52424,10 +53837,10 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
+Qf
+lR
+Uo
+EB
 WZ
 WZ
 WZ
@@ -52646,10 +54059,10 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
+Lo
+AR
+sG
+ng
 WZ
 WZ
 WZ

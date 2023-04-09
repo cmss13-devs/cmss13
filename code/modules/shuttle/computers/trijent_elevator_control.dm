@@ -4,11 +4,14 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 	shuttleId = MOBILE_TRIJENT_ELEVATOR
+	is_call = TRUE
 	var/dockId
 	var/datum/elevator/destination/site
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
-	return list(list("id"=dockId, "name"="call"))
+	. = list()
+	for(var/obj/docking_port/stationary/trijent_elevator/elev in get_area(src))
+		. += list(elev)
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
 	dockId = STAT_TRIJENT_LZ1
@@ -34,6 +37,7 @@
 	density = FALSE
 	req_access = null
 	needs_power = TRUE
+	var/is_call = FALSE
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/proc/get_landing_zones()
 	. = list()
@@ -79,6 +83,7 @@
 	.["max_pre_arrival_duration"] = shuttle.prearrivalTime / 10
 	.["max_refuel_duration"] = shuttle.rechargeTime / 10
 	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
+	.["is_call_button"] = is_call
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/attack_hand(mob/user)
 	. = ..(user)

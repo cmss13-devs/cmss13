@@ -18,6 +18,7 @@ interface ElevatorContext {
   max_pre_arrival_duration: number;
   max_refuel_duration: number;
   max_engine_start_duration: number;
+  is_call_button: 0 | 1;
 }
 
 const InfoBox = (
@@ -104,7 +105,9 @@ const ElevatorButton = (props: ElevatorButtonProps, context) => {
           <span className="pushButton" />
         </Button>
       </Flex.Item>
-      <Flex.Item className="buttonLabel">{props.name}</Flex.Item>
+      <Flex.Item className="buttonLabel">
+        {data.is_call_button === 0 ? props.name : 'Call'}
+      </Flex.Item>
     </Flex>
   );
 };

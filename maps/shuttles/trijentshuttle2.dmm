@@ -24,7 +24,7 @@
 	},
 /area/shuttle/trijent_shuttle/elevator)
 "j" = (
-/obj/structure/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "east"
 	},
@@ -92,7 +92,7 @@
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "J" = (
-/obj/structure/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "west"
 	},

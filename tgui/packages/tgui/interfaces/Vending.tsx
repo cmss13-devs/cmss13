@@ -15,6 +15,7 @@ type VendingData = {
   extended_inventory: boolean;
   access: boolean;
   categories: Record<string, Category>;
+  checking_id: boolean;
 };
 
 type Category = {
@@ -131,9 +132,11 @@ export const UserDetails = (props, context) => {
         </Stack.Item>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="User">{user.name}</LabeledList.Item>
+            <LabeledList.Item label="User">
+              {data.checking_id ? user.name : 'UNKNOWN'}
+            </LabeledList.Item>
             <LabeledList.Item label="Occupation">
-              {user.job || 'Unemployed'}
+              {data.checking_id ? user.job || 'Unemployed' : 'UNKNOWN'}
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
@@ -151,9 +154,11 @@ const ProductDisplay = (
 ) => {
   const { data } = useBackend<VendingData>(context);
   const { selectedCategory } = props;
-  const { stock, user } = data;
+  const { stock, user, checking_id } = data;
 
   const inventory = getInventory(context);
+
+  const display_value = user && checking_id;
 
   return (
     <Section
@@ -161,7 +166,7 @@ const ProductDisplay = (
       scrollable
       title="Products"
       buttons={
-        !!user && (
+        !!display_value && (
           <Box fontSize="16px" color="green">
             ${(user && user.cash) || 0} <Icon name="coins" color="gold" />
           </Box>
@@ -195,12 +200,12 @@ const ProductDisplay = (
 const VendingRow = (props, context) => {
   const { data } = useBackend<VendingData>(context);
   const { product, productStock } = props;
-  const { access, department, user } = data;
-  const free = product.price === 0;
+  const { access, user, checking_id } = data;
   const remaining = productStock.amount;
-  const redPrice = Math.round(product.price);
   const disabled =
-    remaining === 0 || !user || (!access && product.price > user?.cash);
+    remaining === 0 ||
+    (!user && checking_id) ||
+    (!access && product.price > user?.cash);
 
   return (
     <Table.Row>
@@ -212,12 +217,7 @@ const VendingRow = (props, context) => {
         <ProductStock product={product} remaining={remaining} />
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        <ProductButton
-          disabled={disabled}
-          free={free}
-          product={product}
-          redPrice={redPrice}
-        />
+        <ProductButton disabled={disabled} product={product} />
       </Table.Cell>
     </Table.Row>
   );
@@ -254,7 +254,8 @@ const ProductStock = (props) => {
 const ProductButton = (props, context) => {
   const { act, data } = useBackend<VendingData>(context);
   const { disabled, product } = props;
-  const price = product.price ? '$' + product.price : 'FREE';
+  const price =
+    product.price && data.checking_id ? '$' + product.price : 'FREE';
   return (
     <Button
       fluid

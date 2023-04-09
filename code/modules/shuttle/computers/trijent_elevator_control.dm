@@ -9,10 +9,7 @@
 	var/datum/elevator/destination/site
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
-	. = list()
-	for(var/obj/docking_port/stationary/trijent_elevator/elev in get_area(src))
-		. += list(elev)
-
+	return list(SSshuttle.getDock(dockId))
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
 	dockId = STAT_TRIJENT_LZ1
 

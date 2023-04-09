@@ -4517,8 +4517,10 @@
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anw" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1,
-/turf/closed/wall/r_wall/bunker{
-	name = "reinforced metal wall"
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "anx" = (
@@ -4615,7 +4617,9 @@
 "anJ" = (
 /obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "anK" = (
@@ -7052,7 +7056,9 @@
 "auW" = (
 /obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/engi)
 "auX" = (
@@ -7139,8 +7145,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = null;
-	name = "\improper Elevator Lock";
-	unacidable = 0
+	name = "\improper Elevator Lock"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -9995,7 +10000,9 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDT" = (
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aDU" = (
@@ -10037,13 +10044,17 @@
 "aEc" = (
 /obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aEd" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aEe" = (
@@ -10136,8 +10147,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = null;
-	name = "\improper Elevator Lock";
-	unacidable = 0
+	name = "\improper Elevator Lock"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -13396,7 +13406,9 @@
 "aNW" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "aNX" = (
@@ -13411,7 +13423,9 @@
 "aNY" = (
 /obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "aNZ" = (
@@ -13687,8 +13701,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = null;
-	name = "\improper Elevator Lock";
-	unacidable = 0
+	name = "\improper Elevator Lock"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -13878,11 +13891,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/desert_dam/building/water_treatment_two/purification)
-"aPH" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/shuttle/trijent_shuttle/lz2)
 "aPI" = (
 /turf/open/floor{
 	dir = 4;
@@ -18722,6 +18730,13 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
+"bfm" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
+	},
+/area/shuttle/trijent_shuttle/engi)
 "bfn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -62235,11 +62250,6 @@
 "kcH" = (
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/exterior/telecomm/lz2_containers)
-"kdo" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/shuttle/trijent_shuttle/lz1)
 "kee" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison{
@@ -62433,6 +62443,13 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"lcj" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
+	},
+/area/shuttle/trijent_shuttle/lz1)
 "lcy" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -63180,6 +63197,13 @@
 /obj/item/stack/medical/advanced/ointment/predator,
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/temple)
+"nEM" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
+	},
+/area/shuttle/trijent_shuttle/lz2)
 "nFh" = (
 /obj/structure/closet/coffin/predator,
 /turf/open/floor/sandstone/runed,
@@ -63552,11 +63576,6 @@
 	icon_state = "bright_clean"
 	},
 /area/desert_dam/exterior/telecomm/lz1_valley)
-"oYt" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/shuttle/trijent_shuttle/engi)
 "pac" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -65522,7 +65541,9 @@
 "vRX" = (
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi,
 /turf/closed/wall/hangar{
-	name = "reinforced metal wall"
+	name = "Elevator Shaft";
+	unacidable = 1;
+	hull = 1
 	},
 /area/shuttle/trijent_shuttle/engi)
 "vSF" = (
@@ -66014,8 +66035,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = null;
-	name = "\improper Elevator Lock";
-	unacidable = 0
+	name = "\improper Elevator Lock"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -77854,14 +77874,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 anJ
 xss
 xss
 xss
 xss
 anJ
-bhu
+lcj
 dTs
 dTs
 dTs
@@ -78088,14 +78108,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 rxS
-bhu
+lcj
 dTs
 dTs
 dTs
@@ -78322,14 +78342,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 dTs
 dTs
 dTs
@@ -78556,14 +78576,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 dTs
 dTs
 blZ
@@ -78790,14 +78810,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 dTs
 blZ
 blZ
@@ -79024,14 +79044,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 blZ
 blZ
 bmE
@@ -79258,14 +79278,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 blZ
 bmm
 bmF
@@ -79492,14 +79512,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
+lcj
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-bhu
+lcj
 blZ
 bmn
 bmG
@@ -79726,14 +79746,14 @@ dTs
 dTs
 dTs
 dTs
-bhu
-kdo
-kdo
-kdo
-kdo
-kdo
-kdo
-bhu
+lcj
+lcj
+lcj
+lcj
+lcj
+lcj
+lcj
+lcj
 blZ
 bmo
 bmG
@@ -82478,7 +82498,7 @@ aOW
 aOW
 aOW
 aNY
-cZB
+nEM
 acu
 "}
 (70,1,1) = {"
@@ -82705,14 +82725,14 @@ cIq
 dfL
 cZB
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 aRB
-cZB
+nEM
 acu
 "}
 (71,1,1) = {"
@@ -82939,14 +82959,14 @@ cIq
 dfL
 cZB
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (72,1,1) = {"
@@ -83173,14 +83193,14 @@ cWk
 cZB
 cZB
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (73,1,1) = {"
@@ -83407,14 +83427,14 @@ dTs
 dTs
 dTs
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (74,1,1) = {"
@@ -83641,14 +83661,14 @@ dTs
 dTs
 dTs
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (75,1,1) = {"
@@ -83875,14 +83895,14 @@ dTs
 dTs
 dTs
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (76,1,1) = {"
@@ -84109,14 +84129,14 @@ dTs
 dTs
 dTs
 dTs
-cZB
+nEM
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-cZB
+nEM
 acu
 "}
 (77,1,1) = {"
@@ -84343,14 +84363,14 @@ dTs
 dTs
 dTs
 dTs
-cZB
-aPH
-aPH
-aPH
-aPH
-aPH
-aPH
-cZB
+nEM
+nEM
+nEM
+nEM
+nEM
+nEM
+nEM
+nEM
 acu
 "}
 (78,1,1) = {"
@@ -99157,14 +99177,14 @@ bkj
 blj
 ato
 biy
-bTI
-oYt
-oYt
-oYt
-oYt
-oYt
-oYt
-bTI
+bfm
+bfm
+bfm
+bfm
+bfm
+bfm
+bfm
+bfm
 dTs
 dTs
 brh
@@ -99391,14 +99411,14 @@ bky
 blj
 bmJ
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 pif
-bTI
+bfm
 dTs
 dTs
 brh
@@ -99625,14 +99645,14 @@ bkj
 blj
 bmJ
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -99859,14 +99879,14 @@ bkj
 blj
 bmJ
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -100093,14 +100113,14 @@ bky
 blj
 bmJ
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -100327,14 +100347,14 @@ bkj
 blj
 att
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -100561,14 +100581,14 @@ dAr
 dOZ
 biy
 biy
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -100795,14 +100815,14 @@ bky
 blj
 atD
 dTs
-bTI
+bfm
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bTI
+bfm
 dTs
 dTs
 dTs
@@ -101036,7 +101056,7 @@ avj
 avj
 avj
 auW
-bTI
+bfm
 aam
 dTs
 aam

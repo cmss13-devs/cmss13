@@ -79,6 +79,24 @@
 	repair_materials = list("wood" = 1)
 	metallic = FALSE
 
+/obj/structure/barricade/wooden/window
+	name = "wooden barricade"
+	desc = "A barricade with the purpose of giving some kind of protection to windows. Not very sturdy, but can provide enough protection"
+	icon_state = "woodenbarricade"
+	health = 150
+	maxhealth = 150
+	layer = OBJ_LAYER
+	stack_type = /obj/item/stack/sheet/wood
+	debris = list(/obj/item/stack/sheet/wood)
+	stack_amount = 5
+	destroyed_stack_amount = 3
+	barricade_hitsound = 'sound/effects/woodhit.ogg'
+	can_change_dmg_state = 0
+	barricade_type = "wooden"
+	can_wire = FALSE
+	repair_materials = list("wood" = 1)
+	metallic = FALSE
+
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)

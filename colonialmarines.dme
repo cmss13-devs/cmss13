@@ -1219,6 +1219,7 @@
 #include "code\game\objects\structures\pipes\standard\standard_misc.dm"
 #include "code\game\objects\structures\pipes\vents\pump_scrubber.dm"
 #include "code\game\objects\structures\pipes\vents\vents.dm"
+#include "code\game\objects\structures\props\Flags.dm"
 #include "code\game\objects\structures\props\requests_console.dm"
 #include "code\game\objects\structures\props\research.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\bed.dm"

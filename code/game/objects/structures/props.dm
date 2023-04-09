@@ -46,9 +46,19 @@
 
 /obj/structure/prop/dam/truck
 	name = "truck"
-	desc = "An old truck, seems to be broken down."
+	desc = "An old truck, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "truck"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/dam/truck/UPP
+	name = "UPP Truck"
+	desc = "A truck used by the UPP Armed Forces, looks like you don't have the key for it."
+	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon_state = "truck_UPP"
 	bound_height = 64
 	bound_width = 64
 	unslashable = TRUE
@@ -59,17 +69,23 @@
 
 /obj/structure/prop/dam/truck/mining
 	name = "mining truck"
-	desc = "An old mining truck, seems to be broken down."
+	desc = "An old mining truck, looks like you don't have the key for it."
 	icon_state = "truck_mining"
+
+/obj/structure/prop/dam/truck/UPP/mining
+	name = "UPP mining truck"
+	desc = "A truck used by the UPP Aarmed Forces, looks like you don't have the key for it. This one is carrying drilling equipment for extraction of liquids."
+	icon_state = "truck_UPP_mining"
 
 /obj/structure/prop/dam/truck/cargo
 	name = "cargo truck"
-	desc = "An old cargo truck, seems to be broken down."
+	desc = "An old cargo truck,looks like you don't have the key for it."
 	icon_state = "truck_cargo"
+
 
 /obj/structure/prop/dam/van
 	name = "van"
-	desc = "An old van, seems to be broken down."
+	desc = "An old van, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
@@ -79,6 +95,16 @@
 
 /obj/structure/prop/dam/van/damaged
 	icon_state = "van_damaged"
+
+/obj/structure/prop/dam/van/ambulance
+	name = "Ambulance"
+	desc = "A Civillian Ambulance used for the transport of wounded, looks like you don't have the key for it."
+	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon_state = "van_ambulance"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"

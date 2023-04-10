@@ -7,7 +7,7 @@
 	else
 		var/whattoannounce = "ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS."
 		var/prompt = tgui_alert(src, "Do you want to leave the announcement as the default one?", "Choose.", list("Yes", "No"), 20 SECONDS)
-		if(prompt = "Yes")
+		if(prompt == "Yes")
 			prompt = tgui_alert(src, "Are you sure you want to send General Quarters? This will force red alert.", "Choose.", list("Yes", "No"), 20 SECONDS)
 			if(prompt == "Yes")
 				set_security_level(2, no_sound=1, announce=0)

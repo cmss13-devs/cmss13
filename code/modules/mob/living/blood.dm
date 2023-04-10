@@ -49,14 +49,11 @@
 				if(prob(15))
 					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
-					to_chat(src, SPAN_DANGER("You feel very [word]."))
+					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				if(eye_blurry < 50)
-					AdjustEyeBlur(6)
 				oxyloss += 5
 				toxloss += 3
 				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(0 to BLOOD_VOLUME_SURVIVE)

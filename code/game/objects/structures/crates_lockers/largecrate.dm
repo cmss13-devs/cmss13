@@ -18,15 +18,33 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	for(var/atom/movable/A in contents)
-		A.forceMove(loc)
-	playsound(src, unpacking_sound, 35)
-	deconstruct(TRUE)
+    var/turf/T = get_turf(src) // Get the turf the crate is on
+
+    var/list/temp_contents = contents.Copy() // Temporarily store the contents of the crate
+    playsound(src, unpacking_sound, 35)
+    deconstruct(TRUE)
+
+    var/obj/item/stack/sheet/material_sheet // Variable to store the reference of the crate material
+    if(parts_type) // Create the crate material and store its reference
+        material_sheet = new parts_type(T, 2)
+
+    for(var/atom/movable/A in temp_contents) // Move the objects back to the turf, above the crate material
+        A.forceMove(T)
+
+    if(material_sheet) // Move the crate material to the bottom of the turf's contents
+        move_to_bottom(material_sheet, T)
+
+// Custom proc to move an object to the bottom of the turf's contents
+/obj/structure/largecrate/proc/move_to_bottom(obj/O, turf/T)
+    if(!istype(O) || !istype(T))
+        return
+    for(var/atom/movable/A in T.contents)
+        if(A != O)
+            A.layer = max(A.layer, O.layer + 0.1)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		if(parts_type)
-			new parts_type(loc, 2)
+		// We don't need to create the crate material here, as it's handled in unpack()
 	else
 		new /obj/item/stack/sheet/wood(loc)
 	return ..()

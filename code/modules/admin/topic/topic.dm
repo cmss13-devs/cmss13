@@ -1902,7 +1902,7 @@
 	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
 		distress_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, PROC_REF(accept_PMC_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(accept_pmc_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 
 	if(href_list["ccdeny_pmc"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny_pmc"])

@@ -2012,7 +2012,7 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/accept_PMC_ert(mob/approver, mob/ref_person)
+/datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
 	if(distress_cancel)
 		return
 	distress_cancel = TRUE

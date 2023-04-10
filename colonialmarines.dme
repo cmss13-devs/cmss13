@@ -1298,6 +1298,8 @@
 #include "code\modules\admin\topic\topic_vehicles.dm"
 #include "code\modules\admin\verbs\adminhelp.dm"
 #include "code\modules\admin\verbs\adminjump.dm"
+#include "code\modules\admin\verbs\adminpanelgq.dm"
+#include "code\modules\admin\verbs\adminpanelweapons.dm"
 #include "code\modules\admin\verbs\adminpm.dm"
 #include "code\modules\admin\verbs\autoreplace.dm"
 #include "code\modules\admin\verbs\custom_event.dm"

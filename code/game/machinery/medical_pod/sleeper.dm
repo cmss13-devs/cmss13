@@ -230,7 +230,7 @@
 
 /obj/structure/machinery/medical_pod/sleeper
 	name = "sleeper"
-	icon_state = "sleeper_open"
+	icon_state = "sleeper"
 	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
 
 	entry_timer = 2 SECONDS

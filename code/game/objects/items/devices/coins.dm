@@ -37,7 +37,7 @@
 
 /obj/item/coin/diamond
 	name = "diamond coin"
-	desc = "A coin of the most uncorrupt diamond."
+	desc = "A coin of the most flawless diamond."
 	icon_state = "coin_diamond"
 	black_market_value = 35
 

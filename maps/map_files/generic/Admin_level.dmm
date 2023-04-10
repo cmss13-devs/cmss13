@@ -921,6 +921,17 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"ym" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/machinery/door_control{
+	id = "ERT Lock 2";
+	name = "Hangar Lock";
+	pixel_x = 24
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "yx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -1205,6 +1216,17 @@
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station)
+"EG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/machinery/door_control{
+	id = "ERT Lock 1";
+	name = "Hangar Lock";
+	pixel_x = 24
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "EI" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/chef/classic,
@@ -1254,6 +1276,11 @@
 /obj/structure/sign/safety/debark_lounge{
 	pixel_x = 15;
 	pixel_y = -32
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	unacidable = 1;
+	id = "ERT Lock 1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -1503,6 +1530,11 @@
 	name = "\improper Hangar";
 	no_panel = 1
 	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	unacidable = 1;
+	id = "ERT Lock Big"
+	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -1694,6 +1726,21 @@
 /area/tdome/tdomeobserve)
 "NZ" = (
 /turf/open/floor/carpet,
+/area/adminlevel/ert_station)
+"Oa" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	damage_cap = 50000;
+	name = "\improper Hangar";
+	no_panel = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	unacidable = 1;
+	id = "ERT Lock 3"
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
 /area/adminlevel/ert_station)
 "Oi" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -1888,6 +1935,17 @@
 	icon_state = "test_floor4"
 	},
 /area/tdome)
+"Sk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/door_control{
+	id = "ERT Lock Big";
+	name = "Hangar Lock";
+	pixel_x = -24
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "Sl" = (
 /obj/structure/machinery/cm_vending/clothing/antag{
 	name = "\improper Response Team Automated Equipment Rack"
@@ -2120,6 +2178,17 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"Wp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/door_control{
+	id = "ERT Lock 3";
+	name = "Hangar Lock";
+	pixel_x = -24
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station)
 "WA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -2301,6 +2370,25 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange"
+	},
+/area/adminlevel/ert_station)
+"ZD" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	damage_cap = 50000;
+	name = "\improper Hangar";
+	no_panel = 1
+	},
+/obj/structure/sign/safety/debark_lounge{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	unacidable = 1;
+	id = "ERT Lock 2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station)
 "ZI" = (
@@ -4541,13 +4629,13 @@ Js
 Js
 Js
 Js
-Js
+EG
 Js
 Ya
 wW
 Ya
 Js
-Js
+ym
 Js
 Js
 Js
@@ -4700,7 +4788,7 @@ Sw
 wW
 PT
 wW
-FO
+ZD
 wW
 wW
 wW
@@ -6524,7 +6612,7 @@ hZ
 wW
 wW
 Zw
-KH
+Oa
 Zw
 wW
 wW
@@ -6669,13 +6757,13 @@ Ly
 Ly
 Ly
 Ly
-Ly
+Sk
 Ly
 Ya
 wW
 Ya
 Ly
-Ly
+Wp
 Ly
 Ly
 Ly

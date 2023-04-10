@@ -10,14 +10,10 @@
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
-		return FALSE
-	return TRUE
+		return TRUE
+	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
-	. = ..()
-	if(!.)
-		return
-
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)

@@ -5,7 +5,7 @@
 /datum/emergency_call/mercs
 	name = "Freelancers (Squad)"
 	mob_max = 8
-	probability = 25
+	probability = 20
 
 
 /datum/emergency_call/mercs/New()

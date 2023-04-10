@@ -18,6 +18,7 @@
 	set_frequency(receive_frequency)
 
 /obj/structure/machinery/computer/atmos_alert/Destroy()
+	SSradio.remove_object(src, receive_frequency)
 	QDEL_NULL_LIST(priority_alarms)
 	QDEL_NULL_LIST(minor_alarms)
 	QDEL_NULL(radio_connection)

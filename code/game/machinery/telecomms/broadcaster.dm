@@ -94,14 +94,20 @@
 
 	// --- Broadcast only to intercom devices ---
 	if(data == RADIO_FILTER_TYPE_INTERCOM)
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/intercom/R = device_ref.resolve()
+			if(!R)
+				continue
 			var/atom/loc = R.loc
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
 	// --- Broadcast only to intercoms and shortwave radios ---
 	else if(data == RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER)
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/R = device_ref.resolve()
+			if(!R)
+				continue
 			if(istype(R, /obj/item/device/radio/headset))
 				continue
 			var/atom/loc = R.loc
@@ -121,7 +127,10 @@
 
 	// --- Broadcast to ALL radio devices ---
 	else
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/R = device_ref.resolve()
+			if(!R)
+				continue
 			var/atom/loc = R.loc
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R

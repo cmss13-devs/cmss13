@@ -46,6 +46,10 @@ var/list/ob_type_fuel_requirements
 	tray = O
 	tray.linked_ob = src
 
+/obj/structure/orbital_cannon/Destroy()
+	QDEL_NULL(tray)
+	return ..()
+
 /obj/structure/orbital_cannon/ex_act()
 	return
 

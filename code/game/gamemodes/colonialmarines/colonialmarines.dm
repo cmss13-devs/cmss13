@@ -44,6 +44,8 @@
 	GLOB.fog_blockers -= src
 	return ..()
 
+/obj/effect/landmark/lv624/fog_blocker/short
+
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "spawn_event"
@@ -61,9 +63,14 @@
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
 	for(var/i in GLOB.fog_blockers)
-		var/obj/effect/landmark/lv624/fog_blocker/FB = i
-		round_fog += new /obj/structure/blocker/fog(FB.loc)
-		qdel(FB)
+		if(istype(i, /obj/effect/landmark/lv624/fog_blocker/short))
+			var/obj/effect/landmark/lv624/fog_blocker/short/short_fog_blocker = i
+			short_round_fog += new /obj/structure/blocker/fog(short_fog_blocker.loc)
+			qdel(short_fog_blocker)
+		else
+			var/obj/effect/landmark/lv624/fog_blocker/fog_blocker = i
+			round_fog += new /obj/structure/blocker/fog(fog_blocker.loc)
+			qdel(fog_blocker)
 
 	QDEL_LIST(GLOB.hunter_primaries)
 	QDEL_LIST(GLOB.hunter_secondaries)
@@ -78,8 +85,9 @@
 			qdel(i)
 			new type_to_spawn(T)
 
-	if(!round_fog.len)
-		round_fog = null //No blockers?
+	if(!round_fog.len && !short_round_fog.len)
+		round_fog = null //No blockers? https://i.imgur.com/PMeeqMe.jpg
+		short_round_fog = null
 	else
 		flags_round_type |= MODE_FOG_ACTIVATED
 
@@ -153,6 +161,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
+#define SHORT_FOG_DELAY_INTERVAL (15 MINUTES)
 #define FOG_DELAY_INTERVAL (25 MINUTES)
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
@@ -188,8 +197,12 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG] && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
-				disperse_fog() //Some RNG thrown in.
+			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+				if(world.time >= (SHORT_FOG_DELAY_INTERVAL + SSticker.round_start_time))
+					disperse_short_fog()
+				if(world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
+					disperse_fog()
+
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN))
 				if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN])
 					if(world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
@@ -237,13 +250,8 @@
 	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
-	for(var/obj/item/pipe/exploding_pipe as anything in shortly_exploding_pipes)
-		var/turf/loc = get_turf(exploding_pipe)
-		if(istype(loc) && protected_by_pylon(TURF_PROTECTION_MORTAR, loc))
-			continue
-
-		exploding_pipe.visible_message(SPAN_HIGHDANGER("[exploding_pipe] begins hissing violently!"))
-		new /obj/effect/warning/explosive(loc)
+	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)
+		exploding_pipe.warning_explode(5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
@@ -259,6 +267,7 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
+#undef SHORT_FOG_DELAY_INTERVAL
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
@@ -373,6 +382,7 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
+
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()

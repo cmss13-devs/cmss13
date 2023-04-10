@@ -5,7 +5,7 @@
 
 /datum/component/id_lock/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTEMPTING_EQUIP, PROC_REF(handle_attempting_equip))
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_attack))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACKED, PROC_REF(handle_attack))
 
 /datum/component/id_lock/proc/handle_attempting_equip(source, mob/user)
 	SIGNAL_HANDLER
@@ -75,4 +75,4 @@
 	registered_name = null
 	owner_ref = null
 
-	return COMPONENT_CANCEL_ATTACKBY
+	return COMPONENT_CANCEL_ITEM_ATTACK

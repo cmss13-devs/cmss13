@@ -53,6 +53,9 @@
 	desc = "begin an amputation"
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -91,6 +94,9 @@
 	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/hemostat1.ogg'
 
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
@@ -137,6 +143,9 @@
 		/obj/item/tool/hatchet,
 		/obj/item/attachable/bayonet
 		)
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/surgery/organ1.ogg'
+	failure_sound = 'sound/effects/bone_break6.ogg'
 
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -163,8 +172,6 @@
 	log_interact(user, target, "[key_name(user)] successfully severed [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/saw_off_limb/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(tool.hitsound)
-		playsound(target.loc, tool.hitsound, 25, TRUE)
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
@@ -197,6 +204,9 @@
 	desc = "cut excess flesh from the stump"
 	tools = SURGERY_TOOLS_INCISION
 	time = 3 SECONDS
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -232,6 +242,8 @@
 	desc = "mend the torn blood vessels"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
+	success_sound = 'sound/surgery/organ1.ogg'
+	failure_sound =	'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -274,6 +286,9 @@
 	desc = "stitch the stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/hemostat1.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -311,6 +326,8 @@
 	desc = "cut through the jammed clamps holding the prosthesis' stump on"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
+	success_sound = 'sound/surgery/saw.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -345,6 +362,8 @@
 	desc = "remove the damaged prosthesis"
 	accept_hand = TRUE
 	time = 3 SECONDS
+	success_sound = 'sound/surgery/organ1.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/remove_old_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

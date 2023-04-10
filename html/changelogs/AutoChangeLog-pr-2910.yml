@@ -1,6 +1,0 @@
-author: "nauticall"
-delete-after: True
-changes:
-  - mapadd: "Readds the autodoc back to the Almayer."
-  - balance: "Neuters the autodoc so that it can only perform emergency treatments and life-saving procedures; it can no longer do complex surgeries."
-  - bugfix: "Fixed broken icon states on the autodoc, sleeper, and body scanner console when using a map editor."

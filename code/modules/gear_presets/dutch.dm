@@ -54,7 +54,7 @@
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(NEW_HUMAN), WEAR_IN_ACCESSORY)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(NEW_HUMAN), WEAR_IN_ACCESSORY)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(NEW_HUMAN), WEAR_HANDS)
-	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/large(NEW_HUMAN), WEAR_R_STORE)
+	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(NEW_HUMAN), WEAR_R_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(NEW_HUMAN), WEAR_FEET)
 
 	switch(rand(1, 10))
@@ -108,7 +108,7 @@
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(NEW_HUMAN), WEAR_IN_BACK)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911(NEW_HUMAN), WEAR_WAIST)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(NEW_HUMAN), WEAR_HANDS)
-	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/large(NEW_HUMAN), WEAR_R_STORE)
+	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(NEW_HUMAN), WEAR_R_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/emp_dutch(NEW_HUMAN), WEAR_L_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(NEW_HUMAN), WEAR_FEET)
 
@@ -143,7 +143,7 @@
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(NEW_HUMAN), WEAR_L_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/large/X(NEW_HUMAN), WEAR_IN_L_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/large/B(NEW_HUMAN), WEAR_IN_L_STORE)
-	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/large(NEW_HUMAN), WEAR_R_STORE)
+	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(NEW_HUMAN), WEAR_R_STORE)
 	NEW_HUMAN.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(NEW_HUMAN), WEAR_FEET)
 
 	to_chat(NEW_HUMAN, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail.  The Yautja mask on your leader's face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures,  and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))

@@ -260,27 +260,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
-/obj/item/storage/pouch/firstaid/ert/large
-	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
-	icon_state = "firstaid"
-	storage_slots = 6
-	can_hold = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/storage/pill_bottle/packet/tramadol,
-		/obj/item/storage/pill_bottle/packet/tricordrazine,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
-	)
-
-/obj/item/storage/pouch/firstaid/ert/large/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
-	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/medical/splint(src)
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol

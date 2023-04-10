@@ -86,17 +86,14 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/mask/gas/pmc(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(2) //pizza
-		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
-		if(3) //clf
 		if(3) //clf
 			new /obj/item/clothing/under/colonist/clf(src)
 			new /obj/item/clothing/suit/storage/militia(src)
 			new /obj/item/clothing/head/militia(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(4) //upp
 		if(4) //upp
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
@@ -105,12 +102,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //freelancer
-		if(5) //freelancer
 			new /obj/item/clothing/under/marine/veteran/freelancer(src)
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
-		if(6) //VAIPO
 		if(6) //VAIPO
 			new /obj/item/clothing/glasses/sunglasses/big(src)
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)

@@ -1,0 +1,5 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - rscadd: "RTO backpacks to Staff Officer Vendor"
+  - bugfix: "Empty medical belts in Staff Officer vendor"

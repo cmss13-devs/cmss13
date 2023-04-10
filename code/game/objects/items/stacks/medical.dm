@@ -101,7 +101,7 @@
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
-	heal_burn = 1
+	heal_burn = 5
 
 	stack_id = "ointment"
 

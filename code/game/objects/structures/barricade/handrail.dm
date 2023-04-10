@@ -14,9 +14,10 @@
 	crusher_resistant = FALSE
 	can_wire = FALSE
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
-	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
 	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE //Reinforced to be a cade or not
+	var/can_be_reinforced = TRUE //can we even reinforce this handrail or not?
 
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
@@ -89,6 +90,8 @@
 				update_icon()
 				return
 			if(istype(W, /obj/item/stack/sheet/metal)) // Start reinforcing
+				if(!can_be_reinforced)
+					return
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -188,6 +191,8 @@
 /obj/structure/barricade/handrail/sandstone
 	name = "sandstone handrail"
 	icon_state = "hr_sandstone"
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	stack_type = /obj/item/stack/sheet/mineral/sandstone
 	debris = list(/obj/item/stack/sheet/mineral/sandstone)
 

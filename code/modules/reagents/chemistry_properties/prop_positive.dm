@@ -122,7 +122,7 @@
 
 /datum/chem_property/positive/hemostatic
 	name = PROPERTY_HEMOSTATIC
-	code = "HST"
+	code = "HSC"
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	rarity = PROPERTY_UNCOMMON
 	max_level = 1

@@ -52,10 +52,12 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
+#define JOB_SURGEON "Surgeon"
+
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES  /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
+#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_COMBAT_REPORTER "Combat Correspondent"

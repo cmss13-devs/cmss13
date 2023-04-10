@@ -100,7 +100,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
-	var/sea_path = "Command"
 
 	///holds our preferred job options for jobs
 	var/pref_special_job_options = list()
@@ -528,10 +527,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
-				dat += "<div id='column1'>"
-				dat += "<h2><b><u>Mentor Settings:</u></b></h2>"
-				dat += "<b>SEA Grade Path:</b> <a href='?_src_=prefs;preference=grade_path;task=input'><b>[sea_path]</b></a><br>"
-				dat += "</div>"
+				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SETTINGS)
@@ -672,20 +668,20 @@ var/const/MAX_SAVE_SLOTS = 10
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='right'></td><td>TIMELOCKED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='right'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='right'>"
+		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
 		if(job.job_options)
 			if(!pref_special_job_options || !pref_special_job_options[role_name])
@@ -1207,13 +1203,6 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					commander_sidearm = new_co_sidearm
 
-				if("grade_path")
-					var/list/options = list("Command", "Technical")
-					var/new_path = tgui_input_list(user, "Choose your preferred promotion path.", "Promotion Paths", options)
-					if(!new_path)
-						return
-					sea_path = new_path
-
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
 
@@ -1579,7 +1568,9 @@ var/const/MAX_SAVE_SLOTS = 10
 						ShowChoices(user)
 						return
 
-					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", job.job_options)
+					var/list/filtered_options = job.filter_job_option(user)
+
+					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", filtered_options)
 					if(!new_special_job_variant)
 						return
 					pref_special_job_options[job.title] = new_special_job_variant

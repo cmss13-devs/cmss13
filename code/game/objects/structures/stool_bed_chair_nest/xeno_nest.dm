@@ -236,7 +236,6 @@
 	resisting_ready = FALSE
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
-	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/H = buckled_mob
 
 	. = ..()

@@ -79,3 +79,8 @@
   realforest2001:
   - bugfix: Fixes some perms in VV dropdown
   - bugfix: Fixes Queen Mother bioscan
+2023-04-10:
+  LTNTS:
+  - balance: buffed ointment healing only 1 burn, now heals 5 burn
+  Morrow:
+  - code_imp: Sets up "short" fog blockers for mappers

@@ -99,15 +99,6 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
-"ar" = (
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS/dynamic)
 "as" = (
 /obj/structure/prop/Flag/UPP{
 	pixel_x = -21;
@@ -155,6 +146,25 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
+"aA" = (
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "aB" = (
 /obj/structure/barricade/sandbags{
 	dir = 4
@@ -570,6 +580,16 @@
 	},
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/event/underground_no_CAS/dynamic)
+"bD" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5";
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/event)
 "bG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/type23/breacher,
@@ -925,6 +945,10 @@
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
+"cu" = (
+/obj/structure/desertdam/decals/road_stop/russian,
+/turf/open/asphalt/cement,
+/area/event)
 "cv" = (
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
@@ -1045,6 +1069,24 @@
 /obj/item/device/megaphone,
 /turf/open/floor/wood,
 /area/event/metal)
+"cP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/item/clothing/accessory/armband{
+	name = "reds squad"
+	},
+/obj/structure/prop/Flag/UPP{
+	pixel_x = -5;
+	pixel_y = 27;
+	layer = 2.4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "cR" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -1075,6 +1117,49 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal)
+"cX" = (
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "cY" = (
 /obj/structure/surface/rack,
 /obj/item/storage/beer_pack{
@@ -1130,6 +1215,29 @@
 	icon_state = "plate"
 	},
 /area/event/metal)
+"dp" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "dq" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle{
@@ -1176,7 +1284,7 @@
 	desc = "why is it yellow?";
 	name = "lager bucket"
 	},
-/turf/open/floor,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
 "dr" = (
 /obj/effect/mist{
@@ -1527,6 +1635,18 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event)
+"en" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/prop/cash_register,
+/turf/open/gm/dirt2,
+/area/event)
 "ep" = (
 /obj/structure/sink{
 	desc = "A sink used for washing one's hands and face. Let that sink in.";
@@ -1539,6 +1659,20 @@
 	},
 /turf/open/floor,
 /area/event/metal)
+"eq" = (
+/obj/structure/bed/chair/wood/wings,
+/turf/open/gm/dirt2,
+/area/event)
+"es" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/microwave{
+	pixel_y = 8
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "ev" = (
 /obj/structure/machinery/bioprinter{
 	name = "\improper Synthetic limb printer 500";
@@ -1587,10 +1721,6 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"eF" = (
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "eH" = (
 /obj/structure/flora/jungle/thickbush{
 	indestructable = 1;
@@ -1660,26 +1790,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt/cement,
 /area/event)
-"eO" = (
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "eP" = (
 /obj/structure/flora/jungle/thickbush,
 /turf/open/asphalt/cement,
@@ -1923,6 +2033,10 @@
 /obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/ammo_magazine/rifle/boltaction,
 /obj/item/ammo_magazine/rifle/boltaction,
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = 12;
+	pixel_y = 27
+	},
 /turf/open/floor/wood,
 /area/event/metal)
 "fj" = (
@@ -2165,6 +2279,12 @@
 	},
 /turf/open/floor/wood/ship,
 /area/event/underground_no_CAS/dynamic)
+"fD" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "fF" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop{
 	anchored = 1;
@@ -2189,6 +2309,15 @@
 	},
 /obj/structure/barricade/sandbags,
 /turf/open/asphalt/cement,
+/area/event)
+"fJ" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
 /area/event)
 "fK" = (
 /obj/structure/machinery/light,
@@ -2544,8 +2673,41 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
-"gA" = (
-/turf/open/floor/interior/wood,
+"gx" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
+"gz" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner2";
+	dir = 4
+	},
+/area/event)
+"gC" = (
+/obj/item/clothing/accessory/armband/science{
+	name = "purple squad"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/prop/Flag/UPP{
+	pixel_x = -5;
+	pixel_y = 27;
+	layer = 2.4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
 /area/event/underground_no_CAS/dynamic)
 "gD" = (
 /obj/structure/machinery/telecomms/server,
@@ -2607,6 +2769,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
+"gJ" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4;
+	layer = 2.3
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "gK" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -2614,9 +2783,6 @@
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "Hero of the union statue"
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = -32
 	},
 /obj/structure/machinery/light,
 /obj/structure/sign/poster/clf{
@@ -2749,52 +2915,6 @@
 	dir = 8;
 	icon_state = "yellow"
 	},
-/area/event/underground_no_CAS/dynamic)
-"gX" = (
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "gY" = (
 /obj/structure/machinery/space_heater/radiator{
@@ -2934,6 +3054,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
+"hr" = (
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -4;
+	pixel_y = -36
+	},
+/turf/open/gm,
+/area/event)
 "ht" = (
 /obj/structure/machinery/door_control{
 	id = "UPPreq1";
@@ -3035,6 +3162,12 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal)
+"hA" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner2";
+	dir = 1
+	},
+/area/event)
 "hC" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/weapon/gun/pistol/c99,
@@ -3088,10 +3221,6 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/event/underground_no_CAS/dynamic)
-"hH" = (
-/obj/structure/bed/chair/wood/wings,
-/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "hI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
@@ -3190,7 +3319,7 @@
 "hX" = (
 /obj/structure/transmitter{
 	phone_category = "UPP";
-	phone_id = "UPP Bunker White Pawn";
+	phone_id = "UPP - Warehouse White Pawn";
 	pixel_y = 29
 	},
 /turf/open/floor/interior/wood/alt,
@@ -3279,12 +3408,28 @@
 	},
 /turf/open/gm,
 /area/event)
+"ij" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/cash_register,
+/turf/open/gm/dirt2,
+/area/event)
 "im" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"io" = (
+/obj/structure/machinery/colony_floodlight{
+	name = "Light Pole"
+	},
+/turf/open/gm/dirtgrassborder2{
+	dir = 1
+	},
+/area/event)
 "ip" = (
 /obj/structure/platform/kutjevo{
 	dir = 4;
@@ -3635,6 +3780,14 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
+"jl" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -32
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "jm" = (
 /obj/structure/machinery/chem_dispenser/medbay,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -3934,6 +4087,12 @@
 "jV" = (
 /turf/open/asphalt/cement,
 /area/event)
+"jW" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "jX" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -4231,6 +4390,15 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
+"kO" = (
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -4;
+	pixel_y = -36
+	},
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "kQ" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/structure/machinery/light/small{
@@ -4843,61 +5011,6 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"lR" = (
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "lS" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5139,6 +5252,10 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"mw" = (
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/gm/dirt2,
+/area/event)
 "mx" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -5305,13 +5422,6 @@
 	icon_state = "plate"
 	},
 /area/event/metal)
-"mL" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
 "mM" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -5370,12 +5480,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event)
-"mS" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "mT" = (
 /obj/structure/barricade/sandbags,
 /obj/structure/barricade/sandbags{
@@ -5444,18 +5548,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event)
-"ng" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/prop/cash_register/broken,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "ni" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/m4a3,
@@ -5496,10 +5588,28 @@
 /obj/structure/machinery/computer/overwatch/upp,
 /turf/open/floor/wood,
 /area/event/metal)
+"nl" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/obj/item/tool/kitchen/knife,
+/obj/item/tool/kitchen/knife,
+/obj/item/tool/kitchen/knife,
+/turf/open/gm/dirt2,
+/area/event)
 "nm" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat,
 /area/event/underground_no_CAS/dynamic)
+"no" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "np" = (
 /turf/open/floor/corsat{
 	icon_state = "arrow_west"
@@ -5522,8 +5632,8 @@
 	},
 /area/event)
 "ns" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal2"
+/obj/structure/desertdam/decals/road_stop/russian{
+	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/event)
@@ -5537,6 +5647,67 @@
 	},
 /turf/open/floor,
 /area/event/metal)
+"nu" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "nv" = (
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_x = 9
@@ -5976,12 +6147,6 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/event/underground_no_CAS/dynamic)
-"oD" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/turf/open/asphalt/cement,
 /area/event/underground_no_CAS/dynamic)
 "oE" = (
 /obj/structure/surface/table/reinforced/black,
@@ -6450,9 +6615,6 @@
 "px" = (
 /obj/structure/surface/table/almayer{
 	indestructible = 1
-	},
-/obj/structure/closet/secure_closet/surgical{
-	pixel_y = -32
 	},
 /turf/open/floor/corsat{
 	icon_state = "greenwhite"
@@ -7215,6 +7377,26 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
+"rj" = (
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "rk" = (
 /obj/structure/platform{
 	dir = 8
@@ -7227,6 +7409,12 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
+"rm" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "rn" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/clothing/under/color/green,
@@ -7241,15 +7429,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/event/metal)
-"rr" = (
-/obj/structure/machinery/light,
-/obj/structure/sign/poster/clf{
-	pixel_y = -32
-	},
-/turf/open/floor/corsat{
-	icon_state = "blue"
-	},
-/area/event/underground_no_CAS/dynamic)
 "rs" = (
 /obj/structure/barricade/handrail/sandstone/b{
 	dir = 4
@@ -7348,6 +7527,56 @@
 /obj/structure/surface/rack,
 /turf/open/floor,
 /area/event/metal)
+"rH" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "rJ" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/open/floor/wood,
@@ -7622,12 +7851,6 @@
 /obj/structure/bed/bedroll,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
-"sG" = (
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "sH" = (
 /obj/structure/platform/kutjevo/rock{
 	projectile_coverage = 0
@@ -8207,9 +8430,6 @@
 	icon_state = "Synthetic_Template";
 	name = "Hero of the union statue"
 	},
-/obj/structure/sign/poster/clf{
-	pixel_y = -32
-	},
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	dir = 10;
@@ -8265,12 +8485,6 @@
 	dir = 1
 	},
 /area/event)
-"tZ" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "ua" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/packet/hefa,
@@ -8646,9 +8860,6 @@
 /obj/item/device/flashlight,
 /turf/open/floor,
 /area/event/metal)
-"uU" = (
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "uV" = (
 /obj/structure/prop/Flag/UPP{
 	pixel_x = -21;
@@ -9506,14 +9717,8 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor/interior/wood/alt,
 /area/event/metal)
-"wV" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "wY" = (
 /obj/structure/largecrate/supply/medicine/medkits,
 /turf/open/floor/corsat{
@@ -9671,17 +9876,6 @@
 /obj/item/stack/sheet/mineral/uranium/small_stack,
 /turf/open/floor,
 /area/event/metal)
-"xq" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	layer = 2.5
-	},
-/obj/structure/machinery/microwave{
-	pixel_y = 8
-	},
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "xr" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -9769,6 +9963,14 @@
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
+/area/event)
+"xB" = (
+/obj/structure/flora/jungle/thickbush{
+	opacity = 1
+	},
+/turf/open/gm/dirtgrassborder2{
+	dir = 4
+	},
 /area/event)
 "xC" = (
 /obj/structure/platform/kutjevo{
@@ -9996,6 +10198,12 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"xY" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/turf/open/gm/dirtgrassborder2,
+/area/event)
 "xZ" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/toy/dice,
@@ -10108,9 +10316,6 @@
 /obj/item/storage/box/packet/smoke,
 /turf/open/floor,
 /area/event/metal)
-"ym" = (
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "yn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
@@ -10668,12 +10873,6 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor,
 /area/event/metal)
-"zI" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "zJ" = (
 /obj/structure/foamed_metal/iron,
 /turf/open/floor/corsat{
@@ -10812,8 +11011,8 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ad" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal3"
+/obj/structure/desertdam/decals/road_stop/russian{
+	dir = 4
 	},
 /turf/open/asphalt/cement,
 /area/event)
@@ -11092,64 +11291,6 @@
 /obj/item/toy/farwadoll,
 /turf/open/floor,
 /area/event/metal)
-"AR" = (
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "AT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = UPP_Garage2
@@ -11320,6 +11461,61 @@
 	icon_state = "stop_decal5"
 	},
 /turf/open/asphalt/cement,
+/area/event)
+"Bm" = (
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/turf/open/gm/dirt2,
 /area/event)
 "Bn" = (
 /turf/open/floor/almayer{
@@ -11593,6 +11789,28 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
+"Ci" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "Cj" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -11701,16 +11919,6 @@
 	},
 /turf/open/floor/carpet,
 /area/event/underground_no_CAS/dynamic)
-"CG" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "CJ" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -11741,12 +11949,6 @@
 /obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
-"CN" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/gm/grass,
-/area/event/underground_no_CAS)
 "CT" = (
 /obj/structure/bed/chair/comfy/black{
 	pixel_y = -7
@@ -12125,6 +12327,64 @@
 	icon_state = "freezerfloor"
 	},
 /area/event/metal)
+"El" = (
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "En" = (
 /obj/structure/barricade/handrail/kutjevo,
 /obj/structure/machinery/light/small{
@@ -12211,13 +12471,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"EB" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "EC" = (
 /obj/effect/attach_point/weapon/dropship1/right_fore,
 /turf/open/gm/river/ocean,
@@ -12292,12 +12545,14 @@
 	icon_state = "greenwhitecorner"
 	},
 /area/event/underground_no_CAS/dynamic)
-"ER" = (
-/obj/structure/barricade/handrail{
-	dir = 4
+"ES" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = 16
 	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
+/turf/open/gm/dirt2,
+/area/event)
 "ET" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert0"
@@ -12309,16 +12564,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"EV" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/knife,
-/obj/item/tool/kitchen/knife,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "EX" = (
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/floor/interior/wood,
@@ -12659,18 +12904,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal)
-"FR" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/prop/cash_register/broken,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
 "FS" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Kolonel's Quarters"
@@ -12752,67 +12985,6 @@
 	},
 /turf/open/gm,
 /area/event)
-"Gi" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "Gl" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin{
@@ -12927,9 +13099,6 @@
 "GF" = (
 /obj/structure/platform{
 	dir = 4
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = -32
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -13076,6 +13245,17 @@
 	},
 /turf/open/gm/dirt2,
 /area/event)
+"Ha" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/cash_register,
+/turf/open/gm/dirt2,
+/area/event)
 "Hb" = (
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/lightbrown,
@@ -13152,6 +13332,33 @@
 /obj/item/explosive/grenade/baton,
 /turf/open/floor,
 /area/event/metal)
+"Hr" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "Hs" = (
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/corsat{
@@ -13372,15 +13579,12 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"HP" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 4
+"HR" = (
+/turf/open/gm/dirtgrassborder2{
+	icon_state = "grassdirt2_corner2";
+	dir = 8
 	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
+/area/event)
 "HS" = (
 /turf/open/floor/corsat{
 	dir = 6;
@@ -13629,65 +13833,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Iy" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
-"Iz" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
 "IB" = (
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -13780,6 +13925,11 @@
 "IN" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck,
+/obj/structure/prop/Flag/UPP{
+	pixel_x = -5;
+	pixel_y = 27;
+	layer = 2.4
+	},
 /turf/open/gm/grass,
 /area/event)
 "IO" = (
@@ -13907,6 +14057,10 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Jg" = (
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -36;
+	pixel_y = -4
+	},
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -14311,6 +14465,52 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"JT" = (
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "JU" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -14737,6 +14937,13 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal)
+"Ld" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_x = -5
+	},
+/turf/open/gm/dirtgrassborder2,
+/area/event)
 "Le" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light/built{
@@ -14805,16 +15012,6 @@
 	icon_state = "sterile_green"
 	},
 /area/event/metal)
-"Lo" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "Lp" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/flashlight/lamp,
@@ -15417,41 +15614,10 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Mu" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
-"Mv" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 8;
-	pixel_x = -5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS/dynamic)
 "Mw" = (
 /obj/structure/transmitter{
 	phone_category = "UPP";
-	phone_id = "UPP Bunker Black King Command";
+	phone_id = "UPP - Rosansk Town Hall Black Joker Command";
 	pixel_y = 29
 	},
 /turf/open/floor/wood,
@@ -15480,9 +15646,6 @@
 	},
 /area/event/metal)
 "MB" = (
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = -32
-	},
 /obj/structure/surface/table/almayer{
 	indestructible = 1
 	},
@@ -15491,25 +15654,6 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
-"MC" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "MD" = (
 /obj/structure/surface/rack,
 /obj/item/hardpoint/locomotion/van_wheels,
@@ -15538,28 +15682,6 @@
 /obj/item/ammo_magazine/smg/mac15,
 /turf/open/floor,
 /area/event/metal)
-"MH" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "MI" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/warning_stripes,
@@ -15613,35 +15735,6 @@
 /obj/item/reagent_container/food/snacks/grown/carrot,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
-"MQ" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS/dynamic)
-"MS" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "MT" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -15928,6 +16021,11 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/open/floor/wood,
 /area/event/metal)
+"NG" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/kitchen/knife,
+/turf/open/gm/dirt2,
+/area/event)
 "NJ" = (
 /obj/structure/platform{
 	dir = 8
@@ -15946,6 +16044,49 @@
 	icon_state = "white"
 	},
 /area/event/underground_no_CAS/dynamic)
+"NM" = (
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "NN" = (
 /obj/structure/barricade/handrail,
 /turf/open/gm/grass,
@@ -16119,52 +16260,6 @@
 /obj/item/toy/spinningtoy,
 /turf/open/floor,
 /area/event/metal)
-"NZ" = (
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
 "Od" = (
 /obj/structure/machinery/cm_vending/gear/antag,
 /obj/structure/machinery/light,
@@ -16523,7 +16618,7 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/transmitter/touchtone{
 	phone_category = "UPP";
-	phone_id = "UPP Bunker Black Pawn"
+	phone_id = "UPP - Distillery Black Pawn"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
@@ -16578,6 +16673,13 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/event/metal)
+"Pc" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5";
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/event)
 "Pf" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight,
@@ -16946,15 +17048,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event)
-"PM" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/item/reagent_container/food/drinks/bottle/beer/craft,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "PO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -16965,6 +17058,14 @@
 	},
 /turf/open/floor/corsat{
 	icon_state = "greencorner"
+	},
+/area/event/underground_no_CAS/dynamic)
+"PP" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -32
+	},
+/turf/open/floor/corsat{
+	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
 "PQ" = (
@@ -17020,6 +17121,15 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor,
 /area/event/metal)
+"PZ" = (
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -4;
+	pixel_y = -36
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/event)
 "Qa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
@@ -17093,15 +17203,6 @@
 	icon_state = "desert3"
 	},
 /area/event)
-"Qf" = (
-/obj/structure/prop/souto_land/streamer{
-	dir = 1
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "Qh" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/corsat{
@@ -17260,6 +17361,13 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Qz" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/prop/souto_land/streamer{
+	dir = 1
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "QA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -17288,6 +17396,30 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal)
+"QE" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
+	pixel_y = 14
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "QF" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -17463,6 +17595,28 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Rc" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 1
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
+	pixel_y = 14
+	},
+/turf/open/gm/dirt2,
+/area/event)
 "Rd" = (
 /turf/open/floor/corsat{
 	dir = 9;
@@ -17482,9 +17636,6 @@
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "Hero of the union statue"
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = 32
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -17562,28 +17713,6 @@
 /obj/structure/bed/chair/wood/wings,
 /turf/open/floor/interior/wood,
 /area/event)
-"Rs" = (
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "Ru" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18257,65 +18386,6 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Tf" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 15
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = -1;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/drinks/bottle/beer/craft{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "Th" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -18856,10 +18926,6 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Uo" = (
-/obj/structure/bed/chair/wood/wings,
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS)
 "Up" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -18951,49 +19017,6 @@
 	},
 /obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
-/area/event/underground_no_CAS/dynamic)
-"Uy" = (
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 18
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 13
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/food/drinks/bottle/wine{
-	pixel_x = 8;
-	pixel_y = 7
-	},
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic)
 "UB" = (
 /obj/structure/computerframe,
@@ -19231,9 +19254,6 @@
 "UT" = (
 /obj/structure/platform{
 	dir = 8
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = -32
 	},
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -19562,6 +19582,13 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Vr" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/gm/dirtgrassborder2,
+/area/event)
 "Vs" = (
 /turf/closed/wall/rock/brown,
 /area/event)
@@ -20047,10 +20074,6 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
 /area/event)
-"Wv" = (
-/obj/structure/machinery/vending/dinnerware,
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "Ww" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -20068,12 +20091,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event)
-"Wz" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/beer_pack,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS)
 "WA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -20093,16 +20110,6 @@
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
-/area/event/underground_no_CAS/dynamic)
-"WD" = (
-/obj/structure/prop/souto_land/pole{
-	dir = 4;
-	pixel_x = 5
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/asphalt/cement,
 /area/event/underground_no_CAS/dynamic)
 "WE" = (
 /obj/structure/barricade/handrail/kutjevo,
@@ -20289,26 +20296,6 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Xd" = (
-/obj/item/reagent_container/food/snacks/sliceable/pizza/margherita{
-	pixel_y = 14
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
-	pixel_y = 5
-	},
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event/underground_no_CAS/dynamic)
 "Xf" = (
 /obj/structure/platform/kutjevo,
 /turf/closed/wall/wood,
@@ -20437,35 +20424,6 @@
 	},
 /turf/closed/wall/wood,
 /area/event/metal)
-"Xo" = (
-/obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = -2;
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_y = 16;
-	pixel_x = -2
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt/cement,
-/area/event/underground_no_CAS/dynamic)
 "Xq" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
 /turf/open/floor/corsat{
@@ -20535,9 +20493,6 @@
 /turf/open/asphalt/cement,
 /area/event)
 "XA" = (
-/obj/structure/sign/poster/clf{
-	pixel_y = 32
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20698,9 +20653,6 @@
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "Hero of the union statue"
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = 32
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -20888,6 +20840,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/event/underground_no_CAS/dynamic)
+"Yz" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5";
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/event)
 "YB" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/marine/faction/UPP/heavy,
@@ -21446,18 +21406,6 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
-"ZN" = (
-/obj/structure/sign/poster/clf{
-	pixel_x = -32
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "ZO" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -21534,6 +21482,65 @@
 	dir = 5
 	},
 /area/event/underground_no_CAS)
+"ZZ" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/gm/dirt2,
+/area/event)
 
 (1,1,1) = {"
 rN
@@ -26085,7 +26092,7 @@ hg
 NR
 br
 zf
-zf
+hr
 hv
 RU
 AZ
@@ -30174,8 +30181,8 @@ Rd
 Qy
 ai
 ai
-ai
-ZN
+qA
+Qy
 ai
 ai
 Xk
@@ -33951,7 +33958,7 @@ Zu
 Zu
 Zu
 Zu
-Xc
+cP
 oy
 oy
 oy
@@ -33961,7 +33968,7 @@ UR
 UR
 UR
 UR
-Ap
+jl
 YW
 QN
 QN
@@ -34183,7 +34190,7 @@ UR
 UR
 UR
 UR
-Ap
+kO
 YW
 QN
 QN
@@ -34405,7 +34412,7 @@ UR
 UR
 UR
 UR
-Ap
+jl
 YW
 QN
 QN
@@ -35071,7 +35078,7 @@ LW
 hw
 Kt
 Xk
-kS
+PP
 YW
 QN
 QN
@@ -35293,7 +35300,7 @@ Xk
 Xk
 Xk
 Xk
-rr
+Pm
 YW
 QN
 QN
@@ -36171,7 +36178,7 @@ Zu
 Zu
 Zu
 Zu
-Rb
+gC
 Ix
 Ix
 Ix
@@ -36181,7 +36188,7 @@ Nl
 Nl
 Nl
 Nl
-Ap
+jl
 YW
 QN
 QN
@@ -36313,11 +36320,11 @@ WZ
 WZ
 hg
 uI
-hg
-hg
-hg
-hg
-hg
+dR
+Cq
+xB
+Cq
+SS
 FT
 jV
 DX
@@ -36403,7 +36410,7 @@ Nl
 Nl
 Nl
 Nl
-Ap
+kO
 YW
 QN
 QN
@@ -36535,11 +36542,11 @@ WZ
 WZ
 hg
 hg
-hg
-hg
-uI
-hg
-hg
+Vr
+JT
+OF
+rH
+gm
 FT
 jV
 DX
@@ -36625,7 +36632,7 @@ Nl
 dI
 Nl
 Nl
-Ap
+jl
 YW
 QN
 QN
@@ -36757,11 +36764,11 @@ WZ
 WZ
 hg
 hg
-uI
-hg
-hg
-hg
-hg
+xY
+cX
+gJ
+NM
+gm
 FT
 jV
 DX
@@ -36977,13 +36984,13 @@ WZ
 WZ
 WZ
 WZ
+uI
 hg
-hg
-hg
-hg
-hg
-SH
-hg
+Ld
+ij
+mw
+gx
+gm
 FT
 jV
 DX
@@ -37199,13 +37206,13 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-hg
-hg
-Hl
-hg
-hg
+dR
+Cq
+UG
+OF
+OF
+OF
+gm
 FT
 jV
 DX
@@ -37421,13 +37428,13 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-hg
-hg
-hg
-hg
-Fp
+Df
+Rc
+OF
+dp
+OF
+fD
+io
 FT
 jV
 DX
@@ -37644,12 +37651,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-hg
-hg
-hg
-hg
-hg
+aA
+eq
+nl
+OF
+no
+gm
 FT
 jV
 DX
@@ -37866,12 +37873,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-hg
-hg
+Ci
+jW
+en
+OF
+rm
+HR
 FT
 jV
 DX
@@ -38088,12 +38095,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-hg
-hg
+OF
+OF
+OF
+OF
+OF
+OF
 FT
 jV
 DX
@@ -38310,12 +38317,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-uI
-hg
+nu
+OF
+ZZ
+OF
+OF
+OF
 FT
 jV
 DX
@@ -38532,12 +38539,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-hg
+Bm
+eq
+Qz
+OF
+fD
+hA
 FT
 jV
 DX
@@ -38754,12 +38761,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-hg
+El
+jW
+en
+OF
+ES
+gm
 FT
 jV
 DX
@@ -38976,12 +38983,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-hg
-hg
-Hl
-hg
+fz
+fz
+gz
+OF
+rm
+gm
 FT
 jV
 DX
@@ -39198,12 +39205,12 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
 hg
-hg
+dR
+UG
+OF
+OF
+gm
 FT
 jV
 Kj
@@ -39420,12 +39427,12 @@ WZ
 WZ
 WZ
 hg
-WZ
-WZ
 hg
-hg
-hg
-hg
+Vr
+Ha
+NG
+QE
+gm
 FT
 jV
 jV
@@ -39643,11 +39650,11 @@ WZ
 hg
 hg
 hg
-hg
-hg
-hg
-hg
-hg
+xY
+OF
+rm
+fJ
+gm
 FT
 jV
 tc
@@ -39864,12 +39871,12 @@ WZ
 WZ
 hg
 hg
-Hl
 hg
-hg
-hg
-hg
-Fp
+Ld
+rj
+es
+Hr
+io
 FT
 jV
 DX
@@ -40087,11 +40094,11 @@ hg
 hg
 hg
 hg
-hg
-hg
-Hl
-hg
-hg
+bo
+fz
+fz
+fz
+FH
 FT
 jV
 DX
@@ -40311,7 +40318,7 @@ hg
 hg
 hg
 hg
-hg
+Hl
 hg
 hg
 FT
@@ -44071,7 +44078,7 @@ Hl
 qI
 Yd
 zf
-Av
+PZ
 hv
 kL
 KX
@@ -49021,7 +49028,7 @@ jV
 jV
 Kj
 Gy
-Gy
+Yz
 Om
 Om
 vz
@@ -49242,8 +49249,8 @@ FT
 jV
 jV
 jV
-jV
-jV
+cu
+Pc
 hm
 Om
 hm
@@ -49464,8 +49471,8 @@ FT
 jV
 jV
 jV
-jV
-jV
+cu
+Pc
 Om
 hm
 hm
@@ -49687,7 +49694,7 @@ jV
 jV
 tc
 Il
-Il
+bD
 Eh
 Om
 Om
@@ -51250,10 +51257,10 @@ kV
 QN
 QN
 QN
-WD
-NZ
-gA
-Iz
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -51472,10 +51479,10 @@ kV
 QN
 QN
 QN
-ar
-Uy
-hH
-mL
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -51694,10 +51701,10 @@ kV
 QN
 QN
 QN
-Mv
-gX
-ER
-FR
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -51916,10 +51923,10 @@ kV
 QN
 QN
 QN
-MQ
-hm
-hm
-oD
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -52138,12 +52145,12 @@ kV
 QN
 QN
 QN
-WD
-Xd
-gA
-Mu
 QN
-Xo
+QN
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -52360,12 +52367,12 @@ kV
 WZ
 WZ
 WZ
-Qf
-xq
-Uo
-EV
 WZ
-Wv
+WZ
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -52582,12 +52589,12 @@ kV
 WZ
 WZ
 WZ
-Lo
-eO
-sG
-ng
 WZ
-eF
+WZ
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -52804,14 +52811,14 @@ kV
 WZ
 WZ
 WZ
-mS
-uU
-uU
-wV
 WZ
-CN
-HP
-tZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -53026,14 +53033,14 @@ WZ
 WZ
 WZ
 WZ
-CG
-MH
-ym
-MS
 WZ
-Wz
-PM
-Iy
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -53248,14 +53255,14 @@ WZ
 WZ
 WZ
 WZ
-Qf
-MC
-Uo
-EV
 WZ
-zI
-zI
-zI
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -53470,10 +53477,10 @@ WZ
 WZ
 WZ
 WZ
-Lo
-Rs
-sG
-ng
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -53692,10 +53699,10 @@ WZ
 WZ
 WZ
 WZ
-CG
-Gi
-ym
-Tf
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -53914,10 +53921,10 @@ WZ
 WZ
 WZ
 WZ
-Qf
-lR
-Uo
-EB
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ
@@ -54136,10 +54143,10 @@ WZ
 WZ
 WZ
 WZ
-Lo
-AR
-sG
-ng
+WZ
+WZ
+WZ
+WZ
 WZ
 WZ
 WZ

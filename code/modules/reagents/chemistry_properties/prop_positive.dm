@@ -126,6 +126,7 @@
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	rarity = PROPERTY_UNCOMMON
 	max_level = 1
+	value = 2
 
 /datum/chem_property/positive/hemostatic/process(mob/living/effected_mob, potency = 1, delta_time)
 	var/mob/living/carbon/human/effected_human = effected_mob

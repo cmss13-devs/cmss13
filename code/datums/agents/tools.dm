@@ -8,9 +8,9 @@
 	req_role = null
 	listed_products = list(
 		list("<h2>WEAPONS</h2>", -1, null, null, null),
-		list("Configured Stunbaton", 25, /obj/item/weapon/melee/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
+		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
 		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
-		list("Chloroform Cloth", 18, /obj/item/weapon/melee/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
+		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 
 		list("<h2>ONE-USE TOOLS</h2>", -1, null, null, null),
 		list("Experimental Stimulant Pills", 20, /obj/item/storage/pill_bottle/ultrazine/antag, "white", "Useful stimulants that allow you to resist stamina damage. Lasts for approximately 2 minutes. Take only 1 pill. Use with care."),

@@ -59,8 +59,19 @@
 /datum/component/bad_leg/proc/stumble(mob/living/carbon/human/parent_human)
 	SIGNAL_HANDLER
 
+	///This prevents weird shit like corpses being dragged triggering the messages.
+	if(parent_human.stat || parent_human.buckled && !HAS_TRAIT(parent_human, TRAIT_USING_WHEELCHAIR) || parent_human.is_mob_incapacitated() || parent_human.is_mob_restrained())
+		return
+
 	if(parent_human.throwing == TRUE)
 		return // unaffected on throws
+
+	if(HAS_TRAIT(parent_human, TRAIT_USING_WHEELCHAIR))
+		if(last_message_time + MESSAGE_COOLDOWN * 10 < world.time) //longer cooldown if using wheelchairs.
+			parent_human.visible_message(SPAN_NOTICE("[parent_human] wheels \himself with \his wheelchair."), SPAN_NOTICE("Your wheelchair lets you move while resting your [affected_limb.display_name], lessening the suffering on it."))
+			last_message_time = world.time
+		steps_walking = max(steps_walking - 1, 0)
+		return
 
 	if(HAS_TRAIT(parent_human, TRAIT_HOLDS_CANE))
 		if(last_message_time + MESSAGE_COOLDOWN * 10 < world.time) //longer cooldown if using canes

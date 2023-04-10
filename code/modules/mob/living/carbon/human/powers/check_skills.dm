@@ -1,6 +1,10 @@
 /mob/living/carbon/human/verb/checkSkills()
 	set name = "Check Skills"
 	set category = "IC"
+	if(!skills) //Stops null skills from a causing a runtime
+		to_chat(usr, SPAN_NOTICE("Unable to open the Skills Menu due to having null skills."))
+		return
+
 	skills.tgui_interact(src)
 
 /datum/skills/ui_state(mob/user)
@@ -25,11 +29,6 @@
 
 	data["skillset_name"] = name
 	data["owner"] = owner
-
-
-	if(!skills)
-		data["skills"] = null
-		return data // they have no skills =  show the null skills menu
 
 	var/list/skills_data_list = list()
 

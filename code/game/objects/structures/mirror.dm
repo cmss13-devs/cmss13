@@ -122,7 +122,7 @@
 			return
 		user.visible_message(SPAN_WARNING("[user] smashes [src] with [target]'s skull!"), SPAN_WARNING("You smash [src] with [target]'s skull!"))
 		head_target.take_damage(5)
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(prob(I.force * 2))
 		user.visible_message(SPAN_WARNING("[user] smashes [src] with [I]!"), SPAN_WARNING("You smash [src] with [I]!"))

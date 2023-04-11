@@ -1,0 +1,4 @@
+author: "Totalepicness"
+delete-after: True
+changes:
+  - bugfix: "Fixed an oversight that resulted in ASRS attempting to spawn in deprecated L42A ammo crates, causing it to spawn nothing."

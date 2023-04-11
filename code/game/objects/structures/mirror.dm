@@ -100,10 +100,6 @@
 
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
-	if(shattered && !istype(I, /obj/item/grab))
-		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
-		user.visible_message(SPAN_WARNING("[user] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
-		return
 	if(istype(I, /obj/item/grab))
 		if(user.grab_level < GRAB_AGGRESSIVE)
 			to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
@@ -123,6 +119,10 @@
 		user.visible_message(SPAN_WARNING("[user] smashes [src] with [target]'s skull!"), SPAN_WARNING("You smash [src] with [target]'s skull!"))
 		head_target.take_damage(5)
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		return
+	if(shattered)
+		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
+		user.visible_message(SPAN_WARNING("[user] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
 		return
 	if(prob(I.force * 2))
 		user.visible_message(SPAN_WARNING("[user] smashes [src] with [I]!"), SPAN_WARNING("You smash [src] with [I]!"))

@@ -11,6 +11,14 @@
 	icon_state = "squares"
 	},
 /area/space)
+"ap" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "aG" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -28,28 +36,84 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood/ship,
 /area/space)
+"bw" = (
+/obj/structure/bed,
+/obj/structure/window/reinforced/toughened{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/item/bedsheet/orange,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "ck" = (
-/obj/structure/bookcase{
-	icon_state = "book-5";
-	pixel_y = 18;
-	pixel_x = 2;
-	density = 0
+/obj/structure/toilet{
+	dir = 8
 	},
 /turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "blue"
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"cn" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/space)
+"cr" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/space)
+"cz" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/space)
+"cK" = (
+/obj/structure/surface/table,
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
 	},
 /area/space)
 "cX" = (
-/obj/structure/bookcase{
-	icon_state = "book-5";
-	pixel_y = 18;
-	pixel_x = 2;
-	density = 0
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	density = 0;
+	pixel_y = 16
 	},
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "blue"
+	icon_state = "whitetan"
+	},
+/area/space)
+"cY" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/corsat{
+	icon_state = "yellowcorner";
+	dir = 4
+	},
+/area/space)
+"dx" = (
+/obj/structure/window/framed/corsat/indestructible,
+/turf/open/floor/plating,
+/area/space)
+"dy" = (
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/head/chefhat,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
 	},
 /area/space)
 "dE" = (
@@ -62,7 +126,14 @@
 	pixel_y = 25
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/space)
+"dT" = (
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
 	},
 /area/space)
 "ee" = (
@@ -85,6 +156,13 @@
 	icon_state = "greencorner"
 	},
 /area/space)
+"eA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clothing/gloves/yellow,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "eB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = null
@@ -94,10 +172,40 @@
 	icon_state = "green"
 	},
 /area/space)
+"eG" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"eJ" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 1;
+	name = "\improper Brig Cell 2"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"eO" = (
+/turf/open/floor/corsat{
+	icon_state = "yellowcorner"
+	},
+/area/space)
 "eX" = (
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "green"
+	},
+/area/space)
+"fe" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "WY_meeting";
+	name = "\improper Meeting Room Shutters";
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "sigma"
 	},
 /area/space)
 "fl" = (
@@ -111,7 +219,23 @@
 	icon_state = "N"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 1;
+	icon_state = "white"
+	},
+/area/space)
+"fD" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/space)
+"fI" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Laundry Room"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
 	},
 /area/space)
 "fX" = (
@@ -127,6 +251,51 @@
 	icon_state = "green"
 	},
 /area/space)
+"gh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"gj" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/taperecorder,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"gH" = (
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_x = -1;
+	pixel_y = 13
+	},
+/obj/item/tool/mop,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"gK" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"gL" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/wy_mre,
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/space)
 "gW" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -135,12 +304,68 @@
 	icon_state = "green"
 	},
 /area/space)
+"ha" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/processor{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"ho" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "whitetancorner"
+	},
+/area/space)
 "hu" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "darkgreen"
+	},
+/area/space)
+"hz" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"hG" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/space)
+"hK" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "whitetancorner"
+	},
+/area/space)
+"hZ" = (
+/obj/structure/closet/secure_closet/brig{
+	pixel_y = 16;
+	pixel_x = 7;
+	density = 0
+	},
+/obj/structure/closet/secure_closet/brig{
+	pixel_y = 16;
+	pixel_x = -7;
+	density = 0
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"id" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
 	},
 /area/space)
 "iw" = (
@@ -154,11 +379,66 @@
 	},
 /turf/open/floor/wood/ship,
 /area/space)
+"iP" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "greencorner"
+	},
+/area/space)
+"iT" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 3
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -8
+	},
+/obj/item/tool/kitchen/rollingpin,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
 "iU" = (
 /obj/structure/closet/crate/internals,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "green"
+	},
+/area/space)
+"iV" = (
+/obj/structure/machinery/autolathe/full,
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"je" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 19
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"jm" = (
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"jE" = (
+/obj/structure/machinery/shower{
+	pixel_y = 21
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/corsat{
+	icon_state = "damaged1"
 	},
 /area/space)
 "jY" = (
@@ -182,9 +462,30 @@
 	icon_state = "green"
 	},
 /area/space)
+"ky" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/suit/storage/hazardvest/blue,
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"kF" = (
+/obj/structure/machinery/power/smes,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "kO" = (
 /obj/structure/window/framed/corsat/research,
 /turf/open/floor/plating,
+/area/space)
+"kV" = (
+/obj/structure/surface/table,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "tan"
+	},
 /area/space)
 "kW" = (
 /obj/structure/machinery/sleep_console{
@@ -202,10 +503,46 @@
 	icon_state = "green"
 	},
 /area/space)
+"lo" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/space)
+"lq" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet/rd,
+/turf/open/floor/wood/ship,
+/area/space)
+"lv" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/milosoup{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/space)
 "lD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/corsat{
 	icon_state = "squares"
+	},
+/area/space)
+"lE" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"lI" = (
+/turf/open/floor/corsat{
+	icon_state = "red"
 	},
 /area/space)
 "lS" = (
@@ -213,6 +550,70 @@
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "green"
+	},
+/area/space)
+"lT" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/space)
+"md" = (
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/space)
+"mh" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/space)
+"mn" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/space)
+"mv" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/space)
+"mx" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"mE" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/space)
+"mV" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	name = "\improper Telecomms"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
 	},
 /area/space)
 "nb" = (
@@ -225,6 +626,12 @@
 	icon_state = "green"
 	},
 /area/space)
+"ng" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "nq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
 	req_access = null
@@ -234,11 +641,27 @@
 	icon_state = "green"
 	},
 /area/space)
+"ns" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/space)
 "nz" = (
 /obj/structure/closet/coffin,
 /turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "green"
+	icon_state = "greencorner"
+	},
+/area/space)
+"nG" = (
+/obj/structure/machinery/autolathe/full,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "yellow"
 	},
 /area/space)
 "nJ" = (
@@ -250,13 +673,29 @@
 	icon_state = "green"
 	},
 /area/space)
+"nQ" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
 "nS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	layer = 2.5
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 8;
+	icon_state = "whitecorner"
+	},
+/area/space)
+"nT" = (
+/obj/structure/showcase{
+	icon_state = "broadcast receiver";
+	name = "Subspace Receiver"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
 	},
 /area/space)
 "nY" = (
@@ -281,6 +720,27 @@
 	icon_state = "squares"
 	},
 /area/space)
+"oL" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"oM" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/space)
+"oQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/space)
 "oT" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -296,20 +756,56 @@
 	icon_state = "green"
 	},
 /area/space)
-"pB" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 18
-	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 18
+"pa" = (
+/obj/vehicle/powerloader/ft{
+	dir = 4
 	},
 /turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/space)
+"pc" = (
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/space)
+"pB" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{
+	hacked = 1;
+	name = "\improper Response Team Automated Guns Rack";
+	use_power = 0;
+	use_snowflake_points = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"pE" = (
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "brown"
+	},
+/area/space)
+"pK" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"qu" = (
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	icon_state = "blue"
+	name = "\improper Brig Cell 3"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"qD" = (
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/corsat{
+	icon_state = "squares"
 	},
 /area/space)
 "qF" = (
@@ -325,10 +821,60 @@
 	icon_state = "green"
 	},
 /area/space)
+"qV" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/space)
+"rc" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/corsat{
+	icon_state = "damaged1"
+	},
+/area/space)
 "ro" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
+/turf/open/floor/wood/ship,
+/area/space)
+"rB" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"rF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "tan"
+	},
+/area/space)
+"sg" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"sq" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/space)
+"sr" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin/wy,
+/obj/item/tool/pen/clicky,
 /turf/open/floor/wood/ship,
 /area/space)
 "su" = (
@@ -336,19 +882,23 @@
 /turf/open/floor/wood/ship,
 /area/space)
 "sy" = (
-/obj/structure/reagent_dispensers/water_cooler/stacks{
-	density = 0;
-	pixel_x = -9;
-	pixel_y = 19
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
+	icon_state = "squares"
 	},
 /area/space)
 "sA" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/wood/ship,
+/area/space)
+"sB" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "whitetan"
+	},
 /area/space)
 "sH" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -367,6 +917,17 @@
 	},
 /turf/open/floor/wood/ship,
 /area/space)
+"sX" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/plating,
+/area/space)
+"td" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/space)
 "th" = (
 /obj/structure/closet/secure_closet/surgical{
 	pixel_y = 30
@@ -381,11 +942,63 @@
 	icon_state = "darkgreen"
 	},
 /area/space)
+"ts" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellowcorner"
+	},
+/area/space)
+"tR" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "WY_meeting";
+	name = "\improper Meeting Room Shutters"
+	},
+/obj/structure/window/framed/corsat,
+/turf/open/floor/plating,
+/area/space)
 "tW" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer3/laptop/secure_data,
+/turf/open/floor/wood/ship,
+/area/space)
+"tX" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/space)
+"ul" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/space)
+"uv" = (
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "blue"
+	icon_state = "yellow"
+	},
+/area/space)
+"uR" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"uX" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/meatsteak{
+	pixel_y = -2
+	},
+/obj/item/ashtray/bronze{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
 	},
 /area/space)
 "va" = (
@@ -393,7 +1006,23 @@
 	icon_state = "E"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 4;
+	icon_state = "white"
+	},
+/area/space)
+"vh" = (
+/turf/open/floor/corsat{
+	icon_state = "yellow"
+	},
+/area/space)
+"vN" = (
+/obj/structure/window/framed/corsat/indestructible/research,
+/turf/open/floor/plating,
+/area/space)
+"vX" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
 	},
 /area/space)
 "wa" = (
@@ -402,6 +1031,13 @@
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "darkgreen"
+	},
+/area/space)
+"wE" = (
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/turf/open/floor/corsat{
+	icon_state = "brown"
 	},
 /area/space)
 "wU" = (
@@ -417,12 +1053,68 @@
 	icon_state = "green"
 	},
 /area/space)
+"xk" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/tool/lighter/zippo/gold,
+/turf/open/floor/wood/ship,
+/area/space)
+"xE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"xZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/wood/ship,
+/area/space)
+"ya" = (
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
+	},
+/area/space)
 "yj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 1;
+	icon_state = "whitecorner"
+	},
+/area/space)
+"yp" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	name = "\improper Toxicity & Poison Treatment"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"yD" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet/orange,
+/turf/open/floor/wood/ship,
+/area/space)
+"yH" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "browncorner"
+	},
+/area/space)
+"zh" = (
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "yellow"
 	},
 /area/space)
 "zC" = (
@@ -434,6 +1126,51 @@
 	icon_state = "squares"
 	},
 /area/space)
+"zD" = (
+/obj/structure/surface/rack,
+/turf/open/floor/wood/ship,
+/area/space)
+"zH" = (
+/obj/item/ashtray/bronze{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 10;
+	pixel_y = 15
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"zI" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave{
+	pixel_y = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"zN" = (
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/space)
 "zR" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -443,8 +1180,15 @@
 "zS" = (
 /obj/structure/closet/coffin,
 /turf/open/floor/corsat{
-	dir = 5;
+	dir = 1;
 	icon_state = "green"
+	},
+/area/space)
+"zT" = (
+/obj/structure/window/reinforced/toughened,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "browncorner"
 	},
 /area/space)
 "Ai" = (
@@ -458,6 +1202,43 @@
 	icon_state = "green"
 	},
 /area/space)
+"Ak" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"Ax" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -30
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "white"
+	},
+/area/space)
+"AG" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"AO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/space)
 "AQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/corsat{
@@ -465,18 +1246,132 @@
 	icon_state = "green"
 	},
 /area/space)
+"AR" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"AU" = (
+/turf/open/floor/corsat{
+	icon_state = "arrow_east"
+	},
+/area/space)
+"AY" = (
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/washing_machine{
+	layer = 3.5;
+	pixel_y = 15
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Bk" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"Bu" = (
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"Bz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/colony{
+	name = "Barracks"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "BG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "whitecorner"
+	},
+/area/space)
+"BM" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/glass,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "tan"
+	},
+/area/space)
+"BT" = (
+/obj/structure/window/framed/corsat,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "WY_meeting";
+	name = "\improper Meeting Room Shutters"
+	},
+/turf/open/floor/plating,
+/area/space)
+"Cm" = (
+/obj/structure/showcase{
+	icon_state = "hub";
+	name = "Telecommunication Hub"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"Cv" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"Cw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/colony{
+	name = "Cryogenics"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"CK" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/toy/deck{
+	pixel_x = 8;
+	pixel_y = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/space)
 "CU" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/corsat{
-	icon_state = "green"
+	dir = 1;
+	icon_state = "tan"
 	},
 /area/space)
 "De" = (
@@ -504,6 +1399,18 @@
 	icon_state = "green"
 	},
 /area/space)
+"Dr" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/space)
+"DF" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "DH" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/glass,
@@ -521,11 +1428,61 @@
 	},
 /turf/open/floor/wood/ship,
 /area/space)
+"DL" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"DO" = (
+/obj/structure/showcase{
+	icon_state = "relay";
+	name = "Telecommunication Relay"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "DT" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black,
 /obj/item/tool/pen/blue,
 /turf/open/floor/wood/ship,
+/area/space)
+"DZ" = (
+/turf/open/floor/corsat{
+	icon_state = "browncorner"
+	},
+/area/space)
+"Eg" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	name = "\improper Medical & Surgery"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"El" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/drinks/shaker,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"EB" = (
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/corsat{
+	icon_state = "yellow"
+	},
+/area/space)
+"EC" = (
+/turf/open/floor/corsat{
+	icon_state = "yellowcorner";
+	dir = 4
+	},
 /area/space)
 "ED" = (
 /obj/structure/morgue,
@@ -537,6 +1494,44 @@
 "ES" = (
 /obj/docking_port/stationary/emergency_response/idle_port2,
 /turf/open/floor/plating,
+/area/space)
+"EW" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/beer{
+	density = 0;
+	pixel_y = 23
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"Fs" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "brown"
+	},
+/area/space)
+"FA" = (
+/obj/structure/bed,
+/obj/structure/window/reinforced/toughened{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/item/bedsheet/orange,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"FD" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/tool/weldingtool/largetank,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/space)
 "FE" = (
 /obj/structure/machinery/sleep_console,
@@ -557,6 +1552,18 @@
 	icon_state = "green"
 	},
 /area/space)
+"Gx" = (
+/obj/item/tool/weldpack{
+	pixel_x = 5
+	},
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack{
+	pixel_x = -2
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "Gz" = (
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap/hidden,
@@ -565,13 +1572,70 @@
 	icon_state = "green"
 	},
 /area/space)
+"GM" = (
+/obj/structure/machinery/blackbox_recorder,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "He" = (
+/turf/open/floor/wood/ship,
+/area/space)
+"Hr" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"HN" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet/captain,
 /turf/open/floor/wood/ship,
 /area/space)
 "Id" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony,
 /turf/open/floor/corsat{
 	icon_state = "squares"
+	},
+/area/space)
+"Ik" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/sink{
+	pixel_y = 23
+	},
+/turf/open/floor/corsat{
+	icon_state = "damaged1"
+	},
+/area/space)
+"Im" = (
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/space)
+"Iv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "theta"
+	},
+/area/space)
+"IB" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"II" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellowcorner"
 	},
 /area/space)
 "Jk" = (
@@ -584,11 +1648,106 @@
 	icon_state = "darkgreen"
 	},
 /area/space)
+"Jr" = (
+/turf/open/floor/corsat{
+	icon_state = "redcorner"
+	},
+/area/space)
 "Jt" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "darkgreencorner"
+	},
+/area/space)
+"Ju" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control{
+	id = "WY_meeting";
+	name = "Meeting Room Shutters";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_access_txt = "1"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"Jw" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood/ship,
+/area/space)
+"Jy" = (
+/obj/structure/reagent_dispensers/beerkeg{
+	density = 0
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"JK" = (
+/turf/open/floor/corsat{
+	icon_state = "whitetancorner"
+	},
+/area/space)
+"Kd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"Ku" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 22
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"KC" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1;
+	name = "\improper Meeting Room"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "WY_meeting";
+	name = "\improper Meeting Room Shutters";
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "sigma"
+	},
+/area/space)
+"KD" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/space)
+"KF" = (
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "whitetan"
+	},
+/area/space)
+"KK" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"KM" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "redcorner"
 	},
 /area/space)
 "KP" = (
@@ -600,15 +1759,26 @@
 	icon_state = "green"
 	},
 /area/space)
+"KZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/tool/wet_sign,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "white"
+	},
+/area/space)
 "Le" = (
 /obj/structure/morgue,
 /turf/open/floor/corsat{
-	icon_state = "green"
+	dir = 8;
+	icon_state = "greencorner"
 	},
 /area/space)
 "LF" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/space/basic,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
 /area/space)
 "MA" = (
 /obj/structure/bed,
@@ -616,6 +1786,12 @@
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "green"
+	},
+/area/space)
+"MP" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "redcorner"
 	},
 /area/space)
 "MQ" = (
@@ -636,6 +1812,16 @@
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "darkgreen"
+	},
+/area/space)
+"MW" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/turf/open/floor/corsat{
+	icon_state = "whitetan"
 	},
 /area/space)
 "Nf" = (
@@ -665,18 +1851,29 @@
 	icon_state = "W"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 8;
+	icon_state = "white"
+	},
+/area/space)
+"NO" = (
+/obj/structure/showcase{
+	icon_state = "bus"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
+"NS" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellowcorner"
 	},
 /area/space)
 "Oc" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
+/turf/open/floor/corsat{
+	icon_state = "arrow_west"
 	},
-/obj/item/storage/box/monkeycubes,
-/turf/open/space/basic,
 /area/space)
 "Oo" = (
 /obj/structure/surface/rack,
@@ -691,6 +1888,24 @@
 	icon_state = "green"
 	},
 /area/space)
+"Oq" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/gibber{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"Ov" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "OE" = (
 /obj/structure/closet/wardrobe/chemistry_white,
 /turf/open/floor/corsat{
@@ -699,18 +1914,44 @@
 	},
 /area/space)
 "OG" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
 /turf/open/floor/corsat{
-	icon_state = "greencorner"
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/space)
+"Pc" = (
+/turf/open/floor/corsat{
+	icon_state = "brown"
 	},
 /area/space)
 "PL" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Dormitories"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "blue"
+	icon_state = "squareswood"
+	},
+/area/space)
+"Qb" = (
+/obj/structure/machinery/shower{
+	pixel_y = 21
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/space)
+"Qk" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
 	},
 /area/space)
 "QQ" = (
@@ -724,8 +1965,25 @@
 "QT" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/space)
+"QV" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	pixel_y = 18;
+	pixel_x = 2;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "QZ" = (
 /turf/open/floor/plating,
+/area/space)
+"Rb" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
 /area/space)
 "Rd" = (
 /obj/structure/machinery/chem_master,
@@ -734,11 +1992,81 @@
 	icon_state = "green"
 	},
 /area/space)
+"Rr" = (
+/obj/structure/window/framed/corsat/cell/security,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Rv" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/gloves{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/masks,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"RB" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"RE" = (
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"RG" = (
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"RL" = (
+/obj/structure/window/framed/corsat,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "WY_meeting";
+	name = "\improper Meeting Room Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"RQ" = (
+/turf/open/floor/corsat{
+	icon_state = "theta"
+	},
+/area/space)
 "Si" = (
 /obj/structure/bed/roller,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "green"
+	},
+/area/space)
+"Sr" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "browncorner"
+	},
+/area/space)
+"St" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 29
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
 	},
 /area/space)
 "Sw" = (
@@ -760,6 +2088,11 @@
 	},
 /turf/open/floor/wood/ship,
 /area/space)
+"SI" = (
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/space)
 "SJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/firstaid/fire,
@@ -770,6 +2103,61 @@
 "SM" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood/ship,
+/area/space)
+"SO" = (
+/obj/structure/machinery/cryopod/right{
+	pixel_y = 6
+	},
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/space)
+"SY" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/plate{
+	pixel_y = 2
+	},
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"Tf" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel{
+	amount = 10
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"Tk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 30
+	},
+/turf/open/floor/corsat{
+	icon_state = "white"
+	},
 /area/space)
 "Tx" = (
 /obj/structure/bed/roller,
@@ -787,6 +2175,38 @@
 	icon_state = "green"
 	},
 /area/space)
+"TT" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"Ub" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "tan"
+	},
+/area/space)
+"Ud" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "brown"
+	},
+/area/space)
+"Uk" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper Toilet"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/space)
 "Us" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -796,12 +2216,40 @@
 "Ux" = (
 /turf/open/space/basic,
 /area/space)
+"UV" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/space)
 "Vm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "white"
+	},
+/area/space)
+"Vp" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/space)
+"VZ" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "yellow"
+	},
+/area/space)
+"Wo" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+	name = "Engineering"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
 	},
 /area/space)
 "Wu" = (
@@ -809,16 +2257,20 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "whitecorner"
 	},
 /area/space)
+"WD" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_y = 19
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "WU" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/recharger,
-/obj/item/device/defibrillator/upgraded,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/roller,
-/turf/open/space/basic,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
 /area/space)
 "WW" = (
 /obj/structure/bed/chair,
@@ -834,6 +2286,12 @@
 	icon_state = "green"
 	},
 /area/space)
+"Xj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper,
+/obj/item/tool/pen,
+/turf/open/floor/wood/ship,
+/area/space)
 "Xn" = (
 /obj/structure/surface/rack,
 /turf/open/floor/corsat{
@@ -841,20 +2299,107 @@
 	icon_state = "green"
 	},
 /area/space)
+"Xo" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/corsat{
+	icon_state = "sterileplate"
+	},
+/area/space)
+"Xs" = (
+/obj/structure/machinery/door_control{
+	pixel_y = -22;
+	name = "Toilet Shutters Button";
+	id = "upp_toilet"
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
 "Xt" = (
 /turf/open/floor/corsat{
 	icon_state = "green"
+	},
+/area/space)
+"Ya" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/closet/medical_wall{
+	pixel_x = 30
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "white"
 	},
 /area/space)
 "Yb" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood/ship,
 /area/space)
+"Yj" = (
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/space)
+"Yt" = (
+/obj/structure/bed/chair/comfy/orange,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"YB" = (
+/obj/structure/machinery/photocopier{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/space)
+"YN" = (
+/obj/structure/bedsheetbin,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
+"YZ" = (
+/obj/structure/sink{
+	pixel_y = 23
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
 "Za" = (
 /obj/structure/morgue,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "green"
+	},
+/area/space)
+"Zl" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Fridge"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/space)
+"ZH" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"ZV" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
 	},
 /area/space)
 
@@ -955,21 +2500,21 @@ Ux
 Ux
 QT
 QT
+dx
+dx
+dx
 QT
 QT
 QT
+dx
+dx
+dx
 QT
 QT
 QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
+dx
+dx
+dx
 QT
 QT
 Ux
@@ -1015,8 +2560,8 @@ va
 BG
 QT
 QT
-QT
-QT
+dx
+dx
 QT
 QT
 Ux
@@ -1033,10 +2578,10 @@ Ux
 Ux
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
+Yt
+zH
+qD
+ap
 fX
 Vm
 QZ
@@ -1056,10 +2601,10 @@ QZ
 QZ
 fy
 fX
-Ux
-Ux
-Ux
-Ux
+Tf
+iV
+ky
+nG
 QT
 Ux
 Ux
@@ -1073,13 +2618,13 @@ Ux
 Ux
 Ux
 Ux
-Ux
 QT
-Ux
-Ux
-Ux
-Ux
-al
+QT
+Yt
+qD
+gj
+ap
+fX
 Vm
 QZ
 QZ
@@ -1096,14 +2641,14 @@ QZ
 QZ
 ES
 QZ
-fy
+KZ
+Wo
 al
-Ux
-Ux
-Ux
-Ux
+WU
+al
+vh
 QT
-Ux
+QT
 Ux
 Ux
 Ux
@@ -1116,12 +2661,12 @@ QT
 QT
 QT
 QT
-QT
-Ux
-Ux
-Ux
-Ux
 al
+al
+al
+al
+al
+fX
 Vm
 QZ
 QZ
@@ -1139,15 +2684,15 @@ QZ
 QZ
 QZ
 fy
+WU
 al
-Ux
-Ux
-Ux
-Ux
+WU
+WU
+ts
+zh
 QT
-QT
-QT
-QT
+dx
+dx
 QT
 Ux
 Ux
@@ -1155,14 +2700,14 @@ Ux
 (8,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+GM
+TT
+al
+al
+al
+al
+al
+al
 fX
 Vm
 QZ
@@ -1182,14 +2727,14 @@ QZ
 QZ
 fy
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+cY
+al
+WU
+al
+ts
+oL
+oL
+zh
 QT
 Ux
 Ux
@@ -1197,16 +2742,16 @@ Ux
 (9,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+qD
+KK
+qD
+al
+al
+qD
+al
+al
 fX
-Vm
+Tk
 QZ
 QZ
 QZ
@@ -1222,31 +2767,31 @@ QZ
 QZ
 QZ
 QZ
-fy
+Ax
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+uv
+eO
+Bk
+mx
+EC
+Gx
+rB
+vh
+dx
 Ux
 Ux
 "}
 (10,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+al
+al
+fX
+al
+AG
 fX
 Vm
 QZ
@@ -1266,30 +2811,30 @@ QZ
 QZ
 fy
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+NS
+EB
+cn
+pa
+KD
+pK
+ng
+vh
+dx
 Ux
 Ux
 "}
 (11,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+CK
 al
+Rr
+al
+al
+fX
+al
+al
+WU
 Vm
 QZ
 QZ
@@ -1307,31 +2852,31 @@ QZ
 QZ
 QZ
 fy
+Wo
 al
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+EB
+ul
+AU
+KD
+eA
+lD
+VZ
+dx
 Ux
 Ux
 "}
 (12,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+lE
 al
+eJ
+al
+al
+fX
+al
+al
+WU
 Vm
 QZ
 QZ
@@ -1348,31 +2893,31 @@ QZ
 QZ
 QZ
 QZ
-fy
+KZ
+WU
 al
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+ts
+gH
+oL
+II
+lD
+FD
+vh
+dx
 Ux
 Ux
 "}
 (13,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+hZ
+al
+fX
+al
+al
 fX
 Vm
 QZ
@@ -1392,14 +2937,14 @@ QZ
 QZ
 fy
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+St
+EC
+al
+eO
+hz
+sg
+hz
+Yj
 QT
 Ux
 Ux
@@ -1407,19 +2952,20 @@ Ux
 (14,1,1) = {"
 Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+lD
+al
+qu
+al
+al
+fX
+al
+al
 fX
 nS
 NK
 NK
 NK
+Ya
 NK
 NK
 NK
@@ -1427,17 +2973,16 @@ NK
 NK
 NK
 NK
-NK
-NK
+Ya
 NK
 NK
 NK
 yj
 fX
 fX
-Ux
-Ux
-Ux
+mn
+ZH
+mh
 fX
 fX
 fX
@@ -1447,20 +2992,20 @@ Ux
 Ux
 "}
 (15,1,1) = {"
-QT
-QT
-QT
-QT
-QT
-QT
-QT
 Ux
-Ux
-fX
-fX
-fX
+QT
+lE
 al
+Rr
 al
+eG
+fX
+Dr
+AO
+fX
+fX
+Oc
+Oc
 fX
 fX
 fX
@@ -1472,8 +3017,8 @@ fX
 fX
 fX
 fX
-al
-al
+AU
+AU
 fX
 fX
 fX
@@ -1490,20 +3035,19 @@ Ux
 "}
 (16,1,1) = {"
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
 QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+fX
+fX
+fX
+CU
+CU
+fX
+fX
+md
+oQ
 fX
 th
 Jk
@@ -1511,41 +3055,41 @@ Ns
 fX
 fX
 KP
+al
 nq
 fX
 fX
-al
-al
-al
+md
+oQ
+fX
 fX
 fX
 Xn
 Us
 jY
-fX
+vN
 Dn
 al
 Xt
 QT
-Ux
+QT
 Ux
 "}
 (17,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+ZV
+fX
+Jw
+aG
+Yb
+fX
+ho
+CU
+JK
+fX
+MP
+al
+Jr
 fX
 hu
 al
@@ -1553,41 +3097,41 @@ ee
 kO
 eB
 el
+al
 qF
 nJ
 fX
+MP
 al
-al
-al
-fX
+Jr
+sX
 QQ
 Sw
 al
 FE
-fX
+vN
 ED
 al
 Le
-QT
-Ux
+dT
+dx
 Ux
 "}
 (18,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+Ik
+ns
+He
+AR
+He
+PL
+CU
+CU
+ya
+fX
+cz
+al
+lI
 fX
 MV
 al
@@ -1596,40 +3140,40 @@ kO
 gW
 al
 al
+al
 ll
 fX
+cz
 al
-al
-al
-fX
+lI
+sX
 Xi
 NC
-al
+WU
 kW
-fX
+vN
 Dn
 al
+al
 Xt
-QT
-Ux
+dx
 Ux
 "}
 (19,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+ck
+fX
+yD
+xZ
+zD
+fX
+hK
+rF
+id
+fX
+cz
+al
+lI
 fX
 wa
 Jt
@@ -1638,40 +3182,40 @@ kO
 Rd
 al
 al
+WU
 ob
 fX
+cz
 al
-al
-al
-fX
+lI
+sX
 Gz
 NC
-al
+WU
 bk
-fX
+vN
 zS
-eX
+al
 nz
-QT
-Ux
+Im
+dx
 Ux
 "}
 (20,1,1) = {"
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+fX
+fX
+fX
+cX
+kV
+cK
+fX
+cz
+al
+lI
 fX
 kO
 kO
@@ -1680,40 +3224,40 @@ fX
 Ai
 al
 al
+WU
 OE
 fX
 dO
 al
-al
+KM
 fX
 MQ
 De
-al
+RQ
 Xt
 fX
-fX
+vN
 zC
+vN
 fX
 QT
-Ux
 Ux
 "}
 (21,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+Rb
+fX
+Jw
+sr
+xk
+fX
+ho
+kV
+lv
+fX
+cz
+al
+lI
 fX
 Nf
 Us
@@ -1722,82 +3266,82 @@ Us
 el
 al
 al
+RQ
+al
+Eg
 al
 al
 al
+yp
 al
-al
-al
-al
-al
+WU
 al
 qF
 Us
 el
 al
-OG
+Xt
+fX
 QT
-Ux
 Ux
 "}
 (22,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+Ik
+ns
+He
+AR
+He
+PL
+CU
+Ub
+qV
+fX
+cz
+al
+lI
 fX
 gf
 al
+RQ
+al
+WU
+WU
 al
 al
 al
+WU
 al
 al
 al
+WU
 al
-al
-al
-al
-al
-al
+WU
 al
 dE
 eX
 eX
 Gb
-al
-CU
-QT
-Ux
+qF
+Qk
+dx
 Ux
 "}
 (23,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+RB
+fX
+HN
+xZ
+Yb
+fX
+hK
+rF
+id
+fX
+cz
+al
+lI
 fX
 TL
 Gb
@@ -1805,41 +3349,41 @@ al
 al
 al
 al
+al
 dE
 kq
 fX
+MP
 al
-al
-al
+Jr
 fX
-Gb
+iP
+RQ
 al
 ek
 ou
 lD
 WW
-al
+WU
 oX
-QT
-Ux
+dx
 Ux
 "}
 (24,1,1) = {"
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+fX
+fX
+fX
+cX
+kV
+uX
+fX
+cz
+al
+lI
 fX
 fX
 oT
@@ -1847,138 +3391,139 @@ Gg
 MA
 Si
 Gg
+eX
 Tx
 fX
 fX
-Ux
-Ux
-Ux
-fX
+cz
+al
+lI
+sX
 iU
 al
+WU
 ek
 SJ
-lD
+Rv
 WW
-al
+WU
 wU
-QT
-Ux
+dx
 Ux
 "}
 (25,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-LF
-Ux
-Ux
+dx
+ZV
 fX
+Jw
+aG
+Yb
 fX
+ho
+kV
+MW
 fX
+cz
+al
+KM
+td
 fX
+sX
+sX
+sX
 fX
+sX
+sX
+sX
 fX
-fX
-fX
-Ux
-Ux
-Ux
-Ux
-fX
+fD
+UV
+al
+lI
+sX
 ka
 al
+WU
 ek
 Dk
 lD
 WW
-al
+WU
 Oo
-QT
-Ux
+dx
 Ux
 "}
 (26,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+dx
+Ik
+ns
+He
+AR
+He
+PL
+CU
+Ub
+qV
 fX
+cz
+al
+al
+KM
+hG
+hG
+hG
+hG
+hG
+hG
+hG
+hG
+hG
+UV
+al
+al
+lI
+sX
 lS
 Gb
+al
 qF
 Us
 Us
 el
 dE
 AQ
-QT
-Ux
+dx
 Ux
 "}
 (27,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Oc
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+dx
+ck
+fX
+lq
+xZ
+DF
+fX
+hK
+rF
+id
+fX
+cz
+al
+al
+Jr
+MP
+al
+al
+Jr
+sq
+MP
+al
+al
+Jr
+MP
+al
+al
+lI
 fX
 fX
 nY
@@ -1986,114 +3531,114 @@ nb
 nb
 nb
 Gg
+eX
 ab
 fX
 QT
 Ux
-Ux
 "}
 (28,1,1) = {"
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
+fX
+fX
+fX
+fX
+fX
+fX
+cX
+BM
+cK
+fX
+cz
+al
+Jr
+mE
+fX
+fe
+KC
+RL
+RL
+RL
+fe
+KC
+fX
+tX
+MP
+al
+KM
+pc
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
+fX
 QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-WU
-Ux
-Ux
-fX
-fX
-fX
-He
-He
-fX
-fX
-fX
-Ux
-Ux
-Ux
-Ux
-Ux
-fX
-fX
-fX
-fX
-fX
-fX
-fX
-fX
-QT
-Ux
 Ux
 "}
 (29,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+Rb
+fX
+Jw
+tW
+Xj
+fX
+ho
+kV
+gL
+fX
+cz
+al
+lI
 fX
 fX
-fl
-He
-He
 He
 He
 fl
+Yb
+fl
+He
+He
 fX
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+cz
+al
+al
+lI
+fX
+oM
+Ud
+Ud
+Ud
+zT
+jm
+RE
+pB
 QT
-Ux
 Ux
 "}
 (30,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+Ik
+ns
+He
+AR
+He
+PL
+CU
+Ub
+qV
 fX
-ck
+fX
+fI
+fX
+fX
+QV
+He
 He
 He
 He
@@ -2102,41 +3647,41 @@ He
 He
 SM
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
+cz
+al
+al
+KM
+fX
+Sr
+al
+WU
+DZ
+OG
+OG
+OG
+OG
+dx
 Ux
 "}
 (31,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+dx
+RB
 fX
-cX
+lq
+xZ
+DF
+fX
+sB
+sB
+KF
+fX
+YN
+al
+al
+tR
+QV
 He
+ro
 ro
 ro
 ro
@@ -2144,125 +3689,125 @@ ro
 He
 sM
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
-Ux
+cz
+al
+al
+al
+Bz
+al
+WU
+RQ
+Pc
+FA
+gK
+gK
+gK
+dx
 Ux
 "}
 (32,1,1) = {"
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
 QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
 fX
-tW
+fX
+fX
+fX
+fX
+Bu
+SY
+El
+fX
+AY
+sy
+al
+BT
+YB
 He
 Yb
 DH
 Yb
 iw
+iw
 He
 bv
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+zN
+sq
+sq
+MP
+WU
+al
+al
+DZ
+Fs
+OG
+OG
+OG
 QT
-Ux
+QT
 Ux
 "}
 (33,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
 Ux
 QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+EW
+Bu
+Bu
+Bu
+Bu
+Bu
+Bu
+nQ
 fX
-PL
+fX
+fX
+fX
+BT
+WD
 He
 Yb
 SE
 aG
+Ju
 Yb
 He
 sA
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+fX
+fX
+fX
+fX
+fX
+Ak
+al
+Pc
+FA
+gK
+gK
+wE
+dx
 Ux
 Ux
 "}
 (34,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
 Ux
 QT
-Ux
-Ux
-Ux
-QT
-Ux
-Ux
-Ux
-Ux
+Ku
+Bu
+Bu
+Bu
+Bu
+Bu
+Bu
+zI
 fX
-sy
+nT
+SI
+DO
+BT
+je
 He
+sO
 sO
 sO
 sO
@@ -2270,40 +3815,40 @@ sO
 su
 sH
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-QT
+Qb
+mv
+mv
+lo
+Bz
+al
+DZ
+pE
+Vp
+Vp
+Vp
+yH
+dx
 Ux
 Ux
 "}
 (35,1,1) = {"
-QT
-Ux
-Ux
-Ux
-Ux
 Ux
 QT
-Ux
-Ux
-Ux
 QT
-Ux
-Ux
-Ux
-Ux
+dy
+iT
+Oq
+ha
+Xo
+Bu
+Jy
 fX
-pB
+kF
+SI
+NO
+fX
+Cv
+He
 He
 He
 He
@@ -2312,39 +3857,37 @@ He
 He
 DT
 fX
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+Qb
+RG
+RG
+lo
+WU
+al
+Pc
+bw
+gK
+gK
+gK
+QT
 QT
 Ux
 Ux
 "}
 (36,1,1) = {"
+Ux
+Ux
 QT
+dx
+dx
+dx
+dx
 QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
+Zl
+fX
+fX
+Cm
+SI
+DL
 fX
 fX
 fX
@@ -2354,19 +3897,21 @@ fX
 fX
 fX
 fX
+fX
+fX
+jE
+RG
+RG
+rc
+fX
+fX
+fX
 QT
+dx
+dx
+dx
 QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
+Ux
 Ux
 Ux
 "}
@@ -2377,32 +3922,32 @@ Ux
 Ux
 Ux
 Ux
+Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+Bu
+Bu
+fX
+Cm
+SI
+WU
+mV
+xE
+gh
+Iv
+gh
+gh
+gh
+Iv
+gh
+gh
+Cw
+lo
+RG
+RG
+lo
+Uk
+IB
+RG
 QT
 Ux
 Ux
@@ -2419,32 +3964,32 @@ Ux
 Ux
 Ux
 Ux
+Ux
 QT
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+uR
+Hr
+fX
+DL
+SI
+WU
+WU
+Kd
+LF
+LF
+LF
+LF
+LF
+LF
+LF
+LF
+Ov
+lo
+cr
+cr
+lo
+fX
+YZ
+Xs
 QT
 Ux
 Ux
@@ -2461,6 +4006,7 @@ Ux
 Ux
 Ux
 Ux
+Ux
 QT
 QT
 QT
@@ -2470,15 +4016,14 @@ QT
 QT
 QT
 QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
-QT
+vX
+lT
+SO
+vX
+lT
+vX
+lT
+SO
 QT
 QT
 QT
@@ -2512,16 +4057,16 @@ Ux
 Ux
 Ux
 Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
-Ux
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
+QT
 Ux
 Ux
 Ux

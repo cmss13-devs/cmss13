@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - code_imp: "touched up the code for fog, allowing for mappers to make fog of any duration from round start"

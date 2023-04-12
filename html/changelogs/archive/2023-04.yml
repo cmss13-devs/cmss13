@@ -100,3 +100,41 @@
   Morrow:
   - rscadd: Chemical retrieval is now primarily corporate goons with a backup team
       of PMCs if required.
+2023-04-12:
+  CapCamIII:
+  - rscadd: DD spawn with a lucky strike pack and a zippo in their helmet.
+  - rscadd: M60 now has the box changing mechanic that smartgun has.
+  - rscadd: Adds an M16 grenadier, with attached M203, also adds M203 grenade launcher
+      and impact shells for it, only DD have it
+  - rscadd: Adds a new M16 variant, the XM177E2 Carbine, only DD have it
+  - rscadd: Dutch M16s now are marked as A1s, and use the preexisting M16A1 sprite
+      instead.
+  - rscadd: Dutch's Dozen are now equipped with an XM177 for Dutch, the medic, and
+      the flamethrower operator
+  - rscadd: Dutch's Dozen riflemen now have a 60% chance to have an M16A1, 30% chance
+      for an M16 with M203 UGL, and 10% chance for an M60 GPMG
+  - rscdel: M60 has been removed from the black market
+  - balance: DD minigun now has an integrated magharn.
+  - balance: M1911 is slightly more accurate.
+  - balance: ERT Medical Pouch now contains the 4 basic EZ injectors and a gauze.
+  - balance: DD armor now has a greater explosive protection and covers the arms and
+      legs.
+  - balance: M60 is now full auto, does more damage, and is more accurate.
+  - code_imp: Moved Dutch's Dozen presets to their own standalone folder
+  - spellcheck: DD spawn text now correctly says the Yautja mask is on Dutch's face.
+  - bugfix: DD Motion Detectors no longer pick themselves up.
+  - bugfix: DD now all have max endurance skill
+  - imageadd: Adds sprites for M203, M203 shells, XM177, and M16 Grenadier Variant
+  - maptweak: LV624 Crashed CLF ship insert M60 has been replaced with a MAR50
+  Huffie56:
+  - code_imp: replace all the variable called backItem by back_item.
+  Morrow:
+  - bugfix: Fixes healing mobs via view variables
+  Totalepicness:
+  - bugfix: Fixed an oversight that resulted in ASRS attempting to spawn in deprecated
+      L42A ammo crates, causing it to spawn nothing.
+  harryob:
+  - code_imp: touched up the code for fog, allowing for mappers to make fog of any
+      duration from round start
+  realforest2001:
+  - bugfix: Doctors displaying as surgeons now appear on crew monitor

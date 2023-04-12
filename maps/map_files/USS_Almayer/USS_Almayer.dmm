@@ -14878,6 +14878,7 @@
 "bej" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
+	},
 /area/almayer/medical/chemistry)
 "bek" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,

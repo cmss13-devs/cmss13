@@ -1,5 +1,0 @@
-author: "H20Begod"
-delete-after: True
-changes:
-  - rscadd: "Added a new verb for ghosts to join in as working joes (ONLY WHITELISTED GHOSTS)."
-  - code_imp: "Edited max spawns of the working joes to 3."

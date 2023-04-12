@@ -33,4 +33,4 @@
 
 /datum/law/capital_law/prisoner_of_war
 	name = "Prisoner of War"
-	desc = "Being a member of a currently hostile faction to the USCM. Note: UPP personnel are not always hostile."
+	desc = "Being a member of a currently hostile faction to the USCM."

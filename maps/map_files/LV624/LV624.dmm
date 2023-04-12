@@ -6181,7 +6181,6 @@
 /area/lv624/ground/river/west_river)
 "aBo" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
 	name = "Robotics Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -9052,7 +9051,6 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
 	name = "Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -9612,7 +9610,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
-	req_access = null;
 	req_one_access_txt = "104;3"
 	},
 /turf/open/floor,
@@ -11357,10 +11354,6 @@
 "aUv" = (
 /obj/item/device/flashlight,
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door_control{
-	id = "nexus_blast";
-	name = "Nexus Lockdown"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
@@ -16409,9 +16402,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"iAu" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "iAA" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -17400,9 +17390,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
-"kYg" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "kYx" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -20902,9 +20889,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
-"syA" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "szy" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
@@ -29015,7 +28999,7 @@ gwP
 gwP
 gwP
 gwP
-iAu
+gwP
 gwP
 gwP
 gwP
@@ -40412,7 +40396,7 @@ abl
 abl
 abl
 abl
-syA
+abl
 abl
 abl
 abl
@@ -58419,7 +58403,7 @@ pUm
 pUm
 acg
 acg
-kYg
+acg
 acg
 acg
 vjL

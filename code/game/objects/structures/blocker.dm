@@ -46,9 +46,14 @@
 	icon_state = "smoke"
 	opacity = TRUE
 
-/obj/structure/blocker/fog/New()
-	..()
-	dir  = pick(CARDINAL_DIRS)
+/obj/structure/blocker/fog/Initialize(mapload, time_to_dispel)
+	. = ..()
+
+	if(!time_to_dispel)
+		return INITIALIZE_HINT_QDEL
+
+	dir = pick(CARDINAL_DIRS)
+	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
 	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))

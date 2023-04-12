@@ -14,3 +14,127 @@
   - code_imp: CM's code now has support for integrated hoods for uniforms.
   realforest2001:
   - bugfix: Fixes ID locked items not spawning in presets due to load order.
+2023-04-02:
+  BeagleGaming1:
+  - rscadd: Added a Maintenance Jack for Synthetics (Experimental Vendor) and Working
+      Joes (Standard Kit). It has two modes, being able to switch between a crowbar
+      and a wrench. You can use it to unbolt doors, and, if strong enough, pry them
+      open.
+2023-04-04:
+  BeagleGaming1:
+  - soundadd: Makes the surgery sounds quieter
+  - spellcheck: Corrected the RTOs entry message typo
+  Morrow:
+  - rscadd: You can now choose your SEA rank
+  NewyearnewmeUwu:
+  - balance: Gas masks no longer provide armor.
+  Segrain:
+  - bugfix: Jamming smartguns now properly clean themselves (as they were meant to
+      be doing all along).
+  SparkleKing47:
+  - balance: Egg morpher now on a higher layer than tall grass
+  Totalepicness5:
+  - rscadd: Updates the XO vendor to include more hats,accessories and standard marine
+      pouches.
+  Triiodine:
+  - balance: Reduced projectile coverage of platforms from 60% to 0%.
+  - balance: Reduced projectile coverage on handrail types from 35% to 10%. Sandstone
+      handrails are unaffected and remain at 35% projectile coverage.
+  - balance: Sandstone handrails can no longer be reinforced.
+  harryob:
+  - bugfix: random items no longer cause attacking animations
+2023-04-05:
+  H20Begod:
+  - rscadd: Added a new verb for ghosts to join in as working joes (ONLY WHITELISTED
+      GHOSTS).
+  - code_imp: Edited max spawns of the working joes to 3.
+  NewyearnewmeUwu:
+  - bugfix: xeno ghosts no longer have weird offsets
+  realforest2001:
+  - admin: Deleting notes now logs what note is deleted.
+2023-04-06:
+  LTNTS:
+  - rscdel: Removed unused Nexus Lockdown Button
+  LynxSolstice:
+  - bugfix: Vamps can no longer headbite while dead or unconscious.
+  carlarctg:
+  - rscadd: Allows Predators to pick between weapon variations, specifically the two-blades-on-one-end
+      ripper scythe, and the long polearm-like glaive.
+  - rscadd: Sprited inhands for both scythes.
+  - rscadd: Added a cool spin to double hitting with the scythe.
+  harryob:
+  - server: the server now supports a redis connection
+  - admin: admin messages are logged to discord, and vice versa
+2023-04-07:
+  Usnpeepoo:
+  - rscadd: Added a new ability to the Steel Crest strain, called Soak. It tracks
+      your accumulated damage and once it reaches a threshold, reset your tail slam
+      cooldown and slightly heal you.
+2023-04-08:
+  BelleCl:
+  - imageadd: Adds two new hairstyle options
+  NewyearnewmeUwu:
+  - rscadd: Wheelchairs now help people with a bad leg move around.
+  - bugfix: Pickup keybind can't pick up anchored objects anymore.
+  realforest2001:
+  - bugfix: Fixes some perms in VV dropdown
+  - bugfix: Fixes Queen Mother bioscan
+2023-04-10:
+  LTNTS:
+  - balance: buffed ointment healing only 1 burn, now heals 5 burn
+  Morrow:
+  - code_imp: Sets up "short" fog blockers for mappers
+2023-04-11:
+  Huffie56:
+  - rscadd: Added the option for the doctor job to become a surgeon so you can choose
+      to RP one.
+  - rscadd: Added the option in doctor vendor for medical belts, medical set, surgical
+      caps, doctor's snow vest.
+  - rscdel: remove most of the gear those jobs (nurse, doctor, research)spawn with
+      and put it in their respective vendor.
+  - code_imp: created a parent for medical preset to avoid to having three time the
+      same thing(back-end).
+  LTNTS:
+  - rscadd: RTO backpacks to Staff Officer Vendor
+  - bugfix: Empty medical belts in Staff Officer vendor
+  Morrow:
+  - rscadd: Chemical retrieval is now primarily corporate goons with a backup team
+      of PMCs if required.
+2023-04-12:
+  CapCamIII:
+  - rscadd: DD spawn with a lucky strike pack and a zippo in their helmet.
+  - rscadd: M60 now has the box changing mechanic that smartgun has.
+  - rscadd: Adds an M16 grenadier, with attached M203, also adds M203 grenade launcher
+      and impact shells for it, only DD have it
+  - rscadd: Adds a new M16 variant, the XM177E2 Carbine, only DD have it
+  - rscadd: Dutch M16s now are marked as A1s, and use the preexisting M16A1 sprite
+      instead.
+  - rscadd: Dutch's Dozen are now equipped with an XM177 for Dutch, the medic, and
+      the flamethrower operator
+  - rscadd: Dutch's Dozen riflemen now have a 60% chance to have an M16A1, 30% chance
+      for an M16 with M203 UGL, and 10% chance for an M60 GPMG
+  - rscdel: M60 has been removed from the black market
+  - balance: DD minigun now has an integrated magharn.
+  - balance: M1911 is slightly more accurate.
+  - balance: ERT Medical Pouch now contains the 4 basic EZ injectors and a gauze.
+  - balance: DD armor now has a greater explosive protection and covers the arms and
+      legs.
+  - balance: M60 is now full auto, does more damage, and is more accurate.
+  - code_imp: Moved Dutch's Dozen presets to their own standalone folder
+  - spellcheck: DD spawn text now correctly says the Yautja mask is on Dutch's face.
+  - bugfix: DD Motion Detectors no longer pick themselves up.
+  - bugfix: DD now all have max endurance skill
+  - imageadd: Adds sprites for M203, M203 shells, XM177, and M16 Grenadier Variant
+  - maptweak: LV624 Crashed CLF ship insert M60 has been replaced with a MAR50
+  Huffie56:
+  - code_imp: replace all the variable called backItem by back_item.
+  Morrow:
+  - bugfix: Fixes healing mobs via view variables
+  Totalepicness:
+  - bugfix: Fixed an oversight that resulted in ASRS attempting to spawn in deprecated
+      L42A ammo crates, causing it to spawn nothing.
+  harryob:
+  - code_imp: touched up the code for fog, allowing for mappers to make fog of any
+      duration from round start
+  realforest2001:
+  - bugfix: Doctors displaying as surgeons now appear on crew monitor

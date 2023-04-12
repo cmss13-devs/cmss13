@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Fixed doctors without set job options spawning incorrectly"

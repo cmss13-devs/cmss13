@@ -124,9 +124,17 @@ structure:
 	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
-//no dynamic lighting, unpowered.
+//dynamic lighting, unpowered.
 /area/event/metal/dynamic/unpowered
 	name = "Building interior (event D)"
+	icon_state = "metal_dyn_nopower"
+
+	requires_power = TRUE
+	unlimited_power = FALSE
+
+//dynamic lighting, unpowered. T-comms Tower
+/area/event/metal/dynamic/unpowered
+	name = "Telecomunications Tower"
 	icon_state = "metal_dyn_nopower"
 
 	requires_power = TRUE

@@ -158,11 +158,6 @@
 /area/event/dynamic/lit/unpowered)
 "ay" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/transmitter{
-	phone_category = "UPP";
-	phone_id = "UPP - Rosansk Town Hall Black Joker Command";
-	pixel_y = 29
-	},
 /obj/structure/machinery/computer/intel{
 	desc = "A computer for monitoring oil levels";
 	name = "Oil-Monitoring Computer"
@@ -21411,6 +21406,11 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
+/obj/structure/transmitter{
+	phone_category = "UPP";
+	phone_id = "UPP - Rosansk Town Hall Black Joker Command";
+	pixel_y = 29
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "blue"

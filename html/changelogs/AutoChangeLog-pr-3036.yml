@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscadd: "Punching mirrors now causes damage to you."
+  - rscadd: "Slamming someone with an aggressive grab into a mirror does damage to them."

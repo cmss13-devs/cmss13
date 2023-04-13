@@ -304,7 +304,7 @@
 			return FALSE
 		if(requires_harness)
 			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire \the [src]..."))
+				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire [src]..."))
 				return FALSE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))

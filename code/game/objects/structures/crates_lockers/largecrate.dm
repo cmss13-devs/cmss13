@@ -44,7 +44,7 @@
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		// We don't need to create the crate material here, as it's handled in unpack()
+		new /obj/item/stack/sheet/wood(loc)
 	else
 		new /obj/item/stack/sheet/wood(loc)
 	return ..()

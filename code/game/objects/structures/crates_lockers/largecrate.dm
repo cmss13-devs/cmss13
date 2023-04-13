@@ -35,12 +35,12 @@
 		move_to_bottom(material_sheet, current_turf)
 
 /// Custom proc to move an object to the bottom of the turf's contents
-/obj/structure/largecrate/proc/move_to_bottom(obj/O, turf/T)
-	if(!istype(O) || !istype(T))
+/obj/structure/largecrate/proc/move_to_bottom(obj/moving_down, turf/current_turf)
+	if(!istype(moving_down) || !istype(current_turf))
 		return
-	for(var/atom/movable/A in T.contents)
-		if(A != O)
-			A.layer = max(A.layer, O.layer + 0.1)
+	for(var/atom/movable/checking_atom in current_turf.contents)
+		if(checking_atom != current_object)
+			checking_atom.layer = max(checking_atom.layer, current_object.layer + 0.1)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(disassembled)

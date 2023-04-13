@@ -1312,7 +1312,8 @@
 		TRACKER_BSL = /datum/squad/marine/bravo,
 		TRACKER_CSL = /datum/squad/marine/charlie,
 		TRACKER_DSL = /datum/squad/marine/delta,
-		TRACKER_ESL = /datum/squad/marine/echo
+		TRACKER_ESL = /datum/squad/marine/echo,
+		TRACKER_FSL = /datum/squad/marine/cryo
 	)
 	switch(tracker_setting)
 		if(TRACKER_SL)

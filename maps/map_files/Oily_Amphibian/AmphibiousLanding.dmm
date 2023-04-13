@@ -43,15 +43,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"ag" = (
-/obj/structure/barricade/sandbags{
-	dir = 1
-	},
-/obj/structure/barricade/sandbags{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/event/dynamic/unpowered)
 "ah" = (
 /obj/structure/surface/rack,
 /obj/item/stack/medical/splint/nano,
@@ -97,8 +88,40 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"aq" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/item/storage/pouch/magazine/large/upp,
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/shuttle/elevator/grating,
+/area/event/underground_no_CAS/dynamic)
 "as" = (
 /obj/structure/prop/Flag/UPP{
 	pixel_x = -21;
@@ -138,6 +161,10 @@
 	phone_category = "UPP";
 	phone_id = "UPP - Rosansk Town Hall Black Joker Command";
 	pixel_y = 29
+	},
+/obj/structure/machinery/computer/intel{
+	desc = "A computer for monitoring oil levels";
+	name = "Oil-Monitoring Computer"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -200,10 +227,12 @@
 	burn_multiplier = 0.1;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "aE" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "red"
@@ -233,6 +262,23 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/ocean,
 /area/event/underground_no_CAS)
+"aJ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "aL" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/barricade/sandbags{
@@ -297,18 +343,6 @@
 	icon_state = "plate"
 	},
 /area/event/metal/dynamic)
-"aV" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door_control{
-	id = "beach";
-	name = "\improper Shutters";
-	req_access_txt = "3"
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/event/metal/dynamic)
 "aW" = (
 /obj/item/weapon/gun/shotgun/type23/breacher/flechette,
 /obj/item/weapon/gun/shotgun/type23/breacher/flechette,
@@ -331,15 +365,6 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/event/dynamic/unpowered)
-"aZ" = (
-/obj/structure/barricade/sandbags{
-	dir = 1
-	},
-/obj/structure/barricade/sandbags{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
 "ba" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -368,6 +393,18 @@
 	dir = 1
 	},
 /area/event/dynamic/lit/unpowered)
+"be" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/shovel/etool,
+/obj/item/tool/shovel/etool,
+/obj/item/tool/shovel/etool,
+/obj/item/tool/shovel/etool,
+/obj/item/tool/shovel/etool,
+/obj/item/tool/shovel/etool,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
 "bf" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor,
@@ -436,13 +473,11 @@
 /turf/open/gm/river/ocean,
 /area/event/underground_no_CAS)
 "bn" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 8
+/obj/structure/bed/chair/office/dark{
+	dir = 4
 	},
 /turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "red"
+	icon_state = "redcorner"
 	},
 /area/event/metal/dynamic)
 "bo" = (
@@ -466,6 +501,15 @@
 /obj/structure/prop/dam/truck,
 /turf/open/gm,
 /area/event/dynamic/lit/unpowered)
+"bs" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "Pillbox Black Queen"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
 "bt" = (
 /obj/effect/mist{
 	can_block_movement = 1;
@@ -485,11 +529,6 @@
 	color = "#E6E6E6"
 	},
 /area/event/underground_no_CAS)
-"bv" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
-	},
-/area/event/metal/dynamic)
 "bw" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert2"
@@ -598,6 +637,25 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"bE" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "Pillbox Black Rook"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
+"bF" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "bG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/type23/breacher,
@@ -708,12 +766,10 @@
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
 "bQ" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
+/obj/structure/closet/crate/secure/surgery,
 /turf/open/floor/corsat{
 	dir = 8;
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "bR" = (
@@ -888,6 +944,13 @@
 	tag = "icon-outerhull_dir (NORTH)"
 	},
 /area/event/dynamic/lit/unpowered)
+"ch" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "cj" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -943,11 +1006,12 @@
 /turf/open/floor/corsat,
 /area/event/underground_no_CAS/dynamic)
 "ct" = (
-/obj/structure/filingcabinet,
 /obj/structure/prop/Flag/UPP/Horizontal{
 	pixel_x = -4;
 	pixel_y = 27
 	},
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/objective,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "blue"
@@ -994,14 +1058,6 @@
 	icon_state = "plate"
 	},
 /area/event/metal/dynamic)
-"cA" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = UPP_Garage1
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/event/underground_no_CAS/dynamic)
 "cB" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 1
@@ -1022,9 +1078,7 @@
 /obj/structure/window_frame/colony/reinforced{
 	indestructible = 1
 	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
+/turf/open/floor/almayer_hull,
 /area/event/metal/dynamic)
 "cF" = (
 /obj/structure/platform/kutjevo{
@@ -1077,24 +1131,6 @@
 /obj/item/device/megaphone,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
-"cP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/item/clothing/accessory/armband{
-	name = "reds squad"
-	},
-/obj/structure/prop/Flag/UPP{
-	pixel_x = -5;
-	pixel_y = 27;
-	layer = 2.4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "cR" = (
 /obj/structure/platform/kutjevo/rock{
 	climb_delay = 20;
@@ -1217,10 +1253,82 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal/dynamic)
+"dd" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
+"dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/effect/vehicle_spawner/van/decrepit{
+	dir = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/event/underground_no_CAS/dynamic)
 "dh" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"di" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5;
+	tag = "icon-intact (NORTHEAST)"
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
+"dj" = (
+/obj/structure/machinery/body_scanconsole{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/event/underground_no_CAS/dynamic)
 "dk" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /turf/open/floor/almayer{
@@ -1261,6 +1369,9 @@
 	},
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
 	pixel_y = 14
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
@@ -1363,19 +1474,21 @@
 /area/event/metal/dynamic)
 "du" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/event/dynamic/lit/unpowered)
-"dv" = (
-/turf/closed/wall/r_wall/bunker/floodgate,
-/area/event)
-"dx" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "Supply"
+"dw" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -4;
+	pixel_y = -36
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "UPPreq2";
-	name = "Requsitions Lockdown"
+/turf/open/gm/grass,
+/area/event/dynamic/lit/unpowered)
+"dx" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "Triage Center";
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -1393,6 +1506,15 @@
 /obj/item/attachable/attached_gun/shotgun,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"dA" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	id_tag = "or01";
+	name = "Operating Theatre 1"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "dB" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck,
@@ -1474,21 +1596,7 @@
 /area/event/dynamic/unpowered)
 "dK" = (
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/retaliate/clown{
-	desc = "Gonzo is a working mining man. Even his contract with the Honkmother can't keep him afloat in this economy. Nothing has been the same since the 2120 3WE silicon crisis.";
-	health = 10000;
-	move_to_delay = 2;
-	name = "Gonzo the Magnificent";
-	rapid = 1
-	},
 /obj/item/weapon/gun/pistol/skorpion/upp,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/light,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -1559,16 +1667,11 @@
 	tag = "icon-outerhull_dir (WEST)"
 	},
 /area/event/dynamic/lit/unpowered)
-"dZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
+"dY" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor,
+/area/event/metal/dynamic)
 "ee" = (
 /obj/structure/machinery/light/built,
 /turf/open/floor/wood,
@@ -1604,6 +1707,9 @@
 "ei" = (
 /obj/structure/machinery/body_scanconsole{
 	dir = 1
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1675,8 +1781,21 @@
 	pixel_x = -5
 	},
 /obj/structure/prop/cash_register,
+/obj/structure/barricade/handrail{
+	layer = 4
+	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
+"eo" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/objective{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/event/metal/dynamic)
 "ep" = (
 /obj/structure/sink{
 	desc = "A sink used for washing one's hands and face. Let that sink in.";
@@ -1703,13 +1822,38 @@
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
-"ev" = (
-/obj/structure/machinery/bioprinter{
-	name = "\improper Synthetic limb printer 500";
-	desc = "A machine that can produce synthetic limbs of dubious quality. Smells of smoke and battery acid."
+"eu" = (
+/obj/structure/platform{
+	dir = 8
 	},
+/obj/structure/platform{
+	density = 0;
+	icon_state = "platform_deco"
+	},
+/turf/open/gm/river/desert/deep{
+	color = "#2d2d2d";
+	default_name = "oil";
+	desc = "our precious";
+	langchat_color = null;
+	name = "oil"
+	},
+/area/event/underground_no_CAS/dynamic)
+"ev" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/structure/machinery/light,
 /turf/open/floor/corsat{
-	icon_state = "greenwhite"
+	dir = 10;
+	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ex" = (
@@ -1803,12 +1947,13 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
-"eL" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = UPP_Garage
+"eK" = (
+/obj/structure/machinery/cm_vending/sorted/attachments{
+	req_access = null;
+	pixel_x = -32
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
+/turf/open/floor/corsat{
+	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
 "eM" = (
@@ -1907,7 +2052,9 @@
 	pixel_y = 16
 	},
 /obj/structure/prop/dam/drill,
-/turf/open/floor/corsat,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
 /area/event/underground_no_CAS/dynamic)
 "eW" = (
 /obj/item/paper{
@@ -2011,16 +2158,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/event/dynamic/lit/unpowered)
-"fd" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "fe" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -2120,7 +2257,8 @@
 	dir = 8;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "fn" = (
 /obj/structure/barricade/handrail{
@@ -2177,6 +2315,7 @@
 "fp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -2217,7 +2356,8 @@
 	dir = 4;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "fv" = (
 /obj/structure/sign/poster/clf{
@@ -2600,13 +2740,13 @@
 /turf/open/gm/grass,
 /area/event/dynamic/lit/unpowered)
 "gl" = (
-/obj/structure/barricade/handrail,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "green"
+	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
 "gm" = (
@@ -2754,6 +2894,16 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic/unpowered)
+"gv" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "gx" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/prop/souto_land/pole{
@@ -2762,6 +2912,9 @@
 	},
 /obj/structure/barricade/handrail{
 	layer = 4
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
@@ -2811,15 +2964,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
-"gF" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "gG" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -2990,13 +3134,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
-"gV" = (
-/obj/structure/machinery/cm_vending/gear/antag,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "gY" = (
 /obj/structure/machinery/space_heater/radiator{
 	pixel_y = 24
@@ -3004,40 +3141,17 @@
 /turf/open/floor/wood,
 /area/event/underground_no_CAS)
 "gZ" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
-/obj/item/weapon/gun/lever_action,
+/obj/structure/machinery/bioprinter{
+	name = "\improper Synthetic limb printer 500";
+	desc = "A machine that can produce synthetic limbs of dubious quality. Smells of smoke and battery acid."
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
 /turf/open/floor/corsat{
 	dir = 8;
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ha" = (
@@ -3129,33 +3243,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/event/underground_no_CAS/dynamic)
-"hp" = (
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/item/bedsheet/rainbow{
-	layer = 3.4
-	},
-/obj/item/bedsheet/rainbow{
-	pixel_y = 12
-	},
-/turf/open/floor/wood,
-/area/event/dynamic/lit/unpowered)
 "hq" = (
 /obj/structure/transmitter{
 	phone_category = "UPP";
@@ -3175,28 +3262,14 @@
 /turf/open/gm,
 /area/event/dynamic/lit/unpowered)
 "ht" = (
-/obj/structure/machinery/door_control{
-	id = "UPPreq1";
-	name = "Req Line Shutters";
-	pixel_x = 7;
-	pixel_y = -2;
-	req_one_access_txt = "1;21"
-	},
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/line_nexter_control{
-	id = "UPPreqturn";
-	pixel_x = -6;
-	pixel_y = -2;
-	req_one_access_txt = "1;21"
-	},
-/obj/structure/transmitter/touchtone{
-	phone_category = "UPP";
-	phone_id = "UPP Bunker Black King Requsitions";
-	pixel_y = 10
+/obj/structure/closet/crate/secure/surgery,
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
 	},
 /turf/open/floor/corsat{
 	dir = 8;
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "hu" = (
@@ -3251,6 +3324,7 @@
 /obj/item/reagent_container/glass/bottle/chloralhydrate,
 /obj/item/reagent_container/glass/bottle/chloralhydrate,
 /obj/structure/closet/crate/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -3271,6 +3345,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate/medical,
+/obj/item/device/reagent_scanner/adv/objective,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -3335,8 +3410,20 @@
 	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
+"hG" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/prop/Flag/UPP/Horizontal{
+	pixel_x = -4;
+	pixel_y = -36
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "hI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	id_tag = "tc01";
+	name = "\improper Treatment Center";
 	req_access = null;
 	req_one_access = null
 	},
@@ -3352,6 +3439,14 @@
 /obj/structure/kitchenspike,
 /turf/open/floor/plating/plating_catwalk,
 /area/event/metal/dynamic)
+"hL" = (
+/obj/structure/closet/secure_closet/cargotech,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "hN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -3379,7 +3474,8 @@
 	dir = 8;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "hQ" = (
 /obj/structure/machinery/chem_dispenser/beer{
@@ -3556,7 +3652,8 @@
 	dir = 1;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "ij" = (
 /obj/structure/barricade/handrail{
@@ -3564,6 +3661,9 @@
 	},
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/prop/cash_register,
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
 "im" = (
@@ -3600,6 +3700,13 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal/dynamic)
+"iv" = (
+/obj/item/document_objective/technical_manual,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "brown"
+	},
+/area/event/underground_no_CAS/dynamic)
 "iw" = (
 /obj/structure/platform/kutjevo{
 	dir = 8;
@@ -3629,8 +3736,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
-"iz" = (
-/turf/open/gm/grass,
+"iy" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/objective{
+	dir = 1
+	},
+/turf/open/floor/wood,
 /area/event/metal/dynamic)
 "iA" = (
 /obj/structure/bedsheetbin,
@@ -3722,6 +3833,12 @@
 /obj/item/stack/sheet/mineral/plastic/small_stack,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"iJ" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellowcorner"
+	},
+/area/event/underground_no_CAS/dynamic)
 "iK" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -3738,6 +3855,15 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
+"iL" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 32
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/event/dynamic/lit/unpowered)
 "iN" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/barricade/handrail/strata{
@@ -3882,9 +4008,20 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
+"jh" = (
+/obj/structure/machinery/light/built{
+	dir = 8
+	},
+/obj/structure/machinery/computer/crew/upp,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "ji" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -4165,6 +4302,15 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"jJ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "darkgreen"
+	},
+/area/event/underground_no_CAS/dynamic)
 "jK" = (
 /obj/structure/platform/kutjevo{
 	dir = 8;
@@ -4174,6 +4320,15 @@
 	},
 /turf/closed/wall/wood,
 /area/event/dynamic/lit/unpowered)
+"jL" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "N_Check";
+	name = "\improper Police Checkpoint"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
 "jM" = (
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
@@ -4181,35 +4336,18 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal/dynamic)
-"jN" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.5;
-	burn_multiplier = 0.1;
-	dir = 1;
-	explosive_multiplier = 0.1
-	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
+"jP" = (
+/obj/structure/transmitter{
 	dir = 8;
-	explosive_multiplier = 0.1
+	phone_category = "UPP";
+	phone_id = "UPP Bunker Black King Triage";
+	pixel_x = 14
 	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
+/turf/open/floor/corsat{
 	dir = 4;
-	explosive_multiplier = 0.1
+	icon_state = "greenwhite"
 	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
-	explosive_multiplier = 0.1
-	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert1"
-	},
-/area/event/dynamic/lit/unpowered)
+/area/event/underground_no_CAS/dynamic)
 "jR" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/tool/weldpack,
@@ -4226,10 +4364,11 @@
 	},
 /area/event/metal/dynamic)
 "jT" = (
-/obj/structure/machinery/vending/cigarette/free,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -4288,13 +4427,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
-"ka" = (
-/obj/structure/closet/secure_closet/cargotech,
-/turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "kb" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
@@ -4314,6 +4446,7 @@
 /obj/item/reagent_container/glass/bottle/cyanide,
 /obj/item/reagent_container/glass/bottle/cyanide,
 /obj/structure/closet/crate/medical,
+/obj/item/device/healthanalyzer/objective,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -4343,6 +4476,17 @@
 	icon_state = "upp20"
 	},
 /area/event/underground_no_CAS)
+"kk" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "UPPreq3";
+	name = "Garage Shutters";
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "kl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4361,6 +4505,11 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"kn" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor,
+/area/event/metal/dynamic)
 "ko" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp27"
@@ -4379,8 +4528,10 @@
 "kw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
 	dir = 2;
-	req_access = null
+	req_access = null;
+	name = "Bunker Black King"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -4518,8 +4669,9 @@
 /area/event/metal/dynamic)
 "kH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
+	name = "\improper Medical Storage";
 	req_one_access = null;
+	dir = 1;
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -4683,6 +4835,47 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
+"kY" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "la" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/barricade/sandbags{
@@ -4778,17 +4971,10 @@
 	},
 /area/event/metal/dynamic)
 "lf" = (
-/obj/structure/machinery/line_nexter{
-	dir = 2;
-	id = "UPPreqturn"
-	},
-/obj/structure/machinery/atm{
-	name = "Automatic Teller Machine";
-	pixel_y = 30
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/corsat{
 	dir = 5;
-	icon_state = "green"
+	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
 "lh" = (
@@ -5016,6 +5202,15 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"lr" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "ls" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp22"
@@ -5035,6 +5230,7 @@
 /area/event/dynamic/lit/unpowered)
 "lv" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -5125,16 +5321,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"lI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "lJ" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -5157,28 +5343,20 @@
 /obj/item/reagent_container/glass/bottle/bicaridine,
 /obj/structure/machinery/iv_drip,
 /obj/structure/closet/crate/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
 	},
 /area/event/metal/dynamic)
-"lL" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "lM" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/pizzabox/mushroom{
-	name = "pineapple pizza"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
+/mob/living/simple_animal/hostile/retaliate/clown{
+	desc = "Gonzo is a working mining man. Even his contract with the Honkmother can't keep him afloat in this economy. Nothing has been the same since the 2120 3WE silicon crisis.";
+	health = 10000;
+	move_to_delay = 2;
+	name = "Gonzo the Magnificent";
+	rapid = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -5188,21 +5366,31 @@
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
-"lP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "lS" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
 /area/event/metal/dynamic/unpowered)
+"lT" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "lU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/barricade/sandbags{
@@ -5301,23 +5489,32 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
+"lZ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "ma" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
-"mb" = (
-/obj/structure/transmitter{
-	dir = 4;
-	phone_category = "UPP";
-	phone_id = "UPP Bunker Black King Triage";
-	pixel_x = -18
-	},
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/corsat{
-	dir = 8;
 	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -5342,6 +5539,27 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"mf" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/platform{
+	density = 0;
+	icon_state = "platform_deco"
+	},
+/obj/structure/platform{
+	density = 0;
+	dir = 1;
+	icon_state = "platform_deco"
+	},
+/turf/open/gm/river/desert/deep{
+	color = "#2d2d2d";
+	default_name = "oil";
+	desc = "our precious";
+	langchat_color = null;
+	name = "oil"
+	},
+/area/event/underground_no_CAS/dynamic)
 "mg" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5432,6 +5650,13 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"mr" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "ms" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
@@ -5439,6 +5664,11 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
+"mt" = (
+/obj/structure/closet/cabinet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "mw" = (
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/gm/dirt2,
@@ -5476,7 +5706,8 @@
 /area/event/underground_no_CAS/dynamic)
 "mB" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper Mayor's House"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5550,12 +5781,6 @@
 /obj/item/ammo_magazine/pistol/mod88,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"mH" = (
-/obj/structure/machinery/light,
-/turf/open/floor/corsat{
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "mI" = (
 /obj/structure/barricade/handrail,
 /obj/effect/landmark/wo_supplies/guns/rare/m41aMK1,
@@ -5680,6 +5905,32 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"mX" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/obj/item/device/radio/headset/distress/UPP,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "mZ" = (
 /obj/structure/machinery/shower{
 	desc = "The UP-153. Installed by the State-Funded Hygiene Organization.";
@@ -6020,6 +6271,15 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"nB" = (
+/obj/structure/machinery/medical_pod/autodoc{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "nC" = (
 /obj/item/stack/medical/advanced/bruise_pack,
 /obj/item/stack/medical/advanced/bruise_pack,
@@ -6039,6 +6299,7 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/medical,
+/obj/item/device/healthanalyzer/objective,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -6113,6 +6374,12 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
+	},
+/area/event/underground_no_CAS/dynamic)
+"nK" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "browncorner"
 	},
 /area/event/underground_no_CAS/dynamic)
 "nM" = (
@@ -6212,13 +6479,6 @@
 	icon_state = "grassdirt2_corner2"
 	},
 /area/event/dynamic)
-"ob" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "oc" = (
 /obj/structure/surface/table/almayer{
 	indestructible = 1
@@ -6390,6 +6650,7 @@
 /area/event/underground_no_CAS)
 "oC" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "blue"
@@ -6530,18 +6791,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
-"oS" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/obj/structure/bed/chair/wood/wings{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/event/underground_no_CAS/dynamic)
 "oT" = (
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/gm,
@@ -6650,6 +6899,10 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"pg" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/event/dynamic/lit/unpowered)
 "pj" = (
 /obj/structure/bed/chair/vehicle,
 /turf/open/floor/almayer{
@@ -6883,6 +7136,17 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic)
+"pz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/event/underground_no_CAS/dynamic)
 "pA" = (
 /obj/structure/flora/jungle/thickbush,
 /turf/open/gm/grass,
@@ -6908,12 +7172,23 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"pF" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "pG" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"pH" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "pI" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/c99,
@@ -6930,6 +7205,13 @@
 /obj/item/ammo_magazine/pistol/c99,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"pK" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "brown"
+	},
+/area/event/underground_no_CAS/dynamic)
 "pL" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -7055,6 +7337,33 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"pX" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.5;
+	burn_multiplier = 0.1;
+	dir = 1;
+	explosive_multiplier = 0.1
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 4;
+	explosive_multiplier = 0.1
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	explosive_multiplier = 0.1
+	},
+/turf/open/gm/dirt2,
+/area/event/dynamic/lit/unpowered)
 "pY" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -7112,6 +7421,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"qi" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall/bunker{
+	damage_cap = 25000;
+	name = "reinforced bunker wall"
+	},
+/area/event/underground_no_CAS/dynamic)
 "ql" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -7153,6 +7469,28 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
+"qp" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/belt/medical/lifesaver/upp/full{
+	pixel_y = 14
+	},
+/obj/item/storage/belt/medical/lifesaver/upp/full{
+	pixel_y = 7
+	},
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "qq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/corsat{
@@ -7617,7 +7955,8 @@
 /area/event/dynamic/unpowered)
 "rg" = (
 /obj/structure/machinery/door/poddoor/almayer{
-	id = "beach"
+	id = "S_Check";
+	name = "\improper Police Checkpoint"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7836,6 +8175,17 @@
 /obj/structure/bed/chair/wood/wings,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"rK" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 8;
+	pixel_y = 25
+	},
+/obj/structure/sign/safety/chem_lab{
+	pixel_y = 38;
+	pixel_x = 8
+	},
+/turf/open/gm/grass,
+/area/event/dynamic/unpowered)
 "rM" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -7967,12 +8317,6 @@
 /obj/item/explosive/plastic/breaching_charge,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"se" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhitecorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "sf" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
@@ -8173,40 +8517,22 @@
 /obj/item/explosive/grenade/high_explosive/stick,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
-"sK" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 14
-	},
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/item/storage/pouch/magazine/large/upp,
-/obj/structure/closet/coffin/woodencrate,
-/turf/open/shuttle/elevator/grating,
-/area/event/underground_no_CAS/dynamic)
 "sL" = (
 /obj/item/stool{
 	pixel_y = 20
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"sM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "brown"
+	},
+/area/event/underground_no_CAS/dynamic)
 "sN" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -8229,6 +8555,13 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"sR" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "sU" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -8358,16 +8691,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
-"tf" = (
-/obj/structure/machinery/optable,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "tg" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
@@ -8490,6 +8813,15 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
+"tq" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "tr" = (
 /turf/open/gm/coast{
 	dir = 4;
@@ -8502,6 +8834,16 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
+"tt" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 8;
+	pixel_y = 28
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
 "tu" = (
@@ -8707,7 +9049,11 @@
 /turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "tO" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Triage";
+	req_one_access = null;
+	req_access = null
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -8758,11 +9104,21 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "tW" = (
-/obj/structure/machinery/body_scanconsole{
-	dir = 4
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/transmitter/touchtone{
+	phone_category = "UPP";
+	phone_id = "UPP Bunker Black King Requsitions";
+	pixel_y = 10
+	},
+/obj/structure/machinery/door_control{
+	id = "UPPreq2";
+	name = "Requisitions Lockdown Shutters";
+	pixel_y = -2;
+	req_one_access_txt = "1;21"
 	},
 /turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
+	dir = 1;
+	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
 "tY" = (
@@ -8890,17 +9246,6 @@
 	pixel_x = 11;
 	pixel_y = -3
 	},
-/obj/item/toy/prize/durand{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/deathripley{
-	pixel_x = -9;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/honk{
-	pixel_y = 7
-	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -8924,14 +9269,27 @@
 /area/event/underground_no_CAS/dynamic)
 "uu" = (
 /obj/structure/prop/Flag/UPP{
-	pixel_x = -19;
+	pixel_x = -25;
 	pixel_y = 27
+	},
+/obj/structure/sign/safety/bridge{
+	name = "Command Presence semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a command center or post.";
+	pixel_y = 28;
+	pixel_x = 8
 	},
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
 "uv" = (
 /turf/closed/wall/r_wall/bunker,
 /area/event/dynamic/unpowered)
+"uw" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/event/metal/dynamic)
 "ux" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/barricade/sandbags{
@@ -9157,6 +9515,14 @@
 /obj/item/device/flashlight,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"uU" = (
+/obj/structure/barricade/handrail/wire{
+	name = "Barbed Wire Fence";
+	desc = "This is supposed to be barbed wire, just go with it.";
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/underground_no_CAS/dynamic/unpowered)
 "uV" = (
 /obj/structure/prop/Flag/UPP{
 	pixel_x = -21;
@@ -9220,6 +9586,29 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"vd" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "vf" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -9275,15 +9664,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"vk" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "UPPreq1";
-	name = "\improper Requsitions Line"
-	},
-/obj/structure/window/framed/bunker/reinforced,
-/turf/open/floor/plating,
-/area/event/underground_no_CAS/dynamic)
 "vl" = (
 /obj/item/reagent_container/glass/paint/red,
 /obj/item/reagent_container/glass/paint/remover{
@@ -9297,6 +9677,12 @@
 "vm" = (
 /obj/structure/machinery/light/small{
 	dir = 4
+	},
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
+"vn" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -18
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
@@ -9363,6 +9749,7 @@
 	pixel_y = 2;
 	pixel_x = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -9406,10 +9793,13 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "vx" = (
-/obj/structure/barricade/handrail,
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
 /turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "green"
+	dir = 10;
+	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
 "vy" = (
@@ -9425,16 +9815,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt/cement,
 /area/event/underground_no_CAS/dynamic/unpowered)
-"vA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "brown"
-	},
-/area/event/underground_no_CAS/dynamic)
 "vB" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/sign/nosmoking_2{
@@ -9452,6 +9832,21 @@
 /obj/item/ammo_magazine/m56d,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"vD" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
+"vE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "vG" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9515,6 +9910,18 @@
 	icon_state = "blue"
 	},
 /area/event/underground_no_CAS/dynamic)
+"vM" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio/headset/distress/UPP/cct,
+/obj/item/device/radio/headset/distress/UPP/cct,
+/obj/item/device/radio/headset/distress/UPP/cct,
+/obj/item/device/radio/headset/distress/UPP/cct,
+/obj/item/device/radio/headset/distress/UPP/cct,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "vN" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -9547,6 +9954,11 @@
 	dir = 4
 	},
 /obj/structure/platform,
+/obj/structure/platform{
+	density = 0;
+	icon_state = "platform_deco";
+	dir = 4
+	},
 /turf/open/gm/river/desert/deep{
 	color = "#2d2d2d";
 	default_name = "oil";
@@ -9683,11 +10095,15 @@
 /obj/structure/closet/coffin/woodencrate,
 /turf/open/shuttle/elevator/grating,
 /area/event/underground_no_CAS/dynamic)
+"wc" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor,
+/area/event/metal/dynamic)
 "wd" = (
-/obj/structure/barricade/handrail,
+/obj/structure/machinery/autolathe,
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "green"
+	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
 "we" = (
@@ -9712,16 +10128,6 @@
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "darkgreen"
-	},
-/area/event/underground_no_CAS/dynamic)
-"wh" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = -30
-	},
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "wi" = (
@@ -9859,6 +10265,19 @@
 	icon_state = "upp9"
 	},
 /area/event/underground_no_CAS)
+"wB" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/obj/item/ammo_box/magazine/type71,
+/turf/open/shuttle/elevator/grating,
+/area/event/underground_no_CAS/dynamic)
 "wC" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -9917,6 +10336,11 @@
 	},
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
+"wO" = (
+/turf/open/floor/corsat{
+	icon_state = "yellowcorner"
+	},
+/area/event/underground_no_CAS/dynamic)
 "wP" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_3";
@@ -10180,20 +10604,17 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"xs" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "xu" = (
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellowcorner"
-	},
-/area/event/underground_no_CAS/dynamic)
-"xv" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
 "xw" = (
@@ -10204,19 +10625,6 @@
 /obj/item/ammo_magazine/minigun,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"xx" = (
-/obj/item/clothing/accessory/armband/science{
-	name = "purple squad"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "xy" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -10330,6 +10738,19 @@
 	icon_state = "vault"
 	},
 /area/event/underground_no_CAS/dynamic)
+"xG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/machinery/door_control{
+	id = "H_Garag";
+	name = "\improper North Shutters";
+	req_access_txt = "3";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/event/metal/dynamic)
 "xH" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -10337,6 +10758,11 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/platform{
+	density = 0;
+	icon_state = "platform_deco";
+	dir = 4
 	},
 /turf/open/gm/river/desert/deep{
 	color = "#2d2d2d";
@@ -10346,6 +10772,24 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
+"xJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control{
+	id = "S_Check";
+	name = "\improper South Shutters";
+	req_access_txt = "3"
+	},
+/obj/structure/machinery/door_control{
+	id = "N_Check";
+	name = "\improper North Shutters";
+	req_access_txt = "3";
+	pixel_y = 7
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/event/metal/dynamic)
 "xL" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -10355,6 +10799,9 @@
 	},
 /obj/structure/barricade/sandbags{
 	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	dir = 8
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
@@ -10527,6 +10974,7 @@
 	anchored = 1;
 	name = "Command Post Black Joker"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker{
 	damage_cap = 25000;
 	name = "reinforced bunker wall"
@@ -10584,15 +11032,6 @@
 	pixel_x = -5;
 	pixel_y = 30
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -10634,6 +11073,19 @@
 	icon_state = "beachcorner2"
 	},
 /area/event/dynamic/lit/unpowered)
+"yq" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 9;
+	tag = "icon-intact (NORTHWEST)"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "yt" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1";
@@ -10681,10 +11133,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
-"yx" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/sand_white/layer1,
-/area/event/underground_no_CAS/dynamic/unpowered)
 "yy" = (
 /obj/structure/machinery/optable,
 /obj/structure/sign/nosmoking_1{
@@ -10704,6 +11152,7 @@
 "yC" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lamp,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "yD" = (
@@ -10712,6 +11161,14 @@
 	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
+"yE" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/computer/objective{
+	dir = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "yG" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -10764,7 +11221,8 @@
 	dir = 1;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "yR" = (
 /obj/item/toy/beach_ball,
@@ -10800,6 +11258,13 @@
 /obj/item/ammo_magazine/lever_action/tracker,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"yX" = (
+/obj/structure/barricade/handrail/wire{
+	name = "Barbed Wire Fence";
+	desc = "This is supposed to be barbed wire, just go with it."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/underground_no_CAS/dynamic/unpowered)
 "yY" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -10839,6 +11304,7 @@
 /obj/item/pamphlet/skill/medical,
 /obj/item/pamphlet/skill/medical,
 /obj/structure/closet/crate/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -10960,22 +11426,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/event/metal/dynamic)
-"zl" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/engi,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "zm" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_x = -31
@@ -11003,6 +11453,7 @@
 "zp" = (
 /obj/structure/machinery/light/small,
 /obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "zr" = (
@@ -11030,10 +11481,8 @@
 /area/event/underground_no_CAS)
 "zu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/light{
+/obj/item/reagent_container/food/snacks/pie,
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -11167,12 +11616,6 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"zJ" = (
-/obj/structure/foamed_metal/iron,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/event/underground_no_CAS/dynamic)
 "zK" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/almayer{
@@ -11294,8 +11737,21 @@
 /obj/structure/prop/rock/black_ground,
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/underground_no_CAS/dynamic/unpowered)
+"zR" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "zS" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Hospital Garage Shutters";
+	id = "H_Garag"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -11346,12 +11802,6 @@
 	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Ab" = (
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Ac" = (
 /obj/structure/machinery/cm_vending/gear/antag_guns,
 /obj/structure/window/reinforced{
@@ -11369,6 +11819,32 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"Af" = (
+/obj/structure/machinery/m56d_hmg/auto{
+	dir = 1;
+	name = "\improper T37 Medium Machinegun"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "Ah" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -11501,6 +11977,15 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/event/dynamic/lit/unpowered)
+"Az" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/event/underground_no_CAS/dynamic)
 "AC" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -11520,6 +12005,9 @@
 "AD" = (
 /obj/structure/sign/poster/clf{
 	pixel_x = 32
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -11646,7 +12134,8 @@
 /area/event/metal/dynamic)
 "AT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = UPP_Garage2
+	id = UPP_Garage2;
+	name = "\improper Garage Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -11668,6 +12157,11 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
+"AV" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "AW" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/explosive/grenade/incendiary,
@@ -11703,19 +12197,24 @@
 "AZ" = (
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
+"Ba" = (
+/obj/structure/window/framed/bunker/reinforced,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating,
+/area/event/underground_no_CAS/dynamic)
 "Bb" = (
 /obj/structure/largecrate/supply/explosives/grenades,
 /turf/open/floor,
 /area/event/metal/dynamic)
 "Bc" = (
-/obj/structure/barricade/handrail,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass{
+	dir = 1;
+	req_one_access = null;
+	req_access = null
 	},
-/area/event/underground_no_CAS/dynamic)
-"Bd" = (
-/obj/structure/prop/rock/brown,
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/event/underground_no_CAS/dynamic)
 "Be" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -11917,6 +12416,8 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
+/obj/item/device/healthanalyzer/objective,
+/obj/item/device/healthanalyzer/objective,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -11979,6 +12480,34 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"BG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/event/metal/dynamic)
+"BH" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
+"BI" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "Supply"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "UPPreq2";
+	name = "Requsitions Lockdown";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "BJ" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/sniper/svd,
@@ -12041,11 +12570,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"BR" = (
-/turf/open/floor/corsat{
-	icon_state = "greenwhitecorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "BT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/barricade/handrail/strata,
@@ -12073,6 +12597,11 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
+"BW" = (
+/obj/structure/platform/kutjevo,
+/obj/structure/window/framed/wood,
+/turf/open/floor/plating,
+/area/event/dynamic/lit/unpowered)
 "BX" = (
 /turf/open/floor/corsat{
 	dir = 9;
@@ -12106,7 +12635,8 @@
 	dir = 4;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "Cb" = (
 /obj/structure/bed/chair/wood/wings,
@@ -12121,6 +12651,18 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"Cf" = (
+/obj/structure/sign/safety/bridge{
+	name = "Command Presence semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a command center or post.";
+	pixel_y = 28;
+	pixel_x = 8
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Cg" = (
 /obj/structure/sign/poster/clf,
 /turf/closed/wall/r_wall/bunker{
@@ -12211,13 +12753,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
-"Ct" = (
-/obj/structure/machinery/cm_vending/sorted/medical/antag,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Cu" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -12272,6 +12807,26 @@
 	},
 /turf/open/floor/carpet,
 /area/event/underground_no_CAS/dynamic)
+"CF" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
+"CG" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "brown"
+	},
+/area/event/underground_no_CAS/dynamic)
+"CI" = (
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/metal/dynamic)
 "CJ" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -12345,6 +12900,18 @@
 "CP" = (
 /turf/open/gm/dirtgrassborder,
 /area/event/dynamic/unpowered)
+"CR" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall/bunker,
+/area/event/underground_no_CAS/dynamic)
+"CS" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
 "CT" = (
 /obj/structure/bed/chair/comfy/black{
 	pixel_y = -7
@@ -12403,12 +12970,16 @@
 /obj/item/attachable/magnetic_harness,
 /obj/item/attachable/magnetic_harness,
 /obj/item/attachable/magnetic_harness,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/event/metal/dynamic)
 "Dj" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/structure/barricade/sandbags{
 	dir = 1
+	},
+/obj/structure/barricade/sandbags{
+	dir = 4
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
@@ -12422,7 +12993,8 @@
 "Dl" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	req_one_access = null;
-	req_access = null
+	req_access = null;
+	name = "\improper Guskova Field Hospital"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12441,7 +13013,7 @@
 "Dn" = (
 /obj/structure/flora/jungle/thickbush,
 /obj/structure/prop/Flag/UPP{
-	pixel_x = -19;
+	pixel_x = -15;
 	pixel_y = 27
 	},
 /turf/open/gm/grass,
@@ -12831,6 +13403,13 @@
 	icon_state = "desert3"
 	},
 /area/event/dynamic/lit/unpowered)
+"Ew" = (
+/obj/effect/decal/warning_stripes,
+/obj/structure/prop/static_tank/fuel{
+	pixel_y = 5
+	},
+/turf/open/floor/corsat,
+/area/event/underground_no_CAS/dynamic)
 "Ex" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12880,13 +13459,6 @@
 /area/event/dynamic/lit/unpowered)
 "EG" = (
 /turf/closed/wall/r_wall/bunker,
-/area/event/underground_no_CAS/dynamic)
-"EH" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
 /area/event/underground_no_CAS/dynamic)
 "EI" = (
 /obj/structure/barricade/sandbags{
@@ -12970,6 +13542,14 @@
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"EY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/portadialysis,
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "EZ" = (
 /obj/structure/platform/kutjevo{
 	dir = 1;
@@ -13055,20 +13635,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"Fi" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_y = 32
-	},
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Fj" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -13129,32 +13695,6 @@
 	icon_state = "white"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Fw" = (
-/obj/structure/surface/rack,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/obj/item/device/radio/headset/distress/UPP,
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Fy" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/transmitter/touchtone{
@@ -13181,6 +13721,7 @@
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/ointment,
 /obj/structure/closet/crate/medical,
+/obj/item/device/healthanalyzer/objective,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -13248,6 +13789,17 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"FF" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "FG" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/ammo_magazine/smg/uzi,
@@ -13354,6 +13906,7 @@
 /obj/item/reagent_container/glass/bottle/tramadol,
 /obj/item/reagent_container/glass/bottle/tramadol,
 /obj/structure/closet/crate/medical,
+/obj/item/device/mass_spectrometer/adv/objective,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -13373,6 +13926,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"FV" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "FW" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -13414,7 +13973,9 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "Gf" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Mayor's Bedroom"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -13438,8 +13999,16 @@
 	burn_multiplier = 0.1;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
+"Gh" = (
+/obj/structure/machinery/light/built{
+	dir = 4
+	},
+/obj/structure/machinery/computer/crew/upp,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "Gl" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin{
@@ -13462,6 +14031,28 @@
 /obj/item/attachable/gyro,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"Gn" = (
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "Go" = (
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/corsat{
@@ -13489,6 +14080,42 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
+"Gs" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/obj/item/weapon/gun/lever_action,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Gt" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_container/food/snacks/grown/grapes,
@@ -13769,16 +14396,6 @@
 	},
 /turf/open/gm,
 /area/event/dynamic/lit/unpowered)
-"Hk" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 9;
-	tag = "icon-intact (NORTHWEST)"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Hl" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
@@ -13847,6 +14464,7 @@
 /area/event/dynamic)
 "Hs" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/portadialysis,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -13859,19 +14477,6 @@
 /obj/item/reagent_container/food/condiment/peppermill,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"Hv" = (
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
-"Hw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/antag,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Hy" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -13921,9 +14526,13 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "HD" = (
+/obj/structure/machinery/line_nexter{
+	dir = 2;
+	id = "UPPreqturn"
+	},
 /turf/open/floor/corsat{
 	dir = 4;
-	icon_state = "greenwhite"
+	icon_state = "greencorner"
 	},
 /area/event/underground_no_CAS/dynamic)
 "HE" = (
@@ -14154,17 +14763,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/event/metal/dynamic)
-"Ib" = (
-/obj/structure/surface/rack,
-/obj/item/device/radio/headset/distress/UPP/command,
-/obj/item/device/radio/headset/distress/UPP/command,
-/obj/item/device/radio/headset/distress/UPP/command,
-/obj/item/device/radio/headset/distress/UPP/command,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Ic" = (
 /obj/item/stool{
 	pixel_x = 11;
@@ -14177,22 +14775,6 @@
 /obj/structure/platform/kutjevo,
 /turf/open/floor/plating,
 /area/event/dynamic/lit/unpowered)
-"Ie" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "If" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/snacks/grown/pumpkin,
@@ -14206,6 +14788,11 @@
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
 "Ig" = (
+/turf/open/floor/wood,
+/area/event/underground_no_CAS/dynamic)
+"Ih" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/event/underground_no_CAS/dynamic)
 "Ii" = (
@@ -14303,6 +14890,13 @@
 	icon_state = "vault"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Iw" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_y = 25;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "Ix" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -14315,6 +14909,13 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Iz" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/bed/bedroll,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal/dynamic)
 "IB" = (
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -14363,35 +14964,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"IK" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.5;
-	burn_multiplier = 0.1;
-	dir = 1;
-	explosive_multiplier = 0.1
-	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
-	dir = 8;
-	explosive_multiplier = 0.1
-	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
-	dir = 4;
-	explosive_multiplier = 0.1
-	},
-/obj/structure/barricade/metal/wired{
-	brute_multiplier = 0.05;
-	burn_multiplier = 0.1;
-	explosive_multiplier = 0.1
-	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert0"
-	},
-/area/event/dynamic/lit/unpowered)
 "IL" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
@@ -14422,22 +14994,6 @@
 /obj/item/weapon/gun/shotgun/merc,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"IS" = (
-/obj/structure/machinery/door/window/westright,
-/obj/structure/machinery/door/window/westright{
-	dir = 4;
-	req_access_txt = "28"
-	},
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "UPPreq1";
-	name = "\improper Requsitions Line"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/event/underground_no_CAS/dynamic)
 "IT" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
@@ -14844,6 +15400,15 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
+"JE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "JG" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/sugar,
@@ -14865,8 +15430,12 @@
 	},
 /area/event/metal/dynamic/unpowered)
 "JL" = (
-/obj/structure/prop/static_tank/fuel,
-/turf/open/floor/corsat,
+/obj/structure/prop/static_tank/fuel{
+	pixel_y = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
 /area/event/underground_no_CAS/dynamic)
 "JN" = (
 /obj/structure/closet/coffin/woodencrate,
@@ -15123,6 +15692,23 @@
 	icon_state = "bluecorner"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Kd" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
+"Ke" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor,
+/area/event/metal/dynamic)
 "Kf" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
@@ -15221,11 +15807,23 @@
 	},
 /area/event/metal/dynamic)
 "Kr" = (
-/obj/structure/machinery/sleep_console{
+/obj/structure/surface/rack,
+/obj/item/device/radio/headset/distress/UPP/command,
+/obj/item/device/radio/headset/distress/UPP/command,
+/obj/item/device/radio/headset/distress/UPP/command,
+/obj/item/device/radio/headset/distress/UPP/command,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
+"Ks" = (
+/obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
+	dir = 1;
+	icon_state = "yellowcorner"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Kt" = (
@@ -15239,6 +15837,7 @@
 	anchored = 1;
 	name = "Bunker Black King"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/event/underground_no_CAS/dynamic)
 "Kv" = (
@@ -15248,6 +15847,15 @@
 "Kw" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
+	},
+/turf/open/gm/grass,
+/area/event/dynamic/unpowered)
+"Kx" = (
+/obj/structure/machinery/door_control{
+	id = "H_Garag";
+	name = "\improper North Shutters";
+	req_access_txt = "3";
+	pixel_y = 32
 	},
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
@@ -15410,36 +16018,16 @@
 /obj/item/prop/colony/folded_bedroll,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
-"KY" = (
-/obj/structure/machinery/medical_pod/autodoc,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "La" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
+/obj/structure/barricade/handrail{
 	dir = 8
 	},
-/obj/item/storage/belt/medical/lifesaver/upp/full{
-	pixel_y = 14
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 2
 	},
-/obj/item/storage/belt/medical/lifesaver/upp/full{
-	pixel_y = 7
-	},
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
 /turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greenwhite"
+	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Lb" = (
@@ -15474,21 +16062,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
-"Lf" = (
-/obj/structure/surface/rack,
-/obj/item/device/radio/headset/distress/UPP/medic,
-/obj/item/device/radio/headset/distress/UPP/medic,
-/obj/item/device/radio/headset/distress/UPP/medic,
-/obj/item/device/radio/headset/distress/UPP/medic,
-/obj/item/device/radio/headset/distress/UPP/medic,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Lg" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/ppsh,
@@ -15520,7 +16093,8 @@
 	dir = 4;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "Lm" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -15533,6 +16107,36 @@
 	icon_state = "sterile_green"
 	},
 /area/event/metal/dynamic)
+"Lo" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/turf/open/shuttle/elevator/grating,
+/area/event/underground_no_CAS/dynamic)
 "Lp" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/flashlight/lamp,
@@ -15709,6 +16313,19 @@
 /obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"LD" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/r_wall/bunker/floodgate,
+/area/event/underground_no_CAS/dynamic)
+"LE" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Town Hall"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
 "LF" = (
 /obj/structure/machinery/door/airlock/security/colony{
 	dir = 2;
@@ -15780,6 +16397,11 @@
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
+"LO" = (
+/turf/open/floor/corsat{
+	icon_state = "browncorner"
+	},
+/area/event/underground_no_CAS/dynamic)
 "LP" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha,
@@ -15801,6 +16423,7 @@
 /area/event/metal/dynamic)
 "LR" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -15824,6 +16447,9 @@
 /area/event/metal/dynamic)
 "LT" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/objective{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "LV" = (
@@ -16181,6 +16807,15 @@
 	icon_state = "greenwhite"
 	},
 /area/event/metal/dynamic)
+"MC" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Reception"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
 "MD" = (
 /obj/structure/surface/rack,
 /obj/item/hardpoint/locomotion/van_wheels,
@@ -16268,8 +16903,14 @@
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "ML" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor/corsat,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/event/underground_no_CAS/dynamic)
 "MN" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -16371,6 +17012,40 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"Na" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/event/metal/dynamic)
+"Nb" = (
+/obj/item/ammo_magazine/m2c{
+	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
+	},
+/obj/structure/platform/kutjevo{
+	dir = 1;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 1;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 10;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "Nd" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -16393,58 +17068,6 @@
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
-"Nf" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Ng" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -16463,6 +17086,12 @@
 /obj/item/reagent_container/food/snacks/grown/tomato,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
+"Ni" = (
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Nk" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/clothing/under/lightred,
@@ -16519,6 +17148,15 @@
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "white"
+	},
+/area/event/underground_no_CAS/dynamic)
+"Nr" = (
+/obj/structure/janitorialcart,
+/obj/item/reagent_container/glass/bucket/janibucket,
+/obj/item/tool/mop,
+/turf/open/floor/corsat{
+	dir = 9;
+	icon_state = "brown"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Ns" = (
@@ -16586,6 +17224,15 @@
 "NC" = (
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/wood,
+/area/event/metal/dynamic)
+"NE" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "Pillbox Black Bishop"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/event/metal/dynamic)
 "NF" = (
 /obj/structure/surface/rack,
@@ -16768,6 +17415,7 @@
 /obj/item/reagent_container/glass/bottle/dexalin,
 /obj/structure/machinery/iv_drip,
 /obj/structure/closet/crate/medical,
+/obj/item/device/reagent_scanner/adv/objective,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -16865,6 +17513,42 @@
 /obj/structure/prop/rock/brown_degree,
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
+"Oh" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
+"Oj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "greenwhite"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Ol" = (
 /obj/structure/surface/table/almayer{
 	indestructible = 1
@@ -16872,6 +17556,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -16957,6 +17642,11 @@
 	icon_state = "cult"
 	},
 /area/event/metal/dynamic)
+"Ow" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "Ox" = (
 /obj/structure/machinery/cm_vending/clothing/antag,
 /turf/open/floor/corsat{
@@ -16982,7 +17672,8 @@
 	dir = 4;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
 "OB" = (
 /obj/structure/bed/chair,
@@ -17090,11 +17781,18 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "OP" = (
-/obj/structure/machinery/autodoc_console{
-	dir = 8
+/obj/structure/surface/rack,
+/obj/item/device/radio/headset/distress/UPP/medic,
+/obj/item/device/radio/headset/distress/UPP/medic,
+/obj/item/device/radio/headset/distress/UPP/medic,
+/obj/item/device/radio/headset/distress/UPP/medic,
+/obj/item/device/radio/headset/distress/UPP/medic,
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
+	dir = 5;
+	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
 "OQ" = (
@@ -17443,18 +18141,6 @@
 /obj/item/attachable/bayonet/upp,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"Pp" = (
-/obj/structure/surface/rack,
-/obj/item/device/radio/headset/distress/UPP/cct,
-/obj/item/device/radio/headset/distress/UPP/cct,
-/obj/item/device/radio/headset/distress/UPP/cct,
-/obj/item/device/radio/headset/distress/UPP/cct,
-/obj/item/device/radio/headset/distress/UPP/cct,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Pq" = (
 /turf/open/floor/corsat{
 	dir = 6;
@@ -17575,8 +18261,8 @@
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
 "PE" = (
-/obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -17731,15 +18417,6 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"PZ" = (
-/obj/structure/prop/Flag/UPP/Horizontal{
-	pixel_x = -4;
-	pixel_y = -36
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
-/area/event/dynamic/lit/unpowered)
 "Qa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
@@ -17809,16 +18486,31 @@
 	dir = 8;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert3"
-	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/dynamic/lit/unpowered)
-"Qh" = (
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+"Qi" = (
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0;
+	density = 0
 	},
-/area/event/underground_no_CAS/dynamic)
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
+"Qj" = (
+/obj/structure/sign/safety/bridge{
+	name = "Command Presence semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a command center or post.";
+	pixel_y = 28;
+	pixel_x = 8
+	},
+/turf/open/gm/grass,
+/area/event/dynamic/unpowered)
 "Ql" = (
 /turf/open/gm/dirtgrassborder/weedable,
 /area/event/dynamic/lit/unpowered)
@@ -17833,24 +18525,9 @@
 /obj/item/toy/deck{
 	pixel_y = 8
 	},
-/obj/item/toy/prize/deathripley{
-	pixel_x = -9;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/durand{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/toy/prize/honk{
-	pixel_y = 7
-	},
 /obj/item/toy/dice/d20{
 	pixel_x = 11;
 	pixel_y = -3
-	},
-/obj/item/spacecash/c1000{
-	pixel_x = 17;
-	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -17861,16 +18538,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"Qr" = (
-/obj/structure/machinery/medical_pod/autodoc,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Qs" = (
 /obj/item/paper_bin{
 	pixel_y = 5
@@ -17953,8 +18620,15 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Qw" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "red"
+	},
 /area/event/metal/dynamic)
 "Qx" = (
 /obj/structure/machinery/vending/dinnerware,
@@ -18122,6 +18796,68 @@
 	tag = "icon-sterile"
 	},
 /area/event/metal/dynamic)
+"QR" = (
+/obj/structure/surface/rack,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/item/attachable/bayonet/upp,
+/obj/structure/machinery/line_nexter_control{
+	id = "UPPreqturn";
+	pixel_x = -25;
+	pixel_y = -6;
+	req_one_access_txt = "1;21"
+	},
+/obj/structure/machinery/door_control{
+	id = "UPPreq1";
+	name = "Req Line Shutters";
+	pixel_x = -25;
+	pixel_y = 4;
+	req_one_access_txt = "1;21"
+	},
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "QS" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -18187,13 +18923,71 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"Ra" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+"QZ" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
+"Ra" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = 30
+	},
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Rb" = (
@@ -18269,6 +19063,10 @@
 /area/event/underground_no_CAS/dynamic)
 "Ri" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -18370,14 +19168,6 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/wood,
-/area/event/metal/dynamic)
-"RD" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
 /area/event/metal/dynamic)
 "RE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -18499,13 +19289,12 @@
 	},
 /area/event/metal/dynamic)
 "RQ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = -30
+/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greenwhite"
+	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
 "RR" = (
@@ -18519,6 +19308,7 @@
 	pixel_x = 6
 	},
 /obj/item/tool/kitchen/utensil/spoon,
+/obj/item/document_objective/technical_manual,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
 "RW" = (
@@ -18558,6 +19348,12 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"Sc" = (
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "yellowcorner"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Sd" = (
 /obj/structure/prop/rock/brown_degree,
 /turf/open/gm/grass,
@@ -18659,12 +19455,6 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
-"Sw" = (
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greenwhitecorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Sx" = (
 /obj/structure/closet,
 /obj/item/storage/fancy/cigar/tarbacks,
@@ -18808,6 +19598,11 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/event/metal/dynamic)
+"SF" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/event/metal/dynamic)
 "SG" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -18856,6 +19651,36 @@
 	starting_maxhealth = 500
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
+"SJ" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Janitorial Storage"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
+"SK" = (
+/obj/structure/platform/kutjevo{
+	dir = 8;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 8;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
 "SL" = (
@@ -18930,11 +19755,13 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"SU" = (
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+"SV" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
 /turf/open/floor/corsat{
-	dir = 9;
-	icon_state = "greenwhite"
+	dir = 8;
+	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
 "SW" = (
@@ -19035,6 +19862,13 @@
 	},
 /turf/open/floor/wood,
 /area/event/dynamic/lit/unpowered)
+"Ti" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/r_wall/bunker{
+	damage_cap = 25000;
+	name = "reinforced bunker wall"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Tj" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/barricade/sandbags{
@@ -19088,6 +19922,21 @@
 	},
 /obj/structure/platform{
 	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
+"Tm" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "UPPreq1";
+	name = "Requsitions Lockdown";
+	dir = 4
+	},
+/obj/structure/machinery/door/window,
+/obj/structure/machinery/door/window{
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -19147,10 +19996,11 @@
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
 "Tt" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "greenwhite"
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "Supply"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Tu" = (
@@ -19277,6 +20127,10 @@
 /area/event/metal/dynamic)
 "TC" = (
 /obj/structure/closet/toolcloset,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -19290,6 +20144,63 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"TG" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/obj/item/explosive/grenade/phosphorus/upp,
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/event/underground_no_CAS/dynamic)
 "TI" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
@@ -19385,6 +20296,13 @@
 "TN" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
+/turf/open/floor,
+/area/event/metal/dynamic)
+"TO" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor,
 /area/event/metal/dynamic)
 "TQ" = (
@@ -19596,34 +20514,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
-"Ur" = (
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 1;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 10;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	dir = 1;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/turf/open/floor/interior/wood,
-/area/event/dynamic/lit/unpowered)
 "Ut" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/platform/kutjevo{
@@ -19660,13 +20550,18 @@
 	icon_state = "sterile_green_side"
 	},
 /area/event/metal/dynamic)
-"Ux" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "UPPreq2";
-	name = "Requsitions Lockdown"
+"Uy" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.5
 	},
-/obj/structure/window/framed/bunker/reinforced,
-/turf/open/floor/plating,
+/turf/open/gm/river/desert/deep{
+	color = "#2d2d2d";
+	default_name = "oil";
+	desc = "our precious";
+	langchat_color = null;
+	name = "oil"
+	},
 /area/event/underground_no_CAS/dynamic)
 "UB" = (
 /obj/structure/computerframe,
@@ -19732,6 +20627,14 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"UF" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Mayor's Office"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/metal/dynamic)
 "UG" = (
 /turf/open/gm/dirtgrassborder2{
 	icon_state = "grassdirt2_corner2"
@@ -19794,19 +20697,12 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "UM" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy,
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
 /turf/open/floor/corsat{
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "UN" = (
@@ -19825,55 +20721,6 @@
 	desc = "our precious";
 	langchat_color = null;
 	name = "oil"
-	},
-/area/event/underground_no_CAS/dynamic)
-"UP" = (
-/obj/structure/surface/rack,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/obj/item/attachable/bayonet/upp,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
 	},
 /area/event/underground_no_CAS/dynamic)
 "UR" = (
@@ -19950,6 +20797,7 @@
 /obj/item/reagent_container/glass/bottle/cyanide,
 /obj/item/reagent_container/glass/bottle/cyanide,
 /obj/structure/closet/crate/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side"
@@ -19970,6 +20818,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "red"
+	},
+/area/event/underground_no_CAS/dynamic)
+"UZ" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/corsat{
+	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Va" = (
@@ -20073,7 +20928,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	req_one_access = null;
-	req_access = null
+	req_access = null;
+	name = "\improper Bulgakov Hospital"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -20116,7 +20972,8 @@
 	dir = 1;
 	explosive_multiplier = 0.1
 	},
-/turf/open/gm,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt2,
 /area/event/underground_no_CAS)
 "Vi" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -20150,12 +21007,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
-"Vk" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/shuttle/elevator/grating,
-/area/event/underground_no_CAS/dynamic)
 "Vl" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -20239,9 +21090,43 @@
 	},
 /turf/open/gm/dirtgrassborder2,
 /area/event/dynamic/unpowered)
-"Vs" = (
-/turf/closed/wall/rock/brown,
-/area/event)
+"Vt" = (
+/obj/structure/platform/kutjevo{
+	dir = 4;
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	dir = 4;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	pixel_y = 1;
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/platform/kutjevo{
+	layer = 2.96;
+	projectile_coverage = 0
+	},
+/obj/structure/barricade/sandbags{
+	brute_multiplier = 0;
+	build_stage = 5;
+	burn_multiplier = 0;
+	health = 500;
+	maxhealth = 500;
+	name = "trench lining";
+	projectile_coverage = 100;
+	stack_amount = 50;
+	starting_maxhealth = 500
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "Vu" = (
 /obj/structure/barricade/handrail/sandstone/b{
 	dir = 1;
@@ -20305,61 +21190,17 @@
 /obj/structure/prop/turbine_extras/border,
 /turf/open/floor/corsat,
 /area/event/underground_no_CAS/dynamic)
-"VE" = (
-/obj/structure/platform/kutjevo{
+"VC" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
-	layer = 2.96;
-	projectile_coverage = 0
+	req_one_access = null;
+	req_access = null;
+	name = "\improper Guskova Field Hospital"
 	},
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 1;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 10;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 4;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 6;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/turf/open/floor/interior/wood,
-/area/event/dynamic/lit/unpowered)
+/area/event/metal/dynamic)
 "VF" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -20551,10 +21392,10 @@
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "VS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/antag,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -20600,6 +21441,7 @@
 /obj/item/stack/medical/splint,
 /obj/item/stack/medical/splint,
 /obj/structure/closet/crate/medical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner"
 	},
@@ -20679,6 +21521,15 @@
 /obj/item/reagent_container/food/snacks/grown/potato,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
+"Wo" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_x = 6
+	},
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood/alt,
+/area/event/metal/dynamic)
 "Wp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -20689,19 +21540,6 @@
 	},
 /turf/open/floor/corsat{
 	dir = 8;
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
-"Wq" = (
-/obj/item/clothing/accessory/armband/science{
-	name = "purple squad"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/corsat{
-	dir = 4;
 	icon_state = "greencorner"
 	},
 /area/event/underground_no_CAS/dynamic)
@@ -20959,13 +21797,6 @@
 	},
 /turf/open/floor/almayer,
 /area/event/metal/dynamic)
-"Xb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "greenwhite"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Xc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -20984,70 +21815,25 @@
 /turf/closed/wall/wood,
 /area/event/dynamic/lit/unpowered)
 "Xh" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
-/obj/item/explosive/grenade/phosphorus/upp,
+/obj/structure/machinery/optable,
 /turf/open/floor/corsat{
 	dir = 4;
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Xi" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/prop/Flag/UPP{
+	pixel_x = -5;
+	pixel_y = 27;
+	layer = 2.4
 	},
-/obj/structure/machinery/iv_drip,
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greenwhite"
+	dir = 1;
+	icon_state = "green"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Xj" = (
@@ -21107,12 +21893,23 @@
 	},
 /turf/closed/wall/wood,
 /area/event/metal/dynamic)
-"Xq" = (
-/obj/structure/machinery/cm_vending/sorted/boozeomat/chess,
-/turf/open/floor/corsat{
-	icon_state = "squares"
+"Xo" = (
+/obj/structure/window/framed/bunker/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "UPPreq2";
+	name = "Requsitions Lockdown"
 	},
+/turf/open/floor/plating,
 /area/event/underground_no_CAS/dynamic)
+"Xp" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 32
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/event/dynamic/lit/unpowered)
 "Xr" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -21256,6 +22053,9 @@
 /area/event/dynamic/lit/unpowered)
 "XI" = (
 /obj/structure/machinery/space_heater,
+/obj/structure/machinery/light/built{
+	dir = 8
+	},
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -21276,6 +22076,12 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"XL" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/event/underground_no_CAS/dynamic)
 "XO" = (
 /obj/structure/flora/jungle/thickbush{
 	opacity = 1
@@ -21325,6 +22131,11 @@
 	icon_state = "plate"
 	},
 /area/event/metal/dynamic)
+"XX" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit/unpowered)
 "Ya" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -21411,58 +22222,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
-"Yi" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	dir = 4;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	pixel_y = 6;
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/barricade/sandbags{
-	brute_multiplier = 0;
-	build_stage = 5;
-	burn_multiplier = 0;
-	health = 500;
-	maxhealth = 500;
-	name = "trench lining";
-	projectile_coverage = 100;
-	stack_amount = 50;
-	starting_maxhealth = 500
-	},
-/turf/open/floor/interior/wood,
-/area/event/dynamic/lit/unpowered)
 "Yk" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/event/metal/dynamic)
-"Yl" = (
-/obj/effect/vehicle_spawner/van{
-	dir = 4;
-	pixel_x = 6
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Ym" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lamp{
@@ -21470,6 +22235,19 @@
 	},
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
+"Yn" = (
+/obj/structure/machinery/door_control{
+	id = "UPPreq3";
+	name = "Garage Shutters";
+	pixel_x = 7;
+	pixel_y = 26;
+	req_one_access_txt = "1;21"
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellowcorner"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Yo" = (
 /turf/closed/wall/r_wall/bunker,
 /area/event/underground_no_CAS)
@@ -21560,15 +22338,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/event/dynamic/unpowered)
-"YD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/event/underground_no_CAS/dynamic)
 "YE" = (
 /obj/structure/barricade/handrail/sandstone/b{
 	pixel_y = -1
@@ -21662,6 +22431,7 @@
 /obj/item/reagent_container/glass/bottle/oxycodone,
 /obj/structure/machinery/iv_drip,
 /obj/structure/closet/crate/medical,
+/obj/item/device/autopsy_scanner/objective,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -21779,7 +22549,7 @@
 /turf/open/gm/dirt2,
 /area/event/dynamic/unpowered)
 "Zf" = (
-/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -21979,7 +22749,9 @@
 /obj/structure/machinery/light/built{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/event/metal/dynamic)
 "Zz" = (
 /obj/structure/surface/table/reinforced/black,
@@ -22154,40 +22926,14 @@
 	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
-"ZO" = (
-/obj/structure/barricade/handrail{
-	dir = 1;
-	pixel_y = 14
+"ZQ" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	id_tag = "or02";
+	name = "Operating Theatre 2"
 	},
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/machinery/light{
-	dir = 1
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
-/turf/open/shuttle/elevator/grating,
 /area/event/underground_no_CAS/dynamic)
 "ZR" = (
 /obj/structure/platform{
@@ -22216,13 +22962,10 @@
 /turf/open/floor,
 /area/event/metal/dynamic)
 "ZW" = (
-/obj/structure/machinery/cm_vending/sorted/attachments{
-	req_access = null
-	},
-/obj/structure/machinery/light,
+/obj/structure/closet/crate/secure/surgery,
 /turf/open/floor/corsat{
 	dir = 10;
-	icon_state = "yellow"
+	icon_state = "greenwhite"
 	},
 /area/event/underground_no_CAS/dynamic)
 "ZY" = (
@@ -22286,6 +23029,9 @@
 /obj/structure/prop/souto_land/pole{
 	dir = 4;
 	pixel_x = 5
+	},
+/obj/structure/barricade/handrail{
+	layer = 4
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
@@ -22673,11 +23419,11 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+QN
+QN
+QN
+QN
+QN
 pA
 pA
 pA
@@ -22705,17 +23451,17 @@ pA
 pA
 pA
 pA
-dv
-dv
-dv
-dv
-Vs
-Vs
-Vs
-Vs
-Vs
-Vs
-Vs
+YW
+YW
+YW
+YW
+QN
+QN
+QN
+QN
+QN
+QN
+QN
 QN
 QN
 QN
@@ -24926,7 +25672,7 @@ RN
 RN
 RN
 YW
-aC
+Ih
 Ig
 GJ
 CE
@@ -25592,7 +26338,7 @@ AU
 cr
 wM
 EG
-YD
+vK
 Xk
 Je
 lc
@@ -25608,7 +26354,7 @@ np
 Bj
 Zz
 Zu
-Rw
+Cf
 Xk
 Ap
 Zu
@@ -26496,7 +27242,7 @@ uo
 sP
 Fy
 Zu
-Rw
+Cf
 Xk
 Ap
 Zu
@@ -26578,7 +27324,7 @@ hv
 js
 js
 om
-qX
+SF
 hv
 MR
 MR
@@ -26676,7 +27422,7 @@ QN
 EG
 KO
 Np
-PU
+UZ
 nE
 RN
 nE
@@ -26702,7 +27448,7 @@ qu
 cr
 wM
 EG
-vK
+pz
 Xk
 Xk
 Xk
@@ -26842,7 +27588,7 @@ br
 Fz
 hr
 hv
-RU
+Wo
 AZ
 Bz
 AZ
@@ -26861,7 +27607,7 @@ DX
 PD
 PD
 kV
-NC
+AV
 vm
 om
 kV
@@ -26937,8 +27683,8 @@ Zu
 Zu
 Zu
 Zu
-CM
-CM
+Zu
+Zu
 Zu
 Rw
 Xk
@@ -27065,11 +27811,11 @@ Fz
 Fz
 gR
 Tx
+sF
+sF
 AZ
 AZ
-AZ
-AZ
-AZ
+KX
 zL
 gR
 Fz
@@ -27159,10 +27905,10 @@ ri
 Xk
 vJ
 Zu
-Rd
+Nr
 vx
-ai
-AE
+Zu
+Rw
 Xk
 Xk
 OD
@@ -27321,7 +28067,7 @@ DX
 PD
 kV
 rJ
-NC
+AV
 Sm
 om
 om
@@ -27382,9 +28128,9 @@ Zu
 Zu
 Zu
 gl
-Bc
-Bc
-Xk
+az
+CM
+Rw
 Xk
 fK
 Zu
@@ -27568,26 +28314,26 @@ PU
 nE
 RN
 nE
-PU
+UZ
 YK
 UN
 EG
-uf
-qQ
-gF
-qQ
-qQ
-gF
-qQ
-HY
+az
+an
+No
+an
+an
+No
+an
+wM
 EG
 az
-qQ
-gF
-qQ
-qQ
-qQ
-gF
+an
+No
+an
+an
+an
+No
 wM
 EG
 FW
@@ -27604,9 +28350,9 @@ Ig
 Sx
 Zu
 wd
-Bc
-Bc
-Xk
+az
+Zu
+Rw
 Xk
 Ap
 Zu
@@ -27686,7 +28432,7 @@ WZ
 hv
 qX
 om
-qX
+SF
 om
 RC
 qX
@@ -27794,23 +28540,23 @@ EG
 EG
 Qv
 EG
-KT
-EG
-EG
-EG
-KT
+az
+Xk
 EG
 EG
 KT
 EG
+Xk
+wM
+EG
+az
+Xk
+EG
+EG
 KT
 EG
-EG
-EG
-KT
-EG
-EG
-KT
+Xk
+wM
 EG
 wu
 Ig
@@ -27825,8 +28571,8 @@ Zu
 Ig
 Yy
 Zu
-wd
-Bc
+CG
+Xk
 Bc
 Xk
 Xk
@@ -27875,7 +28621,7 @@ iE
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -27953,7 +28699,7 @@ Fz
 Fz
 Vn
 iU
-AZ
+sF
 AZ
 AZ
 AZ
@@ -28017,7 +28763,7 @@ YO
 UN
 EG
 az
-Xq
+Re
 EG
 ud
 wM
@@ -28026,7 +28772,7 @@ Zf
 wM
 EG
 az
-Xq
+Re
 EG
 ud
 wM
@@ -28047,15 +28793,15 @@ Zu
 Zu
 Zu
 Zu
-wd
-Bc
-Bc
-Xk
+pK
+az
+Zu
+Rw
 Xk
 Xk
 Ex
-XD
-JU
+Ul
+Xk
 Xm
 Ac
 YW
@@ -28104,7 +28850,7 @@ Fz
 Me
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -28175,7 +28921,7 @@ Fz
 Fz
 hv
 Tx
-AZ
+sF
 cY
 cY
 cY
@@ -28211,10 +28957,10 @@ kV
 ll
 ep
 kV
-om
+Iw
 om
 kV
-ZK
+mt
 re
 kV
 PD
@@ -28239,12 +28985,12 @@ Xy
 UN
 EG
 az
-PE
+CS
 EG
 UB
 wM
 EG
-jT
+VS
 wM
 EG
 az
@@ -28256,7 +29002,7 @@ EG
 jT
 wM
 EG
-aC
+Ih
 Ig
 wk
 Ou
@@ -28269,15 +29015,15 @@ ab
 Ig
 dN
 Zu
-gl
-KS
-BB
-Xk
+sM
+az
+CM
+Rw
 Xk
 fK
 Zu
-AY
-Ul
+jJ
+JU
 Xm
 VW
 YW
@@ -28316,7 +29062,7 @@ Za
 Kh
 bw
 iE
-SY
+pX
 Fz
 Fz
 Fz
@@ -28399,8 +29145,8 @@ gR
 Tx
 AZ
 AZ
-AZ
-AZ
+KX
+sF
 AZ
 zL
 gR
@@ -28417,7 +29163,7 @@ kV
 kV
 kV
 kV
-om
+Iw
 rJ
 NC
 Sm
@@ -28452,7 +29198,7 @@ QN
 EG
 KO
 Np
-PU
+UZ
 nE
 SR
 nE
@@ -28492,13 +29238,13 @@ Ig
 Yy
 Zu
 lf
-TU
-TU
-jU
+iv
+Zu
+Rw
 Xk
 Ap
 CM
-Zv
+be
 Ul
 Xm
 Od
@@ -28553,7 +29299,7 @@ ET
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -28620,7 +29366,7 @@ Fz
 hv
 OW
 vl
-Bs
+Iz
 AZ
 Bs
 Ch
@@ -28636,7 +29382,7 @@ jV
 DX
 PD
 kV
-ZK
+mt
 Tp
 kV
 Jp
@@ -28682,23 +29428,23 @@ EG
 EG
 KT
 EG
-KT
-EG
-EG
-EG
-EG
+az
+Xk
 EG
 EG
 KT
 EG
+Xk
+wM
+EG
+az
+Xk
+EG
+EG
 KT
 EG
-EG
-EG
-EG
-EG
-EG
-KT
+Xk
+wM
 EG
 Zu
 Zu
@@ -28713,14 +29459,14 @@ Zu
 Zu
 Zu
 Zu
-IS
-vk
+Zu
+Zu
 Cg
 Rw
 Xk
 Ap
 CM
-Zv
+be
 Ul
 Xm
 Ac
@@ -28765,7 +29511,7 @@ Fz
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -28924,16 +29670,16 @@ wM
 EG
 zV
 Zu
-wb
-Kg
-Vk
-yD
+IH
+di
+ef
+nB
 gZ
-rz
-uO
-rz
-wj
-CM
+nB
+ef
+Oj
+Dk
+Dk
 ht
 bQ
 ZW
@@ -28942,8 +29688,8 @@ cj
 Xk
 Ap
 Zu
-AY
-Ul
+tR
+li
 Xm
 VW
 YW
@@ -29011,10 +29757,10 @@ ic
 jF
 iG
 FN
-mB
+bE
 tJ
 si
-mB
+bE
 qy
 NY
 NY
@@ -29146,26 +29892,26 @@ wM
 EG
 zV
 Zu
-ZO
-po
-mI
-Gq
-pf
-Xk
-Er
-Xk
-bG
+Ud
+Ai
+Ky
+XL
+Ky
+XL
+Ky
+Ky
+Ky
+Ky
+Ky
+dj
+RR
 CM
-Gq
-Xk
-RG
-Ux
 Rw
 Xk
 YF
 ZM
-BX
-li
+Ul
+Xk
 Xm
 WG
 YW
@@ -29214,7 +29960,7 @@ GZ
 Ij
 XH
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -29368,21 +30114,21 @@ qB
 EG
 zV
 Zu
-sK
-OE
-YN
-Gq
-JR
-Xk
-vt
-Xk
-qt
-CM
-UP
-Xk
+Ud
+Ai
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+DD
 UM
-Ux
-Rw
+Zu
+tt
 Xk
 DO
 Ex
@@ -29445,7 +30191,7 @@ ET
 Ev
 Fz
 Fz
-Tw
+pX
 Fz
 au
 cf
@@ -29529,7 +30275,7 @@ ie
 Tp
 om
 kV
-Oq
+BH
 KI
 om
 kV
@@ -29560,15 +30306,15 @@ QN
 QN
 QN
 EG
+Xk
 KL
 OM
 Qx
-Rv
 TX
 Vc
-Xq
-Zf
+Rv
 Pn
+Xk
 EG
 az
 cr
@@ -29590,21 +30336,21 @@ wM
 EG
 zV
 Zu
-dD
-pL
-fn
-Hv
-xu
+DF
+yq
+Ky
+xs
+gv
+xs
+Ky
+vN
+jP
+EO
+Ky
+Ky
+Ky
+ut
 Xk
-Xk
-Xk
-RG
-xQ
-Gq
-Xk
-zl
-Ux
-Rw
 Xk
 fK
 Zu
@@ -29814,19 +30560,19 @@ EG
 Zu
 Zu
 Zu
+ZQ
 Zu
 Zu
-gV
-Xk
-NO
-Xk
-JA
 Zu
-Lf
+dA
+Zu
+Zu
+qp
+Ky
+Ky
+Ky
+Ex
 Xk
-Ie
-Ux
-Rw
 Xk
 Ap
 CM
@@ -29883,7 +30629,7 @@ Fz
 Fz
 Me
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -29899,10 +30645,10 @@ DL
 FN
 FN
 FN
-mB
+bE
 wr
 Et
-mB
+bE
 Fz
 Fz
 Fz
@@ -30004,6 +30750,7 @@ QN
 QN
 QN
 EG
+Ew
 MI
 MI
 MI
@@ -30011,8 +30758,7 @@ MI
 MI
 MI
 MI
-MI
-MI
+Ew
 EG
 QJ
 cr
@@ -30035,20 +30781,20 @@ EG
 Ko
 mO
 Zu
-ka
-bB
+ch
+Ky
+bF
 Zu
-xv
-Xk
-vY
-Xk
-ex
-CM
-Pp
-Xk
-jw
-Ux
-Rw
+ch
+Ky
+bF
+Zu
+FF
+Ky
+VU
+UM
+Zu
+tt
 Xk
 Ap
 CM
@@ -30098,7 +30844,7 @@ KV
 KV
 bR
 PR
-Tw
+pX
 Fz
 Fz
 Fz
@@ -30257,19 +31003,19 @@ vq
 cr
 cr
 Zu
-iO
-RG
-xQ
-Gq
-Xk
-Nf
-Xk
-lq
+JE
+Ky
+RR
+Zu
+JE
+Ky
+RR
+Zu
+ma
+Ky
+XL
+RR
 CM
-Ib
-Xk
-xX
-Ux
 Rw
 Xk
 Ap
@@ -30479,18 +31225,18 @@ EG
 IG
 mO
 Zu
-yY
-km
-Zu
-Hv
-Ra
+CF
 Xh
 Ra
-th
-CM
-Fw
-wJ
-uD
+Zu
+CF
+Xh
+Ra
+Zu
+EY
+Ky
+Ky
+Ni
 Zu
 cj
 Xk
@@ -30553,7 +31299,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -30710,7 +31456,7 @@ Zu
 Zu
 Zu
 Zu
-Zu
+Ex
 dx
 Zu
 Cg
@@ -30768,7 +31514,7 @@ Ca
 Li
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -30787,10 +31533,10 @@ ic
 kg
 kK
 FN
-mB
+bE
 FN
 FN
-mB
+bE
 qJ
 gi
 gi
@@ -30860,12 +31606,12 @@ ei
 it
 tk
 kV
-cI
+xG
 FB
 FB
 pb
 kV
-PD
+Wr
 FT
 jV
 jV
@@ -30921,7 +31667,7 @@ cr
 wM
 OQ
 qQ
-lL
+qQ
 qQ
 Hn
 CM
@@ -30929,12 +31675,12 @@ Rd
 Qy
 ai
 ai
-qA
-Qy
 ai
-ai
-Xk
 Qy
+SV
+AE
+YF
+SV
 ai
 AE
 Xk
@@ -31143,10 +31889,10 @@ qQ
 HY
 Xk
 Xk
-Qh
+Xk
 Xk
 az
-LL
+Bc
 Xk
 Xk
 Xk
@@ -31216,7 +31962,7 @@ Fz
 Fz
 Fz
 Me
-Tw
+pX
 Fz
 Fz
 Fz
@@ -31336,7 +32082,7 @@ QN
 QN
 QN
 EG
-MI
+Ew
 MI
 MI
 cr
@@ -31344,7 +32090,7 @@ MI
 MI
 MI
 MI
-MI
+Ew
 EG
 an
 No
@@ -31365,7 +32111,7 @@ an
 an
 an
 No
-ob
+an
 an
 tp
 CM
@@ -31378,7 +32124,7 @@ AD
 TU
 TU
 TU
-TU
+lr
 TU
 jU
 Xk
@@ -31429,7 +32175,7 @@ KV
 sN
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -31561,21 +32307,21 @@ EG
 YW
 EG
 EG
-KT
+tq
 EG
 EG
 EG
 EG
 EG
 EG
-KT
+tq
 EG
 EG
 EG
 EG
 EG
 EG
-KT
+tq
 EG
 EG
 EG
@@ -31584,7 +32330,7 @@ EG
 EG
 EG
 EG
-KT
+tq
 EG
 YW
 YW
@@ -31664,7 +32410,7 @@ Fz
 Fz
 Ev
 ET
-Tw
+pX
 Fz
 Fz
 iE
@@ -31748,12 +32494,12 @@ bz
 it
 tk
 kV
-cI
+BG
 FB
 nI
 cq
 kV
-PD
+Kx
 FT
 jV
 jV
@@ -31763,8 +32509,8 @@ kV
 om
 ZK
 kV
-SD
-ZK
+yE
+mt
 kV
 IU
 om
@@ -31792,7 +32538,7 @@ cr
 cr
 cr
 PV
-ZI
+mf
 ZR
 ZR
 xH
@@ -31801,7 +32547,7 @@ cr
 cr
 cr
 PV
-ZI
+mf
 ZR
 ZR
 xH
@@ -31869,7 +32615,7 @@ Za
 Za
 uF
 PR
-SY
+pX
 Fz
 Fz
 Fz
@@ -32011,7 +32757,7 @@ cr
 cr
 NP
 UO
-rk
+eu
 ZR
 Nn
 vR
@@ -32050,8 +32796,8 @@ Rw
 Xk
 DO
 Ex
-XD
-JU
+Ul
+Xk
 Xm
 Ac
 YW
@@ -32100,7 +32846,7 @@ Ev
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 GZ
 Ij
@@ -32272,8 +33018,8 @@ cj
 Xk
 Ap
 Zu
-AY
-Ul
+jJ
+JU
 Xm
 VW
 YW
@@ -32494,7 +33240,7 @@ Xk
 Xk
 Ap
 CM
-Zv
+be
 Ul
 Xm
 Od
@@ -32550,12 +33296,12 @@ Up
 tN
 PI
 Fz
-Tw
+pX
 Fz
 ET
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 iE
@@ -32676,7 +33422,7 @@ Wj
 Wj
 eV
 jb
-Gu
+Uy
 Wj
 Wj
 Wj
@@ -32689,7 +33435,7 @@ Wj
 Wj
 eV
 jb
-Gu
+Uy
 Wj
 Wj
 Wj
@@ -32716,7 +33462,7 @@ Rw
 Xk
 Ap
 CM
-Zv
+be
 Ul
 Xm
 Ac
@@ -32761,7 +33507,7 @@ Fz
 GZ
 Ij
 XH
-SY
+pX
 Fz
 iQ
 Fz
@@ -32938,8 +33684,8 @@ Rw
 Xk
 Ap
 Zu
-AY
-Ul
+tR
+li
 Xm
 VW
 YW
@@ -33160,8 +33906,8 @@ cj
 Xk
 YF
 ZM
-BX
-li
+Ul
+Xk
 Xm
 WG
 YW
@@ -33211,7 +33957,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -33317,7 +34063,7 @@ kV
 om
 Dy
 Nx
-mn
+Kd
 om
 CJ
 om
@@ -33440,7 +34186,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -33658,7 +34404,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -33724,8 +34470,8 @@ WZ
 qg
 aE
 XI
-GN
 Jg
+GN
 FO
 qg
 aY
@@ -33873,7 +34619,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -33945,9 +34691,9 @@ WZ
 WZ
 qg
 ug
-RD
 aT
-RD
+aT
+aT
 aT
 Op
 zf
@@ -34046,7 +34792,7 @@ ds
 CM
 Rw
 Xk
-Ap
+fK
 yI
 yj
 zu
@@ -34091,7 +34837,7 @@ dr
 Fz
 Fz
 iQ
-SY
+pX
 Fz
 Fz
 Fz
@@ -34110,7 +34856,7 @@ Fz
 Fz
 ET
 Fz
-Tw
+pX
 Fz
 iE
 iE
@@ -34167,8 +34913,8 @@ WZ
 WZ
 qg
 LR
-bn
-aV
+Na
+aT
 bn
 al
 qg
@@ -34203,7 +34949,7 @@ DX
 PD
 kV
 eD
-ZK
+mt
 kV
 vQ
 ep
@@ -34223,9 +34969,9 @@ QN
 QN
 QN
 YW
-YW
+LD
 ML
-EG
+CR
 YW
 YW
 YW
@@ -34255,18 +35001,18 @@ YW
 YW
 YW
 YW
+zW
+vD
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Rw
-Ap
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-cj
 Xk
 Ap
 yI
@@ -34324,7 +35070,7 @@ Fz
 Fz
 ET
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -34389,8 +35135,8 @@ WZ
 WZ
 qg
 qg
-Qw
-Qw
+eo
+xJ
 Qw
 qg
 qg
@@ -34474,15 +35220,15 @@ QN
 QN
 QN
 QN
-QN
-QN
 YW
-zW
-Ab
 YW
-zJ
-zJ
-zJ
+YW
+Zu
+Zu
+YW
+YW
+YW
+YW
 Zu
 Rf
 qA
@@ -34611,9 +35357,9 @@ bN
 MR
 MR
 qg
-gN
-gN
-gN
+HB
+HB
+HB
 qg
 PD
 CP
@@ -34696,17 +35442,17 @@ QN
 QN
 QN
 QN
+QN
+QN
 YW
-YW
-YW
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-cP
+Rd
+Qy
+ai
+ai
+ai
+Qy
+ai
+GX
 oy
 oy
 oy
@@ -34764,7 +35510,7 @@ Dg
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -34832,10 +35578,10 @@ Fz
 Fz
 Fz
 Fz
-rg
-gN
-gN
-gN
+jL
+CI
+CI
+CI
 rg
 xP
 Gy
@@ -34899,9 +35645,9 @@ Pu
 yi
 Om
 Om
-Om
+yX
 GU
-Om
+uU
 Om
 do
 QN
@@ -34918,17 +35664,17 @@ QN
 QN
 QN
 QN
+QN
+QN
 YW
-SU
-Dk
 Xi
-mb
-RQ
+La
+La
 La
 RQ
-wh
-Zu
-DW
+Xk
+Xk
+oy
 oy
 oy
 oy
@@ -34993,10 +35739,10 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
-Tw
+pX
 Fz
 ET
 Fz
@@ -35017,7 +35763,7 @@ ax
 ax
 EZ
 Pr
-dM
+pH
 hv
 kR
 om
@@ -35054,10 +35800,10 @@ Fz
 Fz
 Fz
 Fz
-rg
-gN
-gN
-gN
+jL
+CI
+aT
+CI
 rg
 FT
 ns
@@ -35066,7 +35812,7 @@ jV
 jV
 jV
 jV
-ag
+jV
 jV
 jV
 jV
@@ -35121,9 +35867,9 @@ gu
 UV
 Om
 Om
-Om
+yX
 GU
-Om
+uU
 Om
 Om
 Om
@@ -35140,17 +35886,17 @@ QN
 QN
 QN
 QN
+QN
+QN
 YW
-ma
-Ky
-Ky
-Ky
-Ky
-Ky
-Ky
-Ky
-ut
-GX
+Rw
+KS
+KS
+KS
+BB
+Xk
+Xk
+oy
 oy
 oy
 oy
@@ -35252,9 +35998,9 @@ fb
 sD
 sD
 sD
-Ki
+Xp
 Fz
-fb
+iL
 sD
 sD
 sD
@@ -35276,17 +36022,17 @@ Fz
 Fz
 Fz
 Fz
-rg
-gN
-gN
-gN
+jL
+CI
+aT
+CI
 rg
 FT
 ns
 jV
 jV
 jV
-aZ
+jV
 jV
 jV
 jV
@@ -35343,13 +36089,15 @@ VJ
 Cu
 Om
 Om
-Om
+yX
 GU
+uU
 Om
 Om
 Om
 Om
-Om
+QN
+QN
 QN
 QN
 QN
@@ -35363,15 +36111,13 @@ QN
 QN
 QN
 YW
-Fi
-Ky
-OP
-BR
+zW
+lr
 HD
-EO
-Ky
-Ky
-Ex
+Xk
+DO
+lr
+TU
 QO
 oy
 oy
@@ -35426,7 +36172,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -35464,7 +36210,7 @@ Pr
 Pr
 CK
 om
-om
+oX
 rQ
 NR
 Fz
@@ -35498,9 +36244,9 @@ Fz
 Fz
 Fz
 Fz
-rg
+jL
 Zy
-gN
+CI
 Zy
 rg
 PW
@@ -35565,9 +36311,9 @@ gu
 pS
 Om
 Om
-Om
+yX
 GU
-Om
+uU
 Om
 Om
 zQ
@@ -35584,15 +36330,15 @@ QN
 QN
 QN
 QN
+QN
+QN
 YW
-tf
-Ky
-VU
-RR
-IH
-fd
-Ky
-mH
+YW
+YW
+Tm
+YW
+BI
+Zu
 Zu
 DW
 oy
@@ -35656,7 +36402,7 @@ Ij
 XH
 Fz
 Fz
-Tw
+pX
 Fz
 Ev
 Fz
@@ -35787,14 +36533,16 @@ jj
 Lt
 Om
 Om
-Om
+yX
 GU
+uU
 Om
 Om
 Om
 Om
 Om
-Om
+QN
+QN
 QN
 QN
 QN
@@ -35807,15 +36555,13 @@ QN
 QN
 QN
 YW
-EH
-Ky
-Ky
-RR
-Ud
-Ai
-Ky
+lT
+QR
+Ks
+eK
+Sc
 ev
-CM
+Zu
 Xc
 oy
 oy
@@ -35866,7 +36612,7 @@ Kh
 iE
 Fz
 Fz
-SY
+pX
 Fz
 Ev
 Fz
@@ -35885,7 +36631,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 iE
@@ -35934,7 +36680,7 @@ ax
 ax
 ax
 ax
-ax
+XO
 ax
 Zp
 cU
@@ -36028,17 +36774,17 @@ QN
 QN
 QN
 QN
+QN
+QN
 YW
-tf
-Ky
-DD
-RR
-DF
-Hk
-Ky
-mH
-Zu
-cj
+aJ
+Xk
+Xk
+Xk
+Xk
+jw
+Xo
+Rw
 Xk
 Xk
 Xk
@@ -36104,7 +36850,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -36155,10 +36901,10 @@ uQ
 ax
 ax
 ax
-ax
-XO
-ax
-Zp
+kY
+SK
+SK
+RH
 rM
 sD
 Vw
@@ -36249,18 +36995,18 @@ QN
 QN
 QN
 QN
-QN
 YW
-Fi
-Ky
+YW
+YW
+YW
 tW
-Sw
-ef
-se
-Ky
-Ky
-ut
-xx
+Xk
+Xk
+Xk
+Xk
+xX
+Xo
+Rb
 Ix
 Ix
 pw
@@ -36377,10 +37123,10 @@ ax
 ax
 lu
 ax
-ax
-ax
-ax
-Zp
+Gn
+XX
+NY
+RH
 rM
 ax
 uQ
@@ -36454,14 +37200,13 @@ QN
 QN
 Om
 Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
 QN
+QN
+Om
+Om
+Om
+Om
+Om
 QN
 QN
 QN
@@ -36473,16 +37218,17 @@ QN
 QN
 QN
 YW
-Hw
-Ky
+hL
+bB
+YW
 OP
-Ky
+vM
 Kr
-Ky
-Ky
-Ky
-Ex
-Wq
+mX
+Xk
+uD
+Zu
+Rb
 Ix
 Ix
 Ix
@@ -36542,7 +37288,7 @@ Fz
 Ev
 Fz
 Fz
-Tw
+pX
 Fz
 ET
 Fz
@@ -36598,9 +37344,9 @@ ax
 ax
 ax
 ax
-ax
-ax
-ax
+XO
+Gn
+rM
 ax
 Zp
 rM
@@ -36693,16 +37439,16 @@ QN
 QN
 QN
 QN
-QN
 YW
-Ct
-HD
-Qr
-HD
-KY
-vN
+iO
+RG
+YW
+YW
+CM
+CM
+YW
 Tt
-Xb
+YW
 Zu
 XA
 Ix
@@ -36760,7 +37506,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -36803,7 +37549,7 @@ Fz
 Fz
 Fz
 Fz
-Ve
+VC
 qT
 qT
 Hs
@@ -36811,7 +37557,7 @@ aM
 rq
 qT
 qT
-Ve
+VC
 Fz
 Fz
 Fz
@@ -36819,12 +37565,12 @@ bd
 ax
 ax
 ax
+ww
+Cs
+RH
+rM
 ax
-ax
-ax
-ax
-ax
-Zp
+SQ
 RH
 jK
 jK
@@ -36915,18 +37661,18 @@ QN
 QN
 QN
 QN
-QN
 YW
-YW
-YW
+yY
+km
+xQ
+Sc
+uO
+pF
+rz
+Xk
+wj
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-gC
+Rb
 Ix
 Ix
 Ix
@@ -37041,12 +37787,12 @@ bd
 XO
 ax
 ax
+vd
+XX
+GE
+Vt
 ax
-XO
-ax
-XO
-ax
-Zp
+SQ
 Pr
 zN
 VG
@@ -37134,21 +37880,21 @@ Om
 zQ
 Om
 Om
-Om
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+YW
+YW
+YW
+YW
+xu
+Er
+Xk
+Xk
+Xk
+bG
 Zu
-Rb
+gC
 Ix
 Ix
 Ix
@@ -37212,7 +37958,7 @@ Fz
 Dg
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Ev
@@ -37263,12 +38009,12 @@ bd
 ax
 ax
 ax
+Nb
+eI
 ax
 ax
-ax
-ax
-ax
-Ur
+XO
+Zp
 Pr
 eM
 nU
@@ -37332,7 +38078,7 @@ iN
 gN
 gN
 gN
-WV
+kn
 kV
 QN
 QN
@@ -37356,19 +38102,19 @@ Om
 Om
 Om
 Om
-Om
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+wb
+Kg
+Lo
+yD
+iJ
+Xk
+Xk
+Xk
+Xk
+qt
 Zu
 Rb
 Ix
@@ -37422,7 +38168,7 @@ Fz
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -37485,17 +38231,17 @@ bd
 ax
 ax
 ax
-ax
-ax
+Af
+eI
 ax
 uQ
 ax
-hi
-Pr
+Zp
+bP
 zN
 Th
-nU
-Id
+pg
+Xf
 ax
 uv
 WZ
@@ -37558,11 +38304,11 @@ gN
 kV
 QN
 QN
-yx
-yx
-yx
 Om
-Bd
+Om
+Om
+do
+QN
 QN
 QN
 QN
@@ -37578,19 +38324,19 @@ Om
 Om
 Om
 Om
-Om
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+wB
+po
+mI
+Gq
+Xk
+Xk
+Xk
+Xk
+wO
+TG
 Zu
 Yb
 jU
@@ -37707,17 +38453,17 @@ bd
 ax
 ax
 ax
+EZ
+eI
 ax
-ax
-ax
-ax
+XO
 ax
 Zp
-Pr
+pH
 zN
-hp
+Th
 nU
-Xf
+BW
 ax
 uv
 WZ
@@ -37800,31 +38546,31 @@ Om
 Om
 Om
 Om
-Om
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+aq
+OE
+YN
+Gq
+Gs
+Xk
+vt
+Xk
+JA
 Zu
 Zu
-Ex
+qi
+vE
 kw
 yh
-CM
-CM
-CM
+Ba
+Ba
+Ba
 Ku
-Ex
+vE
 kw
-YW
+LD
 YW
 QN
 QN
@@ -37891,10 +38637,10 @@ ic
 jF
 iG
 FN
-mB
+bs
 FN
 FN
-mB
+bs
 Fz
 Fz
 Fz
@@ -37929,17 +38675,17 @@ bd
 XO
 ax
 ax
-ax
-ax
-XO
-ax
-ax
-Zp
+EZ
 RH
-ip
-ip
-ip
-Ui
+Cs
+dd
+ax
+SQ
+hG
+zN
+Th
+nU
+Xf
 ax
 WZ
 WZ
@@ -38021,20 +38767,20 @@ Om
 Om
 Om
 Om
-Om
-Om
+zQ
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+dD
+pL
+fn
+Gq
+pf
+Xk
+NO
+Xk
+ex
+Zu
 QN
 Om
 Om
@@ -38085,7 +38831,7 @@ Za
 Kh
 iE
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -38103,7 +38849,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 ca
 cf
@@ -38151,17 +38897,17 @@ bd
 ax
 ax
 ax
-uQ
-ax
-ax
-ax
-XO
-Zp
-rM
-ax
-ax
-ax
-ax
+Mc
+GE
+RH
+RH
+lZ
+RH
+RH
+ip
+ip
+ip
+Ui
 ax
 WZ
 WZ
@@ -38244,19 +38990,19 @@ Om
 Om
 Om
 Om
-zQ
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+YW
+sR
+pF
+iJ
+JR
+Xk
+vY
+Xk
+lq
+Zu
 QN
 Om
 Om
@@ -38321,7 +39067,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Ev
 Fz
@@ -38360,7 +39106,7 @@ bN
 MR
 MR
 MR
-MR
+tm
 MR
 tm
 MR
@@ -38375,10 +39121,10 @@ lu
 He
 Ak
 JV
-ax
-ax
-ax
-Zp
+Mc
+GE
+GE
+Pr
 rM
 ax
 uQ
@@ -38466,19 +39212,19 @@ Om
 Om
 do
 Om
-Om
 QN
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+mr
+zR
+wJ
+xu
+wO
+QZ
+zR
+th
+Zu
 QN
 lh
 JO
@@ -38535,7 +39281,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -38601,7 +39347,7 @@ ax
 uQ
 ax
 Zp
-rM
+Qi
 ax
 ax
 ax
@@ -38680,7 +39426,7 @@ SD
 kV
 lO
 Tp
-NC
+AV
 kV
 QN
 QN
@@ -38691,16 +39437,16 @@ Om
 Om
 QN
 QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
-QN
+YW
+Zu
+Zu
+Ti
+Yn
+Sc
+Ti
+Zu
+Zu
+Zu
 QN
 ZH
 RI
@@ -38778,11 +39524,11 @@ qO
 DL
 FN
 FN
-mB
+bs
 qT
 qT
 qT
-mB
+bs
 Fz
 Fz
 Fz
@@ -38821,9 +39567,9 @@ Kn
 Ak
 JV
 ax
-ax
+XO
 Zp
-Yi
+rM
 ax
 ax
 ax
@@ -38863,7 +39609,7 @@ gN
 gN
 AP
 kV
-WV
+wc
 gN
 gN
 gN
@@ -38916,10 +39662,10 @@ QN
 QN
 QN
 QN
-QN
-QN
-QN
-QN
+Ti
+kk
+kk
+Ti
 QN
 QN
 QN
@@ -38990,7 +39736,7 @@ GZ
 Ij
 XH
 Fz
-Tw
+pX
 Ev
 Fz
 ca
@@ -39044,7 +39790,7 @@ mM
 Ak
 ax
 ax
-VE
+EZ
 WZ
 WZ
 WZ
@@ -39138,10 +39884,10 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
+Ti
+nK
+LO
+Ti
 Zu
 Zu
 Zu
@@ -39196,7 +39942,7 @@ oA
 iE
 Fz
 Fz
-SY
+pX
 Fz
 ET
 Fz
@@ -39313,7 +40059,7 @@ gN
 gN
 PH
 gN
-uc
+TO
 gN
 Kv
 PD
@@ -39360,10 +40106,10 @@ Zu
 lk
 FP
 Gw
-lP
-mj
-Yl
-dZ
+qQ
+HY
+uf
+qQ
 qQ
 FP
 YR
@@ -39566,7 +40312,7 @@ nO
 om
 om
 om
-om
+FV
 om
 om
 kV
@@ -39582,10 +40328,10 @@ Zu
 ae
 Xk
 lv
-Ru
-mj
-mj
-Wd
+Xk
+Xk
+Xk
+Xk
 Iq
 ty
 az
@@ -39650,7 +40396,7 @@ Ev
 iQ
 Fz
 Me
-Tw
+pX
 Fz
 Fz
 Fz
@@ -39667,10 +40413,10 @@ ic
 kg
 kK
 FN
-mB
+bs
 FN
 FN
-mB
+bs
 Fz
 Fz
 Fz
@@ -39782,7 +40528,7 @@ Ts
 sr
 OX
 uR
-Kv
+vb
 NC
 NC
 om
@@ -39804,10 +40550,10 @@ Zu
 MD
 Xk
 dE
-Ru
-mj
-mj
-Wd
+Xk
+Xk
+Xk
+Xk
 Vi
 Xk
 az
@@ -39865,7 +40611,7 @@ Fz
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -39880,7 +40626,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 ca
 cf
 cZ
@@ -40004,7 +40750,7 @@ jV
 jV
 DX
 Fp
-Kv
+vb
 Nu
 Nu
 om
@@ -40022,7 +40768,7 @@ Om
 Om
 Om
 Om
-eL
+AT
 mj
 Xk
 Xk
@@ -40099,7 +40845,7 @@ Me
 Fz
 Ev
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -40244,7 +40990,7 @@ Om
 Om
 Om
 Om
-eL
+AT
 mj
 Xk
 Xk
@@ -40466,7 +41212,7 @@ Om
 Om
 Om
 zQ
-cA
+AT
 mj
 Xk
 Xk
@@ -40691,12 +41437,12 @@ Om
 Zu
 KM
 Xk
-Xk
 Ru
 mj
+dg
+mj
 nR
-oS
-Xk
+Oh
 Xk
 OR
 Zu
@@ -40761,7 +41507,7 @@ Dg
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -40898,7 +41644,7 @@ Nu
 om
 om
 om
-om
+vn
 om
 om
 kV
@@ -40914,11 +41660,11 @@ Zu
 WK
 Xk
 ji
-Ru
+mj
+Az
 mj
 mj
 Wd
-Xk
 Xk
 az
 Zu
@@ -40972,7 +41718,7 @@ oA
 iE
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -41136,10 +41882,10 @@ Zu
 Aa
 Mt
 Ri
-vA
+mj
+Az
 mj
 mj
-lI
 TC
 ha
 tp
@@ -41313,7 +42059,7 @@ Jb
 sL
 gN
 Jb
-Kv
+vb
 Pg
 Su
 RE
@@ -41435,7 +42181,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 iE
@@ -41527,7 +42273,7 @@ KC
 gN
 AQ
 kV
-Jb
+dY
 gN
 gN
 gN
@@ -41652,7 +42398,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -41780,7 +42526,7 @@ jV
 jV
 DX
 Pk
-iz
+PD
 kV
 Oq
 Cl
@@ -41788,7 +42534,7 @@ IV
 kV
 ZK
 uH
-NC
+AV
 kV
 QN
 QN
@@ -41902,7 +42648,7 @@ Pr
 Pr
 hJ
 om
-om
+Tp
 rQ
 NR
 Fz
@@ -42090,7 +42836,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -42212,7 +42958,7 @@ kV
 ll
 gN
 gN
-Jb
+dY
 iA
 Jb
 gN
@@ -42540,7 +43286,7 @@ Dg
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -42766,7 +43512,7 @@ Fz
 Fz
 Fz
 Fz
-SY
+pX
 Me
 Ev
 Fz
@@ -42975,7 +43721,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -43202,7 +43948,7 @@ Fz
 ET
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -43652,12 +44398,12 @@ Nd
 Pi
 vh
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
 Fz
-SY
+pX
 iE
 iE
 MF
@@ -43860,7 +44606,7 @@ Fz
 Dg
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -44000,7 +44746,7 @@ jV
 jV
 DX
 PD
-Kv
+vb
 tB
 Ps
 Iu
@@ -44088,7 +44834,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -44222,7 +44968,7 @@ tG
 la
 Su
 gb
-Kv
+vb
 gN
 gN
 gN
@@ -44321,7 +45067,7 @@ Fz
 Ev
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 iE
@@ -44528,7 +45274,7 @@ Nd
 Pi
 vh
 Fz
-Tw
+pX
 ET
 Fz
 Fz
@@ -44644,7 +45390,7 @@ Lb
 it
 zz
 kV
-Wr
+rK
 FT
 jV
 jV
@@ -44757,7 +45503,7 @@ Fz
 Dg
 Ev
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -44826,7 +45572,7 @@ uQ
 EZ
 eI
 Fz
-PZ
+bd
 hv
 kL
 KX
@@ -44983,7 +45729,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -45088,7 +45834,7 @@ ov
 it
 AN
 kV
-Wr
+rK
 FT
 jV
 jV
@@ -45198,7 +45944,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -45210,7 +45956,7 @@ iQ
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 iE
 iE
@@ -45412,7 +46158,7 @@ oA
 iE
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -45543,7 +46289,7 @@ vC
 gN
 gN
 gN
-YU
+kV
 gN
 gN
 gN
@@ -45762,7 +46508,7 @@ DX
 OK
 kV
 TJ
-RM
+Ke
 UJ
 jn
 kV
@@ -45784,7 +46530,7 @@ iN
 gN
 gN
 TN
-WV
+kn
 kV
 QN
 QN
@@ -45868,7 +46614,7 @@ Fz
 Fz
 Fz
 Fz
-jN
+pX
 Fz
 iQ
 Fz
@@ -45936,7 +46682,7 @@ ax
 zO
 vI
 ax
-lu
+dw
 hv
 Wn
 zo
@@ -46083,7 +46829,7 @@ Fz
 Fz
 iQ
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -46430,7 +47176,7 @@ Kv
 ov
 it
 it
-bv
+aQ
 ov
 it
 it
@@ -46531,7 +47277,7 @@ Fz
 Fz
 Fz
 Ev
-Tw
+pX
 Fz
 Nd
 Pi
@@ -46759,7 +47505,7 @@ Up
 tN
 PI
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -46771,10 +47517,10 @@ ic
 jF
 iG
 FN
-mB
+NE
 FN
 FN
-mB
+NE
 qy
 NY
 NY
@@ -46886,7 +47632,7 @@ jV
 jV
 bj
 PD
-Kv
+vb
 sd
 tV
 gN
@@ -46968,7 +47714,7 @@ Fz
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -47108,7 +47854,7 @@ Pl
 tG
 Su
 gb
-Kv
+vb
 gN
 gN
 gN
@@ -47421,7 +48167,7 @@ Me
 Fz
 Ev
 Fz
-IK
+pX
 Fz
 Fz
 Fz
@@ -47558,7 +48304,7 @@ kV
 kV
 kV
 sQ
-om
+Ow
 pV
 pV
 kV
@@ -47631,7 +48377,7 @@ Za
 Kh
 iE
 Fz
-SY
+pX
 Fz
 Fz
 Fz
@@ -47659,10 +48405,10 @@ DL
 FN
 FN
 FN
-mB
+NE
 wr
 Et
-mB
+NE
 Fz
 Fz
 Fz
@@ -47751,7 +48497,7 @@ qg
 Vz
 PD
 yv
-PD
+Jv
 PD
 FT
 jV
@@ -47775,7 +48521,7 @@ jV
 DX
 PD
 Kf
-PD
+yv
 PD
 PD
 kV
@@ -47860,7 +48606,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -47948,7 +48694,7 @@ ax
 ax
 WZ
 WZ
-Yo
+WZ
 Yo
 Bn
 eQ
@@ -47973,7 +48719,7 @@ qg
 PD
 PD
 PD
-Jv
+Fp
 Kf
 FT
 jV
@@ -47996,7 +48742,7 @@ jV
 jV
 DX
 PD
-PD
+Fp
 fU
 PD
 PD
@@ -48090,7 +48836,7 @@ Fz
 Fz
 Fz
 Fz
-Tw
+pX
 Fz
 Ev
 Fz
@@ -48102,7 +48848,7 @@ cE
 ic
 FN
 FN
-wH
+uw
 qg
 YL
 oI
@@ -48170,26 +48916,26 @@ ax
 ax
 WZ
 WZ
+WZ
 Yo
-Bn
-Bn
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-Bn
+RY
+wf
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+ZD
+eC
 Yo
 Yo
 qg
 qg
-Gf
+SJ
 qg
 qg
 fU
@@ -48392,21 +49138,21 @@ ax
 ax
 WZ
 WZ
+WZ
 Yo
-RY
-wf
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-tg
-eC
+Ao
+eQ
+AX
+kh
+lV
+oF
+lV
+wl
+wP
+yt
+eQ
+HX
+Bn
 Yo
 qg
 qg
@@ -48443,7 +49189,7 @@ jV
 jV
 jV
 DX
-PD
+yv
 kV
 om
 vy
@@ -48523,7 +49269,7 @@ iQ
 Fz
 Fz
 Fz
-SY
+pX
 Fz
 GZ
 Ij
@@ -48547,10 +49293,10 @@ ic
 kg
 kK
 FN
-mB
+NE
 xy
 Pq
-mB
+NE
 qJ
 gi
 gi
@@ -48614,27 +49360,27 @@ ax
 WZ
 WZ
 WZ
+WZ
 Yo
 Ao
-eQ
 AX
 kh
-lV
-oF
-lV
-lV
+ls
+pq
+su
+ub
+wt
 wl
 wP
-ye
 yt
-HX
+ti
 Bn
 qg
 qg
 Lc
 om
 om
-Lc
+jh
 qg
 Mj
 PD
@@ -48752,7 +49498,7 @@ Pi
 vh
 Fz
 Fz
-Tw
+pX
 Fz
 Fz
 Fz
@@ -48836,19 +49582,19 @@ WZ
 WZ
 WZ
 WZ
+WZ
 Yo
 Ao
-AX
 eQ
 ko
-lW
-oU
-oU
-oU
-wt
-lV
-lV
-zt
+lt
+me
+pd
+uL
+wL
+xc
+eQ
+eQ
 ti
 Bn
 qg
@@ -49058,20 +49804,20 @@ WZ
 WZ
 WZ
 WZ
+WZ
 Yo
 Ao
-eQ
-kh
-ls
-md
-pd
-pd
-pd
-pd
-pd
-wL
-zv
-HX
+AX
+kv
+lA
+pr
+sy
+uN
+wA
+wG
+wZ
+yO
+ti
 Bn
 qg
 om
@@ -49280,19 +50026,19 @@ WZ
 WZ
 WZ
 WZ
+WZ
 Yo
 Ao
 eQ
-ko
-lt
-me
-pj
-sl
-pd
-wx
-wT
-wL
-pd
+AX
+kv
+mC
+mC
+mC
+wG
+wZ
+yO
+eQ
 HX
 Bn
 qg
@@ -49416,7 +50162,7 @@ Fz
 Fz
 Me
 Fz
-Tw
+pX
 Fz
 Fz
 WZ
@@ -49502,21 +50248,21 @@ WZ
 WZ
 WZ
 WZ
+WZ
 Yo
-Ao
-eQ
-kv
-lA
-mq
-pd
-pd
-pd
-pd
-pd
-wL
-pd
-HX
-Bn
+RY
+Ea
+if
+if
+if
+if
+if
+if
+if
+if
+if
+rO
+eC
 qg
 om
 ee
@@ -49724,25 +50470,25 @@ WZ
 WZ
 WZ
 WZ
+WZ
 Yo
-Ao
-AX
+Bn
 eQ
-ko
-ms
-pm
-pm
-pm
-wA
-mC
-mC
-zB
-ti
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
 Bn
 qg
 IL
 om
-mB
+MC
 om
 om
 om
@@ -49947,28 +50693,28 @@ WZ
 WZ
 WZ
 Yo
-Ao
+Yo
+Bn
 eQ
-AX
-kv
-mC
-mC
-mC
-mC
-wG
-wZ
-yn
-yO
-HX
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
 Bn
 qg
 TB
 om
 qg
 Jp
-EN
+xr
 om
-mB
+LE
 jV
 FT
 jV
@@ -50169,26 +50915,26 @@ hg
 WZ
 WZ
 Yo
-RY
-Ea
-if
-if
-if
-if
-if
-if
-if
-if
-if
-if
-rO
-eC
+Bn
+Bn
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+Bn
 qg
 KG
 om
 qg
 gj
-xr
+Io
 om
 Mj
 jV
@@ -50391,28 +51137,28 @@ hg
 WZ
 WZ
 Yo
-Bn
-Bn
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-Bn
+RY
+wf
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+tg
+eC
 qg
 Gl
 om
 qg
 Jp
-Io
+iy
 om
-mB
+LE
 jV
 FT
 jV
@@ -50613,29 +51359,29 @@ hg
 hg
 WZ
 Yo
-Yo
-Bn
+Ao
 eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
+AX
+kh
+lV
+oF
+lV
+lV
+wl
+wP
+ye
+yt
+HX
 Bn
 qg
-IL
+Ow
 om
-mB
+MC
 om
 om
 om
 qg
-PD
+Qj
 FT
 jV
 jV
@@ -50834,20 +51580,20 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
-Bn
+Ao
+AX
 eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
+ko
+lW
+oU
+oU
+oU
+wt
+lV
+lV
+zt
+ti
 Bn
 qg
 Gb
@@ -51056,21 +51802,21 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
-RY
-wf
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ZD
-eC
+Ao
+eQ
+kh
+ls
+md
+pd
+pd
+pd
+pd
+pd
+wL
+zv
+HX
+Bn
 qg
 om
 om
@@ -51278,19 +52024,19 @@ hg
 Hl
 hg
 WZ
-WZ
 Yo
 Ao
 eQ
-AX
-kh
-lV
-oF
-lV
-wl
-wP
-yt
-eQ
+ko
+lt
+me
+pj
+sl
+pd
+wx
+wT
+wL
+pd
 HX
 Bn
 qg
@@ -51329,7 +52075,7 @@ qh
 jV
 jV
 DX
-PD
+yv
 kV
 nO
 om
@@ -51500,20 +52246,20 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
 Ao
-AX
-kh
-ls
-pq
-su
-ub
-wt
-wl
-wP
-yt
-ti
+eQ
+kv
+lA
+mq
+pd
+pd
+pd
+pd
+pd
+wL
+pd
+HX
 Bn
 qg
 XR
@@ -51722,19 +52468,19 @@ hg
 uI
 hg
 WZ
-WZ
 Yo
 Ao
+AX
 eQ
 ko
-lt
-me
-pd
-uL
-wL
-xc
-eQ
-eQ
+ms
+pm
+pm
+pm
+wA
+mC
+mC
+zB
 ti
 Bn
 qg
@@ -51742,7 +52488,7 @@ qg
 CJ
 om
 om
-CJ
+Gh
 qg
 Mj
 PD
@@ -51944,20 +52690,20 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
 Ao
+eQ
 AX
 kv
-lA
-pr
-sy
-uN
-wA
+mC
+mC
+mC
+mC
 wG
 wZ
+yn
 yO
-ti
+HX
 Bn
 Yo
 qg
@@ -52166,26 +52912,26 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
-Ao
-eQ
-AX
-kv
-mC
-mC
-mC
-wG
-wZ
-yO
-eQ
-HX
-Bn
+RY
+Ea
+if
+if
+if
+if
+if
+if
+if
+if
+if
+if
+rO
+eC
 Yo
 qg
 qg
 qg
-Gf
+UF
 qg
 qg
 Kf
@@ -52388,21 +53134,21 @@ hg
 hg
 hg
 WZ
-WZ
 Yo
-RY
-Ea
-if
-if
-if
-if
-if
-if
-if
-if
-if
-rO
-eC
+Bn
+Bn
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+Bn
 Yo
 qg
 GV
@@ -52416,7 +53162,7 @@ PD
 PD
 OT
 OG
-Jv
+Fp
 PD
 FT
 Ad
@@ -52426,7 +53172,7 @@ Fp
 Kf
 PD
 Jv
-PD
+yv
 PD
 Fp
 Vz
@@ -52434,10 +53180,10 @@ FT
 Ad
 DX
 PD
+Fp
 OT
 OG
 fU
-PD
 jV
 jV
 zK
@@ -52610,7 +53356,7 @@ hg
 hg
 hg
 WZ
-WZ
+Yo
 Yo
 Bn
 eQ
@@ -52637,7 +53383,7 @@ PD
 Jv
 PD
 PD
-PD
+Jv
 PD
 Vz
 nj
@@ -52857,7 +53603,7 @@ qg
 WZ
 WZ
 PD
-PD
+yv
 WZ
 qg
 qg
@@ -52881,7 +53627,7 @@ qg
 qg
 qg
 PD
-PD
+yv
 WZ
 WZ
 kV
@@ -53293,7 +54039,7 @@ ti
 Bn
 Yo
 qg
-IL
+Ow
 VY
 IL
 GO

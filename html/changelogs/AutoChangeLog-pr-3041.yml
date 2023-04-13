@@ -1,7 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - maptweak: "added short fog around LZ1 on LV522 marines will not see this as it will be gone by the time they land"
-  - maptweak: "heavily edited a flanking route south of reactor filt on LV522"
-  - maptweak: "Added a W-Y Corpo vault filled with gold and money to LV522 marines are encouraged to raid it Weyland aligned COs are encouraged to secure it for their corporate overlords"
-  - maptweak: "Removed some ways into the western reactor and some another route lightly longer to get to"

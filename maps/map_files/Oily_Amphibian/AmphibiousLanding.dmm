@@ -13470,6 +13470,7 @@
 /area/event/metal/dynamic)
 "EN" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/event/metal/dynamic)
 "EO" = (

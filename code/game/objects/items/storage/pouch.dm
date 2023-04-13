@@ -254,11 +254,12 @@
 	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/medical/splint(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol
@@ -425,6 +426,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/handful,
 	)
 
@@ -557,6 +559,10 @@
 /obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
+
+/obj/item/storage/pouch/magazine/large/m60/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/m60(src)
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"

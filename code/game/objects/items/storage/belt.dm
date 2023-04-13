@@ -144,6 +144,7 @@
 		/obj/item/roller,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/reagent_container/glass/minitank,
+		/obj/item/storage/surgical_case,
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -435,6 +436,10 @@
 /obj/item/storage/belt/marine/dutch/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/dutch/m60/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/m60 (src)
 
 // Outer Rim Weapon Belts
 
@@ -814,8 +819,15 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
+/obj/item/storage/belt/grenade/large/dutch
+	name = "\improper Dutch's Grenadier Rigging"
+	desc = "A high capacity rig filled to the brim with all the explosives you could ask for, what else is there to want?"
 
-
+/obj/item/storage/belt/grenade/large/dutch/full/fill_preset_inventory()
+	for(var/i in 1 to 6)
+		new /obj/item/explosive/grenade/incendiary/impact(src)
+		new /obj/item/explosive/grenade/high_explosive/impact(src)
+		new /obj/item/explosive/grenade/high_explosive/airburst/buckshot(src)
 
 
 

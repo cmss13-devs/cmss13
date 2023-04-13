@@ -1899,6 +1899,17 @@
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
+	if(href_list["distress_pmc"]) //Wey-Yu specific PMC distress signal for chem retrieval ERT
+		distress_cancel = FALSE
+		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		addtimer(CALLBACK(src, PROC_REF(accept_pmc_ert), usr, locate(href_list["distress"])), 10 SECONDS)
+
+	if(href_list["ccdeny_pmc"]) // CentComm-deny. The distress call is denied, without any further conditions
+		var/mob/ref_person = locate(href_list["ccdeny_pmc"])
+		to_chat(ref_person, "The distress signal has not received a response.")
+		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
 		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
@@ -2000,6 +2011,14 @@
 	SSticker.mode.activate_distress()
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+
+/datum/admins/proc/accept_pmc_ert(mob/approver, mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", FALSE, FALSE)
+	log_game("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent a PMC distress beacon, requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0

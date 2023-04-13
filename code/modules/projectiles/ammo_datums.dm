@@ -1851,11 +1851,11 @@
 	name = "M60 bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
-	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy = HIT_ACCURACY_TIER_2
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
-	damage = 25
+	damage = 45 //7.62x51 is scary
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 

@@ -45,8 +45,6 @@
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)
 		new /obj/item/stack/sheet/wood(loc)
-	else
-		new /obj/item/stack/sheet/wood(loc)
 	return ..()
 
 

@@ -232,6 +232,7 @@
 		buckled_mob.update_canmove()
 
 		var/current_mob = buckled_mob
+		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
 		buckled_mob = null
 
 		afterbuckle(current_mob)

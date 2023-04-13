@@ -131,17 +131,6 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
-//Disperses fog, doing so gradually.
-/datum/game_mode/proc/disperse_fog()
-	set waitfor = 0
-	flags_round_type &= ~MODE_FOG_ACTIVATED
-	var/i
-	for(i in round_fog)
-		round_fog -= i
-		qdel(i)
-		CHECK_TICK
-	round_fog = null
-
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(podlock_id)

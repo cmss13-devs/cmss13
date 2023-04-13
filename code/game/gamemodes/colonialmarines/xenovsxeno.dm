@@ -274,6 +274,7 @@
 	calculate_end_statistics()
 	declare_fun_facts()
 
+
 	return TRUE
 
 /datum/game_mode/xenovs/announce_ending()

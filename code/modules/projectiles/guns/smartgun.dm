@@ -19,8 +19,11 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
+	/// Whether the smartgun drains the powerpack battery (Ignored if requires_powerpack is false)
 	var/requires_power = TRUE
-	var/requires_powerpack = TRUE //If requires_powerpack is false, requires_power will be ignored
+	/// Whether the smartgun requires a powerpack to be worn
+	var/requires_powerpack = TRUE
+	/// Whether the smartgun requires a harness to use
 	var/requires_harness = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(

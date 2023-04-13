@@ -29,6 +29,7 @@
         "neaera",
         "stok"
     ],
+    "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],
     "xvx_hives": {
         "xeno_hive_alpha": 0,

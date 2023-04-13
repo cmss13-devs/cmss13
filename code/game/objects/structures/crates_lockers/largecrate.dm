@@ -39,8 +39,8 @@
 	if(!istype(moving_down) || !istype(current_turf))
 		return
 	for(var/atom/movable/checking_atom in current_turf.contents)
-		if(checking_atom != current_object)
-			checking_atom.layer = max(checking_atom.layer, current_object.layer + 0.1)
+		if(checking_atom != moving_down)
+			checking_atom.layer = max(checking_atom.layer, moving_down.layer + 0.1)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)

@@ -38,6 +38,24 @@
 	desc = "Stylish red shoes."
 	icon_state = "red"
 
+/obj/item/clothing/shoes/red/knife
+	var/armor_stage = 0
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver)
+	var/knife_type
+
+/obj/item/clothing/shoes/red/knife/Initialize(mapload, ...)
+	. = ..()
+	if(knife_type)
+		stored_item = new knife_type(src)
+	update_icon()
+
+/obj/item/clothing/shoes/red/knife/update_icon()
+	if(stored_item && !armor_stage)
+		icon_state = "[initial(icon_state)]-1"
+	else
+		if(!armor_stage)
+			icon_state = initial(icon_state)
+
 /obj/item/clothing/shoes/white
 	name = "white shoes"
 	icon_state = "white"

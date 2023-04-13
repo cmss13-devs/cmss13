@@ -28,8 +28,8 @@
 	if(parts_type) // Create the crate material and store its reference
 		material_sheet = new parts_type(current_turf, 2)
 
-	for(var/atom/movable/A in temp_contents) // Move the objects back to the turf, above the crate material
-		A.forceMove(T)
+	for(var/atom/movable/current_atom in temp_contents) // Move the objects back to the turf, above the crate material
+		current_atom.forceMove(current_turf)
 
 	if(material_sheet) // Move the crate material to the bottom of the turf's contents
 		move_to_bottom(material_sheet, T)

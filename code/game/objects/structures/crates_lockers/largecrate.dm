@@ -26,7 +26,7 @@
 
 	var/obj/item/stack/sheet/material_sheet // Variable to store the reference of the crate material
 	if(parts_type) // Create the crate material and store its reference
-		material_sheet = new parts_type(T, 2)
+		material_sheet = new parts_type(current_turf, 2)
 
 	for(var/atom/movable/A in temp_contents) // Move the objects back to the turf, above the crate material
 		A.forceMove(T)

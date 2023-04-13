@@ -18,7 +18,7 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	var/turf/T = get_turf(src) // Get the turf the crate is on
+	var/turf/current_turf = get_turf(src) // Get the turf the crate is on
 
 	var/list/temp_contents = contents.Copy() // Temporarily store the contents of the crate
 	playsound(src, unpacking_sound, 35)

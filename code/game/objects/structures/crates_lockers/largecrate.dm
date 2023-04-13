@@ -43,7 +43,7 @@
 			checking_atom.layer = max(checking_atom.layer, current_object.layer + 0.1)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
-	if(disassembled)
+	if(!disassembled)
 		// We don't need to create the crate material here, as it's handled in unpack()
 	else
 		new /obj/item/stack/sheet/wood(loc)

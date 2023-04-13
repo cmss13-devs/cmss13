@@ -11,7 +11,8 @@
 "ab" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "Leftyenant's Quarters"
+	name = "Leftyenant's Quarters";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -412,7 +413,8 @@
 "bh" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "Lefytenant Quarters"
+	name = "Lefytenant Quarters";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -504,7 +506,8 @@
 "bs" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "Pillbox Black Queen"
+	name = "Pillbox Black Queen";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -640,7 +643,8 @@
 "bE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "Pillbox Black Rook"
+	name = "Pillbox Black Rook";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -1488,7 +1492,9 @@
 "dx" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Triage Center";
-	dir = 1
+	dir = 1;
+	req_one_access = null;
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -1509,7 +1515,9 @@
 "dA" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	id_tag = "or01";
-	name = "Operating Theatre 1"
+	name = "Operating Theatre 1";
+	req_one_access = null;
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -2925,24 +2933,6 @@
 	dir = 4
 	},
 /area/event/dynamic)
-"gC" = (
-/obj/item/clothing/accessory/armband/science{
-	name = "purple squad"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/structure/prop/Flag/UPP{
-	pixel_x = -5;
-	pixel_y = 27;
-	layer = 2.4
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "gD" = (
 /obj/structure/machinery/telecomms/server,
 /turf/open/floor/plating{
@@ -3001,23 +2991,6 @@
 	},
 /turf/open/gm/dirt2,
 /area/event/dynamic)
-"gK" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Hero of the union statue"
-	},
-/obj/structure/machinery/light,
-/obj/structure/sign/poster/clf{
-	pixel_x = 32
-	},
-/turf/open/floor/corsat{
-	dir = 6;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "gL" = (
 /obj/structure/platform/kutjevo{
 	layer = 2.96;
@@ -3394,22 +3367,6 @@
 	icon_state = "cult"
 	},
 /area/event/metal/dynamic)
-"hE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/item/clothing/accessory/armband/hydro{
-	name = "greens squad"
-	},
-/obj/structure/sign/poster/clf{
-	pixel_x = -32
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "hG" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -3533,19 +3490,6 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
-"hY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/item/clothing/accessory/armband/cargo{
-	name = "yellows squad"
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "ia" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/intel{
@@ -4129,6 +4073,15 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"jp" = (
+/obj/structure/sign/poster/clf{
+	pixel_x = 32
+	},
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "jq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
@@ -4672,7 +4625,7 @@
 	name = "\improper Medical Storage";
 	req_one_access = null;
 	dir = 1;
-	req_access = null
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5125,22 +5078,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"lp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/item/clothing/accessory/armband/cargo{
-	name = "yellows squad"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "lq" = (
 /obj/structure/surface/rack,
 /obj/item/mortar_shell/frag,
@@ -5571,7 +5508,8 @@
 /area/event/underground_no_CAS/dynamic)
 "mh" = (
 /obj/structure/machinery/door/airlock/almayer/marine{
-	name = "Bunks"
+	name = "Bunks";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5707,7 +5645,8 @@
 "mB" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Mayor's House"
+	name = "\improper Mayor's House";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -6912,7 +6851,8 @@
 /area/event/underground_no_CAS)
 "pk" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Mayjor's Quarters"
+	name = "Mayjor's Quarters";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7247,7 +7187,8 @@
 "pN" = (
 /obj/structure/machinery/door/airlock/almayer/marine{
 	dir = 2;
-	name = "Cryonics"
+	name = "Cryonics";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7715,7 +7656,9 @@
 "qK" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/glass{
 	dir = 1;
-	name = "Sapper Preperation"
+	name = "Sapper Preperation";
+	req_access = list(201);
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7920,7 +7863,8 @@
 "ra" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "Leader Preperation"
+	name = "Leader Preperation";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -7965,7 +7909,8 @@
 "ri" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "Synthetic Quarters"
+	name = "Synthetic Quarters";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -8815,7 +8760,7 @@
 /area/event/underground_no_CAS/dynamic)
 "tq" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname{
-	req_access = null;
+	req_access = list(201);
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -8830,7 +8775,8 @@
 /area/event/underground_no_CAS)
 "ts" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Kommando Preperation"
+	name = "Kommando Preperation";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -9058,20 +9004,6 @@
 	icon_state = "test_floor4"
 	},
 /area/event/metal/dynamic)
-"tQ" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Hero of the union statue"
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "tR" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -9261,7 +9193,9 @@
 /area/event/metal/dynamic)
 "ut" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "Triage Center"
+	name = "Triage Center";
+	req_access = list(201);
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -9729,8 +9663,10 @@
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
 "vq" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	req_access = list(201);
+	req_one_access = null;
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -10873,7 +10809,8 @@
 "xQ" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Supply"
+	name = "Supply";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -11052,6 +10989,19 @@
 /obj/item/storage/box/packet/smoke,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"ym" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Hero of the union statue"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "yn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
@@ -12077,7 +12027,8 @@
 /area/event/metal/dynamic)
 "AK" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Kolonel's Bedroom"
+	name = "Kolonel's Bedroom";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12210,7 +12161,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass{
 	dir = 1;
 	req_one_access = null;
-	req_access = null
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -12497,7 +12448,8 @@
 /area/event/metal/dynamic)
 "BI" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Supply"
+	name = "Supply";
+	req_access = list(201)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "UPPreq2";
@@ -12570,6 +12522,19 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
+"BS" = (
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Hero of the union statue"
+	},
+/turf/open/floor/corsat{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "BT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/barricade/handrail/strata,
@@ -12938,6 +12903,18 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
+"CX" = (
+/obj/item/clothing/accessory/armband/science{
+	name = "purple squad"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/event/underground_no_CAS/dynamic)
 "CZ" = (
 /obj/structure/window/framed/wood/reinforced,
 /turf/open/floor/plating,
@@ -13195,27 +13172,20 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
+"DS" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	req_access = list(201)
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/event/underground_no_CAS/dynamic)
 "DT" = (
 /obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/marine/veteran/UPP/civi3,
 /turf/open/floor,
 /area/event/metal/dynamic)
-"DW" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/item/clothing/accessory/armband{
-	name = "reds squad"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "DX" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -13914,7 +13884,8 @@
 /area/event/metal/dynamic)
 "FS" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Kolonel's Quarters"
+	name = "Kolonel's Quarters";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -13974,7 +13945,8 @@
 /area/event/metal/dynamic)
 "Gf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Mayor's Bedroom"
+	name = "\improper Mayor's Bedroom";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -14304,19 +14276,6 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
-"GX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/item/clothing/accessory/armband{
-	name = "reds squad"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "GZ" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -14539,7 +14498,8 @@
 /obj/structure/machinery/door/airlock/security/colony{
 	dir = 8;
 	req_one_access = null;
-	name = "\improper Cell 2"
+	name = "\improper Cell 2";
+	req_access = list(201)
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
@@ -14861,9 +14821,8 @@
 	indestructible = 1;
 	name = "Last Stand Armoury"
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
 "It" = (
@@ -15984,7 +15943,9 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "KT" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	req_access = list(201)
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -16218,22 +16179,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic/unpowered)
-"Lu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/item/clothing/accessory/armband/hydro{
-	name = "greens squad"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Lw" = (
 /obj/structure/platform{
 	dir = 1
@@ -16320,7 +16265,8 @@
 "LE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Town Hall"
+	name = "\improper Town Hall";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -16330,7 +16276,8 @@
 /obj/structure/machinery/door/airlock/security/colony{
 	dir = 2;
 	req_one_access = null;
-	name = "\improper Prisoners of War"
+	name = "\improper Prisoners of War";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -16377,7 +16324,8 @@
 "LL" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "Command Center"
+	name = "Command Center";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -16680,11 +16628,11 @@
 "Mk" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Kolonel's Bathroom"
+	name = "Kolonel's Bathroom";
+	req_access = list(201)
 	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/event/underground_no_CAS/dynamic)
 "Mo" = (
@@ -16810,7 +16758,8 @@
 "MC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Reception"
+	name = "\improper Reception";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -16905,7 +16854,7 @@
 "ML" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname{
-	req_access = null;
+	req_access = list(201);
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -17046,6 +16995,15 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit/unpowered)
+"Nc" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -32
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/corsat{
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "Nd" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -17228,7 +17186,8 @@
 "NE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "Pillbox Black Bishop"
+	name = "Pillbox Black Bishop";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -17575,7 +17534,9 @@
 "Op" = (
 /obj/structure/machinery/door/airlock/security/colony{
 	dir = 2;
-	req_one_access = null
+	req_one_access = null;
+	req_access = list(201);
+	name = "\improper Police Checkpoint"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -17684,7 +17645,8 @@
 "OD" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Kommando Preperation"
+	name = "Kommando Preperation";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -18216,7 +18178,8 @@
 /obj/structure/machinery/door/airlock/security/colony{
 	dir = 8;
 	req_one_access = null;
-	name = "\improper Cell 1"
+	name = "\improper Cell 1";
+	req_access = list(201)
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 8;
@@ -18344,18 +18307,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/interior/wood,
 /area/event/dynamic/unpowered)
-"PO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/item/clothing/accessory/armband/cargo{
-	name = "yellows squad"
-	},
-/turf/open/floor/corsat{
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "PP" = (
 /obj/structure/sign/poster/clf{
 	pixel_y = -32
@@ -18420,7 +18371,9 @@
 "Qa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
-	name = "Medic Preperation"
+	name = "Medic Preperation";
+	req_one_access = null;
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -18662,14 +18615,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
-"QC" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "QD" = (
 /obj/structure/prop/Flag/UPP/Horizontal{
 	pixel_x = 12;
@@ -18774,19 +18719,6 @@
 "QN" = (
 /turf/closed/wall/rock/brown,
 /area/event/underground_no_CAS/dynamic)
-"QO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/item/clothing/accessory/armband{
-	name = "reds squad"
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "QQ" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -18886,19 +18818,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/underground_no_CAS/dynamic/unpowered)
-"QT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/item/clothing/accessory/armband/hydro{
-	name = "greens squad"
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "QU" = (
 /obj/structure/machinery/light/built,
 /obj/structure/surface/table/reinforced/prison,
@@ -18991,12 +18910,10 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Rb" = (
-/obj/item/clothing/accessory/armband/science{
-	name = "purple squad"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/structure/prop/Flag/UPP{
+	pixel_x = -5;
+	pixel_y = 27;
+	layer = 2.4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -19045,9 +18962,6 @@
 	icon_state = "Synthetic_Template";
 	name = "Hero of the union statue"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "green"
@@ -19091,7 +19005,8 @@
 "Rm" = (
 /obj/structure/machinery/door/airlock/almayer/marine{
 	dir = 1;
-	name = "Specialist Preperation"
+	name = "Specialist Preperation";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -19997,7 +19912,8 @@
 /area/event/dynamic/unpowered)
 "Tt" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "Supply"
+	name = "Supply";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -20563,6 +20479,22 @@
 	name = "oil"
 	},
 /area/event/underground_no_CAS/dynamic)
+"Uz" = (
+/obj/structure/sign/poster/clf{
+	pixel_x = 32
+	},
+/obj/structure/showcase{
+	color = "#95948B";
+	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Hero of the union statue"
+	},
+/turf/open/floor/corsat{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/event/underground_no_CAS/dynamic)
 "UB" = (
 /obj/structure/computerframe,
 /obj/structure/machinery/light{
@@ -20629,7 +20561,8 @@
 /area/event/dynamic/lit/unpowered)
 "UF" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Mayor's Office"
+	name = "\improper Mayor's Office";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -21530,19 +21463,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/event/metal/dynamic)
-"Wp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/item/clothing/accessory/armband/hydro{
-	name = "greens squad"
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "greencorner"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Wr" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -21797,19 +21717,6 @@
 	},
 /turf/open/floor/almayer,
 /area/event/metal/dynamic)
-"Xc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/item/clothing/accessory/armband{
-	name = "reds squad"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Xf" = (
 /obj/structure/platform/kutjevo,
 /turf/closed/wall/wood,
@@ -21972,22 +21879,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/event/dynamic/unpowered)
-"XA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/clothing/accessory/armband/science{
-	name = "purple squad"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "XD" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -22146,25 +22037,6 @@
 	},
 /turf/open/gm/grass,
 /area/event/dynamic/unpowered)
-"Yb" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A statue of the late and great Dmitri Rosanov, who (of the red hand batallion) gained acclaim for actions during the dog war - where he alone assaulted a USCM flagship and forced its self-destruct. There are doubts to the truth of this story.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Hero of the union statue"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/poster/clf{
-	pixel_x = 32
-	},
-/turf/open/floor/corsat{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/event/underground_no_CAS/dynamic)
 "Yc" = (
 /turf/open/floor/corsat{
 	icon_state = "red"
@@ -22920,7 +22792,8 @@
 /area/event/underground_no_CAS)
 "ZM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine{
-	name = "Primary Preperation"
+	name = "Primary Preperation";
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -22929,7 +22802,9 @@
 "ZQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	id_tag = "or02";
-	name = "Operating Theatre 2"
+	name = "Operating Theatre 2";
+	req_one_access = null;
+	req_access = list(201)
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -30093,7 +29968,7 @@ Fu
 Fu
 Fu
 Np
-vq
+DS
 az
 cr
 RN
@@ -35231,18 +35106,18 @@ YW
 YW
 Zu
 Rf
-qA
 ai
 Qy
+ai
 AE
-UR
-Wp
-Lu
-hE
-QT
-tQ
+Xk
+YF
+ai
+Qy
+qA
+ai
+ym
 YW
-QN
 QN
 rN
 "}
@@ -35452,19 +35327,19 @@ ai
 ai
 Qy
 ai
-GX
-oy
-oy
-oy
+AE
+Xk
+Xk
+Xk
+Xk
 Xk
 UR
 UR
 UR
 UR
 UR
-jl
+Ap
 YW
-QN
 QN
 rN
 "}
@@ -35674,6 +35549,7 @@ La
 RQ
 Xk
 Xk
+Xk
 oy
 oy
 oy
@@ -35684,9 +35560,8 @@ UR
 UR
 UR
 UR
-kO
+Nc
 YW
-QN
 QN
 rN
 "}
@@ -35896,19 +35771,19 @@ KS
 BB
 Xk
 Xk
+Xk
 oy
 oy
 oy
 oy
 Xk
-NU
 UR
 UR
 UR
 UR
-jl
+UR
+kO
 YW
-QN
 QN
 rN
 "}
@@ -36118,19 +35993,19 @@ Xk
 DO
 lr
 TU
-QO
+jU
+oy
 oy
 oy
 oy
 Xk
-bH
+NU
 UR
 UR
-Vq
-Tl
-GF
+UR
+UR
+jl
 YW
-QN
 QN
 rN
 "}
@@ -36340,19 +36215,19 @@ YW
 BI
 Zu
 Zu
-DW
+Rw
 oy
 oy
 oy
-Rl
-qv
-za
-qv
-pe
-Kt
-Dz
+oy
+Xk
+bH
+UR
+UR
+Vq
+Tl
+GF
 YW
-QN
 QN
 rN
 "}
@@ -36562,19 +36437,19 @@ eK
 Sc
 ev
 Zu
-Xc
+cj
 oy
 oy
-lo
-Sg
-Nm
-LW
-hw
+oy
+oy
+Rl
+qv
+za
+qv
+pe
 Kt
-Xk
-PP
+Dz
 YW
-QN
 QN
 rN
 "}
@@ -36785,18 +36660,18 @@ Xk
 jw
 Xo
 Rw
+oy
+oy
+oy
+lo
+Sg
+Nm
+LW
+hw
+Kt
 Xk
-Xk
-Xk
-ru
-Rg
-Xk
-Xk
-Xk
-Xk
-Pm
+PP
 YW
-QN
 QN
 rN
 "}
@@ -37006,19 +36881,19 @@ Xk
 Xk
 xX
 Xo
-Rb
-Ix
-Ix
-pw
-Sg
-Lp
-DA
-tz
-fR
+Rw
 Xk
-kS
+Xk
+Xk
+Xk
+ru
+Rg
+Xk
+Xk
+Xk
+Xk
+Pm
 YW
-QN
 QN
 rN
 "}
@@ -37228,19 +37103,19 @@ mX
 Xk
 uD
 Zu
-Rb
+cj
+CX
 Ix
 Ix
-Ix
-aX
-uk
-uh
-uk
-NJ
+pw
+Sg
+Lp
+DA
+tz
 fR
-xd
+Xk
+kS
 YW
-QN
 QN
 rN
 "}
@@ -37450,19 +37325,19 @@ YW
 Tt
 YW
 Zu
-XA
+Rw
+CX
 Ix
 Ix
 Ix
-Xk
-Ye
-Nl
-Nl
-ST
-JD
-UT
+aX
+uk
+uh
+uk
+NJ
+fR
+xd
 YW
-QN
 QN
 rN
 "}
@@ -37672,19 +37547,19 @@ rz
 Xk
 wj
 Zu
-Rb
+cj
+CX
 Ix
 Ix
 Ix
 Xk
-SB
+Ye
 Nl
 Nl
-Nl
-Nl
-jl
+ST
+JD
+UT
 YW
-QN
 QN
 rN
 "}
@@ -37894,19 +37769,19 @@ Xk
 Xk
 bG
 Zu
-gC
+Rw
+CX
 Ix
 Ix
 Ix
 Xk
+SB
 Nl
 Nl
 Nl
 Nl
-Nl
-kO
+jl
 YW
-QN
 QN
 rN
 "}
@@ -38117,18 +37992,18 @@ Xk
 qt
 Zu
 Rb
+CX
 Ix
 Ix
 Ix
 Xk
 Nl
 Nl
-dI
 Nl
 Nl
-jl
+Nl
+kO
 YW
-QN
 QN
 rN
 "}
@@ -38338,19 +38213,19 @@ Xk
 wO
 TG
 Zu
-Yb
-jU
-DO
-QC
-TU
-hY
-hY
-lp
+cj
+CX
+Ix
+Ix
+Ix
+Xk
+Nl
+Nl
 dI
-PO
-gK
+Nl
+Nl
+Nc
 YW
-QN
 QN
 rN
 "}
@@ -38560,19 +38435,19 @@ Xk
 JA
 Zu
 Zu
-qi
-vE
-kw
-yh
-Ba
-Ba
-Ba
-Ku
-vE
-kw
-LD
+Rw
+Xk
+Xk
+Xk
+Xk
+Xk
+Nl
+Nl
+Nl
+Nl
+Nl
+Ap
 YW
-QN
 QN
 rN
 "}
@@ -38781,20 +38656,20 @@ NO
 Xk
 ex
 Zu
-QN
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-QN
-QN
+Zu
+Uz
+jU
+DO
+lr
+TU
+TU
+TU
+lr
+jU
+DO
+jp
+BS
+YW
 QN
 rN
 "}
@@ -39003,20 +38878,20 @@ vY
 Xk
 lq
 Zu
-QN
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-Om
-QN
-QN
+Zu
+qi
+vE
+kw
+yh
+Ba
+Ba
+Ba
+Ku
+vE
+kw
+LD
+YW
+YW
 QN
 rN
 "}
@@ -39226,17 +39101,17 @@ zR
 th
 Zu
 QN
-lh
-JO
-JO
-QS
 Om
 Om
 Om
-QF
-JO
-JO
-Vd
+Om
+Om
+Om
+Om
+Om
+Om
+Om
+Om
 QN
 QN
 QN
@@ -39448,17 +39323,17 @@ Zu
 Zu
 Zu
 QN
-ZH
-RI
-fw
-Lt
 Om
 Om
 Om
-qU
-fw
-RI
-Zi
+Om
+Om
+Om
+Om
+Om
+Om
+Om
+Om
 QN
 QN
 QN
@@ -39670,17 +39545,17 @@ QN
 QN
 QN
 QN
-Om
-do
-Om
-Om
-yo
-Om
-Om
-Sk
+lh
+JO
+JO
+QS
 Om
 Om
 Om
+QF
+JO
+JO
+Vd
 QN
 QN
 QN
@@ -39892,17 +39767,17 @@ Zu
 Zu
 Zu
 Zu
+ZH
+RI
+fw
+Lt
 Om
 Om
 Om
-Om
-aB
-Jn
-Jn
-mT
-Om
-Om
-Om
+qU
+fw
+RI
+Zi
 QN
 QN
 QN
@@ -40115,13 +39990,13 @@ FP
 YR
 Zu
 Om
+do
 Om
 Om
+yo
 Om
 Om
-Om
-Om
-Om
+Sk
 Om
 Om
 Om
@@ -40340,12 +40215,12 @@ Om
 Om
 Om
 Om
+aB
+Jn
+Jn
+mT
 Om
 Om
-Om
-Om
-Om
-do
 Om
 QN
 QN
@@ -40567,7 +40442,7 @@ Om
 Om
 Om
 Om
-Om
+do
 Om
 QN
 QN

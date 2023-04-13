@@ -34,7 +34,7 @@
 	if(material_sheet) // Move the crate material to the bottom of the turf's contents
 		move_to_bottom(material_sheet, current_turf)
 
-// Custom proc to move an object to the bottom of the turf's contents
+/// Custom proc to move an object to the bottom of the turf's contents
 /obj/structure/largecrate/proc/move_to_bottom(obj/O, turf/T)
 	if(!istype(O) || !istype(T))
 		return

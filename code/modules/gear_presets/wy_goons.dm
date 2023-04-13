@@ -73,7 +73,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
@@ -106,7 +106,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
@@ -119,3 +119,36 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/nsg_ap, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23/ap, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23/ap, WEAR_IN_BACK)
+
+/datum/equipment_preset/goon/researcher
+	name = "Weyland-Yutani Corporate Research Consultant (Goon Researcher)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_WY_GOON_RESEARCHER
+	rank = JOB_WY_GOON_RESEARCHER
+	paygrade = "CCMO"
+	skills = /datum/skills/researcher
+
+/datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon, WEAR_IN_BACK)
+
+	var/obj/item/spacecash/bundle/money = new /obj/item/spacecash/bundle
+	money.worth = 5000
+	money.update_icon()
+
+	H.equip_to_slot_or_del(money, WEAR_IN_BACK)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full, WEAR_WAIST)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced, WEAR_L_STORE)

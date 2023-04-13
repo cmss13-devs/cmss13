@@ -92,7 +92,7 @@
 		/obj/item/storage/pill_bottle/tramadol/skillless,
 		/obj/item/tool/hatchet,
 		/obj/item/tool/hatchet,
-		/obj/item/weapon/melee/twohanded/spear,
+		/obj/item/weapon/twohanded/spear,
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/reagent_container/spray/pepper,

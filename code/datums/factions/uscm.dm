@@ -60,6 +60,7 @@
 	else
 		var/marine_rk
 		var/border_rk
+		var/icon_prefix = "hudsquad_"
 		var/obj/item/card/id/ID = H.get_idcard()
 		var/_role
 		if(H.mind)
@@ -122,6 +123,7 @@
 				marine_rk = "syn"
 			if(JOB_MESS_SERGEANT)
 				marine_rk = "messtech"
+			// Provost
 			if(JOB_PROVOST_ENFORCER)
 				marine_rk = "pve"
 			if(JOB_PROVOST_TML)
@@ -135,14 +137,17 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
+			// TIS
 			if(JOB_TIS_IO)
 				marine_rk = "tisio"
 			if(JOB_TIS_SA)
 				marine_rk = "tissa"
+			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"
 			if(JOB_RIOT_CHIEF)
 				marine_rk = "crmp"
+			// Whiskey Outpost
 			if(JOB_WO_CO)
 				marine_rk = "wo_co"
 			if(JOB_WO_XO)
@@ -165,11 +170,27 @@
 				marine_rk = "wo_ro"
 			if(JOB_WO_PILOT)
 				marine_rk = "wo_mcrew"
+			// Colonial Marshals
+			if(JOB_CMB_TL)
+				marine_rk = "mar"
+				icon_prefix = "cmb_"
+			if(JOB_CMB)
+				marine_rk = "dep"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_SYN)
+				marine_rk = "syn"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_ICC)
+				marine_rk = "icc"
+				icon_prefix = "cmb_"
+			if(JOB_CMB_OBS)
+				marine_rk = "obs"
+				icon_prefix = "cmb_"
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudsquad_[marine_rk]")
+			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "[icon_prefix][marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudmarineborder[border_rk]")

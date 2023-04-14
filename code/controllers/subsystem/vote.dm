@@ -236,6 +236,8 @@ SUBSYSTEM_DEF(vote)
 	var/vote_sound_vol = 5
 	var/randomize_entries = FALSE
 
+	var/mob/user = GLOB.directory[initiator_key]
+
 	if(!mode)
 		var/admin = FALSE
 		var/ckey = ckey(initiator_key)
@@ -251,17 +253,20 @@ SUBSYSTEM_DEF(vote)
 		if(!admin && vote_type == "restart")
 			for(var/client/C as anything in GLOB.admins)
 				if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
-					to_chat(usr, SPAN_WARNING("You cannot make a restart vote while there are active admins online."))
+					if(user)
+						to_chat(user, SPAN_WARNING("You cannot make a restart vote while there are active admins online."))
 					return FALSE
 
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, SPAN_WARNING("There is already a vote in progress! Please wait for it to finish."))
+				if(user)
+					to_chat(user, SPAN_WARNING("There is already a vote in progress! Please wait for it to finish."))
 				return FALSE
 
 			if(next_allowed_time > world.time && !admin)
-				to_chat(usr, SPAN_WARNING("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))
+				if(user)
+					to_chat(user, SPAN_WARNING("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))
 				return FALSE
 
 		reset()
@@ -328,16 +333,19 @@ SUBSYSTEM_DEF(vote)
 				if(length(choices) < 2)
 					return FALSE
 			if("custom")
-				question = input(usr, "What is the vote for?")
+				if(!user)
+					return
+
+				question = input(user, "What is the vote for?")
 				if(!question)
 					return FALSE
 				for(var/i = 1 to 10)
-					var/option = capitalize(input(usr, "Please enter an option or hit cancel to finish"))
-					if(!option || mode || !usr.client)
+					var/option = capitalize(input(user, "Please enter an option or hit cancel to finish"))
+					if(!option || mode || !user.client)
 						break
 					choices.Add(option)
 
-				if(tgui_input_list(usr, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
+				if(tgui_input_list(user, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
 					randomize_entries = TRUE
 
 			else
@@ -501,7 +509,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 		return
 
 
-	if(!usr.client)
+	if(!ui.user.client)
 		return
 
 	if(check_rights(R_ADMIN))
@@ -531,7 +539,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 				if(vote_type["variable_required"] && !config_restrictions[vote_type["variable_required"]])
 					return
 
-			initiate_vote(params["vote_type"], usr.key)
+			initiate_vote(params["vote_type"], ui.user.key)
 		if("vote")
 			submit_vote(params["voted_for"])
 

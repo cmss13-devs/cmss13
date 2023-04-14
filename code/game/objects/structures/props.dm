@@ -54,7 +54,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/prop/dam/truck/UPP
+/obj/structure/prop/dam/truck/upp
 	name = "UPP Truck"
 	desc = "A truck used by the UPP Armed Forces, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
@@ -72,7 +72,7 @@
 	desc = "An old mining truck, looks like you don't have the key for it."
 	icon_state = "truck_mining"
 
-/obj/structure/prop/dam/truck/UPP/mining
+/obj/structure/prop/dam/truck/upp/mining
 	name = "UPP mining truck"
 	desc = "A truck used by the UPP Armed Forces, looks like you don't have the key for it. This one is carrying drilling equipment for extraction of liquids."
 	icon_state = "truck_UPP_mining"
@@ -97,7 +97,7 @@
 	icon_state = "van_damaged"
 
 /obj/structure/prop/dam/van/ambulance
-	name = "Ambulance"
+	name = "ambulance"
 	desc = "A Civilian Ambulance used for the transport of wounded, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van_ambulance"

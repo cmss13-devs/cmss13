@@ -36,15 +36,22 @@
 	name = "fog blocker"
 	icon_state = "spawn_event"
 
-/obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
-	. = ..()
-	GLOB.fog_blockers += src
-
-/obj/effect/landmark/lv624/fog_blocker/Destroy()
-	GLOB.fog_blockers -= src
-	return ..()
+	var/time_to_dispel = 25 MINUTES
 
 /obj/effect/landmark/lv624/fog_blocker/short
+	time_to_dispel = 15 MINUTES
+
+/obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
+	. = ..()
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/fog_blocker/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/fog(loc, time_to_dispel)
+	qdel(src)
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
@@ -62,16 +69,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	for(var/i in GLOB.fog_blockers)
-		if(istype(i, /obj/effect/landmark/lv624/fog_blocker/short))
-			var/obj/effect/landmark/lv624/fog_blocker/short/short_fog_blocker = i
-			short_round_fog += new /obj/structure/blocker/fog(short_fog_blocker.loc)
-			qdel(short_fog_blocker)
-		else
-			var/obj/effect/landmark/lv624/fog_blocker/fog_blocker = i
-			round_fog += new /obj/structure/blocker/fog(fog_blocker.loc)
-			qdel(fog_blocker)
-
 	QDEL_LIST(GLOB.hunter_primaries)
 	QDEL_LIST(GLOB.hunter_secondaries)
 	QDEL_LIST(GLOB.crap_items)
@@ -84,12 +81,6 @@
 			var/turf/T = get_turf(i)
 			qdel(i)
 			new type_to_spawn(T)
-
-	if(!round_fog.len && !short_round_fog.len)
-		round_fog = null //No blockers? https://i.imgur.com/PMeeqMe.jpg
-		short_round_fog = null
-	else
-		flags_round_type |= MODE_FOG_ACTIVATED
 
 	//desert river test
 	if(!round_toxic_river.len)
@@ -161,8 +152,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define SHORT_FOG_DELAY_INTERVAL (15 MINUTES)
-#define FOG_DELAY_INTERVAL (25 MINUTES)
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
@@ -197,12 +186,6 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
-				if(world.time >= (SHORT_FOG_DELAY_INTERVAL + SSticker.round_start_time))
-					disperse_short_fog()
-				if(world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
-					disperse_fog()
-
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN))
 				if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN])
 					if(world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
@@ -267,8 +250,6 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef SHORT_FOG_DELAY_INTERVAL
-#undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
 // Resource Towers

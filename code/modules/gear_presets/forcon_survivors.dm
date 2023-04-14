@@ -233,6 +233,7 @@
 	uniform.attach_accessory(H,pin)
 	uniform.attach_accessory(H,patch_forecon)
 	H.equip_to_slot_or_del(uniform, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_green(H), WEAR_JACKET)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/mateba/cmateba(H), WEAR_R_HAND)

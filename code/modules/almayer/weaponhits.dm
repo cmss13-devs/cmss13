@@ -6,9 +6,7 @@
  * All sounds that should happen when they hit are in here already.
  * Probably doesn't work in other shipmaps.
  * Arguments:
- * * weaponused - chooses the weapon through a switchcase
- * * shotnumber - how many shots of the weapon will be fired, may not have effect with specific weapons
- * * specificlocation - bool, if yes, it will instead of choosing a random location on the ship, hit at a chosen location
- * * location - location to be used.
+ * * weaponused - chooses the weapon through a switchcase. 1 for missiles, 2 for railguns, 3 for particle cannons.
+ * * location - location in the ship where the explosion will be created.
  */
-/proc/weaponhits(weaponused, shotnumber specificlocation, location)
+/proc/weaponhits(weaponused, location)

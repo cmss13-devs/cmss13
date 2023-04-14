@@ -6,5 +6,10 @@
 
 	switch(weapontype)
 		if("Missile")
+			var/salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
+			if(salvo == "Yes")
+				var/quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 1, 3, 1, 20, 1)
 		if("Railgun")
+			//abagable
 		if("Particle cannon")
+			//abagable

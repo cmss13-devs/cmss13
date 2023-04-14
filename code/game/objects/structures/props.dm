@@ -55,7 +55,7 @@
 	unacidable = TRUE
 
 /obj/structure/prop/dam/truck/upp
-	name = "UPP Truck"
+	name = "UPP truck"
 	desc = "A truck used by the UPP Armed Forces, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "truck_UPP"
@@ -98,7 +98,7 @@
 
 /obj/structure/prop/dam/van/ambulance
 	name = "ambulance"
-	desc = "A Civilian Ambulance used for the transport of wounded, looks like you don't have the key for it."
+	desc = "A civilian ambulance used for the transport of wounded, looks like you don't have the key for it."
 	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van_ambulance"
 	bound_height = 64

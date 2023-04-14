@@ -61,6 +61,6 @@
 	icon_state = "laz_sign" //TODO make unique icon.
 
 /obj/structure/lz_sign/Rosansk
-	name = "Rosansk Town sign"
-	desc = "A large sign that reads 'Rosansk - Naseleniye. 174' The Union of Progressive People's Flag is proudly emblazoned in the bottom-right corner of the sign. Parts of the sign have been consumed by rust and the paint have mostly decayed. In the back of the sign exists some kind of memorial, mostly written in russian, dedicated to Dmitri Rosanov."
+	name = "Rosansk town sign"
+	desc = "A large sign that reads 'Rosansk - Naseleniye. 174' The Union of Progressive People's flag is proudly emblazoned in the bottom-right corner of the sign. Parts of the sign have been consumed by rust and the paint have mostly decayed. In the back of the sign exists some kind of memorial, mostly written in russian, dedicated to Dmitri Rosanov."
 	icon_state = "Rosansk_sign"

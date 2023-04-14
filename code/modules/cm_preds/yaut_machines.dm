@@ -18,8 +18,6 @@
 	name = "yautja cauldron"
 	desc = "A large, black machine emitting an ominous hum with an attached pot of boiling fluid. Bits of what appears to be leftover lard and balls of hair can be seen floating inside of it."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-	///What bones will come from the vat
-	var/next_limb
 	icon_state = "vat"
 	density = TRUE
 	breakable = FALSE

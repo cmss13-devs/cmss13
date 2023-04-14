@@ -4515,7 +4515,7 @@
 /area/varadero/interior/maintenance)
 "dYq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/CO2_cartridge{
+/obj/item/co2_cartridge{
 	pixel_x = 13;
 	pixel_y = 7
 	},

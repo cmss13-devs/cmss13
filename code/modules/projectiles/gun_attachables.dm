@@ -351,7 +351,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "CO2_bayonet[filled ? "-f" : ""]_a"
 
 /obj/item/attachable/bayonet/co2/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/CO2_cartridge))
+	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
 			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))

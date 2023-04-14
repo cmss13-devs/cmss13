@@ -949,11 +949,11 @@
 		to_chat(user, SPAN_NOTICE("This limb has already been polished."))
 		return ..()
 
-	to_chat(user, SPAN_WARNING("You start wiping the [current_limb.name] with the [name]."))
+	to_chat(user, SPAN_WARNING("You start wiping [current_limb] with the [name]."))
 	if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
-		to_chat(user, SPAN_NOTICE("You stop polishing the [current_limb.name]."))
+		to_chat(user, SPAN_NOTICE("You stop polishing [current_limb]."))
 		return
-	to_chat(user, SPAN_NOTICE("You polish the [current_limb.name] to perfection."))
+	to_chat(user, SPAN_NOTICE("You polish [current_limb] to perfection."))
 	current_limb.polished = TRUE
 	current_limb.name = "polished [current_limb.name]"
 

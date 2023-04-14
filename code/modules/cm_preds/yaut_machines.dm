@@ -3,6 +3,7 @@
 	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "globe"
+	breakable = FALSE
 
 	minimap_type = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM
 
@@ -11,6 +12,7 @@
 	desc = "It produces items using metal and glass."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	stored_material =  list("metal" = 40000, "glass" = 20000)
+	breakable = FALSE
 
 /obj/structure/machinery/prop/yautja/bubbler
 	name = "yautja cauldron"
@@ -20,6 +22,7 @@
 	var/next_limb
 	icon_state = "vat"
 	density = TRUE
+	breakable = FALSE
 
 /obj/structure/machinery/prop/yautja/bubbler/get_examine_text(mob/living/user)
 	. = ..()
@@ -43,14 +46,14 @@
 		to_chat(user, SPAN_NOTICE("This limb is not ready."))
 		return
 	icon_state = "vat_boiling"
-	to_chat(user, SPAN_WARNING("You place the [current_limb.name] in the cauldron and start the cauldron."))
+	to_chat(user, SPAN_WARNING("You place [current_limb] in and start the cauldron."))
 	if(!do_after(user, 15 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, current_limb))
-		to_chat(user, SPAN_NOTICE("You pull the [current_limb.name] back out of the cauldron."))
+		to_chat(user, SPAN_NOTICE("You pull [current_limb] back out of the cauldron."))
 		icon_state = initial(icon_state)
 		return
 	icon_state = initial(icon_state)
 
-	var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(current_limb))
+	var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(src))
 	if(istype(new_bone, /obj/item/clothing/accessory/limb/skeleton/head))
-		new_bone.desc = SPAN_NOTICE("This skull was [current_limb.name].")
+		new_bone.desc += SPAN_NOTICE("This skull used to be [current_limb.name].")
 	qdel(current_limb)

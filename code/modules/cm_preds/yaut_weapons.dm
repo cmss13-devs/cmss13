@@ -514,11 +514,11 @@
 		return
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
-	to_chat(user, SPAN_WARNING("You start flaying the skin from the [current_limb.name]."))
+	to_chat(user, SPAN_WARNING("You start flaying the skin from [current_limb]."))
 	if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, current_limb))
-		to_chat(user, SPAN_NOTICE("You decide not to flay the [current_limb.name]."))
+		to_chat(user, SPAN_NOTICE("You decide not to flay [current_limb]."))
 		return
-	to_chat(user, SPAN_WARNING("You finish flaying the [current_limb.name]."))
+	to_chat(user, SPAN_WARNING("You finish flaying [current_limb]."))
 	current_limb.flayed = TRUE
 
 /*#########################################

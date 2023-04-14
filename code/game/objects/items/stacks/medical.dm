@@ -131,9 +131,9 @@
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+				affecting.heal_damage(burn = heal_burn)
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
-				affecting.heal_damage(burn = heal_burn)
 			if(WOUNDS_ALREADY_TREATED)
 				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
 				return TRUE

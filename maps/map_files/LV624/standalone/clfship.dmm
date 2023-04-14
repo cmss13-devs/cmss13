@@ -1,16 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/m60{
-	pixel_x = -4;
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
+/obj/item/ammo_magazine/rifle/mar40/lmg{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/ammo_magazine/m60{
-	pixel_x = 1
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
@@ -162,11 +162,11 @@
 /area/lv624/lazarus/crashed_ship)
 "fA" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Armoury";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -662,11 +662,11 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/transmitter/colony_net/rotary{
-	phone_category = "CR-116";
-	phone_id = "Engineering";
-	phone_color = "yellow";
 	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	networks_transmit = list("CLF");
+	phone_category = "CR-116";
+	phone_color = "yellow";
+	phone_id = "Engineering"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
@@ -912,7 +912,7 @@
 /area/lv624/lazarus/crashed_ship)
 "yX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/m60{
+/obj/item/weapon/gun/rifle/mar40/lmg{
 	pixel_x = 1;
 	pixel_y = 2
 	},
@@ -1653,12 +1653,12 @@
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
-	phone_category = "CR-116";
-	phone_id = "Medical Bay";
 	network_receive = "CLF";
 	networks_transmit = list("CLF");
-	phone_color = "green"
+	phone_category = "CR-116";
+	phone_color = "green";
+	phone_id = "Medical Bay";
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1984,11 +1984,11 @@
 /area/lv624/lazarus/crashed_ship)
 "XM" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 32;
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";
-	network_receive = "CLF";
-	networks_transmit = list("CLF")
+	pixel_y = 32
 	},
 /turf/open/floor{
 	dir = 8;

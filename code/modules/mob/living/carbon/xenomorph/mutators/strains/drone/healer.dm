@@ -46,7 +46,7 @@
 */
 
 /datum/action/xeno_action/activable/transfer_plasma/healer //Improved plasma transfer, but not as much as Hivey.
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_transfer_amount = 100
 	transfer_delay = 15
 	max_range = 1

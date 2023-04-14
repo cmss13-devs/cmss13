@@ -137,7 +137,6 @@
 	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers your wounds with regenerative resin. You feel reinvigorated!"))
 	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids and some plasma to create a regenerative resin and apply it to [target_xeno]'s wounds. You feel weakened..."))
 	playsound(src, "alien_drool", 25)
-	playsound(target_xeno, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
 	update_icons()

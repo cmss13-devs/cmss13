@@ -435,10 +435,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	WAIT_DB_READY
 	log_debug("Loading [src] player data.")
 	load_player_data_info(get_player_from_key(ckey))
+	log_debug("[src]'s notes are loaded: [player_data.notes_loaded]")
+	log_debug("[src]'s notes: [json_encode(player_data.notes)]")
 
 /client/proc/load_player_data_info(datum/entity/player/player)
 	if(ckey != player.ckey)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
+	if(!player)
+		CRASH("No player entity detected.")
 	player_data = player
 	player_data.owning_client = src
 	player_data.last_login = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"

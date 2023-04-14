@@ -251,9 +251,11 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 /datum/controller/subsystem/entity_manager/proc/select_by_key(entity_type, key)
 	var/datum/entity_meta/meta = tables[entity_type]
 	if(!meta || !meta.key_field || !key)
+		debug_log("[meta] [meta.key_field] [key]")
 		return null
 	var/datum/entity/ET = meta.make_new_by_key(key)
 	if(!ET.__key_synced)
+		debug_log("!ET.__key_synced")
 		ET.__key_synced = TRUE
 		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select_by_key), ET, meta))
 	return ET

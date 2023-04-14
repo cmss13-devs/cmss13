@@ -150,3 +150,42 @@
       their corporate overlords
   - maptweak: Removed some ways into the western reactor and some another route lightly
       longer to get to
+2023-04-14:
+  BeagleGaming1:
+  - admin: Added vars to the smartgun to toggle requiring a harness, power, or a powerpack
+  CapCamIII:
+  - bugfix: Staff Officer vendors have all their intended options
+  Hopek:
+  - bugfix: Disassembled crates/barrels will now correctly show their contents above
+      the deconstruction material meaning that you don't have to right click or alt
+      click the turf to see what you looted.
+  - bugfix: Fixed duplicate crate/barrel disassembly material spawning because it
+      was being created in two places. If people want 2 material per crate/barrel
+      they'll have to intentionally code it in this time vs it being a bug.
+  Huffie56:
+  - code_imp: separate the code for the rifleman vendor in is own file like the other
+      squad role.
+  Morrow:
+  - rscadd: Added Prisoner of War charge
+  - rscdel: Removes surv spawns at LV624 lake house
+  Morrow, Nauticall:
+  - rscadd: Added new surgical case for medics that stores scalpel, retractor, hemostat
+  - balance: Removes IB being fixed by bicaridine OD
+  - balance: IB surgery fix is now able to be done at medic level
+  - balance: medic-level and up can use the check status verb to locate IB locations
+  NewyearnewmeUwu:
+  - rscadd: Punching mirrors now causes damage to you.
+  - rscadd: Slamming someone with an aggressive grab into a mirror does damage to
+      them.
+  Puckaboo2:
+  - imageadd: Added over a dozen icon states for computers and cameras with missing
+      icon states.
+  - imageadd: Added a blue tube fixture, a large light fixture, a large blue light
+      fixture, and a blue bulb fixture.
+  - bugfix: All machinery with missing icon states have been restored.
+  - code_imp: Changed icon state names and icon paths on various items to fix missing
+      machinery icon states.
+  - imagedel: Removed two duplicate icon states.
+  realforest2001:
+  - bugfix: Fixes the missing trait check on Add Teleporter Destination for Yautja
+      Teleporter and converts the interact typecheck to a trait check.

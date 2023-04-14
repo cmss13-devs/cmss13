@@ -1,7 +1,0 @@
-author: "Morrow, Nauticall"
-delete-after: True
-changes:
-  - rscadd: "Added new surgical case for medics that stores scalpel, retractor, hemostat"
-  - balance: "Removes IB being fixed by bicaridine OD"
-  - balance: "IB surgery fix is now able to be done at medic level"
-  - balance: "medic-level and up can use the check status verb to locate IB locations"

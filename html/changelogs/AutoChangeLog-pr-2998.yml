@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - code_imp: "separate the code for the rifleman vendor in is own file like the other squad role."

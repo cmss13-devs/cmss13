@@ -422,6 +422,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!safe_key)
 		return null
 	var/datum/entity/player/P = DB_EKEY(/datum/entity/player, safe_key)
+	if(!P)
+		CRASH("No player entity detected.")
 	P.save()
 	P.sync()
 	return P
@@ -431,6 +433,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /client/proc/load_player_data()
 	set waitfor=0
 	WAIT_DB_READY
+	log_debug("Loading [src] player data.")
 	load_player_data_info(get_player_from_key(ckey))
 
 /client/proc/load_player_data_info(datum/entity/player/player)

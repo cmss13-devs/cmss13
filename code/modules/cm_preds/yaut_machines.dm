@@ -53,5 +53,5 @@
 
 	var/obj/item/clothing/accessory/limb/skeleton/new_bone = new current_limb.bone_type(get_turf(src))
 	if(istype(new_bone, /obj/item/clothing/accessory/limb/skeleton/head))
-		new_bone.desc += SPAN_NOTICE("This skull used to be [current_limb.name].")
+		new_bone.desc = SPAN_NOTICE("This skull used to be [current_limb.name].")
 	qdel(current_limb)

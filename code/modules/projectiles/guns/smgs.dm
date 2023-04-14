@@ -58,7 +58,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/CO2,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/magnetic_harness,
@@ -153,7 +153,7 @@
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/CO2,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -204,7 +204,7 @@
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/CO2,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,

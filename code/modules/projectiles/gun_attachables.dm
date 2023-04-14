@@ -339,18 +339,18 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
-/obj/item/attachable/bayonet/CO2
+/obj/item/attachable/bayonet/co2
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
 	icon_state = "CO2_knife"
 	attach_icon = "CO2_bayonet_a"
 	var/filled = FALSE
 
-/obj/item/attachable/bayonet/CO2/update_icon()
+/obj/item/attachable/bayonet/co2/update_icon()
 	icon_state = "CO2_knife[filled ? "-f" : ""]"
 	attach_icon = "CO2_bayonet[filled ? "-f" : ""]_a"
 
-/obj/item/attachable/bayonet/CO2/attackby(obj/item/W, mob/user)
+/obj/item/attachable/bayonet/co2/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/CO2_cartridge))
 		if(!filled)
 			filled = TRUE
@@ -367,7 +367,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	..()
 
-/obj/item/CO2_cartridge //where tf else am I gonna put this?
+/obj/item/co2_cartridge //where tf else am I gonna put this?
 	name = "CO2 cartridge"
 	desc = "A cartridge of compressed CO2 for the M8 cartridge bayonet. Do not consume or puncture."
 	icon = 'icons/obj/items/items.dmi'

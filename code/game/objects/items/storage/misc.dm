@@ -127,14 +127,14 @@
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"
 	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
-	icon_state = "CO2_box"
+	icon_state = "co2_box"
 	can_hold = list(/obj/item/attachable/bayonet/co2, /obj/item/co2_cartridge)
 	foldable = TRUE
 	storage_slots = 3
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_SMALL
 
-/obj/item/storage/box/CO2_knife/fill_preset_inventory()
+/obj/item/storage/box/co2_knife/fill_preset_inventory()
 	new /obj/item/attachable/bayonet/co2(src)
 	new /obj/item/co2_cartridge(src)
 	new /obj/item/co2_cartridge(src)

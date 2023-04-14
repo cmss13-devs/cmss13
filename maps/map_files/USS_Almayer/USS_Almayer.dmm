@@ -24146,7 +24146,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/c02_knife{
+/obj/item/storage/box/CO2_knife{
 	pixel_x = 8;
 	pixel_y = 9
 	},

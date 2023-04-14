@@ -128,21 +128,21 @@
 	max_level = 1
 	value = 2
 
-/datum/chem_property/positive/hemostatic/process(mob/living/effected_mob, potency = 1, delta_time)
-	var/mob/living/carbon/human/effected_human = effected_mob
+/datum/chem_property/positive/hemostatic/process(mob/living/affected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = affected_mob
 	effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
 
-/datum/chem_property/positive/hemostatic/on_delete(mob/living/effected_mob)
-	var/mob/living/carbon/human/effected_human = effected_mob
+/datum/chem_property/positive/hemostatic/on_delete(mob/living/affected_mob)
+	var/mob/living/carbon/human/effected_human = affected_mob
 	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 
-/datum/chem_property/positive/hemostatic/process_overdose(mob/living/effected_mob, potency = 1)
-	effected_mob.apply_damage(potency, BRUTE)
+/datum/chem_property/positive/hemostatic/process_overdose(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency, BRUTE)
 
-/datum/chem_property/positive/hemostatic/process_critical(mob/living/effected_mob, potency = 1)
-	effected_mob.apply_damage(potency * 9, BRUTE)
-	effected_mob.apply_damage(potency * 9, BURN)
-	effected_mob.apply_damage(potency * 9, TOX)
+/datum/chem_property/positive/hemostatic/process_critical(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency * 9, BRUTE)
+	affected_mob.apply_damage(potency * 9, BURN)
+	affected_mob.apply_damage(potency * 9, TOX)
 
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING

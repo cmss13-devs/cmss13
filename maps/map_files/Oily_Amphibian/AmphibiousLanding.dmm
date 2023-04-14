@@ -799,18 +799,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"bV" = (
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
-/area/event/metal/dynamic)
 "bW" = (
 /obj/structure/barricade/sandbags{
 	brute_multiplier = 0;
@@ -1079,16 +1067,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/event/metal/dynamic)
-"cF" = (
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0;
-	density = 0
-	},
-/obj/structure/platform/kutjevo,
-/turf/closed/wall/wood,
-/area/event/dynamic/lit/unpowered)
 "cI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -3619,14 +3597,6 @@
 	dir = 1
 	},
 /area/event/dynamic/unpowered)
-"ip" = (
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
-/area/event/dynamic/lit/unpowered)
 "iq" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -4259,15 +4229,6 @@
 	icon_state = "darkgreen"
 	},
 /area/event/underground_no_CAS/dynamic)
-"jK" = (
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0;
-	density = 0
-	},
-/turf/closed/wall/wood,
-/area/event/dynamic/lit/unpowered)
 "jL" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "N_Check";
@@ -5570,13 +5531,14 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "mq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = 5;
-	pixel_y = 26
-	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -6;
 	pixel_y = 6
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = 7;
+	name = "Medical Cabinet";
+	pixel_y = 27
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -6770,14 +6732,6 @@
 	},
 /turf/open/floor,
 /area/event/metal/dynamic)
-"pa" = (
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
-/area/event/metal/dynamic)
 "pb" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -6916,19 +6870,6 @@
 	tag = "icon-sterile"
 	},
 /area/event/underground_no_CAS)
-"pr" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = 5;
-	pixel_y = 26
-	},
-/obj/structure/prop/almayer/computers/mission_planning_system{
-	pixel_x = 9
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/event/underground_no_CAS)
 "ps" = (
 /obj/structure/surface/rack,
 /obj/item/attachable/heavy_barrel,
@@ -7062,14 +7003,6 @@
 /turf/open/floor/corsat{
 	icon_state = "greenwhite"
 	},
-/area/event/metal/dynamic)
-"py" = (
-/obj/structure/window/framed/wood,
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/open/floor/plating,
 /area/event/metal/dynamic)
 "pz" = (
 /obj/structure/machinery/light{
@@ -7433,18 +7366,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"qr" = (
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
-/area/event/metal/dynamic)
 "qt" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/minigun,
@@ -8180,13 +8101,6 @@
 /obj/item/ammo_magazine/lever_action,
 /obj/item/ammo_magazine/lever_action,
 /turf/open/floor,
-/area/event/metal/dynamic)
-"rQ" = (
-/obj/structure/platform/kutjevo{
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
 /area/event/metal/dynamic)
 "rT" = (
 /obj/structure/surface/rack,
@@ -9969,14 +9883,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"vZ" = (
-/obj/structure/platform/kutjevo{
-	dir = 8;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/turf/closed/wall/wood,
-/area/event/metal/dynamic)
 "wa" = (
 /obj/structure/surface/rack,
 /obj/item/toy/gun_ammo,
@@ -11290,6 +11196,19 @@
 /obj/item/attachable/extended_barrel,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"zd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/prop/dam/truck/UPP{
+	dir = 1;
+	layer = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/event/metal/dynamic)
 "ze" = (
 /obj/structure/machinery/light/built{
 	dir = 4
@@ -12557,11 +12476,6 @@
 	icon_state = "red"
 	},
 /area/event/underground_no_CAS/dynamic)
-"BW" = (
-/obj/structure/platform/kutjevo,
-/obj/structure/window/framed/wood,
-/turf/open/floor/plating,
-/area/event/dynamic/lit/unpowered)
 "BX" = (
 /turf/open/floor/corsat{
 	dir = 9;
@@ -12910,10 +12824,6 @@
 	icon_state = "squares"
 	},
 /area/event/underground_no_CAS/dynamic)
-"CZ" = (
-/obj/structure/window/framed/wood/reinforced,
-/turf/open/floor/plating,
-/area/event/metal/dynamic)
 "Dc" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 7;
@@ -14728,7 +14638,6 @@
 /area/event/underground_no_CAS)
 "Id" = (
 /obj/structure/window/framed/wood,
-/obj/structure/platform/kutjevo,
 /turf/open/floor/plating,
 /area/event/dynamic/lit/unpowered)
 "If" = (
@@ -14949,6 +14858,20 @@
 /obj/item/weapon/gun/shotgun/merc,
 /turf/open/floor,
 /area/event/metal/dynamic)
+"IP" = (
+/obj/structure/prop/almayer/computers/mission_planning_system{
+	pixel_x = 9
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = 7;
+	name = "Medical Cabinet";
+	pixel_y = 27
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/event/underground_no_CAS)
 "IT" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
@@ -20353,15 +20276,6 @@
 	},
 /turf/open/gm,
 /area/event/dynamic/lit/unpowered)
-"Ui" = (
-/obj/structure/platform/kutjevo{
-	dir = 4;
-	layer = 2.96;
-	projectile_coverage = 0
-	},
-/obj/structure/platform/kutjevo,
-/turf/closed/wall/wood,
-/area/event/dynamic/lit/unpowered)
 "Ul" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -21718,10 +21632,6 @@
 	},
 /turf/open/floor/almayer,
 /area/event/metal/dynamic)
-"Xf" = (
-/obj/structure/platform/kutjevo,
-/turf/closed/wall/wood,
-/area/event/dynamic/lit/unpowered)
 "Xh" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/corsat{
@@ -21730,11 +21640,6 @@
 	},
 /area/event/underground_no_CAS/dynamic)
 "Xi" = (
-/obj/structure/prop/Flag/UPP{
-	pixel_x = -5;
-	pixel_y = 27;
-	layer = 2.4
-	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	pixel_x = 2
@@ -21799,7 +21704,9 @@
 	anchored = 1;
 	name = "Supply Depot White Rook"
 	},
-/turf/closed/wall/wood,
+/turf/closed/wall/r_wall/bunker{
+	damage_cap = 15000
+	},
 /area/event/metal/dynamic)
 "Xo" = (
 /obj/structure/window/framed/bunker/reinforced,
@@ -21966,6 +21873,14 @@
 "XK" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
+/obj/item/ammo_magazine/m2c,
 /turf/open/floor,
 /area/event/metal/dynamic)
 "XL" = (
@@ -26531,10 +26446,10 @@ WZ
 WZ
 WZ
 WZ
-hv
-hv
-hv
-hv
+TZ
+TZ
+TZ
+TZ
 Xn
 ax
 ax
@@ -26753,11 +26668,11 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 js
 Lc
 qX
-hv
+TZ
 uQ
 ax
 ax
@@ -26973,13 +26888,13 @@ WZ
 WZ
 WZ
 WZ
-hv
-hv
-hv
+TZ
+TZ
+TZ
 js
 om
 qX
-hv
+TZ
 ax
 ax
 ax
@@ -27195,13 +27110,13 @@ WZ
 WZ
 WZ
 WZ
-hv
-hv
+TZ
+TZ
 js
 js
 om
 SF
-hv
+TZ
 MR
 MR
 MR
@@ -27417,13 +27332,13 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 zZ
 om
 om
 om
 om
-hJ
+lF
 Fz
 Fz
 Fz
@@ -27639,13 +27554,13 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 Zr
 om
 oe
 om
 qX
-hv
+TZ
 sD
 sD
 Ki
@@ -27861,13 +27776,13 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 xa
 om
 og
 om
 nH
-hv
+TZ
 ax
 ax
 Ql
@@ -28083,14 +27998,14 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 fi
 om
 sJ
 om
 DC
-hv
-hv
+TZ
+TZ
 Xn
 Ql
 Fz
@@ -28305,7 +28220,7 @@ WZ
 WZ
 WZ
 WZ
-hv
+TZ
 qX
 om
 SF
@@ -28313,7 +28228,7 @@ om
 RC
 qX
 qX
-hv
+TZ
 Ql
 Fz
 Fz
@@ -28527,15 +28442,15 @@ WZ
 WZ
 WZ
 WZ
-hv
-hv
+TZ
+TZ
 om
 om
 om
 om
 om
 om
-hv
+TZ
 Ql
 MX
 Fz
@@ -28750,13 +28665,13 @@ WZ
 WZ
 WZ
 Xn
-hv
-CZ
-CZ
-hv
-hJ
-hv
-hv
+TZ
+HB
+HB
+TZ
+lF
+TZ
+TZ
 Xn
 Ql
 Fz
@@ -35418,10 +35333,10 @@ ax
 EZ
 Pr
 fA
-vZ
-vZ
-vZ
-bV
+hv
+hv
+hv
+hv
 NR
 Fz
 Fz
@@ -35643,7 +35558,7 @@ pH
 hv
 kR
 om
-rQ
+hv
 NR
 Fz
 Fz
@@ -35765,7 +35680,7 @@ QN
 QN
 QN
 YW
-Rw
+Rb
 KS
 KS
 KS
@@ -35865,7 +35780,7 @@ RZ
 hv
 kR
 om
-py
+gR
 NR
 Fz
 Fz
@@ -36087,7 +36002,7 @@ Pr
 CK
 om
 oX
-rQ
+hv
 NR
 Fz
 Fz
@@ -36309,7 +36224,7 @@ bP
 hv
 yC
 Bq
-py
+gR
 NR
 Fz
 Fz
@@ -36531,7 +36446,7 @@ dM
 hv
 kR
 om
-rQ
+hv
 NR
 Fz
 Fz
@@ -36750,10 +36665,10 @@ ax
 EZ
 Pr
 St
-pa
-pa
-pa
-qr
+hv
+hv
+hv
+hv
 NR
 Fz
 Fz
@@ -37448,10 +37363,10 @@ rM
 ax
 SQ
 RH
-jK
-jK
-jK
-cF
+zN
+zN
+zN
+zN
 ax
 uv
 uv
@@ -37673,7 +37588,7 @@ Pr
 zN
 VG
 du
-Xf
+zN
 ax
 uv
 uv
@@ -38117,7 +38032,7 @@ bP
 zN
 Th
 pg
-Xf
+zN
 ax
 uv
 WZ
@@ -38339,7 +38254,7 @@ pH
 zN
 Th
 nU
-BW
+Id
 ax
 uv
 WZ
@@ -38561,7 +38476,7 @@ hG
 zN
 Th
 nU
-Xf
+zN
 ax
 WZ
 WZ
@@ -38780,10 +38695,10 @@ RH
 lZ
 RH
 RH
-ip
-ip
-ip
-Ui
+zN
+zN
+zN
+zN
 ax
 WZ
 WZ
@@ -42300,10 +42215,10 @@ ax
 EZ
 Pr
 RH
-vZ
-vZ
-vZ
-bV
+hv
+hv
+hv
+hv
 NR
 Fz
 Fz
@@ -42525,7 +42440,7 @@ Pr
 hJ
 om
 Tp
-rQ
+hv
 NR
 Fz
 Fz
@@ -42747,7 +42662,7 @@ jH
 hv
 kR
 om
-py
+gR
 NR
 Fz
 Fz
@@ -42969,7 +42884,7 @@ dB
 hv
 kR
 om
-py
+gR
 NR
 Fz
 Fz
@@ -43191,7 +43106,7 @@ Cj
 hv
 kR
 om
-rQ
+hv
 NR
 Fz
 Fz
@@ -43410,10 +43325,10 @@ ax
 EZ
 Pr
 RH
-pa
-pa
-pa
-qr
+hv
+hv
+hv
+hv
 NR
 Fz
 Fz
@@ -48794,19 +48709,19 @@ WZ
 WZ
 WZ
 Yo
-RY
-wf
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-sb
-ZD
-eC
+Bn
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+Bn
 Yo
 Yo
 qg
@@ -49016,19 +48931,19 @@ WZ
 WZ
 WZ
 Yo
-Ao
-eQ
-AX
-kh
-lV
-oF
-lV
-wl
-wP
-yt
-eQ
-HX
-Bn
+RY
+wf
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+ZD
+eC
 Yo
 qg
 qg
@@ -49239,17 +49154,17 @@ WZ
 WZ
 Yo
 Ao
+eQ
 AX
 kh
-ls
-pq
-su
-ub
-wt
+lV
+oF
+lV
 wl
 wP
 yt
-ti
+eQ
+HX
 Bn
 qg
 qg
@@ -49461,16 +49376,16 @@ WZ
 WZ
 Yo
 Ao
-eQ
-ko
-lt
-me
-pd
-uL
-wL
-xc
-eQ
-eQ
+AX
+kh
+ls
+pq
+su
+ub
+wt
+wl
+wP
+yt
 ti
 Bn
 qg
@@ -49670,10 +49585,10 @@ WZ
 WZ
 WZ
 WZ
-hg
-hg
-hg
-hg
+Ja
+Hp
+Hp
+Ja
 WZ
 WZ
 WZ
@@ -49683,16 +49598,16 @@ WZ
 WZ
 Yo
 Ao
-AX
-kv
-lA
-pr
-sy
-uN
-wA
-wG
-wZ
-yO
+eQ
+ko
+lt
+me
+pd
+uL
+wL
+xc
+eQ
+eQ
 ti
 Bn
 qg
@@ -49905,17 +49820,17 @@ WZ
 WZ
 Yo
 Ao
-eQ
 AX
 kv
-mC
-mC
-mC
+lA
+IP
+sy
+uN
+wA
 wG
 wZ
 yO
-eQ
-HX
+ti
 Bn
 qg
 yS
@@ -50126,19 +50041,19 @@ WZ
 WZ
 WZ
 Yo
-RY
-Ea
-if
-if
-if
-if
-if
-if
-if
-if
-if
-rO
-eC
+Ao
+eQ
+AX
+kv
+mC
+mC
+mC
+wG
+wZ
+yO
+eQ
+HX
+Bn
 qg
 om
 ee
@@ -50348,19 +50263,19 @@ WZ
 WZ
 WZ
 Yo
-Bn
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-eQ
-Bn
+RY
+Ea
+if
+if
+if
+if
+if
+if
+if
+if
+if
+rO
+eC
 qg
 IL
 om
@@ -53481,27 +53396,27 @@ WZ
 PD
 yv
 WZ
-qg
-qg
-qg
+kV
+kV
+kV
 wy
 wy
 wy
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
 wy
 wy
 wy
-qg
-qg
-qg
+kV
+kV
+kV
 PD
 yv
 WZ
@@ -53703,7 +53618,7 @@ WZ
 WZ
 WZ
 WZ
-qg
+kV
 Wa
 bc
 Wa
@@ -53723,7 +53638,7 @@ Wa
 Wa
 bc
 Wa
-qg
+kV
 WZ
 WZ
 WZ
@@ -53925,7 +53840,7 @@ WZ
 WZ
 WZ
 WZ
-qg
+kV
 Wa
 Wa
 Wa
@@ -53945,7 +53860,7 @@ Wa
 Wa
 Wa
 Wa
-qg
+kV
 WZ
 WZ
 WZ
@@ -54147,7 +54062,7 @@ WZ
 WZ
 WZ
 WZ
-qg
+kV
 cI
 Ey
 FB
@@ -54163,11 +54078,11 @@ WA
 FB
 FB
 nM
-nM
+zd
 Wa
 gO
 zx
-qg
+kV
 WZ
 WZ
 WZ
@@ -54348,7 +54263,7 @@ Ao
 AX
 kv
 lA
-pr
+IP
 sy
 uN
 wA
@@ -54358,7 +54273,6 @@ yO
 ti
 Bn
 Yo
-Yo
 WZ
 WZ
 WZ
@@ -54369,7 +54283,8 @@ WZ
 WZ
 WZ
 WZ
-qg
+WZ
+kV
 cI
 Yx
 FB
@@ -54389,7 +54304,7 @@ FB
 Wa
 Yw
 Xa
-qg
+kV
 WZ
 WZ
 WZ
@@ -54580,7 +54495,6 @@ eQ
 HX
 Bn
 Yo
-Yo
 WZ
 WZ
 WZ
@@ -54591,27 +54505,28 @@ WZ
 WZ
 WZ
 WZ
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
-qg
+WZ
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
+kV
 WZ
 WZ
 WZ
@@ -54802,7 +54717,7 @@ if
 rO
 eC
 Yo
-Yo
+WZ
 WZ
 WZ
 WZ
@@ -55024,7 +54939,7 @@ eQ
 eQ
 Bn
 Yo
-Yo
+WZ
 WZ
 WZ
 WZ
@@ -55233,20 +55148,20 @@ WZ
 WZ
 Yo
 Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
-Bn
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
 Bn
 Yo
-Yo
+WZ
 WZ
 WZ
 WZ
@@ -55454,21 +55369,21 @@ WZ
 WZ
 WZ
 Yo
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
+Bn
 Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
-Yo
+WZ
 WZ
 WZ
 WZ
@@ -55675,21 +55590,21 @@ WZ
 WZ
 WZ
 WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
-WZ
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
+Yo
 WZ
 WZ
 WZ

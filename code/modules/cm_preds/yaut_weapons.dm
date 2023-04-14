@@ -188,10 +188,10 @@
 		xenomorph.interference = 30
 
 /obj/item/weapon/yautja/scythe
-	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	name = "dual war scythe"
+	desc = "A huge, incredibly sharp dual blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe"
-	item_state = "scythe"
+	item_state = "scythe_dual"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
@@ -211,12 +211,18 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
-
 	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
 	return
+
+/obj/item/weapon/yautja/scythe/alt
+	name = "double war scythe"
+	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
+	icon_state = "predscythe_alt"
+	item_state = "scythe_double"
 
 //Combistick
 /obj/item/weapon/yautja/combistick
@@ -672,6 +678,10 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
+/obj/item/weapon/twohanded/yautja/glaive/alt
+	icon_state = "glaive_alt"
+	item_state = "glaive_alt"
+
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
@@ -977,6 +987,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
+	icon_state = "plasma_ebony"
 	var/base_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
 	item_icons = list(

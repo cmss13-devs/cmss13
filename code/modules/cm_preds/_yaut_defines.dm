@@ -2,9 +2,11 @@
 
 // Primaries (1)
 #define YAUTJA_GEAR_GLAIVE "The Lumbering Glaive"
+#define YAUTJA_GEAR_GLAIVE_ALT "The Imposing Glaive"
 #define YAUTJA_GEAR_WHIP "The Rending Chain-Whip"
 #define YAUTJA_GEAR_SWORD "The Piercing Hunting Sword"
 #define YAUTJA_GEAR_SCYTHE "The Cleaving War-Scythe"
+#define YAUTJA_GEAR_SCYTHE_ALT "The Ripping War-Scythe"
 #define YAUTJA_GEAR_STICK "The Adaptive Combi-Stick"
 #define YAUTJA_GEAR_SPEAR "The Nimble Spear"
 #define YAUTJA_GEAR_SCIMS "The Fearsome Scimitars"
@@ -17,6 +19,7 @@
 #define YAUTJA_GEAR_FULL_ARMOR "The Formidable Plate Armor"
 #define YAUTJA_GEAR_SHIELD "The Steadfast Shield"
 #define YAUTJA_GEAR_DRONE "The Agile Drone"
+
 
 // Scum Gear (1)
 #define YAUTJA_THRALL_GEAR_MACHETE "The Swift Machete"

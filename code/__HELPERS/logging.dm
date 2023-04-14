@@ -246,6 +246,9 @@
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
 
+GLOBAL_VAR(round_id)
+GLOBAL_PROTECT(round_id)
+
 /* Rarely gets called; just here in case the config breaks. */
 /proc/log_config(text)
 	WRITE_LOG(GLOB.config_error_log, text)

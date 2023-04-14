@@ -35,6 +35,8 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 	var/list/datum/entity_meta/currentrun
 
+	var/datum/entity/mc_round/round
+
 	var/ready = FALSE
 
 /datum/controller/subsystem/entity_manager/New()
@@ -78,6 +80,8 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			views_unsorted.Add(view)
 			view.root_entity_meta = tables[view.root_record_type]
 			adapter.prepare_view(view)
+
+	setup_round_id()
 
 	ready = TRUE
 	return SS_INIT_SUCCESS
@@ -289,3 +293,9 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		var/V = new meta.destination_entity()
 		meta.map(V, r)
 		to_write.Add(V)
+
+/datum/controller/subsystem/entity_manager/proc/setup_round_id()
+	round = SSentity_manager.select(/datum/entity/mc_round)
+	round.map_name = SSmapping.configs[GROUND_MAP].map_name
+	round.save()
+	GLOB.round_id = round.id

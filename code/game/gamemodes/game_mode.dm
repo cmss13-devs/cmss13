@@ -245,9 +245,18 @@ var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracki
 		var/obj/effect/landmark/corpsespawner/spawner = pick(gamemode_spawn_corpse)
 		var/turf/spawnpoint = get_turf(spawner)
 		if(spawnpoint)
-			var/mob/living/carbon/human/mob = new /mob/living/carbon/human(spawnpoint)
-			mob.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(mob, spawner.equip_path, TRUE, FALSE)
+			var/mob/living/carbon/human/current_mob = new /mob/living/carbon/human(spawnpoint)
+			current_mob.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(current_mob, spawner.equip_path, TRUE, FALSE)
+			for(var/obj/structure/bed/nest/found_nest in spawnpoint)
+				for(var/turf/the_turf in list(get_step(found_nest, NORTH),get_step(found_nest, EAST),get_step(found_nest, WEST)))
+					if(the_turf.density)
+						found_nest.dir = get_dir(found_nest, the_turf)
+						found_nest.pixel_x = found_nest.buckling_x["[found_nest.dir]"]
+						found_nest.pixel_y = found_nest.buckling_y["[found_nest.dir]"]
+						current_mob.dir = get_dir(the_turf,found_nest)
+				if(!found_nest.buckled_mob)
+					found_nest.do_buckle(current_mob,current_mob)
 		gamemode_spawn_corpse.Remove(spawner)
 
 /datum/game_mode/proc/spawn_static_comms()

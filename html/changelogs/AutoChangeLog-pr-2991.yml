@@ -1,4 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - admin: "Added vars to the smartgun to toggle requiring a harness, power, or a powerpack"

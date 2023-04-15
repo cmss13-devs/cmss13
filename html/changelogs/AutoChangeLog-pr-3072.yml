@@ -1,4 +1,0 @@
-author: "morrowwolf"
-delete-after: True
-changes:
-  - bugfix: "Reverts crate/barrel disassemble change"

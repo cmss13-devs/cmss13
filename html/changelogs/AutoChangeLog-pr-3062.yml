@@ -1,0 +1,4 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - bugfix: "Rifleman vendor now correctly has M4RA AP mags buyable instead of L42A AP"

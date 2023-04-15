@@ -280,7 +280,7 @@
 		list("Med", "hudsquad_med"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
-		list("RTO", "hudsquad_rto"),
+		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)
 

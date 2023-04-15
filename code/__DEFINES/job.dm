@@ -17,10 +17,10 @@
 #define JOB_SQUAD_ENGI "Squad Combat Technician"
 #define JOB_SQUAD_MEDIC "Squad Hospital Corpsman"
 #define JOB_SQUAD_SPECIALIST "Squad Weapons Specialist"
-#define JOB_SQUAD_RTO "Squad Radio Telephone Operator"
+#define JOB_SQUAD_TEAM_LEADER "Squad Team Leader"
 #define JOB_SQUAD_SMARTGUN "Squad Smartgunner"
 #define JOB_SQUAD_ROLES /datum/timelock/squad
-#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
+#define JOB_SQUAD_ROLES_LIST list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_TEAM_LEADER)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 

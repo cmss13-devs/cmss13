@@ -251,9 +251,9 @@
 	icon_state = "leader_spawn"
 	job = /datum/job/marine/leader/whiskey
 
-/obj/effect/landmark/start/whiskey/rto
-	icon_state = "rto_spawn"
-	job = /datum/job/marine/rto //Need to create a WO variant in the future
+/obj/effect/landmark/start/whiskey/tl
+	icon_state = "tl_spawn"
+	job = /datum/job/marine/tl //Need to create a WO variant in the future
 
 /obj/effect/landmark/start/whiskey/spec
 	icon_state = "spec_spawn"

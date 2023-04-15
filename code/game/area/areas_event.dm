@@ -241,6 +241,15 @@ structure:
 	requires_power = TRUE
 	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	soundscape_interval = 25
+	base_muffle = MUFFLE_HIGH
+
 
 //no dynamic lighting, unpowered.
 /area/event/underground_no_CAS/dynamic/unpowered

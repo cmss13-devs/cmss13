@@ -22,7 +22,8 @@
 
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/item/stack/sheet/material_sheet // Variable to store the reference of the crate material
+	/// Store the reference of the crate material
+	var/obj/item/stack/sheet/material_sheet
 	if(parts_type) // Create the crate material and store its reference
 		material_sheet = new parts_type(current_turf, 2)
 

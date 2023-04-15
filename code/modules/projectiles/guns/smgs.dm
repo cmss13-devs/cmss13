@@ -136,6 +136,11 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap
 
+/obj/item/weapon/gun/smg/m39/elite/unlocked
+	name = "modified M39B/2 submachinegun"
+	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units. This one seems to have its Weyland-Yutani ID restrictions removed."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.

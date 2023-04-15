@@ -51,6 +51,11 @@
 		resisting = FALSE //just in case
 		resisting_ready = FALSE
 
+	// When the dir == SOUTH, the human faces north when captured, this would cause the human to be above the wall
+	// Var below is what the layers all atoms south of the human will be changed by, allows it to be over the human again
+	// Currently set to 2, as humans are on layer 4, wall is layer 2.02, wall weeds layer 2.6, needs to be above human layer
+	// Humans layer cannot be changed to less than 3, as it will result in all of the mobs overlays failing to work
+	var/south_face_layer_adjustment = 2
 	if(buckled_mob == current_mob)
 		buckled_mob_density = current_mob.density
 		current_mob.pixel_y = buckling_y["[dir]"]
@@ -61,9 +66,9 @@
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
 			var/turf/selected_turf = get_turf(get_step(current_mob, dir)) //Gets the wall to the south of the nested human
-			selected_turf.layer += 2 //The wall itself doesn't get counted in the below for loop
+			selected_turf.layer += south_face_layer_adjustment //The wall itself doesn't get counted in the below for loop
 			for(var/atom/current_atom in selected_turf)
-				current_atom.layer += 2 //Puts the wall and weeds on a layer above the human
+				current_atom.layer += south_face_layer_adjustment //Puts the wall and weeds on a layer above the human
 
 		update_icon()
 		return
@@ -72,10 +77,10 @@
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
 	current_mob.density = buckled_mob_density
 	if(dir == SOUTH)
-		var/selected_turf = get_step(current_mob, dir) //Gets the wall to the south of the nested human
-		selected_turf -= 2 //The wall itself doesn't get counted in the below for loop
+		var/turf/selected_turf = get_step(current_mob, dir) //Gets the wall to the south of the nested human
+		selected_turf.layer -= south_face_layer_adjustment //The wall itself doesn't get counted in the below for loop
 		for(var/atom/current_atom in selected_turf)
-			current_atom.layer -= 2 //Resets the layer back down
+			current_atom.layer -= south_face_layer_adjustment //Resets the layer back down
 
 	if(!QDESTROYING(src))
 		qdel(src)

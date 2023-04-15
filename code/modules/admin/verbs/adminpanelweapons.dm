@@ -6,6 +6,7 @@
 	var/quantity
 	var/currentshot
 	var/exactplace
+	var/area/picked_area
 
 	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Particle cannon"), 20 SECONDS)
 	var/pd = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
@@ -19,7 +20,7 @@
 					quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 5, 2, 20, TRUE)
 					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta]" , MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					for(currentshot = 1; currentshot <= quantity; currentshot++ )
-						var/area/picked_area = pick(GLOB.ship_areas)
+						picked_area = pick(GLOB.ship_areas)
 						while(picked_area == null)
 							picked_area = pick(GLOB.ship_areas)
 						var/atom/picked_atom = pick(picked_area.contents)
@@ -31,7 +32,7 @@
 					var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer at a random place?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 					if(prompt == "Yes")
 						shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta]", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
-						var/area/picked_area = pick(GLOB.ship_areas)
+						picked_area = pick(GLOB.ship_areas)
 						if(picked_area == null)
 							picked_area = pick(GLOB.ship_areas)
 						if(!picked_area)

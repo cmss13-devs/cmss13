@@ -396,7 +396,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isyautja(H) || is_admin_level(H.z))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -456,21 +456,26 @@
 	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
-		return
+		return FALSE
 
 	if(istype(usr.buckled, /obj/structure/bed/nest/))
-		return
+		return FALSE
+
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea how this thing works!"))
+		return FALSE
 
 	if(loc && istype(usr.loc, /turf))
 		var/turf/location = usr.loc
 		GLOB.yautja_teleports += location
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
-			return
+			return FALSE
 		GLOB.yautja_teleport_descs[name + location.loc_to_string()] = location
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
+		return TRUE
 
 //=================//\\=================\\
 //======================================\\

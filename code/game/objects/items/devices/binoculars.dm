@@ -32,6 +32,10 @@
 
 	zoom(user, 11, 12)
 
+/obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
+	. = ..()
+	on_unset_interaction(user)
+
 /obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 
@@ -101,8 +105,6 @@
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
-		if((user.l_hand||user.r_hand) != src)
-			return FALSE
 		if(user.stat != CONSCIOUS)
 			to_chat(user,SPAN_WARNING("You cannot use [src] while incapacitated."))
 			return FALSE

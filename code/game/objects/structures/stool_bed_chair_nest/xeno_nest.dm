@@ -60,11 +60,11 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
-			buckled_mob.layer = ABOVE_TURF_LAYER
-			if(ishuman(current_mob))
-				var/mob/living/carbon/human/current_human = current_mob
-				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
-					current_mobs_head.layer = TURF_LAYER
+			var/turf/selected_turf = get_turf(get_step(current_mob, dir)) //Gets the wall to the south of the nested human
+			selected_turf.layer += 2 //The wall itself doesn't get counted in the below for loop
+			for(var/atom/current_atom in selected_turf)
+				current_atom.layer += 2 //Puts the wall and weeds on a layer above the human
+
 		update_icon()
 		return
 
@@ -72,11 +72,11 @@
 	current_mob.pixel_x = initial(buckled_mob.pixel_x)
 	current_mob.density = buckled_mob_density
 	if(dir == SOUTH)
-		current_mob.layer = initial(current_mob.layer)
-		if(!ishuman(current_mob))
-			var/mob/living/carbon/human/current_human = current_mob
-			for(var/obj/limb/head/current_mobs_head in current_human.limbs)
-				current_mobs_head.layer =  initial(current_mobs_head.layer)
+		var/selected_turf = get_step(current_mob, dir) //Gets the wall to the south of the nested human
+		selected_turf -= 2 //The wall itself doesn't get counted in the below for loop
+		for(var/atom/current_atom in selected_turf)
+			current_atom.layer -= 2 //Resets the layer back down
+
 	if(!QDESTROYING(src))
 		qdel(src)
 

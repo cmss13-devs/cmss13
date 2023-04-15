@@ -189,3 +189,9 @@
   realforest2001:
   - bugfix: Fixes the missing trait check on Add Teleporter Destination for Yautja
       Teleporter and converts the interact typecheck to a trait check.
+2023-04-15:
+  CapCamIII:
+  - bugfix: Rifleman vendor now correctly has M4RA AP mags buyable instead of L42A
+      AP
+  morrowwolf:
+  - bugfix: Reverts crate/barrel disassemble change

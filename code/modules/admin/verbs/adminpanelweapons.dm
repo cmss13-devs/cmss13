@@ -7,6 +7,7 @@
 	var/currentshot
 	var/exactplace
 	var/area/picked_area
+	var/atom/picked_atom
 
 	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Particle cannon"), 20 SECONDS)
 	var/pd = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
@@ -17,13 +18,13 @@
 			if(exactplace == "Random")
 				salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
 				if(salvo == "Salvo")
-					quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 5, 2, 20, TRUE)
+					quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 5, 2, 20)
 					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta]" , MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					for(currentshot = 1; currentshot <= quantity; currentshot++ )
 						picked_area = pick(GLOB.ship_areas)
 						while(picked_area == null)
 							picked_area = pick(GLOB.ship_areas)
-						var/atom/picked_atom = pick(picked_area.contents)
+						picked_atom = pick(picked_area.contents)
 						while(picked_atom == null)
 							picked_atom = pick(picked_area.contents)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, pd), hiteta SECONDS)
@@ -39,7 +40,7 @@
 							picked_area = pick(GLOB.ship_areas)
 						while(picked_area == null)
 							picked_area = pick(GLOB.ship_areas)
-						var/atom/picked_atom = pick(picked_area.contents)
+						picked_atom = pick(picked_area.contents)
 						while(picked_atom == null)
 							picked_atom = pick(picked_area.contents)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, pd), hiteta SECONDS)

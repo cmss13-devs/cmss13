@@ -2,6 +2,9 @@
 	set name = "Weapons"
 	set category = "Admin.Ship"
 
+	//Yes, this is a var list.
+	//Friggin' fetching global shit along with conditionals do not enjoy creating vars along with conditionals.
+	//Leave the poor thang alone.
 	var/salvo
 	var/quantity
 	var/currentshot

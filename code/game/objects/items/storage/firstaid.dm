@@ -259,6 +259,30 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+//---------SURGICAL CASE---------
+
+
+/obj/item/storage/surgical_case
+	name = "surgical case"
+	desc = "It's a medical case for storing basic surgical tools."
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 3
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+	)
+
+/obj/item/storage/surgical_case/regular
+
+/obj/item/storage/surgical_case/regular/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
 
 //---------PILL BOTTLES---------
 

@@ -15,6 +15,7 @@
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
 /obj/structure/platform/stair_cut
 	icon_state = "platform_stair"//icon will be honked in all dirs except (1), that's because the behavior breaks if it ain't (1)

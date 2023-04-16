@@ -1096,7 +1096,7 @@
 			P.damage *= brute_multiplier
 		return ..()
 	if(P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
-		// Bullet gets absorbed if it has IFF or can't be reflected.
+		// Bullet gets absorbed if it can't be reflected.
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))

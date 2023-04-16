@@ -40,18 +40,18 @@
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
 	if(!ishuman(user))
 		return FALSE
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/current_human = user
 
-	if(skilllock && !skillcheck(H, SKILL_POLICE, skilllock))
+	if(skilllock && !skillcheck(current_human, SKILL_POLICE, skilllock))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 		return FALSE
 
 	if(broken)
-		to_chat(H, SPAN_WARNING("\The [src] is broken."))
+		to_chat(current_human, SPAN_WARNING("\The [src] is broken."))
 		return FALSE
 	return TRUE
 
-/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, aoe = FALSE) //actually does the stun and logs it
+/obj/item/device/flash/proc/do_flash(mob/living/current_mob, mob/user, aoe = FALSE) //actually does the stun and logs it
 	//spamming the flash before it's fully charged increases the chance of it  breaking
 	//It will never break on the first use.
 	if(flashes_stored)
@@ -81,8 +81,8 @@
 		for(var/mob/living/carbon/human/victim in oviewers(3, null))
 			if(prob(50))
 				if (locate(/obj/item/device/chameleon, victim))
-					for(var/obj/item/device/chameleon/S in victim)
-						S.disrupt(victim)
+					for(var/obj/item/device/chameleon/invis_handheld in victim)
+						invis_handheld.disrupt(victim)
 			victim.flash_eyes()
 			victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been AoE flashed (attempt) with [src.name] by [key_name(user)] in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 			msg_admin_attack("[key_name(victim)] has been AoE flashed with [src.name] by [key_name(user)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
@@ -91,13 +91,13 @@
 		var/flashfail = FALSE //determines if you actually blind + stun the guy or not
 		flick("flash2", src)
 
-		if(iscarbon(M))
-			flashfail = !M.flash_eyes()
+		if(iscarbon(current_mob))
+			flashfail = !current_mob.flash_eyes()
 			if(!flashfail)
-				M.apply_effect(10, WEAKEN)
+				current_mob.apply_effect(10, WEAKEN)
 
-		else if(isSilicon(M))
-			M.apply_effect(rand(5,10), WEAKEN)
+		else if(isSilicon(current_mob))
+			current_mob.apply_effect(rand(5,10), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE
@@ -114,34 +114,34 @@
 				qdel(animation)
 
 		if(!flashfail)
-			if(!isSilicon(M))
-				user.visible_message(SPAN_DANGER("[user] blinds [M] with \the [src]!"))
+			if(!isSilicon(current_mob))
+				user.visible_message(SPAN_DANGER("[user] blinds [current_mob] with \the [src]!"))
 			else
-				user.visible_message(SPAN_WARNING("[user] overloads [M]'s sensors with \the [src]!"))
+				user.visible_message(SPAN_WARNING("[user] overloads [current_mob]'s sensors with \the [src]!"))
 		else
-			user.visible_message(SPAN_WARNING("[user] fails to blind [M] with \the [src]!"))
+			user.visible_message(SPAN_WARNING("[user] fails to blind [current_mob] with \the [src]!"))
 
 		if(!flashfail)
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [key_name(M)]</font>")
-			msg_admin_attack("[key_name(user)] used the [src.name] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+			current_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [key_name(current_mob)]</font>")
+			msg_admin_attack("[key_name(user)] used the [src.name] to flash [key_name(current_mob)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 //targeted flash
 
-/obj/item/device/flash/attack(mob/living/M, mob/user)
-	if(!user || !M) return //sanity
-	if(!istype(M)) return
+/obj/item/device/flash/attack(mob/living/current_mob, mob/user)
+	if(!user || !current_mob) return //sanity
+	if(!istype(current_mob)) return
 
 	if(check_if_can_use_flash(user))
-		if(isxeno(M))
+		if(isxeno(current_mob))
 			to_chat(user, SPAN_WARNING("You can't find any eyes!"))
 			return
 
-		if(M == user && user.a_intent != INTENT_HARM)
+		if(current_mob == user && user.a_intent != INTENT_HARM)
 			to_chat(user, SPAN_WARNING("You point \the [src] towards your eyes, but stop yourself from activating it at the last moment!"))
 			return
 
-		do_flash(M, user, FALSE)
+		do_flash(current_mob, user, FALSE)
 
 //AOE flash
 
@@ -164,10 +164,10 @@
 				return
 			flashes_stored--
 			if(istype(loc, /mob/living/carbon))
-				var/mob/living/carbon/M = loc
-				if(M.flash_eyes())
-					M.apply_effect(10, WEAKEN)
-					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
+				var/mob/living/carbon/current_mob = loc
+				if(current_mob.flash_eyes())
+					current_mob.apply_effect(10, WEAKEN)
+					current_mob.visible_message(SPAN_DISARM("[current_mob] is blinded by \the [src]!"))
 	..()
 
 /obj/item/device/flash/synthetic
@@ -175,7 +175,7 @@
 	desc = "When a problem arises, SCIENCE is the solution. Only good for one use."
 	icon_state = "sflash"
 
-/obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/device/flash/synthetic/attack(mob/living/current_mob as mob, mob/user as mob)
 	..()
 	if(!broken)
 		broken = TRUE

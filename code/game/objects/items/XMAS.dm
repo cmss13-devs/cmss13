@@ -21,22 +21,22 @@
 /obj/item/m_gift/attack_self(mob/M)
 	..()
 
-	var/mob/living/carbon/human/H = M
-	if(istype(H))
-		if(H.opened_gift == 1)
-			to_chat(H, SPAN_NOTICE(" This is not your gift, opening it feels wrong."))
-		if(H.opened_gift == 2)
-			to_chat(H, SPAN_NOTICE(" Santa knows of your treachery, yet you open another present."))
-		if(H.opened_gift == 3)
-			to_chat(H, SPAN_NOTICE(" Even the Grinch glares with disguist..."))
-		if(H.opened_gift == 4)
-			to_chat(H, SPAN_NOTICE(" You're ruining the Christmas magic, I hope you're happy."))
-		if(H.opened_gift == 5)
-			to_chat(H, SPAN_DANGER("Ok, Congratulations, you've ruined Christmas for 5 marines now."))
-		if(H.opened_gift > 5)
-			to_chat(H, SPAN_DANGER("You've ruined Christmas for [H.opened_gift] marines now..."))
+	var/mob/living/carbon/human/current_human = M
+	if(istype(current_human))
+		if(current_human.opened_gift == 1)
+			to_chat(current_human, SPAN_NOTICE(" This is not your gift, opening it feels wrong."))
+		if(current_human.opened_gift == 2)
+			to_chat(current_human, SPAN_NOTICE(" Santa knows of your treachery, yet you open another present."))
+		if(current_human.opened_gift == 3)
+			to_chat(current_human, SPAN_NOTICE(" Even the Grinch glares with disguist..."))
+		if(current_human.opened_gift == 4)
+			to_chat(current_human, SPAN_NOTICE(" You're ruining the Christmas magic, I hope you're happy."))
+		if(current_human.opened_gift == 5)
+			to_chat(current_human, SPAN_DANGER("Ok, Congratulations, you've ruined Christmas for 5 marines now."))
+		if(current_human.opened_gift > 5)
+			to_chat(current_human, SPAN_DANGER("You've ruined Christmas for [current_human.opened_gift] marines now..."))
 
-		H.opened_gift++
+		current_human.opened_gift++
 	/// Check if it has the possibility of being a FANCY present
 	var fancy = rand(1,100)
 	/// Checks if it might be one of the ULTRA fancy presents.
@@ -47,19 +47,19 @@
 		if(exFancy == 1)
 			to_chat(M, SPAN_NOTICE(" Just what the fuck is it???"))
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
-			var/obj/item/I = new gift_type(M)
+			var/obj/item/new_gift_item = new gift_type(M)
 			M.temp_drop_inv_item(src)
-			M.put_in_hands(I)
-			I.add_fingerprint(M)
+			M.put_in_hands(new_gift_item)
+			new_gift_item.add_fingerprint(M)
 			qdel(src)
 			return
 		if(exFancy > 15)
-			to_chat(M, SPAN_NOTICE(" Oh, just what I needed... Fucking HEFA's."))
+			to_chat(M, SPAN_NOTICE(" Oh, just what new_gift_item needed... Fucking HEFA's."))
 			gift_type = /obj/item/storage/box/nade_box/frag
-			var/obj/item/I = new gift_type(M)
+			var/obj/item/new_gift_item = new gift_type(M)
 			M.temp_drop_inv_item(src)
-			M.put_in_hands(I)
-			I.add_fingerprint(M)
+			M.put_in_hands(new_gift_item)
+			new_gift_item.add_fingerprint(M)
 			qdel(src)
 			return
 		else
@@ -74,10 +74,10 @@
 			/obj/item/attachable/burstfire_assembly,
 			)
 			to_chat(M, SPAN_NOTICE(" It's a REAL gift!!!"))
-			var/obj/item/I = new gift_type(M)
+			var/obj/item/new_gift_item = new gift_type(M)
 			M.temp_drop_inv_item(src)
-			M.put_in_hands(I)
-			I.add_fingerprint(M)
+			M.put_in_hands(new_gift_item)
+			new_gift_item.add_fingerprint(M)
 			qdel(src)
 			return
 	else if (fancy <=5)
@@ -129,9 +129,9 @@
 
 	if(!ispath(gift_type,/obj/item)) return
 	to_chat(M, SPAN_NOTICE(" At least it's something..."))
-	var/obj/item/I = new gift_type(M)
+	var/obj/item/new_gift_item = new gift_type(M)
 	M.temp_drop_inv_item(src)
-	M.put_in_hands(I)
-	I.add_fingerprint(M)
+	M.put_in_hands(new_gift_item)
+	new_gift_item.add_fingerprint(M)
 	qdel(src)
 	return

@@ -22,8 +22,8 @@
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
-	var/mob/living/carbon/human/H = user
-	if(H.getBrainLoss() >= 60)
+	var/mob/living/carbon/human/current_human = user
+	if(current_human.getBrainLoss() >= 60)
 		return
 
 	var/t1
@@ -74,10 +74,10 @@
 			src.locked = 0
 			src.last_configurator = usr.name
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (I && src.check_access(I))
+			var/obj/item/current_item = usr.get_active_hand()
+			if (current_item && src.check_access(current_item))
 				src.locked = 0
-				src.last_configurator = I:registered_name
+				src.last_configurator = current_item:registered_name
 
 	if (locked)
 		return

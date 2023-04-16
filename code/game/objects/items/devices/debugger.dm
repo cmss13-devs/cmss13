@@ -20,8 +20,8 @@
 		to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
 		return 1
 	if(istype(O, /obj/structure/machinery/door))
-		var/obj/structure/machinery/door/D = O
-		if(D.operating == -1)
+		var/obj/structure/machinery/door/current_door = O
+		if(current_door.operating == -1)
 			to_chat(user, SPAN_DANGER("There is a software error with the device."))
 		else
 			to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))

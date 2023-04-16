@@ -19,18 +19,18 @@
 		return
 
 	if(istype(A, /turf/open/floor))
-		var/turf/open/floor/F = A
+		var/turf/open/floor/current_floor = A
 
-		if(F.is_plasteel_floor()) // only tiled floors
+		if(current_floor.is_plasteel_floor()) // only tiled floors
 			if(tile_dir_mode)
-				var/D = get_dir(usr, F)
-				if(usr.loc == F)
+				var/D = get_dir(usr, current_floor)
+				if(usr.loc == current_floor)
 					D = usr.dir
 
 				switch(tile_dir_mode)
 					if(1) // All directions accepted
-						F.setDir(D)
-						F.icon_state = mode
+						current_floor.setDir(D)
+						current_floor.icon_state = mode
 					if(2) // Corner mode - diagonal directions converted CW around.
 						switch(D)
 							if(NORTHEAST)
@@ -41,8 +41,8 @@
 								D = WEST
 							if(NORTHWEST)
 								D = NORTH
-						F.setDir(D)
-						F.icon_state = mode
+						current_floor.setDir(D)
+						current_floor.icon_state = mode
 					if(3) // cardinal directions only. I've adjusted diagonals the same way the facing code does.
 						switch(D)
 							if(NORTHEAST)
@@ -53,8 +53,8 @@
 								D = WEST
 							if(NORTHWEST)
 								D = WEST
-						F.setDir(D)
-						F.icon_state = mode
+						current_floor.setDir(D)
+						current_floor.icon_state = mode
 					if(4) // floors.dmi icon_states "warningcorner" and "warnwhitecorner" are incorrect, this fixes it
 						var/D2
 						switch(D)
@@ -66,17 +66,17 @@
 								D2 = NORTH
 							if(NORTHWEST)
 								D2 = EAST
-						F.setDir(D2)
-						F.icon_state = mode
+						current_floor.setDir(D2)
+						current_floor.icon_state = mode
 					if(5)
-						F.setDir(0)
+						current_floor.setDir(0)
 						if(D == NORTH || D == SOUTH || D == NORTHEAST || D == SOUTHWEST)
-							F.icon_state = mode
+							current_floor.icon_state = mode
 						else
-							F.icon_state = "[mode]_inv"
+							current_floor.icon_state = "[mode]_inv"
 			else
-				F.setDir(0)
-				F.icon_state = mode
+				current_floor.setDir(0)
+				current_floor.icon_state = mode
 		else
 			to_chat(usr, "You can't paint that!")
 

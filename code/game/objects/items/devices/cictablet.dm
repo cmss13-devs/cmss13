@@ -105,10 +105,10 @@
 
 			var/signed = null
 			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
+				var/mob/living/carbon/human/current_human = usr
+				var/obj/item/card/id/id = current_human.wear_id
 				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, current_human.gender)
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
@@ -155,9 +155,9 @@
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 
-			for(var/client/C in GLOB.admins)
-				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
+			for(var/client/current_client in GLOB.admins)
+				if((R_ADMIN|R_MOD) & current_client.admin_holder.rights)
+					playsound_client(current_client,'sound/effects/sos-morse-code.ogg',10)
 			message_admins("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
 			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)

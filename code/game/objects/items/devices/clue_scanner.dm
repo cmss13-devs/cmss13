@@ -42,10 +42,10 @@
 	scanning = FALSE
 
 	newlyfound = 0
-	for(var/obj/effect/decal/prints/P in range(2))
+	for(var/obj/effect/decal/prints/new_prints in range(2))
 		newlyfound++
-		LAZYADD(print_list, P)
-		P.moveToNullspace()
+		LAZYADD(print_list, new_prints)
+		new_prints.moveToNullspace()
 
 	update_icon()
 

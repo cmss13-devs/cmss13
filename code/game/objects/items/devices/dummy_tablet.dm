@@ -168,9 +168,9 @@
 				return
 			if(linked_dummy.get_limb(selection).status & LIMB_DESTROYED)
 				return
-			var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
-			limb.add_bleeding(I, TRUE)
-			limb.wounds += I
+			var/datum/wound/internal_bleeding/ib = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
+			limb.add_bleeding(ib, TRUE)
+			limb.wounds += ib
 		if ("shrapnel")
 			var/selection = select_body_part()
 			if (!selection)
@@ -180,8 +180,8 @@
 				return
 			if(limb.status & LIMB_DESTROYED)
 				return
-			var/obj/item/shard/shrapnel/s = new /obj/item/shard/shrapnel()
-			limb.embed(s)
+			var/obj/item/shard/shrapnel/shrapnel = new /obj/item/shard/shrapnel()
+			limb.embed(shrapnel)
 		if ("delimb")
 			var/selection = select_body_part()
 			if (!selection)

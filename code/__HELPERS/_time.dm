@@ -23,7 +23,7 @@ var/midnight_rollovers = 0
 var/rollovercheck_last_timeofday = 0
 
 // Real time that is still reliable even when the round crosses over midnight time reset.
-#define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK) + 1 HOURS)
+#define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
 
 /proc/update_midnight_rollover()
@@ -46,7 +46,7 @@ var/rollovercheck_last_timeofday = 0
 	return time2text(world.timeofday, "hh:mm:ss")
 
 /proc/duration2text(time = world.time) // Shows current time starting at 0:00
-	return gameTimestamp("hh:mm", time)
+	return gameTimestamp("hh:mm", time + 1 HOURS)
 
 /proc/duration2text_sec(time = world.time) // shows minutes:seconds
 	return gameTimestamp("mm:ss", time)

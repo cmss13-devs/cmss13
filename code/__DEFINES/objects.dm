@@ -107,6 +107,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define IS_PRY_CAPABLE_SIMPLE 1
 #define IS_PRY_CAPABLE_CROWBAR 2 //actual crowbar
 #define IS_PRY_CAPABLE_FORCE 3 //can force open even powered airlocks
+#define IS_PRY_CAPABLE_ALL //force pry loses 
 
 
 #define SELF_DESTRUCT_MACHINE_INACTIVE 0

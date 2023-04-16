@@ -76,7 +76,7 @@
 
 	log_interact(user, target, "[key_name(user)] attempted to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
-/datum/surgery_step/mend_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+/mend_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	var/improvised_desc = pick("an organlegger", "a DIY enthusiast", "a cryo-preserved 20th Century witch-doctor", "an escaped chimpanzee")
 
 	if(surgery.affected_bone)
@@ -128,6 +128,7 @@
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
 	time = 4 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'

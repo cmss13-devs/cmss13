@@ -606,8 +606,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
-	if(istype(C, /obj/item/maintenance_jack) && locked)
-		var/obj/item/maintenance_jack/current_jack = C
+	if(istype(C, /obj/item/weapon/maintenance_jack) && locked)
+		var/obj/item/weapon/maintenance_jack/current_jack = C
 
 		if(current_jack.crowbar_mode)
 			return

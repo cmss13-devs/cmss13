@@ -353,7 +353,7 @@
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co
-	name = "\improper USCM commanding officer cap"
+	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 
@@ -509,12 +509,12 @@
 	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
-	name = "commanding officer dress white peaked cap"
+	name = "commanding officer's dress white peaked cap"
 	desc = "A white, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_white"
 
 /obj/item/clothing/head/marine/peaked/captain/black
-	name = "commanding officer dress black peaked cap"
+	name = "commanding officer's dress black peaked cap"
 	desc = "A black, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_black"
 

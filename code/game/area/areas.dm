@@ -98,8 +98,6 @@
 	active_areas += src
 	all_areas += src
 	reg_in_areas_in_z()
-	//if(is_mainship_level(z))
-		//GLOB.ship_areas += src
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 

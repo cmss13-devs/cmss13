@@ -19,11 +19,11 @@
 		if(1)
 			if(pd == "No")
 				cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
-				shakeship(10, 10, TRUE)
+				shakeship(10, 10, TRUE, FALSE)
 			if(pd == "Yes")
 				if(prob(70))
 					cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
-					shakeship(10, 10, TRUE)
+					shakeship(10, 10, TRUE, FALSE)
 
 		if(2)
 

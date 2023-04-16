@@ -162,7 +162,7 @@
 //Created by Polymorph, fixed by Sieve
 /obj/item/explosive/grenade/flashbang/cluster
 	name = "cluster flashbang"
-	desc = "Use of this weapon may be considered a war crime in your area, consult your local captain."
+	desc = "Use of this weapon may be considered a war crime in your area, consult your local commanding officer."
 	icon_state = "cluster"
 	no_damage = TRUE
 

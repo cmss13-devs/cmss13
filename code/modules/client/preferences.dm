@@ -122,7 +122,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
-	var/undershirt = "Undershirt" //undershirt type
+	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
 
 	var/h_style = "Crewcut" //Hair type

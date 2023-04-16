@@ -195,3 +195,7 @@
       AP
   morrowwolf:
   - bugfix: Reverts crate/barrel disassemble change
+2023-04-16:
+  kugamo:
+  - balance: Xenos can nest hosts on hive weed covered walls, legacy floor nests removed.
+  - imageadd: New sprites for resin nests.

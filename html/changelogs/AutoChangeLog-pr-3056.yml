@@ -1,0 +1,5 @@
+author: "Clvrbot"
+delete-after: True
+changes:
+  - ui: "added option for Foxtrot SL tracker on synth headset"
+  - imageadd: "added sprites for Foxtrot SL tracker for all HUDs"

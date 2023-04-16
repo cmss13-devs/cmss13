@@ -403,8 +403,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	w_class = SIZE_MEDIUM
 
 /obj/item/clothing/suit/storage/marine/MP/SO
-	name = "\improper M2 pattern officer armor"
-	desc = "A well-crafted suit of M2 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
+	name = "\improper M3 pattern officer armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
 	icon_state = "officer"
 	storage_slots = 3
 	flags_atom = null

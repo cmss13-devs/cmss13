@@ -141,7 +141,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(3) //clf
-			switch(rand(1, 4))
+			switch(rand(1, 3))
 				if(1)
 					new /obj/item/weapon/twohanded/lungemine/damaged(src)
 				if(2)
@@ -154,11 +154,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
-				if(4)
-					new /obj/item/weapon/gun/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
 		if(4) //upp
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/type71(src)
@@ -635,7 +630,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/belt/champion,
 		/obj/item/clothing/mask/luchador,
 		/obj/item/tool/soap/deluxe,
-		/obj/item/tool/crowbar/maintenance_jack,
+		/obj/item/maintenance_jack,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,

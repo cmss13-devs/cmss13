@@ -546,7 +546,8 @@
 		"Bravo SL" = TRACKER_BSL,
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
-		"Echo SL" = TRACKER_ESL
+		"Echo SL" = TRACKER_ESL,
+		"Foxtrot SL" = TRACKER_FSL
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/ai

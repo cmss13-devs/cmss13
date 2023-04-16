@@ -1095,7 +1095,7 @@
 		if(P.ammo.damage_type == BRUTE)
 			P.damage *= brute_multiplier
 		return ..()
-	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+	if(P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
 		// Bullet gets absorbed if it has IFF or can't be reflected.
 		return
 

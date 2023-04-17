@@ -114,7 +114,7 @@
 	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
-	var/mode = 0 //Pill picking mode
+	var/mode = 1 //Pill picking mode
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,

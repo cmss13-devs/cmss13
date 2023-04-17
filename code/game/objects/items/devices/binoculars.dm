@@ -106,7 +106,7 @@
 		return
 	if(mods["ctrl"])
 		if(user.stat != CONSCIOUS)
-			to_chat(user,SPAN_WARNING("You cannot use [src] while incapacitated."))
+			to_chat(user, SPAN_WARNING("You cannot use [src] while incapacitated."))
 			return FALSE
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE

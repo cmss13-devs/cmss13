@@ -28,7 +28,7 @@
 		material_sheet = new parts_type(current_turf, 2)
 
 	// Move the objects back to the turf, above the crate material
-	while(contents.len)
+	for(var/atom/movable/moving_atom in contents)
 		var/atom/movable/current_atom = contents[1]
 		current_atom.forceMove(current_turf)
 

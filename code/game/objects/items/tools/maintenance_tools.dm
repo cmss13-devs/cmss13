@@ -493,6 +493,7 @@
 /obj/item/weapon/maintenance_jack
 	name = "\improper K92 Maintenance Jack"
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
+	icon = 'icons/obj/items/items.dmi'
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
 	hitsound = "swing_hit"
@@ -501,11 +502,19 @@
 	flags_equip_slot = SLOT_SUIT_STORE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
-	var/crowbar_mode = TRUE
-	var/prying_sound = "pry"
+	var/crowbar_mode = TRUE //False for wrench mode
+	///Whether you need the "super strength" trait to pry open doors
 	var/requires_superstrength_pry = TRUE
+	///Whether you get the speed penalty from not having engi 3
+	var/requires_skills_unbolt = TRUE
+	///How long it takes to pry open an airlock
 	var/prying_time = 3
+	///How long it takes to pry open a resin door
+	var/resin_prying_time = 5
+	///How long it takes to unbolt an airlock
 	var/unbolt_time = 5
+	///How long extra will it take people who do not have engi 3 (if requires_skills_unbolt is true)
+	var/unskilled_unbolt_time = 15
 
 /obj/item/weapon/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
@@ -541,72 +550,102 @@
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 	pry_capable = IS_PRY_CAPABLE_FORCE
 
-/obj/item/weapon/maintenance_jack/afterattack(obj/door, mob/living/user, proximity)
+/obj/item/weapon/maintenance_jack/
+	. = ..()
+
+
+/obj/item/weapon/maintenance_jack/afterattack(obj/structure/door, mob/living/user, proximity)
 	if(!proximity)
 		return
 
 	if(istype(door, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/airlock = door
+		if(crowbar_mode)
+			pry_door(airlock)
+			return ..()
+		unbolt_door(airlock)
 
 	if(istype(door, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/resin_door = door
+		if(crowbar_mode)
+			pry_door(resin_door)
+	. = ..()
 
-	if(airlock)
-		if(crowbar_mode) //Otherwise it lets you pry open right after unbolting
-			if(airlock.locked) //Bolted
-				to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
-				return
-
-			if((!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) || !requires_superstrength_pry) //basically IS_PRY_CAPABLE_CROWBAR
-				if(!airlock.arePowerSystemsOn()) //stolen airlock code
-					if(!airlock.operating)
-						if(airlock.density)
-							airlock.open(TRUE)
-						else
-							airlock.close(TRUE)
-					else
-						to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
-				return
-			if(!airlock.density) //If its open
-				return
-			if(airlock.heavy) //Unopenable
-				to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
-				return FALSE
-			if(user.action_busy)
-				return
-
-			user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
-			SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
-			playsound(src, prying_sound, 15, TRUE)
-			if(!do_after(user, prying_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				return
-
-			if(!airlock.density)
-				return
-			if(airlock.locked)
-				user.visible_message(SPAN_DANGER("[user] fails to force [airlock] open with [src]."),
-				SPAN_DANGER("You fail to force [airlock] open with [src]."))
-				return
-
-			user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
-			SPAN_DANGER("You force [airlock] open with [src]."))
-			airlock.open(TRUE)
-
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
-			return
-		if(resin_door.isSwitchingStates)
-			return
-		if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
+/obj/item/weapon/maintenance_jack/proc/pry_door(obj/structure/door)
+	if(crowbar_mode) //Otherwise it lets you pry open right after unbolting
+		if(airlock.locked) //Bolted
+			to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
 			return
 
-		user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
-		SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
-		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+		if(requires_superstrength_pry)
+			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+				return
 
-		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && resin_door.density)
+		if(!airlock.density) //If its open
+			return
+		if(airlock.heavy) //Unopenable
+			to_chat(usr, SPAN_DANGER("You cannot force [airlock] open."))
+			return FALSE
+
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
+		SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
+		playsound(src, "pry", 15, TRUE)
+
+		if(!do_after(user, prying_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+		if(!airlock.density)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] forces [airlock] open with [src]."),
+		SPAN_DANGER("You force [airlock] open with [src]."))
+		airlock.open(TRUE)
+
+	if(resin_door)
+		if(crowbar_mode)
+			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
+				return
+			if(resin_door.isSwitchingStates)
+				return
+			if(!resin_door.density || user.action_busy || user.a_intent == INTENT_HARM)
+				return
+
+			user.visible_message(SPAN_DANGER("[user] jams [src] into [resin_door] and starts to pry it open."),
+			SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
+			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			if(!do_after(user, resin_prying_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				to_chat(user, SPAN_NOTICE("You stop prying [resin_door] open."))
+				return
+
 			user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 			SPAN_DANGER("You force [resin_door] open with [src]."))
 			resin_door.Open()
+
+/obj/item/weapon/maintenance_jack/proc/unbolt_door(obj/structure/door)
+	if(!airlock.locked)
+		to_chat(user, SPAN_NOTICE("You cannot disable bolts on a door that is already unbolted."))
+		return
+
+	if(requires_skills_unbolt)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
+			user.visible_message(SPAN_DANGER("[user] begins to search for [airlock]'s bolts!"),\
+			SPAN_NOTICE("You search for [airlock]'s bolts."))
+			if(!do_after(user, unskilled_unbolt_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				to_chat(user, SPAN_WARNING("You fail to find the bolts on [airlock]."))
+				return
+
+	user.visible_message(SPAN_DANGER("[user] begins to disable [airlock]'s bolts!"),\
+	SPAN_NOTICE("You start to disable [airlock]'s bolts."))
+	playsound(airlock, "pry", 25, TRUE)
+	if(!do_after(user, unbolt_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [airlock]."))
+		return
+
+	user.visible_message(SPAN_DANGER("[user] disables the bolts on [airlock]."),\
+	SPAN_NOTICE("You unbolt [airlock]."))
+	airlock.unlock(TRUE)
+	return
 
 /*
 Welding backpack

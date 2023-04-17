@@ -34614,30 +34614,14 @@
 /area/desert_dam/building/security/prison)
 "cdH" = (
 /obj/structure/closet/secure_closet/injection,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	name = "\improper Lethal Injection"
-	},
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
+/obj/item/reagent_container/ld50_syringe/choral,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)

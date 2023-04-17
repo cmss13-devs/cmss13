@@ -15,7 +15,7 @@
 	var/list/targets = list()
 
 	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Particle cannon"), 20 SECONDS)
-	var/pd = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
+	var/point_defense = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
 	var/hiteta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!!", 10, 120, 10, 20 SECONDS)
 	switch(weapontype)
 		if("Missile")
@@ -36,7 +36,7 @@
 								picked_atom = pick(turfs_of_area)
 								targets += picked_atom
 						picked_atom = null
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, pd, salvo), hiteta SECONDS)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
 					picked_atom = null
 					targets = null
 
@@ -54,7 +54,7 @@
 							if(turfs_of_area.len > 1)
 								picked_atom = pick(turfs_of_area)
 
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, pd), hiteta SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 
 						//for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 							//if(!is_mainship_level(current_mob.z))
@@ -68,7 +68,7 @@
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 				if(prompt == "Yes")
 					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta]", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, pd), hiteta SECONDS)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, point_defense), hiteta SECONDS)
 
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
@@ -77,7 +77,7 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
-					//weaponhits(1, mob.loc, pd)
+					//weaponhits(1, mob.loc, point_defense)
 
 		if("Railgun")
 			//abagable

@@ -11,10 +11,10 @@
 			prompt = tgui_alert(src, "Are you sure you want to send General Quarters? This will force red alert.", "Choose.", list("Yes", "No"), 20 SECONDS)
 			if(prompt == "Yes")
 				set_security_level(2, no_sound=1, announce=0)
-				shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/generalquartersalarm.ogg')
+				shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 		else
 			whattoannounce = tgui_input_text(src, "Please enter announcement text.", "what?")
 			prompt = tgui_alert(src, "Are you sure you want to send General Quarters? This will force red alert.", "Choose.", list("Yes", "No"), 20 SECONDS)
 			if(prompt == "Yes")
 				set_security_level(2, no_sound=1, announce=0)
-				shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/generalquartersalarm.ogg')
+				shipwide_ai_announcement(whattoannounce, MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')

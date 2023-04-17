@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Barricades that are mapped to started damage correctly show the damage"

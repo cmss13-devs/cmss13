@@ -20,8 +20,8 @@
 		if(1)
 			if(pd == "No")
 				if(salvo == "Salvo")
-					for(var/picked_atom in location)
-						cell_explosion(picked_atom, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+					for(var/turf/picked_atom in location)
+						cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
@@ -31,18 +31,21 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 				else
-					cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+					cell_explosion(location, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
-					playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-					playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+						if(!is_mainship_level(current_mob.z))
+							continue
+						playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
+						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 			if(pd == "Yes")
 				if(salvo == "Salvo")
 					var/confirmedhit
-					for(var/picked_atom in location)
+					for(var/turf/picked_atom in location)
 						if(prob(70))
-							cell_explosion(picked_atom, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+							cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 					if(confirmedhit > 0)
@@ -53,10 +56,16 @@
 							playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					confirmedhit = 0
 
 				else
-					cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
-					shakeship(10, 10, TRUE, FALSE)
+					if(prob(70))
+						cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						shakeship(10, 10, TRUE, FALSE)
+						playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
+						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 
 		if(2)
 

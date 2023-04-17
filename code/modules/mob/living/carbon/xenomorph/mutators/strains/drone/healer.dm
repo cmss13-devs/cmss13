@@ -13,7 +13,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
 		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
-		/datum/action/xeno_action/activable/transfer_plasma/healer //Fourth macro, an improved plasma transfer.
+		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
 		)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer

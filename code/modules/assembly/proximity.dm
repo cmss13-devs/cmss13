@@ -185,7 +185,7 @@
 	.["max_delay"] = PROXY_MAXIMUM_DELAY
 
 /obj/item/device/assembly/prox_sensor/attack_alien(mob/living/carbon/xenomorph/xeno)
-	..()
+	. = ..()
 	if(scanning)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)

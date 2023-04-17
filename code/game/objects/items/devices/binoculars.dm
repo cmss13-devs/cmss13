@@ -32,6 +32,10 @@
 
 	zoom(user, 11, 12)
 
+/obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
+	. = ..()
+	on_unset_interaction(user)
+
 /obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 
@@ -97,27 +101,30 @@
 		return TRUE
 	return ..()
 
-/obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/A, list/mods)
+/obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/targeted_atom, list/mods)
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
+		if(user.stat != CONSCIOUS)
+			to_chat(user, SPAN_WARNING("You cannot use [src] while incapacitated."))
+			return FALSE
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
 		if(mods["click_catcher"])
 			return FALSE
-		if(user.z != A.z)
+		if(user.z != targeted_atom.z && !coord)
 			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
 			return FALSE
-		if(!(is_ground_level(A.z)))
+		if(!(is_ground_level(targeted_atom.z)))
 			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
 			return FALSE
 		if(user.sight & SEE_TURFS)
-			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
+			var/list/turf/path = getline2(user, targeted_atom, include_from_atom = FALSE)
 			for(var/turf/T in path)
 				if(T.opacity)
 					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
 					return FALSE
-		acquire_target(A, user)
+		acquire_target(targeted_atom, user)
 		return TRUE
 	return FALSE
 
@@ -126,7 +133,7 @@
 		QDEL_NULL(coord)
 		to_chat(user, SPAN_WARNING("You stop lasing."))
 
-/obj/item/device/binoculars/range/proc/acquire_target(atom/A, mob/living/carbon/human/user)
+/obj/item/device/binoculars/range/proc/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
 	set waitfor = 0
 
 	if(coord)
@@ -147,10 +154,10 @@
 		las_name = S.name
 
 	// Safety check - prevent targeting items in containers (notably your equipment/inventory)
-	if(A.z == 0)
+	if(targeted_atom.z == 0)
 		return
 
-	var/turf/TU = get_turf(A)
+	var/turf/TU = get_turf(targeted_atom)
 	if(!istype(TU) || user.action_busy)
 		return
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
@@ -250,7 +257,7 @@
 		return
 
 	range_mode = !range_mode
-	to_chat(user, SPAN_NOTICE("You switch [src] to [range_mode? "range finder" : "CAS marking"] range_mode."))
+	to_chat(user, SPAN_NOTICE("You switch [src] to [range_mode? "range finder" : "CAS marking"] mode."))
 	update_icon()
 	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
@@ -263,7 +270,7 @@
 		if(coord)
 			qdel(coord)
 
-/obj/item/device/binoculars/range/designator/acquire_target(atom/A, mob/living/carbon/human/user)
+/obj/item/device/binoculars/range/designator/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
 	set waitfor = 0
 
 	if(laser || coord)
@@ -288,11 +295,11 @@
 	las_name = las_name + "-[tracking_id]"
 
 	// Safety check - prevent targeting atoms in containers (notably your equipment/inventory)
-	if(A.z == 0)
+	if(targeted_atom.z == 0)
 		return
 
-	var/turf/TU = get_turf(A)
-	var/area/targ_area = get_area(A)
+	var/turf/TU = get_turf(targeted_atom)
+	var/area/targ_area = get_area(targeted_atom)
 	if(!istype(TU)) return
 	var/is_outside = FALSE
 	switch(targ_area.ceiling)
@@ -414,12 +421,12 @@
 	if(istype(human) && !human.is_mob_incapacitated() && !human.lying && (holder_item == human.r_hand || holder_item || human.l_hand))
 		return TRUE
 
-/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targetted_atom)
+/datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/human/human = owner
-	if(!istype(targetted_atom, /mob/living))
+	if(!istype(targeted_atom, /mob/living))
 		return
 
-	var/mob/living/target = targetted_atom
+	var/mob/living/target = targeted_atom
 
 	if(target.stat == DEAD || target == human)
 		return
@@ -566,8 +573,8 @@
 			return
 	return
 
-/obj/item/device/binoculars/designator/proc/lasering(mob/living/carbon/human/user, atom/A, params)
-	if(istype(A,/atom/movable/screen))
+/obj/item/device/binoculars/designator/proc/lasering(mob/living/carbon/human/user, atom/targeted_atom, params)
+	if(istype(targeted_atom,/atom/movable/screen))
 		return FALSE
 	if(user.stat)
 		zoom(user)
@@ -575,7 +582,7 @@
 		return FALSE
 	if(lasing)
 		return FALSE
-	target = A
+	target = targeted_atom
 	if(!istype(target))
 		return FALSE
 	if(target.z != user.z)
@@ -586,7 +593,7 @@
 		return FALSE
 
 	var/turf/SS = get_turf(src) //Stand Still, not what you're thinking.
-	var/turf/T = get_turf(A)
+	var/turf/T = get_turf(targeted_atom)
 
 	if(!las_mode)
 		to_chat(user, SPAN_WARNING("The Laser Designator is currently off!"))
@@ -671,8 +678,8 @@
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
 			return
 
-/obj/item/device/binoculars/designator/afterattack(atom/A as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
-	lasering(user, A, params)
+/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
+	lasering(user, targeted_atom, params)
 	return
 
 /obj/effect/las_target

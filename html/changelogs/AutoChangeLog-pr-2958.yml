@@ -1,0 +1,7 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "All missing ammo box/cartridge/magazine icon states have been restored."
+  - bugfix: "Handfuls of Dragon's Breath shells can now be seen and picked up."
+  - imageadd: "Added an ammo box icon stated named 'base' to make the linter happy."
+  - code_imp: "Changed icon state names and icon paths on various items to fix missing ammo, ammo casing, and ammo box icon state errors."

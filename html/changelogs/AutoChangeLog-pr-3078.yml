@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Humans facing north on wall nests are no longer naked when seen through walls"

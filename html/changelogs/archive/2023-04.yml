@@ -199,3 +199,7 @@
   kugamo:
   - balance: Xenos can nest hosts on hive weed covered walls, legacy floor nests removed.
   - imageadd: New sprites for resin nests.
+2023-04-17:
+  Clvrbot:
+  - ui: added option for Foxtrot SL tracker on synth headset
+  - imageadd: added sprites for Foxtrot SL tracker for all HUDs

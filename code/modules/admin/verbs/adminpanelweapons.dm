@@ -12,6 +12,7 @@
 	var/area/picked_area
 	var/atom/picked_atom
 	var/list/turfs_of_area = list()
+	var/list/targets = list()
 
 	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Particle cannon"), 20 SECONDS)
 	var/pd = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
@@ -33,19 +34,12 @@
 									turfs_of_area += my_turf
 							if(turfs_of_area.len > 1)
 								picked_atom = pick(turfs_of_area)
-
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, pd), hiteta SECONDS)
+								targets += picked_atom
 						picked_atom = null
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, pd, salvo), hiteta SECONDS)
+					picked_atom = null
+					targets = null
 
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
-
-						//weaponhits(1, picked_atom, pd)
 				if(salvo == "Single")
 					var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer at a random place?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 					if(prompt == "Yes")
@@ -62,13 +56,13 @@
 
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, pd), hiteta SECONDS)
 
-						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-							if(!is_mainship_level(current_mob.z))
-								continue
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
+						//for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+							//if(!is_mainship_level(current_mob.z))
+							//	continue
+							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
+							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
+							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
+							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
 
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)

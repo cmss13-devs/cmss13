@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Removed Quickclot"
-  - rscadd: "Added hemostatic chemical property."

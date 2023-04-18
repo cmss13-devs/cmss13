@@ -1,0 +1,4 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - bugfix: "Proximity sensors can now be slashed by xenos to deactivate them, and they turn off after you die if you have an active one on you."

@@ -203,7 +203,7 @@
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
-	desc = "A uniform typically worn by a commander Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "A uniform typically worn by an Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
@@ -266,7 +266,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/servicedress
-	name = "captain's dress shirt"
+	name = "commanding officer's dress shirt"
 	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
 	specialty = "captain's service dress"
 	icon_state = "CO_service"
@@ -274,7 +274,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/white
-	name = "captain's white formal uniform"
+	name = "Commanding Officer's white formal uniform"
 	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
 	icon_state = "CO_formal_white"
 	worn_state = "CO_formal_white"
@@ -282,7 +282,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/formal/black
-	name = "captain's gray formal uniform"
+	name = "Commanding Officer's gray formal uniform"
 	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
 	icon_state = "CO_formal_black"
 	worn_state = "CO_formal_black"

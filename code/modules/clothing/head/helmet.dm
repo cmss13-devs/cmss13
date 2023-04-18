@@ -714,8 +714,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M45 ghillie"
 
 /obj/item/clothing/head/helmet/marine/CO
-	name = "\improper M10 pattern captain helmet"
-	desc = "A special M10 Pattern Helmet worn by Captains of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
+	name = "\improper M10 pattern commanding officer helmet"
+	desc = "A special M10 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
 	icon_state = "co_officer"
 	item_state = "co_officer"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH

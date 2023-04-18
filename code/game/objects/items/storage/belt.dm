@@ -155,7 +155,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
-	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
@@ -221,7 +220,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
-	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/belt/medical/lifesaver/full/dutch/fill_preset_inventory()
@@ -239,7 +237,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
-	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/imidazoline(src)
@@ -273,7 +270,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
-	new /obj/item/storage/pill_bottle/quickclot(src)
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"

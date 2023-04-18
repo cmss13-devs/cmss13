@@ -1,7 +1,7 @@
 //------------GEAR VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
-		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
+		list("COMMANDING OFFICER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/effect/essentials_set/co/riflepreset, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 

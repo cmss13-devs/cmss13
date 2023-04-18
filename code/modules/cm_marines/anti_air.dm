@@ -37,6 +37,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND)
+	unacidable = TRUE
+	unslashable = TRUE
 
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

@@ -1,0 +1,7 @@
+author: "DecemberIsHere"
+delete-after: True
+changes:
+  - balance: "Berserker apprehend CD increased by a second, speed buff lowered by 2 seconds"
+  - balance: " Berserker clothesline max heal reduced by 25, rage stack requirement increased by 1"
+  - balance: "Berserker rage lockout increased by 1 second"
+  - rscadd: "Berserkers apprehend now has an glowy outline for when it is activated"

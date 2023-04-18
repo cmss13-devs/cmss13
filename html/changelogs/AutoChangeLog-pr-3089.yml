@@ -1,0 +1,4 @@
+author: "Hopek"
+delete-after: True
+changes:
+  - rscadd: "Resin Whisperers can now use Coerce Resin to open and close resin doors."

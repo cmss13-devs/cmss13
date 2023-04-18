@@ -26,23 +26,14 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	prof_init()
 #endif
 
-	//logs
-	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
-	var/year_string = time2text(world.realtime, "YYYY")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	tgui_diary = file("data/logs/[date_string]_tgui.log")
-	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	round_stats = file("data/logs/[year_string]/round_stats.log")
-	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	round_scheduler_stats = file("data/logs/[year_string]/round_scheduler_stats.log")
-	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
-	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
+	SSdatabase.start_up()
+
+	SSentity_manager.start_up()
+	SSentity_manager.setup_round_id()
+
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
-	GLOB.revdata = new
 	initialize_tgs()
 	initialize_marine_armor()
 
@@ -122,6 +113,34 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
+
+/proc/start_logging()
+	GLOB.round_id = SSentity_manager.round.id
+
+	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]/round-"
+	GLOB.year_log_directory = "data/logs/[time2text(world.realtime, "YYYY")]"
+
+	if(GLOB.round_id)
+		GLOB.log_directory += GLOB.round_id
+	else
+		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
+
+	GLOB.logger.init_logging()
+
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
+	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+
+	GLOB.round_stats = "[GLOB.year_log_directory]/round_stats.log"
+	GLOB.scheduler_stats = "[GLOB.year_log_directory]/round_scheduler_stats.log"
+	GLOB.mutator_logs = "[GLOB.year_log_directory]/mutator_logs.log"
+
+	start_log(GLOB.tgui_log)
+	start_log(GLOB.world_href_log)
+	start_log(GLOB.world_game_log)
+	start_log(GLOB.round_stats)
+	start_log(GLOB.scheduler_stats)
+	start_log(GLOB.mutator_logs)
 
 /world/proc/initialize_tgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -215,9 +234,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	return
 	#endif
 
+	shutdown_logging()
+
 	if(TgsAvailable())
 		send_tgs_restart()
-
 		TgsReboot()
 		TgsEndProcess()
 	else

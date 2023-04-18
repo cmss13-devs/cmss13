@@ -59,10 +59,6 @@ SUBSYSTEM_DEF(mapping)
 		if(MC.perf_mode)
 			GLOB.perf_flags |= MC.perf_mode
 
-	if(SSentity_manager.round)
-		SSentity_manager.round.map_name = configs[GROUND_MAP].map_name
-		SSentity_manager.round.save()
-
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)

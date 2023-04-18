@@ -2,7 +2,7 @@
 //these are staying beyond the walking area and are not getting in the way of shots, spits and other stuff.
 
 //for mapping
-//INTERIOR_WALL_NORTH_LAYER 2.02
+//WALL_LAYER 2.02
 //INTERIOR_WALL_SOUTH_LAYER 5.2
 /obj/structure/interior_wall
 	name = "interior wall"
@@ -12,7 +12,7 @@
 	opacity = TRUE
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer = INTERIOR_WALL_NORTH_LAYER
+	layer = WALL_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE
 	unslashable = TRUE

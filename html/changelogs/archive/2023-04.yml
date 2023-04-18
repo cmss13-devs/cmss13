@@ -189,3 +189,42 @@
   realforest2001:
   - bugfix: Fixes the missing trait check on Add Teleporter Destination for Yautja
       Teleporter and converts the interact typecheck to a trait check.
+2023-04-15:
+  CapCamIII:
+  - bugfix: Rifleman vendor now correctly has M4RA AP mags buyable instead of L42A
+      AP
+  morrowwolf:
+  - bugfix: Reverts crate/barrel disassemble change
+2023-04-16:
+  kugamo:
+  - balance: Xenos can nest hosts on hive weed covered walls, legacy floor nests removed.
+  - imageadd: New sprites for resin nests.
+2023-04-17:
+  Clvrbot:
+  - ui: added option for Foxtrot SL tracker on synth headset
+  - imageadd: added sprites for Foxtrot SL tracker for all HUDs
+2023-04-18:
+  BeagleGaming1:
+  - bugfix: You can no longer join as a survivor or xenomorph on Extended
+  - bugfix: The M39B/2's in Eta on Solaris Ridge are now regular M39's
+  - bugfix: ARES is no longer made of flesh
+  - bugfix: Removes some ways of using binos when you should not be able to
+  - bugfix: Humans facing north on wall nests are no longer naked when seen through
+      walls
+  - bugfix: Hostile Survivors get Survivor IFF
+  - bugfix: Barricades that are mapped to started damage correctly show the damage
+  - bugfix: Fixes ARES explosion causing a runtime
+  - bugfix: Loose CAS ammo and weapons can be slashed apart
+  Foxtrot1322:
+  - spellcheck: Renamed CO items with "Captain" in their names & descriptions to "Commanding
+      Officer"
+  - spellcheck: Fixed a typo in the XOs uniform description
+  Morrow:
+  - balance: Removed Quickclot
+  - rscadd: Added hemostatic chemical property.
+  Puckaboo2:
+  - bugfix: All missing ammo box/cartridge/magazine icon states have been restored.
+  - bugfix: Handfuls of Dragon's Breath shells can now be seen and picked up.
+  - imageadd: Added an ammo box icon stated named 'base' to make the linter happy.
+  - code_imp: Changed icon state names and icon paths on various items to fix missing
+      ammo, ammo casing, and ammo box icon state errors.

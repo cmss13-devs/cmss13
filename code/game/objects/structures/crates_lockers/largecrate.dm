@@ -20,18 +20,22 @@
 /obj/structure/largecrate/proc/unpack()
 	var/turf/current_turf = get_turf(src) // Get the turf the crate is on
 
-	var/list/temp_contents = contents.Copy() // Temporarily store the contents of the crate
 	playsound(src, unpacking_sound, 35)
-	deconstruct(TRUE)
 
-	var/obj/item/stack/sheet/material_sheet // Variable to store the reference of the crate material
+	/// Store the reference of the crate material
+	var/obj/item/stack/sheet/material_sheet
 	if(parts_type) // Create the crate material and store its reference
 		material_sheet = new parts_type(current_turf, 2)
 
-	for(var/atom/movable/current_atom in temp_contents) // Move the objects back to the turf, above the crate material
+	// Move the objects back to the turf, above the crate material
+	for(var/atom/movable/moving_atom in contents)
+		var/atom/movable/current_atom = contents[1]
 		current_atom.forceMove(current_turf)
 
-	if(material_sheet) // Move the crate material to the bottom of the turf's contents
+	deconstruct(TRUE)
+
+	// Move the crate material to the bottom of the turf's contents
+	if(material_sheet)
 		move_to_bottom(material_sheet, current_turf)
 
 /// Custom proc to move an object to the bottom of the turf's contents
@@ -406,7 +410,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/firstaid/full(src)
-	new /obj/item/storage/box/quickclot(src)
 
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"

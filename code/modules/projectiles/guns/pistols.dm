@@ -258,9 +258,96 @@
 	icon_state = "g_deagle"
 	item_state = "g_deagle"
 	base_gun_icon = "g_deagle"
+
 //-------------------------------------------------------
-//MAUSER MERC PISTOL //Inspired by the Makarov, specifically the "PB" version, an integrally silenced Makarov.
-//Rebalanced: Now acts like an UPP M4A3.
+//Type 31 pistol
+//Its a makarov
+
+/obj/item/weapon/gun/pistol/t31
+	name = "\improper Type 31 pistol"
+	desc = "The standard issue sidearm of the UPP, the Type 31 fires ."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "pk9"
+	item_state = "pk9"
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t31
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
+
+/obj/item/weapon/gun/pistol/t31/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+
+/obj/item/weapon/gun/pistol/t31/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+
+//-------------------------------------------------------
+//Type 16 pistol
+//Its a TT
+
+/obj/item/weapon/gun/pistol/t16
+	name = "\improper Type 16 pistol"
+	desc = "The once-standard issue sidearm of the UPP, now outdated, it is prefered by many veteran soldiers of the UPP due to its powerful cartridge and personal familiarity."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "pk9"
+	item_state = "pk9"
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t16
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
+
+/obj/item/weapon/gun/pistol/t16/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+
+/obj/item/weapon/gun/pistol/t16/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_6
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+
+/obj/item/weapon/gun/pistol/t16/leader
+	name = "\improper Gold Plated Type 16 pistol"
+	desc = "The once-standard issue sidearm of the UPP, now outdated, it is prefered by many veteran soldiers of the UPP due to its powerful cartridge and personal familiarity. This one has fancy gold plating, and has a specially designed mag-well to fit High-Impact rounds, looks like it belongs to a high-ranking officer."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "pk9"
+	item_state = "pk9"
+	fire_sound = 'sound/weapons/gun_c99.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t16/impact
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
+
+//-------------------------------------------------------
+//
 
 /obj/item/weapon/gun/pistol/c99
 	name = "\improper Korovin PK-9 pistol"

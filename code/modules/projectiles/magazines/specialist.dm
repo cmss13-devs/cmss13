@@ -331,3 +331,51 @@
 	default_ammo = /datum/ammo/rocket/ap/anti_tank
 	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
 	reload_delay = 100
+
+
+//-------------------------------------------------------
+//UPP Rockets
+
+/obj/item/ammo_magazine/rocket/upp
+	name = "\improper Type 57 High-Explosive Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "88mm"
+	icon_state = "rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/at
+	name = "\improper Type 57 Anti-Tank Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "88mm"
+	icon_state = "at_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/upp/ap
+	name = "\improper Type 57 Armor-Piercing Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "88mm"
+	icon_state = "ap_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85
+
+/obj/item/ammo_magazine/rocket/wp
+	name = "\improper Type 57 White-Phosphourous Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "88mm"
+	icon_state = "wp_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/wp
+	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
+	reload_delay = 85

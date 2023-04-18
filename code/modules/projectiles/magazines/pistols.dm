@@ -179,6 +179,40 @@
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
+//Type 31 pistol. //A makarov
+
+/obj/item/ammo_magazine/pistol/t31
+	name = "\improper Type 31 magazine (9x18mm Makarov)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9x18mm Makarov"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "pk-9"
+	max_rounds = 12
+	gun_type = /obj/item/weapon/gun/pistol/t31
+
+
+//-------------------------------------------------------
+//Type 16 pistol. //A TT
+
+/obj/item/ammo_magazine/pistol/t16
+	name = "\improper Type 16 magazine (7.62x25mm Tokarev)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = "7.62x25mm Tokarev"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "pk-9"
+	max_rounds = 9
+	gun_type = /obj/item/weapon/gun/pistol/t16
+
+/obj/item/ammo_magazine/pistol/t16/impact
+	name = "\improper High Impact Type 16 magazine (7.62x25mm Tokarev)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = "7.62x25mm Tokarev"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon_state = "pk-9"
+	max_rounds = 9
+	gun_type = /obj/item/weapon/gun/pistol/t16/leader
+
+//-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.
 
 /obj/item/ammo_magazine/pistol/c99

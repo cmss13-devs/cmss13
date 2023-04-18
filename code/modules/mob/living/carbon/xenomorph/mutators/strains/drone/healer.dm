@@ -13,8 +13,8 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
 		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
-		/datum/action/xeno_action/activable/transfer_plasma/healer //Fourth macro, an improved plasma transfer.
-		)
+		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
+	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 
@@ -88,6 +88,11 @@
 		amount = amount * 0.15
 		damage_taken_mod = 1
 
+//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
+	if(target_xeno.mutation_type == DRONE_HEALER)
+		damage_taken_mod = 1
+		return
+
 ///Introduces a plasma cost, twice as much plasma as health healed.
 	if(!check_plasma(amount * 2))
 		return
@@ -99,7 +104,7 @@
 	if(!check_state())
 		return
 
-	if (SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 		to_chat(src, SPAN_XENOWARNING("Extinguish [target_xeno] first or the flames will burn your resin salve away!"))
 		return
 

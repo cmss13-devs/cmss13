@@ -39,6 +39,15 @@
 	var/mob/source_mob
 	var/combat_equipment = TRUE
 
+/obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable) 
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))

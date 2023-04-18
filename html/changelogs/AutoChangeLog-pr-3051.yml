@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes the missing trait check on Add Teleporter Destination for Yautja Teleporter and converts the interact typecheck to a trait check."

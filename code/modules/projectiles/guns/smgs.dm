@@ -136,7 +136,6 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/magnetic_harness)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap
 
-
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
 

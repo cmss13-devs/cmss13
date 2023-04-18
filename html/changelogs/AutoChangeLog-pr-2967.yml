@@ -1,8 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - imageadd: "Added over a dozen icon states for computers and cameras with missing icon states."
-  - imageadd: "Added a blue tube fixture, a large light fixture, a large blue light fixture, and a blue bulb fixture."
-  - bugfix: "All machinery with missing icon states have been restored."
-  - code_imp: "Changed icon state names and icon paths on various items to fix missing machinery icon states."
-  - imagedel: "Removed two duplicate icon states."

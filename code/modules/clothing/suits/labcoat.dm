@@ -170,7 +170,7 @@
 /obj/item/clothing/suit/storage/snow_suit/synth
 	name = "synthetic's snow suit"
 	desc = "A snow suit designed for keeping synthetic units within acceptable temperature ranges in extremely cold environments to prevent power supply inefficiency. Due to advancements made in synthetic insulation, they are not required for most cold environments."
-	armor_melee = CLOTHING_ARMOR_NONE //no free armour for synths
+	armor_melee = CLOTHING_ARMOR_NONE //no free armor for synths
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE

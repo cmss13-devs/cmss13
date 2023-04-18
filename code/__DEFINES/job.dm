@@ -325,7 +325,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_XENOMORPH    "Xenomorph"
 #define JOB_XENOMORPH_QUEEN  "Queen"
 
-// For colouring the ranks in the statistics menu
+// For coloring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_1  (10 HOURS)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)

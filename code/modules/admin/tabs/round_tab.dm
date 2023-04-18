@@ -169,7 +169,7 @@
 		return
 	if (SSticker.current_state == GAME_STATE_STARTUP)
 		alert("Game is setting up and will launch as soon as it is ready.")
-		message_admins(SPAN_BLUE("[usr.key] has started the process to start the game when loading is finished."))
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the process to start the game when loading is finished."))
 		while (SSticker.current_state == GAME_STATE_STARTUP)
 			sleep(50) // it patiently waits for the game to be ready here before moving on.
 	if (SSticker.current_state == GAME_STATE_PREGAME)

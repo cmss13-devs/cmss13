@@ -339,22 +339,22 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
-/obj/item/attachable/bayonet/c02
+/obj/item/attachable/bayonet/co2
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
-	icon_state = "c02_knife"
-	attach_icon = "c02_bayonet_a"
+	icon_state = "co2_knife"
+	attach_icon = "co2_bayonet_a"
 	var/filled = FALSE
 
-/obj/item/attachable/bayonet/c02/update_icon()
-	icon_state = "c02_knife[filled ? "-f" : ""]"
-	attach_icon = "c02_bayonet[filled ? "-f" : ""]_a"
+/obj/item/attachable/bayonet/co2/update_icon()
+	icon_state = "co2_knife[filled ? "-f" : ""]"
+	attach_icon = "co2_bayonet[filled ? "-f" : ""]_a"
 
-/obj/item/attachable/bayonet/c02/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/c02_cartridge))
+/obj/item/attachable/bayonet/co2/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
-			user.visible_message(SPAN_NOTICE("[user] slots a C02 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh C02 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
+			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
 			playsound(src, 'sound/machines/click.ogg')
 			qdel(W)
 			update_icon()
@@ -367,9 +367,9 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	..()
 
-/obj/item/c02_cartridge //where tf else am I gonna put this?
-	name = "C02 cartridge"
-	desc = "A cartridge of compressed C02 for the M8 cartridge bayonet. Do not consume or puncture."
+/obj/item/co2_cartridge //where tf else am I gonna put this?
+	name = "\improper CO2 cartridge"
+	desc = "A cartridge of compressed CO2 for the M8 cartridge bayonet. Do not consume or puncture."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "co2_cartridge"
 	item_state = ""
@@ -1421,6 +1421,60 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/New()//no stats, its cosmetic
 	..()
 
+/obj/item/attachable/stock/m16/xm177
+	name = "\improper collapsible M16 stock"
+	desc = "Very illegal in the state of California."
+	icon_state = "m16_folding"
+	attach_icon = "m16_folding"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/m16/xm177/Initialize()
+	.=..()
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/m16/xm177/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		icon_state = "m16_folding"
+		attach_icon = "m16_folding_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "m16_folding"
+		attach_icon = "m16_folding"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
+
 /obj/item/attachable/stock/ar10
 	name = "\improper AR10 wooden stock"
 	desc = "The spring's in here, don't take it off!"
@@ -2072,6 +2126,20 @@ Defined in conflicts.dm of the #defines folder.
 	max_rounds = 5
 	max_range = 10
 	attachment_firing_delay = 30
+
+/obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
+	name = "\improper M203 Grenade Launcher"
+	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade, does not have modern IFF systems, it won't pass through your friends."
+	icon_state = "grenade-m203"
+	attach_icon = "grenade-m203_a"
+	current_rounds = 0
+	max_rounds = 1
+	max_range = 14
+	attachment_firing_delay = 5 //one shot, so if you can reload fast you can shoot fast
+
+/obj/item/attachable/attached_gun/grenade/m203/Initialize()
+	. = ..()
+	grenade_pass_flags = NO_FLAGS
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

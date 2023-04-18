@@ -16,7 +16,7 @@
 #define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
-#define INTERIOR_WALL_NORTH_LAYER 2.02
+#define WALL_LAYER 2.02
 
 #define LATTICE_LAYER 2.15
 

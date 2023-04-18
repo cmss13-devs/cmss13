@@ -333,9 +333,9 @@
 	name="Gygax Right Leg"
 	icon_state = "gygax_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/gygax_armour
-	name="Gygax Armour Plates"
-	icon_state = "gygax_armour"
+/obj/structure/prop/mech/mech_parts/part/gygax_armor
+	name="Gygax Armor Plates"
+	icon_state = "gygax_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/durand
 	name = "Durand Chassis"
@@ -365,9 +365,9 @@
 	name="Durand Right Leg"
 	icon_state = "durand_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/durand_armour
-	name="Durand Armour Plates"
-	icon_state = "durand_armour"
+/obj/structure/prop/mech/mech_parts/part/durand_armor
+	name="Durand Armor Plates"
+	icon_state = "durand_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/firefighter
 	name = "Firefighter Chassis"

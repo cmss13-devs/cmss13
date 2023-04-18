@@ -259,6 +259,30 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+//---------SURGICAL CASE---------
+
+
+/obj/item/storage/surgical_case
+	name = "surgical case"
+	desc = "It's a medical case for storing basic surgical tools."
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 3
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+	)
+
+/obj/item/storage/surgical_case/regular
+
+/obj/item/storage/surgical_case/regular/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
 
 //---------PILL BOTTLES---------
 
@@ -544,16 +568,6 @@
 	maptext_label = "Rr"
 
 /obj/item/storage/pill_bottle/russianRed/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
-
-
-/obj/item/storage/pill_bottle/quickclot
-	name = "\improper Quickclot pill bottle"
-	icon_state = "pill_canister8"
-	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
-	maptext_label = "Qc"
-
-/obj/item/storage/pill_bottle/quickclot/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //Ultrazine

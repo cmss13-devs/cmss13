@@ -49,7 +49,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/verticalgrip,
@@ -401,6 +401,15 @@
 /obj/item/weapon/gun/rifle/m41aMK1/tactical
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
+/obj/item/weapon/gun/rifle/m41aMK1/anchorpoint
+	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camoflauge. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel shotgun. Uses 10x24mm caseless ammunition."
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/shotgun)
+	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
+/obj/item/weapon/gun/rifle/m41aMK1/anchorpoint/gl
+	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camoflauge. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/grenade/mk1)
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
 
@@ -933,6 +942,117 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/rifle/m16/grenadier
+	name = "\improper M16 grenadier rifle"
+	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	icon_state = "m16g"
+	item_state = "m16"
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m16
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
+	random_spawn_chance = 42
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex/,
+		/obj/item/attachable/scope/mini,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
+
+/obj/item/weapon/gun/rifle/m16/grenadier/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/grenade/m203/integrated = new(src)
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.hidden = FALSE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+//-------------------------------------------------------
+//XM177 carbine
+//awesome vietnam era special forces carbine version of the M16
+
+/obj/item/weapon/gun/rifle/xm177
+	name = "\improper XM177E2 carbine"
+	desc = "An old design, essentially a shortened M16A1 with a collapsable stock. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc_lore = "A carbine similar to the M16A1, with a collapsible stock and a distinct flash suppressor. A stamp on the receiver reads: 'COLT AR-15 - PROPERTY OF U.S. GOVT - XM177E2 - CAL 5.56MM' \nA design originating from the Vietnam War, the XM177, also known as the Colt Commando or GAU-5/A, was an improvement on the CAR-15 Model 607, fixing multiple issues found with the limited service of the Model 607 with Special Forces. The XM177 saw primary use with Army Special Forces and Navy Seals operating as commandos. \nHow this got here is a mystery."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon_state = "xm177"
+	item_state = "m16"
+	current_mag = /obj/item/ammo_magazine/rifle/m16
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/m16,
+		/obj/item/ammo_magazine/rifle/m16/ap,
+	)
+
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16/xm177,
+	)
+
+	random_spawn_chance = 75
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex/,
+		/obj/item/attachable/flashlight,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+	)
+
+/obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = 15, "stock_y" = 14)
+
+/obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m16/xm177/integrated = new(src)
+	integrated.hidden = FALSE
+	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated.Attach(src)
+	update_attachable(integrated.slot)
+
+/obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_SMG
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
 //-------------------------------------------------------
 //AR10 rifle
 //basically an early M16
@@ -1014,40 +1134,63 @@
 //DUTCH'S GEAR
 
 /obj/item/weapon/gun/rifle/m16/dutch
-	name = "\improper Dutch's M16A2"
+	name = "\improper Dutch's M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
-	icon_state = "m16"
-	item_state = "m16"
-	fire_sound = 'sound/weapons/gun_m16.ogg'
-	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
-	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
+	starting_attachment_types = list(/obj/item/attachable/bayonet)
+
+	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/reflex/,
+	)
+	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/grip,
-		/obj/item/attachable/gyro,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/bipod,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
+		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/burstfire_assembly,
-		/obj/item/attachable/attached_gun/grenade,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/lasersight,
 	)
-
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
 
 /obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+/obj/item/weapon/gun/rifle/m16/grenadier/dutch
+	name = "\improper Dutch's Grenadier M16A1"
+	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
+
+/obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+
+/obj/item/weapon/gun/rifle/xm177/dutch
+	name = "\improper Dutch's XM177E2 Carbine"
+	desc = "A modified XM177 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc_lore = "A carbine similar to the M16A1, with a collapsible stock and a distinct flash suppressor. A stamp on the receiver reads: 'COLT AR-15 - PROPERTY OF U.S. GOVT - XM177E2 - CAL 5.56MM', above the receiver is a crude sketching of some sort of mask? with the words 'CLOAKER KILLER' and seven tally marks etched on. \nA design originating from the Vietnam War, the XM177, also known as the Colt Commando or GAU-5/A, was an improvement on the CAR-15 Model 607, fixing multiple issues found with the limited service of the Model 607 with Special Forces. The XM177 saw primary use with Army Special Forces and Navy Seals operating as commandos. \nHow this got here is a mystery."
+	icon_state = "xm177"
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+
+/obj/item/weapon/gun/rifle/xm177/dutch/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_SMG
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 //-------------------------------------------------------
@@ -1353,7 +1496,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1416,7 +1559,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1473,7 +1616,7 @@
 		//Barrel,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		//Rail,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
@@ -1491,6 +1634,7 @@
 	wield_delay = WIELD_DELAY_FAST
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood, /obj/item/attachable/scope/mini/hunting)
 	map_specific_decoration = FALSE
+	civilian_usable_override = TRUE
 
 // Identical to the L42 in stats, *except* for extra recoil and scatter that are nulled by keeping the stock on.
 /obj/item/weapon/gun/rifle/l42a/abr40/set_gun_config_values()
@@ -1511,7 +1655,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		//Rail,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,

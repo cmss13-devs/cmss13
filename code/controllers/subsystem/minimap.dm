@@ -93,6 +93,8 @@ SUBSYSTEM_DEF(minimaps)
 
 		minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_NEW_Z, PROC_REF(handle_new_z))
+
 	initialized = TRUE
 
 	for(var/i=1 to length(earlyadds)) //lateload icons
@@ -100,6 +102,14 @@ SUBSYSTEM_DEF(minimaps)
 	earlyadds = null //then clear them
 
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/minimaps/proc/handle_new_z(dcs, datum/space_level/z_level)
+	SIGNAL_HANDLER
+
+	if(minimaps_by_z["[z_level.z_value]"])
+		return
+
+	minimaps_by_z["[z_level.z_value]"] = new /datum/hud_displays
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
 	msg = "Upd:[length(update_targets_unsorted)] Mark: [length(removal_cbs)]"

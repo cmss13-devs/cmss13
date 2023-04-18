@@ -1,5 +1,6 @@
 /obj/effect/landmark/interior
 	name = "interior marker"
+	var/datum/interior/parent
 
 /obj/effect/landmark/interior/proc/on_load(datum/interior/I)
 	return

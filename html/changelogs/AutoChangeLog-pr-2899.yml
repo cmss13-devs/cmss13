@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Added timelock for corporate liaison"
-  - rscdel: "Removed corporate liaison dropship control access"

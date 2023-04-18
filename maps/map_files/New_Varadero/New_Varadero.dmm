@@ -1745,7 +1745,7 @@
 /area/varadero/exterior/lz1_near)
 "bxc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/attachable/bayonet/c02{
+/obj/item/attachable/bayonet/co2{
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/powercell,
@@ -2096,7 +2096,7 @@
 	},
 /area/varadero/interior/administration)
 "bNF" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = 6
@@ -4515,7 +4515,7 @@
 /area/varadero/interior/maintenance)
 "dYq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/c02_cartridge{
+/obj/item/co2_cartridge{
 	pixel_x = 13;
 	pixel_y = 7
 	},
@@ -7455,7 +7455,7 @@
 	pixel_x = -6;
 	pixel_y = 14
 	},
-/obj/item/weapon/melee/wirerod{
+/obj/item/weapon/wirerod{
 	pixel_x = 8
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -11100,7 +11100,7 @@
 "jNT" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/melee/pole{
+/obj/item/weapon/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
 	icon = 'icons/obj/items/items.dmi';
@@ -13166,7 +13166,7 @@
 "lEB" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/item/clothing/accessory/medal/gold/captain,
-/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -14095,7 +14095,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "mpn" = (
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -16056,7 +16056,7 @@
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = 6
@@ -20714,7 +20714,7 @@
 "rTu" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "rTv" = (
@@ -22903,11 +22903,7 @@
 /area/varadero/interior/hall_SE)
 "tVX" = (
 /obj/structure/surface/rack,
-/obj/item/tool/crowbar/red{
-	desc = "An emergency hammer, crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks.";
-	icon_state = "maintenance_jack";
-	name = "maintenance jack"
-	},
+/obj/item/maintenance_jack,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},

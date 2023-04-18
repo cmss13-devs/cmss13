@@ -540,7 +540,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		qdel(signal)
+		QDEL_NULL(signal)
 	return ..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()
@@ -564,7 +564,7 @@
 	desc = "A signal flare used to test CAS runs. If you're seeing this, someone messed up."
 
 /obj/item/device/flashlight/flare/signal/debug/Initialize()
-	..()
+	. = ..()
 	fuel = INFINITY
 	return INITIALIZE_HINT_ROUNDSTART
 

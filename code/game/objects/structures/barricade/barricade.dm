@@ -35,6 +35,8 @@
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
+	if(health != maxhealth) //Update cades mapped with a custom health
+		update_health(0, TRUE)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
@@ -132,7 +134,7 @@
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
-			deconstruct()
+			deconstruct(FALSE)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
@@ -341,7 +343,7 @@
 	if(!health)
 		if(!nomessage)
 			visible_message(SPAN_DANGER("[src] falls apart!"))
-		deconstruct()
+		deconstruct(FALSE)
 		return
 
 	update_damage_state()

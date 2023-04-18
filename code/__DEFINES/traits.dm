@@ -169,6 +169,8 @@
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
 /// If the mob is holding a cane.
 #define TRAIT_HOLDS_CANE "t_holds_cane"
+/// If the mob is buckled to a wheelchair.
+#define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -188,6 +190,8 @@
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
 #define TRAIT_TOOL_PEN "t_tool_pen"
+// CLOTHING TRAITS
+#define TRAIT_CLOTHING_HOOD "t_clothing_hood"
 
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
@@ -200,6 +204,10 @@
 
 //This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
 #define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
+
+//This item will use special rename component behaviors.
+//ie. naming a regulation tape "example" will become regulation tape (example)
+#define TRAIT_ITEM_RENAME_SPECIAL "t_item_rename_special"
 
 //-- structure traits --
 // TABLE TRAITS
@@ -269,6 +277,10 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_TOOL_PEN" = TRAIT_TOOL_PEN,
 		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
+		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
+	),
+	/obj/item/clothing = list(
+		"TRAIT_CLOTHING_HOOD" = TRAIT_CLOTHING_HOOD
 	),
 	/obj/item/weapon/gun = list(
 		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
@@ -327,3 +339,6 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"
 ///Status trait coming from generic items
 #define TRAIT_SOURCE_ITEM "t_s_item"
+
+//Status trait coming from clothing.
+#define TRAIT_SOURCE_CLOTHING "t_s_clothing"

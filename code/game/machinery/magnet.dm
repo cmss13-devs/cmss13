@@ -41,7 +41,7 @@
 	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 /obj/structure/machinery/magnetic_module/Destroy()
-	QDEL_NULL(center)
+	center = null
 	SSradio.remove_object(src, freq)
 	. = ..()
 

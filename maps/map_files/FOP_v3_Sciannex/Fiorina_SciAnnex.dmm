@@ -133,7 +133,7 @@
 /area/fiorina/station/security/wardens)
 "aat" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "greenfull"
@@ -147,7 +147,7 @@
 /area/fiorina/station/research_cells)
 "aav" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -502,7 +502,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/aux_engi)
 "ane" = (
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	name = "ceremonial knife"
 	},
 /turf/open/floor/wood,
@@ -4736,7 +4736,7 @@
 /area/fiorina/station/lowsec)
 "cRN" = (
 /obj/structure/closet/emcloset,
-/obj/item/weapon/melee/nullrod{
+/obj/item/weapon/nullrod{
 	desc = "The explosive tip has been deactivated.";
 	force = 25;
 	icon_state = "hefasword";
@@ -10550,7 +10550,7 @@
 	},
 /area/fiorina/station/park)
 "gyW" = (
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "gzb" = (
@@ -12588,7 +12588,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "hMX" = (
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"
@@ -14428,7 +14428,7 @@
 /area/fiorina/station/power_ring)
 "jas" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -6;
 	pixel_y = 12
@@ -14778,7 +14778,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "jki" = (
-/obj/item/weapon/melee/twohanded/spear,
+/obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2"
 	},
@@ -15361,7 +15361,7 @@
 	},
 /area/fiorina/station/medbay)
 "jBL" = (
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -17142,7 +17142,7 @@
 	},
 /area/fiorina/station/botany)
 "kCI" = (
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "kCK" = (
@@ -18382,7 +18382,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -19629,7 +19629,6 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/storage/pill_bottle/quickclot,
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
 /turf/open/floor/prison{
@@ -19661,7 +19660,7 @@
 /area/fiorina/station/power_ring)
 "mfe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/melee/twohanded/sledgehammer{
+/obj/item/weapon/twohanded/sledgehammer{
 	throwforce = 45
 	},
 /turf/open/floor/plating/prison,
@@ -19791,7 +19790,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "mii" = (
-/obj/item/weapon/melee/pole/wooden_cane,
+/obj/item/weapon/pole/wooden_cane,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -25523,7 +25522,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
 "pRH" = (
-/obj/item/weapon/melee/wirerod,
+/obj/item/weapon/wirerod,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "pSm" = (
@@ -26459,7 +26458,7 @@
 	},
 /area/fiorina/maintenance)
 "qwy" = (
-/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitepurple"
@@ -31175,10 +31174,6 @@
 /area/fiorina/station/power_ring)
 "tyb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/pill_bottle/quickclot{
-	pixel_x = 9;
-	pixel_y = 7
-	},
 /obj/item/storage/lockbox/vials{
 	pixel_x = -4;
 	pixel_y = 4
@@ -34800,7 +34795,7 @@
 /area/fiorina/station/security)
 "vKP" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/katana,
+/obj/item/weapon/katana,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "vLH" = (
@@ -35640,7 +35635,7 @@
 	},
 /area/fiorina/station/medbay)
 "wot" = (
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -37214,7 +37209,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/item/clothing/mask/muzzle,
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/chainofcommand,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "xoQ" = (

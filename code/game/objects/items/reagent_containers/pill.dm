@@ -255,11 +255,6 @@
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
 
-/obj/item/reagent_container/pill/quickclot
-	pill_desc = "A Quickclot pill. Stabilizes internal bleeding temporarily."
-	pill_initial_reagents = list("quickclot" = 7)
-	pill_icon_class = "qc"
-
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
 	pill_initial_reagents = list("ultrazine" = 5)

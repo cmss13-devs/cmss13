@@ -550,7 +550,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1046,6 +1046,10 @@
 	. = ..()
 	smoke = new()
 	smoke.attach(src)
+
+/obj/item/weapon/gun/launcher/rocket/Destroy()
+	QDEL_NULL(smoke)
+	return ..()
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()

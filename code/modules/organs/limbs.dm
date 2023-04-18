@@ -1088,7 +1088,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
 				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
 				SPAN_HIGHDANGER("You hear electrical sparking!"))
-			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+			var/datum/effect_system/spark_spread/spark_system = new()
 			spark_system.set_up(5, 0, owner)
 			spark_system.attach(owner)
 			spark_system.start()

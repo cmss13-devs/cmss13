@@ -296,6 +296,5 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 /datum/controller/subsystem/entity_manager/proc/setup_round_id()
 	round = SSentity_manager.select(/datum/entity/mc_round)
-	round.map_name = SSmapping.configs[GROUND_MAP].map_name
 	round.save()
 	GLOB.round_id = round.id

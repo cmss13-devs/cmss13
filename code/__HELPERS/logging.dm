@@ -187,7 +187,7 @@
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_attack))
 		LOG_REDIS("attack", "\[[time]\] [text]")
-		WRITE_LOG(GLOB.world_game_log, "ATTACK: [text]")
+		WRITE_LOG(GLOB.world_attack_log, "ATTACK: [text]")
 	GLOB.STUI.attack.Add("\[[time]]ATTACK: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 

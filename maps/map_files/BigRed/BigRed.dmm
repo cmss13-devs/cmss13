@@ -25288,7 +25288,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/item/weapon/gun/smg/m39/elite,
+/obj/item/weapon/gun/smg/m39,
 /obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor{
 	dir = 9;

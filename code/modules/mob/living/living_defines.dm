@@ -32,6 +32,8 @@
 	var/melee_damage_upper = 0
 	var/attacktext = "attacks"
 	var/attack_sound = null
+	/// Custom sound if the mob gets slashed by a xenomorph
+	var/custom_slashed_sound
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
 

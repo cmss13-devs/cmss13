@@ -645,7 +645,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 								close(1)
 
 	else if(C.pry_capable)
-		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
+		if(C.pry_capable >= IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return

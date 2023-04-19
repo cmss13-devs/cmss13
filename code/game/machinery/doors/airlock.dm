@@ -551,6 +551,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
+	if(istype(C, /obj/item/weapon/maintenance_jack)) //Its got custom code but some parts of the attackby break it
+		return
+
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = C
@@ -645,7 +648,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 								close(1)
 
 	else if(C.pry_capable)
-		if(C.pry_capable >= IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
+		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return

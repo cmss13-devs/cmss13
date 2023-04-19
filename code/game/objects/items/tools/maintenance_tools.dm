@@ -515,11 +515,7 @@
 	var/unbolt_time = 5
 	///How long extra will it take (in seconds) people who do not have engi 3 (if requires_skills_unbolt is true)
 	var/unskilled_unbolt_time = 15
-/*
-/obj/item/weapon/maintenance_jack/New()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
-*/
+
 /obj/item/weapon/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
@@ -552,18 +548,18 @@
 	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 
-/obj/item/weapon/maintenance_jack/afterattack(obj/structure/door, mob/living/user, proximity)
+/obj/item/weapon/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
 	if(!proximity)
 		return
 
-	if(istype(door, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/airlock = door
+	if(istype(attacked_obj, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/airlock = attacked_obj
 
-		if(crowbar_mode) //Otherwise it lets you pry open right after unbolting
+		if(crowbar_mode)
 			if(airlock.locked) //Bolted
 				to_chat(user, SPAN_DANGER("You can't pry open [airlock] while it is bolted shut."))
 				return
-			if(!airlock.arePowerSystemsOn()) //Opens like normal
+			if(!airlock.arePowerSystemsOn()) //Opens like normal if unpowered
 				if(airlock.density)
 					airlock.open(TRUE)
 				else
@@ -625,8 +621,8 @@
 		airlock.unlock(TRUE)
 		return
 
-	if(istype(door, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = door
+	if(istype(attacked_obj, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/resin_door = attacked_obj
 
 		if(resin_door)
 			if(crowbar_mode)
@@ -650,13 +646,9 @@
 				SPAN_DANGER("You force [resin_door] open with [src]."))
 				resin_door.Open()
 				return
-	. = ..()
-/obj/item/weapon/maintenance_jack/afterattack(turf/open/floor, mob/living/user, proximity)
-	if(!proximity)
-		return
 
-	if(istype(floor, /turf/open/floor))
-		var/turf/open/floor/flooring = floor
+	if(istype(attacked_obj, /turf/open/floor))
+		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
 			if(flooring.hull_floor) //no interaction for hulls
@@ -669,7 +661,6 @@
 			flooring.make_plating()
 			return
 	. = ..()
-
 /*
 Welding backpack
 */

@@ -513,6 +513,9 @@ var/list/ob_type_fuel_requirements
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
+	unacidable = TRUE
+	unslashable = TRUE
+
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

@@ -26,18 +26,6 @@
 		return FALSE
 	return TRUE
 
-/obj/effect/landmark/survivor_spawner/lv624_skylight
-	intro_text = list("<h2>You are a survivor!</h2>",\
-	"<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>",\
-	"<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>",\
-	"<span class='danger'>Your primary objective is to heal up and survive until marines rescue you. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You with a small group made a run for the caves after an attack on the colony. Unfortunately during the escape you all got ambushed by one of the xenomorphs. Limping away, you and your friends found a shelter in the caves, in a place with a nice skylight above. You mustered a defence, ignoring wounds that creature dealt to you. It will be a good idea to heal up, before you attempt anything."
-	roundstart_damage_min = 3
-	roundstart_damage_max = 10
-	roundstart_damage_times = 3
-
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/clf/synth

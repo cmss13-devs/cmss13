@@ -129,7 +129,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	/// Shout it at everyone
 	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
 		current_mob << sound(get_sfx("queen"), wait = 0, volume = 50)
-		to_chat(current_mob, SPAN_XENOANNOUNCE("The Queen current_mobother reaches into your mind from worlds away."))
+		to_chat(current_mob, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 		var/metalhive_hosts = "[fake_marines_on_ship ? "approximately [fake_marines_on_ship]":"no"]"
 		var/plural = "[!fake_marines_on_ship || fake_marines_on_ship > 1 ? "s":""]"
 		var/metalhive_location = "[fake_marines_on_ship&&marine_ship_location?", including one in [marine_ship_location],":""]"

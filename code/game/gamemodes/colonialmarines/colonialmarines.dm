@@ -27,6 +27,9 @@
 /datum/game_mode/colonialmarines/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/colonialmarines/get_roles_list()
+	return ROLES_DISTRESS_SIGNAL
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
@@ -36,13 +39,22 @@
 	name = "fog blocker"
 	icon_state = "spawn_event"
 
+	var/time_to_dispel = 25 MINUTES
+
+/obj/effect/landmark/lv624/fog_blocker/short
+	time_to_dispel = 15 MINUTES
+
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
 	. = ..()
-	GLOB.fog_blockers += src
 
-/obj/effect/landmark/lv624/fog_blocker/Destroy()
-	GLOB.fog_blockers -= src
-	return ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/fog_blocker/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/fog(loc, time_to_dispel)
+	qdel(src)
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
@@ -60,11 +72,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	for(var/i in GLOB.fog_blockers)
-		var/obj/effect/landmark/lv624/fog_blocker/FB = i
-		round_fog += new /obj/structure/blocker/fog(FB.loc)
-		qdel(FB)
-
 	QDEL_LIST(GLOB.hunter_primaries)
 	QDEL_LIST(GLOB.hunter_secondaries)
 	QDEL_LIST(GLOB.crap_items)
@@ -77,11 +84,6 @@
 			var/turf/T = get_turf(i)
 			qdel(i)
 			new type_to_spawn(T)
-
-	if(!round_fog.len)
-		round_fog = null //No blockers?
-	else
-		flags_round_type |= MODE_FOG_ACTIVATED
 
 	//desert river test
 	if(!round_toxic_river.len)
@@ -153,7 +155,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL (25 MINUTES)
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
@@ -188,8 +189,6 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG] && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
-				disperse_fog() //Some RNG thrown in.
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN))
 				if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN])
 					if(world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
@@ -254,7 +253,6 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
 // Resource Towers
@@ -369,6 +367,7 @@
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 
+
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
 
@@ -400,7 +399,7 @@
 	//organize our jobs in a readable and standard way
 	for(var/job in ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES - ROLES_WHITELISTED - ROLES_SPECIAL)
+	for(var/job in ROLES_USCM - ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
 	for(var/job in ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0

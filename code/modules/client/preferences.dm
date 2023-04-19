@@ -1125,7 +1125,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat

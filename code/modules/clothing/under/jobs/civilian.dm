@@ -127,6 +127,6 @@
 
 /obj/item/clothing/under/mime
 	name = "mime's outfit"
-	desc = "It's not very colourful."
+	desc = "It's not very colorful."
 	icon_state = "mime"
 	flags_jumpsuit = FALSE

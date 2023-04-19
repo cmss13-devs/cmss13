@@ -24082,7 +24082,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/c02_knife{
+/obj/item/storage/box/co2_knife{
 	pixel_x = 8;
 	pixel_y = 9
 	},
@@ -32770,17 +32770,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cic_hallway)
-"eEU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "silvercorner"
-	},
 /area/almayer/shipboard/brig/cic_hallway)
 "eFj" = (
 /obj/structure/disposalpipe/segment,
@@ -47468,18 +47457,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/stern_hallway)
-"lIB" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silvercorner"
-	},
-/area/almayer/shipboard/brig/cic_hallway)
 "lII" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -60606,18 +60583,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"seH" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cichallway)
 "seO" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -65410,18 +65375,6 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
-"urS" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silvercorner"
-	},
-/area/almayer/command/cichallway)
 "ush" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer_network{
@@ -90178,7 +90131,7 @@ dFC
 bRH
 bRH
 vxM
-vka
+xDn
 pEB
 jUY
 awz
@@ -91598,7 +91551,7 @@ avl
 xDp
 age
 xDn
-eEU
+uwN
 wiN
 awz
 awz
@@ -91616,7 +91569,7 @@ awz
 awz
 awz
 oWg
-lIB
+uwN
 jUY
 qFl
 rnM
@@ -92004,7 +91957,7 @@ kcH
 kcH
 kcH
 kWq
-urS
+qnh
 aVG
 awz
 afZ
@@ -92022,7 +91975,7 @@ afZ
 afZ
 awz
 dFR
-seH
+qnh
 ouW
 mKq
 dHZ

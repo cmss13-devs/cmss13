@@ -523,20 +523,23 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		flick(icon_deny,src)
 		vend_ready = TRUE
 		return
+
 	var/obj/item/card/id/user_id
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		user_id = human_user.get_idcard()
-	if(!user_id)
-		speak("No card found.")
-		flick(icon_deny,src)
-		vend_ready = TRUE
-		return
-	else if(!get_account(user_id.associated_account_number) && price_to_use)
-		speak("No account found.")
-		flick(icon_deny,src)
-		vend_ready = TRUE
-		return
+	if(checking_id())
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			user_id = human_user.get_idcard()
+		if(!user_id)
+			speak("No card found.")
+			flick(icon_deny,src)
+			vend_ready = TRUE
+			return
+		if(!get_account(user_id.associated_account_number) && price_to_use)
+			speak("No account found.")
+			flick(icon_deny,src)
+			vend_ready = TRUE
+			return
+
 	if(coin_records.Find(record))
 		if(!coin)
 			speak("Coin required.")
@@ -551,7 +554,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				QDEL_NULL(coin)
 		else
 			QDEL_NULL(coin)
-	if(price_to_use)
+
+	if(price_to_use && user_id)
 		var/datum/money_account/account = get_account(user_id.associated_account_number)
 		if(!transfer_money(account, record))
 			speak("You do not possess the funds to purchase [record.product_name].")
@@ -608,6 +612,18 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	return TRUE
 
+/**
+ * Returns TRUE if this vending machine is scanning for IDs.
+ */
+/obj/structure/machinery/vending/proc/checking_id()
+	if(hacking_safety)
+		return TRUE
+
+	if(isWireCut(VENDING_WIRE_IDSCAN))
+		return FALSE
+
+	return TRUE
+
 /obj/structure/machinery/vending/ui_data(mob/user)
 	. = list()
 	var/obj/item/card/id/id_card
@@ -645,6 +661,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		"shoot_inventory" = shoot_inventory,
 		"powered" = TRUE,
 	)
+
+	.["checking_id"] = checking_id()
 
 /obj/structure/machinery/vending/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

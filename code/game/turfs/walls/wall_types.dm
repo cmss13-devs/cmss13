@@ -1184,6 +1184,11 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
+	if(isxeno(user) && istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/grab_item_dummy = user.get_active_hand()
+		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
+		user_as_xenomorph.do_nesting_host(grab_item_dummy.grabbed_thing, src)
+
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)

@@ -52,7 +52,7 @@
 
 	// Eviscerate config
 	var/rage_lock_duration = 10 SECONDS   // 10 seconds of max rage
-	var/rage_cooldown_duration = 7 SECONDS  // 7 seconds of NO rage.
+	var/rage_cooldown_duration = 8 SECONDS  // 8 seconds of NO rage.
 
 	// State for tracking rage
 	var/rage = 0

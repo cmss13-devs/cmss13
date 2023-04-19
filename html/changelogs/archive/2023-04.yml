@@ -138,3 +138,129 @@
       duration from round start
   realforest2001:
   - bugfix: Doctors displaying as surgeons now appear on crew monitor
+2023-04-13:
+  Morrow:
+  - bugfix: Fixed doctors without set job options spawning incorrectly
+  SpartanBobby:
+  - maptweak: added short fog around LZ1 on LV522 marines will not see this as it
+      will be gone by the time they land
+  - maptweak: heavily edited a flanking route south of reactor filt on LV522
+  - maptweak: Added a W-Y Corpo vault filled with gold and money to LV522 marines
+      are encouraged to raid it Weyland aligned COs are encouraged to secure it for
+      their corporate overlords
+  - maptweak: Removed some ways into the western reactor and some another route lightly
+      longer to get to
+2023-04-14:
+  BeagleGaming1:
+  - admin: Added vars to the smartgun to toggle requiring a harness, power, or a powerpack
+  CapCamIII:
+  - bugfix: Staff Officer vendors have all their intended options
+  Hopek:
+  - bugfix: Disassembled crates/barrels will now correctly show their contents above
+      the deconstruction material meaning that you don't have to right click or alt
+      click the turf to see what you looted.
+  - bugfix: Fixed duplicate crate/barrel disassembly material spawning because it
+      was being created in two places. If people want 2 material per crate/barrel
+      they'll have to intentionally code it in this time vs it being a bug.
+  Huffie56:
+  - code_imp: separate the code for the rifleman vendor in is own file like the other
+      squad role.
+  Morrow:
+  - rscadd: Added Prisoner of War charge
+  - rscdel: Removes surv spawns at LV624 lake house
+  Morrow, Nauticall:
+  - rscadd: Added new surgical case for medics that stores scalpel, retractor, hemostat
+  - balance: Removes IB being fixed by bicaridine OD
+  - balance: IB surgery fix is now able to be done at medic level
+  - balance: medic-level and up can use the check status verb to locate IB locations
+  NewyearnewmeUwu:
+  - rscadd: Punching mirrors now causes damage to you.
+  - rscadd: Slamming someone with an aggressive grab into a mirror does damage to
+      them.
+  Puckaboo2:
+  - imageadd: Added over a dozen icon states for computers and cameras with missing
+      icon states.
+  - imageadd: Added a blue tube fixture, a large light fixture, a large blue light
+      fixture, and a blue bulb fixture.
+  - bugfix: All machinery with missing icon states have been restored.
+  - code_imp: Changed icon state names and icon paths on various items to fix missing
+      machinery icon states.
+  - imagedel: Removed two duplicate icon states.
+  realforest2001:
+  - bugfix: Fixes the missing trait check on Add Teleporter Destination for Yautja
+      Teleporter and converts the interact typecheck to a trait check.
+2023-04-15:
+  CapCamIII:
+  - bugfix: Rifleman vendor now correctly has M4RA AP mags buyable instead of L42A
+      AP
+  morrowwolf:
+  - bugfix: Reverts crate/barrel disassemble change
+2023-04-16:
+  kugamo:
+  - balance: Xenos can nest hosts on hive weed covered walls, legacy floor nests removed.
+  - imageadd: New sprites for resin nests.
+2023-04-17:
+  Clvrbot:
+  - ui: added option for Foxtrot SL tracker on synth headset
+  - imageadd: added sprites for Foxtrot SL tracker for all HUDs
+2023-04-18:
+  BeagleGaming1:
+  - bugfix: You can no longer join as a survivor or xenomorph on Extended
+  - bugfix: The M39B/2's in Eta on Solaris Ridge are now regular M39's
+  - bugfix: ARES is no longer made of flesh
+  - bugfix: Removes some ways of using binos when you should not be able to
+  - bugfix: Humans facing north on wall nests are no longer naked when seen through
+      walls
+  - bugfix: Hostile Survivors get Survivor IFF
+  - bugfix: Barricades that are mapped to started damage correctly show the damage
+  - bugfix: Fixes ARES explosion causing a runtime
+  - bugfix: Loose CAS ammo and weapons can be slashed apart
+  Foxtrot1322:
+  - spellcheck: Renamed CO items with "Captain" in their names & descriptions to "Commanding
+      Officer"
+  - spellcheck: Fixed a typo in the XOs uniform description
+  Morrow:
+  - balance: Removed Quickclot
+  - rscadd: Added hemostatic chemical property.
+  Puckaboo2:
+  - bugfix: All missing ammo box/cartridge/magazine icon states have been restored.
+  - bugfix: Handfuls of Dragon's Breath shells can now be seen and picked up.
+  - imageadd: Added an ammo box icon stated named 'base' to make the linter happy.
+  - code_imp: Changed icon state names and icon paths on various items to fix missing
+      ammo, ammo casing, and ammo box icon state errors.
+2023-04-19:
+  BeagleGaming1:
+  - spellcheck: Corrects the C02 Knife to CO2
+  - rscadd: Allows Yautja to make bones from limbs and wear them
+  DecemberIsHere:
+  - balance: Berserker apprehend CD increased by a second, speed buff lowered by 2
+      seconds
+  - balance: ' Berserker clothesline max heal reduced by 25, rage stack requirement
+      increased by 1'
+  - balance: Berserker rage lockout increased by 1 second
+  - rscadd: Berserkers apprehend now has an glowy outline for when it is activated
+  Hopek:
+  - bugfix: Disassembled crates/barrels will now correctly show their contents above
+      the deconstruction material meaning that you don't have to right click or alt
+      click the turf to see what you looted. Doesn't make the contents break reality
+      this time.
+  - bugfix: Fixed duplicate crate/barrel disassembly material spawning because it
+      was being created in two places. If people want 2 material per crate/barrel
+      they'll have to intentionally code it in this time vs it being a bug.
+  - rscadd: Resin Whisperers can now use Coerce Resin to open and close resin doors.
+  - bugfix: The m39 elite variant sub machine gun can now be put back in your holster
+      if you spawn with it as a PMC (and whoever else uses them)
+  Huffie56:
+  - code_imp: change some iteration of armour to armor and colour to color.
+  NewyearnewmeUwu:
+  - bugfix: Proximity sensors can now be slashed by xenos to deactivate them, and
+      they turn off after you die if you have an active one on you.
+  SpartanBobby:
+  - rscadd: FORECON Synthetic now has a special type of red shoe with the ability
+      to hold a knife
+  Waseemq1235:
+  - soundadd: Added a whopping 49 Working Joe lines to the game.
+  blackdragonTOW:
+  - bugfix: Changed the "Binded" sprite to "Bound"
+  realforest2001:
+  - bugfix: AA & OB Consoles are no longer acidable.

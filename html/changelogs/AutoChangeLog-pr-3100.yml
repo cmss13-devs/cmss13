@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Re-added missing donor clothing and jumpsuits that were removed from a previous PR."

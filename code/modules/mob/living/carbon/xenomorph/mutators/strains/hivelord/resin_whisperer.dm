@@ -71,7 +71,7 @@
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(xeno_owner.mutation_type == HIVELORD_RESIN_WHISPERER)
 		var/mob/living/carbon/xenomorph/hivelord/hivelord_mob = owner
-		if(hivelord_mob.mutation_type == HIVELORD_RESIN_WHISPERER &&  !hivelord_mob.on_weeds()) // There is a chance that queen can't place down buildings in ovi build view so we place the rein whisperer check here.
+		if(!hivelord_mob.on_weeds()) // There is a chance that queen can't place down buildings in ovi build view so we place the rein whisperer check here.
 			to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
 			return
 

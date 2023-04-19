@@ -298,6 +298,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("load_preset")
 			load_data(params["payload"])
@@ -324,7 +326,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 				old_location = M.loc
 			var/turf/target_turf = pick(get_area_turfs(bay))
 			M.forceMove(target_turf)
-			message_admins("[key_name_admin(usr)] jumped to [bay].")
+			message_admins("[key_name_admin(user)] jumped to [bay].")
 			. = TRUE
 		if("goto_dropoff")
 			var/mob/M = holder.mob //We teleport whatever mob the client is attached to at the point of clicking
@@ -333,7 +335,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			if (current_location != dropoff_turf)
 				old_location = current_location
 			M.forceMove(dropoff_turf) //Perform the actual teleport
-			message_admins("[key_name(usr)] jumped to [get_area(dropoff_turf)]")
+			message_admins("[key_name(user)] jumped to [get_area(dropoff_turf)]")
 			. = TRUE
 		if("goto_prev_turf")
 			var/mob/M = holder.mob
@@ -341,7 +343,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 				to_chat(M, SPAN_WARNING("Error! You don't have an old location to teleport back to!"))
 				return
 			M.forceMove(old_location)
-			message_admins("[key_name_admin(usr)] jumped to [get_area(old_location)]")
+			message_admins("[key_name_admin(user)] jumped to [get_area(old_location)]")
 			. = TRUE
 		if("launch_clone")
 			launch_clone = !!params["should_do"]
@@ -399,7 +401,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			refresh_bay()
 			. = TRUE
 		if("clear_bay")
-			if(tgui_alert(usr, "This will delete all objs and mobs in [bay]. Are you sure?",\
+			if(tgui_alert(user, "This will delete all objs and mobs in [bay]. Are you sure?",\
 				"Confirmation", list("Yes", "No")) == "Yes")
 				clear_bay()
 				refresh_bay()

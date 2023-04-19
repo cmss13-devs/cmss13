@@ -99,10 +99,12 @@
 	return max(0, time)
 
 
-/obj/structure/machinery/brig_cell/ui_act(action, params)
+/obj/structure/machinery/brig_cell/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
 
 	switch (action)
 		if ("set_viewed_incident")
@@ -125,24 +127,24 @@
 
 		if ("start_timer")
 			// Pause existing timer, if there is one.
-			timer_pause(usr)
-			timer_start(usr)
+			timer_pause(user)
+			timer_start(user)
 
 		if ("pause_timer")
-			timer_pause(usr)
+			timer_pause(user)
 
 		if ("end_timer")
-			timer_end(usr)
+			timer_end(user)
 
 		if ("reset_timer")
-			timer_reset(usr)
+			timer_reset(user)
 
 		if ("pardon")
-			if (can_pardon(usr))
-				do_pardon(usr)
+			if (can_pardon(user))
+				do_pardon(user)
 
 		if ("remove_report")
-			remove_report(usr)
+			remove_report(user)
 
 	return TRUE
 

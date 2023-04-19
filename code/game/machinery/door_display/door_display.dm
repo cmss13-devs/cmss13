@@ -302,7 +302,7 @@
 				close_door()
 			. = TRUE
 
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 
 
 /obj/structure/machinery/door_display/research_cell/attack_hand(mob/user)

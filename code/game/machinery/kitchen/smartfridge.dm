@@ -257,7 +257,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	src.add_fingerprint(user)
 
 	switch(action)

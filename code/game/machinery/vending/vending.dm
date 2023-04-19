@@ -441,10 +441,10 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		ui = new(user, src, "Vending", name)
 		ui.open()
 
-/obj/structure/machinery/vending/ui_act(action, params)
+/obj/structure/machinery/vending/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	if(.)
 		return

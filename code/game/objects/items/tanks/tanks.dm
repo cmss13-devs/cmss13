@@ -111,6 +111,8 @@
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("pressure")
 			var/tgui_pressure = params["pressure"]
@@ -130,13 +132,13 @@
 				var/mob/living/carbon/location = loc
 				if(location.internal == src)
 					location.internal = null
-					to_chat(usr, SPAN_NOTICE("You close the tank release valve."))
+					to_chat(user, SPAN_NOTICE("You close the tank release valve."))
 				else
 					if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
 						location.internal = src
-						to_chat(usr, SPAN_NOTICE("You open \the [src]'s valve."))
+						to_chat(user, SPAN_NOTICE("You open \the [src]'s valve."))
 					else
-						to_chat(usr, SPAN_NOTICE("You need something to connect to \the [src]."))
+						to_chat(user, SPAN_NOTICE("You need something to connect to \the [src]."))
 				. = TRUE
 
 /obj/item/tank/return_air()

@@ -152,21 +152,24 @@
 	if(timeout)
 		.["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 
-/datum/tgui_input_number/ui_act(action, list/params)
+/datum/tgui_input_number/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
 		return
+
+	var/mob/user = ui.user
+
 	switch(action)
 		if("submit")
 			if(!isnum(params["entry"]))
-				CRASH("A non number was input into tgui input number by [usr]")
+				CRASH("A non number was input into tgui input number by [user]")
 			var/choice = params["entry"]
 			if(integer_only)
 				choice = round(params["entry"])
 			if(choice > max_value)
-				CRASH("A number greater than the max value was input into tgui input number by [usr]")
+				CRASH("A number greater than the max value was input into tgui input number by [user]")
 			if(choice < min_value)
-				CRASH("A number less than the min value was input into tgui input number by [usr]")
+				CRASH("A number less than the min value was input into tgui input number by [user]")
 			set_entry(choice)
 			closed = TRUE
 			SStgui.close_uis(src)

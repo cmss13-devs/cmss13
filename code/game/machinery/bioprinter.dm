@@ -111,6 +111,8 @@
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("print")
 			var/recipe = params["recipe_id"]
@@ -120,12 +122,12 @@
 					valid_recipe = TRUE
 					break
 			if(!valid_recipe)
-				log_admin("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
-				message_admins("[key_name(usr)] attempted to print an invalid recipe on \the [src].")
+				log_admin("[key_name(user)] attempted to print an invalid recipe ([recipe]) on [src].")
+				message_admins("[key_name(user)] attempted to print an invalid recipe on [src].")
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
 			stored_metal -= recipe_datum.metal
-			to_chat(usr, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))
+			to_chat(user, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))
 			working = TRUE
 			update_icon()
 			var/new_organ = recipe_datum.path
@@ -134,12 +136,13 @@
 			addtimer(CALLBACK(src, PROC_REF(print_limb), new_organ), recipe_datum.time)
 			QDEL_NULL(recipe_datum)
 			return TRUE
+
 		if("eject")
 			var/sheets_to_print = (stored_metal/100)
 			sheets_to_print -= 0.5
 			sheets_to_print = round(sheets_to_print, 1)
 			stored_metal -= sheets_to_print*100
-			visible_message("\The [src] ejects [sheets_to_print] metal sheets from its storage.")
+			visible_message("[src] ejects [sheets_to_print] metal sheets from its storage.")
 			new /obj/item/stack/sheet/metal(get_turf(src), sheets_to_print)
 			return TRUE
 

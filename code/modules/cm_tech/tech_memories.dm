@@ -228,7 +228,7 @@
 	switch(action)
 		if("enter_techtree")
 			var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-			tree.enter_mob(usr, FALSE)
+			tree.enter_mob(ui.user, FALSE)
 
 /datum/objective_memory_interface/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE

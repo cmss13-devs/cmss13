@@ -398,15 +398,18 @@
 	. = ..()
 	if(.)
 		return
-	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
+
+	var/mob/user = ui.user
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		to_chat(user, SPAN_WARNING("You are not authorised to configure the sentry."))
 		return
 	if(params["index"])
 		// the action represents a sentry
 		var/sentry_index = params["index"]
 		if(paired_sentry[sentry_index])
 			var/obj/structure/machinery/defenses/sentry = paired_sentry[sentry_index]
-			var/result = sentry.update_choice(usr, action, params["selection"])
+			var/result = sentry.update_choice(user, action, params["selection"])
 			if(result)
 				playsound(src, get_sfx("terminal_button"), 25, FALSE)
 				return TRUE

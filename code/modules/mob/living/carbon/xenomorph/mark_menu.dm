@@ -107,7 +107,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/xenomorph/X = usr
+	var/mob/living/carbon/xenomorph/X = ui.user
 
 	if(!istype(X))
 		return

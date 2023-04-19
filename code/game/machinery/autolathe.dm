@@ -161,6 +161,8 @@
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("cancel")
 			var/index = params["index"]
@@ -179,7 +181,7 @@
 			for (var/material in making.resources)
 				projected_stored_material[material] = min(projected_stored_material[material]+(making.resources[material]*multiplier), storage_capacity[material])
 
-			to_chat(usr, SPAN_NOTICE("Removed the item \"[making.name]\" from the queue."))
+			to_chat(user, SPAN_NOTICE("Removed the item \"[making.name]\" from the queue."))
 			queue -= list(to_del)
 			update_printables()
 			. = TRUE
@@ -192,28 +194,28 @@
 			var/multiplier = text2num(params["multiplier"])
 			var/datum/autolathe/recipe/making
 
-			if(!ishuman(usr))
+			if(!ishuman(user))
 				return
 
 			if(!initial(make_loc))
-				make_loc = get_step(loc, get_dir(src,usr))
+				make_loc = get_step(loc, get_dir(src, user))
 
 			if(index > 0 && index <= recipes.len)
 				making = recipes[index]
 
 			//Exploit detection, not sure if necessary after rewrite.
 			if(!making || multiplier < 0 || multiplier > 100)
-				var/turf/exploit_loc = get_turf(usr)
-				message_admins("[key_name_admin(usr)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])")
+				var/turf/exploit_loc = get_turf(user)
+				message_admins("[key_name_admin(user)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])")
 				return
 
 			if(making.is_stack)
-				if(try_queue(usr, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
+				if(try_queue(user, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
 					start_printing()
 				return
 
 			for (var/i in 1 to multiplier)
-				var/result = try_queue(usr, making, make_loc)
+				var/result = try_queue(user, making, make_loc)
 				switch (result)
 					if(AUTOLATHE_FAILED)
 						return
@@ -224,43 +226,45 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			var/wire = params["wire"]
 			cut(wire)
 			return TRUE
+
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
 			return TRUE
+
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need multitool!")
+				to_chat(user, "You need multitool!")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
+				to_chat(user, SPAN_WARNING("You can't pulse a cut wire."))
 				return TRUE
 			pulse(wire)
 			return TRUE
@@ -359,7 +363,7 @@
 
 /obj/structure/machinery/autolathe/proc/try_queue(mob/living/carbon/human/user, datum/autolathe/recipe/making, turf/make_loc, multiplier = 1)
 	if(queue.len >= queue_max)
-		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
+		to_chat(user, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
 	//This needs some work.
@@ -379,7 +383,7 @@
 	queue += list(print_params) // This notation is necessary because of how adding to lists works
 
 	if(busy)
-		to_chat(usr, SPAN_NOTICE("Added the item \"[making.name]\" to the queue."))
+		to_chat(user, SPAN_NOTICE("Added the item \"[making.name]\" to the queue."))
 		update_printables()
 		return AUTOLATHE_QUEUED
 

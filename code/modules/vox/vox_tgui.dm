@@ -25,7 +25,9 @@ GLOBAL_DATUM_INIT(vox_panel, /datum/vox_panel_tgui, new)
 	if(.)
 		return
 
-	if(!check_rights(R_SOUNDS))
+	var/mob/user = ui.user
+
+	if(!check_rights_for(user.client, R_SOUNDS))
 		return
 
 	switch(action)
@@ -46,9 +48,9 @@ GLOBAL_DATUM_INIT(vox_panel, /datum/vox_panel_tgui, new)
 				if(M.stat == DEAD || (M.faction in factions))
 					to_play_to |= M.client
 
-			play_sound_vox(message, to_play_to, vox, usr.client, text2num(params["volume"]))
+			play_sound_vox(message, to_play_to, vox, user.client, text2num(params["volume"]))
 			var/factions_string = factions.Join(", ")
-			message_admins("[key_name_admin(usr)] has sent a VOX report of type '[params["vox_type"]]' with an input of '[message]' to [factions_string].")
+			message_admins("[key_name_admin(user)] has sent a VOX report of type '[params["vox_type"]]' with an input of '[message]' to [factions_string].")
 		if("play_to_self")
 			if(!(params["vox_type"] in GLOB.vox_types))
 				return
@@ -56,4 +58,4 @@ GLOBAL_DATUM_INIT(vox_panel, /datum/vox_panel_tgui, new)
 			var/list/vox = GLOB.vox_types[params["vox_type"]]
 			var/message = "[params["message"]]" // Sanitize by converting into a string
 
-			play_sound_vox(message, usr.client, vox, usr.client, text2num(params["volume"]))
+			play_sound_vox(message, user.client, vox, user.client, text2num(params["volume"]))

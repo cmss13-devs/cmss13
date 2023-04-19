@@ -50,7 +50,7 @@
 	if(.)
 		return
 
-	var/islead = get_leadership(usr)
+	var/islead = get_leadership(ui.user)
 
 	switch (action)
 		if ("assign_ft")

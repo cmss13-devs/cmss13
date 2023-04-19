@@ -156,38 +156,40 @@ var/bomb_set = FALSE
 	if(.)
 		return
 
+	var/mob/user = ui.user
 	var/area/A = get_area(src)
+
 	switch(action)
 		if("toggleNuke")
 			if(timing == -1)
 				return
 
-			if(!ishuman(usr))
+			if(!ishuman(user))
 				return
 
-			if(!allowed(usr))
-				to_chat(usr, SPAN_DANGER("Access denied!"))
+			if(!allowed(user))
+				to_chat(user, SPAN_DANGER("Access denied!"))
 				return
 
 			if(!anchored)
-				to_chat(usr, SPAN_DANGER("Engage anchors first!"))
+				to_chat(user, SPAN_DANGER("Engage anchors first!"))
 				return
 
 			if(safety)
-				to_chat(usr, SPAN_DANGER("The safety is still on."))
+				to_chat(user, SPAN_DANGER("The safety is still on."))
 				return
 
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
+				to_chat(user, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 
-			if(usr.action_busy)
+			if(user.action_busy)
 				return
 
-			usr.visible_message(SPAN_WARNING("[usr] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
+			user.visible_message(SPAN_WARNING("[user] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
 			being_used = TRUE
 			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
 				if(timing)
 					if(!safety)
@@ -195,31 +197,31 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+						message_admins("[src] has been activated by [key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[user]'>JMP</A>)")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
+					message_admins("[src] has been deactivated by [key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[user]'>JMP</A>)")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 			. = TRUE
 
 		if("toggleSafety")
-			if(!allowed(usr))
-				to_chat(usr, SPAN_DANGER("Access denied!"))
+			if(!allowed(user))
+				to_chat(user, SPAN_DANGER("Access denied!"))
 				return
 			if(timing)
-				to_chat(usr, SPAN_DANGER("Disengage first!"))
+				to_chat(user, SPAN_DANGER("Disengage first!"))
 				return
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
+				to_chat(user, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
-			if(usr.action_busy)
+			if(user.action_busy)
 				return
-			usr.visible_message(SPAN_WARNING("[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
+			user.visible_message(SPAN_WARNING("[user] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
+			ui = SStgui.try_update_ui(user, src, ui)
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				safety = !safety
 				playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
@@ -230,44 +232,44 @@ var/bomb_set = FALSE
 			. = TRUE
 
 		if("toggleCommandLockout")
-			if(!ishuman(usr))
+			if(!ishuman(user))
 				return
-			if(!allowed(usr))
-				to_chat(usr, SPAN_DANGER("Access denied!"))
+			if(!allowed(user))
+				to_chat(user, SPAN_DANGER("Access denied!"))
 				return
 			if(command_lockout)
 				command_lockout = FALSE
 				req_one_access = list()
-				to_chat(usr, SPAN_DANGER("Command lockout disengaged."))
+				to_chat(user, SPAN_DANGER("Command lockout disengaged."))
 			else
 				//Check if they have command access
 				var/list/acc = list()
-				var/mob/living/carbon/human/H = usr
+				var/mob/living/carbon/human/H = user
 				if(H.wear_id)
 					acc += H.wear_id.GetAccess()
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
 				if(!(ACCESS_MARINE_COMMAND in acc))
-					to_chat(usr, SPAN_DANGER("Access denied!"))
+					to_chat(user, SPAN_DANGER("Access denied!"))
 					return
 
 				command_lockout = TRUE
 				req_one_access = list(ACCESS_MARINE_COMMAND)
-				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
+				to_chat(user, SPAN_DANGER("Command lockout engaged."))
 			. = TRUE
 
 		if("toggleAnchor")
 			if(timing)
-				to_chat(usr, SPAN_DANGER("Disengage first!"))
+				to_chat(user, SPAN_DANGER("Disengage first!"))
 				return
 			if(!A.can_build_special)
-				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
+				to_chat(user, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
-			if(usr.action_busy)
+			if(user.action_busy)
 				return
 			being_used = TRUE
-			ui = SStgui.try_update_ui(usr, src, ui)
-			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			ui = SStgui.try_update_ui(user, src, ui)
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(!anchored)
 					visible_message(SPAN_DANGER("With a steely snap, bolts slide out of [src] and anchor it to the flooring."))
 				else

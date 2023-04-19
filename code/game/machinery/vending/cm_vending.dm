@@ -431,7 +431,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(.)
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/user = ui.user
+
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)

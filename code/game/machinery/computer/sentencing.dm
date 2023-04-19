@@ -99,10 +99,12 @@
 
 	return data
 
-/obj/structure/machinery/computer/sentencing/ui_act(action, params)
+/obj/structure/machinery/computer/sentencing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
 
 	playsound(src, "keyboard", 15, 1)
 
@@ -131,33 +133,33 @@
 			incident.refresh_sentences()
 
 		if ("set_suspect")
-			var/obj/item/card/id/id = usr.get_active_hand()
+			var/obj/item/card/id/id = user.get_active_hand()
 			if (istype(id))
 				if (incident && id.registered_name)
 					incident.criminal_name = id.registered_name
 					incident.criminal_gid = add_zero(num2hex(id.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [id.registered_name] verified.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the suspect ID in your hand, or grab them and use the terminal."))
+				to_chat(user, SPAN_INFO("You need the suspect ID in your hand, or grab them and use the terminal."))
 
 		if ("edit_summary")
-			var/notes = tgui_input_text(usr, "Describe the incident", "Incident Report", html_decode(incident.notes), multiline = TRUE)
+			var/notes = tgui_input_text(user, "Describe the incident", "Incident Report", html_decode(incident.notes), multiline = TRUE)
 			if(!isnull(notes) && incident)
 				incident.notes = notes
 
 		if ("add_witness")
-			var/obj/item/card/id/id = usr.get_active_hand()
+			var/obj/item/card/id/id = user.get_active_hand()
 			if (istype(id))
 				if (incident && id.registered_name)
 					incident.witnesses += list(id.registered_name)
 					ping("\The [src] pings, \"Witness [id.registered_name] added.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the witness ID in your hand."))
+				to_chat(user, SPAN_INFO("You need the witness ID in your hand."))
 
 		if ("edit_witness_notes")
 			var/witness = locate(params["witness"])
 
-			var/notes = tgui_input_text(usr, "Summarize what the witness said", "Witness Report", html_decode(incident.witnesses[witness]), multiline = TRUE)
+			var/notes = tgui_input_text(user, "Summarize what the witness said", "Witness Report", html_decode(incident.witnesses[witness]), multiline = TRUE)
 			if(!isnull(notes) && incident)
 				incident.witnesses[witness] = notes
 
@@ -165,17 +167,17 @@
 			incident.witnesses -= locate(params["witness"])
 
 		if ("add_evidence")
-			var/obj/O = usr.get_active_hand()
+			var/obj/O = user.get_active_hand()
 			if(istype(O))
 				incident.evidence += O
 				ping("\The [src] pings, \"Evidence [O.name] catalogued.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the evidence in your hand."))
+				to_chat(user, SPAN_INFO("You need the evidence in your hand."))
 
 		if ("edit_evidence_notes")
 			var/evidence = locate(params["evidence"])
 
-			var/notes = tgui_input_text(usr, "Describe the relevance of this evidence", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
+			var/notes = tgui_input_text(user, "Describe the relevance of this evidence", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
 			if (!isnull(notes) && incident)
 				incident.evidence[evidence] = notes
 
@@ -187,7 +189,7 @@
 				incident = null
 				current_menu = "main"
 			else
-				to_chat(usr, SPAN_ALERT("Report is lacking information."))
+				to_chat(user, SPAN_ALERT("Report is lacking information."))
 
 	return TRUE
 

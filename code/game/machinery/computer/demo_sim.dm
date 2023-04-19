@@ -118,13 +118,15 @@
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("start_watching")
-			start_watching(usr)
+			start_watching(user)
 			. = TRUE
 
 		if("stop_watching")
-			stop_watching(usr)
+			stop_watching(user)
 			. = TRUE
 
 		if("eject")
@@ -132,18 +134,18 @@
 				configuration.forceMove(loc)
 				configuration = null
 			else
-				to_chat(usr, SPAN_NOTICE("Nothing to eject."))
+				to_chat(user, SPAN_NOTICE("Nothing to eject."))
 			. = TRUE
 
 		if("detonate")
 			if(!configuration)
-				to_chat(usr, SPAN_NOTICE("No configuration set."))
+				to_chat(user, SPAN_NOTICE("No configuration set."))
 				return
-			simulate_detonation(usr)
+			simulate_detonation(user)
 			. = TRUE
 
 		if("switchmode")
-			dummy_mode = tgui_input_list(usr, "Select target type to simulate", "Target type", target_types, 30 SECONDS)
+			dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", target_types, 30 SECONDS)
 			if(!dummy_mode)
 				dummy_mode = HUMAN_MODE
 			. = TRUE

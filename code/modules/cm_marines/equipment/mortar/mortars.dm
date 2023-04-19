@@ -125,12 +125,12 @@
 		"data_dial_y" = dial_y
 	)
 
-/obj/structure/mortar/ui_act(action, params)
+/obj/structure/mortar/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 	if(get_dist(user, src) > 1)
 		return FALSE
 

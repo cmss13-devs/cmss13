@@ -110,7 +110,7 @@
 
 	switch(action)
 		if("purchase")
-			holder.purchase_node(usr, src)
+			holder.purchase_node(ui.user, src)
 			. = TRUE
 
 /datum/tech/proc/on_tree_insertion(datum/techtree/tree)

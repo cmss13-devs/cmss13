@@ -68,13 +68,15 @@
 	new part_type(get_step(src, SOUTHEAST))
 	icon_state = "drone_fab_idle"
 
-/obj/structure/machinery/part_fabricator/ui_act(action, params)
+/obj/structure/machinery/part_fabricator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	if(busy)
-		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
+		to_chat(user, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
 
 	if(action == "produce")
@@ -91,13 +93,13 @@
 			exploiting = TRUE
 
 		if (exploiting)
-			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] with [produce], [cost]")
+			log_admin("Bad topic: [user] may be trying to HREF exploit [src] with [produce], [cost]")
 			return
 
-		build_part(produce, cost, usr)
+		build_part(produce, cost, user)
 		return
 	else
-		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
+		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")
 		return
 
 /obj/structure/machinery/part_fabricator/attack_hand(mob/user)

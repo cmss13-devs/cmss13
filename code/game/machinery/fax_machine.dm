@@ -162,75 +162,77 @@ var/list/alldepartments = list()
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("send")
 			if(tofax)
 				if(target_department == DEPARTMENT_HC)
-					highcom_fax(src, tofax.info, tofax.name, usr)
+					highcom_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				else if(target_department == DEPARTMENT_PROVOST)
-					provost_fax(src, tofax.info, tofax.name, usr)
+					provost_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				else if(target_department == DEPARTMENT_CMB)
-					cmb_fax(src, tofax.info, tofax.name, usr)
+					cmb_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				else if(target_department == DEPARTMENT_WY)
-					company_fax(src, tofax.info, tofax.name, usr)
+					company_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				else if(target_department == DEPARTMENT_PRESS)
-					press_fax(src, tofax.info, tofax.name, usr)
+					press_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				else
-					general_fax(src, tofax.info, tofax.name, usr)
+					general_fax(src, tofax.info, tofax.name, user)
 					fax_cooldown = 600
 
 				COOLDOWN_START(src, send_cooldown, fax_cooldown)
-				SendFax(tofax.info, tofax.name, usr, target_department, network, src)
-				to_chat(usr, "Message transmitted successfully.")
+				SendFax(tofax.info, tofax.name, user, target_department, network, src)
+				to_chat(user, "Message transmitted successfully.")
 				. = TRUE
 
 		if("ejectpaper")
 			if(tofax)
-				if(!ishuman(usr))
-					to_chat(usr, SPAN_WARNING("You can't do it."))
+				if(!ishuman(user))
+					to_chat(user, SPAN_WARNING("You can't do it."))
 				else
-					tofax.forceMove(usr.loc)
-					usr.put_in_hands(tofax)
-					to_chat(usr, SPAN_NOTICE("You take \the [tofax] out of \the [src]."))
+					tofax.forceMove(user.loc)
+					user.put_in_hands(tofax)
+					to_chat(user, SPAN_NOTICE("You take \the [tofax] out of \the [src]."))
 					tofax = null
 				. = TRUE
 
 		if("insertpaper")
-			var/obj/item/I = usr.get_active_hand()
+			var/obj/item/I = user.get_active_hand()
 			if(istype(I, /obj/item/paper))
-				usr.drop_inv_item_to_loc(I, src)
+				user.drop_inv_item_to_loc(I, src)
 				tofax = I
-				to_chat(usr, SPAN_NOTICE("You put \the [tofax] into \the [src]."))
+				to_chat(user, SPAN_NOTICE("You put \the [tofax] into \the [src]."))
 			. = TRUE
 
 		if("ejectid")
 			if(scan)
-				if(ishuman(usr))
-					scan.forceMove(usr.loc)
-					if(!usr.get_active_hand())
-						usr.put_in_hands(scan)
+				if(ishuman(user))
+					scan.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(scan)
 					scan = null
 				else
 					scan.forceMove(src.loc)
 					scan = null
-				to_chat(usr, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+				to_chat(user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
 				authenticated = FALSE
 				playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
 				. = TRUE
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(usr, "Which department?", "Choose a department", alldepartments)
+			target_department = tgui_input_list(user, "Which department?", "Choose a department", alldepartments)
 			if(!target_department) target_department = last_target_department
 			. = TRUE
 
@@ -245,7 +247,7 @@ var/list/alldepartments = list()
 			authenticated = FALSE
 			. = TRUE
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 /obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()

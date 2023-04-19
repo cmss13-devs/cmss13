@@ -109,10 +109,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(TRANSMITTER_UNAVAILABLE(src))
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(ui.user))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/user = ui.user
 
 	switch(action)
 		if("call_phone")

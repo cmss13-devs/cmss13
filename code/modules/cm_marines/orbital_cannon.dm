@@ -578,20 +578,22 @@ var/list/ob_type_fuel_requirements
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("load_tray")
-			almayer_orbital_cannon.load_tray(usr)
+			almayer_orbital_cannon.load_tray(user)
 			. = TRUE
 
 		if("unload_tray")
-			almayer_orbital_cannon.unload_tray(usr)
+			almayer_orbital_cannon.unload_tray(user)
 			. = TRUE
 
 		if("chamber_tray")
-			almayer_orbital_cannon.chamber_payload(usr)
+			almayer_orbital_cannon.chamber_payload(user)
 			. = TRUE
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 /obj/structure/machinery/computer/orbital_cannon_console/attack_hand(mob/user)
 	if(..())

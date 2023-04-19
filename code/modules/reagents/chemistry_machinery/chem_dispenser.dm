@@ -126,7 +126,7 @@
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
 	.["chemicals"] = chemicals
 
-/obj/structure/machinery/chem_dispenser/ui_act(action, list/params)
+/obj/structure/machinery/chem_dispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -162,7 +162,7 @@
 				. = TRUE
 
 		if("eject")
-			replace_beaker(usr)
+			replace_beaker(ui.user)
 			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/B, mob/user)

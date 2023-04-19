@@ -188,10 +188,13 @@
 	data["chemicals"] = chemicals
 	return data
 
-/obj/structure/machinery/sleep_console/ui_act(action, params)
+/obj/structure/machinery/sleep_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return
-	if(usr == connected.occupant)
+
+	var/mob/user = ui.user
+
+	if(user == connected.occupant)
 		return
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -202,16 +205,16 @@
 			if(!connected.occupant)
 				return
 			if(connected.occupant.stat == DEAD)
-				to_chat(usr, SPAN_DANGER("This person has no life to preserve anymore. Take them to a department capable of reanimating them."))
+				to_chat(user, SPAN_DANGER("This person has no life to preserve anymore. Take them to a department capable of reanimating them."))
 				return
 			var/chemical = params["chemid"]
 			var/amount = text2num(params["amount"])
 			if(!length(chemical) || amount <= 0)
 				return
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
-				connected.inject_chemical(usr, chemical, amount)
+				connected.inject_chemical(user, chemical, amount)
 			else
-				to_chat(usr, SPAN_DANGER("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
+				to_chat(user, SPAN_DANGER("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
 		if("togglefilter")
 			connected.toggle_filter()
 		if("ejectify")
@@ -222,7 +225,7 @@
 			connected.auto_eject_dead = FALSE
 		else
 			return FALSE
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 /////////////////////////////////////////
 // THE SLEEPER ITSELF

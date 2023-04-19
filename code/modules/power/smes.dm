@@ -309,19 +309,22 @@
 
 	return data
 
-/obj/structure/machinery/power/smes/ui_act(action, params)
+/obj/structure/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
+
 	switch(action)
 		if("tryinput")
 			input_attempt = !input_attempt
-			msg_admin_niche("[key_name(usr)] toggled \the [src]'s input [input_attempt ? "On" : "Off"].")
+			msg_admin_niche("[key_name(user)] toggled \the [src]'s input [input_attempt ? "On" : "Off"].")
 			update_icon()
 			. = TRUE
 		if("tryoutput")
 			outputting = !outputting
-			msg_admin_niche("[key_name(usr)] toggled \the [src]'s output [outputting ? "On" : "Off"].")
+			msg_admin_niche("[key_name(user)] toggled \the [src]'s output [outputting ? "On" : "Off"].")
 			update_icon()
 			. = TRUE
 		if("input")
@@ -341,7 +344,7 @@
 				. = TRUE
 			if(.)
 				input_level = clamp(target, 0, input_level_max)
-			msg_admin_niche("[key_name(usr)] set [src]'s input level to [input_level].")
+			msg_admin_niche("[key_name(user)] set [src]'s input level to [input_level].")
 		if("output")
 			var/target = params["target"]
 			var/adjust = text2num(params["adjust"])
@@ -359,7 +362,7 @@
 				. = TRUE
 			if(.)
 				output_level = clamp(target, 0, output_level_max)
-				msg_admin_niche("[key_name(usr)] set [src]'s output level to [input_level].")
+				msg_admin_niche("[key_name(user)] set [src]'s output level to [input_level].")
 
 /obj/structure/machinery/power/smes/proc/ion_act()
 	if(is_ground_level(z))

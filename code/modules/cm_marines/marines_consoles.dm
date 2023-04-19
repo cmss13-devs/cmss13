@@ -43,12 +43,12 @@
 		ui = new(user, src, "CardMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/card/ui_act(action, params)
+/obj/structure/machinery/computer/card/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 	switch(action)
@@ -509,12 +509,12 @@
 		ui = new(user, src, "SquadMod", name)
 		ui.open()
 
-/obj/structure/machinery/computer/squad_changer/ui_act(action, params)
+/obj/structure/machinery/computer/squad_changer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 
 	// Please stay close, marine
 	if(person_to_modify && !(person_to_modify.Adjacent(src)))
@@ -852,14 +852,14 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 	return results
 
-/datum/crewmonitor/ui_act(action,params)
+/datum/crewmonitor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 	switch (action)
 		if ("select_person")
 			// May work badly cause currently there is no player-controlled AI
-			var/mob/living/silicon/ai/AI = usr
+			var/mob/living/silicon/ai/AI = ui.user
 			if(!istype(AI))
 				return
 			var/mob/living/carbon/human/H

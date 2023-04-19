@@ -96,7 +96,8 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 	if(.)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
+
 	switch(action)
 		if("low_alt")
 			change_altitude(user, SHIP_ALT_LOW)
@@ -109,7 +110,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			. = TRUE
 	message_admins("[key_name(user)] has changed the ship's altitude to [action].")
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))

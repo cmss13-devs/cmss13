@@ -411,10 +411,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("dest_start")
-			to_chat(usr, SPAN_NOTICE("You press a few keys on the panel."))
-			to_chat(usr, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
+			to_chat(user, SPAN_NOTICE("You press a few keys on the panel."))
+			to_chat(user, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
 			playsound(src.loc, 'sound/items/rped.ogg', 25, TRUE)
 			sleep(2 SECONDS)
 			ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
@@ -429,8 +431,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			. = TRUE
 
 		if("dest_cancel")
-			if(!allowed(usr))
-				to_chat(usr, SPAN_WARNING("You don't have the necessary clearance to cancel the emergency destruct system!"))
+			if(!allowed(user))
+				to_chat(user, SPAN_WARNING("You don't have the necessary clearance to cancel the emergency destruct system!"))
 				return
 			EvacuationAuthority.cancel_self_destruct()
 			. = TRUE

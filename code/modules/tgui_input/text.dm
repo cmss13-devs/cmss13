@@ -130,17 +130,20 @@
 		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
 	return data
 
-/datum/tgui_input_text/ui_act(action, list/params)
+/datum/tgui_input_text/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
 		return
+
+	var/mob/user = ui.user
+
 	switch(action)
 		if("submit")
 			if(max_length)
 				if(length(params["entry"]) > max_length)
-					CRASH("[usr] typed a text string longer than the max length")
+					CRASH("[user] typed a text string longer than the max length")
 				if(encode && (length(html_encode(params["entry"])) > max_length))
-					to_chat(usr, SPAN_NOTICE("Your message was clipped due to special character usage."))
+					to_chat(user, SPAN_NOTICE("Your message was clipped due to special character usage."))
 			set_entry(params["entry"])
 			closed = TRUE
 			SStgui.close_uis(src)

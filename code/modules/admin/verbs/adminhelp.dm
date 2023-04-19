@@ -753,7 +753,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	. = ..()
 	if(.)
 		return
-	var/client/user_client = usr.client
+	var/client/user_client = ui.user.client
 	var/message = sanitize_text(trim(params["message"]))
 	var/urgent = !!params["urgent"]
 	var/list/admins = get_admin_counts(R_BAN)

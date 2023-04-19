@@ -94,20 +94,22 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(!almayer_aa_cannon)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("protect")
 			almayer_aa_cannon.protecting_section = params["section_id"]
 			if(!(almayer_aa_cannon.protecting_section in almayer_ship_sections))
 				almayer_aa_cannon.protecting_section = ""
 				return
-			message_admins("[key_name(usr)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
+			message_admins("[key_name(user)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
 			. = TRUE
 		if("deactivate")
 			almayer_aa_cannon.protecting_section = ""
-			message_admins("[key_name(usr)] has deactivated the AA cannon.")
+			message_admins("[key_name(user)] has deactivated the AA cannon.")
 			. = TRUE
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 
 /obj/structure/machinery/computer/aa_console/attack_hand(mob/user)

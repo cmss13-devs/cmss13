@@ -330,7 +330,7 @@
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(disabled || shuttle.is_hijacked)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
 	if(comp.dropship_control_lost)
 		to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))

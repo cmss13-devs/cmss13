@@ -24,10 +24,12 @@
 	data["target_filter_data"] = target.filter_data
 	return data
 
-/datum/filter_editor/ui_act(action, list/params)
+/datum/filter_editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
 
 	switch(action)
 		if("add_filter")
@@ -67,7 +69,7 @@
 			target.add_filter(params["name"], old_filter_data["priority"], new_filter_data)
 			. = TRUE
 		if("modify_color_value")
-			var/new_color = input(usr, "Pick new filter color", "Filteriffic Colors!") as color|null
+			var/new_color = input(user, "Pick new filter color", "Filteriffic Colors!") as color|null
 			if(new_color)
 				target.transition_filter(params["name"], 4, list("color" = new_color))
 				. = TRUE
@@ -78,7 +80,7 @@
 				target.update_filters()
 				. = TRUE
 		if("mass_apply")
-			if(!check_rights_for(usr.client, R_DEBUG))
+			if(!check_rights_for(user.client, R_DEBUG))
 				return
 			var/target_path = text2path(params["path"])
 			if(!target_path)
@@ -92,7 +94,7 @@
 					thing_at.filters = filters_to_copy
 					thing_at.filter_data = filter_data_to_copy
 					count += 1
-			message_admins("LOCAL CLOWN [usr.ckey] JUST MASS FILTER EDITED [count] WITH PATH OF [params["path"]]!")
-			log_admin("LOCAL CLOWN [usr.ckey] JUST MASS FILTER EDITED [count] WITH PATH OF [params["path"]]!")
+			message_admins("LOCAL CLOWN [user.ckey] JUST MASS FILTER EDITED [count] WITH PATH OF [params["path"]]!")
+			log_admin("LOCAL CLOWN [user.ckey] JUST MASS FILTER EDITED [count] WITH PATH OF [params["path"]]!")
 
 

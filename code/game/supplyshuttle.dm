@@ -226,6 +226,8 @@ var/datum/controller/supply/supply_controller = new()
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	switch(action)
 		if("set_x")
 			var/new_x = text2num(params["set_x"])
@@ -246,16 +248,16 @@ var/datum/controller/supply/supply_controller = new()
 				var/datum/squad/selected = get_squad_by_name(params["squad_name"])
 				if(selected)
 					current_squad = selected
-					attack_hand(usr)
+					attack_hand(user)
 					. = TRUE
 				else
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Invalid input. Aborting.")]")
 					. = TRUE
 
 		if("send_beacon")
 			if(current_squad)
 				if(!COOLDOWN_FINISHED(src, next_fire))
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available! Please wait [COOLDOWN_TIMELEFT(src, next_fire)/10] seconds!")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet available! Please wait [COOLDOWN_TIMELEFT(src, next_fire)/10] seconds!")]")
 					return
 				else
 					handle_supplydrop()

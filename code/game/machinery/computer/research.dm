@@ -124,9 +124,10 @@
 	. = ..()
 	if(.)
 		return
-	if(inoperable() || !ishuman(usr))
+
+	if(inoperable() || !ishuman(ui.user))
 		return
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/user = ui.user
 	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
 		return
 	switch(action)

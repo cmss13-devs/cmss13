@@ -115,10 +115,13 @@
 	data["beakerContents"] = beakerContents
 	return data
 
-/obj/structure/machinery/cryo_cell/ui_act(action, list/params)
+/obj/structure/machinery/cryo_cell/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
+
 	switch(action)
 		if("power")
 			on = !on
@@ -135,8 +138,8 @@
 		if("ejectbeaker")
 			if(beaker)
 				beaker.forceMove(get_step(loc, dir))
-				if(Adjacent(usr))
-					usr.put_in_hands(beaker)
+				if(Adjacent(user))
+					user.put_in_hands(beaker)
 				beaker = null
 				. = TRUE
 		if("notice")

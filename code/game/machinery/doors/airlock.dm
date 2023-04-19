@@ -433,14 +433,14 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/attack_hand(mob/user as mob)
-	if(!isRemoteControlling(usr))
+	if(!isRemoteControlling(user))
 		if(isElectrified())
 			if(shock(user, 100))
 				return
 
 	if(panel_open)
-		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
+		if(ishuman(user) && !skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
 			return FALSE
 
 		tgui_interact(user)
@@ -471,29 +471,31 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	. = list()
 	.["wire_descs"] = GLOB.airlock_wire_descriptions
 
-/obj/structure/machinery/door/airlock/ui_act(action, params)
+/obj/structure/machinery/door/airlock/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	if(. )//|| !interactable(usr))
+	var/mob/user = ui.user
+
+	if(. )//|| !interactable(user))
 		return
 
-	if(usr.stat || usr.is_mob_restrained() || usr.mob_size == MOB_SIZE_SMALL)
+	if(user.stat || user.is_mob_restrained() || user.mob_size == MOB_SIZE_SMALL)
 		return FALSE
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
-	if((in_range(src, usr) && istype(loc, /turf)) && panel_open)
-		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
+	if((in_range(src, user) && istype(loc, /turf)) && panel_open)
+		if(ishuman(user) && !skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
 			return FALSE
 
 		var/target_wire = params["wire"]
 
 		switch(action)
 			if("cut")
-				var/obj/item/held_item = usr.get_held_item()
+				var/obj/item/held_item = user.get_held_item()
 				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+					to_chat(user, SPAN_WARNING("You need wirecutters!"))
 					return TRUE
 
 				if(isWireCut(target_wire))
@@ -503,34 +505,34 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 				if(announce_hacked && is_mainship_level(z))
 					announce_hacked = FALSE
-					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
+					SSclues.create_print(get_turf(user), user, "The fingerprint contains oil and wire pieces.")
 				. = TRUE
 			if("pulse")
-				var/obj/item/held_item = usr.get_held_item()
+				var/obj/item/held_item = user.get_held_item()
 				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-					to_chat(usr, SPAN_WARNING("You need a multitool!"))
+					to_chat(user, SPAN_WARNING("You need a multitool!"))
 					return TRUE
 
 				pulse(target_wire)
 				. = TRUE
 			if("attach")
 				if(isnull(getAssembly(target_wire)))
-					if(!issignaller(usr.get_active_hand()))
-						to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
+					if(!issignaller(user.get_active_hand()))
+						to_chat(user, SPAN_WARNING("You need a signaller in your hand!"))
 						return TRUE
 
 					if(getAssembly(target_wire))
 						return TRUE
 
-					var/obj/item/device/assembly/signaller/signaller = usr.get_active_hand()
-					usr.drop_held_item(signaller)
+					var/obj/item/device/assembly/signaller/signaller = user.get_active_hand()
+					user.drop_held_item(signaller)
 					signaller.forceMove(src)
 
 					signaller.airlock_wire = target_wire
 					attached_signallers.Add(signaller)
 
 					attached_signallers[signaller] = target_wire
-					to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
+					to_chat(user, SPAN_NOTICE("You add [signaller] to [src]."))
 					. = TRUE
 				else
 					var/obj/item/device/assembly/signaller/signaller = getAssembly(target_wire)
@@ -538,16 +540,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					if(!signaller)
 						return TRUE
 
-					if(!usr.put_in_active_hand(signaller))
-						to_chat(usr, SPAN_WARNING("Your hand needs to be free!"))
+					if(!user.put_in_active_hand(signaller))
+						to_chat(user, SPAN_WARNING("Your hand needs to be free!"))
 						return TRUE
 
 					signaller.airlock_wire = null
 					attached_signallers -= signaller
-					to_chat(usr, SPAN_NOTICE("You remove [signaller] from [src]."))
+					to_chat(user, SPAN_NOTICE("You remove [signaller] from [src]."))
 					. = TRUE
 
-	add_fingerprint(usr)
+	add_fingerprint(user)
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)

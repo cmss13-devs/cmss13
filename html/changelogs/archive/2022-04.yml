@@ -328,7 +328,7 @@
   - bugfix: Fixes limb stumps for feet & hands being swapped when facing left-right
       -- left hand stump showing when facing right, etc.
   - expansion: Headshot effects and severed limb gore now reflect the victim's blood
-      colour.
+      color.
 2022-04-23:
   50RemAndCounting:
   - bugfix: the Oxycodone bottle from medical and chemistry vendors now has the default
@@ -343,7 +343,7 @@
   - rscadd: Synth headsets now have unique sprites.
   Stan_Albatross:
   - qol: made req and jtac channels in dark mode easier to read by lightening their
-      colours
+      colors
   - balance: overhauled the CLF loadouts, giving more/better weapons, removing the
       mod 88 from the rifle pool, and giving the spec a chance to spawn with an r4t!
       The spec also gets an anti-tank rocket launcher and maybe an LMG. Other loadouts
@@ -413,7 +413,7 @@
       a bit quieter.
 2022-04-28:
   50RemAndCounting:
-  - qol: Recoloured the Chief Engineer security and squad headset HUD icons to be
+  - qol: Recolored the Chief Engineer security and squad headset HUD icons to be
       more visually distinct from the Maintenance Technician HUD icons.
   Geeves:
   - balance: The XvX Slash Damage modifier has been lowered to x1.5 from x2.25.

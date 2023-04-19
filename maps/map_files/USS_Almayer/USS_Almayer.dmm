@@ -61580,7 +61580,7 @@
 /obj/item/clothing/under/liaison_suit/outing,
 /obj/item/clothing/under/liaison_suit/suspenders,
 /obj/item/clothing/under/blackskirt{
-	desc = "A stylish skirt, in a business-black and red colour scheme.";
+	desc = "A stylish skirt, in a business-black and red color scheme.";
 	name = "liaison's skirt"
 	},
 /obj/item/clothing/under/suit_jacket/charcoal{

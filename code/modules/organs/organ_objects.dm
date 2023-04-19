@@ -100,7 +100,7 @@
 	gender = PLURAL
 	organ_tag = "eyes"
 	organ_type = /datum/internal_organ/eyes
-	var/eye_colour
+	var/eye_color
 
 /obj/item/organ/liver
 	name = "liver"
@@ -164,13 +164,13 @@
 
 /obj/item/organ/eyes/removed(mob/living/target, mob/living/user)
 
-	if(!eye_colour)
-		eye_colour = list(0,0,0)
+	if(!eye_color)
+		eye_color = list(0,0,0)
 
 	..() //Make sure target is set so we can steal their eye color for later.
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
-		eye_colour = list(
+		eye_color = list(
 			H.r_eyes ? H.r_eyes : 0,
 			H.g_eyes ? H.g_eyes : 0,
 			H.b_eyes ? H.b_eyes : 0
@@ -189,10 +189,10 @@
 
 	// Apply our eye color to the target.
 	var/mob/living/carbon/human/H = target
-	if(istype(H) && eye_colour)
-		H.r_eyes = eye_colour[1]
-		H.g_eyes = eye_colour[2]
-		H.b_eyes = eye_colour[3]
+	if(istype(H) && eye_color)
+		H.r_eyes = eye_color[1]
+		H.g_eyes = eye_color[2]
+		H.b_eyes = eye_color[3]
 		H.update_body()
 
 /obj/item/organ/proc/bitten(mob/user)

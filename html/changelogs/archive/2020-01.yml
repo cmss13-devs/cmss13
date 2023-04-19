@@ -349,6 +349,6 @@
       staff, the observers, and the yautja players see it.
   - soundadd: Yautja - The yautja bracer now has its own sound effect which can be
       turned on and off.
-  - bugfix: Preferences - Fixed Background Information and Eye colour appearing twice.
+  - bugfix: Preferences - Fixed Background Information and Eye color appearing twice.
   - tweak: Requisitions - Removed the cargo access from Intelligence Officers.
   - bugfix: Requisitions - Requisition Officers now have proper access to squad preps.

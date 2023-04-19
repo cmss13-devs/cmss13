@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/datum/reagents/holder = null
 	var/reagent_state = SOLID
 	var/data = 0 //Scratchpad for random chemicals to do their own thing TODO: unify this somehow?
-	var/list/data_properties = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
+	var/list/data_properties = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
 	var/volume = 0
 	var/nutriment_factor = 0
 	var/custom_metabolism = REAGENTS_METABOLISM

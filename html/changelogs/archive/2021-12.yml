@@ -220,7 +220,7 @@
   - bugfix: Photos taken at the edge of user's view no longer cut off into darkness.
 2021-12-22:
   50RemAndCounting:
-  - rscadd: Added a new variant of the M3A1 Synthetic Utility Vest which changes colour
+  - rscadd: Added a new variant of the M3A1 Synthetic Utility Vest which changes color
       depending on the map (Mission-specific camo patterns), selectable alongside
       the existing gray vest.
   - tweak: Moved the Hazard Vest and the labcoats from the Synthetic Gear Vendor to

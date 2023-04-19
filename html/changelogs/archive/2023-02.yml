@@ -97,7 +97,7 @@
   - refactor: refactor's admin VV
   - admin: can now edit lists with any reliability, can now edit bitfields without
       maths
-  - ui: added the particle editor and colour matrix editor (from tiviplus and Y0SH1M4S73R
+  - ui: added the particle editor and color matrix editor (from tiviplus and Y0SH1M4S73R
       respectively) for admins via VV
   - qol: you can now keybind every emote
   - refactor: emotes are now datums
@@ -216,7 +216,7 @@
   - bugfix: removed the funny misplaced door on shivas
   - spellcheck: RO sign now says aCO instead of aXO
   carlarctg:
-  - spellcheck: Removed all instances of 'colour' and replaced them with 'color'
+  - spellcheck: Removed all instances of 'color' and replaced them with 'color'
   realforest2001:
   - bugfix: Fixes unnamed doors on colonies.
   - bugfix: 'Fixes duplicate definitions from #2164'
@@ -273,7 +273,7 @@
   - bugfix: Riot Control lockers open on code blue, the correct level for their use.
   - bugfix: Fixes two random brig doors in the middle of CIC hallway
   stanalbatross:
-  - bugfix: fixed the healthscanner not showing the colour of chems and advice
+  - bugfix: fixed the healthscanner not showing the color of chems and advice
 2023-02-17:
   BeagleGaming1:
   - bugfix: Makes CHUNK boxes not lethal

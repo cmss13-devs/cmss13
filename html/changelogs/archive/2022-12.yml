@@ -178,7 +178,7 @@
       Powerpack.
   - spellcheck: Batteries, chargers and rechargers are now properly \improper.
   - qol: All Pressurized Reagent Canister Pouches now change their canister tint based
-      on the colour of the chemicals stored therein (while still being mixed with
+      on the color of the chemicals stored therein (while still being mixed with
       the default blue-ish tint of the canister). Canisters themselves similarly change
       their tint based on contents.
   - rscadd: Observers will now see a message about where the dropship will be crashing
@@ -233,7 +233,7 @@
   - rscadd: StaffWho can now show multiple roles per staff member. This is purely
       aesthetical.
   - code_imp: Adds two new hive traits. NO_HVE_DELAY and NO_COLOR. Delay regards to
-      round end and if they need to be wiped out or not. Color regards to xeno colours,
+      round end and if they need to be wiped out or not. Color regards to xeno colors,
       not weeds or anything else.
   - code_imp: Examining xenos or structures now show the name of the hive they belong
       to, rather than bastardising it by using [Hive.prefix] Hive

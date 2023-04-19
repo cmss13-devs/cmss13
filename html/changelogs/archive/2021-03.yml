@@ -335,7 +335,7 @@
       after vending.
   - bugfix: Wall-blended cargo vendors will no longer disappear while vending items.
   Waltermeldron:
-  - bugfix: Fixed the hive status colour scheme.
+  - bugfix: Fixed the hive status color scheme.
   - rscadd: Xenos no longer cycle through the structure they want to build. They can
       now open up a menu to select which resin structure to build. There is a compact
       mode to decrease the size it takes up.

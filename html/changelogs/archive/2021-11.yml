@@ -1,6 +1,6 @@
 2021-11-03:
   50RemAndCounting:
-  - rscadd: 'Added two new colour variants of the synth Smartpack: black and white.'
+  - rscadd: 'Added two new color variants of the synth Smartpack: black and white.'
   - tweak: Made the smartpacks look like actual backpacks, removed the weird exoskeletons
       from their onmob sprites.
   Kugamo:

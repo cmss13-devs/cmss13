@@ -46,7 +46,7 @@ export const COLORS = {
     burn: '#e67e22',
     brute: '#e74c3c',
   },
-  // reagent / chemistry related colours
+  // reagent / chemistry related colors
   reagent: {
     acidicbuffer: '#fbc314',
     basicbuffer: '#3853a4',

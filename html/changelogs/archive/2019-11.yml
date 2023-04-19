@@ -151,7 +151,7 @@
       for some time. All abilities have a cost, the backpack has  a battery with charge
       and the only way to recharge the battery is by using GRAB intent on APCs, sucking
       out their power.
-  - tweak: Added three colours of S-V42 Prototype Smartpack to Synthetic Vendors.
+  - tweak: Added three colors of S-V42 Prototype Smartpack to Synthetic Vendors.
   - tweak: Human abilities, like the orders, now properly show when they're on CD
       and not.
   - bugfix: IB now shows up properly on the Health Analyzer.

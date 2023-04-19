@@ -9,16 +9,16 @@
 /obj/item/tool/pen/robopen/attack_self(mob/user)
 	..()
 
-	var/choice = tgui_input_list(usr, "Would you like to change color or mode?", "Change Mode", list("Colour","Mode"))
+	var/choice = tgui_input_list(usr, "Would you like to change color or mode?", "Change Mode", list("Color","Mode"))
 	if(!choice)
 		return
 
 	playsound(src.loc, 'sound/effects/pop.ogg', 25, FALSE)
 
 	switch(choice)
-		if("Colour")
-			var/newcolour = tgui_input_list(usr, "Which color would you like to use?", list("black","blue","red","green","yellow"))
-			if(newcolour) pen_colour = newcolour
+		if("Color")
+			var/newcolor = tgui_input_list(usr, "Which color would you like to use?", list("black","blue","red","green","yellow"))
+			if(newcolor) pen_color = newcolor
 		if("Mode")
 			if (mode == 1)
 				mode = 2

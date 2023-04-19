@@ -44,7 +44,7 @@
       backend. Rework pending in the future.
   Waltermeldron:
   - tweak: Tweaked the time that the heal overlay for praetorian heal stays for and
-      tweaked the colours.
+      tweaked the colors.
   alardun:
   - rscadd: Ordnance Canister now come with an activable Blast Wave Dampener. This'll
       drastically increase the rate at which the explosion falls off past 2 cells.

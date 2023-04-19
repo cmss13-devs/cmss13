@@ -62,7 +62,7 @@
   ThePiachu:
   - rscadd: As part of its ongoing inclusion initiative, the Company is proud to present
       the Third Generation Synthetic line. They have the same capabilities as their
-      Second Generation counterparts, but come in more human-like skin colours meant
+      Second Generation counterparts, but come in more human-like skin colors meant
       to emulate various Earth ethnicities. All USCM Second Gen Synthetic have been
       upgraded to the Third Generation model (for a nominal service fee). Those wishing
       to keep the familiar Second Generation look can do so using their Preferences.
@@ -247,7 +247,7 @@
       Guidelines apply. If a Synth Survivor is spawned, xenos will be compensated
       with extra smallhost spawn to balance things out.
   - rscadd: Added a Working Joe gear presets for Admins to spawn as needed.
-  - tweak: 'Implemented #5371 - Gen 1 Synths will now change eye colour based on their
+  - tweak: 'Implemented #5371 - Gen 1 Synths will now change eye color based on their
       intent.'
   - tweak: M41A armor piercing ammo crate now contains an entire box of AP ammo, but
       is a bit more expensive.

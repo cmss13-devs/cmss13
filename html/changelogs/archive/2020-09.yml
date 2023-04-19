@@ -161,7 +161,7 @@
   TobiNerd:
   - bugfix: Chefs can now cut food on tables again.
   Vicacrov:
-  - bugfix: 'Fixed the incediary OB''s colour: it''s white again.'
+  - bugfix: 'Fixed the incediary OB''s color: it''s white again.'
   - rscadd: Added a debug verb for firing OBs. Expect abombs to be more creative from
       now o- I mean, it is a very useful tool for testing. Really.
   - bugfix: Fixed two survivor loadouts not having boots on CORSAT.
@@ -506,7 +506,7 @@
       rejuvenating is 2 seconds, and warden or queen healing is 3 seconds of jitter,
       pay attention marines!'
   Vampmare:
-  - bugfix: 'Fixed colourless blood. '
+  - bugfix: 'Fixed colorless blood. '
   - bugfix: Changed wall connections and pipe connections to properly use Initialize.
   spookydonut:
   - tweak: Made ssdefcon pausable

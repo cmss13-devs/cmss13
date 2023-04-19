@@ -251,7 +251,7 @@
   - rscadd: 'If back slot is empty, the M2C will automatically be equipped upon disassembly.
       This serves a QOL to reduce failures to equip by a secondary weapon being blocked
       in the back first by muscle memory. '
-  - tweak: 'Adds colour to the rotating prompts for the M2C. Nothing remarkable to
+  - tweak: 'Adds color to the rotating prompts for the M2C. Nothing remarkable to
       point out. '
   the_flying_flail:
   - tweak: Gave armored vest increased bio resistance

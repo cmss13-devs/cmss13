@@ -15,7 +15,7 @@
 		"description" = description,
 		"url" = url,
 		"timestamp" = timestamp,
-		"colour" = colour,
+		"color" = color,
 		"image" = image?._interop_serialize(),
 		"thumbnail" = thumbnail?._interop_serialize(),
 		"video" = video?._interop_serialize(),
@@ -43,7 +43,7 @@
 	. = ..()
 	.["iconUrl"] = icon_url
 	.["proxyIconUrl"] = proxy_icon_url
-	
+
 /datum/tgs_chat_embed/footer/_interop_serialize()
 	return list(
 		"text" = text,

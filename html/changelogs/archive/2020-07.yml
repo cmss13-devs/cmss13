@@ -307,7 +307,7 @@
       on big xenos. There are some exceptions, however, such as Queen screech
   - rscadd: Burrower traps will now trigger against hostile hives
   - rscadd: Projectiles from xenos will hit hostile xenos now
-  - tweak: Most objects and special structures will now properly resemble the colour
+  - tweak: Most objects and special structures will now properly resemble the color
       and the name of their correct hive. This includes eggs and facehuggers
   - tweak: Resin traps can now be destroyed by xeno projectiles, provided that the
       resin trap does not belong to the xenomorph's hive
@@ -434,7 +434,7 @@
   - bugfix: Facehuggers will now climb back into the egg morpher if they are directly
       on top of it, instead of dying in bulk.
   Waltermeldron:
-  - rscadd: Incubating larvas in a host will now be displayed in their proper colour
+  - rscadd: Incubating larvas in a host will now be displayed in their proper color
   - bugfix: You can now place special structures 2 tiles within other special structures
       again.
   - tweak: icon_state no longer locked behind debug
@@ -450,7 +450,7 @@
   - rscadd: 'Xenomorphs can now put hostile xenomorphs into their spawnpool for larva.
       Queens give 3 larva, T3s give 2 and T2s give 1. T1s and larva will give no larva
       (Alardun #12747)'
-  - rscadd: 'Larvae inside a host will now be coloured towards whichever hive it belongs
+  - rscadd: 'Larvae inside a host will now be colored towards whichever hive it belongs
       to (Alardun #12747)'
   - rscadd: 'Hosts of a different hive can be re-infected by your own hive. Stealing
       hosts during XvX is now a viable strategy (Alardun #12747)'

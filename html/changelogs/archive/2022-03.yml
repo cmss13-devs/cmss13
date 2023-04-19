@@ -372,7 +372,7 @@
   - rscadd: Staff can now fire customised OBs with event verbs.
   - rscadd: Using the same verb, staff can spawn their custom OBs as warheads without
       firing.
-  - tweak: Incendiary OBs now have a set-able dynamic fire colour variable (overrides
+  - tweak: Incendiary OBs now have a set-able dynamic fire color variable (overrides
       fire_type).
   - rscadd: You can now view your own notes in the OOC tab.
   - rscadd: Whitelist Councils can now update player records ingame.
@@ -444,7 +444,7 @@
   - rscadd: Added colony headsets to survivors (some have exceptions). These have
       no function, for now...
   Stan_Albatross:
-  - bugfix: synths can no longer change the colour of their eyes by switching intent
+  - bugfix: synths can no longer change the color of their eyes by switching intent
       while they are dead.
   - rscadd: added radial menus for hunter and thrall gear selection.
   - bugfix: fixed the messages to the client when joining with a blacklisted byond

@@ -102,7 +102,7 @@
   - tweak: 'Specialist gear is now locked to the owner when they are equipped. Nobody
       else can equip the gear until the original owner is permadead, then it gets
       unlocked and locked to the first new person that equips it. '
-  - tweak: Changed the night mode highlight colours, hopefully more readable in general.
+  - tweak: Changed the night mode highlight colors, hopefully more readable in general.
   - bugfix: M42A sniper map specific skin work again. [stobarico]
   - bugfix: Admins/mods can now use me in deadchat again. [DonCarrot]
   - bugfix: Deadchat can see predator translated text. [Hylla]

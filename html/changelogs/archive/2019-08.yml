@@ -159,7 +159,7 @@
   - maptweak: Almayer - Added various types of first aid kits here and there.
   - tweak: Admin Tools - Player Panel was updated, some obsolete buttons were removed,
       new ones were added.
-  - tweak: Marine - Changed the colour of intel frequency to green.
+  - tweak: Marine - Changed the color of intel frequency to green.
   - bugfix: Marine - Fixed the dropship weapons console not having an access requirement.
   - bugfix: Marine - Fixed being able to take out pills from belts while being handcuffed.
   - bugfix: Marine - Fixed some steps in surgery being too slow, cleaned up its timecode.

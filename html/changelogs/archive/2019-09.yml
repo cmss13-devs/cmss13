@@ -258,7 +258,7 @@
   - tweak: Auto-equip now works with the Pyrotechnician fuelpack and the special flamer.
   - tweak: Fuel type B has been modified. It is now a quick burn, low damage and large
       AOE type of fuel. It will functions as a better version of Gel for the Pyrotechnician
-  - tweak: Recoloured Gel fuel to be green.
+  - tweak: Recolored Gel fuel to be green.
   - spellcheck: Renamed the Veteran Enlist Kit to Veteran Enlisted Kit.
   - rscadd: Ported goonchat over to CM. Credits to whoever made it in the first place
       in goon.

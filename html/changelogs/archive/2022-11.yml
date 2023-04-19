@@ -379,7 +379,7 @@
   - sounddel: removed and replaced the incoming fire warning sound (the sound you
       hear when the see the flashing green dot) to be louder and much more terrifying.
   harryob:
-  - bugfix: crew console now shows ground/ship colours again
+  - bugfix: crew console now shows ground/ship colors again
   - refactor: the code for deconstruction is now (somewhat) neater
   - bugfix: girders now deconstruct
   totalepicness:
@@ -497,7 +497,7 @@
       so; Fixing a runtime.
   mullenpaul:
   - refactor: squad info page is now TGUI
-  - refactor: squad info icons are generated and coloured through stylesheet
+  - refactor: squad info icons are generated and colored through stylesheet
   - refactor: squad info page now shows primary and secondary objectives
 2022-11-25:
   AnCopper:

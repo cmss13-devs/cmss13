@@ -382,6 +382,6 @@ set_invincible(FALSE) // Fine! Boolean parameters don't always need to be named.
 The following coding styles are not only not enforced at all, but are generally frowned upon to change for little to no reason:
 
 * English/British spelling on var/proc names
-	* Color/Colour - both are fine, but keep in mind that BYOND uses `color` as a base variable
+	* Color/Color - both are fine, but keep in mind that BYOND uses `color` as a base variable
 * Spaces after control statements
 	* `if()` and `if ()` - nobody cares!

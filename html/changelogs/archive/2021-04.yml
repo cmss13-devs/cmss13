@@ -92,7 +92,7 @@
   - tweak: Breaking vehicle hull with turn off vehicle lights. Fully fixing vehicle
       hull will turn lights back on.
   Segrain:
-  - bugfix: Lucky feathers are now available in loadout in all intended colours.
+  - bugfix: Lucky feathers are now available in loadout in all intended colors.
   - bugfix: CORSAT Researcher survivors now properly get their gear and skills.
 2021-04-04:
   Carlarc:

@@ -111,7 +111,7 @@
   Stan_Albatross:
   - tweak: Changed EMPed security camera sprites to fit with other Almayer cams instead
       of legacy ss13 sprites.
-  - tweak: Pyro spec will now glow a teal colour when firewalk protocol is active.
+  - tweak: Pyro spec will now glow a teal color when firewalk protocol is active.
   Vanagandr:
   - tweak: 'Boonie hats and expedition caps are now subtypes of patrol caps. They
       can hold and show all items caps can: cig packets, pens, goggles, headbands,
@@ -181,9 +181,9 @@
   - rscadd: Alt-clicking the queen tracker will now let you configure it to look for
       other things, such as the hive core or a specific xeno leader.
   Vanagandr:
-  - rscadd: Ported a lot of backend procs for colour effects ingame from TG. Added
-      a system for applying these effects screen-wide. These can recolour things,
-      saturate or desaturate the screen, inflict terrifying colour distortions etc.
+  - rscadd: Ported a lot of backend procs for color effects ingame from TG. Added
+      a system for applying these effects screen-wide. These can recolor things,
+      saturate or desaturate the screen, inflict terrifying color distortions etc.
   - rscadd: Added a broken VR headset. Anime is not real. It cannot hurt you. The
       Caramelldansen HUD suffers no such circumscription.
   forest2001:
@@ -537,7 +537,7 @@
   Vanagandr:
   - bugfix: Shotgun ammo pouch no longer changes its sprite when opened.
   - bugfix: Storage items with map skin variants that spawn full no longer have the
-      wrong-coloured flap until first opened.
+      wrong-colored flap until first opened.
   - bugfix: Gunbelt sprite fullness no longer affected by whether the gun is or is
       not inserted.
   ihatethisengine2:

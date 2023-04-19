@@ -23,8 +23,11 @@
 		if(WEAPON_MISSILE)
 			if(point_defense == "No")
 				if(salvo == "Salvo")
+					var/shotspacing
 					for(var/turf/picked_atom in location)
-						cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
+						shotspacing += 1
+						//cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
@@ -46,11 +49,13 @@
 			if(point_defense == "Yes")
 				if(salvo == "Salvo")
 					var/confirmedhit
+					var/shotspacing
 					for(var/turf/picked_atom in location)
 						if(prob(70))
-							cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
+						shotspacing += 1
 					if(confirmedhit > 0)
 						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 							if(!is_mainship_level(current_mob.z))

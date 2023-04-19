@@ -56,14 +56,6 @@
 
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 
-						//for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-							//if(!is_mainship_level(current_mob.z))
-							//	continue
-							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
-							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
-							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
-							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
-
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 				if(prompt == "Yes")

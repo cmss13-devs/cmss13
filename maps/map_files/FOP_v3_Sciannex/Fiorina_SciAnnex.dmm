@@ -19629,7 +19629,6 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/storage/pill_bottle/quickclot,
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
 /turf/open/floor/prison{
@@ -31175,10 +31174,6 @@
 /area/fiorina/station/power_ring)
 "tyb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/pill_bottle/quickclot{
-	pixel_x = 9;
-	pixel_y = 7
-	},
 /obj/item/storage/lockbox/vials{
 	pixel_x = -4;
 	pixel_y = 4

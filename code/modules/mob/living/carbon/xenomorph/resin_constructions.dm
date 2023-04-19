@@ -229,28 +229,6 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/mineral_door/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thickdoor
 
-
-// Resin Nests
-/datum/resin_construction/resin_obj/nest
-	name = "Resin Nest"
-	desc = "A resin nest used to contain any infected hosts."
-	construction_name = "resin nest"
-	cost = XENO_RESIN_NEST_COST
-
-	build_path = /obj/structure/bed/nest
-
-/datum/resin_construction/resin_obj/nest/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
-	if (!..())
-		return FALSE
-
-	var/obj/effect/alien/weeds/alien_weeds = locate() in T // No need to check if null, because if there are no weeds then parent call fails any way
-	if(!(alien_weeds.weed_strength >= WEED_LEVEL_HIVE))
-		to_chat(X, SPAN_WARNING("These weeds are not strong enough to hold the nest."))
-		return FALSE
-
-	return TRUE
-
-
 // Sticky Resin
 /datum/resin_construction/resin_obj/sticky_resin
 	name = "Sticky Resin"

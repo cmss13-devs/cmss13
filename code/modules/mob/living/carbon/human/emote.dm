@@ -156,7 +156,7 @@
 
 /datum/emote/living/carbon/human/medic/get_sound(mob/living/user)
 	if(user.gender == MALE)
-		return pick('sound/voice/corpsman.ogg', 'sound/voice/corpsman_up.ogg', 'sound/voice/corpsman_over_here.ogg', 'sound/voice/I_need_a_corpsman_1.ogg', 'sound/voice/I_need_a_corpsman_2.ogg', 'sound/voice/Im_hit_get_doc_up_here.ogg', 'sound/voice/get_doc_up_here_Im_hit.ogg', 'sound/voice/I_cant_feel_my_legs_corpsman.ogg', 20;'sound/voice/human_male_medic_rare_1.ogg', 20;'sound/voice/human_male_medic_rare_2.ogg')
+		return pick('sound/voice/corpsman.ogg', 'sound/voice/corpsman_up.ogg', 'sound/voice/corpsman_over_here.ogg', 'sound/voice/I_need_a_corpsman_1.ogg', 'sound/voice/I_need_a_corpsman_2.ogg', 'sound/voice/Im_hit_get_doc_up_here.ogg', 'sound/voice/get_doc_up_here_Im_hit.ogg', 20;'sound/voice/human_male_medic_rare_1.ogg', 20;'sound/voice/human_male_medic_rare_2.ogg')
 	else
 		return 'sound/voice/human_female_medic.ogg'
 

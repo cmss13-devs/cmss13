@@ -404,7 +404,7 @@
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "GE" = (

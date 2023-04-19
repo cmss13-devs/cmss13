@@ -208,6 +208,9 @@
 	icon_state = "wall1"
 	icon = 'icons/turf/shuttle.dmi'
 
+/turf/closed/shuttle/is_weedable()
+	return FULLY_WEEDABLE
+
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rasputin1"

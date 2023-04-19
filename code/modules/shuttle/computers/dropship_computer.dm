@@ -220,7 +220,7 @@
 
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital/cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)

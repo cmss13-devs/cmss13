@@ -13927,7 +13927,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "aZO" = (
@@ -14109,7 +14108,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "baR" = (
@@ -14968,7 +14966,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "beB" = (
@@ -15059,7 +15056,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "beZ" = (
@@ -16696,7 +16692,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bot" = (
@@ -17140,7 +17135,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bqT" = (
@@ -17162,7 +17156,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bqW" = (
@@ -20481,7 +20474,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bHd" = (
@@ -26849,7 +26841,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "clg" = (
@@ -30997,7 +30988,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "dRV" = (
@@ -36089,7 +36079,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "giB" = (
@@ -36725,7 +36714,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "gxO" = (
@@ -41681,7 +41669,6 @@
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3;
-	tag = "icon-chair (WEST)"
 	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
@@ -41689,7 +41676,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "iUZ" = (
@@ -43860,7 +43846,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "jZY" = (
@@ -48261,7 +48246,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "mfI" = (
@@ -55957,12 +55941,10 @@
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3;
-	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "pUY" = (
@@ -56690,7 +56672,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "qmk" = (
@@ -59626,7 +59607,6 @@
 "rFX" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rFY" = (
@@ -59910,7 +59890,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rNF" = (
@@ -60800,7 +60779,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "siz" = (
@@ -63844,7 +63822,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "tEO" = (

@@ -169,7 +169,7 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"
-	icon_state = "slug_shell"
+	icon_state = "slug_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 5
@@ -182,13 +182,13 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
 	name = "handful of incendiary slugs (12g)"
-	icon_state = "incendiary_slug"
+	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
 	name = "handful of shotgun buckshot shells (12g)"
-	icon_state = "buckshot_shell"
+	icon_state = "buckshot_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
@@ -216,13 +216,13 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun/flechette
 	name = "handful of shotgun flechette shells (12g)"
-	icon_state = "flechette_shell"
+	icon_state = "flechette_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag
 	name = "handful of beanbag slugs (12g)"
-	icon_state = "beanbag_slug"
+	icon_state = "beanbag_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 

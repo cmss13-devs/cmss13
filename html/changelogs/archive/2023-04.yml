@@ -228,3 +228,39 @@
   - imageadd: Added an ammo box icon stated named 'base' to make the linter happy.
   - code_imp: Changed icon state names and icon paths on various items to fix missing
       ammo, ammo casing, and ammo box icon state errors.
+2023-04-19:
+  BeagleGaming1:
+  - spellcheck: Corrects the C02 Knife to CO2
+  - rscadd: Allows Yautja to make bones from limbs and wear them
+  DecemberIsHere:
+  - balance: Berserker apprehend CD increased by a second, speed buff lowered by 2
+      seconds
+  - balance: ' Berserker clothesline max heal reduced by 25, rage stack requirement
+      increased by 1'
+  - balance: Berserker rage lockout increased by 1 second
+  - rscadd: Berserkers apprehend now has an glowy outline for when it is activated
+  Hopek:
+  - bugfix: Disassembled crates/barrels will now correctly show their contents above
+      the deconstruction material meaning that you don't have to right click or alt
+      click the turf to see what you looted. Doesn't make the contents break reality
+      this time.
+  - bugfix: Fixed duplicate crate/barrel disassembly material spawning because it
+      was being created in two places. If people want 2 material per crate/barrel
+      they'll have to intentionally code it in this time vs it being a bug.
+  - rscadd: Resin Whisperers can now use Coerce Resin to open and close resin doors.
+  - bugfix: The m39 elite variant sub machine gun can now be put back in your holster
+      if you spawn with it as a PMC (and whoever else uses them)
+  Huffie56:
+  - code_imp: change some iteration of armour to armor and colour to color.
+  NewyearnewmeUwu:
+  - bugfix: Proximity sensors can now be slashed by xenos to deactivate them, and
+      they turn off after you die if you have an active one on you.
+  SpartanBobby:
+  - rscadd: FORECON Synthetic now has a special type of red shoe with the ability
+      to hold a knife
+  Waseemq1235:
+  - soundadd: Added a whopping 49 Working Joe lines to the game.
+  blackdragonTOW:
+  - bugfix: Changed the "Binded" sprite to "Bound"
+  realforest2001:
+  - bugfix: AA & OB Consoles are no longer acidable.

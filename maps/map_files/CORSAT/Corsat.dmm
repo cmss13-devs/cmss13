@@ -27187,7 +27187,7 @@
 "bxZ" = (
 /obj/structure/closet/crate,
 /obj/item/robot_parts/robot_component/actuator,
-/obj/item/robot_parts/robot_component/armour,
+/obj/item/robot_parts/robot_component/armor,
 /obj/item/robot_parts/robot_component/camera,
 /obj/item/robot_parts/robot_component/diagnosis_unit,
 /turf/open/floor/corsat{

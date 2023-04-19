@@ -19,8 +19,8 @@
 	name = "\improper security starboard entrance"
 	icon_state = "brig"
 
-/area/prison/security/port/armoury
-	name = "\improper security armoury"
+/area/prison/security/port/armory
+	name = "\improper security armory"
 	icon_state = "armory"
 
 /area/prison/security/port/equipment

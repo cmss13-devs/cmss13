@@ -80,7 +80,7 @@
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)) )
 		var/h_damage = 30 - (fendy.crest_defense * 10) + (fendy.steelcrest * 7.5) //30 if crest up, 20 if down, plus 7.5
-		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
+		carbone.apply_armored_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(fendy, carbone)
 	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
@@ -143,7 +143,7 @@
 		step_away(human, xeno, sweep_range, 2)
 		xeno.flick_attack_overlay(human, "punch")
 		human.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-		human.apply_armoured_damage(get_xeno_damage_slash(xeno, 15), ARMOR_MELEE, BRUTE)
+		human.apply_armored_damage(get_xeno_damage_slash(xeno, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(human, 2, 1)
 
 		if(human.mob_size < MOB_SIZE_BIG)
@@ -223,7 +223,7 @@
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
-		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
+		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMORED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
 		X.update_icons()
@@ -241,7 +241,7 @@
 			X.armor_deflection_buff -= 30
 			X.armor_explosive_buff -= 60
 			X.small_explosives_stun = TRUE
-		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
+		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMORED_DAMAGE_PROJECTILE)
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
 		X.update_canmove()

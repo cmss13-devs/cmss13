@@ -5156,7 +5156,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "apo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Security Armoury"
+	name = "\improper Security Armory"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -5721,7 +5721,7 @@
 "aqU" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Security Armoury"
+	name = "\improper Security Armory"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -29371,7 +29371,7 @@
 "bNx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Armoury"
+	name = "\improper Armory"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -32470,7 +32470,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "bXw" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Armoury"
+	name = "\improper Armory"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)

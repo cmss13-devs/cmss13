@@ -165,7 +165,7 @@
 	network_receive = "CLF";
 	networks_transmit = list("CLF");
 	phone_category = "CR-116";
-	phone_id = "Armoury";
+	phone_id = "Armory";
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{

@@ -69,12 +69,12 @@
 		powered = 0
 
 
-// ARMOUR
+// ARMOR
 // Protects the cyborg from damage. Usually first module to be hit
 // No power usage
-/datum/robot_component/armour
-	name = "armour plating"
-	external_type = /obj/item/robot_parts/robot_component/armour
+/datum/robot_component/armor
+	name = "armor plating"
+	external_type = /obj/item/robot_parts/robot_component/armor
 	max_damage = 60
 
 
@@ -188,7 +188,7 @@
 	components["diagnosis unit"] = new/datum/robot_component/diagnosis_unit(src)
 	components["camera"] = new/datum/robot_component/camera(src)
 	components["comms"] = new/datum/robot_component/binary_communication(src)
-	components["armour"] = new/datum/robot_component/armour(src)
+	components["armor"] = new/datum/robot_component/armor(src)
 
 // Checks if component is functioning
 /mob/living/silicon/robot/proc/is_component_functioning(module_name)
@@ -231,8 +231,8 @@
 	icon_state = "motor"
 	icon_state_broken = "motor_broken"
 
-/obj/item/robot_parts/robot_component/armour
-	name = "armour plating"
+/obj/item/robot_parts/robot_component/armor
+	name = "armor plating"
 	icon_state = "armor"
 	icon_state_broken = "armor_broken"
 

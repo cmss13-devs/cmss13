@@ -8754,7 +8754,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door_control/brbutton/alt{
-	id = "Secure_Master_Armoury_2";
+	id = "Secure_Master_Armory_2";
 	name = "remote door-control"
 	},
 /turf/open/floor/strata{
@@ -17563,7 +17563,7 @@
 	pixel_y = 9
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
-	id = "Sec-Armoury-Lockdown";
+	id = "Sec-Armory-Lockdown";
 	name = "remote door-control";
 	pixel_x = -7;
 	pixel_y = -2
@@ -30958,7 +30958,7 @@
 "nKo" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control/brbutton/alt{
-	id = "Secure_Master_Armoury";
+	id = "Secure_Master_Armory";
 	name = "remote door-control"
 	},
 /obj/item/limb/hand/l_hand{
@@ -48076,7 +48076,7 @@
 /obj/structure/window/framed/strata/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = "Sec-Armoury-Lockdown"
+	id = "Sec-Armory-Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -57328,7 +57328,7 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = "Sec-Armoury-Lockdown"
+	id = "Sec-Armory-Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"

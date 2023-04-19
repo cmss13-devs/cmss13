@@ -1030,7 +1030,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light
 	name = "\improper M4 pattern light PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. Has some armour plating removed for extra mobility."
+	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. Has some armor plating removed for extra mobility."
 	icon_state = "pmc_sniper"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1181,7 +1181,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/veteran/van_bandolier
 	name = "safari jacket"
-	desc = "A tailored hunting jacket, cunningly lined with segmented armour plates. Sometimes the game shoots back."
+	desc = "A tailored hunting jacket, cunningly lined with segmented armor plates. Sometimes the game shoots back."
 	icon_state = "van_bandolier"
 	item_state = "van_bandolier_jacket"
 	blood_overlay_type = "coat"

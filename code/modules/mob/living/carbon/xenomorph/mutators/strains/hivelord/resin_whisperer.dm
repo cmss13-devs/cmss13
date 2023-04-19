@@ -68,7 +68,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
-	var/mob/living/carbon/xenomorph/hivelord/hivelord_mob = owner
+	if(hivelord.mutation_type == HIVELORD_RESIN_WHISPERER)
+		var/mob/living/carbon/xenomorph/hivelord/hivelord_mob = owner
 	if(hivelord.mutation_type == HIVELORD_RESIN_WHISPERER &&  !hivelord_mob.on_weeds()) // There is a chance that queen can't place down buildings in ovi build view so we place the rein whisperer check here.
 		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
 		return

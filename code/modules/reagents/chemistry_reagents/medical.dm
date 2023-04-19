@@ -175,7 +175,7 @@
 		PROPERTY_FOCUSING = 6,
 		PROPERTY_CURING = 4,
 		PROPERTY_ORGAN_HEALING = 1,
-		)
+	)
 	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant

@@ -505,6 +505,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if(ignited_morb.stat == DEAD)
 			continue
 
+		if(isxeno(ignited_morb))
+			var/mob/living/carbon/xenomorph/X = ignited_morb
+			if(X.burrow)
+				continue
+
 		if(ishuman(ignited_morb))
 			var/mob/living/carbon/human/H = ignited_morb //fixed :s
 
@@ -596,6 +601,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
 		return
+
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/X = M
+		if(X.burrow)
+			return
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = round(burnlevel * 0.5)

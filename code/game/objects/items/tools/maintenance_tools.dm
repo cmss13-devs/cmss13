@@ -497,7 +497,7 @@
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
 	hitsound = "swing_hit"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really

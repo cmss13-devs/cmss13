@@ -43,6 +43,8 @@
 			hud_icon_state = "doc"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")
+	if(!(H.mob_flags & ROGUE_UNIT) && ((H.faction == FACTION_UPP) || (FACTION_UPP in H.faction_group)))
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "allegiance_UPP")
 
 /datum/faction/upp/get_antag_guns_snowflake_equipment()
 	return list(

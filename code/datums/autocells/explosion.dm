@@ -318,7 +318,7 @@ as having entered the turf.
 			if(M == firing_mob)
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(M)]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(T)]."
 			// One human blew up another, be worried about it but do everything basically the same
-			else if(ishuman(firing_mob) && ishuman(M) && M.faction == firing_mob.faction && !thearea?.statistic_exempt)
+			else if((ishuman(firing_mob) && ishuman(M)) && (M.faction == firing_mob.faction) && !(thearea?.statistic_exempt || firing_mob.mob_flags & ROGUE_UNIT || M.mob_flags & ROGUE_UNIT))
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."

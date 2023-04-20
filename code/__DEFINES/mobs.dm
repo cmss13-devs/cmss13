@@ -183,6 +183,7 @@
 #define MUTINEER (1<<4)  // Part of the Mutiny Gang
 #define GIVING (1<<5) // Is currently trying to give an item to someone
 #define NOBIOSCAN (1<<6)
+#define ROGUE_UNIT (1<<7) // Is not aligned to their original faction. For use where admins want to declare particular PMCs rogue from WY for example.
 
 //=================================================
 

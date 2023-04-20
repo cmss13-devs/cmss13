@@ -815,6 +815,8 @@
 	desc = "A headset commonly worn by WY corporate personnel."
 	frequency = WY_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_WY
 
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"

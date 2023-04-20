@@ -1152,7 +1152,7 @@
 	if(P.firer && ismob(P.firer))
 		var/mob/firingMob = P.firer
 		var/area/A = get_area(src)
-		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
+		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !(A?.statistic_exempt || firingMob.mob_flags & ROGUE_UNIT || mob_flags & ROGUE_UNIT)) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(P.ammo, /datum/ammo/energy/taser))
 				round_statistics.total_friendly_fire_instances++
 				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"

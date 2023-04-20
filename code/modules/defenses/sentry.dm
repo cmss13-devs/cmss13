@@ -46,12 +46,12 @@
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(SENTRY_FACTION_USCM, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
 		// SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_USCM,
 	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
@@ -480,7 +480,7 @@
 /obj/structure/machinery/defenses/sentry/premade/Initialize()
 	. = ..()
 	if(selected_categories[SENTRY_CATEGORY_IFF])
-		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_USCM
+		selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_USCM
 
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
@@ -525,8 +525,8 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
-	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
+	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -558,11 +558,11 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(SENTRY_FACTION_USCM, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_USCM,
 	)
 
 

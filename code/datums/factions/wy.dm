@@ -1,8 +1,8 @@
-/datum/faction/pmc
-	name = "Private Military Company"
-	faction_tag = FACTION_PMC
+/datum/faction/wy
+	name = "Weyland Yutani"
+	faction_tag = FACTION_WY
 
-/datum/faction/pmc/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/wy/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/_role
@@ -11,20 +11,6 @@
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
-		/// WY PMC Roles
-		if(JOB_PMC_DIRECTOR)
-			hud_icon_state = "pmc_sd"
-		if(JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
-			hud_icon_state = "pmc_ld"
-		if(JOB_PMC_DOCTOR)
-			hud_icon_state = "pmc_td"
-		if(JOB_PMC_ENGINEER)
-			hud_icon_state = "pmc_ct"
-		if(JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR)
-			hud_icon_state = "pmc_md"
-		if(JOB_PMC_SYNTH)
-			hud_icon_state = "pmc_syn"
-
 		/// Weyland Yutani Generic Roles
 		if(JOB_CORPORATE_LIAISON)
 			hud_icon_state = "wy_liaison"
@@ -42,6 +28,20 @@
 			hud_icon_state = "wy_goon_ld"
 		if(JOB_WY_GOON_RESEARCHER)
 			hud_icon_state = "wy_goon_rsr"
+
+		/// WY PMC Roles
+		if(JOB_PMC_DIRECTOR)
+			hud_icon_state = "pmc_sd"
+		if(JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST)
+			hud_icon_state = "pmc_ld"
+		if(JOB_PMC_DOCTOR)
+			hud_icon_state = "pmc_td"
+		if(JOB_PMC_ENGINEER)
+			hud_icon_state = "pmc_ct"
+		if(JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR)
+			hud_icon_state = "pmc_md"
+		if(JOB_PMC_SYNTH)
+			hud_icon_state = "pmc_syn"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, hud_icon_state)
 	if(!(H.mob_flags & ROGUE_UNIT)) //PMCs are only explicitly shown if it's their primary faction, or they're not grouped under WY
@@ -50,27 +50,22 @@
 		else if ((H.faction == FACTION_WY) || (FACTION_WY in H.faction_group))
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "allegiance_W-Y")
 
-/datum/faction/pmc/get_antag_guns_snowflake_equipment()
+/datum/faction/wy/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
-		list("M41A/2 Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/elite, null, VENDOR_ITEM_REGULAR),
-		list("M39B/2 submachinegun", 30, /obj/item/weapon/gun/smg/m39/elite, null, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/corporate, null, VENDOR_ITEM_REGULAR),
 		list("NSG23 assault rifle", 20, /obj/item/weapon/gun/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("M41A AP magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
+		list("M41A magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle, null, VENDOR_ITEM_REGULAR),
 		list("M41A extended magazine (10x24mm)", 5, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
-		list("M39 AP magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap, null, VENDOR_ITEM_REGULAR),
-		list("M39 HV extended magazine (10x20mm)", 5, /obj/item/ammo_magazine/smg/m39/extended, null, VENDOR_ITEM_REGULAR),
-		list("NSG 23 armor-piercing magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/nsg23/ap, null, VENDOR_ITEM_REGULAR),
+		list("NSG 23 magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
 		list("NSG 23 extended magazine (10x24mm)", 5, /obj/item/ammo_magazine/rifle/nsg23/extended, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("VP78 pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 15, /obj/item/weapon/gun/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("VP78 magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
@@ -90,27 +85,22 @@
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR)
 	)
 
-/datum/faction/pmc/get_antag_guns_sorted_equipment()
+/datum/faction/wy/get_antag_guns_sorted_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
-		list("M41A/2 Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/elite, null, VENDOR_ITEM_REGULAR),
-		list("M39B/2 submachinegun", 30, /obj/item/weapon/gun/smg/m39/elite, null, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/corporate, null, VENDOR_ITEM_REGULAR),
 		list("NSG23 assault rifle", 30, /obj/item/weapon/gun/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("M41A AP magazine (10x24mm)", 30, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
+		list("M41A magazine (10x24mm)", 30, /obj/item/ammo_magazine/rifle, null, VENDOR_ITEM_REGULAR),
 		list("M41A extended magazine (10x24mm)", 50, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
-		list("M39 AP magazine (10x20mm)", 30, /obj/item/ammo_magazine/smg/m39/ap, null, VENDOR_ITEM_REGULAR),
-		list("M39 HV extended magazine (10x20mm)", 50, /obj/item/ammo_magazine/smg/m39/extended, null, VENDOR_ITEM_REGULAR),
-		list("NSG 23 armor-piercing magazine (10x24mm)", 30, /obj/item/ammo_magazine/rifle/nsg23/ap, null, VENDOR_ITEM_REGULAR),
+		list("NSG 23 magazine (10x24mm)", 30, /obj/item/ammo_magazine/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
 		list("NSG 23 extended magazine (10x24mm)", 50, /obj/item/ammo_magazine/rifle/nsg23/extended, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("VP78 pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 30, /obj/item/weapon/gun/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("VP78 magazine (9mm)", 50, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 50, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),

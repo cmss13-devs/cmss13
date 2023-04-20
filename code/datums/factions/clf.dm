@@ -25,6 +25,8 @@
 			hud_icon_state = "cellcom"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "clf_[hud_icon_state]")
+	if(!(human.mob_flags & ROGUE_UNIT) && ((human.faction == FACTION_CLF) || (FACTION_CLF in human.faction_group)))
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "allegiance_CLF")
 
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(

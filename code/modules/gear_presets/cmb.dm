@@ -1,50 +1,7 @@
 /datum/equipment_preset/cmb
 	name = "Colonial Marshal"
-
+	faction = FACTION_MARINE
 	assignment = "CMB Deputy"
-	rank = JOB_CMB
-	faction = FACTION_USCM
-
-/datum/equipment_preset/cmb/New()
-	. = ..()
-	access = get_all_accesses() + get_all_civilian_accesses()
-
-/datum/equipment_preset/cmb/load_name(mob/living/carbon/human/H, randomise)
-	H.gender = pick(80;MALE,20;FEMALE)
-	var/datum/preferences/A = new()
-	A.randomize_appearance(H)
-	var/random_name
-	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
-	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
-	var/hair_color = pick(hair_colors)
-	H.r_hair = hair_colors[hair_color][1]
-	H.g_hair = hair_colors[hair_color][2]
-	H.b_hair = hair_colors[hair_color][3]
-	H.r_facial = hair_colors[hair_color][1]
-	H.g_facial = hair_colors[hair_color][2]
-	H.b_facial = hair_colors[hair_color][3]
-	var/eye_color = pick(colors)
-	H.r_eyes = colors[eye_color][1]
-	H.g_eyes = colors[eye_color][2]
-	H.b_eyes = colors[eye_color][3]
-	if(H.gender == MALE)
-		random_name = "[pick(first_names_male)] [pick(last_names)]"
-		H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
-		H.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
-	else
-		random_name = "[pick(first_names_female)] [pick(last_names)]"
-		H.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
-	H.change_real_name(H, random_name)
-	H.age = rand(20,45)
-	H.r_hair = rand(15,35)
-	H.g_hair = rand(15,35)
-	H.b_hair = rand(25,45)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/cmb
-	name = "Colonial Marshal"
-	faction = FACTION_USCM
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -95,7 +52,7 @@
 		var/obj/item/clothing/under/uniform = H.w_uniform
 		if(istype(uniform))
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
-			uniform.sensor_faction = FACTION_USCM
+			uniform.sensor_faction = FACTION_MARINE
 	return ..()
 
 //*****************************************************************************************************/
@@ -455,7 +412,7 @@
 	paygrade = "ME2"
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
-	faction = FACTION_USCM
+	faction = FACTION_MARINE
 
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/H)
 	. = ..()

@@ -1,28 +1,34 @@
 // for secHUDs and medHUDs and variants.
-//The number is the location of the image on the list hud_list of humans.
+// The number is the location of the image on the list hud_list of mobs.
 // /datum/mob_hud expects these to be unique
 // these need to be strings in order to make them associative lists
-#define HEALTH_HUD "1" // a simple line rounding the mob's number health
-#define STATUS_HUD "2" // alive, dead, diseased, etc.
-#define ID_HUD "3" // the job asigned to your ID
-#define WANTED_HUD "4" // wanted, released, parroled, security status
-#define FACTION_HUD "8" // Any faction related HUD on humans
-#define STATUS_HUD_OOC "10" // STATUS_HUD without virus db check for someone being ill.
-#define STATUS_HUD_XENO_INFECTION "11" // STATUS_HUD without virus db check for someone being ill.
-#define XENO_HOSTILE_ACID "12" // acid 'stacks' index
-#define XENO_HOSTILE_SLOW "13" // xeno-inflicted slow. used by a bunch of MOBA xenos stuff
-#define XENO_HOSTILE_TAG "14" // dancer prae 'tag'
-#define XENO_HOSTILE_FREEZE "15" // Any xeno-inflifcted root
 
-#define HEALTH_HUD_XENO "16" // health HUD for xenos
-#define PLASMA_HUD "17" // indicates the plasma level of xenos.
-#define PHEROMONE_HUD "18" // indicates which pheromone is active on a xeno.
+/// HUMAN HUDs
+#define STATUS_HUD_OOC "1" // STATUS_HUD without virus db check for someone being ill.
+#define HEALTH_HUD "2" // a simple line rounding the mob's number health
+#define STATUS_HUD "3" // alive, dead, diseased, etc.
+#define STATUS_HUD_XENO_INFECTION "4" // STATUS_HUD without virus db check for someone being ill.
+#define ID_HUD "5" // the job asigned to your ID
+#define WANTED_HUD "6" // wanted, released, parroled, security status
+#define FACTION_HUD "7" // Any faction related HUD on humans
+#define ORDER_HUD "8" // If humans are affected by orders or not
+#define STATUS_HUD_XENO_CULTIST "9" // Whether they are a xeno cultist or not
+#define ALLEGIENCE_HUD // To identify undercover agents for other factions.
+
+/// XENO HUDs
+#define XENO_STATUS_HUD "10" // Whether xeno is a leader and its current upgrade level
+#define XENO_HOSTILE_ACID "11" // acid 'stacks' index
+#define XENO_HOSTILE_SLOW "12" // xeno-inflicted slow. used by a bunch of MOBA xenos stuff
+#define XENO_HOSTILE_TAG "13" // dancer prae 'tag'
+#define XENO_HOSTILE_FREEZE "14" // Any xeno-inflifcted root
+#define HEALTH_HUD_XENO "15" // health HUD for xenos
+#define PLASMA_HUD "16" // indicates the plasma level of xenos.
+#define PHEROMONE_HUD "17" // indicates which pheromone is active on a xeno.
+#define ARMOR_HUD_XENO "18" // armor HUD for xenos
 #define QUEEN_OVERWATCH_HUD "19" // indicates which xeno the queen is overwatching.
-#define ARMOR_HUD_XENO "20" // armor HUD for xenos
-#define XENO_STATUS_HUD "21" // Whether xeno is a leader and its current upgrade level
-#define ORDER_HUD "22" // If humans are affected by orders or not
-#define XENO_BANISHED_HUD "23" // indicates that the xeno is banished
-#define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
+#define XENO_BANISHED_HUD "20" // indicates that the xeno is banished
+
+/// YAUTJA HUDs
 #define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
 

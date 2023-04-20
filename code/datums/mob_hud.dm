@@ -12,11 +12,12 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_USCM = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
-	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
+	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
+	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
-	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
+	MOB_HUD_FACTION_VAI = new /datum/mob_hud/faction/vai(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan()
 	)
@@ -185,6 +186,9 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/pmc
 	faction_to_check = FACTION_PMC
+
+/datum/mob_hud/faction/vai
+	faction_to_check = FACTION_CONTRACTOR
 
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN)
@@ -620,7 +624,7 @@ var/list/datum/mob_hud/huds = list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINEER)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "allegiance_mutineer")
 		return
 
 	F.modify_hud_holder(holder, src)

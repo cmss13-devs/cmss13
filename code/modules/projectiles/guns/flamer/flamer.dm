@@ -512,7 +512,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				var/mob/user = weapon_cause_data.resolve_mob()
 				if(user)
 					var/area/thearea = get_area(user)
-					if(user.faction == H.faction && !thearea?.statistic_exempt)
+					if(user.faction == H.faction && !(thearea?.statistic_exempt || user.mob_flags & ROGUE_UNIT || H.mob_flags & ROGUE_UNIT))
 						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)

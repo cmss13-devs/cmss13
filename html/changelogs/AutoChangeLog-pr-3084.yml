@@ -1,5 +1,0 @@
-author: "Foxtrot1322"
-delete-after: True
-changes:
-  - spellcheck: "Renamed CO items with \"Captain\" in their names & descriptions to \"Commanding Officer\""
-  - spellcheck: "Fixed a typo in the XOs uniform description"

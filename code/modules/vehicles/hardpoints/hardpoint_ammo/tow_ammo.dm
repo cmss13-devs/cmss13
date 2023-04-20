@@ -1,5 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/towlauncher
 	name = "TOW Launcher Magazine"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	desc = "A secondary armament rocket magazine"
 	caliber = "rocket" //correlates to any rocket mags
 	icon_state = "quad_rocket"

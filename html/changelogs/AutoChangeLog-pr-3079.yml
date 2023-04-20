@@ -1,4 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - bugfix: "Removes some ways of using binos when you should not be able to"

@@ -120,7 +120,7 @@
 					return 1
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than an ointment!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -131,6 +131,7 @@
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+				affecting.heal_damage(burn = heal_burn)
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
@@ -166,7 +167,7 @@
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a trauma kit!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -233,7 +234,7 @@
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a burn kit!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"

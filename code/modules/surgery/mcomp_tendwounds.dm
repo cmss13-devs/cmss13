@@ -253,9 +253,9 @@
 			SPAN_HELPFUL("You finish treating the damaged organs on your body with [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You finish treating [target]'s damaged organs with \the [tool]."),
-			SPAN_HELPFUL("[user] finished treating your damaged organs with \the [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s damaged organs with \the [tool]."))
+			SPAN_HELPFUL("You finish treating [target]'s damaged organs with [tool]."),
+			SPAN_HELPFUL("[user] finished treating your damaged organs with [tool]."),
+			SPAN_NOTICE("[user] finished treating [target]'s damaged organs with [tool]."))
 
 	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
 		return

@@ -270,13 +270,13 @@
 
 /datum/surgery_step/cauterize/mclamp_wound/organ/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target) //Same as original, but without healing
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with \the [tool]."),
-			SPAN_HELPFUL("You finish closing the treated wounds on your body with \the [tool]"))
+		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
+			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You finish closing [target]'s treated wounds with \the [tool]."),
-			SPAN_HELPFUL("[user] finished closing your treated wounds with \the [tool]."),
-			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with \the [tool]."))
+			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),
+			SPAN_HELPFUL("[user] finished closing your treated wounds with [tool]."),
+			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with [tool]."))
 
 	if(isyautja(target))
 		target.emote("loudroar")

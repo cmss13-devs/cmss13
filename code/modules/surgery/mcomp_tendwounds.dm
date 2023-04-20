@@ -265,7 +265,7 @@
 	log_interact(user, target, "[key_name(user)] treated some of [key_name(target)]'s organ damage with [tool].")
 
 /datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s organ damage with \the [tool], possibly ending [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s organ damage with [tool], possibly ending [surgery].")
 	return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound/organ/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

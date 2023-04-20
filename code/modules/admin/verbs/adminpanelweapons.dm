@@ -104,7 +104,7 @@
 				if(salvo == "Single")
 					var/prompt = tgui_alert(src, "Are you sure you want to shoot a railgun slug at the USS Almayer at a random place?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 					if(prompt == "Yes")
-						shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+						shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 						while(picked_atom == null)
 							picked_area = pick(GLOB.ship_areas)
 
@@ -120,7 +120,7 @@
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to shoot a railgun slug at the USS Almayer at your location?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 				if(prompt == "Yes")
-					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					while(picked_atom == null)
 						picked_area = pick(GLOB.ship_areas)
 

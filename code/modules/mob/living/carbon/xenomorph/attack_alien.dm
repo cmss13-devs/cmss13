@@ -262,7 +262,10 @@
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[M.slash_verb]ed [key_name(src)]</font>")
 			log_attack("[key_name(M)] [M.slash_verb]ed [key_name(src)]")
 
-			playsound(loc, M.slash_sound, 25, 1)
+			if(custom_slashed_sound)
+				playsound(loc, custom_slashed_sound, 25, 1)
+			else
+				playsound(loc, M.slash_sound, 25, 1)
 			apply_damage(damage, BRUTE)
 
 		if(INTENT_DISARM)

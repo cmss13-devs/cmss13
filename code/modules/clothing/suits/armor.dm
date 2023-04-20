@@ -134,7 +134,7 @@
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
-	desc = "An armoured jacket with silver rank pips and livery."
+	desc = "An armored jacket with silver rank pips and livery."
 	icon_state = "warden_jacket"
 	item_state = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS

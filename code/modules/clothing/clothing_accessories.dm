@@ -74,7 +74,7 @@
 /obj/item/clothing/attack_hand(mob/user, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
-		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armour vests with medals, but can't hurt in general.
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
 		for(var/obj/item/clothing/accessory/A in accessories)
 			if(A.attack_hand(user, mods))
 				delegated = TRUE

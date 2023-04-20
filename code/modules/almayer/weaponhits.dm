@@ -55,6 +55,12 @@
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
+						else
+							for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+								if(!is_mainship_level(current_mob.z))
+									continue
+								playsound_client(current_mob.client, 'sound/effects/lazer_point_defence_success.ogg', 100 )
+
 						shotspacing += 1
 					if(confirmedhit > 0)
 						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
@@ -77,6 +83,11 @@
 							playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					else
+						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+							if(!is_mainship_level(current_mob.z))
+								continue
+							playsound_client(current_mob.client, 'sound/effects/lazer_point_defence_success.ogg', 100 )
 
 		if(WEAPON_RAILGUN)
 

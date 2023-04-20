@@ -37,6 +37,8 @@
 								targets += picked_atom
 						picked_atom = null
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
+					if(point_defense == "Yes")
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), hiteta - 3 SECONDS)
 					picked_atom = null
 					targets = null
 
@@ -55,6 +57,8 @@
 								picked_atom = pick(turfs_of_area)
 
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
+						if(point_defense == "Yes")
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), hiteta - 3 SECONDS)
 
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
@@ -65,6 +69,7 @@
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
+						//!!small chance of this not actually being spossed to be here, will check later kudoooos!!
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)

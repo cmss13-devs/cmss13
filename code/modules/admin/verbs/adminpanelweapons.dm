@@ -16,7 +16,7 @@
 
 	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Particle cannon"), 20 SECONDS)
 	var/point_defense = tgui_alert(src, "Allow Point Defence of the ship to intercept?", "Be nice!", list("Yes", "No"), 20 SECONDS)
-	var/hiteta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!!", 10, 120, 10, 20 SECONDS)
+	var/hiteta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
 	switch(weapontype)
 		if("Missile")
 			exactplace = tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS)
@@ -24,29 +24,31 @@
 				salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
 				if(salvo == "Salvo")
 					quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 5, 2, 20 SECONDS)
-					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS" , MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
-					for(currentshot = 1; currentshot <= quantity; currentshot++ )
-						while(picked_atom == null)
-							picked_area = pick(GLOB.ship_areas)
+					var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer at random places?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
+					if(prompt == "Yes")
+						shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+						for(currentshot = 1; currentshot <= quantity; currentshot++ )
+							while(picked_atom == null)
+								picked_area = pick(GLOB.ship_areas)
 
-							for(var/turf/my_turf in picked_area)
-								if(isturf(my_turf))
-									turfs_of_area += my_turf
-							if(turfs_of_area.len > 1)
-								picked_atom = pick(turfs_of_area)
-								targets += picked_atom
+								for(var/turf/my_turf in picked_area)
+									if(isturf(my_turf))
+										turfs_of_area += my_turf
+								if(turfs_of_area.len > 1)
+									picked_atom = pick(turfs_of_area)
+									targets += picked_atom
+							picked_atom = null
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
+						if(point_defense == "Yes")
+							var/spoolup = hiteta - 3
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 						picked_atom = null
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
-					if(point_defense == "Yes")
-						var/spoolup = hiteta - 3
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
-					picked_atom = null
-					targets = null
+						targets = null
 
 				if(salvo == "Single")
 					var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer at a random place?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 					if(prompt == "Yes")
-						shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta]", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+						shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 						while(picked_atom == null)
 							picked_area = pick(GLOB.ship_areas)
 
@@ -60,16 +62,16 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 						if(point_defense == "Yes")
 							var/spoolup = hiteta - 3
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 				if(prompt == "Yes")
-					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta] SECONDS", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, point_defense), hiteta SECONDS)
 					if(point_defense == "Yes")
 						var/spoolup = hiteta - 3
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))

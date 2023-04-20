@@ -236,7 +236,7 @@
 			SPAN_NOTICE("[user] begins to treat the damaged organs on [target]'s body with [tool]."))
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
-	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with \the [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with [tool], starting [surgery].")
 
 /datum/surgery_step/mtend_wounds/organ/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/organ in surgery.affected_limb.internal_organs)

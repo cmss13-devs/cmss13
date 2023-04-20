@@ -1,5 +1,0 @@
-author: "TeDGamer"
-delete-after: True
-changes:
-  - bugfix: "Fixes ointment not healing new amount"
-  - spellcheck: "Fixed item name in areas that was using generic bandage message"

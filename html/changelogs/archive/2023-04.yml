@@ -264,3 +264,18 @@
   - bugfix: Changed the "Binded" sprite to "Bound"
   realforest2001:
   - bugfix: AA & OB Consoles are no longer acidable.
+2023-04-20:
+  LTNTS:
+  - bugfix: misplaced tile in Normandy
+  - bugfix: '"entrance" area leading to a wall by Brig Cryo'
+  - bugfix: ert dropship consoles being slashable/acidable
+  Puckaboo2:
+  - bugfix: Re-added missing donor clothing and jumpsuits that were removed from a
+      previous PR.
+  TeDGamer:
+  - bugfix: Fixes ointment not healing new amount
+  - spellcheck: Fixed item name in areas that was using generic bandage message
+  - maptweak: Alamo and Normandy cockpits have windows to passenger area now
+  harryob:
+  - code_imp: vendor subtypes can now be made to vend without an id
+  - bugfix: the id scanning wire in vendors does something again

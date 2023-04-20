@@ -95,7 +95,7 @@
 				var/confirmedhit
 				for(var/turf/picked_atom in location)
 					if(prob(70))
-							cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
 					else

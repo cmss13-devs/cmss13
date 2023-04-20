@@ -15,7 +15,7 @@
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "plasteel"
 	density = FALSE
-	closed = TRUE
+	closed = FALSE
 	can_wire = TRUE
 	repair_materials = list("plasteel" = 0.3)
 

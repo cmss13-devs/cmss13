@@ -249,8 +249,8 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes treating the damaged organs on their body with \the [tool]."),
-			SPAN_HELPFUL("You finish treating the damaged organs on your body with \the [tool]."))
+		user.visible_message(SPAN_NOTICE("[user] finishes treating the damaged organs on their body with [tool]."),
+			SPAN_HELPFUL("You finish treating the damaged organs on your body with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish treating [target]'s damaged organs with \the [tool]."),

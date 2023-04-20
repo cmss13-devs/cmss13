@@ -163,7 +163,10 @@
 	var/turf/T1 = locate(L[3],L[4],z)
 	for(var/turf/T in block(T0,T1))
 		T.color = _color
+<<<<<<< HEAD
 		//LAZYINITLIST(T.atom_colors)
+=======
+>>>>>>> upstream/master
 		T.maptext = null
 	if(_color)
 		var/turf/T = locate(L[1], L[2], z)

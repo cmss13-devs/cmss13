@@ -163,8 +163,16 @@
 			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
 
 			M.flick_attack_overlay(src, "slash")
+<<<<<<< HEAD
 			playsound(loc, slash_sound, 25, 1)
 			apply_armored_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+=======
+			if(custom_slashed_sound)
+				playsound(loc, custom_slashed_sound, 25, 1)
+			else
+				playsound(loc, slash_sound, 25, 1)
+			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+>>>>>>> upstream/master
 
 			if(M.behavior_delegate)
 				var/datum/behavior_delegate/MD = M.behavior_delegate

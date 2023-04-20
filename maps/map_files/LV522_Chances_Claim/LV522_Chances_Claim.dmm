@@ -7600,7 +7600,7 @@
 /area/lv522/oob)
 "dUq" = (
 /obj/structure/surface/table/almayer,
-/obj/item/c02_cartridge{
+/obj/item/co2_cartridge{
 	pixel_x = 5;
 	pixel_y = 5
 	},

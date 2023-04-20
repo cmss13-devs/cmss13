@@ -349,7 +349,7 @@
 
 		if("CMB")
 			var/body = "<body>"
-			
+
 			for(var/text in GLOB.CMBFaxes)
 				body += text
 				body += "<br><br>"
@@ -800,6 +800,7 @@
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(H.mob_flags & MUTINEER)
 			H.mob_flags &= ~MUTINEER
+			H.mob_flags &= ~ROGUE_UNIT
 			H.hud_set_squad()
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)

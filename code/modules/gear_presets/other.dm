@@ -11,6 +11,7 @@
 /datum/equipment_preset/other/mutineer/load_status(mob/living/carbon/human/H)
 	. = ..()
 	H.mob_flags |= MUTINEER
+	H.mob_flags |= ROGUE_UNIT
 	H.hud_set_squad()
 
 	to_chat(H, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))

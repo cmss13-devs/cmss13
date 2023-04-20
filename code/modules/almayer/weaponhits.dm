@@ -130,3 +130,4 @@
 							continue
 						//playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
 		if(WEAPON_PARTICLE_CANNON)
+			//deactivated, remoov later or add later!

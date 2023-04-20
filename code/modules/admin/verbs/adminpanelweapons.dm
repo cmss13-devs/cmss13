@@ -134,4 +134,4 @@
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, mob.loc, null), hiteta SECONDS)
 
 		if("Particle cannon")
-			//abagable
+			//deactivated, remoov later or add later!

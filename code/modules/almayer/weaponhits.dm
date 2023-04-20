@@ -25,7 +25,7 @@
 				if(salvo == "Salvo")
 					var/shotspacing
 					for(var/turf/picked_atom in location)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						//cell_explosion(picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
@@ -52,14 +52,14 @@
 					var/shotspacing
 					for(var/turf/picked_atom in location)
 						if(prob(70))
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 						else
 							for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 								if(!is_mainship_level(current_mob.z))
 									continue
-								playsound_client(current_mob.client, 'sound/effects/lazer_point_defence_success.ogg', 100 )
+								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
 
 						shotspacing += 1
 					if(confirmedhit > 0)
@@ -74,7 +74,7 @@
 
 				else
 					if(prob(70))
-						cell_explosion(location, 200, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						cell_explosion(location, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 							if(!is_mainship_level(current_mob.z))
@@ -87,7 +87,8 @@
 						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 							if(!is_mainship_level(current_mob.z))
 								continue
-							playsound_client(current_mob.client, 'sound/effects/lazer_point_defence_success.ogg', 100 )
+							playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
+							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
 
 		if(WEAPON_RAILGUN)
 

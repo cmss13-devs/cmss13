@@ -24,7 +24,7 @@
 				salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
 				if(salvo == "Salvo")
 					quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 5, 2, 20 SECONDS)
-					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta]" , MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS" , MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					for(currentshot = 1; currentshot <= quantity; currentshot++ )
 						while(picked_atom == null)
 							picked_area = pick(GLOB.ship_areas)
@@ -38,7 +38,8 @@
 						picked_atom = null
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
 					if(point_defense == "Yes")
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), hiteta - 3 SECONDS)
+						var/spoolup = hiteta - 3
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 					picked_atom = null
 					targets = null
 
@@ -58,22 +59,21 @@
 
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 						if(point_defense == "Yes")
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), hiteta - 3 SECONDS)
+							var/spoolup = hiteta - 3
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with your position as target?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
 				if(prompt == "Yes")
-					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta]", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
+					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE BRACE BRACE. ESTIMATED TIME: [hiteta] SECONDS", MAIN_AI_SYSTEM, 'sound/effects/ob_alert.ogg')
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, point_defense), hiteta SECONDS)
+					if(point_defense == "Yes")
+						var/spoolup = hiteta - 3
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING MISSILES, SPOOLING UP POINT DEFENSE" , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
 
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-						//!!small chance of this not actually being spossed to be here, will check later kudoooos!!
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/metal_crash.ogg', 20), hiteta)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/bigboom3.ogg', 20), hiteta)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), hiteta + 1 SECONDS)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), hiteta + 2 SECONDS)
 					//weaponhits(1, mob.loc, point_defense)
 
 		if("Railgun")

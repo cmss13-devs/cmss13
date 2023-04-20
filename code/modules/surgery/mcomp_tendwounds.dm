@@ -231,9 +231,9 @@
 		SPAN_HELPFUL("You begin to treat your damaged organs with \the [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You begin to treat the damaged organs on [target]'s body with \the [tool]."),
-			SPAN_HELPFUL("[user] begins to treat the damaged organs on your body with \the [tool]."),
-			SPAN_NOTICE("[user] begins to treat the damaged organs on [target]'s body with \the [tool]."))
+			SPAN_HELPFUL("You begin to treat the damaged organs on [target]'s body with [tool]."),
+			SPAN_HELPFUL("[user] begins to treat the damaged organs on your body with [tool]."),
+			SPAN_NOTICE("[user] begins to treat the damaged organs on [target]'s body with [tool]."))
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
 	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with \the [tool], starting [surgery].")

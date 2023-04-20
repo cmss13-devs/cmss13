@@ -49,6 +49,7 @@
 #define MOB_HUD_FACTION_PMC 15
 #define MOB_HUD_HUNTER 16
 #define MOB_HUD_HUNTER_CLAN 17
+#define MOB_HUD_FACTION_VAI 18
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

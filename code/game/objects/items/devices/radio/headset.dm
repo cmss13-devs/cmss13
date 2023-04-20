@@ -958,6 +958,7 @@
 	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
 	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_VAI
 
 //CMB Headsets
 /obj/item/device/radio/headset/distress/CMB

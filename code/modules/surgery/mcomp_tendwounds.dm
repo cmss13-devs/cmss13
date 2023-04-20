@@ -227,8 +227,8 @@
 	playsound(target,'sound/misc/heal_gun.ogg',25)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to treat the damaged organs on their body with \the [tool]."),
-		SPAN_HELPFUL("You begin to treat your damaged organs with \the [tool]."))
+		user.visible_message(SPAN_NOTICE("[user] begins to treat the damaged organs on their body with [tool]."),
+		SPAN_HELPFUL("You begin to treat your damaged organs with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to treat the damaged organs on [target]'s body with [tool]."),

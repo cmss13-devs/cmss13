@@ -240,7 +240,7 @@
 
 /datum/surgery_step/mtend_wounds/organ/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/organ in surgery.affected_limb.internal_organs)
-		if(organ.damage > 0 && organ.robotic != ORGAN_ROBOT)
+		if(organ.damage && organ.robotic != ORGAN_ROBOT)
 			organ.rejuvenate()
 
 	if(isspeciesyautja(target))

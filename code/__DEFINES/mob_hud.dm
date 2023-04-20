@@ -13,7 +13,6 @@
 #define FACTION_HUD "7" // Any faction related HUD on humans
 #define ORDER_HUD "8" // If humans are affected by orders or not
 #define STATUS_HUD_XENO_CULTIST "9" // Whether they are a xeno cultist or not
-#define ALLEGIENCE_HUD // To identify undercover agents for other factions.
 
 /// XENO HUDs
 #define XENO_STATUS_HUD "10" // Whether xeno is a leader and its current upgrade level

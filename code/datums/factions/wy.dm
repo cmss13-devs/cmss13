@@ -50,11 +50,12 @@
 		else if ((H.faction == FACTION_WY) || (FACTION_WY in H.faction_group))
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "allegiance_W-Y")
 
+/// While this will look extremely similar to the PMC version, it is not the same. The WY lists here do not use the /elite version of weapons.
 /datum/faction/wy/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("M41A Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/corporate, null, VENDOR_ITEM_REGULAR),
-		list("NSG23 assault rifle", 20, /obj/item/weapon/gun/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
+		list("NSG23 assault rifle", 20, /obj/item/weapon/gun/rifle/nsg23/no_lock, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle, null, VENDOR_ITEM_REGULAR),
@@ -89,7 +90,7 @@
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("M41A Pulse Rifle", 30, /obj/item/weapon/gun/rifle/m41a/corporate, null, VENDOR_ITEM_REGULAR),
-		list("NSG23 assault rifle", 30, /obj/item/weapon/gun/rifle/nsg23, null, VENDOR_ITEM_REGULAR),
+		list("NSG23 assault rifle", 30, /obj/item/weapon/gun/rifle/nsg23/no_lock, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A magazine (10x24mm)", 30, /obj/item/ammo_magazine/rifle, null, VENDOR_ITEM_REGULAR),

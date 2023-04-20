@@ -76,10 +76,10 @@
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-					//weaponhits(1, mob.loc, point_defense)
 
 		if("Railgun")
 			exactplace = tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS)
+			var/point_defense = tgui_alert(src, "Can the shots miss?", "give them a chance!", list("Yes", "No"), 20 SECONDS)
 			if(exactplace == "Random")
 				salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
 				if(salvo == "Salvo")

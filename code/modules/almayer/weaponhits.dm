@@ -1,6 +1,10 @@
 #define WEAPON_MISSILE 1
 #define WEAPON_RAILGUN 2
 #define WEAPON_PARTICLE_CANNON 3
+#define HIT_CHANCE_CHEAT 100
+#define HIT_CHANCE_HIGH 90
+#define HIT_CHANCE_STANDARD 70
+#define HIT_CHANCE_LOW
 /**
  * Proc called to hit the ship with weapons
  *
@@ -47,11 +51,12 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 			if(point_defense == "Yes")
+				var/hitchance = HIT_CHANCE_STANDARD
 				if(salvo == "Salvo")
 					var/confirmedhit
 					var/shotspacing
 					for(var/turf/picked_atom in location)
-						if(prob(70))
+						if(prob(hitchance))
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
@@ -73,7 +78,7 @@
 					confirmedhit = 0
 
 				else
-					if(prob(70))
+					if(prob(hitchance))
 						cell_explosion(location, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
@@ -91,10 +96,14 @@
 							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
 
 		if(WEAPON_RAILGUN)
+			if(point_defense = "Yes")
+				var/hitchance = HIT_CHANCE_STANDARD
+			else
+				var/hitchance - HIT_CHANCE_CHEAT
 			if(salvo == "Salvo")
 				var/confirmedhit
 				for(var/turf/picked_atom in location)
-					if(prob(70))
+					if(prob(hitchance))
 						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
@@ -109,12 +118,13 @@
 						if(!is_mainship_level(current_mob.z))
 							continue
 						//playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 50)
+						playsound_client(current_mob.client, 'sound/effects/railgunhit.ogg', 50)
 						//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 
 			if(salvo == "Single")
-				if(prob(70))
+				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)

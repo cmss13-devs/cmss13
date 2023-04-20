@@ -14,7 +14,7 @@
  * * point_defense - If you want the Almayer to attempt taking down the incoming fire
  * * salvo - identifies it as a salvo or not.
  */
-/proc/weaponhits(weaponused, location, point_defense, salvo = "Single")
+/proc/weaponhits(weaponused, location, point_defense = "No", salvo = "Single")
 
 	var/datum/cause_data/ashm_cause_data = create_cause_data("Anti-Ship missile")
 
@@ -91,5 +91,42 @@
 							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
 
 		if(WEAPON_RAILGUN)
+			if(salvo == "Salvo")
+				var/confirmedhit
+				for(var/turf/picked_atom in location)
+					if(prob(70))
+							cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						shakeship(5, 5, FALSE, FALSE)
+						confirmedhit += 1
+					else
+						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+							if(!is_mainship_level(current_mob.z))
+								continue
+							//playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
+							//need a woosh sound
+				if(confirmedhit > 0)
+					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+						if(!is_mainship_level(current_mob.z))
+							continue
+						//playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
+						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+						//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 
+			if(salvo == "Single")
+				if(prob(70))
+					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+					shakeship(5, 5, FALSE, FALSE)
+					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+						if(!is_mainship_level(current_mob.z))
+							continue
+						//playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
+						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+						//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+				else
+					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+						if(!is_mainship_level(current_mob.z))
+							continue
+						//playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
 		if(WEAPON_PARTICLE_CANNON)

@@ -644,6 +644,7 @@
 #include "code\game\cas_manager\datums\cas_fire_mission.dm"
 #include "code\game\cas_manager\datums\cas_iff_group.dm"
 #include "code\game\cas_manager\datums\cas_signal.dm"
+#include "code\game\sim_manager\datums\simulator.dm"
 #include "code\game\gamemodes\cm_initialize.dm"
 #include "code\game\gamemodes\cm_process.dm"
 #include "code\game\gamemodes\cm_self_destruct.dm"

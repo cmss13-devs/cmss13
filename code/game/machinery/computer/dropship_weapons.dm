@@ -1,7 +1,6 @@
-
 /obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
-	desc = "A computer to manage equipment and weapons installed on the dropship."
+	desc = "A computer to manage equipment, weapons and simulations installed on the dropship."
 	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
@@ -23,7 +22,10 @@
 	var/matrixcol //color of matrix, only used when we upgrade to nv
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
-
+	var/datum/simulator/simulation = new /datum/simulator()
+	var/selected_cas_direction = NORTH
+	var/list/cas_direction = list("NORTH" = NORTH, "SOUTH" = SOUTH,"WEST" = WEST, "EAST" = EAST)
+	var/datum/cas_fire_mission/configuration
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -415,6 +417,20 @@
 			return
 		in_firemission_mode = TRUE
 
+	if(href_list["switch_to_simulation"])
+		var/mob/M = usr
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+			return
+		if(!selected_firemission)
+			to_chat(usr, SPAN_WARNING("Select a firemission before attempting to run the simulation"))
+			return
+
+		configuration = selected_firemission
+
+		// simulation mode
+		tgui_interact(usr)
+
 	if(href_list["leave_firemission_execution"])
 		var/mob/M = usr
 		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
@@ -710,3 +726,99 @@
 	. = ..()
 
 	QDEL_NULL(firemission_envelope)
+
+// CAS TGUI SHIT \\
+
+/obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "CasSim", "[src.name]")
+		ui.open()
+
+/obj/structure/machinery/computer/dropship_weapons/ui_state(mob/user) // we gotta do custom shit here so that it always closes instead of suspending
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
+	var/list/data = list()
+
+	data["configuration"] = configuration
+	data["looking"] = simulation.looking_at_simulation
+	data["dummy_mode"] = simulation.dummy_mode
+	data["selected_cas_direction"] = selected_cas_direction
+
+	data["worldtime"] = world.time
+	data["nextdetonationtime"] = simulation.detonation_cooldown
+	data["detonation_cooldown"] = simulation.detonation_cooldown_time
+
+	return data
+
+/obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("start_watching")
+			simulation.start_watching(usr)
+			. = TRUE
+
+		if("stop_watching")
+			simulation.stop_watching(usr)
+			. = TRUE
+
+		if("execute_simulated_firemission")
+			if(!configuration)
+				to_chat(usr, SPAN_WARNING("No configured firemission"))
+				return
+			simulate_firemission(usr)
+			. = TRUE
+
+		if("switch_firemission")
+			configuration = tgui_input_list(usr, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
+			if(!selected_firemission)
+				to_chat(usr, SPAN_WARNING("No configured firemission"))
+				return
+			if(!configuration)
+				configuration = selected_firemission
+			. = TRUE
+		if("switch_direction")
+			selected_cas_direction = tgui_input_list(usr, "Select the firemission direction ", "Direction type", cas_direction, 30 SECONDS)
+			if(!selected_cas_direction)
+				selected_cas_direction = NORTH
+			. = TRUE
+
+		if("switchmode")
+			simulation.dummy_mode = tgui_input_list(usr, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
+			if(!simulation.dummy_mode)
+				simulation.dummy_mode = HUMAN_MODE
+			. = TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
+	. = ..()
+	if(simulation.looking_at_simulation)
+		simulation.stop_watching(user)
+	qdel(simulation)
+
+// CAS TGUI SHIT END \\
+
+/obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
+	var/error_code = configuration.check(src)
+
+	if(!configuration)
+		to_chat(usr, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
+		return
+	if(error_code == FIRE_MISSION_CODE_ERROR)
+		to_chat(usr, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		return
+
+	simulation.spawn_mobs(user)
+	var/usr_sim_camera = simulation.sim_camera
+	if(!usr_sim_camera)
+		to_chat(usr, SPAN_WARNING("The simulator has malfunctioned!"))
+	//acutal firemission
+	configuration.simulate_execute_firemission(src, usr_sim_camera, selected_cas_direction)

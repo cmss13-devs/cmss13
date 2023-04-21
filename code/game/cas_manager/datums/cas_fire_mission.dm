@@ -172,3 +172,46 @@
 		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)
+
+// Used only in the simulator room for testing firemissions. IMO it was ok to copy code here.
+/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+	if(initial_turf == null)
+		return -1
+
+	var/turf/current_turf = initial_turf
+	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
+	var/next_step = tally_step //when we move to next turf
+	var/sx = 0
+	var/sy = 0 //perpendicular multiplication
+
+	if(!direction)
+		direction = NORTH
+
+	switch(direction)
+		if(NORTH) //default direction
+			sx = 1
+			sy = 0
+		if(SOUTH)
+			sx = -1
+			sy = 0
+		if(EAST)
+			sx = 0
+			sy = -1
+		if(WEST)
+			sx = 0
+			sy = 1
+	var/step = 1
+	for(step = 1; step<=steps; step++)
+		if(step > next_step)
+			current_turf = get_step(current_turf,direction)
+			next_step += tally_step
+		var/datum/cas_fire_mission_record/item
+		for(item in records)
+			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
+				continue
+			var/offset = item.offsets[step]
+			if (current_turf == null)
+				return -1
+			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
+			item.weapon.open_simulated_fire_firemission(shootloc)
+		sleep(step_delay)

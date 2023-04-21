@@ -121,7 +121,7 @@
 			if(O.warhead)
 				make_and_prime_explosive(O.warhead)
 		else
-			var/obj/item/mortar_shell/O = new configuration.type(sim_location)
+			var/obj/item/mortar_shell/O = new configuration.type((simulation.sim_camera).loc)
 			O.detonate(sim_location)
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))
@@ -130,8 +130,8 @@
 			make_and_prime_explosive(O.warhead)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
-	var/obj/item/explosive/E = new O.type(sim_location)
-	E.make_copy_of(sim_location)
+	var/obj/item/explosive/E = new O.type((simulation.sim_camera).loc)
+	E.make_copy_of((simulation.sim_camera).loc)
 	E.prime(TRUE)
 	sim_location.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,1 MINUTES)

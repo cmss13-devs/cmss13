@@ -98,7 +98,7 @@
 									picked_atom = pick(turfs_of_area)
 									targets += picked_atom
 							picked_atom = null
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, targets, null, salvo), hiteta SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, targets, point_defense, salvo), hiteta SECONDS)
 						picked_atom = null
 						targets = null
 				if(salvo == "Single")

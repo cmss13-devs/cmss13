@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "obs can no longer be fired after the dropship doors are overridden by the queen"

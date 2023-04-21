@@ -218,6 +218,10 @@
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
 		announce_dchat("[xeno] has locked \the [dropship]", src)
 
+		if(almayer_orbital_cannon)
+			almayer_orbital_cannon.is_disabled = TRUE
+			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
 		return
@@ -256,9 +260,6 @@
 
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
-	if(almayer_orbital_cannon)
-		almayer_orbital_cannon.is_disabled = TRUE
-		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 

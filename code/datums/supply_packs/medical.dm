@@ -104,18 +104,18 @@
 
 /datum/supply_packs/medical_vendor_chemistry
 	name = "chem vendor crate"
-	cost = 50
+	cost = 10
 	containertype = /obj/structure/largecrate/supply/medicine/chemistry
 	group = "Medical"
 
 /datum/supply_packs/medical_vendor_marinemed
 	name = "marinemed vendor crate"
-	cost = 50
+	cost = 5
 	containertype = /obj/structure/largecrate/supply/medicine/marinemed
 	group = "Medical"
 
 /datum/supply_packs/medical_vendor_blood
 	name = "blood dispenser crate"
-	cost = 50
+	cost = 30
 	containertype = /obj/structure/largecrate/supply/medicine/blood
 	group = "Medical"

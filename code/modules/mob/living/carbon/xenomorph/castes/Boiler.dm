@@ -23,8 +23,8 @@
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 	fire_immunity = FIRE_VULNERABILITY
-	// 2x fire damage
-	fire_vulnerability_mult = FIRE_MULTIPLIER_EXTREME
+	// 3x fire damage
+	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
 	tackle_min = 2
 	tackle_max = 6

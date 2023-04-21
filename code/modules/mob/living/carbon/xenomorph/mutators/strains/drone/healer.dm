@@ -1,6 +1,6 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "You lose your choice of resin secretions, a chunk of your slash damage and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -28,7 +28,7 @@
 	drone.mutation_type = DRONE_HEALER
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
-	drone.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)

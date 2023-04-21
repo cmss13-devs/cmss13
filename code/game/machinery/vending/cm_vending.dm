@@ -854,6 +854,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 		stock(I, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
+	if (istype(src, /obj/structure/machinery/cm_vending/sorted/medical))
+		to_chat(user, SPAN_WARNING("[src] cannot be restocked!"))
+		return
+
 	var/list/R
 	var/list/stock_listed_products = get_listed_products(user)
 	for(R in (stock_listed_products))

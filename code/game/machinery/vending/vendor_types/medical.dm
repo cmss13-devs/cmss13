@@ -177,10 +177,6 @@
 		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)
 
-/obj/structure/machinery/cm_vending/sorted/medical/proc/stock(obj/item/item_to_stock, mob/user)
-	SPAN_NOTICE('You cannot restock this machine')
-	return
-
 /obj/structure/machinery/cm_vending/sorted/medical/no_access
 	req_access = list()
 

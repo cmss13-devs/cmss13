@@ -23,8 +23,6 @@
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
 	var/datum/simulator/simulation = new /datum/simulator()
-	var/selected_cas_direction = NORTH
-	var/list/cas_direction = list("NORTH" = NORTH, "SOUTH" = SOUTH,"WEST" = WEST, "EAST" = EAST)
 	var/datum/cas_fire_mission/configuration
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -749,7 +747,6 @@
 	data["configuration"] = configuration
 	data["looking"] = simulation.looking_at_simulation
 	data["dummy_mode"] = simulation.dummy_mode
-	data["selected_cas_direction"] = selected_cas_direction
 
 	data["worldtime"] = world.time
 	data["nextdetonationtime"] = simulation.detonation_cooldown
@@ -786,11 +783,6 @@
 			if(!configuration)
 				configuration = selected_firemission
 			. = TRUE
-		if("switch_direction")
-			selected_cas_direction = tgui_input_list(usr, "Select the firemission direction ", "Direction type", cas_direction, 30 SECONDS)
-			if(!selected_cas_direction)
-				selected_cas_direction = NORTH
-			. = TRUE
 
 		if("switchmode")
 			simulation.dummy_mode = tgui_input_list(usr, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
@@ -812,13 +804,15 @@
 	if(!configuration)
 		to_chat(usr, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return
-	if(error_code == FIRE_MISSION_CODE_ERROR)
+	if(error_code != FIRE_MISSION_ALL_GOOD)
 		to_chat(usr, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
 		return
 
 	simulation.spawn_mobs(user)
-	var/usr_sim_camera = simulation.sim_camera
-	if(!usr_sim_camera)
+
+	if(!simulation.sim_camera)
 		to_chat(usr, SPAN_WARNING("The simulator has malfunctioned!"))
+	var/turf/sim_location = get_turf(simulation.sim_camera)
+
 	//acutal firemission
-	configuration.simulate_execute_firemission(src, usr_sim_camera, selected_cas_direction)
+	configuration.simulate_execute_firemission(src, sim_location)

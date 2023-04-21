@@ -5,6 +5,7 @@
 	exproof = TRUE
 	unacidable = TRUE
 	var/datum/simulator/simulation
+	var/turf/sim_location
 	var/obj/item/configuration
 
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
@@ -27,7 +28,10 @@
 /obj/structure/machinery/computer/demo_sim/attack_hand(mob/user as mob)
 	if(..())
 		return
-	simulation = new /datum/simulator()
+	simulation = new /datum/simulator()  // spaghetti noodle code, need to optimize later.
+
+	sim_location = get_turf(simulation.sim_camera)
+
 	tgui_interact(user)
 
 // DEMOLITIONS TGUI SHIT \\
@@ -117,9 +121,8 @@
 			if(O.warhead)
 				make_and_prime_explosive(O.warhead)
 		else
-			var/obj/item/local_config = configuration // not ideal, need to fix later, there is definitely a better way to do this.
-			var/obj/item/mortar_shell/O = new local_config.type(simulation.sim_camera)
-			O.detonate(simulation.sim_camera)
+			var/obj/item/mortar_shell/O = new configuration.type(sim_location)
+			O.detonate(sim_location)
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))
 		var/obj/item/ammo_magazine/rocket/custom/O = configuration
@@ -127,9 +130,8 @@
 			make_and_prime_explosive(O.warhead)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
-	var/obj/item/explosive/E = new O.type(simulation.sim_camera)
-	E.make_copy_of(simulation.sim_camera)
+	var/obj/item/explosive/E = new O.type(sim_location)
+	E.make_copy_of(sim_location)
 	E.prime(TRUE)
-	var/turf/sourceturf = get_turf(simulation)
-	sourceturf.chemexploded = FALSE //Make sure that this actually resets
+	sim_location.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,1 MINUTES)

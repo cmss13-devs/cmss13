@@ -89,29 +89,18 @@ export const CasSim = (_props, context) => {
               />
             </Stack.Item>
             <Stack.Item grow>
-              <Button
+              <Button.Confirm
                 fontSize="16px"
-                disabled={!data.configuration}
+                disabled={!canDetonate}
                 fluid={1}
-                icon="repeat"
+                icon="bomb"
                 color="good"
-                content="Switch Direction"
-                onClick={() => act('switch_direction')}
+                content="Execute firemission?"
+                confirmContent="Confirm?"
+                onClick={() => act('execute_simulated_firemission')}
               />
             </Stack.Item>
           </Stack>
-          <Stack.Item grow>
-            <Button.Confirm
-              fontSize="16px"
-              disabled={!canDetonate}
-              fluid={1}
-              icon="bomb"
-              color="good"
-              content="Execute firemission?"
-              confirmContent="Confirm?"
-              onClick={() => act('execute_simulated_firemission')}
-            />
-          </Stack.Item>
           <Stack />
         </Section>
       </Window.Content>

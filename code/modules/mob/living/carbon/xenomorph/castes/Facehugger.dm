@@ -32,7 +32,7 @@
 	crit_health = 0
 	crit_grace_time = 0
 	gib_chance = 75
-	mob_size = 0
+	mob_size = MOB_SIZE_SMALL
 	death_fontsize = 2
 	life_value = 0
 	default_honor_value = 0

@@ -1,0 +1,5 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - balance: "Limited communications for PO/DCC/CT/MST/CL/VC"
+  - bugfix: "IO/VC now use their own encryption keys"

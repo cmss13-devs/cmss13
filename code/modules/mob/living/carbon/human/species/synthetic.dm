@@ -41,8 +41,6 @@
 	knock_down_reduction = 5
 	stun_reduction = 5
 
-	acid_blood_dodge_chance = 35
-
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)

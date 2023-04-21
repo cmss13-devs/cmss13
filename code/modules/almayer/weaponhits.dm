@@ -96,10 +96,9 @@
 							//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
 
 		if(WEAPON_RAILGUN)
-			if(point_defense = "Yes")
-				var/hitchance = HIT_CHANCE_STANDARD
-			else
-				var/hitchance - HIT_CHANCE_CHEAT
+			var/hitchance = HIT_CHANCE_CHEAT
+			if(point_defense == "Yes")
+				hitchance = HIT_CHANCE_STANDARD
 			if(salvo == "Salvo")
 				var/confirmedhit
 				for(var/turf/picked_atom in location)

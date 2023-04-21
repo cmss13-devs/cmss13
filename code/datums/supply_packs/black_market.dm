@@ -141,7 +141,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(3) //clf
-			switch(rand(1, 4))
+			switch(rand(1, 3))
 				if(1)
 					new /obj/item/weapon/twohanded/lungemine/damaged(src)
 				if(2)
@@ -154,11 +154,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
-				if(4)
-					new /obj/item/weapon/gun/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
-					new /obj/item/ammo_magazine/m60(src)
 		if(4) //upp
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/type71(src)
@@ -970,7 +965,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
-	contains = list(/obj/item/storage/box/c02_knife)
+	contains = list(/obj/item/storage/box/co2_knife)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 

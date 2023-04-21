@@ -68,11 +68,11 @@
 	minimap_icon = "private"
 
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -104,11 +104,11 @@
 	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/sg/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/sg/cryo
 	name = "USCM Cryo Squad Smartgunner"
@@ -162,12 +162,12 @@
 	minimap_icon = "vc"
 
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/vc(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
@@ -224,11 +224,11 @@
 	minimap_icon = "io"
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
@@ -278,11 +278,11 @@
 	minimap_icon = "spec"
 
 /datum/equipment_preset/uscm/spec/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(H), WEAR_HEAD)
 
 /datum/equipment_preset/uscm/spec/cryo
@@ -336,11 +336,11 @@
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
 /datum/equipment_preset/uscm/medic/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine/medic
+		back_item = /obj/item/storage/backpack/marine/medic
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/medic/cryo
 	name = "USCM Cryo Squad Hospital Corpsman"
@@ -366,11 +366,11 @@
 	minimap_icon = "rto"
 
 /datum/equipment_preset/uscm/rto/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/rto/cryo
 	name = "USCM Cryo Squad Radio Telephone Operator"
@@ -398,11 +398,11 @@
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
 /datum/equipment_preset/uscm/engineer/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine/tech
+		back_item = /obj/item/storage/backpack/marine/tech
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/engineer/cryo
 	name = "USCM Cryo Squad Combat Technician"
@@ -429,11 +429,11 @@
 	minimap_icon = "leader"
 
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
+	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/leader/cryo
 	name = "USCM Cryo Squad Leader"

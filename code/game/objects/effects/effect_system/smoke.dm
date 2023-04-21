@@ -238,6 +238,7 @@
 
 	M.burn_skin(burn_damage)
 	M.adjust_fire_stacks(applied_fire_stacks)
+	M.fire_reagent = new /datum/reagent/napalm/ut()
 	M.IgniteMob()
 	M.updatehealth()
 

@@ -62,7 +62,7 @@
 
 			var/Text = href_list["adjustDamage"]
 
-			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0)
+			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0, 10000, -10000)
 
 			if (isnull(amount))
 				return

@@ -68,8 +68,6 @@ Additional game mode variables.
 	var/round_checkwin = 0
 	var/round_finished
 	var/round_started = 5 //This is a simple timer so we don't accidently check win conditions right in post-game
-	var/list/round_fog = list() //List of the fog locations.
-	var/list/short_round_fog = list() //list of the short fog locations for faster lowering.
 	var/list/round_toxic_river = list() //List of all toxic river locations
 	var/round_time_lobby //Base time for the lobby, for fog dispersal.
 	var/round_time_river
@@ -102,7 +100,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_REGULAR_ALL
+	return ROLES_USCM
 
 //===================================================\\
 

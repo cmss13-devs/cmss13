@@ -17,40 +17,8 @@
 	var/datum/health_scan/last_health_display
 
 	var/healthscan = TRUE
-	var/list/chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,,
-		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-		/obj/item/reagent_container/hypospray/autoinjector/emergency,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-
-		/obj/item/reagent_container/glass/bottle/bicaridine,
-		/obj/item/reagent_container/glass/bottle/antitoxin,
-		/obj/item/reagent_container/glass/bottle/dexalin,
-		/obj/item/reagent_container/glass/bottle/inaprovaline,
-		/obj/item/reagent_container/glass/bottle/kelotane,
-		/obj/item/reagent_container/glass/bottle/oxycodone,
-		/obj/item/reagent_container/glass/bottle/peridaxon,
-		/obj/item/reagent_container/glass/bottle/tramadol,
-		)
-	var/list/stack_refill = list(
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
-		)
+	var/list/chem_refill = null
+	var/list/stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
 	QDEL_NULL(last_health_display)
@@ -186,16 +154,7 @@
 	icon_state = "chem"
 
 	healthscan = FALSE
-	chem_refill = list(
-		/obj/item/reagent_container/glass/bottle/bicaridine,
-		/obj/item/reagent_container/glass/bottle/antitoxin,
-		/obj/item/reagent_container/glass/bottle/dexalin,
-		/obj/item/reagent_container/glass/bottle/inaprovaline,
-		/obj/item/reagent_container/glass/bottle/kelotane,
-		/obj/item/reagent_container/glass/bottle/oxycodone,
-		/obj/item/reagent_container/glass/bottle/peridaxon,
-		/obj/item/reagent_container/glass/bottle/tramadol,
-	)
+	chem_refill = null
 	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
@@ -238,15 +197,8 @@
 	req_one_access = list()
 	vendor_theme = VENDOR_THEME_USCM
 
-	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-	)
-	stack_refill = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-	)
+	chem_refill = null
+	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
@@ -325,31 +277,14 @@
 
 	appearance_flags = TILE_BOUND
 
-	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-	)
-	stack_refill = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-		/obj/item/stack/medical/ointment,
-	)
+	chem_refill = null
+	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
 	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
 
-	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-	)
-	stack_refill = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
-	)
+	chem_refill = null
+	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
 	name = "Lifeboat Medical Cabinet"
@@ -371,11 +306,7 @@
 		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
 	)
-	stack_refill = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-	)
+	stack_refill = null
 
 	unacidable = TRUE
 	unslashable = TRUE

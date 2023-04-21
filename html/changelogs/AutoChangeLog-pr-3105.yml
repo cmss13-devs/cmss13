@@ -1,4 +1,0 @@
-author: "TeDGamer"
-delete-after: True
-changes:
-  - balance: "Reverts synth acid blood dodge chance due to revert in acid blood damage"

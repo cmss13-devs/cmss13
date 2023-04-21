@@ -98,44 +98,24 @@
 
 /datum/supply_packs/medical_vendor_weymed
 	name = "weymed crate"
-	contains = list(
-		/obj/structure/machinery/cm_vending/sorted/medical
-	)
-	cost = 5000
-	buyable = TRUE
-	containertype = /obj/structure/closet/crate/medical
-	containername = "weymed crate"
+	cost = 50
+	containertype = /obj/structure/largecrate/supply/medicine/medivend
 	group = "Medical"
 
 /datum/supply_packs/medical_vendor_chemistry
 	name = "chem vendor crate"
-	contains = list(
-		/obj/structure/machinery/cm_vending/sorted/medical/chemistry
-	)
-	cost = 5000
-	buyable = TRUE
-	containertype = /obj/structure/closet/crate/medical
-	containername = "chem vendor crate"
+	cost = 50
+	containertype = /obj/structure/largecrate/supply/medicine/chemistry
 	group = "Medical"
 
 /datum/supply_packs/medical_vendor_marinemed
 	name = "marinemed vendor crate"
-	contains = list(
-		/obj/structure/machinery/cm_vending/sorted/medical/marinemed
-	)
-	cost = 5000
-	buyable = TRUE
-	containertype = /obj/structure/closet/crate/medical
-	containername = "marinemed vendor crate"
+	cost = 50
+	containertype = /obj/structure/largecrate/supply/medicine/marinemed
 	group = "Medical"
 
 /datum/supply_packs/medical_vendor_blood
 	name = "blood dispenser crate"
-	contains = list(
-		/obj/structure/machinery/cm_vending/sorted/medical/blood
-	)
-	cost = 5000
-	buyable = TRUE
-	containertype = /obj/structure/closet/crate/medical
-	containername = "blood dispenser crate"
+	cost = 50
+	containertype = /obj/structure/largecrate/supply/medicine/blood
 	group = "Medical"

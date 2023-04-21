@@ -324,6 +324,20 @@
 	desc = "A crate containing one Weyland Plus medical vendor."
 	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical = 1)
 
+/obj/structure/largecrate/supply/medicine/chemistry
+	name = "\improper Wey-Chem Plus crate (x1)"
+	desc = "A crate containing one Weyland Chem medical vendor."
+	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical/chemistry = 1)
+
+/obj/structure/largecrate/supply/medicine/marinemed
+	name = "\improper ColMarTech MarineMed crate (x1)"
+	desc = "A crate containing one ColMarTech MarineMed medical vendor."
+	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical/marinemed = 1)
+
+/obj/structure/largecrate/supply/medicine/blood
+	name = "\improper MM Blood Dispenser crate (x1)"
+	desc = "A crate containing one MM Blood Dispenser medical vendor."
+	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical/blood = 1)
 
 /obj/structure/largecrate/machine
 	name = "machine crate"

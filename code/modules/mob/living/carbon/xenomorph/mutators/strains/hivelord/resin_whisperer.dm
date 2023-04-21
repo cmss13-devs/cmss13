@@ -1,11 +1,12 @@
 /datum/xeno_mutator/resinwhisperer
 	name = "STRAIN: Hivelord - Resin Whisperer"
-	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions to a distance of twelve paces!"
+	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant resin nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including resin nodes up to a distance of twelve paces!"
 	flavor_description = "Let the resin guide you. It whispers, so listen closely."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_HIVELORD)
 	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
@@ -35,7 +36,7 @@
 	mutator_set.recalculate_actions(description, flavor_description)
 	hivelord.recalculate_plasma()
 
-	hivelord.set_resin_build_order(GLOB.resin_build_order_drone)
+	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_whisperer)
 	for(var/datum/action/xeno_action/action in hivelord.actions)
 		// Also update the choose_resin icon since it resets
 		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
@@ -67,6 +68,13 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(xeno_owner.mutation_type == HIVELORD_RESIN_WHISPERER)
+		var/mob/living/carbon/xenomorph/hivelord/hivelord_mob = owner
+		if(!hivelord_mob.on_weeds()) // There is a chance that queen can't place down buildings in ovi build view so we place the rein whisperer check here.
+			to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
+			return
+
 	if(!action_cooldown_check())
 		return
 

@@ -1,0 +1,4 @@
+author: "Hopek"
+delete-after: True
+changes:
+  - rscadd: "Resin Whisperer has been reworked. Major changes include being able to place resin nodes remotely on weeds, not being able to use coerce resin when standing outside of weeds and losing the ability to regularly plant weeds outside of current existing weeds. This changes the Resin whisperer to a new \"slow crawl\" frontline advance gameplay where he assists his team in pushing the front lines forward as he is able to both advance weeds and build structures on them."

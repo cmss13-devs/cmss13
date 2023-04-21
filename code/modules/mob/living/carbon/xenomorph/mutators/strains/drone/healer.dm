@@ -88,6 +88,7 @@
 	if(target_xeno.mob_size == MOB_SIZE_SMALL)
 		amount = amount * 0.15
 		damage_taken_mod = 1
+		return
 
 //Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
 	if(target_xeno.mutation_type == DRONE_HEALER)

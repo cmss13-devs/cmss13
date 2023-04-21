@@ -1,6 +1,5 @@
-//Brute and burn healing
 /datum/surgery/mcomp_wounds
-	name = "Tend Damage (Brute/Burn)"
+	name = "Tend Wounds"
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -15,9 +14,13 @@
 	lying_required = FALSE
 	self_operable = TRUE
 
-/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
-	if((istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) && (patient.getBruteLoss() || patient.getFireLoss()))
-		return TRUE
+/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/limb, obj/item/tool)
+	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		if (patient.getBruteLoss() || patient.getFireLoss()) //Heals brute or burn
+			return TRUE
+		for(var/datum/internal_organ/organ in limb.internal_organs) //Heals damaged organs
+			if(organ.damage && organ.robotic != ORGAN_ROBOT)
+				return TRUE
 	return FALSE
 
 //For closing an open incision first.
@@ -105,6 +108,9 @@
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
 
+	for(var/datum/internal_organ/organ in target.internal_organs) //Fixes all organs
+		organ.rejuvenate()
+
 	if(isspeciesyautja(target))
 		target.emote("click")
 	else
@@ -175,101 +181,3 @@
 /datum/surgery_step/cauterize/mclamp_wound/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s wounds with [tool], possibly ending [surgery].")
 	return FALSE
-
-//Organ repairs
-/datum/surgery/mcomp_wounds/organ
-	name = "Organ Treatment"
-	possible_locs = ALL_LIMBS
-	steps = list(
-		/datum/surgery_step/mstabilize_wounds/organ,
-		/datum/surgery_step/mtend_wounds/organ,
-		/datum/surgery_step/cauterize/mclamp_wound/organ,
-				)
-
-/datum/surgery/mcomp_wounds/organ/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/limb, obj/item/tool)
-	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		for(var/datum/internal_organ/organ in limb.internal_organs)
-			if(organ.damage && organ.robotic != ORGAN_ROBOT)
-				return TRUE
-	return FALSE
-
-/datum/surgery_step/mstabilize_wounds/organ/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(isspeciesyautja(target)) //Same as original, but without healing
-		target.emote("click2")
-	else
-		target.emote("pain")
-
-	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes stabilizing the wounds on their body with [tool]."),
-			SPAN_HELPFUL("You finish stabilizing your wounds with [tool]."))
-	else
-		user.affected_message(target,
-			SPAN_HELPFUL("You finish stabilizing [target]'s wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished stabilizing your wounds with [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s wounds with [tool]."))
-
-	log_interact(user, target, "[key_name(user)] stabilized some of [key_name(target)]'s wounds with [tool].")
-
-/datum/surgery_step/mtend_wounds/organ/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	playsound(target,'sound/misc/heal_gun.ogg',25)
-
-	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to treat the damaged organs on their body with [tool]."),
-		SPAN_HELPFUL("You begin to treat your damaged organs with [tool]."))
-	else
-		user.affected_message(target,
-			SPAN_HELPFUL("You begin to treat the damaged organs on [target]'s body with [tool]."),
-			SPAN_HELPFUL("[user] begins to treat the damaged organs on your body with [tool]."),
-			SPAN_NOTICE("[user] begins to treat the damaged organs on [target]'s body with [tool]."))
-
-	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
-	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with [tool], starting [surgery].")
-
-/datum/surgery_step/mtend_wounds/organ/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	for(var/datum/internal_organ/organ in surgery.affected_limb.internal_organs)
-		if(organ.damage && organ.robotic != ORGAN_ROBOT)
-			organ.rejuvenate()
-
-	if(isspeciesyautja(target))
-		target.emote("click")
-	else
-		target.emote("pain")
-
-	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes treating the damaged organs on their body with [tool]."),
-			SPAN_HELPFUL("You finish treating the damaged organs on your body with [tool]."))
-	else
-		user.affected_message(target,
-			SPAN_HELPFUL("You finish treating [target]'s damaged organs with [tool]."),
-			SPAN_HELPFUL("[user] finished treating your damaged organs with [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s damaged organs with [tool]."))
-
-	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
-		return
-	var/obj/item/tool/surgery/healing_gun/gun = tool
-	gun.loaded = FALSE
-
-	log_interact(user, target, "[key_name(user)] treated some of [key_name(target)]'s organ damage with [tool].")
-
-/datum/surgery_step/mtend_wounds/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	log_interact(user, target, "[key_name(user)] failed to tend [key_name(target)]'s organ damage with [tool], possibly ending [surgery].")
-	return FALSE
-
-/datum/surgery_step/cauterize/mclamp_wound/organ/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(user == target) //Same as original, but without healing
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
-			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
-	else
-		user.affected_message(target,
-			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished closing your treated wounds with [tool]."),
-			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with [tool]."))
-
-	if(isyautja(target))
-		target.emote("loudroar")
-	else
-		target.emote("pain")
-
-	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
-	target.pain.recalculate_pain()
-	log_interact(user, target, "[key_name(user)] clamped a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

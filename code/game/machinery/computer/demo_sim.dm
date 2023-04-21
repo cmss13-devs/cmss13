@@ -131,7 +131,7 @@
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type((simulation.sim_camera).loc)
-	E.make_copy_of((simulation.sim_camera).loc)
+	E.make_copy_of(O)
 	E.prime(TRUE)
 	sim_location.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,1 MINUTES)

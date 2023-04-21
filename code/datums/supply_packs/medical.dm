@@ -95,3 +95,47 @@
 	containertype = /obj/structure/closet/crate/medical
 	containername = "upgraded medical equipment crate"
 	group = "Medical"
+
+/datum/supply_packs/medical_vendor_weymed
+	name = "weymed crate"
+	contains = list(
+		/obj/structure/machinery/cm_vending/sorted/medical
+	)
+	cost = 5000
+	buyable = TRUE
+	containertype = /obj/structure/closet/crate/medical
+	containername = "weymed crate"
+	group = "Medical"
+
+/datum/supply_packs/medical_vendor_chemistry
+	name = "chem vendor crate"
+	contains = list(
+		/obj/structure/machinery/cm_vending/sorted/medical/chemistry
+	)
+	cost = 5000
+	buyable = TRUE
+	containertype = /obj/structure/closet/crate/medical
+	containername = "chem vendor crate"
+	group = "Medical"
+
+/datum/supply_packs/medical_vendor_marinemed
+	name = "marinemed vendor crate"
+	contains = list(
+		/obj/structure/machinery/cm_vending/sorted/medical/marinemed
+	)
+	cost = 5000
+	buyable = TRUE
+	containertype = /obj/structure/closet/crate/medical
+	containername = "marinemed vendor crate"
+	group = "Medical"
+
+/datum/supply_packs/medical_vendor_blood
+	name = "blood dispenser crate"
+	contains = list(
+		/obj/structure/machinery/cm_vending/sorted/medical/blood
+	)
+	cost = 5000
+	buyable = TRUE
+	containertype = /obj/structure/closet/crate/medical
+	containername = "blood dispenser crate"
+	group = "Medical"

@@ -626,7 +626,7 @@
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -644,7 +644,7 @@
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
@@ -676,7 +676,7 @@
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -694,7 +694,7 @@
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)

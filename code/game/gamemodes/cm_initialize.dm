@@ -100,7 +100,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_REGULAR_ALL
+	return ROLES_USCM
 
 //===================================================\\
 

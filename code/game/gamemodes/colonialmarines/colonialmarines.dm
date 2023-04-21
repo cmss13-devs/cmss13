@@ -27,6 +27,9 @@
 /datum/game_mode/colonialmarines/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/colonialmarines/get_roles_list()
+	return ROLES_DISTRESS_SIGNAL
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
@@ -396,7 +399,7 @@
 	//organize our jobs in a readable and standard way
 	for(var/job in ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES - ROLES_WHITELISTED - ROLES_SPECIAL)
+	for(var/job in ROLES_USCM - ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
 	for(var/job in ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0

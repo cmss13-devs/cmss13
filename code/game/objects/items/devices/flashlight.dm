@@ -540,7 +540,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		qdel(signal)
+		QDEL_NULL(signal)
 	return ..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()

@@ -18,6 +18,7 @@
 	density = TRUE //Do not want to see past it.
 	bound_height = 64 //putting this in so we can't walk through our machine.
 	bound_width = 96
+	custom_slashed_sound = "alien_claw_metal"
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
 
 /mob/living/silicon/decoy/Life(delta_time)
@@ -37,7 +38,8 @@
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
+	var/datum/cause_data/cause_data = create_cause_data("rapid unscheduled disassembly", src, src)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12, TRUE, FALSE, 0, cause_data), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message) //General communication across the ship.

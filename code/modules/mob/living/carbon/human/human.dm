@@ -73,7 +73,6 @@
 	selected_ability = null
 	remembered_dropped_objects = null
 
-	focus = null
 	overlays_standing = null
 
 	//Equipment slots

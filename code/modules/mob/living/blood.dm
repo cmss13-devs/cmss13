@@ -252,10 +252,10 @@
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()
-	return "#A10808"
+	return BLOOD_COLOR_HUMAN
 
 /mob/living/carbon/xenomorph/get_blood_color()
-	return "#dffc00"
+	return BLOOD_COLOR_XENO
 
 /mob/living/carbon/human/get_blood_color()
 	return species.blood_color
@@ -266,17 +266,18 @@
 	return
 
 /mob/living/carbon/xenomorph/get_blood_id()
-	return "xenoblood"
-
-/mob/living/carbon/xenomorph/queen/get_blood_id()
-	return "xenobloodroyal"
-
-/mob/living/carbon/xenomorph/praetorian/get_blood_id()
-	return "xenobloodroyal"
+	if(special_blood)
+		return special_blood
+	if(caste.royal_caste)
+		return "xenobloodroyal"
+	else
+		return "xenoblood"
 
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))
 		return
+	if(special_blood)
+		return special_blood
 	if(species.name == "Yautja")
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)

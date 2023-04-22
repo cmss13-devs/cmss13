@@ -136,6 +136,8 @@
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 
+	var/royal_caste = FALSE
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE

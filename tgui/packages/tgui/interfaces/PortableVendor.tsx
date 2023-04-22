@@ -45,20 +45,16 @@ const RecordEntry = (props: RecordEntryProps, context) => {
 
   return (
     <Stack>
-      {record.description && (
-        <>
-          <Stack.Item>
-            <Button onClick={() => act('vend', { choice: record.index })}>
-              {record.name}
-            </Button>
-          </Stack.Item>
-          <Stack.Item>
-            <Tooltip content={record.description}>
-              <Icon name="circle-info" />
-            </Tooltip>
-          </Stack.Item>
-        </>
-      )}
+      <Stack.Item>
+        <Button onClick={() => act('vend', { choice: record.index })}>
+          {record.name}
+        </Button>
+      </Stack.Item>
+      <Stack.Item>
+        <Tooltip content={record.description}>
+          <Icon name="circle-info" />
+        </Tooltip>
+      </Stack.Item>
     </Stack>
   );
 };

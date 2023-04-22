@@ -370,10 +370,15 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(islarva(user) || isfacehugger(user))
+	if(islarva(user))
 		var/mob/living/carbon/xenomorph/larva/L = user
 		if (L.hivenumber == hivenumber)
 			L.scuttle(src)
+		return
+	if(isfacehugger(user))
+		var/mob/living/carbon/xenomorph/facehugger/F = user
+		if (F.hivenumber == hivenumber)
+			F.scuttle(src)
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user

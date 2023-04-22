@@ -370,7 +370,7 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(islarva(user))
+	if(islarva(user) || isfacehugger(user))
 		var/mob/living/carbon/xenomorph/larva/L = user
 		if (L.hivenumber == hivenumber)
 			L.scuttle(src)

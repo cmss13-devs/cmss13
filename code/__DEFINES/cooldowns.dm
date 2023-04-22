@@ -6,6 +6,8 @@
 
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
+#define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
+
 
 //// COOLDOWN SYSTEMS
 /*

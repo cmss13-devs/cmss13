@@ -52,7 +52,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -60,6 +60,10 @@
 			return
 		if(icon_state == "paper_uscm")
 			icon_state = "paper_uscm_words"
+			return
+		if(icon_state == "paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
 			return
 		icon_state = "paper_words"
 		return
@@ -495,8 +499,11 @@
 	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
 
 /obj/item/paper/flag
-	icon_state = "flag_neutral"
-	item_state = "paper"
+	name = "paper flag"
+	desc = "Somebody attached a blank piece of paper to a stick. You feel like waving it around like an idiot."
+	icon_state = "paper_flag"
+	item_state = "paper_flag"
+
 	anchored = TRUE
 
 /obj/item/paper/jobs
@@ -549,8 +556,8 @@
 	info = "<p>Mary had a little lamb,<BR>\nits fleece was white as snow;<BR>\nAnd everywhere that Mary went,<BR>\nthe lamb was sure to go.</p><p>It followed her to school one day,<BR>\nwhich was against the rule;<BR>\nIt made the children laugh and play,<BR>\nto see a lamb at school.</p><p>And so the teacher turned it out,<BR>\nbut still it lingered near,<BR>\nAnd waited patiently about,<BR>\ntill Mary did appear.</p><p>\"Why does the lamb love Mary so?\"<BR>\nthe eager children cry;<BR>\n\"Why, Mary loves the lamb, you know\",<BR>\nthe teacher did reply."
 
 /obj/item/paper/lv_624/cheese
-	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
+	name = "paper= 'Note on the contents of the armory'"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armory for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"

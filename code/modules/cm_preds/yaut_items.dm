@@ -47,11 +47,11 @@
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.1
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
@@ -128,12 +128,12 @@
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
+		/obj/item/weapon/yautja,
 		/obj/item/storage/backpack/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	fire_intensity_resistance = 20
 
@@ -219,7 +219,7 @@
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	items_allowed = list(
-		/obj/item/weapon/melee/yautja/knife,
+		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 	)
 
@@ -262,7 +262,7 @@
 
 /obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
-	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
+	stored_item = new /obj/item/weapon/yautja/knife(src)
 	update_icon()
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
@@ -396,7 +396,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isyautja(H) || is_admin_level(H.z))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -456,21 +456,26 @@
 	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
-		return
+		return FALSE
 
 	if(istype(usr.buckled, /obj/structure/bed/nest/))
-		return
+		return FALSE
+
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea how this thing works!"))
+		return FALSE
 
 	if(loc && istype(usr.loc, /turf))
 		var/turf/location = usr.loc
 		GLOB.yautja_teleports += location
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
-			return
+			return FALSE
 		GLOB.yautja_teleport_descs[name + location.loc_to_string()] = location
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
+		return TRUE
 
 //=================//\\=================\\
 //======================================\\
@@ -847,11 +852,11 @@
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	siemens_coefficient = 0.1
 	allowed = list(
-		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/harpoon,
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee/yautja,
-		/obj/item/weapon/melee/twohanded/yautja,
+		/obj/item/weapon/yautja,
+		/obj/item/weapon/twohanded/yautja,
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "fullarmor_ebony")
@@ -923,3 +928,103 @@
 		icon_state = "medicomp_open"
 	else
 		icon_state = "medicomp"
+
+/obj/item/reagent_container/glass/rag/polishing_rag
+	name = "polishing rag"
+	desc = "An astonishingly fine, hand-tailored piece of exotic cloth."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "polishing_rag"
+	reagent_desc_override = TRUE //Hide the fact its actually a reagent container
+
+/obj/item/reagent_container/glass/rag/polishing_rag/get_examine_text(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		. += SPAN_NOTICE("You could use this to polish bones.")
+
+/obj/item/reagent_container/glass/rag/polishing_rag/afterattack(obj/potential_limb, mob/user, proximity_flag, click_parameters)
+
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return ..()
+
+	if(!istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton))
+		return ..()
+
+	var/obj/item/clothing/accessory/limb/skeleton/current_limb = potential_limb
+	if(current_limb.polished)
+		to_chat(user, SPAN_NOTICE("This limb has already been polished."))
+		return ..()
+
+	to_chat(user, SPAN_WARNING("You start wiping [current_limb] with the [name]."))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_limb))
+		to_chat(user, SPAN_NOTICE("You stop polishing [current_limb]."))
+		return
+	to_chat(user, SPAN_NOTICE("You polish [current_limb] to perfection."))
+	current_limb.polished = TRUE
+	current_limb.name = "polished [current_limb.name]"
+
+//Skeleton limbs, meant to be for bones
+//Only an onmob for the skull
+/obj/item/clothing/accessory/limb/skeleton
+	name = "How did you get this?"
+	desc = "A bone from a human."
+	icon = 'icons/obj/items/skeleton.dmi'
+	icon_state = "head"
+	///Has it been cleaned by a polishing rag?
+	var/polished = FALSE
+/obj/item/clothing/accessory/limb/skeleton/l_arm
+	name = "arm bone"
+	icon_state = "l_arm"
+
+/obj/item/clothing/accessory/limb/skeleton/l_foot
+	name = "foot bone"
+	icon_state = "l_foot"
+
+/obj/item/clothing/accessory/limb/skeleton/l_hand
+	name = "hand bone"
+	icon_state = "l_hand"
+
+/obj/item/clothing/accessory/limb/skeleton/l_leg
+	name = "leg bone"
+	icon_state = "l_leg"
+
+/obj/item/clothing/accessory/limb/skeleton/r_arm
+	name = "arm bone"
+	icon_state = "r_arm"
+
+/obj/item/clothing/accessory/limb/skeleton/r_foot
+	name = "foot bone"
+	icon_state = "r_foot"
+
+/obj/item/clothing/accessory/limb/skeleton/r_hand
+	name = "hand bone"
+	icon_state = "r_hand"
+
+/obj/item/clothing/accessory/limb/skeleton/r_leg
+	name = "leg bone"
+	icon_state = "r_leg"
+
+/obj/item/clothing/accessory/limb/skeleton/head
+	name = "skull"
+	icon_state = "head"
+	high_visibility = TRUE
+
+/obj/item/clothing/accessory/limb/skeleton/head/spine
+	icon_state = "spine"
+
+/obj/item/clothing/accessory/limb/skeleton/torso
+	name = "ribcage"
+	icon_state = "torso"
+
+/obj/item/clothing/accessory/limb/skeleton/get_examine_text(mob/living/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		if(polished)
+			. += SPAN_NOTICE("Polished to perfection.")
+		else
+			. += SPAN_NOTICE("[src] is still dirty.")
+
+/obj/item/clothing/accessory/limb/skeleton/can_attach_to(mob/user, obj/item/clothing/C)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) //Only Yautja can wear bones on their clothing
+		to_chat(user, SPAN_NOTICE("Why would you try attaching this to your clothing?"))
+		return
+	. = ..()

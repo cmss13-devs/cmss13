@@ -8,7 +8,7 @@
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
-	..()
+	. = ..()
 
 	if(!prob(spawn_nothing_percentage))
 		if(spawn_on_roundstart)
@@ -31,7 +31,7 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
-	if(isnull(build_path))
+	if(!ispath(build_path))
 		return
 	return (new build_path(src.loc))
 
@@ -199,7 +199,7 @@
 				/obj/item/poster,\
 				/obj/item/toy/bikehorn,\
 				/obj/item/toy/beach_ball,\
-				/obj/item/weapon/melee/banhammer,\
+				/obj/item/weapon/banhammer,\
 				/obj/item/toy/balloon,\
 				/obj/item/toy/blink,\
 				/obj/item/toy/crossbow,\
@@ -514,7 +514,6 @@
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,

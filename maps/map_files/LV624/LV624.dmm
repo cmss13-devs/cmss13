@@ -1865,7 +1865,7 @@
 	},
 /area/lv624/ground/barrens/east_barrens)
 "aiF" = (
-/obj/item/weapon/melee/butterfly/switchblade,
+/obj/item/weapon/butterfly/switchblade,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/east_barrens)
 "aiG" = (
@@ -2042,7 +2042,7 @@
 /turf/open/gm/coast,
 /area/lv624/ground/river/central_river)
 "ajt" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
 /area/lv624/ground/river/central_river)
@@ -4325,7 +4325,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -4560,11 +4560,11 @@
 /area/lv624/lazarus/quartstorage)
 "avV" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/baton/cattleprod{
+/obj/item/weapon/baton/cattleprod{
 	pixel_x = -2;
 	pixel_y = 1
 	},
-/obj/item/weapon/melee/baton/cattleprod{
+/obj/item/weapon/baton/cattleprod{
 	pixel_x = 4;
 	pixel_y = -2
 	},
@@ -5009,7 +5009,7 @@
 "axx" = (
 /obj/effect/landmark/corpsespawner/chef,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
 "axz" = (
@@ -5388,8 +5388,8 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "ayO" = (
-/obj/item/weapon/melee/baseballbat/metal,
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal{
 	pixel_x = 5
 	},
 /obj/structure/surface/rack,
@@ -5771,7 +5771,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "azY" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = -7
@@ -5905,7 +5905,7 @@
 /area/lv624/lazarus/sleep_male)
 "aAx" = (
 /obj/structure/closet,
-/obj/item/weapon/melee/baseballbat,
+/obj/item/weapon/baseballbat,
 /obj/item/clothing/head/beret/jan,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light{
@@ -6127,7 +6127,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/sleep_female)
 "aBh" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = 6
@@ -6181,7 +6181,6 @@
 /area/lv624/ground/river/west_river)
 "aBo" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
 	name = "Robotics Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -6354,7 +6353,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "aBR" = (
 /obj/structure/largecrate,
-/obj/structure/prop/mech/mech_parts/part/gygax_armour{
+/obj/structure/prop/mech/mech_parts/part/gygax_armor{
 	layer = 1
 	},
 /turf/open/floor/plating{
@@ -9052,7 +9051,6 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	dwidth = 1;
 	name = "Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -9115,10 +9113,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
@@ -9612,7 +9606,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
-	req_access = null;
 	req_one_access_txt = "104;3"
 	},
 /turf/open/floor,
@@ -10238,7 +10231,6 @@
 /area/lv624/lazarus/canteen)
 "aQh" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -11357,10 +11349,6 @@
 "aUv" = (
 /obj/item/device/flashlight,
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door_control{
-	id = "nexus_blast";
-	name = "Nexus Lockdown"
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
@@ -11384,7 +11372,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "aUA" = (
 /obj/item/bedsheet/rd,
-/obj/item/weapon/melee/pole/fancy_cane,
+/obj/item/weapon/pole/fancy_cane,
 /obj/structure/bed{
 	desc = "For prime comfort.";
 	name = "fancy bed"
@@ -12377,7 +12365,7 @@
 /obj/structure/foamed_metal{
 	layer = 3.1
 	},
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /obj/item/device/lightreplacer,
 /turf/open/floor{
 	icon_state = "dark"
@@ -12704,7 +12692,7 @@
 /area/lv624/ground/river/west_river)
 "aZc" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -13236,7 +13224,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
 "btr" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = -7
@@ -16241,7 +16229,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "idz" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -16409,9 +16397,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"iAu" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "iAA" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -16985,7 +16970,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = -7
@@ -17400,9 +17385,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/colony/telecomm/sw_lz2)
-"kYg" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "kYx" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -18249,7 +18231,7 @@
 /turf/open/gm/coast,
 /area/lv624/ground/caves/sand_temple)
 "mVg" = (
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = 6
@@ -18496,7 +18478,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/harpoon/yautja{
+/obj/item/weapon/harpoon/yautja{
 	anchored = 1;
 	name = "Alien Harpoon";
 	pixel_x = 6
@@ -18963,7 +18945,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "off" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
+/obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -19452,7 +19434,7 @@
 "pfl" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/chef,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "pfK" = (
@@ -20902,9 +20884,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
-"syA" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "szy" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
@@ -21218,7 +21197,7 @@
 /turf/open/gm/coast,
 /area/lv624/ground/river/west_river)
 "thn" = (
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -21756,7 +21735,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -21994,7 +21973,7 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
 /obj/structure/barricade/sandbags/wired,
-/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -22616,7 +22595,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -23354,7 +23333,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/weapon/melee/pole/fancy_cane,
+/obj/item/weapon/pole/fancy_cane,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -29015,7 +28994,7 @@ gwP
 gwP
 gwP
 gwP
-iAu
+gwP
 gwP
 gwP
 gwP
@@ -40412,7 +40391,7 @@ abl
 abl
 abl
 abl
-syA
+abl
 abl
 abl
 abl
@@ -58419,7 +58398,7 @@ pUm
 pUm
 acg
 acg
-kYg
+acg
 acg
 acg
 vjL

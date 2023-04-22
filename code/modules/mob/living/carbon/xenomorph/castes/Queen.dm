@@ -79,6 +79,9 @@
 
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
+	if(!Q)
+		return INITIALIZE_HINT_QDEL
+
 	if(!istype(Q))
 		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
 		return INITIALIZE_HINT_QDEL

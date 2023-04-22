@@ -100,7 +100,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
-	var/sea_path = "Command"
+
+	///holds our preferred job options for jobs
+	var/pref_special_job_options = list()
 
 	var/preferred_survivor_variant = ANY_SURVIVOR
 
@@ -525,10 +527,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
-				dat += "<div id='column1'>"
-				dat += "<h2><b><u>Mentor Settings:</u></b></h2>"
-				dat += "<b>SEA Grade Path:</b> <a href='?_src_=prefs;preference=grade_path;task=input'><b>[sea_path]</b></a><br>"
-				dat += "</div>"
+				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SETTINGS)
@@ -638,7 +637,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width - Screen' width. Defaults to 550 to make it look nice.
 //height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(), width = 950, height = 700)
+/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
 	if(!RoleAuthority)
 		return
 
@@ -654,9 +653,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_REGULAR_ALL
+		active_role_names = ROLES_DISTRESS_SIGNAL
 
-	var/datum/job/lastJob
 	for(var/role_name as anything in active_role_names)
 		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
 		if(!job)
@@ -664,34 +662,35 @@ var/const/MAX_SAVE_SLOTS = 10
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
-			if((index < limit) && (lastJob != null))
-				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-				//the last job's selection color. Creating a rather nice effect.
-				for(var/j = 0, j < (limit - index), j += 1)
-					HTML += "<tr class='[lastJob.selection_class]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
 		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
-		lastJob = job
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>WHITELISTED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b>"
+		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
 
-		HTML += "</td><td width='60%'>"
+		if(job.job_options)
+			if(!pref_special_job_options || !pref_special_job_options[role_name])
+				pref_special_job_options[role_name] = job.job_options[1]
+
+			var/txt = pref_special_job_options[role_name]
+			HTML += "<a href='?_src_=prefs;preference=special_job_select;task=input;text=[job.title]'><b>[txt]</b></a>"
+
+		HTML += "</td><td width='50%'>"
 
 		var/cur_priority = get_job_priority(job.title)
 
@@ -1126,7 +1125,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
@@ -1203,13 +1202,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_co_sidearm)
 						return
 					commander_sidearm = new_co_sidearm
-
-				if("grade_path")
-					var/list/options = list("Command", "Technical")
-					var/new_path = tgui_input_list(user, "Choose your preferred promotion path.", "Promotion Paths", options)
-					if(!new_path)
-						return
-					sea_path = new_path
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)
@@ -1568,6 +1560,23 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_preferred_survivor_variant)
 						return
 					preferred_survivor_variant = new_preferred_survivor_variant
+
+				if("special_job_select")
+					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]
+					if(!job)
+						close_browser(user, "mob_occupation")
+						ShowChoices(user)
+						return
+
+					var/list/filtered_options = job.filter_job_option(user)
+
+					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", filtered_options)
+					if(!new_special_job_variant)
+						return
+					pref_special_job_options[job.title] = new_special_job_variant
+
+					SetChoices(user)
+					return
 		else
 			switch(href_list["preference"])
 				if("publicity")

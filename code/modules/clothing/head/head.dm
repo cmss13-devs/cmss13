@@ -353,19 +353,19 @@
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co
-	name = "\improper USCM captain cap"
+	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 
 /obj/item/clothing/head/cmcap/co/formal
-	name = "\improper USCM formal captain's white cap"
+	name = "\improper USCM formal Commanding Officer's white cap"
 	icon_state = "co_formalhat_white"
-	desc = "A formal cover worn by Commanding Officers of the USCM."
+	desc = "A formal cover worn by senior officers of the USCM."
 	flags_marine_hat = HAT_GARB_OVERLAY
 	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co/formal/black
-	name = "\improper USCM formal captain's black cap"
+	name = "\improper USCM formal Commanding Officer's black cap"
 	icon_state = "co_formalhat_black"
 
 /obj/item/clothing/head/cmcap/ro
@@ -384,6 +384,16 @@
 	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
+	flags_marine_hat = HAT_GARB_OVERLAY
+
+/obj/item/clothing/head/cmcap/reporter
+	name = "combat correspondent cap"
+	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
+	icon_state = "wc_flagcap"
+	item_state = "wc_flagcap"
+	contained_sprite = TRUE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
@@ -450,8 +460,8 @@
 	desc = "A beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
-	name = "marine captain beret"
-	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "marine commanding officer beret"
+	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
 	item_icons = list(
@@ -489,8 +499,8 @@
 	)
 
 /obj/item/clothing/head/marine/peaked/captain
-	name = "marine captain peaked cap"
-	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "marine commanding officer peaked cap"
+	desc = "A peaked cap with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
 	item_icons = list(
@@ -499,13 +509,13 @@
 	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
-	name = "captain's dress white peaked cap"
-	desc = "A white, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "commanding officer's dress white peaked cap"
+	desc = "A white, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_white"
 
 /obj/item/clothing/head/marine/peaked/captain/black
-	name = "captain's dress black peaked cap"
-	desc = "A black, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "commanding officer's dress black peaked cap"
+	desc = "A black, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
 	icon_state = "co_peakedcap_black"
 
 /obj/item/clothing/head/beret/marine/chiefofficer
@@ -599,6 +609,26 @@ D
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
+
+/obj/item/clothing/head/CMB
+	name = "\improper Colonial Marshal Bureau cap"
+	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	icon_state = "cmbcap"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
 
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
@@ -724,3 +754,13 @@ D
 	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
 	icon_state = "o_cap"
 	item_state = "o_cap"
+
+/obj/item/clothing/head/owlf_hood
+	name = "\improper OWLF thermal hood"
+	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "owlf_hood"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+	item_state = "owlf_hood"

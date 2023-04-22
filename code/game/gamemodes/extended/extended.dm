@@ -1,6 +1,6 @@
 /datum/game_mode/extended
-	name = "extended"
-	config_tag = "extended"
+	name = "Extended"
+	config_tag = "Extended"
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
@@ -11,10 +11,8 @@
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
 
-/datum/game_mode/extended/pre_setup()
-	roles_to_roll = RoleAuthority.roles_for_mode - (RoleAuthority.roles_for_mode & (ROLES_XENO|ROLES_WHITELISTED|ROLES_SPECIAL))
-
-	return ..()
+/datum/game_mode/extended/get_roles_list()
+	return ROLES_USCM
 
 /datum/game_mode/extended/post_setup()
 	initialize_post_marine_gear_list()
@@ -50,4 +48,6 @@
 	calculate_end_statistics()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
+
+
 	return TRUE

@@ -93,11 +93,11 @@
 	ranking = 10
 	pay_multiplier = 3
 
-/datum/paygrade/marine/e9s
-	paygrade = "ME9S"
+/datum/paygrade/marine/e9c
+	paygrade = "ME9C"
 	name = "Sergeant Major of the Colonial Marine Corps"
 	prefix = "SMCMC"
-	rank_pin = /obj/item/clothing/accessory/ranks/marine/e10c
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11
 	pay_multiplier = 3
 

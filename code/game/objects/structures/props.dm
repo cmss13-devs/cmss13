@@ -152,8 +152,8 @@
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
 			L = 1
-	else if(istype(W, /obj/item/weapon/melee/energy/sword))
-		var/obj/item/weapon/melee/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/energy/sword))
+		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
 			L = 1
 	else if(istype(W, /obj/item/device/assembly/igniter))
@@ -333,9 +333,9 @@
 	name="Gygax Right Leg"
 	icon_state = "gygax_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/gygax_armour
-	name="Gygax Armour Plates"
-	icon_state = "gygax_armour"
+/obj/structure/prop/mech/mech_parts/part/gygax_armor
+	name="Gygax Armor Plates"
+	icon_state = "gygax_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/durand
 	name = "Durand Chassis"
@@ -365,9 +365,9 @@
 	name="Durand Right Leg"
 	icon_state = "durand_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/durand_armour
-	name="Durand Armour Plates"
-	icon_state = "durand_armour"
+/obj/structure/prop/mech/mech_parts/part/durand_armor
+	name="Durand Armor Plates"
+	icon_state = "durand_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/firefighter
 	name = "Firefighter Chassis"
@@ -696,6 +696,7 @@
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
+	icon = 'icons/obj/structures/structures.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 	luminosity = 0
@@ -1000,8 +1001,8 @@
 /obj/structure/prop/invuln/lattice_prop
 	desc = "A lightweight support lattice."
 	name = "lattice"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "latticefull"
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
+	icon_state = "lattice0"
 	density = FALSE
 	layer = RIPPLE_LAYER
 

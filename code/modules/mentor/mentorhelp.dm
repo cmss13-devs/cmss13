@@ -56,7 +56,7 @@
 	msg = strip_html(msg)
 	var/log_msg = msg
 	if(from_key && to_key)
-		log_msg = "<span class='mentorhelp'>[from_key] -> [to_key]:</span> [msg]"
+		log_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [msg]"
 	log_mhelp(log_msg)
 
 /datum/mentorhelp/proc/notify(text, to_thread_mentor = TRUE, to_mentors = TRUE, to_staff = TRUE)
@@ -68,7 +68,7 @@
 			hitlist |= candidate
 		else if(to_staff && CLIENT_IS_STAFF(candidate))
 			hitlist |= candidate
-	var/displaymsg = "<span class='mentorhelp'><span class='prefix'>MENTOR LOG:</span> <span class='message'>[text]</span></span>"
+	var/displaymsg = "[SPAN_MENTORHELP("<span class='prefix'>MENTOR LOG:</span> <span class='message'>[text]</span>")]"
 	for(var/client/receiver in hitlist)
 		if(istype(receiver))
 			to_chat(receiver, displaymsg)
@@ -100,7 +100,7 @@
 		log_message(msg, sender.key, "All mentors")
 
 	// Sender feedback
-	to_chat(sender, "<span class='mentorhelp'><span class='prefix'>MentorHelp:</span> Message to [(recipient?.key) ? "<a href='?src=\ref[src];action=message'>[recipient.key]</a>" : "mentors"]:</span> <span class='mentorbody'>[msg]</span>")
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.key) ? "<a href='?src=\ref[src];action=message'>[recipient.key]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
@@ -123,7 +123,7 @@
 		// Staff eavesdrop
 		else if(CLIENT_HAS_RIGHTS(C, R_MENTOR) && CLIENT_IS_STAFF(C))
 			if(include_keys)
-				formatted = SPAN_NOTICE(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
+				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
 
 		else continue
 
@@ -146,7 +146,7 @@
 
 		// Some other mentor is already taking care of this thread
 		else if(mentor != sender)
-			to_chat(sender, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
+			to_chat(sender, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
 			return
 
 	var/target = mentor
@@ -175,8 +175,8 @@
 			message_sender_options = " (<a href='?src=\ref[src];action=mark'>Mark</a>"
 		message_sender_options += " | <a href='?src=\ref[src];action=close'>Close</a> | <a href='?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
-	var/message_header = "<span class='mentorhelp'><span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span></span><br>"
-	var/message_body = "&emsp;<span class='mentorbody'><span class='message'>[message]</span></span><br>"
+	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
+	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)
 
@@ -194,7 +194,7 @@
 
 	// Already marked
 	if(mentor)
-		to_chat(thread_mentor, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
+		to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
 	if(!thread_mentor)
@@ -248,7 +248,7 @@
 
 	// Make sure it's being closed by staff or the mentor handling the thread
 	if(mentor && closer && (closer != mentor) && (closer != author) && !CLIENT_IS_STAFF(closer))
-		to_chat(closer, "<span class='mentorsay'><b>NOTICE:</b> Another mentor is handling this thread!</span>")
+		to_chat(closer, SPAN_MENTORHELP("<b>NOTICE:</b> Another mentor is handling this thread!"))
 		return
 
 	open = FALSE
@@ -324,7 +324,7 @@
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
-	var/msg = "<span class='mentorsay'><span class='prefix'>Autoresponse:</span> <span class='message'>[choice]</span></span> "
+	var/msg = SPAN_MENTORSAY("<span class='prefix'>Autoresponse:</span> <span class='message'>[choice]</span>")
 	switch(choice)
 		if("L: Discord")
 			msg += "You can join our Discord server by using <a href='https://discordapp.com/invite/TByu8b5'>this link</a>!"

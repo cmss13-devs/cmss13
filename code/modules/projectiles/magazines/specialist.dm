@@ -154,11 +154,11 @@
 		return
 	if(!in_hand.current_mag)
 		return
-	var/obj/item/weapon/melee/twohanded/offhand/off_hand = M.get_inactive_hand()
+	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
 		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
 	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
@@ -323,7 +323,7 @@
 
 /obj/item/ammo_magazine/rocket/anti_tank
 	name = "\improper 84mm Anti-Tank Rocket"
-	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	desc = "An anti-armor rocket specifically modified for penetration of armored vehicle hulls."
 	caliber = "rocket"
 	icon_state = "at_rocket"
 

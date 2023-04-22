@@ -437,7 +437,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/corsat{
@@ -547,10 +547,10 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -669,7 +669,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/claymore/mercsword/machete/arnold{
+/obj/item/weapon/claymore/mercsword/machete/arnold{
 	desc = "Won by an Elder during their youthful hunting days. None are allowed to touch it.";
 	name = "\improper Dutch's Machete";
 	anchored = 1
@@ -1249,7 +1249,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/sledgehammer{
+/obj/item/weapon/twohanded/sledgehammer{
 	anchored = 1
 	},
 /turf/open/floor/corsat{
@@ -1278,36 +1278,36 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 12
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 8
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 4
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -4
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -12
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25
 	},
-/obj/item/weapon/melee/claymore/mercsword{
+/obj/item/weapon/claymore/mercsword{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -8
@@ -1763,8 +1763,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/unathiknife,
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife,
+/obj/item/weapon/unathiknife{
 	attack_speed = 12;
 	force = 25
 	},
@@ -1854,24 +1854,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/claymore{
+/obj/item/weapon/claymore{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore"
 	},
-/obj/item/weapon/melee/claymore{
+/obj/item/weapon/claymore{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
 	pixel_x = -5
 	},
-/obj/item/weapon/melee/claymore{
+/obj/item/weapon/claymore{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
 	pixel_x = 5
 	},
-/obj/item/weapon/melee/claymore{
+/obj/item/weapon/claymore{
 	attack_speed = 12;
 	force = 25;
 	name = "duelling claymore";
@@ -1901,7 +1901,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/dualsaber{
+/obj/item/weapon/twohanded/dualsaber{
 	force_wielded = 35
 	},
 /turf/open/floor/corsat{
@@ -1926,7 +1926,7 @@
 	color = "#6b675e"
 	},
 /obj/item/storage/large_holster/katana,
-/obj/item/weapon/melee/katana,
+/obj/item/weapon/katana,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1963,10 +1963,10 @@
 	dir = 4;
 	pixel_y = 25
 	},
-/obj/item/weapon/melee/twohanded/yautja/spear,
-/obj/item/weapon/melee/twohanded/yautja/spear,
-/obj/item/weapon/melee/twohanded/yautja/spear,
-/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2046,7 +2046,7 @@
 	},
 /area/yautja)
 "oO" = (
-/obj/item/weapon/melee/yautja/chain{
+/obj/item/weapon/yautja/chain{
 	anchored = 1;
 	name = "Houndmaster's Discipline Whip";
 	pixel_x = -3;
@@ -2228,7 +2228,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/claymore/mercsword/ceremonial,
+/obj/item/weapon/claymore/mercsword/ceremonial,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2433,6 +2433,13 @@
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"BS" = (
+/obj/structure/machinery/prop/yautja/bubbler,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "Cn" = (
@@ -2640,7 +2647,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/chainofcommand,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2713,24 +2720,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/unathiknife{
+/obj/item/weapon/unathiknife{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -5;
@@ -2794,10 +2801,35 @@
 	},
 /area/yautja)
 "JL" = (
-/obj/item/weapon/melee/yautja/knife{
+/obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = 25
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"KD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag,
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/glass/rag/polishing_rag{
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2976,7 +3008,7 @@
 	},
 /area/yautja)
 "QF" = (
-/obj/item/weapon/melee/yautja/knife{
+/obj/item/weapon/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = -25
@@ -3103,12 +3135,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/baton/cattleprod,
 /turf/open/shuttle/predship,
 /area/yautja)
 "Wg" = (
@@ -3148,26 +3180,26 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal{
 	attack_speed = 12;
 	force = 25;
 	name = "\improper duelling metal bat";
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal{
 	attack_speed = 12;
 	force = 25;
 	name = "\improper duelling metal bat";
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal{
 	attack_speed = 12;
 	force = 25;
 	name = "\improper duelling metal bat"
 	},
-/obj/item/weapon/melee/baseballbat/metal{
+/obj/item/weapon/baseballbat/metal{
 	attack_speed = 12;
 	force = 25;
 	name = "\improper duelling metal bat";
@@ -5311,7 +5343,7 @@ bL
 cP
 bL
 bj
-wQ
+KD
 bL
 JH
 JH
@@ -5383,7 +5415,7 @@ eS
 cP
 Uv
 bj
-bL
+BS
 JH
 JH
 bL

@@ -232,7 +232,7 @@
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,
-		/obj/item/weapon/melee/baton = 4,
+		/obj/item/weapon/baton = 4,
 		/obj/item/device/flashlight = 4,
 		/obj/item/storage/belt/security/MP = 4,
 		/obj/item/device/flash = 5,
@@ -407,6 +407,8 @@
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
 		/obj/item/device/camera = 5,
+		/obj/item/device/camera_film = 10,
+		/obj/item/notepad = 5,
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)

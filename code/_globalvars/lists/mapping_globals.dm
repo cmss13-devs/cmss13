@@ -33,8 +33,6 @@ GLOBAL_LIST_EMPTY(zombie_landmarks)
 GLOBAL_LIST_EMPTY(newplayer_start)
 GLOBAL_LIST_EMPTY_TYPED(observer_starts, /obj/effect/landmark/observer_start)
 
-GLOBAL_LIST_EMPTY(fog_blockers)
-
 GLOBAL_LIST_EMPTY(map_items)
 GLOBAL_LIST_EMPTY(xeno_tunnels)
 GLOBAL_LIST_EMPTY(crap_items)

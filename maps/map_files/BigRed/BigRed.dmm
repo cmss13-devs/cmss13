@@ -8809,7 +8809,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayP" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -22819,7 +22819,7 @@
 "bov" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "box" = (
@@ -23591,7 +23591,7 @@
 /area/bigredv2/outside/filtration_plant)
 "brW" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -25288,7 +25288,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/item/weapon/gun/smg/m39/elite,
+/obj/item/weapon/gun/smg/m39,
 /obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor{
 	dir = 9;
@@ -27788,7 +27788,7 @@
 	},
 /area/bigredv2/caves/mining)
 "drq" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -27930,7 +27930,7 @@
 /area/bigredv2/caves/mining)
 "dCA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "dEf" = (
@@ -28489,7 +28489,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -28964,7 +28964,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/item/weapon/melee/baseballbat,
+/obj/item/weapon/baseballbat,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -29979,7 +29979,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "iaX" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16"
@@ -30717,7 +30717,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/weapon/baton/loaded,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -31019,7 +31019,7 @@
 /area/bigredv2/caves/mining)
 "kcx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "kcZ" = (
@@ -31128,7 +31128,7 @@
 	dir = 1;
 	pixel_y = 7
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = -4;
 	pixel_y = 3
 	},
@@ -31801,7 +31801,7 @@
 	},
 /area/bigredv2/caves/mining)
 "lIe" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	dir = 8;
@@ -31852,7 +31852,7 @@
 	},
 /area/bigred/ground/garage_workshop)
 "lPh" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 3;
 	pixel_y = 12
 	},
@@ -32195,7 +32195,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
 "mBo" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -7;
 	pixel_y = 9
 	},
@@ -32600,7 +32600,7 @@
 	},
 /area/bigredv2/outside/eta)
 "nEV" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -10;
 	pixel_y = 12
 	},
@@ -33589,7 +33589,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -33611,7 +33611,7 @@
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -33751,7 +33751,7 @@
 	},
 /area/bigredv2/caves_se)
 "pUi" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "pVp" = (
@@ -33829,7 +33829,7 @@
 /area/bigredv2/oob)
 "pZe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -34360,7 +34360,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -34498,7 +34498,7 @@
 "rtR" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -34714,13 +34714,13 @@
 /area/bigredv2/caves/mining)
 "rNc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "rOK" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/baton/loaded,
+/obj/item/weapon/twohanded/spear{
 	pixel_x = -16;
 	pixel_y = -9
 	},
@@ -35086,7 +35086,7 @@
 	},
 /area/bigredv2/outside/s)
 "ssO" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -36558,7 +36558,7 @@
 	},
 /area/bigredv2/outside/library)
 "vpu" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -36693,10 +36693,10 @@
 /area/bigredv2/outside/medical)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine{
 	pixel_y = 8
 	},
-/obj/item/weapon/melee/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine{
 	pixel_y = -7
 	},
 /turf/open/floor/plating{
@@ -37593,7 +37593,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /obj/effect/decal/cleanable/blood,
@@ -37670,7 +37670,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -37715,7 +37715,7 @@
 	},
 /area/bigredv2/caves_se)
 "xAv" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_15"
 	},
@@ -38094,7 +38094,7 @@
 	},
 /area/bigredv2/caves/mining)
 "yjU" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"

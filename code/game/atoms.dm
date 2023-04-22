@@ -321,6 +321,8 @@ Parameters are passed from New.
 */
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	if(flags_atom & INITIALIZED)
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
@@ -627,10 +629,10 @@ Parameters are passed from New.
 					log_admin("[key_name(usr)] has added [amount] units of [chosen_id] to [src]")
 					message_admins(SPAN_NOTICE("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
 
-	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_EVENT))
+	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_ADMIN))
 		usr.client.handle_bomb_drop(src)
 
-	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_EVENT))
+	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_ADMIN))
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))

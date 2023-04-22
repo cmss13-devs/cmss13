@@ -407,7 +407,7 @@
 				continue
 
 
-		var/list/turf/path = getline2(src, A, include_from_atom = TRUE)
+		var/list/turf/path = getline2(src, A, include_from_atom = FALSE)
 		if(!path.len || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null

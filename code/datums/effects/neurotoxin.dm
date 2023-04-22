@@ -39,6 +39,7 @@
 	if(affected_mob.stat == DEAD)
 		return
 // General effects
+	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
 	affected_mob.make_dizzy(12)
 

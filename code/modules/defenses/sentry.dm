@@ -406,7 +406,8 @@
 				targets.Remove(A)
 				continue
 
-		var/list/turf/path = getline2(src, A, include_from_atom = FALSE)
+
+		var/list/turf/path = getline2(src, A, include_from_atom = TRUE)
 		if(!path.len || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null
@@ -445,6 +446,23 @@
 			for(var/obj/vehicle/multitile/V in F)
 				blocked = TRUE
 				break
+
+		// Rare edge case for diagonal lines through blocked terrain in a checkerboard pattern
+		if (abs(src.x - target.x) == abs(src.y - target.y))
+			// Get the tiles to the left and right of the firing path
+			var/turf/left = get_step(target, turn(target.dir, -45))
+			var/turf/right = get_step(target, turn(target.dir, 45))
+			// Loop through each tile in the firing path
+			var/turf/tile = src
+			while (tile != target)
+				tile = get_step(tile, src.dir)
+				// Check if the tile is obstructed
+				if (tile.density || tile.opacity)
+					blocked = TRUE
+					break
+			// Check if the tiles to the left and right of the firing path are obstructed
+			if ((left.density || left.opacity) && (right.density || right.opacity))
+				blocked = TRUE
 
 		if(blocked)
 			if(A == target)

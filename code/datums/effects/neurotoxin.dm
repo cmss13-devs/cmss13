@@ -36,7 +36,7 @@
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(!.)
 		return FALSE
-	if(affected_mob.stat)
+	if(affected_mob.stat == DEAD)
 		return
 // General effects
 	affected_mob.apply_stamina_damage(stam_dam)

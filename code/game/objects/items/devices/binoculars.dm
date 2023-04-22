@@ -473,6 +473,8 @@
 		qdel(laser_beam)
 		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 		return
+
+	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	target.overlays -= I
 	designator.is_spotting = FALSE
 	designator.update_icon()

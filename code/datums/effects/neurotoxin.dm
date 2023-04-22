@@ -21,9 +21,8 @@
 	/// Stamina damage per tick. Major balance number.
 	var/stam_dam = 7
 
-/datum/effects/neurotoxin/New(atom/thing)
-	..(thing)
-	cause_data = create_cause_data("neurotoxic gas")
+/datum/effects/neurotoxin/New(atom/thing, mob/from = null)
+	..(thing, from, "neurotoxic gas")
 
 /datum/effects/neurotoxin/validate_atom(atom/thing)
 	if(isxeno(thing) || isobj(thing))

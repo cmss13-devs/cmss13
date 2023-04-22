@@ -353,7 +353,7 @@
 		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
 			if(!neuro_effect)
-				neuro_effect = new /datum/effects/neurotoxin(carbon_target)
+				neuro_effect = new /datum/effects/neurotoxin(carbon_target, owner)
 			neuro_effect.duration += 16
 			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else

@@ -115,7 +115,7 @@
 							if(turfs_of_area.len > 1)
 								picked_atom = pick(turfs_of_area)
 
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, picked_atom, null), hiteta SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, picked_atom, point_defense), hiteta SECONDS)
 
 			if(exactplace == "Where I am")
 				var/prompt = tgui_alert(src, "Are you sure you want to shoot a railgun slug at the USS Almayer at your location?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
@@ -131,7 +131,7 @@
 						if(turfs_of_area.len > 1)
 							picked_atom = pick(turfs_of_area)
 
-					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, mob.loc, null), hiteta SECONDS)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, mob.loc, point_defense), hiteta SECONDS)
 
 		if("Particle cannon")
 			//deactivated, remoov later or add later!

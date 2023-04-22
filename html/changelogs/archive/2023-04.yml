@@ -279,3 +279,35 @@
   harryob:
   - code_imp: vendor subtypes can now be made to vend without an id
   - bugfix: the id scanning wire in vendors does something again
+2023-04-21:
+  BeagleGaming1:
+  - spellcheck: Fixes a missing desc in the eye cauterization surgery step
+  - admin: Allows staff to use more symbols in var editing
+  TeDGamer:
+  - balance: Reverts synth acid blood dodge chance due to revert in acid blood damage
+2023-04-22:
+  Hopek:
+  - rscadd: Resin Whisperer has been reworked. Major changes include being able to
+      place resin nodes remotely on weeds, not being able to use coerce resin when
+      standing outside of weeds and losing the ability to regularly plant weeds outside
+      of current existing weeds. This changes the Resin whisperer to a new "slow crawl"
+      frontline advance gameplay where he assists his team in pushing the front lines
+      forward as he is able to both advance weeds and build structures on them.
+  Khadd:
+  - bugfix: wrong fire no longer applied
+  LTNTS:
+  - balance: Limited communications for PO/DCC/CT/MST/CL/VC
+  - bugfix: IO/VC now use their own encryption keys
+  TeDGamer:
+  - balance: Fix T3 slots not being affected by burrowed larva
+  Totalepicness:
+  - balance: Rebalances globber, which has come out overtuned. Globber now has reduced
+      health, armor and zoom along with higher fire damage multiplier.
+  harryob:
+  - bugfix: obs can no longer be fired after the dropship doors are overridden by
+      the queen
+  realforest2001:
+  - balance: Super-Strong and Dextrous traits now allow mobs to pick up other mobs
+      who are one size bigger than them. When both traits are combined it allows for
+      two sizes up. Synths can lift runners and Yautja can lift most T1 or T2 xenos.
+  - code_imp: Changed Larva and Facehuggers mob_size variable to use the correct define.

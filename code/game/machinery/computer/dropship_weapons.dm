@@ -60,69 +60,8 @@
 	if (!istype(dropship))
 		return
 
-	var/shuttle_state
-	switch(dropship.mode)
-		if(SHUTTLE_IDLE)
-			shuttle_state = "idle"
-		if(SHUTTLE_IGNITING)
-			shuttle_state = "warmup"
-		if(SHUTTLE_CALL)
-			shuttle_state = "in_transit"
-		if(SHUTTLE_CRASHED)
-			shuttle_state = "crashed"
-
-	var/list/firemission_data = list()
-	var/list/firemission_edit_data = list()
-	var/list/firemission_edit_timeslices = list()
-
-	for(var/ts = 1; ts<=firemission_envelope.fire_length; ts++)
-		firemission_edit_timeslices += ts
-
-	var/current_mission_error = null
-	if(!faction)
-		return //no faction, no weapons
-
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
-
-	if(!cas_group)
-		return //broken group. No fighting
-
-
-	var/selected_eqp_name = ""
-	var/selected_eqp_ammo_name = ""
-	var/selected_eqp_ammo_amt = 0
-	var/selected_eqp_max_ammo_amt = 0
 	var/screen_mode = 0
-	var/fm_length = 0
-	var/firemission_signal
-	if(selected_equipment)
-		selected_eqp_name = sanitize(copytext(selected_equipment.name,1,MAX_MESSAGE_LEN))
-		if(selected_equipment.ammo_equipped)
-			selected_eqp_ammo_name = sanitize(copytext(selected_equipment.ammo_equipped.name,1,MAX_MESSAGE_LEN))
-			selected_eqp_ammo_amt = selected_equipment.ammo_equipped.ammo_count
-			selected_eqp_max_ammo_amt = selected_equipment.ammo_equipped.max_ammo_count
-		screen_mode = selected_equipment.screen_mode
-
-	var/firemission_id = 1
-	var/found_selected = FALSE
 	if(firemission_envelope)
-		for(var/datum/cas_fire_mission/X in firemission_envelope.missions)
-			if(!istype(X))
-				continue //the fuck
-			var/error_code = X.check(src)
-
-			var/selected = X == selected_firemission
-			if(error_code != FIRE_MISSION_ALL_GOOD && selected)
-				selected = FALSE
-				selected_firemission = null
-			var/can_edit = error_code != FIRE_MISSION_CODE_ERROR && !selected
-
-			if(selected)
-				found_selected = TRUE
-			var/can_interact = firemission_envelope.stat == FIRE_MISSION_STATE_IDLE && error_code == FIRE_MISSION_ALL_GOOD
-			firemission_data += list(list("name"= sanitize(copytext(X.name,1,MAX_MESSAGE_LEN)), "mission_tag" = firemission_id, "can_edit" = can_edit, "can_interact" = can_interact, "selected" = selected))
-			firemission_id++
-
 		if(!istype(editing_firemission))
 			editing_firemission = null
 			//the fuck
@@ -130,28 +69,9 @@
 		if(editing_firemission)
 			var/error_code = editing_firemission.check(src)
 			var/can_edit = error_code != FIRE_MISSION_CODE_ERROR
-			if(error_code != FIRE_MISSION_ALL_GOOD)
-				current_mission_error = editing_firemission.error_message(error_code)
-			else
-				current_mission_error = null
 			if(!can_edit)
 				editing_firemission = null
 				//abort
-			else
-				screen_mode = 2
-				for(var/datum/cas_fire_mission_record/firerec in editing_firemission.records)
-					var/gimbal = firerec.get_offsets()
-					var/ammo = firerec.get_ammo()
-					var/offsets = new /list(firerec.offsets.len)
-					for(var/idx = 1; idx < firerec.offsets.len; idx++)
-						offsets[idx] = firerec.offsets[idx] == null ? "-" : firerec.offsets[idx]
-					firemission_edit_data += list(list("name" = sanitize(copytext(firerec.weapon.name, 1, 50)), "ammo" = ammo, "gimbal" = gimbal, "offsets" = firerec.offsets))
-
-		if(!found_selected)
-			selected_firemission = null
-
-		if(editing_firemission)
-			fm_length = editing_firemission.mission_length
 
 		if((screen_mode != 0 && in_firemission_mode) || !selected_firemission)
 			in_firemission_mode = FALSE
@@ -163,32 +83,11 @@
 			screen_mode = 3
 			if(firemission_envelope.recorded_loc && (!firemission_envelope.recorded_loc.signal_loc || !firemission_envelope.recorded_loc.signal_loc:loc))
 				firemission_envelope.recorded_loc = null
-			firemission_signal = firemission_envelope.recorded_loc?firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 
-		if(screen_mode != 3 || !selected_firemission || shuttle_state != "in_transit")
+		if(screen_mode != 3 || !selected_firemission || dropship.mode != SHUTTLE_CALL)
 			update_location(null)
-	// /if(firemission_envelope)
 
-	data = list(
-		"selected_eqp" = selected_eqp_name,
-		"selected_eqp_ammo_name" = selected_eqp_ammo_name,
-		"selected_eqp_ammo_amt" = selected_eqp_ammo_amt,
-		"selected_eqp_max_ammo_amt" = selected_eqp_max_ammo_amt,
-		"screen_mode" = screen_mode,
-		"firemission_data" = firemission_data,
-		"editing_firemission" = editing_firemission,
-		"editing_firemission_length" = fm_length,
-		"firemission_edit_data" = firemission_edit_data,
-		"current_mission_error" = current_mission_error,
-		"firemission_edit_timeslices" = firemission_edit_timeslices,
-		"has_firemission" = !!firemission_envelope,
-		"can_firemission" = !!selected_firemission && shuttle_state == "in_transit",
-		"can_launch_firemission" = !!selected_firemission && shuttle_state == "in_transit" && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE,
-
-		//firemission related stuff
-		"firemission_selected_laser" = firemission_signal,
-	)
-	data += ui_data(usr)
+	data = ui_data(usr)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
@@ -198,11 +97,28 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+/obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!faction)
+		return UI_CLOSE
+
+	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	if(!cas_group)
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/dropship_weapons/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
 		return
+
+	.["screen_mode"] = get_screen_mode()
+
 	// dropship info
 	.["shuttle_state"] = dropship.mode
 	.["fire_mission_enabled"] = dropship.in_flyby
@@ -210,14 +126,86 @@
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(dropship)
 	.["targets_data"] = get_targets()
+	if(selected_equipment)
+		.["selected_eqp"] = sanitize(copytext(selected_equipment.name, 1, MAX_MESSAGE_LEN))
+		if(selected_equipment.ammo_equipped)
+			var/obj/structure/ship_ammo/ammo_equipped = selected_equipment.ammo_equipped
+			.["selected_eqp_ammo_name"] = sanitize(copytext(ammo_equipped.name, 1, MAX_MESSAGE_LEN))
+			.["selected_eqp_ammo_amt"] = ammo_equipped.ammo_count
+			.["selected_eqp_max_ammo_amt"] = ammo_equipped.max_ammo_count
 
 	// firemission info
+	.["has_firemission"] = !!firemission_envelope
+	.["can_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL
+	if(editing_firemission)
+		.["editing_firemission"] = editing_firemission
+		.["editing_firemission_length"] = editing_firemission ? editing_firemission.mission_length : 0
+		var/error_code = editing_firemission.check(src)
+		.["current_mission_error"] = error_code != FIRE_MISSION_ALL_GOOD ? editing_firemission.error_message(error_code) : null
+	.["firemission_edit_data"] = get_edit_firemission_data()
+
 	if(firemission_envelope)
+		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
+		.["firemission_data"] = get_firemission_data()
 		.["firemission_direction"] = get_firemission_dir()
 		.["firemission_offset"] = firemission_envelope.recorded_offset
 		.["firemission_message"] = firemission_envelope.firemission_status_message()
 		.["firemission_name"] = selected_firemission ? selected_firemission.name : ""
 		.["firemission_step"] = firemission_envelope.stat
+		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
+
+		var/list/firemission_edit_timeslices = list()
+		for(var/ts = 1; ts <= firemission_envelope.fire_length; ts++)
+			firemission_edit_timeslices += ts
+		.["firemission_edit_timeslices"] = firemission_edit_timeslices
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
+	. = 0
+	if(selected_equipment)
+		. = selected_equipment.screen_mode
+	if(editing_firemission && editing_firemission.check(src) != FIRE_MISSION_CODE_ERROR)
+		. = 2
+	if(selected_firemission && in_firemission_mode)
+		. = 3
+/obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_data()
+	. = list()
+	var/firemission_id = 1
+	for(var/datum/cas_fire_mission/firemission in firemission_envelope.missions)
+		if(!istype(firemission))
+			continue //the fuck
+		var/error_code = firemission.check(src)
+
+		var/selected = firemission == selected_firemission
+		var/can_edit = error_code != FIRE_MISSION_CODE_ERROR && !selected
+
+		var/can_interact = firemission_envelope.stat == FIRE_MISSION_STATE_IDLE && error_code == FIRE_MISSION_ALL_GOOD
+		. += list(
+			list(
+				"name"= sanitize(copytext(firemission.name, 1, MAX_MESSAGE_LEN)),
+				"mission_tag" = firemission_id,
+				"can_edit" = can_edit,
+				"can_interact" = can_interact,
+				"selected" = selected
+			)
+		)
+		firemission_id++
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_edit_firemission_data()
+	. = list()
+	for(var/datum/cas_fire_mission_record/firerec in editing_firemission.records)
+		var/gimbal = firerec.get_offsets()
+		var/ammo = firerec.get_ammo()
+		var/offsets = new /list(firerec.offsets.len)
+		for(var/idx = 1; idx < firerec.offsets.len; idx++)
+			offsets[idx] = firerec.offsets[idx] == null ? "-" : firerec.offsets[idx]
+				. += list(
+					list(
+						"name" = sanitize(copytext(firerec.weapon.name, 1, 50)),
+						"ammo" = ammo,
+						"gimbal" = gimbal,
+						"offsets" = firerec.offsets
+					)
+				)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_dir()
 	var/fm_direction = dir2text(firemission_envelope.recorded_dir)

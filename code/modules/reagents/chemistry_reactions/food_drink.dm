@@ -789,14 +789,102 @@
 	result = "milkshake"
 	required_reagents = list("cream" = 1, "ice" = 2, "milk" = 2)
 	result_amount = 5
-
+/datum/chemical_reaction/pilk
+	name = "Pilk"
+	id = "pilk"
+	result = "pilk"
+	required_reagents = list("cola" = 1, "milk" = 1)
+	result_amount = 2
+/datum/chemical_reaction/tofee
+	name = "Tofee"
+	id = "tofee"
+	result = "tofee"
+	required_reagents = list("tea" = 1, "coffee" = 1)
+	result_amount = 2
+/datum/chemical_reaction/bloodsoda
+	name = "BloodSoda"
+	id = "bloodsoda"
+	result = "bloodsoda"
+	required_reagents = list("blood" = 1, "cola" = 4)
+	result_amount = 5
+/datum/chemical_reaction/lemonnade
+	name = "Lemonnade"
+	id = "lemonnade"
+	result = "lemonnade"
+	required_reagents = list("lemonade" = 4, "welderfuel" = 1)
+	result_amount = 5
+/datum/chemical_reaction/leflour
+	name = "LeFlour"
+	id = "leflour"
+	result = "leflour"
+	required_reagents = list("lemonade" = 2, "flour" = 1)
+	result_amount = 3
+/datum/chemical_reaction/yadpecheni
+	name = "YadPecheni"
+	id = "yadpecheni"
+	result = "yadpecheni"
+	required_reagents = list("Beer" = 1, "ethanol" = 1)
+	result_amount = 2
+/datum/chemical_reaction/teafee
+	name = "Teafee"
+	id = "teafee"
+	result = "teafee"
+	required_reagents = list("tea" = 1, "coffee" = 1)
+	result_amount = 2
+/datum/chemical_reaction/pufee
+	name = "Pufee"
+	id = "pufee"
+	result = "pufee"
+	required_reagents = list("pilk" = 1, "tofee" = 1)
+	result_amount = 2
+/datum/chemical_reaction/sinfulcocktail
+	name = "SinfulCocktail"
+	id = "sinfulcocktail"
+	result = "sinfulcocktail
+	required_reagents = list("bloodsoda" = 1, "leflour" = 1)
+	result_amount = 2
+/datum/chemical_reaction/flammengetrank
+	name = "Flammengetrank"
+	id = "flammengetrank"
+	result = "flammengetrank
+	required_reagents = list("lemonnade" = 1, "yadpecheni" = 1)
+	result_amount = 2
+/datum/chemical_reaction/forbiddenfluid
+	name = "ForbiddenFluid"
+	id = "forbiddenfluid"
+	result = "forbiddenfluid"
+	required_reagents = list("urvinium" = 1, "anfo" = 4, "dylovene" = 1)
+	result_amount = 5
+/datum/chemical_reaction/runescurse
+	name = "RunesCurse"
+	id = "runescurse"
+	result = "runescurse"
+	required_reagents = list("pufee" = 1, "sinfulcocktail" = 1)
+	result_amount = 2
+/datum/chemical_reaction/fermisbrew
+	name = "FermisBrew"
+	id = "fermisbrew"
+	result = "fermisbrew"
+	required_reagents = list("forbiddenfluid" = 1, "flammengetrank" = 1, "plantmatter" = 1)
+	result_amount = 3
+/datum/chemical_reaction/drinkofthegods
+	name = "DrinkOfTheGods"
+	id = "drinkofthegods"
+	result = "drinkofthegods"
+	required_reagents = list("runescurse" = 1, "fermisbrew" = 1)
+	result_amount = 2
 /datum/chemical_reaction/rewriter
 	name = "Rewriter"
 	id = "rewriter"
 	result = "rewriter"
 	required_reagents = list("spacemountainwind" = 1, "coffee" = 1)
 	result_amount = 2
-
+/datum/chemical_reaction/urvinium
+	name = "Urvinium"
+	id = "urvinium"
+	result = "urvinium"
+	required_reagents = list("uranium" = 1, "wine" = 10)
+	result_amount = 10
 /datum/chemical_reaction/suidream
 	name = "Sui Dream"
 	id = "suidream"

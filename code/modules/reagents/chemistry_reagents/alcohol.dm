@@ -351,6 +351,38 @@
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 
+/datum/reagent/ethanol/flammengetrank
+	name = "Flammen Getrank"
+	id = "flammengetrank"
+	description = "A flaming cocktail drunk by Ordnance Technicians in sleazy maintenance bars."
+	color = "#C03600" // rgb: 192, 54, 0
+	properties = list(PROPERTY_ALCOHOL = 2, PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 4, PROPERTY_FLOWING = 2)
+	boozepwr = 4
+
+/datum/reagent/ethanol/urvinium
+	name = "Urvinium"
+	id = "urvinium"
+	description = "First created in a nuclear waste spillage, this concoction has been rumoured to power CLF bootleg nuclear reactors."
+	color = "#863D64" // rgb: 134, 61, 100
+	properties = list(PROPERTY_ALCOHOL = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
+	boozepwr = 1
+
+/datum/reagent/ethanol/drinkofthegods
+	name = "Drink Of the Gods"
+	id = "drinkofthegods"
+	description = "A fluid made from a number of other supposedly extremely powerful compounds. Many who drink it never taste again, with the neurones for taste being completely destroyed upon the first sip. Said to have been god's creation on the 8th day, to chill out."
+	color = "#21031C" // rgb: 33, 3, 28
+	properties = list(PROPERTY_ALCOHOL = 5, PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 4, PROPERTY_FLOWING = 2)
+	boozepwr = 5
+
+/datum/reagent/ethanol/yadpecheni
+	name = "Yad Pecheni"
+	id = "yadpecheni"
+	description = "Beer and Ethanol - concentrated drunkenness."
+	color = "#7A3600" // rgb: 122, 54, 0
+	properties = list(PROPERTY_ALCOHOL = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
+	boozepwr = 3
+
 /datum/reagent/ethanol/whiskey_cola
 	name = "Whiskey Cola"
 	id = "whiskeycola"

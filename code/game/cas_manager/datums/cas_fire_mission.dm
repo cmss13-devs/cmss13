@@ -197,8 +197,7 @@
 		if(WEST)
 			sx = 0
 			sy = 1
-	var/step = 1
-	for(step = 1; step<=steps; step++)
+	for(var/step in 1 to steps) 
 		if(step > next_step)
 			current_turf = get_step(current_turf,direction)
 			next_step += tally_step

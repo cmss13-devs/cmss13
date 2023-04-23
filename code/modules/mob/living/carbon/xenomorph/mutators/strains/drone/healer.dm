@@ -81,26 +81,14 @@
 
 /mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 0.75)
 
-	if(!istype(target_xeno))
-		return
-
-///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
-	if(target_xeno.mob_size == MOB_SIZE_SMALL)
-		amount = amount * 0.15
-		damage_taken_mod = 1
-		return
-
-//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
-	if(target_xeno.mutation_type == DRONE_HEALER)
-		damage_taken_mod = 1
-		return
-
-///Introduces a plasma cost, twice as much plasma as health healed.
 	if(!check_plasma(amount * 2))
 		return
 
+	if(!istype(target_xeno))
+		return
+
 	if(target_xeno == src)
-		to_chat(src, "You can't heal yourself with your own regenerative resin salve!")
+		to_chat(src, SPAN_XENOWARNING("You can't heal yourself with your own resin!"))
 		return
 
 	if(!check_state())
@@ -111,28 +99,37 @@
 		return
 
 	if(!can_not_harm(target_xeno)) //We don't wanna heal hostile hives, but we do want to heal our allies!
-		to_chat(src, SPAN_WARNING("[target_xeno] is hostile to your hive! Go find one of your sisters or allies!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is hostile to your hive! Go find one of your sisters or allies!"))
 		return
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't apply your regenerative resin from here!"))
+		to_chat(src, SPAN_XENOWARNING("You can't apply your regenerative resin from here!"))
 		return
 
 	if(get_dist(src, target_xeno) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target_xeno] to apply your regenerative resin salve!"))
+		to_chat(src, SPAN_XENOWARNING("You need to be closer to [target_xeno] to apply your regenerative resin salve!"))
 		return
 
 	if(target_xeno.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target_xeno] is dead!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is dead!"))
 		return
 
 	if(target_xeno.health >= target_xeno.maxHealth)
-		to_chat(src, SPAN_WARNING("[target_xeno] is already at max health!"))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
 	if(target_xeno.health >= target_xeno.maxHealth - amount)
-		to_chat(src, SPAN_WARNING("[target_xeno] is healthy, so your resources would be wasted."))
+		to_chat(src, SPAN_XENOWARNING("[target_xeno] is healthy, so your resources would be wasted."))
 		return
+
+///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
+	if(target_xeno.mob_size == 0)
+		amount = amount * 0.15
+		damage_taken_mod = 1
+
+//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
+	if(target_xeno.mutation_type == DRONE_HEALER)
+		damage_taken_mod = 1
 
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)

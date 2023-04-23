@@ -4,7 +4,7 @@
 #define HIT_CHANCE_CHEAT 100
 #define HIT_CHANCE_HIGH 90
 #define HIT_CHANCE_STANDARD 70
-#define HIT_CHANCE_LOW
+#define HIT_CHANCE_LOW 30
 /**
  * Proc called to hit the ship with weapons
  *
@@ -110,17 +110,15 @@
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-						//playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
 						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 50)
 						playsound_client(current_mob.client, 'sound/effects/railgunhit.ogg', 50)
-						//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 				if(confirmedhit < 1)
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 100)
-						//in came it's oddly really low.
+						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
+						to_chat(current_mob.client, SPAN_DANGER("You hear railgun shots barely missing the hull!"))
 
 			if(salvo == "Single")
 				if(prob(hitchance))
@@ -129,15 +127,13 @@
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-						//playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
 						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-						//addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
 				else
 					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
 						if(!is_mainship_level(current_mob.z))
 							continue
-						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 100)
-						//in came it's oddly really low.
+						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
+						to_chat(current_mob.client, SPAN_DANGER("You hear a railgun shot barely missing the hull!"))
 		if(WEAPON_PARTICLE_CANNON)
-			//deactivated, remoov later or add later!
+			//Currently deactivated.

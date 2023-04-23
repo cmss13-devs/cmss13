@@ -840,7 +840,7 @@
 /datum/chemical_reaction/sinfulcocktail
 	name = "SinfulCocktail"
 	id = "sinfulcocktail"
-	result = "sinfulcocktail
+	result = "sinfulcocktail"
 	required_reagents = list("bloodsoda" = 1, "leflour" = 1)
 	result_amount = 2
 /datum/chemical_reaction/flammengetrank

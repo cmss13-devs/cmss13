@@ -311,3 +311,12 @@
       who are one size bigger than them. When both traits are combined it allows for
       two sizes up. Synths can lift runners and Yautja can lift most T1 or T2 xenos.
   - code_imp: Changed Larva and Facehuggers mob_size variable to use the correct define.
+2023-04-23:
+  Herigony:
+  - bugfix: low organ damage will now show as bruised instead of broken in health
+      scan
+  Morrow:
+  - bugfix: Dropship seats are once again destroyable via slashing
+  - bugfix: Fixed unpowerable sensor towers
+  Waseemq1235:
+  - soundadd: Adds a wall-slam sound that has a very rare chance of triggering.

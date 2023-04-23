@@ -813,7 +813,7 @@
 	simulation.spawn_mobs(user)
 
 	if(!simulation.sim_camera)
-		to_chat(usr, SPAN_WARNING("The simulator has malfunctioned!"))
+		to_chat(user, SPAN_WARNING("The simulator has malfunctioned!"))
 	var/turf/sim_location = get_turf(simulation.sim_camera)
 
 	//acutal firemission

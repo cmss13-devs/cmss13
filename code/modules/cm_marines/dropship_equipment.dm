@@ -1251,7 +1251,7 @@
 // used in the simulation room for cas runs, removed the sound and ammo depletion methods.
 // copying code is definitely bad, but adding an unnecessary sim or not sim boolean check in the open_fire_firemission just doesn't seem right.
 /obj/structure/dropship_equipment/weapon/proc/open_simulated_fire_firemission(obj/selected_target, mob/user = usr)
-	set waitfor = 0
+	set waitfor = FALSE
 	var/turf/target_turf = get_turf(selected_target)
 	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
 	var/ammo_accuracy_range = SA.accuracy_range

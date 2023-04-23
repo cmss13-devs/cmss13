@@ -90,9 +90,9 @@
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
 	splatter_type = "csplatter"
-	color = "#5A934A"
+	color = BLOOD_COLOR_YAUTJA_DARK
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 	splatter_type = "csplatter"
-	color = "#e0e0e0"
+	color = BLOOD_COLOR_SYNTHETIC
 

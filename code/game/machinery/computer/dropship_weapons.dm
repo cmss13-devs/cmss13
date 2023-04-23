@@ -22,7 +22,7 @@
 	var/matrixcol //color of matrix, only used when we upgrade to nv
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
-	var/datum/simulator/simulation = new /datum/simulator()
+	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
 /obj/structure/machinery/computer/dropship_weapons/New()

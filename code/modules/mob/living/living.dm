@@ -352,7 +352,7 @@
 
 	if(isxeno(L) && !islarva(L))
 		var/mob/living/carbon/xenomorph/X = L
-		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
+		if(X.mob_size >= MOB_SIZE_XENO_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 

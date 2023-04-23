@@ -148,6 +148,10 @@
 		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/medical/stock(obj/item/item_to_stock, mob/user)
+	to_chat(user, SPAN_WARNING("[src] cannot be restocked!"))
+	return
+
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry
 	name = "\improper Wey-Chem Plus"
 	desc = "Medical chemistry dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."

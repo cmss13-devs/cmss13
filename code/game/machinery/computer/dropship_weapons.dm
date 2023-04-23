@@ -807,7 +807,7 @@
 		to_chat(usr, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return
 	if(error_code != FIRE_MISSION_ALL_GOOD)
-		to_chat(usr, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
 		return
 
 	simulation.spawn_mobs(user)

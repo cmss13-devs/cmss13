@@ -22,7 +22,7 @@
 	var/matrixcol //color of matrix, only used when we upgrade to nv
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
-	var/datum/simulator/simulation = new /datum/simulator()
+	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -759,9 +759,11 @@
 	if(.)
 		return
 
+	var/user = ui.user
+
 	switch(action)
 		if("start_watching")
-			simulation.start_watching(usr)
+			simulation.start_watching(user)
 			. = TRUE
 
 		if("stop_watching")
@@ -805,13 +807,13 @@
 		to_chat(usr, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return
 	if(error_code != FIRE_MISSION_ALL_GOOD)
-		to_chat(usr, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
 		return
 
 	simulation.spawn_mobs(user)
 
 	if(!simulation.sim_camera)
-		to_chat(usr, SPAN_WARNING("The simulator has malfunctioned!"))
+		to_chat(user, SPAN_WARNING("The simulator has malfunctioned!"))
 	var/turf/sim_location = get_turf(simulation.sim_camera)
 
 	//acutal firemission

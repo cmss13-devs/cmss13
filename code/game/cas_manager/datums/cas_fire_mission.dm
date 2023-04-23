@@ -175,7 +175,7 @@
 
 // Used only in the simulator room for testing firemissions. IMO it was ok to copy code here.
 /datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
-	if(initial_turf == null)
+	if(!initial_turf)
 		return -1
 
 	var/turf/current_turf = initial_turf
@@ -197,8 +197,7 @@
 		if(WEST)
 			sx = 0
 			sy = 1
-	var/step = 1
-	for(step = 1; step<=steps; step++)
+	for(var/step in 1 to steps) 
 		if(step > next_step)
 			current_turf = get_step(current_turf,direction)
 			next_step += tally_step

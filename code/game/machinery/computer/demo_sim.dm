@@ -28,7 +28,7 @@
 /obj/structure/machinery/computer/demo_sim/attack_hand(mob/user as mob)
 	if(..())
 		return
-	simulation = new /datum/simulator()  // spaghetti noodle code, need to optimize later.
+	simulation = new()  // spaghetti noodle code, need to optimize later.
 
 	sim_location = get_turf(simulation.sim_camera)
 

@@ -46,7 +46,7 @@
 
 /obj/effect/landmark/sim_camera
 	name = "simulator_camera"
-	color = "#FFFF00";
+	color = "#FFFF00"
 
 /obj/effect/landmark/sim_camera/Initialize(mapload, ...)
 	. = ..()

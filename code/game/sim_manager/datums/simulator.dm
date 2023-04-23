@@ -1,14 +1,13 @@
 /datum/simulator
-
 	// Necessary to prevent multiple users from simulating at the same time. This needs to be shared across all instances.
-	var/global/detonation_cooldown = 0;
+	var/static/detonation_cooldown = 0
 
 	var/looking_at_simulation = FALSE
 	var/detonation_cooldown_time = 2 MINUTES
 	var/dummy_mode = HUMAN_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
 
-	var/list/target_types = list(
+	var/static/list/target_types = list(
 		HUMAN_MODE = /mob/living/carbon/human,
 		UPP_MODE = /mob/living/carbon/human,
 		CLF_MODE = /mob/living/carbon/human,
@@ -52,7 +51,8 @@
 					user.client.cmd_admin_dress_human(human_dummy, "UPP Conscript", no_logs = TRUE)
 			human_dummy.name = "simulated human"
 			QDEL_IN(human_dummy, detonation_cooldown_time - 10 SECONDS)
-		else
-			var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
-			xeno_dummy.hardcore = TRUE
-			QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)
+			continue
+
+		var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
+		xeno_dummy.hardcore = TRUE
+		QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)

@@ -175,7 +175,7 @@
 
 // Used only in the simulator room for testing firemissions. IMO it was ok to copy code here.
 /datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
-	if(initial_turf == null)
+	if(!initial_turf)
 		return -1
 
 	var/turf/current_turf = initial_turf

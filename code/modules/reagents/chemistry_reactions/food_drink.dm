@@ -846,7 +846,7 @@
 /datum/chemical_reaction/flammengetrank
 	name = "Flammengetrank"
 	id = "flammengetrank"
-	result = "flammengetrank
+	result = "flammengetrank"
 	required_reagents = list("lemonnade" = 1, "yadpecheni" = 1)
 	result_amount = 2
 /datum/chemical_reaction/forbiddenfluid

@@ -43,84 +43,84 @@
 /datum/reagent/drink/pilk
 	name = "Pilk"
 	id = "pilk"
-	desc = "Soda and Milk. Who would drink this?"
+	description = "Soda and Milk. Who would drink this?"
 	color = "#825A30" // rgb : 130, 90, 48
 /datum/reagent/drink/teafee
 	name = "Teafee"
 	id = "teafee"
-	desc = "Coffee and Tea - why choose between them?"
+	description = "Coffee and Tea - why choose between them?"
 	color = "#B48C62" // rgb: 190, 140, 98
 
 /datum/reagent/drink/bloodsoda
 	name = "BloodSoda"
 	id = "bloodsoda"
-	desc = "Soda mixed with blood, who knows what you could do with this..."
+	description = "Soda mixed with blood, who knows what you could do with this..."
 	color = "#D25A30" // rgb: 210, 90, 48
 
 /datum/reagent/drink/lemonnade
 	name = "Lemonnade"
 	id = "lemonnade"
-	desc = "Highly volatile acidic lemonade and welding fuel, handle with care."
+	description = "Highly volatile acidic lemonade and welding fuel, handle with care."
 	color = "#FFBF00" // rgb: 255, 191, 0
 
 /datum/reagent/drink/leflour
 	name = "LeFlour"
 	id = "leflour"
-	desc = "Lemonade and flour, legally a potent chemical precursor."
+	description = "Lemonade and flour, legally a potent chemical precursor."
 	color = "#FFE728" // rgb: 255, 231, 40
 
 /datum/reagent/drink/urvinium
 	name = "Urvinium"
 	id = "urvinium"
-	desc = "First created in a nuclear waste spillage, this concoction has been rumoured to power CLF bootleg nuclear reactors."
+	description = "First created in a nuclear waste spillage, this concoction has been rumoured to power CLF bootleg nuclear reactors."
 	color = "#3C0064" // rgb: 60, 0, 100
 
 /datum/reagent/drink/yadpecheni
 	name = "YadPecheni"
 	id = "yadpecheni"
-	desc = "Beer and Ethanol - concentrated drunkenness."
+	description = "Beer and Ethanol - concentrated drunkenness."
 	color = "#C49102" // rgb: 196, 145, 2
 
 /datum/reagent/drink/pufee
 	name = "Pufee"
 	id = "pufee"
-	desc = "Pilk and Teafee, apparntly has a nutty and not altogether unpleasant taste due to overwhelming the tastebuds."
+	description = "Pilk and Teafee, apparntly has a nutty and not altogether unpleasant taste due to overwhelming the tastebuds."
 	color = "FEFBBD" // rgb: 254, 251, 189
 
 /datum/reagent/drink/sinfulcocktail
 	name = "SinfulCocktail"
 	id = "sinfulcocktail"
-	desc = "A drink made to send people to hell. Don't show this to the chaplain."
+	description = "A drink made to send people to hell. Don't show this to the chaplain."
 	color = "#6EB428" // rgb: 110, 180, 40
 
 /datum/reagent/drink/flammengetrank
 	name = "Flammengetrank"
 	id = "flammengetrank"
-	desc = "A flaming cocktail drunk by Ordnance Technicians in sleazy maintenance bars."
+	description = "A flaming cocktail drunk by Ordnance Technicians in sleazy maintenance bars."
 	color = "#9B2D38" // rgb: 155, 45, 56
 
 /datum/reagent/drink/forbiddenfluid
 	name = "ForbiddenFluid"
 	id = "forbiddenfluid"
-	desc = "A uniquely coloured drink initially created by cultists on Fiorina Research Station."
+	description = "A uniquely coloured drink initially created by cultists on Fiorina Research Station."
 	color = "6400A0" // rgb: 100, 0, 160
 
 /datum/reagent/drink/runescurse
 	name = "RunesCurse"
 	id = "runescurse"
-	desc = "A glass of Rune's Curse - often sold in the microlitres in pill form, only created once every 100 years."
+	description = "A glass of Rune's Curse - often sold in the microlitres in pill form, only created once every 100 years."
 	color = "0ABE0A" // rgb: 10, 190, 10
 
 /datum/reagent/drink/fermisbrew
 	name = "FermisBrew"
 	id = "fermisbrew"
-	desc = "A drink first made by physicist Enrico Fermi, who claimed it allowed him to see an alien world for a split second. Turns out he was right."
+	description = "A drink first made by physicist Enrico Fermi, who claimed it allowed him to see an alien world for a split second. Turns out he was right."
 	color = "3C5A3C" // rgb: 60, 90, 60
 
 /datum/reagent/drink/drinkofthegods
 	name = "DrinkOfTheGods"
 	id = "drinkofthegods"
-	desc = "A fluid made from a number of other supposedly extremely powerful compounds. Many (of the few) who drink it never taste again, with the neurones for taste being completely destroyed upon the first sip. Said to have been god's creation on the 8th day, to chill out."
+	description = "A fluid made from a number of other supposedly extremely powerful compounds. Many (of the few) who drink it never taste again, with the neurones for taste being completely destroyed upon the first sip. Said to have been god's creation on the 8th day, to chill out."
 	color = "#DCDCDC" // rgb: 220, 220, 220
 
 //FRUIT JUICE//

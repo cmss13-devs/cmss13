@@ -7,7 +7,7 @@
 	var/dummy_mode = HUMAN_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
 
-	var/list/target_types = list(
+	var/static/list/target_types = list(
 		HUMAN_MODE = /mob/living/carbon/human,
 		UPP_MODE = /mob/living/carbon/human,
 		CLF_MODE = /mob/living/carbon/human,

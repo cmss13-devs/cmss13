@@ -51,7 +51,8 @@
 					user.client.cmd_admin_dress_human(human_dummy, "UPP Conscript", no_logs = TRUE)
 			human_dummy.name = "simulated human"
 			QDEL_IN(human_dummy, detonation_cooldown_time - 10 SECONDS)
-		else
-			var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
-			xeno_dummy.hardcore = TRUE
-			QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)
+			continue
+
+		var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
+		xeno_dummy.hardcore = TRUE
+		QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)

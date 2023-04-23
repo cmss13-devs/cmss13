@@ -545,6 +545,76 @@
 				name = "Can of Grape Soda"
 				desc = "Looks like a delicious drank!"
 				center_of_mass = "x=16;y=10"
+			if("pilk")
+				icon_state = "pilk"
+				name = "Glass of Pilk"
+				desc = "Soda and Milk. Who would drink this?"
+				center_of_mass = "x=16;y=10"
+			if("teafee")
+				icon_state = "teafee"
+				name = "Glass of Teafee"
+				desc = "Coffee and Tea - why choose between them?"
+				center_of_mass = "x=16;y=10"
+			if("leflour")
+				icon_state = "leflour"
+				name = "Glass of LeFlour"
+				desc = "Lemonade and flour, legally a potent chemical precursor."
+				center_of_mass = "x=16;y=10"
+			if("bloodsoda")
+				icon_state = "bloodsoda"
+				name = "Glass of BloodSoda"
+				desc = "Soda mixed with blood, who knows what you could do with this..."
+				center_of_mass = "x=16;y=10"
+			if("lemonnade")
+				icon_state = "lemonnade"
+				name = "Lemonnade"
+				desc = "Highly volatile acidic lemonade and welding fuel, handle with care."
+				center_of_mass = "x=16;y=10"
+			if("yadpecheni")
+				icon_state = "yadpecheni"
+				name = "Yad Pecheni"
+				desc = "Beer and Ethanol - concentrated drunkenness."
+				center_of_mass = "x=16;y=10"
+			if("urvinium")
+				icon_state = "urvinium"
+				name = "Urvinium"
+				desc = "First created in a nuclear waste spillage, this concoction has been rumoured to power CLF bootleg nuclear reactors."
+				center_of_mass = "x=16;y=10"
+			if("pufee")
+				icon_state = "pufee"
+				name = "Mug of Pufee"
+				desc = "Pilk and Tofee, apparntly has a nutty and not altogether unpleasant taste due to overwhelming the tastebuds."
+				center_of_mass = "x=16;y=10"
+			if("sinfulcocktail")
+				icon_state = "sinfulcocktail"
+				name = "Sinful Cocktail"
+				desc = "A drink made to send people to hell. Don't show this to the chaplain."
+				center_of_mass = "x=16;y=10"
+			if("flammengetrank")
+				icon_state = "flammengetrank"
+				name = "Flammen Getrank"
+				desc = "A flaming cocktail drunk by Ordnance Technicians in sleazy maintenance bars."
+				center_of_mass = "x=16;y=10"
+			if("forbiddenfluid")
+				icon_state = "forbiddenfluid"
+				name = "Glass of Forbidden Fluid"
+				desc = "A uniquely coloured drink initially created by cultists on Fiorina Research Station."
+				center_of_mass = "x=16;y=10"
+			if("runescurse")
+				icon_state = "runescurse"
+				name = "Rune's Curse"
+				desc = "A glass of Rune's Curse - often sold in the microlitres in pill form, only created once every 100 years."
+				center_of_mass = "x=16;y=10"
+			if("fermisbrew")
+				icon_state = "fermisbrew"
+				name = "Fermi's Brew"
+				desc = "A drink first made by physicist Enrico Fermi, who claimed it allowed him to see an alien world for a split second. Turns out he was right."
+				center_of_mass = "x=16;y=10"
+			if("drinkofthegods")
+				icon_state = "drinkofthegods"
+				name = "The Drink of The Gods"
+				desc = "A fluid made from a number of other supposedly extremely powerful compounds. Many who drink it never taste again, with the neurones for taste being completely destroyed upon the first sip. Said to have been god's creation on the 8th day, to chill out."
+				center_of_mass = "x=16;y=10"
 			if("icetea")
 				icon_state = "icedteaglass"
 				name = "Iced Tea"

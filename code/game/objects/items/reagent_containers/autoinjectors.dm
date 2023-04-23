@@ -2,7 +2,7 @@
 	name = "inaprovaline autoinjector"
 	var/chemname = "inaprovaline"
 	//desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
-	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
+	desc = "An autoinjector containing inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "empty"
 	flags_atom = FPRINT
@@ -252,10 +252,10 @@
 		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
-	name = "first-aid autoinjector"
-	chemname = "tricordrazine"
-	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
-	icon_state = "tricord"
+	name = ""
+	chemname = ""
+	desc = ""
+	icon_state = ""
 	amount_per_transfer_from_this = 15
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -288,6 +288,23 @@
 	desc = "An auto-injector loaded with a small amount of painkiller for marines to self-administer."
 	icon_state = "tramadol"
 
+/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine
+	name = "first-aid autoinjector"
+	chemname = "tricordrazine"
+	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
+	icon_state = "tricord"
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine
+	name = "bicaridine autoinjector"
+	chemname = "bicaridine"
+	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
+	icon_state = "bicaridine"
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane
+	name = "kelotane autoinjector"
+	chemname = "kelotane"
+	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
+	icon_state = "kelotane"
 /obj/item/reagent_container/hypospray/autoinjector/empty
 	name = "autoinjector (C-T)"
 	desc = "A custom-made auto-injector, likely from research."

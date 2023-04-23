@@ -222,13 +222,13 @@
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -245,7 +245,7 @@
 	storage_slots = 5
 	can_hold = list(
 		/obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine,
 		/obj/item/storage/pill_bottle/packet/tramadol,
 		/obj/item/storage/pill_bottle/packet/tricordrazine,
 		/obj/item/stack/medical/bruise_pack,
@@ -254,9 +254,9 @@
 	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 

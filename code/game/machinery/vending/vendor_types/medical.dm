@@ -27,8 +27,10 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 		/obj/item/reagent_container/hypospray/autoinjector/emergency,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
 
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
@@ -239,8 +241,10 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
@@ -251,8 +255,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bicaridine Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Kelotane Autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", round(scale * 3), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -313,8 +319,10 @@
 	wrenchable = FALSE
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bicaridine Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Kelotane Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
@@ -326,8 +334,10 @@
 	appearance_flags = TILE_BOUND
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
@@ -343,8 +353,10 @@
 	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
@@ -358,8 +370,10 @@
 	desc = "A wall-mounted cabinet containing medical supplies vital to survival. While better equipped, it can only refill basic supplies."
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bicaridine Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Kelotane Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -392,8 +406,10 @@
 	icon = 'icons/obj/structures/souto_land.dmi'
 	listed_products = list(
 		list("FIRST AID SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Bicaridine Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Kelotane Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),

@@ -63,10 +63,10 @@
 	description = "Highly volatile acidic lemonade and welding fuel, handle with care."
 	color = "#FFBF00" // rgb: 255, 191, 0
 
-/datum/reagent/drink/leflour
-	name = "LeFlour"
-	id = "leflour"
-	description = "Lemonade and flour, legally a potent chemical precursor."
+/datum/reagent/drink/lemilk
+	name = "Lemmilk"
+	id = "lemilk"
+	description = "Lemon and milk, legally a potent chemical precursor."
 	color = "#FFE728" // rgb: 255, 231, 40
 
 /datum/reagent/drink/urvinium

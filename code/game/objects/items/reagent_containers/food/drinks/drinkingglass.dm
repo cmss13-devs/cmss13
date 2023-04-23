@@ -555,10 +555,10 @@
 				name = "Glass of Teafee"
 				desc = "Coffee and Tea - why choose between them?"
 				center_of_mass = "x=16;y=10"
-			if("leflour")
-				icon_state = "leflour"
-				name = "Glass of LeFlour"
-				desc = "Lemonade and flour, legally a potent chemical precursor."
+			if("lemilk")
+				icon_state = "lemilk"
+				name = "Glass of Lemilk"
+				desc = "Lemon and milk, legally a potent chemical precursor."
 				center_of_mass = "x=16;y=10"
 			if("bloodsoda")
 				icon_state = "bloodsoda"

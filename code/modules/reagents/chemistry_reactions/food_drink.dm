@@ -811,19 +811,19 @@
 	name = "Lemonnade"
 	id = "lemonnade"
 	result = "lemonnade"
-	required_reagents = list("lemonade" = 4, "welderfuel" = 1)
+	required_reagents = list("lemonjuice" = 4, "welderfuel" = 1)
 	result_amount = 5
-/datum/chemical_reaction/leflour
-	name = "LeFlour"
-	id = "leflour"
-	result = "leflour"
-	required_reagents = list("lemonade" = 2, "flour" = 1)
+/datum/chemical_reaction/lemmilk
+	name = "Lemmilk"
+	id = "lemmilk"
+	result = "lemmilk"
+	required_reagents = list("lemonjuice" = 2, "milk" = 1)
 	result_amount = 3
 /datum/chemical_reaction/yadpecheni
 	name = "YadPecheni"
 	id = "yadpecheni"
 	result = "yadpecheni"
-	required_reagents = list("Beer" = 1, "ethanol" = 1)
+	required_reagents = list("beer" = 1, "ethanol" = 1)
 	result_amount = 2
 /datum/chemical_reaction/teafee
 	name = "Teafee"
@@ -841,7 +841,7 @@
 	name = "SinfulCocktail"
 	id = "sinfulcocktail"
 	result = "sinfulcocktail"
-	required_reagents = list("bloodsoda" = 1, "leflour" = 1)
+	required_reagents = list("bloodsoda" = 1, "Lemmilk" = 1)
 	result_amount = 2
 /datum/chemical_reaction/flammengetrank
 	name = "Flammengetrank"

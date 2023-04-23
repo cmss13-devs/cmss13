@@ -759,9 +759,11 @@
 	if(.)
 		return
 
+	var/user = ui.user
+
 	switch(action)
 		if("start_watching")
-			simulation.start_watching(usr)
+			simulation.start_watching(user)
 			. = TRUE
 
 		if("stop_watching")

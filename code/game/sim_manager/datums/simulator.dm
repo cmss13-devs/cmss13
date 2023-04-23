@@ -1,7 +1,6 @@
 /datum/simulator
-
 	// Necessary to prevent multiple users from simulating at the same time. This needs to be shared across all instances.
-	var/global/detonation_cooldown = 0;
+	var/static/detonation_cooldown = 0
 
 	var/looking_at_simulation = FALSE
 	var/detonation_cooldown_time = 2 MINUTES

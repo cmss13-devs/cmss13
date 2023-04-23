@@ -66,6 +66,7 @@
 								if(!is_mainship_level(current_mob.z))
 									continue
 								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
+								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!")), shotspacing SECONDS)
 
 						shotspacing += 1
 					if(confirmedhit > 0)
@@ -94,6 +95,7 @@
 							if(!is_mainship_level(current_mob.z))
 								continue
 							playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
+							to_chat(current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!"))
 
 		if(WEAPON_RAILGUN)
 			var/hitchance = HIT_CHANCE_CHEAT

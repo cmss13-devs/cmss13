@@ -38,12 +38,6 @@
 	tag = "icon-darkbrowncorners2 (NORTH)"
 	},
 /area/ice_colony/surface/substation/smes)
-"ae" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
 "af" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor{
@@ -424,7 +418,6 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/weapon/shield/riot,
 /obj/item/clothing/head/helmet/riot,
-/obj/item/weapon/melee/baton,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -3435,7 +3428,7 @@
 /area/ice_colony/underground/engineering/substation)
 "jW" = (
 /obj/structure/surface/table,
-/obj/item/cane,
+/obj/item/weapon/pole/wooden_cane,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkbrown2";
@@ -3619,16 +3612,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/engine,
 /area/ice_colony/underground/research)
-"kx" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/m15,
-/obj/item/explosive/grenade/HE/m15,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "darkblue2";
-	tag = "icon-darkblue2 (NORTH)"
-	},
-/area/ice_colony/underground/security/armory)
 "ky" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -8134,7 +8117,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "xb" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2";
@@ -8622,16 +8605,6 @@
 	icon_state = "marked"
 	},
 /area/ice_colony/surface/requesitions)
-"yw" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/ice_colony/underground/research)
 "yx" = (
 /obj/structure/surface/table,
 /turf/open/floor/plating/icefloor,
@@ -14691,12 +14664,6 @@
 	tag = "icon-darkyellowcorners2 (NORTH)"
 	},
 /area/ice_colony/underground/security/brig)
-"PY" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "1"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "PZ" = (
 /obj/structure/surface/table/holotable,
 /obj/item/stack/sheet/metal/large_stack,
@@ -22900,7 +22867,7 @@ hI
 Et
 dM
 tl
-yw
+tx
 Hg
 uh
 uh
@@ -36975,7 +36942,7 @@ iQ
 iQ
 gI
 Ij
-PY
+gI
 sl
 np
 Gt
@@ -39893,7 +39860,7 @@ Ce
 Ce
 Ce
 zk
-kx
+kW
 ZF
 mj
 ra
@@ -47398,7 +47365,7 @@ Xq
 Xq
 bY
 bY
-ae
+bY
 Fs
 IL
 DS

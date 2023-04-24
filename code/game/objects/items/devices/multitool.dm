@@ -38,6 +38,7 @@
 	return FALSE
 
 /obj/item/device/multitool/afterattack(atom/target, mob/user, flag)
+	on_use_animation()
 	for(var/obj/item/explosive/plastic/E in target.contents)
 		E.attackby(src, user)
 		return
@@ -58,3 +59,6 @@
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
 		user.balloon_alert(user, "could not locate!")
+
+/obj/item/device/multitool/proc/on_use_animation()
+	flick("multitool_animate", src)

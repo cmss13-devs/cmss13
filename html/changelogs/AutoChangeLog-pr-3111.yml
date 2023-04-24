@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Yautja loud roars are no longer fake-able."
+  - bugfix: "Survivors no longer have free marine comms as intended."
+  - rscadd: "Changed the random supply kit picker contents to remove USCM specific kits (those with USCM comms)."
+  - rscadd: "Added a blackmarket subtype of the random supply kit to keep the USCM specific kits."

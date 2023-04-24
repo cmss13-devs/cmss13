@@ -96,7 +96,7 @@
 
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 
 	var/relative_dir
 	for(var/mob/M in range(15, initial_turf))
@@ -173,10 +173,10 @@
 	if(envelope)
 		envelope.change_current_loc(null)
 
-// Used only in the simulator room for testing firemissions. IMO it was ok to copy code here.
+// Used only in the simulator room for testing firemissions. Seemed better to just to copy here.
 /datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(!initial_turf)
-		return -1
+		return FIRE_MISSION_NOT_EXECUTABLE
 
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
@@ -197,7 +197,7 @@
 		if(WEST)
 			sx = 0
 			sy = 1
-	for(var/step in 1 to steps) 
+	for(var/step in 1 to steps)
 		if(step > next_step)
 			current_turf = get_step(current_turf,direction)
 			next_step += tally_step

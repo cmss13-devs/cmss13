@@ -28,11 +28,12 @@
 /obj/structure/machinery/computer/demo_sim/attack_hand(mob/user as mob)
 	if(..())
 		return
-	simulation = new()  // spaghetti noodle code, need to optimize later.
-
-	sim_location = get_turf(simulation.sim_camera)
 
 	tgui_interact(user)
+
+/obj/structure/machinery/computer/demo_sim/Initialize()
+	. = ..()
+	simulation = new()
 
 // DEMOLITIONS TGUI SHIT \\
 
@@ -68,15 +69,15 @@
 	if(.)
 		return
 
+	var/user = ui.user
+
 	switch(action)
 		if("start_watching")
-			to_chat(usr, SPAN_NOTICE("start watching called."))
-			simulation.start_watching(usr)
+			simulation.start_watching(user)
 			. = TRUE
 
 		if("stop_watching")
-			to_chat(usr, SPAN_NOTICE("stop watching called."))
-			simulation.stop_watching(usr)
+			simulation.stop_watching(user)
 			. = TRUE
 
 		if("eject")
@@ -84,14 +85,14 @@
 				configuration.forceMove(loc)
 				configuration = null
 			else
-				to_chat(usr, SPAN_NOTICE("Nothing to eject."))
+				to_chat(user, SPAN_NOTICE("Nothing to eject."))
 			. = TRUE
 
 		if("detonate")
 			if(!configuration)
-				to_chat(usr, SPAN_NOTICE("No configuration set."))
+				to_chat(user, SPAN_NOTICE("No configuration set."))
 				return
-			simulate_detonation(usr)
+			simulate_detonation(user)
 			. = TRUE
 
 		if("switchmode")
@@ -101,6 +102,7 @@
 			. = TRUE
 
 /obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
+
 	. = ..()
 	if(simulation.looking_at_simulation)
 		simulation.stop_watching(user)
@@ -122,7 +124,7 @@
 				make_and_prime_explosive(O.warhead)
 		else
 			var/obj/item/mortar_shell/O = new configuration.type((simulation.sim_camera).loc)
-			O.detonate(sim_location)
+			O.detonate((simulation.sim_camera).loc)
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))
 		var/obj/item/ammo_magazine/rocket/custom/O = configuration
@@ -133,5 +135,6 @@
 	var/obj/item/explosive/E = new O.type((simulation.sim_camera).loc)
 	E.make_copy_of(O)
 	E.prime(TRUE)
+	sim_location = get_turf(simulation.sim_camera)
 	sim_location.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,1 MINUTES)

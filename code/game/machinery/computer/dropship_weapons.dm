@@ -25,6 +25,10 @@
 	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
+/obj/structure/machinery/computer/dropship_weapons/Initialize()
+	. = ..()
+	simulation = new()
+
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
 	if(firemission_envelope)
@@ -767,20 +771,20 @@
 			. = TRUE
 
 		if("stop_watching")
-			simulation.stop_watching(usr)
+			simulation.stop_watching(user)
 			. = TRUE
 
 		if("execute_simulated_firemission")
 			if(!configuration)
-				to_chat(usr, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission"))
 				return
-			simulate_firemission(usr)
+			simulate_firemission(user)
 			. = TRUE
 
 		if("switch_firemission")
-			configuration = tgui_input_list(usr, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
+			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
 			if(!selected_firemission)
-				to_chat(usr, SPAN_WARNING("No configured firemission"))
+				to_chat(user, SPAN_WARNING("No configured firemission"))
 				return
 			if(!configuration)
 				configuration = selected_firemission
@@ -801,12 +805,11 @@
 // CAS TGUI SHIT END \\
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
-	var/error_code = configuration.check(src)
 
 	if(!configuration)
-		to_chat(usr, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
+		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return
-	if(error_code != FIRE_MISSION_ALL_GOOD)
+	if(configuration.check(src) != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Configured firemission has errors, fix the errors before attempting to run the simulation"))
 		return
 
@@ -814,7 +817,6 @@
 
 	if(!simulation.sim_camera)
 		to_chat(user, SPAN_WARNING("The simulator has malfunctioned!"))
-	var/turf/sim_location = get_turf(simulation.sim_camera)
 
 	//acutal firemission
-	configuration.simulate_execute_firemission(src, sim_location)
+	configuration.simulate_execute_firemission(src, (simulation.sim_camera).loc)

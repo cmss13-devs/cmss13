@@ -175,7 +175,9 @@
 /area/bigredv2/outside/marshal_office)
 "az" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -251,7 +253,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	icon_state = "door_locked";
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -264,7 +265,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	icon_state = "door_locked";
-	locked = 0;
 	name = "\improper Marshal Office Prison"
 	},
 /turf/open/floor{
@@ -407,8 +407,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "be" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/power/apc,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -431,8 +433,10 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "bj" = (
-/obj/structure/machinery/camera/autoname,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
@@ -505,10 +509,8 @@
 /area/bigredv2/outside/marshal_office)
 "bu" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -693,7 +695,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	icon_state = "door_locked";
-	locked = 0;
 	name = "\improper Marshal Office Armory"
 	},
 /turf/open/floor{
@@ -915,12 +916,10 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "cB" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -1043,7 +1042,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	icon_state = "door_locked";
-	locked = 0;
 	name = "\improper Marshal Office Holding Cell"
 	},
 /turf/open/floor{

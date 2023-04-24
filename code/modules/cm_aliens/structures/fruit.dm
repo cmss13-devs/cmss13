@@ -26,6 +26,7 @@
 	var/gardener_sac_color = "#17991B"
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Drone linked to this fruit
+	var/obj/effect/alien/weeds/bound_weed
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
 
 /obj/effect/alien/resin/fruit/attack_hand(mob/living/user)
@@ -49,6 +50,7 @@
 		return INITIALIZE_HINT_QDEL
 
 	bound_xeno = X
+	bound_weed = W
 	hivenumber = X.hivenumber
 	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
@@ -62,6 +64,14 @@
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
 	qdel(src)
+
+/obj/effect/alien/resin/fruit/proc/unregister_weed_expiration_signal()
+	if(bound_weed)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+
+/obj/effect/alien/resin/fruit/proc/register_weed_expiration_signal(obj/effect/alien/weeds/new_weed)
+	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	bound_weed = new_weed
 
 /obj/effect/alien/resin/fruit/proc/handle_xeno_qdel()
 	SIGNAL_HANDLER
@@ -85,6 +95,8 @@
 /obj/effect/alien/resin/fruit/proc/delete_fruit()
 	//Notify and update the xeno count
 	if(!QDELETED(bound_xeno))
+		if(!picked)
+			to_chat(bound_xeno, SPAN_XENOWARNING("You sense one of your fruit has been destroyed."))
 		bound_xeno.current_fruits.Remove(src)
 		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		prf.update_button_icon()

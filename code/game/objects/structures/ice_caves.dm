@@ -38,7 +38,7 @@
 //Ice Secret Wall
 /obj/structure/ice/secret
 	icon_state = "ice_wall"
-	base_icon_state = "ice_wall"
+	var/base_icon_state = "ice_wall"
 	desc = "There is something inside..."
 
 //ROCK WALLS------------------------------//

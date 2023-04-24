@@ -6566,7 +6566,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "atC" = (
-/obj/structure/filtration/machine/distribution,
+/obj/structure/filtration/machine_96x96/distribution,
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform{
 	dir = 1
@@ -14375,7 +14375,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aRh" = (
-/obj/structure/filtration/machine/filtration,
+/obj/structure/filtration/machine_96x96/filtration,
 /turf/open/floor/coagulation{
 	icon_state = "4,8"
 	},

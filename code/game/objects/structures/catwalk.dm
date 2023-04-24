@@ -45,5 +45,5 @@
 
 /obj/structure/catwalk/bigred
 	icon = 'icons/turf/floors/catwalks.dmi'
-	icon_state = "catwalk"
+	icon_state = "catwalk0"
 	base_state = "catwalk0"

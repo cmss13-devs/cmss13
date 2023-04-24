@@ -400,9 +400,9 @@
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/phazon_armour_plates
-	name="Phazon Armour Plates"
-	icon_state = "phazon_armour"
+/obj/structure/prop/mech/mech_parts/part/phazon_armor_plates
+	name="Phazon Armor Plates"
+	icon_state = "phazon_armor"
 
 /obj/structure/prop/mech/mech_parts/chassis/odysseus
 	name = "Odysseus Chassis"
@@ -437,9 +437,9 @@
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
 
-/obj/structure/prop/mech/mech_parts/part/odysseus_armour_plates
-	name="Odysseus Armour Plates"
-	icon_state = "odysseus_armour"
+/obj/structure/prop/mech/mech_parts/part/odysseus_armor_plates
+	name="Odysseus Armor Plates"
+	icon_state = "odysseus_armor"
 
 //Use these to replace non-functional machinery 'props' around maps from bay12
 

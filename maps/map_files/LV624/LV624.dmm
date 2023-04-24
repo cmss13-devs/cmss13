@@ -6353,7 +6353,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "aBR" = (
 /obj/structure/largecrate,
-/obj/structure/prop/mech/mech_parts/part/gygax_armour{
+/obj/structure/prop/mech/mech_parts/part/gygax_armor{
 	layer = 1
 	},
 /turf/open/floor/plating{

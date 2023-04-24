@@ -454,7 +454,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "Jb" = (
-/turf/closed/shuttle/dropship1{
+/turf/closed/shuttle/dropship1/transparent{
 	icon_state = "80"
 	},
 /area/shuttle/drop1/sulaco)
@@ -643,7 +643,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "Vm" = (
-/turf/closed/shuttle/dropship1{
+/turf/closed/shuttle/dropship1/transparent{
 	icon_state = "78"
 	},
 /area/shuttle/drop1/sulaco)

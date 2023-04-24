@@ -48,7 +48,7 @@
 /obj/structure/pipes/standard/cap
 	name = "pipe endcap"
 	desc = "An endcap for pipes"
-	icon = 'icons/obj/pipes/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = ""
 	level = 2
 	dir = SOUTH

@@ -36,14 +36,14 @@
 
 /obj/structure/catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
-	icon_state = "catwalk_plating"
+	icon_state = "plating_catwalk"
 	base_state = "catwalk"
 
 /obj/structure/catwalk/prison/alt
-	icon_state = "catwalk_plating_alt"
+	icon_state = "plating_catwalk_alt"
 	base_state = "catwalk_alt"
 
 /obj/structure/catwalk/bigred
 	icon = 'icons/turf/floors/catwalks.dmi'
-	icon_state = "catwalk0"
+	icon_state = "catwalk"
 	base_state = "catwalk0"

@@ -118,10 +118,6 @@
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
-	if(target_xeno.health >= target_xeno.maxHealth - amount)
-		to_chat(src, SPAN_XENOWARNING("[target_xeno] is healthy, so your resources would be wasted."))
-		return
-
 ///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
 	if(target_xeno.mob_size == 0)
 		amount = amount * 0.15

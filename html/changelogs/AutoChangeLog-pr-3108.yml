@@ -1,0 +1,5 @@
+author: "LynxSolstice"
+delete-after: True
+changes:
+  - spellcheck: "Changed the visible mentions of \"Medic\" to \"Corpsman\""
+  - soundadd: "Added 8 new lines for the *medic emote."

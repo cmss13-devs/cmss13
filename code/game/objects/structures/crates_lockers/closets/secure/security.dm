@@ -6,8 +6,7 @@
 	icon_locked = "secure_locked_warden"
 	icon_opened = "secure_open_warden"
 	icon_broken = "secure_broken_warden"
-	icon_off = "secure_closed_warden
-
+	icon_off = "secure_closed_warden"
 /obj/structure/closet/secure_closet/warden/Initialize()
 	. = ..()
 	if(prob(50))

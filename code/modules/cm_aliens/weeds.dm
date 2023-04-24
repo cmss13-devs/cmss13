@@ -211,6 +211,10 @@
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
 
+		var/transferred_fruit_type
+		var/transferred_fruit_maturity
+		var/transferred_fruit_xeno
+
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
 			if(W.indestructible)
@@ -219,6 +223,14 @@
 				continue
 			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
 				continue
+
+			var/obj/effect/alien/resin/fruit/old_fruit = locate() in T
+
+			if(old_fruit)
+				transferred_fruit_type = old_fruit.type
+				transferred_fruit_maturity = old_fruit.mature
+				transferred_fruit_xeno = old_fruit.bound_xeno
+
 			qdel(W)
 
 		if(!istype(T, /turf/closed/wall/resin) && T.density)
@@ -232,7 +244,13 @@
 		if(!weed_expand_objects(T, dirn))
 			continue
 
-		weeds.Add(new /obj/effect/alien/weeds(T, node))
+		var/obj/effect/alien/weeds/new_weed = new /obj/effect/alien/weeds(T, node)
+		weeds.Add(new_weed)
+
+		if(transferred_fruit_type)
+			var/obj/effect/alien/resin/fruit/new_fruit = new transferred_fruit_type(T, new_weed, transferred_fruit_xeno)
+			if(transferred_fruit_maturity)
+				new_fruit.mature()
 
 	on_weed_expand(src, weeds)
 	if(parent)

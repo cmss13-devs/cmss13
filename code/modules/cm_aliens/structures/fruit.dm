@@ -85,8 +85,6 @@
 /obj/effect/alien/resin/fruit/proc/delete_fruit()
 	//Notify and update the xeno count
 	if(!QDELETED(bound_xeno))
-		if(!picked)
-			to_chat(bound_xeno, SPAN_XENOWARNING("You sense one of your fruit has been destroyed."))
 		bound_xeno.current_fruits.Remove(src)
 		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
 		prf.update_button_icon()

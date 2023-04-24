@@ -26,6 +26,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	pressure = 0
 	flags_area = AREA_NOTUNNEL
 	weather_enabled = FALSE
+
+	//fix for issue https://github.com/cmss13-devs/cmss13/issues/2191
 	base_muffle = -10000
 
 /area/engine

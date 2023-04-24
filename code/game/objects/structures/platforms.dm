@@ -159,7 +159,7 @@
 	icon_state = "kutjevo_stair_plate"
 
 /obj/structure/platform/kutjevo/smooth/stair_cut
-	icon_state = "kutjevo_stair_cm_stair"
+	icon_state = "kutjevo_stair_sm_stair"
 
 
 /obj/structure/platform_decoration/kutjevo/smooth

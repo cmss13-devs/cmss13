@@ -153,7 +153,7 @@
 /obj/structure/filtration/collector_pipes
 	name = "collection pipes"
 	desc = "A series of pipes collecting water from the river to take it to the plant for filtration."
-	icon = 'icons/obj/structures/props/pipes.dmi'
+	icon = 'icons/obj/structures/props/96x96.dmi'
 	icon_state = "upper_1" //use instances to set the types.
 	bound_height = 32
 	bound_width = 64

@@ -1102,6 +1102,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		start_processing()
 		if(status & LIMB_ROBOT)
 			status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			if(parent)
+				if(parent.status & LIMB_ROBOT)
+					parent.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+			for(var/obj/limb/l as anything in children)
+				if(l.status & LIMB_ROBOT)
+					l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
 		else
 			status |= LIMB_BROKEN
 			owner.pain.apply_pain(PAIN_BONE_BREAK)

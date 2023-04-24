@@ -24,7 +24,7 @@
 			quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 10, 2, 20 SECONDS)
 
 	var/prompt = tgui_alert(src, "Are you sure you want to open fire at the USS Almayer with those parameters?", "Choose wisely!", list("Yes", "No"), 20 SECONDS)
-	if(prompt == "No")
+	if(prompt != "Yes")
 		return
 	var/currentshot
 	var/area/picked_area
@@ -43,7 +43,7 @@
 
 			if(exactplace == "Random")
 				if(salvo == "Salvo")
-					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					for(currentshot = 1; currentshot <= quantity; currentshot++ )
 						while(picked_atom == null)
 							picked_area = pick(GLOB.ship_areas)
@@ -92,7 +92,7 @@
 
 			if(exactplace == "Random")
 				if(salvo == "Salvo")
-					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, SALVO INCOMING. BRACE, BRACE, BRACE. SALVO SIZE: [quantity] , ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, SALVO INCOMING. BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					for(currentshot = 1; currentshot <= quantity; currentshot++ )
 						while(picked_atom == null)
 							picked_area = pick(GLOB.ship_areas)

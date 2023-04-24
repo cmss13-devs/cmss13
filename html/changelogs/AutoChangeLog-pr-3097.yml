@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - balance: "Adds a way to heal organ damage via the medicomp"

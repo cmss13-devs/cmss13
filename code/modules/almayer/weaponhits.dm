@@ -137,5 +137,3 @@
 							continue
 						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
 						to_chat(current_mob.client, SPAN_DANGER("You hear a railgun shot barely missing the hull!"))
-		if(WEAPON_PARTICLE_CANNON)
-			//Currently deactivated.

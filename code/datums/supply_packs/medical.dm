@@ -17,7 +17,7 @@
 		/obj/item/storage/pill_bottle/peridaxon,
 		/obj/item/storage/box/pillbottles,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -36,7 +36,7 @@
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/adv,
 	)
-	cost = 20
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -55,13 +55,16 @@
 	group = "Medical"
 
 /datum/supply_packs/cryobag
-	name = "stasis bag crate (x3)"
+	name = "stasis bag crate (x6)"
 	contains = list(
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
+		/obj/item/bodybag/cryobag,
+		/obj/item/bodybag/cryobag,
+		/obj/item/bodybag/cryobag,
 	)
-	cost = 40
+	cost = 10
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"
@@ -110,7 +113,7 @@
 
 /datum/supply_packs/medical_vendor_marinemed
 	name = "marinemed vendor crate"
-	cost = 5
+	cost = 10
 	containertype = /obj/structure/largecrate/supply/medicine/marinemed
 	group = "Medical"
 

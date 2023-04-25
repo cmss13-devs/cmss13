@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - spellcheck: "Fixed a typo when hacking a vendor"

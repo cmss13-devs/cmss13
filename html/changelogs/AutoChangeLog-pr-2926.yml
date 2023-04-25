@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "made the keybind validation less spammy"

@@ -47,7 +47,7 @@
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 						else
-							weaponhits_effects(WEAPON_MISSILE, FALSE, shotspacing)
+							weaponhits_effects(WEAPON_MISSILE, TRUE, shotspacing)
 
 						shotspacing += 1
 					if(confirmedhit > 0)
@@ -74,36 +74,19 @@
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
 				if(confirmedhit > 0)
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 50)
-						playsound_client(current_mob.client, 'sound/effects/railgunhit.ogg', 50)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					weaponhits_effects(WEAPON_RAILGUN)
 				if(confirmedhit < 1)
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
-						to_chat(current_mob.client, SPAN_DANGER("You hear railgun shots barely missing the hull!"))
+					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
 			if(salvo == "Single")
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					weaponhits_effects(WEAPON_RAILGUN)
 				else
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
-						to_chat(current_mob.client, SPAN_DANGER("You hear a railgun shot barely missing the hull!"))
+					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
-/proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing)
+/proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing = 0)
 	switch(weaponused)
 		if(WEAPON_MISSILE)
 			if(!weaponmiss)
@@ -122,3 +105,16 @@
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!")), shotspacing SECONDS)
 
 		if(WEAPON_RAILGUN)
+			if(!weaponmiss)
+				for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+					if(!is_mainship_level(current_mob.z))
+						continue
+					playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 50)
+					playsound_client(current_mob.client, 'sound/effects/railgunhit.ogg', 50)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+			else
+				for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+					if(!is_mainship_level(current_mob.z))
+						continue
+					playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
+					to_chat(current_mob.client, SPAN_DANGER("You hear railgun shots barely missing the hull!"))

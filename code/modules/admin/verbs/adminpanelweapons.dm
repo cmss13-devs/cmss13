@@ -77,16 +77,6 @@
 		if("Railgun")
 			if(exactplace == "Where I am")
 				shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
-				while(picked_atom == null)
-					picked_area = pick(GLOB.ship_areas)
-
-					for(var/turf/my_turf in picked_area)
-						if(isturf(my_turf))
-							turfs_of_area += my_turf
-
-					if(turfs_of_area.len > 1)
-						picked_atom = pick(turfs_of_area)
-
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, mob.loc, point_defense), hiteta SECONDS)
 
 

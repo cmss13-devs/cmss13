@@ -698,9 +698,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm/specialist_equipped/cryo
 	name = "USCM Cryo Squad Weapons Specialist (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
+/datum/equipment_preset/uscm/specialist_equipped/cryo/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
 
 //*****************************************************************************************************/
 

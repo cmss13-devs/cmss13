@@ -1,14 +1,17 @@
 /datum/simulator
-	/*
-	 Necessary to prevent multiple users from simulating at the same time.
-	 This needs to be shared across all instances.
-	 */
+
+	// Necessary to prevent multiple users from simulating at the same time.
 	var/static/detonation_cooldown = 0
 
+	var/static/sim_reboot_state = TRUE
 	var/looking_at_simulation = FALSE
 	var/detonation_cooldown_time = 2 MINUTES
 	var/dummy_mode = CLF_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
+	var/grid_clearing_size = 14
+
+	// garbage collection
+	var/list/delete_targets = list()
 
 	/*
 	unarmoured humans are unnencessary clutter as they tend to explode easily
@@ -46,18 +49,42 @@
 	user.cameraFollow = null
 	looking_at_simulation = FALSE
 
+/datum/simulator/proc/sim_turf_garbage_collection()
+
+	// initial grid needs an offset to the bottom left so it can get the most coverage within the users pov.
+	var/turf/sim_grid_start_pos = locate(sim_camera.x - 7,sim_camera.y - 7,1)
+	var/center_turf = get_turf(sim_camera)
+	if(!sim_grid_start_pos)
+		sim_reboot_state = FALSE
+		return
+
+	for(var/target in 1 to delete_targets.len)
+		qdel(delete_targets[target])
+
+	// 14x14 grid, clears from left to right like so
+	// the user's pov should be in the center inside the grid.
+	/*
+	y:14| x: 1 2 3 4 ... 14
+	... | ...
+	y:2 | x: 1 2 3 4 ... 14
+	y:1 | x: 1 2 3 4 ... 14
+	*/
+	for (var/y_pos in 1 to 14)// outer y
+		for (var/x_pos in 1 to 14) // inner x
+			var/turf/current_grid = locate(sim_grid_start_pos.x + x_pos,sim_grid_start_pos.y + y_pos,sim_grid_start_pos.z)
+
+			current_grid.empty(/turf/open/floor/engine)
+
+
 /datum/simulator/proc/spawn_mobs(mob/living/user)
+
+	if(!sim_reboot_state)
+		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
+		return
+
 	COOLDOWN_START(src, detonation_cooldown, detonation_cooldown_time)
 
 	var/spawn_path = target_types[dummy_mode]
-
-	/* TODO
-	Need to properly clean the sim room after the detonation (limbs, blood, etc..)
-	potential solution would be to iterate over the turfs and apply the empty proc,
-	so for a 12x12 grid, we iterate through the entire grid.
-	and clean the grid of all blood splatters, weapons, or other debree.
-	*/
-
 	for(var/spawn_loc in GLOB.simulator_targets)
 		if( dummy_mode == CLF_MODE || dummy_mode == UPP_MODE)
 			var/mob/living/carbon/human/human_dummy = new spawn_path(get_turf(spawn_loc))
@@ -68,11 +95,12 @@
 					user.client.cmd_admin_dress_human(human_dummy, "UPP Conscript", no_logs = TRUE)
 			human_dummy.name = "simulated human"
 
-			QDEL_IN(human_dummy, detonation_cooldown_time - 10 SECONDS)
+			delete_targets += human_dummy
 			continue
 
 		var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
 		xeno_dummy.hardcore = TRUE
-		QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)
+		delete_targets += xeno_dummy
 
+	addtimer(CALLBACK(src, PROC_REF(sim_turf_garbage_collection)), 30 SECONDS, TIMER_STOPPABLE)
 

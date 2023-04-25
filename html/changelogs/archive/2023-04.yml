@@ -285,3 +285,51 @@
   - admin: Allows staff to use more symbols in var editing
   TeDGamer:
   - balance: Reverts synth acid blood dodge chance due to revert in acid blood damage
+2023-04-22:
+  Hopek:
+  - rscadd: Resin Whisperer has been reworked. Major changes include being able to
+      place resin nodes remotely on weeds, not being able to use coerce resin when
+      standing outside of weeds and losing the ability to regularly plant weeds outside
+      of current existing weeds. This changes the Resin whisperer to a new "slow crawl"
+      frontline advance gameplay where he assists his team in pushing the front lines
+      forward as he is able to both advance weeds and build structures on them.
+  Khadd:
+  - bugfix: wrong fire no longer applied
+  LTNTS:
+  - balance: Limited communications for PO/DCC/CT/MST/CL/VC
+  - bugfix: IO/VC now use their own encryption keys
+  TeDGamer:
+  - balance: Fix T3 slots not being affected by burrowed larva
+  Totalepicness:
+  - balance: Rebalances globber, which has come out overtuned. Globber now has reduced
+      health, armor and zoom along with higher fire damage multiplier.
+  harryob:
+  - bugfix: obs can no longer be fired after the dropship doors are overridden by
+      the queen
+  realforest2001:
+  - balance: Super-Strong and Dextrous traits now allow mobs to pick up other mobs
+      who are one size bigger than them. When both traits are combined it allows for
+      two sizes up. Synths can lift runners and Yautja can lift most T1 or T2 xenos.
+  - code_imp: Changed Larva and Facehuggers mob_size variable to use the correct define.
+2023-04-23:
+  Herigony:
+  - bugfix: low organ damage will now show as bruised instead of broken in health
+      scan
+  Morrow:
+  - bugfix: Dropship seats are once again destroyable via slashing
+  - bugfix: Fixed unpowerable sensor towers
+  Waseemq1235:
+  - soundadd: Adds a wall-slam sound that has a very rare chance of triggering.
+2023-04-25:
+  BeagleGaming1:
+  - balance: Adds a way to heal organ damage via the medicomp
+  LynxSolstice:
+  - spellcheck: Changed the visible mentions of "Medic" to "Corpsman"
+  - soundadd: Added 8 new lines for the *medic emote.
+  realforest2001:
+  - bugfix: Yautja loud roars are no longer fake-able.
+  - bugfix: Survivors no longer have free marine comms as intended.
+  - rscadd: Changed the random supply kit picker contents to remove USCM specific
+      kits (those with USCM comms).
+  - rscadd: Added a blackmarket subtype of the random supply kit to keep the USCM
+      specific kits.

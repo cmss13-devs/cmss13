@@ -1,6 +1,5 @@
 #define WEAPON_MISSILE 1
 #define WEAPON_RAILGUN 2
-#define WEAPON_PARTICLE_CANNON 3
 #define HIT_CHANCE_CHEAT 100
 #define HIT_CHANCE_HIGH 90
 #define HIT_CHANCE_STANDARD 70
@@ -20,13 +19,11 @@
  */
 /proc/weaponhits(weaponused, location, point_defense = "No", salvo = "Single")
 
-	var/datum/cause_data/ashm_cause_data = create_cause_data("Anti-Ship missile")
-	var/datum/cause_data/antishiprailgun_cause_data = create_cause_data("Railgun shot")
-
 
 	switch(weaponused)
 
 		if(WEAPON_MISSILE)
+			var/datum/cause_data/ashm_cause_data = create_cause_data("Anti-Ship missile")
 			if(point_defense == "No")
 				if(salvo == "Salvo")
 					var/shotspacing
@@ -34,23 +31,11 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					weaponhits_effects(WEAPON_MISSILE)
 				else
 					cell_explosion(location, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
-					for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-						if(!is_mainship_level(current_mob.z))
-							continue
-						playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-						playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+					weaponhits_effects(WEAPON_MISSILE)
 			if(point_defense == "Yes")
 				var/hitchance = HIT_CHANCE_STANDARD
 				if(salvo == "Salvo")
@@ -62,42 +47,22 @@
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 						else
-							for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-								if(!is_mainship_level(current_mob.z))
-									continue
-								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
-								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!")), shotspacing SECONDS)
+							weaponhits_effects(WEAPON_MISSILE, FALSE, shotspacing)
 
 						shotspacing += 1
 					if(confirmedhit > 0)
-						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-							if(!is_mainship_level(current_mob.z))
-								continue
-							playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-							playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+						weaponhits_effects(WEAPON_MISSILE, FALSE)
 					confirmedhit = 0
-
 				else
 					if(prob(hitchance))
 						cell_explosion(location, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
-						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-							if(!is_mainship_level(current_mob.z))
-								continue
-							playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
-							playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+						weaponhits_effects(WEAPON_MISSILE, FALSE)
 					else
-						for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
-							if(!is_mainship_level(current_mob.z))
-								continue
-							playsound_client (current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100)
-							to_chat(current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!"))
+						weaponhits_effects(WEAPON_MISSILE, TRUE)
 
 		if(WEAPON_RAILGUN)
+			var/datum/cause_data/antishiprailgun_cause_data = create_cause_data("Railgun shot")
 			var/hitchance = HIT_CHANCE_CHEAT
 			if(point_defense == "Yes")
 				hitchance = HIT_CHANCE_STANDARD
@@ -137,3 +102,23 @@
 							continue
 						playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
 						to_chat(current_mob.client, SPAN_DANGER("You hear a railgun shot barely missing the hull!"))
+
+/proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing)
+	switch(weaponused)
+		if(WEAPON_MISSILE)
+			if(!weaponmiss)
+				for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+					if(!is_mainship_level(current_mob.z))
+						continue
+					playsound_client(current_mob.client, 'sound/effects/metal_crash.ogg', 100 )
+					playsound_client(current_mob.client, 'sound/effects/bigboom3.ogg', 100)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/pry2.ogg', 20), 1 SECONDS)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/double_klaxon.ogg'), 2 SECONDS)
+			else
+				for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
+					if(!is_mainship_level(current_mob.z))
+						continue
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/laser_point_defence_success.ogg', 100), shotspacing SECONDS)
+					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob.client, SPAN_DANGER("You hear the Point Defense systems shooting down a missile!")), shotspacing SECONDS)
+
+		if(WEAPON_RAILGUN)

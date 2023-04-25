@@ -1107,7 +1107,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
-	var/no_burrowed = TRUE
+	no_burrowed = TRUE
 
 	need_round_end_check = TRUE
 

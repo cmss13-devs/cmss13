@@ -158,9 +158,8 @@
 	bound_height = 32
 	bound_width = 64
 
-/obj/structure/filtration/machine_96x96/
+/obj/structure/filtration/machine_96x96
 	icon = 'icons/obj/structures/props/96x96.dmi'
-	icon_state = "distribution"
 
 /obj/structure/filtration/machine_96x96/distribution
 	name = "Waste Distribution and Disposal System"

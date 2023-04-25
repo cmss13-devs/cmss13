@@ -637,7 +637,6 @@
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
 	icon = 'icons/turf/lifeboat.dmi'
-	icon_state = ""
 
 /obj/structure/prop/brazier
 	name = "brazier"

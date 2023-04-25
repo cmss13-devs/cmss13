@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - bugfix: "Vampire lurker tail stab can no longer hit dead humans"

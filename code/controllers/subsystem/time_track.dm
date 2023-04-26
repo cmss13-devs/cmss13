@@ -64,17 +64,6 @@ SUBSYSTEM_DEF(time_track)
 	)
 	return SS_INIT_SUCCESS
 
-				world.time,
-			length(GLOB.clients),
-			time_dilation_current,
-			time_dilation_avg_fast,
-			time_dilation_avg,
-			time_dilation_avg_slow,
-			MAPTICK_LAST_INTERNAL_TICK_USAGE,
-			length(SStimer.timer_id_dict),
-			SSdatabase.in_progress,
-			SSdatabase.in_callback,
-
 /datum/controller/subsystem/time_track/fire()
 
 	var/current_realtime = REALTIMEOFDAY

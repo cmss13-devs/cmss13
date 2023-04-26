@@ -16,7 +16,7 @@
 	dir = 1
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "aG" = (
@@ -175,7 +175,7 @@
 "eG" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "eJ" = (
@@ -264,7 +264,7 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/taperecorder,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "gH" = (
@@ -357,7 +357,7 @@
 	density = 0
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "id" = (
@@ -684,6 +684,16 @@
 	icon_state = "SW-out";
 	layer = 2.5
 	},
+/obj/structure/closet/emcloset{
+	pixel_y = 15;
+	pixel_x = 8;
+	density = 0
+	},
+/obj/structure/closet/firecloset/full{
+	pixel_y = 15;
+	pixel_x = -8;
+	density = 0
+	},
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "whitecorner"
@@ -805,7 +815,7 @@
 "qD" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "qF" = (
@@ -1153,7 +1163,7 @@
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "zI" = (
@@ -1227,16 +1237,12 @@
 	dir = 1
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "plate"
 	},
 /area/space)
 "AO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 1
-	},
 /turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+	icon_state = "officesquares"
 	},
 /area/space)
 "AQ" = (
@@ -1400,9 +1406,11 @@
 	},
 /area/space)
 "Dr" = (
+/obj/structure/prop/broken_ladder{
+	desc = "The hatch above is closed off and sealed."
+	},
 /turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
+	icon_state = "marked"
 	},
 /area/space)
 "DF" = (
@@ -1575,7 +1583,7 @@
 "GM" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "He" = (
@@ -1741,7 +1749,7 @@
 	dir = 8
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "KM" = (
@@ -2180,7 +2188,7 @@
 	dir = 4
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "Ub" = (
@@ -2256,6 +2264,16 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/structure/closet/emcloset{
+	pixel_y = 15;
+	pixel_x = 8;
+	density = 0
+	},
+/obj/structure/closet/firecloset/full{
+	pixel_y = 15;
+	pixel_x = -8;
+	density = 0
+	},
 /turf/open/floor/corsat{
 	icon_state = "whitecorner"
 	},
@@ -2306,16 +2324,9 @@
 	},
 /area/space)
 "Xs" = (
-/obj/structure/machinery/door_control{
-	pixel_y = -22;
-	name = "Toilet Shutters Button";
-	id = "upp_toilet"
-	},
-/obj/structure/toilet{
-	dir = 8
-	},
+/obj/structure/target,
 /turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
+	icon_state = "theta"
 	},
 /area/space)
 "Xt" = (
@@ -2348,7 +2359,7 @@
 "Yt" = (
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	icon_state = "officesquares"
 	},
 /area/space)
 "YB" = (
@@ -2661,11 +2672,11 @@ QT
 QT
 QT
 QT
-al
-al
-al
-al
-al
+AO
+AO
+AO
+AO
+AO
 fX
 Vm
 QZ
@@ -2702,12 +2713,12 @@ Ux
 QT
 GM
 TT
-al
-al
-al
-al
-al
-al
+AO
+AO
+AO
+AO
+AO
+AO
 fX
 Vm
 QZ
@@ -2745,11 +2756,11 @@ QT
 qD
 KK
 qD
-al
-al
+AO
+AO
 qD
-al
-al
+AO
+AO
 fX
 Tk
 QZ
@@ -2787,10 +2798,10 @@ QT
 fX
 fX
 fX
-al
-al
+AO
+AO
 fX
-al
+WU
 AG
 fX
 Vm
@@ -2829,11 +2840,11 @@ QT
 CK
 al
 Rr
-al
-al
+AO
+AO
 fX
-al
-al
+AO
+AO
 WU
 Vm
 QZ
@@ -2871,11 +2882,11 @@ QT
 lE
 al
 eJ
-al
-al
+AO
+AO
 fX
-al
-al
+AO
+AO
 WU
 Vm
 QZ
@@ -2914,10 +2925,10 @@ fX
 fX
 fX
 hZ
-al
+AO
 fX
-al
-al
+AO
+AO
 fX
 Vm
 QZ
@@ -2955,11 +2966,11 @@ QT
 lD
 al
 qu
-al
-al
+AO
+AO
 fX
-al
-al
+AO
+AO
 fX
 nS
 NK
@@ -2997,11 +3008,11 @@ QT
 lE
 al
 Rr
-al
+AO
 eG
 fX
-Dr
-AO
+WU
+AG
 fX
 fX
 Oc
@@ -3647,8 +3658,8 @@ He
 He
 SM
 fX
-cz
-al
+zN
+MP
 al
 KM
 fX
@@ -3689,14 +3700,14 @@ ro
 He
 sM
 fX
+Dr
 cz
-al
 al
 al
 Bz
 al
 WU
-RQ
+Xs
 Pc
 FA
 gK
@@ -3731,8 +3742,8 @@ iw
 He
 bv
 fX
+Dr
 zN
-sq
 sq
 MP
 WU
@@ -3989,7 +4000,7 @@ cr
 lo
 fX
 YZ
-Xs
+ck
 QT
 Ux
 Ux

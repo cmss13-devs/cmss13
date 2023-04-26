@@ -86,6 +86,14 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{
+	hacked = 1;
+	name = "\improper Response Team Automated Guns Rack";
+	use_power = 0;
+	use_snowflake_points = 1;
+	density = 0;
+	pixel_x = 32
+	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
 	dir = 1
@@ -1189,6 +1197,28 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "floor_marked"
+	},
+/area/adminlevel/ert_station/upp_station)
+"rT" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack";
+	pixel_y = -32;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/upp_station)
+"rX" = (
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1;
+	pixel_y = -32;
+	density = 0
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "blue3"
 	},
 /area/adminlevel/ert_station/upp_station)
 "sb" = (
@@ -4384,7 +4414,7 @@ Fh
 Lo
 UE
 mr
-dW
+rT
 po
 wS
 VA
@@ -4468,7 +4498,7 @@ po
 Wb
 ZX
 ZX
-ZX
+rX
 po
 TG
 Bt

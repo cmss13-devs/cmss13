@@ -508,6 +508,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon_state = "body_scanner_closed"
 	time_entered = world.time
 	start_processing()
+	LAZYADD(GLOB.special_hearing_objects, src)
 
 	if(!silent)
 		if(M.client)
@@ -524,6 +525,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 	occupant.forceMove(get_turf(src))
 	occupant = null
+	LAZYREMOVE(GLOB.special_hearing_objects, src)
 	stop_processing()
 	icon_state = "body_scanner_open"
 	playsound(src, 'sound/machines/pod_open.ogg', 30)

@@ -106,7 +106,6 @@ var/list/department_radio_keys = list(
 				verb = "lisps"
 
 		if(T)
-
 			for(var/mob/M as anything in hearers(message_range, T))
 				listening += M
 				hearturfs += M.locs[1]
@@ -117,6 +116,15 @@ var/list/department_radio_keys = list(
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
+
+		// TODO: Improve by having a list of players with the pref on
+		for(var/mob/M as anything in GLOB.player_list)
+				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
+					listening |= M
+					continue
+				if(M.loc && (M.locs[1] in hearturfs))
+					listening |= M
+		
 		for(var/mob/M as anything in listening)
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 		overlays += speech_bubble
@@ -132,7 +140,7 @@ var/list/department_radio_keys = list(
 			if(!O)
 				LAZYREMOVE(GLOB.special_hearing_objects, O)
 				continue
-			if(isInSight(O, T) || (O in hearturfs))
+			if(isInSight(O, T) || (O in hearturfs) || (O.locs[1] in hearturfs))
 				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

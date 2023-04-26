@@ -241,7 +241,7 @@
 			continue
 
 		var/obj/effect/alien/weeds/new_weed = new(T, node)
-		weeds.Add(new_weed)
+		weeds += new_weed
 
 		if(old_fruit)
 			old_fruit.register_weed_expiration_signal(new_weed)

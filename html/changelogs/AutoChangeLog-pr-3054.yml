@@ -1,0 +1,7 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "shuffle items in medical storage to make it possible for personnel inside to distribute medical supplies."
+  - maptweak: "reduce the size of the reception office and remove is wall and window to make it so that personnel inside can act quickly when patient arrived."
+  - mapadd: "added multiple empty medikit to avoid marines clustering the floor when making their loadout."
+  - maptweak: "move all the empty pill bottle in a closet to a spot in the chemistry room."

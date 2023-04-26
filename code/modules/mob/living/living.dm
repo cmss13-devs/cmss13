@@ -355,9 +355,6 @@
 		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
-		if(X.mob_size == MOB_SIZE_XENO_SMALL)
-			now_pushing = FALSE
-			return
 
 	if(L.pulling)
 		if(ismob(L.pulling))

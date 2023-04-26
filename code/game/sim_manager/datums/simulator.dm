@@ -8,7 +8,7 @@
 	var/detonation_cooldown_time = 2 MINUTES
 	var/dummy_mode = CLF_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
-	var/grid_clearing_size = 14
+	var/grid_clearing_size = 16
 
 	// garbage collection
 	var/static/list/delete_targets = list()
@@ -52,7 +52,7 @@
 /datum/simulator/proc/sim_turf_garbage_collection()
 
 	// initial grid needs an offset to the bottom left so it can get the most coverage within the users pov.
-	var/turf/sim_grid_start_pos = locate(sim_camera.x - 7,sim_camera.y - 7,1)
+	var/turf/sim_grid_start_pos = locate(sim_camera.x - 9,sim_camera.y - 9,1)
 	if(!sim_grid_start_pos)
 		sim_reboot_state = FALSE
 		return
@@ -60,16 +60,16 @@
 	for(var/target in 1 to delete_targets.len)
 		qdel(delete_targets[target])
 
-	// 14x14 grid, clears from left to right like so
+	// 16x16 grid, clears from left to right like so
 	// the user's pov should be in the center inside the grid.
 	/*
-	y:14| x: 1 2 3 4 ... 14
+	y:16| x: 1 2 3 4 ... 16
 	... | ...
-	y:2 | x: 1 2 3 4 ... 14
-	y:1 | x: 1 2 3 4 ... 14
+	y:2 | x: 1 2 3 4 ... 16
+	y:1 | x: 1 2 3 4 ... 16
 	*/
-	for (var/y_pos in 1 to 14)// outer y
-		for (var/x_pos in 1 to 14) // inner x
+	for (var/y_pos in 1 to grid_clearing_size)// outer y
+		for (var/x_pos in 1 to grid_clearing_size) // inner x
 			var/turf/current_grid = locate(sim_grid_start_pos.x + x_pos,sim_grid_start_pos.y + y_pos,sim_grid_start_pos.z)
 
 			current_grid.empty(/turf/open/floor/engine)

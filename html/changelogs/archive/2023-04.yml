@@ -333,3 +333,12 @@
       kits (those with USCM comms).
   - rscadd: Added a blackmarket subtype of the random supply kit to keep the USCM
       specific kits.
+2023-04-26:
+  Morrow:
+  - bugfix: Vampire lurker tail stab can no longer hit dead humans
+  - spellcheck: Fixed a typo when hacking a vendor
+  - rscadd: FORECON Tech survivor now has spawn priority
+  - rscadd: Fruits no longer get destroyed by stronger weeds
+  - bugfix: Fixes abusing old code to make mortars into grenades
+  harryob:
+  - bugfix: made the keybind validation less spammy

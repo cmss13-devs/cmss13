@@ -162,8 +162,8 @@
 	icon = 'icons/obj/structures/props/96x96.dmi'
 
 /obj/structure/filtration/machine_96x96/distribution
-	name = "Waste Distribution and Disposal System"
-	desc = "This machine separates whatever waste left behind from the purification processes to be discarded into space or used for research."
+	name = "Waste Distribution System"
+	desc = "This machine separates the leftover waste from the purification processes to be discarded into space, recycled for supplies, or used for research."
 	icon_state = "distribution"
 
 /obj/structure/filtration/machine_96x96/sedimentation

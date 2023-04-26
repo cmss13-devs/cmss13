@@ -1,0 +1,5 @@
+author: "Usnpeepoo"
+delete-after: True
+changes:
+  - bugfix: "Preds are able to break their bones again"
+  - balance: "Pred bones have their minimum damage to break requirements balanced."

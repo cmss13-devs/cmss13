@@ -380,6 +380,9 @@
 	if (display_head)
 		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>face</b>!\n")
 
+	if(skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
+			msg += SPAN_WARNING("They have bloating and discoloration on their [internal_bleed.limb.display_name]!\n")
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
 		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>entire body</b>!\n")
 	else

@@ -150,7 +150,7 @@
 	var/color = mix_color_from_reagents(chemholder.reagents.reagent_list)
 	var/icon/I
 	if(color)
-		I = icon('icons/effects/chemsmoke.dmi')
+		I = icon('icons/effects/chemsmoke.dmi', "smoke")
 		I += color
 	else
 		I = icon('icons/effects/96x96.dmi', "smoke")

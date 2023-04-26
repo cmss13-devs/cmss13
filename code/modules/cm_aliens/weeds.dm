@@ -240,7 +240,7 @@
 		if(!weed_expand_objects(T, dirn))
 			continue
 
-		var/obj/effect/alien/weeds/new_weed = new /obj/effect/alien/weeds(T, node)
+		var/obj/effect/alien/weeds/new_weed = new(T, node)
 		weeds.Add(new_weed)
 
 		if(old_fruit)

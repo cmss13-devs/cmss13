@@ -53,7 +53,6 @@
 
 	// initial grid needs an offset to the bottom left so it can get the most coverage within the users pov.
 	var/turf/sim_grid_start_pos = locate(sim_camera.x - 7,sim_camera.y - 7,1)
-	var/center_turf = get_turf(sim_camera)
 	if(!sim_grid_start_pos)
 		sim_reboot_state = FALSE
 		return
@@ -74,7 +73,6 @@
 			var/turf/current_grid = locate(sim_grid_start_pos.x + x_pos,sim_grid_start_pos.y + y_pos,sim_grid_start_pos.z)
 
 			current_grid.empty(/turf/open/floor/engine)
-
 
 /datum/simulator/proc/spawn_mobs(mob/living/user)
 

@@ -375,7 +375,6 @@
 					to_chat(src, SPAN_WARNING("[L] is restraining [P], you cannot push past."))
 				now_pushing = FALSE
 				return
-
 	if(ishuman(L))
 		if(!(L.status_flags & CANPUSH))
 			now_pushing = FALSE

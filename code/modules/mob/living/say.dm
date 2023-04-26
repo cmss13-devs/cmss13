@@ -140,7 +140,7 @@ var/list/department_radio_keys = list(
 			if(!O)
 				LAZYREMOVE(GLOB.special_hearing_objects, O)
 				continue
-			if(isInSight(O, T) || (O in hearturfs) || (O.locs[1] in hearturfs))
+			if(isInSight(O, T) || (O in hearturfs) || (isInSight(O.locs[1], T))
 				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

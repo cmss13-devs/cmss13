@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Fruits no longer get destroyed by stronger weeds"

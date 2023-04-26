@@ -1257,10 +1257,8 @@
 	var/ammo_accuracy_range = SA.accuracy_range
 	// no warning sound and no travel time
 	last_fired = world.time
-	if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy
-			break
+
+	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments) ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
 

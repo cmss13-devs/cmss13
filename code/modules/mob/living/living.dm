@@ -356,7 +356,7 @@
 			now_pushing = FALSE
 			return
 	if(isrunner(src))
-		if(ishuman(L))
+		if(ishuman(L) || isxeno(L))
 			now_pushing = FALSE
 			return
 	if(L.pulling)

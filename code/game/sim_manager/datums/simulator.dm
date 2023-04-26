@@ -11,7 +11,7 @@
 	var/grid_clearing_size = 14
 
 	// garbage collection
-	var/list/delete_targets = list()
+	var/static/list/delete_targets = list()
 
 	/*
 	unarmoured humans are unnencessary clutter as they tend to explode easily

@@ -793,7 +793,7 @@
 		if("switchmode")
 			simulation.dummy_mode = tgui_input_list(usr, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
 			if(!simulation.dummy_mode)
-				simulation.dummy_mode = HUMAN_MODE
+				simulation.dummy_mode = CLF_MODE
 			. = TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)

@@ -351,9 +351,9 @@
 		return
 
 	//If who I collided into is a xeno that isn't a larva:
- 	//Cast them into the xeno datum
- 	//If they (not as a xeno datum) are big or bigger; OR I am a human that isn't a predator; OR I am a runner:
-    //set now_pushing to false and return
+	//Cast them into the xeno datum
+	//If they (not as a xeno datum) are big or bigger; OR I am a human that isn't a predator; OR I am a runner:
+	//set now_pushing to false and return
 	// - Code doc attributed to Drathek on the CM discord.
 	if(isxeno(L) && !islarva(L))
 		var/mob/living/carbon/xenomorph/X = L

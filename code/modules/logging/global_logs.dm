@@ -1,6 +1,9 @@
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
 
+GLOBAL_VAR(perf_log)
+GLOBAL_PROTECT(perf_log)
+
 GLOBAL_VAR(year_log_directory)
 GLOBAL_PROTECT(year_log_directory)
 

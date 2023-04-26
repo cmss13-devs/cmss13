@@ -272,6 +272,7 @@
 #include "code\controllers\subsystem\teleporter.dm"
 #include "code\controllers\subsystem\tgui.dm"
 #include "code\controllers\subsystem\ticker.dm"
+#include "code\controllers\subsystem\time_track.dm"
 #include "code\controllers\subsystem\timer.dm"
 #include "code\controllers\subsystem\tracking.dm"
 #include "code\controllers\subsystem\vote.dm"

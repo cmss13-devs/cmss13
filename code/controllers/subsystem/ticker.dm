@@ -486,6 +486,3 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)
-
-/datum/controller/subsystem/ticker/proc/toggle_roundend_check()
-	roundend_check_paused = !roundend_check_paused

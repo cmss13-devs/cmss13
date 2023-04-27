@@ -733,6 +733,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
 
+/obj/item/clothing/head/helmet/marine/MP/WO
+	name = "\improper M3 pattern chief MP helmet"
+	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	icon_state = "cmp_helmet"
+	item_state = "cmp_helmet"
+	specialty = "M10 pattern chief MP"
+
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."

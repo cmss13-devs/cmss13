@@ -332,12 +332,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "mp_armor")
 	black_market_value = 20
 
-/obj/item/clothing/suit/storage/marine/MP/padless
-	name = "\improper M2 pattern padless MP armor"
-	icon_state = "mp_armor_p"
-	specialty = "M2 pattern padless MP"
-	item_state_slots = list(WEAR_JACKET = "mp_armor_p")
-
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
 	name = "\improper M3 pattern warden MP armor"
@@ -348,12 +342,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden")
 
-/obj/item/clothing/suit/storage/marine/MP/warden/padless
-	name = "\improper M3 pattern padless warden MP armor"
-	icon_state = "warden_2"
-	specialty = "M3 pattern padless warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden_2")
-
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
 	name = "\improper M3 pattern chief MP armor"
@@ -362,12 +350,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 	black_market_value = 30
-
-/obj/item/clothing/suit/storage/marine/MP/WO/padless
-	name = "\improper M3 pattern padless chief MP armor"
-	icon_state = "warrant_officer_2"
-	specialty = "M3 pattern padless chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer_2")
 
 /obj/item/clothing/suit/storage/marine/MP/general
 	name = "\improper M3 pattern general officer armor"

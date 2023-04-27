@@ -59,9 +59,9 @@ SUBSYSTEM_DEF(time_track)
 			"tidi_avg",
 			"tidi_slowavg",
 			"maptick",
-			"num_timers"
+			"num_timers",
 			"in_progress",
-			"in_callback"
+			"in_callback",
 		) + sendmaps_headers
 	)
 	return SS_INIT_SUCCESS

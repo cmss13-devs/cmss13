@@ -35544,11 +35544,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/tcomms)
-"lSc" = (
-/obj/structure/flora/grass/ice/brown,
-/obj/structure/flora/grass/ice/brown,
-/turf/open/auto_turf/snow/brown_base/layer2,
-/area/strata/ag/exterior/marsh/crash)
 "lTG" = (
 /obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -44604,7 +44599,7 @@ aVq
 aVq
 bgS
 bgS
-lSc
+bhN
 bhN
 bhN
 bhN
@@ -44994,7 +44989,7 @@ crN
 crN
 fCI
 bgS
-fAS
+bhN
 bgS
 bhO
 bgS
@@ -46190,7 +46185,7 @@ bgS
 bhO
 bhO
 bdL
-bea
+hir
 cwS
 ben
 uxf
@@ -48925,7 +48920,7 @@ npS
 npS
 bjL
 ben
-bea
+hir
 nJK
 nJK
 kkL

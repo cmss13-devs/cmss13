@@ -628,6 +628,7 @@
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
+
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -789,3 +790,10 @@
 	new /obj/item/clothing/accessory/holobadge/cord(src)
 	..()
 	return
+
+/obj/item/clothing/accessory/storage/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
+	icon = 'icons/obj/items/clothing/ties.dmi'
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"

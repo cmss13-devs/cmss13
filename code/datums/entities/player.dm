@@ -133,6 +133,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	message_admins("[key_name_admin(admin)] deleted one of [ckey]'s notes.")
 	// get note from our list
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
+	log_admin("Note: [note.text] by [note.admin]")
 	// de-list it
 	notes.Remove(note)
 	// murder it

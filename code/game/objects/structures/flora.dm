@@ -125,15 +125,19 @@ ICE GRASS
 
 /obj/structure/flora/grass/ice
 	icon = 'icons/obj/structures/props/snowflora.dmi'
+	icon_state = ""
 	variations = 3
 
 /obj/structure/flora/grass/ice/brown
+	icon_state = "snowgrassbb_1"
 	icon_tag = "snowgrassbb"
 
 /obj/structure/flora/grass/ice/green
+	icon_state = "snowgrassgb_1"
 	icon_tag = "snowgrassgb"
 
 /obj/structure/flora/grass/ice/both
+	icon_state = "snowgrassall_1"
 	icon_tag = "snowgrassall"
 
 /*
@@ -142,8 +146,9 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 */
 
-/obj/structure/flora/grass/ice/ice
+/obj/structure/flora/grass/ice/icey
 	icon_state = "icegrass5" //full patch of grass
+	icon_tag = "icegrass"
 
 /obj/structure/flora/grass/ice/icey/eightdirection
 	icon_state = "icegrass1" //8 different directional states.

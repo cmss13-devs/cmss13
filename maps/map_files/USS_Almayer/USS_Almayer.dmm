@@ -29201,6 +29201,18 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side"
@@ -65473,6 +65485,15 @@
 	},
 /area/almayer/powered)
 "uuN" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3

@@ -55,6 +55,9 @@
 				if(salvo == TRUE)
 					shipwide_ai_announcement("DANGER: MISSILE SALVO DETECTED, BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					targets = shipside_random_turf_picker(quantity)
+					if(targets == null)
+						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
+						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
 					if(point_defense == TRUE)
 						var/spoolup = hiteta - 4
@@ -62,6 +65,9 @@
 				else
 					shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					picked_atom = shipside_random_turf_picker(1)
+					if(picked_atom == null)
+						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
+						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 					if(point_defense == TRUE)
 						var/spoolup = hiteta - 4
@@ -77,6 +83,9 @@
 				if(salvo == TRUE)
 					shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, SALVO INCOMING. BRACE, BRACE, BRACE. SALVO SIZE: [quantity], ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 					targets = shipside_random_turf_picker(quantity)
+					if(targets == null)
+						tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
+						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, targets, point_defense, salvo), hiteta SECONDS)
 					picked_atom = null
 					targets = null
@@ -86,6 +95,9 @@
 					if(prompt == "Yes")
 						shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING SHOT. BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 						picked_atom = shipside_random_turf_picker(1)
+						if(picked_atom == null)
+							tgui_alert(src, "Uh oh! Something broke at this point! Contact the coders!", "Acknowledge!", list("ok."), 10 SECONDS)
+							return
 
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, picked_atom, point_defense), hiteta SECONDS)
 

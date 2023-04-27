@@ -28183,8 +28183,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "cEO" = (
@@ -30206,8 +30205,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "dBj" = (
@@ -32164,8 +32162,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "esi" = (
@@ -32561,8 +32558,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "eBO" = (
@@ -35300,10 +35296,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
-"fQA" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig/main_office)
 "fQF" = (
 /obj/structure/surface/rack,
 /obj/item/storage/bag/plasticbag,
@@ -35870,8 +35862,7 @@
 	dir = 5
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "gfW" = (
@@ -36097,8 +36088,7 @@
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "gll" = (
@@ -36278,13 +36268,12 @@
 /area/almayer/shipboard/brig/main_office)
 "grq" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/closet/secure_closet/warden,
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1;
-	dir = 4
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
 	},
-/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "grG" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -40667,16 +40656,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "iyq" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 2;
+	id = "Warden Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
 	name = "\improper Warden Office"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 2;
-	id = "Warden Office Shutters";
-	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -44516,8 +44505,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "ksN" = (
@@ -45755,8 +45743,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "kXJ" = (
@@ -46902,8 +46889,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "lzj" = (
@@ -48524,7 +48510,7 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
 "mqc" = (
 /obj/structure/disposalpipe/segment{
@@ -48591,13 +48577,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
-"mro" = (
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side";
-	
-	},
-/area/almayer/medical/lower_medical_lobby)
 "mrD" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -48639,8 +48618,7 @@
 "msr" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "msV" = (
@@ -53406,8 +53384,7 @@
 /obj/structure/bed/sofa/south/white/right,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "oGx" = (
@@ -53972,8 +53949,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "oUG" = (
@@ -58433,13 +58409,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair{
 	dir = 8;
-	pixel_y = 3;
-	
+	pixel_y = 3
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rgJ" = (
@@ -59976,6 +59950,17 @@
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
+"rQv" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "rQy" = (
 /obj/structure/machinery/door_display/research_cell{
 	dir = 8;
@@ -61871,8 +61856,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "sJY" = (
@@ -62268,16 +62252,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
-"sWp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side";
-	
-	},
-/area/almayer/medical/lower_medical_medbay)
 "sWW" = (
 /obj/structure/machinery/seed_extractor,
 /obj/structure/machinery/light{
@@ -62500,7 +62474,10 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
 /area/almayer/shipboard/brig/main_office)
 "tab" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -64382,12 +64359,6 @@
 /obj/item/tool/wet_sign,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"tUL" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	
-	},
-/area/almayer/medical/lower_medical_lobby)
 "tUS" = (
 /obj/item/toy/beach_ball/holoball,
 /obj/structure/holohoop{
@@ -67008,8 +66979,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	
+	icon_state = "sterile_green"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "vdJ" = (
@@ -69233,8 +69203,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "wan" = (
@@ -72065,13 +72034,6 @@
 /obj/effect/landmark/start/requisition,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
-"xnK" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side";
-	
-	},
-/area/almayer/medical/lower_medical_lobby)
 "xnR" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -72438,16 +72400,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair{
 	dir = 8;
-	pixel_y = 3;
-	
+	pixel_y = 3
 	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
-	
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "xwv" = (
@@ -73616,34 +73576,34 @@
 /obj/structure/machinery/door_control{
 	id = "courtyard_cells";
 	name = "\improper Courtyard Lockdown Shutters";
-	pixel_x = 11;
-	pixel_y = 2;
+	pixel_x = -8;
+	pixel_y = -6;
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door_control{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown Shutters";
-	pixel_x = 11;
-	pixel_y = 10;
+	pixel_x = -8;
+	pixel_y = 2;
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door_control{
 	id = "courtyard window";
 	name = "Courtyard Window Shutters";
-	pixel_x = -9;
+	pixel_x = -8;
 	pixel_y = 10;
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/door_control{
 	id = "Cell Privacy Shutters";
 	name = "Cell Privacy Shutters";
+	pixel_x = 2;
 	pixel_y = 10;
-	req_access_txt = "3";
-	pixel_x = 1
+	req_access_txt = "3"
 	},
 /obj/structure/machinery/recharger{
-	pixel_y = -2;
-	pixel_x = -4
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -84127,7 +84087,7 @@ xkd
 qJZ
 jVa
 jVa
-fQA
+tHS
 xGh
 ycm
 qCo
@@ -85543,7 +85503,7 @@ qCt
 rQQ
 grq
 rRQ
-rRQ
+rQv
 iyq
 inG
 omt
@@ -101061,7 +101021,7 @@ whz
 bei
 bei
 bei
-xnK
+uBI
 bei
 bei
 bei
@@ -101071,7 +101031,7 @@ bei
 bei
 bei
 bei
-xnK
+uBI
 bei
 bei
 bei
@@ -101263,7 +101223,7 @@ kzu
 bei
 bei
 rJC
-tUL
+bqL
 vdl
 msr
 bbq
@@ -101672,7 +101632,7 @@ bei
 bei
 bei
 ben
-mro
+rNn
 vhX
 gls
 cAm
@@ -102282,11 +102242,11 @@ kQB
 bzl
 buu
 huG
-sWp
+soK
 ksE
 beA
 wAo
-sWp
+soK
 dBh
 buu
 bCe

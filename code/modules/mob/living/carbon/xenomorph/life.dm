@@ -215,11 +215,11 @@
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(ishuman_strict(M))
+			if(ishuman(M))
 				if(world.time == (devour_timer - 30))
 					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
-				var/mob/living/carbon/human/H = M
+				var/mob/living/carbon/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
 					regurgitate(H)
 

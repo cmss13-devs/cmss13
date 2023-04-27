@@ -42,7 +42,7 @@
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
+		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
 		SPAN_XENONOTICE("You clear the hatched egg."))
 		playsound(src.loc, "alien_resin_break", 25)
 		qdel(src)

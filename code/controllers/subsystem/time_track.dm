@@ -49,6 +49,20 @@ SUBSYSTEM_DEF(time_track)
 	for(var/proper_name in sendmaps_names_map)
 		sendmaps_headers += sendmaps_names_map[proper_name]
 		sendmaps_headers += "[sendmaps_names_map[proper_name]]_count"
+
+		list(
+			world.time,
+			length(GLOB.clients),
+			time_dilation_current,
+			time_dilation_avg_fast,
+			time_dilation_avg,
+			time_dilation_avg_slow,
+			MAPTICK_LAST_INTERNAL_TICK_USAGE,
+			length(SStimer.timer_id_dict),
+			SSdatabase.in_progress,
+			SSdatabase.in_callback,
+		) + send_maps_values
+
 	log_perf(
 		list(
 			"time",
@@ -58,6 +72,7 @@ SUBSYSTEM_DEF(time_track)
 			"tidi_avg",
 			"tidi_slowavg",
 			"maptick",
+			"num_timers"
 			"in_progress",
 			"in_callback"
 		) + sendmaps_headers

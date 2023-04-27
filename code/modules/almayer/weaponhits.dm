@@ -17,15 +17,15 @@
  * * point_defense - If you want the Almayer to attempt taking down the incoming fire
  * * salvo - identifies it as a salvo or not.
  */
-/proc/weaponhits(weaponused, location, point_defense = "No", salvo = "Single")
+/proc/weaponhits(weaponused, location, point_defense = FALSE, salvo = FALSE)
 
 
 	switch(weaponused)
 
 		if(WEAPON_MISSILE)
 			var/datum/cause_data/ashm_cause_data = create_cause_data("Anti-Ship missile")
-			if(point_defense == "No")
-				if(salvo == "Salvo")
+			if(point_defense == FALSE)
+				if(salvo == TRUE)
 					var/shotspacing
 					for(var/turf/picked_atom in location)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
@@ -36,9 +36,9 @@
 					cell_explosion(location, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
-			if(point_defense == "Yes")
+			if(point_defense == TRUE)
 				var/hitchance = HIT_CHANCE_STANDARD
-				if(salvo == "Salvo")
+				if(salvo == TRUE)
 					var/confirmedhit
 					var/shotspacing
 					for(var/turf/picked_atom in location)
@@ -64,9 +64,9 @@
 		if(WEAPON_RAILGUN)
 			var/datum/cause_data/antishiprailgun_cause_data = create_cause_data("Railgun shot")
 			var/hitchance = HIT_CHANCE_CHEAT
-			if(point_defense == "Yes")
+			if(point_defense == TRUE)
 				hitchance = HIT_CHANCE_STANDARD
-			if(salvo == "Salvo")
+			if(salvo == TRUE)
 				var/confirmedhit
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
@@ -78,7 +78,7 @@
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
-			if(salvo == "Single")
+			if(salvo == "FALSE")
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)

@@ -22,7 +22,7 @@
 	var/mob/living/carbon/xenomorph/defender/defender = mutator_set.xeno
 	defender.mutation_type = DEFENDER_STEELCREST
 	defender.mutation_icon_state = DEFENDER_STEELCREST
-	defender.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+	defender.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	defender.steelcrest = TRUE
 	if(defender.fortify)
 		defender.ability_speed_modifier += 2.5

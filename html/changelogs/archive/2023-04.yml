@@ -320,3 +320,38 @@
   - bugfix: Fixed unpowerable sensor towers
   Waseemq1235:
   - soundadd: Adds a wall-slam sound that has a very rare chance of triggering.
+2023-04-25:
+  BeagleGaming1:
+  - balance: Adds a way to heal organ damage via the medicomp
+  LynxSolstice:
+  - spellcheck: Changed the visible mentions of "Medic" to "Corpsman"
+  - soundadd: Added 8 new lines for the *medic emote.
+  realforest2001:
+  - bugfix: Yautja loud roars are no longer fake-able.
+  - bugfix: Survivors no longer have free marine comms as intended.
+  - rscadd: Changed the random supply kit picker contents to remove USCM specific
+      kits (those with USCM comms).
+  - rscadd: Added a blackmarket subtype of the random supply kit to keep the USCM
+      specific kits.
+2023-04-26:
+  Morrow:
+  - bugfix: Vampire lurker tail stab can no longer hit dead humans
+  - spellcheck: Fixed a typo when hacking a vendor
+  - rscadd: FORECON Tech survivor now has spawn priority
+  - rscadd: Fruits no longer get destroyed by stronger weeds
+  - bugfix: Fixes abusing old code to make mortars into grenades
+  harryob:
+  - bugfix: made the keybind validation less spammy
+2023-04-27:
+  Huffie56:
+  - maptweak: shuffle items in medical storage to make it possible for personnel inside
+      to distribute medical supplies.
+  - maptweak: reduce the size of the reception office and remove is wall and window
+      to make it so that personnel inside can act quickly when patient arrived.
+  - mapadd: added multiple empty medikit to avoid marines clustering the floor when
+      making their loadout.
+  - maptweak: move all the empty pill bottle in a closet to a spot in the chemistry
+      room.
+  Usnpeepoo:
+  - bugfix: Preds are able to break their bones again
+  - balance: Pred bones have their minimum damage to break requirements balanced.

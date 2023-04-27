@@ -25,7 +25,7 @@
 	icon_state = "icerock"
 
 /obj/effect/decal/strata_decals/grasses
-	icon_state = "smalltufts"
+	icon_state = "tufts"
 	name = "some foliage"
 	desc = "A few brave tufts of snow grass."
 

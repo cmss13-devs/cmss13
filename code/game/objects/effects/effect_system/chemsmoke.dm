@@ -3,6 +3,7 @@
 /////////////////////////////////////////////
 /obj/effect/particle_effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
+	icon_state = ""
 	opacity = FALSE
 	time_to_live = 300
 	anchored = TRUE

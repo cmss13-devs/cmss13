@@ -64,6 +64,7 @@
 
 /obj/effect/landmark/wo_supplies/guns
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon_state = ""
 
 /obj/effect/landmark/wo_supplies/guns/common
 	amount = list(5,10)
@@ -238,7 +239,7 @@
 	stuff = list(/obj/item/ammo_box/magazine/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aincend
-	icon_state = "base_incen"
+	icon_state = "base_inc"
 	stuff = list(/obj/item/ammo_box/magazine/incen)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend

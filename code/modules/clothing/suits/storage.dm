@@ -9,9 +9,6 @@
 	pockets.max_w_class = SIZE_SMALL //fit only small items
 	pockets.max_storage_space = 4
 
-/obj/item/clothing/suit/storage/Destroy()
-	..()
-
 /obj/item/clothing/suit/storage/get_pockets()
 	if(pockets)
 		return pockets

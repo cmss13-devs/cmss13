@@ -11,17 +11,11 @@
 	var/point_defense = tgui_alert(src, "Allow Point Defence of the ship to intercept, or for the weapon to miss?", "standard  PD/miss chance is 30%.", list("Yes", "No"), 20 SECONDS)
 	if(!point_defense)
 		return
-	if(point_defense == "Yes")
-		point_defense = TRUE
-	else
-		point_defense = FALSE
+	point_defense = point_defense == "Yes"
 	var/exactplace = tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS)
 	if(!exactplace)
 		return
-	if(exactplace == "Where I am")
-		exactplace = TRUE
-	else
-		exactplace = FALSE
+	exactplace = exactplace == "Where I am"
 
 	var/salvo
 	var/quantity
@@ -29,10 +23,7 @@
 		salvo = tgui_alert(src, "Make it a salvo or a single fire?", "Choose wisely!", list("Salvo", "Single"), 20 SECONDS)
 		if(!salvo)
 			return
-		if(salvo == "Salvo")
-			salvo = TRUE
-		else
-			salvo = FALSE
+		salvo = salvo == "Salvo"
 		if(salvo == TRUE)
 			quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 2, 10, 2, 20 SECONDS)
 
@@ -107,17 +98,17 @@
 	var/picked_area
 	var/list/targets = list()
 	var/list/turfs_of_area = list()
-	for(var/currentturf = 1; currentturf <= turfquantity; currentturf++)
-		for(var/limiter = 1; picked_atom == null && limiter < 120;  limiter++)
+	for(var/currentturf in 1 to turfquantity)
+		for(var/limiter in 1 to 120)
 			picked_area = pick(GLOB.ship_areas)
 			for(var/turf/my_turf in picked_area)
 				turfs_of_area += my_turf
-				//if(isturf(my_turf))
-					//turfs_of_area += my_turf
-			if(turfs_of_area.len >= 1)
+			if(turfs_of_area.len > 0)
 				picked_atom = pick(turfs_of_area)
-				targets += picked_atom
-		picked_atom = null
+				if (picked_atom != null)
+					targets += picked_atom
+					break
+
 	if(targets.len < turfquantity)
 		return null
 	else

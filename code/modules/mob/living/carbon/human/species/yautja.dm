@@ -164,21 +164,21 @@
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H
-	for(var/obj/limb/L in H.limbs)
-		switch(L.name)
+	for(var/obj/limb/limb in H.limbs)
+		switch(limb.name)
 			if("groin","chest")
-				L.min_broken_damage = 40
-				L.max_damage = 200
+				limb.min_broken_damage = 40
+				limb.max_damage = 200
 			if("head")
-				L.min_broken_damage = 40
-				L.max_damage = 60
+				limb.min_broken_damage = 40
+				limb.max_damage = 60
 			if("l_hand","r_hand","r_foot","l_foot")
-				L.min_broken_damage = 25
-				L.max_damage = 30
+				limb.min_broken_damage = 25
+				limb.max_damage = 30
 			if("r_leg","r_arm","l_leg","l_arm")
-				L.min_broken_damage = 30
-				L.max_damage = 35
-		L.time_to_knit = -1
+				limb.min_broken_damage = 30
+				limb.max_damage = 35
+		limb.time_to_knit = -1
 
 /datum/species/yautja/handle_post_spawn(mob/living/carbon/human/H)
 	GLOB.alive_human_list -= H
@@ -187,24 +187,24 @@
 	H.blood_type = "Y*"
 	H.h_style = "Standard"
 	GLOB.yautja_mob_list += H
-	for(var/obj/limb/L in H.limbs)
-		switch(L.name)
+	for(var/obj/limb/limb in H.limbs)
+		switch(limb.name)
 			if("groin","chest")
-				L.min_broken_damage = 140
-				L.max_damage = 140
-				L.time_to_knit = 1200 // 2 minutes, time is in tenths of a second
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 1200 // 2 minutes to self heal bone break, time is in tenths of a second to auto heal this
 			if("head")
-				L.min_broken_damage = 80
-				L.max_damage = 80
-				L.time_to_knit = 1200 // 2 minutes, time is in tenths of a second
+				limb.min_broken_damage = 140
+				limb.max_damage = 150
+				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 			if("l_hand","r_hand","r_foot","l_foot")
-				L.min_broken_damage = 55
-				L.max_damage = 55
-				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 			if("r_leg","r_arm","l_leg","l_arm")
-				L.min_broken_damage = 75
-				L.max_damage = 75
-				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
+				limb.min_broken_damage = 145
+				limb.max_damage = 150
+				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()

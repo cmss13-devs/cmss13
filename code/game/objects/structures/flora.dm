@@ -138,6 +138,27 @@ ICE GRASS
 
 /*
 
+ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
+
+*/
+
+/obj/structure/flora/grass/ice/ice
+	icon_state = "icegrass5" //full patch of grass
+
+/obj/structure/flora/grass/ice/icey/eightdirection
+	icon_state = "icegrass1" //8 different directional states.
+
+/obj/structure/flora/grass/ice/icey/fourdirection
+	icon_state = "icegrass2" //4 different directional states
+
+/obj/structure/flora/grass/ice/icey/center
+	icon_state = "icegrass3" //1 center piece of grass
+
+/obj/structure/flora/grass/ice/icey/centerfull
+	icon_state = "icegrass4" //More grass.
+
+
+/*
 	DESERT GRASS
 
 */

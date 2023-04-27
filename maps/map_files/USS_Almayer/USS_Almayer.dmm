@@ -53210,6 +53210,10 @@
 	icon_state = "orangecorner"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"oyv" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/almayer/shipboard/brig/main_office)
 "oyw" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -54145,7 +54149,7 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "oWX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -67861,7 +67865,7 @@
 	id = "Warden Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "vwF" = (
 /obj/structure/machinery/light{
@@ -83962,7 +83966,7 @@ xkd
 qJZ
 jVa
 jVa
-tHS
+oyv
 xGh
 ycm
 qCo

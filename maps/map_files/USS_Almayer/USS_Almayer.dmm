@@ -73636,7 +73636,9 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "xWo" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access_txt = "19;21"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

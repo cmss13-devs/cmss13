@@ -219,7 +219,7 @@
 				if(world.time == (devour_timer - 30))
 					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
-				var/mob/living/carbon/H = M
+				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
 					regurgitate(H)
 

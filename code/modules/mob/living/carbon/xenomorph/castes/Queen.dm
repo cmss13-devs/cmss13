@@ -506,8 +506,8 @@
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
-/mob/living/carbon/xenomorph/queen/Stat()
-	..()
+/mob/living/carbon/xenomorph/queen/get_status_tab_items()
+	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 

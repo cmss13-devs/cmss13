@@ -360,7 +360,7 @@
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
 	paygrade = "ME4"
-	role_comm_title = "TL"
+	role_comm_title = "FTL"
 	skills = /datum/skills/tl
 
 	minimap_icon = "tl"

@@ -1,9 +1,7 @@
 #define WEAPON_MISSILE 1
 #define WEAPON_RAILGUN 2
 #define HIT_CHANCE_CHEAT 100
-#define HIT_CHANCE_HIGH 90
 #define HIT_CHANCE_STANDARD 70
-#define HIT_CHANCE_LOW 30
 /**
  * Proc called to hit the ship with weapons
  *
@@ -118,3 +116,8 @@
 						continue
 					playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
 					to_chat(current_mob.client, SPAN_DANGER("You hear railgun shots barely missing the hull!"))
+//REMOVE THIS WHEN WE USE THIS SOMEWHERE ELSE.
+#undef WEAPON_MISSILE
+#undef WEAPON_RAILGUN
+#undef HIT_CHANCE_CHEAT
+#undef HIT_CHANCE_STANDARD

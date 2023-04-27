@@ -1,0 +1,4 @@
+author: "blackcrystall"
+delete-after: True
+changes:
+  - bugfix: "Stat proc replaced with get_status_tab_items, fixed issue with QUEEN additional status"

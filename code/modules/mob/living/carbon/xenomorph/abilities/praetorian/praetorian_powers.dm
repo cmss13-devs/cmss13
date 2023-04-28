@@ -538,19 +538,16 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!dancer_user.Adjacent(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must be adjacent to [target_atom]!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -665,14 +662,12 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())

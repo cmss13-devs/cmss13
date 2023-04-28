@@ -132,7 +132,7 @@
 			make_and_prime_explosive(O.warhead)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
-	var/obj/item/explosive/E = new O.type((simulation.sim_camera).loc)
+	var/obj/item/explosive/E = new O.type(get_turf(simulation.sim_camera))
 	E.make_copy_of(O)
 	E.prime(TRUE)
 	sim_location = get_turf(simulation.sim_camera)

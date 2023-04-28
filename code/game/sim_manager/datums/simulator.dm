@@ -2,15 +2,15 @@
 
 	// Necessary to prevent multiple users from simulating at the same time.
 	var/static/detonation_cooldown = 0
-
 	var/static/sim_reboot_state = TRUE
+
 	var/looking_at_simulation = FALSE
 	var/detonation_cooldown_time = 2 MINUTES
 	var/dummy_mode = CLF_MODE
 	var/obj/structure/machinery/camera/simulation/sim_camera
 	var/grid_clearing_size = 16
 
-	// garbage collection
+	// garbage collection,
 	var/static/list/delete_targets = list()
 
 	/*
@@ -57,8 +57,7 @@
 		sim_reboot_state = FALSE
 		return
 
-	for(var/target in 1 to delete_targets.len)
-		qdel(delete_targets[target])
+	QDEL_LIST(delete_targets)
 
 	// 16x16 grid, clears from left to right like so
 	// the user's pov should be in the center inside the grid.

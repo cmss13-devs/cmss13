@@ -819,4 +819,4 @@
 		to_chat(user, SPAN_WARNING("The simulator has malfunctioned!"))
 
 	//acutal firemission
-	configuration.simulate_execute_firemission(src, (simulation.sim_camera).loc)
+	configuration.simulate_execute_firemission(src, get_turf(simulation.sim_camera), user)

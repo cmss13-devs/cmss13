@@ -60,7 +60,7 @@
 	QDEL_LIST(delete_targets)
 
 	// 16x16 grid, clears from left to right like so
-	// the user's pov should be in the center inside the grid.
+	// the user's pov should be near the center of the grid.
 	/*
 	y:16| x: 1 2 3 4 ... 16
 	... | ...

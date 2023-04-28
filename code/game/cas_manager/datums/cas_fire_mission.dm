@@ -173,11 +173,30 @@
 	if(envelope)
 		envelope.change_current_loc(null)
 
+/*
+ Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.
+ this shouldn't be used in any other procs.
+*/
+/datum/cas_fire_mission/proc/add_user_to_sim_tracking(mob/living/user, obj/effect/firemission_guidance/guidance)
+
+	var/mob/tracked_user = user
+	if(!tracked_user.client || !guidance)
+		return
+
+	tracked_user.reset_view(guidance)
+	if(!(user in guidance.users))
+		guidance.users += tracked_user
+
 // Used only in the simulator room for testing firemissions. Seemed better to just to copy here.
-/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope)
+/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, mob/living/user, direction = NORTH, steps = 12, step_delay = 3)
 	if(!initial_turf)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
+	var/obj/effect/firemission_guidance/guidance = new()
+
+	guidance.forceMove(locate(initial_turf.x,initial_turf.y, initial_turf.z))
+
+	add_user_to_sim_tracking(user, guidance)
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
 	var/next_step = tally_step //when we move to next turf
@@ -208,4 +227,5 @@
 			var/offset = item.offsets[step]
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			item.weapon.open_simulated_fire_firemission(shootloc)
+			guidance.forceMove(locate(initial_turf.x,initial_turf.y + step, initial_turf.z))
 		sleep(step_delay)

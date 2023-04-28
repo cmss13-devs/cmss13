@@ -355,3 +355,40 @@
   Usnpeepoo:
   - bugfix: Preds are able to break their bones again
   - balance: Pred bones have their minimum damage to break requirements balanced.
+2023-04-28:
+  Hopek:
+  - rscadd: Adds the support for queuing the round start meaning that if an admin
+      pressed "start now" it will actually wait until the game is loaded then immediately
+      start the game as expected versus telling you to try later.
+  - bugfix: fixed the "start now" verb displaying that the game has already started
+      when it is loading because it didn't understand how to read the game state properly.
+  Lalipar:
+  - bugfix: Strong corrosive acid plasma cost increased to 125
+  - spellcheck: Action name of strong corrosive acid changed from (200) to (125)
+  - spellcheck: Fixed a typo when adding metal/plasteel to a girder.
+  Lambda Sucks:
+  - bugfix: Fixed the bugged stairs in Kutjevo - Medbay.
+  - bugfix: Fixed out of place sand tiles in Kutjevo - Hydroelectric Dam Comms Relay
+  - bugfix: Fixed floating cameras in Kutjevo - Medical Triage Hallway
+  - bugfix: Fixed duplicate APCs in Kutjevo - Autodoc Hallway
+  - bugfix: Fixed and moved floating APC in Kutjevo - Autodoc Hallway
+  - bugfix: Fixed duplicate APCs in Kutjevo - Treatment plant.
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botony East Hall
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botony Bay
+  - bugfix: Fixed missing APC in Kutjevo - Powerplant Access Hall
+  - bugfix: Fixed missing APC in Kutjevo - Medbay Stormlocks
+  - bugfix: Fixed missing APC in Kutjevo - Hydroelectric Dam Comms Relay
+  LambdaSucks:
+  - bugfix: Fixed floating cameras in Solaris Ridge inserts.
+  - bugfix: Removed second APC from Atmos on Solaris Ridge.
+  - bugfix: Removed second APC from Southeast Lambda on Solaris Ridge.
+  - bugfix: Fixed floating cameras on Solaris Ridge.
+  Morrow:
+  - bugfix: Req maint door has proper access requirements
+  - rscadd: Added delay to end of round announcement when it is a Marine Major.
+  NewyearnewmeUwu:
+  - spellcheck: Cades are now consistent when it comes to whether they're opened or
+      not.
+  blackcrystall:
+  - bugfix: Stat proc replaced with get_status_tab_items, fixed issue with QUEEN additional
+      status

@@ -1,5 +1,0 @@
-author: "Hopek"
-delete-after: True
-changes:
-  - rscadd: "Adds the support for queuing the round start meaning that if an admin pressed \"start now\" it will actually wait until the game is loaded then immediately start the game as expected versus telling you to try later."
-  - bugfix: "fixed the \"start now\" verb displaying that the game has already started when it is loading because it didn't understand how to read the game state properly."

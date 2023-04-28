@@ -421,7 +421,7 @@ var/datum/BSQL_Connection/connection
 	qdel(src) //shut it down
 
 
-/world/proc/backfill_runtime_log()
+/proc/backfill_runtime_log()
 	if(length(full_init_runtimes))
 		world.log << "========= EARLY RUNTIME ERRORS ========"
 		for(var/line in full_init_runtimes)

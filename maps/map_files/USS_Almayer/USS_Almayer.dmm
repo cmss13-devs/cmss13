@@ -13926,7 +13926,7 @@
 "aZN" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "aZO" = (
@@ -14107,7 +14107,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "baR" = (
@@ -14859,11 +14859,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"bei" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "bej" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -14965,7 +14960,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "beB" = (
@@ -15049,15 +15044,6 @@
 /obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"beW" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "beZ" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -16691,7 +16677,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile_green"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bot" = (
@@ -17155,7 +17141,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bqW" = (
@@ -17431,12 +17417,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/starboard_hallway)
-"bsp" = (
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side";
-	},
-/area/almayer/medical/lower_medical_lobby)
 "bst" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_one)
@@ -20470,7 +20450,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bHd" = (
@@ -26834,12 +26814,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/port_hallway)
-"cle" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "clg" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -30984,7 +30958,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "dRV" = (
@@ -36064,7 +36038,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "giB" = (
@@ -36698,7 +36672,7 @@
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "gxO" = (
@@ -41653,14 +41627,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair{
 	dir = 8;
-	pixel_y = 3;
+	pixel_y = 3
 	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "iUZ" = (
@@ -43836,7 +43810,7 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "jZY" = (
@@ -48224,7 +48198,7 @@
 	dir = 5
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "mfI" = (
@@ -54013,6 +53987,7 @@
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/item/packageWrap,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},
@@ -55918,11 +55893,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair{
 	dir = 8;
-	pixel_y = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "pUY" = (
@@ -56649,7 +56624,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "qmk" = (
@@ -59584,7 +59559,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "rFX" = (
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rFY" = (
@@ -59867,7 +59842,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "rNF" = (
@@ -60744,7 +60719,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 6;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "siz" = (
@@ -63800,7 +63775,7 @@
 /obj/structure/bed/sofa/south/white/right,
 /turf/open/floor/almayer{
 	dir = 5;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "tEO" = (
@@ -68433,7 +68408,7 @@
 "vIo" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "vIu" = (
@@ -72282,7 +72257,7 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side";
+	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "xuB" = (
@@ -99380,7 +99355,7 @@ qjN
 qjN
 qjN
 qjN
-bei
+rFX
 gfW
 bkN
 ezG
@@ -100807,7 +100782,7 @@ tzP
 qjN
 qjN
 tzP
-bei
+rFX
 bCd
 buH
 iEb
@@ -101607,7 +101582,7 @@ qjN
 qjN
 qjN
 gGJ
-bsp
+bqR
 vhX
 gls
 cAm
@@ -101806,7 +101781,7 @@ beB
 bCd
 hKl
 bqR
-cle
+vIo
 tYw
 tlA
 nyj
@@ -101820,7 +101795,7 @@ baO
 nyj
 tlA
 bwT
-cle
+vIo
 bCe
 sdO
 bCd
@@ -104241,7 +104216,7 @@ aYO
 aLG
 kan
 ihw
-beW
+xuz
 lkW
 biF
 vhX
@@ -105061,7 +105036,7 @@ eXb
 rlZ
 rlZ
 thP
-beW
+xuz
 bgP
 rlZ
 rlZ

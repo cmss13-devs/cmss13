@@ -235,6 +235,10 @@
 	. = "[perf_info.Join(",")]\n"
 	WRITE_LOG_NO_FORMAT(GLOB.perf_log, .)
 
+/* Log to the logfile only. */
+/proc/log_runtime(text)
+	WRITE_LOG(GLOB.world_runtime_log, text)
+
 /**
  * Appends a tgui-related log entry. All arguments are optional.
  */

@@ -26,6 +26,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	prof_init()
 #endif
 
+	GLOB.config_error_log = GLOB.world_attack_log = GLOB.world_href_log = GLOB.world_attack_log = "data/logs/config_error.[GUID()].log"
+
 	SSdatabase.start_up()
 
 	SSentity_manager.start_up()
@@ -38,11 +40,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	initialize_marine_armor()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
-
-	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
-	if(CONFIG_GET(flag/log_runtime))
-		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
-		backfill_runtime_log()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -118,12 +115,15 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.round_id = SSentity_manager.round.id
 
 	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]/round-"
-	GLOB.year_log_directory = "data/logs/[time2text(world.realtime, "YYYY")]"
 
 	if(GLOB.round_id)
 		GLOB.log_directory += GLOB.round_id
 	else
 		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
+
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
+	world.log = file("[GLOB.log_directory]/dd.exe")
+	backfill_runtime_log()
 
 	GLOB.logger.init_logging()
 
@@ -131,18 +131,28 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
-
-	GLOB.round_stats = "[GLOB.year_log_directory]/round_stats.log"
-	GLOB.scheduler_stats = "[GLOB.year_log_directory]/round_scheduler_stats.log"
-	GLOB.mutator_logs = "[GLOB.year_log_directory]/mutator_logs.log"
+	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
+	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
+	GLOB.mutator_logs = "[GLOB.log_directory]/mutator_logs.log"
 
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
+	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
 	start_log(GLOB.mutator_logs)
+
+	if(fexists(GLOB.config_error_log))
+		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
+		fdel(GLOB.config_error_log)
+
+	if(GLOB.round_id)
+		log_game("Round ID: [GLOB.round_id]")
+
+	log_runtime(GLOB.revdata.get_log_message())
 
 /world/proc/initialize_tgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -248,7 +258,7 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/send_tgs_restart()
 	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
 		if(round_statistics)
-			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
+			send2chat("[round_statistics.round_name][GLOB.round_id ? " (Round [GLOB.round_id])" : ""] completed!", CONFIG_GET(string/new_round_alert_channel))
 		if(SSmapping.next_map_configs)
 			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
 			if(next_map)

@@ -144,6 +144,7 @@
 #include "code\__HELPERS\filters.dm"
 #include "code\__HELPERS\game.dm"
 #include "code\__HELPERS\generators.dm"
+#include "code\__HELPERS\guid.dm"
 #include "code\__HELPERS\icons.dm"
 #include "code\__HELPERS\job.dm"
 #include "code\__HELPERS\level_traits.dm"

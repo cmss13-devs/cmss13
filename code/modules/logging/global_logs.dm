@@ -19,6 +19,9 @@ GLOBAL_PROTECT(world_attack_log)
 GLOBAL_VAR(world_href_log)
 GLOBAL_PROTECT(world_href_log)
 
+GLOBAL_VAR(world_runtime_log)
+GLOBAL_PROTECT(world_runtime_log)
+
 GLOBAL_VAR(scheduler_stats)
 GLOBAL_PROTECT(scheduler_stats)
 

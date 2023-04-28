@@ -203,7 +203,7 @@
 			next_step += tally_step
 		var/datum/cas_fire_mission_record/item
 		for(item in records)
-			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
+			if(length(item.offsets) < step || item.offsets[step] == null || item.offsets[step] == "-")
 				continue
 			var/offset = item.offsets[step]
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)

@@ -130,6 +130,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 
 	GLOB.round_stats = "[GLOB.year_log_directory]/round_stats.log"
 	GLOB.scheduler_stats = "[GLOB.year_log_directory]/round_scheduler_stats.log"
@@ -138,6 +139,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_game_log)
+	start_log(GLOB.world_attack_log)
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
 	start_log(GLOB.mutator_logs)

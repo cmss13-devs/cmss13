@@ -675,15 +675,6 @@
 
 	var/buffed = FALSE
 
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
-
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
@@ -708,6 +699,15 @@
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
+
+	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
+		var/found = FALSE
+		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+			found = TRUE
+			qdel(dancer_tag_effect)
+			break
+
+		buffed = found
 
 	if (!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))

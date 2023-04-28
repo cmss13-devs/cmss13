@@ -52,12 +52,12 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries_active = list()
 	queries_current = list()
 	queries_standby = list()
-	var/list/result = loadsql("config/dbconfig.txt")
-	settings = connection_settings_from_config(result)
 	NEW_SS_GLOBAL(SSdatabase)
 
 /datum/controller/subsystem/database_query_manager/proc/start_up()
-	set waitfor=0
+	set waitfor = FALSE
+
+	settings = connection_settings_from_config(CONFIG_GET(string/db_provider))
 	connection = settings.create_connection()
 	connection.keep()
 

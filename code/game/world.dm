@@ -28,6 +28,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	GLOB.config_error_log = GLOB.world_attack_log = GLOB.world_href_log = GLOB.world_attack_log = "data/logs/config_error.[GUID()].log"
 
+	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+
 	SSdatabase.start_up()
 
 	SSentity_manager.start_up()
@@ -38,8 +40,6 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	initialize_tgs()
 	initialize_marine_armor()
-
-	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"

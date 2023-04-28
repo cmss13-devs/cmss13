@@ -1,5 +1,0 @@
-author: "Lalipar"
-delete-after: True
-changes:
-  - bugfix: "Strong corrosive acid plasma cost increased to 125"
-  - spellcheck: "Action name of strong corrosive acid changed from (200) to (125)"

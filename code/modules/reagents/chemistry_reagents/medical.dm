@@ -163,16 +163,18 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
-	properties = list( PROPERTY_CROSSMETABOLIZING = 1,
-						PROPERTY_ANTITOXIC = 1,
-						PROPERTY_HEMOGENIC = 9,
-						PROPERTY_OXYGENATING = 6,
-						PROPERTY_ANTICARCINOGENIC = 6,
-						PROPERTY_BONEMENDING = 6,
-						PROPERTY_AIDING = 1,
-						PROPERTY_ANTIHALLUCINOGENIC = 2,
-						PROPERTY_FOCUSING = 6,
-						PROPERTY_CURING = 4)
+	properties = list(
+		PROPERTY_CROSSMETABOLIZING = 1,
+		PROPERTY_ANTITOXIC = 1,
+		PROPERTY_HEMOGENIC = 9,
+		PROPERTY_OXYGENATING = 6,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_BONEMENDING = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+	)
 	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
@@ -267,18 +269,6 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 3)
-
-/datum/reagent/medical/quickclot
-	name = "Quick Clot"
-	id = "quickclot"
-	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
-	reagent_state = LIQUID
-	color = "#CC00FF"
-	overdose = LOWH_REAGENTS_OVERDOSE
-	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
-	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
 
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"

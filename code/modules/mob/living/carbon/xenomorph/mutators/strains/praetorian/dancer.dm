@@ -26,7 +26,7 @@
 		return
 
 	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
-	praetorian.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
+	praetorian.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	praetorian.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	praetorian.plasma_types = list(PLASMA_CATECHOLAMINE)
 	praetorian.claw_type = CLAW_TYPE_SHARP

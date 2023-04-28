@@ -1,4 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
+#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -26,6 +27,9 @@
 
 /datum/game_mode/colonialmarines/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
+
+/datum/game_mode/colonialmarines/get_roles_list()
+	return ROLES_DISTRESS_SIGNAL
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
@@ -282,7 +286,9 @@
 			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
+				SSticker.roundend_check_paused = TRUE
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
@@ -396,7 +402,7 @@
 	//organize our jobs in a readable and standard way
 	for(var/job in ROLES_MARINES)
 		counted_humans["Squad Marines"][job] = 0
-	for(var/job in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES - ROLES_WHITELISTED - ROLES_SPECIAL)
+	for(var/job in ROLES_USCM - ROLES_MARINES)
 		counted_humans["Auxiliary Marines"][job] = 0
 	for(var/job in ROLES_SPECIAL)
 		counted_humans["Non-Standard Humans"][job] = 0
@@ -538,3 +544,4 @@
 		incrementer++
 
 #undef HIJACK_EXPLOSION_COUNT
+#undef MARINE_MAJOR_ROUND_END_DELAY

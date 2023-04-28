@@ -242,6 +242,10 @@
 			return
 	var/list/cont = contents_recursive()
 	for(var/i in cont)
+		if(istype(i, /obj/item/device/assembly/prox_sensor))
+			var/obj/item/device/assembly/prox_sensor/prox = i
+			if(prox.scanning)
+				prox.toggle_scan()
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
 			md.toggle_active(src, old_active = TRUE, forced = TRUE)

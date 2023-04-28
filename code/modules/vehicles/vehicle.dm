@@ -255,7 +255,7 @@
 	name = "\improper Soutomobile"
 	icon_state = "soutomobile"
 	desc = "Almost, but not quite, the best ride in the universe."
-	move_delay = 3 //The speed of a fed but shoeless pajamarine, or a bit slower than a heavy-armour marine.
+	move_delay = 3 //The speed of a fed but shoeless pajamarine, or a bit slower than a heavy-armor marine.
 	buckling_y = 4
 	layer = ABOVE_LYING_MOB_LAYER //Allows it to drive over people, but is below the driver.
 

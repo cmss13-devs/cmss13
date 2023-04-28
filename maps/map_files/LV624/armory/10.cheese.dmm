@@ -80,10 +80,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,

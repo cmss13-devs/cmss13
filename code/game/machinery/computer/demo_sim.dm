@@ -123,7 +123,7 @@
 			if(O.warhead)
 				make_and_prime_explosive(O.warhead)
 		else
-			var/obj/item/mortar_shell/O = new configuration.type((simulation.sim_camera).loc)
+			var/obj/item/mortar_shell/O = new configuration.type(get_turf(simulation.sim_camera))
 			O.detonate(get_turf(simulation.sim_camera))
 	//Rockets (custom only because projectiles are spaghetti)
 	else if(istype(configuration,/obj/item/ammo_magazine/rocket/custom))

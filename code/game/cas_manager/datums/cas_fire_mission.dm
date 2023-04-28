@@ -174,7 +174,7 @@
 		envelope.change_current_loc(null)
 
 // Used only in the simulator room for testing firemissions. Seemed better to just to copy here.
-/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+/datum/cas_fire_mission/proc/simulate_execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope)
 	if(!initial_turf)
 		return FIRE_MISSION_NOT_EXECUTABLE
 

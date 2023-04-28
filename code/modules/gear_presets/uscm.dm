@@ -292,6 +292,7 @@
 /datum/equipment_preset/uscm/spec/cryo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/spec_kit/cryo, WEAR_R_HAND)
 
 //*****************************************************************************************************/
 

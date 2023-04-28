@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Added delay to end of round announcement when it is a Marine Major."

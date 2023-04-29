@@ -1,0 +1,6 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - rscadd: "Radio backpacks can now be used in hand"
+  - bugfix: "Fixed the off by one error in radio backpack item removal"
+  - bugfix: "Shaking a bag no longer drops non-items"

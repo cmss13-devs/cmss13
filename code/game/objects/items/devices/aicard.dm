@@ -37,22 +37,22 @@
 
 	user.set_interaction(src)
 	var/dat = "<TT><B>Intelicard</B><BR>"
-	for(var/mob/living/silicon/ai/A in src)
-		dat += "Stored AI: [A.name]<br>System integrity: [(A.health+100)/2]%<br>"
+	for(var/mob/living/silicon/ai/ai in src)
+		dat += "Stored AI: [ai.name]<br>System integrity: [(ai.health+100)/2]%<br>"
 
-		if (A.stat == 2)
+		if (ai.stat == 2)
 			dat += "<b>AI nonfunctional</b>"
 		else
 			if (!src.flush)
-				dat += {"<A href='byond://?src=\ref[src];choice=Wipe'>Wipe AI</A>"}
+				dat += {"<ai href='byond://?src=\ref[src];choice=Wipe'>Wipe AI</ai>"}
 			else
 				dat += "<b>Wipe in progress</b>"
 			dat += "<br>"
-			dat += {"<a href='byond://?src=\ref[src];choice=Wireless'>[A.control_disabled ? "Enable" : "Disable"] Wireless Activity</a>"}
+			dat += {"<a href='byond://?src=\ref[src];choice=Wireless'>[ai.control_disabled ? "Enable" : "Disable"] Wireless Activity</a>"}
 			dat += "<br>"
-			dat += "Subspace Transceiver is: [A.aiRadio.disabledAi ? "Disabled" : "Enabled"]"
+			dat += "Subspace Transceiver is: [ai.aiRadio.disabledAi ? "Disabled" : "Enabled"]"
 			dat += "<br>"
-			dat += {"<a href='byond://?src=\ref[src];choice=Radio'>[A.aiRadio.disabledAi ? "Enable" : "Disable"] Subspace Transceiver</a>"}
+			dat += {"<a href='byond://?src=\ref[src];choice=Radio'>[ai.aiRadio.disabledAi ? "Enable" : "Disable"] Subspace Transceiver</a>"}
 			dat += "<br>"
 			dat += {"<a href='byond://?src=\ref[src];choice=Close'> Close</a>"}
 	user << browse(dat, "window=aicard")
@@ -63,46 +63,46 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/U = usr
-	if (!in_range(src, U)||U.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
-		close_browser(U, "aicard")
-		U.unset_interaction()
+	var/mob/user = usr
+	if (!in_range(src, user)||user.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
+		close_browser(user, "aicard")
+		user.unset_interaction()
 		return
 
-	add_fingerprint(U)
-	U.set_interaction(src)
+	add_fingerprint(user)
+	user.set_interaction(src)
 
 	switch(href_list["choice"])//Now we switch based on choice.
 		if ("Close")
-			close_browser(U, "aicard")
-			U.unset_interaction()
+			close_browser(user, "aicard")
+			user.unset_interaction()
 			return
 
 		if ("Radio")
-			for(var/mob/living/silicon/ai/A in src)
-				A.aiRadio.disabledAi = !A.aiRadio.disabledAi
+			for(var/mob/living/silicon/ai/ai in src)
+				ai.aiRadio.disabledAi = !ai.aiRadio.disabledAi
 		if ("Wipe")
 			var/confirm = alert("Are you sure you want to wipe this card's memory? This cannot be undone once started.", "Confirm Wipe", "Yes", "No")
 			if(confirm == "Yes")
-				if(QDELETED(src)||!in_range(src, U)||U.interactee!=src)
-					close_browser(U, "aicard")
-					U.unset_interaction()
+				if(QDELETED(src)||!in_range(src, user)||user.interactee!=src)
+					close_browser(user, "aicard")
+					user.unset_interaction()
 					return
 				else
 					flush = 1
-					for(var/mob/living/silicon/ai/A in src)
-						to_chat(A, "Your core files are being wiped!")
-						while (A.stat != 2)
-							A.apply_damage(2, OXY)
-							A.updatehealth()
+					for(var/mob/living/silicon/ai/ai in src)
+						to_chat(ai, "Your core files are being wiped!")
+						while (ai.stat != 2)
+							ai.apply_damage(2, OXY)
+							ai.updatehealth()
 							sleep(10)
 						flush = 0
 
 		if ("Wireless")
-			for(var/mob/living/silicon/ai/A in src)
-				A.control_disabled = !A.control_disabled
-				if (A.control_disabled)
+			for(var/mob/living/silicon/ai/ai in src)
+				ai.control_disabled = !ai.control_disabled
+				if (ai.control_disabled)
 					overlays -= image('icons/obj/items/robot_component.dmi', "aicard-on")
 				else
 					overlays += image('icons/obj/items/robot_component.dmi', "aicard-on")
-	attack_self(U)
+	attack_self(user)

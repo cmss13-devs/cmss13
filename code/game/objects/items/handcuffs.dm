@@ -29,16 +29,16 @@
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 
-/obj/item/handcuffs/obj/structure/MouseDrop(mob/living/carbon/human/H)
+/obj/item/handcuffs/obj/structure/MouseDrop(mob/living/carbon/human/current_human)
 	var/mob/living/carbon/human/user = usr
 	if (!istype(user))
 		return
-	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
+	if (user.stat || get_dist(user, src) > 1 || get_dist(user, current_human) > 1 || current_human.lying)
 		return
-	if (!istype(H))
+	if (!istype(current_human))
 		return
 
-	if(!do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+	if(!do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, current_human, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		return
 
 	// TODO: apply handcuffs
@@ -58,26 +58,26 @@
 		return
 
 	if (ishuman(target))
-		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/human/current_human = target
 
-		if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
-			to_chat(user, SPAN_DANGER("\The [H] needs at least two wrists before you can cuff them together!"))
+		if (!current_human.has_limb_for_slot(WEAR_HANDCUFFS))
+			to_chat(user, SPAN_DANGER("\The [current_human] needs at least two wrists before you can cuff them together!"))
 			return
 
-		H.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been handcuffed (attempt) by [key_name(user)]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to handcuff [key_name(H)]</font>")
-		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(H)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		current_human.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been handcuffed (attempt) by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to handcuff [key_name(current_human)]</font>")
+		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(current_human)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
-		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [H]."))
-		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			if(src == user.get_active_hand() && !H.handcuffed && Adjacent(user))
-				if(iscarbon(H))
-					if(istype(H.buckled, /obj/structure/bed/roller))
+		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [current_human]."))
+		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, current_human, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			if(src == user.get_active_hand() && !current_human.handcuffed && Adjacent(user))
+				if(iscarbon(current_human))
+					if(istype(current_human.buckled, /obj/structure/bed/roller))
 						to_chat(user, SPAN_DANGER("You cannot handcuff someone who is buckled onto a roller bed."))
 						return
-				if(H.has_limb_for_slot(WEAR_HANDCUFFS))
+				if(current_human.has_limb_for_slot(WEAR_HANDCUFFS))
 					user.drop_inv_item_on_ground(src)
-					H.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
+					current_human.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
 	else if (ismonkey(target))
@@ -135,11 +135,11 @@
 /obj/item/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/stack/rods))
-		var/obj/item/stack/rods/R = I
-		if (R.use(1))
-			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
+		var/obj/item/stack/rods/cable = I
+		if (cable.use(1))
+			var/obj/item/weapon/wirerod/wire = new /obj/item/weapon/wirerod
 
-			user.put_in_hands(W)
+			user.put_in_hands(wire)
 			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
 			qdel(src)
 			update_icon(user)
@@ -156,9 +156,9 @@
 		user.visible_message(SPAN_DANGER("<B>[user] is trying to put handcuffs on [C]!</B>"))
 
 		if (ishuman(C))
-			var/mob/living/carbon/human/H = C
-			if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
-				to_chat(user, SPAN_DANGER("\The [H] needs at least two wrists before you can cuff them together!"))
+			var/mob/living/carbon/human/current_human = C
+			if (!current_human.has_limb_for_slot(WEAR_HANDCUFFS))
+				to_chat(user, SPAN_DANGER("\The [current_human] needs at least two wrists before you can cuff them together!"))
 				return
 
 		spawn(30)
@@ -196,8 +196,8 @@
 		var/turf/p_loc = user.loc
 		var/turf/p_loc_m = C.loc
 		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
-		for(var/mob/O in viewers(user, null))
-			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
+		for(var/mob/viewers in viewers(user, null))
+			viewers.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
 			if(!C) return
 			if(p_loc == user.loc && p_loc_m == C.loc)

@@ -1,0 +1,4 @@
+author: "usnpeepoo"
+delete-after: True
+changes:
+  - bugfix: "Xenos are no longer able to be cocooned by spiders"

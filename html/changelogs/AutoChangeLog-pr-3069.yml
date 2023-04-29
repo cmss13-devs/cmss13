@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - server: "GLOB.round_id is now available for an incrementing id of rounds"

@@ -18,7 +18,7 @@
 	var/count = 1
 	garbage = TRUE
 
-/obj/item/shard/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/shard/attack(mob/living/carbon/current_mob, mob/living/carbon/user)
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 6)
@@ -52,14 +52,14 @@
 		if(source_sheet_type) //can be melted into something
 			if(WT.remove_fuel(0, user))
 				var/obj/item/stack/sheet/NG = new source_sheet_type(user.loc)
-				for (var/obj/item/stack/sheet/G in user.loc)
-					if(G==NG)
+				for (var/obj/item/stack/sheet/glass in user.loc)
+					if(glass==NG)
 						continue
-					if(!istype(G, source_sheet_type))
+					if(!istype(glass, source_sheet_type))
 						continue
-					if(G.amount>=G.max_amount)
+					if(glass.amount>=glass.max_amount)
 						continue
-					G.attackby(NG, user)
+					glass.attackby(NG, user)
 					to_chat(user, "You add the newly-formed glass to the stack. It now contains [NG.amount] sheets.")
 				qdel(src)
 				return
@@ -152,22 +152,22 @@
 		return
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/attack(mob/living/M, mob/living/user)
+/obj/item/large_shrapnel/at_rocket_dud/attack(mob/living/current_mob, mob/living/user)
 	. = ..()
-	if(!detonating && (user.a_intent == INTENT_HARM) && istype(M, /mob/living/carbon))
+	if(!detonating && (user.a_intent == INTENT_HARM) && istype(current_mob, /mob/living/carbon))
 		cause = "manually triggered"
-		manual_detonate(M, user)
+		manual_detonate(current_mob, user)
 		return
 	cause = null
 
 /obj/item/large_shrapnel/at_rocket_dud/proc/vehicle_impact(atom/T, mob/U)
 	if(istype(T, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/M = T
-		M.next_move = world.time + vehicle_slowdown_time
-		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
-		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket", U))
-		M.interior_crash_effect()
-		M.ex_act(1000, get_dir(U, T), create_cause_data("Anti-Tank Rocket", U))
+		var/obj/vehicle/multitile/vehicle = T
+		vehicle.next_move = world.time + vehicle_slowdown_time
+		playsound(vehicle, 'sound/effects/meteorimpact.ogg', 35)
+		vehicle.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket", U))
+		vehicle.interior_crash_effect()
+		vehicle.ex_act(1000, get_dir(U, T), create_cause_data("Anti-Tank Rocket", U))
 		return TRUE
 	return FALSE
 
@@ -183,8 +183,8 @@
 /obj/item/large_shrapnel/at_rocket_dud/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
+	var/mob/living/carbon/human/current_human = embedded_mob
+	if(current_human.species.flags & NO_SHRAPNEL)
 		return
 	if(istype(target_organ))
 		target_organ.embed(src)
@@ -192,8 +192,8 @@
 /obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
+	var/mob/living/carbon/human/current_human = embedded_mob
+	if(current_human.species.flags & NO_SHRAPNEL)
 		return
 	var/obj/limb/organ = embedded_organ
 	if(istype(organ))
@@ -215,8 +215,8 @@
 /obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
+	var/mob/living/carbon/human/current_human = embedded_mob
+	if(current_human.species.flags & NO_SHRAPNEL)
 		return
 	if(istype(target_organ))
 		target_organ.embed(src)
@@ -224,8 +224,8 @@
 /obj/item/shard/shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
+	var/mob/living/carbon/human/current_human = embedded_mob
+	if(current_human.species.flags & NO_SHRAPNEL)
 		return
 	var/obj/limb/organ = embedded_organ
 	if(istype(organ))

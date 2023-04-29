@@ -36261,6 +36261,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/closet/secure_closet/warden,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red"
@@ -59941,17 +59944,6 @@
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
-"rQv" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/almayer/shipboard/brig/main_office)
 "rQy" = (
 /obj/structure/machinery/door_display/research_cell{
 	dir = 8;
@@ -85485,7 +85477,7 @@ qCt
 rQQ
 grq
 rRQ
-rQv
+rRQ
 iyq
 inG
 omt

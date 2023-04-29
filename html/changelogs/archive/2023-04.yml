@@ -392,3 +392,9 @@
   blackcrystall:
   - bugfix: Stat proc replaced with get_status_tab_items, fixed issue with QUEEN additional
       status
+2023-04-29:
+  BeagleGaming1, Frans_Feiffer:
+  - imageadd: Added new MP clothing sprites
+  - imagedel: Removed the old MP clothing sprites
+  LynxSolstice:
+  - balance: Adds a Squad Weapons Specialist to the Cryorines.

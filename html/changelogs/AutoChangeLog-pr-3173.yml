@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "fix the med-bay door release button to exit treatment center.my bad."

@@ -1,0 +1,8 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscdel: "Removed doorint.dmi and merged the remaining sprites into Door1.dmi since the latter shared many icon states with the former."
+  - code_imp: "Generic doors and airlocks share the same icon file path now."
+  - spellcheck: "Fixed a case-sensitive file path."
+  - bugfix: "Alamo and Normandy side dropship doors no longer display as Xs when they are examined or after crash landing on the Almayer."
+  - bugfix: "Fixed an animation error on several Alamo door's icon states."

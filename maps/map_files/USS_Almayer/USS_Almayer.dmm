@@ -3651,15 +3651,6 @@
 	icon_state = "red"
 	},
 /area/almayer/command/lifeboat)
-"amt" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder{
-	icon_state = "closed";
-	layer = 2.1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/command/lifeboat)
 "amw" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -128732,7 +128723,7 @@ xVk
 oee
 aPw
 sYD
-amt
+aMT
 aMT
 uqI
 aHe
@@ -128740,7 +128731,7 @@ aHe
 aHe
 rdh
 aMT
-amt
+aMT
 bZR
 aPw
 oee
@@ -128935,7 +128926,7 @@ xVk
 eJQ
 aPw
 ebn
-tOB
+aMT
 aMT
 eky
 aHe

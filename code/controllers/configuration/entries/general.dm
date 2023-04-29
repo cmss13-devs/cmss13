@@ -541,6 +541,15 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	default = 0
 	min_val = 0
 
+/datum/config_entry/string/bot_prefix
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/bot_command
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/certification_minutes
+	protection = CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/number/topic_max_size
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 

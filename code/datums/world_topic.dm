@@ -135,13 +135,12 @@
 /datum/world_topic/status/Run(list/input)
 	. = ..()
 	data = list()
-	data["version"] = GLOB.game_version
+
 	data["mode"] = GLOB.master_mode
-	data["enter"] = GLOB.enter_allowed
 	data["vote"] = CONFIG_GET(flag/allow_vote_mode)
 	data["ai"] = CONFIG_GET(flag/allow_ai)
 	data["host"] = world.host ? world.host : null
-	// data["round_id"] = text2num(GLOB.round_id)
+	data["round_id"] = text2num(GLOB.round_id)
 	data["players"] = GLOB.clients.len
 	data["revision"] = GLOB.revdata.commit
 	data["revision_date"] = GLOB.revdata.date
@@ -159,12 +158,10 @@
 	// Amount of world's ticks in seconds, useful for calculating round duration
 
 	//Time dilation stats.
-	/*
 	data["time_dilation_current"] = SStime_track.time_dilation_current
 	data["time_dilation_avg"] = SStime_track.time_dilation_avg
 	data["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
 	data["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
-	*/
 
 	data["mcpu"] = world.map_cpu
 	data["cpu"] = world.cpu

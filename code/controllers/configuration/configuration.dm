@@ -334,10 +334,10 @@
 
 	log_config("Loading config file topic_rate_limit_whitelist.txt...")
 
-	for(var/line in world.file2list("[directory]/topic_rate_limit_whitelist.txt"))
+	for(var/line in file2list("[directory]/topic_rate_limit_whitelist.txt"))
 		if(!line)
 			continue
-		if(findtextEx(line,"#",1,2))
+		if(findtextEx(line, "#", 1, 2))
 			continue
 
 		fail_to_topic_whitelisted_ips[line] = 1

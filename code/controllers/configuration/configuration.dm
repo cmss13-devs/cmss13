@@ -20,6 +20,7 @@
 	var/policy
 
 	var/static/regex/ic_filter_regex
+	var/list/fail_to_topic_whitelisted_ips
 
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
@@ -324,3 +325,19 @@
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(message_admins), text), 0)
+
+/datum/controller/configuration/proc/LoadTopicRateWhitelist()
+	LAZYINITLIST(fail_to_topic_whitelisted_ips)
+	if(!fexists("[directory]/topic_rate_limit_whitelist.txt"))
+		log_config("Error 404: topic_rate_limit_whitelist.txt not found!")
+		return
+
+	log_config("Loading config file topic_rate_limit_whitelist.txt...")
+
+	for(var/line in world.file2list("[directory]/topic_rate_limit_whitelist.txt"))
+		if(!line)
+			continue
+		if(findtextEx(line,"#",1,2))
+			continue
+
+		fail_to_topic_whitelisted_ips[line] = 1

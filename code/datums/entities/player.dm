@@ -5,6 +5,8 @@
 	var/last_known_ip
 	var/last_known_cid
 
+	var/discord_id
+
 	var/last_login
 
 	var/is_permabanned = FALSE
@@ -56,6 +58,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
+		"discord_id" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_login" = DB_FIELDTYPE_STRING_LARGE,
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
@@ -676,6 +679,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/admin
 	var/last_known_cid
 	var/last_known_ip
+	var/discord_id
 
 /datum/entity_view_meta/timed_ban_list
 	root_record_type = /datum/entity/player
@@ -690,5 +694,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"expiration" = "time_ban_expiration", //don't care if this is permaban, since it will be handled later
 		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
 		"last_known_ip",
-		"last_known_cid")
+		"last_known_cid",
+		"discord_id",
+		)
 	root_filter = DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))

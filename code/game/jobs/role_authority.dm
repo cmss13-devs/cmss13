@@ -86,15 +86,15 @@ var/global/players_preassigned = 0
 	castes_by_path = list()
 	castes_by_name = list()
 	for(var/caste in castes_all) //Setting up our castes.
-		var/datum/caste_datum/caste = new caste()
+		var/datum/caste_datum/current_caste = new caste()
 
-		if(!caste.caste_type) //In case you forget to subtract one of those variable holder jobs.
-			to_world(SPAN_DEBUG("Error setting up castes, blank caste name: [caste.type].</span>"))
-			log_debug("Error setting up castes, blank caste name: [caste.type].")
+		if(!current_caste.caste_type) //In case you forget to subtract one of those variable holder jobs.
+			to_world(SPAN_DEBUG("Error setting up castes, blank caste name: [current_caste.type].</span>"))
+			log_debug("Error setting up castes, blank caste name: [current_caste.type].")
 			continue
 
-		castes_by_path[caste.type] = caste
-		castes_by_name[caste.caste_type] = caste
+		castes_by_path[current_caste.type] = current_caste
+		castes_by_name[current_caste.caste_type] = current_caste
 
 	roles_by_path = list()
 	roles_by_name = list()

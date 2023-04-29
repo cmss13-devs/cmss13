@@ -18674,19 +18674,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower_engineering)
-"bzl" = (
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "tc02";
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = -28;
-	pixel_y = 39
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "bzo" = (
 /obj/structure/machinery/power/apc/almayer,
 /turf/open/floor/almayer{
@@ -19217,19 +19204,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lower_medical_lobby)
-"bCe" = (
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "tc01";
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = -28;
-	pixel_y = -23
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "bCf" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -30189,16 +30163,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/cic)
-"dBh" = (
-/obj/structure/sign/safety/outpatient{
-	pixel_x = -17;
-	pixel_y = -6
-	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "dBj" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -38435,16 +38399,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/tankerbunks)
-"huG" = (
-/obj/structure/sign/safety/outpatient{
-	pixel_x = -17;
-	pixel_y = -6
-	},
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "huK" = (
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
@@ -43914,7 +43868,8 @@
 	name = "\improper Treatment Center";
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_one_access_txt = "2;8;19";
+	id = "tc01"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -45434,6 +45389,10 @@
 /obj/item/storage/firstaid/regular/empty,
 /obj/item/storage/firstaid/regular/empty,
 /obj/item/storage/firstaid/regular/empty,
+/obj/structure/sign/safety/outpatient{
+	pixel_x = -17;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -48252,6 +48211,25 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"mju" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "tc02";
+	name = "Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = -28;
+	pixel_y = 23
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "mjR" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
@@ -50296,6 +50274,10 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "nik" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner"
@@ -53709,6 +53691,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/lifeboat)
+"oPh" = (
+/obj/structure/sign/safety/outpatient{
+	pixel_x = -17;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "oPk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
@@ -57184,10 +57175,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	unacidable = 1;
-	unslashable = 1
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
@@ -58458,6 +58445,25 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/port_emb)
+"rhZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "tc01";
+	name = "Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = -28;
+	pixel_y = -23
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "rix" = (
 /obj/structure/largecrate/supply/ammo/m41a/half,
 /obj/structure/largecrate/supply/ammo/pistol/half{
@@ -64562,7 +64568,8 @@
 	name = "\improper Treatment Center";
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_one_access_txt = "2;8;19";
+	id = "tc02"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -102213,18 +102220,18 @@ kan
 kan
 kan
 kQB
-bzl
-buu
-huG
+beA
+rhZ
+nFh
 soK
 ksE
 beA
 wAo
 soK
-dBh
-buu
-bCe
-bqR
+bgP
+mju
+beA
+oPh
 kan
 kan
 kan

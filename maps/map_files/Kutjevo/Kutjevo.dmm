@@ -335,7 +335,6 @@
 "avP" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -362,7 +361,6 @@
 "awu" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -666,7 +664,6 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "aUZ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -862,9 +859,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
-"bkR" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
 "blY" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/platform/kutjevo/smooth{
@@ -1906,8 +1900,13 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "cGd" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power/comms)
 "cGf" = (
 /obj/structure/barricade/wooden{
 	dir = 4;
@@ -1972,7 +1971,6 @@
 /area/kutjevo/interior/power)
 "cKM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -2580,7 +2578,6 @@
 /area/kutjevo/interior/complex/med)
 "dvT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null;
 	welded = 1
 	},
@@ -2917,7 +2914,7 @@
 /area/kutjevo/exterior/construction)
 "dQL" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
@@ -3092,8 +3089,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "ecv" = (
-/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/light,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/kutjevo/interior/complex/med/triage)
 "ecA" = (
@@ -3405,7 +3404,6 @@
 /area/kutjevo/interior/power/comms)
 "esO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -3470,7 +3468,7 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32
 	},
-/turf/open/auto_turf/sand/layer0,
+/turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
 "evZ" = (
 /turf/open/floor/almayer/research/containment/floor2,
@@ -3581,12 +3579,6 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
-"eBD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	locked = 0
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/complex/Northwest_Dorms)
 "eBH" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan,
@@ -4382,6 +4374,11 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 8
 	},
@@ -4808,7 +4805,6 @@
 "gof" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -5185,7 +5181,6 @@
 /area/kutjevo/interior/complex/med/operating)
 "gOK" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -6039,7 +6034,6 @@
 "iea" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -6370,7 +6364,6 @@
 /area/kutjevo/interior/construction)
 "iJj" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -6717,7 +6710,6 @@
 "jjM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -7038,7 +7030,6 @@
 /area/kutjevo/interior/complex/botany)
 "jCN" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -7100,12 +7091,10 @@
 /area/kutjevo/interior/complex/botany)
 "jIT" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 1
 	},
@@ -7227,7 +7216,6 @@
 /area/kutjevo/exterior/complex_border/med_park)
 "jVi" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
@@ -7766,8 +7754,10 @@
 	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor/kutjevo/colors/green,
-/area/kutjevo/interior/complex/botany)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 8
+	},
+/area/kutjevo/interior/complex/med/locks)
 "kGM" = (
 /turf/open/floor/kutjevo/tan/grey_edge{
 	dir = 1
@@ -7803,7 +7793,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -8090,7 +8079,6 @@
 "lcE" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -8467,7 +8455,6 @@
 /area/kutjevo/interior/complex/botany)
 "lIz" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -8888,7 +8875,6 @@
 "mjv" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -8957,7 +8943,6 @@
 "moM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -9413,7 +9398,6 @@
 "mRp" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -9603,7 +9587,6 @@
 /area/kutjevo/exterior/construction)
 "nhg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/almayer/research/containment/floor2,
@@ -10310,7 +10293,6 @@
 "oal" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -10980,13 +10962,14 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
 "paj" = (
+/obj/item/frame/rack,
 /obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
+	dir = 8;
+	pixel_x = -24;
 	start_charge = 0
 	},
-/turf/open/floor/kutjevo/colors/orange,
-/area/kutjevo/interior/complex/botany/east)
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east_tech)
 "pbP" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/tan/alt_inner_edge{
@@ -11870,9 +11853,6 @@
 "qmR" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
-"qna" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
 "qnd" = (
 /turf/open/floor/kutjevo/tan/alt_edge{
 	dir = 1
@@ -12010,14 +11990,6 @@
 "quW" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_central/mine_elevator)
-"qvq" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
-/turf/open/floor/kutjevo/colors/orange/tile,
-/area/kutjevo/interior/power_pt2_electric_boogaloo)
 "qwg" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep{
@@ -12356,7 +12328,6 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "qVb" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -12529,7 +12500,6 @@
 "riD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/tan,
@@ -13002,8 +12972,13 @@
 	},
 /area/kutjevo/interior/colony_north)
 "rSd" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
+/obj/structure/machinery/power/apc{
+	dir = 4;
+	pixel_x = 29;
+	start_charge = 0
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east)
 "rSg" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/kutjevo/colors/green,
@@ -13385,7 +13360,6 @@
 "spV" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/plating/kutjevo,
@@ -14021,7 +13995,9 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/gm/dirtgrassborder2{
 	dir = 8
 	},
@@ -14195,6 +14171,7 @@
 "tuq" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
+	pixel_x = 29;
 	start_charge = 0
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -15574,15 +15551,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
-"vkm" = (
-/obj/structure/machinery/power/apc{
-	pixel_x = 25
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/interior/complex/botany/east)
 "vkK" = (
 /turf/open/gm/river/desert/shallow_edge{
 	dir = 5
@@ -15881,7 +15849,6 @@
 /area/kutjevo/interior/power)
 "vFL" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -16716,7 +16683,6 @@
 "wPu" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/grey/plate,
@@ -16787,9 +16753,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc{
-	pixel_x = 25
-	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "wXd" = (
@@ -16826,7 +16789,7 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = -32
 	},
-/turf/open/auto_turf/sand/layer0,
+/turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power/comms)
 "wYp" = (
 /turf/open/gm/grass/weedable,
@@ -16946,7 +16909,6 @@
 /area/kutjevo/exterior/lz_river)
 "xjN" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_access = null;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -17233,9 +17195,6 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	icon_state = "kutjevo_platform_sm_stair"
-	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
 	},
@@ -17306,13 +17265,6 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
-"xOO" = (
-/obj/structure/stairs/perspective/kutjevo{
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/power/comms)
 "xOU" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = -32
@@ -17420,13 +17372,6 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
-"xXR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 1;
-	locked = 0
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/complex/Northwest_Dorms)
 "xYs" = (
 /obj/structure/platform_decoration/kutjevo/rock,
 /turf/open/auto_turf/sand/layer1,
@@ -22795,7 +22740,7 @@ jwM
 ter
 tPh
 jvp
-boR
+cGd
 wYn
 xrb
 jtu
@@ -22963,7 +22908,7 @@ tWM
 tWM
 kMP
 kMP
-xOO
+qGQ
 aAe
 kMP
 kMP
@@ -23130,7 +23075,7 @@ tWM
 tWM
 kMP
 kMP
-xOO
+qGQ
 aAe
 kMP
 qAk
@@ -23714,7 +23659,7 @@ jnV
 jnV
 jnV
 fto
-xXR
+kKq
 jnV
 jnV
 jnV
@@ -24393,7 +24338,7 @@ cWc
 cWc
 cWc
 kSy
-eBD
+pma
 wEU
 sVF
 iiy
@@ -24466,7 +24411,7 @@ nQr
 tWM
 kMP
 xnk
-xOO
+qGQ
 aAe
 kMP
 lov
@@ -24633,7 +24578,7 @@ tWM
 tWM
 kMP
 eTy
-xOO
+qGQ
 aAe
 kMP
 xYR
@@ -32645,7 +32590,7 @@ vDS
 vDS
 vDS
 vDS
-kGu
+vDS
 vDS
 vDS
 scY
@@ -36975,7 +36920,7 @@ oQc
 oQc
 oQc
 xRh
-paj
+yir
 xkk
 yir
 xkk
@@ -37792,7 +37737,7 @@ fpJ
 fpJ
 eSq
 fpJ
-fpJ
+kGu
 gUS
 ktq
 giZ
@@ -37986,9 +37931,9 @@ tFe
 oQc
 wtH
 mJq
+rSd
 xkk
-xkk
-vkm
+qRq
 xkk
 xkk
 xkk
@@ -38140,7 +38085,7 @@ jhx
 tDV
 dip
 dip
-qvq
+lah
 sPV
 rQY
 rkO
@@ -38821,7 +38766,7 @@ tFe
 oQc
 hMu
 gEl
-mxT
+paj
 mxT
 rRl
 jKN
@@ -46522,7 +46467,7 @@ bpj
 bpj
 bpj
 bpj
-rSd
+bpj
 bpj
 oXH
 bpj
@@ -47587,7 +47532,7 @@ ush
 hSU
 hsw
 hsw
-bkR
+hsw
 hSU
 hsw
 hsw
@@ -51484,10 +51429,10 @@ vsP
 vsP
 vsP
 jYS
-qna
+ebB
 jYS
-qna
-qna
+ebB
+ebB
 vdv
 vdv
 vdv
@@ -51652,9 +51597,9 @@ vsP
 vsP
 vsP
 jYS
-qna
-qna
-qna
+ebB
+ebB
+ebB
 ptY
 vdv
 vdv
@@ -51819,10 +51764,10 @@ vsP
 vsP
 vsP
 jYS
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 vIi
 ptY
 ptY
@@ -51989,11 +51934,11 @@ vsP
 ptY
 jYS
 bOc
-qna
+ebB
 oxT
-qna
-qna
-qna
+ebB
+ebB
+ebB
 qED
 vdv
 cyc
@@ -52156,12 +52101,12 @@ vsP
 vsP
 ptY
 jYS
-qna
+ebB
 oxT
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 vdv
 cyc
 cyc
@@ -52322,13 +52267,13 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
+ebB
+ebB
 vIi
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 vdv
 vdv
 vdv
@@ -52345,8 +52290,8 @@ vdv
 vdv
 vdv
 ptY
-qna
-qna
+ebB
+ebB
 oxT
 bpj
 bpj
@@ -52493,11 +52438,11 @@ vsP
 vsP
 vsP
 bOc
-qna
-qna
-qna
+ebB
+ebB
+ebB
 jYS
-qna
+ebB
 ptY
 jYS
 jYS
@@ -52509,10 +52454,10 @@ vdv
 vdv
 vdv
 ptY
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 bOc
 oxT
 bpj
@@ -52660,27 +52605,27 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 eVy
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 jYS
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 oxT
 bpj
 bpj
@@ -52827,27 +52772,27 @@ vsP
 vsP
 ptY
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 eVy
 eVy
 jYS
-qna
-qna
+ebB
+ebB
 eOy
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 eVy
 eVy
-qna
-qna
+ebB
+ebB
 vIi
 mMH
 bpj
@@ -52994,26 +52939,26 @@ vsP
 vsP
 ptY
 bOc
-qna
+ebB
 ptY
 ptY
 eVy
-qna
+ebB
 bOc
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 bOc
-qna
-qna
+ebB
+ebB
 kGl
 eVy
-qna
+ebB
 ptY
 dxF
 dxF
@@ -53160,27 +53105,27 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
+ebB
+ebB
 ptY
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 ptY
 dxF
 dxF
@@ -53296,7 +53241,7 @@ bsl
 bsl
 bsl
 bsl
-cGd
+bsl
 bsl
 sWP
 bsl
@@ -53326,28 +53271,28 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 vdv
 vdv
 vdv
 ptY
 jYS
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 ptY
 dxF
 dxF
@@ -53503,17 +53448,17 @@ vdv
 qED
 ptY
 jYS
-qna
-qna
+ebB
+ebB
 ptY
 vdv
 vdv
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 bOc
-qna
+ebB
 ptY
 dxF
 dxF
@@ -53660,26 +53605,26 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
+ebB
+ebB
 ptY
 vdv
 vdv
 vdv
 vdv
 vdv
-qna
+ebB
 jYS
-qna
-qna
+ebB
+ebB
 ptY
 vdv
 vdv
 vdv
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 ptY
 dxF
 dxF
@@ -53826,9 +53771,9 @@ kZz
 vsP
 vsP
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 ptY
 vdv
 vdv
@@ -53993,26 +53938,26 @@ bsl
 kZz
 urv
 bOc
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
 vdv
 vdv
 vdv
 qED
-qna
-qna
-qna
+ebB
+ebB
+ebB
 ptY
 ptY
 vdv
 vdv
 vdv
 ptY
-qna
-qna
+ebB
+ebB
 bOc
 ptY
 dxF
@@ -54159,28 +54104,28 @@ sNZ
 bsl
 bsl
 mDA
-qna
-qna
+ebB
+ebB
 eVy
 eVy
-qna
-qna
+ebB
+ebB
 vIi
 ptY
 ptY
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
 jYS
-qna
+ebB
 vdv
 jYS
 jYS
 jYS
-qna
-qna
+ebB
+ebB
 ptY
 dxF
 mMH
@@ -54326,29 +54271,29 @@ bsl
 bsl
 bsl
 mDA
-qna
-qna
+ebB
+ebB
 eVy
 eVy
-qna
-qna
+ebB
+ebB
 oxT
-qna
-qna
-qna
+ebB
+ebB
+ebB
 gBR
 eVy
-qna
-qna
+ebB
+ebB
 scK
 jYS
 jYS
 jYS
-qna
+ebB
 eVy
 scK
-qna
-qna
+ebB
+ebB
 ptY
 mMH
 nKO
@@ -54495,27 +54440,27 @@ kZz
 urv
 ptY
 jYS
-qna
+ebB
 bOc
 jYS
 jYS
 oxT
-qna
-qna
-qna
+ebB
+ebB
+ebB
 eVy
 eVy
 bOc
-qna
+ebB
 eVy
 wYE
 jYS
-qna
+ebB
 wYE
 eVy
 eVy
-qna
-qna
+ebB
+ebB
 ptY
 dxF
 dxF
@@ -54668,22 +54613,22 @@ ptY
 jYS
 tgO
 jYS
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 byx
 dxF
 dxF
@@ -54835,22 +54780,22 @@ vsP
 vsP
 vsP
 ptY
-qna
-jYS
-qna
-qna
-qna
-qna
-qna
-qna
 ebB
-qna
-qna
-qna
 jYS
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+jYS
+ebB
+ebB
+ebB
 byx
 dxF
 dxF
@@ -55006,18 +54951,18 @@ ptY
 bOc
 eVy
 eVy
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 ptY
-qna
+ebB
 bOc
-qna
+ebB
 jYS
-qna
-qna
-qna
+ebB
+ebB
+ebB
 iTX
 dxF
 dxF
@@ -55170,21 +55115,21 @@ vsP
 vsP
 vsP
 ptY
-qna
+ebB
 scK
 eVy
-qna
-qna
+ebB
+ebB
 ptY
-qna
-qna
+ebB
+ebB
 ptY
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 jYS
-qna
+ebB
 byx
 dxF
 dxF
@@ -55337,22 +55282,22 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 byx
 dxF
 dxF
@@ -55504,22 +55449,22 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
+ebB
+ebB
+ebB
 bOc
-qna
-qna
+ebB
+ebB
 bOc
 wuH
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
 bOc
-qna
+ebB
 bDG
-qna
+ebB
 byx
 dxF
 dxF
@@ -55670,23 +55615,23 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 huV
-qna
-qna
+ebB
+ebB
 bDG
-qna
+ebB
 byx
 dxF
 dxF
@@ -55836,24 +55781,24 @@ vsP
 vsP
 vsP
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 tzQ
-qna
-qna
+ebB
+ebB
 bDG
-qna
+ebB
 byx
 dxF
 dxF
@@ -56003,23 +55948,23 @@ vsP
 vsP
 ptY
 jYS
-qna
-qna
+ebB
+ebB
 bOc
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 bOc
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
 bOc
 byx
 dxF
@@ -56169,25 +56114,25 @@ vsP
 vsP
 jYS
 jYS
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 byx
 dxF
 dxF
@@ -56334,26 +56279,26 @@ bsl
 bsl
 mDA
 jYS
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 jYS
 jYS
 jYS
 ptY
-qna
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 byx
 dxF
 dxF
@@ -56500,27 +56445,27 @@ bsl
 jQo
 bsl
 mDA
-qna
+ebB
 eVy
 eVy
 bOc
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
 bOc
 jYS
 jYS
 iTX
 byx
 byx
-qna
-qna
-qna
+ebB
+ebB
+ebB
 bOc
-qna
-qna
+ebB
+ebB
 byx
 dxF
 dxF
@@ -56667,15 +56612,15 @@ bsl
 bsl
 bsl
 mDA
-qna
+ebB
 eVy
 eVy
-qna
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
+ebB
 jYS
 ptY
 ptY
@@ -56684,9 +56629,9 @@ dxF
 dxF
 ygm
 ygm
-qna
-qna
-qna
+ebB
+ebB
+ebB
 byx
 byx
 dxF
@@ -56835,11 +56780,11 @@ bsl
 kZz
 urv
 ptY
-qna
-qna
-qna
-qna
-qna
+ebB
+ebB
+ebB
+ebB
+ebB
 jYS
 jYS
 jYS
@@ -57002,8 +56947,8 @@ syM
 dxF
 dxF
 ptY
-qna
-qna
+ebB
+ebB
 jYS
 jYS
 jYS

@@ -1,4 +1,0 @@
-author: "Khadd"
-delete-after: True
-changes:
-  - bugfix: "wrong fire no longer applied"

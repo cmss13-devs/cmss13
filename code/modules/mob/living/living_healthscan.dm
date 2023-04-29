@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/current_organ = list(
 				"name" = organ.name,
 				"damage" = organ.damage,
-				"status" = organ.organ_status == ORGAN_BRUISED ? "Bruised" : "Broken",
+				"status" = organ.organ_status == ORGAN_BROKEN ? "Broken" : "Bruised",
 				"robotic" = organ.robotic
 			)
 			damaged_organs += list(current_organ)

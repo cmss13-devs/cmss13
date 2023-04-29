@@ -329,41 +329,41 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
-#define XENO_DAMAGE_MOD_VERYSMALL  5
+#define XENO_DAMAGE_MOD_VERY_SMALL  5
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15
 #define XENO_DAMAGE_MOD_LARGE   20
-#define XENO_DAMAGE_MOD_VERYLARGE  25
+#define XENO_DAMAGE_MOD_VERY_LARGE  25
 
 // Overall health pool
-#define XENO_HEALTH_MOD_VERYSMALL  20
+#define XENO_HEALTH_MOD_VERY_SMALL  20
 #define XENO_HEALTH_MOD_SMALL   40
 #define XENO_HEALTH_MOD_MED 60
 #define XENO_HEALTH_MOD_LARGE   80
-#define XENO_HEALTH_MOD_VERYLARGE  100
+#define XENO_HEALTH_MOD_VERY_LARGE  100
 #define XENO_HEALTH_MOD_ACIDER  115
 
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
 // the higher the Xeno's base armor, the greater the effect.
-#define XENO_ARMOR_MOD_VERYSMALL  5
+#define XENO_ARMOR_MOD_VERY_SMALL  5
 #define XENO_ARMOR_MOD_SMALL   10
 #define XENO_ARMOR_MOD_MED 15
 #define XENO_ARMOR_MOD_LARGE   20
-#define XENO_ARMOR_MOD_VERYLARGE  25
+#define XENO_ARMOR_MOD_VERY_LARGE  25
 
-#define XENO_EXPOSIVEARMOR_MOD_VERYSMALL  10
+#define XENO_EXPOSIVEARMOR_MOD_VERY_SMALL  10
 #define XENO_EXPOSIVEARMOR_MOD_SMALL   20
 #define XENO_EXPOSIVEARMOR_MOD_MED 30
 #define XENO_EXPOSIVEARMOR_MOD_LARGE   40
-#define XENO_EXPOSIVEARMOR_MOD_VERYLARGE  50
+#define XENO_EXPOSIVEARMOR_MOD_VERY_LARGE  50
 
 // Plasma
-#define XENO_PLASMAPOOL_MOD_VERYSMALL  20
+#define XENO_PLASMAPOOL_MOD_VERY_SMALL  20
 #define XENO_PLASMAPOOL_MOD_SMALL   40
 #define XENO_PLASMAPOOL_MOD_MED 60
 #define XENO_PLASMAPOOL_MOD_LARGE   80
-#define XENO_PLASMAPOOL_MOD_VERYLARGE  100
+#define XENO_PLASMAPOOL_MOD_VERY_LARGE  100
 
 // Plasma regen
 #define XENO_PLASMAGAIN_MOD_SMALL 0.1
@@ -403,26 +403,26 @@
 #define XENO_NEURO_TIER_5   2
 
 // Pheremone strength modifiers
-#define XENO_PHERO_MOD_VERYSMALL  0.25
+#define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5
 #define XENO_PHERO_MOD_MED 0.75
 #define XENO_PHERO_MOD_LARGE   1
-#define XENO_PHERO_MOD_VERYLARGE  1.25
+#define XENO_PHERO_MOD_VERY_LARGE  1.25
 
 // Evasion modifiers
-#define XENO_EVASION_MOD_VERYSMALL 3
+#define XENO_EVASION_MOD_VERY_SMALL 3
 #define XENO_EVASION_MOD_SMALL 6
 #define XENO_EVASION_MOD_MED 9
 #define XENO_EVASION_MOD_LARGE 12
-#define XENO_EVASION_MOD_VERYLARGE 15
+#define XENO_EVASION_MOD_VERY_LARGE 15
 #define XENO_EVASION_MOD_ULTRA 25
 
 // Armor factor modifiers
-#define XENO_ARMORFACTOR_MOD_VERYSMALL 5
+#define XENO_ARMORFACTOR_MOD_VERY_SMALL 5
 #define XENO_ARMORFACTOR_MOD_SMALL 10
 #define XENO_ARMORFACTOR_MOD_MED 15
 #define XENO_ARMORFACTOR_MOD_LARGE 20
-#define XENO_ARMORFACTOR_MOD_VERYLARGE 25
+#define XENO_ARMORFACTOR_MOD_VERY_LARGE 25
 
 // Acid boost (I guess, this is used literally nowhere)
 // Feel free to add more defines here if it ever becomes relevant

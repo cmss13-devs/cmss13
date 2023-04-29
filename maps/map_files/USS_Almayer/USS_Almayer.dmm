@@ -9077,12 +9077,12 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "aCv" = (
-/obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "cl_shutters 2";
 	name = "\improper Privacy Shutters"
 	},
+/obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliason)
 "aCw" = (
@@ -71992,7 +71992,6 @@
 /area/almayer/medical/lower_medical_medbay)
 "xne" = (
 /obj/structure/machinery/door/poddoor/almayer/blended{
-	icon_state = "almayer_pdoor1";
 	id = "RoomDivider";
 	layer = 3.1;
 	name = "\improper Room Divider"

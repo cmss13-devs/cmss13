@@ -249,7 +249,7 @@
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	U.attach_accessory(H, W)
 	H.equip_to_slot_or_del(U, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/intel(H), WEAR_HEAD)
@@ -292,6 +292,7 @@
 /datum/equipment_preset/uscm/spec/cryo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/spec_kit/cryo, WEAR_R_HAND)
 
 //*****************************************************************************************************/
 

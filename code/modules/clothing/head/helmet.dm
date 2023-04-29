@@ -91,7 +91,7 @@
 	siemens_coefficient = 0.8
 
 /obj/item/clothing/head/helmet/HoS/dermal
-	name = "Dermal Armour Patch"
+	name = "Dermal Armor Patch"
 	desc = "You're not quite sure how you manage to take it on and off, but it implants nicely in your head."
 	icon_state = "dermal"
 	item_state = "dermal"
@@ -732,7 +732,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
-	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/MP/WO
+	name = "\improper M3 pattern chief MP helmet"
+	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	icon_state = "cmp_helmet"
+	item_state = "cmp_helmet"
+	specialty = "M10 pattern chief MP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"

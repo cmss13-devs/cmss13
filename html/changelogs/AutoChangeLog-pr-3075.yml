@@ -1,5 +1,0 @@
-author: "Hopek"
-delete-after: True
-changes:
-  - bugfix: "Disassembled crates/barrels will now correctly show their contents above the deconstruction material meaning that you don't have to right click or alt click the turf to see what you looted. Doesn't make the contents break reality this time."
-  - bugfix: "Fixed duplicate crate/barrel disassembly material spawning because it was being created in two places. If people want 2 material per crate/barrel they'll have to intentionally code it in this time vs it being a bug."

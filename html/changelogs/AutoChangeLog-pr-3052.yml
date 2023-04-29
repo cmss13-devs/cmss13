@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - balance: "Super-Strong and Dextrous traits now allow mobs to pick up other mobs who are one size bigger than them. When both traits are combined it allows for two sizes up. Synths can lift runners and Yautja can lift most T1 or T2 xenos."
-  - code_imp: "Changed Larva and Facehuggers mob_size variable to use the correct define."

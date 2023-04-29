@@ -37,6 +37,11 @@
 		arm_equipment(human, /datum/equipment_preset/uscm/leader/cryo, TRUE, TRUE)
 		to_chat(human, SPAN_ROLE_HEADER("You are a Squad Leader in the USCM"))
 		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+	else if (heavies < max_heavies && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(human.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
+		heavies++
+		arm_equipment(human, /datum/equipment_preset/uscm/spec/cryo, TRUE, TRUE)
+		to_chat(human, SPAN_ROLE_HEADER("You are a Weapons Specialist in the USCM"))
+		to_chat(human, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else if (medics < max_medics && HAS_FLAG(human.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(human.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(human, /datum/equipment_preset/uscm/medic/cryo, TRUE, TRUE)

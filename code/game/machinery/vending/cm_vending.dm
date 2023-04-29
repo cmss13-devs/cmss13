@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	hacked = !hacked
 	if(hacked)
-		to_chat(user, SPAN_WARNING("You have succesfully removed access restrictions in [src]."))
+		to_chat(user, SPAN_WARNING("You have successfully removed access restrictions in [src]."))
 		if(user && is_mainship_level(z))
 			SSclues.create_print(get_turf(user), user, "A small piece of cut wire is found on the fingerprint.")
 	else

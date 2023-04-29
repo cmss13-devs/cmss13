@@ -211,6 +211,8 @@
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
 
+		var/obj/effect/alien/resin/fruit/old_fruit
+
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
 			if(W.indestructible)
@@ -219,6 +221,12 @@
 				continue
 			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
 				continue
+
+			old_fruit = locate() in T
+
+			if(old_fruit)
+				old_fruit.unregister_weed_expiration_signal()
+
 			qdel(W)
 
 		if(!istype(T, /turf/closed/wall/resin) && T.density)
@@ -232,7 +240,11 @@
 		if(!weed_expand_objects(T, dirn))
 			continue
 
-		weeds.Add(new /obj/effect/alien/weeds(T, node))
+		var/obj/effect/alien/weeds/new_weed = new(T, node)
+		weeds += new_weed
+
+		if(old_fruit)
+			old_fruit.register_weed_expiration_signal(new_weed)
 
 	on_weed_expand(src, weeds)
 	if(parent)

@@ -2876,13 +2876,19 @@
 /turf/open/floor/plating,
 /area/almayer/living/cafeteria_officer)
 "ajK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "tc02";
 	name = "Door Release";
 	normaldoorcontrol = 1;
 	pixel_x = -28;
-	pixel_y = -23
+	pixel_y = 23
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -33080,13 +33086,22 @@
 	},
 /area/almayer/hallways/repair_bay)
 "eLP" = (
-/obj/structure/sign/safety/outpatient{
-	pixel_x = -17;
-	pixel_y = -6
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "tc01";
+	name = "Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = -28;
+	pixel_y = -23
 	},
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "sterile_green_side"
+	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "eMh" = (
@@ -36054,10 +36069,9 @@
 "giu" = (
 /obj/structure/sign/safety/outpatient{
 	pixel_x = -17;
-	pixel_y = -6
+	pixel_y = 6
 	},
 /turf/open/floor/almayer{
-	dir = 9;
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
@@ -51815,6 +51829,10 @@
 /obj/item/storage/firstaid/regular/empty,
 /obj/item/storage/firstaid/regular/empty,
 /obj/item/storage/firstaid/regular/empty,
+/obj/structure/sign/safety/outpatient{
+	pixel_x = -17;
+	pixel_y = -6
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -60301,19 +60319,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/general_equipment)
-"rXO" = (
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "tc01";
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = -28;
-	pixel_y = 39
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "rXS" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -102190,18 +102195,18 @@ kan
 kan
 kan
 nPq
-rXO
-buu
+rlZ
 eLP
+thP
 beW
 beA
 rlZ
 fqZ
 beW
-giu
-buu
+bgP
 ajK
-dTZ
+rlZ
+giu
 kan
 kan
 kan

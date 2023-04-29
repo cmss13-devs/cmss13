@@ -1,7 +1,0 @@
-author: "LambdaSucks"
-delete-after: True
-changes:
-  - bugfix: "Fixed floating cameras in Solaris Ridge inserts."
-  - bugfix: "Removed second APC from Atmos on Solaris Ridge."
-  - bugfix: "Removed second APC from Southeast Lambda on Solaris Ridge."
-  - bugfix: "Fixed floating cameras on Solaris Ridge."

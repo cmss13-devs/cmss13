@@ -166,7 +166,7 @@
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
 	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/U = pick(turf_list)
+		var/turf/U = pick(turf_list) // Center of a single impact configs
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
@@ -176,9 +176,14 @@
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		for(var/turf/A in orange(bullet_accuracy_range, U))
+		for(var/turf/A in orange(bullet_accuracy_range, U))// Outer ring(s) of a single impact configs
 			create_shrapnel(A,1,0,0,shrapnel_type,cause_data,FALSE,100)
 			A.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+			for(var/atom/movable/AM in U)
+				if(iscarbon(AM))
+					AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				else
+					AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 			new /obj/effect/particle_effect/expl_particles(A)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
@@ -202,6 +207,7 @@
 	max_ammo_count = 400
 	ammo_used_per_firing = 40
 	bullet_scatter_range = 4
+	bullet_accuracy_range = 1
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at

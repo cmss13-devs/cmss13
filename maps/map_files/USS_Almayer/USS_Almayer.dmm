@@ -64142,15 +64142,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
-"tOB" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
-	icon_state = "closed";
-	layer = 2.1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/command/lifeboat)
 "tOC" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -128934,7 +128925,7 @@ aHe
 aHe
 eky
 aMT
-tOB
+aMT
 oOO
 aPw
 eJQ

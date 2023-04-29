@@ -800,7 +800,6 @@
 	. = ..()
 	if(simulation.looking_at_simulation)
 		simulation.stop_watching(user)
-	qdel(simulation)
 
 // CAS TGUI SHIT END \\
 

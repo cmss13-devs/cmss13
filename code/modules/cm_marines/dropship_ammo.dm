@@ -147,6 +147,7 @@
 	var/bullet_scatter_range = 4 //how far from the real impact turf can bullets land.
 	var/bullet_accuracy_range = 1 //how far from a BULLET impact turf additional impacts can land.
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
+	var/outerring_shrap_type = /datum/ammo/bullet/shrapnel/gau/whiplash //shrapnel type for the outer ring of the 3x3
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -177,7 +178,7 @@
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		for(var/turf/A in orange(bullet_accuracy_range, U))// Outer ring(s) of a single impact configs
-			create_shrapnel(A,1,0,0,shrapnel_type,cause_data,FALSE,100)
+			create_shrapnel(A,1,0,0,outerring_shrap_type,cause_data,FALSE,100)
 			A.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
 			for(var/atom/movable/AM in U)
 				if(iscarbon(AM))

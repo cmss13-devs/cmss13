@@ -3042,6 +3042,15 @@
 	damage = 80 //Standard AP vs standard. (more AP for less damage)
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
+
+
+/datum/ammo/bullet/shrapnel/gau/whiplash
+	name = "30mm shell whiplash"
+
+	damage = 60
+	penetration = ARMOR_PENETRATION_TIER_5
+	accuracy = HIT_ACCURACY_TIER_MAX
+
 /*
 //======
 					Misc Ammo

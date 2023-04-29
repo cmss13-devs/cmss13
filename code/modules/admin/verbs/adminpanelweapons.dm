@@ -39,6 +39,7 @@
 				shipwide_ai_announcement("DANGER: MISSILE WARNING. LAUNCH DETECTED, BRACE, BRACE, BRACE. ESTIMATED TIME: [hiteta] SECONDS.", MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, mob.loc, point_defense), hiteta SECONDS)
 				log_admin("[key_name_admin(src)] Fired a Single Missile at the Almayer at their own location, [mob.loc], with point defense as [point_defense]")
+				message_admins("[key_name_admin(src)] Fired a Single Missile at the Almayer at their own location, [mob.loc], with point defense as [point_defense]")
 				if(point_defense == TRUE)
 					var/spoolup = hiteta - 4
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
@@ -52,6 +53,7 @@
 						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, targets, point_defense, salvo), hiteta SECONDS)
 					log_admin("[key_name_admin(src)] Fired a salvo of [quantity] Missiles at the Almayer at random places, with point defense as [point_defense]")
+					message_admins("[key_name_admin(src)] Fired a salvo of [quantity] Missiles at the Almayer at random places, with point defense as [point_defense]")
 					if(point_defense == TRUE)
 						var/spoolup = hiteta - 4
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGETS, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
@@ -63,6 +65,7 @@
 						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 1, picked_atom, point_defense), hiteta SECONDS)
 					log_admin("[key_name_admin(src)] Fired a Single Missile at the Almayer at a random place, [picked_atom], with point defense as [point_defense]")
+					message_admins("[key_name_admin(src)] Fired a Single Missile at the Almayer at a random place, [picked_atom], with point defense as [point_defense]")
 					if(point_defense == TRUE)
 						var/spoolup = hiteta - 4
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ATTENTION: TRACKING TARGET, SPOOLING UP POINT DEFENSE. ATTEMPTING TO INTERCEPT." , MAIN_AI_SYSTEM, 'sound/effects/supercapacitors_charging.ogg'), spoolup SECONDS)
@@ -83,6 +86,7 @@
 						return
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, targets, point_defense, salvo), hiteta SECONDS)
 					log_admin("[key_name_admin(src)] Fired a salvo of Railgun Slugs at the Almayer at random places, with the possibility of missing [point_defense]")
+					message_admins("[key_name_admin(src)] Fired a salvo of Railgun Slugs at the Almayer at random places, with the possibility of missing [point_defense]")
 					picked_atom = null
 					targets = null
 
@@ -96,6 +100,7 @@
 							return
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(weaponhits), 2, picked_atom, point_defense), hiteta SECONDS)
 						log_admin("[key_name_admin(src)] Fired a single Railgun Slug at the Almayer at a random location, [picked_atom], with the possibility of missing as [point_defense]")
+						message_admins("[key_name_admin(src)] Fired a single Railgun Slug at the Almayer at a random location, [picked_atom], with the possibility of missing as [point_defense]")
 
 /proc/shipside_random_turf_picker(turfquantity)
 

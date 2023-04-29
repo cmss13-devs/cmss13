@@ -40,7 +40,7 @@
 	var/combat_equipment = TRUE
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable) 
+	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -144,7 +144,8 @@
 	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
-	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
+	var/bullet_scatter_range = 4 //how far from the real impact turf can bullets land.
+	var/bullet_accuracy_range = 1 //how far from a BULLET impact turf additional impacts can land.
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
@@ -160,7 +161,7 @@
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
+	for(var/turf/T in range(bullet_scatter_range, impact))
 		turf_list += T
 	var/soundplaycooldown = 0
 	var/debriscooldown = 0
@@ -169,12 +170,16 @@
 		sleep(1)
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
-		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100)
 		for(var/atom/movable/AM in U)
 			if(iscarbon(AM))
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
+		for(var/turf/A in orange(bullet_accuracy_range, U))
+			create_shrapnel(A,1,0,0,shrapnel_type,cause_data,FALSE,100)
+			A.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
+			new /obj/effect/particle_effect/expl_particles(A)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
 			soundplaycooldown = 3
@@ -196,7 +201,7 @@
 	ammo_count = 400
 	max_ammo_count = 400
 	ammo_used_per_firing = 40
-	bullet_spread_range = 4
+	bullet_scatter_range = 4
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at

@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(fail_to_topic)
-	name = "fail_to_topic"
+	name = "Fail to Topic"
 	init_order = SS_INIT_FAIL_TO_TOPIC
 	flags = SS_BACKGROUND
 	runlevels = ALL
@@ -23,14 +23,15 @@ SUBSYSTEM_DEF(fail_to_topic)
 	if (world.system_type == UNIX && enabled)
 		enabled = FALSE
 		WARNING("fail_to_topic subsystem disabled. UNIX is not supported.")
-
+		return SS_INIT_NO_NEED
 
 	if (!enabled)
 		can_fire = FALSE
+		return SS_INIT_NO_NEED
 
-	return ..()
+	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/fail_to_topic/fire(resumed = 0)
+/datum/controller/subsystem/fail_to_topic/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = rate_limiting.Copy()
 	//cache for sanic speed (lists are references anyways)

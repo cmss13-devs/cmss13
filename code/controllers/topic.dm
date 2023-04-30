@@ -28,4 +28,4 @@ SUBSYSTEM_DEF(topic)
 			keys |= anonymous_functions
 		GLOB.topic_tokens[token] = keys
 
-	return ..()
+	return SS_INIT_SUCCESS

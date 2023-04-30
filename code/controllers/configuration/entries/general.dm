@@ -557,7 +557,12 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/keyed_list/topic_tokens
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
+	return key_value != "topic_token" && ..()
 
 
 //Fail2Topic settings.

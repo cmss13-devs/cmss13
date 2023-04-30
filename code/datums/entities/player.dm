@@ -5,7 +5,7 @@
 	var/last_known_ip
 	var/last_known_cid
 
-	var/discord_id
+	var/discord_link_id
 
 	var/last_login
 
@@ -39,6 +39,7 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
+	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
 	var/list/datum/entity/player_note/notes
@@ -58,11 +59,11 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
-		"discord_id" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_login" = DB_FIELDTYPE_STRING_LARGE,
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
 		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
@@ -386,6 +387,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		permaban_admin = DB_ENTITY(/datum/entity/player, permaban_admin_id)
 	if(time_ban_admin_id)
 		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
+	if(discord_link_id)
+		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
 
 

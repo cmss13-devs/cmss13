@@ -182,31 +182,166 @@
 
 /datum/world_topic/certify
 	key = "certify"
-	required_params = list("identifier", "id")
+	required_params = list("identifier", "discord_id")
 
 /datum/world_topic/certify/Run(list/input)
 	var/identifier = input["identifier"]
-	var/discord_id = input["id"]
+	var/discord_id = input["discord_id"]
 
 	data = list()
 
-	var/datum/entity/discord_identifier/id = DB_EKEY(/datum/entity/discord_identifier, identifier)
+	var/datum/entity/discord_identifier/id = get_discord_identifier_by_token(identifier)
 
-	if(!id)
+	if(!id || !id.playerid)
 		statuscode = 500
 		response = "Database query failed"
 		return
 
-	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, id.playerid)
+	if(id.realtime < world.realtime - 4 HOURS)
+		statuscode = 501
+		response = "Authentication timed out."
 
-	if(!player)
+	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, id.playerid)
+	player.save()
+	player.sync()
+
+	if(!player.ckey)
+		statuscode = 500
+		response = "Database query failed."
+
+	if(player.discord_link)
+		statuscode = 503
+		response = "Player already authenticated."
 		return
 
-	player.discord_id = discord_id
+	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, discord_id)
+	link.discord_id = discord_id
+	link.player_id = text2num(player.id)
+	link.save()
+	link.sync()
+
+	player.discord_link = link
+	player.discord_link_id = link.id
 	player.save()
+	player.sync()
 
 	statuscode = 200
-	response = "CKEY [player.ckey] certified."
+	response = "Successfully certified."
+	data = list()
+	data["related_ckeys"] = analyze_ckey(player.ckey)
+
+/datum/world_topic/decertify_by_ckey
+	key = "decertify_by_ckey"
+	required_params = list("ckey")
+
+/datum/world_topic/decertify_by_ckey/Run(list/input)
+	data = list()
+
+	var/datum/entity/player/player = get_player_from_key(input["ckey"])
+
+	if(!player)
+		statuscode = 500
+		response = "Database lookup failed."
+		return
+
+	if(!player.discord_link)
+		statuscode = 501
+		response = "No linked Discord."
+		return
+
+	var/discord_id = player.discord_link.discord_id
+
+	player.discord_link.delete()
+	player.discord_link = null
+
+	player.discord_link_id = null
+	player.save()
+	player.sync()
+
+	data["discord_id"] = discord_id
+	statuscode = 200
+	response = "Decertification successful."
+
+/datum/world_topic/decertify_by_discord_id
+	key = "decertify_by_discord_id"
+	required_params = list("discord_id")
+
+/datum/world_topic/decertify_by_discord_id/Run(list/input)
+	data = list()
+
+	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
+	link.save()
+	link.sync()
+
+	if(!link.player_id)
+		link.delete()
+
+		statuscode = 500
+		response = "Database lookup failed."
+		return
+
+	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
+	player.save()
+	player.sync()
+
+	if(!player.discord_link)
+		statuscode = 501
+		response = "No linked Discord."
+		return
+
+	player.discord_link.delete()
+	player.discord_link = null
+
+	player.discord_link_id = null
+	player.save()
+	player.sync()
+
+	data["discord_id"] = input["discord_id"]
+	statuscode = 200
+	response = "Decertification successful."
+
+/datum/world_topic/lookup_discord_id
+	key = "lookup_discord_id"
+	required_params = list("discord_id")
+
+/datum/world_topic/lookup_discord_id/Run(list/input)
+	data = list()
+
+	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
+	link.save()
+	link.sync()
+
+	if(!link.player_id)
+		link.delete()
+
+		statuscode = 500
+		response = "Database lookup failed."
+		return
+
+	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
+	player.save()
+	player.sync()
+
+	data["ckey"] = player.ckey
+	statuscode = 200
+	response = "Lookup successful."
+
+/datum/world_topic/lookup_ckey
+	key = "lookup_ckey"
+	required_params = list("ckey")
+
+/datum/world_topic/lookup_ckey/Run(list/input)
+	data = list()
+
+	var/datum/entity/player/player = get_player_from_key(input["ckey"])
+
+	var/datum/entity/discord_link/link = DB_ENTITY(/datum/entity/discord_link, player.discord_link_id)
+	link.save()
+	link.sync()
+
+	data["discord_id"] = link.discord_id
+	statuscode = 200
+	response = "Lookup successful."
 
 #undef TOPIC_VERSION_MAJOR
 #undef TOPIC_VERSION_MINOR

@@ -2657,11 +2657,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/space)
-"Px" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "PI" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -4614,7 +4609,7 @@ AN
 "}
 (26,1,1) = {"
 GI
-Px
+GI
 El
 bp
 UM
@@ -4740,7 +4735,7 @@ AN
 "}
 (29,1,1) = {"
 AN
-Px
+GI
 Cp
 Cp
 Cp

@@ -684,7 +684,6 @@
 /area/adminlevel/ert_station/upp_station)
 "jt" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/space/basic,
 /area/space)
@@ -1037,14 +1036,6 @@
 /obj/structure/girder/displaced,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
-"pl" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "po" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/adminlevel/ert_station/upp_station)
@@ -3648,7 +3639,7 @@ ws
 ws
 oP
 GI
-Px
+GI
 GI
 AN
 AN
@@ -4707,7 +4698,7 @@ AN
 "}
 (28,1,1) = {"
 AN
-Px
+GI
 El
 Cp
 Cp
@@ -4792,7 +4783,7 @@ AN
 (30,1,1) = {"
 AN
 GI
-Px
+GI
 Cp
 Cp
 fM
@@ -5238,7 +5229,7 @@ GI
 GI
 AN
 pN
-pl
+vS
 Wi
 vS
 Hc

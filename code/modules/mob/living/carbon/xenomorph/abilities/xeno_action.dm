@@ -209,8 +209,6 @@
 		return
 	var/mob/living/carbon/xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
-	//The cooldown modifier == 1 is meant so that abilities that lower CD upon a successful hit don't early return.
-	if (cooldown_timer_id != TIMER_ID_NULL && cooldown_modifier == 1)
 	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.

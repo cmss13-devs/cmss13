@@ -618,7 +618,9 @@
 /area/adminlevel/ert_station/upp_station)
 "ie" = (
 /obj/structure/machinery/light/double/blue{
-	dir = 8
+	dir = 8;
+	pixel_y = 13;
+	pixel_x = -10
 	},
 /obj/structure/machinery/portable_atmospherics/canister/phoron,
 /turf/open/floor/corsat{
@@ -3023,6 +3025,9 @@
 	pixel_y = -22;
 	name = "Toilet Shutters Button";
 	id = "upp_toilet"
+	},
+/obj/structure/mirror{
+	pixel_x = 28
 	},
 /turf/open/floor/strata{
 	dir = 8;

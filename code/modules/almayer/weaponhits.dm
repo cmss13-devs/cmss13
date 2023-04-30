@@ -76,7 +76,7 @@
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
-			if(salvo == FALSE)
+			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
@@ -116,7 +116,7 @@
 						continue
 					playsound_client (current_mob.client, 'sound/effects/railgun_miss.ogg', 60)
 					to_chat(current_mob.client, SPAN_DANGER("You hear railgun shots barely missing the hull!"))
-//REMOVE THIS WHEN WE USE THIS SOMEWHERE ELSE.
+//REMOVE THIS WHEN WE USE THESE DEFS SOMEWHERE ELSE OR ELSE IT STRAIGHT UP WON'T WORK.
 #undef WEAPON_MISSILE
 #undef WEAPON_RAILGUN
 #undef HIT_CHANCE_CHEAT

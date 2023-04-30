@@ -102,9 +102,8 @@
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
@@ -112,7 +111,7 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
 

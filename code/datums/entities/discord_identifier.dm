@@ -34,7 +34,7 @@
 		"identifier",
 		"playerid",
 		"suspicious",
-		"realtime"
+		"realtime",
 	)
 	order_by = list("identifier" = DB_ORDER_BY_ASC)
 

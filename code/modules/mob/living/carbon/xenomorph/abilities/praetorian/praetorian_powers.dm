@@ -673,7 +673,6 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/buffed = FALSE
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
@@ -696,19 +695,20 @@
 					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
+	
+
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
 
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
+	var/buffed = FALSE
 
-		buffed = found
-
+	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
+	
+	if (dancer_tag_effect)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
+		
 	if (!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 

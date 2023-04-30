@@ -153,7 +153,7 @@
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
 			name = "Corrosive Acid (125)"
-			acid_plasma_cost = 100
+			acid_plasma_cost = 125
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak

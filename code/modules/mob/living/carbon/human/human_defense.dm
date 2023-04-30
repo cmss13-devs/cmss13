@@ -63,7 +63,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return siemens_coefficient
 
-//this proc returns the armour value for a particular external organ.
+//this proc returns the armor value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(obj/limb/def_zone, type)
 	if(!type)
 		return FALSE

@@ -359,17 +359,17 @@
 
 /obj/item/storage/backpack/satchel/vir
 	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	desc = "A sterile satchel with virologist colors."
 	icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
 	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	desc = "A sterile satchel with chemist colors."
 	icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	desc = "A sterile satchel with geneticist colors."
 	icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/tox
@@ -477,12 +477,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
-	if(!istype(owner, /mob/living/carbon/human))
+	for(var/obj/item/storage/backpack/marine/satchel/rto/radio_backpack in owner)
+		radio_backpack.use_phone(owner)
 		return
-	var/mob/living/carbon/human/user = owner
-	if(istype(user.back, /obj/item/storage/backpack/marine/satchel/rto))
-		var/obj/item/storage/backpack/marine/satchel/rto/R = user.back
-		R.use_phone(user)
 
 /obj/item/storage/backpack/marine/satchel/rto/post_skin_selection()
 	base_icon = icon_state
@@ -516,11 +513,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		icon_state = "[base_icon]_ring"
 	else
 		icon_state = base_icon
-
-/obj/item/storage/backpack/marine/satchel/rto/item_action_slot_check(mob/user, slot)
-	if(slot == WEAR_BACK)
-		return TRUE
-	return FALSE
 
 /obj/item/storage/backpack/marine/satchel/rto/forceMove(atom/dest)
 	. = ..()
@@ -558,10 +550,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.enabled = FALSE
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
-	if(user.back == src)
-		internal_transmitter.attack_hand(user)
-	else if(internal_transmitter.get_calling_phone())
-		internal_transmitter.attack_hand(user)
+	internal_transmitter.attack_hand(user)
 
 
 /obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
@@ -657,7 +646,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
+		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armors.
 			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 

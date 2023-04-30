@@ -499,8 +499,13 @@
 	relativewall_neighbours()
 
 /obj/structure/window/framed/Destroy()
-	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
-		qdel(WW)
+	for(var/obj/effect/alien/weeds/weedwall/window/found_weedwall in get_turf(src))
+		qdel(found_weedwall)
+	var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
+	for(var/turf/cardinal_turf as anything in cardinal_neighbors)
+		for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
+			if(found_nest.dir == get_dir(found_nest, src))
+				qdel(found_nest) //nests are built on walls, no walls, no nest
 	. = ..()
 
 /obj/structure/window/framed/initialize_pass_flags(datum/pass_flags_container/PF)

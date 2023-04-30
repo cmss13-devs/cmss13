@@ -149,7 +149,7 @@
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
-/// If the mob is affected by drag delay.area
+/// If the mob is affected by drag delay.
 #define TRAIT_DEXTROUS "t_dextrous"
 /// If the mob is currently charging (xeno only)
 #define TRAIT_CHARGING "t_charging"
@@ -169,6 +169,8 @@
 #define TRAIT_EMOTE_CD_EXEMPT "t_emote_cd_exempt"
 /// If the mob is holding a cane.
 #define TRAIT_HOLDS_CANE "t_holds_cane"
+/// If the mob is buckled to a wheelchair.
+#define TRAIT_USING_WHEELCHAIR "t_using_wheelchair"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

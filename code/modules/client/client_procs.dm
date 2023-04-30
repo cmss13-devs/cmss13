@@ -195,8 +195,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		P.remove_note(index)
 
 	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
+		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -464,6 +464,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin logout: [key_name(src)]")
 
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "logout", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
+
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -477,6 +480,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
 	if(CLIENT_IS_STAFF(src))
 		message_admins("Admin login: [key_name(src)]")
+
+		var/list/adm = get_admin_counts(R_MOD)
+		REDIS_PUBLISH("byond.access", "type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
+
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if( M.key && (M.key != key) )

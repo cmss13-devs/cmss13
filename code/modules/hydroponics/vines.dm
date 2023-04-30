@@ -4,7 +4,7 @@
 	name = "space vines"
 	desc = "An extremely expansionistic species of vine."
 	icon = 'icons/effects/spacevines.dmi'
-	icon_state = "Light1"
+	icon_state = "light_1"
 	anchored = TRUE
 	density = FALSE
 	layer = FLY_LAYER

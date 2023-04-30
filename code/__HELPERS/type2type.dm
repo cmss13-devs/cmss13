@@ -313,3 +313,7 @@
 				for(var/A in value)
 					if(var_source.vars.Find(A))
 						. += A
+
+/// Formats a larger number to correct textual representation without losing data
+/proc/big_number_to_text(number)
+	return num2text(number, INFINITY)

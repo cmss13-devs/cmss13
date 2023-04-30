@@ -173,10 +173,11 @@
 	if(envelope)
 		envelope.change_current_loc(null)
 
-/*
- Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.
- this shouldn't be used in any other procs.
-*/
+
+/**
+ * Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.
+ * This shouldn't be used in any other procs.
+ */
 /datum/cas_fire_mission/proc/add_user_to_sim_tracking(mob/living/user, obj/effect/firemission_guidance/guidance)
 
 	var/mob/tracked_user = user

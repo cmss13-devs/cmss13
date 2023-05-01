@@ -14,7 +14,7 @@
 	requires_bodypart_type = LIMB_ROBOT
 
 /datum/surgery/prosthetic_recalibration/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	if(L.status & LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC)
+	if(L.status & LIMB_UNCALIBRATED_PROSTHETIC)
 		return TRUE
 	return FALSE
 

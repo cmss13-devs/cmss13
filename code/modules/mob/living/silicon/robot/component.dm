@@ -74,7 +74,7 @@
 // No power usage
 /datum/robot_component/armor
 	name = "armor plating"
-	external_type = /obj/item/robot_parts/robot_component/armor
+	external_type = /obj/item/robot_parts/robot_component/armour
 	max_damage = 60
 
 
@@ -231,7 +231,7 @@
 	icon_state = "motor"
 	icon_state_broken = "motor_broken"
 
-/obj/item/robot_parts/robot_component/armor
+/obj/item/robot_parts/robot_component/armour
 	name = "armor plating"
 	icon_state = "armor"
 	icon_state_broken = "armor_broken"

@@ -10229,12 +10229,6 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/canteen)
-"aQh" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	icon_state = "bar"
-	},
-/area/lv624/lazarus/canteen)
 "aQn" = (
 /turf/open/floor{
 	dir = 9;
@@ -10504,7 +10498,7 @@
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/ground/colony/telecomm/tcommdome)
+/area/lv624/lazarus/comms)
 "aRj" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light,
@@ -10751,7 +10745,7 @@
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/ground/colony/telecomm/tcommdome)
+/area/lv624/lazarus/comms)
 "aSg" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
@@ -10916,7 +10910,7 @@
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/ground/colony/telecomm/tcommdome)
+/area/lv624/lazarus/comms)
 "aSL" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/engineering)
@@ -11036,7 +11030,7 @@
 	dir = 9;
 	icon_state = "brown"
 	},
-/area/lv624/ground/colony/telecomm/tcommdome)
+/area/lv624/lazarus/comms)
 "aTo" = (
 /obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
@@ -13404,9 +13398,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"bHs" = (
-/turf/closed/wall/r_wall,
-/area/lv624/ground/colony/telecomm/tcommdome)
 "bIO" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
@@ -14033,12 +14024,6 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
-"dfD" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/ground/colony/telecomm/tcommdome)
 "dfJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -14757,15 +14742,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/barrens/south_eastern_barrens)
-"eFd" = (
-/obj/structure/surface/table,
-/obj/item/device/flashlight,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/ground/colony/telecomm/tcommdome)
 "eFS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -18091,10 +18067,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"mCo" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv624/ground/colony/telecomm/tcommdome)
 "mEw" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
@@ -18259,15 +18231,6 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/corporate_dome)
-"mVz" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/ground/colony/telecomm/tcommdome)
 "mVK" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -22111,13 +22074,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
-"vgp" = (
-/obj/structure/largecrate/random,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/ground/colony/telecomm/tcommdome)
 "vgJ" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
@@ -23346,15 +23302,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"ydG" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/ground/colony/telecomm/tcommdome)
 "yfH" = (
 /turf/open/shuttle{
 	icon_state = "floor4"
@@ -40987,10 +40934,10 @@ byY
 byY
 byY
 fTf
-mCo
+aPT
 aRi
-dfD
-dfD
+aQn
+aQn
 aSK
 aTg
 aTJ
@@ -41215,11 +41162,11 @@ byY
 byY
 byY
 fTf
-mCo
+aPT
 aSe
-dfD
-dfD
-dfD
+aQn
+aQn
+aQn
 aQn
 aQn
 aZK
@@ -41443,11 +41390,11 @@ byY
 byY
 byY
 fTf
-mCo
-dfD
+aPT
+aQn
 aTk
-dfD
-dfD
+aQn
+aQn
 aTj
 aQn
 aQn
@@ -41671,11 +41618,11 @@ aMN
 aNA
 aMN
 aIO
-bHs
-mVz
-dfD
-dfD
-ydG
+aPt
+aTI
+aQn
+aQn
+aQn
 aPt
 aQn
 aQn
@@ -41899,11 +41846,11 @@ aMO
 aKB
 aMP
 aIO
-vgp
-dfD
-dfD
-dfD
-dfD
+aSg
+aQn
+aQn
+aQn
+aQn
 aPt
 aPT
 aUk
@@ -42130,8 +42077,8 @@ aIO
 aIL
 aIL
 aIO
-eFd
-dfD
+aRe
+aQn
 aPT
 aTK
 aTK
@@ -42359,7 +42306,7 @@ aNB
 aQo
 aJz
 aIO
-vgp
+aSg
 aPT
 aTK
 aTK
@@ -42587,7 +42534,7 @@ aEt
 aQp
 aRo
 aIO
-vgp
+aSg
 aSL
 aSL
 aSL
@@ -53983,7 +53930,7 @@ acm
 aMl
 aOQ
 aPC
-aQh
+xFf
 aOP
 aRX
 aNo

@@ -14857,11 +14857,14 @@
 /area/almayer/squads/alpha)
 "bdB" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "Firing_Range_2";
 	name = "range shutters"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "bdC" = (
@@ -16252,6 +16255,9 @@
 	name = "Firing Range";
 	req_access = null;
 	req_one_access_txt = "2;4;7;9;21"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -25024,6 +25030,9 @@
 	name = "Firing Range";
 	req_access = null;
 	req_one_access_txt = "2;4;7;9;21"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -42882,6 +42891,17 @@
 	icon_state = "plate"
 	},
 /area/almayer/medical/morgue)
+"jks" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Firing_Range_2";
+	name = "range shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/almayer/living/cryo_cells)
 "jkz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/handcuffs{
@@ -43969,6 +43989,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"jSd" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_hallway)
 "jSo" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer{
@@ -46496,7 +46520,9 @@
 /area/almayer/engineering/upper_engineering)
 "laU" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "Firing_Range_1";
 	name = "range shutters"
@@ -46698,6 +46724,17 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
+"lgy" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "Firing_Range_2";
+	name = "range shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/living/cryo_cells)
 "lgK" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
@@ -122813,7 +122850,7 @@ aQL
 aLG
 aYO
 aLG
-bdB
+lgy
 ccN
 xYP
 rWL
@@ -123016,7 +123053,7 @@ aQL
 aLG
 aYO
 aLG
-bdB
+lgy
 ccb
 xYP
 bGn
@@ -123425,7 +123462,7 @@ beB
 bbs
 cdp
 cdp
-cdp
+jks
 cdp
 bbs
 bJf
@@ -123627,7 +123664,7 @@ aYO
 aLG
 bBh
 aLG
-aLG
+jSd
 aLG
 aLG
 byC

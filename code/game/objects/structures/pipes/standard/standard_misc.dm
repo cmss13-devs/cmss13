@@ -75,14 +75,14 @@
 	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOUR_RED
+	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/visible/supply
 	name = "supply pipe endcap"
 	desc = "An endcap for supply pipes."
 	icon_state = "cap-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOUR_BLUE
+	color = PIPE_COLOR_BLUE
 
 /obj/structure/pipes/standard/cap/hidden
 	icon_state = "cap"
@@ -98,14 +98,14 @@
 	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-f-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOUR_RED
+	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/hidden/supply
 	name = "supply pipe endcap"
 	desc = "An endcap for supply pipes."
 	icon_state = "cap-f-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOUR_BLUE
+	color = PIPE_COLOR_BLUE
 
 
 /obj/structure/pipes/standard/tank

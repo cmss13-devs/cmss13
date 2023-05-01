@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 	"outline" = list(
 		"defaults" = list(
 			"size" = 0,
-			"color" = COLOUR_BLACK,
+			"color" = COLOR_BLACK,
 			"flags" = NONE
 		),
 		"flags" = list(
@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"x" = 0,
 			"y" = 0,
 			"size" = 16,
-			"color" = COLOUR_WHITE,
+			"color" = COLOR_WHITE,
 			"offset" = 0,
 			"density" = 10,
 			"threshold" = 0.5,

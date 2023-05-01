@@ -59,23 +59,23 @@
 	desc = "A one-meter section of scrubbers pipe"
 	icon_state = "intact-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOUR_RED
+	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/simple/visible/supply
 	name = "Air supply pipe"
 	desc = "A one-meter section of supply pipe"
 	icon_state = "intact-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOUR_BLUE
+	color = PIPE_COLOR_BLUE
 
 /obj/structure/pipes/standard/simple/visible/yellow
-	color = PIPE_COLOUR_YELLOW
+	color = PIPE_COLOR_YELLOW
 
 /obj/structure/pipes/standard/simple/visible/cyan
-	color = PIPE_COLOUR_CYAN
+	color = PIPE_COLOR_CYAN
 
 /obj/structure/pipes/standard/simple/visible/green
-	color = PIPE_COLOUR_GREEN
+	color = PIPE_COLOR_GREEN
 
 /obj/structure/pipes/standard/simple/visible/purple
 	color = PIPE_COLOR_PURPLE
@@ -95,23 +95,23 @@
 	desc = "A one-meter section of scrubbers pipe"
 	icon_state = "intact-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOUR_RED
+	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/simple/hidden/supply
 	name = "Air supply pipe"
 	desc = "A one-meter section of supply pipe"
 	icon_state = "intact-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOUR_BLUE
+	color = PIPE_COLOR_BLUE
 
 /obj/structure/pipes/standard/simple/hidden/yellow
-	color = PIPE_COLOUR_YELLOW
+	color = PIPE_COLOR_YELLOW
 
 /obj/structure/pipes/standard/simple/hidden/cyan
-	color = PIPE_COLOUR_CYAN
+	color = PIPE_COLOR_CYAN
 
 /obj/structure/pipes/standard/simple/hidden/green
-	color = PIPE_COLOUR_GREEN
+	color = PIPE_COLOR_GREEN
 
 /obj/structure/pipes/standard/simple/hidden/purple
 	color = PIPE_COLOR_PURPLE

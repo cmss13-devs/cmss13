@@ -223,7 +223,7 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 /**Creates a matrix to re-paint a sprite, replacing pure red, green, and blue with 3 different shades. Doesn't work with mixed tones of RGB or whites or greys
 -- *must* be pure. R/G/B 255 becomes the new color, darker shades become correspondingly darker.
 The arg is a list of hex colors, for ex "list("#d4c218", "#b929f7", "#339933"".
-if you want variations of the same color, color_matrix_recolour_red() is simpler.**/
+if you want variations of the same color, color_matrix_recolor_red() is simpler.**/
 /proc/color_matrix_recolor_rgb(list/replacement_shades)
 	var/list/final_matrix = color_matrix_identity()
 
@@ -248,7 +248,7 @@ if you want variations of the same color, color_matrix_recolour_red() is simpler
 /**Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new color. In the base sprite, Hue must always be pure red.
 Saturation and Lightness can be anything. Arg is a hex string for a color. Proc is by Lummox JR, www.byond.com/forum/post/2209545
 color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colors.**/
-/proc/color_matrix_recolour_red(new_color)
+/proc/color_matrix_recolor_red(new_color)
 	var/image/I = new
 	var/list/M
 	// create the matrix via short form

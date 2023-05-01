@@ -8,7 +8,7 @@
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
-	color = COLOUR_RED
+	color = COLOR_RED
 	desc = "A coil of power cable."
 	throwforce = 10
 	w_class = SIZE_SMALL
@@ -33,7 +33,7 @@
 
 /obj/item/stack/cable_coil/proc/updateicon()
 	if (!color)
-		color = pick(COLOUR_RED, COLOUR_BLUE, COLOUR_GREEN, COLOUR_ORANGE, COLOUR_WHITE, COLOUR_PINK, COLOUR_YELLOW, COLOUR_CYAN)
+		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -304,7 +304,7 @@
 
 /obj/item/stack/cable_coil/random/Initialize()
 	. = ..()
-	color = pick(COLOUR_RED, COLOUR_BLUE, COLOUR_GREEN, COLOUR_WHITE, COLOUR_PINK, COLOUR_YELLOW, COLOUR_CYAN)
+	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(ishuman(M))

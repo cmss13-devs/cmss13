@@ -36,7 +36,7 @@
 	var/d2 = 1
 	layer = WIRE_LAYER
 	plane = FLOOR_PLANE
-	color = COLOUR_RED
+	color = COLOR_RED
 	var/obj/structure/machinery/power/breakerbox/breaker_box
 	unslashable = TRUE
 	unacidable = TRUE

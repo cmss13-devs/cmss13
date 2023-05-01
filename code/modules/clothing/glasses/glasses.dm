@@ -265,12 +265,12 @@
 
 	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new color.
 	onmob_colors = list(
-		"base" = color_matrix_recolour_red("#5D5D5D"),
-		"yellow" = color_matrix_recolour_red("#D4C218"),
-		"green" = color_matrix_recolour_red("#0DB347"),
-		"cyan" = color_matrix_recolour_red("#2AC1DB"),
-		"blue" = color_matrix_recolour_red("#005BF7"),
-		"indigo" = color_matrix_recolour_red("#9608D4"),
+		"base" = color_matrix_recolor_red("#5D5D5D"),
+		"yellow" = color_matrix_recolor_red("#D4C218"),
+		"green" = color_matrix_recolor_red("#0DB347"),
+		"cyan" = color_matrix_recolor_red("#2AC1DB"),
+		"blue" = color_matrix_recolor_red("#005BF7"),
+		"indigo" = color_matrix_recolor_red("#9608D4"),
 		)
 
 	obj_glass_overlay.color = onmob_colors["base"]

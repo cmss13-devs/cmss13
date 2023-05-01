@@ -209,6 +209,15 @@
 		statuscode = 500
 		response = "Database query failed."
 
+	data["ckey"] = player.ckey
+
+/*
+	if(player.discord_link && !player.discord_link.player_id || !player.discord_link.discord_id)
+		player.discord_link.delete()
+		player.discord_link = null
+		player.discord_link_id = null
+*/
+
 	if(player.discord_link)
 		statuscode = 503
 		response = "Player already authenticated."
@@ -225,13 +234,16 @@
 	player.save()
 	player.sync()
 
+	id.used = TRUE
+	id.save()
+	id.sync()
+
 	statuscode = 200
 	response = "Successfully certified."
-	data = list()
 	data["related_ckeys"] = analyze_ckey(player.ckey)
 
 /datum/world_topic/decertify_by_ckey
-	key = "decertify_by_ckey"
+	key = "decertify_ckey"
 	required_params = list("ckey")
 
 /datum/world_topic/decertify_by_ckey/Run(list/input)
@@ -263,7 +275,7 @@
 	response = "Decertification successful."
 
 /datum/world_topic/decertify_by_discord_id
-	key = "decertify_by_discord_id"
+	key = "decertify_discord_id"
 	required_params = list("discord_id")
 
 /datum/world_topic/decertify_by_discord_id/Run(list/input)
@@ -338,6 +350,12 @@
 	var/datum/entity/discord_link/link = DB_ENTITY(/datum/entity/discord_link, player.discord_link_id)
 	link.save()
 	link.sync()
+
+	if(!link.discord_id)
+		link.delete()
+
+		statuscode = 500
+		response = "Database lookup failed."
 
 	data["discord_id"] = link.discord_id
 	statuscode = 200

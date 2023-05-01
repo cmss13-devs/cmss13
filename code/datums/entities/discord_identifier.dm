@@ -1,8 +1,8 @@
 /datum/entity/discord_identifier
 	var/identifier
 	var/playerid
-	var/suspicious
 	var/realtime
+	var/used = FALSE
 
 /datum/entity/discord_identifier/New()
 	. = ..()
@@ -17,15 +17,15 @@
 	field_types = list(
 		"identifier" = DB_FIELDTYPE_STRING_LARGE,
 		"playerid" = DB_FIELDTYPE_BIGINT,
-		"suspicious" = DB_FIELDTYPE_INT,
 		"realtime" = DB_FIELDTYPE_BIGINT,
+		"used" = DB_FIELDTYPE_INT,
 	)
 
 /datum/view_record/discord_identifier
 	var/identifier
 	var/playerid
-	var/suspicious
 	var/realtime
+	var/used
 
 /datum/entity_view_meta/discord_identifier
 	root_record_type = /datum/entity/discord_identifier
@@ -33,8 +33,8 @@
 	fields = list(
 		"identifier",
 		"playerid",
-		"suspicious",
 		"realtime",
+		"used",
 	)
 	order_by = list("identifier" = DB_ORDER_BY_ASC)
 

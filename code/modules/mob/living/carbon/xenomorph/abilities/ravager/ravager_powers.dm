@@ -213,7 +213,7 @@
 			if(ravager_user.can_not_harm(carbon_target))
 				continue
 			ravager_user.flick_attack_overlay(carbon_target, "slash")
-			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			carbon_target.apply_armored_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
 			if(should_sslow)
@@ -326,9 +326,9 @@
 	// Damage
 	var/obj/limb/head/head = H.get_limb("head")
 	if(ishuman(H) && head)
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		H.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	if(!X.on_fire)
@@ -415,7 +415,7 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
-			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			human.apply_armored_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

@@ -50,7 +50,7 @@
 		return
 
 	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
+	var/damage_done = apply_armored_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
 
 	var/last_damage_source
 	if (damage_done > 5)

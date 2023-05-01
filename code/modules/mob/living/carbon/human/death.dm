@@ -88,11 +88,11 @@
 				delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
 				to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
 			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/ghillie))
-				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.wear_suit
-				if(delayer_armour.camo_active)
-					delayer_armour.deactivate_camouflage(delayer)
-				delayer_armour.can_camo = FALSE //fuck you
-				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
+				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armor = delayer.wear_suit
+				if(delayer_armor.camo_active)
+					delayer_armor.deactivate_camouflage(delayer)
+				delayer_armor.can_camo = FALSE //fuck you
+				to_chat(delayer, SPAN_WARNING("Your [delayer_armor]'s camo system breaks!"))
 			//tell the ghosts
 			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
 	return ..(cause, gibbed, species.death_message)

@@ -87,7 +87,7 @@
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
 	if (found)
-		target_human.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
+		target_human.apply_armored_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
 		target_human.adjust_effect(2, SLOW)

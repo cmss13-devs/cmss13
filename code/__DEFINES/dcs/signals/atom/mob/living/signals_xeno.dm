@@ -20,14 +20,14 @@
 #define COMSIG_SAFE_OPENED "safe_opened"
 
 /// from /mob/living/carbon/xenomorph/bullet_act(): (list/damagedata)
-#define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
+#define COMSIG_XENO_PRE_CALCULATE_ARMORED_DAMAGE_PROJECTILE "xeno_pre_calculate_armored_damage_projectile"
 
 // from /mob/living/carbon/xenomorph/proc/gain_health()
 #define COMSIG_XENO_ON_HEAL "xeno_on_heal"
 #define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
 
-/// from /mob/living/carbon/xenomorph/apply_armoured_damage(): (list/damagedata)
-#define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
+/// from /mob/living/carbon/xenomorph/apply_armored_damage(): (list/damagedata)
+#define COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE "xeno_pre_apply_armored_damage"
 
 /// From /mob/living/carbon/xenomorph/bullet_act
 #define COMSIG_XENO_BULLET_ACT "xeno_bullet_act"

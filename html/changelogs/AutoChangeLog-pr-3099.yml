@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Spine checks for real_name instead of just name"
+  - imageadd: "Updates skull and spine onmob sprites"

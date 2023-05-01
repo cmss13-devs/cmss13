@@ -10,15 +10,15 @@
 #define CARDINAL_ALL_DIRS list(1,2,4,5,6,8,9,10)
 
 //some colors
-#define COLOR_RED "#FF0000"
-#define COLOR_GREEN "#00FF00"
-#define COLOR_BLUE "#0000FF"
-#define COLOR_CYAN "#00FFFF"
-#define COLOR_PINK "#FF00FF"
-#define COLOR_YELLOW "#FFFF00"
-#define COLOR_ORANGE "#FF9900"
-#define COLOR_WHITE "#FFFFFF"
-#define COLOR_BLACK "#000000"
+#define COLOUR_RED "#FF0000"
+#define COLOUR_GREEN "#00FF00"
+#define COLOUR_BLUE "#0000FF"
+#define COLOUR_CYAN "#00FFFF"
+#define COLOUR_PINK "#FF00FF"
+#define COLOUR_YELLOW "#FFFF00"
+#define COLOUR_ORANGE "#FF9900"
+#define COLOUR_WHITE "#FFFFFF"
+#define COLOUR_BLACK "#000000"
 #define COLOR_OIL "#030303"
 
 //Grass Colors

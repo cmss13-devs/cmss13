@@ -556,7 +556,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/update_icon()
-	color = COLOR_WHITE
+	color = COLOUR_WHITE
 	if(reagents)
 		color = mix_color_from_reagents(reagents.reagent_list)
 	..()

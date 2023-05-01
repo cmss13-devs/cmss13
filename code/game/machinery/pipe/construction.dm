@@ -76,11 +76,11 @@ Buildable meters
 		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/supply) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_STRAIGHT + is_bent
 			connect_types = list(2)
-			src.color = PIPE_COLOR_BLUE
+			src.color = PIPE_COLOUR_BLUE
 		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_STRAIGHT + is_bent
 			connect_types = list(3)
-			src.color = PIPE_COLOR_RED
+			src.color = PIPE_COLOUR_RED
 		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/universal) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/universal))
 			src.pipe_type = PIPE_UNIVERSAL
 			connect_types = list(1,2,3)
@@ -91,11 +91,11 @@ Buildable meters
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold/visible/supply) || istype(make_from, /obj/structure/pipes/standard/manifold/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_MANIFOLD
 			connect_types = list(2)
-			src.color = PIPE_COLOR_BLUE
+			src.color = PIPE_COLOUR_BLUE
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/manifold/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_MANIFOLD
 			connect_types = list(3)
-			src.color = PIPE_COLOR_RED
+			src.color = PIPE_COLOUR_RED
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold))
 			src.pipe_type = PIPE_MANIFOLD
 		else if(istype(make_from, /obj/structure/pipes/vents/pump))
@@ -127,21 +127,21 @@ Buildable meters
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway/visible/supply) || istype(make_from, /obj/structure/pipes/standard/manifold/fourway/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_MANIFOLD4W
 			connect_types = list(2)
-			src.color = PIPE_COLOR_BLUE
+			src.color = PIPE_COLOUR_BLUE
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/manifold/fourway/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_MANIFOLD4W
 			connect_types = list(3)
-			src.color = PIPE_COLOR_RED
+			src.color = PIPE_COLOUR_RED
 		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway))
 			src.pipe_type = PIPE_MANIFOLD4W
 		else if(istype(make_from, /obj/structure/pipes/standard/cap/visible/supply) || istype(make_from, /obj/structure/pipes/standard/cap/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_CAP
 			connect_types = list(2)
-			src.color = PIPE_COLOR_BLUE
+			src.color = PIPE_COLOUR_BLUE
 		else if(istype(make_from, /obj/structure/pipes/standard/cap/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/cap/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_CAP
 			connect_types = list(3)
-			src.color = PIPE_COLOR_RED
+			src.color = PIPE_COLOUR_RED
 		else if(istype(make_from, /obj/structure/pipes/standard/cap))
 			src.pipe_type = PIPE_CAP
 
@@ -150,10 +150,10 @@ Buildable meters
 		setDir(dir)
 		if (pipe_type == 29 || pipe_type == 30 || pipe_type == 33 || pipe_type == 35 || pipe_type == 37 || pipe_type == 39 || pipe_type == 41)
 			connect_types = list(2)
-			src.color = PIPE_COLOR_BLUE
+			src.color = PIPE_COLOUR_BLUE
 		else if (pipe_type == 31 || pipe_type == 32 || pipe_type == 34 || pipe_type == 36 || pipe_type == 38 || pipe_type == 40 || pipe_type == 42)
 			connect_types = list(3)
-			src.color = PIPE_COLOR_RED
+			src.color = PIPE_COLOUR_RED
 		else if (pipe_type == 28)
 			connect_types = list(1,2,3)
 	//src.pipe_dir = get_pipe_dir()

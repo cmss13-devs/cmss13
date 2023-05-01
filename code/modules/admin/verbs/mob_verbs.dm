@@ -185,7 +185,7 @@
 		if("Yes")
 			var/message = "An admin is trying to talk to you!<br>Check your chat window and click their name to respond or you may be banned!"
 
-			show_blurb(M, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+			show_blurb(M, 15, message, null, "center", "center", COLOUR_RED, null, null, 1)
 			log_admin("[key_name(src)] sent a default admin alert to [key_name(M)].")
 			message_admins("[key_name(src)] sent a default admin alert to [key_name(M)].")
 		if("Custom")

@@ -93,7 +93,7 @@
 	layer = FULLSCREEN_DAMAGE_LAYER
 
 /atom/movable/screen/fullscreen/brute/nvg
-	color = COLOR_BLACK
+	color = COLOUR_BLACK
 
 /atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"

@@ -59,23 +59,23 @@
 	desc = "A manifold composed of scrubbers pipes"
 	icon_state = "map-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOR_RED
+	color = PIPE_COLOUR_RED
 
 /obj/structure/pipes/standard/manifold/visible/supply
 	name="Air supply pipe manifold"
 	desc = "A manifold composed of supply pipes"
 	icon_state = "map-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOR_BLUE
+	color = PIPE_COLOUR_BLUE
 
 /obj/structure/pipes/standard/manifold/visible/yellow
-	color = PIPE_COLOR_YELLOW
+	color = PIPE_COLOUR_YELLOW
 
 /obj/structure/pipes/standard/manifold/visible/cyan
-	color = PIPE_COLOR_CYAN
+	color = PIPE_COLOUR_CYAN
 
 /obj/structure/pipes/standard/manifold/visible/green
-	color = PIPE_COLOR_GREEN
+	color = PIPE_COLOUR_GREEN
 
 /obj/structure/pipes/standard/manifold/visible/purple
 	color = PIPE_COLOR_PURPLE
@@ -95,23 +95,23 @@
 	desc = "A manifold composed of scrubbers pipes"
 	icon_state = "map-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOR_RED
+	color = PIPE_COLOUR_RED
 
 /obj/structure/pipes/standard/manifold/hidden/supply
 	name = "Air supply pipe manifold"
 	desc = "A manifold composed of supply pipes"
 	icon_state = "map-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOR_BLUE
+	color = PIPE_COLOUR_BLUE
 
 /obj/structure/pipes/standard/manifold/hidden/yellow
-	color = PIPE_COLOR_YELLOW
+	color = PIPE_COLOUR_YELLOW
 
 /obj/structure/pipes/standard/manifold/hidden/cyan
-	color = PIPE_COLOR_CYAN
+	color = PIPE_COLOUR_CYAN
 
 /obj/structure/pipes/standard/manifold/hidden/green
-	color = PIPE_COLOR_GREEN
+	color = PIPE_COLOUR_GREEN
 
 /obj/structure/pipes/standard/manifold/hidden/purple
 	color = PIPE_COLOR_PURPLE
@@ -137,23 +137,23 @@
 	desc = "A manifold composed of scrubbers pipes"
 	icon_state = "map_4way-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOR_RED
+	color = PIPE_COLOUR_RED
 
 /obj/structure/pipes/standard/manifold/fourway/visible/supply
 	name="4-way air supply pipe manifold"
 	desc = "A manifold composed of supply pipes"
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOR_BLUE
+	color = PIPE_COLOUR_BLUE
 
 /obj/structure/pipes/standard/manifold/fourway/visible/yellow
-	color = PIPE_COLOR_YELLOW
+	color = PIPE_COLOUR_YELLOW
 
 /obj/structure/pipes/standard/manifold/fourway/visible/cyan
-	color = PIPE_COLOR_CYAN
+	color = PIPE_COLOUR_CYAN
 
 /obj/structure/pipes/standard/manifold/fourway/visible/green
-	color = PIPE_COLOR_GREEN
+	color = PIPE_COLOUR_GREEN
 
 /obj/structure/pipes/standard/manifold/fourway/visible/purple
 	color = PIPE_COLOR_PURPLE
@@ -173,23 +173,23 @@
 	desc = "A manifold composed of scrubbers pipes"
 	icon_state = "map_4way-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
-	color = PIPE_COLOR_RED
+	color = PIPE_COLOUR_RED
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply
 	name="4-way air supply pipe manifold"
 	desc = "A manifold composed of supply pipes"
 	icon_state = "map_4way-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
-	color = PIPE_COLOR_BLUE
+	color = PIPE_COLOUR_BLUE
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/yellow
-	color = PIPE_COLOR_YELLOW
+	color = PIPE_COLOUR_YELLOW
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan
-	color = PIPE_COLOR_CYAN
+	color = PIPE_COLOUR_CYAN
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/green
-	color = PIPE_COLOR_GREEN
+	color = PIPE_COLOUR_GREEN
 
 /obj/structure/pipes/standard/manifold/fourway/hidden/purple
 	color = PIPE_COLOR_PURPLE

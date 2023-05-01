@@ -280,7 +280,7 @@
 		return
 
 	target.gain_plasma(target.plasma_max * 0.75)
-	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
+	target.flick_heal_overlay(3 SECONDS, COLOUR_CYAN)
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
 

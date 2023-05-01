@@ -138,7 +138,7 @@
 
 	if(result == KABOOM) //oh boy
 		user.visible_message(SPAN_HIGHDANGER("A weird groaning sound emerges from [user]'s [src.name]..."))
-		color = COLOR_RED
+		color = COLOUR_RED
 		do_after(user, 3 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, src, INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 		src.visible_message(SPAN_HIGHDANGER("[src] explodes!"))
 		var/datum/cause_data/cause_data = create_cause_data("hoverpack explosion", user)

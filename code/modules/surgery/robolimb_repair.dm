@@ -46,7 +46,7 @@
 		SPAN_NOTICE("[user] finishes recalibrating [target]'s prosthesis, and it now moves as \he commands once again."))
 
 	log_interact(user, target, "[key_name(user)] recalibrated a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
-	if(surgery.affected_limb.parent.status & (LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC))
+	if(surgery.affected_limb.parent.status & LIMB_UNCALIBRATED_PROSTHETIC)
 		surgery.affected_limb.parent.calibrate_prosthesis()
 	else
 		surgery.affected_limb.calibrate_prosthesis()

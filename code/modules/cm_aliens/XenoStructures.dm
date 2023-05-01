@@ -373,8 +373,9 @@
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
 		if (X.hivenumber == hivenumber)
-			X.scuttle(src)
-		return
+			if(X.scuttle(src))
+				return
+		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))

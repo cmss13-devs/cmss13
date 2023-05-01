@@ -260,6 +260,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor/New()
 	..()
+	damage_falloff_mod = 0.1
 	attach_icon = pick("suppressor_a","suppressor2_a")
 
 /obj/item/attachable/suppressor/xm40_integral

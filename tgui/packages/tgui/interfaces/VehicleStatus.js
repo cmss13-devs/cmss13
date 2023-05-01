@@ -38,7 +38,7 @@ export const VehicleStatus = (props, context) => {
           <NoticeBox info={door_locked ? 0 : 1} danger={door_locked ? 1 : 0}>
             {door_locked ? 'Door locks: enabled.' : 'Door locks: disabled.'}
           </NoticeBox>
-          <Collapsible title="Current armour resistances">
+          <Collapsible title="Current armor resistances">
             <ResistanceView />
           </Collapsible>
           <Collapsible title="Passengers">

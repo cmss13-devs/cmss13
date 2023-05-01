@@ -1081,7 +1081,7 @@
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
 
-/mob/living/carbon/xenomorph/scuttle(obj/structure/current_structure)
+/mob/living/carbon/xenomorph/proc/scuttle(obj/structure/current_structure)
 	if (mob_size == MOB_SIZE_SMALL) // huggers, larva
 		var/move_dir = get_dir(src, loc)
 		for(var/atom/movable/atom in get_turf(current_structure))

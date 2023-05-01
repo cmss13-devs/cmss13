@@ -3047,9 +3047,30 @@
 /datum/ammo/bullet/shrapnel/gau/whiplash
 	name = "30mm shell whiplash"
 
-	damage = 60
-	penetration = ARMOR_PENETRATION_TIER_5
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/bullet/shrapnel/gau/on_hit_mob(mob/M, obj/item/projectile/P)
+	M.apply_effect(2, SUPERSLOW)
+	M.apply_effect(4, SLOW)
+	M.apply_effect(8, DAZE)
+	if(isxeno(M))
+		to_chat(M, SPAN_XENOHIGHDANGER("You screech in horror as the 30mm shell rips through you!"))
+	else
+		to_chat(M, SPAN_HIGHDANGER("You scream in pain as the 30mm shell rips through you!"))
+/datum/ammo/bullet/shrapnel/gau/whiplash/on_hit_mob(mob/M, obj/item/projectile/P)
+	M.apply_effect(2, SLOW)
+	M.apply_effect(4, DAZE)
+	if(isxeno(M))
+		to_chat(M, SPAN_XENODANGER("You are shaken by the near miss 30mm impact!"))
+	else
+		to_chat(M, SPAN_DANGER("You are shaken by the near miss 30mm impact"))
+
+
+
+
+
 
 /*
 //======

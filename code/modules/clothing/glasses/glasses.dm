@@ -306,7 +306,7 @@
 /obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
 	//Caramelldansen HUD overlay.
 	//Use of this filter in armed conflict is in direct contravention of the Geneva Suggestions (2120 revision)
-	//Colors are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
+	//Colours are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
 
 	//Animate the obj and onmob in sync with the client.
 	for(var/I in list(obj_glass_overlay, mob_glass_overlay))
@@ -326,35 +326,35 @@
 	if(!user.client) //Shouldn't happen but can't hurt to check.
 		return
 
-	var/base_color
+	var/base_colour
 	if(!user.client.color) //No set client color.
-		base_color = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
+		base_colour = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
 	else if(istext(user.client.color)) //Hex color string.
-		base_color = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
-	else //Color matrix.
-		base_color = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
+		base_colour = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
+	else //Colour matrix.
+		base_colour = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
 
-	var/list/colors = list(
-		"yellow" = color_matrix_multiply(base_color, color_matrix_from_string("#d4c218")),
-		"green" = color_matrix_multiply(base_color, color_matrix_from_string("#2dc404")),
-		"cyan" = color_matrix_multiply(base_color, color_matrix_from_string("#2ac1db")),
-		"blue" = color_matrix_multiply(base_color, color_matrix_from_string("#005BF7")),
-		"indigo" = color_matrix_multiply(base_color, color_matrix_from_string("#b929f7"))
+	var/list/colours = list(
+		"yellow" = color_matrix_multiply(base_colour, color_matrix_from_string("#d4c218")),
+		"green" = color_matrix_multiply(base_colour, color_matrix_from_string("#2dc404")),
+		"cyan" = color_matrix_multiply(base_colour, color_matrix_from_string("#2ac1db")),
+		"blue" = color_matrix_multiply(base_colour, color_matrix_from_string("#005BF7")),
+		"indigo" = color_matrix_multiply(base_colour, color_matrix_from_string("#b929f7"))
 		)
 
 	//Animate the victim's client.
-	animate(user.client, color = colors["indigo"], time = 0.3 SECONDS, loop = -1)
-	animate(color = base_color, time = 0.3 SECONDS)
-	animate(color = colors["cyan"], time = 0.3 SECONDS)
-	animate(color = base_color, time = 0.3 SECONDS)
-	animate(color = colors["yellow"], time = 0.3 SECONDS)
-	animate(color = base_color, time = 0.3 SECONDS)
-	animate(color = colors["green"], time = 0.3 SECONDS)
-	animate(color = base_color, time = 0.3 SECONDS)
-	animate(color = colors["blue"], time = 0.3 SECONDS)
-	animate(color = base_color, time = 0.3 SECONDS)
-	animate(color = colors["yellow"], time = 0.3 SECONDS)
-	animate(color = base_color, time = 0.3 SECONDS)
+	animate(user.client, color = colours["indigo"], time = 0.3 SECONDS, loop = -1)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["cyan"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["yellow"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["green"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["blue"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["yellow"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
 
 /obj/item/clothing/glasses/disco_fever/dropped(mob/living/carbon/human/user)
 	. = ..()

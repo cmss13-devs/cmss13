@@ -1172,7 +1172,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(new_species, default_color)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1206,7 +1206,7 @@
 
 	species.create_organs(src)
 
-	if(species.base_color && default_color)
+	if(species.base_color && default_colour)
 		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))

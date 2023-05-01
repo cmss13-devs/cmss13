@@ -161,7 +161,7 @@
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
 	/// what color the ink is!
-	var/pen_color = "black"
+	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -180,7 +180,7 @@
 /obj/item/tool/pen/proc/update_pen_state()
 	overlays.Cut()
 	if(on)
-		overlays += "+[pen_color]_tip"
+		overlays += "+[pen_colour]_tip"
 
 /obj/item/tool/pen/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -246,7 +246,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	pen_color = "blue"
+	pen_colour = "blue"
 
 /obj/item/tool/pen/blue/clicky
 	desc = "It's a WY brand extra clicky blue ink pen."
@@ -255,7 +255,7 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	pen_color = "red"
+	pen_colour = "red"
 
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
@@ -264,7 +264,7 @@
 
 /obj/item/tool/pen/green
 	desc = "It's a normal green ink pen."
-	pen_color = "green"
+	pen_colour = "green"
 
 /obj/item/tool/pen/green/clicky
 	desc = "It's a WY brand extra clicky green ink pen."
@@ -273,7 +273,7 @@
 
 /obj/item/tool/pen/invisible
 	desc = "It's an invisible pen marker."
-	pen_color = "white"
+	pen_colour = "white"
 
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)

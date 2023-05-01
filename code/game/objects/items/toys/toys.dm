@@ -125,17 +125,17 @@
 
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
+	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
-	attack_verb = list("attacked", "colored")
+	attack_verb = list("attacked", "coloured")
 	black_market_value = 5
 	var/crayon_color = "#FF0000" //RGB
-	var/shadeColor = "#220000" //RGB
+	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
-	var/colorName = "red" //for updateIcon purposes
+	var/colourName = "red" //for updateIcon purposes
 
 /*
  * Snap pops

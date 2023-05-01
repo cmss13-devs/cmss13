@@ -330,16 +330,16 @@
 
 /// Displays a message to squad members directly on the game map
 /datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
-	var/message_color = squad_colors_chat[color]
+	var/message_colour = squad_colors_chat[color]
 	if(only_leader)
 		if(squad_leader)
 			var/mob/living/carbon/human/SL = squad_leader
 			if(!SL.stat && SL.client)
-				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
+				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 	else
 		for(var/mob/living/carbon/human/M in marines_list)
 			if(!M.stat && M.client) //Only living and connected people in our squad
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 /// Displays a message to the squad members in chat
 /datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)

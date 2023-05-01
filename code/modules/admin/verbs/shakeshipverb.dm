@@ -39,7 +39,6 @@
 	if(prompt != "Yes")
 		return
 	else
-		log_admin("[key_name_admin(src)] rocked the ship! with the strength of [sstrength], and duration of [stime]")
 		message_admins("[key_name_admin(src)] rocked the ship! with the strength of [sstrength], and duration of [stime]")
 		if(delayed)
 			if(announce)

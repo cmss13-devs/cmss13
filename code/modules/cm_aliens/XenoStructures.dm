@@ -374,8 +374,9 @@
 		var/mob/living/carbon/xenomorph/X = user
 		if (X.hivenumber == hivenumber)
 			if(X.scuttle(src))
-				return
-		return ..()
+				return // don't toggle door for small xenos
+			return ..() // toggles door for big xenos
+		return // enemy hive doesn't toggle door
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))

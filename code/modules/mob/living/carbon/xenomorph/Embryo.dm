@@ -289,20 +289,3 @@
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
-
-// Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/S)
-	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/AM in get_turf(S))
-		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [S]!"))
-			return
-	// Is it an airlock?
-	if(istype(S, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/A = S
-		if(A.locked || A.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [A] is locked down tight. You can't squeeze underneath!"))
-			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [S]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [S]."), null, 5)
-	forceMove(S.loc)

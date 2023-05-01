@@ -1080,3 +1080,20 @@
 
 /mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
+
+/mob/living/carbon/xenomorph/scuttle(obj/structure/current_structure)
+	if (mob_size == MOB_SIZE_SMALL) // huggers, larva
+		var/move_dir = get_dir(src, loc)
+		for(var/atom/movable/atom in get_turf(current_structure))
+			if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+				to_chat(src, SPAN_WARNING("\The [atom] prevents you from squeezing under \the [current_structure]!"))
+				return
+		// Is it an airlock?
+		if(istype(current_structure, /obj/structure/machinery/door/airlock))
+			var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+			if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+				to_chat(src, SPAN_WARNING("\The [current_airlock] is locked down tight. You can't squeeze underneath!"))
+				return
+		visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
+		SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
+		forceMove(current_structure.loc)

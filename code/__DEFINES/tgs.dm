@@ -294,8 +294,8 @@
 	/// Timestamp must be encoded as: time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss"). Use the active timezone.
 	var/timestamp
 
-	/// Colour must be #AARRGGBB or #RRGGBB hex string
-	var/colour
+	/// Color must be #AARRGGBB or #RRGGBB hex string
+	var/color
 
 	/// See https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure for details.
 	var/datum/tgs_chat_embed/media/image

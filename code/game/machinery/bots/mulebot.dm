@@ -61,7 +61,7 @@
 
 	var/wires = 1023 // all flags on
 
-	var/list/wire_text // list of wire colours
+	var/list/wire_text // list of wire colors
 	var/list/wire_order // order of wire indices
 
 
@@ -97,18 +97,18 @@
 	SSradio.remove_object(src, beacon_freq)
 	. = ..()
 
-// set up the wire colours in random order
+// set up the wire colors in random order
 // and the random wire display order
-// needs 10 wire colours
+// needs 10 wire colors
 /obj/structure/machinery/bot/mulebot/proc/setup_wires()
-	var/list/colours = list("Red", "Green", "Blue", "Magenta", "Cyan", "Yellow", "Black", "White", "Orange", "Grey")
+	var/list/colors = list("Red", "Green", "Blue", "Magenta", "Cyan", "Yellow", "Black", "White", "Orange", "Grey")
 	var/list/orders = list("0","1","2","3","4","5","6","7","8","9")
 	wire_text = list()
 	wire_order = list()
-	while(colours.len > 0)
-		var/color = colours[ rand(1,colours.len) ]
+	while(colors.len > 0)
+		var/color = colors[ rand(1,colors.len) ]
 		wire_text += color
-		colours -= color
+		colors -= color
 
 		var/order = orders[ rand(1,orders.len) ]
 		wire_order += text2num(order)

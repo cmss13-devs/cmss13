@@ -35,26 +35,26 @@
 		return
 
 	log_ooc("[mob.name]/[key] : [msg]")
-	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
+	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_color'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 
-	var/display_colour = GLOB.ooc_color_override
-	if(!display_colour)
-		display_colour = CONFIG_GET(string/ooc_color_normal)
+	var/display_color = GLOB.ooc_color_override
+	if(!display_color)
+		display_color = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		display_colour = CONFIG_GET(string/ooc_color_other)
+		display_color = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
-			display_colour = CONFIG_GET(string/ooc_color_debug)
+			display_color = CONFIG_GET(string/ooc_color_debug)
 		if(admin_holder.rights & R_MOD)
-			display_colour = CONFIG_GET(string/ooc_color_mods)
+			display_color = CONFIG_GET(string/ooc_color_mods)
 		if(admin_holder.rights & R_ADMIN)
-			display_colour = CONFIG_GET(string/ooc_color_admin)
+			display_color = CONFIG_GET(string/ooc_color_admin)
 		if(admin_holder.rights & R_COLOR)
-			display_colour = prefs.ooccolor
+			display_color = prefs.ooccolor
 	else if(donator)
-		display_colour = prefs.ooccolor
-	if(!display_colour) // if invalid R_COLOR choice
-		display_colour = CONFIG_GET(string/ooc_color_default)
+		display_color = prefs.ooccolor
+	if(!display_color) // if invalid R_COLOR choice
+		display_color = CONFIG_GET(string/ooc_color_default)
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -68,7 +68,7 @@
 			if(CONFIG_GET(flag/ooc_country_flags))
 				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
 					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
-			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_color]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."

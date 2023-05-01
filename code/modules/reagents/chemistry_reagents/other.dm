@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 

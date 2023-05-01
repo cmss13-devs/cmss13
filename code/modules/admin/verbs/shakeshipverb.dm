@@ -10,7 +10,7 @@
 	if(!sstrength)
 		return
 	var/stime = tgui_input_number(src, "Time Between Shakes?", "Don't make it too long", 0, 30)
-	if(!sstrength)
+	if(!stime)
 		return
 
 	var/prompt = tgui_alert(src, "Drop people?", "Confirmation", list("Yes", "No"), 20 SECONDS)

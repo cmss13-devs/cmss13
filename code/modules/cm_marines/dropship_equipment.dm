@@ -568,6 +568,7 @@
 	screen_mode = 1
 	is_interactable = TRUE
 	skill_required = SKILL_PILOT_EXPERT
+	var/shorthand
 	/// Time last fired, for weapon firing cooldown
 	var/last_fired
 	var/firing_sound
@@ -684,6 +685,7 @@
 	point_cost = 400
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
+	shorthand = "GAU"
 
 /obj/structure/dropship_equipment/weapon/heavygun/update_icon()
 	if(ammo_equipped)
@@ -700,6 +702,7 @@
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
+	shorthand = "MSL"
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
 	ammo_equipped = null //nothing left to empty after firing
@@ -721,6 +724,7 @@
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
+	shorthand = "RKT"
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -744,6 +748,7 @@
 	point_cost = 500
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
+	shorthand = "LZR"
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -762,6 +767,7 @@
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
 	point_cost = 400
+	shorthand = "LCH"
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
 	if(ship_base)

@@ -1,0 +1,26 @@
+.WeaponPanel {
+  border: 2px solid #00e94e;
+  border-radius: 5px;
+
+  .PanelTextBox {
+    margin: 2px;
+  }
+
+  .BaseSidePanel {
+    height: 100%;
+    width: 150px;
+  }
+
+  .WeaponPanelLeft {
+    @extend .BaseSidePanel;
+    border-right: 2px solid #00e94e;
+  }
+
+  .WeaponPanelRight {
+    @extend .BaseSidePanel;
+    border-left: 2px solid #00e94e;
+  }
+
+  .WeaponSelectionPanel {
+  }
+}

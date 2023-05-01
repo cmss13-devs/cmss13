@@ -88,7 +88,8 @@
 			update_location(null)
 
 	data = ui_data(usr)
-
+	tgui_interact(usr)
+/*
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
@@ -96,6 +97,12 @@
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
+*/
+/obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
+		ui.open()
 
 /obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -127,7 +134,7 @@
 	.["equipment_data"] = get_sanitised_equipment(dropship)
 	.["targets_data"] = get_targets()
 	if(selected_equipment)
-		.["selected_eqp"] = sanitize(copytext(selected_equipment.name, 1, MAX_MESSAGE_LEN))
+		.["selected_eqp"] = selected_equipment.ship_base.attach_id
 		if(selected_equipment.ammo_equipped)
 			var/obj/structure/ship_ammo/ammo_equipped = selected_equipment.ammo_equipped
 			.["selected_eqp_ammo_name"] = sanitize(copytext(ammo_equipped.name, 1, MAX_MESSAGE_LEN))
@@ -142,7 +149,7 @@
 		.["editing_firemission_length"] = editing_firemission ? editing_firemission.mission_length : 0
 		var/error_code = editing_firemission.check(src)
 		.["current_mission_error"] = error_code != FIRE_MISSION_ALL_GOOD ? editing_firemission.error_message(error_code) : null
-	.["firemission_edit_data"] = get_edit_firemission_data()
+		.["firemission_edit_data"] = get_edit_firemission_data()
 
 	if(firemission_envelope)
 		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
@@ -158,6 +165,20 @@
 		for(var/ts = 1; ts <= firemission_envelope.fire_length; ts++)
 			firemission_edit_timeslices += ts
 		.["firemission_edit_timeslices"] = firemission_edit_timeslices
+
+/obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
+	if(shuttle.is_hijacked)
+		return
+	var/mob/user = usr
+	switch(action)
+		if("select_equipment")
+			var/base_tag = params["equipment_id"]
+			ui_equip_interact(base_tag)
+			return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -192,20 +213,20 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_edit_firemission_data()
 	. = list()
+	if(!editing_firemission)
+		return
 	for(var/datum/cas_fire_mission_record/firerec in editing_firemission.records)
 		var/gimbal = firerec.get_offsets()
 		var/ammo = firerec.get_ammo()
 		var/offsets = new /list(firerec.offsets.len)
 		for(var/idx = 1; idx < firerec.offsets.len; idx++)
 			offsets[idx] = firerec.offsets[idx] == null ? "-" : firerec.offsets[idx]
-				. += list(
-					list(
-						"name" = sanitize(copytext(firerec.weapon.name, 1, 50)),
-						"ammo" = ammo,
-						"gimbal" = gimbal,
-						"offsets" = firerec.offsets
-					)
-				)
+			. += list(
+				"name" = sanitize(copytext(firerec.weapon.name, 1, 50)),
+				"ammo" = ammo,
+				"gimbal" = gimbal,
+				"offsets" = firerec.offsets
+			)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_firemission_dir()
 	var/fm_direction = dir2text(firemission_envelope.recorded_dir)
@@ -216,18 +237,29 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
 	var/element_nbr = 1
-	for(var/X in dropship.equipments)
-		var/obj/structure/dropship_equipment/E = X
-		.["equipment_data"] += list(
+	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
+		var/shorthand = equipment.name
+		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
+			var/obj/structure/dropship_equipment/weapon/W = equipment
+			shorthand = W.shorthand
+		. += list(
 			list(
-				"name"= sanitize(copytext(E.name, 1, MAX_MESSAGE_LEN)),
+				"name"= equipment.name,
+				"shorthand" = shorthand,
 				"eqp_tag" = element_nbr,
-				"is_weapon" = E.is_weapon,
-				"is_interactable" = E.is_interactable
+				"is_weapon" = equipment.is_weapon,
+				"is_interactable" = equipment.is_interactable,
+				"mount_point" = equipment.ship_base.attach_id,
+				"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
+				"ammo_name" = equipment.ammo_equipped?.name,
+				"ammo" = equipment.ammo_equipped?.ammo_count,
+				"max_ammo" = equipment.ammo_equipped?.max_ammo_count
 			)
 		)
+
 		element_nbr++
-		E.linked_console = src
+		equipment.linked_console = src
+
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_targets()
 	. = list()
@@ -253,10 +285,6 @@
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
 		return
-
-	if(href_list["equip_interact"])
-		var/base_tag = text2num(href_list["equip_interact"])
-		ui_equip_interact(base_tag)
 
 	if(href_list["open_fire"])
 		var/targ_id = text2num(href_list["open_fire"])
@@ -332,7 +360,8 @@
 	ui_interact(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_equip_interact(base_tag)
-	var/obj/structure/dropship_equipment/E = shuttle_equipments[base_tag]
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
+	var/obj/structure/dropship_equipment/E = shuttle.equipments[base_tag]
 	E.linked_console = src
 	E.equipment_interact(usr)
 

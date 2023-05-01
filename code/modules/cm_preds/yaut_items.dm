@@ -968,6 +968,7 @@
 	name = "How did you get this?"
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
+	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = "head"
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
@@ -1005,7 +1006,7 @@
 
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
-	icon_state = "head"
+	icon_state = "skull"
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/limb/skeleton/head/spine

@@ -257,7 +257,7 @@
 		var/obj/item/projectile/huggerProjectile = new /obj/item/projectile(src.loc, create_cause_data(initial(caste_type), src))
 		var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/facehugger]
 		huggerProjectile.generate_bullet(ammoDatum, bullet_generator = src)
-		huggerProjectile.fire_at(T, src, src, ammoDatum.max_range, caste.throwspeed)
+		huggerProjectile.fire_at(T, src, src, ammoDatum.max_range)
 		qdel(F) // delete the hugger in hand
 		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
 			SPAN_XENOWARNING("You throw a facehugger towards \the [T]!"))

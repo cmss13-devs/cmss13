@@ -2890,7 +2890,9 @@
 	name = "thrown hugger"
 	icon_state = "facehugger_thrown"
 	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+
 	max_range = 4
+	shell_speed = AMMO_SPEED_TIER_1
 
 /datum/ammo/xeno/facehugger/on_hit_mob(mob/target, obj/item/projectile/P)
 	var/mob/living/carbon/xenomorph/thrower = P.firer

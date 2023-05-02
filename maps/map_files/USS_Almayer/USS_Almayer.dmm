@@ -54045,6 +54045,7 @@
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/item/packageWrap,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5"
 	},

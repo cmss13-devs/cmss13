@@ -1,0 +1,5 @@
+author: "Tsunamico"
+delete-after: True
+changes:
+  - bugfix: "fixed a double log"
+  - bugfix: "fixed a little mistake on an if(!) check."

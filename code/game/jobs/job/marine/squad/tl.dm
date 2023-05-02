@@ -7,9 +7,9 @@
 	gear_preset = /datum/equipment_preset/uscm/tl
 	entry_message_body = "You are the <a href='"+URL_WIKI_TL_GUIDE+"'>Team Leader.</a>Your task is to assist the squad leader in leading the squad as well as utilize ordnance such as orbital bombardments, CAS, and mortar as well as coordinating resupply with Requisitions and CIC. If the squad leader dies, you are expected to lead in their place."
 
-/datum/job/marine/tl/generate_entry_conditions(mob/living/carbon/human/H)
+/datum/job/marine/tl/generate_entry_conditions(mob/living/carbon/human/spawning_human)
 	. = ..()
-	H.important_radio_channels += JTAC_FREQ
+	spawning_human.important_radio_channels += JTAC_FREQ
 
 AddTimelock(/datum/job/marine/tl, list(
 	JOB_SQUAD_ROLES = 8 HOURS

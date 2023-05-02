@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixes automatic shuttle launching for distress signals that require it (Xeno & Zombie ERTs)"

@@ -283,12 +283,9 @@
 /datum/world_topic/lookup_discord_id/Run(list/input)
 	data = list()
 
-	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
-	link.sync()
+	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, input["discord_id"]))
 
 	if(!link.player_id)
-		link.delete()
-
 		statuscode = 500
 		response = "Database lookup failed."
 		return

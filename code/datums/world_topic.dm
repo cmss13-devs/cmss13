@@ -315,7 +315,7 @@
 		response = "Database lookup failed."
 		return
 
-	data["discord_id"] = link.discord_id
+	data["discord_id"] = player.discord_link.discord_id
 	data["roles"] = player.get_whitelisted_roles()
 	statuscode = 200
 	response = "Lookup successful."

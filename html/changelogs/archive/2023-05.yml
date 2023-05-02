@@ -47,3 +47,13 @@
   usnpeepoo:
   - bugfix: Predators are now able to be automatically regurgitated
   - bugfix: Impending regurgitation message works again
+2023-05-02:
+  BeagleGaming1:
+  - bugfix: Spine checks for real_name instead of just name
+  - imageadd: Updates skull and spine onmob sprites
+  NewyearnewmeUwu:
+  - balance: Prosthetics can now be decalibrated by damage where normal limbs would
+      break.
+  - rscadd: Anyone with novice or higher surgery skill can recalibrate a prosthetic.
+  carlarctg:
+  - qol: Suppressors no longer change any stats but firing noise and muzzle flash.

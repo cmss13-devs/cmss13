@@ -175,7 +175,6 @@
 		response = "Authentication timed out."
 
 	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, id.playerid)
-	player.save()
 	player.sync()
 
 	if(!player.ckey)
@@ -249,7 +248,6 @@
 	data = list()
 
 	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
-	link.save()
 	link.sync()
 
 	if(!link.player_id)
@@ -260,7 +258,6 @@
 		return
 
 	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
-	player.save()
 	player.sync()
 
 	if(!player.discord_link)
@@ -287,7 +284,6 @@
 	data = list()
 
 	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
-	link.save()
 	link.sync()
 
 	if(!link.player_id)
@@ -298,7 +294,6 @@
 		return
 
 	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
-	player.save()
 	player.sync()
 
 	data["ckey"] = player.ckey
@@ -315,13 +310,7 @@
 
 	var/datum/entity/player/player = get_player_from_key(input["ckey"])
 
-	var/datum/entity/discord_link/link = DB_ENTITY(/datum/entity/discord_link, player.discord_link_id)
-	link.save()
-	link.sync()
-
-	if(!link.discord_id)
-		link.delete()
-
+	if(!player.discord_link || !player.discord_link.discord_id)
 		statuscode = 500
 		response = "Database lookup failed."
 		return

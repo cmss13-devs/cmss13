@@ -392,3 +392,30 @@
   blackcrystall:
   - bugfix: Stat proc replaced with get_status_tab_items, fixed issue with QUEEN additional
       status
+2023-04-29:
+  BeagleGaming1, Frans_Feiffer:
+  - imageadd: Added new MP clothing sprites
+  - imagedel: Removed the old MP clothing sprites
+  LynxSolstice:
+  - balance: Adds a Squad Weapons Specialist to the Cryorines.
+2023-04-30:
+  Drathek:
+  - bugfix: Fixed auxtools debugging.
+  Huffie56:
+  - bugfix: fix the med-bay door release button to exit treatment center.my bad.
+  Morrow:
+  - rscadd: Radio backpacks can now be used in hand
+  - bugfix: Fixed the off by one error in radio backpack item removal
+  - bugfix: Shaking a bag no longer drops non-items
+  Puckaboo2:
+  - rscdel: Removed doorint.dmi and merged the remaining sprites into Door1.dmi since
+      the latter shared many icon states with the former.
+  - code_imp: Generic doors and airlocks share the same icon file path now.
+  - spellcheck: Fixed a case-sensitive file path.
+  - bugfix: Alamo and Normandy side dropship doors no longer display as Xs when they
+      are examined or after crash landing on the Almayer.
+  - bugfix: Fixed an animation error on several Alamo door's icon states.
+  harryob:
+  - server: GLOB.round_id is now available for an incrementing id of rounds
+  usnpeepoo:
+  - bugfix: Xenos are no longer able to be cocooned by spiders

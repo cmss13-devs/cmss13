@@ -1,0 +1,4 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - bugfix: "Pouncing unconscious people will no longer stop the pounce effects ( such as hugging )"

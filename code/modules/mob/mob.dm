@@ -840,7 +840,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return

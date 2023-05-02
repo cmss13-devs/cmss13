@@ -618,7 +618,7 @@
 /obj/structure/surface/table/reinforced/cloth
 	name = "cloth table"
 	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
-	icon_state = "cloth"
+	icon_state = "clothtable"
 	table_prefix = "cloth"
 
 /*

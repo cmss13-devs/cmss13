@@ -1,0 +1,4 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - bugfix: "Readded several missing skill bonuses to several procs, like stripping and removing embedded objects, that previously were left blank. Some actions will be much faster for characters that are proficient in the required skills; particularly synthetics, medical staff/corpsmen, and MPs."

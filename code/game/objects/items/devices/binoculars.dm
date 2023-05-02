@@ -645,7 +645,7 @@
 		return
 	else if(las_mode == 2 && !las_b) //Give them the option for mortar fire.
 		lasing = TRUE
-		lasertarget.icon_state = "laz_b"
+		lasertarget.icon_state = "las_b"
 		las_b = 2
 		playsound(src, 'sound/effects/nightvision.ogg', 35)
 		sleep(50)
@@ -653,7 +653,7 @@
 			lasing = FALSE
 			las_b = 0
 			return 0
-		lasertarget.icon_state = "lazlock_b"
+		lasertarget.icon_state = "laslock_b"
 		var/HE_power = 0
 		var/con_power = 0
 		if(!plane_toggle)

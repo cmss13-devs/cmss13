@@ -1,0 +1,59 @@
+2023-05-01:
+  Drathek:
+  - admin: Fix permissions for MOD to receive staff, staff chat, and game logs in
+      STUI.
+  LTNTS:
+  - bugfix: CL bedroom window no longer hull
+  Puckaboo2:
+  - bugfix: The remaining icons and icon states in the obj/structure and obj/effects
+      path have been restored.
+  - bugfix: Medical wall lockers now spark when broken.
+  - bugfix: Admin and Observer Thunderdome Landmarks no longer share the same icon
+      state name.
+  - bugfix: The Admin Thunderdome landmark has its proper icon state.
+  - bugfix: Removed non-functional hatches near lifeboats.
+  - bugfix: Fixed an animation error on crew computers.
+  - imageadd: Xeno tunnels and Fog now have proper landmark icons.
+  - imageadd: Foliage in Sorokyne Strata can now be placed.
+  - imageadd: Added Icey grass. Grass that looks like ice. It's pretty. Could be used
+      on Shiva or Strata.
+  - imageadd: Security wall lockers now exist, but they currently do not have any
+      contents.
+  - imageadd: Warden lockers now exist.
+  - imageadd: Missing mech limbs have been added; missing mech armor has been added.
+  - imageadd: Added missing icon states.
+  - code_imp: Reassigned icons to objects with missing icon states.
+  - code_imp: Added more secret ice and thin ice blocks.
+  - rscdel: Removed an unused prop with no icon state.
+  - rscdel: Removed several unused effects with no icon states or no function.
+  - maptweak: Several filtration systems on Desert Dam have been restored.
+  - maptweak: Added tufts of dead grass on Sorokyne Strata.
+  - maptweak: Several drill towers have been restored on Sorokyne Strata.
+  - maptweak: Added a brand new locker for the Warden. Also rearranged Warden's room.
+  - spellcheck: Renamed some icon state strings to match the file names in their respective
+      .dmi files.
+  - spellcheck: Renamed all instances of Sedement to Sediment.
+  - spellcheck: All instances of laz_ have been replaced with las_.
+  Tsunamico:
+  - admin: Added a weapons panel in a ship section of the admin tab, where you can
+      shoot weapons at the Almayer.
+  - admin: Added a General Quarters button to the ship section of the admin tab, where
+      you can call General Quarters if the ship's in combat.
+  - admin: changed where shipshake is, to be under the ship section.
+  - soundadd: Added general sounds related to the receiving end of a ship vs ship
+      encounter, with two different General Quarters call, one containing the traditionally
+      used Bosun "All Hands" call(Which is the one used in the General Quarters verb).
+      For tradition.
+  usnpeepoo:
+  - bugfix: Predators are now able to be automatically regurgitated
+  - bugfix: Impending regurgitation message works again
+2023-05-02:
+  BeagleGaming1:
+  - bugfix: Spine checks for real_name instead of just name
+  - imageadd: Updates skull and spine onmob sprites
+  NewyearnewmeUwu:
+  - balance: Prosthetics can now be decalibrated by damage where normal limbs would
+      break.
+  - rscadd: Anyone with novice or higher surgery skill can recalibrate a prosthetic.
+  carlarctg:
+  - qol: Suppressors no longer change any stats but firing noise and muzzle flash.

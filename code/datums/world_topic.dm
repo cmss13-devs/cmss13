@@ -322,6 +322,7 @@
 
 		statuscode = 500
 		response = "Database lookup failed."
+		return
 
 	data["discord_id"] = link.discord_id
 	data["roles"] = player.get_whitelisted_roles()

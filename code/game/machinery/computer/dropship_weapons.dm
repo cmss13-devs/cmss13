@@ -38,7 +38,15 @@
 	if(..())
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+
+		// everyone can access the simulator, requested feature.
+		to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
+
+		if(!selected_firemission)
+			to_chat(usr, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			return
+
+		tgui_interact(user)
 		return 1
 
 	user.set_interaction(src)
@@ -421,9 +429,6 @@
 
 	if(href_list["switch_to_simulation"])
 		var/mob/M = usr
-		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
-			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
-			return
 		if(!selected_firemission)
 			to_chat(usr, SPAN_WARNING("Select a firemission before attempting to run the simulation"))
 			return

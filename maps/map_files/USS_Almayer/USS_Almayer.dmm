@@ -58686,7 +58686,6 @@
 	},
 /area/almayer/squads/charlie_delta_shared)
 "qUH" = (
-/obj/item/clothing/under/colonist/clf,
 /obj/item/storage/bag/plasticbag,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{

@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - balance: "Prosthetics can now be decalibrated by damage where normal limbs would break."
+  - rscadd: "Anyone with novice or higher surgery skill can recalibrate a prosthetic."

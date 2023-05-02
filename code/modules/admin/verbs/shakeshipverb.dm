@@ -1,6 +1,6 @@
 /client/proc/shakeshipverb()
 	set name = "Shake Shipmap"
-	set category = "Admin.Events"
+	set category = "Admin.Ship"
 
 	var/drop = FALSE
 	var/delayt

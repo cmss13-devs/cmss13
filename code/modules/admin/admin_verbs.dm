@@ -125,7 +125,9 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/force_event,
 	/client/proc/toggle_events,
 	/client/proc/toggle_shipside_sd,
-	/client/proc/shakeshipverb
+	/client/proc/shakeshipverb,
+	/client/proc/adminpanelweapons,
+	/client/proc/adminpanelgq
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

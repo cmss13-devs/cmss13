@@ -98,6 +98,8 @@
 	active_areas += src
 	all_areas += src
 	reg_in_areas_in_z()
+	if(is_mainship_level(z))
+		GLOB.ship_areas += src
 
 /area/proc/initialize_power_and_lighting(override_power)
 	if(requires_power)

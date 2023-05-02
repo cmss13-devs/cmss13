@@ -17209,7 +17209,7 @@
 /area/lv522/indoors/a_block/medical/glass)
 "ial" = (
 /obj/structure/filtration/machine_96x96/indestructible{
-	icon_state = "sedementation"
+	icon_state = "sedimentation"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -19970,7 +19970,7 @@
 /area/lv522/atmos/east_reactor)
 "jin" = (
 /obj/structure/filtration/machine_96x96/indestructible{
-	icon_state = "sedementation_A_1";
+	icon_state = "sedimentation_A_1";
 	layer = 3.1
 	},
 /turf/open/floor/prison{

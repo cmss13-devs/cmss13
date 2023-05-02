@@ -15371,9 +15371,14 @@
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "bgG" = (
-/obj/structure/window/framed/almayer/white,
-/turf/open/floor/plating,
-/area/almayer/medical/chemistry)
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_hallway)
 "bgH" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -15609,6 +15614,9 @@
 	req_access = null;
 	req_access_txt = "20";
 	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -16326,10 +16334,6 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "bmO" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = 8;
-	pixel_y = 32
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
@@ -16849,8 +16853,8 @@
 	},
 /area/almayer/living/briefing)
 "bpz" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -17932,11 +17936,11 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "bvz" = (
-/obj/structure/machinery/optable,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/structure/machinery/optable,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -19227,6 +19231,7 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -27962,8 +27967,8 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "cAF" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -33736,6 +33741,9 @@
 	name = "\improper Field Surgery Equipment";
 	req_access_txt = "20";
 	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -46411,10 +46419,10 @@
 	},
 /area/almayer/squads/charlie)
 "lkW" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -53698,6 +53706,7 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
 	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -56474,6 +56483,10 @@
 	name = "ship-grade camera"
 	},
 /obj/structure/barricade/handrail/medical,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -57230,12 +57243,12 @@
 	},
 /area/almayer/living/grunt_rnr)
 "qxL" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -57291,13 +57304,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
-"qyD" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/recharger,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "qyF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -60175,11 +60181,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/smartfridge/chemistry,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 2
 	},
+/obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side"
@@ -62950,11 +62956,11 @@
 /area/almayer/squads/req)
 "tiI" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -67123,9 +67129,7 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -72252,6 +72256,9 @@
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
@@ -99237,7 +99244,7 @@ kPx
 bgk
 biq
 dvg
-bgG
+nvM
 bnI
 uVu
 qjN
@@ -100259,7 +100266,7 @@ qjN
 eEk
 qjN
 qjN
-qyD
+oDY
 omo
 blZ
 bqN
@@ -100651,7 +100658,7 @@ xbk
 wfE
 kEb
 sLE
-aLG
+cOM
 baZ
 iey
 bmb
@@ -100876,7 +100883,7 @@ qjN
 tzP
 bei
 baZ
-buH
+oLv
 iEb
 buH
 app
@@ -101056,8 +101063,8 @@ jpt
 xbk
 aWw
 aLG
-aZi
-cOM
+bgG
+tzf
 vcq
 qPS
 qPS
@@ -101260,7 +101267,7 @@ pcE
 aWw
 aLG
 aZi
-aLG
+cOM
 baZ
 tmg
 qjN
@@ -101462,8 +101469,8 @@ maL
 uKe
 aWw
 aLG
-avX
-tzf
+aZi
+aLG
 bCd
 biy
 icw
@@ -101485,7 +101492,7 @@ qjN
 qjN
 jdG
 baZ
-buH
+oLv
 mKY
 hvp
 mWw
@@ -101666,7 +101673,7 @@ aKW
 aKW
 aLG
 aZi
-cOM
+aLG
 baZ
 baZ
 baZ
@@ -101688,7 +101695,7 @@ qjN
 qjN
 bei
 bCd
-oLv
+buH
 hop
 vMx
 yhQ

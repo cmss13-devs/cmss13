@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixes a runtime when deleting a mark that is tracked."
+  - bugfix: "Fixes a runtime when a lurker pounces again but hasn't used her unfreeze slash between pounces."

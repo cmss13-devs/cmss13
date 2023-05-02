@@ -743,8 +743,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
-	icon_state = "d_helmet"
-	item_state = "d_helmet"
+	icon_state = "helmet"
+	item_state = "helmet"
 	specialty = "M10 pattern officer"
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal

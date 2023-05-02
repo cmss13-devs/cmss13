@@ -254,8 +254,11 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
-		drop_inv_item_on_ground(F)
-		F.throw_atom(T, 4, caste.throwspeed)
+		var/obj/item/projectile/huggerProjectile = new /obj/item/projectile(src.loc, create_cause_data(initial(caste_type), src))
+		var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/facehugger]
+		huggerProjectile.generate_bullet(ammoDatum, bullet_generator = src)
+		huggerProjectile.fire_at(T, src, src, ammoDatum.max_range, caste.throwspeed)
+		qdel(F) // delete the hugger in hand
 		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
 			SPAN_XENOWARNING("You throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)

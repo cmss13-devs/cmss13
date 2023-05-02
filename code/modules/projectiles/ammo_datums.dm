@@ -2886,6 +2886,28 @@
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(mob/overlayed_mob, image/tail_image)
 	overlayed_mob.overlays -= tail_image
 
+/datum/ammo/xeno/facehugger
+	name = "thrown hugger"
+	icon_state = "facehugger_thrown"
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	max_range = 4
+
+/datum/ammo/xeno/facehugger/on_hit_mob(mob/target, obj/item/projectile/P)
+	var/mob/living/carbon/xenomorph/thrower = P.firer
+	var/obj/item/clothing/mask/facehugger/child = new (target.loc)
+	child.hivenumber = thrower.hivenumber
+	if(thrower.can_not_harm(target))
+		return
+	target.apply_effect(1, WEAKEN)
+	spawn(15)
+		if(child.stat == CONSCIOUS && child.loc) //Make sure we're conscious and not idle or dead.
+			child.leap_at_nearest_target()
+
+/datum/ammo/xeno/facehugger/do_at_max_range(obj/item/projectile/P)
+	var/mob/living/carbon/xenomorph/thrower = P.firer
+	var/obj/item/clothing/mask/facehugger/child = new (P.loc)
+	child.hivenumber = thrower.hivenumber
+
 /*
 //======
 					Shrapnel

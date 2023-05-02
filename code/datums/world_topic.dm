@@ -164,6 +164,8 @@
 	var/datum/entity/discord_identifier/id = get_discord_identifier_by_token(identifier)
 
 	if(!id || !id.playerid)
+		id.delete()
+
 		statuscode = 500
 		response = "Database query failed"
 		return

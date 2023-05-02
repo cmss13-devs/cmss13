@@ -17367,9 +17367,8 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "bsj" = (
-/obj/structure/machinery/line_nexter{
-	dir = 4;
-	id = "MTline"
+/obj/structure/machinery/line_nexter/med{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -18398,6 +18397,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "byb" = (
+/obj/structure/barricade/handrail/medical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -44779,6 +44779,14 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"kws" = (
+/obj/structure/machinery/line_nexter/med{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "kwz" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -71446,6 +71454,12 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"wYK" = (
+/obj/structure/barricade/handrail/medical,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "wYS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -100594,7 +100608,7 @@ aLG
 bCd
 iey
 baf
-qjN
+kws
 vSn
 vSn
 mvI
@@ -100813,7 +100827,7 @@ tzP
 qjN
 qjN
 tzP
-bei
+wYK
 bCd
 buH
 iEb

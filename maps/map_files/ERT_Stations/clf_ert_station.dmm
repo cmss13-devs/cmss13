@@ -102,6 +102,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
+"aR" = (
+/obj/structure/platform/kutjevo,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
 "bb" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -454,6 +461,14 @@
 	dir = 6
 	},
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ks" = (
+/obj/structure/platform/kutjevo,
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "kF" = (
 /obj/effect/decal/cleanable/blood,
@@ -909,6 +924,15 @@
 /area/adminlevel/ert_station/clf_station)
 "uX" = (
 /turf/open/floor/plating,
+/area/adminlevel/ert_station/clf_station)
+"uZ" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 14
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "vm" = (
 /obj/structure/bed/chair/bolted{
@@ -1967,6 +1991,16 @@
 "Wb" = (
 /obj/structure/curtain/red,
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"Wc" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 14
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "Wo" = (
 /obj/item/weapon/throwing_knife,
@@ -3802,11 +3836,11 @@ ta
 pk
 bL
 by
-Ag
 by
 kr
 ta
 bL
+zO
 zO
 Ch
 ZI
@@ -3845,12 +3879,12 @@ pk
 pk
 ta
 ta
-ta
 pk
 pk
 pk
 bL
-Ch
+uZ
+ks
 eH
 uO
 cH
@@ -3891,8 +3925,8 @@ pk
 pk
 pk
 pk
-pk
-Ch
+Wc
+aR
 eH
 Re
 mw

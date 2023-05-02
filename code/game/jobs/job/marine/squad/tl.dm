@@ -9,7 +9,7 @@
 
 /datum/job/marine/tl/generate_entry_conditions(mob/living/carbon/human/spawning_human)
 	. = ..()
-	H.important_radio_channels += JTAC_FREQ
+	spawning_human.important_radio_channels += JTAC_FREQ
 
 AddTimelock(/datum/job/marine/tl, list(
 	JOB_SQUAD_ROLES = 8 HOURS

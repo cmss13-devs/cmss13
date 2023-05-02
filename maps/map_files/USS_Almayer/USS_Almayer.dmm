@@ -21411,7 +21411,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	step_y = 0;
 	pixel_y = 1
 	},
 /turf/open/floor/almayer{
@@ -27262,7 +27261,6 @@
 "cnr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	step_y = 0;
 	pixel_y = 1
 	},
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -52833,7 +52831,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	step_y = 0;
 	pixel_x = 1
 	},
 /obj/structure/machinery/sleep_console,

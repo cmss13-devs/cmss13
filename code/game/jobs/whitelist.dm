@@ -40,4 +40,12 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 				return 1
 	return 0
 
+/proc/get_whitelisted_roles(ckey)
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR)
+		LAZYADD(., "predator")
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_COMMANDER)
+		LAZYADD(., "commander")
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_SYNTHETIC)
+		LAZYADD(., "synthetic")
+
 #undef WHITELISTFILE

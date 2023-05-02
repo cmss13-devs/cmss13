@@ -182,7 +182,7 @@
 		response = "Database query failed."
 
 	data["ckey"] = player.ckey
-	data["roles"] = player.get_whitelisted_roles()
+	data["roles"] = get_whitelisted_roles(player.ckey)
 
 	if(player.discord_link)
 		statuscode = 503
@@ -294,7 +294,7 @@
 	player.sync()
 
 	data["ckey"] = player.ckey
-	data["roles"] = player.get_whitelisted_roles()
+	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
 
@@ -305,14 +305,21 @@
 /datum/world_topic/lookup_ckey/Run(list/input)
 	data = list()
 
-	var/datum/entity/player/player = get_player_from_key(input["ckey"])
+	var/datum/view_record/players/player = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("ckey", DB_EQUALS, input["ckey"]))
+	if(!player || !player.discord_link_id)
+		statuscode = 501
+		response = "Database lookup failed."
+		return
 
-	if(!player.discord_link || !player.discord_link.discord_id)
+	var/datum/entity/discord_link/link = DB_ENTITY(/datum/entity/discord_link, player.discord_link_id)
+	link.sync()
+
+	if(!link || !link.discord_id)
 		statuscode = 500
 		response = "Database lookup failed."
 		return
 
-	data["discord_id"] = player.discord_link.discord_id
-	data["roles"] = player.get_whitelisted_roles()
+	data["discord_id"] = link.discord_id
+	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."

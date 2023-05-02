@@ -13,6 +13,7 @@
 	)
 
 /datum/view_record/discord_link
+	var/id
 	var/player_id
 	var/discord_id
 
@@ -20,6 +21,7 @@
 	root_record_type = /datum/entity/discord_link
 	destination_entity = /datum/view_record/discord_link
 	fields = list(
+		"id",
 		"player_id",
 		"discord_id",
 	)

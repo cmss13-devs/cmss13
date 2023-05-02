@@ -656,6 +656,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		stat.stat_number += num
 	stat.save()
 
+/datum/entity/player/proc/get_whitelisted_roles()
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_PREDATOR)
+		LAZYADD(., "predator")
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_COMMANDER)
+		LAZYADD(., "commander")
+	if(RoleAuthority.roles_whitelist[ckey] & WHITELIST_SYNTHETIC)
+		LAZYADD(., "synthetic")
+
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player

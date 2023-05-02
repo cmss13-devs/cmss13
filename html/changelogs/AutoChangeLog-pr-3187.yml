@@ -1,0 +1,5 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - imageadd: "adds medical turns tile variant"
+  - maptweak: "tweaks medbay lobby to include new turns tile and adds one more set of med handrails by window"

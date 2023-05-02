@@ -3047,8 +3047,8 @@
 /datum/ammo/bullet/shrapnel/gau/whiplash
 	name = "30mm shell whiplash"
 
-	damage = 35
-	penetration = ARMOR_PENETRATION_TIER_3
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_MAX
 
 /datum/ammo/bullet/shrapnel/gau/on_hit_mob(mob/M, obj/item/projectile/P)

@@ -26851,14 +26851,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/engineering/port_atmos)
-"ckh" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/plating,
-/area/almayer/living/briefing)
 "ckl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -35713,7 +35705,9 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "fOk" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "fOz" = (
@@ -56562,10 +56556,6 @@
 	icon_state = "test_floor5"
 	},
 /area/almayer/squads/req)
-"pUu" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/almayer/command/combat_correspondent)
 "pUA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/window/reinforced/ultra{
@@ -111701,12 +111691,12 @@ xAt
 beH
 gAj
 gAj
-qMR
-vKe
-ckh
-bFu
-buI
-lAO
+beH
+bqZ
+bdg
+buH
+bHa
+bHL
 buH
 nsY
 nsY
@@ -118307,7 +118297,7 @@ qgK
 tEB
 uBM
 dXo
-pUu
+oIB
 lBR
 nVu
 vuv

@@ -147,6 +147,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
+	else if(href_list["loadimages"])
+		if(!check_rights(R_MOD|R_ADMIN))
+			return
+
+		var/list/photo_list = locate(href_list["loadimages"])
+
+		if(!photo_list)
+			return
+
+		for(var/photo in photo_list)
+			usr << browse_rsc(photo_list[photo], photo)
+
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
 

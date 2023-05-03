@@ -260,15 +260,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
-	recoil_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	damage_falloff_mod = 0.1
 	attach_icon = pick("suppressor_a","suppressor2_a")
-
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-	damage_falloff_mod = 0.4
 
 /obj/item/attachable/suppressor/xm40_integral
 	name = "\improper XM40 integral suppressor"
@@ -277,13 +270,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor/xm40_integral/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
-	recoil_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-	damage_falloff_mod = 0.1
 	attach_icon = "m40sd_suppressor_a"
 
 /obj/item/attachable/bayonet

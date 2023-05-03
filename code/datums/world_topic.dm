@@ -161,6 +161,13 @@
 
 	data = list()
 
+	var/datum/view_record/discord_link/existing_link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, discord_id))
+
+	if(existing_link)
+		status_code = 504
+		response = "Discord ID already verified."
+		return
+
 	var/datum/entity/discord_identifier/id = get_discord_identifier_by_token(identifier)
 
 	if(!id || !id.playerid)

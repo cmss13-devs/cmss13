@@ -23,6 +23,8 @@
 	var/iteration_needed = 0
 	/// How many W-Y dollars are deducted from the supply controller. Only use for contraband.
 	var/dollar_cost = 0
+	/// How much "heat" this crate adds, too much heat will send an investigation. Only use for contraband.
+	var/crate_heat = 0
 
 /datum/supply_packs/New()
 	if(randomised_num_contained)

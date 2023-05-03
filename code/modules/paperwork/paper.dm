@@ -245,6 +245,7 @@
 		t = replacetext(t, "\[logo\]", "<img src = wylogo.png>")
 		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
 		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
+		t = replacetext(t, "\[cmb\]", "<img src = 'cmblogo.png'width='125'height='125'>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!

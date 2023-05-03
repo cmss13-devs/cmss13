@@ -967,8 +967,8 @@ United States Colonial Marines
 		SKILL_JTAC = SKILL_JTAC_BEGINNER
 	)
 
-/datum/skills/rto
-	name = "Squad Radio Telephone Operator"
+/datum/skills/tl
+	name = "Fireteam Leader"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,

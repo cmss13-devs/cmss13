@@ -35,6 +35,8 @@
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
+	if(health != maxhealth) //Update cades mapped with a custom health
+		update_health(0, TRUE)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)

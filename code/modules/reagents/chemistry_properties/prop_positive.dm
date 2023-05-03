@@ -120,6 +120,30 @@
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
 
+/datum/chem_property/positive/hemostatic
+	name = PROPERTY_HEMOSTATIC
+	code = "HSC"
+	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by heightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
+	rarity = PROPERTY_UNCOMMON
+	max_level = 1
+	value = 2
+
+/datum/chem_property/positive/hemostatic/process(mob/living/affected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = affected_mob
+	effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/on_delete(mob/living/affected_mob)
+	var/mob/living/carbon/human/effected_human = affected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/process_overdose(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency, BRUTE)
+
+/datum/chem_property/positive/hemostatic/process_critical(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency * 9, BRUTE)
+	affected_mob.apply_damage(potency * 9, BURN)
+	affected_mob.apply_damage(potency * 9, TOX)
+
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"

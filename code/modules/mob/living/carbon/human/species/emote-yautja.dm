@@ -94,6 +94,8 @@
 
 /datum/emote/living/carbon/human/yautja/loudroar/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
+	if(!.)
+		return
 
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), 18) - user)
 		var/relative_dir = get_dir(current_mob, user)

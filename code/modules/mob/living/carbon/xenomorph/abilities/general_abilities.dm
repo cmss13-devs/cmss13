@@ -153,7 +153,7 @@
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
 			name = "Corrosive Acid (125)"
-			acid_plasma_cost = 100
+			acid_plasma_cost = 125
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak
@@ -461,5 +461,12 @@
 
 /datum/action/xeno_action/onclick/evolve/action_activate()
 	var/mob/living/carbon/xenomorph/xeno = owner
-
 	xeno.do_evolve()
+
+/datum/action/xeno_action/onclick/evolve/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	// Perform check_state(TRUE) silently:
+	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
+		return TRUE

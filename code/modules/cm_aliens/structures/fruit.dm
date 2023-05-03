@@ -3,6 +3,7 @@
 /obj/effect/alien/resin/fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A fruit that can be eaten to immediately recover health."
+	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_immature"
 	density = FALSE
 	opacity = FALSE
@@ -26,6 +27,7 @@
 	var/gardener_sac_color = "#17991B"
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Drone linked to this fruit
+	var/obj/effect/alien/weeds/bound_weed
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
 
 /obj/effect/alien/resin/fruit/attack_hand(mob/living/user)
@@ -49,6 +51,7 @@
 		return INITIALIZE_HINT_QDEL
 
 	bound_xeno = X
+	bound_weed = W
 	hivenumber = X.hivenumber
 	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
@@ -62,6 +65,14 @@
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
 	qdel(src)
+
+/obj/effect/alien/resin/fruit/proc/unregister_weed_expiration_signal()
+	if(bound_weed)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+
+/obj/effect/alien/resin/fruit/proc/register_weed_expiration_signal(obj/effect/alien/weeds/new_weed)
+	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	bound_weed = new_weed
 
 /obj/effect/alien/resin/fruit/proc/handle_xeno_qdel()
 	SIGNAL_HANDLER

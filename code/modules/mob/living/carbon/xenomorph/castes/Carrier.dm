@@ -249,6 +249,9 @@
 		to_chat(src, SPAN_WARNING("You need a facehugger in your hand to throw one!"))
 		return
 
+	if(!do_after(src, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+		return
+
 	if(!threw_a_hugger)
 		threw_a_hugger = TRUE
 		for(var/X in actions)

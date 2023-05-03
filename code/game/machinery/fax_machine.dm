@@ -256,7 +256,7 @@ var/list/alldepartments = list()
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[usr];originfax=\ref[src]'>Send Press fax message</option>"
 
 /proc/highcom_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] ")
@@ -273,7 +273,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/provost_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PROVOST FAX: </font>[key_name(Sender, 1)] ")
@@ -290,7 +290,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/cmb_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX: </font>[key_name(Sender, 1)] ")
@@ -307,7 +307,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/company_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
@@ -321,7 +321,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/press_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PRESS FAX: </font>[key_name(Sender, 1)] ")
@@ -359,7 +359,7 @@ var/list/alldepartments = list()
 			C << 'sound/effects/sos-morse-code.ogg'
 
 /proc/general_fax(originfax, sent, sentname, mob/Sender)
-	var/faxcontents = "[sent]"
+	var/datum/fax/faxcontents = new(sent)
 	GLOB.fax_contents += faxcontents
 	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
@@ -454,3 +454,11 @@ var/list/alldepartments = list()
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"
+
+/datum/fax
+	var/data
+
+/datum/fax/New(data)
+	. = ..()
+
+	src.data = data

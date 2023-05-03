@@ -1,5 +1,0 @@
-author: "sleepynecrons"
-delete-after: True
-changes:
-  - imageadd: "new sprites for landing zone signs"
-  - imagedel: "deleted old landing zone signs"

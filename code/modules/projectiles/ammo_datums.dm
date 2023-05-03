@@ -3030,21 +3030,26 @@
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
 	name = "30mm Multi-Purpose shell"
 
-	damage = 100 //More damaging, but 2x less shells and low AP
+	damage = 100 // More damage, less AP
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_MAX
 	max_range = 0
 	shrapnel_chance = 100 //the least of your problems
 
 /datum/ammo/bullet/shrapnel/gau/at
-	name = "30mm Anti-Tank shell"
+	name = "30mm Anti-Tank shell" // More AP, Less damage
 
-	damage = 65 //Standard AP vs standard. (more AP for less damage)
+	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
 
 
-/datum/ammo/bullet/shrapnel/gau/whiplash
+/datum/ammo/bullet/shrapnel/gau/whiplash // For the outer ring of the 3x3
+/*
+	Please for the love of unga be careful if you decide to edit this.
+	The math on these adds up INSANELY quickly. there are going to be 320 of these per single burst of the GAU
+	or 6400 of these per full 4X GAU FM. So this shit adds up quick.
+*/
 	name = "30mm shell whiplash"
 
 	damage = 30
@@ -3052,7 +3057,7 @@
 	accuracy = HIT_ACCURACY_TIER_MAX
 	shrapnel_chance = 0
 
-/datum/ammo/bullet/shrapnel/gau/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shrapnel/gau/on_hit_mob(mob/M, obj/item/projectile/P) // ATMOSPHERE GOOD.
 	M.apply_effect(8, DAZE)
 	if(isxeno(M))
 		to_chat(M, SPAN_XENOHIGHDANGER("You screech in horror as the 30mm shell rips through you!"))

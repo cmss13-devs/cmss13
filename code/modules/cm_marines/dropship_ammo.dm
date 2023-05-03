@@ -146,7 +146,7 @@
 	fire_mission_delay = 2
 	var/bullet_scatter_range = 4 //how far from the real impact turf can bullets land.
 	var/bullet_accuracy_range = 1 //how far from a BULLET impact turf additional impacts can land.
-	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts. also the shrapnel type for the center of a 3x3 impact
 	var/outerring_shrap_type = /datum/ammo/bullet/shrapnel/gau/whiplash //shrapnel type for the outer ring of the 3x3
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)

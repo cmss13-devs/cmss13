@@ -139,7 +139,8 @@
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
 		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
-	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6)
+	var/datum/cause_data/cause_data = create_cause_data("acid_shroud gas", owner)
+	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
 	for (var/action_type in action_types_to_cd)

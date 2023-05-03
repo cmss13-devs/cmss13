@@ -25,6 +25,7 @@ var/list/alldepartments = list()
 
 	// copy of the original fax in paper format, we want the original item (i.e. photo, paper bundle) not be changed as the user will need to eject it.
 	var/obj/item/paper/fax_paper_copy
+
 	///Our department
 	var/department = "General Public"
 
@@ -269,7 +270,7 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
-	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PRESS FAX: </font>[key_name(user, 1)] ")
+	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[user]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[user]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[user]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[user]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) "
@@ -277,7 +278,7 @@ var/list/alldepartments = list()
 	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[fax_paper_copy.name]' via secure connection ... <a href='?FaxView=\ref[fax_paper_copy.info]'>view message</a>"
 
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
 	msg_ghost += "Receiving '[fax_paper_copy.name]' via secure connection ... <a href='?FaxView=\ref[fax_paper_copy.info]'>view message</a>"
 
 	switch(target_department)

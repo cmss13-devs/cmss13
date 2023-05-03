@@ -22,7 +22,7 @@
 	var/stam_dam = 7
 
 /datum/effects/neurotoxin/New(atom/thing, mob/from = null)
-	..(thing, from, "neurotoxic gas")
+	..(thing, from, "neurotoxin")
 
 /datum/effects/neurotoxin/validate_atom(atom/thing)
 	if(isxeno(thing) || isobj(thing))

@@ -67,7 +67,7 @@
 			_role = H.job
 		else if(ID)
 			_role = ID.rank
-		switch(GET_DEFAULT_ROLE(_role))
+		switch(_role)
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"

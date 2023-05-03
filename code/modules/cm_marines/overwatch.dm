@@ -304,7 +304,7 @@
 					misc_text += marine_infos
 
 		dat += "<b>[leader_count ? "Squad Leader Deployed" : SET_CLASS("No Squad Leader Deployed!", INTERFACE_RED)]</b><BR>"
-		dat += "<b>Team Leaders: [tl_count ? "[tl_count]" : SET_CLASS("No Team Leaders Deployed!", INTERFACE_RED)]</b><BR>"
+		dat += "<b>Fireteam Leaders: [tl_count ? "[tl_count]" : SET_CLASS("No Fireteam Leaders Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[spec_count ? "Squad Specialist Deployed" : SET_CLASS("No Specialist Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[smart_count ? "Squad Smartgunner Deployed" : SET_CLASS("No Smartgunner Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>Squad Hospital Corpsmen: [medic_count] Deployed | Squad Combat Technicians: [engi_count] Deployed</b><BR>"

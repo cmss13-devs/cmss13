@@ -790,7 +790,7 @@
 					name = "marine combat technician " + name
 					keys += new /obj/item/device/encryptionkey/engi(src)
 				if(JOB_SQUAD_TEAM_LEADER)
-					name = "marine team leader " + name
+					name = "marine fireteam leader " + name
 					keys += new /obj/item/device/encryptionkey/jtac(src)
 				else
 					name = "marine " + name

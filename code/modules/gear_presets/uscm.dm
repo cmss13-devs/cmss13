@@ -354,7 +354,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tl
-	name = "USCM Squad Team Leader"
+	name = "USCM Fireteam Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
@@ -374,7 +374,7 @@
 	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/tl/cryo
-	name = "USCM Cryo Squad Team Leader"
+	name = "USCM Cryo Fireteam Leader"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
 /datum/equipment_preset/uscm/tl/cryo/load_gear(mob/living/carbon/human/H)
@@ -732,7 +732,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tl_equipped
-	name = "USCM Squad Team Leader (Equipped)"
+	name = "USCM Fireteam Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
@@ -763,7 +763,7 @@
 	H.back.pickup()
 
 /datum/equipment_preset/uscm/tl_equipped/cryo
-	name = "USCM Cryo Squad Team Leader (Equipped)"
+	name = "USCM Cryo Fireteam Leader (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
 //############ Marine Raiders #############

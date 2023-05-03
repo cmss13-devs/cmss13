@@ -968,7 +968,7 @@ United States Colonial Marines
 	)
 
 /datum/skills/tl
-	name = "Squad Team Leader"
+	name = "Fireteam Leader"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,

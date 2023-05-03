@@ -764,25 +764,25 @@
 //TL doors, yes this is stupid
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/tl
-	name = "\improper Alpha Squad Team Leader Preparations"
+	name = "\improper Alpha Squad Fireteam Leader Preparations"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/tl
-	name = "\improper Bravo Squad Team Leader Preparations"
+	name = "\improper Bravo Squad Fireteam Leader Preparations"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/tl
-	name = "\improper Charlie Squad Team Leader Preparations"
+	name = "\improper Charlie Squad Fireteam Leader Preparations"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/tl
-	name = "\improper Delta Squad Team Leader Preparations"
+	name = "\improper Delta Squad Fireteam Leader Preparations"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_TL_PREP)
 	dir = SOUTH

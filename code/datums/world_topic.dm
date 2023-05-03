@@ -164,7 +164,7 @@
 	var/datum/view_record/discord_link/existing_link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, discord_id))
 
 	if(existing_link)
-		status_code = 504
+		statuscode = 504
 		response = "Discord ID already verified."
 		return
 

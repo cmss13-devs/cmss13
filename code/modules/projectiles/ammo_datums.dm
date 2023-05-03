@@ -3030,7 +3030,7 @@
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
 	name = "30mm Multi-Purpose shell"
 
-	damage = 115 //More damaging, but 2x less shells and low AP
+	damage = 100 //More damaging, but 2x less shells and low AP
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_MAX
 	max_range = 0
@@ -3039,7 +3039,7 @@
 /datum/ammo/bullet/shrapnel/gau/at
 	name = "30mm Anti-Tank shell"
 
-	damage = 80 //Standard AP vs standard. (more AP for less damage)
+	damage = 65 //Standard AP vs standard. (more AP for less damage)
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_MAX
 
@@ -3047,29 +3047,23 @@
 /datum/ammo/bullet/shrapnel/gau/whiplash
 	name = "30mm shell whiplash"
 
-	damage = 40
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_MAX
+	shrapnel_chance = 0
 
 /datum/ammo/bullet/shrapnel/gau/on_hit_mob(mob/M, obj/item/projectile/P)
-	M.apply_effect(2, SUPERSLOW)
-	M.apply_effect(4, SLOW)
 	M.apply_effect(8, DAZE)
 	if(isxeno(M))
 		to_chat(M, SPAN_XENOHIGHDANGER("You screech in horror as the 30mm shell rips through you!"))
 	else
 		to_chat(M, SPAN_HIGHDANGER("You scream in pain as the 30mm shell rips through you!"))
 /datum/ammo/bullet/shrapnel/gau/whiplash/on_hit_mob(mob/M, obj/item/projectile/P)
-	M.apply_effect(2, SLOW)
 	M.apply_effect(4, DAZE)
 	if(isxeno(M))
 		to_chat(M, SPAN_XENODANGER("You are shaken by the near miss 30mm impact!"))
 	else
 		to_chat(M, SPAN_DANGER("You are shaken by the near miss 30mm impact"))
-
-
-
-
 
 
 /*

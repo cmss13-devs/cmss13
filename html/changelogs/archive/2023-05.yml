@@ -57,3 +57,40 @@
   - rscadd: Anyone with novice or higher surgery skill can recalibrate a prosthetic.
   carlarctg:
   - qol: Suppressors no longer change any stats but firing noise and muzzle flash.
+2023-05-03:
+  BeagleGaming1:
+  - bugfix: Fixes combi-stick duplicating and not un-wielding properly
+  Clvrbot:
+  - rscdel: Removed comms APCs from areas that already had APCs
+  Drathek:
+  - bugfix: Fix runtimes cause by non-player mobs emoting
+  - bugfix: Fixes a runtime when deleting a mark that is tracked.
+  - bugfix: Fixes a runtime when a lurker pounces again but hasn't used her unfreeze
+      slash between pounces.
+  - bugfix: Fixes automatic shuttle launching for distress signals that require it
+      (Xeno & Zombie ERTs)
+  - bugfix: Fix evolve button not working when resting
+  LTNTS:
+  - bugfix: missing surgery skill for ERT
+  - imageadd: adds medical turns tile variant
+  - maptweak: tweaks medbay lobby to include new turns tile and adds one more set
+      of med handrails by window
+  Morrow:
+  - maptweak: Package Wrapper added to requisition back room.
+  NewyearnewmeUwu:
+  - rscadd: Added *thumbsup, *thumbsdown and *stop.
+  TeDGamer:
+  - bugfix: Pouncing unconscious people will no longer stop the pounce effects ( such
+      as hugging )
+  Tsunamico:
+  - bugfix: fixed a double log
+  - bugfix: fixed a little mistake on an if(!) check.
+  nauticall:
+  - rscadd: Adds pancakes.
+  - bugfix: Readded several missing skill bonuses to several procs, like stripping
+      and removing embedded objects, that previously were left blank. Some actions
+      will be much faster for characters that are proficient in the required skills;
+      particularly synthetics, medical staff/corpsmen, and MPs.
+  sleepynecrons:
+  - imageadd: new sprites for landing zone signs
+  - imagedel: deleted old landing zone signs

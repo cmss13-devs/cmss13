@@ -3,7 +3,7 @@
 // ===
 
 ///define used to mute an area base_muffle = AREA_MUTED
-#define AREA_MUTED -10000,
+#define AREA_MUTED -10000
 
 /area
 	var/atmosalm = 0

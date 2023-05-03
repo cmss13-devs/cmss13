@@ -942,7 +942,7 @@
 
 /obj/item/reagent_container/food/snacks/waffles
 	name = "waffles"
-	desc = "Mmm, waffles"
+	desc = "Mmm, waffles."
 	icon_state = "waffles"
 	trash = /obj/item/trash/waffles
 	filling_color = "#E6DEB5"
@@ -952,6 +952,19 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("sugar", 3)
 	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes
+	name = "pancakes"
+	desc = "Golden brown creamy pancakes fresh from the griddle. Drizzled with maple syrup and topped with a slice of butter."
+	icon_state = "pancakes"
+	filling_color = "#bb9857"
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pancakes/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 6)
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("milk", 5)
 
 /obj/item/reagent_container/food/snacks/eggplantparm
 	name = "Eggplant Parmigiana"

@@ -180,6 +180,7 @@
 	if(!player.ckey)
 		statuscode = 500
 		response = "Database query failed."
+		return
 
 	data["ckey"] = player.ckey
 	data["roles"] = get_whitelisted_roles(player.ckey)
@@ -285,13 +286,12 @@
 
 	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, input["discord_id"]))
 
-	if(!link.player_id)
+	if(!link || !link.player_id)
 		statuscode = 500
 		response = "Database lookup failed."
 		return
 
-	var/datum/entity/player/player = DB_ENTITY(/datum/entity/player, link.player_id)
-	player.sync()
+	var/datum/view_record/players/player = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, link.player_id))
 
 	data["ckey"] = player.ckey
 	data["roles"] = get_whitelisted_roles(player.ckey)
@@ -311,8 +311,7 @@
 		response = "Database lookup failed."
 		return
 
-	var/datum/entity/discord_link/link = DB_ENTITY(/datum/entity/discord_link, player.discord_link_id)
-	link.sync()
+	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("id", DB_EQUALS, player.discord_link_id))
 
 	if(!link || !link.discord_id)
 		statuscode = 500

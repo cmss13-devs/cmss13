@@ -255,12 +255,9 @@
 /datum/world_topic/decertify_by_discord_id/Run(list/input)
 	data = list()
 
-	var/datum/entity/discord_link/link = DB_EKEY(/datum/entity/discord_link, input["discord_id"])
-	link.sync()
+	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("discord_id", DB_EQUALS, input["discord_id"]))
 
-	if(!link.player_id)
-		link.delete()
-
+	if(!link || !link.player_id)
 		statuscode = 500
 		response = "Database lookup failed."
 		return
@@ -281,6 +278,7 @@
 	player.sync()
 
 	data["discord_id"] = input["discord_id"]
+	data["ckey"] = player.ckey
 	statuscode = 200
 	response = "Decertification successful."
 

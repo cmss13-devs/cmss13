@@ -91,11 +91,10 @@
 // Updates how many buried larva there are
 /datum/hive_status_ui/proc/update_burrowed_larva(send_update = TRUE)
 	burrowed_larva = assoc_hive.stored_larva
-	if(assoc_hive.burrowed)
-		if(SSxevolution)
-			evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
-		else
-			evilution_level = 1
+	if(SSxevolution)
+		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
+	else
+		evilution_level = 1
 			
 	if(send_update)
 		SStgui.update_uis(src)

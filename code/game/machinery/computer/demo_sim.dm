@@ -106,7 +106,6 @@
 	. = ..()
 	if(simulation.looking_at_simulation)
 		simulation.stop_watching(user)
-	qdel(simulation)
 
 // DEMOLITIONS TGUI SHIT END \\
 

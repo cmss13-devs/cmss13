@@ -292,6 +292,7 @@
 /datum/equipment_preset/uscm/spec/cryo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/spec_kit/cryo, WEAR_R_HAND)
 
 //*****************************************************************************************************/
 
@@ -352,33 +353,33 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm/rto
-	name = "USCM Squad Radio Telephone Operator"
+/datum/equipment_preset/uscm/tl
+	name = "USCM Fireteam Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
-	assignment = JOB_SQUAD_RTO
-	rank = JOB_SQUAD_RTO
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
+	assignment = JOB_SQUAD_TEAM_LEADER
+	rank = JOB_SQUAD_TEAM_LEADER
 	paygrade = "ME4"
-	role_comm_title = "RTO"
-	skills = /datum/skills/rto
+	role_comm_title = "FTL"
+	skills = /datum/skills/tl
 
-	minimap_icon = "rto"
+	minimap_icon = "tl"
 
-/datum/equipment_preset/uscm/rto/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/tl/load_gear(mob/living/carbon/human/H)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new back_item(H), WEAR_BACK)
 
-/datum/equipment_preset/uscm/rto/cryo
-	name = "USCM Cryo Squad Radio Telephone Operator"
+/datum/equipment_preset/uscm/tl/cryo
+	name = "USCM Cryo Fireteam Leader"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
-/datum/equipment_preset/uscm/rto/cryo/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/tl/cryo/load_gear(mob/living/carbon/human/H)
 	..()
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/rto(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/tl(H), WEAR_L_EAR)
 
 /*****************************************************************************************************/
 
@@ -730,20 +731,20 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm/rto_equipped
-	name = "USCM Squad Radio Telephone Operator (Equipped)"
+/datum/equipment_preset/uscm/tl_equipped
+	name = "USCM Fireteam Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
-	assignment = JOB_SQUAD_RTO
-	rank = JOB_SQUAD_RTO
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
+	assignment = JOB_SQUAD_TEAM_LEADER
+	rank = JOB_SQUAD_TEAM_LEADER
 	paygrade = "ME4"
-	role_comm_title = "RTO"
-	skills = /datum/skills/rto
+	role_comm_title = "TL"
+	skills = /datum/skills/tl
 
-	minimap_icon = "rto"
+	minimap_icon = "tl"
 
-/datum/equipment_preset/uscm/rto_equipped/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/tl_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	var/obj/item/clothing/under/marine/rto/U = new(H)
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
@@ -752,7 +753,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/rto(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/tl(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto(src), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto(H), WEAR_BACK)
@@ -761,8 +762,8 @@
 
 	H.back.pickup()
 
-/datum/equipment_preset/uscm/rto_equipped/cryo
-	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"
+/datum/equipment_preset/uscm/tl_equipped/cryo
+	name = "USCM Cryo Fireteam Leader (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
 //############ Marine Raiders #############

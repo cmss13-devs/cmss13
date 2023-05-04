@@ -669,6 +669,15 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/waffles
 
+/datum/recipe/pancakes
+	reagents = list("milk" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+	)
+	result = /obj/item/reagent_container/food/snacks/pancakes
+
 /datum/recipe/donkpocket
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,

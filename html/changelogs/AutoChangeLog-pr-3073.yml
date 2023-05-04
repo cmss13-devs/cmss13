@@ -1,0 +1,8 @@
+author: "Morrow, Frans_Feiffer"
+delete-after: True
+changes:
+  - rscadd: "Squad RTOs are now Fireteam Leaders"
+  - rscadd: "Radio telephones can be bought by fireteam leaders or squad leaders"
+  - rscadd: "Radio telephones can be bought by riflemen"
+  - rscadd: "Small radio telephones are now universally replaced by the regular version and can be worn with any uniform"
+  - bugfix: "Fixed RTO Backpack in hand on_mobs backwards when facing south."

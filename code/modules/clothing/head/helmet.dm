@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your IMPORTANT phone calls. Usually worn by Radio Telephone Operators."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -732,13 +732,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
-	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/MP/WO
+	name = "\improper M3 pattern chief MP helmet"
+	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	icon_state = "cmp_helmet"
+	item_state = "cmp_helmet"
+	specialty = "M10 pattern chief MP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
-	icon_state = "d_helmet"
-	item_state = "d_helmet"
+	icon_state = "helmet"
+	item_state = "helmet"
 	specialty = "M10 pattern officer"
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal

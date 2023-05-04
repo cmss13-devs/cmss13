@@ -677,7 +677,7 @@
 	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
 	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
 	data["punch_max"] = 5
-	data["glob_armourbreak"] = GLOB.xeno_general.armor_ignore_integrity
+	data["glob_armorbreak"] = GLOB.xeno_general.armor_ignore_integrity
 	data["automatic"] = flags_gun_features & GUN_HAS_FULL_AUTO
 	data["auto_only"] = flags_gun_features & GUN_FULL_AUTO_ONLY
 

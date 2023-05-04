@@ -94,30 +94,30 @@
 			else
 				Slow(powerfactor_value/3)
 
-/mob/living/carbon/xenomorph/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0, effectiveness_mult = 1)
+/mob/living/carbon/xenomorph/apply_armored_damage(damage = 0, armor_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armor_break_pr_pen = 0, armor_break_flat = 0, effectiveness_mult = 1)
 	if(damage <= 0)
-		return ..(damage, armour_type, damage_type, def_zone)
+		return ..(damage, armor_type, damage_type, def_zone)
 
-	var/armour_config = GLOB.xeno_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.xeno_melee
+	var/armor_config = GLOB.xeno_ranged
+	if(armor_type == ARMOR_MELEE)
+		armor_config = GLOB.xeno_melee
 
 	var/list/damagedata = list(
 		"damage" = damage,
 		"armor" = (armor_deflection + armor_deflection_buff - armor_deflection_debuff) * effectiveness_mult,
 		"penetration" = penetration,
-		"armour_break_pr_pen" = armour_break_pr_pen,
-		"armour_break_flat" = armour_break_flat,
+		"armor_break_pr_pen" = armor_break_pr_pen,
+		"armor_break_flat" = armor_break_flat,
 		"armor_integrity" = armor_integrity
 	)
-	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
-	var/modified_damage = armor_damage_reduction(armour_config, damage,
-		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
-		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMORED_DAMAGE, damagedata)
+	var/modified_damage = armor_damage_reduction(armor_config, damage,
+		damagedata["armor"], damagedata["penetration"], damagedata["armor_break_pr_pen"],
+		damagedata["armor_break_flat"], damagedata["armor_integrity"])
 
-	var/armor_punch = armor_break_calculation(armour_config, damage,
-		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
-		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+	var/armor_punch = armor_break_calculation(armor_config, damage,
+		damagedata["armor"], damagedata["penetration"], damagedata["armor_break_pr_pen"],
+		damagedata["armor_break_flat"], damagedata["armor_integrity"])
 
 	apply_armorbreak(armor_punch)
 

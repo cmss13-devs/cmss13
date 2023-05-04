@@ -63,7 +63,7 @@
 
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
-	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
+	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMORED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
 
 /datum/behavior_delegate/crusher_charger/proc/cancel_dir_lock()
 	SIGNAL_HANDLER
@@ -344,7 +344,7 @@
 	if(charger_ability.momentum == charger_ability.max_momentum)
 		momentum_mult = 8
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
-	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
+	apply_armored_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")

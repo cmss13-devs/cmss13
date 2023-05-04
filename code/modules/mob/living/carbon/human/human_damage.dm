@@ -272,7 +272,7 @@
 
 
 /*
-In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
+In most cases it makes more sense to use apply_damage() instead! And make sure to check armor if applicable.
 */
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
 //It automatically updates damage overlays if necesary
@@ -323,17 +323,17 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	UpdateDamageIcon()
 
 // damage MANY LIMBS, in random order
-/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
+/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armor_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0, armor_break_pr_pen = 0, armor_break_flat = 0)
 	if(status_flags & GODMODE)
 		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
-	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
+	var/armor_config = GLOB.marine_ranged
+	if(armor_type == ARMOR_MELEE)
+		armor_config = GLOB.marine_melee
 	for(var/obj/limb/L as anything in parts)
-		var/armor = getarmor(L, armour_type)
-		var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
+		var/armor = getarmor(L, armor_type)
+		var/modified_damage = armor_damage_reduction(armor_config, damage, armor, penetration, 0, 0)
 		L.take_damage(modified_damage / amount_of_parts)
 	updatehealth()
 	UpdateDamageIcon()
@@ -375,9 +375,9 @@ This function restores all limbs.
 	return (locate(limb_types_by_name[zone]) in limbs)
 
 
-/mob/living/carbon/human/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
+/mob/living/carbon/human/apply_armored_damage(damage = 0, armor_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armor_break_pr_pen = 0, armor_break_flat = 0)
 	if(damage <= 0)
-		return ..(damage, armour_type, damage_type, def_zone)
+		return ..(damage, armor_type, damage_type, def_zone)
 
 	var/obj/limb/target_limb = null
 	if(def_zone)
@@ -387,13 +387,13 @@ This function restores all limbs.
 	if(isnull(target_limb))
 		return FALSE
 
-	var/armor = getarmor(target_limb, armour_type)
+	var/armor = getarmor(target_limb, armor_type)
 
-	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
+	var/armor_config = GLOB.marine_ranged
+	if(armor_type == ARMOR_MELEE)
+		armor_config = GLOB.marine_melee
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
+	var/modified_damage = armor_damage_reduction(armor_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)
 
 	return modified_damage

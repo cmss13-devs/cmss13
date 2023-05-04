@@ -64,7 +64,7 @@
 			continue
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -126,7 +126,7 @@
 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -427,7 +427,7 @@
 		if(tail_lash_action && tail_lash_action.action_cooldown_check())
 			tail_lash_action.reduce_cooldown(5 SECONDS)
 	else
-		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
+		target_carbon.apply_armored_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
 
 
@@ -585,7 +585,7 @@
 		dancer_user.flick_attack_overlay(target_atom, "tail")
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
 
-		target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+		target_carbon.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 		// Reroll damage
@@ -596,7 +596,7 @@
 	dancer_user.flick_attack_overlay(target_atom, "tail")
 
 	target_carbon.last_damage_data = create_cause_data(initial(dancer_user.caste_type), dancer_user)
-	target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	target_carbon.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 	..()
 	return

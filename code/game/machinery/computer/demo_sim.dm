@@ -1,4 +1,4 @@
-#define HUMAN_MODE "Unarmoured Humans"
+#define HUMAN_MODE "Unarmored Humans"
 #define UPP_MODE "UPP Conscripts"
 #define CLF_MODE "CLF Guerillas"
 #define RUNNER_MODE "Xenomorph Runners"

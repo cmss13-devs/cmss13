@@ -482,11 +482,11 @@
 	for(var/datum/reagent/R in acid_harness.container.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
-			addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
+			addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS)
 			return
 	if(acid_harness.container.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
 		voice("Medicine administered. [acid_harness.container.reagents.total_volume] units remaining.")
-		addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
+		addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS)
 	if(!acid_harness.container.reagents.total_volume)
 		voice("Warning: Medicinal capsule is empty, resupply required.")

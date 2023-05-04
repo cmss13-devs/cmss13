@@ -428,7 +428,6 @@
 		in_firemission_mode = TRUE
 
 	if(href_list["switch_to_simulation"])
-		var/mob/M = usr
 		if(!selected_firemission)
 			to_chat(usr, SPAN_WARNING("Select a firemission before attempting to run the simulation"))
 			return

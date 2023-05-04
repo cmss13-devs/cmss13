@@ -23718,10 +23718,6 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/hangar/arrivals)
-"bmQ" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "bmS" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -27187,7 +27183,7 @@
 "bxZ" = (
 /obj/structure/closet/crate,
 /obj/item/robot_parts/robot_component/actuator,
-/obj/item/robot_parts/robot_component/armour,
+/obj/item/robot_parts/robot_component/armor,
 /obj/item/robot_parts/robot_component/camera,
 /obj/item/robot_parts/robot_component/diagnosis_unit,
 /turf/open/floor/corsat{
@@ -59830,9 +59826,6 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
-"tJe" = (
-/turf/open/ice,
-/area/corsat/gamma/biodome)
 "tJf" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirtgrassborder{
@@ -62018,12 +62011,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/biodome/virology)
-"vkS" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/biodome)
 "vkW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -67475,7 +67462,7 @@ bfc
 bfc
 bfc
 sFF
-tJe
+bfc
 bfc
 sFF
 bfc
@@ -69280,7 +69267,7 @@ aFe
 hwe
 avX
 aFe
-vkS
+aFe
 aFe
 aFe
 avX

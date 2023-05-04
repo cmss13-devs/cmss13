@@ -144,8 +144,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 
 	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+		// For some reason just passing the fax datum into FaxView does not work, no idea why. 
+		// passing the data in instead, I know this is bad, maintainer input please. 
+		var/datum/fax/info = new(locate(href_list["FaxView"]))
+
+		if(!info)	
+			return
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["loadimages"])
 		if(!check_rights(R_MOD|R_ADMIN))

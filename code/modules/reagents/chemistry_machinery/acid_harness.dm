@@ -39,8 +39,9 @@
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
-	can_hold = list(/obj/item/reagent_container/glass/beaker,
-					/obj/item/cell)
+	can_hold = list(
+	/obj/item/reagent_container/glass/beaker,
+	/obj/item/cell)
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object)
 	. = ..()

@@ -23633,7 +23633,7 @@
 	},
 /area/almayer/living/tankerbunks)
 "bUa" = (
-/obj/structure/closet/secure_closet/staff_officer/intel,
+/obj/structure/closet,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver"
@@ -27617,16 +27617,12 @@
 /area/almayer/command/computerlab)
 "cnH" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Computer Lab";
-	req_access_txt = "19;28;29";
-	req_access = null
+	name = "\improper Computer Lab"
 	},
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Computer Lab";
-	req_access_txt = "19;28;29";
-	req_access = null
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
-/turf/open/space/basic,
 /area/almayer/command/computerlab)
 "cnM" = (
 /obj/structure/window/reinforced{
@@ -27664,6 +27660,14 @@
 	},
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "19;28;29"
+	},
+/obj/structure/machinery/door/window/westright,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen{
+	pixel_x = 4;
+	pixel_y = -4
 	},
 /turf/open/space/basic,
 /area/almayer/command/computerlab)
@@ -30052,7 +30056,8 @@
 "dnS" = (
 /obj/structure/safe,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 1;
+	icon_state = "silver"
 	},
 /area/almayer/command/securestorage)
 "dnX" = (
@@ -32399,6 +32404,12 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/testlab)
+"ene" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/securestorage)
 "enf" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -45421,6 +45432,11 @@
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"kzk" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/almayer/command/computerlab)
 "kzy" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
@@ -47914,6 +47930,12 @@
 	icon_state = "blue"
 	},
 /area/almayer/living/port_emb)
+"lFm" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver"
+	},
+/area/almayer/command/securestorage)
 "lFn" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -48379,7 +48401,8 @@
 "lPO" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 9;
+	icon_state = "silver"
 	},
 /area/almayer/command/securestorage)
 "lQj" = (
@@ -49822,6 +49845,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
+"mGu" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/securestorage)
 "mGL" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51242,7 +51271,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/command/computerlab)
+/area/almayer/command/securestorage)
 "nnc" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -52675,6 +52704,9 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"nVB" = (
+/turf/open/floor/almayer,
+/area/almayer/command/securestorage)
 "nVF" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -52747,6 +52779,12 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
+"nYf" = (
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer,
+/turf/open/floor/almayer{
+	icon_state = "silverfull"
+	},
+/area/almayer/command/securestorage)
 "nYh" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
@@ -56437,6 +56475,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"pPM" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "silver"
+	},
+/area/almayer/command/securestorage)
 "pPN" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -58365,6 +58410,13 @@
 	icon_state = "plating"
 	},
 /area/almayer/engineering/upper_engineering)
+"qKz" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/securestorage)
 "qKF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/radio/headset/almayer/mt,
@@ -66077,6 +66129,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/starboard_point_defense)
+"uoH" = (
+/obj/structure/machinery/firealarm{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	icon_state = "silver"
+	},
+/area/almayer/command/computerlab)
 "uoS" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -66819,7 +66880,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "uBY" = (
-/obj/structure/closet/secure_closet/staff_officer/intel,
+/obj/structure/closet,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver"
@@ -69379,7 +69440,8 @@
 "vJg" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 8;
+	icon_state = "silver"
 	},
 /area/almayer/command/securestorage)
 "vJo" = (
@@ -69681,6 +69743,12 @@
 	allow_construction = 0
 	},
 /area/almayer/stair_clone/upper)
+"vQf" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silvercorner"
+	},
+/area/almayer/command/securestorage)
 "vQq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
@@ -70813,6 +70881,7 @@
 /area/almayer/shipboard/brig/cells)
 "wmK" = (
 /obj/structure/surface/table/almayer,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver"
@@ -114525,7 +114594,7 @@ ioU
 ioU
 ioU
 ioU
-aHq
+ioU
 aHq
 aHq
 aHq
@@ -114533,7 +114602,7 @@ aHq
 aHq
 aHq
 cnH
-cnS
+kzk
 cnR
 aHq
 aEp
@@ -114728,7 +114797,7 @@ ioU
 pvK
 qPE
 xqD
-rxO
+nYf
 rEL
 dnm
 rEL
@@ -114931,7 +115000,7 @@ ioU
 qyZ
 wTd
 cmK
-kXu
+lFm
 kXu
 kXu
 kXu
@@ -114940,9 +115009,9 @@ cpN
 jHC
 aGN
 qmP
-qrv
+uoH
 aHq
-aOS
+aiC
 anC
 aiC
 aUH
@@ -115134,7 +115203,7 @@ ioU
 mSz
 nIG
 cSk
-lyE
+ene
 aGN
 aGN
 aGN
@@ -115540,7 +115609,7 @@ ioU
 lPO
 vJg
 ioU
-jHC
+vQf
 oeM
 eed
 oeM
@@ -115743,7 +115812,7 @@ ioU
 dnS
 viN
 bAu
-aGN
+nVB
 eHY
 eed
 oeM
@@ -115754,7 +115823,7 @@ aGN
 aGN
 qrv
 aHq
-aiC
+aOS
 ajG
 aiC
 aUH
@@ -115943,10 +116012,10 @@ aiC
 ajF
 aiC
 ioU
-lPO
-vJg
+pPM
+qKz
 ioU
-iLO
+mGu
 fXx
 kXf
 sxV

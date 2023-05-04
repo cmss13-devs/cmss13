@@ -18,7 +18,7 @@
 	var/datum/view_record/discord_identifier/ident = locate() in DB_VIEW(/datum/view_record/discord_identifier, DB_AND(
 		DB_COMP("playerid", DB_EQUALS, player_data.id),
 		DB_COMP("realtime", DB_GREATER, world.realtime - 4 HOURS),
-		DB_COMP("used", DB_EQUALS, 0)
+		DB_COMP("used", DB_EQUALS, FALSE)
 		))
 
 	if(ident)
@@ -33,7 +33,7 @@
 	var/token
 
 	while(not_unique)
-		token = trim("[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]")
+		token = replacetext(trim("[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]-[pick(long_list)]"), " ", "")
 		not_unique = locate(/datum/view_record/discord_identifier) in DB_VIEW(/datum/view_record/discord_identifier, DB_COMP("identifier", DB_EQUALS, token))
 
 	new_identifier.identifier = token

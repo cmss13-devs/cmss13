@@ -470,7 +470,7 @@
 /datum/flaying_datum/New(mob/living/carbon/human/target)
 	. = ..()
 	victim = target
-	RegisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT, .proc/begin_flaying)
+	RegisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT, PROC_REF(begin_flaying))
 
 ///Loops until interrupted or done.
 /datum/flaying_datum/proc/begin_flaying(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool, ongoing_attempt)
@@ -484,7 +484,7 @@
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25)
 			user.visible_message(SPAN_DANGER("<B>[user] resumes the flaying of [victim] with \a [tool]...</B>"),
 				SPAN_DANGER("<B>You resume the flaying of [victim] with your [tool.name]...</B>"))
-		INVOKE_ASYNC(src, .proc/flay, target, user, tool) //do_after sleeps.
+		INVOKE_ASYNC(src, PROC_REF(flay), target, user, tool) //do_after sleeps.
 	return COMPONENT_CANCEL_ATTACK
 
 /datum/flaying_datum/proc/flay(mob/living/carbon/human/target, mob/living/carbon/human/user, obj/item/tool)

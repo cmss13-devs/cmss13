@@ -417,6 +417,33 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "pottedplant_26"
 	density = FALSE
+	var/stashed_item
+	var/list/forbidden_items = list(/obj/item/device/cotablet, /obj/item/card/id) //For things that might affect someone/everyone's round if hidden.
+
+/obj/structure/flora/pottedplant/attackby(obj/item/stash, mob/user)
+	if(stashed_item)
+		to_chat(user, SPAN_WARNING("There's already something stashed here!"))
+		return
+
+	for(var/i in forbidden_items)
+		if(istype(stash, i))
+			to_chat(user, SPAN_WARNING("You probably shouldn't hide [stash] in [src]."))
+			return
+
+	if(stash.w_class == SIZE_TINY)
+		user.drop_inv_item_to_loc(stash, src)
+		stashed_item = stash
+		to_chat(user, "You hide [stash] in [src].")
+
+	else
+		to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
+
+/obj/structure/flora/pottedplant/attack_hand(mob/user)
+	if(!stashed_item)
+		return
+	user.put_in_hands(contents[1])
+	to_chat(user, "You take [stashed_item] from [src].")
+	stashed_item = null
 
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"

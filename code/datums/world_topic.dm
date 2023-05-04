@@ -298,6 +298,8 @@
 
 	var/datum/view_record/players/player = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, link.player_id))
 
+	data["notes"] = get_all_notes(player.ckey)
+	data["total_minutes"] = get_total_living_playtime(player.id)
 	data["ckey"] = player.ckey
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
@@ -311,19 +313,19 @@
 	data = list()
 
 	var/datum/view_record/players/player = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("ckey", DB_EQUALS, input["ckey"]))
-	if(!player || !player.discord_link_id)
+	if(!player)
 		statuscode = 501
 		response = "Database lookup failed."
 		return
 
-	var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("id", DB_EQUALS, player.discord_link_id))
+	if(player.discord_link_id)
+		var/datum/view_record/discord_link/link = locate() in DB_VIEW(/datum/view_record/discord_link, DB_COMP("id", DB_EQUALS, player.discord_link_id))
 
-	if(!link || !link.discord_id)
-		statuscode = 500
-		response = "Database lookup failed."
-		return
+		if(link && link.discord_id)
+			data["discord_id"] = link.discord_id
 
-	data["discord_id"] = link.discord_id
+	data["notes"] = get_all_notes(player.ckey)
+	data["total_minutes"] = get_total_living_playtime(player.id)
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."

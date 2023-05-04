@@ -39,13 +39,23 @@
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
+	can_hold = list(/obj/item/reagent_container/glass/beaker,
+					/obj/item/cell)
+
+/obj/item/storage/internal/accessory/black_vest/acid_harness/can_be_inserted(obj/item/object)
+	. = ..()
+	if(istype(object, /obj/item/reagent_container/glass/beaker))
+		var/obj/item/reagent_container/glass/beaker/possible_beaker = object
+		if(possible_beaker.volume > 60)
+			to_chat(usr, SPAN_NOTICE("[possible_beaker] is too big for the [src]."))
+			return FALSE
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
 	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
-	var/obj/item/reagent_container/glass/beaker/vial/vial
+	var/obj/item/reagent_container/glass/beaker/container
 	var/obj/item/cell/battery
 	var/obj/structure/machinery/acid_core/acid_core
 
@@ -66,7 +76,7 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/Destroy()
-	QDEL_NULL(vial)
+	QDEL_NULL(container)
 	QDEL_NULL(battery)
 	QDEL_NULL(acid_core)
 	. = ..()
@@ -307,10 +317,10 @@
 
 /obj/structure/machinery/acid_core/proc/check_inventory()
 	acid_harness.battery = null
-	acid_harness.vial = null
+	acid_harness.container = null
 	for(var/item in acid_harness.hold.contents)
-		if(istype(item, /obj/item/reagent_container/glass/beaker/vial))
-			acid_harness.vial = item
+		if(istype(item, /obj/item/reagent_container/glass/beaker))
+			acid_harness.container = item
 		else if(istype(item, /obj/item/cell))
 			acid_harness.battery = item
 	if(acid_harness.battery)
@@ -466,17 +476,17 @@
 		inject()
 
 /obj/structure/machinery/acid_core/proc/inject()
-	if(!acid_harness.vial || !acid_harness.vial.reagents)
+	if(!acid_harness.container || !acid_harness.container.reagents)
 		voice("Warning: Medicinal capsule missing.")
 		return
-	for(var/datum/reagent/R in acid_harness.vial.reagents.reagent_list)
+	for(var/datum/reagent/R in acid_harness.container.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
 			addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
 			return
-	if(acid_harness.vial.reagents.trans_to(user, inject_amount))
+	if(acid_harness.container.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)
-		voice("Medicine administered. [acid_harness.vial.reagents.total_volume] units remaining.")
+		voice("Medicine administered. [acid_harness.container.reagents.total_volume] units remaining.")
 		addtimer(CALLBACK(src, PROC_REF(recheck_conditions)), 20 SECONDS * inject_amount)
-	if(!acid_harness.vial.reagents.total_volume)
+	if(!acid_harness.container.reagents.total_volume)
 		voice("Warning: Medicinal capsule is empty, resupply required.")

@@ -1,9 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - maptweak: "Various minor Almayer mapping fixes involving warning stripes and misplaced turfs and objects"
-  - maptweak: "the CE now spawns with his men again"
-  - maptweak: "Almayer lights or fire alarms that were once on windows have been moved to a wall or have had a wall replace the windows they were once on"
-  - maptweak: "updates basketball court on Almayer"
-  - bugfix: "fixes firing range fire shutters on Almayer"
-  - maptweak: "removes CLF uniform from Almayer"

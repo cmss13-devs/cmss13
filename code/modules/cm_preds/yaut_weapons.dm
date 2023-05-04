@@ -559,7 +559,7 @@
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/datum/flaying_datum/proc/create_leftovers(mob/living/victim, var/has_meat, var/skin_amount)
+/datum/flaying_datum/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
 	if(has_meat)
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 		meat.name = "raw [victim.name] steak"

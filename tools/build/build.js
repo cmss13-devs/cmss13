@@ -80,7 +80,7 @@ export const DmTarget = new Juke.Target({
   executes: async ({ get }) => {
     await DreamMaker(`${DME_NAME}.dme`, {
       defines: ["CBT", ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes("error"),
+      warningsAsErrors: get(WarningParameter).includes("warning"),
       namedDmVersion: get(DmVersionParameter),
     });
   },

@@ -993,7 +993,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				else squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
-					"[squad_name][JOB_SQUAD_RTO]" = (squad_number + 1),
+					"[squad_name][JOB_SQUAD_TEAM_LEADER]" = (squad_number + 1),
 					"[squad_name][JOB_SQUAD_SPECIALIST]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Scout)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Sniper)" = (squad_number + 2),

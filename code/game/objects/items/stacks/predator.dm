@@ -41,7 +41,7 @@
 			to_chat(user, SPAN_WARNING("They're in a wall!"))
 			return TRUE
 		if(rarea.ceiling == CEILING_NONE)
-						to_chat(user, SPAN_WARNING("There's no ceiling to hang them from!"))
+			to_chat(user, SPAN_WARNING("There's no ceiling to hang them from!"))
 			return TRUE
 		user.visible_message(SPAN_NOTICE("[user] secures the rope."),
 			SPAN_NOTICE("You secure the rope."))

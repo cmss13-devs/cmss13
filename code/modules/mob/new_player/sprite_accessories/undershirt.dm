@@ -80,17 +80,9 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	name = "Undershirt (Tan, Rolled)"
 	icon_state = "t_rolled_undershirt"
 
-/datum/sprite_accessory/undershirt/undershirt/rolled/black
-	name = "Undershirt (Black, Rolled)"
-	icon_state = "b_rolled_undershirt"
-
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless
 	name = "Undershirt (Tan, Rolled Sleeveless)"
 	icon_state = "t_rolled_undershirt_sleeveless"
-
-/datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless/black
-	name = "Undershirt (Black, Rolled Sleeveless)"
-	icon_state = "b_rolled_undershirt_sleeveless"
 
 /datum/sprite_accessory/undershirt/undershirt/long
 	name = "Undershirt (Tan, Long Sleeved)"

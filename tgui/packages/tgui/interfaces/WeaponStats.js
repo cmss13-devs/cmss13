@@ -214,7 +214,7 @@ const AmmoInfo = (props, context) => {
       <Damage />
       <Accuracy />
       <Range />
-      <ArmourPen />
+      <ArmorPen />
     </Section>
   );
 };
@@ -284,17 +284,17 @@ const Range = (props, context) => {
   );
 };
 
-const ArmourPen = (props, context) => {
+const ArmorPen = (props, context) => {
   const { data } = useBackend(context);
   const { penetration, penetration_max, armor_punch, punch_max } = data;
   return (
     <Fragment>
       <ProgressBar value={penetration / penetration_max} ranges={RedGreenRange}>
-        Armour penetration: {penetration} / {penetration_max}
+        Armor penetration: {penetration} / {penetration_max}
       </ProgressBar>
       <Box height="5px" />
       <ProgressBar value={armor_punch / punch_max} ranges={RedGreenRange}>
-        Armour punch: {armor_punch} / {punch_max}
+        Armor punch: {armor_punch} / {punch_max}
       </ProgressBar>
     </Fragment>
   );
@@ -307,14 +307,14 @@ const DamageTable = (props, context) => {
     damage_armor_profile_xeno,
     damage_armor_profile_armorbreak,
     damage_armor_profile_headers,
-    glob_armourbreak,
+    glob_armorbreak,
   } = data;
   return (
     <Section title="Damage table">
       <Table>
         <Table.Row>
           <Table.Cell bold textAlign="left">
-            Armour Value
+            Armor Value
           </Table.Cell>
           {map((entry, i) => (
             <Table.Cell bold key={i}>
@@ -334,7 +334,7 @@ const DamageTable = (props, context) => {
             damage_armor_profile_marine
           )}
         </Table.Row>
-        {!glob_armourbreak ? (
+        {!glob_armorbreak ? (
           <Table.Row>
             <Table.Cell textAlign="left">Armor break</Table.Cell>
             {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(

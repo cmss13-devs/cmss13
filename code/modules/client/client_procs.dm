@@ -144,8 +144,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 
 	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+		var/datum/fax/info = locate(href_list["FaxView"])
+		if(!istype(info))
+			return
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)

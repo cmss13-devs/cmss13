@@ -94,3 +94,26 @@
   sleepynecrons:
   - imageadd: new sprites for landing zone signs
   - imagedel: deleted old landing zone signs
+2023-05-04:
+  Huffie56:
+  - bugfix: removed weather sound in space when weather is active.
+  Morrow:
+  - bugfix: Fixes M10 officer helmet sprites
+  Morrow, Frans_Feiffer:
+  - rscadd: Squad RTOs are now Fireteam Leaders
+  - rscadd: Radio telephones can be bought by fireteam leaders or squad leaders
+  - rscadd: Radio telephones can be bought by riflemen
+  - rscadd: Small radio telephones are now universally replaced by the regular version
+      and can be worn with any uniform
+  - bugfix: Fixed RTO Backpack in hand on_mobs backwards when facing south.
+  SpartanBobby:
+  - maptweak: Various minor Almayer mapping fixes involving warning stripes and misplaced
+      turfs and objects
+  - maptweak: the CE now spawns with his men again
+  - maptweak: Almayer lights or fire alarms that were once on windows have been moved
+      to a wall or have had a wall replace the windows they were once on
+  - maptweak: updates basketball court on Almayer
+  - bugfix: fixes firing range fire shutters on Almayer
+  - maptweak: removes CLF uniform from Almayer
+  harryob:
+  - bugfix: Some missing WO role icons have been restored

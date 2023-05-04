@@ -1,0 +1,4 @@
+author: "Emanthealmighty"
+delete-after: True
+changes:
+  - rscadd: "Xenomorphs can now clear eggs from other hives"

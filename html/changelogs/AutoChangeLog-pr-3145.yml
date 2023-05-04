@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "removed weather sound in space when weather is active."

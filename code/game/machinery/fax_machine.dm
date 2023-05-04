@@ -187,7 +187,7 @@ var/list/alldepartments = list()
 			. = TRUE
 
 		if("insertpaper")
-			 // Repeating code? This is not ideal. Why not put this functionality inside of a proc?
+			// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
 			var/obj/item/I = ui.user.get_active_hand()
 			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle || istype(I, /obj/item/photo)))
 				ui.user.drop_inv_item_to_loc(I, src)

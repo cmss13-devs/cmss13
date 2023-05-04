@@ -883,7 +883,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper Dutch's Dozen cap"
 	desc = "A protective cap worn by some seriously experienced mercs."
 	icon_state = "dutch_cap"
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 
@@ -891,7 +891,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper Dutch's Dozen band"
 	desc = "A protective band worn by some seriously experienced mercs."
 	icon_state = "dutch_band"
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 
@@ -1036,7 +1036,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
@@ -1059,7 +1059,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
@@ -1077,7 +1077,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	switch(icon_state)
 		if("s_skullcapm")
 			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
-			flags_inventory = BLOCKSHARPOBJ
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 //===========================//HELGHAST - MERCENARY\\================================\\

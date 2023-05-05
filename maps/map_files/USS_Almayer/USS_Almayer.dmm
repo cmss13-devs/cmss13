@@ -27888,15 +27888,6 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"cpN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "silver"
-	},
-/area/almayer/command/computerlab)
 "cqa" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -30013,6 +30004,9 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "dnm" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
@@ -39015,6 +39009,15 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/living/cryo_cells)
+"huO" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver"
+	},
+/area/almayer/command/computerlab)
 "huX" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/machinery/light{
@@ -51264,9 +51267,6 @@
 	},
 /area/almayer/squads/req)
 "nmV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver"
@@ -58014,6 +58014,9 @@
 "qyZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/view_objectives,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},
@@ -58643,9 +58646,6 @@
 "qPE" = (
 /obj/structure/machinery/prop/almayer/CICmap,
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
@@ -62170,21 +62170,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
-"sxV" = (
-/obj/structure/sign/safety/rewire{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/intercom{
-	pixel_x = 32;
-	pixel_y = 7
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "silver"
-	},
-/area/almayer/command/computerlab)
 "syH" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = -28
@@ -115005,7 +114990,7 @@ kXu
 kXu
 kXu
 kXu
-cpN
+kXu
 jHC
 aGN
 qmP
@@ -116018,8 +116003,8 @@ ioU
 mGu
 fXx
 kXf
-sxV
-iLO
+fXx
+huO
 qLV
 xNv
 iLO

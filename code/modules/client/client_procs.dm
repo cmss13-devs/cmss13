@@ -103,6 +103,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+
+	//Logs all other hrefs
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
+		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
+
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
@@ -195,10 +200,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.remove_note(index)
-
-	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
-		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
 
 	switch(href_list["_src_"])
 		if("admin_holder")

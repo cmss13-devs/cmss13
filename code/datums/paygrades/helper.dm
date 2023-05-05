@@ -5,7 +5,7 @@
 
 	if(size)//Builds the prefix, if one should exist.
 		var/NP = ""
-		if(!P)//extra check to avoid runtimes
+		if(P)//extra check to avoid runtimes
 
 			if(P.fprefix)//Factional (pre)prefix
 				NP = "[P.fprefix] "

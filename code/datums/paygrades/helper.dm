@@ -5,7 +5,7 @@
 
 	if(size)//Builds the prefix, if one should exist.
 		if(!P)//For custom admin-made paygrades to not cause runtimes.
-    		return "[paygrade] "
+			return "[paygrade] "
 		var/NP = ""
 		if(P.fprefix)//Factional (pre)prefix
 			NP = "[P.fprefix] "

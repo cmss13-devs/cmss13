@@ -76,6 +76,7 @@ var/list/alldepartments = list()
 		to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
 		flick("faxsend", src)
 		updateUsrDialog()
+	return
 
 	if(istype(O, /obj/item/card/id))
 
@@ -88,6 +89,7 @@ var/list/alldepartments = list()
 		scan = idcard
 		to_chat(usr, SPAN_NOTICE("You put \the [scan] into \the [src]."))
 		playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
+	return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -98,6 +100,19 @@ var/list/alldepartments = list()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in view(1)
+	if(!usr || usr.stat || usr.lying) return
+
+	if(ishuman(usr) && scan)
+		to_chat(usr, "You remove \the [scan] from \the [src].")
+		playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
+		scan.forceMove(get_turf(src))
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(scan)
+		scan = null
+		authenticated = FALSE
+	else
+		to_chat(usr, "There is nothing to remove from \the [src].")
+	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
 	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
@@ -272,31 +287,40 @@ var/list/alldepartments = list()
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
-	var/datum/fax/faxcontents = new(fax_paper_copy.info)
+	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list)
+
+	GLOB.fax_contents += faxcontents
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[user]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[user]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[user]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[user]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];loadimages=\ref[photo_list]'>IMG</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
-	msg_admin += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents.data]'>view message</a>"
-
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
-	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents.data]'>view message</a>"
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];loadimages=\ref[faxcontents]'>IMG</A>) "
 
 	switch(target_department)
 		if(DEPARTMENT_HC)
-			GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_PROVOST)
-			GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_CMB)
-			GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_WY)
-			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_PRESS)
-			GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		else
-			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents.data]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		
+	msg_admin += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
+	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
+
 	announce_fax(msg_admin, msg_ghost)
 
 // leaving this proc here for now.
@@ -412,6 +436,7 @@ var/list/alldepartments = list()
 
 /datum/fax
 	var/data
+	var/list/photo_list
 
 /datum/fax/New(data)
 	. = ..()

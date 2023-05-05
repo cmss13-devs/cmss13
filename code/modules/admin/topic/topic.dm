@@ -1270,6 +1270,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		var/organization_type = ""
 		switch(template_choice)
@@ -1329,7 +1330,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "[organization_type] - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1352,6 +1353,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1434,6 +1436,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1515,6 +1518,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")

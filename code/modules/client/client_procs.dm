@@ -145,11 +145,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["FaxView"])
 
-		// For some reason just passing the fax datum into FaxView does not work, no idea why. 
-		// passing the data in instead, I know this is bad, maintainer input please. 
-		var/datum/fax/info = new(locate(href_list["FaxView"]))
+		var/datum/fax/info = locate(href_list["FaxView"])
 
-		if(!info)	
+		if(!istype(info))	
 			return
 		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
@@ -157,13 +155,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!check_rights(R_MOD|R_ADMIN))
 			return
 
-		var/list/photo_list = locate(href_list["loadimages"])
+		var/datum/fax/info = locate(href_list["loadimages"])
 
-		if(!photo_list)
+		if(!istype(info))
 			return
 
-		for(var/photo in photo_list)
-			usr << browse_rsc(photo_list[photo], photo)
+		for(var/photo in info.photo_list)
+			usr << browse_rsc(info.photo_list[photo], photo)
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)

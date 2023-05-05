@@ -418,17 +418,29 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "pottedplant_26"
 	density = FALSE
 	var/stashed_item
-	var/list/forbidden_items = list(/obj/item/device/cotablet, /obj/item/card/id) //For things that might affect someone/everyone's round if hidden.
+	var/static/possible_starting_items = list(/obj/item/clothing/mask/cigarette/weed, /obj/item/clothing/mask/cigarette, /obj/item/clothing/mask/cigarette/bcigarette) //breaking bad reference
+	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id) //For things that might affect someone/everyone's round if hidden.
+	var/static/blacklist_typecache
+
+/obj/structure/flora/pottedplant/Initialize()
+	. = ..()
+
+	if(!blacklist_typecache)
+		blacklist_typecache = typecacheof(blocked_atoms)
+
+	if(prob(5))
+		var/obj/prestashed_item = pick(possible_starting_items)
+		prestashed_item = new(src)
+		stashed_item = prestashed_item
 
 /obj/structure/flora/pottedplant/attackby(obj/item/stash, mob/user)
 	if(stashed_item)
 		to_chat(user, SPAN_WARNING("There's already something stashed here!"))
 		return
 
-	for(var/i in forbidden_items)
-		if(istype(stash, i))
-			to_chat(user, SPAN_WARNING("You probably shouldn't hide [stash] in [src]."))
-			return
+	if(is_type_in_typecache(stash, blacklist_typecache))
+		to_chat(user, SPAN_WARNING("You probably shouldn't hide [stash] in [src]."))
+		return
 
 	if(stash.w_class == SIZE_TINY)
 		user.drop_inv_item_to_loc(stash, src)

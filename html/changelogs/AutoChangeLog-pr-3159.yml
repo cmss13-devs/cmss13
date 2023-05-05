@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - qol: "Suppressors no longer change any stats but firing noise and muzzle flash."

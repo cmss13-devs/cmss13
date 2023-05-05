@@ -864,7 +864,7 @@
 	},
 /obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/kutjevo/colors,
-/area/kutjevo/exterior/telecomm/lz1_north)
+/area/kutjevo/interior/power/comms)
 "bmZ" = (
 /obj/structure/bed/sofa/south/grey/left,
 /obj/structure/machinery/light{
@@ -4161,7 +4161,7 @@
 	dir = 8
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz1_north)
+/area/kutjevo/interior/power/comms)
 "fqR" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 8
@@ -9995,7 +9995,7 @@
 	dir = 8
 	},
 /turf/open/floor/kutjevo/colors,
-/area/kutjevo/exterior/telecomm/lz1_north)
+/area/kutjevo/interior/power/comms)
 "nKh" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east)
@@ -11836,9 +11836,6 @@
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
-"qjU" = (
-/turf/open/floor/kutjevo/colors,
-/area/kutjevo/exterior/telecomm/lz1_north)
 "qkj" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -12422,14 +12419,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/Northwest_Colony)
-"rdQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz1_north)
 "rej" = (
 /obj/structure/prop/dam/large_boulder/boulder1,
 /turf/open/auto_turf/sand/layer0,
@@ -13197,9 +13186,6 @@
 	dir = 6
 	},
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
-"sgk" = (
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz1_north)
 "sgF" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -15110,9 +15096,6 @@
 	},
 /turf/open/gm/dirtgrassborder2,
 /area/kutjevo/exterior/complex_border/med_park)
-"uJg" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
-/area/kutjevo/exterior/telecomm/lz1_north)
 "uJV" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/orbital_cannon_manual,
@@ -15486,7 +15469,7 @@
 "veh" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/exterior/telecomm/lz1_north)
+/area/kutjevo/interior/power/comms)
 "vei" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/lz_dunes)
@@ -23900,11 +23883,11 @@ sYd
 bXl
 sYd
 bXl
-uJg
+tlN
 bmk
-qjU
-qjU
-qjU
+moL
+moL
+moL
 boR
 tWM
 tWM
@@ -24067,11 +24050,11 @@ sYd
 bXl
 bXl
 bXl
-uJg
-rdQ
-sgk
-sgk
-qjU
+tlN
+tWM
+tWM
+tWM
+moL
 boR
 tWM
 tWM
@@ -24234,11 +24217,11 @@ bXl
 bXl
 bEp
 bXl
-uJg
-sgk
-sgk
+tlN
+tWM
+tWM
 veh
-qjU
+moL
 boR
 tWM
 tWM
@@ -24401,11 +24384,11 @@ bXl
 bXl
 bXl
 bXl
-uJg
-sgk
-sgk
-sgk
-qjU
+tlN
+tWM
+tWM
+tWM
+moL
 boR
 nQr
 tWM
@@ -24568,9 +24551,9 @@ bXl
 bEp
 bEp
 bEp
-uJg
-sgk
-sgk
+tlN
+tWM
+tWM
 fqA
 nJY
 wiH
@@ -24735,11 +24718,11 @@ sYd
 bEp
 bEp
 bEp
-uJg
-uJg
-uJg
-uJg
-uJg
+tlN
+tlN
+tlN
+tlN
+tlN
 boR
 tjg
 onk

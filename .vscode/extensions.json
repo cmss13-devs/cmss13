@@ -4,6 +4,7 @@
         "platymuus.dm-langclient",
         "arcanis.vscode-zipfs",
         "EditorConfig.EditorConfig",
+        "stylemistake.auto-comment-blocks",
         "anturk.dmi-editor",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",

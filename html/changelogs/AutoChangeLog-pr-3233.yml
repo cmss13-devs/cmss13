@@ -1,0 +1,4 @@
+author: "FreetoZ"
+delete-after: True
+changes:
+  - bugfix: "hotifx for cas"

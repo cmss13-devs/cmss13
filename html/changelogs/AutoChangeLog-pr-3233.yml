@@ -1,4 +1,4 @@
 author: "FreetoZ"
 delete-after: True
 changes:
-  - rscadd: "added cas simulator."
+  - bugfix: "hotifx for cas"

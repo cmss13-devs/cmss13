@@ -5,17 +5,20 @@
 
 	if(size)//Builds the prefix, if one should exist.
 		var/NP = ""
-		if(P.fprefix)//Factional (pre)prefix
-			NP = "[P.fprefix] "
-		if(P.prefix)//Actual rank prefix
-			NP =  "[NP][P.prefix] "
-			if(P.prefix == "C")//Override for Civilian ranks that don't have occupational prefixes.
-				if(gender && gender == FEMALE)
-					NP = "Ms. "
-				else if(gender && gender == MALE)
-					NP = "Mr. "
-				else
-					NP = "Mx. " //inclusivity win!
+		if(P != null)//extra check to avoid runtimes
+			if(P.fprefix)//Factional (pre)prefix
+				NP = "[P.fprefix] "
+			if(P.prefix)//Actual rank prefix
+				NP =  "[NP][P.prefix] "
+				if(P.prefix == "C")//Override for Civilian ranks that don't have occupational prefixes.
+					if(gender && gender == FEMALE)
+						NP = "Ms. "
+					else if(gender && gender == MALE)
+						NP = "Mr. "
+					else
+						NP = "Mx. " //inclusivity win!
+		else
+			NP = "[paygrade] "
 		return NP
 	else
 		return P.name

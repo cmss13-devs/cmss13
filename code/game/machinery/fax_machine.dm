@@ -260,12 +260,14 @@ var/list/alldepartments = list()
 		fax_paper_copy.info += "<h1>Page #[content]</h1>"
 		fax_paper_copy.info += "<hr>"
 		if(istype(papers[content], /obj/item/paper))
-			fax_paper_copy.info += (papers[content]).info
+			var/obj/item/paper/faxed_paper = papers[content] 
+			fax_paper_copy.info += faxed_paper.info
 		else // type photo
-			if(!isicon((papers[content]).img))
+			var/obj/item/photo/faxed_photo = papers[content]
+			if(!isicon(faxed_photo.img))
 				return
 
-			photo_list += list("tmp_photo[content].png" = (papers[content]).img)
+			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
 			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='100%'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)

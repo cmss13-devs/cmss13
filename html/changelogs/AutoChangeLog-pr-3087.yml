@@ -1,5 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - rscadd: "New undershirt options, black versions of the current undershirts, and a long-sleeved undershirt with black and tan option."
-  - imagedel: "Deletes 1 pixel from side faced sleeved undershirts to make them slightly shorter than rolled jackets."

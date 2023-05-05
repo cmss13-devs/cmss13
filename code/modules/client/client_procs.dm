@@ -154,12 +154,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["loadimages"])
 		if(!check_rights(R_MOD|R_ADMIN))
 			return
-
 		var/datum/fax/info = locate(href_list["loadimages"])
 
 		if(!istype(info))
 			return
-
 		for(var/photo in info.photo_list)
 			usr << browse_rsc(info.photo_list[photo], photo)
 

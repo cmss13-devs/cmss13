@@ -76,7 +76,7 @@ var/list/alldepartments = list()
 		to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
 		flick("faxsend", src)
 		updateUsrDialog()
-	return
+		return
 
 	if(istype(O, /obj/item/card/id))
 
@@ -89,7 +89,7 @@ var/list/alldepartments = list()
 		scan = idcard
 		to_chat(usr, SPAN_NOTICE("You put \the [scan] into \the [src]."))
 		playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
-	return
+		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -184,7 +184,6 @@ var/list/alldepartments = list()
 			outgoing_fax_message(ui.user)
 
 			COOLDOWN_START(src, send_cooldown, fax_cooldown)
-			send_fax()
 			to_chat(ui.user, "Message transmitted successfully.")
 			. = TRUE
 
@@ -288,8 +287,9 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
 	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list)
-
+			
 	GLOB.fax_contents += faxcontents
+
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[user]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[user]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[user]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[user]'>SM</A>) "
@@ -321,6 +321,8 @@ var/list/alldepartments = list()
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
+	send_fax(faxcontents)
+
 	announce_fax(msg_admin, msg_ghost)
 
 // leaving this proc here for now.
@@ -346,7 +348,7 @@ var/list/alldepartments = list()
 			C << 'sound/effects/sos-morse-code.ogg'
 
 
-/obj/structure/machinery/faxmachine/proc/send_fax()
+/obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if(F != src && F.department == target_department)
 			if(! (F.inoperable() ) )
@@ -356,8 +358,8 @@ var/list/alldepartments = list()
 				// give the sprite some time to flick
 				spawn(20)
 					var/obj/item/paper/P = new( F.loc )
-					P.name = "[fax_paper_copy.name]"
-					P.info = "[fax_paper_copy.info]"
+					P.name = "faxed message"
+					P.info = "[faxcontents.data]"
 					P.update_icon()
 
 					switch(network)
@@ -438,7 +440,8 @@ var/list/alldepartments = list()
 	var/data
 	var/list/photo_list
 
-/datum/fax/New(data)
+/datum/fax/New(data, photo_list)
 	. = ..()
 
 	src.data = data
+	src.photo_list = photo_list

@@ -95,7 +95,7 @@ export const DmTestTarget = new Juke.Target({
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
       defines: ["CBT", "CIBUILDING", ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes("error"),
+      warningsAsErrors: get(WarningParameter).includes("warning"),
       namedDmVersion: get(DmVersionParameter),
     });
     Juke.rm("data/logs/ci", { recursive: true });
@@ -132,7 +132,7 @@ export const AutowikiTarget = new Juke.Target({
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
       defines: ["CBT", "AUTOWIKI", ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes("error"),
+      warningsAsErrors: get(WarningParameter).includes("warning"),
       namedDmVersion: get(DmVersionParameter),
     });
     Juke.rm("data/autowiki_edits.txt");

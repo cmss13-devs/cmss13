@@ -20,7 +20,7 @@
 						NP = "Mx. " //inclusivity win!
 		else
 			NP = "[paygrade] "
-		areturn NP
+		return NP
 	else
 		return P.name
 

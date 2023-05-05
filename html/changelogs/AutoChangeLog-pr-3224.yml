@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - server: "hrefs.log will now include more commands: Now anything that isn't an expected asset_cache_confirm_arrival, a tgui_Topic, or rate limited will be logged."

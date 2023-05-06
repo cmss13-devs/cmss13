@@ -2,7 +2,7 @@
 	set name = "Weapons"
 	set category = "Admin.Ship"
 
-	var/weapontype = tgui_alert(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun"), 20 SECONDS)
+	var/weapontype = tgui_input_list(src, "What weapon?", "Choose wisely!", list("Missile", "Railgun", "Orb. Def. Cannon", "AA Boiler shot"), 20 SECONDS)
 	if(!weapontype)
 		return
 	var/hiteta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)

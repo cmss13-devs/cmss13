@@ -130,8 +130,12 @@
 	..()
 
 	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
-		return
+		if(is_light_on())
+			to_chat(user, SPAN_WARNING("You cannot turn the light off while in [user.loc].")) //To prevent some lighting anomalities.
+			return
+		else
+			to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
+			return
 	on = !on
 	icon_state = "hardhat[on]_pumpkin"
 

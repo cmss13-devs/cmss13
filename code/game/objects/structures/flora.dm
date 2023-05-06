@@ -429,9 +429,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 		blacklist_typecache = typecacheof(blocked_atoms)
 
 	if(prob(5))
-		var/obj/prestashed_item = pick(possible_starting_items)
-		prestashed_item = new(src)
-		stashed_item = prestashed_item
+		var/prestashed_item = pick(possible_starting_items)
+		stashed_item = new prestashed_item(src)
 
 /obj/structure/flora/pottedplant/attackby(obj/item/stash, mob/user)
 	if(stashed_item)
@@ -445,7 +444,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	if(stash.w_class == SIZE_TINY)
 		user.drop_inv_item_to_loc(stash, src)
 		stashed_item = stash
-		to_chat(user, "You hide [stash] in [src].")
+		user.visible_message("[user] puts something in [src].", "You hide [stash] in [src].")
 
 	else
 		to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
@@ -454,7 +453,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	if(!stashed_item)
 		return
 	user.put_in_hands(contents[1])
-	to_chat(user, "You take [stashed_item] from [src].")
+	user.visible_message( "[user] takes something out of [src].", "You take [stashed_item] from [src].")
 	stashed_item = null
 
 /obj/structure/flora/pottedplant/random

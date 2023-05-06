@@ -39632,15 +39632,9 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "hKl" = (
-/obj/structure/machinery/power/apc/almayer{
-	cell_type = /obj/item/cell/hyper;
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_lobby)
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer/white/outer_tile,
+/area/almayer/medical/medical_science)
 "hKq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -59214,6 +59208,9 @@
 	name = "Requisitions Delivery Unit";
 	pixel_y = 28
 	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -71634,6 +71631,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/combat_correspondent)
+"wKP" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/containment)
 "wLi" = (
 /obj/structure/machinery/door_control/airlock{
 	id = "s_engi";
@@ -75163,6 +75164,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/main_office)
+"ylc" = (
+/obj/structure/disposalpipe/down/almayer{
+	id = "almayerlink_med_req";
+	dir = 2
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/containment)
 "yle" = (
 /obj/effect/landmark/start/marine/engineer/delta,
 /obj/effect/landmark/late_join/delta,
@@ -102758,7 +102766,7 @@ beB
 byI
 beB
 bCd
-hKl
+mlH
 bqR
 cle
 tYw
@@ -108349,11 +108357,11 @@ irA
 irA
 irA
 irA
-irA
-irA
-irA
-amk
-amk
+ylc
+wKP
+wKP
+hKl
+hKl
 rhO
 qqQ
 nPE

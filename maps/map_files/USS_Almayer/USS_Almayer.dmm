@@ -987,8 +987,8 @@
 /area/almayer/lifeboat_pumps/north1)
 "adf" = (
 /obj/structure/closet,
-/obj/item/clothing/suit/armor/riot/marine,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/suit/armor/riot/marine/vintage_riot,
+/obj/item/clothing/head/helmet/riot/vintage_riot,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

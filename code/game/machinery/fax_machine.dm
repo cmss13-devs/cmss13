@@ -294,14 +294,13 @@ var/list/alldepartments = list()
 			var/obj/item/photo/faxed_photo = papers[content]
 			if(!isicon(faxed_photo.img))
 				return
-
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
 			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='100%'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
 	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list)
-			
+
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font>[key_name(user, 1)] ")
@@ -338,7 +337,7 @@ var/list/alldepartments = list()
 
 	announce_fax(msg_admin, msg_ghost, faxcontents)
 
-// leaving this proc here for now.
+// it's not really necessary to pass in faxcontents this way, but for consistency reasons i'm doing it like this.
 /datum/proc/announce_fax(msg_admin, msg_ghost, datum/fax/faxcontents) 
 	log_admin(msg_admin)
 	for(var/client/C in GLOB.admins)
@@ -360,9 +359,6 @@ var/list/alldepartments = list()
 			if(C && C.admin_holder)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
-				if(faxcontents.photo_list)
-					for(var/photo in faxcontents.photo_list)
-						C << browse_rsc(faxcontents.photo_list[photo], photo)
 			to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 
@@ -378,7 +374,7 @@ var/list/alldepartments = list()
 
 				// give the sprite some time to flick
 				spawn(20)
-					var/obj/item/paper/P = new( F.loc )
+					var/obj/item/paper/P = new(F.loc,faxcontents.photo_list)
 					P.name = "faxed message"
 					P.info = "[faxcontents.data]"
 					P.update_icon()

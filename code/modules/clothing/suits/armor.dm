@@ -238,6 +238,10 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/riot/marine/vintage_riot
+	name = "\improper M5 riot control armor"
+	desc = "A dusty old model of heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
+	icon_state = "riot"
 
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"

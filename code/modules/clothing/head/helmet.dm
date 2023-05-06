@@ -58,6 +58,10 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
+/obj/item/clothing/head/helmet/riot/vintage_riot
+	desc = "An old relique specifically designed to protect against close range attacks. It covers your ears."
+	icon_state = "old_riot"
+
 /obj/item/clothing/head/helmet/augment
 	name = "augment array"
 	desc = "A helmet with optical and cranial augments coupled to it."

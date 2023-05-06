@@ -17,7 +17,7 @@
 				strong_text = "a very strong"
 			if(MELEE_FORCE_VERY_STRONG to INFINITY)
 				strong_text = "an inhumanely strong"
-		. += SPAN_INFO("[src] would be [strong_text] weapon if you were hit someone with it.")
+		. += SPAN_INFO("[src] would be [strong_text] weapon if you were to hit someone with it.")
 
 	if(force != throwforce && throwforce >= MELEE_FORCE_WEAK)
 		switch(throwforce)
@@ -29,4 +29,4 @@
 				strong_text = "a very strong"
 			if(MELEE_FORCE_VERY_STRONG to INFINITY)
 				strong_text = "an inhumanely strong"
-		. += SPAN_INFO("[src] would be [strong_text] weapon if you were throw it at someone.")
+		. += SPAN_INFO("[src] would be [strong_text] weapon if you were to throw it at someone.")

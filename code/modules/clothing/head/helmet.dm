@@ -59,7 +59,7 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
 /obj/item/clothing/head/helmet/riot/vintage_riot
-	desc = "An old relique specifically designed to protect against close range attacks. It covers your ears."
+	desc = "A scarred riot helmet covered in cobwebs. It still protects your ears."
 	icon_state = "old_riot"
 
 /obj/item/clothing/head/helmet/augment

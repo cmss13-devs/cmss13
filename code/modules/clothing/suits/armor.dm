@@ -239,7 +239,7 @@
 	time_to_equip = 20
 
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot
-	desc = "A dusty old model of heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
+	desc = "A forgotten and modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
 	icon_state = "old_riot"
 
 /obj/item/clothing/suit/armor/swat

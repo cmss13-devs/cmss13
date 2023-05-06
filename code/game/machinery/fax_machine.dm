@@ -335,15 +335,11 @@ var/list/alldepartments = list()
 
 	send_fax(faxcontents)
 
-	announce_fax(msg_admin, msg_ghost, faxcontents)
+	announce_fax(msg_admin, msg_ghost)
 
-// it's not really necessary to pass in faxcontents this way, but for consistency reasons i'm doing it like this.
-/datum/proc/announce_fax(msg_admin, msg_ghost, datum/fax/faxcontents) 
+/datum/proc/announce_fax(msg_admin, msg_ghost) 
 	log_admin(msg_admin)
 	for(var/client/C in GLOB.admins)
-		if(faxcontents.photo_list)
-			for(var/photo in faxcontents.photo_list)
-				C << browse_rsc(faxcontents.photo_list[photo], photo)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
 				to_chat(C, msg_admin)
@@ -402,7 +398,7 @@ var/list/alldepartments = list()
 							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
-					qdel(faxcontents)
+		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "CMB Incident Command Center Fax Machine"

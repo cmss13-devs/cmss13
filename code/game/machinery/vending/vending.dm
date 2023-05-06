@@ -324,6 +324,15 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
 			tgui_interact(user)
 		return
+	else if(istype(W, /obj/item/spacecash))
+		if(inoperable())
+			return
+		user.set_interaction(src)
+		if(src.seconds_electrified != 0)
+			if(shock(user, 100))
+				return
+		tgui_interact(user)
+		return
 
 	..()
 
@@ -524,22 +533,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		vend_ready = TRUE
 		return
 
-	var/obj/item/card/id/user_id
-	if(checking_id())
-		if(ishuman(user))
-			var/mob/living/carbon/human/human_user = user
-			user_id = human_user.get_idcard()
-		if(!user_id)
-			speak("No card found.")
-			flick(icon_deny,src)
-			vend_ready = TRUE
-			return
-		if(!get_account(user_id.associated_account_number) && price_to_use)
-			speak("No account found.")
-			flick(icon_deny,src)
-			vend_ready = TRUE
-			return
-
 	if(coin_records.Find(record))
 		if(!coin)
 			speak("Coin required.")
@@ -555,13 +548,55 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		else
 			QDEL_NULL(coin)
 
-	if(price_to_use && user_id)
-		var/datum/money_account/account = get_account(user_id.associated_account_number)
-		if(!transfer_money(account, record))
-			speak("You do not possess the funds to purchase [record.product_name].")
-			flick(icon_deny, src)
+	// The checking_id() proc is currently determining whether to pay or not, not exactly just ID
+	// So lets treat cash like an alternative ID for these greedy machines
+	var/sufficent_cash = FALSE
+	var/ripped_off = FALSE
+	var/obj/item/spacecash/cash = user.get_active_hand()
+	if(!istype(cash))
+		cash = user.get_inactive_hand()
+	if(istype(cash))
+		sufficent_cash = cash.worth >= price_to_use
+
+	var/obj/item/card/id/user_id
+	if(checking_id())
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			user_id = human_user.get_idcard()
+
+		if(!user_id && !sufficent_cash)
+			speak("No card found.")
+			flick(icon_deny,src)
 			vend_ready = TRUE
 			return
+
+		if(price_to_use)
+			var/datum/money_account/account
+			if(user_id)
+				account = get_account(user_id.associated_account_number)
+
+			if(!account && !sufficent_cash)
+				speak("No account found.")
+				flick(icon_deny,src)
+				vend_ready = TRUE
+				return
+
+			if(!account || !transfer_money(account, record))
+				if (!sufficent_cash)
+					speak("You do not possess the funds to purchase [record.product_name].")
+					flick(icon_deny, src)
+					vend_ready = TRUE
+					return
+				else
+					if(istype(cash, /obj/item/spacecash/ewallet))
+						cash.worth -= price_to_use
+						vendor_account.money += price_to_use
+						if(!cash.worth)
+							qdel(cash)
+					else
+						vendor_account.money += cash.worth
+						qdel(cash)
+						ripped_off = TRUE
 
 	speak(vend_reply)
 	use_power(active_power_usage)
@@ -570,10 +605,15 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	var/obj/item/vended_item
 	vended_item = new record.product_path(get_turf(src))
 	record.amount--
+	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	if(user.Adjacent(src) && user.put_in_hands(vended_item))
 		to_chat(user, SPAN_NOTICE("You take \the [record.product_name] out of the slot."))
 	else
 		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
+	if(ripped_off)
+		flick(icon_deny,src)
+		sleep(1 SECONDS)
+		speak("Insufficent change. Please contact a supervisor.")
 	vend_ready = TRUE
 
 /obj/structure/machinery/vending/proc/transfer_money(datum/money_account/user_account, datum/data/vending_product/currently_vending)
@@ -627,16 +667,32 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/ui_data(mob/user)
 	. = list()
 	var/obj/item/card/id/id_card
+	var/datum/money_account/account
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		id_card = human_user.get_idcard()
-	if(id_card)
-		var/datum/money_account/account = get_account(id_card.associated_account_number)
-		if(account)
-			.["user"] = list()
-			.["user"]["name"] = account.owner_name
-			.["user"]["cash"] = account.money
-			.["user"]["job"] =  id_card.assignment
+		if(id_card)
+			account = get_account(id_card.associated_account_number)
+
+	var/cash_worth
+	var/obj/item/spacecash/cash = user.get_active_hand()
+	if(!istype(cash))
+		cash = user.get_inactive_hand()
+	if(istype(cash))
+		cash_worth = cash.worth
+
+	if(account)
+		.["user"] = list()
+		.["user"]["name"] = account.owner_name
+		.["user"]["cash"] = max(account.money, cash_worth)
+		.["user"]["job"] =  id_card.assignment
+	else if(cash_worth)
+		.["user"] = list()
+		.["user"]["name"] = ""
+		.["user"]["cash"] = cash.worth
+		.["user"]["job"] =  ""
+	else
+		.["user"] = null
 	.["stock"] = list()
 
 	for (var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)

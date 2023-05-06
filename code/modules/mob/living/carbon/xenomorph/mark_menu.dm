@@ -86,7 +86,8 @@
 	.["tracked_mark"] = null
 	if(X.tracked_marker)
 		var/datum/weakref/weak_reference = WEAKREF(X.tracked_marker)
-		.["tracked_mark"] = weak_reference.reference
+		if(weak_reference) // WEAKREF also tested QDELETED
+			.["tracked_mark"] = weak_reference.reference
 
 /datum/mark_menu_ui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

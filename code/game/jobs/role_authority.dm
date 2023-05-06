@@ -470,9 +470,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				else
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
-			if(JOB_SQUAD_RTO)
-				if(sq.num_rto > 0)
-					sq.num_rto--
+			if(JOB_SQUAD_TEAM_LEADER)
+				if(sq.num_tl > 0)
+					sq.num_tl--
 				else
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
@@ -511,6 +511,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return
 
 	var/mob/living/carbon/human/H = M
+
+	if(J.job_options && H?.client?.prefs?.pref_special_job_options[J.title])
+		J.handle_job_options(H.client.prefs.pref_special_job_options[J.title])
 
 	var/job_whitelist = J.title
 	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
@@ -711,17 +714,17 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 						else if(S.num_specialists < lowest.num_specialists)
 							lowest = S
 
-			if(JOB_SQUAD_RTO)
+			if(JOB_SQUAD_TEAM_LEADER)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_rto >= S.max_rto) continue
+						if(!skip_limit && S.num_tl >= S.max_tl) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
 							return
 
 						if(!lowest)
 							lowest = S
-						else if(S.num_rto < lowest.num_rto)
+						else if(S.num_tl < lowest.num_tl)
 							lowest = S
 
 			if(JOB_SQUAD_SMARTGUN)
@@ -853,7 +856,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(JOB_SQUAD_SMARTGUN)
 			if(new_squad.num_smartgun >= new_squad.max_smartgun)
 				return TRUE
-		if(JOB_SQUAD_RTO)
-			if(new_squad.num_rto >= new_squad.max_rto)
+		if(JOB_SQUAD_TEAM_LEADER)
+			if(new_squad.num_tl >= new_squad.max_tl)
 				return TRUE
 	return FALSE

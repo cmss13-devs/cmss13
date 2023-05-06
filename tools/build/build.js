@@ -22,7 +22,7 @@ Juke.setup({ file: import.meta.url }).then((code) => {
   process.exit(code);
 });
 
-const DME_NAME = "ColonialMarinesALPHA";
+const DME_NAME = "colonialmarines";
 
 export const DefineParameter = new Juke.Parameter({
   type: "string[]",

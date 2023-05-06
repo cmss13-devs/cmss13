@@ -102,10 +102,10 @@
 	if(head)
 		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
 
-	//suit/armour
+	//suit/armor
 	if(wear_suit)
 		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
-	//suit/armour storage
+	//suit/armor storage
 	if(s_store && !skipsuitstorage)
 		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
 

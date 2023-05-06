@@ -169,7 +169,7 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"
-	icon_state = "slug_shell"
+	icon_state = "slug_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 5
@@ -182,13 +182,13 @@ var/list/shotgun_handfuls_12g = list(
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
 	name = "handful of incendiary slugs (12g)"
-	icon_state = "incendiary_slug"
+	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
 	name = "handful of shotgun buckshot shells (12g)"
-	icon_state = "buckshot_shell"
+	icon_state = "buckshot_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
@@ -204,22 +204,6 @@ var/list/shotgun_handfuls_12g = list(
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "shell_greyscale" //unneeded
 
-/obj/item/ammo_magazine/handful/shotgun/flechette
-	name = "handful of shotgun flechette shells (12g)"
-	icon_state = "flechette_shell"
-	default_ammo = /datum/ammo/bullet/shotgun/flechette
-	handful_state = "flechette_shell"
-
-/obj/item/ammo_magazine/handful/shotgun/beanbag
-	name = "handful of beanbag slugs (12g)"
-	icon_state = "beanbag_slug"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag
-	handful_state = "beanbag_slug"
-
-/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
-	name = "handful of beanbag slugs (20g)"
-	caliber = "20g"
-
 //updates on init
 /obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
 	overlays.Cut()
@@ -229,6 +213,23 @@ var/list/shotgun_handfuls_12g = list(
 	I.color = "#ffffff"
 	I.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += I
+
+/obj/item/ammo_magazine/handful/shotgun/flechette
+	name = "handful of shotgun flechette shells (12g)"
+	icon_state = "flechette_shell_5"
+	default_ammo = /datum/ammo/bullet/shotgun/flechette
+	handful_state = "flechette_shell"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag
+	name = "handful of beanbag slugs (12g)"
+	icon_state = "beanbag_slug_5"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	handful_state = "beanbag_slug"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag/riot
+	name = "handful of beanbag slugs (20g)"
+	caliber = "20g"
+
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
 	name = "handful of heavy shotgun slugs (8g)"

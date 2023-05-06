@@ -26,7 +26,7 @@
 	pixel_y = -32
 
 /obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, new_cause_data)
-	..()
+	. = ..()
 	if(oldamount)
 		amount = oldamount - 1
 	cause_data = new_cause_data
@@ -174,6 +174,7 @@
 
 /obj/effect/particle_effect/smoke/mustard
 	name = "mustard gas"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "mustard"
 	smokeranking = SMOKE_RANK_HIGH
 
@@ -238,6 +239,7 @@
 
 	M.burn_skin(burn_damage)
 	M.adjust_fire_stacks(applied_fire_stacks)
+	M.fire_reagent = new /datum/reagent/napalm/ut()
 	M.IgniteMob()
 	M.updatehealth()
 

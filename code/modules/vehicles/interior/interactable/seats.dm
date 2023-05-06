@@ -302,7 +302,7 @@
 	icon_state = "vehicle_seat"
 	var/image/chairbar = null
 	var/broken = FALSE
-	buildstacktype = 0
+	buildstackamount = 0
 	can_rotate = FALSE
 	picked_up_item = null
 
@@ -409,7 +409,7 @@
 		if(!broken)
 			break_seat()
 		else
-			deconstruct()
+			deconstruct(FALSE)
 
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)

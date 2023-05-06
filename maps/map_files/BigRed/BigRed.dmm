@@ -119,8 +119,7 @@
 /area/bigredv2/outside/space_port)
 "aau" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Communications Landing Zone";
-	dwidth = 1
+	name = "Communications Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -1339,10 +1338,10 @@
 	},
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Communications"
+	phone_id = "Communications";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1978,11 +1977,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/outside/space_port)
-"afN" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/telecomm/security)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -2538,7 +2532,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ahp" = (
-/obj/structure/machinery/power/apc,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
@@ -2990,6 +2983,10 @@
 "aiF" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	start_charge = 0
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -3546,11 +3543,11 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "akg" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "akh" = (
 /turf/open/floor{
 	dir = 1;
@@ -3762,13 +3759,13 @@
 /turf/open/floor{
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "akO" = (
 /turf/open/floor{
 	dir = 6;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "akP" = (
 /turf/open/floor{
 	dir = 8;
@@ -8009,8 +8006,8 @@
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lambda Labs";
-	phone_id = "Administration";
-	phone_color = "blue"
+	phone_color = "blue";
+	phone_id = "Administration"
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
@@ -8809,7 +8806,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayP" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -9355,7 +9352,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aAr" = (
-/obj/structure/machinery/door/airlock/medical,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Medical Clinic Operating Theatre";
+	dir = 2
+	},
 /turf/open/floor{
 	icon_state = "darkish"
 	},
@@ -9874,10 +9874,10 @@
 /obj/structure/pipes/vents/pump,
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic"
+	phone_id = "Clinic";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -11132,9 +11132,9 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 10;
@@ -11300,9 +11300,9 @@
 /area/bigredv2/outside/medical)
 "aFK" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
-	dir = 1;
 	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor{
@@ -11822,9 +11822,6 @@
 /area/bigredv2/outside/virology)
 "aHc" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc{
-	start_charge = 0
-	},
 /turf/open/floor{
 	icon_state = "whitegreen"
 	},
@@ -13029,7 +13026,6 @@
 	},
 /area/bigredv2/outside/virology)
 "aKi" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -14739,8 +14735,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Director";
-	phone_color = "Blue"
+	phone_color = "Blue";
+	phone_id = "Director"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -16249,7 +16245,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/store)
+/area/bigredv2/outside/general_store)
 "aSJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -16259,7 +16255,7 @@
 	dir = 5;
 	icon_state = "whitebluefull"
 	},
-/area/bigredv2/outside/telecomm/store)
+/area/bigredv2/outside/general_store)
 "aSK" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16731,12 +16727,12 @@
 /turf/open/floor{
 	icon_state = "podhatchfloor"
 	},
-/area/bigredv2/outside/telecomm/admin)
+/area/bigredv2/outside/admin_building)
 "aTV" = (
 /turf/open/floor{
 	icon_state = "podhatchfloor"
 	},
-/area/bigredv2/outside/telecomm/admin)
+/area/bigredv2/outside/admin_building)
 "aTX" = (
 /obj/structure/machinery/computer3/server,
 /turf/open/floor{
@@ -17432,7 +17428,7 @@
 /turf/open/floor{
 	icon_state = "podhatchfloor"
 	},
-/area/bigredv2/outside/telecomm/admin)
+/area/bigredv2/outside/admin_building)
 "aVT" = (
 /obj/structure/machinery/computer3/server,
 /turf/open/floor{
@@ -17461,10 +17457,10 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "blue";
-	phone_id = "Operations"
+	phone_id = "Operations";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -18465,21 +18461,17 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZp" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	start_charge = 0
-	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "aZq" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "aZr" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -18610,7 +18602,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "aZQ" = (
 /obj/structure/surface/table,
 /obj/item/tool/lighter/random,
@@ -21164,7 +21156,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "bhI" = (
 /obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/mars_cave{
@@ -21182,13 +21174,13 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "bhN" = (
 /turf/open/floor{
 	dir = 10;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "bhO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -21377,7 +21369,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/telecomm/security)
+/area/bigredv2/outside/marshal_office)
 "biD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Office Complex"
@@ -21401,7 +21393,6 @@
 /area/bigredv2/outside/space_port_lz2)
 "biI" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	dwidth = 1;
 	name = "Engineering Landing Zone"
 	},
 /turf/open/floor/plating,
@@ -22817,7 +22808,7 @@
 "bov" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/fireaxe,
+/obj/item/weapon/twohanded/fireaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "box" = (
@@ -22921,10 +22912,10 @@
 "boY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Filtration"
+	phone_id = "Filtration";
+	pixel_y = 24
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -23049,12 +23040,6 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Engineering Lockers"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bpB" = (
-/obj/structure/machinery/power/apc{
-	start_charge = 0
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -23274,11 +23259,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"bqt" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/telecomm/admin)
 "bqv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -23356,7 +23336,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "bqT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawner,
@@ -23437,17 +23417,17 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "yellow";
-	phone_id = "Engineering"
+	phone_id = "Engineering";
+	pixel_y = 24
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "bro" = (
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "bru" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
@@ -23563,7 +23543,7 @@
 	dir = 8
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "brR" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -23572,7 +23552,7 @@
 	pixel_x = 30
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "brU" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil,
@@ -23589,7 +23569,7 @@
 /area/bigredv2/outside/filtration_plant)
 "brW" = (
 /obj/structure/surface/table,
-/obj/item/weapon/melee/baton,
+/obj/item/weapon/baton,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -23673,7 +23653,6 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/power/apc,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsC" = (
@@ -23836,26 +23815,26 @@
 	},
 /obj/structure/surface/table,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "bts" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "btt" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "btu" = (
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 1
 	},
 /obj/structure/surface/table,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "btw" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/lz2_south_cas)
@@ -24156,8 +24135,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Solaris Ridge";
-	phone_id = "Virology Lab";
-	phone_color = "green"
+	phone_color = "green";
+	phone_id = "Virology Lab"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -24247,8 +24226,8 @@
 /obj/item/tool/screwdriver,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Robotics";
-	phone_color = "yellow"
+	phone_color = "yellow";
+	phone_id = "Robotics"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -25286,7 +25265,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/item/weapon/gun/smg/m39/elite,
+/obj/item/weapon/gun/smg/m39,
 /obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor{
 	dir = 9;
@@ -27136,9 +27115,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
-"bNy" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm/security)
 "bNA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
@@ -27530,7 +27506,7 @@
 /obj/item/stack/sheet/metal,
 /obj/structure/bed/chair/office/light,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "cGQ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -27748,14 +27724,11 @@
 "dlr" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/store)
+/area/bigredv2/outside/general_store)
 "dmB" = (
 /obj/item/tool/pickaxe,
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
-"dmM" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm/admin)
 "dnV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -27786,7 +27759,7 @@
 	},
 /area/bigredv2/caves/mining)
 "drq" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -27928,7 +27901,7 @@
 /area/bigredv2/caves/mining)
 "dCA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "dEf" = (
@@ -28016,10 +27989,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"dJZ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/store)
 "dKo" = (
 /obj/item/ore/iron{
 	pixel_x = 6;
@@ -28117,7 +28086,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "dSg" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
@@ -28168,13 +28137,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/eta)
-"dZB" = (
-/obj/structure/machinery/power/apc{
-	dir = 4;
-	start_charge = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "dZO" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -28487,7 +28449,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -28512,10 +28474,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
-"eJA" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "eJE" = (
 /turf/open/floor{
 	dir = 4;
@@ -28563,12 +28521,6 @@
 	icon_state = "mars_dirt_5"
 	},
 /area/bigredv2/outside/filtration_plant)
-"eLS" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
-/area/bigredv2/outside/telecomm/store)
 "eMX" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23"
@@ -28752,7 +28704,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "fhI" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
@@ -28920,10 +28872,10 @@
 /area/bigredv2/caves/eta/living)
 "fyO" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Solaris Ridge";
 	phone_color = "green";
-	phone_id = "Clinic Labs"
+	phone_id = "Clinic Labs";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 1;
@@ -28962,7 +28914,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/item/weapon/melee/baseballbat,
+/obj/item/weapon/baseballbat,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -29027,9 +28979,9 @@
 	dir = 4
 	},
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lambda Labs";
-	phone_id = "Surgery"
+	phone_id = "Surgery";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29421,12 +29373,6 @@
 	icon_state = "mars_cave_4"
 	},
 /area/bigredv2/caves_virology)
-"gLQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "gNz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -29644,12 +29590,6 @@
 	icon_state = "mars_dirt_13"
 	},
 /area/bigredv2/outside/space_port_lz2)
-"hpW" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "hqC" = (
 /obj/item/ammo_magazine/rifle/mar40/lmg,
 /turf/open/mars_cave{
@@ -29688,12 +29628,12 @@
 /area/bigredv2/outside/filtration_plant)
 "htp" = (
 /obj/structure/transmitter/colony_net{
+	callable = 0;
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Lambda Labs";
-	phone_id = "Secure Storage";
 	phone_color = "red";
-	callable = 0
+	phone_id = "Secure Storage";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	dir = 1;
@@ -29977,7 +29917,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "iaX" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16"
@@ -30162,9 +30102,6 @@
 	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/caves_north)
-"isv" = (
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "itL" = (
 /obj/structure/closet/l3closet/virology,
 /obj/effect/landmark/objective_landmark/science,
@@ -30203,7 +30140,6 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "izh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -30403,14 +30339,6 @@
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/caves/mining)
-"iXT" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "podhatchfloor"
-	},
-/area/bigredv2/outside/telecomm/admin)
 "iYN" = (
 /obj/structure/closet/secure_closet,
 /obj/effect/landmark/objective_landmark/close,
@@ -30523,15 +30451,12 @@
 	start_charge = 0
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/telecomm/store)
+/area/bigredv2/outside/general_store)
 "jjt" = (
 /obj/structure/bed,
 /obj/item/toy/farwadoll,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
-"jjR" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm/engi)
 "jkn" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -30716,7 +30641,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/weapon/baton/loaded,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -31018,7 +30943,7 @@
 /area/bigredv2/caves/mining)
 "kcx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "kcZ" = (
@@ -31127,7 +31052,7 @@
 	dir = 1;
 	pixel_y = 7
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = -4;
 	pixel_y = 3
 	},
@@ -31275,10 +31200,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"kwB" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "kwQ" = (
 /turf/open/floor{
 	dir = 10;
@@ -31296,9 +31217,9 @@
 "kyz" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	pixel_x = -18;
 	phone_category = "Eta Labs";
-	phone_id = "Observation"
+	phone_id = "Observation";
+	pixel_x = -18
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -31800,7 +31721,7 @@
 	},
 /area/bigredv2/caves/mining)
 "lIe" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	dir = 8;
@@ -31851,7 +31772,7 @@
 	},
 /area/bigred/ground/garage_workshop)
 "lPh" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 3;
 	pixel_y = 12
 	},
@@ -32194,7 +32115,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
 "mBo" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -7;
 	pixel_y = 9
 	},
@@ -32236,7 +32157,7 @@
 "mGS" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/admin)
+/area/bigredv2/outside/admin_building)
 "mHp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -32438,12 +32359,6 @@
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/lz2_south_cas)
-"nku" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "nkQ" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23"
@@ -32556,11 +32471,6 @@
 	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves/mining)
-"nBa" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_se)
 "nBb" = (
 /obj/item/ammo_magazine/pistol/b92fs,
 /obj/item/weapon/gun/pistol/b92fs{
@@ -32599,7 +32509,7 @@
 	},
 /area/bigredv2/outside/eta)
 "nEV" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair{
+/obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -10;
 	pixel_y = 12
 	},
@@ -32857,8 +32767,8 @@
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Eta Labs";
-	phone_id = "Security";
-	phone_color = "red"
+	phone_color = "red";
+	phone_id = "Security"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -33133,12 +33043,6 @@
 	icon_state = "mars_cave_5"
 	},
 /area/bigredv2/caves_virology)
-"oCR" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_lambda)
 "oDB" = (
 /obj/structure/closet/l3closet,
 /obj/effect/landmark/objective_landmark/close,
@@ -33589,7 +33493,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -33611,7 +33515,7 @@
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -33751,7 +33655,7 @@
 	},
 /area/bigredv2/caves_se)
 "pUi" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "pVp" = (
@@ -33829,7 +33733,7 @@
 /area/bigredv2/oob)
 "pZe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -34360,7 +34264,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -34451,9 +34355,6 @@
 	icon_state = "mars_dirt_7"
 	},
 /area/bigredv2/caves/mining)
-"rpc" = (
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/security)
 "rpl" = (
 /obj/structure/machinery/light/small,
 /turf/open/mars_cave{
@@ -34498,7 +34399,7 @@
 "rtR" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/classic_baton,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4"
 	},
@@ -34714,13 +34615,13 @@
 /area/bigredv2/caves/mining)
 "rNc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/melee/harpoon,
+/obj/item/weapon/harpoon,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "rOK" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/baton/loaded,
+/obj/item/weapon/twohanded/spear{
 	pixel_x = -16;
 	pixel_y = -9
 	},
@@ -34872,9 +34773,6 @@
 	icon_state = "mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
-"sba" = (
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/store)
 "sbk" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
@@ -34947,13 +34845,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
-"shv" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitebluefull"
-	},
-/area/bigredv2/outside/telecomm/store)
 "shV" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -34985,7 +34876,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "smh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -35086,7 +34977,7 @@
 	},
 /area/bigredv2/outside/s)
 "ssO" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
@@ -35206,12 +35097,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_east)
-"sBI" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves/mining)
 "sCj" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/mars_cave{
@@ -35983,10 +35868,6 @@
 	icon_state = "mars_cave_4"
 	},
 /area/bigredv2/caves_se)
-"uey" = (
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/dorms)
 "ufu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -36214,10 +36095,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
-"uEW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "uFi" = (
 /obj/item/paper/bigred/finance{
 	pixel_x = -9
@@ -36563,7 +36440,7 @@
 	},
 /area/bigredv2/outside/library)
 "vpu" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -36698,10 +36575,10 @@
 /area/bigredv2/outside/medical)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine{
 	pixel_y = 8
 	},
-/obj/item/weapon/melee/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine{
 	pixel_y = -7
 	},
 /turf/open/floor/plating{
@@ -36816,17 +36693,6 @@
 	icon_state = "mars_dirt_7"
 	},
 /area/bigredv2/caves_north)
-"vRV" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/store)
-"vSi" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
 "vTh" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -37008,7 +36874,7 @@
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/telecomm/engi)
+/area/bigredv2/outside/engineering)
 "wjW" = (
 /obj/structure/platform/shiva{
 	dir = 1
@@ -37400,11 +37266,6 @@
 "xaH" = (
 /turf/closed/wall/wood,
 /area/bigredv2/caves_sw)
-"xaW" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/caves/eta/xenobiology)
 "xbV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -37598,7 +37459,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /obj/effect/decal/cleanable/blood,
@@ -37675,7 +37536,7 @@
 	dir = 4;
 	health = 25000
 	},
-/obj/item/weapon/melee/twohanded/spear{
+/obj/item/weapon/twohanded/spear{
 	pixel_x = 5
 	},
 /turf/open/mars_cave{
@@ -37720,14 +37581,17 @@
 	},
 /area/bigredv2/caves_se)
 "xAv" = (
-/obj/item/weapon/melee/twohanded/folded_metal_chair,
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_15"
 	},
 /area/bigredv2/caves/mining)
 "xAX" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/telecomm/admin)
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "xBr" = (
 /obj/item/ore{
 	pixel_x = 9
@@ -38037,9 +37901,6 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/eta)
-"yeT" = (
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/telecomm/security)
 "yfe" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "eta"
@@ -38099,7 +37960,7 @@
 	},
 /area/bigredv2/caves/mining)
 "yjU" = (
-/obj/item/weapon/melee/broken_bottle,
+/obj/item/weapon/broken_bottle,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -41599,7 +41460,7 @@ wCo
 wVQ
 rxh
 rxh
-sBI
+rxh
 rxh
 rxh
 rxh
@@ -50381,10 +50242,10 @@ aOy
 aOB
 aNo
 aNo
-vRV
-sba
-dJZ
-dJZ
+aOy
+aNo
+aOB
+aOB
 aNm
 aoH
 jjt
@@ -50599,9 +50460,9 @@ aPG
 aQM
 aQM
 aSI
-dJZ
+aOB
 dlr
-sba
+aNo
 aNm
 aoH
 hmJ
@@ -50815,10 +50676,10 @@ aOB
 aOB
 aOB
 aRP
-vRV
-dJZ
-dJZ
-sba
+aOy
+aOB
+aOB
+aNo
 aNm
 aoH
 odw
@@ -51033,9 +50894,9 @@ aNm
 aQN
 aPv
 aSJ
-eLS
-shv
-eLS
+aNm
+aPv
+aNm
 aWB
 aoH
 aXH
@@ -51725,7 +51586,7 @@ bnr
 bok
 bnr
 bpi
-bpB
+bmi
 ayr
 bor
 bmi
@@ -53240,7 +53101,7 @@ axX
 ayr
 ayr
 ayr
-bmi
+xAX
 bmg
 bmg
 ayZ
@@ -53897,13 +53758,13 @@ aLP
 ayZ
 bpI
 bmg
-jjR
-jjR
-jjR
-jjR
-jjR
-jjR
-jjR
+axX
+axX
+axX
+axX
+axX
+axX
+axX
 aao
 aao
 aao
@@ -54024,12 +53885,12 @@ afQ
 agC
 ahl
 aid
-bNy
-yeT
-yeT
-yeT
-yeT
-yeT
+acp
+acr
+acr
+acr
+acr
+acr
 pXm
 ahj
 acp
@@ -54114,13 +53975,13 @@ boR
 ayr
 bor
 bmi
-jjR
+axX
 brn
-vSi
-hpW
-gLQ
+bmq
+trr
+bpl
 btr
-jjR
+axX
 aao
 aao
 aao
@@ -54241,7 +54102,7 @@ acp
 agz
 ahm
 ahj
-bNy
+acp
 aZp
 bhH
 akf
@@ -54331,13 +54192,13 @@ fOK
 ayZ
 bpH
 bmg
-jjR
+axX
 bro
 brP
 slG
-uEW
-hpW
-jjR
+bmg
+trr
+axX
 aao
 aao
 aao
@@ -54458,12 +54319,12 @@ acp
 agz
 ahm
 aie
-bNy
+acp
 aZq
-rpc
+adS
 akg
 akN
-afN
+afS
 ame
 ahj
 anx
@@ -54504,11 +54365,11 @@ apC
 apC
 apJ
 apJ
-dmM
-dmM
-dmM
-dmM
-dmM
+apC
+apC
+apC
+apC
+apC
 apJ
 apJ
 apC
@@ -54549,12 +54410,12 @@ ayZ
 btK
 bnq
 bqP
-eJA
-eJA
-kwB
-uEW
+bop
+bop
+bpM
+bmg
 bts
-jjR
+axX
 aao
 aao
 aao
@@ -54675,12 +54536,12 @@ acp
 agz
 ahn
 ahj
-bNy
+acp
 aZq
-rpc
-rpc
+adS
+adS
 akN
-afN
+afS
 amg
 ahj
 aer
@@ -54721,11 +54582,11 @@ aOF
 aPK
 aQV
 aRT
-xAX
+aof
 aTV
 mGS
 aTV
-xAX
+aof
 aNK
 aXL
 aof
@@ -54765,13 +54626,13 @@ ayr
 ayr
 bpK
 bqk
-jjR
+axX
 wiK
 fgE
-nku
+bor
 cFb
 btt
-jjR
+axX
 aao
 aao
 aao
@@ -54892,12 +54753,12 @@ afP
 agz
 ahn
 aic
-bNy
+acp
 aZP
 bhM
 bhM
 akO
-afN
+afS
 amg
 aic
 acp
@@ -54938,11 +54799,11 @@ aMf
 aPL
 aMf
 aMf
-xAX
+aof
 aTV
-bqt
+aOM
 aTV
-xAX
+aof
 aNL
 aUb
 asT
@@ -54982,13 +54843,13 @@ ayZ
 bpl
 bpL
 bmg
-jjR
-isv
+axX
+bmi
 brR
-nku
-dZB
+bor
+bmi
 btu
-jjR
+axX
 aao
 aao
 aao
@@ -55109,12 +54970,12 @@ acp
 agz
 ahm
 aib
-bNy
-afN
-afN
-afN
-afN
-afN
+acp
+afS
+afS
+afS
+afS
+afS
 amg
 aic
 aer
@@ -55155,11 +55016,11 @@ aOG
 aMf
 aQW
 aRU
-xAX
+aof
 aTU
-bqt
+aOM
 aTV
-xAX
+aof
 aYU
 aUb
 asT
@@ -55199,13 +55060,13 @@ azE
 bmi
 bor
 bql
-jjR
-jjR
-jjR
+axX
+axX
+axX
 dQZ
-jjR
-jjR
-jjR
+axX
+axX
+axX
 aao
 aao
 aao
@@ -55372,11 +55233,11 @@ aKo
 aKo
 aQX
 aRV
-xAX
-iXT
-bqt
+aof
+aTV
+aOM
 aVS
-xAX
+aof
 aXg
 aUb
 asT
@@ -58285,12 +58146,12 @@ aCe
 bBc
 bBr
 bBs
-xaW
+aKi
 bBS
-xaW
-xaW
-xaW
-xaW
+aKi
+aKi
+aKi
+aKi
 tDl
 aCe
 dyv
@@ -58395,7 +58256,7 @@ amn
 amn
 amn
 amn
-uey
+amn
 amn
 amn
 aHD
@@ -58500,14 +58361,14 @@ bAh
 bAh
 aCe
 bBc
-xaW
-xaW
+aKi
+aKi
 bBK
 aCe
 bCb
 qTC
 pvg
-xaW
+aKi
 aPZ
 aCe
 dyv
@@ -58717,8 +58578,8 @@ bAw
 aBy
 aCe
 bBd
-xaW
-xaW
+aKi
+aKi
 bBK
 aCH
 bCc
@@ -58934,7 +58795,7 @@ bAh
 bAO
 aCe
 bBe
-xaW
+aKi
 aKi
 bBK
 aCH
@@ -58942,18 +58803,18 @@ bCd
 qTC
 jgw
 eEm
-xaW
+aKi
 aCL
 bDb
-xaW
-bDb
-aCL
-bDb
-xaW
+aKi
 bDb
 aCL
 bDb
-xaW
+aKi
+bDb
+aCL
+bDb
+aKi
 vvj
 mUy
 jrD
@@ -59151,27 +59012,27 @@ bAx
 bAO
 aCe
 bBd
-xaW
-xaW
+aKi
+aKi
 bBK
 aCH
 bCe
-xaW
+aKi
 wPk
 qTC
-xaW
+aKi
 kyz
-xaW
-xaW
-xaW
+aKi
+aKi
+aKi
 bDr
-xaW
-xaW
-xaW
+aKi
+aKi
+aKi
 lUd
-xaW
+aKi
 qTC
-xaW
+aKi
 mUy
 jrD
 jrD
@@ -59368,12 +59229,12 @@ bAy
 bAP
 aCe
 bBc
-xaW
+aKi
 bBr
 bBK
 aCH
 bCf
-xaW
+aKi
 xZf
 qTC
 pvg
@@ -59387,8 +59248,8 @@ qTC
 qTC
 nUK
 qTC
-xaW
-xaW
+aKi
+aKi
 vvj
 tRI
 jrD
@@ -59586,7 +59447,7 @@ aAp
 aCe
 bBc
 bBs
-xaW
+aKi
 bBK
 aCH
 bCg
@@ -59604,7 +59465,7 @@ qTC
 bDc
 bDS
 wni
-xaW
+aKi
 bDc
 fin
 ibP
@@ -59813,15 +59674,15 @@ uGz
 bCN
 aCL
 bDd
-xaW
+aKi
 bDd
 aCL
 bDd
-xaW
+aKi
 bDd
 aCL
 bDd
-xaW
+aKi
 bDd
 aCe
 aao
@@ -60458,7 +60319,7 @@ bww
 bBN
 aCL
 bCj
-xaW
+aKi
 bCA
 bCG
 bCP
@@ -71759,10 +71620,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -71941,13 +71802,13 @@ aao
 aao
 aao
 bTW
-nBa
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 lUq
-nBa
+izh
 uPm
 aao
 aao
@@ -71957,11 +71818,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -71976,10 +71837,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72034,7 +71895,7 @@ tQw
 aao
 laj
 tQw
-oCR
+tQw
 tQw
 eFh
 aao
@@ -72157,10 +72018,10 @@ aao
 aao
 aao
 fRH
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72174,11 +72035,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -72193,10 +72054,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
@@ -72374,10 +72235,10 @@ aao
 aao
 aao
 bTW
-nBa
+izh
 uPm
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -72391,11 +72252,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72410,10 +72271,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72590,11 +72451,11 @@ aao
 aao
 fRH
 tgL
-nBa
-nBa
+izh
+izh
 sLr
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -72608,11 +72469,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72627,10 +72488,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72806,11 +72667,11 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
+izh
+izh
 sLr
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -72825,11 +72686,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -72844,10 +72705,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73023,9 +72884,9 @@ aao
 aao
 aao
 bTW
-nBa
+izh
 hKD
-nBa
+izh
 aao
 aao
 aao
@@ -73042,11 +72903,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73061,10 +72922,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73241,8 +73102,8 @@ aao
 aao
 bTW
 uPm
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -73259,11 +73120,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73278,10 +73139,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73456,17 +73317,17 @@ aao
 aao
 aao
 fRH
-nBa
+izh
 uPm
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 bAe
 aao
 aao
@@ -73475,12 +73336,12 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -73495,10 +73356,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73673,17 +73534,17 @@ aao
 aao
 aao
 bTW
-nBa
+izh
 uPm
-nBa
+izh
 fRH
 tgL
 tgL
 tgL
 nkQ
-nBa
-nBa
-nBa
+izh
+izh
+izh
 sLr
 aao
 aao
@@ -73691,14 +73552,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73712,10 +73573,10 @@ aao
 aao
 aao
 aao
-nBa
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -73891,37 +73752,31 @@ aao
 aao
 bTW
 xAh
-nBa
+izh
 tgL
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 uPm
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-aao
-aao
-aao
-aao
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -73929,9 +73784,15 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+aao
+aao
+aao
+aao
+aao
+aao
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74107,48 +73968,48 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-aao
-aao
-aao
-aao
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+aao
+aao
+aao
+aao
+aao
+aao
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74308,11 +74169,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 bTW
-nBa
-nBa
+izh
+izh
 tgL
 ucN
 aao
@@ -74323,35 +74184,35 @@ aao
 aao
 aao
 fRH
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 sLr
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74362,10 +74223,10 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74523,13 +74384,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 bTW
-nBa
-nBa
+izh
+izh
 uPm
 aao
 aao
@@ -74540,37 +74401,37 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 uPm
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74578,11 +74439,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74740,13 +74601,13 @@ aao
 aao
 aao
 bLA
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
 bTW
-nBa
-nBa
+izh
+izh
 sLr
 aao
 aao
@@ -74756,50 +74617,50 @@ aao
 aao
 fRH
 tgL
-nBa
+izh
 uPm
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 gtX
 gtX
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74957,14 +74818,14 @@ aao
 aao
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 uPm
-nBa
+izh
 aao
 aao
 aao
@@ -74972,12 +74833,12 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
+izh
+izh
 sLr
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -74989,33 +74850,33 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
@@ -75174,14 +75035,14 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
+izh
+izh
+izh
 tgL
-nBa
-nBa
+izh
+izh
 uPm
-nBa
+izh
 aao
 aao
 aao
@@ -75189,50 +75050,50 @@ aao
 aao
 aao
 lUq
-nBa
+izh
 wUD
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -75391,24 +75252,24 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
+izh
+izh
 gtX
-nBa
-nBa
-nBa
+izh
+izh
+izh
 uPm
-nBa
+izh
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 uPm
-nBa
+izh
 aao
 aao
 aao
@@ -75418,38 +75279,38 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -75613,60 +75474,60 @@ aao
 aao
 bTW
 jGd
-nBa
+izh
 uPm
-nBa
+izh
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-aao
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
+aao
+aao
+aao
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -75829,19 +75690,19 @@ sLr
 aao
 aao
 bTW
-nBa
-nBa
+izh
+izh
 uPm
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 uPm
-nBa
+izh
 aao
 aao
 aao
@@ -75852,37 +75713,37 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76046,19 +75907,19 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
+izh
+izh
 uPm
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 fRH
 tgL
-nBa
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -76069,36 +75930,36 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
@@ -76263,18 +76124,18 @@ aao
 aao
 aao
 bTW
-nBa
-nBa
+izh
+izh
 uPm
-nBa
-nBa
-nBa
+izh
+izh
+izh
 fRH
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76291,16 +76152,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76309,13 +76170,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76479,14 +76340,14 @@ bvR
 aao
 fRH
 tgL
-nBa
-nBa
-nBa
+izh
+izh
+izh
 uPm
 jGd
 fRH
 kWV
-nBa
+izh
 gtX
 gtX
 gtX
@@ -76508,16 +76369,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76526,13 +76387,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76694,15 +76555,15 @@ gCE
 gCE
 bLA
 tgL
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 tgL
-nBa
-nBa
+izh
+izh
 uPm
 aao
 aao
@@ -76725,16 +76586,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76742,14 +76603,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76910,11 +76771,11 @@ gCE
 gCE
 sBu
 bLA
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
+izh
 gtX
 gtX
 gtX
@@ -76942,16 +76803,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -76959,14 +76820,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77127,10 +76988,10 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 uPm
 aao
 aao
@@ -77159,15 +77020,15 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77176,13 +77037,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77344,10 +77205,10 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 sLr
 aao
 aao
@@ -77376,15 +77237,15 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77393,12 +77254,12 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
 aao
 aao
@@ -77562,10 +77423,10 @@ gpg
 gCE
 bLA
 jGd
-nBa
-nBa
+izh
+izh
 sLr
-nBa
+izh
 aao
 aao
 aao
@@ -77593,14 +77454,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77609,14 +77470,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77778,12 +77639,12 @@ aao
 aao
 dEr
 bLA
-nBa
-nBa
+izh
+izh
 uPm
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77810,13 +77671,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77826,14 +77687,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -77998,9 +77859,9 @@ gtX
 gtX
 gtX
 sLr
-nBa
-nBa
-nBa
+izh
+izh
+izh
 bLA
 aao
 aao
@@ -78027,11 +77888,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -78043,14 +77904,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78219,8 +78080,8 @@ bLA
 bLA
 bLA
 bLA
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -78244,11 +78105,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78260,14 +78121,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78433,14 +78294,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78461,11 +78322,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78477,14 +78338,14 @@ aao
 aao
 aao
 aao
-nBa
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 otb
 otb
-nBa
+izh
 aao
 aao
 aao
@@ -78650,16 +78511,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78678,11 +78539,11 @@ aao
 aao
 aao
 aao
-nBa
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -78694,14 +78555,14 @@ aao
 aao
 aao
 aao
-nBa
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 otb
 otb
-nBa
+izh
 aao
 aao
 aao
@@ -78868,18 +78729,18 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -78895,11 +78756,11 @@ aao
 aao
 aao
 aao
-nBa
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -78911,14 +78772,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79085,19 +78946,19 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79111,12 +78972,12 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79129,13 +78990,13 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79301,21 +79162,21 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79328,12 +79189,12 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -79346,14 +79207,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
@@ -79517,24 +79378,24 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79545,11 +79406,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79563,14 +79424,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79734,39 +79595,39 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -79781,14 +79642,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -79947,43 +79808,43 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -79998,14 +79859,14 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80164,14 +80025,14 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80179,32 +80040,28 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-aao
-aao
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80215,14 +80072,18 @@ aao
 aao
 aao
 aao
-nBa
+aao
+aao
+aao
+aao
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80381,14 +80242,14 @@ gCE
 gCE
 wWK
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80396,31 +80257,29 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80430,15 +80289,17 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+aao
+aao
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
+izh
 aao
 aao
 aao
@@ -80598,13 +80459,13 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80613,29 +80474,29 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80646,16 +80507,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80815,13 +80676,13 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -80829,30 +80690,30 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 otb
 otb
-nBa
+izh
 aao
 aao
 aao
@@ -80863,16 +80724,16 @@ aao
 nCp
 nCp
 nCp
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -81032,63 +80893,63 @@ aao
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 otb
 otb
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
+izh
+izh
 nCp
 nCp
 nCp
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 otb
 otb
-nBa
+izh
 aao
 aao
 aao
@@ -81249,63 +81110,63 @@ aao
 aao
 aao
 bLA
-nBa
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
+izh
 aao
 aao
 aao
@@ -81466,62 +81327,62 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -81683,62 +81544,62 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
+izh
 otb
 otb
-nBa
-nBa
-nBa
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
+izh
+izh
+izh
 wfC
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -81900,61 +81761,61 @@ aao
 aao
 aao
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 hPS
 otb
-nBa
-nBa
-nBa
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82117,61 +81978,61 @@ aao
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-jGd
-nBa
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-nBa
-nBa
-otb
-otb
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-pTH
-nBa
-nBa
-nBa
 izh
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+jGd
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+jGd
+izh
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+izh
+izh
+izh
+izh
+aao
+aao
+izh
+izh
+otb
+otb
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+pTH
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82334,23 +82195,23 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82368,26 +82229,26 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82551,22 +82412,22 @@ gCE
 gCE
 gCE
 mHp
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82586,23 +82447,23 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -82768,27 +82629,20 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82803,22 +82657,29 @@ aao
 aao
 aao
 aao
-nBa
-nBa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+izh
+izh
 jGd
-nBa
-nBa
+izh
+izh
 otb
 otb
-nBa
+izh
 jGd
-nBa
+izh
 tdB
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -82985,9 +82846,9 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
-nBa
+izh
+izh
+izh
 aao
 aao
 aao
@@ -83021,19 +82882,19 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
 otb
 otb
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -83202,8 +83063,8 @@ gCE
 gCE
 gCE
 bLA
-nBa
-nBa
+izh
+izh
 aao
 aao
 aao
@@ -83239,16 +83100,16 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao
@@ -83458,11 +83319,11 @@ aao
 aao
 aao
 aao
-nBa
-nBa
-nBa
-nBa
-nBa
+izh
+izh
+izh
+izh
+izh
 aao
 aao
 aao

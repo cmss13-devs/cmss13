@@ -182,6 +182,9 @@
 
 /datum/action/xeno_action/onclick/psychic_whisper/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.client.prefs.muted & MUTE_IC)
+		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+		return
 	if(!X.check_state(TRUE))
 		return
 	var/list/target_list = list()
@@ -211,6 +214,9 @@
 
 /datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
+	if(X.client.prefs.muted & MUTE_IC)
+		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+		return
 	if(!X.check_state(TRUE))
 		return
 	var/list/target_list = list()

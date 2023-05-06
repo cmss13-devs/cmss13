@@ -157,6 +157,14 @@
 	if (!master_is_operating())
 		elect_master()
 
+/obj/structure/machinery/alarm/Destroy()
+	if(alarm_area.master_air_alarm == src)
+		alarm_area.master_air_alarm = null
+	alarm_area = null
+	SSradio.remove_object(src, frequency)
+	radio_connection = null
+	return ..()
+
 /obj/structure/machinery/alarm/proc/handle_heating_cooling()
 	return
 

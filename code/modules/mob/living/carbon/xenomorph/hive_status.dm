@@ -9,7 +9,7 @@
 	var/list/xeno_keys
 	var/list/xeno_info
 	var/hive_location
-	var/pooled_larva
+	var/burrowed_larva
 	var/evilution_level
 
 	var/data_initialized = FALSE
@@ -89,8 +89,8 @@
 	xeno_vitals = assoc_hive.get_xeno_vitals()
 
 // Updates how many buried larva there are
-/datum/hive_status_ui/proc/update_pooled_larva(send_update = TRUE)
-	pooled_larva = assoc_hive.stored_larva
+/datum/hive_status_ui/proc/update_burrowed_larva(send_update = TRUE)
+	burrowed_larva = assoc_hive.stored_larva
 	if(SSxevolution)
 		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
 	else
@@ -99,7 +99,7 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
-// Updates all data except pooled larva
+// Updates all data except burrowed larva
 /datum/hive_status_ui/proc/update_all_xeno_data(send_update = TRUE)
 	update_xeno_counts(FALSE)
 	update_xeno_vitals()
@@ -109,11 +109,11 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
-// Updates all data, including pooled larva
+// Updates all data, including burrowed larva
 /datum/hive_status_ui/proc/update_all_data()
 	data_initialized = TRUE
 	update_all_xeno_data(FALSE)
-	update_pooled_larva(FALSE)
+	update_burrowed_larva(FALSE)
 	SStgui.update_uis(src)
 
 /datum/hive_status_ui/ui_state(mob/user)
@@ -134,7 +134,7 @@
 	.["xeno_vitals"] = xeno_vitals
 	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
 	.["hive_location"] = hive_location
-	.["pooled_larva"] = pooled_larva
+	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
 
 	var/mob/living/carbon/xenomorph/queen/Q = user

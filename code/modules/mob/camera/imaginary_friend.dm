@@ -39,6 +39,9 @@
 /mob/camera/imaginary_friend/Initialize(mapload, mob/owner)
 	. = ..()
 
+	if(!owner)
+		return INITIALIZE_HINT_QDEL
+
 	src.owner = owner
 	owner.play_screen_text("An imaginary friend has appeared to help you! <br> The imaginary friend is an out of character aid for mentors to assist you. If someone asks you about it in character you can explain it as remembering something from the past, etc, but you are not insane.")
 
@@ -99,9 +102,14 @@
 
 
 /mob/camera/imaginary_friend/Destroy()
-	owner.client?.images.Remove(friend_image)
+	if(owner)
+		owner.client?.images.Remove(friend_image)
 
 	client?.images.Remove(friend_image)
+
+	owner = null
+	current_image = null
+	friend_image = null
 
 	return ..()
 
@@ -172,7 +180,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_IC))

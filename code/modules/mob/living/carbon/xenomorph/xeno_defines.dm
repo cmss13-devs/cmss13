@@ -102,6 +102,9 @@
 
 	var/caste_luminosity = 0
 
+	/// if fire_immunity is set to be vulnerable, how much will fire damage be multiplied. Defines in xeno.dm
+	var/fire_vulnerability_mult = 0
+
 	var/burrow_cooldown = 5 SECONDS
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 10 SECONDS
@@ -264,8 +267,7 @@
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
-	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
-	var/obj/effect/alien/resin/special/pool/spawn_pool = null // Ref to the spawn pool if there is one
+	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
 	var/xenocon_points = 0 //Xeno version of DEFCON
 
@@ -273,7 +275,7 @@
 	var/tier_slot_multiplier = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
-	var/hijack_pooled_surge = FALSE //at hijack, start spawning lots of pooled
+	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
 
 	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
@@ -303,9 +305,7 @@
 	var/global/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
-		XENO_STRUCTURE_POOL = /datum/construction_template/xenomorph/pool,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_EVOPOD = /datum/construction_template/xenomorph/evopod,
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
 	)
 
@@ -749,8 +749,8 @@
 		),
 	)
 
-	var/pooled_factor = min(stored_larva, sqrt(4*stored_larva))
-	pooled_factor = round(pooled_factor)
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	burrowed_factor = round(burrowed_factor)
 
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
@@ -772,15 +772,13 @@
 			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
-	var/total_xenos = 0
-	var/effective_total = pooled_factor
+	var/effective_total = burrowed_factor
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
-			total_xenos++
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*total_xenos/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
@@ -894,16 +892,16 @@
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
-	hijack_pooled_surge = TRUE
+	hijack_burrowed_surge = TRUE
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
-	if(!spawn_pool || !spawn_pool.spawn_pooled_larva(C.mob))
+	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
 		stored_larva--
 	else
-		hive_ui.update_pooled_larva()
+		hive_ui.update_burrowed_larva()
 
 /datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
 	var/spawning_area
@@ -938,7 +936,7 @@
 			window_flash(new_xeno.client)
 
 	stored_larva--
-	hive_ui.update_pooled_larva()
+	hive_ui.update_burrowed_larva()
 
 /mob/living/proc/ally_of_hivenumber(hivenumber)
 	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]

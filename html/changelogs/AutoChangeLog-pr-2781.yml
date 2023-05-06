@@ -1,5 +1,0 @@
-author: "LC4492"
-delete-after: True
-changes:
-  - bugfix: "Fixed poorly made yummy-tummies around the engineering area."
-  - maptweak: "The upper engineering area have been properly tweaked to accomodate a shared bunk room for the enlisted ranks of the engineering department, a proper cryosleep room and gave the Chief Engineer his own chamber to sleep in."

@@ -88,10 +88,10 @@
 	spawned_gear_list = list(
 		/obj/item/tool/hatchet,
 		/obj/item/tool/hatchet,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat/metal,
-		/obj/item/weapon/melee/twohanded/spear,
-		/obj/item/weapon/melee/twohanded/spear,
-		/obj/item/weapon/melee/twohanded/fireaxe,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/fireaxe,
 	)

@@ -23,4 +23,5 @@ AddTimelock(/datum/job/command/executive, list(
 
 /obj/effect/landmark/start/executive
 	name = JOB_XO
+	icon_state = "xo_spawn"
 	job = /datum/job/command/executive

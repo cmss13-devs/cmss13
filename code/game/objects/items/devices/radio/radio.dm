@@ -273,8 +273,8 @@
 
 	var/transmit_z = position.z
 	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
-	if(transmit_z == GLOB.interior_manager.interior_z)
-		var/datum/interior/I = GLOB.interior_manager.get_interior_by_coords(position.x, position.y)
+	if(SSinterior.in_interior(position))
+		var/datum/interior/I = SSinterior.get_interior_by_coords(position.x, position.y, position.z)
 		if(I && I.exterior)
 			transmit_z = I.exterior.z
 
@@ -312,8 +312,8 @@
 
 	var/transmit_z = position.z
 	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
-	if(transmit_z == GLOB.interior_manager.interior_z)
-		var/datum/interior/I = GLOB.interior_manager.get_interior_by_coords(position.x, position.y)
+	if(SSinterior.in_interior(position))
+		var/datum/interior/I = SSinterior.get_interior_by_coords(position.x, position.y, position.z)
 		if(I && I.exterior)
 			transmit_z = I.exterior.z
 
@@ -364,8 +364,8 @@
 			return FALSE
 		var/receive_z = position.z
 		// Use vehicle's z if we're inside a vehicle interior
-		if(position.z == GLOB.interior_manager.interior_z)
-			var/datum/interior/I = GLOB.interior_manager.get_interior_by_coords(position.x, position.y)
+		if(SSinterior.in_interior(position))
+			var/datum/interior/I = SSinterior.get_interior_by_coords(position.x, position.y, position.z)
 			if(I && I.exterior)
 				receive_z = I.exterior.z
 		if(src.ignore_z == TRUE)

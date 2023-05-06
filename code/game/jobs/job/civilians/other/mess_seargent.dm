@@ -10,4 +10,5 @@
 
 /obj/effect/landmark/start/chef
 	name = JOB_MESS_SERGEANT
+	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef

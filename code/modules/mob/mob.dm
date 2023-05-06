@@ -46,8 +46,7 @@
 	attack_log = null
 	item_verbs = null
 	luminosity_sources = null
-
-
+	focus = null
 
 /mob/Initialize()
 	if(!faction_group)
@@ -632,24 +631,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
 /mob/proc/jittery_process()
-	//var/old_x = pixel_x
-	//var/old_y = pixel_y
+	var/jittering_old_x = pixel_x
+	var/jittering_old_y = pixel_y
 	is_jittery = 1
 	while(jitteriness > 100)
-// var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
-// pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
-// pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
-
 		var/amplitude = min(4, jitteriness / 100)
-		pixel_x = old_x + rand(-amplitude, amplitude)
-		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
+		pixel_x = jittering_old_x + rand(-amplitude, amplitude)
+		pixel_y = jittering_old_y + rand(-amplitude/3, amplitude/3)
 
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_jittery = 0
-	pixel_x = old_x
-	pixel_y = old_y
-
+	pixel_x = jittering_old_x
+	pixel_y = jittering_old_y
 
 //handles up-down floaty effect in space
 /mob/proc/make_floating(n)
@@ -846,7 +840,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return

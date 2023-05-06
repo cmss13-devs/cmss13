@@ -23,6 +23,7 @@ interface DropshipNavigationProps extends NavigationProps {
   can_set_automated?: 0 | 1;
   primary_lz?: string;
   automated_control: AutomatedControl;
+  has_flyby_skill: 0 | 1;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -185,7 +186,7 @@ const FlybyControl = (props, context) => {
   const { act, data } = useBackend<DropshipNavigationProps>(context);
   return (
     <Section
-      title="Flyby Controls"
+      title="Flight Controls"
       className="flybyControl"
       buttons={
         <>
@@ -194,15 +195,15 @@ const FlybyControl = (props, context) => {
               Set ferry
             </Button>
           )}
-          {data.flight_configuration === 'ferry' && (
+          {data.has_flyby_skill === 1 && data.flight_configuration === 'ferry' && (
             <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
               Set flyby
             </Button>
           )}
-          {data.shuttle_mode === 'called' && (
+          {data.has_flyby_skill === 1 && data.shuttle_mode === 'called' && (
             <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
           )}
-          {data.shuttle_mode === 'idle' && (
+          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
             <Button
               icon="rocket"
               disabled={data.flight_configuration === 'ferry'}
@@ -327,7 +328,12 @@ const RenderScreen = (props, context) => {
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
-      {data.shuttle_mode === 'called' && <InFlightCountdown />}
+      {data.shuttle_mode === 'called' && data.target_destination && (
+        <InFlightCountdown />
+      )}
+      {data.shuttle_mode === 'called' && !data.target_destination && (
+        <DropshipDestinationSelection />
+      )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
     </>
   );

@@ -316,6 +316,7 @@
 
 /obj/structure/airlock_assembly/multi_tile
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
+	icon_state = "door_as_g0"
 	dir = EAST
 	var/width = 1
 

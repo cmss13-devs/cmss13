@@ -687,13 +687,13 @@
 	smash()
 
 /obj/item/reagent_container/food/drinks/drinkingglass/proc/smash(mob/living/target, mob/living/user)
-	var/obj/item/weapon/melee/broken_glass/B
+	var/obj/item/weapon/broken_glass/B
 	if(user)
 		user.temp_drop_inv_item(src)
-		B = new /obj/item/weapon/melee/broken_glass(user.loc)
+		B = new /obj/item/weapon/broken_glass(user.loc)
 		user.put_in_active_hand(B)
 	else
-		B = new /obj/item/weapon/melee/broken_glass(src.loc)
+		B = new /obj/item/weapon/broken_glass(src.loc)
 	if(prob(33))
 		if(target)
 			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
@@ -711,15 +711,15 @@
 	desc = "A drinking glass for soda."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/soda/Initialize()
-		..()
-		reagents.add_reagent("sodawater", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("sodawater", 50)
+	on_reagent_change()
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola
 	name = "cola glass"
 	desc = "A drinking glass for cola."
 
 /obj/item/reagent_container/food/drinks/drinkingglass/cola/Initialize()
-		..()
-		reagents.add_reagent("cola", 50)
-		on_reagent_change()
+	. = ..()
+	reagents.add_reagent("cola", 50)
+	on_reagent_change()

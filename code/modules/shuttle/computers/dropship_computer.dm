@@ -3,7 +3,7 @@
 	desc = "flight computer for dropship"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE
@@ -60,7 +60,7 @@
 		return
 
 	// initial flight time
-	var/flight_duration = DROPSHIP_TRANSIT_DURATION
+	var/flight_duration =  is_set_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
 	if(optimised)
 		if(is_set_flyby)
 			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
@@ -84,6 +84,7 @@
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
+
 
 	dropship.callTime = round(flight_duration)
 	dropship.rechargeTime = round(recharge_duration)
@@ -217,6 +218,10 @@
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
 		announce_dchat("[xeno] has locked \the [dropship]", src)
 
+		if(almayer_orbital_cannon)
+			almayer_orbital_cannon.is_disabled = TRUE
+			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
 		return
@@ -224,6 +229,8 @@
 	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
+			if(usr.action_busy)
+				return
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
@@ -239,10 +246,14 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 
 	// select crash location
+	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
+	if(result)
+		if(!user.Adjacent(source_turf))
+			return
 	if(dropship.is_hijacked)
 		return
 	var/datum/dropship_hijack/almayer/hijack = new()
@@ -254,9 +265,7 @@
 	dropship.is_hijacked = TRUE
 
 	hijack.fire()
-	if(almayer_orbital_cannon)
-		almayer_orbital_cannon.is_disabled = TRUE
-		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
+	GLOB.alt_ctrl_disabled = TRUE
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 
@@ -304,6 +313,7 @@
 	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
 
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
+	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
@@ -335,9 +345,13 @@
 
 	switch(action)
 		if("move")
-			if(shuttle.mode != SHUTTLE_IDLE)
-				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
+
+			if(is_set_flyby && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+				to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
+				return FALSE
 			var/is_optimised = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))

@@ -6,6 +6,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_SURVIVOR
+	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -37,7 +38,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(H)
 
-/datum/equipment_preset/survivor/forecon/add_survivor_weapon(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/forecon/add_survivor_weapon_security(mob/living/carbon/human/H)
 	return
 
 /datum/equipment_preset/survivor/forecon/proc/add_forecon_weapon(mob/living/carbon/human/H)
@@ -232,6 +233,7 @@
 	uniform.attach_accessory(H,pin)
 	uniform.attach_accessory(H,patch_forecon)
 	H.equip_to_slot_or_del(uniform, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_green(H), WEAR_JACKET)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/mateba/cmateba(H), WEAR_R_HAND)
@@ -248,12 +250,13 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - USCM Synthetic"
 	assignment = "Reconnaissance Synthetic"
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(preset_human), WEAR_BACK)
-	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(preset_human), WEAR_FEET)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red/knife(preset_human), WEAR_FEET)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)

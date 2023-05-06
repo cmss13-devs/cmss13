@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/chloroform
+/obj/item/weapon/chloroform
 	name = "cloth"
 	desc = "A piece of cloth. It smells funny"
 
@@ -9,13 +9,13 @@
 
 	var/obj/item/clothing/mask/cloth/mask_item
 
-/obj/item/weapon/melee/chloroform/get_examine_text(mob/user)
+/obj/item/weapon/chloroform/get_examine_text(mob/user)
 	. = ..()
 
 	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		. += SPAN_BLUE("It has [uses] use\s left.")
 
-/obj/item/weapon/melee/chloroform/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/chloroform/attack(mob/living/M, mob/living/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return . = ..()
 
@@ -45,7 +45,7 @@
 
 	uses--
 
-/obj/item/weapon/melee/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
+/obj/item/weapon/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
 	M.anchored = TRUE
 	M.frozen = TRUE
 	M.density = FALSE
@@ -76,7 +76,7 @@
 
 	animate(M, pixel_x = target_x, pixel_y = target_y, time = 0.2 SECONDS, easing = QUAD_EASING)
 
-/obj/item/weapon/melee/chloroform/proc/remove_stun(mob/living/M)
+/obj/item/weapon/chloroform/proc/remove_stun(mob/living/M)
 	animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 	M.anchored = FALSE
 	M.density = TRUE

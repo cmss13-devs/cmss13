@@ -269,6 +269,9 @@ var/list/alldepartments = list()
 // converting whatever type the fax is into a single paper with all the information on it.
 /obj/structure/machinery/faxmachine/proc/copy_fax_paper(mob/living/user)
 
+	if(fax_paper_copy)
+		return
+
 	if(istype(original_fax, /obj/item/paper))
 		fax_paper_copy = original_fax
 		return

@@ -131,3 +131,10 @@
   - rscadd: Xenomorphs can now clear eggs from other hives
   FreetoZ:
   - rscadd: added cas simulator.
+2023-05-06:
+  Drathek:
+  - server: 'hrefs.log will now include more commands: Now anything that isn''t an
+      expected asset_cache_confirm_arrival, a tgui_Topic, or rate limited will be
+      logged.'
+  FreetoZ:
+  - bugfix: hotifx for cas

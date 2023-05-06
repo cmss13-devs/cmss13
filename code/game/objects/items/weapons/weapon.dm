@@ -19,7 +19,7 @@
 				strong_text = "an inhumanely strong"
 		. += SPAN_INFO("[src] would be [strong_text] weapon if you were to hit someone with it.")
 
-	if(force != throwforce && throwforce >= MELEE_FORCE_TIER_1)
+	if(throwforce >= MELEE_FORCE_TIER_1)
 		strong_text = "a weak"
 		switch(throwforce)
 			if((MELEE_FORCE_WEAK + 1) to MELEE_FORCE_NORMAL)

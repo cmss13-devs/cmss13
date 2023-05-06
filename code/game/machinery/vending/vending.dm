@@ -588,13 +588,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 					vend_ready = TRUE
 					return
 				else
-					if(istype(cash, /obj/item/spacecash/ewallet))
-						cash.worth -= price_to_use
-						vendor_account.money += price_to_use
-						if(!cash.worth)
-							qdel(cash)
-					else
-						vendor_account.money += cash.worth
+					insert_money(cash, record)
+					if(cash.worth && !istype(cash, /obj/item/spacecash/ewallet))
 						qdel(cash)
 						ripped_off = TRUE
 
@@ -643,6 +638,31 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	new_transaction = new()
 	new_transaction.target_name = user_account.owner_name
+	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
+	new_transaction.amount = "[transaction_amount]"
+	new_transaction.source_terminal = src.name
+	new_transaction.date = current_date_string
+	new_transaction.time = worldtime2text()
+	vendor_account.transaction_log.Add(new_transaction)
+
+	return TRUE
+
+/obj/structure/machinery/vending/proc/insert_money(obj/item/spacecash/cash, datum/data/vending_product/currently_vending)
+	var/transaction_amount = currently_vending.price
+	if(transaction_amount > cash.worth)
+		return FALSE
+
+	//transfer the money
+	cash.worth -= transaction_amount
+	vendor_account.money += transaction_amount
+
+	//consume the cash if needed
+	if(!cash.worth)
+		qdel(cash)
+
+	//create entries in the account transaction logs
+	var/datum/transaction/new_transaction = new()
+	new_transaction.target_name = "CASH"
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	new_transaction.amount = "[transaction_amount]"
 	new_transaction.source_terminal = src.name
@@ -945,6 +965,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
+	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	return 1
 
 /obj/structure/machinery/vending/proc/get_wire_descriptions()

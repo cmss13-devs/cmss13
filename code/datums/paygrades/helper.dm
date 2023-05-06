@@ -20,6 +20,8 @@
 					NP = "Mx. " //inclusivity win!
 		return NP
 	else
+		if(!P)//For custom admin-made paygrades to not cause runtimes.
+			return "[paygrade]"
 		return P.name
 
 /proc/get_rank_pins(paygrade)

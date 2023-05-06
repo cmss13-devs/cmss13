@@ -67,10 +67,16 @@ var/list/alldepartments = list()
 
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/paper_bundle) || istype(O, /obj/item/photo))
 
+		if(istype(O, /obj/item/paper_bundle))	
+			var/obj/item/paper_bundle/bundle = O
+			if(bundle.amount > 5)
+				to_chat(user, SPAN_NOTICE("Fax machine jammed, can only accept up to five papers at once"))
+				return
+			
 		if(original_fax)
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
 			return
-
+		
 		user.drop_inv_item_to_loc(O, src)
 		original_fax = O
 		to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
@@ -179,7 +185,8 @@ var/list/alldepartments = list()
 				to_chat(ui.user, SPAN_NOTICE("No paper loaded"))
 				return
 
-			copy_fax_paper()
+			if(!fax_paper_copy)
+				copy_fax_paper()
 
 			outgoing_fax_message(ui.user)
 
@@ -198,12 +205,19 @@ var/list/alldepartments = list()
 			ui.user.put_in_hands(original_fax)
 			to_chat(ui.user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
 			original_fax = null
+			fax_paper_copy = null
+			photo_list = null
 			. = TRUE
 
 		if("insertpaper")
-			// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
 			var/obj/item/I = ui.user.get_active_hand()
-			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle || istype(I, /obj/item/photo)))
+			if(istype(I, /obj/item/paper_bundle))	
+				var/obj/item/paper_bundle/bundle = I
+				if(bundle.amount > 5)
+					to_chat(ui.user, SPAN_NOTICE("Fax machine jammed, can only accept up to five papers at once"))
+					return
+				// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
+			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle) || istype(I, /obj/item/photo))
 				ui.user.drop_inv_item_to_loc(I, src)
 				original_fax = I
 				to_chat(ui.user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
@@ -294,7 +308,6 @@ var/list/alldepartments = list()
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[user]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[user]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[user]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[user]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];loadimages=\ref[faxcontents]'>IMG</A>) "
 
 	switch(target_department)
 		if(DEPARTMENT_HC)
@@ -323,12 +336,15 @@ var/list/alldepartments = list()
 
 	send_fax(faxcontents)
 
-	announce_fax(msg_admin, msg_ghost)
+	announce_fax(msg_admin, msg_ghost, faxcontents)
 
 // leaving this proc here for now.
-/datum/proc/announce_fax(msg_admin, msg_ghost)
+/datum/proc/announce_fax(msg_admin, msg_ghost, datum/fax/faxcontents) 
 	log_admin(msg_admin)
 	for(var/client/C in GLOB.admins)
+		if(faxcontents.photo_list)
+			for(var/photo in faxcontents.photo_list)
+				C << browse_rsc(faxcontents.photo_list[photo], photo)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
 				to_chat(C, msg_admin)
@@ -344,6 +360,9 @@ var/list/alldepartments = list()
 			if(C && C.admin_holder)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
+				if(faxcontents.photo_list)
+					for(var/photo in faxcontents.photo_list)
+						C << browse_rsc(faxcontents.photo_list[photo], photo)
 			to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 
@@ -351,6 +370,8 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if(F != src && F.department == target_department)
+			if(!faxcontents)
+				return
 			if(! (F.inoperable() ) )
 
 				flick("faxreceive", F)
@@ -385,7 +406,7 @@ var/list/alldepartments = list()
 							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
-
+					qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
 	name = "CMB Incident Command Center Fax Machine"
@@ -442,6 +463,5 @@ var/list/alldepartments = list()
 
 /datum/fax/New(data, photo_list)
 	. = ..()
-
 	src.data = data
 	src.photo_list = photo_list

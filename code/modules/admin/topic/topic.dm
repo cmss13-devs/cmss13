@@ -1306,8 +1306,7 @@
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice != "Send") return
-		if(send_choice == "Cancel")
+		if(send_choice != "Send") 
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1389,8 +1388,7 @@
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice != "Send") return
-		if(send_choice == "Cancel")
+		if(send_choice != "Send") 
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1470,8 +1468,6 @@
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
-			return
-		if(send_choice == "Cancel")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1554,8 +1550,6 @@
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
-			return
-		if(send_choice == "Cancel")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 

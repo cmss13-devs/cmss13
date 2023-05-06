@@ -2,8 +2,8 @@
 	set name = "Call General Quarters"
 	set category = "Admin.Ship"
 
-	if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
-		tgui_alert(src, "Security is already red or above, General Quarters cannot be called.", "Acknowledge!", list("ok."), 10 SECONDS)
+	if(security_level == SEC_LEVEL_DELTA)
+		tgui_alert(src, "Security level is Delta. General Quarters cannot be called.", "Acknowledge!", list("ok."), 10 SECONDS)
 	else
 		var/whattoannounce = "ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS."
 		var/prompt = tgui_alert(src, "Do you want to leave the announcement as the default one?", "Choose.", list("Yes", "No"), 20 SECONDS)

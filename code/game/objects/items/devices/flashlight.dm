@@ -59,7 +59,7 @@
 		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
 		return FALSE
 	if(!isturf(user.loc))
-		if(is_light_on())
+		if(on==TRUE)
 			to_chat(user, SPAN_WARNING("You cannot turn the light off while in [user.loc].")) //To prevent some lighting anomalities.
 			return FALSE
 		else

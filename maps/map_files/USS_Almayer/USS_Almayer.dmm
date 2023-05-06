@@ -27659,7 +27659,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "19;28;29"
+	req_access = list(19)
 	},
 /obj/structure/machinery/door/window/westright,
 /obj/item/paper_bin/uscm{
@@ -27669,7 +27669,9 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/turf/open/space/basic,
+/turf/open/floor/almayer{
+	icon_state = "silverfull"
+	},
 /area/almayer/command/computerlab)
 "cnS" = (
 /obj/structure/window/framed/almayer,
@@ -66864,13 +66866,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"uBY" = (
-/obj/structure/closet,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver"
-	},
-/area/almayer/command/computerlab)
 "uCh" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/structure/sign/safety/water{
@@ -116008,7 +116003,7 @@ huO
 qLV
 xNv
 iLO
-uBY
+iLO
 bUa
 aHq
 aSz

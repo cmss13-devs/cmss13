@@ -42,7 +42,7 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_item = ITEM_PREDATOR
-	flags_inventory = !BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	slowdown = SLOWDOWN_ARMOR_NONE
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT

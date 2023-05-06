@@ -23,9 +23,10 @@
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
-	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))
-	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP allies."))
+	to_chat(M, SPAN_NOTICE(" Use say :l <text> to speak in tactical sign language, understood only by similarly trained commando units."))
+	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP Kommandos."))
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
+	to_chat(M, SPAN_NOTICE("Your experimental cloak allows firing while cloaked, but it is not as effective in hiding you as its USCM counterpart."))
 
 /datum/emergency_call/upp_commando/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

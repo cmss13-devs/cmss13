@@ -1478,6 +1478,9 @@
 	fire_delay = FIRE_DELAY_TIER_9
 	burst_delay = FIRE_DELAY_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
 
 	//-------------------------------------------------------
 

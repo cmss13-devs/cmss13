@@ -84,6 +84,13 @@
 	deactive_state = "upp_goggles_0"
 	req_skill = null
 	req_skill_level = null
+	eye_protection = EYE_PROTECTION_WELDING
+	has_tint = TRUE
+
+/obj/item/clothing/glasses/night/m42_night_goggles/upp/medic
+	name = "\improper Type 10 commando medic goggles"
+	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. This one has an integrated medhud. Click it to toggle."
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
 
 /obj/item/clothing/glasses/night/m56_goggles
 	name = "\improper M56 head mounted sight"

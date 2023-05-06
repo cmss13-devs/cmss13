@@ -1014,8 +1014,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
-	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
+	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. While easier to spot than the USCM contemporary, it allows firing while cloaked."
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 
 	max_storage_space = 21
-	camo_alpha = 10
+	camo_alpha = 25
+	allow_gun_usage = TRUE

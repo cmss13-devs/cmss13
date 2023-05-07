@@ -490,7 +490,7 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
-/obj/item/weapon/maintenance_jack
+/obj/item/maintenance_jack
 	name = "\improper K92 Maintenance Jack"
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
@@ -515,7 +515,7 @@
 	///How long extra will it take (in seconds) people who do not have engi 3 (if requires_skills_unbolt is true)
 	var/unskilled_unbolt_time = 15 SECONDS
 
-/obj/item/weapon/maintenance_jack/get_examine_text(mob/user)
+/obj/item/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Interact with the Maintenance Jack to change modes.")
 	if(crowbar_mode)
@@ -523,7 +523,7 @@
 	else
 		. += SPAN_NOTICE("It is set to wrench mode, allowing you to unbolt doors, provided you are smart enough to know how.")
 
-/obj/item/weapon/maintenance_jack/attack_self(mob/living/user)
+/obj/item/maintenance_jack/attack_self(mob/living/user)
 	. = ..()
 	playsound(src, 'sound/weapons/punchmiss.ogg', 15, TRUE, 3)
 	if(crowbar_mode) //Switch to wrench mode | Remove bolts
@@ -547,7 +547,7 @@
 	REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 
-/obj/item/weapon/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
+/obj/item/maintenance_jack/afterattack(atom/attacked_obj, mob/living/user, proximity)
 	if(!proximity)
 		return
 

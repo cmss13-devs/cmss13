@@ -551,7 +551,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
-	if(istype(C, /obj/item/weapon/maintenance_jack)) //Its got custom code but some parts of the attackby break it
+	if(istype(C, /obj/item/maintenance_jack)) //Its got custom code but some parts of the attackby break it
 		return
 
 	if(istype(C, /obj/item/clothing/mask/cigarette))

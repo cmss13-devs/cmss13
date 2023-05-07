@@ -185,6 +185,12 @@ var/list/alldepartments = list()
 				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
 				return
 
+			if(istype(original_fax, /obj/item/paper_bundle))
+				var/obj/item/paper_bundle/bundle = original_fax
+				if(bundle.amount > 5)
+					to_chat(ui.user, SPAN_NOTICE("\The [src] is jammed!"))
+					return
+
 			copy_fax_paper()
 
 			outgoing_fax_message(ui.user)

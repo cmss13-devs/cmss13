@@ -215,17 +215,22 @@ var/list/alldepartments = list()
 			. = TRUE
 
 		if("insertpaper")
+			var/jammed = FALSE
 			var/obj/item/I = ui.user.get_active_hand()
-			if(istype(I, /obj/item/paper_bundle))	
+			if(istype(I, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = I
 				if(bundle.amount > 5)
-					to_chat(ui.user, SPAN_NOTICE("Fax machine jammed, can only accept up to five papers at once"))
-					return
+					jammed = TRUE
 				// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
 			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle) || istype(I, /obj/item/photo))
 				ui.user.drop_inv_item_to_loc(I, src)
 				original_fax = I
-				to_chat(ui.user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
+				if(!jammed)
+					to_chat(ui.user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
+				else
+					to_chat(ui.user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
+					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
+				flick("faxsend", src)
 			. = TRUE
 
 		if("ejectid")

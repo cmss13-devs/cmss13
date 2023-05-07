@@ -14,6 +14,14 @@ GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't colle
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
+//Basically counts how many times the Almayer was hit by each weapon. Loggin' wack.
+GLOBAL_LIST_INIT(ALMAYER_HITS_TALLY, list(
+TIMES_HIT_MISSILE = 0
+TIMES_HIT_RAILGUN = 0
+TIMES_HIT_ODC = 0
+TIMES_HIT_AABOILER = 0
+))
+
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 

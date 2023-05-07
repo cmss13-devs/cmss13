@@ -4,12 +4,6 @@
 #define WEAPON_AABOILER 4
 #define HIT_CHANCE_CHEAT 100
 #define HIT_CHANCE_STANDARD 70
-GLOBAL_LIST_INIT(ALMAYER_HITS_TALLY, list(
-TIMES_HIT_MISSILE = 0
-TIMES_HIT_RAILGUN = 0
-TIMES_HIT_ODC = 0
-TIMES_HIT_AABOILER = 0
-))
 /**
  * Proc called to hit the ship with weapons
  *
@@ -37,11 +31,13 @@ TIMES_HIT_AABOILER = 0
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
+						ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
 					weaponhits_effects(WEAPON_MISSILE)
 				else
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
+					ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
 			if(point_defense == TRUE)
 				var/hitchance = HIT_CHANCE_STANDARD
 				if(salvo == TRUE)
@@ -58,12 +54,14 @@ TIMES_HIT_AABOILER = 0
 						shotspacing += 1
 					if(confirmedhit > 0)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
+					ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += confirmedhit
 					confirmedhit = 0
 				else
 					if(prob(hitchance))
 						cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
+						ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
 					else
 						weaponhits_effects(WEAPON_MISSILE, TRUE)
 
@@ -83,12 +81,14 @@ TIMES_HIT_AABOILER = 0
 					weaponhits_effects(WEAPON_RAILGUN)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
+				ALMAYER_HITS_TALLY.TIMES_HIT_RAILGUN += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
 					weaponhits_effects(WEAPON_RAILGUN)
+					ALMAYER_HITS_TALLY.TIMES_HIT_RAILGUN += 1
 				else
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
@@ -108,12 +108,14 @@ TIMES_HIT_AABOILER = 0
 					weaponhits_effects(WEAPON_ODC)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_ODC, TRUE)
+				ALMAYER_HITS_TALLY.TIMES_HIT_ODC += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_ODC)
+					ALMAYER_HITS_TALLY.TIMES_HIT_ODC += 1
 				else
 					weaponhits_effects(WEAPON_ODC, TRUE)
 
@@ -133,12 +135,14 @@ TIMES_HIT_AABOILER = 0
 					weaponhits_effects(WEAPON_AABOILER)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
+				ALMAYER_HITS_TALLY.TIMES_HIT_AABOILER += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 					shakeship(10, 10, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
+					ALMAYER_HITS_TALLY.TIMES_HIT_AABOILER += 1
 				else
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
 	var/integerhitstally

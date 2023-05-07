@@ -283,7 +283,7 @@
 	var/mob/living/carbon/human/human = loc
 
 	if(cloaked)
-		charge = max(charge - 10, 0)
+		charge = min(charge + 15, charge_max)
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
@@ -520,7 +520,7 @@
 			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(round((cloak_timer - world.time) / 10), 1)]</b> seconds."))
 			return FALSE
 
-		if(!drain_power(M, 50))
+		if(!drain_power(M, 100))
 			return FALSE
 
 		cloaked = TRUE

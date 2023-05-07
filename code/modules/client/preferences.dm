@@ -122,7 +122,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
-	var/undershirt = "Undershirt" //undershirt type
+	var/undershirt = "Undershirt (Tan)" //undershirt type
 	var/backbag = 2 //backpack type
 
 	var/h_style = "Crewcut" //Hair type
@@ -1125,7 +1125,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", PRED_MATERIALS)
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat

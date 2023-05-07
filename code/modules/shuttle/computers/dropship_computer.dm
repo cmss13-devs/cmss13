@@ -218,6 +218,10 @@
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE)
 		announce_dchat("[xeno] has locked \the [dropship]", src)
 
+		if(almayer_orbital_cannon)
+			almayer_orbital_cannon.is_disabled = TRUE
+			addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
+
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
 		return
@@ -225,6 +229,8 @@
 	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
+			if(usr.action_busy)
+				return
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
@@ -240,10 +246,14 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 
 	// select crash location
+	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections , timeout = 10 SECONDS)
 	if(!result)
 		return
+	if(result)
+		if(!user.Adjacent(source_turf))
+			return
 	if(dropship.is_hijacked)
 		return
 	var/datum/dropship_hijack/almayer/hijack = new()
@@ -256,9 +266,6 @@
 
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
-	if(almayer_orbital_cannon)
-		almayer_orbital_cannon.is_disabled = TRUE
-		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 

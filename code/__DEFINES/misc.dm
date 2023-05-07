@@ -128,7 +128,7 @@
 
 /// Helmets
 #define SIZE_TINY 1
-/// Armour, pouch slots/pockets
+/// Armor, pouch slots/pockets
 #define SIZE_SMALL 2
 /// Backpacks, belts. Size of pistols, general magazines
 #define SIZE_MEDIUM 3

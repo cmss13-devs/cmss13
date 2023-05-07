@@ -35,7 +35,7 @@
 	boiler.viewsize = TRAPPER_VIEWRANGE
 	boiler.mutation_type = BOILER_TRAPPER
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
-	boiler.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE // no armor
+	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
 	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 
 	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs

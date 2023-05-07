@@ -1,0 +1,6 @@
+author: "FreetoZ"
+delete-after: True
+changes:
+  - rscadd: "Added functionality for faxing photos and paper bundles"
+  - bugfix: "Fixed examine text for fax machines"
+  - bugfix: "Fixed examine text for paper"

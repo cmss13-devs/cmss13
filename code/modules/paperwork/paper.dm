@@ -80,7 +80,7 @@
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
 			if(photo_list)
 				for(var/photo in photo_list)
-				user << browse_rsc(photo_list[photo], photo)
+					user << browse_rsc(photo_list[photo], photo)
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)
 		else
@@ -93,7 +93,7 @@
 	asset_datum.send(user)
 	if(photo_list)
 		for(var/photo in photo_list)
-		user << browse_rsc(photo_list[photo], photo)
+			user << browse_rsc(photo_list[photo], photo)
 	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
 	onclose(user, name)
 

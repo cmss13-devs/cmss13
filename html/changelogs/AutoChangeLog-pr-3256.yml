@@ -1,0 +1,4 @@
+author: "Waseemq1235"
+delete-after: True
+changes:
+  - spellcheck: "Fixes some repetitive words when getting shelled or CASd"

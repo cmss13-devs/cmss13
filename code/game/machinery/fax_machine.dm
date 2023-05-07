@@ -185,8 +185,7 @@ var/list/alldepartments = list()
 				to_chat(ui.user, SPAN_NOTICE("No paper loaded"))
 				return
 
-			if(!fax_paper_copy)
-				copy_fax_paper()
+			copy_fax_paper()
 
 			outgoing_fax_message(ui.user)
 

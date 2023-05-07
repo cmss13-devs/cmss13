@@ -28,12 +28,12 @@
 				if(salvo == TRUE)
 					var/shotspacing
 					for(var/turf/picked_atom in location)
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
+						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
 				else
-					cell_explosion(location, 350, 1, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
 			if(point_defense == TRUE)
@@ -43,7 +43,7 @@
 					var/shotspacing
 					for(var/turf/picked_atom in location)
 						if(prob(hitchance))
-							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
+							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 						else
@@ -55,7 +55,7 @@
 					confirmedhit = 0
 				else
 					if(prob(hitchance))
-						cell_explosion(location, 400, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
+						cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
 					else
@@ -95,7 +95,7 @@
 				var/confirmedhit
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
-						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
+						cell_explosion(picked_atom, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						confirmedhit += 1
 				if(confirmedhit > 0)
@@ -105,7 +105,7 @@
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
-					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
+					cell_explosion(location, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_ODC)
 				else
@@ -120,7 +120,7 @@
 				var/confirmedhit
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
-						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
+						cell_explosion(picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
 				if(confirmedhit > 0)
@@ -130,7 +130,7 @@
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
-					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
+					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
 				else

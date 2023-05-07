@@ -298,7 +298,7 @@ var/list/alldepartments = list()
 			if(!isicon(faxed_photo.img))
 				return
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
-			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='100%'/>"
+			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 

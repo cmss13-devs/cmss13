@@ -1,0 +1,6 @@
+author: "IowaPotatoFarmer"
+delete-after: True
+changes:
+  - maptweak: "Switched the outdated CLF ship airlocks to new generic ones."
+  - rscadd: "The CLF crashed ship insert on LV-624 now has one guaranteed medic and one guaranteed engineer."
+  - bugfix: "The CLF crash intro text no longer includes inaccurate info about the sentries."

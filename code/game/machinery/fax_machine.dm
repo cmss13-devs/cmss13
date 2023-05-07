@@ -196,7 +196,7 @@ var/list/alldepartments = list()
 
 		if("ejectpaper")
 			if(!original_fax)
-				to_chat(ui.user, SPAN_NOTICE("No paper loaded"))
+				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
 			if(!ishuman(ui.user))
 				to_chat(ui.user, SPAN_NOTICE("You can't do that."))
 				return

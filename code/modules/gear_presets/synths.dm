@@ -454,7 +454,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe
-	name = "Working Joe"
+	name = "Synthetic - Working Joe"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
@@ -490,6 +490,59 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/maintenance_jack(H), WEAR_J_STORE)
+
+
+/datum/equipment_preset/synth/working_joe/engi
+	name = "Synthetic - Hazmat Joe"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE)
+	assignment = JOB_WORKING_JOE
+	rank = JOB_WORKING_JOE
+	skills = /datum/skills/working_joe
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+
+/datum/equipment_preset/synth/working_joe/New()
+	. = ..()
+	access = get_all_accesses()
+
+/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
+	H.set_species(SYNTH_WORKING_JOE)
+
+/datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/H)
+	return
+
+/datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/H)
+	var/choice = rand(1,10)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow,(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/inflatable/door(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/inflatable/door(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/inflatable(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/inflatable(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/maintenance_jack(H), WEAR_J_STORE)
+
+	switch(choice)
+		if(1 to 5)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(H), WEAR_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H.back), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/large_stack(H.back), WEAR_IN_R_STORE)
+		if(6 to 10)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/engi/overalls(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(H), WEAR_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/device/lightreplacer(H.back), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H.back), WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/large_stack(H.back), WEAR_IN_R_STORE)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
 	. = ..()

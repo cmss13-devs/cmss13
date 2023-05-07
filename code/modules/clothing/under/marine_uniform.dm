@@ -851,3 +851,29 @@
 	desc = "A cheap uniform made for Synthetic labor."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
+
+/obj/item/clothing/under/rank/synthetic/joe/engi
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas."
+	icon_state = "working_joe_engi"
+	worn_state = "working_joe_engi"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/rank/synthetic/joe/engi/overalls
+	name = "\improper Working Joe Hazardous Uniform"
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Comes with an additional layer for liquid hazards."
+	icon_state = "working_joe_overalls"
+	worn_state = "working_joe_overalls"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE

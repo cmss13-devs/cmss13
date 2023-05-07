@@ -975,6 +975,15 @@
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 
+/obj/item/device/radio/headset/distress/CMB/limited
+	name = "\improper Damaged CMB Earpiece"
+	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. This one is damaged, so the only channel is: ; - CMB."
+	frequency = CMB_FREQ
+	icon_state = "cmb_headset"
+	initial_keys = list()
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_USCM
+
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"

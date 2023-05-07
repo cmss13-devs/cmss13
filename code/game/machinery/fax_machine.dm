@@ -66,20 +66,23 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/paper_bundle) || istype(O, /obj/item/photo))
-
-		if(istype(O, /obj/item/paper_bundle))	
-			var/obj/item/paper_bundle/bundle = O
-			if(bundle.amount > 5)
-				to_chat(user, SPAN_NOTICE("Fax machine jammed, can only accept up to five papers at once"))
-				return
-			
 		if(original_fax)
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
 			return
-		
+
+		var/jammed = FALSE
+		if(istype(O, /obj/item/paper_bundle))
+			var/obj/item/paper_bundle/bundle = O
+			if(bundle.amount > 5)
+				jammed = TRUE
+
 		user.drop_inv_item_to_loc(O, src)
 		original_fax = O
-		to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
+		if(!jammed)
+			to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
+		else
+			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
+			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 		flick("faxsend", src)
 		updateUsrDialog()
 		return

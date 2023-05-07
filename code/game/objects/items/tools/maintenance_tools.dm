@@ -497,7 +497,7 @@
 	item_state = "maintenance_jack"
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
-	force = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_4
 	flags_equip_slot = SLOT_SUIT_STORE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
@@ -507,13 +507,13 @@
 	///Whether you get the speed penalty from not having engi 3
 	var/requires_skills_unbolt = TRUE
 	///How long it takes (in seconds) to pry open an airlock
-	var/prying_time = 3
+	var/prying_time = 3 SECONDS
 	///How long it takes (in seconds) to pry open a resin door
-	var/resin_prying_time = 5
+	var/resin_prying_time = 5 SECONDS
 	///How long it takes (in seconds) to unbolt an airlock
-	var/unbolt_time = 5
+	var/unbolt_time = 5 SECONDS
 	///How long extra will it take (in seconds) people who do not have engi 3 (if requires_skills_unbolt is true)
-	var/unskilled_unbolt_time = 15
+	var/unskilled_unbolt_time = 15 SECONDS
 
 /obj/item/weapon/maintenance_jack/get_examine_text(mob/user)
 	. = ..()
@@ -579,7 +579,7 @@
 			user.visible_message(SPAN_DANGER("[user] jams [src] into [airlock] and starts to pry it open."),
 			SPAN_DANGER("You jam [src] into [airlock] and start to pry it open."))
 			playsound(src, "pry", 15, TRUE)
-			if(!do_after(user, prying_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(!do_after(user, prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 
 			if(!airlock.density)
@@ -603,7 +603,7 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
 				user.visible_message(SPAN_DANGER("[user] begins to search for [airlock]'s bolts!"),\
 				SPAN_NOTICE("You search for [airlock]'s bolts."))
-				if(!do_after(user, unskilled_unbolt_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
+				if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
 					to_chat(user, SPAN_WARNING("You fail to find the bolts on [airlock]."))
 					return
 
@@ -611,7 +611,7 @@
 		SPAN_NOTICE("You start to disable [airlock]'s bolts."))
 		playsound(airlock, "pry", 25, TRUE)
 
-		if(!do_after(user, unbolt_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		if(!do_after(user, unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 			to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [airlock]."))
 			return
 
@@ -637,7 +637,7 @@
 				SPAN_DANGER("You jam [src] into [resin_door] and start to pry it open."))
 				playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 
-				if(!do_after(user, resin_prying_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!do_after(user, resin_prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					to_chat(user, SPAN_NOTICE("You stop prying [resin_door] open."))
 					return
 

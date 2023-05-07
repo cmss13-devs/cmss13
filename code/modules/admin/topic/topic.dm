@@ -1270,6 +1270,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		var/organization_type = ""
 		switch(template_choice)
@@ -1305,7 +1306,7 @@
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send") 
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1329,7 +1330,7 @@
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
 						P.name = "[organization_type] - [customname]"
-						P.info = fax_message
+						P.info = fax_message.data
 						P.update_icon()
 
 						playsound(F.loc, "sound/machines/fax.ogg", 15)
@@ -1352,6 +1353,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1386,7 +1388,7 @@
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send") 
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1434,6 +1436,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1464,7 +1467,7 @@
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 
@@ -1515,6 +1518,7 @@
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
+		if(!template_choice) return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
@@ -1545,7 +1549,7 @@
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
 		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
-		if(send_choice == "Cancel")
+		if(send_choice != "Send")
 			return
 		GLOB.fax_contents += fax_message // save a copy
 

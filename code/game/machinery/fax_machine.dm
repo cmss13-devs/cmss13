@@ -182,7 +182,7 @@ var/list/alldepartments = list()
 	switch(action)
 		if("send")
 			if(!original_fax)
-				to_chat(ui.user, SPAN_NOTICE("No paper loaded"))
+				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
 				return
 
 			copy_fax_paper()

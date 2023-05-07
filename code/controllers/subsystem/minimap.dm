@@ -438,8 +438,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap
 	var/allowed_flags = MINIMAP_FLAG_USCM
-	///by default Zlevel 3, groundside is targeted
-	var/targeted_zlevel = 3
+	/// by default the ground map - this picks the first level matching the trait. if it exists
+	var/targeted_ztrait = ZTRAIT_GROUND
 	var/atom/owner
 
 	var/datum/tacmap_holder/map_holder
@@ -455,7 +455,10 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
-		map_holder = SSminimaps.fetch_tacmap_datum(targeted_zlevel, allowed_flags)
+		var/level = SSmapping.levels_by_trait(targeted_ztrait)
+		if(!level[1])
+			return
+		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

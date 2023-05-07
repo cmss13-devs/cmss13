@@ -282,7 +282,7 @@ var/list/alldepartments = list()
 	if(istype(original_fax, /obj/item/photo))
 		var/obj/item/photo/faxed_photo = original_fax
 		photo_list += list("tmp_photo.png" = faxed_photo.img )
-		fax_paper_copy.info  += "<img src='tmp_photo.png' width='100%'/>"
+		fax_paper_copy.info  += "<img src='tmp_photo.png' width='192'/>"
 		return
 
 	// type bundle

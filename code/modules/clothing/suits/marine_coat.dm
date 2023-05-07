@@ -212,6 +212,17 @@
 	icon_state = "bridge_coat_grey"
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
+/obj/item/clothing/suit/storage/jacket/marine/service/cheap
+	name = "Cheap jacket"
+	desc = "A cheaply made jacket for keeping warm in the cold."
+	has_buttons = TRUE
+	flags_atom = NO_SNOW_TYPE
+	icon_state = "jacket_tanker"
+	initial_icon_state = "jacket_tanker"
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	
+
 
 
 //=========================//PROVOST\\================================\\

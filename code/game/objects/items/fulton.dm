@@ -22,7 +22,7 @@ var/global/list/deployed_fultons = list()
 	var/atom/movable/attached_atom = null
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
-	var/datum/turf_reservation
+	var/datum/turf_reservation/reservation
 
 /obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()

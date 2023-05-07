@@ -304,7 +304,7 @@ var/list/alldepartments = list()
 		fax_paper_copy.info += "<h1>Page #[content]</h1>"
 		fax_paper_copy.info += "<hr>"
 		if(istype(papers[content], /obj/item/paper))
-			var/obj/item/paper/faxed_paper = papers[content] 
+			var/obj/item/paper/faxed_paper = papers[content]
 			fax_paper_copy.info += faxed_paper.info
 		else // type photo
 			var/obj/item/photo/faxed_photo = papers[content]
@@ -343,7 +343,7 @@ var/list/alldepartments = list()
 		else
 			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
-		
+
 	msg_admin += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[target_department]: </font></b>")
@@ -353,7 +353,7 @@ var/list/alldepartments = list()
 
 	announce_fax(msg_admin, msg_ghost)
 
-/datum/proc/announce_fax(msg_admin, msg_ghost) 
+/datum/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin)
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
@@ -417,13 +417,13 @@ var/list/alldepartments = list()
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
-	name = "CMB Incident Command Center Fax Machine"
+	name = "\improper CMB Incident Command Center Fax Machine"
 	department = "Colonial Marshal Bureau, Anchorpoint Station"
 	network = "NC4 UA Federal Secure Network - CMB Relay"
 	department = DEPARTMENT_CMB
 
 /obj/structure/machinery/faxmachine/corporate
-	name = "W-Y Corporate Fax Machine"
+	name = "\improper W-Y Corporate Fax Machine"
 	department = "W-Y Local Office"
 	network = "Weyland-Yutani Secure Network"
 
@@ -436,7 +436,7 @@ var/list/alldepartments = list()
 	network = "Weyland-Yutani Quantum Relay"
 
 /obj/structure/machinery/faxmachine/uscm
-	name = "USCM Military Fax Machine"
+	name = "\improper USCM Military Fax Machine"
 	department = "USCM Local Operations"
 	network = "USCM Encrypted Network"
 	target_department = DEPARTMENT_HC
@@ -453,7 +453,7 @@ var/list/alldepartments = list()
 	network = "USCM High Command Quantum Relay"
 
 /obj/structure/machinery/faxmachine/uscm/brig
-	name = "USCM Provost Fax Machine"
+	name = "\improper USCM Provost Fax Machine"
 	department = "Brig"
 	target_department = DEPARTMENT_PROVOST
 

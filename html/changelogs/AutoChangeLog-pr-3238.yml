@@ -1,5 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - bugfix: "Fixed Queen being able to hijack the shuttle from far away"
-  - bugfix: "Added 10 second timeout on hijack \"landing\" options to avoid multiple windows at the same time"

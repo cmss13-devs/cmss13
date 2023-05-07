@@ -1,5 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - bugfix: "apc on window in medbay lobby"
-  - bugfix: "research to req delivery chute borked"

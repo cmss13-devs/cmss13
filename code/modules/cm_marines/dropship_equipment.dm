@@ -33,6 +33,16 @@
 		linked_console = null
 	. = ..()
 
+/obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
 /obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
@@ -1237,3 +1247,25 @@
 		return FALSE
 
 	return TRUE
+
+// used in the simulation room for cas runs, removed the sound and ammo depletion methods.
+// copying code is definitely bad, but adding an unnecessary sim or not sim boolean check in the open_fire_firemission just doesn't seem right.
+/obj/structure/dropship_equipment/weapon/proc/open_simulated_fire_firemission(obj/selected_target, mob/user = usr)
+	set waitfor = FALSE
+	var/turf/target_turf = get_turf(selected_target)
+	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = SA.accuracy_range
+	// no warning sound and no travel time
+	last_fired = world.time
+
+	if(locate(/obj/structure/dropship_equipment/electronics/targeting_system) in linked_shuttle.equipments) ammo_accuracy_range = max(ammo_accuracy_range - 2, 0)
+
+	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
+
+	var/list/possible_turfs = list()
+	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
+		possible_turfs += TU
+	var/turf/impact = pick(possible_turfs)
+	sleep(3)
+	SA.source_mob = user
+	SA.detonate_on(impact)

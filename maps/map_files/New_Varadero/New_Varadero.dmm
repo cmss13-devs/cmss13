@@ -1745,7 +1745,7 @@
 /area/varadero/exterior/lz1_near)
 "bxc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/attachable/bayonet/c02{
+/obj/item/attachable/bayonet/co2{
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/powercell,
@@ -4515,7 +4515,7 @@
 /area/varadero/interior/maintenance)
 "dYq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/c02_cartridge{
+/obj/item/co2_cartridge{
 	pixel_x = 13;
 	pixel_y = 7
 	},

@@ -103,6 +103,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+
+	//Logs all other hrefs
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.world_href_log)
+		WRITE_LOG(GLOB.world_href_log, "<small>[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
+
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
@@ -144,8 +149,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 
 	else if(href_list["FaxView"])
-		var/info = locate(href_list["FaxView"])
-		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+		var/datum/fax/info = locate(href_list["FaxView"])
+
+		if(!istype(info))	
+			return
+
+		if(info.photo_list)
+			for(var/photo in info.photo_list)
+				usr << browse_rsc(info.photo_list[photo], photo)
+
+		show_browser(usr, "<body class='paper'>[info.data]</body>", "Fax Message", "Fax Message")
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
@@ -193,10 +207,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.remove_note(index)
-
-	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
 	switch(href_list["_src_"])
 		if("admin_holder")

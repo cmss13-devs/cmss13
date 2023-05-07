@@ -273,7 +273,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
+	if(M.stat == DEAD || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		throwing = FALSE
 		return
 
@@ -707,7 +707,7 @@
 		to_chat(src, SPAN_XENONOTICE("This is not a host."))
 		return
 
-	var/mob/living/carbon/human/host_2b_nested = current_mob
+	var/mob/living/carbon/human/host_to_nest = current_mob
 
 	var/found_grab = FALSE
 	for(var/i in 1 to length(xeno_hands))
@@ -735,9 +735,9 @@
 			to_chat(src, SPAN_XENOBOLDNOTICE("Hosts need a vertical surface to be nested upon!"))
 			return
 
-	var/dir_to_nest = get_dir(host_2b_nested, nest_structural_base)
+	var/dir_to_nest = get_dir(host_to_nest, nest_structural_base)
 
-	if(!host_2b_nested.Adjacent(supplier_turf))
+	if(!host_to_nest.Adjacent(supplier_turf))
 		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
 		return
 
@@ -745,15 +745,15 @@
 		to_chat(src, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
 		return
 
-	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_2b_nested))
+	for(var/obj/structure/bed/nest/preexisting_nest in get_turf(host_to_nest))
 		if(preexisting_nest.dir == dir_to_nest)
 			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/funny_nest = new(get_turf(host_2b_nested))
-	funny_nest.dir = dir_to_nest
-	if(!funny_nest.buckle_mob(host_2b_nested, src))
-		qdel(funny_nest)
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest))
+	applicable_nest.dir = dir_to_nest
+	if(!applicable_nest.buckle_mob(host_to_nest, src))
+		qdel(applicable_nest)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_icon()
 	if(istype(caste, /datum/caste_datum/queen))

@@ -37,6 +37,9 @@
 /datum/game_mode/xenovs/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/xenovs/get_roles_list()
+	return ROLES_XENO
+
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types

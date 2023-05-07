@@ -70,7 +70,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_tech
 	equipment = /datum/equipment_preset/survivor/forecon/tech
-	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_marksman
 	equipment = /datum/equipment_preset/survivor/forecon/marksman

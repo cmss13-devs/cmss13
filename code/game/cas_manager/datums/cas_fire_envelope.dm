@@ -26,6 +26,10 @@
 	..()
 	missions = list()
 
+/datum/cas_fire_envelope/Destroy(force, ...)
+	linked_console = null
+	return ..()
+
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
 
@@ -349,6 +353,7 @@
 		return firemission_envelope.mission_error
 	return "OK"
 
+// Used in the simulation room for firemission testing.
 /obj/structure/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
 	var/result = firemission_envelope.execute_firemission(get_turf(location), offset, dir, mission_id)
 	if(result<1)

@@ -227,6 +227,7 @@ var/list/alldepartments = list()
 			if(!scan || !ishuman(ui.user))
 				to_chat(ui.user, SPAN_WARNING("You can't do that."))
 				return
+			to_chat(ui.user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
 			scan.forceMove(ui.user.loc)
 			if(!ui.user.get_active_hand())
 				ui.user.put_in_hands(scan)
@@ -234,7 +235,6 @@ var/list/alldepartments = list()
 			else
 				scan.forceMove(src.loc)
 				scan = null
-			to_chat(ui.user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
 			authenticated = FALSE
 			playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
 			. = TRUE

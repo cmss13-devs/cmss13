@@ -889,6 +889,10 @@
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
+	if(stabbing_xeno.burrow || stabbing_xeno.is_ventcrawling)
+		to_chat(stabbing_xeno, SPAN_XENOWARNING("You must be above ground to do this."))
+		return
+
 	if(!stabbing_xeno.check_state())
 		return FALSE
 

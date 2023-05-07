@@ -18,6 +18,7 @@
  * * salvo - identifies it as a salvo or not.
  */
 /proc/weaponhits(weaponused, location, point_defense = FALSE, salvo = FALSE)
+	var/logtotalhits
 
 
 	switch(weaponused)
@@ -31,13 +32,15 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
-						ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
+						GLOB.almayer_hits_tally["times_hit_missile"] += 1
+						logtotalhits += 1
 					weaponhits_effects(WEAPON_MISSILE)
 				else
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
-					ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
+					GLOB.almayer_hits_tally["times_hit_missile"] += 1
+					logtotalhits +=1
 			if(point_defense == TRUE)
 				var/hitchance = HIT_CHANCE_STANDARD
 				if(salvo == TRUE)
@@ -48,20 +51,22 @@
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
+							logtotalhits += 1
 						else
 							weaponhits_effects(WEAPON_MISSILE, TRUE, shotspacing)
 
 						shotspacing += 1
 					if(confirmedhit > 0)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
-					ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += confirmedhit
+					GLOB.almayer_hits_tally["times_hit_missile"] += confirmedhit
 					confirmedhit = 0
 				else
 					if(prob(hitchance))
 						cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
-						ALMAYER_HITS_TALLY.TIMES_HIT_MISSILE += 1
+						GLOB.almayer_hits_tally["times_hit_missile"] += 1
+						logtotalhits += 1
 					else
 						weaponhits_effects(WEAPON_MISSILE, TRUE)
 
@@ -77,18 +82,20 @@
 						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
+						logtotalhits += 1
 				if(confirmedhit > 0)
 					weaponhits_effects(WEAPON_RAILGUN)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
-				ALMAYER_HITS_TALLY.TIMES_HIT_RAILGUN += confirmedhit
+				GLOB.almayer_hits_tally["times_hit_railgun"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
 					weaponhits_effects(WEAPON_RAILGUN)
-					ALMAYER_HITS_TALLY.TIMES_HIT_RAILGUN += 1
+					GLOB.almayer_hits_tally["times_hit_railgun"] += 1
+					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
 
@@ -104,18 +111,20 @@
 						cell_explosion(picked_atom, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						confirmedhit += 1
+						logtotalhits += 1
 				if(confirmedhit > 0)
 					weaponhits_effects(WEAPON_ODC)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_ODC, TRUE)
-				ALMAYER_HITS_TALLY.TIMES_HIT_ODC += confirmedhit
+				GLOB.almayer_hits_tally["times_hit_odc"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_ODC)
-					ALMAYER_HITS_TALLY.TIMES_HIT_ODC += 1
+					GLOB.almayer_hits_tally["times_hit_odc"] += 1
+					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_ODC, TRUE)
 
@@ -131,24 +140,24 @@
 						cell_explosion(picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 						shakeship(10, 10, FALSE, FALSE)
 						confirmedhit += 1
+						logtotalhits += 1
 				if(confirmedhit > 0)
 					weaponhits_effects(WEAPON_AABOILER)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
-				ALMAYER_HITS_TALLY.TIMES_HIT_AABOILER += confirmedhit
+				GLOB.almayer_hits_tally["times_hit_aaboiler"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 					shakeship(10, 10, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
-					ALMAYER_HITS_TALLY.TIMES_HIT_AABOILER += 1
+					GLOB.almayer_hits_tally["times_hit_aaboiler"] += 1
+					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
-	var/integerhitstally
-	for(var/a in GLOB.ALMAYER_HITS_TALLY)
-		integerhitstally = integerhitstally + a
-	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [confirmedhit] times. The Almayer has now suffered a total of [integerhitstally] from all the weapons!")
+	var/integerhitstally = GLOB.almayer_hits_tally["times_hit_missile"] + GLOB.almayer_hits_tally["times_hit_railgun"] + GLOB.almayer_hits_tally["times_hit_odc"] + GLOB.almayer_hits_tally["times_hit_aaboiler"]
+	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [logtotalhits] times. The Almayer has now suffered a total of [integerhitstally] hits from all the weapons!")
 
 /proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing = 0)
 	switch(weaponused)

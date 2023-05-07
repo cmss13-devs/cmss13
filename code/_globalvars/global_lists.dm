@@ -15,11 +15,11 @@ GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
 //Basically counts how many times the Almayer was hit by each weapon. Loggin' wack.
-GLOBAL_LIST_INIT(ALMAYER_HITS_TALLY, list(
-TIMES_HIT_MISSILE = 0
-TIMES_HIT_RAILGUN = 0
-TIMES_HIT_ODC = 0
-TIMES_HIT_AABOILER = 0
+GLOBAL_LIST_INIT(almayer_hits_tally, list(
+"times_hit_missile" = 0,
+"times_hit_railgun" = 0,
+"times_hit_odc" = 0,
+"times_hit_aaboiler" = 0,
 ))
 
 //Since it didn't really belong in any other category, I'm putting this here

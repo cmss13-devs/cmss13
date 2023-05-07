@@ -141,7 +141,10 @@ TIMES_HIT_AABOILER = 0
 					weaponhits_effects(WEAPON_AABOILER)
 				else
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
-	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [confirmedhit] times.")
+	var/integerhitstally
+	for(var/a in GLOB.ALMAYER_HITS_TALLY)
+		integerhitstally = integerhitstally + a
+	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [confirmedhit] times. The Almayer has now suffered a total of [integerhitstally] from all the weapons!")
 
 /proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing = 0)
 	switch(weaponused)

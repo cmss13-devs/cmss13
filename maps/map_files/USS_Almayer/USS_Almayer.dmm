@@ -39015,8 +39015,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
-	dir = 4;
+	dir = 6;
 	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
@@ -115388,12 +115389,12 @@ ioU
 ioU
 nmV
 oeM
+oeM
 eed
 oeM
 eed
 vQq
 eEo
-aGN
 aGN
 pSU
 aHq
@@ -115591,12 +115592,12 @@ vJg
 ioU
 vQf
 oeM
+oeM
 eed
 oeM
 eed
 iLf
 aRi
-aGN
 aGN
 rub
 aHq
@@ -115794,12 +115795,12 @@ viN
 bAu
 nVB
 eHY
+oeM
 eed
 oeM
 eed
 tKL
 eEo
-aGN
 aGN
 qrv
 aHq
@@ -115997,12 +115998,12 @@ qKz
 ioU
 mGu
 fXx
-kXf
 fXx
+kXf
 huO
+iLO
 qLV
 xNv
-iLO
 iLO
 bUa
 aHq

@@ -8,7 +8,7 @@ var/list/alldepartments = list()
 #define DEPARTMENT_PRESS "Various Press Organizations"
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
-	name = "General Purpose Fax Machine"
+	name = "\improper General Purpose Fax Machine"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax"
 	anchored = TRUE

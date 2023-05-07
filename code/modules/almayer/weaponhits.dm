@@ -4,6 +4,12 @@
 #define WEAPON_AABOILER 4
 #define HIT_CHANCE_CHEAT 100
 #define HIT_CHANCE_STANDARD 70
+GLOBAL_LIST_INIT(ALMAYER_HITS_TALLY, list(
+TIMES_HIT_MISSILE = 0
+TIMES_HIT_RAILGUN = 0
+TIMES_HIT_ODC = 0
+TIMES_HIT_AABOILER = 0
+))
 /**
  * Proc called to hit the ship with weapons
  *
@@ -121,7 +127,7 @@
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
 						cell_explosion(picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
-						shakeship(5, 5, FALSE, FALSE)
+						shakeship(10, 10, FALSE, FALSE)
 						confirmedhit += 1
 				if(confirmedhit > 0)
 					weaponhits_effects(WEAPON_AABOILER)
@@ -131,10 +137,11 @@
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
-					shakeship(5, 5, FALSE, FALSE)
+					shakeship(10, 10, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
 				else
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
+	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [confirmedhit] times.")
 
 /proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing = 0)
 	switch(weaponused)

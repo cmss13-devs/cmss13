@@ -138,16 +138,18 @@
 	icon_state = "30mm_crate"
 	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
-	ammo_count = 300
-	max_ammo_count = 300
+	ammo_count = 200
+	max_ammo_count = 200
 	transferable_ammo = TRUE
-	ammo_used_per_firing = 30
+	ammo_used_per_firing = 20
 	point_cost = 275
 	fire_mission_delay = 2
 	var/bullet_scatter_range = 4 //how far from the real impact turf can bullets land.
 	var/bullet_accuracy_range = 1 //how far from a BULLET impact turf additional impacts can land.
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts. also the shrapnel type for the center of a 3x3 impact
 	var/outerring_shrap_type = /datum/ammo/bullet/shrapnel/gau/whiplash //shrapnel type for the outer ring of the 3x3
+	var/directhit_damage = 99 //how much damage is to be inficted to a mob, this is here so that we can hit resting mobs.
+	var/penetration = 40 //AP value pretty much
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -174,7 +176,9 @@
 		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100)
 		for(var/atom/movable/AM in U)
 			if(iscarbon(AM))
+				var/mob/living/M = AM
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				M.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration) // So we can hit a mob that is resting in the turf.
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		for(var/turf/A in orange(bullet_accuracy_range, U))// Outer ring(s) of a single impact configs
@@ -204,14 +208,16 @@
 	icon_state = "30mm_crate_hv"
 	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It's designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store."
 	travelling_time = 60
-	ammo_count = 300
-	max_ammo_count = 300
-	ammo_used_per_firing = 30
+	ammo_count = 200
+	max_ammo_count = 200
+	ammo_used_per_firing = 20
 	bullet_scatter_range = 4
 	bullet_accuracy_range = 1
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
+	directhit_damage = 64
+	penetration = 90
 
 //laser battery
 

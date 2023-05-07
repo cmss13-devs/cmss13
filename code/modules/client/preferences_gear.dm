@@ -341,9 +341,9 @@ var/global/list/gear_datums = list()
 	cost = 2
 //
 /datum/gear/jacket
-	display_name = "Jacket"
+	display_name = "Cheap Jacket"
 	path = /obj/item/clothing/suit/storage/jacket/marine/service/cheap
-	slot = WEAR_SUIT
+	slot = WEAR_JACKET
 	cost = 2
 //
 /datum/gear/greenfacepaint

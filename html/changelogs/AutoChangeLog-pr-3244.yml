@@ -1,0 +1,4 @@
+author: "Hopek"
+delete-after: True
+changes:
+  - rscadd: "Medics can now just purchase the EZ Autoinjectors so they don't have to go through 12+ injector pouches to take them out specifically."

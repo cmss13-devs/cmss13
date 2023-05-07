@@ -14,8 +14,10 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
-		if(blood_volume > max_blood)
+		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
+		else if(blood_volume > limit_blood)
+			blood_volume -= 1 // The reverse in case we've got oveer the limit
 
 		var/b_volume = blood_volume
 

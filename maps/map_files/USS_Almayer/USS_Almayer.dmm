@@ -64997,10 +64997,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/living/bridgebunks)
-"tKL" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "tLc" = (
 /obj/structure/surface/rack,
 /obj/item/storage/bag/plants{
@@ -115393,8 +115389,8 @@ oeM
 eed
 oeM
 eed
-vQq
-eEo
+aGN
+aGN
 aGN
 pSU
 aHq
@@ -115596,8 +115592,8 @@ oeM
 eed
 oeM
 eed
-iLf
-aRi
+vQq
+eEo
 aGN
 rub
 aHq
@@ -115799,8 +115795,8 @@ oeM
 eed
 oeM
 eed
-tKL
-eEo
+iLf
+aRi
 aGN
 qrv
 aHq

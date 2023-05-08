@@ -106,6 +106,10 @@
 /datum/chem_property/positive/hemogenic/process(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
 		return
+	if(M.nutrition < 200)
+		return
+
+	M.nutrition -= 5
 	var/mob/living/carbon/C = M
 	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
 	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja

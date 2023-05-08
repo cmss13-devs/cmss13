@@ -63,7 +63,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return siemens_coefficient
 
-//this proc returns the armour value for a particular external organ.
+//this proc returns the armor value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(obj/limb/def_zone, type)
 	if(!type)
 		return FALSE
@@ -75,6 +75,11 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)
 	return protection
+
+/mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
+	for(var/obj/item/gear in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses))
+		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))
+			return gear
 
 /mob/living/carbon/human/proc/check_head_coverage()
 

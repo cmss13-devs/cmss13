@@ -207,20 +207,20 @@
 	reinforced = TRUE
 
 /obj/structure/window_frame/hangar
-	icon_state = "hngr_window0"
+	icon_state = "hngr_window0_frame"
 	basestate = "hngr_window"
 
 /obj/structure/window_frame/hangar/reinforced
-	icon_state = "hngr_rwindow0"
+	icon_state = "hngr_rwindow0_frame"
 	basestate = "hngr_rwindow"
 	reinforced = TRUE
 
 /obj/structure/window_frame/bunker
-	icon_state = "bnkr_window0"
+	icon_state = "bnkr_window0_frame"
 	basestate = "bnkr_window"
 
 /obj/structure/window_frame/bunker/reinforced
-	icon_state = "bnkr_rwindow0"
+	icon_state = "bnkr_rwindow0_frame"
 	basestate = "bnkr_rwindow"
 	reinforced = TRUE
 

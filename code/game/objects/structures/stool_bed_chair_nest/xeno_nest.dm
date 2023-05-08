@@ -63,8 +63,8 @@
 			buckled_mob.layer = ABOVE_TURF_LAYER
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob
-				for(var/obj/limb/head/current_mobs_head in current_human.limbs)
-					current_mobs_head.layer = TURF_LAYER
+				for(var/obj/limb/current_mobs_limb in current_human.limbs)
+					current_mobs_limb.layer = TURF_LAYER
 		update_icon()
 		return
 
@@ -75,8 +75,8 @@
 		current_mob.layer = initial(current_mob.layer)
 		if(!ishuman(current_mob))
 			var/mob/living/carbon/human/current_human = current_mob
-			for(var/obj/limb/head/current_mobs_head in current_human.limbs)
-				current_mobs_head.layer =  initial(current_mobs_head.layer)
+			for(var/obj/limb/current_mobs_limb in current_human.limbs)
+				current_mobs_limb.layer =  initial(current_mobs_limb.layer)
 	if(!QDESTROYING(src))
 		qdel(src)
 

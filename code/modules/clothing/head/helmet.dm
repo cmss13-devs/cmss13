@@ -91,7 +91,7 @@
 	siemens_coefficient = 0.8
 
 /obj/item/clothing/head/helmet/HoS/dermal
-	name = "Dermal Armour Patch"
+	name = "Dermal Armor Patch"
 	desc = "You're not quite sure how you manage to take it on and off, but it implants nicely in your head."
 	icon_state = "dermal"
 	item_state = "dermal"
@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your IMPORTANT phone calls. Usually worn by Radio Telephone Operators."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -714,8 +714,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M45 ghillie"
 
 /obj/item/clothing/head/helmet/marine/CO
-	name = "\improper M10 pattern captain helmet"
-	desc = "A special M10 Pattern Helmet worn by Captains of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
+	name = "\improper M10 pattern commanding officer helmet"
+	desc = "A special M10 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
 	icon_state = "co_officer"
 	item_state = "co_officer"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -732,13 +732,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
-	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/helmet/marine/MP/WO
+	name = "\improper M3 pattern chief MP helmet"
+	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	icon_state = "cmp_helmet"
+	item_state = "cmp_helmet"
+	specialty = "M10 pattern chief MP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
-	icon_state = "d_helmet"
-	item_state = "d_helmet"
+	icon_state = "helmet"
+	item_state = "helmet"
 	specialty = "M10 pattern officer"
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
@@ -877,7 +883,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper Dutch's Dozen cap"
 	desc = "A protective cap worn by some seriously experienced mercs."
 	icon_state = "dutch_cap"
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 
@@ -885,7 +891,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper Dutch's Dozen band"
 	desc = "A protective band worn by some seriously experienced mercs."
 	icon_state = "dutch_band"
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 
@@ -1030,7 +1036,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
@@ -1053,7 +1059,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
@@ -1071,7 +1077,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	switch(icon_state)
 		if("s_skullcapm")
 			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
-			flags_inventory = BLOCKSHARPOBJ
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 //===========================//HELGHAST - MERCENARY\\================================\\

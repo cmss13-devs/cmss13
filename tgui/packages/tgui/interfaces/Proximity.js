@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Knob,
-  LabeledList,
-  Section,
-  Slider,
-  Tooltip,
-} from '../components';
+import { Button, Knob, LabeledList, Section, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 export const Proximity = (props, context) => {

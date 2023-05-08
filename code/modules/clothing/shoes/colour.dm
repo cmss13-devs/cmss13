@@ -38,6 +38,11 @@
 	desc = "Stylish red shoes."
 	icon_state = "red"
 
+/obj/item/clothing/shoes/red/knife
+	name = "dirty red shoes"
+	desc = "Stylish red shoes with a small space to hold a knife."
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver)
+
 /obj/item/clothing/shoes/white
 	name = "white shoes"
 	icon_state = "white"

@@ -126,7 +126,7 @@
 
 	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are the Marine Team Leader of Anchorpoint Station!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are the Marine Fireteam Leader of Anchorpoint Station!"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/cmb/leader, TRUE, TRUE) // placeholder
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
@@ -151,7 +151,7 @@
 
 /datum/emergency_call/cmb/anchorpoint/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)
-		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Leader, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
+		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Fireteam Leader, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(50; "a Sol year, and a tour of duty", 40;"a couple months", 10;"six years, three tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry."))
 		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))

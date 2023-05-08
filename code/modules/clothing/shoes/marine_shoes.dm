@@ -145,7 +145,7 @@
 	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress
-	name = "armoured sandals"
+	name = "armored sandals"
 	icon_state = "sandals"
 	item_state = "sandals"
 	items_allowed = null

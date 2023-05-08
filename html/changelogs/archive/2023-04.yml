@@ -195,3 +195,227 @@
       AP
   morrowwolf:
   - bugfix: Reverts crate/barrel disassemble change
+2023-04-16:
+  kugamo:
+  - balance: Xenos can nest hosts on hive weed covered walls, legacy floor nests removed.
+  - imageadd: New sprites for resin nests.
+2023-04-17:
+  Clvrbot:
+  - ui: added option for Foxtrot SL tracker on synth headset
+  - imageadd: added sprites for Foxtrot SL tracker for all HUDs
+2023-04-18:
+  BeagleGaming1:
+  - bugfix: You can no longer join as a survivor or xenomorph on Extended
+  - bugfix: The M39B/2's in Eta on Solaris Ridge are now regular M39's
+  - bugfix: ARES is no longer made of flesh
+  - bugfix: Removes some ways of using binos when you should not be able to
+  - bugfix: Humans facing north on wall nests are no longer naked when seen through
+      walls
+  - bugfix: Hostile Survivors get Survivor IFF
+  - bugfix: Barricades that are mapped to started damage correctly show the damage
+  - bugfix: Fixes ARES explosion causing a runtime
+  - bugfix: Loose CAS ammo and weapons can be slashed apart
+  Foxtrot1322:
+  - spellcheck: Renamed CO items with "Captain" in their names & descriptions to "Commanding
+      Officer"
+  - spellcheck: Fixed a typo in the XOs uniform description
+  Morrow:
+  - balance: Removed Quickclot
+  - rscadd: Added hemostatic chemical property.
+  Puckaboo2:
+  - bugfix: All missing ammo box/cartridge/magazine icon states have been restored.
+  - bugfix: Handfuls of Dragon's Breath shells can now be seen and picked up.
+  - imageadd: Added an ammo box icon stated named 'base' to make the linter happy.
+  - code_imp: Changed icon state names and icon paths on various items to fix missing
+      ammo, ammo casing, and ammo box icon state errors.
+2023-04-19:
+  BeagleGaming1:
+  - spellcheck: Corrects the C02 Knife to CO2
+  - rscadd: Allows Yautja to make bones from limbs and wear them
+  DecemberIsHere:
+  - balance: Berserker apprehend CD increased by a second, speed buff lowered by 2
+      seconds
+  - balance: ' Berserker clothesline max heal reduced by 25, rage stack requirement
+      increased by 1'
+  - balance: Berserker rage lockout increased by 1 second
+  - rscadd: Berserkers apprehend now has an glowy outline for when it is activated
+  Hopek:
+  - bugfix: Disassembled crates/barrels will now correctly show their contents above
+      the deconstruction material meaning that you don't have to right click or alt
+      click the turf to see what you looted. Doesn't make the contents break reality
+      this time.
+  - bugfix: Fixed duplicate crate/barrel disassembly material spawning because it
+      was being created in two places. If people want 2 material per crate/barrel
+      they'll have to intentionally code it in this time vs it being a bug.
+  - rscadd: Resin Whisperers can now use Coerce Resin to open and close resin doors.
+  - bugfix: The m39 elite variant sub machine gun can now be put back in your holster
+      if you spawn with it as a PMC (and whoever else uses them)
+  Huffie56:
+  - code_imp: change some iteration of armour to armor and colour to color.
+  NewyearnewmeUwu:
+  - bugfix: Proximity sensors can now be slashed by xenos to deactivate them, and
+      they turn off after you die if you have an active one on you.
+  SpartanBobby:
+  - rscadd: FORECON Synthetic now has a special type of red shoe with the ability
+      to hold a knife
+  Waseemq1235:
+  - soundadd: Added a whopping 49 Working Joe lines to the game.
+  blackdragonTOW:
+  - bugfix: Changed the "Binded" sprite to "Bound"
+  realforest2001:
+  - bugfix: AA & OB Consoles are no longer acidable.
+2023-04-20:
+  LTNTS:
+  - bugfix: misplaced tile in Normandy
+  - bugfix: '"entrance" area leading to a wall by Brig Cryo'
+  - bugfix: ert dropship consoles being slashable/acidable
+  Puckaboo2:
+  - bugfix: Re-added missing donor clothing and jumpsuits that were removed from a
+      previous PR.
+  TeDGamer:
+  - bugfix: Fixes ointment not healing new amount
+  - spellcheck: Fixed item name in areas that was using generic bandage message
+  - maptweak: Alamo and Normandy cockpits have windows to passenger area now
+  harryob:
+  - code_imp: vendor subtypes can now be made to vend without an id
+  - bugfix: the id scanning wire in vendors does something again
+2023-04-21:
+  BeagleGaming1:
+  - spellcheck: Fixes a missing desc in the eye cauterization surgery step
+  - admin: Allows staff to use more symbols in var editing
+  TeDGamer:
+  - balance: Reverts synth acid blood dodge chance due to revert in acid blood damage
+2023-04-22:
+  Hopek:
+  - rscadd: Resin Whisperer has been reworked. Major changes include being able to
+      place resin nodes remotely on weeds, not being able to use coerce resin when
+      standing outside of weeds and losing the ability to regularly plant weeds outside
+      of current existing weeds. This changes the Resin whisperer to a new "slow crawl"
+      frontline advance gameplay where he assists his team in pushing the front lines
+      forward as he is able to both advance weeds and build structures on them.
+  Khadd:
+  - bugfix: wrong fire no longer applied
+  LTNTS:
+  - balance: Limited communications for PO/DCC/CT/MST/CL/VC
+  - bugfix: IO/VC now use their own encryption keys
+  TeDGamer:
+  - balance: Fix T3 slots not being affected by burrowed larva
+  Totalepicness:
+  - balance: Rebalances globber, which has come out overtuned. Globber now has reduced
+      health, armor and zoom along with higher fire damage multiplier.
+  harryob:
+  - bugfix: obs can no longer be fired after the dropship doors are overridden by
+      the queen
+  realforest2001:
+  - balance: Super-Strong and Dextrous traits now allow mobs to pick up other mobs
+      who are one size bigger than them. When both traits are combined it allows for
+      two sizes up. Synths can lift runners and Yautja can lift most T1 or T2 xenos.
+  - code_imp: Changed Larva and Facehuggers mob_size variable to use the correct define.
+2023-04-23:
+  Herigony:
+  - bugfix: low organ damage will now show as bruised instead of broken in health
+      scan
+  Morrow:
+  - bugfix: Dropship seats are once again destroyable via slashing
+  - bugfix: Fixed unpowerable sensor towers
+  Waseemq1235:
+  - soundadd: Adds a wall-slam sound that has a very rare chance of triggering.
+2023-04-25:
+  BeagleGaming1:
+  - balance: Adds a way to heal organ damage via the medicomp
+  LynxSolstice:
+  - spellcheck: Changed the visible mentions of "Medic" to "Corpsman"
+  - soundadd: Added 8 new lines for the *medic emote.
+  realforest2001:
+  - bugfix: Yautja loud roars are no longer fake-able.
+  - bugfix: Survivors no longer have free marine comms as intended.
+  - rscadd: Changed the random supply kit picker contents to remove USCM specific
+      kits (those with USCM comms).
+  - rscadd: Added a blackmarket subtype of the random supply kit to keep the USCM
+      specific kits.
+2023-04-26:
+  Morrow:
+  - bugfix: Vampire lurker tail stab can no longer hit dead humans
+  - spellcheck: Fixed a typo when hacking a vendor
+  - rscadd: FORECON Tech survivor now has spawn priority
+  - rscadd: Fruits no longer get destroyed by stronger weeds
+  - bugfix: Fixes abusing old code to make mortars into grenades
+  harryob:
+  - bugfix: made the keybind validation less spammy
+2023-04-27:
+  Huffie56:
+  - maptweak: shuffle items in medical storage to make it possible for personnel inside
+      to distribute medical supplies.
+  - maptweak: reduce the size of the reception office and remove is wall and window
+      to make it so that personnel inside can act quickly when patient arrived.
+  - mapadd: added multiple empty medikit to avoid marines clustering the floor when
+      making their loadout.
+  - maptweak: move all the empty pill bottle in a closet to a spot in the chemistry
+      room.
+  Usnpeepoo:
+  - bugfix: Preds are able to break their bones again
+  - balance: Pred bones have their minimum damage to break requirements balanced.
+2023-04-28:
+  Hopek:
+  - rscadd: Adds the support for queuing the round start meaning that if an admin
+      pressed "start now" it will actually wait until the game is loaded then immediately
+      start the game as expected versus telling you to try later.
+  - bugfix: fixed the "start now" verb displaying that the game has already started
+      when it is loading because it didn't understand how to read the game state properly.
+  Lalipar:
+  - bugfix: Strong corrosive acid plasma cost increased to 125
+  - spellcheck: Action name of strong corrosive acid changed from (200) to (125)
+  - spellcheck: Fixed a typo when adding metal/plasteel to a girder.
+  Lambda Sucks:
+  - bugfix: Fixed the bugged stairs in Kutjevo - Medbay.
+  - bugfix: Fixed out of place sand tiles in Kutjevo - Hydroelectric Dam Comms Relay
+  - bugfix: Fixed floating cameras in Kutjevo - Medical Triage Hallway
+  - bugfix: Fixed duplicate APCs in Kutjevo - Autodoc Hallway
+  - bugfix: Fixed and moved floating APC in Kutjevo - Autodoc Hallway
+  - bugfix: Fixed duplicate APCs in Kutjevo - Treatment plant.
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botony East Hall
+  - bugfix: Fixed duplicate APCS in Kutjevo - Botony Bay
+  - bugfix: Fixed missing APC in Kutjevo - Powerplant Access Hall
+  - bugfix: Fixed missing APC in Kutjevo - Medbay Stormlocks
+  - bugfix: Fixed missing APC in Kutjevo - Hydroelectric Dam Comms Relay
+  LambdaSucks:
+  - bugfix: Fixed floating cameras in Solaris Ridge inserts.
+  - bugfix: Removed second APC from Atmos on Solaris Ridge.
+  - bugfix: Removed second APC from Southeast Lambda on Solaris Ridge.
+  - bugfix: Fixed floating cameras on Solaris Ridge.
+  Morrow:
+  - bugfix: Req maint door has proper access requirements
+  - rscadd: Added delay to end of round announcement when it is a Marine Major.
+  NewyearnewmeUwu:
+  - spellcheck: Cades are now consistent when it comes to whether they're opened or
+      not.
+  blackcrystall:
+  - bugfix: Stat proc replaced with get_status_tab_items, fixed issue with QUEEN additional
+      status
+2023-04-29:
+  BeagleGaming1, Frans_Feiffer:
+  - imageadd: Added new MP clothing sprites
+  - imagedel: Removed the old MP clothing sprites
+  LynxSolstice:
+  - balance: Adds a Squad Weapons Specialist to the Cryorines.
+2023-04-30:
+  Drathek:
+  - bugfix: Fixed auxtools debugging.
+  Huffie56:
+  - bugfix: fix the med-bay door release button to exit treatment center.my bad.
+  Morrow:
+  - rscadd: Radio backpacks can now be used in hand
+  - bugfix: Fixed the off by one error in radio backpack item removal
+  - bugfix: Shaking a bag no longer drops non-items
+  Puckaboo2:
+  - rscdel: Removed doorint.dmi and merged the remaining sprites into Door1.dmi since
+      the latter shared many icon states with the former.
+  - code_imp: Generic doors and airlocks share the same icon file path now.
+  - spellcheck: Fixed a case-sensitive file path.
+  - bugfix: Alamo and Normandy side dropship doors no longer display as Xs when they
+      are examined or after crash landing on the Almayer.
+  - bugfix: Fixed an animation error on several Alamo door's icon states.
+  harryob:
+  - server: GLOB.round_id is now available for an incrementing id of rounds
+  usnpeepoo:
+  - bugfix: Xenos are no longer able to be cocooned by spiders

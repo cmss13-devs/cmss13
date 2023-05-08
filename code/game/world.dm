@@ -26,32 +26,20 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	prof_init()
 #endif
 
-	//logs
-	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
-	var/year_string = time2text(world.realtime, "YYYY")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	tgui_diary = file("data/logs/[date_string]_tgui.log")
-	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	round_stats = file("data/logs/[year_string]/round_stats.log")
-	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	round_scheduler_stats = file("data/logs/[year_string]/round_scheduler_stats.log")
-	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
-	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
-	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
-
-	GLOB.revdata = new
-	initialize_tgs()
-	initialize_marine_armor()
+	GLOB.config_error_log = GLOB.world_attack_log = GLOB.world_href_log = GLOB.world_attack_log = "data/logs/config_error.[GUID()].log"
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
-	if(CONFIG_GET(flag/log_runtime))
-		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
-		backfill_runtime_log()
+	SSdatabase.start_up()
+
+	SSentity_manager.start_up()
+	SSentity_manager.setup_round_id()
+
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
+
+	initialize_tgs()
+	initialize_marine_armor()
 
 	#ifdef UNIT_TESTS
 	GLOB.test_log = "data/logs/tests.log"
@@ -122,6 +110,51 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
+
+/proc/start_logging()
+	GLOB.round_id = SSentity_manager.round.id
+
+	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]/round-"
+
+	if(GLOB.round_id)
+		GLOB.log_directory += GLOB.round_id
+	else
+		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
+
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
+	#ifndef UNIT_TESTS
+	world.log = file("[GLOB.log_directory]/dd.log")
+	#endif
+	backfill_runtime_log()
+
+	GLOB.logger.init_logging()
+
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
+	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
+	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
+	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
+	GLOB.mutator_logs = "[GLOB.log_directory]/mutator_logs.log"
+
+	start_log(GLOB.tgui_log)
+	start_log(GLOB.world_href_log)
+	start_log(GLOB.world_game_log)
+	start_log(GLOB.world_attack_log)
+	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.round_stats)
+	start_log(GLOB.scheduler_stats)
+	start_log(GLOB.mutator_logs)
+
+	if(fexists(GLOB.config_error_log))
+		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
+		fdel(GLOB.config_error_log)
+
+	if(GLOB.round_id)
+		log_game("Round ID: [GLOB.round_id]")
+
+	log_runtime(GLOB.revdata.get_log_message())
 
 /world/proc/initialize_tgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -215,9 +248,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	return
 	#endif
 
+	shutdown_logging()
+
 	if(TgsAvailable())
 		send_tgs_restart()
-
 		TgsReboot()
 		TgsEndProcess()
 	else
@@ -226,7 +260,7 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/send_tgs_restart()
 	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
 		if(round_statistics)
-			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
+			send2chat("[round_statistics.round_name][GLOB.round_id ? " (Round [GLOB.round_id])" : ""] completed!", CONFIG_GET(string/new_round_alert_channel))
 		if(SSmapping.next_map_configs)
 			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
 			if(next_map)
@@ -389,7 +423,7 @@ var/datum/BSQL_Connection/connection
 	qdel(src) //shut it down
 
 
-/world/proc/backfill_runtime_log()
+/proc/backfill_runtime_log()
 	if(length(full_init_runtimes))
 		world.log << "========= EARLY RUNTIME ERRORS ========"
 		for(var/line in full_init_runtimes)

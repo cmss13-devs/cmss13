@@ -1353,7 +1353,6 @@
 #include "code\modules\admin\view_variables\view_variables.dm"
 #include "code\modules\almayer\machinery.dm"
 #include "code\modules\almayer\shakeship.dm"
-//#include "code\modules\almayer\shiphealthpanel.dm"
 #include "code\modules\almayer\weaponhits.dm"
 #include "code\modules\animations\animation_library.dm"
 #include "code\modules\assembly\assembly.dm"

@@ -16,6 +16,8 @@ GLOBAL_DATUM_INIT(ship_health_panel_UI, /datum/shiphealthpanelUI, new)
   data["systems"] = GLOB.ship_health_vars["ship_systems_health"]
   return data
 
+/datum/shiphealthpanelUI/ui_state(mob/user)
+	return GLOB.always_state
 /*
 /datum/shiphealthpanelUI/ui_act(action, params)
   if(..())

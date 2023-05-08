@@ -671,39 +671,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	parent_name = "permabanning_admin"
 
-/*
-/datum/view_record/player_ban_view
-	var/id
-	var/ckey
-	var/is_permabanned
-	var/ban_type
-	var/reason
-	var/date
-	var/expiration
-	var/admin
-	var/last_known_cid
-	var/last_known_ip
-	var/discord_link_id
-
-/datum/entity_view_meta/timed_ban_list
-	root_record_type = /datum/entity/player
-	destination_entity = /datum/view_record/player_ban_view
-	fields = list(
-		"id",
-		"ckey",
-		"is_permabanned", // this one for the machine
-		"ban_type" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_CONST("permaban"), DB_CONST("timed ban")), // this one is readable
-		"reason" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_reason", "time_ban_reason"),
-		"date" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_date", "time_ban_date"),
-		"expiration" = "time_ban_expiration", //don't care if this is permaban, since it will be handled later
-		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
-		"last_known_ip",
-		"last_known_cid",
-		"discord_link_id",
-		)
-//	root_filter = DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))
-*/
-
 /datum/view_record/players
 	var/id
 	var/ckey

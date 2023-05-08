@@ -31,17 +31,21 @@
 	var/rigged = 0
 	var/spam_flag = 0
 
+	// any photos that might be attached to the paper
+	var/list/photo_list
+
 	var/deffont = "Verdana"
 	var/signfont = "Times New Roman"
 	var/crayonfont = "Comic Sans MS"
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
-/obj/item/paper/Initialize()
+/obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
+	src.photo_list = photo_list
 
 	if(info != initial(info))
 		info = html_encode(info)
@@ -74,6 +78,9 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
+			if(photo_list)
+				for(var/photo in photo_list)
+					user << browse_rsc(photo_list[photo], photo)
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)
 		else
@@ -84,7 +91,9 @@
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
-
+	if(photo_list)
+		for(var/photo in photo_list)
+			user << browse_rsc(photo_list[photo], photo)
 	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
 	onclose(user, name)
 

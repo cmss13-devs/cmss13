@@ -6,7 +6,7 @@ GLOBAL_DATUM_INIT(ship_health_panel_UI, /datum/shiphealthpanelUI, new)
     ui = new(user, src, "shiphealthpanelUI")
     ui.open()
 
-/datum/shiphealthpanelUI/tgui_data(mob/user)
+/datum/shiphealthpanelUI/ui_data(mob/user)
   var/list/data = list()
   data["missile"] = GLOB.ship_hits_tally["times_hit_missile"]
   data["railgun"] =  GLOB.ship_hits_tally["times_hit_railgun"]
@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(ship_health_panel_UI, /datum/shiphealthpanelUI, new)
   return data
 
 /*
-/datum/shiphealthpanelUI/tgui_act(action, params)
+/datum/shiphealthpanelUI/ui_act(action, params)
   if(..())
     return
   switch(action)

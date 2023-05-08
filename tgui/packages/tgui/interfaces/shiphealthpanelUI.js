@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Box } from '../components';
+import { Section, Box, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 export const shiphealthpanelUI = (_props, context) => {
@@ -9,20 +9,22 @@ export const shiphealthpanelUI = (_props, context) => {
   const railgun = data.railgun;
   const odc = data.odc;
   const aaboiler = data.aaboiler;
-  // const hull = data.hull;
+  const hull = data.hull;
   // const systems = data.systems;
 
   return (
-    <Window width={450} height={200}>
+    <Window width={450} height={600}>
       <Window.Content scrollable>
-        <Section
-          title="CURRENT STATUS OF THE MARINE SHIP"
-          textAlign="center"
-          fontSize="15px">
-          <Box fontSize="30px">
-            TIMES HIT BY MISSILES : {missile}, TIMES HIT BY RAILGUNS : {railgun}
-            , TIMES HIY BY O.D.C.s : {odc}, TIMES HIT BY AA BOILER : {aaboiler},
-          </Box>
+        <Section title="SHIP STATUS" textAlign="center" fontSize="15px">
+          <ProgressBar value={hull} maxValue={100}>
+            <Box textAlign="center">{hull}/100 Hull HP</Box>
+          </ProgressBar>
+        </Section>
+        <Section title="WEAPONS HIT" textAlign="center" fontSize="15px">
+          <Box fontSize="15px">TIMES HIT BY MISSILES : {missile}</Box>
+          <Box fontSize="15px">TIMES HIT BY RAILGUNS : {railgun}</Box>
+          <Box fontSize="15px">TIMES HIY BY O.D.C.s : {odc}</Box>
+          <Box fontSize="15px">TIMES HIT BY AA BOILER SHOTS : {aaboiler}</Box>
         </Section>
       </Window.Content>
     </Window>

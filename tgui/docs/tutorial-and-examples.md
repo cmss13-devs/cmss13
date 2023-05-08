@@ -250,7 +250,7 @@ If you need more examples of what you can do with React, see the
 
 #### Splitting UIs into smaller, modular components
 
-You interface will eventually get really, really big. The easiest thing
+Your interface will eventually get really, really big. The easiest thing
 you can do in this situation, is divide and conquer. Grab a chunk of your
 JSX code, and wrap it into a second, smaller React component:
 

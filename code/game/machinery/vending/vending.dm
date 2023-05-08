@@ -102,17 +102,17 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/Initialize(mapload, ...)
 	. = ..()
 	LAZYADD(GLOB.total_vending_machines, src)
-	src.slogan_list = splittext(src.product_slogans, ";")
+	slogan_list = splittext(product_slogans, ";")
 
 	// So not all machines speak at the exact same time.
 	// The first time this machine says something will be at slogantime + this random value,
 	// so if slogantime is 10 minutes, it will say it at somewhere between 10 and 20 minutes after the machine is crated.
-	src.last_slogan = world.time + rand(0, slogan_delay)
+	last_slogan = world.time + rand(0, slogan_delay)
 
-	src.build_inventory(products)
+	build_inventory(products)
 		//Add hidden inventory
-	src.build_inventory(contraband, 1)
-	src.build_inventory(premium, 0, 1)
+	build_inventory(contraband, 1)
+	build_inventory(premium, 0, 1)
 	power_change()
 	start_processing()
 
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()
 	if(panel_open)
-		overlays += image(src.icon, "[initial(icon_state)]-panel")
+		overlays += image(icon, "[initial(icon_state)]-panel")
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else if(stat & NOPOWER)
@@ -153,28 +153,28 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		if(isnull(amount)) amount = 1
 
 		var/obj/item/temp_path = typepath
-		var/datum/data/vending_product/R = new /datum/data/vending_product()
+		var/datum/data/vending_product/product = new /datum/data/vending_product()
 
-		R.product_path = typepath
-		R.amount = amount
-		R.price = price
-		R.max_amount = amount
+		product.product_path = typepath
+		product.amount = amount
+		product.price = price
+		product.max_amount = amount
 
 		if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
-			R.display_color = "black"
+			product.display_color = "black"
 		else
-			R.display_color = "white"
+			product.display_color = "white"
 
 		if(hidden)
-			R.category=CAT_HIDDEN
-			hidden_records += R
+			product.category=CAT_HIDDEN
+			hidden_records += product
 		else if(req_coin)
-			R.category=CAT_COIN
-			coin_records += R
+			product.category=CAT_COIN
+			coin_records += product
 		else
-			product_records += R
+			product_records += product
 
-		R.product_name = initial(temp_path.name)
+		product.product_name = initial(temp_path.name)
 
 /obj/structure/machinery/vending/get_repair_move_text(include_name = TRUE)
 	if(!stat)
@@ -196,15 +196,15 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	else
 		return "[nominative] is being affected by some power-related issue."
 
-/obj/structure/machinery/vending/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/vending/attackby(obj/item/item, mob/user)
 	if(is_tipped_over)
 		to_chat(user, "Tip it back upright first!")
 		return FALSE
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(stat == WORKING)
-			src.panel_open = !src.panel_open
-			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
+			panel_open = !panel_open
+			to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
 			return TRUE
 		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -233,7 +233,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
@@ -253,11 +253,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(istype(W, /obj/item/stack/cable_coil))
+	else if(istype(item, /obj/item/stack/cable_coil))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
-		var/obj/item/stack/cable_coil/CC = W
+		var/obj/item/stack/cable_coil/CC = item
 		if(stat & REPAIR_STEP_TWO)
 			if(CC.amount < 5)
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
@@ -276,11 +276,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(istype(W, /obj/item/stack/sheet/metal))
+	else if(istype(item, /obj/item/stack/sheet/metal))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
-		var/obj/item/stack/sheet/metal/M = W
+		var/obj/item/stack/sheet/metal/M = item
 		if(stat & REPAIR_STEP_THREE)
 			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
@@ -297,12 +297,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(!wrenchable) return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
 				if (0)
 					anchored = TRUE
@@ -311,43 +311,41 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
 					anchored = FALSE
 		return
-	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(src.panel_open)
+	else if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
+		if(panel_open)
 			attack_hand(user)
 		return
-	else if(istype(W, /obj/item/coin))
+	else if(istype(item, /obj/item/coin))
 		if(coin)
 			user.balloon_alert(user, "already a coin!")
 			return
-		if(user.drop_inv_item_to_loc(W, src))
-			coin = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+		if(user.drop_inv_item_to_loc(item, src))
+			coin = item
+			to_chat(user, SPAN_NOTICE(" You insert the [item] into the [src]"))
 			tgui_interact(user)
 		return
-	else if(istype(W, /obj/item/spacecash))
+	else if(istype(item, /obj/item/spacecash))
 		if(inoperable())
 			return
 		user.set_interaction(src)
-		if(seconds_electrified)
-			if(shock(user, 100))
+		if(seconds_electrified && shock(user, 100))
 				return
 		tgui_interact(user)
 		return
 
 	..()
 
-/obj/structure/machinery/vending/proc/scan_card(obj/item/card/I)
+/obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
 	if(!currently_vending) return
-	if (istype(I, /obj/item/card/id))
-		var/obj/item/card/id/C = I
+	if (istype(card, /obj/item/card/id))
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
-		var/datum/money_account/CH = get_account(C.associated_account_number)
+		var/datum/money_account/CH = get_account(card.associated_account_number)
 		if (CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 					if(vendor_account)
 						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
-						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
+						var/datum/money_account/D = attempt_account_access(card.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
 					else
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to access account. Check security settings and try again.")]")
@@ -370,13 +368,13 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 			//create entries in the two account transaction logs
 			var/datum/transaction/T = new()
-			T.target_name = "[vendor_account.owner_name] (via [src.name])"
+			T.target_name = "[vendor_account.owner_name] (via [name])"
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			if(transaction_amount > 0)
 				T.amount = "([transaction_amount])"
 			else
 				T.amount = "[transaction_amount]"
-			T.source_terminal = src.name
+			T.source_terminal = name
 			T.date = current_date_string
 			T.time = worldtime2text()
 			acc.transaction_log.Add(T)
@@ -385,22 +383,22 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			T.target_name = acc.owner_name
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			T.amount = "[transaction_amount]"
-			T.source_terminal = src.name
+			T.source_terminal = name
 			T.date = current_date_string
 			T.time = worldtime2text()
 			vendor_account.transaction_log.Add(T)
 
 			// Vend the item
-			src.vend(src.currently_vending, usr)
+			vend(currently_vending, usr)
 			currently_vending = null
 		else
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("You don't have that much money!")]")
 	else
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
 
-/obj/structure/machinery/vending/proc/GetProductIndex(datum/data/vending_product/P)
+/obj/structure/machinery/vending/proc/GetProductIndex(datum/data/vending_product/product)
 	var/list/plist
-	switch(P.category)
+	switch(product.category)
 		if(CAT_NORMAL)
 			plist=product_records
 		if(CAT_HIDDEN)
@@ -408,8 +406,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		if(CAT_COIN)
 			plist=coin_records
 		else
-			warning("UNKNOWN CATEGORY [P.category] IN TYPE [P.product_path] INSIDE [type]!")
-	return plist.Find(P)
+			warning("UNKNOWN CATEGORY [product.category] IN TYPE [product.product_path] INSIDE [type]!")
+	return plist.Find(product)
 
 /obj/structure/machinery/vending/proc/GetProductByID(pid, category)
 	switch(category)
@@ -427,7 +425,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(is_tipped_over)
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place..."))
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the [src] back into place!"), SPAN_NOTICE("You start heaving the [src] back into place..."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
 			flip_back()
@@ -438,8 +436,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	user.set_interaction(src)
 
-	if(src.seconds_electrified != 0)
-		if(shock(user, 100))
+	if(seconds_electrified && shock(user, 100))
 			return
 
 	tgui_interact(user)
@@ -626,13 +623,13 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	//create entries in the two account transaction logs
 	var/datum/transaction/new_transaction = new()
-	new_transaction.target_name = "[vendor_account.owner_name] (via [src.name])"
+	new_transaction.target_name = "[vendor_account.owner_name] (via [name])"
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	if(transaction_amount > 0)
 		new_transaction.amount = "([transaction_amount])"
 	else
 		new_transaction.amount = "[transaction_amount]"
-	new_transaction.source_terminal = src.name
+	new_transaction.source_terminal = name
 	new_transaction.date = current_date_string
 	new_transaction.time = worldtime2text()
 	user_account.transaction_log.Add(new_transaction)
@@ -641,7 +638,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	new_transaction.target_name = user_account.owner_name
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	new_transaction.amount = "[transaction_amount]"
-	new_transaction.source_terminal = src.name
+	new_transaction.source_terminal = name
 	new_transaction.date = current_date_string
 	new_transaction.time = worldtime2text()
 	vendor_account.transaction_log.Add(new_transaction)
@@ -666,7 +663,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	new_transaction.target_name = "CASH"
 	new_transaction.purpose = "Purchase of [currently_vending.product_name]"
 	new_transaction.amount = "[transaction_amount]"
-	new_transaction.source_terminal = src.name
+	new_transaction.source_terminal = name
 	new_transaction.date = current_date_string
 	new_transaction.time = worldtime2text()
 	vendor_account.transaction_log.Add(new_transaction)
@@ -793,7 +790,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/vending))
 
-/obj/structure/machinery/vending/proc/release_item(datum/data/vending_product/R, delay_vending = 0, mob/living/carbon/human/user)
+/obj/structure/machinery/vending/proc/release_item(datum/data/vending_product/product, delay_vending = 0, mob/living/carbon/human/user)
 	set waitfor = 0
 
 	//We interact with the UI only if a user is present
@@ -807,11 +804,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
 	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))
-		user.put_in_hands(new R.product_path)
-	else if (ispath(R.product_path,/obj/item/weapon/gun))
-		. = new R.product_path(get_turf(src), 1)
+		user.put_in_hands(new product.product_path)
+	else if (ispath(product.product_path, /obj/item/weapon/gun))
+		. = new product.product_path(get_turf(src), 1)
 	else
-		. = new R.product_path(get_turf(src))
+		. = new product.product_path(get_turf(src))
 
 /obj/structure/machinery/vending/MouseDrop_T(atom/movable/A, mob/user)
 
@@ -825,48 +822,48 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		return
 
 	if(istype(A, /obj/item))
-		var/obj/item/I = A
-		stock(I, user)
+		var/obj/item/item = A
+		stock(item, user)
 		ui_interact(user)
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
-	var/datum/data/vending_product/R //Let's try with a new datum.
+	var/datum/data/vending_product/product //Let's try with a new datum.
 	//More accurate comparison between absolute paths.
-	for(R in (product_records + hidden_records + coin_records))
-		if(item_to_stock.type == R.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
+	for(product in (product_records + hidden_records + coin_records))
+		if(item_to_stock.type == product.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
 			if(isgun(item_to_stock))
-				var/obj/item/weapon/gun/G = item_to_stock
-				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
-					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+				var/obj/item/weapon/gun/gun = item_to_stock
+				if(gun.in_chamber || (gun.current_mag && !istype(gun.current_mag, /obj/item/ammo_magazine/internal)) || (istype(gun.current_mag, /obj/item/ammo_magazine/internal) && gun.current_mag.current_rounds > 0) )
+					to_chat(user, SPAN_WARNING("\The [gun] is still loaded. Unload it before you can restock it."))
 					return
-				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
-					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
-						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+				for(var/obj/item/attachable/attach in gun.contents) //Search for attachments on the gun. This is the easier method
+					if((attach.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(attach, gun.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+						to_chat(user, SPAN_WARNING("\The [gun] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
 
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
-				var/obj/item/ammo_magazine/A = item_to_stock
-				if(A.current_rounds < A.max_rounds)
-					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+				var/obj/item/ammo_magazine/mag = item_to_stock
+				if(mag.current_rounds < mag.max_rounds)
+					to_chat(user, SPAN_WARNING("\The [mag] isn't full. Fill it before you can restock it."))
 					return
 			if(istype(item_to_stock,/obj/item/device/walkman))
-				var/obj/item/device/walkman/W = item_to_stock
-				if(W.tape)
+				var/obj/item/device/walkman/item = item_to_stock
+				if(item.tape)
 					to_chat(user,SPAN_WARNING("Remove the tape first!"))
 					return
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.dcell)
+				var/obj/item/device/defibrillator/defib = item_to_stock
+				if(!defib.dcell)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
 					return
-				if(D.dcell.charge < D.dcell.maxcharge)
+				if(defib.dcell.charge < defib.dcell.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
 			if(istype(item_to_stock, /obj/item/cell))
-				var/obj/item/cell/C = item_to_stock
-				if(C.charge < C.maxcharge)
+				var/obj/item/cell/cell = item_to_stock
+				if(cell.charge < cell.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
@@ -880,29 +877,29 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R.product_name]."),
-			SPAN_NOTICE("You stock [src] with \a [R.product_name]."))
-			R.amount++
+			user.visible_message(SPAN_NOTICE("[user] stocks the [src] with \a [product.product_name]."),
+			SPAN_NOTICE("You stock the [src] with \a [product.product_name]."))
+			product.amount++
 			return //We found our item, no reason to go on.
 
 /obj/structure/machinery/vending/process()
 	if(inoperable())
 		return
 
-	if(!src.active)
+	if(!active)
 		return
 
-	if(src.seconds_electrified > 0)
-		src.seconds_electrified--
+	if(seconds_electrified > 0)
+		seconds_electrified--
 
 	//Pitch to the people!  Really sell it!
-	if(((src.last_slogan + src.slogan_delay) <= world.time) && (src.slogan_list.len > 0) && (!src.shut_up) && prob(5))
-		var/slogan = pick(src.slogan_list)
-		src.speak(slogan)
-		src.last_slogan = world.time
+	if(((last_slogan + slogan_delay) <= world.time) && (slogan_list.len > 0) && (!shut_up) && prob(5))
+		var/slogan = pick(slogan_list)
+		speak(slogan)
+		last_slogan = world.time
 
-	if(src.shoot_inventory && prob(2) && !hacking_safety)
-		src.throw_item()
+	if(shoot_inventory && prob(2) && !hacking_safety)
+		throw_item()
 
 	return
 
@@ -913,8 +910,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if (!message)
 		return
 
-	for(var/mob/O in hearers(src, null))
-		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
+	for(var/mob/mob in hearers(src, null))
+		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/vending/power_change()
@@ -929,16 +926,16 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(stat & BROKEN)
 		return
 	var/release_amt = rand(3,4)
-	for(var/datum/data/vending_product/R in src.product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+	for(var/datum/data/vending_product/product in product_records)
+		if (product.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
-		var/dump_path = R.product_path
+		var/dump_path = product.product_path
 		if (!dump_path)
 			continue
 
-		while(R.amount > 0 && release_amt > 0)
-			release_item(R, 0)
-			R.amount--
+		while(product.amount > 0 && release_amt > 0)
+			release_item(product, 0)
+			product.amount--
 			release_amt--
 		break
 	stat |= BROKEN
@@ -952,20 +949,20 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(!target)
 		return 0
 
-	for(var/datum/data/vending_product/R in product_records)
-		if (R.amount <= 0) //Try to use a record that actually has something to dump.
+	for(var/datum/data/vending_product/product in product_records)
+		if (product.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
-		var/dump_path = R.product_path
+		var/dump_path = product.product_path
 		if (!dump_path)
 			continue
 
-		R.amount--
-		throw_item = release_item(R, 0)
+		product.amount--
+		throw_item = release_item(product, 0)
 		break
 	if (!throw_item)
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
-	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
+	visible_message(SPAN_WARNING("[src] launches \the [throw_item] at [target]!"))
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	return 1
 
@@ -985,14 +982,14 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = TRUE
+			extended_inventory = TRUE
 			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
-			src.seconds_electrified = -1
+			seconds_electrified = -1
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
-			if(!src.shoot_inventory)
-				src.shoot_inventory = TRUE
+			if(!shoot_inventory)
+				shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(wire)
@@ -1000,24 +997,24 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = FALSE
+			extended_inventory = FALSE
 			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
-			src.seconds_electrified = 0
+			seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = FALSE
+			shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(wire)
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = !src.extended_inventory
+			extended_inventory = !extended_inventory
 			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
 		if (VENDING_WIRE_SHOCK)
-			src.seconds_electrified = 30
+			seconds_electrified = 30
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = !src.shoot_inventory
+			shoot_inventory = !shoot_inventory
 			if(shoot_inventory)
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 			else

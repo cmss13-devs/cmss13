@@ -10,7 +10,7 @@ export const shiphealthpanelUI = (_props, context) => {
   const odc = data.odc;
   const aaboiler = data.aaboiler;
   const hull = data.hull;
-  // const systems = data.systems;
+  const systems = data.systems;
 
   return (
     <Window width={450} height={600}>
@@ -18,6 +18,9 @@ export const shiphealthpanelUI = (_props, context) => {
         <Section title="SHIP STATUS" textAlign="center" fontSize="15px">
           <ProgressBar value={hull} maxValue={100}>
             <Box textAlign="center">{hull}/100 Hull HP</Box>
+          </ProgressBar>
+          <ProgressBar value={systems} maxValue={100}>
+            <Box textAlign="center">{systems}/100 Hull HP</Box>
           </ProgressBar>
         </Section>
         <Section title="WEAPONS HIT" textAlign="center" fontSize="15px">

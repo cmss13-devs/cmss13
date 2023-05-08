@@ -64,7 +64,7 @@ of styling options for all components, e.g. `color` and `opacity`, thus
 it is used a lot in this framework.
 
 **Event handlers.**
-Event handlers are callbacks that you can attack to various element to
+Event handlers are callbacks that you can attach to various elements to
 listen for browser events. Inferno supports camelcase (`onClick`) and
 lowercase (`onclick`) event names.
 

@@ -21,8 +21,7 @@ export const shiphealthpanelUI = (_props, context) => {
           fontSize="15px">
           <Box fontSize="30px">
             TIMES HIT BY MISSILES : {missile}, TIMES HIT BY RAILGUNS : {railgun}
-            , TIMES HIY BY O.D.C.s : {odc}, TIMES HIT BY AA BOILER SHOTS{' '}
-            {aaboiler},
+            , TIMES HIY BY O.D.C.s : {odc},
           </Box>
         </Section>
       </Window.Content>

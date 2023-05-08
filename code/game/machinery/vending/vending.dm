@@ -21,7 +21,7 @@
 GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending)
 
 /obj/structure/machinery/vending
-	name = "Vendomat"
+	name = "\improper Vendomat"
 	desc = "A generic vending machine."
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
@@ -211,20 +211,20 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & BROKEN)
-			to_chat(user, SPAN_NOTICE("You start to unscrew \the [src]'s broken panel."))
+			to_chat(user, SPAN_NOTICE("You start to unscrew the [src]'s broken panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
+				to_chat(user, SPAN_WARNING("You stop unscrewing the [src]'s broken panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
+			to_chat(user, SPAN_NOTICE("You unscrew the [src]'s broken panel and remove it, exposing many broken wires."))
 			stat &= ~BROKEN
 			stat |= REPAIR_STEP_ONE
 			return TRUE
 		else if(stat & REPAIR_STEP_FOUR)
-			to_chat(user, SPAN_NOTICE("You start to fasten \the [src]'s new panel."))
+			to_chat(user, SPAN_NOTICE("You start to fasten the [src]'s new panel."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
+				to_chat(user, SPAN_WARNING("You stop fastening the [src]'s new panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
+			to_chat(user, SPAN_NOTICE("You fasten the [src]'s new panel, fully repairing the vendor."))
 			stat &= ~REPAIR_STEP_FOUR
 			stat |= FULLY_REPAIRED
 			update_icon()
@@ -241,11 +241,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			attack_hand(user)
 			return
 		else if(stat & REPAIR_STEP_ONE)
-			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
+			to_chat(user, SPAN_NOTICE("You start to remove the [src]'s broken wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
+				to_chat(user, SPAN_WARNING("You stop removing the [src]'s broken wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_ONE
 			stat |= REPAIR_STEP_TWO
 			return TRUE
@@ -261,14 +261,14 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		if(stat & REPAIR_STEP_TWO)
 			if(CC.amount < 5)
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
-			to_chat(user, SPAN_NOTICE("You start to replace \the [src]'s removed wires."))
+			to_chat(user, SPAN_NOTICE("You start to replace the [src]'s removed wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop replacing \the [src]'s removed wires."))
+				to_chat(user, SPAN_WARNING("You stop replacing the [src]'s removed wires."))
 				return FALSE
 			if(!CC || !CC.use(5))
 				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			to_chat(user, SPAN_NOTICE("You remove the [src]'s broken broken wires."))
 			stat &= ~REPAIR_STEP_TWO
 			stat |= REPAIR_STEP_THREE
 			return TRUE
@@ -282,14 +282,14 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = item
 		if(stat & REPAIR_STEP_THREE)
-			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
+			to_chat(user, SPAN_NOTICE("You start to construct a new panel for the [src]."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
-				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
+				to_chat(user, SPAN_WARNING("You stop constructing a new panel for the [src]."))
 				return FALSE
 			if(!M || !M.use(1))
 				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
+			to_chat(user, SPAN_NOTICE("You construct a new panel for the [src]."))
 			stat &= ~REPAIR_STEP_THREE
 			stat |= REPAIR_STEP_FOUR
 			return TRUE
@@ -306,9 +306,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			switch (anchored)
 				if (0)
 					anchored = TRUE
-					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
+					user.visible_message("[user] tightens the bolts securing the [src] to the floor.", "You tighten the bolts securing the [src] to the floor.")
 				if (1)
-					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
+					user.visible_message("[user] unfastens the bolts securing the [src] to the floor.", "You unfasten the bolts securing the [src] to the floor.")
 					anchored = FALSE
 		return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			return
 		user.set_interaction(src)
 		if(seconds_electrified && shock(user, 100))
-				return
+			return
 		tgui_interact(user)
 		return
 
@@ -427,7 +427,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the [src] back into place!"), SPAN_NOTICE("You start heaving the [src] back into place..."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"), SPAN_NOTICE("You right the [src]!"))
 			flip_back()
 		return
 
@@ -437,7 +437,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	user.set_interaction(src)
 
 	if(seconds_electrified && shock(user, 100))
-			return
+		return
 
 	tgui_interact(user)
 
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, "You need some wirecutters!")
 				return TRUE
 
 			var/wire = params["wire"]
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, "You need some wirecutters!")
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
@@ -483,7 +483,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(user, "You need multitool!")
+				to_chat(user, "You need a multitool!")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
@@ -962,7 +962,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if (!throw_item)
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
-	visible_message(SPAN_WARNING("[src] launches \the [throw_item] at [target]!"))
+	visible_message(SPAN_WARNING("The [src] launches \the [throw_item] at [target]!"))
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	return 1
 
@@ -983,14 +983,14 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
 			extended_inventory = TRUE
-			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath \the [src]."))
+			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			seconds_electrified = -1
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			visible_message(SPAN_DANGER("Electric arcs shoot off from the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
 				shoot_inventory = TRUE
-				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+				visible_message(SPAN_WARNING("The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(wire)
 	wires |= getWireFlag(wire)
@@ -998,24 +998,24 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
 			extended_inventory = FALSE
-			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
+			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
 			shoot_inventory = FALSE
-			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+			visible_message(SPAN_NOTICE("The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(wire)
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
 			extended_inventory = !extended_inventory
-			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
+			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath the [src]."))
 		if (VENDING_WIRE_SHOCK)
 			seconds_electrified = 30
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			visible_message(SPAN_DANGER("Electric arcs shoot off from the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			shoot_inventory = !shoot_inventory
 			if(shoot_inventory)
-				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+				visible_message(SPAN_WARNING("The [src] begins whirring noisily."))
 			else
-				visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+				visible_message(SPAN_NOTICE("The [src] stops whirring."))

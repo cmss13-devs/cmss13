@@ -1402,7 +1402,7 @@ and you're good to go.
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 				else
 					BP.ammo.on_hit_mob(attacked_mob, BP, user)
-					BP.def_zone = user.zone_selected // On pointblanks this means that the targetted limb will always hit similar to burst fire point blanks
+					BP.def_zone = user.zone_selected
 					attacked_mob.bullet_act(BP)
 				qdel(BP)
 

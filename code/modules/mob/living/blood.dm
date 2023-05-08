@@ -14,6 +14,10 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
+		else if(blood_volume > max_blood)
+			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
+			if(blood_volume > limit_blood)
+				blood_volume = limit_blood // This should never happen, but lets make sure
 
 		var/b_volume = blood_volume
 
@@ -117,7 +121,7 @@
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
-				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
+				blood_volume = min(blood_volume + round(amount, 0.1), limit_blood)
 		else
 			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()

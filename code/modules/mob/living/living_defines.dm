@@ -79,6 +79,7 @@
 	//blood.dm
 	var/blood_volume = 0 //how much blood the mob has
 	var/max_blood = BLOOD_VOLUME_NORMAL  // how much they should have
+	var/limit_blood = BLOOD_VOLUME_MAXIMUM //the limit of blood they shouldn't go above.
 
 	var/hivenumber
 

@@ -15,11 +15,17 @@ GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 
 //Basically counts how many times the Almayer was hit by each weapon. Loggin' wack.
-GLOBAL_LIST_INIT(almayer_hits_tally, list(
+GLOBAL_LIST_INIT(ship_hits_tally, list(
 "times_hit_missile" = 0,
 "times_hit_railgun" = 0,
 "times_hit_odc" = 0,
 "times_hit_aaboiler" = 0,
+))
+
+//Ship's HP! ShipvsShip baybeee
+GLOBAL_LIST_INIT(ship_health_vars, list(
+"ship_hull_health" = 100,
+"ship_systems_health" = 100,
 ))
 
 //Since it didn't really belong in any other category, I'm putting this here

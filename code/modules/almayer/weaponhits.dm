@@ -32,14 +32,14 @@
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
-						GLOB.almayer_hits_tally["times_hit_missile"] += 1
+						GLOB.ship_hits_tally["times_hit_missile"] += 1
 						logtotalhits += 1
 					weaponhits_effects(WEAPON_MISSILE)
 				else
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
-					GLOB.almayer_hits_tally["times_hit_missile"] += 1
+					GLOB.ship_hits_tally["times_hit_missile"] += 1
 					logtotalhits +=1
 			if(point_defense == TRUE)
 				var/hitchance = HIT_CHANCE_STANDARD
@@ -58,14 +58,14 @@
 						shotspacing += 1
 					if(confirmedhit > 0)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
-					GLOB.almayer_hits_tally["times_hit_missile"] += confirmedhit
+					GLOB.ship_hits_tally["times_hit_missile"] += confirmedhit
 					confirmedhit = 0
 				else
 					if(prob(hitchance))
 						cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
 						shakeship(10, 10, TRUE, FALSE)
 						weaponhits_effects(WEAPON_MISSILE, FALSE)
-						GLOB.almayer_hits_tally["times_hit_missile"] += 1
+						GLOB.ship_hits_tally["times_hit_missile"] += 1
 						logtotalhits += 1
 					else
 						weaponhits_effects(WEAPON_MISSILE, TRUE)
@@ -87,14 +87,14 @@
 					weaponhits_effects(WEAPON_RAILGUN)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
-				GLOB.almayer_hits_tally["times_hit_railgun"] += confirmedhit
+				GLOB.ship_hits_tally["times_hit_railgun"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
 					shakeship(5, 5, FALSE, FALSE)
 					weaponhits_effects(WEAPON_RAILGUN)
-					GLOB.almayer_hits_tally["times_hit_railgun"] += 1
+					GLOB.ship_hits_tally["times_hit_railgun"] += 1
 					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_RAILGUN, TRUE)
@@ -116,14 +116,14 @@
 					weaponhits_effects(WEAPON_ODC)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_ODC, TRUE)
-				GLOB.almayer_hits_tally["times_hit_odc"] += confirmedhit
+				GLOB.ship_hits_tally["times_hit_odc"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_ODC)
-					GLOB.almayer_hits_tally["times_hit_odc"] += 1
+					GLOB.ship_hits_tally["times_hit_odc"] += 1
 					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_ODC, TRUE)
@@ -145,18 +145,18 @@
 					weaponhits_effects(WEAPON_AABOILER)
 				if(confirmedhit < 1)
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
-				GLOB.almayer_hits_tally["times_hit_aaboiler"] += confirmedhit
+				GLOB.ship_hits_tally["times_hit_aaboiler"] += confirmedhit
 
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
 					shakeship(10, 10, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
-					GLOB.almayer_hits_tally["times_hit_aaboiler"] += 1
+					GLOB.ship_hits_tally["times_hit_aaboiler"] += 1
 					logtotalhits += 1
 				else
 					weaponhits_effects(WEAPON_AABOILER, TRUE)
-	var/integerhitstally = GLOB.almayer_hits_tally["times_hit_missile"] + GLOB.almayer_hits_tally["times_hit_railgun"] + GLOB.almayer_hits_tally["times_hit_odc"] + GLOB.almayer_hits_tally["times_hit_aaboiler"]
+	var/integerhitstally = GLOB.ship_hits_tally["times_hit_missile"] + GLOB.ship_hits_tally["times_hit_railgun"] + GLOB.ship_hits_tally["times_hit_odc"] + GLOB.ship_hits_tally["times_hit_aaboiler"]
 	message_admins("weaponhits concluded! Type '[weaponused]' weapon was used, and hit [logtotalhits] times. The Almayer has now suffered a total of [integerhitstally] hits from all the weapons!")
 
 /proc/weaponhits_effects(weaponused, weaponmiss = FALSE, shotspacing = 0)

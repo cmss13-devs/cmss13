@@ -26,7 +26,7 @@
 	/// How many tiles the ammo can deviate from the laser target
 	var/accuracy_range = 3
 	/// Sound played mere seconds before impact
-	var/warning_sound = 'sound/effects/rocketpod_fire.ogg'
+	var/warning_sound = 'sound/effects/IncomingRocket.ogg'
 	/// Volume of the sound played before impact
 	var/warning_sound_volume = 70
 	/// Ammunition expended each time this is fired
@@ -40,7 +40,7 @@
 	var/combat_equipment = TRUE
 
 /obj/structure/ship_ammo/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable) 
+	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)

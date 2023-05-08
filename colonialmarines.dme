@@ -1329,6 +1329,7 @@
 #include "code\modules\admin\verbs\select_equipment.dm"
 #include "code\modules\admin\verbs\shakeshipverb.dm"
 #include "code\modules\admin\verbs\shiphealthpanel.dm"
+#include "code\modules\admin\verbs\shiphealthpanelUI.dm"
 #include "code\modules\admin\verbs\shuttlepanel.dm"
 #include "code\modules\admin\verbs\xooc.dm"
 #include "code\modules\admin\verbs\yooc.dm"

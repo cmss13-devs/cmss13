@@ -1,23 +1,23 @@
-GLOBAL_DATUM_INIT(ship_health_panel_UI, TYPE, new)
+GLOBAL_DATUM_INIT(ship_health_panel_UI, /datum/shiphealthpanelUI, new)
 
-/datum/shiphealthpanelUI/ui_interact(mob/user, datum/tgui/ui)
+/datum/shiphealthpanelUI/tgui_interact(mob/user, datum/tgui/ui)
   ui = SStgui.try_update_ui(user, src, ui)
   if(!ui)
     ui = new(user, src, "shiphealthpanelUI")
     ui.open()
 
-/datum/shiphealthpanelUI/ui_data(mob/user)
+/datum/shiphealthpanelUI/tgui_data(mob/user)
   var/list/data = list()
-  data["times_hit_missile"] = GLOB.ship_hits_tally["times_hit_missile"]
-  data["times_hit_railgun"] =  GLOB.ship_hits_tally["times_hit_railgun"]
-  data["times_hit_odc"] = GLOB.ship_hits_tally["times_hit_odc"]
-  data["times_hit_aaboiler"] =  GLOB.ship_hits_tally["times_hit_aaboiler"]
+  data["missile"] = GLOB.ship_hits_tally["times_hit_missile"]
+  data["railgun"] =  GLOB.ship_hits_tally["times_hit_railgun"]
+  data["odc"] = GLOB.ship_hits_tally["times_hit_odc"]
+  data["aaboiler"] =  GLOB.ship_hits_tally["times_hit_aaboiler"]
   data["hull"] = GLOB.ship_health_vars["ship_hull_health"]
   data["systems"] = GLOB.ship_health_vars["ship_systems_health"]
   return data
 
 /*
-/datum/shiphealthpanelUI/ui_act(action, params)
+/datum/shiphealthpanelUI/tgui_act(action, params)
   if(..())
     return
   switch(action)

@@ -328,7 +328,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		if(inoperable())
 			return
 		user.set_interaction(src)
-		if(src.seconds_electrified != 0)
+		if(seconds_electrified)
 			if(shock(user, 100))
 				return
 		tgui_interact(user)
@@ -566,7 +566,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 		if(!user_id && !sufficent_cash)
 			speak("No card found.")
-			flick(icon_deny,src)
+			flick(icon_deny, src)
 			vend_ready = TRUE
 			return
 
@@ -587,11 +587,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 					flick(icon_deny, src)
 					vend_ready = TRUE
 					return
-				else
-					insert_money(cash, record)
-					if(cash.worth && !istype(cash, /obj/item/spacecash/ewallet))
-						qdel(cash)
-						ripped_off = TRUE
+
+				insert_money(cash, record)
+				if(cash.worth && !istype(cash, /obj/item/spacecash/ewallet))
+					qdel(cash)
+					ripped_off = TRUE
 
 	speak(vend_reply)
 	use_power(active_power_usage)
@@ -606,9 +606,10 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	else
 		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
 	if(ripped_off)
-		flick(icon_deny,src)
-		sleep(1 SECONDS)
-		speak("Insufficent change. Please contact a supervisor.")
+		flick(icon_deny, src)
+		addtimer(VARSET_CALLBACK(src, vend_ready, TRUE), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(speak), "Insufficient change. Please contact a supervisor."), 1 SECONDS)
+		return
 	vend_ready = TRUE
 
 /obj/structure/machinery/vending/proc/transfer_money(datum/money_account/user_account, datum/data/vending_product/currently_vending)

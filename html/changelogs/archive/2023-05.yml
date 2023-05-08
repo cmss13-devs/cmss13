@@ -153,3 +153,27 @@
   - balance: Allows preds to use medicomp surgery with their armour on
   harryob:
   - bugfix: resolves a runtime around keybind conflict code
+2023-05-08:
+  Drathek:
+  - bugfix: Fixed burrowers being able to tail stab when burrowed
+  FreetoZ:
+  - rscadd: Added functionality for faxing photos and paper bundles
+  - bugfix: Fixed examine text for fax machines
+  - bugfix: Fixed examine text for paper
+  Hopek:
+  - rscadd: Medics can now just purchase the EZ Autoinjectors so they don't have to
+      go through 12+ injector pouches to take them out specifically.
+  IowaPotatoFarmer:
+  - maptweak: Switched the outdated CLF ship airlocks to new generic ones.
+  - rscadd: The CLF crashed ship insert on LV-624 now has one guaranteed medic and
+      one guaranteed engineer.
+  - bugfix: The CLF crash intro text no longer includes inaccurate info about the
+      sentries.
+  NewyearnewmeUwu:
+  - bugfix: fixed yautja loudroars displaying nothing
+  Waseemq1235:
+  - spellcheck: Fixes some repetitive words when getting shelled or CASd
+  harryob:
+  - bugfix: fixes the tacmap
+  sleepynecrons:
+  - imagedel: random white pixel on the peace and love flair was removed

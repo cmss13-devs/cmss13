@@ -9,8 +9,8 @@ export const shiphealthpanelUI = (_props, context) => {
   const railgun = data.railgun;
   const odc = data.odc;
   const aaboiler = data.aaboiler;
-  const hull = data.hull;
-  const systems = data.systems;
+  // const hull = data.hull;
+  // const systems = data.systems;
 
   return (
     <Window width={450} height={200}>
@@ -21,8 +21,8 @@ export const shiphealthpanelUI = (_props, context) => {
           fontSize="15px">
           <Box fontSize="30px">
             TIMES HIT BY MISSILES : {missile}, TIMES HIT BY RAILGUNS : {railgun}
-            , TIMES HIY BY O.D.C.s : {odc}, TIMES HIT BY AA BOILER SHOTS :{' '}
-            {aaboiler}
+            , TIMES HIY BY O.D.C.s : {odc}, TIMES HIT BY AA BOILER SHOTS{' '}
+            {aaboiler},
           </Box>
         </Section>
       </Window.Content>

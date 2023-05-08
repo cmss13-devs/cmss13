@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	// To be filled out at compile time
 	var/list/products = list() // For each, use the following pattern:
-	var/list/contraband = list() // list(/type/path = amount,/type/path2 = amount2)
+	var/list/contraband = list() // list(/type/path = amount, /type/path2 = amount2)
 	var/list/premium = list() // No specified amount = only one in stock
 	var/list/prices  = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return
 
-/obj/structure/machinery/vending/proc/build_inventory(list/productlist,hidden=0,req_coin=0)
+/obj/structure/machinery/vending/proc/build_inventory(list/productlist, hidden=0, req_coin=0)
 
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		product.price = price
 		product.max_amount = amount
 
-		if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
+		if(ispath(typepath, /obj/item/weapon/gun) || ispath(typepath, /obj/item/ammo_magazine) || ispath(typepath, /obj/item/explosive/grenade) || ispath(typepath, /obj/item/weapon/gun/flamer) || ispath(typepath, /obj/item/storage) )
 			product.display_color = "black"
 		else
 			product.display_color = "white"
@@ -526,7 +526,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		return
 	if(record.amount <= 0)
 		speak("Sold out of [record.name].")
-		flick(icon_deny,src)
+		flick(icon_deny, src)
 		vend_ready = TRUE
 		return
 
@@ -574,7 +574,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 			if(!account && !sufficent_cash)
 				speak("No account found.")
-				flick(icon_deny,src)
+				flick(icon_deny, src)
 				vend_ready = TRUE
 				return
 
@@ -801,7 +801,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if (delay_vending)
 		use_power(vend_power_usage) //actuators and stuff
 		if (icon_vend)
-			flick(icon_vend,src) //Show the vending animation if needed
+			flick(icon_vend, src) //Show the vending animation if needed
 		sleep(delay_vending)
 	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))
 		user.put_in_hands(new product.product_path)
@@ -830,7 +830,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	var/datum/data/vending_product/product //Let's try with a new datum.
 	//More accurate comparison between absolute paths.
 	for(product in (product_records + hidden_records + coin_records))
-		if(item_to_stock.type == product.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
+		if(item_to_stock.type == product.product_path && !istype(item_to_stock, /obj/item/storage)) //Nice try, specialists/engis
 			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/gun = item_to_stock
 				if(gun.in_chamber || (gun.current_mag && !istype(gun.current_mag, /obj/item/ammo_magazine/internal)) || (istype(gun.current_mag, /obj/item/ammo_magazine/internal) && gun.current_mag.current_rounds > 0) )
@@ -846,10 +846,10 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				if(mag.current_rounds < mag.max_rounds)
 					to_chat(user, SPAN_WARNING("\The [mag] isn't full. Fill it before you can restock it."))
 					return
-			if(istype(item_to_stock,/obj/item/device/walkman))
+			if(istype(item_to_stock, /obj/item/device/walkman))
 				var/obj/item/device/walkman/item = item_to_stock
 				if(item.tape)
-					to_chat(user,SPAN_WARNING("Remove the tape first!"))
+					to_chat(user, SPAN_WARNING("Remove the tape first!"))
 					return
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
@@ -925,7 +925,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/proc/malfunction()
 	if(stat & BROKEN)
 		return
-	var/release_amt = rand(3,4)
+	var/release_amt = rand(3, 4)
 	for(var/datum/data/vending_product/product in product_records)
 		if (product.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
@@ -945,7 +945,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 //Somebody cut an important wire and now we're following a new definition of "pitch."
 /obj/structure/machinery/vending/proc/throw_item()
 	var/obj/throw_item = null
-	var/mob/living/target = locate() in view(7,src)
+	var/mob/living/target = locate() in view(7, src)
 	if(!target)
 		return 0
 

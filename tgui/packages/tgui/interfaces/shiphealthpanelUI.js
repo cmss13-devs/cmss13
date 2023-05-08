@@ -19,8 +19,8 @@ export const shiphealthpanelUI = (_props, context) => {
           <ProgressBar value={hull} maxValue={100}>
             <Box textAlign="center">{hull}/100 Hull HP</Box>
           </ProgressBar>
-          <ProgressBar value={systems} maxValue={100}>
-            <Box textAlign="center">{systems}/100 Hull HP</Box>
+          <ProgressBar value={systems} maxValue={100} color={'yellow'}>
+            <Box textAlign="center">{systems}/100 Systems HP</Box>
           </ProgressBar>
         </Section>
         <Section title="WEAPONS HIT" textAlign="center" fontSize="15px">

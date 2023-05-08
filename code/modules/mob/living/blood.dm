@@ -17,7 +17,7 @@
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)
-+				blood_volume = limit_blood // This should never happen, but lets make sure
+				blood_volume = limit_blood // This should never happen, but lets make sure
 
 		var/b_volume = blood_volume
 

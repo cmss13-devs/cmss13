@@ -18,8 +18,6 @@ SUBSYSTEM_DEF(fail_to_topic)
 	max_fails = CONFIG_GET(number/topic_max_fails)
 	enabled = CONFIG_GET(flag/topic_enabled)
 
-	DropFirewallRule() // Clear the old bans if any still remain
-
 	if (world.system_type == UNIX && enabled)
 		enabled = FALSE
 		WARNING("fail_to_topic subsystem disabled. UNIX is not supported.")
@@ -50,9 +48,6 @@ SUBSYSTEM_DEF(fail_to_topic)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/fail_to_topic/Shutdown()
-	DropFirewallRule()
-
 /datum/controller/subsystem/fail_to_topic/proc/IsRateLimited(ip)
 	if(!enabled)
 		return FALSE
@@ -80,45 +75,7 @@ SUBSYSTEM_DEF(fail_to_topic)
 			fail_counts[ip] = 1
 			return TRUE
 		else if (failures > max_fails)
-			BanFromFirewall(ip)
 			return TRUE
 		else
 			fail_counts[ip] = failures + 1
 			return TRUE
-
-/datum/controller/subsystem/fail_to_topic/proc/BanFromFirewall(ip)
-	if (!enabled)
-		return
-	var/static/regex/R = regex(@"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$") // Anything that interacts with a shell should be parsed. Prevents direct call input tampering
-	R.Find(ip)
-	ip = R.match
-	if(length(ip) > 15 || length(ip) < 8 )
-		return FALSE
-
-	active_bans[ip] = world.time
-	fail_counts -= ip
-	rate_limiting -= ip
-
-	. = shell("netsh advfirewall firewall add rule name=\"[CONFIG_GET(string/topic_rule_name)]\" dir=in interface=any action=block remoteip=[ip]")
-
-	if (.)
-		log_topic("ERROR: fail_to_topic failed to ban [ip]. Exit code: [.].")
-	else if (isnull(.))
-		log_topic("ERROR: fail_to_topic failed to invoke ban script.")
-	else
-		log_topic("fail_to_topic banned [ip].")
-
-/datum/controller/subsystem/fail_to_topic/proc/DropFirewallRule()
-	if (!enabled)
-		return
-
-	active_bans = list()
-
-	. = shell("netsh advfirewall firewall delete rule name=\"[CONFIG_GET(string/topic_rule_name)]\"")
-
-	if (.)
-		log_topic("ERROR: fail_to_topic failed to drop firewall rule. Exit code: [.].")
-	else if (isnull(.))
-		log_topic("ERROR: fail_to_topic failed to invoke ban script.")
-	else
-		log_topic("fail_to_topic firewall rule dropped.")

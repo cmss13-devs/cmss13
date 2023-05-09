@@ -6566,7 +6566,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "atC" = (
-/obj/structure/filtration/machine/distribution,
+/obj/structure/filtration/machine_96x96/distribution,
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform{
 	dir = 1
@@ -14375,7 +14375,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aRh" = (
-/obj/structure/filtration/machine/filtration,
+/obj/structure/filtration/machine_96x96/filtration,
 /turf/open/floor/coagulation{
 	icon_state = "4,8"
 	},
@@ -16194,7 +16194,7 @@
 /area/desert_dam/building/water_treatment_two/purification)
 "aXk" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedementation_1";
+	icon_state = "sedimentation_1";
 	pixel_y = -16
 	},
 /turf/open/floor/prison{
@@ -16213,7 +16213,7 @@
 /area/desert_dam/building/water_treatment_two)
 "aXm" = (
 /obj/structure/filtration/machine_96x96{
-	icon_state = "sedementation_A_1";
+	icon_state = "sedimentation_A_1";
 	pixel_y = -16
 	},
 /turf/open/floor/prison{
@@ -60332,7 +60332,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "ehD" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedementation_0"
+	icon_state = "sedimentation_0"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -60341,7 +60341,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "ehE" = (
 /obj/structure/filtration/machine_96x96{
-	icon_state = "sedementation_A_1"
+	icon_state = "sedimentation_A_1"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -60514,7 +60514,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "eid" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedementation_1"
+	icon_state = "sedimentation_1"
 	},
 /turf/open/floor/prison{
 	dir = 10;

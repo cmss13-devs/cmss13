@@ -34,7 +34,7 @@
 	var/max_engineers = 3 //maximum # of engineers allowed in squad
 	var/max_medics = 4 //Ditto, squad medics
 	var/max_specialists = 1
-	var/max_rto = 2
+	var/max_tl = 2
 	var/max_smartgun = 1
 	var/max_leaders = 1
 	var/radio_freq = 1461 //Squad radio headset frequency.
@@ -69,7 +69,7 @@
 	var/num_leaders = 0
 	var/num_smartgun = 0
 	var/num_specialists = 0
-	var/num_rto = 0
+	var/num_tl = 0
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
 
@@ -404,9 +404,9 @@
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
-		if(JOB_SQUAD_RTO)
-			assignment = JOB_SQUAD_RTO
-			num_rto++
+		if(JOB_SQUAD_TEAM_LEADER)
+			assignment = JOB_SQUAD_TEAM_LEADER
+			num_tl++
 			M.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
@@ -520,8 +520,8 @@
 			num_specialists--
 		if(JOB_SQUAD_SMARTGUN)
 			num_smartgun--
-		if(JOB_SQUAD_RTO)
-			num_rto--
+		if(JOB_SQUAD_TEAM_LEADER)
+			num_tl--
 		if(JOB_SQUAD_LEADER)
 			num_leaders--
 
@@ -540,8 +540,8 @@
 			old_lead.comm_title = "ComTech"
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
-		if(JOB_SQUAD_RTO)
-			old_lead.comm_title = "RTO"
+		if(JOB_SQUAD_TEAM_LEADER)
+			old_lead.comm_title = "TL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)

@@ -122,7 +122,9 @@ var/world_topic_spam_protect_time = world.timeofday
 		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
 
 	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
+	#ifndef UNIT_TESTS
 	world.log = file("[GLOB.log_directory]/dd.log")
+	#endif
 	backfill_runtime_log()
 
 	GLOB.logger.init_logging()

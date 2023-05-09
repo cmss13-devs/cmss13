@@ -1,6 +1,6 @@
 //------------GEAR VENDOR---------------
 
-GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
+GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
@@ -31,6 +31,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 		list("M79 Grenade Launcher", 30, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
+		list("Radio Telephone Pack", 5, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_RECOMMENDED),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
 		list("Large Magazine Pouch", 10, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
@@ -49,6 +50,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 45, /obj/item/pamphlet/skill/powerloader, null, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", 10, /obj/item/storage/pouch/shotgun/large, null, VENDOR_ITEM_RECOMMENDED),
+		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),
@@ -57,30 +59,29 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
 	))
 
-/obj/structure/machinery/cm_vending/gear/rto
-	name = "ColMarTech Radio Telephone Operator Gear Rack"
-	desc = "An automated gear rack for RTOs."
+/obj/structure/machinery/cm_vending/gear/tl
+	name = "ColMarTech Fireteam Leader Gear Rack"
+	desc = "An automated gear rack for fireteam leaders."
 	icon_state = "intel_gear"
 	show_points = TRUE
-	req_access = list(ACCESS_MARINE_RTO_PREP)
-	vendor_role = list(JOB_SQUAD_RTO)
+	req_access = list(ACCESS_MARINE_TL_PREP)
+	vendor_role = list(JOB_SQUAD_TEAM_LEADER)
 
-/obj/structure/machinery/cm_vending/gear/rto/get_listed_products(mob/user)
-	return GLOB.cm_vending_gear_rto
+/obj/structure/machinery/cm_vending/gear/tl/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_tl
 
 //------------CLOTHING VENDOR---------------
 
-GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
+GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Uniform", 0, /obj/item/clothing/under/marine/rto, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/insulated, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/rto, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("M4 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/rto, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/rto, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Essential RTO Utilities", 0, /obj/effect/essentials_set/rto/utilities, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Fireteam Leader Utilities", 0, /obj/effect/essentials_set/tl, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -123,68 +124,41 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 	))
 
 //MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
-/obj/structure/machinery/cm_vending/clothing/rto
-	name = "ColMarTech Radio Telephone Operator Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of RTO standard-issue equipment."
-	req_access = list(ACCESS_MARINE_RTO_PREP)
-	vendor_role = list(JOB_SQUAD_RTO)
+/obj/structure/machinery/cm_vending/clothing/tl
+	name = "ColMarTech Fireteam Leader Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of fireteam leader standard-issue equipment."
+	req_access = list(ACCESS_MARINE_TL_PREP)
+	vendor_role = list(JOB_SQUAD_TEAM_LEADER)
 
-/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_rto
+/obj/structure/machinery/cm_vending/clothing/tl/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_tl
 
-/obj/structure/machinery/cm_vending/clothing/rto/alpha
+/obj/structure/machinery/cm_vending/clothing/tl/alpha
 	squad_tag = SQUAD_MARINE_1
-	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_ALPHA)
+	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/insulated
-	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/rto
+	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/tl
 
-/obj/structure/machinery/cm_vending/clothing/rto/bravo
+/obj/structure/machinery/cm_vending/clothing/tl/bravo
 	squad_tag = SQUAD_MARINE_2
-	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_BRAVO)
+	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/insulated
-	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/rto
+	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/tl
 
-/obj/structure/machinery/cm_vending/clothing/rto/charlie
+/obj/structure/machinery/cm_vending/clothing/tl/charlie
 	squad_tag = SQUAD_MARINE_3
-	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_CHARLIE)
+	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/insulated
-	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/rto
+	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/tl
 
-/obj/structure/machinery/cm_vending/clothing/rto/delta
+/obj/structure/machinery/cm_vending/clothing/tl/delta
 	squad_tag = SQUAD_MARINE_4
-	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_DELTA)
+	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/insulated
-	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/rto
+	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/tl
 
 //------------ESSENTIAL SETS---------------
-
-/obj/effect/essentials_set/rto/vp78
-	spawned_gear_list = list(
-		/obj/item/weapon/gun/pistol/vp78,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/storage/box/m94/signal,
-		/obj/item/storage/box/m94/signal,
-		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/storage/belt/gun/m4a3,
-	)
-
-/obj/effect/essentials_set/rto/mod
-	spawned_gear_list = list(
-		/obj/item/weapon/gun/pistol/mod88,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/storage/box/m94/signal,
-		/obj/item/storage/box/m94/signal,
-		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/storage/belt/gun/m4a3,
-	)
-
-/obj/effect/essentials_set/rto/utilities
+/obj/effect/essentials_set/tl
 	spawned_gear_list = list(
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/storage/box/m94/signal,

@@ -315,6 +315,21 @@
 	params = num2text(clamp(params, 2, 10))
 	return ..()
 
+/datum/emote/living/carbon/human/stop
+	key = "stop"
+	message = "holds out an open palm, gesturing to stop."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/thumbsup
+	key = "thumbsup"
+	message = "gives a thumbs up."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/human/thumbsdown
+	key = "thumbsdown"
+	message = "gives a thumbs down."
+	hands_use_check = TRUE
+
 /datum/emote/living/carbon/human/twitch
 	key = "twitch"
 	key_third_person = "twitches"

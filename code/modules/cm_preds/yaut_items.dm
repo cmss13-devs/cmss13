@@ -42,6 +42,7 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_item = ITEM_PREDATOR
+	flags_inventory = NO_FLAGS
 	slowdown = SLOWDOWN_ARMOR_NONE
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
@@ -968,6 +969,7 @@
 	name = "How did you get this?"
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
+	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = "head"
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
@@ -1005,7 +1007,7 @@
 
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
-	icon_state = "head"
+	icon_state = "skull"
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/limb/skeleton/head/spine

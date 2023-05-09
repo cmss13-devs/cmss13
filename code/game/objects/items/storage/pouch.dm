@@ -243,13 +243,6 @@
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
 	icon_state = "firstaid"
 	storage_slots = 5
-	can_hold = list(
-	    /obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector,
-		/obj/item/storage/pill_bottle/packet,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-	)
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)

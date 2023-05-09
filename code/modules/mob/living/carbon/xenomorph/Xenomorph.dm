@@ -1082,20 +1082,21 @@
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)
 
 /mob/living/carbon/xenomorph/proc/scuttle(obj/structure/current_structure)
-	if (mob_size == MOB_SIZE_SMALL) // huggers, larva
-		var/move_dir = get_dir(src, loc)
-		for(var/atom/movable/atom in get_turf(current_structure))
-			if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
-				to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
-				return FALSE
-		// Is it an airlock?
-		if(istype(current_structure, /obj/structure/machinery/door/airlock))
-			var/obj/structure/machinery/door/airlock/current_airlock = current_structure
-			if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-				to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
-				return FALSE
-		visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
-		SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), null, 5)
-		forceMove(current_structure.loc)
-		return TRUE
-	return FALSE
+	if (mob_size != MOB_SIZE_SMALL)
+		return FALSE
+
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents you from squeezing under [current_structure]!"))
+			return FALSE
+	// Is it an airlock?
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
+			return FALSE
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), null, 5)
+	forceMove(current_structure.loc)
+	return TRUE

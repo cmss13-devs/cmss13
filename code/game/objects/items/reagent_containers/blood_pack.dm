@@ -83,7 +83,7 @@
 	//give blood
 	if(mode == BLOOD_BAG_INJECTING)
 		if(volume > 0)
-			var/transfer_amount = REAGENTS_METABOLISM * 2
+			var/transfer_amount = REAGENTS_METABOLISM * 6
 			connected_to.inject_blood(src, transfer_amount)
 
 	// Take blood

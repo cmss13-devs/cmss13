@@ -8,7 +8,7 @@
 		return
 
 	if(stat == UNCONSCIOUS)
-		hear_sleep(message, src == speaker, Adjacent(speaker))
+		hear_sleep(src, message, src == speaker, Adjacent(speaker))
 		return
 
 	var/style = "body"
@@ -68,7 +68,7 @@
 		return
 
 	if(stat == UNCONSCIOUS)
-		hear_sleep(message, FALSE, FALSE)
+		hear_sleep(src, message, FALSE, FALSE)
 		return
 	var/comm_paygrade = ""
 
@@ -207,7 +207,7 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(message, hearing_self = FALSE, proximity_flag = FALSE)
+/mob/proc/hear_sleep(mob/speaker = null, message, hearing_self = FALSE, proximity_flag = FALSE)
 	var/heard = ""
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)

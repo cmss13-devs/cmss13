@@ -108,8 +108,8 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 /datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if(isspeciesyautja(H))
+		var/mob/living/carbon/human/attacked_human = A
+		if(isspeciesyautja(attacked_human))
 			original_damage *= 1.5
 
 	return original_damage + kills * 2.5

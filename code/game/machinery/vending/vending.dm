@@ -561,6 +561,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			var/mob/living/carbon/human/human_user = user
 			user_id = human_user.get_idcard()
 
+		if(!allowed(user))
+			speak("Access denied.")
+			flick(icon_deny, src)
+			vend_ready = TRUE
+			return
+
 		if(!user_id && !sufficent_cash)
 			speak("No card found.")
 			flick(icon_deny, src)
@@ -711,8 +717,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		.["user"]["job"] =  ""
 	else
 		.["user"] = null
-	.["stock"] = list()
 
+	.["stock"] = list()
 	for (var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)
 		var/list/product_data = list(
 			name = product_record.product_name,
@@ -737,6 +743,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	)
 
 	.["checking_id"] = checking_id()
+
+	.["access"] = allowed(user)
 
 /obj/structure/machinery/vending/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

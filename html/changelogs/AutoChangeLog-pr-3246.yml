@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Fixed an edge case that caused the melee strength's value to be shown as the throwing strength, when examining a weapon."

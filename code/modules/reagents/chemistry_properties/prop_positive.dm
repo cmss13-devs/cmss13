@@ -109,7 +109,7 @@
 	if(M.nutrition < 200)
 		return
 
-	M.nutrition -= potency
+	handle_nutrition_loss(M, potency, delta_time)
 	M.blood_volume = min(M.blood_volume + potency, M.limit_blood)
 	if(potency > POTENCY_MAX_TIER_1 && M.blood_volume > (M.max_blood + 10) && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)
@@ -122,6 +122,17 @@
 
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
+
+/datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
+	M.nutrition -= potency
+
+/datum/chem_property/positive/hemogenic/predator
+	name = PROPERTY_YAUTJA_HEMOGENIC
+	code = "YHM"
+	rarity = PROPERTY_DISABLED
+
+/datum/chem_property/positive/hemogenic/predator/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
+	return
 
 /datum/chem_property/positive/hemostatic
 	name = PROPERTY_HEMOSTATIC

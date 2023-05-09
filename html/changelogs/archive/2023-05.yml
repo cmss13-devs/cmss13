@@ -177,3 +177,11 @@
   - bugfix: fixes the tacmap
   sleepynecrons:
   - imagedel: random white pixel on the peace and love flair was removed
+2023-05-09:
+  Drathek:
+  - rscdel: Removed some toilet code and reduced flush spam
+  JackieEstegado:
+  - bugfix: Fixed an edge case that caused the melee strength's value to be shown
+      as the throwing strength, when examining a weapon.
+  harryob:
+  - bugfix: fixes fultons

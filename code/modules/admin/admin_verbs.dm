@@ -66,6 +66,7 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
+	/client/proc/getserverlog, /*allows us to fetch server logs (diary) for other days*/
 	)
 
 var/list/admin_verbs_admin = list(
@@ -74,7 +75,6 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/view_txt_log, /*shows the server log (diary) for today*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/giveruntimelog, /*allows us to give access to runtime logs to somebody*/
-	/client/proc/getserverlog, /*allows us to fetch server logs (diary) for other days*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
@@ -125,7 +125,9 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/force_event,
 	/client/proc/toggle_events,
 	/client/proc/toggle_shipside_sd,
-	/client/proc/shakeshipverb
+	/client/proc/shakeshipverb,
+	/client/proc/adminpanelweapons,
+	/client/proc/adminpanelgq
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

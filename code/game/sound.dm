@@ -213,7 +213,7 @@
 			if("clan_sword_hit")
 				S = pick('sound/weapons/clan_sword_hit_1.ogg', 'sound/weapons/clan_sword_hit_2.ogg')
 			if("slam")
-				S = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg')
+				S = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg', 0.1;'sound/effects/slam_rare_1.ogg')
 			if("pageturn")
 				S = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
 			if("terminal_button")

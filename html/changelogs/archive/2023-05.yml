@@ -1,0 +1,187 @@
+2023-05-01:
+  Drathek:
+  - admin: Fix permissions for MOD to receive staff, staff chat, and game logs in
+      STUI.
+  LTNTS:
+  - bugfix: CL bedroom window no longer hull
+  Puckaboo2:
+  - bugfix: The remaining icons and icon states in the obj/structure and obj/effects
+      path have been restored.
+  - bugfix: Medical wall lockers now spark when broken.
+  - bugfix: Admin and Observer Thunderdome Landmarks no longer share the same icon
+      state name.
+  - bugfix: The Admin Thunderdome landmark has its proper icon state.
+  - bugfix: Removed non-functional hatches near lifeboats.
+  - bugfix: Fixed an animation error on crew computers.
+  - imageadd: Xeno tunnels and Fog now have proper landmark icons.
+  - imageadd: Foliage in Sorokyne Strata can now be placed.
+  - imageadd: Added Icey grass. Grass that looks like ice. It's pretty. Could be used
+      on Shiva or Strata.
+  - imageadd: Security wall lockers now exist, but they currently do not have any
+      contents.
+  - imageadd: Warden lockers now exist.
+  - imageadd: Missing mech limbs have been added; missing mech armor has been added.
+  - imageadd: Added missing icon states.
+  - code_imp: Reassigned icons to objects with missing icon states.
+  - code_imp: Added more secret ice and thin ice blocks.
+  - rscdel: Removed an unused prop with no icon state.
+  - rscdel: Removed several unused effects with no icon states or no function.
+  - maptweak: Several filtration systems on Desert Dam have been restored.
+  - maptweak: Added tufts of dead grass on Sorokyne Strata.
+  - maptweak: Several drill towers have been restored on Sorokyne Strata.
+  - maptweak: Added a brand new locker for the Warden. Also rearranged Warden's room.
+  - spellcheck: Renamed some icon state strings to match the file names in their respective
+      .dmi files.
+  - spellcheck: Renamed all instances of Sedement to Sediment.
+  - spellcheck: All instances of laz_ have been replaced with las_.
+  Tsunamico:
+  - admin: Added a weapons panel in a ship section of the admin tab, where you can
+      shoot weapons at the Almayer.
+  - admin: Added a General Quarters button to the ship section of the admin tab, where
+      you can call General Quarters if the ship's in combat.
+  - admin: changed where shipshake is, to be under the ship section.
+  - soundadd: Added general sounds related to the receiving end of a ship vs ship
+      encounter, with two different General Quarters call, one containing the traditionally
+      used Bosun "All Hands" call(Which is the one used in the General Quarters verb).
+      For tradition.
+  usnpeepoo:
+  - bugfix: Predators are now able to be automatically regurgitated
+  - bugfix: Impending regurgitation message works again
+2023-05-02:
+  BeagleGaming1:
+  - bugfix: Spine checks for real_name instead of just name
+  - imageadd: Updates skull and spine onmob sprites
+  NewyearnewmeUwu:
+  - balance: Prosthetics can now be decalibrated by damage where normal limbs would
+      break.
+  - rscadd: Anyone with novice or higher surgery skill can recalibrate a prosthetic.
+  carlarctg:
+  - qol: Suppressors no longer change any stats but firing noise and muzzle flash.
+2023-05-03:
+  BeagleGaming1:
+  - bugfix: Fixes combi-stick duplicating and not un-wielding properly
+  Clvrbot:
+  - rscdel: Removed comms APCs from areas that already had APCs
+  Drathek:
+  - bugfix: Fix runtimes cause by non-player mobs emoting
+  - bugfix: Fixes a runtime when deleting a mark that is tracked.
+  - bugfix: Fixes a runtime when a lurker pounces again but hasn't used her unfreeze
+      slash between pounces.
+  - bugfix: Fixes automatic shuttle launching for distress signals that require it
+      (Xeno & Zombie ERTs)
+  - bugfix: Fix evolve button not working when resting
+  LTNTS:
+  - bugfix: missing surgery skill for ERT
+  - imageadd: adds medical turns tile variant
+  - maptweak: tweaks medbay lobby to include new turns tile and adds one more set
+      of med handrails by window
+  Morrow:
+  - maptweak: Package Wrapper added to requisition back room.
+  NewyearnewmeUwu:
+  - rscadd: Added *thumbsup, *thumbsdown and *stop.
+  TeDGamer:
+  - bugfix: Pouncing unconscious people will no longer stop the pounce effects ( such
+      as hugging )
+  Tsunamico:
+  - bugfix: fixed a double log
+  - bugfix: fixed a little mistake on an if(!) check.
+  nauticall:
+  - rscadd: Adds pancakes.
+  - bugfix: Readded several missing skill bonuses to several procs, like stripping
+      and removing embedded objects, that previously were left blank. Some actions
+      will be much faster for characters that are proficient in the required skills;
+      particularly synthetics, medical staff/corpsmen, and MPs.
+  sleepynecrons:
+  - imageadd: new sprites for landing zone signs
+  - imagedel: deleted old landing zone signs
+2023-05-04:
+  Huffie56:
+  - bugfix: removed weather sound in space when weather is active.
+  Morrow:
+  - bugfix: Fixes M10 officer helmet sprites
+  Morrow, Frans_Feiffer:
+  - rscadd: Squad RTOs are now Fireteam Leaders
+  - rscadd: Radio telephones can be bought by fireteam leaders or squad leaders
+  - rscadd: Radio telephones can be bought by riflemen
+  - rscadd: Small radio telephones are now universally replaced by the regular version
+      and can be worn with any uniform
+  - bugfix: Fixed RTO Backpack in hand on_mobs backwards when facing south.
+  SpartanBobby:
+  - maptweak: Various minor Almayer mapping fixes involving warning stripes and misplaced
+      turfs and objects
+  - maptweak: the CE now spawns with his men again
+  - maptweak: Almayer lights or fire alarms that were once on windows have been moved
+      to a wall or have had a wall replace the windows they were once on
+  - maptweak: updates basketball court on Almayer
+  - bugfix: fixes firing range fire shutters on Almayer
+  - maptweak: removes CLF uniform from Almayer
+  harryob:
+  - bugfix: Some missing WO role icons have been restored
+2023-05-05:
+  BeagleGaming1:
+  - balance: Most armor blocks surgery when worn
+  CapCamIII:
+  - rscadd: New undershirt options, black versions of the current undershirts, and
+      a long-sleeved undershirt with black and tan option.
+  - imagedel: Deletes 1 pixel from side faced sleeved undershirts to make them slightly
+      shorter than rolled jackets.
+  - rscadd: UPP standard, medic, and engi uniforms now have a no-jacket state, with
+      a Telnyashka
+  Emanthealmighty:
+  - rscadd: Xenomorphs can now clear eggs from other hives
+  FreetoZ:
+  - rscadd: added cas simulator.
+2023-05-06:
+  Drathek:
+  - server: 'hrefs.log will now include more commands: Now anything that isn''t an
+      expected asset_cache_confirm_arrival, a tgui_Topic, or rate limited will be
+      logged.'
+  FreetoZ:
+  - bugfix: hotifx for cas
+2023-05-07:
+  Diegoflores31:
+  - bugfix: Fixed Queen being able to hijack the shuttle from far away
+  - bugfix: Added 10 second timeout on hijack "landing" options to avoid multiple
+      windows at the same time
+  Hopek:
+  - balance: Alamo and Normandy now have a Reinforced Metal Ceiling meaning that CAS
+      and OB's can't penetrate it.
+  LTNTS:
+  - bugfix: apc on window in medbay lobby
+  - bugfix: research to req delivery chute borked
+  Mister-moon1:
+  - balance: Allows preds to use medicomp surgery with their armour on
+  harryob:
+  - bugfix: resolves a runtime around keybind conflict code
+2023-05-08:
+  Drathek:
+  - bugfix: Fixed burrowers being able to tail stab when burrowed
+  FreetoZ:
+  - rscadd: Added functionality for faxing photos and paper bundles
+  - bugfix: Fixed examine text for fax machines
+  - bugfix: Fixed examine text for paper
+  Hopek:
+  - rscadd: Medics can now just purchase the EZ Autoinjectors so they don't have to
+      go through 12+ injector pouches to take them out specifically.
+  IowaPotatoFarmer:
+  - maptweak: Switched the outdated CLF ship airlocks to new generic ones.
+  - rscadd: The CLF crashed ship insert on LV-624 now has one guaranteed medic and
+      one guaranteed engineer.
+  - bugfix: The CLF crash intro text no longer includes inaccurate info about the
+      sentries.
+  NewyearnewmeUwu:
+  - bugfix: fixed yautja loudroars displaying nothing
+  Waseemq1235:
+  - spellcheck: Fixes some repetitive words when getting shelled or CASd
+  harryob:
+  - bugfix: fixes the tacmap
+  sleepynecrons:
+  - imagedel: random white pixel on the peace and love flair was removed
+2023-05-09:
+  Drathek:
+  - rscdel: Removed some toilet code and reduced flush spam
+  JackieEstegado:
+  - bugfix: Fixed an edge case that caused the melee strength's value to be shown
+      as the throwing strength, when examining a weapon.
+  harryob:
+  - bugfix: fixes fultons

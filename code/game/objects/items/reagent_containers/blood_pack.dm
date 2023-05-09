@@ -19,7 +19,7 @@
 	. = ..()
 	if(blood_type != null)
 		name = "BloodPack [blood_type]"
-		reagents.add_reagent("blood", 160, list("viruses"=null,"blood_type"=blood_type,"resistances"=null))
+		reagents.add_reagent("blood", initial(volume), list("viruses"=null,"blood_type"=blood_type,"resistances"=null))
 		update_icon()
 
 /obj/item/reagent_container/blood/on_reagent_change()
@@ -38,8 +38,8 @@
 	if(connected_to == attacked_mob)
 		connected_to = null
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("[user] detaches \the [src] from \the [connected_to].", \
-			"You detach \the [src] from \the [connected_to].")
+		user.visible_message("[user] detaches \the [src] from [connected_to].", \
+			"You detach \the [src] from [connected_to].")
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -55,14 +55,14 @@
 	if(istype(attacked_mob, /mob/living/carbon/human))
 		connected_to = attacked_mob
 		START_PROCESSING(SSobj, src)
-		user.visible_message("[user] attaches [src] to [connected_to].", \
-			"You attach [src] to [connected_to].")
+		user.visible_message("[user] attaches \the [src] to [connected_to].", \
+			"You attach \the [src] to [connected_to].")
 
 /obj/item/reagent_container/blood/dropped(mob/user)
 	. = ..()
 
 	if(connected_to)
-		connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
+		connected_to.visible_message("\The [src] breaks free of [connected_to]!", "\The [src] is pulled out of you!")
 		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 		connected_to.emote("scream")
 		connected_to = null
@@ -74,14 +74,14 @@
 		return PROCESS_KILL
 
 	if(!(get_dist(src, connected_to) <= 1 && isturf(connected_to.loc)))
-		connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
+		connected_to.visible_message("[src] breaks free of \the [connected_to]!", "[src] is pulled out of you!")
 		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 		connected_to.emote("scream")
 		connected_to = null
 		return PROCESS_KILL
 
 	//give blood
-	if(mode)
+	if(mode == BLOOD_BAG_INJECTING)
 		if(volume > 0)
 			var/transfer_amount = REAGENTS_METABOLISM * 2
 			connected_to.inject_blood(src, transfer_amount)
@@ -93,16 +93,12 @@
 		if(amount == 0)
 			return
 
-		var/mob/living/carbon/connected_carbon = connected_to
-
-		if(!istype(connected_carbon))
+		if(!istype(connected_to))
 			return
-		if(ishuman(connected_carbon))
-			var/mob/living/carbon/human/connected_human = connected_carbon
-			if(connected_human.species && connected_human.species.flags & NO_BLOOD)
-				return
+		if(connected_to.species && connected_to.species.flags & NO_BLOOD)
+			return
 
-		connected_carbon.take_blood(src, amount)
+		connected_to.take_blood(src, amount)
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"

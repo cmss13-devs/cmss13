@@ -124,7 +124,7 @@
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
 
 /datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
-	M.nutrition -= potency
+	M.nutrition = max(M.nutrition - potency, 0)
 
 /datum/chem_property/positive/hemogenic/predator
 	name = PROPERTY_YAUTJA_HEMOGENIC

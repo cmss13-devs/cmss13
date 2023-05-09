@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return
 
-/obj/structure/machinery/vending/proc/build_inventory(list/productlist, hidden=0, req_coin=0)
+/obj/structure/machinery/vending/proc/build_inventory(list/productlist, hidden = FALSE, req_coin = FALSE)
 
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]

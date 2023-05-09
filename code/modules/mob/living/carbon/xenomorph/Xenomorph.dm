@@ -1097,6 +1097,6 @@
 			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. You can't squeeze underneath!"))
 			return FALSE
 	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), null, 5)
+	SPAN_WARNING("You squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE

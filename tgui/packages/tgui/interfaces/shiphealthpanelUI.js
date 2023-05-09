@@ -17,10 +17,10 @@ export const shiphealthpanelUI = (_props, context) => {
       <Window.Content scrollable>
         <Section title="SHIP STATUS" textAlign="center" fontSize="15px">
           <ProgressBar value={hull} maxValue={100}>
-            <Box textAlign="center">{hull}/100 Hull HP</Box>
+            <Box textAlign="center">{hull}% Hull</Box>
           </ProgressBar>
           <ProgressBar value={systems} maxValue={100} color={'yellow'}>
-            <Box textAlign="center">{systems}/100 Systems HP</Box>
+            <Box textAlign="center">{systems}% Systems</Box>
           </ProgressBar>
         </Section>
         <Section title="WEAPONS HIT" textAlign="center" fontSize="15px">

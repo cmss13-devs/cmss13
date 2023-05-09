@@ -1,0 +1,4 @@
+author: "morrowwolf"
+delete-after: True
+changes:
+  - config: "Extra larva per burst config option"

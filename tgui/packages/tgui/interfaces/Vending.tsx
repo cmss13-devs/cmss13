@@ -208,8 +208,9 @@ const VendingRow = (props, context) => {
   const { product, productStock } = props;
   const { access, user, checking_id } = data;
   const remaining = productStock.amount;
-  const denied = (!user && checking_id) || !access;
-  const disabled = denied || remaining === 0 || product.price > user?.cash;
+  const denied = checking_id && (!user || !access);
+  const disabled =
+    denied || remaining === 0 || (checking_id && product.price > user?.cash);
 
   return (
     <Table.Row>

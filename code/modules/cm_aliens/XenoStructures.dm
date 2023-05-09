@@ -371,12 +371,12 @@
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))
-		var/mob/living/carbon/xenomorph/X = user
-		if (X.hivenumber == hivenumber)
-			if(X.scuttle(src))
-				return // don't toggle door for small xenos
-			return ..() // toggles door for big xenos
-		return // enemy hive doesn't toggle door
+		var/mob/living/carbon/xenomorph/xeno_user = user
+		if (xeno_user.hivenumber != hivenumber && !xeno_user.ally_of_hivenumber(hivenumber))
+			return
+		if(xeno_user.scuttle(src))
+			return
+		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if (C.ally_of_hivenumber(hivenumber))

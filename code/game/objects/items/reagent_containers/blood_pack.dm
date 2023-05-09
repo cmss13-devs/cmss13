@@ -71,15 +71,14 @@
 
 /obj/item/reagent_container/blood/process()
 	if(!connected_to)
-		STOP_PROCESSING(SSobj, src)
+		return PROCESS_KILL
 
 	if(!(get_dist(src, connected_to) <= 1 && isturf(connected_to.loc)))
 		connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
 		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 		connected_to.emote("scream")
 		connected_to = null
-		STOP_PROCESSING(SSobj, src)
-		return
+		return PROCESS_KILL
 
 	//give blood
 	if(mode)

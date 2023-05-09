@@ -109,7 +109,7 @@
 	if(M.nutrition < 200)
 		return
 
-	M.nutrition -= 5
+	M.nutrition -= potency
 	M.blood_volume = min(M.blood_volume + potency, M.limit_blood)
 	if(potency > POTENCY_MAX_TIER_1 && M.blood_volume > (M.max_blood + 10) && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)

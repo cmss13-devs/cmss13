@@ -88,7 +88,9 @@
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
 	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
-		throw_item(A)
+		if(throw_delay < world.time)
+			throw_item(A)
+			throw_delay = world.time + THROW_DELAY
 		return
 
 	// Last thing clicked is tracked for something somewhere.

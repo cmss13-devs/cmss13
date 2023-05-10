@@ -4109,6 +4109,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
+"cvL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gamertime"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
 "cwB" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -11932,7 +11938,8 @@
 "hpJ" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/filtration/console{
-	pixel_y = 22
+	pixel_y = 22;
+	can_block_movement = 0
 	},
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/plating/prison,
@@ -12597,6 +12604,12 @@
 /obj/item/clothing/head/helmet/marine/specialist/hefa,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
+"hMK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "pizzatime"
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/power_ring)
 "hMX" = (
 /obj/item/weapon/twohanded/spear,
 /turf/open/floor/prison{
@@ -15548,13 +15561,10 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "jFO" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8
+/obj/effect/landmark/nightmare{
+	insert_tag = "poolparty"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
+/turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
 "jGd" = (
 /obj/structure/machinery/light/double/blue{
@@ -24142,6 +24152,13 @@
 "oUg" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
+"oUP" = (
+/obj/structure/lattice,
+/obj/effect/landmark/nightmare{
+	insert_tag = "wardenofficedecorated"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "oVn" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
@@ -51207,7 +51224,7 @@ lRI
 uGM
 cdD
 ajK
-itN
+jFO
 itN
 itN
 itN
@@ -57131,7 +57148,7 @@ aRT
 kjT
 qun
 oyC
-jFO
+cdD
 ajK
 aRT
 kjT
@@ -58702,7 +58719,7 @@ gEF
 jXz
 jXz
 jXz
-jXz
+cvL
 lwK
 hoZ
 fGb
@@ -67544,7 +67561,7 @@ aPH
 aPH
 aPH
 aPH
-kPz
+oUP
 kPz
 bQM
 bQM
@@ -84476,7 +84493,7 @@ mxQ
 iyf
 bzO
 bzO
-bzO
+hMK
 bQM
 bQM
 bQM

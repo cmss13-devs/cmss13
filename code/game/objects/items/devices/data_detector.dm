@@ -38,18 +38,18 @@
 
 	var/detected_sound = FALSE
 
-	for(var/obj/I in orange(detector_range, loc))
+	for(var/obj/current_object in orange(detector_range, loc))
 		var/detected
 		for(var/DT in objects_to_detect)
-			if(istype(I, DT))
+			if(istype(current_object, DT))
 				detected = TRUE
-			if(I.contents)
-				for(var/obj/item/CI in I.contents)
+			if(current_object.contents)
+				for(var/obj/item/CI in current_object.contents)
 					if(istype(CI, DT))
 						detected = TRUE
 						break
 			if(human_user && detected)
-				show_blip(human_user, I)
+				show_blip(human_user, current_object)
 			if(detected)
 				break
 
@@ -58,24 +58,24 @@
 
 		CHECK_TICK
 
-	for(var/mob/M in orange(detector_range, loc))
+	for(var/mob/current_mob in orange(detector_range, loc))
 		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
-		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
+		if(loc == null || current_mob == null) continue
+		if(loc.z != current_mob.z) continue
+		if(current_mob == loc) continue //device user isn't detected
+		if((isxeno(current_mob) || isyautja(current_mob)) && current_mob.stat == DEAD )
 			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
-			for(var/obj/I in M.contents_twice())
+		else if(ishuman(current_mob) && current_mob.stat == DEAD && current_mob.contents.len)
+			for(var/obj/current_object in current_mob.contents_twice())
 				for(var/DT in objects_to_detect)
-					if(istype(I, DT))
+					if(istype(current_object, DT))
 						detected = TRUE
 						break
 				if(detected)
 					break
 
 		if(human_user && detected)
-			show_blip(human_user, M)
+			show_blip(human_user, current_mob)
 			if(detected)
 				detected_sound = TRUE
 

@@ -120,8 +120,8 @@
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = getline2(user, targeted_atom, include_from_atom = FALSE)
-			for(var/turf/T in path)
-				if(T.opacity)
+			for(var/turf/current_turf in path)
+				if(current_turf.opacity)
 					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
 					return FALSE
 		acquire_target(targeted_atom, user)
@@ -147,11 +147,11 @@
 	if(user.skills)
 		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
-	var/datum/squad/S = user.assigned_squad
+	var/datum/squad/current_squad = user.assigned_squad
 
 	var/las_name = ""
-	if(S)
-		las_name = S.name
+	if(current_squad)
+		las_name = current_squad.name
 
 	// Safety check - prevent targeting items in containers (notably your equipment/inventory)
 	if(targeted_atom.z == 0)
@@ -285,11 +285,11 @@
 	if(user.skills)
 		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
-	var/datum/squad/S = user.assigned_squad
+	var/datum/squad/current_squad = user.assigned_squad
 
 	var/las_name
-	if(S)
-		las_name = S.name
+	if(current_squad)
+		las_name = current_squad.name
 	else
 		las_name = "X"
 	las_name = las_name + "-[tracking_id]"
@@ -332,7 +332,7 @@
 				QDEL_NULL(coord)
 				break
 	else
-		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
+		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'current_turf MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
 
@@ -447,10 +447,10 @@
 
 	designator.is_spotting = TRUE
 	designator.update_icon()
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
-	I.pixel_x = -target.pixel_x + target.base_pixel_x
-	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
-	target.overlays += I
+	var/image/current_image = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
+	current_image.pixel_x = -target.pixel_x + target.base_pixel_x
+	current_image.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+	target.overlays += current_image
 	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 	if(human.client)
 		playsound_client(human.client, 'sound/effects/nightvision.ogg', human, 50)
@@ -467,13 +467,13 @@
 	//timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out. blame sleeps or something
 
 	if(!do_after(human, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
-		target.overlays -= I
+		target.overlays -= current_image
 		designator.is_spotting = FALSE
 		designator.update_icon()
 		qdel(laser_beam)
 		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 		return
-	target.overlays -= I
+	target.overlays -= current_image
 	designator.is_spotting = FALSE
 	designator.update_icon()
 	qdel(laser_beam)
@@ -593,7 +593,7 @@
 		return FALSE
 
 	var/turf/SS = get_turf(src) //Stand Still, not what you're thinking.
-	var/turf/T = get_turf(targeted_atom)
+	var/turf/current_turf = get_turf(targeted_atom)
 
 	if(!las_mode)
 		to_chat(user, SPAN_WARNING("The Laser Designator is currently off!"))
@@ -604,8 +604,8 @@
 		return 0
 
 	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
-	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
-	var/obj/effect/las_target/lasertarget = new(T.loc)
+	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([current_turf.x],[current_turf.y],[current_turf.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[current_turf.x];Y=[current_turf.y];Z=[current_turf.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
+	var/obj/effect/las_target/lasertarget = new(current_turf.loc)
 	if(las_mode == 1 && !las_r) // Heres our IR bomb code.
 		lasing = TRUE
 		lasertarget.icon_state = "las_r"
@@ -623,10 +623,10 @@
 			offset_x = 4
 		if(plane_toggle)
 			offset_y = 4
-		var/turf/target = locate(T.x + offset_x,T.y + offset_y,T.z) //Three napalm rockets are launched
-		var/turf/target_2 = locate(T.x,T.y,T.z)
-		var/turf/target_3 = locate(T.x - offset_x,T.y - offset_y,T.z)
-		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
+		var/turf/target = locate(current_turf.x + offset_x,current_turf.y + offset_y,current_turf.z) //Three napalm rockets are launched
+		var/turf/target_2 = locate(current_turf.x,current_turf.y,current_turf.z)
+		var/turf/target_3 = locate(current_turf.x - offset_x,current_turf.y - offset_y,current_turf.z)
+		var/turf/target_4 = locate(current_turf.x - (offset_x*2),current_turf.y - (offset_y*2),current_turf.z)
 		sleep(50) //AWW YEAH
 		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
 		flame_radius(cause_data, 3, target, , , , , )
@@ -662,9 +662,9 @@
 		else
 			con_power = 3
 			HE_power = 3
-		var/turf/target = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
-		var/turf/target_2 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
-		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
+		var/turf/target = locate(current_turf.x + rand(-2,2),current_turf.y + rand(-2,2),current_turf.z)
+		var/turf/target_2 = locate(current_turf.x + rand(-2,2),current_turf.y + rand(-2,2),current_turf.z)
+		var/turf/target_3 = locate(current_turf.x + rand(-2,2),current_turf.y + rand(-2,2),current_turf.z)
 		if(target && istype(target))
 			qdel(lasertarget)
 			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)

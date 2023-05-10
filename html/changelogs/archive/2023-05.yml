@@ -185,3 +185,16 @@
       as the throwing strength, when examining a weapon.
   harryob:
   - bugfix: fixes fultons
+2023-05-10:
+  Drathek:
+  - ui: Fixed xeno hide icon not resetting after a pounce
+  Molto:
+  - rscadd: Re-added the old riot armor on the Almayer
+  Segrain:
+  - bugfix: Chemical Investigation Goons should now properly be shown their actual
+      objective.
+  Tisx:
+  - imageadd: Added weapon case sprites to PFC vendors
+  - imagedel: Removed old PFC kit sprites from PFC vendors
+  morrowwolf:
+  - config: Extra larva per burst config option

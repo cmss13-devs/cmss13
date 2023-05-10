@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - ui: "Fixed xeno hide icon not resetting after a pounce"

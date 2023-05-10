@@ -475,7 +475,7 @@
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET) //don't remove shrap by yourself, go to android maintenance or have ARES call a human handler!
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
@@ -502,22 +502,12 @@
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
-/datum/equipment_preset/synth/working_joe/New()
-	. = ..()
-	access = get_all_accesses()
-
-/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_WORKING_JOE)
-
-/datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/H)
-	return
-
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/H)
 	var/choice = rand(1,10)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow,(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/joe(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/inflatable/door(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/inflatable/door(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_BACK)

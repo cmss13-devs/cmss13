@@ -848,13 +848,13 @@
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
-	desc = "A cheap uniform made for Synthetic labor."
+	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
 	icon_state = "working_joe"
 	worn_state = "working_joe"
 
 /obj/item/clothing/under/rank/synthetic/joe/engi
 	name = "\improper Working Joe Hazardous Uniform"
-	desc = "A reinforced uniform used for Synthetic labor in hazardous areas."
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Tomorrow, Together."
 	icon_state = "working_joe_engi"
 	worn_state = "working_joe_engi"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -867,7 +867,7 @@
 
 /obj/item/clothing/under/rank/synthetic/joe/engi/overalls
 	name = "\improper Working Joe Hazardous Uniform"
-	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Comes with an additional layer for liquid hazards."
+	desc = "A reinforced uniform used for Synthetic labor in hazardous areas. Comes with an additional layer for liquid hazards. Tomorrow, Together."
 	icon_state = "working_joe_overalls"
 	worn_state = "working_joe_overalls"
 	armor_melee = CLOTHING_ARMOR_LOW

@@ -127,7 +127,7 @@
 		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 
-		M.show_message( \
+		mob.show_message( \
 			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)

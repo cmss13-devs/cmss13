@@ -19,7 +19,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
-	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/reagent_container/hypospray/autoinjector, /obj/item/tool/surgery/scalpel)
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/clfpistol, /obj/item/tool/screwdriver, /obj/item/tool/surgery/scalpel)
 	var/knife_type
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)

@@ -626,7 +626,8 @@
 	},
 /obj/structure/holohoop{
 	dir = 4;
-	id = "basketball"
+	id = "basketball";
+	side = "left"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
@@ -686,7 +687,8 @@
 	},
 /obj/structure/holohoop{
 	dir = 8;
-	id = "basketball"
+	id = "basketball";
+	side = "right"
 	},
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16

@@ -20,6 +20,10 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/warden
+	name = "Plant Weeds (150)"
+	plasma_cost = 150
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"

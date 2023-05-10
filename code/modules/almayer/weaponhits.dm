@@ -2,6 +2,10 @@
 #define WEAPON_RAILGUN 2
 #define WEAPON_ODC 3
 #define WEAPON_AABOILER 4
+#define WEAPON_MISSILE_DAMAGE 20
+#define WEAPON_RAILGUN_DAMAGE 2
+#define WEAPON_ODC_DAMAGE 10
+#define WEAPON_AABOILER_DAMAGE 20
 #define HIT_CHANCE_CHEAT 100
 #define HIT_CHANCE_STANDARD 70
 /**
@@ -30,7 +34,7 @@
 					var/shotspacing
 					for(var/turf/picked_atom in location)
 						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
-						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 10
+						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_MISSILE_DAMAGE
 						shotspacing += 1
 						shakeship(10, 10, TRUE, FALSE)
 						GLOB.ship_hits_tally["times_hit_missile"] += 1
@@ -38,7 +42,7 @@
 					weaponhits_effects(WEAPON_MISSILE)
 				else
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data)
-					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 10
+					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_MISSILE_DAMAGE
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_MISSILE)
 					GLOB.ship_hits_tally["times_hit_missile"] += 1
@@ -51,7 +55,7 @@
 					for(var/turf/picked_atom in location)
 						if(prob(hitchance))
 							addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, ashm_cause_data), shotspacing SECONDS)
-							GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 10
+							GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_MISSILE_DAMAGE
 							shakeship(10, 10, TRUE, FALSE)
 							confirmedhit += 1
 							logtotalhits += 1
@@ -84,7 +88,7 @@
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
 						cell_explosion(picked_atom, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
-						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 2
+						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_RAILGUN_DAMAGE
 						shakeship(5, 5, FALSE, FALSE)
 						confirmedhit += 1
 						logtotalhits += 1
@@ -97,7 +101,7 @@
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 600, 600, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, antishiprailgun_cause_data)
-					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 2
+					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_RAILGUN_DAMAGE
 					shakeship(5, 5, FALSE, FALSE)
 					weaponhits_effects(WEAPON_RAILGUN)
 					GLOB.ship_hits_tally["times_hit_railgun"] += 1
@@ -115,7 +119,7 @@
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
 						cell_explosion(picked_atom, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
-						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 10
+						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_ODC_DAMAGE
 						shakeship(10, 10, TRUE, FALSE)
 						confirmedhit += 1
 						logtotalhits += 1
@@ -128,7 +132,7 @@
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 850, 6, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, orbitaldefensecannon_cause_data)
-					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 10
+					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_ODC_DAMAGE
 					shakeship(10, 10, TRUE, FALSE)
 					weaponhits_effects(WEAPON_ODC)
 					GLOB.ship_hits_tally["times_hit_odc"] += 1
@@ -146,7 +150,7 @@
 				for(var/turf/picked_atom in location)
 					if(prob(hitchance))
 						cell_explosion(picked_atom, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
-						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 20
+						GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_AABOILER_DAMAGE
 						shakeship(10, 10, FALSE, FALSE)
 						confirmedhit += 1
 						logtotalhits += 1
@@ -159,7 +163,7 @@
 			else if(salvo == FALSE)
 				if(prob(hitchance))
 					cell_explosion(location, 700, 9, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, aaboiler_cause_data)
-					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - 20
+					GLOB.ship_health_vars["ship_hull_health"] = GLOB.ship_health_vars["ship_hull_health"] - WEAPON_AABOILER_DAMAGE
 					shakeship(10, 10, FALSE, FALSE)
 					weaponhits_effects(WEAPON_AABOILER)
 					GLOB.ship_hits_tally["times_hit_aaboiler"] += 1
@@ -234,6 +238,10 @@
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), current_mob.client, 'sound/effects/railgun_miss.ogg', 60), shotspacing SECONDS)
 					addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), current_mob.client, SPAN_DANGER("You hear a vile mass barely missing the hull!")), shotspacing SECONDS)
 
+#undef WEAPON_MISSILE_DAMAGE
+#undef WEAPON_RAILGUN_DAMAGE
+#undef WEAPON_ODC_DAMAGE
+#undef WEAPON_AABOILER_DAMAGE
 //REMOVE THIS WHEN WE USE THESE DEFS SOMEWHERE ELSE OR ELSE IT STRAIGHT UP WON'T WORK.
 #undef WEAPON_MISSILE
 #undef WEAPON_RAILGUN

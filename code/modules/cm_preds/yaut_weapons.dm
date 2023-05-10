@@ -257,6 +257,7 @@
 		return FALSE
 	charged = FALSE
 	remove_filter("combistick_charge")
+	unwield(user) //Otherwise stays wielded even when thrown
 	return TRUE
 
 

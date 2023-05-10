@@ -3,6 +3,7 @@
 /////////////////////////////////////////////
 /obj/effect/particle_effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
+	icon_state = ""
 	opacity = FALSE
 	time_to_live = 300
 	anchored = TRUE
@@ -150,7 +151,7 @@
 	var/color = mix_color_from_reagents(chemholder.reagents.reagent_list)
 	var/icon/I
 	if(color)
-		I = icon('icons/effects/chemsmoke.dmi')
+		I = icon('icons/effects/chemsmoke.dmi', "smoke")
 		I += color
 	else
 		I = icon('icons/effects/96x96.dmi', "smoke")

@@ -3,7 +3,7 @@
 	anchored = FALSE
 	name = "AI core"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "0"
+	icon_state = "hydra-off"
 	var/state = 0
 	var/obj/item/circuitboard/aicore/circuit = null
 	var/obj/item/device/mmi/brain = null
@@ -151,7 +151,7 @@
 /obj/structure/AIcore/deactivated
 	name = "Inactive AI"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
-	icon_state = "ai-empty"
+	icon_state = "hydra-off"
 	anchored = TRUE
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 

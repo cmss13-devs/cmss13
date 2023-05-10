@@ -1,0 +1,5 @@
+author: "Tisx"
+delete-after: True
+changes:
+  - imageadd: "Added weapon case sprites to PFC vendors"
+  - imagedel: "Removed old PFC kit sprites from PFC vendors"

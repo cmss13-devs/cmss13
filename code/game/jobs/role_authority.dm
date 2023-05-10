@@ -470,9 +470,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				else
 					to_chat(user, "There are no [current_job.title] slots occupied in [sq.name] Squad.")
 					return
-			if(JOB_SQUAD_RTO)
-				if(sq.num_rto > 0)
-					sq.num_rto--
+			if(JOB_SQUAD_TEAM_LEADER)
+				if(sq.num_tl > 0)
+					sq.num_tl--
 				else
 					to_chat(user, "There are no [current_job.title] slots occupied in [sq.name] Squad.")
 					return
@@ -714,17 +714,17 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 						else if(current_squad.num_specialists < lowest.num_specialists)
 							lowest = current_squad
 
-			if(JOB_SQUAD_RTO)
+			if(JOB_SQUAD_TEAM_LEADER)
 				for(var/datum/squad/current_squad in mixed_squads)
 					if(current_squad.usable && current_squad.roundstart)
-						if(!skip_limit && current_squad.num_rto >= current_squad.max_rto) continue
+						if(!skip_limit && current_squad.num_tl >= current_squad.max_tl) continue
 						if(pref_squad_name && current_squad.name == pref_squad_name)
 							current_squad.put_marine_in_squad(current_human) //fav squad has a spot for us.
 							return
 
 						if(!lowest)
 							lowest = current_squad
-						else if(current_squad.num_rto < lowest.num_rto)
+						else if(current_squad.num_tl < lowest.num_tl)
 							lowest = current_squad
 
 			if(JOB_SQUAD_SMARTGUN)
@@ -856,7 +856,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(JOB_SQUAD_SMARTGUN)
 			if(new_squad.num_smartgun >= new_squad.max_smartgun)
 				return TRUE
-		if(JOB_SQUAD_RTO)
-			if(new_squad.num_rto >= new_squad.max_rto)
+		if(JOB_SQUAD_TEAM_LEADER)
+			if(new_squad.num_tl >= new_squad.max_tl)
 				return TRUE
 	return FALSE

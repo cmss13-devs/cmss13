@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/structures/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door_closed"
 	power_channel = POWER_CHANNEL_ENVIRON
 

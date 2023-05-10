@@ -40,6 +40,14 @@
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
+	if(status == EGG_BURST || status == EGG_DESTROYED)
+		M.animation_attack_on(src)
+		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
+		SPAN_XENONOTICE("You clear the hatched egg."))
+		playsound(src.loc, "alien_resin_break", 25)
+		qdel(src)
+		return XENO_NONCOMBAT_ACTION
+
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
@@ -51,13 +59,6 @@
 		return attack_hand(M)
 
 	switch(status)
-		if(EGG_BURST, EGG_DESTROYED)
-			M.animation_attack_on(src)
-			M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
-			SPAN_XENONOTICE("You clear the hatched egg."))
-			playsound(src.loc, "alien_resin_break", 25)
-			qdel(src)
-			return XENO_NONCOMBAT_ACTION
 		if(EGG_GROWING)
 			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
 			return XENO_NO_DELAY_ACTION

@@ -638,10 +638,10 @@
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 		else
 			for(var/entry in conflicted.classic_keys)
-				key_bindings[entry] -= conflicted.name
+				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 

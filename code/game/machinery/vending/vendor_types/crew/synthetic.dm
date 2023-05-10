@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Satchel, USCM", 12, /obj/item/storage/backpack/marine/satchel, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Leather", 12, /obj/item/storage/backpack/satchel, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
-	list("USCM Mini-RTO Pack", 12, /obj/item/storage/backpack/marine/satchel/rto/small,null, VENDOR_ITEM_REGULAR),
+	list("USCM RTO Pack", 12, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
 	list("USCM Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR),
 	list("USCM Weldersatchel", 12, /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
 ))

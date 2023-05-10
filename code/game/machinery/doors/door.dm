@@ -2,7 +2,7 @@
 /obj/structure/machinery/door
 	name = "\improper Door"
 	desc = "It opens and closes."
-	icon = 'icons/obj/structures/doors/door1.dmi'
+	icon = 'icons/obj/structures/doors/Door1.dmi'
 	icon_state = "door1"
 	anchored = TRUE
 	opacity = TRUE

@@ -33,7 +33,7 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
-	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
+	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
@@ -257,7 +257,7 @@
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
 		var/list/lzs = comp.get_landing_zones()
 		if(!length(lzs))
-			warning("Auto shuttle launch set for ert [name] but no lzs allowed.")
+			message_admins("Auto shuttle launch set for ert [name] but no lzs allowed.")
 			return
 
 		var/list/active_lzs = list()
@@ -267,9 +267,13 @@
 			if(!(dock.z in z_levels))
 				continue
 			// filter for free lzs
-			if(shuttle.canDock(dock) != DOCKING_SUCCESS)
+			if(shuttle.canDock(dock) != SHUTTLE_CAN_DOCK)
 				continue
 			active_lzs += list(dock)
+
+		if(!length(active_lzs))
+			message_admins("Auto shuttle launch set for ert [name] but no lzs available.")
+			return
 
 		SSshuttle.moveShuttleToDock(shuttle, pick(active_lzs), TRUE)
 

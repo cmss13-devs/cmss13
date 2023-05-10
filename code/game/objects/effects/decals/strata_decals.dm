@@ -24,34 +24,10 @@
 /obj/effect/decal/strata_decals/rocks/ice/ice1
 	icon_state = "icerock"
 
-/obj/effect/decal/strata_decals/rocks/snowy1
-	icon_state = "snowy1"
-
-/obj/effect/decal/strata_decals/rocks/snowy2
-	icon_state = "snowy2"
-
-/obj/effect/decal/strata_decals/rocks/snowy3
-	icon_state = "snowy3"
-
-/obj/effect/decal/strata_decals/rocks/snowy4
-	icon_state = "snowy4"
-
 /obj/effect/decal/strata_decals/grasses
-	icon_state = ""
+	icon_state = "tufts"
 	name = "some foliage"
 	desc = "A few brave tufts of snow grass."
-
-/obj/effect/decal/strata_decals/grasses/tufts1
-	icon_state = "tufts1"
-
-/obj/effect/decal/strata_decals/grasses/tufts2
-	icon_state = "tufts2"
-
-/obj/effect/decal/strata_decals/grasses/tufts3
-	icon_state = "tufts3"
-
-/obj/effect/decal/strata_decals/grasses/tufts4
-	icon_state = "tufts4"
 
 ////////////////INDOORS STUFF////////////////////
 

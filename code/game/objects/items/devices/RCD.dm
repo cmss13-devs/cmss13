@@ -122,8 +122,8 @@ RCD
 					if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(!useResource(10, user)) return 0
 						activate()
-						var/obj/structure/machinery/door/airlock/T = new /obj/structure/machinery/door/airlock( A )
-						T.autoclose = 1
+						var/obj/structure/machinery/door/airlock/airlock = new /obj/structure/machinery/door/airlock( A )
+						airlock.autoclose = 1
 						return 1
 					return 0
 				return 0

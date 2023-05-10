@@ -99,9 +99,9 @@
 	if(client)
 		return null
 
-	for(var/mob/dead/observer/G in GLOB.observer_list)
-		if(G.mind && G.mind.original == src)
-			var/mob/dead/observer/ghost = G
+	for(var/mob/dead/observer/ghost in GLOB.observer_list)
+		if(ghost.mind && ghost.mind.original == src)
+			var/mob/dead/observer/ghost = ghost
 			if(ghost && (!check_client || ghost.client) && (!check_can_reenter || ghost.can_reenter_corpse))
 				return ghost
 
@@ -161,11 +161,11 @@
 	if(!check_revive(H, user))
 		return
 
-	var/mob/dead/observer/G = H.get_ghost()
-	if(istype(G) && G.client)
-		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
-		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
-			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
+	var/mob/dead/observer/ghost = H.get_ghost()
+	if(istype(ghost) && ghost.client)
+		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
+			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
 		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))
@@ -218,11 +218,11 @@
 	H.updatehealth() //Needed for the check to register properly
 
 	if(!(H.species?.flags & NO_CHEM_METABOLIZATION))
-		for(var/datum/reagent/R in H.reagents.reagent_list)
-			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
-			if(P)
-				P.trigger(H)
-				H.reagents.remove_reagent(R.id, 1)
+		for(var/datum/reagent/chemical in H.reagents.reagent_list)
+			var/datum/chem_property/property = chemical.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
+			if(property)
+				property.trigger(H)
+				H.reagents.remove_reagent(chemical.id, 1)
 				break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))

@@ -38,8 +38,8 @@
 	return FALSE
 
 /obj/item/device/multitool/afterattack(atom/target, mob/user, flag)
-	for(var/obj/item/explosive/plastic/E in target.contents)
-		E.attackby(src, user)
+	for(var/obj/item/explosive/plastic/plastic_explosive in target.contents)
+		plastic_explosive.attackby(src, user)
 		return
 	. = ..()
 
@@ -50,8 +50,8 @@
 		return
 
 	next_scan = world.time + 15
-	var/area/A = get_area(src)
-	var/APC = A? A.get_apc() : null
+	var/area/current_area = get_area(src)
+	var/APC = current_area? current_area.get_apc() : null
 	if(APC)
 		to_chat(user, SPAN_NOTICE("The local APC is located at [SPAN_BOLD("[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")]."))
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")

@@ -132,9 +132,9 @@
 			if(!locationy || !(usr in view(1,src)))
 				return
 
-			var/turf/Z = get_turf(src)
+			var/turf/current_turf = get_turf(src)
 
-			location = locate(locationx,locationy,Z.z)
+			location = locate(locationx,locationy,current_turf.z)
 
 			to_chat(usr, "You set the pinpointer to locate [locationx],[locationy]")
 

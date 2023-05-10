@@ -19,14 +19,14 @@
 
 	if(!istype(A,/obj/structure/pipes/standard/) || istype(A,/obj/structure/pipes/standard/tank) || istype(A,/obj/structure/pipes/standard/simple/insulated) || !in_range(user, A))
 		return
-	var/obj/structure/pipes/standard/P = A
+	var/obj/structure/pipes/standard/pipe = A
 
-	var/turf/T = P.loc
-	if (P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)
+	var/turf/current_turf = pipe.loc
+	if (pipe.level < 2 && current_turf.level==1 && isturf(current_turf) && current_turf.intact_tile)
 		to_chat(user, SPAN_DANGER("You must remove the plating first."))
 		return
 
-	P.change_color(pipe_colors[mode])
+	pipe.change_color(pipe_colors[mode])
 
 /obj/item/device/pipe_painter/attack_self(mob/user)
 	..()

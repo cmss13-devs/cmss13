@@ -58,7 +58,7 @@
 	wrapped = null
 	//update_icon()
 
-/obj/item/device/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/device/gripper/attack(mob/living/carbon/current_mob as mob, mob/living/carbon/user as mob)
 	return
 
 /obj/item/device/gripper/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
@@ -93,40 +93,40 @@
 		if(!isturf(target.loc))
 			return
 
-		var/obj/item/I = target
+		var/obj/item/current_object = target
 
 		//Check if the item is blacklisted.
 		var/grab = 0
 		for(var/typepath in can_hold)
-			if(istype(I,typepath))
+			if(istype(current_object,typepath))
 				grab = 1
 				break
 
 		//We can grab the item, finally.
 		if(grab)
-			to_chat(user, "You collect \the [I].")
-			I.forceMove(src)
-			wrapped = I
+			to_chat(user, "You collect \the [current_object].")
+			current_object.forceMove(src)
+			wrapped = current_object
 			return
 		else
 			to_chat(user, SPAN_DANGER("Your gripper cannot hold \the [target]."))
 
 	else if(istype(target,/obj/structure/machinery/power/apc))
-		var/obj/structure/machinery/power/apc/A = target
-		if(A.opened)
-			if(A.cell)
+		var/obj/structure/machinery/power/apc/apc = target
+		if(apc.opened)
+			if(apc.cell)
 
-				wrapped = A.cell
+				wrapped = apc.cell
 
-				A.cell.add_fingerprint(user)
-				A.cell.update_icon()
-				A.cell.forceMove(src)
-				A.cell = null
+				apc.cell.add_fingerprint(user)
+				apc.cell.update_icon()
+				apc.cell.forceMove(src)
+				apc.cell = null
 
-				A.charging = 0
-				A.update_icon()
+				apc.charging = 0
+				apc.update_icon()
 
-				user.visible_message(SPAN_DANGER("[user] removes the power cell from [A]!"), "You remove the power cell.")
+				user.visible_message(SPAN_DANGER("[user] removes the power cell from [apc]!"), "You remove the power cell.")
 
 
 
@@ -148,7 +148,7 @@
 		"plastic" = 0
 		)
 
-/obj/item/device/matter_decompiler/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/device/matter_decompiler/attack(mob/living/carbon/current_mob as mob, mob/living/carbon/user as mob)
 	return
 
 /obj/item/device/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
@@ -156,42 +156,42 @@
 	if(!proximity) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
-	var/turf/T = get_turf(target)
-	if(!istype(T))
+	var/turf/current_turf = get_turf(target)
+	if(!istype(current_turf))
 		return
 
 	//Used to give the right message.
 	var/grabbed_something = 0
 
-	for(var/mob/M in T)
-		if(istype(M,/mob/living/simple_animal/lizard) || istype(M,/mob/living/simple_animal/mouse))
-			src.loc.visible_message(SPAN_DANGER("[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise."),SPAN_DANGER("It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises."))
+	for(var/mob/current_mob in current_turf)
+		if(istype(current_mob,/mob/living/simple_animal/lizard) || istype(current_mob,/mob/living/simple_animal/mouse))
+			src.loc.visible_message(SPAN_DANGER("[src.loc] sucks [current_mob] into its decompiler. There's a horrible crunching noise."),SPAN_DANGER("It's a bit of a struggle, but you manage to suck [current_mob] into your decompiler. It makes a series of visceral crunching noises."))
 			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-			qdel(M)
+			qdel(current_mob)
 			stored_comms["wood"]++
 			stored_comms["wood"]++
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
 			return
 
-		else if(ismaintdrone(M) && !M.client)
+		else if(ismaintdrone(current_mob) && !current_mob.client)
 
-			var/mob/living/silicon/robot/drone/D = src.loc
+			var/mob/living/silicon/robot/drone/drone = src.loc
 
-			if(!istype(D))
+			if(!istype(drone))
 				return
 
-			to_chat(D, SPAN_DANGER("You begin decompiling the other drone."))
+			to_chat(drone, SPAN_DANGER("You begin decompiling the other drone."))
 
-			if(!do_after(D, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-				to_chat(D, SPAN_DANGER("You need to remain still while decompiling such a large object."))
+			if(!do_after(drone, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+				to_chat(drone, SPAN_DANGER("You need to remain still while decompiling such a large object."))
 				return
 
-			if(!M || !D) return
+			if(!current_mob || !drone) return
 
-			to_chat(D, SPAN_DANGER("You carefully and thoroughly decompile your downed fellow, storing as much of its resources as you can within yourself."))
+			to_chat(drone, SPAN_DANGER("You carefully and thoroughly decompile your downed fellow, storing as much of its resources as you can within yourself."))
 
-			qdel(M)
+			qdel(current_mob)
 			new/obj/effect/decal/cleanable/blood/oil(get_turf(src))
 
 			stored_comms["metal"] += 15
@@ -203,66 +203,66 @@
 		else
 			continue
 
-	for(var/obj/W in T)
+	for(var/obj/current_obj in current_turf)
 		//Different classes of items give different commodities.
-		if (istype(W,/obj/item/trash/cigbutt))
+		if (istype(current_obj,/obj/item/trash/cigbutt))
 			stored_comms["plastic"]++
-		else if(istype(W,/obj/effect/spider/spiderling))
+		else if(istype(current_obj,/obj/effect/spider/spiderling))
 			stored_comms["wood"]++
 			stored_comms["wood"]++
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
-		else if(istype(W,/obj/item/light_bulb))
-			var/obj/item/light_bulb/L = W
-			if(L.status >= 2) //In before someone changes the inexplicably local defines. ~ Z
+		else if(istype(current_obj,/obj/item/light_bulb))
+			var/obj/item/light_bulb/bulb = current_obj
+			if(bulb.status >= 2) //In before someone changes the inexplicably local defines. ~ Z
 				stored_comms["metal"]++
 				stored_comms["glass"]++
 			else
 				continue
-		else if(istype(W,/obj/effect/decal/remains/robot))
+		else if(istype(current_obj,/obj/effect/decal/remains/robot))
 			stored_comms["metal"]++
 			stored_comms["metal"]++
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
 			stored_comms["glass"]++
-		else if(istype(W,/obj/item/trash))
+		else if(istype(current_obj,/obj/item/trash))
 			stored_comms["metal"]++
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
 			stored_comms["plastic"]++
-		else if(istype(W,/obj/effect/decal/cleanable/blood/gibs/robot))
+		else if(istype(current_obj,/obj/effect/decal/cleanable/blood/gibs/robot))
 			stored_comms["metal"]++
 			stored_comms["metal"]++
 			stored_comms["glass"]++
 			stored_comms["glass"]++
-		else if(istype(W,/obj/item/ammo_casing))
+		else if(istype(current_obj,/obj/item/ammo_casing))
 			stored_comms["metal"]++
-		else if(istype(W,/obj/item/shard/shrapnel))
+		else if(istype(current_obj,/obj/item/shard/shrapnel))
 			stored_comms["metal"]++
 			stored_comms["metal"]++
 			stored_comms["metal"]++
-		else if(istype(W,/obj/item/shard))
+		else if(istype(current_obj,/obj/item/shard))
 			stored_comms["glass"]++
 			stored_comms["glass"]++
 			stored_comms["glass"]++
-		else if(istype(W,/obj/item/reagent_container/food/snacks/grown))
+		else if(istype(current_obj,/obj/item/reagent_container/food/snacks/grown))
 			stored_comms["wood"]++
 			stored_comms["wood"]++
 			stored_comms["wood"]++
 			stored_comms["wood"]++
-		else if(istype(W,/obj/item/ammo_magazine))
-			var/obj/item/ammo_magazine/AM = W
+		else if(istype(current_obj,/obj/item/ammo_magazine))
+			var/obj/item/ammo_magazine/AM = current_obj
 			if(AM.current_rounds)
 				continue
 			stored_comms["metal"]++
 		else
 			continue
 
-		qdel(W)
+		qdel(current_obj)
 		grabbed_something = 1
 
 	if(grabbed_something)
-		to_chat(user, SPAN_NOTICE(" You deploy your decompiler and clear out the contents of \the [T]."))
+		to_chat(user, SPAN_NOTICE(" You deploy your decompiler and clear out the contents of \the [current_turf]."))
 	else
-		to_chat(user, SPAN_DANGER("Nothing on \the [T] is useful to you."))
+		to_chat(user, SPAN_DANGER("Nothing on \the [current_turf] is useful to you."))
 	return

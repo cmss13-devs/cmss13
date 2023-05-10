@@ -40,7 +40,7 @@
 	if(!ishuman(user))
 		return
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/current_mob = user
 
 	src.add_fingerprint(usr)
 
@@ -52,17 +52,17 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
-	var/obj/item/card/id/I = H.wear_id
-	if(!istype(I)) //not wearing an ID
-		to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+	var/obj/item/card/id/current_id = current_mob.wear_id
+	if(!istype(current_id)) //not wearing an ID
+		to_chat(current_mob, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
-	if(I.registered_name != H.real_name)
-		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+	if(current_id.registered_name != current_mob.real_name)
+		to_chat(current_mob, SPAN_WARNING("Wrong ID card owner detected."))
 		return
 
-	if(req_role && I.rank != req_role)
-		to_chat(H, SPAN_WARNING("This device isn't for you."))
+	if(req_role && current_id.rank != req_role)
+		to_chat(current_mob, SPAN_WARNING("This device isn't for you."))
 		return
 
 
@@ -127,53 +127,53 @@
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 
-			var/mob/living/carbon/human/H = usr
-			var/obj/item/card/id/I = H.wear_id
-			if(!istype(I)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+			var/mob/living/carbon/human/current_mob = usr
+			var/obj/item/card/id/current_id = current_mob.wear_id
+			if(!istype(current_id)) //not wearing an ID
+				to_chat(current_mob, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
-			if(I.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+			if(current_id.registered_name != current_mob.real_name)
+				to_chat(current_mob, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
-			if(req_role && I.rank != req_role)
-				to_chat(H, SPAN_WARNING("This device isn't for you."))
+			if(req_role && current_id.rank != req_role)
+				to_chat(current_mob, SPAN_WARNING("This device isn't for you."))
 				return
 
 			var/idx=text2num(href_list["vend"])
 
-			var/list/L = listed_products[idx]
-			var/cost = L[2]
+			var/list/products_list = listed_products[idx]
+			var/cost = products_list[2]
 
 			if(use_points && points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
+				to_chat(current_mob, SPAN_WARNING("Not enough points."))
 				return
 
 
-			var/turf/T = get_turf(loc)
-			if(length(T.contents) > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+			var/turf/current_turf = get_turf(loc)
+			if(length(current_turf.contents) > 25)
+				to_chat(current_mob, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
 			if(special_prod_time_lock)
-				if(L[3] in special_prods)
+				if(products_list[3] in special_prods)
 					if(world.time < SSticker.mode.round_time_lobby + special_prod_time_lock)
-						to_chat(usr, SPAN_WARNING("\The [src] is still fabricating \the [L[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+						to_chat(usr, SPAN_WARNING("\The [src] is still fabricating \the [products_list[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
 						return
 
 			if(use_points)
 				points -= cost
 
-			purchase_log += "[key_name(usr)] bought [L[1]]."
+			purchase_log += "[key_name(usr)] bought [products_list[1]]."
 
 			playsound(src, "sound/machines/fax.ogg", 5)
 			fabricating = 1
 			update_overlays()
 			spawn(30)
-				var/type_p = L[3]
+				var/type_p = products_list[3]
 				var/obj/IT = new type_p(get_turf(src))
-				H.put_in_any_hand_if_possible(IT)
+				current_mob.put_in_any_hand_if_possible(IT)
 				fabricating = 0
 				update_overlays()
 
@@ -206,8 +206,8 @@
 
 
 /obj/item/device/portable_vendor/proc/malfunction()
-	var/turf/T = get_turf(src)
-	T.visible_message(SPAN_WARNING("[src] shudders as its internal components break apart!"))
+	var/turf/current_turf = get_turf(src)
+	current_turf.visible_message(SPAN_WARNING("[src] shudders as its internal components break apart!"))
 	broken = 1
 	STOP_PROCESSING(SSobj, src)
 	update_overlays()

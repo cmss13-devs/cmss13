@@ -37,19 +37,19 @@
 		update_icon()
 
 	else if(isassembly(item))
-		var/obj/item/device/assembly/A = item
-		if(A.secured)
+		var/obj/item/device/assembly/assembly = item
+		if(assembly.secured)
 			to_chat(user, SPAN_NOTICE("The device is secured."))
 			return
 		if(attached_device)
 			to_chat(user, SPAN_WARNING("There is already an device attached to the valve, remove it first."))
 			return
-		user.temp_drop_inv_item(A)
-		attached_device = A
-		A.forceMove(src)
+		user.temp_drop_inv_item(assembly)
+		attached_device = assembly
+		assembly.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You attach the [item] to the valve controls and secure it."))
-		A.holder = src
-		A.toggle_secure() //this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
+		assembly.holder = src
+		assembly.toggle_secure() //this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 
 		attacher = user
 
@@ -70,9 +70,9 @@
 	if(tank_one)
 		overlays += "[tank_one.icon_state]"
 	if(tank_two)
-		var/icon/J = new(icon, icon_state = "[tank_two.icon_state]")
-		J.Shift(WEST, 13)
-		underlays += J
+		var/icon/new_icon = new(icon, icon_state = "[tank_two.icon_state]")
+		new_icon.Shift(WEST, 13)
+		underlays += new_icon
 	if(attached_device)
 		overlays += "device"
 

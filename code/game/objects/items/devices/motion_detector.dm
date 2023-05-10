@@ -186,11 +186,11 @@
 /obj/item/device/motiondetector/sg
 
 /obj/item/device/motiondetector/sg/get_user()
-	var/atom/A = loc
-	if(ishuman(A.loc))
-		return A.loc
+	var/atom/current_atom = loc
+	if(ishuman(current_atom.loc))
+		return current_atom.loc
 
-/obj/item/device/motiondetector/proc/apply_debuff(mob/M)
+/obj/item/device/motiondetector/proc/apply_debuff(mob/current_mob)
 	return
 
 /obj/item/device/motiondetector/proc/scan()
@@ -215,24 +215,24 @@
 
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
-	for(var/A in ping_candidates)
-		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc) continue //device user isn't detected
-		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(isrobot(M)) continue
-		if(M.get_target_lock(iff_signal))
+	for(var/current_ping in ping_candidates)
+		var/mob/living/current_mob = current_ping //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
+		if(current_mob == loc) continue //device user isn't detected
+		if(world.time > current_mob.l_move_time + 20) continue //hasn't moved recently
+		if(isrobot(current_mob)) continue
+		if(current_mob.get_target_lock(iff_signal))
 			continue
 
-		apply_debuff(M)
+		apply_debuff(current_mob)
 		ping_count++
 		if(human_user)
-			show_blip(human_user, M)
+			show_blip(human_user, current_mob)
 
-	for(var/mob/hologram/queen/Q in GLOB.hologram_list)
-		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
+	for(var/mob/hologram/queen/queen_eye in GLOB.hologram_list)
+		if(queen_eye.z != cur_turf.z || !(range_bounds.contains_atom(queen_eye))) continue
 		ping_count++
 		if(human_user)
-			show_blip(human_user, Q, "queen_eye")
+			show_blip(human_user, queen_eye, "queen_eye")
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)

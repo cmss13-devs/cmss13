@@ -970,7 +970,7 @@
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
-	icon_state = "head"
+	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 /obj/item/clothing/accessory/limb/skeleton/l_arm

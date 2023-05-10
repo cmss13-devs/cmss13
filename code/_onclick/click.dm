@@ -88,9 +88,15 @@
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
 	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
+		//if we're past the throw delay just throw, add the new delay time, and reset the buffer
 		if(throw_delay < world.time)
 			throw_item(A)
 			throw_delay = world.time + THROW_DELAY
+			throw_buffer = 0
+		//if we're still in the throw delay we check if the buffer is already used, if not then we throw the item and set the buffer as used
+		else if(!throw_buffer)
+			throw_item(A)
+			throw_buffer++
 		return
 
 	// Last thing clicked is tracked for something somewhere.

@@ -73,7 +73,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!T.supports_surgery)
+		if(!istype(T) || !T.supports_surgery)
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE

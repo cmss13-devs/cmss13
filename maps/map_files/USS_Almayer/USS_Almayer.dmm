@@ -625,7 +625,9 @@
 	dir = 8
 	},
 /obj/structure/holohoop{
-	dir = 4
+	dir = 4;
+	id = "basketball";
+	side = "left"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
@@ -684,7 +686,9 @@
 	pixel_y = -16
 	},
 /obj/structure/holohoop{
-	dir = 8
+	dir = 8;
+	id = "basketball";
+	side = "right"
 	},
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -47570,6 +47574,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "lwJ" = (
@@ -56253,6 +56260,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"pHG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "bluecorner"
+	},
+/area/almayer/living/basketball)
 "pIf" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -65273,6 +65289,16 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig/processing)
+"tRD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
+/area/almayer/living/basketball)
 "tRV" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -75407,8 +75433,8 @@
 /area/almayer/shipboard/brig/main_office)
 "ylc" = (
 /obj/structure/disposalpipe/down/almayer{
-	id = "almayerlink_med_req";
-	dir = 2
+	dir = 2;
+	id = "almayerlink_med_req"
 	},
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
@@ -106758,7 +106784,7 @@ acl
 qqn
 aef
 aef
-aGS
+tRD
 abE
 aTL
 ajt
@@ -107570,7 +107596,7 @@ acl
 qqn
 aef
 aef
-kqN
+pHG
 abE
 aTL
 aii

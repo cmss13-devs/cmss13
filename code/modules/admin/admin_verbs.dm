@@ -201,7 +201,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
 	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
 	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for today*/
-	/datum/admins/proc/view_attack_log, /*shows the server attack log for today*/
 	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for today*/
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for today*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for today*/

@@ -273,6 +273,9 @@
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
 
+/proc/log_topic(text)
+	WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
+
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
 

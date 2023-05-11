@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed xeno toggle_long_range ability from being used when observing a xeno or mark"

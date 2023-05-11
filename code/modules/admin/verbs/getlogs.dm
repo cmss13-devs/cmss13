@@ -77,10 +77,10 @@
 
 //Other log stuff put here for the sake of organisation
 
-//Shows today's server log
+/**Shows this round's server log*/
 /datum/admins/proc/view_game_log()
 	set name = "Show Server Game Log"
-	set desc = "Shows today's server game log."
+	set desc = "Shows this round's server game log."
 	set category = "Server"
 
 	if(!check_rights(R_MOD|R_DEBUG))
@@ -98,10 +98,10 @@
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	src << run(file(path))
 
-//Shows today's attack log
+/**Shows this round's attack log*/
 /datum/admins/proc/view_attack_log()
 	set name = "Show Server Attack Log"
-	set desc = "Shows today's server attack log."
+	set desc = "Shows this round's server attack log."
 	set category = "Server"
 
 	if(!check_rights(R_MOD))
@@ -119,10 +119,10 @@
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	src << run(file(path))
 
-//Shows today's runtime log
+/**Shows this round's runtime log*/
 /datum/admins/proc/view_runtime_log()
 	set name = "Show Server Runtime Log"
-	set desc = "Shows today's server runtime log."
+	set desc = "Shows this round's server runtime log."
 	set category = "Server"
 
 	if(!check_rights(R_DEBUG))
@@ -140,10 +140,10 @@
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	src << run(file(path))
 
-//Shows today's href log
+/**Shows this round's href log*/
 /datum/admins/proc/view_href_log()
 	set name = "Show Server HREF Log"
-	set desc = "Shows today's server HREF log."
+	set desc = "Shows this round's server HREF log."
 	set category = "Server"
 
 	if(!check_rights(R_DEBUG))
@@ -161,10 +161,10 @@
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	src << run(file(path))
 
-//Shows today's tgui log
+/**Shows this round's tgui log*/
 /datum/admins/proc/view_tgui_log()
 	set name = "Show Server TGUI Log"
-	set desc = "Shows today's server TGUI log."
+	set desc = "Shows this round's server TGUI log."
 	set category = "Server"
 
 	if(!check_rights(R_DEBUG))

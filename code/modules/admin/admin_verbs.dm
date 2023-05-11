@@ -71,8 +71,8 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
 	/datum/admins/proc/announce, /*priority announce something to all clients.*/
-	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for today*/
-	/datum/admins/proc/view_attack_log, /*shows the server attack log for today*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_attack_log, /*shows the server attack log for this round*/
 	/client/proc/giveruntimelog, /*allows us to give access to all runtime logs to somebody*/
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/toggleprayers, /*toggles prayers on/off*/
@@ -200,10 +200,10 @@ var/list/admin_verbs_debug = list(
 	/client/proc/purge_data_tab,
 	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
 	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
-	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for today*/
-	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for today*/
-	/datum/admins/proc/view_href_log, /*shows the server HREF log for today*/
-	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for today*/
+	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
+	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
+	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
+	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
 )
 
 var/list/admin_verbs_debug_advanced = list(

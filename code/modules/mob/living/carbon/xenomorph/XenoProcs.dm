@@ -629,7 +629,7 @@
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
-	if (!.)
+	if (!. || (M.status_flags & XENO_HOST))
 		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)

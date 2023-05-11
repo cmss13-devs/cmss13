@@ -153,3 +153,60 @@
   - balance: Allows preds to use medicomp surgery with their armour on
   harryob:
   - bugfix: resolves a runtime around keybind conflict code
+2023-05-08:
+  Drathek:
+  - bugfix: Fixed burrowers being able to tail stab when burrowed
+  FreetoZ:
+  - rscadd: Added functionality for faxing photos and paper bundles
+  - bugfix: Fixed examine text for fax machines
+  - bugfix: Fixed examine text for paper
+  Hopek:
+  - rscadd: Medics can now just purchase the EZ Autoinjectors so they don't have to
+      go through 12+ injector pouches to take them out specifically.
+  IowaPotatoFarmer:
+  - maptweak: Switched the outdated CLF ship airlocks to new generic ones.
+  - rscadd: The CLF crashed ship insert on LV-624 now has one guaranteed medic and
+      one guaranteed engineer.
+  - bugfix: The CLF crash intro text no longer includes inaccurate info about the
+      sentries.
+  NewyearnewmeUwu:
+  - bugfix: fixed yautja loudroars displaying nothing
+  Waseemq1235:
+  - spellcheck: Fixes some repetitive words when getting shelled or CASd
+  harryob:
+  - bugfix: fixes the tacmap
+  sleepynecrons:
+  - imagedel: random white pixel on the peace and love flair was removed
+2023-05-09:
+  Drathek:
+  - rscdel: Removed some toilet code and reduced flush spam
+  JackieEstegado:
+  - bugfix: Fixed an edge case that caused the melee strength's value to be shown
+      as the throwing strength, when examining a weapon.
+  harryob:
+  - bugfix: fixes fultons
+2023-05-10:
+  Drathek:
+  - ui: Fixed xeno hide icon not resetting after a pounce
+  Molto:
+  - rscadd: Re-added the old riot armor on the Almayer
+  Segrain:
+  - bugfix: Chemical Investigation Goons should now properly be shown their actual
+      objective.
+  Tisx:
+  - imageadd: Added weapon case sprites to PFC vendors
+  - imagedel: Removed old PFC kit sprites from PFC vendors
+  morrowwolf:
+  - config: Extra larva per burst config option
+2023-05-11:
+  BeagleGaming1:
+  - bugfix: Fixes a tape recorder runtime
+  Drathek:
+  - bugfix: Fixed xeno toggle_long_range ability from being used when observing a
+      xeno or mark
+  Hopek:
+  - rscadd: Boots can now hold a scalpel
+  TeDGamer:
+  - bugfix: Infected mobs tackle counters no longer reset instantly.
+  blackcrystall:
+  - bugfix: bioscan larvaes issue fixed

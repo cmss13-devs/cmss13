@@ -1,0 +1,4 @@
+author: "I3LiP"
+delete-after: True
+changes:
+  - mapadd: "Reworked the IO area and added an overwatch type area for shipside IOs."

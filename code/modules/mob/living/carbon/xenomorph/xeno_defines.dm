@@ -1026,6 +1026,7 @@
 	prefix = "Corrupted "
 	color = "#80ff80"
 	ui_color ="#4d994d"
+	no_latejoin_burrowed = TRUE
 
 	need_round_end_check = TRUE
 
@@ -1048,6 +1049,7 @@
 	prefix = "Alpha "
 	color = "#ff4040"
 	ui_color = "#992626"
+	no_latejoin_burrowed = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1057,6 +1059,7 @@
 	prefix = "Bravo "
 	color = "#ffff80"
 	ui_color = "#99994d"
+	no_latejoin_burrowed = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1066,6 +1069,7 @@
 	prefix = "Charlie "
 	color = "#bb40ff"
 	ui_color = "#702699"
+	no_latejoin_burrowed = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1075,6 +1079,7 @@
 	prefix = "Delta "
 	color = "#8080ff"
 	ui_color = "#4d4d99"
+	no_latejoin_burrowed = TRUE
 
 	dynamic_evolution = FALSE
 
@@ -1133,6 +1138,7 @@
 	ui_color = "#6abd99"
 
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
+	no_latejoin_burrowed = TRUE
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

@@ -130,7 +130,7 @@
 	..()
 
 	if(!isturf(user.loc))
-		if(on==TRUE)
+		if(on)
 			to_chat(user, SPAN_WARNING("You cannot turn the light off while in [user.loc].")) //To prevent some lighting anomalities.
 			return
 		else

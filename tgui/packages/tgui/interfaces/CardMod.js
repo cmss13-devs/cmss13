@@ -131,9 +131,9 @@ export const CardContent = (props, context) => {
             Linked Account:
             <NumberInput
               value={id_account}
-              minValue={1}
-              maxValue={9999999}
-              width="70px"
+              minValue={111111}
+              maxValue={999999}
+              width="60px"
               onChange={(e, value) =>
                 act('PRG_account', {
                   account: value,

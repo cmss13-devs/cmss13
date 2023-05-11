@@ -198,3 +198,15 @@
   - imagedel: Removed old PFC kit sprites from PFC vendors
   morrowwolf:
   - config: Extra larva per burst config option
+2023-05-11:
+  BeagleGaming1:
+  - bugfix: Fixes a tape recorder runtime
+  Drathek:
+  - bugfix: Fixed xeno toggle_long_range ability from being used when observing a
+      xeno or mark
+  Hopek:
+  - rscadd: Boots can now hold a scalpel
+  TeDGamer:
+  - bugfix: Infected mobs tackle counters no longer reset instantly.
+  blackcrystall:
+  - bugfix: bioscan larvaes issue fixed

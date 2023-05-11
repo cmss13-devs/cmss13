@@ -1,0 +1,4 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - bugfix: "Infected mobs tackle counters no longer reset instantly."

@@ -1,0 +1,10 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added cash support to vending machines"
+  - bugfix: "Fixed ATM account security levels (now a ID card is actually optional like it says!)"
+  - bugfix: "Fixed ATM not resetting failed attempts on successful login"
+  - bugfix: "Fixed vendors not checking access requirements"
+  - soundadd: "Added a ker-chunk sound for vending"
+  - spellcheck: "Improperified all /obj/structure/machinery/vending names"
+  - code_imp: "Cleanup vending.dm"

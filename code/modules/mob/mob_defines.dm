@@ -226,7 +226,7 @@
 	var/move_delay
 
 	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
-	var/throw_delay = 0
+	COOLDOWN_DECLARE(throw_delay)
 
 	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
 	var/throw_buffer = 0

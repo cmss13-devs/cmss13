@@ -352,11 +352,11 @@ Make sure their actual health updates immediately.*/
 					heal_wounds(min(caste.heal_standing * regeneration_multiplier, maxHealth - scarring) , recoveryActual)
 				updatehealth()
 
-//			if(scarring)
-//				var/obj/effect/alien/weeds/current_weeds = locate(/obj/effect/alien/weeds) in T
-//				if(current_weeds.weed_strength >= WEED_LEVEL_HIVE)
-//					scarring = max(scarring - 1, 0)
-//					melee_damage_lower = initial(melee_damage_lower) + (initial(melee_damage_upper) - initial(melee_damage_lower)) * (scarring / maxHealth)
+			if(scarring)
+				var/obj/effect/alien/weeds/current_weeds = locate(/obj/effect/alien/weeds) in T
+				if(current_weeds.weed_strength >= WEED_LEVEL_HIVE)
+					scarring = max(scarring - 1, 0)
+					melee_damage_lower = initial(melee_damage_lower) + (initial(melee_damage_upper) - initial(melee_damage_lower)) * (scarring / maxHealth)
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
 				var/curve_factor = armor_integrity/armor_integrity_max

@@ -1,3 +1,6 @@
+#define STANDARD_VARIANT "JOE"
+#define HAZMAT_VARIANT "HAZ"
+
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
 	total_positions = 6
@@ -8,8 +11,24 @@
 	selection_class = "job_working_joe"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_JOE
-	gear_preset = /datum/equipment_preset/synth/working_joe
-	entry_message_body = "You are a Working Joe!  You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules.  Failure to do so may result in your immediate Whitelist Removal.  Your primary job is to maintain the cleanliness of the ship, putting things in their proper place.  Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use APOLLO link to communicate with your uplink!"
+
+	job_options = list(STANDARD_VARIANT, HAZMAT_VARIANT)
+	var/standard = TRUE
+
+/datum/job/civilian/working_joe/handle_job_options(option)
+	if(option != HAZMAT_VARIANT)
+		standard = TRUE
+		gear_preset = /datum/equipment_preset/synth/working_joe
+	else
+		standard = FALSE
+		gear_preset = /datum/equipment_preset/synth/working_joe/engi
+
+/datum/job/civilian/working_joe/generate_entry_message(mob/living/carbon/human/H)
+	if(standard)
+		. = {"You are a Working Joe!  You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules.  Your primary task is to maintain the cleanliness of the ship, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the APOLLO link to communicate with your uplink!"}
+	else
+		. = {"You are a Working Joe for Hazardous Environments!  You are held to a higher standard and are required to obey not only the Server Rules but Marine Law, Roleplay Expectations and Synthetic Rules.  You are a variant of the Working Joe built for tougher environments and fulfill the specific duty of dangerous repairs or maintenance. Your primary task is to maintain the reactor, SMES and AI Core. Your secondary task is to respond to hazardous environments, such as an atmospheric breach or biohazard spill, and assist with repairs when ordered to by either an AI Mainframe, or a Commisioned Officer.  You should not be seen outside of emergencies besides in Engineering and the AI Core! Stay in character at all times. Use the APOLLO link to communicate with your uplink!"}
+
 
 /datum/job/civilian/working_joe/announce_entry_message(mob/living/carbon/human/H)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ai_announcement), "[H.real_name] has been deployed to help with operations."), 1.5 SECONDS)

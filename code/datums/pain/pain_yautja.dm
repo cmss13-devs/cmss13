@@ -1,5 +1,5 @@
 /datum/pain/yautja
-	max_pain = 200
+	max_pain = 220
 
 	threshold_mild = null
 	threshold_discomforting = null

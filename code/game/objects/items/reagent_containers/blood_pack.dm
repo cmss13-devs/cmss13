@@ -35,6 +35,10 @@
 /obj/item/reagent_container/blood/attack(mob/attacked_mob, mob/user)
 	. = ..()
 
+	if(attacked_mob == user)
+		to_chat(user, SPAN_WARNING("You cannot connect this to yourself!"))
+		return
+
 	if(connected_to == attacked_mob)
 		connected_to = null
 		STOP_PROCESSING(SSobj, src)
@@ -43,6 +47,7 @@
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+		to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
 		return
 
 	if(user.action_busy)
@@ -58,32 +63,31 @@
 		user.visible_message("[user] attaches \the [src] to [connected_to].", \
 			"You attach \the [src] to [connected_to].")
 
-/obj/item/reagent_container/blood/dropped(mob/user)
-	. = ..()
-
-	if(connected_to)
-		connected_to.visible_message("\The [src] breaks free of [connected_to]!", "\The [src] is pulled out of you!")
-		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
-		connected_to.emote("scream")
-		connected_to = null
-		STOP_PROCESSING(SSobj, src)
-		return
-
 /obj/item/reagent_container/blood/process()
+	//if we're not connected to anything stop doing stuff
 	if(!connected_to)
 		return PROCESS_KILL
 
+	//if we're not on a human stop doing stuff
+	if(!ishuman(loc))
+		bad_disconnect()
+		return PROCESS_KILL
+
+	//if we're not being held in a hand stop doing stuff
+	var/mob/living/carbon/human/current_human = loc
+	if(!(current_human.l_hand == src || current_human.r_hand == src))
+		bad_disconnect()
+		return PROCESS_KILL
+
+	//if we're further than 1 tile away or we're not on a turf stop doing stuff
 	if(!(get_dist(src, connected_to) <= 1 && isturf(connected_to.loc)))
-		connected_to.visible_message("[src] breaks free of \the [connected_to]!", "[src] is pulled out of you!")
-		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
-		connected_to.emote("scream")
-		connected_to = null
+		bad_disconnect()
 		return PROCESS_KILL
 
 	//give blood
 	if(mode == BLOOD_BAG_INJECTING)
 		if(volume > 0)
-			var/transfer_amount = REAGENTS_METABOLISM * 6
+			var/transfer_amount = REAGENTS_METABOLISM * 30
 			connected_to.inject_blood(src, transfer_amount)
 
 	// Take blood
@@ -99,6 +103,14 @@
 			return
 
 		connected_to.take_blood(src, amount)
+
+///Used to standardize effects of a blood bag disconnecting improperly
+/obj/item/reagent_container/blood/proc/bad_disconnect()
+	if(connected_to)
+		connected_to.visible_message("[src] breaks free of \the [connected_to]!", "[src] is pulled out of you!")
+		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
+		connected_to.emote("scream")
+		connected_to = null
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"

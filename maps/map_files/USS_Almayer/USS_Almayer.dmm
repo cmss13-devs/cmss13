@@ -7946,7 +7946,8 @@
 /area/almayer/command/cic)
 "ayM" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
+	icon_state = "SE-out";
+	pixel_x = 1
 	},
 /obj/structure/machinery/status_display{
 	pixel_x = 32
@@ -8430,7 +8431,8 @@
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	pixel_x = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -8958,7 +8960,8 @@
 /area/almayer/command/cichallway)
 "aBI" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -9100,7 +9103,8 @@
 /area/almayer/command/cic)
 "aCk" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E"
+	icon_state = "E";
+	pixel_x = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -9467,7 +9471,8 @@
 /area/almayer/engineering/upper_engineering)
 "aDK" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
+	icon_state = "NE-out";
+	pixel_x = 1
 	},
 /obj/structure/bed/chair{
 	dir = 8
@@ -13450,7 +13455,9 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/lifeboat_pumps/south1)
 "aWA" = (
 /obj/structure/toilet{
@@ -14854,18 +14861,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
-"bdB" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "Firing_Range_2";
-	name = "range shutters"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/plating,
-/area/almayer/living/cryo_cells)
 "bdC" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -29356,7 +29351,9 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/lifeboat_pumps/south1)
 "cZh" = (
 /obj/structure/window/framed/almayer,
@@ -36727,7 +36724,9 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/lifeboat_pumps/north1)
 "gol" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
@@ -42960,7 +42959,6 @@
 /area/almayer/medical/morgue)
 "jks" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	id = "Firing_Range_2";
@@ -44044,10 +44042,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"jSd" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer,
-/area/almayer/hallways/starboard_hallway)
 "jSo" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer{
@@ -54156,7 +54150,9 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/lifeboat_pumps/north1)
 "oEo" = (
 /obj/effect/landmark/start/marine/medic/delta,
@@ -122520,7 +122516,7 @@ xGE
 aem
 mUa
 aLG
-bdB
+lgy
 ccb
 xYP
 bGn
@@ -122723,7 +122719,7 @@ aQL
 jKA
 aYT
 beB
-bdB
+lgy
 bsG
 xYP
 rWL
@@ -123943,7 +123939,7 @@ aYO
 aLG
 bBh
 aLG
-jSd
+aLG
 aLG
 aLG
 byC

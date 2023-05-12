@@ -140,7 +140,7 @@ var/list/datum/mob_hud/huds = list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, SCARRING_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
@@ -262,21 +262,26 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/living/carbon/xenomorph/med_hud_set_health()
-	var/image/holder = hud_list[HEALTH_HUD_XENO]
+	var/image/health_holder = hud_list[HEALTH_HUD_XENO]
+	var/image/scar_holder = hud_list[SCARRING_HUD_XENO]
 
 	var/health_hud_type = "xenohealth"
+	var/scar_hud_type = "xenoscarring"
 	if(stat == DEAD)
-		holder.icon_state = "[health_hud_type]0"
+		health_holder.icon_state = "[health_hud_type]0"
+		scar_holder.icon_state = "[scar_hud_type]_0"
 	else
-		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
+		var/health_amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
+		var/scar_amount = scarring > 0 ? round(scarring * 100 / maxHealth, 10) : CEILING(health, 10)
 		if(health < 0)
 			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
-			amount = round((health / (crit_health - warding_health)) * -100, 10)
+			health_amount = round((health / (crit_health - warding_health)) * -100, 10)
 		else
-			amount = CEILING((health / maxHealth) * 100, 10)
-		if(!amount)
-			amount = -1 //don't want the 'zero health' icon when we are crit
-		holder.icon_state = "[health_hud_type][amount]"
+			health_amount = CEILING((health / maxHealth) * 100, 10)
+		if(!health_amount)
+			health_amount = -1 //don't want the 'zero health' icon when we are crit
+		health_holder.icon_state = "[health_hud_type][health_amount]"
+		scar_holder.icon_state = "[scar_hud_type]_[scar_amount]"
 
 /mob/living/carbon/xenomorph/proc/overlay_shields()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]

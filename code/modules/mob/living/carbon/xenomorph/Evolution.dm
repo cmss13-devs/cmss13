@@ -215,7 +215,7 @@
 		to_chat(src, SPAN_WARNING("You are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
 
-	if(health < maxHealth)
+	if(health < maxHealth - scarring)
 		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
 		return FALSE
 

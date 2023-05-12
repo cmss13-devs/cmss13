@@ -50,6 +50,7 @@
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
+	scar_rate = 0
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

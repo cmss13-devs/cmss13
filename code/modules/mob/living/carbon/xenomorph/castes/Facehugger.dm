@@ -41,6 +41,7 @@
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE
+	scar_rate = 0
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,

@@ -276,6 +276,10 @@
 		else if(health_stacks <= 0)
 			hud_used.healths.icon_state = "health_critical"
 
+		if(hud_used.scarring && !health_stacks <= 0)
+			var/scar_stacks = Ceiling((scarring / maxHealth) * HUD_HEALTH_STATES_XENO)
+			hud_used.scarring.icon_state = "scarring_[scar_stacks]"
+
 	if(hud_used.alien_plasma_display)
 		if(plasma_max == 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
@@ -338,15 +342,21 @@ Make sure their actual health updates immediately.*/
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
+			if(health < maxHealth - scarring && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(lying || resting)
 					if(health < 0) //Unconscious
-						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
+						heal_wounds(min(caste.heal_knocked_out * regeneration_multiplier, maxHealth - scarring), recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						heal_wounds(caste.heal_resting * regeneration_multiplier, recoveryActual)
+						heal_wounds(min(caste.heal_resting * regeneration_multiplier, maxHealth - scarring), recoveryActual)
 				else
-					heal_wounds(caste.heal_standing * regeneration_multiplier, recoveryActual)
+					heal_wounds(min(caste.heal_standing * regeneration_multiplier, maxHealth - scarring) , recoveryActual)
 				updatehealth()
+
+//			if(scarring)
+//				var/obj/effect/alien/weeds/current_weeds = locate(/obj/effect/alien/weeds) in T
+//				if(current_weeds.weed_strength >= WEED_LEVEL_HIVE)
+//					scarring = max(scarring - 1, 0)
+//					melee_damage_lower = initial(melee_damage_lower) + (initial(melee_damage_upper) - initial(melee_damage_lower)) * (scarring / maxHealth)
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
 				var/curve_factor = armor_integrity/armor_integrity_max
@@ -475,9 +485,12 @@ Make sure their actual health updates immediately.*/
 		set_stat(CONSCIOUS)
 	else if(xeno_shields.len != 0)
 		overlay_shields()
-		health = maxHealth - getFireLoss() - getBruteLoss()
+		health = min(maxHealth - getFireLoss() - getBruteLoss(), maxHealth - scarring)
 	else
-		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
+		health = min(maxHealth - getFireLoss() - getBruteLoss(), maxHealth - scarring) //Xenos can only take brute and fire damage.
+
+	if(getFireLoss() + getBruteLoss() - scarring > 0 && scar_rate > 0)
+		scarring = clamp(scarring + (getFireLoss() + getBruteLoss()) * scar_rate, 0, maxHealth - 1) //So they don't get stuck in crit
 
 	if(stat != DEAD && !gibbing)
 		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
@@ -491,6 +504,7 @@ Make sure their actual health updates immediately.*/
 			if(hardcore)
 				async_gib(last_damage_data)
 			else if(world.time > next_grace_time && stat == CONSCIOUS)
+				scarring = clamp(scarring + (getFireLoss() + getBruteLoss()) * scar_rate, 0, maxHealth - 1) //Double scarring in crit
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
 					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC

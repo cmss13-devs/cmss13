@@ -41,6 +41,7 @@
 	acid_blood_damage = 0
 	pull_speed = -0.5
 	viewsize = 9
+	scar_rate = 0 // Hellhounds don't get hives to heal from
 
 	speaking_key = "h"
 	speaking_noise = "hiss_talk"
@@ -81,6 +82,8 @@
 	..()
 	var/image/health_holder = hud_list[HEALTH_HUD_XENO]
 	health_holder.pixel_x = -12
+	var/image/scar_holder = hud_list[SCARRING_HUD_XENO]
+	scar_holder.pixel_x = -12
 	var/image/status_holder = hud_list[XENO_STATUS_HUD]
 	status_holder.pixel_x = -10
 	var/image/banished_holder = hud_list[XENO_BANISHED_HUD]

@@ -27,6 +27,7 @@
 
 	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
 	drone.mutation_type = DRONE_GARDENER
+	drone.scar_rate = 0
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6

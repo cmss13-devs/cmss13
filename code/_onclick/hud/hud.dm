@@ -51,6 +51,7 @@
 	var/atom/movable/screen/oxygen_icon
 	var/atom/movable/screen/fire_icon
 	var/atom/movable/screen/healths
+	var/atom/movable/screen/scarring
 	var/atom/movable/screen/bodytemp_icon
 
 	var/atom/movable/screen/gun_setting_icon
@@ -386,6 +387,10 @@
 	healths.icon = ui_datum.ui_style_icon
 	healths.screen_loc = ui_datum.UI_HEALTH_LOC
 	infodisplay += healths
+	scarring = new/atom/movable/screen/scarring()
+	scarring.icon = ui_datum.ui_style_icon
+	scarring.screen_loc = ui_datum.UI_HEALTH_LOC
+	infodisplay += scarring
 
 /datum/hud/proc/draw_zone_sel(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	zone_sel = new /atom/movable/screen/zone_sel()

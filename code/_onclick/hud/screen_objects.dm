@@ -552,6 +552,11 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/screen/scarring
+	name = "scars"
+	icon = 'icons/mob/hud/alien_standard.dmi'
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /atom/movable/screen/pull
 	name = "stop pulling"
 	icon = 'icons/mob/hud/human_midnight.dmi'

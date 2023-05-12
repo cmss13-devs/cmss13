@@ -44,7 +44,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO,SCARRING_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -52,6 +52,10 @@
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 50
+	/// Persistant damage that can only be healed on cluster / hivecore weeds
+	var/scarring = 0
+	/// How much damage gets converted to scarring
+	var/scar_rate = 0.001
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -1007,6 +1011,7 @@
 	..()
 	hud_update()
 	plasma_stored = plasma_max
+	scarring = 0
 	for(var/datum/action/xeno_action/XA in actions)
 		XA.end_cooldown()
 

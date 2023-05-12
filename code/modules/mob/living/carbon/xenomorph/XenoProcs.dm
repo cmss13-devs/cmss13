@@ -44,8 +44,9 @@
 
 	. += ""
 
-	. += "Health: [round(health)]/[round(maxHealth)]"
+	. += "Health: [round(health)]/[round(maxHealth)] ([round(maxHealth - scarring)])"
 	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
+	. += "Scarring: [round(scarring)]/[round(maxHealth)]"
 	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
@@ -193,6 +194,10 @@
 	var/list/L = list("healing" = value)
 	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL, L)
 	value = L["healing"]
+
+	if(health + value > maxHealth - scarring)
+		value = (maxHealth - scarring) - health
+
 	if(value < 0)
 		value = 0
 

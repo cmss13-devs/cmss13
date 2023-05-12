@@ -19,7 +19,7 @@
 	. = ..()
 	if(blood_type != null)
 		name = "BloodPack [blood_type]"
-		reagents.add_reagent("blood", initial(volume), list("viruses"=null,"blood_type"=blood_type,"resistances"=null))
+		reagents.add_reagent("blood", initial(volume), list("viruses" = null, "blood_type" = blood_type, "resistances" = null))
 		update_icon()
 
 /obj/item/reagent_container/blood/on_reagent_change()
@@ -42,8 +42,8 @@
 	if(connected_to == attacked_mob)
 		connected_to = null
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("[user] detaches \the [src] from [connected_to].", \
-			"You detach \the [src] from [connected_to].")
+		user.visible_message("[user] detaches [src] from [connected_to].", \
+			"You detach [src] from [connected_to].")
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -89,28 +89,30 @@
 		if(volume > 0)
 			var/transfer_amount = REAGENTS_METABOLISM * 30
 			connected_to.inject_blood(src, transfer_amount)
+			return
 
 	// Take blood
-	else
-		var/amount = reagents.maximum_volume - reagents.total_volume
-		amount = min(amount, 4)
-		if(amount == 0)
-			return
+	var/amount = reagents.maximum_volume - reagents.total_volume
+	amount = min(amount, 4)
+	if(amount == 0)
+		return
 
-		if(!istype(connected_to))
-			return
-		if(connected_to.species && connected_to.species.flags & NO_BLOOD)
-			return
+	if(!istype(connected_to))
+		return
+	if(connected_to.species && connected_to.species.flags & NO_BLOOD)
+		return
 
-		connected_to.take_blood(src, amount)
+	connected_to.take_blood(src, amount)
 
 ///Used to standardize effects of a blood bag disconnecting improperly
 /obj/item/reagent_container/blood/proc/bad_disconnect()
-	if(connected_to)
-		connected_to.visible_message("[src] breaks free of \the [connected_to]!", "[src] is pulled out of you!")
-		connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
-		connected_to.emote("scream")
-		connected_to = null
+	if(!connected_to)
+		return
+	
+	connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
+	connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
+	connected_to.emote("scream")
+	connected_to = null
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"

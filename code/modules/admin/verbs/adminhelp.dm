@@ -501,7 +501,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!initiator.current_mhelp)
 		initiator.current_mhelp = new(initiator)
 
-	initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
+	var/options = tgui_alert(usr, "Use the first message in this ticket, or a custom option?", "Defer to Mentors", list("First Message", "Custom"))
+	if(!options)
+		return
+
+	switch(options)
+		if("First Message")
+			initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
+		if("Custom")
+			var/message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			if(!message)
+				return
+			initiator.current_mhelp.broadcast_unhandled(message, initiator)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))

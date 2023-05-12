@@ -438,7 +438,6 @@
 	if(!check_can_use(target))
 		return
 
-	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
@@ -474,7 +473,6 @@
 		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 		return
 
-	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	target.overlays -= I
 	designator.is_spotting = FALSE
 	designator.update_icon()
@@ -496,6 +494,7 @@
 		to_chat(human, SPAN_WARNING("\The [target] is too close to laze!"))
 		return FALSE
 
+	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	return TRUE
 
 //ADVANCED LASER DESIGNATER, was used for WO.

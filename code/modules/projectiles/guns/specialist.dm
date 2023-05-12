@@ -189,7 +189,7 @@
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
 		if(cover_lose_focus)
 			to_chat(H, SPAN_WARNING("You lose focus."))
-			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
+			COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay * 0.5)
 		return FALSE
 
 	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)

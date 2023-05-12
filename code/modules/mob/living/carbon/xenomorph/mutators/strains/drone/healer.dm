@@ -115,7 +115,7 @@
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is dead!"))
 		return
 
-	if(target_xeno.health >= target_xeno.maxHealth)
+	if(target_xeno.health >= target_xeno.maxHealth - target_xeno.scarring)
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 

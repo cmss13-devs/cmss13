@@ -94,7 +94,7 @@
 	// Take blood
 	var/amount = reagents.maximum_volume - reagents.total_volume
 	amount = min(amount, 4)
-	if(amount == 0)
+	if(!amount)
 		return
 
 	if(!istype(connected_to))

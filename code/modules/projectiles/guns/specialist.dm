@@ -93,7 +93,6 @@
 	if(!check_can_use(target))
 		return
 
-	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
@@ -156,7 +155,6 @@
 	if(!check_can_use(target, TRUE))
 		return
 
-	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	var/obj/item/projectile/aimed_proj = sniper_rifle.in_chamber
 	aimed_proj.projectile_flags |= PROJECTILE_BULLSEYE
 	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
@@ -194,6 +192,7 @@
 			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
 		return FALSE
 
+	COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay)
 	return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)

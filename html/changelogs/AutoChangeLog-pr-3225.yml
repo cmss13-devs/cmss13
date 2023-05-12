@@ -1,0 +1,4 @@
+author: "usnpeepoo"
+delete-after: True
+changes:
+  - bugfix: "Point blanks with ammo types that spawn additional projectiles will now hit targeted limbs instead of only chest"

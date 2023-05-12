@@ -1,0 +1,5 @@
+author: "Jackie_Estegado"
+delete-after: True
+changes:
+  - bugfix: "APCs no longer become unslashable in specific cases."
+  - bugfix: "Doorcontrol buttons no longer stay powered despite their area losing power."

@@ -148,6 +148,11 @@
 	. = ..()
 	link_landing_lights()
 
+/obj/docking_port/stationary/marine_dropship/Destroy()
+	. = ..()
+	landing_lights.Cut()
+	landing_lights = null // We didn't make them, so lets leave them
+
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
 	var/scan_range = 5

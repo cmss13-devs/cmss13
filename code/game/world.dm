@@ -163,73 +163,74 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC
 
-	if (T == "ping")
-		var/x = 1
-		for (var/client/C)
-			x++
-		return x
 
-	else if(T == "players")
-		return length(GLOB.clients)
+	var/list/response = list()
 
-	else if (T == "status")
-		var/list/s = list()
-		s["version"] = game_version
-		s["mode"] = master_mode
-		s["respawn"] = CONFIG_GET(flag/respawn)
-		s["enter"] = enter_allowed
-		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
-		s["ai"] = CONFIG_GET(flag/allow_ai)
-		s["host"] = host ? host : null
-		s["players"] = list()
-		s["stationtime"] = duration2text()
-		var/n = 0
-		var/admins = 0
+	if(length(T) > CONFIG_GET(number/topic_max_size))
+		response["statuscode"] = 413
+		response["response"] = "Payload too large"
+		return json_encode(response)
 
-		for(var/client/C in GLOB.clients)
-			if(C.admin_holder)
-				if(C.admin_holder.fakekey)
-					continue //so stealthmins aren't revealed by the hub
-				admins++
-			s["player[n]"] = C.key
-			n++
-		s["players"] = n
+	if(SSfail_to_topic?.IsRateLimited(addr))
+		response["statuscode"] = 429
+		response["response"] = "Rate limited"
+		return json_encode(response)
 
-		s["admins"] = admins
+	var/logging = CONFIG_GET(flag/log_world_topic)
+	var/topic_decoded = rustg_url_decode(T)
+	if(!rustg_json_is_valid(topic_decoded))
+		if(logging)
+			log_topic("(NON-JSON) \"[topic_decoded]\", from:[addr], master:[master], key:[key]")
+		// Fallback check for spacestation13.com requests
+		if(topic_decoded == "ping")
+			return length(GLOB.clients)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - Invalid JSON format"
+		return json_encode(response)
 
-		return list2params(s)
+	var/list/params = json_decode(topic_decoded)
+	params["addr"] = addr
+	var/query = params["query"]
+	var/auth = params["auth"]
+	var/source = params["source"]
 
-	// Used in external requests for player data.
-	else if (T == "pinfo")
-		var/retdata = ""
-		if(addr != "127.0.0.1")
-			return "Nah ah ah, you didn't say the magic word"
-		for(var/client/C in GLOB.clients)
-			retdata  += C.key+","+C.address+","+C.computer_id+"|"
+	if(logging)
+		var/list/censored_params = params.Copy()
+		censored_params["auth"] = "***[copytext(params["auth"], -4)]"
+		log_topic("\"[json_encode(censored_params)]\", from:[addr], master:[master], auth:[censored_params["auth"]], key:[key], source:[source]")
 
-		return retdata
+	if(!source)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - No source specified"
+		return json_encode(response)
 
-	else if(copytext(T,1,6) == "notes")
-		if(addr != "127.0.0.1")
-			return "Nah ah ah, you didn't say the magic word"
-		if(!SSdatabase.connection.connection_ready())
-			return "Database is not yet ready. Please wait."
-		var/input[] = params2list(T)
-		var/ckey = trim(input["ckey"])
-		var/dat = "Notes for [ckey]:<br/><br/>"
-		var/datum/entity/player/P = get_player_from_key(ckey)
-		if(!P)
-			return ""
-		P.load_refs()
-		if(!P.notes || !P.notes.len)
-			return dat + "No information found on the given key."
+	if(!query)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - No endpoint specified"
+		return json_encode(response)
 
-		for(var/datum/entity/player_note/N in P.notes)
-			var/admin_name = (N.admin && N.admin.ckey) ? "[N.admin.ckey]" : "-LOADING-"
-			var/ban_text = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
-			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
-			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
-		return dat
+	if(!LAZYACCESS(GLOB.topic_tokens["[auth]"], "[query]"))
+		response["statuscode"] = 401
+		response["response"] = "Unauthorized - Bad auth"
+		return json_encode(response)
+
+	var/datum/world_topic/command = GLOB.topic_commands["[query]"]
+	if(!command)
+		response["statuscode"] = 501
+		response["response"] = "Not Implemented"
+		return json_encode(response)
+
+	if(command.CheckParams(params))
+		response["statuscode"] = command.statuscode
+		response["response"] = command.response
+		response["data"] = command.data
+		return json_encode(response)
+	else
+		command.Run(params)
+		response["statuscode"] = command.statuscode
+		response["response"] = command.response
+		response["data"] = command.data
+		return json_encode(response)
 
 /world/Reboot(reason)
 	Master.Shutdown()

@@ -175,8 +175,7 @@
 
 /obj/item/clothing/mask/facehugger/equipped(mob/M)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	// So getting hugged or picking up a hugger does not
-	// prematurely kill the hugger
+	// So picking up a hugger does not prematurely kill it
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -248,13 +247,14 @@
 
 	// This is always going to be valid because of the can_hug check above
 	var/mob/living/carbon/human/H = M
-	attached = TRUE
 	if(!silent)
 		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
 	if(isxeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
+
+	attached = TRUE
 
 	if(isturf(H.loc))
 		forceMove(H.loc)//Just checkin

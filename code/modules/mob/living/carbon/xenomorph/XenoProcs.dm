@@ -691,13 +691,15 @@
 /mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(!silent)
-		if(destroyed)
-			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-		else
-			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+
 	if(tracked_marker)
+		if(!silent)
+			if(destroyed)
+				to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+			else
+				to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
 		tracked_marker.xenos_tracking -= src
+
 	tracked_marker = null
 
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)

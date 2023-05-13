@@ -11,6 +11,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		//Never meant to be created, errors out the ass for mobcode reasons
 		/mob/living/carbon,
 		/obj/effect/node,
+		/obj/effect/landmark,
 		/obj/item/seeds/cutting,
 		// These use walkaway() after initialization, which causes false positives
 		/obj/item/explosive/grenade/flashbang/cluster/segment,

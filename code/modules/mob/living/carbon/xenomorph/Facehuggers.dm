@@ -77,6 +77,9 @@
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
+	if(attached == TRUE)
+		attached = FALSE
+		die()
 
 /obj/item/clothing/mask/facehugger/proc/check_turf()
 	var/count = 0
@@ -373,6 +376,9 @@
 
 /obj/item/clothing/mask/facehugger/proc/die()
 	if(stat == DEAD)
+		return
+
+	if(attached && !impregnated)
 		return
 
 	if(jump_timer)

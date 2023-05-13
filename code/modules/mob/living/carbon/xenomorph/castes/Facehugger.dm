@@ -49,6 +49,7 @@
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/facehugger/proc/check_hugs,
 	)
 	mutation_type = "Normal"
 
@@ -225,3 +226,27 @@
 
 /mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
 	playsound(loc, "alien_roar_larva", 15)
+
+/mob/living/carbon/xenomorph/facehugger/proc/check_hugs()
+	set name = "Check Hugs"
+	set desc = "Check how many talls you have hugged in total."
+	set category = "Alien"
+
+
+	var/total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
+	var/next_facehug_goal = "no more, you are already Royal!"
+	if(total_facehugs < FACEHUG_TIER_4)
+		switch(total_facehugs)
+			if(0 to FACEHUG_TIER_1) // 0 - 4
+				next_facehug_goal = FACEHUG_TIER_1
+			if(FACEHUG_TIER_1 to FACEHUG_TIER_2) // 5 - 24
+				next_facehug_goal = FACEHUG_TIER_2
+			if(FACEHUG_TIER_2 to FACEHUG_TIER_3) // 25 - 99
+				next_facehug_goal = FACEHUG_TIER_3
+			if(FACEHUG_TIER_3 to FACEHUG_TIER_4) // 100 - 999
+				next_facehug_goal = FACEHUG_TIER_4
+		next_facehug_goal = "[next_facehug_goal - total_facehugs] more talls to age."
+
+	to_chat(src, SPAN_BOLDNOTICE("You have hugged [total_facehugs] talls. You need to hug [next_facehug_goal]"))
+
+

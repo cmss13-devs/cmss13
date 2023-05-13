@@ -771,7 +771,7 @@
 /obj/structure/machinery/landinglight/Destroy()
 	. = ..()
 	if(linked_port)
-		linked_port.landing_lights_on -= src
+		linked_port.landing_lights -= src
 		linked_port = null
 
 /obj/structure/machinery/landinglight/proc/turn_off()

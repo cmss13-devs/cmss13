@@ -1,4 +1,0 @@
-author: "morrowwolf"
-delete-after: True
-changes:
-  - bugfix: "Extra larva per burst non-integer fix"

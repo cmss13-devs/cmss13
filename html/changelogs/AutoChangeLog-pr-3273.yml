@@ -1,9 +1,0 @@
-author: "Morrow, Huffie56, Drathek"
-delete-after: True
-changes:
-  - rscadd: "Blood bags can now be used in the field"
-  - rscadd: "Medics spawn with blood bags"
-  - balance: "Hemogenic property now takes nutrient to work"
-  - balance: "Blood over 100% will normalize to 100%"
-  - balance: "Blood effects from lower tiers now continue to apply as the tiers increase."
-  - bugfix: "Blood should no longer go above the maximum limit"

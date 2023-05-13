@@ -185,3 +185,76 @@
       as the throwing strength, when examining a weapon.
   harryob:
   - bugfix: fixes fultons
+2023-05-10:
+  Drathek:
+  - ui: Fixed xeno hide icon not resetting after a pounce
+  Molto:
+  - rscadd: Re-added the old riot armor on the Almayer
+  Segrain:
+  - bugfix: Chemical Investigation Goons should now properly be shown their actual
+      objective.
+  Tisx:
+  - imageadd: Added weapon case sprites to PFC vendors
+  - imagedel: Removed old PFC kit sprites from PFC vendors
+  morrowwolf:
+  - config: Extra larva per burst config option
+2023-05-11:
+  BeagleGaming1:
+  - bugfix: Fixes a tape recorder runtime
+  Drathek:
+  - bugfix: Fixed xeno toggle_long_range ability from being used when observing a
+      xeno or mark
+  Hopek:
+  - rscadd: Boots can now hold a scalpel
+  TeDGamer:
+  - bugfix: Infected mobs tackle counters no longer reset instantly.
+  blackcrystall:
+  - bugfix: bioscan larvaes issue fixed
+2023-05-12:
+  BeagleGaming1:
+  - bugfix: Fixes a runtime involving vehicle hardpoints
+  Drathek:
+  - rscadd: Added cash support to vending machines
+  - bugfix: Fixed ATM account security levels (now a ID card is actually optional
+      like it says!)
+  - bugfix: Fixed ATM not resetting failed attempts on successful login
+  - bugfix: Fixed vendors not checking access requirements
+  - soundadd: Added a ker-chunk sound for vending
+  - spellcheck: Improperified all /obj/structure/machinery/vending names
+  - code_imp: Cleanup vending.dm
+  - bugfix: Fix a runtime with the weldersatchel in the synth snowflake vendor
+  - bugfix: Fix several runtimes regarding surgery movements
+  - bugfix: Fix a runtime with the bad_leg trait in character creator
+  - bugfix: Fix a warning about incorrect Z level count
+  - bugfix: Fix a runtime when health scanning mice
+  - bugfix: Fix a runtime when queen de-ovis while in queen eye mode
+  - bugfix: Fix a runtime when queen is observing a xeno that gets gibbed
+  - bugfix: Fixed multiple runtimes regarding xeno marks
+  - ui: Added the xeno mark tracking HUD to larva
+  I3LiP:
+  - mapadd: Reworked the IO area and added an overwatch type area for shipside IOs.
+  Tsunamico:
+  - bugfix: Patched custom prefixes for admin events.
+  harryob:
+  - server: the server can now support automated discord certification
+  spartanbobby:
+  - bugfix: Fixes USS Almayer basketball court score not counting up along with missing
+      lights
+2023-05-13:
+  Jackie_Estegado:
+  - bugfix: APCs no longer become unslashable in specific cases.
+  - bugfix: Doorcontrol buttons no longer stay powered despite their area losing power.
+  Morrow, Huffie56, Drathek:
+  - rscadd: Blood bags can now be used in the field
+  - rscadd: Medics spawn with blood bags
+  - balance: Hemogenic property now takes nutrient to work
+  - balance: Blood over 100% will normalize to 100%
+  - balance: Blood effects from lower tiers now continue to apply as the tiers increase.
+  - bugfix: Blood should no longer go above the maximum limit
+  morrowwolf:
+  - bugfix: Extra larva per burst non-integer fix
+  realforest2001:
+  - bugfix: Fixes missing walking icons for xenonids
+  usnpeepoo:
+  - bugfix: Point blanks with ammo types that spawn additional projectiles will now
+      hit targeted limbs instead of only chest

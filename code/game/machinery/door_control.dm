@@ -270,5 +270,3 @@
 
 	desiredstate = !desiredstate
 
-/obj/structure/machinery/door_control/power_change()
-	return

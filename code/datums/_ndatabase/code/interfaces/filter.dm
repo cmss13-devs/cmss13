@@ -99,8 +99,3 @@
 
 /datum/db/filter/link/get_columns()
 	CRASH("NOT SUPPORTED. USE compare_two EQUALS")
-
-#define DB_AND new /datum/db/filter/and
-#define DB_OR new /datum/db/filter/or
-#define DB_COMP new /datum/db/filter/comparison
-#define DB_COMP2 new /datum/db/filter/compare_two

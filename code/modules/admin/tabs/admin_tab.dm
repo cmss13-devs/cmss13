@@ -435,6 +435,9 @@
 
 	for(var/mob/living/M in view())
 		for (var/obj/item/I in M)
+			//no more deletion of ID cards
+			if(istype(I, /obj/item/card/id))
+				continue
 			qdel(I)
 
 	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)

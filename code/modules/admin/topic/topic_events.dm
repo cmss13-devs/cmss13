@@ -115,6 +115,14 @@
 	else if(href_list["spawn_as"] == "ert")
 		offer_as_ert = TRUE
 
+	var/strip_the_humans = FALSE
+	var/strip_weapons = FALSE
+	if(href_list["equip_with"] == "no_weapons")
+		strip_weapons = TRUE
+
+	if(href_list["equip_with"] == "no_equipment")
+		strip_the_humans = TRUE
+
 	if(humans_to_spawn)
 		var/list/turfs = list()
 		if(isnull(range_to_spawn_on))
@@ -140,12 +148,29 @@
 			if(!H.hud_used)
 				H.create_hud()
 
-			arm_equipment(H, job_name, TRUE, FALSE)
-
 			if(free_the_humans)
 				owner.free_for_ghosts(H)
 
+			arm_equipment(H, job_name, TRUE, FALSE)
+
 			humans += H
+
+			if(strip_the_humans)
+				for(var/obj/item/I in H)
+					//no more deletion of ID cards
+					if(istype(I, /obj/item/card/id/))
+						continue
+					qdel(I)
+
+				continue
+
+			if(strip_weapons)
+				for(var/obj/item/I in H.GetAllContents(3))
+					if(istype(I, /obj/item/weapon))
+						qdel(I)
+						continue
+					if(istype(I, /obj/item/explosive))
+						qdel(I)
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()

@@ -183,8 +183,12 @@
 	for (var/obj/item/I in target)
 		if(params["drop_items"])
 			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
-		else
-			qdel(I)
+			continue
+
+		if(istype(I, /obj/item/card/id))
+			continue
+
+		qdel(I)
 
 	message_admins("[key_name_admin(user)] stripped [target] of their items.")
 	return TRUE

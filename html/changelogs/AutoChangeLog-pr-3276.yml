@@ -1,0 +1,4 @@
+author: "foxtrot1322"
+delete-after: True
+changes:
+  - bugfix: "Fixed the issue with ERT first-aid pouches being unable to hold injectors once taken out"

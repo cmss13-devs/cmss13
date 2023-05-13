@@ -49,6 +49,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
 	/client/proc/toggle_lz_resin,
+	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,

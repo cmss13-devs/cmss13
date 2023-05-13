@@ -421,6 +421,24 @@
 	remove_verb(src, admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
 
+/client/proc/strip_all_in_view()
+	set name = "Strip All"
+	set category = "Admin.InView"
+	set hidden = TRUE
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will strip ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/M in view())
+		for (var/obj/item/I in M)
+			qdel(I)
+
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
@@ -574,6 +592,8 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
 		<BR>
 		"}
 

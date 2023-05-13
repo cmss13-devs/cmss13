@@ -18,7 +18,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	)
 	//Landmarks - especially freed_mob_spawner - seem to be problematic to really test and address this way
 	//because they spawn things that they don't track. Any that are relevant should already have occured at mapstart.
-	ignore += typesof(/turf/effect/landmark)
+	ignore += typesof(/obj/effect/landmark)
 	//This turf existing is an error in and of itself
 	ignore += typesof(/turf/baseturf_skipover)
 	ignore += typesof(/turf/baseturf_bottom)

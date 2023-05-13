@@ -74,7 +74,7 @@
 	if (.)
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
-		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
+		next_move += 1 SECONDS //Delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE)
 	return FALSE
 

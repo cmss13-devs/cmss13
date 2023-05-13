@@ -296,21 +296,23 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/properties_to_datums()
-	if(chemical_properties_list)
-		var/new_properties = list()
-		for(var/P in properties)
-			if(istype(P, /datum/chem_property))
-				new_properties += P
-				continue
-			var/datum/chem_property/D = chemical_properties_list[P]
-			if(D)
-				D = new D.type()
-				D.level = properties[P]
-				D.holder = src
-				new_properties += D
-		return new_properties
-	else
-		return properties
+	if(!chemical_properties_list)
+		//We managed to exist before any /datum/reagents...
+		global_prepare_properties()
+		global_prepare_reagents()
+
+	var/new_properties = list()
+	for(var/P in properties)
+		if(istype(P, /datum/chem_property))
+			new_properties += P
+			continue
+		var/datum/chem_property/D = chemical_properties_list[P]
+		if(D)
+			D = new D.type()
+			D.level = properties[P]
+			D.holder = src
+			new_properties += D
+	return new_properties
 
 /datum/reagent/proc/properties_to_assoc()
 	var/new_properties = list()

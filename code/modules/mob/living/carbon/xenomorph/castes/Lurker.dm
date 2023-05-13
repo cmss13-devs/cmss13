@@ -137,6 +137,17 @@
 		if(LIA && istype(LIA))
 			LIA.end_cooldown()
 
+/mob/living/carbon/xenomorph/lurker/update_canmove()
+    . = ..()
+    if(!canmove && stealth)
+        var/datum/behavior_delegate/lurker_base/behavior = behavior_delegate
+        behavior.force_invisibility_off() // Being stunned will force invisibility off
+
+/datum/behavior_delegate/lurker_base/proc/force_invisibility_off()
+	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if (LIA && istype(LIA))
+		LIA.invisibility_off()
+
 /datum/behavior_delegate/lurker_base/append_to_stat()
 	. = list()
 	var/invis_message = (invis_start_time == -1) ? "N/A" : "[(invis_duration-(world.time - invis_start_time))/10] seconds."

@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - server: "the server can now support automated discord certification"

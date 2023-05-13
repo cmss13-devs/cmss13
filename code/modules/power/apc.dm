@@ -924,6 +924,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
 			if(!isWireCut(APC_WIRE_MAIN_POWER))
+				beenhit = 0
 				shorted = 0
 				shock(usr, 50)
 

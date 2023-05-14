@@ -43,6 +43,8 @@
 		return
 	GLOB.alive_human_list -= src
 	if(!gibbed)
+		if(HAS_TRAIT(src, TRAIT_HARDCORE))
+			status_flags |= PERMANENTLY_DEAD
 		disable_special_flags()
 		disable_lights()
 		disable_special_items()
@@ -95,4 +97,9 @@
 				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 			//tell the ghosts
 			announce_dchat("There is only one person left: [last_living_human.real_name].", last_living_human)
-	return ..(cause, gibbed, species.death_message)
+
+	var/death_message = species.death_message
+	if(HAS_TRAIT(src, TRAIT_HARDCORE))
+		death_message = "valiantly falls to the ground, dead, unable to continue."
+
+	return ..(cause, gibbed, death_message)

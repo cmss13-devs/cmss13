@@ -430,15 +430,15 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(alert("This will strip ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) == "Cancel")
 		return
 
-	for(var/mob/living/M in view())
-		for (var/obj/item/I in M)
+	for(var/mob/living/current_mob in view())
+		for (var/obj/item/current_item in current_mob)
 			//no more deletion of ID cards
-			if(istype(I, /obj/item/card/id))
+			if(istype(current_item, /obj/item/card/id))
 				continue
-			qdel(I)
+			qdel(current_idea)
 
 	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 

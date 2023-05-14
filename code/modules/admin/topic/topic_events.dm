@@ -156,21 +156,21 @@
 			humans += H
 
 			if(strip_the_humans)
-				for(var/obj/item/I in H)
+				for(var/obj/item/current_item in H)
 					//no more deletion of ID cards
-					if(istype(I, /obj/item/card/id/))
+					if(istype(current_item, /obj/item/card/id/))
 						continue
-					qdel(I)
+					qdel(current_item)
 
 				continue
 
 			if(strip_weapons)
-				for(var/obj/item/I in H.GetAllContents(3))
-					if(istype(I, /obj/item/weapon))
-						qdel(I)
+				for(var/obj/item/current_item in H.GetAllContents(3))
+					if(istype(current_item, /obj/item/weapon))
+						qdel(current_item)
 						continue
-					if(istype(I, /obj/item/explosive))
-						qdel(I)
+					if(istype(current_item, /obj/item/explosive))
+						qdel(current_item)
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()

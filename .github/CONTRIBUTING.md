@@ -162,13 +162,15 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow. As such, they are subject to another level of review known as "balance review".
 
-* Any gameplay architect may balance review PRs, after the PR has been open for 7 days without architect review any normal maintainer may balance review it.
+* There is a 7 day waiting period after a PR that impacts balance is opened, during which only the Project Manager or Head Maintainer may close, approve or apply the "Do Not Merge" label over balance review. 
 
-* In the process of architect review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
+* After the PR has been open for 7 days, if no balance review has occured, any normal maintainer may balance review it.
+
+* In the process of balance review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
 
 * It should go without saying that denied PRs may not be reopened or remade without changes and prior approval.
 
-* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with an architect or maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
+* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with a maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
 
 ## Good Boy Points
 

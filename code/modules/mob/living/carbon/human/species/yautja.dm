@@ -26,7 +26,7 @@
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
 	darksight = 5
 	slowdown = -0.5
-	total_health = 200 //more health than regular humans
+	total_health = 180 //more health than regular humans
 	timed_hug = FALSE
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter

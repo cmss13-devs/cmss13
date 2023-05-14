@@ -77,29 +77,9 @@
 	name = "View Hive Status"
 	action_icon_state = "view_hive_status"
 
-	var/static/readable_hive_status
-
-/datum/action/observer_action/view_hive_status/New(Target, override_icon_state)
-	. = ..()
-
-	if(readable_hive_status)
-		return
-
-	readable_hive_status = list()
-	for(var/hive_number in ALL_XENO_HIVES)
-		var/readable = uppertext(replacetext(hive_number, "_", " "))
-		readable_hive_status["[readable]"] = hive_number
-
-
 /datum/action/observer_action/view_hive_status/action_activate()
-	var/selected = tgui_input_list(owner, "Which Hive do you want to view?", "Hive Status", readable_hive_status)
-
-	if(!selected)
-		return
-
-	var/datum/hive_status/selected_status = GLOB.hive_datum[readable_hive_status[selected]]
-
-	selected_status.hive_ui.tgui_interact(owner)
+	var/mob/dead/observer/activator = owner
+	activator.hive_status()
 
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER

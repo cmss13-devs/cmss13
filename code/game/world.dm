@@ -394,8 +394,7 @@ var/datum/BSQL_Connection/connection
 
 /world/proc/HandleTestRun()
 	// Wait for the game ticker to initialize
-	while(!SSticker.initialized)
-		sleep(10)
+	UNTIL(SSticker.initialized)
 
 	//trigger things to run the whole process
 	Master.sleep_offline_after_initializations = FALSE

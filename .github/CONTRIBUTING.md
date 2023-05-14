@@ -158,17 +158,11 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
-### A note on balance review and PR denial
+### A note on balance impacting PRs
 
-Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow. As such, they are subject to another level of review known as "balance review".
+Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow.
 
-* There is a 7 day waiting period after a PR that impacts balance is opened, during which only the Project Manager or Head Maintainer may close, approve or apply the "Do Not Merge" label over balance review. 
-
-* After the PR has been open for 7 days, if no balance review has occurred, any normal maintainer may balance review it.
-
-* In the process of balance review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
-
-* It should go without saying that denied PRs may not be reopened or remade without changes and prior approval.
+* If a Project Manager or Head Maintainer has not reviewed a pull request that impacts balance in 7 days, maintainers may review and merge the PR themselves.
 
 * We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with a maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
 

@@ -53,6 +53,7 @@
 				user.stop_pulling()
 				victim.get_hung()
 				use(1)
+				return TRUE
 	return TRUE
 
 /mob/living/carbon/human/proc/get_hung()

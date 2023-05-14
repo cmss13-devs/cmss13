@@ -255,6 +255,8 @@
 	return BLOOD_COLOR_HUMAN
 
 /mob/living/carbon/xenomorph/get_blood_color()
+	if(caste && caste.royal_caste)
+		return BLOOD_COLOR_XENO_ROYAL
 	return BLOOD_COLOR_XENO
 
 /mob/living/carbon/human/get_blood_color()

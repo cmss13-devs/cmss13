@@ -639,6 +639,12 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"arn" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "researchprestine"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/station/research_cells)
 "arq" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -7225,6 +7231,16 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/ice_lab)
+"evv" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "nogear"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "evD" = (
 /obj/structure/lz_sign/prison_sign,
 /turf/open/floor/prison,
@@ -22729,6 +22745,12 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
+"obI" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "engineeroffice"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/civres)
 "obL" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
@@ -33001,6 +33023,12 @@
 	icon_state = "sterile_white"
 	},
 /area/fiorina/station/medbay)
+"uCD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medicalhold"
+	},
+/turf/closed/wall/prison,
+/area/fiorina/station/medbay)
 "uCW" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/prison{
@@ -34064,6 +34092,9 @@
 	},
 /area/fiorina/station/research_cells)
 "vmj" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "podholder"
+	},
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1"
 	},
@@ -35509,6 +35540,12 @@
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
+"wgi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "scavshipholder"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "wgH" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
@@ -39530,7 +39567,7 @@ bQM
 bQM
 bQM
 bQM
-bQM
+wgi
 bQM
 bQM
 bQM
@@ -46675,7 +46712,7 @@ fBP
 dIo
 dIo
 dIo
-dIo
+obI
 wlz
 dXG
 qty
@@ -67520,7 +67557,7 @@ ceC
 xNm
 ceC
 ceC
-flC
+evv
 fnB
 fnB
 bZY
@@ -68507,7 +68544,7 @@ oZz
 vWe
 hVI
 hVI
-hVI
+uCD
 hVI
 hVI
 hVI
@@ -74852,7 +74889,7 @@ tOp
 cKa
 kzh
 tOp
-cKa
+arn
 jXD
 roY
 nhz

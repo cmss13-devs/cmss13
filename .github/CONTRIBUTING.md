@@ -164,7 +164,7 @@ Certain PRs, such as those which directly change number values (i.e. health, rec
 
 * There is a 7 day waiting period after a PR that impacts balance is opened, during which only the Project Manager or Head Maintainer may close, approve or apply the "Do Not Merge" label over balance review. 
 
-* After the PR has been open for 7 days, if no balance review has occured, any normal maintainer may balance review it.
+* After the PR has been open for 7 days, if no balance review has occurred, any normal maintainer may balance review it.
 
 * In the process of balance review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
 

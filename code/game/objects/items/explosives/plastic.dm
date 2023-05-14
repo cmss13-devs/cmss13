@@ -105,10 +105,10 @@
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] plants [name] on you!")))
 		user.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(user)] successfully planted [name] on [key_name(target)]</font>"
-		msg_admin_niche("[key_name(user, user.client)][ADMIN_INFO(user)] planted [src.name] on [key_name(target)][ADMIN_INFO(target)] with [timer] second fuse")
+		msg_admin_niche("[key_name(user, user.client)] planted [src.name] on [key_name(target)] with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [key_name(target)] with [timer] second fuse")
 	else
-		msg_admin_niche("[key_name(user, user.client)][ADMIN_INFO(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] [ADMIN_JMP(target)] with [timer] second fuse")
+		msg_admin_niche("[key_name(user, user.client)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] [ADMIN_JMP(target)] with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 	if(customizable)

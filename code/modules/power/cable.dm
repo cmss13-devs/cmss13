@@ -122,7 +122,7 @@
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_WARNING("[user] cuts the cable."), SHOW_MESSAGE_VISIBLE)
 		// wires are irrelevant so I have disabled this message for now
-		//message_admins("[key_name(user)][ADMIN_INFO(user)] cut a wire at ([x],[y],[z]) [ADMIN_JMP(src)]")
+		//message_admins("[key_name(user)] cut a wire at ([x],[y],[z]) [ADMIN_JMP(src)]")
 
 		return // not needed, but for clarity
 

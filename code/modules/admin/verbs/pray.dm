@@ -17,9 +17,9 @@
 		liaison = 1
 
 	if(liaison)
-		msg = SPAN_NOTICE("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_INFO(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
+		msg = SPAN_NOTICE("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
 	else
-		msg = SPAN_NOTICE("<b><font color=purple>PRAY: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_INFO(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
+		msg = SPAN_NOTICE("<b><font color=purple>PRAY: </font>[key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]:</b> [msg]")
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(AHOLD_IS_MOD(C.admin_holder) && C.prefs.toggles_chat & CHAT_PRAYER)

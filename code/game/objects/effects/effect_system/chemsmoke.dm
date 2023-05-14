@@ -83,10 +83,7 @@
 
 	if(carry.my_atom.fingerprintslast)
 		var/mob/M = GLOB.directory[carry.my_atom.fingerprintslast]
-		var/more = ""
-		if(M)
-			more = "[ADMIN_INFO(M)]"
-		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
+		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
 		message_admins("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")

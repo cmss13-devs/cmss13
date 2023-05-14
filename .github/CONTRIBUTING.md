@@ -164,7 +164,7 @@ Certain PRs, such as those which directly change number values (i.e. health, rec
 
 * If a Project Manager or Head Maintainer has not reviewed a pull request that impacts balance in 7 days, maintainers may review and merge the PR themselves.
 
-* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with a maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
+* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommended that you check with a maintainer before beginning to code your PR if you have any doubts that it will be accepted. This will save everyone's time and energy.
 
 ## Good Boy Points
 

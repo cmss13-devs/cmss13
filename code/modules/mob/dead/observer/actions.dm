@@ -59,7 +59,7 @@
 
 /datum/action/join_predator
 	name = "Join the Hunt"
-	action_icon_state = "join_predator"
+	action_icon_state = "join_pred"
 	listen_signal = COMSIG_KB_OBSERVER_JOIN_PREDATOR
 
 /datum/action/join_predator/action_activate()

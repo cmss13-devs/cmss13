@@ -419,7 +419,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	density = FALSE
 	var/stashed_item
 	var/static/possible_starting_items = list(/obj/item/clothing/mask/cigarette/weed, /obj/item/clothing/mask/cigarette, /obj/item/clothing/mask/cigarette/bcigarette) //breaking bad reference
-	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id) //For things that might affect someone/everyone's round if hidden.
+	/// For things that might affect someone/everyone's round if hidden.
+	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id)
 	var/static/blacklist_typecache
 
 /obj/structure/flora/pottedplant/Initialize()

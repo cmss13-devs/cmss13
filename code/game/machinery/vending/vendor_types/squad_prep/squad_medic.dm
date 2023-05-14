@@ -216,4 +216,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		/obj/item/tool/surgery/surgical_line, //obj/item/storage/firstaid/surgical once broader medic surgeries are done, but for now suturing is the only good one.
 		/obj/item/tool/surgery/synthgraft,
 		/obj/item/storage/surgical_case/regular,
+		/obj/item/reagent_container/blood/OMinus,
+		/obj/item/reagent_container/blood/OMinus,
 	)

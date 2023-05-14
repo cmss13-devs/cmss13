@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Adds a throw delay of 0.4 seconds which takes effect after throwing twice. Two hands, two throws."

@@ -423,7 +423,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	var/static/blocked_atoms = list(/obj/item/device/cotablet, /obj/item/card/id)
 	var/static/blacklist_typecache
 
-/obj/structure/flora/pottedplant/Initialize()
+/obj/structure/flora/pottedplant/Initialize(mapload)
 	. = ..()
 
 	if(!blacklist_typecache)
@@ -446,9 +446,9 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 		user.drop_inv_item_to_loc(stash, src)
 		stashed_item = stash
 		user.visible_message("[user] puts something in [src].", "You hide [stash] in [src].")
+		return
 
-	else
-		to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
+	to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
 
 /obj/structure/flora/pottedplant/attack_hand(mob/user)
 	if(!stashed_item)

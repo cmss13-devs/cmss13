@@ -349,6 +349,7 @@
 	icon_state = "AlexLermire_u"
 	item_state = "AlexLermire_u"
 	var/open = FALSE
+
 /obj/item/clothing/suit/storage/marine/fluff/AlexLemire/verb/verb_toggleopen()
 	set src in usr
 	set category = "Object"

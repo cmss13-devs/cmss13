@@ -241,7 +241,7 @@
 				next_facehug_goal = FACEHUG_TIER_1
 			if(FACEHUG_TIER_1 to FACEHUG_TIER_2)
 				next_facehug_goal = FACEHUG_TIER_2
-			if(FACEHUG_TIER_2 to FACEHUG_TIER_3) // 25 - 99
+			if(FACEHUG_TIER_2 to FACEHUG_TIER_3)
 				next_facehug_goal = FACEHUG_TIER_3
 			if(FACEHUG_TIER_3 to FACEHUG_TIER_4) // 100 - 999
 				next_facehug_goal = FACEHUG_TIER_4

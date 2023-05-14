@@ -239,7 +239,7 @@
 		switch(total_facehugs)
 			if(0 to FACEHUG_TIER_1)
 				next_facehug_goal = FACEHUG_TIER_1
-			if(FACEHUG_TIER_1 to FACEHUG_TIER_2) // 5 - 24
+			if(FACEHUG_TIER_1 to FACEHUG_TIER_2)
 				next_facehug_goal = FACEHUG_TIER_2
 			if(FACEHUG_TIER_2 to FACEHUG_TIER_3) // 25 - 99
 				next_facehug_goal = FACEHUG_TIER_3

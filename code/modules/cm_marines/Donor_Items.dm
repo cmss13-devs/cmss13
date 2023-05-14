@@ -388,6 +388,7 @@
 	icon_state = "Eonoc_coat"
 	item_state = "Eonoc_coat"
 	var/open = FALSE
+
 /obj/item/clothing/suit/storage/marine/fluff/eonoc/verb/verb_toggleopen()
 	set src in usr
 	set category = "Object"

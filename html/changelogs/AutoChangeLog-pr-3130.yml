@@ -1,0 +1,4 @@
+author: "Emanthealmighty"
+delete-after: True
+changes:
+  - bugfix: "Fixed predaliens being unable to attack enemy xenomorphs."

@@ -181,11 +181,11 @@
 
 /datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
 	for (var/obj/item/I in target)
-		if(params["drop_items"])
-			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
+		if(istype(I, /obj/item/card/id))
 			continue
 
-		if(istype(I, /obj/item/card/id))
+		if(params["drop_items"])
+			target.drop_inv_item_to_loc(I, target.loc, FALSE, TRUE)
 			continue
 
 		qdel(I)

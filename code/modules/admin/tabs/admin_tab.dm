@@ -438,7 +438,7 @@
 			//no more deletion of ID cards
 			if(istype(current_item, /obj/item/card/id))
 				continue
-			qdel(current_idea)
+			qdel(current_item)
 
 	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 

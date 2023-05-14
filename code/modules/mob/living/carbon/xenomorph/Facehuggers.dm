@@ -77,7 +77,7 @@
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
-	if(attached == TRUE)
+	if(attached)
 		attached = FALSE
 		die()
 

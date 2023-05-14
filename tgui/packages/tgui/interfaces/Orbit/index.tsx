@@ -118,7 +118,11 @@ const ObservableContent = (props, context) => {
 
   return (
     <Stack vertical>
-      <ObservableSection color="xeno" section={special_mobs} title="Special Mobs" />
+      <ObservableSection
+        color="xeno"
+        section={special_mobs}
+        title="Special Mobs"
+      />
       <ObservableSection color="blue" section={marines} title="Marines" />
       <ObservableSection color="teal" section={humans} title="Humans" />
       <ObservableSection color="xeno" section={xenos} title="Xenomorphs" />

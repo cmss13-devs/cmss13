@@ -393,6 +393,10 @@ var/datum/BSQL_Connection/connection
 		CRASH("[lib] init error: [init]")
 
 /world/proc/HandleTestRun()
+	// Wait for the game ticker to initialize
+	while(!SSticker.initialized)
+		sleep(10)
+
 	//trigger things to run the whole process
 	Master.sleep_offline_after_initializations = FALSE
 	SSticker.request_start()

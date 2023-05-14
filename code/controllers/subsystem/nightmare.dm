@@ -42,14 +42,8 @@ SUBSYSTEM_DEF(nightmare)
 	// this is the only way i've found to make this work, other than going
 	// full cooperative scheduling with the tasks / a ticking SS
 
-	// HandleTestRun calls request_start which calls this PRIOR to initialization
-	// It SHOULD only be necessary to wait for UNIT_TESTS
-#ifdef UNIT_TESTS
-	UNTIL(initialized)
-#else
 	if(!initialized)
 		message_admins("Nightmare subsystem is performing prepare_game prior to initialization! No nightmare inserts will be loaded.")
-#endif
 
 	if(stat == NIGHTMARE_STATUS_DONE)
 		return TRUE

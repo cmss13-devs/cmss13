@@ -109,19 +109,22 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	// chems data
 	data["has_unknown_chemicals"] = FALSE
+	data["has_chemicals"] = 0
 	var/list/chemicals_lists = list()
-	for(var/datum/reagent/reagent in target_mob.reagents.reagent_list)
-		if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
-			data["has_unknown_chemicals"] = TRUE
-			continue
-		chemicals_lists["[reagent.id]"] = list(
-			"name" = reagent.name,
-			"amount" = round(reagent.volume, 0.1),
-			"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
-			"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
-			"color" = reagent.color
-		)
-	data["has_chemicals"] = length(target_mob.reagents.reagent_list)
+	if(target_mob.reagents)
+		data["has_chemicals"] = length(target_mob.reagents.reagent_list)
+		for(var/datum/reagent/reagent in target_mob.reagents.reagent_list)
+			if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
+				data["has_unknown_chemicals"] = TRUE
+				continue
+			chemicals_lists["[reagent.id]"] = list(
+				"name" = reagent.name,
+				"amount" = round(reagent.volume, 0.1),
+				"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
+				"dangerous" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE) || istype(reagent, /datum/reagent/toxin),
+				"color" = reagent.color
+			)
+
 	data["chemicals_lists"] = chemicals_lists
 
 	var/list/limb_data_lists = list()

@@ -57,6 +57,50 @@
 	var/mob/dead/observer/activator = owner
 	activator.do_join_response_team()
 
+/datum/action/join_predator
+	name = "Join the Hunt"
+	action_icon_state = "join_predator"
+	listen_signal = COMSIG_KB_OBSERVER_JOIN_PREDATOR
+
+/datum/action/join_predator/action_activate()
+	var/mob/dead/observer/activator = owner
+	activator.join_as_yautja()
+
+/datum/action/observer_action/view_crew_manifest
+	name = "View Crew Manifest"
+	action_icon_state = "view_crew_manifest"
+
+/datum/action/observer_action/view_crew_manifest/action_activate()
+	show_browser(owner, GLOB.data_core.get_manifest(), "Crew Manifest", "manifest", "size=450x750")
+
+/datum/action/observer_action/view_hive_status
+	name = "View Hive Status"
+	action_icon_state = "view_hive_status"
+
+	var/static/readable_hive_status
+
+/datum/action/observer_action/view_hive_status/New(Target, override_icon_state)
+	. = ..()
+
+	if(readable_hive_status)
+		return
+
+	readable_hive_status = list()
+	for(var/hive_number in ALL_XENO_HIVES)
+		var/readable = uppertext(replacetext(hive_number, "_", " "))
+		readable_hive_status["[readable]"] = hive_number
+
+
+/datum/action/observer_action/view_hive_status/action_activate()
+	var/selected = tgui_input_list(owner, "Which Hive do you want to view?", "Hive Status", readable_hive_status)
+
+	if(!selected)
+		return
+
+	var/datum/hive_status/selected_status = GLOB.hive_datum[readable_hive_status[selected]]
+
+	selected_status.hive_ui.tgui_interact(owner)
+
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER
 	weight = WEIGHT_DEAD
@@ -77,3 +121,10 @@
 	name = "join_ert"
 	full_name = "Join ERT"
 	keybind_signal = COMSIG_KB_OBSERVER_JOIN_ERT
+
+/datum/keybinding/observer/join_pred
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "join_pred"
+	full_name = "Join the Hunt"
+	keybind_signal = COMSIG_KB_OBSERVER_JOIN_PREDATOR

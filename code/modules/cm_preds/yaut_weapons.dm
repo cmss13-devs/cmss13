@@ -523,8 +523,8 @@
 			playsound(user.loc, 'sound/weapons/bladeslice.ogg', 25)
 			create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
 			flaying_stage = FLAY_STAGE_SKIN
-			for(var/L in victim.limbs)
-				victim.apply_damage(18, BRUTE, L, sharp = TRUE)
+			for(var/limb in victim.limbs)
+				victim.apply_damage(18, BRUTE, limb, sharp = TRUE)
 			victim.remove_overlay(UNDERWEAR_LAYER)
 			victim.drop_inv_item_on_ground(victim.get_item_by_slot(WEAR_BODY)) //Drop uniform, belt etc as well.
 			victim.f_style = "Shaved"
@@ -536,10 +536,10 @@
 				SPAN_DANGER("<B>You completely flay [victim], pulling the remaining skin off of \his body like a glove.\nUse rope to hang \him from the ceiling.</B>"))
 			playsound(user.loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
-			for(var/L in victim.limbs)
-				victim.apply_damage(22, BRUTE, L, sharp = TRUE)
-			for(var/obj/item/I in victim)
-				victim.drop_inv_item_to_loc(I, victim.loc, FALSE, TRUE)
+			for(var/limb in victim.limbs)
+				victim.apply_damage(22, BRUTE, limb, sharp = TRUE)
+			for(var/obj/item/item in victim)
+				victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
 				victim.status_flags |= PERMANENTLY_DEAD
 			victim.add_flay_overlay(stage = 3)
 

@@ -296,10 +296,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/properties_to_datums()
+#ifdef UNIT_TESTS
 	if(!chemical_properties_list)
-		//We managed to exist before any /datum/reagents...
-		global_prepare_properties()
-		global_prepare_reagents()
+		CRASH("Chemistry reagents are not set up!")
+#endif
 
 	var/new_properties = list()
 	for(var/P in properties)

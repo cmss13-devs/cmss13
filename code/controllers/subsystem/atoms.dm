@@ -17,6 +17,11 @@ SUBSYSTEM_DEF(atoms)
 
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	initialized = INITIALIZATION_INNEW_MAPLOAD
+
+	// Initalize to create the global chemistry lists: Must be before InitializeAtoms
+	global_prepare_properties()
+	global_prepare_reagents()
+
 	InitializeAtoms()
 
 	// Set up roundstart seed list. This is here because vendors were

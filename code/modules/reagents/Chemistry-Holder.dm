@@ -23,11 +23,13 @@
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
-	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
-		global_prepare_properties()
-		global_prepare_reagents()
 
-// TODO - This should be
+#ifdef UNIT_TESTS
+	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
+		CRASH("Chemistry reagents are not set up!")
+#endif
+
+// There should be no reason for this to be called more than once ever
 /proc/global_prepare_properties()
 	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
 	var/paths = typesof(/datum/chem_property)
@@ -59,6 +61,7 @@
 			else if(isPositiveProperty(P))
 				chemical_properties_list["positive"][P.name] = P
 
+// There should be no reason for this to be called more than once ever
 /proc/global_prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	set waitfor = 0

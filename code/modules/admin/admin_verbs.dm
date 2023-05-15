@@ -127,7 +127,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
-	/client/proc/adminpanelgq
+	/client/proc/adminpanelgq,
+	/client/proc/toggle_hardcore_perma
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

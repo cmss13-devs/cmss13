@@ -21,22 +21,6 @@
 
 	INVOKE_ASYNC(src, PROC_REF(remove_from), user)
 
-/datum/action/observer_action/join_xeno
-	name = "Join as Xeno"
-	action_icon_state = "join_xeno"
-	listen_signal = COMSIG_KB_OBSERVER_JOIN_XENO
-
-/datum/action/observer_action/join_xeno/action_activate()
-	if(!owner.client)
-		return
-
-	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		owner.balloon_alert(owner, "game must start!")
-		return
-
-	if(SSticker.mode.check_xeno_late_join(owner))
-		SSticker.mode.attempt_to_join_as_xeno(owner)
-
 /datum/action/join_ert
 	name = "Join ERT"
 	action_icon_state = "join_ert"
@@ -80,6 +64,22 @@
 /datum/action/observer_action/view_hive_status/action_activate()
 	var/mob/dead/observer/activator = owner
 	activator.hive_status()
+
+/datum/action/observer_action/join_xeno
+	name = "Join as Xeno"
+	action_icon_state = "join_xeno"
+	listen_signal = COMSIG_KB_OBSERVER_JOIN_XENO
+
+/datum/action/observer_action/join_xeno/action_activate()
+	if(!owner.client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		owner.balloon_alert(owner, "game must start!")
+		return
+
+	if(SSticker.mode.check_xeno_late_join(owner))
+		SSticker.mode.attempt_to_join_as_xeno(owner)
 
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER

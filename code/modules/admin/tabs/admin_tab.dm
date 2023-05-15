@@ -808,9 +808,8 @@
 		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
 		return
 
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
-		if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
-			return
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
 
 	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	message_admins("[src] has toggled Hardcore [MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) ? "on, causing all humans to instantly go perma on death" : "off, causing all humans to die like normal"].")

@@ -809,7 +809,7 @@
 		return
 
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
-		if(alert("Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.",,"Yes","Cancel") != "Yes")
+		if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA) && tgui_alert(usr, "Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.", "Confirmation", list("Yes", "Cancel")) != "Yes")
 			return
 
 	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA

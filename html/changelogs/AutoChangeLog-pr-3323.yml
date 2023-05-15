@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed marking faxes and prays"
+  - code_imp: "Replaced most admin HREF topic links to use define macros instead"
+  - admin: "Removed missing HREF topic links for adminmoreinfo (? button)"

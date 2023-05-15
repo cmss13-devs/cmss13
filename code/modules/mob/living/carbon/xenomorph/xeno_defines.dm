@@ -252,6 +252,9 @@
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
 	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
+
+	///used by /datum/hive_status/proc/increase_larva_after_burst() to support non-integer increases to larva
+	var/partial_larva = 0
 	/// Assoc list of free slots available to specific castes
 	var/list/free_slots = list(
 		/datum/caste_datum/burrower = 1,
@@ -1007,6 +1010,14 @@
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
+
+///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
+/datum/hive_status/proc/increase_larva_after_burst()
+	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
+	partial_larva += extra_per_burst
+	for(var/i = 1 to partial_larva)
+		partial_larva--
+		stored_larva++
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

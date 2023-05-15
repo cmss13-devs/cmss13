@@ -51,7 +51,7 @@
 	icon_state = "lifeboat"
 
 /area/shuttle/trijent_shuttle/elevator
-	requires_power = FALSE
+	requires_power = TRUE
 	lighting_use_dynamic = FALSE
 
 /area/shuttle/trijent_shuttle/lz1

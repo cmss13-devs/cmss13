@@ -145,11 +145,11 @@
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
 	else
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " [OBSERVER_JMP(observer, human)]"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
 	qdel(src)
 	if(hug_area)

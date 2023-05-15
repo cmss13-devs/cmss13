@@ -160,7 +160,7 @@
 	if(src)
 		to_chat(src, SPAN_DEADSAY(observer_message))
 	for(var/mob/dead/observer/g in GLOB.observer_list)
-		to_chat(g, SPAN_DEADSAY(observer_message + " [OBSERVER_JMP(g, death_loc)]"))
+		to_chat(g, SPAN_DEADSAY("[observer_message] [OBSERVER_JMP(g, death_loc)]"))
 
 /mob/living/carbon/xenomorph/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	if(hardcore)

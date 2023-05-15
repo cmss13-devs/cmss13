@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/toggle_breaker(mob/user)
 	operating = !operating
 	update()
-	msg_admin_niche("[user] turned [operating ? "on" : "off"] \the [src] in [AREACOORD(src)] [ADMIN_JMP(src.loc)].")
+	msg_admin_niche("[user] turned [operating ? "on" : "off"] \the [src] in [AREACOORD(src)] [ADMIN_JMP(loc)].")
 	update_icon()
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut

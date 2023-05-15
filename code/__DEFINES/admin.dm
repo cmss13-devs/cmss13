@@ -46,7 +46,7 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];individuallog=[REF(user)]'>LOGS</a>)"
 #define ADMIN_TAG(datum) "(<a href='?src=[REF(src)];[HrefToken(forceGlobal = TRUE)];tag_datum=[REF(datum)]'>TAG</a>)"
 #define CC_MARK(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=[REF(user)]'>MARK</a>)"
-#define CC_REPLY(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=[REF(user)]'>RPY</a>)"
+#define CC_REPLY(user) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=[REF(user)]'>RPLY</a>)"
 #define OBSERVER_JMP(observer, atom) atom ? "(<a href='?src=[REF(observer)];jumptocoord=1;X=[atom.x];Y=[atom.y];Z=[atom.z]'>JMP</a>)" : ""
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)

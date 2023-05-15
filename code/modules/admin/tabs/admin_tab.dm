@@ -806,6 +806,7 @@
 
 	if(!SSticker.mode)
 		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
 
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
 		if(alert("Are you sure you want to toggle Hardcore mode on? This will cause all humans to instantly go perma on death.",,"Yes","Cancel") != "Yes")

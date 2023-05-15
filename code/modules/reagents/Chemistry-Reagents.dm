@@ -302,16 +302,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 #endif
 
 	var/new_properties = list()
-	for(var/P in properties)
-		if(istype(P, /datum/chem_property))
-			new_properties += P
+	for(var/prop in properties)
+		if(istype(prop, /datum/chem_property))
+			new_properties += prop
 			continue
-		var/datum/chem_property/D = chemical_properties_list[P]
-		if(D)
-			D = new D.type()
-			D.level = properties[P]
-			D.holder = src
-			new_properties += D
+		var/datum/chem_property/chem = chemical_properties_list[prop]
+		if(chem)
+			chem = new chem.type()
+			chem.level = properties[prop]
+			chem.holder = src
+			new_properties += chem
 	return new_properties
 
 /datum/reagent/proc/properties_to_assoc()

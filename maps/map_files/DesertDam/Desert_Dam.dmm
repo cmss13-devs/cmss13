@@ -4515,14 +4515,6 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
-"anw" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz1)
 "anx" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -5058,6 +5050,9 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "apb" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1{
+	pixel_y = 32
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkbrown2"
@@ -10049,14 +10044,6 @@
 	hull = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
-"aEd" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/omega)
 "aEe" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/decal/sand_overlay/sand1{
@@ -10160,6 +10147,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/omega{
+	pixel_y = 32
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -13403,14 +13393,6 @@
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
-"aNW" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz2)
 "aNX" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -62572,6 +62554,14 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"lwh" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi{
+	pixel_x = -32
+	},
+/turf/open/desert/rock/deep/transition{
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/west_tunnel)
 "lxq" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
@@ -62759,6 +62749,15 @@
 	icon_state = "cement_sunbleached18"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"mej" = (
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz2{
+	pixel_x = 32
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkbrown2"
+	},
+/area/desert_dam/building/warehouse/loading)
 "meN" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -65522,14 +65521,6 @@
 	icon_state = "cement_sunbleached15"
 	},
 /area/desert_dam/exterior/landing_pad_one)
-"vRX" = (
-/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/engi,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/engi)
 "vSF" = (
 /turf/open/desert/dirt{
 	dir = 8;
@@ -77625,7 +77616,7 @@ dTs
 dTs
 dTs
 dTs
-anw
+lcj
 apb
 arp
 arp
@@ -82241,7 +82232,7 @@ cZx
 cZx
 cZx
 cZx
-cZx
+mej
 cZx
 cXa
 cXa
@@ -82475,7 +82466,7 @@ cIq
 dfK
 cZB
 cZB
-aNW
+nEM
 aNY
 aOW
 aOW
@@ -96170,7 +96161,7 @@ dTs
 dTs
 dTs
 dTs
-aEd
+aDT
 aEu
 chY
 ceX
@@ -101033,7 +101024,7 @@ aVZ
 aZk
 atH
 mEV
-vRX
+bfm
 auW
 avj
 avj
@@ -101267,7 +101258,7 @@ aVZ
 aZk
 atH
 auu
-aut
+lwh
 avb
 avk
 ctg

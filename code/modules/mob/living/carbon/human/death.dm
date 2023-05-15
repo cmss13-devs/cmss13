@@ -43,8 +43,9 @@
 		return
 	GLOB.alive_human_list -= src
 	if(!gibbed)
-		if(HAS_TRAIT(src, TRAIT_HARDCORE))
-			status_flags |= PERMANENTLY_DEAD
+		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
+			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
+				status_flags |= PERMANENTLY_DEAD
 		disable_special_flags()
 		disable_lights()
 		disable_special_items()

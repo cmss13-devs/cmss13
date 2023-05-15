@@ -798,7 +798,7 @@
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
 
 /client/proc/toggle_hardcore_perma()
-	set name = "Toggle Instant Permadeath"
+	set name = "Toggle Hardcore"
 	set category = "Admin.Flags"
 
 	if(!admin_holder || !check_rights(R_MOD, FALSE))

@@ -5,21 +5,17 @@
 	baseturfs = /turf/open/space/transit
 	var/auto_space_icon = TRUE
 
-/turf/open/space/transit/Crossed(atom/movable/crosser)
+/turf/open/space/transit/Entered(atom/movable/crosser, atom/old_loc)
 	. = ..()
 
 	if(isobserver(crosser) || crosser.anchored)
 		return
 
-	var/neighbours = list()
-	for(var/dir in GLOB.cardinals)
-		neighbours += get_step(loc, dir)
+	var/turf/open/floor/floor = old_loc
+	if(istype(floor))
+		var/fling_dir = get_dir(floor, crosser.loc)
 
-	var/turf/open/floor/floor = locate() in neighbours
-	if(floor)
-		var/fling_dir = get_dir(floor, loc)
-
-		var/turf/near_turf = get_step(loc, get_step(loc, fling_dir))
+		var/turf/near_turf = get_step(crosser.loc, get_step(crosser.loc, fling_dir))
 		var/turf/projected = get_ranged_target_turf(near_turf, fling_dir, 50)
 
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)

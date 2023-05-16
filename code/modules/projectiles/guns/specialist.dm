@@ -800,7 +800,7 @@
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
 
@@ -1082,7 +1082,7 @@
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] [ADMIN_JMP(loc)]")
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)

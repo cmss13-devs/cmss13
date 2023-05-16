@@ -269,3 +269,31 @@
       once taken out
   harryob:
   - admin: allows admins to send ahelps to mentors
+2023-05-15:
+  BeagleGaming1:
+  - rscadd: Adds the "Hardcore" trait for Riflemen
+  Drathek:
+  - bugfix: Fixed runtimes with the ID Console
+  - bugfix: Account numbers are now far less likely to match another person's account
+  - ui: Changed linked account field in the ID Console to a restricted input field
+  - admin: Tweaked and added more server log verbs
+  - code_imp: Removed dead code in lurker rush suggesting it lowered cooldown on a
+      successful hit
+  Emanthealmighty:
+  - bugfix: Fixed predaliens being unable to attack enemy xenomorphs.
+  Frans_Feiffer:
+  - imageadd: Resprited Dinodubba and Eonoc's donor gear.
+  - rscadd: Adds the ability to toggle open Eonoc's donor gear.
+  LynxSolstice:
+  - soundadd: Cleaned up the sonic boom sound effect to remove the "missile launching"
+      sound, which caused an inconsistency when the dropship wasn't using missiles.
+2023-05-16:
+  BeagleGaming1:
+  - rscadd: You can whisper and hear nearby people while knocked out. Getting knocked
+      out changes the sound environment to reflect that.
+  Drathek:
+  - bugfix: Fixed marking faxes and prays
+  - code_imp: Replaced most admin HREF topic links to use define macros instead
+  - admin: Removed missing HREF topic links for adminmoreinfo (? button)
+  TeDGamer:
+  - bugfix: Playable huggers no longer block xeno ammo / spits.

@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed runtimes with the ID Console"
-  - bugfix: "Account numbers are now far less likely to match another person's account"
-  - ui: "Changed linked account field in the ID Console to a restricted input field"

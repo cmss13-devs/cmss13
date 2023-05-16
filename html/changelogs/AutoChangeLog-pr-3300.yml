@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Removed dead code in lurker rush suggesting it lowered cooldown on a successful hit"

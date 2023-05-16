@@ -1,4 +1,0 @@
-author: "LynxSolstice"
-delete-after: True
-changes:
-  - soundadd: "Cleaned up the sonic boom sound effect to remove the \"missile launching\" sound, which caused an inconsistency when the dropship wasn't using missiles."

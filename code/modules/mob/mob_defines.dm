@@ -225,6 +225,12 @@
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
 
+	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
+	COOLDOWN_DECLARE(throw_delay)
+
+	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
+	var/throw_buffer = 0
+
 	var/list/datum/action/actions = list()
 
 	can_block_movement = TRUE

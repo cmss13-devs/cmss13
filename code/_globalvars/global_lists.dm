@@ -500,3 +500,9 @@ var/global/list/available_specialist_kit_boxes = list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+GLOBAL_LIST_EMPTY(topic_tokens)
+GLOBAL_PROTECT(topic_tokens)
+
+GLOBAL_LIST_EMPTY(topic_commands)
+GLOBAL_PROTECT(topic_commands)

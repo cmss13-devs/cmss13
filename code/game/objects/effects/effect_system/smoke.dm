@@ -174,6 +174,7 @@
 
 /obj/effect/particle_effect/smoke/mustard
 	name = "mustard gas"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "mustard"
 	smokeranking = SMOKE_RANK_HIGH
 

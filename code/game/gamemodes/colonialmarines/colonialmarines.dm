@@ -1,4 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
+#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -33,11 +34,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
-	icon = 'icons/old_stuff/mark.dmi'
+	icon = 'icons/landmarks.dmi'
 
 /obj/effect/landmark/lv624/fog_blocker
 	name = "fog blocker"
-	icon_state = "spawn_event"
+	icon_state = "fog"
 
 	var/time_to_dispel = 25 MINUTES
 
@@ -58,7 +59,7 @@
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
-	icon_state = "spawn_event"
+	icon_state = "xeno_tunnel"
 
 /obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
 	. = ..()
@@ -285,7 +286,9 @@
 			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
+				SSticker.roundend_check_paused = TRUE
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+				addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
@@ -541,3 +544,4 @@
 		incrementer++
 
 #undef HIJACK_EXPLOSION_COUNT
+#undef MARINE_MAJOR_ROUND_END_DELAY

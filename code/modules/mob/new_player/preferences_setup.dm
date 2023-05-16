@@ -234,8 +234,8 @@
 			return /datum/equipment_preset/uscm/specialist_equipped
 		if(JOB_SQUAD_SMARTGUN)
 			return /datum/equipment_preset/uscm/smartgunner_equipped
-		if(JOB_SQUAD_RTO)
-			return /datum/equipment_preset/uscm/rto_equipped
+		if(JOB_SQUAD_TEAM_LEADER)
+			return /datum/equipment_preset/uscm/tl_equipped
 		if(JOB_CO)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_CO]

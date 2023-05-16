@@ -550,13 +550,13 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 /datum/equipment_preset/uscm/cmb/rto/New()
 	. = ..()
-	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
+	access = get_all_accesses() + list(ACCESS_MARINE_PREP, ACCESS_MARINE_TL_PREP)
 
 	assignment = "Anchorpoint Station Marine Technical Specialist"
-	rank = JOB_SQUAD_RTO
+	rank = JOB_SQUAD_TEAM_LEADER
 	paygrade = "ME4"
 	role_comm_title = "A-TS"
-	skills = /datum/skills/rto
+	skills = /datum/skills/tl
 
 /datum/equipment_preset/uscm/cmb/rto/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
@@ -571,7 +571,7 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_HELMET)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/rto, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/tl, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)

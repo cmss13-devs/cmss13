@@ -11,6 +11,9 @@
 	if(isobserver(crosser) || crosser.anchored)
 		return
 
+	if(!(isitem(crosser) || isliving(crosser)))
+		return
+
 	var/turf/open/floor/floor = old_loc
 	if(istype(floor))
 		var/fling_dir = get_dir(floor, crosser.loc)

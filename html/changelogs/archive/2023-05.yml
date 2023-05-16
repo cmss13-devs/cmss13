@@ -287,3 +287,13 @@
   LynxSolstice:
   - soundadd: Cleaned up the sonic boom sound effect to remove the "missile launching"
       sound, which caused an inconsistency when the dropship wasn't using missiles.
+2023-05-16:
+  BeagleGaming1:
+  - rscadd: You can whisper and hear nearby people while knocked out. Getting knocked
+      out changes the sound environment to reflect that.
+  Drathek:
+  - bugfix: Fixed marking faxes and prays
+  - code_imp: Replaced most admin HREF topic links to use define macros instead
+  - admin: Removed missing HREF topic links for adminmoreinfo (? button)
+  TeDGamer:
+  - bugfix: Playable huggers no longer block xeno ammo / spits.

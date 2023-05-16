@@ -1,15 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Button,
-  Section,
-  ProgressBar,
-  Dimmer,
-  Icon,
-  NoticeBox,
-  Box,
-  Collapsible,
-  Divider,
-} from '../components';
+import { Button, Section, ProgressBar, Dimmer, Icon, NoticeBox, Box, Collapsible, Divider } from '../components';
 import { Window } from '../layouts';
 
 export const OrbitalCannonConsole = (_props, context) => {

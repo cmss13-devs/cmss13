@@ -266,10 +266,10 @@
 		var/datum/hive_status/HS
 		for(var/hivenumber in GLOB.hive_datum)
 			HS = GLOB.hive_datum[hivenumber]
-			if(HS.no_latejoin_burrowed == FALSE)
-				if(length(HS.totalXenos))
-					HS.stored_larva++
-					HS.hive_ui.update_burrowed_larva()
+			if(hive.no_latejoin_burrowed == FALSE)
+				if(length(hive.totalXenos))
+					hive.stored_larva++
+					hive.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

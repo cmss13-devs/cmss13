@@ -263,9 +263,9 @@
 
 	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
-		var/datum/hive_status/HS
+		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
-			HS = GLOB.hive_datum[hivenumber]
+			hive = GLOB.hive_datum[hivenumber]
 			if(hive.no_latejoin_burrowed == FALSE)
 				if(length(hive.totalXenos))
 					hive.stored_larva++

@@ -12,7 +12,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_CARDIOSTABILIZING = 3)
+	properties = list(PROPERTY_CARDIOSTABILIZING = 1)
 
 /datum/reagent/medical/ryetalyn
 	name = "Ryetalyn"

@@ -879,31 +879,27 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
-/datum/chem_property/positive/cardiostabilizing/on_delete(mob/living/M)
-	..()
-
-	M.pain.reset_pain_reduction()
-
-/datum/chem_property/positive/cardiostabilizing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/positive/cardiostabilizing/process(mob/living/M, potency = 1)
 	if(!..())
 		return
+	if(M.health < 0 && M.stat)
+		M.heal_limb_damage(potency, potency)
+		holder.holder.remove_reagent("adrenaline", 1 * potency) //removes cardiac stimulants from the body.
+		if(M.losebreath >= 10)
+			M.losebreath = max(10, M.losebreath - 10 * potency)
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
-
-	if(M.losebreath >= 10)
-		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)
-
-/datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.make_jittery(5) //Overdose causes a spasm
-	M.apply_effect(20, PARALYZE)
-
-/datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1)
+	M.make_jittery(8) //Overdose causes a spasm
+	M.apply_effect(6, PARALYZE)
+	M.apply_internal_damage(0.25 * potency, "heart")
+/datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1)
 	M.drowsyness = max(M.drowsyness, 20)
 	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
 		return
-	M.apply_internal_damage(0.25 * delta_time, "heart")
-	if(prob(5 * delta_time))
+	M.apply_internal_damage(0.5 * potency, "heart")
+	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
+		M.make_jittery(10)
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isxeno(M))

@@ -1096,6 +1096,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	no_latejoin_burrowed = TRUE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1108,6 +1109,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	no_latejoin_burrowed = TRUE
 
 	need_round_end_check = TRUE
 
@@ -1150,6 +1152,7 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+	no_latejoin_burrowed = TRUE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions

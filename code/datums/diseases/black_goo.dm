@@ -17,6 +17,7 @@
 	stage_prob = 4
 	stage_minimum_age = 150
 	survive_mob_death = TRUE //FALSE //switch to true to make dead infected humans still transform
+	longevity = 400 //should allow the dead to rise
 	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
 	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
 	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive

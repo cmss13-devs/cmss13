@@ -201,7 +201,7 @@
 /mob/dead/observer/Login()
 	..()
 
-	if(!(locate(/datum/action/join_predator) in actions) && RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_PREDATOR)
+	if(!(locate(/datum/action/join_predator) in actions) && RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_PREDATOR && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		var/datum/action/join_predator/new_action = new()
 		new_action.give_to(src)
 

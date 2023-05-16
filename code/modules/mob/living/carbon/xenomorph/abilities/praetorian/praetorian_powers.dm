@@ -538,19 +538,16 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!dancer_user.Adjacent(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must be adjacent to [target_atom]!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -665,29 +662,17 @@
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
-		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/buffed = FALSE
-
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
@@ -710,10 +695,20 @@
 					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
+	
+
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
 
+	var/buffed = FALSE
+
+	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
+	
+	if (dancer_tag_effect)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
+		
 	if (!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 

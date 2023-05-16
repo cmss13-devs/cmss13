@@ -127,6 +127,8 @@
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
@@ -201,11 +203,27 @@
 /mob/dead/observer/Login()
 	..()
 
-	if(!(locate(/datum/action/join_predator) in actions) && RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_PREDATOR && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		var/datum/action/join_predator/new_action = new()
-		new_action.give_to(src)
+	toggle_predator_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
+
+/mob/dead/observer/proc/toggle_predator_action()
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!(RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+		if(locate(/datum/action/join_predator) in actions)
+			return
+
+		var/datum/action/join_predator/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)
 
 
 /mob/dead/observer/Destroy()

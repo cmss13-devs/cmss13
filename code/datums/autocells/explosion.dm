@@ -322,7 +322,7 @@ as having entered the turf.
 				current_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(current_mob)]</b> with \a <b>[explosion_source]</b> in [get_area(current_turf)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(current_mob)]</b> with \a <b>[explosion_source]</b> in [get_area(current_turf)]."
-				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(current_mob)] with \a [explosion_source] in [get_area(current_turf)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[current_turf.x];Y=[current_turf.y];Z=[current_turf.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) ([firing_mob.client ? "<a href='?priv_msg=[firing_mob.client.ckey]'>PM</a>" : "NO CLIENT"])"
+				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(current_mob)] with \a [explosion_source] in [get_area(current_turf)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[current_turf.x];Y=[current_turf.y];Z=[current_turf.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) [ADMIN_PM(firing_mob)]"
 				var/ff_living = TRUE
 				if(current_mob.stat == DEAD)
 					ff_living = FALSE

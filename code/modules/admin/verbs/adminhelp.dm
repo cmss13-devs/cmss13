@@ -203,6 +203,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/marked_admin
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
+	/// What was the first message sent by the player?
+	var/initial_message
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -222,6 +224,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	opened_at = world.time
 
 	name = copytext_char(msg, 1, 100)
+	initial_message = msg
 
 	initiator = C
 	initiator_ckey = initiator.ckey
@@ -365,6 +368,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		ref_src = "[REF(src)]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
 	if(state == AHELP_ACTIVE)
+		if(initial_message)
+			. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=defer'>DEFER</A>)"
 		if (CONFIG_GET(flag/popup_admin_pm))
 			. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminpopup=[REF(initiator)]'>POPUP</A>)"
 		. += ClosureLinks(ref_src)
@@ -488,6 +493,30 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		message_admins(msg)
 		log_ahelp(id, "Resolved", "Resolved by [usr.key]", null, usr.ckey)
 		log_admin_private(msg)
+
+/datum/admin_help/proc/defer_to_mentors()
+	if(state != AHELP_ACTIVE || !initial_message)
+		return
+
+	if(!initiator.current_mhelp)
+		initiator.current_mhelp = new(initiator)
+
+	var/options = tgui_alert(usr, "Use the first message in this ticket, or a custom option?", "Defer to Mentors", list("First Message", "Custom"))
+	if(!options)
+		return
+
+	switch(options)
+		if("First Message")
+			initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
+		if("Custom")
+			var/message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			if(!message)
+				return
+			initiator.current_mhelp.broadcast_unhandled(message, initiator)
+
+	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
+	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
+	Resolve()
 
 /datum/admin_help/proc/mark_ticket()
 	if(marked_admin)
@@ -659,6 +688,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Resolve()
 		if("reopen")
 			Reopen()
+		if("defer")
+			defer_to_mentors()
 
 /datum/admin_help/proc/player_ticket_panel()
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")

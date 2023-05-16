@@ -128,7 +128,7 @@
 	if(target_turf && target_turf.signal_loc)
 		var/turf/TT = get_turf(target_turf.signal_loc)
 		if(TT && TT.z)
-			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[TT.x];Y=[TT.y];Z=[TT.z]'>JMP LOC</a>)")
+			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) [ADMIN_JMP(TT)]")
 	//actual firemission code
 	execute_firemission_unsafe(target_turf, offset, dir, mission)
 	return 1

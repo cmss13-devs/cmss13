@@ -403,7 +403,7 @@ SUBSYSTEM_DEF(ticker)
 			if(current_mob.client)
 				var/client/current_client = current_mob.client
 				if(current_client.player_data && current_client.player_data.playtime_loaded && length(current_client.player_data.playtimes) == 0)
-					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 	QDEL_IN(player, 5)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
@@ -432,7 +432,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.client)
 				var/client/current_client = player.client
 				if(current_client.player_data && current_client.player_data.playtime_loaded && length(current_client.player_data.playtimes) == 0)
-					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 				if(current_client.player_data && current_client.player_data.playtime_loaded && ((round(current_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(current_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
 	if(captainless)

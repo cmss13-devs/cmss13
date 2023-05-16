@@ -1,0 +1,4 @@
+author: "TeDGamer"
+delete-after: True
+changes:
+  - bugfix: "Playable huggers no longer block xeno ammo / spits."

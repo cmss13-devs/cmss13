@@ -90,7 +90,7 @@
 	)
 	assignment = JOB_WARDEN
 	rank = JOB_WARDEN
-	paygrade = "MO1"
+	paygrade = "ME6"
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 

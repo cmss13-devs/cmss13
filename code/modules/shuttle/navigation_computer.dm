@@ -50,7 +50,7 @@
 		for(var/port_id in SSshuttle.stationary)
 			var/obj/docking_port/stationary/shuttle = SSshuttle.stationary[port_id]
 			if(shuttle && shuttle.id == shuttleId)
-				jumpto_ports[S.id] = TRUE
+				jumpto_ports[shuttle.id] = TRUE
 
 	for(var/V in SSshuttle.stationary)
 		if(!V)

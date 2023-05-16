@@ -168,7 +168,7 @@
 
 	age = XENO_NORMAL
 
-	var/total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
+	total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
 	switch(total_facehugs)
 		if(FACEHUG_TIER_1 to FACEHUG_TIER_2)
 			age = XENO_MATURE
